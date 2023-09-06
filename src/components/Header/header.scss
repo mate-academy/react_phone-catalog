@@ -6,6 +6,8 @@
   align-items: center;
   padding-left: 24px;
 
+  color: $grey-secondary-color;
+  font-family: $font-bold;
   box-shadow: 0 1px 0 $grey-elements;
 
   &__nav {
@@ -13,7 +15,13 @@
     display: flex;
   }
 
+  &__nav-menu {
+    display: flex;
+  }
+
   &__logo {
+    display: flex;
+    align-items: center;
     margin-right: 64px;
   }
 
@@ -38,9 +46,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    color: $grey-secondary-color;
-    font-family: $font-bold;
 
     font-size: 12px;
     line-height: 11px;
@@ -128,16 +133,137 @@
     position: absolute;
     left: 34px;
     top: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
     width: 14px;
     height: 14px;
+
     border-radius: 50%;
     background-color: $red;
     color: #fff;
 
     font-family: $font-semibold;
     font-size: 9px;
+  }
+
+  &__button {
+    display: none;
+    width: 30px;
+    height: 48px;
+    left: 0;
+    top: 0;
+
+    &--open {
+      margin-right: 8px;
+      box-shadow: 1px 0 0 $grey-elements;
+    }
+
+    &--close {
+      position: absolute;
+    }
+  }
+
+  &__button-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 6px;
+    width: 100%;
+
+    &__icon-count {
+      left: 26px;
+      top: 12px;
+    }
+
+    &__nav {
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 8px;
+    }
+
+    &__logo-link {
+      display: flex;
+      align-items: center;
+    }
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+
+      background: #fff;
+      box-shadow: -1px 0 0 $grey-elements;
+    }
+
+    &__nav-menu {
+      padding-top: 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 200px;
+      height: 100%;
+      border: 1px solid $grey-primary-color;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+
+      z-index: 1;
+      color: $grey-secondary-color;
+      background-color: $grey-elements;
+      overflow-y: auto;
+
+    }
+
+    &__nav-menu--active {
+      transform: translateX(-100%);
+    }
+
+    &__main-nav-link {
+      margin-bottom: 24px;
+      margin-right: 0;
+
+      &::before {
+        bottom: -8px;
+      }
+
+      &--is-active {
+        color: $grey-primary-color;
+
+        &::after {
+          content: "";
+          width: 100%;
+          height: 3px;
+          position: absolute;
+          bottom: -8px;
+          background-color: $grey-primary-color;
+        }
+      }
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      margin-left: 0;
+      background-color: transparent;
+      border: 0;
+
+      &--close {
+        position: absolute;
+        top: 0;
+        left: 6px;
+      }
+    }
   }
 }

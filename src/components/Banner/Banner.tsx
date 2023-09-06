@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import './Banner.scss';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import bannerImg1 from '../../images/img/banner-phones.png';
 import bannerImg2 from '../../images/img/banner-accessories.png';
 import bannerImg3 from '../../images/img/banner-tablets.png';
 
 export const Banner = () => {
   const [position, setPosition] = useState(0);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const imgWidth = imgRef.current?.offsetWidth || 1040;
 
   const bannerImgs = [
     bannerImg1,
@@ -15,7 +17,6 @@ export const Banner = () => {
     bannerImg3,
   ];
 
-  const imgWidth = 1040;
   const maxPosition = -imgWidth * (bannerImgs.length - 1);
 
   const clickNext = () => {
@@ -53,7 +54,7 @@ export const Banner = () => {
   }, [position]);
 
   return (
-    <div className="banner banner--margin">
+    <div className="banner">
       <button
         className="banner__button banner__button--left"
         type="button"
@@ -74,6 +75,7 @@ export const Banner = () => {
               key={img}
             >
               <img
+                ref={imgRef}
                 className="banner__img"
                 width={imgWidth}
                 src={img}

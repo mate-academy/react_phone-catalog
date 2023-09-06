@@ -48,4 +48,12 @@
     height: 24px;
     border-radius: 50%;
   }
+
+  @media (max-width: 768px) {
+    padding-bottom: 12px;
+
+    &__link {
+      margin-right: 12px;
+    }
+  }
 }

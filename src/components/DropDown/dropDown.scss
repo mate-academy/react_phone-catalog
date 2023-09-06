@@ -68,4 +68,12 @@
       background-color: $grey-background;
     }
   }
+
+  @media (max-width: 768px) {
+    width: 150px;
+
+    &__header {
+      width: 150px;
+    }
+  }
 }

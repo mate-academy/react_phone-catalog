@@ -1,6 +1,6 @@
 import './ProductDetailsPage.scss';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { ProductDetails } from '../../types/ProductDetails';
 import {
@@ -24,12 +24,6 @@ import { Loader } from '../../components/Loader';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
 
 export const ProductDetailsPage = () => {
-  const location = useLocation();
-  const { pathname } = location;
-
-  const productPath = pathname.split('/').filter(segment => segment !== '');
-  const productId = productPath[productPath.length - 1];
-
   const [products, setProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails]
     = useState<ProductDetails | null>(null);
@@ -37,14 +31,15 @@ export const ProductDetailsPage = () => {
   const [isError, setIsError] = useState(false);
   const [mainPhoto, setMainPhoto] = useState<string>();
   const [product, setProduct] = useState<Product>();
+  const { productId = '' } = useParams();
 
-  const fetchProductDetails = async () => {
+  const fetchProductDetails = async (id: string) => {
     setIsLoading(true);
     try {
-      const getDetailsFromServer = await getProductDetails(productId);
+      const getDetailsFromServer = await getProductDetails(id);
 
       setProductDetails(getDetailsFromServer);
-      setMainPhoto(productDetails?.images[0]);
+      setMainPhoto(getDetailsFromServer?.images[0]);
     } catch {
       setIsError(true);
     } finally {
@@ -72,13 +67,7 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
-    if (productDetails?.images.length) {
-      setMainPhoto(productDetails.images[0]);
-    }
-  }, [productDetails]);
-
-  useEffect(() => {
-    fetchProductDetails();
+    fetchProductDetails(productId);
     fetchProduct();
   }, [productId]);
 
@@ -86,11 +75,8 @@ export const ProductDetailsPage = () => {
     fetchRandomProducts();
   }, []);
 
-  const colors = productDetails?.colorsAvailable || [];
-  const currentColor = productDetails?.color || '';
   const images = productDetails?.images || [];
   const mainImg = mainPhoto || '';
-  const capacitys = productDetails?.capacityAvailable || [];
 
   const handlePhotoClick = (photo: string) => {
     setMainPhoto(photo);
@@ -113,25 +99,21 @@ export const ProductDetailsPage = () => {
 
       {!isError && isLoading && <Loader />}
       {!isError && !isLoading && (
-        <>
+        <div className="product-details__content">
           <h1 className="product-details__title">
             {productDetails?.name}
           </h1>
-
           <div className="product-details__presentation">
             <ProductPhotos
               photos={images}
               mainPhoto={mainImg}
               handlePhotoClick={handlePhotoClick}
             />
-
             <div className="product-details__main-info">
               <div className="product-details__colors">
                 {productDetails && (
                   <ProductColor
-                    colors={colors}
                     productDetails={productDetails}
-                    currentColor={currentColor}
                   />
                 )}
               </div>
@@ -140,7 +122,6 @@ export const ProductDetailsPage = () => {
                 {productDetails && (
                   <ProductCapacity
                     productDetails={productDetails}
-                    capacitys={capacitys}
                   />
                 )}
               </div>
@@ -180,7 +161,11 @@ export const ProductDetailsPage = () => {
                   </div>
                 </li>
                 <li className="product-details__info-item">
-                  <div className="product-details__info-title">Resolution</div>
+                  <div
+                    className="product-details__info-title"
+                  >
+                    Resolution
+                  </div>
                   <div className="product-details__info-value">
                     {productDetails?.resolution}
                   </div>
@@ -209,11 +194,13 @@ export const ProductDetailsPage = () => {
             )}
           </div>
 
-          <ProductsSlider
-            title={ProductSection.RandomProducts}
-            products={products}
-          />
-        </>
+          <div className="product-details__offer">
+            <ProductsSlider
+              title={ProductSection.RandomProducts}
+              products={products}
+            />
+          </div>
+        </div>
       )}
     </section>
   );

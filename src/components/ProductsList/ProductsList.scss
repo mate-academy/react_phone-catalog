@@ -35,4 +35,29 @@
     display: flex;
     justify-content: center;
   }
+
+  @media (max-width: 768px) {
+    width: 350px;
+
+    &__item {
+      display: block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+
+      &:nth-child(4n) {
+        margin-right: 10px;
+      }
+    }
+
+    &__items {
+      display: flex;
+      justify-content: center;
+      width: 350px;
+      margin-bottom: 20px;
+    }
+
+    &__pagination {
+      margin-bottom: 20px;
+    }
+  }
 }

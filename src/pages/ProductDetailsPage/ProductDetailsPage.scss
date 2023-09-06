@@ -81,4 +81,50 @@
   &__info-value {
     font-family: $font-semibold;
   }
+
+  @media (max-width: 768px) {
+    width: 350px;
+
+    &__title {
+      margin: 0 0 28px;
+      font-size: 28px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__presentation {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      max-width: 350px;
+    }
+
+    &__additional-info {
+      width: 350px;
+    }
+
+    &__offer {
+      margin-bottom: 40px;
+    }
+
+    &__colors {
+      margin-bottom: 16px;
+    }
+
+    &__capacitys {
+      margin-bottom: 24px;
+    }
+
+    &__actions {
+      margin-bottom: 24px;
+    }
+
+    &__nav {
+      margin: 20px 0;
+    }
+  }
 }

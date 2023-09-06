@@ -34,4 +34,24 @@
     font-family: $font-semibold;
     color: $grey-secondary-color;
   }
+
+  @media (max-width: 768px) {
+    width: 350px;
+    &__content {
+      width: 350px;
+    }
+
+    &__nav {
+      margin: 14px 0 10px;
+    }
+
+    &__title {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    &__quantity-info {
+      margin: 0 0 20px;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 @import "../../helpers/styles/variables.scss";
 
 .slider {
-  width: 1136px;
+  width: 1160px;
   overflow: hidden;
 
   &__header {
@@ -13,10 +13,12 @@
   &__title {
     margin-top: 0;
     margin-bottom: 24px;
+    font-size: 28px;
   }
 
   &__list {
     display: flex;
+    padding: 0 12px 12px;
   }
 
   &__item {
@@ -74,6 +76,22 @@
       cursor: default;
 
       background-image: url(../../images/Icons/button_arrow_right.svg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 302px;
+
+    &__header {
+      margin-bottom: 12px;
+    }
+
+    &__title {
+      margin-bottom: 0;
+    }
+
+    &__item {
+      height: 250px;
     }
   }
 }

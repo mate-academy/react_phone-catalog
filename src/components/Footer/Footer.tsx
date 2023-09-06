@@ -1,5 +1,5 @@
 import './Footer.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import arrowUp from '../../images/Icons/arrow_up--dark.svg';
 import logo from '../../images/LOGO.svg';
 
@@ -10,6 +10,8 @@ export const Footer = () => {
       behavior: 'smooth',
     });
   };
+
+  const location = useLocation();
 
   return (
     <footer className="footer">
@@ -35,23 +37,31 @@ export const Footer = () => {
             github
           </a>
 
-          <a
+          {/* <a
             className="footer__nav-link link"
             target="_blank"
             href="https://github.com/Maks-Tsarenko"
             rel="noreferrer"
           >
             contacts
-          </a>
+          </a> */}
 
-          <a
+          <Link
+            to="/contacts"
+            className={`footer__nav-link link
+             ${location.pathname === '/contacts' ? 'footer__nav-link--active' : ''}`}
+          >
+            Contacts
+          </Link>
+
+          {/* <a
             className="footer__nav-link link"
             target="_blank"
             href="https://github.com/Maks-Tsarenko"
             rel="noreferrer"
           >
             rights
-          </a>
+          </a> */}
         </div>
 
         <button

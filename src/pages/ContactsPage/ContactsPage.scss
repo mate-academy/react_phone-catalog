@@ -1,0 +1,25 @@
+@import "../../helpers/styles/variables.scss";
+@import "../../helpers/styles/fonts.scss";
+
+.contacts {
+  &__breadcrumbs {
+    margin-top: 20px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__info-text {
+    color: $grey-primary-color;
+    font-family: $font-semibold;
+    font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    &__info-text {
+      font-size: 20px;
+    }
+  }
+}

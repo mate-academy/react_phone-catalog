@@ -7,15 +7,18 @@ import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
   productDetails: ProductDetails,
-  colors: string[],
-  currentColor: string,
+  // colors: string[],
+  // currentColor: string,
 };
 
 export const ProductColor: React.FC<Props> = ({
   productDetails,
-  colors,
-  currentColor,
+  // colors,
+  // currentColor,
 }) => {
+  const colors = productDetails?.colorsAvailable || [];
+  const currentColor = productDetails?.color || '';
+
   return (
     <div className="product-colors">
       <h4 className="product-colors__title">

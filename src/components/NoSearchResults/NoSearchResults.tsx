@@ -1,3 +1,5 @@
+import './NoSearchResults.scss';
+
 export const NoSearchResults = () => {
   return (
     <h1 className="no-results">

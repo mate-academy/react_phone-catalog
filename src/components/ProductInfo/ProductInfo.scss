@@ -58,4 +58,40 @@
     font-size: 14px;
     line-height: 21px;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    align-items: center;
+
+    &__about {
+      width: 330px;
+      margin-right: 0;
+    }
+
+    &__tech-specs {
+      width: 330px;
+      margin-bottom: 40px;
+    }
+
+    &__title {
+      padding-bottom: 8px;
+    }
+
+    &__title-about {
+      margin-bottom: 16px;
+    }
+
+    &__title-tech {
+      margin-bottom: 16px;
+    }
+
+    &__tech-item-title {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    &__tech-item-value {
+      font-size: 12px;
+    }
+  }
 }

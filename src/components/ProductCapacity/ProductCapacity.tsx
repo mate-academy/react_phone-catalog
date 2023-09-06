@@ -6,13 +6,15 @@ import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
   productDetails: ProductDetails,
-  capacitys: string[],
+  // capacitys: string[],
 };
 
 export const ProductCapacity: React.FC<Props> = ({
   productDetails,
-  capacitys,
+  // capacitys,
 }) => {
+  const capacitys = productDetails?.capacityAvailable || [];
+
   return (
     <div className="product-capacitys">
       <h4 className="product-capacitys__title">
@@ -21,10 +23,11 @@ export const ProductCapacity: React.FC<Props> = ({
       <ul className="product-capacitys__list">
         {capacitys.map((capacity: string) => {
           const isActive = productDetails.capacity === capacity;
+          const to = getCorrectProductLink(productDetails, undefined, capacity);
 
           return (
             <Link
-              to={`../${getCorrectProductLink(productDetails, undefined, capacity)}`}
+              to={`../${to}`}
               key={capacity}
               className={classNames('product-capacitys__link', {
                 'product-capacitys__link--active': isActive,

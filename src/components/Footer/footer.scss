@@ -41,6 +41,10 @@
     &:last-child {
       margin-right: 0;
     }
+
+    &--active {
+      color: $grey-primary-color;
+    }
   }
 
   &__button-img {
@@ -68,6 +72,32 @@
       & .footer__button-img {
         border-color: #313237;
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 64px;
+    padding-left: 12px;
+
+    &__nav-link {
+      margin-right: 16px;
+    }
+
+    &__button-img {
+      width: 16px;
+      height: 16px;
+      margin-left: 4px;
+    }
+
+    &__button {
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+
+      line-height: 15px;
+      font-size: 10px;
+      font-family: $font-semibold;
+      color: $grey-icons;
     }
   }
 }

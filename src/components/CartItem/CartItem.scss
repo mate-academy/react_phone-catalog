@@ -99,4 +99,47 @@
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 768px) {
+    width: 350px;
+    padding: 12px;
+
+    &__amount {
+      width: 90px;
+      flex-direction: column-reverse;
+    }
+
+    &__name {
+      width: 100px;
+      font-size: 12px;
+      margin-right: 20px;
+    }
+
+    &__button-delete {
+      margin-right: 16px;
+    }
+
+    &__price {
+      padding-left: 16px;
+      margin-bottom: 4px;
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &__button {
+      margin: 0;
+      width: 32px;
+      height: 32px;
+    }
+
+    &__quantity-box {
+      margin-right: 4px;
+    }
+
+    &__img-box {
+      margin-right: 0;
+    }
+  }
 }

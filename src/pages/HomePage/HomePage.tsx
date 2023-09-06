@@ -56,7 +56,9 @@ export const HomePage = () => {
 
   return (
     <section className="home-page">
-      <Banner />
+      <div className="home-page__banner">
+        <Banner />
+      </div>
 
       <div className="home-page__block home-page__hot-products">
         {!error && hotProducts ? (

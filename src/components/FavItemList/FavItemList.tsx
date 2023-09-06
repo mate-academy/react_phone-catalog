@@ -44,7 +44,15 @@ export const FavItemList = () => {
         })}
       </ul>
 
-      {!filteredProducts.length && <NoSearchResults />}
+      {!favourites.length && (
+        <p
+          className="fav-list__message"
+        >
+          Add favourites items
+        </p>
+      )}
+
+      {favourites.length > 0 && !filteredProducts.length && <NoSearchResults />}
     </>
   );
 };

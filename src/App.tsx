@@ -13,6 +13,7 @@ import { ProductDetailsPage } from
   './pages/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
+import { ContactsPage } from './pages/ContactsPage/ContactsPage';
 
 const App = () => (
   <div className="App">
@@ -20,7 +21,7 @@ const App = () => (
       <Header />
     </div>
     <section className="App__main-section">
-      <div className="Appn__content">
+      <div className="App__content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
@@ -61,6 +62,8 @@ const App = () => (
             path="favourites"
             element={<FavouritesPage />}
           />
+
+          <Route path="/contacts" element={<ContactsPage />} />
 
           <Route
             path="*"

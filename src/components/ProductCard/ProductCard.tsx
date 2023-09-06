@@ -1,16 +1,23 @@
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
+import { useContext, useEffect, useRef } from 'react';
 import { Product } from '../../types/Product';
 import { ProductSection } from '../../types/ProductSection';
 import { ButtonCart } from '../ButtonCart/ButtonCart';
 import { ButtonFav } from '../ButtonFav/ButtonFav';
+import { CardWidthContext } from '../contexts/CardWidthContextProvider';
 
 type Props = {
   product: Product,
   title?: ProductSection,
+  // onCardWidthChange: (width: number) => void;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, title }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  title,
+  // onCardWidthChange,
+}) => {
   const {
     screen,
     capacity,
@@ -23,8 +30,18 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
     image,
   } = product;
 
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { setCardWidth } = useContext(CardWidthContext);
+
+  useEffect(() => {
+    const cardWidth = cardRef.current?.offsetWidth || 272;
+
+    setCardWidth(cardWidth);
+  }, [cardRef, setCardWidth]);
+
   return (
     <div
+      ref={cardRef}
       className="product-card"
       data-cy="cardsContainer"
     >

@@ -27,4 +27,8 @@
       border: 1px solid $grey-primary-color;
     }
   }
+
+  @media (max-width: 768px) {
+    font-size: inherit;
+  }
 }

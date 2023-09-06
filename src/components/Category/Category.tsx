@@ -40,12 +40,14 @@ export const Category: React.FC<Props> = ({ products }) => {
               className="category__img category__img-phones"
             />
           </div>
-          <h3 className="category__subtitle">
-            Mobile phones
-          </h3>
-          <p className="category__amount">
-            {`${amountPhones} models`}
-          </p>
+          <div className="category__info">
+            <h3 className="category__subtitle">
+              Mobile phones
+            </h3>
+            <p className="category__amount">
+              {`${amountPhones} models`}
+            </p>
+          </div>
         </Link>
 
         <Link
@@ -59,12 +61,15 @@ export const Category: React.FC<Props> = ({ products }) => {
               className="category__img category__img-tablets"
             />
           </div>
-          <h3 className="category__subtitle">
-            Tablets
-          </h3>
-          <p className="category__amount">
-            {`${amountTablets} models`}
-          </p>
+          <div className="category__info">
+            <h3 className="category__subtitle">
+              Tablets
+            </h3>
+            <p className="category__amount">
+              {`${amountTablets} models`}
+            </p>
+          </div>
+
         </Link>
 
         <Link
@@ -78,12 +83,14 @@ export const Category: React.FC<Props> = ({ products }) => {
               className="category__img category__img-accessories"
             />
           </div>
-          <h3 className="category__subtitle">
-            Accessories
-          </h3>
-          <p className="category__amount">
-            {`${amountAccessories} models`}
-          </p>
+          <div className="category__info">
+            <h3 className="category__subtitle">
+              Accessories
+            </h3>
+            <p className="category__amount">
+              {`${amountAccessories} models`}
+            </p>
+          </div>
         </Link>
       </div>
     </div>

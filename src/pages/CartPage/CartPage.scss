@@ -23,4 +23,27 @@
   &__content {
     display: flex;
   }
+
+  @media (max-width: 768px) {
+    width: 350px;
+
+    &__title {
+      margin: 0 0 24px;
+      font-size: 28px;
+    }
+
+    &__content {
+      flex-direction: column;
+    }
+
+    &__list {
+      margin-right: 16px;
+      margin-bottom: 40px;
+    }
+
+    &__back-btn {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+  }
 }

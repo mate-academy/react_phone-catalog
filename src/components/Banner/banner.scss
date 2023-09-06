@@ -7,11 +7,6 @@
   height: 400px;
   width: 100%;
 
-  &--margin {
-    margin-top: 40px;
-    margin-bottom: 104px;
-  }
-
   &__caroucel {
     display: flex;
     height: 100%;
@@ -86,6 +81,40 @@
 
     &--active {
       background-color: $grey-primary-color;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 320px;
+    height: 180px;
+
+    &__caroucel {
+      height: 180px;
+      max-width: 320px;
+
+      overflow: hidden;
+    }
+
+    &__indicators {
+      left: 43%;
+      top: 300px;
+    }
+
+    &__img {
+      width: 320px;
+      height: 180px;
+
+      object-fit: cover;
+    }
+
+    &__button {
+      &--right {
+        margin-left: 6px;
+      }
+
+      &--left {
+        margin-right: 6px;
+      }
     }
   }
 }

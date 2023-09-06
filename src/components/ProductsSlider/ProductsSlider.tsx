@@ -1,23 +1,24 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import './ProductsSlider.scss';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import classNames from 'classnames';
 
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { ProductSection } from '../../types/ProductSection';
+import { CardWidthContext } from '../contexts/CardWidthContextProvider';
 
 type Props = {
   title: ProductSection,
   products: Product[]
 };
 
-const cardWidth = 272;
 const gap = 16;
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [position, setPosition] = useState(0);
   const visibleProducts = products.slice(0, 21);
+  const { cardWidth } = useContext(CardWidthContext);
 
   const maxPosition = -(visibleProducts.length * (cardWidth + gap)
     - 4 * (cardWidth + gap));

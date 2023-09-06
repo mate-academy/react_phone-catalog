@@ -30,4 +30,10 @@
       outline: none;
     }
   }
+
+  @media (max-width: 768px) {
+    height: 48px;
+    width: 200px;
+    padding: 0 4px;
+  }
 }

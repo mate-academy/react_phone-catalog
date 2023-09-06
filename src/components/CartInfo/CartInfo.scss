@@ -62,4 +62,12 @@
 
     border: 4px solid $grey-primary-color;
   }
+
+  @media (max-width: 768px) {
+
+    &__content {
+      width: 350px;
+      padding: 16px;
+    }
+  }
 }
