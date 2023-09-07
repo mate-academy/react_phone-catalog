@@ -1,0 +1,75 @@
+.footer {
+  box-shadow: 0 -1px 0 0 $color-shadow;
+  
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 96px;
+  width: 1136px;
+  background: $gray-white;
+
+  &__logo {
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    width: 40px;
+    height: 24px;
+    background-image: url("../../images/LOGO.svg");
+  }
+
+  &__description {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    color: $gray-secondary;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    height: 32px;
+
+    &--text {
+      color: $gray-secondary;
+    }
+
+    &--arrow {
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      background-color: $gray-white;
+
+      top: 0;
+      behavior: "smooth";
+
+      display: flex;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $gray-icons-placeholders;
+
+      background-image: url("../../images/icons/ArrowTop.svg");
+    }
+  }
+}
