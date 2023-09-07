@@ -133,7 +133,7 @@ export const ProductDetailsPage: FC = () => {
                       onClick={() => setCurrentImage(img)}
                     >
                       <img
-                        src={`/new/${img}`}
+                        src={`new/${img}`}
                         alt="Product img"
                         className="product__img product__img--small"
                       />
