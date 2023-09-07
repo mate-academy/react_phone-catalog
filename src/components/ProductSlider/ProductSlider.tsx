@@ -7,11 +7,19 @@ import { Button } from '../Button';
 type Props = {
   title: string;
   products: Product[];
+  selected: Product[];
+  favourites: Product[];
+  onSelectedClick: () => void;
+  onFavouritesClick: () => void;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   products,
+  selected,
+  favourites,
   title,
+  onSelectedClick,
+  onFavouritesClick,
 }) => {
   const [page, setPage] = useState(0);
 
@@ -53,7 +61,13 @@ export const ProductSlider: React.FC<Props> = ({
         <ul className="product-slider__content-list" style={{ transform }}>
           {products.map(product => (
             <li key={product.id}>
-              <ProductCard product={product} />
+              <ProductCard
+                product={product}
+                isSelected={selected.includes(product)}
+                isFavourite={favourites.includes(product)}
+                onSelectedClick={onSelectedClick}
+                onFavouritesClick={onFavouritesClick}
+              />
             </li>
           ))}
         </ul>

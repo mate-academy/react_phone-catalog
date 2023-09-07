@@ -27,7 +27,9 @@ export const sortProducts = (
       });
     case SortBy.NAME:
       return sortedProducts.sort((productA, productB) => {
-        return productA[sortBy].localeCompare(productB[sortBy]);
+        return desc
+          ? reverseSign(productA[sortBy].localeCompare(productB[sortBy]))
+          : productA[sortBy].localeCompare(productB[sortBy]);
       });
     default: return sortedProducts;
   }
@@ -36,15 +38,22 @@ export const sortProducts = (
 export const filterProducts = (
   products: Product[],
   filterBy: ProductType,
+  query?: string,
 ) => {
   const filteredProducts = [...products];
+
+  if (query) {
+    filteredProducts.filter(product => {
+      return product.name.includes(query);
+    });
+  }
 
   switch (filterBy) {
     case ProductType.PHONE:
     case ProductType.TABLET:
     case ProductType.ACCESSORY:
       return filteredProducts.filter(product => {
-        return product.type === filterBy;
+        return product.type as ProductType === filterBy;
       });
     default: return filteredProducts;
   }

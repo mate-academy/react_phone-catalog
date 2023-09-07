@@ -1,11 +1,23 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import classNames from 'classnames';
 import '../../styles/components/ProductCard/ProductCard.scss';
 import { Product } from '../../types/product';
 
 type Props = {
   product: Product;
+  isSelected: boolean,
+  isFavourite: boolean,
+  onSelectedClick: () => void;
+  onFavouritesClick: () => void;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  isSelected,
+  isFavourite,
+  onSelectedClick,
+  onFavouritesClick,
+}) => {
   const {
     name, imageUrl, price, discount, screen, capacity, ram,
   } = product;
@@ -47,9 +59,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="card__buttons-container">
-        <button type="button" className="card__add-button">Add to cart</button>
+        <button
+          type="button"
+          className={classNames('card__add-button', {
+            'is-active': isSelected,
+          })}
+          onClick={onSelectedClick}
+        >
+          Add to card
+        </button>
 
-        <button type="button" className="card__fav-button">add to fav</button>
+        <button
+          type="button"
+          className={classNames('card__fav-button', {
+            'is-active': isFavourite,
+          })}
+          onClick={onFavouritesClick}
+        />
       </div>
     </div>
   );

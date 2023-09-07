@@ -12,6 +12,7 @@ export const Button: React.FC<Props> = ({
   content,
   arrowDirection,
   sign,
+  children,
   ...props
 }) => {
   return (
@@ -24,6 +25,8 @@ export const Button: React.FC<Props> = ({
         { [`button--arrow-${arrowDirection}`]: arrowDirection },
         { [`button--math-${sign}`]: sign },
       )}
-    />
+    >
+      {children}
+    </button>
   );
 };

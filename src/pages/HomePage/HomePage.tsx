@@ -8,9 +8,23 @@ import { ProductSlider } from '../../components/ProductSlider';
 import phonesImg from '../../images/phones-block.png';
 import tabletsImg from '../../images/tablets-block.png';
 import accessoriesImg from '../../images/accessories-block.png';
-import { getProducts } from '../../utils/product-mocks';
+import { Product } from '../../types/product';
 
-export const HomePage: React.FC = () => {
+type Props = {
+  products: Product[];
+  selected: Product[];
+  favourites: Product[];
+  onSelectedClick: () => void;
+  onFavouritesClick: () => void;
+};
+
+export const HomePage: React.FC<Props> = ({
+  products,
+  selected,
+  favourites,
+  onSelectedClick,
+  onFavouritesClick,
+}) => {
   return (
     <>
       <Header />
@@ -20,7 +34,11 @@ export const HomePage: React.FC = () => {
 
         <ProductSlider
           title="Hot prices"
-          products={getProducts(9)}
+          products={products}
+          selected={selected}
+          favourites={favourites}
+          onSelectedClick={onSelectedClick}
+          onFavouritesClick={onFavouritesClick}
         />
 
         <section className="main__category-links">
@@ -67,7 +85,11 @@ export const HomePage: React.FC = () => {
 
         <ProductSlider
           title="Brand new models"
-          products={getProducts(9)}
+          products={products}
+          selected={selected}
+          favourites={favourites}
+          onSelectedClick={onSelectedClick}
+          onFavouritesClick={onFavouritesClick}
         />
       </main>
 

@@ -92,6 +92,7 @@
 
     display: flex;
     justify-content: space-between;
+    gap: 8px;
   }
 
   &__add-button {
@@ -109,8 +110,8 @@
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
 
-    &--is-active {
-      border-color: #{$elements-color};
+    &.is-active {
+      border: 1px solid #{$elements-color};
       color: #{$green-color};
       background-color: #fff;
     }
@@ -120,7 +121,6 @@
     position: relative;
     width: 40px;
     height: 40px;
-    text-indent: -9000px;
     border: 1px solid #{$icons-placeholders-color};
     background: center no-repeat url("../../../images/favourites-icon.svg");
     background-color: #fff;
@@ -131,7 +131,7 @@
       border-color: #{$primary-color};
     }
 
-    &--is-active {
+    &.is-active {
       background: center no-repeat url("../../../images/favourites-icon-active.svg");
     }
   }
