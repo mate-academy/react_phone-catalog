@@ -70,34 +70,34 @@ export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
           className="card__img"
         />
         <h2 className="card__title">{name}</h2>
+
+        <div className="card__price">
+          {sectionTitle === SectionName.BrandNew ? (
+            <p className="card__price-regular">{`$${fullPrice}`}</p>
+          ) : (
+            <>
+              <p className="card__price-regular">{`$${price}`}</p>
+              <p className="card__price-discount">{`$${fullPrice}`}</p>
+            </>
+          )}
+
+        </div>
+
+        <div className="card__specs-container">
+          <div className="card__specs">
+            <p className="card__specs-title">Screen</p>
+            <p className="card__specs-value">{screen}</p>
+          </div>
+          <div className="card__specs">
+            <p className="card__specs-title">Capacity</p>
+            <p className="card__specs-value">{capacity}</p>
+          </div>
+          <div className="card__specs">
+            <p className="card__specs-title">RAM</p>
+            <p className="card__specs-value">{ram}</p>
+          </div>
+        </div>
       </Link>
-
-      <div className="card__price">
-        {sectionTitle === SectionName.BrandNew ? (
-          <p className="card__price-regular">{`$${fullPrice}`}</p>
-        ) : (
-          <>
-            <p className="card__price-regular">{`$${price}`}</p>
-            <p className="card__price-discount">{`$${fullPrice}`}</p>
-          </>
-        )}
-
-      </div>
-
-      <div className="card__specs-container">
-        <div className="card__specs">
-          <p className="card__specs-title">Screen</p>
-          <p className="card__specs-value">{screen}</p>
-        </div>
-        <div className="card__specs">
-          <p className="card__specs-title">Capacity</p>
-          <p className="card__specs-value">{capacity}</p>
-        </div>
-        <div className="card__specs">
-          <p className="card__specs-title">RAM</p>
-          <p className="card__specs-value">{ram}</p>
-        </div>
-      </div>
 
       <div className="card__buttons">
         <Button
