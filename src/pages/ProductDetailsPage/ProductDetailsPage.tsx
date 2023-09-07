@@ -142,7 +142,7 @@ export const ProductDetailsPage: FC = () => {
                 </ul>
                 <div className="product__main-img">
                   <img
-                    src={`/new/${currentImage}`}
+                    src={`new/${currentImage}`}
                     alt="Main product img"
                     className="product__img"
                   />
