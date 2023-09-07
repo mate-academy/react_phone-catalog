@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { getTablets } from '../utils/getProducts';
 import { NoResults } from '../components/NoResults/NoResults';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const TabletsPage = () => {
   const { pathname } = useLocation();
+  const path = pathname.slice(1, 2).toUpperCase() + pathname.slice(2);
   const { products } = useProducts();
 
   useEffect(() => {
@@ -18,16 +20,9 @@ export const TabletsPage = () => {
 
   return (
     <div className="container">
-      <div className="page">
-        <Link to="/" className="page__iconContainer">
-          <div className="page__iconContainer--icon" />
-        </Link>
-        <span className="arrow arrow--right-disabled" />
-        <span className="page__text">
-          {pathname.slice(1, 2).toUpperCase() + pathname.slice(2)}
-        </span>
-      </div>
-      {tablets.length === 0 ? (
+      <Breadcrumbs pathname={path} />
+
+      {!tablets.length ? (
         <NoResults />
       ) : (
         <ProductsList products={tablets} title={title} />

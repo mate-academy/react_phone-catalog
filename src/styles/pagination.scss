@@ -48,6 +48,10 @@
     &--inactive {
       background-color: white;
     }
+
+    &:hover {
+      border-color: $gray-primary;
+    }
   }
 
   &__num-link {

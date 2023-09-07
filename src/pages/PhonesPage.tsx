@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { useProducts } from '../context/ProductContext';
 import { getPhones } from '../utils/getProducts';
+import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 
 export const PhonesPage = () => {
   const { pathname } = useLocation();
+  const path = pathname.slice(1, 2).toUpperCase() + pathname.slice(2);
   const { products } = useProducts();
 
   useEffect(() => {
@@ -17,15 +19,7 @@ export const PhonesPage = () => {
 
   return (
     <div className="container">
-      <div className="page">
-        <Link to="/" className="page__iconContainer">
-          <div className="page__iconContainer--icon" />
-        </Link>
-        <span className="arrow arrow--right-disabled" />
-        <span className="page__text">
-          {pathname.slice(1, 2).toUpperCase() + pathname.slice(2)}
-        </span>
-      </div>
+      <Breadcrumbs pathname={path} />
       <ProductsList products={phones} title={title} />
     </div>
   );

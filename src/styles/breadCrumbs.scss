@@ -1,0 +1,29 @@
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  &__iconContainer {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+
+    &--icon {
+      width: 16px;
+      height: 16px;
+      background-image: url("./assets/home.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
