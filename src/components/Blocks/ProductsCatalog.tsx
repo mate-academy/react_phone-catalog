@@ -97,6 +97,8 @@ const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
     setSearchParams(updatedSearchParams);
   }, [currentPage]);
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   return (
     <main className="main-catalog container" data-cy="productList">
       {products.length > 0 && <AsideRoute product={products[0]} />}

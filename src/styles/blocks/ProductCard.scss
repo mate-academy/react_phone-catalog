@@ -85,7 +85,7 @@
     height: 40px;
     padding: 10px 30px;
     background: $dark-gray;
-    animation: colorChange 0.3s ease;
+    animation: colorChange $transition-duration ease;
     color: #fff;
     text-align: center;
     font-size: 14px;
@@ -93,7 +93,7 @@
     font-weight: 600;
     line-height: 21px;
 
-    transition: box-shadow 0.5s ease-in-out;
+    transition: box-shadow $transition-duration ease-in-out;
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.52);
@@ -118,7 +118,7 @@
       line-height: 21px;
       border: 1px solid $light-gray;
 
-      transition: color 0.3s ease-in-out;
+      transition: color $transition-duration ease-in-out;
 
       &:hover {
         color: red;

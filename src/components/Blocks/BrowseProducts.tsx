@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import ProductCard from './ProductCard';
 
@@ -12,8 +12,30 @@ interface Props {
 }
 
 const BrowseProducts: React.FC<Props> = ({ visibleProducts, index }) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    });
+
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="slider-wrapper">
+    <div className="slider-wrapper" ref={wrapperRef}>
       <div
         className="browse-products"
         style={transformStyle(index)}

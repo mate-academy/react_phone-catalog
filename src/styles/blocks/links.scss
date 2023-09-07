@@ -6,7 +6,7 @@
   width: 48px;
 
   &:hover {
-    animation: spin 0.7s linear;
+    animation: spin $transition-duration linear;
   }
 }
 

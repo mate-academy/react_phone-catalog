@@ -18,7 +18,7 @@
       margin-bottom: 24px;
       background-size: contain;
       background-repeat: no-repeat;
-      transition: 0.5s;
+      transition: $transition-duration;
 
       &:hover {
         transform: scale(1.02);
@@ -54,7 +54,18 @@
   display: flex;
   gap: 16px;
 
-  transition: transform 0.7s;
+  transition: transform $transition-duration
+}
+
+.slider-wrapper {
+  opacity: 0;
+  transition: opacity $transition-duration, transform $transition-duration;
+  transform: translateX(50%)
+}
+
+.slider-wrapper.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .section {

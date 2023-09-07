@@ -33,7 +33,7 @@ $hover-gray: rgb(126, 126, 126);
       border-radius: 5px;
       left: 50%;
       transform: translateX(-50%);
-      transition: width 0.3s ease;
+      transition: width $transition-duration ease;
     }
 
     &:hover::after {
@@ -84,7 +84,7 @@ $hover-gray: rgb(126, 126, 126);
     font-size: 10px;
     font-style: normal;
     font-weight: 600;
-    transition: opacity 0.5s;
+    transition: opacity $transition-duration;
   }
 
   &:hover {
