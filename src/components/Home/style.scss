@@ -1,0 +1,72 @@
+.card {
+  width: 1440px;
+  height: 508px;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-inline: 152px;
+
+  &__content {
+    overflow: hidden;
+    height: 400px;
+    width: 1040px;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    &-center {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+    &-image {
+      height: 100%;
+      flex-shrink: 0;
+
+      &:first-child {
+        width: 1040px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        width: 1040px;
+      }
+    }
+  }
+}
+
+.slider-button {
+  width: 32px;
+  height: 400px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  background: #FFF;
+  cursor: pointer;
+}
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.slider-dot {
+  width: 14px;
+  height: 4px;
+  flex-shrink: 0;
+  margin: 0 5px;
+  border: none;
+  background-color: var(--gray-secondary, #E2E6E9);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider-dot.is-active {
+  background-color: var(--gray-primary, #313237);
+}
+

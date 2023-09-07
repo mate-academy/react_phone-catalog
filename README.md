@@ -3,7 +3,7 @@
 - If you work in a team follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
 ## Description
-Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
+Implement Products catalog following [this design](httpsx://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
 Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
 and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/dell-streak-7.json)
@@ -116,3 +116,5 @@ to links container.
 ### Other tasks
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+
+https://zipic.github.io/

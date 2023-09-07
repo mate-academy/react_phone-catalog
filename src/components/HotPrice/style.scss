@@ -1,0 +1,31 @@
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 92px;
+  margin-inline: 152px;
+}
+
+.price {
+  color: var(--gray-primary, #313237);
+  font-family: Mont;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px
+}
+
+.title__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.card-button {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  background: #FFF;
+  cursor: pointer;
+}

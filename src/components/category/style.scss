@@ -1,0 +1,79 @@
+.category {
+
+  &__title {
+    margin-top: 80px;
+    margin-inline: 152px;
+    color: var(--gray-primary, #313237);
+    font-family: Mont;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    }
+
+    &__products {
+      display: flex;
+      gap: 16px;
+      margin-inline: 152px;
+      gap: 16px;
+      grid-template-columns: repeat(3, 368px);
+
+      &-name {
+        margin-top: 24px;
+        margin-bottom: 0;
+        color: var(--gray-primary, #313237);
+        font-family: Mont;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      &-count {
+        margin: 0;
+        color: var(--gray-secondary, #89939A);
+        font-family: Mont;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+      }
+    }
+
+    &__photo {
+      flex-shrink: 0;
+
+      &-phone {
+        width: 368px;
+        height: 368px;
+        background: #FCDBC1;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      &-tablets {
+        width: 368px;
+        height: 368px;
+        background: #8D8D92;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+      &-accessories {
+        width: 368px;
+        height: 368px;
+        background: #973D5F;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+}
