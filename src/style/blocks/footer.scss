@@ -1,6 +1,10 @@
 .footer {
-  box-shadow: 0px -1px 0px 0px $color-shadow;
-  bottom: 0;
+  box-shadow: 0 -1px 0 0 $color-shadow;
+  
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
 }
 
 .container {
@@ -58,8 +62,7 @@
       background-color: $gray-white;
 
       top: 0;
-      behavior: 'smooth';
-      display: none;
+      behavior: "smooth";
 
       display: flex;
       width: 32px;
