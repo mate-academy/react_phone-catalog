@@ -6,12 +6,10 @@ import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {
   productDetails: ProductDetails,
-  // capacitys: string[],
 };
 
 export const ProductCapacity: React.FC<Props> = ({
   productDetails,
-  // capacitys,
 }) => {
   const capacitys = productDetails?.capacityAvailable || [];
 

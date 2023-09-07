@@ -10,13 +10,11 @@ import { CardWidthContext } from '../contexts/CardWidthContextProvider';
 type Props = {
   product: Product,
   title?: ProductSection,
-  // onCardWidthChange: (width: number) => void;
 };
 
 export const ProductCard: React.FC<Props> = ({
   product,
   title,
-  // onCardWidthChange,
 }) => {
   const {
     screen,

@@ -1,7 +1,5 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
-// import { useCallback } from 'react';
 import './Search.scss';
-// import debounce from 'lodash.debounce';
 import searcIcon from '../../images/Icons/Search.svg';
 import closeIcon from '../../images/Icons/Close_black.svg';
 import { getSearchWith } from '../../helpers/searchHelper';
