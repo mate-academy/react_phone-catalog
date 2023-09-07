@@ -26,11 +26,9 @@ export const Header: FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (pathname !== '/' && pathname !== '/cart') {
-      setIsSearchBarVisible(true);
-    } else {
-      setIsSearchBarVisible(false);
-    }
+    const visiblePages = ['/favorites', '/phones', '/tablets', '/accessories'];
+
+    setIsSearchBarVisible(visiblePages.includes(pathname));
   }, [pathname]);
 
   useEffect(() => {

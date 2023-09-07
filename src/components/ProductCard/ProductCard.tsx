@@ -1,5 +1,6 @@
 import { FC, useMemo } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Button } from '../Button/Button';
 import { Product } from '../../types/Product';
@@ -46,6 +47,8 @@ export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
   };
 
   const {
+    itemId,
+    category,
     image,
     name,
     price,
@@ -57,13 +60,17 @@ export const ProductCard: FC<Props> = ({ sectionTitle, product }) => {
 
   return (
     <div className="card" data-cy="cardsContainer">
-      <img
-        src={`new/${image}`}
-        alt={name}
-        className="card__img"
-      />
-
-      <h2 className="card__title">{name}</h2>
+      <Link
+        to={`/${category}/${itemId}`}
+        className="card__link"
+      >
+        <img
+          src={`new/${image}`}
+          alt={name}
+          className="card__img"
+        />
+        <h2 className="card__title">{name}</h2>
+      </Link>
 
       <div className="card__price">
         {sectionTitle === SectionName.BrandNew ? (

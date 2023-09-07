@@ -1,10 +1,10 @@
 import { FC, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
 import { categoryLinks } from '../../utils/categoryLinks';
 import { ProductCategory } from '../../types/ProductCategory';
 
 import './ShopByCategory.scss';
-import { useAppSelector } from '../../app/hooks';
 
 export const ShopByCategory: FC = () => {
   const { products } = useAppSelector(store => store.products);

@@ -42,9 +42,9 @@ export const Breadcrumbs: FC = () => {
                 {title}
               </Link>
             ) : (
-              <span className="breadcrumbs__text breadcrumbs__text--active">
+              <p className="breadcrumbs__text breadcrumbs__text--active">
                 {title}
-              </span>
+              </p>
             )}
           </li>
         ))}

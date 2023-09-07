@@ -66,6 +66,15 @@
       box-shadow: $primaryShadowBox;
     }
 
+    &--large {
+      width: 260px;
+      height: 48px;
+
+      @include onTablet {
+        width: 268px;
+      }
+    }
+
     &--active {
       border: 1px solid $c-elements;
 
@@ -81,6 +90,11 @@
     border: 1px solid $c-icons;
 
     @include hover(border-color, $c-primary);
+
+    &--large {
+      width: 48px;
+      height: 48px;
+    }
 
     &--active {
       border-color: $c-elements;

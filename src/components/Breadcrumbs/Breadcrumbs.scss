@@ -17,7 +17,7 @@
   &__text {
     color: $c-primary;
     @extend %small-text;
-    line-height: 6px;
+    line-height: unset;
 
     @include hover(color, $c-primary-bright);
 

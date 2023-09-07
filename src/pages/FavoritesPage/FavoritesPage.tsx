@@ -5,9 +5,9 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { Notification } from '../../components/Notification/Notification';
 import { filterProducts } from '../../helpers/filterProducts';
 import { Loader } from '../../components/Loader';
+import { NotificationMessage } from '../../types/NotificationMessage';
 
 import './FavoritesPage.scss';
-import { NotificationMessage } from '../../types/NotificationMessage';
 
 export const FavoritesPage: FC = () => {
   const { favorites } = useAppSelector(store => store.favorites);

@@ -2,23 +2,9 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from '../Logo/Logo';
 import { BackToTopButton } from '../BackToTopButton/BackToTopButton';
+import { footerLinks } from '../../utils/footerLinks';
 
 import './Footer.scss';
-
-const links = [
-  {
-    name: 'Github',
-    to: 'https://github.com/andrii-kovalskyi02',
-  },
-  {
-    name: 'Contacts',
-    to: '/',
-  },
-  {
-    name: 'Rights',
-    to: '/',
-  },
-];
 
 export const Footer: FC = () => {
   return (
@@ -26,7 +12,7 @@ export const Footer: FC = () => {
       <Logo />
 
       <ul className="footer__list">
-        {links.map(({ name, to }) => (
+        {footerLinks.map(({ name, to }) => (
           <li
             key={name}
             className="footer__item"

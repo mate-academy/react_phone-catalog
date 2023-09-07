@@ -21,6 +21,8 @@ export const CartItem: FC<Props> = ({ product }) => {
 
   const {
     id,
+    itemId,
+    category,
     quantity,
     image,
     name,
@@ -39,7 +41,7 @@ export const CartItem: FC<Props> = ({ product }) => {
       />
 
       <Link
-        to="/"
+        to={`/${category}/${itemId}`}
         className="cartItem__link"
       >
         <img

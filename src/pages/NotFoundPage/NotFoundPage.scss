@@ -1,0 +1,64 @@
+@import "../../utils";
+
+.not-found-page {
+  padding: 0 25px;
+  margin: 20px auto 80px;
+
+  @include onTablet {
+    max-width: 700px;
+    padding: 0;
+  }
+
+  @include onDesktop {
+    max-width: 900px;
+    margin-top: 25px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1136px;
+  }
+}
+
+.not-found {
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    animation: $initialAnimation;
+  }
+
+  &__content {
+    @include flexCenter;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+
+    @extend %h1;
+    text-align: center;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+
+    @include onTablet {
+      width: 450px;
+    }
+  }
+
+  &__link {
+    @include flexCenter;
+    width: 120px;
+    height: 40px;
+
+    background-color: $c-primary;
+    color: $c-white;
+
+    @extend %buttons-text;
+
+    @include hover(box-shadow, $primaryShadowBox);
+  }
+}

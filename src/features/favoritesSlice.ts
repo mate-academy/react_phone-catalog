@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types/Product';
-import { PageType } from '../types/PageType';
 
 const favoriteProducts
-  = JSON.parse(localStorage.getItem(PageType.Favorites) || '[]');
+  = JSON.parse(localStorage.getItem('favorites') || '[]');
 
 type FavoritesState = {
   favorites: Product[];
@@ -15,12 +14,12 @@ const initialState: FavoritesState = {
 };
 
 const favoritesSlice = createSlice({
-  name: PageType.Favorites,
+  name: 'favorites',
   initialState,
   reducers: {
     addFavoriteProduct: (state, action: PayloadAction<Product>) => {
       localStorage.setItem(
-        PageType.Favorites,
+        'favorites',
         JSON.stringify([...state.favorites, action.payload]),
       );
       state.favorites.push(action.payload);
@@ -30,7 +29,7 @@ const favoritesSlice = createSlice({
         = state.favorites.filter(product => product.id !== action.payload.id);
 
       localStorage.setItem(
-        PageType.Favorites,
+        'favorites',
         JSON.stringify(filteredList),
       );
       state.favorites = filteredList;

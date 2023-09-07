@@ -6,20 +6,20 @@ import { getProducts } from '../../api/products';
 import { ProductsPage } from '../ProductsPage/ProductsPage';
 import { ProductCategory } from '../../types/ProductCategory';
 
-export const PhonesPage: FC = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+export const AccessoriesPage: FC = () => {
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    const fetchPhones = async () => {
+    const fetchAccessories = async () => {
       setIsLoading(true);
 
       try {
-        const getPhonesFromServer = (await getProducts())
-          .filter(product => product.category === ProductCategory.Phones);
+        const getAccessoriesFromServer = (await getProducts())
+          .filter(product => product.category === ProductCategory.Accessories);
 
-        setPhones(getPhonesFromServer);
+        setAccessories(getAccessoriesFromServer);
       } catch {
         setHasError(true);
       } finally {
@@ -27,17 +27,17 @@ export const PhonesPage: FC = () => {
       }
     };
 
-    fetchPhones();
+    fetchAccessories();
   }, []);
 
   return (
-    <section className="phones-page">
+    <section className="accessories-page">
       <ProductsPage
-        products={phones}
+        products={accessories}
         hasError={hasError}
         isLoading={isLoading}
-        pageTitle="Mobile phones"
-        productsCategory={ProductCategory.Phones}
+        pageTitle="Accessories"
+        productsCategory={ProductCategory.Accessories}
       />
     </section>
   );

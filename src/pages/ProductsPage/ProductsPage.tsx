@@ -9,7 +9,6 @@ import { Loader } from '../../components/Loader';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Product } from '../../types/Product';
 import { Dropdown } from '../../components/Dropdown/Dropdown';
-import { ProductCategory } from '../../types/ProductCategory';
 import { itemsPerPageOptions, sortOptions } from '../../helpers/options';
 import { getLabel } from '../../helpers/getLabel';
 import { sortProducts } from '../../helpers/sortProducts';
@@ -18,6 +17,7 @@ import { useAppSelector } from '../../app/hooks';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { getSearchWith } from '../../helpers/searchHelper';
 import { calculateItemRange } from '../../helpers/calculateItemRange';
+import { ProductCategory } from '../../types/ProductCategory';
 
 import './ProductsPage.scss';
 
@@ -25,14 +25,16 @@ type Props = {
   products: Product[];
   hasError: boolean;
   isLoading: boolean;
-  category: ProductCategory;
+  pageTitle: string;
+  productsCategory: ProductCategory;
 };
 
 export const ProductsPage: FC<Props> = ({
   products,
   hasError,
   isLoading,
-  category,
+  pageTitle,
+  productsCategory,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const {
@@ -114,7 +116,7 @@ export const ProductsPage: FC<Props> = ({
             <Breadcrumbs />
           </div>
 
-          <h1 className="products__title">{category}</h1>
+          <h1 className="products__title">{pageTitle}</h1>
 
           {!!filteredProducts.length && !isSearchLoading && (
             <>
@@ -167,7 +169,7 @@ export const ProductsPage: FC<Props> = ({
         )}
 
         {!products.length && !isLoading && !hasError
-          && <Notification message={NotificationMessage.ProductsUnavailable} />}
+          && <Notification message={`Sorry, no ${productsCategory} are currently available`} />}
 
         {!shouldHidePagination && (
           !!filteredProducts.length && !isSearchLoading && !isAllItems && (
