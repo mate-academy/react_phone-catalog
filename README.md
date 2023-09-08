@@ -8,4 +8,4 @@ Used [products](https://mate-academy.github.io/react_phone-catalog/api/products.
 [product details](https://mate-academy.github.io/react_phone-catalog/api/products/dell-streak-7.json) tо fetch data.
 Local storage is employed to save products to favorites and the cart.
 
-Demo link: <https://vetal-hovenko.github.io/react_phone-catalog/#/>
+[Demo link](<https://vetal-hovenko.github.io/react_phone-catalog/#/>)
