@@ -50,16 +50,19 @@
     gap: 8px;
     align-items: center;
 
+
     &--current {
       margin: 0;
       color: $gray-primary;
+      font-size: 22px;
       font-weight: 700;
       line-height: 140%;
     }
-
+    
     &--discount {
       margin: 0;
       color: $gray-secondary;
+      font-size: 22px;
       font-weight: 500;
       line-height: normal;
       text-decoration: line-through;
@@ -140,6 +143,13 @@
       color: $gray-white;
       background: $gray-primary;
       border: none;
+      font-weight: 600;
+
+      &:hover {
+        color: #27ae60;
+        background: $gray-white;
+        border: 1px solid $gray-icons-placeholders;
+      }
     }
 
     &--favourites {
