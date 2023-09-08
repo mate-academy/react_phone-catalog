@@ -1,0 +1,37 @@
+.footer {
+  box-shadow: 0 -1px 0 0 $light-gray;
+  margin-top: 80px;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 96px;
+  }
+
+  &__home-link {
+    height: 24px;
+  }
+
+  &__back {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 16px;
+    align-items: center;
+
+    &--caption {
+      font-family: "Mont", sans-serif;
+      color: $gray-secondary;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      transition: transform $transition-duration, color $transition-duration;
+    }
+
+    &--button:hover + &--caption {
+      transform: scale(1.2);
+      color: black;
+    }
+  }
+}

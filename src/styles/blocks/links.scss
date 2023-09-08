@@ -1,0 +1,39 @@
+.home-link {
+  background-image: url("../../assets/icons/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  width: 48px;
+
+  &:hover {
+    animation: spin $transition-duration linear;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+.go-back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  &__button {
+    color: $gray-secondary;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    background-color: transparent;
+
+    &:hover {
+      color: var(--gray-primary, $dark-gray);
+    }
+  }
+}

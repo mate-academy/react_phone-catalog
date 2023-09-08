@@ -1,0 +1,148 @@
+.product-card * {
+  font-family: "Mont", sans-serif;
+}
+
+.product-card {
+  width: 272px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $light-gray;
+
+  .product__wrapper {
+    padding: 32px 32px 24px;
+  }
+
+  &--image {
+    max-width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &--info {
+    height: 72px;
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: 8px;
+  }
+
+  &--name {
+    color: $dark-gray;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &--price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &--old-price {
+    color: $gray-secondary;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: line-through;
+  }
+
+  &--features {
+    padding-top: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &--feature {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+
+    &-title {
+      line-height: normal;
+      color: $gray-secondary;
+    }
+
+    &-value {
+      color: $dark-gray;
+    }
+  }
+
+  &--buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &--add-to-cart {
+    width: 176px;
+    height: 40px;
+    padding: 10px 30px;
+    background: $dark-gray;
+    animation: colorChange $transition-duration ease;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+
+    transition: box-shadow $transition-duration ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.52);
+    }
+
+    @keyframes colorChange {
+      0% {
+        color: $dark-gray;
+      }
+      100% {
+        color: #fff;
+      }
+    }
+
+    &--added {
+      width: 176px;
+      height: 40px;
+      background-color: transparent;
+      color: #27ae60;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      border: 1px solid $light-gray;
+
+      transition: color $transition-duration ease-in-out;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+
+  &--add-to-favorites {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid $icons-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease;
+
+    &:hover {
+      border: 1px solid $dark-gray;
+    }
+
+    &:active {
+      border: none;
+      transform: scale(1.1);
+    }
+  }
+}

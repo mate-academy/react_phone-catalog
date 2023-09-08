@@ -1,0 +1,68 @@
+
+@font-face {
+  font-family: "Mont";
+  src: url("../assets/fonts/Mont-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("../assets/fonts/Mont-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("../assets/fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@import "./vars.scss";
+@import "./reset.scss";
+@import "./blocks/container.scss";
+@import "./blocks/links.scss";
+@import "./blocks/slider-button.scss";
+
+@import "./blocks/AsideBanner.scss";
+@import "./typography.scss";
+@import "./blocks/Header.scss";
+@import "./blocks/Main.scss";
+@import "./blocks/Footer.scss";
+@import "./pages/ProductPage.scss";
+@import "./pages/Favorites.scss";
+@import "./pages/NotFound.scss";
+@import "./blocks/Loader.scss";
+@import "./blocks/AsideRoute.scss";
+@import "./pages/Cart.scss";
+@import "./blocks/CustomSelect.scss";
+@import "./blocks/ProductCard.scss";
+@import "./pages/Catalog.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+  overflow-x: hidden;
+}
+
+main {
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+}
+
+footer {
+  height: $footer-height;
+}

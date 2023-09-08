@@ -1,0 +1,71 @@
+.custom-select * {
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.custom-select {
+  position: relative;
+
+  &__caption {
+    color: $gray-secondary;
+    padding-bottom: 8px;
+  }
+
+  &__frame {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 176px;
+    height: 40px;
+    padding: 10px;
+    color: $dark-gray;
+    line-height: 21px;
+    border: 1px solid $icons-border;
+
+    &:hover {
+      border: 1px solid var(--gray-secondary, $gray-secondary);
+    }
+
+    &:focus {
+      border: 1px solid var(--gray-primary, $dark-gray);
+      outline: none;
+    }
+  }
+
+  &__trigger {
+    background: transparent;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding-top: 10px;
+  }
+
+  &__option {
+    width: 174px;
+    height: 32px;
+    padding: 12px 6px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+
+    color: var(--gray-secondary, $gray-secondary);
+
+    &:hover {
+      color: var(--gray-primary, $dark-gray);
+      border: 0.5px solid rgba(0, 0, 0, 0.18);
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    &--link {
+      width: 100%;
+      font-weight: 500;
+      line-height: 180%;
+    }
+  }
+}

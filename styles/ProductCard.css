@@ -1,0 +1,105 @@
+.product-card {
+  width: 272px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+}
+.product-card .product__wrapper {
+  padding: 32px 32px 24px;
+}
+.product-card--image {
+  max-width: 208px;
+  max-height: 208px;
+  margin-bottom: 24px;
+}
+.product-card--info {
+  height: 72px;
+  border-bottom: 1px solid #E2E6E9;
+  padding-bottom: 8px;
+}
+.product-card--name {
+  color: #313237;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+}
+.product-card--price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.product-card--old-price {
+  color: #89939A;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: line-through;
+}
+.product-card--features {
+  padding-top: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-card--feature {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+}
+.product-card--feature-title {
+  line-height: normal;
+  color: #89939A;
+}
+.product-card--feature-value {
+  color: #313237;
+}
+.product-card--buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+.product-card--add-to-cart {
+  width: 176px;
+  height: 40px;
+  padding: 10px 48px;
+  background: #313237;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+}
+.product-card--add-to-cart:hover {
+  box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+}
+.product-card--add-to-cart--added {
+  width: 176px;
+  height: 40px;
+  padding: 10px 30px;
+  background-color: transparent;
+  color: var(--green-2, #27AE60);
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  border: 1px solid var(--gray-elements, #E2E6E9);
+}
+.product-card--add-to-favorites {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid $icons-border;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-card--add-to-favorites:hover {
+  border: 1px solid #313237;
+}

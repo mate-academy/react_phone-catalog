@@ -1,0 +1,35 @@
+.slider-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $icons-border;
+
+  &:hover {
+    border: 1.5px solid rgb(83, 83, 83);
+  }
+
+  &:active {
+    animation: press 0.2s;
+  }
+
+  &:disabled {
+    border: 1px solid $light-gray;
+
+    &:hover {
+      border: 1px solid $light-gray;
+    }
+  }
+}
+
+@keyframes press {
+  from {
+    transform: scale(0.85);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

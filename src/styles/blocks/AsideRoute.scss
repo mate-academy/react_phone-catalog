@@ -1,0 +1,20 @@
+.aside-route {
+  margin: 24px 0 40px;
+  display: flex;
+  gap: 8px;
+}
+
+.aside-route * {
+  color: $gray-secondary;
+  font-family: "Mont", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.aside-route__page-title {
+  &:hover {
+    color: var(--gray-primary, $dark-gray);
+  }
+}
