@@ -1,0 +1,52 @@
+@import "/src/style/main.scss";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid $elements;
+
+  &__btn {
+    border: none;
+    background-color: $font-white;
+    margin-right: 31px;
+    width: 9.33px;
+    height: 9.33px;
+    text-align: center;
+    background-image: url("../../../../assets/icons/close.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      background-image: url("../../../../assets/icons/closeFill.svg");
+    }
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    object-position: center;
+    margin-right: 24px;
+  }
+
+  &__title {
+    min-width:295px;
+    color: $main-font-color;
+    font-size: 14px;
+    line-height: 21px;
+    margin-right: 49px;
+  }
+
+  &__add-items-container {
+    margin-right: 43px;
+  }
+
+
+  &__price {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}

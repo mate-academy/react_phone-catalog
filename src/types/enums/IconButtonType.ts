@@ -2,6 +2,6 @@ export enum IconButtonType {
   arrowBack = 'arrow-back',
   arrowNext = 'arrow-next',
   arrowUp = 'arrow-up',
-  fav = 'fav',
-  favLarge = 'fav--large',
+  plus = 'plus',
+  minus = 'minus',
 }

@@ -1,15 +1,22 @@
-// import { Link } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Button, IconButton } from '../../bits';
+import { Button } from '../../bits';
 import { ButtonType, Product } from '../../types';
-import { IconButtonType } from '../../types/enums/IconButtonType';
 import './ProductCard.scss';
+import { useProducts } from '../../context';
+import { Like } from '../../bits/Like';
 
 type Props = {
   product: Product,
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const {
+    favourites,
+    setFavourites,
+    setToCart,
+    cart,
+  } = useProducts();
+
   const {
     name,
     image,
@@ -19,19 +26,52 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     capacity,
     screen,
     phoneId,
+    itemId,
   } = product;
 
+  const handleFavourite = () => {
+    const isProductInFavourites = favourites
+      .some(favProduct => favProduct.itemId === itemId);
+
+    if (isProductInFavourites) {
+      const deleteFromFavs = favourites
+        .filter(favProduct => favProduct.itemId !== itemId);
+
+      setFavourites(deleteFromFavs);
+    } else {
+      setFavourites([...favourites, product]);
+    }
+  };
+
+  const isProductInCart = cart.some(item => item.itemId === itemId);
+
+  const addToCart = () => {
+    if (isProductInCart) {
+      const deleteItems = cart.filter(item => item.itemId !== itemId);
+
+      setToCart(deleteItems);
+    } else {
+      setToCart([...cart, product]);
+    }
+  };
+
   return (
-    <Link
-      to={`/phones/${phoneId}`}
+    <div
       className="product-card"
     >
-      <img
-        className="product-card__img"
-        alt={name}
-        src={`/_new/${image}`}
-      />
-      <h3 className="product-card__name">{name}</h3>
+      <Link
+        to={`/phones/${phoneId}`}
+        className="product-card__link"
+      >
+        <img
+          className="product-card__img"
+          alt={name}
+          src={`/_new/${image}`}
+        />
+
+        <h3 className="product-card__name">{name}</h3>
+      </Link>
+
       <div className="product-card__price-block">
         <p className="product-card__price-w-discount">{`$${price}`}</p>
         <p className="product-card__price">{`$${fullPrice}`}</p>
@@ -47,10 +87,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="product-card__buttons-block">
-        <Button size={ButtonType.cart} />
+        <Button
+          size={ButtonType.small}
+          handler={addToCart}
+          id={itemId}
+          disabled={isProductInCart}
+        />
 
-        <IconButton type={IconButtonType.fav} />
+        <Like
+          handler={handleFavourite}
+          id={itemId}
+        />
       </div>
-    </Link>
+    </div>
   );
 };

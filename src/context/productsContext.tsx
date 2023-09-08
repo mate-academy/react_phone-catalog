@@ -4,11 +4,14 @@ import { getProducts } from '../api/products';
 
 type ProductContext = {
   products: Product[],
+  favourites: Product [],
+  setFavourites: (product: Product[]) => void,
+  cart: Product[],
+  setToCart: (product: Product[]) => void,
 };
 
-export const ProductsContext = React.createContext<ProductContext>({
-  products: [],
-} as ProductContext);
+export const ProductsContext = React
+  .createContext<ProductContext>({} as ProductContext);
 
 type Props = {
   children: ReactNode,
@@ -16,6 +19,8 @@ type Props = {
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [favourites, setFavourites] = useState<Product[]>([]);
+  const [cart, setToCart] = useState<Product[]>([]);
 
   useEffect(() => {
     getProducts()
@@ -24,10 +29,17 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   const value = {
     products,
+    favourites,
+    setFavourites,
+    setProducts,
+    cart,
+    setToCart,
   };
 
   return (
-    <ProductsContext.Provider value={value}>
+    <ProductsContext.Provider
+      value={value}
+    >
       {children}
     </ProductsContext.Provider>
   );

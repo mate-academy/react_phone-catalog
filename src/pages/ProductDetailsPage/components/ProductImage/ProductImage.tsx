@@ -16,6 +16,7 @@ export const ProductImage: React.FC<Props> = ({ images }) => {
       <div className="product-image__thumbs">
         {images.map((image, ind) => (
           <div
+            key={image}
             className={classNames('product-image__thumb-container', {
               'product-image__thumb-container--selected': selected === ind,
             })}

@@ -1,4 +1,5 @@
 export enum ButtonType {
+  small,
   large,
-  cart,
+  checkout,
 }

@@ -15,9 +15,6 @@ export const PhonesPage = () => {
 
   const phonesQuantity = products.length;
 
-  console.log('selekwn:', sortBy);
-  console.log('selekwn:', itemsToShow);
-
   const handleSortBy = (option: string) => {
     setSortBy(option);
   };
@@ -28,6 +25,8 @@ export const PhonesPage = () => {
 
   return (
     <div className="phones">
+      <div>{`${sortBy} ${itemsToShow}`}</div>
+
       <div className="phones__path-container">
         <PathDisplay />
       </div>

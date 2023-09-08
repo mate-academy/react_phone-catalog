@@ -7,4 +7,9 @@
   border-left: 1px solid $elements;
   position: relative;
 
+  &__img {
+    width: 24px;
+    height: 24px;
+  }
+
 }

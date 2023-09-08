@@ -3,10 +3,13 @@ import classNames from 'classnames';
 import { pages } from '../../Root';
 import './Navigation.scss';
 import { NavIcon } from '../NavIcon';
+import { useProducts } from '../../context';
 
 const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites', 'productId'];
 
 export const Navigation = () => {
+  const { favourites, cart } = useProducts();
+
   const navbarItemClass = ({ isActive }: {
     isActive: boolean
   }) => classNames('nav__link', {
@@ -26,6 +29,9 @@ export const Navigation = () => {
       return null;
     });
   };
+
+  const favCount = favourites.length;
+  const cartCount = cart.length;
 
   return (
     <nav className="nav">
@@ -49,12 +55,14 @@ export const Navigation = () => {
           path="favourites"
           alt="like-icon"
           src="./img/icons/like.svg"
+          count={favCount}
         />
 
         <NavIcon
           path="cart"
           alt="cart-icon"
           src="./img/icons/cart.svg"
+          count={cartCount}
         />
       </div>
     </nav>

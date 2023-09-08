@@ -1,0 +1,14 @@
+@import "/src/style/main.scss";
+
+.counter {
+  @include flex-center;
+  position: absolute;
+  right: 14px;
+
+  width: 14px;
+  height: 14px;
+  background-color: $red;
+  border-radius: 50%;
+  color: $font-white;
+  font-size: 9px;
+}

@@ -19,6 +19,7 @@ export const Colors: React.FC<Props> = ({ colors }) => {
       <div className="colors__list">
         {colors.map((color, ind) => (
           <div
+            key={color}
             className="colors__item"
             onClick={() => setSelected(ind)}
           >

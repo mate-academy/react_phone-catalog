@@ -40,4 +40,31 @@
       height: 48px;
     }
   }
+
+  &--added {
+    background-color: $font-white;
+    color: $font-green;
+    border: 1px solid $elements;
+    box-shadow: none;
+
+    &::before {
+      content: "added to cart";
+      text-transform: capitalize;
+    }
+  }
+
+  &--checkout {
+    width: 320px;
+    height: 48px;
+
+    &:hover {
+      transition: 0.4s ease;
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+    }
+
+    &::before {
+      content: "checkout";
+      text-transform: capitalize;
+    }
+  }
 }

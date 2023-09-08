@@ -1,0 +1,12 @@
+@import "/src/style/main.scss";
+
+.add-items {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  &__quantity {
+    text-align: center;
+    width: 50px;
+  }
+}

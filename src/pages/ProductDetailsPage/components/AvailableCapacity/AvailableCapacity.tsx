@@ -20,6 +20,7 @@ export const AvailableCapacity: React.FC<Props> = ({
       <div className="capacity__list">
         {capacities.map((capacity, ind) => (
           <button
+            key={capacity}
             type="button"
             onClick={() => setSelected(ind)}
             className={classNames('capacity__btn', {

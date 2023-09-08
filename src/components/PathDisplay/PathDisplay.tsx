@@ -2,7 +2,9 @@ import { Link, useLocation } from 'react-router-dom';
 import './PathDisplay.scss';
 
 export const PathDisplay = () => {
-  const location = useLocation().pathname.split('/');
+  const location = useLocation().pathname
+    .split('/')
+    .filter(part => part !== '');
 
   return (
     <div className="path">
@@ -19,7 +21,7 @@ export const PathDisplay = () => {
           className="path__link"
           to={`/${loco}`}
         >
-          {loco}
+          {loco.split('-').join(' ')}
         </Link>
       ))}
     </div>

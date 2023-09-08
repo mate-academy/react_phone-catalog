@@ -1,5 +1,3 @@
-import { ProductDescription } from './ProductDescription';
-
 export interface Product {
   capacity: string,
   color: string,
@@ -8,26 +6,10 @@ export interface Product {
   itemId: string,
   year: number,
   phoneId: string,
-  age: number,
   id: string,
-  type: string,
   image: string,
   name: string,
-  snippet: string,
   price: number,
-  discount: number,
   screen: string,
   ram: string,
-  camera: string,
-  capacityAvailable: string[],
-  cell: string[],
-  colorsAvailable: string[],
-  description: ProductDescription [],
-  images: string [],
-  namespaceId: string,
-  priceDiscount: number,
-  priceRegular: number,
-  processor: string,
-  resolution: string,
-  zoom: string,
 }

@@ -10,16 +10,26 @@
   flex-direction: column;
   text-decoration: none;
   color: $main-font-color;
+  transition: 0.3s ease;
+
+  &:hover {
+    border-color: $main-font-color;
+    transition: 0.3s ease;
+  }
 
   &:visited {
     color: $main-font-color;
   }
 
+  &__link {
+    text-decoration: none;
+    color: $main-font-color;
+  }
+
   &__img {
     width: 208px;
-    min-height: 208px;
+    height: 208px;
     object-fit: contain;
-    object-position: center;
     margin-bottom: 24px;
   }
 

@@ -21,34 +21,6 @@
     background-color: $main-font-color;
   }
 
-  &--fav {
-    width: 40px;
-    height: 40px;
-    background-image: url(../../assets/icons/fav.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:active {
-      background-color: $font-white;
-      background-image: url(../../assets/icons/favFilled.svg);
-      border-color: $elements;
-    }
-  }
-
-  &--fav--large {
-    width: 48px;
-    height: 48px;
-    background-image: url(../../assets/icons/fav.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &:active {
-      background-color: $font-white;
-      background-image: url(../../assets/icons/favFilled.svg);
-      border-color: $elements;
-    }
-  }
-
   &--arrow-up {
     background-image: url(../../assets/icons/arrowUpFilled.svg);
     background-position: center;
@@ -96,6 +68,38 @@
 
     &:active {
       background-image: url(../../assets/icons/arrowUpWhite.svg);
+    }
+  }
+
+  &--plus {
+    background-image: url(../../assets/icons/plusFilled.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:disabled {
+      background-image: url(../../assets/icons/plus.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:active {
+      background-image: url(../../assets/icons/plusWhite.svg);
+    }
+  }
+
+  &--minus {
+    background-image: url(../../assets/icons/minusFilled.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:disabled {
+      background-image: url(../../assets/icons/minus.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:active {
+      background-image: url(../../assets/icons/minusWhite.svg);
     }
   }
 }

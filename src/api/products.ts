@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 
+import { Phone } from '../types';
 import { Product } from '../types/Product';
 
 const BASE_API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
@@ -14,7 +15,7 @@ export async function getProducts(): Promise<Product[]> {
     .then(response => response.json());
 }
 
-export async function getProductById(id: string): Promise<Product> {
+export async function getProductById(id: string): Promise<Phone> {
   return wait(500)
     .then(() => fetch(`${BASE_API_URL}/products/${id}.json`))
     .then(response => response.json());
