@@ -7,8 +7,9 @@ import {
 import { App } from './App';
 
 import { HomePage } from './pages/HomePage/HomePage';
-import { Page404 } from './pages/Page404/Page404';
 import { LookBookPage } from './pages/LookBookPage/LookBookPage';
+import { DeliveringPage } from './pages/DeliveringPage/DeliveringPage';
+import { Page404 } from './pages/Page404/Page404';
 
 export const Root: React.FC = () => {
   return (
@@ -30,6 +31,11 @@ export const Root: React.FC = () => {
         <Route
           path="lookBook"
           element={<LookBookPage />}
+        />
+
+        <Route
+          path="delivering"
+          element={<DeliveringPage />}
         />
 
         <Route

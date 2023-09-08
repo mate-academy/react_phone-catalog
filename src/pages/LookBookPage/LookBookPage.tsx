@@ -55,7 +55,7 @@ export const LookBookPage: React.FC = React.memo(() => {
         setPhotos(prevPhotos => [
           ...prevPhotos,
           ...response.slice(
-            (currentPage - 1) * ITEMS_PER_PAGE,
+            0,
             currentPage * ITEMS_PER_PAGE,
           ),
         ]);
