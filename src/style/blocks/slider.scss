@@ -1,0 +1,54 @@
+.container--slider {
+  margin: 40px 0 72px;
+}
+
+.slider {
+  gap: 16px;
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+
+  &--img {
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__lower {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__button {
+    height: 6px;
+    width: 18px;
+    border: none;
+    background-color: $color-shadow;
+
+    &--active {
+      border: none;
+      background-color: #313237;
+    }
+  }
+}
+
+.arrow {
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  background-color: $gray-white;
+
+  display: flex;
+  width: 32px;
+  height: 400px;
+  border: 1px solid $gray-icons-placeholders;
+
+  &__left {
+    background-image: url("../../images/icons/ArrowLeft.svg");
+  }
+
+  &__right {
+    background-image: url("../../images/icons/ArrowRight.svg");
+  }
+}

@@ -1,0 +1,50 @@
+.phones {
+  width: 1136px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+
+  &__icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-color: $gray-white;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__button {
+    border: none;
+    background-image: url("../../images//icons/Home.svg");
+  }
+
+  &__arrow {
+    background-image: url("../../images/icons/ArrowRightDisabled.svg");
+  }
+}
+
+.title {
+  margin: 40px 0 0;
+
+  &__p {
+    margin-top: 8px;
+  }
+}
+
+.dropdowns {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+
+  &__sort {
+    color: blue;
+    margin-top: 4px;
+    width: 176px;
+    height: 40px;
+    border: 1px solid $gray-icons-placeholders;
+  }
+}
