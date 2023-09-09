@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 272px;
   height: 507px;
+  box-sizing: border-box;
   border: 1px solid $gray;
   background: $main-white;
 
@@ -37,6 +38,7 @@
 
   &__price {
     display: flex;
+    align-items: baseline;
     gap: 8px;
     font-size: 22px;
     font-weight: 700;

@@ -14,7 +14,7 @@ export const Breadcrumbs: React.FC<Props> = ({ pathname, name }) => {
 
       <span className="arrow arrow--right-disabled" />
 
-      <NavLink to={`/${pathname.toLowerCase()}`} className="breadCrumbs__text">
+      <NavLink to={`/${pathname.toLowerCase()}`} className="breadCrumbs__text breadCrumbs__text--path">
         {pathname}
       </NavLink>
 

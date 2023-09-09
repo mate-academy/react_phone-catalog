@@ -3,12 +3,21 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
-  width: 327px;
-  height: auto;
-  padding: 23px 24px;
+  height: 100%;
+  padding-right: 15px;
 
-  border-left: 1px solid $gray;
-  border-right: 1px solid $gray;
+  @include onTablet {
+    padding: 23px 24px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
+
+  @include onDesktop {
+    width: 327px;
+    padding: 23px 24px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
 
   &__bar {
     display: flex;

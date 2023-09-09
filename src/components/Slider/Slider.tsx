@@ -9,7 +9,8 @@ export const Slider: React.FC = () => {
   ]);
 
   const [currIndex, setCurrIndex] = useState(0);
-  const frameSize = 1040;
+  const itemWidthMob = 400;
+  const itemWidthTab = 600;
   const itemWidth = 1040;
   const step = 1;
   const animationDuration = 500;
@@ -44,7 +45,7 @@ export const Slider: React.FC = () => {
   };
 
   return (
-    <div className="carousel" style={{ width: `${frameSize}px` }}>
+    <div className="carousel">
       <button
         type="button"
         title="top"
@@ -67,7 +68,23 @@ export const Slider: React.FC = () => {
               key={img}
             >
               <img
-                className="carousel__main--photos"
+                className="carousel__main--photos carousel__mob"
+                src={`_new/img/banner-${img}`}
+                alt={`banner-#${i + 1}`}
+                style={{
+                  transform: `translateX(-${currIndex * itemWidthMob}px)`, transition: `transform ${animationDuration}ms`,
+                }}
+              />
+              <img
+                className="carousel__main--photos carousel__tab"
+                src={`_new/img/banner-${img}`}
+                alt={`banner-#${i + 1}`}
+                style={{
+                  transform: `translateX(-${currIndex * itemWidthTab}px)`, transition: `transform ${animationDuration}ms`,
+                }}
+              />
+              <img
+                className="carousel__main--photos carousel__desc"
                 src={`_new/img/banner-${img}`}
                 alt={`banner-#${i + 1}`}
                 style={{

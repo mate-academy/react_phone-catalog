@@ -54,15 +54,17 @@
     justify-content: center;
     height: auto;
     max-width: 1150px;
-    width: 1150px;
+
+    width: 273px;
+    margin: 0 auto;
     overflow: hidden;
 
-    &--photos {
-      display: block;
-      height: 400px;
-      width: 1040px;
-      object-fit: cover;
-      object-position: center;
+    @include onTablet {
+      width: 563px;
+    }
+
+    @include onDesktop {
+      width: 1150px;
     }
   }
 }

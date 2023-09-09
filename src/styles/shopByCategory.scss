@@ -6,8 +6,13 @@
 
   &__links {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    flex-direction: column;
     gap: 16px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
   }
 
   &__card {
@@ -18,11 +23,21 @@
   &__photoContainer {
     display: block;
     box-sizing: border-box;
-    width: 368px;
-    height: 368px;
+    width: 300px;
+    height: 300px;
     overflow: hidden;
     margin-bottom: 24px;
     position: relative;
+
+    @include onTablet {
+      width: 368px;
+      height: 368px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+      height: 368px;
+    }
 
     &--phones {
       background-color: bisque;
@@ -65,7 +80,7 @@
     &--accessories {
       width: auto;
       height: 320px;
-      top: 45px;
+      top: 48px;
       left: 26px;
       object-fit: cover;
     }

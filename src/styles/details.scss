@@ -33,31 +33,66 @@
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
-    width: 512px;
+    // width: 512px;
+
+    @include onTablet {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 512px;
+    }
   }
 
   &__container {
     display: flex;
     flex-direction: column;
     gap: 80px;
-    margin: auto;
+
+    @include onTablet {
+      margin: auto;
+    }
+
+    @include onDesktop {
+      margin: auto;
+    }
+
   }
 
   &__top {
     display: flex;
+    flex-direction: column;
     gap: 64px;
+
+    @include onTablet {
+      // flex-direction: row;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+    }
   }
 
   &__bottom {
     display: flex;
+    flex-direction: column;
     gap: 64px;
     margin-bottom: 80px;
+
+    @include onTablet {
+      // flex-direction: row;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+    }
   }
 
   //PhotoBlock
   &__photoBlock {
     display: flex;
     gap: 16px;
+    justify-content: center;
   }
 
   &__photo-list {
@@ -68,18 +103,38 @@
 
   &__photo {
     display: block;
-    width: 80px;
-    height: 80px;
+    width: 48px;
+    height: 48px;
     border: 1px solid $gray-icons-placeholders;
+
+    @include onTablet {
+      width: 80px;
+      height: 80px;
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
 
     &:hover {
       border-color: $gray-primary;
     }
 
     &--img {
-      width: 66px;
-      height: 66px;
+      width: 45px;
+      height: 45px;
       object-fit: contain;
+
+      @include onTablet {
+        width: 66px;
+        height: 66px;
+      }
+  
+      @include onDesktop {
+        width: 66px;
+        height: 66px;
+      }
     }
   }
 
@@ -88,9 +143,19 @@
     align-items: center;
 
     &--photo {
-      width: 442px;
-      height: 442px;
+      width: 210px;
+      height: 276px;
       object-fit: contain;
+
+      @include onTablet {
+        width: 442px;
+        height: 442px;
+      }
+  
+      @include onDesktop {
+        width: 442px;
+        height: 442px;
+      }
     }
   }
 
@@ -265,7 +330,15 @@
   &__aboutBlock {
     display: flex;
     flex-direction: column;
-    width: 512px;
+    width: 320px;
+
+    @include onTablet {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 512px;
+    }
   }
 
   &__aboutInfo {

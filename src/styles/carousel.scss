@@ -2,14 +2,39 @@
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  height: 400px;
-  margin: 40px auto 104px;
+  width: 400px;
+  height: 200px;
+  margin: 40px auto 70px;
+
+  @include onTablet {
+    width: 600px;
+    height: 300px;
+    margin: 40px auto 90px;
+  }
+
+  @include onDesktop {
+    width: 1040px;
+    height: 400px;
+    margin: 40px auto 104px;
+  }
 
   &__button {
-    height: 400px;
+    height: 200px;
     width: 32px;
     background-color: transparent;
     border: 1px solid $gray-icons-placeholders;
+
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
 
     &:hover {
       border-color: $gray-primary;
@@ -27,24 +52,94 @@
     display: flex;
     height: auto;
     max-width: 1040px;
-    width: 1040px;
-    margin: 0 16px;
+    width: 400px;
+    margin: 0 30px;
     overflow: hidden;
+
+    @include onTablet {
+      width: 600px;
+      margin: 0 16px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      margin: 0 16px;
+    }
 
     &--photos {
       display: block;
-      height: 400px;
-      width: 1040px;
+      width: 400px;
+      height: 200px;
       object-fit: cover;
       object-position: center;
+
+      @include onTablet {
+        width: 600px;
+        height: 300px;
+      }
+
+      @include onDesktop {
+        width: 1040px;
+        height: 400px;
+      }
+    }
+  }
+
+  &__tab {
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      display: block;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__desc {
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+
+  &__mob {
+    @include onMobile {
+      display: block;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: none;
     }
   }
 
   &__dots {
     position: absolute;
-    top: 522px;
+    top: 310px;
     left: 50%;
     transform: translateX(-50%);
+
+    @include onTablet {
+      top: 415px;
+    }
+
+    @include onDesktop {
+      top: 522px;
+    }
   }
 
   &__dot {

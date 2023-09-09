@@ -1,13 +1,32 @@
 .footer {
   box-shadow: 0 -1px 0 0 $gray;
   box-sizing: border-box;
-  padding: 0 152px;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0;
+
+  @include onDesktop {
+    padding: 0 152px;
+  }
 
   &__container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    margin-right: 24px;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+    }
   }
 
   &__nav {
@@ -17,7 +36,18 @@
 
   &__navList {
     display: flex;
-    gap: 64px;
+    gap: 10px;
+    margin-left: 24px;
+
+    @include onTablet {
+      gap: 64px;
+      margin-left: 0;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+      margin-left: 0;
+    }
   }
 
   &__navItem {
@@ -30,8 +60,18 @@
     text-transform: uppercase;
     transition: all 0.3s ease-in;
 
+    @include onMobile {
+      padding: 15px 0;
+    }
+
     &:hover {
       color: $gray-primary;
+    }
+  }
+
+  &__buttonUp {
+    @include onMobile {
+      margin: 24px;
     }
   }
 }

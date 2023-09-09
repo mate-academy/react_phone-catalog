@@ -1,22 +1,55 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { useState } from 'react';
 import { SearchForm } from './SearchForm';
 import { Logo } from '../Logo/Logo';
 
 export const NavBar = () => {
   const location = useLocation();
-  const shouldShowSearchForm = location.pathname !== '/';
+  const shouldShowSearchForm = ['/phones', '/tablets', '/accessories']
+    .includes(location.pathname);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
     <nav className="navbar">
-      <ul className="navbar__list">
-        <Logo />
+      {isOpen ? (
+        <button
+          type="button"
+          aria-label="navbar__cross"
+          className="navbar__cross"
+          onClick={toggleMenu}
+        />
+      ) : (
+        <button
+          type="button"
+          aria-label="navbar__burger"
+          className="navbar__burger"
+          onClick={toggleMenu}
+        />
 
+      )}
+
+      <Logo />
+
+      <ul
+        className={classNames('navbar__list', {
+          'navbar__list--mob': isOpen,
+        })}
+      >
         <NavLink
           to="/"
           className={classNames('navbar__item', {
             'navbar__item--active': location.pathname === '/',
           })}
+          onClick={closeMenu}
         >
           home
         </NavLink>
@@ -26,6 +59,7 @@ export const NavBar = () => {
           className={classNames('navbar__item', {
             'navbar__item--active': location.pathname === '/phones',
           })}
+          onClick={closeMenu}
         >
           phones
         </NavLink>
@@ -35,6 +69,7 @@ export const NavBar = () => {
           className={classNames('navbar__item', {
             'navbar__item--active': location.pathname === '/tablets',
           })}
+          onClick={closeMenu}
         >
           tablets
         </NavLink>
@@ -42,14 +77,33 @@ export const NavBar = () => {
         <NavLink
           to="/accessories"
           className={`navbar__item ${location.pathname === '/accessories' ? 'navbar__item--active' : ''}`}
+          onClick={closeMenu}
         >
           accessories
         </NavLink>
+
+        <NavLink
+          to="/favourites"
+          className={`navbar__item navbar__item-fav ${location.pathname === '/favourites' ? 'navbar__item--active' : ''}`}
+          onClick={closeMenu}
+        >
+          favourites
+        </NavLink>
+
+        <NavLink
+          to="/cart"
+          className={`navbar__item navbar__item-fav ${location.pathname === '/cart' ? 'navbar__item--active' : ''}`}
+          onClick={closeMenu}
+        >
+          cart
+        </NavLink>
       </ul>
 
-      <div className="navbar__icons">
+      <div className="navbar__search">
         {shouldShowSearchForm && <SearchForm />}
+      </div>
 
+      <div className="navbar__icons">
         <Link to="/" className="navbar__icon">
           <div className="navbar__icon--favs" />
         </Link>

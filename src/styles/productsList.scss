@@ -13,12 +13,21 @@
 
   &__cards {
     display: grid;
-    grid-template-columns: repeat(4, 272px);
+    grid-template-columns: repeat(1, 272px);
+    align-items: center;
     column-gap: 16px;
     row-gap: 40px;
     justify-content: center;
     align-content: center;
     margin: 0 auto 40px;
+
+    @include onTablet {
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 272px);
+    }
   }
 
   &__card {

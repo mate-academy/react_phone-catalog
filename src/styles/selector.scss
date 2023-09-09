@@ -12,11 +12,18 @@
   &__button {
     display: flex;
     justify-content: space-between;
-    width: 176px;
+    width: 160px;
     height: 40px;
     margin-bottom: 4px;
     padding: 10px 12px;
     border: 1px solid $gray-icons-placeholders;
+
+    @include onTablet {
+      width: 176px;
+    }
+    @include onDesktop {
+      width: 176px;
+    }
   }
 
   &__iconContainer {
@@ -41,11 +48,19 @@
     position: absolute;
     top: 330px;
     z-index: 1;
-    width: 176px;
+    width: 160px;
     box-sizing: border-box;
     border: 1px solid $gray;
     background: $main-white;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    @include onTablet {
+      width: 176px;
+    }
+
+    @include onDesktop {
+      width: 176px;
+    }
   }
 
   &__option {

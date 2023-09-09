@@ -7,6 +7,7 @@
     @extend %button;
     background-color: transparent;
     padding: 8px;
+    margin-right: 24px;
     transition: all 0.3s ease-in;
 
     &:hover {

@@ -31,24 +31,22 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   }
 
   return (
-
-    <Link
-      to={`/${categoryType}/${itemId}`}
+    <div
       className="card"
       data-cy="cardsContainer"
     >
-      <div className="card__imgContainer">
+      <Link to={`/${categoryType}/${itemId}`} className="card__imgContainer">
         <img
           className="card__img"
           src={`../_new/${image}`}
           alt={name}
         />
-      </div>
+      </Link>
 
       <div className="card__infoContaiter">
-        <h2 className="card__title">
+        <Link to={`/${categoryType}/${itemId}`} className="card__title">
           {name}
-        </h2>
+        </Link>
 
         <div className="card__price">
           <p className="card__price--new">
@@ -80,6 +78,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <AddToFav />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

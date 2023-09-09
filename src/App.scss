@@ -1,5 +1,6 @@
 @import "../src/styles/utils/variables";
 @import "../src/styles/utils/extends";
+@import "../src/styles/utils/mixins";
 @import "../src/styles/utils/reset_css.scss";
 @import "../src/styles/utils/fonts.scss";
 
@@ -31,24 +32,26 @@ iframe {
   font-family: Mont, Helvetica, sans-serif;
   font-weight: 500;
   font-style: normal;
-  display: grid;
-  grid-template-rows: 1fr auto;
+  // display: grid;
+  // grid-template-rows: 1fr auto;
   color: $gray-primary;
   min-height: 100vh;
 }
 
 .container {
-  margin: 0 auto 80px;
-  padding: 0 152px;
+  margin: 0 auto 20px;
+  padding: 0 40px;
   scroll-behavior: smooth;
 
-  // @include onTablet {
-  //   padding: 0 72px;
-  // }
+  @include onTablet {
+    margin: 0 auto 60px;
+    padding: 0 30px;
+  }
 
-  // @include onDesktop() {
-  //   padding: 0 40px;
-  // }
+  @include onDesktop {
+    margin: 0 auto 80px;
+    padding: 0 152px;
+  }
 }
 
 .main {
