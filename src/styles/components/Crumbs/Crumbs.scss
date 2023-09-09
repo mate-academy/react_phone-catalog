@@ -1,0 +1,50 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.crumbs {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    gap: 8px;
+  }
+
+  a {
+    text-decoration: none;
+    @include smallTextStyling;
+    color: #{$secondary-color};
+  }
+
+  &__item {
+    position: relative;
+    margin-left: 16px;
+    margin-top: 2px;
+    @include smallTextStyling;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    &:not(:first-child)::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -1px;
+      left: -20px;
+      width: 16px;
+      height: 16px;
+      background: center no-repeat url("../../../images/arrow-right-disabled.svg");
+    }
+  }
+
+  &__home-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: center no-repeat url("../../../images/home-icon.svg");
+  }
+}
