@@ -1,10 +1,10 @@
 import noResults from '../../images/noResults.png';
 
-export const NoSearchResults = () => (
+export const Error = () => (
   <main className="main">
     <section className="main__no-results">
       <h1 className="main__title main__title--development">
-        Sorry! No results found...
+        Sorry, something went wrong. Please try again later.
       </h1>
       <img
         src={noResults}

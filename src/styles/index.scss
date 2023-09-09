@@ -31,8 +31,7 @@ html {
 
 body {
   margin: 0;
-  background-color: $hoverAndBg-color;
-  min-width: 1136px;
+  // max-width: 1136px;
 }
 
 @import "blocks/header.scss";
@@ -43,7 +42,6 @@ body {
 @import "blocks/icon.scss";
 @import "blocks/dropdown.scss";
 @import "blocks/phones.scss";
-@import "blocks/galary.scss";
 @import "blocks/category.scss";
 @import "blocks/detail.scss";
 @import "blocks/cart.scss";

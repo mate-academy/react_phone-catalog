@@ -1,7 +1,7 @@
 .phones {
   display: flex;
   gap: 40px 16px;
-  width: 1136px;
+  max-width: 1136px;
   overflow: hidden;
 
   &--list {

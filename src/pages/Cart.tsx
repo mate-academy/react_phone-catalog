@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useContext, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { CartItem } from '../types/CartItem';
-import { LocalContext } from '../LocalContext';
 import { NoResults } from '../components/NoResults';
 import { Back } from '../components/Back';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import * as cartActions from '../features/cart';
+import { Error } from '../components/Error';
 
 export const Cart = () => {
-  const { cart, setCart } = useContext(LocalContext);
+  const { pathname, search } = useLocation();
   const [checkout, setCheckout] = useState(false);
+  const { cart, error } = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
 
   const totalAmount = useMemo(() => {
     return cart.reduce((prev, card) => (
@@ -22,34 +25,20 @@ export const Cart = () => {
   }, [cart]);
 
   const handleDelete = (id: string) => {
-    setCart(cart.filter(card => card.id !== id));
+    dispatch(cartActions.remove(id));
   };
 
-  const handleMinus = (card: CartItem) => {
-    setCart(cart.map(item => {
-      if (item.id === card.id) {
-        return {
-          ...card,
-          quantity: card.quantity - 1,
-        };
-      }
-
-      return item;
-    }));
+  const handleMinus = (id: string) => {
+    dispatch(cartActions.decrease(id));
   };
 
-  const handlePlus = (card: CartItem) => {
-    setCart(cart.map(item => {
-      if (item.id === card.id) {
-        return {
-          ...card,
-          quantity: card.quantity + 1,
-        };
-      }
-
-      return item;
-    }));
+  const handlePlus = (id: string) => {
+    dispatch(cartActions.increase(id));
   };
+
+  if (error) {
+    return (<Error />);
+  }
 
   return (
     <main className="main">
@@ -89,6 +78,7 @@ export const Cart = () => {
                   <Link
                     to={`/phones/${phoneId}`}
                     className="cart__image-wrapper"
+                    state={{ pathname, search }}
                   >
                     <img
                       className="cart__image"
@@ -100,6 +90,7 @@ export const Cart = () => {
                   <Link
                     to={`/phones/${phoneId}`}
                     className="cart__name"
+                    state={{ pathname, search }}
                   >
                     {`${name}`}
                   </Link>
@@ -114,7 +105,7 @@ export const Cart = () => {
                             quantity === 1,
                         },
                       )}
-                      onClick={() => handleMinus(card)}
+                      onClick={() => handleMinus(card.id)}
                       disabled={quantity === 1}
                     />
 
@@ -125,7 +116,7 @@ export const Cart = () => {
                     <button
                       type="button"
                       className="cart__button cart__button--plus"
-                      onClick={() => handlePlus(card)}
+                      onClick={() => handlePlus(card.id)}
                     />
                   </div>
 

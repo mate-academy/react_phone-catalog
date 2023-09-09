@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   Link,
   useLocation,
@@ -6,13 +6,14 @@ import {
 } from 'react-router-dom';
 import classNames from 'classnames';
 import { Phone } from '../types/Phone';
-import { DetailPhone } from '../types/DetailPhone';
-import { getPhone, getPhones } from '../helpers/htmlClient';
 import { Loader } from '../components/Loader';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Back } from '../components/Back';
 import { CardButtons } from '../components/CardButtons';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { init as initProduct, setImage } from '../features/product';
+import { init as initPhones } from '../features/phones';
 
 type UsableColorType = {
   black: string,
@@ -47,36 +48,23 @@ const usableColors: UsableColorType = {
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const { productId } = useParams();
-  const [card, setCard] = useState<Phone | null>(null);
-  const [product, setProduct] = useState<DetailPhone | null>(null);
-  const [mainImage, setMainImage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const { phones } = useAppSelector(state => state.phones);
+  const {
+    product,
+    loading,
+    error,
+    mainImage,
+  } = useAppSelector(state => state.product);
+  const dispatch = useAppDispatch();
+  const card = phones.find((item: Phone) => item.phoneId === productId);
 
   useEffect(() => {
     if (!productId) {
       return;
     }
 
-    setIsError(false);
-    setIsLoading(true);
-
-    getPhones()
-      .then(res => {
-        const findCard = res.find((item: Phone) => item.phoneId === productId);
-
-        setCard(findCard);
-      });
-
-    getPhone(productId)
-      .then(res => {
-        setProduct(res);
-        setMainImage(res.images[0]);
-      })
-      .catch(() => setIsError(true))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    dispatch(initPhones());
+    dispatch(initProduct(productId));
   }, [productId]);
 
   const handleColor = (color: string) => {
@@ -97,7 +85,7 @@ export const ProductDetailsPage = () => {
 
   return (
     <>
-      {isError && (
+      {error && (
         <main className="main main--not-found">
           <h1 className="main__title main__title--development">
             Phone was not found
@@ -111,9 +99,9 @@ export const ProductDetailsPage = () => {
           </div>
         </main>
       )}
-      {!isError && isLoading && (<Loader />)}
+      {!error && loading && (<Loader />)}
 
-      {!isError && !isLoading && product && (
+      {!error && !loading && product && (
         <main className="main main--page">
           <div className="main__header">
             <Breadcrumbs currentPage={product.name} />
@@ -124,131 +112,127 @@ export const ProductDetailsPage = () => {
           </div>
 
           <section className="main__section detail">
-            <div className="detail__galary galary">
-              <ul className="galary__list">
-                {product.images.map(image => (
-                  <li key={image} className="galary__item">
+            <ul className="detail__list">
+              {product.images.map(image => (
+                <li key={image} className="detail__item">
+                  <Link
+                    to={{ pathname }}
+                    className={classNames(
+                      'detail__link',
+                      { 'detail__link--selected': image === mainImage },
+                    )}
+                    onClick={() => dispatch(setImage(image))}
+                  >
+                    <img
+                      src={`new/${image}`}
+                      alt={image}
+                      className="detail__image"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <div className="detail__main-image-wrapper">
+              <img
+                src={`new/${mainImage}`}
+                alt={mainImage}
+                className="detail__main-image"
+              />
+            </div>
+
+            <div className="detail__info">
+              <div className="detail__wrapper">
+                <div className="detail__text">Available colors</div>
+                <div className="detail__colors">
+                  {product.colorsAvailable.map(color => (
                     <Link
-                      to={{ pathname }}
+                      to={{ pathname: handleColor(color) }}
                       className={classNames(
-                        'galary__link',
-                        { 'galary__link--selected': image === mainImage },
+                        'detail__color',
+                        { 'detail__color--active': product.color === color },
                       )}
-                      onClick={() => setMainImage(image)}
+                      key={color}
                     >
-                      <img
-                        src={`new/${image}`}
-                        alt={image}
-                        className="galary__image"
+                      <span
+                        className="detail__circle"
+                        style={{
+                          backgroundColor:
+                            usableColors[color as keyof UsableColorType],
+                        }}
                       />
                     </Link>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+                <div className="detail__line" />
+              </div>
 
-              <div className="galary__main-image">
-                <img
-                  src={`new/${mainImage}`}
-                  alt={mainImage}
-                  className="galary__main-image"
-                />
+              <div className="detail__wrapper">
+                <div className="detail__text">Select capacity</div>
+                <div className="detail__capacities">
+                  {product.capacityAvailable.map(capacity => (
+                    <Link
+                      to={{ pathname: handleCapacity(capacity) }}
+                      key={capacity}
+                      className={classNames(
+                        'detail__capacity',
+                        {
+                          'detail__capacity--active':
+                            product.capacity === capacity,
+                        },
+                      )}
+                    >
+                      {capacity.replace('GB', ' GB')}
+                    </Link>
+                  ))}
+                </div>
+                <div className="detail__line" />
+              </div>
+
+              <div className="detail__price-block">
+                <div className="detail__prices">
+                  <div className="detail__price">
+                    {`$${product.priceDiscount}`}
+                  </div>
+                  <div className="detail__full-price">
+                    {`$${product.priceRegular}`}
+                  </div>
+                </div>
+
+                {card && (
+                  <CardButtons card={card} info="detail" />
+                )}
+              </div>
+
+              <div className="detail__chars">
+                <div className="detail__char">
+                  <div className="detail__char-name">Screen</div>
+                  <div className="detail__param">{product.screen}</div>
+                </div>
+                <div className="detail__char">
+                  <div className="detail__char-name">Resolution</div>
+                  <div className="detail__param">
+                    {product.resolution}
+                  </div>
+                </div>
+                <div className="detail__char">
+                  <div className="detail__char-name">Processor</div>
+                  <div className="detail__param">
+                    {product.processor}
+                  </div>
+                </div>
+                <div className="detail__char">
+                  <div className="detail__char-name">RAM</div>
+                  <div className="detail__param">
+                    {product.ram.replace('GB', ' GB')}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="detail__right">
-              <div className="detail__info">
-                <div className="detail__wrapper">
-                  <div className="detail__text">Available colors</div>
-                  <div className="detail__colors">
-                    {product.colorsAvailable.map(color => (
-                      <Link
-                        to={{ pathname: handleColor(color) }}
-                        className={classNames(
-                          'detail__color',
-                          { 'detail__color--active': product.color === color },
-                        )}
-                        key={color}
-                      >
-                        <span
-                          className="detail__circle"
-                          style={{
-                            backgroundColor:
-                              usableColors[color as keyof UsableColorType],
-                          }}
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="detail__line" />
-                </div>
+            <div className="detail__id" />
 
-                <div className="detail__wrapper">
-                  <div className="detail__text">Select capacity</div>
-                  <div className="detail__capacities">
-                    {product.capacityAvailable.map(capacity => (
-                      <Link
-                        to={{ pathname: handleCapacity(capacity) }}
-                        key={capacity}
-                        className={classNames(
-                          'detail__capacity',
-                          {
-                            'detail__capacity--active':
-                              product.capacity === capacity,
-                          },
-                        )}
-                      >
-                        {capacity.replace('GB', ' GB')}
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="detail__line" />
-                </div>
-
-                <div className="detail__price-block">
-                  <div className="detail__prices">
-                    <div className="detail__price">
-                      {`$${product.priceDiscount}`}
-                    </div>
-                    <div className="detail__full-price">
-                      {`$${product.priceRegular}`}
-                    </div>
-                  </div>
-
-                  {card && (
-                    <CardButtons card={card} info="detail" />
-                  )}
-                </div>
-
-                <div className="detail__chars">
-                  <div className="detail__char">
-                    <div className="detail__char-name">Screen</div>
-                    <div className="detail__param">{product.screen}</div>
-                  </div>
-                  <div className="detail__char">
-                    <div className="detail__char-name">Resolution</div>
-                    <div className="detail__param">
-                      {product.resolution}
-                    </div>
-                  </div>
-                  <div className="detail__char">
-                    <div className="detail__char-name">Processor</div>
-                    <div className="detail__param">
-                      {product.processor}
-                    </div>
-                  </div>
-                  <div className="detail__char">
-                    <div className="detail__char-name">RAM</div>
-                    <div className="detail__param">
-                      {product.ram.replace('GB', ' GB')}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="detail__id" />
-            </div>
-
-            <div data-cy="productDescription">
+            <div data-cy="productDescription" className="detail__product-left">
               <h2 className="detail__title">
                 About
               </h2>
@@ -267,7 +251,7 @@ export const ProductDetailsPage = () => {
               </div>
             </div>
 
-            <div>
+            <div className="detail__product-right">
               <h2
                 className="detail__title"
               >
@@ -276,50 +260,50 @@ export const ProductDetailsPage = () => {
 
               <div className="detail__line" />
 
-              <ul className="detail__list">
-                <li className="detail__item">
+              <ul className="detail__list-tech">
+                <li className="detail__item-tech">
                   <div className="detail__description">Screen</div>
                   <div>
                     {product.screen}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">Resolution</div>
                   <div>
                     {product.resolution}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">Processor</div>
                   <div>
                     {product.processor}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">RAM</div>
                   <div>
                     {product.ram}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">Built in memory</div>
                   <div>
                     {product.capacity}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">Camera</div>
                   <div>
                     {product.camera}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">Zoom</div>
                   <div>
                     {product.zoom}
                   </div>
                 </li>
-                <li className="detail__item">
+                <li className="detail__item-tech">
                   <div className="detail__description">Cell</div>
                   <div>
                     {product.cell.join(', ')}

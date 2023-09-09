@@ -20,7 +20,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
           return (
             <React.Fragment key={crumb}>
               <Link to="/" className="breadcrumbs__home">
-                <img src={home} alt="home" />
+                <img src={home} alt="home" className="breadcrumbs__image" />
               </Link>
             </React.Fragment>
           );
@@ -32,6 +32,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
               <img
                 src={arrowRightDisabled}
                 alt="arrow-right"
+                className="breadcrumbs__image"
               />
               <Link
                 to={`/${params.slice(1, index + 1).join('/')}`}

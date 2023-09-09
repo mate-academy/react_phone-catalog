@@ -5,7 +5,6 @@ import {
   Routes,
 } from 'react-router-dom';
 import App from './App';
-import { LocalProvider } from './LocalContext';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { PhonesPage } from './pages/PhonesPage';
@@ -17,22 +16,20 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
   <Router>
-    <LocalProvider>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="*" element={<NotFoundPage />} />
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<Navigate to="/" />} />
-          <Route path="phones">
-            <Route index element={<PhonesPage />} />
-            <Route path=":productId" element={<ProductDetailsPage />} />
-          </Route>
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
-          <Route path="favorites" element={<Favorites />} />
-          <Route path="cart" element={<Cart />} />
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="*" element={<NotFoundPage />} />
+        <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" />} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
-      </Routes>
-    </LocalProvider>
+        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="favorites" element={<Favorites />} />
+        <Route path="cart" element={<Cart />} />
+      </Route>
+    </Routes>
   </Router>
 );

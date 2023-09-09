@@ -2,10 +2,10 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   gap: 16px;
-  width: 1136px;
+  max-width: 1136px;
 
   &__list {
-    grid-column: 1 / 16;
+    grid-column: 1 / 17;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -29,7 +29,7 @@
     border: 1px solid transparent;
     width: 16px;
     height: 16px;
-    background-color: $hoverAndBg-color;
+    background-color: $white-color;
     background-image: url(../../images/close.svg);
     background-repeat: no-repeat;
     cursor: pointer;
@@ -65,7 +65,7 @@
     border: 1px solid $icons-color;
     width: 32px;
     height: 32px;
-    background-color: $hoverAndBg-color;
+    background-color: $white-color;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -105,7 +105,7 @@
 
   &__total {
     position: relative;
-    grid-column: 16 / 24;
+    grid-column: 17 / 25;
     display: flex;
     flex-direction: column;
     align-items: center;

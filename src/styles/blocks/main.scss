@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 1136px;
+  // max-width: 1136px;
+  padding: 0 30px;
 
   &--not-found {
     justify-content: center;
@@ -37,11 +38,7 @@
 
   &__header {
     margin: 24px 0 40px;
-    min-width: 1136px;
-
-    &--results {
-      margin: 24px 0;
-    }
+    width: 1136px;
 
     &--cart {
       margin: 40px 0 24px;
@@ -54,6 +51,7 @@
 
   &__section {
     margin-bottom: 80px;
+    width: 1136px;
   }
 
   &__dropdown {

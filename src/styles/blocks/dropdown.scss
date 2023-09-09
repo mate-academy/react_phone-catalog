@@ -24,7 +24,7 @@
     width: 176px;
     height: 40px;
     padding: 0 12px;
-    background-color: $hoverAndBg-color;
+    background-color: $white-color;
     cursor: pointer;
     font-family: inherit;
     font-weight: 600;
@@ -51,7 +51,7 @@
     transform: translateY(63px);
     transition: all 0.35s;
     width: 176px;
-    background-color: $hoverAndBg-color;
+    background-color: $white-color;
 
     &--count {
       width: 128px;

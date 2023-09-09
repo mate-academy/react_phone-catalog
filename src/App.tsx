@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import {
   Link,
   NavLink,
@@ -7,12 +6,12 @@ import {
 } from 'react-router-dom';
 import classNames from 'classnames';
 import './App.scss';
-import { LocalContext } from './LocalContext';
 import { Search } from './components/Search';
 import logo from './images/logo.svg';
 import favoritesIcon from './images/favorites.svg';
 import cartIcon from './images/cart.svg';
 import arrowUp from './images/arrow-up.svg';
+import { useAppSelector } from './app/hooks';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'nav__link',
@@ -25,8 +24,9 @@ const getIconLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
 );
 
 const App = () => {
-  const { favorites, cart } = useContext(LocalContext);
   const { pathname, search } = useLocation();
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cart } = useAppSelector(state => state.cart);
 
   const handleScroll = () => {
     window.scrollTo({
@@ -77,7 +77,7 @@ const App = () => {
                 alt="favorites"
                 className="header__image"
               />
-              {pathname === '/favorites' && favorites.length !== 0 && (
+              {favorites.length !== 0 && (
                 <span className="header__count">
                   {favorites.length}
                 </span>
@@ -95,7 +95,7 @@ const App = () => {
               alt="cart"
               className="header__image"
             />
-            {pathname === '/cart' && cart.length !== 0 && (
+            {cart.length !== 0 && (
               <span className="header__count">
                 {cart.length}
               </span>

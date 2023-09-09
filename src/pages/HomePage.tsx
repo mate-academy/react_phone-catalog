@@ -1,21 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone } from '../types/Phone';
 import { Slider } from '../components/Slider';
 import { ProductsSlider } from '../components/ProductsSlider';
-import { getPhones } from '../helpers/htmlClient';
 import bannerPhones from '../images/category-phones.png';
 import bannerTablets from '../images/category-tablets.png';
 import bannerAccessories from '../images/category-accessories.png';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { init as initPhones } from '../features/phones';
 
 export const HomePage = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const { phones } = useAppSelector(state => state.phones);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getPhones()
-      .then((res: Phone[]) => {
-        setPhones(res);
-      });
+    dispatch(initPhones());
   }, []);
 
   return (

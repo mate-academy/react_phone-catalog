@@ -68,7 +68,12 @@ export const Search = () => {
   };
 
   return (
-    <div className="search">
+    <div
+      className={classNames(
+        'search',
+        { 'search--focus': !!query },
+      )}
+    >
       <input
         ref={inputRef}
         value={query}

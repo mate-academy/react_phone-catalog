@@ -31,7 +31,7 @@
     border: 1px solid $icons-color;
     width: 32px;
     height: 400px;
-    background-color: $hoverAndBg-color;
+    background-color: $white-color;
     cursor: pointer;
 
     @include hover(border-color, $primery-color);
@@ -47,7 +47,7 @@
     border: 1px solid $hoverAndBg-color;
     width: 24px;
     height: 24px;
-    background-color: $hoverAndBg-color;
+    background-color: $white-color;
     cursor: pointer;
 
     &::after {

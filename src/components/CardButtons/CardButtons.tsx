@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import classNames from 'classnames';
 import './CardButtons.scss';
 import { Phone } from '../../types/Phone';
-import { LocalContext } from '../../LocalContext';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as favoritesActions from '../../features/favorites';
+import * as cartActions from '../../features/cart';
 
 type Props = {
   card: Phone;
@@ -11,9 +13,9 @@ type Props = {
 };
 
 export const CardButtons: React.FC<Props> = ({ card, info }) => {
-  const {
-    favorites, setFavorites, cart, setCart,
-  } = useContext(LocalContext);
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cart } = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
 
   const isAddedToCart = useMemo(() => (
     cart.find(value => value.id === card.id)
@@ -21,15 +23,17 @@ export const CardButtons: React.FC<Props> = ({ card, info }) => {
 
   const handleClickCart = () => {
     if (!isAddedToCart) {
-      setCart([...cart, { id: card.id, quantity: 1, product: card }]);
+      dispatch(cartActions.add(
+        { id: card.id, quantity: 1, product: card },
+      ));
     }
   };
 
   const handleClickFavorites = () => {
     if (favorites.find(value => value.id === card.id)) {
-      setFavorites(favorites.filter(value => value.id !== card.id));
+      dispatch(favoritesActions.remove(card.id));
     } else {
-      setFavorites([...favorites, card]);
+      dispatch(favoritesActions.add(card));
     }
   };
 
