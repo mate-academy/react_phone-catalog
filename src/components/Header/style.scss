@@ -4,8 +4,8 @@
   width: 1440px;
   height: 64px;
   flex-shrink: 0;
-  background: var(--gray-white, #FFF);
-  box-shadow: 0px 1px 0px 0px #E2E6E9;
+  background: var(--gray-white, #fff);
+  box-shadow: 0 1px 0 0 #e2e6e9;
 
   &__box {
     display: flex;
@@ -26,8 +26,8 @@
   gap: 64px;
 
   &-link {
-    color: var(--gray-secondary, #89939A);
-    font-family: Mont;
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont, sans-serif;
     font-size: 12px;
     font-weight: 700;
     font-style: normal;
@@ -49,9 +49,9 @@ a:hover {
   padding-left: 24px;
   padding-right: 24px;
   width: 279px;
-  background: var(--gray-white, #FFF);
-  box-shadow: -1px 0px 0px 0px #E2E6E9;
-  color: var(--gray-icons-placeholders, #B4BDC3);
+  background: var(--gray-white, #fff);
+  box-shadow: -1px 0 0 0 #e2e6e9;
+  color: var(--gray-icons-placeholders, #b4bdc3);
   border: none;
 
   &-text {
@@ -59,7 +59,7 @@ a:hover {
     height: 63px;
     outline: none;
     color: var(--gray-icons-placeholders, #000);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
@@ -87,13 +87,35 @@ a:hover {
 .favorits,
 .basket {
   display: flex;
+  position: relative;
   width: 64px;
   height: 64px;
   justify-content: center;
   align-items: center;
-  background: var(--gray-white, #FFF);
-  box-shadow: -1px 0px 0px 0px #E2E6E9;
+  background: var(--gray-white, #fff);
+  box-shadow: -1px 0 0 0 #e2e6e9;
   background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  position: absolute;
+  margin-top: -17px;
+  margin-left: 15px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--Red, #eb5757);
+  color: var(--gray-white, #fff);
+  text-align: center;
+  font-family: Mont, sans-serif;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }

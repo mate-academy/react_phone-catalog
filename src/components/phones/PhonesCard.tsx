@@ -1,5 +1,6 @@
 import './phone.scss';
 import { Phone } from '../../types/phone';
+import { useHeaderContext } from '../../provider/HeaderContext';
 
 type Props = {
   phones: Phone[]
@@ -10,6 +11,13 @@ export const PhonesCard: React.FC<Props> = ({
   phones,
   showOldPrice,
 }) => {
+  const {
+    addToFavorite,
+    favoritePhones,
+    addToBasket,
+    basketPhones,
+  } = useHeaderContext();
+
   return (
     <div className="card-container">
       <div className="card" data-qa="card">
@@ -17,7 +25,7 @@ export const PhonesCard: React.FC<Props> = ({
           <div key={phone.id} className="card__info">
             <img
               className="card__image"
-              src={phone.image}
+              src={`./${phone.image}`}
               alt="xs"
             />
             <a href="/phone/" className="card__description">
@@ -48,13 +56,36 @@ export const PhonesCard: React.FC<Props> = ({
               <article className="card__ram-value">{phone.ram}</article>
             </div>
             <div className="card__buttons">
-              <a className="card__buttons-add" href="/">Add to cart</a>
-              <a
-                className="card__buttons-heart"
-                href="/"
+              <button
+                id={phone.id}
+                type="button"
+                className={basketPhones.find(p => p.id === phone.id)
+                  ? 'card__buttons-add is-active' : 'card__buttons-add'}
+                onClick={() => addToBasket(phone)}
               >
-                <img src="./img/icons/Heart.svg" alt="heart" />
-              </a>
+                {basketPhones.find(p => p.id === phone.id)
+                  ? 'Added to cart' : 'Add to cart'}
+              </button>
+              <button
+                id={phone.id}
+                type="button"
+                className="card__buttons-heart"
+                onClick={() => addToFavorite(phone)}
+              >
+                {favoritePhones.find(p => p.id === phone.id) ? (
+                  <img
+                    className="card__buttons-heart-image"
+                    src="../../img/icons/HeartLike.svg"
+                    alt="heart"
+                  />
+                ) : (
+                  <img
+                    className="card__buttons-heart-image"
+                    src="./img/icons/Heart.svg"
+                    alt="heart"
+                  />
+                )}
+              </button>
             </div>
           </div>
         ))}

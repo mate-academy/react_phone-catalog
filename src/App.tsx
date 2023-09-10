@@ -1,6 +1,6 @@
 import './App.scss';
 import {
-  BrowserRouter,
+  HashRouter,
   Navigate,
   Route,
   Routes,
@@ -10,24 +10,28 @@ import { HomeTab } from './components/HomeTab/HomeTab';
 import { Footer } from './components/footer/Footer';
 import { PhonesTab } from './components/PhonesTab/PhonesTab';
 import { HeaderProvider } from './provider/HeaderContext';
+import { FavoritePhones } from './components/favoritesPhones/FavoritePhones';
+import { Basket } from './components/basket/Basket';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <HeaderProvider>
         <div className="App">
           <Header />
           <main className="section">
             <Routes>
-              <Route path="/home" element={<Navigate to="/" />} />
+              <Route path="home" element={<Navigate to="/" />} />
               <Route path="/" element={<HomeTab />} />
-              <Route path="/phones" element={<PhonesTab />} />
+              <Route path="phones" element={<PhonesTab />} />
+              <Route path="favorits" element={<FavoritePhones />} />
+              <Route path="basket" element={<Basket />} />
             </Routes>
           </main>
           <Footer />
         </div>
       </HeaderProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

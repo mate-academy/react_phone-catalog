@@ -10,7 +10,7 @@ export const Category = () => {
         <div className="category__products-mobile">
           <img
             className="category__photo-phone"
-            src="../../img/banner-phone.png"
+            src="./img/banner-phone.png"
             alt="phones"
           />
           <p className="category__products-name">Mobile phones</p>
@@ -19,7 +19,7 @@ export const Category = () => {
         <div className="category__products-tablets">
           <img
             className="category__photo-tablets"
-            src="../../img/tablets.png"
+            src="./img/tablets.png"
             alt="tablets"
           />
           <p className="category__products-name">Tablets</p>
@@ -28,7 +28,7 @@ export const Category = () => {
         <div className="category__products-accessories">
           <img
             className="category__photo-accessories"
-            src="../../img/accessories.png"
+            src="./img/accessories.png"
             alt="accessories"
           />
           <p className="category__products-name">Accessories</p>

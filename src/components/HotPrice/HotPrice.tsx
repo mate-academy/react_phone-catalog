@@ -37,7 +37,7 @@ export const HotPrice: React.FC<Props> = ({ phones, title, showOldPrice }) => {
             id="prevButton"
             onClick={handlePrevClick}
           >
-            <img src="../img/icons/icons/left.svg" alt="Previous" />
+            <img src="./img/icons/left.svg" alt="Previous" />
           </button>
           <button
             type="button"
@@ -45,7 +45,7 @@ export const HotPrice: React.FC<Props> = ({ phones, title, showOldPrice }) => {
             id="nextButton"
             onClick={handleNextClick}
           >
-            <img src="../img/icons/icons/right.svg" alt="Next" />
+            <img src="./img/icons/right.svg" alt="Next" />
           </button>
         </div>
       </div>

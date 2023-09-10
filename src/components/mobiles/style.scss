@@ -1,7 +1,4 @@
 .mobile {
-  &__sort {
-    position: relative;
-  }
 
   &__sort-option {
     display: block;
@@ -10,24 +7,23 @@
     margin-bottom: 5px;
     width: 162px;
     height: 32px;
-    flex-shrink: 0;
-    background: var(--gray-white, #FFF);
+    background: var(--gray-white, #fff);
   }
 
   &__sort-dropdown {
     position: absolute;
-    border: 1px solid var(--gray-elements, #E2E6E9);
-    background: var(--gray-white, #FFF);
-    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--gray-elements, #e2e6e9);
+    background: var(--gray-white, #fff);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
     color: var(--gray-primary, #313237);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
 
     :hover {
-      background: var(--gray-background, #FAFBFC);
+      background: var(--gray-background, #fafbfc);
     }
   }
 
@@ -35,7 +31,7 @@
     margin-left: 152px;
     margin-bottom: 8px;
     color: var(--gray-primary, #313237);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -46,8 +42,8 @@
       margin-left: 152px;
       margin-top: 0;
       margin-bottom: 40px;
-      color: var(--gray-secondary, #89939A);
-      font-family: Mont;
+      color: var(--gray-secondary, #89939a);
+      font-family: Mont, sans-serif;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -72,8 +68,8 @@
     }
 
     &-text {
-      color: var(--gray-secondary, #89939A);
-      font-family: Mont;
+      color: var(--gray-secondary, #89939a);
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
@@ -82,6 +78,7 @@
   }
 
   &__sort {
+    position: relative;
     margin-left: 152px;
     margin-bottom: 24px;
     display: flex;
@@ -89,8 +86,8 @@
     cursor: pointer;
 
     &-text {
-      color: var(--gray-secondary, #89939A);
-      font-family: Mont;
+      color: var(--gray-secondary, #89939a);
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
@@ -105,11 +102,11 @@
       height: 40px;
       flex-shrink: 0;
       background: #fff;
-      border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+      border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
       cursor: pointer;
 
       &-text {
-        font-family: Mont;
+        font-family: Mont, sans-serif;
         font-size: 14px;
         font-style: normal;
         font-weight: 600;
@@ -118,6 +115,7 @@
       }
     }
   }
+
   &__pages {
     margin-top: 40px;
     margin-bottom: 80px;
@@ -127,16 +125,18 @@
 
     &-number.is-active {
       background: var(--gray-primary, #313237);
-      color: var(--gray-white, #FFF);
+      color: var(--gray-white, #fff);
     }
 
-    &-left, &-number, &-right {
+    &-left,
+    &-number,
+    &-right {
       width: 32px;
       height: 32px;
       flex-shrink: 0;
-      background:#fff;
+      background: #fff;
       color: #000;
-      border: 1px solid var(--gray-elements, #E2E6E9);
+      border: 1px solid var(--gray-elements, #e2e6e9);
       cursor: pointer;
     }
   }

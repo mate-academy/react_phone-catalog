@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useLocation } from 'react-router-dom';
 import { Phone } from '../../types/phone';
 import { PhonesCard } from '../phones/PhonesCard';
 import './style.scss';
+import { MobileHome } from '../MobileHome/MobileHome';
 
 type Props = {
   phones: Phone[]
@@ -24,8 +24,6 @@ export const Mobiles: React.FC<Props> = ({
   const [showCountDropdown, setCountDropdown] = useState(false);
   const [selectedSortType, setSelectedSortType] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const location = useLocation();
-  const pathname = location.pathname.split('/');
 
   const toggleSortDropdown = () => {
     setShowSortDropdown(!showSortDropdown);
@@ -86,21 +84,7 @@ export const Mobiles: React.FC<Props> = ({
 
   return (
     <div className="mobile">
-      <div className="mobile__home">
-        <a href="/">
-          <img
-            className="mobile__home-image"
-            src="./img/icons/Home.png"
-            alt="home"
-          />
-        </a>
-        <img
-          className="mobile__home-right"
-          src="./img/icons/Icons/right.svg"
-          alt="right"
-        />
-        <p className="mobile__home-text">{pathname}</p>
-      </div>
+      <MobileHome />
       <h1 className="mobile__title">{title}</h1>
 
       <p className="mobile__title-description">{`${phones.length} models`}</p>
@@ -189,7 +173,7 @@ export const Mobiles: React.FC<Props> = ({
         >
           <img
             className="image-left"
-            src="../img/icons/Icons/left.svg"
+            src="./img/icons/left.svg"
             alt="left"
           />
         </button>
@@ -213,7 +197,7 @@ export const Mobiles: React.FC<Props> = ({
         >
           <img
             className="image-right"
-            src="../img/icons/Icons/right.svg"
+            src="./img/icons/right.svg"
             alt="right"
           />
         </button>

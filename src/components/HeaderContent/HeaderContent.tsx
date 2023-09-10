@@ -1,11 +1,16 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useHeaderContext } from '../../provider/HeaderContext';
 
 export const HeaderContent = () => {
   const location = useLocation();
   const isPhoneTab = location.pathname === '/phones';
-  const { inputValue, handleSearch } = useHeaderContext();
+  const {
+    inputValue,
+    handleSearch,
+    favoritePhones,
+    basketPhones,
+  } = useHeaderContext();
 
   const searhInput = (event:React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,8 +23,8 @@ export const HeaderContent = () => {
           <img src="./img/icons/Logo.svg" alt="logo" />
         </a>
 
-        <a className="header__content-left-link" href="/home">home</a>
-        <a className="header__content-left-link" href="/phones">phones</a>
+        <Link className="header__content-left-link" to="/home">home</Link>
+        <Link className="header__content-left-link" to="/phones">phones</Link>
         <a className="header__content-left-link" href="/">tablets</a>
         <a className="header__content-left-link" href="/">accessories</a>
       </nav>
@@ -35,23 +40,37 @@ export const HeaderContent = () => {
             />
             <img
               className="searh-input-image"
-              src="./img/icons/icons/Search.svg"
+              src="./img/icons/Search.svg"
               alt="find"
             />
           </form>
         )}
-        <a
-          href="/"
+        <Link
+          to="/favorits"
           className="favorits"
         >
+          {favoritePhones.length > 0 && (
+            <div
+              className="circle"
+            >
+              { favoritePhones.length}
+            </div>
+          )}
           <img className="image" src="./img/icons/Heart.svg" alt="like" />
-        </a>
-        <a
-          href="/"
+        </Link>
+        <Link
+          to="/basket"
           className="basket"
         >
+          {basketPhones.length > 0 && (
+            <div
+              className="circle"
+            >
+              { basketPhones.length}
+            </div>
+          )}
           <img className="image" src="./img/icons/Group.svg" alt="basket" />
-        </a>
+        </Link>
       </nav>
     </header>
   );

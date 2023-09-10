@@ -2,9 +2,9 @@ import { useState } from 'react';
 import './style.scss';
 
 const images = [
-  { id: 1, src: '../img/banner-phones.png', alt: 'banner1' },
-  { id: 2, src: '../img/banner-tablets.png', alt: 'banner2' },
-  { id: 3, src: '../img/banner-accessories.png', alt: 'banner3' },
+  { id: 1, src: './img/banner-phones.png', alt: 'banner1' },
+  { id: 2, src: './img/banner-tablets.png', alt: 'banner2' },
+  { id: 3, src: './img/banner-accessories.png', alt: 'banner3' },
 ];
 
 export const Home = () => {
@@ -51,7 +51,7 @@ export const Home = () => {
           id="prevButton"
           onClick={handlePrevClick}
         >
-          <img src="../img/icons/icons/left.svg" alt="Previous" />
+          <img src="./img/icons/left.svg" alt="Previous" />
         </button>
         <div className="slider__content">
           <div className="slider__content-center" style={{ transform: `translateX(${offSet}px)` }}>
@@ -71,7 +71,7 @@ export const Home = () => {
           id="nextButton"
           onClick={handleNextClick}
         >
-          <img src="../img/icons/icons/right.svg" alt="Next" />
+          <img src="./img/icons/right.svg" alt="Next" />
         </button>
       </div>
 

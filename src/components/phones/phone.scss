@@ -2,6 +2,7 @@
   margin-inline: 152px;
   min-height: 507px;
 }
+
 .card {
   display: grid;
   justify-content: space-between;
@@ -9,26 +10,24 @@
   gap: 16px;
   height: 100%;
   width: 272px;
-  flex-shrink: 0;
 
   &__info {
-  border: 1px solid var(--gray-elements, #E2E6E9);
-  background: var(--gray-white, #FFF);
+    border: 1px solid var(--gray-elements, #e2e6e9);
+    background: var(--gray-white, #fff);
   }
 
   &__image {
-    margin: 28px 64px 0px 64px;
+    margin: 28px 64px 0;
     width: 148px;
     height: 200px;
-    flex-shrink: 0;
   }
 
   &__description {
     display: flex;
     width: 224px;
     height: 42px;
-    margin: 24px 24px 8px 24px;
-    font-family: Mont;
+    margin: 24px 24px 8px;
+    font-family: Mont, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -41,21 +40,22 @@
     margin-bottom: 8px;
     margin-left: 24px;
     display: flex;
+    align-items: center;
     gap: 8px;
   }
 
   &__new-price {
     color: var(--gray-primary, #313237);
-    font-family: Mont;
+    font-family: Mont, sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
   }
 
-  &__old-price{
-    color: var(--gray-secondary, #89939A);
-    font-family: Mont;
+  &__old-price {
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont, sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
@@ -70,18 +70,18 @@
     margin-inline: 24px;
 
     &-name {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-      color: var(--gray-secondary, #89939A);
+      color: var(--gray-secondary, #89939a);
     }
 
     &-value {
       color: var(--gray-primary, #313237);
       text-align: right;
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
@@ -96,18 +96,18 @@
     margin-bottom: 8px;
 
     &-name {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-      color: var(--gray-secondary, #89939A);
+      color: var(--gray-secondary, #89939a);
     }
 
     &-value {
       color: var(--gray-primary, #313237);
       text-align: right;
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
@@ -122,35 +122,30 @@
     margin-bottom: 16px;
 
     &-name {
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-      color: var(--gray-secondary, #89939A);
+      color: var(--gray-secondary, #89939a);
     }
 
     &-value {
       color: var(--gray-primary, #313237);
       text-align: right;
-      font-family: Mont;
+      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
     }
-  }
-
-  &__screen {
-    display: flex;
-
   }
 
   &__line {
     margin-bottom: 16px;
     width: 224px;
     height: 1px;
-    background: #E2E6E9;
+    background: #e2e6e9;
     margin-inline: 24px;
   }
 
@@ -164,8 +159,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color:#FFF;
-      font-family: Mont;
+      color: #fff;
+      font-family: Mont, sans-serif;
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
@@ -173,14 +168,20 @@
       text-decoration: none;
       width: 176px;
       height: 40px;
-      flex-shrink: 0;
       border: 1px solid var(--gray-primary, #313237);
       background: var(--gray-primary, #313237);
+      cursor: pointer;
 
       &:hover {
-        color: var(--Green-2, #27AE60);
-        background: #FFF;
-        border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+        color: var(--Green-2, #27ae60);
+        background: #fff;
+        border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
+      }
+
+      &.is-active {
+        color: var(--Green-2, #27ae60);
+        background: #fff;
+        border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
       }
     }
 
@@ -190,8 +191,18 @@
       align-items: center;
       width: 40px;
       height: 40px;
-      flex-shrink: 0;
-      border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+      border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
+      background: #fff;
+      cursor: pointer;
+
+      &-image {
+        height: 16px;
+        width: 16px;
+
+        &:hover {
+          content: url('../../img/icons/HeartLike.svg');
+        }
+      }
     }
   }
 }

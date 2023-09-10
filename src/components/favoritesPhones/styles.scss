@@ -1,0 +1,24 @@
+.favorite {
+
+  &__title {
+    margin-left: 152px;
+    margin-bottom: 8px;
+    color: var(--gray-primary, #313237);
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__items {
+    margin-left: 152px;
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
