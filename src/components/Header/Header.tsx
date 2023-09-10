@@ -173,7 +173,11 @@ export const Header = () => {
 
           {favourites.length > 0 && (
             <div className="header__icon-count">
-              {favourites.length}
+              <div className="header__icon-count-container">
+                <div className="header__icon-counter">
+                  {favourites.length}
+                </div>
+              </div>
             </div>
           )}
         </NavLink>
@@ -196,7 +200,11 @@ export const Header = () => {
           />
           {cart.length > 0 && (
             <div className="header__icon-count">
-              {cart.length}
+              <div className="header__icon-count-container">
+                <div className="header__icon-counter">
+                  {cart.length}
+                </div>
+              </div>
             </div>
           )}
         </NavLink>

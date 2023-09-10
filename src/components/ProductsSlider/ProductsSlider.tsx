@@ -13,24 +13,26 @@ type Props = {
   products: Product[]
 };
 
-const gap = 16;
-
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [position, setPosition] = useState(0);
   const visibleProducts = products.slice(0, 21);
   const { cardWidth } = useContext(CardWidthContext);
 
-  const maxPosition = -(visibleProducts.length * (cardWidth + gap)
-    - 4 * (cardWidth + gap));
+  const gap = () => {
+    return cardWidth >= 250 ? 16 : 12;
+  };
+
+  const maxPosition = -(visibleProducts.length * (cardWidth + gap())
+    - 4 * (cardWidth + gap()));
 
   const clickNext = () => {
-    const newPosition = position - (cardWidth + gap);
+    const newPosition = position - (cardWidth + gap());
 
     setPosition(Math.max(newPosition, maxPosition));
   };
 
   const clickPrev = () => {
-    const newPosition = position + (cardWidth + gap);
+    const newPosition = position + (cardWidth + gap());
 
     setPosition(Math.min(newPosition, 0));
   };

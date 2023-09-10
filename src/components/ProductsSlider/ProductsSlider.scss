@@ -80,7 +80,7 @@
   }
 
   @media (max-width: 768px) {
-    width: 302px;
+    width: 340px;
 
     &__header {
       margin-bottom: 12px;
@@ -88,10 +88,12 @@
 
     &__title {
       margin-bottom: 0;
+      margin-right: 16px;
     }
 
     &__item {
-      height: 250px;
+      height: 276px;
+      margin-left: 12px;
     }
   }
 }

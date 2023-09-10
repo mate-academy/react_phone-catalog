@@ -134,18 +134,29 @@
     left: 34px;
     top: 20px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 14px;
     height: 14px;
 
     border-radius: 50%;
     background-color: $red;
+
+  }
+
+  &__icon-count-container {
+    position: relative;
+  }
+
+  &__icon-counter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-45%, 19%);
+    box-sizing: border-box;
+
     color: #fff;
 
     font-family: $font-semibold;
-    font-size: 9px;
+    font-size: 8px;
   }
 
   &__button {

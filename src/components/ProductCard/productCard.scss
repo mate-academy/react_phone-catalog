@@ -93,14 +93,15 @@
   }
 
   @media (max-width: 768px) {
-    width: 131px;
-    height: 254px;
+    justify-content: space-between;
+    width: 153px;
+    height: 284px;
     padding: 12px 8px 8px;
     font-size: 10px;
 
     &__img {
       margin-bottom: 12px;
-      height: 50px;
+      height: 88px;
     }
 
     &__title {
@@ -133,15 +134,20 @@
       margin-bottom: 4px;
     }
 
+    &__buttons {
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
     &__button-cart {
-      width: 88px;
-      height: 20px;
+      width: 100px;
+      height: 28px;
       margin-right: 4px;
     }
 
     &__button-fav {
-      width: 20px;
-      height: 20px;
+      width: 28px;
+      height: 28px;
     }
   }
 }
