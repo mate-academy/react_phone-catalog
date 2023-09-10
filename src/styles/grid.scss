@@ -1,10 +1,9 @@
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
+  position: relative;
   overflow: visible;
 
   @include onTablet {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
     column-gap: 30px;
   }
@@ -12,20 +11,6 @@
   @include onDesktopSmall {
     grid-template-columns: repeat(24, 1fr);
     column-gap: 20px;
-  }
-
-  &--desktop {
-
-    display: inline-block;
-
-    @include onTablet {
-      display: grid;
-    }
-
-    @include onDesktopSmall {
-      display: grid;
-      align-items: flex-start;
-    }
   }
 
   &__item--tablet {
@@ -36,11 +21,6 @@
           grid-column: #{$start} / #{$end + 1};
         }
       }
-    }
-
-    &--4-7 {
-      grid-column: 4 / span 5;
-      position: relative;
     }
   }
 
@@ -54,17 +34,15 @@
           }
         }
       }
+    }
+  }
 
-      &--12-13 {
-        grid-column: 12 / span 2;
-        position: relative;
-        align-self: flex-end;
-      }
+  &__item {
+    display: block;
+    margin: 0 20%;
 
-      &--10-13 {
-        grid-column: 10 / span 4;
-        position: relative;
-      }
+    @include onTablet {
+      margin: 0;
     }
   }
 }

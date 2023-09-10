@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import { ShopCard } from './ShopCard';
 import { getHotPrice, getNewIphones } from './api/iphones';
 import { Iphone } from './types/Iphone';
@@ -83,17 +84,39 @@ export const HomePage: React.FC<Props> = ({
 
         </div>
 
-        <div className="shop__catalog">
+        <div className="shop__catalog grid grid--tablet grid--desktop">
           {hotPricedIphonesToShow.length > 0 ? (
-            hotPricedIphonesToShow.map((iphone) => {
+            hotPricedIphonesToShow.map((iphone, index) => {
+              const classNumberMobile = index % 2; // Определяем номер класса (0, 1 или 2)
+              const classNumberTablet = index % 3; // Определяем номер класса (0, 1 или 2)
+              const classNumberDesktop = index % 4; // Определяем номер класса (0, 1 или 2)
+
               return (
-                <ShopCard
-                  iphone={iphone}
-                  selectPhone={selectPhone}
-                  selectedIphoneId={selectedIphoneId}
-                  selectPhoneToBuy={selectPhoneToBuy}
-                  selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                />
+                <div
+                  className={classNames('grid__item', {
+                    'grid__item--mobile--1-2': classNumberMobile === 0,
+                    'grid__item--mobile--3-4': classNumberMobile === 1,
+
+                    'grid__item--tablet--1-2': classNumberTablet === 0,
+                    'grid__item--tablet--3-4': classNumberTablet === 1,
+                    'grid__item--tablet--5-6': classNumberTablet !== 1 && classNumberTablet !== 0,
+
+                    'grid__item--desktop--1-6': classNumberDesktop === 0,
+                    'grid__item--desktop--7-12': classNumberDesktop === 1,
+                    'grid__item--desktop--13-18': classNumberDesktop === 2,
+                    'grid__item--desktop--19-24': classNumberDesktop === 3,
+
+                  })}
+                >
+                  <ShopCard
+                    iphone={iphone}
+                    selectPhone={selectPhone}
+                    selectedIphoneId={selectedIphoneId}
+                    selectPhoneToBuy={selectPhoneToBuy}
+                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                  />
+
+                </div>
               );
             })
 
@@ -178,18 +201,42 @@ export const HomePage: React.FC<Props> = ({
 
         </div>
 
-        <div className="shop__catalog">
+        <div className="shop__catalog grid grid--tablet grid--desktop">
           {newIphonesToShow.length > 0 ? (
-            newIphonesToShow.map((iphone: Iphone) => (
-              <ShopCard
-                key={iphone.id}
-                iphone={iphone}
-                selectPhone={selectPhone}
-                selectedIphoneId={selectedIphoneId}
-                selectPhoneToBuy={selectPhoneToBuy}
-                selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-              />
-            ))
+            newIphonesToShow.map((iphone: Iphone, index: number) => {
+              const classNumberMobile = index % 2;
+              const classNumberTablet = index % 3;
+              const classNumberDesktop = index % 4;
+
+              return (
+                <div
+                  className={classNames('grid__item', {
+                    'grid__item--mobile--1-3': classNumberMobile === 0,
+                    'grid__item--mobile--4-6': classNumberMobile === 1,
+
+                    'grid__item--tablet--1-2': classNumberTablet === 0,
+                    'grid__item--tablet--3-4': classNumberTablet === 1,
+                    'grid__item--tablet--5-6': classNumberTablet !== 1 && classNumberTablet !== 0,
+
+                    'grid__item--desktop--1-6': classNumberDesktop === 0,
+                    'grid__item--desktop--7-12': classNumberDesktop === 1,
+                    'grid__item--desktop--13-18': classNumberDesktop === 2,
+                    'grid__item--desktop--19-24': classNumberDesktop === 3,
+                  })}
+                >
+                  <ShopCard
+                    key={iphone.id}
+                    iphone={iphone}
+                    selectPhone={selectPhone}
+                    selectedIphoneId={selectedIphoneId}
+                    selectPhoneToBuy={selectPhoneToBuy}
+                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                  />
+
+                </div>
+
+              );
+            })
           ) : (
             <Loader />
           )}

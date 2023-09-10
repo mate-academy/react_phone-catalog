@@ -1,9 +1,6 @@
 .shop {
   &__catalog {
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
     max-width: 1136px;
 
     &--favorites {
@@ -19,6 +16,10 @@
     border: 1px solid $c-gray-light;
     margin-bottom: 40px;
     transition: all 0.3s;
+
+    @include onTablet {
+      width: auto;
+    }
 
     &:hover {
       box-shadow: 2px 5px 5px 2px rgba(0, 0, 0, 0.52);

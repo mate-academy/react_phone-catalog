@@ -6,12 +6,21 @@
 
   &--elipse {
     position: absolute;
-    bottom: 30px;
-    left: 33px;
     z-index: 2;
+    left: 15px;
+    bottom: 35px;
+
+    @include onTablet {
+      bottom: 30px;
+      left: 33px;
+    }
 
     &--2 {
-      left: 100px;
+      left: 35px;
+
+      @include onTablet {
+        left: 100px;
+      }
     }
   }
 

@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import './App.scss';
 import {
   Route, Routes, Navigate,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Iphone } from './types/Iphone';
@@ -13,6 +15,7 @@ import { Favorites } from './Favorites';
 import { Basket } from './Basket';
 import { PhoneDescription } from './PhoneDescription';
 import { getAll } from './api/iphones';
+import { MenuMobile } from './MenuMobile';
 
 const App = () => {
   const [iphones, setIphones] = useState<Iphone[]>([]); // -
@@ -21,6 +24,8 @@ const App = () => {
   const [selectedIphoneIdToBuy] = useState<null | string>(null);
   const [iphonesToBuy, setIphonesToBuy] = useState<Iphone[]>([]);
   const [iphoneTitle, setIphoneTitle] = useState('');
+
+  const location = useLocation();
 
   useEffect(() => {
     getAll().then((items) => setIphones(items));
@@ -108,104 +113,117 @@ const App = () => {
 
   return (
     <>
-      <Header
-        inputText={iphoneTitle}
-        setInputText={handleSetInputText}
-        favoritesCount={favorites.length}
-        basketCount={iphonesToBuy.length}
-      />
-      <main className="page">
-        <div className="container">
-          <Routes>
-            <Route
-              path="/"
-              element={(
-                <HomePage
-                  selectPhone={handleSelectPhone}
-                  selectedIphoneId={selectedIphoneId}
-                  selectPhoneToBuy={handleSelectPhoneToBuy}
-                  selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                />
-              )}
-            />
+      <Routes>
+        <Route
+          path="menu"
+          element={(
+            <MenuMobile />)}
+        />
 
-            <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route
-              path="phones"
-              element={(
-                <PhonesPage
-                  selectedIphoneId={selectedIphoneId}
-                  selectPhone={handleSelectPhone}
-                  selectPhoneToBuy={handleSelectPhoneToBuy}
-                  selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                  iphoneTitle={iphoneTitle}
-                />
-              )}
-            />
-            <Route
-              path="tablets"
-              element={(
-                <NotImplemented />)}
-            />
-            <Route
-              path="accessories"
-              element={(
-                <NotImplemented />)}
-            />
+      </Routes>
+      {location.pathname !== '/menu' && (
+        <>
+          <Header
+            inputText={iphoneTitle}
+            setInputText={handleSetInputText}
+            favoritesCount={favorites.length}
+            basketCount={iphonesToBuy.length}
+          />
+          <main className="page">
+            <div className="container">
+              <Routes>
 
-            <Route
-              path="liked"
-              element={(
-                <Favorites
-                  favorites={favorites}
-                  selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                  selectPhoneToBuy={handleSelectPhoneToBuy}
-                  selectedIphoneId={selectedIphoneId}
-                  selectPhone={handleSelectPhone}
+                <Route
+                  path="/"
+                  element={(
+                    <HomePage
+                      selectPhone={handleSelectPhone}
+                      selectedIphoneId={selectedIphoneId}
+                      selectPhoneToBuy={handleSelectPhoneToBuy}
+                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                    />
+                  )}
                 />
-              )}
-            />
 
-            <Route
-              path="basket"
-              element={(
-                <Basket
-                  phonesToBuy={iphonesToBuy}
-                  removeIphone={handleRemoveIphone}
+                <Route path="/home" element={<Navigate to="/" replace />} />
+                <Route
+                  path="phones"
+                  element={(
+                    <PhonesPage
+                      selectedIphoneId={selectedIphoneId}
+                      selectPhone={handleSelectPhone}
+                      selectPhoneToBuy={handleSelectPhoneToBuy}
+                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                      iphoneTitle={iphoneTitle}
+                    />
+                  )}
                 />
-              )}
-            />
+                <Route
+                  path="tablets"
+                  element={(
+                    <NotImplemented />)}
+                />
+                <Route
+                  path="accessories"
+                  element={(
+                    <NotImplemented />)}
+                />
+                <Route
+                  path="liked"
+                  element={(
+                    <Favorites
+                      favorites={favorites}
+                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                      selectPhoneToBuy={handleSelectPhoneToBuy}
+                      selectedIphoneId={selectedIphoneId}
+                      selectPhone={handleSelectPhone}
+                    />
+                  )}
+                />
 
-            <Route path="phones">
-              <Route
-                index
-                element={(
-                  <PhonesPage
-                    selectedIphoneId={selectedIphoneId}
-                    selectPhone={handleSelectPhone}
-                    selectPhoneToBuy={handleSelectPhoneToBuy}
-                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                    iphoneTitle={iphoneTitle} // +
+                <Route
+                  path="basket"
+                  element={(
+                    <Basket
+                      phonesToBuy={iphonesToBuy}
+                      removeIphone={handleRemoveIphone}
+                    />
+                  )}
+                />
+
+                <Route path="phones">
+                  <Route
+                    index
+                    element={(
+                      <PhonesPage
+                        selectedIphoneId={selectedIphoneId}
+                        selectPhone={handleSelectPhone}
+                        selectPhoneToBuy={handleSelectPhoneToBuy}
+                        selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                        iphoneTitle={iphoneTitle} // +
+                      />
+                    )}
                   />
-                )}
-              />
-              <Route
-                path=":iphoneId"
-                element={(
-                  <PhoneDescription
-                    selectedIphoneId={selectedIphoneId}
-                    selectPhone={handleSelectPhone}
-                    selectPhoneToBuy={handleSelectPhoneToBuy}
-                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                  <Route
+                    path=":iphoneId"
+                    element={(
+                      <PhoneDescription
+                        selectedIphoneId={selectedIphoneId}
+                        selectPhone={handleSelectPhone}
+                        selectPhoneToBuy={handleSelectPhoneToBuy}
+                        selectedIphoneIdToBuy={selectedIphoneIdToBuy}
+                      />
+                    )}
                   />
-                )}
-              />
-            </Route>
+                </Route>
 
-          </Routes>
-        </div>
-      </main>
-      <Footer />
+              </Routes>
+            </div>
+          </main>
+          <Footer />
+
+        </>
+      )}
     </>
   );
 };

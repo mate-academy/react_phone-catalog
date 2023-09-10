@@ -6,17 +6,6 @@
   }
 
   &__list {
-    &--img {
-      display: none;
-
-      @include onTablet {
-        display: flex;
-        flex-direction: column;
-        width: max-content;
-        justify-content: space-between;
-      }
-    }
-
     &--buttons {
       display: flex;
       margin-bottom: 56px;
@@ -30,7 +19,7 @@
 
       &::before {
         content: "";
-        width: 320px;
+        width: 100%;
         height: 1px;
         background: $c-gray-light;
         position: absolute;
@@ -129,6 +118,7 @@
     }
 
     &-title {
+      text-align: center;
       color: $c-primary;
       font-size: 32px;
       font-weight: 700;
@@ -137,6 +127,10 @@
       display: block;
       padding-bottom: 24px;
       margin: 0;
+
+      @include onTablet {
+        text-align: left;
+      }
     }
   }
 

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
+import classNames from 'classnames';
 import { Iphone } from './types/Iphone';
 import { ShopCard } from './ShopCard';
 import { NotFoundItems } from './NotFound';
@@ -20,7 +21,7 @@ export const Favorites: React.FC<Props> = ({
   selectedIphoneId,
 }) => {
   useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('favoritesToBuy', JSON.stringify(favorites));
   }, [favorites]);
 
   return (
@@ -98,11 +99,29 @@ export const Favorites: React.FC<Props> = ({
             </div>
           </div>
 
-          <div className="shop__catalog shop__catalog--favorites">
+          <div className="shop__catalog shop__catalog--favorites grid grid--tablet grid--desktop">
 
-            {favorites.map((iphone) => {
+            {favorites.map((iphone, index) => {
+              const classNumberMobile = index % 2; // Определяем номер класса (0, 1 или 2)
+              const classNumberTablet = index % 3; // Определяем номер класса (0, 1 или 2)
+              const classNumberDesktop = index % 4; // Определяем номер класса (0, 1 или 2)
+
               return (
-                <div className="shop__catalog--favorites-item">
+                <div className={classNames('grid__item', {
+                  'grid__item--mobile--1-2': classNumberMobile === 0,
+                  'grid__item--mobile--3-4': classNumberMobile === 1,
+
+                  'grid__item--tablet--1-2': classNumberTablet === 0,
+                  'grid__item--tablet--3-4': classNumberTablet === 1,
+                  'grid__item--tablet--5-6': classNumberTablet !== 1 && classNumberTablet !== 0,
+
+                  'grid__item--desktop--1-6': classNumberDesktop === 0,
+                  'grid__item--desktop--7-12': classNumberDesktop === 1,
+                  'grid__item--desktop--13-18': classNumberDesktop === 2,
+                  'grid__item--desktop--19-24': classNumberDesktop === 3,
+
+                })}
+                >
                   <ShopCard
                     iphone={iphone}
                     selectPhone={selectPhone}
