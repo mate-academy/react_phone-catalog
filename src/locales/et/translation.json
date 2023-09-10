@@ -73,5 +73,6 @@
   "description": "Kirjeldus",
   "sizes": "Suurused",
   "colors": "Värvid",
-  "sale": "Allahindlus"
+  "sale": "Allahindlus",
+  "filter": "Filter"
 }

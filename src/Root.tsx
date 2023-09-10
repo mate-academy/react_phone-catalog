@@ -8,6 +8,7 @@ import { App } from './App';
 
 import { HomePage } from './pages/HomePage/HomePage';
 import { LookBookPage } from './pages/LookBookPage/LookBookPage';
+import { AllGenderPage } from './pages/AllGenderPage/AllGenderPage';
 import { DeliveringPage } from './pages/DeliveringPage/DeliveringPage';
 import { Page404 } from './pages/Page404/Page404';
 
@@ -25,6 +26,11 @@ export const Root: React.FC = React.memo(() => (
       <Route
         path="home"
         element={<Navigate to="/" replace />}
+      />
+
+      <Route
+        path="allGender"
+        element={<AllGenderPage />}
       />
 
       <Route

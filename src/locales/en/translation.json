@@ -73,5 +73,6 @@
   "description": "Description",
   "sizes": "Sizes",
   "colors": "Colors",
-  "sale": "Sale"
+  "sale": "Sale",
+  "filter": "Filter"
 }
