@@ -1,0 +1,16 @@
+.pagination {
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+
+  &__buttons-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  &__button-container {
+    width: 32px;
+  }
+}

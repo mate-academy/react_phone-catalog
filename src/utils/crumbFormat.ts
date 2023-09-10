@@ -1,4 +1,4 @@
-export const getFormattedCrumb = (crumb?: string) => {
+export function getFormattedCrumb(crumb?: string) {
   if (crumb) {
     return crumb.split('-').map(part => {
       return part[0].toUpperCase() + part.slice(1);
@@ -6,4 +6,4 @@ export const getFormattedCrumb = (crumb?: string) => {
   }
 
   return '';
-};
+}

@@ -1,15 +1,14 @@
-/* eslint-disable no-console */
 import '../../styles/components/Crumbs/Crumbs.scss';
 
 import { Link, useLocation } from 'react-router-dom';
 import { getFormattedCrumb } from '../../utils/crumbFormat';
 
 export const Crumbs: React.FC = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   let path = '';
 
-  const crumbs = location.pathname
+  const crumbs = pathname
     .split('/')
     .splice(1)
     .map((crumb, index, arr) => {

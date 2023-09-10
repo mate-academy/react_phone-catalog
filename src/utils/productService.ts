@@ -10,11 +10,11 @@ const reverseSign = (number: number) => {
   return -number;
 };
 
-export const sortProducts = (
+export function sortProducts(
   products: Product[],
   sortBy: SortBy,
   desc: boolean,
-) => {
+) {
   const sortedProducts = [...products];
 
   switch (sortBy) {
@@ -33,13 +33,13 @@ export const sortProducts = (
       });
     default: return sortedProducts;
   }
-};
+}
 
-export const filterProducts = (
+export function filterProducts(
   products: Product[],
   filterBy: ProductType,
   query?: string,
-) => {
+) {
   const filteredProducts = [...products];
 
   if (query) {
@@ -57,4 +57,4 @@ export const filterProducts = (
       });
     default: return filteredProducts;
   }
-};
+}

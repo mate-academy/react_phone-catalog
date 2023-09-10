@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 import './App.scss';
-import { Crumbs } from './components/Crumbs';
+import { Pagination } from './components/Pagination';
 
 const App = () => {
   return (
     <div className="App">
-      <Crumbs />
+      <Pagination total={43} />
     </div>
   );
 };
