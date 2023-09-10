@@ -11,38 +11,36 @@ import { LookBookPage } from './pages/LookBookPage/LookBookPage';
 import { DeliveringPage } from './pages/DeliveringPage/DeliveringPage';
 import { Page404 } from './pages/Page404/Page404';
 
-export const Root: React.FC = () => {
-  return (
-    <Routes>
+export const Root: React.FC = React.memo(() => (
+  <Routes>
+    <Route
+      path="/"
+      element={<App />}
+    >
       <Route
-        path="/"
-        element={<App />}
-      >
-        <Route
-          index
-          element={<HomePage />}
-        />
+        index
+        element={<HomePage />}
+      />
 
-        <Route
-          path="home"
-          element={<Navigate to="/" replace />}
-        />
+      <Route
+        path="home"
+        element={<Navigate to="/" replace />}
+      />
 
-        <Route
-          path="lookBook"
-          element={<LookBookPage />}
-        />
+      <Route
+        path="lookBook"
+        element={<LookBookPage />}
+      />
 
-        <Route
-          path="delivering"
-          element={<DeliveringPage />}
-        />
+      <Route
+        path="delivering"
+        element={<DeliveringPage />}
+      />
 
-        <Route
-          path="*"
-          element={<Page404 />}
-        />
-      </Route>
-    </Routes>
-  );
-};
+      <Route
+        path="*"
+        element={<Page404 />}
+      />
+    </Route>
+  </Routes>
+));
