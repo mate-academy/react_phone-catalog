@@ -25,7 +25,8 @@
 
   &__left {
     margin-right: 16px;
-    background-image: url(../../images/icons/ArrowLeftDisabled.svg);
+    // background-image: url(../../images/icons/ArrowLeftDisabled.svg);
+    background-image: url(../../images/icons/ArrowLeft.svg);
 
     &--active {
       background-image: url(../../images/icons/ArrowLeft.svg);
@@ -33,7 +34,8 @@
   }
 
   &__right {
-    background-image: url(../../images/icons/ArrowRightDisabled.svg);
+    // background-image: url(../../images/icons/ArrowRightDisabled.svg);
+    background-image: url(../../images/icons/ArrowRight.svg);
 
     &--active {
       background-image: url(../../images/icons/ArrowRight.svg);

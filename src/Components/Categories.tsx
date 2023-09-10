@@ -2,8 +2,13 @@ import '../style/main.scss';
 import imgPhones from '../images/categories/Phones.png';
 import imgTablets from '../images/categories/Tablets.png';
 import imgAccessories from '../images/categories/Accessories.png';
+import { Phone } from '../Type/Phone';
 
-export const Categories = () => {
+type Props = {
+  phones: Phone[],
+};
+
+export const Categories: React.FC<Props> = ({ phones }) => {
   return (
     <div className="container--shop">
       <h1>Shop by category</h1>
@@ -22,7 +27,7 @@ export const Categories = () => {
               Mobile phones
             </h3>
             <p className="category__presence">
-              95 models
+              {`${phones.length} models`}
             </p>
           </div>
         </div>
@@ -40,7 +45,7 @@ export const Categories = () => {
               Tablets
             </h3>
             <p className="category__presence">
-              9511202 models
+              {`${0} models`}
             </p>
           </div>
         </div>
@@ -58,7 +63,7 @@ export const Categories = () => {
               Accessories
             </h3>
             <p className="category__presence">
-              112314 models
+              {`${0} models`}
             </p>
           </div>
         </div>

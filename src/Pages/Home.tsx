@@ -1,22 +1,24 @@
 import { NewModels } from '../Components/NewModels';
 import { HotPrices } from '../Components/HotPrices';
 import { Categories } from '../Components/Categories';
-// import { Slider } from '../Components/Slider';
-import { TestSwiper } from '../Components/TestSwiper';
+import { BannerSlider } from '../Components/BannerSlider';
+import { Phone } from '../Type/Phone';
 
-export const HomePage = () => {
+type Props = {
+  phones: Phone[],
+};
+
+export const HomePage: React.FC<Props> = ({ phones }) => {
   return (
     <main>
 
-      {/* <Slider /> */}
+      <BannerSlider />
 
-      <TestSwiper />
+      <HotPrices phones={phones} />
 
-      <HotPrices />
+      <Categories phones={phones} />
 
-      <Categories />
-
-      <NewModels />
+      <NewModels phones={phones} />
 
     </main>
   );

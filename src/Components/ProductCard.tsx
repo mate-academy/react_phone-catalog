@@ -11,7 +11,7 @@ const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   return (
-    <div className="product__card">
+    <div className="product__card phones__list--card">
       <div className="product__photo">
         <img
           className="product__photo--img"

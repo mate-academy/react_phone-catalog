@@ -1,43 +1,18 @@
-/* eslint-disable no-console */
-/* eslint-disable no-plusplus */
-import React, { useEffect, useState } from 'react';
-// import Slider from 'react-slick';
-import '../style/main.scss';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { ProductCard } from './ProductCard';
-import { client } from '../utils/fetchClient';
 import { Phone } from '../Type/Phone';
+import '../style/main.scss';
 
-let buttonBack = 0;
-let buttonNext = 4;
+type Props = {
+  phones: Phone[],
+};
 
-export const HotPrices: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [back, setBack] = useState(buttonBack);
-  const [next, setNext] = useState(buttonNext);
-  const [, setLoading] = useState(true);
-  const [, setErrorMessage] = useState(false);
-
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 4,
-  //   slidesToScroll: 1,
-  // };
-
-  useEffect(() => {
-    client.get<Phone[]>('/_new/products.json')
-      .then(setPhones)
-      .catch(setErrorMessage)
-      .finally(() => setLoading(false));
-  }, []);
+export const HotPrices: React.FC<Props> = ({ phones }) => {
   const hotPhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
-
-  const preperaPhones = hotPhones.slice(back, next);
-
-  // console.log(preperaPhones);
 
   return (
     <div className="container--hot">
@@ -48,39 +23,38 @@ export const HotPrices: React.FC = () => {
           <button
             type="button"
             aria-label="Mute volume"
-            className={classNames('button button__left', {
-              'button__left--active': buttonBack > 0,
-            })}
-            disabled={buttonBack === 0}
-            onClick={() => {
-              setNext(buttonNext--);
-              setBack(buttonBack--);
-            }}
+            className={classNames(
+              'button button__left button__hot--left',
+            )}
+          // disabled={buttonBack === 0}
           />
           <button
             type="button"
             aria-label="Mute volume"
-            className={classNames('button button__right', {
-              'button__right--active': buttonNext < hotPhones.length,
-            })}
-            disabled={buttonNext === hotPhones.length}
-            onClick={() => {
-              setNext(buttonNext++);
-              setBack(buttonBack++);
-            }}
+            className={classNames(
+              'button button__right button__hot--right',
+            )}
+          // disabled={buttonNext === hotPhones.length}
           />
         </div>
       </div>
 
       <div className="product">
-        {/* <Slider {...settings}> */}
-        {preperaPhones.map(phone => (
-          <ProductCard
-            key={phone.id}
-            phone={phone}
-          />
-        ))}
-        {/* </Slider> */}
+        <Swiper
+          navigation={{
+            nextEl: '.button__hot--right',
+            prevEl: '.button__hot--left',
+          }}
+          slidesPerView={4}
+          modules={[EffectFade, Navigation, Pagination]}
+          className="swiper__hot"
+        >
+          {hotPhones.map(phone => (
+            <SwiperSlide key={phone.id}>
+              <ProductCard phone={phone} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
     </div>

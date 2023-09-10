@@ -1,5 +1,19 @@
 .phones {
-  width: 1136px;
+  &__list {
+    margin: 24px 0 40px;
+    display: flex;
+    width: 1136px;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    &--card {
+      margin-bottom: 40px;
+
+      &:nth-child(4n) {
+        gap: 0;
+      }
+    }
+  }
 }
 
 .breadcrumbs {

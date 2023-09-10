@@ -2,3 +2,15 @@ main {
   margin: 0 auto;
   flex-grow: 1;
 }
+
+.swiper {
+  &__hot {
+    height: 100%;
+    width: 1136px;
+  }
+
+  &__models {
+    height: 100%;
+    width: 1136px;
+  }
+}

@@ -1,6 +1,27 @@
-.container--slider {
-  display: flex;
-  margin: 40px 0 72px;
+.container {
+  &--banner {
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    width: 1136px;
+    height: 432px;
+    justify-content: center !important;
+
+    margin: 40px 0 72px;
+
+    &-lower {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+
+  &--content {
+    justify-content: space-between;
+    width: 1136px;
+    display: flex;
+  }
 }
 
 .mySwiper {
@@ -8,36 +29,21 @@
   height: 400px;
 }
 
-.slider {
-  gap: 16px;
-  display: flex;
-  box-sizing: border-box;
-  margin-bottom: 8px;
+.swiper-custom-pagination {
+  display: flex !important;
+  width: 80px !important;
+  height: 24px !important;
+  margin: 8px 0 0 !important;
+}
 
-  overflow: none;
+.swiper-pagination-bullet {
+  height: 6px !important;
+  width: 18px !important;
+  border-radius: 0 !important;
+  background: $gray-secondary !important;
 
-  &--img {
-    width: 1040px;
-    height: 400px;
-  }
-
-  &__lower {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  &__button {
-    height: 6px;
-    width: 18px;
-    border: none;
-    background-color: $color-shadow;
-
-    &--active {
-      border: none;
-      background-color: #313237;
-    }
+  &-active {
+    background: $gray-primary !important;
   }
 }
 

@@ -1,9 +1,9 @@
 .product {
   margin-bottom: 80px;
   display: flex;
-  gap: 16px;
-
+  
   &__card {
+    box-sizing: border-box;
     width: 272px;
     height: 507px;
     border: 1px solid $color-shadow;

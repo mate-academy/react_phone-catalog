@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/main.scss';
-import { client } from '../utils/fetchClient';
-import { Phone } from '../Type/Phone';
 import { Dropdowns } from '../Components/Dropdowns';
+import { Phone } from '../Type/Phone';
+import { ProductCard } from '../Components/ProductCard';
 
-export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+type Props = {
+  phones: Phone[],
+};
 
-  useEffect(() => {
-    client.get<Phone[]>('/_new/products.json')
-      .then(setPhones);
-  }, []);
+export const PhonesPage: React.FC<Props> = ({ phones }) => {
+  const preperaPhones = phones.slice(0, 10);
 
   return (
     <main>
@@ -32,6 +31,26 @@ export const PhonesPage: React.FC = () => {
           <p className="title__p">{`${phones.length} models`}</p>
         </div>
         <Dropdowns />
+      </div>
+
+      <div className="container--list phones__list">
+        {preperaPhones.map(phone => (
+          <ProductCard phone={phone} key={phone.id} />
+        ))}
+      </div>
+
+      <div className="phones__button">
+        <button
+          type="button"
+          aria-label="Mute volume"
+          className="phones__button--right"
+        />
+        {preperaPhones.length}
+        <button
+          type="button"
+          aria-label="Mute volume"
+          className="phones__button--left"
+        />
       </div>
     </main>
   );
