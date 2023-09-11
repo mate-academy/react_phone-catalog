@@ -112,94 +112,88 @@ export const ProductDetailsPage = () => {
                 handlePhotoClick={handlePhotoClick}
               />
               <div className="product-details__main-info">
-                {productDetails && (
-                  <>
-                    <div className="product-details__colors">
-                      <ProductColor
-                        productDetails={productDetails}
+
+                <div className="product-details__colors">
+                  <ProductColor
+                    productDetails={productDetails}
+                  />
+                </div>
+
+                <div className="product-details__capacitys">
+                  <ProductCapacity
+                    productDetails={productDetails}
+                  />
+                </div>
+
+                <div className="product-details__price">
+
+                  <h1 className="product-details__current-price">
+                    {`$${productDetails?.priceDiscount}`}
+                  </h1>
+                  <div className="product-details__full-price">
+                    {`$${productDetails?.priceRegular}`}
+                  </div>
+                </div>
+
+                <div className="product-details__actions">
+                  <div className="product-details__button">
+                    {product && (
+                      <ButtonCart
+                        product={product}
                       />
-                    </div>
-
-                    <div className="product-details__capacitys">
-                      <ProductCapacity
-                        productDetails={productDetails}
+                    )}
+                  </div>
+                  <div className="product-details__fav">
+                    {product && (
+                      <ButtonFav
+                        product={product}
                       />
+                    )}
+
+                  </div>
+                </div>
+
+                <ul className="product-details__info">
+                  <li className="product-details__info-item">
+                    <div className="product-details__info-title">
+                      Screen
                     </div>
-
-                    <div className="product-details__price">
-
-                      <h1 className="product-details__current-price">
-                        {`$${productDetails?.priceDiscount}`}
-                      </h1>
-                      <div className="product-details__full-price">
-                        {`$${productDetails?.priceRegular}`}
-                      </div>
+                    <div className="product-details__info-value">
+                      {productDetails?.screen}
                     </div>
-
-                    <div className="product-details__actions">
-                      <div className="product-details__button">
-                        {product && (
-                          <ButtonCart
-                            product={product}
-                          />
-                        )}
-                      </div>
-                      <div className="product-details__fav">
-                        {product && (
-                          <ButtonFav
-                            product={product}
-                          />
-                        )}
-
-                      </div>
+                  </li>
+                  <li className="product-details__info-item">
+                    <div
+                      className="product-details__info-title"
+                    >
+                      Resolution
                     </div>
-
-                    <ul className="product-details__info">
-                      <li className="product-details__info-item">
-                        <div className="product-details__info-title">
-                          Screen
-                        </div>
-                        <div className="product-details__info-value">
-                          {productDetails?.screen}
-                        </div>
-                      </li>
-                      <li className="product-details__info-item">
-                        <div
-                          className="product-details__info-title"
-                        >
-                          Resolution
-                        </div>
-                        <div className="product-details__info-value">
-                          {productDetails?.resolution}
-                        </div>
-                      </li>
-                      <li className="product-details__info-item">
-                        <div className="product-details__info-title">
-                          Processor
-                        </div>
-                        <div className="product-details__info-value">
-                          {productDetails?.processor}
-                        </div>
-                      </li>
-                      <li className="product-details__info-item">
-                        <div className="product-details__info-title">RAM</div>
-                        <div className="product-details__info-value">
-                          {productDetails?.ram}
-                        </div>
-                      </li>
-                    </ul>
-                  </>
-                )}
-
+                    <div className="product-details__info-value">
+                      {productDetails?.resolution}
+                    </div>
+                  </li>
+                  <li className="product-details__info-item">
+                    <div className="product-details__info-title">
+                      Processor
+                    </div>
+                    <div className="product-details__info-value">
+                      {productDetails?.processor}
+                    </div>
+                  </li>
+                  <li className="product-details__info-item">
+                    <div className="product-details__info-title">RAM</div>
+                    <div className="product-details__info-value">
+                      {productDetails?.ram}
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
 
             <div className="product-details__additional-info">
-              {productDetails && (
-                <ProductInfo
-                  details={productDetails}
-                />
-              )}
+              <ProductInfo
+                details={productDetails}
+              />
             </div>
           </>
         )}

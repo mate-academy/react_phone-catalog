@@ -37,6 +37,13 @@ export const ProductCard: React.FC<Props> = ({
     setCardWidth(cardWidth);
   }, [cardRef, setCardWidth]);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div
       ref={cardRef}
@@ -46,6 +53,7 @@ export const ProductCard: React.FC<Props> = ({
       <Link
         className="product-card__link"
         to={`/${category}/${phoneId}`}
+        onClick={scrollToTop}
       >
         <img className="product-card__img" src={`newImg/${image}`} alt={name} />
         <div className="product-card__title">
