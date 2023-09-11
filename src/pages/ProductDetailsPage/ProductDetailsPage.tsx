@@ -56,6 +56,7 @@ export const ProductDetailsPage: FC = () => {
       }
     };
 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     fetchProduct();
   }, [productId]);
 
