@@ -14,8 +14,6 @@ interface HeaderContextType {
   basketPhones: Phone[];
   addToBasket: (basketPhones: Phone) => void;
   handlerDelete: (basketPhone: Phone) => void;
-  price: number;
-  hanldeAddPrice: (basketPhone: Phone) => void;
 }
 
 const HeaderContext = createContext<HeaderContextType | undefined>(undefined);
@@ -38,7 +36,6 @@ export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [favoritePhones, setFavoritePhones] = useState<Phone[]>([]);
   const [basketPhones, setBasketPhones] = useState<Phone[]>([]);
-  const [price, setPrice] = useState(0);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -68,15 +65,6 @@ export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
       .filter(basketPhone => basketPhone.id !== phone.id));
   };
 
-  const hanldeAddPrice = (phone: Phone) => {
-    if (basketPhones.some(basketPhone => basketPhone.id === phone.id)) {
-      const newPrice = basketPhones
-        .reduce((total, p) => total + p.price, 0);
-
-      setPrice(newPrice);
-    }
-  };
-
   return (
     <HeaderContext.Provider value={{
       inputValue,
@@ -86,8 +74,6 @@ export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
       basketPhones,
       addToBasket,
       handlerDelete,
-      price,
-      hanldeAddPrice,
     }}
     >
       {children}

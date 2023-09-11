@@ -9,7 +9,7 @@ export const PhonesTab = () => {
   const { inputValue } = useHeaderContext();
 
   useEffect(() => {
-    fetch('../../api/products.json')
+    fetch('api/products.json')
       .then(response => response.json())
       .then(data => setPhones(data));
   }, []);

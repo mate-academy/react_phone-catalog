@@ -25,8 +25,18 @@ export const HeaderContent = () => {
 
         <Link className="header__content-left-link" to="/home">home</Link>
         <Link className="header__content-left-link" to="/phones">phones</Link>
-        <a className="header__content-left-link" href="/">tablets</a>
-        <a className="header__content-left-link" href="/">accessories</a>
+        <Link
+          className="header__content-left-link"
+          to="/tablets"
+        >
+          tablets
+        </Link>
+        <Link
+          className="header__content-left-link"
+          to="/accessoiries"
+        >
+          accessories
+        </Link>
       </nav>
       <nav className="header__content-right">
         {isPhoneTab && (

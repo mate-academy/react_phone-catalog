@@ -11,7 +11,7 @@ export const HomeTab = () => {
 
   useEffect(() => {
     setShowOldPrice(true);
-    fetch('/api/products.json')
+    fetch('api/products.json')
       .then(response => response.json())
       .then(data => setPhones(data));
   }, []);

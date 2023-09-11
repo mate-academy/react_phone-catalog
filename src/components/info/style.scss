@@ -1,0 +1,17 @@
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+
+  &__title {
+    text-align: center;
+    color: var(--gray-primary, #313237);
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+}

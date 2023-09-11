@@ -42,7 +42,7 @@
     width: 752px;
     height: 128px;
     flex-shrink: 0;
-    border: 1px solid var(--gray-elements, #E2E6E9);
+    border: 1px solid var(--gray-elements, #e2e6e9);
     margin-bottom: 16px;
 
     &-delete {
@@ -96,7 +96,7 @@
     align-items: center;
     width: 32px;
     height: 32px;
-    border: 1px solid var(--gray-elements, #E2E6E9);
+    border: 1px solid var(--gray-elements, #e2e6e9);
     background: none;
   }
   .result {
@@ -143,7 +143,7 @@
     }
 
     &-line {
-      margin: 24px 24px 0 24px;
+      margin: 24px 24px 0;
       width: 321px;
       height: 1px;
       background: #e2e6e9;

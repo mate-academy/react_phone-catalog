@@ -6,8 +6,6 @@ export const Basket = () => {
   const {
     basketPhones,
     handlerDelete,
-    hanldeAddPrice,
-    price,
   } = useHeaderContext();
   const totalPrice = basketPhones
     .reduce((total, phone) => total + phone.price, 0);
@@ -17,7 +15,7 @@ export const Basket = () => {
       <div className="cart__up">
         <img
           className="cart__up-image"
-          src="../img/icons/left.svg"
+          src="./img/icons/left.svg"
           alt="left"
         />
         <Link className="cart__up-back" to="/">Back</Link>
@@ -33,7 +31,7 @@ export const Basket = () => {
                 className="cart__content-delete"
                 onClick={() => handlerDelete(phone)}
               >
-                <img src="../img/icons/close.svg" alt="close" />
+                <img src="img/icons/close.svg" alt="close" />
               </button>
               <img
                 className="cart__content-image"
@@ -47,18 +45,17 @@ export const Basket = () => {
                   type="button"
                   className="operation"
                 >
-                  <img src="../img/icons/Minus.svg" alt="minus" />
+                  <img src="img/icons/Minus.svg" alt="minus" />
                 </button>
                 <p className="result">1</p>
                 <button
                   type="button"
                   className="operation"
-                  onClick={() => hanldeAddPrice(phone)}
                 >
-                  <img src="../img/icons/Plus.svg" alt="plus" />
+                  <img src="img/icons/Plus.svg" alt="plus" />
                 </button>
               </div>
-              <p className="cart__content-price">{`$${price}`}</p>
+              <p className="cart__content-price">{`$${phone.price}`}</p>
             </div>
           ))}
         </div>

@@ -75,7 +75,7 @@ export const PhonesCard: React.FC<Props> = ({
                 {favoritePhones.find(p => p.id === phone.id) ? (
                   <img
                     className="card__buttons-heart-image"
-                    src="../../img/icons/HeartLike.svg"
+                    src="./img/icons/HeartLike.svg"
                     alt="heart"
                   />
                 ) : (

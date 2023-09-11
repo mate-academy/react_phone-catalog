@@ -12,6 +12,7 @@ import { PhonesTab } from './components/PhonesTab/PhonesTab';
 import { HeaderProvider } from './provider/HeaderContext';
 import { FavoritePhones } from './components/favoritesPhones/FavoritePhones';
 import { Basket } from './components/basket/Basket';
+import { Info } from './components/info/Info';
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
               <Route path="phones" element={<PhonesTab />} />
               <Route path="favorits" element={<FavoritePhones />} />
               <Route path="basket" element={<Basket />} />
+              <Route path="tablets" element={<Info />} />
+              <Route path="accessoiries" element={<Info />} />
             </Routes>
           </main>
           <Footer />
