@@ -3,7 +3,7 @@
 .Menu {
   background: center no-repeat;
 
-  @include onMediumScreen {
+  @include fromMediumScreen {
     display: none;
   }
 
@@ -67,7 +67,6 @@
 
     @extend %uppercase;
 
-
     &:active {
       background-color: $c-hover_bg;
     }
@@ -75,7 +74,6 @@
     & > a {
       transition: all $effect-duration;
       color: $c-primary;
-
 
       &:active {
         color: $c-primary;

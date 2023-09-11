@@ -7,7 +7,10 @@ export const Navigation = () => (
   <nav className="Navigation">
     <ul className="Navigation__list">
       {NAVIGATION_PAGES.map(currentPage => (
-        <li className="Navigation__item">
+        <li
+          className="Navigation__item"
+          key={currentPage}
+        >
           <NavigationLink
             type="text"
             to={currentPage === 'home' ? '/' : currentPage.toString()}

@@ -1,0 +1,23 @@
+@import "../../../styles/global-imports";
+
+.slider {
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--item {
+    height: 508px;
+
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+
+  &-item--swiper-button-next {
+    left: 290px!important;
+  }
+}

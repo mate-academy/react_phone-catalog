@@ -1,0 +1,27 @@
+@import "../../../styles/global-imports";
+
+.button-cart {
+  width: 170px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $c-white;
+  background-color: $c-primary;
+  border: 1px solid $c-primary;
+
+  @extend %body-text;
+
+  &:not(.button-cart--added) {
+    @include hover(border-color, $c-elements);
+  }
+
+  &--added {
+    color: $c-green;
+    background-color: $c-white;
+
+    @include hover(border-color, $c-primary)
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../styles/global-imports";
+
+.footer {
+  display: flex;
+  align-items: center;
+
+  height: 96px;
+
+  border: 1px solid $c-elements;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    text-align: center;
+
+    gap: 64px;
+  }
+
+  &--item {
+
+    &-link {
+      @extend %uppercase;
+      color: $c-secondary;
+    }
+  }
+}

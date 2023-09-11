@@ -1,0 +1,12 @@
+.container {
+  margin: 0 auto 80px;
+  max-width: 1136px;
+
+  &-footer {
+    margin-bottom: 0;
+  }
+
+  &--title {
+    margin-bottom: 24px;
+  }
+}

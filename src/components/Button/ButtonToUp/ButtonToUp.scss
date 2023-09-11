@@ -1,0 +1,21 @@
+@import '../../../styles/global-imports';
+
+.button-to-up {
+  background-color: $c-white;
+  color: $c-secondary;
+  @extend %small-text;
+
+  display: flex;
+  align-items: center;
+
+  &--arrow {
+    margin-left: 16px;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+
+    transform: rotate(-90deg);
+
+    background: url("../../../images/icons/Arrow.svg") no-repeat center;
+  }
+}

@@ -8,7 +8,7 @@
   pointer-events: none;
   box-shadow: 1px 0 0 0 $c-elements;
 
-  @include onMediumScreen {
+  @include fromMediumScreen {
     margin-left: auto;
 
     box-shadow: none;
@@ -31,7 +31,7 @@
     border: none;
     box-shadow: -1px 0 0 0 $c-elements;
 
-    @include onMediumScreen {
+    @include fromMediumScreen {
       padding: 22px 0 22px 24px;
     }
 

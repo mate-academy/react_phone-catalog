@@ -6,7 +6,7 @@
 
   box-shadow: 0 1px 0 0 $c-elements;
 
-  @include onMediumScreen {
+  @include fromMediumScreen {
     justify-content: initial;
   }
 
@@ -15,7 +15,7 @@
     gap: 64px;
     margin: 0 10px;
 
-    @include onMediumScreen {
+    @include fromMediumScreen {
       margin: 0 24px;
     }
   }

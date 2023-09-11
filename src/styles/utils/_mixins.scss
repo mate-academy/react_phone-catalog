@@ -1,11 +1,30 @@
 @mixin hover($property, $toValue) {
   transition: #{$property}, $effect-duration;
+
   &:hover {
     #{$property}: $toValue;
   }
 }
 
+@mixin onSmallScreen {
+  @media (min-width: 320px) and (max-width: 899px) {
+    @content;
+  }
+}
+
 @mixin onMediumScreen {
+  @media (min-width: 900px) and (max-width: 1289px) {
+    @content;
+  }
+}
+
+@mixin onSmallAndMeduimScreen {
+  @media (min-width: 320px) and (max-width: 1289px) {
+    @content;
+  }
+}
+
+@mixin fromMediumScreen {
   @media (min-width: 900px) {
     @content;
   }

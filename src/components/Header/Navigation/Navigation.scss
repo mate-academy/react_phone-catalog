@@ -1,20 +1,19 @@
-@import '../../../styles/global-imports';
+@import "../../../styles/global-imports";
 
 .Navigation {
   display: none;
 
-    @include onMediumScreen {
-      display: flex;
-    }
+  @include fromMediumScreen {
+    display: flex;
+  }
 
-    &__list {
-      display: flex;
-      align-items: center;
-      gap: 64px;
-    }
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
 
-    &__item {
-      @extend %uppercase;
-    }
+  &__item {
+    @extend %uppercase;
+  }
 }
-

@@ -3,13 +3,19 @@ import {
   HashRouter as Router,
 } from 'react-router-dom';
 
-import { Root } from './Root';
+import { CartContextProvider } from './contexts/CartContextProvider';
+import { FavouriteContextProvider } from './contexts/FavouriteContextProvider';
+import App from './App';
 
 import './styles/main.scss';
 
 ReactDOM.render(
   <Router>
-    <Root />
+    <CartContextProvider>
+      <FavouriteContextProvider>
+        <App />
+      </FavouriteContextProvider>
+    </CartContextProvider>
   </Router>,
   document.getElementById('root'),
 );
