@@ -22,6 +22,7 @@
     color: $c-green;
     background-color: $c-white;
 
-    @include hover(border-color, $c-primary)
+    @include hover(border-color, $c-primary);
+
   }
 }

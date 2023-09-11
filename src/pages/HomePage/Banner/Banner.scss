@@ -8,59 +8,59 @@
   top: 10px;
 
   @include onSmallScreen {
-    display: none!important;
+    display: none !important;
   }
 
   &__slide {
-    height: 70%!important;
+    height: 70% !important;
 
     &--image {
       margin: 0 auto;
       width: 86%;
       height: 400px;
-      background-size: contain!important;
+      background-size: contain !important;
 
-      &-1{
+      &-1 {
         background: url("../../../images/banner-iphone.png") no-repeat, fixed center;
       }
 
-      &-2{
+      &-2 {
         background: url("../../../images/banner-ipad.png") no-repeat, fixed center;
       }
 
-      &-3{
+      &-3 {
         background: url("../../../images/banner-accessories.png") no-repeat, center;
       }
     }
   }
 }
 
-.swiper{
+.swiper {
   &-button-prev,
   &-button-next {
-    top: 26px!important;
+    top: 26px !important;
     border: 1px solid $c-icons;
     padding: 14% 4px;
     margin: 0 1%;
 
     &::after {
-      font-size: 18px!important;
+      font-size: 18px !important;
       color: $c-primary;
     }
   }
 
   &-pagination {
-    bottom: 10%!important;
+    bottom: 10% !important;
 
     @include onMediumScreen {
-      bottom: 26%!important;
+      bottom: 26% !important;
     }
 
     &-bullet {
-      width: 16px!important;
-      height: 6px!important;
-      background: $c-primary!important;
-      border-radius: 0%!important;
+      width: 16px !important;
+      height: 6px !important;
+      background: $c-primary !important;
+      border-radius: 0% !important;
     }
   }
 }

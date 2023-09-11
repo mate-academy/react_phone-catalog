@@ -1,4 +1,4 @@
-@import '../../../styles/global-imports';
+@import "../../../styles/global-imports";
 
 .categories {
   margin-top: 80px;
@@ -7,17 +7,17 @@
     margin-bottom: 16px;
   }
 
-    &__content {
-      display: flex;
-      gap: 16px;
-    }
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
 
-    &__description {
-      margin-top: 16px;
+  &__description {
+    margin-top: 16px;
 
-      &--subtitle {
-        @extend %body-text;
-        color: $c-secondary;
-      }
+    &--subtitle {
+      @extend %body-text;
+      color: $c-secondary;
     }
   }
+}
