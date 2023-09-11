@@ -12,6 +12,7 @@
 @import "../src/styles/shopByCategory.scss";
 @import "../src/styles/productsList.scss";
 @import "../src/styles/details.scss";
+@import "../src/styles/cart.scss";
 
 @import "../src/styles/scrollBtn.scss";
 @import "../src/styles/logo.scss";
@@ -32,8 +33,6 @@ iframe {
   font-family: Mont, Helvetica, sans-serif;
   font-weight: 500;
   font-style: normal;
-  // display: grid;
-  // grid-template-rows: 1fr auto;
   color: $gray-primary;
   min-height: 100vh;
 }

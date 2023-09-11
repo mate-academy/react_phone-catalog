@@ -1,11 +1,14 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SearchForm } from './SearchForm';
 import { Logo } from '../Logo/Logo';
+import { CartContext } from '../../context/CartContext';
 
 export const NavBar = () => {
   const location = useLocation();
+  const { cartCount } = useContext(CartContext);
+
   const shouldShowSearchForm = ['/phones', '/tablets', '/accessories']
     .includes(location.pathname);
 
@@ -84,7 +87,7 @@ export const NavBar = () => {
 
         <NavLink
           to="/favourites"
-          className={`navbar__item navbar__item-fav ${location.pathname === '/favourites' ? 'navbar__item--active' : ''}`}
+          className={`navbar__item navbar__item-mob ${location.pathname === '/favourites' ? 'navbar__item--active' : ''}`}
           onClick={closeMenu}
         >
           favourites
@@ -92,7 +95,7 @@ export const NavBar = () => {
 
         <NavLink
           to="/cart"
-          className={`navbar__item navbar__item-fav ${location.pathname === '/cart' ? 'navbar__item--active' : ''}`}
+          className={`navbar__item navbar__item-mob ${location.pathname === '/cart' ? 'navbar__item--active' : ''}`}
           onClick={closeMenu}
         >
           cart
@@ -108,8 +111,18 @@ export const NavBar = () => {
           <div className="navbar__icon--favs" />
         </Link>
 
-        <Link to="/" className="navbar__icon">
-          <div className="navbar__icon--cart" />
+        <Link to="/cart" className="navbar__icon">
+          {cartCount >= 1 ? (
+            <>
+              <div className="navbar__icon--cart" />
+
+              <span className="navbar__icon--count-box">
+                <span className="navbar__icon--count">{cartCount}</span>
+              </span>
+            </>
+          ) : (
+            <div className="navbar__icon--cart" />
+          )}
         </Link>
       </div>
     </nav>

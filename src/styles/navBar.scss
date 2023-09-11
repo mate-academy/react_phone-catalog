@@ -23,6 +23,7 @@
       display: none;
     }
   }
+
   &__cross {
     display: block;
     width: 32px;
@@ -57,7 +58,7 @@
 
       z-index: 1;
     }
-    
+
     @include onDesktop {
       display: flex;
       justify-content: flex-start;
@@ -83,7 +84,7 @@
       position: relative;
       padding: 10px 0;
       font-weight: 600;
-      
+
       &--active {
         color: $gray-primary;
       }
@@ -94,10 +95,10 @@
       padding: 26px 0;
       font-weight: 700;
       line-height: 11px;
-      
+
       &--active {
         color: $gray-primary;
-  
+
         &::after {
           content: "";
           background: $gray-primary;
@@ -109,7 +110,7 @@
         }
       }
     }
-    
+
     transition: all 0.3s ease-in;
 
     &:hover {
@@ -117,7 +118,11 @@
     }
   }
 
-  &__item-fav {
+  &__item-mob {
+    @include onTablet {
+      display: none;
+    }
+
     @include onDesktop {
       display: none;
     }
@@ -134,6 +139,10 @@
 
   &__icons {
     display: none;
+
+    @include onTablet {
+      display: flex;
+    }
 
     @include onDesktop {
       display: flex;
@@ -156,6 +165,24 @@
       background-image: url("../assets/cart.svg");
       width: 16px;
       height: 16px;
+    }
+
+    &--count-box {
+      display: flex;
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: 17px;
+      right: 15px;
+      border-radius: 50%;
+      background-color: $red;
+      border: 1px solid $main-white;
+    }
+
+    &--count {
+      display: flex;
+      margin: auto;
+      color: $main-white;
     }
   }
 }

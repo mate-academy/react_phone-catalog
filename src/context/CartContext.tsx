@@ -5,72 +5,49 @@ import React, {
   useState,
   ReactNode,
 } from 'react';
+import { Product } from '../types/Product';
 
-interface ProductItem {
-  id: number;
-  name: string;
-  price: number;
+export interface CartItem {
+  id: string;
+  product: Product;
   quantity: number;
+  price: number;
 }
 
-interface CartContextType {
-  // isCartOpen: boolean;
-  // setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  cartItems: ProductItem[];
-  addItemToCart: (productToAdd: ProductItem) => void;
-  removeItemFromCart: (cartItemToRemove: ProductItem) => void;
-  clearItemFromCart: (cartItemToClear: ProductItem) => void;
+interface Cart {
+  cartItems: CartItem[];
+  addItemToCart: (productToAdd: CartItem) => void;
+  removeItemFromCart: (cartItemToRemove: CartItem) => void;
+  plusItem: (cartItem: CartItem) => void,
+  minusItem: (cartItem: CartItem) => void,
   cartCount: number;
-  cartTotal: number;
+  cartTotalPrice: number;
 }
 
-export const CartContext = createContext<CartContextType>({
-  // isCartOpen: false,
-  // setIsCartOpen: () => {},
+export const CartContext = createContext<Cart>({
   cartItems: [],
   addItemToCart: () => { },
   removeItemFromCart: () => { },
-  clearItemFromCart: () => { },
+  plusItem: () => { },
+  minusItem: () => { },
   cartCount: 0,
-  cartTotal: 0,
+  cartTotalPrice: 0,
 });
 
-// Допоміжні функції
-// чи є в кошику такий самий продукт
-const addCartItem = (cartItems: ProductItem[], productToAdd: ProductItem) => {
-  const existingCartItem = cartItems.find(
+const addCartItem = (cartItems: CartItem[], productToAdd: CartItem) => {
+  const foundId = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id,
   );
 
-  if (existingCartItem) {
-    return cartItems.map((cartItem) => (
-      cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
-    ));
+  if (foundId) {
+    return cartItems;
   }
 
-  return [...cartItems, { ...productToAdd, quantity: 1 }];
+  return [...cartItems, { ...productToAdd }];
 };
 
-const removeCartItem = (cartItems: ProductItem[], cartItemToRemove: ProductItem) => {
-  const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === cartItemToRemove.id,
-  );
-
-  if (existingCartItem?.quantity === 1) {
-    return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
-  }
-
-  return cartItems.map((cartItem) => (
-    cartItem.id === cartItemToRemove.id
-      ? { ...cartItem, quantity: cartItem.quantity - 1 }
-      : cartItem
-  ));
-};
-
-const clearCartItem = (cartItems: ProductItem[], cartItemToClear: ProductItem) => {
-  return cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+const removeCartItem = (cartItems: CartItem[], cartItemToRemove: CartItem) => {
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
 };
 
 interface CartProviderProps {
@@ -78,10 +55,21 @@ interface CartProviderProps {
 }
 
 const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  // const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-  const [cartItems, setCartItems] = useState<ProductItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [cartCount, setCartCount] = useState<number>(0);
-  const [cartTotal, setCartTotal] = useState<number>(0);
+  const [cartTotalPrice, setCartTotalPrice] = useState<number>(0);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cartItems');
+
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   useEffect(() => {
     const newCartCount = cartItems.reduce(
@@ -98,34 +86,52 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       0,
     );
 
-    setCartTotal(newCartTotal);
+    setCartTotalPrice(newCartTotal);
   }, [cartItems]);
 
-  const addItemToCart = (productToAdd: ProductItem) => {
+  const addItemToCart = (productToAdd: CartItem) => {
     setCartItems((prevCartItems) => addCartItem(prevCartItems, productToAdd));
   };
 
-  const removeItemFromCart = (cartItemToRemove: ProductItem) => {
+  const removeItemFromCart = (cartItemToRemove: CartItem) => {
     setCartItems((prevCartItems) => removeCartItem(prevCartItems, cartItemToRemove));
   };
 
-  const clearItemFromCart = (cartItemToClear: ProductItem) => {
-    setCartItems((prevCartItems) => clearCartItem(prevCartItems, cartItemToClear));
+  const plusItem = (cartItem: CartItem) => {
+    setCartItems((prevCartItems) => prevCartItems.map((item) => (
+      item.id === cartItem.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    )));
   };
 
-  const value: CartContextType = {
-    // isCartOpen,
-    // setIsCartOpen,
+  const minusItem = (cartItem: CartItem) => {
+    setCartItems((prevCartItems) => prevCartItems.map((item) => {
+      if (item.id === cartItem.id) {
+        // Перевірка, чи кількість товару більше 1 перед відніманням
+        const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
+
+        return { ...item, quantity: newQuantity };
+      }
+
+      return item;
+    }));
+  };
+
+  const value: Cart = {
     cartItems,
     addItemToCart,
     removeItemFromCart,
-    clearItemFromCart,
+    plusItem,
+    minusItem,
     cartCount,
-    cartTotal,
+    cartTotalPrice,
   };
 
   return (
-    <CartContext.Provider value={value}>{children}</CartContext.Provider>
+    <CartContext.Provider value={value}>
+      {children}
+    </CartContext.Provider>
   );
 };
 

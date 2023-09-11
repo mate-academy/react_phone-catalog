@@ -7,10 +7,10 @@ import {
   useParams,
 } from 'react-router-dom';
 import classNames from 'classnames';
-import { ProductItem } from '../types/ProductItem';
+import { ProductDetails } from '../types/ProductDetails';
 import { Loader } from '../components/Loader/Loader';
 import { AddToFav } from '../components/Buttons/AddToFav';
-import { MainButton } from '../components/Buttons/MainButton';
+import { AddToCartButton } from '../components/Buttons/AddToCartButton';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { SuggestedProducts } from '../components/SuggestedProducts/SuggestedProducts';
 import { colors } from '../types/colors';
@@ -20,7 +20,7 @@ const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const { itemId } = useParams();
-  const [product, setProduct] = useState<ProductItem | null>(null);
+  const [product, setProduct] = useState<ProductDetails | null>(null);
   const [loading, setLoading] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
@@ -67,7 +67,7 @@ export const ProductDetailsPage = () => {
 
       {loading && <Loader />}
 
-      {!loading && (
+      {!loading && product && (
         <div className="details">
           <Link to=".." className="details__back" data-cy="backButton">
             <span className="arrow arrow--left-disabled" />
@@ -149,7 +149,7 @@ export const ProductDetailsPage = () => {
                 </div>
 
                 <div className="details__buttons">
-                  <MainButton title="Add to cart" />
+                  <AddToCartButton prodId={product.id} />
                   <AddToFav />
                 </div>
 

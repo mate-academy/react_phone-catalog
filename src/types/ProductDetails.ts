@@ -3,7 +3,7 @@ type Description = {
   text: string;
 };
 
-export interface ProductItem {
+export interface ProductDetails {
   id: string;
   namespaceId: string;
   name: string;
