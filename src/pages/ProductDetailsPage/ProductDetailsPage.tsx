@@ -34,7 +34,7 @@ export const ProductDetailsPage: FC = () => {
   const [hasError, setHasError] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
-  const { productId } = useParams() as { productId: string };
+  const { productId = '' } = useParams();
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -56,7 +56,10 @@ export const ProductDetailsPage: FC = () => {
       }
     };
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.scrollY > 1000) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     fetchProduct();
   }, [productId]);
 
