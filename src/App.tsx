@@ -116,6 +116,7 @@ const App = () => {
             <Link
               to="https://github.com/LiliiaDanylenko"
               className="nav__link nav__link--footer"
+              target="_blank"
             >
               Github
             </Link>

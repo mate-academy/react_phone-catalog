@@ -22,7 +22,9 @@ export const CardButtons: React.FC<Props> = ({ card, info }) => {
   ), [cart]);
 
   const handleClickCart = () => {
-    if (!isAddedToCart) {
+    if (isAddedToCart) {
+      dispatch(cartActions.remove(card.id));
+    } else {
       dispatch(cartActions.add(
         { id: card.id, quantity: 1, product: card },
       ));
@@ -49,7 +51,6 @@ export const CardButtons: React.FC<Props> = ({ card, info }) => {
           },
         )}
         onClick={handleClickCart}
-        disabled={!!isAddedToCart}
       >
         {isAddedToCart
           ? 'Added to cart'
