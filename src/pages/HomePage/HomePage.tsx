@@ -12,6 +12,7 @@ import { Preview } from '../../types/Preview';
 import { Player } from '../../components/Player/Player';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
+import { Modal } from '../../components/Modal/Modal';
 
 import './HomePage.scss';
 
@@ -23,6 +24,9 @@ export const HomePage: React.FC = React.memo(() => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
+
+  const [isModalActive, setIsModalActive] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,6 +40,11 @@ export const HomePage: React.FC = React.memo(() => {
   const reload = () => {
     setUpdatedAt(new Date());
     setHasError(false);
+  };
+
+  const handleButtonClick = (link: string) => {
+    setSelectedImageUrl(link);
+    setIsModalActive(true);
   };
 
   return (
@@ -75,6 +84,18 @@ export const HomePage: React.FC = React.memo(() => {
             />
           )}
 
+          <Modal
+            active={isModalActive}
+            setActive={setIsModalActive}
+            withoutBackground
+          >
+            <img
+              className="homePage__modal-image"
+              src={selectedImageUrl}
+              alt={makeAlt(selectedImageUrl)}
+            />
+          </Modal>
+
           {!isLoading && previews.length > 0 && (
             <ul className="homePage__gallery-list">
               {previews.map(preview => {
@@ -88,6 +109,7 @@ export const HomePage: React.FC = React.memo(() => {
                     <button
                       className="homePage__gallery-list-item-button"
                       type="button"
+                      onClick={() => handleButtonClick(link)}
                     >
                       <img
                         className="homePage__gallery-list-item-image"

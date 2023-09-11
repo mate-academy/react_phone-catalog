@@ -1,0 +1,62 @@
+@import "../../styles/utils.scss";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba($black-800, 0.6);
+  z-index: $z-index--1;
+
+  transition: opacity $animationDuration ease-in-out;
+
+  &--entering,
+  &--entered {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--exiting,
+  &--exited {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__content {
+    transition: transform $animationDuration * 2;
+
+    &--entering,
+    &--entered {
+      transform: translateY(0);
+    }
+
+    &--exiting,
+    &--exited {
+      transform: translateY(100%);
+    }
+
+    &--with-background {
+      padding: 20px;
+      background-color: $black-100;
+    }
+
+    &--without-background {
+      width: 90%;
+
+      @include onTablet {
+        width: 60%;
+      }
+
+      @include onDesktop {
+        width: 40%;
+      }
+    }
+  }
+}
