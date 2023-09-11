@@ -9,7 +9,7 @@ export function wait(delay: number) {
 }
 
 const request = <T>(url: string): Promise<T> => {
-  return wait(200)
+  return wait(0)
     .then(() => fetch(BASE_URL + url))
     .then(response => {
       if (!response.ok) {

@@ -38,9 +38,12 @@ export const ProductDetailsPage: FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    setIsLoading(true);
+  }, []);
+
+  useEffect(() => {
     const fetchProduct = async () => {
       setHasError(false);
-      setIsLoading(true);
 
       try {
         const getProductFromServer = await getProductDetails(productId);
@@ -57,10 +60,10 @@ export const ProductDetailsPage: FC = () => {
   }, [productId]);
 
   useEffect(() => {
-    if (products.length) {
-      setSuggestedProducts(getRandomProducts(products, 8));
+    if (products.length && product) {
+      setSuggestedProducts(getRandomProducts(products, product, 8));
     }
-  }, [products]);
+  }, [products, product]);
 
   useEffect(() => {
     if (product) {
