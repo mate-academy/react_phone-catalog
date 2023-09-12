@@ -1,0 +1,20 @@
+@import "../../styles/utils.scss";
+
+.swiper {
+
+  &-wrapper {
+    padding-bottom: 40px;
+  }
+
+  &-pagination {
+    bottom: 4px !important;
+  }
+
+  &-pagination-bullet {
+    background: $black-700;
+
+    &-active {
+      background: $red-700;
+    }
+  }
+}

@@ -26,6 +26,11 @@ export const Root: React.FC = React.memo(() => {
         />
 
         <Route
+          path="/:seoUrl"
+          element={<ItemPage />}
+        />
+
+        <Route
           path="home"
           element={<Navigate to="/" replace />}
         />

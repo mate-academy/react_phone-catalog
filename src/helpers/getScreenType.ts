@@ -10,6 +10,10 @@ export const getScreenType = () => {
       return Resolutions.Tablet;
     }
 
+    case window.matchMedia('(min-width: 480px)').matches: {
+      return Resolutions.MobileLarge;
+    }
+
     default: {
       return Resolutions.Mobile;
     }
