@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .header {
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
   height: 64px;
   margin-bottom: 40px;
-  box-shadow: 0px 1px 0px 0px $gray-elements;
+  box-shadow: 0 1px 0 0 $gray-elements;
 
   &__leftSide {
     padding-left: 24px;
@@ -32,11 +32,11 @@
     align-items: center;
     height: 100%;
     width: 327px;
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    box-shadow: -1px 0 0 0 #e2e6e9;
   }
   
   &__search-input {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
@@ -80,7 +80,7 @@
     align-items: center;
     height: 100%;
     width: 64px;
-    box-shadow: -1px 0px 0px 0px $gray-elements;
+    box-shadow: -1px 0 0 0 $gray-elements;
     z-index: 1;
     border-bottom: 3px solid transparent;
     transition: background-color 500ms;

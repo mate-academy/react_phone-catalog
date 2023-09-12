@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 .way {
   display: flex;
@@ -79,16 +79,6 @@
     padding: 11px;
   }
 
-  &__main-right {
-    display: flex;
-    flex-direction: column;
-
-    &__colors {
-      display: flex;
-      gap: 8px;
-    }
-  }
-
   &__main-button {
     box-sizing: border-box;
     display: flex;
@@ -107,6 +97,14 @@
   }
 
   &__main-right {
+    display: flex;
+    flex-direction: column;
+
+    &__colors {
+      display: flex;
+      gap: 8px;
+    }
+
     &__buttons {
       display: flex;
       gap: 8px;
@@ -209,7 +207,7 @@
     }
 
     &__button:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
 
     &__button-favorite {
