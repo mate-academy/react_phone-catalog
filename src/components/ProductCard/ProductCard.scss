@@ -1,0 +1,119 @@
+@import "../../styles/variables";
+
+.product-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  padding: 24px;
+  border: 1px solid $gray-elements;
+  transition: all 300ms;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__image-link {
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    color: $gray-primary;
+    text-decoration: none;
+  }
+
+  &__price {
+    padding: 7px 0;
+    border-bottom: 1px solid $gray-elements;
+    color: $gray-primary;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 16px;
+  }
+
+  &__price-discount {
+    font-weight: 500;
+    color: $gray-secondary;
+    text-decoration: line-through;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  &__info-name,
+  &__info-value {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info-value {
+    color: $gray-primary;
+  }
+
+  &__button-action {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 176px;
+    padding: 0;
+    background-color: $gray-primary;
+    color: #fff;
+    border: 0;
+    transition: box-shadow 500ms;
+    text-align: center;
+  }
+
+  &__button:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__button-added {
+    width: 176px;
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid $gray-icons-placeholders;
+    text-align: center;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__button-favorite {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $gray-icons-placeholders;
+    transition: border 500ms;
+  }
+
+  &__button-favorite:hover {
+    border: 1px solid $gray-primary;
+  }
+}

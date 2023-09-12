@@ -1,0 +1,70 @@
+@import "../../styles/variables";
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 128px;
+  font-weight: 600;
+
+  &-value {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $gray-primary;
+    border: 1px solid $gray-icons-placeholders;
+    transition: border 300ms;
+  }
+  
+  &-value:hover {
+    border: 1px solid $gray-secondary;
+  }
+  
+  &-select {
+    display: block;
+    position: absolute;
+    top: 65px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid $gray-elements;
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+    transition: border 500ms;
+    z-index: 11;
+  }
+  
+  &-select:hover {
+    border: 1px solid $gray-elements;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  &-option {
+    box-sizing: border-box;
+    height: 32px;
+    padding: 5px 12px;
+  }
+  
+  &-option:hover {
+    color: $gray-primary;
+    background-color: #fafbfc;
+  }
+  
+  &-link {
+    display: block;
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-decoration: none;
+  }
+}
+
+.hidden-select {
+  display: none;
+}

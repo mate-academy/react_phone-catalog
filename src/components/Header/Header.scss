@@ -1,0 +1,119 @@
+@import "../../styles/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  margin-bottom: 40px;
+  box-shadow: 0 1px 0 0 $gray-elements;
+
+  &__leftSide {
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+  
+  &__logo {
+    display: inline-flex;
+  }
+  
+  &__rightSide {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  &__search {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 327px;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+  
+  &__search-input {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding: 0 40px 0 24px;
+    border: 0;
+    outline: 0;
+    color: $gray-primary;
+    font-weight: 600;
+    transition: all 300ms;
+  }
+  
+  &__search-input:focus {
+    background-color: $gray-elements;
+  }
+  
+  &__search-input::placeholder {
+    color: $gray-icons-placeholders;
+  }
+  
+  &__search-icon,
+  &__search-remove {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translate(50%, -40%);
+  }
+  
+  &__search-remove {
+    padding: 0;
+    border: 0;
+    transform: translate(50%, -50%);
+    background-color: $gray-elements;
+  }
+  
+  &__favorite,
+  &__cart {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 64px;
+    box-shadow: -1px 0 0 0 $gray-elements;
+    z-index: 1;
+    border-bottom: 3px solid transparent;
+    transition: background-color 500ms;
+    text-decoration: none;
+  }
+  
+  &__favorite:hover,
+  &__cart:hover {
+    z-index: 2;
+    background-color: $gray-elements;
+  }
+  
+  &__favorite-number {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: red;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+}
+
+.is-active {
+  color: $gray-primary;
+  border-bottom: 3px solid $gray-primary;
+}

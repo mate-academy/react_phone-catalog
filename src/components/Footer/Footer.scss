@@ -1,0 +1,41 @@
+@import "../../styles/variables";
+
+.footer {
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $gray-elements;
+
+  &__container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+  
+  &__logo {
+    display: inline-flex;
+  }
+  
+  &__rightSide-title {
+    font-size: 12px;
+    font-weight: 600;
+    padding-right: 16px;
+  }
+  
+  &__button {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 1px solid $gray-icons-placeholders;
+    transition: all 500ms;
+  }
+  
+  &__button:hover {
+    border-color: $gray-primary;
+  }
+}
