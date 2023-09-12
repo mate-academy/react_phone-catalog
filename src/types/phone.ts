@@ -1,5 +1,6 @@
 export interface Phone {
   id: string
+  phoneId: string
   name: string,
   fullPrice: number,
   price: number

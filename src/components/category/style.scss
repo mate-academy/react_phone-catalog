@@ -1,4 +1,6 @@
 .category {
+  max-width: 1440px;
+  margin: 0 auto;
 
   &__title {
     margin-top: 80px;
@@ -13,11 +15,18 @@
   }
 
   &__products {
-    display: flex;
+    display: grid;
     gap: 16px;
     margin-inline: 152px;
     grid-template-columns: repeat(3, 368px);
 
+    @media(max-width: 1100px) {
+      grid-template-columns: repeat(2, 368px);
+    }
+
+    @media(max-width: 815px) {
+      grid-template-columns: repeat(1, 368px);
+    }
     &-name {
       margin-top: 24px;
       margin-bottom: 0;

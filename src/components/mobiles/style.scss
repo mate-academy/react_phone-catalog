@@ -1,4 +1,6 @@
 .mobile {
+  max-width: 1440px;
+  margin: 0 auto;
 
   &__sort-option {
     display: block;
@@ -122,6 +124,10 @@
     display: flex;
     justify-content: center;
     gap: 16px;
+
+    @media (max-width: 700px) {
+      margin: 40px auto;
+    }
 
     &-number.is-active {
       background: var(--gray-primary, #313237);

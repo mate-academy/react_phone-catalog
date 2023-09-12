@@ -2,11 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 92px;
-  margin-inline: 152px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-.price {
+.title__price {
+  margin-top: 92px;
+  margin-left: 152px;
   color: var(--gray-primary, #313237);
   font-family: Mont, sans-serif;
   font-size: 32px;
@@ -18,6 +20,7 @@
 
 .title__buttons {
   display: flex;
+  margin-right: 152px;
   gap: 16px;
 }
 

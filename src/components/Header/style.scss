@@ -1,9 +1,9 @@
 .header {
   display: flex;
   justify-content: space-between;
-  width: 1440px;
+  max-width: 1440px;
   height: 64px;
-  flex-shrink: 0;
+  margin: 0 auto;
   background: var(--gray-white, #fff);
   box-shadow: 0 1px 0 0 #e2e6e9;
 
@@ -43,7 +43,7 @@ a:hover {
 }
 
 .searh-input {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   padding-left: 24px;
@@ -70,7 +70,10 @@ a:hover {
     display: flex;
     height: 16px;
     width: 16px;
+  }
 
+  @media (min-width: 1024px) {
+    display: flex;
   }
 }
 

@@ -13,6 +13,7 @@ import { HeaderProvider } from './provider/HeaderContext';
 import { FavoritePhones } from './components/favoritesPhones/FavoritePhones';
 import { Basket } from './components/basket/Basket';
 import { Info } from './components/info/Info';
+import { PhoneDetails } from './components/phoneDetails/PhoneDetails';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="basket" element={<Basket />} />
               <Route path="tablets" element={<Info />} />
               <Route path="accessoiries" element={<Info />} />
+              <Route path="phoneId" element={<PhoneDetails />} />
             </Routes>
           </main>
           <Footer />

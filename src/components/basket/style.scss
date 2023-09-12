@@ -1,5 +1,7 @@
 .cart {
   display: block;
+  max-width: 1440px;
+  margin: 0 auto;
 
   &__up {
     display: flex;
@@ -88,6 +90,10 @@
       gap: 13px;
       cursor: pointer;
     }
+
+    @media (max-width: 1300px) {
+      margin: 0 auto;
+    }
   }
 
   .operation {
@@ -116,6 +122,14 @@
     width: 368px;
     height: 206px;
     border: 1px solid var(--gray-elements, #e2e6e9);
+
+    @media (max-width: 1300px) {
+      margin: 16px auto;
+    }
+
+    @media (max-width: 800px) {
+      margin: 16px 195px;
+    }
 
     &-price {
       margin-top: 24px;
@@ -168,6 +182,11 @@
 
 .box {
   display: flex;
+
+  @media (max-width: 1300px) {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .box__items {

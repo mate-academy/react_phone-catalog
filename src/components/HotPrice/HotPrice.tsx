@@ -29,7 +29,7 @@ export const HotPrice: React.FC<Props> = ({ phones, title, showOldPrice }) => {
   return (
     <div>
       <div className="title">
-        <h1 className="price">{title}</h1>
+        <h1 className="title__price">{title}</h1>
         <div className="title__buttons">
           <button
             type="button"

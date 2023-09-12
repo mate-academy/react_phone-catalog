@@ -1,8 +1,10 @@
 .footer {
+  max-width: 1440px;
+  margin: 0 auto;
 
   &__items {
     height: 96px;
-    width: 1440px;
+    width: 100%;
     background: var(--gray-white, #fff);
     box-shadow: 0 -1px 0 0 #e2e6e9;
     margin-top: 41px;
@@ -21,6 +23,11 @@
     margin-top: 36px;
     margin-left: 152px;
     margin-bottom: 36px;
+
+    @media (max-width: 600px) {
+      margin-left: 100px;
+      margin-right: 100px;
+    }
   }
 
   &__content-mid {
@@ -68,6 +75,10 @@
       font-weight: 600;
       line-height: normal;
       color: var(--gray-secondary, #89939a);
+    }
+
+    @media (max-width: 600px) {
+      margin-left: 30px;
     }
   }
 }

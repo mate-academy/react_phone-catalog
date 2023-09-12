@@ -1,20 +1,23 @@
-.card {
-  width: 1440px;
-  height: 508px;
-}
-
 .slider {
   position: relative;
   display: flex;
+  height: 400px;
+  max-width: 1132px;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
-  margin-inline: 152px;
+  margin: 0 auto;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-left: 100px;
+  }
 
   &__content {
+    margin: 0 152px;
     overflow: hidden;
-    height: 400px;
-    width: 1040px;
+    height: 100%;
+    width: 100%;
+    margin-top: 40px;
     margin-left: 16px;
     margin-right: 16px;
 
@@ -28,36 +31,42 @@
       flex-shrink: 0;
 
       &:first-child {
-        width: 1040px;
+        width: 100%;
       }
 
       &:nth-child(2),
       &:nth-child(3) {
-        width: 1040px;
+        width: 100%;
       }
     }
   }
 }
 
 .slider-button {
+  display: none;
+  margin-top: 40px;
   width: 32px;
   height: 400px;
   border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
   background: #fff;
   cursor: pointer;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
 }
 
 .slider__dots {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  max-width: 1440px;
+  margin: 40px auto;
 }
 
 .slider-dot {
   width: 14px;
   height: 4px;
-  flex-shrink: 0;
   margin: 0 5px;
   border: none;
   background-color: var(--gray-secondary, #e2e6e9);

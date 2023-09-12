@@ -6,20 +6,22 @@ export const MobileHome = () => {
   const pathname = location.pathname.split('/');
 
   return (
-    <div className="mobiles">
-      <a href="/">
+    <div className="mob-content">
+      <div className="mobiles">
+        <a href="/">
+          <img
+            className="mobiles__image"
+            src="./img/icons/Home.png"
+            alt="home"
+          />
+        </a>
         <img
-          className="mobiles__image"
-          src="./img/icons/Home.png"
-          alt="home"
+          className="mobiles__right"
+          src="./img/icons/right.svg"
+          alt="right"
         />
-      </a>
-      <img
-        className="mobiles__right"
-        src="./img/icons/right.svg"
-        alt="right"
-      />
-      <p className="mobiles__text">{pathname}</p>
+        <p className="mobiles__text">{pathname}</p>
+      </div>
     </div>
   );
 };

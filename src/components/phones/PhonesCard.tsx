@@ -1,4 +1,5 @@
 import './phone.scss';
+import { Link } from 'react-router-dom';
 import { Phone } from '../../types/phone';
 import { useHeaderContext } from '../../provider/HeaderContext';
 
@@ -28,9 +29,9 @@ export const PhonesCard: React.FC<Props> = ({
               src={`./${phone.image}`}
               alt="xs"
             />
-            <a href="/phone/" className="card__description">
+            <Link to={`/${phone.phoneId}`} className="card__description">
               {phone.name}
-            </a>
+            </Link>
             <div className="card__price">
               <article className="card__new-price">{`$${phone.price}`}</article>
               {showOldPrice && (
