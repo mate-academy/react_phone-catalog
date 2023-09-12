@@ -42,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({ hasDiscount, product }) => {
       >
         <img
           src={BASE_URL + image}
-          alt="apple-iphone-7 black"
+          alt={name}
           className="product-card__image"
         />
 
@@ -77,10 +77,10 @@ export const ProductCard: React.FC<Props> = ({ hasDiscount, product }) => {
       </div>
 
       <div className="product-card__buttons">
-        <AddToCartButton />
+        <AddToCartButton id={itemId} />
 
         <div className="product-card__buttons-fav-container">
-          <AddToFavButton />
+          <AddToFavButton id={itemId} />
         </div>
       </div>
     </div>

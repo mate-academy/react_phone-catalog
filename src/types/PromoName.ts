@@ -1,5 +1,5 @@
 export enum PromoName {
-  HotPrices = 'Hot prices',
-  BrandNew = 'Brand new models',
-  Suggested = 'You may also like',
+  HotPrices = 'hot prices',
+  BrandNew = 'brand new models',
+  Suggested = 'you may also like',
 }

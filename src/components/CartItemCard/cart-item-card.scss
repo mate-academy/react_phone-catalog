@@ -1,0 +1,74 @@
+@import "../../styles/utils/variables";
+
+.cart-item-card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $color-elements;
+
+  &__remove-button {
+    position: absolute;
+    top: 50%;
+    left: 24px;
+    height: 16px;
+    width: 16px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &-img {
+      opacity: 0.5;
+      transition: all 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    gap: 24px;
+    min-width: 400px;
+    margin-left: 40px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-primary;
+    text-decoration: none;
+  }
+
+  &__image {
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+    object-fit: contain;
+  }
+
+  &__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+  }
+
+  &__qty-conrlols {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+  }
+
+  &__item-total-price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 50px;
+  }
+}

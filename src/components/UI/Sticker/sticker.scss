@@ -1,0 +1,13 @@
+@import "../../../styles/utils/variables";
+
+.sticker {
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 9px;
+  color: $color-white;
+  line-height: 15px;
+  background-color: $color-red;
+}

@@ -3,15 +3,15 @@ import { CategoriesNames } from '../types/CategoriesNames';
 export const getCategoryTitle = (categoryName: string) => {
   switch (categoryName) {
     case CategoriesNames.Phones:
-      return 'Mobile phones';
+      return 'mobile phones';
 
     case CategoriesNames.Accessories:
-      return 'Accessories';
+      return 'accessories';
 
     case CategoriesNames.Tablets:
-      return 'Tablets';
+      return 'tablets';
 
     default:
-      return 'Category doesn\'t exist';
+      return 'category doesn\'t exist';
   }
 };

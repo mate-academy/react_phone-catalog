@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import classNames from 'classnames';
 
 import './header.scss';
@@ -8,6 +8,8 @@ import { useCloseClick } from '../../customHooks/useCloseClick';
 import { PageNavLink } from '../PageNavLink';
 import { Logo } from '../UI/Logo';
 import { Search } from '../UI/Search';
+import { StoreContext } from '../../contexts/StoreContext';
+import { Sticker } from '../UI/Sticker';
 
 export const Header = () => {
   const [ref, isMobileMenuOpen, setIsMobileMenuOpen] = useCloseClick(false);
@@ -19,6 +21,7 @@ export const Header = () => {
     '/favourites',
   ], []);
   const isSearchVisible = searchVisiblePaths.includes(currentPath);
+  const { cartItemsNumber, favouriteIds } = useContext(StoreContext);
 
   return (
     <header className="header">
@@ -80,7 +83,12 @@ export const Header = () => {
               className="header__tile-image"
             />
 
-            <span className="header__tile-sticker">17</span>
+            {favouriteIds.length > 0 && (
+              <Sticker
+                className="header__tile-sticker"
+                num={favouriteIds.length}
+              />
+            )}
           </PageNavLink>
         </div>
 
@@ -92,7 +100,12 @@ export const Header = () => {
               className="header__tile-image"
             />
 
-            <span className="header__tile-sticker">5</span>
+            {cartItemsNumber > 0 && (
+              <Sticker
+                className="header__tile-sticker"
+                num={cartItemsNumber}
+              />
+            )}
           </PageNavLink>
         </div>
 

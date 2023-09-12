@@ -3,8 +3,8 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { ProductDetails } from '../../types/ProductDetails';
 import './details.scss';
+import { ProductDetails } from '../../types/ProductDetails';
 import { BASE_URL } from '../../utils/httpClient';
 import { ImageModal } from '../UX/ImageModal';
 import { productColors } from '../../assets/productsColors';
@@ -186,9 +186,9 @@ export const Details: React.FC<Props> = ({ productDetails }) => {
 
             <div className="details__info-subcontainer">
               <div className="details__buttons">
-                <AddToCartButton />
+                <AddToCartButton id={id} />
                 <div className="details__buttons-fav-container">
-                  <AddToFavButton />
+                  <AddToFavButton id={id} />
                 </div>
               </div>
               <Specs

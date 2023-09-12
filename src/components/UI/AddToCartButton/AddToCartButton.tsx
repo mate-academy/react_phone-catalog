@@ -1,17 +1,27 @@
+import React, { useContext } from 'react';
+import classNames from 'classnames';
+
+import { StoreContext } from '../../../contexts/StoreContext';
 import './add-to-cart-button.scss';
 
-export const AddToCartButton = () => {
+type Props = {
+  id: string;
+};
+
+export const AddToCartButton: React.FC<Props> = ({ id }) => {
+  const { cart, changeCart } = useContext(StoreContext);
+  const isProductInCart = id in cart;
+
   return (
     <button
       type="button"
-      className="add-to-cart-button"
-    // className="
-    //   product-card__add-to-cart
-    //   product-card__add-to-cart--selected
-    // "
+      className={classNames(
+        'add-to-cart-button',
+        { 'add-to-cart-button--selected': isProductInCart },
+      )}
+      onClick={() => changeCart(id, 1)}
     >
-      Add to cart
-      {/* Added to cart */}
+      {isProductInCart ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

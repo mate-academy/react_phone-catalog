@@ -20,3 +20,12 @@ h3,
 p {
   margin: 0;
 }
+
+h1 {
+  font-weight: 700;
+  font-size: 32px;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}

@@ -2,7 +2,7 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import './CategoryPage.scss';
+import './category-page.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { getCategoryTitle } from '../../services/getCategoryTitle';
 import { DropdownType } from '../../types/Dropdown';

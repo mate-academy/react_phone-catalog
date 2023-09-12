@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const Button: React.FC<Props> = React.memo(({
-  handleClick = () => {},
+  handleClick = () => {}, // Remove
   style,
   disabled,
   imgName,
