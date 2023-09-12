@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+
+.banner {
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    width: 1040px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  
+  &__item-image {
+    height: 400px;
+    width: 1040px;
+    object-fit: cover;
+  }
+  
+  &__dots-containter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  &__dot {
+    height: 4px;
+    width: 14px;
+    background-color: $gray-elements;
+  }
+  
+  &__dot-active {
+    background-color: $gray-primary;
+  }
+  
+}
+
+.left-arrow,
+.right-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  width: 32px;
+  background-color: #fff;
+  border: 1px solid $gray-icons-placeholders;
+  cursor: pointer;
+  transition: border-color 500ms;
+}
+
+.left-arrow:hover,
+.right-arrow:hover {
+  border-color: $gray-primary;
+}

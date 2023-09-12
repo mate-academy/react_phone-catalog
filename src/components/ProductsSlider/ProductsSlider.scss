@@ -1,0 +1,89 @@
+@import '../../styles/variables';
+
+.product-slider {
+  max-width: 1136px;
+  margin-bottom: 80px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    color: $gray-primary;
+  }
+
+  &__top-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__top-button-prev,
+  &__top-button-next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    background-color: #fff;
+    border: 1px solid $gray-icons-placeholders;
+    cursor: pointer;
+    transition: border-color 500ms;
+  }
+
+  &__top-button-prev:hover,
+  &__top-button-next:hover {
+    border-color: $gray-primary;
+  }
+
+  &__top-button-prev.disabled,
+  &__top-button-next.disabled {
+    border-color: $gray-elements;
+    cursor: auto;
+  }
+}
+
+.shopByCategory {
+  margin-bottom: 80px;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__phones-img,
+  &__tablets-img,
+  &__accessories-img {
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  &__phones-img {
+    background: #fddbc0;
+  }
+
+  &__tablets-img {
+    background: #88898d;
+  }
+
+  &__accessories-img {
+    background: #ac385e;
+  }
+
+  &__title {
+    padding: 0;
+    margin: 0;
+    color: $gray-primary;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.brandNew {
+  margin-bottom: 80px;
+}
