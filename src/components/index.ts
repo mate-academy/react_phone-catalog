@@ -11,3 +11,4 @@ export { BackButton } from './BackButton';
 export { Loader } from './Loader';
 export { Pagination } from './Pagination';
 export { Search } from './Search';
+export { Error } from './Error';

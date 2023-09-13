@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './CategoryItem.scss';
+import { useProducts } from '../../../../context';
 
 type Props = {
   category: string,
@@ -12,6 +13,10 @@ export const CategoryItem: React.FC<Props> = ({
   link,
   quantity = 0,
 }) => {
+  const { products } = useProducts();
+
+  const phonesQuantity = products.length;
+
   return (
     <div className="category">
       <Link
@@ -27,7 +32,11 @@ export const CategoryItem: React.FC<Props> = ({
       <h3 className="category__title">
         {category === 'phones' ? 'Mobile phones' : category}
       </h3>
-      <p className="category__quantity">{`${quantity} models`}</p>
+      <p className="category__quantity">
+        {category === 'phones'
+          ? `${phonesQuantity} models`
+          : `${quantity} models`}
+      </p>
     </div>
   );
 };

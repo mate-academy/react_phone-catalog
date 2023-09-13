@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import { Link } from 'react-router-dom';
 import { useProducts } from '../../../../context';
 import { Product } from '../../../../types';
 import { AddItems } from '../AddItems';
@@ -43,11 +44,16 @@ export const CartItem: React.FC<Props> = ({
             className="cart-item__img"
           />
 
-          <h2
-            className="cart-item__title"
+          <Link
+            to={`/phones/${product.phoneId}`}
+            className="cart-item__link"
           >
-            {product.name}
-          </h2>
+            <h2
+              className="cart-item__title"
+            >
+              {product.name}
+            </h2>
+          </Link>
 
           <div className="cart-item__add-items-container">
             <AddItems

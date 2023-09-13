@@ -5,6 +5,12 @@
   align-items: center;
   padding: 24px;
   border: 1px solid $elements;
+  transition: 0.3s ease;
+
+  &:hover {
+    transition: 0.3s ease;
+    border-color: $main-font-color;
+  }
 
   &__btn {
     border: none;
@@ -16,8 +22,10 @@
     background-image: url("../../../../assets/icons/close.svg");
     background-repeat: no-repeat;
     background-position: center;
+    transition: 0.3s ease;
 
     &:hover {
+      transition: 0.3s ease;
       background-image: url("../../../../assets/icons/closeFill.svg");
     }
   }
@@ -28,6 +36,10 @@
     object-fit: contain;
     object-position: center;
     margin-right: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
   }
 
   &__title {

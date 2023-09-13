@@ -18,7 +18,7 @@ export const HomePage = () => {
 
   const productsForHotPrices = useMemo(() => {
     return getHotPriceProducts();
-  }, []);
+  }, [products]);
 
   const getBrandNewProducts = () => {
     return productsForHotPrices
@@ -27,7 +27,7 @@ export const HomePage = () => {
 
   const productsNewest = useMemo(() => {
     return getBrandNewProducts();
-  }, []);
+  }, [products]);
 
   return (
     <div className="home">
@@ -43,7 +43,9 @@ export const HomePage = () => {
           />
         </div>
 
-        <Categories />
+        <div className="home__categories-container">
+          <Categories />
+        </div>
 
         <div className="home__brand-new-container">
           <ProductsSlider

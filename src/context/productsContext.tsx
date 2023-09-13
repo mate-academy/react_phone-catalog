@@ -20,6 +20,7 @@ type ProductContext = {
   setSortBy: (type: string) => void,
   query: string,
   setQuery: (query: string) => void,
+  isLoading: boolean,
 };
 
 export const ProductsContext = React
@@ -36,10 +37,14 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [cart, setToCart] = useLocalStorage<Product[]>('cart', []);
   const [sortBy, setSortBy] = useState<string>(SortByType.all);
   const [query, setQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getProducts()
-      .then(setProducts);
+      .then(setProducts)
+      .finally(() => setIsLoading(false));
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -83,6 +88,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     sortBy,
     query,
     setQuery,
+    isLoading,
   };
 
   return (
