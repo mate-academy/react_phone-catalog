@@ -1,22 +1,20 @@
-import { useSearchParams } from 'react-router-dom';
 import '../../styles/components/Pagination/Pagination.scss';
+
+import { useSearchParams } from 'react-router-dom';
 import { getNumbers } from '../../utils/getNumbers';
 import { Button } from '../Button';
 import { Params, getSearchWith } from '../../utils/routerService';
 
 type Props = {
-  total: number;
+  totalPages: number;
 };
 
 export const Pagination: React.FC<Props> = ({
-  total,
+  totalPages,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const currentPage = +(searchParams.get('page') || 0);
-  const perPage = +(searchParams.get('perPage') || 16);
-
-  const totalPages = Math.ceil(total / perPage);
+  const currentPage = +(searchParams.get('page') || 1);
 
   const setSearchWith = (params: Params) => {
     const search = getSearchWith(params, searchParams);
@@ -44,6 +42,7 @@ export const Pagination: React.FC<Props> = ({
       <div className="pagination__buttons-container">
         {getNumbers(totalPages, 1).map(number => (
           <Button
+            key={number}
             style={{ width: '32px' }}
             content="text"
             onClick={() => setSearchWith({ page: number })}

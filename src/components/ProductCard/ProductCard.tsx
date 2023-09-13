@@ -11,6 +11,8 @@ type Props = {
   onFavouritesClick: () => void;
 };
 
+const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
 export const ProductCard: React.FC<Props> = ({
   product,
   isSelected,
@@ -19,15 +21,13 @@ export const ProductCard: React.FC<Props> = ({
   onFavouritesClick,
 }) => {
   const {
-    name, imageUrl, price, discount, screen, capacity, ram,
+    name, image, price, fullPrice, screen, capacity, ram,
   } = product;
-
-  const actualPrice = price - (price * discount) / 100;
 
   return (
     <div className="card">
       <img
-        src={imageUrl}
+        src={`${URL}${image}`}
         alt="phone img"
         className="card__image"
       />
@@ -35,13 +35,13 @@ export const ProductCard: React.FC<Props> = ({
       <p className="card__title">{name}</p>
 
       <div className="card__price-container">
-        <p className="card__actual-price">{`$${actualPrice}`}</p>
+        <p className="card__actual-price">{`$${price}`}</p>
 
         <p
           className="card__initial-price"
-          hidden={discount === 0}
+          hidden={!fullPrice}
         >
-          {`$${price}`}
+          {`$${fullPrice}`}
         </p>
       </div>
 
@@ -52,9 +52,9 @@ export const ProductCard: React.FC<Props> = ({
           <p className="card__info-title">Ram</p>
         </div>
         <div className="card__info-values">
-          <p className="card__info-value">{screen}</p>
-          <p className="card__info-value">{capacity}</p>
-          <p className="card__info-value">{ram}</p>
+          <p className="card__info-value">{!screen ? '-' : (screen)}</p>
+          <p className="card__info-value">{!capacity ? '-' : (capacity)}</p>
+          <p className="card__info-value">{!ram ? '-' : (ram)}</p>
         </div>
       </div>
 

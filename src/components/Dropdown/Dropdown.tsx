@@ -1,25 +1,39 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState, useRef, useEffect } from 'react';
 import '../../styles/components/Dropdown/Dropdown.scss';
+
+import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
+import { useSearchParams } from 'react-router-dom';
+import { getSearchWith } from '../../utils/routerService';
+
+export type Option = {
+  name: string;
+  property: { [key: string]: string };
+};
 
 type Props = {
-  options: string[];
-  selected: string | null;
+  options: Option[];
   title: string;
-  onClick: (option: string) => void;
+  initialOption?: number;
 };
 
 export const Dropdown: React.FC<Props> = ({
   options,
-  selected,
   title,
-  onClick,
+  initialOption = 0,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+
+  const currentOptionValue = searchParams
+    .get(Object.keys(options[0].property)[0]);
+
+  const currentOptionFromSearch = options.find(option => {
+    return Object.values(option.property)[0] === currentOptionValue;
+  });
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -41,9 +55,13 @@ export const Dropdown: React.FC<Props> = ({
     setIsOpen(prev => !prev);
   };
 
-  const handleClick = (input: string) => {
+  const handleClick = (option: Option) => {
     setIsOpen(false);
-    onClick(input);
+    let search = getSearchWith(option.property, searchParams);
+
+    search = getSearchWith({ page: 1 }, search);
+
+    setSearchParams(search);
   };
 
   return (
@@ -61,8 +79,15 @@ export const Dropdown: React.FC<Props> = ({
         })}
         onClick={handleDropdownOpen}
       >
-        <p className="dropdown__selected">{selected}</p>
-
+        {currentOptionValue ? (
+          <p className="dropdown__selected">
+            {currentOptionFromSearch?.name}
+          </p>
+        ) : (
+          <p className="dropdown__selected">
+            {options[initialOption].name}
+          </p>
+        )}
         <span className="dropdown__icon" />
       </div>
 
@@ -72,11 +97,11 @@ export const Dropdown: React.FC<Props> = ({
       >
         {options.map(option => (
           <li
-            key={option}
+            key={option.name}
             className="dropdown__option"
             onClick={() => handleClick(option)}
           >
-            {option}
+            {option.name}
           </li>
         ))}
       </ul>

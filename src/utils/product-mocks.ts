@@ -4,17 +4,19 @@ import phoneImg from '../images/some-phone.png';
 
 export const getProduct = (): Product => {
   return {
-    age: 0,
-    id: 'aaa',
-    type: 'phone' as ProductType,
-    imageUrl: phoneImg,
-    name: 'Iphone',
-    snippet: 'aaa',
-    price: 700,
-    discount: 10,
-    screen: 'Some screen',
-    capacity: 'Some capacity',
-    ram: 'Some ram',
+    id: '1',
+    category: ProductType.PHONES,
+    phoneId: 'apple-iphone-7-32gb-black',
+    itemId: 'apple-iphone-7-32gb-black',
+    name: 'Apple iPhone 7 32GB Black',
+    fullPrice: 400,
+    price: 300,
+    screen: '4.7 IPS',
+    capacity: '32GB',
+    color: 'black',
+    ram: '2GB',
+    year: 2016,
+    image: phoneImg,
   };
 };
 

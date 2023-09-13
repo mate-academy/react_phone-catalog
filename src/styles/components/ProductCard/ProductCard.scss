@@ -12,6 +12,7 @@
     width: 208px;
     height: 208px;
     margin: 0 auto;
+    object-fit: contain;
   }
 
   &__title {
@@ -122,7 +123,7 @@
     width: 40px;
     height: 40px;
     border: 1px solid #{$icons-placeholders-color};
-    background: center no-repeat url("../../../images/favourites-icon.svg");
+    background: center no-repeat url("../../../images/icons/favourites-icon.svg");
     background-color: #fff;
 
     transition: 0.4s ease;
@@ -132,7 +133,7 @@
     }
 
     &.is-active {
-      background: center no-repeat url("../../../images/favourites-icon-active.svg");
+      background: center no-repeat url("../../../images/icons/favourites-icon-active.svg");
     }
   }
 }

@@ -1,7 +1,8 @@
 .pagination {
+  margin: 0 auto;
   height: 32px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 16px;
 
   &__buttons-container {

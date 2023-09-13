@@ -1,11 +1,17 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
-import { Pagination } from './components/Pagination';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
 
 const App = () => {
   return (
-    <div className="App">
-      <Pagination total={43} />
-    </div>
+    <>
+      <Header />
+
+      <Outlet />
+
+      <Footer />
+    </>
   );
 };
 

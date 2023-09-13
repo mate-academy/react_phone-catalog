@@ -4,6 +4,7 @@ import Carousel, { CarouselRef } from 'react-bootstrap/Carousel';
 
 import { useState, useRef } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import phoneBanner from '../../images/banner-phones.png';
 import tabletsBanner from '../../images/banner-tablets.png';
 import accessoriesBanner from '../../images/banner-accessories.png';
@@ -47,25 +48,31 @@ export const Banner: React.FC = () => {
           ref={carouselRef}
         >
           <Carousel.Item>
-            <img
-              src={phoneBanner}
-              alt="phones"
-              className="banner__image"
-            />
+            <Link to="/phones">
+              <img
+                src={phoneBanner}
+                alt="phones"
+                className="banner__image"
+              />
+            </Link>
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              src={tabletsBanner}
-              alt="tablets"
-              className="banner__image"
-            />
+            <Link to="/tablets">
+              <img
+                src={tabletsBanner}
+                alt="tablets"
+                className="banner__image"
+              />
+            </Link>
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              src={accessoriesBanner}
-              alt="accessories"
-              className="banner__image"
-            />
+            <Link to="accessories">
+              <img
+                src={accessoriesBanner}
+                alt="accessories"
+                className="banner__image"
+              />
+            </Link>
           </Carousel.Item>
         </Carousel>
 

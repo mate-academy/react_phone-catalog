@@ -18,7 +18,7 @@
   }
 
   &--arrow {
-    background-image: url("../../../images/arrow-right.svg");
+    background-image: url("../../../images/icons/arrow-right.svg");
 
     &-left {
       transform: rotate(180deg);
@@ -29,18 +29,18 @@
     }
 
     &:disabled {
-      background-image: url("../../../images/arrow-right-disabled.svg");
+      background-image: url("../../../images/icons/arrow-right-disabled.svg");
     }
   }
 
   &--math {
-    background-image: url("../../../images/plus.svg");
+    background-image: url("../../../images/icons/plus.svg");
 
     &-minus {
-      background-image: url("../../../images/minus.svg");
+      background-image: url("../../../images/icons/minus.svg");
 
       &:disabled {
-        background-image: url("../../../images/minus-disabled.svg");
+        background-image: url("../../../images/icons/minus-disabled.svg");
       }
     }
   }

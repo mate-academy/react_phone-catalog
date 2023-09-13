@@ -17,7 +17,7 @@ export const Crumbs: React.FC = () => {
       const formattedCrumb = getFormattedCrumb(crumb);
 
       return (
-        <li className="crumbs__item">
+        <li key={crumb} className="crumbs__item">
           {index !== arr.length - 1 ? (
             <Link to={path}>
               {formattedCrumb}

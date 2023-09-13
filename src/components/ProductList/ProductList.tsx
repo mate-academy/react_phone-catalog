@@ -22,6 +22,7 @@ export const ProductList: React.FC<Props> = ({
     <section className="list">
       {products.map(product => (
         <ProductCard
+          key={product.id}
           product={product}
           isSelected={selected.includes(product)}
           isFavourite={favourites.includes(product)}

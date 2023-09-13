@@ -20,14 +20,14 @@
   &__fav {
     width: 64px;
     height: 64px;
-    background: center no-repeat url(../../../images/favourites-icon.svg);
+    background: center no-repeat url(../../../images/icons/favourites-icon.svg);
     border: 1px solid #{$elements-color};
   }
 
   &__cart {
     width: 64px;
     height: 64px;
-    background: center no-repeat url(../../../images/shop-card-icon.svg);
+    background: center no-repeat url(../../../images/icons/shop-card-icon.svg);
     border: 1px solid #{$elements-color};
   }
 }

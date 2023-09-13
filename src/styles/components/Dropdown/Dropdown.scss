@@ -2,8 +2,8 @@
 @import "../../utils/variables.scss";
 
 .dropdown {
-  margin: 250px;
   width: 176px;
+  z-index: 1;
 
   &__title {
     margin: 0 0 6px;
@@ -37,11 +37,12 @@
   &__icon {
     width: 16px;
     height: 16px;
-    background: center no-repeat url("../../../images/arrow-right-disabled.svg");
+    background: center no-repeat url("../../../images/icons/arrow-right-disabled.svg");
     transform: rotate(90deg);
   }
 
   &__list {
+    background-color: #fff;
     list-style: none;
     margin: 4px 0 0;
     padding: 8px 0;
@@ -61,7 +62,6 @@
   &__option {
     padding-left: 12px;
     height: 32px;
-    z-index: 1;
     @include bodyTextStyling;
     color: #{$secondary-color};
     line-height: 32px;

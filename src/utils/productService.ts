@@ -1,7 +1,7 @@
 import { Product, ProductType } from '../types/product';
 
-enum SortBy {
-  AGE = 'age',
+export enum SortBy {
+  AGE = 'id',
   NAME = 'name',
   PRICE = 'price',
 }
@@ -10,10 +10,10 @@ const reverseSign = (number: number) => {
   return -number;
 };
 
-export function sortProducts(
+function sortProducts(
   products: Product[],
-  sortBy: SortBy,
-  desc: boolean,
+  sortBy?: SortBy,
+  desc?: boolean,
 ) {
   const sortedProducts = [...products];
 
@@ -22,8 +22,8 @@ export function sortProducts(
     case SortBy.PRICE:
       return sortedProducts.sort((proudctA, productB) => {
         return desc
-          ? reverseSign(proudctA[sortBy] - productB[sortBy])
-          : proudctA[sortBy] - productB[sortBy];
+          ? reverseSign(+proudctA[sortBy] - +productB[sortBy])
+          : +proudctA[sortBy] - +productB[sortBy];
       });
     case SortBy.NAME:
       return sortedProducts.sort((productA, productB) => {
@@ -35,9 +35,9 @@ export function sortProducts(
   }
 }
 
-export function filterProducts(
+function filterProducts(
   products: Product[],
-  filterBy: ProductType,
+  filterBy?: ProductType,
   query?: string,
 ) {
   const filteredProducts = [...products];
@@ -49,12 +49,35 @@ export function filterProducts(
   }
 
   switch (filterBy) {
-    case ProductType.PHONE:
+    case ProductType.PHONES:
     case ProductType.TABLET:
     case ProductType.ACCESSORY:
       return filteredProducts.filter(product => {
-        return product.type as ProductType === filterBy;
+        return product.category as ProductType === filterBy;
       });
     default: return filteredProducts;
   }
 }
+
+function sliceProducts(
+  products: Product[],
+  page: number,
+  perPage: number | string,
+) {
+  const slicedProducts = [...products];
+
+  if (perPage === 'all') {
+    return slicedProducts;
+  }
+
+  const startIndex = (page - 1) * +perPage;
+  const endIndex = startIndex + +perPage;
+
+  return slicedProducts.slice(startIndex, endIndex);
+}
+
+export const productService = {
+  sortProducts,
+  filterProducts,
+  sliceProducts,
+};

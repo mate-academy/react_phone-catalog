@@ -1,5 +1,5 @@
 import '../../styles/components/Header/Header.scss';
-import logo from '../../images/logo.svg';
+import logo from '../../images/icons/logo.svg';
 import { NavBarItem } from '../NavBarItem';
 
 export const Header: React.FC = () => {

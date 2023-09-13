@@ -1,19 +1,21 @@
 export enum ProductType {
-  PHONE = 'phone',
+  PHONES = 'phones',
   TABLET = 'tablet',
   ACCESSORY = 'accessory',
 }
 
 export type Product = {
-  age: number;
-  id: string;
-  type: ProductType;
-  imageUrl: string;
-  name: string;
-  snippet: string;
-  price: number;
-  discount: number;
-  screen: string
-  capacity: string;
-  ram: string;
+  id: string,
+  category: ProductType,
+  phoneId: string,
+  itemId: string,
+  name: string,
+  fullPrice: number,
+  price: number,
+  screen: string,
+  capacity: string,
+  color: string,
+  ram: string,
+  year: number,
+  image: string
 };

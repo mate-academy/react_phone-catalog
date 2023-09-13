@@ -1,99 +1,96 @@
 import '../../styles/pages/HomePage/HomePage.scss';
 
-import { Footer } from '../../components/Footer';
-import { Header } from '../../components/Header';
+import { Link } from 'react-router-dom';
 import { Banner } from '../../components/Banner';
 import { ProductSlider } from '../../components/ProductSlider';
 
 import phonesImg from '../../images/phones-block.png';
 import tabletsImg from '../../images/tablets-block.png';
 import accessoriesImg from '../../images/accessories-block.png';
-import { Product } from '../../types/product';
+import { getProducts } from '../../utils/product-mocks';
 
-type Props = {
-  products: Product[];
-  selected: Product[];
-  favourites: Product[];
-  onSelectedClick: () => void;
-  onFavouritesClick: () => void;
-};
+export const HomePage: React.FC = () => {
+  const products = getProducts(10);
+  const selected = products.slice(3, 6);
+  const favourites = products.slice(1, 2);
 
-export const HomePage: React.FC<Props> = ({
-  products,
-  selected,
-  favourites,
-  onSelectedClick,
-  onFavouritesClick,
-}) => {
+  const onSelectedClick = () => {
+
+  };
+
+  const onFavouritesClick = () => {
+
+  };
+
   return (
-    <>
-      <Header />
+    <main className="home-page">
+      <Banner />
 
-      <main className="main">
-        <Banner />
+      <ProductSlider
+        title="Hot prices"
+        products={products}
+        selected={selected}
+        favourites={favourites}
+        onSelectedClick={onSelectedClick}
+        onFavouritesClick={onFavouritesClick}
+      />
 
-        <ProductSlider
-          title="Hot prices"
-          products={products}
-          selected={selected}
-          favourites={favourites}
-          onSelectedClick={onSelectedClick}
-          onFavouritesClick={onFavouritesClick}
-        />
+      <section className="home-page__category-links">
+        <h1 className="home-page__categories-title">Shop by gategory</h1>
 
-        <section className="main__category-links">
-          <h1 className="main__categories-title">Shop by gategory</h1>
-
-          <div className="main__category-blocks">
-            <div className="main__category-block">
+        <div className="home-page__category-blocks">
+          <div className="home-page__category-block">
+            <Link to="/phones">
               <img
                 src={phonesImg}
                 alt="phones"
-                className="main__category-img main__phones"
+                className="home-page__category-img home-page__phones"
               />
+            </Link>
 
-              <h3 className="main__category-title">Mobile phones</h3>
+            <h3 className="home-page__category-title">Mobile phones</h3>
 
-              <p className="main__pieces-quantity">95 models</p>
-            </div>
+            <p className="home-page__pieces-quantity">95 models</p>
+          </div>
 
-            <div className="main__category-block">
+          <div className="home-page__category-block">
+            <Link to="tablets">
               <img
                 src={tabletsImg}
                 alt="phones"
-                className="main__category-img main__tablets"
+                className="home-page__category-img home-page__tablets"
               />
+            </Link>
 
-              <h3 className="main__category-title">Tablets</h3>
+            <h3 className="home-page__category-title">Tablets</h3>
 
-              <p className="main__pieces-quantity">40 models</p>
-            </div>
+            <p className="home-page__pieces-quantity">40 models</p>
+          </div>
 
-            <div className="main__category-block">
+          <div className="home-page__category-block">
+            <Link to="/accessories">
               <img
                 src={accessoriesImg}
                 alt="phones"
-                className="main__category-img main__accessories"
+                className="home-page__category-img home-page__accessories"
               />
+            </Link>
 
-              <h3 className="main__category-title">Accessories</h3>
+            <h3 className="home-page__category-title">Accessories</h3>
 
-              <p className="main__pieces-quantity">205 models</p>
-            </div>
+            <p className="home-page__pieces-quantity">205 models</p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <ProductSlider
-          title="Brand new models"
-          products={products}
-          selected={selected}
-          favourites={favourites}
-          onSelectedClick={onSelectedClick}
-          onFavouritesClick={onFavouritesClick}
-        />
-      </main>
-
-      <Footer />
-    </>
+      <ProductSlider
+        title="Brand new models"
+        products={products}
+        selected={selected}
+        favourites={favourites}
+        onSelectedClick={onSelectedClick}
+        onFavouritesClick={onFavouritesClick}
+      />
+    </main>
   );
 };
