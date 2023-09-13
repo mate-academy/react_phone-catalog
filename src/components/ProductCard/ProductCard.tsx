@@ -86,6 +86,7 @@ export const ProductCard: React.FC<Props> = ({ product, firstPhone = 0 }) => {
         <img
           className="product-card__image"
           src={`_new/${image}`}
+          // src={`../../images/${image}`}
           alt={name}
         />
       </Link>
