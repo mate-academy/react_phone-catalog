@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper';
 
 import { makeUrl } from '../../helpers/makeUrl';
 import { makeAlt } from '../../helpers/makeAlt';
@@ -19,12 +17,10 @@ import { Player } from '../../components/Player/Player';
 import { Loader } from '../../components/Loader/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Modal } from '../../components/Modal/Modal';
+import { Slider } from '../../components/Slider/Slider';
+import { MainButton } from '../../components/Buttons/MainButton/MainButton';
 
 import './HomePage.scss';
-import 'swiper/swiper.scss';
-import 'swiper/modules/pagination/pagination.scss';
-
-import './slider.scss';
 
 export const HomePage: React.FC = React.memo(() => {
   const [searchParams] = useSearchParams();
@@ -90,53 +86,10 @@ export const HomePage: React.FC = React.memo(() => {
 
           {!isLoading && goods.length > 0 && (
             getScreenType() === Resolutions.Mobile ? (
-              <Swiper
-                slidesPerView={1}
-                modules={[Pagination]}
-                pagination={{ clickable: true }}
-              >
-                {goods.map(good => {
-                  const {
-                    images,
-                    name,
-                    id,
-                    seoUrl,
-                    translationSlug,
-                    price,
-                  } = good;
-
-                  return (
-                    <SwiperSlide
-                      className="homePage__goods-list-item"
-                      key={id}
-                    >
-                      <Link
-                        className="homePage__goods-list-item-link"
-                        to={{
-                          pathname: seoUrl,
-                          search: `?lang=${currentLanguage}`,
-                        }}
-                      >
-                        <img
-                          className="homePage__goods-list-item-image"
-                          src={images[0]}
-                          alt={name}
-                        />
-
-                        <div className="homePage__goods-list-item-info">
-                          <h2 className="homePage__goods-list-item-info-header">
-                            {t(translationSlug)}
-                          </h2>
-
-                          <p className="homePage__goods-list-item-info-price">
-                            {`${t(price.toString())} ${giveCurrency(currentLanguage)}`}
-                          </p>
-                        </div>
-                      </Link>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
+              <Slider
+                goods={goods}
+                rootClassName="homePage"
+              />
             ) : (
               <ul className="homePage__goods-list">
                 {goods.map(good => {
@@ -183,9 +136,15 @@ export const HomePage: React.FC = React.memo(() => {
               </ul>
             )
           )}
+
+          <MainButton
+            text={t('ViewAll')}
+            where={NavLink.AllGender}
+            className="homePage__goods-button"
+          />
         </section>
 
-        <section className="homePage__gallery page__section">
+        <section className="homePage__gallery">
           <div className="homePage__gallery-info">
             <h2 className="homePage__gallery-info-title">
               {t('Looks')}

@@ -1,3 +1,4 @@
+// !important needs, because it's library
 @import "../../styles/utils.scss";
 
 .swiper {
@@ -11,10 +12,10 @@
   }
 
   &-pagination-bullet {
-    background: $black-700;
+    background: $black-700 !important;
 
     &-active {
-      background: $red-700;
+      background: $red-700 !important;
     }
   }
 }
