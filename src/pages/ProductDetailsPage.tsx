@@ -122,7 +122,7 @@ export const ProductDetailsPage = () => {
                   onClick={() => handleSetPhoto(image)}
                 >
                   <img
-                    src={`_new/${image}`}
+                    src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
                     alt={image}
                     className="product-details__photo"
                   />
@@ -133,7 +133,7 @@ export const ProductDetailsPage = () => {
             <div className="product-details__main-center">
               <img
                 className="product-details__photo"
-                src={`_new/${mainPhoto}`}
+                src={`https://mate-academy.github.io/react_phone-catalog/_new/${mainPhoto}`}
                 alt={mainPhoto}
               />
             </div>
