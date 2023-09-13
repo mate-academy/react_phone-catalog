@@ -45,19 +45,19 @@ export const Slider: React.FC = () => {
   };
 
   return (
-    <div className="carousel">
+    <div className="slider">
       <button
         type="button"
         title="top"
-        className="carousel__button"
+        className="slider__button"
         onClick={handlePrevBtn}
       >
         <span className="arrow arrow--left" />
       </button>
 
-      <div className="carousel__main">
+      <div className="slider__main">
         <ul
-          className="carousel__list"
+          className="slider__list"
           style={{
             transition: `transform ${animationDuration}ms`,
           }}
@@ -68,7 +68,7 @@ export const Slider: React.FC = () => {
               key={img}
             >
               <img
-                className="carousel__main--photos carousel__mob"
+                className="slider__main--photos slider__mob"
                 src={`_new/img/banner-${img}`}
                 alt={`banner-#${i + 1}`}
                 style={{
@@ -76,7 +76,7 @@ export const Slider: React.FC = () => {
                 }}
               />
               <img
-                className="carousel__main--photos carousel__tab"
+                className="slider__main--photos slider__tab"
                 src={`_new/img/banner-${img}`}
                 alt={`banner-#${i + 1}`}
                 style={{
@@ -84,7 +84,7 @@ export const Slider: React.FC = () => {
                 }}
               />
               <img
-                className="carousel__main--photos carousel__desc"
+                className="slider__main--photos slider__desc"
                 src={`_new/img/banner-${img}`}
                 alt={`banner-#${i + 1}`}
                 style={{
@@ -99,20 +99,20 @@ export const Slider: React.FC = () => {
       <button
         type="button"
         title="top"
-        className="carousel__button"
+        className="slider__button"
         onClick={handleNextBtn}
       >
         <span className="arrow arrow--right" />
       </button>
 
-      <div className="carousel__dots">
+      <div className="slider__dots">
         {images.map((img, ind) => (
           <button
             key={img}
             type="button"
-            aria-label="carousel__dots"
-            className={classNames('carousel__dot', {
-              'carousel__dot--active': ind === currIndex,
+            aria-label="slider__dots"
+            className={classNames('slider__dot', {
+              'slider__dot--active': ind === currIndex,
             })}
             onClick={() => handleDots(ind)}
           />

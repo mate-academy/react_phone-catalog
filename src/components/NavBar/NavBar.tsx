@@ -4,13 +4,22 @@ import { useContext, useState } from 'react';
 import { SearchForm } from './SearchForm';
 import { Logo } from '../Logo/Logo';
 import { CartContext } from '../../context/CartContext';
+import { FavouritesContext } from '../../context/FavsContext';
 
 export const NavBar = () => {
   const location = useLocation();
   const { cartCount } = useContext(CartContext);
+  const { favItems } = useContext(FavouritesContext);
 
-  const shouldShowSearchForm = ['/phones', '/tablets', '/accessories']
+  const shouldShowSearchForm = [
+    '/phones',
+    '/tablets',
+    '/accessories',
+    '/favourites',
+  ]
     .includes(location.pathname);
+
+  const shouldShowFavs = ['/cart'].includes(location.pathname);
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
@@ -91,6 +100,11 @@ export const NavBar = () => {
           onClick={closeMenu}
         >
           favourites
+          {favItems.length > 0 && (
+            <span className="navbar__icon--count-mob">
+              <span className="navbar__icon--count">{favItems.length}</span>
+            </span>
+          )}
         </NavLink>
 
         <NavLink
@@ -99,6 +113,11 @@ export const NavBar = () => {
           onClick={closeMenu}
         >
           cart
+          {cartCount > 0 && (
+            <span className="navbar__icon--count-mob">
+              <span className="navbar__icon--count">{cartCount}</span>
+            </span>
+          )}
         </NavLink>
       </ul>
 
@@ -107,11 +126,34 @@ export const NavBar = () => {
       </div>
 
       <div className="navbar__icons">
-        <Link to="/" className="navbar__icon">
-          <div className="navbar__icon--favs" />
-        </Link>
+        {!shouldShowFavs && (
+          <Link
+            to="/favourites"
+            className={classNames('navbar__icon', {
+              'navbar__icon--active': location.pathname === '/favourites',
+            })}
+          >
+            {favItems.length >= 1 ? (
+              <>
+                <div className="navbar__icon--favs" />
 
-        <Link to="/cart" className="navbar__icon">
+                <span className="navbar__icon--count-box">
+                  <span className="navbar__icon--count">{favItems.length}</span>
+                </span>
+              </>
+            ) : (
+              <div className="navbar__icon--favs" />
+            )}
+
+          </Link>
+        )}
+
+        <Link
+          to="/cart"
+          className={classNames('navbar__icon', {
+            'navbar__icon--active': location.pathname === '/cart',
+          })}
+        >
           {cartCount >= 1 ? (
             <>
               <div className="navbar__icon--cart" />

@@ -69,10 +69,15 @@ export const ProductDetailsPage = () => {
 
       {!loading && product && (
         <div className="details">
-          <Link to=".." className="details__back" data-cy="backButton">
+          <button
+            type="button"
+            className="details__back"
+            data-cy="backButton"
+            onClick={() => window.history.back()}
+          >
             <span className="arrow arrow--left-disabled" />
             <span className="details__back--span">Back</span>
-          </Link>
+          </button>
           <h1 className="details__title">{product?.name}</h1>
 
           <div className="details__container">
@@ -150,7 +155,7 @@ export const ProductDetailsPage = () => {
 
                 <div className="details__buttons">
                   <AddToCartButton prodId={product.id} />
-                  <AddToFav />
+                  <AddToFav prodId={product.id} />
                 </div>
 
                 <div className="details__description" data-cy="productDescription">

@@ -8,6 +8,7 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 const App = () => (
   <div className="App">
@@ -33,6 +34,7 @@ const App = () => (
 
         <Route path="accessories" element={<AccessoriesPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="favourites" element={<FavoritesPage />} />
 
       </Routes>
     </main>

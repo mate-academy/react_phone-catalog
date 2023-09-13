@@ -1,18 +1,12 @@
-/* eslint-disable max-len */
 import React, {
   createContext,
   useEffect,
   useState,
   ReactNode,
 } from 'react';
-import { Product } from '../types/Product';
 
-export interface CartItem {
-  id: string;
-  product: Product;
-  quantity: number;
-  price: number;
-}
+import { addItem, removeItem } from '../utils/cartHelpFunctions';
+import { CartItem } from '../types/CartItem';
 
 interface Cart {
   cartItems: CartItem[];
@@ -22,6 +16,7 @@ interface Cart {
   minusItem: (cartItem: CartItem) => void,
   cartCount: number;
   cartTotalPrice: number;
+  checkAdded: (id: string) => boolean;
 }
 
 export const CartContext = createContext<Cart>({
@@ -32,23 +27,8 @@ export const CartContext = createContext<Cart>({
   minusItem: () => { },
   cartCount: 0,
   cartTotalPrice: 0,
+  checkAdded: () => false,
 });
-
-const addCartItem = (cartItems: CartItem[], productToAdd: CartItem) => {
-  const foundId = cartItems.find(
-    (cartItem) => cartItem.id === productToAdd.id,
-  );
-
-  if (foundId) {
-    return cartItems;
-  }
-
-  return [...cartItems, { ...productToAdd }];
-};
-
-const removeCartItem = (cartItems: CartItem[], cartItemToRemove: CartItem) => {
-  return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
-};
 
 interface CartProviderProps {
   children: ReactNode;
@@ -90,11 +70,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [cartItems]);
 
   const addItemToCart = (productToAdd: CartItem) => {
-    setCartItems((prevCartItems) => addCartItem(prevCartItems, productToAdd));
+    setCartItems((prevCartItems) => addItem(prevCartItems, productToAdd));
   };
 
   const removeItemFromCart = (cartItemToRemove: CartItem) => {
-    setCartItems((prevCartItems) => removeCartItem(prevCartItems, cartItemToRemove));
+    setCartItems(prevCartItems => removeItem(prevCartItems, cartItemToRemove));
   };
 
   const plusItem = (cartItem: CartItem) => {
@@ -108,7 +88,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const minusItem = (cartItem: CartItem) => {
     setCartItems((prevCartItems) => prevCartItems.map((item) => {
       if (item.id === cartItem.id) {
-        // Перевірка, чи кількість товару більше 1 перед відніманням
         const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
 
         return { ...item, quantity: newQuantity };
@@ -116,6 +95,10 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
       return item;
     }));
+  };
+
+  const checkAdded = (id: string) => {
+    return cartItems.some(item => item.id === id);
   };
 
   const value: Cart = {
@@ -126,6 +109,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     minusItem,
     cartCount,
     cartTotalPrice,
+    checkAdded,
   };
 
   return (

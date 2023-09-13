@@ -6,24 +6,26 @@
 
 @import "../src/styles/navBar.scss";
 @import "../src/styles/footer.scss";
-@import "../src/styles/carousel.scss";
+@import "../src/styles/slider.scss";
 @import "../src/styles/productSlider.scss";
 @import "../src/styles/productCard.scss";
 @import "../src/styles/shopByCategory.scss";
 @import "../src/styles/productsList.scss";
 @import "../src/styles/details.scss";
 @import "../src/styles/cart.scss";
+@import "../src/styles/favourites.scss";
 
 @import "../src/styles/scrollBtn.scss";
 @import "../src/styles/logo.scss";
 @import "../src/styles/searchBar.scss";
 @import "../src/styles/arrow.scss";
-@import "../src/styles/mainButton.scss";
+@import "../src/styles/addToCart.scss";
 @import "../src/styles/addFav.scss";
 @import "../src/styles/loader.scss";
 @import "../src/styles/pagination.scss";
 @import "../src/styles/selector.scss";
 @import "../src/styles/breadCrumbs.scss";
+@import "../src/styles/notification.scss";
 
 iframe {
   display: none;

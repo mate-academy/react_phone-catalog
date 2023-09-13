@@ -8,10 +8,11 @@ type Props = {
 };
 
 export const AddToCartButton: React.FC<Props> = ({ prodId }) => {
-  const [isAdded, setIsAdded] = useState(false);
-  const [isButtonSelected, setIsButtonSelected] = useState(false);
+  const { addItemToCart, checkAdded } = useContext(CartContext);
   const { products } = useProducts();
-  const { addItemToCart } = useContext(CartContext);
+
+  const [isButtonSelected, setIsButtonSelected] = useState(checkAdded(prodId));
+
   const handleAddToCart = () => {
     const product = products.find(p => p.itemId === prodId);
 
@@ -22,21 +23,20 @@ export const AddToCartButton: React.FC<Props> = ({ prodId }) => {
         quantity: 1,
         price: product.price,
       });
-    }
 
-    setIsAdded(true);
-    setIsButtonSelected(true);
+      setIsButtonSelected(true);
+    }
   };
 
   return (
     <button
       type="button"
-      className={classNames('main-button', {
-        'main-button--selected': isButtonSelected,
+      className={classNames('addToCart', {
+        'addToCart--selected': isButtonSelected,
       })}
       onClick={handleAddToCart}
     >
-      {isAdded ? <p>Added to cart</p> : <p>Add to cart</p>}
+      {isButtonSelected ? <p>Added to cart</p> : <p>Add to cart</p>}
     </button>
   );
 };

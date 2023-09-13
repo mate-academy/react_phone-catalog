@@ -2,17 +2,12 @@ import { Link } from 'react-router-dom';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFav } from '../Buttons/AddToFav';
 import { Product } from '../../types/Product';
-// import { useContext } from 'react';
-// import { CartContext } from '../../context/CartContext';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  // const { addItemToCart } = useContext(CartContext);
-  // const addProductToCart = () => addItemToCart(product)
-
   const {
     image,
     name,
@@ -79,7 +74,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="card__buttonContaiter">
           <AddToCartButton prodId={product.itemId} />
-          <AddToFav />
+          <AddToFav prodId={product.itemId} />
         </div>
       </div>
     </div>

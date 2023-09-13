@@ -1,0 +1,26 @@
+.favourites {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %title-text;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 40px;
+    color: $gray-secondary;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 272px);
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+}

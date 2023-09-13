@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { CartContext } from '../context/CartContext';
 
 export const CartPage = () => {
+  const [message, setMessage] = useState(false);
   const {
     cartItems,
     removeItemFromCart,
@@ -19,10 +19,15 @@ export const CartPage = () => {
 
       <div className="cart">
         <div className="cart__top">
-          <Link to=".." className="details__back" data-cy="backButton">
+          <button
+            type="button"
+            className="details__back"
+            data-cy="backButton"
+            onClick={() => window.history.back()}
+          >
             <span className="arrow arrow--left-disabled" />
             <span className="details__back--span">Back</span>
-          </Link>
+          </button>
           <h1 className="cart__title">Cart</h1>
         </div>
 
@@ -30,7 +35,6 @@ export const CartPage = () => {
           {cartItems.length > 0 ? (
             <>
               <div className="cart__items-container">
-                {/* {!cartItems.length && 'Your cart is empty'} */}
                 {cartItems.map(item => (
                   <div key={item.id} className="cart__item">
                     <div className="cart__item-info">
@@ -99,9 +103,24 @@ export const CartPage = () => {
                   <button
                     type="button"
                     className="cart__checkout-btn"
+                    onClick={() => setMessage(true)}
                   >
                     <p className="cart__checkout-btn--text">Checkout</p>
                   </button>
+                  {message && (
+                    <div className="notification">
+                      <p className="notification--text">
+                        We are sorry, but this feature is not implemented yet
+                      </p>
+                      <button
+                        type="button"
+                        className="notification__close"
+                        onClick={() => setMessage(false)}
+                      >
+                        <div className="notification__close--cross" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
               </div>
