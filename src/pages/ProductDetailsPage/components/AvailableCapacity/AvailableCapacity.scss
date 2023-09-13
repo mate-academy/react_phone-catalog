@@ -19,6 +19,7 @@
     border: 1px solid $elements;
     padding: 8px;
     transition: 0.3s ease;
+    text-decoration: none;
 
     &:hover {
       border-color: $main-font-color;

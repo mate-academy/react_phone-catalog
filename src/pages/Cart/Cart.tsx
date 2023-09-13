@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../bits';
-import { PathDisplay, Wrapper } from '../../components';
+import { BackButton, Wrapper } from '../../components';
 import { useProducts } from '../../context';
 import { ButtonType } from '../../types';
 import './Cart.scss';
@@ -15,11 +15,13 @@ export const Cart = () => {
   return (
     <div className="cart">
       <Wrapper>
-        <div className="cart__path-container">
-          <PathDisplay />
+        <div className="cart__back-container">
+          <BackButton />
         </div>
 
         <h1 className="cart__title">Cart</h1>
+
+        {!cart.length && <p className="cart__message">Your cart is empty</p>}
 
         {!message
           ? (

@@ -10,6 +10,11 @@
     margin-bottom: 40px;
   }
 
+  &__back-button-container {
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+
   &__heading {
     gap: 8px;
   }
@@ -40,5 +45,10 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  &__pagination-container {
+    margin-bottom: 80px;
   }
 }

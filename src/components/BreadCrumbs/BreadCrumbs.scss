@@ -1,6 +1,6 @@
 @import "/src/style/main.scss";
 
-.path {
+.bread-crumbs {
   display: flex;
   align-items: center;
   gap: 32px;
@@ -10,6 +10,10 @@
   &__home-icon {
     width: 16px;
     height: 16px;
+
+    &::before {
+      content: url("../../assets/icons/home.svg");
+    }
   }
 
   &__link {

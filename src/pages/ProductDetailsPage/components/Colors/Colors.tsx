@@ -1,33 +1,38 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useState } from 'react';
 import classNames from 'classnames';
 import './Colors.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   colors: string[],
+  nameSpaceId: string,
+  capacity: string,
+  currColor: string,
 };
 
-export const Colors: React.FC<Props> = ({ colors }) => {
-  const [selected, setSelected] = useState<number | null>(0);
-
-  console.log('color', selected);
-
+export const Colors: React.FC<Props> = ({
+  colors,
+  nameSpaceId,
+  capacity,
+  currColor,
+}) => {
   return (
     <div className="colors">
       <h2 className="colors__heading">Available colors</h2>
       <div className="colors__list">
-        {colors.map((color, ind) => (
+        {colors.map(color => (
           <div
             key={color}
             className="colors__item"
-            onClick={() => setSelected(ind)}
+            // onClick={() => setSelected(ind)}
           >
             <div className={classNames('colors__border', {
-              'colors__border--selected': ind === selected,
+              'colors__border--selected': color === currColor,
             })}
             >
-              <div
+              <Link
+                to={`/phones/${nameSpaceId}-${capacity.toLowerCase()}-${color}`}
                 className="colors__circle"
                 style={{ backgroundColor: `${color}` }}
               />

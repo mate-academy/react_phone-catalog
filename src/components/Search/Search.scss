@@ -1,0 +1,32 @@
+@import "/src/style/main.scss";
+
+.search {
+  @include flex-center;
+  position: relative;
+
+
+  &__input {
+    width: 327px;
+    padding: 24px;
+    border: none;
+    border-left: 1px solid $elements;
+    border-right: 1px solid $elements;
+
+    &:focus {
+      outline: none;
+      background-color: $hover-bg;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 35%;
+    right: 24px;
+  }
+
+  &__icon-close {
+    position: absolute;
+    top: 40%;
+    right: 24px;
+  }
+}

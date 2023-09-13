@@ -6,6 +6,12 @@
     margin-bottom: 16px;
   }
 
+  &__back-container {
+    margin-top: 40px;
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+
   &__title {
     color: $main-font-color;
     font-family: $font-bold;
@@ -20,8 +26,7 @@
     font-size: 32px;
     letter-spacing: -0.32px;
     margin-bottom: 8px;
-    padding:80px;
-
+    padding: 80px 0;
   }
 
   &__content {

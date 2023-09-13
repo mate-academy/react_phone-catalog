@@ -34,6 +34,7 @@ export const CartItem: React.FC<Props> = ({
             type="button"
             className="cart-item__btn"
             onClick={handleDeleteItem}
+            data-cy="cartDeleteButton"
           />
 
           <img

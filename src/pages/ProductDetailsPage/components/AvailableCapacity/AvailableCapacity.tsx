@@ -1,34 +1,34 @@
-import { useState } from 'react';
 import classNames from 'classnames';
 import './AvailableCapacity.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   currCapacity: string,
   capacities: string[],
+  nameSpaceId: string,
+  color: string,
 };
 
 export const AvailableCapacity: React.FC<Props> = ({
   capacities,
   currCapacity,
+  nameSpaceId,
+  color,
 }) => {
-  const [selected, setSelected] = useState(0);
-
-  console.log('availableCapacity', capacities[selected]);
-
   return (
     <div className="capacity">
       <div className="capacity__list">
-        {capacities.map((capacity, ind) => (
-          <button
+        {capacities.map(capacity => (
+          <Link
+            to={`/phones/${nameSpaceId}-${capacity.toLowerCase()}-${color}`}
             key={capacity}
             type="button"
-            onClick={() => setSelected(ind)}
             className={classNames('capacity__btn', {
               'capacity__btn--current': capacity === currCapacity,
             })}
           >
             {capacity}
-          </button>
+          </Link>
         ))}
       </div>
     </div>

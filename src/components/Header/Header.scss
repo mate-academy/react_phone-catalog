@@ -1,5 +1,15 @@
 @import "/src/style/main.scss";
 
 .header {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid $elements;
+
+  &__search-container {
+    display: flex;
+  }
+
+  &__rightside {
+    @include flex-between;
+  }
 }

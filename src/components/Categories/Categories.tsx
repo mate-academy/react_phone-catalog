@@ -16,7 +16,10 @@ export const Categories = () => {
         <h2 className="categories__title">Shop by category</h2>
       </div>
 
-      <div className="categories__list">
+      <div
+        className="categories__list"
+        data-cy="categoryLinksContainer"
+      >
         {categoriesArray.map(category => (
           <CategoryItem
             key={category[0]}

@@ -19,7 +19,7 @@ export const NavIcon: React.FC<Props> = ({
   const navbarItemClass = ({ isActive }: {
     isActive: boolean
   }) => classNames('nav-icon', {
-    'nav__link nav__link--is-active': isActive,
+    'nav-icon__link nav-icon__link--is-active': isActive,
   });
 
   return (

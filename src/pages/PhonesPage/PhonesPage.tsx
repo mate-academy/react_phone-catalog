@@ -3,17 +3,34 @@ import './PhonesPage.scss';
 import { useProducts } from '../../context';
 import { ProductCard } from '../../components/ProductCard';
 import { Dropdown } from '../../bits';
-import { PathDisplay } from '../../components';
+import { BackButton, BreadCrumbs, Pagination } from '../../components';
+import { SortByType } from '../../types/enums/SortByType';
 
-const sortOptions = ['Alphabetically', 'Newest', 'Cheapest'];
-const itemsOptions = ['All', '4', '8', '16'];
+const sortOptions = [
+  SortByType.alphabetically,
+  SortByType.newest,
+  SortByType.cheapest,
+];
+
+const itemsOptions = ['all', '4', '8', '16'];
 
 export const PhonesPage = () => {
-  const { products } = useProducts();
-  const [sortBy, setSortBy] = useState('');
-  const [itemsToShow, setItemsToShow] = useState('');
+  const { filteredProducts, setSortBy } = useProducts();
+  const [itemsToShow, setItemsToShow] = useState<string>(SortByType.all);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const phonesQuantity = products.length;
+  const indexOfLastPhone = currentPage * Number(itemsToShow);
+  const indexOfFirstPhone = indexOfLastPhone - Number(itemsToShow);
+
+  let currentPhones;
+
+  if (itemsToShow === SortByType.all) {
+    currentPhones = filteredProducts;
+  } else {
+    currentPhones = filteredProducts.slice(indexOfFirstPhone, indexOfLastPhone);
+  }
+
+  const phonesQuantity = filteredProducts.length;
 
   const handleSortBy = (option: string) => {
     setSortBy(option);
@@ -25,10 +42,12 @@ export const PhonesPage = () => {
 
   return (
     <div className="phones">
-      <div>{`${sortBy} ${itemsToShow}`}</div>
-
       <div className="phones__path-container">
-        <PathDisplay />
+        <BreadCrumbs />
+      </div>
+
+      <div className="phones__back-button-container">
+        <BackButton />
       </div>
 
       <div className="phones__heading">
@@ -54,13 +73,25 @@ export const PhonesPage = () => {
         className="phones__list"
         data-cy="productList"
       >
-        {products.map(phone => (
+        {currentPhones.map(phone => (
           <ProductCard
             key={phone.id}
             product={phone}
           />
         ))}
       </div>
+
+      {itemsToShow !== SortByType.all && (
+        <div className="phones__pagination-container">
+          <Pagination
+            phonesPerPage={itemsToShow !== SortByType.all
+              ? Number(itemsToShow) : 0}
+            totalPhones={filteredProducts.length}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
     </div>
   );
 };

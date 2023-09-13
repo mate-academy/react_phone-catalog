@@ -2,14 +2,10 @@ import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { pages } from '../../Root';
 import './Navigation.scss';
-import { NavIcon } from '../NavIcon';
-import { useProducts } from '../../context';
 
 const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites', 'productId'];
 
 export const Navigation = () => {
-  const { favourites, cart } = useProducts();
-
   const navbarItemClass = ({ isActive }: {
     isActive: boolean
   }) => classNames('nav__link', {
@@ -30,27 +26,21 @@ export const Navigation = () => {
     });
   };
 
-  const favCount = favourites.length;
-  const cartCount = cart.length;
-
   return (
     <nav className="nav">
-      <div className="nav__leftside">
-        <Link
-          className="nav__logo"
-          to="/"
-        >
-          <img
-            alt="logo"
-            className="check"
-            src="./img/icons/logo.svg"
-          />
-        </Link>
+      <Link
+        className="nav__logo"
+        to="/"
+      >
+        <img
+          alt="logo"
+          className="check"
+          src="./img/icons/logo.svg"
+        />
+      </Link>
 
-        {renderNavLink()}
-      </div>
-
-      <div className="nav__rigthside">
+      {renderNavLink()}
+      {/* <div className="nav__rigthside">
         <NavIcon
           path="favourites"
           alt="like-icon"
@@ -64,7 +54,7 @@ export const Navigation = () => {
           src="./img/icons/cart.svg"
           count={cartCount}
         />
-      </div>
+      </div> */}
     </nav>
   );
 };

@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductDetailsPage.scss';
-import { PathDisplay, ProductsSlider, Wrapper } from '../../components';
+import {
+  BackButton,
+  BreadCrumbs,
+  ProductsSlider,
+  Wrapper,
+} from '../../components';
 import { getProductById } from '../../api/products';
 import { ButtonType, Phone } from '../../types';
 import { ProductImage } from './components/ProductImage';
@@ -10,6 +15,7 @@ import { AvailableCapacity } from './components/AvailableCapacity';
 import { Button } from '../../bits';
 import { useProducts } from '../../context';
 import { Like } from '../../bits/Like';
+import { Loader } from '../../components/Loader/Loader';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -21,11 +27,15 @@ export const ProductDetailsPage = () => {
     setToCart,
   } = useProducts();
   const [phone, setPhone] = useState<Phone | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (productId) {
+      setIsLoading(true);
+
       getProductById(productId)
-        .then(setPhone);
+        .then(setPhone)
+        .finally(() => setIsLoading(false));
     }
   }, [productId]);
 
@@ -63,14 +73,17 @@ export const ProductDetailsPage = () => {
 
   return (
     <>
+      {isLoading && (<Loader />)}
       {phone && (
         <div className="product-details">
           <Wrapper>
             <div className="product-details__path-container">
-              <PathDisplay />
+              <BreadCrumbs />
             </div>
 
-            <div className="product-details__back">back</div>
+            <div className="product-details__back-container">
+              <BackButton />
+            </div>
 
             <h1
               className="product-details__title"
@@ -83,11 +96,18 @@ export const ProductDetailsPage = () => {
 
               <div className="product-details__upper-right">
 
-                <Colors colors={phone?.colorsAvailable} />
+                <Colors
+                  colors={phone?.colorsAvailable}
+                  nameSpaceId={phone?.namespaceId}
+                  capacity={phone?.capacity}
+                  currColor={phone?.color}
+                />
 
                 <AvailableCapacity
                   capacities={phone?.capacityAvailable}
                   currCapacity={phone?.capacity}
+                  nameSpaceId={phone?.namespaceId}
+                  color={phone?.color}
                 />
 
                 <div className="product-details__price-block">

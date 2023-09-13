@@ -1,4 +1,4 @@
-import { PathDisplay, Wrapper } from '../../components';
+import { BreadCrumbs, Wrapper } from '../../components';
 import './TabletsPage.scss';
 
 export const TabletsPage = () => {
@@ -6,7 +6,7 @@ export const TabletsPage = () => {
     <div className="tablets">
       <Wrapper>
         <div className="tablets__path-container">
-          <PathDisplay />
+          <BreadCrumbs />
         </div>
       </Wrapper>
     </div>

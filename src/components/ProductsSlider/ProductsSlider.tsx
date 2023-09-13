@@ -37,7 +37,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
           <IconButton
             type={IconButtonType.arrowNext}
             handler={handleVisibleProducts(null)}
-            disabled={end === products.length}
+            disabled={end >= products.length}
           />
         </div>
       </div>

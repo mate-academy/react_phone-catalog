@@ -1,0 +1,28 @@
+@import "/src/style/main.scss";
+
+.back-button {
+  background-color: $font-white;
+  border: none;
+  text-transform: capitalize;
+  position: relative;
+  color: $secondary-font-color;
+  font-family: $font-semi-bold;
+  font-size: 12px;
+
+  &:hover {
+    color: $main-font-color;
+  }
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url("../../assets/icons/arrowLeft.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+    left: -12px;
+    top: -1px;
+    width: 16px;
+    height: 16px;
+  }
+}

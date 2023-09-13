@@ -8,28 +8,9 @@
     margin-bottom: 40px;
   }
 
-  &__back {
-    text-transform: capitalize;
-    color: $secondary-font-color;
-    font-family: $font-semi-bold;
-    font-size: 12px;
-    margin-bottom: 16px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  &__back-container {
     padding-left: 12px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      background-image: url("../../assets/icons/arrowRight.svg");
-      background-position: left;
-      background-repeat: no-repeat;
-      left: 0;
-      top: -1px;
-      width: 16px;
-      height: 16px;
-    }
+    margin-bottom: 16px;
   }
 
   &__title {
