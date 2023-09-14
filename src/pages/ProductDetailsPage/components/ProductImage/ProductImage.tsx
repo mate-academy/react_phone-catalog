@@ -23,7 +23,7 @@ export const ProductImage: React.FC<Props> = ({ images }) => {
           >
             <img
               alt={image}
-              src={`/_new/${image}`}
+              src={image}
               className="product-image__img"
               onClick={() => setSelected(ind)}
             />
@@ -33,7 +33,7 @@ export const ProductImage: React.FC<Props> = ({ images }) => {
 
       <div className="product-image__full-img-container">
         <img
-          src={`/_new/${images[selected]}`}
+          src={images[selected]}
           alt={images[0]}
           className="product-image__full-img"
         />

@@ -21,14 +21,14 @@ export const Header = () => {
           <NavIcon
             path="favourites"
             alt="like-icon"
-            src="./img/icons/like.svg"
+            src="img/icons/like.svg"
             count={favCount}
           />
 
           <NavIcon
             path="cart"
             alt="cart-icon"
-            src="./img/icons/cart.svg"
+            src="img/icons/cart.svg"
             count={cartCount}
           />
         </div>

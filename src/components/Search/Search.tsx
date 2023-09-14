@@ -33,7 +33,7 @@ export const Search = () => {
             ? (
               <img
                 alt="search icon"
-                src="./img/icons/closeFill.svg"
+                src="img/icons/closeFill.svg"
                 className="search__icon-close"
                 data-cy="searchDelete"
                 onClick={() => setQuery('')}
@@ -42,7 +42,7 @@ export const Search = () => {
             : (
               <img
                 alt="search icon"
-                src="./img/icons/search.svg"
+                src="img/icons/search.svg"
                 className="search__icon"
               />
             )}

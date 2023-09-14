@@ -35,26 +35,11 @@ export const Navigation = () => {
         <img
           alt="logo"
           className="check"
-          src="./img/icons/logo.svg"
+          src="img/icons/logo.svg"
         />
       </Link>
 
       {renderNavLink()}
-      {/* <div className="nav__rigthside">
-        <NavIcon
-          path="favourites"
-          alt="like-icon"
-          src="./img/icons/like.svg"
-          count={favCount}
-        />
-
-        <NavIcon
-          path="cart"
-          alt="cart-icon"
-          src="./img/icons/cart.svg"
-          count={cartCount}
-        />
-      </div> */}
     </nav>
   );
 };

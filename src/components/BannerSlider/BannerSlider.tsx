@@ -4,9 +4,9 @@ import { SideButton, Dots } from './components';
 import { Direction } from '../../types/enums/Direction';
 
 const images = {
-  phones: '/img/banner-phones.png',
-  tablets: '/img/banner-tablets.png',
-  accessories: '/img/banner-accessories.png',
+  phones: 'img/banner-phones.png',
+  tablets: 'img/banner-tablets.png',
+  accessories: 'img/banner-accessories.png',
 };
 
 const IMAGE_CHANGE_INTERVAL = 5000;
@@ -75,7 +75,7 @@ export const BannerSlider = () => {
               <img
                 className="banner-slider__img"
                 alt={image[0]}
-                src={`${image[1]}`}
+                src={image[1]}
               />
             </div>
           ))}
