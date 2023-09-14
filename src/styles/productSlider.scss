@@ -64,6 +64,10 @@
     }
 
     @include onDesktop {
+      width: 850px;
+    }
+
+    @include onDesktopXL {
       width: 1150px;
     }
   }

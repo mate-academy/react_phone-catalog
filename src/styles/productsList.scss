@@ -26,6 +26,10 @@
     }
 
     @include onDesktop {
+      grid-template-columns: repeat(auto-fit, 272px);
+    }
+
+    @include onDesktopXL {
       grid-template-columns: repeat(4, 272px);
     }
   }

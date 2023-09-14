@@ -11,7 +11,8 @@ export const Slider: React.FC = () => {
   const [currIndex, setCurrIndex] = useState(0);
   const itemWidthMob = 400;
   const itemWidthTab = 600;
-  const itemWidth = 1040;
+  const itemWidth = 963;
+  const itemWidthXL = 1040;
   const step = 1;
   const animationDuration = 500;
 
@@ -89,6 +90,14 @@ export const Slider: React.FC = () => {
                 alt={`banner-#${i + 1}`}
                 style={{
                   transform: `translateX(-${currIndex * itemWidth}px)`, transition: `transform ${animationDuration}ms`,
+                }}
+              />
+              <img
+                className="slider__main--photos slider__descXL"
+                src={`_new/img/banner-${img}`}
+                alt={`banner-#${i + 1}`}
+                style={{
+                  transform: `translateX(-${currIndex * itemWidthXL}px)`, transition: `transform ${animationDuration}ms`,
                 }}
               />
             </li>

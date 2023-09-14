@@ -13,15 +13,20 @@
     @include onDesktop {
       flex-direction: row;
     }
+
+    @include onDesktopXL {
+      flex-direction: row;
+    }
   }
 
   &__card {
     display: flex;
     flex-direction: column;
+    margin: auto;
   }
 
   &__photoContainer {
-    display: block;
+    display: flex;
     box-sizing: border-box;
     width: 300px;
     height: 300px;
@@ -35,6 +40,11 @@
     }
 
     @include onDesktop {
+      width: 300px;
+      height: 300px;
+    }
+
+    @include onDesktopXL {
       width: 368px;
       height: 368px;
     }

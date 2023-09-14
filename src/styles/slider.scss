@@ -1,8 +1,8 @@
 .slider {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   overflow: hidden;
-  width: 400px;
+  // max-width: 400px;
   height: 200px;
   margin: 40px auto 70px;
 
@@ -13,6 +13,12 @@
   }
 
   @include onDesktop {
+    width: 963px;
+    height: 400px;
+    margin: 40px auto 104px;
+  }
+
+  @include onDesktopXL {
     width: 1040px;
     height: 400px;
     margin: 40px auto 104px;
@@ -33,6 +39,10 @@
     }
 
     @include onDesktop {
+      height: 400px;
+    }
+
+    @include onDesktopXL {
       height: 400px;
     }
 
@@ -62,6 +72,11 @@
     }
 
     @include onDesktop {
+      width: 963px;
+      margin: 0 16px;
+    }
+
+    @include onDesktopXL {
       width: 1040px;
       margin: 0 16px;
     }
@@ -79,6 +94,11 @@
       }
 
       @include onDesktop {
+        width: 963px;
+        height: 400px;
+      }
+
+      @include onDesktopXL {
         width: 1040px;
         height: 400px;
       }
@@ -97,6 +117,10 @@
     @include onDesktop {
       display: none;
     }
+
+    @include onDesktopXL {
+      display: none;
+    }
   }
 
   &__desc {
@@ -109,6 +133,28 @@
     }
 
     @include onDesktop {
+      display: block;
+    }
+
+    @include onDesktopXL {
+      display: none;
+    }
+  }
+
+  &__descXL {
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+
+    @include onDesktopXL {
       display: block;
     }
   }
@@ -125,6 +171,10 @@
     @include onDesktop {
       display: none;
     }
+
+    @include onDesktopXL {
+      display: none;
+    }
   }
 
   &__dots {
@@ -138,6 +188,10 @@
     }
 
     @include onDesktop {
+      top: 522px;
+    }
+
+    @include onDesktopXL {
       top: 522px;
     }
   }

@@ -13,6 +13,12 @@
   }
 
   @include onDesktop {
+    padding: 23px 24px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
+
+  @include onDesktopXL {
     width: 327px;
     padding: 23px 24px;
     border-left: 1px solid $gray;

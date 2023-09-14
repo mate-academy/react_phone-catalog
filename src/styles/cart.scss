@@ -23,6 +23,10 @@
     }
 
     @include onDesktop {
+      flex-direction: column;
+    }
+
+    @include onDesktopXL {
       flex-direction: row;
     }
   }
@@ -52,6 +56,13 @@
     }
 
     @include onDesktop {
+      flex-direction: row;
+      width: 752px;
+      height: 128px;
+      padding: 24px;
+    }
+
+    @include onDesktopXL {
       flex-direction: row;
       width: 752px;
       height: 128px;
@@ -94,6 +105,18 @@
     }
 
     @include onDesktop {
+      width: 80px;
+      height: 80px;
+      padding: 7px;
+
+      &--img {
+        width: 66px;
+        height: 66px;
+        object-fit: contain;
+      }
+    }
+
+    @include onDesktopXL {
       width: 80px;
       height: 80px;
       padding: 7px;
@@ -174,6 +197,10 @@
     @include onDesktop {
       margin-left: 43px;
     }
+
+    @include onDesktopXL {
+      margin-left: 43px;
+    }
   }
 
   &__total {
@@ -184,6 +211,11 @@
     border: 1px solid $gray;
 
     @include onDesktop {
+      width: 368px;
+      height: 206px;
+    }
+
+    @include onDesktopXL {
       width: 368px;
       height: 206px;
     }
@@ -230,6 +262,10 @@
     }
 
     @include onDesktop {
+      width: 320px;
+    }
+
+    @include onDesktopXL {
       width: 320px;
     }
 

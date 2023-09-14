@@ -33,13 +33,18 @@
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
-    // width: 512px;
 
-    @include onTablet {
-      width: 512px;
-    }
+    width: 100%;
 
-    @include onDesktop {
+    // @include onDesktop {
+    //   width: 320px;
+    // }
+
+    // @include onDesktop {
+    //   width: 320px;
+    // }
+
+    @include onDesktopXL {
       width: 512px;
     }
   }
@@ -57,6 +62,10 @@
       margin: auto;
     }
 
+    @include onDesktopXL {
+      margin: auto;
+    }
+
   }
 
   &__top {
@@ -64,11 +73,11 @@
     flex-direction: column;
     gap: 64px;
 
-    @include onTablet {
-      // flex-direction: row;
+    @include onDesktop {
+      flex-direction: row;
     }
 
-    @include onDesktop {
+    @include onDesktopXL {
       flex-direction: row;
     }
   }
@@ -79,11 +88,11 @@
     gap: 64px;
     margin-bottom: 80px;
 
-    @include onTablet {
-      // flex-direction: row;
+    @include onDesktop {
+      flex-direction: row;
     }
 
-    @include onDesktop {
+    @include onDesktopXL {
       flex-direction: row;
     }
   }
@@ -117,6 +126,11 @@
       height: 80px;
     }
 
+    @include onDesktopXL {
+      width: 80px;
+      height: 80px;
+    }
+
     &:hover {
       border-color: $gray-primary;
     }
@@ -132,6 +146,11 @@
       }
   
       @include onDesktop {
+        width: 66px;
+        height: 66px;
+      }
+
+      @include onDesktopXL {
         width: 66px;
         height: 66px;
       }
@@ -156,6 +175,11 @@
         width: 442px;
         height: 442px;
       }
+
+      @include onDesktopXL {
+        width: 442px;
+        height: 442px;
+      }
     }
   }
 
@@ -163,7 +187,19 @@
   &__baseInfoBlock {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: auto;
+
+    @include onTablet {
+      width: 320px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+
+    @include onDesktopXL {
+      width: 320px;
+    }
   }
 
   &__colors {
@@ -307,36 +343,30 @@
       color: $gray-secondary;
     }
 
-    &--tech-key {
-      color: $gray-secondary;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 21px;
-    }
-
     &--val {
       color: $gray-primary;
-    }
-
-    &--tech-val {
-      color: $gray-primary;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 21px;
     }
   }
 
   //AboutBlock
-  &__aboutBlock {
+  &__about {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: auto;
 
     @include onTablet {
       width: 512px;
     }
 
     @include onDesktop {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 512px;
+    }
+
+    @include onDesktopXL {
       width: 512px;
     }
   }
@@ -363,6 +393,22 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  &__tech {
+    width: auto;
+
+    @include onTablet {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+
+    @include onDesktopXL {
+      width: 512px;
     }
   }
 }

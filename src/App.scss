@@ -51,6 +51,11 @@ iframe {
 
   @include onDesktop {
     margin: 0 auto 80px;
+    padding: 0 70px;
+  }
+
+  @include onDesktopXL {
+    margin: 0 auto 80px;
     padding: 0 152px;
   }
 }

@@ -4,6 +4,10 @@
     display: flex;
     justify-content: center;
     gap: 8px;
+
+    @include onMobile {
+      gap: 3px;
+    }
   }
 
   &__left {

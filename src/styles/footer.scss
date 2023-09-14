@@ -9,6 +9,10 @@
     padding: 0 152px;
   }
 
+  @include onDesktopXL {
+    padding: 0 152px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -23,6 +27,12 @@
     }
 
     @include onDesktop {
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+    }
+
+    @include onDesktopXL {
       flex-direction: row;
       align-items: center;
       margin: 0;
@@ -45,6 +55,11 @@
     }
 
     @include onDesktop {
+      gap: 64px;
+      margin-left: 0;
+    }
+
+    @include onDesktopXL {
       gap: 64px;
       margin-left: 0;
     }

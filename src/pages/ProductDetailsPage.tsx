@@ -184,7 +184,7 @@ export const ProductDetailsPage = () => {
             </div>
 
             <div className="details__bottom">
-              <div className="details__aboutBlock">
+              <div className="details__about">
                 <h3 className="details__subtitle">About</h3>
                 {product?.description.map(desc => (
                   <div className="details__aboutInfo" key={desc.title}>
@@ -198,8 +198,8 @@ export const ProductDetailsPage = () => {
                 <h3 className="details__subtitle">Tech specs</h3>
                 <div className="details__description details__description--tech">
                   <div className="details__description--line">
-                    <p className="details__description--tech-key">Screen</p>
-                    <p className="details__description--tech-val">{product?.screen}</p>
+                    <p className="details__description--key">Screen</p>
+                    <p className="details__description--val">{product?.screen}</p>
                   </div>
 
                   <div className="details__description--line">
