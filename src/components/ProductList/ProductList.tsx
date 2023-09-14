@@ -6,6 +6,8 @@ import { ProductCard } from '../ProductCard';
 import { Loader } from '../Loader';
 import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
 import './ProductList.scss';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { newPerPage, newSort } from '../../store/features/filterParams';
 
 type SortBy = {
   age: string,
@@ -30,15 +32,17 @@ export const ProductList: React.FC<Props> = ({
   perPageOptions,
   handleSelect,
 }) => {
-  const [isOpen, setIsOpen] = useState<'sort' | 'items' | false>(false);
   const [searchParams] = useSearchParams();
-  const sort = searchParams.get('sort') || '';
-  const perPage = searchParams.get('perPage') || '';
   const page = searchParams.get('page') || '';
+  const [isOpen, setIsOpen] = useState<'sort' | 'items' | false>(false);
+  const {
+    storedSort: sort,
+    storedPerPage: perPage,
+  } = useAppSelector(state => state.filterBy);
+  const dispatch = useAppDispatch();
 
   const currentPage = page ? +page : 1;
   const currentPerPage = perPage ? +perPage : 16;
-
   const lastIndexOfPage = currentPage * currentPerPage;
   const startIndexOfPage = lastIndexOfPage - currentPerPage;
 
@@ -98,7 +102,10 @@ export const ProductList: React.FC<Props> = ({
                     to={{ search: handleSelect('sort', key).toString() }}
                     className={classNames('dropdown__link',
                       { 'dropdown__link--is-active': isOpen === 'sort' })}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      dispatch(newSort(key));
+                    }}
                   >
                     {title}
                   </Link>
@@ -123,7 +130,7 @@ export const ProductList: React.FC<Props> = ({
               ))}
             >
               <span>
-                {currentPerPage || 'all'}
+                {perPage || 'all'}
               </span>
 
               <span>
@@ -153,7 +160,10 @@ export const ProductList: React.FC<Props> = ({
                     className={classNames('dropdown__link', {
                       'dropdown__link--is-active': isOpen === 'items',
                     })}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      dispatch(newPerPage(title));
+                    }}
                   >
                     {key}
                   </Link>

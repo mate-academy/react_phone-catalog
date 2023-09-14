@@ -24,23 +24,29 @@ const ITEMS_ON_PAGE = {
 
 export const Phones = () => {
   const { phones, isError, isLoading } = useAppSelector(state => state.phones);
+  const { storedSort, storedPerPage } = useAppSelector(state => state.filterBy);
   const dispatch = useAppDispatch();
   const isArrow = useRef(false);
 
-  const [searchParams] = useSearchParams();
-  const sort = searchParams.get('sort') || '';
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const sort = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
-  const perPage = searchParams.get('perPage') || '16';
+  // const perPage = searchParams.get('perPage') || '16';
   const { pathname } = useLocation();
 
   useEffect(() => {
-    dispatch(fetchAllPhones());
+    if (!storedSort && !storedPerPage) {
+      return;
+    }
+
+    setSearchParams(`?sort=${storedSort}&page=1&perPage=${storedPerPage}`);
   }, []);
 
-  useEffect(() => { // как это сделать удобнее
+  useEffect(() => {
+    dispatch(fetchAllPhones());
     dispatch(addPhonesToFavorite(phones));
     dispatch(addPhonesToCart(phones));
-  }, [phones]);
+  }, [phones.length]);
 
   const handleSelect = (key: string, value: string) => {
     const param = new URLSearchParams(searchParams);
@@ -62,12 +68,12 @@ export const Phones = () => {
         .toLowerCase().includes(query.trim().toLocaleLowerCase()));
     }
 
-    if (!sort) {
+    if (!storedSort) {
       newPhones.sort((a, b) => b.year - a.year);
     }
 
     newPhones.sort((a, b) => {
-      switch (sort) {
+      switch (storedSort) {
         case 'age':
           return b.year - a.year;
 
@@ -83,7 +89,7 @@ export const Phones = () => {
     });
 
     return newPhones;
-  }, [phones, sort, query]);
+  }, [phones, storedSort, query]);
 
   return (
     <div className="page__container">
@@ -108,7 +114,7 @@ export const Phones = () => {
           handleSelect={handleSelect}
         />
 
-        {visiblePhones.length > 0 && perPage !== 'all' && (
+        {visiblePhones.length > 0 && storedPerPage !== 'all' && (
           <Pagination
             handleSelect={handleSelect}
             phones={visiblePhones}

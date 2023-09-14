@@ -2,13 +2,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type State = {
-  sort: string,
-  perPage: string,
+  storedSort: string,
+  storedPerPage: string,
 };
 
 const initialState: State = {
-  sort: 'Newest',
-  perPage: '16',
+  storedSort: '',
+  storedPerPage: '',
 };
 
 const filterParams = createSlice({
@@ -16,11 +16,11 @@ const filterParams = createSlice({
   initialState,
   reducers: {
     newSort: (state, action: PayloadAction<string>) => {
-      state.sort = action.payload;
+      state.storedSort = action.payload;
     },
 
     newPerPage: (state, action: PayloadAction<string>) => {
-      state.perPage = action.payload;
+      state.storedPerPage = action.payload;
     },
   },
 });
