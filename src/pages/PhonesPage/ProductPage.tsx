@@ -11,6 +11,7 @@ import { Product, ProductType } from '../../types/product';
 import { productApi } from '../../utils/api/productApi';
 import { SortBy, productService } from '../../utils/productService';
 import { getPageTitle, getQuantity } from '../../utils/getPageTitle';
+import { Loader } from '../../components/Loader';
 
 const sortByOptions: Option[] = [
   { name: 'Newest', property: { sortBy: 'id' } },
@@ -33,7 +34,6 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
 
   const page = +(searchParams.get('page') || 1);
   const perPage = searchParams.get('perPage') || 8;
@@ -41,14 +41,9 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(isLoading);
-    console.log(errorMessage);
 
     productApi.getAll
       .then(setProducts)
-      .catch(error => {
-        setErrorMessage(error);
-      })
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -62,35 +57,49 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
   const totalPages = Math.ceil(filteredProducts.length / +perPage);
 
   return (
-    <section className="phones-page">
+    <section className="products-page">
       <Crumbs />
 
-      <h1 className="phones-page__title">{getPageTitle(productType)}</h1>
+      <h1 className="products-page__title">{getPageTitle(productType)}</h1>
 
-      <p className="phones-page__quantity">{`${filteredProducts.length} ${getQuantity(productType)}`}</p>
+      <p className="products-page__quantity">{`${filteredProducts.length} ${getQuantity(productType)}`}</p>
 
-      <div className="phones-page__dropdown-container">
-        <Dropdown title="Sort by" options={sortByOptions} />
+      {isLoading && (
+        <div className="products-page__loader-container">
+          <Loader />
+        </div>
+      )}
 
-        <Dropdown
-          title="Items on page"
-          options={perPageOptions}
-          initialOption={1}
-        />
-      </div>
+      {!isLoading && visibleProducts.length < 1 && (
+        <h2 className="products-page__sad-message">{`No ${getPageTitle(productType)} found`}</h2>
+      )}
 
-      <div className="phones-page__product-list">
-        <ProductList
-          products={visibleProducts}
-          selected={[]}
-          favourites={[]}
-          onFavouritesClick={() => { }}
-          onSelectedClick={() => { }}
-        />
-      </div>
+      {!isLoading && visibleProducts.length > 0 && (
+        <>
+          <div className="products-page__dropdown-container">
+            <Dropdown title="Sort by" options={sortByOptions} />
 
-      {totalPages > 1 && (
-        <Pagination totalPages={totalPages} />
+            <Dropdown
+              title="Items on page"
+              options={perPageOptions}
+              initialOption={1}
+            />
+          </div>
+
+          <div className="products-page__product-list">
+            <ProductList
+              products={visibleProducts}
+              selected={[]}
+              favourites={[]}
+              onFavouritesClick={() => { }}
+              onSelectedClick={() => { }}
+            />
+          </div>
+
+          {totalPages > 1 && (
+            <Pagination totalPages={totalPages} />
+          )}
+        </>
       )}
     </section>
   );

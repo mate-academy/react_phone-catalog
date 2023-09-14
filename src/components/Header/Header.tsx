@@ -1,4 +1,5 @@
 import '../../styles/components/Header/Header.scss';
+import { Link } from 'react-router-dom';
 import logo from '../../images/icons/logo.svg';
 import { NavBarItem } from '../NavBarItem';
 
@@ -6,13 +7,13 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <nav className="header__navigation nav">
-        <a href="home" className="logo__link">
+        <Link to="/home" className="logo__link">
           <img
             src={logo}
             alt="logo"
             className="nav__logo"
           />
-        </a>
+        </Link>
 
         <ul className="nav__list">
           <li className="nav__item">
@@ -69,10 +70,6 @@ export const Header: React.FC = () => {
       <div className="header__actions">
         <NavBarItem to="fav" type="fav">1</NavBarItem>
         <NavBarItem to="cart" type="cart">2</NavBarItem>
-
-        {/* <a href="fav" className="header__fav">some fav</a>
-
-        <a href="cart" className="header__cart">some cart</a> */}
       </div>
     </header>
   );
