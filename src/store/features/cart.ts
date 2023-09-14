@@ -1,16 +1,18 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { CartCard } from '../../types/CartCard';
-import { allPhones } from './phones';
+import { Phone } from '../../types/Phone';
 
 type State = {
   cartStorage: CartCard[],
+  phones: Phone[]
 };
 
 const storage = localStorage.getItem('cart');
 
 const initialState: State = {
   cartStorage: storage ? JSON.parse(storage) : [],
+  phones: [],
 };
 
 function setLocalStorage(newValue: CartCard[]) {
@@ -22,8 +24,7 @@ const cart = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<string>) => {
-      const { phones } = allPhones.getInitialState();
-      const product = phones
+      const product = state.phones
         .find(currPhone => currPhone.phoneId === action.payload);
 
       const newProduct = {
@@ -69,6 +70,10 @@ const cart = createSlice({
 
       setLocalStorage(state.cartStorage);
     },
+
+    addPhonesToCart: (state, action: PayloadAction<Phone[]>) => {
+      state.phones = action.payload;
+    },
   },
 });
 
@@ -77,5 +82,6 @@ export const {
   decrement,
   add,
   remove,
+  addPhonesToCart,
 } = cart.actions;
 export default cart.reducer;

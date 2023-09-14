@@ -6,6 +6,8 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { TitleOfPage } from '../components/TitleOfPage';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchAllPhones } from '../store/features/phones';
+import { addPhonesToFavorite } from '../store/features/favorites';
+import { addPhonesToCart } from '../store/features/cart';
 
 const SORT_BY = {
   age: 'Newest',
@@ -34,6 +36,11 @@ export const Phones = () => {
   useEffect(() => {
     dispatch(fetchAllPhones());
   }, []);
+
+  useEffect(() => { // как это сделать удобнее
+    dispatch(addPhonesToFavorite(phones));
+    dispatch(addPhonesToCart(phones));
+  }, [phones]);
 
   const handleSelect = (key: string, value: string) => {
     const param = new URLSearchParams(searchParams);

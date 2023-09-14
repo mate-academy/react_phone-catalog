@@ -4,7 +4,6 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import { useEffect } from 'react';
 import './App.scss';
 import { Footer } from './components/Footer';
 import { Navbar } from './components/Navbar';
@@ -18,16 +17,8 @@ import { ProductDetails } from './pages/ProductDetails';
 import { Favorites } from './pages/Favorites';
 import { Cart } from './pages/Cart';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
-import { useAppDispatch } from './store/hooks';
-import { fetchAllPhones } from './store/features/phones';
 
 const App = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllPhones());
-  }, []);
-
   return (
     <div className="page">
       <header className="header">

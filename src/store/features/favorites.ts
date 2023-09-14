@@ -1,16 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Phone } from '../../types/Phone';
-import { allPhones } from './phones';
 
 type State = {
   favStorage: Phone[],
+  phones: Phone[],
 };
 
 const storage = localStorage.getItem('likes');
 
 const initialState: State = {
   favStorage: storage ? JSON.parse(storage) : [],
+  phones: [],
 };
 
 function setLocalStorage(newValue: Phone[]) {
@@ -22,9 +23,7 @@ const favorite = createSlice({
   initialState,
   reducers: {
     toggleLike: (state, action: PayloadAction<string>) => {
-      const { phones } = allPhones.getInitialState();
-
-      const product = phones
+      const product = state.phones
         .find((currPhone: Phone) => currPhone.phoneId === action.payload);
 
       const sameLike = state.favStorage.filter(like => like.id !== product?.id);
@@ -40,8 +39,12 @@ const favorite = createSlice({
         setLocalStorage(state.favStorage);
       }
     },
+
+    addPhonesToFavorite: (state, action: PayloadAction<Phone[]>) => {
+      state.phones = action.payload;
+    },
   },
 });
 
-export const { toggleLike } = favorite.actions;
+export const { toggleLike, addPhonesToFavorite } = favorite.actions;
 export default favorite.reducer;
