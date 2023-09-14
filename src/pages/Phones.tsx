@@ -1,11 +1,11 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { ProductList } from '../components/ProductList';
 import { Pagination } from '../components/Pagination';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { TitleOfPage } from '../components/TitleOfPage';
-import { useFetch } from '../hooks/useFetch';
-import { Fetch } from '../enum/Fetch';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { fetchAllPhones } from '../store/features/phones';
 
 const SORT_BY = {
   age: 'Newest',
@@ -21,7 +21,8 @@ const ITEMS_ON_PAGE = {
 };
 
 export const Phones = () => {
-  const [phones, isError, isLoading] = useFetch(Fetch.allProducts);
+  const { phones, isError, isLoading } = useAppSelector(state => state.phones);
+  const dispatch = useAppDispatch();
   const isArrow = useRef(false);
 
   const [searchParams] = useSearchParams();
@@ -29,6 +30,10 @@ export const Phones = () => {
   const query = searchParams.get('query') || '';
   const perPage = searchParams.get('perPage') || '16';
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    dispatch(fetchAllPhones());
+  }, []);
 
   const handleSelect = (key: string, value: string) => {
     const param = new URLSearchParams(searchParams);

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {
-  useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
@@ -16,11 +16,11 @@ import { useFetch } from '../hooks/useFetch';
 import { Fetch } from '../enum/Fetch';
 import { getProduct } from '../utils/fetchClient';
 import { PhoneInfo } from '../types/PhoneInfo';
-import { StoragesContext } from '../Context/StoragesContext';
 import { ButtonAndLike } from '../components/ButtonAndLike/ButtonAndLike';
 import { ButtonsSize } from '../enum/ButtonsSize';
-import '../components/ProductDetails/ProductDetails.scss';
 import { NotFoundPage } from '../components/NotFoundPage/NotFoundPage';
+import { useAppSelector } from '../store/hooks';
+import '../components/ProductDetails/ProductDetails.scss';
 
 export const ProductDetails: React.FC = () => {
   const [phones, isLoadingHot, isErrorHot] = useFetch(Fetch.hotProducts);
@@ -33,11 +33,11 @@ export const ProductDetails: React.FC = () => {
   const isArrow = useRef<boolean>(true);
   const phoneId = id || '';
 
-  const {
-    addedProducts,
-    handleAddToCart,
-    handleAddToLikeStorage,
-  } = useContext(StoragesContext);
+  const { cartStorage } = useAppSelector(cartState => cartState.cart);
+
+  const addedProducts = useMemo(() => {
+    return cartStorage.map(product => product.phoneId);
+  }, [cartStorage]);
 
   const handleChangingColor = (color: string) => {
     return `/phones/${phone?.namespaceId}-${phone?.capacity.toLowerCase()}-${color.toLowerCase()}`;
@@ -163,14 +163,11 @@ export const ProductDetails: React.FC = () => {
                 {!addedProducts.includes(phoneId) ? (
                   <ButtonAndLike
                     size={ButtonsSize.bigOn}
-                    handleLike={handleAddToLikeStorage}
-                    handleAdd={handleAddToCart}
                     phoneId={phoneId}
                   />
                 ) : (
                   <ButtonAndLike
                     size={ButtonsSize.bigOff}
-                    handleLike={handleAddToLikeStorage}
                     phoneId={phoneId}
                   />
                 )}

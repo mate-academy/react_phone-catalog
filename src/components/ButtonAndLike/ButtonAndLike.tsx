@@ -1,23 +1,23 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
-import { StoragesContext } from '../../Context/StoragesContext';
-import './ButtonAndLike.scss';
+import { useMemo } from 'react';
 import { ButtonsSize } from '../../enum/ButtonsSize';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { toggleLike } from '../../store/features/favorites';
+import { add as addToCart } from '../../store/features/cart';
+import './ButtonAndLike.scss';
 
 type Props = {
   size: ButtonsSize,
   phoneId: string,
-  handleAdd?: (v: string) => void,
-  handleLike: (v: string) => void,
 };
 
-export const ButtonAndLike: React.FC<Props> = ({
-  size,
-  handleLike,
-  handleAdd,
-  phoneId,
-}) => {
-  const { existingLikes } = useContext(StoragesContext);
+export const ButtonAndLike: React.FC<Props> = ({ size, phoneId }) => {
+  const dispatch = useAppDispatch();
+  const { favStorage } = useAppSelector(state => state.favorite);
+
+  const existingLikes = useMemo(() => {
+    return favStorage.map(like => like && like.itemId);
+  }, [favStorage]);
 
   switch (size) {
     case ButtonsSize.smallOn:
@@ -26,7 +26,7 @@ export const ButtonAndLike: React.FC<Props> = ({
           <button
             type="button"
             className="btn btn--small"
-            onClick={() => handleAdd && handleAdd(phoneId)}
+            onClick={() => dispatch(addToCart(phoneId))}
           >
             {ButtonsSize.smallOn}
           </button>
@@ -34,7 +34,7 @@ export const ButtonAndLike: React.FC<Props> = ({
           <button
             type="button"
             aria-label="favorite"
-            onClick={() => handleLike(phoneId)}
+            onClick={() => dispatch(toggleLike(phoneId))}
             className={classNames(
               'fav fav--small',
               { 'fav--is-active': existingLikes.includes(phoneId) },
@@ -50,7 +50,7 @@ export const ButtonAndLike: React.FC<Props> = ({
           <button
             type="button"
             className="btn btn--big"
-            onClick={() => handleAdd && handleAdd(phoneId)}
+            onClick={() => dispatch(addToCart(phoneId))}
           >
             {ButtonsSize.bigOn}
           </button>
@@ -58,7 +58,7 @@ export const ButtonAndLike: React.FC<Props> = ({
           <button
             type="button"
             aria-label="favorite"
-            onClick={() => handleLike(phoneId)}
+            onClick={() => dispatch(toggleLike(phoneId))}
             className={classNames(
               'fav fav--big',
               { 'fav--is-active': existingLikes.includes(phoneId) },
@@ -81,7 +81,7 @@ export const ButtonAndLike: React.FC<Props> = ({
           <button
             type="button"
             aria-label="favorite"
-            onClick={() => handleLike(phoneId)}
+            onClick={() => dispatch(toggleLike(phoneId))}
             className={classNames(
               'fav fav--small',
               { 'fav--is-active': existingLikes.includes(phoneId) },
@@ -105,7 +105,7 @@ export const ButtonAndLike: React.FC<Props> = ({
           <button
             type="button"
             aria-label="favorite"
-            onClick={() => handleLike(phoneId)}
+            onClick={() => dispatch(toggleLike(phoneId))}
             className={classNames(
               'fav fav--big',
               { 'fav--is-active': existingLikes.includes(phoneId) },

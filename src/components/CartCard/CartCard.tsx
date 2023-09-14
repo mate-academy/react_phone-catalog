@@ -1,19 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
-import { StoragesContext } from '../../Context/StoragesContext';
 import './CartCard.scss';
 import { IMG_LINK } from '../../utils/fetchClient';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import * as action from '../../store/features/cart';
 
 export const CartCard = () => {
-  const {
-    cartStorage,
-    totalAmountAndQnty,
-    handleDeleteProduct,
-    handleQntyOfProduct,
-  } = useContext(StoragesContext);
+  const { cartStorage } = useAppSelector(state => state.cart);
+  const dispatch = useAppDispatch();
   const [checkoutText, setCheckoutText] = useState('Checkout');
   // eslint-disable-next-line max-len
   const notImplementedText = 'We are sorry, but this feature is not implemented yet';
+
+  const amount = useMemo(() => {
+    return cartStorage
+      .reduce((num, product) => (product.price * product.qnty) + num, 0);
+  }, [cartStorage]);
+
+  const quantity = useMemo(() => {
+    return cartStorage.reduce((num, product) => product.qnty + num, 0);
+  }, [cartStorage]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,7 +43,7 @@ export const CartCard = () => {
                 type="button"
                 aria-label="delete"
                 className="added-card__delete"
-                onClick={() => handleDeleteProduct(product.id)}
+                onClick={() => dispatch(action.remove(product.id))}
               />
 
               <img
@@ -60,7 +66,7 @@ export const CartCard = () => {
                     'added-card__btn added-card__btn--minus',
                     { 'added-card__btn--disabled': product.qnty < 1 },
                   )}
-                  onClick={() => handleQntyOfProduct(product.id, 'minus')}
+                  onClick={() => dispatch(action.decrement(product.id))}
                   disabled={product.qnty < 1}
                 />
 
@@ -72,7 +78,7 @@ export const CartCard = () => {
                   type="button"
                   aria-label="plus"
                   className="added-card__btn added-card__btn--plus"
-                  onClick={() => handleQntyOfProduct(product.id, 'plus')}
+                  onClick={() => dispatch(action.increment(product.id))}
                 />
               </div>
 
@@ -87,11 +93,11 @@ export const CartCard = () => {
       <div className="checkout">
         <div className="checkout__price-container">
           <h1 className="checkout__price">
-            {`$${totalAmountAndQnty.amount}`}
+            {`$${amount}`}
           </h1>
 
           <p className="checkout__qnty">
-            {`Total for ${totalAmountAndQnty.qnty} items`}
+            {`Total for ${quantity} items`}
           </p>
         </div>
 

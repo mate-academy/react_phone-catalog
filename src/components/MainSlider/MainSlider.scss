@@ -37,6 +37,7 @@
     color: $primary-color;
     border: 1px solid $elements-color;
     cursor: pointer;
+    transition: all 0.35s ease;
 
     &:hover {
       border: 1px solid $primary-color;

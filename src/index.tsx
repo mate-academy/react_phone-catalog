@@ -1,17 +1,14 @@
 import { HashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import { StrictMode } from 'react';
-
+import { Provider } from 'react-redux';
 import App from './App';
-import { StoragesProvider } from './Context/StoragesContext';
+import { store } from './store/store';
 
 ReactDOM.render(
-  <StoragesProvider>
+  <Provider store={store}>
     <HashRouter>
-      <StrictMode>
-        <App />
-      </StrictMode>
+      <App />
     </HashRouter>
-  </StoragesProvider>,
+  </Provider>,
   document.getElementById('root'),
 );

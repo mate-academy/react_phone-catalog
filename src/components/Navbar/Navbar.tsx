@@ -1,14 +1,9 @@
 import classNames from 'classnames';
-import {
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import './Navbar.scss';
 import debounce from 'lodash.debounce';
-import { StoragesContext } from '../../Context/StoragesContext';
+import { useAppSelector } from '../../store/hooks';
 
 const getActiveTitle = ({ isActive }: { isActive: boolean }) => (
   classNames('titles__link', { 'titles__link--is-active': isActive })
@@ -16,7 +11,10 @@ const getActiveTitle = ({ isActive }: { isActive: boolean }) => (
 
 export const Navbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { likesStorage, cartStorage } = useContext(StoragesContext);
+  const {
+    favorite: { favStorage },
+    cart: { cartStorage },
+  } = useAppSelector(state => state);
   const { pathname } = useLocation();
   const [debQuery, setDebQuery] = useState(searchParams.get('query') || '');
 
@@ -133,10 +131,10 @@ export const Navbar = () => {
               { 'icon--is-active': isActive },
             )}
           >
-            {likesStorage.length > 0 && (
+            {favStorage.length > 0 && (
               <span className="fav-qnty">
                 <p className="fav-qnty__num">
-                  {likesStorage.length}
+                  {favStorage.length}
                 </p>
               </span>
             )}

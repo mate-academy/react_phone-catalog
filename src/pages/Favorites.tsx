@@ -1,25 +1,25 @@
-import { useContext, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { TitleOfPage } from '../components/TitleOfPage';
 import { ProductCard } from '../components/ProductCard';
 import '../components/ProductList/ProductList.scss';
-import { StoragesContext } from '../Context/StoragesContext';
+import { useAppSelector } from '../store/hooks';
 
 export const Favorites = () => {
-  const { likesStorage } = useContext(StoragesContext);
+  const { favStorage } = useAppSelector(state => state.favorite);
   const isArrow = useRef(false);
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
   const currentFavorites = useMemo(() => {
     if (query) {
-      return likesStorage.filter(phone => phone.name
+      return favStorage.filter(phone => phone.name
         .toLowerCase().includes(query.trim().toLocaleLowerCase()));
     }
 
-    return likesStorage;
-  }, [query, likesStorage]);
+    return favStorage;
+  }, [query, favStorage]);
 
   return (
     <div className="page__container">

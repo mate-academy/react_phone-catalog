@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
-import { StoragesContext } from '../../Context/StoragesContext';
 import { ButtonAndLike } from '../ButtonAndLike/ButtonAndLike';
 import { ButtonsSize } from '../../enum/ButtonsSize';
 import { IMG_LINK } from '../../utils/fetchClient';
 import './ProductCard.scss';
+import { useAppSelector } from '../../store/hooks';
 
 type Props = {
   phone: Phone;
@@ -22,11 +22,13 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     ram,
     phoneId,
   } = phone;
-  const {
-    addedProducts,
-    handleAddToLikeStorage,
-    handleAddToCart,
-  } = useContext(StoragesContext);
+
+  const { cartStorage } = useAppSelector(state => state.cart);
+
+  const addedProducts = useMemo(() => {
+    return cartStorage.map(product => product.phoneId);
+  }, [cartStorage]);
+
   const { search, pathname } = useLocation();
 
   return (
@@ -101,14 +103,11 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       {!addedProducts.includes(phoneId) ? (
         <ButtonAndLike
           size={ButtonsSize.smallOn}
-          handleLike={handleAddToLikeStorage}
-          handleAdd={handleAddToCart}
           phoneId={phoneId}
         />
       ) : (
         <ButtonAndLike
           size={ButtonsSize.smallOff}
-          handleLike={handleAddToLikeStorage}
           phoneId={phoneId}
         />
       )}

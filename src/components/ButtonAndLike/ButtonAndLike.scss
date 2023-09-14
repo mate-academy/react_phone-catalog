@@ -16,6 +16,10 @@
   cursor: pointer;
   transition: all 0.35s ease;
 
+  &:hover {
+    transform: perspective(80px) translateZ(1px);
+  }
+
   &--small {
     width: 176px;
     height: 40px;
@@ -51,6 +55,10 @@
   background-repeat: no-repeat;
   cursor: pointer;
   transition: all 0.35s ease;
+
+  &:hover {
+    transform: perspective(60px) translateZ(1px);
+  }
 
   &--small {
     width: 40px;

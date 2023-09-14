@@ -85,36 +85,4 @@
       font-size: 12px;
     }
   }
-
-  &__btns {
-    display: flex;
-    gap: 8px;
-
-    &__add {
-      width: 176px;
-      height: 40px;
-      background-color: $primary-color;
-      color: $white-color;
-      border: none;
-      font-family: Mont-SemiBold, sans-serif;
-      font-size: 14px;
-      line-height: 21px;
-      cursor: pointer;
-      transition: all 0.35s ease;
-
-      &:hover {
-        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
-      }
-
-      &--disabled {
-        background-color: $white-color;
-        border: 1px solid $elements-color;
-        color: $green-color;
-
-        &:hover {
-          box-shadow: none;
-        }
-      }
-    }
-  }
 }
