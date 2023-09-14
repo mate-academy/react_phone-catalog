@@ -6,8 +6,6 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { TitleOfPage } from '../components/TitleOfPage';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchAllPhones } from '../store/features/phones';
-import { addPhonesToFavorite } from '../store/features/favorites';
-import { addPhonesToCart } from '../store/features/cart';
 
 const SORT_BY = {
   age: 'Newest',
@@ -29,24 +27,16 @@ export const Phones = () => {
   const isArrow = useRef(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  // const sort = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
-  // const perPage = searchParams.get('perPage') || '16';
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!storedSort && !storedPerPage) {
-      return;
-    }
-
     setSearchParams(`?sort=${storedSort}&page=1&perPage=${storedPerPage}`);
   }, []);
 
   useEffect(() => {
     dispatch(fetchAllPhones());
-    dispatch(addPhonesToFavorite(phones));
-    dispatch(addPhonesToCart(phones));
-  }, [phones.length]);
+  }, []);
 
   const handleSelect = (key: string, value: string) => {
     const param = new URLSearchParams(searchParams);

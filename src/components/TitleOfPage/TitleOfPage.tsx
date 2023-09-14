@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import './TitleOfPage.scss';
 
 type Props = {
@@ -22,10 +22,9 @@ export const TitleOfPage: React.FC<Props> = ({
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const { state } = useLocation();
 
   const goBack = () => {
-    navigate({ pathname: state?.pathname || '..', search: state?.search });
+    navigate(-1);
   };
 
   return (

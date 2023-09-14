@@ -5,14 +5,14 @@ import { Phone } from '../../types/Phone';
 
 type State = {
   cartStorage: CartCard[],
-  phones: Phone[]
+  addedToCart: string[],
 };
 
 const storage = localStorage.getItem('cart');
 
 const initialState: State = {
   cartStorage: storage ? JSON.parse(storage) : [],
-  phones: [],
+  addedToCart: [],
 };
 
 function setLocalStorage(newValue: CartCard[]) {
@@ -23,20 +23,18 @@ const cart = createSlice({
   name: 'cartStorage',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<string>) => {
-      const product = state.phones
-        .find(currPhone => currPhone.phoneId === action.payload);
-
+    add: (state, action: PayloadAction<Phone>) => {
       const newProduct = {
-        id: product?.id || '',
-        name: product?.name || '',
-        image: product?.image || '',
-        phoneId: product?.phoneId || '',
-        price: product?.price || 0,
+        id: action.payload.id,
+        name: action.payload.name,
+        image: action.payload.image,
+        phoneId: action.payload.phoneId,
+        price: action.payload.price,
         qnty: 1,
       };
 
       state.cartStorage.push(newProduct);
+      state.addedToCart.push(newProduct.phoneId);
       setLocalStorage(state.cartStorage);
     },
 
@@ -70,10 +68,6 @@ const cart = createSlice({
 
       setLocalStorage(state.cartStorage);
     },
-
-    addPhonesToCart: (state, action: PayloadAction<Phone[]>) => {
-      state.phones = action.payload;
-    },
   },
 });
 
@@ -82,6 +76,5 @@ export const {
   decrement,
   add,
   remove,
-  addPhonesToCart,
 } = cart.actions;
 export default cart.reducer;

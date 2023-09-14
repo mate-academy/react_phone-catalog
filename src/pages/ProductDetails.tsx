@@ -21,23 +21,24 @@ import { ButtonsSize } from '../enum/ButtonsSize';
 import { NotFoundPage } from '../components/NotFoundPage/NotFoundPage';
 import { useAppSelector } from '../store/hooks';
 import '../components/ProductDetails/ProductDetails.scss';
+import { Phone } from '../types/Phone';
 
 export const ProductDetails: React.FC = () => {
   const [phones, isLoadingHot, isErrorHot] = useFetch(Fetch.hotProducts);
   const [phone, setPhone] = useState<PhoneInfo | null>(null);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { addedToCart } = useAppSelector(cartState => cartState.cart);
 
   const { state } = useLocation();
   const { id } = useParams();
   const isArrow = useRef<boolean>(true);
   const phoneId = id || '';
 
-  const { cartStorage } = useAppSelector(cartState => cartState.cart);
-
-  const addedProducts = useMemo(() => {
-    return cartStorage.map(product => product.phoneId);
-  }, [cartStorage]);
+  const findTheProduct = useMemo(() => {
+    return phones
+      .find((currPhone: Phone) => currPhone.phoneId === phone?.id);
+  }, [phone]);
 
   const handleChangingColor = (color: string) => {
     return `/phones/${phone?.namespaceId}-${phone?.capacity.toLowerCase()}-${color.toLowerCase()}`;
@@ -160,15 +161,15 @@ export const ProductDetails: React.FC = () => {
                   </h2>
                 </div>
 
-                {!addedProducts.includes(phoneId) ? (
+                {!addedToCart.includes(phoneId) ? (
                   <ButtonAndLike
                     size={ButtonsSize.bigOn}
-                    phoneId={phoneId}
+                    phone={findTheProduct || null}
                   />
                 ) : (
                   <ButtonAndLike
                     size={ButtonsSize.bigOff}
-                    phoneId={phoneId}
+                    phone={findTheProduct || null}
                   />
                 )}
               </div>

@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable react/no-array-index-key */
 import { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import './CartCard.scss';
@@ -9,7 +11,6 @@ export const CartCard = () => {
   const { cartStorage } = useAppSelector(state => state.cart);
   const dispatch = useAppDispatch();
   const [checkoutText, setCheckoutText] = useState('Checkout');
-  // eslint-disable-next-line max-len
   const notImplementedText = 'We are sorry, but this feature is not implemented yet';
 
   const amount = useMemo(() => {
@@ -37,8 +38,8 @@ export const CartCard = () => {
         </div>
       ) : (
         <div className="cards__container">
-          {cartStorage.map(product => (
-            <div className="added-card" key={product.id}>
+          {cartStorage.map((product, i) => (
+            <div className="added-card" key={product.id + i}>
               <button
                 type="button"
                 aria-label="delete"

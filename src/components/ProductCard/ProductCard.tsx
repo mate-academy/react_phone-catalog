@@ -103,12 +103,12 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       {!addedProducts.includes(phoneId) ? (
         <ButtonAndLike
           size={ButtonsSize.smallOn}
-          phoneId={phoneId}
+          phone={phone}
         />
       ) : (
         <ButtonAndLike
           size={ButtonsSize.smallOff}
-          phoneId={phoneId}
+          phone={phone}
         />
       )}
     </div>

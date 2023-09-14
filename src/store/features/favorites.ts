@@ -4,14 +4,14 @@ import { Phone } from '../../types/Phone';
 
 type State = {
   favStorage: Phone[],
-  phones: Phone[],
+  addedToFav: string[],
 };
 
 const storage = localStorage.getItem('likes');
 
 const initialState: State = {
   favStorage: storage ? JSON.parse(storage) : [],
-  phones: [],
+  addedToFav: [],
 };
 
 function setLocalStorage(newValue: Phone[]) {
@@ -22,29 +22,23 @@ const favorite = createSlice({
   name: 'favoriteStorage',
   initialState,
   reducers: {
-    toggleLike: (state, action: PayloadAction<string>) => {
-      const product = state.phones
-        .find((currPhone: Phone) => currPhone.phoneId === action.payload);
-
-      const sameLike = state.favStorage.filter(like => like.id !== product?.id);
+    toggleLike: (state, action: PayloadAction<Phone>) => {
+      const sameLike = state.favStorage
+        .filter(like => like.id !== action.payload.id);
 
       if (sameLike.length !== state.favStorage.length) {
         state.favStorage = sameLike;
+        state.addedToFav = sameLike.map(like => like && like.itemId);
 
         return;
       }
 
-      if (product) {
-        state.favStorage.push(product as Phone);
-        setLocalStorage(state.favStorage);
-      }
-    },
-
-    addPhonesToFavorite: (state, action: PayloadAction<Phone[]>) => {
-      state.phones = action.payload;
+      state.favStorage.push(action.payload);
+      state.addedToFav.push(action.payload.itemId);
+      setLocalStorage(state.favStorage);
     },
   },
 });
 
-export const { toggleLike, addPhonesToFavorite } = favorite.actions;
+export const { toggleLike } = favorite.actions;
 export default favorite.reducer;

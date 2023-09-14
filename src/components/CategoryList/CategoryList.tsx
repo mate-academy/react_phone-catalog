@@ -1,10 +1,10 @@
+/* eslint-disable max-len */
 import './CategoryList.scss';
 import { useFetch } from '../../hooks/useFetch';
 import { Fetch } from '../../enum/Fetch';
 import { CategoryCard } from '../CategoryCard';
 import phonesImg from '../../images/shopByCategory/phonesCategory.jpg';
 import tabletsImg from '../../images/shopByCategory/tabletsCategory.jpg';
-// eslint-disable-next-line max-len
 import accessoriesImg from '../../images/shopByCategory/AccessoriesCategory.jpg';
 
 const CATEGORY = [

@@ -5,117 +5,68 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { toggleLike } from '../../store/features/favorites';
 import { add as addToCart } from '../../store/features/cart';
 import './ButtonAndLike.scss';
+import { Phone } from '../../types/Phone';
 
 type Props = {
   size: ButtonsSize,
-  phoneId: string,
+  phone: Phone | null,
 };
 
-export const ButtonAndLike: React.FC<Props> = ({ size, phoneId }) => {
+export const ButtonAndLike: React.FC<Props> = ({ size, phone }) => {
   const dispatch = useAppDispatch();
-  const { favStorage } = useAppSelector(state => state.favorite);
+  const { addedToFav } = useAppSelector(state => state.favorite);
 
-  const existingLikes = useMemo(() => {
-    return favStorage.map(like => like && like.itemId);
-  }, [favStorage]);
+  const buttonsStyles = useMemo(() => {
+    switch (size) {
+      case ButtonsSize.smallOn:
+        return {
+          button: 'btn btn--small',
+          fav: 'fav fav--small',
+          title: 'Add to cart',
+        };
+      case ButtonsSize.bigOn:
+        return {
+          button: 'btn btn--big',
+          fav: 'fav fav--big',
+          title: 'Add to cart',
+        };
+      case ButtonsSize.smallOff:
+        return {
+          button: 'btn btn--small btn--disabled',
+          fav: 'fav fav--small',
+          title: 'Added to cart',
+        };
+      case ButtonsSize.bigOff:
+        return {
+          button: 'btn btn--big btn--disabled',
+          fav: 'fav fav--big',
+          title: 'Added to cart',
+        };
 
-  switch (size) {
-    case ButtonsSize.smallOn:
-      return (
-        <div className="btns-container">
-          <button
-            type="button"
-            className="btn btn--small"
-            onClick={() => dispatch(addToCart(phoneId))}
-          >
-            {ButtonsSize.smallOn}
-          </button>
+      default:
+        return null;
+    }
+  }, [size, phone]);
 
-          <button
-            type="button"
-            aria-label="favorite"
-            onClick={() => dispatch(toggleLike(phoneId))}
-            className={classNames(
-              'fav fav--small',
-              { 'fav--is-active': existingLikes.includes(phoneId) },
-            )}
+  return (
+    <div className="btns-container">
+      <button
+        type="button"
+        className={buttonsStyles?.button}
+        onClick={() => phone && dispatch(addToCart(phone))}
+      >
+        {buttonsStyles?.title}
+      </button>
 
-          />
-        </div>
-      );
-
-    case ButtonsSize.bigOn:
-      return (
-        <div className="btns-container">
-          <button
-            type="button"
-            className="btn btn--big"
-            onClick={() => dispatch(addToCart(phoneId))}
-          >
-            {ButtonsSize.bigOn}
-          </button>
-
-          <button
-            type="button"
-            aria-label="favorite"
-            onClick={() => dispatch(toggleLike(phoneId))}
-            className={classNames(
-              'fav fav--big',
-              { 'fav--is-active': existingLikes.includes(phoneId) },
-            )}
-          />
-        </div>
-      );
-
-    case ButtonsSize.smallOff:
-      return (
-        <div className="btns-container">
-          <button
-            type="button"
-            className="btn btn--small btn--disabled"
-            disabled
-          >
-            {ButtonsSize.smallOff}
-          </button>
-
-          <button
-            type="button"
-            aria-label="favorite"
-            onClick={() => dispatch(toggleLike(phoneId))}
-            className={classNames(
-              'fav fav--small',
-              { 'fav--is-active': existingLikes.includes(phoneId) },
-            )}
-
-          />
-        </div>
-      );
-
-    case ButtonsSize.bigOff:
-      return (
-        <div className="btns-container">
-          <button
-            type="button"
-            className="btn btn--big btn--disabled"
-            disabled
-          >
-            {ButtonsSize.bigOff}
-          </button>
-
-          <button
-            type="button"
-            aria-label="favorite"
-            onClick={() => dispatch(toggleLike(phoneId))}
-            className={classNames(
-              'fav fav--big',
-              { 'fav--is-active': existingLikes.includes(phoneId) },
-            )}
-
-          />
-        </div>
-      );
-
-    default:
-      return null;
-  }
+      <button
+        type="button"
+        aria-label="favorite"
+        onClick={() => phone && dispatch(toggleLike(phone))}
+        className={classNames(
+          buttonsStyles?.fav,
+          { 'fav--is-active': addedToFav.includes(phone?.itemId || '') },
+        )}
+      />
+    </div>
+  );
 };

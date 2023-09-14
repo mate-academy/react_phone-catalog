@@ -11,10 +11,8 @@ const getActiveTitle = ({ isActive }: { isActive: boolean }) => (
 
 export const Navbar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const {
-    favorite: { favStorage },
-    cart: { cartStorage },
-  } = useAppSelector(state => state);
+  const { favStorage } = useAppSelector(state => state.favorite);
+  const { cartStorage } = useAppSelector(state => state.cart);
   const { pathname } = useLocation();
   const [debQuery, setDebQuery] = useState(searchParams.get('query') || '');
 

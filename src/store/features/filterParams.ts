@@ -7,8 +7,8 @@ type State = {
 };
 
 const initialState: State = {
-  storedSort: '',
-  storedPerPage: '',
+  storedSort: 'age',
+  storedPerPage: '16',
 };
 
 const filterParams = createSlice({
