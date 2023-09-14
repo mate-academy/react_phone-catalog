@@ -92,7 +92,7 @@ export const CartPage = React.memo(() => {
                   <div className="cart__photo-container">
                     <img
                       className="cart__photo"
-                      src={`/_new/${item.product.image}`}
+                      src={`https://mate-academy.github.io/react_phone-catalog/_new/${item.product.image}`}
                       alt=""
                     />
                   </div>
