@@ -1,8 +1,9 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+import { useContext } from 'react';
+
+import { FavoriteContext } from '../../../../contexts/FavoriteContextProvider';
 import cartIcon from '../../../../images/icons/icon-cart.svg';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
+import { CartContext } from '../../../../contexts/CartContextProvider';
 import favouritesIcon from '../../../../images/icons/icon-favourites.svg';
 
 import './IconLinks.scss';
@@ -17,13 +18,26 @@ export const IconLinks: React.FC<Props> = ({ type }) => {
     cart: cartIcon,
   };
 
+  const { cart } = useContext(CartContext);
+  const { favorites } = useContext(FavoriteContext);
+
+  const contexts = {
+    favourites: favorites,
+    cart,
+  };
+
   return (
-    <div className="IconLinks">
+    <div className="icon-links">
       <img
         src={images[type]}
         alt={type}
-        className="IconLinks__image"
+        className="icon-links__image"
       />
+      {contexts[type].length > 0 && (
+        <div className="icon-links--active">
+          {contexts[type].length}
+        </div>
+      )}
     </div>
   );
 };

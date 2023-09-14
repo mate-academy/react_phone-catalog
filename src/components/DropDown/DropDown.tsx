@@ -3,6 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 import classNames from 'classnames';
 
+import './DropDown.scss';
+
 import { Option } from '../../types/SortTypes';
 import { getSearchWith } from '../../helpers/searchHelper';
 
@@ -38,7 +40,7 @@ export const DropDown: React.FC<Props> = ({
 
     if (paramsValue
       && options.find(currentOption => currentOption.value === paramsValue)) {
-      setSelectedOption(startValue);
+      setSelectedOption(paramsValue);
     } else {
       setSelectedOption(startValue);
     }
@@ -51,7 +53,7 @@ export const DropDown: React.FC<Props> = ({
 
   return (
     <div className="drop-down">
-      <label htmlFor="title" className="drop-down__title">
+      <label htmlFor="title" className="drop-down--title">
         {label}
       </label>
 
@@ -60,7 +62,7 @@ export const DropDown: React.FC<Props> = ({
         className="drop-down__top"
         onClick={toggleDropDown}
       >
-        <span className="drop-down__current">
+        <span className="drop-down--current">
           {selectedOption}
         </span>
 

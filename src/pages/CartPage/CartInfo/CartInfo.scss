@@ -1,0 +1,29 @@
+@import "../../../styles/global-imports";
+
+.cart-info {
+  max-height: 206px;
+  padding: 24px;
+
+  text-align: center;
+  border: 1px solid $c-elements;
+
+  &__total-price {
+    border-bottom: 1px solid $c-elements;
+    padding-bottom: 24px;
+
+    &--quantity {
+      @extend %body-text;
+      color: $c-secondary;
+    }
+  }
+
+  &--button {
+    width: 320px;
+    height: 48px;
+
+    margin-top: 16px;
+
+    background-color: $c-primary;
+    color: $c-white;
+  }
+}

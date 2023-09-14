@@ -1,11 +1,28 @@
 @import "../../../../styles/global-imports";
 
-.IconLinks {
+.icon-links {
   position: relative;
   display: inline-block;
 
   @include onMediumScreen {
     display: block;
     margin: 0;
+  }
+
+  &--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: red;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+
+    color: $c-white;
+    @extend %small-text;
   }
 }

@@ -1,0 +1,58 @@
+@import "../../styles/global-imports";
+
+.product-details {
+
+  &__top-content {
+    display: flex;
+    margin-top: 40px;
+  }
+
+  &__virables {
+    width: 320px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: end;
+    margin-bottom: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+
+    &--cart {
+      width: 263px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin-top: 32px;
+
+    &--item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: stretch;
+      margin-bottom: 10px;
+
+      @extend %small-text;
+
+      &-title {
+        color: $c-secondary;
+      }
+
+      &-value {
+        color: $c-primary;
+        text-align: end;
+      }
+    }
+  }
+
+  &__about {
+    margin-top: 80px;
+  }
+}

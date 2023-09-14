@@ -1,0 +1,34 @@
+@import "../../../styles/global-imports";
+
+.capacity {
+  border-bottom: 1px solid $c-elements;
+  padding-bottom: 24px;
+  margin: 24px 0;
+
+  &--title {
+    @extend %small-text;
+    color: $c-secondary;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  &--link {
+    @extend %body-text;
+
+    color: $c-primary;
+    border: 1px solid $c-primary;
+    padding: 2px 8px;
+
+    &-active {
+      color: $c-white;
+      background-color: $c-primary;
+    }
+
+    @include hover(background-color, $c-primary);
+    @include hover(color, $c-white);
+  }
+}

@@ -1,6 +1,6 @@
 @import "../../../styles/global-imports";
 
-.Home-swiper {
+.banner {
   width: 84%;
   max-width: 1136px;
   height: 440px;
@@ -33,34 +33,34 @@
       }
     }
   }
-}
 
-.swiper {
-  &-button-prev,
-  &-button-next {
-    top: 26px !important;
-    border: 1px solid $c-icons;
-    padding: 14% 4px;
-    margin: 0 1%;
+  .swiper {
+    &-button-prev,
+    &-button-next {
+      top: 26px !important;
+      border: 1px solid $c-icons;
+      padding: 14% 4px;
+      margin: 0 1%;
 
-    &::after {
-      font-size: 18px !important;
-      color: $c-primary;
-    }
-  }
-
-  &-pagination {
-    bottom: 10% !important;
-
-    @include onMediumScreen {
-      bottom: 26% !important;
+      &::after {
+        font-size: 18px !important;
+        color: $c-primary;
+      }
     }
 
-    &-bullet {
-      width: 16px !important;
-      height: 6px !important;
-      background: $c-primary !important;
-      border-radius: 0% !important;
+    &-pagination {
+      bottom: 10% !important;
+
+      @include onMediumScreen {
+        bottom: 26% !important;
+      }
+
+      &-bullet {
+        width: 16px !important;
+        height: 6px !important;
+        background: $c-primary !important;
+        border-radius: 0% !important;
+      }
     }
   }
 }

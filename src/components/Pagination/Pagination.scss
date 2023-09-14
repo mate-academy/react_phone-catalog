@@ -1,1 +1,80 @@
-// empty yet(
+@import "../../styles/global-imports";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-icons;
+    background: $c-white $arrow-image no-repeat center;
+
+    &-left {
+      transform: rotate(180deg);
+
+      &:not(.pagination--button-left-disabled) {
+        @include hover(border-color, $c-primary);
+
+      }
+    }
+
+    &-disabled {
+      border-color: $c-elements;
+      cursor: none;
+      pointer-events: none;
+    }
+
+    &-right {
+      &:not(.pagination--button-right-disabled) {
+        @include hover(border-color, $c-primary);
+
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &--item {
+    &-active {
+      color: $c-white;
+      background-color: $c-primary;
+    }
+  }
+
+  &--break {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 16px;
+    height: 32px;
+  }
+
+  &--link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $c-icons;
+
+    @extend %body-text;
+
+    @include hover(border-color, $c-primary);
+
+    &-active {
+      color: $c-white;
+    }
+  }
+}

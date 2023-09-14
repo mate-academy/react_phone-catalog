@@ -3,12 +3,12 @@ import { Navigation } from './Navigation';
 import { Search } from './Search/Search';
 
 import './Header.scss';
-import { HeaderActions } from './HeaderActions';
 import { Menu } from './Menu';
+import { HeaderActions } from './HeaderActions';
 
 export const Header = () => (
-  <header className="Header">
-    <div className="Header__navigation">
+  <header className="header">
+    <div className="header__navigation">
       <Logo />
       <Navigation />
     </div>

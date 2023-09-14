@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { getTitle } from '../../helpers/getTitle';
 
+import './HistoryLocation.scss';
+
 export const HistoryLocation = () => {
   const location = useLocation();
   const { pathname } = location;
@@ -18,7 +20,7 @@ export const HistoryLocation = () => {
     <nav className="history-location">
       <Link
         to="/"
-        className="history-location--link"
+        className="history-location--home-link"
       />
 
       <ul className="history-location__list">
@@ -34,9 +36,9 @@ export const HistoryLocation = () => {
 
               <Link
                 to={currentHistory.link}
-                className={classNames('history-location',
+                className={classNames('history-location--location',
                   {
-                    'history-location-active':
+                    'history-location--location-active':
                     index === historyLocation.length - 1,
                   })}
               >

@@ -1,1 +1,13 @@
-// not empty
+@import "styles/global-imports";
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__section {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}

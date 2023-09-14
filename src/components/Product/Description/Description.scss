@@ -1,0 +1,42 @@
+@import "../../../styles/global-imports";
+
+.description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 116px;
+
+  &--title {
+    border-bottom: 1px solid $c-elements;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__about {
+    &--title {
+      margin-bottom: 16px;
+    }
+
+    &--paragraph {
+      @extend %body-text;
+      color: $c-secondary;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__tech-specs {
+
+    &--item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: stretch;
+
+      margin-bottom: 10px;
+
+      @extend %small-text;
+
+      &-title {
+        color: $c-secondary;
+      }
+    }
+  }
+}

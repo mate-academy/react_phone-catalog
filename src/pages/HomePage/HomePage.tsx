@@ -10,7 +10,7 @@ import {
   getHotPriceProducts,
 } from '../../helpers/fetchProducts';
 
-import { ProductSlider } from './ProductSlider';
+import { ProductSlider } from '../../components/Product/Slider';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 

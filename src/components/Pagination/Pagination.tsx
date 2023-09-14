@@ -1,7 +1,10 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+
 import { getNumbers } from '../../helpers/getNumbers';
 import { getSearchWith } from '../../helpers/searchHelper';
+
+import './Pagination.scss';
 
 type Props = {
   totalItems: number,
@@ -35,8 +38,8 @@ export const Pagination: React.FC<Props> = ({
     <div className="pagination">
       <Link
         aria-disabled={isFirstPage}
-        className={classNames('pagination__button', 'pagination__button-left', {
-          'pagination__button-left--disabled': isFirstPage,
+        className={classNames('pagination--button', 'pagination--button-left', {
+          'pagination--button-left-disabled': isFirstPage,
         })}
         to={{
           search: getSearchWith(
@@ -64,20 +67,22 @@ export const Pagination: React.FC<Props> = ({
         )}
 
         {startPage > 2 && (
-          <li className="pagination__item">
-            <span className="pagination__break">...</span>
+          <li className="pagination--item">
+            <span className="pagination--break">...</span>
           </li>
         )}
 
         {pageLength.map(pageNumber => (
           <li
-            className={classNames('pagination__item', {
-              'pagination__item--active': currentPage === pageNumber,
+            className={classNames('pagination--item', {
+              'pagination--item-active': currentPage === pageNumber,
             })}
             key={pageNumber}
           >
             <Link
-              className="pagination__link"
+              className={classNames('pagination--link', {
+                'pagination--link-active': currentPage === pageNumber,
+              })}
               to={{
                 search: getSearchWith(
                   searchParams,
@@ -91,15 +96,15 @@ export const Pagination: React.FC<Props> = ({
         ))}
 
         {endPage < totalPages - 1 && (
-          <li className="pagination__item">
+          <li className="pagination--item">
             <span className="pagination__break">...</span>
           </li>
         )}
 
         {endPage < totalPages && (
-          <li className="pagination__item">
+          <li className="pagination--item">
             <Link
-              className="pagination__link"
+              className="pagination--link"
               to={{
                 search: getSearchWith(
                   searchParams,
@@ -114,9 +119,9 @@ export const Pagination: React.FC<Props> = ({
       </ul>
 
       <Link
-        className={classNames('pagination__button',
-          'pagination__button-right',
-          { 'pagination__button-right--disabled': isLastPage })}
+        className={classNames('pagination--button',
+          'pagination--button-right',
+          { 'pagination--button-right-disabled': isLastPage })}
         data-cy="paginationRight"
         to={{
           search: getSearchWith(

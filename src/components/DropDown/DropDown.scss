@@ -1,1 +1,70 @@
-// empty yet(
+@import "../../styles/global-imports";
+
+.drop-down {
+  width: 182px;
+  margin: 40px 0 26px;
+
+  position: relative;
+
+  &--title {
+    color: $c-secondary;
+    @extend %small-text;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 182px;
+    padding: 10px;
+
+    cursor: pointer;
+
+    @extend %body-text;
+
+    background-color: $c-white;
+    border: 1px solid $c-icons;
+  }
+
+  &--icon {
+    background: $arrow-image no-repeat center;
+    width: 16px;
+    height: 16px;
+
+    transform: rotate(90deg);
+  }
+
+  &--current {
+    padding-left: 12px;
+  }
+
+  &__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    background-color: $c-white;
+    border: 1px solid $c-elements;
+  }
+
+  &--is-active {
+    display: none;
+  }
+
+  &--item {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 32px;
+    padding-left: 12px;
+
+    color: $c-secondary;
+
+    cursor: pointer;
+
+    @extend %body-text;
+    @include hover(background-color, $c-hover_bg);
+    @include hover(color, $c-primary);
+  }
+}

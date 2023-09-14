@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 
 import { CartContextProvider } from './contexts/CartContextProvider';
-import { FavouriteContextProvider } from './contexts/FavouriteContextProvider';
+import { FavoriteContextProvider } from './contexts/FavoriteContextProvider';
 import App from './App';
 
 import './styles/main.scss';
@@ -12,9 +12,9 @@ import './styles/main.scss';
 ReactDOM.render(
   <Router>
     <CartContextProvider>
-      <FavouriteContextProvider>
+      <FavoriteContextProvider>
         <App />
-      </FavouriteContextProvider>
+      </FavoriteContextProvider>
     </CartContextProvider>
   </Router>,
   document.getElementById('root'),

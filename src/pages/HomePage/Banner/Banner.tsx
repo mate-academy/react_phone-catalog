@@ -18,27 +18,27 @@ export const Banner = () => {
         clickable: true,
       }}
       modules={[Navigation, Pagination]}
-      className="Home-swiper"
+      className="banner"
     >
-      <SwiperSlide className="Home-swiper__slide">
+      <SwiperSlide className="banner__slide">
         <div
           className="
-            Home-swiper__slide--image
-            Home-swiper__slide--image-1"
+            banner__slide--image
+            banner__slide--image-1"
         />
       </SwiperSlide>
-      <SwiperSlide className="Home-swiper__slide">
+      <SwiperSlide className="banner__slide">
         <div
           className="
-            Home-swiper__slide--image
-            Home-swiper__slide--image-2"
+            banner__slide--image
+            banner__slide--image-2"
         />
       </SwiperSlide>
-      <SwiperSlide className="Home-swiper__slide">
+      <SwiperSlide className="banner__slide">
         <div
           className="
-            Home-swiper__slide--image
-            Home-swiper__slide--image-3"
+            banner__slide--image
+            banner__slide--image-3"
         />
       </SwiperSlide>
     </Swiper>

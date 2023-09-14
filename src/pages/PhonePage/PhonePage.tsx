@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../types/Product';
 import { getAllProducts } from '../../helpers/fetchProducts';
 import { ProductType } from '../../types/ProductType';
-import { ProductPage } from '../../components/ProductPage';
+import { ProductPage } from '../ProductPage';
 
 import './PhonePage.scss';
 

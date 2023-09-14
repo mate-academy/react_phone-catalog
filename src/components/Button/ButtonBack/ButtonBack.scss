@@ -1,0 +1,19 @@
+@import "../../../styles/global-imports";
+
+.button-back {
+  display: flex;
+  gap: 6px;
+
+  margin: 40px 0 16px;
+  background-color: $c-white;
+
+  @extend %small-text;
+  color: $c-secondary;
+
+  &--arrow {
+    width: 16px;
+    height: 16px;
+    background: url("../../../images/icons/Arrow.svg") no-repeat center;
+    transform: rotate(180deg);
+  }
+}

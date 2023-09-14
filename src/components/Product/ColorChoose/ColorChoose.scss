@@ -1,0 +1,45 @@
+@import "../../../styles/global-imports";
+
+.color-choose {
+  border-bottom: 1px solid $c-elements;
+  padding-bottom: 24px;
+
+  &--title {
+    @extend %small-text;
+    color: $c-secondary;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 10px;
+  }
+
+  &--link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $c-elements;
+    border-radius: 100%;
+
+    width: 32px;
+    height: 32px;
+
+    @include hover(border-color, $c-primary);
+
+    &-rug {
+      width: 26px;
+      height: 26px;
+      border-radius: 100%;
+
+      @include hover(width, 30px);
+      @include hover(height, 30px);
+    }
+
+    &-active {
+      border-color: $c-primary;
+    }
+  }
+}
