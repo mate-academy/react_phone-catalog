@@ -1,5 +1,10 @@
 import classNames from 'classnames';
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import './Navbar.scss';
 import debounce from 'lodash.debounce';
@@ -15,6 +20,13 @@ export const Navbar = () => {
   const { cartStorage } = useAppSelector(state => state.cart);
   const { pathname } = useLocation();
   const [debQuery, setDebQuery] = useState(searchParams.get('query') || '');
+  const focusSearch = useRef<HTMLInputElement | null>(null);
+
+  const handleFocusOnSearch = () => {
+    if (focusSearch.current) {
+      focusSearch.current.focus();
+    }
+  };
 
   const isVisibleSearch = pathname === '/phones' || pathname === '/favorites'
     || pathname === '/tablets' || pathname === '/accessories';
@@ -104,6 +116,7 @@ export const Navbar = () => {
             type="search"
             placeholder="Search in phones..."
             value={debQuery}
+            ref={focusSearch}
             onChange={handleInput}
             className="search__input search__input--underline"
           />
@@ -117,7 +130,14 @@ export const Navbar = () => {
             />
           )}
 
-          {!debQuery && <i className="search__find" />}
+          {!debQuery && (
+            <button
+              type="button"
+              aria-label="search"
+              onClick={() => handleFocusOnSearch()}
+              className="search__find"
+            />
+          )}
 
         </div>
 

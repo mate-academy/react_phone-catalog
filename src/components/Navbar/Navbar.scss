@@ -40,6 +40,9 @@
   &__find {
     width: 16px;
     height: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: $white-color;
 
     position: absolute;
     top: 22px;
