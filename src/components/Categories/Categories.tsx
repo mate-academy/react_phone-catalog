@@ -2,9 +2,9 @@ import './Categories.scss';
 import { CategoryItem } from './components/CategoryItem';
 
 const categories = {
-  phones: '_new/img/category-phones.png',
-  tablets: '_new/img/category-tablets.png',
-  accessories: '_new/img/category-accessories.png',
+  phones: '/img/category-phones.png',
+  tablets: '/img/category-tablets.png',
+  accessories: '/img/category-accessories.png',
 };
 
 const categoriesArray = Object.entries(categories);
