@@ -1,0 +1,30 @@
+@import "../../helpers/variables.scss";
+
+.product-data {
+  display: flex;
+  flex-direction: column;
+
+  &__available-colors {
+    margin-bottom: 24px;
+  }
+
+  &__capacity {
+    margin-bottom: 32px;
+  }
+
+  &__price {
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+}
+
+.info-block-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondaryColor;
+}

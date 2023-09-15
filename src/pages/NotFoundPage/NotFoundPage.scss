@@ -1,0 +1,74 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.not-found-page {
+  align-self: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin: 0 0 48px;
+  }
+
+  &__link {
+    width: 263px;
+    height: 48px;
+    background: $primaryColor;
+    border: 0;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 48px;
+    text-align: center;
+    color: $whiteColor;
+    text-decoration: none;
+
+    margin: 0 0 48px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__image-container {
+    position: relative;
+
+    box-sizing: border-box;
+    max-height: 700px;
+    width: 80vw;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 70%;
+
+      @include onTablet {
+        padding-bottom: 100%;
+      }
+
+      @include onMobile {
+        padding-bottom: 100%;
+      }
+    }
+
+    @include onDesktop {
+      height: 700px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+}

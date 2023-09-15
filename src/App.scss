@@ -1,1 +1,68 @@
-// not empty
+@import "./helpers/variables.scss";
+@import "./helpers/mixins.scss";
+
+html,
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  flex-grow: 1;
+
+  &__page {
+    width: 100%;
+  }
+
+  &__products-page {
+    margin: 0 auto 80px;
+
+    &--width {
+      width: $cardWidth * 4 + $cardsGapHor * 3;
+  
+      @include onLaptop {
+        width: $cardWidth * 3 + $cardsGapHor * 2;
+      }
+  
+      @include onTablet {
+        width: $cardWidth * 2 + $cardsGapHor * 1;
+      }
+  
+      @include onMobile {
+        width: 80vw;
+      }
+    }
+  }
+
+  &__cart-page {
+    margin: 0 auto 80px;
+
+    &--width {
+      width: $cardWidth * 4 + $cardsGapHor * 3;
+  
+      @include onLaptop {
+        width: $cardWidth * 3 + $cardsGapHor * 2;
+      }
+  
+      @include onTablet {
+        width: $cardWidth * 2 + $cardsGapHor * 1;
+      }
+  
+      @include onMobile {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.page-title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $primaryColor;
+}

@@ -1,0 +1,131 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+$swiper-navigation-color: #000;
+
+.mainSwiper,
+.thumbsSwiper {
+  height: 100%;
+}
+
+.thumbsSwiper {
+  width: 80px;
+  margin-right: 16px;
+  
+  position: relative;
+  display: flex;
+
+  & .swiper-slide {
+    border: 1px solid $elementsColor;
+  }
+
+  & .swiper-slide-thumb-active {
+    border: 1px solid $primaryColor;
+  }
+
+  @include onMobile {
+    display: none;
+  }
+}
+
+.thumbs-button-prev {
+  top: 0;
+  background-image: linear-gradient(
+    to top, rgba(255, 255, 255, 0.5), rgba(255,255,255,1) 100%
+  );
+
+  &::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.5);
+  }
+}
+
+.thumbs-button-next {
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom, rgba(255, 255, 255, 0.5), rgba(255,255,255,1) 100%
+  );
+
+  &::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg) scale(1.5);
+  }
+}
+
+.thumbs-button-next,
+.thumbs-button-prev {
+  display: inherit;
+  position: absolute;
+  color: $swiper-navigation-color;
+  width: 100%;
+  height: 40px;
+  z-index: 10;
+
+  transition: all 0.3s;
+
+  &::after {
+    content: url("../../assets/images/arrow_back_button.svg");
+    position: absolute;
+    height: 16px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $whiteColor;
+  }
+}
+
+.swiper-button-disabled {
+  display: none;
+}
+
+.mainSwiper {
+  width: 464px;
+  position: relative;
+
+  @include onMobile {
+    max-width: 100vw;
+  }
+}
+
+.main-button-next {
+  right: 0;
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.5);
+  }
+}
+
+.main-button-prev {
+  &::after {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+.main-button-prev,
+.main-button-next {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+
+  &::after {
+    content: url("../../assets/images/arrow_back_button.svg");
+    position: absolute;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @include onMobile {
+    display: none;
+  }
+}

@@ -1,0 +1,40 @@
+@import "../../helpers/mixins.scss";
+
+.cart {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__items-container {
+    margin-right: 16px;
+
+    @include onTablet {
+      margin: 0 0 48px;
+    }
+
+    @include onMobile {
+      margin: 0 0 48px;
+      width: 100%;
+    }
+  }
+
+  &__info-container {
+    display: flex;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}

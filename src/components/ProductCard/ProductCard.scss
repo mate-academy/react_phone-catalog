@@ -1,0 +1,124 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.card {
+  box-sizing: border-box;
+  width: $cardWidth;
+  display: flex;
+  flex-direction: column;
+  background: $whiteColor;
+  border: 1px solid $elementsColor;
+  padding: 32px 24px 24px;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    border-color: $primaryColor;
+    border-radius: 10px;
+
+    & .image-container {
+      transform: scale(1.05);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include onMobile {
+    padding-bottom: 48px;
+  }
+
+  &__image {
+    max-height: 208px;
+  }
+
+  &-name-container {
+    margin: 0 0 8px;
+    height: 42px;
+  }
+
+  &__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+    margin: 0;
+  }
+
+  &__prices {
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $elementsColor;
+    margin-bottom: 16px;
+  }
+}
+
+.image-container {
+  padding: 0 8px;
+  max-width: fit-content;
+  margin-bottom: 24px;
+  align-self: center;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.prices {
+  display: flex;
+
+  &__current-price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    color: $primaryColor;
+    margin: 0 8px 0 0;
+  }
+
+  &__full-price {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+    margin: 0;
+  }
+}
+
+.product-info {
+  padding-top: 16px;
+
+  &__item {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+    margin: 0 0 8px;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  &__value {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $primaryColor;
+    margin: 0 0 8px;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+}

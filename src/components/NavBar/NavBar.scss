@@ -1,0 +1,75 @@
+@import "../../helpers/variables.scss";
+
+.nav-link-style {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $secondaryColor;
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: $primaryColor;
+    cursor: pointer;
+  }
+}
+
+.navbar {
+  &__container {
+    display: flex;
+  }
+
+  &__item {
+    padding: 26px 0;
+    margin-right: 64px;
+    position: relative;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    padding: 24px;
+    box-shadow: -1px 0 0 $elementsColor;
+    vertical-align: bottom;
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    border: 1px solid $whiteColor;
+    background: $redColor;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 9px;
+    text-align: center;
+    text-decoration: none;
+    color: $whiteColor;
+  }
+}
+
+.nav-link-active {
+  color: $primaryColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    border-bottom: 3px solid $primaryColor;
+  }
+}

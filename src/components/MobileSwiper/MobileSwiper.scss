@@ -1,0 +1,14 @@
+@import "../../helpers/variables.scss";
+
+.mobile-swiper {
+  flex-direction: column;
+  align-items: center;
+}
+
+.swiper {
+  width: $cardWidth;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $redColor;
+}

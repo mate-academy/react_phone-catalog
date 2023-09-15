@@ -1,0 +1,36 @@
+@import "../../helpers/mixins.scss";
+
+.home-page {
+  padding-top: 40px;
+
+  &__slider {
+    margin: 0 auto 80px;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__section {
+    margin: 0 auto 80px;
+  }
+
+  &__mobile-swiper {
+    @include onDesktop {
+      display: none;
+    }
+
+    @include onLaptop {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onMobile {
+      margin: 0 auto 80px;
+      display: flex;
+    }
+  }
+}

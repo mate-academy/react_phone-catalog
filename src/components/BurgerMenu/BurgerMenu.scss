@@ -1,0 +1,86 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.burger-menu {
+  position: relative;
+
+  &__nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__button {
+    height: 2em;
+    width: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &__line {
+    width: 2em;
+    height: 0.25em;
+    background-color: $primaryColor;
+    border-radius: 0.5em;
+  }
+}
+
+.menu {
+  width: 100vw;
+  background-color: $elementsColor;
+  opacity: 0.98;
+  position: absolute;
+  top: 100%;
+  left: -$headerPaddingMob;
+  z-index: 10;
+
+  @include onTablet {
+    left: -$logoWidth;
+  }
+}
+
+.burger-menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 24px 48px 48px;
+
+  & > a {
+    margin-right: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: inherit;
+}
+
+.clicked {
+  &:nth-child(1) {
+    transform: rotate(45deg) translate(0.75em,0.75em);
+    transition: ease-out 0.5s;
+  }
+
+  &:nth-child(2) {
+    transform: scale(0.1);
+    transition: ease-out 0.5s;
+  }
+
+  &:nth-child(3) {
+    transform: rotate(135deg) translate(-0.5em, 0.5em);
+    transition: ease-out 0.5s;
+  }
+}
+
+.unclicked {
+  transform: rotate(0) translate(0);
+  transition: cubic-bezier(0.17, 0.88, 0.32, 1.27) 0.5s;
+}
