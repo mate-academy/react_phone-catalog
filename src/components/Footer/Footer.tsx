@@ -4,6 +4,7 @@ import { FooterNavigation } from '../FooterNavigation';
 import { IconButton } from '../../bits';
 import { Wrapper } from '../Wrapper';
 import { IconButtonType } from '../../types/enums/IconButtonType';
+import { AppRoutes } from '../../config';
 
 export const Footer = () => {
   const handleBackToTop = () => {
@@ -19,7 +20,7 @@ export const Footer = () => {
         <div className="footer__content">
           <Link
             className="footer__logo"
-            to="/"
+            to={AppRoutes.HomePage}
           >
             <img alt="logo" src="./img/icons/logo.svg" />
           </Link>

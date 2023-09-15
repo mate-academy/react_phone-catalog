@@ -2,6 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { pages } from '../../Root';
 import './Navigation.scss';
+import { AppRoutes } from '../../config';
 
 const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites', 'productId'];
 
@@ -30,7 +31,7 @@ export const Navigation = () => {
     <nav className="nav">
       <Link
         className="nav__logo"
-        to="/"
+        to={AppRoutes.HomePage}
       >
         <img
           alt="logo"

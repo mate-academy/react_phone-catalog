@@ -75,8 +75,6 @@ export const ProductDetailsPage = () => {
       };
 
       addToCart([...cart, newItem]);
-
-      return null;
     }
 
     const newCart = [...cart];
@@ -85,8 +83,6 @@ export const ProductDetailsPage = () => {
       ...cart[productIndexInCart],
       cartQuantity: cart[productIndexInCart].cartQuantity + 1,
     };
-
-    return null;
   };
 
   return (

@@ -46,16 +46,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const isProductInCart = cart.some(item => item.itemId === itemId);
 
-  // const addItemToCart = () => {
-  //   if (isProductInCart) {
-  //     const deleteItems = cart.filter(item => item.itemId !== itemId);
-
-  //     addToCart(deleteItems);
-  //   } else {
-  //     addToCart([...cart, product]);
-  //   }
-  // };
-
   const addItemToCart = () => {
     if (!isProductInCart) {
       const newItem = {

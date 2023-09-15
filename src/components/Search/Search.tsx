@@ -7,17 +7,16 @@ import { useProducts } from '../../context';
 
 export const Search = () => {
   const location = useLocation();
-  const { query, setQuery } = useProducts();
+  const { searchQuery, setSearchQuery } = useProducts();
 
-  const showSearchPages
-    = location.pathname === '/phones'
-    || location.pathname === '/tablets'
-    || location.pathname === '/accessories'
-    || location.pathname === '/favourites';
+  const showSearchPages = ['/phones', '/tablets', '/accessories', '/favourites']
+    .includes(location.pathname);
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+    setSearchQuery(event.target.value);
   };
+
+  const placeholderName = `Search in ${location.pathname.substring(1)}`;
 
   return (
     <>
@@ -25,18 +24,18 @@ export const Search = () => {
         <div className="search">
           <input
             className="search__input"
-            placeholder={`Search in ${location.pathname.substring(1)}`}
+            placeholder={placeholderName}
             onChange={handleInput}
-            value={query}
+            value={searchQuery}
           />
-          {query
+          {searchQuery
             ? (
               <img
                 alt="search icon"
                 src="img/icons/closeFill.svg"
                 className="search__icon-close"
                 data-cy="searchDelete"
-                onClick={() => setQuery('')}
+                onClick={() => setSearchQuery('')}
               />
             )
             : (

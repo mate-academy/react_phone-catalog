@@ -16,8 +16,8 @@ type ProductContext = {
   filteredProducts: Product[],
   sortBy: string,
   setSortBy: (type: string) => void,
-  query: string,
-  setQuery: (query: string) => void,
+  searchQuery: string,
+  setSearchQuery: (query: string) => void,
   isLoading: boolean,
 };
 
@@ -33,7 +33,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [favourites, setFavourites]
   = useLocalStorage<Product[]>('favourites', []);
   const [sortBy, setSortBy] = useState<string>(SortByType.all);
-  const [query, setQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -64,13 +64,13 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const filteredProductsByQuery = filteredProducts
     .filter((product) => product.name
       .toLowerCase()
-      .includes(query
+      .includes(searchQuery
         .toLowerCase()));
 
   const filteredFavouritesByQuery = favourites
     .filter((product) => product.name
       .toLowerCase()
-      .includes(query
+      .includes(searchQuery
         .toLowerCase()));
 
   const value = {
@@ -81,8 +81,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     setProducts,
     setSortBy,
     sortBy,
-    query,
-    setQuery,
+    searchQuery,
+    setSearchQuery,
     isLoading,
   };
 

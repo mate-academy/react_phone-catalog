@@ -14,8 +14,15 @@ import {
 } from './pages';
 import { Cart } from './pages/Cart';
 import { Favourites } from './pages/Favourites';
-import { ProductsProvider } from './context/productsContext';
-import { CartProvider } from './context/cartContext';
+import { AppRoutes } from './config';
+
+type RootT = {
+  element: JSX.Element,
+  index?: boolean,
+  childRoute?: JSX.Element,
+};
+
+type RootsT = Partial<Record<AppRoutes, RootT>>;
 
 export const pages = {
   home: <HomePage />,
@@ -27,30 +34,63 @@ export const pages = {
   '*': <NotFound />,
 };
 
+export const routes: RootsT = {
+  [AppRoutes.HomePage]: {
+    element: <HomePage />,
+    index: true,
+  },
+  [AppRoutes.Phones]: {
+    index: true,
+    element: <PhonesPage />,
+    childRoute: (
+      <>
+        <Route index element={<PhonesPage />} />
+        <Route path={AppRoutes.ProductId} element={<ProductDetailsPage />} />
+      </>),
+  },
+  [AppRoutes.Tablets]: {
+    element: <TabletsPage />,
+  },
+  [AppRoutes.Accessories]: {
+    element: <AccessoriesPage />,
+  },
+  [AppRoutes.Cart]: {
+    element: <Cart />,
+  },
+  [AppRoutes.Favourites]: {
+    element: <Favourites />,
+  },
+  [AppRoutes.NotFound]: {
+    element: <NotFound />,
+  },
+};
+
+const configuredRoutes = Object
+  .entries(routes)
+  .map(([path, route]) => {
+    if (Object.hasOwn(route, 'childRoute')) {
+      return (
+        <Route path={path}>
+          {route.childRoute}
+        </Route>
+      );
+    }
+
+    return (
+      <Route
+        path={path}
+        element={route.element}
+        index={route.index}
+      />
+    );
+  });
+
 export const Root = () => (
-  <ProductsProvider>
-    <CartProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-
-            <Route path="/phones">
-              <Route index element={<PhonesPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
-
-            {Object.entries(pages).map(route => (
-              <Route
-                key={route[0]}
-                path={route[0]}
-                element={route[1]}
-              />
-            ))}
-          </Route>
-        </Routes>
-      </Router>
-    </CartProvider>
-  </ProductsProvider>
-
+  <Router>
+    <Routes>
+      <Route path={AppRoutes.Root} element={<App />}>
+        {configuredRoutes}
+      </Route>
+    </Routes>
+  </Router>
 );
