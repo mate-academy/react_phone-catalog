@@ -1,0 +1,21 @@
+.comming-soon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  align-items: center;
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+  }
+
+  &__img {
+    width: 650px;
+    height: 350px;
+    background-image: url("../../images/comming-soon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

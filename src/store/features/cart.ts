@@ -24,6 +24,20 @@ const cart = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<Phone>) => {
+      const findProduct = state.cartStorage
+        .find(phone => phone.id === action.payload.id);
+
+      if (findProduct) {
+        state.cartStorage = state.cartStorage
+          .filter(phone => phone.id !== action.payload.id);
+        state.addedToCart = state.addedToCart
+          .filter(phoneId => phoneId !== action.payload.phoneId);
+
+        setLocalStorage(state.cartStorage);
+
+        return;
+      }
+
       const newProduct = {
         id: action.payload.id,
         name: action.payload.name,
