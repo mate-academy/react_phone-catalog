@@ -1,12 +1,10 @@
 import React from 'react';
 import './Breadcrumbs.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-type Props = {
-  paths: string[];
-};
+export const Breadcrumbs = () => {
+  const paths = useLocation().pathname.slice(1).split('/');
 
-export const Breadcrumbs: React.FC<Props> = ({ paths }) => {
   return (
     <section className="breadcrumbs">
       <Link

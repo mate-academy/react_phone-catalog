@@ -13,11 +13,12 @@ import { Loader } from '../../components/Loader';
 import { Product } from '../../types/Product';
 import { ErrorModal } from '../../components/UX/ErrorModal';
 import { NoResults } from '../../components/NoResults';
+import { NoResultsCaseName } from '../../types/NoResultsCase';
+import { Pagination } from '../../components/Pagination';
 
 export const CategoryPage = () => {
   const location = useLocation();
-  const paths = location.pathname.slice(1).split('/');
-  const categoryName = paths[0];
+  const categoryName = location.pathname.slice(1).split('/')[0];
   const title = getCategoryTitle(categoryName);
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[] | null>(null);
@@ -46,7 +47,7 @@ export const CategoryPage = () => {
   return (
     <div className="category-page">
       <div className="category-page__breadcrumbs">
-        <Breadcrumbs paths={paths} />
+        <Breadcrumbs />
       </div>
 
       <h1 className="category-page__title">{title}</h1>
@@ -58,16 +59,6 @@ export const CategoryPage = () => {
           'Searching . . .'
         )}
       </p>
-
-      <div className="category-page__dropdowns">
-        <Dropdown
-          dropdownType={DropdownType.Sorter}
-        />
-
-        <Dropdown
-          dropdownType={DropdownType.Paginator}
-        />
-      </div>
 
       {isLoading && <Loader />}
 
@@ -81,19 +72,43 @@ export const CategoryPage = () => {
       {products && (
         <>
           {products.length ? (
-            <div className="category-page__product-cards">
-              {products.map(product => {
-                return (
-                  <ProductCard
-                    key={product.id}
-                    hasDiscount
-                    product={product}
-                  />
-                );
-              })}
-            </div>
+            <>
+              <div className="category-page__dropdowns">
+                <Dropdown
+                  dropdownType={DropdownType.Sorter}
+                />
+
+                <Dropdown
+                  dropdownType={DropdownType.Paginator}
+                />
+              </div>
+
+              <div className="category-page__product-cards">
+                {products.map(product => {
+                  return (
+                    <ProductCard
+                      key={product.id}
+                      hasDiscount
+                      product={product}
+                    />
+                  );
+                })}
+              </div>
+
+              <Pagination
+                totalItems={71}
+                itemsPerPage={4}
+                activePage={10}
+              />
+            </>
+
           ) : (
-            <NoResults name={categoryName} />
+            <>
+              <NoResults
+                query={categoryName}
+                caseName={NoResultsCaseName.EmptyCategory}
+              />
+            </>
           )}
         </>
       )}

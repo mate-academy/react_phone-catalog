@@ -1,13 +1,39 @@
+import { NoResultsCaseName } from '../../types/NoResultsCase';
 import './no-results.scss';
+import { defaultCase, noResultsCases } from '../../assets/noResultsCases';
 
 type Props = {
-  name: string;
+  query?: string;
+  caseName: NoResultsCaseName;
 };
 
-export const NoResults: React.FC<Props> = ({ name }) => {
+export const NoResults: React.FC<Props> = ({ query, caseName }) => {
+  const currentCase = noResultsCases.find(noResultsCase => (
+    noResultsCase.name === caseName
+  )) || defaultCase;
+
+  const {
+    name,
+    image,
+    warningText,
+    suggestionText,
+  } = currentCase;
+
   return (
     <div className="no-results">
-      {`${name} not found`}
+      <img
+        src={image}
+        alt={name}
+        className="no-results__image"
+      />
+
+      <p className="no-results__warning">
+        {query ? `"${query}" ${warningText}` : warningText}
+      </p>
+
+      <p className="no-results__suggestion">
+        {suggestionText}
+      </p>
     </div>
   );
 };

@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import './product-details.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -12,10 +11,9 @@ import { Promo } from '../../components/Promo';
 import { PromoName } from '../../types/PromoName';
 import { useLoadPromoProducts } from '../../customHooks/useLoadPromoProducts';
 import { useLoadProductDetails } from '../../customHooks/useLoadProductDetails';
+import { NoResultsCaseName } from '../../types/NoResultsCase';
 
 export const ProductDetailsPage = () => {
-  const location = useLocation();
-  const paths = location.pathname.slice(1).split('/');
   const { itemId = '' } = useParams();
 
   const [
@@ -34,7 +32,7 @@ export const ProductDetailsPage = () => {
   return (
     <div className="product-details">
       <div className="product-details__breadcrumbs">
-        <Breadcrumbs paths={paths} />
+        <Breadcrumbs />
       </div>
 
       <div className="product-details__go-back">
@@ -51,7 +49,10 @@ export const ProductDetailsPage = () => {
       )}
 
       {(!isLoadingProductDetails && !productDetails) && (
-        <NoResults name={`${itemId} was`} />
+        <NoResults
+          query={`${itemId}`}
+          caseName={NoResultsCaseName.ProductDoesntExist}
+        />
       )}
 
       {(!isLoadingProductDetails && productDetails) && (

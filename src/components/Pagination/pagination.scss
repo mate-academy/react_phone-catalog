@@ -1,0 +1,56 @@
+@import "../../styles/utils/variables";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $color-elements;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      user-select: none;
+      border-color: $color-primary;
+      background-color: $color-primary;
+    }
+
+    &-name {
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      font-weight: 500;
+      color: $color-primary;
+      transform: translateX(-50%);
+
+      &--active {
+        color: $color-white;
+      }
+    }
+  }
+
+  &__ellipsis {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 32px;
+    width: 32px;
+
+    &-name {
+      letter-spacing: 4px;
+      user-select: none;
+    }
+  }
+}

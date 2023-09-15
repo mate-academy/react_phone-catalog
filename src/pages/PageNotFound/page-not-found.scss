@@ -1,0 +1,32 @@
+@import "../../styles/utils/variables";
+
+.page-not-found {
+  text-align: center;
+
+  &__title {
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  &__no-results {
+    margin-bottom: 16px;
+  }
+
+  &__go-home-button {
+    display: inline-block;
+    padding: 10px 60px;
+    line-height: 21px;
+    background-color: $color-primary;
+    color: $color-white;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

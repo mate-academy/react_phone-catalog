@@ -1,6 +1,8 @@
 @import "../../styles/utils/variables";
 
-.category-page {
+.favourites-page {
+  width: 100%;
+
   &__breadcrumbs {
     margin-bottom: 40px;
   }
@@ -9,24 +11,15 @@
     margin-bottom: 8px;
   }
 
-  &__models-count {
+  &__items-counter {
     margin-bottom: 40px;
     font-weight: 500;
-    line-height: 21px;
     color: $color-secondary;
-  }
-
-  &__dropdowns {
-    display: flex;
-    margin-bottom: 24px;
-    gap: 16px;
   }
 
   &__product-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, 272px);
     gap: 40px 16px;
-    justify-content: center;
-    margin-bottom: 40px;
   }
 }

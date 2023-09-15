@@ -4,6 +4,8 @@ import './cart-page.scss';
 import { StoreContext } from '../../contexts/StoreContext';
 import { CartItem } from '../../types/CartItem';
 import { CartItemCard } from '../../components/CartItemCard';
+import { NoResults } from '../../components/NoResults';
+import { NoResultsCaseName } from '../../types/NoResultsCase';
 
 export const CartPage = () => {
   const { cart, cartItemsNumber: totalItems } = useContext(StoreContext);
@@ -22,8 +24,8 @@ export const CartPage = () => {
 
       <h1 className="cart-page__title">cart</h1>
 
-      <section className="cart-page__main">
-        {cartItems.length ? (
+      {cartItems.length ? (
+        <section className="cart-page__main">
           <div className="cart-page__items">
             {cartItems.map(cartItem => {
               return (
@@ -34,33 +36,29 @@ export const CartPage = () => {
               );
             })}
           </div>
-        ) : (
-          <div className="cart-page__empty-cart">
-            <img
-              src="./img/EmptyCart.png"
-              alt=""
-              className="cart-page__empty-cart-image"
-            />
+
+          <div className="cart-page__summary">
+            <h1 className="cart-page__total-price">
+              {`$${totalPrice}`}
+            </h1>
+
+            <p className="cart-page__total-items">
+              {`Total for ${totalItems} item${totalItems !== 1 ? 's' : ''}`}
+            </p>
+
+            <button
+              type="button"
+              className="cart-page__checkout-button"
+            >
+              Checkout
+            </button>
           </div>
-        )}
-
-        <div className="cart-page__summary">
-          <h1 className="cart-page__total-price">
-            {`$${totalPrice}`}
-          </h1>
-
-          <p className="cart-page__total-items">
-            {`Total for ${totalItems} item${totalItems !== 1 ? 's' : ''}`}
-          </p>
-
-          <button
-            type="button"
-            className="cart-page__checkout-button"
-          >
-            Checkout
-          </button>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <NoResults
+          caseName={NoResultsCaseName.EmptyCart}
+        />
+      )}
     </div>
   );
 };
