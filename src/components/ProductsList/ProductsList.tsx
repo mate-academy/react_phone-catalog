@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -9,6 +9,8 @@ import { Selector } from '../Selector/Selector';
 import { Pagination } from '../Pagination/Pagination';
 import { getSearchWith } from '../../utils/getSearchWith';
 import { Product } from '../../types/Product';
+import { QueryContext } from '../../context/QueryContext';
+import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
 
 const sortSortBy = ['Newest', 'Alphabetically', 'Cheapest'];
 const sortingValues = ['age', 'name', 'price'];
@@ -28,6 +30,7 @@ type SearchParams = {
 
 export const ProductsList: React.FC<Props> = ({ products, title }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { appliedQuery } = useContext(QueryContext);
 
   const sort = searchParams.get('sort') || 'age';
   const itemsPerPage = searchParams.get('perPage') || '8';
@@ -45,6 +48,8 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
   const [currentPage, setCurrentPage] = useState(page);
 
   const sortedProducts = sortingProducts(products, sortBy);
+
+  const filteredProducts = sortedProducts.filter(product => product.name.toLowerCase().includes(appliedQuery.toLowerCase()));
 
   const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedSort = event.target.value as SortType;
@@ -79,7 +84,7 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
     ? sortedProducts.length
     : startItem + +itemsOnPage;
 
-  const arrOfSortedItems = sortedProducts.slice(startItem, +endItem);
+  const arrOfItems = filteredProducts.slice(startItem, +endItem);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -121,18 +126,23 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
           </div>
 
           <div className="productsList__cards">
-            {arrOfSortedItems.map(phone => (
+            {arrOfItems.map(phone => (
               <div className="productsList__card" key={phone.id}>
                 <ProductCard product={phone} />
               </div>
             ))}
           </div>
-          <Pagination
-            total={sortedProducts.length}
-            perPage={itemsOnPage}
-            currentPage={currentPage}
-            onPageChange={handleCurrentPage}
-          />
+          {!arrOfItems.length ? (
+            <NoSearchResults />
+          ) : (
+            <Pagination
+              total={filteredProducts.length}
+              perPage={itemsOnPage}
+              currentPage={currentPage}
+              onPageChange={handleCurrentPage}
+            />
+          )}
+
         </div>
       )}
     </>

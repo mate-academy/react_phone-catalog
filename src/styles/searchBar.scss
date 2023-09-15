@@ -41,6 +41,18 @@
     font-weight: 600;
     line-height: normal;
     outline: none;
+
+    &::after {
+      content: "";
+      display: none;
+      appearance: none;
+    }
+  }
+
+  [type="search"]::-webkit-search-cancel-button,
+  [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   &__icon {
@@ -48,5 +60,12 @@
     width: 16px;
     height: 16px;
     background-image: url("../assets/search.svg");
+
+    &--active {
+      background-image: url("../assets/close.svg");
+      &:hover {
+        background-image: url("../assets/close_black.svg");
+      }
+    }
   }
 }
