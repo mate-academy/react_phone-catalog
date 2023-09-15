@@ -13,6 +13,8 @@ export const SearchForm = () => {
   const { pathname } = useLocation();
   const searchCategory = pathname.slice(1);
 
+  applyQuery(query);
+
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams(
       getSearchWith(searchParams, { query: event.target.value || null }),
@@ -25,6 +27,7 @@ export const SearchForm = () => {
 
     params.delete('query');
     setSearchParams(params.toString());
+    applyQuery('');
   };
 
   return (

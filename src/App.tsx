@@ -9,6 +9,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
+import { NotFoundPage } from './pages/NotGoundPage';
 
 const App = () => (
   <div className="App">
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="cart" element={<CartPage />} />
         <Route path="favourites" element={<FavoritesPage />} />
 
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </main>
 

@@ -79,6 +79,11 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
     setSearchWith({ page: currPage.toString() || undefined });
   };
 
+  useEffect(() => {
+    setCurrentPage(1);
+    setSearchWith({ page: '1' });
+  }, [appliedQuery]);
+
   const startItem = ((currentPage - 1) * +itemsOnPage);
   const endItem = (currentPage * +itemsOnPage) > sortedProducts.length
     ? sortedProducts.length
@@ -132,15 +137,16 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
               </div>
             ))}
           </div>
-          {!arrOfItems.length ? (
-            <NoSearchResults />
-          ) : (
+
+          {arrOfItems.length ? (
             <Pagination
               total={filteredProducts.length}
               perPage={itemsOnPage}
               currentPage={currentPage}
               onPageChange={handleCurrentPage}
             />
+          ) : (
+            <NoSearchResults />
           )}
 
         </div>

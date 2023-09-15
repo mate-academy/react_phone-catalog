@@ -1,7 +1,7 @@
 export const NoSearchResults = () => {
   return (
     <p className="no-search">
-      There are no products matching the query
+      There are no products matching the search query
     </p>
   );
 };
