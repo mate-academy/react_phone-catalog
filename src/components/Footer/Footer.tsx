@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { ButtonToUp } from '../Button/ButtonToUp';
 import { Logo } from '../Logo';
 
@@ -27,6 +28,7 @@ export const Footer = () => (
             >
               <a
                 href={link}
+                target="_blank"
                 className="footer--item-link"
               >
                 {label}
