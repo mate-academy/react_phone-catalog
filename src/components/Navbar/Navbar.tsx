@@ -31,6 +31,9 @@ export const Navbar = () => {
   const isVisibleSearch = pathname === '/phones' || pathname === '/favorites'
     || pathname === '/tablets' || pathname === '/accessories';
 
+  const searchTitle = isVisibleSearch
+    && pathname[1].toUpperCase() + pathname.slice(2);
+
   const applyQuery = useCallback(debounce(setSearchParams, 1000), [pathname]);
 
   useEffect(() => {
@@ -114,7 +117,7 @@ export const Navbar = () => {
         >
           <input
             type="search"
-            placeholder="Search in phones..."
+            placeholder={`Search in ${searchTitle}...`}
             value={debQuery}
             ref={focusSearch}
             onChange={handleInput}

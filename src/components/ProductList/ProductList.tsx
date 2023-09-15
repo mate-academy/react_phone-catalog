@@ -63,116 +63,118 @@ export const ProductList: React.FC<Props> = ({
 
   return (
     <>
-      <div className="selects-container">
-        <div className="select">
-          <p className="select__paragraph">Sort by</p>
+      {visiblePhones.length > 0 && (
+        <div className="selects-container">
+          <div className="select">
+            <p className="select__paragraph">Sort by</p>
 
-          <div className="dropdown">
-            <button
-              type="button"
-              className="dropdown__btn"
-              onBlur={(event) => handleOnBlur(event)}
-              onClick={() => setIsOpen(current => (
-                current === 'sort' ? false : 'sort'
-              ))}
-            >
-              <span>
-                {currentSort}
-              </span>
+            <div className="dropdown">
+              <button
+                type="button"
+                className="dropdown__btn"
+                onBlur={(event) => handleOnBlur(event)}
+                onClick={() => setIsOpen(current => (
+                  current === 'sort' ? false : 'sort'
+                ))}
+              >
+                <span>
+                  {currentSort}
+                </span>
 
-              <span>
-                <i
-                  className={classNames('dropdown__arrow dropdown__arrow--up',
-                    { 'dropdown__arrow--down': isOpen === 'sort' })}
-                />
-              </span>
-            </button>
-            <div
-              className={classNames(
+                <span>
+                  <i
+                    className={classNames('dropdown__arrow dropdown__arrow--up',
+                      { 'dropdown__arrow--down': isOpen === 'sort' })}
+                  />
+                </span>
+              </button>
+              <div
+                className={classNames(
+                  'dropdown__list',
+                  { 'dropdown__list--is-active': isOpen === 'sort' },
+                )}
+              >
+                {Object.entries(sortOptions).map(([key, title]) => (
+                  <div
+                    className="dropdown__item"
+                    key={title}
+                  >
+                    <Link
+                      to={{ search: handleSelect('sort', key).toString() }}
+                      className={classNames('dropdown__link',
+                        { 'dropdown__link--is-active': isOpen === 'sort' })}
+                      onClick={() => {
+                        setIsOpen(false);
+                        dispatch(newSort(key));
+                      }}
+                    >
+                      {title}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="select">
+            <p className="select__paragraph">
+              Items on page
+            </p>
+
+            <div className="dropdown">
+              <button
+                type="button"
+                className="dropdown__btn"
+                onBlur={(event) => handleOnBlur(event)}
+                onClick={() => setIsOpen((current) => (
+                  current === 'items' ? false : 'items'
+                ))}
+              >
+                <span>
+                  {perPage || 'all'}
+                </span>
+
+                <span>
+                  <i
+                    className={classNames(
+                      'dropdown__arrow dropdown__arrow--up',
+                      {
+                        'dropdown__arrow--down': isOpen === 'items',
+                      },
+                    )}
+                  />
+                </span>
+              </button>
+
+              <div className={classNames(
                 'dropdown__list',
-                { 'dropdown__list--is-active': isOpen === 'sort' },
+                { 'dropdown__list--is-active': isOpen === 'items' },
               )}
-            >
-              {Object.entries(sortOptions).map(([key, title]) => (
-                <div
-                  className="dropdown__item"
-                  key={title}
-                >
-                  <Link
-                    to={{ search: handleSelect('sort', key).toString() }}
-                    className={classNames('dropdown__link',
-                      { 'dropdown__link--is-active': isOpen === 'sort' })}
-                    onClick={() => {
-                      setIsOpen(false);
-                      dispatch(newSort(key));
-                    }}
+              >
+                {Object.entries(perPageOptions).map(([key, title]) => (
+                  <div
+                    className="dropdown__item"
+                    key={title}
                   >
-                    {title}
-                  </Link>
-                </div>
-              ))}
+                    <Link
+                      to={{ search: handleSelect('perPage', title).toString() }}
+                      className={classNames('dropdown__link', {
+                        'dropdown__link--is-active': isOpen === 'items',
+                      })}
+                      onClick={() => {
+                        setIsOpen(false);
+                        dispatch(newPerPage(title));
+                      }}
+                    >
+                      {key}
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-
-        <div className="select">
-          <p className="select__paragraph">
-            Items on page
-          </p>
-
-          <div className="dropdown">
-            <button
-              type="button"
-              className="dropdown__btn"
-              onBlur={(event) => handleOnBlur(event)}
-              onClick={() => setIsOpen((current) => (
-                current === 'items' ? false : 'items'
-              ))}
-            >
-              <span>
-                {perPage || 'all'}
-              </span>
-
-              <span>
-                <i
-                  className={classNames(
-                    'dropdown__arrow dropdown__arrow--up',
-                    {
-                      'dropdown__arrow--down': isOpen === 'items',
-                    },
-                  )}
-                />
-              </span>
-            </button>
-
-            <div className={classNames(
-              'dropdown__list',
-              { 'dropdown__list--is-active': isOpen === 'items' },
-            )}
-            >
-              {Object.entries(perPageOptions).map(([key, title]) => (
-                <div
-                  className="dropdown__item"
-                  key={title}
-                >
-                  <Link
-                    to={{ search: handleSelect('perPage', title).toString() }}
-                    className={classNames('dropdown__link', {
-                      'dropdown__link--is-active': isOpen === 'items',
-                    })}
-                    onClick={() => {
-                      setIsOpen(false);
-                      dispatch(newPerPage(title));
-                    }}
-                  >
-                    {key}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      )}
 
       <div className="cataloge" data-cy="productList">
         {isLoading && !isError && <Loader />}

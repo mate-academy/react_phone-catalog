@@ -65,10 +65,10 @@ export const CartCard = () => {
                   aria-label="minus"
                   className={classNames(
                     'added-card__btn added-card__btn--minus',
-                    { 'added-card__btn--disabled': product.qnty < 1 },
+                    { 'added-card__btn--disabled': product.qnty === 1 },
                   )}
                   onClick={() => dispatch(action.decrement(product.id))}
-                  disabled={product.qnty < 1}
+                  disabled={product.qnty === 1}
                 />
 
                 <p className="added-card__num">
