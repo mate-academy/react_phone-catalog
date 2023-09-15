@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { Button } from '../../bits';
 import { BackButton, Wrapper } from '../../components';
-import { useProducts } from '../../context';
 import { ButtonType } from '../../types';
 import './Cart.scss';
 import { CartItem } from './components';
+import { useCart } from '../../context/cartContext';
 
 export const Cart = () => {
-  const { cart } = useProducts();
-  const initialTotalPrice = cart.reduce((prev, next) => prev + next.price, 0);
-  const [totalPrice, setTotalPrice] = useState(initialTotalPrice);
+  const { cart, totalPrice, totalQuantity } = useCart();
   const [message, setMessage] = useState(false);
 
   return (
@@ -33,8 +31,6 @@ export const Cart = () => {
                       <CartItem
                         key={item.id}
                         product={item}
-                        totalPrice={totalPrice}
-                        setTotalPrice={setTotalPrice}
                       />
                     ))}
                   </div>
@@ -50,7 +46,7 @@ export const Cart = () => {
                     {`$${totalPrice}`}
                   </p>
 
-                  <p className="cart__quantity">{`Total for ${cart.length} items`}</p>
+                  <p className="cart__quantity">{`Total for ${totalQuantity} items`}</p>
 
                   <Button
                     size={ButtonType.checkout}

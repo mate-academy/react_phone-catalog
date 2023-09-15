@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductDetailsPage.scss';
@@ -13,6 +14,7 @@ import { getProductById } from '../../api/products';
 import { ButtonType, Phone } from '../../types';
 import { Button, Like } from '../../bits';
 import { useProducts } from '../../context';
+import { useCart } from '../../context/cartContext';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -20,9 +22,8 @@ export const ProductDetailsPage = () => {
     products,
     setFavourites,
     favourites,
-    cart,
-    setToCart,
   } = useProducts();
+  const { cart, addToCart } = useCart();
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +32,7 @@ export const ProductDetailsPage = () => {
       setIsLoading(true);
 
       getProductById(productId)
-        .then(setPhone)
+        .then((setPhone))
         .finally(() => setIsLoading(false));
     }
   }, [productId]);
@@ -56,16 +57,36 @@ export const ProductDetailsPage = () => {
 
   const isProductInCart = cart.some(item => item.itemId === phone?.id);
 
-  const addToCart = () => {
-    if (isProductInCart) {
-      const deleteItems = cart.filter(item => item.itemId !== phone?.id);
+  const addItemToCart = () => {
+    const product = products.find(i => i.itemId === phone?.id);
 
-      setToCart(deleteItems);
-    } else {
-      const item = products.filter(i => i.itemId === phone?.id);
-
-      setToCart([...cart, ...item]);
+    if (!product) {
+      return;
     }
+
+    const productIndexInCart = cart
+      .findIndex(cartProduct => cartProduct.id === product.id);
+    const productExistInCart = productIndexInCart === -1;
+
+    if (!productExistInCart) {
+      const newItem = {
+        ...product,
+        cartQuantity: 1,
+      };
+
+      addToCart([...cart, newItem]);
+
+      return null;
+    }
+
+    const newCart = [...cart];
+
+    newCart[productIndexInCart] = {
+      ...cart[productIndexInCart],
+      cartQuantity: cart[productIndexInCart].cartQuantity + 1,
+    };
+
+    return null;
   };
 
   return (
@@ -118,7 +139,7 @@ export const ProductDetailsPage = () => {
                       <Button
                         size={ButtonType.large}
                         id={phone.id}
-                        handler={addToCart}
+                        handler={addItemToCart}
                         disabled={isProductInCart}
                       />
 

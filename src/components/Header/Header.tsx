@@ -1,14 +1,15 @@
 import { useProducts } from '../../context';
+import { useCart } from '../../context/cartContext';
 import { NavIcon } from '../NavIcon';
 import { Navigation } from '../Navigation';
 import { Search } from '../Search';
 import './Header.scss';
 
 export const Header = () => {
-  const { favourites, cart } = useProducts();
+  const { favourites } = useProducts();
+  const { totalQuantity } = useCart();
 
   const favCount = favourites.length;
-  const cartCount = cart.length;
 
   return (
     <header className="header">
@@ -29,7 +30,7 @@ export const Header = () => {
             path="cart"
             alt="cart-icon"
             src="img/icons/cart.svg"
-            count={cartCount}
+            count={totalQuantity}
           />
         </div>
       </div>

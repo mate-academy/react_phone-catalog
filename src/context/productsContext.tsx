@@ -13,8 +13,6 @@ type ProductContext = {
   products: Product[],
   favourites: Product [],
   setFavourites: (product: Product[]) => void,
-  cart: Product[],
-  setToCart: (product: Product[]) => void,
   filteredProducts: Product[],
   sortBy: string,
   setSortBy: (type: string) => void,
@@ -34,7 +32,6 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [favourites, setFavourites]
   = useLocalStorage<Product[]>('favourites', []);
-  const [cart, setToCart] = useLocalStorage<Product[]>('cart', []);
   const [sortBy, setSortBy] = useState<string>(SortByType.all);
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -82,8 +79,6 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     favourites: filteredFavouritesByQuery,
     setFavourites,
     setProducts,
-    cart,
-    setToCart,
     setSortBy,
     sortBy,
     query,

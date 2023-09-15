@@ -1,48 +1,59 @@
-import { useState } from 'react';
 import { IconButton } from '../../../../bits';
-import { IconButtonType, Product } from '../../../../types';
+import { IconButtonType } from '../../../../types';
 import './AddItems.scss';
+import { CartProduct } from '../../../../types/CartProduct';
+import { useCart } from '../../../../context/cartContext';
 
 type Props = {
-  totalPrice: number,
-  setTotalPrice: (price: number) => void,
-  product: Product,
+  product: CartProduct,
 };
 
 export const AddItems: React.FC<Props> = ({
-  totalPrice,
-  setTotalPrice,
   product,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const { cart, addToCart } = useCart();
 
-  const incQuantity = () => {
-    const newPrice = totalPrice + product.price;
+  const incrementQuantity = () => {
+    const indexOfProductInCart = cart
+      .findIndex(item => item.itemId === product.itemId);
 
-    setTotalPrice(newPrice);
-    setQuantity(prev => prev + 1);
+    if (indexOfProductInCart !== -1) {
+      const updatedCart = [...cart];
+
+      updatedCart[indexOfProductInCart].cartQuantity += 1;
+      addToCart(updatedCart);
+    }
   };
 
-  const decQuantity = () => {
-    const newPrice = totalPrice - product.price;
+  const decrementQuantity = () => {
+    const indexOfProductInCart = cart
+      .findIndex(item => item.itemId === product.itemId);
 
-    setTotalPrice(newPrice);
-    setQuantity(prev => prev - 1);
+    if (indexOfProductInCart
+      !== -1 && cart[indexOfProductInCart].cartQuantity > 1) {
+      const updatedCart = [...cart];
+
+      updatedCart[indexOfProductInCart].cartQuantity -= 1;
+
+      addToCart(updatedCart);
+    }
   };
 
   return (
     <div className="add-items">
       <IconButton
         type={IconButtonType.minus}
-        disabled={quantity < 2}
-        handler={decQuantity}
+        disabled={product.cartQuantity < 2}
+        handler={decrementQuantity}
       />
 
-      <p className="add-items__quantity">{quantity}</p>
+      <p className="add-items__quantity">
+        {product.cartQuantity}
+      </p>
 
       <IconButton
         type={IconButtonType.plus}
-        handler={incQuantity}
+        handler={incrementQuantity}
       />
     </div>
   );

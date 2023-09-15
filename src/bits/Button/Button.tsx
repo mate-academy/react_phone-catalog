@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import './Button.scss';
 import { ButtonType } from '../../types/enums/ButtonType';
-import { useProducts } from '../../context';
+import { useCart } from '../../context/cartContext';
 
 type Props = {
   size: ButtonType,
@@ -17,7 +17,7 @@ export const Button: React.FC<Props> = ({
   id,
   disabled,
 }) => {
-  const { cart } = useProducts();
+  const { cart } = useCart();
 
   const isInCart = cart.some(item => item.itemId === id);
 

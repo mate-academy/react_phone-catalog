@@ -1,4 +1,4 @@
-import { BreadCrumbs, Wrapper } from '../../components';
+import { BreadCrumbs, Sorry, Wrapper } from '../../components';
 import './TabletsPage.scss';
 
 export const TabletsPage = () => {
@@ -8,6 +8,8 @@ export const TabletsPage = () => {
         <div className="tablets__path-container">
           <BreadCrumbs />
         </div>
+
+        <Sorry type="tablets" />
       </Wrapper>
     </div>
   );

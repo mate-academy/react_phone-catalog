@@ -4,6 +4,7 @@ import { ButtonType, Product } from '../../types';
 import './ProductCard.scss';
 import { useProducts } from '../../context';
 import { Like } from '../../bits/Like';
+import { useCart } from '../../context/cartContext';
 
 type Props = {
   product: Product,
@@ -13,9 +14,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     favourites,
     setFavourites,
-    setToCart,
-    cart,
   } = useProducts();
+
+  const { cart, addToCart } = useCart();
 
   const {
     name,
@@ -45,14 +46,39 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   const isProductInCart = cart.some(item => item.itemId === itemId);
 
-  const addToCart = () => {
-    if (isProductInCart) {
-      const deleteItems = cart.filter(item => item.itemId !== itemId);
+  // const addItemToCart = () => {
+  //   if (isProductInCart) {
+  //     const deleteItems = cart.filter(item => item.itemId !== itemId);
 
-      setToCart(deleteItems);
-    } else {
-      setToCart([...cart, product]);
+  //     addToCart(deleteItems);
+  //   } else {
+  //     addToCart([...cart, product]);
+  //   }
+  // };
+
+  const addItemToCart = () => {
+    if (!isProductInCart) {
+      const newItem = {
+        ...product,
+        cartQuantity: 1,
+      };
+
+      addToCart([...cart, newItem]);
+
+      return null;
     }
+
+    const productIndexInCart = cart
+      .findIndex(cartProduct => cartProduct.id === product.id);
+
+    const newCart = [...cart];
+
+    newCart[productIndexInCart] = {
+      ...cart[productIndexInCart],
+      cartQuantity: cart[productIndexInCart].cartQuantity + 1,
+    };
+
+    return null;
   };
 
   return (
@@ -89,7 +115,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className="product-card__buttons-block">
         <Button
           size={ButtonType.small}
-          handler={addToCart}
+          handler={addItemToCart}
           id={itemId}
           disabled={isProductInCart}
         />

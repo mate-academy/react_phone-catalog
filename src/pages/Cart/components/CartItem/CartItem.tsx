@@ -1,30 +1,23 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
-import { useProducts } from '../../../../context';
-import { Product } from '../../../../types';
 import { AddItems } from '../AddItems';
 import './CartItem.scss';
+import { useCart } from '../../../../context/cartContext';
+import { CartProduct } from '../../../../types/CartProduct';
 
 type Props = {
-  product: Product,
-  totalPrice: number,
-  setTotalPrice: (price: number) => void,
+  product: CartProduct,
 };
 
 export const CartItem: React.FC<Props> = ({
   product,
-  totalPrice,
-  setTotalPrice,
 }) => {
-  const { cart, setToCart } = useProducts();
+  const { cart, addToCart } = useCart();
 
   const handleDeleteItem = () => {
     const newItems = cart.filter(item => item.itemId !== product.itemId);
 
-    const newTotalPrice = totalPrice - product.price;
-
-    setTotalPrice(newTotalPrice);
-    setToCart(newItems);
+    addToCart(newItems);
   };
 
   return (
@@ -40,7 +33,7 @@ export const CartItem: React.FC<Props> = ({
 
           <img
             alt={product?.name}
-            src={`./_new/${product?.image}`}
+            src={product?.image}
             className="cart-item__img"
           />
 
@@ -57,8 +50,6 @@ export const CartItem: React.FC<Props> = ({
 
           <div className="cart-item__add-items-container">
             <AddItems
-              totalPrice={totalPrice}
-              setTotalPrice={setTotalPrice}
               product={product}
             />
           </div>
