@@ -1,0 +1,26 @@
+@import "../../styles/global-imports";
+
+.page-not-found {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  &--title {
+    font-size: 100px;
+    line-height: 94px;
+  }
+
+  &--subtitle {
+    margin-top: 40px;
+    color: $c-secondary;
+  }
+
+  &--link {
+    color: $c-secondary;
+
+    @include hover(color, $c-primary);
+  }
+}

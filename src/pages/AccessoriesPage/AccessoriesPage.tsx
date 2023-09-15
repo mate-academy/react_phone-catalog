@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../types/Product';
 import { getAllProducts } from '../../helpers/fetchProducts';
 import { ProductType } from '../../types/ProductType';
-import { ProductPage } from '../ProductPage';
+import { ProductsPage } from '../ProductsPage';
 
 import './AccessoriesPage.scss';
 
@@ -35,7 +35,7 @@ export const AccessoriesPage = () => {
   return (
     <section className="Accessories">
       <div className="container">
-        <ProductPage
+        <ProductsPage
           title="Accessories"
           isError={isError}
           isLoading={isLoading}

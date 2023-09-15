@@ -4,7 +4,7 @@ import { Loader } from '../../components/Loader';
 import { NoResult } from '../../components/NoResults';
 import { List } from '../../components/Product/List';
 
-import './ProductPage.scss';
+import './ProductsPage.scss';
 
 type Props = {
   isLoading: boolean,
@@ -14,19 +14,19 @@ type Props = {
   title: string,
 };
 
-export const ProductPage: React.FC<Props> = ({
+export const ProductsPage: React.FC<Props> = ({
   isLoading,
   isError,
   products,
   category,
   title,
 }) => (
-  <section className="product-page">
-    <nav className="product-page__nav">
+  <section className="products-page">
+    <nav className="products-page__nav">
       <HistoryLocation />
     </nav>
 
-    <div className="product-page__content">
+    <div className="products-page__content">
       {isLoading && !isError ? (
         <Loader />
       ) : (

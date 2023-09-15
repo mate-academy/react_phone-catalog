@@ -47,7 +47,7 @@ export const CartInfo = () => {
           </button>
 
           {isClicked && (
-            <h2>
+            <h2 className="cart-info--checkout-text">
               Sorry, this feature ain`t inplement yet
             </h2>
           )}

@@ -14,8 +14,8 @@ export const NavigationLink: React.FC<Props> = ({
 }) => (
   <NavLink
     className={({ isActive }) => classNames(
-      'NavigationLink',
-      { [`NavigationLink--${type}`]: type },
+      'navigation-link',
+      { [`navigation-link--${type}`]: type },
       { 'is-active': isActive },
     )}
     {...props}

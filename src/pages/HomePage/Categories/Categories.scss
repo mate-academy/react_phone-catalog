@@ -12,6 +12,10 @@
     gap: 16px;
   }
 
+  &__category {
+    @include hover(transform, scale(104%));
+  }
+
   &__description {
     margin-top: 16px;
 

@@ -12,6 +12,8 @@
   transform: all $effect-duration;
   border: 1px solid $c-elements;
 
+  @include hover(transform, scale(104%));
+
   &__link {
     display: flex;
     flex-direction: column;

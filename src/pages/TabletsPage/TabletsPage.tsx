@@ -4,7 +4,7 @@ import { getAllProducts } from '../../helpers/fetchProducts';
 import { ProductType } from '../../types/ProductType';
 
 import './TabletsPage.scss';
-import { ProductPage } from '../ProductPage';
+import { ProductsPage } from '../ProductsPage';
 
 export const TabletPage = () => {
   const [productsTablet, setProductsTablet] = useState<Product[]>([]);
@@ -35,7 +35,7 @@ export const TabletPage = () => {
   return (
     <section className="tablets">
       <div className="container">
-        <ProductPage
+        <ProductsPage
           title="Tablets"
           isError={isError}
           isLoading={isLoading}

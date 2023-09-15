@@ -37,7 +37,7 @@
   .swiper {
     &-button-prev,
     &-button-next {
-      top: 26px !important;
+      top: 4px !important;
       border: 1px solid $c-icons;
       padding: 14% 4px;
       margin: 0 1%;
@@ -52,7 +52,7 @@
       bottom: 10% !important;
 
       @include onMediumScreen {
-        bottom: 26% !important;
+        bottom: 20% !important;
       }
 
       &-bullet {

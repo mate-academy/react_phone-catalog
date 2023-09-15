@@ -1,7 +1,7 @@
 @import "../../../styles/global-imports";
 
 .cart-info {
-  max-height: 206px;
+  max-height: 142px;
   padding: 24px;
 
   text-align: center;
@@ -25,5 +25,15 @@
 
     background-color: $c-primary;
     color: $c-white;
+
+    cursor: pointer;
+  }
+
+  &--checkout-text {
+    padding: 24px;
+
+    margin-top: 40px;
+
+    border: 1px solid red;
   }
 }

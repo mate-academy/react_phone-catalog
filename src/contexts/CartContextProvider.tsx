@@ -10,14 +10,14 @@ type CartContextType = {
   cart: CartItem[],
   addToCart: (newProduct: CartItem) => void,
   removeFromCart: (productId: string) => void,
-  quantityCart: (productId: string, action: Action) => void,
+  cartAmount: (productId: string, action: Action) => void,
 };
 
 export const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
-  quantityCart: () => {},
+  cartAmount: () => {},
 });
 
 export enum Action {
@@ -35,7 +35,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
     ]);
   };
 
-  const quantityCart = (productId: string, action: Action) => {
+  const cartAmount = (productId: string, action: Action) => {
     const newCart = cart.map(item => {
       if (productId === item.id) {
         switch (action) {
@@ -67,7 +67,7 @@ export const CartContextProvider: React.FC<Props> = ({ children }) => {
       cart,
       addToCart,
       removeFromCart,
-      quantityCart,
+      cartAmount,
     }}
     >
       {children}

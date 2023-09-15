@@ -22,10 +22,11 @@
   }
 
   &--item {
-
     &-link {
       @extend %uppercase;
       color: $c-secondary;
+
+      @include hover(color, $c-primary);
     }
   }
 }

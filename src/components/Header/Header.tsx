@@ -1,4 +1,4 @@
-import { Logo } from './Logo';
+import { Logo } from '../Logo';
 import { Navigation } from './Navigation';
 import { Search } from './Search/Search';
 

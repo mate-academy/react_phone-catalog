@@ -4,12 +4,13 @@ import './App.scss';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { Footer } from './components/Footer';
-import { PhonePage } from './pages/PhonePage';
+import { PhonesPage } from './pages/PhonesPage';
 import { TabletPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 const App = () => (
   <div className="app">
@@ -22,7 +23,7 @@ const App = () => (
           <Route path="home" element={<Navigate to="/" replace />} />
 
           <Route path="phones">
-            <Route index element={<PhonePage />} />
+            <Route index element={<PhonesPage />} />
 
             <Route
               path=":productId"
@@ -56,6 +57,11 @@ const App = () => (
           <Route
             path="cart"
             element={<CartPage />}
+          />
+
+          <Route
+            path="*"
+            element={<PageNotFound />}
           />
         </Routes>
       </div>

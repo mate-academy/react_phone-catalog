@@ -27,7 +27,7 @@ export const CartItem: React.FC<Props> = ({
 }) => {
   const {
     removeFromCart,
-    quantityCart,
+    cartAmount,
   } = useContext(CartContext);
 
   const handleRemoveItem = (productId: string) => {
@@ -35,11 +35,11 @@ export const CartItem: React.FC<Props> = ({
   };
 
   const handleQuantityPlus = (productId: string) => {
-    quantityCart(productId, Action.Increase);
+    cartAmount(productId, Action.Increase);
   };
 
   const handleQuantityMinus = (productId: string) => {
-    quantityCart(productId, Action.Decrease);
+    cartAmount(productId, Action.Decrease);
   };
 
   return (

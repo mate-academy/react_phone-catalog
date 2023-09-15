@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../types/Product';
 import { getAllProducts } from '../../helpers/fetchProducts';
 import { ProductType } from '../../types/ProductType';
-import { ProductPage } from '../ProductPage';
+import { ProductsPage } from '../ProductsPage';
 
-import './PhonePage.scss';
+import './PhonesPage.scss';
 
-export const PhonePage = () => {
+export const PhonesPage = () => {
   const [productsPhone, setProductsPhone] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -35,7 +35,7 @@ export const PhonePage = () => {
   return (
     <section className="phones">
       <div className="container">
-        <ProductPage
+        <ProductsPage
           title="Mobile phones"
           isError={isError}
           isLoading={isLoading}

@@ -20,6 +20,7 @@ import { Galery } from '../../components/Product/Galery';
 import { ColorChoose } from '../../components/Product/ColorChoose';
 import { Capacity } from '../../components/Product/Capacity';
 import { Description } from '../../components/Product/Description/Description';
+import { PageNotFound } from '../PageNotFound/PageNotFound';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -102,7 +103,7 @@ export const ProductDetailsPage = () => {
       <HistoryLocation />
 
       {!currentProduct && (
-        <h1>Page not found</h1>
+        <PageNotFound />
       )}
 
       {isLoading && !isError && <Loader />}
