@@ -1,0 +1,15 @@
+@import "../../styles/index.scss";
+
+.page-notFound {
+  &__back {
+    margin-bottom: 40px;
+  }
+
+  &__message {
+    @extend %h1;
+  }
+
+  &__link {
+    color: $c-secondary;
+  }
+}

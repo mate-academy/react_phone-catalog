@@ -1,0 +1,35 @@
+@import "../../styles/index.scss";
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 22.7vw;
+  box-sizing: border-box;
+  padding-right: 24px;
+  box-shadow: -1px 0 0 0 $c-elements;
+
+  &__field {
+    border: none;
+    padding: 21px 24px;
+    @extend %buttons;
+    box-sizing: border-box;
+  
+    &:focus,
+    &:active {
+      border: none;
+      outline: none;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    background-color: $c-white;
+  }
+}

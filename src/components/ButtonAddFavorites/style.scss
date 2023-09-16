@@ -1,0 +1,15 @@
+@import "../../styles/index.scss";
+
+.button-favoritesAdd {
+  background-color: $c-white;
+  border: 1px solid $c-icons;
+  @include hover(border-color, $c-primary);
+
+  &:active {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  &--added {
+    border-color: $c-elements;
+  }
+}

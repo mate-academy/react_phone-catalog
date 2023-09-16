@@ -1,0 +1,26 @@
+@import "../../styles/index.scss";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &__text {
+    @extend %smallText;
+  }
+
+  &:last-of-type .crumb__text {
+    color: $c-secondary;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

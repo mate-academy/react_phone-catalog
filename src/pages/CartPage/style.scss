@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+
+.cart-page {
+  display: grid;
+  grid-template-columns: 66.2% 1fr;
+  column-gap: 16px;
+
+  &__back {
+    grid-column: 1;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    grid-column: 1;
+    margin-bottom: 24px;
+    @extend %h1;
+  }
+
+  &__products {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__checkout {
+    grid-column: 2;
+  }
+}

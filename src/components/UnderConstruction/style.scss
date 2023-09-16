@@ -1,0 +1,11 @@
+@import "../../styles/index.scss";
+
+.construction {
+  &__title {
+    @extend %h1;
+  }
+
+  &__message {
+    @extend %bodyText;
+  }
+}

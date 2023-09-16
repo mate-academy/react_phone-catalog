@@ -1,0 +1,62 @@
+@import "../../styles/index.scss";
+
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 176px;
+
+  &__description {
+    @extend %smallText;
+    color: $c-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend %buttons;
+    background-color: transparent;
+    border: 1px solid $c-icons;
+    padding: 10px 12px;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--active {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+  }
+
+  &__options {
+    position: absolute;
+    top: 65px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $c-elements;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__option {
+    @extend %bodyText;
+    color: $c-secondary;
+    text-decoration: none;
+    background-color: $c-white;
+    padding: 5px 12px;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}

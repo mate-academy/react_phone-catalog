@@ -1,0 +1,61 @@
+@import "../../styles/index.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    background-color: $c-white;
+    border: 1px solid $c-icons;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &:active {
+      transform: scale3d(0.9, 0.9, 0.9);
+      opacity: 0.5;
+    }
+
+    &:disabled {
+      border: 1px solid $c-primary;
+      opacity: 0.5;
+      transform: none;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    @extend %bodyText;
+    color: #000;
+    background-color: $c-white;
+    border: 1px solid $c-elements;
+    list-style: none;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &--active {
+      background-color: $c-primary;
+      color: $c-white;
+    }
+  }
+}

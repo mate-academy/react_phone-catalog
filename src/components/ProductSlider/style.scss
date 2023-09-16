@@ -1,0 +1,44 @@
+@import "../../styles/index.scss";
+
+.product-slider {
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    background-color: $c-white;
+    border: 1px solid $c-icons;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &:active {
+      transform: scale3d(0.9, 0.9, 0.9);
+      opacity: 0.5;
+    }
+  }
+
+  &__container {
+    display: flex;
+    overflow-x: hidden;
+  }
+}

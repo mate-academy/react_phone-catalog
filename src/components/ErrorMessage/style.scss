@@ -1,0 +1,5 @@
+@import "../../styles/index.scss";
+
+.error-mesage {
+  @extend %bodyText;
+}

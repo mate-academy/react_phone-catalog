@@ -1,0 +1,46 @@
+@import "../../styles/index.scss";
+
+.button {
+  position: relative;
+  display: flex;
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0 0 0 $c-elements;
+
+  &--active {
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: $c-primary;
+    }
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+    margin: auto;
+  }
+
+  &__count {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+    color: $c-white;
+    box-sizing: border-box;
+    background-color: $c-danger;
+    border-radius: 50%;
+    border: 1px solid $c-white;
+  }
+}

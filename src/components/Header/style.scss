@@ -1,0 +1,97 @@
+@import "../../styles/index.scss";
+
+.header {
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 1px 0 0 $c-elements;
+  justify-content: space-between;
+
+  &__logo {
+    margin-left: 24px;
+  }
+
+  &__bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+}
+
+.logo {
+  width: 40px;
+  height: 24px;
+}
+
+.navbar {
+  &-item {
+    position: relative;
+    @extend %uppercase;
+    margin-left: 64px;
+    padding-top: 15px;
+    padding-bottom: 22px;
+    color: $c-secondary;
+    box-sizing: border-box;
+
+    &--active {
+      color: $c-primary;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        height: 2px;
+        width: 100%;
+        background-color: $c-primary;
+      }
+    }
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  box-shadow: -1px 0 0 0 $c-elements;
+
+  &__field {
+    border: none;
+    padding: 21px 24px;
+    @extend %buttons;
+    box-sizing: border-box;
+  
+    &:focus,
+    &:active {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0 0 0 $c-elements;
+  
+  &__img {
+    width: 16px;
+    height: 16px;
+    margin: auto;
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../styles/index.scss";
+
+.favorites-page {
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    @extend %bodyText;
+    color: $c-secondary;
+  }
+
+  &__list {
+    margin-bottom: 80px;
+  }
+}

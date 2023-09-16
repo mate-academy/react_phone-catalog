@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+
+.phones-page {
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__length {
+    @extend %bodyText;
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__selects {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+}
