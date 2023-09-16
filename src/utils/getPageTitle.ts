@@ -13,13 +13,5 @@ export function getPageTitle(productType: ProductType) {
 }
 
 export function getQuantity(productType: ProductType) {
-  switch (productType) {
-    case ProductType.PHONES:
-      return 'phones';
-    case ProductType.TABLET:
-      return 'tablets';
-    case ProductType.ACCESSORY:
-      return 'accessories';
-    default: return '';
-  }
+  return getPageTitle(productType).toLowerCase();
 }

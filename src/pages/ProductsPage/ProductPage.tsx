@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import '../../styles/pages/PhonesPage/PhonesPage.scss';
+import '../../styles/pages/ProductsPage/ProductsPage.scss';
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -57,7 +57,7 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
   const totalPages = Math.ceil(filteredProducts.length / +perPage);
 
   return (
-    <section className="products-page">
+    <main className="products-page">
       <Crumbs />
 
       <h1 className="products-page__title">{getPageTitle(productType)}</h1>
@@ -71,7 +71,7 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
       )}
 
       {!isLoading && visibleProducts.length < 1 && (
-        <h2 className="products-page__sad-message">{`No ${getPageTitle(productType)} found`}</h2>
+        <h1 className="products-page__sad-message">{`No ${getPageTitle(productType)} found`}</h1>
       )}
 
       {!isLoading && visibleProducts.length > 0 && (
@@ -97,6 +97,6 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
           )}
         </>
       )}
-    </section>
+    </main>
   );
 };

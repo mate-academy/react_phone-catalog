@@ -5,9 +5,10 @@ import {
 
 import App from './App';
 import { HomePage } from './pages/HomePage';
-import { ProductPage } from './pages/PhonesPage';
+import { ProductPage } from './pages/ProductsPage';
 import { TestPage } from './pages/TestPage';
 import { ProductType } from './types/product';
+import { FavouritesPage } from './pages/FavouritesPage';
 
 ReactDOM.render(
   <HashRouter>
@@ -29,6 +30,11 @@ ReactDOM.render(
         <Route
           path="accessories"
           element={<ProductPage productType={ProductType.ACCESSORY} />}
+        />
+
+        <Route
+          path="fav"
+          element={<FavouritesPage />}
         />
 
         <Route path="/dev" element={<TestPage />} />

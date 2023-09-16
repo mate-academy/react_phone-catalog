@@ -1,24 +1,11 @@
 @import "../../utils/mixins.scss";
 @import "../../utils/variables.scss";
 
-.products-page {
+.fav-page {
   padding: 24px 0 80px;
   width: fit-content;
+  min-height: calc(100vh - 160px);
   margin: 0 auto;
-
-  &__loader-container {
-    display: flex;
-    justify-content: center;
-    margin: 30vh 0;
-    width: 1136px;
-  }
-
-  &__sad-message {
-    width: 1136px;
-    margin: 160px 0 320px;
-    @include h2TextStyling;
-    text-align: center;
-  }
 
   &__title {
     margin: 40px 0 0;
@@ -31,14 +18,14 @@
     color: #{$secondary-color};
   }
 
-  &__dropdown-container {
-    margin: 40px 0 0;
-    height: 60px;
-    display: flex;
-    gap: 16px;
-  }
-
   &__product-list {
     margin: 24px 0 40px;
+  }
+
+  &__sad-message {
+    width: 1136px;
+    margin: 160px 0 0;
+    @include h1TextStyling;
+    text-align: center;
   }
 }
