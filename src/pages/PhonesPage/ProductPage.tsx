@@ -89,10 +89,6 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
           <div className="products-page__product-list">
             <ProductList
               products={visibleProducts}
-              selected={[]}
-              favourites={[]}
-              onFavouritesClick={() => { }}
-              onSelectedClick={() => { }}
             />
           </div>
 
