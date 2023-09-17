@@ -25,9 +25,8 @@ export const Modal: React.FC<Props> = React.memo(({
       unmountOnExit
     >
       {(state) => (
-        <button
+        <div
           className={`modal modal--${state}`}
-          type="button"
           onClick={() => setActive(false)}
         >
           {withoutBackground ? (
@@ -42,7 +41,7 @@ export const Modal: React.FC<Props> = React.memo(({
               {children}
             </div>
           )}
-        </button>
+        </div>
       )}
     </Transition>
   );

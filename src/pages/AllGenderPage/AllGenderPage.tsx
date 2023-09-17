@@ -12,8 +12,18 @@ import { Good } from '../../types/Good';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Loader } from '../../components/Loader/Loader';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
+import { Modal } from '../../components/Modal/Modal';
+import { FilterItem } from '../../components/FilterItem/FilterItem';
 
 import './AllGenderPage.scss';
+
+const filterItems = [
+  'type',
+  'drop',
+  'sizes',
+  'colors',
+  'year',
+];
 
 export const AllGenderPage: React.FC = React.memo(() => {
   const { t } = useTranslation();
@@ -21,13 +31,16 @@ export const AllGenderPage: React.FC = React.memo(() => {
   const [searchParams] = useSearchParams();
   const currentLanguage = searchParams.get('lang') || 'en';
 
-  const [goods, setGoods] = useState<Good[]>([]);
+  const [totalGoods, setTotalGoods] = useState<Good[]>([]);
+  const [renderedGoods, setRenderedGoods] = useState<Good[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
   const [totalItemsCount, setTotalItemsCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const [isFilterOpened, setIsFilterOpened] = useState(false);
 
   const reload = () => {
     setHasError(false);
@@ -45,9 +58,10 @@ export const AllGenderPage: React.FC = React.memo(() => {
 
     getData<Good[]>('goods')
       .then(response => {
+        setTotalGoods(response);
         setTotalItemsCount(response.length);
 
-        setGoods(prevGoods => [
+        setRenderedGoods(prevGoods => [
           ...prevGoods,
           ...response.slice(
             currentPage * ITEMS_PER_PAGE,
@@ -69,15 +83,31 @@ export const AllGenderPage: React.FC = React.memo(() => {
           />
         )}
 
-        {goods.length > 0 && (
+        <Modal
+          active={isFilterOpened}
+          setActive={setIsFilterOpened}
+        >
+          <ul className="allGender__filter-list">
+            {filterItems.map(item => (
+              <FilterItem
+                key={item}
+                rootClassName="allGender"
+                item={item}
+                goods={totalGoods}
+              />
+            ))}
+          </ul>
+        </Modal>
+
+        {renderedGoods.length > 0 && (
           <section className="allGender__section">
             <VirtuosoGrid
               style={{
                 height: 'min-content',
               }}
-              data={goods}
+              data={renderedGoods}
               useWindowScroll
-              totalCount={goods.length}
+              totalCount={renderedGoods.length}
               overscan={6}
               listClassName="allGender__section-list"
               itemClassName="allGender__section-list-item"
@@ -125,7 +155,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
             <MainButton
               className="allGender__section-button"
               button
-              onClick={() => { }}
+              onClick={() => setIsFilterOpened(true)}
               text={t('filter')}
             />
           </section>

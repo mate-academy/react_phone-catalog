@@ -55,8 +55,9 @@
   "case": "Case",
   "caseDescription": "This urban-style phone case is the perfect combination of functionality and fashion. Its sleek design and signature pattern add a touch of city flair to your device. Whether you're navigating the urban jungle or simply showcasing your style, this case not only protects your phone but also elevates your everyday look with an urban edge. A must-have accessory for the modern city dweller, it merges style and practicality seamlessly.",
   "black": "Black",
-  "kuroso": "Kuroso",
   "silver": "Silver",
+  "kuroso": "Kuroso",
+  "type": "Type",
   "coat": "Coat",
   "tShirt": "T-Shirt",
   "accessories": "Accessories",
@@ -74,5 +75,7 @@
   "sizes": "Sizes",
   "colors": "Colors",
   "sale": "Sale",
-  "filter": "Filter"
+  "filter": "Filter",
+  "drop": "Drop",
+  "year": "Year"
 }

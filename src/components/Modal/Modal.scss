@@ -30,6 +30,8 @@
   }
 
   &__content {
+    max-width: 90%;
+
     transition: transform $animationDuration * 2;
 
     &--entering,
@@ -47,16 +49,12 @@
       background-color: $black-100;
     }
 
-    &--without-background {
-      width: 90%;
+    @include onTablet {
+      max-width: 60%;
+    }
 
-      @include onTablet {
-        width: 60%;
-      }
-
-      @include onDesktop {
-        width: 40%;
-      }
+    @include onDesktop {
+      max-width: 40%;
     }
   }
 }

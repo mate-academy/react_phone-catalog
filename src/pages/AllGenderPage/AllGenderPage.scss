@@ -35,6 +35,91 @@
     }
   }
 
+  &__filter-list {
+    list-style: none;
+  }
+
+  &__filter-list-item {
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+
+  &__filter-list-item-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__filter-list-item-options-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  &__filter-list-item-button {
+    display: block;
+    padding: 10px 14px;
+    border: 2px solid $red-700;
+
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+
+    cursor: pointer;
+    color: inherit;
+    transition: background-color, color $animationDuration;
+
+    &--black,
+    &--silver,
+    &--kuroso {
+      color: transparent;
+      border: 2px solid transparent;
+    }
+
+    &--black {
+      background-color: $black-800;
+    }
+
+    &--silver {
+      background-color: $silver;
+    }
+
+    &--kuroso {
+      background-image: url("https://gosyanich.cloudns.nz:9353/kuroso/images/winter-2022/colors/kuroso-color.webp");
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onDesktop {
+
+        &:hover {
+          background-image: none;
+        }
+      }
+    }
+
+    &--active {
+      color: $black-100;
+      background-color: $red-700;
+
+      background-image: none;
+    }
+
+    @include onDesktop {
+
+      &:hover {
+        color: $black-100;
+        background-color: $red-700;
+
+        background-image: none;
+      }
+    }
+  }
+
   &__section {
     position: relative;
   }

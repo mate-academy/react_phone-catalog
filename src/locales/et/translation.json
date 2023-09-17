@@ -55,8 +55,9 @@
   "case": "Ümbris",
   "caseDescription": "See linnastiilis telefoniümbris on ideaalne kombinatsioon funktsionaalsusest ja moest. Selle särav disain ja unikaalne muster lisavad teie seadmele linna nüansi. Kas te navigeerite linnadžunglis või lihtsalt näitate oma stiili, siis see ümbris mitte ainult ei kaitse teie telefoni, vaid tõstab ka teie igapäevast välimust linnaliku servaga. Kaasaegsele linnainimesele hädavajalik aksessuaar, mis ühendab stiili ja praktilisuse vaevata.",
   "black": "Must",
-  "kuroso": "Kuroso",
   "silver": "Hõbe",
+  "kuroso": "Kuroso",
+  "type": "Tüüp",
   "coat": "Mantel",
   "tShirt": "T-särk",
   "accessories": "Aksessuaarid",
@@ -74,5 +75,7 @@
   "sizes": "Suurused",
   "colors": "Värvid",
   "sale": "Allahindlus",
-  "filter": "Filter"
+  "filter": "Filter",
+  "drop": "Kollektsioon",
+  "year": "Aasta"
 }

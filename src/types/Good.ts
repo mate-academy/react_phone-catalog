@@ -3,6 +3,7 @@ type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'Iphone 14 PRO MAX' | 'Iphone 14 PR
 type Colors = 'black' | 'silver' | 'kuroso';
 
 export type Good = {
+  [index: string]: string | number | any[] | null,
   name: string,
   type: string,
   drop: string,
