@@ -52,24 +52,12 @@ export const Header: React.FC = () => {
               Accessories
             </NavBarItem>
           </li>
-          {/* <li className="nav__item">
-            <a href="aaa" className="nav__link nav__link--is-active">Home</a>
-          </li>
-          <li className="nav__item">
-            <a href="aaa" className="nav__link">Phones</a>
-          </li>
-          <li className="nav__item">
-            <a href="aaa" className="nav__link">Tablets</a>
-          </li>
-          <li className="nav__item">
-            <a href="aaa" className="nav__link">Accessories</a>
-          </li> */}
         </ul>
       </nav>
 
       <div className="header__actions">
-        <NavBarItem to="fav" type="fav">1</NavBarItem>
-        <NavBarItem to="cart" type="cart">2</NavBarItem>
+        <NavBarItem to="favourites" type="fav" />
+        <NavBarItem to="cart" type="cart" />
       </div>
     </header>
   );

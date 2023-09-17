@@ -9,6 +9,7 @@ import { ProductPage } from './pages/ProductsPage';
 import { TestPage } from './pages/TestPage';
 import { ProductType } from './types/product';
 import { FavouritesPage } from './pages/FavouritesPage';
+import { ProductCart } from './pages/ProductCart';
 
 ReactDOM.render(
   <HashRouter>
@@ -33,8 +34,13 @@ ReactDOM.render(
         />
 
         <Route
-          path="fav"
+          path="favourites"
           element={<FavouritesPage />}
+        />
+
+        <Route
+          path="cart"
+          element={<ProductCart />}
         />
 
         <Route path="/dev" element={<TestPage />} />

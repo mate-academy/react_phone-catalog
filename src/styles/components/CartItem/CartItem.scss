@@ -5,9 +5,20 @@
   width: 752px;
   height: 128px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border: 1px solid #{$elements-color};
   padding: 0 24px 0 40px;
+
+  &__content-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__price-buttons-containter {
+    display: flex;
+    align-items: center;
+  }
 
   &__discard-button {
     width: 16px;
@@ -51,7 +62,9 @@
   }
 
   &__total-price {
-    margin: 0 0 0 43px;
+    width: 73px;
+    margin: 0 0 0 23px;
     @include h2TextStyling;
+    text-align: right;
   }
 }

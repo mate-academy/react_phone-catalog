@@ -4,7 +4,7 @@ export enum ProductType {
   ACCESSORY = 'accessory',
 }
 
-export type Product = {
+export interface Product {
   id: string,
   category: ProductType,
   phoneId: string,
@@ -18,4 +18,4 @@ export type Product = {
   ram: string,
   year: number,
   image: string
-};
+}

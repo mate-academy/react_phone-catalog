@@ -11,7 +11,7 @@ type Props = {
   onFavouritesClick: () => void;
 };
 
-const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const ProductCard: React.FC<Props> = ({
   product,
@@ -27,7 +27,7 @@ export const ProductCard: React.FC<Props> = ({
   return (
     <div className="card">
       <img
-        src={`${URL}${image}`}
+        src={`${BASE_URL}${image}`}
         alt="phone img"
         className="card__image"
       />
