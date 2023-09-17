@@ -1,0 +1,124 @@
+@import "../../styles/variables.scss";
+
+.header {
+  margin: 0 auto;
+  padding-left: 24px;
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 64px;
+}
+
+.link {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 700;
+  color: #89939a;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+}
+
+.link:hover {
+  color: #313237;
+}
+
+.is-active {
+  color: $primary;
+  position: relative;
+}
+
+.is-active::after {
+  content: "";
+  height: 3px;
+  border-radius: 8px;
+  display: block;
+  color: $primary;
+  border-color: $primary;
+  position: absolute;
+  bottom: -27px;
+  left: 0;
+  width: 100%;
+  background-color: $primary;
+}
+
+.icons {
+  display: flex;
+}
+
+.navlink {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    border-bottom: 1px solid #000;
+  }
+
+  &:last-child {
+    border-left: none;
+  }
+}
+
+.search {
+  padding: 20px;
+  width: 328px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  border-left: 1px solid $border;
+
+  &:hover {
+    cursor: text;
+  }
+
+  &__text {
+    width: 100%;
+    font-family: $semi-bold;
+    font-size: $body-text;
+    line-height: $body-line-height;
+    color: $primary;
+    outline: none;
+    border: none;
+
+    &:hover {
+      cursor: text;
+    }
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+}
+
+.is-focused {
+  background: $hoverBG;
+}
+
+.closeicon {
+  cursor: pointer;
+}
+
+.buttoncontainer {
+  width: 66px;
+  height: 66px;
+  border-left: 1px solid $border;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

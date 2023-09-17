@@ -116,3 +116,5 @@ to links container.
 ### Other tasks
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+
+- Replace `<your_account>` with your Github username in the [DEMO LINK](https://SamirMamedov1010.github.io/react_phone-catalog/) and add it to the PR description.

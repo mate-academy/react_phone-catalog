@@ -1,0 +1,90 @@
+@import "../../styles/variables.scss";
+
+.phones {
+  margin: 20px auto 80px;
+  width: 1136px;
+  min-height: calc(100vh - 178px);
+
+  &__nav {
+    margin-bottom: 40px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__navtext {
+    color: $secondary;
+    font-family: $semi-bold;
+    font-size: $small-text;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    color: $primary;
+    font-size: $h1;
+    font-family: $bold;
+  }
+
+  &__subtitle {
+    margin-bottom: 40px;
+    color: $secondary;
+    font-family: $regular;
+    font-size: $body-text;
+    line-height: $body-line-height;
+  }
+
+  &__sorters {
+    margin-bottom: 24px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    &__sorter {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__title {
+      color: $secondary;
+      font-family: $semi-bold;
+      font-size: $small-text;
+    }
+  }
+
+  &__products {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 40px;
+  }
+}
+
+.navicon {
+  width: 16;
+  height: 16;
+  align-items: center;
+}
+
+.sorting {
+  width: 176px;
+}
+
+.perpage {
+  width: 128px;
+}
+
+.spincontainer {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

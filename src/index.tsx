@@ -1,8 +1,11 @@
 import ReactDOM from 'react-dom';
-
+import { HashRouter as Router } from 'react-router-dom';
 import App from './App';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
+const Root = () => (
+  <Router>
+    <App />
+  </Router>
 );
+
+ReactDOM.render(<Root />, document.getElementById('root'));

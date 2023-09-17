@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+
+.item {
+  width: 100%;
+  height: 128px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid $elements;
+  padding-left: 24px;
+  padding-right: 40px;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__cuantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 13px;
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elements;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &__count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__price {
+    font-family: $bold;
+    font-size: $h2;
+    line-height: $h2-line-height;
+    color: $primary;
+  }
+}
