@@ -1,5 +1,7 @@
+@import "./variables";
+
 @mixin hover($property, $toValue) {
-  transition: #{$property}, $effect-duration;
+  transition: #{$property}, $effect-duration ease-in-out;
 
   &:hover {
     #{$property}: $toValue;

@@ -60,35 +60,37 @@ export const ProductCard: React.FC<Props> = ({
           )}
 
         </div>
+
+        <div className="product-card__properties">
+          <div className="product-card__property">
+            <p className="product-card__property--title">
+              Screen
+            </p>
+            <p className="product-card__property--value">
+              {screen}
+            </p>
+          </div>
+
+          <div className="product-card__property">
+            <p className="product-card__property--title">
+              Capacity
+            </p>
+            <p className="product-card__property--value">
+              {capacity}
+            </p>
+          </div>
+
+          <div className="product-card__property">
+            <p className="product-card__property--title">
+              Ram
+            </p>
+            <p className="product-card__property--value">
+              {ram}
+            </p>
+          </div>
+        </div>
+
       </Link>
-      <div className="product-card__properties">
-        <div className="product-card__property">
-          <p className="product-card__property--title">
-            Screen
-          </p>
-          <p className="product-card__property--value">
-            {screen}
-          </p>
-        </div>
-
-        <div className="product-card__property">
-          <p className="product-card__property--title">
-            Capacity
-          </p>
-          <p className="product-card__property--value">
-            {capacity}
-          </p>
-        </div>
-
-        <div className="product-card__property">
-          <p className="product-card__property--title">
-            Ram
-          </p>
-          <p className="product-card__property--value">
-            {ram}
-          </p>
-        </div>
-      </div>
 
       <div className="product-card__buttons">
         <div className="product-card__buttons--cart">

@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 460px;
-  width: 216px;
+
+  max-width: 220px;
 
   padding: 32px 24px 24px;
 
@@ -53,6 +53,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: stretch;
+    margin-bottom: 10px;
 
     @extend %small-text;
 
@@ -69,6 +70,7 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
 
     &--cart {
       width: 170px;
