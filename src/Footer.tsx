@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies *//* eslint-disable max-len */
 
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -11,44 +10,40 @@ export const Footer = () => {
     });
   };
 
-  const [isFixed, setisFixed] = useState(false);
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    if (pathname === '/basket' || pathname === '/liked') {
-      setisFixed(true);
-    } else {
-      setisFixed(false);
-    }
-  }, [pathname]);
-
   return (
-    <footer
-      className={`footer ${isFixed ? 'footer--sticky' : ''}`}
-    >
-      <div className="container container--footer">
-        <div className="icon--logo
-      icon--logo--footer"
-        />
-        <ul className="footer__list">
-          <li className="footer__item">
-            <a href="https://github.com/batiukova-nataliia" className="footer__link">
-              Github
-            </a>
-          </li>
-          <li className="footer__item">
-            <a href="https://github.com/batiukova-nataliia" className="footer__link">
-              Contacts
-            </a>
+    <footer className="footer">
+      <div className="footer__container">
+        <NavLink to="/">
+          <div className="header__icon--logo" />
+        </NavLink>
 
-          </li>
-          <li className="footer__item">
-            <a href="https://github.com/batiukova-nataliia" className="footer__link">
-              Rights
-            </a>
+        <div className="footer__nav">
+          <a
+            href="https://github.com/batiukova-nataliia"
+            target="_blank"
+            className="footer-link"
+            rel="noreferrer"
+          >
+            github
+          </a>
+          <a
+            href="https://github.com/batiukova-nataliia"
+            target="_blank"
+            className="footer-link"
+            rel="noreferrer"
+          >
+            contacts
+          </a>
+          <a
+            href="https://github.com/batiukova-nataliia"
+            target="_blank"
+            className="footer-link"
+            rel="noreferrer"
+          >
+            rights
+          </a>
+        </div>
 
-          </li>
-        </ul>
         <div className="footer__back">
           <div className="footer__back-link">
             Back to top
@@ -65,7 +60,7 @@ export const Footer = () => {
 
         </div>
       </div>
-    </footer>
 
+    </footer>
   );
 };

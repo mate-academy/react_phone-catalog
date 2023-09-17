@@ -1,45 +1,51 @@
 .footer {
-  height: 96px;
-  width: 100%;
-  font-family: Mont, sans-serif;
   border-top: 1px solid $c-gray-light;
+  background-color: white;
 
-  &--sticky {
-    position: fixed;
-    bottom: 0;
-  }
-
-  &__list {
-    list-style: none;
+  &__container {
     display: flex;
     justify-content: space-between;
-    padding-left: 0;
+    align-items: center;
+    padding: 26px 15px;
+
+    @include onTablet {
+      padding: 26px 30px;
+    }
+
+    @include onDesktopSmall {
+      padding: 36px 152px;
+    }
   }
 
-  &__link {
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 15px;
-    text-align: right;
+  &__nav {
+    display: flex;
+  }
+
+  &-link {
     color: $c-gray-middle;
-  }
-
-  &__item {
-    text-transform: uppercase;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-style: normal;
     font-weight: 700;
-    font-size: 12px;
     line-height: 11px;
-    letter-spacing: 0.04em;
-    color: $c-gray-middle;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
 
-    &:not(:last-child) {
-      padding-right: 64px;
-    }
+    &:not(&:last-child) {
+      padding-right: 10px;
+      font-size: 10px;
 
-    &:hover {
-      color: $c-primary;
+      @include onTablet {
+        padding-right: 64px;
+
+      }
     }
+  }
+
+  &__button-container {
+    display: flex;
+
   }
 
   &__back {
@@ -47,17 +53,20 @@
     align-items: center;
 
     &-link {
-      font-weight: 600;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      text-decoration: none;
       font-size: 12px;
       line-height: 15px;
       text-align: right;
       color: $c-gray-middle;
       padding-right: 16px;
-    }
-  }
 
-  &__icon {
-    display: block;
-    margin: auto;
+      @include onTablet {
+        font-size: 10px;
+      }
+    }
   }
 }

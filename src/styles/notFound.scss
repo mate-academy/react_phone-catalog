@@ -1,6 +1,10 @@
 .not-found {
   color: #313131;
-  margin: 200px auto;
+  margin: 200px auto 360px;
+
+  @include onDesktopSmall {
+    margin-bottom: 550px;
+  }
 
   &__message {
     font-size: 22px;

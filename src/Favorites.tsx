@@ -102,9 +102,9 @@ export const Favorites: React.FC<Props> = ({
           <div className="shop__catalog shop__catalog--favorites grid grid--tablet grid--desktop">
 
             {favorites.map((iphone, index) => {
-              const classNumberMobile = index % 2; // Определяем номер класса (0, 1 или 2)
-              const classNumberTablet = index % 3; // Определяем номер класса (0, 1 или 2)
-              const classNumberDesktop = index % 4; // Определяем номер класса (0, 1 или 2)
+              const classNumberMobile = index % 2;
+              const classNumberTablet = index % 3;
+              const classNumberDesktop = index % 4;
 
               return (
                 <div className={classNames('grid__item', {

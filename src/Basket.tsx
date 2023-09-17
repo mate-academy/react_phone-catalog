@@ -1,5 +1,6 @@
-/* eslint-disable max-len */
 /* eslint-disable operator-assignment */
+/* eslint-disable no-plusplus */
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Iphone } from './types/Iphone';
@@ -14,44 +15,76 @@ export const Basket: React.FC<Props> = ({
   phonesToBuy,
   removeIphone,
 }) => {
-  useEffect(() => {
-    localStorage.setItem('phonesToBuy', JSON.stringify(phonesToBuy));
-  }, [phonesToBuy]);
-
-  const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0);
+  const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0); // amount of iphones prices in array
 
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
-  const [total, setTotal] = useState(sum);
-  const [totalItems, setTotalItems] = useState(0);
-  const [counts, setCounts] = useState(phonesToBuy.map(() => 1));
+
+  const initialTotal = parseFloat(localStorage.getItem('sumToSave') || '0'); // Use '0' as a default value in case localStorage is empty
+  const [total, setTotal] = useState(initialTotal);
+
+  const savedCounts = localStorage.getItem('countsToSave');
+  const initialCounts = savedCounts ? JSON.parse(savedCounts) : phonesToBuy.map(() => 1);
+  const [counts, setCounts] = useState(initialCounts);
+  const [totalForAllItems, setTotalForAllItems] = useState(total);
+
+  const calculateTotalForAllItems = () => {
+    let totalToBasket = 0;
+
+    for (let i = 0; i < phonesToBuy.length; i++) {
+      totalToBasket += phonesToBuy[i].price * counts[i];
+    }
+
+    return totalToBasket;
+  };
+
+  const calculateTotalItems = () => {
+    let totalСounts = 0;
+
+    for (let i = 0; i < counts.length; i++) {
+      totalСounts += counts[i];
+    }
+
+    return totalСounts;
+  };
+
+  useEffect(() => {
+    localStorage.setItem('phonesToBuy', JSON.stringify(phonesToBuy));
+    localStorage.setItem('sumToSave', sum.toString());
+    localStorage.setItem('totalForAllItems', totalForAllItems.toString()); // Сохраняем общую сумму
+  }, [phonesToBuy, totalForAllItems]);
+
+  useEffect(() => {
+    localStorage.setItem('countsToSave', JSON.stringify(counts));
+  }, [counts]);
 
   const handleAdd = (index: number) => {
-    setCounts(prevCounts => {
+    setCounts((prevCounts: number[]) => {
       const newCounts = [...prevCounts];
 
       newCounts[index] = newCounts[index] + 1;
-
       const selectedPhone = phonesToBuy[index];
 
-      setTotal(prevTotal => prevTotal + selectedPhone.price);
-      setTotalItems(prevTotalItems => prevTotalItems + 1);
+      const newTotal = total + selectedPhone.price;
+
+      setTotal(newTotal);
+      setTotalForAllItems(totalForAllItems + selectedPhone.price); // Обновляем общую сумму
 
       return newCounts;
     });
   };
 
   const handleRemove = (index: number) => {
-    setCounts(prevCounts => {
+    setCounts((prevCounts: number[]) => {
       const newCounts = [...prevCounts];
 
       if (newCounts[index] > 1) {
         newCounts[index] = newCounts[index] - 1;
+        const selectedPhone = phonesToBuy[index];
+        const newTotal = total - selectedPhone.price;
+
+        setTotal(newTotal);
+        setTotalForAllItems(totalForAllItems - selectedPhone.price); // Обновляем общую сумму
       }
-
-      const selectedPhone = phonesToBuy[index];
-
-      setTotal(prevTotal => prevTotal - selectedPhone.price);
-      setTotalItems(prevTotalItems => prevTotalItems - 1);
 
       return newCounts;
     });
@@ -138,7 +171,9 @@ export const Basket: React.FC<Props> = ({
                         -
 
                       </button>
-                      <div className="basket__cart-count--mobile">{counts[index]}</div>
+                      <div className="basket__cart-count--mobile">
+                        {counts[index]}
+                      </div>
                       <button
                         type="button"
                         className="basket__item-button basket__cart-button--add--mobile"
@@ -148,7 +183,9 @@ export const Basket: React.FC<Props> = ({
                       </button>
 
                     </div>
-                    <p className="basket__item-price">{`$${phone.price * counts[index]}`}</p>
+                    <p className="basket__item-price">
+                      {`$${phone.price * counts[index]}`}
+                    </p>
 
                   </div>
 
@@ -159,11 +196,13 @@ export const Basket: React.FC<Props> = ({
           </div>
 
           <div className="basket__checkout">
-            <p className="basket__checkout-price">{`$${total}`}</p>
+            <p className="basket__checkout-price">
+              {calculateTotalForAllItems()}
+            </p>
             <p className="basket__checkout-text">
               Total for
               {' '}
-              {totalItems + phonesToBuy.length}
+              {calculateTotalItems()}
               {' '}
               items
             </p>
