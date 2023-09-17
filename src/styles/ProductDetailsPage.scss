@@ -27,7 +27,7 @@
 
 .product-details {
   &__container {
-    max-width: 1136px;
+    width: 1136px;
     margin: 0 auto;
   }
 
@@ -206,7 +206,21 @@
       margin-bottom: 32px;
     }
 
-    &__button:hover {
+    &__button-added {
+      width: 263px;
+      color: #27ae60;
+      background-color: #fff;
+      border: 1px solid $gray-icons-placeholders;
+      text-align: center;
+      font-weight: 600;
+      line-height: 21px;
+      margin-bottom: 32px;
+      height: 48px;
+      transition: box-shadow 500ms;
+    }
+
+    &__button:hover,
+    &__button-added:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
 

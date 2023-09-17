@@ -2,12 +2,12 @@
 
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { SiteContext } from '../components/SiteContex';
+import { AppContext } from '../components/AppContex';
 import '../styles/FavouritesPage.scss';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 
 export const FavouritesPage = () => {
-  const { favourites } = useContext(SiteContext);
+  const { favourites } = useContext(AppContext);
 
   return (
     <div className="favourites">

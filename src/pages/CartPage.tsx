@@ -4,11 +4,11 @@ import React, { useContext, useState } from 'react';
 import '../styles/CartPage.scss';
 
 import { Link } from 'react-router-dom';
-import { SiteContext } from '../components/SiteContex';
+import { AppContext } from '../components/AppContex';
 import { Cart } from '../types/Cart';
 
 export const CartPage = React.memo(() => {
-  const { cart, setCart } = useContext(SiteContext);
+  const { cart, setCart } = useContext(AppContext);
 
   const [isCheckoutMessageVisible, setIsCheckoutMessageVisible] = useState(false);
 

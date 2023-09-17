@@ -88,10 +88,6 @@
     text-align: center;
   }
 
-  &__button:hover {
-    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
-  }
-
   &__button-added {
     width: 176px;
     color: #27ae60;
@@ -100,6 +96,11 @@
     text-align: center;
     font-weight: 600;
     line-height: 21px;
+  }
+
+  &__button:hover,
+  &__button-added:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
   }
 
   &__button-favorite {

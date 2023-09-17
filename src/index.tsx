@@ -3,7 +3,7 @@ import { HashRouter } from 'react-router-dom';
 
 import App from './App';
 import './App.scss';
-import { SiteProvider } from './components/SiteContex';
+import { SiteProvider } from './components/AppContex';
 
 ReactDOM.render(
   <HashRouter>

@@ -2,7 +2,8 @@
 
 .phones {
   &__container {
-    max-width: 1136px;
+    width: 1136px;
+    margin: 0 auto;
     padding: 0 152px;
     flex-grow: 1;
   }

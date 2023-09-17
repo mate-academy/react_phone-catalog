@@ -1,9 +1,10 @@
 @import "./variables";
 
 .favourites {
-  max-width: 1136px;
+  width: 1136px;
   padding: 0 152px;
-  flex-grow: 1;
+    margin: 0 auto;
+    flex-grow: 1;
 
   &__title {
     font-size: 32px;
@@ -22,5 +23,5 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
-  }
+}
 }

@@ -1,24 +1,26 @@
 /* eslint-disable max-len */
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Product } from '../types/product';
-import { getProduct } from '../utils/fetchProduct';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Cart } from '../types/Cart';
+import { getProduct } from '../utils/fetchProduct';
 
-type SiteContextType = {
+type AppContextType = {
   cart: Cart[];
   products: Product[];
   favourites: Product[]
   setCart: (v: Cart[]) => void
   setFavourites: (v: Product[]) => void
+  isLoading: boolean
 };
 
-export const SiteContext = React.createContext<SiteContextType>({
+export const AppContext = React.createContext<AppContextType>({
   cart: [],
   products: [],
   favourites: [],
   setCart: () => {},
   setFavourites: () => {},
+  isLoading: false,
 });
 
 type Props = {
@@ -31,9 +33,14 @@ export const SiteProvider: React.FC<Props> = ({
   const [products, setProducts] = useLocalStorage<Product[]>('products', []);
   const [favourites, setFavourites] = useLocalStorage<Product[]>('favourites', []);
   const [cart, setCart] = useLocalStorage<Cart[]>('cart', []);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getProduct().then(items => setProducts(items));
+    setIsLoading(true);
+
+    getProduct()
+      .then(items => setProducts(items))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const value = useMemo(() => ({
@@ -42,11 +49,12 @@ export const SiteProvider: React.FC<Props> = ({
     favourites,
     setCart,
     setFavourites,
+    isLoading,
   }), [products, favourites, cart]);
 
   return (
-    <SiteContext.Provider value={value}>
+    <AppContext.Provider value={value}>
       {children}
-    </SiteContext.Provider>
+    </AppContext.Provider>
   );
 };

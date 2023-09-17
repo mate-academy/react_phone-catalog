@@ -40,24 +40,27 @@ export const Footer = () => {
           <ul className="nav__list">
             <li className="nav-link">
               <NavLink
-                to="/"
+                to="https://github.com/myplekan"
                 className="nav-item"
+                target="_blank"
               >
                 Github
               </NavLink>
             </li>
             <li className="nav-link">
               <NavLink
-                to="/phones"
+                to="https://github.com/myplekan"
                 className="nav-item"
+                target="_blank"
               >
                 Contacts
               </NavLink>
             </li>
             <li className="nav-link">
               <NavLink
-                to="/phones"
+                to="https://github.com/myplekan"
                 className="nav-item"
+                target="_blank"
               >
                 Rights
               </NavLink>

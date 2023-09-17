@@ -4,7 +4,7 @@ import {
 } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../components/ProductCard/ProductCard';
-import { SiteContext } from '../components/SiteContex';
+import { AppContext } from '../components/AppContex';
 import { SortBy } from '../types/SortBy';
 import { ItemsOnPage } from '../types/ItemsOnPage';
 import { Pagination } from '../components/Pagination/Pagination';
@@ -16,7 +16,7 @@ import '../styles/PhonesPage.scss';
 import { PhoneNotFoundPage } from './PhoneNotFoundPage';
 
 export const PhonesPage = () => {
-  const { products } = useContext(SiteContext);
+  const { products } = useContext(AppContext);
 
   const [phones, setPhones] = useState<Product[]>([]);
 
