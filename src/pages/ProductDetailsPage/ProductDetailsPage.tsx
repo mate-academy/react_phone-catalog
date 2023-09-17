@@ -250,25 +250,25 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
                     <div className="details__item">
                       <div className="details__name">Screen</div>
                       <div className="details__value">
-                        {propsData?.display.screenSize}
+                        {propsData.display.screenSize || '-'}
                       </div>
                     </div>
                     <div className="details__item">
                       <div className="details__name">Resolution</div>
                       <div className="details__value">
-                        {propsData?.display.screenResolution}
+                        {propsData.display.screenResolution || '-'}
                       </div>
                     </div>
                     <div className="details__item">
                       <div className="details__name">Processor</div>
                       <div className="details__value">
-                        {propsData?.hardware.cpu}
+                        {propsData.hardware.cpu || '-'}
                       </div>
                     </div>
                     <div className="details__item">
                       <div className="details__name">RAM</div>
                       <div className="details__value">
-                        {propsData?.storage.ram}
+                        {propsData.storage.ram || '-'}
                       </div>
                     </div>
                   </div>
@@ -277,7 +277,7 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
                 <div className="ProductDetailsPage__id">
                   <div className="ProductDetailsPage__id-name">ID:</div>
                   <div className="ProductDetailsPage__id-value">
-                    {propsData?.id}
+                    {propsData.id || '-'}
                   </div>
                 </div>
               </div>
@@ -290,7 +290,7 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
                   <h2 className="about__title">About</h2>
 
                   <div className="about__description">
-                    {propsData?.description}
+                    {propsData.description || '-'}
                   </div>
                 </div>
 
@@ -301,49 +301,49 @@ export const ProductDetailsPage: React.FC<Props> = React.memo(
                     <div className="details__item details__item--tech">
                       <div className="details__name">Screen</div>
                       <div className="details__value">
-                        {propsData?.display.screenSize}
+                        {propsData.display.screenSize || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">Resolution</div>
                       <div className="details__value">
-                        {propsData?.display.screenResolution}
+                        {propsData.display.screenResolution || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">Processor</div>
                       <div className="details__value">
-                        {propsData?.hardware.cpu}
+                        {propsData.hardware.cpu || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">RAM</div>
                       <div className="details__value">
-                        {propsData?.storage.ram}
+                        {propsData.storage.ram || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">Built in memory</div>
                       <div className="details__value">
-                        {propsData?.storage.flash}
+                        {propsData.storage.flash || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">Camera</div>
                       <div className="details__value">
-                        {propsData?.camera.primary}
+                        {propsData.camera.primary || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">Bluetooth</div>
                       <div className="details__value">
-                        {propsData?.connectivity.bluetooth}
+                        {propsData.connectivity.bluetooth || '-'}
                       </div>
                     </div>
                     <div className="details__item details__item--tech">
                       <div className="details__name">Wifi</div>
                       <div className="details__value">
-                        {propsData?.connectivity.wifi}
+                        {propsData.connectivity.wifi || '-'}
                       </div>
                     </div>
                   </div>

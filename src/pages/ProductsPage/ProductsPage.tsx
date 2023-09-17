@@ -34,7 +34,29 @@ export const ProductsPage: React.FC<Props> = React.memo((
 
   const { category } = useParams();
 
-  let title = '' || 'Page';
+  let title = '';
+
+  if (category) {
+    const validCategories = ['phones', 'tablets', 'accessories'];
+
+    if (validCategories.includes(category)) {
+      switch (category) {
+        case 'phones':
+          title = 'Mobile phones';
+          break;
+        case 'tablets':
+          title = 'Tablets';
+          break;
+        case 'accessories':
+          title = 'Accessories';
+          break;
+        default:
+          title = 'Page';
+      }
+    } else {
+      title = 'Page';
+    }
+  }
 
   const categoryProducts = useMemo(() => {
     const validCategories = ['phones', 'tablets', 'accessories'];
@@ -43,16 +65,10 @@ export const ProductsPage: React.FC<Props> = React.memo((
       return products.filter((product) => {
         switch (category) {
           case 'phones':
-            title = 'Mobile phones';
-
             return product.type === ProductType.phone;
           case 'tablets':
-            title = 'Tablets';
-
             return product.type === ProductType.tablet;
           case 'accessories':
-            title = 'Accessories';
-
             return product.type === ProductType.accessory;
           default:
             return false;

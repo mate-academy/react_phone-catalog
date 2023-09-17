@@ -181,19 +181,19 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
               <div className="ProductCard__details-item">
                 <div className="ProductCard__details-item__name">Screen</div>
                 <div className="ProductCard__details-item__value">
-                  {screen || 'unknown'}
+                  {screen || '-'}
                 </div>
               </div>
               <div className="ProductCard__details-item">
                 <div className="ProductCard__details-item__name">Capacity</div>
                 <div className="ProductCard__details-item__value">
-                  {capacity || 'unknown'}
+                  {capacity || '-'}
                 </div>
               </div>
               <div className="ProductCard__details-item">
                 <div className="ProductCard__details-item__name">RAM</div>
                 <div className="ProductCard__details-item__value">
-                  {ram || 'unknown'}
+                  {ram || '-'}
                 </div>
               </div>
             </div>

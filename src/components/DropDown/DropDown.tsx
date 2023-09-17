@@ -28,7 +28,17 @@ export const DropDown: React.FC<Props> = ({ options, value, onChange }) => {
     setIsOpen((prevOpen) => !prevOpen);
   };
 
-  const selectedOption = options.find((option) => option.value === value);
+  const filteredOptions = options.filter(
+    (obj, i, self) => self.findIndex((o) => o.value === obj.value) === i,
+  );
+
+  if (filteredOptions[0].label === 'All') {
+    filteredOptions.length = 1;
+  }
+
+  const selectedOption = filteredOptions.find(
+    (option) => option.value === value,
+  );
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -66,7 +76,7 @@ export const DropDown: React.FC<Props> = ({ options, value, onChange }) => {
       </div>
       {isOpen && (
         <ul className="DropDown__list">
-          {options.map((option) => (
+          {filteredOptions.map((option) => (
             <li
               key={option.value}
               className={cn('DropDown__item', {
