@@ -3,6 +3,7 @@
 .product-slider {
   display: flex;
   flex-direction: column-reverse;
+  padding: 0 8px 10px !important;
 
   &__header {
     position: relative;
@@ -20,8 +21,6 @@
   }
 
   .swiper {
-    padding: 0 8px 10px !important;
-
     &-button-prev,
     &-button-next {
       width: 32px;
