@@ -5,6 +5,7 @@
   margin: 40px 0 26px;
 
   position: relative;
+  z-index: 10;
 
   &--title {
     color: $c-secondary;
@@ -24,6 +25,9 @@
 
     background-color: $c-white;
     border: 1px solid $c-icons;
+
+    @include hover(border-color, $c-primary);
+
   }
 
   &--icon {

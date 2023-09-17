@@ -24,9 +24,15 @@
     margin-top: 16px;
 
     background-color: $c-primary;
+
+    border: 1px solid $c-primary;
+
     color: $c-white;
 
     cursor: pointer;
+
+    @include hover(background-color, $c-white);
+    @include hover(color, $c-primary);
   }
 
   &--checkout-text {
