@@ -8,6 +8,8 @@
 
   border: 1px solid $c-icons;
 
+  cursor: pointer;
+
   @include hover(border-color, $c-primary);
 
   &-active {

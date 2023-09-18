@@ -12,6 +12,8 @@
   background-color: $c-primary;
   border: 1px solid $c-primary;
 
+  cursor: pointer;
+
   @extend %body-text;
 
   &:not(.button-cart--added) {
