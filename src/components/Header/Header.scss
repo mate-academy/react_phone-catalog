@@ -1,0 +1,86 @@
+@import "../../styles/utils";
+
+.header {
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left-side {
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    gap: 64px;
+  }
+
+  &__logo {
+    display: block;
+  }
+
+  &__right-side {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    position: relative;
+
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: 1px solid $elements-color;
+
+    @include hover(border-color, $primary-color);
+
+    &::after {
+      content: "";
+      height: 3px;
+      width: 100%;
+
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+
+      transition: all 0.3s ease-in-out;
+      transform: scale(0);
+
+      background-color: $primary-color;
+    }
+
+    &--active {
+      pointer-events: none;
+
+      color: $primary-color;
+
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+
+    position: absolute;
+    transform: translate(50%, -50%);
+
+    background-color: $red-color;
+    border-radius: 50%;
+    @include border($white-color);
+
+    @extend %small-text;
+    font-size: 9px;
+    color: $white-color;
+  }
+}

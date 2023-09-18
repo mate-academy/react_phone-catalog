@@ -1,0 +1,98 @@
+@import "../../styles/utils";
+
+.cart-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 49px;
+  position: relative;
+  padding: 24px 40px 24px 64px;
+
+  @include border($elements-color);
+
+  &__action {
+    padding: 8px;
+
+    path {
+      fill: $primary-color;
+    }
+
+    @include border($icons-color);
+    @include hover(border-color, $primary-color);
+
+    &--disabled {
+      pointer-events: none;
+      border-color: $elements-color;
+
+      path {
+        fill: $icons-color;
+      }
+    }
+  }
+
+  &__remove {
+    border: none;
+    position: absolute;
+    left: 24px;
+    padding: 0;
+
+    path {
+      transition: all 0.3s;
+      fill: $icons-color;
+    }
+
+    &:hover {
+      path {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  &__links-wrap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__link-img {
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__link-title {
+    max-width: 250px;
+
+    @extend %body-text;
+    color: $primary-color;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+  }
+
+  &__number {
+    @extend %body-text;
+  }
+
+  &__price {
+    @extend %h2;
+    width: 100px;
+    text-align: end;
+  }
+}

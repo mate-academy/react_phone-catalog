@@ -1,0 +1,15 @@
+@import "../../styles/utils";
+
+.banner {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 40px;
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+}

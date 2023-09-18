@@ -1,0 +1,20 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+
+  &--margin {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__name {
+    color: $secondary-color;
+  }
+
+  &__value {
+    color: $primary-color;
+  }
+}

@@ -1,0 +1,21 @@
+@import "../../styles/utils";
+
+.products-slider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__control-btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__prev-btn,
+  &__next-btn {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -1,0 +1,37 @@
+@import "../../styles/utils";
+
+.swiper {
+  width: 100%;
+
+  &-banner-wrapper {
+    width: 1040px;
+    height: 400px;
+  }
+
+  &-slide {
+    width: 1040px;
+  }
+
+  &-button-prev,
+  &-button-next {
+    height: 400px;
+    width: 32px;
+  }
+
+  &-pagination {
+    position: static;
+    margin-top: 8px;
+
+    &-bullet {
+      width: 14px;
+      height: 4px;
+
+      border-radius: 0;
+      background-color: $icons-color;
+
+      &-active {
+        background-color: $primary-color;
+      }
+    }
+  }
+}

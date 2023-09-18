@@ -1,0 +1,29 @@
+@import "../../styles/utils";
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin-bottom: 50px;
+
+    @extend %h1;
+    font-size: 35px;
+    text-align: center;
+    line-height: normal;
+    color: $secondary-color;
+  }
+
+  &__link {
+    padding: 10px 20px;
+
+    background-color: $primary-color;
+
+    @extend %buttons;
+    color: $white-color;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+  }
+}

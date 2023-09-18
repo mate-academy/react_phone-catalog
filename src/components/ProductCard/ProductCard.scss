@@ -1,0 +1,80 @@
+@import "../../styles/utils";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+
+  @include border($elements-color);
+  @include hover(box-shadow, 0 0 2px 2px rgba(180,189,195,0.65));
+
+  &--height {
+    min-height: 513px;
+  }
+
+  &__img-link {
+    display: block;
+    margin: 8px 8px 24px;
+  }
+
+  &__img {
+    height: 208px;
+    width: 208px;
+
+    object-fit: contain;
+    vertical-align: top;
+  }
+
+  &__title-link {
+    display: block;
+    margin-bottom: 8px;
+    flex-grow: 1;
+  }
+
+  &__title {
+    @extend %body-text;
+    color: $primary-color;
+  }
+
+  &__price-content {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__price {
+    @extend %h2;
+    color: $primary-color;
+  }
+
+  &__fullprice {
+    @extend %body-text;
+    font-size: 22px;
+    line-height: normal;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+
+  &__info-content {
+    margin-bottom: 16px;
+
+    @extend %small-text;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-cart {
+    width: 176px;
+    height: 40px;
+  }
+
+  &__add-fav {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../styles/utils";
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  padding: 0 15px 0 0;
+
+  border: none;
+  background-color: #fff;
+
+  @extend %small-text;
+  color: $secondary-color;
+
+  &::before {
+    content: "";
+    background-image: url("../../assets/icons/Chevron\(ArrowLeft\).svg");
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &--margin {
+    margin-bottom: 16px;
+  }
+}

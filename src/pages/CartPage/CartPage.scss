@@ -1,0 +1,78 @@
+@import "../../styles/utils";
+
+.cart {
+  padding: 40px 0 0;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 752px;
+    width: 100%;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 368px;
+    width: 100%;
+    padding: 24px;
+
+    @include border($elements-color);
+  }
+
+  &__total-price {
+    @extend %h1;
+  }
+
+  &__total-items {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid $elements-color;
+
+    @extend %body-text;
+    color: $secondary-color;
+  }
+
+  &__checkout {
+    width: 100%;
+    padding: 14px 0;
+
+    background-color: $primary-color;
+
+    color: $white-color;
+    @extend %buttons;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+  }
+
+  &__empty-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__empty-img {
+    margin-bottom: 50px;
+  }
+
+  &__empty {
+    @extend %h1;
+    font-size: 70px;
+    line-height: normal;
+    color: $secondary-color;
+  }
+}

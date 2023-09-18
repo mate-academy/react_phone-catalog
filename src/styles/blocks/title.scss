@@ -1,0 +1,8 @@
+.title {
+  @extend %h1;
+  color: $primary-color;
+
+  &--not-found {
+    padding: 50px;
+  }
+}

@@ -1,0 +1,22 @@
+@import "../../styles/utils";
+
+.button-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include border($icons-color);
+  @include hover(border-color, $primary-color);
+
+  cursor: pointer;
+
+  &--disabled {
+    border-color: $elements-color;
+    cursor: auto;
+    pointer-events: none;
+
+    path {
+      fill: $icons-color;
+    }
+  }
+}

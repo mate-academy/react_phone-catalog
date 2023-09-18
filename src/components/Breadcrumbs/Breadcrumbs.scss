@@ -1,0 +1,30 @@
+@import "../../styles/utils";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  gap: 8px;
+
+  &--margin {
+    margin-bottom: 40px;
+  }
+
+  &__arrow {
+    height: 16px;
+
+    path {
+      fill: $icons-color;
+    }
+  }
+
+  &__link {
+    @extend %small-text;
+    color: $primary-color;
+
+    &--inactive {
+      color: $secondary-color;
+      pointer-events: none;
+    }
+  }
+}

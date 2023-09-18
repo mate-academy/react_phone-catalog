@@ -1,0 +1,51 @@
+@import "../../styles/utils";
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-color: #1d1d1d99;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 25px;
+    height: 500px;
+
+    background-color: $white-color;
+    border-radius: 10px;
+  }
+
+  &__message {
+    @extend %h1;
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px;
+
+    border: none;
+
+    path {
+      transition: all 0.3s;
+      fill: $icons-color;
+    }
+
+    &:hover {
+      path {
+        fill: $primary-color;
+      }
+    }
+  }
+}

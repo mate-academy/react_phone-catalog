@@ -1,0 +1,47 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+svg,
+img {
+  vertical-align: top;
+}
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+button {
+  background-color: #ffff;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  margin: 0;
+}
