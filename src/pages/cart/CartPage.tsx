@@ -125,7 +125,7 @@ export const CartPage: FC = () => {
                   </button>
                   <img
                     className={styles.item__image}
-                    src={`/new/${item.product.image}`}
+                    src={`new/${item.product.image}`}
                     alt="product"
                   />
                   <div className={styles.item__text}>

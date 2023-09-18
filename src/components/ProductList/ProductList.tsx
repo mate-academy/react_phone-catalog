@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 
@@ -16,7 +16,7 @@ export const ProductList: FC<ProductListProps> = ({
   return (
     <div className={styles} data-cy="productList">
       {products.map(product => (
-        <React.Fragment
+        <div
           key={product.id}
           data-cy="cardsContainer"
         >
@@ -24,7 +24,7 @@ export const ProductList: FC<ProductListProps> = ({
             product={product}
             updateFavourites={updateFavourites}
           />
-        </React.Fragment>
+        </div>
       ))}
     </div>
   );
