@@ -47,7 +47,7 @@ export const Banner = () => {
         className="banner__button"
       >
         <img
-          src="../icons/chevron-left.svg"
+          src="./icons/chevron-left.svg"
           alt="Left arrow"
         />
       </button>
@@ -91,7 +91,7 @@ export const Banner = () => {
         className="banner__button"
       >
         <img
-          src="../icons/chevron-right.svg"
+          src="./icons/chevron-right.svg"
           alt="Left arrow"
         />
       </button>

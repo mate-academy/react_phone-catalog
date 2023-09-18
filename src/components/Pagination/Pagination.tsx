@@ -45,7 +45,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
       >
         <img
-          src="../icons/chevron-left.svg"
+          src="./icons/chevron-left.svg"
           alt="Left arrow"
         />
       </button>
@@ -71,7 +71,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === buttonsArrey.length}
       >
         <img
-          src="../icons/chevron-right.svg"
+          src="./icons/chevron-right.svg"
           alt="Left arrow"
         />
       </button>

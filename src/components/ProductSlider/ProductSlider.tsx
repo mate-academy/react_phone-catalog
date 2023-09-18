@@ -72,7 +72,7 @@ export const ProductSlider: React.FC<Props> = ({
             disabled={offset === 0}
           >
             <img
-              src="../icons/chevron-left.svg"
+              src="./icons/chevron-left.svg"
               alt="Left arrow"
             />
           </button>
@@ -84,7 +84,7 @@ export const ProductSlider: React.FC<Props> = ({
             disabled={offset === -maxItemsOnPage && !infinite}
           >
             <img
-              src="../icons/chevron-right.svg"
+              src="./icons/chevron-right.svg"
               alt="Left arrow"
             />
           </button>

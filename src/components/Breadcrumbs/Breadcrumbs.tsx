@@ -25,7 +25,7 @@ export const Breadcrumbs = () => {
         >
           <img
             className="crumb__icon"
-            src="../icons/chevron-right.svg"
+            src="./icons/chevron-right.svg"
             alt="Arrow rigth"
           />
           <span className="crumb__text">{prepareCrumb(crumb)}</span>
@@ -41,7 +41,7 @@ export const Breadcrumbs = () => {
       >
         <img
           className="crumb__icon"
-          src="../icons/home.svg"
+          src="./icons/home.svg"
           alt="home"
         />
       </Link>

@@ -38,7 +38,7 @@ export const Checkout: React.FC<Props> = ({
             onClick={() => onClick(false)}
           >
             <img
-              src="../icons/close.svg"
+              src="./icons/close.svg"
               alt="Delete"
               className="checkout__sorry-image"
             />
