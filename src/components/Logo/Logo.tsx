@@ -8,7 +8,7 @@ type Props = {
 export const Logo: React.FC<Props> = ({ parent }) => {
   return (
     <Link to="/" className={`logo ${parent}__logo`}>
-      <img src="../icons/logo.svg" alt="Logo" className="logo__img" />
+      <img src="icons/logo.svg" alt="Logo" className="logo__img" />
     </Link>
   );
 };
