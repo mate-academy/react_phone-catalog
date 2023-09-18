@@ -7,9 +7,9 @@ import 'swiper/modules/pagination/pagination.scss';
 import './Slider.scss';
 
 // eslint-disable-next-line
-import NewAccessories from '../../assets/img/banners/banner-accessories-new.png';
-import Iphones from '../../assets/img/banners/banner-iPhone-14-Colors.png';
-import Ipads from '../../assets/img/banners/banner-Ipads.png';
+import NewAccessories from '../../assets/banners/banner-accessories-new.png';
+import Iphones from '../../assets/banners/banner-iPhone-14-Colors.png';
+import Ipads from '../../assets/banners/banner-Ipads.png';
 
 // eslint-disable-next-line
 import { ReactComponent as ArrowLeft } from '../../assets/icons/Chevron (Arrow Left).svg';
