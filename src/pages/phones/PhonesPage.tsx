@@ -103,6 +103,10 @@ export const PhonesPage: FC = () => {
     updateUrl(param, selectedOption.value);
   };
 
+  if (query && !filteredProducts.length && !phones.length) {
+    return <NoResults title="Phones" />;
+  }
+
   return (
     <section className={styles.phones}>
       <div className={styles.phones__nav}>
@@ -113,72 +117,76 @@ export const PhonesPage: FC = () => {
         <div className={styles.phones__navtext}>Phones</div>
       </div>
 
-      <div className={styles.phones__title}>Mobile phones</div>
-
+      <div
+        className={styles.phones__title}
+      >
+        Mobile phones
+      </div>
       {(phones.length > 0 && !isLoading) ? (
         <>
           <h2 className={styles.phones__subtitle}>
             {`${total} models`}
           </h2>
 
-          <div className={styles.phones__sorters}>
-            <div className={styles.phones__sorters__sorter}>
-              <div className={styles.phones__sorters__title}>
-                Sort by
-              </div>
-              <div className={styles.sorting}>
-                <Select
-                  value={selectValueSort}
-                  options={sorting}
-                  isSearchable={false}
-                  unstyled
-                  styles={select}
-                  onChange={(newValue) => handleSelectChange(newValue, 'sort')}
-                />
-              </div>
-            </div>
+          {filteredProducts.length > 4
+           && (
+             <div className={styles.phones__sorters}>
+               <div className={styles.phones__sorters__sorter}>
+                 <div className={styles.phones__sorters__title}>
+                   Sort by
+                 </div>
+                 <div className={styles.sorting}>
+                   <Select
+                     value={selectValueSort}
+                     options={sorting}
+                     isSearchable={false}
+                     unstyled
+                     styles={select}
+                     onChange={
+                      (newValue) => handleSelectChange(newValue, 'sort')
+                    }
+                   />
+                 </div>
+               </div>
 
-            <div className={styles.phones__sorters__sorter}>
-              <div className={styles.phones__sorters__title}>
-                Items on page
-              </div>
-              <div className={styles.perpage}>
-                <Select
-                  value={selectValuePerPage}
-                  options={perpage}
-                  isSearchable={false}
-                  unstyled
-                  styles={select}
-                  onChange={
-                    (newValue) => handleSelectChange(newValue, 'perPage')
-                  }
-                />
-              </div>
-            </div>
+               <div className={styles.phones__sorters__sorter}>
+                 <div className={styles.phones__sorters__title}>
+                   Items on page
+                 </div>
+                 <div className={styles.perpage}>
+                   <Select
+                     value={selectValuePerPage}
+                     options={perpage}
+                     isSearchable={false}
+                     unstyled
+                     styles={select}
+                     onChange={
+                       (newValue) => handleSelectChange(newValue, 'perPage')
+                     }
+                   />
+                 </div>
+               </div>
+             </div>
+           )}
+          <div
+            className="productslist"
+            data-cy="productList"
+          >
+            <ProductList
+              styles={styles.phones__products}
+              products={visibleProducts}
+            />
           </div>
 
-          {visibleProducts.length > 0 ? (
-            <div
-              className="productslist"
-              data-cy="productList"
-            >
-              <ProductList
-                styles={styles.phones__products}
-                products={visibleProducts}
-              />
-            </div>
-          ) : (
-            <NoResults title="Phones" />
-          )}
-
-          {visibleProducts.length > 4 && (
-            <Pagination
-              data-cy="pagination"
-              pagesCount={pages}
-              currentPage={+currentPage}
-              onPageChange={updateUrl}
-            />
-          )}
+          {filteredProducts.length > 4
+           && (
+             <Pagination
+               data-cy="pagination"
+               pagesCount={pages}
+               currentPage={+currentPage}
+               onPageChange={updateUrl}
+             />
+           )}
         </>
       ) : (
         <TailSpin

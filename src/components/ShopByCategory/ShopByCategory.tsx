@@ -20,11 +20,14 @@ export const ShopByCategory: FC = () => {
           <div
             className={styles.card}
           >
-            <img
-              src={phones}
-              alt="Phones"
-              className={styles.image}
-            />
+            <div className={styles.card__container}>
+              <img
+                src={phones}
+                alt="Phones"
+                className={styles.image}
+              />
+            </div>
+
             <div className="subtitles">
               <h2 className={styles.subtitle}>
                 Mobile phones
@@ -44,11 +47,14 @@ export const ShopByCategory: FC = () => {
           <div
             className={styles.card}
           >
-            <img
-              src={tablets}
-              alt="Tablets"
-              className={styles.image}
-            />
+            <div className={styles.card__container}>
+              <img
+                src={tablets}
+                alt="Tablets"
+                className={styles.image}
+              />
+            </div>
+
             <div className="subtitles">
               <h2 className={styles.subtitle}>
                 Tablets
@@ -68,11 +74,14 @@ export const ShopByCategory: FC = () => {
             className={styles.card}
             data-cy="categoryLinksContainer"
           >
-            <img
-              src={accessories}
-              alt="Accessories"
-              className={styles.image}
-            />
+            <div className={styles.card__container}>
+              <img
+                src={accessories}
+                alt="Accessories"
+                className={styles.image}
+              />
+            </div>
+
             <div className="subtitles">
               <h2 className={styles.subtitle}>
                 Accessories

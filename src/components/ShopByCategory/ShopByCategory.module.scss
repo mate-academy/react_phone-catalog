@@ -24,11 +24,13 @@
 }
 
 .card {
-  transition: transform 0.3s;
+  &__container {
+    transition: transform 0.3s;
 
-  :hover {
-    cursor: pointer;
-    transform: scale(1.03);
+    :hover {
+      cursor: pointer;
+      transform: scale(1.03);
+    }
   }
 }
 
@@ -36,6 +38,12 @@
   width: 100%;
   height: 356px;
   object-fit: cover;
+  transition: transform 0.3s;
+
+  :hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
 }
 
 .subtitle {
