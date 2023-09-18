@@ -64,7 +64,7 @@ export const CartProduct: React.FC<Props> = ({
           onClick={() => onChange(product.itemId, 1)}
         >
           <img
-            src="../icons/plus.svg"
+            src="../../icons/plus.svg"
             alt="plus amount"
             className="cart-product__icon"
           />
