@@ -28,7 +28,7 @@ export const NoResults: React.FC<Props> = ({ title }) => {
 
           <div className={styles.notablets}>
             <div className={styles.notablets__text}>
-              {`${title} is out of stock :(`}
+              {`${title} are out of stock :(`}
             </div>
             <Link
               to="/"
