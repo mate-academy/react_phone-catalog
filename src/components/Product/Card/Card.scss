@@ -11,7 +11,7 @@
 
   border: 1px solid $c-elements;
 
-  transition: transform, 0.3s ease-in-out;
+  transition: transform, 0.3s ease-in-out !important;
 
   @include hover(transform, scale(104%));
 
