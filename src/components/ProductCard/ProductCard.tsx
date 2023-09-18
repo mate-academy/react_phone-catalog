@@ -7,7 +7,6 @@ import { Link, useResolvedPath } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { FavouritesIcon } from '../../assets/icons/favourites-icon';
 import { Product } from '../../types/Product';
-import { formatCurrency } from '../../helpers/utils';
 import {
   addToCart,
   getCart,
@@ -154,10 +153,10 @@ export const ProductCard: FC<Props> = ({ product, updateFavourites }) => {
           </h1>
           <div className={styles.price__container}>
             <h1 className={styles.price}>
-              {formatCurrency(product.fullPrice)}
+              {`$${product.fullPrice}`}
             </h1>
             <h1 className={styles.discount}>
-              {formatCurrency(product.price)}
+              {`$${product.price}`}
             </h1>
           </div>
         </div>

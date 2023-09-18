@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from '../../assets/icons/ArrowLeft';
 import styles from './CartPage.module.scss';
 import { removeFromCart, updateLocalStorage } from '../../helpers/Cart';
-import { formatCurrency } from '../../helpers/utils';
 import { CartItem } from '../../types/CartItem';
 import { useCartContext } from '../../context/cartContext';
 import { Close } from '../../assets/icons/Close';
@@ -157,7 +156,7 @@ export const CartPage: FC = () => {
                   <div
                     className={styles.item__price}
                   >
-                    {formatCurrency(item.product.price)}
+                    {`$${item.product.price}`}
                   </div>
                 </div>
               </div>
@@ -168,7 +167,7 @@ export const CartPage: FC = () => {
             <div className={styles.cart__total}>
               <div className={styles.cart__total__info}>
                 <div className={styles.cart__total__title}>
-                  {formatCurrency(totalPrice)}
+                  {`$${totalPrice}`}
                 </div>
                 <div className={styles.cart__total__subtitle}>
                   {`Total for ${totalItemsCount} items`}

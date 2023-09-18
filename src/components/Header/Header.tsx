@@ -167,26 +167,25 @@ export const Header: FC = () => {
               )}
           </div>
         )}
-        <div className="buttoncontainer">
-          <Link
-            to="favorites"
-            className="navlink"
-          >
-            {addedToFavs > 0 && <Counter count={addedToFavs} />}
+        <Link
+          to="favorites"
+          className="navlink"
+        >
+          {addedToFavs > 0 && <Counter count={addedToFavs} />}
+          <div className="buttoncontainer">
             <FavouritesIcon />
+          </div>
+        </Link>
 
-          </Link>
-        </div>
-
-        <div className="buttoncontainer">
-          <Link
-            to="cart"
-            className="navlink"
-          >
-            {addedToCart > 0 && <Counter count={addedToCart} />}
+        <Link
+          to="cart"
+          className="navlink"
+        >
+          {addedToCart > 0 && <Counter count={addedToCart} />}
+          <div className="buttoncontainer">
             <CartIcon />
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </header>
   );
