@@ -6,7 +6,7 @@
   min-height: calc(100vh - 262px);
 
   .nav {
-    margin-bottom: 40px;
+    margin-bottom: 30vh;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -38,5 +38,39 @@
     line-height: $h1-line-height;
     letter-spacing: 0;
     color: $primary;
+  }
+}
+
+.notablets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__text {
+    color: $primary;
+    margin-bottom: 40px;
+    font-family: $regular;
+    font-weight: lighter;
+    font-size: 40px;
+    line-height: $body-line-height;
+    text-align: center;
+  }
+
+  &__button {
+    width: 300px;
+    height: 60px;
+    background-color: $white;
+    color: $primary;
+    border: 1px solid $primary;
+    text-align: center;
+    font-family: $semi-bold;
+    font-size: 18px;
+    line-height: $body-line-height;
+  }
+
+  &__button:hover {
+    background-color: $primary;
+    color: $white;
   }
 }

@@ -55,21 +55,24 @@
   display: flex;
 }
 
-.navlink {
-  position: relative;
-  height: 100%;
+.buttoncontainer {
+  width: 66px;
+  height: 66px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  border: 1px solid $border;
+  cursor: pointer;
 
   &:hover {
-    border-bottom: 1px solid #000;
+    border-bottom-color: #000;
   }
+}
 
-  &:last-child {
-    border-left: none;
-  }
+.navlink {
+  text-decoration: none;
+  outline: none;
 }
 
 .search {
@@ -80,7 +83,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 5px;
-  border-left: 1px solid $border;
+  border-left: 0.5px solid $border;
 
   &:hover {
     cursor: text;
@@ -111,14 +114,4 @@
 
 .closeicon {
   cursor: pointer;
-}
-
-.buttoncontainer {
-  width: 66px;
-  height: 66px;
-  border-left: 1px solid $border;
-
-  &:hover {
-    cursor: pointer;
-  }
 }

@@ -19,6 +19,7 @@ export const Footer: FC = () => {
         <Link
           to="https://github.com/SamirMamedov1010/react_phone-catalog"
           className="footer-link github"
+          target="_blank"
         >
           GITHUB
         </Link>

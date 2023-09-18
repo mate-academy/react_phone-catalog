@@ -13,41 +13,74 @@ export const NoResults: React.FC<Props> = ({ title }) => {
   const noSearchResults = 'There are no matching results';
 
   return (
-    <section className={styles.noResults}>
-      {title === 'Phone'
-        ? (
-          <>
-            <div className={styles.nav}>
-              <ArrowLeft />
+    <>
+      {(title === 'Accessories' || title === 'Tablets') ? (
+        <section className={styles.noResults}>
+          <div className={styles.nav}>
+            <Link to="/">
+              <HomeIcon />
+            </Link>
 
-              <Link className={styles.phones} to="/phones">
-                <span className={styles.page}>Phones</span>
-              </Link>
+            <ArrowRight />
+
+            <span className={styles.page}>{`${title}`}</span>
+          </div>
+
+          <div className={styles.notablets}>
+            <div className={styles.notablets__text}>
+              {`${title} is out of stock :(`}
             </div>
+            <Link
+              to="/"
+              className={styles.nnotablets__link}
+            >
+              <button
+                type="button"
+                className={styles.notablets__button}
+              >
+                Go shoping
+              </button>
+            </Link>
+          </div>
+        </section>
+      ) : (
+        <section className={styles.noResults}>
+          {title === 'Phone'
+            ? (
+              <>
+                <div className={styles.nav}>
+                  <ArrowLeft />
 
-            <h1 className="title">
-              {`${title} was not found`}
-            </h1>
-          </>
-        ) : (
-          <>
-            <div className={styles.nav}>
-              <Link to="/">
-                <HomeIcon />
-              </Link>
+                  <Link className={styles.phones} to="/phones">
+                    <span className={styles.page}>Phones</span>
+                  </Link>
+                </div>
 
-              <ArrowRight />
+                <h1 className="title">
+                  {`${title} was not found`}
+                </h1>
+              </>
+            ) : (
+              <>
+                <div className={styles.nav}>
+                  <Link to="/">
+                    <HomeIcon />
+                  </Link>
 
-              <span className={styles.page}>{`${title}`}</span>
-            </div>
+                  <ArrowRight />
 
-            <h1 className="title">
-              {title === 'Phones'
-                ? noSearchResults
-                : `${title} not found`}
-            </h1>
-          </>
-        )}
-    </section>
+                  <span className={styles.page}>{`${title}`}</span>
+                </div>
+
+                <h1 className="title">
+                  {title === 'Phones'
+                    ? noSearchResults
+                    : `${title} not found`}
+                </h1>
+              </>
+            )}
+        </section>
+      )}
+    </>
   );
 };

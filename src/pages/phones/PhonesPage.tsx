@@ -143,8 +143,8 @@ export const PhonesPage: FC = () => {
                      unstyled
                      styles={select}
                      onChange={
-                      (newValue) => handleSelectChange(newValue, 'sort')
-                    }
+                       (newValue) => handleSelectChange(newValue, 'sort')
+                     }
                    />
                  </div>
                </div>
