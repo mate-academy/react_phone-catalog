@@ -107,7 +107,7 @@ to links container.
 ### Search
 1. Add a `Search` component with an input into the `<header>` to filter products
 1. It should be shown only at `/phones`, `/tablets`, `/accessories` and `/favorites` with an appropriate text
-1. The `x` sign with `data-cy="searchDelete"` attribute appears when the query is not empty and clears the search
+1. The `x` sign wit `data-cy="searchDelete"` attribute appears when the query is not empty and clears the search
 1. It should work with pagination and sorting
 1. (*) Add `debounce` to the search field
 1. (*) Save `Search` params in the URL using `queryParams` (`?query=moto`) and apply them on page load
