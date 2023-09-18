@@ -42,8 +42,8 @@ export const ListSelect: React.FC<Props> = ({ options, description }) => {
         <img
           src={`${
             isOpen
-              ? '/icons/chevron-up.svg'
-              : '/icons/chevron-down.svg'
+              ? '../icons/chevron-up.svg'
+              : '../icons/chevron-down.svg'
           }`}
           alt="Arrow"
           className="select__icon"

@@ -17,7 +17,7 @@ export const Button: React.FC<Props> = ({ purpose, count }) => {
   return (
     <NavLink to={`/${purpose}`} className={getLinkClass}>
       <img
-        src={`/icons/${purpose}.svg`}
+        src={`../icons/${purpose}.svg`}
         alt={purpose}
         className="button__img"
       />

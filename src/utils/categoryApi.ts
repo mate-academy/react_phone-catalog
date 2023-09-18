@@ -1,18 +1,21 @@
+import { IMG_LINK } from './IMG_LINK';
+
 const categoryApi = [
   {
     category: 'Mobile phones',
     path: '/phones',
-    imgSrc: '/_new/img/category-phones.png',
+    imgSrc: `${IMG_LINK}img/category-phones.png`,
   },
   {
     category: 'Tablets',
     path: '/tablets',
-    imgSrc: '/_new/img/category-tablets.png',
+    imgSrc: `${IMG_LINK}img/category-tablets.png`,
+
   },
   {
     category: 'Accessories',
     path: '/accessories',
-    imgSrc: '/_new/img/category-accessories.png',
+    imgSrc: `${IMG_LINK}img/category-accessories.png`,
   },
 ];
 

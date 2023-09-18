@@ -21,6 +21,7 @@ import { PhoneDetails } from '../../types/PhoneDetails';
 import { Phone } from '../../types/Phone';
 import { Titles } from '../../types/Titles';
 import { FullPhoneSpecs, PhoneSpecs } from '../../types/PhoneSpecs';
+import { IMG_LINK } from '../../utils/IMG_LINK';
 
 const getColorClass = (
   { isActive }: { isActive: boolean },
@@ -133,7 +134,7 @@ export const ProductPage = () => {
               >
                 <img
                   className="product-page__image"
-                  src={`/_new/${image}`}
+                  src={`${IMG_LINK}${image}`}
                   alt="iPhone"
                 />
               </div>
@@ -142,7 +143,7 @@ export const ProductPage = () => {
           <div className="product-page__main-photo">
             <img
               className="product-page__image-main"
-              src={`/_new/${mainPhoto}`}
+              src={`${IMG_LINK}${mainPhoto}`}
               alt="iPhone"
             />
           </div>

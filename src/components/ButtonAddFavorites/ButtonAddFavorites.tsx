@@ -32,9 +32,9 @@ export const ButtonAddFavorites: React.FC<Props> = ({
       onClick={() => handleClick(product)}
     >
       {isInFavorites ? (
-        <img src="/icons/favoritesFilled.svg" alt="Favorites button" />
+        <img src="../icons/favoritesFilled.svg" alt="Favorites button" />
       ) : (
-        <img src="/icons/favorites.svg" alt="Favorites button" />
+        <img src="../icons/favorites.svg" alt="Favorites button" />
       )}
     </button>
 

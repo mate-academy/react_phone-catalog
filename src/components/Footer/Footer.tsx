@@ -49,7 +49,7 @@ export const Footer = () => {
           aria-label="Back to top"
           onClick={() => goToTop()}
         >
-          <img src="/icons/chevron.svg" alt="To top" />
+          <img src="../icons/chevron.svg" alt="To top" />
         </button>
       </div>
     </footer>

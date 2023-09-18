@@ -47,7 +47,7 @@ export const Search = () => {
       />
       {!inputQuery ? (
         <img
-          src="/icons/Search.svg"
+          src="../icons/Search.svg"
           alt="Search"
           className="search__icon"
         />
@@ -57,7 +57,7 @@ export const Search = () => {
           className="search__close"
           onClick={handleClose}
         >
-          <img src="/icons/close.svg" alt="close" className="search__icon" />
+          <img src="../icons/close.svg" alt="close" className="search__icon" />
         </button>
       )}
     </label>

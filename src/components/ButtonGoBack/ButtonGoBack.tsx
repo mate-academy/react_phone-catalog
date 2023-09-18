@@ -17,7 +17,7 @@ export const ButtonGoBack = () => {
     >
       <img
         className="button-back__arrow"
-        src="/icons/chevron-left.svg"
+        src="../icons/chevron-left.svg"
         alt="Arrow left"
       />
       <span className="button-back__text">Back</span>

@@ -1,5 +1,7 @@
+import { IMG_LINK } from './IMG_LINK';
+
 export const bannerImagesApi = [
-  '/_new/img/banner-phones.png',
-  '/_new/img/banner-tablets.png',
-  '/_new/img/banner-accessories.png',
+  `${IMG_LINK}img/banner-phones.png`,
+  `${IMG_LINK}img/banner-tablets.png`,
+  `${IMG_LINK}img/banner-accessories.png`,
 ];

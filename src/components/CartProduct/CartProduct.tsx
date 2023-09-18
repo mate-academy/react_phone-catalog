@@ -1,4 +1,5 @@
 import { Phone } from '../../types/Phone';
+import { IMG_LINK } from '../../utils/IMG_LINK';
 import './style.scss';
 
 type Props = {
@@ -19,7 +20,7 @@ export const CartProduct: React.FC<Props> = ({
         onClick={() => onDelete(product.id)}
       >
         <img
-          src="/icons/close.svg"
+          src="../icons/close.svg"
           alt="Delete"
           className="cart-product__icon"
         />
@@ -27,7 +28,7 @@ export const CartProduct: React.FC<Props> = ({
 
       <div className="cart-product__photo">
         <img
-          src={`/_new/${product.image}`}
+          src={`${IMG_LINK}${product.image}`}
           alt={product.name}
           className="cart-product__image"
         />
@@ -47,7 +48,7 @@ export const CartProduct: React.FC<Props> = ({
           disabled={amount === 1}
         >
           <img
-            src="/icons/minus.svg"
+            src="../icons/minus.svg"
             alt="minus amount"
             className="cart-product__icon"
           />
@@ -63,7 +64,7 @@ export const CartProduct: React.FC<Props> = ({
           onClick={() => onChange(product.itemId, 1)}
         >
           <img
-            src="/icons/plus.svg"
+            src="../icons/plus.svg"
             alt="plus amount"
             className="cart-product__icon"
           />

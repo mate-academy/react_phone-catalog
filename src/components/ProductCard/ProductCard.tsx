@@ -6,6 +6,7 @@ import { CartContext } from '../../store/CartContext';
 import { FavoritesContext } from '../../store/FavoritesContext';
 import { ButtonAddCart } from '../ButtonAddCart/ButtonAddCart';
 import { ButtonAddFavorites } from '../ButtonAddFavorites/ButtonAddFavorites';
+import { IMG_LINK } from '../../utils/IMG_LINK';
 
 type Props = {
   product?: Phone;
@@ -33,7 +34,7 @@ export const ProductCard: React.FC<Props> = ({
     }));
   }, [product, cartProducts, favoritesProducts]);
 
-  const imagePath = `/_new/${product?.image}`;
+  const imagePath = `${IMG_LINK}${product?.image}`;
 
   return (
     <div className="product-card">
