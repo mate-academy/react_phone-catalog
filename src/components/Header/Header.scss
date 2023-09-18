@@ -55,24 +55,38 @@
   display: flex;
 }
 
-.buttoncontainer {
-  width: 66px;
-  height: 66px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-  border: 1px solid $border;
-  cursor: pointer;
+.button {
+  width: 16px;
+  height: 16px;
 
-  &:hover {
-    border-bottom-color: #000;
+  &_container {
+    width: 66px;
+    height: 66px;
+    border-left: 1px solid $border;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .navlink {
-  text-decoration: none;
-  outline: none;
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    border-bottom: 1px solid #000;
+  }
+}
+
+.is-actived {
+  font-family: $bold;
+  color: $secondary;
+  border-bottom: 1px solid $secondary;
 }
 
 .search {

@@ -4,10 +4,14 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import {
+  Link, NavLink, useLocation, useSearchParams,
+} from 'react-router-dom';
 import classNames from 'classnames';
-import { CartIcon } from '../../assets/icons/cart-icon';
-import { FavouritesIcon } from '../../assets/icons/favourites-icon';
+// eslint-disable-next-line
+import { ReactComponent as AddToCart } from '../../assets/icons/Cart.svg';
+// eslint-disable-next-line
+import { ReactComponent as AddToFavourites } from '../../assets/icons/Favourites (Heart Like).svg';
 import { LogoIcon } from '../../assets/icons/logo-icon';
 import './Header.scss';
 import { PageNavLink } from '../PageNavLink/PageNavLink';
@@ -167,25 +171,30 @@ export const Header: FC = () => {
               )}
           </div>
         )}
-        <Link
-          to="favorites"
-          className="navlink"
-        >
-          {addedToFavs > 0 && <Counter count={addedToFavs} />}
-          <div className="buttoncontainer">
-            <FavouritesIcon />
-          </div>
-        </Link>
+        <div className="button_container">
+          <NavLink
+            to="favorites"
+            className={({ isActive }) => classNames('navlink', {
+              'is-actived': isActive,
+            })}
+          >
+            {addedToFavs > 0 && <Counter count={addedToFavs} />}
+            <AddToFavourites className="button" />
 
-        <Link
-          to="cart"
-          className="navlink"
-        >
-          {addedToCart > 0 && <Counter count={addedToCart} />}
-          <div className="buttoncontainer">
-            <CartIcon />
-          </div>
-        </Link>
+          </NavLink>
+        </div>
+
+        <div className="button_container">
+          <NavLink
+            to="cart"
+            className={({ isActive }) => classNames('navlink', {
+              'is-actived': isActive,
+            })}
+          >
+            {addedToCart > 0 && <Counter count={addedToCart} />}
+            <AddToCart className="button" />
+          </NavLink>
+        </div>
       </div>
     </header>
   );
