@@ -20,7 +20,7 @@ export const CartProduct: React.FC<Props> = ({
         onClick={() => onDelete(product.id)}
       >
         <img
-          src="../icons/close.svg"
+          src="./icons/close.svg"
           alt="Delete"
           className="cart-product__icon"
         />
@@ -48,7 +48,7 @@ export const CartProduct: React.FC<Props> = ({
           disabled={amount === 1}
         >
           <img
-            src="../icons/minus.svg"
+            src="./icons/minus.svg"
             alt="minus amount"
             className="cart-product__icon"
           />
