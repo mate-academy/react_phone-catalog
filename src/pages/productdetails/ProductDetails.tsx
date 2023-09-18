@@ -236,17 +236,19 @@ export const ProductDetails: FC = () => {
             <div data-cy="backButton" className="details__navback">
               <label
                 htmlFor="detailsBackButton"
-                className="details__back__icon"
+                className="details__navback__icon"
               >
-                <ArrowLeft />
+                <button
+                  type="button"
+                  id="detailsBackButton"
+                  onClick={handleBackClick}
+                >
+                  <ArrowLeft />
+                </button>
+                <div className="details__navtext">
+                  Back
+                </div>
               </label>
-              <button
-                type="button"
-                id="detailsBackButton"
-                onClick={handleBackClick}
-              >
-                <ArrowLeft />
-              </button>
             </div>
           </div>
 
