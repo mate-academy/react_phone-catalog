@@ -141,7 +141,7 @@ export const ProductCard: FC<Props> = ({ product, updateFavourites }) => {
         <div className={styles.image__container}>
           <img
             className={styles.image}
-            src={`/_new/${product.image}`}
+            src={`/new/${product.image}`}
             alt={product.name}
           />
         </div>

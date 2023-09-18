@@ -264,7 +264,7 @@ export const ProductDetails: FC = () => {
                   key={image}
                 >
                   <img
-                    src={`/_new/${image}`}
+                    src={`/new/${image}`}
                     alt={product.name}
                     className="simage"
                   />
@@ -275,7 +275,7 @@ export const ProductDetails: FC = () => {
 
             <div className="details__xlimage_container">
               <img
-                src={`/_new/${selectedImage}`}
+                src={`/new/${selectedImage}`}
                 alt="img"
                 className="xlimage"
               />
