@@ -11,6 +11,8 @@
 
   border: 1px solid $c-elements;
 
+  transition: transform, 0.3s ease-in-out;
+
   @include hover(transform, scale(104%));
 
   &__link {
