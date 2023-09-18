@@ -25,17 +25,14 @@ export const NoResults: React.FC<Props> = ({ title }) => {
               </Link>
             </div>
 
-            <h2 className="title">
+            <h1 className="title">
               {`${title} was not found`}
-            </h2>
+            </h1>
           </>
         ) : (
           <>
             <div className={styles.nav}>
-              <Link
-                to="/"
-                className={styles.icon}
-              >
+              <Link to="/">
                 <HomeIcon />
               </Link>
 
@@ -44,11 +41,11 @@ export const NoResults: React.FC<Props> = ({ title }) => {
               <span className={styles.page}>{`${title}`}</span>
             </div>
 
-            <h2 className="title">
+            <h1 className="title">
               {title === 'Phones'
                 ? noSearchResults
                 : `${title} not found`}
-            </h2>
+            </h1>
           </>
         )}
     </section>

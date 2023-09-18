@@ -158,21 +158,27 @@ export const PhonesPage: FC = () => {
           </div>
 
           {visibleProducts.length > 0 ? (
-            <ProductList
+            <div
+              className="productslist"
               data-cy="productList"
-              styles={styles.phones__products}
-              products={visibleProducts}
-            />
+            >
+              <ProductList
+                styles={styles.phones__products}
+                products={visibleProducts}
+              />
+            </div>
           ) : (
             <NoResults title="Phones" />
           )}
 
-          <Pagination
-            data-cy="pagination"
-            pagesCount={pages}
-            currentPage={+currentPage}
-            onPageChange={updateUrl}
-          />
+          {visibleProducts.length > 4 && (
+            <Pagination
+              data-cy="pagination"
+              pagesCount={pages}
+              currentPage={+currentPage}
+              onPageChange={updateUrl}
+            />
+          )}
         </>
       ) : (
         <TailSpin

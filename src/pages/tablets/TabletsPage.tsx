@@ -57,9 +57,9 @@ export const TabletsPage: FC = () => {
             </div>
           </div>
 
-          <div className={styles.tablets__title}>
+          <h1 className={styles.tablets__title}>
             Tablets
-          </div>
+          </h1>
           <h2 className={styles.tablets__subtitle}>
             {`${tablets.length} models`}
           </h2>
@@ -93,11 +93,15 @@ export const TabletsPage: FC = () => {
               </div>
             </div>
           </div>
-
-          <ProductList
-            styles={styles.tablets__products}
-            products={tablets}
-          />
+          <div
+            className="productslist"
+            data-cy="productList"
+          >
+            <ProductList
+              styles={styles.tablets__products}
+              products={tablets}
+            />
+          </div>
         </section>
       ) : (
         <NoResults title="Tablets" />

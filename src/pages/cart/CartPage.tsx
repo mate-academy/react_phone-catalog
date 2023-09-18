@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from '../../assets/icons/ArrowLeft';
-import { CartProduct } from '../../components/CartProduct/CartProduct';
 import styles from './CartPage.module.scss';
 import { removeFromCart, updateLocalStorage } from '../../helpers/Cart';
 import { formatCurrency } from '../../helpers/utils';
 import { CartItem } from '../../types/CartItem';
 import { useCartContext } from '../../context/cartContext';
+import { Close } from '../../assets/icons/Close';
 
 export const CartPage: FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -114,12 +114,52 @@ export const CartPage: FC = () => {
           <div className={styles.cart__items}>
             {cartItems.map(item => (
               <div key={item.product.id}>
-                <CartProduct
-                  item={item}
-                  onRemove={handleRemoveItem}
-                  increase={increaseQuantity}
-                  decrease={decreaseQuantity}
-                />
+                <div className={styles.item}>
+                  <button
+                    type="button"
+                    data-cy="cartDeleteButton"
+                    className={styles.item__icon}
+                    onClick={() => handleRemoveItem(item)}
+                  >
+                    <Close />
+                  </button>
+                  <img
+                    className={styles.item__image}
+                    src={`/_new/${item.product.image}`}
+                    alt="product"
+                  />
+                  <div className={styles.item__text}>
+                    {item.product.name}
+                  </div>
+                  <div
+                    className={styles.item__cuantity}
+                    data-cy="productQauntity"
+                  >
+                    <button
+                      type="button"
+                      className={styles.item__cuantity__icon}
+                      onClick={() => decreaseQuantity(item)}
+                    >
+                      -
+                    </button>
+                    <div className={styles.item__cuantity__count}>
+                      {item.quantity}
+                    </div>
+                    <button
+                      type="button"
+                      className={styles.item__cuantity__icon}
+                      onClick={() => increaseQuantity(item)}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div
+                    className={styles.item__price}
+                  >
+                    {formatCurrency(item.product.price)}
+                  </div>
+                </div>
               </div>
             ))}
           </div>

@@ -214,6 +214,7 @@ export const ProductCard: FC<Props> = ({ product, updateFavourites }) => {
             </button>
           ) : (
             <button
+              data-cy="addToFavorite"
               className={styles.button__favourites}
               onClick={handleAddToFavourites}
               type="button"

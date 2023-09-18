@@ -233,21 +233,20 @@ export const ProductDetails: FC = () => {
               </div>
             </div>
 
-            <div
-              data-cy="backButton"
-              className="details__navback"
-            >
-              <button
-                id="detailstback"
-                type="button"
+            <div data-cy="backButton" className="details__navback">
+              <label
+                htmlFor="detailsBackButton"
                 className="details__back__icon"
+              >
+                <ArrowLeft />
+              </label>
+              <button
+                type="button"
+                id="detailsBackButton"
                 onClick={handleBackClick}
               >
                 <ArrowLeft />
               </button>
-              <div className="details__navtext">
-                Back
-              </div>
             </div>
           </div>
 

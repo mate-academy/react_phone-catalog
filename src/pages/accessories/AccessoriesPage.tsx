@@ -53,9 +53,9 @@ export const AccessoriesPage: FC = () => {
               <HomeIcon />
             </Link>
             <ArrowRight />
-            <div className={styles.accessories__navtext}>
+            <h1 className={styles.accessories__navtext}>
               Accessories
-            </div>
+            </h1>
           </div>
 
           <h1 className={styles.accessories__title}>
@@ -104,12 +104,15 @@ export const AccessoriesPage: FC = () => {
                     </div>
                   </div>
                 </div>
-
-                <ProductList
-                  styles={styles.accessories__products}
-                  products={accessories}
-                />
-
+                <div
+                  className="productslist"
+                  data-cy="productList"
+                >
+                  <ProductList
+                    styles={styles.accessories__products}
+                    products={accessories}
+                  />
+                </div>
                 {/* <Pagination /> */}
               </>
             )}
