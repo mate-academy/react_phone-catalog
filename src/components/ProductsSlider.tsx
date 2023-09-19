@@ -9,18 +9,21 @@ type Props = {
   title: string;
 };
 
+const CARD_WIDTH = 288;
+const CARD_GAP = 16;
+
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const [shift, setShift] = useState(0);
 
   const slideLeft = () => {
-    setShift((current) => current + 288);
+    setShift((current) => current + CARD_WIDTH);
   };
 
   const slideRight = () => {
-    setShift((current) => current - 288);
+    setShift((current) => current - CARD_WIDTH);
   };
 
-  const sliderLength = -((products.length - 4) * 288 - 16);
+  const sliderLength = -((products.length - 4) * CARD_WIDTH - CARD_GAP);
 
   return (
     <div className="products-slider">

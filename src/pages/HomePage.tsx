@@ -26,10 +26,6 @@ export const HomePage = () => {
     .filter(product => product.year === 2019)
     .sort((a, b) => b.price - a.price);
 
-  // const newModelsProducts = [...products]
-  //   .filter(product => product.fullPrice === product.price)
-  //   .sort((a, b) => b.price - a.price);
-
   return (
     <div className="home-page">
       <div className="home-page__banner-slider">

@@ -7,6 +7,9 @@ type Props = {
   product: Product;
 };
 
+const BUTTON_WIDTH = 178;
+const BUTTON_HIGHT = 40;
+
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="product-card">
@@ -66,8 +69,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="product-card__buttons">
         <AddToButtons
-          width={178}
-          height={40}
+          width={BUTTON_WIDTH}
+          height={BUTTON_HIGHT}
           product={product}
         />
       </div>

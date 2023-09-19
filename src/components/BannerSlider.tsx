@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './BannerSlider.scss';
 
+const STEP = 1040;
+const MAX_SHIFT = -2080;
 const IMAGES = [
   './img/banner/banner-phones.png',
   './img/banner/banner-tablets.png',
@@ -13,17 +15,17 @@ export const BannerSlider = () => {
 
   const slideLeft = () => {
     if (shift >= 0) {
-      setShift(-2080);
+      setShift(MAX_SHIFT);
     } else {
-      setShift((current) => current + 1040);
+      setShift((current) => current + STEP);
     }
   };
 
   const slideRight = () => {
-    if (shift <= -2080) {
+    if (shift <= MAX_SHIFT) {
       setShift(0);
     } else {
-      setShift((current) => current - 1040);
+      setShift((current) => current - STEP);
     }
   };
 
@@ -68,7 +70,7 @@ export const BannerSlider = () => {
 
       <div className="banner-slider__dots">
         {IMAGES.map((item, i) => {
-          const position = i * -1040;
+          const position = i * -STEP;
 
           return (
             <button

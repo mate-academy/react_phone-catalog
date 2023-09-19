@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import './Header.scss';
-import { Logo } from './Logo';
 import { useFavouritesContext } from '../context/FavouritesContext';
 import { useCartContext } from '../context/CartContext';
+import { Logo } from './Logo';
+import './Header.scss';
 
 interface Options {
   isActive: boolean
@@ -141,7 +141,6 @@ export const Header = () => {
             )}
             data-content={cart.length}
           />
-          {/* <span className="header__icons header__icons--cart" /> */}
         </NavLink>
       </div>
     </div>

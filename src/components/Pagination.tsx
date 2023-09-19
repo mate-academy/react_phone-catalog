@@ -1,5 +1,5 @@
 import { useSearchParams, Link } from 'react-router-dom';
-import cn from 'classnames';
+import classNames from 'classnames';
 import './Pagination.scss';
 
 type Props = {
@@ -41,7 +41,7 @@ export const Pagination: React.FC<Props> = ({
     <ul className="pagination" data-cy="pagination">
       <li>
         <Link
-          className={cn(
+          className={classNames(
             'pagination__link pagination__link--left',
             { 'pagination__link--disabled': currentPage === 1 },
           )}
@@ -53,7 +53,7 @@ export const Pagination: React.FC<Props> = ({
       {pageCount.map(item => (
         <li key={item}>
           <Link
-            className={cn(
+            className={classNames(
               'pagination__link',
               { 'pagination__link--active': currentPage === item },
             )}
@@ -67,7 +67,7 @@ export const Pagination: React.FC<Props> = ({
 
       <li>
         <Link
-          className={cn(
+          className={classNames(
             'pagination__link pagination__link--right',
             { 'pagination__link--disabled': currentPage === pageCount.length },
           )}

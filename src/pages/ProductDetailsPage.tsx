@@ -9,8 +9,11 @@ import { AddToButtons } from '../components/AddToButtons';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { Product } from '../types/Product';
 import { getProductsByCategory } from '../helpers/getProductsByCategory';
-import './ProductDetailsPage.scss';
 import { BackButton } from '../components/BackButton';
+import './ProductDetailsPage.scss';
+
+const BUTTON_WIDTH = 263;
+const BUTTON_HIGHT = 48;
 
 export const ProductDetailsPage = () => {
   const { itemId } = useParams();
@@ -19,18 +22,21 @@ export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [mainImage, setMainImage] = useState('');
   const [products, setProducts] = useState<Product[]>([]);
+
   const addToCartProduct = products.find(item => item.itemId === product?.id);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
+    getProductsByCategory()
+      .then(setProducts);
+
     getData<ProductDetails>(`/products/${itemId}.json`)
       .then((response) => {
         setProduct(response);
         setMainImage(response.images[0]);
       })
-      .catch(() => setNotFound('Phone was not found'));
-
-    getProductsByCategory()
-      .then(setProducts)
+      .catch(() => setNotFound('Phone was not found'))
       .finally(() => setLoading(false));
   }, [itemId]);
 
@@ -149,8 +155,8 @@ export const ProductDetailsPage = () => {
 
               <div className="product__buttons">
                 <AddToButtons
-                  width={263}
-                  height={48}
+                  width={BUTTON_WIDTH}
+                  height={BUTTON_HIGHT}
                   product={addToCartProduct}
                 />
               </div>

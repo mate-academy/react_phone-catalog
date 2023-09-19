@@ -4,7 +4,6 @@ import { Product } from '../types/Product';
 
 type FavouritesContextType = {
   favourites: Product[],
-  // favourites: string[],
   setFavourites: (product: Product) => void,
 };
 

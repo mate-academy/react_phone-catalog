@@ -5,12 +5,23 @@ import { BreadCrumbs } from './BreadCrumbs';
 import { ProductCard } from './ProductCard';
 import { DropDown } from './DropDown';
 import { Pagination } from './Pagination';
+import { PerPageOptions } from '../types/PerPageOptions';
+import { SortByOptions } from '../types/SortByOptions';
 import './ProductsList.scss';
 
-const SORT_BY = 'sortBy';
-const SORT_OPTIONS = ['Newest', 'Alphabetically', 'Cheapest'];
-const PER_PAGE = 'perPage';
-const PAGES = ['All', '4', '8', '16'];
+const SORT_BY_KEY = 'sortBy';
+const SORT_OPTIONS = [SortByOptions.new, SortByOptions.az, SortByOptions.cost];
+
+const PAGE_KEY = 'page';
+const PER_PAGE_KEY = 'perPage';
+const PAGES_OPTIONS = [
+  PerPageOptions.all,
+  PerPageOptions.p4,
+  PerPageOptions.p8,
+  PerPageOptions.p16,
+];
+
+const SEARCH_KEY = 'query';
 
 type Props = {
   title: string;
@@ -24,16 +35,16 @@ export const ProductsList: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
 
   const sortBy = title !== 'Favourites'
-    ? searchParams.get(SORT_BY) || 'Newest'
+    ? searchParams.get(SORT_BY_KEY) || SortByOptions.new
     : 'default';
 
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
 
-  const perPage = searchParams.get(PER_PAGE) || false;
-  const pageFromParams = searchParams.get('page') || '1';
+  const perPage = searchParams.get(PER_PAGE_KEY) || false;
+  const pageFromParams = searchParams.get(PAGE_KEY) || '1';
   const [currentPage, setCurrentPage] = useState(+pageFromParams);
 
-  const query = searchParams.get('query')?.toLowerCase().trim();
+  const query = searchParams.get(SEARCH_KEY)?.toLowerCase().trim();
 
   const filteredProducts = query
     ? [...sortedProducts]
@@ -49,17 +60,17 @@ export const ProductsList: React.FC<Props> = ({
 
   useEffect(() => {
     switch (sortBy) {
-      case 'Newest':
+      case SortByOptions.new:
         setSortedProducts([...products].sort((a, b) => +b.year - (+a.year)));
         break;
 
-      case 'Cheapest':
+      case SortByOptions.cost:
         setSortedProducts(
           [...products].sort((a, b) => +a.price - (+b.price)),
         );
         break;
 
-      case 'Alphabetically':
+      case SortByOptions.az:
         setSortedProducts(
           [...products].sort((a, b) => a.name.localeCompare(b.name)),
         );
@@ -107,13 +118,13 @@ export const ProductsList: React.FC<Props> = ({
               <DropDown
                 title="Sort by"
                 values={SORT_OPTIONS}
-                sortKey={SORT_BY}
+                sortKey={SORT_BY_KEY}
               />
 
               <DropDown
                 title="Items on page"
-                values={PAGES}
-                sortKey={PER_PAGE}
+                values={PAGES_OPTIONS}
+                sortKey={PER_PAGE_KEY}
                 onPageChange={(page: number) => setCurrentPage(page)}
               />
             </div>
