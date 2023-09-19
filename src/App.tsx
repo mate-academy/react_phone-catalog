@@ -77,7 +77,7 @@ const App = () => {
                 alt="favorites"
                 className="header__image"
               />
-              {favorites.length !== 0 && (
+              {favorites.length > 0 && (
                 <span className="header__count">
                   {favorites.length}
                 </span>
@@ -95,7 +95,7 @@ const App = () => {
               alt="cart"
               className="header__image"
             />
-            {cart.length !== 0 && (
+            {cart.length > 0 && (
               <span className="header__count">
                 {cart.length}
               </span>
