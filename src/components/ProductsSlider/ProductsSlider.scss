@@ -3,6 +3,7 @@
 .products-slider {
   box-sizing: border-box;
   overflow: hidden;
+  width: 1132px;
 
   &__upper {
     @include flex-between;

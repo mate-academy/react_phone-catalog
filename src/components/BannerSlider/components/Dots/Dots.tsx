@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { ImageType } from 'components/BannerSlider/BannerSlider';
 import './Dots.scss';
 
-
 type Props = {
   images: ImageType[],
   currentSlideIndex: number,
