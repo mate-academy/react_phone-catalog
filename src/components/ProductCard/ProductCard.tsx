@@ -6,7 +6,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    id,
+    // id,
     name,
     fullPrice,
     price,
@@ -19,12 +19,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="product">
       <div className="product__image-container">
-        <img className="product__image" src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`} alt={image} />
+        <img className="product__image" src={`new/${image}`} alt={image} />
       </div>
 
       <div className="product__title">
         {name}
-        {id}
       </div>
 
       <div className="product__price">
