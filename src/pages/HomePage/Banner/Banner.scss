@@ -3,16 +3,16 @@
 .banner {
   width: 84%;
   max-width: 1136px;
-  height: 440px;
+  height: 320px;
   margin: 30px auto;
   top: 10px;
 
-  @include onSmallScreen {
+  @include onMobile {
     display: none !important;
   }
 
   &__slide {
-    height: 70% !important;
+    // height: 70% !important;
 
     &--image {
       margin: 0 auto;
@@ -49,9 +49,9 @@
     }
 
     &-pagination {
-      bottom: 10% !important;
+      bottom: 0 !important;
 
-      @include onMediumScreen {
+      @include onTablet {
         bottom: 20% !important;
       }
 

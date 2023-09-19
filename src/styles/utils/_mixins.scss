@@ -8,38 +8,33 @@
   }
 }
 
-@mixin onSmallScreen {
-  @media (min-width: 320px) and (max-width: 899px) {
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 767px) {
     @content;
   }
 }
 
-@mixin onMediumScreen {
-  @media (min-width: 900px) and (max-width: 1289px) {
-    @content;
-  }
-}
-
-@mixin onSmallAndMeduimScreen {
-  @media (min-width: 320px) and (max-width: 1289px) {
-    @content;
-  }
-}
-
-@mixin fromMediumScreen {
-  @media (min-width: 900px) {
+@mixin onTablet {
+  @media (min-width: 767px) and (max-width: 1199px) {
     @content;
   }
 }
 
 @mixin onDesktop {
-  @media (min-width: 1280px) {
+  @media (min-width: 1199px) {
     @content;
   }
 }
 
-@mixin onLargeDesktop {
-  @media (min-width: 1440px) {
+@mixin onMobileAndTablet {
+  @media (min-width: 320px) and (max-width: 1199px) {
     @content;
   }
 }
+
+@mixin onTabletAndDesktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+

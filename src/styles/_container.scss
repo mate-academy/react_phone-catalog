@@ -1,6 +1,16 @@
+@import "./utils/mixins";
+
 .container {
   margin: 0 auto 80px;
   max-width: 1136px;
+
+  @include onTablet {
+    max-width: 640px;
+  }
+
+  @include onMobile {
+    max-width: 288px;
+  }
 
   &-footer {
     margin-bottom: 0;

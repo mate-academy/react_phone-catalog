@@ -6,8 +6,8 @@
 
   border-bottom: 1px solid $c-elements;
 
-  @include fromMediumScreen {
-    justify-content: initial;
+  @include onTablet {
+    justify-content: space-around
   }
 
   &__navigation {
@@ -15,7 +15,7 @@
     gap: 64px;
     margin: 0 10px;
 
-    @include fromMediumScreen {
+    @include onTabletAndDesktop {
       margin: 0 24px;
     }
   }

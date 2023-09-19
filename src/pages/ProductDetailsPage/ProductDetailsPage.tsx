@@ -102,11 +102,9 @@ export const ProductDetailsPage = () => {
     <section className="product-details container">
       <HistoryLocation />
 
-      {!currentProduct && (
-        <PageNotFound />
-      )}
+      {!currentProduct && <PageNotFound />}
 
-      {isLoading && !isError && <Loader />}
+      {!isError && isLoading && <Loader />}
 
       {!isError && !isLoading && currentProduct && (
         <>

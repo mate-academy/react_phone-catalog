@@ -26,11 +26,21 @@ export const ProductSlider: React.FC<Props> = ({
 
   return (
     <Swiper
-      slidesPerView={4}
-      spaceBetween={16}
       navigation={navigationMode}
       modules={[Navigation]}
       className="product-slider container"
+      breakpoints={{
+        1024: {
+          width: 656,
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1440: {
+          width: 1146,
+          slidesPerView: 4,
+          spaceBetween: 16,
+        },
+      }}
     >
 
       <div className="product-slider__header">

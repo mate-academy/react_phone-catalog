@@ -24,7 +24,7 @@ type Props = {
 export const List: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
-  const perPageLength = Number(searchParams.get('perPage')) || products.length;
+  const perPageLength = Number(searchParams.get('perPage')) || 16;
 
   const startPage = (currentPage * perPageLength) - perPageLength;
   const endPage = Math.min(currentPage * perPageLength, products.length);
@@ -76,7 +76,7 @@ export const List: React.FC<Props> = ({ products }) => {
           <div className="product-list__dropdowns--item">
             <DropDown
               label="Items on page"
-              startValue="All"
+              startValue="16"
               searchName="perPage"
               options={itemsOnPage}
             />

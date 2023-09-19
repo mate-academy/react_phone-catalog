@@ -4,7 +4,7 @@
   position: relative;
   display: inline-block;
 
-  @include onMediumScreen {
+  @include onTabletAndDesktop {
     display: block;
     margin: 0;
   }

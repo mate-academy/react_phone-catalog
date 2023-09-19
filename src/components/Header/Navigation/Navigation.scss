@@ -3,7 +3,7 @@
 .Navigation {
   display: none;
 
-  @include fromMediumScreen {
+  @include onDesktop {
     display: flex;
   }
 

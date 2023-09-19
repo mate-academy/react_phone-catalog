@@ -25,9 +25,10 @@
     }
 
     &-disabled {
-      border-color: $c-elements;
       cursor: none;
       pointer-events: none;
+
+      opacity: 0.5;
     }
 
     &-right {

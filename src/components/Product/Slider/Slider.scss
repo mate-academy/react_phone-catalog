@@ -35,10 +35,18 @@
         font-size: 12px !important;
         color: $c-primary;
       }
+
+      @include onTablet {
+        left: 92% !important;
+      }
     }
 
     &-button-prev {
       left: 92% !important;
+
+      @include onTablet {
+        left: 84% !important;
+      }
     }
   }
 }

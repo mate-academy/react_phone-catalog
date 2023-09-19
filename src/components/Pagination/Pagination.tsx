@@ -39,7 +39,7 @@ export const Pagination: React.FC<Props> = ({
       <Link
         aria-disabled={isFirstPage}
         className={classNames('pagination--button', 'pagination--button-left', {
-          'pagination--button-left-disabled': isFirstPage,
+          'pagination--button-disabled': isFirstPage,
         })}
         to={{
           search: getSearchWith(
@@ -120,8 +120,9 @@ export const Pagination: React.FC<Props> = ({
 
       <Link
         className={classNames('pagination--button',
-          'pagination--button-right',
-          { 'pagination--button-right-disabled': isLastPage })}
+          'pagination--button-right', {
+            'pagination--button-disabled': isLastPage,
+          })}
         data-cy="paginationRight"
         to={{
           search: getSearchWith(

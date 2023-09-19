@@ -3,11 +3,12 @@
 .Menu {
   background: center no-repeat;
 
-  @include fromMediumScreen {
+  @include onDesktop {
     display: none;
   }
 
   &__content--top {
+    position: relative;
     display: flex;
     justify-content: flex-end;
   }
@@ -20,6 +21,7 @@
 
     cursor: pointer;
     background: none;
+
   }
 
   &__open {
@@ -28,6 +30,9 @@
 
   &__close {
     background-image: url("../../../images/icons/icon-close.svg");
+
+    position: absolute;
+    right: 7%;
   }
 
   &__content {
@@ -57,6 +62,10 @@
         opacity: 1;
       }
     }
+  }
+
+  &__list {
+    margin-top: 50px;
   }
 
   &__item {
