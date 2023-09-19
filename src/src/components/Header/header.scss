@@ -1,0 +1,26 @@
+.header {
+  width: 100%;
+  box-shadow: 0 1px 0 0 $gray-elements;
+  padding: 0 0 0 24px;
+  border-left: 1px solid $gray-elements;
+  border-right: 1px solid $gray-elements;
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 64px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+  }
+}

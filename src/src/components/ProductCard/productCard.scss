@@ -1,0 +1,139 @@
+.product {
+  border: 1px solid $gray-elements;
+  padding: 32px 24px 24px;
+  width: 272px;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    height: 276px;
+  }
+
+  &__image {
+    height: 100%;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    color: $gray-primary;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 22.5px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: $gray-elements;
+      margin-top: 38px;
+    }
+  }
+
+  &__price-with-discount {
+    color: $gray-primary;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-right: 8px;
+  }
+
+  &__fullPrice {
+    color: $gray-secondary;
+    font-size: 22px;
+    text-decoration-line: line-through;
+  }
+
+  &__properties {
+    margin-bottom: 16px;
+  }
+
+  &__screen,
+  &__capacity,
+  &__RAM {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__screen-text,
+  &__capacity-text,
+  &__RAM-text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__screen-value,
+  &__capacity-value,
+  &__RAM-value {
+    color: $gray-primary;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons-cart {
+    display: block;
+    width: 176px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    line-height: 21px;
+    padding: 10px 36px;
+    background-color: $gray-primary;
+    margin-right: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: white;
+      border-color: $gray-secondary;
+      color: $gray-primary;
+      border-radius: 20px;
+    }
+  }
+
+  &__buttons-favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $gray-elements;
+      border-radius: 5px;
+    }
+  }
+}
