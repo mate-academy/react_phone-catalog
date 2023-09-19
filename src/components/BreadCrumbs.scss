@@ -1,0 +1,49 @@
+@import '../styles/variables.scss';
+
+.bread-crumbs {
+  display: flex;
+  align-items: center;
+
+  &__home {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icons/home.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__arrow {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    padding: 0 8px;
+    background-repeat: no-repeat;
+    background-image: url(../img/icons/arrow-right.svg);
+    background-position: center;
+  }
+
+  &__item {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+
+    &::before {
+      display: inline-block;
+      content: "";
+      width: 16px;
+      height: 16px;
+      margin: 0 8px;
+      background-image: url(../img/icons/arrow-right.svg);
+      transform: translateY(3px);
+    }
+
+    &--link {
+      color: $gray-primary;
+    }
+
+    &--text {
+      color: $gray-secondary;
+    }
+  }
+}

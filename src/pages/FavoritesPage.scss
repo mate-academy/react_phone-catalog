@@ -1,0 +1,37 @@
+@import '../styles/variables.scss';
+
+.favorites {
+  padding-top: 25px;
+  margin-bottom: 80px;
+
+  &__bread-crumbs {
+    margin-bottom: 40px;
+  }
+  
+  &__title {
+    margin-bottom: 8px;
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__product-count {
+    margin-bottom: 40px;
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 1136px;
+    margin-bottom: 40px;
+    color: $gray-primary;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}

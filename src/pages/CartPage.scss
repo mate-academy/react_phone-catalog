@@ -1,0 +1,86 @@
+@import '../styles/variables.scss';
+
+.cart-page {
+  width: 1136px;
+  padding-top: 40px;
+  margin-bottom: 86px;
+  
+  &__back-link {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    color: $gray-primary;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__checkout {
+    box-sizing: border-box;
+    width: 368px;
+    height: 206px;
+    border: 1px solid $gray-elements;
+    padding: 24px;
+  }
+
+  &__total {
+    text-align: center;
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__total-items {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+    color: $gray-secondary;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 48px;
+    background-color: $gray-primary;
+    color: #fff;
+    text-align: center;
+    line-height: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all $transition-time;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 10px 20px 0 rgba(23, 32, 49, 0.26);
+      background-color: $gray-primary-hover;
+    }
+  }
+
+  &__message {
+    color: $gray-primary;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    transform: translateY(50px);
+  }
+}

@@ -1,0 +1,60 @@
+@import '../styles/variables.scss';
+
+.add-to-buttons {
+  display: flex;
+  gap: 8px;
+
+  &__cart {
+    display: block;
+    width: 176px;
+    height: 40px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    background-color: $gray-primary;
+    cursor: pointer;
+    transition: all $transition-time;
+
+    &:hover {
+      box-shadow: 0 5px 15px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--disable {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &--added {
+      background-color: #fff;
+      color: #27ae60;
+      border: 1px solid $gray-elements;
+
+      &:hover {
+        color: #27ae60;
+        border-color: $gray-elements;
+      }
+    }
+  }
+
+  &__favourites {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $gray-icons;
+    background-image: url(../img/icons/favourites.svg);
+    cursor: pointer;
+    transition: all $transition-time;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--selected {
+      background-image: url(../img/icons/favourites-red.svg);
+    }
+  }
+}

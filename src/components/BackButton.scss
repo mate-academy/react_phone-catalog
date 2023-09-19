@@ -1,0 +1,23 @@
+@import '../styles/variables.scss';
+
+.back-button {
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: $gray-secondary;
+  transition: color $transition-time;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icons/arrow-left.svg);
+  }
+
+  &:hover {
+    color: $gray-primary;
+  }
+}

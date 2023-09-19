@@ -1,0 +1,57 @@
+@import '../styles/variables.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 152px;
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $gray-elements;
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: color $transition-time;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+
+  &__up-arrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color $transition-time;
+
+    &:hover {
+      color: $gray-primary;
+    }
+
+    &::after {
+      content: url(../img/icons/arrow-up.svg);
+      width: 16px;
+      height: 16px;
+      padding: 8px;
+      border: 1px solid $gray-icons;
+      transition: border-color $transition-time;
+    }
+
+    &:hover::after {
+      border-color: $gray-primary;
+    }
+  }
+}

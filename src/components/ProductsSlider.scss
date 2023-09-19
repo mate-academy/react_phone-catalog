@@ -1,0 +1,59 @@
+@import '../styles/variables.scss';
+
+.products-slider {
+  width: 1136px;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    cursor: pointer;
+    transition: border-color $transition-time;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--left {
+      background-image: url(../img/icons/arrow-left.svg);
+    }
+
+    &--right {
+      background-image: url(../img/icons/arrow-right.svg);
+    }
+
+    &--disabled {
+      cursor: default;
+      border: 1px solid $gray-elements;
+      pointer-events: none;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__product-cards {
+    display: flex;
+    gap: 16px;
+    transition: transform $transition-time, width $transition-time;
+  }
+}

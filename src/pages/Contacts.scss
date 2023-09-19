@@ -1,0 +1,28 @@
+@import '../styles/variables.scss';
+
+.contacts {
+  padding-top: 24px;
+
+  &__bread-crumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__link {
+    color: $gray-secondary;
+    font-size: 20px;
+    font-weight: 500;
+    transition: color $transition-time;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}
