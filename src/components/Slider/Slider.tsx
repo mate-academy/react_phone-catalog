@@ -74,7 +74,7 @@ export const Slider = () => {
           >
             <img
               className="slider__arrow-left"
-              src="./_new/img/banner/arrow-left.svg"
+              src="./_new/img/icons/arrow-left.svg"
               alt="arrow-left"
             />
 
@@ -109,7 +109,7 @@ export const Slider = () => {
           >
             <img
               className="slider__arrow-right"
-              src="/_new/img/banner/arrow-right.svg"
+              src="./_new/img/icons/arrow-right.svg"
               alt="arrow-right"
             />
           </button>

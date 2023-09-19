@@ -27,7 +27,7 @@ export const HomePage = () => {
                 >
                   <img
                     className="hot-prices__arrow-left"
-                    src="/_new/img/banner/arrow-left.svg"
+                    src="/_new/img/icons/arrow-left.svg"
                     alt="arrow-left"
                   />
                 </button>
@@ -39,14 +39,14 @@ export const HomePage = () => {
                 >
                   <img
                     className="hot-prices__arrow-right"
-                    src="/_new/img/banner/arrow-right.svg"
+                    src="/_new/img/icons/arrow-right.svg"
                     alt="arrow-right"
                   />
                 </button>
               </div>
+              <SliderNew />
             </div>
 
-            <SliderNew />
           </section>
           {/* <section className="shop-by-category">
             <h1 className="title shop-by-category__title">

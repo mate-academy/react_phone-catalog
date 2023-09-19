@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Navigation } from '../Navigation/Navigation';
-// import logo from '../../../public/_new/img/picthree.bdd2e0fc.png';
 
 export const Header = () => (
   <>
@@ -13,7 +12,7 @@ export const Header = () => (
         >
           <img
             className="logo__img"
-            src="/_new/img/logo/logo.svg"
+            src="./_new/img/icons/logo.png"
             alt="logo"
           />
         </Link>
