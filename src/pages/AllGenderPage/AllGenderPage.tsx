@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
@@ -6,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { getData } from '../../helpers/httpClient';
 import { ITEMS_PER_PAGE, loadMore } from '../../helpers/Pagination';
 import { giveCurrency } from '../../helpers/giveCurrency';
+import { getFilteredItems } from '../../helpers/getFIlteredItems';
 
 import { Good } from '../../types/Good';
 
@@ -17,13 +19,13 @@ import { FilterItem } from '../../components/FilterItem/FilterItem';
 
 import './AllGenderPage.scss';
 
-const filterItems = [
-  'type',
-  'drop',
-  'sizes',
-  'colors',
-  'year',
-];
+const filterItems = {
+  type: ['coat', 'tShirt', 'accessories'],
+  drop: ['winter'],
+  sizes: ['XS', 'S', 'M', 'L', 'XL', 'Iphone 14 PRO MAX', 'Iphone 14 PRO', 'Iphone 14 PLUS', 'Iphone 14'],
+  colors: ['black', 'silver', 'kuroso'],
+  year: ['2022'],
+};
 
 export const AllGenderPage: React.FC = React.memo(() => {
   const { t } = useTranslation();
@@ -88,7 +90,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
           setActive={setIsFilterOpened}
         >
           <ul className="allGender__filter-list">
-            {filterItems.map(item => (
+            {Object.keys(filterItems).map(item => (
               <FilterItem
                 key={item}
                 rootClassName="allGender"
@@ -105,7 +107,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
               style={{
                 height: 'min-content',
               }}
-              data={renderedGoods}
+              data={getFilteredItems(renderedGoods, filterItems)}
               useWindowScroll
               totalCount={renderedGoods.length}
               overscan={6}

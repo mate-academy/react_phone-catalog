@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'Iphone 14 PRO MAX' | 'Iphone 14 PRO' | 'Iphone 14 PLUS' | 'Iphone 14';
-type Colors = 'black' | 'silver' | 'kuroso';
+export type Sizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'Iphone 14 PRO MAX' | 'Iphone 14 PRO' | 'Iphone 14 PLUS' | 'Iphone 14';
+export type Colors = 'black' | 'silver' | 'kuroso';
 
 export type Good = {
   [index: string]: string | number | any[] | null,
