@@ -27,7 +27,8 @@ export const HomePage: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const currentLanguage = searchParams.get('lang') || 'en';
 
-  const [goods, setGoods] = useState<Good[]>([]);
+  const [goodsForPreview, setGoodsForPreview] = useState<Good[]>([]);
+  const [goodsForSlider, setGoodsForSlider] = useState<Good[]>([]);
 
   const [previews, setPreviews] = useState<Preview[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +43,8 @@ export const HomePage: React.FC = React.memo(() => {
 
     getData<Good[]>('goods')
       .then(response => {
-        setGoods(response.slice(0, 5));
+        setGoodsForSlider(response);
+        setGoodsForPreview(response.slice(0, 5));
       })
       .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
@@ -84,15 +86,15 @@ export const HomePage: React.FC = React.memo(() => {
             />
           )}
 
-          {!isLoading && goods.length > 0 && (
+          {!isLoading && goodsForPreview.length > 0 && (
             getScreenType() === Resolutions.Mobile ? (
               <Slider
-                goods={goods}
+                goods={goodsForSlider}
                 rootClassName="homePage"
               />
             ) : (
               <ul className="homePage__goods-list">
-                {goods.map(good => {
+                {goodsForPreview.map(good => {
                   const {
                     images,
                     name,
