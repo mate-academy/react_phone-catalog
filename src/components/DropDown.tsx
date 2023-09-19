@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import './DropDown.scss';
 import { PerPageOptions } from '../types/PerPageOptions';
+import { SearchParamsKeys } from '../types/SearchParamsKeys';
 
 type Props = {
   title: string;
@@ -10,9 +11,6 @@ type Props = {
   sortKey: string;
   onPageChange?: (page: number) => void;
 };
-
-const PAGE_KEY = 'page';
-const PER_PAGE_KEY = 'perPage';
 
 export const DropDown: React.FC<Props> = ({
   title,
@@ -23,7 +21,7 @@ export const DropDown: React.FC<Props> = ({
   const [showList, setShowList] = useState(false);
   const [searchParams] = useSearchParams();
   const param = searchParams.get(sortKey);
-  const pageParam = searchParams.get(PAGE_KEY);
+  const pageParam = searchParams.get(SearchParamsKeys.page);
   const [buttonValue, setButtontValue] = useState(param || values[0]);
   const dropDownSelect = useRef<HTMLDivElement>(null);
 
@@ -45,15 +43,16 @@ export const DropDown: React.FC<Props> = ({
     const newParams = new URLSearchParams(searchParams);
 
     if ((pageParam && param !== value)
-      || (value !== PerPageOptions.all && sortKey === PER_PAGE_KEY)) {
-      newParams.set(PAGE_KEY, '1');
+      || (value !== PerPageOptions.all
+        && sortKey === SearchParamsKeys.perPage)) {
+      newParams.set(SearchParamsKeys.page, '1');
     }
 
     if (value !== PerPageOptions.all) {
       newParams.set(sortKey, value);
     } else {
       newParams.delete(sortKey);
-      newParams.delete(PAGE_KEY);
+      newParams.delete(SearchParamsKeys.page);
     }
 
     return newParams.toString();

@@ -4,13 +4,15 @@ import classNames from 'classnames';
 import { useFavouritesContext } from '../context/FavouritesContext';
 import { useCartContext } from '../context/CartContext';
 import { Logo } from './Logo';
+import { PagesWithSearch } from '../types/PagesWithSearch';
 import './Header.scss';
 
 interface Options {
   isActive: boolean
 }
 
-const PAGES_WITH_SEARCH = ['/phones', '/tablets', '/accessories', '/favorites'];
+const PAGES_WITH_SEARCH = Object.values(PagesWithSearch)
+  .map(item => item.toString());
 
 const getLinkClass = ({ isActive }: Options) => classNames('header__link', {
   'header__link--active': isActive,

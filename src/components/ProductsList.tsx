@@ -7,21 +7,9 @@ import { DropDown } from './DropDown';
 import { Pagination } from './Pagination';
 import { PerPageOptions } from '../types/PerPageOptions';
 import { SortByOptions } from '../types/SortByOptions';
+import { SearchParamsKeys } from '../types/SearchParamsKeys';
+import { PagesWithSearch } from '../types/PagesWithSearch';
 import './ProductsList.scss';
-
-const SORT_BY_KEY = 'sortBy';
-const SORT_OPTIONS = [SortByOptions.new, SortByOptions.az, SortByOptions.cost];
-
-const PAGE_KEY = 'page';
-const PER_PAGE_KEY = 'perPage';
-const PAGES_OPTIONS = [
-  PerPageOptions.all,
-  PerPageOptions.p4,
-  PerPageOptions.p8,
-  PerPageOptions.p16,
-];
-
-const SEARCH_KEY = 'query';
 
 type Props = {
   title: string;
@@ -34,17 +22,17 @@ export const ProductsList: React.FC<Props> = ({
 }) => {
   const [searchParams] = useSearchParams();
 
-  const sortBy = title !== 'Favourites'
-    ? searchParams.get(SORT_BY_KEY) || SortByOptions.new
+  const sortBy = title !== PagesWithSearch.favorites
+    ? searchParams.get(SearchParamsKeys.sortBy) || SortByOptions.new
     : 'default';
 
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
 
-  const perPage = searchParams.get(PER_PAGE_KEY) || false;
-  const pageFromParams = searchParams.get(PAGE_KEY) || '1';
+  const perPage = searchParams.get(SearchParamsKeys.perPage) || false;
+  const pageFromParams = searchParams.get(SearchParamsKeys.page) || '1';
   const [currentPage, setCurrentPage] = useState(+pageFromParams);
 
-  const query = searchParams.get(SEARCH_KEY)?.toLowerCase().trim();
+  const query = searchParams.get(SearchParamsKeys.query)?.toLowerCase().trim();
 
   const filteredProducts = query
     ? [...sortedProducts]
@@ -117,14 +105,14 @@ export const ProductsList: React.FC<Props> = ({
             <div className="product-list__sorting">
               <DropDown
                 title="Sort by"
-                values={SORT_OPTIONS}
-                sortKey={SORT_BY_KEY}
+                values={Object.values(SortByOptions)}
+                sortKey={SearchParamsKeys.sortBy}
               />
 
               <DropDown
                 title="Items on page"
-                values={PAGES_OPTIONS}
-                sortKey={PER_PAGE_KEY}
+                values={Object.values(PerPageOptions)}
+                sortKey={SearchParamsKeys.perPage}
                 onPageChange={(page: number) => setCurrentPage(page)}
               />
             </div>
