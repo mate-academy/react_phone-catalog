@@ -12,15 +12,3 @@ ReactDOM.render(
   </CartProvider>,
   document.getElementById('root'),
 );
-
-// import { createRoot } from 'react-dom/client';
-// import { ProductProvider } from './helpers/ProductsContext';
-// import { Root } from './Root';
-// import './index.scss';
-
-// createRoot(document.getElementById('root') as HTMLDivElement)
-//   .render(
-//     <ProductProvider>
-//       <Root />
-//     </ProductProvider>,
-//   );
