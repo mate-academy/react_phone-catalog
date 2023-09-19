@@ -23,8 +23,12 @@ export const HomePage = () => {
     .splice(0, 20);
 
   const newModelsProducts = [...products]
-    .filter(product => product.fullPrice === product.price)
+    .filter(product => product.year === 2019)
     .sort((a, b) => b.price - a.price);
+
+  // const newModelsProducts = [...products]
+  //   .filter(product => product.fullPrice === product.price)
+  //   .sort((a, b) => b.price - a.price);
 
   return (
     <div className="home-page">
