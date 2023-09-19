@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Wrapper } from 'components/Wrapper';
-import { FooterNavigation } from 'components/FooterNavigation';
+import { Wrapper, FooterNavigation } from 'components';
 import { AppRoutes } from 'config';
 import { IconButtonType } from 'types';
 import { IconButton } from 'components/ui-kit';
@@ -22,7 +21,10 @@ export const Footer = () => {
             className="footer__logo"
             to={AppRoutes.HomePage}
           >
-            <img alt="logo" src="./img/icons/logo.svg" />
+            <img
+              alt="logo"
+              src="./img/icons/logo.svg"
+            />
           </Link>
 
           <FooterNavigation />

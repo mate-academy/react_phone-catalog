@@ -1,8 +1,8 @@
 import { useCart, useProducts } from 'context';
-import './Header.scss';
 import { Navigation } from 'components/Navigation';
 import { Search } from 'components/Search';
 import { NavIcon } from 'components/NavIcon';
+import './Header.scss';
 
 export const Header = () => {
   const { favourites } = useProducts();
@@ -33,7 +33,6 @@ export const Header = () => {
           />
         </div>
       </div>
-
     </header>
   );
 };

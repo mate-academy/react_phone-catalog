@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import './Dots.scss';
 import { ImageType } from 'components/BannerSlider/BannerSlider';
+import './Dots.scss';
+
 
 type Props = {
   images: ImageType[],

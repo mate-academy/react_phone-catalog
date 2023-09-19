@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import './AvailableCapacity.scss';
 import { Link } from 'react-router-dom';
 import { AppRoutes } from 'config';
+import './AvailableCapacity.scss';
 
 type Props = {
   currCapacity: string,

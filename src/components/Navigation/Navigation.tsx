@@ -39,7 +39,6 @@ export const Navigation = () => {
           src="img/icons/logo.svg"
         />
       </Link>
-
       {renderNavLink()}
     </nav>
   );

@@ -8,15 +8,15 @@ const links = {
 
 export const FooterNavigation = () => {
   const linksRender = () => {
-    return Object.entries(links).map(link => (
+    return Object.entries(links).map(([name, link]) => (
       <a
-        key={link[0]}
+        key={name}
         className="footer-nav__link"
-        href={link[1]}
+        href={link}
         target="_blank"
         rel="noreferrer"
       >
-        {link[0]}
+        {name}
       </a>
     ));
   };
