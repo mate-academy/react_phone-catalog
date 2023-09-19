@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import './Dots.scss';
+import { ImageType } from 'components/BannerSlider/BannerSlider';
 
 type Props = {
-  images: string [][],
+  images: ImageType[],
   currentSlideIndex: number,
 };
 
@@ -11,7 +12,7 @@ export const Dots: React.FC<Props> = ({ images, currentSlideIndex }) => {
     <div className="dots">
       {images.map((image, ind) => (
         <div
-          key={image[0]}
+          key={image.id}
           className={classNames('dots__dot', {
             'dots__dot--active': ind === currentSlideIndex,
           })}

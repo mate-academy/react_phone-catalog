@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import './PhonesPage.scss';
-import { useProducts } from '../../context';
-import { ProductCard } from '../../components/ProductCard';
-import { Dropdown } from '../../bits';
+import { ProductSortingOption } from 'types';
+import { useProducts } from 'context';
+import { Dropdown } from 'components/ui-kit';
 import {
   BackButton,
   BreadCrumbs,
   Loader,
   Pagination,
-} from '../../components';
-import { SortByType } from '../../types/enums/SortByType';
+  ProductCard,
+} from 'components';
 
 const sortOptions = [
-  SortByType.alphabetically,
-  SortByType.newest,
-  SortByType.cheapest,
+  ProductSortingOption.alphabetically,
+  ProductSortingOption.newest,
+  ProductSortingOption.cheapest,
 ];
 
 const itemsOptions = ['all', '4', '8', '16'];
 
 export const PhonesPage = () => {
-  const { filteredProducts, setSortBy, isLoading } = useProducts();
-  const [itemsToShow, setItemsToShow] = useState<string>(SortByType.all);
+  const { filteredPhones, setSortBy, loading } = useProducts();
+  const [itemsToShow, setItemsToShow]
+    = useState<string>(ProductSortingOption.all);
   const [currentPage, setCurrentPage] = useState(1);
 
   const indexOfLastPhone = currentPage * Number(itemsToShow);
@@ -29,13 +30,13 @@ export const PhonesPage = () => {
 
   let currentPhones;
 
-  if (itemsToShow === SortByType.all) {
-    currentPhones = filteredProducts;
+  if (itemsToShow === ProductSortingOption.all) {
+    currentPhones = filteredPhones;
   } else {
-    currentPhones = filteredProducts.slice(indexOfFirstPhone, indexOfLastPhone);
+    currentPhones = filteredPhones.slice(indexOfFirstPhone, indexOfLastPhone);
   }
 
-  const phonesQuantity = filteredProducts.length;
+  const phonesQuantity = filteredPhones.length;
 
   const handleSortBy = (option: string) => {
     setSortBy(option);
@@ -47,7 +48,7 @@ export const PhonesPage = () => {
 
   return (
     <>
-      {isLoading
+      {loading
         ? (
           <Loader />
         )
@@ -92,12 +93,12 @@ export const PhonesPage = () => {
               ))}
             </div>
 
-            {itemsToShow !== SortByType.all && (
+            {itemsToShow !== ProductSortingOption.all && (
               <div className="phones__pagination-container">
                 <Pagination
-                  phonesPerPage={itemsToShow !== SortByType.all
+                  phonesPerPage={itemsToShow !== ProductSortingOption.all
                     ? Number(itemsToShow) : 0}
-                  totalPhones={filteredProducts.length}
+                  totalPhones={filteredPhones.length}
                   setCurrentPage={setCurrentPage}
                   currentPage={currentPage}
                 />

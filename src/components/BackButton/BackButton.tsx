@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import './BackButton.scss';
 
 export const BackButton = () => {
@@ -8,6 +7,7 @@ export const BackButton = () => {
 
   return (
     <button
+      type="button"
       className="back-button"
       data-cy="backButton"
       onClick={handleGoBack}

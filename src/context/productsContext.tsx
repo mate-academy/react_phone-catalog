@@ -7,18 +7,20 @@ import React, {
 import { Product } from '../types';
 import { getProducts } from '../api/products';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import { SortByType } from '../types/enums/SortByType';
+import { ProductSortingOption } from '../types/enums/ProductSortingOption';
 
 type ProductContext = {
   products: Product[],
   favourites: Product [],
   setFavourites: (product: Product[]) => void,
-  filteredProducts: Product[],
+  filteredPhones: Product[],
   sortBy: string,
   setSortBy: (type: string) => void,
   searchQuery: string,
   setSearchQuery: (query: string) => void,
-  isLoading: boolean,
+  loading: boolean,
+  filteredTablets: Product[],
+  filteredAccessories: Product[],
 };
 
 export const ProductsContext = React
@@ -32,58 +34,80 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [favourites, setFavourites]
   = useLocalStorage<Product[]>('favourites', []);
-  const [sortBy, setSortBy] = useState<string>(SortByType.all);
+  const [sortBy, setSortBy] = useState<string>(ProductSortingOption.all);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
+    setLoading(true);
 
     getProducts()
       .then(setProducts)
-      .finally(() => setIsLoading(false));
+      .finally(() => setLoading(false));
   }, []);
 
-  const filteredProducts = useMemo(() => {
-    const sortedProducts = [...products];
+  const categories = {
+    phones: products.filter(product => product.category === 'phones'),
+    tablets: products.filter(product => product.category === 'tablets'),
+    accessories: products.filter(product => product.category === 'accessories'),
+  };
+
+  const { phones, tablets, accessories } = categories;
+
+  const getFilteredProducts = (productsToFilter: Product[]) => {
+    const sortedProducts = [...productsToFilter];
 
     switch (sortBy) {
-      case SortByType.all:
+      case ProductSortingOption.all:
         return sortedProducts;
-      case SortByType.alphabetically:
+      case ProductSortingOption.alphabetically:
         return sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
-      case SortByType.newest:
+      case ProductSortingOption.newest:
         return sortedProducts.sort((a, b) => b.year - a.year);
-      case SortByType.cheapest:
+      case ProductSortingOption.cheapest:
         return sortedProducts.sort((a, b) => a.price - b.price);
       default:
         return sortedProducts;
     }
-  }, [sortBy, products]);
+  };
 
-  const filteredProductsByQuery = filteredProducts
+  const filteredPhones = useMemo(() => {
+    return getFilteredProducts(phones);
+  }, [sortBy, phones]);
+
+  const filteredTablets = useMemo(() => {
+    return getFilteredProducts(tablets);
+  }, [sortBy, tablets]);
+
+  const filteredAccessories = useMemo(() => {
+    return getFilteredProducts(accessories);
+  }, [sortBy, tablets]);
+
+  const searchInPhones = filteredPhones
     .filter((product) => product.name
       .toLowerCase()
-      .includes(searchQuery
+      .includes(searchQuery.trim()
         .toLowerCase()));
 
-  const filteredFavouritesByQuery = favourites
+  const searchInFavorites = favourites
     .filter((product) => product.name
       .toLowerCase()
       .includes(searchQuery
         .toLowerCase()));
 
   const value = {
-    filteredProducts: filteredProductsByQuery,
+    filteredPhones: searchInPhones,
     products,
-    favourites: filteredFavouritesByQuery,
+    favourites: searchInFavorites,
     setFavourites,
     setProducts,
     setSortBy,
     sortBy,
     searchQuery,
     setSearchQuery,
-    isLoading,
+    loading,
+    filteredTablets,
+    filteredAccessories,
   };
 
   return (

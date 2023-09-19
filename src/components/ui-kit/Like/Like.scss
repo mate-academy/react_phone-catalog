@@ -5,7 +5,7 @@
 
   width: 40px;
   height: 40px;
-  background-image: url(../../assets/icons/fav.svg);
+  background-image: url(../../../assets/icons/fav.svg);
   background-position: center;
   background-repeat: no-repeat;
   border: 1px solid $elements;
@@ -13,7 +13,7 @@
 
   &:active {
     background-color: $font-white;
-    background-image: url(../../assets/icons/favFilled.svg);
+    background-image: url(../../../assets/icons/favFilled.svg);
     border-color: $elements;
   }
 
@@ -27,7 +27,7 @@
   }
 
   &--selected {
-    background-image: url(../../assets/icons/favFilled.svg);
+    background-image: url(../../../assets/icons/favFilled.svg);
     border-color: $elements;
   }
 

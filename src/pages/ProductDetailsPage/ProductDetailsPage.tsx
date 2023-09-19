@@ -1,20 +1,19 @@
 /* eslint-disable consistent-return */
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import './ProductDetailsPage.scss';
+import { useCart, useProducts } from 'context';
+import { getProductById } from 'api/products';
+import { ButtonType, Phone } from 'types';
 import {
   BackButton,
   BreadCrumbs,
+  Loader,
   ProductsSlider,
   Wrapper,
-  Loader,
-} from '../../components';
+} from 'components';
+import { Button, Like, LikeSize } from 'components/ui-kit';
 import { AvailableCapacity, Colors, ProductImage } from './components';
-import { getProductById } from '../../api/products';
-import { ButtonType, Phone } from '../../types';
-import { Button, Like } from '../../bits';
-import { useProducts } from '../../context';
-import { useCart } from '../../context/cartContext';
+import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -55,35 +54,46 @@ export const ProductDetailsPage = () => {
     }
   };
 
-  const isProductInCart = cart.some(item => item.itemId === phone?.id);
+  const existInFavourites = favourites
+    .some(likedProducts => likedProducts.itemId === phone?.id);
+
+  const productIsInCart = cart.some(item => item.itemId === phone?.id);
 
   const addItemToCart = () => {
-    const product = products.find(i => i.itemId === phone?.id);
+    if (phone) {
+      const product = products.find(i => i.itemId === phone?.id);
 
-    if (!product) {
-      return;
+      if (!product) {
+        return;
+      }
+
+      const productIndexInCart = cart
+        .findIndex(cartProduct => cartProduct.id === product.id);
+      const productExistInCart = productIndexInCart !== -1;
+
+      if (!productExistInCart) {
+        const newItem = {
+          ...product,
+          cartQuantity: 1,
+        };
+
+        addToCart([...cart, newItem]);
+      }
     }
-
-    const productIndexInCart = cart
-      .findIndex(cartProduct => cartProduct.id === product.id);
-    const productExistInCart = productIndexInCart === -1;
-
-    if (!productExistInCart) {
-      const newItem = {
-        ...product,
-        cartQuantity: 1,
-      };
-
-      addToCart([...cart, newItem]);
-    }
-
-    const newCart = [...cart];
-
-    newCart[productIndexInCart] = {
-      ...cart[productIndexInCart],
-      cartQuantity: cart[productIndexInCart].cartQuantity + 1,
-    };
   };
+
+  const searchForSimilarProducts = () => {
+    const preparedPhones = products
+      .filter(phoneItem => phoneItem.itemId !== phone?.id);
+
+    return preparedPhones
+      .filter(productItem => productItem.capacity === phone?.capacity
+        || productItem.screen === phone?.screen);
+  };
+
+  const youMayAlsoLikeProducts = useMemo(() => {
+    return searchForSimilarProducts();
+  }, [products, phone]);
 
   return (
     <>
@@ -133,16 +143,16 @@ export const ProductDetailsPage = () => {
 
                     <div className="product-details__btns-block">
                       <Button
-                        size={ButtonType.large}
-                        id={phone.id}
-                        handler={addItemToCart}
-                        disabled={isProductInCart}
+                        buttonType={ButtonType.CartLarge}
+                        existInCart={productIsInCart}
+                        onClickHandler={addItemToCart}
+                        disabled={productIsInCart}
                       />
 
                       <Like
-                        size="large"
-                        handler={handleLike}
-                        id={phone.id}
+                        size={LikeSize.Large}
+                        onClickHandler={handleLike}
+                        liked={existInFavourites}
                       />
                     </div>
 
@@ -266,13 +276,12 @@ export const ProductDetailsPage = () => {
                 <div className="product-details__also-like-container">
                   <ProductsSlider
                     title="you may also like"
-                    products={products}
+                    products={youMayAlsoLikeProducts}
                   />
                 </div>
               </Wrapper>
             </div>
           )
-
         )}
     </>
   );

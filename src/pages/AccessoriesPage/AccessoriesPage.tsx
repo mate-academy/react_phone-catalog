@@ -1,15 +1,48 @@
-import { BreadCrumbs, Sorry, Wrapper } from '../../components';
+import { useProducts } from 'context';
+import {
+  BackButton,
+  BreadCrumbs,
+  Loader,
+  Sorry,
+  Wrapper,
+} from 'components';
 import './AccessoriesPage.scss';
 
 export const AccessoriesPage = () => {
+  const { filteredAccessories, loading } = useProducts();
+
   return (
-    <div className="accessories">
-      <Wrapper>
-        <div className="accessories__path-container">
-          <BreadCrumbs />
-        </div>
-        <Sorry type="accessories" />
-      </Wrapper>
-    </div>
+    <>
+      {loading
+        ? (
+          <Loader />
+        )
+        : (
+          <div className="accessories">
+            <Wrapper>
+              <div className="accessories__path-container">
+                <BreadCrumbs />
+              </div>
+
+              <div className="accessories__back-button-container">
+                <BackButton />
+              </div>
+
+              <div className="accessories__heading">
+                <h1 className="accessories__title">Accessories</h1>
+                <p
+                  className="accessories__quantity"
+                >
+                  {`${filteredAccessories.length} items`}
+                </p>
+              </div>
+
+              {filteredAccessories && !filteredAccessories.length && (
+                <Sorry type="accessories" />
+              )}
+            </Wrapper>
+          </div>
+        )}
+    </>
   );
 };

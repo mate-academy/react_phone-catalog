@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AppRoutes } from 'config';
 import './Sorry.scss';
 
 type Props = {
@@ -14,7 +15,7 @@ export const Sorry: React.FC<Props> = ({ type }) => {
         We appreciate your understanding.
         Maybe you want to go back to `}
         <Link
-          to="/"
+          to={AppRoutes.Root}
           className="sorry__link"
         >
           Home page.

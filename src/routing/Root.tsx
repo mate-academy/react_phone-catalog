@@ -3,18 +3,18 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import App from './App';
+import { AppRoutes } from 'config';
 import {
-  HomePage,
-  PhonesPage,
-  TabletsPage,
   AccessoriesPage,
+  HomePage,
   NotFound,
+  PhonesPage,
   ProductDetailsPage,
-} from './pages';
-import { Cart } from './pages/Cart';
-import { Favourites } from './pages/Favourites';
-import { AppRoutes } from './config';
+  TabletsPage,
+  Cart,
+  Favourites,
+} from 'pages';
+import App from 'App';
 
 type RootT = {
   element: JSX.Element,
@@ -35,6 +35,9 @@ export const pages = {
 };
 
 export const routes: RootsT = {
+  [AppRoutes.Root]: {
+    element: <HomePage />,
+  },
   [AppRoutes.HomePage]: {
     element: <HomePage />,
     index: true,
@@ -70,7 +73,7 @@ const configuredRoutes = Object
   .map(([path, route]) => {
     if (Object.hasOwn(route, 'childRoute')) {
       return (
-        <Route path={path}>
+        <Route key={path} path={path}>
           {route.childRoute}
         </Route>
       );
@@ -78,6 +81,7 @@ const configuredRoutes = Object
 
     return (
       <Route
+        key={path}
         path={path}
         element={route.element}
         index={route.index}

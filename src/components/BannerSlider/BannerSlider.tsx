@@ -1,49 +1,55 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import './BannerSlider.scss';
-import { SideButton, Dots } from './components';
-import { Direction } from '../../types/enums/Direction';
+import { Dots, SideButton } from './components';
 
-const images = {
-  phones: 'img/banner-phones.png',
-  tablets: 'img/banner-tablets.png',
-  accessories: 'img/banner-accessories.png',
+export enum BannerSliderDirection {
+  Back = 'back',
+  Next = 'next',
+}
+
+export type ImageType = {
+  id: string;
+  src: string;
 };
 
-const IMAGE_CHANGE_INTERVAL = 5000;
+const images: ImageType[] = [
+  { id: 'phones', src: 'img/banner-phones.png' },
+  { id: 'tablets', src: 'img/banner-tablets.png' },
+  { id: 'accessories', src: 'img/banner-accessories.png' },
+];
+
+const IMAGE_CHANGE_INTERVAL = 2000;
+const SLIDE_WIDTH = 1040;
 
 export const BannerSlider = () => {
-  const [position, setPosition] = useState<Direction | number>(0);
+  const [position, setPosition] = useState<number>(0);
   const [currentSlideIndex, setCurrentSlide] = useState(0);
 
-  const imgContainerRef = useRef(null);
-
-  const imagesEntries = Object.entries(images);
-
-  const handleSlide = (action: 'back' | 'next') => {
-    if (action === 'next') {
-      if (currentSlideIndex >= imagesEntries.length - 1) {
+  const handleSlide = (action: BannerSliderDirection) => {
+    if (action === BannerSliderDirection.Next) {
+      if (currentSlideIndex >= images.length - 1) {
         setCurrentSlide(0);
         setPosition(0);
       } else {
         setCurrentSlide(prev => prev + 1);
-        setPosition(prev => prev + Direction.next);
+        setPosition(prev => prev - SLIDE_WIDTH);
       }
     }
 
-    if (action === 'back') {
+    if (action === BannerSliderDirection.Back) {
       if (currentSlideIndex <= 0) {
-        setCurrentSlide(imagesEntries.length - 1);
-        setPosition(Direction.next * (imagesEntries.length - 1));
+        setCurrentSlide(images.length - 1);
+        setPosition(-SLIDE_WIDTH * (images.length - 1));
       } else {
         setCurrentSlide(prev => prev - 1);
-        setPosition(prev => prev + Direction.back);
+        setPosition(prev => prev + SLIDE_WIDTH);
       }
     }
   };
 
   useEffect(() => {
     const sliderInterval = setInterval(() => {
-      handleSlide('next');
+      handleSlide(BannerSliderDirection.Next);
     }, IMAGE_CHANGE_INTERVAL);
 
     return () => {
@@ -55,17 +61,16 @@ export const BannerSlider = () => {
     <div className="banner-slider">
       <div className="banner-slider__upper-content">
         <SideButton
-          side="back"
+          side={BannerSliderDirection.Back}
           handleSlide={handleSlide}
         />
 
         <div
           className="banner-slider__img-container"
-          ref={imgContainerRef}
         >
-          {imagesEntries.map(image => (
+          {images.map(({ id, src }) => (
             <div
-              key={image[0]}
+              key={id}
               className="banner-slider__picture"
               style={{
                 transform: `translate(${position}px)`,
@@ -74,8 +79,8 @@ export const BannerSlider = () => {
             >
               <img
                 className="banner-slider__img"
-                alt={image[0]}
-                src={image[1]}
+                alt={id}
+                src={src}
               />
             </div>
           ))}
@@ -83,12 +88,12 @@ export const BannerSlider = () => {
 
         <SideButton
           handleSlide={handleSlide}
-          side="next"
+          side={BannerSliderDirection.Next}
         />
       </div>
 
       <Dots
-        images={imagesEntries}
+        images={images}
         currentSlideIndex={currentSlideIndex}
       />
     </div>

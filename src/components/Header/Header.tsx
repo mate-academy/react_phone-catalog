@@ -1,9 +1,8 @@
-import { useProducts } from '../../context';
-import { useCart } from '../../context/cartContext';
-import { NavIcon } from '../NavIcon';
-import { Navigation } from '../Navigation';
-import { Search } from '../Search';
+import { useCart, useProducts } from 'context';
 import './Header.scss';
+import { Navigation } from 'components/Navigation';
+import { Search } from 'components/Search';
+import { NavIcon } from 'components/NavIcon';
 
 export const Header = () => {
   const { favourites } = useProducts();

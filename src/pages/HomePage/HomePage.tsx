@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import './HomePage.scss';
+import { useProducts } from 'context';
 import {
   BannerSlider,
   Categories,
   ProductsSlider,
   Wrapper,
-} from '../../components';
-import { useProducts } from '../../context';
+} from 'components';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const { products } = useProducts();

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Button } from '../../bits';
-import { ButtonType, Product } from '../../types';
+import { useCart, useProducts } from 'context';
+import { Button, Like } from 'components/ui-kit';
+import { ButtonType, Product } from 'types';
 import './ProductCard.scss';
-import { useProducts } from '../../context';
-import { Like } from '../../bits/Like';
-import { useCart } from '../../context/cartContext';
+import { AppRoutes } from 'config';
 
 type Props = {
   product: Product,
@@ -44,10 +43,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
   };
 
-  const isProductInCart = cart.some(item => item.itemId === itemId);
+  const existInFavourites = favourites
+    .some(likedProduct => likedProduct.itemId === product.itemId);
+
+  const existProductInCart = cart.some(item => item.itemId === itemId);
 
   const addItemToCart = () => {
-    if (!isProductInCart) {
+    if (!existProductInCart) {
       const newItem = {
         ...product,
         cartQuantity: 1,
@@ -59,14 +61,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
 
     const productIndexInCart = cart
-      .findIndex(cartProduct => cartProduct.id === product.id);
+      .findIndex(cartProduct => cartProduct.itemId === product.itemId);
 
-    const newCart = [...cart];
+    if (productIndexInCart !== -1) {
+      const newCart = [...cart];
 
-    newCart[productIndexInCart] = {
-      ...cart[productIndexInCart],
-      cartQuantity: cart[productIndexInCart].cartQuantity + 1,
-    };
+      newCart[productIndexInCart] = {
+        ...cart[productIndexInCart],
+        cartQuantity: cart[productIndexInCart].cartQuantity + 1,
+      };
+
+      addToCart(newCart);
+    }
 
     return null;
   };
@@ -76,7 +82,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       className="product-card"
     >
       <Link
-        to={`/phones/${phoneId}`}
+        to={`${AppRoutes.Phones}/${phoneId}`}
         className="product-card__link"
       >
         <img
@@ -104,15 +110,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="product-card__buttons-block">
         <Button
-          size={ButtonType.small}
-          handler={addItemToCart}
-          id={itemId}
-          disabled={isProductInCart}
+          buttonType={ButtonType.CartSmall}
+          onClickHandler={addItemToCart}
+          disabled={existProductInCart}
+          existInCart={existProductInCart}
         />
 
         <Like
-          handler={handleFavourite}
-          id={itemId}
+          onClickHandler={handleFavourite}
+          liked={existInFavourites}
         />
       </div>
     </div>

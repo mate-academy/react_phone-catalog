@@ -1,6 +1,7 @@
 @import "/src/style/main.scss";
 
 .products-slider {
+  box-sizing: border-box;
   overflow: hidden;
 
   &__upper {
@@ -22,7 +23,7 @@
   }
 
   &__list {
-    @include flex-between;
+    display: flex;
     gap: 16px;
   }
 }

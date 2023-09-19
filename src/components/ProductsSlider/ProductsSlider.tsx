@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { IconButtonType, Product } from 'types';
+import { IconButton } from 'components/ui-kit';
+import { ProductCard } from 'components';
 import './ProductsSlider.scss';
-import { IconButtonType, Product } from '../../types';
-import { IconButton } from '../../bits';
-import { ProductCard } from '../ProductCard';
 
 type Props = {
   products: Product[],
   title: string,
 };
+
+enum Action {
+  Dec = 'dec',
+}
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const visibleProducts = 4;
@@ -15,7 +19,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const end = start + visibleProducts;
 
   const handleVisibleProducts = (action: string | null) => () => {
-    return action === 'dec'
+    return action === Action.Dec
       ? setStart(prev => prev - visibleProducts)
       : setStart(prev => prev + visibleProducts);
   };
@@ -31,12 +35,12 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
           <IconButton
             type={IconButtonType.arrowBack}
             disabled={!start}
-            handler={handleVisibleProducts('dec')}
+            onClickHandler={handleVisibleProducts(Action.Dec)}
           />
 
           <IconButton
             type={IconButtonType.arrowNext}
-            handler={handleVisibleProducts(null)}
+            onClickHandler={handleVisibleProducts(null)}
             disabled={end >= products.length}
           />
         </div>
@@ -45,10 +49,10 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
       <div
         className="products-slider__list"
       >
-        {products.slice(start, end).map(prod => (
+        {products.slice(start, end).map(product => (
           <ProductCard
-            product={prod}
-            key={prod.id}
+            product={product}
+            key={product.id}
           />
         ))}
       </div>

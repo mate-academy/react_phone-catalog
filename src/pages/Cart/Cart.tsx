@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Button } from '../../bits';
-import { BackButton, Wrapper } from '../../components';
-import { ButtonType } from '../../types';
-import './Cart.scss';
+import { useCart } from 'context';
+import { Button } from 'components/ui-kit';
+import { BackButton, Wrapper } from 'components';
+import { ButtonType } from 'types';
 import { CartItem } from './components';
-import { useCart } from '../../context/cartContext';
+import './Cart.scss';
 
 export const Cart = () => {
   const { cart, totalPrice, totalQuantity } = useCart();
@@ -49,8 +49,8 @@ export const Cart = () => {
                   <p className="cart__quantity">{`Total for ${totalQuantity} items`}</p>
 
                   <Button
-                    size={ButtonType.checkout}
-                    handler={() => setMessage(true)}
+                    buttonType={ButtonType.Checkout}
+                    onClickHandler={() => setMessage(true)}
                   />
                 </div>
               )}

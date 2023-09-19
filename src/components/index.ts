@@ -1,5 +1,4 @@
 export { Footer } from './Footer';
-export { Navigation } from './Navigation';
 export { NavIcon } from './NavIcon';
 export { Header } from './Header';
 export { Wrapper } from './Wrapper';
@@ -13,3 +12,6 @@ export { Pagination } from './Pagination';
 export { Search } from './Search';
 export { Error } from './Error';
 export { Sorry } from './Sorry';
+export { Navigation } from './Navigation';
+export { FooterNavigation } from './FooterNavigation';
+export { ProductCard } from './ProductCard';

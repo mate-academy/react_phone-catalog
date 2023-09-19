@@ -1,6 +1,5 @@
-import { BreadCrumbs, Wrapper } from '../../components';
-import { ProductCard } from '../../components/ProductCard';
-import { useProducts } from '../../context';
+import { useProducts } from 'context';
+import { BreadCrumbs, ProductCard, Wrapper } from 'components';
 import './Favourites.scss';
 
 export const Favourites = () => {

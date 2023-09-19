@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo } from 'react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { CartProduct } from '../types/CartProduct';
+import { useLocalStorage } from 'hooks';
+import { CartProduct } from 'types';
 
 type ProductContext = {
   cart: CartProduct[],

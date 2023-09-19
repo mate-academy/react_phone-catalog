@@ -1,15 +1,31 @@
-import './Categories.scss';
+import { useProducts } from 'context';
 import { CategoryItem } from './components/CategoryItem';
-
-const categories = {
-  phones: 'img/category-phones.png',
-  tablets: 'img/category-tablets.png',
-  accessories: 'img/category-accessories.png',
-};
-
-const categoriesArray = Object.entries(categories);
+import './Categories.scss';
 
 export const Categories = () => {
+  const {
+    filteredPhones,
+    filteredTablets,
+    filteredAccessories,
+  } = useProducts();
+
+  const categories = {
+    phones: {
+      src: 'img/category-phones.png',
+      quantity: filteredPhones.length,
+    },
+    tablets: {
+      src: 'img/category-tablets.png',
+      quantity: filteredTablets.length,
+    },
+    accessories: {
+      src: 'img/category-accessories.png',
+      quantity: filteredAccessories.length,
+    },
+  };
+
+  const categoriesArray = Object.entries(categories);
+
   return (
     <div className="categories">
       <div className="categories__upper">
@@ -20,11 +36,12 @@ export const Categories = () => {
         className="categories__list"
         data-cy="categoryLinksContainer"
       >
-        {categoriesArray.map(category => (
+        {categoriesArray.map(([category, { src, quantity }]) => (
           <CategoryItem
-            key={category[0]}
-            category={category[0]}
-            link={category[1]}
+            key={category}
+            category={category}
+            link={src}
+            quantity={quantity}
           />
         ))}
       </div>

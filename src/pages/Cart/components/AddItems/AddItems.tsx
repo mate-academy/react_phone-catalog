@@ -1,8 +1,8 @@
-import { IconButton } from '../../../../bits';
-import { IconButtonType } from '../../../../types';
+import { useCart } from 'context';
+import { IconButton } from 'components/ui-kit';
+import { CartProduct } from 'types/CartProduct';
+import { IconButtonType } from 'types';
 import './AddItems.scss';
-import { CartProduct } from '../../../../types/CartProduct';
-import { useCart } from '../../../../context/cartContext';
 
 type Props = {
   product: CartProduct,
@@ -44,7 +44,7 @@ export const AddItems: React.FC<Props> = ({
       <IconButton
         type={IconButtonType.minus}
         disabled={product.cartQuantity < 2}
-        handler={decrementQuantity}
+        onClickHandler={decrementQuantity}
       />
 
       <p className="add-items__quantity">
@@ -53,7 +53,7 @@ export const AddItems: React.FC<Props> = ({
 
       <IconButton
         type={IconButtonType.plus}
-        handler={incrementQuantity}
+        onClickHandler={incrementQuantity}
       />
     </div>
   );

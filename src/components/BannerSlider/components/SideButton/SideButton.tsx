@@ -1,13 +1,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState } from 'react';
 import classNames from 'classnames';
-import './SideButton.scss';
+import { BannerSliderDirection } from 'components/BannerSlider/BannerSlider';
 import { Arrow } from '../Arrow';
 
+import './SideButton.scss';
+
 type Props = {
-  side: 'back' | 'next',
-  handleSlide: (action: 'back' | 'next') => void,
+  side: BannerSliderDirection,
+  handleSlide: (action: BannerSliderDirection) => void,
 };
+
+const HOVERED_ARROW_COLOR = '#000';
+const ARROW_COLOR = '#89939A';
 
 export const SideButton: React.FC<Props> = ({ side, handleSlide }) => {
   const [hover, setHover] = useState(false);
@@ -20,14 +25,14 @@ export const SideButton: React.FC<Props> = ({ side, handleSlide }) => {
     <button
       type="button"
       className={classNames('side-button', {
-        'side-button--left': side === 'back',
+        'side-button--left': side === BannerSliderDirection.Back,
       })}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={handleChangeSlide}
     >
       <Arrow
-        fill={hover ? '#000' : '#89939A'}
+        fill={hover ? HOVERED_ARROW_COLOR : ARROW_COLOR}
       />
     </button>
   );

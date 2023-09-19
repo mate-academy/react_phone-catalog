@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import './style/main.scss';
-import { Root } from './Root';
+import { Root } from './routing';
 
 ReactDOM.render(
   <Root />,

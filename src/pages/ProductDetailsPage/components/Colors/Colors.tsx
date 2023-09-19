@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import classNames from 'classnames';
-import './Colors.scss';
 import { Link } from 'react-router-dom';
+import { AppRoutes } from 'config';
+import { colorPallette } from './colorPallette';
+import './Colors.scss';
 
 type Props = {
   colors: string[],
@@ -25,22 +27,20 @@ export const Colors: React.FC<Props> = ({
           <div
             key={color}
             className="colors__item"
-            // onClick={() => setSelected(ind)}
           >
             <div className={classNames('colors__border', {
               'colors__border--selected': color === currColor,
             })}
             >
               <Link
-                to={`/phones/${nameSpaceId}-${capacity.toLowerCase()}-${color}`}
+                to={`${AppRoutes.Phones}/${nameSpaceId}-${capacity.toLowerCase()}-${color}`}
                 className="colors__circle"
-                style={{ backgroundColor: `${color}` }}
+                style={{ backgroundColor: `${colorPallette[color]}` }}
               />
             </div>
           </div>
         ))}
       </div>
-
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { IconButton } from '../../bits';
-import { IconButtonType } from '../../types';
+import { IconButton } from 'components/ui-kit';
+import { IconButtonType } from 'types';
 import './Pagination.scss';
 
 type Props = {
@@ -75,7 +75,7 @@ export const Pagination: React.FC<Props> = ({
       <IconButton
         data-cy="paginationLeft"
         type={IconButtonType.arrowBack}
-        handler={pageBack}
+        onClickHandler={pageBack}
       />
 
       <div className="pagination__pages">
@@ -95,7 +95,7 @@ export const Pagination: React.FC<Props> = ({
 
       <IconButton
         type={IconButtonType.arrowNext}
-        handler={pageNext}
+        onClickHandler={pageNext}
         data-cy="paginationRight"
       />
     </div>

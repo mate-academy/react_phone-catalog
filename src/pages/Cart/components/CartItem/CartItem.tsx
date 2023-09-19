@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
+import { AppRoutes } from 'config';
+import { CartProduct } from 'types';
+import { useCart } from 'context';
 import { AddItems } from '../AddItems';
 import './CartItem.scss';
-import { useCart } from '../../../../context/cartContext';
-import { CartProduct } from '../../../../types/CartProduct';
 
 type Props = {
   product: CartProduct,
@@ -38,7 +39,7 @@ export const CartItem: React.FC<Props> = ({
           />
 
           <Link
-            to={`/phones/${product.phoneId}`}
+            to={`${AppRoutes.Phones}/${product.phoneId}`}
             className="cart-item__link"
           >
             <h2

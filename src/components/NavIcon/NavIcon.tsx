@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { Counter } from 'components/Counter';
 import './NavIcon.scss';
-import { Counter } from '../Counter';
 
 type Props = {
   path: string,
@@ -36,7 +36,6 @@ export const NavIcon: React.FC<Props> = ({
       {count > 0 && (
         <Counter count={count} />
       )}
-
     </NavLink>
   );
 };

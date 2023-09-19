@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import './BreadCrumbs.scss';
+import { AppRoutes } from 'config';
 
 export const BreadCrumbs = () => {
   const location = useLocation().pathname
@@ -12,29 +13,29 @@ export const BreadCrumbs = () => {
       data-cy="breadCrumbs"
     >
       <Link
-        to="/"
+        to={AppRoutes.Root}
         className="bread-crumbs__home-icon"
       />
 
-      {location.map((loco, ind) => {
-        if (ind === location.length - 1) {
+      {location.map((path, index) => {
+        if (index === location.length - 1) {
           return (
             <div
-              key={loco}
+              key={path}
               className="bread-crumbs__link"
             >
-              {loco.split('-').join(' ')}
+              {path.split('-').join(' ')}
             </div>
           );
         }
 
         return (
           <Link
-            key={loco}
+            key={path}
             className="bread-crumbs__link"
-            to={`/${loco}`}
+            to={`${AppRoutes.Root}${path}`}
           >
-            {loco.split('-').join(' ')}
+            {path.split('-').join(' ')}
           </Link>
         );
       })}

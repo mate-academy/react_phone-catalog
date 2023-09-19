@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { ChangeEvent } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import { ChangeEvent, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useProducts } from 'context';
 import './Search.scss';
-import { useProducts } from '../../context';
 
 export const Search = () => {
   const location = useLocation();
@@ -17,6 +17,14 @@ export const Search = () => {
   };
 
   const placeholderName = `Search in ${location.pathname.substring(1)}`;
+
+  const handleSearchClear = () => {
+    setSearchQuery('');
+  };
+
+  useEffect(() => {
+    handleSearchClear();
+  }, [location]);
 
   return (
     <>
@@ -35,7 +43,7 @@ export const Search = () => {
                 src="img/icons/closeFill.svg"
                 className="search__icon-close"
                 data-cy="searchDelete"
-                onClick={() => setSearchQuery('')}
+                onClick={handleSearchClear}
               />
             )
             : (

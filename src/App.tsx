@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import './App.scss';
+import { ProductsProvider } from 'context/productsContext';
+import { CartProvider } from 'context/cartContext';
 import { Footer, Header } from './components';
-import { ProductsProvider } from './context/productsContext';
-import { CartProvider } from './context/cartContext';
+import './App.scss';
 
 const App = () => (
   <ProductsProvider>
@@ -12,7 +12,6 @@ const App = () => (
       <Footer />
     </CartProvider>
   </ProductsProvider>
-
 );
 
 export default App;

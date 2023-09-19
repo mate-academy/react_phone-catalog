@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
+import { Wrapper } from 'components/Wrapper';
+import { FooterNavigation } from 'components/FooterNavigation';
+import { AppRoutes } from 'config';
+import { IconButtonType } from 'types';
+import { IconButton } from 'components/ui-kit';
 import './Footer.scss';
-import { FooterNavigation } from '../FooterNavigation';
-import { IconButton } from '../../bits';
-import { Wrapper } from '../Wrapper';
-import { IconButtonType } from '../../types/enums/IconButtonType';
-import { AppRoutes } from '../../config';
 
 export const Footer = () => {
   const handleBackToTop = () => {
@@ -31,11 +31,10 @@ export const Footer = () => {
             <span className="footer__button-title">back to top</span>
             <IconButton
               type={IconButtonType.arrowUp}
-              handler={handleBackToTop}
+              onClickHandler={handleBackToTop}
             />
           </div>
         </div>
-
       </Wrapper>
     </footer>
   );

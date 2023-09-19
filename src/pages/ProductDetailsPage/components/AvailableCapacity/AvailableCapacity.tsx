@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import './AvailableCapacity.scss';
 import { Link } from 'react-router-dom';
+import { AppRoutes } from 'config';
 
 type Props = {
   currCapacity: string,
@@ -20,7 +21,7 @@ export const AvailableCapacity: React.FC<Props> = ({
       <div className="capacity__list">
         {capacities.map(capacity => (
           <Link
-            to={`/phones/${nameSpaceId}-${capacity.toLowerCase()}-${color}`}
+            to={`${AppRoutes.Phones}/${nameSpaceId}-${capacity.toLowerCase()}-${color}`}
             key={capacity}
             type="button"
             className={classNames('capacity__btn', {

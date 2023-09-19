@@ -1,8 +1,8 @@
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { pages } from '../../Root';
+import { AppRoutes } from 'config';
+import { pages } from 'routing';
 import './Navigation.scss';
-import { AppRoutes } from '../../config';
 
 const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites', 'productId'];
 

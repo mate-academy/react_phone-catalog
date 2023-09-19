@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
-import './ProductImage.scss';
 import classNames from 'classnames';
+import './ProductImage.scss';
 
 type Props = {
   images: string[],
@@ -10,6 +10,7 @@ type Props = {
 
 export const ProductImage: React.FC<Props> = ({ images }) => {
   const [selected, setSelected] = useState(0);
+  const [fullImage] = images;
 
   return (
     <div className="product-image">
@@ -34,7 +35,7 @@ export const ProductImage: React.FC<Props> = ({ images }) => {
       <div className="product-image__full-img-container">
         <img
           src={images[selected]}
-          alt={images[0]}
+          alt={fullImage}
           className="product-image__full-img"
         />
       </div>
