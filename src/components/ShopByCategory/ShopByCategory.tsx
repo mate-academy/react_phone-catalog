@@ -14,7 +14,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(({ products }) => {
   const getLengthByCategory = (
     arrProducts: Product[],
     type: ProductType,
-  ) => arrProducts.filter((product) => product.type === type).length;
+  ) => arrProducts.filter((product) => product.category === type).length;
 
   return (
     <div className="container">
@@ -28,7 +28,6 @@ export const ShopByCategory: React.FC<Props> = React.memo(({ products }) => {
             onClick={() => {
               window.scrollTo({
                 top: 0,
-                behavior: 'smooth',
               });
             }}
           >

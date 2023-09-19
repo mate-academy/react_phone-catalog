@@ -11,14 +11,14 @@ type Props = {
 export const HomePage: React.FC<Props> = React.memo(({ products }) => {
   const getHotPriceProducts = useMemo(() => {
     return products
-      .filter((product) => product.discount > 0)
-      .sort((a, b) => a.discount - b.discount);
+      .filter((product) => product.price)
+      .sort((a, b) => b.price - a.price);
   }, [products]);
 
   const getBrandNewProducts = useMemo(() => {
     return products
-      .filter((product) => product.discount === 0)
-      .sort((a, b) => b.price - a.price);
+      .filter((product) => !product.price)
+      .sort((a, b) => b.year - a.year);
   }, [products]);
 
   return (

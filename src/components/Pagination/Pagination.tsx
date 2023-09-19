@@ -4,6 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 import { generatePageNumbers } from '../../helpers/generatePageNumbers';
 import { getSearchWith } from '../../helpers/searchHelper';
+import { renderPages } from './renderPages';
 
 import arrowLeft from '../../images/arrows/arrow-left.svg';
 import arrowRight from '../../images/arrows/arrow-right.svg';
@@ -23,6 +24,8 @@ export const Pagination: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
 
   const pages = generatePageNumbers(productsLength, pageSize);
+  const firstPage = 1;
+  const lastPage = pages.length;
 
   return (
     <div className="Pagination" data-cy="pagination">
@@ -30,29 +33,58 @@ export const Pagination: React.FC<Props> = ({
         className="Pagination__button Pagination__button--prev"
         data-cy="paginationLeft"
         to={{
-          search: getSearchWith(searchParams, { currentPage: currentPage !== 1 ? `${currentPage - 1}` : '1' }),
+          search: getSearchWith(searchParams, {
+            currentPage: currentPage !== firstPage ? `${currentPage - 1}` : '1',
+          }),
         }}
       >
         <img src={arrowLeft} alt="previous page button" />
       </Link>
-      {pages.map((pageNumber) => (
-        <Link
-          key={pageNumber}
-          to={{
-            search: getSearchWith(searchParams, { currentPage: `${pageNumber}` }),
-          }}
-          className={cn('Pagination__button', 'Pagination__button--page', {
-            active: currentPage === pageNumber,
-          })}
-        >
-          {pageNumber}
-        </Link>
-      ))}
+
+      <Link
+        key={firstPage}
+        to={{
+          search: getSearchWith(searchParams, {
+            currentPage: `${firstPage}`,
+          }),
+        }}
+        className={cn('Pagination__button', 'Pagination__button--page', {
+          active: currentPage === firstPage,
+        })}
+      >
+        {1}
+      </Link>
+
+      {currentPage > 3 && <div className="Pagination__dots">...</div>}
+
+      {renderPages(pages, currentPage, searchParams)}
+
+      {pages.length - 1 > currentPage && (
+        <div className="Pagination__dots">...</div>
+      )}
+
+      <Link
+        key={lastPage}
+        to={{
+          search: getSearchWith(searchParams, {
+            currentPage: `${lastPage}`,
+          }),
+        }}
+        className={cn('Pagination__button', 'Pagination__button--page', {
+          active: currentPage === lastPage,
+        })}
+      >
+        {lastPage}
+      </Link>
+
       <Link
         className="Pagination__button Pagination__button--next"
         data-cy="paginationRight"
         to={{
-          search: getSearchWith(searchParams, { currentPage: currentPage !== pages.length ? `${currentPage + 1}` : `${pages.length}` }),
+          search: getSearchWith(searchParams, {
+            currentPage:
+              currentPage !== lastPage ? `${currentPage + 1}` : `${lastPage}`,
+          }),
         }}
       >
         <img src={arrowRight} alt="next page button" />

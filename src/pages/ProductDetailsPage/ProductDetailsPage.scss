@@ -1,6 +1,12 @@
 @import "../../styles/mixins.scss";
 
 .ProductDetailsPage {
+  &__loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -55,7 +61,7 @@
     width: 78px;
     height: 78px;
     border: 1px solid #c4c4c4;
-    object-fit: cover;
+    object-fit: contain;
 
     cursor: pointer;
 
@@ -66,6 +72,7 @@
     &-img {
       height: 100%;
       width: 100%;
+      object-fit: contain;
     }
   }
 
@@ -86,6 +93,10 @@
     }
 
     &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
       @include onTablet {
         width: 100%;
         height: 100%;
@@ -202,17 +213,52 @@
       cursor: pointer;
     }
 
-    &-color--1 {
-      background-color: #fcdbc1;
-    }
-    &-color--2 {
-      background-color: #5f7170;
-    }
-    &-color--3 {
+    &-color--spacegray {
       background-color: #4c4c4c;
     }
-    &-color--4 {
+
+    &-color--midnightgreen {
+      background-color: #5f7170;
+    }
+
+    &-color--coral {
+      background-color: #ff7f50;
+    }
+
+    &-color--gold {
+      background-color: #fcdbc1;
+    }
+
+    &-color--rosegold {
+      background-color: #fddcd7;
+    }
+
+    &-color--silver {
       background-color: #f0f0f0;
+    }
+
+    &-color--purple {
+      background-color: #d1cddb;
+    }
+
+    &-color--yellow {
+      background-color: #ffe680;
+    }
+
+    &-color--green {
+      background-color: #ade1cd;
+    }
+
+    &-color--black {
+      background-color: #202020;
+    }
+
+    &-color--white {
+      background-color: #f9f6ef;
+    }
+
+    &-color--red {
+      background-color: #ba0c2f;
     }
   }
 }

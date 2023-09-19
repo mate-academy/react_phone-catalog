@@ -14,7 +14,11 @@ export const AddToCartButton: React.FC<Props> = ({ handleAddToCart, id }) => {
   const { productsInCart } = useContext(CartContext);
 
   const isItemInCart = productsInCart.some(
-    (cartItem) => cartItem.id === id && cartItem.quantity !== 0,
+    (cartItem) => (
+      cartItem.phoneId === id
+      || cartItem.id === id
+    )
+      && cartItem.quantity !== 0,
   );
 
   return (

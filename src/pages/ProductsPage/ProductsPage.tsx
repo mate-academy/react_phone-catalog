@@ -65,11 +65,11 @@ export const ProductsPage: React.FC<Props> = React.memo((
       return products.filter((product) => {
         switch (category) {
           case 'phones':
-            return product.type === ProductType.phone;
+            return product.category === ProductType.phone;
           case 'tablets':
-            return product.type === ProductType.tablet;
+            return product.category === ProductType.tablet;
           case 'accessories':
-            return product.type === ProductType.accessory;
+            return product.category === ProductType.accessory;
           default:
             return false;
         }
@@ -128,7 +128,7 @@ export const ProductsPage: React.FC<Props> = React.memo((
 
       case 'age':
       default:
-        productsCopy.sort((a, b) => b.age - a.age);
+        productsCopy.sort((a, b) => b.year - a.year);
         break;
     }
 
@@ -142,7 +142,7 @@ export const ProductsPage: React.FC<Props> = React.memo((
   }, [sortedProducts, startIndex, endIndex]);
 
   const productsLength = sortedProducts.length;
-  const pageSizes = [smallestPageSize, 8, productsLength]; // add 16 when will be more phones on API
+  const pageSizes = [smallestPageSize, 8, 16, productsLength];
   const showPagination = productsLength > smallestPageSize
     && +pageSize !== +productsLength;
 

@@ -11,7 +11,6 @@ import { BackButton } from '../../components/BackButton/BackButton';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { Popup } from '../../components/Popup/Popup';
 
-import { getDiscount } from '../../helpers/getDiscount';
 import { useDisableScrollOnPopup }
   from '../../helpers/useDisableScrollOnPopup';
 
@@ -23,7 +22,7 @@ export const CartPage: React.FC = () => {
 
   const totalPrice = productsInCart.reduce(
     (prevValue, currentValue) => prevValue
-      + getDiscount(currentValue.price, currentValue.discount)
+      + currentValue.price
       * currentValue.quantity, 0,
   );
 

@@ -66,7 +66,10 @@ export const FavoritesPage: React.FC = () => {
 
               <div className="FavoritesPage__list">
                 {filteredFavorites.map((favProduct) => (
-                  <ProductCard product={favProduct} key={favProduct.id} />
+                  <ProductCard
+                    product={favProduct}
+                    key={favProduct.id || favProduct.phoneId}
+                  />
                 ))}
               </div>
             </>

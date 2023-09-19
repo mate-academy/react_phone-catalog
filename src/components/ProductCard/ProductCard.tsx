@@ -14,11 +14,11 @@ import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton/AddToFavButton';
 
 import { getProduct } from '../../api/products';
-import { getDiscount } from '../../helpers/getDiscount';
+// import { getDiscount } from '../../helpers/getDiscount';
 
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
-import { ProductType } from '../../types/ProductType';
+// import { ProductType } from '../../types/ProductType';
 
 import errorIcon from '../../images/error.svg';
 
@@ -28,17 +28,18 @@ type Props = {
   product: Product;
 };
 
-export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     name,
     price,
-    discount,
     screen,
     capacity,
     ram,
     id,
-    imageUrl,
-    type,
+    image,
+    category,
+    itemId,
+    fullPrice,
   } = product;
 
   const { productsInCart, setProductsInCart } = useContext(CartContext);
@@ -54,7 +55,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
 
     const loadProduct = async () => {
       try {
-        const productFromServer = await getProduct(product.id);
+        const productFromServer = await getProduct(itemId);
 
         setProductWithDetails(productFromServer);
       } catch {
@@ -71,23 +72,23 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
     };
   }, []);
 
-  const discountedPrice = getDiscount(price, discount);
+  // const discountedPrice = getDiscount(price, discount);
 
-  const getTypeOfProduct = (prodType: string) => {
-    switch (prodType) {
-      case ProductType.tablet:
-        return 'tablets';
+  // const getTypeOfProduct = (prodType: string) => {
+  //   switch (prodType) {
+  //     case ProductType.tablet:
+  //       return 'tablets';
 
-      case ProductType.accessory:
-        return 'accessories';
+  //     case ProductType.accessory:
+  //       return 'accessories';
 
-      case ProductType.phone:
-      default:
-        return 'phones';
-    }
-  };
+  //     case ProductType.phone:
+  //     default:
+  //       return 'phones';
+  //   }
+  // };
 
-  const productType = getTypeOfProduct(type);
+  // const productType = getTypeOfProduct(category);
 
   const isItemInCart = productsInCart.some(cartItem => cartItem.id === id);
 
@@ -129,7 +130,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
   return (
     <div className="ProductCard" ref={topRef}>
       <div className="ProductCard__content">
-        {isError && (
+        {isError && !isLoading && (
           <div className="ProductCard__error">
             <img
               src={errorIcon}
@@ -151,7 +152,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
           <>
             {productWithDetails && (
               <Link
-                to={`/${productType}/${id}`}
+                to={`/${category}/${itemId}`}
                 state={productWithDetails}
                 className="ProductCard__photo"
                 onClick={() => {
@@ -161,7 +162,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
                 }}
               >
                 <img
-                  src={imageUrl}
+                  src={`_new/${image}`}
                   alt="product"
                   className="ProductCard__img"
                 />
@@ -171,9 +172,9 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
             <div className="ProductCard__title">{name}</div>
 
             <div className="ProductCard__price">
-              <div className="ProductCard__price-normal">{`$${discountedPrice}`}</div>
-              {discount > 0 && (
-                <div className="ProductCard__price-discounted">{`$${price}`}</div>
+              <div className="ProductCard__price-normal">{`$${price}`}</div>
+              {price && (
+                <div className="ProductCard__price-discounted">{`$${fullPrice}`}</div>
               )}
             </div>
 
@@ -210,4 +211,4 @@ export const ProductCard: React.FC<Props> = React.memo(({ product }) => {
       </div>
     </div>
   );
-});
+};
