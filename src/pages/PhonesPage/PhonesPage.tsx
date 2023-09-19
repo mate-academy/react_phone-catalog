@@ -12,15 +12,17 @@ import { Loader } from '../../components/Loader';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductList } from '../../components/ProductList';
 import { NoSearchResults } from '../../components/NoSearchResults';
+import { SortBy } from '../../types/SortBy';
+import { PerPage } from '../../types/PerPage';
 
 const sortByOptions: SortOptions = {
   label: 'Sort by',
-  values: ['Newest', 'Alphabetically', 'Cheapest'],
+  values: [SortBy.Newest, SortBy.Alphabetically, SortBy.Cheapest],
 };
 
 const itemsOnPage: SortOptions = {
   label: 'Items on page',
-  values: ['4', '8', '16', 'All'],
+  values: [PerPage.$4, PerPage.$8, PerPage.$16, PerPage.All],
 };
 
 const getVisibleProducts = (
@@ -37,17 +39,17 @@ const getVisibleProducts = (
   }
 
   switch (sortParam) {
-    case 'newest':
+    case SortBy.Newest:
       return visibleProducts.sort((productA, productB) => (
         productB.year - productA.year
       ));
 
-    case 'alphabetically':
+    case SortBy.Alphabetically:
       return visibleProducts.sort((productA, productB) => (
         productA.name.localeCompare(productB.name)
       ));
 
-    case 'cheapest':
+    case SortBy.Cheapest:
       return visibleProducts.sort((productA, productB) => (
         productA.fullPrice - productB.fullPrice
       ));
@@ -61,14 +63,15 @@ export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  const defaultPage = '1';
   const sortVal = searchParams.get('sortBy')
-    || 'newest';
+    || SortBy.Newest;
 
   const perPage = searchParams.get('perPage')
-    || 4;
+    || PerPage.$4;
 
   const page = searchParams.get('page')
-    || 1;
+    || defaultPage;
 
   const query = searchParams.get('query')
     || '';

@@ -10,6 +10,7 @@ import {
   ReactComponent as ArrowRight,
 } from '../../assets/icons/Chevron(ArrowRight).svg';
 import { getSearchWith } from '../../helpers/searchHelper';
+import { PerPage } from '../../types/PerPage';
 
 type Props = {
   total: number,
@@ -17,10 +18,11 @@ type Props = {
 
 export const Pagination: React.FC<Props> = ({ total }) => {
   const [searchParams] = useSearchParams();
+  const defaultPage = '1';
   const perPage = searchParams.get('perPage')
-    || 4;
+    || PerPage.$4;
   const page = searchParams.get('page')
-    || 1;
+    || defaultPage;
 
   const pageNumbers = useMemo(() => {
     const numbers = [];

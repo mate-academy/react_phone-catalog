@@ -1,16 +1,16 @@
 @font-face {
   font-family: Mont-Bold;
-  src: url(../../assets/fonts/Mont-Bold.otf);
+  src: url("../../assets/fonts/Mont-Bold.otf");
 }
 
 @font-face {
   font-family: Mont-Regular;
-  src: url(../../assets/fonts/Mont-Regular.otf);
+  src: url("../../assets/fonts/Mont-Regular.otf");
 }
 
 @font-face {
   font-family: Mont-SemiBold;
-  src: url(../../assets/fonts/Mont-SemiBold.otf);
+  src: url("../../assets/fonts/Mont-SemiBold.otf");
 }
 
 %h1 {
@@ -43,7 +43,7 @@
 }
 
 %buttons {
-  font-family: Mont-SemiBold "Helvetica", sans-serif;
+  font-family: Mont-SemiBold, "Helvetica", sans-serif;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;

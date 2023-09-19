@@ -102,7 +102,7 @@ export const CustomSelect: React.FC<Props> = ({ options, searchParam }) => {
               }}
               className="select__link"
             >
-              {value}
+              {normalizeValue(value)}
             </Link>
           </li>
         ))}

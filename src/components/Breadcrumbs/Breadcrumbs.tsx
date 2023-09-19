@@ -31,29 +31,23 @@ export const Breadcrumbs: React.FC<Props> = ({ phoneName = '' }) => {
         <HomeIcon />
       </Link>
 
-      {breadcrumbs.map(({ match, breadcrumb, key }, i) => {
-        if (i === 0) {
-          return undefined;
-        }
+      {breadcrumbs.slice(1).map(({ match, breadcrumb, key }) => (
+        <Fragment key={key}>
+          <div className="breadcrumbs__arrow">
+            <ArrowRight />
+          </div>
 
-        return (
-          <Fragment key={key}>
-            <div className="breadcrumbs__arrow">
-              <ArrowRight />
-            </div>
-
-            <Link
-              to={match.pathname}
-              className={classNames('breadcrumbs__link', {
-                'breadcrumbs__link--inactive':
-                  location.pathname === match.pathname,
-              })}
-            >
-              {breadcrumb}
-            </Link>
-          </Fragment>
-        );
-      })}
+          <Link
+            to={match.pathname}
+            className={classNames('breadcrumbs__link', {
+              'breadcrumbs__link--inactive':
+                location.pathname === match.pathname,
+            })}
+          >
+            {breadcrumb}
+          </Link>
+        </Fragment>
+      ))}
     </div>
   );
 };

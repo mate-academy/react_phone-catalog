@@ -4,18 +4,17 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import './CartPage.scss';
 import { FavAndCartContext } from '../../components/context/FavAndCartContext';
 import { CartCard } from '../../components/CartCard';
 import emptyCart from '../../assets/icons/EmptyCart.svg';
 import { Modal } from '../../components/Modal';
+import { BackBtn } from '../../components/BackBtn';
 
 export const CartPage: React.FC = () => {
   const { cart } = useContext(FavAndCartContext);
   const [isCheckout, setIsCheckout] = useState(false);
-  const navigate = useNavigate();
 
   const totalItems = useMemo(() => (
     cart.reduce((sum, el) => +sum + +el.quantity, 0)
@@ -25,24 +24,13 @@ export const CartPage: React.FC = () => {
     cart.reduce((sum, el) => +sum + el.price * +el.quantity, 0)
   ), [cart]);
 
-  const handleBackClick = useCallback(() => {
-    navigate(-1);
-  }, []);
-
   const handleCheckoutClick = useCallback(() => setIsCheckout(true), []);
 
   return (
     <section className="page__section">
       <div className="container">
         <div className="cart">
-          <button
-            className="back-btn back-btn--margin"
-            type="button"
-            onClick={handleBackClick}
-            data-cy="backButton"
-          >
-            Back
-          </button>
+          <BackBtn />
 
           <h1 className="cart__title title">Cart</h1>
 

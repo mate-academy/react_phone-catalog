@@ -24,6 +24,7 @@
     background-color: #fff;
 
     @extend %body-text;
+    color: $primary-color;
 
     @include border($icons-color);
     outline: none;

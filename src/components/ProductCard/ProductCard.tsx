@@ -7,6 +7,7 @@ import { AddToCart } from '../AddToCart';
 import { AddToFav } from '../AddToFav';
 import { FavouriteType } from '../../types/FavouriteType';
 import { CartType } from '../../types/CartType';
+import { ProductChar } from '../ProductChar';
 
 type Props = {
   product: Product | FavouriteType,
@@ -44,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
       <Link
         to={`/phones/${phoneId}`}
         className="card__img-link"
-        onClick={() => handleClick()}
+        onClick={handleClick}
       >
         <img
           src={`new/${image}`}
@@ -56,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
       <Link
         to={`/phones/${phoneId}`}
         className="card__title-link"
-        onClick={() => handleClick()}
+        onClick={handleClick}
       >
         <h2 className="card__title">
           {name}
@@ -75,20 +76,9 @@ export const ProductCard: React.FC<Props> = ({ product, isDiscount }) => {
       </div>
 
       <div className="card__info-content">
-        <div className="info info--margin">
-          <span className="info__name">Screen</span>
-          <span className="info__value">{screen}</span>
-        </div>
-
-        <div className="info info--margin">
-          <span className="info__name">Capacity</span>
-          <span className="info__value">{capacity}</span>
-        </div>
-
-        <div className="info info--margin">
-          <span className="info__name">RAM</span>
-          <span className="info__value">{ram}</span>
-        </div>
+        <ProductChar name="Screen" value={screen} />
+        <ProductChar name="Capacity" value={capacity} />
+        <ProductChar name="RAM" value={ram} />
       </div>
 
       <div className="card__actions">

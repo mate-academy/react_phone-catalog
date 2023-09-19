@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
@@ -17,6 +17,8 @@ import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Loader } from '../../components/Loader';
 import { convertToCart, convertToFavourite } from '../../helpers/convert';
+import { BackBtn } from '../../components/BackBtn';
+import { ProductChar } from '../../components/ProductChar';
 
 type ColorPalette = {
   [color: string]: string;
@@ -43,7 +45,6 @@ export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageSrc, setImageSrc] = useState('');
   const { productId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleProductDetails = async () => {
@@ -87,10 +88,6 @@ export const ProductDetailsPage: React.FC = () => {
     setImageSrc(`new/${image}`)
   ), []);
 
-  const handleBackClick = useCallback(() => {
-    navigate(-1);
-  }, []);
-
   if (!product) {
     return null;
   }
@@ -123,14 +120,7 @@ export const ProductDetailsPage: React.FC = () => {
         ) : (
           <div className="details">
             <Breadcrumbs phoneName={name} />
-            <button
-              className="back-btn back-btn--margin"
-              type="button"
-              onClick={handleBackClick}
-              data-cy="backButton"
-            >
-              Back
-            </button>
+            <BackBtn />
 
             <h1 className="details__title title">{name}</h1>
             <article className="details__content">
@@ -234,25 +224,10 @@ export const ProductDetailsPage: React.FC = () => {
                   </div>
 
                   <div className="details__short-info">
-                    <div className="info info--margin">
-                      <span className="info__name">Screen</span>
-                      <span className="info__value">{screen}</span>
-                    </div>
-
-                    <div className="info info--margin">
-                      <span className="info__name">Resolution</span>
-                      <span className="info__value">{resolution}</span>
-                    </div>
-
-                    <div className="info info--margin">
-                      <span className="info__name">Processor</span>
-                      <span className="info__value">{processor}</span>
-                    </div>
-
-                    <div className="info info--margin">
-                      <span className="info__name">RAM</span>
-                      <span className="info__value">{ram}</span>
-                    </div>
+                    <ProductChar name="Screen" value={screen} />
+                    <ProductChar name="Resolution" value={resolution} />
+                    <ProductChar name="Processor" value={processor} />
+                    <ProductChar name="RAM" value={ram} />
                   </div>
                 </div>
               </div>
@@ -277,47 +252,14 @@ export const ProductDetailsPage: React.FC = () => {
               <div className="details__tech">
                 <h2 className="details__subtitle">Tech specs</h2>
                 <div className="details__tech-info">
-                  <div className="info info--margin">
-                    <span className="info__name">Screen</span>
-                    <span className="info__value">{screen}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">Resolution</span>
-                    <span className="info__value">{resolution}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">Processor</span>
-                    <span className="info__value">{processor}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">RAM</span>
-                    <span className="info__value">{ram}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">Built in memory</span>
-                    <span className="info__value">{capacity}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">Camera</span>
-                    <span className="info__value">{camera}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">Zoom</span>
-                    <span className="info__value">{zoom}</span>
-                  </div>
-
-                  <div className="info info--margin">
-                    <span className="info__name">Cell</span>
-                    <span className="info__value">
-                      {cell.join(', ')}
-                    </span>
-                  </div>
+                  <ProductChar name="Screen" value={screen} />
+                  <ProductChar name="Resolution" value={resolution} />
+                  <ProductChar name="Processor" value={processor} />
+                  <ProductChar name="RAM" value={capacity} />
+                  <ProductChar name="Built in memory" value={ram} />
+                  <ProductChar name="Camera" value={camera} />
+                  <ProductChar name="Zoom" value={zoom} />
+                  <ProductChar name="Cell" value={cell.join(', ')} />
                 </div>
               </div>
             </article>
