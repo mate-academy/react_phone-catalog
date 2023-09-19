@@ -60,39 +60,41 @@ export const Header = () => {
           <Logo />
         </div>
 
-        <ul className="header__nav_menu">
-          <li>
-            <NavLink to="/" className={getLinkClass}>
-              <span className="header__nav_link">
-                home
-              </span>
-            </NavLink>
-          </li>
+        {pathname !== '/cart' && (
+          <ul className="header__nav_menu">
+            <li>
+              <NavLink to="/" className={getLinkClass}>
+                <span className="header__nav_link">
+                  home
+                </span>
+              </NavLink>
+            </li>
 
-          <li>
-            <NavLink to="/phones" className={getLinkClass} end>
-              <span className="header__nav_link">
-                phones
-              </span>
-            </NavLink>
-          </li>
+            <li>
+              <NavLink to="/phones" className={getLinkClass} end>
+                <span className="header__nav_link">
+                  phones
+                </span>
+              </NavLink>
+            </li>
 
-          <li>
-            <NavLink to="/tablets" className={getLinkClass} end>
-              <span className="header__nav_link">
-                tablets
-              </span>
-            </NavLink>
-          </li>
+            <li>
+              <NavLink to="/tablets" className={getLinkClass} end>
+                <span className="header__nav_link">
+                  tablets
+                </span>
+              </NavLink>
+            </li>
 
-          <li>
-            <NavLink to="/accessories" className={getLinkClass} end>
-              <span className="header__nav_link">
-                accessories
-              </span>
-            </NavLink>
-          </li>
-        </ul>
+            <li>
+              <NavLink to="/accessories" className={getLinkClass} end>
+                <span className="header__nav_link">
+                  accessories
+                </span>
+              </NavLink>
+            </li>
+          </ul>
+        )}
       </nav>
 
       <div className="header__search-icons">
@@ -119,15 +121,17 @@ export const Header = () => {
           </div>
         )}
 
-        <NavLink to="/favorites" className={getLinkClass}>
-          <span
-            className={classNames(
-              'header__icons header__icons--favorites',
-              { 'header__icons--zero': favourites.length !== 0 },
-            )}
-            data-content={favourites.length}
-          />
-        </NavLink>
+        {pathname !== '/cart' && (
+          <NavLink to="/favorites" className={getLinkClass}>
+            <span
+              className={classNames(
+                'header__icons header__icons--favorites',
+                { 'header__icons--zero': favourites.length !== 0 },
+              )}
+              data-content={favourites.length}
+            />
+          </NavLink>
+        )}
 
         <NavLink to="/cart" className={getLinkClass}>
           <span
