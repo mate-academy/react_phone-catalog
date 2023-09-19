@@ -44,5 +44,31 @@
     @include onTablet {
       margin: 0;
     }
+
+    &--imgs {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 15px;
+
+      @include onTablet {
+        flex-direction: column;
+        padding-bottom: 0;
+      }
+    }
+
+    &--main-img {
+      margin: 0 auto;
+    }
+
+    &-pagination {
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+
+      &--visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
@@ -32,6 +33,10 @@ export const PhoneDescription: React.FC<Props> = ({
   const [isSelectedToCart, setIsSelectedToCart] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [selectedColor, setSelectedColor] = useState<string>(selectedIphone ? selectedIphone.color : '');
+  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(
+    selectedIphone ? selectedIphone.capacity : null,
+  );
 
   const scrollToPhoneDescription = () => {
     window.scrollTo({
@@ -41,6 +46,20 @@ export const PhoneDescription: React.FC<Props> = ({
   };
 
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
+  const availableColors: { [key: string]: string } = {
+    spacegray: '#4d4c4a',
+    midnightgreen: '#3c4a3f',
+    purple: '#a49bb0',
+    rosegold: '#c999b0',
+    green: '#8df0c3',
+    silver: '#a6a6a6',
+    gold: '#fcdbc1',
+    yellow: '#f7d043',
+    red: '#d62b2b',
+    coral: '#e66565',
+    black: '#000',
+  };
 
   useEffect(() => {
     if (iphoneId !== undefined) {
@@ -74,6 +93,7 @@ export const PhoneDescription: React.FC<Props> = ({
       const updatedIphoneId = parts.join('-');
 
       navigate(`/phones/${updatedIphoneId}`);
+      setSelectedCapacity(capacity);
     }
   };
 
@@ -90,6 +110,7 @@ export const PhoneDescription: React.FC<Props> = ({
         const updatedIphoneId = parts.join('-');
 
         navigate(`/phones/${updatedIphoneId}`);
+        setSelectedColor(color);
       }
     }
   };
@@ -186,13 +207,13 @@ export const PhoneDescription: React.FC<Props> = ({
             </h1>
 
             <div
-              className="item__list--img grid__item
+              className="grid__item
+              grid__item--imgs
               grid__item--tablet--1-1
               grid__item--desktop--1-2"
             >
               <a
                 href={`${baseUrl}${selectedIphone?.images[0]}`}
-                className="item__list--link"
                 onClick={handleImg}
               >
                 <img
@@ -203,7 +224,6 @@ export const PhoneDescription: React.FC<Props> = ({
               </a>
               <a
                 href={`${baseUrl}${selectedIphone?.images[1]}`}
-                className="item__list--link"
                 onClick={handleImg}
               >
                 <img
@@ -215,7 +235,6 @@ export const PhoneDescription: React.FC<Props> = ({
               </a>
               <a
                 href={`${baseUrl}${selectedIphone?.images[2]}`}
-                className="item__list--link"
                 onClick={handleImg}
               >
                 <img
@@ -226,7 +245,7 @@ export const PhoneDescription: React.FC<Props> = ({
               </a>
               <a
                 href={`${baseUrl}${selectedIphone?.images[3]}`}
-                className="item__list--link"
+                className={classNames({ 'item__list--link': selectedIphone?.images[3] === undefined })}
                 onClick={handleImg}
               >
                 <img
@@ -240,6 +259,7 @@ export const PhoneDescription: React.FC<Props> = ({
               src={`${baseUrl}${selectedIphone?.images[0]}`}
               alt="img1"
               className="item-main-img grid__item
+              grid__item--main-img
               grid__item--tablet--2-3
               grid__item--desktop--4-10"
             />
@@ -252,7 +272,7 @@ export const PhoneDescription: React.FC<Props> = ({
                 Available colors
               </div>
               <div className="item__list--colors">
-                {selectedIphone?.colorsAvailable.map((color) => {
+                {selectedIphone?.colorsAvailable.map((color: string) => {
                   return (
                     <button
                       className="item__color"
@@ -268,8 +288,24 @@ export const PhoneDescription: React.FC<Props> = ({
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect x="2" y="2" width="28" height="28" rx="14" fill={color} stroke="white" strokeWidth="2" />
-                        <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#E2E6E9" />
+                        <rect
+                          x="2"
+                          y="2"
+                          width="28"
+                          height="28"
+                          rx="14"
+                          fill={availableColors[color] || 'transparent'}
+                          stroke="white"
+                          strokeWidth="2"
+                        />
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="31"
+                          height="31"
+                          rx="15.5"
+                          stroke={selectedColor === color ? 'black' : '#E2E6E9'}
+                        />
                       </svg>
 
                     </button>
@@ -284,7 +320,9 @@ export const PhoneDescription: React.FC<Props> = ({
                   return (
                     <button
                       type="button"
-                      className="item__button"
+                      className={classNames('item__button', {
+                        'item__button--focus': selectedCapacity === iphoneCapacity,
+                      })}
                       onClick={() => handleSelectCapacity(iphoneCapacity)}
                     >
                       {iphoneCapacity}

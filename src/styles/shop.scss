@@ -15,7 +15,7 @@
     width: 275px;
     height: 510px;
     border: 1px solid $c-gray-light;
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
     transition: all 0.3s;
 
     @include onTablet {

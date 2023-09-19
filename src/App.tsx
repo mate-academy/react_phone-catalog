@@ -18,8 +18,8 @@ import { getAll } from './api/iphones';
 import { MenuMobile } from './MenuMobile';
 
 const App = () => {
-  const [iphones, setIphones] = useState<Iphone[]>([]); // -
-  const [selectedIphoneId] = useState<null | string>(null); // - set
+  const [iphones, setIphones] = useState<Iphone[]>([]);
+  const [selectedIphoneId] = useState<null | string>(null);
   const [favorites, setFavorites] = useState<Iphone[]>([]);
   const [selectedIphoneIdToBuy] = useState<null | string>(null);
   const [iphonesToBuy, setIphonesToBuy] = useState<Iphone[]>([]);
@@ -59,7 +59,7 @@ const App = () => {
   };
 
   const handleSelectPhone = (iphoneId: string | undefined) => {
-    const selectedIphone = iphones.find((iphone) => iphone.id === iphoneId); // was visibleItems before instead of iphones
+    const selectedIphone = iphones.find((iphone) => iphone.id === iphoneId);
 
     if (selectedIphone) {
       const isFavorite = favorites
@@ -200,7 +200,7 @@ const App = () => {
                         selectPhone={handleSelectPhone}
                         selectPhoneToBuy={handleSelectPhoneToBuy}
                         selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                        iphoneTitle={iphoneTitle} // +
+                        iphoneTitle={iphoneTitle}
                       />
                     )}
                   />

@@ -15,11 +15,11 @@ export const Basket: React.FC<Props> = ({
   phonesToBuy,
   removeIphone,
 }) => {
-  const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0); // amount of iphones prices in array
+  const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0);
 
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
-  const initialTotal = parseFloat(localStorage.getItem('sumToSave') || '0'); // Use '0' as a default value in case localStorage is empty
+  const initialTotal = parseFloat(localStorage.getItem('sumToSave') || '0');
   const [total, setTotal] = useState(initialTotal);
 
   const savedCounts = localStorage.getItem('countsToSave');
@@ -154,7 +154,7 @@ export const Basket: React.FC<Props> = ({
                       alt="iphoneImg"
                       className="basket__item-img"
                     />
-                    <div className="basket__cart-title">{phone.name}</div>
+                    <div className="basket__item-title">{phone.name}</div>
                   </div>
 
                   <div className="basket__item--second-row">
@@ -197,7 +197,7 @@ export const Basket: React.FC<Props> = ({
 
           <div className="basket__checkout">
             <p className="basket__checkout-price">
-              {calculateTotalForAllItems()}
+              {`$${calculateTotalForAllItems()}`}
             </p>
             <p className="basket__checkout-text">
               Total for

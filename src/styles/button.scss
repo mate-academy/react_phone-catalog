@@ -80,12 +80,19 @@
     }
 
     &--home-page {
-      display: none;
       width: 80px;
+      display: flex;
+      justify-content: space-between;
 
       @include onTablet {
         display: flex;
         justify-content: space-between;
+      }
+
+      &--categories {
+        @include onDesktopSmall {
+          display: none;
+        }
       }
     }
   }

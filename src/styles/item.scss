@@ -41,12 +41,15 @@
       &:not(:last-child) {
         margin-bottom: 16px;
       }
-
     }
 
     &--main {
       display: block;
       margin: 0 auto;
+    }
+
+    &--link {
+      display: none;
     }
   }
 
@@ -87,6 +90,16 @@
     transition: all 0.3s;
 
     &:hover {
+      background: var(--gray-primary, $c-primary);
+      color: $c-white;
+    }
+
+    &:focus {
+      background: var(--gray-primary, $c-primary);
+      color: $c-white;
+    }
+
+    &--focus {
       background: var(--gray-primary, $c-primary);
       color: $c-white;
     }
