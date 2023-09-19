@@ -87,7 +87,7 @@ export const Banner = () => {
       </div>
       <button
         type="button"
-        onClick={() => handleIndexUpdate(activeIndex - 1)}
+        onClick={() => handleIndexUpdate(activeIndex + 1)}
         className="banner__button"
       >
         <img
