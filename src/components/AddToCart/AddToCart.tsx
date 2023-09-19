@@ -32,7 +32,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   return (
     <button
       type="button"
-      className={classNames('add-cart', {
+      className={classNames('add-cart', 'main-btn', {
         'add-cart--active': isAdded,
       })}
       onClick={handleBtnClick}

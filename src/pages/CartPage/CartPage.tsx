@@ -66,7 +66,7 @@ export const CartPage: React.FC = () => {
 
                 <button
                   type="button"
-                  className="cart__checkout"
+                  className="cart__checkout main-btn"
                   onClick={handleCheckoutClick}
                 >
                   Checkout

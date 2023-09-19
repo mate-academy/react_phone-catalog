@@ -1,18 +1,6 @@
 @import "../../styles/utils";
 
 .add-cart {
-  width: 100%;
-  height: 100%;
-
-  @extend %buttons;
-  color: $white-color;
-
-  background-color: $primary-color;
-  border: none;
-  outline: none;
-
-  @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
-
   &--active {
     background-color: $white-color;
     color: $green-color;

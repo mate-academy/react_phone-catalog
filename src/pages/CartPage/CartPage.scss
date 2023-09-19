@@ -47,15 +47,7 @@
   }
 
   &__checkout {
-    width: 100%;
     padding: 14px 0;
-
-    background-color: $primary-color;
-
-    color: $white-color;
-    @extend %buttons;
-
-    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
   }
 
   &__empty-wrap {
