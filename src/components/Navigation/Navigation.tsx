@@ -55,7 +55,7 @@ export const Navigation = () => {
           })}
           to="/favorites"
         >
-          <img src="/_new/img/icons/favorites.svg" alt="favorites" />
+          <img src="new/img/icons/favorites.svg" alt="favorites" />
         </NavLink>
 
         <NavLink
@@ -64,7 +64,7 @@ export const Navigation = () => {
           })}
           to="/cart"
         >
-          <img src="/_new/img/icons/cart.svg" alt="cart" />
+          <img src="new/img/icons/cart.svg" alt="cart" />
         </NavLink>
       </div>
     </nav>

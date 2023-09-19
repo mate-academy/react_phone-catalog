@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 const imagesUrl: string[] = [
-  '/_new/img/banner-phones.png',
-  '/_new/img/banner-tablets.png',
-  '/_new/img/banner-accessories.png',
+  'new/img/banner-phones.png',
+  'new/img/banner-tablets.png',
+  'new/img/banner-accessories.png',
 ];
 
 const prepareImagesAlt = (url: string) => {
@@ -74,7 +74,7 @@ export const Slider = () => {
           >
             <img
               className="slider__arrow-left"
-              src="./_new/img/icons/arrow-left.svg"
+              src="new/img/icons/arrow-left.svg"
               alt="arrow-left"
             />
 
@@ -109,7 +109,7 @@ export const Slider = () => {
           >
             <img
               className="slider__arrow-right"
-              src="./_new/img/icons/arrow-right.svg"
+              src="new/img/icons/arrow-right.svg"
               alt="arrow-right"
             />
           </button>
