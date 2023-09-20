@@ -157,7 +157,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
 
               <div className="ProductDetailsPage__current">
                 <img
-                  src={`_new/${currentImage}`}
+                  src={currentImage}
                   alt="main img"
                   className="ProductDetailsPage__current-img"
                 />
