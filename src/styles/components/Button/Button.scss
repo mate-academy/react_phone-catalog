@@ -46,9 +46,46 @@
   }
 
   &--text {
+    background-color: #fff;
+    color: #{$primary-color};
+
     &.is-active {
       background-color: #{$primary-color};
       color: #fff;
+    }
+  }
+
+  &--color {
+    border-radius: 50%;
+    padding: 3px;
+    border: 1px solid #{$elements-color};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: #{$icons-placeholders-color};
+    }
+
+    &.is-active {
+      border-color: #{$primary-color};
+    }
+
+    & > span {
+      display: inline-block;
+      width: 1.6em;
+      height: 1.6em;
+
+      border-radius: 50%;
+    }
+  }
+
+  &--fav {
+    padding: 0;
+    background: center no-repeat url("../../../images/icons/favourites-icon.svg");
+
+    &.is-active {
+      background-image: url("../../../images/icons/favourites-icon-active.svg");
     }
   }
 }

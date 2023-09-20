@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import classNames from 'classnames';
 import '../../styles/components/ProductCard/ProductCard.scss';
+
+import classNames from 'classnames';
 import { Product } from '../../types/product';
 
 type Props = {
@@ -25,7 +26,7 @@ export const ProductCard: React.FC<Props> = ({
   } = product;
 
   return (
-    <div className="card">
+    <article className="card">
       <img
         src={`${BASE_URL}${image}`}
         alt="phone img"
@@ -77,6 +78,6 @@ export const ProductCard: React.FC<Props> = ({
           onClick={onFavouritesClick}
         />
       </div>
-    </div>
+    </article>
   );
 };

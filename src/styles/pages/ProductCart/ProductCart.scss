@@ -12,24 +12,8 @@
   }
 
   &__back-link {
-    display: block;
-    position: relative;
-    @include smallTextStyling;
-    color: #{$secondary-color};
-    text-decoration: none;
     margin-top: 41px;
     margin-left: 16px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      background: center no-repeat url("../../../images/icons/arrow-right-disabled.svg");
-      transform: rotate(180deg);
-      left: -20px;
-      top: 0;
-    }
   }
 
   &__content-container {

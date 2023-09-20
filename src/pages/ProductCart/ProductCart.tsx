@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import '../../styles/pages/ProductCart/ProductCart.scss';
 
-import { Link } from 'react-router-dom';
 import { CartItem } from '../../components/CartItem';
 import { Product } from '../../types/product';
 import { Item } from '../../types/storageItem';
@@ -9,6 +8,7 @@ import { Storage } from '../../types/storages';
 import { useLocalStorage } from '../../utils/hooks/useLocalStorage';
 import { calcTotalPrice } from '../../utils/calcTotalPrice';
 import { CartTotal } from '../../components/CartTotal';
+import { GoBackButton } from '../../components/GoBackButton';
 
 export const ProductCart = () => {
   const [cart, setCart] = useLocalStorage<Item<Product>[]>([], Storage.CART);
@@ -47,9 +47,9 @@ export const ProductCart = () => {
 
   return (
     <main className="cart">
-      <Link to="/home" className="cart__back-link">
-        Back
-      </Link>
+      <div className="cart__back-link">
+        <GoBackButton />
+      </div>
 
       <h1 className="cart__title">
         Cart

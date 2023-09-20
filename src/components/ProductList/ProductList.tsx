@@ -9,14 +9,16 @@ import { ProductCard } from '../ProductCard';
 
 type Props = {
   products: Product[];
+  customFavHandler?: (value: Product) => void;
 };
 
 export const ProductList: React.FC<Props> = ({
   products,
+  customFavHandler,
 }) => {
   const [cart, setCart] = useLocalStorage<Item<Product>[]>([], Storage.CART);
   const [fav, setFav]
-  = useLocalStorage<Item<Product>[]>([], Storage.FAVOURITES);
+    = useLocalStorage<Item<Product>[]>([], Storage.FAVOURITES);
 
   const isIncluded = (items: Item<Product>[], value: Product) => {
     for (const item of items) {
@@ -57,7 +59,11 @@ export const ProductList: React.FC<Props> = ({
           isSelected={isIncluded(cart, product)}
           isFavourite={isIncluded(fav, product)}
           onSelectedClick={() => handleSelectedClick(product)}
-          onFavouritesClick={() => handleFavClick(product)}
+          onFavouritesClick={() => {
+            return customFavHandler
+              ? customFavHandler(product)
+              : handleFavClick(product);
+          }}
         />
       ))}
     </section>
