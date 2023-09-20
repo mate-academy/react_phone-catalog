@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+
+.navbar {
+  &-item {
+    position: relative;
+    @extend %uppercase;
+    margin-left: 64px;
+    padding-top: 15px;
+    padding-bottom: 22px;
+    color: $c-secondary;
+    box-sizing: border-box;
+
+    @include hover(color, $c-primary);
+
+    &--active {
+      color: $c-primary;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        height: 2px;
+        width: 100%;
+        background-color: $c-primary;
+      }
+    }
+  }
+}

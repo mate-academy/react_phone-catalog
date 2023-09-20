@@ -1,0 +1,50 @@
+@import "../../styles/index.scss";
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $c-secondary;
+    @include hover(color, $c-primary);
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__text {
+    @extend %smallText;
+    color: $c-secondary;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: block;
+    border: 1px solid $c-icons;
+    background-color: $c-white;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &:active {
+      transform: scale3d(0.9, 0.9, 0.9);
+      opacity: 0.5;
+    }
+  }
+}

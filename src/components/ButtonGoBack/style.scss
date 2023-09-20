@@ -1,0 +1,21 @@
+@import "../../styles/index.scss";
+
+.button-back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 15px;
+  background-color: $c-white;
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    @extend %smallText;
+    color: $c-secondary;
+    @include hover(color, $c-primary);
+  }
+}

@@ -1,0 +1,109 @@
+@import "../../styles/index.scss";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  box-sizing: border-box;
+  border: 1px solid $c-elements;
+  padding: 32px 24px 24px;
+  @include hover(box-shadow, 0 3px 13px 0 #17203042);
+
+  &__link {
+    position: relative;
+    align-self: center;
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease 0.5s;
+
+    &:hover {
+      position: absolute;
+      transform: scale(1.5) translateY(15%);
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    @extend %bodyText;
+    transition: opacity 0.5s ease;
+  }
+
+  &:has(.product-card__img:hover) .product-card__title {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:not(:has(.product-card__img:hover)) .product-card__title {
+    transition: opacity 0.5s ease 0.7s;
+    opacity: 1;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $c-elements;
+    transition: opacity 0.5s ease;
+  }
+
+  &:has(.product-card__img:hover) .product-card__prices {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:not(:has(.product-card__img:hover)) .product-card__prices {
+    transition: opacity 0.5s ease 0.7s;
+    opacity: 1;
+  }
+
+  &__full_price {
+    @extend %h2;
+    margin-bottom: 8px;
+  }
+
+  &__sale_price {
+    @extend %h2;
+    font-weight: 500;
+    color: $c-secondary;
+    text-decoration-line: line-through;
+  }
+
+  &__description {
+    margin-bottom: 16px;
+  }
+
+  &__param {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &_title {
+      @extend %smallText;
+      color: $c-secondary;
+    }
+
+    &_value {
+      @extend %smallText;
+    }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 176px 40px;
+    grid-template-rows: 40px;
+    column-gap: 8px;
+  }
+}

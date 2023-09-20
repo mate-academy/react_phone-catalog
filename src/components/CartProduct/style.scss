@@ -1,0 +1,69 @@
+@import "../../styles/index.scss";
+
+.cart-product {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid $c-elements;
+  box-sizing: border-box;
+  padding: 23px 0;
+  @include hover(box-shadow, 0 2px 15px 0 rgba(0, 0, 0, 0.05));
+
+  &__delete {
+    background-color: $c-white;
+    @include hover(transform, scale(1.1));
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__photo {
+    width: 10.7%;
+    box-sizing: border-box;
+    padding: 7px;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1.06;
+    object-fit: contain;
+  }
+
+  &__name {
+    width: 39.3%;
+    @extend %bodyText;
+
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $c-white;
+    border: 1px solid $c-elements;
+    @include hover(border-color, $c-primary);
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &__amount {
+    @extend %bodyText;
+    width: 32px;
+    text-align: center;
+  }
+
+  &__price {
+    @extend %h2;
+    width: 61px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,24 @@
+@import "../../styles/index.scss";
+
+.button-cartAdd {
+  @extend %buttons;
+  color: $c-white;
+  background-color: $c-primary;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &:active {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  &--added {
+    box-sizing: border-box;
+    color: $c-added;
+    background-color: $c-white;
+    border: 1px solid $c-elements;
+    transition: all 0.3s ease-in-out;
+  }
+}

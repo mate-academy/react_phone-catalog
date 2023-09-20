@@ -1,0 +1,77 @@
+@import "../../styles/index.scss";
+
+.category {
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.4%;
+  }
+
+  &__element {
+    position: relative;
+    margin: 0 0 24px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 48, 0.26);
+    }
+
+    &--phone {
+      background-color: #fcdbc1;
+    }
+
+    &--tablet {
+      background-color: #8d8d92;
+    }
+
+    &--accesories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    object-fit: contain;
+
+    &--phone {
+      top: 2%;
+      left: 19%;
+      width: 105%;
+    }
+
+    &--tablet {
+      top: 5.4%;
+      left: 6%;
+      width: 148%;
+
+    }
+
+    &--accesories {
+      top: 15%;
+      left: 8%;
+      width: 185%;
+    }
+  }
+
+  &__type {
+    @extend %h3;
+  }
+
+  &__length {
+    @extend %bodyText;
+    color: $c-secondary;
+  }
+}

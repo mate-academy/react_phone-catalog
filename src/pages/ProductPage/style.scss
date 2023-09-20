@@ -1,0 +1,229 @@
+@import "../../styles/index.scss";
+
+.product-page {
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__product {
+    @include grid;
+    margin-bottom: 80px;
+  }
+
+  &__product-title {
+    grid-column: 1 / -1;
+    @extend %h1;
+    margin-bottom: 40px;
+  }
+
+  &__extra-photos {
+    grid-column: 1 / 3;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  &__extra-element {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #c4c4c4;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $c-primary;
+    }
+
+    &--active {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1.07;
+    object-fit: contain;
+  }
+
+  
+  &__main-photo {
+    position: relative;
+    grid-column: 3 / 13;
+    margin-bottom: 80px;
+    box-sizing: border-box;
+    width: 100%;
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+
+  &__image-main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__options {
+    grid-column: 14 / -5;
+  }
+
+  &__options-title {
+    margin-bottom: 0.56vw;
+    @extend %smallText;
+    font-weight: 600;
+    color: $c-secondary;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.67vw;
+    border-bottom: 1px solid $c-icons;
+  }
+
+  &__color {
+    display: block;
+    width: 2.2vw;
+    height: 2.2vw;
+    border: 2px solid white;
+    box-sizing: border-box;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px $c-elements;
+    margin-bottom: 1.67vw;
+    transition: box-shadow 0.3s ease-in-out;
+    @include hover(box-shadow, 0 0 0 1px $c-icons);
+
+    &--active {
+      box-shadow: 0 0 0 1 $c-primary;
+    }
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2.22vw;
+    border-bottom: 1px solid $c-icons;
+  }
+
+  &__capacity {
+    display: block;
+    margin-bottom: 1.67vw;
+    padding: 7px 8px 4px;
+    @extend %buttons;
+    text-decoration: none;
+    border: 1px solid $c-icons;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease-in-out;
+    @include hover(box-shadow, 0 3px 13px 0 #17203142);
+
+    &--active {
+      border-color: $c-primary;
+      background-color: $c-primary;
+      color: $c-white;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__sale_price {
+    @extend %h2;
+  }
+
+  &__full_price {
+    @extend %h3;
+    text-align: center;
+    text-decoration-line: line-through;
+    color: $c-secondary;
+    font-weight: 500;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 82.2% 15%;
+    grid-template-rows: 3.3vw;
+    column-gap: 8px;
+    margin-bottom: 2.22vw;
+  }
+
+  &__param {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__param-title {
+    @extend %smallText;
+    color: $c-secondary;
+
+    &--article {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+    }
+  }
+
+  &__param-value {
+    @extend %smallText;
+
+    &--article {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+  }
+
+  &__article-title {
+    @extend %h2;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $c-elements;
+  }
+
+  &__paragraph {
+    &:not(:last-child) {
+      margin-bottom: 21px;
+    }
+  }
+
+  &__subtitle {
+    @extend %h3;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__text-part {
+    @extend %bodyText;
+    color: $c-secondary;
+  }
+
+  &__tech-specs {
+    grid-column: 14 / -1;
+  }
+}

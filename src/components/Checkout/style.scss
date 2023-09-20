@@ -1,0 +1,72 @@
+@import "../../styles/index.scss";
+
+.checkout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid $c-elements;
+
+  &__total {
+    width: 100%;
+    margin-bottom: 24px;
+    text-align: center;
+    border-bottom: 1px solid $c-elements;
+  }
+
+  &__price {
+    @extend %h1;
+  }
+
+  &__items {
+    @extend %bodyText;
+    color: $c-secondary;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 13px 0;
+    @extend %buttons;
+    background-color: $c-primary;
+    color: $c-white;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+  }
+
+  
+  &__sorry {
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
+    border-top: 1px solid $c-elements;
+
+    &-message {
+      margin-top: 24px;
+      @extend %bodyText;
+      text-align: center;
+    }
+
+    &-close {
+      top: 5px;
+      right: 0;
+      position: absolute;
+      background-color: $c-white;
+      @include hover(transform, scale(1.1));
+    }
+
+    &-image {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

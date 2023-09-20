@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g id="Icons/Chevron (Arrow Right)" transform="rotate(90 8 8)">
+   <path clip-rule="evenodd" d="m3.53,10.47c-0.26,-0.26 -0.26,-0.68 0,-0.94l4,-4c0.26,-0.26 0.68,-0.26 0.94,0l4,4c0.26,0.26 0.26,0.68 0,0.94c-0.26,0.26 -0.68,0.26 -0.94,0l-3.53,-3.53l-3.53,3.53c-0.26,0.26 -0.68,0.26 -0.94,0z" fill="#313237" fill-rule="evenodd" id="Vector (Stroke)"/>
+  </g>
+ </g>
+</svg>

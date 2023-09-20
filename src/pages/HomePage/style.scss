@@ -1,0 +1,16 @@
+@import "../../styles/index.scss";
+
+.home-page {
+  &__banner {
+    padding-top: 16px;
+    margin-bottom: 72px;
+  }
+
+  &__slider {
+    margin-bottom: 80px;
+  }
+
+  &__categories {
+    margin-bottom: 80px;
+  }
+}
