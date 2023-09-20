@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
@@ -19,19 +18,24 @@ import { FilterItem } from '../../components/FilterItem/FilterItem';
 
 import './AllGenderPage.scss';
 
-const filterItems = {
-  type: ['coat', 'tShirt', 'accessories'],
-  drop: ['winter'],
-  sizes: ['XS', 'S', 'M', 'L', 'XL', 'Iphone 14 PRO MAX', 'Iphone 14 PRO', 'Iphone 14 PLUS', 'Iphone 14'],
-  colors: ['black', 'silver', 'kuroso'],
-  year: ['2022'],
-};
+const filterItems = [
+  'type',
+  'drop',
+  'sizes',
+  'colors',
+  'year',
+];
 
 export const AllGenderPage: React.FC = React.memo(() => {
   const { t } = useTranslation();
 
   const [searchParams] = useSearchParams();
   const currentLanguage = searchParams.get('lang') || 'en';
+  const types = searchParams.getAll('type') || [];
+  const drop = searchParams.getAll('drop') || [];
+  const sizes = searchParams.getAll('sizes') || [];
+  const colors = searchParams.getAll('colors') || [];
+  const year = searchParams.getAll('year') || [];
 
   const [totalGoods, setTotalGoods] = useState<Good[]>([]);
   const [renderedGoods, setRenderedGoods] = useState<Good[]>([]);
@@ -90,7 +94,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
           setActive={setIsFilterOpened}
         >
           <ul className="allGender__filter-list">
-            {Object.keys(filterItems).map(item => (
+            {filterItems.map(item => (
               <FilterItem
                 key={item}
                 rootClassName="allGender"
@@ -107,7 +111,16 @@ export const AllGenderPage: React.FC = React.memo(() => {
               style={{
                 height: 'min-content',
               }}
-              data={getFilteredItems(renderedGoods, filterItems)}
+              data={getFilteredItems(
+                renderedGoods,
+                [
+                  types,
+                  drop,
+                  sizes,
+                  colors,
+                  year,
+                ],
+              )}
               useWindowScroll
               totalCount={renderedGoods.length}
               overscan={6}
@@ -118,6 +131,12 @@ export const AllGenderPage: React.FC = React.memo(() => {
                 Footer: () => (isLoading ? (<Loader />) : null),
               }}
               itemContent={(index, good) => {
+                if (!good) {
+                  return (
+                    <p>error</p>
+                  );
+                }
+
                 const {
                   name,
                   images,
