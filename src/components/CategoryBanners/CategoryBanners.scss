@@ -1,0 +1,66 @@
+@import "../../helpers/variables.scss";
+
+.CategoryList {
+  &__title {
+    margin: 0;
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.CategoryLink {
+  width: 368px;
+  height: 368px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    transition: $transition;
+
+    &:hover {
+      transform: $transform;
+    }
+
+    &--phones {
+      background-image: url(./banners/category-phones.png);
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-image: url(./banners/category-tablets.png);
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-image: url(./banners/category-accessories.png);
+      background-color: #d53c51;
+    }
+  }
+
+  &__amount {
+    color: $color-secondary-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

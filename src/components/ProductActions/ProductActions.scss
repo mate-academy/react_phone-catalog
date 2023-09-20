@@ -1,0 +1,52 @@
+@import "../../helpers/variables.scss";
+
+.ProductActions {
+  display: flex;
+  justify-content: space-between;
+
+  &__cart-button {
+    flex: 1;
+    margin-right: 8px;
+    height: 40px;
+    background-color: $color-primary-dark-gray;
+    color: #fff;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--in-cart {
+      background-color: #fff;
+      color: $color-green;
+      border-color: $color-elements-light-gray;
+    }
+  }
+
+  &__fav-button {
+    width: 40px;
+    height: 40px;
+    background-image: url("../../img/icons/Heart.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: #fff;
+    border: 1px solid $color-icons-placeholders-gray;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary-dark-gray;
+    }
+
+    &--in-favs {
+      background-image: url(../../img/icons/HeartFilled.svg);
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../helpers/variables.scss";
+
+.AccessoriesPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__section {
+    margin-bottom: 40px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__error-title {
+    font-size: 64px;
+    margin: 0 0 20px;
+  }
+
+  &__amount {
+    color: $color-secondary-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

@@ -1,0 +1,93 @@
+@import "../../helpers/variables.scss";
+
+.Footer {
+  width: 100%;
+  box-shadow: 0 -1px 0 0 $color-elements-light-gray;
+
+  &__content {
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+}
+
+.back-to-top {
+  color: $color-secondary-gray;
+  font-weight: 600;
+  font-size: 12px;
+  transition: $transition;
+
+  &__label {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../img/icons/arrow-black.svg");
+    border: 1px solid $color-icons-placeholders-gray;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: #fff;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary-dark-gray;
+    }
+  }
+
+  &:hover {
+    color: $color-primary-dark-gray;
+
+    .back-to-top__button {
+      border-color: $color-primary-dark-gray;
+    }
+  }
+}
+
+.FooterLink {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  color: $color-secondary-gray;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  transition: $transition;
+
+  &:hover {
+    color: $color-primary-dark-gray;
+  }
+}
+
+.Logo {
+  display: block;
+  width: 40px;
+  height: 24px;
+
+  &__img {
+    width: 40px;
+    height: 24px;
+  }
+}

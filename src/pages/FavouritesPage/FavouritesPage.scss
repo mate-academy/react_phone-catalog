@@ -1,0 +1,27 @@
+@import "../../helpers/variables.scss";
+
+.FavouritesPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__amount {
+    margin-bottom: 40px;
+    color: $color-secondary-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

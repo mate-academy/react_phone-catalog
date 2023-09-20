@@ -1,0 +1,68 @@
+@import "../../helpers/variables.scss";
+
+.ProductDetailsPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+}
+
+.ProductNotFound {
+  margin-top: 50px;
+  text-align: center;
+
+  &__title {
+    font-size: 64px;
+    margin: 0 0 20px;
+  }
+
+  &__paragpraph {
+    font-size: 20px;
+    color: $color-secondary-gray;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    padding: 14px 20px;
+    background-color: $color-primary-dark-gray;
+    color: #fff;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+}
+
+.BackButton {
+  padding: 0;
+  width: 50px;
+  height: max-content;
+  background-image: url(../../img/icons/arrow-left.svg);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #fff;
+  border: none;
+  color: $color-secondary-gray;
+  cursor: pointer;
+  text-align: end;
+  transition: $transition;
+
+  &:hover {
+    color: $color-primary-dark-gray;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../helpers/variables.scss";
+
+.NoSearchResults {
+  text-align: center;
+
+  &__title {
+    font-size: 64px;
+    margin: 0 0 20px;
+  }
+
+  &__paragpraph {
+    font-size: 20px;
+    color: $color-secondary-gray;
+    margin-bottom: 40px;
+  }
+
+  &__button {
+    padding: 14px 20px;
+    background-color: $color-primary-dark-gray;
+    color: #fff;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    transition: $transition;
+    cursor: pointer;
+  }
+}
