@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Phone } from '../Type/Phone';
 import '../style/main.scss';
+import { BASE_URL } from '../utils/BASE_URL';
 
 type Props = {
   phone: Phone;
 };
-
-const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   return (
@@ -18,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         <div className="product__photo">
           <img
             className="product__photo--img"
-            src={`${URL}${phone.image}`}
+            src={`${BASE_URL}/_new/${phone.image}`}
             alt={phone.phoneId}
           />
         </div>

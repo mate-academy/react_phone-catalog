@@ -17,11 +17,7 @@ export const HomePage: React.FC<Props> = ({ phones }) => {
       <main>
         <BannerSlider />
 
-        <div className="container--hot">
-          <div className="hot__prices">
-            <HotPrices phones={phones} />
-          </div>
-        </div>
+        <HotPrices phones={phones} />
 
         <Categories phones={phones} />
 

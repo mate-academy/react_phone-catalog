@@ -1,16 +1,36 @@
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import '../style/main.scss';
 import { Phone } from '../Type/Phone';
 import { Navigation } from '../Components/Navigation';
 import { HotPrices } from '../Components/HotPrices';
+import { client } from '../utils/fetchClient';
+import { DetailsPhone } from '../Type/DetailsPhone';
+import { BASE_URL } from '../utils/BASE_URL';
 
 type Props = {
   phones: Phone[];
 };
 
 export const PhoneDetails: React.FC<Props> = ({ phones }) => {
+  const [phone, setPhone] = useState<DetailsPhone | null>(null);
   const { phoneId } = useParams<{ phoneId: string }>();
-  const phone = phones.find(currentPhone => currentPhone.phoneId === phoneId);
+  // const [photos, setPhotos] = useState(1);
+
+  useEffect(() => {
+    client.get<DetailsPhone>(`/_new/products/${phoneId}.json`)
+      .then(setPhone);
+  }, [phoneId]);
+
+  // const photos = () => {
+  //   if (phone?.images === undefined) {
+  //     return null
+  //   }
+
+  //   return phone?.images;
+  // };
+
+  const photos = phone?.images;
 
   return (
     <>
@@ -37,12 +57,24 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
               <p className="details__back--title">Back</p>
             </Link>
 
-            <h1 className="details__back--h1">{phone?.name}</h1>
+            <h1 className="details__back--h1">{phone?.id}</h1>
           </section>
 
           <section className="details__main">
             <div className="details__main--photos">
-              photos
+              {photos && photos.map((sideButton: string) => (
+                <button
+                  type="button"
+                  key={sideButton}
+                  className="details__main--photos--buttons"
+                >
+                  <img
+                    src={`${BASE_URL}/_new/${sideButton}`}
+                    alt="side_photo"
+                    className="details__main--photos--sidePhoto"
+                  />
+                </button>
+              ))}
             </div>
             <div className="details__main--photo">
               main photo
@@ -57,68 +89,28 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
               <h2 className="details__description--h2">About</h2>
 
               <h3 className="details__description--about--h3">
-                And then there was Pro
+                {phone?.description[0].title}
               </h3>
 
               <p className="details__description--about--title">
-                A transformative triple‑camera
-                system that adds tons of capability without
-                <br />
-                complexity.
-
-                An unprecedented leap in battery life.
-                And a mind‑blowing chip that doubles
-                <br />
-                down on machine learning and pushes
-                the boundaries of what a smartphone
-                <br />
-
-                can do. Welcome to the first iPhone
-                powerful enough to be called Pro.
+                {phone?.description[0].text}
               </p>
 
               <h3 className="details__description--about--h3">
-                Camera
+                {phone?.description[1].title}
               </h3>
 
               <p className="details__description--about--title">
-                Meet the first triple‑camera system
-                to combine cutting‑edge technology with
-                <br />
-                the legendary simplicity of iPhone.
-                Capture up to four times more scene. Get
-                <br />
-                beautiful images in drastically lower
-                light. Shoot the highest‑quality video in a
-                <br />
-                smartphone — then edit with the same
-                tools you love for photos. You’ve never
-                <br />
-                shot with anything like it.
+                {phone?.description[1].text}
               </p>
 
               <h3 className="details__description--about--h3">
-                Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
-                <br />
-                Love it.
+                {phone?.description[2].title}
               </h3>
 
               <p className="details__description--about--title">
-                iPhone 11 Pro lets you capture videos that
-                are beautifully true to life, with
-                <br />
-                greater detail and smoother motion. Epic processing
-                power means it can
-                <br />
-                shoot 4K video with extended dynamic range and
-                cinematic video stabilization
-                <br />
-                — all at 60 fps. You get more creative control,
-                too, with four times more scene
-                <br />
-                and powerful new editing tools to play with.
+                {phone?.description[2].text}
               </p>
-
             </div>
 
             <div className="details__description--tech">
@@ -140,7 +132,7 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                 </p>
 
                 <p className="details__description--tech--value">
-                  2688x1242
+                  {phone?.resolution}
                 </p>
               </div>
 
@@ -150,7 +142,7 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                 </p>
 
                 <p className="details__description--tech--value">
-                  Apple A12 Bionic
+                  {phone?.processor}
                 </p>
               </div>
 
@@ -180,7 +172,7 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                 </p>
 
                 <p className="details__description--tech--value">
-                  12 Mp + 12 Mp + 12 Mp (Triple)
+                  {phone?.camera}
                 </p>
               </div>
 
@@ -190,7 +182,7 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                 </p>
 
                 <p className="details__description--tech--value">
-                  Optical, 2x
+                  {phone?.zoom}
                 </p>
               </div>
 
@@ -200,7 +192,7 @@ export const PhoneDetails: React.FC<Props> = ({ phones }) => {
                 </p>
 
                 <p className="details__description--tech--value">
-                  GSM, LTE, UMTS
+                  {phone?.cell}
                 </p>
               </div>
             </div>

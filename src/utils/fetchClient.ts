@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog';
+
+import { BASE_URL } from './BASE_URL';
 
 // returns a promise resolved after a given delay
 function wait(delay: number) {
