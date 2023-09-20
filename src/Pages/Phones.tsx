@@ -1,57 +1,88 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../style/main.scss';
+import { Link, useSearchParams } from 'react-router-dom';
+
 import { Dropdowns } from '../Components/Dropdowns';
-import { Phone } from '../Type/Phone';
 import { ProductCard } from '../Components/ProductCard';
+import { sortPhones } from '../helper/preperaPhones';
+import { PhonesPaginations } from '../Components/PhonesPagination';
+
+import { Phone } from '../Type/Phone';
+import '../style/main.scss';
+import { useLocalStorage } from '../utils/UseLocalStorege';
+import { Navigation } from '../Components/Navigation';
 
 type Props = {
   phones: Phone[],
 };
 
 export const PhonesPage: React.FC<Props> = ({ phones }) => {
-  const preperaPhones = phones.slice(0, 10);
+  const [searchParams] = useSearchParams();
+  const selectedValueSortBy = searchParams.get('sortBy') || 'Newest';
+  const selectedValueNumberOptions = searchParams.get('NumberOptions') || '4';
+  const [page, setPage] = useLocalStorage<number>('pages', 1);
+
+  const firstPhoneOnPage = +selectedValueNumberOptions * (page - 1);
+  const lastPhoneOnPage = Math.min(
+    +selectedValueNumberOptions * page, phones.length,
+  );
+
+  const sortedPhones = sortPhones(phones, selectedValueSortBy);
+
+  const phonesOnPage = (
+    phonesForPage: Phone[],
+    firstOnPage: number,
+    lastOnPage: number,
+  ) => {
+    if (!firstOnPage && !lastOnPage) {
+      return phonesForPage;
+    }
+
+    return sortedPhones.slice(firstOnPage, lastOnPage);
+  };
+
+  const readyPhones = phonesOnPage(phones, firstPhoneOnPage, lastPhoneOnPage);
+
+  const isShower = true;
 
   return (
-    <main>
-      <div className="phones">
-        <div className="breadcrumbs">
-          <Link
-            to="/"
-            className="breadcrumbs__button breadcrumbs__icon"
+    <>
+      <Navigation isShower={isShower} />
+      <main>
+
+        <div className="phones">
+          <div className="breadcrumbs">
+            <Link
+              to="/"
+              className="breadcrumbs__button breadcrumbs__icon"
+            />
+            <div className="breadcrumbs__arrow breadcrumbs__icon" />
+            <p>
+              Phones
+            </p>
+          </div>
+          <div className="title">
+            <h1>Mobile phones</h1>
+
+            <p className="title__p">{`${phones.length} models`}</p>
+          </div>
+          <Dropdowns />
+        </div>
+
+        <div className="container--list phones__list">
+          {readyPhones.map(phone => (
+            <ProductCard phone={phone} key={phone.id} />
+          ))}
+        </div>
+
+        {selectedValueNumberOptions !== 'All' && (
+          <PhonesPaginations
+            phones={phones}
+            currentPage={page}
+            setCurrentPage={setPage}
           />
-          <div className="breadcrumbs__arrow breadcrumbs__icon" />
-          <p>
-            Phones
-          </p>
-        </div>
-        <div className="title">
-          <h1>Mobile phones</h1>
+        )}
 
-          <p className="title__p">{`${phones.length} models`}</p>
-        </div>
-        <Dropdowns />
-      </div>
-
-      <div className="container--list phones__list">
-        {preperaPhones.map(phone => (
-          <ProductCard phone={phone} key={phone.id} />
-        ))}
-      </div>
-
-      <div className="phones__button">
-        <button
-          type="button"
-          aria-label="Mute volume"
-          className="phones__button--right"
-        />
-        {preperaPhones.length}
-        <button
-          type="button"
-          aria-label="Mute volume"
-          className="phones__button--left"
-        />
-      </div>
-    </main>
+      </main>
+    </>
   );
 };

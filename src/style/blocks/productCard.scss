@@ -1,13 +1,21 @@
 .product {
   margin-bottom: 80px;
   display: flex;
-  
+
   &__card {
     box-sizing: border-box;
     width: 272px;
     height: 507px;
     border: 1px solid $color-shadow;
     background: $gray-white;
+
+    z-index: 1;
+    transition: border-color 1s ease;
+
+    &:hover {
+      z-index: 2;
+      border: 1px solid $gray-primary;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -57,7 +65,7 @@
       font-weight: 700;
       line-height: 140%;
     }
-    
+
     &--discount {
       margin: 0;
       color: $gray-secondary;
@@ -165,4 +173,8 @@
       background-image: url("../../images/icons/Favourites.svg");
     }
   }
+}
+
+.phoneDetails {
+  text-decoration: none;
 }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import '../style/main.scss';
 import imgPhones from '../images/categories/Phones.png';
 import imgTablets from '../images/categories/Tablets.png';
@@ -14,7 +16,10 @@ export const Categories: React.FC<Props> = ({ phones }) => {
       <h1>Shop by category</h1>
 
       <div className="category">
-        <div className="container__category">
+        <Link
+          to="/Phones"
+          className="container__category"
+        >
           <div className="category__phones">
             <img
               className="category__phones--img"
@@ -30,9 +35,12 @@ export const Categories: React.FC<Props> = ({ phones }) => {
               {`${phones.length} models`}
             </p>
           </div>
-        </div>
+        </Link>
 
-        <div className="container__category">
+        <Link
+          to="/Tablets"
+          className="container__category"
+        >
           <div className="category__tablets">
             <img
               className="category__tablets--img"
@@ -48,9 +56,12 @@ export const Categories: React.FC<Props> = ({ phones }) => {
               {`${0} models`}
             </p>
           </div>
-        </div>
+        </Link>
 
-        <div className="container__category">
+        <Link
+          to="/Accessories"
+          className="container__category"
+        >
           <div className="category__accessories">
             <img
               className="category__accessories--img"
@@ -66,7 +77,7 @@ export const Categories: React.FC<Props> = ({ phones }) => {
               {`${0} models`}
             </p>
           </div>
-        </div>
+        </Link>
 
       </div>
     </div>

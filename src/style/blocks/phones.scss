@@ -14,38 +14,52 @@
       }
     }
   }
-}
 
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 25px;
-
-  &__icon {
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
-    background-color: $gray-white;
-    height: 16px;
-    width: 16px;
+  &__pagination {
+    display: flex;
+    height: 32px;
+    margin: 0 auto 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
   }
 
   &__button {
-    border: none;
-    background-image: url("../../images//icons/Home.svg");
-  }
 
-  &__arrow {
-    background-image: url("../../images/icons/ArrowRightDisabled.svg");
-  }
-}
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
 
-.title {
-  margin: 40px 0 0;
+    background-color: $gray-white;
+    border: solid 1px $gray-icons-placeholders;
 
-  &__p {
-    margin-top: 8px;
+    height: 32px;
+    width: 32px;
+
+    &--left {
+      margin: 0 16px 0 0;
+      background-image: url('../../images/icons/ArrowLeft.svg');
+    }
+
+    &--right {
+      margin: 0 0 0 16px;
+      background-image: url('../../images/icons/ArrowRight.svg');
+    }
+
+    &--pagination {
+      border: solid 1px $color-shadow;
+    }
+
+    &-active {
+      background-color: $gray-primary;
+
+      color: $gray-white;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+    }
   }
 }
 
@@ -55,7 +69,9 @@
   margin-top: 40px;
 
   &__sort {
-    color: blue;
+    font-family: "Montserrat", sans-serif;
+    padding: 8px;
+    color: $gray-primary;
     margin-top: 4px;
     width: 176px;
     height: 40px;

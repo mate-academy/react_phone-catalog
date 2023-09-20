@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../style/main.scss';
 
-const contacts = 'https://www.instagram.com/andrew_yelieva/';
+const contacts = 'https://www.linkedin.com/in/andriiyelieva/';
 const gitHub = 'https://github.com/AndriiYelieva';
 
 export const Footer: React.FC = () => {
@@ -55,18 +55,19 @@ export const Footer: React.FC = () => {
           </a>
         </div>
 
-        <div className="container__button">
-          <p className="container__button--text">Back to top</p>
+        {isVisible ? (
+          <div className="container__button">
+            <p className="container__button--text">Back to top</p>
 
-          {isVisible && (
             <button
               type="button"
               className="container__button--arrow"
               aria-label="Mute volume"
               onClick={scrollToTop}
             />
-          )}
-        </div>
+          </div>
+        )
+          : (<div />)}
       </div>
     </footer>
   );

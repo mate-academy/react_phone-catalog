@@ -1,0 +1,113 @@
+.details {
+  width: 1136px;
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 66px;
+
+    margin: 40px 0 0;
+    text-decoration: none;
+
+    &--icon {
+      height: 16px;
+      width: 16px;
+      background-image: url('../../images/icons/ArrowLeft.svg');
+    }
+
+    &--title {
+      color: $gray-secondary;
+    }
+
+    &--h1 {
+      margin-top: 16px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    height: 464px;
+
+    &--photos {
+      width: 80px;
+      border: 1px solid $gray-secondary;
+    }
+
+    &--photo {
+      margin: 0 64px 0 16px;
+      width: 464px;
+      border: 1px solid $gray-secondary;
+    }
+
+    &--params {
+      border: 1px solid $gray-secondary;
+      width: 320px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    margin: 80px 0 0;
+
+    &--h2 {
+      font-size: 22px;
+      line-height: 140%;
+      padding-bottom: 32px;
+
+    }
+
+    &--about {
+      margin-right: 64px;
+      width: 559px;
+
+      &--h3 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      &--title {
+        margin-top: 16px;
+
+        color: $gray-secondary;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+      }
+    }
+
+    &--tech {
+      width: 512px;
+
+      &--specs {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &--name {
+        color: $gray-secondary;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+      }
+
+      &--value {
+        color: $gray-primary;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 21px;
+        text-align: right;
+      }
+    }
+  }
+
+  &__like {
+    margin: 80px 0;
+  }
+}

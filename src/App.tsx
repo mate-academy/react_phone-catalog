@@ -4,10 +4,11 @@ import { Route, Routes } from 'react-router-dom';
 import { client } from './utils/fetchClient';
 
 import './App.scss';
-import { Navigation } from './Components/Navigation';
+// import { Navigation } from './Components/Navigation';
 import { HomePage } from './Pages/Home';
 import { NotFound } from './Pages/NotFound';
 import { PhonesPage } from './Pages/Phones';
+import { PhoneDetails } from './Pages/PhoneDetails';
 import { TabletsPage } from './Pages/Tablets';
 import { AccessoriesPage } from './Pages/Accessories';
 import { FavouritesPage } from './Pages/Favourites';
@@ -25,12 +26,15 @@ export const App = () => {
 
   return (
     <div className="App">
-      <Navigation />
 
       <Routes>
         <Route path="/" element={<HomePage phones={phones} />} />
 
-        <Route path="/Phones" element={<PhonesPage phones={phones} />} />
+        <Route path="/Phones">
+          <Route index element={<PhonesPage phones={phones} />} />
+          <Route path=":phoneId" element={<PhoneDetails phones={phones} />} />
+        </Route>
+
         <Route path="/Tablets" element={<TabletsPage />} />
         <Route path="/Accessories" element={<AccessoriesPage />} />
         <Route path="/Favourites" element={<FavouritesPage />} />

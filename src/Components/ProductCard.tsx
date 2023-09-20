@@ -1,7 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Phone } from '../Type/Phone';
-// import AppleIphoneXs from '../images/TestForCard/AppleiPhoneXs.png';
 import '../style/main.scss';
-// import '../../public/_new/';
 
 type Props = {
   phone: Phone;
@@ -12,13 +11,18 @@ const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   return (
     <div className="product__card phones__list--card">
-      <div className="product__photo">
-        <img
-          className="product__photo--img"
-          src={`${URL}${phone.image}`}
-          alt={phone.phoneId}
-        />
-      </div>
+      <Link
+        className="phoneDetails"
+        to={`/Phones/${phone.phoneId}`}
+      >
+        <div className="product__photo">
+          <img
+            className="product__photo--img"
+            src={`${URL}${phone.image}`}
+            alt={phone.phoneId}
+          />
+        </div>
+      </Link>
 
       <div className="product__description">
         <p className="product__text--body">

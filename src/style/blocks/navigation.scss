@@ -48,12 +48,39 @@
   box-shadow: 0 1px 0 0 $color-shadow;
   box-sizing: border-box;
 
-  &-buttom {
+  &__personally {
     display: flex;
     gap: 64px;
 
     &:nth-last-child(1) {
       gap: 0;
+    }
+
+    &--container {
+      display: flex;
+      width: 327px;
+      height: 64px;
+      background: $gray-white;
+
+      margin: auto 24px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--search {
+      color: $gray-icons-placeholders;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+
+      border: none;
+    }
+
+    &--icon {
+      height: 16px;
+      width: 16px;
+      background-image: url("../../images/icons/Search.svg");
     }
   }
 
