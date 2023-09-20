@@ -1,0 +1,45 @@
+.nav {
+  &__list {
+    display: flex;
+    column-gap: 64px;
+  }
+
+  &__item {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.48px;
+
+    color: $secondaryGray;
+  }
+
+  &__link {
+    position: relative;
+
+    display: block;
+    padding: 26px 0;
+
+    transition: color $duration;
+
+    &:hover {
+      color: $primeryGray;
+    }
+
+    &--active {
+      color: $primeryGray;
+
+      &::after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+
+        display: block;
+        content: '';
+        height: 3px;
+
+        background-color: $primeryGray;
+      }
+    }
+  }
+}

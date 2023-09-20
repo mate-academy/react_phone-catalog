@@ -1,0 +1,30 @@
+.header {
+  border-bottom: 2px solid $elementsGray;
+
+  &__content {
+    display: flex;
+  }
+
+  &__logo {
+    margin-left: 24px;
+    margin-right: 64px;
+  }
+
+  &__link {
+    width: 64px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    border-left: 2px solid $elementsGray;
+
+    &--favourites {
+      margin-left: auto;
+
+      background-image: url(../../img/icons/favourites.svg);
+    }
+
+    &--cart {
+      background-image: url(../../img/icons/cart.svg);
+    }
+  }
+}

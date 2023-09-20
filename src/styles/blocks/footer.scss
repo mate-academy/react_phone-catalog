@@ -1,0 +1,17 @@
+.footer {
+  border-top: 2px solid $elementsGray;
+
+  &__content {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
