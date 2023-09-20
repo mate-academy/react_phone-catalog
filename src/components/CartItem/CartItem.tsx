@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { CartContext } from '../../providers/CartProvider/CartProvider';
 
 import { Product } from '../../types/Product';
-// import { getDiscount } from '../../helpers/getDiscount';
 
 import crossIcon from '../../images/cross.svg';
 import './CartItem.scss';
@@ -32,16 +31,6 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       productsInCart.filter(productInCart => productInCart.id !== itemId),
     );
   };
-
-  // const correctPrice = () => {
-  //   if (priceRegular) {
-  //     const priceWithDiscount = getDiscount(price, priceDiscount);
-
-  //     return priceWithDiscount;
-  //   }
-
-  //   return itemPrice;
-  // };
 
   const handleChangeQuantity = (itemId: string, action: string) => {
     const isItemInCart
@@ -91,7 +80,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <img src={crossIcon} alt="delete item" />
       </button>
       <div className="CartItem__photo">
-        <img src={`_new/${image}`} alt="product" className="CartItem__img" />
+        <img src={image} alt="product" className="CartItem__img" />
       </div>
       <div className="CartItem__title">
         {name}

@@ -26,9 +26,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(({ products }) => {
             to="/phones"
             className="ShopByCategory__link"
             onClick={() => {
-              window.scrollTo({
-                top: 0,
-              });
+              window.scrollTo(0, 0);
             }}
           >
             <div
