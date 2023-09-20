@@ -20,7 +20,7 @@
 
   &__title {
     margin-bottom: 40px;
-    @extend %h1-Title
+    @extend %h1-Title;
   }
 
   &__main {

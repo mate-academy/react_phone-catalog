@@ -22,10 +22,18 @@ export const DropDown: React.FC<Props> = ({
 }) => {
   const [showList, setShowList] = useState(false);
   const [searchParams] = useSearchParams();
-  const param = searchParams.get(sortKey) || startValue;
+  const param = searchParams.get(sortKey);
   const pageParam = searchParams.get(SearchParamsKeys.page);
-  const [buttonValue, setButtontValue] = useState(param || values[0]);
+  const [buttonValue, setButtontValue] = useState<string>();
   const dropDownSelect = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (startValue) {
+      setButtontValue(param || startValue);
+    } else {
+      setButtontValue(param || values[0]);
+    }
+  }, [param]);
 
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
