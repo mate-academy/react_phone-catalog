@@ -9,7 +9,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
-import { NotFoundPage } from './pages/NotGoundPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 const App = () => (
   <div className="App">

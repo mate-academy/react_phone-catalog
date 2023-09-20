@@ -25,7 +25,7 @@ export const ProductDetailsPage = () => {
   const [currentImage, setCurrentImage] = useState('');
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const getItemInfo = async (id: string | undefined) => {
     const fetchJson = await fetch(`${BASE_URL}/products/${id}.json`);
@@ -40,11 +40,14 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     setLoading(true);
+    setIsError(false);
+
     getItemInfo(itemId)
       .then(productInfo => {
         setProduct(productInfo);
         setCurrentImage(productInfo.images[0]);
       })
+      .catch(() => setIsError(true))
       .finally(() => setLoading(false));
   }, [itemId]);
 
@@ -65,19 +68,25 @@ export const ProductDetailsPage = () => {
     <div className="container">
       <Breadcrumbs pathname={pathLink} name={product?.name || ''} />
 
+      <button
+        type="button"
+        className="details__back"
+        data-cy="backButton"
+        onClick={() => window.history.back()}
+      >
+        <span className="arrow arrow--left-disabled" />
+        <span className="details__back--span">Back</span>
+      </button>
+
       {loading && <Loader />}
 
-      {!loading && product && (
+      {isError && (
+        <h2 className="no-search">
+          Sorry, there is no phone with a given Id on the server.
+        </h2>
+      )}
+      {!loading && !isError && product && (
         <div className="details">
-          <button
-            type="button"
-            className="details__back"
-            data-cy="backButton"
-            onClick={() => window.history.back()}
-          >
-            <span className="arrow arrow--left-disabled" />
-            <span className="details__back--span">Back</span>
-          </button>
           <h1 className="details__title">{product?.name}</h1>
 
           <div className="details__container">

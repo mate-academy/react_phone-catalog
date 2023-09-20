@@ -2,6 +2,7 @@ type Param = string;
 type Params = {
   [key: string]: Param | null;
 };
+
 export const getSearchWith = (
   params: Params,
   search?: string | URLSearchParams,

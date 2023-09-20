@@ -31,7 +31,7 @@ export const Selector: React.FC<Props> = ({
   };
 
   const selectedText = sortKeys.find((_, i) => sortBy === sortValues[i])
-    || 'chose';
+    || 'all';
 
   return (
     <div className="selector">

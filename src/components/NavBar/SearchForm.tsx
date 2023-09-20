@@ -2,8 +2,8 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { useContext } from 'react';
 import classNames from 'classnames';
 
-import { getSearchWith } from '../../utils/searchHelper';
 import { QueryContext } from '../../context/QueryContext';
+import { getSearchWith } from '../../utils/getSearchWith';
 
 export const SearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -17,7 +17,7 @@ export const SearchForm = () => {
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams(
-      getSearchWith(searchParams, { query: event.target.value || null }),
+      getSearchWith({ query: event.target.value || null }, searchParams),
     );
     applyQuery(event.target.value);
   };

@@ -58,14 +58,18 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
     setSearchWith({ sort: event.target.value || undefined });
   };
 
+  const getValidPerPageValue = (perPageValue: string) => {
+    if (perPageValue === 'all') {
+      return sortedProducts.length.toString();
+    }
+
+    return perPageValue;
+  };
+
   const handlePerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const perPageValue = event.target.value;
 
-    if (perPageValue === 'all') {
-      setItemsOnPage(sortedProducts.length.toString());
-    } else {
-      setItemsOnPage(perPageValue);
-    }
+    setItemsOnPage(getValidPerPageValue(perPageValue));
 
     setCurrentPage(1);
     setSearchWith({ perPage: event.target.value || undefined });
@@ -84,10 +88,12 @@ export const ProductsList: React.FC<Props> = ({ products, title }) => {
     setSearchWith({ page: '1' });
   }, [appliedQuery]);
 
-  const startItem = ((currentPage - 1) * +itemsOnPage);
-  const endItem = (currentPage * +itemsOnPage) > sortedProducts.length
+  const onPage = +getValidPerPageValue(itemsOnPage);
+
+  const startItem = ((currentPage - 1) * onPage);
+  const endItem = (currentPage * onPage) > sortedProducts.length
     ? sortedProducts.length
-    : startItem + +itemsOnPage;
+    : startItem + onPage;
 
   const arrOfItems = filteredProducts.slice(startItem, +endItem);
 
