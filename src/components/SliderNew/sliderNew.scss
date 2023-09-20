@@ -1,7 +1,9 @@
-.mySwiper .swiper-slide {
-  width: 272px !important;
+.swiper-wrapper {
+  display: flex;
+  width: 100%;
+}
 
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+.swiper-slide {
+  display: inline-block !important;
+  width: 272px !important;
 }

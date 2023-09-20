@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 const imagesUrl: string[] = [
-  'new/img/banner-phones.png',
-  'new/img/banner-tablets.png',
-  'new/img/banner-accessories.png',
+  'new/img/banner/banner-phones.png',
+  'new/img/banner/banner-tablets.jpg',
+  'new/img/banner/banner-accessories.png',
 ];
 
 const prepareImagesAlt = (url: string) => {

@@ -44,8 +44,8 @@ export const HomePage = () => {
                   />
                 </button>
               </div>
-              <SliderNew />
             </div>
+            <SliderNew />
 
           </section>
           {/* <section className="shop-by-category">

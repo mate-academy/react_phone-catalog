@@ -12,7 +12,7 @@ export const Header = () => (
         >
           <img
             className="logo__img"
-            src="new/img/icons/logo.png"
+            src="new/img/logo/logo.svg"
             alt="logo"
           />
         </Link>

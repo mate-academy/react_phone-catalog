@@ -29,7 +29,7 @@ export const SliderNew = () => {
       className="mySwiper"
     >
       {hotPriceProducts.map(product => (
-        <SwiperSlide key={product.id}>
+        <SwiperSlide key={product.id} style={{ width: '272px' }}>
           <ProductCard key={product.id} product={product} />
         </SwiperSlide>
       ))}
