@@ -14,11 +14,9 @@ import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton/AddToFavButton';
 
 import { getProduct } from '../../api/products';
-// import { getDiscount } from '../../helpers/getDiscount';
 
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
-// import { ProductType } from '../../types/ProductType';
 
 import errorIcon from '../../images/error.svg';
 
@@ -71,24 +69,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       setIsLoading(false);
     };
   }, []);
-
-  // const discountedPrice = getDiscount(price, discount);
-
-  // const getTypeOfProduct = (prodType: string) => {
-  //   switch (prodType) {
-  //     case ProductType.tablet:
-  //       return 'tablets';
-
-  //     case ProductType.accessory:
-  //       return 'accessories';
-
-  //     case ProductType.phone:
-  //     default:
-  //       return 'phones';
-  //   }
-  // };
-
-  // const productType = getTypeOfProduct(category);
 
   const isItemInCart = productsInCart.some(cartItem => cartItem.id === id);
 
@@ -162,7 +142,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                 }}
               >
                 <img
-                  src={`_new/${image}`}
+                  src={image}
                   alt="product"
                   className="ProductCard__img"
                 />

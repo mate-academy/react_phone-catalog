@@ -16,9 +16,7 @@ export const HomePage: React.FC<Props> = React.memo(({ products }) => {
   }, [products]);
 
   const getBrandNewProducts = useMemo(() => {
-    return products
-      .filter((product) => !product.price)
-      .sort((a, b) => b.year - a.year);
+    return [...products].sort((a, b) => b.year - a.year);
   }, [products]);
 
   return (

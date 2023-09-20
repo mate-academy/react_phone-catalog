@@ -148,7 +148,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
                   >
                     <img
                       className="ProductDetailsPage__photo-img"
-                      src={`_new/${image}`}
+                      src={image}
                       alt="product img"
                     />
                   </li>
