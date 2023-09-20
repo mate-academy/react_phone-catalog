@@ -1,14 +1,26 @@
 @import "../../styles/global-imports";
 
 .product-details {
-
   &__top-content {
     display: flex;
     margin-top: 40px;
+
+    @include onMobileAndTablet {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 30px;
+    }
   }
 
   &__virables {
     width: 320px;
+
+    @include onMobileAndTablet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 40px;
+    }
   }
 
   &__price {
@@ -20,6 +32,14 @@
   &__actions {
     display: flex;
     justify-content: space-between;
+
+    @include onMobileAndTablet {
+      gap: 20px;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+    }
 
     &--cart {
       width: 264px;
@@ -33,11 +53,15 @@
 
     margin-top: 32px;
 
+    @include onMobileAndTablet {
+      display: none;
+    }
+
     &--item {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       justify-items: stretch;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
 
       @extend %small-text;
 

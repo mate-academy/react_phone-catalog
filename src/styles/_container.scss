@@ -2,14 +2,14 @@
 
 .container {
   margin: 0 auto 80px;
-  max-width: 1136px;
+  max-width: 1156px;
 
   @include onTablet {
-    max-width: 640px;
+    max-width: 80%;
   }
 
   @include onMobile {
-    max-width: 288px;
+    max-width: 80%;
   }
 
   &-footer {

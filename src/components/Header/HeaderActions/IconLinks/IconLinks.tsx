@@ -4,17 +4,17 @@ import { FavoriteContext } from '../../../../contexts/FavoriteContextProvider';
 import cartIcon from '../../../../images/icons/icon-cart.svg';
 
 import { CartContext } from '../../../../contexts/CartContextProvider';
-import favouritesIcon from '../../../../images/icons/icon-favourites.svg';
+import favoritesIcon from '../../../../images/icons/icon-favourites.svg';
 
 import './IconLinks.scss';
 
 type Props = {
-  type: 'favourites' | 'cart',
+  type: 'favorites' | 'cart',
 };
 
 export const IconLinks: React.FC<Props> = ({ type }) => {
   const images = {
-    favourites: favouritesIcon,
+    favorites: favoritesIcon,
     cart: cartIcon,
   };
 
@@ -22,7 +22,7 @@ export const IconLinks: React.FC<Props> = ({ type }) => {
   const { favorites } = useContext(FavoriteContext);
 
   const contexts = {
-    favourites: favorites,
+    favorites,
     cart,
   };
 

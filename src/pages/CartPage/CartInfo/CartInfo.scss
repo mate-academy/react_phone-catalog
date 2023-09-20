@@ -7,6 +7,16 @@
   text-align: center;
   border: 1px solid $c-elements;
 
+  @include onTablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 74vw;
+    max-width: 752px;
+    margin: 50px 0;
+  }
+
   &__total-price {
     border-bottom: 1px solid $c-elements;
     padding-bottom: 24px;
@@ -40,6 +50,12 @@
 
     margin-top: 40px;
 
-    border: 1px solid red;
+    border: 1px solid $c-red;
+
+    @include onTablet {
+      width: 80vw;
+      max-width: 752px;
+      margin: 40px auto 0;
+    }
   }
 }

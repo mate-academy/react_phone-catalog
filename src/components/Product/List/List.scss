@@ -11,6 +11,14 @@
     display: flex;
     justify-content: flex-start;
     gap: 24px;
+
+    @include onTablet {
+      justify-content: space-around;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &__list {
@@ -19,8 +27,17 @@
     gap: 16px;
     margin-bottom: 40px;
 
+    @include onMobile {
+      margin-top: 20px;
+    }
+
     &--item {
       display: block;
+    }
+
+    @include onTablet {
+      gap: 16px 6px;
+      justify-content: center;
     }
   }
 

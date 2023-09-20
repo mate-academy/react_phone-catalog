@@ -7,7 +7,7 @@
   border-bottom: 1px solid $c-elements;
 
   @include onTablet {
-    justify-content: space-around
+    justify-content: space-around;
   }
 
   &__navigation {

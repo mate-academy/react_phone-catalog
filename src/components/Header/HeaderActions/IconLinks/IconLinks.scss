@@ -11,13 +11,13 @@
 
   &--active {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 100%;
-    background-color: red;
+    background-color: $c-red;
     position: absolute;
     top: -8px;
     left: 10px;

@@ -50,7 +50,7 @@ const App = () => (
           </Route>
 
           <Route
-            path="favourites"
+            path="favorites"
             element={<FavoritesPage />}
           />
 

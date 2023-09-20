@@ -9,6 +9,16 @@
   height: 128px;
   border: 1px solid $c-elements;
 
+  @include onTablet {
+    width: 80vw;
+    max-width: 800px;
+    height: 328px;
+
+    position: relative;
+
+    flex-direction: column;
+  }
+
   &--button-delete {
     background-color: $c-white;
     height: 16px;
@@ -17,9 +27,21 @@
     cursor: pointer;
 
     &-image {
-      height: 16px;
       width: 16px;
+      height: 16px;
       background: url("../../../images/icons/close-icon.svg") no-repeat center;
+
+      @include onTablet {
+        background-image: url("../../../images/icons/icon-close.svg");
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    @include onTablet {
+      position: absolute;
+      top: 14px;
+      left: 14px;
     }
   }
 

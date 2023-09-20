@@ -5,6 +5,14 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 116px;
 
+  @include onMobileAndTablet {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 40px;
+
+    margin-bottom: 40px;
+  }
+
   &--title {
     border-bottom: 1px solid $c-elements;
     padding-bottom: 16px;

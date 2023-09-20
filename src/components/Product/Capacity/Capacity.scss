@@ -5,6 +5,12 @@
   padding-bottom: 24px;
   margin: 24px 0;
 
+  @include onTablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &--title {
     @extend %small-text;
     color: $c-secondary;

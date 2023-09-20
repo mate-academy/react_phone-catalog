@@ -1,6 +1,6 @@
 @import "../../../styles/global-imports";
 
-.Menu {
+.menu {
   background: center no-repeat;
 
   @include onDesktop {
@@ -66,6 +66,7 @@
 
   &__list {
     margin-top: 50px;
+    position: relative;
   }
 
   &__item {
@@ -81,11 +82,36 @@
     }
 
     & > a {
-      transition: all $effect-duration;
-      color: $c-primary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
 
-      &:active {
-        color: $c-primary;
+      transition: all $effect-duration;
+      color: $c-secondary;
+    }
+
+    &-action {
+      position: relative;
+
+      &-length {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        width: 14px;
+        height: 14px;
+        border-radius: 100%;
+        background-color: $c-red;
+        color: $c-white;
+
+        @extend %small-text;
+      }
+    }
+
+    &--link {
+      &-active {
+        color: $c-primary !important;
       }
     }
   }

@@ -3,7 +3,7 @@ import { IconLinks } from './IconLinks';
 
 import './HeaderActions.scss';
 
-const ACTIONS_PAGES = ['favourites', 'cart'];
+const ACTIONS_PAGES = ['favorites', 'cart'];
 
 export const HeaderActions = () => (
   <div className="Actions">
@@ -13,7 +13,7 @@ export const HeaderActions = () => (
         type="icon"
         aria-label={currentAction}
       >
-        <IconLinks type={currentAction as 'favourites' | 'cart'} />
+        <IconLinks type={currentAction as 'favorites' | 'cart'} />
       </NavigationLink>
     ))}
   </div>

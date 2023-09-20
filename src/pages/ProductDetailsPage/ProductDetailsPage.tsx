@@ -123,49 +123,51 @@ export const ProductDetailsPage = () => {
 
             <div className="product-details__virables">
 
-              <div className="product-detais--colors">
-                <ColorChoose
-                  colors={colors}
-                  currentColor={currentColor}
-                  productDetails={productDetails}
-                />
-              </div>
+              <div className="product-details__choose">
+                <div className="product-details--colors">
+                  <ColorChoose
+                    colors={colors}
+                    currentColor={currentColor}
+                    productDetails={productDetails}
+                  />
+                </div>
 
-              <div className="product-detais--capacity">
-                <Capacity
-                  capacities={capacities}
-                  productDetails={productDetails}
-                />
-              </div>
+                <div className="product-detais--capacity">
+                  <Capacity
+                    capacities={capacities}
+                    productDetails={productDetails}
+                  />
+                </div>
 
-              <div className="product-details__price">
-                {productDetails?.priceDiscount === productDetails?.priceRegular
-                  ? (
-                    <h1 className="
-                      product-card__price-regular
-                      product-details__price-regular"
-                    >
-                      {`$${productDetails?.priceRegular}`}
-                    </h1>
-                  ) : (
-                    <>
+                <div className="product-details__price">
+                  {productDetails?.priceDiscount
+                    === productDetails?.priceRegular
+                    ? (
                       <h1 className="
                         product-card__price-regular
                         product-details__price-regular"
                       >
-                        {`$${productDetails?.priceDiscount}`}
-                      </h1>
-
-                      <h2 className="
-                        product-card__price-discount
-                        product-details__price-discount"
-                      >
                         {`$${productDetails?.priceRegular}`}
-                      </h2>
-                    </>
-                  )}
-              </div>
+                      </h1>
+                    ) : (
+                      <>
+                        <h1 className="
+                          product-card__price-regular
+                          product-details__price-regular"
+                        >
+                          {`$${productDetails?.priceDiscount}`}
+                        </h1>
 
+                        <h2 className="
+                          product-card__price-discount
+                          product-details__price-discount"
+                        >
+                          {`$${productDetails?.priceRegular}`}
+                        </h2>
+                      </>
+                    )}
+                </div>
+              </div>
               <div className="product-details__actions">
 
                 <div className="product-details__actions--cart">

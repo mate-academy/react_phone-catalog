@@ -8,17 +8,20 @@
   top: 10px;
 
   @include onMobile {
-    display: none !important;
+    height: 140px;
   }
 
   &__slide {
-    // height: 70% !important;
-
     &--image {
       margin: 0 auto;
       width: 86%;
       height: 400px;
       background-size: contain !important;
+
+      @include onMobile {
+        width: 86vw;
+        height: 100%;
+      }
 
       &-1 {
         background: url("../../../images/banner-iphone.png") no-repeat, fixed center;
@@ -45,6 +48,10 @@
       &::after {
         font-size: 18px !important;
         color: $c-primary;
+      }
+
+      @include onMobile {
+        display: none;
       }
     }
 

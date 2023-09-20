@@ -3,18 +3,38 @@
 .galery {
   display: flex;
 
+  @include onMobile {
+    flex-direction: column-reverse;
+  }
+
+  &__list {
+    gap: 16px;
+
+    @include onMobile {
+      display: flex;
+      gap: 8px;
+      overflow-x: scroll;
+      max-width: 80%;
+      margin: 20px auto 0;
+    }
+  }
+
   &__photo {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin: 0 16px 16px 0;
     height: 80px;
     width: 80px;
 
     border: 1px solid $c-elements;
 
     background-color: $c-white;
+
+    @include onMobile {
+      height: 60px;
+      width: 60px;
+    }
 
     &:not(.galery__photo-active) {
       @include hover(border-color, $c-secondary);
@@ -30,6 +50,11 @@
 
       width: 66px;
       height: 66px;
+
+      @include onMobile {
+        width: 33px;
+        height: 33px;
+      }
     }
   }
 
@@ -40,6 +65,13 @@
     height: 464px;
     width: 464px;
     margin-right: 64px;
+
+    @include onMobile {
+      height: 90vw;
+      width: 80vw;
+      display: block;
+      margin: 0 auto;
+    }
 
     &--image {
       max-width: 100%;

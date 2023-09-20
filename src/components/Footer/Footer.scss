@@ -8,12 +8,21 @@
 
   border: 1px solid $c-elements;
 
+  @include onMobile {
+    height: 160px;
+  }
+
   &-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     width: 100%;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &__list {
