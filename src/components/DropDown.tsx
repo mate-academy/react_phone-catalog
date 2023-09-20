@@ -10,6 +10,7 @@ type Props = {
   values: string[];
   sortKey: string;
   onPageChange?: (page: number) => void;
+  startValue?: string;
 };
 
 export const DropDown: React.FC<Props> = ({
@@ -17,10 +18,11 @@ export const DropDown: React.FC<Props> = ({
   values,
   sortKey,
   onPageChange,
+  startValue,
 }) => {
   const [showList, setShowList] = useState(false);
   const [searchParams] = useSearchParams();
-  const param = searchParams.get(sortKey);
+  const param = searchParams.get(sortKey) || startValue;
   const pageParam = searchParams.get(SearchParamsKeys.page);
   const [buttonValue, setButtontValue] = useState(param || values[0]);
   const dropDownSelect = useRef<HTMLDivElement>(null);
@@ -48,11 +50,11 @@ export const DropDown: React.FC<Props> = ({
       newParams.set(SearchParamsKeys.page, '1');
     }
 
-    if (value !== PerPageOptions.all) {
+    if (value === PerPageOptions.all) {
       newParams.set(sortKey, value);
-    } else {
-      newParams.delete(sortKey);
       newParams.delete(SearchParamsKeys.page);
+    } else {
+      newParams.set(sortKey, value);
     }
 
     return newParams.toString();

@@ -1,7 +1,9 @@
 @import "../styles/variables.scss";
+@import "../styles/extends.scss";
+@import "../styles/mixins.scss";
 
 .contacts {
-  padding-top: 24px;
+  @extend %pageMargins;
 
   &__bread-crumbs {
     margin-bottom: 40px;
@@ -9,20 +11,13 @@
 
   &__title {
     margin-bottom: 24px;
-    color: $gray-primary;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
+    @extend %h1-Title;
   }
 
   &__link {
     color: $gray-secondary;
     font-size: 20px;
     font-weight: 500;
-    transition: color $transition-time;
-
-    &:hover {
-      color: $gray-primary;
-    }
+    @include hover(color, $gray-primary);
   }
 }

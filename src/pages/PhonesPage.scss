@@ -1,4 +1,5 @@
+@import "../styles/extends.scss";
+
 .phones-page {
-  margin-bottom: 80px;
-  padding-top: 25px;
+  @extend %pageMargins
 }

@@ -28,7 +28,13 @@ export const ProductsList: React.FC<Props> = ({
 
   const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
 
-  const perPage = searchParams.get(SearchParamsKeys.perPage) || false;
+  let perPage = searchParams.get(SearchParamsKeys.perPage)
+    || PerPageOptions.p8;
+
+  if (perPage === PerPageOptions.all || title === 'Favourites') {
+    perPage = '0';
+  }
+
   const pageFromParams = searchParams.get(SearchParamsKeys.page) || '1';
   const [currentPage, setCurrentPage] = useState(+pageFromParams);
 
@@ -42,7 +48,8 @@ export const ProductsList: React.FC<Props> = ({
   const totalProducts = filteredProducts.length;
 
   const firstItem = currentPage !== 1 ? (currentPage - 1) * +perPage : 0;
-  const lastItem = (currentPage * +perPage) > totalProducts || !perPage
+
+  const lastItem = (currentPage * +perPage) > totalProducts || perPage === '0'
     ? totalProducts
     : currentPage * +perPage;
 
@@ -114,6 +121,7 @@ export const ProductsList: React.FC<Props> = ({
                 values={Object.values(PerPageOptions)}
                 sortKey={SearchParamsKeys.perPage}
                 onPageChange={(page: number) => setCurrentPage(page)}
+                startValue={PerPageOptions.p8}
               />
             </div>
           )}
@@ -132,7 +140,7 @@ export const ProductsList: React.FC<Props> = ({
             ))}
           </div>
 
-          {!!perPage && (
+          {perPage !== '0' && (
             <div className="product-list__pagination">
               <Pagination
                 totalProducts={totalProducts}

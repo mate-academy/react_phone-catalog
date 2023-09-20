@@ -1,7 +1,8 @@
 @import "../styles/variables.scss";
+@import "../styles/extends.scss";
 
 .product {
-  padding-top: 24px;
+  @extend %pageMargins;
 
   &__not-found {
     color: $gray-primary;
@@ -19,10 +20,7 @@
 
   &__title {
     margin-bottom: 40px;
-    color: $gray-primary;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
+    @extend %h1-Title
   }
 
   &__main {
@@ -252,15 +250,8 @@
     text-align: right;
   }
 
-  &__also-like {
-    margin-bottom: 80px;
-  }
-
   &__also-like-title {
     margin-bottom: 24px;
-    color: $gray-primary;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
+    @extend %h1-Title;
   }
 }
