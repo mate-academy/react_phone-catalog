@@ -14,23 +14,31 @@ import { Button } from '../../components/Button';
 import { Product, ProductDetails } from '../../types/product';
 import { productApi } from '../../utils/api/productApi';
 import { Loader } from '../../components/Loader';
-import { useLocalStorage } from '../../utils/hooks/useLocalStorage';
 import { Item } from '../../types/storageItem';
-import { Storage } from '../../types/storages';
 import { productService } from '../../utils/productService';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
-export const ProductDetailsPage = () => {
+type Props = {
+  isIncluded: (items: Item<Product>[], value: Product) => boolean;
+  cart: Item<Product>[];
+  fav: Item<Product>[];
+  onSelectedClick: (value: Product) => void;
+  onFavClick: (value: Product) => void;
+};
+
+export const ProductDetailsPage: React.FC<Props> = ({
+  isIncluded,
+  cart,
+  fav,
+  onSelectedClick,
+  onFavClick,
+}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productDetails, setProductDetails]
     = useState<ProductDetails>(getProductDetails);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImageId, setSelectedImageId] = useState(0);
-  const [fav, setFav]
-    = useLocalStorage<Item<Product>[]>([], Storage.FAVOURITES);
-  const [cart, setCart]
-    = useLocalStorage<Item<Product>[]>([], Storage.CART);
   const { itemId } = useParams();
 
   const normalizedItemId = itemId || '';
@@ -53,36 +61,6 @@ export const ProductDetailsPage = () => {
 
     return item;
   }, [normalizedItemId, products]);
-
-  const isIncluded = (items: Item<Product>[]) => {
-    for (const item of items) {
-      if (value && item.value.id === value.id) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-
-  const handleCartClick = () => {
-    if (isIncluded(cart)) {
-      setCart(prev => {
-        return prev.filter(item => item.value.id !== value.id);
-      });
-    } else {
-      setCart(prev => [...prev, { quantity: 1, value }]);
-    }
-  };
-
-  const handleFavClick = () => {
-    if (isIncluded(fav)) {
-      setFav(prev => {
-        return prev.filter(item => item.value.id !== value.id);
-      });
-    } else {
-      setFav(prev => [...prev, { quantity: 1, value }]);
-    }
-  };
 
   const onImageClick = (id: number) => {
     setSelectedImageId(id);
@@ -170,11 +148,11 @@ export const ProductDetailsPage = () => {
               <div className="product-details__buy-fav-buttons">
                 <Button
                   content="text"
-                  onClick={handleCartClick}
-                  isActive={!isIncluded(cart)}
-                  isSelected={isIncluded(cart)}
+                  onClick={() => onSelectedClick(value)}
+                  isActive={!isIncluded(cart, value)}
+                  isSelected={isIncluded(cart, value)}
                 >
-                  {isIncluded(cart) ? (
+                  {isIncluded(cart, value) ? (
                     'Added to cart'
                   ) : (
                     'Add to cart'
@@ -184,8 +162,8 @@ export const ProductDetailsPage = () => {
                 <div className="product-details__fav-button">
                   <Button
                     content="fav"
-                    onClick={handleFavClick}
-                    isActive={isIncluded(fav)}
+                    onClick={() => onFavClick(value)}
+                    isActive={isIncluded(fav, value)}
                   />
                 </div>
               </div>
@@ -261,6 +239,11 @@ export const ProductDetailsPage = () => {
             <ProductSlider
               title="You may also like"
               products={productService.getRandomProducts(products)}
+              cart={cart}
+              fav={fav}
+              isIncluded={isIncluded}
+              onFavClick={onFavClick}
+              onSelectedClick={onSelectedClick}
             />
           </div>
         </>

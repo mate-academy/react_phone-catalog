@@ -4,45 +4,23 @@ import '../../styles/pages/ProductCart/ProductCart.scss';
 import { CartItem } from '../../components/CartItem';
 import { Product } from '../../types/product';
 import { Item } from '../../types/storageItem';
-import { Storage } from '../../types/storages';
-import { useLocalStorage } from '../../utils/hooks/useLocalStorage';
 import { calcTotalPrice } from '../../utils/calcTotalPrice';
 import { CartTotal } from '../../components/CartTotal';
 import { GoBackButton } from '../../components/GoBackButton';
 
-export const ProductCart = () => {
-  const [cart, setCart] = useLocalStorage<Item<Product>[]>([], Storage.CART);
+type Props = {
+  cart: Item<Product>[],
+  onDiscardItem: (item: Item<Product>) => void;
+  onQuantityDecrease: (item: Item<Product>) => void;
+  onQuantityIncrease: (item: Item<Product>) => void;
+};
 
-  const handleDiscardItem = (item: Item<Product>) => {
-    setCart(prev => {
-      return prev.filter(prod => prod.value.id !== item.value.id);
-    });
-  };
-
-  const handleQuantityDecrease = (item: Item<Product>) => {
-    const newCart = [...cart];
-
-    for (const product of newCart) {
-      if (product.value.id === item.value.id) {
-        product.quantity -= 1;
-      }
-    }
-
-    setCart(newCart);
-  };
-
-  const handleQuantityIncrease = (item: Item<Product>) => {
-    const newCart = [...cart];
-
-    for (const product of newCart) {
-      if (product.value.id === item.value.id) {
-        product.quantity += 1;
-      }
-    }
-
-    setCart(newCart);
-  };
-
+export const ProductCart: React.FC<Props> = ({
+  cart,
+  onDiscardItem,
+  onQuantityDecrease,
+  onQuantityIncrease,
+}) => {
   const [totalPrice, itemsQuantity] = calcTotalPrice(cart);
 
   return (
@@ -64,10 +42,10 @@ export const ProductCart = () => {
               <CartItem
                 item={item}
                 onQuantityDecrease={item.quantity <= 1
-                  ? handleDiscardItem
-                  : handleQuantityDecrease}
-                onQuantityIncrease={handleQuantityIncrease}
-                onDiscardItem={handleDiscardItem}
+                  ? onDiscardItem
+                  : onQuantityDecrease}
+                onQuantityIncrease={onQuantityIncrease}
+                onDiscardItem={onDiscardItem}
               />
             ))}
           </div>

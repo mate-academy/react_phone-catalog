@@ -11,8 +11,23 @@ import { Product } from '../../types/product';
 import { productApi } from '../../utils/api/productApi';
 import { Loader } from '../../components/Loader';
 import { SortBy, productService } from '../../utils/productService';
+import { Item } from '../../types/storageItem';
 
-export const HomePage: React.FC = () => {
+type Props = {
+  isIncluded: (items: Item<Product>[], value: Product) => boolean;
+  cart: Item<Product>[];
+  fav: Item<Product>[];
+  onSelectedClick: (value: Product) => void;
+  onFavClick: (value: Product) => void;
+};
+
+export const HomePage: React.FC<Props> = ({
+  cart,
+  fav,
+  isIncluded,
+  onSelectedClick,
+  onFavClick,
+}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,6 +58,11 @@ export const HomePage: React.FC = () => {
           <ProductSlider
             title="Hot prices"
             products={hotPricesProducts}
+            cart={cart}
+            fav={fav}
+            isIncluded={isIncluded}
+            onFavClick={onFavClick}
+            onSelectedClick={onSelectedClick}
           />
 
           <section className="home-page__category-links">
@@ -96,6 +116,11 @@ export const HomePage: React.FC = () => {
           <ProductSlider
             title="Brand new models"
             products={newProducts}
+            cart={cart}
+            fav={fav}
+            isIncluded={isIncluded}
+            onFavClick={onFavClick}
+            onSelectedClick={onSelectedClick}
           />
         </>
       )}

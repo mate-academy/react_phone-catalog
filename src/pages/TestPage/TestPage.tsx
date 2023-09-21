@@ -1,7 +1,7 @@
-import { ProductDetailsPage } from '../ProductDetails';
+import { Counter } from '../../components/Counter';
 
 export const TestPage: React.FC = () => {
   return (
-    <ProductDetailsPage />
+    <Counter quantity={2} />
   );
 };

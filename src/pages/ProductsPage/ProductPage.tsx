@@ -12,6 +12,7 @@ import { productApi } from '../../utils/api/productApi';
 import { SortBy, productService } from '../../utils/productService';
 import { getPageTitle, getQuantity } from '../../utils/getPageTitle';
 import { Loader } from '../../components/Loader';
+import { Item } from '../../types/storageItem';
 
 const sortByOptions: Option[] = [
   { name: 'Newest', property: { sortBy: 'id' } },
@@ -28,9 +29,21 @@ const perPageOptions: Option[] = [
 
 type Props = {
   productType: ProductType;
+  isIncluded: (items: Item<Product>[], value: Product) => boolean;
+  cart: Item<Product>[];
+  fav: Item<Product>[];
+  onSelectedClick: (value: Product) => void;
+  onFavClick: (value: Product) => void;
 };
 
-export const ProductPage: React.FC<Props> = ({ productType }) => {
+export const ProductPage: React.FC<Props> = ({
+  productType,
+  isIncluded,
+  cart,
+  fav,
+  onSelectedClick,
+  onFavClick,
+}) => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -89,6 +102,11 @@ export const ProductPage: React.FC<Props> = ({ productType }) => {
           <div className="products-page__product-list">
             <ProductList
               products={visibleProducts}
+              isIncluded={isIncluded}
+              onSelectedClick={onSelectedClick}
+              onFavClick={onFavClick}
+              cart={cart}
+              fav={fav}
             />
           </div>
 

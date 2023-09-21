@@ -3,14 +3,17 @@
 
 .nav-item {
   position: relative;
+  padding-top: 2px;
   height: 100%;
   box-sizing: border-box;
   display: block;
-  text-decoration: none;
-  @include uppercaseTextStyling;
-  color: #{$secondary-color};
   transition: 0.4s ease;
-  padding-top: 2px;
+
+  &-text {
+    @include uppercaseTextStyling;
+    color: #{$secondary-color};
+    text-decoration: none;
+  }
 
   &-fav,
   &-cart {
@@ -50,5 +53,11 @@
     &::after {
       opacity: 1;
     }
+  }
+
+  &__counter {
+    position: absolute;
+    top: 18px;
+    right: 18px;
   }
 }
