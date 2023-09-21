@@ -73,6 +73,16 @@
     &--inactive {
       color: black;
     }
+
+    &--span {
+      width: 32px;
+    }
+
+    @include onMobile {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
   }
 
   &__btn {
