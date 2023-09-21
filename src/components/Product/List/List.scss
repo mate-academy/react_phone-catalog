@@ -26,6 +26,12 @@
       flex-direction: column;
       width: 82%;
     }
+
+    &--item {
+      &:first-child {
+        z-index: 12;
+      }
+    }
   }
 
   &__list {

@@ -42,6 +42,10 @@
   &__list {
     display: flex;
     gap: 8px;
+
+    @include onMobile {
+      flex-wrap: wrap;
+    }
   }
 
   &--item {

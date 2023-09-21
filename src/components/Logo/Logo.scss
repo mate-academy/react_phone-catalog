@@ -2,6 +2,4 @@
 
 .Logo {
   padding: 20px 0;
-  transition: transform, 0.3s ease-in-out !important;
-  @include hover(transform, scale(120%));
 }
