@@ -12,29 +12,29 @@ export const BurgerMenu = () => {
 
   useEffect(() => {
     setShowMenu(false);
-  }, [location])
+  }, [location]);
 
   return (
-    <div className='burger-menu'>
+    <div className="burger-menu">
       <BurgerIcon
         onClick={setShowMenu}
         isOpen={showMenu}
       />
 
       {showMenu && (
-        <nav className='burger-menu__nav'>
+        <nav className="burger-menu__nav">
           {Object.keys(pages).map(link => {
             if (!NAV_LINKS_TO_HIDE.includes(link)) {
               return (
                 <NavLink
                   key={link}
                   to={link}
-                  className='burger-menu__link'
+                  className="burger-menu__link"
                   onClick={() => setShowMenu(false)}
                 >
                   {link}
                 </NavLink>
-              )
+              );
             }
 
             return null;
@@ -42,6 +42,5 @@ export const BurgerMenu = () => {
         </nav>
       )}
     </div>
-
-  )
-}
+  );
+};

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import './BannerSlider.scss';
-import { Dots, SideButton } from './components';
 import { Link } from 'react-router-dom';
+import { Dots, SideButton } from './components';
+import './BannerSlider.scss';
 
 export enum BannerSliderDirection {
   Back = 'back',

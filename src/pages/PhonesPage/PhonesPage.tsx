@@ -75,24 +75,24 @@ export const PhonesPage = () => {
             </div>
 
             <div className="phones__selects-container">
-                <div className="phones__select">
-                  <Dropdown
-                    setSelection={handleSortBy}
-                    title="Sort by"
-                    options={sortOptions}
-                    initialOption={ProductSortingOption.alphabetically}
-                  />
-                </div>
-
-                <div className="phones__select">
-                  <Dropdown
-                    title="Items on page"
-                    options={quantityToShow}
-                    setSelection={handleItemToShow}
-                    initialOption={ItemsPerPageQuantity.all}
-                  />
-                </div>
+              <div className="phones__select">
+                <Dropdown
+                  setSelection={handleSortBy}
+                  title="Sort by"
+                  options={sortOptions}
+                  initialOption={ProductSortingOption.alphabetically}
+                />
               </div>
+
+              <div className="phones__select">
+                <Dropdown
+                  title="Items on page"
+                  options={quantityToShow}
+                  setSelection={handleItemToShow}
+                  initialOption={ItemsPerPageQuantity.all}
+                />
+              </div>
+            </div>
 
             <div className="phones__content">
               <div

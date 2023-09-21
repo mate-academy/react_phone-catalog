@@ -1,18 +1,19 @@
 import classNames from 'classnames';
 import './BurgerIcon.scss';
+
 type Props = {
   onClick: (state: boolean) => void,
   isOpen: boolean,
-}
+};
 
 export const BurgerIcon: React.FC<Props> = ({ onClick, isOpen }) => {
-
   const handleOnClick = () => {
     onClick(!isOpen);
-  }
+  };
 
   return (
-    <div className="burger-icon"
+    <div
+      className="burger-icon"
       onClick={handleOnClick}
     >
       <div
@@ -26,5 +27,5 @@ export const BurgerIcon: React.FC<Props> = ({ onClick, isOpen }) => {
         })}
       />
     </div>
-  )
-}
+  );
+};
