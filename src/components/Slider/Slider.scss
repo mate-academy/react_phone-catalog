@@ -1,0 +1,21 @@
+// !important needs, because it's library
+@import "../../styles/utils.scss";
+
+.swiper {
+
+  &-wrapper {
+    padding-bottom: 40px;
+  }
+
+  &-pagination {
+    bottom: 4px !important;
+  }
+
+  &-pagination-bullet {
+    background: $black-700 !important;
+
+    &-active {
+      background: $red-700 !important;
+    }
+  }
+}

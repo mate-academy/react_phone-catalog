@@ -1,0 +1,56 @@
+@import "../../styles/utils.scss";
+
+.header {
+  margin-top: 20px;
+
+  &__nav-list {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+
+    list-style: none;
+
+    @include onDesktop {
+      grid-template-columns: repeat(9, 1fr);
+    }
+  }
+
+  &__nav-list-link {
+    @include NavLink;
+  }
+
+  &__nav-list-item {
+    width: 100%;
+
+    &:first-child {
+      .header__nav-list-link {
+        text-align: left;
+      }
+    }
+
+    &:nth-child(2) {
+      display: flex;
+      justify-content: center;
+
+      .header__nav-list-link {
+        display: block;
+        width: min-content;
+      }
+
+      @include onDesktop {
+        text-align: center;
+
+        .header__nav-list-link {
+          display: inline;
+          width: auto;
+        }
+      }
+    }
+
+    &:last-child {
+      .header__nav-list-link {
+        text-align: right;
+      }
+    }
+  }
+}

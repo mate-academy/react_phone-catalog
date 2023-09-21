@@ -1,0 +1,40 @@
+@import "../../styles/utils.scss";
+
+.player {
+  position: relative;
+
+  &__title {
+    position: absolute;
+    bottom: 100px;
+
+    display: block;
+    width: 100%;
+
+    color: $black-100;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+
+    @include onTablet {
+      bottom: 130px;
+    }
+  }
+
+  &__button-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
+
+    width: 100px;
+
+    @include onTablet {
+      bottom: 100px;
+    }
+
+    @include onDesktop {
+      bottom: 50px;
+    }
+  }
+}

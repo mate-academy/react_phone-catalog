@@ -1,0 +1,226 @@
+@import "../../styles/utils.scss";
+
+.allGender {
+
+  &__items-error-container {
+    position: relative;
+
+    @include onTablet {
+      grid-column: 1/5;
+    }
+
+    @include onDesktop {
+      grid-column: 1/13;
+    }
+  }
+
+  &__items-error-text {
+    text-align: center;
+
+    @include onTablet {
+      grid-column: 1/5;
+    }
+
+    @include onDesktop {
+      grid-column: 1/13;
+    }
+  }
+
+  &__items-error-button {
+    top: 36px;
+
+    @include onDesktop {
+      grid-column: 6/8;
+      top: 36px;
+    }
+  }
+
+  &__filter-list {
+    list-style: none;
+  }
+
+  &__filter-list-item {
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+
+  &__filter-list-item-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__filter-list-item-options-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    list-style: none;
+    margin-top: 16px;
+  }
+
+  &__filter-list-item-button {
+    display: block;
+    padding: 10px 14px;
+    border: 2px solid $red-700;
+
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+
+    cursor: pointer;
+    color: inherit;
+    transition: background-color, color $animationDuration;
+
+    &--black,
+    &--silver,
+    &--kuroso {
+      color: transparent;
+      border: 2px solid transparent;
+    }
+
+    &--black {
+      background-color: $black-800;
+    }
+
+    &--silver {
+      background-color: $silver;
+    }
+
+    &--kuroso {
+      background-image: url("https://gosyanich.cloudns.nz:9353/kuroso/images/winter-2022/colors/kuroso-color.webp");
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include onDesktop {
+
+        &:hover {
+          background-image: none;
+        }
+      }
+    }
+
+    &--active {
+      color: $black-100;
+      background-color: $red-700;
+
+      background-image: none;
+    }
+
+    @include onDesktop {
+
+      &:hover {
+        color: $black-100;
+        background-color: $red-700;
+
+        background-image: none;
+      }
+    }
+  }
+
+  &__section {
+    position: relative;
+  }
+
+  &__section-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    row-gap: 20px;
+
+    @include onTablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__section-list-item {
+    grid-column: 1/3;
+
+    @include onTablet {
+
+      &:nth-child(odd) {
+        grid-column: 1/3;
+      }
+
+      &:nth-child(even) {
+        grid-column: 3/5;
+      }
+    }
+
+    @include onDesktop {
+
+      &:hover {
+
+        .allGender__section-list-item-header,
+        .allGender__section-list-item-price {
+          color: $red-700;
+        }
+      }
+
+      &:nth-child(3n+1) {
+        grid-column: 1/5;
+      }
+
+      &:nth-child(3n+2) {
+        grid-column: 5/9;
+      }
+
+      &:nth-child(3n+3) {
+        grid-column: 9/13;
+      }
+    }
+  }
+
+  &__section-list-item-link {
+    text-decoration: none;
+  }
+
+  &__section-list-item-image {
+    width: 100%;
+  }
+
+  &__section-list-item-header,
+  &__section-list-item-price {
+    display: block;
+
+    text-align: center;
+    color: $black-800;
+
+    transition: color $animationDuration;
+  }
+
+  &__section-list-item-header {
+    margin-top: 20px;
+
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__section-list-item-price {
+    margin-top: 16px;
+
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &__section-error-message {
+    padding: 32px 0;
+
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__section-button {
+    position: sticky;
+
+    max-width: 250px;
+    bottom: 64px;
+  }
+}

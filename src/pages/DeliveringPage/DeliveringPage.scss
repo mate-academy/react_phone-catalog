@@ -1,0 +1,19 @@
+@import "../../styles/utils.scss";
+
+.delivering {
+
+  &__section {
+
+    &:not(:first-of-type) {
+      margin-top: 32px;
+    }
+  }
+
+  &__header {
+    font-weight: 700;
+  }
+
+  &__list {
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,48 @@
+@import "../../../styles/utils.scss";
+
+.button--main {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: $black-100;
+  background-color: $red-700;
+
+  transition: width $animationDuration ease;
+
+  @include onDesktop {
+    width: 100%;
+    position: relative;
+
+    &::after {
+      @include transitionAfterAndBefore;
+
+      background-color: $red-500;
+      transition-delay: $animationDuration * 3;
+    }
+
+    &::before {
+      @include transitionAfterAndBefore;
+
+      background-color: $red-600;
+      transition-delay: $animationDuration;
+    }
+
+    &:hover {
+      width: 150%;
+
+      &::before {
+        width: 100%;
+      }
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+    z-index: $z-index--1;
+  }
+}

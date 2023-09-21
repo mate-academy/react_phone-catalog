@@ -1,0 +1,42 @@
+@import "../../styles/utils.scss";
+
+.burger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: $black-100;
+  z-index: $z-index--2;
+  transition: transform $animationDuration ease-in-out;
+
+  &--entering,
+  &--entered {
+    transform: translateX(0);
+  }
+
+  &--exiting,
+  &--exited {
+    transform: translateX(-100%);
+  }
+
+  &__nav {
+    margin-top: 32px;
+  }
+
+  &__nav-list {
+    list-style: none;
+  }
+
+  &__nav-list-item {
+
+    &:not(:first-child) {
+      margin-top: 40px;
+    }
+  }
+
+  &__nav-list-link {
+    @include NavLink;
+  }
+}
