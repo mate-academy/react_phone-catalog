@@ -31,14 +31,17 @@ export const ProductSlider: React.FC<Props> = ({
       className="product-slider"
       breakpoints={{
         320: {
+          width: 260,
           slidesPerView: 1,
           spaceBetween: 20,
         },
         426: {
+          width: 520,
           slidesPerView: 2,
           spaceBetween: 20,
         },
         900: {
+          width: 800,
           slidesPerView: 3,
           spaceBetween: 10,
         },
