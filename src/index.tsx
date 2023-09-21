@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import App from './App';
 import { ProductsProvider } from './context/ProductContext';
@@ -9,7 +9,7 @@ import { QueryProvider } from './context/QueryContext';
 import { PageProvider } from './context/PageContext';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <ProductsProvider>
       <CartProvider>
         <FavouritesProvider>
@@ -18,10 +18,9 @@ ReactDOM.render(
               <App />
             </QueryProvider>
           </PageProvider>
-
         </FavouritesProvider>
       </CartProvider>
     </ProductsProvider>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 );

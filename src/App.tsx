@@ -21,21 +21,21 @@ const App = () => (
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route index element={<HomePage />} />
-        <Route path="home" element={<Navigate to="/" replace />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
 
-        <Route path="phones">
+        <Route path="/phones">
           <Route index element={<PhonesPage />} />
           <Route path=":itemId" element={<ProductDetailsPage />} />
         </Route>
 
-        <Route path="tablets">
+        <Route path="/tablets">
           <Route index element={<TabletsPage />} />
           <Route path=":itemId" element={<ProductDetailsPage />} />
         </Route>
 
-        <Route path="accessories" element={<AccessoriesPage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="favourites" element={<FavoritesPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/favourites" element={<FavoritesPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
