@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const AddToCartButton: React.FC<Props> = ({ prodId }) => {
-  const { addItemToCart, checkAdded } = useContext(CartContext);
+  const { addToCart, checkAdded } = useContext(CartContext);
   const { products } = useProducts();
 
   const [isButtonSelected, setIsButtonSelected] = useState(checkAdded(prodId));
@@ -17,7 +17,7 @@ export const AddToCartButton: React.FC<Props> = ({ prodId }) => {
     const product = products.find(p => p.itemId === prodId);
 
     if (product) {
-      addItemToCart({
+      addToCart({
         id: prodId,
         product,
         quantity: 1,

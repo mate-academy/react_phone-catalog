@@ -78,13 +78,11 @@
     &--phones {
       top: 4px;
       left: 45px;
-      object-fit: cover;
     }
 
     &--tablets {
       top: 20px;
       left: 25px;
-      object-fit: cover;
     }
 
     &--accessories {
@@ -92,7 +90,6 @@
       height: 320px;
       top: 48px;
       left: 26px;
-      object-fit: cover;
     }
   }
 
@@ -110,9 +107,7 @@
   }
 
   &__subtitle {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @extend %subtitle;
     color: $gray-secondary;
   }
 }

@@ -45,7 +45,7 @@ export const ProductSlider: React.FC<Props> = ({
         <div className="productSlider__top--buttons">
           <button
             type="button"
-            title="top"
+            title="Previous"
             className={classNames('productSlider__button', {
               'productSlider__button--disabled': prevDisabled,
             })}
@@ -60,7 +60,7 @@ export const ProductSlider: React.FC<Props> = ({
 
           <button
             type="button"
-            title="top"
+            title="Next"
             className={classNames('productSlider__button', {
               'productSlider__button--disabled': nextDisabled,
             })}

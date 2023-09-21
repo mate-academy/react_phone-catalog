@@ -8,17 +8,17 @@ import React, {
 
 import { Product } from '../types/Product';
 
-export interface Favourites {
+export interface Favourite {
   id: string;
   product: Product;
 }
 
 interface FavsType {
-  favItems: Favourites[];
-  addToFavs: (productToAdd: Favourites) => void;
-  removeFromFavs: (productToRemove: Favourites) => void;
+  favItems: Favourite[];
+  addToFavs: (productToAdd: Favourite) => void;
+  removeFromFavs: (productToRemove: Favourite) => void;
   checkFav: (id: string) => boolean;
-  toggleFav: (prod: Favourites) => boolean;
+  toggleFav: (prod: Favourite) => boolean;
 }
 
 export const FavouritesContext = createContext<FavsType>({
@@ -34,7 +34,7 @@ interface FavsProviderProps {
 }
 
 const FavouritesProvider: React.FC<FavsProviderProps> = ({ children }) => {
-  const [favItems, setFavItems] = useState<Favourites[]>([]);
+  const [favItems, setFavItems] = useState<Favourite[]>([]);
 
   useEffect(() => {
     const storedFavs = localStorage.getItem('favouriteItems');
@@ -48,15 +48,15 @@ const FavouritesProvider: React.FC<FavsProviderProps> = ({ children }) => {
     localStorage.setItem('favouriteItems', JSON.stringify(favItems));
   }, [favItems]);
 
-  const addToFavs = (favToAdd: Favourites) => {
+  const addToFavs = (favToAdd: Favourite) => {
     setFavItems([...favItems, { ...favToAdd }]);
   };
 
-  const removeFromFavs = (favToRemove: Favourites) => {
+  const removeFromFavs = (favToRemove: Favourite) => {
     setFavItems(favItems.filter(i => favToRemove.id !== i.id));
   };
 
-  const toggleFav = (product: Favourites) => {
+  const toggleFav = (product: Favourite) => {
     if (favItems.some(item => item.id === product.id)) {
       removeFromFavs(product);
 

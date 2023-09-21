@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
-  // max-width: 400px;
   height: 200px;
   margin: 40px auto 70px;
 
@@ -53,9 +52,7 @@
 
   &__list {
     display: flex;
-    overflow: hidden;
-    list-style: none;
-    padding: 0;
+    @extend %list;
   }
 
   &__main {

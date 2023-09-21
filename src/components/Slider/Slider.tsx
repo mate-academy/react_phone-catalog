@@ -9,12 +9,19 @@ export const Slider: React.FC = () => {
   ]);
 
   const [currIndex, setCurrIndex] = useState(0);
-  const itemWidthMob = 400;
-  const itemWidthTab = 600;
-  const itemWidth = 963;
-  const itemWidthXL = 1040;
   const step = 1;
   const animationDuration = 500;
+
+  const itemWidths: { [key: string]: number } = {
+    mob: 400,
+    tab: 600,
+    desc: 963,
+    descXL: 1040,
+  };
+
+  const getItemWidth = (screenSize: string) => {
+    return itemWidths[screenSize] || itemWidths.mob;
+  };
 
   const handleNextBtn = () => {
     const lastItemIndex = images.length - 1;
@@ -49,7 +56,7 @@ export const Slider: React.FC = () => {
     <div className="slider">
       <button
         type="button"
-        title="top"
+        title="Previous"
         className="slider__button"
         onClick={handlePrevBtn}
       >
@@ -63,43 +70,22 @@ export const Slider: React.FC = () => {
             transition: `transform ${animationDuration}ms`,
           }}
         >
-
           {images.map((img, i) => (
             <li
               key={img}
             >
-              <img
-                className="slider__main--photos slider__mob"
-                src={`_new/img/banner-${img}`}
-                alt={`banner-#${i + 1}`}
-                style={{
-                  transform: `translateX(-${currIndex * itemWidthMob}px)`, transition: `transform ${animationDuration}ms`,
-                }}
-              />
-              <img
-                className="slider__main--photos slider__tab"
-                src={`_new/img/banner-${img}`}
-                alt={`banner-#${i + 1}`}
-                style={{
-                  transform: `translateX(-${currIndex * itemWidthTab}px)`, transition: `transform ${animationDuration}ms`,
-                }}
-              />
-              <img
-                className="slider__main--photos slider__desc"
-                src={`_new/img/banner-${img}`}
-                alt={`banner-#${i + 1}`}
-                style={{
-                  transform: `translateX(-${currIndex * itemWidth}px)`, transition: `transform ${animationDuration}ms`,
-                }}
-              />
-              <img
-                className="slider__main--photos slider__descXL"
-                src={`_new/img/banner-${img}`}
-                alt={`banner-#${i + 1}`}
-                style={{
-                  transform: `translateX(-${currIndex * itemWidthXL}px)`, transition: `transform ${animationDuration}ms`,
-                }}
-              />
+              {Object.keys(itemWidths).map(screenSize => (
+                <img
+                  key={screenSize}
+                  className={classNames('slider__main--photos', `slider__${screenSize}`)}
+                  src={`_new/img/banner-${img}`}
+                  alt={`banner-#${i + 1}`}
+                  style={{
+                    transform: `translateX(-${currIndex * getItemWidth(screenSize)}px)`,
+                    transition: `transform ${animationDuration}ms`,
+                  }}
+                />
+              ))}
             </li>
           ))}
         </ul>
@@ -107,7 +93,7 @@ export const Slider: React.FC = () => {
 
       <button
         type="button"
-        title="top"
+        title="Next"
         className="slider__button"
         onClick={handleNextBtn}
       >

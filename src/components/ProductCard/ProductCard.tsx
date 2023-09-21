@@ -20,22 +20,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     category,
   } = product;
 
-  let categoryType = '';
-
-  if (category === 'phones') {
-    categoryType = 'phones';
-  } else if (category === 'tablets') {
-    categoryType = 'tablets';
-  } else {
-    categoryType = 'accessories';
-  }
-
   return (
     <div
       className="card"
       data-cy="cardsContainer"
     >
-      <Link to={`/${categoryType}/${itemId}`} className="card__imgContainer">
+      <Link to={`/${category}/${itemId}`} className="card__imgContainer">
         <img
           className="card__img"
           src={`../_new/${image}`}
@@ -44,7 +34,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className="card__infoContaiter">
-        <Link to={`/${categoryType}/${itemId}`} className="card__title">
+        <Link to={`/${category}/${itemId}`} className="card__title">
           {name}
         </Link>
 

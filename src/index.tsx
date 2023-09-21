@@ -6,15 +6,19 @@ import { ProductsProvider } from './context/ProductContext';
 import CartProvider from './context/CartContext';
 import FavouritesProvider from './context/FavsContext';
 import { QueryProvider } from './context/QueryContext';
+import { PageProvider } from './context/PageContext';
 
 ReactDOM.render(
   <BrowserRouter>
     <ProductsProvider>
       <CartProvider>
         <FavouritesProvider>
-          <QueryProvider>
-            <App />
-          </QueryProvider>
+          <PageProvider>
+            <QueryProvider>
+              <App />
+            </QueryProvider>
+          </PageProvider>
+
         </FavouritesProvider>
       </CartProvider>
     </ProductsProvider>

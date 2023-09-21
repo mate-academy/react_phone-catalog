@@ -4,7 +4,17 @@
 
   &__title {
     @extend %title-text;
-    margin-bottom: 8px;
+    margin: 20px 0 8px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+    @include onDesktop {
+      margin-top: 40px;
+    }
+    @include onDesktopXL {
+      margin-top: 40px;
+    }
   }
 
   &__quantity {
@@ -17,8 +27,6 @@
   }
 
   &__content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 272px);
     align-items: center;
     gap: 16px;
     justify-content: center;

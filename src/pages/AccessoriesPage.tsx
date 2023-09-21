@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductsList } from '../components/ProductsList/ProductsList';
+import { PageDetails } from '../components/PageDetails/PageDetails';
 import { useProducts } from '../context/ProductContext';
 import { getAccessories } from '../utils/getProducts';
 import { NoResults } from '../components/NoResults/NoResults';
@@ -25,7 +25,7 @@ export const AccessoriesPage = () => {
       {!accessories.length ? (
         <NoResults />
       ) : (
-        <ProductsList products={accessories} title={title} />
+        <PageDetails products={accessories} title={title} />
       )}
     </div>
   );

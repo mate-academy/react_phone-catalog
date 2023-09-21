@@ -11,6 +11,7 @@
 @import "../src/styles/productCard.scss";
 @import "../src/styles/shopByCategory.scss";
 @import "../src/styles/productsList.scss";
+@import "../src/styles/pageDetails.scss";
 @import "../src/styles/details.scss";
 @import "../src/styles/cart.scss";
 @import "../src/styles/favourites.scss";
@@ -26,6 +27,7 @@
 @import "../src/styles/selector.scss";
 @import "../src/styles/breadCrumbs.scss";
 @import "../src/styles/notification.scss";
+@import "../src/styles/goBackButton.scss";
 
 iframe {
   display: none;
@@ -65,15 +67,9 @@ iframe {
 }
 
 .noResults {
-  font-size: 32px;
-  letter-spacing: 0.32px;
-  font-weight: 600;
-  color: $gray-secondary;
-}
-
-.no-search {
   display: flex;
   justify-content: center;
+  padding-top: 50px;
   font-size: 32px;
   letter-spacing: 0.32px;
   font-weight: 600;

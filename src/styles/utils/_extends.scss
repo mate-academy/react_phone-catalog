@@ -10,3 +10,15 @@
   height: 32px;
   border: 1px solid $gray-icons-placeholders;
 }
+
+%list {
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+}
+
+%subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}

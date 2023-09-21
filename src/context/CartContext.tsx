@@ -10,8 +10,8 @@ import { CartItem } from '../types/CartItem';
 
 interface Cart {
   cartItems: CartItem[];
-  addItemToCart: (productToAdd: CartItem) => void;
-  removeItemFromCart: (cartItemToRemove: CartItem) => void;
+  addToCart: (productToAdd: CartItem) => void;
+  removeFromCart: (cartItemToRemove: CartItem) => void;
   plusItem: (cartItem: CartItem) => void,
   minusItem: (cartItem: CartItem) => void,
   cartCount: number;
@@ -21,8 +21,8 @@ interface Cart {
 
 export const CartContext = createContext<Cart>({
   cartItems: [],
-  addItemToCart: () => { },
-  removeItemFromCart: () => { },
+  addToCart: () => { },
+  removeFromCart: () => { },
   plusItem: () => { },
   minusItem: () => { },
   cartCount: 0,
@@ -103,8 +103,8 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const value: Cart = {
     cartItems,
-    addItemToCart,
-    removeItemFromCart,
+    addToCart: addItemToCart,
+    removeFromCart: removeItemFromCart,
     plusItem,
     minusItem,
     cartCount,

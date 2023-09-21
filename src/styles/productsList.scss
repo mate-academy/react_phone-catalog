@@ -1,37 +1,23 @@
 .productsList {
-  &__title {
-    @extend %title-text;
-    margin-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(1, 272px);
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 40px;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto 40px;
+
+  @include onTablet {
+    grid-template-columns: repeat(auto-fit, 272px);
   }
 
-  &__subtitle {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    margin-bottom: 40px;
+  @include onDesktop {
+    grid-template-columns: repeat(auto-fit, 272px);
   }
 
-  &__cards {
-    display: grid;
-    grid-template-columns: repeat(1, 272px);
-    align-items: center;
-    column-gap: 16px;
-    row-gap: 40px;
-    justify-content: center;
-    align-content: center;
-    margin: 0 auto 40px;
-
-    @include onTablet {
-      grid-template-columns: repeat(auto-fit, 272px);
-    }
-
-    @include onDesktop {
-      grid-template-columns: repeat(auto-fit, 272px);
-    }
-
-    @include onDesktopXL {
-      grid-template-columns: repeat(4, 272px);
-    }
+  @include onDesktopXL {
+    grid-template-columns: repeat(4, 272px);
   }
 
   &__card {
@@ -39,11 +25,5 @@
     place-items: center;
     width: 272px;
     height: auto;
-  }
-
-  &__sort {
-    display: flex;
-    margin-bottom: 24px;
-    gap: 16px;
   }
 }

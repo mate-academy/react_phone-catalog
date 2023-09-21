@@ -29,9 +29,7 @@
   }
 
   &__title {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @extend %subtitle;
     color: $gray-primary;
     height: 42px;
   }

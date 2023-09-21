@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
-import { ProductsList } from '../components/ProductsList/ProductsList';
+import { PageDetails } from '../components/PageDetails/PageDetails';
 import { getTablets } from '../utils/getProducts';
 import { NoResults } from '../components/NoResults/NoResults';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
@@ -25,7 +25,7 @@ export const TabletsPage = () => {
       {!tablets.length ? (
         <NoResults />
       ) : (
-        <ProductsList products={tablets} title={title} />
+        <PageDetails products={tablets} title={title} />
       )}
     </div>
   );

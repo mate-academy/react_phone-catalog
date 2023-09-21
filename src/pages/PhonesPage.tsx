@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ProductsList } from '../components/ProductsList/ProductsList';
+import { PageDetails } from '../components/PageDetails/PageDetails';
 import { useProducts } from '../context/ProductContext';
 import { getPhones } from '../utils/getProducts';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
+import { NoResults } from '../components/NoResults/NoResults';
 
 export const PhonesPage = () => {
   const { pathname } = useLocation();
@@ -20,7 +21,11 @@ export const PhonesPage = () => {
   return (
     <div className="container">
       <Breadcrumbs pathname={path} />
-      <ProductsList products={phones} title={title} />
+      {!phones.length ? (
+        <NoResults />
+      ) : (
+        <PageDetails products={phones} title={title} />
+      )}
     </div>
   );
 };

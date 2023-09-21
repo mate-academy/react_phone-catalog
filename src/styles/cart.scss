@@ -3,12 +3,9 @@
   flex-direction: column;
   gap: 16px;
 
-  &__top {
-    padding: 40px 0 24px;
-  }
-
   &__title {
     @extend %title-text;
+    padding: 0 0 24px;
   }
 
   &__main {
@@ -105,34 +102,28 @@
     }
 
     @include onDesktop {
-      width: 80px;
-      height: 80px;
+      @include imgSize80();
       padding: 7px;
 
       &--img {
-        width: 66px;
-        height: 66px;
+        @include imgSize66();
         object-fit: contain;
       }
     }
 
     @include onDesktopXL {
-      width: 80px;
-      height: 80px;
+      @include imgSize80();
       padding: 7px;
 
       &--img {
-        width: 66px;
-        height: 66px;
+        @include imgSize66();
         object-fit: contain;
       }
     }
   }
 
   &__item-name {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @extend %subtitle;
   }
 
   &__quantity {
@@ -230,10 +221,7 @@
   }
 
   &__total-price {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.32px;
+    @extend %title-text;
     color: $gray-primary;
   }
 

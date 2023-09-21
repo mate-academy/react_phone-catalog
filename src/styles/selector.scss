@@ -67,9 +67,7 @@
   &__option {
     display: flex;
     width: 176px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
+    @extend %subtitle;
     padding: 6px 12px;
     color: $gray-secondary;
 
