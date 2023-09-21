@@ -2,7 +2,7 @@
 
 .like {
   @include flex-center;
-
+  cursor: pointer;
   width: 40px;
   height: 40px;
   background-image: url(../../../assets/icons/fav.svg);

@@ -12,23 +12,23 @@ export const CategoryItem: React.FC<Props> = ({
   link,
   quantity,
 }) => (
-  <div className="category">
+  <div className="category-item">
     <Link
       to={`/${category}`}
       key={category}
     >
       <img
-        className="category__img"
+        className="category-item__img"
         alt={category}
         src={link}
       />
     </Link>
 
-    <h3 className="category__title">
+    <h3 className="category-item__title">
       {category === 'phones' ? 'Mobile phones' : category}
     </h3>
 
-    <p className="category__quantity">
+    <p className="category-item__quantity">
       {`${quantity} items`}
     </p>
   </div>

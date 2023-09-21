@@ -1,11 +1,28 @@
 @import "/src/style/main.scss";
 
 .cart-item {
+  position: relative;
+  min-width: $product-width;
   display: flex;
-  align-items: center;
-  padding: 24px;
+  flex-direction: column;
+  align-items: start;
+  padding: 12px;
   border: 1px solid $elements;
   transition: 0.3s ease;
+  max-width: 100%;
+
+  @include tablet {
+    align-items: center;
+    flex-direction: row;
+    padding: 24px;
+    max-width: 780px;
+  }
+
+  @include desktop {
+    align-items: center;
+    flex-direction: row;
+    padding: 24px;
+  }
 
   &:hover {
     transition: 0.3s ease;
@@ -13,19 +30,29 @@
   }
 
   &__btn {
+    position: absolute;
+    right: 12px;
     border: none;
-    width: 100px;
-    height: 100px;
     background-color: $font-white;
-    margin-right: 31px;
-    width: 20px;
-    height: 50px;
+
+    width: 24px;
+    height: 24px;
     text-align: center;
     background-image: url("../../../../assets/icons/close.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 9.33px 9.33px;
     transition: 0.3s ease;
+
+    @include tablet {
+      position: static;
+      margin-right: 31px;
+    }
+
+    @include desktop {
+      position: static;
+      margin-right: 31px;
+    }
 
     &:hover {
       transition: 0.3s ease;
@@ -34,11 +61,24 @@
   }
 
   &__img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     object-position: center;
     margin-right: 24px;
+    margin-bottom: 16px;
+
+    @include tablet {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0;
+    }
   }
 
   &__link {
@@ -46,17 +86,34 @@
   }
 
   &__title {
-    min-width:295px;
+    min-width: 220px;
     color: $main-font-color;
     font-size: 14px;
     line-height: 21px;
     margin-right: 49px;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      min-width: 295px;
+      margin-bottom: 0;
+    }
   }
 
   &__add-items-container {
     margin-right: 43px;
-  }
+    margin-bottom: 16px;
 
+    @include tablet {
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      margin-bottom: 0;
+    }
+  }
 
   &__price {
     color: $main-font-color;

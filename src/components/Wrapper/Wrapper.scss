@@ -1,5 +1,13 @@
-.wrapper {
-  min-width: 1138px;
-  padding: 0 153px;
+@import "/src/style/main.scss";
 
+.wrapper {
+  padding: 0 12px;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 154px;
+  }
 }

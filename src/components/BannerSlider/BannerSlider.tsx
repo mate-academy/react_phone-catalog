@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './BannerSlider.scss';
 import { Dots, SideButton } from './components';
+import { Link } from 'react-router-dom';
 
 export enum BannerSliderDirection {
   Back = 'back',
@@ -18,7 +19,7 @@ const images: ImageType[] = [
   { id: 'accessories', src: 'img/banner-accessories.png' },
 ];
 
-const IMAGE_CHANGE_INTERVAL = 2000;
+const IMAGE_CHANGE_INTERVAL = 5000;
 const SLIDE_WIDTH = 1040;
 
 export const BannerSlider = () => {
@@ -77,11 +78,16 @@ export const BannerSlider = () => {
                 transition: '0.7s ease',
               }}
             >
-              <img
-                className="banner-slider__img"
-                alt={id}
-                src={src}
-              />
+              <Link
+                to={`/${id}`}
+              >
+                <img
+                  className="banner-slider__img"
+                  alt={id}
+                  src={src}
+                />
+              </Link>
+
             </div>
           ))}
         </div>

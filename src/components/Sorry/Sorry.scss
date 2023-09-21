@@ -13,7 +13,11 @@
 
   &__info {
     text-align: center;
-    width: 400px;
+    width: $product-width;
+
+    @include tablet {
+      width: 400px;
+    }
   }
 
   &__link {

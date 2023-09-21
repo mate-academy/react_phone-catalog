@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './PhonesPage.scss';
-import { ProductSortingOption } from 'types';
+import { ItemsPerPageQuantity, ProductSortingOption } from 'types';
 import { useProducts } from 'context';
 import { Dropdown } from 'components/ui-kit';
 import {
@@ -9,15 +9,22 @@ import {
   Loader,
   Pagination,
   ProductCard,
+  Wrapper,
 } from 'components';
+import { ProductGrid } from 'components/ProductGrid';
 
-const sortOptions = [
+const sortOptions: string[] = [
   ProductSortingOption.alphabetically,
   ProductSortingOption.newest,
   ProductSortingOption.cheapest,
 ];
 
-const itemsOptions = ['all', '4', '8', '16'];
+const quantityToShow: string[] = [
+  ItemsPerPageQuantity.all,
+  ItemsPerPageQuantity.four,
+  ItemsPerPageQuantity.eigth,
+  ItemsPerPageQuantity.sixteen,
+];
 
 export const PhonesPage = () => {
   const { filteredPhones, setSortBy, loading } = useProducts();
@@ -47,7 +54,7 @@ export const PhonesPage = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       {loading
         ? (
           <Loader />
@@ -68,45 +75,57 @@ export const PhonesPage = () => {
             </div>
 
             <div className="phones__selects-container">
-              <Dropdown
-                setSelection={handleSortBy}
-                title="Sort by"
-                options={sortOptions}
-              />
+                <div className="phones__select">
+                  <Dropdown
+                    setSelection={handleSortBy}
+                    title="Sort by"
+                    options={sortOptions}
+                    initialOption={ProductSortingOption.alphabetically}
+                  />
+                </div>
 
-              <Dropdown
-                title="Items on page"
-                options={itemsOptions}
-                setSelection={handleItemToShow}
-              />
-            </div>
-
-            <div
-              className="phones__list"
-              data-cy="productList"
-            >
-              {currentPhones.map(phone => (
-                <ProductCard
-                  key={phone.id}
-                  product={phone}
-                />
-              ))}
-            </div>
-
-            {itemsToShow !== ProductSortingOption.all && (
-              <div className="phones__pagination-container">
-                <Pagination
-                  phonesPerPage={itemsToShow !== ProductSortingOption.all
-                    ? Number(itemsToShow) : 0}
-                  totalPhones={filteredPhones.length}
-                  setCurrentPage={setCurrentPage}
-                  currentPage={currentPage}
-                />
+                <div className="phones__select">
+                  <Dropdown
+                    title="Items on page"
+                    options={quantityToShow}
+                    setSelection={handleItemToShow}
+                    initialOption={ItemsPerPageQuantity.all}
+                  />
+                </div>
               </div>
-            )}
+
+            <div className="phones__content">
+              <div
+                className="phones__list"
+                data-cy="productList"
+              >
+                <ProductGrid>
+                  {currentPhones.map(phone => (
+                    <ProductCard
+                      key={phone.id}
+                      product={phone}
+                    />
+                  ))}
+                </ProductGrid>
+
+              </div>
+
+              {itemsToShow !== ProductSortingOption.all && (
+                <div className="phones__pagination-container">
+                  <Pagination
+                    phonesPerPage={itemsToShow !== ProductSortingOption.all
+                      ? Number(itemsToShow) : 0}
+                    totalPhones={filteredPhones.length}
+                    setCurrentPage={setCurrentPage}
+                    currentPage={currentPage}
+                  />
+                </div>
+              )}
+            </div>
           </div>
+
         )}
-    </>
+    </Wrapper>
 
   );
 };

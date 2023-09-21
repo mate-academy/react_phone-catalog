@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
-import { Wrapper, FooterNavigation } from 'components';
-import { AppRoutes } from 'config';
+import { Wrapper, FooterNavigation, Logo } from 'components';
 import { IconButtonType } from 'types';
 import { IconButton } from 'components/ui-kit';
 import './Footer.scss';
@@ -17,16 +15,7 @@ export const Footer = () => {
     <footer className="footer">
       <Wrapper>
         <div className="footer__content">
-          <Link
-            className="footer__logo"
-            to={AppRoutes.HomePage}
-          >
-            <img
-              alt="logo"
-              src="./img/icons/logo.svg"
-            />
-          </Link>
-
+          <Logo />
           <FooterNavigation />
 
           <div className="footer__button-box">

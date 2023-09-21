@@ -3,6 +3,7 @@ import { Navigation } from 'components/Navigation';
 import { Search } from 'components/Search';
 import { NavIcon } from 'components/NavIcon';
 import './Header.scss';
+import { BurgerMenu } from 'components/BurgerMenu';
 
 export const Header = () => {
   const { favourites } = useProducts();
@@ -32,6 +33,7 @@ export const Header = () => {
             count={totalQuantity}
           />
         </div>
+        <BurgerMenu />
       </div>
     </header>
   );

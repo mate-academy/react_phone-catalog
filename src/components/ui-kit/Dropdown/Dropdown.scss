@@ -3,7 +3,7 @@
 .dropdown {
   display: flex;
   flex-direction: column;
-  width: 176px;
+  width: 100%;
   gap: 4px;
 
   &__title {
@@ -31,7 +31,7 @@
   }
 
   &__options {
-    width: 176px;
+    width: 100%;
     font-size: 14px;
     padding: 14px 0;
     background-color: $font-white;
@@ -42,6 +42,7 @@
     border: 1px solid $elements;
     transition: 2s ease;
     text-transform: capitalize;
+    z-index: 100000;
   }
 
   &__option {

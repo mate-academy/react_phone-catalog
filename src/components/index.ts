@@ -15,3 +15,4 @@ export { Sorry } from './Sorry';
 export { Navigation } from './Navigation';
 export { FooterNavigation } from './FooterNavigation';
 export { ProductCard } from './ProductCard';
+export { Logo } from './Logo';

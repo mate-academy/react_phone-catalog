@@ -1,7 +1,7 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { AppRoutes } from 'config';
 import { pages } from 'routing';
+import { Logo } from 'components/Logo';
 import './Navigation.scss';
 
 const NAV_LINKS_TO_HIDE = ['*', 'cart', 'favourites', 'productId'];
@@ -17,7 +17,11 @@ export const Navigation = () => {
     return Object.keys(pages).map(link => {
       if (!NAV_LINKS_TO_HIDE.includes(link)) {
         return (
-          <NavLink key={link} to={link} className={navbarItemClass}>
+          <NavLink
+            key={link}
+            to={link}
+            className={navbarItemClass}
+          >
             {link}
           </NavLink>
         );
@@ -27,19 +31,14 @@ export const Navigation = () => {
     });
   };
 
+  const navigationLinks = renderNavLink();
+
   return (
     <nav className="nav">
-      <Link
-        className="nav__logo"
-        to={AppRoutes.HomePage}
-      >
-        <img
-          alt="logo"
-          className="check"
-          src="img/icons/logo.svg"
-        />
-      </Link>
-      {renderNavLink()}
+      <div className="nav__logo">
+        <Logo />
+      </div>
+      {navigationLinks}
     </nav>
   );
 };

@@ -31,7 +31,12 @@
 
   &__content {
     display: flex;
+    flex-direction: column;
     gap: 16px;
+
+    @include desktop {
+      flex-direction: row;
+    }
   }
 
   &__list {

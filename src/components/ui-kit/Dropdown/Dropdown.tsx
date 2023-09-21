@@ -10,16 +10,16 @@ type Props = {
   title: string,
   options: string[],
   setSelection: (option: string) => void,
+  initialOption: string,
 };
-
-const INITIAL_OPTION = 'Select an option';
 
 export const Dropdown: React.FC<Props> = ({
   title,
   options,
   setSelection,
+  initialOption,
 }) => {
-  const [selected, setSelected] = useState<string>(INITIAL_OPTION);
+  const [selected, setSelected] = useState<string>(initialOption);
   const [dropOptions, setDropOptions] = useState(false);
 
   const handleSelect = (option: string) => () => {

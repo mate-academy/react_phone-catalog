@@ -3,7 +3,6 @@
 .phones {
   display: flex;
   flex-direction: column;
-  padding: 0 152px;
 
   &__path-container {
     margin-top: 24px;
@@ -34,17 +33,50 @@
     line-height: 21px;
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include tablet {
+      align-items: start;
+    }
+  }
+
   &__selects-container {
     display: flex;
+    flex-direction: column;
+    justify-content: start;
     gap: 16px;
     margin-top: 40px;
     margin-bottom: 24px;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__select {
+    width: $product-width;
+
+    @include tablet {
+      width: $product-width;
+    }
+
+    @include desktop {
+      width: $product-width;
+    }
   }
 
   &__list {
     display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 40px;
   }
 

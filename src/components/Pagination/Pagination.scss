@@ -1,10 +1,15 @@
 @import "/src/style/main.scss";
 
 .pagination {
+  width: $product-width;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 8px;
+
+  @include tablet {
+    gap: 16px;
+  }
 
   &__pages {
     display: flex;

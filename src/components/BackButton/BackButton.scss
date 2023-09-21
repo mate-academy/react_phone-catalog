@@ -1,6 +1,7 @@
 @import "/src/style/main.scss";
 
 .back-button {
+  cursor: pointer;
   background-color: $font-white;
   border: none;
   text-transform: capitalize;

@@ -1,7 +1,7 @@
 @import "/src/style/main.scss";
 
 .banner-slider {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -30,5 +30,9 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  @include desktop {
+    display: flex;
   }
 }

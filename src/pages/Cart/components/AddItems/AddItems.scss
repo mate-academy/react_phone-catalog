@@ -3,7 +3,15 @@
 .add-items {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 6px;
+
+  @include tablet {
+    gap: 13px;
+  }
+
+  @include desktop {
+    gap: 13px;
+  }
 
   &__quantity {
     text-align: center;

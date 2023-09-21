@@ -1,8 +1,17 @@
 @import "/src/style/main.scss";
 
 .footer-nav {
-  display: flex;
-  gap: 64px;
+  display: none;
+
+  @include tablet {
+    display: flex;
+    gap: 64px;
+  }
+
+  @include desktop {
+    display: flex;
+    gap: 64px;
+  }
 
   &__link {
     text-decoration: none;

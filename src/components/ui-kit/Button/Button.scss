@@ -1,6 +1,7 @@
 @import "/src/style/main.scss";
 
 .button {
+  cursor: pointer;
   border: none;
   background-color: $main-font-color;
   color: $font-white;
@@ -64,8 +65,18 @@
   }
 
   &--checkout {
-    width: 320px;
+    width: 100%;
     height: 48px;
+
+    @include tablet {
+      width: 260px;
+      height: 48px;
+    }
+
+    @include desktop {
+      width: 220px;
+      height: 48px;
+    }
 
     &:hover {
       transition: 0.4s ease;
