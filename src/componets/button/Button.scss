@@ -1,0 +1,30 @@
+@import '../../utils/variables.scss';
+
+.button-block {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  &__button {
+   transition: all 0.3;
+    border: 1px solid $primaryColor;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    background-color: $primaryColor;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $secondaryColor;
+      background-color: $secondaryColor;
+    }
+  }
+
+  &__link {
+    font-size: 16px;
+    font-family: Mont-SemiBold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $whiteColor;
+  }
+}

@@ -1,0 +1,35 @@
+@import '../../utils/variables.scss';
+
+.cart-modal {
+  position: absolute;
+  top: 130px;
+  border: 1px solid $primaryColor;
+  border-radius: 8px;
+
+  &__title {
+    font-size: 18px;
+    font-family: Mont-SemiBold;
+    text-align: center;
+    color: $redColor;
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__button {
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: $primaryColor;
+    font-family: Mont-SemiBold;
+    color: $whiteColor;
+
+    &:hover {
+      border: 1px solid$iconsColor;
+      background-color: $iconsColor;
+      color: $primaryColor;
+    }
+  }
+}

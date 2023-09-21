@@ -1,0 +1,43 @@
+@import '../../utils/variables.scss';
+
+.product-card-actions {
+  &__buttons {
+    display: flex;
+  }
+
+  &__cart-button {
+    margin-right: 11px;
+    width: 85%;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Mont-SemiBold;
+    cursor: pointer;
+  }
+
+  &__cart-button-notAdded {
+    background-color: $primaryColor;
+    color: $whiteColor;
+  }
+
+  &__cart-button-added {
+    border: 1px solid $elementsColor;
+    background-color: $whiteColor;
+    color: $greenColor;
+  }
+
+  &__favourites-button {
+    border: 1px solid $iconsColor;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    background-color: $whiteColor;
+    cursor: pointer;
+  }
+
+  &__favourites-image{
+    display: block;
+    margin: 0 auto;
+  }
+}

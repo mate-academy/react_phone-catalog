@@ -1,0 +1,254 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.productDetails {
+  margin-bottom: 30px;
+
+  &__title {
+    font-size: 32px;
+    font-family: Mont-Bold;
+    letter-spacing: -1%;
+    color: $primaryColor;
+
+    @include onMobile {
+      font-size: 24px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    margin-bottom: 30px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 25px;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__carousel {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 125px;
+  }
+
+  &__allPhotos-container {
+    display: block;
+    margin-right: 50px;
+
+    @include onTablet {
+      margin-right: 20px;
+    }
+  }
+
+  &__border {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid $elementsColor;
+    width: 80px;
+    height: 80px;
+    background-color: $whiteColor;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+  }
+
+  &__image {
+    margin: auto;
+    padding-top: 5px;
+    width: 100%;
+    height: 90%;
+    object-fit: contain;
+  }
+
+  &__larger-image-container {
+    width: 400px;
+    height: 400px;
+
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__larger-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__main-information {
+    width: 320px;
+  }
+
+  &__block {
+    margin-bottom: 25px;
+  }
+
+  &__color-circle {
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid $elementsColor;
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+    background-clip: content-box;
+
+    &--active {
+      border-color: $primaryColor;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    font-family: Mont-SemiBold;
+    color: $secondaryColor;
+  }
+
+  &__block-container {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__line {
+    margin-bottom: 15px;
+    width: 100%;
+    height: 1px;
+    background-color: $elementsColor;
+  }
+
+  &__capacity {
+    margin-right: 10px;
+    border: 1px solid $iconsColor;
+    padding: 3px;
+    font-size: 16px;
+    font-family: Mont-Regular;
+    text-decoration: none;
+    color: $primaryColor;
+
+    &--active {
+      border-color: $primaryColor;
+      background-color: $primaryColor;
+      color: $whiteColor;
+    }
+  }
+
+  &__price-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &__price {
+    margin: 0 5px 0 0;
+    font-size: 32px;
+    font-family: Mont-Bold;
+    color: $primaryColor;
+    letter-spacing: -1%;
+  }
+
+  &__price-regular {
+    margin: 0;
+    font-size: 22px;
+    font-family: Mont-Regular;
+    text-decoration: line-through;
+    color: $secondaryColor;
+  }
+
+  &__characteristics {
+    margin: 15px 0 15px 0;
+  }
+
+  &__characteristics-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  &__characteristics-element {
+    font-size: 12px;
+    font-family: Mont-SemiBold;
+    color: $secondaryColor;
+  }
+
+  &__characteristics-value {
+    font-size: 12px;
+    font-family: Mont-SemiBold;
+    color: $primaryColor;
+  }
+
+  &__aditional {
+    display: flex;
+    justify-content: space-between;
+
+    @include onMobile {
+      display: block;
+    }
+  }
+
+  &__about {
+    margin-right: 160px;
+    width: 50%;
+
+    @include onMobile {
+      width: 100%;
+    }
+
+    @include onTablet {
+      margin-right: 50px;
+    }
+  }
+
+  &__tech {
+    display: block;
+    width: 50%;
+
+    @include onMobile {
+      width: 100%;
+    }
+  }
+
+  &__aditional-title {
+    margin: 0 0 15px 0;
+    font-size: 22px;
+    font-family: Mont-Bold;
+    color: $primaryColor;
+  }
+
+  &__description-title {
+    font-size: 20px;
+    font-family: Mont-SemiBold;
+    color: $primaryColor;
+  }
+
+  &__description-text {
+    font-size: 14px;
+    font-family: Mont-Regular;
+    line-height: 21px;
+    color: $secondaryColor;
+  }
+
+  &__info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+
+  &__info-key {
+    font-size: 14px;
+    font-family: Mont-Regular;
+    color: $secondaryColor;
+  }
+
+  &__info-value {
+    font-size: 14px;
+    font-family: Mont-Regular;
+    color: $primaryColor;
+  }
+}

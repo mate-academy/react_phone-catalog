@@ -1,0 +1,26 @@
+@import '../../utils/variables.scss';
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__body {
+    animation: spin 1s linear infinite;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    border-top: 10px solid $secondaryColor;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
