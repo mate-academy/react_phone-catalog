@@ -1,7 +1,19 @@
 .logo {
   display: flex;
   align-content: center;
-  padding: 24px;
+  padding: 8px;
+
+  @include onTablet {
+    padding: 24px;
+  }
+
+  @include onDesktop {
+    padding: 24px;
+  }
+
+  @include onDesktopXL {
+    padding: 24px;
+  }
 
   &__img {
     display: block;

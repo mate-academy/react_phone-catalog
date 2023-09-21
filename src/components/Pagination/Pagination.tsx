@@ -44,10 +44,10 @@ export const Pagination: React.FC<Props> = ({
         <li className={classNames('pagination__left',
           { 'pagination__left--disabled': leftDisabled })}
         >
-          <a
+          <button
+            type="button"
             data-cy="paginationLeft"
             className="pagination__btn"
-            href={`#${+currentPage}`}
             aria-disabled="true"
             onClick={handleClickLeft}
           >
@@ -55,7 +55,7 @@ export const Pagination: React.FC<Props> = ({
               'arrow--left-disabled': leftDisabled,
             })}
             />
-          </a>
+          </button>
         </li>
 
         {arrOfPages.map((page, i) => {
@@ -67,17 +67,17 @@ export const Pagination: React.FC<Props> = ({
               })}
               key={page}
             >
-              <a
+              <button
+                type="button"
                 data-cy="pageLink"
                 className={classNames('pagination__num-link', {
                   'pagination__num-link--active': currentPage === i + 1,
                   'pagination__num-link--inactive': currentPage !== i + 1,
                 })}
-                href={`#${page}`}
                 onClick={() => handleSelectPage(i + 1)}
               >
                 {i + 1}
-              </a>
+              </button>
             </li>
           );
         })}
@@ -85,10 +85,10 @@ export const Pagination: React.FC<Props> = ({
         <li className={classNames('pagination__rigth',
           { 'pagination__rigth--disabled': rightDisabled })}
         >
-          <a
+          <button
+            type="button"
             data-cy="paginationRight"
             className="pagination__btn"
-            href={`#${+currentPage}`}
             aria-disabled="false"
             onClick={handleClickRight}
           >
@@ -96,7 +96,7 @@ export const Pagination: React.FC<Props> = ({
               'arrow--right-disabled': rightDisabled,
             })}
             />
-          </a>
+          </button>
         </li>
       </ul>
     </div>
