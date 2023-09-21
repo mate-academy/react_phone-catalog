@@ -1,10 +1,18 @@
 import '../../styles/components/GoBackButton/GoBackButton.scss';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const GoBackButton = ({ ...props }) => {
+  const location = useLocation();
+
+  const link = location.state ? '..' : '/home';
+
   return (
-    <Link to="/home" className="go-back-button" {...props}>
+    <Link
+      to={link}
+      className="go-back-button"
+      {...props}
+    >
       Back
     </Link>
   );

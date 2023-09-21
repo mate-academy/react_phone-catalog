@@ -5,6 +5,11 @@ export type Params = {
   [key: string]: Param[] | Param | null;
 };
 
+export enum ChangeType {
+  COLOR,
+  CAPACITY,
+}
+
 export function getSearchWith(params: Params,
   search?: string | URLSearchParams) {
   const newParams = new URLSearchParams(search);
@@ -21,4 +26,25 @@ export function getSearchWith(params: Params,
   }
 
   return newParams.toString();
+}
+
+export function prepareLink(path: string,
+  changeType: ChangeType,
+  value: string) {
+  const pathArray = path.split('/');
+  const itemIdArray = pathArray[pathArray.length - 1].split('-');
+
+  switch (changeType) {
+    case ChangeType.COLOR:
+      itemIdArray[itemIdArray.length - 1] = value;
+      break;
+    case ChangeType.CAPACITY:
+      itemIdArray[itemIdArray.length - 2] = value.toLowerCase();
+      break;
+    default: return path;
+  }
+
+  pathArray[pathArray.length - 1] = itemIdArray.join('-');
+
+  return pathArray.join('/');
 }

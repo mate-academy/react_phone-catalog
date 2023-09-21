@@ -7,7 +7,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   content: 'arrow' | 'math' | 'text' | 'color' | 'fav';
   arrowDirection?: 'right' | 'left' | 'upper';
   sign?: 'plus' | 'minus';
-  isSelect?: boolean,
+  isSelected?: boolean,
   isActive?: boolean;
 };
 
@@ -17,7 +17,7 @@ export const Button: React.FC<Props> = ({
   sign,
   isActive,
   children,
-  isSelect,
+  isSelected,
   ...props
 }) => {
   return (
@@ -29,8 +29,8 @@ export const Button: React.FC<Props> = ({
         `button--${content}`,
         { [`button--arrow-${arrowDirection}`]: arrowDirection },
         { [`button--math-${sign}`]: sign },
+        { 'is-selected': isSelected },
         { 'is-active': isActive },
-        { 'button--text-is-select': isSelect },
       )}
     >
       {children}

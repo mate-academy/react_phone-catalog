@@ -4,6 +4,7 @@ export enum SortBy {
   AGE = 'id',
   NAME = 'name',
   PRICE = 'price',
+  DISCOUNT = 'discount',
 }
 
 const reverseSign = (number: number) => {
@@ -30,6 +31,11 @@ function sortProducts(
         return desc
           ? reverseSign(productA[sortBy].localeCompare(productB[sortBy]))
           : productA[sortBy].localeCompare(productB[sortBy]);
+      });
+    case SortBy.DISCOUNT:
+      return sortedProducts.sort((productA, productB) => {
+        return (productB.fullPrice - productB.price)
+          - (productA.fullPrice - productA.price);
       });
     default: return sortedProducts;
   }
@@ -76,8 +82,15 @@ function sliceProducts(
   return slicedProducts.slice(startIndex, endIndex);
 }
 
+function getRandomProducts(products: Product[]) {
+  const index = Math.round(Math.random() * (products.length - 12));
+
+  return products.slice(index, index + 12);
+}
+
 export const productService = {
   sortProducts,
   filterProducts,
   sliceProducts,
+  getRandomProducts,
 };

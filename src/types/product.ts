@@ -25,7 +25,7 @@ export type Article = {
   text: string,
 };
 
-export type ProdcutDetails = {
+export type ProductDetails = {
   id: string,
   namespaceId: string,
   name: string,

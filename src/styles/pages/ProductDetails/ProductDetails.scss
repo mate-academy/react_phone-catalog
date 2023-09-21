@@ -6,12 +6,9 @@
   margin: 0 auto;
   padding: 24px 0 80px;
 
-  & p {
-    margin: 8px 0 0;
-  }
-
-  & p:first-child {
-    margin: 0;
+  & ul {
+    padding: 0;
+    list-style: none;
   }
 
   &__go-back {
@@ -41,6 +38,7 @@
     width: 80px;
     height: 80px;
     border: 1px solid #{$elements-color};
+    object-fit: contain;
 
     &:hover {
       border-color: #{$icons-placeholders-color};
@@ -56,6 +54,7 @@
     margin-right: 75px;
     width: 442px;
     height: 442px;
+    object-fit: contain;
   }
 
   &__buy-fav-buttons {
@@ -125,6 +124,7 @@
     &-right {
       @include smallTextStyling;
       margin: 0;
+      text-align: right;
     }
   }
 
@@ -172,6 +172,7 @@
     &-right {
       @include smallTextStyling;
       margin: 0;
+      text-align: right;
     }
   }
 

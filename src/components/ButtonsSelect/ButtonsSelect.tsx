@@ -1,17 +1,25 @@
+import { Link, useLocation } from 'react-router-dom';
 import '../../styles/components/ButtonsSelect/ButtonsSelect.scss';
+import { ChangeType, prepareLink } from '../../utils/routerService';
 import { Button } from '../Button/Button';
+import { useColors } from '../../utils/colors';
 
 type Props = {
   title: string;
   type: string;
   contents: string[];
+  activeContent: string,
 };
 
 export const ButtonsSelect: React.FC<Props> = ({
   title,
   type,
   contents,
+  activeContent,
 }) => {
+  const colors = useColors();
+  const location = useLocation();
+
   return (
     <div className="buttons">
       <h1 className="buttons__title">{title}</h1>
@@ -20,17 +28,34 @@ export const ButtonsSelect: React.FC<Props> = ({
         {type === 'color' ? (
           contents.map(content => (
             <div className="buttons__button-container" key={content}>
-              <Button content="color">
-                <span style={{ background: content }} />
-              </Button>
+              <Link
+                to={prepareLink(location.pathname, ChangeType.COLOR, content)}
+                state={{ path: location.pathname }}
+              >
+                <Button
+                  content="color"
+                  isActive={content === activeContent}
+                >
+                  <span style={{ background: colors.get(content) }} />
+                </Button>
+              </Link>
             </div>
           ))
         ) : (
           contents.map(content => (
             <div className="buttons__button-container" key={content}>
-              <Button content="text" isSelect>
-                {content}
-              </Button>
+              <Link
+                to={prepareLink(location.pathname,
+                  ChangeType.CAPACITY, content)}
+                state={{ path: location.pathname }}
+              >
+                <Button
+                  content="text"
+                  isActive={content === activeContent}
+                >
+                  {content}
+                </Button>
+              </Link>
             </div>
           ))
         )}

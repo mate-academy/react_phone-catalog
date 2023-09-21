@@ -10,6 +10,7 @@ import { TestPage } from './pages/TestPage';
 import { ProductType } from './types/product';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { ProductCart } from './pages/ProductCart';
+import { ProductDetailsPage } from './pages/ProductDetails';
 
 ReactDOM.render(
   <HashRouter>
@@ -20,18 +21,33 @@ ReactDOM.render(
 
         <Route
           path="phones"
-          element={<ProductPage productType={ProductType.PHONES} />}
-        />
+        >
+          <Route
+            index
+            element={<ProductPage productType={ProductType.PHONES} />}
+          />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
 
         <Route
           path="tablets"
-          element={<ProductPage productType={ProductType.TABLET} />}
-        />
+        >
+          <Route
+            index
+            element={<ProductPage productType={ProductType.TABLET} />}
+          />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
 
         <Route
           path="accessories"
-          element={<ProductPage productType={ProductType.ACCESSORY} />}
-        />
+        >
+          <Route
+            index
+            element={<ProductPage productType={ProductType.ACCESSORY} />}
+          />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
 
         <Route
           path="favourites"

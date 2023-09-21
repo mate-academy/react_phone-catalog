@@ -48,10 +48,15 @@
   &--text {
     background-color: #fff;
     color: #{$primary-color};
+    transition: 0.4s ease;
 
     &.is-active {
       background-color: #{$primary-color};
       color: #fff;
+    }
+
+    &.is-selected {
+      color: #{$green-color};
     }
   }
 
@@ -83,6 +88,7 @@
   &--fav {
     padding: 0;
     background: center no-repeat url("../../../images/icons/favourites-icon.svg");
+    transition: 0.4s ease;
 
     &.is-active {
       background-image: url("../../../images/icons/favourites-icon-active.svg");

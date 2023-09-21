@@ -2,6 +2,7 @@
 import '../../styles/components/ProductCard/ProductCard.scss';
 
 import classNames from 'classnames';
+import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/product';
 
 type Props = {
@@ -22,18 +23,37 @@ export const ProductCard: React.FC<Props> = ({
   onFavouritesClick,
 }) => {
   const {
-    name, image, price, fullPrice, screen, capacity, ram,
+    name,
+    image,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    itemId,
   } = product;
+
+  const location = useLocation();
 
   return (
     <article className="card">
-      <img
-        src={`${BASE_URL}${image}`}
-        alt="phone img"
-        className="card__image"
-      />
+      <Link
+        to={`/phones/${itemId}`}
+        state={{ prevPath: location.pathname }}
+      >
+        <img
+          src={`${BASE_URL}${image}`}
+          alt="phone img"
+          className="card__image"
+        />
+      </Link>
 
-      <p className="card__title">{name}</p>
+      <Link
+        to={`/phones/${itemId}`}
+        state={{ prevPath: location.pathname }}
+      >
+        <p className="card__title">{name}</p>
+      </Link>
 
       <div className="card__price-container">
         <p className="card__actual-price">{`$${price}`}</p>
@@ -67,7 +87,11 @@ export const ProductCard: React.FC<Props> = ({
           })}
           onClick={onSelectedClick}
         >
-          Add to card
+          {isSelected ? (
+            'Added to card'
+          ) : (
+            'Add to card'
+          )}
         </button>
 
         <button

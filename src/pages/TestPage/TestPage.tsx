@@ -1,7 +1,7 @@
-import { ProductDetails } from '../ProductDetails';
+import { ProductDetailsPage } from '../ProductDetails';
 
 export const TestPage: React.FC = () => {
   return (
-    <ProductDetails />
+    <ProductDetailsPage />
   );
 };
