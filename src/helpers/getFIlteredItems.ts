@@ -1,30 +1,32 @@
-import { Colors, Good, Sizes } from '../types/Good';
+import { Filter } from '../types/Filter';
+import { Good } from '../types/Good';
 
 export const getFilteredItems = (
   array: Good[],
-  filterParams: string[][],
+  filterParams: Filter,
 ) => {
+  const {
+    type,
+    drop,
+    sizes,
+    colors,
+    year,
+  } = filterParams;
+
   const filteredArray = array.filter(item => {
-    const matches = filterParams.every(paramGroup => {
-      const typeMatch = paramGroup
-        .some(type => type === item.type);
+    const typeMatch = type.length ? type.includes(item.type) : true;
+    const dropMatch = drop.length ? drop.includes(item.drop) : true;
+    const sizeMatch = sizes.length
+      ? item.sizes.some(size => sizes.includes(size))
+      : true;
 
-      const dropMatch = paramGroup
-        .some(drop => drop === item.drop);
+    const colorMatch = colors.length
+      ? item.colors.some(color => colors.includes(color))
+      : true;
 
-      const sizeMatch = paramGroup
-        .some(size => item.sizes.includes(size as Sizes));
+    const yearMatch = year.length ? year.includes(item.year.toString()) : true;
 
-      const colorMatch = paramGroup
-        .some(color => item.colors.includes(color as Colors));
-
-      const yearMatch = paramGroup
-        .some(year => +year === item.year);
-
-      return typeMatch && dropMatch && sizeMatch && colorMatch && yearMatch;
-    });
-
-    return matches;
+    return typeMatch && dropMatch && sizeMatch && colorMatch && yearMatch;
   });
 
   return filteredArray;

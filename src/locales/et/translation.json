@@ -77,5 +77,6 @@
   "sale": "Allahindlus",
   "filter": "Filter",
   "drop": "Kollektsioon",
-  "year": "Aasta"
+  "year": "Aasta",
+  "noGoods": "Teie valitud kategooriatele vastavaid tooteid pole"
 }

@@ -77,5 +77,6 @@
   "sale": "Sale",
   "filter": "Filter",
   "drop": "Drop",
-  "year": "Year"
+  "year": "Year",
+  "noGoods": "There are no products that match your selected categories"
 }
