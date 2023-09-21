@@ -13,7 +13,13 @@
 
   transition: all, 0.3s ease-in-out !important;
 
-  @include hover(transform, scale(104%));
+  @include onTabletAndDesktop {
+    @include hover(transform, scale(104%));
+  }
+
+  @include onMobile {
+    max-width: 100%;
+  }
 
   &__link {
     display: flex;
@@ -25,11 +31,19 @@
     height: 208px;
 
     object-fit: contain;
+
+    @include onMobile {
+      height: 170px;
+    }
   }
 
   &__title {
     @extend %body-text;
     height: 40px;
+
+    @include onMobile {
+      height: 66px;
+    }
   }
 
   &__price {

@@ -8,7 +8,12 @@
   z-index: 10;
 
   @include onMobile {
+    width: 100%;
     margin: 10px 0 0;
+  }
+
+  &-open {
+    z-index: 11;
   }
 
   &--title {
@@ -32,6 +37,9 @@
 
     @include hover(border-color, $c-primary);
 
+    @include onMobile {
+      width: 100%;
+    }
   }
 
   &--icon {

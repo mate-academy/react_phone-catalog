@@ -52,7 +52,9 @@ export const DropDown: React.FC<Props> = ({
   ]);
 
   return (
-    <div className="drop-down">
+    <div className={classNames('drop-down',
+      { 'drop-down-open': isOpen })}
+    >
       <label htmlFor="title" className="drop-down--title">
         {label}
       </label>

@@ -17,17 +17,21 @@
   @extend %body-text;
 
   &:not(.button-cart--added) {
-    @include hover(background-color, $c-white);
-    @include hover(color, $c-primary);
+    @include onTabletAndDesktop {
+      @include hover(background-color, $c-white);
+      @include hover(color, $c-primary);
+    }
   }
 
   &--added {
     color: $c-green;
     background-color: $c-white;
 
-    @include hover(background-color, $c-green);
-    @include hover(border-color, $c-green);
-    @include hover(color, $c-white);
+    @include onTabletAndDesktop {
+      @include hover(background-color, $c-green);
+      @include hover(border-color, $c-green);
+      @include hover(color, $c-white);
+    }
 
   }
 }

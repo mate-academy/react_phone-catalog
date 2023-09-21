@@ -37,12 +37,12 @@
       gap: 20px;
     }
 
-    @include onMobile {
-      flex-direction: column;
-    }
-
     &--cart {
       width: 264px;
+
+      @include onMobile {
+        width: 50vw;
+      }
     }
   }
 

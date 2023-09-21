@@ -30,10 +30,17 @@ export const ProductSlider: React.FC<Props> = ({
       modules={[Navigation]}
       className="product-slider"
       breakpoints={{
-        1024: {
-          width: 656,
-          slidesPerView: 3,
+        320: {
+          slidesPerView: 1,
           spaceBetween: 20,
+        },
+        426: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 10,
         },
         1440: {
           width: 1146,

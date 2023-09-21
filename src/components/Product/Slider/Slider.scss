@@ -41,9 +41,8 @@
       }
 
       @include onMobile {
-        left: 84% !important;
+        display: none;
       }
-
     }
 
     &-button-prev {
@@ -51,10 +50,6 @@
 
       @include onTablet {
         left: 84% !important;
-      }
-
-      @include onMobile {
-        left: 68% !important;
       }
     }
   }

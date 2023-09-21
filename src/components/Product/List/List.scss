@@ -2,6 +2,12 @@
 
 .product-list {
 
+  @include onMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &--quantity {
     @extend %body-text;
     color: $c-secondary;
@@ -18,6 +24,7 @@
 
     @include onMobile {
       flex-direction: column;
+      width: 82%;
     }
   }
 
@@ -29,10 +36,7 @@
 
     @include onMobile {
       margin-top: 20px;
-    }
-
-    &--item {
-      display: block;
+      justify-content: center;
     }
 
     @include onTablet {
@@ -40,9 +44,32 @@
       justify-content: center;
     }
   }
+  &--item {
+    display: block;
+
+    @include onSmallMobile {
+      max-width: 66vw;
+    }
+
+    @include fromMediumMobile {
+      max-width: 36vw !important;
+    }
+  }
 
   &__pagination {
     display: flex;
     justify-content: center;
+  }
+
+  .product-card {
+    @include onMobile {
+      padding: 18px 12px;
+    }
+
+    &--image {
+      @include onMobile {
+        height: 120px;
+      }
+    }
   }
 }

@@ -14,6 +14,18 @@
   }
 }
 
+@mixin onSmallMobile {
+  @media (min-width: 319px) and (max-width: 374px) {
+    @content;
+  }
+}
+
+@mixin fromMediumMobile {
+  @media (min-width: 375px) and (max-width: 766px) {
+    @content;
+  }
+}
+
 @mixin onTablet {
   @media (min-width: 767px) and (max-width: 1199px) {
     @content;

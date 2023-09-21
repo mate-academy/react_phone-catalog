@@ -7,7 +7,7 @@
   text-align: center;
   border: 1px solid $c-elements;
 
-  @include onTablet {
+  @include onMobileAndTablet {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +15,10 @@
     width: 74vw;
     max-width: 752px;
     margin: 50px 0;
+  }
+
+  @include onMobile {
+    margin: 14px 0 66px;
   }
 
   &__total-price {
@@ -43,6 +47,10 @@
 
     @include hover(background-color, $c-white);
     @include hover(color, $c-primary);
+
+    @include onMobile {
+      width: 80vw;
+    }
   }
 
   &--checkout-text {
@@ -52,7 +60,7 @@
 
     border: 1px solid $c-red;
 
-    @include onTablet {
+    @include onMobileAndTablet {
       width: 80vw;
       max-width: 752px;
       margin: 40px auto 0;

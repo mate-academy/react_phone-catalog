@@ -50,6 +50,12 @@
         color: $c-primary;
       }
 
+      @include onTablet {
+        top: 0 !important;
+        padding: 13% 2px;
+        margin: 0 -1%;
+      }
+
       @include onMobile {
         display: none;
       }
