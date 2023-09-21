@@ -1,0 +1,68 @@
+@import "/src/style/main.scss";
+
+.container {
+  &--banner {
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    height: 432px;
+    justify-content: center !important;
+
+    margin: 40px 0 72px;
+
+    &-lower {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+
+  &--content {
+    justify-content: space-between;
+    display: flex;
+  }
+}
+
+.mySwiper {
+  width: 1040px;
+  height: 400px;
+}
+
+.swiper-custom-pagination {
+  display: flex !important;
+  width: 80px !important;
+  height: 24px !important;
+  margin: 8px 0 0 !important;
+}
+
+.swiper-pagination-bullet {
+  height: 6px !important;
+  width: 18px !important;
+  border-radius: 0 !important;
+  background: $gray-secondary !important;
+
+  &-active {
+    background: $gray-primary !important;
+  }
+}
+
+.arrow {
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  background-color: $gray-white;
+
+  display: flex;
+  width: 32px;
+  height: 400px;
+  border: 1px solid $gray-icons-placeholders;
+
+  &__left {
+    background-image: url("/src/images/icons/ArrowLeft.svg");
+  }
+
+  &__right {
+    background-image: url("/src/images/icons/ArrowRight.svg");
+  }
+}

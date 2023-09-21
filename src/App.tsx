@@ -4,17 +4,16 @@ import { Route, Routes } from 'react-router-dom';
 import { client } from './utils/fetchClient';
 
 import './App.scss';
-// import { Navigation } from './Components/Navigation';
-import { HomePage } from './Pages/Home';
-import { NotFound } from './Pages/NotFound';
-import { PhonesPage } from './Pages/Phones';
-import { PhoneDetails } from './Pages/PhoneDetails';
-import { TabletsPage } from './Pages/Tablets';
-import { AccessoriesPage } from './Pages/Accessories';
-import { FavouritesPage } from './Pages/Favourites';
-import { ShoppingPage } from './Pages/Shopping';
-import { Footer } from './Components/Footer';
+import { HomePage } from './Pages/HomePage';
+import { PhonesPage } from './Pages/ProductPage';
+import { ProductDetails } from './Pages/PhoneDetailsPage';
+import { TabletsPage } from './Pages/TabletsPage';
+import { AccessoriesPage } from './Pages/AccessoriesPage';
+import { FavouritesPage } from './Pages/FavouritesPage';
+import { ShoppingPage } from './Pages/ShoppingPage';
+import { NotFound } from './Pages/NotFoundPage';
 import { Phone } from './Type/Phone';
+import { Footer } from './Components/Footer';
 
 export const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -32,7 +31,7 @@ export const App = () => {
 
         <Route path="/Phones">
           <Route index element={<PhonesPage phones={phones} />} />
-          <Route path=":phoneId" element={<PhoneDetails phones={phones} />} />
+          <Route path=":phoneId" element={<ProductDetails phones={phones} />} />
         </Route>
 
         <Route path="/Tablets" element={<TabletsPage />} />
