@@ -17,6 +17,8 @@
   }
 
   &__category {
+    transition: all, 0.3s ease-in-out !important;
+
     @include hover(transform, scale(104%));
 
     &--image {

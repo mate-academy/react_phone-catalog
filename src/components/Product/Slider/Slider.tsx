@@ -38,11 +38,11 @@ export const ProductSlider: React.FC<Props> = ({
           slidesPerView: 2,
           spaceBetween: 20,
         },
-        1024: {
+        900: {
           slidesPerView: 3,
           spaceBetween: 10,
         },
-        1440: {
+        1200: {
           width: 1146,
           slidesPerView: 4,
           spaceBetween: 16,
