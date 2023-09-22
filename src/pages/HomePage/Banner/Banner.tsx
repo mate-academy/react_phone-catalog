@@ -1,46 +1,47 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
+import phonesImage from '../../../images/banner-iphone.png';
+import tabletsImage from '../../../images/banner-ipad.png';
+import accessoriesImage from '../../../images/banner-accessories.png';
 
 import './Banner.scss';
 
-import 'swiper/swiper.scss'; // core Swiper
-import 'swiper/modules/navigation/navigation.scss'; // Navigation module
-import 'swiper/modules/pagination/pagination.scss'; // Pagination module
-
-const navigationMode = true;
+const BannerContent = [
+  {
+    name: 'phones',
+    photo: phonesImage,
+  },
+  {
+    name: 'tablets',
+    photo: tabletsImage,
+  },
+  {
+    name: 'accessories',
+    photo: accessoriesImage,
+  },
+];
 
 export const Banner = () => {
   return (
-    <Swiper
-      spaceBetween={30}
-      navigation={navigationMode}
-      pagination={{
-        clickable: true,
-      }}
-      modules={[Navigation, Pagination]}
+    <Carousel
+      autoPlay={false}
+      showArrows
+      emulateTouch
+      infiniteLoop
+      showStatus={false}
+      showThumbs={false}
       className="banner"
     >
-      <SwiperSlide className="banner__slide">
-        <div
-          className="
-            banner__slide--image
-            banner__slide--image-1"
-        />
-      </SwiperSlide>
-      <SwiperSlide className="banner__slide">
-        <div
-          className="
-            banner__slide--image
-            banner__slide--image-2"
-        />
-      </SwiperSlide>
-      <SwiperSlide className="banner__slide">
-        <div
-          className="
-            banner__slide--image
-            banner__slide--image-3"
-        />
-      </SwiperSlide>
-    </Swiper>
+      {BannerContent.map(currentItem => (
+        <div className="banner__slide">
+          <img
+            src={currentItem.photo}
+            alt={currentItem.name}
+            className="banner__slide--image"
+          />
+        </div>
+      ))}
+    </Carousel>
   );
 };

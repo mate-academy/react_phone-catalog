@@ -2,7 +2,7 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { Banner } from './Banner';
+// import { Banner } from './Banner';
 
 import {
   getAllProducts,
@@ -10,6 +10,7 @@ import {
   getHotPriceProducts,
 } from '../../helpers/fetchProducts';
 
+import { Banner } from './Banner';
 import { ProductSlider } from '../../components/Product/Slider';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
