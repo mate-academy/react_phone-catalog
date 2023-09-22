@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCart, useProducts } from 'context';
+import { AppRoutes } from 'config';
 import { getProductById } from 'api/products';
 import { ButtonType, Phone } from 'types';
 import {
@@ -14,7 +15,7 @@ import {
 import { Button, Like, LikeSize } from 'components/ui-kit';
 import { AvailableCapacity, Colors, ProductImage } from './components';
 import './ProductDetailsPage.scss';
-import { AppRoutes } from 'config';
+
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -27,8 +28,6 @@ export const ProductDetailsPage = () => {
   const { cart, addToCart } = useCart();
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  console.log('productId', productId)
 
   useEffect(() => {
     if (productId) {
