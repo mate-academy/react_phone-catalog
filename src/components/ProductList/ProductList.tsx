@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 
@@ -8,7 +8,7 @@ type ProductListProps = {
   updateFavourites?: () => void;
 };
 
-export const ProductList: FC<ProductListProps> = ({
+export const ProductList: React.FC<ProductListProps> = ({
   products,
   styles,
   updateFavourites,

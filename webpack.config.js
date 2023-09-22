@@ -9,6 +9,17 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+        include: [
+          path.resolve(__dirname, 'node_modules/swiper'),
+        ],
+      },
     ],
   },
 };

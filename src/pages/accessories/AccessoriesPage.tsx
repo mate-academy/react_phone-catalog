@@ -1,5 +1,4 @@
-import {
-  FC,
+import React, {
   useEffect,
   useState,
 } from 'react';
@@ -16,7 +15,7 @@ import { select } from '../../helpers/SelectStiles';
 import { NoResults } from '../../components/NoResults/NoResults';
 // import { Pagination } from '../../components/Pagination/Pagination';
 
-export const AccessoriesPage: FC = () => {
+export const AccessoriesPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const location = useLocation();
 

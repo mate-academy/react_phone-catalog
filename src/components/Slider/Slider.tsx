@@ -2,8 +2,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-import 'swiper/swiper.scss';
-import 'swiper/modules/pagination/pagination.scss';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
 import './Slider.scss';
 
 // eslint-disable-next-line

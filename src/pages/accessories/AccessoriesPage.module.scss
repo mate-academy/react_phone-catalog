@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .accessories {
   margin: 20px auto 80px;
@@ -63,6 +64,11 @@
     color: $primary;
     font-size: $h1;
     font-family: $bold;
+  }
+
+  @include onTablet {
+    margin: 10px auto 60px;
+    width: 640px;
   }
 }
 

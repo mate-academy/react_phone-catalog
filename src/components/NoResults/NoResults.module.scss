@@ -1,44 +1,59 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .noResults {
   margin: 24px auto 80px;
   width: 1136px;
   min-height: calc(100vh - 262px);
 
-  .nav {
-    margin-bottom: 30vh;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  @include onTablet {
+    margin: 10px auto 60px;
+    width: 640px;
+  }
 
-    .icon {
-      path {
-        fill: $secondary;
-      }
-    }
+  @include onPhone {
+    margin: 5px auto 40px;
+    width: 340px;
+  }
+}
 
-    .page {
-      font-family: $semi-bold;
-      font-size: $small-text;
-      line-height: $small-line-height;
-      color: $secondary;
-    }
+.nav {
+  margin-bottom: 30vh;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
-    .phones {
-      &:hover {
-        cursor: pointer;
-      }
+  .icon {
+    path {
+      fill: $secondary;
     }
   }
 
-  .title {
-    margin-bottom: 8px;
-    font-family: $bold;
-    font-size: 32px;
-    line-height: $h1-line-height;
-    letter-spacing: 0;
-    color: $primary;
+  .page {
+    font-family: $semi-bold;
+    font-size: $small-text;
+    line-height: $small-line-height;
+    color: $secondary;
   }
+
+  .phones {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  @include onPhone {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  margin-bottom: 8px;
+  font-family: $bold;
+  font-size: 32px;
+  line-height: $h1-line-height;
+  letter-spacing: 0;
+  color: $primary;
 }
 
 .notablets {
@@ -72,5 +87,29 @@
   &__button:hover {
     background-color: $primary;
     color: $white;
+  }
+
+  @include onPhone {
+    &__text {
+      color: $primary;
+      margin-bottom: 20px;
+      font-family: $regular;
+      font-weight: lighter;
+      font-size: 20px;
+      line-height: $body-line-height;
+      text-align: center;
+    }
+
+    &__button {
+      width: 200px;
+      height: 40px;
+      background-color: $white;
+      color: $primary;
+      border: 1px solid $primary;
+      text-align: center;
+      font-family: $semi-bold;
+      font-size: 18px;
+      line-height: $body-line-height;
+    }
   }
 }

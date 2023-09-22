@@ -1,16 +1,15 @@
-import {
-  FC,
+import React, {
   useEffect,
   useMemo,
   useState,
 } from 'react';
 import {
   Link,
-  useLocation,
   useSearchParams,
 } from 'react-router-dom';
 import Select from 'react-select';
 import { TailSpin } from 'react-loader-spinner';
+// import { useMediaQuery } from 'react-responsive';
 
 import styles from './PhonesPage.module.scss';
 
@@ -27,12 +26,12 @@ import { itemsToShow, pagesCount } from '../../helpers/Sorting';
 import { useSearchContext } from '../../context/searchContext';
 import { NoResults } from '../../components/NoResults/NoResults';
 
-export const PhonesPage: FC = () => {
+export const PhonesPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
   const phones = products.filter(product => product.category === 'phones');
   const { query } = useSearchContext();
+  // const isPhone = useMediaQuery({ maxWidth: 600 });
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = searchParams.get('page') || '1';
@@ -88,10 +87,6 @@ export const PhonesPage: FC = () => {
     getProductsFromServer();
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-
   const handleSelectChange = (
     selectedOption: OptionType | null,
     param: SearchParam,
@@ -128,7 +123,7 @@ export const PhonesPage: FC = () => {
             {`${total} models`}
           </h2>
 
-          {filteredProducts.length > 4
+          {(filteredProducts.length > 4)
            && (
              <div className={styles.phones__sorters}>
                <div className={styles.phones__sorters__sorter}>
@@ -168,6 +163,7 @@ export const PhonesPage: FC = () => {
                </div>
              </div>
            )}
+
           <div
             className="productslist"
             data-cy="productList"
@@ -178,7 +174,7 @@ export const PhonesPage: FC = () => {
             />
           </div>
 
-          {filteredProducts.length > 4
+          {(filteredProducts.length > 4)
            && (
              <Pagination
                data-cy="pagination"

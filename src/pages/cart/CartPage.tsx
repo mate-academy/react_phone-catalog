@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from '../../assets/icons/ArrowLeft';
 import styles from './CartPage.module.scss';
@@ -7,7 +7,7 @@ import { CartItem } from '../../types/CartItem';
 import { useCartContext } from '../../context/cartContext';
 import { Close } from '../../assets/icons/Close';
 
-export const CartPage: FC = () => {
+export const CartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [checkoutIsClicked, setCheckoutIsClicked] = useState(false);
   const { setAddedToCart } = useCartContext();

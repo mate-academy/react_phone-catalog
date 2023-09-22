@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { LogoIcon } from '../../assets/icons/logo-icon';
 import { ArrowUp } from '../../assets/icons/ArrowUp';
 import './Footer.scss';
 
-export const Footer: FC = () => {
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   };

@@ -1,8 +1,19 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .category {
   margin: 0 0 80px;
   max-width: 1136px;
+
+  @include onTablet {
+    margin: 0 0 40px;
+    max-width: 640px;
+  }
+
+  @include onPhone {
+    margin: 0 0 20px;
+    max-width: 340px;
+  }
 }
 
 .title {
@@ -44,6 +55,20 @@
     cursor: pointer;
     transform: scale(1.03);
   }
+
+  @include onTablet {
+    width: 100%;
+    height: 226px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  @include onPhone {
+    width: 126px;
+    height: 126px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
 }
 
 .subtitle {
@@ -53,6 +78,15 @@
   line-height: $h3-line-height;
   color: $primary;
   text-align: start;
+
+  @include onPhone {
+    margin-bottom: 4px;
+    font-family: $semi-bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: $primary;
+    text-align: start;
+  }
 }
 
 .models {

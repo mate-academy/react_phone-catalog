@@ -1,9 +1,11 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .pagination {
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
+  align-items: center;
   gap: 16px;
 
   &__active {
@@ -39,6 +41,7 @@
     display: flex;
     gap: 8px;
   }
+
   &-page {
     width: 32px;
     height: 32px;
@@ -52,6 +55,21 @@
     &:hover {
       cursor: pointer;
       border-color: $icons;
+    }
+  }
+
+  @include onTablet {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    &-pages {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -6,23 +6,25 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { ReactComponent as ArrowLeft } from '../../assets/icons/Chevron (Arrow Left).svg';
 // eslint-disable-next-line
 import { ReactComponent as ArrowRight } from '../../assets/icons/Chevron (Arrow Right).svg';
-import 'swiper/swiper.scss';
-import 'swiper/modules/pagination/pagination.scss';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
 import './ProductSlider.scss';
 import { Product } from '../../types/Product';
 
 type Props = {
   products: Product[];
-  title: string;
+  title?: string;
 };
 
-export const ProductSlider: FC<Props> = ({ title, products }) => {
+export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <section className="product-slider">
       <div className="product-topcontainer">
-        <h1 className="product-title">
-          {title}
-        </h1>
+        {title && (
+          <h1 className="product-title">
+            {title}
+          </h1>
+        )}
         <div className="slider-arrows">
           <div className="slider-button-prev slider-icon">
             <ArrowLeft className="icon" />
@@ -37,8 +39,8 @@ export const ProductSlider: FC<Props> = ({ title, products }) => {
         className="slider-container"
         wrapperClass="wrapper"
         modules={[Navigation]}
-        slidesPerView={4}
-        spaceBetween={12}
+        slidesPerView={2}
+        spaceBetween={14}
         navigation={{
           nextEl: '.slider-button-next',
           prevEl: '.slider-button-prev',

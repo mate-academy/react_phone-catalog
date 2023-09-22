@@ -1,6 +1,5 @@
-import {
+import React, {
   ChangeEvent,
-  FC,
   useEffect,
   useState,
 } from 'react';
@@ -23,7 +22,7 @@ import { useCartContext } from '../../context/cartContext';
 import { useFavsContext } from '../../context/favouritesContext';
 import { Counter } from '../Counter/Counter';
 
-export const Header: FC = () => {
+export const Header: React.FC = () => {
   const { addedToCart } = useCartContext();
   const { addedToFavs } = useFavsContext();
   const { pathname } = useLocation();
@@ -171,7 +170,7 @@ export const Header: FC = () => {
               )}
           </div>
         )}
-        <div className="button_container">
+        <div className="buttons_container">
           <NavLink
             to="favorites"
             className={({ isActive }) => classNames('navlink', {
@@ -179,12 +178,12 @@ export const Header: FC = () => {
             })}
           >
             {addedToFavs > 0 && <Counter count={addedToFavs} />}
-            <AddToFavourites className="button" />
+            <AddToFavourites className="buttons" />
 
           </NavLink>
         </div>
 
-        <div className="button_container">
+        <div className="buttons_container">
           <NavLink
             to="cart"
             className={({ isActive }) => classNames('navlink', {
@@ -192,7 +191,7 @@ export const Header: FC = () => {
             })}
           >
             {addedToCart > 0 && <Counter count={addedToCart} />}
-            <AddToCart className="button" />
+            <AddToCart className="buttons" />
           </NavLink>
         </div>
       </div>

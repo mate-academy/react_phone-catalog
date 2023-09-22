@@ -1,9 +1,16 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .details {
   margin: 20px auto 80px;
   width: 1136px;
   min-height: calc(100vh - 178px);
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
 
   &__nav {
     margin-bottom: 40px;
@@ -266,6 +273,133 @@
         font-family: $regular;
         color: $primary;
         line-height: $body-line-height;
+      }
+    }
+  }
+
+  @include onTablet {
+    margin: 10px auto 60px;
+    width: 640px;
+
+    &__title {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      font-family: $bold;
+      font-size: $h1;
+      color: $primary;
+      letter-spacing: $h1-lspacing;
+    }
+
+    &__information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 44px;
+      margin-bottom: 80px;
+
+      &__about {
+        width: 560px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      &__specs {
+        width: 560px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+    }
+  }
+
+  @include onPhone {
+    margin: 5px auto 20px;
+    width: 340px;
+
+    &__nav {
+      margin-bottom: 10px;
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    &__navname {
+      color: $secondary;
+      font-family: $semi-bold;
+      font-size: $small-text;
+    }
+
+    &__navtop {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    &__navtext {
+      color: $secondary;
+      font-family: $semi-bold;
+      font-size: $small-text;
+    }
+
+    &__navback {
+      margin-bottom: 16px;
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+
+      &__icon {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    }
+
+    &__title {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-family: $bold;
+      font-size: $h1;
+      color: $primary;
+      letter-spacing: $h1-lspacing;
+    }
+
+    &__information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 44px;
+      margin-bottom: 40px;
+
+      &__about {
+        width: 340px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      &__specs {
+        width: 340px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
       }
     }
   }

@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .footer {
   margin: 0 auto;
@@ -72,6 +73,62 @@
       color: $primary;
       font-family: $bold;
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  @include onPhone {
+    margin: 0 auto;
+    padding: 20px !important;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-top: 1px solid $border;
+
+    &-button {
+      height: 24px;
+      width: 118px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      font-size: $small-text;
+      line-height: $small-line-height;
+      color: $secondary;
+
+      &-container {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $elements;
+
+        svg {
+          path {
+            fill: $primary;
+          }
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $primary;
+      }
+
+      &-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
     }
   }
 }

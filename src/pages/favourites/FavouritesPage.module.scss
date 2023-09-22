@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .favourites {
   margin: 20px auto 80px;
@@ -42,6 +43,32 @@
     column-gap: 16px;
     row-gap: 40px;
   }
+
+  @include onTablet {
+    margin: 10px auto 60px;
+    width: 640px;
+
+    &__products {
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      row-gap: 40px;
+    }
+  }
+
+  @include onPhone {
+    margin: 5px auto 20px;
+    width: 340px;
+
+    &__products {
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      row-gap: 40px;
+    }
+  }
 }
 
 .nofavourites {
@@ -75,6 +102,23 @@
   &__button:hover {
     background-color: $primary;
     color: $white;
+  }
+
+  @include onTablet {
+    &__text {
+      color: $primary;
+      margin-bottom: 30px;
+      font-family: $regular;
+      font-weight: lighter;
+      font-size: $h3;
+      line-height: $body-line-height;
+      text-align: center;
+    }
+
+    &__button {
+      width: 243px;
+      height: 42px;
+    }
   }
 }
 

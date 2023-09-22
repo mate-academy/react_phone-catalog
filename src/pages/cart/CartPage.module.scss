@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .cart {
   margin: 20px auto 80px;
@@ -90,6 +91,147 @@
       color: #fff;
     }
   }
+
+  @include onTablet {
+    margin: 10px auto 60px;
+    width: 640px;
+
+    &__main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      justify-items: start;
+    }
+
+    &__total {
+      height: fit-content;
+      width: fit-content;
+      display: flex;
+      gap: 48px;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid $elements;
+
+      &__info {
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          height: 2px;
+          background-color: $elements;
+          position: absolute;
+          width: 100%;
+          bottom: -24px;
+        }
+      }
+
+      &__title {
+        text-align: center;
+        color: $primary;
+        font-size: $h1;
+        font-family: $bold;
+        letter-spacing: $h1-lspacing;
+      }
+
+      &__subtitle {
+        text-align: center;
+        color: $secondary;
+        font-size: $body-text;
+        font-family: $regular;
+        line-height: $body-line-height;
+      }
+
+      &__button {
+        width: 320px;
+        height: 48px;
+        flex-shrink: 0;
+        background-color: $primary;
+        color: #fff;
+      }
+    }
+  }
+
+  @include onPhone {
+    margin: 5px auto 10px;
+    width: 340px;
+
+    &__nav {
+      margin-bottom: 10px;
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    &__title {
+      margin-bottom: 12px;
+
+    }
+
+    &__main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      justify-items: start;
+    }
+
+    &__total {
+      height: fit-content;
+      width: 100%;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid $elements;
+
+      &__info {
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          height: 2px;
+          background-color: $elements;
+          position: absolute;
+          width: 100%;
+          bottom: -10px;
+        }
+      }
+
+      &__title {
+        text-align: center;
+        color: $primary;
+        font-size: 20px;
+        font-family: $bold;
+      }
+
+      &__subtitle {
+        text-align: center;
+        color: $secondary;
+        font-size: $body-text;
+        font-family: $regular;
+        line-height: $body-line-height;
+      }
+
+      &__button {
+        width: 200px;
+        height: 38px;
+        flex-shrink: 0;
+        background-color: $primary;
+        color: #fff;
+      }
+    }
+  }
 }
 
 .noproducts {
@@ -177,5 +319,64 @@
     font-size: $h2;
     line-height: $h2-line-height;
     color: $primary;
+  }
+
+  @include onPhone {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    border: 1px solid $elements;
+    padding-left: 14px;
+    padding-right: 14px;
+
+    &__icon {
+      width: 8px;
+      height: 8px;
+      cursor: pointer;
+    }
+
+    &__image {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__text {
+      font-family: $semi-bold;
+      font-size: 10px;
+    }
+
+    &__cuantity {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 8px;
+
+      &__icon {
+        width: 24px;
+        height: 24px;
+        border: 1px solid $elements;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      &__count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__price {
+      font-family: $bold;
+      font-size: 20px;
+      line-height: $h2-line-height;
+      color: $primary;
+    }
   }
 }

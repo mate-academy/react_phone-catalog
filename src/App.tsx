@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import { SearchContextProvider } from './context/searchContext';
 import { CartProvider } from './context/cartContext';
 import './App.scss';
+import FavouritesProvider from './context/favouritesContext';
 import { Header } from './components/Header/Header';
 import { HomePage } from './pages/home/HomePage';
 import { Footer } from './components/Footer/Footer';
@@ -12,66 +14,73 @@ import { AccessoriesPage } from './pages/accessories/AccessoriesPage';
 import { CartPage } from './pages/cart/CartPage';
 import { ProductDetails } from './pages/productdetails/ProductDetails';
 import { FavouritesPage } from './pages/favourites/FavouritesPage';
-import FavouritesProvider from './context/favouritesContext';
 import { NoResults } from './components/NoResults/NoResults';
+import { HeaderSmall } from './components/HeaderSmall/HeaderSmall';
 
-const App: FC = () => (
-  <CartProvider>
-    <FavouritesProvider>
-      <SearchContextProvider>
-        <div className="App">
-          <Header />
+const App: React.FC = () => {
+  const isTablet = useMediaQuery({ maxWidth: 800 });
 
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="home"
-              element={
-                <Navigate to="/" replace />
-              }
-            />
+  return (
+    <CartProvider>
+      <FavouritesProvider>
+        <SearchContextProvider>
+          <div className="App">
+            {isTablet ? (
+              <HeaderSmall />
+            ) : (
+              <Header />
+            )}
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="home"
+                element={
+                  <Navigate to="/" replace />
+                }
+              />
 
-            <Route
-              path="*"
-              element={<NoResults title="Page" />}
-            />
+              <Route
+                path="*"
+                element={<NoResults title="Page" />}
+              />
 
-            <Route
-              path="phones"
-              element={<PhonesPage />}
-            />
+              <Route
+                path="phones"
+                element={<PhonesPage />}
+              />
 
-            <Route
-              path="tablets"
-              element={<TabletsPage />}
-            />
+              <Route
+                path="tablets"
+                element={<TabletsPage />}
+              />
 
-            <Route
-              path="accessories"
-              element={<AccessoriesPage />}
-            />
+              <Route
+                path="accessories"
+                element={<AccessoriesPage />}
+              />
 
-            <Route
-              path="favorites"
-              element={<FavouritesPage />}
-            />
+              <Route
+                path="favorites"
+                element={<FavouritesPage />}
+              />
 
-            <Route
-              path="cart"
-              element={<CartPage />}
-            />
+              <Route
+                path="cart"
+                element={<CartPage />}
+              />
 
-            <Route
-              path=":itemId"
-              element={<ProductDetails />}
-            />
-          </Routes>
+              <Route
+                path=":itemId"
+                element={<ProductDetails />}
+              />
+            </Routes>
 
-          <Footer />
-        </div>
-      </SearchContextProvider>
-    </FavouritesProvider>
-  </CartProvider>
-);
+            <Footer />
+          </div>
+        </SearchContextProvider>
+      </FavouritesProvider>
+    </CartProvider>
+  );
+};
 
 export default App;
