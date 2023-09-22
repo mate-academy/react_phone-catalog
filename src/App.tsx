@@ -7,9 +7,11 @@ import './App.scss';
 const App = () => (
   <ProductsProvider>
     <CartProvider>
-      <Header />
-      <Outlet />
-      <Footer />
+      <div className='app'>
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
     </CartProvider>
   </ProductsProvider>
 );

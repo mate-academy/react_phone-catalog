@@ -1,8 +1,17 @@
 @import "/src/style/main.scss";
 
 .footer {
-  position: relative;
+  background-color: $font-white;
   border-top: 1px solid $elements;
+  padding: 0 12px;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 154px;
+  }
 
   &__content {
     @include flex-between;

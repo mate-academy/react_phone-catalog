@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useCart, useProducts } from 'context';
 import { getProductById } from 'api/products';
 import { ButtonType, Phone } from 'types';
@@ -14,9 +14,12 @@ import {
 import { Button, Like, LikeSize } from 'components/ui-kit';
 import { AvailableCapacity, Colors, ProductImage } from './components';
 import './ProductDetailsPage.scss';
+import { NotFound } from 'pages/NotFound';
+import { AppRoutes } from 'config';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const {
     products,
     setFavourites,
@@ -26,12 +29,15 @@ export const ProductDetailsPage = () => {
   const [phone, setPhone] = useState<Phone | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log('productId', productId)
+
   useEffect(() => {
     if (productId) {
       setIsLoading(true);
 
       getProductById(productId)
         .then((setPhone))
+        .catch(() => navigate(AppRoutes.NotFound))
         .finally(() => setIsLoading(false));
     }
   }, [productId]);

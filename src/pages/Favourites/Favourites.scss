@@ -1,6 +1,12 @@
 @import "../../style/main.scss";
 
 .favourites {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: flex-start;
+  align-items: self-start;
+
   &__path-container {
     margin-top: 25px;
     margin-bottom: 40px;

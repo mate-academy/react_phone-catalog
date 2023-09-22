@@ -11,8 +11,8 @@ export const Cart = () => {
   const [message, setMessage] = useState(false);
 
   return (
-    <div className="cart">
-      <Wrapper>
+    <Wrapper>
+      <div className="cart">
         <div className="cart__back-container">
           <BackButton />
         </div>
@@ -61,7 +61,8 @@ export const Cart = () => {
               is not implemented yet.
             </p>
           )}
-      </Wrapper>
-    </div>
+      </div>
+    </Wrapper>
+
   );
 };

@@ -12,37 +12,35 @@ export const TabletsPage = () => {
   const { filteredTablets, loading } = useProducts();
 
   return (
-    <>
+    <Wrapper>
       {loading
         ? (
           <Loader />
         )
         : (
           <div className="tablets">
-            <Wrapper>
-              <div className="tablets__path-container">
-                <BreadCrumbs />
-              </div>
+            <div className="tablets__path-container">
+              <BreadCrumbs />
+            </div>
 
-              <div className="tablets__back-button-container">
-                <BackButton />
-              </div>
+            <div className="tablets__back-button-container">
+              <BackButton />
+            </div>
 
-              <div className="tablets__heading">
-                <h1 className="tablets__title">Tablets</h1>
-                <p
-                  className="tablets__quantity"
-                >
-                  {`${filteredTablets.length} items`}
-                </p>
-              </div>
+            <div className="tablets__heading">
+              <h1 className="tablets__title">Tablets</h1>
+              <p
+                className="tablets__quantity"
+              >
+                {`${filteredTablets.length} items`}
+              </p>
+            </div>
 
-              {filteredTablets && !filteredTablets.length && (
-                <Sorry type="tablets" />
-              )}
-            </Wrapper>
+            {filteredTablets && !filteredTablets.length && (
+              <Sorry type="tablets" />
+            )}
           </div>
         )}
-    </>
+    </Wrapper>
   );
 };

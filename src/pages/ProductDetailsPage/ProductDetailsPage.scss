@@ -5,16 +5,22 @@
   overflow: scroll;
 
   &__path-container {
+    display: flex;
+    align-self: flex-start;
     margin-top: 24px;
     margin-bottom: 40px;
   }
 
   &__back-container {
+    display: flex;
+    align-self: flex-start;
     padding-left: 12px;
     margin-bottom: 16px;
   }
 
   &__title {
+    display: flex;
+    align-self: flex-start;
     margin-bottom: 20px;
 
     @include tablet {

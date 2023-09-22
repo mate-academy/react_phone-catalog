@@ -30,6 +30,5 @@ export const Favourites = () => {
         </div>
       </div>
     </Wrapper>
-
   );
 };
