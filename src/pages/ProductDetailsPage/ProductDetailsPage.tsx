@@ -41,14 +41,16 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   const [currentProductWithDetails, setCurrentProductWithDetails]
     = useState<ProductDetails>();
   const [currentImage, setCurrentImage] = useState(currentProduct?.image);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { productsInCart, setProductsInCart } = useContext(CartContext);
   const { favoriteProducts, setFavoriteProducts } = useContext(FavContext);
 
-  const getCurrentProduct = async () => {
+  useEffect(() => {
     setIsLoading(true);
+  }, []);
 
+  const getCurrentProduct = async () => {
     try {
       const details = await getProduct(productId);
       const prod = products.find((product) => product.phoneId === productId);
@@ -128,7 +130,19 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
   return (
     <div className="ProductDetailsPage">
       <div className="container">
-        {currentProductWithDetails && !isLoading ? (
+        {isLoading && (
+          <div className="ProductDetailsPage__loading">
+            <RotatingLines
+              strokeColor="#EB5757"
+              strokeWidth="5"
+              animationDuration="0.75"
+              width="77"
+              visible={isLoading}
+            />
+          </div>
+        )}
+
+        {currentProductWithDetails && !isLoading && (
           <div className="ProductDetailsPage__content">
             <Breadcrumbs />
 
@@ -338,16 +352,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ products }) => {
               title="You may also like"
               products={suggestedProducts}
               key={propsData?.id}
-            />
-          </div>
-        ) : (
-          <div className="ProductDetailsPage__loading">
-            <RotatingLines
-              strokeColor="#EB5757"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="77"
-              visible={isLoading}
             />
           </div>
         )}

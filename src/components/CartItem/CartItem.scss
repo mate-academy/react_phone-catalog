@@ -11,7 +11,7 @@
   padding-right: 24px;
 
   @include onTablet {
-    width: 562px;
+    width: 662px;
   }
 
   @include onMobile {
@@ -32,6 +32,8 @@
     cursor: pointer;
     background: none;
     border: none;
+    height: 16px;
+    width: 16px;
   }
 
   &__photo {
@@ -40,7 +42,14 @@
 
     margin-left: 30px;
 
+    @include onTablet {
+      height: 76px;
+      width: 76px;
+    }
+
     @include onMobile {
+      height: 90px;
+      width: 90px;
       margin: 0;
     }
   }
@@ -52,11 +61,15 @@
   }
 
   &__title {
-    width: 295px;
+    width: 282px;
     color: #313237;
     margin-left: 30px;
     font-size: 14px;
     line-height: 21px;
+
+    @include onTablet {
+      width: 200px;
+    }
 
     @include onMobile {
       margin: 0;
@@ -75,6 +88,10 @@
     cursor: pointer;
     background: none;
 
+    @include onTablet {
+      margin-left: 23px;
+    }
+
     @include onMobile {
       margin: 0;
     }
@@ -85,6 +102,7 @@
     justify-content: center;
     align-items: center;
     height: 21px;
+    width: 21px;
     margin-left: 13px;
 
     @include onMobile {
@@ -116,6 +134,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include onTablet {
+      margin-left: 23px;
+    }
 
     @include onMobile {
       margin: 0;
