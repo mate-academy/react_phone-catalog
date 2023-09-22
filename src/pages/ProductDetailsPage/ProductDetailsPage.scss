@@ -31,6 +31,12 @@
       grid-template-columns: 50% 25%;
       gap: 75px;
     }
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: 50% 25%;
+      gap: 75px;
+    }
   }
 
   &__upper-right {
