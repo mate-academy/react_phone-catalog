@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import { useEffect, useMemo, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCart, useProducts } from 'context';
 import { getProductById } from 'api/products';
 import { ButtonType, Phone } from 'types';
@@ -14,7 +14,6 @@ import {
 import { Button, Like, LikeSize } from 'components/ui-kit';
 import { AvailableCapacity, Colors, ProductImage } from './components';
 import './ProductDetailsPage.scss';
-import { NotFound } from 'pages/NotFound';
 import { AppRoutes } from 'config';
 
 export const ProductDetailsPage = () => {
