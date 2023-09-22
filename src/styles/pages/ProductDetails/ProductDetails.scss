@@ -2,6 +2,7 @@
 @import "../../utils/variables.scss";
 
 .product-details {
+  min-height: calc(100vh - 160px);
   width: fit-content;
   margin: 0 auto;
   padding: 24px 0 80px;
@@ -14,6 +15,11 @@
   &__go-back {
     margin-top: 40px;
     margin-left: 18px;
+  }
+
+  &__sad-message {
+    @include h1TextStyling;
+    margin-top: 200px;
   }
 
   &__title {

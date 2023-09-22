@@ -59,7 +59,7 @@ function filterProducts(
   }
 
   switch (filterBy) {
-    case ProductType.PHONES:
+    case ProductType.PHONE:
     case ProductType.TABLET:
     case ProductType.ACCESSORY:
       return filteredProducts.filter(product => {

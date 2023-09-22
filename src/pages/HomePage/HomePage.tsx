@@ -7,7 +7,7 @@ import { ProductSlider } from '../../components/ProductSlider';
 import phonesImg from '../../images/phones-block.png';
 import tabletsImg from '../../images/tablets-block.png';
 import accessoriesImg from '../../images/accessories-block.png';
-import { Product } from '../../types/product';
+import { Product, ProductType } from '../../types/product';
 import { productApi } from '../../utils/api/productApi';
 import { Loader } from '../../components/Loader';
 import { SortBy, productService } from '../../utils/productService';
@@ -47,6 +47,13 @@ export const HomePage: React.FC<Props> = ({
     .sortProducts(products, SortBy.AGE, true)
     .slice(0, 12);
 
+  const phones = productService.filterProducts(products, ProductType.PHONE);
+
+  const tablets = productService.filterProducts(products, ProductType.TABLET);
+
+  const accessories
+    = productService.filterProducts(products, ProductType.ACCESSORY);
+
   return (
     <main className="home-page">
       {isLoading ? (
@@ -80,7 +87,7 @@ export const HomePage: React.FC<Props> = ({
 
                 <h3 className="home-page__category-title">Mobile phones</h3>
 
-                <p className="home-page__pieces-quantity">95 models</p>
+                <p className="home-page__pieces-quantity">{`${phones.length} models`}</p>
               </div>
 
               <div className="home-page__category-block">
@@ -94,7 +101,7 @@ export const HomePage: React.FC<Props> = ({
 
                 <h3 className="home-page__category-title">Tablets</h3>
 
-                <p className="home-page__pieces-quantity">40 models</p>
+                <p className="home-page__pieces-quantity">{`${tablets.length} models`}</p>
               </div>
 
               <div className="home-page__category-block">
@@ -108,7 +115,9 @@ export const HomePage: React.FC<Props> = ({
 
                 <h3 className="home-page__category-title">Accessories</h3>
 
-                <p className="home-page__pieces-quantity">205 models</p>
+                <p className="home-page__pieces-quantity">
+                  {`${accessories.length} models`}
+                </p>
               </div>
             </div>
           </section>

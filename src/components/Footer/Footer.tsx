@@ -13,11 +13,27 @@ export const Footer: React.FC = () => {
       <img src={logo} alt="logo" className="footer__logo" />
 
       <div className="footer__links">
-        <a href="aa" className="footer__link">Github</a>
+        <a
+          href="https://github.com/Skrudj/react_phone-catalog"
+          className="footer__link"
+        >
+          Github
+        </a>
 
-        <a href="aaa" className="footer__link">Contacts</a>
+        <a
+          href="https://www.linkedin.com/in/serhii-sinilov-66561a1aa/"
+          className="footer__link"
+        >
+          Contacts
+        </a>
 
-        <a href="aaa" className="footer__link">Rights</a>
+        <a
+          href={'https://github.com/Skrudj/'
+           + 'react_phone-catalog/blob/master/LICENSE'}
+          className="footer__link"
+        >
+          Rights
+        </a>
       </div>
 
       <div className="footer__buttons-container">

@@ -5,7 +5,7 @@ import phoneImg from '../images/some-phone.png';
 export const getProduct = (): Product => {
   return {
     id: '1',
-    category: ProductType.PHONES,
+    category: ProductType.PHONE,
     phoneId: 'apple-iphone-7-32gb-black',
     itemId: 'apple-iphone-7-32gb-black',
     name: 'Apple iPhone 7 32GB Black',

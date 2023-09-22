@@ -11,10 +11,10 @@ import { Product, ProductType } from './types/product';
 import { ProductDetailsPage } from './pages/ProductDetails';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { ProductCart } from './pages/ProductCart';
-import { TestPage } from './pages/TestPage';
 import { useLocalStorage } from './utils/hooks/useLocalStorage';
 import { Item } from './types/storageItem';
 import { Storage } from './types/storages';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 const App = () => {
   const [query, setQuery] = useState('');
@@ -33,7 +33,7 @@ const App = () => {
   // #region handlers
   const isIncluded = (items: Item<Product>[], value: Product) => {
     for (const item of items) {
-      if (item.value.id === value.id) {
+      if (!!item.value && !!value && item.value.id === value.id) {
         return true;
       }
     }
@@ -126,7 +126,7 @@ const App = () => {
               element={(
                 <ProductPage
                   query={query}
-                  productType={ProductType.PHONES}
+                  productType={ProductType.PHONE}
                   cart={cart}
                   fav={fav}
                   isIncluded={isIncluded}
@@ -237,7 +237,7 @@ const App = () => {
             )}
           />
 
-          <Route path="/dev" element={<TestPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
 

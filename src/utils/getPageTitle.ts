@@ -2,7 +2,7 @@ import { ProductType } from '../types/product';
 
 export function getPageTitle(productType: ProductType) {
   switch (productType) {
-    case ProductType.PHONES:
+    case ProductType.PHONE:
       return 'Mobile phones';
     case ProductType.TABLET:
       return 'Tablets';

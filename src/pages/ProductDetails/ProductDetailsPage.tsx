@@ -38,6 +38,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
   const [productDetails, setProductDetails]
     = useState<ProductDetails>(getProductDetails);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [selectedImageId, setSelectedImageId] = useState(0);
   const { itemId } = useParams();
 
@@ -48,6 +49,9 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
     productApi.getDetails(normalizedItemId.toString())
       .then(setProductDetails)
+      .catch(() => {
+        setErrorMessage('Sorry, we don\'t have such a phone');
+      })
       .finally(() => setIsLoading(false));
 
     productApi.getAll
@@ -65,6 +69,14 @@ export const ProductDetailsPage: React.FC<Props> = ({
   const onImageClick = (id: number) => {
     setSelectedImageId(id);
   };
+
+  const isSelected = useMemo(() => {
+    return isIncluded(cart, value);
+  }, [cart]);
+
+  const isFav = useMemo(() => {
+    return isIncluded(fav, value);
+  }, [fav]);
 
   const {
     name,
@@ -87,9 +99,21 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
   return (
     <main className="product-details">
-      {isLoading ? (
+      {isLoading && (
         <Loader />
-      ) : (
+      )}
+
+      {!isLoading && errorMessage && (
+        <>
+          <GoBackButton />
+
+          <h1 className="product-details__sad-message">
+            {errorMessage}
+          </h1>
+        </>
+      )}
+
+      {!isLoading && !errorMessage && (
         <>
           <Crumbs />
 
@@ -149,8 +173,8 @@ export const ProductDetailsPage: React.FC<Props> = ({
                 <Button
                   content="text"
                   onClick={() => onSelectedClick(value)}
-                  isActive={!isIncluded(cart, value)}
-                  isSelected={isIncluded(cart, value)}
+                  isActive={!isSelected}
+                  isSelected={isSelected}
                 >
                   {isIncluded(cart, value) ? (
                     'Added to cart'
@@ -163,7 +187,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                   <Button
                     content="fav"
                     onClick={() => onFavClick(value)}
-                    isActive={isIncluded(fav, value)}
+                    isActive={isFav}
                   />
                 </div>
               </div>
