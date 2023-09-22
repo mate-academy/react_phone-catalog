@@ -15,13 +15,14 @@
     align-items: center;
     flex-direction: row;
     padding: 24px;
-    max-width: 780px;
+    max-width: 880px;
   }
 
   @include desktop {
     align-items: center;
     flex-direction: row;
     padding: 24px;
+    max-width: 880px;
   }
 
   &:hover {
@@ -93,11 +94,12 @@
     margin-right: 49px;
 
     @include tablet {
+      min-width: 300px;
       margin-bottom: 0;
     }
 
     @include desktop {
-      min-width: 295px;
+      min-width: 300px;
       margin-bottom: 0;
     }
   }
