@@ -15,7 +15,10 @@ export const Footer = () => {
     <footer className="footer">
       <Wrapper>
         <div className="footer__content">
-          <Logo />
+          <div className="footer__logo">
+            <Logo />
+          </div>
+
           <FooterNavigation />
 
           <div className="footer__button-box">

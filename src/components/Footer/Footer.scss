@@ -1,6 +1,7 @@
 @import "/src/style/main.scss";
 
 .footer {
+  position: relative;
   border-top: 1px solid $elements;
 
   &__content {
@@ -9,8 +10,8 @@
   }
 
   &__logo {
-    width: 40px;
-    height: 24px;
+    position: static;
+    padding-top: -8px;
   }
 
   &__button-icon {
