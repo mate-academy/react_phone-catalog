@@ -33,6 +33,10 @@ export const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (navMenuRef.current
@@ -103,6 +107,7 @@ export const Header = () => {
               },
             )}
             to="/"
+            onClick={closeMenu}
           >
             home
           </NavLink>
@@ -116,6 +121,7 @@ export const Header = () => {
               },
             )}
             to="/phones"
+            onClick={closeMenu}
           >
             phones
           </NavLink>
@@ -129,6 +135,7 @@ export const Header = () => {
               },
             )}
             to="/tablets"
+            onClick={closeMenu}
           >
             tablets
           </NavLink>
@@ -142,6 +149,7 @@ export const Header = () => {
               },
             )}
             to="/accessories"
+            onClick={closeMenu}
           >
             accessories
           </NavLink>

@@ -235,6 +235,7 @@
       background-color: $grey-elements;
       overflow-y: auto;
 
+      transition: all 0.3s;
     }
 
     &__nav-menu--active {
