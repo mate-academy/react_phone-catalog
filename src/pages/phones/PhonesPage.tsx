@@ -42,6 +42,11 @@ export const PhonesPage: React.FC = () => {
 
   const updateUrl = (param: SearchParam, value: string) => {
     searchParams.set(param, value);
+
+    if (param === 'perPage') {
+      searchParams.set('page', '1');
+    }
+
     setSearchParams(searchParams);
   };
 

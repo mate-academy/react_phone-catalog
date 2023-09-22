@@ -40,7 +40,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         wrapperClass="wrapper"
         modules={[Navigation]}
         slidesPerView={2}
-        spaceBetween={14}
+        spaceBetween={5}
         navigation={{
           nextEl: '.slider-button-next',
           prevEl: '.slider-button-prev',

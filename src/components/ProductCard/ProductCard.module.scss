@@ -219,10 +219,10 @@
 }
 
 .button {
-  padding: 0 24px;
+  padding: 0 12px;
   display: flex;
   gap: 8px;
-  width: 100%;
+  width: $card-width;
   height: fit-content;
   line-height: 40px;
 
@@ -256,10 +256,10 @@
     }
   }
 
-  &__favourites {
+  &__heart {
     height: 40px;
     width: 40px;
-    padding: 12px;
+    padding: 1px;
     border: 1px solid $elements;
     display: flex;
     align-items: center;
@@ -273,7 +273,7 @@
   }
 
   @include onTablet {
-    padding: 0 12px;
+    padding: 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -310,10 +310,11 @@
       }
     }
 
-    &__favourites {
-      height: 30px;
-      width: 30px;
-      padding: 6px;
+    &__heart {
+      box-sizing: border-box;
+      height: 33px;
+      width: 33px;
+      padding: 5px;
       border: 1px solid $elements;
       display: flex;
       align-items: center;
@@ -366,7 +367,7 @@
       }
     }
 
-    &__favourites {
+    &__heart {
       box-sizing: border-box;
       height: 25px;
       width: 25px;

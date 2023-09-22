@@ -57,7 +57,11 @@
   @include onPhone {
     &-slider {
       margin: 0 auto 20px;
-      width: 340px;
+      width: 350px;
+
+      &-container {
+        width: 350px !important;
+      }
     }
 
     &-topcontainer {
@@ -77,7 +81,7 @@
 
     &-slide {
       height: auto;
-      width: 160px !important;
+      width: 175px !important;
     }
   }
 }
@@ -125,7 +129,7 @@
 
   @include onPhone {
     &-container {
-      max-width: 365px;
+      max-width: 370px;
     }
   }
 }
