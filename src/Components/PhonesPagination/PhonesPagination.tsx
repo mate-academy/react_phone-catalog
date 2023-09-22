@@ -2,7 +2,9 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Phone } from '../../../Type/Phone';
+import './PhonesPaginations.scss';
+
+import { Phone } from '../../Type/Phone';
 
 type Props = {
   phones: Phone[],
@@ -46,12 +48,12 @@ export const PhonesPaginations: React.FC<Props> = ({
     .fill(preperaLength).map((_, i) => i + 1);
 
   return (
-    <div className="phones__pagination">
+    <div className="pagination">
       <button
         onClick={selectPrev}
         type="button"
         aria-label="Mute volume"
-        className="phones__button phones__button--left"
+        className="pagination__button pagination__button--left"
       />
       {result.map(page => (
         <button
@@ -59,8 +61,8 @@ export const PhonesPaginations: React.FC<Props> = ({
           aria-label="Mute volume"
           onClick={() => setCurrentPage(page)}
           className={classNames(
-            'phones__button phones__button--pagination',
-            { 'phones__button-active': page === +currentPage },
+            'pagination__button pagination__button--pagination',
+            { 'pagination__button-active': page === +currentPage },
           )}
           key={page}
         >
@@ -71,7 +73,7 @@ export const PhonesPaginations: React.FC<Props> = ({
         type="button"
         aria-label="Mute volume"
         onClick={selectNext}
-        className="phones__button phones__button--right"
+        className="pagination__button pagination__button--right"
       />
     </div>
   );

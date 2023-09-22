@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BASE_URL } from '../../../utils/BASE_URL';
+import { BASE_URL } from '../../utils/BASE_URL';
 
 type Props = {
   images: string[];

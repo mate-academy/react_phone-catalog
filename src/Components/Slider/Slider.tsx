@@ -9,9 +9,9 @@ import 'swiper/modules/pagination/pagination.scss'; // Pagination module
 
 import './slider.scss';
 
-import Accessories from '../../../../images/banner/banner-accessories.png';
-import Phones from '../../../../images/banner/banner-phones.png';
-import Tablets from '../../../../images/banner/banner-tablets.png';
+import Accessories from '../../images/SliderImages/banner-accessories.png';
+import Phones from '../../images/SliderImages/banner-phones.png';
+import Tablets from '../../images/SliderImages/banner-tablets.png';
 
 const IMAGES = [
   { id: 0, url: Phones },

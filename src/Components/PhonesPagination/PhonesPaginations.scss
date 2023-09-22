@@ -1,33 +1,14 @@
 @import "/src/style/main.scss";
 
-.phones {
-  &__list {
-    margin: 24px 0 40px;
-    display: flex;
-    width: 1136px;
-    flex-wrap: wrap;
-    gap: 16px;
-
-    &--card {
-      margin-bottom: 40px;
-
-      &:nth-child(4n) {
-        gap: 0;
-      }
-    }
-  }
-
-  &__pagination {
-    display: flex;
-    height: 32px;
-    margin: 0 auto 80px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
+.pagination {
+  display: flex;
+  height: 32px;
+  margin: 0 auto 80px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
   &__button {
-
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -63,20 +44,5 @@
       line-height: 21px;
     }
   }
-}
 
-.dropdowns {
-  display: flex;
-  gap: 16px;
-  margin-top: 40px;
-
-  &__sort {
-    font-family: "Montserrat", sans-serif;
-    padding: 8px;
-    color: $gray-primary;
-    margin-top: 4px;
-    width: 176px;
-    height: 40px;
-    border: 1px solid $gray-icons-placeholders;
-  }
 }

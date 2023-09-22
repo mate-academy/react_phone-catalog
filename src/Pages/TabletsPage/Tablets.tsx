@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Navigation } from '../../Components/Navigation';
+import { Navigation } from '../../Components/Navigation/Navigation';
 import './tablets.scss';
 
 export const TabletsPage: React.FC = () => {

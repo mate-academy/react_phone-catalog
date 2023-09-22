@@ -4,13 +4,17 @@
   margin: 0 auto;
 }
 
-.hot {
+.slider {
   margin-bottom: 24px;
 
-  &__prices {
+  &__phones {
     justify-content: space-between;
     align-items: center;
     display: flex;
+  }
+
+  &__title {
+    margin: 0 0 24px;
   }
 }
 
@@ -27,7 +31,6 @@
 
   &__left {
     margin-right: 16px;
-    // background-image: url(../../images/icons/ArrowLeftDisabled.svg);
     background-image: url(../../images/icons/ArrowLeft.svg);
 
     &--active {
@@ -36,11 +39,23 @@
   }
 
   &__right {
-    // background-image: url(../../images/icons/ArrowRightDisabled.svg);
     background-image: url(../../images/icons/ArrowRight.svg);
 
     &--active {
       background-image: url(../../images/icons/ArrowRight.svg);
     }
+  }
+}
+
+
+.swiper {
+  &__slider {
+    height: 100%;
+    width: 1136px;
+  }
+
+  &__models {
+    height: 100%;
+    width: 1136px;
   }
 }

@@ -6,11 +6,13 @@ import './productDetails.scss';
 import { client } from '../../utils/fetchClient';
 import { Phone } from '../../Type/Phone';
 
-import { Navigation } from '../../Components/Navigation';
-import { HotPrices } from '../HomePage/components/HotPrices/HotPrices';
+import {
+  SliderPhones,
+  Navigation,
+  ProductImages,
+  ProductParams,
+} from '../../Components';
 import { DetailsPhone } from '../../Type/DetailsPhone';
-import { ProductImages } from './components/ProductImages';
-import { ProductParams } from './components/ProdoctParams';
 
 type Props = {
   phones: Phone[];
@@ -178,7 +180,7 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
           <section className="details__like">
             <h1>You may also like</h1>
 
-            <HotPrices phones={phones} />
+            <SliderPhones phones={phones} />
           </section>
         </div>
       </main>

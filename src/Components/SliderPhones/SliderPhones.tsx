@@ -2,27 +2,31 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
-import { ProductCard } from '../../../../Components/ProductCard/ProductCard';
-import { Phone } from '../../../../Type/Phone';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { Phone } from '../../Type/Phone';
+
+import '../../style/main.scss';
+import './sliderPhones.scss';
 
 type Props = {
   phones: Phone[],
 };
 
-export const NewModels: React.FC<Props> = ({ phones }) => {
-  const hotPhones = phones.sort((a, b) => b.fullPrice - a.fullPrice);
+export const SliderPhones: React.FC<Props> = ({ phones }) => {
+  const hotPhones = phones.filter(phone => phone.fullPrice > 1200)
+    .sort((a, b) => b.fullPrice - a.fullPrice);
 
   return (
     <div className="container--hot">
-      <div className="hot__prices">
-        <h1>Brand new models</h1>
+      <div className="slider__phones">
+        <h1 className="slider__title">Hot prices</h1>
 
         <div className="button__container">
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__left button__models--left',
+              'button button__left button__slider--left',
             )}
           // disabled={buttonBack === 0}
           />
@@ -30,7 +34,7 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__right button__models--right',
+              'button button__right button__slider--right',
             )}
           // disabled={buttonNext === hotPhones.length}
           />
@@ -40,12 +44,12 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
       <div className="product">
         <Swiper
           navigation={{
-            nextEl: '.button__models--right',
-            prevEl: '.button__models--left',
+            nextEl: '.button__slider--right',
+            prevEl: '.button__slider--left',
           }}
           slidesPerView={4}
           modules={[EffectFade, Navigation, Pagination]}
-          className="swiper__models"
+          className="swiper__slider"
         >
           {hotPhones.map(phone => (
             <SwiperSlide key={phone.id}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../style/main.scss';
+import '../../style/main.scss';
 
 const contacts = 'https://www.linkedin.com/in/andriiyelieva/';
 const gitHub = 'https://github.com/AndriiYelieva';

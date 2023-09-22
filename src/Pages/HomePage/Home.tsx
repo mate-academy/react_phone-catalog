@@ -1,9 +1,11 @@
-import { NewModels } from './components/NewModels/NewModels';
-import { HotPrices } from './components/HotPrices/HotPrices';
-import { Category } from './components/Category/Category';
-import { Slider } from './components/Slider/Slider';
+import {
+  Category,
+  Navigation,
+  NewModels,
+  Slider,
+  SliderPhones,
+} from '../../Components';
 import { Phone } from '../../Type/Phone';
-import { Navigation } from '../../Components/Navigation';
 
 import '../../style/main.scss';
 import './home.scss';
@@ -20,7 +22,7 @@ export const HomePage: React.FC<Props> = ({ phones }) => {
       <main>
         <Slider />
 
-        <HotPrices phones={phones} />
+        <SliderPhones phones={phones} />
 
         <Category phones={phones} />
 

@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
-import { Dropdowns } from '../../Components/Dropdownws/Dropdowns';
-import { ProductCard } from '../../Components/ProductCard/ProductCard';
-import { Navigation } from '../../Components/Navigation';
-import { PhonesPaginations } from './components/PhonesPagination';
+import {
+  Navigation,
+  Dropdowns,
+  PhonesPaginations,
+  ProductCard,
+} from '../../Components';
 
 import { sortPhones } from '../../helper/preperaPhones';
 import { useLocalStorage } from '../../utils/UseLocalStorege';
 import { Phone } from '../../Type/Phone';
 
 import '../../style/main.scss';
-import './product.scss';
+import './phones.scss';
 
 type Props = {
   phones: Phone[],

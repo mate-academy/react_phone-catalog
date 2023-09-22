@@ -5,6 +5,7 @@
     position: relative;
     flex-wrap: wrap;
     display: flex;
+    width: 1136px;
     height: 432px;
     justify-content: center !important;
 
@@ -20,6 +21,7 @@
 
   &--content {
     justify-content: space-between;
+    width: 1136px;
     display: flex;
   }
 }
@@ -59,10 +61,10 @@
   border: 1px solid $gray-icons-placeholders;
 
   &__left {
-    background-image: url("/src/images/icons/ArrowLeft.svg");
+    background-image: url("../../images/icons/ArrowLeft.svg");
   }
 
   &__right {
-    background-image: url("/src/images/icons/ArrowRight.svg");
+    background-image: url("../../images/icons/ArrowRight.svg");
   }
 }

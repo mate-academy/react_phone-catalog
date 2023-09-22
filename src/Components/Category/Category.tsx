@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
-import '../../../../style/main.scss';
+import '../../style/main.scss';
 import './category.scss';
 
-import Phones from '../../../../images/categories/Phones.png';
-import Tablets from '../../../../images/categories/Tablets.png';
-import Accessories from '../../../../images/categories/Accessories.png';
-import { Phone } from '../../../../Type/Phone';
+import Phones from '../../images/categories/Phones.png';
+import Tablets from '../../images/categories/Tablets.png';
+import Accessories from '../../images/categories/Accessories.png';
+import { Phone } from '../../Type/Phone';
 
 type Props = {
   phones: Phone[],

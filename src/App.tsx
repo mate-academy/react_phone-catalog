@@ -5,7 +5,6 @@ import { client } from './utils/fetchClient';
 
 import './App.scss';
 import { HomePage } from './Pages/HomePage';
-import { PhonesPage } from './Pages/ProductPage';
 import { ProductDetails } from './Pages/PhoneDetailsPage';
 import { TabletsPage } from './Pages/TabletsPage';
 import { AccessoriesPage } from './Pages/AccessoriesPage';
@@ -13,7 +12,8 @@ import { FavouritesPage } from './Pages/FavouritesPage';
 import { ShoppingPage } from './Pages/ShoppingPage';
 import { NotFound } from './Pages/NotFoundPage';
 import { Phone } from './Type/Phone';
-import { Footer } from './Components/Footer';
+import { Footer } from './Components/Footer/Footer';
+import { PhonesPage } from './Pages/PhonsePage/Phones';
 
 export const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
