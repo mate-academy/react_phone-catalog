@@ -3,7 +3,7 @@
 .product-card {
   box-sizing: border-box;
   width: 272px;
-  height: 507px;
+  min-height: 507px;
   border: 1px solid $elements;
   padding: 32px 24px 24px 24px;
   display: flex;
@@ -35,7 +35,7 @@
   }
 
   &__name {
-    min-height: 40px;
+    min-height: 42px;
     font-size: 14px;
     line-height: 21px;
     margin-bottom: 8px;
@@ -89,7 +89,7 @@
 
     &--right {
       text-align: end;
-      color: $main-font-color
+      color: $main-font-color;
     }
   }
 

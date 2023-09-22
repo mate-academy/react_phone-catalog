@@ -36,12 +36,8 @@
   &__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-
-    @include tablet {
-      align-items: start;
-    }
   }
 
   &__selects-container {
@@ -81,6 +77,9 @@
   }
 
   &__pagination-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-bottom: 80px;
   }
 }

@@ -22,6 +22,12 @@ export const Search = () => {
     setSearchQuery('');
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      setSearchQuery('');
+    }
+  };
+
   useEffect(() => {
     handleSearchClear();
   }, [location]);
@@ -35,6 +41,7 @@ export const Search = () => {
             placeholder={placeholderName}
             onChange={handleInput}
             value={searchQuery}
+            onKeyDown={handleKeyPress}
           />
           {searchQuery
             ? (

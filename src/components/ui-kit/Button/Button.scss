@@ -38,8 +38,16 @@
   }
 
   &--cart--large {
-    width: 267px;
+    width: 240px;
     height: 48px;
+
+    @include tablet {
+      width: 267px;
+    }
+
+    @include desktop {
+      width: 267px;
+    }
 
     &:hover {
       transition: 0.4s ease;

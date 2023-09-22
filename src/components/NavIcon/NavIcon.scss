@@ -26,6 +26,11 @@
       width: 24px;
       height: 24px;
     }
+
+    @include desktop {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   &__link {

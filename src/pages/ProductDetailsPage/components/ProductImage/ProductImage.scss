@@ -3,10 +3,28 @@
 .product-image {
   display: flex;
   gap: 16px;
+  margin-bottom: 20px;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    margin-bottom: 0;
+  }
 
   &__thumbs {
-    display: flex;
-    flex-direction: column;
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__thumb-container {
@@ -40,8 +58,18 @@
   }
 
   &__full-img-container {
-    width: 464px;
-    height: 464px;
+    width: 90%;
+    height: auto;
+
+    @include tablet {
+      width: 464px;
+      height: 464px;
+    }
+
+    @include desktop {
+      width: 464px;
+      height: 464px;
+    }
   }
 
   &__full-img {

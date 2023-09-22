@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { IconButton } from 'components/ui-kit';
 import { IconButtonType } from 'types';
 import './Pagination.scss';
+import { useEffect } from 'react';
 
 type Props = {
   phonesPerPage: number,
@@ -17,7 +18,7 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
 }) => {
   const totalPages = Math.ceil(totalPhones / phonesPerPage);
-  const pagesToShow = 5;
+  const pagesToShow = 4;
   const middlePage = Math.ceil(pagesToShow / 2);
 
   let startPage = currentPage - middlePage + 1;
@@ -66,6 +67,10 @@ export const Pagination: React.FC<Props> = ({
 
     setCurrentPage(newValue);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [phonesPerPage, totalPhones]);
 
   return (
     <div

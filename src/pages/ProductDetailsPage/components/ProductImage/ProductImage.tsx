@@ -39,7 +39,6 @@ export const ProductImage: React.FC<Props> = ({ images }) => {
           className="product-image__full-img"
         />
       </div>
-    </div>
-
+    </div >
   );
 };

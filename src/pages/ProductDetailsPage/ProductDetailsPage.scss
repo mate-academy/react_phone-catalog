@@ -14,14 +14,23 @@
   }
 
   &__title {
-    margin-bottom: 51px;
+    margin-bottom: 20px;
+
+    @include tablet {
+      margin-bottom: 51px;
+    }
   }
 
   &__upper-block {
-    display: grid;
-    grid-template-columns: 50% 25%;
-    gap: 75px;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 80px;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 50% 25%;
+      gap: 75px;
+    }
   }
 
   &__upper-right {
@@ -76,9 +85,20 @@
   }
 
   &__lower-block {
-    display: grid;
-    grid-template-columns: calc(50% - 32px) calc(50% - 32px);
-    gap: 64px;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: calc(50% - 32px) calc(50% - 32px);
+      gap: 64px;
+    }
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: calc(50% - 32px) calc(50% - 32px);
+      gap: 64px;
+    }
     margin-bottom: 48px;
   }
 
