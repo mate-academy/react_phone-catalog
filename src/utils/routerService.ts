@@ -28,6 +28,12 @@ export function getSearchWith(params: Params,
   return newParams.toString();
 }
 
+export function getLastWord(path: string) {
+  const array = path.split('/');
+
+  return array[array.length - 1];
+}
+
 export function prepareLink(path: string,
   changeType: ChangeType,
   value: string) {

@@ -4,6 +4,10 @@ import logo from '../../images/icons/logo.svg';
 import { Button } from '../Button';
 
 export const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="footer">
       <img src={logo} alt="logo" className="footer__logo" />
@@ -24,6 +28,7 @@ export const Footer: React.FC = () => {
             content="arrow"
             arrowDirection="upper"
             className="footer__button"
+            onClick={scrollToTop}
           />
         </div>
       </div>

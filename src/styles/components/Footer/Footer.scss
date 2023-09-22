@@ -28,7 +28,7 @@
   }
 
   &__buttons-container {
-    width: 118px;
+    min-width: 118px;
     display: flex;
     gap: 16px;
     justify-content: space-between;

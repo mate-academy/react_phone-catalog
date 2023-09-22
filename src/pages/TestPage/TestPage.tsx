@@ -1,7 +1,7 @@
-import { Counter } from '../../components/Counter';
-
-export const TestPage: React.FC = () => {
+export const TestPage = () => {
   return (
-    <Counter quantity={2} />
+    <div className="some-div">
+      some div
+    </div>
   );
 };

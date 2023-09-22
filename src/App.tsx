@@ -2,6 +2,7 @@
 import './App.scss';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
@@ -16,9 +17,18 @@ import { Item } from './types/storageItem';
 import { Storage } from './types/storages';
 
 const App = () => {
+  const [query, setQuery] = useState('');
   const [cart, setCart] = useLocalStorage<Item<Product>[]>([], Storage.CART);
   const [fav, setFav]
     = useLocalStorage<Item<Product>[]>([], Storage.FAVOURITES);
+
+  const onQueryChange = (input: string) => {
+    setQuery(input);
+  };
+
+  const onQueryClear = () => {
+    setQuery('');
+  };
 
   // #region handlers
   const isIncluded = (items: Item<Product>[], value: Product) => {
@@ -87,6 +97,9 @@ const App = () => {
       <Header
         cartLengh={cart.length}
         favLengh={fav.length}
+        value={query}
+        onChange={onQueryChange}
+        onClear={onQueryClear}
       />
 
       <Routes>
@@ -112,6 +125,7 @@ const App = () => {
               index
               element={(
                 <ProductPage
+                  query={query}
                   productType={ProductType.PHONES}
                   cart={cart}
                   fav={fav}
@@ -142,6 +156,7 @@ const App = () => {
               index
               element={(
                 <ProductPage
+                  query={query}
                   productType={ProductType.TABLET}
                   cart={cart}
                   fav={fav}
@@ -172,6 +187,7 @@ const App = () => {
               index
               element={(
                 <ProductPage
+                  query={query}
                   productType={ProductType.ACCESSORY}
                   cart={cart}
                   fav={fav}
@@ -199,6 +215,7 @@ const App = () => {
             path="favourites"
             element={(
               <FavouritesPage
+                query={query}
                 fav={fav}
                 cart={cart}
                 isIncluded={isIncluded}

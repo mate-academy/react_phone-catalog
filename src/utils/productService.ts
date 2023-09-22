@@ -1,4 +1,5 @@
 import { Product, ProductType } from '../types/product';
+import { Item } from '../types/storageItem';
 
 export enum SortBy {
   AGE = 'id',
@@ -49,8 +50,11 @@ function filterProducts(
   const filteredProducts = [...products];
 
   if (query) {
-    filteredProducts.filter(product => {
-      return product.name.includes(query);
+    return filteredProducts.filter(product => {
+      const normalizedName = product.name.toLowerCase().trim();
+      const normalizedQuery = query.toLowerCase().trim();
+
+      return normalizedName.includes(normalizedQuery);
     });
   }
 
@@ -63,6 +67,24 @@ function filterProducts(
       });
     default: return filteredProducts;
   }
+}
+
+function filterItems(
+  items: Item<Product>[],
+  query?: string,
+) {
+  const filteredItems = [...items];
+
+  if (query) {
+    return filteredItems.filter(item => {
+      const normalizedName = item.value.name.toLowerCase().trim();
+      const normalizedQuery = query.toLowerCase().trim();
+
+      return normalizedName.includes(normalizedQuery);
+    });
+  }
+
+  return filteredItems;
 }
 
 function sliceProducts(
@@ -91,6 +113,7 @@ function getRandomProducts(products: Product[]) {
 export const productService = {
   sortProducts,
   filterProducts,
+  filterItems,
   sliceProducts,
   getRandomProducts,
 };

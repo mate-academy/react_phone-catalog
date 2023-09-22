@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import '../../styles/pages/ProductsPage/ProductsPage.scss';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Crumbs } from '../../components/Crumbs';
 import { Dropdown, Option } from '../../components/Dropdown';
@@ -28,6 +28,7 @@ const perPageOptions: Option[] = [
 ];
 
 type Props = {
+  query: string;
   productType: ProductType;
   isIncluded: (items: Item<Product>[], value: Product) => boolean;
   cart: Item<Product>[];
@@ -37,6 +38,7 @@ type Props = {
 };
 
 export const ProductPage: React.FC<Props> = ({
+  query,
   productType,
   isIncluded,
   cart,
@@ -60,12 +62,20 @@ export const ProductPage: React.FC<Props> = ({
       .finally(() => setIsLoading(false));
   }, []);
 
-  const filteredProducts = productService.filterProducts(products, productType);
+  const filteredProducts = useMemo(() => {
+    return productService.filterProducts(products, productType);
+  }, [products, productType]);
 
-  const sortedProducts = productService.sortProducts(filteredProducts, sortBy);
+  const filteredByQuery = useMemo(() => {
+    return productService.filterProducts(filteredProducts, productType, query);
+  }, [filteredProducts, query]);
 
-  const visibleProducts = productService
-    .sliceProducts(sortedProducts, page, perPage);
+  const sortedProducts = useMemo(() => {
+    return productService.sortProducts(filteredByQuery, sortBy);
+  }, [filteredByQuery, sortBy]);
+
+  const visibleProducts
+    = productService.sliceProducts(sortedProducts, page, perPage);
 
   const totalPages = Math.ceil(filteredProducts.length / +perPage);
 
@@ -83,8 +93,14 @@ export const ProductPage: React.FC<Props> = ({
         </div>
       )}
 
-      {!isLoading && visibleProducts.length < 1 && (
+      {!isLoading && filteredProducts.length < 1 && (
         <h1 className="products-page__sad-message">{`No ${getPageTitle(productType)} found`}</h1>
+      )}
+
+      {!isLoading
+        && filteredProducts.length >= 1
+        && filteredByQuery.length < 1 && (
+        <h1 className="products-page__sad-message">{`No ${getPageTitle(productType)} found by given criteria`}</h1>
       )}
 
       {!isLoading && visibleProducts.length > 0 && (
