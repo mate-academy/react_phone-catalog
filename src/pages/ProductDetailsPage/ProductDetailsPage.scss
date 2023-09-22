@@ -2,6 +2,7 @@
 
 .product-details {
   display: flex;
+  flex-direction: column;
   overflow: scroll;
 
   &__path-container {
