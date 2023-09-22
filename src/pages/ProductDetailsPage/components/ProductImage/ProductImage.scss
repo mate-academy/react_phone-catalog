@@ -6,6 +6,7 @@
   margin-bottom: 20px;
 
   @include tablet {
+    gap: 8px;
     margin-bottom: 0;
   }
 
@@ -62,8 +63,8 @@
     height: auto;
 
     @include tablet {
-      width: 464px;
-      height: 464px;
+      width: 424px;
+      height: 424px;
     }
 
     @include desktop {

@@ -38,11 +38,11 @@
   }
 
   &--cart--large {
-    width: 240px;
+    width: 220px;
     height: 48px;
 
     @include tablet {
-      width: 267px;
+      width: 180px;
     }
 
     @include desktop {

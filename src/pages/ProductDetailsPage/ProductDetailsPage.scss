@@ -2,6 +2,7 @@
 
 .product-details {
   display: flex;
+  overflow: scroll;
 
   &__path-container {
     margin-top: 24px;
@@ -22,25 +23,26 @@
   }
 
   &__upper-block {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 80px;
 
     @include tablet {
-      display: grid;
-      grid-template-columns: 50% 25%;
-      gap: 75px;
+      display: flex;
+      flex-direction: row;
     }
 
     @include desktop {
       display: grid;
       grid-template-columns: 50% 25%;
-      gap: 75px;
+      gap: 36px;
     }
   }
 
   &__upper-right {
     display: flex;
+    justify-content: start;
     flex-direction: column;
   }
 
@@ -95,9 +97,8 @@
     flex-direction: column;
 
     @include tablet {
-      display: grid;
-      grid-template-columns: calc(50% - 32px) calc(50% - 32px);
-      gap: 64px;
+      display: flex;
+      flex-direction: column;
     }
 
     @include desktop {
@@ -106,6 +107,10 @@
       gap: 64px;
     }
     margin-bottom: 48px;
+  }
+
+  &__about {
+    width: 100%;
   }
 
   &__about-heading {
