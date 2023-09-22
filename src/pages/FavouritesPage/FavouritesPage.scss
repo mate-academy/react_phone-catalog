@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .FavouritesPage {
   &__content {
@@ -15,6 +16,10 @@
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.32px;
+
+    @include onPhone {
+      font-size: 22px;
+    }
   }
 
   &__amount {

@@ -67,13 +67,13 @@ export const ProductsSlider: React.FC<Props> = ({
     let newCard;
 
     if (direction === Direction.NEXT) {
-      newCard = lastVisibleCard + cardsPerPage;
+      newCard = lastVisibleCard + 1;
 
       if (newCard > totalCards) {
         newCard = totalCards;
       }
     } else {
-      newCard = lastVisibleCard - cardsPerPage;
+      newCard = lastVisibleCard - 1;
 
       if (newCard < cardsPerPage) {
         newCard = cardsPerPage;

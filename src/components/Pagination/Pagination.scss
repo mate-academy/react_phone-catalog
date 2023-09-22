@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .Pagination {
   display: flex;
@@ -27,6 +28,10 @@
     border: 1px solid $color-icons-placeholders-gray;
     transition: $transition;
     cursor: pointer;
+
+    @include onPhone {
+      margin-top: 6px;
+    }
 
     &--prev {
       transform: rotate(-90deg);

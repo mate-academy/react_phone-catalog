@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .Footer {
   width: 100%;
@@ -9,11 +10,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include onPhone {
+      height: 56px;
+    }
   }
 
   &__links {
     display: flex;
     gap: 64px;
+
+    @include onPhone {
+      gap: 8px;
+      align-items: center;
+    }
   }
 }
 
@@ -22,6 +32,10 @@
   font-weight: 600;
   font-size: 12px;
   transition: $transition;
+
+  @include onPhone {
+    font-size: 10px;
+  }
 
   &__label {
     display: flex;
@@ -33,6 +47,10 @@
 
     &:hover {
       cursor: pointer;
+    }
+
+    @include onPhone {
+      margin-right: 8px;
     }
   }
 
@@ -50,6 +68,11 @@
 
     &:hover {
       border-color: $color-primary-dark-gray;
+    }
+
+    @include onPhone {
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -78,6 +101,11 @@
 
   &:hover {
     color: $color-primary-dark-gray;
+  }
+
+  @include onPhone {
+    font-size: 10px;
+    line-height: 10px;
   }
 }
 

@@ -1,12 +1,21 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .Dropdown {
   width: 180px;
   display: inline-block;
   position: relative;
 
+  @include onPhone {
+    width: 130px;
+  }
+
   &--small {
     width: 128px;
+
+    @include onPhone {
+      width: 100px;
+    }
   }
 
   &__title {

@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .ProductsList {
   &__dropdowns {
@@ -13,6 +14,16 @@
     grid-template-columns: repeat(auto-fill, 272px);
     justify-content: space-between;
     row-gap: 40px;
+
+    @include onTablet {
+      justify-content: center;
+      column-gap: 40px;
+    }
+
+    @include onPhone {
+      row-gap: 20px;
+      column-gap: 20px;
+    }
   }
 
   &__pagination {

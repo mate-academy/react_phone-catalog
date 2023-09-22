@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .NotFoundPage {
   &__content {
@@ -9,18 +10,33 @@
   &__title {
     font-size: 64px;
     margin: 0 0 20px;
+
+    @include onPhone {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
   }
 
   &__subtitle {
-    font-size: 64px;
     margin: 0 0 14px;
     text-transform: uppercase;
+    text-align: center;
+    font-size: 32px;
+
+    @include onPhone {
+      font-size: 22px;
+    }
   }
 
   &__paragpraph {
     font-size: 20px;
     color: $color-secondary-gray;
     margin-bottom: 40px;
+
+    @include onPhone {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
   }
 
   &__button {
@@ -34,6 +50,10 @@
     line-height: 21px;
     transition: $transition;
     cursor: pointer;
+
+    @include onPhone {
+      padding: 12px 16px;
+    }
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);

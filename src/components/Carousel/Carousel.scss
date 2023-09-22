@@ -1,7 +1,12 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .Carousel {
   height: 400px;
+
+  @include onPhone {
+    height: 500px;
+  }
 
   &__slide {
     background-position: center;
@@ -34,6 +39,11 @@
       border-color: $color-primary-dark-gray;
     }
 
+    @include onPhone {
+      width: 20px;
+      height: 500px;
+    }
+
     &--prev {
       background-image: url(../../img/icons/arrow-left.svg);
     }
@@ -52,6 +62,10 @@
   height: 400px;
   width: calc(100% - 64px - 32px);
   margin: 0 auto;
+
+  @include onPhone {
+    height: 500px;
+  }
 }
 
 .react-slideshow-container + ul.indicators {

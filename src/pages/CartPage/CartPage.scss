@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .CartPage {
   &__content {
@@ -15,12 +16,22 @@
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.32px;
+
+    @include onPhone {
+      font-size: 22px;
+    }
   }
 
   &__products-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__products {
@@ -35,6 +46,10 @@
     &:last-child {
       margin-bottom: 0;
     }
+
+    @include onPhone {
+      width: 100%;
+    }
   }
 
   &__checkout {
@@ -44,6 +59,10 @@
     padding: 24px;
     text-align: center;
     border: 1px solid $color-elements-light-gray;
+
+    @include onTablet {
+      max-width: 348px;
+    }
   }
 
   &__amount {
@@ -51,6 +70,10 @@
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.32px;
+
+    @include onPhone {
+      font-size: 22px;
+    }
   }
 
   &__paragraph {
@@ -99,6 +122,13 @@
   padding: 24px 30px;
   border: 1px solid $color-elements-light-gray;
 
+  @include onPhone {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 14px 10px;
+  }
+
   &__section {
     display: flex;
     align-items: center;
@@ -117,6 +147,10 @@
     transition: $transition;
     cursor: pointer;
 
+    @include onPhone {
+      margin-right: 8px;
+    }
+
   }
 
   &__product-img {
@@ -129,6 +163,12 @@
     background-origin: content-box;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    @include onPhone {
+      height: 40px;
+      width: 40px;
+      margin-right: 14px;
+    }
   }
 
   &__product-name {
@@ -136,6 +176,10 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+
+    @include onPhone {
+      width: auto;
+    }
   }
 
   &__quantity-section {

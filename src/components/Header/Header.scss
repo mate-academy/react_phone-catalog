@@ -1,4 +1,5 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .Header {
   position: sticky;
@@ -9,12 +10,20 @@
   box-shadow: 0 1px 0 0 $color-elements-light-gray;
   z-index: 90;
 
+  @include onPhone {
+    height: 50px;
+  }
+
   &__content {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 24px;
+
+    @include onPhone {
+      padding-left: 14px;
+    }
   }
 
   &__left-side,
@@ -26,6 +35,20 @@
 
   &__logo-container {
     margin-right: 64px;
+
+    @include onTablet {
+      margin-right: 20px;
+    }
+
+    @include onPhone {
+      margin-right: 0;
+    }
+  }
+
+  &__nav-container {
+    @include onPhone {
+      display: none;
+    }
   }
 
   &__right-side {
@@ -48,6 +71,11 @@
     &:hover {
       border-color: $color-primary-dark-gray;
     }
+
+    @include onPhone {
+      display: block;
+      margin-right: 10px;
+    }
   }
 }
 
@@ -66,6 +94,14 @@
   display: flex;
   align-items: center;
   gap: 64px;
+
+  @include onTablet {
+    gap: 18px;
+  }
+
+  @include onPhone {
+    flex-direction: column;
+  }
 }
 
 .NavButton {
