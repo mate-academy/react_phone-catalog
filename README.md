@@ -1,4 +1,4 @@
-# React Products Catalog 📱💻
+# React Products Catalog 📱
 React Products Catalog is built on React and fueled by the Mate Academy API. It has a friendly user interface, so that the user can browse the latest products and shop effortlessly, all while enjoying a fast and responsive shopping experience.
 
 ## Description
