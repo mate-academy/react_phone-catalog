@@ -16,7 +16,7 @@ const phones: PageData = {
   color: '#fcdbc1',
   name: 'Mobile phones',
   navName: 'Phones',
-  imageUrl: '/categories/phones.png',
+  imageUrl: '/react_phone-catalog/categories/phones.png',
 };
 
 const tablets: PageData = {
@@ -26,7 +26,7 @@ const tablets: PageData = {
   color: '#8d8d92',
   name: 'Tablets',
   navName: 'Tablets',
-  imageUrl: '/categories/tablets_new.png',
+  imageUrl: '/react_phone-catalog/categories/tablets_new.png',
 };
 
 const accessories: PageData = {
@@ -36,7 +36,7 @@ const accessories: PageData = {
   color: '#973d5f',
   name: 'Accessories',
   navName: 'Accessories',
-  imageUrl: '/categories/access_new.png',
+  imageUrl: '/react_phone-catalog/categories/access_new.png',
 };
 
 const cart: PageData = {
