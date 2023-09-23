@@ -78,7 +78,7 @@ export const Slider: React.FC = () => {
                 <img
                   key={screenSize}
                   className={classNames('slider__main--photos', `slider__${screenSize}`)}
-                  src={`_new/img/banner-${img}`}
+                  src={`new/img/banner-${img}`}
                   alt={`banner-#${i + 1}`}
                   style={{
                     transform: `translateX(-${currIndex * getItemWidth(screenSize)}px)`,

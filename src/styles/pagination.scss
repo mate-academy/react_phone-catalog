@@ -75,7 +75,17 @@
     }
 
     &--span {
-      width: 32px;
+      @include onTablet {
+        width: 32px;
+      }
+
+      @include onDesktop {
+        width: 32px;
+      }
+
+      @include onDesktopXL {
+        width: 32px;
+      }
     }
 
     @include onMobile {

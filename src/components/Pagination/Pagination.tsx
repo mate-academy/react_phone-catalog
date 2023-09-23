@@ -76,7 +76,9 @@ export const Pagination: React.FC<Props> = ({
                 })}
                 onClick={() => handleSelectPage(i + 1)}
               >
-                <span className="pagination__num-link--span">{i + 1}</span>
+                <span className="pagination__num-link--span">
+                  {i + 1}
+                </span>
               </button>
             </li>
           );

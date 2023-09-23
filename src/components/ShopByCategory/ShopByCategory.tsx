@@ -46,7 +46,7 @@ export const ShopByCategory = () => {
             category__photoContainer--${item.img.slice(0, -4)}`}
               >
                 <img
-                  src={`_new/img/category-${item.img}`}
+                  src={`new/img/category-${item.img}`}
                   alt={`category-${item.img.slice(0, -4)}`}
                   className={`category__photo category__photo--${item.img.slice(0, -4)}`}
                 />

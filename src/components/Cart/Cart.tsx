@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 export const Cart = () => {
   const [message, setMessage] = useState(false);
@@ -30,13 +31,18 @@ export const Cart = () => {
 
               <div className="cart__image-block">
                 <img
-                  src={`../_new/${item.product.image}`}
+                  src={`../new/${item.product.image}`}
                   alt={item.product.name}
                   className="cart__image-block--img"
                 />
               </div>
 
-              <p className="cart__item-name">{item.product.name}</p>
+              <Link
+                to={`/${item.product.category}/${item.product.itemId}`}
+                className="cart__item-link"
+              >
+                <p className="cart__item-name">{item.product.name}</p>
+              </Link>
 
               <div className="cart__quantity">
                 <button
