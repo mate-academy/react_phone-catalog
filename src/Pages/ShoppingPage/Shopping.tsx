@@ -5,11 +5,11 @@ export const ShoppingPage = () => {
   return (
     <>
       <Navigation />
-      <div className="section">
+      <section className="section">
         <div className="container">
           <h1 className="title">Shopping page</h1>
         </div>
-      </div>
+      </section>
     </>
   );
 };

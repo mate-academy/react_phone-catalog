@@ -8,7 +8,7 @@ export const TabletsPage: React.FC = () => {
       <Navigation />
       <main>
 
-        <div className="tablets">
+        <section className="tablets">
           <div className="breadcrumbs">
             <Link
               to="/"
@@ -41,7 +41,7 @@ export const TabletsPage: React.FC = () => {
               Home page
             </Link>
           </div>
-        </div>
+        </section>
 
       </main>
     </>

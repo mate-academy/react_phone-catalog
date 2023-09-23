@@ -1,0 +1,50 @@
+@import "/src/style/main.scss";
+
+.container {
+  &__images {
+    display: flex;
+    height: 464px;
+    width: 624px;
+  }
+}
+
+.photos {
+  width: 80px;
+
+  &__buttons {
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    background: $gray-white;
+    border: 1px solid $gray-secondary;
+    margin-bottom: 16px;
+  }
+
+  &__sidePhoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.main {
+  margin: 0 64px 0 16px;
+  width: 464px;
+  height: 464px;
+  background: $gray-white;
+
+  &__img {
+    width: 464px;
+    height: 464px;
+
+    object-fit: contain;
+  }
+}

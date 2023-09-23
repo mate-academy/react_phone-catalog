@@ -5,28 +5,27 @@ import classNames from 'classnames';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Phone } from '../../Type/Phone';
 
-import '../../style/main.scss';
-import './sliderPhones.scss';
+import './likeAlso.scss';
 
 type Props = {
   phones: Phone[],
 };
 
-export const SliderPhones: React.FC<Props> = ({ phones }) => {
+export const LikeAlso: React.FC<Props> = ({ phones }) => {
   const hotPhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
 
   return (
     <div className="container--hot">
-      <div className="slider__phones">
-        <h1 className="slider__title">Hot prices</h1>
+      <div className="like__phones">
+        <h1 className="like__title">You may also like</h1>
 
         <div className="button__container">
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__left button__slider--left',
+              'button button__left button__like--left',
             )}
           // disabled={buttonBack === 0}
           />
@@ -34,7 +33,7 @@ export const SliderPhones: React.FC<Props> = ({ phones }) => {
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__right button__slider--right',
+              'button button__right button__like--right',
             )}
           // disabled={buttonNext === hotPhones.length}
           />
@@ -44,12 +43,12 @@ export const SliderPhones: React.FC<Props> = ({ phones }) => {
       <div className="product">
         <Swiper
           navigation={{
-            nextEl: '.button__slider--right',
-            prevEl: '.button__slider--left',
+            nextEl: '.button__like--right',
+            prevEl: '.button__like--left',
           }}
           slidesPerView={4}
           modules={[EffectFade, Navigation, Pagination]}
-          className="swiper__slider"
+          className="swiper__like"
         >
           {hotPhones.map(phone => (
             <SwiperSlide key={phone.id}>

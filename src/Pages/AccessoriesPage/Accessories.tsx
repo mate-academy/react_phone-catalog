@@ -10,7 +10,7 @@ export const AccessoriesPage = () => {
       <Navigation />
       <main>
 
-        <div className="accessories">
+        <section className="accessories">
           <div className="breadcrumbs">
             <Link
               to="/"
@@ -43,7 +43,7 @@ export const AccessoriesPage = () => {
               Home page
             </Link>
           </div>
-        </div>
+        </section>
 
       </main>
     </>

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import '../../style/main.scss';
 import './productDetails.scss';
 
 import { client } from '../../utils/fetchClient';
 import { Phone } from '../../Type/Phone';
 
 import {
-  SliderPhones,
+  LikeAlso,
   Navigation,
   ProductImages,
   ProductParams,
@@ -60,7 +59,16 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
           <section className="details__main">
             {images && <ProductImages images={images} />}
 
-            <ProductParams />
+            {phone && (
+              <ProductParams
+                colors={phone.colorsAvailable}
+                currentCapacity={phone.capacity}
+                nameId={phone.namespaceId}
+                currentColor={phone.color}
+                phone={phone}
+                capacities={phone.capacityAvailable}
+              />
+            )}
           </section>
 
           <section className="details__description">
@@ -178,9 +186,7 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
           </section>
 
           <section className="details__like">
-            <h1>You may also like</h1>
-
-            <SliderPhones phones={phones} />
+            <LikeAlso phones={phones} />
           </section>
         </div>
       </main>

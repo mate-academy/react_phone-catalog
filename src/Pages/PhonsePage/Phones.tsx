@@ -53,7 +53,7 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
       <Navigation isShower={isShower} />
       <main>
 
-        <div className="phones">
+        <section className="phones">
           <div className="breadcrumbs">
             <Link
               to="/"
@@ -70,13 +70,13 @@ export const PhonesPage: React.FC<Props> = ({ phones }) => {
             <p className="title__p">{`${phones.length} models`}</p>
           </div>
           <Dropdowns />
-        </div>
+        </section>
 
-        <div className="container--list phones__list">
+        <section className="container--list phones__list">
           {readyPhones.map(phone => (
             <ProductCard phone={phone} key={phone.id} />
           ))}
-        </div>
+        </section>
 
         {selectedValueNumberOptions !== 'All' && (
           <PhonesPaginations

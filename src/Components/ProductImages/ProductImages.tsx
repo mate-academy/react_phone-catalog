@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BASE_URL } from '../../utils/BASE_URL';
+import './productImages.scss';
 
 type Props = {
   images: string[];
@@ -10,25 +11,25 @@ export const ProductImages: React.FC<Props> = ({ images }) => {
 
   return (
     <>
-      <div className="details__main--photos">
+      <div className="photos">
         {images.map((image, index) => (
           <button
             type="button"
             key={image}
-            className="details__main--photos--buttons"
+            className="photos__buttons"
             onClick={() => setSelected(index)}
           >
             <img
               src={`${BASE_URL}/_new/${image}`}
               alt="side_photo"
-              className="details__main--photos--sidePhoto"
+              className="photos__sidePhoto"
             />
           </button>
         ))}
       </div>
-      <div className="details__main--photo">
+      <div className="main">
         <img
-          className="details__main--photo--img"
+          className="main__img"
           src={`${BASE_URL}/_new/${images[selected]}`}
           alt="main_photo"
         />

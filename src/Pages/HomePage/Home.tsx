@@ -3,7 +3,7 @@ import {
   Navigation,
   NewModels,
   Slider,
-  SliderPhones,
+  HotPrice,
 } from '../../Components';
 import { Phone } from '../../Type/Phone';
 
@@ -22,7 +22,7 @@ export const HomePage: React.FC<Props> = ({ phones }) => {
       <main>
         <Slider />
 
-        <SliderPhones phones={phones} />
+        <HotPrice phones={phones} />
 
         <Category phones={phones} />
 
