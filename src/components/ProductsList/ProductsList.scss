@@ -1,0 +1,32 @@
+@import "../../utils/utils";
+
+.ProductsList {
+  &__dropdowns {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 272px);
+    justify-content: space-between;
+    row-gap: 40px;
+
+    @include onTablet {
+      justify-content: center;
+      column-gap: 40px;
+    }
+
+    @include onPhone {
+      row-gap: 20px;
+      column-gap: 20px;
+    }
+  }
+
+  &__pagination {
+    width: max-content;
+    margin: 0 auto;
+  }
+}

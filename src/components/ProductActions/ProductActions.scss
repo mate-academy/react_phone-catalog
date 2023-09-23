@@ -1,0 +1,27 @@
+@import "../../utils/utils";
+
+.ProductActions {
+  display: flex;
+  justify-content: space-between;
+
+  &__cart-button {
+    @extend %button-with-text;
+    flex: 1;
+    margin-right: 8px;
+    height: 40px;
+
+    &--in-cart {
+      background-color: #fff;
+      color: $color-green;
+      border-color: $color-elements-light-gray;
+    }
+  }
+
+  &__fav-button {
+    @extend %heart-button;
+
+    &--in-favs {
+      background-image: url(../../icons/HeartFilled.svg);
+    }
+  }
+}

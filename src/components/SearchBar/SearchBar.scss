@@ -1,0 +1,74 @@
+@import "../../utils/utils";
+
+.SearchBar {
+  position: relative;
+
+  &__input {
+    height: 100%;
+    width: 326px;
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 0 0 26px;
+    color: $color-primary-dark-gray;
+    border: none;
+    box-sizing: border-box;
+    box-shadow: -1px 0 0 $color-elements-light-gray;
+    background-image: url(../../icons/Search.svg);
+    background-repeat: no-repeat;
+    background-position: right 27px center;
+    transition: $transition;
+
+    &:focus {
+      background-color: $color-hover-light-gray;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $color-icons-placeholders-gray;
+    }
+
+    &:hover {
+      background-color: $color-hover-light-gray;
+    }
+
+    &--has-text {
+      background-image: none;
+    }
+
+    @include onTablet {
+      width: 226px;
+      padding-left: 16px;
+    }
+
+    @include onPhone {
+      width: 130px;
+      padding: 0 14px 0 8px;
+      font-size: 10px;
+      background-image: none;
+    }
+  }
+
+  &__clear-button {
+    padding: 0;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
+    background-color: transparent;
+    background-image: url(../../icons/Close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+
+    @include onPhone {
+      height: 8px;
+      width: 8px;
+      background-size: 8px 8px;
+      right: 4px;
+    }
+  }
+}

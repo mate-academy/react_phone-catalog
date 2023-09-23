@@ -1,0 +1,36 @@
+@import "../../utils/utils";
+
+.ProductDetailsPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+
+    @include onPhone {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+}
+
+.ProductNotFound {
+  margin-top: 50px;
+  text-align: center;
+
+  &__title {
+    @extend %page-error-title;
+  }
+
+  &__paragpraph {
+    @extend %page-error-paragraph;
+  }
+
+  &__button {
+    @extend %error-button;
+  }
+}

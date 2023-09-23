@@ -1,0 +1,52 @@
+@import "../../utils/utils";
+
+.ProductsSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include onPhone {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    @extend %page-title;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.SliderButton {
+  @extend %arrow-button;
+  background-color: transparent;
+
+  &--next {
+    transform: rotate(90deg);
+  }
+
+  &--prev {
+    transform: rotate(-90deg);
+  }
+
+  &:disabled {
+    background-image: url(../../icons/arrow-gray-up.svg);
+    border-color: $color-elements-light-gray;
+    cursor: unset;
+  }
+}

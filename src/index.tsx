@@ -1,8 +1,14 @@
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 
-import App from './App';
+import { Root } from './Root';
+import { SavedItemsProvoder } from './store/SavedProductsContext';
 
 ReactDOM.render(
-  <App />,
+  <SavedItemsProvoder>
+    <HashRouter>
+      <Root />
+    </HashRouter>
+  </SavedItemsProvoder>,
   document.getElementById('root'),
 );

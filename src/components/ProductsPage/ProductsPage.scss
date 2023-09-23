@@ -1,0 +1,36 @@
+@import "../../utils/utils";
+
+.ProductsPage {
+  &__content {
+    padding: 24px 0 80px;
+
+    @include onPhone {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 40px;
+
+    @include onPhone {
+      margin-bottom: 20px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @extend %page-title;
+    margin: 0 0 8px;
+  }
+
+  &__error-title {
+    @extend %page-error-title;
+  }
+
+  &__amount {
+    @extend %product-amount;
+  }
+}

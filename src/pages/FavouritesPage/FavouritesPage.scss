@@ -1,0 +1,21 @@
+@import "../../utils/utils";
+
+.FavouritesPage {
+  &__content {
+    padding: 24px 0 80px;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %page-title;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    @extend %product-amount;
+    margin-bottom: 40px;
+  }
+}

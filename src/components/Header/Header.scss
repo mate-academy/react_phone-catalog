@@ -1,0 +1,70 @@
+@import "../../utils/utils";
+
+.Header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background-color: #fff;
+  box-shadow: 0 1px 0 0 $color-elements-light-gray;
+  z-index: 90;
+
+  @include onPhone {
+    height: 50px;
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+
+    @include onPhone {
+      padding-left: 14px;
+    }
+  }
+
+  &__left-side,
+  &__rigth-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__logo-container {
+    margin-right: 64px;
+
+    @include onTablet {
+      margin-right: 20px;
+    }
+
+    @include onPhone {
+      margin-right: 0;
+    }
+  }
+
+  &__nav-container {
+    @include onPhone {
+      display: none;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+  }
+
+  &__menu-button {
+    @extend %button;
+    display: none;
+    width: 32px;
+    height: 32px;
+    background-image: url(../../icons/menu.svg);
+    border: none;
+
+    @include onPhone {
+      display: block;
+      margin-right: 10px;
+    }
+  }
+}

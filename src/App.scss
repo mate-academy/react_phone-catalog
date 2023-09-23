@@ -1,1 +1,73 @@
-// not empty
+@import "./utils/colors";
+@import "./utils/vars";
+@import "./utils/mixins";
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont Regular"),
+    local("Mont-Regular"),
+    url("./fonts/Mont-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont SemiBold"),
+    local("Mont-SemiBold"),
+    url("./fonts/Mont-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont Bold"),
+    local("Mont-Bold"),
+    url("./fonts/Mont-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+  font-weight: normal;
+  box-sizing: border-box;
+  color: $color-primary-dark-gray;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1136px;
+  padding: 0 20px;
+  height: auto;
+
+  &--with-min-height {
+    min-height: calc(100vh - 64px - 96px);
+
+    @include onPhone {
+      min-height: calc(100vh - 50px - 56px);
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}

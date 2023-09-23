@@ -1,0 +1,17 @@
+@import "../../utils/utils";
+
+.BackButton {
+  @extend %button;
+  width: 50px;
+  height: max-content;
+  padding: 0;
+  text-align: end;
+  color: $color-secondary-gray;
+  background-image: url(../../icons/arrow-left.svg);
+  background-position: left center;
+  border: none;
+
+  &:hover {
+    color: $color-primary-dark-gray;
+  }
+}

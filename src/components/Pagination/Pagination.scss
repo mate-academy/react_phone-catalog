@@ -1,0 +1,59 @@
+@import "../../utils/utils";
+
+.Pagination {
+  display: flex;
+
+  & > * {
+    margin-right: 8px;
+  }
+
+  & > :first-child,
+  :nth-last-child(2) {
+    margin-right: 16px;
+  }
+
+  & > :last-child {
+    margin-right: 0;
+  }
+
+  &__button {
+    @extend %arrow-button;
+
+    &--prev {
+      transform: rotate(-90deg);
+    }
+
+    &--next {
+      transform: rotate(90deg);
+    }
+
+    @include onPhone {
+      margin-top: 6px;
+    }
+  }
+
+  &__page-button {
+    @extend %button;
+    width: 32px;
+    height: 32px;
+
+    &--active {
+      color: #fff;
+      background-color: $color-primary-dark-gray;
+      cursor: unset;
+    }
+  }
+
+  &__button,
+  &__page-button {
+    &:hover {
+      border-color: $color-primary-dark-gray;
+    }
+  }
+
+  &__button:disabled {
+    background-image: url(../../icons/arrow-gray-up.svg);
+    border-color: $color-elements-light-gray;
+    cursor: unset;
+  }
+}

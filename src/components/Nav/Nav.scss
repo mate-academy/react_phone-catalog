@@ -1,0 +1,28 @@
+@import "../../utils/utils";
+
+.Nav {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  @include onTablet {
+    gap: 18px;
+  }
+
+  @include onPhone {
+    flex-direction: column;
+  }
+}
+
+.NavButton {
+  @extend %navlink;
+  height: 64px;
+
+  &--selected {
+    color: $color-primary-dark-gray;
+
+    &::after {
+      @extend %underline;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../utils/utils";
+
+.NotFoundPage {
+  &__content {
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  &__title {
+    @extend %page-error-title;
+  }
+
+  &__subtitle {
+    @extend %page-error-subtitle;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+  }
+
+  &__paragpraph {
+    @extend %page-error-paragraph;
+  }
+
+  &__button {
+    @extend %error-button;
+  }
+}

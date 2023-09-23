@@ -1,0 +1,110 @@
+@import "../../utils/utils";
+
+.Dropdown {
+  width: 180px;
+  display: inline-block;
+  position: relative;
+
+  @include onPhone {
+    width: 130px;
+  }
+
+  &--small {
+    width: 128px;
+
+    @include onPhone {
+      width: 100px;
+    }
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color-secondary-gray;
+  }
+
+  &__button {
+    @extend %button;
+    width: 100%;
+    height: 40px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    background-image: url(../../icons/arrow-gray-down.svg);
+    background-position: right 16px center;
+
+    &--selected {
+      border-color: $color-primary-dark-gray;
+      background-image: url(../../icons/arrow-gray-up.svg);
+    }
+
+    &:hover {
+      border-color: $color-secondary-gray;
+    }
+  }
+
+  &__options-container {
+    box-sizing: border-box;
+    padding: 15px;
+    width: calc(100% + 30px);
+    position: absolute;
+    left: -15px;
+    overflow: hidden;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $color-elements-light-gray;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+
+    &-enter {
+      opacity: 0;
+      transform: translateY(-110%);
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: $transition;
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: translateY(-110%);
+      transition: $transition;
+    }
+  }
+
+  &__option {
+    color: $color-secondary-gray;
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      color: $color-primary-dark-gray;
+      background-color: $color-hover-light-gray;
+    }
+  }
+}

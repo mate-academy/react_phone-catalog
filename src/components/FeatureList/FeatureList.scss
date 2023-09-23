@@ -1,0 +1,29 @@
+@import "../../utils/utils";
+
+.FeatureList {
+  font-size: 12px;
+  font-weight: 600;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__feature-name {
+    color: $color-secondary-gray;
+  }
+
+  &__value {
+    color: $color-primary-dark-gray;
+    text-align: right;
+
+    @include onPhone {
+      max-width: 200px;
+    }
+  }
+}

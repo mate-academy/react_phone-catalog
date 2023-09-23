@@ -1,0 +1,19 @@
+@import "../../utils/utils";
+
+.HomePage {
+  &__section {
+    margin-bottom: 80px;
+
+    &:first-child {
+      margin: 40px auto 72px;
+
+      @include onPhone {
+        margin: 20px auto 48px;
+      }
+    }
+
+    @include onPhone {
+      margin-bottom: 40px;
+    }
+  }
+}
