@@ -25,4 +25,7 @@ Products catalog implemented according to [this design](https://www.figma.com/fi
 - Mate Academy API
 
 # Demo
-A live demo of the React Products Catalog App is available at [DEMO](https://kbekher.github.io/react_phone-catalog/) .
+A live demo of the React Products Catalog App is available at [DEMO](https://kbekher.github.io/react_phone-catalog/).
+
+# Preview
+<img align="center" alt="Phone Catalog preview" width="1000px" src="https://github.com/kbekher/react_phone-catalog/blob/develop/preview.png" />
