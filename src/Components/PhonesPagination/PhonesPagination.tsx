@@ -48,7 +48,7 @@ export const PhonesPaginations: React.FC<Props> = ({
     .fill(preperaLength).map((_, i) => i + 1);
 
   return (
-    <div className="pagination">
+    <>
       <button
         onClick={selectPrev}
         type="button"
@@ -75,6 +75,6 @@ export const PhonesPaginations: React.FC<Props> = ({
         onClick={selectNext}
         className="pagination__button pagination__button--right"
       />
-    </div>
+    </>
   );
 };

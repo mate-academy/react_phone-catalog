@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -8,7 +9,6 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) => classNames(
 );
 
 type Props = {
-  // eslint-disable-next-line react/require-default-props
   isShower?: boolean;
 };
 

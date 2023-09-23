@@ -67,9 +67,11 @@
       margin: auto 24px;
       align-items: center;
       justify-content: space-between;
+      border-left: 1px solid $color-shadow;
     }
 
     &--search {
+      margin-left: 24px;
       color: $gray-icons-placeholders;
       font-size: 14px;
       font-style: normal;
