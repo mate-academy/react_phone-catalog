@@ -1,0 +1,26 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.rights {
+
+  &__breadcrumbs {
+    margin-top: 15px;
+
+    @include onDesktop {
+      margin-top: 25px;
+    }
+  }
+
+  &__title {
+    margin-top: 20px;
+
+    @include onDesktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+  }
+
+}

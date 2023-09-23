@@ -1,0 +1,19 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.products {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 272px);
+  grid-row-gap: 40px;
+  justify-content: center;
+  grid-column-gap: 10px;
+
+  @include onTablet {
+    justify-content: space-between;
+  }
+
+  &__item {
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,195 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.cart {
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__back-link {
+    margin-top: 40px;
+  }
+
+  &__content {
+    margin-top: 24px;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: 67% 33%;
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    @include onDesktop {
+      margin-right: 16px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__product {
+    height: 128px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: $borderDefault;
+
+    &-cross {
+      margin: 0 10px;
+
+      @include onTablet {
+        margin: 0 24px;
+      }
+    }
+
+    &-image {
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+
+      @include onTablet {
+        width: 70px;
+        height: 70px;
+      }
+
+      @include onDesktop {
+        margin-right: 25px;
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    &-img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-name {
+      margin-right: 15px;
+      @include textBody;
+      color: $mainColor;
+
+      @include onTablet {
+        min-width: 200px;
+        margin-right: 25px;
+      }
+
+      @include onDesktop {
+        margin-right: 50px;
+
+        min-width: 295px;
+      }
+    }
+
+    &-counter {
+      margin-right: 15px;
+      display: flex;
+      flex-direction: column;
+
+      @include onTablet {
+        flex-direction: row;
+        margin-right: 25px;
+      }
+
+      @include onDesktop {
+        margin-right: 45px;
+      }
+    }
+
+    &-button {
+      width: 23px;
+      height: 23px;
+
+      @include onTablet {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &-count {
+      width: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include textBody;
+      color: #000;
+
+      @include onTablet {
+        width: 32px;
+      }
+    }
+
+    &-price {
+      min-width: 62px;
+      margin-right: 10px;
+      @include textH2;
+      color: $mainColor;
+
+      @include onTablet {
+        margin-right: 20px;
+      }
+
+      @include onDesktop {
+        margin-right: 40px;
+      }
+    }
+
+    &-transition {
+      &-exit {
+        opacity: 1;
+      }
+      &-exit-active {
+        opacity: 0;
+        transition: opacity $defaultTransitionDuration;
+      }
+    }
+
+  }
+
+  &__total {
+    height: max-content;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: $borderDefault;
+
+    &-price {
+      @include textH1;
+      color: $mainColor;
+    }
+
+    &-items {
+      width: 100%;
+      text-align: center;
+      @include textBody;
+      color: $secondaryColor;
+      padding-bottom: 24px;
+
+      border-bottom: $borderDefault;
+    }
+  }
+
+  &__checkout {
+    width: 100%;
+    height: 48px;
+    margin-top: 24px;
+    text-transform: none;
+    max-width: 320px;
+
+    @include onDesktop {
+      max-width: none;
+    }
+  }
+}

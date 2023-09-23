@@ -1,0 +1,14 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.notification {
+  &__error {
+    margin: 25px 0;
+    padding: 25px;
+    border: 2px solid $redColor;
+
+    color: $redColor;
+
+    @include textH3;
+  }
+}

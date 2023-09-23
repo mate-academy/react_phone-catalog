@@ -1,0 +1,19 @@
+@import "./fonts.scss";
+@import "./button.scss";
+@import "./page.scss";
+@import "./reset.scss";
+@import "./typography.scss";
+@import "./empty.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Mont-Regular, sans-serif;
+  overflow-x: hidden;
+}

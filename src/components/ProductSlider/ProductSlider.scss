@@ -1,0 +1,54 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.product-slider {
+  margin-top: 40px;
+
+  @include onDesktop {
+    margin-top: 80px;
+  }
+
+  &__top {
+    margin-bottom: 24px;
+
+    display: flex;
+    justify-content: space-between;
+
+    &-left {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    @include textH1;
+  }
+
+  &__nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__product {
+    margin: 0 auto;
+
+    @include onTablet {
+      margin-bottom: 30px;
+    }
+
+    @include onDesktop {
+      margin: 0;
+    }
+  }
+
+  &__transition {
+    &-enter {
+      transform: translateX(150%);
+    }
+
+    &-enter-done {
+      transform: translateX(0);
+      transition: transform $defaultTransitionDuration;
+    }
+  }
+}

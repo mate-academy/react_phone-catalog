@@ -1,0 +1,32 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.home {
+  &__slider {
+    margin: 40px auto 0;
+  }
+
+  &__hot {
+    margin: 30px auto 0;
+
+    @include onDesktop {
+      margin: 70px auto 0;
+    }
+  }
+
+  &__categories {
+    margin: 40px auto 0;
+
+    @include onDesktop {
+      margin: 80px auto 0;
+    }
+  }
+
+  &__new {
+    margin: 40px auto;
+
+    @include onDesktop {
+      margin: 80px auto;
+    }
+  }
+}

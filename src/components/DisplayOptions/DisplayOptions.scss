@@ -1,0 +1,89 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.display-options {
+  display: flex;
+  justify-content: center;
+
+  @include onTablet {
+    justify-content: start;
+  }
+
+  &__title {
+    color: $secondaryColor;
+    @include textSmall;
+    margin-bottom: 4px;
+  }
+
+  &__sort {
+    width: 145px;
+    margin-right: 15px;
+
+    @include onTablet {
+      width: 175px;
+    }
+  }
+
+  &__count {
+    width: 110px;
+
+    @include onTablet {
+      width: 125px;
+    }
+  }
+
+  &__react-select {
+    .select {
+      &__control {
+        border-radius: unset;
+        border: $borderIcon;
+        box-shadow: none;
+        color: $mainColor;
+
+        @include textButton;
+
+        transition: all $defaultTransitionDuration;
+
+        &--menu-is-open {
+          border-color: $mainColor;
+        }
+
+        &--is-focused {
+          border-color: $mainColor;
+          box-shadow: none;
+        }
+
+        &:hover {
+          border-color: $secondaryColor;
+        }
+      }
+
+      &__menu {
+        margin-top: 4px;
+        margin-bottom: 0;
+        padding: 8px 0;
+
+        border-radius: unset;
+        border: $borderDefault;
+        box-shadow: none;
+      }
+
+      &__option {
+        @include textButton;
+        color: $secondaryColor;
+
+        transition: all $defaultTransitionDuration;
+
+        &--is-selected {
+          background-color: white;
+          color: $mainColor;
+        }
+
+        &--is-focused {
+          background-color: $hoverColor;
+          color: $mainColor;
+        }
+      }
+    }
+  }
+}

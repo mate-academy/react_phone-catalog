@@ -1,0 +1,78 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.menu {
+  height: 350px;
+  z-index: 1;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  @include onTablet {
+    height: $headerHeight;
+  }
+
+  background-color: $whiteColor;
+  border-bottom: $borderDefault;
+
+  transform: translateX(100%);
+  transition: transform $defaultTransitionDuration;
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &--mobile {
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__top {
+    height: $headerHeight;
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: $borderDefault;
+  }
+
+  &__search {
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__icon {
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-left: $borderDefault;
+
+    @include headerAction;
+  }
+
+  &__nav {
+    &--tablet {
+      padding: 0 50px;
+      display: none;
+
+      @include onTablet {
+        display: block;
+      }
+
+      @include onDesktop {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      @include onTablet {
+        display: none;
+      }
+    }
+  }
+}

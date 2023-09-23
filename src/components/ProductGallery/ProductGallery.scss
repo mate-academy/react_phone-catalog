@@ -1,0 +1,90 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.gallery {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 16;
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @include onTablet {
+      flex-direction: column;
+      gap: 16;
+      justify-content: start;
+    }
+  }
+
+  &__thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    padding: 3px;
+
+    @include onTablet {
+      padding: 4px;
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+      padding: 5px;
+    }
+
+    border: $borderDefault;
+    transition: border-color $defaultTransitionDuration;
+
+    &:hover {
+      border-color: $iconsColor;
+    }
+
+    &--active {
+      border-color: $mainColor;
+    }
+  }
+
+  &__selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+
+    @include onTablet {
+      margin: 0;
+      width: 300px;
+      height: 300px;
+    }
+
+    @include onDesktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__transition {
+    &-enter {
+      opacity: 0.1;
+    }
+
+    &-enter-done {
+      opacity: 1;
+      transition: opacity $defaultTransitionDuration;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: cover;
+  }
+}

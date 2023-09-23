@@ -1,0 +1,297 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.product-page {
+  &__product-info {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 50px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__breadcrumbs {
+    margin-top: 10px;
+
+    @include onTablet {
+      margin-top: 15px;
+    }
+
+    @include onDesktop {
+      margin-top: 25px;
+    }
+  }
+
+  &__back-link {
+    margin: 20px 0 16px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__detailed-info {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: 0.55fr 0.45fr;
+    }
+  }
+
+  &__about {
+    @include onTablet {
+      margin-right: 35px;
+    }
+
+    @include onDesktop {
+      margin-right: 65px;
+    }
+  }
+
+  &__specs {
+
+    &-title {
+      @include textH2;
+      color: $mainColor;
+
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+
+      border-bottom: $borderDefault;
+
+      @include onTablet {
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+
+      @include onDesktop {
+        padding-bottom: 16px;
+        margin-bottom: 32px;
+      }
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+
+      @include textBody;
+    }
+
+    &-name {
+      color: $secondaryColor;
+    }
+
+    &-value {
+      color: $mainColor;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.product-info {
+  &__title {
+    @include textH1;
+    color: $mainColor;
+  }
+
+  &__content {
+    @include onTablet {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 0.55fr 0.45fr;
+    }
+  }
+
+  &__container {
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__gallery {
+    @include onTablet {
+      margin-right: 35px;
+    }
+
+    @include onDesktop {
+      margin-right: 65px;
+    }
+  }
+
+  &__actions {
+    width: 280px;
+    margin: 0 auto;
+
+    @include onTablet {
+      margin: 0;
+      width: 240px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+  }
+
+  &__picker {
+    margin: 20px auto 0;
+    padding-bottom: 15px;
+
+    @include onTablet {
+      margin: 0;
+      padding-bottom: 24px;
+    }
+
+    border-bottom: $borderDefault;
+
+    &:nth-child(n + 2) {
+      margin-top: 15px;
+
+      @include onTablet {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  &__prices {
+    margin-top: 32px;
+  }
+
+  &__price {
+    @include textH1;
+    color: $mainColor;
+    margin-right: 8px;
+
+    &--old {
+      color: $secondaryColor;
+      font-family: Mont-Regular, sans-serif;
+      font-size: 15px;
+      line-height: 20px;
+      text-decoration: line-through;
+
+      @include onTablet {
+        font-size: 22px;
+        line-height: 28px;
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 8px;
+
+    @include onTablet {
+      margin-top: 16px;
+    }
+
+    display: flex;
+    height: 48px;
+  }
+
+  &__cart {
+    flex-grow: 1;
+  }
+
+  &__fav {
+    margin-left: 8px;
+    width: 48px;
+  }
+
+  &__features {
+    margin: 16px 0;
+
+    @include onTablet {
+      margin: 25px 0;
+    }
+
+    @include onDesktop {
+      margin: 32px 0 0;
+    }
+  }
+
+  &__feature {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-name {
+      @include textSmall;
+      color: $secondaryColor;
+    }
+
+    &-value {
+      @include textSmall;
+      text-transform: uppercase;
+      color: $mainColor;
+    }
+  }
+
+  &__id-container {
+    display: none;
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+
+  &__id {
+    @include textSmall;
+    text-transform: uppercase;
+    color: $iconsColor;
+  }
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include textH2;
+    color: $mainColor;
+
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+
+    border-bottom: $borderDefault;
+
+    @include onTablet {
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__article {
+    margin-bottom: 20px;
+
+    @include onDesktop {
+      margin-bottom: 32px;
+    }
+
+    &-title {
+      margin-bottom: 10px;
+
+      @include textH3;
+      color: $mainColor;
+
+      @include onDesktop {
+        margin-bottom: 16px;
+      }
+    }
+
+    &-description {
+      @include textBody;
+      color: $secondaryColor;
+    }
+  }
+}

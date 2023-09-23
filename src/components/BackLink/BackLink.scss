@@ -1,0 +1,21 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.back-link {
+  display: flex;
+  align-items: center;
+
+  @include textSmall;
+  line-height: 12px;
+  color: $secondaryColor;
+
+  transition: color $defaultTransitionDuration;
+
+  &:hover {
+    color: $mainColor;
+  }
+
+  &-label {
+    margin: 2px 0 0 4px;
+  }
+}
