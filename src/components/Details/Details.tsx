@@ -56,7 +56,7 @@ export const Details: React.FC<Props> = ({
                   onClick={() => setCurrentImage(img)}
                 >
                   <img
-                    src={`../new/${img}`}
+                    src={`./new/${img}`}
                     alt={product.name}
                     className="details__photo--img"
                   />
@@ -66,7 +66,7 @@ export const Details: React.FC<Props> = ({
 
             <div className="details__mainPhoto">
               <img
-                src={`../new/${currentImage}`}
+                src={`./new/${currentImage}`}
                 alt={name}
                 className="details__mainPhoto--photo"
               />

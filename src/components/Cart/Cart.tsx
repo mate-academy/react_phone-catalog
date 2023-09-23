@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
-import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 export const Cart = () => {
   const [message, setMessage] = useState(false);
