@@ -33,7 +33,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
                 <img
                   className="gallery__img"
                   src={`./_new/${image}`}
-                  alt="Apple"
+                  alt="Thumbnail"
                 />
               </a>
             );
@@ -50,7 +50,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
           <img
             className="gallery__img"
             src={`./_new/${selectedImage}`}
-            alt="Apple"
+            alt="Main Product"
           />
         </CSSTransition>
       </TransitionGroup>
