@@ -9,6 +9,7 @@ a:link,
 a:visited {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 a:hover {
@@ -41,6 +42,7 @@ select {
   font-size: inherit;
   color: inherit;
   background-color: transparent;
+  cursor: pointer;
 }
 
 input::-ms-clear {
