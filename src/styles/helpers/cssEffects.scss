@@ -1,0 +1,21 @@
+.rainbow-text {
+  &:hover {
+    background-image: linear-gradient(
+      45deg, #f00, #ff8000, #ff0, #0f0, #00f, #8000ff, #f0f
+    );
+    background-size: 600% 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: rainbow 2s linear infinite;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}

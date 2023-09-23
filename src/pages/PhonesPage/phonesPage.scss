@@ -1,0 +1,11 @@
+.phonespage {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    color: $gray-secondary;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+}

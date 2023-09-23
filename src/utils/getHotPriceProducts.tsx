@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { getProducts } from './httpClient';
 
 export const getHotPriceProducts = async () => {

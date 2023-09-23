@@ -1,0 +1,19 @@
+.hot-prices {
+  padding-bottom: 80px;
+  
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__arrow-left,
+  &__arrow-right {
+    padding: 8px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+  }
+}

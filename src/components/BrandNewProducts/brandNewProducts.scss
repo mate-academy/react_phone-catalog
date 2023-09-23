@@ -1,0 +1,11 @@
+.brand-new-products {
+  padding-bottom: 80px;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__slider .product__fullPrice {
+    display: none;
+  }
+}

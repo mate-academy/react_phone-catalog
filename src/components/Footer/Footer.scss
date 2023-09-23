@@ -1,0 +1,61 @@
+.footer {
+  padding-top: 43px;
+  padding-bottom: 42px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__links {
+    display: flex;
+
+  }
+
+  &__link-github,
+  &__link-contacts,
+  &__link-rights {
+    display: block;
+    align-items: center;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $gray-primary;
+    }
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+  }
+
+  &__back {
+    display: flex;
+
+    &-btn {
+      cursor: pointer;
+      padding: 8px;
+      border: 1px solid $gray-icons-placeholders;
+
+      &-img {
+        display: flex;
+      }
+    }
+
+    &-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $gray-secondary;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 16px;
+    }
+  }
+}

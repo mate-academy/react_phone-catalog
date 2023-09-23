@@ -15,6 +15,7 @@
   }
 
   &__image {
+    display: flex;
     height: 100%;
     transition: all 0.3s ease-out;
 
@@ -28,6 +29,7 @@
     color: $gray-primary;
     line-height: 21px;
     margin-bottom: 8px;
+    min-height: 42px;
   }
 
   &__price {
@@ -101,12 +103,12 @@
   }
 
   &__buttons-cart {
-    display: block;
     width: 176px;
+    height: 40px;
     font-size: 14px;
     color: #fff;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 21px;
     padding: 10px 36px;
     background-color: $gray-primary;
@@ -115,10 +117,7 @@
     transition: all 0.3s ease-in-out;
 
     &:hover {
-      background-color: white;
-      border-color: $gray-secondary;
-      color: $gray-primary;
-      border-radius: 20px;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -126,14 +125,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 40px;
+    height: 40px;
     padding: 12px;
     border: 1px solid #b4bdc3;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 
     &:hover {
-      background-color: $gray-elements;
-      border-radius: 5px;
+      border: 1px solid $gray-primary;
     }
   }
 }

@@ -1,0 +1,20 @@
+.breadcrumbs {
+  display: flex;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  gap: 8px;
+
+  &__img,
+  &__arrow,
+  &__path {
+    display: flex;
+  }
+
+  &__path {
+    display: flex;
+    align-items: center;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

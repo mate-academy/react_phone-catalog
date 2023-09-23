@@ -1,0 +1,54 @@
+.shop-by-category {
+  padding-bottom: 155px;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__phones,
+  &__tablets,
+  &__accessories {
+    cursor: pointer;
+    width: 368px;
+    height: 368px;
+    transition: all 0.5s ease;
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+    &:hover {
+      scale: 0.9;
+    }
+  }
+
+  &__phones-img,
+  &__tablets-img,
+  &__accessories-img {
+    margin-bottom: 24px;
+    filter: brightness(70%);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      filter: brightness(100%);
+    }
+  }
+
+  &__phones-title,
+  &__tablets-title,
+  &__accessories-title {
+    color: $gray-primary;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 4px;
+  }
+
+  &__phones-description,
+  &__tablets-description,
+  &__accessories-description {
+    color: $gray-secondary;
+  }
+}

@@ -64,7 +64,6 @@ export const Slider = () => {
   return (
     <div className="slider">
       <div className="slider__wrapper">
-
         <div className="slider__content">
 
           <button
@@ -77,7 +76,6 @@ export const Slider = () => {
               src="new/img/icons/arrow-left.svg"
               alt="arrow-left"
             />
-
           </button>
 
           <div

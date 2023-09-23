@@ -43,12 +43,25 @@ export const Navigation = () => {
         </NavLink>
       </div>
 
-      {phonesPageIsActive && (
-        <div className="nav__search">
-          Search
-        </div>
-      )}
       <div className="nav__favorite">
+        {phonesPageIsActive && (
+          <div className="nav__search">
+            <input
+              className="nav__search-placeholder"
+              type="text"
+              placeholder="Search in phones..."
+              name=""
+              id=""
+            />
+
+            <img
+              className="nav__search-icon"
+              src="new/img/icons/search.svg"
+              alt="search-icon"
+            />
+          </div>
+        )}
+
         <NavLink
           className={({ isActive }) => cn('nav__favorites', {
             'nav__favorites--is-active': isActive,
