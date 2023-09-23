@@ -10,18 +10,9 @@ import { TopSlider } from './Slider';
 import { Loader } from './Loader';
 
 type Props = {
-  selectPhone: (iphoneId: string) => void,
-  selectedIphoneId: string | null,
-  selectPhoneToBuy: (iphoneId: string) => void,
-  selectedIphoneIdToBuy: string | null,
 };
 
-export const HomePage: React.FC<Props> = ({
-  selectPhone,
-  selectedIphoneId,
-  selectPhoneToBuy,
-  selectedIphoneIdToBuy,
-}) => {
+export const HomePage: React.FC<Props> = () => {
   const [newIphones, setNewIphones] = useState<Iphone[]>([]);
   const [hotPricedIphones, setHotPricedIphones] = useState<Iphone[]>([]);
   const iphonesPerPage = 4;
@@ -211,10 +202,6 @@ export const HomePage: React.FC<Props> = ({
                 >
                   <ShopCard
                     iphone={iphone}
-                    selectPhone={selectPhone}
-                    selectedIphoneId={selectedIphoneId}
-                    selectPhoneToBuy={selectPhoneToBuy}
-                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                   />
 
                 </div>
@@ -342,10 +329,6 @@ export const HomePage: React.FC<Props> = ({
                   <ShopCard
                     key={iphone.id}
                     iphone={iphone}
-                    selectPhone={selectPhone}
-                    selectedIphoneId={selectedIphoneId}
-                    selectPhoneToBuy={selectPhoneToBuy}
-                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                   />
 
                 </div>

@@ -548,10 +548,6 @@ export const PhoneDescription: React.FC<Props> = ({
                   >
                     <ShopCard
                       iphone={iphone}
-                      selectPhone={selectPhone}
-                      selectedIphoneId={selectedIphoneId}
-                      selectPhoneToBuy={selectPhoneToBuy}
-                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                       iphoneTitleRef={scrollToPhoneDescription}
                     />
                   </div>

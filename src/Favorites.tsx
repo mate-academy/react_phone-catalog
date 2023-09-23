@@ -1,31 +1,15 @@
+/* eslint-disable no-empty-pattern */
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { Iphone } from './types/Iphone';
 import { ShopCard } from './ShopCard';
 import { NotFoundItems } from './NotFound';
+import { useAppSelector } from './utils/hooks';
 
-type Props = {
-  favorites: Iphone[],
-  selectPhoneToBuy: (iphoneId: string) => void,
-  selectedIphoneIdToBuy: string | null,
-  selectPhone: (iphoneId: string) => void,
-  selectedIphoneId: string | null,
-};
-
-export const Favorites: React.FC<Props> = ({
-  favorites,
-  selectPhoneToBuy,
-  selectedIphoneIdToBuy,
-  selectPhone,
-  selectedIphoneId,
-}) => {
-  useEffect(() => {
-    localStorage.setItem('favoritesToBuy', JSON.stringify(favorites));
-  }, [favorites]);
+export const Favorites = () => {
+  const listOfFavorites = useAppSelector(state => state.favorite.list);
 
   return (
-    favorites.length > 0
+    listOfFavorites.length > 0
       ? (
         <div className="block">
           <div className="filter__nav">
@@ -90,7 +74,7 @@ export const Favorites: React.FC<Props> = ({
                 href="#all"
                 className="page__link"
               >
-                {favorites.length}
+                {listOfFavorites.length}
                 {' '}
                 items
 
@@ -101,7 +85,7 @@ export const Favorites: React.FC<Props> = ({
 
           <div className="shop__catalog shop__catalog--favorites grid grid--tablet grid--desktop">
 
-            {favorites.map((iphone, index) => {
+            {listOfFavorites.map((iphone, index) => {
               const classNumberMobile = index % 2;
               const classNumberTablet = index % 3;
               const classNumberDesktop = index % 4;
@@ -124,10 +108,6 @@ export const Favorites: React.FC<Props> = ({
                 >
                   <ShopCard
                     iphone={iphone}
-                    selectPhone={selectPhone}
-                    selectedIphoneId={selectedIphoneId}
-                    selectPhoneToBuy={selectPhoneToBuy}
-                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                   />
 
                 </div>

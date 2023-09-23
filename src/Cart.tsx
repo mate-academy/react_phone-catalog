@@ -1,21 +1,18 @@
 /* eslint-disable operator-assignment */
 /* eslint-disable no-plusplus */
 /* eslint-disable max-len */
-import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Iphone } from './types/Iphone';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { NotFoundItems } from './NotFound';
+import { useAppSelector } from './utils/hooks';
+import { removeItem } from './redux/cartReducer';
 
-type Props = {
-  phonesToBuy: Iphone[],
-  removeIphone: (iphoneId: string) => void,
-};
+export const Cart = () => {
+  const { items } = useAppSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-export const Basket: React.FC<Props> = ({
-  phonesToBuy,
-  removeIphone,
-}) => {
-  const sum = phonesToBuy.reduce((prev, current) => prev + current.price, 0);
+  const sum = items.reduce((prev, current) => prev + current.price, 0);
 
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
@@ -23,15 +20,15 @@ export const Basket: React.FC<Props> = ({
   const [total, setTotal] = useState(initialTotal);
 
   const savedCounts = localStorage.getItem('countsToSave');
-  const initialCounts = savedCounts ? JSON.parse(savedCounts) : phonesToBuy.map(() => 1);
+  const initialCounts = savedCounts ? JSON.parse(savedCounts) : items.map(() => 1);
   const [counts, setCounts] = useState(initialCounts);
   const [totalForAllItems, setTotalForAllItems] = useState(total);
 
   const calculateTotalForAllItems = () => {
     let totalToBasket = 0;
 
-    for (let i = 0; i < phonesToBuy.length; i++) {
-      totalToBasket += phonesToBuy[i].price * counts[i];
+    for (let i = 0; i < items.length; i++) {
+      totalToBasket += items[i].price * counts[i];
     }
 
     return totalToBasket;
@@ -48,10 +45,10 @@ export const Basket: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    localStorage.setItem('phonesToBuy', JSON.stringify(phonesToBuy));
+    localStorage.setItem('phonesToBuy', JSON.stringify(items));
     localStorage.setItem('sumToSave', sum.toString());
-    localStorage.setItem('totalForAllItems', totalForAllItems.toString()); // Сохраняем общую сумму
-  }, [phonesToBuy, totalForAllItems]);
+    localStorage.setItem('totalForAllItems', totalForAllItems.toString());
+  }, [items, totalForAllItems]);
 
   useEffect(() => {
     localStorage.setItem('countsToSave', JSON.stringify(counts));
@@ -62,7 +59,7 @@ export const Basket: React.FC<Props> = ({
       const newCounts = [...prevCounts];
 
       newCounts[index] = newCounts[index] + 1;
-      const selectedPhone = phonesToBuy[index];
+      const selectedPhone = items[index];
 
       const newTotal = total + selectedPhone.price;
 
@@ -79,11 +76,11 @@ export const Basket: React.FC<Props> = ({
 
       if (newCounts[index] > 1) {
         newCounts[index] = newCounts[index] - 1;
-        const selectedPhone = phonesToBuy[index];
+        const selectedPhone = items[index];
         const newTotal = total - selectedPhone.price;
 
         setTotal(newTotal);
-        setTotalForAllItems(totalForAllItems - selectedPhone.price); // Обновляем общую сумму
+        setTotalForAllItems(totalForAllItems - selectedPhone.price);
       }
 
       return newCounts;
@@ -91,7 +88,7 @@ export const Basket: React.FC<Props> = ({
   };
 
   return (
-    phonesToBuy.length > 0 ? (
+    items.length > 0 ? (
       <div className="basket">
         <div className="filter__nav">
           <div className="filter__nav--1-item">
@@ -107,14 +104,14 @@ export const Basket: React.FC<Props> = ({
         </div>
         <div className="basket__container">
           <div className="basket__items-container">
-            {phonesToBuy.map((phone, index) => {
+            {items.map((phone, index) => {
               return (
                 <div className="basket__item">
                   <div className="basket__item--first-row">
                     <button
                       type="button"
                       className="basket__item-button--cres"
-                      onClick={() => removeIphone(phone.id)}
+                      onClick={() => (dispatch(removeItem(phone)))}
                     >
                       <svg
                         width="16"
@@ -226,3 +223,5 @@ export const Basket: React.FC<Props> = ({
       )
   );
 };
+
+export default Cart;

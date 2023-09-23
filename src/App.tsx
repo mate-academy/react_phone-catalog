@@ -12,10 +12,10 @@ import { PhonesPage } from './PhonesPage';
 import { HomePage } from './HomePage';
 import { NotImplemented } from './PageNotImplemented';
 import { Favorites } from './Favorites';
-import { Basket } from './Basket';
 import { PhoneDescription } from './PhoneDescription';
 import { getAll } from './api/iphones';
 import { MenuMobile } from './MenuMobile';
+import { Cart } from './Cart';
 
 const App = () => {
   const [iphones, setIphones] = useState<Iphone[]>([]);
@@ -49,10 +49,6 @@ const App = () => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
     localStorage.setItem('iphonesToBuy', JSON.stringify(iphonesToBuy));
   }, [favorites, iphonesToBuy]);
-
-  const handleRemoveIphone = (iphoneId: string) => {
-    setIphonesToBuy(iphonesToBuy.filter(iphone => iphoneId !== iphone.id));
-  };
 
   const handleSetInputText = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIphoneTitle(event.target.value);
@@ -126,8 +122,6 @@ const App = () => {
           <Header
             inputText={iphoneTitle}
             setInputText={handleSetInputText}
-            favoritesCount={favorites.length}
-            basketCount={iphonesToBuy.length}
           />
           <main className="page">
             <div className="container">
@@ -136,12 +130,7 @@ const App = () => {
                 <Route
                   path="/"
                   element={(
-                    <HomePage
-                      selectPhone={handleSelectPhone}
-                      selectedIphoneId={selectedIphoneId}
-                      selectPhoneToBuy={handleSelectPhoneToBuy}
-                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                    />
+                    <HomePage />
                   )}
                 />
 
@@ -150,10 +139,6 @@ const App = () => {
                   path="phones"
                   element={(
                     <PhonesPage
-                      selectedIphoneId={selectedIphoneId}
-                      selectPhone={handleSelectPhone}
-                      selectPhoneToBuy={handleSelectPhoneToBuy}
-                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                       iphoneTitle={iphoneTitle}
                     />
                   )}
@@ -171,23 +156,14 @@ const App = () => {
                 <Route
                   path="liked"
                   element={(
-                    <Favorites
-                      favorites={favorites}
-                      selectedIphoneIdToBuy={selectedIphoneIdToBuy}
-                      selectPhoneToBuy={handleSelectPhoneToBuy}
-                      selectedIphoneId={selectedIphoneId}
-                      selectPhone={handleSelectPhone}
-                    />
+                    <Favorites />
                   )}
                 />
 
                 <Route
                   path="basket"
                   element={(
-                    <Basket
-                      phonesToBuy={iphonesToBuy}
-                      removeIphone={handleRemoveIphone}
-                    />
+                    <Cart />
                   )}
                 />
 
@@ -196,10 +172,6 @@ const App = () => {
                     index
                     element={(
                       <PhonesPage
-                        selectedIphoneId={selectedIphoneId}
-                        selectPhone={handleSelectPhone}
-                        selectPhoneToBuy={handleSelectPhoneToBuy}
-                        selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                         iphoneTitle={iphoneTitle}
                       />
                     )}

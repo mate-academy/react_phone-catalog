@@ -9,18 +9,10 @@ import { Pagination } from './Pagination';
 import { Loader } from './Loader';
 
 type Props = {
-  selectPhone: (iphoneId: string) => void,
-  selectedIphoneId: string | null,
-  selectPhoneToBuy: (iphoneId: string) => void,
-  selectedIphoneIdToBuy: string | null,
   iphoneTitle: string,
 };
 
 export const PhonesPage: React.FC<Props> = ({
-  selectPhone,
-  selectedIphoneId,
-  selectPhoneToBuy,
-  selectedIphoneIdToBuy,
   iphoneTitle,
 }) => {
   const [iphones, setIphones] = useState<Iphone[]>([]);
@@ -216,10 +208,6 @@ export const PhonesPage: React.FC<Props> = ({
                   <ShopCard
                     key={iphone.id}
                     iphone={iphone}
-                    selectPhone={selectPhone}
-                    selectedIphoneId={selectedIphoneId}
-                    selectPhoneToBuy={selectPhoneToBuy}
-                    selectedIphoneIdToBuy={selectedIphoneIdToBuy}
                   />
 
                 </div>

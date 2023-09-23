@@ -2,25 +2,28 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAppSelector } from './utils/hooks';
 
 type Props = {
   inputText: string,
   setInputText: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  favoritesCount: number,
-  basketCount: number,
 };
 
 export const Header: React.FC<Props> = ({
   inputText,
   setInputText,
-  favoritesCount,
-  basketCount,
 }) => {
   const [searchVisible, setSearchVisible] = useState(false);
   const [isIconLikeHidden, setIsIconLikeHiden] = useState(false);
   const [isIconCartHidden, setIsIconCartHiden] = useState(false);
 
   const location = useLocation();
+
+  const { items } = useAppSelector((state) => state.cart);
+  const { list } = useAppSelector((state) => state.favorite);
+
+  const basketCount = items.length;
+  const favoritesCount = list.length;
 
   useEffect(() => {
     const currentPath = location.pathname;
