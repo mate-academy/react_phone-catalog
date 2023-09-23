@@ -1,8 +1,10 @@
 @import "../../styles/utils/variables";
 
 .ProductCard {
-  display: block;
+  display: flex;
+  flex-direction: column;
   max-width: 272px;
+  margin-right: 16px;
 
   border: 1px solid $elementsGray;
 
@@ -13,6 +15,7 @@
   }
 
   &__image-wrapper {
+    flex-grow: 1;
     padding: 32px 32px 0;
   }
 

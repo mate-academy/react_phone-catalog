@@ -26,6 +26,36 @@
 
     border: 1px solid $iconsGray;
     background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: border-color $duration;
+
+    &:hover {
+      border-color: $primeryGray;
+      cursor: pointer;
+    }
+
+    &:disabled {
+      border-color: $elementsGray;
+      cursor: unset;
+    }
+
+    &--previous {
+      background-image: url(../../img/icons/corner-previous.svg);
+
+      &:disabled {
+        background-image: url(../../img/icons/corner-previous-disabled.svg);
+      }
+    }
+
+    &--next {
+      background-image: url(../../img/icons/corner-next.svg);
+
+      &:disabled {
+        background-image: url(../../img/icons/corner-next-disabled.svg);
+      }
+    }
   }
 
   &__slides-wrapper {
@@ -34,6 +64,7 @@
 
   &__slides {
     display: flex;
-    column-gap: 16px;
+
+    transition: transform $duration;
   }
 }

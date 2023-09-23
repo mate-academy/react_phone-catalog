@@ -15,9 +15,14 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const discountPrice = (product.price / 100) * (100 - product.discount);
+  const { price, discount } = product;
+  const discountPrice = price * ((100 - discount) / 100);
 
   const normalizePropertyValue = (name: PropertyNames) => {
+    if (!product[name]) {
+      return '-';
+    }
+
     if (name === PropertyNames.Screen) {
       return `${product[name].slice(0, -6)}"`;
     }
@@ -56,10 +61,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             {discountPrice}
           </span>
 
-          <span className="ProductCard__total-price">
-            &#36;
-            {product.price}
-          </span>
+          {discount > 0 && (
+            <span className="ProductCard__total-price">
+              &#36;
+              {price}
+            </span>
+          )}
         </div>
 
         <ul className="ProductCard__properties">

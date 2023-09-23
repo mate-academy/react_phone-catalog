@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 
@@ -9,6 +10,38 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ sliderTitle, products }) => {
+  const [offset, setOffset] = useState(0);
+
+  const FRAME_PRODUCTS_COUNT = 4;
+  const SCROLL_PRODUCTS_COUNT = 2;
+
+  const oneOffsetStep = 100 / products.length;
+  const offsetStep = oneOffsetStep * SCROLL_PRODUCTS_COUNT;
+  const maxOffset = 100 - (oneOffsetStep * FRAME_PRODUCTS_COUNT);
+  const isFirstProduct = offset === 0;
+  const isLastProduct = offset === maxOffset;
+
+  const slidesStyle = {
+    width: `${(100 / FRAME_PRODUCTS_COUNT) * products.length}%`,
+    transform: `translateX(-${offset}%)`,
+  };
+
+  const handleNextClick = () => {
+    setOffset(prev => {
+      return prev + offsetStep > maxOffset
+        ? maxOffset
+        : prev + offsetStep;
+    });
+  };
+
+  const handlePreviousClick = () => {
+    setOffset(prev => {
+      return prev - offsetStep < 0
+        ? 0
+        : prev - offsetStep;
+    });
+  };
+
   return (
     <div className="ProductsSlider">
       <div className="ProductsSlider__title-wrapper">
@@ -19,20 +52,24 @@ export const ProductsSlider: React.FC<Props> = ({ sliderTitle, products }) => {
             type="button"
             aria-label="Previous"
             className="ProductsSlider__button ProductsSlider__button--previous"
+            onClick={handlePreviousClick}
+            disabled={isFirstProduct}
           />
 
           <button
             type="button"
             aria-label="Next"
             className="ProductsSlider__button ProductsSlider__button--next"
+            onClick={handleNextClick}
+            disabled={isLastProduct}
           />
         </div>
       </div>
 
       <div className="ProductsSlider__slides-wrapper">
-        <div className="ProductsSlider__slides">
+        <div className="ProductsSlider__slides" style={slidesStyle}>
           {products.map(product => (
-            <ProductCard product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>
