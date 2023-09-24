@@ -14,6 +14,8 @@ import { FavoritePhones } from './components/favoritesPhones/FavoritePhones';
 import { Basket } from './components/basket/Basket';
 import { Info } from './components/info/Info';
 import { PhoneDetails } from './components/phoneDetails/PhoneDetails';
+import { Menu } from './components/menu/Menu';
+import { Rigth } from './components/rights/Right';
 
 const App = () => {
   return (
@@ -30,7 +32,9 @@ const App = () => {
               <Route path="basket" element={<Basket />} />
               <Route path="tablets" element={<Info />} />
               <Route path="accessoiries" element={<Info />} />
-              <Route path="phoneId" element={<PhoneDetails />} />
+              <Route path="/:phoneId" element={<PhoneDetails />} />
+              <Route path="menu" element={<Menu />} />
+              <Route path="right" element={<Rigth />} />
             </Routes>
           </main>
           <Footer />

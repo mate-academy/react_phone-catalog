@@ -14,7 +14,7 @@ export const HomeTab = () => {
     fetch('api/products.json')
       .then(response => response.json())
       .then(data => setPhones(data));
-  }, []);
+  }, [setPhones]);
 
   return (
     <div className="container">

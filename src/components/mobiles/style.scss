@@ -40,6 +40,12 @@
     line-height: normal;
     letter-spacing: -0.32px;
 
+    @media (max-width: 1300px) {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
     &-description {
       margin-left: 152px;
       margin-top: 0;
@@ -50,6 +56,12 @@
       font-style: normal;
       font-weight: 500;
       line-height: 21px;
+
+      @media (max-width: 1300px) {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+      }
     }
   }
   &__home {
@@ -83,6 +95,7 @@
     position: relative;
     margin-left: 152px;
     margin-bottom: 24px;
+    max-width: 1440px;
     display: flex;
     gap: 16px;
     cursor: pointer;
@@ -116,6 +129,19 @@
         color: var(--gray-primary, #313237);
       }
     }
+
+    @media(min-width: 350px) and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    @media(min-width: 600px) and (max-width: 1300px) {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
   }
 
   &__pages {
@@ -123,10 +149,16 @@
     margin-bottom: 80px;
     display: flex;
     justify-content: center;
+    max-width: 1440px;
     gap: 16px;
 
-    @media (max-width: 700px) {
-      margin: 40px auto;
+    @media(min-width: 350px) and (max-width: 600px) {
+      display: flex;
+      justify-content: center;
+    }
+    @media(min-width: 600px) and (max-width: 1300px) {
+      display: flex;
+      justify-content: center;
     }
 
     &-number.is-active {

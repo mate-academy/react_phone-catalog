@@ -5,8 +5,15 @@
 
   &__up {
     display: flex;
+    max-width: 1440px;
     margin: 40px 0 8px 152px;
     align-items: center;
+
+    @media (max-width: 1100px) {
+      margin-top: 40px;
+      margin-left: 40px;
+      width: max-content;
+    }
 
     &-image {
       width: 16px;
@@ -26,6 +33,7 @@
 
   &__title {
     margin-left: 152px;
+    max-width: 1440px;
     color: var(--gray-primary, #313237);
     font-family: Mont, sans-serif;
     font-size: 32px;
@@ -33,6 +41,12 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
+
+    @media (max-width: 1100px) {
+      margin: 0 auto;
+      margin-left: 40px;
+      width: max-content;
+    }
   }
 
   &__content {
@@ -55,12 +69,19 @@
       height: 16px;
       width: 16px;
       cursor: pointer;
+
+      @media (max-width: 1100px) {
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+      }
     }
 
     &-image {
       height: 66px;
       width: 66px;
       background: lightgray 50% / cover no-repeat;
+      cursor: pointer;
     }
 
     &-price {
@@ -71,6 +92,11 @@
       font-style: normal;
       font-weight: 700;
       line-height: 140%;
+
+      @media (max-width: 1100px) {
+        margin: 0 auto;
+        width: 100%;
+      }
     }
 
     &-name {
@@ -81,6 +107,11 @@
       font-style: normal;
       font-weight: 500;
       line-height: 21px;
+
+      @media (max-width: 1100px) {
+        margin: 0 auto;
+        width: 100%;
+      }
     }
 
     &-buttons {
@@ -89,10 +120,18 @@
       align-items: center;
       gap: 13px;
       cursor: pointer;
+
+      @media (max-width: 1100px) {
+        margin: 0 auto;
+        width: 100%;
+      }
     }
 
-    @media (max-width: 1300px) {
+    @media (max-width: 1100px) {
+      display: flex;
+      flex-direction: row;
       margin: 0 auto;
+      width: 100%;
     }
   }
 
@@ -104,6 +143,12 @@
     height: 32px;
     border: 1px solid var(--gray-elements, #e2e6e9);
     background: none;
+    cursor: pointer;
+
+    @media (max-width: 1100px) {
+      margin: 0 auto;
+      width: 100%;
+    }
   }
   .result {
     color: #000;
@@ -113,6 +158,11 @@
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+
+    @media (max-width: 1100px) {
+      margin: 0 auto;
+      width: 100%;
+    }
   }
 
   &__total {
@@ -123,12 +173,12 @@
     height: 206px;
     border: 1px solid var(--gray-elements, #e2e6e9);
 
-    @media (max-width: 1300px) {
+    @media (max-width: 1100px) {
       margin: 16px auto;
     }
 
     @media (max-width: 800px) {
-      margin: 16px 195px;
+      margin: 16px auto;
     }
 
     &-price {
@@ -182,10 +232,12 @@
 
 .box {
   display: flex;
+  max-width: 752px;
+  align-items: flex-start;
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1100px) {
     display: block;
-    margin: 0 auto;
+    width: 100%;
   }
 }
 

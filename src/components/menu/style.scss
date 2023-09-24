@@ -1,0 +1,21 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-left: 24px;
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+}

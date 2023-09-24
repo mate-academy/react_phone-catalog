@@ -1,28 +1,51 @@
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 export const Footer = () => {
+  const handleScrollToTop = () => {
+    const topElement = document.getElementById('top');
+
+    if (topElement) {
+      topElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer__items">
-        <a className="footer__logo" href="/">
+        <Link className="footer__logo" to="/">
           <img src="./img/icons/Logo.svg" alt="logo" />
-        </a>
+        </Link>
 
         <nav className="footer__content-mid">
-          <a className="footer__content-mid-link" href="/">Github</a>
-          <a className="footer__content-mid-link" href="/">Contacts</a>
-          <a className="footer__content-mid-link" href="/">rights</a>
+          <Link
+            className="footer__content-mid-link"
+            to="https:/github.com/zipic"
+          >
+            Github
+          </Link>
+          <a
+            className="footer__content-mid-link"
+            href="tel:+38 093 116 27 88"
+          >
+            Contacts
+          </a>
+          <Link className="footer__content-mid-link" to="/right">rights</Link>
         </nav>
 
         <nav className="footer__content-right">
           <p className="footer__content-right-text">Back to top</p>
-          <a className="footer__up" href="/">
+          <button
+            type="button"
+            className="footer__up"
+            onClick={handleScrollToTop}
+          >
             <img
               className="footer__up-back"
               src="./img/icons/chevron.png"
               alt="up"
             />
-          </a>
+          </button>
         </nav>
       </div>
     </footer>

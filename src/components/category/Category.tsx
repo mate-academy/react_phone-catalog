@@ -14,7 +14,7 @@ export const Category = () => {
             alt="phones"
           />
           <p className="category__products-name">Mobile phones</p>
-          <p className="category__products-count">95 models</p>
+          <p className="category__products-count">71 models</p>
         </div>
         <div className="category__products-tablets">
           <img
@@ -23,7 +23,7 @@ export const Category = () => {
             alt="tablets"
           />
           <p className="category__products-name">Tablets</p>
-          <p className="category__products-count">24 models</p>
+          <p className="category__products-count">0 models</p>
         </div>
         <div className="category__products-accessories">
           <img
@@ -32,7 +32,7 @@ export const Category = () => {
             alt="accessories"
           />
           <p className="category__products-name">Accessories</p>
-          <p className="category__products-count">100 models</p>
+          <p className="category__products-count">0 models</p>
         </div>
       </div>
     </div>

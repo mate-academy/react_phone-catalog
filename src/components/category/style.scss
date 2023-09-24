@@ -12,16 +12,25 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
+
+    @media (max-width: 1100px) {
+      margin: 80px auto;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__products {
     display: grid;
+    justify-content: center;
     gap: 16px;
     margin-inline: 152px;
     grid-template-columns: repeat(3, 368px);
 
     @media(max-width: 1100px) {
       grid-template-columns: repeat(2, 368px);
+      width: 100%;
+      margin: 0 auto;
     }
 
     @media(max-width: 815px) {
@@ -55,33 +64,19 @@
       width: 368px;
       height: 368px;
       background: #fcdbc1;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
     }
 
     &-tablets {
       width: 368px;
       height: 368px;
       background: #8d8d92;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.05);
-      }
     }
 
     &-accessories {
       width: 368px;
       height: 368px;
       background: #973d5f;
-      transition: transform 0.3s ease;
 
-      &:hover {
-        transform: scale(1.05);
-      }
     }
   }
 }

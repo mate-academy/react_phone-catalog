@@ -12,7 +12,7 @@ type Props = {
 };
 
 const sortTypes = ['price', 'year'];
-const countForPage = [8, 16, 32];
+const countForPage = [12, 16, 32];
 
 export const Mobiles: React.FC<Props> = ({
   phones,

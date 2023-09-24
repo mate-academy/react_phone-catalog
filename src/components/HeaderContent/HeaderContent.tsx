@@ -9,8 +9,11 @@ export const HeaderContent = () => {
     inputValue,
     handleSearch,
     favoritePhones,
-    basketPhones,
+    basketItems,
   } = useHeaderContext();
+
+  const totalItemCount = basketItems
+    .reduce((total, item) => total + item.count, 0);
 
   const searhInput = (event:React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,10 +21,10 @@ export const HeaderContent = () => {
 
   return (
     <header className="header">
-      <nav className="header__content-left">
-        <a className="header-logo" href="/">
+      <nav id="top" className="header__content-left">
+        <Link className="header-logo" to="/">
           <img src="./img/icons/Logo.svg" alt="logo" />
-        </a>
+        </Link>
 
         <Link className="header__content-left-link" to="/home">home</Link>
         <Link className="header__content-left-link" to="/phones">phones</Link>
@@ -38,6 +41,7 @@ export const HeaderContent = () => {
           accessories
         </Link>
       </nav>
+
       <nav className="header__content-right">
         {isPhoneTab && (
           <form onSubmit={searhInput} className="searh-input">
@@ -72,16 +76,21 @@ export const HeaderContent = () => {
           to="/basket"
           className="basket"
         >
-          {basketPhones.length > 0 && (
+          {basketItems.length > 0 && (
             <div
               className="circle"
             >
-              { basketPhones.length}
+              {totalItemCount}
             </div>
           )}
           <img className="image" src="./img/icons/Group.svg" alt="basket" />
         </Link>
       </nav>
+      <div className="header__content-menu">
+        <Link to="/menu" className="navigation">
+          <img className="image" src="./img/icons/menu.svg" alt="menu" />
+        </Link>
+      </div>
     </header>
   );
 };

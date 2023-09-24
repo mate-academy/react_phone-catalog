@@ -4,6 +4,11 @@
   align-items: center;
   max-width: 1440px;
   margin: 0 auto;
+
+  @media(max-width: 1100px) {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .title__price {
@@ -16,12 +21,20 @@
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.32px;
+
+  @media(max-width: 1100px) {
+    margin: 52px auto;
+  }
 }
 
 .title__buttons {
   display: flex;
   margin-right: 152px;
   gap: 16px;
+
+  @media(max-width: 1100px) {
+    margin: 52px auto;
+  }
 }
 
 .card-button {
@@ -31,4 +44,10 @@
   border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
   background: #fff;
   cursor: pointer;
+  transition: box-shadow 0.5s;
+
+  &:hover {
+    box-shadow: 1px 5px 5px rgba(104, 103, 103, 0.3);
+    cursor: pointer;
+  }
 }

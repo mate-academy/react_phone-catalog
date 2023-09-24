@@ -12,24 +12,37 @@
   height: 100%;
   width: 272px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1350px) {
+    display: grid;
     grid-template-columns: repeat(2, 272px);
-    margin: 0 180px;
+    justify-content: center;
+    margin: 20px auto;
   }
 
   @media (max-width: 816px) {
     grid-template-columns: repeat(2, 272px);
-    margin: 0 100px;
+    justify-content: center;
+    margin: 20px auto;
   }
 
   @media (max-width: 600px) {
     grid-template-columns: repeat(1, 272px);
-    margin: 0 230px;
+    margin: 20px auto;
+  }
+
+  &__link {
+    text-decoration: none;
   }
 
   &__info {
     border: 1px solid var(--gray-elements, #e2e6e9);
     background: var(--gray-white, #fff);
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      box-shadow: 1px 10px 10px rgba(17, 17, 17, 0.6);
+      cursor: pointer;
+    }
   }
 
   &__image {
