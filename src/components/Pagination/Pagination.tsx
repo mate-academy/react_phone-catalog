@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { getNumbers } from '../../utils/getNumber';
 
 type Props = {
   total: number;
@@ -14,14 +13,16 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const lastPage = Math.ceil(total / +perPage);
+  const pagesToShow = 2;
+  const startPage = Math.max(1, currentPage - pagesToShow);
+  const endPage = Math.min(lastPage, currentPage + pagesToShow);
+
   const handleSelectPage = (page: number) => {
     if (currentPage !== page) {
       onPageChange(page);
     }
   };
-
-  const lastPage = Math.ceil(total / +perPage);
-  const arrOfPages = getNumbers(1, lastPage);
 
   const handleClickRight = () => {
     if (currentPage !== lastPage) {
@@ -37,6 +38,8 @@ export const Pagination: React.FC<Props> = ({
 
   const leftDisabled = currentPage === 1;
   const rightDisabled = currentPage === lastPage;
+  const arrOfItems = Array.from({ length: endPage - startPage + 1 },
+    (_, i) => startPage + i);
 
   return (
     <div className="pagination">
@@ -58,12 +61,12 @@ export const Pagination: React.FC<Props> = ({
           </button>
         </li>
 
-        {arrOfPages.map((page, i) => {
+        {arrOfItems.map((page) => {
           return (
             <li
               className={classNames('pagination__num', {
-                'pagination__num--active': currentPage === i + 1,
-                'pagination__num--inactive': currentPage !== i + 1,
+                'pagination__num--active': currentPage === page,
+                'pagination__num--inactive': currentPage !== page,
               })}
               key={page}
             >
@@ -71,13 +74,13 @@ export const Pagination: React.FC<Props> = ({
                 type="button"
                 data-cy="pageLink"
                 className={classNames('pagination__num-link', {
-                  'pagination__num-link--active': currentPage === i + 1,
-                  'pagination__num-link--inactive': currentPage !== i + 1,
+                  'pagination__num-link--active': currentPage === page,
+                  'pagination__num-link--inactive': currentPage !== page,
                 })}
-                onClick={() => handleSelectPage(i + 1)}
+                onClick={() => handleSelectPage(page)}
               >
                 <span className="pagination__num-link--span">
-                  {i + 1}
+                  {page}
                 </span>
               </button>
             </li>

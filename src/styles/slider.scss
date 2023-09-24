@@ -4,21 +4,20 @@
   overflow: hidden;
   height: 200px;
   margin: 40px auto 70px;
+  width: 100%;
 
   @include onTablet {
-    width: 600px;
     height: 300px;
     margin: 40px auto 90px;
+    justify-content: space-between;
   }
 
   @include onDesktop {
-    width: 963px;
     height: 400px;
     margin: 40px auto 104px;
   }
 
   @include onDesktopXL {
-    width: 1040px;
     height: 400px;
     margin: 40px auto 104px;
   }

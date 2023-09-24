@@ -31,7 +31,7 @@ export const Cart = () => {
 
               <div className="cart__image-block">
                 <img
-                  src={`../new/${item.product.image}`}
+                  src={`./new/${item.product.image}`}
                   alt={item.product.name}
                   className="cart__image-block--img"
                 />

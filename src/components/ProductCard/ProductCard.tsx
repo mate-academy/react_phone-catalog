@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { AddToCartButton } from '../Buttons/AddToCartButton';
 import { AddToFav } from '../Buttons/AddToFav';
 import { Product } from '../../types/Product';
+import { useProducts } from '../../context/ProductContext';
 
 type Props = {
   product: Product;
@@ -18,7 +19,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
     itemId,
     category,
+    year,
   } = product;
+  const { products } = useProducts();
+  const maxYear = Math.max(...products.map(p => p.year));
 
   return (
     <div
@@ -42,7 +46,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <p className="card__price--new">
             {`$${price}`}
           </p>
-          <p className="card__price--old">{`$${fullPrice}`}</p>
+          {year < maxYear && (
+            <p className="card__price--old">{`$${fullPrice}`}</p>
+          )}
+
         </div>
 
         <div className="card__description">
