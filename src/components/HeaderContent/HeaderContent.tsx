@@ -61,7 +61,7 @@ export const HeaderContent = () => {
           </form>
         )}
         <Link
-          to="/favorits"
+          to="/favourites"
           className={`favorits ${location.pathname === '/favorits' ? 'is-active' : ''}`}
         >
           {favoritePhones.length > 0 && (

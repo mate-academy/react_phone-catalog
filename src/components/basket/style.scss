@@ -78,10 +78,10 @@
     }
 
     &-image {
+      object-fit: contain;
       height: 66px;
       width: 66px;
-      background: lightgray 50% / cover no-repeat;
-      cursor: pointer;
+      background: none;
     }
 
     &-price {

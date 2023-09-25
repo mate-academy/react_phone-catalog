@@ -28,7 +28,7 @@ const App = () => {
               <Route path="home" element={<Navigate to="/" />} />
               <Route path="/" element={<HomeTab />} />
               <Route path="phones" element={<PhonesTab />} />
-              <Route path="favorits" element={<FavoritePhones />} />
+              <Route path="favourites" element={<FavoritePhones />} />
               <Route path="basket" element={<Basket />} />
               <Route path="tablets" element={<Info />} />
               <Route path="accessoiries" element={<Info />} />

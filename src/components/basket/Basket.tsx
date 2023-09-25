@@ -66,6 +66,10 @@ export const Basket = () => {
                   type="button"
                   className="operation"
                   onClick={() => handleMinusCount(item.phone)}
+                  disabled={item.count === 1}
+                  style={
+                    { cursor: item.count === 1 ? 'not-allowed' : 'pointer' }
+                  }
                 >
                   <img
                     className="operation__item"

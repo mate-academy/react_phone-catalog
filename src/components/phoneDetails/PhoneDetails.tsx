@@ -83,6 +83,18 @@ export const PhoneDetails = () => {
     description,
   } = phones;
 
+  const handleColorClick = (color: string) => {
+    const updatedImages = images.map(img => {
+      const parts = img.split('/');
+
+      parts[3] = color.toLowerCase();
+
+      return parts.join('/');
+    });
+
+    setSelectImg(updatedImages[0]);
+  };
+
   const handlePickPage = (image: string) => {
     setSelectImg(image);
   };
@@ -130,9 +142,12 @@ export const PhoneDetails = () => {
             <div className="details__content-phone-info-box">
               {colorsAvailable.map(color => (
                 <Link key={color} to={`/${changeColor}-${color}`}>
-                  <div
+                  <button
+                    type="button"
                     className="details__content-phone-info-circle"
                     style={{ backgroundColor: color }}
+                    aria-label="circle"
+                    onClick={() => handleColorClick(color)}
                   />
                 </Link>
               ))}
