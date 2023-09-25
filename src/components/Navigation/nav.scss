@@ -48,43 +48,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-left: 1px solid $gray-elements;
   }
 
   &__search {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 1px solid $gray-elements;
     width: 327px;
-    &:focus {
-      background: $gray-background;
-      box-shadow: -1px 0 0 0 $gray-elements;
-    }
+    padding: 21px;
 
     &-placeholder {
-      // padding: 21px 24px;
       font-size: 14px;
+      width: 306px;
       font-weight: 600;
       line-height: normal;
       color: $gray-icons-placeholders;
       border: none;
       outline: none;
+      background-image: url("../../images/search.svg");
+      background-repeat: no-repeat;
+      background-position: right center;
+
       &:focus {
-        background: $gray-background;
-        box-shadow: -1px 0 0 0 $gray-elements;
+        color: var(--gray-primary, #313237);
+        font-size: 14px;
+        font-weight: 600;
+        background-image: url("../../images/close.svg");
+        background-repeat: no-repeat;
       }
-    }
-
-    &:active {
-      background: $gray-background;
-      box-shadow: -1px 0 0 0 $gray-elements;
-      outline: none;
-    }
-
-    &-icon {
-      display: flex;
-      width: 16px;
-      height: 16px;
     }
   }
 

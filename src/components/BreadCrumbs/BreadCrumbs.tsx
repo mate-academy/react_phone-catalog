@@ -20,7 +20,6 @@ export const BreadCrumbs = () => {
       <div className="breadcrumbs__path">
         <p>{normalizePathname(pathname)}</p>
       </div>
-
     </div>
   );
 };

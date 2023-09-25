@@ -1,0 +1,27 @@
+.dropdown {
+
+  &__label {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    display: block;
+    width: 176px;
+    padding: 10px 12px;
+    cursor: pointer;
+    border: 1px solid $gray-icons-placeholders;
+    appearance: none;
+    background-image: url("../../images/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 8% center;
+  }
+
+  &__option {
+    color: $gray-primary;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}

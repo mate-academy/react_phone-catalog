@@ -35,8 +35,6 @@ export const HomePage = () => {
           <ShopByCategory />
 
           <BrandNewProducts products={brandNewProducts} />
-
-          {/* <Footer /> */}
         </div>
       </div>
     </>

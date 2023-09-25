@@ -50,14 +50,6 @@ export const Navigation = () => {
               className="nav__search-placeholder"
               type="text"
               placeholder="Search in phones..."
-              name=""
-              id=""
-            />
-
-            <img
-              className="nav__search-icon"
-              src="new/img/icons/search.svg"
-              alt="search-icon"
             />
           </div>
         )}

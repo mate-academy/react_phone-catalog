@@ -1,11 +1,5 @@
 import { Link } from 'react-router-dom';
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-};
+import { scrollToTop } from '../../utils/scrollToTop';
 
 export const Footer = () => (
   <footer className="footer">
