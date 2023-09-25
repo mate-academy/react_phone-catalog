@@ -3,31 +3,6 @@
 .details {
   width: 1136px;
 
-  &__back {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    width: 66px;
-
-    margin: 40px 0 0;
-    text-decoration: none;
-
-    &--icon {
-      height: 16px;
-      width: 16px;
-      background-image: url("../../images/icons/ArrowLeft.svg");
-    }
-
-    &--title {
-      color: $gray-secondary;
-    }
-
-    &--h1 {
-      margin-bottom: 40px;
-      margin-top: 16px;
-    }
-  }
-
   &__main {
     display: flex;
     height: 464px;
@@ -71,6 +46,12 @@
         object-fit: contain;
 
       }
+    }
+  }
+
+  &__title {
+    &--name {
+      margin: 16px 0 40px;
     }
   }
 

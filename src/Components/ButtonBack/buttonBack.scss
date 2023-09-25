@@ -1,0 +1,26 @@
+@import "/src/style/main.scss";
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 66px;
+
+  margin: 0;
+  text-decoration: none;
+
+  &--icon {
+    height: 16px;
+    width: 16px;
+    background-image: url("../../images/icons/ArrowLeft.svg");
+  }
+
+  &--title {
+    color: $gray-secondary;
+  }
+
+  &--h1 {
+    margin-bottom: 40px;
+    margin-top: 16px;
+  }
+}

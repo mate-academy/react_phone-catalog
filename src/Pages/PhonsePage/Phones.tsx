@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import {
@@ -13,29 +13,18 @@ import { sortPhones } from '../../helper/preperaPhones';
 import { useLocalStorage } from '../../utils/UseLocalStorege';
 import { Phone } from '../../Type/Phone';
 
-import '../../style/main.scss';
 import './phones.scss';
-import { client } from '../../utils/fetchClient';
 
-// type Props = {
-//   phones: Phone[],
-// };
+type Props = {
+  phones: Phone[],
+  isLoading: boolean,
+};
 
-export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [isLoading, setiSLoading] = useState(true);
+export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
   const [searchParams] = useSearchParams();
   const selectedValueSortBy = searchParams.get('sortBy') || 'Newest';
   const selectedValueNumberOptions = searchParams.get('NumberOptions') || '4';
   const [page, setPage] = useLocalStorage<number>('pages', 1);
-
-  useEffect(() => {
-    client.get<Phone[]>('/_new/products.json')
-      .then((phonesFromApi) => {
-        setPhones(phonesFromApi);
-      })
-      .finally(() => setiSLoading(false));
-  }, []);
 
   const firstPhoneOnPage = +selectedValueNumberOptions * (page - 1);
   const lastPhoneOnPage = Math.min(
@@ -59,10 +48,11 @@ export const PhonesPage: React.FC = () => {
   const readyPhones = phonesOnPage(phones, firstPhoneOnPage, lastPhoneOnPage);
 
   const isShowerSearch = true;
+  const nameSearch = 'phones';
 
   return (
     <>
-      <Navigation isShower={isShowerSearch} />
+      <Navigation isShower={isShowerSearch} nameSearch={nameSearch} />
       <main>
         {isLoading && <Loader />}
 

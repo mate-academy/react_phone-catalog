@@ -17,10 +17,14 @@ import { PhonesPage } from './Pages/PhonsePage/Phones';
 
 export const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
+  const [isLoading, setiSLoading] = useState(true);
 
   useEffect(() => {
     client.get<Phone[]>('/_new/products.json')
-      .then(setPhones);
+      .then((phonesFromApi) => {
+        setPhones(phonesFromApi);
+      })
+      .finally(() => setiSLoading(false));
   }, []);
 
   return (
@@ -30,14 +34,34 @@ export const App = () => {
         <Route path="/" element={<HomePage phones={phones} />} />
 
         <Route path="/Phones">
-          <Route index element={<PhonesPage />} />
+          <Route
+            index
+            element={(
+              <PhonesPage phones={phones} isLoading={isLoading} />)}
+          />
           <Route path=":phoneId" element={<ProductDetails phones={phones} />} />
         </Route>
 
-        <Route path="/Tablets" element={<TabletsPage />} />
-        <Route path="/Accessories" element={<AccessoriesPage />} />
-        <Route path="/Favourites" element={<FavouritesPage />} />
-        <Route path="/Shopping" element={<ShoppingPage />} />
+        <Route
+          path="/Tablets"
+          element={<TabletsPage isLoading={isLoading} />}
+        />
+        <Route
+          path="/Accessories"
+          element={<AccessoriesPage isLoading={isLoading} />}
+        />
+        <Route
+          path="/Favourites"
+          element={(
+            <FavouritesPage isLoading={isLoading} favouritesPhones={phones} />
+          )}
+        />
+        <Route
+          path="/Shopping"
+          element={(
+            <ShoppingPage isLoading={isLoading} shoppingPhones={phones} />
+          )}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

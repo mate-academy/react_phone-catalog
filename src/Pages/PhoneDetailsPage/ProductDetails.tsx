@@ -6,6 +6,7 @@ import { client } from '../../utils/fetchClient';
 import { Phone } from '../../Type/Phone';
 
 import {
+  ButtonBack,
   LikeAlso,
   Loader,
   Navigation,
@@ -53,13 +54,9 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
             </section>
 
             <section className="details__title">
-              <Link to="-1" className="details__back">
-                <div className="details__back--icon icon" />
+              <ButtonBack />
 
-                <p className="details__back--title">Back</p>
-              </Link>
-
-              <h1 className="details__back--h1">{phone?.id}</h1>
+              <h1 className="details__title--name">{phone?.id}</h1>
             </section>
 
             <section className="details__main">

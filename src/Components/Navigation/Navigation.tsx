@@ -10,9 +10,13 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) => classNames(
 
 type Props = {
   isShower?: boolean;
+  nameSearch?: string;
 };
 
-export const Navigation: React.FC<Props> = ({ isShower = false }) => {
+export const Navigation: React.FC<Props> = ({
+  isShower = false,
+  nameSearch = '',
+}) => {
   return (
     <header>
       <nav>
@@ -65,7 +69,11 @@ export const Navigation: React.FC<Props> = ({ isShower = false }) => {
               >
                 <input
                   type="text"
-                  placeholder="Search in phones..."
+                  placeholder={
+                    nameSearch === 'phones'
+                      ? 'Search in phones...'
+                      : 'Search in favourites...'
+                  }
                   id="mySearch"
                   className="nav__personally--search"
                 />
