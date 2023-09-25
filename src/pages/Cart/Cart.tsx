@@ -75,7 +75,7 @@ export const Cart: React.FC = () => {
                     <div className="cart__product-image">
                       <img
                         className="cart__product-img"
-                        src={`./_new/${product.image}`}
+                        src={`new/${product.image}`}
                         alt={`${product.name} thumbnail`}
                       />
                     </div>

@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Product } from '../types/Product';
 
-export function useLocalStorage(
-  key: string, defoultItems: Product[],
-): [Product[], (i: Product[]) => void] {
+export function useLocalStorage<T>(
+  key: string, defoultItems: T,
+): [T, (i: T) => void] {
   const [list, setList] = useState(() => {
     const data = localStorage.getItem(key);
 
@@ -20,7 +19,7 @@ export function useLocalStorage(
     }
   });
 
-  const saveList = (newItems: Product[]) => {
+  const saveList = (newItems: T) => {
     localStorage.setItem(key, JSON.stringify(newItems));
     setList(newItems);
   };

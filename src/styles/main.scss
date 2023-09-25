@@ -1,6 +1,15 @@
 @import "./utils/mixins";
 @import "./utils/variables";
 
+@import "./fonts.scss";
+@import "./button.scss";
+@import "./page.scss";
+@import "./reset.scss";
+@import "./typography.scss";
+@import "./empty.scss";
+
+@import "../components/Header/Header.scss";
+@import "../components/Search/Search.scss";
 @import "../components/BackLink/BackLink.scss";
 @import "../components/Breadcrumbs/Breadcrumbs.scss";
 @import "../components/CarouselSlider/CarouselSlider.scss";
@@ -16,21 +25,18 @@
 @import "../components/NoProductsYet/NoProductsYet.scss";
 @import "../components/Pagination/Pagination.scss";
 @import "../components/Picker/Picker.scss";
+@import "../components/ProductCard/ProductCard.scss";
+@import "../components/ProductsList/ProductsList.scss";
+@import "../components/ProductsPageContent/ProductsPageContent.scss";
 @import "../components/ProductGallery/ProductGallery.scss";
 @import "../components/ProductSlider/ProductSlider.scss";
+
 @import "../pages/Cart/Cart.scss";
 @import "../pages/Contacts/Contacts.scss";
 @import "../pages/ErrorPage/ErrorPage.scss";
 @import "../pages/HomePage/HomePage.scss";
 @import "../pages/ProductPage/ProductPage.scss";
 @import "../pages/Rights/Rights.scss";
-
-@import "./fonts.scss";
-@import "./button.scss";
-@import "./page.scss";
-@import "./reset.scss";
-@import "./typography.scss";
-@import "./empty.scss";
 
 * {
   box-sizing: border-box;

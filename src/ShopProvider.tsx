@@ -4,14 +4,15 @@ import { LocalStorageKeys } from './data/localStorageKeys';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { ShopContext } from './ShopContext';
 import { ChangeType } from './types/ChangeType';
+import { Product } from './types/Product';
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const ShopProvider: React.FC<Props> = ({ children }) => {
-  const [cart, setCart] = useLocalStorage(LocalStorageKeys.cart, []);
-  const [favourites, setFavourites] = useLocalStorage(
+  const [cart, setCart] = useLocalStorage<Product[]>(LocalStorageKeys.cart, []);
+  const [favourites, setFavourites] = useLocalStorage<Product[]>(
     LocalStorageKeys.favourites, [],
   );
 
