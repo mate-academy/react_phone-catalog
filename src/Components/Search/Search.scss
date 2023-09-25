@@ -1,0 +1,43 @@
+@import "../../Helpers/vars.scss";
+
+.search {
+  box-shadow: -1px 0 0 0 #e2e6e9;
+  position: relative;
+
+  &__input {
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    color: $bold;
+    border: none;
+    height: 67px;
+    width: 327px;
+    margin-left: 24px;
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: normal;
+      color: $grey;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    margin-right: 24px;
+  }
+}

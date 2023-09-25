@@ -1,0 +1,210 @@
+@import "../../Helpers/vars.scss";
+
+.cart {
+  &__warning {
+    font-size: 26px;
+    font-weight: 700;
+    color: $bold;
+  }
+
+  &__back-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0 transparent;
+    background-color: #fff;
+    margin-bottom: 16px;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+
+  &__button-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__string {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $main-color;
+  }
+
+  &__back-img {
+    width: 16px;
+    height: 19px;
+    margin-right: 4px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $bold;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    margin-bottom: 80px;
+  }
+
+  &__items {
+    list-style: none;
+    margin-right: 16px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 128px;
+    width: 650px;
+    border: 1px solid $box-shadow;
+    margin-bottom: 16px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+
+    &-price {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 140%;
+      margin-right: 40px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid $box-shadow;
+    width: 32px;
+    height: 32px;
+    transition: all 500ms;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $bold;
+    }
+
+    &--delete {
+      width: 16px;
+      height: 16px;
+      border: none;
+      margin: 0 24px;
+    }
+
+    &--minus {
+      margin-right: 13px;
+      transition: all 200ms;
+
+      &:disabled {
+        cursor: not-allowed;
+        border-color: $box-shadow;
+      }
+    }
+
+    &--add {
+      margin-right: 43px;
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    margin-right: 31px;
+  }
+
+  &__text {
+    width: 200px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $bold;
+
+    &--number {
+      margin-right: 13px;
+      width: max-content;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 210px;
+    border: 1px solid $box-shadow;
+  }
+
+  &__sum {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $bold;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-color;
+    margin-bottom: 24px;
+  }
+
+  &__line {
+    width: 250px;
+    margin-bottom: 24px;
+  }
+
+  &__checkout {
+    width: 250px;
+    height: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    background-color: $bold;
+    color: #fff;
+    transition: all 200ms;
+    margin-bottom: 5px;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &-message {
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+
+  &__message-container {
+    height: 40px;
+    visibility: hidden;
+    transition: visibility 0.2s;
+    margin-left: 25px;
+
+    &--visible {
+      visibility: visible;
+    }
+  }
+}

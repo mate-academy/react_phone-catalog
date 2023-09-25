@@ -1,0 +1,39 @@
+@import "../../Helpers/vars.scss";
+
+.favourites {
+  &__top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__string {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $main-color;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $main-color;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-color;
+    margin-bottom: 40px;
+  }
+}

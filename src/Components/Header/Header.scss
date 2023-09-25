@@ -1,0 +1,107 @@
+@import "../../Helpers/vars.scss";
+
+.header {
+  box-shadow: 0 1px 0 0 $box-shadow;
+  margin-bottom: 40px;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+    margin-right: 242px;
+  }
+
+  &__navbar-item {
+    color: $main-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    transition: all 200ms;
+    margin-right: 64px;
+
+    &:hover {
+      color: $bold;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      color: $bold;
+      border-bottom: 3px solid $bold;
+      padding-bottom: 27px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: flex-end;
+    height: 67px;
+    width: 128px;
+    position: relative;
+  }
+
+  &__item-count {
+    position: absolute;
+    top: 25%;
+    left: 75%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-color: #eb5757;
+    z-index: 1;
+
+    &--fav {
+      left: 25%;
+    }
+  }
+
+  &__count-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    color: #fff;
+    transform: translate(-50%, -50%);
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 64px;
+    height: 66px;
+    box-shadow: -1px 0 0 0 $box-shadow;
+    margin-right: 1px;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $bold;
+      transition: all 200ms;
+
+      & .header__item-count {
+        transform: scale(1.1);
+      }
+    }
+
+    &:last-child {
+      margin-right: 2px;
+    }
+
+    &--active {
+      border-bottom: 3px solid $bold;
+    }
+  }
+}
