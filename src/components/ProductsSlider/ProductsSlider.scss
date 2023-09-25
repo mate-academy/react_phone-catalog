@@ -1,17 +1,11 @@
 @import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .ProductsSlider {
   &__title-wrapper {
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
-  }
-
-  &__title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 41px;
-    letter-spacing: -0.01em;
   }
 
   &__buttons {
@@ -21,20 +15,10 @@
   }
 
   &__button {
+    @include sliderButton;
+
     width: 32px;
     height: 32px;
-
-    border: 1px solid $iconsGray;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    transition: border-color $duration;
-
-    &:hover {
-      border-color: $primeryGray;
-      cursor: pointer;
-    }
 
     &:disabled {
       border-color: $elementsGray;

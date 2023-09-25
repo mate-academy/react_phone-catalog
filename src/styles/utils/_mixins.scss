@@ -1,0 +1,13 @@
+@mixin sliderButton {
+  border: 1px solid $iconsGray;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: border-color $duration;
+
+  &:hover {
+    border-color: $primeryGray;
+    cursor: pointer;
+  }
+}

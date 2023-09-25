@@ -1,0 +1,64 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.ImagesSlider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  &__button {
+    @include sliderButton;
+
+    width: 32px;
+
+    &--previous {
+      background-image: url(../../img/icons/corner-previous.svg);
+    }
+
+    &--next {
+      background-image: url(../../img/icons/corner-next.svg);
+    }
+  }
+
+  &__slides-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__slides {
+    display: flex;
+
+    transition: transform $duration;
+  }
+
+  &__slide-image {
+    display: block;
+    width: 100%;
+  }
+
+  &__indicators {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__indicator {
+    width: 16px;
+    height: 4px;
+
+    border: none;
+    background-color: $elementsGray;
+    cursor: pointer;
+
+    transition: background-color $duration;
+
+    &--active {
+      background-color: $primeryGray;
+    }
+  }
+}

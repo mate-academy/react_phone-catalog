@@ -1,3 +1,77 @@
+@import "../../styles/utils/variables";
+
 .HomePage {
   padding: 40px 0 80px;
+
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__section-title {
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__category-image-wrapper {
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  &__category-image {
+    padding-top: 100%;
+
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+
+    transition: transform $duration;
+    will-change: transform;
+
+    &--phones {
+      background-color: #fcdbc1;
+      background-image: url(../../img/phones-category-image.png);
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+      background-image: url(../../img/tablets-category-image.png);
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+      background-image: url(../../img/accessories-category-image.png);
+    }
+  }
+
+  &__category:hover &__category-image {
+    transform: scale(1.1);
+  }
+
+  &__category-title {
+    margin-bottom: 4px;
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__category-info {
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondaryGray;
+  }
 }
