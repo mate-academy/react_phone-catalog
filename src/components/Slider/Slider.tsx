@@ -104,20 +104,6 @@ export const Slider: React.FC = () => {
           <span className="arrow arrow--right" />
         </button>
 
-        {/* <div className="slider__dots">
-          {images.map((img, ind) => (
-            <button
-              key={img}
-              type="button"
-              aria-label="slider__dots"
-              className={classNames('slider__dot', {
-                'slider__dot--active': ind === currIndex,
-              })}
-              onClick={() => handleDots(ind)}
-            />
-
-          ))}
-        </div> */}
       </div>
       <div className="slider__dots">
         {images.map((img, ind) => (
