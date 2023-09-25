@@ -4,6 +4,7 @@ import { MobileHome } from '../MobileHome/MobileHome';
 import './style.scss';
 import { useHeaderContext } from '../../provider/HeaderContext';
 import { Phone } from '../../types/phone';
+import { HotPrice } from '../HotPrice/HotPrice';
 
 type Description = {
   title: string
@@ -266,6 +267,14 @@ export const PhoneDetails = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="like">
+        <HotPrice
+          phones={mobiles}
+          title="You may also like"
+          showOldPrice
+        />
       </div>
     </div>
   );

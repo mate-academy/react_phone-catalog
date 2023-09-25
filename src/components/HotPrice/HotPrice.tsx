@@ -41,7 +41,7 @@ export const HotPrice: React.FC<Props> = ({ phones, title, showOldPrice }) => {
           </button>
           <button
             type="button"
-            className="card-button right"
+            className="card-button next"
             id="nextButton"
             onClick={handleNextClick}
           >

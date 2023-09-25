@@ -5,6 +5,7 @@ import { useHeaderContext } from '../../provider/HeaderContext';
 export const HeaderContent = () => {
   const location = useLocation();
   const isPhoneTab = location.pathname === '/phones';
+
   const {
     inputValue,
     handleSearch,
@@ -26,16 +27,16 @@ export const HeaderContent = () => {
           <img src="./img/icons/Logo.svg" alt="logo" />
         </Link>
 
-        <Link className="header__content-left-link" to="/home">home</Link>
-        <Link className="header__content-left-link" to="/phones">phones</Link>
+        <Link className={`header__content-left-link ${location.pathname === '/' ? 'is-active' : ''}`} to="/home">home</Link>
+        <Link className={`header__content-left-link ${location.pathname === '/phones' ? 'is-active' : ''}`} to="/phones">phones</Link>
         <Link
-          className="header__content-left-link"
+          className={`header__content-left-link ${location.pathname === '/tablets' ? 'is-active' : ''}`}
           to="/tablets"
         >
           tablets
         </Link>
         <Link
-          className="header__content-left-link"
+          className={`header__content-left-link ${location.pathname === '/accessoiries' ? 'is-active' : ''}`}
           to="/accessoiries"
         >
           accessories
@@ -61,7 +62,7 @@ export const HeaderContent = () => {
         )}
         <Link
           to="/favorits"
-          className="favorits"
+          className={`favorits ${location.pathname === '/favorits' ? 'is-active' : ''}`}
         >
           {favoritePhones.length > 0 && (
             <div
@@ -74,7 +75,7 @@ export const HeaderContent = () => {
         </Link>
         <Link
           to="/basket"
-          className="basket"
+          className={`basket ${location.pathname === '/basket' ? 'is-active' : ''}`}
         >
           {basketItems.length > 0 && (
             <div

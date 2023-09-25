@@ -60,14 +60,8 @@ export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
   };
 
   const addToBasket = (phone: Phone) => {
-    if (basketItems.some(basketItem => basketItem.phone.id === phone.id)) {
-      setBasketItems(prev => prev.map(item => {
-        if (item.phone.id === phone.id) {
-          return { ...item, count: item.count + 1 };
-        }
-
-        return item;
-      }));
+    if (basketItems.some(item => item.phone.id === phone.id)) {
+      setBasketItems(prev => prev.filter(item => item.phone.id !== phone.id));
     } else {
       setBasketItems(prev => [...prev, { phone, count: 1 }]);
     }
@@ -99,9 +93,9 @@ export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
   };
 
   const addToFavoriteWithName = (phone: Phone) => {
-    if (favoritePhones.some(favoritePhone => favoritePhone.id === phone.name)) {
+    if (favoritePhones.some(favoritePhone => favoritePhone.id === phone.id)) {
       setFavoritePhones(prev => prev.filter(
-        favoritePhone => favoritePhone.id !== phone.name,
+        favoritePhone => favoritePhone.id !== phone.id,
       ));
     } else {
       setFavoritePhones(prev => [...prev, phone]);
@@ -109,14 +103,9 @@ export const HeaderProvider: React.FC<HeaderProviderProps> = ({ children }) => {
   };
 
   const addToBasketWithName = (phone: Phone) => {
-    if (basketItems.some(basketItem => basketItem.phone.id === phone.name)) {
-      setBasketItems(prev => prev.map(item => {
-        if (item.phone.name === phone.name) {
-          return { ...item, count: item.count + 1 };
-        }
-
-        return item;
-      }));
+    if (basketItems.some(item => item.phone.id === phone.id)) {
+      setBasketItems(prev => prev
+        .filter(item => item.phone.id !== phone.id));
     } else {
       setBasketItems(prev => [...prev, { phone, count: 1 }]);
     }

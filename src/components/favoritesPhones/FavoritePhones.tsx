@@ -11,7 +11,10 @@ export const FavoritePhones = () => {
       <MobileHome />
       <h1 className="favorite__title">Favourites</h1>
       <p className="favorite__items">{`${favoritePhones.length} ${favoritePhones.length === 1 ? 'item' : 'items'}`}</p>
-      <PhonesCard phones={favoritePhones} showOldPrice />
+
+      <div className="favorite__phones">
+        <PhonesCard phones={favoritePhones} showOldPrice />
+      </div>
     </div>
   );
 };

@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  min-height: 300px;
+  margin: 0 auto;
 
   &__title {
     text-align: center;

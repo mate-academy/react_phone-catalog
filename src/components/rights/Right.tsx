@@ -44,7 +44,7 @@ export const Rigth = () => {
           />
           <Link
             className="right__contacts-phone-link"
-            to="/https://www.linkedin.com/in/oleksandr-zaporozhets-2a4695267"
+            to="https://www.linkedin.com/in/oleksandr-zaporozhets-2a4695267"
           >
             LinkedIn
           </Link>

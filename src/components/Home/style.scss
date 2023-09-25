@@ -11,7 +11,7 @@
     width: 100%;
   }
 
-  &__content{
+  &__content {
     display: flex;
     margin: 0 152px;
     max-height: 400px;
@@ -46,7 +46,6 @@
   background: #fff;
   cursor: pointer;
   transition: box-shadow 0.5s;
-
 
   &:hover {
     box-shadow: 1px 5px 5px rgba(104, 103, 103, 0.3);

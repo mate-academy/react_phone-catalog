@@ -21,7 +21,7 @@ const App = () => {
   return (
     <HashRouter>
       <HeaderProvider>
-        <div className="App">
+        <div className="app">
           <Header />
           <main className="section">
             <Routes>

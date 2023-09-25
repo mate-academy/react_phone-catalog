@@ -3,15 +3,22 @@
   padding: 0;
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
 @font-face {
   font-family: Mont;
-  src: url('./fonts/Mont-Bold.ttf');
+  src: url("./fonts/Mont-Bold.ttf");
 }
 @font-face {
   font-family: Mont;
-  src: url('./fonts/Mont-Regular.ttf');
+  src: url("./fonts/Mont-Regular.ttf");
 }
 @font-face {
   font-family: Mont;
-  src: url('./fonts/Mont-SemiBold.ttf');
+  src: url("./fonts/Mont-SemiBold.ttf");
 }
