@@ -30,9 +30,9 @@ function getBrandNewProducts(allProducts: Product[]): Product[] {
 }
 
 const images = [
-  '/_new/img/banner-phones.png',
-  '/_new/img/banner-tablets.png',
-  '/_new/img/banner-accessories.png',
+  'images/banner-phones.png',
+  'images/banner-tablets.png',
+  'images/banner-accessories.png',
 ];
 
 export const HomePage: React.FC = () => {
