@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import './SortForm.scss';
 import { setProductsPerPage } from '../../redux/reducers/paginationReducer';
@@ -6,16 +8,38 @@ import { setSortBy } from '../../redux/reducers/sortReducer';
 import { SORT } from '../../types/Sort';
 
 export const SortForm = () => {
-  const perPage = useAppSelector(state => state.pagination.productsPerPage);
+  const [searchParams] = useSearchParams();
+  const productsPerPage = useAppSelector(
+    state => state.pagination.productsPerPage,
+  );
   const sortBy = useAppSelector(state => state.sort.sortBy);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const handleProductsPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const newProductsPerPage = parseInt(event.target.value, 10);
+  const sortParams = searchParams.get('sort') || SORT.None;
+  const perPageParams = searchParams.get('limit') || SELECT.All;
 
-    dispatch(setProductsPerPage(newProductsPerPage));
+  useEffect(() => {
+    dispatch(setSortBy(sortParams));
+    const perPageNumber = parseInt(String(perPageParams), 10);
+
+    if (!Number.isNaN(perPageNumber)) {
+      dispatch(setProductsPerPage(perPageNumber));
+    }
+  }, [sortParams, perPageParams, dispatch]);
+
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSortValue = e.target.value;
+
+    searchParams.set('sort', newSortValue);
+    navigate(`?${searchParams.toString()}`);
+  };
+
+  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newProductsPerPage = e.target.value;
+
+    searchParams.set('limit', newProductsPerPage);
+    navigate(`?${searchParams.toString()}`);
   };
 
   return (
@@ -28,7 +52,7 @@ export const SortForm = () => {
           id="sort-select1"
           className="sortForm__select"
           value={sortBy}
-          onChange={(e) => dispatch(setSortBy(e.target.value as SORT))}
+          onChange={handleSortChange}
         >
           <option value="" disabled>Please select option</option>
           <option value={SORT.Newest}>Newest</option>
@@ -43,8 +67,8 @@ export const SortForm = () => {
         <select
           id="sort-select1"
           className="sortForm__select"
-          value={perPage}
-          onChange={handleProductsPerPageChange}
+          value={productsPerPage}
+          onChange={handlePerPageChange}
         >
           <option value={SELECT.All}>All</option>
           <option value={SELECT.Four}>4</option>

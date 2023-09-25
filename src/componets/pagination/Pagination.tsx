@@ -1,3 +1,5 @@
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import './Pagination.scss';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -10,16 +12,23 @@ type PaginationProps = {
 };
 
 export const Pagination: React.FC<PaginationProps> = ({ length }) => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const pageParams = searchParams.get('page') || '1';
+  const currentPageNumber = parseInt(pageParams, 10);
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector(state => state.pagination.currentPage);
-  const totalPages = useAppSelector(
-    state => Math.ceil(
-      length / state.pagination.productsPerPage,
-    ),
-  );
+  const perPage = useAppSelector(state => state.pagination.productsPerPage);
+  const totalPages = Math.ceil(length / perPage);
+
+  useEffect(() => {
+    dispatch(setCurrentPage(currentPageNumber));
+  }, [currentPageNumber, dispatch]);
 
   const handlePageChange = (page: number) => {
-    dispatch(setCurrentPage(page));
+    searchParams.set('page', page.toString());
+
+    navigate(`?${searchParams.toString()}`);
   };
 
   const getPageNumbers = () => {

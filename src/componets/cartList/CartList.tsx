@@ -55,7 +55,9 @@ export const CartList = () => {
           </h1>
           <p className="cartList__count">
             Total for
+            {' '}
             {totalCount}
+            {' '}
             items
           </p>
           <div className="cartList__line" />
