@@ -2,7 +2,6 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Navigation } from '../Navigation/Navigation';
-import './MenuMobile.scss';
 import { Search } from '../Search/Search';
 import { ReactComponent as CloseMenu } from '../../images/icons/close.svg';
 import { pageData } from '../../data/pageData';

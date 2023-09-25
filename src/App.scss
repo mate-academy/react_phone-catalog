@@ -1,8 +1,1 @@
-@import "./utils/variables";
-@import "./utils/mixins";
 @import "./styles/main.scss";
-
-.title {
-  color: $mainColor;
-  @include textH1;
-}

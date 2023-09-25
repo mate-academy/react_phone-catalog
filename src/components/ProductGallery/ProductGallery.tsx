@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ProductGallery.scss';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 type Props = {

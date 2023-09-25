@@ -1,3 +1,30 @@
+@import "./utils/mixins";
+@import "./utils/variables";
+
+@import "../components/BackLink/BackLink.scss";
+@import "../components/Breadcrumbs/Breadcrumbs.scss";
+@import "../components/CarouselSlider/CarouselSlider.scss";
+@import "../components/CategoryTabs/CategoryTabs.scss";
+@import "../components/DisplayOptions/DisplayOptions.scss";
+@import "../components/ErrorNotification/ErrorNotification.scss";
+@import "../components/Footer/Footer.scss";
+@import "../components/GoTop/GoTop.scss";
+@import "../components/Loader/Loader.scss";
+@import "../components/Logo/Logo.scss";
+@import "../components/MenuMobile/MenuMobile.scss";
+@import "../components/Navigation/Navigation.scss";
+@import "../components/NoProductsYet/NoProductsYet.scss";
+@import "../components/Pagination/Pagination.scss";
+@import "../components/Picker/Picker.scss";
+@import "../components/ProductGallery/ProductGallery.scss";
+@import "../components/ProductSlider/ProductSlider.scss";
+@import "../pages/Cart/Cart.scss";
+@import "../pages/Contacts/Contacts.scss";
+@import "../pages/ErrorPage/ErrorPage.scss";
+@import "../pages/HomePage/HomePage.scss";
+@import "../pages/ProductPage/ProductPage.scss";
+@import "../pages/Rights/Rights.scss";
+
 @import "./fonts.scss";
 @import "./button.scss";
 @import "./page.scss";

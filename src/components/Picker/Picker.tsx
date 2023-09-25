@@ -2,7 +2,6 @@ import React from 'react';
 import cn from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { PickerOption } from '../../types/PickerOption';
-import './Picker.scss';
 
 type Props = {
   isColor?: boolean;

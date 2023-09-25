@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import './ProductCard.scss';
 
 import {
   ReactComponent as Favourites,

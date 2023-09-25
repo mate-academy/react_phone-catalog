@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './ProductPage.scss';
 import { useLocation } from 'react-router-dom';
 
 import { getProduct } from '../../api/fetchClient';

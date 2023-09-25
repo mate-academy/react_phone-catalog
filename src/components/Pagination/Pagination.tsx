@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import cn from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
-import './Pagination.scss';
 
 import {
   ReactComponent as ArrowLeft,

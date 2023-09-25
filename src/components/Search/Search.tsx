@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
 import debounce from 'lodash.debounce';
-import './Search.scss';
 import { useLocation, useSearchParams, Link } from 'react-router-dom';
 
 import { ReactComponent as SearchIcon } from '../../images/icons/search.svg';

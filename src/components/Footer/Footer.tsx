@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Footer.scss';
 import { GoTop } from '../GoTop/GoTop';
 import { Logo } from '../Logo/Logo';
 import { linkClass } from '../../helpers/linkClass';
@@ -14,7 +13,7 @@ export const Footer: React.FC = () => {
       <div className="footer__links">
         <NavLink
           className={linkClass.footer}
-          to="https://github.com/mate-academy/react_phone-catalog"
+          to="https://github.com/dudar-y/react_phone-catalog"
           target="_blank"
         >
           Github

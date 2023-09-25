@@ -1,5 +1,4 @@
 import React from 'react';
-import './ErrorPage.scss';
 
 type Props = {
   productType?: string | null;

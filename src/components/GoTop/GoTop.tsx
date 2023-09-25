@@ -1,5 +1,4 @@
 import React from 'react';
-import './GoTop.scss';
 
 import { ReactComponent as ArrowUp } from '../../images/icons/arrow_up.svg';
 

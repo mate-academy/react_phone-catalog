@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ProductSlider.scss';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import cn from 'classnames';
-import './CarouselSlider.scss';
 
 import {
   ReactComponent as ArrowRigth,

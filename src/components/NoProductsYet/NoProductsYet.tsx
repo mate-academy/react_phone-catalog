@@ -1,4 +1,3 @@
-import './NoProductsYet.scss';
 import { useLocation } from 'react-router-dom';
 import { noProductYetData } from '../../data/noProductYetData';
 

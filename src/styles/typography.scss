@@ -1,6 +1,3 @@
-@import "../utils/mixins";
-@import "../utils/variables";
-
 .text {
   &__h1 {
     @include textH1;

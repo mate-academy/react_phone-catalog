@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './ProductsPageContent.scss';
 import { useSearchParams } from 'react-router-dom';
 
 import {

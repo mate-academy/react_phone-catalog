@@ -1,5 +1,4 @@
 import React from 'react';
-import './DisplayOptions.scss';
 import { useSearchParams } from 'react-router-dom';
 
 import Select, {

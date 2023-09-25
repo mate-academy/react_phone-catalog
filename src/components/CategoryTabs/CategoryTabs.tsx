@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useMemo, useEffect, useState } from 'react';
-import './CategoryTabs.scss';
 import { Link } from 'react-router-dom';
 import { pageData } from '../../data/pageData';
 import { getProductsWithoutDeley } from '../../api/fetchClient';

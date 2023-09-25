@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import './Contacts.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 const BREADCRUBS_DATA = {

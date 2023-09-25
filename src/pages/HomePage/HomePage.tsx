@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './HomePage.scss';
 
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { CarouselSlider } from '../../components/CarouselSlider/CarouselSlider';

@@ -1,4 +1,3 @@
-import './BackLink.scss';
 import { Link, useNavigate } from 'react-router-dom';
 
 import {

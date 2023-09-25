@@ -1,4 +1,3 @@
-import './Navigation.scss';
 import { NavLink } from 'react-router-dom';
 import { pageData } from '../../data/pageData';
 import { linkClass } from '../../helpers/linkClass';

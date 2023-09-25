@@ -1,6 +1,3 @@
-@import "../../utils/mixins";
-@import "../../utils/variables";
-
 .picker {
   &__title {
     @include textSmall;

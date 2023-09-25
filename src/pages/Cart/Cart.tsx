@@ -1,7 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import './Cart.scss';
 
 import { ReactComponent as Cross } from '../../images/icons/close.svg';
 import { ReactComponent as Plus } from '../../images/icons/plus.svg';

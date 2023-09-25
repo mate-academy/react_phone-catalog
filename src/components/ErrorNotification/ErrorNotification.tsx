@@ -1,5 +1,4 @@
 import React from 'react';
-import './ErrorNotification.scss';
 
 export const ErrorNotification: React.FC = () => {
   return (

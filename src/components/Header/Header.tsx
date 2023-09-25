@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useLocation, NavLink, Link } from 'react-router-dom';
-import './Header.scss';
 import { Logo } from '../Logo/Logo';
 import { Navigation } from '../Navigation/Navigation';
 import { pageData } from '../../data/pageData';

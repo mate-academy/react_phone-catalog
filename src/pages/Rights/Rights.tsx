@@ -1,4 +1,3 @@
-import './Rights.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 const BREADCRUBS_DATA = {
