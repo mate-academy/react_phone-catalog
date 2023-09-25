@@ -40,6 +40,7 @@ export const Mobiles: React.FC<Props> = ({
 
   const handleChangeCount = (count: number) => {
     setSelectedCount(count);
+    setCurrentPage(1);
     setCountDropdown(false);
   };
 
