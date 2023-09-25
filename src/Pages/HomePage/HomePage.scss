@@ -1,0 +1,141 @@
+@import "../../Helpers/vars.scss";
+
+.home {
+  margin-bottom: 80px;
+
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__top {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    color: $bold;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-color;
+  }
+
+  &__categories {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__bcg {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--pink {
+      background-color: #d53c51;
+    }
+
+    &--gray {
+      background-color: $grey;
+    }
+
+    &--fuchsia {
+      background-color: #813643;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 386px;
+    height: 457px;
+    left: 70px;
+
+    &--gray {
+      width: 546px;
+      height: 546px;
+      left: 20px;
+    }
+
+    &--fuchsia {
+      width: 700px;
+      height: 546px;
+      left: 20px;
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1150px;
+  }
+
+  &__product {
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    border: 1px solid $box-shadow;
+    margin-right: 16px;
+    margin-bottom: 40px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1040px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid $grey;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $bold;
+    }
+  }
+
+  &__banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      width: 1040px;
+      height: 400px;
+      object-fit: cover;
+      margin: 0 16px;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    cursor: pointer;
+  }
+}
