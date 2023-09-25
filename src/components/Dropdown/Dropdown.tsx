@@ -1,10 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
 
-// type Props = {
-//   initialValue: string,
-// };
+type Props = {
+  initialValue: string,
+};
 
-export const Dropdown = () => {
+export const Dropdown: React.FC<Props> = ({ initialValue }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,7 +21,7 @@ export const Dropdown = () => {
         <select
           className="dropdown__select"
           onChange={handleSortChange}
-          // value={initialValue}
+          value={initialValue}
         >
           <option
             className="dropdown__option"

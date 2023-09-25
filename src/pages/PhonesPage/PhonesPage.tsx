@@ -60,7 +60,7 @@ export const PhonesPage = () => {
           models
         </span>
         <div className="phonespage__dropdowns">
-          <Dropdown />
+          <Dropdown initialValue={sort} />
           <DropdownPagination initialValue={perPage} />
         </div>
 

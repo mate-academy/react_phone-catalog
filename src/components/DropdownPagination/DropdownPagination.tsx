@@ -20,8 +20,8 @@ export const DropdownPagination: React.FC<Props> = ({ initialValue }) => {
         Items on page
         <select
           className="dropdown__select"
-          value={initialValue}
           onChange={handlePerPageChange}
+          value={initialValue}
         >
           <option
             className="dropdown__option"
