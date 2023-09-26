@@ -1,3 +1,4 @@
+export * from './Search/Search';
 export * from './Footer/Footer';
 export * from './Dropdownws/Dropdowns';
 export * from './Navigation/Navigation';
@@ -12,4 +13,3 @@ export * from './ProductCard/ProductCard';
 export * from './LikeAlso/LikeAlso';
 export * from './Loader/Loader';
 export * from './ButtonBack/ButtonBack';
-export * from './Search/Search';

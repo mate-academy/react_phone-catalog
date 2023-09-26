@@ -9,15 +9,15 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) => classNames(
   'nav__link', { 'nav__link--active': isActive },
 );
 
-// type Props = {
-//   isShower?: boolean;
-//   nameSearch?: string;
-// };
+type Props = {
+  searchQuery?: string;
+  setSearchQuery?: (v: string) => void;
+};
 
-export const Navigation: React.FC = (
-  // isShower = false,
-  // nameSearch = '',
-) => {
+export const Navigation: React.FC<Props> = ({
+  searchQuery = '',
+  setSearchQuery = () => {},
+}) => {
   return (
     <header>
       <nav>
@@ -62,21 +62,7 @@ export const Navigation: React.FC = (
 
           </div>
           <div className="nav__personally">
-            <Search />
-            {/* <Search /> */}
-            {/* <label
-              className="nav__personally--container"
-              htmlFor="mySearch"
-            >
-              <input
-                type="text"
-                placeholder="Search in favourites..."
-                id="mySearch"
-                className="nav__personally--search"
-              />
-
-              <div className="icon nav__personally--icon" />
-            </label> */}
+            <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <NavLink
               to="/Favourites"
               className={({ isActive }) => classNames(

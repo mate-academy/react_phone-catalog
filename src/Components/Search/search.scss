@@ -8,17 +8,14 @@
     gap: 0;
   }
 
-  &__container {
-    display: flex;
-    width: 327px;
-    height: 64px;
-    background: $gray-white;
+  width: 327px;
+  height: 64px;
+  background: $gray-white;
 
-    margin: auto 24px;
-    align-items: center;
-    justify-content: space-between;
-    border-left: 1px solid $color-shadow;
-  }
+  margin: auto 24px;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 1px solid $color-shadow;
 
   &__query {
     margin-left: 24px;
@@ -45,6 +42,8 @@
   }
 
   &__close {
+    border: none;
+    background-color: $gray-white;
     background-image: url("../../images/icons/ButtonClose.svg");
   }
 }

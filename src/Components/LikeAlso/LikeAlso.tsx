@@ -27,7 +27,6 @@ export const LikeAlso: React.FC<Props> = ({ phones }) => {
             className={classNames(
               'button button__left button__like--left',
             )}
-          // disabled={buttonBack === 0}
           />
           <button
             type="button"
@@ -35,7 +34,6 @@ export const LikeAlso: React.FC<Props> = ({ phones }) => {
             className={classNames(
               'button button__right button__like--right',
             )}
-          // disabled={buttonNext === hotPhones.length}
           />
         </div>
       </div>

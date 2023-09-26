@@ -27,7 +27,6 @@ export const HotPrice: React.FC<Props> = ({ phones }) => {
             className={classNames(
               'button button__left button__slider--left',
             )}
-          // disabled={buttonBack === 0}
           />
           <button
             type="button"
@@ -35,7 +34,6 @@ export const HotPrice: React.FC<Props> = ({ phones }) => {
             className={classNames(
               'button button__right button__slider--right',
             )}
-          // disabled={buttonNext === hotPhones.length}
           />
         </div>
       </div>

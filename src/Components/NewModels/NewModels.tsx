@@ -24,7 +24,6 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
             className={classNames(
               'button button__left button__models--left',
             )}
-          // disabled={buttonBack === 0}
           />
           <button
             type="button"
@@ -32,7 +31,6 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
             className={classNames(
               'button button__right button__models--right',
             )}
-          // disabled={buttonNext === sliderPhones.length}
           />
         </div>
       </div>

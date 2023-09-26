@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './search.scss';
 
-export const Search: React.FC = () => {
-  const [query, setQuery] = useState('');
+type Props = {
+  searchQuery: string;
+  setSearchQuery: (v: string) => void;
+};
+
+export const Search: React.FC<Props> = ({ searchQuery, setSearchQuery }) => {
   const location = useLocation();
   const showSearchPages = ['/Phones', '/Tablets', '/Accessories', '/Favourites']
     .includes(location.pathname);
@@ -14,28 +18,42 @@ export const Search: React.FC = () => {
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { value } = event.currentTarget;
 
-    setQuery(value);
+    setSearchQuery(value);
   };
 
-  // console.log(!!query);
+  const handleResetSearchQuery = () => {
+    setSearchQuery('');
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      setSearchQuery('');
+    }
+  };
 
   return (
     <>
       {showSearchPages && (
         <label
-          className="search__container"
-          htmlFor="mySearch"
+          className="search search__container"
         >
           <input
             onChange={handleSearch}
-            type="text"
+            value={searchQuery}
             placeholder={placeholderName}
-            id="mySearch"
+            onKeyDown={handleKeyPress}
             className="search__query"
           />
 
-          {query
-            ? (<div className="icon__close" />)
+          {searchQuery
+            ? (
+              <button
+                type="button"
+                aria-label="Mute volume"
+                className="icon icon__close"
+                onClick={handleResetSearchQuery}
+              />
+            )
             : (<div className="icon icon__search" />)}
         </label>
       )}

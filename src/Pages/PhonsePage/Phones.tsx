@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import {
@@ -21,6 +21,7 @@ type Props = {
 };
 
 export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchParams] = useSearchParams();
   const selectedValueSortBy = searchParams.get('sortBy') || 'Newest';
   const selectedValueNumberOptions = searchParams.get('NumberOptions') || '4';
@@ -31,8 +32,14 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
     +selectedValueNumberOptions * page, phones.length,
   );
 
-  const sortedPhones = sortPhones(phones, selectedValueSortBy);
+  // testFilter
+  const searchInPhones = phones
+    .filter((product) => product.name
+      .toLowerCase()
+      .includes(searchQuery.trim()
+        .toLowerCase()));
 
+  const sortedPhones = sortPhones(phones, selectedValueSortBy);
   const phonesOnPage = (
     phonesForPage: Phone[],
     firstOnPage: number,
@@ -45,11 +52,15 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
     return sortedPhones.slice(firstOnPage, lastOnPage);
   };
 
-  const readyPhones = phonesOnPage(phones, firstPhoneOnPage, lastPhoneOnPage);
+  const readyPhones = phonesOnPage(
+    searchInPhones,
+    firstPhoneOnPage,
+    lastPhoneOnPage,
+  );
 
   return (
     <>
-      <Navigation />
+      <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <main>
         {isLoading && <Loader />}
 

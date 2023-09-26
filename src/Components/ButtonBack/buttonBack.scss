@@ -1,26 +1,30 @@
 @import "/src/style/main.scss";
 
 .back {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  width: 66px;
+  cursor: pointer;
+  background-color: $gray-white;
+  border: none;
+  text-transform: capitalize;
+  position: relative;
+  color: $gray-secondary;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  
 
-  margin: 0;
-  text-decoration: none;
+  &:hover {
+    color: $gray-primary;
+  }
 
-  &--icon {
-    height: 16px;
-    width: 16px;
+  &::before {
+    content: "";
+    position: absolute;
     background-image: url("../../images/icons/ArrowLeft.svg");
-  }
-
-  &--title {
-    color: $gray-secondary;
-  }
-
-  &--h1 {
-    margin-bottom: 40px;
-    margin-top: 16px;
+    background-position: left;
+    background-repeat: no-repeat;
+    left: -12px;
+    top: 0;
+    width: 16px;
+    height: 16px;
   }
 }

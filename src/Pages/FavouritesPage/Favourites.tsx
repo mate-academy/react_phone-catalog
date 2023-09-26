@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader, ProductCard } from '../../Components';
 import { Navigation } from '../../Components/Navigation/Navigation';
@@ -14,11 +15,23 @@ export const FavouritesPage: React.FC<Props> = ({
   isLoading,
   favouritesPhones,
 }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // testFilter
   const testPhones = favouritesPhones.slice(12, 19);
+
+  const searchInPhones = testPhones
+    .filter((product) => product.name
+      .toLowerCase()
+      .includes(searchQuery.trim()
+        .toLowerCase()));
+
+  const readyPhones = searchInPhones;
+  //
 
   return (
     <>
-      <Navigation />
+      <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {isLoading && <Loader />}
 
@@ -38,12 +51,12 @@ export const FavouritesPage: React.FC<Props> = ({
             <div className="title">
               <h1>Favourites</h1>
 
-              <p className="title__p">{`${testPhones.length} models`}</p>
+              <p className="title__p">{`${readyPhones.length} models`}</p>
             </div>
           </section>
 
           <section className="container--list phones__list">
-            {testPhones.map(phone => (
+            {readyPhones.map(phone => (
               <ProductCard phone={phone} key={phone.id} />
             ))}
           </section>
