@@ -47,12 +47,9 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
 
   const readyPhones = phonesOnPage(phones, firstPhoneOnPage, lastPhoneOnPage);
 
-  const isShowerSearch = true;
-  const nameSearch = 'phones';
-
   return (
     <>
-      <Navigation isShower={isShowerSearch} nameSearch={nameSearch} />
+      <Navigation />
       <main>
         {isLoading && <Loader />}
 

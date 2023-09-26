@@ -14,14 +14,11 @@ export const FavouritesPage: React.FC<Props> = ({
   isLoading,
   favouritesPhones,
 }) => {
-  const isShowerSearch = true;
-  const nameSearch = 'favourites';
-
   const testPhones = favouritesPhones.slice(12, 19);
 
   return (
     <>
-      <Navigation isShower={isShowerSearch} nameSearch={nameSearch} />
+      <Navigation />
 
       {isLoading && <Loader />}
 

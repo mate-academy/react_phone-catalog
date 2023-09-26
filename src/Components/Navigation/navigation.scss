@@ -21,7 +21,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 100%;
+      width: 64px;
       height: 3px;
       background-color: $gray-primary;
     }
@@ -58,34 +58,36 @@
       gap: 0;
     }
 
-    &--container {
-      display: flex;
-      width: 327px;
-      height: 64px;
-      background: $gray-white;
+    // &--container {
+    //   display: flex;
+    //   width: 327px;
+    //   height: 64px;
+    //   background: $gray-white;
 
-      margin: auto 24px;
-      align-items: center;
-      justify-content: space-between;
-      border-left: 1px solid $color-shadow;
-    }
+    //   margin: auto 24px;
+    //   align-items: center;
+    //   justify-content: space-between;
+    //   border-left: 1px solid $color-shadow;
+    // }
 
-    &--search {
-      margin-left: 24px;
-      color: $gray-icons-placeholders;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
+    // &--search {
+    //   margin-left: 24px;
+    //   color: $gray-primary;
+    //   font-size: 14px;
+    //   font-style: normal;
+    //   font-weight: 500;
+    //   line-height: normal;
 
-      border: none;
-    }
+    //   border: none;
+    //   outline: none;
 
-    &--icon {
-      height: 16px;
-      width: 16px;
-      background-image: url("../../images/icons/Search.svg");
-    }
+    // }
+
+    // &--icon {
+    //   height: 16px;
+    //   width: 16px;
+    //   background-image: url("../../images/icons/Search.svg");
+    // }
   }
 
   &__link {

@@ -3,20 +3,21 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.scss';
+import { Search } from '../Search/Search';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) => classNames(
   'nav__link', { 'nav__link--active': isActive },
 );
 
-type Props = {
-  isShower?: boolean;
-  nameSearch?: string;
-};
+// type Props = {
+//   isShower?: boolean;
+//   nameSearch?: string;
+// };
 
-export const Navigation: React.FC<Props> = ({
-  isShower = false,
-  nameSearch = '',
-}) => {
+export const Navigation: React.FC = (
+  // isShower = false,
+  // nameSearch = '',
+) => {
   return (
     <header>
       <nav>
@@ -61,26 +62,21 @@ export const Navigation: React.FC<Props> = ({
 
           </div>
           <div className="nav__personally">
-            {isShower && (
-              // need add logic for search
-              <label
-                className="nav__personally--container"
-                htmlFor="mySearch"
-              >
-                <input
-                  type="text"
-                  placeholder={
-                    nameSearch === 'phones'
-                      ? 'Search in phones...'
-                      : 'Search in favourites...'
-                  }
-                  id="mySearch"
-                  className="nav__personally--search"
-                />
+            <Search />
+            {/* <Search /> */}
+            {/* <label
+              className="nav__personally--container"
+              htmlFor="mySearch"
+            >
+              <input
+                type="text"
+                placeholder="Search in favourites..."
+                id="mySearch"
+                className="nav__personally--search"
+              />
 
-                <div className="icon nav__personally--icon" />
-              </label>
-            )}
+              <div className="icon nav__personally--icon" />
+            </label> */}
             <NavLink
               to="/Favourites"
               className={({ isActive }) => classNames(
