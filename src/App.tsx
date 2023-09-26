@@ -75,6 +75,16 @@ export const App = () => {
                 </li>
               </ul>
             </nav>
+
+            <button
+              type="button"
+              className="footer__to-top"
+              onClick={() => window.scrollTo({
+                top: 0, left: 0, behavior: 'smooth',
+              })}
+            >
+              Back to top
+            </button>
           </div>
         </div>
       </footer>

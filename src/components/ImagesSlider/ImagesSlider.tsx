@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './ImagesSlider.scss';
 
@@ -14,18 +14,48 @@ export const ImagesSlider = () => {
 
   const offsetStep = 100 / slidesImagesUrls.length;
 
+  const timerId = useRef(0);
+
   const slidesStyles = {
     width: `${100 * slidesImagesUrls.length}%`,
     transform: `translateX(-${offsetStep * activeSlide}%)`,
   };
 
   const handleNextClick = () => {
-    setActiveSlide(prev => prev + 1);
+    clearInterval(timerId.current);
+
+    setActiveSlide(prev => {
+      return prev + 1 > slidesImagesUrls.length - 1
+        ? 0
+        : prev + 1;
+    });
+
+    timerId.current = window.setInterval(handleNextClick, 5000);
   };
 
   const handlePrevClick = () => {
-    setActiveSlide(prev => prev - 1);
+    clearInterval(timerId.current);
+
+    setActiveSlide(prev => {
+      return prev - 1 < 0
+        ? slidesImagesUrls.length - 1
+        : prev - 1;
+    });
+
+    timerId.current = window.setInterval(handleNextClick, 5000);
   };
+
+  const handleIndicatorClick = (index: number) => {
+    clearInterval(timerId.current);
+    setActiveSlide(index);
+    timerId.current = window.setInterval(handleNextClick, 5000);
+  };
+
+  useEffect(() => {
+    timerId.current = window.setInterval(handleNextClick, 5000);
+
+    return () => clearInterval(timerId.current);
+  }, []);
 
   return (
     <div className="ImagesSlider">
@@ -67,7 +97,7 @@ export const ImagesSlider = () => {
             className={classNames('ImagesSlider__indicator', {
               'ImagesSlider__indicator--active': index === activeSlide,
             })}
-            onClick={() => setActiveSlide(index)}
+            onClick={() => handleIndicatorClick(index)}
           />
         ))}
       </div>

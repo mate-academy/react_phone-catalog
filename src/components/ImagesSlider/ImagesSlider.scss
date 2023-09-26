@@ -9,7 +9,7 @@
   &__wrapper {
     display: flex;
     column-gap: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 8px;
   }
 
   &__button {
@@ -44,20 +44,33 @@
 
   &__indicators {
     display: flex;
-    column-gap: 16px;
+    column-gap: 8px;
   }
 
   &__indicator {
-    width: 16px;
-    height: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
 
     border: none;
-    background-color: $elementsGray;
+    background-color: transparent;
     cursor: pointer;
 
-    transition: background-color $duration;
+    &::after {
+      display: block;
+      content: "";
+      width: 16px;
+      height: 4px;
 
-    &--active {
+      background-color: $elementsGray;
+
+      transition: background-color $duration;
+    }
+
+    &--active::after {
       background-color: $primeryGray;
     }
   }
