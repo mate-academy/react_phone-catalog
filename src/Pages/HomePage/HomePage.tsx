@@ -161,7 +161,7 @@ export const HomePage: React.FC = () => {
           <div className="home__category">
             <div className="home__bcg home__bcg--pink">
               <img
-                src="/_new/img/category-phones.png"
+                src="images/category-phones.png"
                 alt="Mobile phones category"
                 className="home__img"
               />
@@ -182,7 +182,7 @@ export const HomePage: React.FC = () => {
           <div className="home__category">
             <div className="home__bcg home__bcg--gray">
               <img
-                src="/_new/img/category-tablets.png"
+                src="images/category-tablets.png"
                 alt="Tablets category"
                 className="home__img home__img--gray"
               />
@@ -203,7 +203,7 @@ export const HomePage: React.FC = () => {
           <div className="home__category">
             <div className="home__bcg home__bcg--fuchsia">
               <img
-                src="/_new/img/category-accessories.png"
+                src="images/category-accessories.png"
                 alt="Accessories category"
                 className="home__img home__img--fuchsia"
               />

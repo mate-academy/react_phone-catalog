@@ -12,7 +12,6 @@
 
   &__left {
     display: flex;
-    margin-right: 242px;
   }
 
   &__navbar-item {
@@ -43,17 +42,17 @@
   }
 
   &__icons {
+    position: relative;
     display: flex;
     justify-content: flex-end;
     height: 67px;
-    width: 128px;
-    position: relative;
+    width: 450px;
   }
 
   &__item-count {
     position: absolute;
     top: 25%;
-    left: 75%;
+    right: 4%;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -62,7 +61,7 @@
     z-index: 1;
 
     &--fav {
-      left: 25%;
+      right: 18%;
     }
   }
 

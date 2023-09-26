@@ -3,6 +3,7 @@
 .search {
   box-shadow: -1px 0 0 0 #e2e6e9;
   position: relative;
+  width: 327px;
 
   &__input {
     box-sizing: border-box;
@@ -12,7 +13,7 @@
     color: $bold;
     border: none;
     height: 67px;
-    width: 327px;
+    
     margin-left: 24px;
 
     &::placeholder {

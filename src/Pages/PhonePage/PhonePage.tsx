@@ -5,8 +5,15 @@ import { getPhones } from '../../Helpers/api';
 import './PhonePage.scss';
 import { Loader } from '../../Components/Loader/Loader';
 import { Pagination } from '../../Components/Pagination/Pagination';
-import { filterFunction, useProductPage } from '../../Helpers/functions';
+import {
+  filterFunction,
+  noResult,
+  useProductPage,
+} from '../../Helpers/functions';
 import { useSearch } from '../../Helpers/SearchContext';
+import {
+  NoSearchResults,
+} from '../../Components/NoSearchResults/NoSearchResults';
 
 export const PhonePage: React.FC = () => {
   const {
@@ -23,6 +30,32 @@ export const PhonePage: React.FC = () => {
 
   const { searchQuery } = useSearch();
   const filteredProducts = filterFunction(products, searchQuery);
+  const isNoResult = noResult(products, searchQuery);
+  let content = null;
+
+  if (searchQuery !== '' && !isNoResult) {
+    content = <NoSearchResults />;
+  } else {
+    content
+      = (
+        <>
+          <ProductList
+            products={
+              filteredProducts.slice(
+                (currentPage - 1) * perPage, currentPage * perPage,
+              )
+            }
+          />
+
+          <Pagination
+            total={totalItems}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+        </>
+      );
+  }
 
   return (
     <>
@@ -77,24 +110,11 @@ export const PhonePage: React.FC = () => {
           </label>
         </div>
 
-        {isLoading
-          ? (<Loader />)
-          : (
-            <ProductList
-              products={
-                filteredProducts.slice(
-                  (currentPage - 1) * perPage, currentPage * perPage,
-                )
-              }
-            />
-          )}
-
-        <Pagination
-          total={totalItems}
-          perPage={perPage}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-        />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          content
+        )}
       </section>
     </>
   );

@@ -1,6 +1,9 @@
 @import "../../Helpers/vars.scss";
 
 .accessories {
+  display: flex;
+  flex-direction: column;
+
   &__title {
     font-size: 32px;
     font-weight: 700;

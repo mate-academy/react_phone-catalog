@@ -51,11 +51,11 @@ export const Header: React.FC = () => {
           )}
         </div>
 
-        {isSearchAppears && (
-          <Search />
-        )}
-
         <div className="header__icons">
+          {isSearchAppears && (
+            <Search />
+          )}
+
           {!isCartPage && (
             <NavLink to="/favourites" className={getClassForLink}>
               <img src="images/Favourites.svg" alt="Favourites" />

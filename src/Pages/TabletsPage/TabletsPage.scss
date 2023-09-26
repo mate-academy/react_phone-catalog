@@ -1,6 +1,9 @@
 @import "../../Helpers/vars.scss";
 
 .tablets {
+  display: flex;
+  flex-direction: column;
+
   &__title {
     font-size: 32px;
     font-weight: 700;
