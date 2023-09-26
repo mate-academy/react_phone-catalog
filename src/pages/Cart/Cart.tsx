@@ -106,7 +106,7 @@ export const Cart: React.FC = () => {
                         <Plus />
                       </button>
                     </div>
-                    <div className="cart__product-price">{`$${product.price * count}`}</div>
+                    <div className="cart__product-price">{`$${product.price}`}</div>
                   </div>
                 </CSSTransition>
               );
