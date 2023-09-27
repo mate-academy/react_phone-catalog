@@ -1,0 +1,26 @@
+@import '../../style-utils/style-utils';
+
+.container {
+  @include containerBase;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  padding: 24px 1em 80px;
+
+  @include onTablet {
+    padding-bottom: 60px;
+    padding-top: 18px;
+  }
+
+  &--extend {
+    padding-top: 40px;
+
+    @include onTablet {
+      padding-top: 24px;
+    }
+  }
+}

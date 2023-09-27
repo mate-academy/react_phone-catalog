@@ -1,0 +1,35 @@
+@import '../../style-utils/style-utils';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &--home {
+      background-image: url('../../img/Home.svg');
+
+    }
+
+    &--arrow {
+      background-image: url('../../img/ChevronRight.svg');
+    }
+  }
+
+  &__current {
+    @include smallText;
+  }
+
+  &__link {
+    @include smallText;
+    color: $color-primary;
+  }
+}

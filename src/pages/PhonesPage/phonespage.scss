@@ -1,0 +1,39 @@
+@import '../../style-utils/style-utils';
+
+.phones-page {
+  &__section {
+    margin-bottom: 40px;
+
+    &--small {
+      margin-bottom: 24px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @include h1Text;
+    margin-bottom: 8px;
+  }
+
+  &__models {
+    @include bodyText;
+    color: $color-secondary;
+  }
+
+  &__sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__dropdown-title {
+    @include smallText;
+    display: block;
+    margin-bottom: 8px;
+  }
+}
+
