@@ -12,6 +12,10 @@
 
     @extend %body-text;
     color: $secondary-color;
+
+    @include onMobile {
+      margin-bottom: 30px;
+    }
   }
 
   &__filter {

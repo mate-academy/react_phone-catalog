@@ -2,11 +2,34 @@
 
 .nav {
   height: 100%;
+  transition: transform 0.3s;
+
+  @include onTablet {
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 49px);
+    transform: translateX(-100%);
+    top: 49px;
+    background-color: #1d1d1d99;
+    z-index: 2;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
 
   &__list {
     display: flex;
     align-items: center;
     gap: 64px;
+
+    @include onTablet {
+      height: 50%;
+      flex-direction: column;
+      justify-content: center;
+      background-color: $white-color;
+      gap: 10px;
+    }
   }
 
   &__item {
@@ -14,6 +37,11 @@
     line-height: 64px;
 
     @extend %uppercase;
+
+    @include onTablet {
+      line-height: 40px;
+      font-size: 14px;
+    }
   }
 
   &__link {

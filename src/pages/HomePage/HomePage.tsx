@@ -56,27 +56,35 @@ export const HomePage: React.FC = () => {
       ) : (
         <>
           <section className="page__section">
-            <BannerSlider />
+            <div className="container">
+              <BannerSlider />
+            </div>
           </section>
 
           <section className="page__section">
-            <ProductsSlider
-              products={hotPriceProducts}
-              title="Hot prices"
-              btnMod="hot"
-            />
+            <div className="container">
+              <ProductsSlider
+                products={hotPriceProducts}
+                title="Hot prices"
+                btnMod="hot"
+              />
+            </div>
           </section>
 
           <section className="page__section">
-            <Categories phonesLength={hotPriceProducts.length} />
+            <div className="container">
+              <Categories phonesLength={hotPriceProducts.length} />
+            </div>
           </section>
 
           <section className="page__section">
-            <ProductsSlider
-              products={brandNewProducts}
-              title="Brand new models"
-              btnMod="brand"
-            />
+            <div className="container">
+              <ProductsSlider
+                products={brandNewProducts}
+                title="Brand new models"
+                btnMod="brand"
+              />
+            </div>
           </section>
         </>
       )}

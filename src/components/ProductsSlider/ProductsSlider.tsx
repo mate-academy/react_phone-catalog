@@ -31,53 +31,77 @@ export const ProductsSlider: React.FC<Props> = ({
   const isDiscount = title.includes('Hot');
 
   return (
-    <div className="container">
-      <div className="products-slider">
-        <div className="products-slider__header">
-          <h1 className="title">{title}</h1>
+    <div className="products-slider">
+      <div className="products-slider__header">
+        <h1 className="title">{title}</h1>
 
-          <div className="products-slider__control-btns">
-            <div
-              className={`
+        <div className="products-slider__control-btns">
+          <div
+            className={`
                 products-slider__prev-btn
                 products-slider__prev-btn--${btnMod}
                 button-nav
               `}
-            >
-              <ArrowLeft />
-            </div>
+          >
+            <ArrowLeft />
+          </div>
 
-            <div
-              className={`
+          <div
+            className={`
                 products-slider__next-btn
                 products-slider__next-btn--${btnMod}
                 button-nav
               `}
-            >
-              <ArrowRight />
-            </div>
+          >
+            <ArrowRight />
           </div>
         </div>
+      </div>
 
-        <div className="products-slider__content">
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={16}
-            modules={[Navigation]}
-            navigation={{
-              prevEl: `.products-slider__prev-btn--${btnMod}`,
-              nextEl: `.products-slider__next-btn--${btnMod}`,
-              disabledClass: 'button-nav--disabled',
-            }}
-            wrapperClass="swiper-product-wrapper"
-          >
-            {products.map(product => (
-              <SwiperSlide key={product.phoneId}>
-                <ProductCard product={product} isDiscount={isDiscount} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+      <div className="products-slider__content">
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={16}
+          modules={[Navigation]}
+          navigation={{
+            prevEl: `.products-slider__prev-btn--${btnMod}`,
+            nextEl: `.products-slider__next-btn--${btnMod}`,
+            disabledClass: 'button-nav--disabled',
+          }}
+          wrapperClass="swiper-product-wrapper"
+          breakpoints={{
+            320: {
+              slidesPerView: 1.5,
+              spaceBetween: 10,
+            },
+
+            380: {
+              slidesPerView: 1.6,
+              spaceBetween: 10,
+            },
+
+            500: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+
+            660: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+
+            960: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            },
+          }}
+        >
+          {products.map(product => (
+            <SwiperSlide key={product.phoneId}>
+              <ProductCard product={product} isDiscount={isDiscount} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

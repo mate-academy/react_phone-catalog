@@ -1,6 +1,7 @@
 @import "../../styles/utils";
 
 .header {
+  position: relative;
   box-shadow: 0 1px 0 0 $elements-color;
 
   &__content {
@@ -13,6 +14,11 @@
     align-items: center;
     padding-left: 24px;
     gap: 64px;
+
+    @include onTablet {
+      padding-left: 0;
+      gap: 10px;
+    }
   }
 
   &__logo {
@@ -62,6 +68,21 @@
         content: "";
         transform: scale(1);
       }
+    }
+
+    &--burger {
+      display: none;
+      padding: 0;
+      border-left: 1px solid transparent;
+
+      @include onTablet {
+        display: flex;
+      }
+    }
+
+    @include onTablet {
+      width: 48px;
+      height: 48px;
     }
   }
 

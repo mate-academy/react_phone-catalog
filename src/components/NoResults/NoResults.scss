@@ -6,6 +6,16 @@
   justify-content: center;
   align-items: center;
 
+  &__img {
+    @include onTablet {
+      width: 300px;
+    }
+
+    @include onMobile {
+      width: 280px;
+    }
+  }
+
   &__title {
     margin-bottom: 50px;
 
@@ -14,6 +24,16 @@
     text-align: center;
     line-height: normal;
     color: $secondary-color;
+
+    @include onTablet {
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+
+    @include onMobile {
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
   }
 
   &__link {

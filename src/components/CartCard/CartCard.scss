@@ -10,6 +10,11 @@
 
   @include border($elements-color);
 
+  @include onMobile {
+    flex-direction: column;
+    padding: 20px;
+  }
+
   &__action {
     padding: 8px;
 
@@ -35,6 +40,13 @@
     position: absolute;
     left: 24px;
     padding: 0;
+
+    @include onMobile {
+      left: 0;
+      top: 10px;
+      right: 10px;
+      text-align: right;
+    }
 
     path {
       transition: all 0.3s;

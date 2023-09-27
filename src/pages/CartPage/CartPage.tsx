@@ -1,6 +1,7 @@
 import React, {
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -24,7 +25,18 @@ export const CartPage: React.FC = () => {
     cart.reduce((sum, el) => +sum + el.price * +el.quantity, 0)
   ), [cart]);
 
-  const handleCheckoutClick = useCallback(() => setIsCheckout(true), []);
+  const handleCheckoutClick = useCallback(() => {
+    window.scrollTo({ top: 0, left: 0 });
+    setIsCheckout(true);
+  }, []);
+
+  useEffect(() => {
+    if (isCheckout) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isCheckout]);
 
   return (
     <section className="page__section">
@@ -35,13 +47,13 @@ export const CartPage: React.FC = () => {
           <h1 className="cart__title title">Cart</h1>
 
           {!cart.length ? (
-            <div className="cart__empty-wrap">
+            <div className="empty">
               <img
-                className="cart__empty-img"
+                className="empty__img"
                 src={emptyCart}
                 alt="Empty cart"
               />
-              <p className="cart__empty">Your cart is empty</p>
+              <p className="empty__message">Your cart is empty</p>
             </div>
           ) : (
             <div className="cart__content">

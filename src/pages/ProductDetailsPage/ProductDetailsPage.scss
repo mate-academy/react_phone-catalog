@@ -5,30 +5,59 @@
 
   &__title {
     margin-bottom: 40px;
+
+    @include onMobile {
+      margin-bottom: 20px;
+    }
   }
 
   &__content {
     display: flex;
     justify-content: space-between;
     margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
   }
 
   &__card {
     display: flex;
     gap: 64px;
     flex-basis: 80%;
+
+    @include onTablet {
+      gap: 20px;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 48px;
+      order: 2;
+    }
   }
 
   &__gallery {
     display: flex;
     align-items: center;
     gap: 27px;
+
+    @include onTablet {
+      flex-direction: column-reverse;
+    }
   }
 
   &__thumbs {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &__thumb {
@@ -42,6 +71,11 @@
     @include border($elements-color);
     @include hover(border-color, $icons-color);
 
+    @include onTablet {
+      width: 70px;
+      height: 70px;
+    }
+
     &--active {
       pointer-events: none;
       border-color: $primary-color;
@@ -52,6 +86,11 @@
     width: 442px;
     height: 442px;
     object-fit: contain;
+
+    @include onTablet{
+      width: 300px;
+      height: 300px;
+    }
   }
 
   &__actions {
@@ -115,6 +154,7 @@
   &__capacity-item {
     @extend %body-text;
     color: $primary-color;
+    
     @include border($icons-color);
 
     @include hover(border-color, $primary-color);
@@ -137,6 +177,15 @@
   &__id {
     @extend %small-text;
     color: $icons-color;
+
+    @include onTablet {
+      font-size: 10px;
+    }
+
+    @include onMobile {
+      margin-bottom: 20px;
+      order: 1;
+    }
   }
 
   &__price {
@@ -183,6 +232,12 @@
     display: flex;
     gap: 90px;
     margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 60px;
+      gap: 25px;
+    }
   }
 
   &__about {
@@ -201,6 +256,10 @@
     border-bottom: 1px solid $elements-color;
 
     @extend %h2;
+
+    @include onMobile {
+      margin-bottom: 16px;
+    }
   }
 
   &__about-content {

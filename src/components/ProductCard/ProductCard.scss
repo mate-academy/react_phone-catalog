@@ -12,6 +12,10 @@
     min-height: 513px;
   }
 
+  @include onTablet {
+    padding: 10px;
+  }
+
   &__img-link {
     display: block;
     margin: 8px 8px 24px;
@@ -19,14 +23,14 @@
 
   &__img {
     height: 208px;
-    width: 208px;
+    width: 100%;
 
     object-fit: contain;
-    vertical-align: top;
   }
 
   &__title-link {
-    display: block;
+    display: flex;
+    align-items: center;
     margin-bottom: 8px;
     flex-grow: 1;
   }
@@ -42,11 +46,20 @@
     padding-bottom: 8px;
     margin-bottom: 16px;
     border-bottom: 1px solid $elements-color;
+
+    @include onTablet {
+      margin-bottom: 10px;
+    }
   }
 
   &__price {
     @extend %h2;
     color: $primary-color;
+
+    @include onMobile {
+      font-size: 18px;
+      line-height: normal;
+    }
   }
 
   &__fullprice {
@@ -55,6 +68,11 @@
     line-height: normal;
     text-decoration: line-through;
     color: $secondary-color;
+
+    @include onMobile{
+      font-size: 18px;
+      line-height: normal;
+    }
   }
 
   &__info-content {
@@ -66,15 +84,23 @@
   &__actions {
     display: flex;
     gap: 8px;
+
+    @include onMobile {
+      justify-content: space-between;
+    }
   }
 
   &__add-cart {
     width: 176px;
     height: 40px;
+
+    @include onTablet {
+      width: 100%;
+    }
   }
 
   &__add-fav {
-    width: 40px;
+    min-width: 40px;
     height: 40px;
   }
 }

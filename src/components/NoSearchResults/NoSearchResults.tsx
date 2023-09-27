@@ -5,7 +5,11 @@ export const NoSearchResults = () => {
   return (
     <div className="no-result">
       <div className="no-result__wrap">
-        <img src={noSearchResult} alt="No Search Result" />
+        <img
+          className="no-result__img"
+          src={noSearchResult}
+          alt="No Search Result"
+        />
 
         <p className="no-result__empty">No results found!</p>
       </div>

@@ -11,6 +11,11 @@
     display: flex;
     gap: 16px;
     align-items: flex-start;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__list {
@@ -37,34 +42,18 @@
   }
 
   &__total-items {
+    width: 100%;
     margin-bottom: 24px;
     padding-bottom: 24px;
 
     border-bottom: 1px solid $elements-color;
 
     @extend %body-text;
+    text-align: center;
     color: $secondary-color;
   }
 
   &__checkout {
     padding: 14px 0;
-  }
-
-  &__empty-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__empty-img {
-    margin-bottom: 50px;
-  }
-
-  &__empty {
-    @extend %h1;
-    font-size: 70px;
-    line-height: normal;
-    color: $secondary-color;
   }
 }

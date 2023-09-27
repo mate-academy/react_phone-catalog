@@ -5,15 +5,34 @@
 
   box-shadow: 0 -1px 0 0 $elements-color;
 
+  @include onMobile {
+    padding: 16px 0;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &__info {
     display: flex;
     gap: 64px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+
+    @include onMobile {
+      width: 100%;
+      justify-content: space-evenly;
+      gap: 0;
+    }
   }
 
   &__item {

@@ -10,7 +10,11 @@ type Props = {
 export const NoResults: React.FC<Props> = ({ pageName }) => {
   return (
     <div className="no-results">
-      <img src={notFound} alt="Page is not implemented" />
+      <img
+        src={notFound}
+        className="no-results__img"
+        alt="Page is not implemented"
+      />
 
       <h1 className="no-results__title">
         {`We are sorry, but ${pageName} page is not implemented yet`}

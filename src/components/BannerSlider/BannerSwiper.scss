@@ -4,18 +4,21 @@
   width: 100%;
 
   &-banner-wrapper {
-    width: 1040px;
     height: 400px;
-  }
 
-  &-slide {
-    width: 1040px;
+    @include onMobile {
+      height: 200px;
+    }
   }
 
   &-button-prev,
   &-button-next {
     height: 400px;
     width: 32px;
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &-pagination {

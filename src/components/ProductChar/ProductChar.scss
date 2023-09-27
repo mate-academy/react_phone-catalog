@@ -3,6 +3,7 @@
 .info {
   display: flex;
   justify-content: space-between;
+  gap: 50px;
 
   &--margin {
     margin-bottom: 8px;
@@ -18,5 +19,6 @@
 
   &__value {
     color: $primary-color;
+    text-wrap: wrap;
   }
 }

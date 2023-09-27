@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
 import debounce from 'lodash.debounce';
 
 import './Search.scss';
@@ -10,6 +11,7 @@ import { getSearchWith } from '../../helpers/searchHelper';
 export const Search: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchValue, setSearchValue] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const query = searchParams.get('query') || '';
   const location = useLocation();
 
@@ -18,6 +20,14 @@ export const Search: React.FC = () => {
       setSearchParams(getSearchWith(searchParams, { query: value || null }));
     }, 1000), [searchParams],
   );
+
+  const handleBtnClick = useCallback(() => {
+    setIsOpen(state => !state);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setIsOpen(state => !state);
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -39,19 +49,36 @@ export const Search: React.FC = () => {
 
   return (
     <div className="search">
+      <button
+        type="button"
+        className="search__btn"
+        onClick={handleBtnClick}
+      >
+        <img
+          src={searchIcon}
+          alt="Search icon"
+          className="search__btn-icon"
+        />
+      </button>
+
       <input
         type="search"
         placeholder={`Search in ${location.pathname.slice(1)}...`}
-        className="search__field"
+        className={classNames('search__field', {
+          'search__field--active': isOpen,
+        })}
         value={searchValue}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
 
       {!searchValue && (
         <img
           src={searchIcon}
           alt="Search icon"
-          className="search__icon"
+          className={classNames('search__icon', {
+            'search__icon--active': isOpen,
+          })}
         />
       )}
     </div>

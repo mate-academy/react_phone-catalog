@@ -37,14 +37,14 @@ export const FavouritesPage: React.FC = () => {
           )}
 
           {!visibleProducts.length && !query && (
-            <div className="favourites__empty-wrap">
+            <div className="empty">
               <img
-                className="favourites__empty-img"
+                className="empty__img"
                 src={emptyFav}
                 alt="Empty fav"
               />
 
-              <p className="favourites__empty">Your favourites is empty</p>
+              <p className="empty__message">Your favourites is empty</p>
             </div>
           )}
 

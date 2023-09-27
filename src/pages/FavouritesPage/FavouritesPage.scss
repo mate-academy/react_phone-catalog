@@ -14,18 +14,4 @@
     @extend %body-text;
     color: $secondary-color;
   }
-
-  &__empty-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__empty {
-    @extend %h1;
-    font-size: 70px;
-    line-height: normal;
-    color: $secondary-color;
-  }
 }
