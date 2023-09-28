@@ -3,7 +3,6 @@
   @extend %h1;
   color: $primary-color;
 
-
   @include onTablet {
     font-size: 28px;
   }

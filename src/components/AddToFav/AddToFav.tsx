@@ -29,7 +29,7 @@ export const AddToFav: React.FC<Props> = ({ product }) => {
       ...favourites,
       product,
     ]);
-  }, [favourites]);
+  }, [favourites, product]);
 
   return (
     <button

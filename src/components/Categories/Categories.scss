@@ -46,17 +46,20 @@
     flex-grow: 1;
     flex-basis: 100%;
 
-    &:hover .categories__img--phones {
-      object-position: top -20px left 0;
+    @media (hover: hover) {
+      &:hover .categories__img--phones {
+        object-position: top -20px left 0;
+      }
+
+      &:hover .categories__img--tablets {
+        object-position: top 0 left 0;
+      }
+
+      &:hover .categories__img--accessories {
+        object-position: top 20px left 0;
+      }
     }
 
-    &:hover .categories__img--tablets {
-      object-position: top 0 left 0;
-    }
-
-    &:hover .categories__img--accessories {
-      object-position: top 20px left 0;
-    }
   }
 
   &__link {

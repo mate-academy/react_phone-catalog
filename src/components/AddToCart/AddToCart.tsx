@@ -27,7 +27,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
       ...cart,
       product,
     ]);
-  }, [cart]);
+  }, [cart, product]);
 
   return (
     <button

@@ -1,5 +1,5 @@
 @mixin hover($_property, $_toValue) {
-  @media(hover: hover) {
+  @media (hover: hover) {
     transition: #{$_property} 0.3s;
     &:hover {
       #{$_property}: $_toValue;
@@ -9,6 +9,17 @@
 
 @mixin border($_color) {
   border: 1px solid $_color;
+}
+
+@mixin center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
 }
 
 @mixin onTablet {

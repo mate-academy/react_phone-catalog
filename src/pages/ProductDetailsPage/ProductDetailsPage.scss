@@ -87,7 +87,7 @@
     height: 442px;
     object-fit: contain;
 
-    @include onTablet{
+    @include onTablet {
       width: 300px;
       height: 300px;
     }
@@ -154,7 +154,7 @@
   &__capacity-item {
     @extend %body-text;
     color: $primary-color;
-    
+
     @include border($icons-color);
 
     @include hover(border-color, $primary-color);

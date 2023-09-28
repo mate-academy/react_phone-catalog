@@ -1,16 +1,10 @@
 .empty {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include center;
 
   &__img {
-    margin-bottom: 50px;
-
     @include onTablet {
       width: 220px;
       height: 220px;
-      margin-bottom: 25px;
     }
 
     @include onMobile {

@@ -2,10 +2,7 @@
 
 .no-result {
   &__wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include center;
   }
 
   &__img {
@@ -24,6 +21,7 @@
   &__empty {
     @extend %h1;
     font-size: 50px;
+    text-align: center;
     line-height: normal;
     color: $secondary-color;
 

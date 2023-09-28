@@ -18,7 +18,7 @@ export const Search: React.FC = () => {
   const debouncedHandleChange = useCallback(
     debounce((value: string) => {
       setSearchParams(getSearchWith(searchParams, { query: value || null }));
-    }, 1000), [searchParams],
+    }, 1000), [searchParams, searchValue],
   );
 
   const handleBtnClick = useCallback(() => {
@@ -29,11 +29,13 @@ export const Search: React.FC = () => {
     setIsOpen(state => !state);
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     setSearchValue(event.target.value);
 
     debouncedHandleChange(event.target.value);
-  };
+  }, [searchParams]);
 
   useEffect(() => {
     setSearchValue('');

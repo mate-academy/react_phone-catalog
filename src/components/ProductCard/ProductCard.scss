@@ -69,7 +69,7 @@
     text-decoration: line-through;
     color: $secondary-color;
 
-    @include onMobile{
+    @include onMobile {
       font-size: 18px;
       line-height: normal;
     }
