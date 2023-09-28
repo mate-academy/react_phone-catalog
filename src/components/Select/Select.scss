@@ -1,0 +1,65 @@
+@import "../../styles/_utils/variables.scss";
+
+.select {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  border: $borderWidth solid $colorIcons;
+
+  &:hover {
+    border-color: $colorPrimary;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 5px;
+
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 14px;
+    line-height: 21px;
+
+    border: none;
+    background-color: $colorWhite;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    height: $hieghtSelect;
+    width: $hieghtSelect;
+
+    background-image: url(../../images/icons/Chevron-Arrow-Down.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.arrow-top {
+      background-image: url(../../images/icons/Chevron-Arrow-Up.svg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 41px;
+    width: 100%;
+  }
+
+  &__option {
+    padding: 5px;
+
+    border-left: $borderWidth solid $colorIcons;
+    border-right: $borderWidth solid $colorIcons;
+
+    &:last-child {
+      border-bottom: $borderWidth solid $colorIcons;
+    }
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+}

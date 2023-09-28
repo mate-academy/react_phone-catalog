@@ -1,0 +1,14 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/container.scss";
+
+.no-results {
+  margin-top: $marginBetweenSections;
+
+  &__title {
+    color: $colorSecondary;
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

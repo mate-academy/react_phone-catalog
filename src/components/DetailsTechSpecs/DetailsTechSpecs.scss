@@ -1,0 +1,17 @@
+@import "../../styles/_utils/variables.scss";
+
+.details-tech-specs {
+  &__content {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    padding-top: 30px;
+    margin-top: 20px;
+    border-top: 1px solid $colorElements;
+  }
+
+  &__value {
+    color: $colorPrimary;
+  }
+}

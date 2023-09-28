@@ -1,0 +1,40 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/container.scss";
+
+.details-page {
+  margin-top: 30px;
+
+  &__title {
+    margin-top: 10px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 50px;
+    
+    width: 100%;
+
+    margin-top: 40px;
+  }
+
+  &__section {
+    width: 47%;
+    min-width: 450px;
+  }
+
+  &__paragraph {
+    margin-top: $marginBetweenSections;
+    
+    color: $colorSecondary;
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__slider {
+    margin: 70px 0;
+  }
+}

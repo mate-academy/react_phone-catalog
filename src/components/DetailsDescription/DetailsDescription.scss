@@ -1,0 +1,23 @@
+@import "../../styles/_utils/variables.scss";
+
+.details-description {
+  &__content {
+    margin-top: 20px;
+    border-top: 1px solid $colorElements;
+  }
+
+  &__small-title {
+    margin-top: 30px;
+
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $colorPrimary;
+  }
+
+  &__paragraf {
+    margin-top: 15px;
+    text-align: justify;
+  }
+}

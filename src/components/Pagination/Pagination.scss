@@ -1,0 +1,48 @@
+@import "../../styles/_utils/variables.scss";
+
+.pagination {
+  display: flex;
+  gap: 0.5em;
+
+  padding-top: 40px;
+
+  &__item {
+    display: flex;
+
+    &:first-child {
+      padding-right: 10px;
+    }
+
+    &:last-child {
+      padding-left: 10px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: $widthIcon;
+    width: $widthIcon;
+
+    border: 1px solid $colorIcons;
+    color: $colorPrimary;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      color: $colorElements;
+      border-color: $colorElements;
+    }
+
+    &.active {
+      background-color: $colorPrimary;
+      color: $colorWhite;
+    }
+  }
+}

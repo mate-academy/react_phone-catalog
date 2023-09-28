@@ -1,0 +1,32 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/container.scss";
+
+.product-page {
+  &__way {
+    margin-top: 20px;
+  }
+
+  &__section {
+    margin-top: 40px;
+  }
+
+  &__list {
+    display: flex;
+    padding-top: 30px;
+  }
+
+  &__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__paragraph {
+    margin-top: 20px;
+  
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

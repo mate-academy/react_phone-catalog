@@ -1,0 +1,35 @@
+@import "../../styles/_utils/variables.scss";
+
+.way {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+
+  &__icon16 {
+    height: 16px;
+    width: 16px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__home {
+    background-image: url(../../images/icons/Home.svg);
+    margin-right: 5px;
+  }
+
+  &__arrow-right {
+    background-image: url(../../images/icons/Chevron-Arrow-Right.svg);
+    margin-right: 5px;
+  }
+
+  &__link {
+    color: $colorPrimary;
+    margin-right: 5px;
+  }
+
+  &__name {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

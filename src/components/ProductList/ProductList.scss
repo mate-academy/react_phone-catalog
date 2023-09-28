@@ -1,0 +1,12 @@
+@import "../../styles/_utils/variables.scss";
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  row-gap: 2em;
+
+  &__item {
+    width: 100%;
+  }
+}

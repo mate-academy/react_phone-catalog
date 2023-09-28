@@ -1,0 +1,12 @@
+@import "../../styles/_utils/variables.scss";
+
+.err-mess {
+  display: flex;
+  justify-content: center;
+
+  height: max-content;
+  padding: 40px;
+
+  color: $colorWhite;
+  background-color: $colorRed;
+}

@@ -1,0 +1,88 @@
+@import "../../styles/_utils/variables.scss";
+
+.horizont-card {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: $paddingRightCartPage;
+  border: 1px solid $colorElements;
+  box-sizing: border-box;
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__close {
+    height: 21px;
+    width: 21px;
+    font-size: 21px;
+    color: $colorIcons;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 30%;
+  }
+
+  &__image {
+    height: $heightSmallImg;
+    width: $heightSmallImg;
+    padding: 5px;
+
+    object-fit: contain;
+    object-position: center;
+
+    &--container {
+      display: flex;
+
+      margin: 0 20px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+
+    font-weight: 500;
+    line-height: 21px;
+    color: $colorPrimary;
+
+    &--button {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      border: 1px solid $colorIcons;
+
+      line-height: $widthIcon;
+      font-weight: 300;
+      font-size: 18px;
+      color: $colorPrimary;
+
+      &:hover {
+        border-color: $colorPrimary;
+      }
+
+      &.is-disabled {
+        color: $colorElements;
+        border-color: $colorElements;
+      }
+    }
+
+    &--number {
+      padding: 0 5px;
+      font-size: 14px;
+    }
+  }
+}

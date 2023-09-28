@@ -1,0 +1,40 @@
+$maxWidthContainer: 1122px;
+
+$heightHeader: 64px;
+$heightFooter: 96px;
+$lineHeightNavLink: 20px;
+$paddingsHaederNavLink: 22px; //($heightHeader - $lineHeightNavLink) / 2;
+$paddingsFooterNavLink: 37px; //($heightFooter - $lineHeightNavLink) / 2;
+$marginBetweenSections: 70px;
+
+$colorPrimary: #313237;
+$colorSecondary: #89939a;
+$colorIcons: #b4bdc3;
+$colorElements: #e2e6e9;
+$colorHoverAndBG: #fafbfc;
+$colorWhite: #fff;
+$colorGreen: #27ae60;
+$colorRed: #eb5757;
+$colorForPhones: #fcdbc1;
+$colorForAccess: hwb(340 37% 16%);
+
+$widthIcon: 32px;
+$borderWidth: 1px;
+
+$hieghtSelect: 40px;
+
+$heightCaruselsImg: 400px;
+$widthCaruselsImg: 1020px;
+$gapOfCarusel: 40px;
+
+$widthSlider: $maxWidthContainer;
+$widthProductCard: 270px;
+$gapSlider: 13px;
+
+$heightDetailsImg: 442px;
+$heightSmallImg: 80px;
+$gapBetweenSmallImgs: 10px; //($heightDetailsImg - 5 * $heightSmallImg) / 4;
+
+$timeTransition: 1000ms;
+
+$paddingRightCartPage: 21px;

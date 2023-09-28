@@ -1,0 +1,63 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/selectionButtons.scss";
+
+.details-selects {
+  display: flex;
+  justify-content: space-between;
+
+  &__list {
+    width: 65%;
+  }
+
+  &__select {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $colorElements;
+  }
+
+  &__prices {
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  &__price-with-discount {
+    margin-right: 5%;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $colorPrimary;
+  }
+
+  &__price {
+    text-decoration: line-through;
+  }
+
+  &__params {
+    margin-top: 30px;
+  }
+
+  &__param {
+    display: flex;
+    justify-content: space-between;
+
+    &--name {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &--value {
+      font-size: 12px;
+      line-height: 16px;
+
+      color: $colorPrimary;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

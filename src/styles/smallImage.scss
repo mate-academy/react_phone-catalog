@@ -1,0 +1,25 @@
+.small-image {
+  height: $heightSmallImg;
+  width: $heightSmallImg;
+  padding: 5px;
+
+  object-fit: contain;
+  object-position: center;
+
+  &__container {
+    display: flex;
+
+    height: $heightSmallImg;
+    width: $heightSmallImg;
+
+    border: 1px solid $colorElements;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &.is-active {
+      border-color: $colorPrimary;
+    }
+  }
+}

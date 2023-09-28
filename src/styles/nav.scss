@@ -1,0 +1,32 @@
+.nav {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    margin-right: $heightHeader;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $colorSecondary;
+    cursor: pointer;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+}

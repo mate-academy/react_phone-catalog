@@ -1,0 +1,66 @@
+@import "../../styles/_utils/variables.scss";
+
+.slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &--buttons-container {
+      display: flex;
+      justify-content: space-between;
+
+      width: 7%;
+    }
+
+    &--button {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $colorWhite;
+
+      box-sizing: border-box;
+      border: 1px solid $colorIcons;
+
+      &:hover {
+        border-color: $colorPrimary;
+      }
+
+      &.is-disabled {
+        border-color: $colorElements;
+        color: $colorElements;
+      }
+    }
+
+    &--button-left {
+      background-image: url(../../images/icons/Chevron-Arrow-Left-Dark.svg);
+
+      &.is-disabled {
+        background-image: url(../../images/icons/Chevron-Arrow-Left.svg);
+      }
+    }
+
+    &--button-right {
+      background-image: url(../../images/icons/Chevron-Arrow-Right-Dark.svg);
+
+      &.is-disabled {
+        background-image: url(../../images/icons/Chevron-Arrow-Right.svg);
+      }
+    }
+  }
+
+  &__content {
+    max-width: $widthSlider;
+    margin: 20px auto 0;
+
+    overflow: hidden;
+  }
+
+  &__images {
+    display: flex;
+    gap: $gapSlider;
+
+    transition: transform $timeTransition linear;
+  }
+}

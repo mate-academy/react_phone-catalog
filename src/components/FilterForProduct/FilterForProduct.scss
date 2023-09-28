@@ -1,0 +1,14 @@
+@import "../../styles/_utils/variables.scss";
+
+.phones-filter {
+  display: flex;
+  gap: 20px;
+
+  &__sort {
+    width: 15%;
+  }
+
+  &__quantity-items {
+    width: 10%;
+  }
+}

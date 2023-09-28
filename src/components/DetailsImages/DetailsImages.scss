@@ -1,0 +1,38 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/smallImage.scss";
+
+.details-images {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  &__images {
+    display: flex;
+    height: $heightDetailsImg;
+  }
+
+  &__small-images {
+    position: relative;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: $gapBetweenSmallImgs;
+    height: 100%;
+  }
+
+  &__main-img-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__main-img {
+    display: flex;
+    height: $heightDetailsImg;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}

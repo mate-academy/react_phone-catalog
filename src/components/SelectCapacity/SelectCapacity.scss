@@ -1,0 +1,30 @@
+@import "../../styles/_utils/variables.scss";
+
+.select-capacity {
+  &__list {
+    display: flex;
+    gap: 10px;
+
+    height: max-content;
+    box-sizing: border-box;
+
+    margin-top: 10px;
+  }
+
+  &__link {
+    display: flex;
+
+    padding: 7px;
+    border: 1px solid $colorElements;
+    color: $colorPrimary;
+
+    &:hover {
+      border-color: $colorSecondary;
+    }
+
+    &.is-active {
+      color: $colorWhite;
+      background-color: $colorPrimary;
+    }
+  }
+}

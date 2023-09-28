@@ -1,0 +1,12 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/container.scss";
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: $marginBetweenSections;
+
+  &__carusel {
+    margin-top: 38px;
+  }
+}

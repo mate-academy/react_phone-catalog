@@ -1,0 +1,29 @@
+@import "../../styles/_utils/variables.scss";
+
+.button-back {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+
+  &:hover {
+    color: $colorPrimary;
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+
+    background-image: url(../../images/icons/Chevron-Arrow-Left-Dark.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__text {
+    padding: 0 7px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

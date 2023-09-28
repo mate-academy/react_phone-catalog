@@ -1,0 +1,60 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/font-faces.scss";
+
+@import "../../styles/logo.scss";
+@import "../../styles/nav.scss";
+@import "../../styles/container.scss";
+
+.footer {
+  width: 100%;
+
+  margin-top: $marginBetweenSections;
+  border-top: 1px solid $colorElements;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav-link {
+    padding: $paddingsFooterNavLink 0;
+
+    line-height: $lineHeightNavLink;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+
+    font-size: 12px;
+
+    &--link {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      margin-left: 12px;
+
+      background-image: url(../../images/icons/Chevron-Arrow-Up-Dark.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $colorWhite;
+
+      box-sizing: border-box;
+      border: 1px solid $colorIcons;
+
+      &:hover {
+        border-color: $colorPrimary;
+      }
+
+      &.is-disabled {
+        border-color: $colorElements;
+        background-image: url(../../images/icons/Chevron-Arrow-Up.svg);
+
+        &:hover {
+          border-color: $colorElements;
+        }
+      }
+    }
+  }
+}
