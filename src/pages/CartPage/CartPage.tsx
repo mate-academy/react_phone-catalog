@@ -9,7 +9,7 @@ import { NamesBySections } from '../../types/NamesBySections';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { Footer } from '../../components/Footer/Footer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
-import { Loader } from '../../components/Loader';
+import { Loader } from '../../components/Loader/Loader';
 import { getBackLink } from '../../helpers/getBackLink';
 
 export const CartPage = () => {

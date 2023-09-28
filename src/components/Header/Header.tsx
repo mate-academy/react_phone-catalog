@@ -4,7 +4,6 @@ import {
   Link, NavLink, useLocation, useSearchParams,
 } from 'react-router-dom';
 import classNames from 'classnames';
-import debounce from 'lodash.debounce';
 import logo from '../../images/Logo.svg';
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { getSearchWith } from '../../helpers/searchHelper';
@@ -12,6 +11,7 @@ import { SearchParams } from '../../types/SearchParams';
 import { getState } from '../../helpers/getState';
 import { NamesByLinks } from '../../types/NamesByLinks';
 import { DEF_SORT } from '../../helpers/consts';
+import { debounce } from '../../helpers/debounce';
 
 type Props = {
   withNavigate?: boolean,

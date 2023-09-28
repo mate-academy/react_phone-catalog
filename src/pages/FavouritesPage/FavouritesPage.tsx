@@ -6,7 +6,7 @@ import { NamesByCategories } from '../../types/NamesByCategories';
 import './FavouritesPage.scss';
 import { ProductShort } from '../../types/ProductShort';
 import { getFavourites } from '../../api';
-import { Loader } from '../../components/Loader';
+import { Loader } from '../../components/Loader/Loader';
 import { WayFromHome } from '../../components/WayFromHome/WayFromHome';
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { NamesBySections } from '../../types/NamesBySections';

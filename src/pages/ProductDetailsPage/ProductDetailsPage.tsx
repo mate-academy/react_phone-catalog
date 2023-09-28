@@ -6,7 +6,7 @@ import { Header } from '../../components/Header/Header';
 import { WayFromHome } from '../../components/WayFromHome/WayFromHome';
 import { ProductFull } from '../../types/ProductFull';
 import { getDetailsBy, getSimilarBy, getSuggestedProducts } from '../../api';
-import { Loader } from '../../components/Loader';
+import { Loader } from '../../components/Loader/Loader';
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { NamesBySections } from '../../types/NamesBySections';

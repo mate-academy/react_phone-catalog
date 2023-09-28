@@ -8,7 +8,7 @@ import { Carusel } from '../../components/Carusel/Carusel';
 import { Categories } from '../../components/Categories/Categories';
 import { NamesBySections } from '../../types/NamesBySections';
 import { getAllProducts } from '../../api';
-import { Loader } from '../../components/Loader';
+import { Loader } from '../../components/Loader/Loader';
 import { Footer } from '../../components/Footer/Footer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Header } from '../../components/Header/Header';
