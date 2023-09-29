@@ -2,15 +2,18 @@ import './Slider.scss';
 import { useEffect, useState } from 'react';
 import arrow_left from '../../icons/Arrow_left.svg';
 import arrow_right from '../../icons/Arrow_right.svg';
+import banner_phones from '../../banner/banner-phones.png';
+import banner_accessories from '../../banner/banner-tablets.png';
+import banner_tablets from '../../banner/banner.png';
 
 const Slider = () => {
   const [current, setCurrent] = useState<number>(0);
   const [autoPlay, setAutoPlay] = useState<boolean>(true);
 
   const images = [
-    { image: '/_new/img/banner-phones.png', id: 1 },
-    { image: '_new/img/banner-accessories.png', id: 2 },
-    { image: '_new/img/banner-tablets.png', id: 3 },
+    { image: banner_phones, id: 1 },
+    { image: banner_accessories, id: 2 },
+    { image: banner_tablets, id: 3 },
   ];
 
   const slideLeft = () => {
