@@ -1,0 +1,125 @@
+@import "../../styleUtils/variables.scss";
+
+.ProductCard {
+  padding: 24px;
+  color: #313237;
+  width: 272px;
+  height: 507px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #e2e6e9;
+
+  transition-duration: 0.3s;
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  &__error-img {
+    height: 70%;
+    width: 70%;
+  }
+
+  &:hover {
+    transform: scale(1.04);
+    box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px,
+      rgba(0, 0, 0, 0.12) 0 -12px 30px,
+      rgba(0, 0, 0, 0.12) 0 4px 6px,
+      rgba(0, 0, 0, 0.17) 0 12px 13px,
+      rgba(0, 0, 0, 0.09) 0 -3px 5px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 208px;
+  }
+
+  &__img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-top: 24px;
+    height: 40px;
+
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 5px;
+    padding-bottom: 5px;
+
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    box-shadow: 0 1px 0 0 #e2e6e9;
+
+    &-normal {
+      font-family: "MontBold", Helvetica, sans-serif;
+    }
+
+    &-discounted {
+      color: #89939a;
+      letter-spacing: 0;
+      text-decoration: line-through;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+
+      &__name {
+        color: #89939a;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      &__value {
+        color: #313237;
+        font-family: "MontSemiBold", Helvetica, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,42 @@
+@import "../../styleUtils/variables.scss";
+
+.scrollUp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $grey-secondary;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      color: $grey-primary
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid $icons-color;
+    padding: 8px;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      border-color: $grey-primary;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/assets/arrowUp--icon.svg);
+    width: 16px;
+    height: 16px;
+  }
+}

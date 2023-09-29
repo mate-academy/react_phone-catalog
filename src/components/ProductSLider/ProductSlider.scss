@@ -1,0 +1,84 @@
+@import "../../styleUtils/variables.scss";
+
+.container {
+  margin-bottom: 80px;
+}
+
+.ProductsSlider {
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  &__title {
+    color: #313237;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background: none;
+
+    border: 1px solid #b4bdc3;
+
+    cursor: pointer;
+
+    transition-duration: 0.3s;
+
+    &.disabled {
+      border-color: #e2e6e9;
+    }
+
+    &.disabled:hover {
+      border-color: #e2e6e9;
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  &__card {
+    display: flex;
+    margin-top: 24px;
+    gap: 16px;
+    width: 272px;
+    transition: transform 0.3s ease;
+
+    &--animated {
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.arrow--left {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/arrowLeft--icon.svg);
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}
+
+.arrow--right {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/arrowRight--icon.svg);
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}
