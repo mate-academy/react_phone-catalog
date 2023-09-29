@@ -4,8 +4,19 @@ import phones from './assets/category-phones.png';
 import tablets from './assets/category-tablets.png';
 import accessories from './assets/category-accessories.png';
 import styles from './ShopByCategory.module.scss';
+import { Product } from '../../types/Product';
 
-export const ShopByCategory: FC = () => {
+type Props = {
+  phone: Product[];
+  tablet: Product[];
+  accessory: Product[];
+};
+
+export const ShopByCategory: FC<Props> = ({
+  phone,
+  tablet,
+  accessory,
+}) => {
   return (
     <section className={styles.category}>
       <h1 className={styles.title}>
@@ -33,7 +44,7 @@ export const ShopByCategory: FC = () => {
                 Mobile phones
               </h2>
               <h3 className={styles.models}>
-                95 models
+                {`${phone.length} models`}
               </h3>
             </div>
           </div>
@@ -60,7 +71,7 @@ export const ShopByCategory: FC = () => {
                 Tablets
               </h2>
               <h3 className={styles.models}>
-                24 models
+                {`${tablet.length} models`}
               </h3>
             </div>
           </div>
@@ -87,7 +98,7 @@ export const ShopByCategory: FC = () => {
                 Accessories
               </h2>
               <h3 className={styles.models}>
-                100 models
+                {`${accessory.length} models`}
               </h3>
             </div>
           </div>

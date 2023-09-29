@@ -73,7 +73,7 @@ export const NoResults: React.FC<Props> = ({ title }) => {
                 </div>
 
                 <h1 className="title">
-                  {title === 'Phones'
+                  {title === 'phones'
                     ? noSearchResults
                     : `${title} not found`}
                 </h1>

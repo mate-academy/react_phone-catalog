@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
 import { SearchContextProvider } from './context/searchContext';
 import { CartProvider } from './context/cartContext';
 import './App.scss';
@@ -14,22 +13,15 @@ import { AccessoriesPage } from './pages/accessories/AccessoriesPage';
 import { CartPage } from './pages/cart/CartPage';
 import { ProductDetails } from './pages/productdetails/ProductDetails';
 import { FavouritesPage } from './pages/favourites/FavouritesPage';
-import { NoResults } from './components/NoResults/NoResults';
-import { HeaderSmall } from './components/HeaderSmall/HeaderSmall';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 const App: React.FC = () => {
-  const isTablet = useMediaQuery({ maxWidth: 800 });
-
   return (
     <CartProvider>
       <FavouritesProvider>
         <SearchContextProvider>
           <div className="App">
-            {isTablet ? (
-              <HeaderSmall />
-            ) : (
-              <Header />
-            )}
+            <Header />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route
@@ -41,13 +33,20 @@ const App: React.FC = () => {
 
               <Route
                 path="*"
-                element={<NoResults title="Page" />}
+                element={<NotFoundPage />}
               />
 
-              <Route
-                path="phones"
-                element={<PhonesPage />}
-              />
+              <Route path="phones">
+                <Route
+                  index
+                  element={<PhonesPage />}
+                />
+
+                <Route
+                  path=":itemId"
+                  element={<ProductDetails />}
+                />
+              </Route>
 
               <Route
                 path="tablets"
@@ -67,11 +66,6 @@ const App: React.FC = () => {
               <Route
                 path="cart"
                 element={<CartPage />}
-              />
-
-              <Route
-                path=":itemId"
-                element={<ProductDetails />}
               />
             </Routes>
 

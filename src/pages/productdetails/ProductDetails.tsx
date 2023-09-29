@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import {
   Link,
+  useLocation,
   useNavigate,
   useParams,
 } from 'react-router-dom';
@@ -51,6 +52,7 @@ export const ProductDetails: React.FC = () => {
   const { setAddedToCart } = useCartContext();
   const { setAddedToFavs } = useFavsContext();
 
+  const location = useLocation();
   const navigate = useNavigate();
   const isTablet = useMediaQuery({ maxWidth: 800 });
 
@@ -203,11 +205,9 @@ export const ProductDetails: React.FC = () => {
     updateIsAddedToFavs();
   }, [itemId]);
 
-  if (notFound) {
-    return (
-      <NoResults title="Phone" />
-    );
-  }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <section className="details">
@@ -605,6 +605,10 @@ export const ProductDetails: React.FC = () => {
           wrapperClass="spincontainer"
           visible
         />
+      )}
+
+      {notFound && (
+        <NoResults title="Phone" />
       )}
     </section>
   );

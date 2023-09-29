@@ -37,6 +37,10 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
+  if (pages.length < 2) {
+    return null;
+  }
+
   return (
     <div className="pagination" data-cy="pagination">
       <button

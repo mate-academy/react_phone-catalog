@@ -1,5 +1,13 @@
-export const select = {
-  control: (provided: any, state: any) => ({
+import {
+  CSSObjectWithLabel,
+  ControlProps,
+  DropdownIndicatorProps,
+  OptionProps,
+  StylesConfig,
+} from 'react-select';
+
+export const select: StylesConfig = {
+  control: (provided: CSSObjectWithLabel, state: ControlProps) => ({
     ...provided,
     width: '100%',
     height: '40px',
@@ -14,7 +22,7 @@ export const select = {
     color: '#B4BDC3',
     cursor: 'pointer',
   }),
-  option: (provided: any, state: any) => ({
+  option: (provided: CSSObjectWithLabel, state: OptionProps) => ({
     ...provided,
     fontFamily: 'Mont',
     fontSize: '14px',
@@ -32,12 +40,12 @@ export const select = {
       color: '#313237',
     },
   }),
-  singleValue: (provided: any) => ({
+  singleValue: (provided: CSSObjectWithLabel) => ({
     ...provided,
     backgroundColor: 'transparent',
     color: '#313237',
   }),
-  menu: (provided: any) => ({
+  menu: (provided: CSSObjectWithLabel) => ({
     ...provided,
     width: '100%',
     border: '1px solid #E2E6E9',
@@ -47,15 +55,18 @@ export const select = {
     maxHeight: 'none',
     overflowY: 'hidden',
   }),
-  menuList: (provided: any) => ({
+  menuList: (provided: CSSObjectWithLabel) => ({
     ...provided,
     maxHeight: 'none',
   }),
-  indicatorSeparator: (provided: any) => ({
+  indicatorSeparator: (provided: CSSObjectWithLabel) => ({
     ...provided,
     display: 'none',
   }),
-  dropdownIndicator: (provided: any, state: any) => ({
+  dropdownIndicator: (
+    provided: CSSObjectWithLabel,
+    state: DropdownIndicatorProps
+  ) => ({
     ...provided,
     transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
   }),

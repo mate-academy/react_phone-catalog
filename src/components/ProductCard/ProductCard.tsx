@@ -133,7 +133,8 @@ export const ProductCard: FC<Props> = ({ product, updateFavourites }) => {
     <div className={styles.card}>
       <Link
         to={{
-          pathname: parentPath + product.itemId,
+          // eslint-disable-next-line
+          pathname: parentPath + `phones/${product.itemId}`,
         }}
         className={styles.card__link}
       >

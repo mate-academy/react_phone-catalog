@@ -9,8 +9,6 @@ import {
 } from 'react-router-dom';
 import Select from 'react-select';
 import { TailSpin } from 'react-loader-spinner';
-// import { useMediaQuery } from 'react-responsive';
-
 import styles from './PhonesPage.module.scss';
 
 import { getProducts } from '../../api/api';
@@ -31,7 +29,6 @@ export const PhonesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const phones = products.filter(product => product.category === 'phones');
   const { query } = useSearchContext();
-  // const isPhone = useMediaQuery({ maxWidth: 600 });
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = searchParams.get('page') || '1';
@@ -103,8 +100,8 @@ export const PhonesPage: React.FC = () => {
     updateUrl(param, selectedOption.value);
   };
 
-  if (query && !filteredProducts.length && !phones.length) {
-    return <NoResults title="Phones" />;
+  if (query && !filteredProducts.length) {
+    return <NoResults title="phones" />;
   }
 
   return (
@@ -128,25 +125,24 @@ export const PhonesPage: React.FC = () => {
             {`${total} models`}
           </h2>
 
-          {(filteredProducts.length > 4)
-           && (
-             <div className={styles.phones__sorters}>
-               <div className={styles.phones__sorters__sorter}>
-                 <div className={styles.phones__sorters__title}>
-                   Sort by
-                 </div>
-                 <div className={styles.sorting}>
-                   <Select
-                     value={selectValueSort}
-                     options={sorting}
-                     isSearchable={false}
-                     unstyled
-                     styles={select}
-                     onChange={
-                       (newValue) => handleSelectChange(newValue, 'sort')
-                     }
-                   />
-                 </div>
+          {(filteredProducts.length > 4) &&
+          ( <div className={styles.phones__sorters}>
+              <div className={styles.phones__sorters__sorter}>
+                <div className={styles.phones__sorters__title}>
+                  Sort by
+                </div>
+                  <div className={styles.sorting}>
+                    <Select
+                      value={selectValueSort}
+                      options={sorting}
+                      isSearchable={false}
+                      unstyled
+                      styles={select}
+                      onChange={
+                        (newValue: any) => handleSelectChange(newValue, 'sort')
+                      }
+                    />
+                  </div>
                </div>
 
                <div className={styles.phones__sorters__sorter}>
@@ -159,15 +155,15 @@ export const PhonesPage: React.FC = () => {
                      options={perpage}
                      isSearchable={false}
                      unstyled
-                     styles={select}
+                     styles={{}}
                      onChange={
                        (newValue) => handleSelectChange(newValue, 'perPage')
                      }
                    />
                  </div>
-               </div>
-             </div>
-           )}
+              </div>
+            </div>
+          )}
 
           <div
             className="productslist"

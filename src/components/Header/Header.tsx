@@ -6,6 +6,7 @@ import React, {
 import {
   Link, NavLink, useLocation, useSearchParams,
 } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames';
 // eslint-disable-next-line
 import { ReactComponent as AddToCart } from '../../assets/icons/Cart.svg';
@@ -21,6 +22,7 @@ import useDebounce from '../../hooks/useDebounce';
 import { useCartContext } from '../../context/cartContext';
 import { useFavsContext } from '../../context/favouritesContext';
 import { Counter } from '../Counter/Counter';
+import { HeaderSmall } from '../HeaderSmall/HeaderSmall';
 
 export const Header: React.FC = () => {
   const { addedToCart } = useCartContext();
@@ -30,6 +32,7 @@ export const Header: React.FC = () => {
   const { query, setQuery } = useSearchContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const [inputQuery, setInputQuery] = useState('');
+  const isTablet = useMediaQuery({ maxWidth: 800 });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputQuery(event.target.value);
@@ -93,6 +96,12 @@ export const Header: React.FC = () => {
       resetSearch();
     }
   }, [search]);
+
+  if (isTablet) {
+    return (
+      <HeaderSmall />
+    );
+  }
 
   return (
     <header className="header">

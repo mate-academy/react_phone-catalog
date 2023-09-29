@@ -72,23 +72,22 @@ export const CartPage: React.FC = () => {
 
   return (
     <section className={styles.cart}>
-      <label htmlFor="cartnav">
-        <div
-          className={styles.cart__nav}
-          id="cartnav"
+      <button
+        className={styles.cart__nav}
+        id="cartnav"
+        type="button"
+        onClick={handleBackClick}
+      >
+        <button
+          type="button"
+          className="cart__back"
         >
-          <button
-            type="button"
-            className="cart__back"
-            onClick={handleBackClick}
-          >
-            <ArrowLeft />
-          </button>
-          <div className={styles.cart__navtext}>
-            Back
-          </div>
+          <ArrowLeft />
+        </button>
+        <div className={styles.cart__navtext}>
+          Back
         </div>
-      </label>
+      </button>
 
       <div className={styles.cart__title}>
         {cartItems.length ? 'Cart' : 'Your cart is empty'}
