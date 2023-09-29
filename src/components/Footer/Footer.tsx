@@ -5,14 +5,15 @@ import logo from '../../images/Logo.svg';
 import { GITHUB_REPO } from '../../helpers/consts';
 
 export const Footer = () => {
-  const [isDisabledGoToTop, setIsDisabledGoToTop] = useState<boolean>(true);
+  const [isShownGoToTop, setIsShownGoToTop] = useState<boolean>(true);
+  const [isShownGoToTopText, setIsShownGoToTopText] = useState<boolean>(false);
 
   useEffect(() => {
     const footer = document.querySelector('.footer');
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) {
-          setIsDisabledGoToTop(false);
+          setIsShownGoToTop(false);
         }
       });
     };
@@ -27,6 +28,21 @@ export const Footer = () => {
       if (footer) {
         observer.unobserve(footer);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handlerResize = () => {
+      const windowWidth = window.innerWidth;
+
+      // console.log('hi');
+      setIsShownGoToTopText(windowWidth > 743); // calc
+    };
+
+    window.addEventListener('resize', handlerResize);
+
+    return () => {
+      window.removeEventListener('resize', handlerResize);
     };
   }, []);
 
@@ -75,14 +91,14 @@ export const Footer = () => {
             </ul>
           </nav>
 
-          {isDisabledGoToTop ? (<div />) : (
-            <div className="footer__button">
-              Back to top
+          {isShownGoToTop ? (<div />) : (
+            <div className="footer__button-go-top--container">
+              {isShownGoToTopText && ('Back to top')}
 
               <button
                 type="button"
                 aria-label="scroll to top"
-                className="footer__button--link"
+                className="footer__button-go-top"
                 onClick={() => window.scrollTo(0, 0)}
               />
             </div>

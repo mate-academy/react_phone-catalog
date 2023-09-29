@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { Header } from '../../components/Header/Header';
 import { ProductList } from '../../components/ProductList/ProductList';
 import { NamesByCategories } from '../../types/NamesByCategories';
@@ -14,21 +16,20 @@ import { Footer } from '../../components/Footer/Footer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { LikeAndCartContext } from '../../helpers/LikeAndCartContext';
 import { SearchParams } from '../../types/SearchParams';
-// import { getQuantityWithoutSame } from '../../helpers/getQuantityWithoutSame';
 import {
   QuantityItemsParagraf,
 } from '../../components/QuantityItemsParagraph/QuantityItemsParagraph';
+import { MenuWithNav } from '../../components/MenuWithNav/MenuWithNav';
 
 export const FavouritesPage: React.FC = () => {
   const { liked, addedToCart } = useContext(LikeAndCartContext);
   const [numLiked, setNumLiked] = useState<number>(liked.length);
-  // const [numLiked, setNumLiked] = useState<number>(getQuantityWithoutSame(liked));
   const [numAdded, setNumAdded] = useState<number>(addedToCart.length);
-  // const [numAdded, setNumAdded] = useState<number>(getQuantityWithoutSame(addedToCart));
 
   const [startProducts, setStartProducts] = useState<ProductShort[]>([]);
   const [errMess, setErrMess] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isMenu, setIsMenu] = useState<boolean>(false);
   const [currentProducts, setCurrentProducts] = useState<ProductShort[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductShort[]>([]);
 
@@ -77,46 +78,65 @@ export const FavouritesPage: React.FC = () => {
     setFilteredProducts(getFilteredProducts());
   }, [query, currentProducts]);
 
+  useEffect(() => {
+    if (isMenu) {
+      document.body.classList.add('body__with-menu');
+    } else {
+      document.body.classList.remove('body__with-menu');
+    }
+  }, [isMenu]);
+
   return (
     <>
       <Header
-        withSearch={NamesByCategories.Favourites}
+        withSearchBy={NamesByCategories.Favourites}
         quantityLiked={numLiked}
         quantityAdded={numAdded}
+        onSetIsMenu={setIsMenu}
       />
+
+      <div className={classNames('home-page__menu', { visible: isMenu })}>
+        <MenuWithNav
+          quantityLiked={numLiked}
+          quantityAdded={numAdded}
+          onSetIsMenu={setIsMenu}
+        />
+      </div>
 
       {isLoading && (<Loader />)}
       {!isLoading && !!errMess.length && <ErrorMessage text={errMess} />}
       {!isLoading && !errMess.length && (
-        <main id="main" className="container">
-          <div className="product-page__way">
-            <WayFromHome lastPoint={NamesByHeader.Favourites} />
-          </div>
-
-          <section className="product-page__section">
-            <h1>
-              {NamesBySections.Favourites}
-            </h1>
-
-            <div className="product-page__paragraph">
-              <QuantityItemsParagraf
-                allProducts={currentProducts.length}
-                filteredProducts={filteredProducts.length}
-                queryLength={query.length}
-              />
+        <div className="container">
+          <main className="container__content">
+            <div className="product-page__way">
+              <WayFromHome lastPoint={NamesByHeader.Favourites} />
             </div>
 
-            <div className="product-page__list">
-              <ProductList
-                products={filteredProducts}
-                numLiked={numLiked}
-                onSetNumLiked={setNumLiked}
-                numAdded={numAdded}
-                onSetNumAdded={setNumAdded}
-              />
-            </div>
-          </section>
-        </main>
+            <section className="product-page__section">
+              <h1>
+                {NamesBySections.Favourites}
+              </h1>
+
+              <div className="product-page__paragraph">
+                <QuantityItemsParagraf
+                  allProducts={currentProducts.length}
+                  filteredProducts={filteredProducts.length}
+                  queryLength={query.length}
+                />
+              </div>
+
+              <div className="product-page__list">
+                <ProductList
+                  products={filteredProducts}
+                  numLiked={numLiked}
+                  onSetNumLiked={setNumLiked}
+                  numAdded={numAdded}
+                  onSetNumAdded={setNumAdded}
+                />
+              </div>
+            </section>
+          </main>
+        </div>
       )}
 
       {!isLoading && <Footer />}

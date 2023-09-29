@@ -15,16 +15,20 @@ import { debounce } from '../../helpers/debounce';
 
 type Props = {
   withNavigate?: boolean,
-  withSearch?: string,
+  withSearchBy?: string,
   quantityLiked?: number,
   quantityAdded?: number,
+  onSetIsMenu?: (isMenu: boolean) => void,
+  isMenu?: boolean,
 };
 
 export const Header: React.FC<Props> = ({
   withNavigate = true,
-  withSearch = '',
+  withSearchBy = '',
   quantityLiked = 0,
   quantityAdded = 0,
+  onSetIsMenu = () => {},
+  isMenu = false,
 }) => {
   const { pathname, search } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,6 +57,14 @@ export const Header: React.FC<Props> = ({
       'header__shopping-bag',
       { 'header__is-active': isActive },
     );
+  };
+
+  const handlerClickMenu = () => {
+    if (isMenu) {
+      onSetIsMenu(false);
+    } else {
+      onSetIsMenu(true);
+    }
   };
 
   const debounceSearch = useCallback(debounce((newQuery: string) => {
@@ -85,7 +97,7 @@ export const Header: React.FC<Props> = ({
         </Link>
 
         {withNavigate && (
-          <nav className="nav">
+          <nav className="header__nav nav">
             <ul className="nav__list">
               <li className="header__nav-item nav__item">
                 <NavLink to="/" end className={getClassForLeftTabs}>
@@ -128,11 +140,11 @@ export const Header: React.FC<Props> = ({
       </div>
 
       <div className="header__right">
-        {withSearch && (
+        {withSearchBy && (
           <div className="header__form">
             <input
               className="header__input"
-              placeholder={`Search in ${withSearch}...`}
+              placeholder={`Search in ${withSearchBy}...`}
               value={debounceQuery}
               onChange={handlerQueryChange}
             />
@@ -153,8 +165,20 @@ export const Header: React.FC<Props> = ({
           </div>
         )}
 
+        <button
+          type="button"
+          aria-label="button open menu"
+          className={classNames(
+            'header__square-link',
+            { header__menu: !isMenu },
+            { header__close: isMenu },
+          )}
+          onClick={handlerClickMenu}
+        />
+
         <NavLink
-          to="/favourites"
+          to={NamesByLinks.Favourites}
+          state={getState(pathname, search)}
           className={getClassForFavourites}
         >
           {quantityLiked !== 0 && (
@@ -166,7 +190,7 @@ export const Header: React.FC<Props> = ({
         </NavLink>
 
         <NavLink
-          to="/shopping-bag"
+          to={NamesByLinks.Cart}
           state={getState(pathname, search)}
           className={getClassForCart}
         >
@@ -176,6 +200,7 @@ export const Header: React.FC<Props> = ({
             </p>
           )}
         </NavLink>
+
       </div>
     </header>
   );

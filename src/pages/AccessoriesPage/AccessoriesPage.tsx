@@ -2,6 +2,8 @@ import './AccessoriesPage.scss';
 
 import React, { useEffect, useState, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { ProductShort } from '../../types/ProductShort';
 import { Loader } from '../../components/Loader/Loader';
@@ -28,6 +30,7 @@ import {
 import {
   NoSearchResults,
 } from '../../components/NoSearchResults/NoSearchResults';
+import { MenuWithNav } from '../../components/MenuWithNav/MenuWithNav';
 
 export const AccessoriesPage: React.FC = React.memo(() => {
   const { liked, addedToCart } = useContext(LikeAndCartContext);
@@ -37,6 +40,7 @@ export const AccessoriesPage: React.FC = React.memo(() => {
   const [products, setProducts] = useState<ProductShort[]>([]);
   const [errMess, setErrMess] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isMenu, setIsMenu] = useState<boolean>(false);
   const [filteredProducts, setFilteredProducts] = useState<ProductShort[]>([]);
   const [lastPointOnPage, setLastPointOnPage] = useState<number>(DEF_PAGE_STEP);
   const [searchParams] = useSearchParams();
@@ -142,77 +146,96 @@ export const AccessoriesPage: React.FC = React.memo(() => {
     changeNumberPage(currentPage);
   }, [shownPerPage, filteredProducts]);
 
+  useEffect(() => {
+    if (isMenu) {
+      document.body.classList.add('body__with-menu');
+    } else {
+      document.body.classList.remove('body__with-menu');
+    }
+  }, [isMenu]);
+
   return (
     <>
       <Header
-        withSearch={NamesByCategories.Accessories}
+        withSearchBy={NamesByCategories.Accessories}
         quantityLiked={numLiked}
         quantityAdded={numAdded}
+        onSetIsMenu={setIsMenu}
       />
+
+      <div className={classNames('home-page__menu', { visible: isMenu })}>
+        <MenuWithNav
+          quantityLiked={numLiked}
+          quantityAdded={numAdded}
+          onSetIsMenu={setIsMenu}
+        />
+      </div>
 
       {isLoading && (<Loader />)}
       {!isLoading && !!errMess.length && <ErrorMessage text={errMess} />}
       {!isLoading && !errMess.length && (
-        <main id="main" className="container">
-          <div className="product-page__way">
-            <WayFromHome lastPoint={NamesByHeader.Accessories} />
-          </div>
+        <div className="container">
+          <main className="container__content">
+            <div className="product-page__way">
+              <WayFromHome lastPoint={NamesByHeader.Accessories} />
+            </div>
 
-          <section className="product-page__section">
-            <h1>
-              {NamesBySections.Accessories}
-            </h1>
+            <section className="product-page__section">
+              <h1>
+                {NamesBySections.Accessories}
+              </h1>
 
-            {!products.length && (
-              <NoResults caterogy={NamesBySections.Accessories} />
-            )}
+              {!products.length && (
+                <NoResults caterogy={NamesBySections.Accessories} />
+              )}
 
-            {!!products.length && checkAllFiltersParam() && (
-              <>
-                <div className="product-page__paragraph">
-                  <QuantityItemsParagraf
-                    allProducts={products.length}
-                    filteredProducts={filteredProducts.length}
-                    queryLength={query.length}
-                    productName="model"
-                  />
-                </div>
+              {!!products.length && checkAllFiltersParam() && (
+                <>
+                  <div className="product-page__paragraph">
+                    <QuantityItemsParagraf
+                      allProducts={products.length}
+                      filteredProducts={filteredProducts.length}
+                      queryLength={query.length}
+                      productName="model"
+                    />
+                  </div>
 
-                {!!filteredProducts.length && (
-                  <section className="product-page__section">
-                    <FilterForProduct />
+                  {!!filteredProducts.length && (
+                    <section className="product-page__section">
+                      <FilterForProduct />
 
-                    <div className="product-page__list">
-                      <ProductList
-                        numLiked={numLiked}
-                        onSetNumLiked={setNumLiked}
-                        numAdded={numAdded}
-                        onSetNumAdded={setNumAdded}
-                        products={filteredProducts
-                          .slice(startPointOnPage - 1, lastPointOnPage)}
-                      />
-                    </div>
-
-                    {filteredProducts.length > shownPerPage && (
-                      <div className="product-page__pagination">
-                        <Pagination
-                          totalPages={totalNumbersPoints}
-                          onSetCurrentPage={changeNumberPage}
+                      <div className="product-page__list">
+                        <ProductList
+                          numLiked={numLiked}
+                          onSetNumLiked={setNumLiked}
+                          numAdded={numAdded}
+                          onSetNumAdded={setNumAdded}
+                          products={filteredProducts
+                            .slice(startPointOnPage - 1, lastPointOnPage)}
                         />
                       </div>
-                    )}
-                  </section>
-                )}
-              </>
-            )}
 
-            {!checkAllFiltersParam() && (
-              <div className="product-page__paragraph">
-                <NoSearchResults caterogy={NamesBySections.Accessories} />
-              </div>
-            )}
-          </section>
-        </main>
+                      {filteredProducts.length > shownPerPage && (
+                        <div className="product-page__pagination">
+                          <Pagination
+                            totalPages={totalNumbersPoints}
+                            onSetCurrentPage={changeNumberPage}
+                          />
+                        </div>
+                      )}
+                    </section>
+                  )}
+                </>
+              )}
+
+              {!checkAllFiltersParam() && (
+                <div className="product-page__paragraph">
+                  <NoSearchResults caterogy={NamesBySections.Accessories} />
+                </div>
+              )}
+            </section>
+          </main>
+        </div>
       )}
 
       {!isLoading && <Footer />}

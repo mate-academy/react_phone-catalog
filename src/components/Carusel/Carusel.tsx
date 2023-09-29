@@ -6,21 +6,36 @@ import caruselPhotoA from '../../images/carusel/banner-phones.png';
 import caruselPhotoB from '../../images/carusel/banner-tablets.png';
 import caruselPhotoC from '../../images/carusel/banner-accessories.png';
 
+const widthDesktop = 1250;
+const widthTablet = 744;
 const imagesoForCarusel = [
   caruselPhotoA,
   caruselPhotoB,
   caruselPhotoC,
 ];
 const quantityImgsOfCarusel = imagesoForCarusel.length - 1;
-const widthCaruselsImg = 1040;
 const gapOfCarusel = 40;
-const widthCaruselsImgWithGap = widthCaruselsImg + gapOfCarusel / 2;
+const getStartWidthImg = () => {
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth < widthDesktop) {
+    if (windowWidth < widthTablet) {
+      return windowWidth - 40;
+    }
+
+    return windowWidth - 144;
+  }
+
+  return 1020;
+};
 
 export const Carusel: React.FC = () => {
   const [caruselsImg, setCaruselsImg] = useState<number>(0);
   const [moveRight, setMoveRight] = useState<number>(0);
+  const [widthImg, setWidthImg] = useState<number>(getStartWidthImg);
   const [isDeleteInfinit, setIsDeleteInfinit] = useState<boolean>(false);
 
+  const widthCaruselsImgWithGap = widthImg + gapOfCarusel;
   let timerFlipping = 0;
 
   const handlerPrevImg = () => {
@@ -57,11 +72,25 @@ export const Carusel: React.FC = () => {
 
   useEffect(() => {
     if (!isDeleteInfinit) {
-      timerFlipping = window.setInterval(() => handlerNextImg(), 5000);
+      timerFlipping = window.setInterval(() => handlerNextImg(), 3000);/// /calc 5000
     }
 
     return () => clearInterval(timerFlipping);
-  }, [caruselsImg]);
+  }, [caruselsImg, widthImg]);
+
+  useEffect(() => {
+    const handlerResize = () => {
+      setWidthImg(getStartWidthImg);
+      setCaruselsImg(0);
+      setMoveRight(0);
+    };
+
+    window.addEventListener('resize', handlerResize);
+
+    return () => {
+      window.removeEventListener('resize', handlerResize);
+    };
+  }, []);
 
   return (
     <div className="carusel">

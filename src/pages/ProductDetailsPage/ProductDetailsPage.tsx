@@ -10,7 +10,6 @@ import { Loader } from '../../components/Loader/Loader';
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { NamesBySections } from '../../types/NamesBySections';
-import { SliderDecktop } from '../../types/SliderDecktop';
 import { ProductShort } from '../../types/ProductShort';
 import { Footer } from '../../components/Footer/Footer';
 import { NamesByLinks } from '../../types/NamesByLinks';
@@ -72,76 +71,75 @@ export const ProductDetailsPage: React.FC = () => {
       {isLoading && (<Loader />)}
       {!isLoading && !!errMess.length && <ErrorMessage text={errMess} />}
       {!isLoading && !errMess.length && (
-        <main id="main" className="container">
-          {product && (
-            <div className="product-page__way">
-              <WayFromHome
-                lastPoint={product.name}
-                interimPoints={[{
-                  text: NamesByHeader.Phones,
-                  link: NamesByLinks.Phones + DEF_SORT,
-                }]}
-              />
-            </div>
-          )}
-
-          <section className="details-page">
-            <ButtonBack getBack={() => getBackLink(state)} />
-
-            {product ? (
-              <>
-                <h1 className="details-page__title">
-                  {product?.name}
-                </h1>
-
-                <div className="details-page__content">
-                  <div className="details-page__section">
-                    <DetailsImages product={product} />
-                  </div>
-
-                  <div className="details-page__section">
-                    <DetailsSelects
-                      product={product}
-                      similarProducts={similarProducts}
-                      numLiked={numLiked}
-                      onSetNumLiked={setNumLiked}
-                      numAdded={numAdded}
-                      onSetNumAdded={setNumAdded}
-                    />
-                  </div>
-
-                  <div className="details-page__section">
-                    <DetailsDescription product={product} />
-                  </div>
-
-                  <div className="details-page__section">
-                    <DetailsTechSpecs product={product} />
-                  </div>
-                </div>
-              </>
-            ) : (
-              <p className="details-page__paragraph">
-                Phone was not found
-              </p>
-            )}
-
+        <div className="container">
+          <main className="container__content">
             {product && (
-              <div className="details-page__slider">
-                <ProductsSlider
-                  title={NamesBySections.MayLike}
-                  quantityCards={SliderDecktop.QuantityCards}
-                  widthItem={SliderDecktop.WidthCard}
-                  widthGap={SliderDecktop.WidthGap}
-                  products={suggested}
-                  numLiked={numLiked}
-                  onSetNumLiked={setNumLiked}
-                  numAdded={numAdded}
-                  onSetNumAdded={setNumAdded}
+              <div className="product-page__way">
+                <WayFromHome
+                  lastPoint={product.name}
+                  interimPoints={[{
+                    text: NamesByHeader.Phones,
+                    link: NamesByLinks.Phones + DEF_SORT,
+                  }]}
                 />
               </div>
             )}
-          </section>
-        </main>
+
+            <section className="details-page">
+              <ButtonBack getBack={() => getBackLink(state)} />
+
+              {product ? (
+                <>
+                  <h1 className="details-page__title">
+                    {product?.name}
+                  </h1>
+
+                  <div className="details-page__content">
+                    <div className="details-page__section">
+                      <DetailsImages product={product} />
+                    </div>
+
+                    <div className="details-page__section">
+                      <DetailsSelects
+                        product={product}
+                        similarProducts={similarProducts}
+                        numLiked={numLiked}
+                        onSetNumLiked={setNumLiked}
+                        numAdded={numAdded}
+                        onSetNumAdded={setNumAdded}
+                      />
+                    </div>
+
+                    <div className="details-page__section">
+                      <DetailsDescription product={product} />
+                    </div>
+
+                    <div className="details-page__section">
+                      <DetailsTechSpecs product={product} />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <p className="details-page__paragraph">
+                  Phone was not found
+                </p>
+              )}
+
+              {product && (
+                <div className="details-page__slider">
+                  <ProductsSlider
+                    title={NamesBySections.MayLike}
+                    products={suggested}
+                    numLiked={numLiked}
+                    onSetNumLiked={setNumLiked}
+                    numAdded={numAdded}
+                    onSetNumAdded={setNumAdded}
+                  />
+                </div>
+              )}
+            </section>
+          </main>
+        </div>
       )}
 
       {!isLoading && <Footer />}

@@ -23,6 +23,7 @@
 
     &:hover {
       color: $colorPrimary;
+      cursor: pointer;
     }
   }
 
@@ -46,6 +47,7 @@
       display: flex;
 
       margin: 0 20px;
+      cursor: pointer;
     }
   }
 
@@ -72,11 +74,13 @@
 
       &:hover {
         border-color: $colorPrimary;
+        cursor: pointer;
       }
 
       &.is-disabled {
         color: $colorElements;
         border-color: $colorElements;
+        cursor: default;
       }
     }
 

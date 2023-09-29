@@ -13,6 +13,7 @@
     width: $heightSmallImg;
 
     border: 1px solid $colorElements;
+    cursor: pointer;
 
     &:hover {
       border-color: $colorPrimary;

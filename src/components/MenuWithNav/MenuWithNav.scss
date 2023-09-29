@@ -1,0 +1,83 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/font-faces.scss";
+@import "../../styles/_utils/mixins";
+
+@import "../../styles/logo.scss";
+@import "../../styles/container.scss";
+
+.menu {
+  position: relative;
+
+  height: 100vh;
+
+  background-color: $colorHoverAndBG;
+
+  @include onDesktop {
+    display: none;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-top: 30px;
+  }
+
+  &__item {
+    &--space {
+      margin-top: 30px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+
+    font-size: 22px;
+    line-height: $heightMenuRow;
+    color: $colorPrimary;
+    cursor: pointer;
+
+    &.is-active {
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: $colorPrimary;
+      }
+    }
+  }
+
+  &__link-with-number {
+    position: relative;
+
+    display: flex;
+  }
+
+  &__small-quantity {
+    position: relative;
+    top: -10px;
+    right: -5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: $heightMenuRow;
+    width: $heightMenuRow;
+
+    color: $colorWhite;
+    background-color: $colorRed;
+    border: 1px solid $colorWhite;
+    border-radius: 50%;
+  }
+}

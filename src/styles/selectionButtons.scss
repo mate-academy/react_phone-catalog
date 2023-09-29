@@ -12,6 +12,7 @@
     color: $colorWhite;
     background-color: $colorPrimary;
     border: 1px solid $colorElements;
+    cursor: pointer;
 
     font-family: "Mont", sans-serif;
     font-size: 14px;
@@ -34,13 +35,13 @@
     height: 40px;
     width: 40px;
 
+    border: 1px solid $colorIcons;
+    cursor: pointer;
+
     background-color: $colorWhite;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(../images/icons/Favourites.svg);
-
-    box-sizing: border-box;
-    border: 1px solid $colorIcons;
 
     &:hover {
       border-color: $colorPrimary;

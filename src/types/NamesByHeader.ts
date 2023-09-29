@@ -4,4 +4,7 @@ export enum NamesByHeader {
   Tablets = 'Tablets',
   Accessories = 'Accessories',
   Favourites = 'Favourites',
+  Card = 'Card',
+  Github = 'GitHub',
+  Contacts = 'Contacts',
 }

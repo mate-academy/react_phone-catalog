@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './HorizontProductCard.scss';
+import { Link, useLocation } from 'react-router-dom';
+
 import classNames from 'classnames';
 import { ProductShort } from '../../types/ProductShort';
 import { LikeAndCartContext } from '../../helpers/LikeAndCartContext';
@@ -9,6 +11,8 @@ import {
   handlerStorageOneIdIs,
 } from '../../helpers/handlerChangeContext';
 import { BASE_URL } from '../../helpers/consts';
+import { NamesByLinks } from '../../types/NamesByLinks';
+import { getState } from '../../helpers/getState';
 
 type Props = {
   product: ProductShort,
@@ -37,6 +41,7 @@ export const HorizontProductCard: React.FC<Props> = ({
   };
 
   const [quantity, setQuantity] = useState(getQuantity);
+  const { pathname, search } = useLocation();
 
   const handlerClickDeleteToCart = () => {
     handlerChangeContext(
@@ -80,13 +85,17 @@ export const HorizontProductCard: React.FC<Props> = ({
           ×
         </button>
 
-        <div className="horizont-card__image--container">
+        <Link
+          to={`${NamesByLinks.Phones}/${phoneId}`}
+          state={getState(pathname, search)}
+          className="horizont-card__image--container"
+        >
           <img
             src={`${BASE_URL}/${image}`}
             alt={`${BASE_URL}/${image}`}
             className="horizont-card__image"
           />
-        </div>
+        </Link>
 
         <div className="product-card__name">{name}</div>
       </div>

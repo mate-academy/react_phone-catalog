@@ -1,21 +1,22 @@
 @import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
 
 .carusel {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-
-  overflow: hidden;
 
   &__top {
     display: flex;
-    justify-content: space-between;
+    gap: $gapOfCarusel;
 
     width: 100%;
   }
 
   &__content {
-    width: $widthCaruselsImg;
+    // width: $widthCaruselsImg;
+    width: 100%;
 
     overflow: hidden;
     z-index: -1;
@@ -25,10 +26,6 @@
     display: flex;
     gap: $gapOfCarusel;
 
-    padding: 0;
-    margin: 0;
-    
-    
     transition: transform $timeTransition linear;
   }
 
@@ -37,21 +34,34 @@
   }
 
   &__img {
-    height: $heightCaruselsImg;
-    width: $widthCaruselsImg;
+    height: $heightCaruselsImg; //400
+    width: $widthCaruselsImgDesktop; //1020
 
     object-fit: cover;
     object-position: center;
+
+    @include onTablet {
+      height: 300px;
+      width: calc(100vw - 144px); //margin-container
+    }
+
+    @include onMobile {
+      height: 200px;
+      width: calc(100vw - 40px);
+    }
   }
 
   &__button {
     width: $widthIcon;
 
-    box-sizing: border-box;
     border: 1px solid $colorIcons;
     background-repeat: no-repeat;
     background-position: center;
     background-color: $colorWhite;
+
+    @include onMobileAndTablet {
+      display: none;
+    }
 
     &:hover {
       border-color: $colorPrimary;

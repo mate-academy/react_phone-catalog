@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ProductShort } from '../../types/ProductShort';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './ProductsSlider.scss';
+import { SLIDER_GAP, SLIDER_ITEM_WIDTH } from '../../helpers/consts';
 
 const enum Disable {
   Next = 'next',
@@ -12,9 +13,6 @@ const enum Disable {
 
 type Props = {
   title: string,
-  quantityCards: number,
-  widthItem: number,
-  widthGap: number,
   products: ProductShort[],
   numLiked: number,
   onSetNumLiked: (num: number) => void,
@@ -24,9 +22,6 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = React.memo(({
   title,
-  quantityCards,
-  widthItem,
-  widthGap,
   products,
   numLiked,
   onSetNumLiked,
@@ -34,10 +29,11 @@ export const ProductsSlider: React.FC<Props> = React.memo(({
   onSetNumAdded,
 }) => {
   const [moveRight, setMoveRight] = useState<number>(0);
+  const [cardsPerPage, setCardsPerPage] = useState<number>(4);
   const [disabledButton, setDisabledButton] = useState<Disable>(Disable.Prev);
 
-  const step = 1 * (widthItem + widthGap);
-  const lastTranslatePosition: number = (products.length - quantityCards)
+  const step = 1 * (SLIDER_ITEM_WIDTH + SLIDER_GAP);
+  const lastTranslatePosition: number = (products.length - cardsPerPage)
     * step * -1;
 
   const handlerCaruselsPrev = () => {
@@ -59,6 +55,24 @@ export const ProductsSlider: React.FC<Props> = React.memo(({
 
     setMoveRight(currentRight => currentRight - step);
   };
+
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < 633) {
+      if (windowWidth < 1020) {
+        if (windowWidth < 1303) {
+          setCardsPerPage(3);
+        }
+
+        setCardsPerPage(2);
+      }
+
+      setCardsPerPage(1);
+    }
+
+    setCardsPerPage(4);
+  }, [moveRight]);
 
   return (
     <div className="slider">

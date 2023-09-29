@@ -1,5 +1,6 @@
 @import "../../styles/_utils/variables.scss";
 @import "../../styles/_utils/font-faces.scss";
+@import "../../styles/_utils/mixins";
 
 @import "../../styles/logo.scss";
 @import "../../styles/nav.scss";
@@ -7,8 +8,6 @@
 
 .footer {
   width: 100%;
-
-  margin-top: $marginBetweenSections;
   border-top: 1px solid $colorElements;
 
   &__content {
@@ -23,38 +22,28 @@
     line-height: $lineHeightNavLink;
   }
 
-  &__button {
-    display: flex;
-    align-items: center;
+  &__button-go-top {
+    height: $widthIcon;
+    width: $widthIcon;
 
-    font-size: 12px;
+    margin-left: 12px;
 
-    &--link {
-      height: $widthIcon;
-      width: $widthIcon;
+    background-image: url(../../images/icons/Chevron-Arrow-Up-Dark.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $colorWhite;
 
-      margin-left: 12px;
+    border: 1px solid $colorIcons;
+    cursor: pointer;
 
-      background-image: url(../../images/icons/Chevron-Arrow-Up-Dark.svg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: $colorWhite;
+    &:hover {
+      border-color: $colorPrimary;
+    }
 
-      box-sizing: border-box;
-      border: 1px solid $colorIcons;
-
-      &:hover {
-        border-color: $colorPrimary;
-      }
-
-      &.is-disabled {
-        border-color: $colorElements;
-        background-image: url(../../images/icons/Chevron-Arrow-Up.svg);
-
-        &:hover {
-          border-color: $colorElements;
-        }
-      }
+    &--container {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
     }
   }
 }

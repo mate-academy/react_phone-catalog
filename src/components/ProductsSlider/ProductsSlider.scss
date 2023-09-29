@@ -1,4 +1,5 @@
 @import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
 
 .slider {
   &__top {
@@ -9,19 +10,23 @@
       display: flex;
       justify-content: space-between;
 
-      width: 7%;
+      min-width: calc(32px + 32px + 16px);
+
+      @include onMobileAndTablet {
+        width: calc(32px + 32px + 14px);
+      }
     }
 
     &--button {
-      height: $widthIcon;
+      height: $widthIcon; //32px
       width: $widthIcon;
 
       background-repeat: no-repeat;
       background-position: center;
       background-color: $colorWhite;
 
-      box-sizing: border-box;
       border: 1px solid $colorIcons;
+      cursor: pointer;
 
       &:hover {
         border-color: $colorPrimary;
@@ -30,6 +35,7 @@
       &.is-disabled {
         border-color: $colorElements;
         color: $colorElements;
+        cursor: default;
       }
     }
 
@@ -51,10 +57,25 @@
   }
 
   &__content {
-    max-width: $widthSlider;
+    width: $widthSlider; /// 1122
     margin: 20px auto 0;
 
     overflow: hidden;
+
+    @include widthOneCard {
+      width: calc(270px + 5px);
+    }
+
+    @include widthTwoCard {
+      width: calc(270px + 270px + 13px + 5px);
+    }
+
+    @include widthTreeCard {
+      width: calc(270px + 270px + 13px + 270px + 13px + 5px);
+    }
+    // $widthSlider: $maxWidthContainer; //1122px
+    // $widthProductCard: 270px;
+    // $gapSlider: 13px;
   }
 
   &__images {

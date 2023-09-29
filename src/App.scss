@@ -1,5 +1,6 @@
 @import "./styles/_utils/variables.scss";
 @import "./styles/_utils/font-faces.scss";
+@import "./styles/_utils/mixins";
 
 * {
   box-sizing: border-box;
@@ -15,8 +16,12 @@ html {
   color: $colorSecondary;
 }
 
-body {
+.body {
   margin: 0;
+
+  &__with-menu {
+    overflow: hidden;
+  }
 }
 
 a,
@@ -67,4 +72,9 @@ h3 {
   font-size: 20px;
   line-height: 26px;
   color: $colorPrimary;
+
+  // @include onMobile {
+  //   font-size: 16px;
+  // line-height: 18px
+  // }
 }

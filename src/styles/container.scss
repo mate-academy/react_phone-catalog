@@ -1,4 +1,22 @@
+@import "./_utils/mixins";
+
 .container {
-  max-width: $maxWidthContainer;
-  margin: 0 auto;
+  margin: 0 20px;
+
+  @include onTablet {
+    margin: 0 72px;
+  }
+
+  @include onDesktop {
+    max-width: $maxWidthContainer;
+    margin: 0 auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    min-height: $minHeightMainContent;
+    margin-bottom: $marginBetweenSections;
+  }
 }

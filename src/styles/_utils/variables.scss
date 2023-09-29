@@ -1,11 +1,16 @@
-$maxWidthContainer: 1122px;
-
 $heightHeader: 64px;
 $heightFooter: 96px;
 $lineHeightNavLink: 20px;
-$paddingsHaederNavLink: 22px; //($heightHeader - $lineHeightNavLink) / 2;
-$paddingsFooterNavLink: 37px; //($heightFooter - $lineHeightNavLink) / 2;
+$paddingsHaederNavLink: ($heightHeader - $lineHeightNavLink) / 2; //22px;
+$paddingsFooterNavLink: ($heightFooter - $lineHeightNavLink) / 2; //37px;
 $marginBetweenSections: 70px;
+
+$maxWidthContainer: 1122px;
+$minHeightMainContent: calc(
+  100vh - #{$heightHeader} - #{$heightFooter} - #{$marginBetweenSections} - 3px
+);
+
+$heightMenuRow: 28px;
 
 $colorPrimary: #313237;
 $colorSecondary: #89939a;
@@ -24,16 +29,18 @@ $borderWidth: 1px;
 $hieghtSelect: 40px;
 
 $heightCaruselsImg: 400px;
-$widthCaruselsImg: 1020px;
+$widthCaruselsImgDesktop: 1020px;
+$widthCaruselsImgTablet: 700px;
+$widthCaruselsImgMobile: 400px;
 $gapOfCarusel: 40px;
 
-$widthSlider: $maxWidthContainer;
+$widthSlider: $maxWidthContainer; //1122px
 $widthProductCard: 270px;
 $gapSlider: 13px;
 
 $heightDetailsImg: 442px;
 $heightSmallImg: 80px;
-$gapBetweenSmallImgs: 10px; //($heightDetailsImg - 5 * $heightSmallImg) / 4;
+$gapBetweenSmallImgs: ($heightDetailsImg - 5 * $heightSmallImg) / 4; //10px
 
 $timeTransition: 1000ms;
 

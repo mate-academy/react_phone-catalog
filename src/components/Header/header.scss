@@ -1,5 +1,6 @@
 @import "../../styles/_utils/variables.scss";
 @import "../../styles/_utils/font-faces.scss";
+@import "../../styles/_utils/mixins";
 
 @import "../../styles/logo.scss";
 @import "../../styles/nav.scss";
@@ -23,6 +24,12 @@
     display: flex;
   }
 
+  &__nav {
+    @include onMobileAndTablet {
+      display: none;
+    }
+  }
+
   &__nav-link {
     padding: $paddingsHaederNavLink 0;
 
@@ -42,8 +49,8 @@
     height: 100%;
     width: $heightHeader;
 
-    box-sizing: border-box;
     border-left: 1px solid $colorElements;
+    cursor: pointer;
 
     &:hover {
       background-color: $colorHoverAndBG;
@@ -54,12 +61,20 @@
     background-image: url(../../images/icons/Favourites.svg);
     background-repeat: no-repeat;
     background-position: center;
+
+    @include onMobileAndTablet {
+      display: none;
+    }
   }
 
   &__shopping-bag {
     background-image: url(../../images/icons/Shopping-bag.svg);
     background-repeat: no-repeat;
     background-position: center;
+
+    @include onMobileAndTablet {
+      display: none;
+    }
   }
 
   &__small-quantity {
@@ -157,5 +172,22 @@
       background-color: $colorHoverAndBG;
       box-shadow: -1px 0 0 0 #e2e6e9;
     }
+  }
+
+  &__menu {
+    background-image: url(../../images/icons/sandvich-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__close {
+    background-image: url(../../images/icons/Close.svg);
+    background-color: $colorHoverAndBG;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }

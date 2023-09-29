@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { Header } from '../../components/Header/Header';
 import './CartPage.scss';
 import { LikeAndCartContext } from '../../helpers/LikeAndCartContext';
@@ -11,6 +13,7 @@ import { Footer } from '../../components/Footer/Footer';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Loader } from '../../components/Loader/Loader';
 import { getBackLink } from '../../helpers/getBackLink';
+import { MenuWithNav } from '../../components/MenuWithNav/MenuWithNav';
 
 export const CartPage = () => {
   const { liked, addedToCart } = useContext(LikeAndCartContext);
@@ -20,6 +23,7 @@ export const CartPage = () => {
   const [startProducts, setStartProducts] = useState<ProductShort[]>([]);
   const [errMess, setErrMess] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isMenu, setIsMenu] = useState<boolean>(false);
   const [currentProducts, setCurrentProducts] = useState<ProductShort[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [isMessage, setIsMessage] = useState<boolean>(false);
@@ -49,88 +53,107 @@ export const CartPage = () => {
     setTotalPrice(firstSum);
   }, [currentProducts]);
 
+  useEffect(() => {
+    if (isMenu) {
+      document.body.classList.add('body__with-menu');
+    } else {
+      document.body.classList.remove('body__with-menu');
+    }
+  }, [isMenu]);
+
   return (
     <>
       <Header
         withNavigate={false}
         quantityLiked={numLiked}
         quantityAdded={numAdded}
+        onSetIsMenu={setIsMenu}
       />
+
+      <div className={classNames('home-page__menu', { visible: isMenu })}>
+        <MenuWithNav
+          quantityLiked={numLiked}
+          quantityAdded={numAdded}
+          onSetIsMenu={setIsMenu}
+        />
+      </div>
 
       {isLoading && (<Loader />)}
       {!isLoading && !!errMess.length && <ErrorMessage text={errMess} />}
       {!isLoading && !errMess.length && (
-        <main id="main" className="container">
-          <section className="product-page__section">
-            <Link
-              to={getBackLink(state)}
-              className="button-back"
-            >
-              <div className="button-back__arrow" />
-              <span className="button-back__text">Back</span>
-            </Link>
+        <div className="container">
+          <main className="container__content">
+            <section className="product-page__section">
+              <Link
+                to={getBackLink(state)}
+                className="button-back"
+              >
+                <div className="button-back__arrow" />
+                <span className="button-back__text">Back</span>
+              </Link>
 
-            <div className="cart-page__title">
-              <h1 className="title__biggest">
-                {NamesBySections.Cart}
-              </h1>
-            </div>
+              <div className="cart-page__title">
+                <h1 className="title__biggest">
+                  {NamesBySections.Cart}
+                </h1>
+              </div>
 
-            <div className="cart-page__content">
-              {isMessage && (
-                <p className="cart-page__content--paragraph">
-                  We are sorry, but this feature is not implemented yet.
-                </p>
-              )}
-              {!isMessage && !currentProducts.length && (
-                <p className="cart-page__content--paragraph">
-                  Your cart is empty
-                </p>
-              )}
-              {!isMessage && !!currentProducts.length && (
-                <>
-                  <div className="cart-page__content--list">
-                    <ProductList
-                      totalPrice={totalPrice}
-                      onSetTotalPrice={setTotalPrice}
-                      products={currentProducts}
-                      numLiked={numLiked}
-                      onSetNumLiked={setNumLiked}
-                      numAdded={numAdded}
-                      onSetNumAdded={setNumAdded}
-                    />
-                  </div>
-
-                  <div className="cart-page__content--right">
-                    <h1 className="title__biggest cart-page__price">
-                      {`$${totalPrice}`}
-                    </h1>
-
-                    <p
-                      className="cart-page__paragraf"
-                      data-cy="productQauntity"
-                    >
-                      {numAdded === 1
-                        ? 'Total for 1 item'
-                        : `Total for ${numAdded} items`}
-                    </p>
-
-                    <div className="cart-page__button--container">
-                      <button
-                        type="button"
-                        className="cart-page__button"
-                        disabled={numAdded === 0}
-                        onClick={() => setIsMessage(true)}
-                      >
-                        Checkout
-                      </button>
+              <div className="cart-page__content">
+                {isMessage && (
+                  <p className="cart-page__content--paragraph">
+                    We are sorry, but this feature is not implemented yet.
+                  </p>
+                )}
+                {!isMessage && !currentProducts.length && (
+                  <p className="cart-page__content--paragraph">
+                    Your cart is empty
+                  </p>
+                )}
+                {!isMessage && !!currentProducts.length && (
+                  <>
+                    <div className="cart-page__content--list">
+                      <ProductList
+                        totalPrice={totalPrice}
+                        onSetTotalPrice={setTotalPrice}
+                        products={currentProducts}
+                        numLiked={numLiked}
+                        onSetNumLiked={setNumLiked}
+                        numAdded={numAdded}
+                        onSetNumAdded={setNumAdded}
+                      />
                     </div>
-                  </div>
-                </>
-              )}
-            </div>
-          </section>
-        </main>
+
+                    <div className="cart-page__content--right">
+                      <h1 className="title__biggest cart-page__price">
+                        {`$${totalPrice}`}
+                      </h1>
+
+                      <p
+                        className="cart-page__paragraf"
+                        data-cy="productQauntity"
+                      >
+                        {numAdded === 1
+                          ? 'Total for 1 item'
+                          : `Total for ${numAdded} items`}
+                      </p>
+
+                      <div className="cart-page__button--container">
+                        <button
+                          type="button"
+                          className="cart-page__button"
+                          disabled={numAdded === 0}
+                          onClick={() => setIsMessage(true)}
+                        >
+                          Checkout
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </section>
+          </main>
+        </div>
       )}
 
       {!isLoading && <Footer />}

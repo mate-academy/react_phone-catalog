@@ -1,0 +1,47 @@
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin onTabletAndDesktop {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onMobileAndTablet {
+  @media (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin widthOneCard {
+  @media (max-width: 632px) { //592 + 40
+    @content;
+  }
+}
+
+@mixin widthTwoCard { //593 + 40 .... 875 + 144
+  @media (min-width: 633px) and (max-width: 1019px) {
+    @content;
+  }
+}
+
+@mixin widthTreeCard { //876 + 144 .... 1158 + 144
+  @media (min-width: 1020px) and (max-width: 1302px) {
+    @content;
+  }
+}
