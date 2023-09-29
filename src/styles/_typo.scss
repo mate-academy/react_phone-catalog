@@ -1,0 +1,19 @@
+@import "./style-imports";
+
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+a {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "Mont_bold", sans-serif;
+}

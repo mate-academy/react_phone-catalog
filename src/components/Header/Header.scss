@@ -1,0 +1,16 @@
+@import '/src/styles/style-imports';
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: 0px 1px 0px 0px $gray-elements;
+
+  &__navigation {
+    margin-left: 24px;
+  }
+
+  &__actions {
+    display: flex;
+  }
+}

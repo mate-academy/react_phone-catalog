@@ -1,0 +1,24 @@
+@import "../../styles/style-imports";
+
+.Button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  background-color: transparent;
+  border: 1px solid $gray-icons-placeholders;
+  cursor: pointer;
+
+  &--arrow {
+    background: no-repeat center url("../../icons/arrow-right.svg");
+
+    &-top {
+      transform: rotate(-90deg);
+    }
+
+    &-left {
+      transform: rotate(180deg);
+    }
+  }
+}
