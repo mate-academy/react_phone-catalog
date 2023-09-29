@@ -1,0 +1,18 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+
+.accessories {
+  &__empty {
+    margin: auto;
+    border: 1px solid $secondary-color;
+    background-color: #fafbfc;
+    border-radius: 15px;
+    padding: 30px;
+    width: max-content;
+
+    &__message {
+      @extend %h1;
+
+    }
+  }
+}

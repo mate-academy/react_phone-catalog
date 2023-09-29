@@ -1,0 +1,21 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+
+  &__empty {
+    margin: auto;
+    border: 1px solid $secondary-color;
+    background-color: #fafbfc;
+    border-radius: 15px;
+    padding: 30px;
+
+    &__message {
+      @extend %h1;
+
+      text-align: center;
+    }
+  }
+}

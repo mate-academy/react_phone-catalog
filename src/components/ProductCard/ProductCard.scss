@@ -1,0 +1,154 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+@import "../../utils/mixins";
+
+.productCard {
+  border: 1px solid $light-grey;
+  background: $white-color;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  padding: 32px 27px;
+
+  &__img-container {
+    width: 208px;
+    height: 208px;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      .second-img {
+        z-index: 2;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+    }
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    cursor: pointer;
+    justify-content: center;
+    z-index: 1;
+
+    @include onSmallMobile {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__name {
+    display: flex;
+    height: 42px;
+    padding-top: 24px;
+    @extend %body-text;
+
+    margin-bottom: 24px;
+  }
+
+  &__price-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    @extend %h2;
+
+    &-crossed {
+      color: $secondary-color;
+      font-family: Mont, sans-serif;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__line {
+    background-color: $light-grey;
+    height: 1px;
+    margin-bottom: 16px;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    &-name {
+      @extend %small-text;
+    }
+
+    &-value {
+      @extend %link;
+
+      text-align: right;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button-add {
+    width: 78%;
+    height: 40px;
+    background-color: $primary-color;
+    color: $white-color;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &--active {
+      border: 1px solid $light-grey;
+      background-color: $white-color;
+      color: $green;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 6px rgba(41, 42, 59, 0.66);
+    }
+  }
+
+  &__button-favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 19.14%;
+    height: 40px;
+    background-color: $white-color;
+    border: 1px solid $media-grey;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 1px 3px rgba(23, 32, 49, 0.66);
+    }
+  }
+
+  &__link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
