@@ -19,11 +19,7 @@ const FavoritesPage:React.FC<Props> = () => {
     <section className="favorites main__section">
       {favorites.length <= 0 ? (
         <>
-          {/* <BreadCrumbs /> */}
           <NotFoundPage title="Favorites not found" />
-          {/* <div className="favorites__empty">
-            <p className="favorites__empty__message">Favorites not found</p>
-          </div> */}
         </>
       ) : (
         <div className="favorites__conteiner">
