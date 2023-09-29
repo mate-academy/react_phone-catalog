@@ -1,4 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import classNames from 'classnames';
 import logo from '../../img/logo.svg';
 import favourites from '../../img/favourites.svg';
@@ -7,6 +8,9 @@ import './Navigation.scss';
 import { SearchInput } from '../searchInput/SearchInput';
 import { useAppSelector } from '../../app/hooks';
 import { CartItemType } from '../../types/CartItemType';
+import openMenu from '../../img/menu-open.png';
+import closeMenu from '../../img/menu-close.png';
+import MobileMenu from '../mobileMenu/MobileMenu';
 
 type NavigationProps = {
   searchPlaceholder: string;
@@ -15,6 +19,7 @@ type NavigationProps = {
 export const Navigation: React.FC<NavigationProps> = ({
   searchPlaceholder,
 }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const favouritesCounter = useAppSelector((state) => state.favourites.count);
   const items = useAppSelector((state) => state.cart.items);
@@ -35,15 +40,48 @@ export const Navigation: React.FC<NavigationProps> = ({
     },
   );
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav className="nav">
       <div className="nav__panel">
         <div className="nav__left">
+          <div className="nav__open-menu">
+            <button
+              type="button"
+              className="nav__menu-button"
+              onClick={toggleMobileMenu}
+            >
+              {!isMobileMenuOpen ? (
+                <img
+                  src={openMenu}
+                  alt="open menu"
+                  className="nav__menu-icon"
+                />
+              ) : (
+                <img
+                  src={closeMenu}
+                  alt="close menu"
+                  className="nav__menu-icon"
+                />
+              )}
+
+            </button>
+            {isMobileMenuOpen
+            && (
+              <MobileMenu
+                isOpen={isMobileMenuOpen}
+                closeMenu={toggleMobileMenu}
+              />
+            )}
+          </div>
           <NavLink to="/" className="nav__link">
             <img src={logo} alt="logo" className="nav__logo" />
           </NavLink>
           {location.pathname !== '/cart' && (
-            <>
+            <div className="nav__links-block">
               <NavLink to="/" className={getLinkClass}>
                 home
               </NavLink>
@@ -56,7 +94,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               <NavLink to="/accessories" className={getLinkClass}>
                 accessories
               </NavLink>
-            </>
+            </div>
           )}
         </div>
         <div className="nav__right">

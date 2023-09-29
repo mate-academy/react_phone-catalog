@@ -8,7 +8,43 @@
   max-width: 100%;
   height: 64px;
   padding-left: 50px;
+  position: relative;
 
+  &__open-menu {
+    display: none;
+
+    @include onMobile {
+      display: flex;
+      margin: auto;
+      margin-right: 25px;
+      cursor: pointer;
+    }
+
+    @include onTablet {
+      display: flex;
+      margin: auto;
+      margin-right: 45px;
+      cursor: pointer;
+    }
+  }
+
+  &__menu-button {
+    transition: scale 0.3s;
+    width: 30px;
+    height: 30px;
+    border: 1px solid $elementsColor;
+    background: $whiteColor;
+    cursor: pointer;
+
+    :hover {
+      scale: 1.1;
+    }
+  }
+
+  &__menu-icon {
+    width: 100%;
+    height: 100%;
+  }
 
   &__logo {
     width: 40px;
@@ -25,9 +61,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
 
+  &__links-block {
     @include onMobile {
-      flex-wrap: wrap;
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
     }
   }
 
@@ -42,15 +84,6 @@
     font-family: Mont-Bold;
     color: 	$secondaryColor;
 
-    @include onMobile {
-      font-size: 12px;
-      margin-right: 20px;
-    }
-
-    @include onTablet {
-      margin-right: 20px;
-    }
-
     &:hover {
       color: $primaryColor;
     }
@@ -61,19 +94,11 @@
       &::after {
         content: '';
         position: absolute;
-        bottom: -125%;
+        bottom: -200%;
         left: 0;
         width: 100%;
         height: 2px;
         background-color: $primaryColor;
-      }
-
-      @include onMobile {
-        &::after {
-          content: '';
-          height: 0px;
-          background-color: transparent;
-        }
       }
     }
 

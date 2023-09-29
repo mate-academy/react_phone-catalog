@@ -21,7 +21,7 @@ export const SearchInput:React.FC<SearchInputProps> = ({ placeholder }) => {
     dispatch(setSearchQuery(queryParams));
   }, [queryParams, dispatch]);
 
-/*   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  /*   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchQuery(event.target.value));
   }; */
 
