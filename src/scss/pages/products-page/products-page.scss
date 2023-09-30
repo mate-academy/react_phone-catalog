@@ -5,7 +5,8 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    min-width: 100%;
+    justify-content: center;
+    min-width: fit-content;
     gap: 16px;
     margin-bottom: 40px;
   }

@@ -8,7 +8,13 @@ export const Baner: React.FC = () => (
   >
     {banerImages.map(img => (
       <Carousel.Item interval={5000}>
-        <Image src={`img/banner-${img}.png`} className="slider__item" />
+        <Image
+          src={`img/banner-${img}.png`}
+          className="slider__item"
+          style={{
+            objectFit: 'cover',
+          }}
+        />
       </Carousel.Item>
     ))}
   </Carousel>

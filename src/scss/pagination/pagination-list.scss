@@ -4,6 +4,6 @@
   &__list {
     display: flex;
     gap: 8px;
-    overflow: hidden;
+    position: relative;
   }
 }

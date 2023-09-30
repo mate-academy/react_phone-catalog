@@ -1,22 +1,19 @@
 @import "../utils/_variables";
 @import"../utils/extends";
 @import "../utils/mixins";
+@import "../MQ/breakpoints.scss";
 
 @import "./pagination-list.scss";
 @import "./pagination-item.scss";
 
 .pagination {
-  position: relative;
   @extend .flex-center;
-  gap: 16px;
   margin: 0 auto 80px;
+  gap: 8px;
+  max-width: 100%;
 
-  @include onTab {
-    gap: 20px;
-  }
-
-  @include onPhone {
-    gap: 8px;
+  @include md {
+    width: 680px;
   }
 }
 

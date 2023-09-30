@@ -1,18 +1,28 @@
 @import "../utils/_variables";
-@import "../utils/mixins";
 
 @import "./wrap-left.scss";
 @import "./wrap-right.scss";
 
 .header {
-  position: relative;
+  position: fixed;
   display: flex;
-  justify-content: space-between;
+  width: 100vw;
   border-bottom: 1px solid $border-color-gray;
   padding: 0 20px;
   height: $header-height;
+  background-color: #fff;
+  opacity: 0.97;
+  z-index: 1000;
 
-  @include onPhone {
-    padding: 0;
+  &__nav {
+    @include sm {
+      position: absolute;
+      transition: all 0.3s ease;
+      margin-top: 64px;
+      padding-top: 30px;
+      background-color: #fff;
+      height: 100vh;
+      width: 100vw;
+    }
   }
 }

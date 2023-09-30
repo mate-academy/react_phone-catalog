@@ -4,7 +4,7 @@
 @import "./details-galery.scss";
 @import "./details-characteristics.scss";
 @import "./details-about.scss";
-//  tech-spects uses styles from the characteristics block;
+@import "../../MQ/breakpoints.scss";
 
 .details {
   &__title {
@@ -17,12 +17,12 @@
     grid-template-rows: 1fr 1fr;
     gap: 64px;
 
-    @include onTab {
+    @include md {
       grid-template-columns: 1fr;
       grid-template-rows: repeat(4, 1fr);
     }
 
-    @include onPhone {
+    @include sm {
       display: flex;
       flex-direction: column;
       margin-bottom: 80px;

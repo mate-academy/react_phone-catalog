@@ -7,8 +7,8 @@ export const DetailsLoader = () => {
   const { device } = useDiviceSize();
   let loader = <Desktop />;
 
-  if (device !== 'desktop') {
-    loader = device === 'tab' ? <Tab /> : <Phone />;
+  if (device !== 'lg') {
+    loader = device === 'md' ? <Tab /> : <Phone />;
   }
 
   return (

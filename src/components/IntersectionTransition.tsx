@@ -14,10 +14,7 @@ export const Transition: React.FC<Props> = ({ children }) => {
   return (
     <div
       ref={ref}
-      style={{
-        transition: 'all 0.5s ease',
-        opacity: !inView ? 0 : 1,
-      }}
+      style={{ opacity: !inView ? 0.5 : 1 }}
     >
       {children}
     </div>

@@ -1,6 +1,7 @@
 @import "../..//utils/variables";
 @import "../../utils/extends";
 @import "../../utils/mixins";
+@import "../../MQ/breakpoints.scss";
 
 .cart {
   &__item {
@@ -10,16 +11,16 @@
     padding: 48px 40px;
     border: 1px solid $border-color-gray;
 
-    @include onTab {
-      max-width: 600px;
+    @include md {
+      width: 100%;
     }
 
-    @include onPhone {
+    @include sm {
       flex-direction: column;
     }
 
     &--remove img {
-      @include onPhone {
+      @include sm {
         position: relative;
         top: -40px;
         right: -110px;
@@ -33,7 +34,7 @@
       max-width: 66px;
       max-height: 66px;
 
-      @include onPhone {
+      @include sm {
         max-width: 150px;
         max-height: 150px;
       }

@@ -1,8 +1,7 @@
 @import "./utils/_variables";
 @import"./utils/extends";
-@import "./utils/mixins";
 
 .logo {
   @extend .flex-center;
-  z-index: 1;
+  z-index: 1000;
 }

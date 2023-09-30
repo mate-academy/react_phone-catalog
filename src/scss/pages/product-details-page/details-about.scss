@@ -1,6 +1,7 @@
 @import "../../utils/extends";
 @import "../../utils/mixins";
 @import "../../utils/variables";
+@import "../../MQ/breakpoints.scss";
 
 .details {
   &__about {
@@ -13,7 +14,7 @@
     }
 
     &--content {
-      @include onPhone {
+      @include sm {
         width: 100%;
       }
 

@@ -1,6 +1,6 @@
 @import "../utils/_variables";
 @import "../utils/mixins";
-
+@import "../MQ/breakpoints.scss";
 @import "./footer-container.scss";
 @import "./footer-actions.scss";
 
@@ -10,9 +10,13 @@
   border-top: 1px solid $border-color-gray;
   padding: 0 20px;
 
-  @include onPhone {
+  @include sm {
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     background-color: $border-color-gray;
+
+    &__nav {
+      position: relative;
+    }
   }
 }

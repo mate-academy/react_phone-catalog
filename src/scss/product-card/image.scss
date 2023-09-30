@@ -1,10 +1,12 @@
+@import "../MQ/breakpoints.scss";
+
 .card {
   &__image {
     img {
       display: block;
       margin: 0 auto;
       max-width: 208px;
-      max-height: 208px;
+      height: 208px;
       transition: transform 0.3s;
       margin-bottom: 24px;
       z-index: 2;
@@ -13,6 +15,12 @@
         margin-bottom: 12px;
         max-width: 170px;
         max-height: 170px;
+      }
+
+      @include sm {
+        margin-bottom: 12px;
+        max-width: 208px;
+        max-height: 208px;
       }
     }
   }

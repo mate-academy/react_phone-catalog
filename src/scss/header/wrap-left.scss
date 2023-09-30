@@ -1,25 +1,13 @@
 @import "../utils/_variables";
 @import "../utils/extends";
-@import "../utils/mixins";
+@import "../MQ/breakpoints.scss";
 
 .header {
   &__wrap-left {
     display: flex;
     gap: 65px;
     transition: left 0.5s  ease;
-    
-    @include onPhone {
-      position: absolute;
-      left: -700px;
-      margin-top: 65px;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding-top: 15px;
-      background-color: #fff;
-      width: 100%;
-      height: 100vh;
-      z-index: 1;
-    }
+    padding-right: 64px;
 
     &--mobile {
       @extend .flex-between-center;
@@ -29,10 +17,11 @@
 
     &--show-menu {
       display: none;
-      @include onPhone {
+      @include sm {
+        position: relative;
+        left: -50px;
         display: block;
         z-index: 1;
-        left: 15px;
       }
     }
   }

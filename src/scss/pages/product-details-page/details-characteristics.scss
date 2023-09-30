@@ -1,6 +1,7 @@
 @import "../../utils/extends";
 @import "../../utils/mixins";
 @import "../../utils/variables";
+@import "../../MQ/breakpoints.scss";
 
 .details {
   &__characteristics {
@@ -10,11 +11,11 @@
     max-width: 70%;
     height: 100%;
 
-    @include onTab {
+    @include md {
       max-width: 50%;
     }
 
-    @include onPhone {
+    @include sm {
       max-width: 100%;
     }
 

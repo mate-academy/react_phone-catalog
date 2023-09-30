@@ -7,7 +7,7 @@ import {
   paginationLimit,
 } from './deviceParams';
 
-type Device = 'desktop' | 'tab' | 'phone';
+type Device = 'sm' | 'min' | 'md' | 'lg' | 'xl';
 
 export function useDiviceSize() {
   const [size, setSize] = useState(window.innerWidth);
@@ -22,10 +22,22 @@ export function useDiviceSize() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  let device: Device = 'desktop';
+  let device: Device = 'xl';
+
+  if (size < 1280) {
+    device = 'lg';
+  }
 
   if (size < 1024) {
-    device = size < 568 ? 'phone' : 'tab';
+    device = 'md';
+  }
+
+  if (size < 768) {
+    device = 'sm';
+  }
+
+  if (size < 510) {
+    device = 'min';
   }
 
   return {

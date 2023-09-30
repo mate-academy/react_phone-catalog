@@ -1,20 +1,17 @@
-@import "../../utils/mixins";
 @import "../../utils/variables";
+@import "../../MQ/breakpoints.scss";
 
 .page-container {
-  display: flex;
-  flex-direction: column;
-  margin: 40px auto 0 ;
-  width: $desktop-width;
+  margin: 104px auto 0 ;
+  max-width: $desktop-width;
+  min-width: 360px;
+  overflow: hidden;
+
+  padding: 0 30px;
   flex-grow: 1;
 
-  @include onTab {
-    width: $tab-width;
-  }
-
-  @include onPhone {
-    width: 272px;
-    gap: 30px;
+  @include md {
+    max-width: 912px;
   }
 }
 

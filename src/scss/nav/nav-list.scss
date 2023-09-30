@@ -1,14 +1,22 @@
+@import "../MQ/breakpoints.scss";
+@import "../utils/variables";
+
 .nav {
+  height: 100%;
+  
   &__list {
     @extend .flex-between-center;
+    display: flex;
     gap: 64px;
-    height: 100%;
 
-    @include onPhone {
+    @include sm {
       flex-direction: column;
-      margin-top: 100px;
-      height: 50%;
-      width: 100%;
+      gap: 30px;
+      height: 50vh;
+    }
+
+    @include md {
+      gap: 30px;
     }
   }
 }

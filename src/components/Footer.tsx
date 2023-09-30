@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { ArrowButton, Logo, Nav } from './index';
 import { footerItems } from '../utils/listsNames';
 
@@ -5,7 +6,9 @@ export const Footer = () => (
   <footer className="footer">
     <div className="footer__container">
       <Logo />
-      <Nav items={footerItems} />
+      <div className="footer__nav">
+        <Nav items={footerItems} />
+      </div>
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0 })}

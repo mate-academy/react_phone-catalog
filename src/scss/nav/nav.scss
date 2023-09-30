@@ -4,8 +4,7 @@
 @import "./nav-item.scss";
 
 .nav {
-  @include onPhone {
-    flex-direction: column;
-    left: 0;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

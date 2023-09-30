@@ -1,6 +1,6 @@
 @import "./utils/_variables";
 @import"./utils/extends";
-@import"./utils/mixins";
+@import "./MQ/breakpoints.scss";
 
 .icon {
   position: relative;
@@ -9,7 +9,7 @@
   padding: 0 25px;
   height: 100%;
 
-  @include onPhone {
+  @include sm {
     padding: 0 15px;
   }
 

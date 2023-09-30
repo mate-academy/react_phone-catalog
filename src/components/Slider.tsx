@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, {
   useContext, useEffect, useMemo,
   useState, memo,
@@ -60,16 +61,22 @@ export const Slider:React.FC<Props> = memo(({
         </div>
         <div
           className="slider__content"
-          style={{ marginLeft: sliderPosition }}
         >
-          {isLoading
-            ? loaderList
-            : products.map(product => (
-              <Card
-                key={product.id}
-                product={product}
-              />
-            ))}
+          <div
+            className="slider__list"
+            style={{ marginLeft: sliderPosition }}
+          >
+
+            {isLoading
+              ? loaderList
+              : products.map(product => (
+                <Card
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+          </div>
+
         </div>
       </section>
     </Transition>

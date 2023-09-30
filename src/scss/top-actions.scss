@@ -2,9 +2,12 @@
 
 .top-actions {
   display: flex;
-  height: 100%;
 
   @include onPhone {
-    z-index: 1;
+    z-index: 101;
+  }
+
+  & a {
+    padding: 24px;
   }
 }

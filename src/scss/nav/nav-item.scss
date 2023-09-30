@@ -1,32 +1,30 @@
 @import "../utils/variables";
 @import "../utils/mixins";
 @import "../utils/extends";
+@import "../MQ/breakpoints.scss";
 
 .nav {
   &__item {
-    position: relative;
-    top: 3px;
-    display: inline-block;
-    align-items: center;
-    height: 90%;
-    width: fit-content;
+    @include text(12px, 700, $primary-gray-color);
+    letter-spacing: 0.48px;
+    transition: color 0.1s;
+    text-transform: uppercase;
+    box-sizing: border-box;
     border-bottom: 3px solid transparent;
-
-    & a {
-      @extend .flex-center;
-      align-items: center;
-      @include text(12px, 700, $primary-gray-color);
-      letter-spacing: 0.48px;
-      transition: color 0.1s;
-      text-transform: uppercase;
-      height: 100%;
+    padding: 27px 0 23px;
       
-      &:hover {
-        opacity: 0.5;
-      }
-      @include onPhone {
-        font-size: 16px;
-      }
+      
+    &:hover {
+      opacity: 0.5;
+      border-color: $primary-dark-color;
+    }
+
+    @include sm {
+      font-size: 16px;
+    }
+
+    @include md {
+      padding: 15px 15px 24px;
     }
 
     &--active {

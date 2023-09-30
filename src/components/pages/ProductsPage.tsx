@@ -44,7 +44,7 @@ export const ProductsPage:React.FC<Props> = ({ products }) => {
   const listToRender
     = useMemo(() => searchActions(listByCategory, searchObj), [searchObj]);
 
-  const paginationLength = Math.ceil(listByCategory.length / +perPage);
+  const paginationLength = Math.ceil(listByCategory.length / +perPage) || 1;
 
   useEffect(() => {
     if (query) {

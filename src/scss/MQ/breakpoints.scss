@@ -1,0 +1,25 @@
+@import "./_vars-breakpoint";
+
+@mixin sm {
+  @media (min-width: $sm) and (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $md) and (max-width: $lg) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $lg) and (max-width: $xl) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $xl) {
+    @content;
+  }
+}

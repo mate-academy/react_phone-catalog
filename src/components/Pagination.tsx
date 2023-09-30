@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useSearchParams } from 'react-router-dom';
 import classnames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowButton } from './ArrowButton';
 import { useDiviceSize } from '../utils/useDeviceSize/useDiviceSize';
 
@@ -11,69 +11,74 @@ type Props = {
 };
 
 export const Pagination:React.FC<Props> = ({ paginationLength }) => {
-  const { buttonWidth, paginationLimit } = useDiviceSize();
+  const { paginationLimit, device } = useDiviceSize();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 1;
-  const perPage = searchParams.get('perPage');
-  const paginationGap = 8;
-  const step = buttonWidth + paginationGap;
-  const lastVisiblePage = useRef(+page);
-  const firstVisiblePage = useRef(0);
-  const [shift, setShift] = useState(0);
-
-  const showLastItem = lastVisiblePage.current !== paginationLength
-  && paginationLength > paginationLimit;
-
-  useEffect(() => {
-    if (paginationLimit) {
-      if (+page > paginationLimit && +page > lastVisiblePage.current) {
-        setShift((+page - paginationLimit) * step);
-        lastVisiblePage.current = +page;
-        firstVisiblePage.current
-         = lastVisiblePage.current - paginationLimit + 1;
-      }
-
-      if (+page < firstVisiblePage.current) {
-        setShift(prev => prev - step);
-        lastVisiblePage.current -= 1;
-        firstVisiblePage.current -= 1;
-      }
-    }
-  }, [page]);
-
-  useEffect(() => {
-    if (+page === 1 && paginationLimit) {
-      setShift(0);
-      lastVisiblePage.current = +page;
-      firstVisiblePage.current = 0;
-    }
-
-    if (+page > paginationLimit && paginationLimit) {
-      setShift((+page - paginationLimit) * step);
-    }
-  }, [perPage]);
+  const perPage = searchParams.get('perPage') || 15;
+  const isLimit = paginationLimit < paginationLength;
+  const [showLast, setShowLast] = useState(isLimit);
+  const [last, setLast] = useState(isLimit
+    ? paginationLimit : paginationLength);
+  const [first, setFirst] = useState(1);
+  const showFirstItem = +page - paginationLimit > 1 || first > 1;
 
   const handleChangePage = (num: number) => {
+    setShowLast(isLimit && +page !== paginationLength - 1);
     searchParams.set('page', `${num}`);
     setSearchParams(searchParams);
+
+    if (isLimit) {
+      if (num === 1) {
+        setLast(paginationLimit);
+        setFirst(num);
+        setShowLast(true);
+
+        return;
+      }
+
+      if (num === paginationLength) {
+        setLast(paginationLength);
+        setFirst(paginationLength - paginationLimit);
+        setShowLast(false);
+
+        return;
+      }
+
+      if (num < +page && paginationLength - +page + 1 < paginationLimit) {
+        setShowLast(false);
+      }
+
+      if (+page === last && +page < paginationLength) {
+        setLast(prev => prev + 1);
+        setFirst(prev => prev + 1);
+      }
+
+      if (+page === first && +page > 1) {
+        setFirst(prev => prev - 1);
+        setLast(prev => prev - 1);
+      }
+    }
   };
+
+  useEffect(() => {
+    setLast(isLimit ? paginationLimit : paginationLength);
+    setShowLast(isLimit);
+  }, [perPage, device]);
 
   const createPagination = () => {
     const result = [];
 
-    for (let i = 0; i < (showLastItem
-      ? paginationLength - 1 : paginationLength); i += 1) {
+    for (let i = first || 1; i <= last; i += 1) {
       result.push(
         <li
-          key={i + 1}
+          key={i}
           className={classnames(
             'pagination__item',
-            { 'is-active': +page === i + 1 },
+            { 'is-active': +page === i },
           )}
-          onClick={() => handleChangePage(i + 1)}
-          style={{ left: -shift }}
+          onClick={() => handleChangePage(i)}
         >
-          {i + 1}
+          {i}
         </li>,
       );
     }
@@ -84,46 +89,48 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
   const paginationList = createPagination();
 
   return (
-    <section
-      className="pagination"
-      style={{ left: showLastItem ? -step / 2 : 0 }}
-    >
+    <section className="pagination">
       <ArrowButton
         type="left"
         stop={+page === 1}
         onChangePosition={() => handleChangePage(+page - 1)}
       />
-      <ul
-        className="pagination__list"
-      >
+      {showFirstItem && (
+        <li
+          key={1}
+          className={classnames(
+            'pagination__item',
+            { 'is-active': +page === 1 },
+          )}
+          onClick={() => handleChangePage(1)}
+        >
+          ...1
+        </li>
+      )}
+      <ul className="pagination__list">
         {paginationList}
       </ul>
-      <div
-        className="right-button"
-        style={{ left: showLastItem ? step : 0 }}
-      >
-        {showLastItem && paginationLimit !== 0
-      && (
-        <button
-          type="button"
-          className="pagination__item"
-          style={{
-            position: 'absolute',
-            left: -step,
-          }}
+
+      {showLast && (
+        <li
+          key={paginationLength}
+          className={classnames(
+            'pagination__item',
+            { 'is-active': +page === paginationLength },
+          )}
           onClick={() => handleChangePage(paginationLength)}
         >
-          {+page !== paginationLength - 1 && '...'}
+          ...
           {paginationLength}
-        </button>
+        </li>
       )}
+      <div className="right-button">
         <ArrowButton
           type="right"
           stop={+page === paginationLength}
           onChangePosition={() => handleChangePage(+page + 1)}
         />
       </div>
-
     </section>
 
   );

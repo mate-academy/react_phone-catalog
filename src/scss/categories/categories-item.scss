@@ -6,10 +6,12 @@
     text-decoration: none;
 
     & img {
-      @include onTab {
-        width: 220px;
-        height: 220px;
-      }
+      width: 100%;
+      flex-shrink: 1;
+      // @include onTab {
+      //   width: 220px;
+      //   height: 220px;
+      // }
 
       @include onPhone {
         width: 100%;

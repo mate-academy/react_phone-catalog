@@ -19,18 +19,21 @@ export const Nav:React.FC<Props> = ({ items }) => {
     <nav className="nav">
       <ul className="nav__list">
         {items.map(item => (
-          <li
-            key={item}
-            className={
-              classnames(
-                'nav__item', {
-                  'nav__item--active': item.toLowerCase() === pathname.slice(1)
-                  || (item === 'home' && pathname === '/'),
-                },
-              )
-            }
-          >
-            <Link to={`${linkPath(item.toLowerCase())}`}>{item}</Link>
+          <li key={item}>
+            <Link
+              to={`${linkPath(item.toLowerCase())}`}
+              className={
+                classnames(
+                  'nav__item', {
+                    'nav__item--active':
+                    item.toLowerCase() === pathname.slice(1)
+                    || (item === 'home' && pathname === '/'),
+                  },
+                )
+              }
+            >
+              {item}
+            </Link>
           </li>
         ))}
       </ul>

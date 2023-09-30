@@ -1,7 +1,6 @@
 @import "../utils/_variables";
 @import"../utils/extends";
-@import "../utils/mixins";
-
+@import "../MQ/breakpoints.scss";
 @import "./image.scss";
 @import "./title.scss";
 @import "./price.scss";
@@ -11,19 +10,18 @@
   justify-content: space-between;
   color: $primary-dark-color;
   @extend .border-gray;
-  width: fit-content;
-  padding: 32px 32px 16px;
-  min-width: 272px;
-  max-width: 272px;
-  min-height: 507px;
-  max-height: 507px;
   box-sizing: border-box;
 
-  @include onTab {
-    min-width: 220px;
-    max-width: 220px;
-    min-height: 455px;
-    max-height: 455px;
-    padding: 15px 20px 10px;
+  width: 220px;
+  height: 455px;
+  padding: 15px 20px;
+
+  @include xl {
+    padding: 32px 32px 16px;
+    width: 272px;
+    height: 507px;
+  }
+  @include lg {
+    height: 507px;
   }
 }

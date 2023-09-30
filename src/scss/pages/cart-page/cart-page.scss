@@ -1,6 +1,4 @@
-@import "../../utils/extends";
-@import "../../utils/mixins";
-@import "../../utils/variables";
+@import "../../MQ/breakpoints.scss";
 
 @import "./cart-item.scss";
 @import "./cart-total.scss";
@@ -10,17 +8,18 @@
   grid-template-areas: "title title" "list action";
   gap: 16px;
 
-  @include onTab {
+  @include md {
     display: flex;
     flex-direction: column;
   }
 
-  @include onPhone {
+  @include sm {
     display: flex;
     flex-direction: column;
   }
 
   &__list {
     grid-area: list;
+    width: 100%;
   }
 }
