@@ -63,6 +63,7 @@ export const Pagination:React.FC<Props> = ({ paginationLength }) => {
   useEffect(() => {
     setLast(isLimit ? paginationLimit : paginationLength);
     setShowLast(isLimit);
+    setFirst(1);
   }, [perPage, device]);
 
   const createPagination = () => {
