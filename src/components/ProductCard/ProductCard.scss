@@ -3,11 +3,11 @@
 .ProductCard {
   display: inline-block;
   box-sizing: content-box;
-  padding: 32px 24px 24px;
+  padding: 32px 23px 24px;
   border: 1px solid $gray-elements;
-  
+
   max-width: 224px;
-  height: 100%;
+  height: max-content;
 
   &__image {
     width: 100%;
@@ -22,10 +22,11 @@
 
   &__title {
     height: 42px;
+    align-items: end;
     margin-bottom: 6px;
     @extend %body-text;
 
-    & > a {
+    &>a {
       font-family: inherit;
       color: inherit;
     }
@@ -35,5 +36,45 @@
     padding-bottom: 6px;
     margin-bottom: 16px;
     box-shadow: 0 1px 0 0 $gray-elements;
+
+    &-main {
+      display: inline;
+      margin-right: 8px;
+    }
+
+    &-discount {
+      display: inline;
+
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 22px;
+      color: $gray-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__characters {
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &--key {
+        @extend %small-text;
+        color: $gray-secondary;
+      }
+
+      &--value {
+        font-family: "Mont-SemiBold", sans-serif;
+        color: $gray-primary;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
   }
 }

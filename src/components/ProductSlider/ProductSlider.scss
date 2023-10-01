@@ -3,9 +3,9 @@
 
   &__buttons {
     display: flex;
-    justify-content: flex-end;
     gap: 16px;
     margin-bottom: 28px;
+    justify-content: flex-end;
   }
 
   &__content {
@@ -14,6 +14,7 @@
     &-list {
       display: flex;
       gap: 16px;
+
       transition: transform 1s ease;
     }
   }

@@ -10,15 +10,48 @@
   border: 1px solid $gray-icons-placeholders;
   cursor: pointer;
 
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
   &--arrow {
     background: no-repeat center url("../../icons/arrow-right.svg");
-
+    
     &-top {
       transform: rotate(-90deg);
     }
 
     &-left {
       transform: rotate(180deg);
+    }
+  }
+
+  &--cart {
+    width: 176px;
+    height: 40px;
+    background: $gray-primary;
+    
+    @extend %buttons;
+    color: $gray-white;
+
+    transition: all $effect-duration ease-in-out;
+    
+    &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &--favourite {
+    min-width: 40px;
+    min-height: 40px;
+    background: no-repeat center url("../../icons/favourite.svg");
+    border: 1px solid $gray-icons-placeholders;
+
+    transition: border-color $effect-duration ease-in-out;
+
+    &:hover {
+      border: 1px solid $gray-primary;
     }
   }
 }

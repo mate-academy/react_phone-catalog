@@ -29,11 +29,15 @@ export const Footer = () => {
         </ul>
 
         <div className="Footer__anchor">
-          <div className="Footer__anchor--text">
+          <label
+            htmlFor="scrollToTop"
+            className="Footer__anchor--text"
+          >
             Back to top
-          </div>
+          </label>
 
           <Button
+            id="scrollToTop"
             variant="arrow"
             arrowDirection="top"
             aria-label="scroll to the top"

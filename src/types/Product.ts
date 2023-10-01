@@ -1,9 +1,9 @@
 export interface Product {
-  age: number,
   id: string,
+  name: string,
+  age: number,
   type: 'phone' | 'tablet' | 'accessory';
   imageUrl: string,
-  name: string,
   snippet: string,
   price: number,
   discount: number,

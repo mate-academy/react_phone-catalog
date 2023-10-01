@@ -1,0 +1,41 @@
+@import "../../styles/style-imports";
+
+.HomePage {
+  margin-top: 40px;
+
+  &__shop-by-category {
+    &--title {
+      position: static;
+      margin-bottom: 24px;
+    }
+
+    &--container {
+      display: flex;
+      gap: 16px;
+    }
+
+    &--category {
+      max-width: 368px;
+    }
+
+    &--photo {
+      max-width: 368px;
+      max-height: 368px;
+      background: #D53C51;
+    }
+  }
+
+  // &--link {
+  //   position: relative;
+  //   max-height: 368px;
+  //   width: 100%;
+  //   min-width: 200px;
+  //   overflow: hidden;
+  //   background: no-repeat right bottom;
+
+  //   &>img {
+  //     width: 268px;
+  //     height: 268px;
+  //   }
+  // }
+}
