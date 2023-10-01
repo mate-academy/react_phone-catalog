@@ -1,16 +1,20 @@
 $heightHeader: 64px;
 $heightFooter: 96px;
 $lineHeightNavLink: 20px;
-$paddingsHaederNavLink: ($heightHeader - $lineHeightNavLink) / 2; //22px;
-$paddingsFooterNavLink: ($heightFooter - $lineHeightNavLink) / 2; //37px;
+$paddingsHaederNavLink: ($heightHeader - $lineHeightNavLink) / 2;
+$paddingsFooterNavLink: ($heightFooter - $lineHeightNavLink) / 2;
 $marginBetweenSections: 70px;
 
-$maxWidthContainer: 1122px;
+$gapContainerMobile: 20px;
+$gapContainerTablet: 72px;
+$maxWidthContainer: 1124px;
 $minHeightMainContent: calc(
   100vh - #{$heightHeader} - #{$heightFooter} - #{$marginBetweenSections} - 3px
 );
 
 $heightMenuRow: 28px;
+
+$timeTransotionGeneral: 0.3s;
 
 $colorPrimary: #313237;
 $colorSecondary: #89939a;
@@ -28,20 +32,43 @@ $borderWidth: 1px;
 
 $hieghtSelect: 40px;
 
-$heightCaruselsImg: 400px;
+$heightCaruselsImgDecktop: 400px;
+$heightCaruselsImgTablet: 300px;
+$heightCaruselsImgMobile: 200px;
 $widthCaruselsImgDesktop: 1020px;
 $widthCaruselsImgTablet: 700px;
 $widthCaruselsImgMobile: 400px;
 $gapOfCarusel: 40px;
+$timeTransitionCarusel: 1000ms;
 
-$widthSlider: $maxWidthContainer; //1122px
 $widthProductCard: 270px;
-$gapSlider: 13px;
 
+$gapSlider: 13px;
+$widthSliderButtons: 2 * $widthIcon + 14;
+$widthSlider: $maxWidthContainer;
+$widthSliderTreeCards: 3 * $widthProductCard + 2 * $gapSlider + 5;
+$widthSliderTwoCards:  2 * $widthProductCard + $gapSlider + 5;
+$widthSliderOneCards: $widthProductCard + 5;
+
+$widthProductListDesktop: $widthSlider;
+$widthProductListTree: 3 * $widthProductCard + 2 * $gapSlider + 5px;
+$widthProductListTwo: 2 * $widthProductCard + $gapSlider + 5px;
+$widthProductListOne: $widthProductCard + 5;
+
+$minwidthDetailsMobile: 320px;
 $heightDetailsImg: 442px;
 $heightSmallImg: 80px;
-$gapBetweenSmallImgs: ($heightDetailsImg - 5 * $heightSmallImg) / 4; //10px
+$gapBetweenSmallImgs:
+  ($heightDetailsImg - 5 * $heightSmallImg) / 4;
 
-$timeTransition: 1000ms;
+$heightDetailsImgTablet: 300px;
+$heightSmallImgTablet: 55px;
+$gapBetweenSmallImgsTablet:
+  ($heightDetailsImgTablet - 5 * $heightSmallImgTablet) / 4;
+
+$heightDetailsImgMobile: 200px;
+$heightSmallImgMobile: 37px;
+$gapBetweenSmallImgsMobile:
+  ($heightDetailsImgMobile - 5 * $heightSmallImgMobile) / 4;
 
 $paddingRightCartPage: 21px;

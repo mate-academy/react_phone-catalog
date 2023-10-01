@@ -35,6 +35,7 @@
 
     border: 1px solid $colorIcons;
     cursor: pointer;
+    transition: border-color $timeTransotionGeneral;
 
     &:hover {
       border-color: $colorPrimary;

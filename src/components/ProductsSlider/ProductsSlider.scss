@@ -10,15 +10,15 @@
       display: flex;
       justify-content: space-between;
 
-      min-width: calc(32px + 32px + 16px);
+      min-width: $widthSliderButtons;
 
       @include onMobileAndTablet {
-        width: calc(32px + 32px + 14px);
+        width: $widthSliderButtons;
       }
     }
 
     &--button {
-      height: $widthIcon; //32px
+      height: $widthIcon;
       width: $widthIcon;
 
       background-repeat: no-repeat;
@@ -27,6 +27,7 @@
 
       border: 1px solid $colorIcons;
       cursor: pointer;
+      transition: border-color $timeTransotionGeneral;
 
       &:hover {
         border-color: $colorPrimary;
@@ -57,31 +58,30 @@
   }
 
   &__content {
-    width: $widthSlider; /// 1122
+    width: $widthSlider;
     margin: 20px auto 0;
+    
 
     overflow: hidden;
 
     @include widthOneCard {
-      width: calc(270px + 5px);
+      width: $widthSliderOneCards;
     }
 
     @include widthTwoCard {
-      width: calc(270px + 270px + 13px + 5px);
+      width: $widthSliderTwoCards;
     }
 
     @include widthTreeCard {
-      width: calc(270px + 270px + 13px + 270px + 13px + 5px);
+      width: $widthSliderTreeCards;
     }
-    // $widthSlider: $maxWidthContainer; //1122px
-    // $widthProductCard: 270px;
-    // $gapSlider: 13px;
   }
 
   &__images {
     display: flex;
     gap: $gapSlider;
 
-    transition: transform $timeTransition linear;
+    padding: 5px;
+    transition: transform $timeTransitionCarusel linear;
   }
 }

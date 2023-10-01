@@ -2,8 +2,6 @@
 
 .way {
   display: flex;
-  justify-content: center;
-  width: max-content;
 
   &__icon16 {
     height: 16px;
@@ -24,8 +22,13 @@
   }
 
   &__link {
-    color: $colorPrimary;
+    color: $colorSecondary;
     margin-right: 5px;
+    transition: color $timeTransotionGeneral;
+
+    &:hover {
+      color: $colorPrimary;
+    }
   }
 
   &__name {

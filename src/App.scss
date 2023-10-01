@@ -14,6 +14,11 @@ html {
   font-size: 14px;
   line-height: 18px;
   color: $colorSecondary;
+
+  @include onMobile {
+    font-size: 12px;
+    line-height: 14px;
+  }
 }
 
 .body {
@@ -56,6 +61,11 @@ h1 {
   font-size: 32px;
   line-height: 41px;
   color: $colorPrimary;
+
+  @include onMobile {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
 
 h2 {
@@ -64,6 +74,11 @@ h2 {
   font-size: 22px;
   line-height: 31px;
   color: $colorPrimary;
+
+  @include onMobile {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 h3 {
@@ -73,8 +88,8 @@ h3 {
   line-height: 26px;
   color: $colorPrimary;
 
-  // @include onMobile {
-  //   font-size: 16px;
-  // line-height: 18px
-  // }
+  @include onMobile {
+    font-size: 16px;
+    line-height: 21px;
+  }
 }

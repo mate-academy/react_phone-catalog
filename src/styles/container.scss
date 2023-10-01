@@ -1,10 +1,11 @@
+@import "./_utils/variables.scss";
 @import "./_utils/mixins";
 
 .container {
-  margin: 0 20px;
+  margin: 0 $gapContainerMobile;
 
   @include onTablet {
-    margin: 0 72px;
+    margin: 0 $gapContainerTablet;
   }
 
   @include onDesktop {

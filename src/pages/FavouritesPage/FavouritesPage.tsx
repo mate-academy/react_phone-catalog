@@ -125,14 +125,16 @@ export const FavouritesPage: React.FC = () => {
                 />
               </div>
 
-              <div className="product-page__list">
-                <ProductList
-                  products={filteredProducts}
-                  numLiked={numLiked}
-                  onSetNumLiked={setNumLiked}
-                  numAdded={numAdded}
-                  onSetNumAdded={setNumAdded}
-                />
+              <div className="product-page__list--container">
+                <div className="product-page__list">
+                  <ProductList
+                    products={filteredProducts}
+                    numLiked={numLiked}
+                    onSetNumLiked={setNumLiked}
+                    numAdded={numAdded}
+                    onSetNumAdded={setNumAdded}
+                  />
+                </div>
               </div>
             </section>
           </main>

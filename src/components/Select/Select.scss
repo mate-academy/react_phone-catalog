@@ -8,6 +8,7 @@
   flex-direction: column;
 
   border: $borderWidth solid $colorIcons;
+  transition: border-color 0.2s;
 
   &:hover {
     border-color: $colorPrimary;
@@ -54,6 +55,8 @@
 
     border-left: $borderWidth solid $colorIcons;
     border-right: $borderWidth solid $colorIcons;
+    
+    transition: color $timeTransotionGeneral;
 
     &:last-child {
       border-bottom: $borderWidth solid $colorIcons;

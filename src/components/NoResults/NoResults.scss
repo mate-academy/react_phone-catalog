@@ -4,6 +4,14 @@
 .no-results {
   margin-top: $marginBetweenSections;
 
+  @include onTablet {
+    margin-top: 50px;
+  }
+
+  @include onMobile {
+    margin-top: 20px;
+  }
+
   &__title {
     color: $colorSecondary;
     font-family: "Mont", sans-serif;

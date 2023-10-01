@@ -204,15 +204,17 @@ export const PhonesPage: React.FC = React.memo(() => {
                     <section className="product-page__section">
                       <FilterForProduct />
 
-                      <div className="product-page__list">
-                        <ProductList
-                          numLiked={numLiked}
-                          onSetNumLiked={setNumLiked}
-                          numAdded={numAdded}
-                          onSetNumAdded={setNumAdded}
-                          products={filteredProducts
-                            .slice(startPointOnPage - 1, lastPointOnPage)}
-                        />
+                      <div className="product-page__list--container">
+                        <div className="product-page__list">
+                          <ProductList
+                            numLiked={numLiked}
+                            onSetNumLiked={setNumLiked}
+                            numAdded={numAdded}
+                            onSetNumAdded={setNumAdded}
+                            products={filteredProducts
+                              .slice(startPointOnPage - 1, lastPointOnPage)}
+                          />
+                        </div>
                       </div>
 
                       {filteredProducts.length > shownPerPage && (

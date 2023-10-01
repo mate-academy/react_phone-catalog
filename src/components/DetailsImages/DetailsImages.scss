@@ -1,15 +1,21 @@
 @import "../../styles/_utils/variables.scss";
 @import "../../styles/smallImage.scss";
+@import "../../styles/_utils/mixins";
 
 .details-images {
   display: flex;
   justify-content: space-between;
 
-  width: 100%;
+  width: 47%;
+  min-width: 450px;
 
-  &__images {
-    display: flex;
-    height: $heightDetailsImg;
+  @include onTablet {
+    min-width: 280px;
+  }
+
+  @include onMobile {
+    width: 100%;
+    min-width: $minwidthDetailsMobile;
   }
 
   &__small-images {
@@ -20,12 +26,22 @@
     flex-direction: column;
     gap: $gapBetweenSmallImgs;
     height: 100%;
+
+    @include onTablet {
+      gap: $gapBetweenSmallImgsTablet;
+    }
+
+    @include onMobile {
+      gap: $gapBetweenSmallImgsMobile;
+    }
   }
 
   &__main-img-container {
     display: flex;
     justify-content: center;
     width: 100%;
+
+    margin: 0 5px;
   }
 
   &__main-img {
@@ -34,5 +50,13 @@
 
     object-fit: cover;
     object-position: center;
+
+    @include onTablet {
+      height: $heightDetailsImgTablet;
+    }
+
+    @include onMobile {
+      height: $heightDetailsImgMobile;
+    }
   }
 }

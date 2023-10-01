@@ -2,7 +2,7 @@ import './Footer.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
-import { GITHUB_REPO } from '../../helpers/consts';
+import { GITHUB_REPO, MIN_WIDTH_TABLET } from '../../helpers/consts';
 
 export const Footer = () => {
   const [isShownGoToTop, setIsShownGoToTop] = useState<boolean>(true);
@@ -35,9 +35,10 @@ export const Footer = () => {
     const handlerResize = () => {
       const windowWidth = window.innerWidth;
 
-      // console.log('hi');
-      setIsShownGoToTopText(windowWidth > 743); // calc
+      setIsShownGoToTopText(windowWidth >= MIN_WIDTH_TABLET);
     };
+
+    handlerResize();
 
     window.addEventListener('resize', handlerResize);
 

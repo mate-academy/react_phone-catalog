@@ -16,6 +16,8 @@
   }
 }
 
+@import "./variables.scss";
+
 @mixin onTabletAndDesktop {
   @media (min-width: 744px) {
     @content;
@@ -29,18 +31,18 @@
 }
 
 @mixin widthOneCard {
-  @media (max-width: 632px) { //592 + 40
+  @media (max-width: 632px) {
     @content;
   }
 }
 
-@mixin widthTwoCard { //593 + 40 .... 875 + 144
+@mixin widthTwoCard {
   @media (min-width: 633px) and (max-width: 1019px) {
     @content;
   }
 }
 
-@mixin widthTreeCard { //876 + 144 .... 1158 + 144
+@mixin widthTreeCard {
   @media (min-width: 1020px) and (max-width: 1302px) {
     @content;
   }

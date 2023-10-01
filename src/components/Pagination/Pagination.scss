@@ -2,20 +2,19 @@
 
 .pagination {
   display: flex;
-  gap: 0.5em;
+  justify-content: space-between;
+  gap: 20px;
+  width: max-content;
 
-  padding-top: 40px;
+  margin-top: 40px;
+
+  &__list {
+    display: flex;
+    gap: 5px;
+  }
 
   &__item {
     display: flex;
-
-    &:first-child {
-      padding-right: 10px;
-    }
-
-    &:last-child {
-      padding-left: 10px;
-    }
   }
 
   &__link {
@@ -28,6 +27,10 @@
 
     border: 1px solid $colorIcons;
     color: $colorPrimary;
+
+    transition: border-color $timeTransotionGeneral,
+      background-color $timeTransotionGeneral,
+      color $timeTransotionGeneral;
 
     &:hover {
       border-color: $colorPrimary;
@@ -44,5 +47,17 @@
       background-color: $colorPrimary;
       color: $colorWhite;
     }
+  }
+
+  &__points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: $widthIcon;
+    width: $widthIcon;
+
+    letter-spacing: 2px;
+    cursor: default;
   }
 }

@@ -18,6 +18,9 @@
     font-size: 14px;
     line-height: 21px;
 
+    transition: box-shadow $timeTransotionGeneral,
+      background-color $timeTransotionGeneral;
+
     &:hover {
       box-shadow: 0 3px 13px 0 #17203142;
     }
@@ -42,6 +45,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(../images/icons/Favourites.svg);
+
+    transition: border-color $timeTransotionGeneral,
+      background-image $timeTransotionGeneral;
 
     &:hover {
       border-color: $colorPrimary;

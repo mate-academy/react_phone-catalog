@@ -1,4 +1,5 @@
 @import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
 
 .phones-filter {
   display: flex;
@@ -6,9 +7,11 @@
 
   &__sort {
     width: 15%;
+    min-width: 140px;
   }
 
   &__quantity-items {
     width: 10%;
+    min-width: 105px;
   }
 }

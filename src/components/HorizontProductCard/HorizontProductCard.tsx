@@ -97,7 +97,7 @@ export const HorizontProductCard: React.FC<Props> = ({
           />
         </Link>
 
-        <div className="product-card__name">{name}</div>
+        <div className="horizont-card__name">{name}</div>
       </div>
 
       <div className="horizont-card__right">

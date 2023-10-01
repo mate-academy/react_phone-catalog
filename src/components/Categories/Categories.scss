@@ -58,7 +58,7 @@
       padding-bottom: 100%;
 
       overflow: hidden;
-      transition: transform 100ms linear;
+      transition: transform $timeTransotionGeneral linear;
 
       &:hover {
         @include onTabletAndDesktop {

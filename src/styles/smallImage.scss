@@ -1,3 +1,5 @@
+@import "../styles/_utils/mixins";
+
 .small-image {
   height: $heightSmallImg;
   width: $heightSmallImg;
@@ -6,14 +8,22 @@
   object-fit: contain;
   object-position: center;
 
+  @include onTablet {
+    height: $heightSmallImgTablet;
+    width: $heightSmallImgTablet;
+  }
+
+  @include onMobile {
+    height: $heightSmallImgMobile;
+    width: $heightSmallImgMobile;
+  }
+
   &__container {
     display: flex;
 
-    height: $heightSmallImg;
-    width: $heightSmallImg;
-
     border: 1px solid $colorElements;
     cursor: pointer;
+    transition: border-color $timeTransotionGeneral;
 
     &:hover {
       border-color: $colorPrimary;

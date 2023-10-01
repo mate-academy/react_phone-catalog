@@ -10,18 +10,26 @@
   justify-content: space-between;
   width: 100%;
 
-  box-sizing: border-box;
   border-bottom: 1px solid $colorElements;
 
   &__left {
     display: flex;
     align-items: center;
-    padding-left: 24px;
   }
   
   &__right {
     position: relative;
     display: flex;
+  }
+
+  &__logo {
+    display: flex;
+
+    padding: 0 24px;
+
+    @include widthOneCard {
+      padding: 0 10px;
+    }
   }
 
   &__nav {
@@ -51,6 +59,8 @@
 
     border-left: 1px solid $colorElements;
     cursor: pointer;
+
+    transition: background-color 0.2s;
 
     &:hover {
       background-color: $colorHoverAndBG;
@@ -117,6 +127,10 @@
 
     width: 327px;
 
+    @include widthOneCard {
+      width: 220px;
+    }
+
     &--button {
       position: absolute;
       top: 15px;
@@ -125,6 +139,10 @@
       display: flex;
       align-items: center;
       padding-right: 24px;
+
+      @include widthOneCard {
+        padding-right: 10px;
+      }
     }
 
     &--search {
@@ -148,7 +166,7 @@
   }
 
   &__input {
-    width: 120%;
+    width: 100%;
 
     padding: 0 100px 0 20px;
     border: 0;
@@ -159,6 +177,13 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
+
+    @include widthOneCard {
+      padding: 0 20px 0 10px;
+    }
+
+    transition: background-color $timeTransotionGeneral,
+      box-shadow $timeTransotionGeneral;
 
     &::placeholder {
       color: $colorIcons;
@@ -186,7 +211,6 @@
 
   &__close {
     background-image: url(../../images/icons/Close.svg);
-    background-color: $colorHoverAndBG;
     background-repeat: no-repeat;
     background-position: center;
   }

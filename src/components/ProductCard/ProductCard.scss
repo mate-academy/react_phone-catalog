@@ -1,6 +1,5 @@
 @import "../../styles/_utils/variables.scss";
 @import "../../styles/_utils/font-faces.scss";
-// @import "../../styles/selectionButtons.scss";
 
 .product-card {
   display: flex;
@@ -10,13 +9,13 @@
   width: $widthProductCard;
   padding: 20px;
 
-  box-sizing: border-box;
   border: 1px solid $colorIcons;
 
   font-family: "Mont", sans-serif;
+  transition: box-shadow $timeTransotionGeneral;
 
   &:hover {
-    box-shadow: 0 2px 15px 0 #0000000d;
+    box-shadow: 0 0 3px 3px #0000000d;
   }
 
   &__img {

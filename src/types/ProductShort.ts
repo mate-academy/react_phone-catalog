@@ -13,17 +13,3 @@ export interface ProductShort {
   year: number,
   image: string,
 }
-
-// export interface ProductShort {
-//   id: string,
-//   type: string,
-//   name: string,
-//   imageUrl: string,
-//   age: number,
-//   snippet: string,
-//   price: number,
-//   discount: number,
-//   screen: string,
-//   capacity: string,
-//   ram: string,
-// };

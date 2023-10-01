@@ -25,7 +25,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
       </h2>
 
       <ul className="details-tech-specs__content">
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Screen}
           </span>
@@ -34,7 +34,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Resolution}
           </span>
@@ -43,7 +43,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Processor}
           </span>
@@ -52,7 +52,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Ram}
           </span>
@@ -61,7 +61,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Memory}
           </span>
@@ -70,7 +70,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Camera}
           </span>
@@ -79,7 +79,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Zoom}
           </span>
@@ -88,7 +88,7 @@ export const DetailsTechSpecs: React.FC<Props> = ({ product }) => {
           </span>
         </li>
 
-        <li className="product-card__param">
+        <li className="details-tech-specs__param">
           <span>
             {CardParams.Cell}
           </span>

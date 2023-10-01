@@ -5,6 +5,7 @@
   align-items: center;
 
   width: max-content;
+  transition: color $timeTransotionGeneral;
 
   &:hover {
     color: $colorPrimary;

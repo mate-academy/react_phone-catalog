@@ -27,7 +27,7 @@ export const Header: React.FC<Props> = ({
   withSearchBy = '',
   quantityLiked = 0,
   quantityAdded = 0,
-  onSetIsMenu = () => {},
+  onSetIsMenu = () => { },
   isMenu = false,
 }) => {
   const { pathname, search } = useLocation();
@@ -88,13 +88,15 @@ export const Header: React.FC<Props> = ({
   return (
     <header id="header" className="header">
       <div className="header__left">
-        <Link to="/" className="header__nav-link">
-          <img
-            src={logo}
-            alt="logo-img"
-            className="logo-img"
-          />
-        </Link>
+        <div className="header__logo">
+          <Link to="/" className="header__nav-link">
+            <img
+              src={logo}
+              alt="logo-img"
+              className="logo-img"
+            />
+          </Link>
+        </div>
 
         {withNavigate && (
           <nav className="header__nav nav">

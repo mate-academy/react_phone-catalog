@@ -15,7 +15,6 @@
   }
 
   &__content {
-    // width: $widthCaruselsImg;
     width: 100%;
 
     overflow: hidden;
@@ -26,7 +25,7 @@
     display: flex;
     gap: $gapOfCarusel;
 
-    transition: transform $timeTransition linear;
+    transition: transform $timeTransitionCarusel linear;
   }
 
   &__item {
@@ -34,20 +33,20 @@
   }
 
   &__img {
-    height: $heightCaruselsImg; //400
-    width: $widthCaruselsImgDesktop; //1020
+    height: $heightCaruselsImgDecktop;
+    width: $widthCaruselsImgDesktop;
 
     object-fit: cover;
     object-position: center;
 
     @include onTablet {
-      height: 300px;
-      width: calc(100vw - 144px); //margin-container
+      height: $heightCaruselsImgTablet;
+      width: calc(100vw - #{$gapContainerTablet} * 2);
     }
 
     @include onMobile {
-      height: 200px;
-      width: calc(100vw - 40px);
+      height: $heightCaruselsImgMobile;
+      width: calc(100vw - #{$gapContainerMobile} * 2);
     }
   }
 
@@ -58,6 +57,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: $colorWhite;
+
+    transition: border-color $timeTransotionGeneral;
 
     @include onMobileAndTablet {
       display: none;
@@ -90,6 +91,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(../../images/icons/point-for-slider.svg);
+
+    transition: background-image $timeTransitionCarusel;
 
     &:last-child {
       margin-right: 0;

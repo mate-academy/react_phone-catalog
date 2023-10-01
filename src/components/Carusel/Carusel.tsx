@@ -5,6 +5,7 @@ import './Carusel.scss';
 import caruselPhotoA from '../../images/carusel/banner-phones.png';
 import caruselPhotoB from '../../images/carusel/banner-tablets.png';
 import caruselPhotoC from '../../images/carusel/banner-accessories.png';
+import { TIME_TRANSIT_CARUSEL } from '../../helpers/consts';
 
 const widthDesktop = 1250;
 const widthTablet = 744;
@@ -72,7 +73,8 @@ export const Carusel: React.FC = () => {
 
   useEffect(() => {
     if (!isDeleteInfinit) {
-      timerFlipping = window.setInterval(() => handlerNextImg(), 3000);/// /calc 5000
+      timerFlipping = window
+        .setInterval(() => handlerNextImg(), TIME_TRANSIT_CARUSEL);
     }
 
     return () => clearInterval(timerFlipping);

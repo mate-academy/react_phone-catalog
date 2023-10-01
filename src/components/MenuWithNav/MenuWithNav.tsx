@@ -1,10 +1,11 @@
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import './MenuWithNav.scss';
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { NamesByLinks } from '../../types/NamesByLinks';
 import { DEF_SORT, GITHUB_REPO } from '../../helpers/consts';
+import { getState } from '../../helpers/getState';
 
 type Props = {
   quantityLiked: number,
@@ -15,6 +16,8 @@ type Props = {
 export const MenuWithNav: React.FC<Props> = ({
   quantityLiked, quantityAdded, onSetIsMenu,
 }) => {
+  const { pathname, search } = useLocation();
+
   const getClassForLink = ({ isActive }: { isActive: boolean }) => {
     return classNames(
       'menu__link',
@@ -42,6 +45,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 end
                 className={getClassForLink}
                 onClick={handlerClickLink}
+                state={getState(pathname, search)}
               >
                 {NamesByHeader.Home}
               </NavLink>
@@ -52,6 +56,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Phones + DEF_SORT}
                 end
                 className={getClassForLink}
+                state={getState(pathname, search)}
               >
                 {NamesByHeader.Phones}
               </NavLink>
@@ -62,6 +67,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Tablets + DEF_SORT}
                 end
                 className={getClassForLink}
+                state={getState(pathname, search)}
               >
                 {NamesByHeader.Tablets}
               </NavLink>
@@ -72,6 +78,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Accessories + DEF_SORT}
                 end
                 className={getClassForLink}
+                state={getState(pathname, search)}
               >
                 {NamesByHeader.Accessories}
               </NavLink>
@@ -82,6 +89,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Favourites}
                 end
                 className={getClassForLink}
+                state={getState(pathname, search)}
               >
                 {quantityLiked !== 0 ? (
                   <div className="menu__link-with-number">
@@ -103,6 +111,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Cart}
                 end
                 className={getClassForLink}
+                state={getState(pathname, search)}
               >
                 {quantityAdded !== 0 ? (
                   <div className="menu__link-with-number">

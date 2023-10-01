@@ -11,8 +11,7 @@
 
   &__content {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     row-gap: 50px;
     
     width: 100%;
@@ -20,9 +19,33 @@
     margin-top: 40px;
   }
 
-  &__section {
-    width: 47%;
-    min-width: 450px;
+  &__section-top {
+    display: flex;
+    gap: 30px;
+
+    width: 100%;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__section-bot {
+    display: flex;
+    gap: 30px;
+
+    width: 100%;
+
+    @include onTablet {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 
   &__paragraph {
@@ -36,6 +59,6 @@
   }
 
   &__slider {
-    margin: 70px 0;
+    margin-top: 70px;
   }
 }

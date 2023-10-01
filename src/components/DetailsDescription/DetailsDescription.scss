@@ -1,9 +1,26 @@
 @import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
 
 .details-description {
+  width: 47%;
+  min-width: 450px;
+
+  @include onMobileAndTablet {
+    width: 100%;
+    min-width: $minwidthDetailsMobile;
+  }
+
   &__content {
     margin-top: 20px;
     border-top: 1px solid $colorElements;
+
+    @include onTablet {
+      margin-top: 10px;
+    }
+
+    @include onMobile {
+      margin-top: 5px;
+    }
   }
 
   &__small-title {
@@ -14,6 +31,16 @@
     font-size: 20px;
     line-height: 26px;
     color: $colorPrimary;
+
+    @include onTablet {
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    @include onMobile {
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 
   &__paragraf {

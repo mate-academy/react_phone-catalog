@@ -95,11 +95,9 @@ export const ProductDetailsPage: React.FC = () => {
                   </h1>
 
                   <div className="details-page__content">
-                    <div className="details-page__section">
+                    <div className="details-page__section-top">
                       <DetailsImages product={product} />
-                    </div>
 
-                    <div className="details-page__section">
                       <DetailsSelects
                         product={product}
                         similarProducts={similarProducts}
@@ -110,11 +108,9 @@ export const ProductDetailsPage: React.FC = () => {
                       />
                     </div>
 
-                    <div className="details-page__section">
+                    <div className="details-page__section-bot">
                       <DetailsDescription product={product} />
-                    </div>
 
-                    <div className="details-page__section">
                       <DetailsTechSpecs product={product} />
                     </div>
                   </div>
