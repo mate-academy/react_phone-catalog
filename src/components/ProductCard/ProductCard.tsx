@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 
 import { Product } from '../../types/Product';
@@ -16,6 +16,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ hasDiscount, product }) => {
+  const { pathname, search } = useLocation();
   const {
     category,
     itemId,
@@ -38,6 +39,7 @@ export const ProductCard: React.FC<Props> = ({ hasDiscount, product }) => {
     <div className="product-card">
       <Link
         to={`/${category}/${itemId}`}
+        state={{ pathname, search }}
         className="product-card__link"
       >
         <img

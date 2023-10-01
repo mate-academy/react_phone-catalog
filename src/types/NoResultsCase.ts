@@ -4,6 +4,7 @@ export enum NoResultsCaseName {
   EmptyCategory = 'empty category',
   EmptyCart = 'empty cart',
   EmptyFavourites = 'empty favourites',
+  NoSearchResults = 'no search results',
   PageNotFound = 'page not found',
 }
 

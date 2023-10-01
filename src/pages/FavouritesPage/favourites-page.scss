@@ -17,6 +17,10 @@
     color: $color-secondary;
   }
 
+  &__search-results {
+    margin-bottom: 24px;
+  }
+
   &__product-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, 272px);

@@ -10,13 +10,29 @@ export const Footer = () => {
         <Logo />
 
         <div className="footer__links">
-          <Link to="/#" className="footer__link" target="_blank">
+          <Link
+            to="https://github.com/Oleksii-Mishchenko/react_phone-catalog"
+            className="footer__link"
+            target="_blank"
+          >
             GITHUB
           </Link>
 
-          <Link to="/#" className="footer__link">CONTACTS</Link>
+          <Link
+            to="https://github.com/Oleksii-Mishchenko"
+            className="footer__link"
+            target="_blank"
+          >
+            CONTACTS
+          </Link>
 
-          <Link to="/#" className="footer__link">RIGHTS</Link>
+          <Link
+            to="https://github.com/Oleksii-Mishchenko?tab=repositories"
+            className="footer__link"
+            target="_blank"
+          >
+            RIGHTS
+          </Link>
         </div>
 
         <button

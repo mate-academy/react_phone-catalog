@@ -30,6 +30,12 @@ export const noResultsCases: NoResultsCase[] = [
       + 'You\'ll definitely love them.',
   },
   {
+    name: NoResultsCaseName.NoSearchResults,
+    image: './img/no_results/NoSearchResults.png',
+    warningText: 'was not found in this catalog.',
+    suggestionText: 'Please try again with another keyword.',
+  },
+  {
     name: NoResultsCaseName.PageNotFound,
     image: './img/no_results/PageNotFound.png',
     warningText: 'the page you are looking for does\'nt exist anymore '

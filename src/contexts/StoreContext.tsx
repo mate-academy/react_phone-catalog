@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect, useMemo } from 'react';
 import { Store } from '../types/Store';
 import { getProducts } from '../services/getProducts';

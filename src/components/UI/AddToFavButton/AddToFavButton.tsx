@@ -23,7 +23,6 @@ export const AddToFavButton: React.FC<Props> = ({ id }) => {
         alt="Add to favourites"
         className="add-to-fav__image"
       />
-      {/* 1 */}
     </button>
   );
 };

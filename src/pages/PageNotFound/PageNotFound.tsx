@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { NoResults } from '../../components/NoResults';
+import { NoResults } from '../../components/UX/NoResults';
 import { NoResultsCaseName } from '../../types/NoResultsCase';
 import './page-not-found.scss';
 

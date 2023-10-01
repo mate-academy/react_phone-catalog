@@ -1,26 +1,31 @@
-import { Dropdown } from '../../types/Dropdown';
-import { PaginationOption } from '../../types/PaginationOption';
-import { SortOption } from '../../types/SortOption';
+import { DropdownType } from '../../types/DropdownType';
 
-export const data: { paginator: Dropdown, sorter: Dropdown } = {
-  paginator: {
-    name: 'paginator',
-    title: 'Items on page',
+interface Dropdown {
+  name: string,
+  title: string;
+  options: { [key: string]: string | number | null; }[];
+}
+
+export const data: Record<DropdownType, Dropdown> = {
+  sorter: {
+    name: 'sortBy',
+    title: 'Sort by',
     options: [
-      { All: PaginationOption.All },
-      { 4: PaginationOption.Four },
-      { 8: PaginationOption.Eight },
-      { 16: PaginationOption.Sixteen },
+      { 'No sorting': null },
+      { Newest: 'age' },
+      { Alphabetically: 'name' },
+      { Cheapest: 'price' },
     ],
   },
 
-  sorter: {
-    name: 'sorter',
-    title: 'Sort by',
+  paginator: {
+    name: 'onPage',
+    title: 'Items on page',
     options: [
-      { Newest: SortOption.Age },
-      { Alphabetically: SortOption.Name },
-      { Cheapest: SortOption.Price },
+      { All: null },
+      { 4: 4 },
+      { 8: 8 },
+      { 16: 16 },
     ],
   },
 };

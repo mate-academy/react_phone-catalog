@@ -3,24 +3,38 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
-import { data } from '../../assets/dropdowns/data';
-import { DropdownType } from '../../types/Dropdown';
+import { data } from '../../../assets/dropdowns/data';
+import { DropdownType } from '../../../types/DropdownType';
 import './dropdown.scss';
+import { getSearchWith } from '../../../services/getSearchWith';
 
 type Props = {
   dropdownType: DropdownType;
 };
 
-export const Dropdown: React.FC<Props> = ({
-  dropdownType,
-}) => {
+export const Dropdown: React.FC<Props> = ({ dropdownType }) => {
   const { name, title, options } = data[dropdownType];
-  const [selectedOption] = useState(options[0]);
-  const currentOptionName = Object.keys(selectedOption)[0];
   const [isActive, setIsActive] = useState(false);
   const ref = useRef<HTMLUListElement>(null);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const dropdownValue = searchParams.get(name) || '';
+  const currentOption = options.find(option => {
+    return (Object.values(option)[0])?.toString() === dropdownValue;
+  }) || options[0];
+  const currentOptionName = Object.keys(currentOption)[0];
+  const currentOptionValue = Object.values(currentOption)[0];
+
+  useEffect(() => {
+    if (dropdownValue !== currentOptionValue?.toString()) {
+      setSearchParams(getSearchWith(
+        { [name]: null },
+        searchParams,
+      ));
+    }
+  }, [dropdownValue, currentOptionValue]);
 
   useEffect(() => {
     if (!isActive) {
@@ -65,13 +79,17 @@ export const Dropdown: React.FC<Props> = ({
           ref={ref}
         >
           {options.map(option => {
-            const [optionName, adress] = Object.entries(option)[0];
+            const [optionName, optionValue] = Object.entries(option)[0];
+            const address = getSearchWith(
+              { [name]: optionValue },
+              searchParams,
+            );
 
             return (
               <li className="dropdown__item" key={optionName}>
                 <Link
                   className="dropdown__link"
-                  to={`./?${adress}`}
+                  to={`?${address}`}
                   onClick={() => {
                     setIsActive(active => !active);
                   }}

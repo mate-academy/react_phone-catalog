@@ -8,6 +8,10 @@ type Props = {
   path: string;
   linkType: string;
   text?: string;
+  goBackLocation?: {
+    pathname: string;
+    search: string;
+  }
 };
 
 export const PageNavLink: React.FC<Props> = ({
@@ -15,10 +19,12 @@ export const PageNavLink: React.FC<Props> = ({
   text,
   path,
   linkType,
+  goBackLocation,
 }) => {
   return (
     <NavLink
       to={path}
+      state={goBackLocation}
       className={({ isActive }) => classNames(
         `header__${linkType}-link`,
         'nav-link',

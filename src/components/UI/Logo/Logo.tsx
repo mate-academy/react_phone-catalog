@@ -19,7 +19,7 @@ export const Logo: React.FC<Props> = ({ parentClass }) => {
         className="logo__link"
       >
         <img
-          src="./img/icons/Logo.svg"
+          src="./img/icons/Logo.png"
           alt="Logo"
           className="logo__img"
         />

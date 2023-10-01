@@ -1,5 +1,4 @@
 import { Product } from '../types/Product';
-// import { PromoProduct } from '../types/PromoProducts';
 
 type GetPromoProducts =
   Record<string, (products: Product[]) => Product[]>;

@@ -1,9 +1,10 @@
-import React, { FC, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FC, useEffect, useMemo } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import './pagination.scss';
-import { Button } from '../UI/Button';
-import { getPageNumbers } from '../../services/getPageNumbers';
+import { Button } from '../../UI/Button';
+import { getPageNumbers } from '../../../services/getPageNumbers';
+import { getSearchWith } from '../../../services/getSearchWith';
 
 type Props = {
   totalItems: number,
@@ -16,15 +17,38 @@ export const Pagination: FC<Props> = React.memo(({
   itemsPerPage,
   activePage,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const pageNumbers = useMemo(() => getPageNumbers(
     totalItems,
     itemsPerPage,
     activePage,
   ), [totalItems, itemsPerPage, activePage]);
+  const lastPage = +pageNumbers[pageNumbers.length - 1].name;
+
+  const setSearchWith = (params: { [key:string]: string | null | number }) => {
+    const newParams = getSearchWith(params, searchParams);
+
+    setSearchParams(newParams);
+  };
+
+  useEffect(() => {
+    if (activePage > lastPage) {
+      setSearchWith({ page: lastPage });
+    }
+
+    if (Number.isNaN(activePage) || activePage < 1) {
+      setSearchWith({ page: 1 });
+    }
+  }, [pageNumbers, activePage]);
+
+  const handlePageChange = (step: number) => {
+    setSearchWith({ page: activePage + step });
+  };
 
   return (
     <div className="pagination">
       <Button
+        handleClick={() => handlePageChange(-1)}
         disabled={activePage === 1}
         imgName="LeftArrow"
       />
@@ -32,11 +56,12 @@ export const Pagination: FC<Props> = React.memo(({
       <div className="pagination__pages">
         {pageNumbers.map(({ id, name }) => {
           const isActive = name === activePage;
+          const path = getSearchWith({ page: name }, searchParams);
 
           return (name !== '...' && !isActive) ? (
             <Link
               key={id}
-              to={`${name}`}
+              to={`?${path}`}
               className="pagination__page"
             >
               <span
@@ -69,7 +94,8 @@ export const Pagination: FC<Props> = React.memo(({
       </div>
 
       <Button
-        disabled={activePage === pageNumbers[pageNumbers.length - 1].name}
+        disabled={activePage === lastPage}
+        handleClick={() => handlePageChange(1)}
         imgName="RightArrow"
       />
     </div>

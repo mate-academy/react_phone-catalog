@@ -1,15 +1,15 @@
-@import "../../styles/utils/variables";
-@import "../../styles/utils//extends";
+@import "../../../styles/utils/variables";
+@import "../../../styles/utils//extends";
 
 .dropdown {
   position: relative;
   margin-bottom: 24px;
 
-  &--sorter {
+  &--sortBy {
     width: 176px;
   }
 
-  &--paginator {
+  &--onPage {
     width: 128px;
   }
 

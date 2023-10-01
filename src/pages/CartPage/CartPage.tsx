@@ -1,10 +1,11 @@
 import { useContext, useMemo } from 'react';
-import { GoBackLink } from '../../components/GoBackLink';
+
+import { GoBackButton } from '../../components/UI/GoBackButton';
 import './cart-page.scss';
 import { StoreContext } from '../../contexts/StoreContext';
 import { CartItem } from '../../types/CartItem';
 import { CartItemCard } from '../../components/CartItemCard';
-import { NoResults } from '../../components/NoResults';
+import { NoResults } from '../../components/UX/NoResults';
 import { NoResultsCaseName } from '../../types/NoResultsCase';
 
 export const CartPage = () => {
@@ -19,7 +20,7 @@ export const CartPage = () => {
   return (
     <div className="cart-page">
       <div className="cart-page__go-back">
-        <GoBackLink />
+        <GoBackButton />
       </div>
 
       <h1 className="cart-page__title">cart</h1>

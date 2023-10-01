@@ -1,4 +1,4 @@
-@import "../../styles/utils/variables";
+@import "../../../styles/utils/variables";
 
 .slider {
   margin-bottom: 72px;
@@ -83,60 +83,3 @@
     }
   }
 }
-
-// .slider {
-//   width: 100%;
-
-//   &__base {
-//     display: flex;
-//     gap: 16px;
-//     // max-height: 400px;
-//     margin-bottom: 8px;
-//   }
-
-//   &__controls {
-//     padding: 0;
-//     width: 32px;
-//     border: 1px solid $color-icons;
-//     background-color: $color-white;
-
-//     &:hover {
-//       border: 1px solid $color-secondary;
-//       background-color: $color-hover;
-//     }
-
-//     &:active {
-//       border: 1px solid $color-icons;
-//       background-color: $color-white;
-//     }
-//   }
-
-//   &__screen {
-//     width: 1040px;
-//     height: 400px;
-//   }
-
-//   &__banners {
-//     display: flex;
-//   }
-
-//   &__dots {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     height: 24px;
-//     gap: 9px;
-//   }
-
-//   &__dot {
-//     width: 14px;
-//     height: 4px;
-//     border: none;
-//     background-color: $color-elements;
-//     cursor: pointer;
-
-//     &--active {
-//       background-color: $color-primary;
-//     }
-//   }
-// }

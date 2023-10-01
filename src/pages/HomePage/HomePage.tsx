@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
 import { slides } from '../../assets/slides';
 import { Categories } from '../../components/Categories';
-import { Promo } from '../../components/Promo';
-import { Slider } from '../../components/Slider';
-import { Loader } from '../../components/Loader';
+import { Promo } from '../../components/UX/Promo';
+import { Slider } from '../../components/UX/Slider';
+import { Loader } from '../../components/UX/Loader';
 import { PromoName } from '../../types/PromoName';
 import { useLoadPromoProducts } from '../../customHooks/useLoadPromoProducts';
 import { ErrorModal } from '../../components/UX/ErrorModal';

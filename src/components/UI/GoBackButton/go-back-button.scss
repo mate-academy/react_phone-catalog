@@ -1,0 +1,25 @@
+@import "../../../styles/utils/variables";
+
+.go-back-button {
+  position: relative;
+  padding: 3px 15px 0 20px;
+  border: none;
+  background-color: $color-white;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 12px;
+  color: $color-secondary;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}

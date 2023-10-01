@@ -3,14 +3,14 @@ import { ButtonImageName } from '../../../types/ButtonImageName';
 import './button.scss';
 
 type Props = {
-  handleClick?: () => void;
+  handleClick: () => void;
   style?: { [key: string]: string };
   disabled: boolean;
   imgName: ButtonImageName;
 };
 
 export const Button: React.FC<Props> = React.memo(({
-  handleClick = () => {}, // Remove
+  handleClick,
   style,
   disabled,
   imgName,

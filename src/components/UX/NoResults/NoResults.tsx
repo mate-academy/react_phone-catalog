@@ -1,6 +1,6 @@
-import { NoResultsCaseName } from '../../types/NoResultsCase';
+import { NoResultsCaseName } from '../../../types/NoResultsCase';
 import './no-results.scss';
-import { defaultCase, noResultsCases } from '../../assets/noResultsCases';
+import { defaultCase, noResultsCases } from '../../../assets/noResultsCases';
 
 type Props = {
   query?: string;

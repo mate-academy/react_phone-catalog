@@ -1,12 +1,11 @@
-/* eslint-disable no-console */
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import './slider.scss';
 
-import { Button } from '../UI/Button';
-import { Slide } from '../../types/Slide';
-import { BASE_URL } from '../../utils/httpClient';
+import { Button } from '../../UI/Button';
+import { Slide } from '../../../types/Slide';
+import { BASE_URL } from '../../../utils/httpClient';
 
 type Props = {
   slides: Slide[],
@@ -116,61 +115,3 @@ export const Slider: React.FC<Props> = ({
     </section>
   );
 };
-
-// return (
-//   <section className="page__section slider">
-//     <div className="slider__base">
-//       <button
-//         type="button"
-//         className="slider__controls"
-//       >
-//         <img
-//           src="./img/icons/LeftArrow.svg"
-//           alt="Left arrow"
-//           className="slider__controls-arrow"
-//         />
-//       </button>
-
-//       <div className="slider__screen">
-//         <div className="slider__banners">
-//           <img
-//             src="./_new/img/banner-phones.png"
-//             alt="Banner phones"
-//             className="slider__image"
-//           />
-//         </div>
-//       </div>
-
-//       <button
-//         type="button"
-//         className="slider__controls"
-//       >
-//         <img
-//           src="./img/icons/RightArrow.svg"
-//           alt="Right arrow"
-//           className="slider__controls-arrow"
-//         />
-//       </button>
-//     </div>
-
-//     <div className="slider__dots">
-//       <button
-//         type="button"
-//         aria-label="slider's number"
-//         className="slider__dot slider__dot--active"
-//       />
-
-//       <button
-//         type="button"
-//         aria-label="slider's number"
-//         className="slider__dot"
-//       />
-
-//       <button
-//         type="button"
-//         aria-label="slider's number"
-//         className="slider__dot"
-//       />
-//     </div>
-//   </section>
-// );

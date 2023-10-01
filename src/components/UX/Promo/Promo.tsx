@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 import { useMemo, useState } from 'react';
-import { Product } from '../../types/Product';
-import { PromoName } from '../../types/PromoName';
-import { ProductCard } from '../ProductCard';
-import { Button } from '../UI/Button';
+import { Product } from '../../../types/Product';
+import { PromoName } from '../../../types/PromoName';
+import { ProductCard } from '../../ProductCard';
+import { Button } from '../../UI/Button';
 import './promo.scss';
-import { getProductSlides } from '../../services/getProductSlides';
+import { getProductSlides } from '../../../services/getProductSlides';
 
 type Props = {
   name: PromoName;

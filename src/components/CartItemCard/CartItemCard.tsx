@@ -37,6 +37,7 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
 
       <Link
         to={`/${category}/${itemId}`}
+        state="/cart"
         className="cart-item-card__link"
       >
         <img

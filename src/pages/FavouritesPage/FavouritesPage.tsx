@@ -1,17 +1,21 @@
 import { useContext } from 'react';
 
 import './favourites-page.scss';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Breadcrumbs } from '../../components/UX/Breadcrumbs';
 import { StoreContext } from '../../contexts/StoreContext';
 import { ProductCard } from '../../components/ProductCard';
-import { NoResults } from '../../components/NoResults';
+import { NoResults } from '../../components/UX/NoResults';
 import { NoResultsCaseName } from '../../types/NoResultsCase';
+import {
+  useProductsPreparation,
+} from '../../customHooks/useProductsPreparation';
 
 export const FavouritesPage = () => {
   const { products, favouriteIds } = useContext(StoreContext);
   const favourites = products.filter(
     product => favouriteIds.includes(product.itemId),
   );
+  const { visibleProducts, query } = useProductsPreparation(favourites);
 
   return (
     <section className="favourites-page">
@@ -23,9 +27,15 @@ export const FavouritesPage = () => {
         {`${favouriteIds.length} items`}
       </p>
 
-      {favouriteIds.length ? (
+      {(query && !!visibleProducts.length) && (
+        <h2 className="favourites-page__search-results">
+          {`Search results for "${query}":`}
+        </h2>
+      )}
+
+      {(!!favourites.length && !!visibleProducts.length) && (
         <div className="favourites-page__product-cards">
-          {favourites.map(product => (
+          {visibleProducts.map(product => (
             <ProductCard
               key={product.id}
               hasDiscount={false}
@@ -33,7 +43,16 @@ export const FavouritesPage = () => {
             />
           ))}
         </div>
-      ) : (
+      )}
+
+      {(!!favourites.length && !visibleProducts.length) && (
+        <NoResults
+          caseName={NoResultsCaseName.NoSearchResults}
+          query={query}
+        />
+      )}
+
+      {!favouriteIds.length && (
         <NoResults
           caseName={NoResultsCaseName.EmptyFavourites}
         />

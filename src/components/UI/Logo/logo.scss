@@ -1,10 +1,14 @@
 .logo {
-  width: 40px;
+  width: 60px;
   padding: 5px 0;
   height: 100%;
 
   &__link {
     display: flex;
     height: 100%;
+  }
+
+  &__img {
+    object-fit: contain;
   }
 }

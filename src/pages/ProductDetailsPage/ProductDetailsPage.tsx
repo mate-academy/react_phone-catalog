@@ -1,13 +1,13 @@
 import { useParams } from 'react-router-dom';
 
 import './product-details.scss';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Loader } from '../../components/Loader';
+import { Breadcrumbs } from '../../components/UX/Breadcrumbs';
+import { Loader } from '../../components/UX/Loader';
 import { ErrorModal } from '../../components/UX/ErrorModal';
-import { NoResults } from '../../components/NoResults';
-import { GoBackLink } from '../../components/GoBackLink';
+import { NoResults } from '../../components/UX/NoResults';
+import { GoBackButton } from '../../components/UI/GoBackButton';
 import { Details } from '../../components/Details';
-import { Promo } from '../../components/Promo';
+import { Promo } from '../../components/UX/Promo';
 import { PromoName } from '../../types/PromoName';
 import { useLoadPromoProducts } from '../../customHooks/useLoadPromoProducts';
 import { useLoadProductDetails } from '../../customHooks/useLoadProductDetails';
@@ -36,7 +36,7 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="product-details__go-back">
-        <GoBackLink />
+        <GoBackButton />
       </div>
 
       {isLoadingProductDetails && <Loader />}

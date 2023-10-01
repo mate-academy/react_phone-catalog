@@ -1,11 +1,11 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useContext, useMemo } from 'react';
 import classNames from 'classnames';
 
 import './header.scss';
 
 import { useCloseClick } from '../../customHooks/useCloseClick';
-import { PageNavLink } from '../PageNavLink';
+import { PageNavLink } from '../UI/PageNavLink';
 import { Logo } from '../UI/Logo';
 import { Search } from '../UI/Search';
 import { StoreContext } from '../../contexts/StoreContext';
@@ -13,14 +13,16 @@ import { Sticker } from '../UI/Sticker';
 
 export const Header = () => {
   const [ref, isMobileMenuOpen, setIsMobileMenuOpen] = useCloseClick(false);
-  const currentPath = useLocation().pathname;
+  const { itemId } = useParams();
+  const { pathname, search } = useLocation();
+  const currentPath = pathname.split('/')[1];
   const searchVisiblePaths = useMemo(() => [
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favourites',
+    'phones',
+    'tablets',
+    'accessories',
+    'favourites',
   ], []);
-  const isSearchVisible = searchVisiblePaths.includes(currentPath);
+  const isSearchVisible = searchVisiblePaths.includes(currentPath) && !itemId;
   const { cartItemsNumber, favouriteIds } = useContext(StoreContext);
 
   return (
@@ -45,7 +47,7 @@ export const Header = () => {
 
             <li className="header__nav-item">
               <PageNavLink
-                path="/phones"
+                path="phones"
                 linkType="nav"
                 text="PHONES"
               />
@@ -61,7 +63,7 @@ export const Header = () => {
 
             <li className="header__nav-item">
               <PageNavLink
-                path="/accessories"
+                path="accessories"
                 linkType="nav"
                 text="ACCESSORIES"
               />
@@ -76,7 +78,7 @@ export const Header = () => {
         )}
 
         <div className="header__tile">
-          <PageNavLink path="/favourites" linkType="tile">
+          <PageNavLink path="favourites" linkType="tile">
             <img
               src="./img/icons/Favourites.svg"
               alt="Favourites"
@@ -93,7 +95,11 @@ export const Header = () => {
         </div>
 
         <div className="header__tile">
-          <PageNavLink path="/cart" linkType="tile">
+          <PageNavLink
+            path="cart"
+            linkType="tile"
+            goBackLocation={{ pathname, search }}
+          >
             <img
               src="./img/icons/Cart.svg"
               alt="Cart"

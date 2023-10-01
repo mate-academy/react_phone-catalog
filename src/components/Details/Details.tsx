@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 
 import './details.scss';
@@ -19,6 +18,7 @@ type Props = {
 };
 
 export const Details: React.FC<Props> = ({ productDetails }) => {
+  const { pathname } = useLocation();
   const {
     id,
     namespaceId,
@@ -133,6 +133,7 @@ export const Details: React.FC<Props> = ({ productDetails }) => {
                       key={currentColor}
                       title={currentColor}
                       to={`../${link}`}
+                      state={{ pathname }}
                       className={classNames(
                         'details__product-color',
                         {
@@ -162,6 +163,7 @@ export const Details: React.FC<Props> = ({ productDetails }) => {
                     <Link
                       key={currentCapacity}
                       to={`../${link}`}
+                      state={{ pathname }}
                       className={classNames(
                         'details__product-capacity',
                         { 'details__product-capacity--active': isActive },

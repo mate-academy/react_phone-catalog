@@ -6,6 +6,11 @@
   width: 272px;
   padding: 32px 24px 24px;
   border: 1px solid $color-elements;
+  transition: all 0.5s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
 
   &__link {
     display: inline-block;
