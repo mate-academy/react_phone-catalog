@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+.button {
+  background: $Primary;
+  color: $White;
+
+  height: 40px;
+  min-width: 176px;
+
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.31rem;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  transition: all 0.5s ease;
+}
+
+.selected {
+  color: $Green;
+  background: $White;
+  border: 1px solid $Secondary;
+}

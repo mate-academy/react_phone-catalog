@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  padding: 20px 0 21px 24px;
+  box-shadow: 0 1px 0 0 $Elements;
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  
+    color: $Secondary;
+  
+    .active {
+      color: $Primary;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -24px;
+        height: 3px;
+        width: 100%;
+        background-color: $Primary;
+      }
+    }
+  }
+
+  .rightBlock {
+    display: flex;
+    align-items: center;
+  }
+
+  .rightForm {
+    width: 300px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 24px;
+    margin: -21px 23px -24px 0;
+    box-shadow: -1px 0 0 0 $Elements;
+  }
+
+  .rightIcons {
+    padding: 24px;
+    margin: -21px 0 -24px;
+    box-shadow: -1px 0 0 0 $Elements;
+  }
+}

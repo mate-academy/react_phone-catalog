@@ -1,0 +1,50 @@
+@import "../../styles/variables.scss";
+
+.wrapper {
+  width: 1040px;
+  height: 400px;
+  margin: 40px auto 72px;
+
+  .img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 0;
+    bottom: 5px;
+    z-index: 10;
+
+    padding: 0 8px;
+    background-color: #fff;
+    border: 1px solid $Icons;
+
+    &Next {
+      right: -47px;
+    }
+
+    &Prev {
+      left: -47px;
+    }
+
+    &:hover {
+      border-color: $Primary;
+    }
+  }
+
+  .indicator {
+    height: 4px;
+    width: 14px;
+    margin: 0 10px;
+    background-color: $Elements;
+    
+    cursor: initial;
+  }
+
+  .active {
+    background-color: $Primary;
+  }
+
+}

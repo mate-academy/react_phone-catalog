@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+
+.categories {
+  margin-bottom: 75px;
+
+  &Product {
+    width: 33.33%;
+
+    &ImgBlock {
+      position: relative;
+      display: block;
+      margin: 24px 0;
+      height: 368px;
+      overflow: hidden;
+    }
+  }
+
+  &Block {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  img {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0;
+  }
+
+  p {
+    color: $Secondary;
+  }
+}
+
+.phones {
+  background: #fcdbc1;
+  img {
+    top: 30px;
+    width: 80%;
+    height: 120%;
+  }
+}
+
+.tablets {
+  background: #8d8d92;
+  img {
+    top: 25px;
+    width: 90%;
+    height: 150%;
+  }
+
+}
+
+.accessories {
+  background: #973d5f;
+  img {
+    top: 60px;
+    width: 90%;
+    height: 85%;
+  }
+
+}

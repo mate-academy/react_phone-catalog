@@ -1,0 +1,34 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 32px 152px;
+
+  .links {
+    display: flex;
+    gap: 64px;
+
+    color: $Secondary;
+
+    li:hover {
+      color: $Primary;
+    }
+  }
+
+  .backBtn {
+    color: $Secondary;
+
+    img {
+      margin: -8px 0 0 16px;
+    }
+
+    &:hover {
+      color: $Primary;
+      img {
+        border-color: $Primary;
+      }
+    }
+  }
+}
