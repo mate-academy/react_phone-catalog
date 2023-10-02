@@ -1,0 +1,159 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.cart-page-container {
+  width: 1138px;
+  display: flex;
+  flex-direction: column;
+
+  &__back-button {
+    margin-top: 40px;
+  }
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__carts-container {
+    margin-top: 24px;
+  }
+}
+
+.carts-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.carts {
+  &__cart {
+    margin-top: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.cart {
+  width: 752px;
+  height: 128px;
+  border: 1px solid $color-gray-elements;
+  display: flex;
+  align-items: center;
+
+  &__button-close {
+    margin-left: 24px;
+  }
+
+  &__img-product {
+    margin-left: 24px;
+  }
+
+  &__product-name {
+    margin-left: 24px;
+  }
+
+  &__button-quantity {
+    margin-left: 40px;
+  }
+
+  &__price {
+    margin-left: 40px;
+  }
+}
+
+.button-close {
+  background-color: $color-white;
+  border: none;
+}
+
+.img-close {
+  filter: invert(80%);
+
+  &:hover {
+    filter: invert(0%);
+    cursor: pointer;
+  }
+}
+
+.img-product {
+  width: 80px;
+  height: 80px;
+}
+
+.product-name {
+  color: $color-gray-primary;
+  @include title-third;
+  width: 295px;
+}
+
+.button-quantity {
+  @include icon-button;
+  width: 32px;
+  height: 32px;
+
+  &--disabled {
+    &:hover {
+      border-color: $color-gray-icon;
+      cursor: url(../img/icons/cursor.svg), auto;
+    }
+  }
+}
+
+.quantity {
+  width: 32px;
+  color: $color-gray-primary;
+  @include title-third;
+  text-align: center;
+}
+
+.price {
+  color: $color-gray-primary;
+  @include title-secondary;
+}
+
+.checkout-container {
+  width: 368px;
+  height: 206px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $color-gray-elements;
+
+  &__title {
+    margin-top: 24px;
+  }
+
+  &__line {
+    margin: 24px 0 0;
+  }
+
+  &__checkout-button {
+    margin-top: 24px;
+  }
+}
+
+.total-items {
+  color: $color-gray-secondary;
+  @include title-third;
+  margin: 0;
+}
+
+.line {
+  border: none;
+  border-top: 1px solid $color-gray-elements;
+  width: 320px;
+}
+
+.checkout-button {
+  width: 320px;
+  height: 48px;
+  @include button();
+}
+
+.message {
+  width: 320px;
+  color: $color-gray-primary;
+  @include title-third;
+}

@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@500;600;700&display=swap");
+@import "./variables.scss";
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: url("../fonts/Mont-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: url("../fonts/Mont-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: url("../fonts/Mont-Bold.otf") format("opentype");
+}
+
+@mixin font-family-regular() {
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+}
+
+@mixin font-family-semibold() {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-style: normal;
+}
+
+@mixin font-family-bold() {
+  font-family: "Mont-Bold", sans-serif;
+  font-style: normal;
+}
+
+@mixin icon-button() {
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $color-gray-icon;
+
+  &:hover {
+    border-color: $color-gray-primary;
+  }
+}
+
+@mixin title() {
+  @include font-family-bold();
+  font-size: 32px;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+@mixin title-secondary() {
+  @include font-family-bold();
+  font-size: 22px;
+  line-height: 140%;
+}
+
+@mixin title-third() {
+  @include font-family-regular();
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin button() {
+  background-color: $color-gray-primary;
+  border: none;
+  cursor: pointer;
+  color: $color-white;
+  text-align: center;
+  @include font-family-semibold();
+  font-size: 14px;
+  line-height: 21px;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+}

@@ -1,0 +1,99 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.navigation-links {
+  padding-left: 24px;
+  width: 100vw;
+  border-bottom: 1px solid $color-gray-elements;
+
+  &__links {
+    display: flex;
+    gap: 64px;
+    padding: 0;
+    margin: 0;
+    justify-content: left;
+    align-items: center;
+  }
+
+  &__link {
+    list-style-type: none;
+    @include font-family-bold();
+    font-size: 12px;
+    line-height: 64px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-gray-secondary;
+
+    &--back {
+      font-weight: 600;
+      text-transform: none;
+      padding-right: 16px;
+    }
+  }
+
+  &__img {
+    list-style-type: none;
+    height: 24px;
+  }
+}
+
+.navigation-icon {
+  width: 64px;
+  border: 1px solid $color-gray-elements;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0;
+
+  &:hover {
+    border: 1px solid $color-gray-primary;
+  }
+
+  &__link {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.navigation-icons {
+  display: flex;
+  padding: 0 2px 0 0;
+}
+
+.search-container {
+  width: 337px;
+  border: 1px solid $color-gray-elements;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+}
+
+.search {
+  border: none;
+  @include title-third();
+
+  &::placeholder {
+    color: $color-gray-icon;
+  }
+
+  &:focus-visible {
+    outline: none;
+    color: $color-gray-primary;
+    @include title-third();
+    text-decoration: none;
+  }
+}
+
+.clear-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: $color-white;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

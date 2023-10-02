@@ -1,0 +1,17 @@
+@import "../../styles/utils/variables.scss";
+
+.footer {
+  height: 96px;
+  border-top: 1px solid $color-gray-elements;
+  display: flex;
+  justify-content: center;
+  min-width: $page-width;
+  padding: 0 152px;
+
+  &--container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: $page-width;
+  }
+}

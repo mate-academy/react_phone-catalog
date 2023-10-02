@@ -1,0 +1,23 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.favorites-page-container {
+  width: $page-width;
+
+  &__icon-navigation {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__products-list {
+    margin-top: 40px;
+  }
+}
+
+.items-counter {
+  color: $color-gray-secondary;
+  @include title-third();
+}

@@ -1,0 +1,46 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.accessories-page-container {
+  width: 1138px;
+
+  &__icon-navigation {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__model-numbers {
+    margin-top: 8px;
+  }
+
+  &__filters-container {
+    margin-top: 40px;
+  }
+
+  &__products-list {
+    margin-top: 24px;
+  }
+
+  &__sort-container {
+    margin-top: 4px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}
+
+.icon-navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: $page-width;
+  gap: 16px;
+}

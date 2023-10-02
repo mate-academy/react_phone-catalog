@@ -1,0 +1,110 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.card {
+  width: 272px;
+  height: 507px;
+  border: 1px solid $color-gray-elements;
+  box-sizing: border-box;
+  padding: 24px 24px 0;
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    margin: 0 7px;
+  }
+
+  &__card-name {
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  &__prices-container {
+    margin-top: 7px;
+  }
+
+  &__details-container {
+    margin-top: 16px;
+  }
+
+  &__details {
+    margin-top: 8px;
+  }
+
+  &__buttons-container {
+    margin-top: 16px;
+  }
+}
+
+.card-link {
+  text-decoration: none;
+  color: $color-selected-button;
+}
+
+.card-name {
+  color: $color-gray-primary;
+  @include title-third;
+  height: 42px;
+}
+
+.prices-container {
+  @include title-secondary;
+  color: $color-gray-primary;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  height: 31px;
+  border-bottom: 1px solid $color-gray-icon;
+  padding-bottom: 5px;
+
+  &__discount {
+    @include font-family-regular();
+    text-decoration-line: line-through;
+    color: $color-gray-secondary;
+    line-height: normal;
+  }
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details-description {
+  color: $color-gray-secondary;
+  @include font-family-semibold();
+  font-size: 12px;
+  line-height: normal;
+
+  &--seccondary {
+    color: $color-gray-primary;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-button {
+  width: 176px;
+  height: 40px;
+  @include button();
+
+  &--added {
+    background-color: $color-white;
+    color: $color-added-text;
+    border: 1px solid $color-gray-elements;
+    cursor: url(../../styles/img/icons/cursor.svg), auto;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.favourite-button {
+  @include icon-button();
+  width: 40px;
+  height: 40px;
+}

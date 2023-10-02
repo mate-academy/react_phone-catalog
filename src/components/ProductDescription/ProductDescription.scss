@@ -1,0 +1,162 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.details-container {
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  column-gap: 64px;
+
+  &__buttons-container-details {
+    margin-top: 16px;
+  }
+
+  &__details {
+    margin-top: 20px;
+  }
+
+  &__images-container {
+    margin-top: 40px;
+  }
+
+  &__price-container {
+    margin-top: 40px;
+  }
+
+  &__about {
+    margin-top: 80px;
+
+  }
+
+  &__tech-specs {
+    margin-top: 80px;
+  }
+}
+
+.images-container {
+  grid-column: 1;
+  display: flex;
+  gap: 16px;
+
+  &--small {
+    flex-direction: column;
+  }
+}
+
+.img-small-button {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  border: 1px solid $color-gray-elements;
+  padding: 0;
+  background-color: $color-white;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-small {
+  width: 70px;
+  height: 70px;
+}
+
+.img-main-container {
+  width: 464px;
+  height: 464px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-main {
+  width: 444px;
+  height: 444px;
+}
+
+.price-container {
+  grid-column: 2;
+  width: 319px;
+}
+
+.price {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  height: 32px;
+}
+
+.buttons-container-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-button-details {
+  width: 263px;
+  height: 48px;
+  @include button();
+
+  &--added {
+    background-color: $color-white;
+    color: $color-added-text;
+    border: 1px solid $color-gray-elements;
+    cursor: url(../../styles/img/icons/cursor.svg), auto;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.favourite-button-details {
+  @include icon-button();
+  width: 48px;
+  height: 48px;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.about {
+  grid-column: 1;
+
+  &__description-subtitle {
+    margin: 32px 0 16px;
+  }
+
+  &__details {
+    margin-top: 25px;
+  }
+}
+
+.description-title {
+  color: $color-gray-primary;
+  @include title-secondary;
+  border-bottom: 1px solid $color-gray-icon;
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+.description-subtitle {
+  color: $color-gray-primary;
+  @include font-family-semibold();
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.description-text {
+  color: $color-gray-secondary;
+  @include title-third;
+  margin: 0;
+
+  &--seccondary {
+    color: $color-gray-primary;
+  }
+}
+
+.tech-specs {
+  grid-column: 2;
+}

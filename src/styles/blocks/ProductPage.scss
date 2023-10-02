@@ -1,0 +1,28 @@
+@import "src/styles/utils/variables.scss";
+
+.product-page-container {
+  width: $page-width;
+
+  &__back-button {
+    margin-top: 40px;
+  }
+
+  &__details-container {
+    margin-top: 16px;
+  }
+
+  &__slider {
+    margin-top: 80px;
+  }
+}
+
+.back-button {
+  height: 16px;
+  background-color: $color-white;
+  border: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}

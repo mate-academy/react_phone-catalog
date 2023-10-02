@@ -1,0 +1,21 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.page-not-found-container {
+  width: $page-width;
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__link-home {
+    margin-top: 24px;
+  }
+}
+
+.link-home {
+  color: $color-gray-primary;
+  @include title-secondary;
+  text-decoration: none;
+  display: inline-block;
+}
