@@ -1,4 +1,5 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .cart {
   &__warning {
@@ -32,6 +33,10 @@
     font-weight: 600;
     line-height: normal;
     color: $main-color;
+
+    @include onMobile {
+      font-size: 8px;
+    }
   }
 
   &__back-img {
@@ -47,16 +52,35 @@
     letter-spacing: -0.32px;
     color: $bold;
     margin-bottom: 24px;
+
+    @include onLaptop {
+      font-size: 28px;
+    }
+
+    @include onMobile {
+      font-size: 20px;
+    }
   }
 
   &__content {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
   }
 
   &__items {
     list-style: none;
     margin-right: 16px;
+
+    @include onMobile {
+      margin-right: 0;
+    }
   }
 
   &__container {
@@ -66,6 +90,14 @@
     width: 650px;
     border: 1px solid $box-shadow;
     margin-bottom: 16px;
+
+    @include onLaptop {
+      width: 400px;
+    }
+
+    @include onMobile {
+      width: 300px;
+    }
   }
 
   &__item {
@@ -74,11 +106,20 @@
     align-items: center;
     margin-right: 50px;
 
+    @include onMobile {
+      margin-right: 0;
+    }
+
     &-price {
       font-size: 22px;
       font-weight: 700;
       line-height: 140%;
       margin-right: 40px;
+
+      @include onMobile {
+        margin-right: 0;
+        font-size: 18px;
+      }
     }
   }
 
@@ -86,6 +127,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include onLaptop {
+      flex-direction: column;
+      margin-right: 20px;
+    }
   }
 
   &__btn {
@@ -98,6 +144,11 @@
     height: 32px;
     transition: all 500ms;
 
+    @include onLaptop {
+      width: 25px;
+      height: 25px;
+    }
+
     &:hover {
       cursor: pointer;
       border-color: $bold;
@@ -108,11 +159,24 @@
       height: 16px;
       border: none;
       margin: 0 24px;
+
+      @include onLaptop {
+        margin: 0 5px;
+      }
+
+      @include onMobile {
+        margin: 0 5px;
+      }
+
     }
 
     &--minus {
       margin-right: 13px;
       transition: all 200ms;
+
+      @include onLaptop {
+        margin-right: 0;
+      }
 
       &:disabled {
         cursor: not-allowed;
@@ -122,6 +186,10 @@
 
     &--add {
       margin-right: 43px;
+
+      @include onLaptop {
+        margin-right: 0;
+      }
     }
   }
 
@@ -129,6 +197,12 @@
     width: 66px;
     height: 66px;
     margin-right: 31px;
+
+    @include onLaptop {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
   }
 
   &__text {
@@ -138,9 +212,21 @@
     line-height: 21px;
     color: $bold;
 
+    @include onLaptop {
+      width: 150px;
+    }
+
+    @include onMobile {
+      width: 100px;
+    }
+
     &--number {
       margin-right: 13px;
       width: max-content;
+
+      @include onLaptop {
+        margin-right: 0;
+      }
     }
   }
 
@@ -152,6 +238,10 @@
     width: 300px;
     height: 210px;
     border: 1px solid $box-shadow;
+
+    @include onLaptop {
+      width: 200px;
+    }
   }
 
   &__sum {
@@ -173,6 +263,10 @@
   &__line {
     width: 250px;
     margin-bottom: 24px;
+
+    @include onLaptop {
+      width: 150px;
+    }
   }
 
   &__checkout {
@@ -185,6 +279,10 @@
     color: #fff;
     transition: all 200ms;
     margin-bottom: 5px;
+
+    @include onLaptop {
+      width: 150px;
+    }
 
     &:hover {
       cursor: pointer;

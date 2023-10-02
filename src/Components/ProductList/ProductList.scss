@@ -1,3 +1,5 @@
+@import "../../Helpers/mixins.scss";
+
 .product-list {
   display: flex;
   justify-content: center;
@@ -9,4 +11,16 @@
 
 .product-fav {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 970px;
+
+  @include onLaptop {
+    max-width: 668px;
+  }
+
+  @include onMobile {
+    flex-direction: column;
+  }
 }

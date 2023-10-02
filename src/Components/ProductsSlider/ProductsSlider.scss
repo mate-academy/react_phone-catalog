@@ -1,7 +1,16 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .slider {
   display: flex;
+
+  @include onLaptop {
+    display: none;
+  }
+
+  @include onMobile {
+    display: none;
+  }
 
   &__btn {
     display: flex;

@@ -33,7 +33,7 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
     addToCart(product);
     const newButtonStates = { ...buttonStates };
 
-    newButtonStates[product.id] = !newButtonStates[product.id];
+    newButtonStates[product.id] = true;
     setButtonStates(newButtonStates);
     localStorage.setItem('buttonStates', JSON.stringify(newButtonStates));
   };
@@ -110,7 +110,7 @@ export const ProductCard: React.FC<Props> = ({ products }) => {
               className={buttonStates[product.id]
                 ? 'product__button-added' : 'product__button-card'}
               onClick={() => handleAddToCart(product)}
-              disabled={buttonStates[product.id]}
+              // disabled={buttonStates[product.id]}
             >
               {buttonStates[product.id]
                 ? ('Added to cart') : ('Add to cart')}

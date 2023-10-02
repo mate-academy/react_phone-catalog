@@ -49,7 +49,7 @@ export const ProductDetailsPage: React.FC = () => {
 
     const newButtonStates = { ...buttonStates };
 
-    newButtonStates[product.id] = !newButtonStates[product.id];
+    newButtonStates[product.id] = true;
     setButtonStates(newButtonStates);
     localStorage.setItem('buttonStates', JSON.stringify(newButtonStates));
   };
@@ -228,7 +228,7 @@ export const ProductDetailsPage: React.FC = () => {
                       'details__button-card'
                     )}
                     onClick={() => product && handleAddToCart(product)}
-                    disabled={product && buttonStates[product.id]}
+                    // disabled={product && buttonStates[product.id]}
                   >
                     {product && buttonStates[product.id]
                       ? ('Added to cart') : ('Add to cart')}

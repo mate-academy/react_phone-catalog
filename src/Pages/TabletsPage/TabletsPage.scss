@@ -1,4 +1,5 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .tablets {
   display: flex;
@@ -11,6 +12,14 @@
     letter-spacing: -0.32px;
     color: $bold;
     margin-bottom: 8px;
+
+    @include onLaptop {
+      font-size: 28px;
+    }
+
+    @include onMobile {
+      font-size: 20px;
+    }
   }
 
   &__links {
@@ -23,6 +32,11 @@
     margin-right: 8px;
     height: 16px;
     width: 16px;
+
+    @include onMobile {
+      height: 14px;
+      width: 14px;
+    }
   }
 
   &__string {
@@ -30,6 +44,10 @@
     font-weight: 600;
     line-height: normal;
     color: $main-color;
+
+    @include onMobile {
+      font-size: 10px;
+    }
   }
 
   &__quantity {
@@ -38,6 +56,10 @@
     line-height: 21px;
     margin-bottom: 40px;
     color: $main-color;
+
+    @include onMobile {
+      font-size: 8px;
+    }
   }
 
   &__dropdowns {
@@ -62,6 +84,12 @@
     margin-bottom: 24px;
     margin-top: 5px;
     transition: all 200ms;
+
+    @include onMobile {
+      width: 150px;
+      height: 40px;
+      font-size: 12px;
+    }
 
     &:hover {
       border-color: $main-color;

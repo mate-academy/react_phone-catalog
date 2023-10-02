@@ -1,9 +1,18 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .search {
   box-shadow: -1px 0 0 0 #e2e6e9;
   position: relative;
   width: 327px;
+
+  @include onLaptop {
+    width: 172px;
+  }
+
+  @include onMobile {
+    display: none;
+  }
 
   &__input {
     box-sizing: border-box;
@@ -13,14 +22,22 @@
     color: $bold;
     border: none;
     height: 67px;
-    
     margin-left: 24px;
+
+    @include onLaptop {
+      font-size: 10px;
+      margin-left: 17px;
+    }
 
     &::placeholder {
       font-size: 14px;
       font-weight: 600;
       line-height: normal;
       color: $grey;
+
+      @include onLaptop {
+        font-size: 10px;
+      }
     }
 
     &:focus {
@@ -40,5 +57,9 @@
     background-color: #fff;
     border: none;
     margin-right: 24px;
+
+    @include onLaptop {
+      margin-right: 5px;
+    }
   }
 }

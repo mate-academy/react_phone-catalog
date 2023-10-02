@@ -1,7 +1,12 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .home {
   margin-bottom: 80px;
+
+  @include onMobile {
+    margin-bottom: 40px;
+  }
 
   &__slider {
     display: flex;
@@ -19,6 +24,14 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
+
+    @include onLaptop {
+      font-size: 28px;
+    }
+
+    @include onMobile {
+      font-size: 16px;
+    }
   }
 
   &__link {
@@ -27,6 +40,14 @@
     font-weight: 600;
     line-height: normal;
     color: $bold;
+
+    @include onLaptop {
+      font-size: 15px;
+    }
+    
+    @include onMobile {
+      font-size: 10px;
+    }
   }
 
   &__quantity {
@@ -35,15 +56,33 @@
     font-weight: 500;
     line-height: 21px;
     color: $main-color;
+
+    @include onMobile {
+      font-size: 7px;
+    }
   }
 
   &__categories {
     display: flex;
     justify-content: center;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__category {
     margin-right: 16px;
+
+    @include onLaptop {
+      margin-right: 8px;
+    }
+
+    @include onMobile {
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
   }
 
   &__bcg {
@@ -52,6 +91,17 @@
     height: 310px;
     overflow: hidden;
     margin-bottom: 24px;
+
+    @include onLaptop {
+      width: 210px;
+      height: 210px;
+    }
+
+    @include onMobile {
+      width: 226px;
+      height: 226px;
+      margin-bottom: 8px;
+    }
 
     &--pink {
       background-color: #d53c51;
@@ -72,10 +122,22 @@
     height: 457px;
     left: 20px;
 
+    @include onMobile {
+      width: 281px;
+      height: 333px;
+      left: 5px;
+    }
+
     &--gray {
       width: 546px;
       height: 546px;
       left: 5px;
+
+      @include onMobile {
+        width: 398px;
+        height: 398px;
+        left: 0;
+      }
     }
 
     &--fuchsia {
@@ -83,6 +145,13 @@
       height: 400px;
       left: 30px;
       top: 20px;
+
+      @include onMobile {
+        width: 401px;
+        height: 291px;
+        left: 10px;
+        top: 7px;
+      }
     }
   }
 
@@ -91,6 +160,10 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    @include onMobile {
+      flex-direction: column;
+    }
 
   }
 
@@ -101,6 +174,10 @@
     border: 1px solid $box-shadow;
     margin-right: 16px;
     margin-bottom: 40px;
+
+    @include onMobile {
+      margin-right: 0;
+    }
 
     &:nth-child(4n) {
       margin-right: 0;
@@ -117,6 +194,16 @@
     border: 1px solid $grey;
     transition: all 200ms;
 
+    @include onLaptop {
+      height: 250px;
+      width: 25px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 16px;
+    }
+
     &:hover {
       cursor: pointer;
       border-color: $bold;
@@ -129,10 +216,22 @@
     align-items: center;
 
     &-img {
-      width: 1040px;
+      width: 878px;
       height: 400px;
       object-fit: cover;
       margin: 0 16px;
+
+      @include onLaptop {
+        width: 550px;
+        height: 250px;
+        margin: 0 15px;
+      }
+
+      @include onMobile {
+        width: 285px;
+        height: 150px;
+        margin: 0 8px;
+      }
     }
   }
 

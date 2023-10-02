@@ -1,4 +1,5 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .product {
   display: flex;
@@ -14,6 +15,11 @@
     margin-bottom: 24px;
     padding-top: 32px;
     transition: all 200ms;
+
+    @include onMobile {
+      width: 150px;
+      height: 150px;
+    }
   }
 
   &:hover .product__image {
@@ -45,6 +51,10 @@
     font-weight: 700;
     margin-right: 8px;
 
+    @include onMobile {
+      font-size: 18px;
+    }
+
   }
 
   &__price {
@@ -52,6 +62,10 @@
     font-weight: 500;
     text-decoration-line: line-through;
     color: $main-color;
+
+    @include onMobile {
+      font-size: 18px;
+    }
   }
 
   &__separator {
@@ -91,11 +105,15 @@
     color: #fff;
     background-color: $bold;
     margin-right: 8px;
-    transition: all 200ms;
+    transition: all 400ms;
 
     &:hover {
       cursor: pointer;
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
 
@@ -110,6 +128,16 @@
     color: #27ae60;
     background-color: #fff;
     border: 1px solid $box-shadow;
+    transition: all 400ms;
+
+    &:hover {
+      border-color: $bold;
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   &__button-fav {

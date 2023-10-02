@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
             <NavLink to="/favourites" className={getClassForLink}>
               <img src="images/Favourites.svg" alt="Favourites" />
 
-              {isFavPage && quantity > 0 && (
+              {quantity > 0 && (
                 <div className="header__item-count header__item-count--fav">
                   <span className="header__count-number">
                     {quantity}
@@ -73,7 +73,7 @@ export const Header: React.FC = () => {
           <NavLink to="/cart" className={getClassForLink}>
             <img src="images/Cart.svg" alt="Cart" />
 
-            {isCartPage && totalItems > 0 && (
+            {totalItems > 0 && (
               <div className="header__item-count">
                 <span className="header__count-number">
                   {totalItems}

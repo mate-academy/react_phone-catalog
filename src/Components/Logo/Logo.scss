@@ -1,12 +1,27 @@
+@import "../../Helpers/mixins.scss";
+
 .logo {
   margin-right: 64px;
   margin-left: 24px;
-  width: 40px;
-  height: 24px;
   transition: all 200ms;
+
+  @include onMobile {
+    margin-right: 20px;
+    margin-left: 8px;
+  }
 
   &:hover {
     cursor: pointer;
     transform: scale(1.3);
+  }
+
+  &__img {
+    width: 40px;
+    height: 24px;
+
+    @include onMobile {
+      width: 20px;
+      height: 12px;
+    }
   }
 }

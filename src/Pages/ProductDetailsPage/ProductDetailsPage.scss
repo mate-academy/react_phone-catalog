@@ -159,6 +159,16 @@
     color: #27ae60;
     background-color: #fff;
     border: 1px solid $box-shadow;
+    transition: all 400ms;
+
+    &:hover {
+      border-color: $bold;
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 
   &__button-fav {

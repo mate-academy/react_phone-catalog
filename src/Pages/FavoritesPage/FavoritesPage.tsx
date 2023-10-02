@@ -54,7 +54,7 @@ export const FavoritesPage: React.FC = () => {
         <p className="favourites__string">Favourites</p>
       </div>
 
-      <h1 className="favorites__title">Favourites</h1>
+      <h1 className="favourites__title">Favourites</h1>
 
       {content}
     </div>

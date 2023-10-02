@@ -1,4 +1,5 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .favourites {
   &__top {
@@ -11,6 +12,11 @@
     width: 16px;
     height: 16px;
     margin-right: 8px;
+
+    @include onMobile {
+      height: 14px;
+      width: 14px;
+    }
   }
 
   &__string {
@@ -18,6 +24,10 @@
     font-weight: 600;
     line-height: normal;
     color: $main-color;
+
+    @include onMobile {
+      font-size: 10px;
+    }
   }
 
   &__title {
@@ -25,8 +35,16 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
-    color: $main-color;
+    color: $bold;
     margin-bottom: 8px;
+
+    @include onLaptop {
+      font-size: 28px;
+    }
+
+    @include onMobile {
+      font-size: 20px;
+    }
   }
 
   &__quantity {
@@ -35,5 +53,9 @@
     line-height: 21px;
     color: $main-color;
     margin-bottom: 40px;
+
+    @include onMobile {
+      font-size: 8px;
+    }
   }
 }

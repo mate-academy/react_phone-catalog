@@ -1,8 +1,13 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .header {
   box-shadow: 0 1px 0 0 $box-shadow;
   margin-bottom: 40px;
+
+  @include onMobile {
+    margin-bottom: 20px;
+  }
 
   &__nav {
     display: flex;
@@ -24,6 +29,16 @@
     letter-spacing: 0.48px;
     transition: all 200ms;
     margin-right: 64px;
+
+    @include onLaptop {
+      margin-right: 25px;
+    }
+
+    @include onMobile {
+      font-size: 8px;
+      line-height: 7px;
+      margin-right: 10px;
+    }
 
     &:hover {
       color: $bold;
@@ -47,6 +62,14 @@
     justify-content: flex-end;
     height: 67px;
     width: 450px;
+
+    @include onLaptop {
+      width: 300px;
+    }
+
+    @include onMobile {
+      width: 100px;
+    }
   }
 
   &__item-count {
@@ -60,8 +83,26 @@
     background-color: #eb5757;
     z-index: 1;
 
+    @include onLaptop {
+      right: 5%;
+    }
+
+    @include onMobile {
+      width: 14px;
+      height: 14px;
+      right: 8%;
+    }
+
     &--fav {
       right: 18%;
+
+      @include onLaptop {
+        right: 26%;
+      }
+
+      @include onMobile {
+        right: 58%;
+      }
     }
   }
 
@@ -84,6 +125,10 @@
     box-shadow: -1px 0 0 0 $box-shadow;
     margin-right: 1px;
     transition: all 200ms;
+
+    @include onMobile {
+      width: 50px;
+    }
 
     &:hover {
       cursor: pointer;
