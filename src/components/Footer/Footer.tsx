@@ -17,6 +17,7 @@ export const Footer:React.FC<Props> = ({ isPageBiggerThanWindow }) => {
       <div className="footer--container">
         <NavLink
           to="/"
+          onClick={() => window.scrollTo({ top: 0 })}
         >
           <img
             className="navigation-links__img"
