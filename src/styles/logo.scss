@@ -1,7 +1,7 @@
 .logo {
   display: flex;
   align-content: center;
-  padding: 24px 0 24px 24px;
+  padding: 24px 0 24px 12px;
 
   @include onTablet {
     padding: 24px;

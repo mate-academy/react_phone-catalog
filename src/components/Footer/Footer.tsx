@@ -19,14 +19,14 @@ export const Footer = () => (
         </NavLink>
 
         <NavLink
-          to="/contacts"
+          to="/"
           className="footer__navItem"
         >
           Contacts
         </NavLink>
 
         <NavLink
-          to="/rights"
+          to="/"
           className="footer__navItem"
         >
           rights

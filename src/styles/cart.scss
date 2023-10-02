@@ -90,6 +90,7 @@
 
   &__image-block {
     display: flex;
+    align-items: center;
     width: 70px;
     height: 70px;
     padding: 6px;
@@ -241,7 +242,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 252px;
+    width: 225px;
     height: 48px;
     background-color: $gray-primary;
 

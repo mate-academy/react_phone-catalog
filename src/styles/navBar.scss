@@ -16,7 +16,6 @@
     background-position: center;
     padding: 24px;
     border-right: 1px solid $gray;
-    margin-right: 15px;
     transition: 0.2s ease-in-out;
 
     @include onDesktop {
@@ -89,8 +88,8 @@
   }
 
   &__item {
-    padding: 5px 0;
-    font-weight: 500;
+    padding: 8px 0;
+    font-weight: 600;
     position: relative;
     color: $gray-secondary;
     text-transform: uppercase;

@@ -37,7 +37,7 @@
     color: $gray-icons-placeholders;
     border-style: none;
 
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     line-height: normal;
     outline: none;
@@ -46,6 +46,18 @@
       content: "";
       display: none;
       appearance: none;
+    }
+
+    @include onTablet {
+      font-size: 14px;
+    }
+
+    @include onDesktop {
+      font-size: 14px;
+    }
+
+    @include onDesktopXL {
+      font-size: 14px;
     }
   }
 
