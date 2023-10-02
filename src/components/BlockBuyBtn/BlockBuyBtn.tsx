@@ -6,7 +6,7 @@ import {
   useLocaleStorage,
 } from '../../app/hooks';
 import { basketItems, favoriteItems } from '../../app/store';
-import { addItemBasket } from '../../feature/basket';
+import { addItemBasket, removeItemBasket } from '../../feature/basket';
 import { addFavorite, removeFavorite } from '../../feature/favorite';
 import { Product } from '../../type/Product';
 import './BlockBuyBtn.scss';
@@ -31,8 +31,14 @@ export const BlockBuyBtn: React.FC<Props> = ({ item }) => {
   useEffect(() => {
     setFavorite(favoriteItem);
   }, [favoriteItem]);
+  const findProduct = basket.find(p => p.id === item.id);
 
   const addItemCard = (product: Product) => {
+    if (findProduct) {
+      dispatch(removeItemBasket(product));
+      return;
+    }
+  
     dispatch(addItemBasket(product));
   };
 
@@ -40,7 +46,7 @@ export const BlockBuyBtn: React.FC<Props> = ({ item }) => {
     return productItems.some(i => i.id === product.id);
   };
 
-  const findProduct = basket.find(p => p.id === item.id);
+  
 
   const addItemFavorite = (product: Product) => {
     const findItem = someProduct(favorite, product);

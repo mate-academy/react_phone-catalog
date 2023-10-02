@@ -40,7 +40,7 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
   };
 
   const handOnClickCount = () => {
-    setSelectSortCount(true);
+    setSelectSortCount(!selectSortCount);
   };
 
   const onKeyDownSortCount = (
@@ -67,7 +67,7 @@ export const ProductsList: React.FC<Props> = ({ query }) => {
   };
 
   const handOnClickSort = () => {
-    setSelectSortValue(true);
+    setSelectSortValue(!selectSortValue);
   };
 
   const onBlurSort = () => {

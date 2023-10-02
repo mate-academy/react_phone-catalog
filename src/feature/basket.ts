@@ -19,7 +19,7 @@ export const basketSlice: Slice<StateProps> = createSlice({
         basketItem: action.payload,
       };
     },
-    addItemBasket: (state, action: PayloadAction<Product>) => {
+    addMoreItemBasket: (state, action: PayloadAction<Product>) => {
       const itemExists = state.basketItem
         .some(item => item.id === action.payload.id);
 
@@ -43,6 +43,25 @@ export const basketSlice: Slice<StateProps> = createSlice({
       return {
         ...state,
         basketItem: [...state.basketItem, action.payload],
+      };
+    },
+    addItemBasket: (state, action: PayloadAction<Product>) => {
+      const findItem = state.basketItem.find(item => item.id === action.payload.id);
+      
+      if (!findItem) {
+        return {
+          ...state,
+          basketItem: [...state.basketItem, action.payload],
+        }
+      }
+    
+      return state;
+    },
+    removeItemBasket: (state, action: PayloadAction<Product>) => {
+      return {
+        ...state,
+        basketItem: [...state.basketItem
+          .filter(item => item.id !== action.payload.id)],
       };
     },
     removeAllItems: (state) => {
@@ -81,7 +100,9 @@ export const basketSlice: Slice<StateProps> = createSlice({
 export const {
   addItemBasket,
   removeItemInBasket,
+  addMoreItemBasket,
   addAllBasket,
+  removeItemBasket,
   removeItemFromBasket,
   removeAllItems,
 } = basketSlice.actions;

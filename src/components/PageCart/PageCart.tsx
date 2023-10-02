@@ -5,7 +5,7 @@ import {
   useLocaleStorage,
 } from '../../app/hooks';
 import {
-  addItemBasket,
+  addMoreItemBasket,
   removeAllItems,
   removeItemFromBasket,
   removeItemInBasket,
@@ -48,7 +48,7 @@ export const PageCart = () => {
   };
 
   const addItem = (item: Product) => {
-    dispatch(addItemBasket(item));
+    dispatch(addMoreItemBasket(item));
   };
 
   const removeItem = (item: Product) => {
