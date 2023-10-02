@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { Loader } from '../components/Loader/Loader';
@@ -86,15 +87,24 @@ export const CartPage: React.FC<Props> = ({
                         />
                       </button>
 
-                      <img
-                        className="img-product cart__img-product"
-                        src={cart.imageUrl}
-                        alt="#product-img"
-                      />
+                      <Link
+                        to={`/product/${cart.id}`}
+                        className="cart-link"
+                        onClick={() => {
+                          window.scrollTo({ top: 0 });
+                        }}
+                      >
 
-                      <p className="product-name cart__product-name">
-                        {cart.name}
-                      </p>
+                        <img
+                          className="img-product cart__img-product"
+                          src={cart.imageUrl}
+                          alt="#product-img"
+                        />
+
+                        <p className="product-name cart__product-name">
+                          {cart.name}
+                        </p>
+                      </Link>
 
                       <button
                         type="button"

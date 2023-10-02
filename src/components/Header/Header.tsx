@@ -59,7 +59,11 @@ export const Header:React.FC<Props> = ({
         <div className="navigation-links">
           <ul className="navigation-links__links">
             <li className="navigation-links__img">
-              <img src="./img/icons/logo.svg" alt="#logo" />
+              <NavLink
+                to="/"
+              >
+                <img src="./img/icons/logo.svg" alt="#logo" />
+              </NavLink>
             </li>
             <li className="navigation-links__link">
               <NavLink

@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import './Footer.scss';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   isPageBiggerThanWindow: boolean,
@@ -14,11 +15,15 @@ export const Footer:React.FC<Props> = ({ isPageBiggerThanWindow }) => {
   return (
     <div className="footer container__footer">
       <div className="footer--container">
-        <img
-          className="navigation-links__img"
-          src="./img/icons/logo.svg"
-          alt="#logo"
-        />
+        <NavLink
+          to="/"
+        >
+          <img
+            className="navigation-links__img"
+            src="./img/icons/logo.svg"
+            alt="#logo"
+          />
+        </NavLink>
         <div>
           <ul className="navigation-links__links">
             <li className="navigation-links__link">
