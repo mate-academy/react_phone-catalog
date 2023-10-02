@@ -1,0 +1,45 @@
+.breadCrumbs {
+  margin-top: 24px;
+  display: flex;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__arrow {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/assets/arrowRight--icon.svg);
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+  }
+
+  &__icon {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/assets/home--icon.svg);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    height: 16px;
+    color: #313237;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+
+
+    &.active {
+      color: #89939a;
+      background: none;
+    }
+  }
+}

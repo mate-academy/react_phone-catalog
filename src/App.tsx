@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { NavBar } from './components/NavBar/NavBar';
 import './App.scss';
 import { Footer } from './components/Footer/Footer';
 import { HomePage } from './pages/HomePage/HomePage';
 import { Phone } from './types/Phone';
 import { getProducts } from './api';
+import { CartProvider } from './context/CartContext';
+import { FavouriteProvider } from './context/FavouriteContext';
+import { ProductPage } from './pages/HomePage/ProductPage/ProductPage';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Phone[]>([]);
@@ -25,9 +29,26 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <NavBar />
-      <HomePage products={products} />
-      <Footer />
+      <CartProvider>
+        <FavouriteProvider>
+          <NavBar />
+          <main className="main__content">
+            <Routes>
+              <Route path="/">
+                <Route index element={<HomePage products={products} />} />
+
+                <Route path=":category">
+                  <Route
+                    index
+                    element={<ProductPage products={products} />}
+                  />
+                </Route>
+              </Route>
+            </Routes>
+          </main>
+          <Footer />
+        </FavouriteProvider>
+      </CartProvider>
     </div>
   );
 };

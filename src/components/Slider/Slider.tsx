@@ -57,6 +57,7 @@ export const Slider = () => {
         <div className="top-slider__images">
           <div
             className="top-slider__inner"
+            style={{ transform: `translateX(${currentSlide}px)` }}
           >
             {images.map((image) => (
               <div className="top-slider__images--item" key={image}>

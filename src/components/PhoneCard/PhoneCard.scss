@@ -1,7 +1,7 @@
 @import "../../styleUtils/variables.scss";
 
 .ProductCard {
-  padding: 24px;
+  box-sizing: border-box;
   color: #313237;
   width: 272px;
   height: 507px;
@@ -40,11 +40,13 @@
   &__content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   &__photo {
-    width: 100%;
+    width: 208px;
     height: 208px;
+    margin: 0 auto;
   }
 
   &__img {
@@ -59,8 +61,11 @@
     height: 40px;
 
     font-size: 14px;
-    font-style: normal;
     line-height: 21px;
+  }
+
+  &__wrap {
+    margin-inline: 24px;
   }
 
   &__price {
@@ -121,5 +126,7 @@
     margin-top: 16px;
     display: flex;
     gap: 8px;
+    justify-content: center;
+
   }
 }

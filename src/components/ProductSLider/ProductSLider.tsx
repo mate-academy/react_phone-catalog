@@ -64,7 +64,6 @@ export const ProductsSlider: React.FC<Props> = React.memo(
             className={cn('ProductsSlider__card',
               { 'ProductsSlider__card--animated': startIndex !== 0 })}
             data-cy="cardsContainer"
-            style={{ transform: `translateX(${startIndex}px)` }}
           >
             {visibleCards.map((card) => (
               <div className="ProductsSlider__card" key={card.id}>

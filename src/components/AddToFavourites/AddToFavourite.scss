@@ -1,0 +1,26 @@
+@import "../../styleUtils/variables.scss";
+
+.favourite {
+  border: 1px solid #b4bdc3;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  cursor: pointer;
+  transition-duration: 0.3s;
+
+  background-image: url("../../assets/fav--icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.isItemFavourite {
+    border-color: #e2e6e9;
+    background-image: url("../../assets/fav-selected--icon.svg");
+  }
+
+  &:hover {
+    border-color: $grey-primary;
+  }
+}
