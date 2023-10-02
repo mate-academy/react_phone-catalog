@@ -22,9 +22,9 @@ export const HomePage: React.FC<Props> = ({
   handleSetFavorites, favorites,
 }) => {
   const [banners] = useState(
-    ['./_new/img/banner-phones.png',
-      './_new/img/banner-tablets.png',
-      './_new/img/banner-accessories.png'],
+    ['./img/banner-phones.png',
+      './img/banner-tablets.png',
+      './img/banner-accessories.png'],
   );
   const [currentBanner, setCurrentBanner] = useState(0);
 
@@ -136,7 +136,7 @@ export const HomePage: React.FC<Props> = ({
             <div className="categories-image-container">
               <img
                 className="categories-image"
-                src="./_new/img/category-phones.png"
+                src="./img/category-phones.png"
                 alt="#phones"
               />
             </div>
@@ -160,7 +160,7 @@ export const HomePage: React.FC<Props> = ({
             >
               <img
                 className="categories-image--tablets"
-                src="./_new/img/category-tablets.png"
+                src="./img/category-tablets.png"
                 alt="#tablets"
               />
             </div>
@@ -182,7 +182,7 @@ export const HomePage: React.FC<Props> = ({
             >
               <img
                 className="categories-image--accessories"
-                src="./_new/img/category-accessories.png"
+                src="./img/category-accessories.png"
                 alt="#accessories"
               />
             </div>
