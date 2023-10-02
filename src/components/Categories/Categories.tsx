@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './categories.scss';
+import { BASE_URL } from '../../utils/httpClient';
 
 export const Categories = () => {
   return (
@@ -18,7 +19,7 @@ export const Categories = () => {
             "
           >
             <img
-              src="./_new/img/category-phones.png"
+              src={`${BASE_URL}img/category-phones.png`}
               alt="Category phones"
               className="categories__image"
             />
@@ -40,7 +41,7 @@ export const Categories = () => {
             "
           >
             <img
-              src="./_new/img/category-tablets.png"
+              src={`${BASE_URL}img/category-tablets.png`}
               alt="Category tablets"
               className="categories__image"
             />
@@ -62,7 +63,7 @@ export const Categories = () => {
             "
           >
             <img
-              src="./_new/img/category-accessories.png"
+              src={`${BASE_URL}img/category-accessories.png`}
               alt="Category accessories"
               className="categories__image"
             />

@@ -29,7 +29,7 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
         onClick={() => changeCart(itemId, -quantity)}
       >
         <img
-          src="../img/icons/Close.svg"
+          src="./img/icons/Close.svg"
           alt="X"
           className="cart-item-card__remove-button-img"
         />

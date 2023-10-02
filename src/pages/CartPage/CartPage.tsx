@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react';
+import { useContext, useMemo, useState } from 'react';
 
 import { GoBackButton } from '../../components/UI/GoBackButton';
 import './cart-page.scss';
@@ -7,8 +7,10 @@ import { CartItem } from '../../types/CartItem';
 import { CartItemCard } from '../../components/CartItemCard';
 import { NoResults } from '../../components/UX/NoResults';
 import { NoResultsCaseName } from '../../types/NoResultsCase';
+import { ErrorModal } from '../../components/UX/ErrorModal';
 
 export const CartPage = () => {
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const { cart, cartItemsNumber: totalItems } = useContext(StoreContext);
   const cartItems: CartItem[] = useMemo(() => Object.values(cart), [cart]);
   const totalPrice: number = useMemo(() => {
@@ -19,6 +21,13 @@ export const CartPage = () => {
 
   return (
     <div className="cart-page">
+      {errorMessage && (
+        <ErrorModal
+          errorMessage={errorMessage}
+          setErrorMessage={setErrorMessage}
+        />
+      )}
+
       <div className="cart-page__go-back">
         <GoBackButton />
       </div>
@@ -50,6 +59,11 @@ export const CartPage = () => {
             <button
               type="button"
               className="cart-page__checkout-button"
+              onClick={() => {
+                setErrorMessage(
+                  'We are sorry, but this feature is not implemented yet.',
+                );
+              }}
             >
               Checkout
             </button>
