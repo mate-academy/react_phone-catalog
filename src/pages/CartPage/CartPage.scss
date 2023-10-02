@@ -18,27 +18,6 @@
       gap: 20px;
     }
 
-    &--paragraph {
-      margin-top: 20px;
-    
-      font-family: "Mont", sans-serif;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 21px;
-    }
-
-    &--list {
-      width: 68%;
-
-      @include onTablet {
-        width: 100%;
-      }
-
-      @include onMobile {
-        width: 300px;
-      }
-    }
-
     &--right {
       display: flex;
       flex-direction: column;
@@ -58,6 +37,27 @@
         width: 300px;
         padding: 10px;
       }
+    }
+  }
+
+  &__paragraph {
+    margin-top: 30px;
+    
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__list {
+    width: 68%;
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    @include onMobile {
+      width: 300px;
     }
   }
 

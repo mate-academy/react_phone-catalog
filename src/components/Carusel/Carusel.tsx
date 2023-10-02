@@ -5,29 +5,34 @@ import './Carusel.scss';
 import caruselPhotoA from '../../images/carusel/banner-phones.png';
 import caruselPhotoB from '../../images/carusel/banner-tablets.png';
 import caruselPhotoC from '../../images/carusel/banner-accessories.png';
-import { TIME_TRANSIT_CARUSEL } from '../../helpers/consts';
+import {
+  CARUSEL_GAP,
+  MIN_WIDTH_DESKTOP,
+  MIN_WIDTH_TABLET,
+  TIME_TRANSIT_CARUSEL,
+  WIDTH_MAIN_DESKTOP,
+  WIDTH_MARGINS_MOBILE,
+  WIDTH_MARGINS_TABLET,
+} from '../../helpers/consts';
 
-const widthDesktop = 1250;
-const widthTablet = 744;
 const imagesoForCarusel = [
   caruselPhotoA,
   caruselPhotoB,
   caruselPhotoC,
 ];
 const quantityImgsOfCarusel = imagesoForCarusel.length - 1;
-const gapOfCarusel = 40;
 const getStartWidthImg = () => {
   const windowWidth = window.innerWidth;
 
-  if (windowWidth < widthDesktop) {
-    if (windowWidth < widthTablet) {
-      return windowWidth - 40;
+  if (windowWidth < MIN_WIDTH_DESKTOP) {
+    if (windowWidth < MIN_WIDTH_TABLET) {
+      return windowWidth - WIDTH_MARGINS_MOBILE;
     }
 
-    return windowWidth - 144;
+    return windowWidth - WIDTH_MARGINS_TABLET;
   }
 
-  return 1020;
+  return WIDTH_MAIN_DESKTOP;
 };
 
 export const Carusel: React.FC = () => {
@@ -36,7 +41,7 @@ export const Carusel: React.FC = () => {
   const [widthImg, setWidthImg] = useState<number>(getStartWidthImg);
   const [isDeleteInfinit, setIsDeleteInfinit] = useState<boolean>(false);
 
-  const widthCaruselsImgWithGap = widthImg + gapOfCarusel;
+  const widthCaruselsImgWithGap = widthImg + CARUSEL_GAP;
   let timerFlipping = 0;
 
   const handlerPrevImg = () => {
@@ -44,8 +49,8 @@ export const Carusel: React.FC = () => {
       setCaruselsImg(quantityImgsOfCarusel);
       setMoveRight(-widthCaruselsImgWithGap * quantityImgsOfCarusel);
     } else {
-      setCaruselsImg(currentImg => currentImg - 1);
-      setMoveRight(current => current + widthCaruselsImgWithGap);
+      setCaruselsImg(cImg => cImg - 1);
+      setMoveRight(c => c + widthCaruselsImgWithGap);
     }
   };
 
@@ -55,7 +60,7 @@ export const Carusel: React.FC = () => {
       setMoveRight(0);
     } else {
       setCaruselsImg(currentImg => currentImg + 1);
-      setMoveRight(current => current - widthCaruselsImgWithGap);
+      setMoveRight(c => c - widthCaruselsImgWithGap);
     }
   };
 
@@ -69,6 +74,24 @@ export const Carusel: React.FC = () => {
     clearInterval(timerFlipping);
     setIsDeleteInfinit(true);
     handlerNextImg();
+  };
+
+  const handlerCLickPoint = (index: number) => {
+    clearInterval(timerFlipping);
+    setIsDeleteInfinit(true);
+    setCaruselsImg(index);
+
+    if (index > caruselsImg) {
+      const quantityMove = index - caruselsImg;
+
+      setMoveRight(c => c - quantityMove * widthCaruselsImgWithGap);
+    }
+
+    if (index < caruselsImg) {
+      const quantityMove = caruselsImg - index;
+
+      setMoveRight(c => c + quantityMove * widthCaruselsImgWithGap);
+    }
   };
 
   useEffect(() => {
@@ -138,8 +161,10 @@ export const Carusel: React.FC = () => {
       </div>
 
       <div className="carusel__points">
-        {imagesoForCarusel.map(image => (
-          <div
+        {imagesoForCarusel.map((image, index) => (
+          <button
+            type="button"
+            aria-label="image-carusel"
             key={image}
             className={classNames(
               'carusel__point',
@@ -148,7 +173,18 @@ export const Carusel: React.FC = () => {
                   .indexOf(image),
               },
             )}
+            onClick={() => handlerCLickPoint(index)}
           />
+          // <div
+          //   key={image}
+          //   className={classNames(
+          //     'carusel__point',
+          //     {
+          //       'is-selected': caruselsImg === imagesoForCarusel
+          //         .indexOf(image),
+          //     },
+          //   )}
+          // />
         ))}
       </div>
     </div>

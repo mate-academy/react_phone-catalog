@@ -98,20 +98,20 @@ export const CartPage = () => {
                 </h1>
               </div>
 
-              <div className="cart-page__content">
-                {isMessage && (
-                  <p className="cart-page__content--paragraph">
-                    We are sorry, but this feature is not implemented yet.
-                  </p>
-                )}
-                {!isMessage && !currentProducts.length && (
-                  <p className="cart-page__content--paragraph">
-                    Your cart is empty
-                  </p>
-                )}
-                {!isMessage && !!currentProducts.length && (
+              {isMessage && (
+                <p className="cart-page__paragraph">
+                  We are sorry, but this feature is not implemented yet.
+                </p>
+              )}
+              {!isMessage && !currentProducts.length && (
+                <p className="cart-page__paragraph">
+                  Your cart is empty
+                </p>
+              )}
+              {!isMessage && !!currentProducts.length && (
+                <div className="cart-page__content">
                   <>
-                    <div className="cart-page__content--list">
+                    <div className="cart-page__list">
                       <ProductList
                         totalPrice={totalPrice}
                         onSetTotalPrice={setTotalPrice}
@@ -149,8 +149,8 @@ export const CartPage = () => {
                       </div>
                     </div>
                   </>
-                )}
-              </div>
+                </div>
+              )}
             </section>
           </main>
         </div>

@@ -58,6 +58,7 @@
     background-position: center;
     background-color: $colorWhite;
 
+    cursor: pointer;
     transition: border-color $timeTransotionGeneral;
 
     @include onMobileAndTablet {
@@ -92,6 +93,7 @@
     background-position: center;
     background-image: url(../../images/icons/point-for-slider.svg);
 
+    cursor: pointer;
     transition: background-image $timeTransitionCarusel;
 
     &:last-child {

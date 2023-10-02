@@ -56,6 +56,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Phones + DEF_SORT}
                 end
                 className={getClassForLink}
+                onClick={handlerClickLink}
                 state={getState(pathname, search)}
               >
                 {NamesByHeader.Phones}
@@ -67,6 +68,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Tablets + DEF_SORT}
                 end
                 className={getClassForLink}
+                onClick={handlerClickLink}
                 state={getState(pathname, search)}
               >
                 {NamesByHeader.Tablets}
@@ -78,6 +80,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Accessories + DEF_SORT}
                 end
                 className={getClassForLink}
+                onClick={handlerClickLink}
                 state={getState(pathname, search)}
               >
                 {NamesByHeader.Accessories}
@@ -89,6 +92,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Favourites}
                 end
                 className={getClassForLink}
+                onClick={handlerClickLink}
                 state={getState(pathname, search)}
               >
                 {quantityLiked !== 0 ? (
@@ -111,6 +115,7 @@ export const MenuWithNav: React.FC<Props> = ({
                 to={NamesByLinks.Cart}
                 end
                 className={getClassForLink}
+                onClick={handlerClickLink}
                 state={getState(pathname, search)}
               >
                 {quantityAdded !== 0 ? (
