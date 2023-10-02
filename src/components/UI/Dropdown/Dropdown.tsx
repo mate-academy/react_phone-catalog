@@ -81,7 +81,7 @@ export const Dropdown: React.FC<Props> = ({ dropdownType }) => {
           {options.map(option => {
             const [optionName, optionValue] = Object.entries(option)[0];
             const address = getSearchWith(
-              { [name]: optionValue },
+              { [name]: optionValue, page: 1 },
               searchParams,
             );
 

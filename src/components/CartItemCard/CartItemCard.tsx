@@ -45,7 +45,7 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
           alt={name}
           className="cart-item-card__image"
         />
-        {name}
+        <p className="cart-item-card__name">{name}</p>
       </Link>
 
       <div className="cart-item-card__summary">

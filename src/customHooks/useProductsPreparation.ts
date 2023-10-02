@@ -12,7 +12,6 @@ export const useProductsPreparation = (
 } => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const searchElements = query.split(' ');
   const sortBy = searchParams.get('sortBy') || '';
   const onPage = +(searchParams.get('onPage') || 0);
   const page = +(searchParams.get('page') || 1);
@@ -20,11 +19,9 @@ export const useProductsPreparation = (
   let visibleProducts = [...products];
 
   if (query) {
-    visibleProducts = visibleProducts.filter(({ itemId }) => {
-      return (
-        searchElements.every(element => itemId.includes(element.toLowerCase()))
-      );
-    });
+    visibleProducts = visibleProducts.filter(({ name }) => (
+      name.toLowerCase().includes(query.toLowerCase())
+    ));
   }
 
   if (sortBy) {

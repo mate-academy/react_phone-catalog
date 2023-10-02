@@ -39,9 +39,6 @@
     gap: 24px;
     min-width: 400px;
     margin-left: 40px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $color-primary;
     text-decoration: none;
   }
 
@@ -50,6 +47,13 @@
     width: 80px;
     padding: 7px;
     object-fit: contain;
+  }
+
+  &__name {
+    max-width: 250px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-primary;
   }
 
   &__summary {
