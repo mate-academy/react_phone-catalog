@@ -2,28 +2,58 @@
 @import "../../styles/utils/variables.scss";
 
 .navigation-links {
-  padding-left: 24px;
+  padding-left: 12px;
   width: 100vw;
   border-bottom: 1px solid $color-gray-elements;
 
+  @media (min-width: 744px) {
+    padding-left: 18px;
+  }
+
+  @media (min-width: 1376px) {
+    padding-left: 24px;
+  }
+
   &__links {
     display: flex;
-    gap: 64px;
+    // flex-direction: column;
     padding: 0;
+    gap: 24px;
     margin: 0;
     justify-content: left;
     align-items: center;
+
+    @media (min-width: 744px) {
+      gap: 48px;
+      // flex-direction: row;
+      // align-items: center;
+    }
+
+    @media (min-width: 1376px) {
+      gap: 64px;
+      // align-items: center;
+    }
   }
 
   &__link {
     list-style-type: none;
     @include font-family-bold();
-    font-size: 12px;
-    line-height: 64px;
+    font-size: 8px;
+    line-height: 24px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
     text-decoration: none;
     color: $color-gray-secondary;
+
+    @media (min-width: 744px) {
+      font-size: 10px;
+      line-height: 48px;
+    }
+
+    @media (min-width: 1376px) {
+      font-size: 12px;
+      line-height: 64px;
+    }
 
     &--back {
       font-weight: 600;
@@ -39,12 +69,21 @@
 }
 
 .navigation-icon {
-  width: 64px;
+  width: 24px;
   border: 1px solid $color-gray-elements;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 0;
+
+  @media (min-width: 744px) {
+    width: 48px;
+    // padding-left: 18px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 64px;
+  }
 
   &:hover {
     border: 1px solid $color-gray-primary;
@@ -60,20 +99,56 @@
 .navigation-icons {
   display: flex;
   padding: 0 2px 0 0;
+  justify-content: right;
+  height: 24px;
+
+  @media (min-width: 744px) {
+    justify-content: center;
+    height: 48px;
+    // padding-left: 18px;
+  }
+
+  @media (min-width: 1376px) {
+    height: 64px;
+  }
 }
 
 .search-container {
-  width: 337px;
+  width: calc(100vw - 52px);
   border: 1px solid $color-gray-elements;
+  border-top: none;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 24px;
+  justify-content: center;
+  gap: 18px;
+
+  @media (min-width: 744px) {
+    width: 200px;
+    gap: 18px;
+    justify-content: space-around;
+  }
+
+  @media (min-width: 1376px) {
+    width: 337px;
+    gap: 24px;
+  }
 }
 
 .search {
   border: none;
-  @include title-third();
+  @include font-family-regular();
+  font-size: 10px;
+  line-height: 21px;
+
+  @media (min-width: 744px) {
+    @include font-family-regular();
+    font-size: 12px;
+    line-height: 21px;
+  }
+
+  @media (min-width: 1376px) {
+    @include title-third();
+  }
 
   &::placeholder {
     color: $color-gray-icon;
@@ -82,8 +157,19 @@
   &:focus-visible {
     outline: none;
     color: $color-gray-primary;
-    @include title-third();
-    text-decoration: none;
+    @include font-family-regular();
+    font-size: 10px;
+    line-height: 21px;
+
+    @media (min-width: 744px) {
+      @include font-family-regular();
+      font-size: 12px;
+      line-height: 21px;
+    }
+
+    @media (min-width: 1376px) {
+      @include title-third();
+    }
   }
 }
 

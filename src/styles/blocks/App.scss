@@ -7,10 +7,20 @@ body {
 }
 
 .main {
-  padding: 0 152px;
+  padding: 0 20px;
   display: flex;
   justify-content: center;
-  min-width: $page-width;
+  min-width: 320px;
+
+  @media (min-width: 744px) {
+    padding: 0 72px;
+    min-width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    padding: 0 120px;
+    min-width: 1138px;
+  }
 }
 
 .container {
@@ -25,10 +35,18 @@ body {
 }
 
 .navigation {
-  display: flex;
-  gap: 0;
-  justify-content: space-between;
+  // display: flex;
+  // gap: 0;
+  // justify-content: space-between;
   padding: 0;
+  width: 100vw;
+
+  @media (min-width: 744px) {
+    display: flex;
+    gap: 0;
+    justify-content: space-between;
+    // padding-left: 18px;
+  }
 }
 
 .link {
@@ -42,8 +60,8 @@ body {
 
 .counter {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   background-color: $color-counter;
   color: $color-white;
@@ -55,13 +73,23 @@ body {
   margin-left: 18px;
   margin-bottom: 18px;
   @include font-family-semibold();
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .is-active {
   color: $color-gray-primary;
-  padding-bottom: 22px;
-  border-bottom: 4px solid $color-gray-primary;
+  padding-bottom: 6px;
+  border-bottom: 2px solid $color-gray-primary;
+
+  @media (min-width: 744px) {
+    padding-bottom: 14px;
+    border-bottom: 3px solid $color-gray-primary;
+  }
+
+  @media (min-width: 1376px) {
+    padding-bottom: 22px;
+    border-bottom: 4px solid $color-gray-primary;
+  }
 }
 
 .back {
