@@ -1,0 +1,16 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  &__links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+}

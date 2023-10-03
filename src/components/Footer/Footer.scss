@@ -1,0 +1,39 @@
+.footer {
+  height: 95px;
+  padding: 0 30px;
+
+  @include onDesktop {
+    padding: 0 150px;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: $borderDefault;
+
+  &__link {
+    margin-right: 20px;
+
+    @include textUpperCase;
+    color: $secondaryColor;
+
+    @include onDesktop {
+      margin-right: 64px;
+    }
+
+    transition: color $defaultTransitionDuration;
+
+    &:hover {
+      color: $mainColor;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      color: $mainColor;
+    }
+  }
+}

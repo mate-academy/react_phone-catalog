@@ -1,0 +1,89 @@
+.button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &--primary {
+    color: $whiteColor;
+    background-color: $mainColor;
+    transition: all $defaultTransitionDuration;
+
+    @include textButton;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--active {
+      background-color: $whiteColor;
+      color: $greenColor;
+      border: $borderDefault;
+      box-shadow: none;
+      pointer-events: none;
+    }
+  }
+
+  &__color {
+    box-sizing: border-box;
+    border: $borderDefault;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color $defaultTransitionDuration;
+
+    &:hover {
+      border-color: $iconsColor;
+    }
+
+    &--active {
+      border-color: $mainColor;
+      pointer-events: none;
+    }
+
+    &--background {
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+  }
+
+  &__fav,
+  &__nav {
+    border: $borderDefault;
+    border-color: $iconsColor;
+    transition: border-color $defaultTransitionDuration;
+
+    &:hover {
+      border-color: $mainColor;
+    }
+
+    &:disabled {
+      border-color: $elementsColor;
+    }
+
+    &--pagination {
+      border-color: $elementsColor;
+
+      transition: all $defaultTransitionDuration;
+
+      &--active {
+        color: $whiteColor;
+        background-color: $mainColor;
+
+        pointer-events: none;
+      }
+
+      &--disabled {
+        border-color: $elementsColor;
+        pointer-events: none;
+      }
+    }
+  }
+}

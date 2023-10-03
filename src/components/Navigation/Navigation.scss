@@ -1,0 +1,35 @@
+.nav {
+  &__items {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: $headerHeight;
+
+    list-style: none;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__item {
+    @include onTablet {
+      margin-right: 65px;
+    }
+  }
+
+  &__link {
+    display: block;
+    color: $secondaryColor;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+
+    transition: color $defaultTransitionDuration;
+
+    @include headerAction;
+  }
+}

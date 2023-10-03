@@ -1,0 +1,21 @@
+.text {
+  &__h1 {
+    @include textH1;
+    color: $mainColor;
+  }
+
+  &__h2 {
+    @include textH2;
+    color: $mainColor;
+  }
+
+  &__h3 {
+    @include textH3;
+    color: $mainColor;
+  }
+
+  &__body {
+    @include textBody;
+    color: $secondaryColor;
+  }
+}

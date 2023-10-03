@@ -1,0 +1,61 @@
+.categories-tabs {
+  &__title {
+    margin-bottom: 24px;
+
+    @include textH1;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: unset;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.category {
+  margin: 0 auto;
+
+  &__image {
+    display: block;
+    width: 272px;
+    height: 272px;
+    margin-bottom: 10px;
+
+    background-size: 350px;
+    background-repeat: no-repeat;
+    background-position: -40% 10%;
+
+    @include onTablet {
+      width: 170px;
+      height: 170px;
+
+      background-size: 230px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 24px;
+      width: 368px;
+      height: 368px;
+
+      background-size: 450px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 5px;
+    color: $mainColor;
+
+    @include textH3;
+  }
+
+  &__description {
+    color: $secondaryColor;
+    @include textBody;
+  }
+}

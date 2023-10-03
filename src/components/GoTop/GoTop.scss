@@ -1,0 +1,42 @@
+.go-top {
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: none;
+    margin-right: 15px;
+
+    @include textSmall;
+
+    @include onTablet {
+      display: block;
+    }
+
+    color: $secondaryColor;
+    transition: color $defaultTransitionDuration;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: $borderDefault;
+    transition: border-color $defaultTransitionDuration;
+  }
+
+  &:hover {
+    .go-top__icon {
+      border-color: $mainColor;
+    }
+
+    .go-top__link {
+      color: $mainColor;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    display: flex;
+  }
+
+  &__action {
+    display: none;
+
+    @include onDesktop {
+      height: 400px;
+      min-width: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    border: $borderDefault;
+
+    transition: border-color $defaultTransitionDuration;
+
+    &:hover {
+      border-color: $mainColor;
+    }
+  }
+
+  &__list-container {
+    overflow: hidden;
+
+    @include onDesktop {
+      margin: 0 16px;
+    }
+  }
+
+  &__list {
+    @include carouselWidth;
+    list-style: none;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: nowrap;
+
+    transition: transform 800ms;
+  }
+
+  &__item {
+    max-width: 1040px;
+  }
+
+  &__image {
+    @include carouselWidth;
+  }
+
+  &__nav {
+    margin-top: 8px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    &-icon {
+      width: 14px;
+      height: 4px;
+
+      background-color: $elementsColor;
+
+      transition: background-color $defaultTransitionDuration;
+
+      &:hover {
+        background-color: $mainColor;
+      }
+
+      &--active {
+        background-color: $mainColor;
+      }
+    }
+
+    &-link {
+      width: 15px;
+      height: 5px;
+    }
+  }
+}

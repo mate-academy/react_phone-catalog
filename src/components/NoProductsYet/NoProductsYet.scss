@@ -1,0 +1,51 @@
+.no-products {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  @include onTablet {
+    margin-top: 40;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  &__image {
+    width: 200px;
+    height: 200px;
+
+    @include onTablet {
+      width: 180px;
+      height: 180px;
+    }
+
+    @include onDesktop {
+      width: 350px;
+      height: 350px;
+    }
+  }
+
+  &__title {
+    @include textH1;
+    color: $mainColor;
+
+    @include onDesktop {
+      font-size: 38px;
+    }
+
+    margin-bottom: 15px;
+  }
+
+  &__description {
+    @include textH3;
+    color: $secondaryColor;
+
+    &--category {
+      @include textH3;
+      color: $redColor;
+      text-transform: uppercase;
+    }
+  }
+}

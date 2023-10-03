@@ -1,0 +1,28 @@
+.breadcrumbs {
+  display: flex;
+  height: 16px;
+  align-items: flex-end;
+  gap: 8px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__link {
+    color: $secondaryColor;
+    @include textSmall;
+
+    line-height: 13px;
+
+    &--active {
+      color: $mainColor;
+      pointer-events: none;
+    }
+  }
+}

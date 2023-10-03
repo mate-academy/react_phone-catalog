@@ -1,0 +1,80 @@
+.header {
+  height: $headerHeight;
+  border-bottom: $borderDefault;
+
+  &__nav {
+    display: none;
+
+    @include onDesktop {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin: 0 64px 0 24px;
+  }
+
+  &__search {
+    display: none;
+
+    @include onTablet {
+      display: block;
+      border-left: $borderDefault;
+    }
+  }
+
+  &__icon {
+    width: 65px;
+    height: $headerHeight;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include headerAction;
+    @include defaultHover;
+
+    &--fav {
+      border-left: $borderDefault;
+      border-right: $borderDefault;
+    }
+  }
+
+  &__menu {
+    border-right: $borderDefault;
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__cart-counter {
+    width: 14px;
+    height: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 9px;
+
+    background-color: $redColor;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+  }
+}

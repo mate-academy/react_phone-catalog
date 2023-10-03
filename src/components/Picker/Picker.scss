@@ -1,0 +1,28 @@
+.picker {
+  &__title {
+    @include textSmall;
+    color: $secondaryColor;
+  }
+
+  &__options {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    padding: 7px 8px 4px;
+    @include textBody;
+
+    &--color {
+      padding: 0;
+      width: 32px;
+      height: 32px;
+
+      &-background {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

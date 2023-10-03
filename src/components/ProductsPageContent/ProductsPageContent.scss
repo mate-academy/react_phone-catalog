@@ -1,0 +1,69 @@
+.products-page {
+  &__breadcrumbs {
+    margin-top: 10px;
+
+    @include onTablet {
+      margin-top: 15px;
+    }
+
+    @include onDesktop {
+      margin-top: 25px;
+    }
+  }
+
+  &__search-results {
+    display: block;
+    margin-top: 25px;
+    @include textBody;
+    color: $secondaryColor;
+  }
+
+  &__title {
+    margin-top: 20px;
+    color: $mainColor;
+    @include textH1;
+
+    @include onDesktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__description {
+    color: $secondaryColor;
+    @include textBody;
+
+    @include onDesktop {
+      margin-top: 8px;
+    }
+  }
+
+  &__display-options {
+    margin-top: 20px;
+
+    @include onTablet {
+      margin-top: 30px;
+    }
+
+    @include onDesktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__products {
+    margin: 25px auto 0;
+  }
+
+  &__item {
+    &-enter {
+      opacity: 0.1;
+    }
+    &-enter-done {
+      opacity: 1;
+      transition: opacity 300ms;
+    }
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}
