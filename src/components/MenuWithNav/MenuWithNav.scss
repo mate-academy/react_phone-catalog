@@ -11,6 +11,7 @@
   height: 100vh;
 
   background-color: $colorWhite;
+  overflow: auto;
 
   @include onDesktop {
     display: none;

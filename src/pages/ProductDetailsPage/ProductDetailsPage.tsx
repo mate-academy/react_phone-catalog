@@ -2,6 +2,7 @@ import './ProductDetailsPage.scss';
 
 import { useLocation, useParams } from 'react-router-dom';
 import React, { useEffect, useState, useContext } from 'react';
+import classNames from 'classnames';
 import { Header } from '../../components/Header/Header';
 import { WayFromHome } from '../../components/WayFromHome/WayFromHome';
 import { ProductFull } from '../../types/ProductFull';
@@ -26,6 +27,8 @@ import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { DEF_SORT } from '../../helpers/consts';
 import { getBackLink } from '../../helpers/getBackLink';
+import { MenuWithNav } from '../../components/MenuWithNav/MenuWithNav';
+
 
 export const ProductDetailsPage: React.FC = () => {
   const { liked, addedToCart } = useContext(LikeAndCartContext);
@@ -35,6 +38,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<ProductFull | null>(null);
   const [errMess, setErrMess] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isMenu, setIsMenu] = useState<boolean>(false);
   const [similarProducts, setSimilarProducts] = useState<ProductShort[]>([]);
   const [suggested, setSuggestedProducts] = useState<ProductShort[]>([]);
 
@@ -64,9 +68,29 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [product]);
 
+  useEffect(() => {
+    if (isMenu) {
+      document.body.classList.add('body__with-menu');
+    } else {
+      document.body.classList.remove('body__with-menu');
+    }
+  }, [isMenu]);
+
   return (
     <>
-      <Header quantityLiked={numLiked} quantityAdded={numAdded} />
+      <Header
+        quantityLiked={numLiked}
+        quantityAdded={numAdded}
+        onSetIsMenu={setIsMenu}
+      />
+
+      <div className={classNames('home-page__menu', { visible: isMenu })}>
+        <MenuWithNav
+          quantityLiked={numLiked}
+          quantityAdded={numAdded}
+          onSetIsMenu={setIsMenu}
+        />
+      </div>
 
       {isLoading && (<Loader />)}
       {!isLoading && !!errMess.length && <ErrorMessage text={errMess} />}
