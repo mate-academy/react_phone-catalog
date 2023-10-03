@@ -90,6 +90,10 @@ const App = () => {
   };
 
   useEffect(() => {
+    setSearchValue('');
+  }, [location.pathname]);
+
+  useEffect(() => {
     querySearch(debouncedValue);
   }, [debouncedValue]);
 

@@ -36,17 +36,16 @@ export const BlockBuyBtn: React.FC<Props> = ({ item }) => {
   const addItemCard = (product: Product) => {
     if (findProduct) {
       dispatch(removeItemBasket(product));
+
       return;
     }
-  
+
     dispatch(addItemBasket(product));
   };
 
   const someProduct = (productItems: Product[], product: Product) => {
     return productItems.some(i => i.id === product.id);
   };
-
-  
 
   const addItemFavorite = (product: Product) => {
     const findItem = someProduct(favorite, product);

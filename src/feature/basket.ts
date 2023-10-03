@@ -46,15 +46,16 @@ export const basketSlice: Slice<StateProps> = createSlice({
       };
     },
     addItemBasket: (state, action: PayloadAction<Product>) => {
-      const findItem = state.basketItem.find(item => item.id === action.payload.id);
-      
+      const findItem
+        = state.basketItem.find(item => item.id === action.payload.id);
+
       if (!findItem) {
         return {
           ...state,
           basketItem: [...state.basketItem, action.payload],
-        }
+        };
       }
-    
+
       return state;
     },
     removeItemBasket: (state, action: PayloadAction<Product>) => {
