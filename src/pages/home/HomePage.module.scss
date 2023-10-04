@@ -1,0 +1,37 @@
+@import "../../styles/mixins.scss";
+
+.home {
+  margin: 20px auto 0;
+  width: 1136px;
+  min-height: calc(100vh - 178px);
+
+  @include onTablet {
+    margin: 10px auto 0;
+    width: 640px;
+    min-height: calc(100vh - 178px);
+  }
+
+  @include onPhone {
+    margin: 5px auto 0;
+    width: 340px;
+    min-height: calc(100vh - 178px);
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+
+  @include onTablet {
+    margin-bottom: 12px;
+  }
+
+  @include onPhone {
+    margin-bottom: 6px;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

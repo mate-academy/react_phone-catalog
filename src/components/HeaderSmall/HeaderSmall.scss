@@ -1,0 +1,91 @@
+@import "../../styles/variables.scss";
+
+.navbar {
+  margin: 0 0 24px;
+  padding: 0;
+  height: 64px;
+  width: 100%;
+  border-bottom: 1px solid $border;
+
+  &-item {
+    padding: 0;
+  }
+
+  &-brand {
+    margin: 0 auto ;
+    padding: 0;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-burger {
+    margin-left: 0;
+    width: 66px;
+    height: 66px;
+    border-right: 1px solid $border;
+  }
+
+  &-menu {
+    height: 100vh;
+    padding-top: 20%;
+  }
+}
+
+.menuitem {
+  text-align: center;
+  height: fit-content;
+  margin-bottom: 60px;
+  text-decoration: none;
+  font-style: normal;
+  font-family: $bold;
+  color: #89939a;
+  font-size: $h1;
+  line-height: 11px;
+  letter-spacing: 4%;
+
+  &:hover {
+    height: fit-content;
+    color: #89939a !important;
+  }
+}
+
+.active {
+  color: $primary !important;
+}
+
+.buttons {
+  width: 16px;
+  height: 16px;
+
+  &_container {
+    width: 66px;
+    height: 66px;
+    border-left: 1px solid $border;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.navlink {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:hover {
+    border-bottom: 1px solid #000;
+  }
+}
+
+.is-actived {
+  font-family: $bold;
+  color: $secondary;
+  border-bottom: 1px solid $secondary;
+}

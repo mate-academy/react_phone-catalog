@@ -1,0 +1,393 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.card {
+  padding: 15px;
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include onPhone {
+    padding: 20px;
+    width: 340px;
+  }
+}
+
+.simages_container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 5px;
+
+  @include onPhone {
+    margin-bottom: 10px;
+  }
+}
+
+.simage {
+  @include onPhone {
+    width: 36px;
+    height: 36px;
+
+    &__container {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
+
+.xlimage {
+  @include onPhone {
+    width: 244px;
+    height: 244px;
+
+    &_container {
+      width: 264px;
+      height: 264px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.features_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+
+  @include onPhone {
+    gap: 20px;
+  }
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__text {
+    font-family: $semi-bold;
+    font-size: $small-text;
+    color: $secondary;
+  }
+
+  &__choose {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__choose::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: $elements;
+    position: absolute;
+    width: 100%;
+    bottom: -18px;
+  }
+
+  &__color {
+    position: relative;
+    padding: 2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $icons;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &__selected {
+      border-color: $primary;
+
+      &:hover {
+        border-color: $primary;
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+
+  @include onPhone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    &__text {
+      font-family: $semi-bold;
+      font-size: $small-text;
+      color: $secondary;
+    }
+
+    &__choose {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    &__choose::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background-color: $elements;
+      position: absolute;
+      width: 100%;
+      bottom: -10px;
+    }
+
+    &__color {
+      position: relative;
+      padding: 2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid $elements;
+      transition: box-shadow 0.2s;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $icons;
+        box-shadow: 0 3px 8px rgba(23, 32, 49, 0.26);
+      }
+
+      &__selected {
+        border-color: $primary;
+
+        &:hover {
+          border-color: $primary;
+          box-shadow: 0 3px 8px rgba(23, 32, 49, 0.26);
+        }
+      }
+    }
+  }
+}
+
+.capacities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__text {
+    font-family: $semi-bold;
+    font-size: $small-text;
+    color: $secondary;
+  }
+
+  &__choose {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__choose::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: $elements;
+    position: absolute;
+    width: 100%;
+    bottom: -18px;
+  }
+
+  &__capacity {
+    text-decoration: none;
+    padding: 0 5px;
+    height: 32px;
+    border: 1px solid $icons;
+    font-family: $regular;
+    font-size: $body-text;
+    line-height: 32px;
+    color: $primary;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $primary;
+      color: $white;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &__selected {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
+  @include onPhone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    &__text {
+      font-family: $semi-bold;
+      font-size: $small-text;
+      color: $secondary;
+    }
+
+    &__choose {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &__choose::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background-color: $elements;
+      position: absolute;
+      width: 100%;
+      bottom: -10px;
+    }
+
+    &__capacity {
+      text-decoration: none;
+      padding: 0 8px;
+      height: 24px;
+      border: 1px solid $icons;
+      font-family: $regular;
+      font-size: $small-text;
+      line-height: 24px;
+      color: $primary;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $primary;
+        color: $white;
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      }
+
+      &__selected {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}
+
+.price {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &__main {
+    color: $primary;
+    font-size: $h1;
+    font-family: $bold;
+    letter-spacing: -0.32px;
+  }
+
+  &__sale {
+    color: $secondary;
+    font-size: $h2;
+    font-family: $regular;
+    text-decoration: line-through;
+  }
+
+  @include onPhone {
+    &__main {
+      color: $primary;
+      font-size: $h2;
+      font-family: $bold;
+      letter-spacing: -0.32px;
+    }
+
+    &__sale {
+      color: $secondary;
+      font-size: $h3;
+      font-family: $regular;
+      text-decoration: line-through;
+    }
+  }
+}
+
+.buy {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart {
+  width: 263px;
+  height: 48px;
+  background-color: $primary;
+  color: $white;
+  text-align: center;
+  font-family: $semi-bold;
+  font-size: $body-text;
+  line-height: $body-line-height;
+
+  &_active {
+    width: 263px;
+    height: 48px;
+    color: $green;
+    background-color: $white;
+    border: 1px solid $elements;
+    text-align: center;
+    font-size: $body-text;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  @include onPhone {
+    width: 220px;
+    height: 30px;
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+    font-family: $semi-bold;
+    font-size: $body-text;
+    line-height: $body-line-height;
+
+    &_active {
+      width: 220px;
+      height: 38px;
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+      text-align: center;
+      font-size: $body-text;
+      transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+}
+
+.favourites {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid $icons;
+
+  @include onPhone {
+    width: 30px;
+    height: 30px;
+  }
+}

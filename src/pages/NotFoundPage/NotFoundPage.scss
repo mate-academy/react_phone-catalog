@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.page_404 {
+  margin: 20px auto 0;
+  width: 1136px;
+  min-height: calc(100vh - 178px);
+  padding: 40px 0;
+  background: #fff;
+  font-family: $semi-bold;
+
+  @include onTablet {
+    margin: 10px auto 0;
+    width: 640px;
+    min-height: calc(100vh - 178px);
+  }
+
+  @include onPhone {
+    margin: 5px auto 0;
+    width: 340px;
+    min-height: calc(100vh - 178px);
+  }
+}
+
+.page_404 img {
+  width: 100%;
+}
+
+.four_zero_four_bg {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 500px;
+  background-position: center;
+}
+
+.four_zero_four_bg h1 {
+  font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+  font-size: 80px;
+}
+
+.link_404 {
+  color: $primary !important;
+  padding: 10px 20px;
+  background: $white;
+  border: 1px solid $primary;
+  margin: 20px 0;
+  display: inline-block;
+
+  &:hover {
+    color: $white !important;
+    background: $primary;
+  }
+}
+
+.contant_box_404 {
+  margin-top: -50px;
+}

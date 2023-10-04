@@ -1,0 +1,64 @@
+// screen
+$desktop-width: 1440px;
+$header-height: 63px;
+$footer-height: 95px;
+
+// fonts
+@font-face {
+  font-family: "Mont-bold";
+  src: url("../assets/fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: "Mont-semi-bold";
+  src: url("../assets/fonts/Mont-SemiBold.otf");
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("../assets/fonts/Mont-Regular.otf");
+}
+
+$bold: "Mont-bold", arial, helvetica, sans-serif;
+$semi-bold: "Mont-semi-bold", arial, helvetica, sans-serif;
+$regular: "Mont", arial, helvetica, sans-serif;
+
+// font-sizes
+$small-text: 12px;
+$body-text: 14px;
+$h3: 20px;
+$h2: 22px;
+$h1: 32px;
+
+$upper-case-line-height: 11px;
+$small-line-height: 15px;
+$body-line-height: 21px;
+$h3-line-height: 26px;
+$h2-line-height: 31px;
+$h1-line-height: 41px;
+
+$upper-case-lspacing: 0.04em;
+$h1-lspacing: -0.01em;
+
+// colours
+$primary: #313237;
+$secondary: #89939a;
+$icons: #b4bdc3;
+$border: #e5e5e5;
+$elements: #e2e6e9;
+$hoverBG: #fafbfc;
+$white: #fff;
+$green: #27ae60;
+$red: #eb5757;
+$phones: #fcdbc1;
+$tablets: #8d8d92;
+$accessories: #973d5f;
+
+// card
+$card-height: 508px;
+$card-width: 272px;
+$card-image-size: 208px;
+
+//button
+$button-add-height: 40px;
+$button-add-width: 176px;

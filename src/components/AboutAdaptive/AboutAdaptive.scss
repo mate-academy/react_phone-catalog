@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.dropdown-trigger {
+  height: 32px !important;
+  width: 560px;
+
+  @include onPhone {
+    width: 340px;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  width: 560px;
+
+  @include onPhone {
+    width: 340px;
+  }
+}
+
+.button {
+  width: 560px;
+
+  &:hover {
+    border-color: $elements;
+    color: $primary !important;
+  }
+
+  &:focus {
+    border-color: $primary !important;
+    color: $primary !important;
+  }
+
+  @include onPhone {
+    width: 340px;
+  }
+}
