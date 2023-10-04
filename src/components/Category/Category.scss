@@ -1,0 +1,45 @@
+@import "../../utils/variables.scss";
+
+.category {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 60px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+  }
+
+  &__images {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.image {
+  width: 368px;
+  height: 368px;
+  margin-bottom: 14px;
+  margin-right: 10px;
+
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(100.5%);
+    box-shadow: 3px 8px 12px $iconsColor;
+    z-index: 2;
+  }
+
+  &__title {
+    font-family: Mont-SemiBold, sans-serif;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: $secondaryColor;
+  }
+}
