@@ -1,4 +1,5 @@
 .catalog-products {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,7 +69,7 @@
     &-inner {
       display: flex;
       gap: 16px;
-      flex-direction: row;
+      // flex-direction: row;
       transition-duration: 0.3s;
     }
   }
