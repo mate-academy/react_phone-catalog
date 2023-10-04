@@ -1,0 +1,59 @@
+.pagination {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  &__list {
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  &__item {
+    border: 1px solid #e2e6e9;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    text-align: center;
+
+    color: #000;
+  }
+}
+
+.current {
+  background-color: #313237;
+  color: #fff;
+}

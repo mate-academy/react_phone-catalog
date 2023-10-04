@@ -1,0 +1,67 @@
+.CatalogShortCut {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 80px;
+  overflow-y: visible;
+
+  &__title {
+    width: 100%;
+
+    align-self: flex-start;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+
+    margin-bottom: 24px;
+  }
+
+  &__top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+
+    gap: 16px;
+  }
+
+  &__button {
+    display: block;
+    border: 1px solid $color-secondary-2;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      border: 1px solid $gray-icons-placeholders;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+    min-height: 537px;
+
+    width: 1152px;
+    overflow-y: visible;
+    overflow-x: hidden;
+
+    &-inner {
+      display: flex;
+      gap: 16px;
+      flex-direction: row;
+      transition-duration: 0.3s;
+    }
+  }
+}

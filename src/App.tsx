@@ -1,9 +1,19 @@
 import './App.scss';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+import React from 'react';
 
-export default App;
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { AppRoutes } from './Routes/Routes';
+
+export const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Header />
+      <React.StrictMode>
+        <AppRoutes />
+      </React.StrictMode>
+      <Footer />
+    </div>
+  );
+};

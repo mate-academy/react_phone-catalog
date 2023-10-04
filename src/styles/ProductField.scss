@@ -1,0 +1,82 @@
+.productField {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  padding: 21px;
+  border: 1px solid $color-secondary-2;
+
+  align-items: center;
+
+  gap: 21px;
+
+  min-width: 400px;
+  transition-duration: 0.3s;
+
+  &:hover {
+    box-shadow: 1px 3px 13px 1px rgba(23, 32, 49, 0.26);
+    transform: scale(1.02);
+  }
+
+  &__cross {
+    width: 16px;
+    height: 16px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+
+    object-fit: contain;
+  }
+
+  &__name {
+    white-space: nowrap;
+    width: 295px;
+    text-overflow: ellipsis;
+  }
+
+  &__quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__quantity-button {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    display: block;
+    border: 1px solid $color-secondary-2;
+
+    &:hover {
+      border: 1px solid $gray-icons-placeholders;
+    }
+  }
+
+  &__quantity-count {
+    width: 32px;
+    height: 32px;
+
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  &__price {
+    color: $color-primary;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+  }
+}

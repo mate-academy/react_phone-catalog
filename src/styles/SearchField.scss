@@ -1,0 +1,30 @@
+.SearchField {
+  display: flex;
+  justify-content: space-between;
+
+  width: 327px;
+  height: 64px;
+
+  box-shadow: -1px 1px 1px 1px $color-secondary-2;
+  padding: 24px;
+
+  &__input {
+    background: transparent;
+
+    color: $color-primary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    text-overflow: ellipsis;
+
+    &::placeholder {
+      color: $gray-icons-placeholders;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+}
