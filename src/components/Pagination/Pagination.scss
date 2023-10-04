@@ -1,0 +1,75 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.Pagination {
+  display: flex;
+
+  & > * {
+    margin-right: 8px;
+  }
+
+  & > :first-child,
+  :nth-last-child(2) {
+    margin-right: 16px;
+  }
+
+  & > :last-child {
+    margin-right: 0;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-image: url("../../img/icons/arrow-black.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: #fff;
+    border: 1px solid $color-icons-placeholders-gray;
+    transition: $transition;
+    cursor: pointer;
+
+    @include onPhone {
+      margin-top: 6px;
+    }
+
+    &--prev {
+      transform: rotate(-90deg);
+    }
+
+    &--next {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__page-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons-placeholders-gray;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: #fff;
+    transition: $transition;
+    cursor: pointer;
+
+    &--active {
+      color: #fff;
+      background-color: $color-primary-dark-gray;
+      cursor: unset;
+    }
+  }
+
+  &__button,
+  &__page-button {
+    &:hover {
+      border-color: $color-primary-dark-gray;
+    }
+  }
+
+  &__button:disabled {
+    background-image: url(../../img/icons/arrow-gray-up.svg);
+    border-color: $color-elements-light-gray;
+    cursor: unset;
+  }
+}

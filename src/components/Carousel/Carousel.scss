@@ -1,0 +1,80 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.Carousel {
+  height: 400px;
+
+  @include onPhone {
+    height: 500px;
+  }
+
+  &__slide {
+    background-position: center;
+
+    &--phones {
+      background-image: url(./banners/banner-phones.png);
+    }
+
+    &--tablets {
+      background-image: url(./banners/banner-tablets.png);
+    }
+
+    &--accessories {
+      background-image: url(./banners/banner-accessories.png);
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    border: 1px solid $color-icons-placeholders-gray;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: #fff;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary-dark-gray;
+    }
+
+    @include onPhone {
+      width: 20px;
+      height: 500px;
+    }
+
+    &--prev {
+      background-image: url(../../img/icons/arrow-left.svg);
+    }
+
+    &--next {
+      background-image: url(../../img/icons/arrow-right.svg);
+    }
+  }
+}
+
+.each-slide-effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 400px;
+  width: calc(100% - 64px - 32px);
+  margin: 0 auto;
+
+  @include onPhone {
+    height: 500px;
+  }
+}
+
+.react-slideshow-container + ul.indicators {
+  gap: 14px;
+}
+
+.react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
+  width: 14px;
+  height: 4px;
+  border-radius: 0%;
+  background-color: $color-primary-dark-gray;
+}

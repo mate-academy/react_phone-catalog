@@ -1,0 +1,59 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.Menu {
+  background-color: #fff;
+  text-transform: uppercase;
+  z-index: 2;
+
+  &__content {
+    padding: 24px;
+  }
+}
+
+.Nav {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  @include onTablet {
+    gap: 18px;
+  }
+
+  @include onPhone {
+    flex-direction: column;
+  }
+}
+
+.NavButton {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  color: $color-secondary-gray;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  transition: $transition;
+  height: 64px;
+
+  &:hover {
+    color: $color-primary-dark-gray;
+  }
+
+  &--selected {
+    color: $color-primary-dark-gray;
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 3px;
+      background-color: $color-primary-dark-gray;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
