@@ -1,0 +1,22 @@
+@import '../../utils/variables.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+
+  &__button {
+    margin: 0 10px 10px 0;
+    border: 1px solid $elementsColor;
+    width: 32px;
+    height: 32px;
+    background-color: $whiteColor;
+    cursor: pointer;
+  }
+
+  &__button-active {
+    background-color: $primaryColor;
+    color: $whiteColor;
+  }
+}

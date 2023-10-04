@@ -1,0 +1,28 @@
+@import '../../utils/variables.scss';
+
+.rights {
+  &__block {
+    margin-bottom: 25px;
+  }
+
+  &__title {
+    margin: 0 0 20px 0;
+    font-size: 32px;
+    font-family: Mont-Bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: $primaryColor;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-family: Mont-Regular;
+    color: $secondaryColor;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-family: Mont-SemiBold;
+    color: $primaryColor;
+  }
+}

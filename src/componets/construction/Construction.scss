@@ -1,0 +1,37 @@
+@import '../../utils/variables.scss';
+
+.construction {
+  margin-bottom: 25px;
+
+  &__title {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-family: Mont-Bold;
+    letter-spacing: 5px;
+    text-align: center;
+    color: $primaryColor;
+  }
+
+  &__image-container {
+    margin: auto;
+    width: 250px;
+    height: 175px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__announcement {
+    font-size: 32px;
+    font-family: Mont-Bold;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  &__description {
+    font-family: Mont-SemiBold;
+    text-align: center;
+    color: $secondaryColor;
+  }
+}

@@ -1,0 +1,14 @@
+@import '../../utils/variables.scss';
+
+.referenceBack {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+
+  &__button {
+    border: 1px solid transparent;
+    background-color: $whiteColor;
+    color: $secondaryColor;
+    cursor: pointer;
+  }
+}

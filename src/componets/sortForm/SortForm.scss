@@ -1,0 +1,25 @@
+@import '../../utils/variables.scss';
+
+.sortForm {
+  display: flex;
+  margin-bottom: 20px;
+
+  &__form {
+    margin-right: 20px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-family: Mont-SemiBold;
+    color: $secondaryColor;
+  }
+
+  &__select {
+    display: block;
+    border: 1px solid $secondaryColor;
+    width: 175px;
+    padding: 10px;
+  }
+}

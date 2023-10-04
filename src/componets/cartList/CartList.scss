@@ -1,0 +1,73 @@
+@import '../../utils/mixins.scss';
+@import '../../utils//variables.scss';
+
+.cartList {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 45px;
+
+  @include onMobile {
+    flex-direction: column;
+  }
+
+  @include onTablet {
+    flex-direction: column;
+  }
+
+  &__checkout {
+    position: relative;
+    border: 1px solid $elementsColor;
+    width: 300px;
+    height: 300px;
+
+    @include onMobile {
+      margin: auto;
+    }
+
+    @include onTablet {
+      margin: auto;
+    }
+  }
+
+  &__total {
+    margin: 20px 0 5px 0;
+    font-size: 32px;
+    font-family: Mont-Bold;
+    text-align: center;
+    color: $primaryColor;
+  }
+
+  &__count {
+    margin: 0 0 25px 0;
+    font-size: 14px;
+    font-family: Mont-Regular;
+    text-align: center;
+    color: $secondaryColor;
+  }
+
+  &__line {
+    margin: 0 auto 25px;
+    width: 260px;
+    height: 1px;
+    background-color: $elementsColor;
+  }
+
+  &__button {
+    display: block;
+    transition: all 0.3s;
+    margin: 0 auto;
+    margin-bottom: 45px;
+    width: 260px;
+    height: 48px;
+    background-color: $primaryColor;
+    font-size: 14px;
+    font-family: Mont-SemiBold;
+    color: $whiteColor;
+
+    &:hover {
+      border: 1px solid $primaryColor;
+      background-color: $whiteColor;
+      color: $primaryColor;
+    }
+  }
+}

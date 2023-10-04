@@ -1,0 +1,73 @@
+@import '../../utils/variables.scss';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__button {
+    margin: 0;
+    border: 0px solid transparent;
+    height: 450px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &__button-image {
+    margin: 0;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  &__image-container {
+    position: relative;
+    margin: 0 10px 0 10px;
+    width: 1044px;
+  }
+
+  &__image {
+    display: block;
+    transition: opacity 0.3s ease;
+    margin: 0 auto;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 30px 0;
+  }
+
+  &__dot {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 5px;
+    width: 15px;
+    height: 5px;
+    background-color: $iconsColor;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.3);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__dot-active {
+    width: 15px;
+    height: 5px;
+    background-color: $primaryColor;
+  }
+
+  &__transitioning {
+    opacity: 0;
+  }
+}

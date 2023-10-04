@@ -1,0 +1,23 @@
+@import '../../utils/variables.scss';
+
+.slider-buttons {
+  display: inline;
+  justify-content: space-between;
+
+  &__button-container {
+    transition: border 0.3s;
+    border: 1px solid $elementsColor;
+    width: 32px;
+    height: 32px;
+    background-color: $whiteColor;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &--left {
+      margin-right: 10px;
+    }
+  }
+}

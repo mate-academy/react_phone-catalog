@@ -1,0 +1,21 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.input {
+  border: 1px solid hsl(206, 14%, 90%);
+  width: 250px;
+  background-image: url('../../img/Search.svg');
+  background-size: 16px 16px;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  padding-left: 10px;
+
+  &:focus {
+    outline-color: $primaryColor;
+  }
+
+  &__icon-hidden {
+    background-image: none;
+    padding-right: 10px;
+  }
+}

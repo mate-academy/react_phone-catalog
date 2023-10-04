@@ -1,0 +1,18 @@
+@import '../../utils/variables.scss';
+
+.page-heading {
+  margin-bottom: 40px;
+
+  &__title {
+    margin: 0 0 5px 0;
+    font-size: 32px;
+    font-family: Mont-Bold;
+    color: $primaryColor;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 14px;
+    color: $secondaryColor;
+  }
+}

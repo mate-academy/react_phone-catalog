@@ -1,0 +1,31 @@
+@import '../../utils/variables.scss';
+
+.checkout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ffd0d7;
+  width: 288px;
+  padding: 7px;
+  background-color: #ffd0d7;
+
+  &__text {
+    display: block;
+    padding: 25px 30px 0 0;
+    font-size: 20px;
+    font-family: Mont-SemiBold;
+    text-align: center;
+    color: $redColor;
+  }
+
+  &__button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid $redColor;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: $whiteColor;
+  }
+}

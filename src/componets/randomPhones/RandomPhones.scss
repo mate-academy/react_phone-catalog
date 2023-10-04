@@ -1,0 +1,44 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.random_phones {
+  margin-bottom: 45px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    font-family: Mont-Bold;
+    letter-spacing: -1%;
+    color: $primaryColor;
+
+    @include onMobile {
+      font-size: 24px;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__slider-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include onMobile {
+      justify-content: center;
+    }
+
+    @include onTablet {
+      justify-content: center;
+    }
+  }
+}

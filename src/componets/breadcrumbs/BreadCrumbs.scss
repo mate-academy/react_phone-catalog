@@ -1,0 +1,24 @@
+@import '../../utils/variables.scss';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &__name {
+    font-size: 12px;
+    font-family: Mont-SemiBold;
+    text-decoration: none;
+    color: $secondaryColor;
+  }
+
+  &__icon {
+    margin-right: 7px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__vektor {
+    margin-right: 7px;
+  }
+}
