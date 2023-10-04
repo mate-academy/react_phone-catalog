@@ -1,5 +1,6 @@
 @import "../../utils/variables";
 @import "../../utils/extends";
+@import "../../utils/mixins";
 
 .accessories {
   &__empty {
@@ -8,11 +9,15 @@
     background-color: #fafbfc;
     border-radius: 15px;
     padding: 30px;
-    width: max-content;
+    max-width: max-content;
+    text-align: center;
 
     &__message {
       @extend %h1;
-
+      
+      @include onSmallMobile {
+        font-size: 16px;
+      }
     }
   }
 }

@@ -65,7 +65,11 @@ const Header = () => {
               src={cart}
               alt=""
             />
-            <div className="header__icon--count">{totalCount}</div>
+            {totalCount <= 0 ? (
+              <div />
+            ) : (
+              (<div className="header__icon--count">{totalCount}</div>)
+            )}
           </NavLink>
           <NavLink
             to="/favorites"
@@ -78,7 +82,11 @@ const Header = () => {
               src={favourites}
               alt=""
             />
-            <div className="header__icon--count">{favoritesItems.length}</div>
+            {favoritesItems.length <= 0 ? (
+              <div />
+            ) : (
+              <div className="header__icon--count">{favoritesItems.length}</div>
+            )}
           </NavLink>
         </div>
       </div>

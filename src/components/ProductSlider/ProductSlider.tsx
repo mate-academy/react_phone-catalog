@@ -106,7 +106,7 @@ const ProductSlider: React.FC<Props> = ({ title, products }) => {
           tabIndex={-1}
           className="slider-products__list"
           style={
-            { transform, transition: '2s' }
+            { transform, transition: '0.4s' }
           }
         >
           {products.map(product => (
