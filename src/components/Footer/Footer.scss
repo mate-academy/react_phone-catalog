@@ -1,17 +1,57 @@
 @import "../../styles/utils/variables.scss";
 
 .footer {
-  height: 96px;
+  height: 100px;
   border-top: 1px solid $color-gray-elements;
   display: flex;
   justify-content: center;
-  min-width: $page-width;
-  padding: 0 152px;
+  min-width: 280px;
+  padding: 0 20px;
+
+  @media (min-width: 744px) {
+    padding: 0 72px;
+    height: 80px;
+    min-width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    padding: 0 120px;
+    height: 96px;
+    min-width: 1138px;
+  }
 
   &--container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-width: $page-width;
+    min-width: 280px;
+
+    @media (min-width: 744px) {
+      min-width: 600px;
+      flex-direction: row;
+    }
+
+    @media (min-width: 1376px) {
+      min-width: 1138px;
+      flex-direction: row;
+    }
+  }
+}
+
+.footer-links {
+  display: flex;
+  padding: 0;
+  gap: 24px;
+  margin: 0;
+  justify-content: left;
+  align-items: center;
+
+  @media (min-width: 744px) {
+    gap: 32px;
+  }
+
+  @media (min-width: 1376px) {
+    gap: 64px;
   }
 }

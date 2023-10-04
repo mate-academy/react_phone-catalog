@@ -63,7 +63,7 @@ export const ProductDescription:React.FC<Props> = ({
 
         <div className="img-main-container">
           <img
-            className=""
+            className="img-main"
             src={mainImage}
             alt="#main-img"
           />

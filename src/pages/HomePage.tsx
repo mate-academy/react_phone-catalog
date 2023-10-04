@@ -132,7 +132,10 @@ export const HomePage: React.FC<Props> = ({
         <h1 className="title home-page-container__title">Shop by category</h1>
 
         <div className="categories-images categories-images__categories-link">
-          <div data-cy="categoryLinksContainer">
+          <div
+            data-cy="categoryLinksContainer"
+            className="categories-images__category-container"
+          >
             <div className="categories-image-container">
               <img
                 className="categories-image"
@@ -154,7 +157,10 @@ export const HomePage: React.FC<Props> = ({
             </p>
           </div>
 
-          <div>
+          <div
+            data-cy="categoryLinksContainer"
+            className="categories-images__category-container"
+          >
             <div className="categories-image-container
              categories-image-container--tablets"
             >
@@ -176,7 +182,10 @@ export const HomePage: React.FC<Props> = ({
             </p>
           </div>
 
-          <div>
+          <div
+            data-cy="categoryLinksContainer"
+            className="categories-images__category-container"
+          >
             <div className="categories-image-container
               categories-image-container--accessories"
             >

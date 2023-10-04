@@ -3,14 +3,34 @@
 
 .card-container {
   display: flex;
-  width: 1138px;
+  width: 280px;
   overflow: hidden;
   gap: 16px;
+  margin-left: 26px;
+
+  @media (min-width: 744px) {
+    width: 570px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 1138px;
+  }
 }
 
 .title {
   color: $color-gray-primary;
   @include title();
+  font-size: 24px;
+
+  @media (min-width: 744px) {
+    @include title();
+    font-size: 28px;
+  }
+
+  @media (min-width: 1376px) {
+    @include title();
+    font-size: 32px;
+  }
 
   &__discount {
     @include font-family-regular();

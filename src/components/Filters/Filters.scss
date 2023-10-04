@@ -2,9 +2,24 @@
 @import "../../styles/utils/variables.scss";
 
 .filters-container {
-  display: flex;
-  gap: 16px;
   box-sizing: border-box;
+
+  @media (min-width: 744px) {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__filtr-container {
+    margin-top: 15px;
+
+    @media (min-width: 744px) {
+      margin-top: 0;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 0;
+    }
+  }
 
   &__filtr {
     margin-top: 4px;

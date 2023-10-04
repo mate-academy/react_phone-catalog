@@ -2,18 +2,63 @@
 @import "../../styles/utils/variables.scss";
 
 .favorites-page-container {
-  width: $page-width;
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 1138px;
+  }
 
   &__icon-navigation {
-    margin-top: 24px;
+    margin-top: 16px;
+
+    @media (min-width: 744px) {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 24px;
+    }
   }
 
   &__title {
-    margin-top: 40px;
+    margin-top: 24px;
+
+    @media (min-width: 744px) {
+      margin-top: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__items-counter {
+    margin-top: 4px;
+    margin-bottom: 0;
+
+    @media (min-width: 744px) {
+      margin-top: 6px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 8px;
+    }
   }
 
   &__products-list {
-    margin-top: 40px;
+    margin-top: 24px;
+
+    @media (min-width: 744px) {
+      margin-top: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 40px;
+    }
   }
 }
 

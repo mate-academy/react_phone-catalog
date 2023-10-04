@@ -2,12 +2,28 @@
 @import "../../styles/utils/mixins.scss";
 
 .cart-page-container {
-  width: 1138px;
+  width: 280px;
   display: flex;
   flex-direction: column;
 
+  @media (min-width: 744px) {
+    min-width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    min-width: 1138px;
+  }
+
   &__back-button {
-    margin-top: 40px;
+    margin-top: 0;
+
+    @media (min-width: 744px) {
+      margin-top: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 40px;
+    }
   }
 
   &__title {
@@ -15,14 +31,37 @@
   }
 
   &__carts-container {
-    margin-top: 24px;
+    margin-top: 16px;
+
+    @media (min-width: 744px) {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 24px;
+    }
   }
 }
 
 .carts-container {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1376px) {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: start;
+  }
+
+  &__checkout-container {
+    margin-top: 16px;
+
+    @media (min-width: 1376px) {
+      margin-top: 0;
+    }
+  }
 }
 
 .carts {
@@ -36,30 +75,80 @@
 }
 
 .cart {
-  width: 752px;
-  height: 128px;
+  width: 280px;
+  height: 150px;
   border: 1px solid $color-gray-elements;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 
+  @media (min-width: 744px) {
+    width: 600px;
+    height: 128px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 752px;
+  }
+
   &__button-close {
-    margin-left: 24px;
+    margin-left: 8px;
+
+    @media (min-width: 744px) {
+      margin-left: 16px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+    }
   }
 
   &__img-product {
-    margin-left: 24px;
+    margin-left: 12px;
+
+    @media (min-width: 744px) {
+      margin-left: 16px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+    }
   }
 
   &__product-name {
-    margin-left: 24px;
+    margin-left: 12px;
+
+    @media (min-width: 744px) {
+      margin-left: 16px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+    }
   }
 
   &__button-quantity {
     margin-left: 40px;
+
+    @media (min-width: 744px) {
+      margin-left: 28px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 40px;
+    }
   }
 
   &__price {
-    margin-left: 40px;
+    margin-left: 24px;
+
+    @media (min-width: 744px) {
+      margin-left: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 40px;
+    }
   }
 }
 
@@ -91,7 +180,15 @@
 .product-name {
   color: $color-gray-primary;
   @include title-third;
-  width: 295px;
+  width: 140px;
+
+  @media (min-width: 744px) {
+    width: 200px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 295px;
+  }
 }
 
 .button-quantity {
@@ -120,12 +217,16 @@
 }
 
 .checkout-container {
-  width: 368px;
+  width: 280px;
   height: 206px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid $color-gray-elements;
+
+  @media (min-width: 744px) {
+    width: 368px;
+  }
 
   &__title {
     margin-top: 24px;
@@ -149,17 +250,29 @@
 .line {
   border: none;
   border-top: 1px solid $color-gray-elements;
-  width: 320px;
+  width: 240px;
+
+  @media (min-width: 744px) {
+    width: 320px;
+  }
 }
 
 .checkout-button {
-  width: 320px;
+  width: 240px;
   height: 48px;
   @include button();
+
+  @media (min-width: 744px) {
+    width: 320px;
+  }
 }
 
 .message {
-  width: 320px;
+  width: 240px;
   color: $color-gray-primary;
   @include title-third;
+
+  @media (min-width: 744px) {
+    width: 320px;
+  }
 }

@@ -3,43 +3,41 @@
 
 .navigation-links {
   padding-left: 12px;
-  width: 100vw;
+  width: calc(100vw - 12px);
   border-bottom: 1px solid $color-gray-elements;
 
   @media (min-width: 744px) {
     padding-left: 18px;
+    width: calc(100vw - 18px);
   }
 
   @media (min-width: 1376px) {
     padding-left: 24px;
+    width: calc(100vw - 24px);
   }
 
   &__links {
     display: flex;
-    // flex-direction: column;
     padding: 0;
-    gap: 24px;
+    gap: 18px;
     margin: 0;
     justify-content: left;
     align-items: center;
 
     @media (min-width: 744px) {
       gap: 48px;
-      // flex-direction: row;
-      // align-items: center;
     }
 
     @media (min-width: 1376px) {
       gap: 64px;
-      // align-items: center;
     }
   }
 
   &__link {
     list-style-type: none;
     @include font-family-bold();
-    font-size: 8px;
-    line-height: 24px;
+    font-size: 10px;
+    line-height: 36px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
     text-decoration: none;
@@ -58,6 +56,14 @@
     &--back {
       font-weight: 600;
       text-transform: none;
+      padding-right: 8px;
+    }
+
+    @media (min-width: 744px) {
+      padding-right: 12px;
+    }
+
+    @media (min-width: 1376px) {
       padding-right: 16px;
     }
   }
@@ -69,7 +75,7 @@
 }
 
 .navigation-icon {
-  width: 24px;
+  width: 36px;
   border: 1px solid $color-gray-elements;
   display: flex;
   justify-content: center;
@@ -78,7 +84,6 @@
 
   @media (min-width: 744px) {
     width: 48px;
-    // padding-left: 18px;
   }
 
   @media (min-width: 1376px) {
@@ -100,31 +105,32 @@
   display: flex;
   padding: 0 2px 0 0;
   justify-content: right;
-  height: 24px;
+  height: 36px;
+  width: calc(100vw - 2px);
 
   @media (min-width: 744px) {
     justify-content: center;
     height: 48px;
-    // padding-left: 18px;
+    width: auto;
   }
 
   @media (min-width: 1376px) {
     height: 64px;
+    width: auto;
   }
 }
 
 .search-container {
-  width: calc(100vw - 52px);
+  width: calc(100vw - 78px);
   border: 1px solid $color-gray-elements;
   border-top: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 0;
 
   @media (min-width: 744px) {
     width: 200px;
-    gap: 18px;
     justify-content: space-around;
   }
 
@@ -137,7 +143,7 @@
 .search {
   border: none;
   @include font-family-regular();
-  font-size: 10px;
+  font-size: 12px;
   line-height: 21px;
 
   @media (min-width: 744px) {
@@ -158,7 +164,7 @@
     outline: none;
     color: $color-gray-primary;
     @include font-family-regular();
-    font-size: 10px;
+    font-size: 12px;
     line-height: 21px;
 
     @media (min-width: 744px) {

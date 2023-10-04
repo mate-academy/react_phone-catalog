@@ -26,7 +26,7 @@ export const Footer:React.FC<Props> = ({ isPageBiggerThanWindow }) => {
           />
         </NavLink>
         <div>
-          <ul className="navigation-links__links">
+          <ul className="footer-links">
             <li className="navigation-links__link">
               <a
                 className="link"

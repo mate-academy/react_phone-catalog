@@ -2,7 +2,15 @@
 @import "../../styles/utils/variables.scss";
 
 .home-page-container {
-  width: $page-width;
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 1138px;
+  }
 
   &__banner-container {
     margin-top: 40px;
@@ -14,18 +22,51 @@
 
   &__card-container {
     margin-top: 24px;
+    margin-left: 4px;
+
+    @media (min-width: 744px) {
+      margin-left: 20px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 0;
+    }
   }
 
   &__hot-prices {
-    margin-top: 72px;
+    margin-top: 48px;
+
+    @media (min-width: 744px) {
+      margin-top: 64px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 72px;
+    }
   }
 
   &__new-models {
-    margin-top: 80px;
+    margin-top: 48px;
+
+    @media (min-width: 744px) {
+      margin-top: 64px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 80px;
+    }
   }
 
   &__category-container {
-    margin-top: 80px;
+    margin-top: 48px;
+
+    @media (min-width: 744px) {
+      margin-top: 64px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 80px;
+    }
   }
 }
 
@@ -36,21 +77,50 @@
 
 .button-navigation-banner {
   @include icon-button();
-  width: 32px;
-  height: 400px;
+  width: 24px;
+  height: 140px;
+
+  @media (min-width: 744px) {
+    width: 28px;
+    height: 200px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 32px;
+    height: 400px;
+  }
 }
 
 .banner-img-container {
-  max-width: 1040px;
-  height: 400px;
+  max-width: 224px;
+  height: 140px;
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  @media (min-width: 744px) {
+    max-width: 520px;
+    height: 200px;
+  }
+
+  @media (min-width: 1376px) {
+    max-width: 1040px;
+    height: 400px;
+  }
 }
 
 .banner-img {
-  width: 100%;
+  width: 160%;
   height: auto;
+
+  @media (min-width: 744px) {
+    width: 100%;
+  }
+
+  @media (min-width: 1376px) {
+    width: 100%;
+  }
 }
 
 .banner-icons {
@@ -61,19 +131,62 @@
 
 .categories-images {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    width: 1138px;
+  }
 
   &__categories-link {
-    margin-top: 24px;
+    margin-top: 4px;
+
+    @media (min-width: 744px) {
+      margin-top: 6px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 24px;
+    }
+  }
+
+  &__category-container {
+    margin-top: 20px;
+
+    @media (min-width: 744px) {
+      margin-top: 24px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 0;
+    }
   }
 }
 
 .categories-image-container {
-  width: 368px;
-  height: 368px;
+  width: 280px;
+  height: 280px;
   background-color: #f8d6bb;
   overflow: hidden;
+
+  @media (min-width: 744px) {
+    width: 600px;
+    height: 350px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 368px;
+    height: 368px;
+  }
 
   &--tablets {
     background-color: #95969b;
@@ -87,24 +200,45 @@
 .categories-image {
   width: 386px;
   height: 457px;
-  left: 73px;
-  top: 8px;
+  right: 4px;
+  bottom: 15px;
   position: relative;
+
+  @media (min-width: 744px) {
+    left: 100px;
+    top: 8px;
+  }
+
+  @media (min-width: 1376px) {
+    left: 73px;
+  }
 
   &--tablets {
     width: 546px;
     height: 546px;
-    left: 22px;
-    top: 20px;
     position: relative;
+
+    @media (min-width: 744px) {
+      left: 22px;
+      top: 20px;
+    }
   }
 
   &--accessories {
     width: 671px;
     height: 310px;
-    left: 29px;
-    top: 57px;
+    left: 33px;
+    top: 33px;
     position: relative;
+
+    @media (min-width: 744px) {
+      left: 22px;
+      top: 40px;
+    }
+
+    @media (min-width: 1376px) {
+      top: 58px;
+    }
   }
 }
 

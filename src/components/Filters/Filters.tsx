@@ -73,7 +73,7 @@ export const Filters: React.FC<Props> = ({
       className="filters-container
             phones-page-container__filters-container"
     >
-      <div>
+      <div className="filters-container__filtr-container">
         <p className="icon-navigation-text">Sort by</p>
         <button
           type="button"
@@ -124,7 +124,7 @@ export const Filters: React.FC<Props> = ({
         )}
       </div>
 
-      <div>
+      <div className="filters-container__filtr-container">
         <p className="icon-navigation-text">Items on page</p>
         <button
           type="button"

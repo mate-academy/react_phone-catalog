@@ -134,7 +134,9 @@ export const CartPage: React.FC<Props> = ({
                     </div>
                   ))}
                 </div>
-                <div className="checkout-container">
+                <div className="checkout-container
+                carts-container__checkout-container"
+                >
                   <h1 className="title checkout-container__title">
                     {`$${carts.reduce(
                       (
