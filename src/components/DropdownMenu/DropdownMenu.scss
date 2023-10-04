@@ -1,0 +1,81 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
+
+.dropdown-menu {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %small-text;
+
+    color: $secondary-color;
+    margin-bottom: 5px;
+  }
+
+  &__button {
+    @extend %button-text;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 176px;
+    height: 40px;
+    border: 1px solid $icons-color;
+    margin-bottom: 4px;
+    padding: 0 12px;
+
+    text-align: left;
+    background-color: $white-color;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &--active {
+      border-color: $primary-color;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 64px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid $elements-color;
+
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    background-color: $white-color;
+    list-style: none;
+  }
+
+  &__item {
+    @extend %body-text;
+
+    &:first-child {
+      margin-top: 8px;
+    }
+
+    &:last-child {
+      margin-bottom: 8px;
+    }
+
+    &:hover {
+      color: $primary-color;
+      background-color: $hover-color;
+    }
+  }
+
+  &__item-link {
+    display: block;
+    padding-left: 12px;
+    line-height: 32px;
+
+    text-decoration: none;
+    color: $secondary-color;
+  }
+}

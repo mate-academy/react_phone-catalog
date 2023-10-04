@@ -1,0 +1,49 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
+
+.search {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  width: 327px;
+  height: $header-height;
+  border-left: 1px solid $elements-color;
+
+  &__input {
+    @extend %button-text;
+
+    padding: 24px;
+    width: 100%;
+    border: 0;
+
+    outline: none;
+    color: $primary-color;
+
+    &:focus {
+      background-color: $hover-color;
+    }
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &::placeholder {
+      color: $icons-color;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    border: 0;
+
+    background-color: transparent;
+    cursor: pointer;
+
+    &--disabled {
+      pointer-events: none;
+    }
+  }
+}

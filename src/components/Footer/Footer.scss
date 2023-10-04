@@ -1,0 +1,62 @@
+@import "../../styles/utils/variables";
+
+.footer {
+  box-shadow: 0 -1px 0 $elements-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    height: $footer-height;
+  }
+
+  &__navlink {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    margin-right: 64px;
+
+    font-family: "Mont Bold", sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__button {
+    position: relative;
+
+    &::before {
+      content: "Back to top";
+
+      position: absolute;
+      right: 100%;
+
+      display: block;
+      margin-right: 16px;
+      width: max-content;
+
+      font-family: "Mont SemiBold", sans-serif;
+      font-size: 12px;
+      color: $secondary-color;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &:hover::before {
+      color: $primary-color;
+    }
+  }
+}

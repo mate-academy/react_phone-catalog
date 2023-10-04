@@ -1,0 +1,33 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.breadcrumbs {
+  display: flex;
+  margin-bottom: 40px;
+
+  &__homelink {
+    margin-right: 10px;
+  }
+
+  &__arrow {
+    margin-right: 10px;
+  }
+
+  &__page-name {
+    @extend  %small-text;
+
+    margin-right: 10px;
+    height: 16px;
+    line-height: 19px;
+
+    text-transform: capitalize;
+    text-decoration: none;
+    pointer-events: auto;
+    color: $primary-color;
+
+    &:last-child {
+      pointer-events: none;
+      color: $secondary-color;
+    }
+  }
+}

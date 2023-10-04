@@ -1,0 +1,14 @@
+@import "../../styles/utils/extends";
+
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+
+  &__title {
+    @extend %h1;
+
+    margin-bottom: 40px;
+  }
+}

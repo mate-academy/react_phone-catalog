@@ -1,0 +1,42 @@
+@import "../utils/variables";
+
+.square-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons-color;
+
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  &--medium {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--large {
+    width: 48px;
+    height: 48px;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  &--selected {
+    color: $white-color;
+    background-color: $primary-color;
+  }
+
+  &--active {
+    border: 1px solid $elements-color;
+  }
+}

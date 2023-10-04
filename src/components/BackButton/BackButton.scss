@@ -1,0 +1,28 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/extends";
+
+.back-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  border: 0;
+
+  color: $secondary-color;
+  background-color: transparent;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    
+    background-image: url(../../icons/leftArrow.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}

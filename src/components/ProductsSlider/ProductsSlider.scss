@@ -1,0 +1,34 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.slider {
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1;
+
+    margin: 0;
+  }
+
+  &__button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__button:first-child {
+    margin-right: 16px;
+  }
+
+  &__content {
+    margin: 0;
+    padding: 0;
+  }
+}
