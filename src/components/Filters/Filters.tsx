@@ -84,8 +84,8 @@ export const Filters: React.FC<Props> = ({
           }}
           style={{
             backgroundImage: showDropdown
-              ? 'url("../img/icons/arrowup.svg")'
-              : 'url("../img/icons/arrowdown.svg")',
+              ? 'url(./img/icons/arrowup.svg)'
+              : 'url(./img/icons/arrowdown.svg)',
           }}
           ref={dropdownButtonRef}
         >
@@ -135,8 +135,8 @@ export const Filters: React.FC<Props> = ({
           }}
           style={{
             backgroundImage: showDropdownPagination
-              ? 'url("../img/icons/arrowup.svg")'
-              : 'url("../img/icons/arrowdown.svg")',
+              ? 'url(./img/icons/arrowup.svg)'
+              : 'url(./img/icons/arrowdown.svg)',
           }}
           ref={dropdownPaginationRef}
         >
