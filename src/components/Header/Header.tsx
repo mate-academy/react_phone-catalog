@@ -56,7 +56,7 @@ export const Header:React.FC<Props> = ({
   return (
     <header>
       <nav className="navigation">
-        <div className="navigation-links">
+        <div className="navigation-links navigation__navigation-link">
           <ul className="navigation-links__links">
             <li className="navigation-links__img">
               <NavLink

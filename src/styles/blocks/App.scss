@@ -44,12 +44,47 @@ body {
 
 .navigation {
   padding: 0;
-  width: 100vw;
+  box-sizing: border-box;
+  height: 73px;
 
   @media (min-width: 744px) {
+    border-bottom: 1px solid $color-gray-elements;
+    height: 48px;
+    padding-bottom: 0;
     display: flex;
     gap: 0;
     justify-content: space-between;
+  }
+
+  @media (min-width: 1376px) {
+    height: 64px;
+    padding-bottom: 0;
+  }
+
+  &__navigation-link {
+    padding-left: 12px;
+    border-bottom: 1px solid $color-gray-elements;
+
+    @media (min-width: 744px) {
+      margin-left: 18px;
+      border-bottom: none;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+      border-bottom: none;
+    }
+  }
+}
+
+.navigation-links {
+  border-bottom: 1px solid $color-gray-elements;
+  @media (min-width: 744px) {
+    border-bottom: none;
+  }
+
+  @media (min-width: 1376px) {
+    border-bottom: none;
   }
 }
 

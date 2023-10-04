@@ -2,20 +2,6 @@
 @import "../../styles/utils/variables.scss";
 
 .navigation-links {
-  padding-left: 12px;
-  width: calc(100vw - 12px);
-  border-bottom: 1px solid $color-gray-elements;
-
-  @media (min-width: 744px) {
-    padding-left: 18px;
-    width: calc(100vw - 18px);
-  }
-
-  @media (min-width: 1376px) {
-    padding-left: 24px;
-    width: calc(100vw - 24px);
-  }
-
   &__links {
     display: flex;
     padding: 0;
@@ -25,7 +11,7 @@
     align-items: center;
 
     @media (min-width: 744px) {
-      gap: 48px;
+      gap: 32px;
     }
 
     @media (min-width: 1376px) {
@@ -77,6 +63,7 @@
 .navigation-icon {
   width: 36px;
   border: 1px solid $color-gray-elements;
+  border-top: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +93,6 @@
   padding: 0 2px 0 0;
   justify-content: right;
   height: 36px;
-  width: calc(100vw - 2px);
 
   @media (min-width: 744px) {
     justify-content: center;
@@ -121,7 +107,7 @@
 }
 
 .search-container {
-  width: calc(100vw - 78px);
+  width: calc(100vw - 94px);
   border: 1px solid $color-gray-elements;
   border-top: none;
   display: flex;
