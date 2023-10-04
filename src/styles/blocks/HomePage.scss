@@ -148,14 +148,14 @@
   }
 
   &__categories-link {
-    margin-top: 4px;
+    margin: 4px 0 0;
 
     @media (min-width: 744px) {
-      margin-top: 6px;
+      margin: 6px 0 0;
     }
 
     @media (min-width: 1376px) {
-      margin-top: 24px;
+      margin: 24px 0 0;
     }
   }
 
@@ -195,6 +195,10 @@
   &--accessories {
     background-color: #b74267;
   }
+}
+
+.category-container {
+  text-decoration: none;
 }
 
 .categories-image {
@@ -247,7 +251,6 @@
   color: $color-gray-primary;
   font-size: 20px;
   line-height: normal;
-  text-decoration: none;
   display: inline-block;
 }
 

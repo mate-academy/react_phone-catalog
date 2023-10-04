@@ -132,9 +132,11 @@ export const HomePage: React.FC<Props> = ({
         <h1 className="title home-page-container__title">Shop by category</h1>
 
         <div className="categories-images categories-images__categories-link">
-          <div
+          <NavLink
+            to="/phones"
             data-cy="categoryLinksContainer"
-            className="categories-images__category-container"
+            className="category-container categories-images__category-container"
+            onClick={() => window.scrollTo({ top: 0 })}
           >
             <div className="categories-image-container">
               <img
@@ -144,22 +146,22 @@ export const HomePage: React.FC<Props> = ({
               />
             </div>
 
-            <NavLink
-              to="/phones"
+            <h2
               className="categories-link categories-images__categories-link"
-              onClick={() => window.scrollTo({ top: 0 })}
 
             >
               Mobile phones
-            </NavLink>
+            </h2>
             <p className="models-number">
               {`${products.filter(product => product.type === Type.phone).length} models`}
             </p>
-          </div>
+          </NavLink>
 
-          <div
+          <NavLink
+            to="/tablets"
             data-cy="categoryLinksContainer"
-            className="categories-images__category-container"
+            className="category-container categories-images__category-container"
+            onClick={() => window.scrollTo({ top: 0 })}
           >
             <div className="categories-image-container
              categories-image-container--tablets"
@@ -170,21 +172,21 @@ export const HomePage: React.FC<Props> = ({
                 alt="#tablets"
               />
             </div>
-            <NavLink
-              to="/tablets"
+            <h2
               className="categories-link categories-images__categories-link"
-              onClick={() => window.scrollTo({ top: 0 })}
             >
               Tablets
-            </NavLink>
+            </h2>
             <p className="models-number">
               {`${products.filter(product => product.type === Type.tablet).length} models`}
             </p>
-          </div>
+          </NavLink>
 
-          <div
+          <NavLink
+            to="/accessories"
             data-cy="categoryLinksContainer"
-            className="categories-images__category-container"
+            className="category-container categories-images__category-container"
+            onClick={() => window.scrollTo({ top: 0 })}
           >
             <div className="categories-image-container
               categories-image-container--accessories"
@@ -195,17 +197,15 @@ export const HomePage: React.FC<Props> = ({
                 alt="#accessories"
               />
             </div>
-            <NavLink
-              to="/accessories"
+            <h2
               className="categories-link categories-images__categories-link"
-              onClick={() => window.scrollTo({ top: 0 })}
             >
               Accessories
-            </NavLink>
+            </h2>
             <p className="models-number">
               {`${products.filter(product => product.type === Type.accessory).length} models`}
             </p>
-          </div>
+          </NavLink>
         </div>
       </div>
 
