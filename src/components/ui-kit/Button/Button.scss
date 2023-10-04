@@ -1,0 +1,111 @@
+@import "/src/style/main.scss";
+
+.button {
+  cursor: pointer;
+  border: none;
+  background-color: $main-font-color;
+  color: $font-white;
+  text-align: center;
+  font-family: $font-semi-bold;
+  font-size: 14px;
+  line-height: 21px;
+
+  &--cart--small {
+    width: 176px;
+    height: 40px;
+
+    &:hover {
+      transition: 0.4s ease;
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+    }
+
+    &::before {
+      content: "add to cart";
+      text-transform: capitalize;
+    }
+
+    &:active {
+      background-color: $font-white;
+      color: $font-green;
+      border: 1px solid $elements;
+      box-shadow: none;
+
+      &::before {
+        content: "added to cart";
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &--cart--large {
+    width: 220px;
+    height: 48px;
+
+    @include tablet {
+      width: 180px;
+    }
+
+    @include desktop {
+      width: 267px;
+    }
+
+    &:hover {
+      transition: 0.4s ease;
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+    }
+
+    &::before {
+      content: "add to cart";
+      text-transform: capitalize;
+    }
+
+    &:active {
+      background-color: $font-white;
+      color: $font-green;
+      border: 1px solid $elements;
+      box-shadow: none;
+
+      &::before {
+        content: "added to cart";
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &--checkout {
+    width: 100%;
+    height: 48px;
+
+    @include tablet {
+      width: 260px;
+      height: 48px;
+    }
+
+    @include desktop {
+      width: 220px;
+      height: 48px;
+    }
+
+    &:hover {
+      transition: 0.4s ease;
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+    }
+
+    &::before {
+      content: "checkout";
+      text-transform: capitalize;
+    }
+  }
+
+  &--added {
+    background-color: $font-white;
+    color: $font-green;
+    border: 1px solid $elements;
+    box-shadow: none;
+
+    &::before {
+      content: "added to cart";
+      text-transform: capitalize;
+    }
+  }
+}

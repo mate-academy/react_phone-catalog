@@ -1,0 +1,61 @@
+@import "/src/style/main.scss";
+
+.burger-menu {
+  @include flex-center;
+
+  padding: 12px;
+  transition: 0.3s ease;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
+
+  &__btn {
+    width: 12px;
+    height: 12px;
+    position: relative;
+    cursor: pointer;
+    @include flex-center;
+  }
+
+  &__btn img {
+    transition: transform 0.3s ease;
+  }
+
+  &__btn.active img {
+    transform: rotate(180deg);
+  }
+
+  &__nav {
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 65px;
+    width: 100%;
+    height: 100vh;
+    background-color: $font-white;
+    transition: 1s ease;
+    z-index: 1000;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-font-color;
+    font-size: 18px;
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    @include transition-03s;
+
+    &:hover {
+      @include transition-03s;
+
+      color: $main-font-color;
+    }
+  }
+}

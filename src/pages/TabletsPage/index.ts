@@ -1,0 +1,1 @@
+export { TabletsPage } from './TabletsPage';

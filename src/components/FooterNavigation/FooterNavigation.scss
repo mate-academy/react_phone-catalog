@@ -1,0 +1,38 @@
+@import "/src/style/main.scss";
+
+.footer-nav {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    gap: 64px;
+  }
+
+  @include desktop {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Mont-Bold";
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    color: $secondary-font-color;
+
+    &:hover {
+      color: $main-font-color;
+
+      @include transition-03s;
+    }
+
+    &:visited {
+      color: none;
+    }
+
+    &:last-child {
+      gap: none;
+    }
+  }
+}

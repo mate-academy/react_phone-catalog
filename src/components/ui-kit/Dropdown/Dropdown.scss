@@ -1,0 +1,63 @@
+@import "/src/style/main.scss";
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 4px;
+
+  &__title {
+    font-family: $font-semi-bold;
+    font-size: 12px;
+    color: $secondary-font-color;
+    line-height: normal;
+  }
+
+  &__input {
+    height: 40px;
+    padding: 12px;
+    font-size: 14px;
+    color: $secondary-font-color;
+    border: 1px solid $icons;
+    position: relative;
+    background-image: url("../../../assets/icons/arrowDown.svg");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    text-transform: capitalize;
+  }
+
+  &__selected {
+    color: $main-font-color;
+  }
+
+  &__options {
+    width: 100%;
+    font-size: 14px;
+    padding: 14px 0;
+    background-color: $font-white;
+    list-style: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    border: 1px solid $elements;
+    transition: 2s ease;
+    text-transform: capitalize;
+    z-index: 100000;
+  }
+
+  &__option {
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 6px 12px;
+    color: $secondary-font-color;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: $main-font-color;
+    }
+
+    &--selected {
+      color: $main-font-color;
+    }
+  }
+}

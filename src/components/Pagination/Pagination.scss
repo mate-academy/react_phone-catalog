@@ -1,0 +1,45 @@
+@import "/src/style/main.scss";
+
+.pagination {
+  width: $product-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @include tablet {
+    gap: 16px;
+  }
+
+  &__pages {
+    display: flex;
+    gap:8px;
+  }
+
+  &__btn {
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    background-color: $font-white;
+
+    &:hover {
+      border-color: $main-font-color;
+      @include transition-03s;
+    }
+
+    &:disabled {
+      border: 1px solid $elements;
+    }
+
+    &:active {
+      background-color: $main-font-color;
+    }
+
+    &--selected {
+      background-color: $main-font-color;
+      color: $font-white;
+    }
+  }
+}

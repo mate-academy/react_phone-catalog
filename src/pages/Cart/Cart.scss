@@ -1,0 +1,75 @@
+@import "/src/style/main.scss";
+
+.cart {
+  &__path-container {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__back-container {
+    margin-top: 40px;
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    margin-bottom: 8px;
+  }
+
+  &__message {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    margin-bottom: 8px;
+    padding: 80px 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 90px;
+  }
+
+  &__total-price-block {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid $elements;
+    height: max-content;
+  }
+
+  &__price {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__quantity {
+    min-width: 100%;
+    text-align: center;
+    color: $secondary-font-color;
+    font-size: 14px;
+    line-height: 21px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $elements;
+  }
+}

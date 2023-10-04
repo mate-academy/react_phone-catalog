@@ -1,0 +1,170 @@
+@import "/src/style/main.scss";
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+
+  &__path-container {
+    display: flex;
+    align-self: flex-start;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__back-container {
+    display: flex;
+    align-self: flex-start;
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 20px;
+
+    @include tablet {
+      margin-bottom: 51px;
+    }
+  }
+
+  &__upper-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: 50% 25%;
+      gap: 36px;
+    }
+  }
+
+  &__upper-right {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+  }
+
+  &__price-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 32px;
+    padding-bottom: 16px;
+  }
+
+  &__price-discount {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__price-regular {
+    color: $secondary-font-color;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: line-through;
+  }
+
+  &__btns-block {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__specs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 8px;
+    font-family: $font-semi-bold;
+    font-size: 12px;
+    line-height: normal;
+    color: $secondary-font-color;
+    margin-bottom: 16px;
+
+    &--right {
+      text-align: end;
+      color: $main-font-color;
+    }
+  }
+
+  &__lower-block {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: calc(50% - 32px) calc(50% - 32px);
+      gap: 64px;
+    }
+    margin-bottom: 48px;
+  }
+
+  &__about {
+    width: 100%;
+  }
+
+  &__about-heading {
+    text-transform: capitalize;
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 22px;
+    line-height: 140%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 32px;
+  }
+
+  &__about-title {
+    font-family: $font-semi-bold;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__about-text {
+    color: $secondary-font-color;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 32px;
+  }
+
+  &__tech-specs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 8px;
+    font-family: $font-semi-bold;
+    font-size: 14px;
+    line-height: normal;
+    color: $secondary-font-color;
+    margin-bottom: 16px;
+
+    &--right {
+      text-align: end;
+      color: $main-font-color;
+    }
+  }
+
+  &__also-like-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,37 @@
+@import "../../style/main.scss";
+
+.accessories {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 80vh;
+
+  &__path-container {
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__back-button-container {
+    padding-left: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__heading {
+    gap: 8px;
+  }
+
+  &__title {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__quantity {
+    color: $secondary-font-color;
+    font-family: $font-regular;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

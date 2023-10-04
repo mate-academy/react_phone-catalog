@@ -1,0 +1,42 @@
+@import "/src/style/main.scss";
+
+.bread-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  text-transform: capitalize;
+
+  &__home-icon {
+    width: 16px;
+    height: 16px;
+
+    &::before {
+      content: url("../../assets/icons/home.svg");
+    }
+  }
+
+  &__link {
+    color: $secondary-font-color;
+    font-family: $font-semi-bold;
+    font-size: 12px;
+    line-height: normal;
+    text-decoration: none;
+    position:relative;
+
+    &:hover {
+      color: $main-font-color;
+    }
+
+    &::before {
+      content: "";
+      background-image: url("../../assets/icons/arrowRight.svg");
+      height: 16px;
+      width: 16px;
+      left: -20px;
+      background-position: left center;
+      background-repeat: no-repeat;
+      position: absolute;
+    }
+  }
+}

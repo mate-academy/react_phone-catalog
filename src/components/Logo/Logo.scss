@@ -1,0 +1,12 @@
+@import "/src/style/main.scss";
+
+.logo {
+  width: 40px;
+  height: 24px;
+
+  &__img {
+    width: 60px;
+    height: auto;
+    padding-top: 5px;
+  }
+}

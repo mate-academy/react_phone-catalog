@@ -1,0 +1,56 @@
+@import "/src/style/main.scss";
+
+.footer {
+  background-color: $font-white;
+  border-top: 1px solid $elements;
+  padding: 0 12px;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 154px;
+  }
+
+  &__content {
+    @include flex-between;
+    height: $footer-height;
+  }
+
+  &__logo {
+    position: static;
+    padding-top: -8px;
+  }
+
+  &__button-icon {
+    background-image: url(../../assets/icons/arrowUp.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url(../../assets/icons/arrowUpFilled.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &:active {
+      background-image: url(../../assets/icons/arrowUpWhite.svg);
+    }
+  }
+
+  &__button-box {
+    @include flex-between;
+    font-family: "Mont-SemiBold";
+    color: $secondary-font-color;
+    font-size: 12px;
+    text-transform: capitalize;
+    width: 118px;
+
+    &:hover {
+      color: $main-font-color;
+
+      @include transition-03s;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import "/src/style/main.scss";
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-transform: capitalize;
+    font-family: $font-semi-bold;
+  }
+
+  &__img {
+    width: 272px;
+    height: 272px;
+    object-fit: cover;
+    object-position: top left;
+    margin-bottom: 24px;
+    transition: 0.3s ease;
+
+    @include desktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 3px 8px 12px $icons;
+      transition: 0.3s ease;
+    }
+
+    @include tablet {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &__quantity {
+    color: $secondary-font-color;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

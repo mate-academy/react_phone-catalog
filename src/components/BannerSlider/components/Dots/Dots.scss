@@ -1,0 +1,21 @@
+@import '/src/style/main.scss';
+
+.dots {
+  width: 80px;
+  height: 24px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $elements;
+
+    &--active {
+      transition: 1s;
+      background-color: $main-font-color;
+    }
+  }
+}

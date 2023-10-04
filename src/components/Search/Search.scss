@@ -1,0 +1,47 @@
+@import "/src/style/main.scss";
+
+.search {
+  display: none;
+
+  @include tablet {
+    @include flex-center;
+    position: relative;
+  }
+
+  @include desktop {
+    @include flex-center;
+    position: relative;
+  }
+
+  &__input {
+    border: none;
+    border-left: 1px solid $elements;
+
+    &:focus {
+      outline: none;
+      background-color: $hover-bg;
+    }
+
+    @include tablet {
+      width: 200px;
+      padding: 24px 12px;
+    }
+
+    @include desktop {
+      width: 327px;
+      padding: 24px;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 35%;
+    right: 24px;
+  }
+
+  &__icon-close {
+    position: absolute;
+    top: 40%;
+    right: 24px;
+  }
+}

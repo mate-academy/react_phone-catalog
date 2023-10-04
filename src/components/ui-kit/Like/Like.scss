@@ -1,0 +1,38 @@
+@import "/src/style/main.scss";
+
+.like {
+  @include flex-center;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../assets/icons/fav.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid $elements;
+  background-color: $font-white;
+
+  &:active {
+    background-color: $font-white;
+    background-image: url(../../../assets/icons/favFilled.svg);
+    border-color: $elements;
+  }
+
+  &:hover {
+    border-color: $main-font-color;
+    @include transition-03s;
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
+  }
+
+  &--selected {
+    background-image: url(../../../assets/icons/favFilled.svg);
+    border-color: $elements;
+  }
+
+  &--large {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}

@@ -1,9 +1,19 @@
+import { Outlet } from 'react-router-dom';
+import { ProductsProvider } from 'context/productsContext';
+import { CartProvider } from 'context/cartContext';
+import { Footer, Header } from './components';
 import './App.scss';
 
 const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <ProductsProvider>
+    <CartProvider>
+      <div className='app'>
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </CartProvider>
+  </ProductsProvider>
 );
 
 export default App;

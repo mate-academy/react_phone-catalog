@@ -1,0 +1,38 @@
+@import "/src/style/main.scss";
+
+.banner-slider {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 420px;
+
+  &__upper-content {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  &__img-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1040px;
+    overflow: hidden;
+  }
+
+  &__picture {
+    min-width: 1040px;
+    height: 400px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @include desktop {
+    display: flex;
+  }
+}

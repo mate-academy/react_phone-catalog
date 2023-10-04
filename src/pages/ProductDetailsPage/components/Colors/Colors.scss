@@ -1,0 +1,56 @@
+@import "/src/style/main.scss";
+
+.colors {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__heading {
+    color: $secondary-font-color;
+    font-family: $font-semi-bold;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__item {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__border {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements;
+    @include flex-center;
+    transition: 0.3s ease;
+
+    &:hover {
+      border-color: $main-font-color;
+      transition: 0.3s ease;
+    }
+
+    &--selected {
+      border-color: $main-font-color;
+    }
+  }
+
+  &__circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    &--white {
+      background-color: rgb(81, 236, 14);
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import "/src/style/main.scss";
+
+.nav {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 64px;
+  padding-left: 12px;
+
+  @include tablet {
+    padding-left: 24px;
+  }
+
+  @include desktop {
+    padding-left: 24px;
+  }
+
+  &__logo {
+    margin-right: 24px;
+
+    @include tablet {
+      margin-right: 24px;
+    }
+
+    @include desktop {
+      margin-right: 64px;
+    }
+  }
+
+  &__link {
+    display: none;
+    position: relative;
+    font-family: "Mont-Bold";
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondary-font-color;
+    font-size: $font-size-nav;
+    letter-spacing: 0.04em;
+    padding: 24px 0;
+    margin-right: 32px;
+
+    @include transition-03s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: $main-font-color;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $main-font-color;
+    }
+
+    &:active {
+      color: $main-font-color;
+    }
+
+    &:visited {
+      color: none;
+    }
+
+    &--is-active {
+      color: $main-font-color;
+
+      &::after {
+        height: 3px;
+      }
+    }
+
+    @include tablet {
+      display: block;
+    }
+
+    @include desktop {
+      display: block;
+      margin-right: 64px;
+    }
+  }
+}

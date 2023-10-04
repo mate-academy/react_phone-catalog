@@ -1,4 +1,10 @@
 {
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "baseUrl": "./src",
+    "moduleResolution": "node",
+  },
   "extends": "@mate-academy/students-ts-config",
   "include": [
     "src"

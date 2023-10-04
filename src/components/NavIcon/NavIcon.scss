@@ -1,0 +1,91 @@
+@import "/src/style/main.scss";
+
+.nav-icon {
+  @include flex-center;
+  position: relative;
+  width: 32px;
+  height: 64px;
+
+  @include tablet {
+    border-left: 1px solid $elements;
+    width: 64px;
+    height: 64px;
+  }
+
+  @include desktop {
+    border-left: 1px solid $elements;
+    width: 64px;
+    height: 64px;
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+
+    @include tablet {
+      width: 24px;
+      height: 24px;
+    }
+
+    @include desktop {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-family: "Mont-Bold";
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondary-font-color;
+    font-size: $font-size-nav;
+    letter-spacing: 0.04em;
+    padding: 24px 0;
+
+    @include transition-03s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background-color: $main-font-color;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $main-font-color;
+    }
+
+    &:active {
+      color: $main-font-color;
+    }
+
+    &:visited {
+      color: none;
+    }
+
+    &--is-active {
+      color: $main-font-color;
+
+      &::after {
+        height: 1px;
+
+        @include tablet {
+          height: 3px;
+        }
+
+        @include desktop {
+          height: 3px;
+        }
+      }
+    }
+  }
+}

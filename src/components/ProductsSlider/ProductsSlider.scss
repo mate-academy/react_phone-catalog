@@ -1,0 +1,51 @@
+@import "/src/style/main.scss";
+
+.products-slider {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: $product-width;
+
+  @include tablet {
+    width: ($product-width * 2) + $product-gap;
+  }
+
+  @include desktop {
+    width: ($product-width * 4) + ($product-gap * 3);
+  }
+
+  &__upper {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between ;
+    align-items: start;
+
+    @include tablet {
+      @include flex-between;
+    }
+
+    @include desktop {
+      @include flex-between;
+    }
+  }
+
+  &__title {
+    font-family: $font-bold;
+    font-size: 24px;
+    letter-spacing: -0.32px;
+    text-transform: capitalize;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__buttons {
+    @include flex-between;
+    width: 80px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+  }
+}

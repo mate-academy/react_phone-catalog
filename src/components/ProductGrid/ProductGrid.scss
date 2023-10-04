@@ -1,0 +1,19 @@
+@import "/src/style/main.scss";
+
+.product-grid {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(1, $product-width);
+
+  @media (min-width: 560px) and (max-width: 848px) {
+    grid-template-columns: repeat(2, $product-width);
+  }
+
+  @media (min-width: 848px) and (max-width: 1136px) {
+    grid-template-columns: repeat(3, $product-width);
+  }
+
+  @media (min-width: 1136px) {
+    grid-template-columns: repeat(4, $product-width);
+  }
+}

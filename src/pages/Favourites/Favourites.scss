@@ -1,0 +1,33 @@
+@import "../../style/main.scss";
+
+.favourites {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: flex-start;
+  align-items: self-start;
+
+  &__path-container {
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    color: $main-font-color;
+    font-family: $font-bold;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    color: $secondary-font-color;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+}

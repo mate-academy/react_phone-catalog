@@ -1,0 +1,28 @@
+@import "/src/style/main.scss";
+
+.counter {
+  @include flex-center;
+  position: absolute;
+  right: 4px;
+
+  width: 10px;
+  height: 10px;
+  background-color: $red;
+  border-radius: 50%;
+  color: $font-white;
+  font-size: 7px;
+
+  @include tablet {
+    right: 14px;
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+  }
+
+  @include desktop {
+    right: 14px;
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+  }
+}
