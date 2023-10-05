@@ -1,6 +1,7 @@
 /* eslint-disable no-mixed-operators */
 import { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 import { ProductSlider } from '../components/ProductSlider/ProductSlider';
 import { Product, Type } from '../types/product';
 import '../styles/blocks/HomePage.scss';
@@ -17,6 +18,16 @@ type Props = {
   favorites: Product[],
 };
 
+const ActiveSlideClassName = (
+  currentBanner: number, slides: number[], bannerMove: number,
+) => cn(
+  {
+    img: !(currentBanner === slides[0] && bannerMove === 0)
+  && !(currentBanner === slides[1] && bannerMove > 0)
+  && !(currentBanner === slides[2] && bannerMove < 0),
+  },
+);
+
 export const HomePage: React.FC<Props> = ({
   products, updatePageHeight, isLoading, handleSetCarts, carts,
   handleSetFavorites, favorites,
@@ -27,15 +38,32 @@ export const HomePage: React.FC<Props> = ({
       './img/banner-accessories.png'],
   );
   const [currentBanner, setCurrentBanner] = useState(0);
+  const [bannerMove, setBannerMove] = useState(0);
 
   useEffect(() => updatePageHeight(), []);
 
   const changeBanner = (side: string) => {
-    if (side === 'right') {
-      setCurrentBanner(currentBanner === 2 ? 0 : currentBanner + 1);
+    let bannerWidth = 0;
+
+    if (window.innerWidth >= 1138) {
+      bannerWidth = 1040;
+    } else if (window.innerWidth >= 744) {
+      bannerWidth = 520;
     } else {
-      setCurrentBanner(currentBanner === 0 ? 2 : currentBanner - 1);
+      bannerWidth = 358.391;
     }
+
+    setBannerMove(side === 'right' ? -bannerWidth : bannerWidth);
+
+    setTimeout(() => {
+      if (side === 'right') {
+        setCurrentBanner(currentBanner === 2 ? 0 : currentBanner + 1);
+      } else {
+        setCurrentBanner(currentBanner === 0 ? 2 : currentBanner - 1);
+      }
+
+      setBannerMove(0);
+    }, 410);
   };
 
   useEffect(() => {
@@ -72,11 +100,35 @@ export const HomePage: React.FC<Props> = ({
             alt="#move-left"
           />
         </button>
-        <div className="banner-img-container">
+        <div
+          className="banner-img-container"
+        >
+          <img
+            className="banner-img"
+            src={banners[currentBanner === 0 ? '2' : currentBanner - 1]}
+            alt="#banner"
+            style={bannerMove !== 0 ? {
+              transform: `translateX(${bannerMove}px)`,
+              transition: 'all 400ms ease-out',
+            } : {}}
+          />
           <img
             className="banner-img"
             src={banners[currentBanner]}
             alt="#banner"
+            style={bannerMove !== 0 ? {
+              transform: `translateX(${bannerMove}px)`,
+              transition: 'all 400ms ease-out',
+            } : {}}
+          />
+          <img
+            className="banner-img"
+            src={banners[currentBanner === 2 ? '0' : currentBanner + 1]}
+            alt="#banner"
+            style={bannerMove !== 0 ? {
+              transform: `translateX(${bannerMove}px)`,
+              transition: 'all 400ms ease-out',
+            } : {}}
           />
         </div>
         <button
@@ -94,17 +146,17 @@ export const HomePage: React.FC<Props> = ({
 
       <div className="banner-icons home-page-container__banner-icons">
         <img
-          className={currentBanner === 0 ? '' : 'img'}
+          className={ActiveSlideClassName(currentBanner, [0, 1, 2], bannerMove)}
           src="./img/icons/minus.svg"
           alt="#minus"
         />
         <img
-          className={currentBanner === 1 ? '' : 'img'}
+          className={ActiveSlideClassName(currentBanner, [1, 2, 0], bannerMove)}
           src="./img/icons/minus.svg"
           alt="#minus"
         />
         <img
-          className={currentBanner === 2 ? '' : 'img'}
+          className={ActiveSlideClassName(currentBanner, [2, 0, 1], bannerMove)}
           src="./img/icons/minus.svg"
           alt="#minus"
         />

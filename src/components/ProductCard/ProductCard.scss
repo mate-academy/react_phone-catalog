@@ -95,11 +95,6 @@
     background-color: $color-white;
     color: $color-added-text;
     border: 1px solid $color-gray-elements;
-    cursor: url(../../styles/img/icons/cursor.svg), auto;
-
-    &:hover {
-      box-shadow: none;
-    }
   }
 }
 

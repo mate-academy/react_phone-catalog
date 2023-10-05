@@ -94,10 +94,10 @@
 .banner-img-container {
   max-width: 224px;
   height: 140px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   @media (min-width: 744px) {
     max-width: 520px;

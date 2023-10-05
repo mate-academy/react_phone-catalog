@@ -93,7 +93,7 @@ export const ProductDescription:React.FC<Props> = ({
               onClick={() => handleSetCarts(product)}
             >
               {carts.some(cart => cart.id === product.id)
-                ? 'Added to cart' : 'add to cart'}
+                ? 'Added to cart' : 'Add to cart'}
             </button>
             <button
               type="button"

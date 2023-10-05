@@ -91,6 +91,16 @@ body {
 .link {
   text-decoration: none;
   color: $color-gray-secondary;
+  display: inline-block;
+  height: 34px;
+
+  @media (min-width: 744px) {
+    height: 44px;
+  }
+
+  @media (min-width: 1376px) {
+    height: 60px;
+  }
 
   &:hover {
     color: $color-gray-primary;
@@ -117,16 +127,13 @@ body {
 
 .is-active {
   color: $color-gray-primary;
-  padding-bottom: 10px;
   border-bottom: 2px solid $color-gray-primary;
 
   @media (min-width: 744px) {
-    padding-bottom: 15px;
     border-bottom: 3px solid $color-gray-primary;
   }
 
   @media (min-width: 1376px) {
-    padding-bottom: 22px;
     border-bottom: 4px solid $color-gray-primary;
   }
 }

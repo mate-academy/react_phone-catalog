@@ -34,6 +34,7 @@ const App = () => {
   const [favorites, setFavorites]
   = useState<Product[]>(getLocalStorage('favorites'));
   const [query, setQuery] = useState('');
+
   const handleSetCarts = (value: Product) => {
     if (!carts.some(cart => cart.id === value.id)) {
       setCarts(carts.concat({
@@ -44,6 +45,8 @@ const App = () => {
           ? value.price - (value.price / 100 * value.discount) : value.price,
         quantity: 1,
       }));
+    } else {
+      setCarts(carts.filter(cart => cart.id !== value.id));
     }
   };
 
