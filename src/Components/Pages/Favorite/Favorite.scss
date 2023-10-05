@@ -1,0 +1,36 @@
+.blockFavorite {
+  margin: 0 auto;
+  align-items: center;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  gap: 20px;
+
+  &-active {
+    height: 55vh;
+  }
+}
+
+.favoriteMainBlock {
+  margin: 40px 105px;
+
+  &__h1 {
+    color: var(--gray-primary, #313237);
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__text {
+    color: var(--gray-secondary, #89939A);
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

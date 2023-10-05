@@ -1,0 +1,156 @@
+.block-for-count-index,
+.block-for-sort-index,
+.block-for-numbers-index {
+  max-width: 500px;
+  margin: 50px auto;
+  color: var(--gray-primary, #313237);
+  font-size: 32px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.container-for-productt {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.product-grid {
+  margin-top: -100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.PhonesPageOsmTitle {
+  color: var(--gray-primary, #313237);
+  font-size: 32px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.PhonesPageOsmText {
+  color: var(--gray-secondary, #89939A);
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.container-for-PhoneOsm-title {
+  margin: 0 105px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.blockForSortOnPhonePage {
+  width: 300px;
+  display: flex;
+  gap: 16px;
+  max-height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 90px;
+}
+
+.count-select,
+.sort-select {
+  padding: 12px;
+  position: relative;
+  width: 128px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+
+  select {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    border: none;
+    outline: none;
+    appearance: none;
+    background: transparent;
+    color: var(--gray-primary, #313237);
+    font-size: 14px;
+    font-family: "Mont-Regular", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('./PhonesPageOsmImage/ArrowUp.svg');
+    background-size: cover;
+  }
+
+  select:focus+ ::after {
+    filter: invert(40%) sepia(100%) saturate(5000%) hue-rotate(250deg);
+  }
+
+  option {
+    color: var(--gray-primary, #313237);
+    font-size: 14px;
+    font-family: "Mont-Regular", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}
+
+.ArrowLeft {
+  rotate: 180deg;
+}
+
+
+.pagination-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  align-items: center;
+  background-color: #fff;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.block-for-numbers-index {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button-numb {
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--gray-elements, #E2E6E9);
+  cursor: pointer;
+}

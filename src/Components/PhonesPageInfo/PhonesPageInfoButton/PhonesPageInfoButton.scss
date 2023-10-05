@@ -1,0 +1,25 @@
+.card__buy-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  width: 263px;
+  height: 48px;
+  flex-shrink: 0;
+  background: #313237;
+  color: #FFF;
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 600;
+  line-height: 21px;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  border: 1px solid #FFF;
+  cursor: pointer;
+}
+
+.card__buy-buttons.is-activeButton {
+  border: 1px solid #E2E6E9;
+  background: #FFF;
+  color: #27AE60;
+}

@@ -1,0 +1,253 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 65px;
+  box-shadow: 0px 1px 0px 0px #E2E6E9;
+  background: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  overflow: hidden;
+  margin-bottom: 40px;
+
+  &__FirstChild {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__FirstChild-nav {
+    &-list {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      font-size: 12px;
+      font-family: "Mont-Regular", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 5.5;
+      letter-spacing: 0.48;
+      word-wrap: break-word;
+      overflow: hidden;
+    }
+
+    &-link {
+      display: flex;
+      position: relative;
+      text-decoration: none;
+      color: #89939A;
+      transition: .3s;
+    }
+
+    &-item:not(:last-child) {
+      margin-right: 64px;
+    }
+
+    &-link:hover,
+    .is-active {
+      color: #313237;
+    }
+
+    &-link:active::after,
+    .is-active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #313237;
+      height: 3px;
+    }
+  }
+
+  &__LastChild {
+    display: flex;
+    gap: 1px;
+  }
+
+  &__LastChild-heart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    min-width: 64px;
+    min-height: 64px;
+    transition: .3s;
+
+    &:hover {
+      box-shadow: -1px 0px 0px 0px #b7bcc0;
+    }
+
+    &:focus {
+      box-shadow: -1px 0px 0px 0px #747779;
+    }
+
+    &:active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #313237;
+      height: 3px;
+      box-shadow: -1px 0px 0px 0px #000000;
+    }
+  }
+
+  .ellipse-icon {
+    display: block;
+    height: 22px;
+    width: 22px;
+    background-image: url('./HeaderImage/Ellipse.svg');
+    background-repeat: no-repeat;
+  }
+
+  &__LastChild-basket {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+
+    &:hover {
+      box-shadow: -1px 0px 0px 0px #b7bcc0;
+    }
+
+    &:focus,
+    .is-activ {
+      box-shadow: -1px 0px 0px 0px #747779;
+    }
+  }
+}
+
+.is-activ::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #313237;
+  height: 3px;
+  box-shadow: -1px 0px 0px 0px #000000;
+}
+
+.heart-svg {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 23px;
+
+  &:hover {
+    animation: bounce 1s;
+  }
+}
+
+.circle-for-header {
+  border: 1px solid #FFF;
+  position: absolute;
+  top: 12px;
+  left: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.counter-for-header {
+  color: #FFF;
+  text-align: center;
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  text-decoration: none;
+}
+
+
+.basket-svg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 23px;
+
+  &:hover {
+    animation: bounce 1s;
+  }
+}
+
+.logoImage {
+  height: 24px;
+  width: 40px;
+  background-repeat: no-repeat;
+  transition: .3s;
+ 
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.color-toggle {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.color-toggle.gray {
+  background-color: gray;
+}
+
+.search-input {
+  font-size: 14px;
+  font-family: "Mont";
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--gray-icons-placeholders, #B4BDC3);
+}
+
+.search-input:focus,
+.search-input.has-value {
+  color: var(--gray-primary, #313237);
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  60%,
+  100% {
+    transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  80% {
+    transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+}

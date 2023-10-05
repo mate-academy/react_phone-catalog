@@ -1,0 +1,1 @@
+export { HotPrices } from './HotPrice';

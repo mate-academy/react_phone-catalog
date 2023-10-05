@@ -1,0 +1,27 @@
+.card__prices {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skid-prices {
+  color: var(--gray-primary, #313237);
+  /* H1 */
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.norm-prices {
+  color: var(--gray-secondary, #89939A);
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: line-through;
+}

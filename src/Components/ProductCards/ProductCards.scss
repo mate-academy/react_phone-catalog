@@ -1,0 +1,115 @@
+.card {
+  // display: flex;
+  // flex-direction: column;
+  padding: 8px 24px;
+  // align-items: center;
+  width: 240px;
+  height: 470px;
+  border: 1px solid #E2E6E9;
+  background: #FFF;
+  margin-bottom: 48px;
+  transition: .3s;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  }
+
+  &__image {
+    width: 150px;
+    height: 198px;
+    flex-shrink: 0;
+
+    &-block {
+      display: flex;
+      justify-content: center;
+      width: 230px;
+      height: 208px;
+      flex-shrink: 0;
+      margin-top: 20px;
+    }
+  }
+
+  &__info__text {
+    color: #313237;
+    font-size: 14px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 500;
+    line-height: 21px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+  &__price {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 240px;
+      height: 1px;
+      background: #E2E6E9;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+    }
+  }
+
+
+
+  .skid-price {
+    color: #313237;
+    font-size: 22px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 700;
+    line-height: 140%;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .norm-price {
+    color: #89939A;
+    font-size: 22px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 500;
+    text-decoration: line-through;
+    margin: 0;
+  }
+
+  // &__info-all-right {}
+
+  .p-left {
+    color: #89939A;
+    font-size: 12px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+  }
+
+  .p-right {
+    color: #313237;
+    text-align: right;
+    font-size: 12px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+
+  }
+
+}
+
+.block-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.block-for-button {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}

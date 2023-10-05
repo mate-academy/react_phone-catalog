@@ -1,0 +1,336 @@
+.prev-to-back {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  margin: 0 50px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.page__title {
+  color: var(--gray-primary, #313237);
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.main-1 {
+  margin: 0 75px;
+}
+
+.container-page__Blocks-header {
+  gap: 70px;
+  display: flex;
+  flex-direction: row;
+}
+
+.page__Blocks-header {
+  width: 80px;
+  height: 80px;
+
+  &-images {
+    padding: 7px;
+    border: 1px solid #c4c4c4;
+    height: 70px;
+    width: 50px;
+    object-position: center;
+    object-fit: contain;
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
+
+.thumbnail {
+  margin-bottom: 17px;
+  background-color: #fff;
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.container-page__Blocks-header {
+  margin-bottom: 80px;
+}
+
+.selected-image {
+  width: 290px;
+  height: 440px;
+}
+
+.selected-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.page__Blocks-info-about-title {
+  margin: 18px 0;
+  color: var(--gray-primary, #313237);
+  font-size: 22px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+.contant-title {
+  color: var(--gray-primary, #313237);
+  font-size: 20px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.contant-text {
+  color: #89939a;
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.por-left {
+  color: var(--gray-secondary, #89939a);
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.por-right {
+  color: var(--gray-primary, #313237);
+  text-align: right;
+  font-size: 14px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.content {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page__Blocks-info-about {
+  max-width: 600px;
+}
+
+.block-page {
+  display: flex;
+}
+
+.page__Blocks-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.block-page {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.all-for0content {
+  max-width: 570px;
+}
+
+.block-for-burronInfo {
+  display: flex;
+  border-radius: 50px;
+}
+
+.blockforInfoButton {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e2e6e9;
+  border-radius: 50%;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &__active {
+    border: 1px solid #313237;
+  }
+}
+
+.color-option {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 50px;
+  width: 32px;
+  height: 32px;
+}
+
+.page__Blocks-header-rigth__text {
+  color: var(--gray-secondary, #89939a);
+  font-size: 12px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.glavBlockforInfoButton {
+  display: flex;
+  gap: 8px;
+}
+
+.containerForGlavBlock {
+  margin-top: 26px;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 320px;
+    height: 1px;
+    background: #e2e6e9;
+    margin-top: 24px;
+  }
+}
+
+.productsPriceButtons {
+  margin-top: 16px;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.Info-Block {
+  margin-top: 16px;
+  display: flex;
+  max-width: 315px;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    &-por {
+      color: var(--gray-secondary, #89939a);
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  &__right {
+    &-por {
+      color: var(--gray-primary, #313237);
+      text-align: right;
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+}
+
+.block-for-id {
+  &__text {
+    color: var(--gray-icons-placeholders, #b4bdc3);
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.phones-isActive {
+  color: var(--gray-primary, #313237);
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.block-for-page__Blocks-info-about-title {
+  &::after {
+    content: "";
+    display: block;
+    width: 560px;
+    height: 1px;
+    background: #e2e6e9;
+  }
+}
+
+.blockforInfoGB {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: 64px;
+  height: 32px;
+  border: 1px solid #b4bdc3;
+
+  &__active {
+    background: #313237;
+  }
+}
+
+.GB-option {
+  background-color: #fff;
+  color: var(--gray-primary, #313237);
+  text-align: center;
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &-active {
+    background-color: #313237;
+    color: var(--gray-white, #fff);
+    text-align: center;
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
+
+.block-forPageNotFound__text-1-1 {
+  color: var(--gray-secondary, #89939a);
+  font-size: 12px;
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  transition: 0.3s;
+
+  &:hover {
+    color: #000000;
+  }
+}
