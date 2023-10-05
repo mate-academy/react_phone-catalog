@@ -42,7 +42,6 @@ const App: React.FC = () => {
 
                 <Route path=":category">
                   <Route
-                    index
                     element={<ProductPage products={products} />}
                   />
 
