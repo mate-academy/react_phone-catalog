@@ -76,7 +76,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <div className="cartItem__cross" />
       </button>
       <div className="cartItem__photo">
-        <img src={`/_new/${image}`} alt="product img" className="cartItem__img" />
+        <img src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`} alt="product img" className="cartItem__img" />
       </div>
       <div className="cartItem__title">
         {name}

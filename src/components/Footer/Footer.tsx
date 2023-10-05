@@ -4,7 +4,7 @@ import { Logo } from '../Logo/Logo';
 import { BackToTopButton } from './BackToTop';
 import './Footer.scss';
 
-const gitHubLink = 'https://github.com/ZadorozhnyiYevhenii/react_phone-catalog';
+const gitHubLink = 'https://github.com/ZadorozhnyiYevhenii';
 
 export const Footer: React.FC = () => {
   return (

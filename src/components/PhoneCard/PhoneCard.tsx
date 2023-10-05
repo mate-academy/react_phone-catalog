@@ -116,7 +116,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <>
             {productWithDetails && (
               <Link
-                to={`/${category}/${itemId}`}
+                to={`/react_phone-catalog/${category}/${itemId}`}
                 state={productWithDetails}
                 className="ProductCard__photo"
                 onClick={() => {

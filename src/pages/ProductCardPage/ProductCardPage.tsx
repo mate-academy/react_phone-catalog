@@ -149,7 +149,7 @@ export const ProductCardPage: React.FC<Props> = ({ products }) => {
                   >
                     <img
                       className="ProductDetailsPage__photo-img"
-                      src={`/_new/${image}`}
+                      src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
                       alt="product img"
                     />
                   </li>
@@ -158,7 +158,7 @@ export const ProductCardPage: React.FC<Props> = ({ products }) => {
 
               <div className="ProductDetailsPage__current">
                 <img
-                  src={`/_new/${currentImage}`}
+                  src={`https://mate-academy.github.io/react_phone-catalog/_new/${currentImage}`}
                   alt="main img"
                   className="ProductDetailsPage__current-img"
                 />
