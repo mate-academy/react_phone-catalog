@@ -1,0 +1,51 @@
+@import "../../styles/variables.scss";
+
+.order {
+  color: $Secondary;
+
+  &SmallTitle {
+    margin-bottom: 9px;
+  }
+
+  &Block {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid $Elements;
+    width: 320px;
+  }
+
+  &AvailableBlock {
+    display: flex;
+    gap: 8px;
+  }
+
+  &Color {
+    padding: 14px;
+    border-radius: 50%;
+
+    &Link {
+      padding: 1px;
+      border-radius: 50%;
+      border: 2px solid $Elements;
+
+      &Active {
+        border-color: $Primary;
+      }
+    }
+  }
+
+  &Capacity {
+    padding: 5px 8px;
+    border: 1px solid $Icons;
+
+    &Active {
+      background: $Primary;
+      border-color: $Primary;
+      color: $White;
+    }
+  }
+
+  &FullPrice {
+    color: $Elements;
+  }
+}

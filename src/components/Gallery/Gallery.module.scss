@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+
+.gallery {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &Item {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+
+    padding: 7px;
+    border: 1px solid $Elements;
+    cursor: pointer;
+  }
+
+  &Large {
+    width: 462px;
+    height: 462px;
+    object-fit: contain;
+  }
+}
+
+.active {
+  border-color: $Primary;
+}

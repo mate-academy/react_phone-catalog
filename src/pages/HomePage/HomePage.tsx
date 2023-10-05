@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../ProductContext';
 import {
   sortDiscount,
   sortByYear,
@@ -11,9 +9,10 @@ import {
 import styles from './HomePage.module.scss';
 import { Carousel } from '../../components/Carousel';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { useProducts } from '../../Store';
 
 export const HomePage = () => {
-  const { products } = useContext(ProductContext);
+  const { products } = useProducts();
 
   return (
     <>
@@ -24,7 +23,7 @@ export const HomePage = () => {
         <div className={styles.categoriesBlock}>
           <div className={styles.categoriesProduct}>
             <Link
-              to="/"
+              to="catalog/phones"
               className={`${styles.categoriesProductImgBlock} ${styles.phones}`}
             >
               <img src="./_new/img/category-phones.png" alt="phones" />
@@ -34,7 +33,7 @@ export const HomePage = () => {
           </div>
           <div className={styles.categoriesProduct}>
             <Link
-              to="/"
+              to="catalog/tablets"
               className={`${styles.categoriesProductImgBlock} ${styles.tablets}`}
             >
               <img src="./_new/img/category-tablets.png" alt="phones" />
@@ -44,7 +43,7 @@ export const HomePage = () => {
           </div>
           <div className={styles.categoriesProduct}>
             <Link
-              to="/"
+              to="catalog/accessories"
               className={`${styles.categoriesProductImgBlock} ${styles.accessories}`}
             >
               <img src="./_new/img/category-accessories.png" alt="phones" />

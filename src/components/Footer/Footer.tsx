@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
@@ -25,15 +27,14 @@ export const Footer = () => {
         <li><Link to="/">rights</Link></li>
       </ul>
 
-      <button
-        type="button"
+      <div
         className={`${styles.backBtn} + smallText`}
         onClick={scrollToTop}
       >
         Back to top
         <Icon icon={arrowUp} alt="arrowUp" />
 
-      </button>
+      </div>
     </footer>
   );
 };

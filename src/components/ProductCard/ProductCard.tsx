@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react';
-import { ProductContext } from '../../ProductContext';
+import { Link } from 'react-router-dom';
+import { useProducts } from '../../Store';
 
 import styles from './ProductCard.module.scss';
 import Favourites from '../../img/icons/Favourites.svg';
@@ -10,6 +10,7 @@ import { numberToCurrency } from '../../utils/numberToCurrency';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Product } from '../../types/Product';
+import { useToggle } from '../../hooks/useToggle';
 
 type Props = {
   product: Product
@@ -21,42 +22,32 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     setCartProducts,
     favouritesProducts,
     setFavouritesProducts,
-  } = useContext(ProductContext);
+  } = useProducts();
 
-  useEffect(() => {
-    localStorage.setItem('Cart', JSON.stringify(cartProducts));
-  }, [cartProducts]);
-  useEffect(() => {
-    localStorage.setItem('Favourit', JSON.stringify(favouritesProducts));
-  }, [favouritesProducts]);
-
-  const isSelected = cartProducts.some(prod => prod.id === product.id);
-  const isFavourit = favouritesProducts.some(prod => prod.id === product.id);
-
-  const toggleCart = () => {
-    if (isSelected) {
-      setCartProducts(prev => prev.filter(prod => prod.id !== product.id));
-    } else {
-      setCartProducts(prev => [...prev, product]);
-    }
-  };
-
-  const toggleFavourit = () => {
-    if (isFavourit) {
-      setFavouritesProducts(prev => prev
-        .filter(prod => prod.id !== product.id));
-    } else {
-      setFavouritesProducts(prev => [...prev, product]);
-    }
-  };
+  const [isSelected, toggleCart] = useToggle(
+    'Cart',
+    cartProducts,
+    setCartProducts,
+    product,
+  );
+  const [isFavourit, toggleFavourit] = useToggle(
+    'Favourit',
+    favouritesProducts,
+    setFavouritesProducts,
+    product,
+  );
 
   return (
-    <div key={product.id} className={styles.productCard}>
-      <img
-        className={styles.productImg}
-        src={`./_new/${product.image}`}
-        alt="product"
-      />
+    <div
+      className={styles.productCard}
+    >
+      <Link to={`catalog/${product.category}/${product.itemId}`}>
+        <img
+          className={styles.productImg}
+          src={`./_new/${product.image}`}
+          alt="product"
+        />
+      </Link>
       <h3 className={`bodyText ${styles.productTitle}`}>{product.name}</h3>
       <h2>
         {numberToCurrency(product.price)}
@@ -81,7 +72,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className={styles.btns}>
         <Button
           text={isSelected ? 'Added to cart' : 'Add to cart'}
-          onClick={toggleCart}
+          onClick={typeof toggleCart === 'function' ? toggleCart : () => {}}
           isSelected={!!isSelected}
         />
         <Icon
