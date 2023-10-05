@@ -1,0 +1,86 @@
+@import "../../styles/utils.scss";
+
+.searchBar {
+  position: absolute;
+  top: 150px;
+
+  width: 100%;
+  padding: 16px 8px;
+
+  background-color: $black-100;
+  z-index: $z-index--2;
+
+  transition: opacity $animationDuration ease-in-out;
+
+  &--entering,
+  &--entered {
+    opacity: 1;
+  }
+
+  &--exiting,
+  &--exited {
+    opacity: 0;
+  }
+
+  &__input {
+    padding: 8px 16px;
+    width: 100%;
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $red-700;
+  }
+
+  &__list {
+    margin-top: 20px;
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__list-item-info-title,
+  &__list-item-info-price {
+    transition: color $animationDuration;
+  }
+
+  &__list-item-info-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__list-item-info-price {
+    margin-top: 8px;
+  }
+
+  &__list-item-link {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 20px;
+    align-items: center;
+
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+
+      .searchBar__list-item-info-title,
+      .searchBar__list-item-info-price {
+        color: $red-700;
+      }
+    }
+  }
+
+  &__list-item-image {
+    height: 200px;
+  }
+}

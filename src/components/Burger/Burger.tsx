@@ -2,7 +2,10 @@ import React from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { BURGER_NAV_LINKS } from '../../helpers/NavLinks';
+import {
+  BURGER_UP_NAV_LINKS,
+  BURGER_DOWN_NAV_LINKS,
+} from '../../helpers/NavLinks';
 import { makeUrl } from '../../helpers/makeUrl';
 import { resetSearchParams } from '../../helpers/resetSearchParams';
 
@@ -21,6 +24,9 @@ type Props = {
   ) => void,
   screenType: Resolutions,
   setScreenType: (param: Resolutions) => void,
+  setIsSearchOpened: (
+    param: boolean | ((prevState: boolean) => boolean)
+  ) => void,
 };
 
 export const Burger: React.FC<Props> = React.memo(({
@@ -29,9 +35,15 @@ export const Burger: React.FC<Props> = React.memo(({
   setIsMenuOpened,
   screenType,
   setScreenType,
+  setIsSearchOpened,
 }) => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
+
+  const handleSearchClick = () => {
+    setIsSearchOpened(prev => !prev);
+    setIsMenuOpened(false);
+  };
 
   return (
     <div className={classNames}>
@@ -60,7 +72,37 @@ export const Burger: React.FC<Props> = React.memo(({
               </NavLink>
             </li>
 
-            {BURGER_NAV_LINKS.map(link => (
+            {BURGER_UP_NAV_LINKS.map(link => (
+              <li
+                className="burger__nav-list-item"
+                key={link}
+              >
+                <NavLink
+                  className="burger__nav-list-link"
+                  to={{
+                    pathname: makeUrl(link),
+                    search: resetSearchParams(searchParams),
+                  }}
+                  onClick={() => setIsMenuOpened(false)}
+                >
+                  {t(link)}
+                </NavLink>
+              </li>
+            ))}
+
+            <li
+              className="burger__nav-list-item"
+            >
+              <button
+                className="burger__nav-list-button"
+                type="button"
+                onClick={handleSearchClick}
+              >
+                {t(BurgerLink.Search)}
+              </button>
+            </li>
+
+            {BURGER_DOWN_NAV_LINKS.map(link => (
               <li
                 className="burger__nav-list-item"
                 key={link}

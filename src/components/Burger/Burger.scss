@@ -36,7 +36,8 @@
     }
   }
 
-  &__nav-list-link {
+  &__nav-list-link,
+  &__nav-list-button {
     @include NavLink;
   }
 }

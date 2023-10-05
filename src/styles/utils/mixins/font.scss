@@ -9,6 +9,7 @@
 
   color: $black-800;
   transition: color $animationDuration;
+  cursor: pointer;
 
   @include onDesktop {
     display: block;

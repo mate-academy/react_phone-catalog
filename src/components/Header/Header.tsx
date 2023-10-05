@@ -24,13 +24,15 @@ type Props = {
   setIsMenuOpened?: (param: boolean | ((prevState: boolean) => boolean)) => void,
   screenType?: Resolutions,
   setScreenType?: (param: Resolutions) => void,
+  setIsSearchOpened?: (param: boolean | ((prevState: boolean) => boolean)) => void,
 };
 
 export const Header: React.FC<Props> = React.memo(({
   isMenuOpened = false,
-  setIsMenuOpened = () => { },
+  setIsMenuOpened = () => {},
   screenType = Resolutions.Mobile,
-  setScreenType = () => { },
+  setScreenType = () => {},
+  setIsSearchOpened = () => {},
 }) => {
   const handleResize = () => setScreenType(getScreenType());
   const { t } = useTranslation();
@@ -120,6 +122,16 @@ export const Header: React.FC<Props> = React.memo(({
                     </NavLink>
                   </li>
                 ))}
+
+                <li className="header__nav-list-item">
+                  <button
+                    className="header__nav-list-button"
+                    type="button"
+                    onClick={() => setIsSearchOpened(prev => !prev)}
+                  >
+                    {t(HeaderLink.Search)}
+                  </button>
+                </li>
               </>
             )}
 

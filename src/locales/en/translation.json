@@ -78,5 +78,7 @@
   "filter": "Filter",
   "drop": "Drop",
   "year": "Year",
-  "noGoods": "There are no products that match your selected categories"
+  "noGoods": "There are no products that match your selected categories",
+  "searchPlaceholder": "Search clothes",
+  "noFilteredGoods": "There are no product that match your query"
 }

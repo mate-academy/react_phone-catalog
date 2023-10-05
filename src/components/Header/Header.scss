@@ -15,7 +15,8 @@
     }
   }
 
-  &__nav-list-link {
+  &__nav-list-link,
+  &__nav-list-button {
     @include NavLink;
   }
 
@@ -52,5 +53,10 @@
         text-align: right;
       }
     }
+  }
+
+  &__nav-list-button {
+    width: 100%;
+    text-align: center;
   }
 }

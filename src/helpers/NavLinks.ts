@@ -3,7 +3,6 @@ import { NavLink } from '../types/NavLink';
 export const HEADER_LEFT_NAV_LINKS = [
   NavLink.AllGender,
   NavLink.LookBook,
-  NavLink.Search,
 ];
 
 export const HEADER_RIGHT_NAV_LINKS = [
@@ -20,9 +19,12 @@ export const FOOTER_NAV_LINKS = [
   NavLink.Delivering,
 ];
 
-export const BURGER_NAV_LINKS = [
+export const BURGER_UP_NAV_LINKS = [
   NavLink.AllGender,
   NavLink.LookBook,
+];
+
+export const BURGER_DOWN_NAV_LINKS = [
   NavLink.Delivering,
   NavLink.WishList,
   NavLink.Profile,

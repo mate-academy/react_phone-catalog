@@ -78,5 +78,7 @@
   "filter": "Filter",
   "drop": "Kollektsioon",
   "year": "Aasta",
-  "noGoods": "Teie valitud kategooriatele vastavaid tooteid pole"
+  "noGoods": "Teie valitud kategooriatele vastavaid tooteid pole",
+  "searchPlaceholder": "Otsi kaupu",
+  "noFilteredGoods": "Teie päringule vastavaid tooteid pole"
 }
