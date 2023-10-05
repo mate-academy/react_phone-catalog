@@ -1,0 +1,82 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.filters-container {
+  box-sizing: border-box;
+
+  @media (min-width: 744px) {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__filtr-container {
+    margin-top: 15px;
+
+    @media (min-width: 744px) {
+      margin-top: 0;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 0;
+    }
+  }
+
+  &__filtr {
+    margin-top: 4px;
+  }
+}
+
+.icon-navigation-text {
+  @include font-family-semibold();
+  color: $color-gray-secondary;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  &--dark {
+    color: $color-gray-primary;
+  }
+}
+
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  border: 1px solid $color-gray-elements;
+}
+
+.filtr {
+  @include icon-button();
+  width: 176px;
+  height: 40px;
+  justify-content: left;
+  padding-left: 12px;
+  color: $color-gray-primary;
+  @include title-third();
+  appearance: none;
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+
+  &--dropdown {
+    color: $color-gray-secondary;
+    border: none;
+    width: 163px;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-gray-primary;
+    }
+  }
+
+  &--pagination {
+    width: 128px;
+  }
+
+  &--pagination-dropdown {
+    width: 115px;
+  }
+}

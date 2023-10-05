@@ -1,0 +1,7 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.no-search {
+  color: $color-gray-primary;
+  @include title-secondary();
+}

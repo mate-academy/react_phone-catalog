@@ -1,0 +1,45 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.page-not-found-container {
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 1138px;
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @media (min-width: 744px) {
+      margin-top: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__link-home {
+    margin-top: 16px;
+
+    @media (min-width: 744px) {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 24px;
+    }
+  }
+}
+
+.link-home {
+  color: $color-gray-primary;
+  @include title-secondary;
+  text-decoration: none;
+  display: inline-block;
+}

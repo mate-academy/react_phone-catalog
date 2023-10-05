@@ -1,0 +1,261 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1376px) {
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    column-gap: 64px;
+    align-items: start;
+  }
+
+  &__buttons-container-details {
+    margin-top: 8px;
+
+    @media (min-width: 744px) {
+      margin-top: 12px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 16px;
+    }
+  }
+
+  &__details {
+    margin-top: 20px;
+  }
+
+  &__images-container {
+    margin-top: 15px;
+
+    @media (min-width: 744px) {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__price-container {
+    margin-top: 40px;
+  }
+
+  &__about {
+    margin-top: 48px;
+
+    @media (min-width: 744px) {
+      margin-top: 64px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 80px;
+    }
+  }
+
+  &__tech-specs {
+    margin-top: 80px;
+  }
+}
+
+.images-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (min-width: 1376px) {
+    grid-column: 1;
+    flex-direction: row;
+    gap: 16px;
+    align-items: start;
+  }
+
+  &--small {
+    flex-direction: row;
+
+    @media (min-width: 1376px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.img-small-button {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  border: 1px solid $color-gray-elements;
+  padding: 0;
+  background-color: $color-white;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.img-small {
+  width: 70px;
+  height: 70px;
+}
+
+.img-main-container {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 744px) {
+    width: 464px;
+    height: 464px;
+  }
+}
+
+.img-main {
+  width: 270px;
+  height: 270px;
+
+  @media (min-width: 744px) {
+    width: 444px;
+    height: 444px;
+  }
+}
+
+.price-container {
+  grid-column: 2;
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 319px;
+  }
+}
+
+.price {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  height: 32px;
+  justify-content: center;
+
+  @media (min-width: 1376px) {
+    justify-content: start;
+  }
+}
+
+.buttons-container-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 319px;
+  }
+}
+
+.add-button-details {
+  width: 224px;
+  height: 48px;
+  @include button();
+
+  @media (min-width: 744px) {
+    width: 263px;
+  }
+
+  &--added {
+    background-color: $color-white;
+    color: $color-added-text;
+    border: 1px solid $color-gray-elements;
+  }
+}
+
+.favourite-button-details {
+  @include icon-button();
+  width: 48px;
+  height: 48px;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.about {
+  grid-column: 1;
+
+  &__description-subtitle {
+    margin: 16px 0 8px;
+
+    @media (min-width: 744px) {
+      margin: 24px 0 12px;
+    }
+
+    @media (min-width: 1376px) {
+      margin: 32px 0 16px;
+    }
+  }
+
+  &__details {
+    margin-top: 25px;
+  }
+}
+
+.description-title {
+  color: $color-gray-primary;
+  @include title-secondary;
+  border-bottom: 1px solid $color-gray-icon;
+  padding-bottom: 16px;
+  margin: 0;
+  text-align: center;
+
+  @media (min-width: 1376px) {
+    text-align: start;
+  }
+}
+
+.description-subtitle {
+  color: $color-gray-primary;
+  @include font-family-semibold();
+  font-size: 20px;
+  font-style: normal;
+  line-height: normal;
+  text-align: center;
+
+  @media (min-width: 1376px) {
+    text-align: start;
+  }
+}
+
+.description-text {
+  color: $color-gray-secondary;
+  @include title-third;
+  margin: 0;
+  text-align: center;
+
+  @media (min-width: 1376px) {
+    text-align: start;
+  }
+
+  &--seccondary {
+    color: $color-gray-primary;
+  }
+}
+
+.tech-specs {
+  width: 280px;
+
+  @media (min-width: 744px) {
+    width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    grid-column: 2;
+  }
+}

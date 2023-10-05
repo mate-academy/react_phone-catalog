@@ -1,0 +1,277 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.cart-page-container {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 744px) {
+    min-width: 600px;
+  }
+
+  @media (min-width: 1376px) {
+    min-width: 1138px;
+  }
+
+  &__back-button {
+    margin-top: 0;
+
+    @media (min-width: 744px) {
+      margin-top: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__carts-container {
+    margin-top: 16px;
+
+    @media (min-width: 744px) {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-top: 24px;
+    }
+  }
+}
+
+.carts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1376px) {
+    flex-direction: row;
+    gap: 16px;
+    align-items: start;
+  }
+
+  &__checkout-container {
+    margin-top: 16px;
+
+    @media (min-width: 1376px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.carts {
+  &__cart {
+    margin-top: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.cart {
+  width: 280px;
+  height: 150px;
+  border: 1px solid $color-gray-elements;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @media (min-width: 744px) {
+    width: 600px;
+    height: 128px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 752px;
+  }
+
+  &__button-close {
+    margin-left: 8px;
+
+    @media (min-width: 744px) {
+      margin-left: 16px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+    }
+  }
+
+  &__img-product {
+    margin-left: 12px;
+
+    @media (min-width: 744px) {
+      margin-left: 16px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+    }
+  }
+
+  &__product-name {
+    margin-left: 12px;
+
+    @media (min-width: 744px) {
+      margin-left: 16px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 24px;
+    }
+  }
+
+  &__button-quantity {
+    margin-left: 40px;
+
+    @media (min-width: 744px) {
+      margin-left: 28px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 40px;
+    }
+  }
+
+  &__price {
+    margin-left: 24px;
+
+    @media (min-width: 744px) {
+      margin-left: 32px;
+    }
+
+    @media (min-width: 1376px) {
+      margin-left: 40px;
+    }
+  }
+}
+
+.button-close {
+  background-color: $color-white;
+  border: none;
+}
+
+.img-close {
+  filter: invert(80%);
+
+  &:hover {
+    filter: invert(0%);
+    cursor: pointer;
+  }
+}
+
+.cart-link {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+.img-product {
+  width: 80px;
+  height: 80px;
+}
+
+.product-name {
+  color: $color-gray-primary;
+  @include title-third;
+  width: 140px;
+
+  @media (min-width: 744px) {
+    width: 200px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 295px;
+  }
+}
+
+.button-quantity {
+  @include icon-button;
+  width: 32px;
+  height: 32px;
+
+  &--disabled {
+    &:hover {
+      border-color: $color-gray-icon;
+      cursor: url(../img/icons/cursor.svg), auto;
+    }
+  }
+}
+
+.quantity {
+  width: 32px;
+  color: $color-gray-primary;
+  @include title-third;
+  text-align: center;
+}
+
+.price {
+  color: $color-gray-primary;
+  @include title-secondary;
+}
+
+.checkout-container {
+  width: 280px;
+  height: 206px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $color-gray-elements;
+
+  @media (min-width: 744px) {
+    width: 368px;
+  }
+
+  &__title {
+    margin-top: 24px;
+  }
+
+  &__line {
+    margin: 24px 0 0;
+  }
+
+  &__checkout-button {
+    margin-top: 24px;
+  }
+}
+
+.total-items {
+  color: $color-gray-secondary;
+  @include title-third;
+  margin: 0;
+}
+
+.line {
+  border: none;
+  border-top: 1px solid $color-gray-elements;
+  width: 240px;
+
+  @media (min-width: 744px) {
+    width: 320px;
+  }
+}
+
+.checkout-button {
+  width: 240px;
+  height: 48px;
+  @include button();
+
+  @media (min-width: 744px) {
+    width: 320px;
+  }
+}
+
+.message {
+  width: 240px;
+  color: $color-gray-primary;
+  @include title-third;
+
+  @media (min-width: 744px) {
+    width: 320px;
+  }
+}

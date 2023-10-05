@@ -1,0 +1,67 @@
+@import "../../styles/utils/variables.scss";
+@import "../../styles/utils/mixins.scss";
+
+.card-container {
+  display: flex;
+  width: 280px;
+  overflow: hidden;
+  gap: 16px;
+  margin-left: 26px;
+
+  @media (min-width: 744px) {
+    width: 570px;
+  }
+
+  @media (min-width: 1376px) {
+    width: 1138px;
+  }
+}
+
+.title {
+  color: $color-gray-primary;
+  @include title();
+  font-size: 24px;
+
+  @media (min-width: 744px) {
+    @include title();
+    font-size: 28px;
+  }
+
+  @media (min-width: 1376px) {
+    @include title();
+    font-size: 32px;
+  }
+
+  &__discount {
+    @include font-family-regular();
+    font-size: 22px;
+    text-decoration-line: line-through;
+    color: $color-gray-secondary;
+    line-height: 32px;
+    margin: 0;
+  }
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 16px;
+}
+
+.button-navigation {
+  @include icon-button();
+  width: 32px;
+  height: 32px;
+
+  &--disabled {
+    &:hover {
+      border-color: $color-gray-icon;
+      cursor: url(../../styles/img/icons/cursor.svg), auto;
+    }
+  }
+}

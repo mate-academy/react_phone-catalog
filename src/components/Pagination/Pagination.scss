@@ -1,0 +1,40 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pagination-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pagination-button {
+  display: flex;
+  @include icon-button();
+  @include title-third();
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  text-decoration: none;
+  color: $color-selected-button;
+  box-sizing: border-box;
+
+  &--number {
+    background-color: $color-selected-button;
+    border-color: $color-selected-button;
+    color: $color-white;
+    cursor: url(../../styles/img/icons/cursor.svg), auto;
+  }
+
+  &--disabled {
+    &:hover {
+      border-color: $color-gray-icon;
+      cursor: url(../../styles/img/icons/cursor.svg), auto;
+    }
+  }
+}
