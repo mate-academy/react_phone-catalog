@@ -1,0 +1,34 @@
+@import "../../helpers/variables.scss";
+
+.product__item {
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 272px;
+    border: 1px solid $ElementsColor;
+    transition: border 0.3s;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-img {
+    display: flex;
+    height: 208px;
+    flex-basis: 208px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &-subtitle {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 45px;
+    // @extend %body-text;
+    color: $PrimaryColor;
+  }
+}

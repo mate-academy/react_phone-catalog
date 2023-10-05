@@ -1,0 +1,16 @@
+.category {
+
+  &__item {
+    text-decoration: none;
+
+    &-container {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+}

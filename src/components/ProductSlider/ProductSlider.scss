@@ -1,0 +1,17 @@
+.product__slider {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
+
+  &-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  &-navigation {
+    display: flex;
+    gap: 16px;
+  }
+}

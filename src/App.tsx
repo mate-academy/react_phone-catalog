@@ -1,9 +1,18 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
-const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+export const App = () => {
+  return (
+    <>
+      <Header />
 
-export default App;
+      <main className="main">
+        <Outlet />
+      </main>
+
+      <Footer />
+    </>
+  );
+};
