@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
+import cn from 'classnames';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Logo } from '../Logo/Logo';
 import './NavBar.scss';
+import { Search } from '../Search/Search';
+import { CartContext } from '../../context/CartContext';
+import { FavouriteContext } from '../../context/FavouriteContext';
+
+const locationsForSearching = [
+  '/phones',
+  '/tablets',
+  '/accessories',
+  '/favourite',
+];
 
 export const NavBar: React.FC = () => {
   const location = useLocation();
+  const { productsInCart } = useContext(CartContext);
+  const { favouriteProducts } = useContext(FavouriteContext);
+
+  const favouritesQuantity = useMemo(() => {
+    return favouriteProducts.length;
+  }, [favouriteProducts]);
+
+  const cartQuantity = useMemo(() => {
+    return productsInCart.length - 1;
+  }, [productsInCart]);
+
+  const showSearch = locationsForSearching.some(
+    current => current === location.pathname,
+  );
 
   return (
     <nav className="navbar">
@@ -45,18 +70,33 @@ export const NavBar: React.FC = () => {
       </ul>
 
       <div className="navbar__icons">
+        {showSearch && <Search />}
         <Link
-          to="/"
+          to="/favourite"
           className="navbar__icon"
         >
-          <div className="navbar__icon--favourite" />
+          <div className="navbar__icon--favourite">
+            <span className={cn('navbar__quantity', {
+              active: favouritesQuantity > 0,
+            })}
+            >
+              {favouritesQuantity}
+            </span>
+          </div>
         </Link>
 
         <Link
-          to="/"
+          to="/cart"
           className="navbar__icon"
         >
-          <div className="navbar__icon--cart" />
+          <div className="navbar__icon--cart">
+            <span className={cn('navbar__quantity', {
+              active: cartQuantity > 0,
+            })}
+            >
+              {cartQuantity}
+            </span>
+          </div>
         </Link>
       </div>
     </nav>

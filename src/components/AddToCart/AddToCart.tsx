@@ -15,7 +15,7 @@ export const AddToCart: React.FC<Props> = ({ handleAddToCart, id }) => {
     (cartItem) => (
       cartItem.phoneId === id || cartItem.id === id
     )
-    && !cartItem.quantity,
+    && cartItem.quantity !== 0,
   );
 
   return (

@@ -3,9 +3,6 @@
 @import "../src/components/Logo/Logo.scss";
 @import "../src/components/Footer/BackToTop.scss";
 
-iframe {
-  display: none;
-}
 
 .App {
   font-family: "Mont", sans-serif;
@@ -53,12 +50,11 @@ li {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  padding: 0 20px;
+  margin-inline: 152px;
 }
 
 .container {
   max-width: 1140px;
   height: max-content;
-  margin: 0 auto;
 }
 

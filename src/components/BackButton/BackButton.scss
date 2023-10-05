@@ -1,11 +1,17 @@
 .back {
+  display: flex;
+  background: none;
+  margin-top: 40px;
+  align-items: center;
+  gap: 5px;
+
 
   &__image {
+    display: block;
     background-image: url(/assets/arrowLeft--icon.svg);
     width: 16px;
     height: 16px;
     margin: 0 auto;
-    display: block;
     background-position: center;
     background-repeat: no-repeat
   }

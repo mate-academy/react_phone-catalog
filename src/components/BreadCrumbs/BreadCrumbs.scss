@@ -1,10 +1,12 @@
 .breadCrumbs {
   margin-top: 24px;
   display: flex;
+  align-items: center;
 
   &__list {
     display: flex;
     gap: 8px;
+    align-content: center;
   }
 
   &__arrow {

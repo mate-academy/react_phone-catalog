@@ -1,0 +1,79 @@
+.favourites {
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  &__title {
+    margin-top: 40px;
+    color: #313237;
+    font-family: "MontBold", Helvetica, sans-serif;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+
+    &--no-products {
+      text-align: center;
+    }
+  }
+
+  &__quantity {
+    margin-top: 8px;
+    color: #89939a;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__list {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    color: #eb5757;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    padding: 13px 0;
+    display: inline-block;
+
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: #ad3232;
+    }
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 3px;
+
+      transition-duration: 0.3s;
+    }
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #ad3232;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #ad3232;
+    }
+  }
+}

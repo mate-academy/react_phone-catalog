@@ -32,7 +32,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     itemId,
     category,
     id,
-    quantity,
   } = product;
   const [productWithDetails, setProductWithDetails]
     = useState<ProductDetails>();
@@ -97,7 +96,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
     const newProduct = {
       ...product,
-      quantity,
+      quantity: 1,
     };
 
     setProductsInCart([...productsInCart, newProduct]);
