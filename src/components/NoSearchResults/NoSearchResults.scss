@@ -1,0 +1,18 @@
+.NoSearchResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 60px;
+
+  &__image {
+    height: 230px;
+    width: 230px;
+  }
+
+  &__title {
+    font-family: "MontBold", Helvetica, sans-serif;
+    font-size: 38px;
+  }
+}

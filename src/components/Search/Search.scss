@@ -1,0 +1,62 @@
+@import "../../styles/mixins.scss";
+
+.Search {
+  display: flex;
+  align-items: center;
+  box-shadow: -1px 0 0 #e2e6e9;
+  position: relative;
+  border: 1px solid transparent;
+
+  @include onMobile {
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  }
+
+  &__input {
+    width: 327px;
+    padding: 22px 0 22px 24px;
+    background: none;
+    background-color: #fafbfc;
+    border: 1px solid transparent;
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+    font-size: 14px;
+    color: #313237;
+    letter-spacing: 0;
+    border-bottom: #e2e6e9;
+
+    @include onTablet {
+      width: 220px;
+      padding-left: 16px;
+    }
+  }
+
+  &:focus {
+    border: 1px solid #313237;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 24px;
+    right: 24px;
+
+    @include onTablet {
+      right: 16px;
+    }
+  }
+
+  &__delete {
+    height: 16px;
+    width: 16px;
+    background: none;
+    background-image: url("../../images/cross.svg");
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+  }
+}

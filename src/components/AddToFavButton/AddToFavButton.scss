@@ -1,0 +1,29 @@
+@import "../../styles/mixins.scss";
+
+.AddToFavButton {
+  border: 1px solid #b4bdc3;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+
+  cursor: pointer;
+
+  transition-duration: 0.3s;
+
+  background-image: url("../../images/heart.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &.isItemFav {
+    border-color: #e2e6e9;
+    background-image: url("../../images/heart-selected.svg");
+  }
+
+  &:hover {
+    border-color: #313237;
+  }
+}

@@ -1,0 +1,157 @@
+@import "../../styles/mixins.scss";
+
+.CartPage {
+  padding: 0 20px;
+
+  &__content {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__blocks {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    margin-top: 16px;
+    color: #313237;
+    font-family: "MontBold", Helvetica, sans-serif;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+
+    &--no-products {
+      text-align: center;
+    }
+  }
+
+  &__list {
+    width: 752px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__checkout {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+
+    width: 368px;
+    height: 206px;
+    border: 1px solid #e2e6e9;
+
+    @include onMobile {
+      width: fit-content;
+      padding: 10px;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #313237;
+      font-size: 32px;
+      font-family: "MontBold", Helvetica, sans-serif;
+      letter-spacing: -0.32px;
+    }
+
+    &-subtitle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #89939a;
+      line-height: 21px;
+      font-size: 14px;
+
+      padding-bottom: 24px;
+      border-bottom: 1px solid #e2e6e9;
+    }
+
+    &-button {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 320px;
+      background-color: #313237;
+      color: #fff;
+      font-family: "MontSemiBold", Helvetica, sans-serif;
+      line-height: 21px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+
+  &__link {
+    color: #eb5757;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    padding: 13px 0;
+    display: inline-block;
+
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: #ad3232;
+    }
+
+    &::after {
+      content: "";
+      width: 1px;
+      height: 3px;
+
+      transition-duration: 0.3s;
+    }
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #ad3232;
+    }
+
+    &:hover::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: #ad3232;
+    }
+  }
+}

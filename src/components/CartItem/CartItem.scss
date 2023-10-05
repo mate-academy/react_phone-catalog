@@ -1,0 +1,146 @@
+@import "../../styles/mixins.scss";
+
+.CartItem {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e2e6e9;
+  min-height: 128px;
+  width: 752px;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  @include onTablet {
+    width: 662px;
+  }
+
+  @include onMobile {
+    height: 100%;
+    width: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  &__remove-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__photo {
+    height: 66px;
+    width: 66px;
+
+    margin-left: 30px;
+
+    @include onTablet {
+      height: 76px;
+      width: 76px;
+    }
+
+    @include onMobile {
+      height: 90px;
+      width: 90px;
+      margin: 0;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__title {
+    width: 282px;
+    color: #313237;
+    margin-left: 30px;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include onTablet {
+      width: 200px;
+    }
+
+    @include onMobile {
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  &__decrease {
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    cursor: pointer;
+    background: none;
+
+    @include onTablet {
+      margin-left: 23px;
+    }
+
+    @include onMobile {
+      margin: 0;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 21px;
+    width: 21px;
+    margin-left: 13px;
+
+    @include onMobile {
+      margin: 0;
+    }
+  }
+
+  &__increase {
+    margin-left: 13px;
+    border: 1px solid #e2e6e9;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+
+    @include onMobile {
+      margin: 0;
+    }
+  }
+
+  &__price {
+    margin-left: 43px;
+    font-family: "MontBold", Helvetica, sans-serif;
+    line-height: 140%;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include onTablet {
+      margin-left: 23px;
+    }
+
+    @include onMobile {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.breadcrumbs {
+  margin-top: 24px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    height: 16px;
+    color: #313237;
+    font-size: 12px;
+    font-family: "MontSemiBold", Helvetica, sans-serif;
+
+    &.active {
+      color: #89939a;
+      background: none;
+    }
+  }
+}
