@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import './Slider.scss';
-import phone from './slider-images/banner-phone.png';
-import tablet from './slider-images/banner-tablets.png';
-import accessories from './slider-images/banner-accessories.png';
+import phone from '../../assets/banner-phone.png';
+import tablet from '../../assets/banner-tablets.png';
+import accessories from '../../assets/banner-accessories.png';
 
 export const Slider = () => {
   const images = [
