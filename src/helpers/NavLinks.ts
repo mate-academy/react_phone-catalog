@@ -1,7 +1,6 @@
 import { NavLink } from '../types/NavLink';
 
 export const HEADER_LEFT_NAV_LINKS = [
-  NavLink.NewArrivals,
   NavLink.AllGender,
   NavLink.LookBook,
   NavLink.Search,
@@ -22,7 +21,6 @@ export const FOOTER_NAV_LINKS = [
 ];
 
 export const BURGER_NAV_LINKS = [
-  NavLink.NewArrivals,
   NavLink.AllGender,
   NavLink.LookBook,
   NavLink.Delivering,

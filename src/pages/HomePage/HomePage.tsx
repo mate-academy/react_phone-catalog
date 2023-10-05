@@ -141,7 +141,7 @@ export const HomePage: React.FC = React.memo(() => {
 
           <MainButton
             text={t('ViewAll')}
-            where={NavLink.AllGender}
+            where={makeUrl(NavLink.AllGender)}
             className="homePage__goods-button"
           />
         </section>

@@ -28,9 +28,9 @@ type Props = {
 
 export const Header: React.FC<Props> = React.memo(({
   isMenuOpened = false,
-  setIsMenuOpened = () => {},
+  setIsMenuOpened = () => { },
   screenType = Resolutions.Mobile,
-  setScreenType = () => {},
+  setScreenType = () => { },
 }) => {
   const handleResize = () => setScreenType(getScreenType());
   const { t } = useTranslation();
@@ -93,23 +93,35 @@ export const Header: React.FC<Props> = React.memo(({
               </li>
             )}
 
-            {screenType === Resolutions.Desktop
-              && HEADER_LEFT_NAV_LINKS.map(link => (
-                <li
-                  className="header__nav-list-item"
-                  key={link}
-                >
+            {screenType === Resolutions.Desktop && (
+              <>
+                <li className="header__nav-list-item">
                   <NavLink
                     className="header__nav-list-link"
                     to={{
-                      pathname: makeUrl(link),
-                      search: resetSearchParams(searchParams),
+                      pathname: `${makeUrl(HeaderLink.AllGender)}`,
+                      search: `${resetSearchParams(searchParams)}?year=2022`,
                     }}
                   >
-                    {t(link)}
+                    {t(HeaderLink.NewArrivals)}
                   </NavLink>
                 </li>
-              ))}
+
+                {HEADER_LEFT_NAV_LINKS.map(link => (
+                  <li className="header__nav-list-item" key={link}>
+                    <NavLink
+                      className="header__nav-list-link"
+                      to={{
+                        pathname: makeUrl(link),
+                        search: resetSearchParams(searchParams),
+                      }}
+                    >
+                      {t(link)}
+                    </NavLink>
+                  </li>
+                ))}
+              </>
+            )}
 
             <li className="header__nav-list-item">
               <Logo

@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import { BURGER_NAV_LINKS } from '../../helpers/NavLinks';
 import { makeUrl } from '../../helpers/makeUrl';
+import { resetSearchParams } from '../../helpers/resetSearchParams';
 
 import { Resolutions } from '../../types/Resolutions';
+import { NavLink as BurgerLink } from '../../types/NavLink';
 
 import { Header } from '../Header/Header';
 
@@ -43,6 +45,21 @@ export const Burger: React.FC<Props> = React.memo(({
       <div className="container">
         <nav className="burger__nav">
           <ul className="burger__nav-list">
+            <li
+              className="burger__nav-list-item"
+            >
+              <NavLink
+                className="burger__nav-list-link"
+                to={{
+                  pathname: `${makeUrl(BurgerLink.AllGender)}`,
+                  search: `${resetSearchParams(searchParams)}?year=2022`,
+                }}
+                onClick={() => setIsMenuOpened(false)}
+              >
+                {t(BurgerLink.NewArrivals)}
+              </NavLink>
+            </li>
+
             {BURGER_NAV_LINKS.map(link => (
               <li
                 className="burger__nav-list-item"
@@ -52,7 +69,7 @@ export const Burger: React.FC<Props> = React.memo(({
                   className="burger__nav-list-link"
                   to={{
                     pathname: makeUrl(link),
-                    search: searchParams.toString(),
+                    search: resetSearchParams(searchParams),
                   }}
                   onClick={() => setIsMenuOpened(false)}
                 >
