@@ -65,12 +65,12 @@
 
 .breadcrumbs {
   &__go-back {
+    padding: 5px;
+    cursor: pointer;
     color: $Grey;
     font-family: "Mont-600", sans-serif;
     font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 11px;
     background-color: #fff;
     border: none;
   }

@@ -13,9 +13,7 @@ import {
 import {
   useAppDispatch,
   useAppSelector,
-
   useDebounceValue,
-
   useLocaleStorage,
 } from '../../app/hooks';
 import { basketItems, favoriteItems } from '../../app/store';
@@ -41,7 +39,7 @@ const App = () => {
   const [menu, setMenu] = useState(false);
   const [searchValue, setSearchValue]
     = useState(searchParams.get('query') || '');
-  const debouncedValue = useDebounceValue(searchValue, 2000);
+  const debouncedValue = useDebounceValue(searchValue, 1000);
 
   const query = searchParams.get('query') || '';
 
