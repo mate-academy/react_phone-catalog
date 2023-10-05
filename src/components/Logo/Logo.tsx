@@ -4,7 +4,7 @@ import './Logo.scss';
 
 export const Logo: React.FC = () => (
   <Link
-    to="/"
+    to="/react_phone-catalog"
     className="logo"
   >
     <div className="logo__img" />

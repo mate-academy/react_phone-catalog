@@ -37,15 +37,15 @@ export const NavBar: React.FC = () => {
         <Logo />
 
         <NavLink
-          to="/"
-          className={`navbar__item ${location.pathname === '/'
+          to="/react_phone-catalog"
+          className={`navbar__item ${location.pathname === '/react_phone-catalog'
             ? 'navbar__item' : ''}`}
         >
           home
         </NavLink>
 
         <NavLink
-          to="/phones"
+          to="/react_phone-catalog/phones"
           className={`navbar__item ${location.pathname === '/phones'
             ? 'navbar__item' : ''}`}
         >
@@ -53,7 +53,7 @@ export const NavBar: React.FC = () => {
         </NavLink>
 
         <NavLink
-          to="/tablets"
+          to="/react_phone-catalog/tablets"
           className={`navbar__item ${location.pathname === '/tablets'
             ? 'navbar__item' : ''}`}
         >
@@ -61,7 +61,7 @@ export const NavBar: React.FC = () => {
         </NavLink>
 
         <NavLink
-          to="/accessories"
+          to="/react_phone-catalog/accessories"
           className={`navbar__item ${location.pathname === '/accessories'
             ? 'navbar__item' : ''}`}
         >
@@ -72,7 +72,7 @@ export const NavBar: React.FC = () => {
       <div className="navbar__icons">
         {showSearch && <Search />}
         <Link
-          to="/favourite"
+          to="/react_phone-catalog/favourite"
           className="navbar__icon"
         >
           <div className="navbar__icon--favourite">
@@ -86,7 +86,7 @@ export const NavBar: React.FC = () => {
         </Link>
 
         <Link
-          to="/cart"
+          to="/react_phone-catalog/cart"
           className="navbar__icon"
         >
           <div className="navbar__icon--cart">

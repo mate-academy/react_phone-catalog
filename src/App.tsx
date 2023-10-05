@@ -37,11 +37,12 @@ const App: React.FC = () => {
           <NavBar />
           <main className="main__content">
             <Routes>
-              <Route path="/">
+              <Route path="/react_phone-catalog">
                 <Route index element={<HomePage products={products} />} />
 
                 <Route path=":category">
                   <Route
+                    index
                     element={<ProductPage products={products} />}
                   />
 
