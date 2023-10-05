@@ -1,0 +1,97 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $box-shadow;
+
+  @include onMobile {
+    height: 67px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 96px;
+
+    @include onMobile {
+      height: 67px;
+    }
+  }
+
+  &__nav-link {
+    margin-right: 64px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: $main-color;
+    transition: all 200ms;
+    
+    @include onMobile {
+      margin-right: 10px;
+      font-size: 8px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      color: $bold;
+      border-bottom: 3px solid $bold;
+      padding-bottom: 15px;
+    }
+
+    &:hover {
+      color: $bold;
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $main-color;
+    margin-right: 16px;
+
+    @include onMobile {
+      font-size: 8px;
+      margin-right: 8px;
+    }
+  }
+
+  &__back-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $grey;
+    transition: all 200ms;
+
+    @include onMobile {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      border: 1px solid $bold;
+      cursor: pointer;
+    }
+  }
+}

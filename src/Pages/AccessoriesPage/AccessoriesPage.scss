@@ -1,0 +1,84 @@
+@import "../../Helpers/vars.scss";
+
+.accessories {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $bold;
+    margin-bottom: 8px;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__icon {
+    margin-right: 8px;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__string {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $main-color;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 40px;
+    color: $main-color;
+  }
+
+  &__dropdowns {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  &__sorting {
+    width: 176px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $bold;
+    border: 1px solid $grey;
+    margin-bottom: 24px;
+    margin-top: 5px;
+    transition: all 200ms;
+
+    &:hover {
+      border-color: $main-color;
+      cursor: pointer;
+    }
+
+    &:focus {
+      border-color: $bold;
+    }
+  }
+
+  &__option {
+    font-weight: 500;
+    color: $main-color;
+
+    &:hover {
+      color: $bold;
+    }
+  }
+}

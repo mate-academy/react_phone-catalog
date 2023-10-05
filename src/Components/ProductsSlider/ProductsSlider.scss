@@ -1,0 +1,39 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.slider {
+  display: flex;
+
+  @include onLaptop {
+    display: none;
+  }
+
+  @include onMobile {
+    display: none;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $grey;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $bold;
+    }
+
+    &:disabled {
+      border-color: $box-shadow;
+      cursor: not-allowed;
+    }
+  }
+
+  &__btn-left {
+    margin-right: 16px;
+  }
+}

@@ -1,0 +1,320 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.details {
+  &__top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__icon {
+    margin-right: 8px;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__string {
+    font-size: 12px;
+    height: 16px;
+    font-weight: 600;
+    line-height: normal;
+    color: $main-color;
+
+    &--active {
+      color: $bold;
+      text-decoration: none;
+      margin-right: 8px;
+    }
+  }
+
+  &__back-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-width: 0;
+    border-color: transparent;
+    margin-bottom: 16px;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+
+  &__button-content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__back-img {
+    margin-right: 4px;
+    height: 19px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $bold;
+
+    &--margin {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__main {
+    display: flex;
+
+    @include onLaptop {
+      flex-direction: column;
+    }
+
+    @include onMobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__photo-container {
+    display: flex;
+  }
+
+  &__photos {
+    display: flex;
+    flex-direction: column;
+    margin-right: 27px;
+    margin-bottom: 80px;
+  }
+
+  &__img-button {
+    width: 80px;
+    height: 80px;
+    border: 1px solid $box-shadow;
+    background-color: #fff;
+    margin-bottom: 6px;
+    transition: all 200ms;
+
+    &:hover {
+      border-color: $bold;
+      cursor: pointer;
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__photo {
+    width: 442px;
+    height: 442px;
+
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__main-img {
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__discount {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $bold;
+    margin-right: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: line-through;
+    color: $main-color;
+  }
+
+  &__buttons {
+    display: flex;
+    margin-bottom: 32px;
+  }
+
+  &__button-card {
+    width: 263px;
+    height: 48px;
+    color: #fff;
+    background-color: $bold;
+    margin-right: 8px;
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__button-added {
+    width: 263px;
+    height: 48px;
+    margin-right: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid $box-shadow;
+    transition: all 400ms;
+
+    &:hover {
+      border-color: $bold;
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__button-fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    border: 1px solid $grey;
+    transition: all 200ms;
+    background-color: #fff;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $bold;
+    }
+  }
+
+  &__data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 8px;
+
+    &-text {
+      color: $main-color;
+    }
+
+    &-number {
+      color: $bold;
+    }
+
+    &--tech {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__about {
+    display: flex;
+    margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__description {
+    width: 560px;
+    margin-right: 64px;
+
+    @include onMobile {
+      max-width: 300px;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__tech {
+    width: 512px;
+
+    @include onMobile {
+      max-width: 300px;
+    }
+  }
+
+  &__header {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $bold;
+    margin-bottom: 16px;
+
+    @include onMobile {
+      font-size: 18px;
+    }
+  }
+
+  &__separator {
+    border: none;
+    border-top: 1px solid $box-shadow;
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-color;
+  }
+
+  &__like {
+    margin-bottom: 40px;
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, $width);
+    gap: 16px;
+    margin: auto;
+    max-width: 970px;
+
+    @include onLaptop {
+      grid-template-columns: repeat(2, $width);
+      max-width: 480px;
+    }
+
+    @include onMobile {
+      grid-template-columns: repeat(1, $width);
+      max-width: 240px;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import "../../Helpers/vars.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $box-shadow;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: all 200ms;
+
+    &:hover {
+      border-color: $bold;
+    }
+
+    .active {
+      background-color: $bold;
+      color: #fff;
+    }
+  }
+
+  &__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-decoration: none;
+    color: #000;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__btn-left {
+    margin-right: 24px;
+
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $box-shadow;
+      }
+    }
+  }
+
+  &__btn-right {
+    margin-left: 16px;
+
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $box-shadow;
+      }
+    }
+  }
+}

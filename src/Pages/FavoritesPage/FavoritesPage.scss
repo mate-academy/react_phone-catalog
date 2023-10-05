@@ -1,0 +1,61 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.favourites {
+  &__top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+
+    @include onMobile {
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  &__string {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $main-color;
+
+    @include onMobile {
+      font-size: 10px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $bold;
+    margin-bottom: 8px;
+
+    @include onLaptop {
+      font-size: 28px;
+    }
+
+    @include onMobile {
+      font-size: 20px;
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-color;
+    margin-bottom: 40px;
+
+    @include onMobile {
+      font-size: 8px;
+    }
+  }
+}

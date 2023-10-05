@@ -1,0 +1,251 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.home {
+  margin-bottom: 80px;
+
+  @include onMobile {
+    margin-bottom: 40px;
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__top {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+
+    @include onLaptop {
+      font-size: 28px;
+    }
+
+    @include onMobile {
+      font-size: 16px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    transition: all 200ms;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+
+  &__link-name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    color: $bold;
+
+    @include onLaptop {
+      font-size: 15px;
+    }
+    
+    @include onMobile {
+      font-size: 10px;
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-color;
+
+    @include onMobile {
+      font-size: 7px;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    justify-content: center;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__category {
+    margin-right: 16px;
+
+    @include onLaptop {
+      margin-right: 8px;
+    }
+
+    @include onMobile {
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__bcg {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    @include onLaptop {
+      width: 210px;
+      height: 210px;
+    }
+
+    @include onMobile {
+      width: 226px;
+      height: 226px;
+      margin-bottom: 8px;
+    }
+
+    &--pink {
+      background-color: #d53c51;
+    }
+
+    &--gray {
+      background-color: $grey;
+    }
+
+    &--fuchsia {
+      background-color: #813643;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width: 386px;
+    height: 457px;
+    left: 20px;
+
+    @include onMobile {
+      width: 281px;
+      height: 333px;
+      left: 5px;
+    }
+
+    &--gray {
+      width: 546px;
+      height: 546px;
+      left: 5px;
+
+      @include onMobile {
+        width: 398px;
+        height: 398px;
+        left: 0;
+      }
+    }
+
+    &--fuchsia {
+      width: 550px;
+      height: 400px;
+      left: 30px;
+      top: 20px;
+
+      @include onMobile {
+        width: 401px;
+        height: 291px;
+        left: 10px;
+        top: 7px;
+      }
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, $width);
+    gap: 16px;
+    margin: auto;
+    max-width: 970px;
+
+    @include onLaptop {
+      grid-template-columns: repeat(2, $width);
+      max-width: 480px;
+    }
+
+    @include onMobile {
+      grid-template-columns: repeat(1, $width);
+      max-width: 240px;
+    }
+  }
+
+  &__product {
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    border: 1px solid $box-shadow;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid $grey;
+    transition: all 200ms;
+
+    @include onLaptop {
+      height: 250px;
+      width: 25px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 16px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: $bold;
+    }
+  }
+
+  &__banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      width: 878px;
+      height: 400px;
+      object-fit: cover;
+      margin: 0 16px;
+
+      @include onLaptop {
+        width: 550px;
+        height: 250px;
+        margin: 0 15px;
+      }
+
+      @include onMobile {
+        width: 285px;
+        height: 150px;
+        margin: 0 8px;
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    cursor: pointer;
+  }
+}

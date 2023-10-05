@@ -1,0 +1,146 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.header {
+  box-shadow: 0 1px 0 0 $box-shadow;
+  margin-bottom: 40px;
+
+  @include onMobile {
+    margin-bottom: 20px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__navbar-item {
+    color: $main-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    transition: all 200ms;
+    margin-right: 64px;
+
+    @include onLaptop {
+      margin-right: 25px;
+    }
+
+    @include onMobile {
+      font-size: 8px;
+      line-height: 7px;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      color: $bold;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      color: $bold;
+      border-bottom: 3px solid $bold;
+      padding-bottom: 27px;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    height: 67px;
+    width: 450px;
+
+    @include onLaptop {
+      width: 300px;
+    }
+
+    @include onMobile {
+      width: 100px;
+    }
+  }
+
+  &__item-count {
+    position: absolute;
+    top: 25%;
+    right: 4%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-color: #eb5757;
+    z-index: 1;
+
+    @include onLaptop {
+      right: 5%;
+    }
+
+    @include onMobile {
+      width: 14px;
+      height: 14px;
+      right: 8%;
+    }
+
+    &--fav {
+      right: 18%;
+
+      @include onLaptop {
+        right: 26%;
+      }
+
+      @include onMobile {
+        right: 58%;
+      }
+    }
+  }
+
+  &__count-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    color: #fff;
+    transform: translate(-50%, -50%);
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 64px;
+    height: 66px;
+    border: 1px solid $box-shadow;
+    transition: all 200ms;
+
+    @include onMobile {
+      width: 50px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: $bold;
+      transition: all 200ms;
+
+      & .header__item-count {
+        transform: scale(1.1);
+      }
+    }
+
+    &--active {
+      border-bottom: 3px solid $bold;
+    }
+  }
+}

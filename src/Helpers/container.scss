@@ -1,0 +1,13 @@
+@import "./mixins.scss";
+
+.container {
+  margin: 0 152px;
+
+  @include onLaptop {
+    margin: 0 50px;
+  }
+
+  @include onMobile {
+    margin: 0 20px;
+  }
+}

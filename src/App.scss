@@ -1,1 +1,26 @@
-// not empty
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: url("./fonts/Mont-Regular.otf") format("otf");
+}
+
+.app {
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  background-color: #fff;
+  scroll-behavior: smooth;
+
+  &__main {
+    padding-bottom: 96px;
+  }
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding: 0;
+}

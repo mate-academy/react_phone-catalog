@@ -1,0 +1,158 @@
+@import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  transition: all 200ms;
+
+  &__image {
+    align-self: center;
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+    padding-top: 32px;
+    transition: all 200ms;
+
+    @include onMobile {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  &:hover .product__image {
+    cursor: pointer;
+    transform: scale(1.08);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px 16px;
+  }
+
+  &__name {
+    height: 42px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 6.5px;
+  }
+
+  &__prices {
+    display: flex;
+    margin-bottom: 6.5px;
+  }
+
+  &__discount {
+    font-size: 22px;
+    font-weight: 700;
+    margin-right: 8px;
+
+    @include onMobile {
+      font-size: 18px;
+    }
+
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration-line: line-through;
+    color: $main-color;
+
+    @include onMobile {
+      font-size: 18px;
+    }
+  }
+
+  &__separator {
+    border: none;
+    border-top: 1px solid $box-shadow;
+    margin-bottom: 16px;
+  }
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &-text {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: normal;
+      color: $main-color;
+    }
+
+    &-number {
+      color: $bold;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    padding: 0 24px 24px;
+  }
+
+  &__button-card {
+    width: 176px;
+    height: 40px;
+    color: #fff;
+    background-color: $bold;
+    margin-right: 8px;
+    transition: all 400ms;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__button-added {
+    width: 176px;
+    height: 40px;
+    margin-right: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #27ae60;
+    background-color: #fff;
+    border: 1px solid $box-shadow;
+    transition: all 400ms;
+
+    &:hover {
+      border-color: $bold;
+      cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__button-fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid $grey;
+    transition: all 200ms;
+    background-color: #fff;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $bold;
+    }
+  }
+}
