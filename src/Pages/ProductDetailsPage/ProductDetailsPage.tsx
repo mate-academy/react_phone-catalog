@@ -192,26 +192,33 @@ export const ProductDetailsPage: React.FC = () => {
             </h1>
 
             <div className="details__main">
-              <div className="details__photos">
-                {productDetails?.images.map((img, index) => (
-                  <button
-                    key={img}
-                    type="button"
-                    onClick={() => setSelectedImageIndex(index)}
-                    onKeyDown={(e) => handleImageKeyPress(e, index)}
-                    className="details__img-button"
-                    tabIndex={0}
-                  >
-                    <img src={img} alt="Product img" className="details__img" />
-                  </button>
-                ))}
-              </div>
+              <div className="details__photo-container">
+                <div className="details__photos">
+                  {productDetails?.images.map((img, index) => (
+                    <button
+                      key={img}
+                      type="button"
+                      onClick={() => setSelectedImageIndex(index)}
+                      onKeyDown={(e) => handleImageKeyPress(e, index)}
+                      className="details__img-button"
+                      tabIndex={0}
+                    >
+                      <img
+                        src={img}
+                        alt="Product img"
+                        className="details__img"
+                      />
+                    </button>
+                  ))}
+                </div>
 
-              <div className="details__photo">
-                <img
-                  src={productDetails?.images[selectedImageIndex]}
-                  alt="Product img"
-                />
+                <div className="details__photo">
+                  <img
+                    src={productDetails?.images[selectedImageIndex]}
+                    alt="Product img"
+                    className="details__main-img"
+                  />
+                </div>
               </div>
 
               <div className="details__info">
@@ -228,7 +235,6 @@ export const ProductDetailsPage: React.FC = () => {
                       'details__button-card'
                     )}
                     onClick={() => product && handleAddToCart(product)}
-                    // disabled={product && buttonStates[product.id]}
                   >
                     {product && buttonStates[product.id]
                       ? ('Added to cart') : ('Add to cart')}

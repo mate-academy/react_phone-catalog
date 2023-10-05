@@ -122,8 +122,7 @@
     text-decoration: none;
     width: 64px;
     height: 66px;
-    box-shadow: -1px 0 0 0 $box-shadow;
-    margin-right: 1px;
+    border: 1px solid $box-shadow;
     transition: all 200ms;
 
     @include onMobile {
@@ -132,16 +131,12 @@
 
     &:hover {
       cursor: pointer;
-      border: 1px solid $bold;
+      border-color: $bold;
       transition: all 200ms;
 
       & .header__item-count {
         transform: scale(1.1);
       }
-    }
-
-    &:last-child {
-      margin-right: 2px;
     }
 
     &--active {

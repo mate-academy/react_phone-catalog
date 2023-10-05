@@ -1,4 +1,5 @@
 @import "../../Helpers/vars.scss";
+@import "../../Helpers/mixins.scss";
 
 .details {
   &__top {
@@ -67,6 +68,18 @@
 
   &__main {
     display: flex;
+
+    @include onLaptop {
+      flex-direction: column;
+    }
+
+    @include onMobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__photo-container {
+    display: flex;
   }
 
   &__photos {
@@ -98,6 +111,18 @@
   &__photo {
     width: 442px;
     height: 442px;
+
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__main-img {
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
   }
 
   &__info {
@@ -214,15 +239,29 @@
   &__about {
     display: flex;
     margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &__description {
     width: 560px;
     margin-right: 64px;
+
+    @include onMobile {
+      max-width: 300px;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
 
   &__tech {
     width: 512px;
+
+    @include onMobile {
+      max-width: 300px;
+    }
   }
 
   &__header {
@@ -231,6 +270,10 @@
     line-height: 140%;
     color: $bold;
     margin-bottom: 16px;
+
+    @include onMobile {
+      font-size: 18px;
+    }
   }
 
   &__separator {
@@ -258,8 +301,20 @@
   }
 
   &__products {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1150px;
+    display: grid;
+    grid-template-columns: repeat(4, $width);
+    gap: 16px;
+    margin: auto;
+    max-width: 970px;
+
+    @include onLaptop {
+      grid-template-columns: repeat(2, $width);
+      max-width: 480px;
+    }
+
+    @include onMobile {
+      grid-template-columns: repeat(1, $width);
+      max-width: 240px;
+    }
   }
 }

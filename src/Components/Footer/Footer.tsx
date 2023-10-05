@@ -36,8 +36,20 @@ export const Footer: React.FC = () => {
           >
             Github
           </NavLink>
-          <NavLink to="/Contacts" className={getClassNames}>Contacts</NavLink>
-          <NavLink to="/Rights" className={getClassNames}>Rights</NavLink>
+
+          <NavLink
+            to="https://HannaVasylieva.github.io/react_phone-catalog/"
+            className={getClassNames}
+          >
+            Contacts
+          </NavLink>
+
+          <NavLink
+            to="https://HannaVasylieva.github.io/react_phone-catalog/"
+            className={getClassNames}
+          >
+            Rights
+          </NavLink>
         </div>
 
         {!isCartPage && (

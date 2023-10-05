@@ -1,26 +1,24 @@
 @import "../../Helpers/mixins.scss";
+@import "../../Helpers/vars.scss";
 
 .product-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 970px;
-  align-self: center;
-}
-
-.product-fav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, $width);
+  gap: 16px;
+  margin: auto;
   max-width: 970px;
 
   @include onLaptop {
-    max-width: 668px;
+    grid-template-columns: repeat(2, $width);
+    max-width: 480px;
   }
 
   @include onMobile {
-    flex-direction: column;
+    grid-template-columns: repeat(1, $width);
+    max-width: 240px;
+  }
+
+  &--margin {
+    margin-bottom: 40px;
   }
 }

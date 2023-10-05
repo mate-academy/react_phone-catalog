@@ -36,6 +36,14 @@
 
   &__link {
     text-decoration: none;
+    transition: all 200ms;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+
+  &__link-name {
     font-size: 20px;
     font-weight: 600;
     line-height: normal;
@@ -156,15 +164,21 @@
   }
 
   &__products {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, $width);
+    gap: 16px;
+    margin: auto;
+    max-width: 970px;
 
-    @include onMobile {
-      flex-direction: column;
+    @include onLaptop {
+      grid-template-columns: repeat(2, $width);
+      max-width: 480px;
     }
 
+    @include onMobile {
+      grid-template-columns: repeat(1, $width);
+      max-width: 240px;
+    }
   }
 
   &__product {
@@ -172,16 +186,6 @@
     flex-direction: column;
     width: 226px;
     border: 1px solid $box-shadow;
-    margin-right: 16px;
-    margin-bottom: 40px;
-
-    @include onMobile {
-      margin-right: 0;
-    }
-
-    &:nth-child(4n) {
-      margin-right: 0;
-    }
   }
 
   &__btn {

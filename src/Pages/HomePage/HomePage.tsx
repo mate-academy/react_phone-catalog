@@ -158,68 +158,69 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className="home__categories" data-cy="categoryLinksContainer">
-          <div className="home__category">
-            <div className="home__bcg home__bcg--pink">
-              <img
-                src="images/category-phones.png"
-                alt="Mobile phones category"
-                className="home__img"
-              />
+          <Link className="home__link" to="/phones">
+            <div className="home__category">
+              <div className="home__bcg home__bcg--pink">
+                <img
+                  src="images/category-phones.png"
+                  alt="Mobile phones category"
+                  className="home__img"
+                />
+              </div>
+
+              <p className="home__link-name"> Mobile phones</p>
+
+              <p className="home__quantity">
+                {
+                  products.filter(product => product.type === 'phone').length
+                }
+                &nbsp;models
+              </p>
             </div>
+          </Link>
 
-            <Link className="home__link" to="/phones">
-              <p>Mobile phones</p>
-            </Link>
+          <Link className="home__link" to="/tablets">
+            <div className="home__category">
+              <div className="home__bcg home__bcg--gray">
+                <img
+                  src="images/category-tablets.png"
+                  alt="Tablets category"
+                  className="home__img home__img--gray"
+                />
+              </div>
 
-            <p className="home__quantity">
-              {
-                products.filter(product => product.type === 'phone').length
-              }
-              &nbsp;models
-            </p>
-          </div>
+              <p className="home__link-name">Tablets</p>
 
-          <div className="home__category">
-            <div className="home__bcg home__bcg--gray">
-              <img
-                src="images/category-tablets.png"
-                alt="Tablets category"
-                className="home__img home__img--gray"
-              />
+              <p className="home__quantity">
+                {
+                  products.filter(product => product.type === 'tablet').length
+                }
+                &nbsp;models
+              </p>
             </div>
+          </Link>
 
-            <Link className="home__link" to="/tablets">
-              <p>Tablets</p>
-            </Link>
+          <Link className="home__link" to="/accessories">
+            <div className="home__category">
+              <div className="home__bcg home__bcg--fuchsia">
+                <img
+                  src="images/category-accessories.png"
+                  alt="Accessories category"
+                  className="home__img home__img--fuchsia"
+                />
+              </div>
 
-            <p className="home__quantity">
-              {
-                products.filter(product => product.type === 'tablet').length
-              }
-              &nbsp;models
-            </p>
-          </div>
+              <p className="home__link-name">Accessories</p>
 
-          <div className="home__category">
-            <div className="home__bcg home__bcg--fuchsia">
-              <img
-                src="images/category-accessories.png"
-                alt="Accessories category"
-                className="home__img home__img--fuchsia"
-              />
+              <p className="home__quantity">
+                {
+                  // eslint-disable-next-line max-len
+                  products.filter(product => product.type === 'accessory').length
+                }
+                &nbsp;models
+              </p>
             </div>
-
-            <Link className="home__link" to="/accessories">
-              <p>Accessories</p>
-            </Link>
-
-            <p className="home__quantity">
-              {
-                products.filter(product => product.type === 'accessory').length
-              }
-              &nbsp;models
-            </p>
-          </div>
+          </Link>
         </div>
       </section>
 
