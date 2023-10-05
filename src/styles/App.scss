@@ -1,0 +1,23 @@
+@import "./utils";
+@import "./utils/vars";
+
+html {
+  font-family: "Mont", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1136px;
+
+  @media (max-width: 1136px) {
+    padding: 0 20px;
+  }
+}
+
+main {
+  min-height: calc(100vh - #{$headerHeigth} - #{$footerHeight});
+}

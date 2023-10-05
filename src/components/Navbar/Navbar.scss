@@ -1,0 +1,35 @@
+@import "../../styles/utils";
+
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 60px;
+  }
+
+  &__link {
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $colorGray;
+    transition: color 0.3s, border-color 0.3s;
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      color: $colorBlack;
+      border-color: $colorBlack;
+    }
+
+    &:hover {
+      color: $colorBlack;
+      border-color: $colorBlack;
+    }
+  }
+
+  &__link-logo {
+    border-bottom: 0;
+  }
+}
