@@ -3,6 +3,9 @@
 @import "../src/components/Logo/Logo.scss";
 @import "../src/components/Footer/BackToTop.scss";
 
+iframe {
+  display: none;
+}
 
 .App {
   font-family: "Mont", sans-serif;
