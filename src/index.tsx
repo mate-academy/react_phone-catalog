@@ -1,8 +1,15 @@
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 
-import App from './App';
+import 'bulma/css/bulma.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+import './styles/App.scss';
+
+import { App } from './App';
 
 ReactDOM.render(
-  <App />,
+  <HashRouter>
+    <App />
+  </HashRouter>,
   document.getElementById('root'),
 );

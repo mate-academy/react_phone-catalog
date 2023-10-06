@@ -1,0 +1,91 @@
+.navibar {
+  box-shadow: 0 1px 0 #e2e6e9;
+
+  &--start {
+    gap: 64px;
+  }
+
+  &__icon {
+    box-shadow: -1px 0 0 #e2e6e9;
+    @include toDesktop {
+      width: 64px;
+    }
+
+    &--hidden {
+      @include toTablet {
+        display: none;
+      }
+      @include toMobile {
+        display: none;
+      }
+    }
+
+    &-text {
+      @include toDesktop {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    &--active {
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid black;
+      font-weight: 700;
+    }
+  }
+
+  &__logo {
+    height: 11px;
+    width: 40px;
+    background-image: url(/img/LOGO/LOGO.svg);
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__filter {
+    box-shadow: -1px 0 0 #e2e6e9;
+
+    &-input {
+      border: none;
+      box-shadow: none;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    @include toTablet {
+      display: none;
+    }
+    @include toMobile {
+      display: none;
+    }
+  }
+
+  &__transition {
+    &-enter {
+      opacity: 0;
+    }
+
+    &-enter-active {
+      opacity: 1;
+      animation: growDown 300ms ease-in-out forwards;
+      transform-origin: top center;
+
+      @keyframes growDown {
+        0% {
+          transform: scaleY(0);
+        }
+        80% {
+          transform: scaleY(1.1);
+        }
+        100% {
+          transform: scaleY(1);
+        }
+      }
+    }
+  }
+}
