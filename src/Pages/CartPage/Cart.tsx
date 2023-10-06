@@ -65,7 +65,7 @@ export const CartPage: React.FC<Props> = ({ isLoading }) => {
               </section>
             )
             : (
-              <h1>cart is emty</h1>
+              <h1>Your cart is empty</h1>
             )}
         </main>
       )}
