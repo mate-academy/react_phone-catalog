@@ -1,0 +1,44 @@
+.phones-page,
+.tablets-page,
+.accessories-page {
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__ellipsis {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: rgba(49, 50, 55, 1);
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: rgba(137, 147, 154, 1);
+    margin-bottom: 40px;
+  }
+
+  &__navigation-filter {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 16px;
+    margin-bottom: 40px;
+  }
+}

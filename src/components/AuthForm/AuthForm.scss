@@ -1,0 +1,27 @@
+$width-var: 320px;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto 20px;
+
+  &__button {
+    min-width: 400px !important;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  &__button {
+    text-align: center;
+    color: #42aa19 !important;
+  }
+
+}
