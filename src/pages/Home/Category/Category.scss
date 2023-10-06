@@ -1,0 +1,37 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.category {
+  &__list {
+    @include flexGapAlign(16px);
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__img-block {
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  &__img {
+    transition: transform $primaryDuration;
+  }
+
+  &__name {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  &__models {
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+  }
+
+  &__link:hover &__img {
+    transform: scale(1.1);
+  }
+}

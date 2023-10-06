@@ -1,0 +1,23 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.products {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    display: block;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: $secondaryColor;
+  }
+
+  &__selects {
+    @include flexGapAlign(16px);
+  }
+
+  &__list {
+    @include primaryGridList;
+  }
+}

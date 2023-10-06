@@ -1,0 +1,35 @@
+@import "../utils/vars";
+@import "../utils/mixins";
+
+.page {
+  font-family: "mont", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: $primaryColor;
+  scroll-behavior: smooth;
+
+  &__body {
+    &--menu {
+      overflow: hidden;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    margin-bottom: 24px;
+    font-size: 25px;
+    letter-spacing: -0.01em;
+
+    @include onTablet {
+      font-size: 32px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 50px;
+
+    @include onTablet {
+      margin-bottom: 80px;
+    }
+  }
+}

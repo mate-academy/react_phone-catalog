@@ -1,0 +1,39 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.card-about {
+  &__title {
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 22px;
+  }
+
+  &__line {
+    margin-bottom: 32px;
+  }
+
+  &__info {
+    width: 100%;
+    
+    @include onTablet {
+      width: 559px;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__title {
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondaryColor;
+    }
+  }
+}

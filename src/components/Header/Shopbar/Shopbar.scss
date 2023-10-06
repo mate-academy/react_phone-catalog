@@ -1,0 +1,57 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.shopbar {
+  height: 100%;
+
+  &__list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    height: 100%;
+  
+    &-search {
+      @include flexGapAlign(24px);
+      justify-content: space-between;
+      width: 150px;
+      padding-right: 24px;
+      box-shadow: -1px 0 0 $elementsColor;
+
+      @include onTablet {
+        width: 372px;
+      }
+    }
+
+    &-menu {
+      @include flexCenter;
+      width: 44px;
+      height: 100%;
+      box-shadow: -1px 0 0 $elementsColor;
+
+      @include onDesktop {
+        display: none;
+      }
+    }
+  }
+}
+
+.item-enter {
+  opacity: 0;
+}
+
+.item-enter-active {
+  opacity: 1;
+  transition: opacity $primaryDuration ease-in;
+}
+
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity $primaryDuration ease-in;
+}

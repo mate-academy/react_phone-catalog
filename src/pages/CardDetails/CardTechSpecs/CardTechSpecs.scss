@@ -1,0 +1,15 @@
+@import "../../../styles/utils/vars";
+
+.card-tech-specs {
+  width: 100%;
+
+  &__title {
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 22px;
+  }
+
+  &__line {
+    margin-bottom: 25px;
+  }
+}

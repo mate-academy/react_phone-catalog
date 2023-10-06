@@ -1,0 +1,17 @@
+@import "../../styles/utils/vars";
+
+.chars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.char {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__key {
+    color: $secondaryColor;
+  }
+}

@@ -1,0 +1,73 @@
+@import "./vars";
+
+@mixin onTablet {
+  @media (min-width: 760px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin square($_size) {
+  width: $_size;
+  height: $_size;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexGapAlign($_gap) {
+  display: flex;
+  align-items: center;
+  gap: $_gap;
+}
+
+@mixin primaryButton {
+  background-color: $primaryColor;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  transition: box-shadow $primaryDuration ease;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+}
+
+@mixin primaryGridList {
+  margin-bottom: 40px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1 1fr;
+  column-gap: 16px;
+  row-gap: 40px;
+
+  @include onTablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@mixin barAnimation {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: $primaryColor;
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  transition-property: color width;
+  transition-duration: $primaryDuration;
+}

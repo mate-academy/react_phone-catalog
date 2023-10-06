@@ -1,0 +1,47 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.navbar {
+  margin-bottom: 30px;
+
+  @include onDesktop {
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  &__list {
+    @include flexGapAlign(44px);
+    flex-direction: column;
+
+    @include onDesktop {
+      height: 100%;
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+
+    @include onDesktop {
+      &::after {
+        @include barAnimation;
+      }
+    }
+    
+    &.active {
+      color: $primaryColor;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

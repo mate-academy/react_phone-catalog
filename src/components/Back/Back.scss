@@ -1,0 +1,21 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.back {
+  margin-bottom: 16px;
+  @include flexGapAlign(4px);
+
+  &__icon-block {
+    @include square(16px);
+    @include flexCenter;
+  }
+
+  &__name {
+    color: $secondaryColor;
+    transition: color $primaryDuration;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../styles/utils/vars";
+
+.bread-crumbs {
+  margin-bottom: 40px;
+
+  &__wrapper,
+  &__link {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__home {
+    transition: transform $primaryDuration;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  &__link {
+    align-items: center;
+    color: $secondaryColor;
+    text-transform: capitalize;
+    pointer-events: none;
+
+    &.active {
+      pointer-events: all;
+      color: $primaryColor;
+    }
+  }
+}

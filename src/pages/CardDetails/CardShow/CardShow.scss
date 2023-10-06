@@ -1,0 +1,51 @@
+@import "../../../styles/utils/vars";
+@import "../../../styles/utils/mixins";
+
+.card-show {
+  @include flexGapAlign(16px);
+  flex-direction: column-reverse;
+
+  @include onTablet {
+    flex-direction: row;
+  }
+
+  &__list {
+    @include flexGapAlign(16px);
+    flex-direction: row;
+  
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    @include square(50px);
+    border: 1px solid $elementsColor;
+    overflow: hidden;
+
+    &.active {
+      border-color: $primaryColor;
+    }
+
+    @include onTablet {
+      @include square(80px);
+    }
+  }
+
+  &__img {
+    max-width: 100%;
+    max-height: 90%;
+    margin: 0 auto;
+  }
+
+  &__main {
+    height: 240px;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+
+    @include onTablet {
+      @include square(464px);
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.pagination {
+  @include flexCenter;
+  gap: 5px;
+
+  @include onTablet {
+    gap: 8px;
+  }
+
+  &__item {
+    &:first-child {
+      margin-right: 8px;
+    }
+  
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+  
+  &__link {
+    font-size: 14px;
+    text-align: center;
+    color: #000;
+    border: 1px solid $elementsColor;
+    user-select: none;
+    
+    &.active {
+      border-color: $primaryColor;
+      color: #fff;
+      background-color: $primaryColor;
+    }
+  }
+}

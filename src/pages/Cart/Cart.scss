@@ -1,0 +1,19 @@
+@import "../../styles/utils/mixins";
+
+.cart {
+  &__flex {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

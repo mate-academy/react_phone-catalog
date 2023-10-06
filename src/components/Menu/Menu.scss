@@ -1,0 +1,23 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.menu {
+  padding: 20px 0;
+  @include flexCenter;
+  margin-top: $headerHeight;
+  height: 100vh;
+  flex-direction: column;
+  background-color: $elementsColor;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transform: translateX(100%);
+  transition: transform $primaryDuration;
+
+  &.active {
+    transform: translate(0%);
+  }
+}

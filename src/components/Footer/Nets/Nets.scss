@@ -1,0 +1,17 @@
+@import "../../../styles/utils/mixins";
+
+.nets {
+  margin-bottom: 20px;
+  @include flexGapAlign(15px);
+  flex-direction: column;
+
+  @include onTablet {
+    margin-bottom: 0;
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+.net__link {
+  padding: 10px 0;
+}
