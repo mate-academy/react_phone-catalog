@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './productDetails.scss';
 
-import { client } from '../../utils/fetchClient';
-import { Phone } from '../../Type/Phone';
-
 import {
   ButtonBack,
   LikeAlso,
@@ -13,7 +10,9 @@ import {
   ProductImages,
   ProductParams,
 } from '../../Components';
+import { Phone } from '../../Type/Phone';
 import { DetailsPhone } from '../../Type/DetailsPhone';
+import { getPhone } from '../../api/phones';
 
 type Props = {
   phones: Phone[];
@@ -25,9 +24,11 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
   const { phoneId } = useParams<{ phoneId: string }>();
 
   useEffect(() => {
-    client.get<DetailsPhone>(`/_new/products/${phoneId}.json`)
-      .then(setPhone)
-      .finally(() => setiSLoading(false));
+    if (phoneId) {
+      getPhone(phoneId)
+        .then(setPhone)
+        .finally(() => setiSLoading(false));
+    }
   }, [phoneId]);
 
   const images = phone?.images;
@@ -62,7 +63,7 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
             <section className="details__main">
               {images && <ProductImages images={images} />}
 
-              {phone && (
+              {phone && phoneId && (
                 <ProductParams
                   colors={phone.colorsAvailable}
                   currentCapacity={phone.capacity}
@@ -70,6 +71,8 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
                   currentColor={phone.color}
                   phone={phone}
                   capacities={phone.capacityAvailable}
+                  phoneId={phoneId}
+                  phones={phones}
                 />
               )}
             </section>

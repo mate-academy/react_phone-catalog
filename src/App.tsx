@@ -1,26 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { client } from './utils/fetchClient';
-
 import './App.scss';
 import { HomePage } from './Pages/HomePage';
 import { ProductDetails } from './Pages/PhoneDetailsPage';
 import { TabletsPage } from './Pages/TabletsPage';
 import { AccessoriesPage } from './Pages/AccessoriesPage';
 import { FavouritesPage } from './Pages/FavouritesPage';
-import { ShoppingPage } from './Pages/ShoppingPage';
+import { CartPage } from './Pages/CartPage';
 import { NotFound } from './Pages/NotFoundPage';
 import { Phone } from './Type/Phone';
 import { Footer } from './Components/Footer/Footer';
 import { PhonesPage } from './Pages/PhonsePage/Phones';
+import { getPhones } from './api/phones';
 
 export const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setiSLoading] = useState(true);
 
   useEffect(() => {
-    client.get<Phone[]>('/_new/products.json')
+    getPhones()
       .then((phonesFromApi) => {
         setPhones(phonesFromApi);
       })
@@ -52,15 +51,11 @@ export const App = () => {
         />
         <Route
           path="/Favourites"
-          element={(
-            <FavouritesPage isLoading={isLoading} favouritesPhones={phones} />
-          )}
+          element={(<FavouritesPage isLoading={isLoading} />)}
         />
         <Route
           path="/Shopping"
-          element={(
-            <ShoppingPage isLoading={isLoading} shoppingPhones={phones} />
-          )}
+          element={(<CartPage isLoading={isLoading} />)}
         />
 
         <Route path="*" element={<NotFound />} />

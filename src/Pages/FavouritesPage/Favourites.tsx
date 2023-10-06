@@ -4,34 +4,30 @@ import { Loader, ProductCard } from '../../Components';
 import { Navigation } from '../../Components/Navigation/Navigation';
 
 import './favourites.scss';
-import { Phone } from '../../Type/Phone';
+import { useAppSelector } from '../../app/hooks';
 
 type Props = {
   isLoading: boolean;
-  favouritesPhones: Phone[];
 };
 
 export const FavouritesPage: React.FC<Props> = ({
   isLoading,
-  favouritesPhones,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const favourites = useAppSelector(state => state.favourites);
 
-  // testFilter
-  const testPhones = favouritesPhones.slice(12, 19);
-
-  const searchInPhones = testPhones
+  const searchInPhones = favourites
     .filter((product) => product.name
       .toLowerCase()
       .includes(searchQuery.trim()
         .toLowerCase()));
 
-  const readyPhones = searchInPhones;
-  //
-
   return (
     <>
-      <Navigation searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Navigation
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
 
       {isLoading && <Loader />}
 
@@ -51,12 +47,12 @@ export const FavouritesPage: React.FC<Props> = ({
             <div className="title">
               <h1>Favourites</h1>
 
-              <p className="title__p">{`${readyPhones.length} models`}</p>
+              <p className="title__p">{`${searchInPhones.length} models`}</p>
             </div>
           </section>
 
           <section className="container--list phones__list">
-            {readyPhones.map(phone => (
+            {searchInPhones.map(phone => (
               <ProductCard phone={phone} key={phone.id} />
             ))}
           </section>

@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { DetailsPhone } from '../../Type/DetailsPhone';
-import './productParams.scss';
 import { ColorPallette } from '../../Type/Colors';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addCart } from '../../features/cartSlice';
+import {
+  addFavourites,
+  removeFavourites,
+} from '../../features/favouritesSlice';
+import { Phone } from '../../Type/Phone';
+
+import './productParams.scss';
+import { checkPhoneDetailsId } from '../../helper/checkedSorage';
 
 type Props = {
   colors: string[];
@@ -11,6 +20,8 @@ type Props = {
   currentColor: string;
   phone: DetailsPhone;
   capacities: string[];
+  phoneId: string;
+  phones: Phone[],
 };
 
 export const ProductParams: React.FC<Props> = ({
@@ -20,7 +31,33 @@ export const ProductParams: React.FC<Props> = ({
   currentColor,
   phone,
   capacities,
+  phoneId,
+  phones,
 }) => {
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector(state => state.cart);
+  const favourites = useAppSelector(state => state.favourites);
+  const find = phones.find(currentPhone => currentPhone.phoneId === phoneId);
+  let phoneToStorage: Phone;
+
+  if (find) {
+    phoneToStorage = find;
+  }
+
+  const checkStorageCart = (phoneToCart: Phone) => {
+    if (checkPhoneDetailsId(phoneId, cart) === undefined) {
+      dispatch(addCart(phoneToCart));
+    }
+  };
+
+  const checkStorageFavourites = (phoneToFavourites: Phone) => {
+    if (checkPhoneDetailsId(phoneId, favourites) === undefined) {
+      dispatch(addFavourites(phoneToFavourites));
+    } else {
+      dispatch(removeFavourites(phoneToFavourites));
+    }
+  };
+
   return (
     <div className="params">
       <div className="params__color">
@@ -70,17 +107,37 @@ export const ProductParams: React.FC<Props> = ({
         </div>
 
         <div className="params__shop__button">
-          <button
-            type="button"
-            className="params__shop__button--add"
-          >
-            Add to cart
-          </button>
+          {checkPhoneDetailsId(phoneId, cart)
+            ? (
+              <button
+                type="button"
+                className="params__shop__button--isActive"
+              >
+                Added to cart
+              </button>
+            )
+            : (
+              <button
+                type="button"
+                className="params__shop__button--add"
+                onClick={() => checkStorageCart(phoneToStorage)}
+              >
+                Add to cart
+              </button>
+            )}
           <button
             type="button"
             aria-label="Mute volume"
-            className="params__shop__button--favourites"
-          />
+            className="params__shop__button--favourites-wrapper"
+            onClick={() => checkStorageFavourites(phoneToStorage)}
+          >
+            <div className={classNames('product__button--favourites', {
+              'product__button--favourites--isActive': checkPhoneDetailsId(
+                phoneId, favourites,
+              ),
+            })}
+            />
+          </button>
         </div>
       </div>
       <div className="params__description">

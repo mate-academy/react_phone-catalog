@@ -1,13 +1,43 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Phone } from '../../Type/Phone';
 import './productCard.scss';
 import { BASE_URL } from '../../utils/BASE_URL';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  addFavourites,
+  removeFavourites,
+} from '../../features/favouritesSlice';
+import { addCart } from '../../features/cartSlice';
+import { checkPhoneId } from '../../helper/checkedSorage';
 
 type Props = {
   phone: Phone;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const dispatch = useAppDispatch();
+  const favouritesPhone = useAppSelector(state => state.favourites);
+  const cartInStorage = useAppSelector(state => state.cart);
+
+  const checkStorageCart = (phoneToStorage: Phone) => {
+    const check = checkPhoneId(phone, cartInStorage);
+
+    if (check === undefined) {
+      dispatch(addCart(phoneToStorage));
+    }
+  };
+
+  const checkStorageFavourites = (phoneToStorage: Phone) => {
+    const check = checkPhoneId(phone, favouritesPhone);
+
+    if (check === undefined) {
+      dispatch(addFavourites(phoneToStorage));
+    } else {
+      dispatch(removeFavourites(phoneToStorage));
+    }
+  };
+
   return (
     <div className="product__card phones__list--card">
       <Link
@@ -49,17 +79,37 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
 
         <div className="product__button">
-          <button
-            type="button"
-            className="product__button--add"
-          >
-            Add to cart
-          </button>
+          {checkPhoneId(phone, cartInStorage)
+            ? (
+              <button
+                type="button"
+                className="product__button--isActive"
+              >
+                Added to cart
+              </button>
+            )
+            : (
+              <button
+                type="button"
+                className="product__button--add"
+                onClick={() => checkStorageCart(phone)}
+              >
+                Add to cart
+              </button>
+            )}
           <button
             type="button"
             aria-label="Mute volume"
-            className="product__button--favourites"
-          />
+            className="product__button--favourites-wrapper"
+            onClick={() => checkStorageFavourites(phone)}
+          >
+            <div className={classNames('product__button--favourites', {
+              'product__button--favourites--isActive': checkPhoneId(
+                phone, favouritesPhone,
+              ),
+            })}
+            />
+          </button>
         </div>
       </div>
     </div>

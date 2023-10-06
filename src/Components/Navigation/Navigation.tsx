@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.scss';
 import { Search } from '../Search/Search';
+import { useAppSelector } from '../../app/hooks';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) => classNames(
   'nav__link', { 'nav__link--active': isActive },
@@ -16,8 +17,11 @@ type Props = {
 
 export const Navigation: React.FC<Props> = ({
   searchQuery = '',
-  setSearchQuery = () => {},
+  setSearchQuery = () => { },
 }) => {
+  const favourites = useAppSelector(state => state.favourites);
+  const cart = useAppSelector(state => state.cart);
+
   return (
     <header>
       <nav>
@@ -71,17 +75,29 @@ export const Navigation: React.FC<Props> = ({
                   'icon__favourites--active': isActive,
                 },
               )}
-            />
+            >
+              {favourites.length !== 0 && (
+                <div className="slected">
+                  <span className="slected__text">{`${favourites.length}`}</span>
+                </div>
+              )}
+            </NavLink>
 
             <NavLink
               to="/Shopping"
               className={({ isActive }) => classNames(
-                'nav__link icon icon__shopping',
+                'icon icon__shopping',
                 {
                   'icon__shopping--active': isActive,
                 },
               )}
-            />
+            >
+              {cart.length !== 0 && (
+                <div className="slected">
+                  <span className="slected__text">{`${cart.length}`}</span>
+                </div>
+              )}
+            </NavLink>
 
           </div>
         </div>

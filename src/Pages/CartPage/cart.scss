@@ -1,0 +1,75 @@
+@import "/src/style/main.scss";
+
+.shopping {
+  width: 1136px;
+  margin: auto;
+
+  &__title {
+    margin: 40px 0 24px;
+
+    &--cart {
+      margin-top: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    &--carts {
+      width: 752px;
+    }
+  }
+
+  
+
+  &__outcome {
+    margin: 0;
+    width: 368px;
+    height: 206px;
+    border: 1px solid $color-shadow;
+
+    &--price {
+      margin: 24px auto 0;
+      text-align: center;
+    }
+
+    &--total {
+      margin: 0 auto;
+      text-align: center;
+      color: $gray-secondary;
+      width: 320px;
+
+      padding-bottom: 24px;
+      border-bottom: 1px solid $color-shadow;
+    }
+
+    &--checkout {
+      margin: 24px;
+      height: 48px;
+      width: 320px;
+
+      background-color: $gray-primary;
+      color: $gray-white;
+      border: none;
+
+      font-family: "Montserrat", sans-serif;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+
+      &:active {
+        background-color: $gray-white;
+        color: #27ae60;
+        border: 1px solid $color-shadow;
+        box-shadow: none;
+      }
+    }
+  }
+}

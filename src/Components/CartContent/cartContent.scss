@@ -1,0 +1,88 @@
+@import "/src/style/main.scss";
+
+.products {
+  justify-content: space-between;
+
+  border: 1px solid $color-shadow;
+  height: 128px;
+
+  margin-bottom: 16px;
+
+  &--content {
+    display: flex;
+    align-items: center;
+    margin: 24px 40px 24px 24px;
+  }
+}
+
+.product {
+  display: flex;
+
+  &--img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 24px;
+  }
+
+  &--name {
+    color: $gray-primary;
+    width: 295px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &--buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+    height: 32px;
+    margin: 0 42px 0 50px;
+  }
+
+  &--price {
+    color: $gray-primary;
+
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__buttons {
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $gray-icons-placeholders;
+
+    &--close {
+      width: 16px;
+      height: 16px;
+      background-image: url("../../images/icons/ButtonClose.svg");
+      border: none;
+    }
+
+    &--plus {
+      background-image: url("../../images/icons/ButtonPlusActive.svg");
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+
+    &--minus {
+      background-image: url("../../images/icons/ButtonMinusDisabled.svg");
+    }
+
+    &--minusActive {
+      background-image: url("../../images/icons/ButtonMinusActive.svg");
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+  }
+}

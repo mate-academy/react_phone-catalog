@@ -66,25 +66,59 @@
         font-weight: 600;
 
         &:hover {
-          color: #27ae60;
-          background: $gray-white;
-          border: 1px solid $gray-icons-placeholders;
+          background: $gray-primary;
+          box-shadow: 3px 3px 13px 0 rgba(23, 32, 49, 0.26);
         }
       }
 
+      &--isActive {
+        width: 100%;
+        height: 40px;
+        font-weight: 600;
+        color: #27ae60;
+        background: $gray-white;
+        border: 1px solid $gray-icons-placeholders;
+      }
+
+      // &--favourites {
+      //   margin-left: 8px;
+      //   width: 40px;
+      //   height: 40px;
+      //   color: $gray-primary;
+      //   background-color: $gray-white;
+      //   border: solid 1px $gray-icons-placeholders;
+
+      //   background-repeat: no-repeat;
+      //   background-position: center;
+      //   position: relative;
+      //   box-shadow: -1px 0 0 0 $color-shadow;
+      //   background-image: url("../../images/icons/Favourites.svg");
+      // }
+
       &--favourites {
-        margin-left: 8px;
-        width: 40px;
+        &-wrapper {
+          margin-left: 8px;
+          width: 40px;
+          height: 40px;
+          background-color: $gray-white;
+          border: solid 1px $gray-icons-placeholders;
+
+          &:hover {
+            border: 1px solid $gray-primary;
+          }
+        }
+
         height: 40px;
         color: $gray-primary;
-        background-color: $gray-white;
-        border: solid 1px $gray-icons-placeholders;
 
         background-repeat: no-repeat;
         background-position: center;
         position: relative;
-        box-shadow: -1px 0 0 0 $color-shadow;
         background-image: url("../../images/icons/Favourites.svg");
+
+        &--isActive {
+          background-image: url("../../images/icons/FavouritesSelected.svg");
+        }
       }
     }
   }
@@ -166,7 +200,7 @@
     height: 32px;
     text-decoration: none;
     border: 1px solid $gray-icons-placeholders;
-    
+
     color: $gray-primary;
     font-size: 14px;
     font-weight: 500;
@@ -176,5 +210,4 @@
       background-color: $gray-primary;
     }
   }
-  
 }

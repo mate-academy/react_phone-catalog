@@ -13,3 +13,4 @@ export * from './ProductCard/ProductCard';
 export * from './LikeAlso/LikeAlso';
 export * from './Loader/Loader';
 export * from './ButtonBack/ButtonBack';
+export * from './CartContent/CartContent';
