@@ -1,109 +1,96 @@
-import { useState } from 'react';
-import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+import cn from 'classnames';
 import './Slider.scss';
 import phone from '../../assets/banner-phone.png';
 import tablet from '../../assets/banner-tablets.png';
 import accessories from '../../assets/banner-accessories.png';
 
-export const Slider = () => {
-  const images = [
-    phone,
-    tablet,
-    accessories,
-  ];
+const images = [
+  phone,
+  tablet,
+  accessories,
+];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselWidth = 1040;
+export const Slider: React.FC = () => {
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
 
-  const onHandleMoveBanner = (action: 'prev' | 'next') => {
-    const sliderLength = images.length;
-    const maxSlide = -carouselWidth * (sliderLength - 1);
+  const nextSlide = () => {
+    setActiveSlideIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
-    switch (action) {
-      case 'prev':
-        if (currentSlide === 0) {
-          setCurrentSlide(maxSlide);
-          break;
-        }
+  const prevSlide = () => {
+    setActiveSlideIndex((prevIndex) => (prevIndex === 0
+      ? images.length - 1
+      : prevIndex - 1));
+  };
 
-        setCurrentSlide((prev) => prev + carouselWidth);
-        break;
-
-      case 'next':
-        if (currentSlide === maxSlide) {
-          setCurrentSlide(0);
-          break;
-        }
-
-        setCurrentSlide((prev) => prev - carouselWidth);
-        break;
-
-      default:
-        setCurrentSlide(0);
+  const handleDotKeyDown = (
+    event: React.KeyboardEvent<HTMLSpanElement>,
+    index: number,
+  ) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setActiveSlideIndex(index);
     }
   };
 
-  return (
-    <div className="top-slider">
-      <div className="top-slider__slider">
-        <button
-          className="top-slider__button"
-          type="button"
-          onClick={() => onHandleMoveBanner('prev')}
-        >
-          <span className="top-slider__arrow--left" />
-        </button>
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
 
-        <div className="top-slider__images">
-          <div
-            className="top-slider__inner"
-            style={{ transform: `translateX(${currentSlide}px)` }}
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="container">
+      <div className="carousel">
+        <div className="carousel__content">
+          <button
+            onClick={prevSlide}
+            className="carousel__button"
+            type="button"
           >
-            {images.map((image) => (
-              <div className="top-slider__images--item" key={image}>
+            <span className="carousel__arrow--left" />
+          </button>
+
+          <div className="carousel__images">
+            {images.map((imageUrl, index) => (
+              <div
+                className="carousel__image"
+                key={imageUrl}
+                style={{
+                  opacity: index === activeSlideIndex ? 1 : 0,
+                }}
+              >
                 <img
-                  src={image}
-                  alt="slide"
-                  className="top-slider__image"
+                  src={imageUrl}
+                  alt={`Slide ${index + 1}`}
+                  className="carousel__img"
                 />
               </div>
             ))}
           </div>
+
+          <button
+            onClick={nextSlide}
+            className="carousel__button"
+            type="button"
+          >
+            <span className="carousel__arrow--right" />
+          </button>
         </div>
 
-        <button
-          className="top-slider__button"
-          type="button"
-          onClick={() => onHandleMoveBanner('next')}
-        >
-          <span className="top-slider__arrow--right" />
-        </button>
-      </div>
-
-      <div className="top-slider__dots">
-        {images.map((_, index) => (
-          <div
-            key={images[index].id}
-            className={classNames(
-              'top-slider__dot', {
-                'top-slider__dot--active':
-                -currentSlide / carouselWidth === index,
-              },
-            )}
-            onClick={() => setCurrentSlide(-carouselWidth * index)}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter' || event.key === ' ') {
-                setCurrentSlide(-carouselWidth * index);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-          >
-            <p hidden>
-              dots
-            </p>
-          </div>
-        ))}
+        <div className="carousel__dots">
+          {images.map((_imageUrl, index) => (
+            // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            <div
+              onKeyDown={(event) => handleDotKeyDown(event, index)}
+              className={cn('carousel__dot', {
+                active: index === activeSlideIndex,
+              })}
+              key={_imageUrl}
+              onClick={() => setActiveSlideIndex(index)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

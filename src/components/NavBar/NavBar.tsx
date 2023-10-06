@@ -39,31 +39,31 @@ export const NavBar: React.FC = () => {
         <NavLink
           to="/react_phone-catalog"
           className={`navbar__item ${location.pathname === '/react_phone-catalog'
-            ? 'navbar__item' : ''}`}
+            ? 'navbar__item--active' : ''}`}
         >
           home
         </NavLink>
 
         <NavLink
           to="/react_phone-catalog/phones"
-          className={`navbar__item ${location.pathname === '/phones'
-            ? 'navbar__item' : ''}`}
+          className={`navbar__item ${location.pathname === '/react_phone-catalog/phones'
+            ? 'navbar__item--active' : ''}`}
         >
           phones
         </NavLink>
 
         <NavLink
           to="/react_phone-catalog/tablets"
-          className={`navbar__item ${location.pathname === '/tablets'
-            ? 'navbar__item' : ''}`}
+          className={`navbar__item ${location.pathname === '/react_phone-catalog/tablets'
+            ? 'navbar__item--active' : ''}`}
         >
           tablets
         </NavLink>
 
         <NavLink
           to="/react_phone-catalog/accessories"
-          className={`navbar__item ${location.pathname === '/accessories'
-            ? 'navbar__item' : ''}`}
+          className={`navbar__item ${location.pathname === '/react_phone-catalog/accessories'
+            ? 'navbar__item--active' : ''}`}
         >
           accessories
         </NavLink>

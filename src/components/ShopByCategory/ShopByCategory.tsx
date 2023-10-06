@@ -21,7 +21,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
 
         <div className="category__links" data-cy="categoryLinksContainer">
           <Link
-            to="/phones"
+            to="/react_phone-catalog/phones"
             className="category__link"
           >
             <div className="category__image category__image--phone" />
@@ -32,7 +32,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
           </Link>
 
           <Link
-            to="/tablets"
+            to="/react_phone-catalog/tablets"
             className="category__link"
           >
             <div className="category__image category__image--tablet" />
@@ -43,7 +43,7 @@ export const ShopByCategory: React.FC<Props> = ({ products }) => {
           </Link>
 
           <Link
-            to="/accessories"
+            to="/react_phone-catalog/accessories"
             className="category__link"
           >
             <div className="category__image category__image--accessory" />

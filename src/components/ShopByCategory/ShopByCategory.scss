@@ -5,6 +5,12 @@
   display: flex;
   justify-content: center;
 
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
   &__title {
     font-size: 32px;
     font-weight: 700;

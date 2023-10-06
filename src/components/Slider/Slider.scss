@@ -1,79 +1,110 @@
-@import "../../styleUtils/variables.scss";
+@import "../../styleUtils/mixins.scss";
 
-.top-slider {
+.carousel {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 1136px;
+  align-content: center;
 
-  &__slider {
+
+  &__content {
     display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-content: center;
   }
 
   &__images {
-    margin-inline: 16px;
-    width: 1040px;
     height: 400px;
-    overflow: hidden;
+    width: 1040px;
+    position: relative;
 
-    &_--item {
-      display: block;
-      width: 1040px;
-      overflow: hidden;
+    @include onTablet {
+      height: 230px;
+      width: 550px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 210px;
     }
   }
 
   &__image {
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    width: 1040px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+
+    @include onTablet {
+      height: 230px;
+      width: 550px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 100%;
+    }
+  }
+
+  &__img {
     height: 400px;
     width: 1040px;
     object-fit: cover;
-    object-position: center;
+
+    @include onTablet {
+      height: 230px;
+      width: 550px;
+    }
+
+    @include onMobile {
+      height: 150px;
+      width: 100%;
+    }
   }
 
-  &__inner {
-    display: flex;
-    flex-direction: row;
-    width: max-content;
-    height: 100%;
-    white-space: nowrap;
-    transition: transform 0.6s;
+  &__button {
+    background: none;
+    width: 32px;
+    border: 1px solid #b4bdc3;
+
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    @include onMobile {
+      width: 18px;
+    }
   }
 
   &__dots {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 80px;
+    margin-top: 8px;
+    gap: 5px;
   }
 
   &__dot {
-    width: 14px;
+    background-color: #e2e6e9;
     height: 4px;
-    background-color: $elements-color;
-    margin: 0 5px;
-    transition: background-color 0.3s ease, box-shadow 0.3s;
+    left: 5px;
+    position: relative;
+    top: 10px;
+    width: 14px;
 
-    &:hover {
-      cursor: pointer;
-      box-shadow: 0 4px 5px $grey-primary;
-    }
+    cursor: pointer;
+    transition-duration: 0.3s;
 
-    &--active {
-      background-color: $grey-primary;
+    &.active {
+      background-color: #313237;
     }
   }
-
-    &__button {
-      width: 32px;
-      height: 400px;
-      border: 1px solid $icons-color;
-      background-color: transparent;
-      transition: all 0.3s ease-in;
-
-      &:hover {
-        border-color: $grey-primary;
-      }
-    }
 
     &__arrow--left {
       display: block;

@@ -17,7 +17,7 @@ export const BreadCrumbs: React.FC = () => {
     <nav className="breadCrumbs">
       <ul className="breadCrumbs__list">
         <li className="breadCrumbs__item">
-          <Link to="/">
+          <Link to="/react_phone-catalog">
             <div className="breadCrumbs__icon" />
           </Link>
         </li>
