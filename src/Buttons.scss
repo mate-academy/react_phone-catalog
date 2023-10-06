@@ -1,0 +1,25 @@
+.pagination-button {
+  padding: 0;
+  vertical-align: bottom;
+  height: 32px;
+  width: 32px;
+  background-color: transparent;
+  border: 0;
+  box-sizing: border-box;
+  background-image: url("./assets/images/pagination_right_svg.svg");
+  transition: all 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background-image: url("./assets/images/pagination_right_hover_svg.svg");
+  }
+
+  &:disabled {
+    cursor: default;
+    background-image: url("./assets/images/pagination_right_disable.svg");
+  }
+
+  &--prev {
+    rotate: 180deg;
+  }
+}

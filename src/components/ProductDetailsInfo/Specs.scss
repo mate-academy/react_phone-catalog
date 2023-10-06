@@ -1,0 +1,40 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.specs {
+  display: flex;
+  flex-direction: column;
+
+  &__info-spec {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+    margin: 0;
+
+    @include onMobile {
+      margin-right: 8px;
+    }
+  }
+
+  &__info-value {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $primaryColor;
+  }
+}

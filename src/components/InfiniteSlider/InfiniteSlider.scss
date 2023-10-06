@@ -1,0 +1,104 @@
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.slick-slider {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  width: 1040px;
+
+  @include onLaptop {
+    width: 752px;
+  }
+
+  @include onTablet {
+    width: 100vw;
+  }
+
+  @include onMobile {
+    width: 100vw;
+  }
+}
+
+.slick-track {
+  position: relative;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.slick-slide {
+  & > div {
+    display: flex;
+    height: 100%;
+ 
+    & img {
+      object-fit: cover;
+      width: 100%;
+      height: 400px;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.slick-dots li button::before {
+  content: "";
+  width: 14px;
+  height: 4px;
+  background: $primaryColor;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+.custom-slider-button {
+  position: relative;
+  top: 0;
+
+  background-color: transparent;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 400px;
+  box-sizing: border-box;
+  border: 1px solid $iconsColor;
+  padding: 0;
+  background-position: center;
+  transition: border-color 0.3s;
+
+  background-image: url("../../assets/images/arrow_right_svg.svg");
+
+  &--prev {
+    transform: rotate(180deg);
+    left: -16px;
+  }
+
+  &--next {
+    right: -16px;
+  }
+
+  &:hover {
+    border-color: $primaryColor;
+    cursor: pointer;
+  }
+}
+
+.infinite-slider-link {
+  text-decoration: none;
+}
+
+.infinite-slider-image {
+  vertical-align: bottom;
+}
