@@ -80,19 +80,19 @@ export const Pagination: React.FC<Props> = ({
     }
 
     const leftAndRight = Math.floor((newPageTogether - 1) / 2);
-    let numberRight = pageTogether % 2 === 0 ? 1 : 0;
+    let numberRight = newPageTogether % 2 === 0 ? 1 : 0;
     const numberLeft = leftAndRight;
 
     numberRight += leftAndRight;
 
-    if (currentPage - numberLeft < 3) {
+    if (currentPage - numberLeft <= 3) {
       setIsRightsPoints(true);
       setIsLeftPoints(false);
-      setPageTogether(newPageTogether + 1);
+      setPageTogether(newPageTogether + 2);
     } else if (currentPage + numberRight > quantityPages - 3) {
       setIsLeftPoints(true);
       setIsRightsPoints(false);
-      setPageTogether(newPageTogether + 1);
+      setPageTogether(newPageTogether + 2);
     } else {
       setIsLeftPoints(true);
       setIsRightsPoints(true);

@@ -29,7 +29,6 @@ import { DEF_SORT } from '../../helpers/consts';
 import { getBackLink } from '../../helpers/getBackLink';
 import { MenuWithNav } from '../../components/MenuWithNav/MenuWithNav';
 
-
 export const ProductDetailsPage: React.FC = () => {
   const { liked, addedToCart } = useContext(LikeAndCartContext);
   const [numLiked, setNumLiked] = useState<number>(liked.length);
