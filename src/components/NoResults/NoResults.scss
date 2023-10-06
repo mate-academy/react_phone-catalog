@@ -1,0 +1,22 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/container.scss";
+
+.no-results {
+  margin-top: $marginBetweenSections;
+
+  @include onTablet {
+    margin-top: 50px;
+  }
+
+  @include onMobile {
+    margin-top: 20px;
+  }
+
+  &__title {
+    color: $colorSecondary;
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

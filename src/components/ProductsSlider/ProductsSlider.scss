@@ -1,0 +1,87 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
+
+.slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &--buttons-container {
+      display: flex;
+      justify-content: space-between;
+
+      min-width: $widthSliderButtons;
+
+      @include onMobileAndTablet {
+        width: $widthSliderButtons;
+      }
+    }
+
+    &--button {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $colorWhite;
+
+      border: 1px solid $colorIcons;
+      cursor: pointer;
+      transition: border-color $timeTransotionGeneral;
+
+      &:hover {
+        border-color: $colorPrimary;
+      }
+
+      &.is-disabled {
+        border-color: $colorElements;
+        color: $colorElements;
+        cursor: default;
+      }
+    }
+
+    &--button-left {
+      background-image: url(../../images/icons/Chevron-Arrow-Left-Dark.svg);
+
+      &.is-disabled {
+        background-image: url(../../images/icons/Chevron-Arrow-Left.svg);
+      }
+    }
+
+    &--button-right {
+      background-image: url(../../images/icons/Chevron-Arrow-Right-Dark.svg);
+
+      &.is-disabled {
+        background-image: url(../../images/icons/Chevron-Arrow-Right.svg);
+      }
+    }
+  }
+
+  &__content {
+    width: $widthSlider;
+    margin: 20px auto 0;
+    
+
+    overflow: hidden;
+
+    @include widthOneCard {
+      width: $widthSliderOneCards;
+    }
+
+    @include widthTwoCard {
+      width: $widthSliderTwoCards;
+    }
+
+    @include widthTreeCard {
+      width: $widthSliderTreeCards;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: $gapSlider;
+
+    padding: 5px;
+    transition: transform $timeTransitionCarusel linear;
+  }
+}

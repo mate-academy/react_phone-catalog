@@ -1,1 +1,95 @@
-// not empty
+@import "./styles/_utils/variables.scss";
+@import "./styles/_utils/font-faces.scss";
+@import "./styles/_utils/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: $colorSecondary;
+
+  @include onMobile {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+.body {
+  margin: 0;
+
+  &__with-menu {
+    overflow: hidden;
+  }
+}
+
+a,
+ul,
+li,
+h1,
+h2,
+h3,
+p,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $colorSecondary;
+}
+
+button {
+  background-color: $colorWhite;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  color: $colorPrimary;
+
+  @include onMobile {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+h2 {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  color: $colorPrimary;
+
+  @include onMobile {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+h3 {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: $colorPrimary;
+
+  @include onMobile {
+    font-size: 16px;
+    line-height: 21px;
+  }
+}

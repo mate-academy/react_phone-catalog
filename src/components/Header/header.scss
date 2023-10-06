@@ -1,0 +1,217 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/font-faces.scss";
+@import "../../styles/_utils/mixins";
+
+@import "../../styles/logo.scss";
+@import "../../styles/nav.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  border-bottom: 1px solid $colorElements;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__right {
+    position: relative;
+    display: flex;
+  }
+
+  &__logo {
+    display: flex;
+
+    padding: 0 24px;
+
+    @include widthOneCard {
+      padding: 0 10px;
+    }
+  }
+
+  &__nav {
+    @include onMobileAndTablet {
+      display: none;
+    }
+  }
+
+  &__nav-link {
+    padding: $paddingsHaederNavLink 0;
+
+    line-height: $lineHeightNavLink;
+  }
+
+  &__nav-item {
+    position: relative;
+
+    &:first-child {
+      margin-left: $heightHeader;
+    }
+  }
+
+  &__square-link {
+    position: relative;
+    height: 100%;
+    width: $heightHeader;
+
+    border-left: 1px solid $colorElements;
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $colorHoverAndBG;
+    }
+  }
+
+  &__favourites {
+    background-image: url(../../images/icons/Favourites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onMobileAndTablet {
+      display: none;
+    }
+  }
+
+  &__shopping-bag {
+    background-image: url(../../images/icons/Shopping-bag.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onMobileAndTablet {
+      display: none;
+    }
+  }
+
+  &__small-quantity {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 35%;
+    width: 35%;
+
+    color: $colorWhite;
+    background-color: $colorRed;
+    border: 1px solid $colorWhite;
+    border-radius: 50%;
+  }
+
+  &__is-active {
+    color: $colorPrimary;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $colorPrimary;
+    }
+  }
+
+  &__form {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 327px;
+
+    @include widthOneCard {
+      width: 220px;
+    }
+
+    &--button {
+      position: absolute;
+      top: 15px;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      padding-right: 24px;
+
+      @include widthOneCard {
+        padding-right: 10px;
+      }
+    }
+
+    &--search {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../../images/icons/Search.svg);
+    }
+
+    &--close {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../../images/icons/Close.svg);
+
+    }
+  }
+
+  &__input {
+    width: 100%;
+
+    padding: 0 100px 0 20px;
+    border: 0;
+    border-left: 1px solid $colorElements;
+
+    outline: none;
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+
+    @include widthOneCard {
+      padding: 0 20px 0 10px;
+    }
+
+    transition: background-color $timeTransotionGeneral,
+      box-shadow $timeTransotionGeneral;
+
+    &::placeholder {
+      color: $colorIcons;
+    }
+
+    &:hover {
+      background-color: $colorHoverAndBG;
+    }
+
+    &:focus {
+      background-color: $colorHoverAndBG;
+      box-shadow: -1px 0 0 0 #e2e6e9;
+    }
+  }
+
+  &__menu {
+    background-image: url(../../images/icons/sandvich-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__close {
+    background-image: url(../../images/icons/Close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

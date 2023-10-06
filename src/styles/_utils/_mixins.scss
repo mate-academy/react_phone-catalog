@@ -1,0 +1,49 @@
+@mixin onMobile {
+  @media (max-width: 743px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 744px) and (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1260px) {
+    @content;
+  }
+}
+
+@import "./variables.scss";
+
+@mixin onTabletAndDesktop {
+  @media (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin onMobileAndTablet {
+  @media (max-width: 1259px) {
+    @content;
+  }
+}
+
+@mixin widthOneCard {
+  @media (max-width: 632px) {
+    @content;
+  }
+}
+
+@mixin widthTwoCard {
+  @media (min-width: 633px) and (max-width: 1019px) {
+    @content;
+  }
+}
+
+@mixin widthTreeCard {
+  @media (min-width: 1020px) and (max-width: 1302px) {
+    @content;
+  }
+}

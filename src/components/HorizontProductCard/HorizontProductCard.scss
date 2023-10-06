@@ -1,0 +1,125 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
+
+.horizont-card {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: $paddingRightCartPage;
+  border: 1px solid $colorElements;
+  box-sizing: border-box;
+
+  @include onMobile {
+    flex-direction: column;
+    gap: 20px;
+    align-items: end;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onMobile {
+      margin: 0 auto;
+    }
+  }
+
+  &__close {
+    height: 21px;
+    width: 21px;
+    font-size: 21px;
+    color: $colorIcons;
+
+    transition: color $timeTransotionGeneral;
+
+    &:hover {
+      color: $colorPrimary;
+      cursor: pointer;
+    }
+  }
+
+  &__image {
+    height: $heightSmallImg;
+    width: $heightSmallImg;
+    padding: 5px;
+
+    object-fit: contain;
+    object-position: center;
+
+    &--container {
+      display: flex;
+
+      margin: 0 20px;
+      cursor: pointer;
+
+      @include onMobile {
+        margin: 0;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    color: $colorPrimary;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 30%;
+
+    @include onMobileAndTablet {
+      width: 20%;
+      min-width: 200px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+
+    font-weight: 500;
+    line-height: 21px;
+    color: $colorPrimary;
+
+    &--button {
+      height: $widthIcon;
+      width: $widthIcon;
+
+      border: 1px solid $colorIcons;
+
+      line-height: $widthIcon;
+      font-weight: 300;
+      font-size: 18px;
+      color: $colorPrimary;
+
+      transition: border-color $timeTransotionGeneral,
+        color $timeTransotionGeneral;
+
+      &:hover {
+        border-color: $colorPrimary;
+        cursor: pointer;
+      }
+
+      &.is-disabled {
+        color: $colorElements;
+        border-color: $colorElements;
+        cursor: default;
+      }
+    }
+
+    &--number {
+      padding: 0 5px;
+      font-size: 14px;
+    }
+  }
+}

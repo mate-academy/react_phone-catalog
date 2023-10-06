@@ -1,0 +1,61 @@
+@import "./_utils/variables.scss";
+
+.selection-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 10px;
+
+  &__add {
+    width: 80%;
+
+    color: $colorWhite;
+    background-color: $colorPrimary;
+    border: 1px solid $colorElements;
+    cursor: pointer;
+
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+
+    transition: box-shadow $timeTransotionGeneral,
+      background-color $timeTransotionGeneral;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203142;
+    }
+
+    &.is-selected {
+      color: $colorGreen;
+      background-color: $colorWhite;
+    }
+  }
+
+  &__like {
+    position: relative;
+    right: 0;
+
+    height: 40px;
+    width: 40px;
+
+    border: 1px solid $colorIcons;
+    cursor: pointer;
+
+    background-color: $colorWhite;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/icons/Favourites.svg);
+
+    transition: border-color $timeTransotionGeneral,
+      background-image $timeTransotionGeneral;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &.is-selected {
+      border-color: $colorElements;
+      background-image: url(../images/icons/Favourites-Filled.svg);
+    }
+  }
+}

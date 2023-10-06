@@ -1,0 +1,107 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
+
+.carusel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__top {
+    display: flex;
+    gap: $gapOfCarusel;
+
+    width: 100%;
+  }
+
+  &__content {
+    width: 100%;
+
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  &__list {
+    display: flex;
+    gap: $gapOfCarusel;
+
+    transition: transform $timeTransitionCarusel linear;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__img {
+    height: $heightCaruselsImgDecktop;
+    width: $widthCaruselsImgDesktop;
+
+    object-fit: cover;
+    object-position: center;
+
+    @include onTablet {
+      height: $heightCaruselsImgTablet;
+      width: calc(100vw - #{$gapContainerTablet} * 2);
+    }
+
+    @include onMobile {
+      height: $heightCaruselsImgMobile;
+      width: calc(100vw - #{$gapContainerMobile} * 2);
+    }
+  }
+
+  &__button {
+    width: $widthIcon;
+
+    border: 1px solid $colorIcons;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $colorWhite;
+
+    cursor: pointer;
+    transition: border-color $timeTransotionGeneral;
+
+    @include onMobileAndTablet {
+      display: none;
+    }
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--left {
+      background-image: url(../../images/icons/Chevron-Arrow-Left-Dark.svg);
+    }
+
+    &--right {
+      background-image: url(../../images/icons/Chevron-Arrow-Right-Dark.svg);
+    }
+  }
+
+  &__points {
+    display: flex;
+    margin: 0 auto;
+  }
+
+  &__point {
+    height: 24px;
+    width: 24px;
+
+    margin-right: 5px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../images/icons/point-for-slider.svg);
+
+    cursor: pointer;
+    transition: background-image $timeTransitionCarusel;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.is-selected {
+      background-image: url(../../images/icons/point-for-slider-dark.svg);
+    }
+  }
+}

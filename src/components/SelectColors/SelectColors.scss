@@ -1,0 +1,82 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
+
+.select-colors {
+  &__list {
+    display: flex;
+    gap: 10px;
+
+    height: 30px;
+
+    margin-top: 10px;
+  }
+
+  &__link {
+    display: flex;
+
+    height: 30px;
+    width: 30px;
+    
+    border: 1px solid $colorElements;
+    
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      border-color: $colorIcons;
+    }
+
+    &.is-active {
+      border-color: $colorPrimary;
+    }
+
+    &.select-colors__color-yellow {
+      background-image: url(../../images/colors/yellow.svg);
+    }
+
+    &.select-colors__color-purple {
+      background-image: url(../../images/colors/purple.svg);
+    }
+
+    &.select-colors__color-caral {
+      background-image: url(../../images/colors/caral.svg);
+    }
+
+    &.select-colors__color-rosegold {
+      background-image: url(../../images/colors/rosegold.svg);
+    }
+
+    &.select-colors__color-black {
+      background-image: url(../../images/colors/black.svg);
+    }
+
+    &.select-colors__color-gold {
+      background-image: url(../../images/colors/gold.svg);
+    }
+
+    &.select-colors__color-midnightgreen {
+      background-image: url(../../images/colors/midnightgreen.svg);
+    }
+
+    &.select-colors__color-silver {
+      background-image: url(../../images/colors/silver.svg);
+    }
+
+    &.select-colors__color-spacegray {
+      background-image: url(../../images/colors/spacegray.svg);
+    }
+
+    &.select-colors__color-red {
+      background-image: url(../../images/colors/red.svg);
+    }
+
+    &.select-colors__color-white {
+      background-image: url(../../images/colors/white.svg);
+    }
+
+    &.select-colors__color-green {
+      background-image: url(../../images/colors/green.svg);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/container.scss";
+
+.not-found-page {
+  margin-top: $marginBetweenSections;
+
+  &__title {
+    color: $colorSecondary;
+  }
+}

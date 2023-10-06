@@ -1,0 +1,23 @@
+@import "./_utils/variables.scss";
+@import "./_utils/mixins";
+
+.container {
+  margin: 0 $gapContainerMobile;
+
+  @include onTablet {
+    margin: 0 $gapContainerTablet;
+  }
+
+  @include onDesktop {
+    max-width: $maxWidthContainer;
+    margin: 0 auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    min-height: $minHeightMainContent;
+    margin-bottom: $marginBetweenSections;
+  }
+}

@@ -1,0 +1,15 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  row-gap: 2em;
+
+  width: 100%;
+
+  &__item {
+    width: 100%;
+  }
+}

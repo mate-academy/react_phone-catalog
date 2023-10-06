@@ -1,0 +1,70 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/mixins";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    @include onMobile {
+      flex-direction: column;
+
+    }
+  }
+
+  &__category {
+    width: 100%;
+
+    &--name {
+      margin-top: 20px;
+    }
+
+    &--quantity {
+      line-height: 2em;
+    }
+
+    &--phones {
+      background-color: $colorForPhones;
+    }
+
+    &--tablets {
+      background-color: $colorSecondary;
+    }
+
+    &--accessories {
+      background-color: $colorForAccess;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+
+    height: 110%;
+
+    object-fit: cover;
+    object-position: center;
+
+    &--container {
+      position: relative;
+
+      height: 0;
+      padding-bottom: 100%;
+
+      overflow: hidden;
+      transition: transform $timeTransotionGeneral linear;
+
+      &:hover {
+        @include onTabletAndDesktop {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

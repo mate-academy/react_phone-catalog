@@ -1,0 +1,44 @@
+@import "./_utils/mixins";
+
+.nav {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    margin-right: $heightHeader;
+
+    @include onMobile {
+      margin-right: 20px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font-family: "Mont", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    color: $colorSecondary;
+    cursor: pointer;
+    transition: color $timeTransotionGeneral;
+
+    @include onMobile {
+      font-size: 10px;
+    }
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+}

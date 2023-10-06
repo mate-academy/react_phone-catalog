@@ -1,0 +1,50 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/font-faces.scss";
+@import "../../styles/_utils/mixins";
+
+@import "../../styles/logo.scss";
+@import "../../styles/nav.scss";
+@import "../../styles/container.scss";
+
+.footer {
+  width: 100%;
+  border-top: 1px solid $colorElements;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav-link {
+    padding: $paddingsFooterNavLink 0;
+
+    line-height: $lineHeightNavLink;
+  }
+
+  &__button-go-top {
+    height: $widthIcon;
+    width: $widthIcon;
+
+    margin-left: 12px;
+
+    background-image: url(../../images/icons/Chevron-Arrow-Up-Dark.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $colorWhite;
+
+    border: 1px solid $colorIcons;
+    cursor: pointer;
+    transition: border-color $timeTransotionGeneral;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--container {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+  }
+}

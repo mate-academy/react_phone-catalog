@@ -1,0 +1,78 @@
+@import "../../styles/_utils/variables.scss";
+@import "../../styles/_utils/font-faces.scss";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  width: $widthProductCard;
+  padding: 20px;
+
+  border: 1px solid $colorIcons;
+
+  font-family: "Mont", sans-serif;
+  transition: box-shadow $timeTransotionGeneral;
+
+  &:hover {
+    box-shadow: 0 0 3px 3px #0000000d;
+  }
+
+  &__img {
+    display: flex;
+
+    height: 208px;
+
+    object-fit: cover;
+    object-position: center;
+
+    margin: 0 auto;
+  }
+
+  &__name {
+    height: 3em;
+
+    margin-top: 22px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    color: $colorPrimary;
+  }
+
+  &__prices {
+    margin-top: 10px;
+
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  &__discount-price {
+    margin-right: 5%;
+    font-weight: 700;
+
+    color: $colorPrimary;
+  }
+
+  &__price {
+    text-decoration: line-through;
+  }
+
+  &__param {
+    display: flex;
+    justify-content: space-between;
+
+    &--name {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    &--value {
+      font-size: 12px;
+      line-height: 16px;
+
+      color: $colorPrimary;
+    }
+  }
+}

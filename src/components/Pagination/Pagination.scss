@@ -1,0 +1,63 @@
+@import "../../styles/_utils/variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: max-content;
+
+  margin-top: 40px;
+
+  &__list {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: $widthIcon;
+    width: $widthIcon;
+
+    border: 1px solid $colorIcons;
+    color: $colorPrimary;
+
+    transition: border-color $timeTransotionGeneral,
+      background-color $timeTransotionGeneral,
+      color $timeTransotionGeneral;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      color: $colorElements;
+      border-color: $colorElements;
+    }
+
+    &.active {
+      background-color: $colorPrimary;
+      color: $colorWhite;
+    }
+  }
+
+  &__points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: $widthIcon;
+    width: $widthIcon;
+
+    letter-spacing: 2px;
+    cursor: default;
+  }
+}
