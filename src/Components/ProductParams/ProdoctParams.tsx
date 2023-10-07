@@ -9,9 +9,9 @@ import {
   removeFavourites,
 } from '../../features/favouritesSlice';
 import { Phone } from '../../Type/Phone';
+import { checkPhoneDetailsId } from '../../helper/checkedSorage';
 
 import './productParams.scss';
-import { checkPhoneDetailsId } from '../../helper/checkedSorage';
 
 type Props = {
   colors: string[];

@@ -51,13 +51,13 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
                 <p>Phones</p>
               </Link>
               <div className="breadcrumbs__arrow breadcrumbs__icon" />
-              <p className="breadcrumbs--phoneId">{phoneId}</p>
+              <p className="breadcrumbs__phoneId">{phoneId}</p>
             </section>
 
             <section className="details__title">
               <ButtonBack />
 
-              <h1 className="details__title--name">{phone?.id}</h1>
+              <h1 className="details__title--name">{phone?.name}</h1>
             </section>
 
             <section className="details__main">

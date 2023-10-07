@@ -33,3 +33,14 @@
     border: 1px solid $gray-icons-placeholders;
   }
 }
+
+.title {
+  &_p {
+    color: $gray-secondary;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

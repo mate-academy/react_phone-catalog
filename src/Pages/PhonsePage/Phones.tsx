@@ -32,7 +32,6 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
     +selectedValueNumberOptions * page, phones.length,
   );
 
-  // testFilter
   const searchInPhones = phones
     .filter((product) => product.name
       .toLowerCase()
@@ -66,39 +65,56 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
 
         {!isLoading && (
           <>
+            {searchQuery !== ''
+              ? (
+                <>
+                  <div className="title">
+                    <p className="title__p">{`${searchInPhones.length} results`}</p>
+                  </div>
+                  <section className="container--list phones__list">
+                    {searchInPhones.map(phone => (
+                      <ProductCard phone={phone} key={phone.id} />
+                    ))}
+                  </section>
+                </>
+              )
+              : (
+                <>
+                  <section className="phones">
+                    <div className="breadcrumbs">
+                      <Link
+                        to="/"
+                        className="breadcrumbs__button breadcrumbs__icon"
+                      />
+                      <div className="breadcrumbs__arrow breadcrumbs__icon" />
+                      <p>
+                        Phones
+                      </p>
+                    </div>
+                    <div className="title">
+                      <h1>Mobile phones</h1>
 
-            <section className="phones">
-              <div className="breadcrumbs">
-                <Link
-                  to="/"
-                  className="breadcrumbs__button breadcrumbs__icon"
-                />
-                <div className="breadcrumbs__arrow breadcrumbs__icon" />
-                <p>
-                  Phones
-                </p>
-              </div>
-              <div className="title">
-                <h1>Mobile phones</h1>
-
-                <p className="title__p">{`${phones.length} models`}</p>
-              </div>
-              <Dropdowns />
-            </section>
-            <section className="container--list phones__list">
-              {readyPhones.map(phone => (
-                <ProductCard phone={phone} key={phone.id} />
-              ))}
-            </section>
-            <section className="pagination">
-              {selectedValueNumberOptions !== 'All' && (
-                <PhonesPaginations
-                  phones={phones}
-                  currentPage={page}
-                  setCurrentPage={setPage}
-                />
+                      <p className="title__p">{`${phones.length} models`}</p>
+                    </div>
+                  </section>
+                  <Dropdowns />
+                  <section className="container--list phones__list">
+                    {readyPhones.map(phone => (
+                      <ProductCard phone={phone} key={phone.id} />
+                    ))}
+                  </section>
+                  <section className="pagination">
+                    {selectedValueNumberOptions !== 'All' && (
+                      <PhonesPaginations
+                        phones={phones}
+                        currentPage={page}
+                        setCurrentPage={setPage}
+                      />
+                    )}
+                  </section>
+                </>
               )}
-            </section>
+
           </>
         )}
 

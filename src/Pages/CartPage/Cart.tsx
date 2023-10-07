@@ -24,6 +24,14 @@ export const CartPage: React.FC<Props> = ({ isLoading }) => {
     return 0;
   }, 0);
 
+  const totalItems = cart.reduce((accumulator, currentProduct) => {
+    if (currentProduct.amount !== undefined) {
+      return accumulator + currentProduct.amount;
+    }
+
+    return 0;
+  }, 0);
+
   return (
     <>
       <Navigation />
@@ -52,7 +60,7 @@ export const CartPage: React.FC<Props> = ({ isLoading }) => {
                   <h1 className="shopping__outcome--price">{`$${totalPrice}`}</h1>
 
                   <p className="shopping__outcome--total">
-                    {`Total for ${cart.length} items`}
+                    {`Total for ${totalItems} items`}
                   </p>
 
                   <button
