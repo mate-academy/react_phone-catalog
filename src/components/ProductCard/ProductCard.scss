@@ -1,0 +1,150 @@
+@import "../../main.scss";
+
+.product-card {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 222px;
+    max-width: 272px;
+    border: 1px solid $color-elements;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+
+  &__image {
+    display: flex;
+    height: 208px;
+    flex-basis: 208px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %buttons-text;
+    flex: 1 0 42px;
+    color: $color-primary;
+  }
+
+  &__prices {
+    border-bottom: 1px solid $color-elements;
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h2-text;
+    color: $color-primary;
+    margin-right: 8px;
+  }
+
+  &__discount {
+    @extend %h2-text;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__features {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__list {
+    @extend %small-text;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__key {
+    color: $color-secondary;
+  }
+
+  &__value {
+    color: $color-primary;
+    text-align: right;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    &__to-cart {
+      padding: 0;
+      width: 176px;
+      height: 40px;
+
+      @extend %buttons-text;
+
+      color: $color-white;
+      background-color: $color-primary;
+      border: none;
+      outline: none;
+
+      transition: box-shadow 0.5s;
+      cursor: pointer;
+
+      &--selected {
+        color: $color-green;
+        background: none;
+        border: 1px solid $color-elements;
+      }
+
+      &:hover {
+        color: $color-white;
+        background-color: $color-primary;
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      }
+    }
+
+    &__to-favs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include squareSize(40px);
+      padding: 0;
+
+      background-color: $color-white;
+      border: 1px solid $color-icons;
+      transition: all 0.5s;
+      cursor: pointer;
+
+      &--icon {
+        @include squareSize(16px);
+        display: block;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url(../../images/FavouritesHeartLike.svg);
+
+        &--selected {
+          @include squareSize(16px);
+          display: block;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url(../../images/FavouritesFilledHeartLike.svg);
+        }
+      }
+
+      &--selected {
+        border-color: $color-elements;
+      }
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+  }
+}

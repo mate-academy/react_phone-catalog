@@ -1,1 +1,29 @@
-// not empty
+html {
+  scroll-behavior: smooth;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+button,
+span,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Mont", arial, helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+}

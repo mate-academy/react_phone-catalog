@@ -1,0 +1,10 @@
+@import "../../main.scss";
+
+.not-found {
+  margin-bottom: 40px;
+
+  &__title {
+    @extend %h1-text;
+    color: $color-primary;
+  }
+}

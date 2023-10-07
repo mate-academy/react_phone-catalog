@@ -1,0 +1,82 @@
+@import "../../main.scss";
+
+.dropdown {
+  position: relative;
+
+  &__label {
+    @extend %small-text;
+    color: $color-secondary;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @extend %buttons-text;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    border: 1px solid $color-icons;
+    outline: none;
+    color: $color-primary;
+    background-color: $color-white;
+    text-transform: capitalize;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    border: 1px solid $color-elements;
+    list-style: none;
+    padding: 8px 0;
+    background-color: $color-white;
+  }
+
+  &__option {
+    cursor: pointer;
+    height: 32px;
+    padding: 0 12px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $color-background;
+    }
+  }
+
+  &__option a {
+    display: flex;
+    align-items: center;
+    color: $color-secondary;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.3s;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

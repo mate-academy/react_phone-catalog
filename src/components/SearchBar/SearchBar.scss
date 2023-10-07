@@ -1,0 +1,42 @@
+@import "../../main.scss";
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 60px;
+
+  padding: 15px 24px;
+  border-left: 1px solid $color-elements;
+
+  &__input {
+    width: 90%;
+
+    @extend %buttons-text;
+    line-height: 18px;
+    color: $color-icons;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      cursor: text;
+      color: $color-icons;
+    }
+  }
+
+  &__icon {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include squareSize(16px);
+    padding: 8px;
+
+    &--search {
+      background-image: url(../../images/Search.svg);
+    }
+
+    &--close {
+      background-image: url(../../images/Close.svg);
+    }
+  }
+}

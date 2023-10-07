@@ -1,0 +1,60 @@
+@import "../../main.scss";
+
+.products-slider {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 33px;
+  }
+
+  &__header {
+    @extend %h1-text;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include squareSize(32px);
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--disabled {
+      border: 1px solid $color-elements;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  &__products {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 72px;
+    gap: 16px;
+  }
+
+  &__icon {
+    display: block;
+    margin: 0 auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include squareSize(16px);
+    cursor: pointer;
+    &--right {
+      background-image: url(../../images/ArrowRight.svg);
+    }
+
+    &--left {
+      background-image: url(../../images/ArrowLeft.svg);
+    }
+
+  }
+}

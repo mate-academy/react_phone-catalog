@@ -1,0 +1,33 @@
+@import "../../main.scss";
+
+.product-list {
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    color: $color-secondary;
+  }
+
+  &__dropdowns {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../main.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  margin: 0 0 40px;
+  border-bottom: 1px solid $color-elements;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 40px;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

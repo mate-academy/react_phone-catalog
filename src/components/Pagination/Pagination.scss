@@ -1,0 +1,42 @@
+@import "../../main.scss";
+
+.pagination {
+  display: flex;
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include squareSize(32px);
+    border: 1px solid $color-icons;
+
+    &--disabled {
+      pointer-events: none;
+      border: 1px solid $color-elements;
+    }
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: $color-primary;
+    text-decoration: none;
+
+    &--active {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}
