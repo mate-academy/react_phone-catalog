@@ -1,0 +1,27 @@
+@import "./variables";
+
+.favourites {
+  width: 1136px;
+  padding: 0 152px;
+    margin: 0 auto;
+    flex-grow: 1;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    margin-bottom: 8px;
+  }
+  
+  &__count {
+    display: block;
+    margin-bottom: 40px;
+  }
+  
+  &__container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+}
