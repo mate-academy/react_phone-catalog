@@ -39,18 +39,24 @@ export const CartPage: React.FC = () => {
             <h1 className="CartPage__title CartPage__title--no-products">
               Your cart is empty. Maybe you want to choose something in
               {' '}
-              <Link className="CartPage__link" to="/phones">
+              <Link className="CartPage__link" to="/react_phone-catalog/phones">
                 Phones
               </Link>
               ,
               {' '}
-              <Link className="CartPage__link" to="/tablets">
+              <Link
+                className="CartPage__link"
+                to="/react_phone-catalog/tablets"
+              >
                 Tablets
               </Link>
               {' '}
               or
               {' '}
-              <Link className="CartPage__link" to="/accessories">
+              <Link
+                className="CartPage__link"
+                to="/react_phone-catalog/accessories"
+              >
                 Accessories
               </Link>
               {' '}

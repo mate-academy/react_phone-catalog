@@ -8,7 +8,7 @@ export const BreadCrumbs: React.FC = () => {
   const location = useLocation();
 
   const pathNames = location.pathname
-    .split('/react_phone-catalog')
+    .split('/')
     .filter((category) => category !== '');
 
   const breadCrumbs = getBreadCrumbs(pathNames);
@@ -39,7 +39,7 @@ export const BreadCrumbs: React.FC = () => {
               ) : (
                 <>
                   <li className={itemClasses} key={breadCrumb.link}>
-                    <Link to={breadCrumb.link}>
+                    <Link to="/react_phone-catalog">
                       {breadCrumb.label}
                     </Link>
                   </li>
