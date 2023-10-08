@@ -38,7 +38,7 @@ export const NavBar: React.FC = () => {
 
         <NavLink
           to="/react_phone-catalog"
-          className={`navbar__item ${location.pathname === '/react_phone-catalog'
+          className={`navbar__item navbar__item--home ${location.pathname === '/react_phone-catalog'
             ? 'navbar__item--active' : ''}`}
         >
           home

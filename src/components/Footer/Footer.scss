@@ -1,3 +1,4 @@
+@import "../../styleUtils/mixins.scss";
 @import "../../styleUtils/variables.scss";
 
 .footer {
@@ -8,9 +9,24 @@
   justify-content: space-between;
   padding: 36px 152px;
 
+  @include onTablet {
+    align-content: flex-start;
+    gap: 90px;
+  }
+
+  @include onMobile {
+    flex-direction: column;
+    align-content: center;
+    gap: 20px;
+  }
+
   &__list {
     display: flex;
     gap: 64px;
+
+    @include onTablet {
+      gap: 25px;
+    }
   }
 
 

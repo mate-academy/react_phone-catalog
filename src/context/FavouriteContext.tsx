@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
-import { Phone } from '../types/Phone';
 import { useLocalStorage } from '../helpers/useLocalStroage';
+import { ProductCardType } from '../types/ProductCard';
 
 type Props = {
   children: React.ReactNode,
 };
 
 type ContextType = {
-  favouriteProducts: Phone[],
-  setFavouriteProducts: (value: Phone[]) => void,
+  favouriteProducts: ProductCardType[],
+  setFavouriteProducts: (value: ProductCardType[]) => void,
 };
 
 export const FavouriteContext = React.createContext<ContextType>({

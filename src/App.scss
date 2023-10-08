@@ -1,4 +1,5 @@
 @import "./styleUtils/variables.scss";
+@import "./styleUtils/mixins.scss";
 @import "./styleUtils/fonts";
 @import "../src/components/Logo/Logo.scss";
 @import "../src/components/Footer/BackToTop.scss";
@@ -53,11 +54,15 @@ li {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  margin-inline: 152px;
 }
 
 .container {
   max-width: 1140px;
   height: max-content;
+  margin: 0 auto;
+
+  @include onTablet {
+    padding: 0 40px;
+  }
 }
 

@@ -21,7 +21,7 @@ export const HomePage: React.FC<Props> = React.memo(({ products }) => {
   }, [products]);
 
   return (
-    <main className="main">
+    <>
       <Slider />
 
       <ProductsSlider
@@ -32,6 +32,6 @@ export const HomePage: React.FC<Props> = React.memo(({ products }) => {
       <ShopByCategory products={products} />
 
       <ProductsSlider title="Brand new models" products={getBrandNewProducts} />
-    </main>
+    </>
   );
 });

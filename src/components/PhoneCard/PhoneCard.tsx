@@ -7,17 +7,16 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Phone } from '../../types/Phone';
-import { getProduct } from '../../api';
-import { ProductDetails } from '../../types/PhoneDetails';
+import { getProductCard } from '../../api';
 import { Loader } from '../Loader/Loader';
 import { FavouriteContext } from '../../context/FavouriteContext';
 import { AddToFavourites } from '../AddToFavourites/AddToFavourites';
 import { CartContext } from '../../context/CartContext';
 import { AddToCart } from '../AddToCart/AddToCart';
+import { ProductCardType } from '../../types/ProductCard';
 
 type Props = {
-  product: Phone;
+  product: ProductCardType;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
@@ -34,7 +33,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     id,
   } = product;
   const [productWithDetails, setProductWithDetails]
-    = useState<ProductDetails>();
+    = useState<ProductCardType>();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const { favouriteProducts, setFavouriteProducts }
@@ -46,7 +45,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
     const loadProduct = async () => {
       try {
-        const productFromServer = await getProduct(itemId);
+        const productFromServer = await getProductCard(itemId);
 
         setProductWithDetails(productFromServer);
       } catch {

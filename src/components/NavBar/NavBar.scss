@@ -1,4 +1,5 @@
 @import "../../styleUtils/variables.scss";
+@import "../../styleUtils/mixins.scss";
 
 .navbar {
   display: flex;
@@ -9,6 +10,10 @@
   height: 64px;
   box-shadow: 0 1px 0 0 $elements-color;
 
+  @include onMobile {
+    gap: 0;
+  }
+
 
   &__list {
     display: flex;
@@ -17,6 +22,10 @@
     justify-content: flex-start;
     margin-right: auto;
     padding: 0 24px;
+
+    @include onMobile {
+      gap: 30px;
+    }
   }
 
   &__item {
@@ -33,6 +42,10 @@
 
     text-transform: uppercase;
     transition: all 0.3s ease-in;
+
+    @include onMobile {
+      font-size: 10px;
+    }
 
     &:hover {
       color: $grey-primary;
@@ -74,6 +87,12 @@
 
       background-color: #000;
     }
+
+    &--home {
+      @include onSmallMobile {
+        display: none;
+      }
+    }
 }
 
 &__icons {
@@ -106,6 +125,10 @@
   display: block;
   padding: 24px;
   border-left: 1px solid $elements-color;
+
+  @include onMobile {
+    padding: 24px 12px;
+  }
 
   &--favourite {
     background-image: url(/assets/fav--icon.svg);

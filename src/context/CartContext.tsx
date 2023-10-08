@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
-import { Phone } from '../types/Phone';
 import { useLocalStorage } from '../helpers/useLocalStroage';
+import { ProductCardType } from '../types/ProductCard';
 
 type Props = {
   children: React.ReactNode,
 };
 
 type ContextType = {
-  productsInCart: Phone[],
-  setProductsInCart: (value: Phone[]) => void,
+  productsInCart: ProductCardType[],
+  setProductsInCart: (value: ProductCardType[]) => void,
 };
 
 export const CartContext = React.createContext<ContextType>({
