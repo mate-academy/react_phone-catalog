@@ -1,0 +1,10 @@
+@import "../../styles/global-imports";
+
+.NoResults {
+  & > h2 {
+    padding-top: 40px;
+
+    @extend %h1;
+    text-align: center;
+  }
+}

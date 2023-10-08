@@ -1,0 +1,37 @@
+h1,
+h2,
+h3,
+p,
+ul,
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+table {
+  border-spacing: 0;
+
+  & td {
+    padding: 0;
+  }
+}
+
+select,
+option {
+  margin: 0;
+  padding: 0;
+}

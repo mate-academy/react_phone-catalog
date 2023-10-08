@@ -1,1 +1,23 @@
-// not empty
+@import "./styles/fonts";
+@import "./styles/utilites/reset";
+@import "./styles/typography";
+@import "./styles/global";
+@import "./styles/blocks";
+
+.App {
+  min-height: 100vh;
+  position: relative;
+
+  &__main {
+    min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding-bottom: 80px;
+
+    box-sizing: border-box;
+
+    @include contentPaddingInline;
+  }
+
+  &__loader {
+    margin-top: 30%;
+  }
+}

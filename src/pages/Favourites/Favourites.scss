@@ -1,0 +1,29 @@
+@import "../../styles/global-imports";
+
+.Favourites {
+  padding-top: 24px;
+
+  &__crumbs {
+    margin-bottom: 40px;
+  }
+
+  &__return {
+    margin-bottom: 16px;
+  }
+
+  &__items-count {
+    margin-bottom: 40px;
+
+    & > p {
+      @extend %body-text;
+      color: $c-secondary;
+    }
+  }
+
+  &__no-items-message {
+    margin-top: 10%;
+    text-align: center;
+
+    @extend %h1;
+  }
+}

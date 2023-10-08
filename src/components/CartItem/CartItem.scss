@@ -1,0 +1,47 @@
+@import "../../styles/global-imports";
+
+.CartItem {
+  display: flex;
+  align-items: center;
+  padding: 24px 40px 24px 24px;
+  min-width: max-content;
+  box-sizing: border-box;
+
+  border: 1px solid $c-elements;
+
+  &__delete {
+    margin-right: 24px;
+    width: 16px;
+    height: 16px;
+
+    border: none;
+    background: no-repeat center url("../../icons/Close.svg");
+
+    cursor: pointer;
+
+    @include hover(transform, rotate(90deg));
+  }
+
+  &__image {
+    margin-right: 24px;
+    padding: 7px;
+
+    & > img {
+      max-width: 66px;
+      max-height: 66px;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend %body-text;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: auto;
+    margin-right: 43px;
+  }
+}
