@@ -37,7 +37,7 @@ const App: React.FC = () => {
           <NavBar />
           <main className="main__content">
             <Routes>
-              <Route path="/react_phone-catalog">
+              <Route path="/react_phone-catalog/">
                 <Route index element={<HomePage products={products} />} />
 
                 <Route path=":category">
