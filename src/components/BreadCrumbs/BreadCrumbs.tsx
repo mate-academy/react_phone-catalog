@@ -8,7 +8,7 @@ export const BreadCrumbs: React.FC = () => {
   const location = useLocation();
 
   const pathNames = location.pathname
-    .split('/')
+    .split('/react_phone-catalog')
     .filter((category) => category !== '');
 
   const breadCrumbs = getBreadCrumbs(pathNames);

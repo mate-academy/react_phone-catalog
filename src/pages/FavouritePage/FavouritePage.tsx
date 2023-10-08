@@ -32,7 +32,7 @@ export const FavouritePage: React.FC = () => {
               to choose something
               {' '}
               <Link
-                to="/phones"
+                to="/react_phone-catalog/phones"
                 className="favourites__link"
               >
                 Phone
@@ -40,7 +40,7 @@ export const FavouritePage: React.FC = () => {
               ,
               {' '}
               <Link
-                to="/tablets"
+                to="/react_phone-catalog/tablets"
                 className="favourites__link"
               >
                 Tablets
@@ -49,7 +49,7 @@ export const FavouritePage: React.FC = () => {
               or
               {' '}
               <Link
-                to="/accessories"
+                to="/react_phone-catalog/accessories"
                 className="favourites__link"
               >
                 Accessories

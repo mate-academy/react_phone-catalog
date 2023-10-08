@@ -7,13 +7,6 @@ import { Search } from '../Search/Search';
 import { CartContext } from '../../context/CartContext';
 import { FavouriteContext } from '../../context/FavouriteContext';
 
-const locationsForSearching = [
-  '/phones',
-  '/tablets',
-  '/accessories',
-  '/favourite',
-];
-
 export const NavBar: React.FC = () => {
   const location = useLocation();
   const { productsInCart } = useContext(CartContext);
@@ -27,9 +20,13 @@ export const NavBar: React.FC = () => {
     return productsInCart.length - 1;
   }, [productsInCart]);
 
-  const showSearch = locationsForSearching.some(
-    current => current === location.pathname,
-  );
+  const showSearch1 = [
+    '/react_phone-catalog/phones',
+    '/react_phone-catalog/favourite',
+    '/react_phone-catalog/tablets',
+    '/react_phone-catalog/accessories',
+    '/react_phone-catalog/favourite',
+  ].includes(location.pathname);
 
   return (
     <nav className="navbar">
@@ -70,7 +67,7 @@ export const NavBar: React.FC = () => {
       </ul>
 
       <div className="navbar__icons">
-        {showSearch && <Search />}
+        {showSearch1 && <Search />}
         <Link
           to="/react_phone-catalog/favourite"
           className="navbar__icon"
