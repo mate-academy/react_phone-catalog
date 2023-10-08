@@ -1,0 +1,135 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  box-shadow: 0 1px 0 #e2e6e9;
+
+  &__nav {
+    position: relative;
+    display: flex;
+  }
+
+  &__logo {
+    margin-right: 64px;
+  }
+
+  &__choosed {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    position: relative;
+
+    background: #fff;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 11px;
+    color: $grey-secondary-color;
+    font-family: $font-bold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.5s;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 3px;
+      background-color: $grey-secondary-color;
+      position: absolute;
+      left: 0;
+      transform: scaleX(0);
+      transition: all 0.3s;
+    }
+
+    &:not(.header__actions-link--is-active):hover {
+      color: $grey-primary-color;
+
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+
+    &--is-active {
+      color: $grey-primary-color;
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        left: 0;
+        background-color: $grey-primary-color;
+      }
+    }
+  }
+
+  &__main-nav-link {
+    margin-right: 64px;
+
+    &::before {
+      bottom: 24px;
+    }
+
+    &--is-active {
+      color: $grey-primary-color;
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        left: 0;
+        bottom: 24px;
+        background-color: $grey-primary-color;
+      }
+    }
+  }
+
+  &__actions-link {
+    &::before {
+      bottom: 0;
+    }
+
+    &--is-active {
+      color: $grey-primary-color;
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: $grey-primary-color;
+      }
+    }
+  }
+
+  &__icon-count {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: #fff;
+    font-family: $font-semibold;
+    font-size: 9px;
+  }
+}

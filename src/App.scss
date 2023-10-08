@@ -1,1 +1,112 @@
-// not empty
+@import "./helpers/variables.scss";
+// @import "./helpers/fonts.scss";
+@import "./components/Header/Header.scss";
+@import "./components/Footer/footer.scss";
+@import "./components/Category/category.scss";
+@import "./components/Breadcrumbs/breadcrumbs.scss";
+@import "./components/Banner/banner.scss";
+@import "./components/BackButton/backButton.scss";
+@import "./pages/homePage.scss";
+@import "./components/CartPage/cartPage.scss";
+@import "./components/FavouritesPage/favouritesPage.scss";
+@import "./components/PhonesPage/phonesPage.scss";
+@import "./components/ProductDetailsPage/productDetailsPage.scss";
+@import "./components/ProductPage/productPage.scss";
+@import "./components/ButtonCart/buttonCart.scss";
+@import "./components/ButtonFav/buttonFav.scss";
+@import "./components/CartInfo/cartInfo.scss";
+@import "./components/CartItem/cartItem.scss";
+@import "./components/DropDown/dropDown.scss";
+@import "./components/FavItemList/favItemList.scss";
+@import "./components/Loader/Loader.scss";
+@import "./components/Pagination/pagination.scss";
+@import "./components/ProductCapacity/productCapacity.scss";
+@import "./components/ProductCard/productCard.scss";
+@import "./components/ProductList/productList.scss";
+@import "./components/ProductColor/productColor.scss";
+@import "./components/ProductPhotos/productPhotos.scss";
+@import "./components/ProductInfo/productInfo.scss";
+@import "./components/ProductSlider/productSlider.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-regular;
+  color: $grey-primary-color;
+
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: inherit;
+  font-family: inherit;
+}
+
+p,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: $font-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: $font-semibold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-section {
+  flex: 1 0 auto;
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+  // height: 100vh;
+  // overflow-y: scroll;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 1136px;
+  }
+}
