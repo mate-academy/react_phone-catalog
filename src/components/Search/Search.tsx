@@ -36,7 +36,7 @@ export const Search: React.FC = () => {
       <input
         type="text"
         className="search__input"
-        placeholder={`Search in ${currentPath}...`}
+        placeholder={`Search in ${location.pathname.slice(21)}...`}
         value={appliedQuery}
         onChange={(event) => handleQueryChange(event)}
       />
