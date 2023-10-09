@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+
 import './Galery.scss';
 
 import { IMAGE_URL } from '../../../helpers/IMAGE_URL';

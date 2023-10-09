@@ -7,6 +7,7 @@ import { ProductType } from '../../types/ProductType';
 import { ProductsPage } from '../ProductsPage';
 
 import './AccessoriesPage.scss';
+import { motionParametr } from '../../helpers/motionParametr';
 
 export const AccessoriesPage = () => {
   const [productsAccessorie, setProductsAccessorie] = useState<Product[]>([]);
@@ -37,9 +38,7 @@ export const AccessoriesPage = () => {
   return (
     <motion.section
       className="Accessories"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      {...motionParametr}
     >
       <div className="container">
         <ProductsPage

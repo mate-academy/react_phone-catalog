@@ -2,13 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import './PageNotFound.scss';
+import { motionParametr } from '../../helpers/motionParametr';
 
 export const PageNotFound = () => (
   <motion.div
     className="page-not-found"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
+    {...motionParametr}
   >
     <h1 className="page-not-found--title">
       It looks like you`re lost

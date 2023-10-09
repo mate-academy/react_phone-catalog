@@ -22,6 +22,7 @@ import { ColorChoose } from '../../components/Product/ColorChoose';
 import { Capacity } from '../../components/Product/Capacity';
 import { Description } from '../../components/Product/Description/Description';
 import { PageNotFound } from '../PageNotFound/PageNotFound';
+import { motionParametr } from '../../helpers/motionParametr';
 
 export const ProductDetailsPage = () => {
   const location = useLocation();
@@ -102,9 +103,7 @@ export const ProductDetailsPage = () => {
   return (
     <motion.section
       className="product-details container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      {...motionParametr}
     >
       <HistoryLocation />
 

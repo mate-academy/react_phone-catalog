@@ -7,6 +7,7 @@ import { CartItemList } from './CartItemList/CartItemList';
 import { CartInfo } from './CartInfo/CartInfo';
 
 import './CartPage.scss';
+import { motionParametr } from '../../helpers/motionParametr';
 
 export const CartPage = () => {
   const { cart } = useContext(CartContext);
@@ -14,9 +15,7 @@ export const CartPage = () => {
   return (
     <motion.section
       className="cart-page container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      {...motionParametr}
     >
       <div className="cart-page--back-button">
         <ButtonBack />

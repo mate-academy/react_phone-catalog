@@ -2,7 +2,6 @@ import {
   useState,
   useEffect,
 } from 'react';
-// import { motion } from 'framer-motion';
 import { motion } from 'framer-motion';
 
 import {
@@ -20,6 +19,7 @@ import './HomePage.scss';
 
 import { ProductTitles } from '../../types/ProductTitles';
 import { Categories } from './Categories';
+import { motionParametr } from '../../helpers/motionParametr';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -69,9 +69,7 @@ export const HomePage = () => {
   return (
     <motion.div
       className="home-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      {...motionParametr}
     >
       <Banner />
 

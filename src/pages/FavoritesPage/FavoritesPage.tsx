@@ -6,6 +6,7 @@ import { HistoryLocation } from '../../components/HistoryLocation';
 import { FavoritesItemList } from './FavoritesItemList/FavoritesItemList';
 
 import './FavoritesPage.scss';
+import { motionParametr } from '../../helpers/motionParametr';
 
 export const FavoritesPage = () => {
   const { favorites } = useContext(FavoriteContext);
@@ -14,9 +15,7 @@ export const FavoritesPage = () => {
   return (
     <motion.section
       className="favorites container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      {...motionParametr}
     >
       <div className="favorites__history-location">
         <HistoryLocation />
