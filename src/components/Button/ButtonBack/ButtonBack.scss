@@ -4,11 +4,14 @@
   display: flex;
   gap: 6px;
 
-  margin: 40px 0 16px;
+  padding: 40px 0 16px;
   background-color: $c-white;
+  cursor: pointer;
 
   @extend %small-text;
   color: $c-secondary;
+
+  @include hover(color, $c-primary);
 
   &--arrow {
     width: 16px;

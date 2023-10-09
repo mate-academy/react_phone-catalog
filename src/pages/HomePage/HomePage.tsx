@@ -2,7 +2,8 @@ import {
   useState,
   useEffect,
 } from 'react';
-// import { Banner } from './Banner';
+// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import {
   getAllProducts,
@@ -66,7 +67,12 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div className="home-page">
+    <motion.div
+      className="home-page"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Banner />
 
       <div className="container">
@@ -96,6 +102,6 @@ export const HomePage = () => {
           <Loader />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };

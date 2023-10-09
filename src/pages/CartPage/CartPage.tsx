@@ -1,4 +1,6 @@
 import { useContext } from 'react';
+import { motion } from 'framer-motion';
+
 import { CartContext } from '../../contexts/CartContextProvider';
 import { ButtonBack } from '../../components/Button/ButtonBack/ButtonBack';
 import { CartItemList } from './CartItemList/CartItemList';
@@ -10,7 +12,12 @@ export const CartPage = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <section className="cart-page container">
+    <motion.section
+      className="cart-page container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="cart-page--back-button">
         <ButtonBack />
       </div>
@@ -34,6 +41,6 @@ export const CartPage = () => {
           </h2>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };

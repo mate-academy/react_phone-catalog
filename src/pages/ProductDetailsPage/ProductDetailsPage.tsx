@@ -1,6 +1,7 @@
 import './ProductDetailsPage.scss';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -99,7 +100,12 @@ export const ProductDetailsPage = () => {
   };
 
   return (
-    <section className="product-details container">
+    <motion.section
+      className="product-details container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <HistoryLocation />
 
       {!currentProduct && <PageNotFound />}
@@ -227,6 +233,6 @@ export const ProductDetailsPage = () => {
           />
         </>
       )}
-    </section>
+    </motion.section>
   );
 };

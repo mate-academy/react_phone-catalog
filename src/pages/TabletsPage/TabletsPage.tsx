@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
 import { Product } from '../../types/Product';
 import { getAllProducts } from '../../helpers/fetchProducts';
 import { ProductType } from '../../types/ProductType';
@@ -33,7 +35,12 @@ export const TabletPage = () => {
   }, []);
 
   return (
-    <section className="tablets">
+    <motion.section
+      className="tablets"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="container">
         <ProductsPage
           title="Tablets"
@@ -43,6 +50,6 @@ export const TabletPage = () => {
           category={ProductType.Tablet}
         />
       </div>
-    </section>
+    </motion.section>
   );
 };
