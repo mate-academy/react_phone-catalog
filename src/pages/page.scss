@@ -1,0 +1,36 @@
+html,
+body {
+  font-family: "Mont Regular", sans-serif;
+  height: 100%;
+}
+
+[class*="__container"] {
+  margin: 0 auto;
+  max-width: 1136px;
+
+  @media (max-width: 1135px) {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+  }
+}

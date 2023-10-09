@@ -1,9 +1,8 @@
 import './App.scss';
+import { Page } from './pages/Page';
 
-const App = () => (
+export const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Page />
   </div>
 );
-
-export default App;

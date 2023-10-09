@@ -1,0 +1,23 @@
+@import "../../styles/utils";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  margin-top: 50px;
+
+  &__title {
+    @extend %h2;
+    text-transform: uppercase;
+    color: $c-secondary;
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    height: 40px;
+    max-width: 185px;
+  }
+}

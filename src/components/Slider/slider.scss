@@ -1,0 +1,53 @@
+@import "../../styles/utils";
+
+.slider {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  height: 464px;
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__button {
+    transition: all 0.3s;
+    border: 1px solid $c-icons;
+    height: 80px;
+    width: 80px;
+    background: transparent;
+    padding: 7px;
+
+    &:last-child {
+      padding: 15px 0 0;
+    }
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &--active {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &--main {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__main {
+    @extend %flex-center;
+    flex: 1 1 auto;
+    transition: 0.2s ease;
+  }
+}
