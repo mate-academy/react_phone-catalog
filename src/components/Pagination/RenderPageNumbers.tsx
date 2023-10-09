@@ -11,7 +11,7 @@ export const PageNumber = (
   const maxPage = 3;
   const startInd = currentPage <= maxPage - 1
     ? 2
-    : currentPage - (maxPage - 1);
+    : currentPage - (maxPage - 2);
 
   const lastIndex = Math.min(startInd + maxPage, page.length - 1);
 

@@ -32,7 +32,6 @@
 
   &__item {
     height: 16px;
-    color: #313237;
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
@@ -42,6 +41,10 @@
     &.active {
       color: #89939a;
       background: none;
+    }
+
+    &--link {
+      color: #313237;
     }
   }
 }
