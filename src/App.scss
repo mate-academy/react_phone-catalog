@@ -15,3 +15,12 @@
     overflow: hidden;
   }
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $c-primary;
+  border-radius: 4px;
+}

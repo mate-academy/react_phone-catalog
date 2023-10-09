@@ -5,6 +5,7 @@ import { getNumbers } from '../../helpers/getNumbers';
 import { getSearchWith } from '../../helpers/searchHelper';
 
 import './Pagination.scss';
+import { handleBackToTop } from '../../helpers/handleToUp';
 
 type Props = {
   totalItems: number,
@@ -47,6 +48,7 @@ export const Pagination: React.FC<Props> = ({
             { page: (currentPage - 1).toString() },
           ),
         }}
+        onClick={handleBackToTop}
       />
 
       <ul className="pagination__list">
@@ -54,6 +56,7 @@ export const Pagination: React.FC<Props> = ({
           <li className="pagination--item">
             <Link
               className="pagination--link"
+              onClick={handleBackToTop}
               to={{
                 search: getSearchWith(
                   searchParams,
@@ -80,6 +83,7 @@ export const Pagination: React.FC<Props> = ({
             key={pageNumber}
           >
             <Link
+              onClick={handleBackToTop}
               className={classNames('pagination--link', {
                 'pagination--link-active': currentPage === pageNumber,
               })}
@@ -104,6 +108,7 @@ export const Pagination: React.FC<Props> = ({
         {endPage < totalPages && (
           <li className="pagination--item">
             <Link
+              onClick={handleBackToTop}
               className="pagination--link"
               to={{
                 search: getSearchWith(
@@ -119,18 +124,19 @@ export const Pagination: React.FC<Props> = ({
       </ul>
 
       <Link
+        data-cy="paginationRight"
+        onClick={handleBackToTop}
+        aria-disabled={isLastPage}
         className={classNames('pagination--button',
           'pagination--button-right', {
             'pagination--button-disabled': isLastPage,
           })}
-        data-cy="paginationRight"
         to={{
           search: getSearchWith(
             searchParams,
             { page: (currentPage + 1).toString() },
           ),
         }}
-        aria-disabled={isLastPage}
       />
     </div>
   );
