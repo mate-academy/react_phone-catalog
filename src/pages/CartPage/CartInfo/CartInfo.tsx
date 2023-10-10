@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+
 import { CartContext } from '../../../contexts/CartContextProvider';
 import { getCartPrice } from '../../../helpers/getCartPrice';
 
@@ -48,7 +49,7 @@ export const CartInfo = () => {
 
           {isClicked && (
             <h2 className="cart-info--checkout-text">
-              Sorry, this feature ain`t inplement yet
+              {'Sorry, this feature isn\'t inplement yet'}
             </h2>
           )}
         </div>

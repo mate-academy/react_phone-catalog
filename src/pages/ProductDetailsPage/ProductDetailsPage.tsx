@@ -113,9 +113,15 @@ export const ProductDetailsPage = () => {
 
       {!isError && !isLoading && currentProduct && (
         <>
-          <h1 className="product-details--title">
+          <motion.h1
+            className="product-details--title"
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.15 }}
+          >
             {productDetails?.name}
-          </h1>
+          </motion.h1>
 
           <motion.div
             className="product-details__top-content"

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import './Galery.scss';
 
@@ -37,12 +38,21 @@ export const Galery: React.FC<Props> = ({
       ))}
     </ul>
 
-    <div className="galery__main">
-      <img
-        className="galery__main--image"
-        alt="the bigger one"
-        src={`${IMAGE_URL}${mainPhoto}`}
-      />
-    </div>
+    <AnimatePresence exitBeforeEnter>
+      <motion.div
+        className="galery__main"
+        key={mainPhoto}
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -10, opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <img
+          className="galery__main--image"
+          alt="the bigger one"
+          src={`${IMAGE_URL}${mainPhoto}`}
+        />
+      </motion.div>
+    </AnimatePresence>
   </div>
 );
