@@ -9,7 +9,7 @@ export const PageNumber = (
   searchParams: URLSearchParams,
 ) => {
   const maxPage = 3;
-  const startInd = currentPage <= maxPage - 1
+  const startInd = currentPage <= maxPage
     ? 2
     : currentPage - (maxPage - 2);
 

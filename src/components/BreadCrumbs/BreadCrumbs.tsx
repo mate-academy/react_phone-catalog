@@ -40,7 +40,7 @@ export const BreadCrumbs: React.FC = () => {
                 <>
                   <li className={itemClasses} key={breadCrumb.link}>
                     <Link
-                      to="/react_phone-catalog/"
+                      to="/react_phone-catalog/phones"
                       className="breadCrumbs__item--link"
                     >
                       {breadCrumb.label}

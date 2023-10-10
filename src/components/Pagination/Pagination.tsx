@@ -36,19 +36,21 @@ export const Pagination: React.FC<Props> = ({
         <div className="pagination__arrow pagination__arrow--left" />
       </Link>
 
-      <Link
-        to={{
-          search: getSearchWith(searchParams, {
-            currentPage: `${firstPage}`,
-          }),
-        }}
-        className={cn('pagination__button', 'pagination__button--page', {
-          active: currentPage === firstPage,
-        })}
-        key={firstPage}
-      >
-        {1}
-      </Link>
+      {pages.length > 2 && (
+        <Link
+          to={{
+            search: getSearchWith(searchParams, {
+              currentPage: `${firstPage}`,
+            }),
+          }}
+          className={cn('pagination__button', 'pagination__button--page', {
+            active: currentPage === firstPage,
+          })}
+          key={firstPage}
+        >
+          {1}
+        </Link>
+      )}
 
       {currentPage > 3 && <div className="pagination__dots">...</div>}
 
