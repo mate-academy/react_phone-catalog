@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 
+import { Params } from '../../types/Params';
+
 import { LOCALES } from '../../helpers/Locales';
 import { getSearchWith } from '../../helpers/getSearchWith';
 
@@ -26,7 +28,7 @@ export const LangDropdown: React.FC<Props> = React.memo(({ rootClassName }) => {
     }
   }, [settedLang, i18n]);
 
-  const setSearchWith = (params: any) => {
+  const setSearchWith = (params: Params) => {
     const search = getSearchWith(params, searchParams);
 
     setSearchParams(search);
