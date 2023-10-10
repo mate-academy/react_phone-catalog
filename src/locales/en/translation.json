@@ -80,5 +80,8 @@
   "year": "Year",
   "noGoods": "There are no products that match your selected categories",
   "searchPlaceholder": "Search clothes",
-  "noFilteredGoods": "There are no product that match your query"
+  "noFilteredGoods": "There are no product that match your query",
+  "productCode": "Product code",
+  "buyButtonText": "Buy",
+  "addToWishList": "Add to wishlist"
 }

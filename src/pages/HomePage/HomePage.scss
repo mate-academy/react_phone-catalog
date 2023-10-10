@@ -102,8 +102,8 @@
     }
   }
 
-  &__goods-list-item-info-header,
-  &__goods-list-item-info-price {
+  &__card-info-header,
+  &__card-info-price {
     display: block;
 
     text-align: center;
@@ -112,21 +112,39 @@
     transition: color $animationDuration;
   }
 
-  &__goods-list-item-info-header {
+  &__card-info-header {
     margin-top: 20px;
 
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
   }
 
-  &__goods-list-item-info-price {
+  &__card-info-price {
     margin-top: 16px;
 
     font-size: 18px;
     font-weight: 400;
   }
 
-  &__goods-list-item-link {
+  &__price {
+    margin-top: 8px;
+
+    &--old {
+      font-size: 16px;
+      text-decoration: line-through;
+
+      opacity: 0.4;
+    }
+
+    &--current {
+      font-size: 20px;
+      color: $black-800;
+
+      transition: color $animationDuration;
+    }
+  }
+
+  &__card {
     height: 100%;
 
     display: flex;
@@ -137,14 +155,14 @@
 
     &:hover {
 
-      .homePage__goods-list-item-info-header,
-      .homePage__goods-list-item-info-price {
+      .homePage__card-info-header,
+      .homePage__price--current {
         color: $red-700;
       }
     }
   }
 
-  &__goods-list-item-image {
+  &__card-image {
     width: 100%;
     height: 100%;
   }

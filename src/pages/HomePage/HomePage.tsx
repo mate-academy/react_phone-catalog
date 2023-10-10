@@ -6,7 +6,6 @@ import { makeUrl } from '../../helpers/makeUrl';
 import { makeAlt } from '../../helpers/makeAlt';
 import { getData } from '../../helpers/httpClient';
 import { getScreenType } from '../../helpers/getScreenType';
-import { giveCurrency } from '../../helpers/giveCurrency';
 
 import { NavLink } from '../../types/NavLink';
 import { Preview } from '../../types/Preview';
@@ -19,6 +18,7 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { Modal } from '../../components/Modal/Modal';
 import { Slider } from '../../components/Slider/Slider';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
+import { GoodCard } from '../../components/GoodCard/GoodCard';
 
 import './HomePage.scss';
 
@@ -101,6 +101,7 @@ export const HomePage: React.FC = React.memo(() => {
                     id,
                     seoUrl,
                     translationSlug,
+                    sale,
                     price,
                   } = good;
 
@@ -109,29 +110,16 @@ export const HomePage: React.FC = React.memo(() => {
                       className="homePage__goods-list-item"
                       key={id}
                     >
-                      <Link
-                        className="homePage__goods-list-item-link"
-                        to={{
-                          pathname: seoUrl,
-                          search: `?lang=${currentLanguage}`,
-                        }}
-                      >
-                        <img
-                          className="homePage__goods-list-item-image"
-                          src={images[0]}
-                          alt={name}
-                        />
-
-                        <div className="homePage__goods-list-item-info">
-                          <h2 className="homePage__goods-list-item-info-header">
-                            {t(translationSlug)}
-                          </h2>
-
-                          <p className="homePage__goods-list-item-info-price">
-                            {`${t(price.toString())} ${giveCurrency(currentLanguage)}`}
-                          </p>
-                        </div>
-                      </Link>
+                      <GoodCard
+                        rootClassName="homePage"
+                        seoUrl={seoUrl}
+                        currentLanguage={currentLanguage}
+                        imageLink={images[0]}
+                        name={name}
+                        translationSlug={translationSlug}
+                        sale={sale}
+                        price={price}
+                      />
                     </li>
                   );
                 })}

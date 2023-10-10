@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 
 import { getData } from '../../helpers/httpClient';
 import { ITEMS_PER_PAGE, loadMore } from '../../helpers/Pagination';
-import { giveCurrency } from '../../helpers/giveCurrency';
 import { getFilteredItems } from '../../helpers/getFIlteredItems';
 
 import { Good } from '../../types/Good';
@@ -16,6 +15,7 @@ import { Loader } from '../../components/Loader/Loader';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
 import { Modal } from '../../components/Modal/Modal';
 import { FilterItem } from '../../components/FilterItem/FilterItem';
+import { GoodCard } from '../../components/GoodCard/GoodCard';
 
 import './AllGenderPage.scss';
 
@@ -136,37 +136,27 @@ export const AllGenderPage: React.FC = React.memo(() => {
                 }}
                 itemContent={(index, good) => {
                   const {
-                    name,
-                    images,
                     id,
-                    price,
                     seoUrl,
+                    images,
+                    name,
                     translationSlug,
+                    price,
+                    sale,
                   } = good;
 
                   return (
-                    <Link
-                      className="allGender__section-list-item-link"
-                      to={{
-                        pathname: seoUrl,
-                        search: `?lang=${currentLanguage}`,
-                      }}
-                      key={id + index}
-                    >
-                      <img
-                        className="allGender__section-list-item-image"
-                        src={images[0]}
-                        alt={name}
-                      />
-
-                      <h2 className="allGender__section-list-item-header">
-                        {t(translationSlug)}
-                      </h2>
-
-                      <p className="allGender__section-list-item-price">
-                        {`${t(price.toString())} ${giveCurrency(currentLanguage)}`}
-                      </p>
-                    </Link>
+                    <GoodCard
+                      key={index + id}
+                      rootClassName="allGender"
+                      seoUrl={seoUrl}
+                      currentLanguage={currentLanguage}
+                      imageLink={images[0]}
+                      name={name}
+                      translationSlug={translationSlug}
+                      sale={sale}
+                      price={price}
+                    />
                   );
                 }}
               />

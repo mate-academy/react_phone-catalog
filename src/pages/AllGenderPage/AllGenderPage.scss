@@ -157,8 +157,8 @@
 
       &:hover {
 
-        .allGender__section-list-item-header,
-        .allGender__section-list-item-price {
+        .allGender__card-info-header,
+        .allGender__price--current {
           color: $red-700;
         }
       }
@@ -177,16 +177,16 @@
     }
   }
 
-  &__section-list-item-link {
+  &__card {
     text-decoration: none;
   }
 
-  &__section-list-item-image {
+  &__card-image {
     width: 100%;
   }
 
-  &__section-list-item-header,
-  &__section-list-item-price {
+  &__card-info-header,
+  &__price--current {
     display: block;
 
     text-align: center;
@@ -195,18 +195,27 @@
     transition: color $animationDuration;
   }
 
-  &__section-list-item-header {
+  &__card-info-header {
     margin-top: 20px;
 
     font-size: 20px;
     font-weight: 500;
   }
 
-  &__section-list-item-price {
+  &__price {
     margin-top: 16px;
 
-    font-size: 18px;
-    font-weight: 400;
+    &--old {
+      text-decoration: line-through;
+      color: $black-800;
+
+      opacity: 0.4;
+    }
+
+    &--current {
+      font-size: 18px;
+      font-weight: 400;
+    }
   }
 
   &__section-error-message {

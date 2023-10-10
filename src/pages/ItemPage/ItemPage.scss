@@ -1,1 +1,103 @@
 @import "../../styles/utils.scss";
+
+.itemPage {
+
+  &__content {
+
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+    }
+
+    @include onDesktop {
+      column-gap: 50px;
+    }
+  }
+
+  &__content-images-list {
+    list-style: none;
+  }
+
+  &__content-images-list-item {
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+
+  &__content-images-list-item-image {
+    width: 100%;
+  }
+
+  &__content-info {
+    margin-top: 40px;
+
+    @include onTablet {
+      position: sticky;
+      top: 32px;
+
+      margin-top: 0;
+      height: min-content;
+    }
+  }
+
+  &__content-info-title,
+  &__content-info-id,
+  &__content-info-button-secondary {
+    text-align: center;
+  }
+
+  &__price,
+  &__content-info-id,
+  &__content-info-button-main,
+  &__content-info-button-secondary {
+    margin-top: 16px;
+  }
+
+  &__content-info-title {
+    font-weight: 500;
+    font-size: 28px;
+  }
+
+  &__price {
+
+    &--old {
+      font-size: 20px;
+      text-decoration: line-through;
+
+      opacity: 0.4;
+    }
+
+    &--current {
+      font-size: 24px;
+      color: $red-700;
+    }
+  }
+
+  &__content-info-id {
+    font-size: 18px;
+  }
+
+  &__content-info-button-main {
+    width: 90%;
+
+    @include onDesktop {
+      max-width: 80%;
+    }
+  }
+
+  &__content-info-button-secondary {
+    width: 100%;
+
+    cursor: pointer;
+    transition: opacity $animationDuration;
+
+    @include onDesktop {
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}

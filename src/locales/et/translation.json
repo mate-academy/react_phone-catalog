@@ -80,5 +80,8 @@
   "year": "Aasta",
   "noGoods": "Teie valitud kategooriatele vastavaid tooteid pole",
   "searchPlaceholder": "Otsi kaupu",
-  "noFilteredGoods": "Teie päringule vastavaid tooteid pole"
+  "noFilteredGoods": "Teie päringule vastavaid tooteid pole",
+  "productCode": "Toote kood",
+  "buyButtonText": "Osta",
+  "addToWishList": "Soovinimekirja lisama"
 }
