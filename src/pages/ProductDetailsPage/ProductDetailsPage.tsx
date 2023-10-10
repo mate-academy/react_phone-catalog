@@ -117,7 +117,13 @@ export const ProductDetailsPage = () => {
             {productDetails?.name}
           </h1>
 
-          <div className="product-details__top-content">
+          <motion.div
+            className="product-details__top-content"
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="product-details--galery">
               <Galery
                 photos={images}
@@ -218,7 +224,7 @@ export const ProductDetailsPage = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           <div className="product-details__about">
             {productDetails && (

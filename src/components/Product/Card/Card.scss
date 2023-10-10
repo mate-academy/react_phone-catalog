@@ -13,8 +13,12 @@
 
   transition: all, 0.3s ease-in-out !important;
 
-  @include onTabletAndDesktop {
+  @include onDesktop {
     @include hover(transform, scale(104%));
+  }
+
+  @include onTablet {
+    @include hover(transform, scale(98%));
   }
 
   @include onMobile {

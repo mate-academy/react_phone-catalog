@@ -4,6 +4,7 @@ import {
   useEffect,
 } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 
 import './List.scss';
 import { productFilter } from '../../../helpers/productFilter';
@@ -24,7 +25,11 @@ type Props = {
 export const List: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
-  const perPageLength = Number(searchParams.get('perPage')) || 16;
+  let perPageLength = Number(searchParams.get('perPage')) || 16;
+
+  if (searchParams.get('perPage') === 'All') {
+    perPageLength = products.length;
+  }
 
   const startPage = (currentPage * perPageLength) - perPageLength;
   const endPage = Math.min(currentPage * perPageLength, products.length);
@@ -85,17 +90,19 @@ export const List: React.FC<Props> = ({ products }) => {
       )}
 
       <ul className="product-list__list">
-        {visibleProducts.map(currentProduct => (
-          <li
-            key={currentProduct.id}
-            className="product-list--item"
-          >
-            <ProductCard
-              title={ProductTitles.HotPrice}
-              product={currentProduct}
-            />
-          </li>
-        ))}
+        <Fade duration={200} triggerOnce>
+          {visibleProducts.map(currentProduct => (
+            <li
+              key={currentProduct.id}
+              className="product-list--item"
+            >
+              <ProductCard
+                title={ProductTitles.HotPrice}
+                product={currentProduct}
+              />
+            </li>
+          ))}
+        </Fade>
       </ul>
 
       {(perPageLength < sortedProducts.length && filteredProducts.length > 0)
