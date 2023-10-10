@@ -43,9 +43,14 @@ export const PhonesPaginations: React.FC<Props> = ({
   };
 
   const preperaLength = fieldValidation(lengthPagination);
-
-  const result = new Array(preperaLength)
+  const lengthArray = new Array(preperaLength)
     .fill(preperaLength).map((_, i) => i + 1);
+
+  let preperaPagination = lengthArray.slice(currentPage - 3, currentPage + 2);
+
+  if (currentPage <= 3) {
+    preperaPagination = [1, 2, 3, 4, 5];
+  }
 
   return (
     <>
@@ -55,7 +60,7 @@ export const PhonesPaginations: React.FC<Props> = ({
         aria-label="Mute volume"
         className="pagination__button pagination__button--left"
       />
-      {result.map(page => (
+      {preperaPagination.map(page => (
         <button
           type="button"
           aria-label="Mute volume"

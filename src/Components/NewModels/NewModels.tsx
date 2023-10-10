@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { Phone } from '../../Type/Phone';
-import { widthDefinition } from '../../helper/widthDefinition';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 import './newModels.scss';
@@ -14,9 +13,6 @@ type Props = {
 
 export const NewModels: React.FC<Props> = ({ phones }) => {
   const sliderPhones = phones.sort((a, b) => b.fullPrice - a.fullPrice);
-  const [windowWidth] = useState(window.innerWidth);
-
-  // useEffect(() => setWindowWidth(window.innerWidth), [window.innerWidth]);
 
   return (
     <section className="models">
@@ -47,7 +43,17 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
             nextEl: '.models__button--right',
             prevEl: '.models__button--left',
           }}
-          slidesPerView={widthDefinition(windowWidth)}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            900: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper__models"
         >

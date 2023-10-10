@@ -65,29 +65,37 @@
 }
 
 .swiper {
+  &-slide {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
   &__slider {
     height: 100%;
-    width: 272px;
+    width: 1136px;
+  }
 
-    @include onTablet {
-      width: 560px;
-    }
+  &__models {
+    height: 100%;
 
     @include onDesktop {
       width: 1136px;
     }
   }
+}
 
-  &__models {
-    height: 100%;
-    width: 272px;
+.swiper-container {
+  width: 480px;
+}
 
-    @include onTablet {
-      width: 560px;
-    }
+@media screen and (min-width: 900px) {
+  .swiper-container {
+    width: 900px;
+  }
+}
 
-    @include onDesktop {
-      width: 1136px;
-    }
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
   }
 }

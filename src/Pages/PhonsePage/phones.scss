@@ -2,7 +2,7 @@
 
 .phones {
   &__list {
-    margin: 40px auto;
+    margin: 20px auto;
     display: grid;
     grid-template-columns: repeat(1, 272px);
     row-gap: 20px;
@@ -26,22 +26,6 @@
         gap: 0;
       }
     }
-  }
-}
-
-.dropdowns {
-  display: flex;
-  gap: 16px;
-  margin-top: 40px;
-
-  &__sort {
-    font-family: "Montserrat", sans-serif;
-    padding: 8px;
-    color: $gray-primary;
-    margin-top: 4px;
-    width: 176px;
-    height: 40px;
-    border: 1px solid $gray-icons-placeholders;
   }
 }
 

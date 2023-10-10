@@ -2,6 +2,8 @@ import { useSearchParams } from 'react-router-dom';
 import { SortBy } from '../../Type/SortByOptions';
 import { NumberOptions } from '../../Type/NumberOptions';
 
+import './dropdowns.scss';
+
 export const Dropdowns = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedValueSortBy = searchParams.get('sortBy') || 'Newest';
@@ -23,7 +25,7 @@ export const Dropdowns = () => {
 
   return (
     <div className="dropdowns">
-      <div className="sortBy">
+      <div className="dropdowns__sort--wrapper">
         <p>Sort by</p>
         <select
           value={selectedValueSortBy}
@@ -37,12 +39,12 @@ export const Dropdowns = () => {
         </select>
       </div>
 
-      <div className="items">
+      <div className="dropdowns__items--wrapper">
         <p>Items on page</p>
         <select
           value={selectedValueSortNumber}
           onChange={handleChangeSortNumber}
-          className="dropdowns__sort"
+          className="dropdowns__items"
           data-cy="paginationRight"
         >
           <option value={NumberOptions.Four}>{NumberOptions.Four}</option>

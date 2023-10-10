@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { widthDefinition } from '../../helper/widthDefinition';
 import { Phone } from '../../Type/Phone';
 
 import './likeAlso.scss';
@@ -15,7 +14,6 @@ type Props = {
 export const LikeAlso: React.FC<Props> = ({ phones }) => {
   const likePhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
-  const [windowWidth] = useState(window.innerWidth);
 
   return (
     <section className="like">
@@ -46,7 +44,17 @@ export const LikeAlso: React.FC<Props> = ({ phones }) => {
             nextEl: '.like__button--right',
             prevEl: '.like__button--left',
           }}
-          slidesPerView={widthDefinition(windowWidth)}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            900: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper__like"
         >

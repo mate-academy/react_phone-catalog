@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { widthDefinition } from '../../helper/widthDefinition';
 import { Phone } from '../../Type/Phone';
 
 import './hotPrice.scss';
@@ -13,13 +12,8 @@ type Props = {
 };
 
 export const HotPrice: React.FC<Props> = ({ phones }) => {
-  const [windowWidth] = useState(window.innerWidth);
   const hotPhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
-
-  // useEffect(() => {
-  //   widthDefinition(windowWidth);
-  // }, [window.innerWidth]);
 
   return (
     <section className="hot">
@@ -50,7 +44,17 @@ export const HotPrice: React.FC<Props> = ({ phones }) => {
             nextEl: '.hot__button--right',
             prevEl: '.hot__button--left',
           }}
-          slidesPerView={widthDefinition(windowWidth)}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            900: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper__hot"
         >
