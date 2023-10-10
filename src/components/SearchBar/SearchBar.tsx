@@ -61,7 +61,7 @@ export const SearchBar: React.FC<Props> = React.memo(({
           placeholder={`${t('searchPlaceholder')}`}
         />
 
-        {filterArray(goods, appliedQuery).length && appliedQuery.length && (
+        {!!filterArray(goods, appliedQuery).length && !!appliedQuery.length && (
           <ul
             className="searchBar__list"
           >
