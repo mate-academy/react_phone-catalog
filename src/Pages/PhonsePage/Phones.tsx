@@ -71,7 +71,7 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
                   <div className="title">
                     <p className="title__p">{`${searchInPhones.length} results`}</p>
                   </div>
-                  <section className="container--list phones__list">
+                  <section className="phones__list">
                     {searchInPhones.map(phone => (
                       <ProductCard phone={phone} key={phone.id} />
                     ))}

@@ -1,0 +1,21 @@
+@import "/src/style/main.scss";
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  margin: 24px 12px;
+
+  @include onTablet {
+    margin: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $gray-secondary;
+    font-size: 18px;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+  }
+}

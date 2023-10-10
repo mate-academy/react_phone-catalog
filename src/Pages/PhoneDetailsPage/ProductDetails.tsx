@@ -36,6 +36,7 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
   return (
     <>
       <Navigation />
+
       <main>
         {isLoading && <Loader />}
 
@@ -61,20 +62,22 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
             </section>
 
             <section className="details__main">
-              {images && <ProductImages images={images} />}
+              <div className="details__main--wrapper">
+                {images && <ProductImages images={images} />}
 
-              {phone && phoneId && (
-                <ProductParams
-                  colors={phone.colorsAvailable}
-                  currentCapacity={phone.capacity}
-                  nameId={phone.namespaceId}
-                  currentColor={phone.color}
-                  phone={phone}
-                  capacities={phone.capacityAvailable}
-                  phoneId={phoneId}
-                  phones={phones}
-                />
-              )}
+                {phone && phoneId && (
+                  <ProductParams
+                    colors={phone.colorsAvailable}
+                    currentCapacity={phone.capacity}
+                    nameId={phone.namespaceId}
+                    currentColor={phone.color}
+                    phone={phone}
+                    capacities={phone.capacityAvailable}
+                    phoneId={phoneId}
+                    phones={phones}
+                  />
+                )}
+              </div>
             </section>
 
             <section className="details__description">
@@ -185,7 +188,7 @@ export const ProductDetails: React.FC<Props> = ({ phones }) => {
                   </p>
 
                   <p className="details__description--tech--value">
-                    {phone?.cell}
+                    {phone?.cell.join(', ')}
                   </p>
                 </div>
               </div>

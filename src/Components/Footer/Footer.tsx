@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../style/main.scss';
+import './footer.scss';
 
 const contacts = 'https://www.linkedin.com/in/andriiyelieva/';
 const gitHub = 'https://github.com/AndriiYelieva';
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
             />
           </div>
         )
-          : (<div />)}
+          : (<div className="container__button--fake" />)}
       </div>
     </footer>
   );

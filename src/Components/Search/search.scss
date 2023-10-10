@@ -1,8 +1,12 @@
 @import "/src/style/main.scss";
 
 .search {
-  display: flex;
+  display: none;
   gap: 64px;
+
+  @include onDesktop {
+    display: flex;
+  }
 
   &:nth-last-child(1) {
     gap: 0;

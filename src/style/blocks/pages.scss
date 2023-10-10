@@ -1,4 +1,7 @@
 main {
-  margin: 0 auto;
-  flex-grow: 1;
+  margin: 0 24px;
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
 }

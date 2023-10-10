@@ -1,48 +1,94 @@
 @import "/src/style/main.scss";
 
-.container--hot {
-  margin: 0 auto;
-}
-
 .like {
-  margin-bottom: 24px;
+  margin: 32px auto 0;
 
-  &__phones {
+  &__wrapper {
     justify-content: space-between;
     align-items: center;
     display: flex;
-  }
+    margin: 0 auto 28px;
 
-  &__title {
-    margin: 0 0 24px;
-  }
-}
+    width: 272px;
 
-.button {
-  background: #fff;
-  border: 1px solid #e2e6e9;
-  height: 32px;
-  width: 32px;
+    @include onTablet {
+      width: 560px;
+    }
 
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  background-color: #fff;
-
-  &__left {
-    margin-right: 16px;
-    background-image: url(../../images/icons/ArrowLeft.svg);
-
-    &--active {
-      background-image: url(../../images/icons/ArrowLeft.svg);
+    @include onDesktop {
+      width: 100%;
     }
   }
 
-  &__right {
-    background-image: url(../../images/icons/ArrowRight.svg);
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    width: 200px;
 
-    &--active {
+    @include onTablet {
+      font-size: 32px;
+      width: auto;
+    }
+  }
+
+  &__button {
+    background: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-color: #fff;
+
+    display: flex;
+
+    &--left {
+      height: 32px;
+      width: 32px;
+      border: 1px solid #e2e6e9;
+      margin-right: 8px;
+      background-image: url(../../images/icons/ArrowLeft.svg);
+
+      &--active {
+        background-image: url(../../images/icons/ArrowLeft.svg);
+      }
+    }
+
+    &--right {
+      height: 32px;
+      width: 32px;
+      border: 1px solid #e2e6e9;
       background-image: url(../../images/icons/ArrowRight.svg);
+
+      &--active {
+        background-image: url(../../images/icons/ArrowRight.svg);
+      }
+    }
+  }
+}
+
+.swiper {
+  &__slider {
+    height: 100%;
+    width: 272px;
+
+    @include onTablet {
+      width: 560px;
+    }
+
+    @include onDesktop {
+      width: 1136px;
+    }
+  }
+
+  &__like {
+    height: 100%;
+    width: 272px;
+
+    @include onTablet {
+      width: 560px;
+    }
+
+    @include onDesktop {
+      width: 1136px;
     }
   }
 }

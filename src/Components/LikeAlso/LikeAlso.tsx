@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { widthDefinition } from '../../helper/widthDefinition';
 import { Phone } from '../../Type/Phone';
 
 import './likeAlso.scss';
@@ -12,27 +13,28 @@ type Props = {
 };
 
 export const LikeAlso: React.FC<Props> = ({ phones }) => {
-  const hotPhones = phones.filter(phone => phone.fullPrice > 1200)
+  const likePhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
+  const [windowWidth] = useState(window.innerWidth);
 
   return (
-    <div className="container--hot">
-      <div className="like__phones">
+    <section className="like">
+      <div className="like__wrapper">
         <h1 className="like__title">You may also like</h1>
 
-        <div className="button__container">
+        <div className="like__button">
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__left button__like--left',
+              'like__button like__button--left',
             )}
           />
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__right button__like--right',
+              'like__button like__button--right',
             )}
           />
         </div>
@@ -41,14 +43,14 @@ export const LikeAlso: React.FC<Props> = ({ phones }) => {
       <div className="product">
         <Swiper
           navigation={{
-            nextEl: '.button__like--right',
-            prevEl: '.button__like--left',
+            nextEl: '.like__button--right',
+            prevEl: '.like__button--left',
           }}
-          slidesPerView={4}
+          slidesPerView={widthDefinition(windowWidth)}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper__like"
         >
-          {hotPhones.map(phone => (
+          {likePhones.map(phone => (
             <SwiperSlide key={phone.id}>
               <ProductCard phone={phone} />
             </SwiperSlide>
@@ -56,6 +58,6 @@ export const LikeAlso: React.FC<Props> = ({ phones }) => {
         </Swiper>
       </div>
 
-    </div>
+    </section>
   );
 };

@@ -1,11 +1,39 @@
 @import "/src/style/main.scss";
 
 .details {
-  width: 1136px;
+  display: flex;
+  flex-direction: column;
+
+  @include onTablet {
+    display: block;
+  }
+
+  &__title {
+    &--name {
+      margin: 16px 0 40px;
+
+      font-size: 18px;
+
+      @include onTablet {
+        font-size: 24px;
+      }
+
+      @include onDesktop {
+        font-size: 32px;
+      }
+    }
+  }
 
   &__main {
     display: flex;
-    height: 464px;
+    height: 100%;
+    justify-content: center;
+
+    &--wrapper {
+      @include onTablet {
+        display: flex;
+      }
+    }
 
     &--photos {
       width: 80px;
@@ -49,15 +77,14 @@
     }
   }
 
-  &__title {
-    &--name {
-      margin: 16px 0 40px;
-    }
-  }
-
   &__description {
-    display: flex;
-    margin: 80px 0 0;
+    padding-top: 20px;
+
+    @include onDesktop {
+      display: flex;
+      padding: 0;
+      margin: 80px 0 0;
+    }
 
     &--h2 {
       font-size: 22px;
@@ -65,11 +92,16 @@
       padding-bottom: 16px;
       margin-bottom: 32px;
       border-bottom: 1px solid $gray-icons-placeholders;
+
     }
 
     &--about {
-      margin-right: 64px;
-      width: 559px;
+      max-width: 559px;
+      margin: 0 auto;
+
+      @include onDesktop {
+        margin-right: 64px;
+      }
 
       &--h3 {
         margin-bottom: 16px;
@@ -90,7 +122,12 @@
     }
 
     &--tech {
-      width: 512px;
+      max-width: 512px;
+      margin: 0 auto;
+
+      @include onDesktop {
+        margin: 0;
+      }
 
       &--specs {
         margin-bottom: 8px;
@@ -105,6 +142,7 @@
         font-style: normal;
         font-weight: 500;
         line-height: 21px;
+        text-align: start;
       }
 
       &--value {
@@ -113,12 +151,12 @@
         font-style: normal;
         font-weight: 500;
         line-height: 21px;
-        text-align: right;
+        text-align: end;
       }
     }
   }
 
   &__like {
-    margin: 80px 0;
+    margin-top: 40px;
   }
 }

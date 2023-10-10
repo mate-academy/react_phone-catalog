@@ -1,7 +1,11 @@
 @import "/src/style/main.scss";
 
 .params {
-  width: 420px;
+  max-width: 320px;
+
+  @include onDesktop {
+    width: 420px;
+  }
 
   &__color {
     padding: 0 0 24px;
@@ -48,6 +52,7 @@
         font-weight: 500;
         line-height: normal;
         text-decoration: line-through;
+        max-width: 320px;
       }
     }
 
@@ -129,7 +134,6 @@
 }
 
 .colors {
-
   &__list {
     display: flex;
   }

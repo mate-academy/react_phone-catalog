@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.scss';
 import { Search } from '../Search/Search';
@@ -19,51 +19,54 @@ export const Navigation: React.FC<Props> = ({
   searchQuery = '',
   setSearchQuery = () => { },
 }) => {
+  const location = useLocation();
   const favourites = useAppSelector(state => state.favourites);
   const cart = useAppSelector(state => state.cart);
+
+  // console.log(location.pathname === '/Menu');
 
   return (
     <header>
       <nav>
         <div className="nav">
-          <div className="nav__personally">
+          <div className="nav nav__container">
             <NavLink
               to="/"
               className="nav__link icon icon__logo"
             />
+            <div className="nav nav__links">
+              <NavLink
+                to="/"
+                className={getActiveLink}
 
-            <NavLink
-              to="/"
-              className={getActiveLink}
+              >
+                Home
+              </NavLink>
 
-            >
-              Home
-            </NavLink>
+              <NavLink
+                to="/Phones"
+                className={getActiveLink}
 
-            <NavLink
-              to="/Phones"
-              className={getActiveLink}
+              >
+                Phones
+              </NavLink>
 
-            >
-              Phones
-            </NavLink>
+              <NavLink
+                to="/Tablets"
+                className={getActiveLink}
 
-            <NavLink
-              to="/Tablets"
-              className={getActiveLink}
+              >
+                Tablets
+              </NavLink>
 
-            >
-              Tablets
-            </NavLink>
+              <NavLink
+                to="/Accessories"
+                className={getActiveLink}
 
-            <NavLink
-              to="/Accessories"
-              className={getActiveLink}
-
-            >
-              Accessories
-            </NavLink>
-
+              >
+                Accessories
+              </NavLink>
+            </div>
           </div>
           <div className="nav__personally">
             <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
@@ -98,6 +101,20 @@ export const Navigation: React.FC<Props> = ({
                 </div>
               )}
             </NavLink>
+
+            {location.pathname === '/Menu'
+              ? (
+                <Link
+                  to=".."
+                  className="icon icon__close"
+                />
+              )
+              : (
+                <Link
+                  to="/Menu"
+                  className="icon icon__menu"
+                />
+              )}
 
           </div>
         </div>

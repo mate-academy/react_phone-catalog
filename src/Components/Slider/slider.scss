@@ -4,7 +4,8 @@
   &--banner {
     position: relative;
     flex-wrap: wrap;
-    display: flex;
+
+    display: none;
     width: 1136px;
     height: 432px;
     justify-content: center !important;
@@ -16,6 +17,10 @@
       display: flex;
       justify-content: center;
       gap: 8px;
+    }
+
+    @include onDesktop {
+      display: flex;
     }
   }
 
@@ -55,7 +60,6 @@
   position: relative;
   background-color: $gray-white;
 
-  display: flex;
   width: 32px;
   height: 400px;
   border: 1px solid $gray-icons-placeholders;

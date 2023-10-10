@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { Phone } from '../../Type/Phone';
+import { widthDefinition } from '../../helper/widthDefinition';
 import { ProductCard } from '../ProductCard/ProductCard';
+
+import './newModels.scss';
 
 type Props = {
   phones: Phone[],
@@ -11,25 +14,28 @@ type Props = {
 
 export const NewModels: React.FC<Props> = ({ phones }) => {
   const sliderPhones = phones.sort((a, b) => b.fullPrice - a.fullPrice);
+  const [windowWidth] = useState(window.innerWidth);
+
+  // useEffect(() => setWindowWidth(window.innerWidth), [window.innerWidth]);
 
   return (
-    <div className="container--slider">
-      <div className="slider__phones">
-        <h1 className="slider__title">Brand new models</h1>
+    <section className="models">
+      <div className="models__wrapper">
+        <h1 className="models__title">Brand new models</h1>
 
-        <div className="button__container">
+        <div className="models__button">
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__left button__models--left',
+              'models__button models__button--left',
             )}
           />
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__right button__models--right',
+              'models__button models__button--right',
             )}
           />
         </div>
@@ -38,10 +44,10 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
       <div className="product">
         <Swiper
           navigation={{
-            nextEl: '.button__models--right',
-            prevEl: '.button__models--left',
+            nextEl: '.models__button--right',
+            prevEl: '.models__button--left',
           }}
-          slidesPerView={4}
+          slidesPerView={widthDefinition(windowWidth)}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper__models"
         >
@@ -53,6 +59,6 @@ export const NewModels: React.FC<Props> = ({ phones }) => {
         </Swiper>
       </div>
 
-    </div>
+    </section>
   );
 };

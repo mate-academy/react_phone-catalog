@@ -2,11 +2,22 @@
 
 .phones {
   &__list {
-    margin: 24px 0 40px;
-    display: flex;
-    width: 1136px;
-    flex-wrap: wrap;
-    gap: 16px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(1, 272px);
+    row-gap: 20px;
+
+    justify-content: center;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 272px);
+      gap: 16px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 272px);
+      width: 1136px;
+    }
 
     &--card {
       margin-bottom: 40px;

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { widthDefinition } from '../../helper/widthDefinition';
 import { Phone } from '../../Type/Phone';
 
 import './hotPrice.scss';
@@ -12,27 +13,32 @@ type Props = {
 };
 
 export const HotPrice: React.FC<Props> = ({ phones }) => {
+  const [windowWidth] = useState(window.innerWidth);
   const hotPhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
 
-  return (
-    <div className="container--hot">
-      <div className="slider__phones">
-        <h1 className="slider__title">Hot prices</h1>
+  // useEffect(() => {
+  //   widthDefinition(windowWidth);
+  // }, [window.innerWidth]);
 
-        <div className="button__container">
+  return (
+    <section className="hot">
+      <div className="hot__wrapper">
+        <h1 className="hot__title">Hot prices</h1>
+
+        <div className="hot__button">
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__left button__slider--left',
+              'hot__button hot__button--left',
             )}
           />
           <button
             type="button"
             aria-label="Mute volume"
             className={classNames(
-              'button button__right button__slider--right',
+              'hot__button hot__button--right',
             )}
           />
         </div>
@@ -41,12 +47,12 @@ export const HotPrice: React.FC<Props> = ({ phones }) => {
       <div className="product">
         <Swiper
           navigation={{
-            nextEl: '.button__slider--right',
-            prevEl: '.button__slider--left',
+            nextEl: '.hot__button--right',
+            prevEl: '.hot__button--left',
           }}
-          slidesPerView={4}
+          slidesPerView={widthDefinition(windowWidth)}
           modules={[EffectFade, Navigation, Pagination]}
-          className="swiper__slider"
+          className="swiper__hot"
         >
           {hotPhones.map(phone => (
             <SwiperSlide key={phone.id}>
@@ -56,6 +62,6 @@ export const HotPrice: React.FC<Props> = ({ phones }) => {
         </Swiper>
       </div>
 
-    </div>
+    </section>
   );
 };

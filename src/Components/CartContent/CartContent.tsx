@@ -12,55 +12,59 @@ import { BASE_URL } from '../../utils/BASE_URL';
 import './cartContent.scss';
 
 type Props = {
-  product: Phone;
+  cart: Phone;
 };
 
-export const CartContent: React.FC<Props> = ({ product }) => {
+export const CartContent: React.FC<Props> = ({ cart }) => {
   const dispatch = useAppDispatch();
 
   return (
     <div
-      className="products"
-      key={product.itemId}
+      className="carts"
+      key={cart.itemId}
     >
-      <div className="product products--content">
-        <button
-          type="button"
-          aria-label="Mute volume"
-          className="product__buttons product__buttons--close"
-          onClick={() => dispatch(removeCart(product))}
-        />
-
-        <img
-          src={`${BASE_URL}/_new/${product.image}`}
-          alt="product"
-          className="product--img"
-        />
-
-        <p className="product--name">{product.name}</p>
-
-        <div className="product--buttons">
+      <div className="cart carts__content">
+        <div className="carts__content--wrapper">
           <button
             type="button"
             aria-label="Mute volume"
-            className={classNames(
-              'product__buttons--minus product__buttons product--button',
-              { 'product__buttons--minusActive': product.amount !== 1 },
-            )}
-            onClick={() => dispatch(removeAmountCart(product))}
-            disabled={product.amount === 1}
+            className="cart__button cart__button--close"
+            onClick={() => dispatch(removeCart(cart))}
           />
-          {product.amount}
-          <button
-            type="button"
-            aria-label="Mute volume"
-            className="product__buttons--plus product__buttons product--button"
-            onClick={() => dispatch(addAmountCart(product))}
+
+          <img
+            src={`${BASE_URL}/_new/${cart.image}`}
+            alt="cart"
+            className="cart__img"
           />
         </div>
 
-        <div>
-          <h2 className="product--price">{`$${product.fullPrice}`}</h2>
+        <p className="cart__name">{cart.name}</p>
+
+        <div className="cart__price--wrapper">
+          <div className="cart__buttons">
+            <button
+              type="button"
+              aria-label="Mute volume"
+              className={classNames(
+                'cart__button--minus cart__button cart--button',
+                { 'cart__button--minusActive': cart.amount !== 1 },
+              )}
+              onClick={() => dispatch(removeAmountCart(cart))}
+              disabled={cart.amount === 1}
+            />
+            {cart.amount}
+            <button
+              type="button"
+              aria-label="Mute volume"
+              className="cart__button--plus cart__button cart--button"
+              onClick={() => dispatch(addAmountCart(cart))}
+            />
+          </div>
+
+          <>
+            <h2 className="cart__price">{`$${cart.fullPrice}`}</h2>
+          </>
         </div>
       </div>
     </div>

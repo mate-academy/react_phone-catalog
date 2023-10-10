@@ -1,6 +1,6 @@
 @import "/src/style/main.scss";
 
-.hot {
+.models {
   margin-bottom: 24px;
 
   &__wrapper {
@@ -37,7 +37,6 @@
     background-position: center;
     position: relative;
     background-color: #fff;
-
     display: flex;
 
     &--left {
@@ -79,7 +78,7 @@
     }
   }
 
-  &__hot {
+  &__models {
     height: 100%;
     width: 272px;
 

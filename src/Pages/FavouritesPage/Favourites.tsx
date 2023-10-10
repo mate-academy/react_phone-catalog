@@ -32,8 +32,8 @@ export const FavouritesPage: React.FC<Props> = ({
       {isLoading && <Loader />}
 
       {!isLoading && (
-        <main className="favourites">
-          <section>
+        <main>
+          <section className="favourites">
             <div className="breadcrumbs">
               <Link
                 to="/"
@@ -49,12 +49,12 @@ export const FavouritesPage: React.FC<Props> = ({
 
               <p className="title__p">{`${searchInPhones.length} models`}</p>
             </div>
-          </section>
 
-          <section className="container--list phones__list">
-            {searchInPhones.map(phone => (
-              <ProductCard phone={phone} key={phone.id} />
-            ))}
+            <div className="favourites__list">
+              {searchInPhones.map(phone => (
+                <ProductCard phone={phone} key={phone.id} />
+              ))}
+            </div>
           </section>
         </main>
       )}

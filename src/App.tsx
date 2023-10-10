@@ -13,6 +13,7 @@ import { Phone } from './Type/Phone';
 import { Footer } from './Components/Footer/Footer';
 import { PhonesPage } from './Pages/PhonsePage/Phones';
 import { getPhones } from './api/phones';
+import { Menu } from './Pages/BurgerMenu/Menu';
 
 export const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -30,7 +31,12 @@ export const App = () => {
     <div className="App">
 
       <Routes>
-        <Route path="/" element={<HomePage phones={phones} />} />
+        <Route
+          path="/"
+          element={(
+            <HomePage phones={phones} isLoading={isLoading} />
+          )}
+        />
 
         <Route path="/Phones">
           <Route
@@ -56,6 +62,10 @@ export const App = () => {
         <Route
           path="/Shopping"
           element={(<CartPage isLoading={isLoading} />)}
+        />
+        <Route
+          path="/Menu"
+          element={(<Menu isLoading={isLoading} />)}
         />
 
         <Route path="*" element={<NotFound />} />

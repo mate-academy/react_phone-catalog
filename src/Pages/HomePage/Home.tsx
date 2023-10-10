@@ -4,6 +4,7 @@ import {
   NewModels,
   Slider,
   HotPrice,
+  Loader,
 } from '../../Components';
 import { Phone } from '../../Type/Phone';
 
@@ -12,21 +13,25 @@ import './home.scss';
 
 type Props = {
   phones: Phone[],
+  isLoading: boolean;
 };
 
-export const HomePage: React.FC<Props> = ({ phones }) => {
+export const HomePage: React.FC<Props> = ({ phones, isLoading }) => {
   return (
     <>
       <Navigation />
 
       <main>
-        <Slider />
+        {isLoading && (<Loader />)}
 
-        <HotPrice phones={phones} />
-
-        <Category phones={phones} />
-
-        <NewModels phones={phones} />
+        {!isLoading && (
+          <>
+            <Slider />
+            <HotPrice phones={phones} />
+            <Category phones={phones} />
+            <NewModels phones={phones} />
+          </>
+        )}
       </main>
     </>
   );

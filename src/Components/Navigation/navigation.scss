@@ -4,16 +4,17 @@
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  width: 64px;
+  height: 64px;
 
   &__logo {
     width: 40px;
+    margin: 0 64px 0 24px;
     background-image: url("../../images/LOGO.svg");
   }
 
   &__favourites {
     text-decoration: none;
-    width: 64px;
-    height: 64px;
     box-shadow: -1px 0 0 0 $color-shadow;
     background-image: url("../../images/icons/Favourites.svg");
 
@@ -29,8 +30,6 @@
   }
 
   &__shopping {
-    width: 64px;
-    height: 64px;
     box-shadow: -1px 0 0 0 $color-shadow;
     background-image: url("../../images/icons/Shopping.svg");
 
@@ -38,6 +37,24 @@
       position: relative;
       color: $gray-primary;
       border-bottom: 3px solid $gray-primary;
+    }
+  }
+
+  &__menu {
+    box-shadow: -1px 0 0 0 $color-shadow;
+    background-image: url("../../images/icons/BurgerMenu.svg");
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__close {
+    box-shadow: -1px 0 0 0 $color-shadow;
+    background-image: url("../../images/icons/MenuCloce.svg");
+
+    @include onTablet {
+      display: none;
     }
   }
 }
@@ -57,6 +74,20 @@
 
     &:nth-last-child(1) {
       gap: 0;
+    }
+
+    &:first-child {
+      gap: 0;
+      margin: 0;
+    }
+  }
+
+  &__links {
+    display: none;
+    gap: 64px;
+
+    @include onTablet {
+      display: flex;
     }
   }
 
@@ -85,10 +116,6 @@
       width: 100%;
       height: 3px;
       background-color: $gray-primary;
-    }
-
-    &:first-child {
-      margin-left: 24px;
     }
 
     &:last-child {

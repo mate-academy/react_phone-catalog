@@ -2,5 +2,23 @@
 
 .favourites {
   margin: auto;
-  width: 1136px;
+
+  &__list {
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(1, 272px);
+    gap: 20px;
+
+    justify-content: center;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 272px);
+      gap: 16px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 272px);
+      width: 1136px;
+    }
+  }
 }

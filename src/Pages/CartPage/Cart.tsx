@@ -18,7 +18,7 @@ export const CartPage: React.FC<Props> = ({ isLoading }) => {
 
   const totalPrice = cart.reduce((accumulator, currentProduct) => {
     if (currentProduct.amount !== undefined) {
-      return accumulator + (currentProduct.amount * currentProduct.price);
+      return accumulator + (currentProduct.amount * currentProduct.fullPrice);
     }
 
     return 0;
@@ -39,33 +39,33 @@ export const CartPage: React.FC<Props> = ({ isLoading }) => {
       {isLoading && <Loader />}
 
       {!isLoading && (
-        <main className="shopping">
+        <main className="cart">
           <section>
-            <div className="shopping__title">
+            <div className="cart__title">
               <ButtonBack />
 
-              <h1 className="shopping__title--cart">Cart</h1>
+              <h1 className="cart__title--cart">Cart</h1>
             </div>
           </section>
 
           {cart.length !== 0
             ? (
-              <section className="shopping__content">
-                <div className="shopping__content--carts">
+              <section className="cart__content">
+                <div className="cart__content--cards">
                   {cart.map(product => (
-                    <CartContent product={product} key={product.id} />
+                    <CartContent cart={product} key={product.id} />
                   ))}
                 </div>
-                <div className="shopping__outcome">
-                  <h1 className="shopping__outcome--price">{`$${totalPrice}`}</h1>
+                <div className="cart__outcome">
+                  <h1 className="cart__outcome--price">{`$${totalPrice}`}</h1>
 
-                  <p className="shopping__outcome--total">
+                  <p className="cart__outcome--total">
                     {`Total for ${totalItems} items`}
                   </p>
 
                   <button
                     type="button"
-                    className="shopping__outcome--checkout"
+                    className="cart__outcome--checkout"
                   >
                     Checkout
                   </button>

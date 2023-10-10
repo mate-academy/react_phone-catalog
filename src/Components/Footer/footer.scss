@@ -1,21 +1,41 @@
+@import "/src/style/main.scss";
+
 .footer {
   box-shadow: 0 -1px 0 0 $color-shadow;
+
+  margin: 0 24px;
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
 }
 
 .container {
-  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 
-  height: 96px;
-  width: 1136px;
+  max-width: 1136px;
   background: $gray-white;
 
+  @include onTablet {
+    height: 96px;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    height: 96px;
+    width: 1136px;
+  }
+
   &__logo {
-    background-repeat: no-repeat;
-    background-position: center;
-    position: relative;
+    margin: 20px auto 0;
+
+    @include onTablet {
+      margin: 0;
+    }
 
     width: 40px;
     height: 24px;
@@ -24,10 +44,20 @@
 
   &__description {
     display: flex;
-    gap: 64px;
+    gap: 12px;
+
+    @include onTablet {
+      gap: 64px;
+    }
   }
 
   &__link {
+    margin: 20px auto;
+
+    @include onTablet {
+      margin: 0;
+    }
+
     color: $gray-secondary;
 
     font-size: 12px;
@@ -43,8 +73,14 @@
     display: flex;
     gap: 16px;
     align-items: center;
-
+    justify-content: center;
+    margin: auto 0 24px;
     height: 32px;
+
+    @include onTablet {
+      justify-content: flex-start;
+      margin: 0;
+    }
 
     &--text {
       color: $gray-secondary;
@@ -55,9 +91,7 @@
       background-position: center;
       position: relative;
       background-color: $gray-white;
-
       top: 0;
-      behavior: "smooth";
 
       display: flex;
       width: 32px;
@@ -65,6 +99,12 @@
       border: 1px solid $gray-icons-placeholders;
 
       background-image: url("../../images/icons/ArrowTop.svg");
+    }
+
+    &--fake {
+      margin: 0;
+      padding: 0;
+      height: 0;
     }
   }
 }

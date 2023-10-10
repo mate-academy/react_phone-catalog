@@ -14,8 +14,8 @@ type Props = {
 
 export const Category: React.FC<Props> = ({ phones }) => {
   return (
-    <div className="container--shop">
-      <h1>Shop by category</h1>
+    <section className="category__section">
+      <h1 className="category__name">Shop by category</h1>
 
       <div className="category">
         <Link
@@ -82,6 +82,6 @@ export const Category: React.FC<Props> = ({ phones }) => {
         </Link>
 
       </div>
-    </div>
+    </section>
   );
 };
