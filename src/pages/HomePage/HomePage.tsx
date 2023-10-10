@@ -2,6 +2,8 @@ import { Categories } from '../../components/Categories';
 import { ProductSlider } from '../../components/ProductsSlider';
 import { ImageSlider } from '../../components/ImageSlider';
 
+import { FullPriceProvider } from '../../storage/fullPriceСontext';
+
 import './homepage.scss';
 
 export const HomePage:React.FC = () => {
@@ -22,9 +24,11 @@ export const HomePage:React.FC = () => {
       </section>
 
       <section className="home-page__section">
-        <ProductSlider
-          title="Brand new models"
-        />
+        <FullPriceProvider full>
+          <ProductSlider
+            title="Brand new models"
+          />
+        </FullPriceProvider>
       </section>
     </div>
   );

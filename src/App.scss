@@ -24,6 +24,10 @@ li {
   list-style: none;
 }
 
+img {
+  user-select: none;
+}
+
 button {
   cursor: pointer;
   padding: 0;
@@ -32,6 +36,7 @@ button {
 }
 
 .app {
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

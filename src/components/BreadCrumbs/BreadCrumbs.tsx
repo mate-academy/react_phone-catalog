@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './breadcrumbs.scss';
 
-const capitalize = (string: string) => {
+export const capitalize = (string: string) => {
   return string.slice(0, 1).toUpperCase() + string.slice(1);
 };
 
@@ -15,7 +15,10 @@ export const BreadCrumbs: React.FC<Props> = ({ productName }) => {
   const directory = pathname.split('/')[1];
 
   return (
-    <div className="breadcrumbs">
+    <div
+      data-cy="breadCrumbs"
+      className="breadcrumbs"
+    >
       <Link to="/" className="breadcrumbs__icon breadcrumbs__icon--home" />
 
       <div className="breadcrumbs__icon breadcrumbs__icon--arrow" />

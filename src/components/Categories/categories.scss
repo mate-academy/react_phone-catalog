@@ -4,18 +4,6 @@
   &__title {
     @include h1Text;
     margin-bottom: 24px;
-
-    @include onLaptop {
-      margin-bottom: 20px;
-    }
-
-    @include onTablet {
-      margin-bottom: 18px;
-    }
-
-    @include onPhone {
-      margin-bottom: 16px;
-    }
   }
 
   &__links {
@@ -40,8 +28,6 @@
     @include onTablet {
       flex: 0 0;
     }
-
-
   }
 
   &__link-image-container {

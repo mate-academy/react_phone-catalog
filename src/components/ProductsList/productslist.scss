@@ -1,6 +1,12 @@
+@import '../../style-utils/style-utils';
+
 .products-list {
   display: flex;
   row-gap: 40px;
   column-gap: 16px;
   flex-wrap: wrap;
+
+  @include onLaptop {
+    justify-content: center;
+  }
 }

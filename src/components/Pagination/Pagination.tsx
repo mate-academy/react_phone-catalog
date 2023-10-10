@@ -36,7 +36,7 @@ export const Pagination: React.FC<Props> = ({
     visiblePages = pages;
   } else if (currentPage < 3) {
     visiblePages = [...pages.slice(0, 3), ...pages.slice(-1)];
-  } else if (currentPage > pages.length - 3) {
+  } else if (currentPage > pages.length - 2) {
     visiblePages = [...pages.slice(0, 1), ...pages.slice(-3)];
   } else {
     visiblePages = [

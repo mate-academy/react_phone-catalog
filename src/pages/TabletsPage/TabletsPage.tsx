@@ -1,7 +1,9 @@
-import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { ProductsLayout } from '../../components/ProductsLayout';
 
 export const TabletsPage:React.FC = () => {
   return (
-    <div><BreadCrumbs /></div>
+    <ProductsLayout
+      title="Tablets"
+    />
   );
 };

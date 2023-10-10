@@ -27,7 +27,7 @@
     @include squareButton(32px);
 
     &--active {
-      @include selectedButton;
+      @include squareButtonSelected;
     }
   }
 

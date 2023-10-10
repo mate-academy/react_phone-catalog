@@ -13,8 +13,10 @@ import {
   getBrandNewProducts,
   getHotPriceProducts,
   getPhones,
+  getSuggestedProducts,
 } from '../../api/products';
 import { Loader } from '../Loader';
+import { LoadingError } from '../LoadingError';
 
 type Props = {
   title: string;
@@ -30,9 +32,10 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
   const [itemIndex, setItemIndex] = useState(0);
   const [itemsVisible, setItemsVisible] = useState(4);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const isRightDisabled = (itemIndex + 1) * itemsVisible >= products.length;
-  const isLeftDisabled = (itemIndex - 1) * itemsVisible <= 0;
+  const isLeftDisabled = itemIndex * itemsVisible <= 0;
 
   useEffect(() => {
     let fetchFunction;
@@ -44,12 +47,24 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
       case 'Brand new models':
         fetchFunction = getBrandNewProducts;
         break;
+      case 'You may also like':
+        fetchFunction = getSuggestedProducts;
+        break;
       default:
         fetchFunction = getPhones;
     }
 
     fetchFunction()
-      .then(setProducts)
+      .then((result) => {
+        if (!result) {
+          throw new Error();
+        }
+
+        setProducts(result);
+      })
+      .catch(() => {
+        setHasError(true);
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -112,17 +127,22 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="product-slider__slider-container">
-          <div className="product-slider__slider" data-cy="cardsContainer">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onlyFullPrice={title === 'Brand new models'}
-              />
-            ))}
-          </div>
-        </div>
+        <>
+          {hasError ? (
+            <LoadingError />
+          ) : (
+            <div className="product-slider__slider-container">
+              <div className="product-slider__slider" data-cy="cardsContainer">
+                {products.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

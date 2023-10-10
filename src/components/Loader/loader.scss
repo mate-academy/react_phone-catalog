@@ -2,13 +2,17 @@
 
 .loader {
   display: flex;
-  width: 100%;
-  height: 100%;
-  
   justify-content: center;
   align-items: center;
 
   user-select: none;
+
+  &--full-page {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
 
   &__content {
     width: 30px;

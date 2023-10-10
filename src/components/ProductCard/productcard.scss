@@ -29,6 +29,10 @@
     font-weight: 500;
     height: 42px;
     margin-bottom: 6px;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__price-container {
@@ -84,9 +88,17 @@
   &__button-add-cart {
     @include buttonsText;
     @include primaryButton;
+
+    &--added {
+      @include primaryButtonSelected;
+    }
   }
 
   &__button-favorites {
     @include squareButton(40px);
+
+    &--added {
+      @include squareButtonIconSelected;
+    }
   }
 }

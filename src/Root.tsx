@@ -8,19 +8,37 @@ import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { CartProvider } from './storage/cartContext';
+import { FavouritesProvider } from './storage/favoritesContext';
 
 export const Root: React.FC = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
-        <Route path="phones" element={<PhonesPage />} />
-        <Route path="tablets" element={<TabletsPage />} />
-        <Route path="accessories" element={<AccessoriesPage />} />
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
-  </Router>
+  <CartProvider>
+    <FavouritesProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+
+            <Route path="phones">
+              <Route index element={<PhonesPage />} />
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
+
+            <Route path="tablets">
+              <Route index element={<TabletsPage />} />
+            </Route>
+
+            <Route path="accessories">
+              <Route index element={<AccessoriesPage />} />
+            </Route>
+
+            <Route path="favorites" element={<FavoritesPage />} />
+            <Route path="cart" element={<CartPage />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </FavouritesProvider>
+  </CartProvider>
 );

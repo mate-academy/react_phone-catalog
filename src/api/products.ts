@@ -1,26 +1,43 @@
+/* eslint-disable no-console */
 import { Phone } from '../types/phone';
-import { Product } from '../types/product';
+import { PhoneDetails } from '../types/phoneDetails';
 
 const apiUrl = 'http://localhost:3000/';
 const phonesUrl = '_new/products.json';
-const productsUrl = 'api/products.json';
+const phoneDetailsUrl = '_new/products';
 
 function getDiscount(product: Phone) {
   return product.fullPrice - product.price;
 }
 
-function wait(delay: number): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
+// function wait(delay: number): Promise<void> {
+//   return new Promise(resolve => {
+//     setTimeout(resolve, delay);
+//   });
+// }
+
+function shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map((value: T) => ({ value, sortKey: Math.random() }))
+    .sort((a, b) => a.sortKey - b.sortKey)
+    .map(({ value }) => value);
 }
 
 export function getFromServer<T>(url: string): Promise<T> {
   const URL = `${apiUrl}/${url}`;
 
-  return wait(1000)
-    .then(() => fetch(URL))
+  // return wait(1000)
+  //   .then(() => fetch(URL))
+  return fetch(URL)
     .then(response => {
+      if (response.ok) {
+        const contentType = response.headers.get('Content-Type');
+
+        if (contentType && contentType.includes('text/html')) {
+          return null;
+        }
+      }
+
       if (!response.ok) {
         throw new Error(`${response.status} ${response.statusText}`);
       }
@@ -33,8 +50,8 @@ export function getPhones() {
   return getFromServer<Phone[]>(phonesUrl);
 }
 
-export function getProducts() {
-  return getFromServer<Product[]>(productsUrl);
+export function getPhoneDetails(phoneId: string) {
+  return getFromServer<PhoneDetails>(`${phoneDetailsUrl}/${phoneId}.json`);
 }
 
 export function getHotPriceProducts() {
@@ -51,12 +68,7 @@ export function getBrandNewProducts() {
     }).slice(0, 20));
 }
 
-export function getTablets() {
-  return getProducts()
-    .then(products => products.filter(product => product.type === 'tablet'));
-}
-
-export function getAccessories() {
-  return getProducts()
-    .then(products => products.filter(product => product.type === 'accessory'));
+export function getSuggestedProducts() {
+  return getPhones()
+    .then(phones => shuffleArray<Phone>([...phones]).slice(0, 20));
 }

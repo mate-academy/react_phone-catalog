@@ -10,17 +10,27 @@
 
   &__content {
     display: flex;
+    gap: 48px;
     justify-content: space-between;
     padding-left: 24px;
     height: 100%;
+
+    @include onPhone {
+      gap: 16px;
+      padding-left: 16px;
+    }
   }
 
   &__left-side {
     display: flex;
-    gap: 64px;
+    gap: 48px;
+
+    @include onLaptop {
+      gap: 32px;
+    }
 
     @include onPhone {
-      gap: 32px;
+      gap: 16px;
     }
   }
 
@@ -55,7 +65,7 @@
     @include uppercaseText;
 
     position: relative;
-    padding: 27px 4px 26px;
+    padding: 27px 16px 26px;
 
 
     &--active {
@@ -69,6 +79,7 @@
   }
 
   &__icon-box {
+    flex-shrink: 0;
     width: 64px;
     height: 64px;
 
@@ -80,13 +91,13 @@
 
   &__icon {
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     height: 100%;
     box-sizing: border-box;
     box-shadow: -1px 0 0 $color-elements;
-
-    background-repeat: no-repeat;
-    background-position: center;
 
     &:hover {
       background-color: $color-hover;
@@ -98,24 +109,53 @@
         opacity: 1;
       }
     }
+  }
 
-    &--favorites {
-      background-image: url(../../img/Favourites.svg);
-    }
+  &__icon-container {
+    position: relative;
+    width: 16px;
+    height: 16px;
 
-    &--cart {
-      background-image: url(../../img/Cart.svg);
+    & > svg {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
+  }
+
+  &__counter {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 9px;
+
+    color: $color-white;
+    width: 14px;
+    height: 14px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: $color-red;
+
+    transform: translate(50%, -50%);
+  }
+
+  &__menu-container {
+    justify-content: center;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
   }
 
   &__menu {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    background-image: url(../../img/Hamburger.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
-
 }
 

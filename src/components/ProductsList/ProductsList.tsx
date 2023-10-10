@@ -4,7 +4,7 @@ import { Phone } from '../../types/phone';
 import { ProductCard } from '../ProductCard';
 
 type Props = {
-  products: Phone[];
+  products: Phone[],
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
@@ -14,7 +14,6 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
         <ProductCard
           key={product.id}
           product={product}
-          onlyFullPrice={false}
         />
       ))}
     </div>

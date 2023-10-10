@@ -4,16 +4,18 @@
   @include containerBase;
   position: relative;
 
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-grow: 1;
+  flex-direction: row;
 
-  padding: 24px 1em 80px;
+  width: 100%;
+
+  padding: 24px 16px 80px;
 
   @include onTablet {
     padding-bottom: 60px;
-    padding-top: 18px;
+    padding-top: 24px;
   }
 
   &--extend {

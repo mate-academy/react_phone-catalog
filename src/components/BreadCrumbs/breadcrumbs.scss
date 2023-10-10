@@ -6,6 +6,8 @@
   gap: 8px;
 
   &__icon {
+    user-select: none;
+
     display: block;
     width: 16px;
     height: 16px;
@@ -26,10 +28,13 @@
 
   &__current {
     @include smallText;
+    line-height: 1;
   }
 
   &__link {
     @include smallText;
+    line-height: 1;
     color: $color-primary;
+    user-select: none;
   }
 }
