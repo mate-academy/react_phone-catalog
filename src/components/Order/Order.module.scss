@@ -1,6 +1,8 @@
 @import "../../styles/variables.scss";
 
 .order {
+  flex-grow: 1;
+  margin-right: 17%;
   color: $Secondary;
 
   &SmallTitle {
@@ -11,7 +13,6 @@
     padding-bottom: 24px;
     margin-bottom: 24px;
     border-bottom: 2px solid $Elements;
-    width: 320px;
   }
 
   &AvailableBlock {
@@ -45,7 +46,37 @@
     }
   }
 
+  &Price {
+    color: $Primary;
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   &FullPrice {
-    color: $Elements;
+    color: $Secondary;
+
+    text-justify: inter-cluster;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &Btns {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 32px;
+
+    &Btn {
+      height: 48px;
+      flex-grow: 1;
+    }
+
+    &Icon {
+      padding: 15px;
+      height: auto;
+    }
   }
 }

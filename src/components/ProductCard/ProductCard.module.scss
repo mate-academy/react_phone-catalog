@@ -20,6 +20,13 @@
   word-wrap: break-word;
 }
 
+hr {
+  background: $Elements;
+  height: 1px;
+
+  margin: 6.5px 0 16px;
+}
+
 .fullPrice {
   color: $Secondary;
   font-weight: 500;
@@ -27,30 +34,14 @@
   margin-bottom: 8px;
 }
 
-.specificationsWrapper {
-  border-top: 1px solid $Elements;
-  padding: 16px 0;
-}
-
-.specifications {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-
-  &:last-child {
-    margin: 0;
-  }
-
-  &Name {
-    color: $Secondary;
-  }
-}
-
 .btns {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+
+  margin-top: 16px;
+
   &Icon {
     padding: 12px;
   }

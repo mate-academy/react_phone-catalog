@@ -1,15 +1,36 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+
 import styles from './Order.module.scss';
+import Favourites from '../../img/icons/Favourites.svg';
+import FavouritesRed from '../../img/icons/FavouritesRed.svg';
+
 import { ProductDetail } from '../../types/ProductDetails';
+import { Product } from '../../types/Product';
+
 import { numberToCurrency } from '../../utils/numberToCurrency';
+import { useToggle } from '../../hooks/useToggle';
+import { useProducts } from '../../Store';
+
+import { Button } from '../Button';
+import { Icon } from '../Icon';
+import { SpecificationsProduct } from '../SpecificationsProduct';
 
 type Props = {
-  currentProduct: ProductDetail;
+  productDetail: ProductDetail;
 };
 
-export const Order: React.FC<Props> = ({ currentProduct }) => {
-  const idWithoutParams = currentProduct?.id.split('-').slice(0, -2).join('-');
+export const Order: React.FC<Props> = ({ productDetail }) => {
+  const {
+    products,
+    cartProducts,
+    setCartProducts,
+    favouritesProducts,
+    setFavouritesProducts,
+  } = useProducts();
+  const currentProduct = products
+    .find(prod => prod.phoneId === productDetail.id) as Product;
+  const idWithoutParams = productDetail?.id.split('-').slice(0, -2).join('-');
   const colors: { [key: string]: string } = {
     black: '#212322',
     gold: '#F5D3BA',
@@ -26,6 +47,19 @@ export const Order: React.FC<Props> = ({ currentProduct }) => {
     default: '#fff',
   };
 
+  const [isSelected, toggleCart] = useToggle(
+    'Cart',
+    cartProducts,
+    setCartProducts,
+    currentProduct,
+  );
+  const [isFavourit, toggleFavourit] = useToggle(
+    'Favourit',
+    favouritesProducts,
+    setFavouritesProducts,
+    currentProduct,
+  );
+
   return (
     <div className={styles.order}>
       <div className={styles.orderBlock}>
@@ -33,13 +67,13 @@ export const Order: React.FC<Props> = ({ currentProduct }) => {
           Available colors
         </p>
         <ul className={styles.orderAvailableBlock}>
-          {currentProduct.colorsAvailable.map((color) => (
+          {productDetail.colorsAvailable.map((color) => (
             <Link
               key={color}
               className={classNames([styles.orderColorLink], {
-                [styles.orderColorLinkActive]: color === currentProduct.color,
+                [styles.orderColorLinkActive]: color === productDetail.color,
               })}
-              to={`../../catalog/phones/${idWithoutParams}-${currentProduct.capacity}-${color}`}
+              to={`../../catalog/phones/${idWithoutParams}-${productDetail.capacity}-${color}`}
             >
               <li
                 className={styles.orderColor}
@@ -52,15 +86,15 @@ export const Order: React.FC<Props> = ({ currentProduct }) => {
       <div className={styles.orderBlock}>
         <p className={`${styles.orderSmallTitle} smallText`}>Select capacity</p>
         <ul className={styles.orderAvailableBlock}>
-          {currentProduct.capacityAvailable.map((capacity) => (
+          {productDetail.capacityAvailable.map((capacity) => (
             <Link
               key={capacity}
-              to={`../../catalog/phones/${idWithoutParams}-${capacity}-${currentProduct.color}`}
+              to={`../../catalog/phones/${idWithoutParams}-${capacity}-${productDetail.color}`}
             >
               <li
                 className={classNames([styles.orderCapacity], {
                   [styles.orderCapacityActive]:
-                    capacity === currentProduct.capacity,
+                    capacity === productDetail.capacity,
                 })}
               >
                 {capacity}
@@ -69,14 +103,29 @@ export const Order: React.FC<Props> = ({ currentProduct }) => {
           ))}
         </ul>
       </div>
-      <h1 className="orderPrice">
-        {numberToCurrency(currentProduct.priceDiscount)}
+      <div className={styles.orderPrice}>
+        <h1>
+          {numberToCurrency(productDetail.priceDiscount)}
+        </h1>
         <s className={styles.orderFullPrice}>
-          {numberToCurrency(currentProduct.priceRegular)}
+          {numberToCurrency(productDetail.priceRegular)}
         </s>
-      </h1>
-      <div className="orderBtns">1</div>
-      <div className="orderSpecifications">1</div>
+      </div>
+      <div className={styles.orderBtns}>
+        <Button
+          text={isSelected ? 'Added to cart' : 'Add to cart'}
+          className={styles.orderBtnsBtn}
+          onClick={toggleCart}
+          isSelected={!!isSelected}
+        />
+        <Icon
+          icon={isFavourit ? FavouritesRed : Favourites}
+          alt="Favourites"
+          stylesName={styles.orderBtnsIcon}
+          onClick={toggleFavourit}
+        />
+      </div>
+      <SpecificationsProduct productDetail={productDetail} />
     </div>
   );
 };

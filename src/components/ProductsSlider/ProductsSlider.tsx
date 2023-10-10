@@ -21,7 +21,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: (
-      <Icon stylesName={`${styles.arrow} ${styles.arrowNext}`} icon={arrowRight} isCarousel />
+      <Icon stylesName={`${styles.arrow}`} icon={arrowRight} isCarousel />
     ),
     prevArrow: (
       <Icon stylesName={`${styles.arrow} ${styles.arrowPrev}`} icon={arrowLeft} isCarousel />

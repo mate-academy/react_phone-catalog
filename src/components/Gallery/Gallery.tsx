@@ -7,12 +7,12 @@ import styles from './Gallery.module.scss';
 import { ProductDetail } from '../../types/ProductDetails';
 
 type Props = {
-  currentProduct: ProductDetail
+  productDetail: ProductDetail
 };
 
-export const Gallery: React.FC<Props> = ({ currentProduct }) => {
+export const Gallery: React.FC<Props> = ({ productDetail }) => {
   const galleryLargeRef = useRef<HTMLImageElement>(null);
-  const [carrImg, setCarrImg] = useState(`http://localhost:3000/_new/${currentProduct.images[0]}`);
+  const [carrImg, setCarrImg] = useState(`http://localhost:3000/_new/${productDetail.images[0]}`);
 
   const changeImg = (img: string) => {
     if (galleryLargeRef.current) {
@@ -22,14 +22,14 @@ export const Gallery: React.FC<Props> = ({ currentProduct }) => {
   };
 
   useEffect(() => {
-    setCarrImg(`http://localhost:3000/_new/${currentProduct.images[0]}`);
-  }, [currentProduct]);
+    setCarrImg(`http://localhost:3000/_new/${productDetail.images[0]}`);
+  }, [productDetail]);
 
   return (
     <>
       <div className={styles.gallery}>
         <ul className={styles.galleryList}>
-          {currentProduct?.images.map(img => (
+          {productDetail?.images.map(img => (
             <li key={img}>
               <img
                 className={classNames([styles.galleryItem],
@@ -44,7 +44,7 @@ export const Gallery: React.FC<Props> = ({ currentProduct }) => {
         <div>
           <img
             className={styles.galleryLarge}
-            src={`./_new/${currentProduct?.images[0]}`}
+            src={`./_new/${productDetail?.images[0]}`}
             alt="large"
             ref={galleryLargeRef}
           />

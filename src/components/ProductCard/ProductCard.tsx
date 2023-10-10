@@ -11,6 +11,7 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Product } from '../../types/Product';
 import { useToggle } from '../../hooks/useToggle';
+import { SpecificationsProduct } from '../SpecificationsProduct';
 
 type Props = {
   product: Product
@@ -41,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div
       className={styles.productCard}
     >
-      <Link to={`catalog/${product.category}/${product.itemId}`}>
+      <Link to={`../../catalog/${product.category}/${product.itemId}`}>
         <img
           className={styles.productImg}
           src={`./_new/${product.image}`}
@@ -55,24 +56,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           {numberToCurrency(product.fullPrice)}
         </s>
       </h2>
-      <div className={`smallText ${styles.specificationsWrapper}`}>
-        <div className={styles.specifications}>
-          <p className={styles.specificationsName}>Screen</p>
-          <p>{product.screen}</p>
-        </div>
-        <div className={styles.specifications}>
-          <p className={styles.specificationsName}>Capacity</p>
-          <p>{product.capacity}</p>
-        </div>
-        <div className={styles.specifications}>
-          <p className={styles.specificationsName}>RAM</p>
-          <p>{product.ram}</p>
-        </div>
-      </div>
+      <hr />
+      <SpecificationsProduct product={product} />
       <div className={styles.btns}>
         <Button
           text={isSelected ? 'Added to cart' : 'Add to cart'}
-          onClick={typeof toggleCart === 'function' ? toggleCart : () => {}}
+          onClick={toggleCart}
           isSelected={!!isSelected}
         />
         <Icon

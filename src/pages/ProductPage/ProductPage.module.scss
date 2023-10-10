@@ -1,8 +1,62 @@
 @import "../../styles/variables.scss";
 
+hr {
+  background: $Elements;
+  height: 1px;
+}
+
 .intro {
+  position: relative;
+
   display: flex;
   align-items: center;
+  gap: 64px;
 
-  margin-top: 40px;
+  margin: 40px 0 80px;
+
+}
+
+.id {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  color: $Icons;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  gap: 64px;
+
+  &Left {
+    width: 50%;
+
+    hr {
+      margin: 16px 0 32px;
+    }
+  }
+
+  &Right {
+    width: 46%;
+
+    hr {
+      margin: 16px 0 25px;
+    }
+  }
+
+  &Element {
+    margin-bottom: 32px;
+
+    &Info {
+      margin-top: 16px;
+      color: $Secondary;
+    }
+
+    &:last-child {
+      margin-bottom: 80px;
+    }
+  }
 }

@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   sortDiscount,
   sortByYear,
-  filterByPhones,
-  filterByTablets,
-  filterByAccessories,
+  filterByCategory,
 } from '../../utils/filterHelper';
 import styles from './HomePage.module.scss';
 import { Carousel } from '../../components/Carousel';
@@ -29,7 +27,7 @@ export const HomePage = () => {
               <img src="./_new/img/category-phones.png" alt="phones" />
             </Link>
             <h3>Mobile phones</h3>
-            <p className="bodyText">{`${filterByPhones(products).length} models`}</p>
+            <p className="bodyText">{`${filterByCategory(products, 'phones').length} models`}</p>
           </div>
           <div className={styles.categoriesProduct}>
             <Link
@@ -39,7 +37,7 @@ export const HomePage = () => {
               <img src="./_new/img/category-tablets.png" alt="phones" />
             </Link>
             <h3>Tablets</h3>
-            <p className="bodyText">{`${filterByTablets(products).length} models`}</p>
+            <p className="bodyText">{`${filterByCategory(products, 'tablets').length} models`}</p>
           </div>
           <div className={styles.categoriesProduct}>
             <Link
@@ -49,7 +47,7 @@ export const HomePage = () => {
               <img src="./_new/img/category-accessories.png" alt="phones" />
             </Link>
             <h3>Accessories</h3>
-            <p className="bodyText">{`${filterByAccessories(products).length} models`}</p>
+            <p className="bodyText">{`${filterByCategory(products, 'accessories').length} models`}</p>
           </div>
         </div>
       </div>

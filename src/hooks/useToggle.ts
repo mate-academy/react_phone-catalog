@@ -6,7 +6,8 @@ export const useToggle = (
   products: Product[],
   setProducts: (newProducts: Product[]) => void,
   carrProduct: Product,
-): [boolean, () => void] => {
+): [boolean, (
+  ) => void] => {
   const isSelected = products.some((prod) => prod.id === carrProduct.id);
 
   useEffect(() => {
