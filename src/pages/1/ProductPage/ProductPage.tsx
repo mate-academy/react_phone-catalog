@@ -151,7 +151,7 @@ export const ProductPage: React.FC<Props> = React.memo(({ products }) => {
         )}
 
         {!visibleProducts.length && query ? (
-          <p>No Results</p>
+          <p className="productPage__empty">No Results</p>
         ) : !!visibleProducts.length && (
           <div className="productPage__content">
             <BreadCrumbs />
