@@ -1,0 +1,34 @@
+@import "../../styles/utils/variables";
+
+.BreadCrumbs {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  &__crumb {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: $iconsGray;
+
+    &:not(:first-child)::before,
+    &--home {
+      display: block;
+      width: 16px;
+      height: 16px;
+      content: "";
+
+      background-image: url(../../img/icons/corner-breadcrumbs.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--home {
+      background-image: url(../../img/icons/home-icon.svg);
+    }
+  }
+}

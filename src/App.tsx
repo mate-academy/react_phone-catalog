@@ -1,9 +1,27 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import classNames from 'classnames';
 import './App.scss';
-import { MenuItems } from './types/MenuItems';
 
-export const App = () => {
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
+import classNames from 'classnames';
+import { MenuItems } from './types/MenuItems';
+import { Search } from './components/Search';
+
+export const App: React.FC = () => {
+  const location = useLocation();
+
+  const getPageName = () => {
+    const index = location.pathname.lastIndexOf('/');
+
+    return location.pathname.slice(index + 1);
+  };
+
+  const isSearchShown = Object.values(MenuItems)
+    .includes(getPageName() as MenuItems);
+
   return (
     <div className="App">
       <header className="header">
@@ -29,6 +47,14 @@ export const App = () => {
                 ))}
               </ul>
             </nav>
+
+            <div className="header__stretchable-block" />
+
+            {isSearchShown && (
+              <div className="header__search-wrapper">
+                <Search page={getPageName()} />
+              </div>
+            )}
 
             <NavLink
               to="favourites"

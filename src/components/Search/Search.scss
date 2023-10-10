@@ -1,0 +1,19 @@
+@import "../../styles/utils/variables";
+
+.Search {
+  height: 100%;
+
+  &__input {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 24px 50px 24px 24px;
+
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      font-weight: 600;
+      color: $iconsGray;
+    }
+  }
+}

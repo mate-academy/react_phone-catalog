@@ -10,4 +10,25 @@
     border-color: $primeryGray;
     cursor: pointer;
   }
+
+  &:disabled {
+    border-color: $elementsGray;
+    cursor: unset;
+  }
+
+  &--previous {
+    background-image: url(../../img/icons/corner-previous.svg);
+
+    &:disabled {
+      background-image: url(../../img/icons/corner-previous-disabled.svg);
+    }
+  }
+
+  &--next {
+    background-image: url(../../img/icons/corner-next.svg);
+
+    &:disabled {
+      background-image: url(../../img/icons/corner-next-disabled.svg);
+    }
+  }
 }

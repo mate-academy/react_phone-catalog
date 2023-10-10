@@ -70,12 +70,13 @@ export const ImagesSlider = () => {
         <div className="ImagesSlider__slides-wrapper">
           <div className="ImagesSlider__slides" style={slidesStyles}>
             {slidesImagesUrls.map((url, index) => (
-              <img
-                key={url}
-                src={url}
-                alt={`Slide ${index + 1}`}
-                className="ImagesSlider__slide-image"
-              />
+              <div key={url} className="ImagesSlider__slide">
+                <img
+                  src={url}
+                  alt={`Slide ${index + 1}`}
+                  className="ImagesSlider__slide-image"
+                />
+              </div>
             ))}
           </div>
         </div>

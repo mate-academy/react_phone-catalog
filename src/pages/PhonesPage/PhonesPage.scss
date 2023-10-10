@@ -1,0 +1,65 @@
+@import "../../styles/utils/variables";
+
+.PhonesPage {
+  padding: 24px 0 80px;
+
+  &__breadcrumbs-wrapper {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__info {
+    margin-bottom: 40px;
+
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondaryGray;
+  }
+
+  &__params {
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondaryGray;
+  }
+
+  &__select {
+    padding: 10px 12px;
+
+    font-weight: 600;
+    line-height: 21px;
+
+    border: 1px solid $iconsGray;
+    cursor: pointer;
+  }
+
+  &__phones {
+    display: grid;
+    gap: 40px 16px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 40px;
+  }
+
+  &__pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

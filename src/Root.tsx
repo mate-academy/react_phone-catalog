@@ -1,9 +1,9 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { App } from './App';
-import { HomePage } from './components/HomePage';
-import { PhonesPage } from './components/PhonesPage';
-import { TabletsPage } from './components/TabletsPage';
-import { AccessoriesPage } from './components/AccessoriesPage';
+import { HomePage } from './pages/HomePage';
+import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 import { MenuItems } from './types/MenuItems';
 
 export const Root = () => (

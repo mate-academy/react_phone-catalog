@@ -10,6 +10,14 @@
     margin-right: 64px;
   }
 
+  &__stretchable-block {
+    flex-grow: 1;
+  }
+
+  &__search-wrapper {
+    border-left: 2px solid $elementsGray;
+  }
+
   &__link {
     width: 64px;
 
@@ -18,8 +26,6 @@
     border-left: 2px solid $elementsGray;
 
     &--favourites {
-      margin-left: auto;
-
       background-image: url(../../img/icons/favourites.svg);
     }
 

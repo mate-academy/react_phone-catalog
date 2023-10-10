@@ -1,0 +1,38 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.Pagination {
+  display: flex;
+  column-gap: 16px;
+
+  &__button {
+    @include sliderButton;
+
+    width: 32px;
+    height: 32px;
+
+    transition: color $duration,
+      background-color $duration;
+
+    &--page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-weight: 500;
+      line-height: 21px;
+
+      border-color: $elementsGray;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $primeryGray;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    column-gap: 8px;
+  }
+}
