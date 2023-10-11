@@ -29,3 +29,15 @@ export const getPhones = () => {
     .then(products => products
       .filter(product => product.type === 'phone'));
 };
+
+export const getTablets = () => {
+  return getProducts()
+    .then(products => products
+      .filter(product => product.type === 'tablet'));
+};
+
+export const getAccessories = () => {
+  return getProducts()
+    .then(products => products
+      .filter(product => product.type === 'accessory'));
+};

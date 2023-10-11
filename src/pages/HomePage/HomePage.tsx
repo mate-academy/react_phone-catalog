@@ -7,13 +7,12 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { ImagesSlider } from '../../components/ImagesSlider';
 import { getBrandNewProducts, getHotPriceProducts } from '../../helpers/api';
 import { MenuItems } from '../../types/MenuItems';
+import { getCategoryName } from '../../helpers/funcs';
 
 export const HomePage = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
   const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
 
-  // const hotProducts: Product[] = [];
-  // const brandNewProducts: Product[] = [];
   // const phones: Product[] = [];
   // const tablets: Product[] = [];
   // const accessories: Product[] = [];
@@ -27,12 +26,6 @@ export const HomePage = () => {
   }, []);
 
   // products.forEach(product => {
-  //   if (product.discount) {
-  //     hotProducts.push(product);
-  //   } else {
-  //     brandNewProducts.push(product);
-  //   }
-
   //   switch (product.type) {
   //     case 'phone':
   //       phones.push(product);
@@ -49,14 +42,6 @@ export const HomePage = () => {
   //     default:
   //       break;
   //   }
-  // });
-
-  // hotProducts.sort((a: Product, b: Product) => {
-  //   return b.price * b.discount - a.price * a.discount;
-  // });
-
-  // brandNewProducts.sort((a: Product, b: Product) => {
-  //   return b.price - a.price;
   // });
 
   // const returnProductsCount = (category: Categories) => {
@@ -106,7 +91,7 @@ export const HomePage = () => {
                 </div>
 
                 <h3 className="HomePage__category-title">
-                  {category === MenuItems.Phones ? `Mobile ${category}` : category}
+                  {getCategoryName(category)}
                 </h3>
 
                 <span className="HomePage__category-info">

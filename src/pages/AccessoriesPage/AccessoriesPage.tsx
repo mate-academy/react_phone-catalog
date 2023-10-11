@@ -1,5 +1,12 @@
+import { PageContent } from '../../components/PageContent';
+import { MenuItems } from '../../types/MenuItems';
+import { getAccessories } from '../../helpers/api';
+
 export const AccessoriesPage = () => {
   return (
-    <h1>Accessories</h1>
+    <PageContent
+      title={MenuItems.Accessories}
+      getProducts={getAccessories}
+    />
   );
 };
