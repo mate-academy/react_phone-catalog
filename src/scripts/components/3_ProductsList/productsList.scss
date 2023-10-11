@@ -1,0 +1,109 @@
+@import '../../../styles/main.scss';
+
+.ProductsList {
+
+  &__container {
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    @extend %button-white;
+    width: 272px;
+    height: 507px;
+    padding: 24px;
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    margin: 8px;
+  }
+
+  &__title {
+    @extend %Body-text;
+    text-align: left;
+    margin: 16px 0 0;
+    height: 42px;
+  }
+
+  &__price {
+    display: flex;
+    margin: 8px 0;
+  }
+
+  &__withoutDisc {
+    margin-left: 8px;
+    font-weight: 500;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__info {
+    border-top: 1px solid $elements;
+    width: 100%;
+    padding: 8px 0;
+
+    &-description {
+      display: flex;
+      margin: 8px 0;
+      justify-content: space-between;
+    }
+
+    &-title {
+      @extend %Small-text;
+      color: $secondary;
+    }
+
+    &-value {
+      @extend %Small-text;
+      color: $primary;
+    }
+  }
+
+  &__action {
+    display: flex;
+    gap: 8px;
+
+  }
+
+  &__button {
+    width: 176px;
+    height: 40px;
+    @extend %button-main;
+
+    &:hover {
+      @include hover(transition, 0.3);
+      cursor: pointer;
+    }
+
+    &-added {
+      width: 176px;
+      height: 40px;
+      @extend %button-main;
+      color: $green;
+      border: 1px solid $elements;
+      background-color: $white;
+    }
+  }
+
+  &__button-hurt {
+    @extend %button-white;
+    width: 40px;
+    min-height: 40px;
+  }
+
+  &__favourites {
+    @extend %icon;
+    background-image: url('../../../images/total/Icons/Hurt.svg');
+
+    &-red {
+      @extend %icon;
+      background-image: url('../../../images/total/Icons/Red-hurt.svg');
+    }
+  }
+}

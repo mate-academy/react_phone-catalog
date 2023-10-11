@@ -1,0 +1,46 @@
+@import '../../../styles/main.scss';
+
+.section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 96px;
+  max-height: 572px;
+  max-width: 1140px;
+  margin-top: 80px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+  }
+
+  &__button {
+    @extend %button-white;
+    width: 32px;
+    min-height: 32px;
+    margin: 0 8px;
+  }
+
+  &__left {
+    @extend %icon;
+    @extend %Small-text;
+    background-image: url('../../../images/total/Icons/Left.svg');
+  }
+
+  &__right {
+    @extend %icon;
+    @extend %Small-text;
+    background-image: url('../../../images/total/Icons/Right.svg');
+  }
+}

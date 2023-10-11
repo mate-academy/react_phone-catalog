@@ -1,0 +1,212 @@
+%h-base {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: bold;
+  size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $primary;
+}
+
+%Body-text {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary;
+}
+
+%Uppercase {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%Small-text {
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $secondary;
+}
+
+%icon {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 0 auto;
+  width: 16px;
+  height: 16px;
+}
+
+%image {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &:hover {
+    transform: scale(1.05);
+    @include hover(transition, 0.3);
+  }
+}
+
+%button-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @extend %Body-text;
+  font-weight: 600;
+  color: $white;
+  border: 1px solid $primary;
+  background-color: $primary;
+
+  // min-height: 60px;
+  // min-width: 270px;
+  // color: $white;
+  // border: 1px solid $main;
+  // background-color: $main;
+
+  // @include onTablet {
+  //   max-width: 330px;
+  // }
+
+  // @include onDesktop {
+  //   max-width: 270px;
+  // }
+
+  &:hover {
+    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &:active {
+    color: $green;
+    border: 1px solid $elements;
+    background-color: $white;
+  }
+}
+
+%button-white {
+  // @extend %button-main;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+  @extend %Body-text;
+  width: 500;
+  color: $primary;
+  border: 1px solid $elements;
+  background-color: $white;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &:active {
+    color: $white;
+    border: 1px solid $primary;
+    // background-color: $primary;
+  }
+}
+
+%button-arrow {
+  @extend %button-white;
+  border: 1px solid $basic;
+
+  &:active {
+    color: $white;
+    border: 1px solid $primary;
+    background-color: $primary;
+  }
+
+  &:disabled {
+    border: 1px solid $elements;
+    color: $basic;
+  }
+}
+
+// %select {
+//   border-radius: 36px;
+//   border: 1px solid $elements;
+//   background-color: $select;
+
+  // &:hover {
+  //   border: 2px solid $white;
+  //   border: 1px solid $basic;
+  // }
+
+  // &:active {
+  //   border: 2px solid $white;
+  //   border: 1px solid $primary;
+  // }
+// }
+
+%radio-container {
+  border-radius: 50%;
+  border: 1px solid $elements;
+
+  &:checked {
+    border: 1px solid $elements;
+    }
+
+    &:hover {
+    border: 2px solid $white;
+    border: 1px solid $basic;
+    }
+
+    &:active {
+    border: 2px solid $white;
+    border: 1px solid $primary;
+    }
+  }
+
+%radio-button {
+  border-radius: 50%;
+  border: 3px solid white;
+  height: 30px;
+  width: 30px;
+}
+
+%select-hurt {
+  @extend %button-white;
+
+  border: 1px solid $basic;
+  background-image: url('../../images/total/Icons/Hurt.svg');
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &:active {
+    border: 1px solid $elements;
+    background-image: red;
+  }
+}
+
+%link {
+  // @extend %Small-text;
+  // color: $primary;
+  text-decoration: none;
+}
+
+%active-link {
+  color: $primary;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: $primary;
+    border-radius: 8px;
+    height: 4px;
+    width: 100%;
+  }
+}

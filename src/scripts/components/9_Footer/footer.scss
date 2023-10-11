@@ -1,0 +1,70 @@
+@import '../../../styles/main.scss';
+
+.footer {
+  background-color: white;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    min-height: 96px;
+    justify-content: space-around;
+    box-shadow: 0px -1px 0px #E2E6E9;
+  }
+
+  &__logo {
+    background-image: url('../../../images/total/img_header_logo.svg');
+    @extend %icon;
+    margin: 25px;
+    width: 40px;
+    height: 11px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+  }
+
+  &__button {
+    @extend %button-white;
+    width: 32px;
+    min-height: 32px;
+    margin: 0 16px;
+  }
+
+  &__top {
+    @extend %icon;
+    @extend %Small-text;
+    background-image: url('../../../images/total/Icons/Up.svg');
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+  }
+
+  li:not(:last-child) {
+    margin-right: 64px;
+  }
+
+  &__link {
+    @extend %Uppercase;
+    @extend %link;
+    line-height: 50px;
+    display: block;
+    position: relative;
+    transition: 0.2s;
+
+  &:hover {
+    @extend %active-link;
+  }
+  }
+}
+
+.is-active {
+  @extend %active-link;
+}

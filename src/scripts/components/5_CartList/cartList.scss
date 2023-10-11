@@ -1,0 +1,124 @@
+@import '../../../styles/main.scss';
+
+.cartList {
+  display: flex;
+  // overflow: hidden;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 16px;
+  margin-top: 24px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__wrap-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    gap: 31px;
+  }
+
+  &__delete {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 5px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    @extend %button-white;
+    width: 752px;
+    height: 128px;
+    padding: 31px 27px;
+  }
+
+  &__img {
+    @extend %image;
+    width: 66px;
+    height: 66px;
+  }
+
+  &__title {
+    @extend %Body-text;
+    width: 295px;
+    height: 42px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    margin: 16px 0;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    @extend %button-white;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 368px;
+    height: 206px;
+    padding: 24px 0;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  &__real {
+    font-size: 32px;
+  }
+
+  &__numbers {
+    display: flex;
+    gap: 13px;
+    margin: 0 45px;
+  }
+
+  &__button {
+    width: 320px;
+    height: 48px;
+    @extend %button-main;
+
+    &-num {
+      @extend %button-white;
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      @include hover(transition, 0.3);
+      cursor: pointer;
+    }
+
+    &-added {
+      width: 10px;
+      height: 10px;
+      @extend %button-main;
+      color: $green;
+      border: 1px solid $elements;
+      background-color: $white;
+    }
+  }
+
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

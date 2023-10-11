@@ -1,0 +1,68 @@
+@import '../../../styles/main.scss';
+@import '../../components/3_ProductsList/productsList.scss';
+
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+
+  &__description {
+    max-width: 560px;
+    text-align: left;
+  }
+
+  &__info {
+  }
+
+  &__container-checkbox {
+    display: flex;
+    gap: 8px;
+    padding: 9px 0;
+  }
+
+  &__checkbox {
+    @extend %radio-container;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    // border: 1px solid black;
+  }
+
+  &__1 {
+    @extend %radio-button;
+    background-color: $select1;
+  }
+
+  &__2 {
+    @extend %radio-button;
+    background-color: $select2;
+  }
+
+  &__3 {
+    @extend %radio-button;
+    background-color: $select3;
+  }
+
+  &__4 {
+    @extend %radio-button;
+    background-color: $select4;
+  }
+
+  &__goodsList {
+    width: 272px;
+    height: 507px;
+    padding: 24px;
+  }
+
+  &__title {
+    border-bottom: 1px solid $elements;
+    padding-bottom: 16px;
+    margin: 25px;
+  }
+
+  &__text {
+    @extend %Body-text;
+    color: $secondary;
+  }
+}

@@ -1,0 +1,99 @@
+@import '../../../styles/main.scss';
+
+.catalog {
+
+  &__header {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    // width: 64px;
+    // min-height: 64px;
+    // border: 1px solid black;
+  }
+
+  &__home-button {
+    @extend %button-white;
+    border: none;
+    padding: 25px 15px;
+
+    // width: 64px;
+    // min-height: 64px;
+    // border: 1px solid black;
+  }
+
+  &__home-icon {
+    background-image: url('../../../images/total/Icons/Home.svg');
+    @extend %icon;
+    width: 15px;
+    height: 15px;
+  }
+
+  &__header-container {
+    @extend %button-white;
+    width: 5px;
+    height: 10px;
+  }
+
+  &__header-arrow {
+    background-image: url('../../../images/total/Icons/Right.svg');
+    @extend %icon;
+    width: 5px;
+    height: 15px;
+    margin: 0 14px 0 15px;
+  }
+
+  &__title {
+    margin: 15px 0 8px;
+  }
+
+  &__quantity {
+    @extend %Body-text;
+    color: $basic;
+  }
+
+  &__select-group {
+    list-style: none;
+    width: 176px;
+    height: 40px;
+  }
+
+  &__select-container {
+    margin: 40px 0 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__favourites {
+    background-image: url('../../../images/total/Icons/Red-hurt.svg');
+    @extend %icon;
+    width: 5px;
+    height: 15px;
+    margin: 0 14px 0 15px;
+  }
+}
+
+// .phones {
+//   height: 100vh;
+
+//   &__main-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     overflow: hidden;
+//     max-width: 1140px;
+//     gap: 80px;
+//     margin: 0 auto;
+//     // padding: 0 80px auto;
+//   }
+// }
+
+// .section {
+
+//   &__container {
+//     // display: flex;
+//     // // max-width: 1040px;
+//     // align-items: center;
+//     // // min-height: 96px;
+//     // justify-content: space-around;
+//   }
+// }
