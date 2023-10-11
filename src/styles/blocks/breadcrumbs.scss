@@ -1,0 +1,26 @@
+.breadcrumbs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  @extend %small-text;
+
+  &__element {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 8px;
+  }
+
+  &__text {
+    padding-top: 3px;
+    color: $secondary-color;
+  }
+
+  &__link {
+    padding-top: 3px;
+    text-decoration: none;
+    color: $primary-color;
+  }
+}

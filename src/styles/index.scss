@@ -1,0 +1,39 @@
+@import "../styles/normalize.css";
+
+@import "../styles/utils/variables";
+@import "../styles/utils/typography";
+@import "../styles/utils/mixins";
+
+@import "../styles/blocks/header.scss";
+@import "../styles/blocks/button.scss";
+@import "../styles/blocks/navbar.scss";
+@import "../styles/blocks/search.scss";
+@import "../styles/blocks/logo.scss";
+@import "../styles/blocks/icon.scss";
+@import "../styles/blocks/app.scss";
+@import "../styles/blocks/notFoundPage.scss";
+@import "../styles/blocks/homePage.scss";
+@import "../styles/blocks/productsPage.scss";
+@import "../styles/blocks/breadcrumbs.scss";
+@import "../styles/blocks/message.scss";
+@import "../styles/blocks/productsList.scss";
+@import "../styles/blocks/banner.scss";
+@import "../styles/blocks/productsSlider.scss";
+@import "../styles/blocks/productCard.scss";
+@import "../styles/blocks/shopByCategory.scss";
+@import "../styles/blocks/pagination.scss";
+@import "../styles/blocks/productDetailsPage.scss";
+@import "../styles/blocks/productGallery.scss";
+@import "../styles/blocks/cartPage.scss";
+@import "../styles/blocks/favoritesPage.scss";
+@import "../styles/blocks/footer.scss";
+@import "../styles/blocks/loader.scss";
+@import "../styles/blocks/selector.scss";
+
+body {
+  @extend %body-text;
+}
+
+iframe {
+  display: none;
+}

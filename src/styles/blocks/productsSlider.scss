@@ -1,0 +1,30 @@
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slider {
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

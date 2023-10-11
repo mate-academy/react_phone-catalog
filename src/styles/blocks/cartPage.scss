@@ -1,0 +1,118 @@
+.cart-page {
+  &__back-button {
+    margin: 40px 0 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 87px;
+
+    @include onMedium {
+      flex-direction: row;
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    padding: 24px 40px 24px 24px;
+    border: 1px solid $elements-color;
+
+    @include onLarge {
+      max-width: 752px;
+    }
+  }
+
+  &__product-data {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+
+    @include onSmall {
+      flex-direction: row;
+    }
+  }
+
+  &__delete-button {
+    margin-right: 24px;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+
+    @include onSmall {
+      margin-right: 24px;
+    }
+  }
+
+  &__name {
+    flex-grow: 1;
+    margin-bottom: 10px;
+
+    @include onSmall {
+      margin-right: 24px;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: space-between;
+    width: 96px;
+    margin-bottom: 10px;
+    line-height: 32px;
+
+    @include onSmall {
+      margin-right: 43px;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    flex-shrink: 0;
+    max-width: 100%;
+    padding: 24px;
+    border: 1px solid $elements-color;
+
+    @include onMedium {
+      align-self: flex-start;
+      max-width: 368px;
+    }
+  }
+
+  &__total-quantity {
+    width: 100%;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+    color: $secondary-color;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__button {
+    height: 48px;
+    width: 60%;
+
+    @include onMedium {
+      width: 100%;
+    }
+  }
+}

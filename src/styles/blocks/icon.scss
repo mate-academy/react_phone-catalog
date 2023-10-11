@@ -1,0 +1,105 @@
+.icon {
+  position: relative;
+
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-color: $primary-color;
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__counter {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    color: $white-color;
+    background-color: $red-color;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+  }
+
+  &--favorites {
+    background-color: $white-color;
+    background-image: url(../../img/icons/Favourites.svg);
+  }
+  &--favorites-selected {
+    background-color: $red-color;
+    -webkit-mask-image: url(../../img/icons/FavouritesSelected.svg);
+    mask-image: url(../../img/icons/FavouritesSelected.svg);
+  }
+  &--cart {
+    background-color: $white-color;
+    background-image: url(../../img/icons/Cart.svg);
+  }
+  &--home {
+    -webkit-mask-image: url(../../img/icons/Home.svg);
+    mask-image: url(../../img/icons/Home.svg);
+  }
+  &--close {
+    -webkit-mask-image: url(../../img/icons/Close.svg);
+    mask-image: url(../../img/icons/Close.svg);
+  }
+  &--search {
+    -webkit-mask-image: url(../../img/icons/Search.svg);
+    mask-image: url(../../img/icons/Search.svg);
+  }
+  &--close-cart-item {
+    background-color: $icons-color;
+    -webkit-mask-image: url(../../img/icons/Close.svg);
+    mask-image: url(../../img/icons/Close.svg);
+
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+  &--up {
+    -webkit-mask-image: url(../../img/icons/Up.svg);
+    mask-image: url(../../img/icons/Up.svg);
+  }
+  &--up-disabled {
+    background-color: $icons-color;
+    -webkit-mask-image: url(../../img/icons/Up.svg);
+    mask-image: url(../../img/icons/Up.svg);
+  }
+  &--down {
+    -webkit-mask-image: url(../../img/icons/Down.svg);
+    mask-image: url(../../img/icons/Down.svg);
+  }
+  &--down-disabled {
+    background-color: $icons-color;
+    -webkit-mask-image: url(../../img/icons/Down.svg);
+    mask-image: url(../../img/icons/Down.svg);
+  }
+  &--left {
+    -webkit-mask-image: url(../../img/icons/Left.svg);
+    mask-image: url(../../img/icons/Left.svg);
+  }
+  &--left-disabled {
+    background-color: $icons-color;
+    -webkit-mask-image: url(../../img/icons/Left.svg);
+    mask-image: url(../../img/icons/Left.svg);
+  }
+  &--right {
+    -webkit-mask-image: url(../../img/icons/Right.svg);
+    mask-image: url(../../img/icons/Right.svg);
+  }
+  &--right-disabled {
+    background-color: $icons-color;
+    -webkit-mask-image: url(../../img/icons/Right.svg);
+    mask-image: url(../../img/icons/Right.svg);
+  }
+}

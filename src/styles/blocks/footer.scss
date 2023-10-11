@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  padding: 24px 0;
+  box-shadow: 0 -1px 0 #e2e6e9;
+
+  @include onSmall {
+    padding: 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    max-width: 1152px;
+    padding: 0 8px;
+
+    @include onSmall {
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    @extend %small-text;
+    color: $secondary-color;
+  }
+}

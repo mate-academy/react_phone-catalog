@@ -1,0 +1,47 @@
+.products-page {
+  &__breadcrumbs {
+    margin: 24px 0 40px;
+  }
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    margin-bottom: 40px;
+    color: $secondary-color;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__sort {
+    width: 176px;
+  }
+
+  &__items-on-page {
+    width: 128px;
+  }
+
+  &__filters-title {
+    margin-bottom: 4px;
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__products-container {
+    margin-bottom: 40px;
+  }
+
+  &__pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+
+  &__page-buttons {
+    margin-bottom: 40px;
+  }
+}
