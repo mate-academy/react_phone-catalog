@@ -1,0 +1,40 @@
+@import "../../styles/global-imports";
+
+.history-location {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 20px 0;
+
+  &__list {
+    display: flex;
+  }
+
+  &--item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &--home-link {
+    background: url("../../images/icons/Home.svg") no-repeat center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &--location {
+    @extend %small-text;
+    color: $c-primary;
+
+    &-active {
+      color: $c-secondary;
+    }
+  }
+
+  &--arrow-right {
+    background: $arrow-image no-repeat center;
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../../../styles/global-imports";
+
+.Actions {
+  display: none;
+
+  @include onDesktop {
+    display: flex;
+  }
+}

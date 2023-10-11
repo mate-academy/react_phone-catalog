@@ -1,0 +1,56 @@
+@import "../../../styles/global-imports";
+
+.product-slider {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0 6px 14px !important;
+
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--item {
+    height: 508px;
+
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+
+  .swiper {
+    &-button-prev,
+    &-button-next {
+      width: 32px;
+      height: 32px;
+
+      top: 30px !important;
+      left: 96% !important;
+
+      border: 1px solid $c-primary;
+
+      &::after {
+        font-size: 12px !important;
+        color: $c-primary;
+      }
+
+      @include onTablet {
+        left: 92% !important;
+      }
+
+      @include onMobile {
+        display: none;
+      }
+    }
+
+    &-button-prev {
+      left: 92% !important;
+
+      @include onTablet {
+        left: 84% !important;
+      }
+    }
+  }
+}

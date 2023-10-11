@@ -1,0 +1,51 @@
+@import "./variables";
+
+@mixin hover($property, $toValue) {
+  transition: #{$property}, $effect-duration ease-in-out;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin onSmallMobile {
+  @media (min-width: 319px) and (max-width: 374px) {
+    @content;
+  }
+}
+
+@mixin fromMediumMobile {
+  @media (min-width: 375px) and (max-width: 766px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 767px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin onMobileAndTablet {
+  @media (min-width: 320px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin onTabletAndDesktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}

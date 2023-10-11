@@ -1,0 +1,90 @@
+@import "../../../styles/global-imports";
+
+.banner {
+  @include onTabletAndDesktop {
+    margin: 40px auto 60px;
+    width: 80vw;
+    max-width: 1156px;
+  }
+
+  @include onMobile {
+    margin-bottom: 20px;
+  }
+
+  &__slide {
+    width: 90%;
+    margin: 0 auto;
+
+    @include onMobile {
+      width: 100%;
+    }
+  }
+
+  &--link {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+
+  .carousel {
+    padding-bottom: 30px;
+
+    @include onTablet {
+      padding: 0 10px 30px;
+    }
+
+    &-slider {
+      width: 97%;
+    }
+
+    .control {
+      &-arrow {
+        border: 1px solid $c-icons;
+        padding: 0 6px;
+        bottom: 30px;
+        opacity: 1;
+
+        &:hover {
+          border-color: $c-primary;
+          background: none;
+        }
+
+        &::before {
+          border: none;
+          width: 16px;
+          height: 16px;
+          background: url("../../../images/icons/Arrow.svg") center no-repeat;
+          background-size: contain;
+
+          @include onTablet {
+            width: 10px;
+            height: 10px;
+          }
+        }
+
+        @include onTablet {
+          padding: 0 4px;
+        }
+
+        @include onMobile {
+          display: none;
+        }
+      }
+
+      &-prev {
+        &::before {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+  }
+
+  .dot {
+    width: 16px !important;
+    height: 6px !important;
+    background: $c-primary !important;
+    border-radius: 0% !important;
+    box-shadow: none !important;
+  }
+}

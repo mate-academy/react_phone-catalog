@@ -1,0 +1,10 @@
+@import "../../styles/global-imports";
+
+.favorites {
+  &--count {
+    @extend %body-text;
+    color: $c-secondary;
+
+    margin-bottom: 40px;
+  }
+}

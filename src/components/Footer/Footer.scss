@@ -1,0 +1,43 @@
+@import "../../styles/global-imports";
+
+.footer {
+  display: flex;
+  align-items: center;
+
+  height: 96px;
+
+  border: 1px solid $c-elements;
+
+  @include onMobile {
+    height: 160px;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    text-align: center;
+
+    gap: 64px;
+  }
+
+  &--item {
+    &-link {
+      @extend %uppercase;
+      color: $c-secondary;
+
+      @include hover(color, $c-primary);
+    }
+  }
+}

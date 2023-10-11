@@ -1,0 +1,70 @@
+@import "../../../styles/global-imports";
+
+.cart-info {
+  width: 370px;
+  padding: 24px;
+
+  text-align: center;
+  border: 1px solid $c-elements;
+
+  @include onMobileAndTablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 65vw;
+    max-width: 752px;
+    margin: 50px 0;
+  }
+
+  @include onMobile {
+    margin: 14px 0;
+  }
+
+  &__total-price {
+    border-bottom: 1px solid $c-elements;
+    padding-bottom: 24px;
+
+    &--quantity {
+      @extend %body-text;
+      color: $c-secondary;
+    }
+  }
+
+  &--button {
+    width: 320px;
+    height: 48px;
+
+    margin-top: 16px;
+
+    background-color: $c-primary;
+
+    border: 1px solid $c-primary;
+
+    color: $c-white;
+
+    cursor: pointer;
+
+    @include hover(background-color, $c-white);
+    @include hover(color, $c-primary);
+
+    @include onMobile {
+      width: 50vw;
+    }
+  }
+
+  &--checkout-text {
+    padding: 24px;
+
+    margin: 16px auto 0;
+
+    border: 1px solid $c-red;
+    max-width: 80%;
+
+    @include onMobileAndTablet {
+      padding: 14px;
+      width: inherit;
+      margin: 16px auto 0;
+    }
+  }
+}

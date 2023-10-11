@@ -1,0 +1,103 @@
+@import "../../../styles/global-imports";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  max-width: 220px;
+
+  padding: 32px 24px 24px;
+
+  border: 1px solid $c-elements;
+
+  transition: all, 0.3s ease-in-out !important;
+
+  @include onDesktop {
+    @include hover(transform, scale(104%));
+  }
+
+  @include onTablet {
+    @include hover(transform, scale(98%));
+  }
+
+  @include onMobile {
+    max-width: 100%;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--image {
+    margin: 0 auto 24px;
+    height: 208px;
+
+    object-fit: contain;
+
+    @include onMobile {
+      height: 170px;
+    }
+  }
+
+  &__title {
+    @extend %body-text;
+    height: 40px;
+
+    @include onMobile {
+      height: 66px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    margin-bottom: 16px;
+    padding-bottom: 6.5px;
+    padding-top: 6.5px;
+
+    border-bottom: 1px solid $c-secondary;
+
+    &-discount {
+      color: $c-secondary;
+      text-decoration: line-through;
+      font-size: 18px;
+    }
+
+    &-regular {
+      margin-right: 8px;
+    }
+  }
+
+  &__property {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;
+    margin-bottom: 10px;
+
+    @extend %small-text;
+
+    &--title {
+      color: $c-secondary;
+    }
+
+    &--value {
+      color: $c-primary;
+      text-align: end;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &--cart {
+      width: 170px;
+    }
+
+    &--favourites {
+      width: 40px;
+    }
+  }
+}

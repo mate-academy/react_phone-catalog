@@ -1,0 +1,38 @@
+@import "../../../styles/global-imports";
+
+.favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @include onMobile {
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include onSmallMobile {
+    flex-direction: column;
+  }
+
+  &--item {
+    @include onSmallMobile {
+      max-width: 66vw;
+    }
+
+    @include fromMediumMobile {
+      max-width: 36vw !important;
+    }
+  }
+
+  .product-card {
+    @include onMobile {
+      padding: 18px 12px;
+    }
+
+    &--image {
+      @include onMobile {
+        height: 120px;
+      }
+    }
+  }
+}

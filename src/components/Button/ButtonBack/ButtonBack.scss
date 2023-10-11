@@ -1,0 +1,22 @@
+@import "../../../styles/global-imports";
+
+.button-back {
+  display: flex;
+  gap: 6px;
+
+  padding: 40px 0 16px;
+  background-color: $c-white;
+  cursor: pointer;
+
+  @extend %small-text;
+  color: $c-secondary;
+
+  @include hover(color, $c-primary);
+
+  &--arrow {
+    width: 16px;
+    height: 16px;
+    background: url("../../../images/icons/Arrow.svg") no-repeat center;
+    transform: rotate(180deg);
+  }
+}

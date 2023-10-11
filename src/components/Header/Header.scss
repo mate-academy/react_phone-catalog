@@ -1,0 +1,22 @@
+@import "../../styles/global-imports";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid $c-elements;
+
+  @include onTablet {
+    justify-content: space-around;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 64px;
+    margin: 0 10px;
+
+    @include onTabletAndDesktop {
+      margin: 0 24px;
+    }
+  }
+}

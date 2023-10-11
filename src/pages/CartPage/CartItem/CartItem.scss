@@ -1,0 +1,139 @@
+@import "../../../styles/global-imports";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 752px;
+  height: 128px;
+  border: 1px solid $c-elements;
+
+  @include onMobileAndTablet {
+    width: 80vw;
+    max-width: 800px;
+    height: 328px;
+
+    position: relative;
+
+    flex-direction: column;
+  }
+
+  &--button-delete {
+    background-color: $c-white;
+    height: 16px;
+    width: 16px;
+
+    cursor: pointer;
+
+    &-image {
+      width: 16px;
+      height: 16px;
+      background: url("../../../images/icons/close-icon.svg") no-repeat center;
+
+      @include onMobileAndTablet {
+        background-image: url("../../../images/icons/icon-close.svg");
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    @include onMobileAndTablet {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+
+    &--image {
+      height: 66px;
+    }
+
+    &--name {
+      @extend %body-text;
+      color: $c-primary;
+
+      width: 294px;
+
+      @include onMobile {
+        width: 60vw;
+      }
+    }
+  }
+
+  &__amount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    &--button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 32px;
+      height: 32px;
+      background-color: $c-white;
+      border: 1px solid $c-primary;
+
+      cursor: pointer;
+
+      @include hover(transform, scale(110%));
+
+      &-image {
+        width: 16px;
+        height: 16px;
+
+        &-plus {
+          background: url("../../../images/icons/icon-plus.svg") no-repeat center;
+        }
+
+        &-minus {
+          background: url("../../../images/icons/icon-minus.svg") no-repeat center;
+
+          &-disabled {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      &-decrease {
+        &-disabled {
+          pointer-events: none;
+          border-color: $c-elements;
+        }
+      }
+    }
+  }
+
+  &__quantity {
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+  }
+
+  &--quantity {
+    @extend %body-text;
+  }
+
+  &--price {
+    margin-left: 40px;
+    min-width: 100px;
+  }
+}

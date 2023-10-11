@@ -1,0 +1,37 @@
+@import "../../../styles/global-imports";
+
+.categories {
+  margin-top: 80px;
+
+  &--title {
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__category {
+    transition: all, 0.3s ease-in-out !important;
+
+    @include hover(transform, scale(104%));
+
+    &--image {
+      width: 100%;
+    }
+  }
+
+  &__description {
+    margin-top: 16px;
+
+    &--subtitle {
+      @extend %body-text;
+      color: $c-secondary;
+    }
+  }
+}

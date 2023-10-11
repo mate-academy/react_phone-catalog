@@ -1,0 +1,19 @@
+@import "../../../styles/global-imports";
+
+.Navigation {
+  display: none;
+
+  @include onDesktop {
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__item {
+    @extend %uppercase;
+  }
+}
