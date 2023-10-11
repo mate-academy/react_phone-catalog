@@ -49,7 +49,7 @@ export const Galery: React.FC<Props> = ({
       >
         <img
           className="galery__main--image"
-          alt="the bigger one"
+          alt="product main"
           src={`${IMAGE_URL}${mainPhoto}`}
         />
       </motion.div>

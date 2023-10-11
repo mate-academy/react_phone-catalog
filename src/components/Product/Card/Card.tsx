@@ -7,6 +7,7 @@ import './Card.scss';
 import { ButtonCart } from '../../Button/ButtonCart';
 import { ButtonFavorites } from '../../Button/ButtonFavorites';
 import { IMAGE_URL } from '../../../helpers/IMAGE_URL';
+import { handleBackToTop } from '../../../helpers/handleToUp';
 
 type Props = {
   product: Product,
@@ -33,6 +34,7 @@ export const ProductCard: React.FC<Props> = ({
       <Link
         className="product-card__link"
         to={`/${category}/${phoneId}`}
+        onClick={handleBackToTop}
       >
         <img
           src={`${IMAGE_URL}${image}`}

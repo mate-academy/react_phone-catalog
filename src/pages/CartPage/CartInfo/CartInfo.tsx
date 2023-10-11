@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import { CartContext } from '../../../contexts/CartContextProvider';
 import { getCartPrice } from '../../../helpers/getCartPrice';
@@ -21,8 +22,52 @@ export const CartInfo = () => {
     }, 3000);
   };
 
+  const checkoutAnimate = {
+    enter: {
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+        duration: 0.3,
+        animationTimingFunction: 'ease-in-out',
+      },
+      display: 'block',
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        animationTimingFunction: 'ease-in-out',
+      },
+      transitionEnd: {
+        display: 'none',
+      },
+    },
+  };
+
+  const checkoutBlockAnimate = {
+    enter: {
+      height: '278px',
+      transition: {
+        duration: 0.3,
+        animationTimingFunction: 'ease-in-out',
+      },
+    },
+    exit: {
+      height: '142px',
+      transition: {
+        duration: 0.6,
+        animationTimingFunction: 'ease-in-out',
+      },
+    },
+  };
+
   return (
-    <div className="cart-info">
+    <motion.div
+      className="cart-info"
+      initial="exit"
+      animate={isClicked ? 'enter' : 'exit'}
+      variants={checkoutBlockAnimate}
+    >
       <div className="cart-info__content">
         <div className="cart-info__total-price">
           <h1>
@@ -36,24 +81,26 @@ export const CartInfo = () => {
               ${totalItems <= 1 ? 'item' : 'items'}
             `}
           </div>
-        </div>
+          <div className="cart-info__bottom">
+            <motion.button
+              type="button"
+              className="cart-info--button"
+              onClick={handleCheckoutClick}
+            >
+              Checkout
+            </motion.button>
 
-        <div className="cart-info__bottom">
-          <button
-            type="button"
-            className="cart-info--button"
-            onClick={handleCheckoutClick}
-          >
-            Checkout
-          </button>
-
-          {isClicked && (
-            <h2 className="cart-info--checkout-text">
-              {'Sorry, this feature isn\'t inplement yet'}
-            </h2>
-          )}
+          </div>
         </div>
+        <motion.h2
+          className="cart-info--checkout-text"
+          initial="exit"
+          animate={isClicked ? 'enter' : 'exit'}
+          variants={checkoutAnimate}
+        >
+          {'Sorry, this feature isn\'t inplement yet'}
+        </motion.h2>
       </div>
-    </div>
+    </motion.div>
   );
 };

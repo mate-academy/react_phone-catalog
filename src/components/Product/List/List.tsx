@@ -54,6 +54,10 @@ export const List: React.FC<Props> = ({ products }) => {
       setDebouncedQuery(query);
     }, 500);
 
+    if (!searchParams.get('page=1')) {
+      searchParams.set('page', '1');
+    }
+
     return () => clearTimeout(debounceTimer);
   }, [query]);
 

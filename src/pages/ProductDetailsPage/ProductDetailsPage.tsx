@@ -100,150 +100,173 @@ export const ProductDetailsPage = () => {
     setMainPhoto(photo);
   };
 
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <motion.section
-      className="product-details container"
-      {...motionParametr}
-    >
-      <HistoryLocation />
+    <>
+      {showLoader && <Loader />}
+      {!showLoader && (
+        <motion.section
+          className="product-details container"
+          {...motionParametr}
+        >
+          <HistoryLocation />
 
-      {!currentProduct && <PageNotFound />}
+          {!currentProduct && <PageNotFound />}
 
-      {!isError && isLoading && <Loader />}
+          {!isError && isLoading && <Loader />}
 
-      {!isError && !isLoading && currentProduct && (
-        <>
-          <motion.h1
-            className="product-details--title"
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.15 }}
-          >
-            {productDetails?.name}
-          </motion.h1>
+          {!isError && !isLoading && currentProduct && (
+            <>
+              <motion.h1
+                className="product-details--title"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+              >
+                {productDetails?.name}
+              </motion.h1>
 
-          <motion.div
-            className="product-details__top-content"
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -10, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="product-details--galery">
-              <Galery
-                photos={images}
-                mainPhoto={mainImg}
-                photoClick={handlePhotoChosen}
+              <motion.div
+                className="product-details__top-content"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="product-details--galery">
+                  <Galery
+                    photos={images}
+                    mainPhoto={mainImg}
+                    photoClick={handlePhotoChosen}
+                  />
+                </div>
+
+                <div className="product-details__virables">
+
+                  <div className="product-details__choose">
+                    <div className="product-details--colors">
+                      <ColorChoose
+                        colors={colors}
+                        currentColor={currentColor}
+                        productDetails={productDetails}
+                      />
+                    </div>
+
+                    <div className="product-detais--capacity">
+                      <Capacity
+                        capacities={capacities}
+                        productDetails={productDetails}
+                      />
+                    </div>
+
+                    <div className="product-details__price">
+                      {productDetails?.priceDiscount
+                        === productDetails?.priceRegular
+                        ? (
+                          <h1 className="
+                            product-card__price-regular
+                            product-details__price-regular"
+                          >
+                            {`$${productDetails?.priceRegular}`}
+                          </h1>
+                        ) : (
+                          <>
+                            <h1 className="
+                              product-card__price-regular
+                              product-details__price-regular"
+                            >
+                              {`$${productDetails?.priceDiscount}`}
+                            </h1>
+
+                            <h2 className="
+                              product-card__price-discount
+                              product-details__price-discount"
+                            >
+                              {`$${productDetails?.priceRegular}`}
+                            </h2>
+                          </>
+                        )}
+                    </div>
+                  </div>
+                  <div className="product-details__actions">
+
+                    <div className="product-details__actions--cart">
+                      <ButtonCart product={currentProduct} />
+                    </div>
+                    <div className="product-details__actions--favorites">
+                      <ButtonFavorites product={currentProduct} />
+                    </div>
+                  </div>
+
+                  <ul className="product-details__info">
+                    <li className="product-details__info--item">
+                      <div className="product-details__info--item-title">
+                        Screen
+                      </div>
+                      <div className="product-details__info--item-value">
+                        {productDetails?.screen}
+                      </div>
+                    </li>
+                    <li className="product-details__info--item">
+                      <div className="product-details__info--item-title">
+                        Resolution
+                      </div>
+                      <div className="product-details__info--item-value">
+                        {productDetails?.resolution}
+                      </div>
+                    </li>
+                    <li className="product-details__info--item">
+                      <div className="product-details__info--item-title">
+                        Processor
+                      </div>
+                      <div className="product-details__info--item-value">
+                        {productDetails?.processor}
+                      </div>
+                    </li>
+                    <li className="product-details__info--item">
+                      <div className="product-details__info--item-title">
+                        RAM
+                      </div>
+                      <div className="product-details__info--item-value">
+                        {productDetails?.ram}
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="product-details__about"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {productDetails && (
+                  <Description details={productDetails} />
+                )}
+              </motion.div>
+
+              <ProductSlider
+                title={ProductTitles.RandomProducts}
+                products={products}
               />
-            </div>
-
-            <div className="product-details__virables">
-
-              <div className="product-details__choose">
-                <div className="product-details--colors">
-                  <ColorChoose
-                    colors={colors}
-                    currentColor={currentColor}
-                    productDetails={productDetails}
-                  />
-                </div>
-
-                <div className="product-detais--capacity">
-                  <Capacity
-                    capacities={capacities}
-                    productDetails={productDetails}
-                  />
-                </div>
-
-                <div className="product-details__price">
-                  {productDetails?.priceDiscount
-                    === productDetails?.priceRegular
-                    ? (
-                      <h1 className="
-                        product-card__price-regular
-                        product-details__price-regular"
-                      >
-                        {`$${productDetails?.priceRegular}`}
-                      </h1>
-                    ) : (
-                      <>
-                        <h1 className="
-                          product-card__price-regular
-                          product-details__price-regular"
-                        >
-                          {`$${productDetails?.priceDiscount}`}
-                        </h1>
-
-                        <h2 className="
-                          product-card__price-discount
-                          product-details__price-discount"
-                        >
-                          {`$${productDetails?.priceRegular}`}
-                        </h2>
-                      </>
-                    )}
-                </div>
-              </div>
-              <div className="product-details__actions">
-
-                <div className="product-details__actions--cart">
-                  <ButtonCart product={currentProduct} />
-                </div>
-                <div className="product-details__actions--favorites">
-                  <ButtonFavorites product={currentProduct} />
-                </div>
-              </div>
-
-              <ul className="product-details__info">
-                <li className="product-details__info--item">
-                  <div className="product-details__info--item-title">
-                    Screen
-                  </div>
-                  <div className="product-details__info--item-value">
-                    {productDetails?.screen}
-                  </div>
-                </li>
-                <li className="product-details__info--item">
-                  <div className="product-details__info--item-title">
-                    Resolution
-                  </div>
-                  <div className="product-details__info--item-value">
-                    {productDetails?.resolution}
-                  </div>
-                </li>
-                <li className="product-details__info--item">
-                  <div className="product-details__info--item-title">
-                    Processor
-                  </div>
-                  <div className="product-details__info--item-value">
-                    {productDetails?.processor}
-                  </div>
-                </li>
-                <li className="product-details__info--item">
-                  <div className="product-details__info--item-title">
-                    RAM
-                  </div>
-                  <div className="product-details__info--item-value">
-                    {productDetails?.ram}
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </motion.div>
-
-          <div className="product-details__about">
-            {productDetails && (
-              <Description details={productDetails} />
-            )}
-          </div>
-
-          <ProductSlider
-            title={ProductTitles.RandomProducts}
-            products={products}
-          />
-        </>
+            </>
+          )}
+        </motion.section>
       )}
-    </motion.section>
+    </>
   );
 };

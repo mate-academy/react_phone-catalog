@@ -1,12 +1,12 @@
-import { Ring } from '@uiball/loaders';
+import { Ping } from '@uiball/loaders';
+import './Loader.scss';
 
 export const Loader = () => (
-  <>
-    <Ring
-      size={50}
-      lineWeight={3}
-      speed={1.7}
+  <div className="loader">
+    <Ping
+      size={65}
+      speed={1.8}
       color="black"
     />
-  </>
+  </div>
 );

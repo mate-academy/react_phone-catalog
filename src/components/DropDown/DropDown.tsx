@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import classNames from 'classnames';
 
@@ -51,15 +52,37 @@ export const DropDown: React.FC<Props> = ({
     searchParams,
   ]);
 
+  const subMenuAnimate = {
+    enter: {
+      opacity: 1,
+      rotateX: 0,
+      transition: {
+        duration: 0.3,
+      },
+      display: 'block',
+    },
+    exit: {
+      opacity: 0,
+      rotateX: -15,
+      transition: {
+        duration: 0.2,
+      },
+      transitionEnd: {
+        display: 'none',
+      },
+    },
+  };
+
   return (
-    <div className={classNames('drop-down',
-      { 'drop-down-open': isOpen })}
+    <div
+      className={classNames('drop-down',
+        { 'drop-down-open': isOpen })}
     >
       <label htmlFor="title" className="drop-down--title">
         {label}
       </label>
 
-      <button
+      <motion.button
         type="button"
         className="drop-down__top"
         onClick={toggleDropDown}
@@ -69,9 +92,12 @@ export const DropDown: React.FC<Props> = ({
         </span>
 
         <div className="drop-down--icon" />
-      </button>
+      </motion.button>
 
-      <ul
+      <motion.ul
+        initial="exit"
+        animate={isOpen ? 'enter' : 'exit'}
+        variants={subMenuAnimate}
         className={classNames('drop-down__content', {
           'drop-down--is-active': !isOpen,
         })}
@@ -92,7 +118,7 @@ export const DropDown: React.FC<Props> = ({
             </Link>
           </li>
         ))}
-      </ul>
+      </motion.ul>
     </div>
   );
 };
