@@ -72,6 +72,8 @@
 
         &:hover {
           background: $gray-primary;
+          color: orangered;
+          transition: color 0.5s;
           box-shadow: 3px 3px 13px 0 rgba(23, 32, 49, 0.26);
         }
       }
@@ -83,6 +85,11 @@
         color: #27ae60;
         background: $gray-white;
         border: 1px solid $gray-icons-placeholders;
+
+        &:hover {
+          color: maroon;
+          transition: color 0.5s;
+        }
       }
 
       &--favourites {

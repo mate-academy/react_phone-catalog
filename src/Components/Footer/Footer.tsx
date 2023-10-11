@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './footer.scss';
+import { Link } from 'react-router-dom';
 
 const contacts = 'https://www.linkedin.com/in/andriiyelieva/';
 const gitHub = 'https://github.com/AndriiYelieva';
@@ -38,21 +39,25 @@ export const Footer: React.FC = () => {
           <a
             className="container__link"
             href={gitHub}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Github
           </a>
           <a
             className="container__link"
             href={contacts}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Contacts
           </a>
-          <a
+          <Link
             className="container__link"
-            href={gitHub}
+            to="/Rights"
           >
             Rights
-          </a>
+          </Link>
         </div>
 
         {isVisible ? (

@@ -8,7 +8,7 @@ import {
   addFavourites,
   removeFavourites,
 } from '../../features/favouritesSlice';
-import { addCart } from '../../features/cartSlice';
+import { addCart, removeCart } from '../../features/cartSlice';
 import { checkPhoneId } from '../../helper/checkedSorage';
 
 type Props = {
@@ -25,6 +25,8 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
     if (check === undefined) {
       dispatch(addCart(phoneToStorage));
+    } else {
+      dispatch(removeCart(phoneToStorage));
     }
   };
 
@@ -84,6 +86,7 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
               <button
                 type="button"
                 className="product__button--isActive"
+                onClick={() => checkStorageCart(phone)}
               >
                 Added to cart
               </button>

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { DetailsPhone } from '../../Type/DetailsPhone';
 import { ColorPallette } from '../../Type/Colors';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addCart } from '../../features/cartSlice';
+import { addCart, removeCart } from '../../features/cartSlice';
 import {
   addFavourites,
   removeFavourites,
@@ -47,6 +47,8 @@ export const ProductParams: React.FC<Props> = ({
   const checkStorageCart = (phoneToCart: Phone) => {
     if (checkPhoneDetailsId(phoneId, cart) === undefined) {
       dispatch(addCart(phoneToCart));
+    } else {
+      dispatch(removeCart(phoneToCart));
     }
   };
 
@@ -112,6 +114,7 @@ export const ProductParams: React.FC<Props> = ({
               <button
                 type="button"
                 className="params__shop__button--isActive"
+                onClick={() => checkStorageCart(phoneToStorage)}
               >
                 Added to cart
               </button>
