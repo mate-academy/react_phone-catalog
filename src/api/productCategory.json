@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Mobile phones",
+    "image": "img/category/phones.png",
+    "type": "phones",
+    "itemType": "phone",
+    "url": "/phones"
+  },
+  {
+    "title": "Tablets",
+    "image": "img/category/tablets.png",
+    "type": "tablets",
+    "itemType": "tablet",
+    "url": "/tablets"
+  },
+  {
+    "title": "Accessories",
+    "image": "img/category/accessories.png",
+    "type": "accessories",
+    "itemType": "accessory",
+    "url": "/accessories"
+  }
+]

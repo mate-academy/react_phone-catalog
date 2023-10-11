@@ -1,0 +1,87 @@
+@import "../../styles/main.scss";
+
+.product-card {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 272px;
+  padding: 24px;
+
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  transition: all 0.5s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 260px;
+    font-size: 60px;
+    text-decoration: none;
+    transition: all 0.5s;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__pic {
+    height: 100%;
+  }
+
+  &__title {
+    @extend %body-text;
+    width: 224px;
+    height: 42px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 6px 0;
+    border-bottom: 1px solid $color-elements;
+  }
+
+  &__new-price {
+    @extend %h2-text;
+  }
+
+  &__old-price {
+    @extend %h2-text;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__feature-item {
+    @extend %small-text;
+    color: $color-secondary;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__feature-info {
+    @extend %small-text;
+    color: $color-primary;
+  }
+}

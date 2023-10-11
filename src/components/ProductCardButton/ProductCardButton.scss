@@ -1,0 +1,73 @@
+@import "../../styles/main.scss";
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+
+  &__add-cart {
+    padding: 0;
+
+    @extend %buttons-text;
+    color: $color-white;
+    background-color: $color-primary;
+    border: none;
+    outline: none;
+
+    transition: box-shadow 0.5s;
+    cursor: pointer;
+
+    &--small {
+      width: 176px;
+      height: 40px;
+    }
+
+    &--big {
+      width: 100%;
+      height: 48px;
+
+      @include onTablet {
+        width: 263px;
+      }
+    }
+
+    &--selected {
+      color: $color-green;
+      background: none;
+      border: 1px solid $color-elements;
+    }
+
+    &:hover {
+      color: $color-white;
+      background-color: $color-primary;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__add-favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &--small {
+      @include squareSize(40px);
+    }
+
+    &--big {
+      @include squareSize(48px);
+    }
+
+    &--selected {
+      border-color: $color-elements;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}

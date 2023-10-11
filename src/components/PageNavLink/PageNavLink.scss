@@ -1,0 +1,25 @@
+@import "../../styles/main.scss";
+
+.nav {
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: $color-secondary;
+    border-bottom: 3px solid transparent;
+
+    @extend %uppercase-text;
+    text-decoration: none;
+    transition: border 0.5s, color 0.5s;
+
+    &--active {
+      color: $color-primary;
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:hover {
+      color: $color-primary;
+      border-bottom: 3px solid $color-primary;
+    }
+  }
+}

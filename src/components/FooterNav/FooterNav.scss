@@ -1,0 +1,30 @@
+@import "../../styles/main.scss";
+
+.footer {
+  &__nav {
+    display: flex;
+    gap: 20px;
+
+    @include onTablet {
+      gap: 50px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    gap: 64px;
+
+    @extend %uppercase-text;
+    color: $color-secondary;
+    text-decoration: none;
+    transition: color 0.5s;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

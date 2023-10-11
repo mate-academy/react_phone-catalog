@@ -1,0 +1,42 @@
+@import "../../styles/main.scss";
+
+.search-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 60px;
+  padding: 23px 24px;
+  box-shadow: -1px 0 0 $color-elements;
+
+  @include onTablet {
+    min-width: 240px;
+  }
+
+  @include onDesktop {
+    min-width: 327px;
+  }
+
+  &:focus-within {
+    background-color: $color-background;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    width: 90%;
+
+    @extend %placeholder-text;
+    background: none;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: $color-grey;
+      cursor: text;
+    }
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+}
