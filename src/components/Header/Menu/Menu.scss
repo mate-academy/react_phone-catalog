@@ -87,6 +87,9 @@
       justify-content: center;
       gap: 4px;
 
+      width: 100%;
+      height: 100%;
+
       transition: all $effect-duration;
       color: $c-secondary;
     }
