@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import {
@@ -21,7 +21,7 @@ type Props = {
 
 export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const selectedValueSortBy = searchParams.get('sortBy') || 'Newest';
   const selectedValueNumberOptions = searchParams.get('NumberOptions') || '4';
   const selectedPage = searchParams.get('page') || '1';
@@ -29,6 +29,13 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
   const lastPhoneOnPage = Math.min(
     +selectedValueNumberOptions * +selectedPage, phones.length,
   );
+
+  useEffect(() => {
+    const params = new URLSearchParams('1');
+
+    params.set('page', '1');
+    setSearchParams(params);
+  }, [selectedValueNumberOptions]);
 
   const searchInPhones = phones
     .filter((product) => product.name
