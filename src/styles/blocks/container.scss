@@ -1,0 +1,18 @@
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  padding: 0 10px;
+
+  @include onMediumScreen {
+    padding: 0 30px;
+  }
+
+  @include onDesktop {
+    padding: 0 70px;
+  }
+
+  @include onLargeDesktop {
+    padding: 0 152px;
+  }
+}

@@ -1,0 +1,19 @@
+@import "@/styles/global-imports";
+
+.Navbar {
+  display: none;
+
+  @include onMediumScreen {
+    display: block;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__item {
+    @extend %uppercase;
+  }
+}

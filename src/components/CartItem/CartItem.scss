@@ -1,0 +1,103 @@
+@import "@/styles/global-imports";
+
+.CartItem {
+  padding: 15px;
+  border: 1px solid $c-elements;
+
+  @include onMediumScreen {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 24px 40px 24px 24px;
+    min-width: max-content;
+  }
+
+  &__body {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+
+    @include onMediumScreen {
+      align-items: center;
+      margin-bottom: 0;
+      gap: 0;
+    }
+  }
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+    order: 3;
+    margin-left: auto;
+    flex-shrink: 0;
+
+    border: none;
+    background: no-repeat center url("../../images/icons/icon-close.svg");
+
+    cursor: pointer;
+    @include hover(transform, rotate(90deg));
+
+    @include onMediumScreen {
+      margin-right: 24px;
+      order: 0;
+    }
+  }
+
+  &__image {
+    order: -1;
+    flex-shrink: 0;
+
+    @include onMediumScreen {
+      padding: 7px;
+      margin-right: 24px;
+      order: 0;
+    }
+
+    & > img {
+      min-width: 100px;
+      min-height: 100px;
+      width: 100%;
+
+      @include onMediumScreen {
+        max-width: 66px;
+        max-height: 66px;
+      }
+    }
+  }
+
+  &__title {
+    order: 2;
+    padding-top: 20px;
+    @extend %body-text;
+
+    @include onMediumScreen {
+      order: 0;
+      padding: 0;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include onMediumScreen {
+      margin-left: auto;
+      gap: 43px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    & > span {
+      @extend %body-text;
+    }
+  }
+
+  &__price {
+    text-align: left;
+  }
+}

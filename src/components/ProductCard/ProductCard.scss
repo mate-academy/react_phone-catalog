@@ -1,0 +1,86 @@
+@import "@/styles/global-imports";
+
+.ProductCard {
+  display: inline-block;
+  padding: 20px;
+  width: 100%;
+
+  border: 1px solid $c-elements;
+
+  @include onMediumScreen {
+    padding: 31px 23px 23px;
+  }
+
+  &__content {
+    height: 100%;
+  }
+
+  &__image-container {
+    margin-bottom: 24px;
+
+    text-align: center;
+
+    & > a {
+      @include onMediumScreen {
+        padding: 0 8px;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 208px;
+    max-height: 208px;
+
+    user-select: none;
+  }
+
+  &__title {
+    height: 42px;
+    margin-bottom: 6px;
+
+    overflow-wrap: break-word;
+    overflow: hidden;
+
+    @extend %body-text;
+
+    & > a {
+      font-family: inherit;
+      color: inherit;
+    }
+  }
+
+  &__price {
+    padding-bottom: 5px;
+    margin-bottom: 16px;
+
+    box-shadow: 0 1px 0 0 $c-elements;
+    -webkit-box-shadow: 0 1px 0 0 $c-elements;
+
+    &-main {
+      display: inline;
+      margin-right: 8px;
+    }
+
+    &-discount {
+      display: inline;
+
+      font-family: "Mont Regular", sans-serif;
+      line-height: 28px;
+      font-size: 22px;
+      color: $c-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__specs-table {
+    margin-bottom: 16px;
+
+    @extend %specs-table;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

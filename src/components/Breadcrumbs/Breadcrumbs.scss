@@ -1,0 +1,46 @@
+@import "@/styles/global-imports";
+
+.Breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    & > li {
+      position: relative;
+    }
+
+    & > li:first-child {
+      display: flex;
+    }
+
+    & > li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+
+      background: no-repeat center url("../../images/icons/Arrow_disabled.svg");
+    }
+  }
+
+  &__home-link {
+    width: 16px;
+    height: 16px;
+
+    background: no-repeat center url("../../images/icons/Home.svg");
+  }
+
+  &__item {
+    @extend %small-text;
+
+    color: $c-secondary;
+
+    & > a {
+      color: $c-primary;
+    }
+  }
+}

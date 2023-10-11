@@ -1,0 +1,146 @@
+@import "@/styles/global-imports";
+
+.Button {
+  position: relative;
+  width: 100%;
+  min-height: 32px;
+
+  background-color: transparent;
+  border: 1px solid $c-elements;
+
+  cursor: pointer;
+
+  @include hover(border-color, $c-primary);
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &--arrow,
+  &--favourite,
+  &--quantity {
+    border-color: $c-icons;
+  }
+
+  &--text {
+    width: auto;
+    height: auto;
+    max-width: none;
+    padding: 5px 8px 4px;
+
+    @extend %body-text;
+    text-align: center;
+
+    &.active {
+      border-color: $c-primary;
+
+      background-color: $c-primary;
+
+      color: $c-white;
+    }
+  }
+
+  &--arrow {
+    max-width: 32px;
+    min-width: 32px;
+
+    background: no-repeat center url("../../images/icons/Arrow.svg");
+
+    &:disabled {
+      background-image: url("../../images/icons/Arrow_disabled.svg");
+    }
+
+    &-top {
+      transform: rotate(-90deg);
+    }
+
+    &-left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &--cart {
+    min-height: 40px;
+
+    background-color: $c-primary;
+    border: 1px solid $c-primary;
+
+    @extend %buttons;
+    color: $c-white;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      -webkit-box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &.active,
+    &:active {
+      background-color: $c-white;
+      border-color: $c-elements;
+      color: $c-green;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+
+  &--favourite {
+    max-width: 40px;
+    min-height: 40px;
+
+    background: no-repeat center url("../../images/icons/Favourites.svg");
+
+    &.active,
+    &:active {
+      border-color: $c-elements;
+
+      background-image: url("../../images/icons/Favourites-filled.svg");
+    }
+  }
+
+  &--color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2px;
+
+    border-radius: 50%;
+    border-color: $c-elements;
+
+    &:hover {
+      border-color: $c-icons;
+    }
+
+    &.active {
+      border-color: $c-primary;
+    }
+
+    & > span {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+
+      border-radius: 50%;
+    }
+  }
+
+  &--quantity {
+    min-width: 32px;
+
+    &-plus {
+      background: no-repeat center url("../../images/icons/icon-plus.svg");
+    }
+
+    &-minus {
+      background: no-repeat center url("../../images/icons/icon-minus.png");
+
+      &:disabled {
+        background-image: url("../../images/icons/icon-minus-disabled.png");
+      }
+    }
+  }
+
+  &--arrow:disabled,
+  &--quantity:disabled {
+    border-color: $c-elements;
+  }
+}

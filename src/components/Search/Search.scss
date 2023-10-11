@@ -1,0 +1,72 @@
+@import "@/styles/global-imports";
+
+.Search {
+  position: relative;
+  flex: 0 1 327px;
+
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 1px 0 0 0 $c-elements;
+  -webkit-box-shadow: 1px 0 0 0 $c-elements;
+
+  @include onMediumScreen {
+    margin-left: auto;
+
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+  &.isVisible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__input {
+    height: 100%;
+    width: 100%;
+    min-width: 0;
+    padding: 20px 0 20px 15px;
+
+    font-family: "Mont Semibold", sans-serif;
+    font-size: 14px;
+    color: $c-primary;
+
+    border: none;
+    box-shadow: -1px 0 0 0 $c-elements;
+    -webkit-box-shadow: -1px 0 0 0 $c-elements;
+
+    @include onMediumScreen {
+      padding: 22px 0 22px 24px;
+    }
+
+    @include onDesktop {
+      min-width: 327px;
+    }
+
+    &.has-icon {
+      background: no-repeat url("../../images/icons/icon-search.svg");
+      background-position: top 24px right 24px;
+    }
+
+    &::placeholder {
+      color: $c-icons;
+    }
+  }
+
+  &__clear-button {
+    display: none;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+
+    background: no-repeat center url("../../images/icons/icon-close-primary.svg");
+
+    cursor: pointer;
+
+    &.isActive {
+      display: block;
+    }
+  }
+}

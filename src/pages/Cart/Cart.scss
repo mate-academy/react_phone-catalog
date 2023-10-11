@@ -1,0 +1,134 @@
+@import "@/styles/global-imports";
+
+.Cart {
+  position: relative;
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__no-items-message {
+    margin-top: 10%;
+    text-align: center;
+
+    @extend %h1;
+  }
+
+  &__checkout-message {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    margin-top: -10px;
+    padding: 50px;
+
+    text-align: center;
+
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
+    -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0 30px 60px -30px;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    border: 1px solid $c-elements;
+    transition: opacity $effect-duration;
+
+    @include onMediumScreen {
+      left: 50px;
+      right: 50px;
+      padding: 100px;
+    }
+
+    & > h2 {
+      font-size: 20px;
+
+      @include onMediumScreen {
+        padding-block: 40px;
+        font-size: 22px;
+      }
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &__return {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__products {
+    margin-bottom: 20px;
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 1 / 13;
+      margin-bottom: 0;
+    }
+
+    @include onLargeDesktop {
+      grid-column: 1 / 17;
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__checkout {
+    grid-column: 1 / -1;
+    padding: 24px;
+    max-height: 209px;
+
+    border: 1px solid $c-elements;
+
+    @include onMediumScreen {
+      grid-column: 2 / -2;
+    }
+
+    @include onDesktop {
+      grid-column: 13 / -1;
+    }
+
+    @include onLargeDesktop {
+      grid-column: -9 / -1;
+    }
+
+    & > h2 {
+      @extend %h1;
+      text-align: center;
+    }
+
+    & > p {
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+
+      @extend %body-text;
+      color: $c-secondary;
+      text-align: center;
+      border-bottom: 1px solid $c-elements;
+    }
+
+    & > button {
+      width: 100%;
+      min-height: 48px;
+      padding: 13px 0 12px;
+    }
+  }
+
+  &__products,
+  &__checkout {
+
+    @include onMediumScreen {
+      min-width: max-content;
+    }
+  }
+}

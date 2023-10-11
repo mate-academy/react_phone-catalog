@@ -1,0 +1,59 @@
+@import "@/styles/global-imports";
+
+.Footer {
+  padding: 10px 0;
+
+  box-shadow: 0 -1px 0 0 $c-elements;
+  -webkit-box-shadow: 0 -1px 0 0 $c-elements;
+
+  @include onMediumScreen {
+    padding: 16px 0;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+
+    @include onMediumScreen {
+      gap: 64px;
+    }
+  }
+
+  &__list-item {
+    @extend %uppercase;
+    color: $c-secondary;
+
+    & a {
+      padding: 5px;
+
+      @include hover(color, $c-primary);
+
+      @include onMediumScreen {
+        padding: 10px;
+      }
+    }
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+  }
+
+  &__anchor-text {
+    display: none;
+    margin-right: 16px;
+
+    @extend %small-text;
+    color: $c-secondary;
+    user-select: none;
+
+    @include onMediumScreen {
+      display: block;
+    }
+  }
+}

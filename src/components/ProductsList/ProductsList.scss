@@ -1,0 +1,24 @@
+@import "@/styles/global-imports";
+
+.ProductsList {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    justify-content: center;
+
+    @include onMediumScreen {
+      justify-content: initial;
+    }
+  }
+
+  &__item {
+    width: 260px;
+
+    @include onMediumScreen {
+      width: auto;
+      max-width: 272px;
+    }
+  }
+}

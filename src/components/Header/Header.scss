@@ -1,0 +1,31 @@
+@import "@/styles/global-imports";
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: 0 1px 0 0 $c-elements;
+  -webkit-box-shadow: 0 1px 0 0 $c-elements;
+
+  @include onMediumScreen {
+    justify-content: initial;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 64px;
+    margin: 0 10px;
+
+    @include onMediumScreen {
+      margin: 0 24px;
+    }
+  }
+
+  &__actions {
+    display: none;
+
+    @include onMediumScreen {
+      display: flex;
+    }
+  }
+}

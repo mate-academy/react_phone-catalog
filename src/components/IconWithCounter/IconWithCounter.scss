@@ -1,0 +1,19 @@
+@import "@/styles/global-imports";
+
+.IconWithCounter {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+
+  @include onMediumScreen {
+    display: block;
+    padding: 18px;
+    margin: 0;
+  }
+
+  &__image {
+    @include onMediumScreen {
+      padding: 6px;
+    }
+  }
+}

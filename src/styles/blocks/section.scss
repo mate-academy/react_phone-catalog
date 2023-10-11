@@ -1,0 +1,20 @@
+.section {
+  position: relative;
+  margin-bottom: 50px;
+
+  @include onMediumScreen {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    @extend %h1;
+
+    @include onMediumScreen {
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
