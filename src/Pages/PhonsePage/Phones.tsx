@@ -10,7 +10,6 @@ import {
 } from '../../Components';
 
 import { sortPhones } from '../../helper/preperaPhones';
-import { useLocalStorage } from '../../utils/UseLocalStorege';
 import { Phone } from '../../Type/Phone';
 
 import './phones.scss';
@@ -25,11 +24,10 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
   const [searchParams] = useSearchParams();
   const selectedValueSortBy = searchParams.get('sortBy') || 'Newest';
   const selectedValueNumberOptions = searchParams.get('NumberOptions') || '4';
-  const [page, setPage] = useLocalStorage<number>('pages', 1);
-
-  const firstPhoneOnPage = +selectedValueNumberOptions * (page - 1);
+  const selectedPage = searchParams.get('page') || '1';
+  const firstPhoneOnPage = +selectedValueNumberOptions * (+selectedPage - 1);
   const lastPhoneOnPage = Math.min(
-    +selectedValueNumberOptions * page, phones.length,
+    +selectedValueNumberOptions * +selectedPage, phones.length,
   );
 
   const searchInPhones = phones
@@ -107,8 +105,6 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
                     {selectedValueNumberOptions !== 'All' && (
                       <PhonesPaginations
                         phones={phones}
-                        currentPage={page}
-                        setCurrentPage={setPage}
                       />
                     )}
                   </section>

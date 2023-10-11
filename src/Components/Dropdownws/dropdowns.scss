@@ -18,6 +18,12 @@
     height: 40px;
     border: 1px solid $gray-icons-placeholders;
     margin-bottom: 20px;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+      transition: border 0.5s ease;
+      cursor: pointer;
+    }
   }
 
   &__items {
@@ -28,5 +34,11 @@
     width: 176px;
     height: 40px;
     border: 1px solid $gray-icons-placeholders;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+      transition: border 0.5s ease;
+      cursor: pointer;
+    }
   }
 }

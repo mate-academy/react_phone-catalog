@@ -110,6 +110,13 @@
       height: 16px;
       background-image: url("../../images/icons/ButtonClose.svg");
       border: none;
+
+      &:hover {
+        background-color: $gray-primary;
+        background-image: url("../../images/icons/ButtonCloseActive.svg");
+
+        transition: border 0.5s, background-image 0.5s, background-color 0.5s;
+      }
     }
 
     &--plus {

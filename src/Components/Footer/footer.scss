@@ -59,7 +59,6 @@
     }
 
     color: $gray-secondary;
-
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
@@ -67,6 +66,11 @@
     letter-spacing: 0.48px;
     text-transform: uppercase;
     text-decoration: none;
+
+    &:hover {
+      color: $gray-primary;
+      transition: color 0.5s ease;
+    }
   }
 
   &__button {
@@ -97,8 +101,12 @@
       width: 32px;
       height: 32px;
       border: 1px solid $gray-icons-placeholders;
-
       background-image: url("../../images/icons/ArrowTop.svg");
+
+      &:hover {
+        border: 1px solid $gray-primary;
+        transition: border 0.5s ease;
+      }
     }
 
     &--fake {
