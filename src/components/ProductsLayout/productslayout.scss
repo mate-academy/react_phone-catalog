@@ -8,8 +8,24 @@
   &__section {
     margin-bottom: 40px;
 
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onPhone {
+      margin-bottom: 28px;
+    }
+
     &--small {
       margin-bottom: 24px;
+
+      @include onTablet {
+        margin-bottom: 20px;
+      }
+
+      @include onPhone {
+        margin-bottom: 18px;
+      }
     }
 
     &:last-child {
@@ -31,7 +47,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    margin-bottom: 24px;
   }
 
   &__dropdown-title {

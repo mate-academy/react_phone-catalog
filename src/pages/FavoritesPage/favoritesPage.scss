@@ -45,3 +45,23 @@
     @include h1Text;
   }
 }
+
+.reset-fade {
+  &-enter {
+    opacity: 0;
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: all 200ms ease-in-out;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+  }
+}

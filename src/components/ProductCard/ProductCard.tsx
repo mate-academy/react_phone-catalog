@@ -1,16 +1,15 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { ReactSVG } from 'react-svg';
 
 import { CartContext } from '../../storage/cartContext';
 import { PriceContext } from '../../storage/fullPriceСontext';
+import { FavouritesContext } from '../../storage/favoritesContext';
 
 import { Phone } from '../../types/phone';
 
-import { FavoritesIcon } from '../../img/FavoritesIcon';
 import './productcard.scss';
-import { FavouritesContext } from '../../storage/favoritesContext';
-import { FavoritesFilled } from '../../img/FavoritesFilled';
 
 type Props = {
   product: Phone ;
@@ -95,7 +94,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           data-cy="addToFavorite"
           onClick={() => handleFavorites(product)}
         >
-          {isInFavorites(product) ? <FavoritesFilled /> : <FavoritesIcon />}
+          {isInFavorites(product)
+            ? <ReactSVG src="img/icons/FavouritesFilled.svg" />
+            : <ReactSVG src="img/icons/Favourites.svg" />}
         </button>
       </div>
     </div>

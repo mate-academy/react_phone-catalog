@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { useState, useEffect } from 'react';
+import { ReactSVG } from 'react-svg';
 
 import { useViewport } from '../../helpers/useViewport';
 
-import { ArrowLeft } from '../../img/ArrowLeft';
-import { ArrowRight } from '../../img/ArrowRight';
 import { Phone } from '../../types/phone';
 
 import './productsslider.scss';
@@ -110,7 +109,7 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
             onClick={handleLeftButton}
             disabled={isLeftDisabled}
           >
-            <ArrowLeft />
+            <ReactSVG src="img/icons/ArrowLeft.svg" />
           </button>
 
           <button
@@ -119,7 +118,7 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
             onClick={handleRightButton}
             disabled={isRightDisabled}
           >
-            <ArrowRight />
+            <ReactSVG src="img/icons/ArrowRight.svg" />
           </button>
         </div>
       </div>

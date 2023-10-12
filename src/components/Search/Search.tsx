@@ -2,9 +2,7 @@ import {
   useEffect, useRef, useState,
 } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-
-import { SearchIcon } from '../../img/SearchIcon';
-import { CloseButton } from '../../img/CloseButton';
+import { ReactSVG } from 'react-svg';
 
 import { useDebounce } from '../../helpers/useDebounce';
 import { getSearchParams } from '../ProductsLayout/utils';
@@ -82,14 +80,14 @@ export const Search: React.FC = () => {
             data-cy="searchDelete"
             aria-hidden
           >
-            <CloseButton />
+            <ReactSVG src="img/icons/Close.svg" />
           </div>
         ) : (
           <div
             onClick={handleSearchFocus}
             aria-hidden
           >
-            <SearchIcon />
+            <ReactSVG src="img/icons/Search.svg" />
           </div>
         )}
       </div>

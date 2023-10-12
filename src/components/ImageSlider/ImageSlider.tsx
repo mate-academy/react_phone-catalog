@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
+import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
-
-import { ArrowLeft } from '../../img/ArrowLeft';
-import { ArrowRight } from '../../img/ArrowRight';
 
 import './imageslider.scss';
 
@@ -54,7 +52,7 @@ export const ImageSlider = () => {
           id="backSlide"
           onClick={handleLeftButton}
         >
-          <ArrowLeft />
+          <ReactSVG src="img/icons/ArrowLeft.svg" />
         </button>
 
         <div
@@ -85,7 +83,7 @@ export const ImageSlider = () => {
           id="forwardSlide"
           onClick={handleRightButton}
         >
-          <ArrowRight />
+          <ReactSVG src="img/icons/ArrowRight.svg" />
         </button>
       </div>
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-
-import { ArrowLeft } from '../../img/ArrowLeft';
-import { ArrowRight } from '../../img/ArrowRight';
+import { ReactSVG } from 'react-svg';
 
 import './pagination.scss';
 
@@ -67,7 +65,7 @@ export const Pagination: React.FC<Props> = ({
           onClick={handlePrevChange}
           data-cy="paginationLeft"
         >
-          <ArrowLeft />
+          <ReactSVG src="img/icons/ArrowLeft.svg" />
         </button>
 
         <div className="pagination__pages">
@@ -108,7 +106,7 @@ export const Pagination: React.FC<Props> = ({
           onClick={handleNextChange}
           data-cy="paginationRight"
         >
-          <ArrowRight />
+          <ReactSVG src="img/icons/ArrowRight.svg" />
         </button>
       </div>
     </div>

@@ -9,15 +9,23 @@ import './favoritesPage.scss';
 import { SearchTypes } from '../../types/searchType';
 import { filterQuery } from '../../components/ProductsLayout/utils';
 import { NoSearchResults } from '../../components/NoSearchResults';
+import {
+  NotificationContext,
+  NotificationStatus,
+} from '../../storage/notificationContext';
 
 export const FavoritesPage: React.FC = () => {
   const { favorites, setFavorites } = useContext(FavouritesContext);
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get(SearchTypes.Query) || '';
   const filteredFavorites = filterQuery(favorites, searchQuery);
+  const { setNotification } = useContext(NotificationContext);
 
   const handleFavoritesReset = () => {
     setFavorites([]);
+    setNotification({
+      message: 'Favorites are cleared', color: NotificationStatus.Error,
+    });
   };
 
   return (
@@ -32,7 +40,7 @@ export const FavoritesPage: React.FC = () => {
           {searchQuery && ` / ${filteredFavorites.length} results`}
         </p>
 
-        {favorites.length !== 0 && (
+        {favorites.length > 0 && !searchQuery && (
           <button
             type="button"
             className="favorites-page__clear-all"
@@ -46,7 +54,9 @@ export const FavoritesPage: React.FC = () => {
       {favorites.length > 0 ? (
         <>
           {filteredFavorites.length > 0 ? (
-            <ProductsList products={filteredFavorites} />
+            <ProductsList
+              products={filteredFavorites}
+            />
           ) : (
             <NoSearchResults />
           )}

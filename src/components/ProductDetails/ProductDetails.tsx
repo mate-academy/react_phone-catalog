@@ -1,27 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { ReactSVG } from 'react-svg';
 
 import { getPhoneDetails, getPhones } from '../../api/products';
 import { PhoneDetails } from '../../types/phoneDetails';
 
 import { BreadCrumbs } from '../BreadCrumbs';
 import { Loader } from '../Loader';
-import { BackButton } from '../BackButton';
 import { ProductSlider } from '../ProductsSlider';
-
-import './productDetails.scss';
-import { FavoritesIcon } from '../../img/FavoritesIcon';
 import { CartContext } from '../../storage/cartContext';
 import { Phone } from '../../types/phone';
 import { FavouritesContext } from '../../storage/favoritesContext';
-import { FavoritesFilled } from '../../img/FavoritesFilled';
+import { BackButton } from '../BackButton';
+import './productDetails.scss';
 
 export interface ColorsType {
   [key: string]: string;
 }
 
-const colorDictionary: ColorsType = {
+export const colorDictionary: ColorsType = {
   black: '#1F2020',
   coral: '#EE7762',
   gold: '#F9E5C9',
@@ -247,8 +245,8 @@ export const ProductDetails: React.FC = () => {
                     onClick={() => handleFavorites(generalInfo)}
                   >
                     {isInFavorites(generalInfo)
-                      ? <FavoritesFilled />
-                      : <FavoritesIcon />}
+                      ? <ReactSVG src="img/icons/FavouritesFilled.svg" />
+                      : <ReactSVG src="img/icons/Favourites.svg" />}
                   </button>
                 </div>
 

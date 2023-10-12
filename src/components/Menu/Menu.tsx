@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { ReactSVG } from 'react-svg';
 
 import { Logo } from '../Logo';
 
@@ -29,7 +30,9 @@ export const Menu: React.FC<Props> = ({ onOpen }) => {
           className="menu__close"
           onClick={handleMenuClose}
           aria-hidden="true"
-        />
+        >
+          <ReactSVG src="img/icons/Close.svg" />
+        </div>
       </div>
 
       <nav

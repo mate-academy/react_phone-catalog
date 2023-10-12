@@ -9,4 +9,25 @@
   @include onLaptop {
     justify-content: center;
   }
+
+  @include onTablet {
+    row-gap: 32px;
+  }
+
+  @include onPhone {
+    row-gap: 16px;
+  }
+}
+
+.list-item-fade {
+  &-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform 400ms, opacity 300ms;
+  }
 }

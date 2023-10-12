@@ -14,6 +14,7 @@
   &__top-actions {
     display: flex;
     justify-content: space-between;
+    gap: 4px;
     align-items: center;
     margin-bottom: 28px;
   }
@@ -28,7 +29,6 @@
   &__slider {
     display: flex;
     gap: var(--sliderGap);
-
     transform: translateX(calc(var(--slideValue) * var(--itemIndex) * -1 ));
     transition: all 2000ms;
   }

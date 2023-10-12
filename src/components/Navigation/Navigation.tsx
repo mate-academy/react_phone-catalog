@@ -1,19 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { ReactSVG } from 'react-svg';
 import { CSSTransition } from 'react-transition-group';
 
 import { useViewport } from '../../helpers/useViewport';
+import { CartContext } from '../../storage/cartContext';
+import { FavouritesContext } from '../../storage/favoritesContext';
 
 import { Logo } from '../Logo';
 import { Menu } from '../Menu';
+import { Search } from '../Search';
 
 import './navigation.scss';
-import { CartIcon } from '../../img/CartIcon';
-import { FavoritesIcon } from '../../img/FavoritesIcon';
-import { CartContext } from '../../storage/cartContext';
-import { FavouritesContext } from '../../storage/favoritesContext';
-import { Search } from '../Search';
 
 function getActiveClass({ isActive }: { isActive: boolean }) {
   return classNames('navigation__page-link', 'navigation__after', {
@@ -33,6 +32,14 @@ export const Navigation: React.FC = () => {
       setIsMenuOpened(false);
     }
   }, [width]);
+
+  useEffect(() => {
+    if (isMenuOpened) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'initial';
+    }
+  }, [isMenuOpened]);
 
   return (
     <header className="navigation">
@@ -54,11 +61,7 @@ export const Navigation: React.FC = () => {
               aria-hidden="true"
             >
               <div className="navigation__menu-container">
-                <img
-                  src="img/Hamburger.svg"
-                  alt="Menu"
-                  className="navigation__menu"
-                />
+                <ReactSVG src="img/icons/Hamburger.svg" />
               </div>
             </li>
           ) }
@@ -108,7 +111,7 @@ export const Navigation: React.FC = () => {
               }}
             >
               <div className="navigation__icon-container">
-                <FavoritesIcon />
+                <ReactSVG src="img/icons/Favourites.svg" />
                 {favorites.length > 0 && (
                   <div className="navigation__counter">
                     {favorites.length}
@@ -130,7 +133,7 @@ export const Navigation: React.FC = () => {
               }}
             >
               <div className="navigation__icon-container">
-                <CartIcon />
+                <ReactSVG src="img/icons/Cart.svg" />
                 {cart.length > 0 && (
                   <div className="navigation__counter">
                     {cart.length}

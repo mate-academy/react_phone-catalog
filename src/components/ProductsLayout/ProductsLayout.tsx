@@ -25,6 +25,7 @@ import {
 
 import './productslayout.scss';
 import { NoSearchResults } from '../NoSearchResults';
+import { handleScrollToTop } from '../Footer/utils';
 
 type Props = {
   title: string;
@@ -72,10 +73,7 @@ export const ProductsLayout: React.FC<Props> = ({ title }) => {
   const onPageChange = (newPage: number) => {
     setSearch({ [SearchTypes.Page]: newPage.toString() });
 
-    document.body.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    });
+    handleScrollToTop();
   };
 
   useEffect(() => {

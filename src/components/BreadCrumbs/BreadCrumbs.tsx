@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
+
 import './breadcrumbs.scss';
 
 export const capitalize = (string: string) => {
@@ -15,13 +17,14 @@ export const BreadCrumbs: React.FC<Props> = ({ productName }) => {
   const directory = pathname.split('/')[1];
 
   return (
-    <div
-      data-cy="breadCrumbs"
-      className="breadcrumbs"
-    >
-      <Link to="/" className="breadcrumbs__icon breadcrumbs__icon--home" />
+    <div data-cy="breadCrumbs" className="breadcrumbs">
+      <Link to="/" className="breadcrumbs__icon breadcrumbs__icon--hover">
+        <ReactSVG src="img/icons/Home.svg" />
+      </Link>
 
-      <div className="breadcrumbs__icon breadcrumbs__icon--arrow" />
+      <div className="breadcrumbs__icon">
+        <ReactSVG src="img/icons/ArrowRight.svg" />
+      </div>
 
       {productName ? (
         <>
@@ -29,7 +32,9 @@ export const BreadCrumbs: React.FC<Props> = ({ productName }) => {
             {capitalize(directory)}
           </Link>
 
-          <div className="breadcrumbs__icon breadcrumbs__icon--arrow" />
+          <div className="breadcrumbs__icon">
+            <ReactSVG src="img/icons/ArrowRight.svg" />
+          </div>
 
           <p className="breadcrumbs__current">{productName}</p>
         </>

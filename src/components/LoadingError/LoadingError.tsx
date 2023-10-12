@@ -1,10 +1,13 @@
+import { ReactSVG } from 'react-svg';
 import './loadingerror.scss';
 
 export const LoadingError: React.FC = () => {
   return (
     <div className="loading-error">
       <div className="loading-error__heading">
-        <div className="loading-error__icon" />
+        <div className="loading-error__icon">
+          <ReactSVG src="img/icons/Warning.svg" />
+        </div>
 
         <h2 className="loading-error__title">Couldn&apos;t load products...</h2>
       </div>

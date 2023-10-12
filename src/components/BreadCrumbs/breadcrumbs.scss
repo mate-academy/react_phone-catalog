@@ -5,6 +5,10 @@
   align-items: center;
   gap: 8px;
 
+  @include onPhone {
+    gap: 4px;
+  }
+
   &__icon {
     user-select: none;
 
@@ -12,17 +16,17 @@
     width: 16px;
     height: 16px;
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    transition: $transition;
 
-    &--home {
-      background-image: url('../../img/Home.svg');
-
+    & svg {
+      object-position: center;
+      object-fit: contain;
     }
 
-    &--arrow {
-      background-image: url('../../img/ChevronRight.svg');
+    &--hover {
+      &:hover {
+        transform: scale(1.15);
+      }
     }
   }
 
@@ -37,4 +41,8 @@
     color: $color-primary;
     user-select: none;
   }
+}
+
+.test {
+  color: white;
 }

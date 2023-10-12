@@ -1,12 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { ReactSVG } from 'react-svg';
 
 import { CartContext } from '../../storage/cartContext';
 import { CartItemType } from '../../types/cartItemType';
-
-import { CloseButton } from '../../img/CloseButton';
-import { Minus } from '../../img/Minus';
-import { Plus } from '../../img/Plus';
 
 import './cartItem.scss';
 
@@ -48,7 +45,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         data-cy="cartDeleteButton"
         aria-hidden
       >
-        <CloseButton />
+        <ReactSVG src="img/icons/Close.svg" />
       </div>
 
       <Link
@@ -78,7 +75,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           onClick={handleMinusQuantity}
           disabled={isMinusDisabled}
         >
-          <Minus />
+          <ReactSVG src="img/icons/Minus.svg" />
         </button>
 
         <span className="cart-item__quantity">{item.quantity}</span>
@@ -89,7 +86,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           onClick={handlePlusQuantity}
           disabled={isPlusDisabled}
         >
-          <Plus />
+          <ReactSVG src="img/icons/Plus.svg" />
         </button>
 
       </div>

@@ -11,34 +11,37 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartProvider } from './storage/cartContext';
 import { FavouritesProvider } from './storage/favoritesContext';
+import { NotificationProvider } from './storage/notificationContext';
 
 export const Root: React.FC = () => (
-  <CartProvider>
-    <FavouritesProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
+  <NotificationProvider>
+    <CartProvider>
+      <FavouritesProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
 
-            <Route path="phones">
-              <Route index element={<PhonesPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
+              <Route path="phones">
+                <Route index element={<PhonesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
+              <Route path="tablets">
+                <Route index element={<TabletsPage />} />
+              </Route>
+
+              <Route path="accessories">
+                <Route index element={<AccessoriesPage />} />
+              </Route>
+
+              <Route path="favorites" element={<FavoritesPage />} />
+              <Route path="cart" element={<CartPage />} />
             </Route>
-
-            <Route path="tablets">
-              <Route index element={<TabletsPage />} />
-            </Route>
-
-            <Route path="accessories">
-              <Route index element={<AccessoriesPage />} />
-            </Route>
-
-            <Route path="favorites" element={<FavoritesPage />} />
-            <Route path="cart" element={<CartPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Router>
-    </FavouritesProvider>
-  </CartProvider>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Router>
+      </FavouritesProvider>
+    </CartProvider>
+  </NotificationProvider>
 );

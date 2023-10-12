@@ -1,7 +1,10 @@
-import { Dispatch, SetStateAction, createContext } from 'react';
+import {
+  Dispatch, SetStateAction, createContext, useContext,
+} from 'react';
 import { useLocalStorage } from '../helpers/useLocalStorage';
 import { CartItemType } from '../types/cartItemType';
 import { Phone } from '../types/phone';
+import { NotificationContext, NotificationStatus } from './notificationContext';
 
 type Props = {
   children: React.ReactNode,
@@ -23,6 +26,7 @@ export const CartContext = createContext<CartContextType>({
 
 export const CartProvider:React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<CartItemType[]>('cart', []);
+  const { setNotification } = useContext(NotificationContext);
 
   const isInCart = (product: Phone) => {
     return cart.some(cartItem => cartItem.product.id === product.id);
@@ -32,6 +36,9 @@ export const CartProvider:React.FC<Props> = ({ children }) => {
     if (isInCart(product)) {
       setCart(prev => prev
         .filter(cartItem => cartItem.product.id !== product.id));
+      setNotification({
+        message: 'Deleted from cart', color: NotificationStatus.Error,
+      });
     } else {
       const newCartItem = {
         id: cart.length + 1,
@@ -40,6 +47,9 @@ export const CartProvider:React.FC<Props> = ({ children }) => {
       } as CartItemType;
 
       setCart(prev => [...prev, newCartItem]);
+      setNotification({
+        message: 'Added to cart', color: NotificationStatus.Success,
+      });
     }
   };
 

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from '../../img/ArrowLeft';
+import { ReactSVG } from 'react-svg';
 import './backButton.scss';
 
 export const BackButton:React.FC = () => {
@@ -17,7 +17,7 @@ export const BackButton:React.FC = () => {
       data-cy="backButton"
     >
       <div className="back-button__icon">
-        <ArrowLeft />
+        <ReactSVG src="img/icons/ArrowLeft.svg" />
       </div>
 
       <span className="back-button__text">Back</span>

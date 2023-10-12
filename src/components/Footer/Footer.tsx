@@ -1,8 +1,8 @@
+/* eslint-disable import/no-webpack-loader-syntax */
 import React from 'react';
+import { ReactSVG } from 'react-svg';
 
-import { ArrowUp } from '../../img/ArrowUp';
 import { Logo } from '../Logo';
-
 import { handleScrollToTop } from './utils';
 
 import './footer.scss';
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
               id="back-to-top"
               onClick={handleScrollToTop}
             >
-              <ArrowUp />
+              <ReactSVG src="img/icons/ArrowUp.svg" />
             </button>
           </div>
         </div>

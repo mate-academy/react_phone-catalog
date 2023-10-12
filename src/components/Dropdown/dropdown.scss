@@ -1,10 +1,10 @@
 @import '../../style-utils/style-utils';
 
 .dropdown {
+  display: inline-block;
   position: relative;
   width: 176px;
   height: 40px;
-  display: inline-block;
 
   &--small {
     width: 128px;
@@ -44,7 +44,7 @@
     position: absolute;
     top: calc(100% + 4px);
     z-index: 1;
-    overflow: hidden;
+
     display: flex;
     flex-direction: column;
 

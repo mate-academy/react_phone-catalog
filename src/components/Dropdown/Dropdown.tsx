@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { ReactSVG } from 'react-svg';
 import classnames from 'classnames';
 
-import { ArrowDown } from '../../img/ArrowDown';
-import { ArrowUp } from '../../img/ArrowUp';
-
-import './dropdown.scss';
 import { DropDownOption } from '../../types/dropDownOption';
+import './dropdown.scss';
 
 type Props = {
   options: DropDownOption[];
@@ -55,7 +53,9 @@ export const Dropdown: React.FC<Props> = ({
           {optionName}
         </span>
 
-        {isSelected ? <ArrowUp /> : <ArrowDown />}
+        {isSelected
+          ? <ReactSVG src="img/icons/ArrowUp.svg" />
+          : <ReactSVG src="img/icons/ArrowDown.svg" />}
       </button>
 
       <CSSTransition
