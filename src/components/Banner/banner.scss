@@ -1,3 +1,5 @@
+@import "../../helpers/variables.scss";
+
 .banner {
   display: flex;
   justify-content: space-between;
@@ -27,7 +29,7 @@
     justify-content: center;
     height: 100%;
     width: 32px;
-    border: 1px solid #b4bdc4;
+    border: 1px solid $border-color;
     background-color: #fff;
 
     transition: all 0.3s;
@@ -71,10 +73,10 @@
 
     transition: all 0.5s;
 
-    background-color: #e2e6e9;
+    background-color: $grey-third-color;
 
     &:hover {
-      background-color: #b4bdc3;
+      background-color: $grey-fourth-color;
     }
 
     &:last-child {
@@ -82,7 +84,7 @@
     }
 
     &--active {
-      background-color: #313237;
+      background-color: $grey-primary-color;
 
     }
   }

@@ -1,8 +1,10 @@
 import classNames from 'classnames';
+import './header.scss';
 import { useContext } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContextProvider';
 import { FavContext } from '../contexts/FavContextProvider';
+import { Search } from '../Search/Search';
 import Logo from '../../Images/Icons/Logo.svg';
 import heartLike from '../../Images/Icons/FavouritesHeartLike.svg';
 import shoppingBagCart from '../../Images/Icons/ShoppingbagCart.svg';
@@ -10,6 +12,13 @@ import shoppingBagCart from '../../Images/Icons/ShoppingbagCart.svg';
 export const Header = () => {
   const { cart } = useContext(CartContext);
   const { favourites } = useContext(FavContext);
+  const location = useLocation();
+  const { pathname } = location;
+
+  const isPathnamePhones = pathname === '/phones';
+  const isPathnameTablets = pathname === '/tablets';
+  const isPathnameAccessories = pathname === '/accessories';
+  const isPathnameFavourites = pathname === '/favourites';
 
   return (
     <header className="header header--margin-bottom">
@@ -80,6 +89,11 @@ export const Header = () => {
       </div>
 
       <div className="header__choosed">
+        {(isPathnamePhones || isPathnameTablets
+          || isPathnameAccessories || isPathnameFavourites) && (
+          <Search />
+        )}
+
         <NavLink
           className={({ isActive }) => classNames(
             'header__link',

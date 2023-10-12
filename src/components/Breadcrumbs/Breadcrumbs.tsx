@@ -1,3 +1,4 @@
+import './breadCrumbs.scss';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { getCorrectTitle } from '../../helpers/getCorrectTittle';

@@ -1,3 +1,4 @@
+import './pagination.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getNumbers } from '../../helpers/getNumbers';

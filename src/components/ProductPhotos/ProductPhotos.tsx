@@ -1,3 +1,4 @@
+import './productPhotos.scss';
 import classNames from 'classnames';
 
 type Props = {
@@ -23,7 +24,7 @@ export const ProductPhoto: React.FC<Props> = ({
             })}
             onClick={() => handleChangePhoto(img)}
           >
-            <div className="product-photos-item=box">
+            <div className="product-photos__photo-item-box">
               <img
                 src={`/new/${img}`}
                 alt="product-img"

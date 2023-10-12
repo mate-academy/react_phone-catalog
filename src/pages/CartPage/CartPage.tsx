@@ -1,8 +1,9 @@
+import './cartPage.scss';
 import { useContext } from 'react';
-import { CartContext } from '../contexts/CartContextProvider';
-import { BackButton } from '../BackButton/BackButton';
-import { CartItemList } from '../CartItemList/CarrtItemList';
-import { CartInfo } from '../CartInfo/CartInfo';
+import { CartContext } from '../../components/contexts/CartContextProvider';
+import { BackButton } from '../../components/BackButton/BackButton';
+import { CartItemList } from '../../components/CartItemList/CarrtItemList';
+import { CartInfo } from '../../components/CartInfo/CartInfo';
 
 export const CartPage = () => {
   const { cart } = useContext(CartContext);

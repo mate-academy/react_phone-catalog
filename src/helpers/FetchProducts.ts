@@ -7,7 +7,6 @@ export const detailsURL
  = 'https://mate-academy.github.io/react_phone-catalog/_new/products/';
 
 export const getProducts = (url: string) => {
-  // console.log('getProducts');
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -59,5 +58,3 @@ export const getSuggestedProducts = async () => {
 
   return shuffledProducts;
 };
-
-// console.log(getProductDetails('apple-iphone-11-pro-256gb-midnightgreen'));

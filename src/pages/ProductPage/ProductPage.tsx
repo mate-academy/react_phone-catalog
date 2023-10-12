@@ -1,8 +1,9 @@
+import './productPage.scss';
 import { Product } from '../../types/Product';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import { Loader } from '../Loader';
-import { NoResults } from '../NoResults/NoResult';
-import { ProductsList } from '../ProductList/ProductList';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
+import { Loader } from '../../components/Loader';
+import { NoResults } from '../../components/NoResults/NoResult';
+import { ProductsList } from '../../components/ProductList/ProductList';
 
 type Props = {
   isLoading: boolean,
@@ -19,16 +20,13 @@ export const ProductPage: React.FC<Props> = ({
   title,
   category,
 }) => {
-  const loadPage = isLoading && !isError;
-  const loaded = !isLoading && !isError;
-
   return (
     <section className="products-page">
       <div className="products-page__nav">
         <Breadcrumbs />
       </div>
       <div className="products-page__content">
-        {loadPage ? (
+        {isLoading && !isError ? (
           <Loader />
         ) : (
           <>
@@ -38,10 +36,8 @@ export const ProductPage: React.FC<Props> = ({
                   {title}
                 </h1>
 
-                {loaded && (
+                {!isLoading && !isError && (
                   <ProductsList
-                    isLoading={isLoading}
-                    isError={isError}
                     products={products}
                   />
                 )}

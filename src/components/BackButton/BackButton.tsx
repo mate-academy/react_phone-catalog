@@ -1,3 +1,4 @@
+import './backButton.scss';
 import arrowLeft from '../../Images/Icons/ArrowLeft.svg';
 
 export const BackButton = () => {

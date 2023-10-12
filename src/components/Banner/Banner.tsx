@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import './banner.scss';
 import { useEffect, useState } from 'react';
 
 export const Banner = () => {

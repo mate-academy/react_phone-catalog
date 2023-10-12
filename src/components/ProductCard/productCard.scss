@@ -1,3 +1,5 @@
+@import "../../helpers/variables.scss";
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
   width: 272px;
   height: 507px;
   padding: 32px 24px 24px;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $grey-third-color;
   transition: all 0.3s;
 
   &:hover {
@@ -40,7 +42,7 @@
   }
 
   &__price-discount {
-    color: #e2e6e9;
+    color: $grey-third-color;
     text-decoration: line-through;
     font-size: 22px;
   }

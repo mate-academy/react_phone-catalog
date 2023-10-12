@@ -1,3 +1,4 @@
+import './cartItem.scss';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import classNames from 'classnames';

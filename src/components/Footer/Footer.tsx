@@ -1,3 +1,4 @@
+import './footer.scss';
 import { Link } from 'react-router-dom';
 import arrowUp from '../../Images/Icons/ArrowUp.svg';
 import Logo from '../../Images/Icons/Logo.svg';

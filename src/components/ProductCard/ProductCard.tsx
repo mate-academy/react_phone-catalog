@@ -1,3 +1,4 @@
+import './productCard.scss';
 import { Link } from 'react-router-dom';
 import { ButtonFav } from '../ButtonFav/ButtonFav';
 import { ButtonCart } from '../ButtonCart/ButtonCart';

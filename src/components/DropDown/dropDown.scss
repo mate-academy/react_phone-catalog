@@ -1,3 +1,5 @@
+@import "../../helpers/variables.scss";
+
 .drop-down {
   width: 176px;
   position: relative;
@@ -10,16 +12,13 @@
 
   &__header {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     width: 176px;
     margin-bottom: 4px;
-
-    border: 1px solid #b4bdc4;
+    border: 1px solid $border-color;
     cursor: pointer;
-
     font-family: $font-semibold;
-
   }
 
   &__icon {
@@ -31,7 +30,6 @@
     text-align: center;
     width: 40px;
     height: 40px;
-
   }
 
   &__current {
@@ -45,8 +43,7 @@
     left: 0;
     right: 0;
     background-color: #fff;
-
-    border: 1px solid #e2e6e9;
+    border: 1px solid $grey-third-color;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
   }
 
@@ -62,11 +59,10 @@
     height: 40px;
     font-size: 14px;
     cursor: pointer;
-
     transition: all 0.3s;
 
     &:hover {
-      background-color: #fafbfc;
+      background-color: $grey-background;
     }
   }
 }

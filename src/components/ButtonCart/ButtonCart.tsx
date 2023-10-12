@@ -1,3 +1,4 @@
+import './buttonCart.scss';
 import { useContext } from 'react';
 import classNames from 'classnames';
 import { CartContext } from '../contexts/CartContextProvider';

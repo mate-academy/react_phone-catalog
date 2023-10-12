@@ -1,3 +1,5 @@
+@import "../../helpers/variables.scss";
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@
     width: 32px;
     height: 32px;
     background-color: #fff;
-    border: 1px solid #b4bdc4;
+    border: 1px solid $border-color;
     transition: all 0.3s;
     background-repeat: no-repeat;
     background-position: center;
@@ -20,13 +22,13 @@
     background-image: url(../../Images/Icons/ArrowLeft.svg);
 
     &:not(.pagination__button-left--disabled):hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
 
     &--disabled {
       // margin-right: 16px;
-      border-color: #e2e6e9;
-      cursor: default;
+      border-color: $grey-third-color;
+      cursor: none;
       pointer-events: none;
 
       background-image: url(../../Images/Icons/ArrowLeft.svg);
@@ -37,12 +39,12 @@
     background-image: url(../../Images/Icons/ArrowRight.svg);
 
     &:not(.pagination__button-right--disabled):hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
 
     &--disabled {
-      border-color: #e2e6e9;
-      cursor: default;
+      border-color: $grey-primary-color;
+      cursor: none;
       pointer-events: none;
 
       background-image: url(../../Images/Icons/ArrowRight.svg);
@@ -59,7 +61,7 @@
 
     &--active {
       color: #fff;
-      background-color: #313237;
+      background-color: $grey-primary-color;
     }
 
     &:last-child {
@@ -75,16 +77,16 @@
     width: 32px;
     height: 32px;
 
-    border: 1px solid #b4bdc3;
+    border: 1px solid $grey-fourth-color;
     transition: all 0.3s;
 
     &:hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
 
     &--active {
       color: #fff;
-      background-color: #313237;
+      background-color: $grey-primary-color;
     }
   }
 

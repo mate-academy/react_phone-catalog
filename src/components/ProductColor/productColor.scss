@@ -1,6 +1,8 @@
+@import "../../helpers/variables.scss";
+
 .product-colors {
   padding-bottom: 24px;
-  border-bottom: 1.5px solid #e2e6e9;
+  border-bottom: 1.5px solid $grey-third-color;
 
   &__title {
     font-size: 32px;
@@ -22,7 +24,7 @@
     height: 32px;
     padding: 2px;
 
-    border: 1.5px solid #e2e6e9;
+    border: 1.5px solid $grey-third-color;
     border-radius: 50%;
 
     transition: all 0.3s;

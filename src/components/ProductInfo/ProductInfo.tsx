@@ -1,3 +1,4 @@
+import './productInfo.scss';
 import { ProductDetails } from '../../types/ProductDetails';
 
 type Props = {

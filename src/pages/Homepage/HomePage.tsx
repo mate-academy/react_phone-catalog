@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../types/Product';
+import './homePage.scss';
+import { Product } from '../../types/Product';
 import {
   getAllProducts,
   getHotProducts,
   getBrandNewProducts,
-} from '../helpers/FetchProducts';
-import { Loader } from '../components/Loader';
-import { Category } from '../components/Category/Category';
-import { ProductSection } from '../types/ProductSection';
-import { Banner } from '../components/Banner/Banner';
-import { ProductsSlider } from '../components/ProductSlider/ProductSlider';
+} from '../../helpers/FetchProducts';
+import { Loader } from '../../components/Loader';
+import { Category } from '../../components/Category/Category';
+import { ProductSection } from '../../types/ProductSection';
+import { Banner } from '../../components/Banner/Banner';
+import { ProductsSlider } from '../../components/ProductSlider/ProductSlider';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);

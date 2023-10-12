@@ -7,7 +7,7 @@
   &__title {
     padding-bottom: 16px;
 
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $grey-third-color;
     font-family: $font-bold;
     font-size: 22px;
   }
@@ -56,6 +56,6 @@
   &__tech-item-value {
     font-size: 14px;
     line-height: 21px;
-    color: #313237;
+    color: $grey-primary-color;
   }
 }

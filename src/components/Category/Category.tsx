@@ -1,3 +1,4 @@
+import './category.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import imgPhones from '../../Images/Img/img-phones.png';

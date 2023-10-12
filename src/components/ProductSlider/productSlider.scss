@@ -1,6 +1,8 @@
+@import "../../helpers/variables.scss";
+
 .slider {
-  overflow: hidden;
   width: 1136px;
+  overflow: hidden;
 
   &__header {
     display: flex;
@@ -16,17 +18,16 @@
 
   &__list {
     display: flex;
-    gap: 16px;
   }
 
   &__item {
-    //   margin-left: 16px;
-    width: 272px;
+    margin-left: 16px;
+    // width: 272px;
     height: 507px;
 
-    //   &:first-child {
-    //     margin-left: 0;
-    //   }
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   &__buttons {
@@ -42,14 +43,13 @@
     width: 32px;
     height: 32px;
     background-color: #fff;
-    border: 1px solid #b4bdc3;
-
-    transition: all 0.3s;
+    border: 1px solid $grey-fourth-color;
     background-repeat: no-repeat;
     background-position: center;
+    transition: all 0.3s;
 
     &:not(.slider__btn-left--disabled):not(.slider__btn-right--disabled):hover {
-      border-color: #313237;
+      border-color: $grey-primary-color;
     }
   }
 
@@ -59,7 +59,7 @@
 
     &--disabled {
       margin-right: 16px;
-      border-color: #e2e6e9;
+      border-color: $grey-third-color;
       cursor: default;
       background-image: url(../../Images/Icons/ArrowLeft.svg);
     }
@@ -69,7 +69,7 @@
     background-image: url(../../Images/Icons/ArrowRight.svg);
 
     &--disabled {
-      border-color: #e2e6e9;
+      border-color: $grey-third-color;
       cursor: default;
       background-image: url(../../Images/Icons/ArrowRight.svg);
     }

@@ -1,8 +1,10 @@
+@import "../../helpers/variables.scss";
+
 .product-details {
 
   width: 1136px;
 
-  &__nav {
+  &__navigation {
     margin: 24px 0 40px;
   }
 
@@ -18,7 +20,6 @@
   &__presentation {
     display: flex;
     margin-bottom: 80px;
-    // width: 1136px;
   }
 
   &__colors {
@@ -27,7 +28,6 @@
 
   &__main-info {
     width: 320px;
-    // display: flex;
   }
 
   &__capacitys {
@@ -39,7 +39,6 @@
     align-items: center;
 
     margin-bottom: 16px;
-    // margin-right: 8px;
   }
 
   &__current-price {
@@ -54,14 +53,15 @@
     text-decoration-line: line-through;
   }
 
-  &__actions {
+  &__action {
     display: flex;
     margin-bottom: 32px;
+    width: 100%;
   }
 
   &__button {
     margin-right: 8px;
-    width: 263px;
+    width: 260px;
     height: 48px;
   }
 
@@ -70,17 +70,8 @@
     height: 48px;
   }
 
-  &__info {
-    // list-style: none;
-    // display: flex;
-    // // flex-direction: column;
-    // justify-content: space-between;
-    // align-content: space-between;
-  }
-
   &__info-item {
     display: flex;
-    // flex-direction: column;
     justify-content: space-between;
   }
 

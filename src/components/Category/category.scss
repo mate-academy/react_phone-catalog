@@ -1,9 +1,10 @@
+@import "../../helpers/variables.scss";
+
 .category {
   &__img-box {
     width: 368px;
     height: 368px;
     overflow: hidden;
-
     transition: all 0.3s;
 
     &:hover {

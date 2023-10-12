@@ -1,3 +1,4 @@
+import './productSlider.scss';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { Product } from '../../types/Product';
@@ -14,8 +15,9 @@ const gap = 16;
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [position, setPosition] = useState(0);
+  const visibleProducts = products.slice(0, 21);
 
-  const maxPosition = -((products.length - 4) * (cardWidth + gap));
+  const maxPosition = -((visibleProducts.length - 4) * (cardWidth + gap));
 
   const clickNext = () => {
     const newPosition = position - (cardWidth + gap);
@@ -74,10 +76,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         style={{
           transform: `translateX(${position}px)`,
           transition: 'transform 0.5s',
-          width: cardWidth * products.length,
+          width: cardWidth * visibleProducts.length,
         }}
       >
-        {products.map(product => {
+        {visibleProducts.map(product => {
           return (
             <li
               className="slider__item"

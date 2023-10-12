@@ -1,7 +1,8 @@
+import './favouritesPage.scss';
 import { useContext } from 'react';
-import { FavItemList } from '../FavItemList/FavItemList';
-import { FavContext } from '../contexts/FavContextProvider';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { FavItemList } from '../../components/FavItemList/FavItemList';
+import { FavContext } from '../../components/contexts/FavContextProvider';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const FavouritesPage = () => {
   const { favourites } = useContext(FavContext);

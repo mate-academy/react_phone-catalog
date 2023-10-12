@@ -2,23 +2,23 @@ import './App.scss';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { PhonesPage } from './components/PhonesPage/PhonesPage';
-import { HomePage } from './pages/HomePage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+import { HomePage } from './pages/Homepage/HomePage';
 // eslint-disable-next-line max-len
-import { ProductDetailsPage } from './components/ProductDetailsPage/ProductDetailsPage';
-import { TabletsPage } from './components/TabletsPage/TabletsPage';
-import { AccessorysPage } from './components/AccessoryPage/AccessoryPage';
-import { CartPage } from './components/CartPage/CartPage';
-import { FavouritesPage } from './components/FavouritesPage/FavouritesPage';
-import { PageNotFound } from './components/PageNotFound/PageNotFound';
+import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { AccessorysPage } from './pages/AccessoryPage/AccessoryPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
+import { PageNotFound } from './pages/PageNotFound/PageNotFound';
 
 const App = () => (
   <div className="App">
     <div className="App__header">
       <Header />
     </div>
-    <section className="main-section">
-      <div className="main-section__content">
+    <section className="App__main-section">
+      <div className="App__content">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />

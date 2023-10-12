@@ -1,3 +1,4 @@
+import './productColor.scss';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductDetails } from '../../types/ProductDetails';

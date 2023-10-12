@@ -1,35 +1,29 @@
 @import "./helpers/variables.scss";
 // @import "./helpers/fonts.scss";
-@import "./components/Header/Header.scss";
-@import "./components/Footer/footer.scss";
-@import "./components/Category/category.scss";
-@import "./components/Breadcrumbs/breadcrumbs.scss";
-@import "./components/Banner/banner.scss";
-@import "./components/BackButton/backButton.scss";
-@import "./pages/homePage.scss";
-@import "./components/CartPage/cartPage.scss";
-@import "./components/FavouritesPage/favouritesPage.scss";
-@import "./components/PhonesPage/phonesPage.scss";
-@import "./components/ProductDetailsPage/productDetailsPage.scss";
-@import "./components/ProductPage/productPage.scss";
-@import "./components/ButtonCart/buttonCart.scss";
-@import "./components/ButtonFav/buttonFav.scss";
-@import "./components/CartInfo/cartInfo.scss";
-@import "./components/CartItem/cartItem.scss";
-@import "./components/DropDown/dropDown.scss";
-@import "./components/FavItemList/favItemList.scss";
-@import "./components/Loader/Loader.scss";
-@import "./components/Pagination/pagination.scss";
-@import "./components/ProductCapacity/productCapacity.scss";
-@import "./components/ProductCard/productCard.scss";
-@import "./components/ProductList/productList.scss";
-@import "./components/ProductColor/productColor.scss";
-@import "./components/ProductPhotos/productPhotos.scss";
-@import "./components/ProductInfo/productInfo.scss";
-@import "./components/ProductSlider/productSlider.scss";
 
 * {
   box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main-section {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1136px;
+  }
 }
 
 html,
@@ -40,7 +34,6 @@ body {
   box-sizing: border-box;
   font-family: $font-regular;
   color: $grey-primary-color;
-
   font-size: 12px;
 }
 
@@ -84,29 +77,4 @@ h3 {
   font-size: 20px;
   line-height: 26px;
   letter-spacing: 0;
-}
-
-.App {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-section {
-  flex: 1 0 auto;
-  display: flex;
-  // justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 80px;
-  // height: 100vh;
-  // overflow-y: scroll;
-
-  &__content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    max-width: 1136px;
-  }
 }

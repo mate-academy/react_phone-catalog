@@ -1,3 +1,4 @@
+import './buttonFav.scss';
 import classNames from 'classnames';
 import { useContext } from 'react';
 import { FavContext } from '../contexts/FavContextProvider';
@@ -22,10 +23,10 @@ export const ButtonFav: React.FC<Props> = ({ product }) => {
 
   return (
     <button
+      data-cy="addToFviurite"
       className={classNames('button-fav', {
         'button-fav--active': isAdded,
       })}
-      // className="button-fav"
       type="button"
       onClick={handleAddToFav}
     >
