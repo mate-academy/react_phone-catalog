@@ -1,0 +1,126 @@
+@import "/src/style/main.scss";
+
+.category {
+  flex-direction: column;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
+
+  &__section {
+    max-width: 560px;
+    margin: 0 auto;
+
+    @include onTablet {
+      max-width: 1136px;
+      margin: 0 auto;
+    }
+
+    @include onDesktop {
+      margin: 0;
+      width: 1136px;
+    }
+  }
+
+  display: flex;
+  gap: 16px;
+  margin-bottom: 80px;
+
+  &__name {
+    margin: 0 auto 28px;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+
+    @include onTablet {
+      font-size: 32px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    color: #313237;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  &__presence {
+    margin: 0;
+    color: #89939a;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__phones {
+    width: 272px;
+    height: 272px;
+    margin: 0 0 24px;
+    background: #fcdbc1;
+    overflow: hidden;
+    position: relative;
+
+    @include onTablet {
+      width: 292px;
+      height: 292px;
+    }
+
+    @include onTablet {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &__tablets {
+    width: 272px;
+    height: 272px;
+    margin: 0 0 24px;
+    background: #8d8d92;
+    overflow: hidden;
+    position: relative;
+
+    @include onTablet {
+      width: 292px;
+      height: 292px;
+    }
+
+    @include onTablet {
+      width: 368px;
+      height: 368px;
+    }
+  }
+
+  &__accessories {
+    width: 272px;
+    height: 272px;
+    margin: 0 0 24px;
+    background: #973d5f;
+    overflow: hidden;
+
+    @include onTablet {
+      width: 292px;
+      height: 292px;
+    }
+
+    @include onTablet {
+      width: 368px;
+      height: 368px;
+    }
+  }
+}
+
+.container {
+  &__category {
+    margin: 0 auto;
+    text-decoration: none;
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+    z-index: 1;
+
+    &:hover {
+      z-index: 2;
+      transform: scale(1.05);
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@import "/src/style/main.scss";
+
+.photos {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include onTablet {
+    flex-direction: row;
+    display: flex;
+  }
+
+  &__side {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 20px auto;
+
+    @include onTablet {
+      display: block;
+      width: 70px;
+    }
+
+    @include onDesktop {
+      display: block;
+      width: 80px;
+    }
+  }
+
+  &__buttons {
+    padding: 0;
+    width: 60px;
+    height: 60px;
+
+    background: $gray-white;
+    border: 1px solid $gray-secondary;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      width: 70px;
+      height: 70px;
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__sidePhoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+
+    @include onTablet {
+      display: block;
+      width: 65px;
+      height: 65px;
+    }
+
+    @include onDesktop {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__main {
+    margin: 0 16px;
+
+    width: 320px;
+    height: 320px;
+    background: $gray-white;
+
+    @include onTablet {
+      margin: 0 24px 0 16px;
+      width: 380px;
+      height: 380px;
+    }
+
+    @include onDesktop {
+      margin: 0 64px 0 16px;
+      width: 464px;
+      height: 464px;
+    }
+
+    &__img {
+      width: 320px;
+      height: 320px;
+
+      @include onTablet {
+        width: 380px;
+        height: 380px;
+      }
+
+      @include onDesktop {
+        width: 464px;
+        height: 464px;
+      }
+
+      object-fit: contain;
+    }
+  }
+}

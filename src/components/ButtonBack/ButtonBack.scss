@@ -1,0 +1,30 @@
+@import "/src/style/main.scss";
+
+.back {
+  cursor: pointer;
+  background-color: $gray-white;
+  border: none;
+  text-transform: capitalize;
+  position: relative;
+  color: $gray-secondary;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+
+  &:hover {
+    color: $gray-primary;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url("../../images/icons/Arrow.svg");
+    transform: rotate(180deg);
+    background-position: left;
+    background-repeat: no-repeat;
+    left: -12px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+  }
+}

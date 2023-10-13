@@ -1,0 +1,7 @@
+main {
+  margin: 0 24px;
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
+}
