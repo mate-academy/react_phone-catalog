@@ -1,20 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import './ButtonBack.scss';
 
 export const ButtonBack = () => {
-  const handleGoBack = () => {
-    window.history.back();
-  };
+  const navigate = useNavigate();
 
   return (
-    <>
-      <button
-        type="button"
-        className="back"
-        data-cy="backButton"
-        onClick={handleGoBack}
-      >
-        back
-      </button>
-    </>
+    <button
+      type="button"
+      className="back"
+      data-cy="backButton"
+      onClick={() => navigate(-1)}
+    >
+      back
+    </button>
   );
 };

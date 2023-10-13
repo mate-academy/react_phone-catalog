@@ -24,7 +24,6 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
   const selectedValueNumberOptions = searchParams.get('NumberOptions') || '4';
   const selectedPage = searchParams.get('page') || '1';
 
-  // Функція для фільтрації телефонів за пошуковим запитом
   // eslint-disable-next-line max-len
   const searchInPhones = phones.filter(product => product.name.toLowerCase().includes(searchQuery.trim().toLowerCase()));
 
@@ -67,9 +66,22 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
           <>
             {searchQuery !== '' ? (
               <>
-                <div className="title">
-                  <p className="title__p">{`${searchInPhones.length} results`}</p>
-                </div>
+                <section className="phones">
+                  <div className="breadcrumbs">
+                    <Link
+                      to="/"
+                      className="breadcrumbs__button breadcrumbs__icon"
+                    />
+                    <div className="breadcrumbs__arrow breadcrumbs__icon" />
+                    <p>Phones</p>
+                  </div>
+                  <div className="title">
+                    <h1>Mobile phones</h1>
+
+                    <p className="title__p">{`${searchInPhones.length} results`}</p>
+                  </div>
+                  <Dropdowns />
+                </section>
                 <section className="phones__list">
                   {searchInPhones.map(phone => (
                     <ProductCard

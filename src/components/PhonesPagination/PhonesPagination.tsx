@@ -50,7 +50,6 @@ export const PhonesPaginations: React.FC<Props> = ({ phones }) => {
     setSearchParams(params);
   }
 
-  // Обробник зміни на наступну сторінку
   function handleChangeNextPage(nextPage: string) {
     let newNextPage = +nextPage + 1;
 
@@ -64,13 +63,11 @@ export const PhonesPaginations: React.FC<Props> = ({ phones }) => {
     setSearchParams(params);
   }
 
-  // Генерація масиву з номерами сторінок для відображення
   const pageArray = Array.from(
     { length: fieldValidation(lengthPagination) },
     (_, i) => i + 1,
   );
 
-  // Вибір номерів сторінок для відображення в пагінації
   let preperaPagination = pageArray.slice(+selectedPage - 3, +selectedPage + 2);
 
   if (+selectedPage <= 3) {
