@@ -10,7 +10,6 @@ export const Search = () => {
   const { pathname } = location;
   const searchField = pathname.slice(1);
 
-  // console.log('searchField', searchField);
   const query = searchParams.get('query') || '';
   const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams(getSearchWith(searchParams,

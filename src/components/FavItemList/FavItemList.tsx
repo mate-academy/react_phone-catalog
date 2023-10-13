@@ -1,5 +1,10 @@
 import './favItemList.scss';
-import { useMemo, useContext } from 'react';
+import {
+  useMemo,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { FavContext } from '../contexts/FavContextProvider';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -9,12 +14,20 @@ import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
 export const FavItemList = () => {
   const [searchParams] = useSearchParams();
   const { favourites } = useContext(FavContext);
-
   const query = searchParams.get('query') || '';
+  const [debounceQuery, setDebounceQuery] = useState(query);
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      setDebounceQuery(query);
+    }, 500);
+
+    return () => clearTimeout(debounceTimer);
+  }, [query]);
 
   const filteredProducts = useMemo(() => (
     filterProducts(favourites, query)
-  ), [query]);
+  ), [debounceQuery, favourites]);
 
   return (
     <>

@@ -16,8 +16,15 @@
     margin-right: 64px;
   }
 
+  // &&--margin-bottom {
+  //   display: flex;
+  //   margin: 0;
+  //   padding: 0;
+  // }
+
   &__choosed {
     display: flex;
+    // max-width: 457px;
   }
 
   &__icon {

@@ -1,13 +1,16 @@
 import classNames from 'classnames';
 import './banner.scss';
 import { useEffect, useState } from 'react';
+import banner1 from '../../Images/Banner/banner-phones.png';
+import banner2 from '../../Images/Banner/banner-tablets.png';
+import banner3 from '../../Images/Banner/banner-accessories.png';
 
 export const Banner = () => {
   const [position, setPosition] = useState(0);
   const bannerImg = [
-    '/new/img/banner-phones.png',
-    '/new/img/banner-accessories.png',
-    '/new/img/banner-tablets.png',
+    banner1,
+    banner2,
+    banner3,
   ];
 
   const imgWidth = 1040;

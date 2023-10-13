@@ -47,6 +47,11 @@ export const ProductPage: React.FC<Props> = ({
             )}
           </>
         )}
+        {isError && !isLoading && (
+          <p>
+            {`Cannot find a ${category} for you, try it later...`}
+          </p>
+        )}
       </div>
     </section>
   );
