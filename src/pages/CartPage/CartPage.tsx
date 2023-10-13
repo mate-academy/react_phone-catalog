@@ -18,37 +18,38 @@ export const CartPage: React.FC = () => {
     <div className="CartPage">
       <BackLink />
 
-      <h1 className="CartPage__title">Cart</h1>
-
       {cart.length ? (
-        <div className="CartPage__wrapper">
-          <div className="CartPage__items">
-            {cart.map(item => (
-              <CartItem item={item} key={item.id} />
-            ))}
-          </div>
+        <>
+          <h1 className="CartPage__title">Cart</h1>
+          <div className="CartPage__wrapper">
+            <div className="CartPage__items">
+              {cart.map(item => (
+                <CartItem item={item} key={item.id} />
+              ))}
+            </div>
 
-          <div className="CartPage__total">
-            <h1 className="CartPage__total-price">{`$${total}`}</h1>
-            <p className="CartPage__total-text" data-cy="productQauntity">
-              {`Total for ${totalQuantity} items`}
-            </p>
-            <button
-              type="button"
-              className="CartPage__checkout"
-              onClick={() => setIsModalActive(true)}
-            >
-              Checkout
-            </button>
+            <div className="CartPage__total">
+              <h1 className="CartPage__total-price">{`$${total}`}</h1>
+              <p className="CartPage__total-text" data-cy="productQauntity">
+                {`Total for ${totalQuantity} items`}
+              </p>
+              <button
+                type="button"
+                className="CartPage__checkout"
+                onClick={() => setIsModalActive(true)}
+              >
+                Checkout
+              </button>
 
-            <Modal
-              isModalActive={isModalActive}
-              setIsModalActive={setIsModalActive}
-            />
+              <Modal
+                isModalActive={isModalActive}
+                setIsModalActive={setIsModalActive}
+              />
+            </div>
           </div>
-        </div>
+        </>
       ) : (
-        <h2 className="CartPage__empty">Your cart is empty</h2>
+        <h1>Your cart is empty</h1>
       )}
     </div>
   );

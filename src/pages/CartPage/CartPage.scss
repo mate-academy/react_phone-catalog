@@ -51,9 +51,4 @@
     @extend %text-buttons;
     @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
   }
-
-  &__empty {
-    padding-left: 24px;
-    color: $color-secondary;
-  }
 }
