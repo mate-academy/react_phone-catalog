@@ -1,0 +1,17 @@
+@import "../../styles/vars.scss";
+
+.header {
+  &__top-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: $headerHeight;
+
+    box-shadow: 0 1px 0 $elementsColor;
+  }
+
+  &__links-wrapper {
+    display: flex;
+  }
+}

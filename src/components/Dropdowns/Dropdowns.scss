@@ -1,0 +1,93 @@
+@import "../../styles/vars.scss";
+
+.dropdowns {
+  &__content {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    margin: 0 0 14px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+  }
+
+  &__button {
+    box-sizing: border-box;
+
+    position: relative;
+    height: 40px;
+    width: 176px;
+    margin: 0 0 4px;
+    padding-left: 12px;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+    text-align: left;
+
+    border: 1px solid $iconsColor;
+    background-color: $whiteColor;
+
+    cursor: pointer;
+
+    &--small {
+      width: 128px;
+    }
+
+    &:hover {
+      border: 1px solid $secondaryColor;
+    }
+
+    &::after {
+      content: url(../../images/arrow-down.svg);
+
+      position: absolute;
+      right: 18px;
+    }
+
+    &:focus::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+
+    width: 176px;
+
+    margin: 0;
+    padding: 6px 12px;
+
+    background-color: $whiteColor;
+    border: 1px solid $elementsColor;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    list-style: none;
+
+    &--small {
+      left: 192px;
+      width: 128px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 11px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+    cursor: pointer;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+}

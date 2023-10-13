@@ -1,0 +1,81 @@
+@import "../styles/vars.scss";
+
+.page {
+  min-height: 100%;
+
+  &__content {
+    box-sizing: border-box;
+    min-height: $pageContentHeight;
+    padding: 40px 152px 0;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__section-title {
+    margin: 0 0 24px;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+  }
+
+  &__links-wrapper {
+    margin-bottom: 40px;
+  }
+
+  &__link-back {
+    display: block;
+
+    margin: 0 0 16px;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+    text-decoration: none;
+
+    &::before {
+      content: url(../images/arrow-left.svg);
+
+      margin-right: 10px;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+
+    &--margin-24 {
+      margin: 0 0 24px;
+    }
+
+    &--margin-40 {
+      margin: 0 0 40px;
+    }
+  }
+
+  &__subtitle {
+    margin: 0 0 40px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+  }
+
+  &__cards-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 40px;
+    grid-column-gap: 16px;
+  }
+}

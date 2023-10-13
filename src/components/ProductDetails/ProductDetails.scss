@@ -1,0 +1,111 @@
+@import "../../styles/vars.scss";
+
+.product-details {
+  &__image-wrapper {
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+
+    padding: 7px;
+    margin-bottom: 16px;
+
+    border: 1px solid $primaryColor;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--main {
+      height: 442px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+  }
+
+  &__subtitle {
+    margin: 0 0 9px;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  &__prices {
+    margin-bottom: 16px;
+  }
+
+  &__new-price {
+    margin-right: 8px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+  }
+
+  &__characteristics {
+    margin-bottom: 80px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+  }
+
+  &__characteristic-value {
+    text-align: right;
+    color: $primaryColor;
+  }
+
+  &__id {
+    color: $iconsColor;
+  }
+
+  &__description-title {
+    padding: 0 0 16px;
+    margin: 0 0 32px;
+
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $primaryColor;
+
+    border-bottom: 1px solid $elementsColor;
+  }
+
+  &__description-text {
+    margin: 0;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondaryColor;
+
+    &--primary {
+      color: $primaryColor;
+      text-align: right;
+    }
+  }
+}

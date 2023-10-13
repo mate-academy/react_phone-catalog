@@ -1,0 +1,13 @@
+@import "../../styles/vars.scss";
+
+.no-results {
+  &__text {
+    margin: 0 0 8px;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+  }
+}

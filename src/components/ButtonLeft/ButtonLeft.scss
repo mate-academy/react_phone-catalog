@@ -1,0 +1,22 @@
+@import "../../styles/vars.scss";
+
+.button-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  background-color: $whiteColor;
+  border: 1px solid $iconsColor;
+  cursor: pointer;
+  transition: border-color $transitionDuration;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &:disabled {
+    border-color: $elementsColor;
+  }
+}

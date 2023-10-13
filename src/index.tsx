@@ -1,8 +1,16 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom';
+import { ProductsProvider } from './helpers/ProductsContext';
 
-import App from './App';
+import { App } from './App';
+import { ScrollToTop } from './helpers/ScrollToTop';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
-);
+createRoot(document.getElementById('root') as HTMLDivElement)
+  .render(
+    <Router>
+      <ProductsProvider>
+        <ScrollToTop />
+        <App />
+      </ProductsProvider>
+    </Router>,
+  );
