@@ -1,0 +1,30 @@
+@import "./utils/mixins";
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+h1 {
+  color: #313237;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,57 @@
+@import "../../styles/main";
+
+.notification {
+  display: flex;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  text-align: center;
+  transform: translateY(-50%) translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 200px;
+  width: 400px;
+  z-index: 2;
+  background-color: $primaryColor;
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: white;
+
+  &__button-close {
+    position: absolute;
+    bottom: 80%;
+    left: 90%;
+    filter: (invert(94%) sepia(6%) saturate(150%)
+    hue-rotate(200deg) brightness(98%) contrast(91%));
+
+    @include hover(transform scale(1.1));
+  }
+
+  &-enter {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  &-exit {
+    animation: fadeOut 0.4s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}

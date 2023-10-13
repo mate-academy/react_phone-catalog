@@ -1,0 +1,45 @@
+@import "../../styles/main";
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  background-image: url(../../styles/icons/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  object-fit: cover;
+  background-size: cover;
+  height: 12px;
+  width: 12px;
+  cursor: pointer;
+}
+
+.search-input {
+  display: none;
+  box-shadow: -1px 0 0 $elementsColor;
+  padding: 24px;
+  height: 100%;
+  width: 328px;
+  background-image: url(../../styles/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: center right;
+  object-fit: cover;
+  background-origin: content-box;
+  border: 1px solid white;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: $primaryColor;
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+
+  @include hover(border (1px solid $iconsColor),
+  z-index 1, background-image none);
+
+  &:focus {
+    background-image: none;
+    outline: 1px solid $primaryColor;
+  }
+
+  @include onDesktop {
+    display: block;
+  }
+}

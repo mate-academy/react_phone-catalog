@@ -1,0 +1,17 @@
+@import "./reset.scss";
+@import "./normalize.scss";
+
+@import "./utils/fonts";
+@import "./utils/extends";
+@import "./utils/variables";
+@import "./utils/mixins";
+
+@import "./blocks/main-container.scss";
+@import "./blocks/logo.scss";
+@import "./blocks/links.scss";
+@import "./blocks/back-to-top.scss";
+@import "./blocks/swiper.scss";
+@import "./blocks/line.scss";
+@import "./blocks/grid.scss";
+@import "./blocks/prices.scss";
+@import "./blocks/icon.scss";

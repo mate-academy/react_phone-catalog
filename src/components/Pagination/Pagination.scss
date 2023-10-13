@@ -1,0 +1,45 @@
+@import "../../styles/main";
+
+.pagination {
+  padding-top: 40px;
+  box-sizing: content-box;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  gap: 8px;
+
+  &__link {
+    cursor: pointer;
+    line-height: 32px;
+    text-align: center;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $iconsColor;
+    @include hover(border-color $primaryColor);
+
+    &--prev {
+      margin-right: 8px;
+    }
+
+    &--next {
+      margin-left: 8px;
+    }
+
+    &--disabled .pagination__link {
+      cursor: not-allowed;
+      color: $iconsColor;
+      border-color: $iconsColor;
+      @include hover(border-color $iconsColor);
+    }
+
+    &--active .pagination__link {
+      background-color: $primaryColor;
+      color: $whiteColor;
+      border-color: $primaryColor;
+      @include transition(background-color);
+      @include hover(border-color $iconsColor);
+    }
+  }
+}

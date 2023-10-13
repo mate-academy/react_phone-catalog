@@ -1,0 +1,27 @@
+@import "../../styles/main";
+
+.products-list {
+  flex-grow: 1;
+  display: inline-flex;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    @extend %body-text;
+    color: $secondaryColor;
+    margin-bottom: 40px;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, max-content));
+    grid-gap: 40px 16px;
+    justify-content: center;
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, minmax(272px, max-content));
+    }
+  }
+}

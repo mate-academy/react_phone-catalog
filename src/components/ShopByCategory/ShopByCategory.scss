@@ -1,0 +1,75 @@
+@import "../../styles/main";
+
+.shop-by-category {
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__category {
+    padding-bottom: 32px;
+
+    @include onTablet {
+      padding-bottom: 0;
+    }
+    @include hover(transform scale(0.95));
+
+    &--phones {
+      grid-column: 1 / 5;
+
+      @include onTablet {
+        grid-column: 1 / 5;
+      }
+
+      @include onDesktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--tablets {
+      grid-column: 1 / 5;
+
+      @include onTablet {
+        grid-column: 5 / 9;
+      }
+
+      @include onDesktop {
+        grid-column: 9 / 17;
+      }
+    }
+
+    &--accessories {
+      grid-column: 1 / 5;
+      padding-bottom: 0;
+
+      @include onTablet {
+        grid-column: 9 / 13;
+      }
+
+      @include onDesktop {
+        grid-column: 17 / 25;
+      }
+    }
+  }
+
+  &__image {
+    margin-bottom: 24px;
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend %h3;
+    color: $primaryColor;
+    margin-bottom: 4px;
+    grid-column: 1 / 5;
+  }
+
+  &__count {
+    @extend %body-text;
+    color: $secondaryColor;
+    grid-column: 1 / 5;
+  }
+}

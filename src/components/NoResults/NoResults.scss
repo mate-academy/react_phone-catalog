@@ -1,0 +1,12 @@
+@import "../../styles/main";
+
+.no-results {
+  height: 100%;
+  text-transform: uppercase;
+  color: $primaryColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @extend %h1;
+}

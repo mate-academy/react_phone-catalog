@@ -1,0 +1,15 @@
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 16px;
+  padding-right: 32px;
+
+  @include onDesktop {
+    padding: 24px;
+    padding-right: 64px;
+  }
+
+  @include hover(transform scale(1.2));
+  
+}

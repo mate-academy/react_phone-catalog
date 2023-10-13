@@ -1,0 +1,48 @@
+.links {
+  display: none;
+  gap: 32px;
+  height: 100%;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+  }
+
+  &__item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-style: normal;
+    color: $secondaryColor;
+    @include hover(color $primaryColor);
+    @extend %uppercase;
+
+    &--selected {
+      position: relative;
+      color: $primaryColor;
+      @include transition;
+
+      &::after {
+        @extend %indicatorSelected;
+      }
+    }
+  }
+}
+
+.footer__content > .links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  @include onDesktop {
+    gap: 106px;
+  }
+}

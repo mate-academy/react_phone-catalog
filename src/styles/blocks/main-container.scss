@@ -1,0 +1,30 @@
+.main-container {
+  margin: 0 auto;
+  max-width: 1600px;
+  padding: 0 16px;
+  padding-bottom: 58px;
+  flex-grow: 1;
+
+  @include onTablet {
+    padding: 0 24px;
+    padding-bottom: 64px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 80px;
+  }
+
+  &--disable-on-mobile {
+    @include onMobile {
+      padding: 0;
+    }
+  
+    @include onTablet {
+      padding: 0 24px;
+    }
+  }
+}
+
+footer > .main-container {
+  padding-bottom: 0;
+}

@@ -1,0 +1,39 @@
+@import "../../styles/main";
+
+.primary-button {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  gap: 8px;
+
+  &__buy {
+    background-color: $primaryColor;
+    width: 100%;
+    color: $whiteColor;
+    font-size: 14px;
+    line-height: 21px;
+  
+    @include hover(box-shadow (0 3px 13px rgba(23, 32, 49, 0.26)));
+
+    &--is-added {
+      background-color: $whiteColor;
+      color: $greenColor;
+      border: 1px solid $elementsColor;
+    }
+  }
+  
+  &__favorite {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    border: 1px solid $iconsColor;
+  
+    @include hover(border-color $primaryColor);
+  }
+
+  &--details {
+    box-sizing: content-box;
+    padding-bottom: 32px;
+  }
+}
