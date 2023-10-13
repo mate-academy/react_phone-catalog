@@ -5,9 +5,9 @@ import Autoplay from 'embla-carousel-autoplay';
 import './Banner.scss';
 
 const BANNER_IMAGES = [
-  { imgUrl: '_new/img/banner-phones.png', alt: 'Phones' },
-  { imgUrl: '_new/img/banner-tablets.png', alt: 'Tablets' },
-  { imgUrl: '_new/img/banner-accessories.png', alt: 'Accessories' },
+  { imgUrl: 'img/banner/banner-phones.png', alt: 'Phones' },
+  { imgUrl: 'img/banner/banner-tablets.png', alt: 'Tablets' },
+  { imgUrl: 'img/banner/banner-accessories.png', alt: 'Accessories' },
 ];
 
 export const Banner: React.FC = () => {
