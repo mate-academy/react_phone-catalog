@@ -1,0 +1,148 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 40px;
+  z-index: 1;
+  background-color: $white;
+
+  display: flex;
+  align-items: center;
+  gap: 65px;
+
+  padding-left: 24px;
+  padding-right: 1px;
+  box-shadow: 0 1px 0 $elements;
+  
+  &_logo {
+    display: inline-block;
+    width: 40px;
+    height: 10px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &_links {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+
+    &_to_page {
+      display: flex;
+      gap: 64px;
+      align-items: center;
+
+      &_link {
+        text-decoration: none;
+        height: 100%;
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #89939a;
+        padding-bottom: 24px;
+        border-bottom: 3px solid transparent;
+        transition: all 0.5s;
+
+        &:hover {
+          color: $primary;
+        }
+
+        &-active {
+          color: $primary;
+          border-color: $primary;
+        }
+      }
+    }
+
+    &_to_buy {
+      display: flex;
+
+      &_input {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
+        color: $primary;
+        padding: 26px 27px 26px 24px;
+        width: 64px;
+        height: 64px;
+
+        background-image: url(../../img/Search.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+
+        border: 1px solid transparent;
+        box-shadow: -1px 0 0 $elements;
+        outline: none;
+        transition: all 0.5s;
+
+        &::placeholder {
+          color: $icons;
+        }
+
+        &:focus {
+          background: none;
+          width: 327px;
+        }
+      }
+
+      &_link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 64px;
+        height: 64px;
+        right: 67px;
+        border-bottom: 3px solid transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: -1px 0 0 $elements;
+        transition: all 0.5s;
+
+        &-active {
+          border-color: $primary;
+          box-shadow: 0;
+        }
+
+        &_icon {
+          position: relative;
+          width: 15px;
+          height: 15px;
+
+          &_count {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 10px;
+            height: 10px;
+            background-color: $red;
+            border-radius: 50%;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 9px;
+            line-height: 12px;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bag {
+  background-image: url(../../img/Shopping_bag.svg);
+}
+
+.favorite {
+  background-image: url(../../img/favorite.svg);
+}

@@ -1,0 +1,36 @@
+.carousel {
+  margin-bottom: 104px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1136px;
+  max-height: 400px;
+
+  &_button {
+    height: 400px;
+    width: 32px;
+    border: 1px solid $icons;
+    background-color: $white;
+    color: $icons;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &_window {
+    display: flex;
+    max-width: 1040px;
+    max-height: 400px;
+    overflow: hidden;
+
+    &_img {
+      width: 100%;
+      object-position: center;
+      object-fit: cover;
+      transition: all 0.5s;
+    }
+  }
+}
