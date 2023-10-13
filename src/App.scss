@@ -1,1 +1,126 @@
-// not empty
+@import "./styles/utils";
+@import "./styles/blocks/button";
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 64px;
+  padding-left: 24px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+  z-index: 100;
+
+  &__wrapper {
+    display: flex;
+
+    &--left {
+      gap: 64px;
+    }
+  }
+}
+
+.main {
+  padding-block: 24px 80px;
+  flex-grow: 1;
+  display: flex;
+}
+
+.container {
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 720px;
+  }
+  @media (min-width: 992px) {
+    width: 960px;
+  }
+  @media (min-width: 1200px) {
+    width: 1136px;
+  }
+}
+
+.footer {
+  height: 96px;
+  padding-inline: 152px;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-white;
+  box-shadow: 0 -1px 0 0 $color-elements;
+
+  &__logo {
+    margin-right: 80px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__link {
+    @extend %text-uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+    @include hover(color, $color-primary);
+  }
+
+  &__button-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__button-text {
+    @extend %text-small;
+    color: $color-secondary;
+  }
+}
+
+.icon {
+  width: 64px;
+  position: relative;
+  display: block;
+  box-shadow: -1px 0 0 0 $color-elements;
+  background-image: url(./assets/icons/favourites.svg);
+  @include iconsBackground;
+  text-decoration: none;
+  z-index: 1;
+  @include hover(background-size, 24px 24px);
+
+  &--cart {
+    background-image: url(./assets/icons/cart.svg);
+  }
+
+  &--active {
+    border-bottom: 3px solid $color-primary;
+  }
+
+  &__quantity {
+    border: 1px solid $color-white;
+    @include square(14px);
+    border-radius: 50%;
+    font-family: "Mont-SemiBold", sans-serif;
+    font-size: 9px;
+    color: $color-white;
+    background-color: $color-red;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}

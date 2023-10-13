@@ -1,0 +1,22 @@
+@import "../../styles/utils";
+
+.Navbar {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    @extend %text-uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+    @include hover(color, $color-primary);
+
+    &--active {
+      color: $color-primary;
+      border-bottom: 3px solid $color-primary;
+    }
+  }
+}

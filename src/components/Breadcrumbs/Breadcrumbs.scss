@@ -1,0 +1,37 @@
+@import "../../styles/utils";
+
+.Breadcrumbs {
+  padding-bottom: 40px;
+  display: flex;
+  gap: 8px;
+
+  &__item {
+    display: block;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 24px;
+    text-decoration: none;
+    @extend %text-small;
+    color: $color-primary;
+
+    &:not(:first-child)::before {
+      content: "";
+      @include square(16px);
+      display: block;
+      position: absolute;
+      inset: 0;
+      background-image: url(../../assets/icons/arrow-right-disabled.svg);
+      @include iconsBackground;
+    }
+
+    &--home {
+      @include square(16px);
+      background-image: url(../../assets/icons/home.svg);
+      @include iconsBackground;
+    }
+
+    &--text {
+      color: $color-secondary;
+    }
+  }
+}

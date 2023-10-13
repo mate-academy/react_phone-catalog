@@ -1,0 +1,18 @@
+@mixin hover($_property, $_toValue) {
+  transition: all 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin iconsBackground {
+  background-color: inherit;
+  background-position: center;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,35 @@
+@import "../../styles/utils";
+@import "../../styles/blocks/button";
+
+.ProductsPage {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    margin-bottom: 40px;
+    color: $color-secondary;
+  }
+
+  &__dropdowns {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+    @extend %text-small;
+    color: $color-secondary;
+  }
+
+  &__dropdown {
+    &--sort {
+      width: 176px;
+    }
+
+    &--page {
+      width: 128px;
+    }
+  }
+
+  &__list {
+    margin-bottom: 40px;
+  }
+}

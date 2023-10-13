@@ -1,0 +1,46 @@
+.button {
+  border: 1px solid $color-icons;
+  display: block;
+  @include square(34px);
+  @include iconsBackground;
+  @include hover(border-color, $color-primary);
+
+  &--active {
+    border-color: $color-primary;
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &--minus {
+    background-image: url("../../assets/icons/minus.svg");
+    &:disabled {
+      background-image: url("../../assets/icons/minus-light.svg");
+    }
+  }
+
+  &--plus {
+    background-image: url("../../assets/icons/plus.svg");
+  }
+
+  &--arrow-up {
+    background-image: url("../../assets/icons/arrow-up.svg");
+  }
+
+  &--prev {
+    background-image: url("../../assets/icons/arrow-left.svg");
+    &:disabled {
+      background-image: url("../../assets/icons/arrow-left-disabled.svg");
+    }
+  }
+
+  &--next {
+    background-image: url("../../assets/icons/arrow-right.svg");
+    &:disabled {
+      background-image: url("../../assets/icons/arrow-right-disabled.svg");
+    }
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+  }
+}

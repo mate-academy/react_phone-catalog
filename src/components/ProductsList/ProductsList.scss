@@ -1,0 +1,8 @@
+@import "../../styles/utils";
+
+.ProductsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $card-width);
+  gap: 40px 16px;
+  justify-content: center;
+}

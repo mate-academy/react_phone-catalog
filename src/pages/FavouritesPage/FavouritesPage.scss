@@ -1,0 +1,12 @@
+@import "../../styles/utils";
+
+.FavouritesPage {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    margin-bottom: 40px;
+    color: $color-secondary;
+  }
+}

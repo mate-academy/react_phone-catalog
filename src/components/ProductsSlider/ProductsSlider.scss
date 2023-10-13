@@ -1,0 +1,28 @@
+@import "../../styles/utils";
+@import "../../styles/blocks/button";
+
+.ProductsSlider {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: -51px;
+    right: 0;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    transition: transform 1s;
+  }
+}

@@ -1,0 +1,27 @@
+@import "../../styles/utils";
+
+.Loader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    border-radius: 50%;
+    width: 15em;
+    height: 15em;
+    margin: 1em auto;
+    border: 1.5em solid $color-elements;
+    border-right-color: $color-primary;
+    animation: load 1.2s infinite linear;
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

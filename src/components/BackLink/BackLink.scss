@@ -1,0 +1,23 @@
+@import "../../styles/utils";
+
+.BackLink {
+  padding: 2px 0 16px 16px;
+  width: 66px;
+  height: 32px;
+  display: flex;
+  text-align: center;
+  position: relative;
+  @extend %text-small;
+  background-color: inherit;
+  color: $color-secondary;
+  text-decoration: none;
+  @include hover(color, $color-primary);
+
+  &::before {
+    content: "";
+    @include square(16px);
+    position: absolute;
+    inset: 0;
+    background-image: url(../../assets/icons/arrow-left.svg);
+  }
+}

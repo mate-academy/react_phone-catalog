@@ -1,0 +1,51 @@
+@import "../../styles/utils";
+@import "../../styles/blocks/button";
+
+.CartItem {
+  padding: 24px;
+  border: 1px solid $color-elements;
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  &__delete {
+    border: none;
+    display: block;
+    @include square(16px);
+    background-image: url(../../assets/icons/close-light.svg);
+    @include iconsBackground;
+  }
+
+  &__image-wrapper {
+    padding: 7px;
+    @include square(80px);
+  }
+
+  &__image {
+    display: block;
+    @include square(66px);
+  }
+
+  &__name {
+    margin-right: 25px;
+    width: 295px;
+  }
+
+  &__amount {
+    margin-right: 19px;
+    display: flex;
+    gap: 13px;
+  }
+
+  &__amount-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__price {
+    margin-right: 16px;
+  }
+}
