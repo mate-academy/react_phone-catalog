@@ -1,0 +1,48 @@
+@import "../../styles/utils";
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+
+  &__input {
+    position: relative;
+    outline: none;
+    padding-left: 24px;
+    height: 100%;
+    width: 327px;
+    border: none;
+    box-shadow: -1px 0 0 $c-elements;
+    background-image: url("../../assets/svg/search.svg");
+
+    background-repeat: no-repeat;
+    background-position: 290px;
+
+    &--show {
+      background-image: none;
+    }
+
+    &::placeholder {
+      @extend %body-text;
+      line-height: 18px;
+      color: $c-icons;
+    }
+  }
+
+  &__reset-btn {
+    position: absolute;
+    right: 21px;
+    height: 16px;
+    width: 16px;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../assets/svg/close.svg");
+
+    background-repeat: no-repeat;
+
+    &--show {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@import "../../styles/utils";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid $c-elements;
+  padding: 24px 40px 24px 24px;
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__remove {
+    margin-right: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+
+  &__img {
+    height: 80px;
+    margin-right: 40px;
+  }
+
+  &__name {
+    flex-grow: 1;
+  }
+
+  &__change-count-btn {
+    @include btn-square(32px);
+    @extend %flex-center;
+    font-size: 16px;
+    transition: border 0.3s;
+
+    &--disabled {
+      pointer-events: none;
+      color: $c-icons;
+    }
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__count {
+    text-align: center;
+    width: 32px;
+  }
+
+  &__total-price-product {
+    text-align: right;
+    flex: 0 0 105px;
+    justify-self: flex-end;
+    @extend %h2;
+  }
+}

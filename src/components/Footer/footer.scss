@@ -1,0 +1,62 @@
+@import "../../styles/utils";
+
+.footer {
+  box-shadow: 0 -1px 0 $c-elements;
+
+  &__content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+    height: 96px;
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    @extend %uppercase;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: $c-secondary;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+
+  &__button {
+    position: relative;
+
+    &::after {
+      content: "Back to top";
+      position: absolute;
+      right: 100%;
+      display: block;
+      width: max-content;
+      margin-right: 16px;
+      align-items: center;
+      @extend %small-text;
+      border: none;
+      background-color: transparent;
+      color: $c-secondary;
+      transition: color 0.3s;
+    }
+
+    &:hover::after {
+      color: $c-primary;
+    }
+
+    &--hiden {
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+}

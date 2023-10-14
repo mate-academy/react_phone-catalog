@@ -1,0 +1,33 @@
+@import "../../styles/utils";
+
+.product-list {
+  &__content {
+    margin-bottom: 40px;
+  }
+
+  &__top-row {
+    margin: 25px 0 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    color: $c-secondary;
+  }
+
+  &__droplist {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+}

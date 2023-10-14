@@ -1,0 +1,14 @@
+.button {
+  @include btn(100%, 32px);
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &--selected,
+  &:active {
+    background-color: $c-white;
+    color: $c-green;
+    border: 1px solid $c-secondary;
+  }
+}
