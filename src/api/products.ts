@@ -2,7 +2,7 @@
 import { Phone } from '../types/phone';
 import { PhoneDetails } from '../types/phoneDetails';
 
-const apiUrl = '_new/';
+const apiUrl = 'https://mate-academy.github.io/react_phone-catalog/_new';
 const phonesUrl = 'products.json';
 const phoneDetailsUrl = 'products';
 
