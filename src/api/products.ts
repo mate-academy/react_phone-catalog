@@ -2,19 +2,13 @@
 import { Phone } from '../types/phone';
 import { PhoneDetails } from '../types/phoneDetails';
 
-const apiUrl = 'http://localhost:3000/_new/';
+const apiUrl = '_new/';
 const phonesUrl = 'products.json';
 const phoneDetailsUrl = 'products';
 
 function getDiscount(product: Phone) {
   return product.fullPrice - product.price;
 }
-
-// function wait(delay: number): Promise<void> {
-//   return new Promise(resolve => {
-//     setTimeout(resolve, delay);
-//   });
-// }
 
 function shuffleArray<T>(array: T[]): T[] {
   return array
@@ -26,8 +20,6 @@ function shuffleArray<T>(array: T[]): T[] {
 export function getFromServer<T>(url: string): Promise<T> {
   const URL = `${apiUrl}/${url}`;
 
-  // return wait(1000)
-  //   .then(() => fetch(URL))
   return fetch(URL)
     .then(response => {
       if (response.ok) {
