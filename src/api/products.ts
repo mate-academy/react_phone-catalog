@@ -2,9 +2,9 @@
 import { Phone } from '../types/phone';
 import { PhoneDetails } from '../types/phoneDetails';
 
-const apiUrl = 'http://localhost:3000/';
-const phonesUrl = '_new/products.json';
-const phoneDetailsUrl = '_new/products';
+const apiUrl = 'http://localhost:3000/_new/';
+const phonesUrl = 'products.json';
+const phoneDetailsUrl = 'products';
 
 function getDiscount(product: Phone) {
   return product.fullPrice - product.price;

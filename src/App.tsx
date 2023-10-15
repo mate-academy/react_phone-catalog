@@ -5,6 +5,8 @@ import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import { Container } from './components/Container';
 import { Notification } from './components/Notification';
+import { Modal } from './components/Modal';
+import { ContactForm } from './components/ContactForm';
 
 const App = () => {
   return (
@@ -16,6 +18,10 @@ const App = () => {
       </Container>
 
       <Notification />
+
+      <Modal>
+        <ContactForm />
+      </Modal>
 
       <Footer />
     </div>

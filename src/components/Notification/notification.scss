@@ -1,7 +1,7 @@
 @import '../../style-utils/style-utils';
 
 .notification {
-  z-index: 2;
+  z-index: 3;
   box-sizing: border-box;
   position: fixed;
   bottom: 24px;
@@ -27,7 +27,7 @@
     right: 16px;
 
     width: 200px;
-    height: 50px;
+    height: 60px;
 
     font-size: 12px;
   }

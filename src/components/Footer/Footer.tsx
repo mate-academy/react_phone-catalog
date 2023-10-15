@@ -1,13 +1,16 @@
 /* eslint-disable import/no-webpack-loader-syntax */
-import React from 'react';
+import React, { useContext } from 'react';
 import { ReactSVG } from 'react-svg';
 
 import { Logo } from '../Logo';
 import { handleScrollToTop } from './utils';
 
 import './footer.scss';
+import { ModalContext } from '../../storage/modalContext';
 
 export const Footer: React.FC = () => {
+  const { setIsOpen } = useContext(ModalContext);
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -26,7 +29,14 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li className="footer__item">
-              <a href="/" className="footer__link">
+              <a
+                href="/"
+                className="footer__link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(true);
+                }}
+              >
                 Contacts
               </a>
             </li>
