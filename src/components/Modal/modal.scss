@@ -1,4 +1,4 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .modal {
   position: fixed;
@@ -40,7 +40,6 @@
     }
   }
 }
-
 
 .modal-fade {
   &-enter {
