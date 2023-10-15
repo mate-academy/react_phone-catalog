@@ -41,7 +41,7 @@ export const Cart: FC<Props> = ({ products }) => {
               <div className="cart__total-box">
                 <div className="cart__info">
                   <h2 className="cart__total-price">{`$${totalSum}`}</h2>
-                  <p className="cart__total-count">{`Total for ${inCartCount} items`}</p>
+                  <p className="cart__total-count">{`Total for ${inCartCount} item${inCartCount !== 1 ? 's' : ''}`}</p>
                 </div>
 
                 <button
