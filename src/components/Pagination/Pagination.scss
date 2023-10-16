@@ -1,0 +1,25 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $elements-color;
+    width: 32px;
+    height: 32px;
+    color: black;
+
+    @include hover(border-color, $primery-color);
+
+    &--selected {
+      background-color: $primery-color;
+      color: $white-color;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.nav {
+  &__link {
+    position: relative;
+    display: inline-block;
+    margin-right: 64px;
+    padding: 27px 0 26px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    color: $secondary-color;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include hover (color, $primery-color);
+
+    &--footer {
+      padding: 43px 0 42px;
+    }
+  }
+}

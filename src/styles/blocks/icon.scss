@@ -1,0 +1,28 @@
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $icons-color;
+  width: 32px;
+  height: 32px;
+
+  @include hover(border-color, $primery-color);
+
+  &--disabled {
+    border-color: $elements-color;
+    cursor: no-drop;
+
+    @include hover(border-color, $elements-color);
+  }
+
+  &--back-to-top {
+    border: 1px solid $elements-color;
+
+    @include hover(border-color, $secondary-color);
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+}
