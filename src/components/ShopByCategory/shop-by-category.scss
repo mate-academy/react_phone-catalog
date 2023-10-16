@@ -1,0 +1,35 @@
+@import "../../styles/utils";
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %h3;
+    color: $c-primary;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  &__box-img {
+    margin-bottom: 25px;
+    width: 368px;
+    height: 368px;
+    border: 2px solid transparent;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__count {
+    @extend %body-text;
+    color: $c-secondary;
+  }
+}

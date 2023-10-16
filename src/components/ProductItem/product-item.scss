@@ -1,0 +1,63 @@
+@import "../../styles/utils";
+
+.product-item {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    max-width: 272px;
+    border: 1px solid $c-elements;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    display: flex;
+    height: 208px;
+    flex-basis: 208px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  &__subtitle {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 45px;
+    @extend %body-text;
+    color: $c-primary;
+  }
+
+  &__box-price {
+    border-bottom: 1px solid $c-elements;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h2;
+    color: $c-primary;
+    margin-right: 8px;
+  }
+
+  &__full-price {
+    @extend %h2-reg;
+    color: $c-secondary;
+    text-decoration: line-through;
+  }
+
+  &__characteristic {
+    margin-bottom: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+}

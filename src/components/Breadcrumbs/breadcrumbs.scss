@@ -1,0 +1,40 @@
+@import "../../styles/utils";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    height: 16px;
+    width: 16px;
+    background-image: url("../../assets/svg/home.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__link {
+    @extend %small-text;
+    text-transform: capitalize;
+    color: $c-primary;
+    display: flex;
+    gap: 8px;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-image: url("../../assets/svg/arrowR-ligth.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      color: $c-icons;
+      font-weight: 300;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: $c-secondary;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+@import "../../styles/utils";
+
+.droplist {
+  position: relative;
+
+  &__label {
+    @extend %small-text;
+    color: $c-secondary;
+    margin-bottom: 4px;
+    position: relative;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @extend %buttons;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    background-color: $c-white;
+    border: 1px solid $c-icons;
+    outline: none;
+    color: $c-primary;
+    text-transform: capitalize;
+    transition: 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__arrow {
+    @extend %flex-center;
+    transition: transform 0.3s;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list-option {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    border: 1px solid $c-elements;
+    padding: 8px 0;
+    background-color: $c-white;
+  }
+
+  &__option {
+    @extend %body-text;
+    cursor: pointer;
+    background-color: $c-white;
+    height: 32px;
+    transition: all 0.3s;
+    padding: 0 12px;
+
+    &:hover {
+      background-color: $c-hover_BG;
+    }
+  }
+
+  &__option a {
+    display: flex;
+    align-items: center;
+    color: $c-secondary;
+    width: 100%;
+    height: 100%;
+    text-transform: capitalize;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}
