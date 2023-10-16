@@ -49,7 +49,7 @@ export const PageContent: React.FC<Props> = ({
     .sort((a: Product, b: Product) => {
       switch (sortBy) {
         case SortBy.Age:
-          return b.age - a.age;
+          return b.year - a.year;
         case SortBy.Name:
           return a.name.localeCompare(b.name);
         case SortBy.Price:

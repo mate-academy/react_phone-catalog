@@ -1,0 +1,134 @@
+@import "../../styles/utils/variables";
+
+.ProductDetailsPage {
+  &__breadcrumbs-wrapper {
+    margin-bottom: 40px;
+  }
+
+  &__back-wrapper {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    row-gap: 80px;
+    margin-bottom: 80px;
+  }
+
+  &__images {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__small-images {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__image-wrapper {
+    box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $elementsGray;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &--active {
+      border-color: $primeryGray;
+    }
+  }
+
+  &__big-image-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+  }
+
+  &__info {
+    max-width: 320px;
+  }
+
+  &__price {
+    margin-bottom: 16px;
+  }
+
+  &__actions-wrapper {
+    margin-bottom: 32px;
+  }
+
+  &__subtitle {
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+
+    border-bottom: 1px solid $elementsGray;
+  }
+
+  &__about,
+  &__specs {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondaryGray;
+  }
+
+  &__about p:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &__specs {
+    &--12px-600 {
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__spec-name {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__spec-value {
+    color: $primeryGray;
+  }
+}

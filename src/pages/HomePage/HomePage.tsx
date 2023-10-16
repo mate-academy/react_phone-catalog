@@ -6,7 +6,7 @@ import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ImagesSlider } from '../../components/ImagesSlider';
 import { getBrandNewProducts, getHotPriceProducts } from '../../helpers/api';
-import { MenuItems } from '../../types/MenuItems';
+import { Category } from '../../types/Category';
 import { getCategoryName } from '../../helpers/funcs';
 
 export const HomePage = () => {
@@ -77,8 +77,7 @@ export const HomePage = () => {
         <h2 className="HomePage__section-title title">Shop by category</h2>
 
         <div className="HomePage__categories">
-          {Object.values(MenuItems)
-            .filter(item => item !== MenuItems.Home)
+          {Object.values(Category)
             .map(category => (
               <Link
                 to={`${category}`}

@@ -1,11 +1,11 @@
 import { PageContent } from '../../components/PageContent';
-import { MenuItems } from '../../types/MenuItems';
+import { Category } from '../../types/Category';
 import { getTablets } from '../../helpers/api';
 
 export const TabletsPage = () => {
   return (
     <PageContent
-      title={MenuItems.Tablets}
+      title={Category.Tablets}
       getProducts={getTablets}
     />
   );

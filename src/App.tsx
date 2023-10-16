@@ -7,11 +7,16 @@ import {
   useLocation,
 } from 'react-router-dom';
 import classNames from 'classnames';
-import { MenuItems } from './types/MenuItems';
+import { Category } from './types/Category';
 import { Search } from './components/Search';
 
 export const App: React.FC = () => {
   const location = useLocation();
+
+  const menuItems = [
+    'home',
+    ...Object.values(Category),
+  ];
 
   const getPageName = () => {
     const index = location.pathname.lastIndexOf('/');
@@ -19,8 +24,8 @@ export const App: React.FC = () => {
     return location.pathname.slice(index + 1);
   };
 
-  const isSearchShown = Object.values(MenuItems)
-    .includes(getPageName() as MenuItems);
+  const isSearchShown = Object.values(Category)
+    .includes(getPageName() as Category);
 
   return (
     <div className="App">
@@ -31,7 +36,7 @@ export const App: React.FC = () => {
 
             <nav className="nav">
               <ul className="nav__list">
-                {Object.values(MenuItems).map(item => (
+                {menuItems.map(item => (
                   <li key={item} className="nav__item">
                     <NavLink
                       to={item === 'home' ? '/' : item}
@@ -69,7 +74,7 @@ export const App: React.FC = () => {
         </div>
       </header>
 
-      <main>
+      <main className="App__main">
         <div className="container container--main">
           <Outlet />
         </div>

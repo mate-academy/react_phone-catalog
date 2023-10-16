@@ -1,8 +1,10 @@
+import './ProductCard.scss';
+
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-
-import './ProductCard.scss';
+import { MAIN_URL } from '../../helpers/api';
+import { Actions } from '../Actions';
 
 enum PropertyNames {
   Screen = 'screen',
@@ -15,94 +17,64 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { price, discount } = product;
-  const discountPrice = price * ((100 - discount) / 100);
-
-  const normalizePropertyValue = (name: PropertyNames) => {
-    if (!product[name]) {
-      return '-';
-    }
-
-    if (name === PropertyNames.Screen) {
-      return `${product[name].slice(0, -6)}"`;
-    }
-
-    return `${Math.round(+product[name].slice(0, -2) / 100) / 10} GB`;
-  };
-
-  const handleAddToCart = (event: React.MouseEvent) => {
-    event.preventDefault();
-  };
-
-  const handleAddToFavourites = (event: React.MouseEvent) => {
-    event.preventDefault();
-  };
+  const {
+    itemId,
+    image,
+    name,
+    price,
+    fullPrice,
+    category,
+  } = product;
 
   return (
     <Link
-      to={product.id}
+      to={`/${category}/${itemId}`}
       className="ProductCard"
       data-cy="cardsContainer"
     >
       <div className="ProductCard__image-wrapper">
         <img
-          src={product.imageUrl}
-          alt={product.name}
+          src={`${MAIN_URL}/${image}`}
+          alt={name}
           className="ProductCard__image"
         />
       </div>
 
       <div className="ProductCard__info">
-        <h2 className="ProductCard__title">{product.name.toLowerCase()}</h2>
+        <h2 className="ProductCard__title">{name.toLowerCase()}</h2>
 
-        <div className="ProductCard__price">
-          <span className="ProductCard__discount-price">
+        <div className="ProductCard__price price">
+          <span className="price__discount">
             &#36;
-            {discountPrice}
+            {price}
           </span>
 
-          {discount > 0 && (
-            <span className="ProductCard__total-price">
-              &#36;
-              {price}
-            </span>
-          )}
+          <span className="price__full">
+            &#36;
+            {fullPrice}
+          </span>
         </div>
 
         <ul className="ProductCard__properties">
-          {Object.values(PropertyNames).map(name => (
-            <li key={name} className="ProductCard__property">
+          {Object.values(PropertyNames).map(property => (
+            <li key={property} className="ProductCard__property">
               <span
                 className={classNames('ProductCard__property-name', {
-                  'ProductCard__property-name--ram': name === PropertyNames.Ram,
+                  // eslint-disable-next-line max-len
+                  'ProductCard__property-name--ram': property === PropertyNames.Ram,
                 })}
               >
-                {name}
+                {property}
               </span>
 
               <span className="ProductCard__property-value">
-                {normalizePropertyValue(name)}
+                {product[property]}
               </span>
             </li>
           ))}
         </ul>
 
-        <div className="ProductCard__buttons">
-          <button
-            type="button"
-            className="ProductCard__add-to-cart"
-            onClick={handleAddToCart}
-          >
-            Add to cart
-          </button>
-
-          <button
-            type="button"
-            aria-label="Add to favourites"
-            className="ProductCard__add-to-favourites"
-            onClick={handleAddToFavourites}
-          />
-        </div>
+        <Actions />
       </div>
     </Link>
   );

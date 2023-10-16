@@ -1,1 +1,12 @@
 @import "./styles/main.scss";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex-grow: 1;
+    padding: 30px 0 80px;
+  }
+}

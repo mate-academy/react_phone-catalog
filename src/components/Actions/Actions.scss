@@ -1,0 +1,48 @@
+@import "../../styles/utils/variables";
+
+.Actions {
+  display: flex;
+  column-gap: 8px;
+
+  &__add-to-cart {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+
+    background-color: $primeryGray;
+    border: none;
+
+    transition: box-shadow $duration;
+
+    &:hover {
+      box-shadow: 0 0 13px rgba(23, 32, 49, 0.26);
+      cursor: pointer;
+    }
+  }
+
+  &__add-to-favourites {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid $iconsGray;
+
+    background-image: url(../../img/icons/favourites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+
+    transition: border-color $duration;
+
+    &:hover {
+      border-color: $primeryGray;
+      cursor: pointer;
+    }
+  }
+}

@@ -13,7 +13,6 @@
     font-size: 12px;
     font-weight: 600;
     text-transform: capitalize;
-    color: $iconsGray;
 
     &:not(:first-child)::before,
     &--home {
@@ -25,6 +24,10 @@
       background-image: url(../../img/icons/corner-breadcrumbs.svg);
       background-repeat: no-repeat;
       background-position: center;
+    }
+
+    &:last-child {
+      color: $iconsGray;
     }
 
     &--home {
