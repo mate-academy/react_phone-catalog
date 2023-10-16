@@ -33,11 +33,11 @@ export const Footer: React.FC = () => {
             </li>
 
             <li className="footer__item">
-              <a href="/" className="footer__link">Contacts</a>
+              <a href="/home" className="footer__link">Contacts</a>
             </li>
 
             <li className="footer__item">
-              <a href="/" className="footer__link">Rights</a>
+              <a href="/home" className="footer__link">Rights</a>
             </li>
           </ul>
 
