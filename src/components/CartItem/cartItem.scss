@@ -1,4 +1,4 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .cart-item {
   box-sizing: border-box;
@@ -40,7 +40,7 @@
 
     &:hover {
       transform: scale(1.05);
-    };
+    }
 
     @include onTablet {
       width: 200px;
@@ -79,7 +79,7 @@
   }
 
   &__quantity-button {
-    @include squareButton(32px)
+    @include squareButton(32px);
   }
 
   &__quantity {

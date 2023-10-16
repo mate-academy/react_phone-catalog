@@ -1,14 +1,14 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .search {
-  cursor:text;
+  cursor: text;
   position: relative;
   max-width: 326px;
   width: 100%;
   box-sizing: border-box;
 
   height: 100%;
-  box-shadow: -1px 0px 0px 0px $color-elements;
+  box-shadow: -1px 0 0 0 $color-elements;
 
   &__icon-container {
     position: absolute;

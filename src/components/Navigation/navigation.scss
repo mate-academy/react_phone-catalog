@@ -1,8 +1,8 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .navigation {
   height: 64px;
-  box-shadow: 0px 1px 0px 0px $color-elements;
+  box-shadow: 0 1px 0 0 $color-elements;
 
   @include onPhone {
     height: 48px;
@@ -40,7 +40,7 @@
 
   &__after {
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -66,7 +66,6 @@
 
     position: relative;
     padding: 27px 16px 26px;
-
 
     &--active {
       color: $color-primary;
@@ -158,4 +157,3 @@
     }
   }
 }
-

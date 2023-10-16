@@ -68,13 +68,16 @@ export function getSearchParams(
 }
 
 export const trimString = (string: string) => {
-  return string.replaceAll(' ', '').toLowerCase();
+  return string.trim().toLowerCase();
 };
 
 export function filterQuery(items: Phone[], searchQuery: string) {
   if (searchQuery) {
     return items.filter((product) => {
-      return trimString(product.name).includes(trimString(searchQuery));
+      const trimmedWord = trimString(product.name);
+      const queryParts = trimString(searchQuery).split(/[,\s;.]+/);
+
+      return queryParts.every(part => trimmedWord.includes(part));
     });
   }
 

@@ -1,4 +1,4 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .product-card {
   box-sizing: border-box;
@@ -18,7 +18,7 @@
   }
 
   &:hover::before {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
   }
 
   &__image-container {

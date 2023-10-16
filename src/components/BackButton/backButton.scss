@@ -1,4 +1,4 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .back-button {
   display: flex;
@@ -6,10 +6,6 @@
   align-items: center;
 
   cursor: pointer;
-
-  &:hover &__text {
-    color: $color-primary;
-  }
 
   &__icon {
     width: 16px;
@@ -20,5 +16,9 @@
   &__text {
     @include smallText;
     line-height: 1;
+  }
+
+  &:hover &__text {
+    color: $color-primary;
   }
 }

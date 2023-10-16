@@ -7,9 +7,14 @@ import { handleScrollToTop } from './utils';
 
 import './footer.scss';
 import { ModalContext } from '../../storage/modalContext';
+import {
+  NotificationContext,
+  NotificationStatus,
+} from '../../storage/notificationContext';
 
 export const Footer: React.FC = () => {
   const { setIsOpen } = useContext(ModalContext);
+  const { setNotification } = useContext(NotificationContext);
 
   return (
     <footer className="footer">
@@ -41,7 +46,19 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li className="footer__item">
-              <a href="/" className="footer__link">
+              <a
+                href="/"
+                className="footer__link"
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  setNotification({
+                    message: 'We are sorry, '
+                      + 'but this feature is not implemented yet',
+                    color: NotificationStatus.Warning,
+                  });
+                }}
+              >
                 Rights
               </a>
             </li>

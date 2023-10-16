@@ -1,4 +1,4 @@
-@import '../../style-utils/style-utils';
+@import "../../style-utils/style-utils";
 
 .cart-page {
   width: 100%;
@@ -174,7 +174,6 @@
     transition: transform 0.6s ease-in-out, opacity 0.5s linear;
   }
 }
-
 
 .reset-fade {
   &-enter {
