@@ -1,0 +1,36 @@
+.categories-slider {
+  display: flex;
+  gap: 16px;
+
+  &__nav {
+    height: 400px;
+  }
+
+  &__arrow {
+    width: $arrow-size;
+    height: $arrow-size;
+  }
+
+  &__image {
+    height: 400px;
+    width: 1040px;
+  }
+
+  &__bars {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  &__bar {
+    width: 25px;
+    height: 5px;
+    background-color: $light-gray;
+
+    &--visible {
+      background-color: $gray-close-black;
+    }
+  }
+}

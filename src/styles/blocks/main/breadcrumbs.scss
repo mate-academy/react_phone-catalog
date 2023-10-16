@@ -1,0 +1,19 @@
+.breadcrumbs {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    color: $gray;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

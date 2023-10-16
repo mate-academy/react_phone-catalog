@@ -1,0 +1,28 @@
+@mixin set-padding {
+  padding: 0 152px;
+}
+
+@mixin set-arrow-disabled {
+  border: 1px solid $light-gray;
+}
+
+@mixin set-search-icon-style {
+  position: absolute;
+  width: $search-icon-size;
+  height: $search-icon-size;
+  right: $search-left-padding;
+  top: 24px;
+}
+
+@mixin tech-small {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@mixin tech-big {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}

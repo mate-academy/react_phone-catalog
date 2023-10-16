@@ -1,0 +1,27 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__image {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  &__name {
+    margin-top: 24px;
+    color: $gray-close-black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__count {
+    color: $gray;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

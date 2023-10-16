@@ -1,0 +1,20 @@
+.header {
+  width: 1440px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $light-gray;
+
+  &__part {
+    display: flex;
+
+    &--left {
+      gap: 64px;
+    }
+  }
+
+  &__logo {
+    margin-top: 20px;
+    margin-left: 24px;
+  }
+}

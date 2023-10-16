@@ -1,0 +1,16 @@
+.shop-by-category {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  &__categories {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+  }
+
+  &__link {
+    width: 368px;
+    text-decoration: none;
+  }
+}

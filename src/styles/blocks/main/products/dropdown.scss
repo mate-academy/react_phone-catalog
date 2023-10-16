@@ -1,0 +1,106 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__title {
+    color: $gray;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__select {
+    border: 1px solid $middle-gray;
+    box-sizing: border-box;
+    padding: 0 $horizontal-dropdown-padding;
+    padding-top: $top-dropdown-padding;
+    padding-bottom: $bottom-dropdown-padding;
+    text-align: left;
+    color: $gray-close-black;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    position: relative;
+
+    &:hover {
+      border: 1px solid $gray;
+    }
+
+    &:focus {
+      border: 1px solid $gray-close-black;
+    }
+
+    &--big {
+      min-width: $big-dropdown-width;
+    }
+
+    &--small {
+      min-width: $small-dropdown-width;
+    }
+  }
+
+  &__arrow-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    bottom: 13px;
+
+    &--big {
+      left: $big-dropdown-width - 2 * $horizontal-dropdown-padding;
+    }
+
+    &--small {
+      left: $small-dropdown-width - 2 * $horizontal-dropdown-padding;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: $select-height
+      + $top-dropdown-padding
+      + $bottom-dropdown-padding
+      + 2 * $dropdown-list-margin-top
+      + $dropdown-list-vertical-padding;
+    margin-top: $dropdown-list-margin-top;
+    display: flex;
+    flex-direction: column;
+    padding: $dropdown-list-vertical-padding 0;
+    box-sizing: border-box;
+    border: 1px solid $light-gray;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    background-color: $white;
+
+    &--big {
+      min-width: $big-dropdown-width;
+    }
+
+    &--small {
+      min-width: $small-dropdown-width;
+    }
+  }
+
+  &__option {
+    box-sizing: border-box;
+    padding: 10px $horizontal-dropdown-padding 9px $horizontal-dropdown-padding;
+    text-align: left;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    color: $gray;
+    margin-bottom: 1px;
+
+    &:hover {
+      background-color: $white-gray;
+      color: $gray-close-black;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: 1px solid $gray-close-black;
+    }
+  }
+}

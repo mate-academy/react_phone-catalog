@@ -1,1 +1,79 @@
-// not empty
+@import "styles/utils/variables";
+@import "styles/utils/reset";
+@import "styles/utils/mixins";
+
+@import "styles/blocks/logo";
+
+@import "styles/blocks/header/header";
+@import "styles/blocks/header/nav";
+@import "styles/blocks/header/search";
+@import "styles/blocks/header/image-link/image-link";
+@import "styles/blocks/header/image-link/counter";
+
+@import "styles/blocks/arrow";
+
+@import "styles/blocks/main/title";
+
+@import "styles/blocks/main/home/home";
+
+@import "styles/blocks/main/home/categories/category";
+@import "styles/blocks/main/home/categories/shop-by-category";
+
+@import "styles/blocks/main/product-card/product-spec";
+@import "styles/blocks/main/product-card/product-card";
+@import "styles/blocks/main/product-card/product-buttons";
+
+@import "styles/blocks/main/products/products-list";
+
+@import "styles/blocks/main/product-card/product-details/product-details";
+@import "styles/blocks/main/product-card/product-details/small-photo";
+@import "styles/blocks/main/product-card/product-details/subtitle";
+
+@import "styles/blocks/main/old-price";
+
+@import "styles/blocks/main/home/categories/categories-slider";
+@import "styles/blocks/main/products-slider";
+
+@import "styles/blocks/main/products/products";
+
+@import "styles/blocks/main/breadcrumbs";
+@import "styles/blocks/main/products/loader";
+@import "styles/blocks/main/products-count";
+@import "styles/blocks/main/products/dropdown";
+
+@import "styles/blocks/main/products/pagination/pagination";
+@import "styles/blocks/main/products/pagination/page";
+
+@import "styles/blocks/main/favorites";
+
+@import "styles/blocks/main/cart/cart";
+@import "styles/blocks/main/back";
+@import "styles/blocks/main/cart/cart-items";
+@import "styles/blocks/main/cart/cart-item";
+
+@import "styles/blocks/footer/footer";
+
+@import "styles/blocks/not-found";
+
+@font-face {
+  font-family: Mont;
+  src: url("fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+body {
+  font-family: Mont, serif;
+  width: 1440px;
+}
