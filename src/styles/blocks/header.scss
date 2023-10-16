@@ -1,5 +1,9 @@
 .header {
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid $elements-color;

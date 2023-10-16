@@ -36,7 +36,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
               <img
                 src={right}
                 alt="right"
-                className="breadcrumbs__image"
+                className="breadcrumbs__right"
               />
               <Link
                 to={`/${params.slice(1, index + 1).join('/')}`}
@@ -60,7 +60,7 @@ export const Breadcrumbs: React.FC<Props> = React.memo(({ currentPage }) => {
 
         return (
           <React.Fragment key={crumb}>
-            <img src={right} alt="right" />
+            <img src={right} alt="right" className="breadcrumbs__right" />
             <Link
               to={`/${params.slice(1, index + 1).join('/')}`}
               className={classNames(

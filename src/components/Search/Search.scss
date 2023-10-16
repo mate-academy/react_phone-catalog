@@ -9,14 +9,9 @@
   height: 64px;
   padding: 0 24px;
 
-  &--focus {
-    background-color: $hoverAndBg-color;
-  }
-
   &__input {
     border: none;
     outline: none;
-    background-color: $hoverAndBg-color;
     font-family: inherit;
     font-weight: 600;
 

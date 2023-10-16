@@ -11,7 +11,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { NoSearchResults } from '../components/NoSearchResults';
 import { Pagination } from '../components/Pagination';
 import { DEFAULT_PER_PAGE, DEFAULT_SORT } from '../helpers/helper/constants';
-import arrowUp from '../image/Arrow_Up_black.svg';
+import arrowUp from '../image/upppp.svg';
 import arrowDown from '../image/downGray.svg';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { init as initPhones } from '../features/phones';
