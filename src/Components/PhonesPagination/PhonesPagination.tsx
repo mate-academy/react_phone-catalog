@@ -26,7 +26,7 @@ export const PhonesPaginations: React.FC<Props> = ({ phones }) => {
   };
 
   function handleChangeSetPage(page: string) {
-    const params = new URLSearchParams(page);
+    const params = new URLSearchParams(searchParams);
 
     params.set('page', page);
     setSearchParams(params);
@@ -41,7 +41,7 @@ export const PhonesPaginations: React.FC<Props> = ({ phones }) => {
       newPrevPage = 1;
     }
 
-    const params = new URLSearchParams(newPrevPage.toString());
+    const params = new URLSearchParams(searchParams);
 
     params.set('page', newPrevPage.toString());
     setSearchParams(params);
@@ -56,7 +56,7 @@ export const PhonesPaginations: React.FC<Props> = ({ phones }) => {
       newNextPage = +nextPage;
     }
 
-    const params = new URLSearchParams(newNextPage.toString());
+    const params = new URLSearchParams(searchParams);
 
     params.set('page', newNextPage.toString());
     setSearchParams(params);

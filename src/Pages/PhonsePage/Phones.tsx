@@ -31,7 +31,7 @@ export const PhonesPage: React.FC<Props> = ({ phones, isLoading }) => {
   );
 
   useEffect(() => {
-    const params = new URLSearchParams('1');
+    const params = new URLSearchParams(searchParams);
 
     params.set('page', '1');
     setSearchParams(params);
