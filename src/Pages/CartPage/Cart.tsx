@@ -4,9 +4,7 @@ import {
   Loader,
   Navigation,
 } from '../../Components';
-// import { Phone } from '../../Type/Phone';
 import { useAppSelector } from '../../app/hooks';
-// import { checkPhoneId } from '../../helper/checkedSorage';
 import './cart.scss';
 
 type Props = {
