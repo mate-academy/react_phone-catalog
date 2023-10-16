@@ -16,7 +16,11 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          <Link to="/" className="header__logo">
+          <Link
+            to="/"
+            className="header__logo"
+            onClick={handleClick}
+          >
             <img src={logo} alt="Logo" />
           </Link>
 
@@ -33,11 +37,23 @@ export const Footer: React.FC = () => {
             </li>
 
             <li className="footer__item">
-              <a href="/home" className="footer__link">Contacts</a>
+              <Link
+                to="/"
+                className="footer__link"
+                onClick={handleClick}
+              >
+                Contacts
+              </Link>
             </li>
 
             <li className="footer__item">
-              <a href="/home" className="footer__link">Rights</a>
+              <Link
+                to="/"
+                className="footer__link"
+                onClick={handleClick}
+              >
+                Rights
+              </Link>
             </li>
           </ul>
 
