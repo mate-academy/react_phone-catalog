@@ -1,12 +1,11 @@
-/* eslint-disable operator-assignment */
 /* eslint-disable no-plusplus */
 /* eslint-disable max-len */
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { NotFoundItems } from './NotFound';
 import { useAppSelector } from './utils/hooks';
-import { removeItem } from './redux/cartReducer';
+import { addItem, minusItem, removeItem } from './redux/cartReducer';
 
 export const Cart = () => {
   const { items } = useAppSelector((state) => state.cart);
@@ -15,14 +14,7 @@ export const Cart = () => {
   const sum = items.reduce((prev, current) => prev + current.price, 0);
 
   const baseUrl = 'https://mate-academy.github.io/react_phone-catalog/_new/';
-
-  const initialTotal = parseFloat(localStorage.getItem('sumToSave') || '0');
-  const [total, setTotal] = useState(initialTotal);
-
-  const savedCounts = localStorage.getItem('countsToSave');
-  const initialCounts = savedCounts ? JSON.parse(savedCounts) : items.map(() => 1);
-  const [counts, setCounts] = useState(initialCounts);
-  const [totalForAllItems, setTotalForAllItems] = useState(total);
+  const counts = items.map((item) => item.count);
 
   const calculateTotalForAllItems = () => {
     let totalToBasket = 0;
@@ -45,46 +37,23 @@ export const Cart = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('phonesToBuy', JSON.stringify(items));
     localStorage.setItem('sumToSave', sum.toString());
-    localStorage.setItem('totalForAllItems', totalForAllItems.toString());
-  }, [items, totalForAllItems]);
-
-  useEffect(() => {
-    localStorage.setItem('countsToSave', JSON.stringify(counts));
-  }, [counts]);
+  }, [items]);
 
   const handleAdd = (index: number) => {
-    setCounts((prevCounts: number[]) => {
-      const newCounts = [...prevCounts];
+    const selectedPhone = items[index];
 
-      newCounts[index] = newCounts[index] + 1;
-      const selectedPhone = items[index];
-
-      const newTotal = total + selectedPhone.price;
-
-      setTotal(newTotal);
-      setTotalForAllItems(totalForAllItems + selectedPhone.price); // Обновляем общую сумму
-
-      return newCounts;
-    });
+    dispatch(addItem(selectedPhone));
   };
 
   const handleRemove = (index: number) => {
-    setCounts((prevCounts: number[]) => {
-      const newCounts = [...prevCounts];
+    const selectedPhone = items[index];
 
-      if (newCounts[index] > 1) {
-        newCounts[index] = newCounts[index] - 1;
-        const selectedPhone = items[index];
-        const newTotal = total - selectedPhone.price;
-
-        setTotal(newTotal);
-        setTotalForAllItems(totalForAllItems - selectedPhone.price);
-      }
-
-      return newCounts;
-    });
+    if (selectedPhone.count > 1) {
+      dispatch(minusItem(selectedPhone));
+    } else {
+      dispatch(removeItem(selectedPhone));
+    }
   };
 
   return (
