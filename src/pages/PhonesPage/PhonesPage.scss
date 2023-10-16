@@ -1,0 +1,30 @@
+@import "../../styles/utils";
+
+.phones {
+  padding: 20px 0 0;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__models {
+    margin-bottom: 40px;
+
+    @extend %body-text;
+    color: $secondary-color;
+
+    @include onMobile {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  &__catalog {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,98 @@
+@import "../../styles/utils";
+
+.search {
+  position: relative;
+
+  @include onTablet {
+    position: static;
+  }
+
+  &__btn {
+    display: none;
+    width: 48px;
+    height: 100%;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: 1px solid $elements-color;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__field {
+    width: 327px;
+    height: 100%;
+    padding: 0 24px;
+
+    @extend %buttons;
+    color: $primary-color;
+
+    outline: none;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: 1px solid $elements-color;
+
+    @include onTablet {
+      position: absolute;
+      width: 100vw;
+      transition: transform 0.3s;
+      transform: translateY(-200%);
+      right: 0;
+      top: 49px;
+
+      border-bottom: 1px solid $elements-color;
+      border-left: 1px solid transparent;
+    }
+
+    &--active {
+      transform: translateY(0);
+    }
+
+    &::placeholder {
+      color: $icons-color;
+    }
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      background: url("../../assets/icons/Close.svg") no-repeat 50% 50%;
+      background-size: contain;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:focus::-webkit-search-cancel-button {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $hover-bg-color;
+  }
+
+  &__icon {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include onTablet {
+      top: 65px;
+
+      transition: transform 0.3s;
+      transform: translateY(-500%);
+    }
+
+    &--active {
+      @include onTablet {
+        transform: translateY(0);
+      }
+    }
+  }
+}

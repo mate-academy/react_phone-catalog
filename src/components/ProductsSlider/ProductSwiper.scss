@@ -1,0 +1,13 @@
+@import "../../styles/utils";
+
+.swiper {
+  padding: 2px;
+
+  &-product-wrapper {
+    height: inherit;
+  }
+
+  &-slide {
+    height: inherit;
+  }
+}

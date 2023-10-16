@@ -1,0 +1,36 @@
+@import "../../styles/utils";
+
+.page {
+  padding: 0;
+  margin: 0;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  &__root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__main {
+    flex-grow: 1;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+
+    @include onTablet {
+      margin-bottom: 65px;
+    }
+
+    @include onMobile {
+      margin-bottom: 50px;
+    }
+  }
+}

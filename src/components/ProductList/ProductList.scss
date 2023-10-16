@@ -1,0 +1,23 @@
+@import "../../styles/utils";
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 40px;
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+  }
+
+  @include onMobile {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+
+  @media (max-width: 380px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../styles/utils";
+
+.products-slider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__control-btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__prev-btn,
+  &__next-btn {
+    width: 32px;
+    height: 32px;
+
+    @include onTablet {
+      width: 28px;
+      height: 28px;
+    }
+
+    @include onMobile {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}

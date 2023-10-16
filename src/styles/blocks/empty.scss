@@ -1,0 +1,31 @@
+.empty {
+  @include center;
+
+  &__img {
+    @include onTablet {
+      width: 220px;
+      height: 220px;
+    }
+
+    @include onMobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__message {
+    @extend %h1;
+    font-size: 50px;
+    line-height: normal;
+    text-align: center;
+    color: $secondary-color;
+
+    @include onTablet {
+      font-size: 35px;
+    }
+
+    @include onMobile {
+      font-size: 25px;
+    }
+  }
+}

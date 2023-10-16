@@ -1,0 +1,284 @@
+@import "../../styles/utils";
+
+.details {
+  padding: 25px 0 0;
+
+  &__title {
+    margin-bottom: 40px;
+
+    @include onMobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__card {
+    display: flex;
+    gap: 64px;
+    flex-basis: 80%;
+
+    @include onTablet {
+      gap: 20px;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 48px;
+      order: 2;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+
+    @include onTablet {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__thumb {
+    width: 80px;
+    height: 80px;
+    padding: 5px 0;
+
+    object-fit: contain;
+    cursor: pointer;
+
+    @include border($elements-color);
+    @include hover(border-color, $icons-color);
+
+    @include onTablet {
+      width: 70px;
+      height: 70px;
+    }
+
+    &--active {
+      pointer-events: none;
+      border-color: $primary-color;
+    }
+  }
+
+  &__img {
+    width: 442px;
+    height: 442px;
+    object-fit: contain;
+
+    @include onTablet {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &__actions {
+    flex-grow: 1;
+  }
+
+  &__colors {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__select-name {
+    display: block;
+    margin-bottom: 8px;
+
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__color-select {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-item {
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+
+    @include border($elements-color);
+    border-radius: 50%;
+
+    @include hover(border-color, $icons-color);
+
+    &--active {
+      border-color: $primary-color;
+      pointer-events: none;
+    }
+  }
+
+  &__color-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  &__capacity {
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__capacity-select {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-item {
+    @extend %body-text;
+    color: $primary-color;
+
+    @include border($icons-color);
+
+    @include hover(border-color, $primary-color);
+
+    &--active {
+      background-color: $primary-color;
+      border-color: transparent;
+      color: #fff;
+      pointer-events: none;
+    }
+  }
+
+  &__capacity-link {
+    display: block;
+    padding: 5px 8px;
+
+    color: inherit;
+  }
+
+  &__id {
+    @extend %small-text;
+    color: $icons-color;
+
+    @include onTablet {
+      font-size: 10px;
+    }
+
+    @include onMobile {
+      margin-bottom: 20px;
+      order: 1;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__discount {
+    @extend %h1;
+    color: $primary-color;
+  }
+
+  &__fullprice {
+    @extend %body-text;
+    font-size: 22px;
+    line-height: normal;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__add-cart {
+    width: 263px;
+    height: 48px;
+  }
+
+  &__add-fav {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__short-info {
+    @extend %small-text;
+  }
+
+  &__description {
+    display: flex;
+    gap: 90px;
+    margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 60px;
+      gap: 25px;
+    }
+  }
+
+  &__about {
+    flex-basis: 50%;
+  }
+
+  &__tech {
+    flex-basis: 50%;
+
+  }
+
+  &__subtitle {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid $elements-color;
+
+    @extend %h2;
+
+    @include onMobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__about-content {
+    margin-bottom: 32px;
+  }
+
+  &__about-title {
+    margin-bottom: 16px;
+
+    @extend %h3;
+    color: $primary-color;
+  }
+
+  &__about-text {
+    @extend %body-text;
+    color: $secondary-color;
+  }
+
+  &__tech-info {
+    @extend %body-text;
+  }
+}

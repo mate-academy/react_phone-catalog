@@ -1,0 +1,17 @@
+.title {
+
+  @extend %h1;
+  color: $primary-color;
+
+  @include onTablet {
+    font-size: 28px;
+  }
+
+  @include onMobile {
+    font-size: 20px;
+  }
+
+  &--not-found {
+    padding: 50px;
+  }
+}

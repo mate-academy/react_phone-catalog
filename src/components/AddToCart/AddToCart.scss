@@ -1,0 +1,11 @@
+@import "../../styles/utils";
+
+.add-cart {
+  &--active {
+    background-color: $white-color;
+    color: $green-color;
+
+    @include border($elements-color);
+    @include hover(border-color, $primary-color);
+  }
+}

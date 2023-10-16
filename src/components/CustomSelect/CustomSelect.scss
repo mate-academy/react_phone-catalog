@@ -1,0 +1,92 @@
+@import "../../styles/utils";
+
+.select {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 176px;
+
+  &__label {
+    margin-bottom: 4px;
+
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 4px;
+    padding: 10px 12px;
+
+    background-color: #fff;
+
+    @extend %body-text;
+    color: $primary-color;
+
+    @include border($icons-color);
+    outline: none;
+
+    @include hover(border-color, $primary-color);
+
+    &--active {
+      border-color: $primary-color;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    transition: all 0.3s;
+
+    path {
+      fill: $icons-color;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    padding: 8px 0;
+    position: absolute;
+    bottom: 0;
+    transition: all 0.3s;
+    transform: translateY(100%);
+    z-index: 1;
+
+    background-color: #fff;
+    opacity: 0;
+    pointer-events: none;
+
+    @include border($icons-color);
+
+    &--open {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  &__item {
+    padding: 6px 0 6px 12px;
+
+    @extend %body-text;
+    color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+      background-color: $hover-bg-color;
+    }
+
+    &--active {
+      color: $primary-color;
+      background-color: $icons-color;
+      pointer-events: none;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    color: inherit;
+  }
+}

@@ -1,0 +1,77 @@
+@import "../../styles/utils";
+
+.footer {
+  padding: 32px 0;
+
+  box-shadow: 0 -1px 0 0 $elements-color;
+
+  @include onMobile {
+    padding: 16px 0;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    gap: 64px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+
+    @include onMobile {
+      width: 100%;
+      justify-content: space-evenly;
+      gap: 0;
+    }
+  }
+
+  &__item {
+    @extend %uppercase;
+  }
+
+  &__link {
+    color: $secondary-color;
+
+    @include hover(color, $primary-color);
+  }
+
+  &__up {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @extend %small-text;
+    color: $secondary-color;
+
+    border: none;
+    background-color: $white-color;
+
+    @include hover(color, $primary-color);
+  }
+
+  &__up-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    transition: all 0.3s;
+
+    @include border($icons-color);
+  }
+
+  &:hover .footer__up-icon {
+    border-color: $primary-color;
+  }
+}

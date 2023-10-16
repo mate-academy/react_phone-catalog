@@ -1,0 +1,62 @@
+@import "../../styles/utils";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+
+    @extend %body-text;
+    color: $primary-color;
+
+    @include border($elements-color);
+    @include hover(border-color, $primary-color);
+
+    &--prev {
+      margin-right: 8px;
+
+      @include border($icons-color);
+    }
+
+    &--next {
+      margin-left: 8px;
+
+      @include border($icons-color);
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $primary-color;
+      pointer-events: none;
+    }
+
+    &--disabled {
+      border-color: $elements-color;
+      pointer-events: none;
+
+      path {
+        fill: $icons-color;
+      }
+    }
+
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    color: inherit;
+
+    &--next,
+    &--prev {
+      line-height: 0;
+    }
+  }
+}

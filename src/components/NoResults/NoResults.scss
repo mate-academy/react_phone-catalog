@@ -1,0 +1,46 @@
+@import "../../styles/utils";
+
+.no-results {
+  @include center;
+
+  &__img {
+    @include onTablet {
+      width: 300px;
+    }
+
+    @include onMobile {
+      width: 280px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 50px;
+
+    @extend %h1;
+    font-size: 35px;
+    text-align: center;
+    line-height: normal;
+    color: $secondary-color;
+
+    @include onTablet {
+      margin-bottom: 30px;
+      font-size: 30px;
+    }
+
+    @include onMobile {
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__link {
+    padding: 10px 20px;
+
+    background-color: $primary-color;
+
+    @extend %buttons;
+    color: $white-color;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+  }
+}

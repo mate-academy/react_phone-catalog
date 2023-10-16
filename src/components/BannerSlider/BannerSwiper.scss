@@ -1,0 +1,40 @@
+@import "../../styles/utils";
+
+.swiper {
+  width: 100%;
+
+  &-banner-wrapper {
+    height: 400px;
+
+    @include onMobile {
+      height: 200px;
+    }
+  }
+
+  &-button-prev,
+  &-button-next {
+    height: 400px;
+    width: 32px;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &-pagination {
+    position: static;
+    margin-top: 8px;
+
+    &-bullet {
+      width: 14px;
+      height: 4px;
+
+      border-radius: 0;
+      background-color: $icons-color;
+
+      &-active {
+        background-color: $primary-color;
+      }
+    }
+  }
+}

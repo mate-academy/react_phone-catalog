@@ -1,0 +1,18 @@
+@import "../../styles/utils/";
+
+.back-btn {
+  padding: 0;
+
+  border: none;
+  background-color: #fff;
+
+  @extend %small-text;
+  color: $secondary-color;
+  line-height: normal;
+
+  &--margin {
+    margin-bottom: 16px;
+  }
+
+  @include hover(color, $primary-color);
+}

@@ -1,0 +1,24 @@
+@import "../../styles/utils/";
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+
+  &--margin {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__name {
+    color: $secondary-color;
+  }
+
+  &__value {
+    color: $primary-color;
+    text-wrap: wrap;
+  }
+}

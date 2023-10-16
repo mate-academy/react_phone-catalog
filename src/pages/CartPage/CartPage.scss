@@ -1,0 +1,59 @@
+@import "../../styles/utils";
+
+.cart {
+  padding: 40px 0 0;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 752px;
+    width: 100%;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 368px;
+    width: 100%;
+    padding: 24px;
+
+    @include border($elements-color);
+  }
+
+  &__total-price {
+    @extend %h1;
+  }
+
+  &__total-items {
+    width: 100%;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid $elements-color;
+
+    @extend %body-text;
+    text-align: center;
+    color: $secondary-color;
+  }
+
+  &__checkout {
+    padding: 14px 0;
+  }
+}

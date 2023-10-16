@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.favourites {
+  padding: 25px 0 0;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    display: block;
+    margin-bottom: 40px;
+
+    @extend %body-text;
+    color: $secondary-color;
+  }
+}
