@@ -18,7 +18,7 @@ export const Breadcrumbs = () => {
   return (
     <nav className="breadcrumbs">
       <Link
-        className="breadcrumbs__home-lenk"
+        className="breadcrumbs__home-link"
         to="/"
       >
         <img

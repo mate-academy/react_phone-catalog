@@ -47,7 +47,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="product-list">
-      <p className="product-page__quantity-info">
+      <p className="products-page__quantity-info">
         {`${sortedProducts.length} models`}
       </p>
       {!sortedProducts.length ? (
