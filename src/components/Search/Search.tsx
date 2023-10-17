@@ -1,10 +1,10 @@
 import {
-  useEffect, useRef, useState,
+  useCallback, useRef, useState,
 } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 
-import { useDebounce } from '../../helpers/useDebounce';
+import { debounce } from '../../helpers/useDebounce';
 import { getSearchParams } from '../ProductsLayout/utils';
 
 import { Params } from '../../types/params';
@@ -19,9 +19,11 @@ export const Search: React.FC = () => {
   const searchQuery = searchParams.get(SearchTypes.Query) || '';
 
   const [query, setQuery] = useState(searchQuery);
+  const [appliedQuery, setAppliedQuery] = useState(searchQuery);
+
   const { pathname } = useLocation();
+
   const searchInput = useRef<HTMLInputElement>(null);
-  const debouncedSearch = useDebounce(query, 1000);
 
   const setSearch = (params: Params) => {
     const search = getSearchParams(params, searchParams);
@@ -29,10 +31,22 @@ export const Search: React.FC = () => {
     setSearchParams(search);
   };
 
+  const handleAppliedChange = (
+    newQuery: string,
+  ) => {
+    setAppliedQuery(newQuery);
+
+    setSearch({
+      [SearchTypes.Query]: newQuery || null,
+      [SearchTypes.Page]: '1',
+    });
+  };
+
+  const applyQuery = useCallback(debounce(handleAppliedChange, 1000), []);
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
-
-    setSearch({ [SearchTypes.Page]: '1' });
+    applyQuery(event.target.value);
   };
 
   const handleSearchFocus = () => {
@@ -48,11 +62,8 @@ export const Search: React.FC = () => {
     });
 
     setQuery('');
+    applyQuery('');
   };
-
-  useEffect(() => {
-    setSearch({ [SearchTypes.Query]: debouncedSearch || null });
-  }, [debouncedSearch]);
 
   if (!pagesToDisplay.some(page => page === pathname)) {
     return null;
@@ -72,7 +83,7 @@ export const Search: React.FC = () => {
         value={query}
         onChange={handleSearchChange}
       />
-
+      {appliedQuery && null}
       <div className="search__icon-container">
         {query ? (
           <div
