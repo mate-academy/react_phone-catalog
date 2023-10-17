@@ -148,7 +148,7 @@ export const ProductsSlider: React.FC<Props> = ({
           >
             {(!isLoading && !isError) && (
               products.map(product => (
-                <ProductCard product={product} />
+                <ProductCard product={product} key={product.id} />
               ))
             )}
           </div>

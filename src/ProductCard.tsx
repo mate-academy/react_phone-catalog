@@ -25,13 +25,13 @@ export const ProductCard: React.FC<Props> = ({
     setProductsToBuy,
     setLoadingItem,
   } = useContext(Context);
-  let isProductOnCart = false;
-  let isProductOnFavourites = false;
+  // let isProductOnCart = false;
+  // let isProductOnFavourites = false;
 
   useEffect(() => {
     if (product) {
-      isProductOnCart = findProductOnCart(product.id);
-      isProductOnFavourites = findProductOnFavourites(product.id);
+      // isProductOnCart = findProductOnCart(product.id);
+      // isProductOnFavourites = findProductOnFavourites(product.id);
     }
   }, [product]);
 
@@ -86,7 +86,7 @@ export const ProductCard: React.FC<Props> = ({
                   'product__button_add',
                   {
                     'product__button_add--active':
-                    isProductOnCart,
+                    findProductOnCart(product.id),
                   },
                 )}
                 onClick={(event) => updateCart(
@@ -95,7 +95,7 @@ export const ProductCard: React.FC<Props> = ({
                   product,
                 )}
               >
-                {isProductOnCart
+                {findProductOnCart(product.id)
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>
@@ -106,7 +106,7 @@ export const ProductCard: React.FC<Props> = ({
                   'product__button_favourites',
                   {
                     'product__button_favourites--active':
-                    isProductOnFavourites,
+                    findProductOnFavourites(product.id),
                   },
                 )}
                 onClick={(event) => updateFavourites(

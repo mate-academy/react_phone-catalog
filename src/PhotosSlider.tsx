@@ -46,6 +46,7 @@ export const PhotosSlider: React.FC = () => {
                 'slider__photo',
                 { 'slider__photo--active': imageNumber === activeImage },
               )}
+              key={imageNumber}
             />
           ))}
         </div>
@@ -57,20 +58,32 @@ export const PhotosSlider: React.FC = () => {
         />
       </div>
       <div className="slider__indicator_container">
-        <div className={classNames(
-          'slider__indicator',
-          { 'slider__indicator--active': activeImage === 1 },
-        )}
+        <button
+          type="button"
+          aria-label="Change photo"
+          className={classNames(
+            'slider__indicator',
+            { 'slider__indicator--active': activeImage === 1 },
+          )}
+          onClick={() => setActiveImage(1)}
         />
-        <div className={classNames(
-          'slider__indicator',
-          { 'slider__indicator--active': activeImage === 2 },
-        )}
+        <button
+          type="button"
+          aria-label="Change photo"
+          className={classNames(
+            'slider__indicator',
+            { 'slider__indicator--active': activeImage === 2 },
+          )}
+          onClick={() => setActiveImage(2)}
         />
-        <div className={classNames(
-          'slider__indicator',
-          { 'slider__indicator--active': activeImage === 3 },
-        )}
+        <button
+          type="button"
+          aria-label="Change photo"
+          className={classNames(
+            'slider__indicator',
+            { 'slider__indicator--active': activeImage === 3 },
+          )}
+          onClick={() => setActiveImage(3)}
         />
       </div>
     </>

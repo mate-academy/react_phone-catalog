@@ -4,6 +4,7 @@
   justify-content: space-between;
   gap: 20px;
   width: 100%;
+  max-width: 1135px;
   margin-bottom: 50px;
 
   &--photos {
@@ -147,6 +148,8 @@
     height: 5px;
     width: 15px;
     background-color: #e2e6e9;
+    border: none;
+    cursor: pointer;
 
     transition: background-color 0.3s;
 

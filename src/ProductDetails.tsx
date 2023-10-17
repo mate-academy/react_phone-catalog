@@ -81,7 +81,7 @@ export const ProductDetails: React.FC<Props> = ({
 
   useEffect(() => {
     get();
-  }, []);
+  }, [activeProduct?.name]);
 
   return (
     <div className="details">
