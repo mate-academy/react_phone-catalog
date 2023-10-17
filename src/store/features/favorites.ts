@@ -23,12 +23,16 @@ const favorite = createSlice({
   initialState,
   reducers: {
     toggleLike: (state, action: PayloadAction<Phone>) => {
-      const sameLike = state.favStorage
-        .filter(like => like.id !== action.payload.id);
+      const findProduct = state.favStorage
+        .find(like => like.id === action.payload.id);
 
-      if (sameLike.length !== state.favStorage.length) {
-        state.favStorage = sameLike;
-        state.addedToFav = sameLike.map(like => like && like.itemId);
+      if (findProduct) {
+        state.favStorage = state.favStorage
+          .filter(like => like.id !== action.payload.id);
+        state.addedToFav = state.addedToFav
+          .filter(like => like !== action.payload.itemId);
+
+        setLocalStorage(state.favStorage);
 
         return;
       }

@@ -14,7 +14,7 @@ type Props = {
 
 export const ButtonAndLike: React.FC<Props> = ({ size, phone }) => {
   const dispatch = useAppDispatch();
-  const { addedToFav } = useAppSelector(state => state.favorite);
+  const { favStorage } = useAppSelector(state => state.favorite);
 
   const buttonsStyles = useMemo(() => {
     switch (size) {
@@ -64,7 +64,7 @@ export const ButtonAndLike: React.FC<Props> = ({ size, phone }) => {
         onClick={() => phone && dispatch(toggleLike(phone))}
         className={classNames(
           buttonsStyles?.fav,
-          { 'fav--is-active': addedToFav.includes(phone?.itemId || '') },
+          { 'fav--is-active': favStorage.find(like => like?.id === phone?.id) },
         )}
       />
     </div>
