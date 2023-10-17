@@ -2,6 +2,7 @@
   display: block;
   font-family: "Montserrat", sans-serif;
   padding: 0 178px;
+  max-width: 1148px;
 
   &__title {
     color: #313237;
@@ -141,17 +142,13 @@
 
   &__container {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(1, 272px);
+    row-gap: 40px;
+    column-gap: 20px;
     justify-content: center;
-  }
-
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    flex-direction: row;
-    justify-content: space-between;
-    width: max-content;
+    margin: auto;
+    padding: 0, 178px;
   }
 
   &__page_container {
@@ -201,5 +198,23 @@
         }
       }
     }
+  }
+}
+
+@media (min-width: 920px) {
+  .products__container {
+    grid-template-columns: repeat(2, 272px);
+  }
+}
+
+@media (min-width: 1212px) {
+  .products__container {
+    grid-template-columns: repeat(3, 272px);
+  }
+}
+
+@media (min-width: 1504px) {
+  .products__container {
+    grid-template-columns: repeat(4, 272px);
   }
 }

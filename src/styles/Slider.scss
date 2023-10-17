@@ -151,7 +151,12 @@
     border: none;
     cursor: pointer;
 
-    transition: background-color 0.3s;
+    transition: background-color 0.3s,
+      box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 0 2px 0 #0000007d;
+    }
 
     &--active {
       background-color: #313237;

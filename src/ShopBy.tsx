@@ -31,32 +31,42 @@ export const ShopBy: React.FC = () => {
       <div className="shopBy__content">
         <div>
           <div className="shopBy__photo_container">
-            <div className="shopBy__photo shopBy__photo--phones" />
+            <Link to="/phones">
+              <div className="shopBy__photo shopBy__photo--phones" />
+            </Link>
           </div>
           <Link className="shopBy__link" to="/phones">Mobile phones</Link>
           <div className="shopBy__text">
             {phonesAmount}
-            {phonesAmount === 1 ? 'model' : 'models'}
+            {phonesAmount === 1 ? ' model' : ' models'}
           </div>
         </div>
         <div>
           <div className="shopBy__photo_container">
-            <div className="shopBy__photo shopBy__photo--tablets" />
+            <Link
+              to="/tablets"
+            >
+              <div className="shopBy__photo shopBy__photo--tablets" />
+            </Link>
           </div>
           <Link className="shopBy__link" to="/tablets">Tablets</Link>
           <div className="shopBy__text">
             {tabletsAmount}
-            {tabletsAmount === 1 ? 'model' : 'models'}
+            {tabletsAmount === 1 ? ' model' : ' models'}
           </div>
         </div>
         <div>
           <div className="shopBy__photo_container">
-            <div className="shopBy__photo shopBy__photo--accessories" />
+            <Link
+              to="/accessories"
+            >
+              <div className="shopBy__photo shopBy__photo--accessories" />
+            </Link>
           </div>
           <Link className="shopBy__link" to="/accessories">Accessories</Link>
           <div className="shopBy__text">
             {accessoriesAmount}
-            {accessoriesAmount === 1 ? 'model' : 'models'}
+            {accessoriesAmount === 1 ? ' model' : ' models'}
           </div>
         </div>
       </div>

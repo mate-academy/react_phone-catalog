@@ -100,6 +100,8 @@ export const Products: React.FC<Props> = ({
 
   useEffect(() => {
     getDevices();
+    setSortOrder(SortTypes.newest);
+    setPhonesPerPage(8);
 
     return (
       updateSearch({
@@ -178,115 +180,6 @@ export const Products: React.FC<Props> = ({
         </div>
       )}
 
-      <div className="products__filter_container">
-        <div className="products__filter">
-          <div className="products__text">Sort by</div>
-          <button
-            type="button"
-            className="products__dropdown"
-            onClick={() => {
-              setIsSortDropdownActive(!isSortDropdownActive);
-            }}
-          >
-            {sortOrder}
-          </button>
-          <div className="products__cover" />
-          <ul
-            className={classNames(
-              'products__dropdown_list',
-              { 'products__dropdown_list--active': isSortDropdownActive },
-            )}
-          >
-            <li
-              className="products__dropdown_item "
-            >
-              <button
-                type="button"
-                className="products__dropdown_button"
-                onClick={() => setProductsOrder(SortTypes.newest)}
-              >
-                Newest
-              </button>
-            </li>
-            <li
-              className="products__dropdown_item"
-            >
-              <button
-                type="button"
-                className="products__dropdown_button"
-                onClick={() => setProductsOrder(SortTypes.alphabetically)}
-              >
-                Alphabetically
-              </button>
-            </li>
-            <li
-              className="products__dropdown_item"
-            >
-              <button
-                type="button"
-                className="products__dropdown_button"
-                onClick={() => setProductsOrder(SortTypes.cheapest)}
-              >
-                Cheapest
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="products__filter">
-          <div className="products__text">Items on page</div>
-          <button
-            type="button"
-            className="products__dropdown"
-            onClick={() => {
-              setIsPageDropdownActive(!isPageDropdownActive);
-            }}
-          >
-            {phonesPerPage}
-          </button>
-          <div className="products__cover" />
-          <ul
-            className={classNames(
-              'products__dropdown_list',
-              { 'products__dropdown_list--active': isPageDropdownActive },
-            )}
-          >
-            <li
-              className="products__dropdown_item"
-            >
-              <button
-                type="button"
-                className="products__dropdown_button"
-                onClick={() => setPagesAmount(4)}
-              >
-                4
-              </button>
-            </li>
-            <li
-              className="products__dropdown_item"
-            >
-              <button
-                type="button"
-                className="products__dropdown_button"
-                onClick={() => setPagesAmount(8)}
-              >
-                8
-              </button>
-            </li>
-            <li
-              className="products__dropdown_item"
-            >
-              <button
-                type="button"
-                className="products__dropdown_button"
-                onClick={() => setPagesAmount(16)}
-              >
-                16
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-
       {isLoading && (
         <Loader />
       )}
@@ -299,12 +192,118 @@ export const Products: React.FC<Props> = ({
 
       {(!isLoading && !isError && filteredProducts.length > 0) && (
         <>
-          <div className="products__container">
-            <div className="products__list">
-              {itemsPerPage.map(phone => (
-                <ProductCard product={phone} key={phone.id} />
-              ))}
+          <div className="products__filter_container">
+            <div className="products__filter">
+              <div className="products__text">Sort by</div>
+              <button
+                type="button"
+                className="products__dropdown"
+                onClick={() => {
+                  setIsSortDropdownActive(!isSortDropdownActive);
+                }}
+              >
+                {sortOrder}
+              </button>
+              <div className="products__cover" />
+              <ul
+                className={classNames(
+                  'products__dropdown_list',
+                  { 'products__dropdown_list--active': isSortDropdownActive },
+                )}
+              >
+                <li
+                  className="products__dropdown_item "
+                >
+                  <button
+                    type="button"
+                    className="products__dropdown_button"
+                    onClick={() => setProductsOrder(SortTypes.newest)}
+                  >
+                    Newest
+                  </button>
+                </li>
+                <li
+                  className="products__dropdown_item"
+                >
+                  <button
+                    type="button"
+                    className="products__dropdown_button"
+                    onClick={() => setProductsOrder(SortTypes.alphabetically)}
+                  >
+                    Alphabetically
+                  </button>
+                </li>
+                <li
+                  className="products__dropdown_item"
+                >
+                  <button
+                    type="button"
+                    className="products__dropdown_button"
+                    onClick={() => setProductsOrder(SortTypes.cheapest)}
+                  >
+                    Cheapest
+                  </button>
+                </li>
+              </ul>
             </div>
+            <div className="products__filter">
+              <div className="products__text">Items on page</div>
+              <button
+                type="button"
+                className="products__dropdown"
+                onClick={() => {
+                  setIsPageDropdownActive(!isPageDropdownActive);
+                }}
+              >
+                {phonesPerPage}
+              </button>
+              <div className="products__cover" />
+              <ul
+                className={classNames(
+                  'products__dropdown_list',
+                  { 'products__dropdown_list--active': isPageDropdownActive },
+                )}
+              >
+                <li
+                  className="products__dropdown_item"
+                >
+                  <button
+                    type="button"
+                    className="products__dropdown_button"
+                    onClick={() => setPagesAmount(4)}
+                  >
+                    4
+                  </button>
+                </li>
+                <li
+                  className="products__dropdown_item"
+                >
+                  <button
+                    type="button"
+                    className="products__dropdown_button"
+                    onClick={() => setPagesAmount(8)}
+                  >
+                    8
+                  </button>
+                </li>
+                <li
+                  className="products__dropdown_item"
+                >
+                  <button
+                    type="button"
+                    className="products__dropdown_button"
+                    onClick={() => setPagesAmount(16)}
+                  >
+                    16
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="products__container">
+            {itemsPerPage.map(phone => (
+              <ProductCard product={phone} key={phone.id} />
+            ))}
           </div>
           {filteredProducts.length > phonesPerPage && (
             <div className="products__page_container">

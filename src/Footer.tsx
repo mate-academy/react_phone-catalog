@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -11,26 +11,34 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <div className="footer__image" />
+        <NavLink
+          to="/#"
+          onClick={scrollToTop}
+        >
+          <div className="footer__image" />
+        </NavLink>
       </div>
 
       <div className="footer__content">
         <div className="footer__link_container">
           <Link
-            to="/"
+            to="/#"
             className="footer__link"
+            onClick={scrollToTop}
           >
             GITHUB
           </Link>
           <Link
-            to="/"
+            to="/#"
             className="footer__link"
+            onClick={scrollToTop}
           >
             CONTACTS
           </Link>
           <Link
-            to="/"
+            to="/#"
             className="footer__link"
+            onClick={scrollToTop}
           >
             RIGHTS
           </Link>
