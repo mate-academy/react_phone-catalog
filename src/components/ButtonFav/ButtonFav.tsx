@@ -22,6 +22,7 @@ export const ButtonFav: React.FC<Props> = ({ product }) => {
   };
 
   return (
+    // eslint-disable-next-line jsx-a11y/control-has-associated-label
     <button
       data-cy="addToFviurite"
       className={classNames('button-fav', {
@@ -29,8 +30,6 @@ export const ButtonFav: React.FC<Props> = ({ product }) => {
       })}
       type="button"
       onClick={handleAddToFav}
-    >
-      {isAdded ? 'Added to cart' : 'Add to cart'}
-    </button>
+    />
   );
 };

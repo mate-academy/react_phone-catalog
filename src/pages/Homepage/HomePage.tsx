@@ -54,8 +54,6 @@ export const HomePage = () => {
     fetchAllProducts();
   }, []);
 
-  // console.log(hotProducts);
-  // console.log(error);
   return (
     <section className="home-page">
       <Banner />
@@ -64,12 +62,12 @@ export const HomePage = () => {
         className="home-page__block home-page__hot-products"
       >
         {!error && hotProducts ? (
-          <Loader />
-        ) : (
           <ProductsSlider
             title={ProductSection.HotPrice}
             products={hotProducts}
           />
+        ) : (
+          <Loader />
         )}
       </div>
 
@@ -81,12 +79,12 @@ export const HomePage = () => {
         className="home-page__block home-page__new-products"
       >
         {!error && brandeNewProducts ? (
-          <Loader />
-        ) : (
           <ProductsSlider
-            title={ProductSection.HotPrice}
-            products={hotProducts}
+            title={ProductSection.NewBrand}
+            products={brandeNewProducts}
           />
+        ) : (
+          <Loader />
         )}
       </div>
     </section>

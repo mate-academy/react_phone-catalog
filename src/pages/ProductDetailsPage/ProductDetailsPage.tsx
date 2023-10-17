@@ -44,7 +44,6 @@ export const ProductDetailsPage = () => {
 
   const fetchProductDetails = async () => {
     setIsLoading(true);
-
     try {
       const getDetailsFromServer = await getProductDetails(productId);
 
@@ -108,9 +107,9 @@ export const ProductDetailsPage = () => {
         <BackButton />
       </div>
 
-      {!product && <PageNotFound />}
+      {!product && !isLoading && <PageNotFound />}
 
-      {!isError && !isLoading && <Loader />}
+      {!isError && !isLoading && !productDetails && <Loader />}
 
       {!isLoading && !isError && (
         <>

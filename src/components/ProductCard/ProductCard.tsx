@@ -42,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
         </div>
         <div className="product-card__price">
           {title === ProductSection.NewBrand ? (
-            <div className="product-card__price">
+            <div className="product-card__price-regular">
               {`${fullPrice}`}
             </div>
           ) : (
