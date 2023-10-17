@@ -57,7 +57,7 @@ export const CartItem: React.FC<Props> = ({
       >
         <div className="cart__img-box cart-item__img-box">
           <img
-            src={`/new/${image}`}
+            src={`./new/${image}`}
             alt={image}
             className="cart__img cart-item__img"
           />
