@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins";
+
+.links-wrapper {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+}
+
+.header {
+  display: block;
+
+  &__wrapper {
+    display: flex;
+    padding: 0 0 0 24px;
+    border-bottom: 1px solid $borderBottocNavbarColor;
+    justify-content: space-between;
+  }
+}
+
+.logo__img {
+  display: block;
+}
+
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+
+    & :not(:first-child) {
+      margin-left: 64px;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: $navbarLinkColor;
+    height: 64px;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 4%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $navbarLinkColor;
+      opacity: 0;
+      transition: opacity, 0.3s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+}
+
+.is-active {
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $navbarLinkColor;
+    opacity: 1;
+  }
+}
+
+.logo {
+  display: block;
+  height: 65px;
+  width: 66px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-position: center;
+  @include hover(transform, scale(1.2));
+
+  &--like {
+    background-image: url(../../images/Heart.svg);
+  }
+
+  &--cart {
+    background-image: url(../../images/Cart.svg);
+  }
+}
+
+.logos-wrapper {
+  display: flex;
+}
+
+.logo--like-wrapper {
+  border-left: 1px solid $borderBottocNavbarColor;
+  border-right: 1px solid $borderBottocNavbarColor;
+}
+
+
+

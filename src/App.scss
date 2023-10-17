@@ -1,1 +1,20 @@
-// not empty
+$defaultFont: 'Montserrat', Helvetica, sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.page__body {
+  font-family: $defaultFont;
+}
+
+.container {
+  padding-inline: 152px;
+}
+
+.main {
+  min-height: calc(100vh - 160px);
+}
