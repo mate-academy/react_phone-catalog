@@ -1,0 +1,151 @@
+@import "../../styles/vars.scss";
+
+.cart-container {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  padding: 31px 40px 31px 24px;
+}
+
+.cards__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 540px;
+}
+
+.added-card {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 35px;
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $elements-color;
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: $white-color;
+
+    background-image: url("../../images/icons/Close-gray.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: all 0.35s ease;
+
+    &:hover {
+      transform: perspective(30px) translateZ(5px);
+      background-image: url("../../images/icons/Close.svg");
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+  }
+
+  &__title {
+    font-family: Mont-SemiBold, sans-serif;
+    min-width: 200px;
+    width: 200px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+  }
+
+  &__num {
+    display: block;
+    width: 32px;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $primary-color;
+  }
+
+  &__btn-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &--minus {
+      background-image: url("../../images/icons/Minus.svg");
+    }
+
+    &--plus {
+      background-image: url("../../images/icons/Plus.svg");
+    }
+
+    &--disabled {
+      background-image: url("../../images/icons/Minus-disabled.svg");
+    }
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+    color: $primary-color;
+  }
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid $elements-color;
+
+  &__price-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__price {
+    font-family: Mont-Bold, sans-serif;
+    color: $primary-color;
+    font-size: 32px;
+    line-height: 45px;
+  }
+
+  &__qnty {
+    color: $secondary-color;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__btn {
+    width: 320px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    background-color: $primary-color;
+    color: $white-color;
+    cursor: pointer;
+  }
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 637px;
+  border: 1px solid $elements-color;
+}

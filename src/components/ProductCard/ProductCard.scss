@@ -1,0 +1,88 @@
+@import "../../styles/vars.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 21px;
+  width: 272px;
+  color: $primary-color;
+  border: 1px solid $elements-color;
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+
+    &--error {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+      width: 130px;
+      height: 208px;
+      background-color: $elements-color;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    height: 42px;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  &__price {
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid $elements-color;
+    width: 100%;
+
+    &__actual {
+      font-family: Mont-Bold, sans-serif;
+      font-size: 22px;
+      line-height: 37px;
+    }
+
+    &__deal {
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 22px;
+      line-height: 37px;
+      text-decoration-line: line-through;
+      color: $secondary-color;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:nth-last-child(-n + 1) {
+      margin-bottom: 16px;
+    }
+
+    &__title {
+      font-family: Mont-SemiBold, sans-serif;
+      color: $secondary-color;
+      font-size: 12px;
+    }
+
+    &__charac {
+      color: $primary-color;
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+    }
+  }
+}

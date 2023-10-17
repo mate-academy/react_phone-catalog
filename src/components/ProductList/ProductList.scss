@@ -1,0 +1,130 @@
+@import "../../styles/vars.scss";
+
+.selects-container {
+  display: flex;
+  gap: 16px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  &__arrow {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 3px;
+    top: 10px;
+    border: 0;
+    background-color: $white-color;
+    background-position: center;
+    background-size: initial;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &--up {
+      background-image: url("../../images/icons/arrow-up-gray.svg");
+    }
+
+    &--down {
+      background-image: url("../../images/icons/arrow-down-gray.svg");
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    height: 40px;
+    width: 176px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+    color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 176px;
+    position: absolute;
+    transform: translateY(44px);
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    transition: all 0.35s ease;
+    opacity: 0;
+
+    &--is-active {
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+  }
+
+  &__link {
+    display: none;
+    padding-left: 12px;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    color: $secondary-color;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $hover-bg-color;
+      color: $primary-color;
+    }
+
+    &--is-active {
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__paragraph {
+    font-family: Mont-SemiBold, sans-serif;
+    color: $secondary-color;
+  }
+
+  &__menu {
+    padding: 10px 0 10px 12px;
+    width: 176px;
+    height: 40px;
+    background-color: $white-color;
+    outline: none;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+    font-family: Mont-SemiBold, sans-serif;
+    font-size: 14px;
+  }
+}
+
+.cataloge {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  column-gap: 16px;
+  min-width: 900px;
+  margin-bottom: 16px;
+}

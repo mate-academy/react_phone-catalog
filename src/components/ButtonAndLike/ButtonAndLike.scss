@@ -1,0 +1,81 @@
+@import "../../styles/vars.scss";
+
+.btns-container {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  color: $white-color;
+  background-color: $primary-color;
+  border: none;
+
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+
+  &:hover {
+    transform: perspective(80px) translateZ(1px);
+  }
+
+  &--small {
+    width: 176px;
+    height: 40px;
+  }
+
+  &--big {
+    width: 263px;
+    height: 48px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--disabled {
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+    color: $green-color;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.fav {
+  background-color: $white-color;
+  border: 1px solid $primary-color;
+
+  background-image: url("../../images/icons/Favourites.svg");
+  background-position: center;
+  background-size: initial;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.35s ease;
+
+  &:hover {
+    transform: perspective(60px) translateZ(1px);
+  }
+
+  &--small {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--big {
+    width: 49px;
+    height: 49px;
+  }
+
+  &:hover {
+    background-image: url("../../images/icons/Favourites-active.svg");
+  }
+
+  &--is-active {
+    border: 1px solid $primary-color;
+    background-image: url("../../images/icons/Favourites-active.svg");
+  }
+}
