@@ -120,7 +120,7 @@ export const ProductDetailsPage = () => {
                     onClick={() => dispatch(setImage(image))}
                   >
                     <img
-                      src={`./_new/${image}`}
+                      src={`./new/${image}`}
                       alt={image}
                       className="detail__image"
                     />
@@ -131,7 +131,7 @@ export const ProductDetailsPage = () => {
 
             <div className="detail__main-image-wrapper">
               <img
-                src={`./_new/${mainImage}`}
+                src={`./new/${mainImage}`}
                 alt={mainImage}
                 className="detail__main-image"
               />
