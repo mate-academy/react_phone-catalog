@@ -43,7 +43,7 @@ export const AddCartButton: React.FC<Props> = ({ phone }) => {
       type="button"
       onClick={() => handler(phone)}
     >
-      {isAdded ? ('addedToCart') : ('addToCart')}
+      {isAdded ? ('Added to cart') : ('Add to cart')}
     </button>
   );
 };

@@ -38,7 +38,7 @@ export const Home: React.FC = () => {
       <Slider />
       <CatalogProducts list={getHotPriceProducts} title="Hot price" />
       <Categories />
-      <CatalogProducts list={getBrandNew} title="Shop by category" />
+      <CatalogProducts list={getBrandNew} title="Brend new models" />
     </div>
   );
 };

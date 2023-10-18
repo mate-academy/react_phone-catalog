@@ -26,10 +26,10 @@ export const Footer: React.FC = () => {
             </Link>
           </li>
           <li className="footer__item">
-            <Link to="#/" className="footer__link">contacts</Link>
+            <Link to="/contacts" className="footer__link">contacts</Link>
           </li>
           <li className="footer__item">
-            <Link to="#/" className="footer__link">rights</Link>
+            <Link to="/rights" className="footer__link">rights</Link>
           </li>
         </ul>
 

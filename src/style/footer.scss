@@ -32,7 +32,22 @@
     text-transform: uppercase;
 
     flex-direction: row;
-    gap: 64px;
+
+    @media (min-width: 1200px) {
+      gap: 64px;
+    }
+
+    @media (max-width: 1199px) {
+      gap: 48px;
+    }
+
+    @media (max-width: 950px) {
+      gap: 32px;
+    }
+
+    @media (max-width: 640px) {
+      gap: 16px;
+    }
   }
 
   &__button {

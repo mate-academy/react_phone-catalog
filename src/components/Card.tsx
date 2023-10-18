@@ -42,15 +42,15 @@ export const Card: React.FC<Props> = ({ card }) => {
 
       <div className="card__info">
         <div className="card__info-str">
-          <span>screen</span>
+          <span>Screen</span>
           <span className="card__info-str-value">{screen}</span>
         </div>
         <div className="card__info-str">
-          <span>capacity</span>
+          <span>Capacity</span>
           <span className="card__info-str-value">{capacity}</span>
         </div>
         <div className="card__info-str">
-          <span>ram</span>
+          <span>RAM</span>
           <span className="card__info-str-value">{ram}</span>
         </div>
       </div>

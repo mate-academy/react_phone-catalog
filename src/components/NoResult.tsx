@@ -6,9 +6,9 @@ export const NoResult: React.FC = () => {
 
   return (
     <div className="NoResult">
-      <p className="NoResult__title">
+      <h1 className="NoResult__title">
         {`${toUpperCaseFirstLetter(`${category}`)} not found`}
-      </p>
+      </h1>
 
       <Link to="/" className="NoResult__link">
         Go to Homepage

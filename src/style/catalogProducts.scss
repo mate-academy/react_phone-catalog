@@ -59,9 +59,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-
-    min-height: 537px;
-
+    height: 100%;
     width: 100%;
     overflow-y: visible;
     overflow-x: hidden;
@@ -69,8 +67,23 @@
     &-inner {
       display: flex;
       gap: 16px;
-      // flex-direction: row;
       transition-duration: 0.3s;
+    }
+
+    @media (min-width: 1200px) {
+      width: 1140px;
+    }
+
+    @media (max-width: 1199px) {
+      width: 864px;
+    }
+
+    @media (max-width: 950px) {
+      width: 576px;
+    }
+
+    @media (max-width: 640px) {
+      width: 288px;
     }
   }
 }

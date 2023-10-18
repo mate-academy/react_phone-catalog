@@ -27,12 +27,11 @@ html {
 
   min-height: calc(100vh - 200px);
 
-  max-width: 320px;
   margin: 0 auto;
   padding: 0 20px;
 
   @include onTablet {
-    max-width: 700px;
+    max-width: 950px;
   }
 
   @include onDesktop {
