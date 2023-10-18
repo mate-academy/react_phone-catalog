@@ -21,7 +21,7 @@ export const Header = () => {
   const isPathnameFavourites = pathname === '/favourites';
 
   return (
-    <header className="header header--margin-bottom">
+    <header className="header">
       <div className="header__nav">
         <div className="header__logo">
           <Link
@@ -91,7 +91,9 @@ export const Header = () => {
       <div className="header__choosed">
         {(isPathnamePhones || isPathnameTablets
           || isPathnameAccessories || isPathnameFavourites) && (
-          <Search />
+          <div className="header__icon-search">
+            <Search />
+          </div>
         )}
 
         <NavLink

@@ -18,6 +18,7 @@
 
   &__choosed {
     display: flex;
+    max-width: 460px;
   }
 
   &__icon {
@@ -28,6 +29,14 @@
     height: 64px;
     position: relative;
     background: #fff;
+  }
+
+  &__icon-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 327px;
+    height: 64px;
   }
 
   &__link {

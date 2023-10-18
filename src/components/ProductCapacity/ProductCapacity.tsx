@@ -14,9 +14,9 @@ export const ProductCapacity: React.FC<Props> = ({ productDetails }) => {
 
   return (
     <div className="product-capacities">
-      <h5 className="product-capacities__title">
+      <h4 className="product-capacities__title">
         Select capacity
-      </h5>
+      </h4>
       <ul className="product-capacities__list">
         {capacities.map(capacity => {
           const isActive = productDetails.capacity === capacity;

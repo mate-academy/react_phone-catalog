@@ -1,6 +1,8 @@
 @import "../../helpers/variables.scss";
 
 .back-button {
+  display: flex;
+  align-items: center;
   font-family: $font-semibold;
   color: $grey-secondary-color;
   transition: color 0.3s;

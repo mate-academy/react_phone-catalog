@@ -5,10 +5,10 @@
   border-bottom: 1.5px solid $grey-third-color;
 
   &__title {
-    font-size: 32px;
     margin: 0 0 8px;
     font-family: $font-semibold;
-    color: $grey-primary-color;
+    font-size: 12px;
+    color: $grey-secondary-color;
   }
 
   &__list {
