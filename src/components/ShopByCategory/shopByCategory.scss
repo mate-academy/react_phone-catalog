@@ -1,0 +1,85 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 80px;
+
+  &__title {
+    @include title;
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+  }
+
+  &__img-wrapper {
+    display: block;
+    height: 368px;
+    width: 368px;
+    overflow: hidden;
+    background: #d53c51;
+    margin-bottom: 24px;
+  }
+
+  &__card {
+    height: 443px;
+    width: 368px;
+  }
+
+  &__card:not(:last-of-type) {
+    margin-right: 16px;
+  }
+
+  &__img-wrapper--phones {
+    background: #fcdbc1;
+  }
+
+  &__img-wrapper--phones > img {
+    height: 457px;
+    width: 386px;
+    margin-top: 8px;
+    margin-left: 73px;
+  }
+
+  &__img-wrapper--tablets {
+    background: #8d8d92;
+  }
+
+  &__img-wrapper--tablets > img {
+    height: 546px;
+    width: 546px;
+    margin-top: 20px;
+    margin-left: 22px;
+  }
+
+  &__img-wrapper--accessories {
+    background: #973d5f;
+  }
+
+  &__img-wrapper--accessories > img {
+    height: 317px;
+    margin-top: 51px;
+    margin-left: 30px;
+  }
+
+  &__name {
+    @include mont-semi-bold;
+    font-size: 20px;
+    line-height: 26px;
+    color: $text-color;
+    margin-bottom: 4px;
+  }
+
+  &__models-number {
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color-light;
+  }
+
+}

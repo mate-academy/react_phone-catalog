@@ -1,0 +1,54 @@
+@mixin mont-regular {
+  font-family: "Mont-Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin mont-bold {
+  font-family: "Mont-Bold", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin mont-semi-bold {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@mixin pseudo-button {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin title {
+  @include mont-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $text-color;
+  margin-bottom: 8px;
+}
+
+@mixin models-number {
+  @include mont-regular;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $text-color-light;
+  margin-bottom: 40px;
+}
+
+@mixin page-styles {
+  width: $content-width;
+  margin: 0 auto 80px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}

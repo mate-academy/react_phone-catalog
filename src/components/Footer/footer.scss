@@ -1,0 +1,81 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.Footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  width: $content-width;
+  margin: auto;
+
+  /*#region Contact list link*/
+  &__contacts-list {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__item:not(:last-of-type) {
+    margin-right: 64px;
+  }
+
+  &__go-up-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__contact-item {
+    @include mont-bold;
+    color: $text-color-light;
+  }
+
+  &__contact-item:hover {
+    color: $text-color;
+  }
+
+  /*#endregion*/
+  
+  /*#region links back to up*/
+  &__link-back-top {
+    @include mont-semi-bold;
+    margin-right: 16px;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $text-color-light;
+  }
+
+  &__link-back-top:hover {
+    color: $text-color;
+  }
+
+  &__link-button-back-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+    background-image: url("../icons/arrow.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  &__link-button-back-top:hover {
+    border: $border-hover;
+    cursor: pointer;
+  }
+
+  &__link-button-back-top:disabled {
+    border: 1px solid #e2e6e9;
+    background-image: url("../icons/arrow-disabled.svg");
+  }
+
+  &__arrow-back-top {
+    height: 6px;
+    width: 10px;
+  }
+  /*#endregion*/
+}

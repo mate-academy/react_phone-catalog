@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.search-list {
+  @include page-styles;
+
+  &__number {
+    margin-bottom: 24px;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color-light;
+  }
+}

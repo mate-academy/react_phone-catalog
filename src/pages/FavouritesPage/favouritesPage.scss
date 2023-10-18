@@ -1,0 +1,14 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.favourites {
+  @include page-styles;
+
+  &__title {
+    @include title;
+  }
+
+  &__models-number {
+    @include models-number;
+  }
+}

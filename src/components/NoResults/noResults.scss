@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.no-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include page-styles;
+
+  &__title {
+    @include mont-semi-bold;
+    color: $text-color-light;
+    font-size: 64px;
+  }
+}

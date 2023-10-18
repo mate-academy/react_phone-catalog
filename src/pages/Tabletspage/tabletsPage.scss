@@ -1,0 +1,24 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.tablets {
+  @include page-styles;
+
+  &__title {
+    @include title;
+    margin-bottom: 8px;
+  }
+
+  &__phones-list {
+    margin-bottom: 40px;
+  }
+
+  &__models-number {
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color-light;
+    margin-bottom: 40px;
+  }
+}

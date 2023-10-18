@@ -1,0 +1,73 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 580px;
+  width: 100%;
+  margin-bottom: 80px;
+  overflow: hidden;
+
+  &__carousel {
+    display: flex;
+    height: 507px;
+    width: max-content;
+    box-sizing: border-box;
+    transition: all 1s;
+  }
+
+  &__carousel > * {
+    margin-right: 16px;
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include title;
+    margin-bottom: 0;
+  }
+
+  &__button {
+    position: relative;
+    padding: 0;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__button:hover {
+    border: $border-hover;
+    cursor: pointer;
+  }
+
+  &__button:disabled {
+    border: 1px solid #e2e6e9;
+  }
+
+  &__button::before {
+    @include pseudo-button;
+    background-image: url("../icons/arrow.svg");
+  }
+
+  &__button:disabled::before {
+    background-image: url("../icons/arrow-disabled.svg");
+  }
+
+  &__button--prev {
+    margin-left: auto;
+    transform: rotate(-90deg);
+  }
+
+  &__button--next {
+    margin-left: 16px;
+    transform: rotate(90deg);
+  }
+}

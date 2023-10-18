@@ -1,0 +1,81 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.detiled-description {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  width: 100%;
+
+  /*#region About */
+  &__about {
+    width: 559px;
+  }
+
+  &__about-block > div:not(:last-of-type) {
+    margin-bottom: 32px;
+  }
+
+  &__title-about {
+    margin-bottom: 48px;
+  }
+
+  &__title-description {
+    margin-bottom: 16px;
+    @include mont-semi-bold;
+    font-size: 20px;
+    line-height: 26px;
+    color: $text-color;
+  }
+
+  &__text {
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-color-light;
+    white-space: pre-line;
+  }
+  /*#endregion About */
+
+  /*#region Tech specs */
+  &__tech-specs {
+    width: 512px;
+  }
+
+  &__title-tech-specs {
+    margin-bottom: 41px;
+  }
+
+  &__tech-specs-table {
+    width: 100%;
+    @include mont-regular;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: right;
+    color: $text-color;
+  }
+
+  &__tech-specs-table > tbody > tr {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__tech-specs-table > tbody > tr > td:first-of-type {
+    color: $text-color-light;
+  }
+
+  &__tech-specs-table > tbody > tr:not(:last-of-type) {
+    margin-bottom: 8px;
+  }
+
+  /*#endregion Tech specs */
+}
+
+.title {
+  @include mont-bold;
+  font-size: 22px;
+  line-height: 140%;
+  color: $text-color;
+}

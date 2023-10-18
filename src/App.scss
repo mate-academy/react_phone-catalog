@@ -1,1 +1,27 @@
-// not empty
+@import "src/styles//variables";
+@font-face {
+  font-family: Mont-Bold;
+  src: url("./fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url("./fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url("./fonts/Mont-SemiBold.otf");
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

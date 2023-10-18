@@ -1,0 +1,108 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.banner-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 72px;
+
+  &__basic {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  &__carousel {
+    width: $carousel-width;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    height: 100%;
+    white-space: nowrap;
+    transition: all 1s;
+  }
+
+  &__carousel-item {
+    display: block;
+    width: $carousel-width;
+    overflow: hidden;
+  }
+
+  &__carousel-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /*#region buttons prev&next */
+  &__button {
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    width: 32px;
+    background-color: transparent;
+    border: 1px solid #b4bdc4;
+  }
+
+  &__button:hover {
+    border: $border-hover;
+    cursor: pointer;
+  }
+
+  &__button:disabled {
+    border: 1px solid #e2e6e9;
+  }
+
+  &__button::before {
+    @include pseudo-button;
+    background-image: url("../icons/arrow.svg");
+  }
+
+  &__button:disabled::before {
+    background-image: url("../icons/arrow-disabled.svg");
+  }
+
+  &__button--prev::before {
+    transform: rotate(-90deg);
+  }
+
+  &__button--next::before {
+    transform: rotate(90deg);
+  }
+
+  &__indacators-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  &__indicator {
+    padding: 0;
+    width: 14px;
+    height: 4px;
+    background: #e2e6e9;
+    border: none;
+    transition: background 0.3s;
+
+    &--active {
+      background: #313237;
+      transition: background 0.3s;
+    }
+  }
+
+  &__indicator:not(:last-of-type) {
+    margin-right: 14px;
+  }
+}

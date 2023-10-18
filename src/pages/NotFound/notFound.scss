@@ -1,0 +1,39 @@
+@import "../../styles/mixins";
+@import "../../styles//variables";
+
+.not-found {
+  @include page-styles;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    @include mont-bold;
+    font-size: 180px;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  &__message {
+    @include mont-bold;
+    font-size: 36px;
+    color: $text-color-light;
+    margin-bottom: 40px;
+  }
+
+  &__description {
+    @include mont-semi-bold;
+    font-size: 22px;
+    color: $text-color-light;
+    text-align: center;
+  }
+
+  &__to-home {
+    margin-top: 20px;
+    @include mont-regular;
+    font-size: 18px;
+    color: $text-color;
+    text-align: center;
+  }
+}
