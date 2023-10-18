@@ -1,4 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { debounce } from 'lodash';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Context } from './Context';
@@ -19,12 +20,12 @@ export const Header: React.FC<Props> = ({
   filterQuery,
 }) => {
   const {
-    query,
     setQuery,
   } = useContext(Context);
   const { updateSearch } = useUpdateSearch();
+  const [localQuery, setLocalQuery] = useState('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  let handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
 
     if (event.target.value) {
@@ -33,6 +34,12 @@ export const Header: React.FC<Props> = ({
       updateSearch({ query: null });
     }
   };
+
+  const handleLocalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLocalQuery(event.target.value);
+  };
+
+  handleInputChange = debounce(handleInputChange, 1000);
 
   useEffect(() => {
     if (filterQuery) {
@@ -110,8 +117,11 @@ export const Header: React.FC<Props> = ({
             type="text"
             placeholder={`Search in ${filterType}...`}
             disabled={filterType === ''}
-            value={query}
-            onChange={handleInputChange}
+            value={localQuery}
+            onChange={(event) => {
+              handleLocalChange(event);
+              handleInputChange(event);
+            }}
           />
           <NavLink
             className={({ isActive }) => classNames(
