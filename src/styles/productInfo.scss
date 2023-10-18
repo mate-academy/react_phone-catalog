@@ -1,0 +1,241 @@
+.product {
+  &__title {
+    display: block;
+  }
+
+  &__description {
+    margin-bottom: 80px;
+    grid-template-rows: 1fr auto;
+    @include max-winth1100px {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      margin-bottom: 16px;
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+      margin-bottom: 32px;
+    }
+
+    &__about {
+  
+      &__subtitle {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+  
+        color: #313237;
+        margin-bottom: 16px;
+      }
+    }
+
+    &__Tech_specs {
+      &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        
+        @include max-winth740px {
+          grid-template-rows: repeat(7, 42px);
+          grid-template-columns: 120px 1fr;
+        }
+      }
+
+      &__characteristic {
+        text-align: end;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+
+        color: $primary;
+      }
+
+      &__text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+       
+        color: #89939a;
+      }
+
+      &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+      }
+    }
+  }
+
+  .slick-slider {
+    display: block;
+  }
+
+  &__slider {
+    margin: 0 auto;
+    display: flex;
+    gap: 16px;
+
+    @include max-winth1100px {
+      flex-direction: column-reverse;
+    }
+    @include max-winth740px {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__button {
+      display: none;
+      @include max-winth740px {
+        display: flex;
+      }
+    }
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include max-winth1100px {
+        flex-direction: row;
+      }
+      @include max-winth740px {
+        display: none;
+      }
+      &-track {
+        height: 389px;
+        overflow: hidden;
+        min-width: 80px;
+        @include max-winth1100px {
+          height: auto;
+          width: 389px;
+        }
+
+        &-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          transition: 0.2s;
+          @include max-winth1100px {
+            flex-direction: row;
+          }
+        }
+      }
+
+      &__item {
+        width: 80px;
+        height: auto;
+
+        &--active {
+          border: 1px solid $primary;
+        }
+      }
+    }
+
+    &__main_slide {
+      max-height: 422px;
+      margin-bottom: 20px;
+
+      @include max-winth740px {
+        width: 85%;
+      }
+    }
+  }
+
+  &__characteristics {
+    margin-bottom: 90px;
+    &__title {
+      margin-bottom: 20px;
+    }
+    &__colors {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+
+    }
+    &__capacitys {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__color {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid $elements;
+      transition: 0.3s;
+  
+      &--selected {
+        box-shadow: 0 0 5px $primary;
+      }
+    }
+
+    &__capacity {
+      padding: 7px 8px 4px;
+      background: $white;
+      border: 1px solid $elements;
+      transition: 0.3s;
+      margin-bottom: 24px;
+
+      &--active {
+        background: $primary;
+        color: $white;
+      }
+    }
+
+    &__prices {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    &__mainPrice {
+      display: inline;
+      margin: 0;
+    }
+
+    &__secondPrice {
+      display: inline;
+      text-decoration-line: line-through;
+
+      color: $secondary;
+    }
+
+    
+    &__info {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      grid-template-rows: repeat(4, 15px);
+      align-items: center;
+      gap: 8px;
+
+      &__name {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+    
+        color: $secondary;
+      }
+
+      &__param {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+
+        color: $primary;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+  }
+}

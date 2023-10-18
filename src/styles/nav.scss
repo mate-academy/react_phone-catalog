@@ -1,0 +1,175 @@
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.nav {
+  background: $white;
+  box-shadow: 0 1px 0 $elements;
+
+  &__button {
+    display: none;
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+
+    &__link {
+      display: none;
+    }
+
+    &-in-menu {
+      position: absolute;
+      top: 20px;
+      left: 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__links {
+    padding: 24px;
+    display: flex;
+    gap: 64px;
+
+    & li {
+      max-height: 14px;
+    }
+  }
+
+  &__link {
+    color: $secondary;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    max-height: 14px;
+    transition: 0.3s;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+
+    &--active {
+      color: $primary;
+    }
+
+    &--active::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: $primary;
+      position: relative;
+      top: 18px;
+    }
+
+  }
+
+  &__like-basket {
+    display: flex;
+  }
+
+  &__icon {
+    position: relative;
+    $sizeButton: 64px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $sizeButton;
+    width: $sizeButton;
+    border: 1px solid $elements;
+    border-top: none;
+    transition: 0.3s;
+
+    &:hover {
+      border: 1px solid $primary;
+      border-top: none;
+    }
+
+    &--active svg path {
+      fill: $red;
+    }
+  }
+
+  .counterCart {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13px;
+    height: 13px;
+    background: $red;
+    border-radius: 50%;
+
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 12px;
+
+    color: $white;
+  }
+
+}
+
+@include max-winth740px {
+  .nav {
+    &__button {
+      display: block;
+
+      &__link {
+        display: block;
+      }
+    }
+
+    &__logo {
+      width: 100px;
+      height: auto;
+    }
+    // &__items {
+    //   justify-content: end;
+    // }
+
+    &__links {
+      flex-direction: column;
+      align-items: center;
+      background: $hoverBg;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+      transition: 0.3s;
+      transform: translateX(-100%);
+
+      &--open {
+        transform: translateX(0%);
+      }
+      
+    }
+
+    &__link {
+      font-size: 18px;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

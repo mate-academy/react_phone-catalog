@@ -1,0 +1,151 @@
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $icons;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 6px;
+    background: url("../svg/arrowTop.svg");
+  }
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+}
+
+.button_back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: 1 / 3;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  h5 {
+    transition: 0.3s;
+  }
+
+  &:hover h5 {
+    color: $primary;
+  }
+}
+
+.slick-disabled {
+  border: 1px solid #e2e6e9;
+  pointer-events: none;
+
+  &:hover {
+    border: 1px solid #e2e6e9;
+  }
+}
+
+.selectBlock {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  gap: 8px;
+
+  &__select {
+    width: 180px;
+    border: 1px solid $elements;
+    padding: 10px 0 9px 12px;
+    text-align: start;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  
+  }
+  
+  &__options {
+    z-index: 15;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px;
+    background: $white;
+
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $elements;
+    padding: 8px 0;
+  }
+  
+  &__option {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    padding: 10px 0 9px 12px;
+    align-items: center;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    transition: 0.4s;
+
+    color: $secondary;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+
+  @include max-winth400px {
+    display: none;
+  }
+
+  &__link {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #313237;
+
+    &::before {
+      content: "/";
+      margin: 0 14px;
+    }
+  }
+
+  &__you_location {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    pointer-events: none;
+
+    color: #89939a;
+  }
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: $elements;
+  margin-bottom: 24px;
+
+}
+
+.none {
+  display: none;
+}

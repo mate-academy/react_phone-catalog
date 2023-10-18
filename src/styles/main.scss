@@ -1,0 +1,156 @@
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("../fonts/Mont-Regular.otf") format("opentype") tech(color-colrv1),
+    url("../fonts/Mont-Bold.otf") format("opentype"),
+    url("../fonts/Mont-SemiBold.otf") format("opentype");
+}
+@import "./vars";
+@import "./media";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: calc(1136px + 80px);
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+
+  @include max-winth740px {
+    padding: 0 20px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+
+  @include max-winth740px {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@for $i from 1 through 25 {
+  @for $j from $i through 25 {
+    .grid_item_column--#{$i}-#{$j} {
+      grid-column: #{$i}/#{$j};
+
+      @include max-winth740px {
+        grid-column: #{$i}/7;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 6 {
+  @for $j from $i through 6 {
+    .grid_item_rows--#{$i}-#{$j} {
+      grid-row: #{$i}/#{$j};
+    }
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  padding-top: 104px;
+  margin-bottom: 80px;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+li {
+  list-style: none;
+}
+
+section {
+  margin-bottom: 80px;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+
+  color: $primary;
+
+  @include max-winth400px {
+    font-size: 24px;
+  }
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+
+  color: $primary;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+
+  color: $primary;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: $primary;
+}
+
+h5 {
+  
+  font-weight: 600;
+  font-size: 12px;
+  color: #89939a;
+}
+
+.none {
+  display: none;
+}

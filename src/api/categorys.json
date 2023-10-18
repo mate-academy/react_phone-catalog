@@ -1,0 +1,17 @@
+[
+  {
+    "imageUrl": "img/categorys/phones.jpg",
+    "title": "Mobile phones",
+    "link": "phones"
+  },
+  {
+    "imageUrl": "img/categorys/tablets.jpg",
+    "title": "Tablets",
+    "link": "tablets"
+  },
+  {
+    "imageUrl": "img/categorys/accessories.jpg",
+    "title": "Accessories",
+    "link": "accessories"
+  }
+]

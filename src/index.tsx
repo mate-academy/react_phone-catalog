@@ -1,8 +1,14 @@
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 
 import App from './App';
+import { ContextProvider } from './components/context';
 
 ReactDOM.render(
-  <App />,
+  <ContextProvider>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </ContextProvider>,
   document.getElementById('root'),
 );

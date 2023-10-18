@@ -1,0 +1,123 @@
+.cart {
+
+  &__content {
+    @include max-winth400px {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include max-winth1100px {
+      grid-column: 1 / 25;
+    }
+  }
+
+  &__item {
+    padding: 31px 40px 31px 28px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 16px;
+    align-items: center;
+
+    @include max-winth740px {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @include max-winth400px {
+      padding: 15px 20px 15px 14px;
+    }
+    
+    max-height: 128px;
+    border: 1px solid $elements;
+
+    &__delete {
+      cursor: pointer;
+    }
+
+    &__img {
+      width: 66px;
+      height: auto;
+    }
+
+    &__name {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      color: $primary;
+
+      @include max-winth400px {
+        display: none;
+      }
+
+      @include max-winth740px {
+        flex-grow: 2;
+      }
+    }
+
+    &__counter {
+      display: flex;
+      gap: 13px;
+      align-items: center;
+    }
+
+    &__button {
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__price {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+
+      color: $primary;
+    }
+  }
+
+  &__totalPrice {
+    margin-bottom: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $elements;
+
+    @include max-winth1100px {
+      grid-column: 1 / 25;
+    }
+
+    &__items {
+      margin-bottom: 24px;
+    }
+
+    &__button {
+      cursor: pointer;
+      width: 100%;
+      height: 48px;
+      background: $primary;
+      color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.3s;
+
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      }
+
+    }
+
+  }
+}
