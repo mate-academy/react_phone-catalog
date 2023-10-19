@@ -1,0 +1,185 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.ProductCard {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 272px;
+  padding: 32px 24px 24px;
+  box-sizing: border-box;
+  border: 1px solid $elements;
+
+  @include tablet {
+    width: 236px;
+    padding: 28px 18px 18px;
+  }
+
+  @media (min-width: 500px) and (max-width: 1023px) {
+    width: 216px;
+    padding: 16px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    width: 140px;
+    padding: 20px 12px;
+  }
+
+  &__label {
+    align-self: center;
+    height: 208px;
+    width: 208px;
+    cursor: pointer;
+
+    @include tablet {
+      height: 188px;
+      width: 188px;
+    }
+
+    @media (min-width: 500px) and (max-width: 1023px) {
+      height: 126px;
+      width: 126px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      height: 116px;
+      width: 116px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__name {
+    display: block;
+    @include bodyText;
+    color: $primary;
+    height: 42px;
+    padding-top: 24px;
+
+    @include tablet {
+      padding-top: 18px;
+    }
+
+    @media (min-width: 500px) and (max-width: 1023px) {
+      padding-top: 14px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      font-size: 12px;
+      padding-top: 12px;
+      line-height: 1em;
+    }
+  }
+
+  &__prices-block {
+    display: flex;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__priceWithDiscount {
+    @include h2;
+    color: $primary;
+  }
+
+  &__price {
+    @include h2;
+    font-family: "Mont semibold", sans-serif;
+    font-weight: 500;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__info-block {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+    gap: 8px;
+
+    @include tablet {
+      padding: 12px 0;
+    }
+
+    @media (min-width: 500px) and (max-width: 1023px) {
+      padding: 8px 0;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      padding: 6px 0;
+    }
+  }
+
+  &__characteristics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__characteristic-name {
+    @include smallText;
+    color: $secondary;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      font-size: 10px;
+    }
+  }
+
+  &__characteristic-info {
+    @include smallText;
+    color: $primary;
+    font-family: "Mont semibold", sans-serif;
+    font-weight: 600;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      font-size: 10px;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__addToCart {
+    @include button;
+
+    &:hover,
+    &--added {
+      background-color: $white;
+      color: $green;
+      border-color: $elements;
+    }
+  }
+
+  &__moveToFavorite {
+    @include addToFavourites;
+    width: 40px;
+    height: 40px;
+
+    @include tablet {
+      width: 36px;
+      height: 36px;
+    }
+
+    @include iPad {
+      width: 32px;
+      height: 32px;
+    }
+
+    @include mobile {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

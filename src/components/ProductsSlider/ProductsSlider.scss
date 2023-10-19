@@ -1,0 +1,63 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.ProductsSlider {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+
+  @include iPad {
+    margin-top: 60px;
+  }
+
+  @include mobile {
+    margin-top: 40px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    margin-top: 30px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__block-title {
+    @include h1;
+    color: $primary;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include buttonArrow;
+  }
+
+  &__mainBlock {
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    margin-top: 24px;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 1000ms;
+    transition-timing-function: ease-in-out;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      gap: 12px;
+      margin-top: 18px;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.Pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__button {
+    @include buttonArrow;
+  }
+
+  &__select-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    border-radius: 2px;
+    color: $primary;
+    cursor: pointer;
+    background-color: #fff;
+    @include bodyText;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--selected {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+}

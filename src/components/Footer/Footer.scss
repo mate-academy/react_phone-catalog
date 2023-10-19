@@ -1,0 +1,112 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/typography.scss";
+@import "../../styles/utils/mixins.scss";
+
+.Footer {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  height: 96px;
+  padding: 0;
+
+  @media (min-width: 500px) and (max-width: 1023px) {
+    height: 76px;
+  }
+
+  @media (min-width: 320px) and (max-width: 499px) {
+    height: 66px;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $elements;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1136px;
+    height: 100%;
+    margin: 0 auto;
+
+    @include tablet {
+      width: 992px;
+    }
+
+    @include iPad {
+      width: 680px;
+    }
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      width: 448px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      width: 292px;
+    }
+  }
+
+  &__logo {
+    @include logo;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+    height: 100%;
+
+    @media (min-width: 500px) and (max-width: 767px) {
+      gap: 20px;
+    }
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+    color: $secondary;
+    text-decoration: none;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &--active,
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__labelToTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__textToTop {
+    @include smallText;
+    color: $secondary;
+
+    @media (min-width: 320px) and (max-width: 499px) {
+      display: none;
+    }
+  }
+
+  &__arrowToTop {
+    @include buttonArrow;
+    transform: rotate(90deg);
+    text-decoration: none;
+  }
+}
