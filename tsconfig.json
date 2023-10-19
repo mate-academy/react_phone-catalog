@@ -1,6 +1,9 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
-  ]
+    "src",
+    "src/custom.d.ts",
+    "src/Router.tsx",
+    "src/react-app-env.d.ts",
+  ],
 }

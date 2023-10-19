@@ -1,0 +1,63 @@
+@import '../../Helpers/utils';
+
+.HeaderButton {
+  position: relative;
+  box-sizing: border-box;
+
+  @include square(64px);
+  background-color: $whiteColour;
+  box-shadow: -1px 0px 0px $elementsColour;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--active {
+    &::after {
+      @include decor-line($primaryColour);
+    }
+  }
+
+  &:hover {
+    &::after {
+      @include decor-line($primaryColour);
+      animation: move 0.5s;
+    }
+  }
+
+  &__count {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+    color: $whiteColour;
+
+    background: $redColour;
+    border: 1px solid $whiteColour;
+    border-radius: 50%;
+    @include square(14px);
+  }
+
+  &__icon {
+    position: relative;
+    background-repeat: no-repeat;
+    @include square(16px);
+
+    &--fav {
+      background-image: url(../../Images/fav.svg);
+    }
+
+    &--cart {
+      background-image: url(../../Images/cart.svg);
+    }
+  }
+}

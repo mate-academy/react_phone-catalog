@@ -1,0 +1,91 @@
+@import "../utils/mixins";
+
+.icon {
+  @include square(32px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: $whiteColour;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid $iconsColour;
+  @extend %transition;
+
+  &:hover {
+    border: 1px solid $primaryColour;
+  }
+
+  &--back {
+    background-image: url(../../Images/arrow.svg);
+  }
+
+  &--left {
+    background-image: url(../../Images/activeleft.svg);
+
+    &--disable {
+      background-image: url(../../Images/arrowleft.svg);
+    }
+  }
+
+  &--right {
+    background-image: url(../../Images/arrowright.svg);
+
+    &--disable {
+      background-image: url(../../Images/arrow-back-dis.svg);
+    }
+  }
+
+  &--fav {
+    background-image: url(../../Images/fav.svg);
+    @include square(40px);
+
+    &--large {
+      @include square(48px);
+    }
+
+    &--active {
+      background-image: url(../../Images/favactive.svg);
+      border: 1px solid $elementsColour;
+    }
+  }
+
+  &--carousel {
+    height: 480px;
+
+    position: absolute;
+    top: 0;
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+
+  &--remove {
+    background-image: url(../../Images/removeactive.svg);
+    
+    &--disable {
+      border: 1px solid $elementsColour;
+      background-image: url(../../Images/remove.svg);
+    }
+  }
+
+  &--add {
+    background-image: url(../../Images/removeactive.svg);
+
+    &::before {
+      content: "";
+      width: 11px;
+      height: 2px;
+
+      background-image: url(../../Images/removeactive.svg);
+      transform: rotate(90deg);
+    }
+  }
+};

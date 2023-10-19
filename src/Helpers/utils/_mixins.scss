@@ -1,0 +1,25 @@
+@mixin square($size) {
+  width: $size;
+  height: $size;
+};
+
+@mixin decor-line($colour) {
+  content: "";
+  display: block;
+  border-bottom: 2px solid $colour;
+
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+@keyframes move {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../Helpers/utils';
+
+.Search {
+  box-sizing: border-box;
+  width: 328px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: -1px 0px 0px $elementsColour;
+
+  &--focus {
+    background: #FAFBFC;
+  }
+
+  &__input {
+    outline: none;
+    border: none;
+    width: 100%;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    color: $primaryColour;
+
+    &::placeholder {
+      color: $iconsColour;
+    }
+  }
+
+  &__icon {
+    @include square(16px);
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &--clear {
+      @include square(10px);
+      background-image: url(../../Images/Union.svg);
+    }
+
+    &--search {
+      background-image: url(../../Images/Search.svg);
+    }
+  }
+}

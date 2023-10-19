@@ -1,0 +1,113 @@
+@import '../../Helpers/utils';
+
+.ProductDetailsPage {
+  &__title {
+    margin-bottom: 40px;
+
+    &--sub {
+      position: relative;
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+
+      &::after {
+        @include decor-line($elementsColour);
+      }
+    }
+  }
+
+  &__images-small {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__image-container {
+    border: 1px solid $elementsColour;
+
+    &--active {
+      border-color: #C4C4C4;
+    }
+  }
+
+  &__spec-name {
+    margin-bottom: 8px;
+  }
+
+  &__spec-values {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__spec-color {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid $elementsColour;
+    border-radius: 36px;
+
+    @include square(32px);
+    @extend %transition;
+
+    &:hover {
+      border: 1px solid $iconsColour;
+    }
+
+    &--selected {
+      border: 1px solid $primaryColour;
+    }
+  }
+
+  &__spec-color-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid $whiteColour;
+    @include square(30px);
+
+    &--gold {
+      background: #FCDBC1;
+    }
+
+    &--grey {
+      background: #5F7170;
+    }
+
+    &--black {
+      background: #4C4C4C;
+    }
+
+    &--white {
+      background: #F0F0F0;
+    }
+  }
+
+  &__short-desc-block {
+    position: relative;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+
+    &::after {
+      @include decor-line($elementsColour);
+    }
+
+    &--last {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__spec-capacity {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid $iconsColour;
+
+    &--selected {
+      background: $primaryColour;
+    }
+  }
+}

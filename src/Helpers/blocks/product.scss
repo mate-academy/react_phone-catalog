@@ -1,0 +1,53 @@
+.product {
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--ProductCard {
+      position: relative;
+      padding-bottom: 8px;
+
+      &::after {
+        @include decor-line($elementsColour);
+      }
+    }
+  }
+
+  &__price-discount {
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryColour;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--ProductCard {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__details-pair {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__details-value {
+    width: 60%;
+    text-align: right;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+
+    &--ProductDetailsPage {
+      margin-bottom: 32px;
+    }
+  }
+}

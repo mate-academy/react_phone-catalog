@@ -1,0 +1,30 @@
+.link {
+  font-family: "Mont";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $secondaryColour;
+  display: block;
+  position: relative;
+  @extend %transition;
+
+  &--active {
+    color: $primaryColour;
+
+    &::after {
+      @include decor-line($primaryColour);
+    }
+  }
+
+  &:hover {
+    color: $primaryColour;
+
+    &::after {
+      @include decor-line($primaryColour);
+      animation: move 0.5s;
+    }
+  }
+}

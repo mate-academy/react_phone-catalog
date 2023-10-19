@@ -1,0 +1,24 @@
+@import '../../Helpers/utils';
+
+.ProductSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__scroll {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    @extend .ProductSlider__scroll;
+    @extend %transition;
+  }
+  
+  &__wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+@import '../../Helpers/utils';
+
+.Footer {
+  box-shadow: 0px -1px 0px $elementsColour;
+  padding: 42px 0;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    padding-bottom: 4px;
+  }
+
+  &__back {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__text {
+    text-align: right;
+  }
+}

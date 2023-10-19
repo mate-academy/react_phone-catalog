@@ -1,0 +1,12 @@
+@import '../../Helpers/utils';
+
+.Nav {
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__item {
+    padding: 26px 0;
+  }
+}
