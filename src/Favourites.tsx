@@ -3,6 +3,7 @@ import {
   useState,
   useEffect,
 } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Context } from './Context';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
@@ -10,7 +11,9 @@ import { getFavouritesFromLocaleStorage } from './utils/updateLocaleStorage';
 import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 export const Favourites = () => {
-  const { loadingItem, query } = useContext(Context);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const { loadingItem } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
   const filteredProducts = getFavouritesFromLocaleStorage(
     LocaleStorageTypes.favourites,

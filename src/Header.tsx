@@ -1,48 +1,42 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { debounce } from 'lodash';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { Context } from './Context';
 import { useUpdateSearch } from './utils/hooks';
 import {
   getCartItemsFromLocaleStorage,
   getFavouritesFromLocaleStorage,
 } from './utils/updateLocaleStorage';
 import { LocaleStorageTypes } from './types/LocaleStorageTypes';
+import { SearchTypes } from './types/SearchTypes';
 
-type Props = {
-  filterType: string,
-  filterQuery: string | null,
-};
-
-export const Header: React.FC<Props> = ({
-  filterType,
-  filterQuery,
-}) => {
-  const {
-    setQuery,
-  } = useContext(Context);
+export const Header: React.FC = () => {
+  const { pathname } = useLocation();
   const { updateSearch } = useUpdateSearch();
-  const [localQuery, setLocalQuery] = useState('');
-
-  let handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-
-    if (event.target.value) {
-      updateSearch({ query: event.target.value });
-    } else {
-      updateSearch({ query: null });
-    }
-  };
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
+  const filterQuery = searchParams.get(SearchTypes.query) || '';
 
   const handleLocalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLocalQuery(event.target.value);
+    setQuery(event.target.value);
   };
 
-  handleInputChange = debounce(handleInputChange, 1000);
+  const handleInputChange = debounce(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.value) {
+        updateSearch({ query: event.target.value });
+      } else {
+        updateSearch({ query: null });
+      }
+    }, 1000,
+  );
+
+  const delay = useCallback(handleInputChange, []);
 
   useEffect(() => {
-    if (filterQuery) {
+    if (!filterQuery) {
+      setQuery('');
+    } else {
       setQuery(filterQuery);
     }
   }, [filterQuery]);
@@ -112,15 +106,15 @@ export const Header: React.FC<Props> = ({
         <div className="header__container">
           <input
             className={classNames('header__filter', {
-              'header__filter--active': filterType !== '',
+              'header__filter--active': pathname.slice(1) !== '',
             })}
             type="text"
-            placeholder={`Search in ${filterType}...`}
-            disabled={filterType === ''}
-            value={localQuery}
+            placeholder={`Search in ${pathname.slice(1)}...`}
+            disabled={pathname.slice(1) === ''}
+            value={query}
             onChange={(event) => {
               handleLocalChange(event);
-              handleInputChange(event);
+              delay(event);
             }}
           />
           <NavLink

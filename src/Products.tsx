@@ -1,11 +1,9 @@
 import {
   useState,
   useEffect,
-  useContext,
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { Context } from './Context';
 import { ProductCard } from './ProductCard';
 import { SortTypes } from './types/SortTypes';
 import { Product } from './types/Product';
@@ -31,8 +29,8 @@ export const Products: React.FC<Props> = ({
   perPage,
   sort,
 }) => {
-  const { query } = useContext(Context);
   const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<Product[] | []>([]);
   const [phonesPerPage, setPhonesPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,6 +39,7 @@ export const Products: React.FC<Props> = ({
   const [sortOrder, setSortOrder] = useState('Newest');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const query = searchParams.get('query');
   let filteredProducts = [...products];
   let pagesAmount = 0;
   let itemsPerPage = [...products];

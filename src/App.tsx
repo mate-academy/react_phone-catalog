@@ -1,12 +1,8 @@
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import {
   Navigate,
   Route,
   Routes,
-  useLocation,
 } from 'react-router-dom';
-import { Context } from './Context';
 import { Header } from './Header';
 import { Navigation } from './Navigation';
 import { Home } from './Home';
@@ -21,43 +17,17 @@ import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { useUpdateSearch } from './utils/hooks';
 
 const App = () => {
-  const { setQuery } = useContext(Context);
-  const { pathname } = useLocation();
-  const history = useNavigate();
-  const { updateSearch, searchParams } = useUpdateSearch();
-  const [filterType, setFilterType] = useState('');
+  const { searchParams } = useUpdateSearch();
   const page = searchParams.get(SearchTypes.page) || '';
   const perPage = searchParams.get(SearchTypes.perPage) || '';
   const sort = searchParams.get(SearchTypes.sort) || '';
-  const filterQuery = searchParams.get(SearchTypes.query) || '';
   const activeProduct = JSON.parse(
     localStorage.getItem(LocaleStorageTypes.product) as string,
   ) || null;
 
-  useEffect(() => {
-    if (pathname === '/phones') {
-      setFilterType('phones');
-    } else if (pathname === '/tablets') {
-      setFilterType('tablets');
-    } else if (pathname === '/accessories') {
-      setFilterType('accessories');
-    } else if (pathname === '/favourites') {
-      setFilterType('favourites');
-    } else {
-      setFilterType('');
-    }
-
-    setQuery('');
-    updateSearch({ query: null });
-    history(-1);
-  }, [pathname]);
-
   return (
     <div className="app">
-      <Header
-        filterType={filterType}
-        filterQuery={filterQuery}
-      />
+      <Header />
 
       <main style={{ flexGrow: 1 }}>
         <Routes>
