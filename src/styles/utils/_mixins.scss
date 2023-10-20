@@ -17,3 +17,9 @@
     @content;
   }
 }
+
+@mixin onTabletBig {
+  @media (min-width: 970px) {
+    @content;
+  }
+}

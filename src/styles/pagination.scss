@@ -2,34 +2,35 @@
   display: flex;
   justify-content: center;
 
-  margin: 0 auto;
-
-  &__list {
-    list-style: none;
+  &__content {
     display: flex;
-    max-width: 1136px;
-    margin: 0 auto;
-
-    &--numbers {
-      &:not(:last-child) {
-        margin-right: 8px;
-      }
-    }
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
   &__button {
+    position: relative;
     width: 32px;
     height: 32px;
-    color: #000;
-    text-align: center;
 
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-
-    background-color: $c-white;
+    color: $c-primary;
+    background-color: transparent;
     border: 1px solid $c-gray-light;
-    box-sizing: border-box;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    width: 32px;
+    height: 32px;
+
+    color: $c-primary;
+    background-color: transparent;
+    border: 1px solid $c-gray-light;
+    transition: all 0.3s;
 
     &:hover,
     &:focus {
@@ -41,19 +42,10 @@
       background-color: $c-primary;
       color: $c-white;
     }
+  }
 
-    &--back {
-      margin-right: 16px;
-
-    }
-
-    &--next {
-      margin-left: 8px;
-    }
-
-    &--arrow {
-      display: block;
-      margin: 0 auto;
-    }
+  &__dots {
+    display: flex;
+    align-items: flex-end;
   }
 }

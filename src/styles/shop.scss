@@ -18,10 +18,6 @@
     margin: 0 auto 40px;
     transition: all 0.3s;
 
-    @include onTablet {
-      width: auto;
-    }
-
     &:hover {
       box-shadow: 2px 5px 5px 2px rgba(0, 0, 0, 0.52);
     }

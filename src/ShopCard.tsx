@@ -46,39 +46,46 @@ export const ShopCard: React.FC<Props> = ({
     <div className="shop__card">
 
       <div className="shop__card__container">
-        <img
-          src={`${baseUrl}${iphone.image}`}
-          className="shop__card__photo"
-          alt="Iphone"
-        />
         <NavLink
           className="shop__card-title"
           to={`/phones/${iphone.phoneId}`}
           ref={iphoneTitleRef}
         >
-          {iphone.name}
-        </NavLink>
-        <div className="shop__card__prices">
-          <div className="shop__card-price">{`$${iphone.price}`}</div>
-          <div className="shop__card-price--crossed">{`$${iphone.fullPrice}`}</div>
 
-        </div>
-        <table className="shop__card__description">
-          <tbody>
-            <tr className="shop__card__description-row">
-              <td className="shop__card__description-property">Screen</td>
-              <td className="shop__card__description-value">{iphone.screen}</td>
-            </tr>
-            <tr className="shop__card__description-row">
-              <td className="shop__card__description-property">Capacity</td>
-              <td className="shop__card__description-value">{iphone.capacity}</td>
-            </tr>
-            <tr className="shop__card__description-row">
-              <td className="shop__card__description-property">RAM</td>
-              <td className="shop__card__description-value">{iphone.ram}</td>
-            </tr>
-          </tbody>
-        </table>
+          <img
+            src={`${baseUrl}${iphone.image}`}
+            className="shop__card__photo"
+            alt="Iphone"
+          />
+          <NavLink
+            className="shop__card-title"
+            to={`/phones/${iphone.phoneId}`}
+            ref={iphoneTitleRef}
+          >
+            {iphone.name}
+          </NavLink>
+          <div className="shop__card__prices">
+            <div className="shop__card-price">{`$${iphone.price}`}</div>
+            <div className="shop__card-price--crossed">{`$${iphone.fullPrice}`}</div>
+
+          </div>
+          <table className="shop__card__description">
+            <tbody>
+              <tr className="shop__card__description-row">
+                <td className="shop__card__description-property">Screen</td>
+                <td className="shop__card__description-value">{iphone.screen}</td>
+              </tr>
+              <tr className="shop__card__description-row">
+                <td className="shop__card__description-property">Capacity</td>
+                <td className="shop__card__description-value">{iphone.capacity}</td>
+              </tr>
+              <tr className="shop__card__description-row">
+                <td className="shop__card__description-property">RAM</td>
+                <td className="shop__card__description-value">{iphone.ram}</td>
+              </tr>
+            </tbody>
+          </table>
+        </NavLink>
         <div className="button__container shop__card__buttons">
           <button
             type="button"

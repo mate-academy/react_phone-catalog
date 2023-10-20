@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-pattern */
 /* eslint-disable max-len */
 import classNames from 'classnames';
 import { ShopCard } from './ShopCard';
@@ -88,12 +87,17 @@ export const Favorites = () => {
             {listOfFavorites.map((iphone, index) => {
               const classNumberMobile = index % 2;
               const classNumberTablet = index % 3;
+              const classNumberTabletSmall = index % 2;
+
               const classNumberDesktop = index % 4;
 
               return (
                 <div className={classNames('grid__item', {
                   'grid__item--mobile--1-2': classNumberMobile === 0,
                   'grid__item--mobile--3-4': classNumberMobile === 1,
+
+                  'grid__item--tabletSmall--1-2': classNumberTabletSmall === 0,
+                  'grid__item--tabletSmall--3-4': classNumberTabletSmall === 1,
 
                   'grid__item--tablet--1-2': classNumberTablet === 0,
                   'grid__item--tablet--3-4': classNumberTablet === 1,

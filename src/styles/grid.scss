@@ -4,6 +4,12 @@
 
   @include onTablet {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 30px;
+  }
+
+  @include onTabletBig {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
     column-gap: 30px;
   }
@@ -13,14 +19,27 @@
     column-gap: 20px;
   }
 
-  &__item--tablet {
+  &__item--tabletSmall {
 
-    @for $start from 1 through 6 {
-      @for $end from $start through 6 {
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }
       }
+    }
+  }
+
+  &__item--tablet {
+    @include onTabletBig {
+      @for $start from 1 through 6 {
+        @for $end from $start through 6 {
+          &--#{$start}-#{$end} {
+            grid-column: #{$start} / #{$end + 1};
+          }
+        }
+      }
+
     }
   }
 

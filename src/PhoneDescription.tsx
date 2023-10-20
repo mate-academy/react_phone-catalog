@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
@@ -200,6 +198,7 @@ export const PhoneDescription: React.FC<Props> = ({
           item__article "
           >
             <h1 className="page__title item-title
+            grid__item--tabletSmall--1-4
             grid__item--tablet--1-6
             grid__item--desktop--1-10"
             >
@@ -210,6 +209,7 @@ export const PhoneDescription: React.FC<Props> = ({
               className="grid__item
               grid__item--imgs
               grid__item--tablet--1-1
+              grid__item--tabletSmall--1-2
               grid__item--desktop--1-2"
             >
               <a
@@ -260,11 +260,13 @@ export const PhoneDescription: React.FC<Props> = ({
               alt="img1"
               className="item-main-img grid__item
               grid__item--main-img
+              grid__item--tabletSmall--3-4
               grid__item--tablet--2-3
               grid__item--desktop--4-10"
             />
 
             <div className="item__list--description grid__item
+            grid__item--tabletSmall--1-2
             grid__item--tablet--5-6
             grid__item--desktop--14-20"
             >
@@ -451,6 +453,7 @@ export const PhoneDescription: React.FC<Props> = ({
           item__description item__description-container"
           >
             <div className="item__description--1
+            grid__item--tabletSmall--3-4
             grid__item--desktop--1-12"
             >
               <h2 className="item__description-title">About</h2>
@@ -527,6 +530,8 @@ export const PhoneDescription: React.FC<Props> = ({
               {iphoneRecommend.slice(0, 4).map((iphone, index) => {
                 const classNumberMobile = index % 2;
                 const classNumberTablet = index % 3;
+                const classNumberTabletSmall = index % 2;
+
                 const classNumberDesktop = index % 4;
 
                 return (
@@ -534,6 +539,9 @@ export const PhoneDescription: React.FC<Props> = ({
                     className={classNames('grid__item', {
                       'grid__item--mobile--1-2': classNumberMobile === 0,
                       'grid__item--mobile--3-4': classNumberMobile === 1,
+
+                      'grid__item--tabletSmall--1-2': classNumberTabletSmall === 0,
+                      'grid__item--tabletSmall--3-4': classNumberTabletSmall === 1,
 
                       'grid__item--tablet--1-2': classNumberTablet === 0,
                       'grid__item--tablet--3-4': classNumberTablet === 1,

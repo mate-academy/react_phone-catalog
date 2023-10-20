@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -181,6 +180,8 @@ export const HomePage: React.FC<Props> = () => {
             hotPricedIphonesToShow.map((iphone, index) => {
               const classNumberMobile = index % 2;
               const classNumberTablet = index % 3;
+              const classNumberTabletSmall = index % 2;
+
               const classNumberDesktop = index % 4;
 
               return (
@@ -188,6 +189,9 @@ export const HomePage: React.FC<Props> = () => {
                   className={classNames('grid__item', {
                     'grid__item--mobile--1-2': classNumberMobile === 0,
                     'grid__item--mobile--3-4': classNumberMobile === 1,
+
+                    'grid__item--tabletSmall--1-2': classNumberTabletSmall === 0,
+                    'grid__item--tabletSmall--3-4': classNumberTabletSmall === 1,
 
                     'grid__item--tablet--1-2': classNumberTablet === 0,
                     'grid__item--tablet--3-4': classNumberTablet === 1,
@@ -308,6 +312,7 @@ export const HomePage: React.FC<Props> = () => {
             newIphonesToShow.map((iphone: Iphone, index: number) => {
               const classNumberMobile = index % 2;
               const classNumberTablet = index % 3;
+              const classNumberTabletSmall = index % 2;
               const classNumberDesktop = index % 4;
 
               return (
@@ -315,6 +320,9 @@ export const HomePage: React.FC<Props> = () => {
                   className={classNames('grid__item', {
                     'grid__item--mobile--1-3': classNumberMobile === 0,
                     'grid__item--mobile--4-6': classNumberMobile === 1,
+
+                    'grid__item--tabletSmall--1-2': classNumberTabletSmall === 0,
+                    'grid__item--tabletSmall--3-4': classNumberTabletSmall === 1,
 
                     'grid__item--tablet--1-2': classNumberTablet === 0,
                     'grid__item--tablet--3-4': classNumberTablet === 1,
