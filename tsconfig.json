@@ -1,6 +1,12 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx",
+    "<path-to-your-source>.ts",
+    "<path-to-your-source>.tsx",
   ]
 }

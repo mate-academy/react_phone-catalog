@@ -1,0 +1,83 @@
+@import "./vars.scss";
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-position: center;
+  background-repeat: no-repeat;
+  transition-duration: $transition-duration;
+
+  &__rotate {
+    transform: rotate(180deg);
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &--menu {
+    background-image: url(../assets/icons/burger-menu.svg);
+    background-position: center;
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    transition-duration: 1s;
+
+    &:hover {
+      background-image: url(../assets/icons/burger-menu-hover.svg);
+      transform: none;
+    }
+  }
+
+  &--up {
+    background-image: url(../assets/icons/arrow-up.svg);
+  }
+
+  &--down {
+    background-image: url(../assets/icons/arrow-down.svg);
+  }
+
+  &--left {
+    background-image: url(../assets/icons/arrow-left.svg);
+  }
+
+  &--right {
+    background-image: url(../assets/icons/arrow-right.svg);
+  }
+
+  &--cart {
+    background-image: url(../assets/icons/cart.svg);
+  }
+
+  &--favourites {
+    background-image: url(../assets/icons/favourites.svg);
+  }
+
+  &--favourites-added {
+    background-image: url(../assets/icons/favourites-added.svg);
+  }
+
+  &--search {
+    background-image: url(../assets/icons/search.svg);
+  }
+
+  &--remove {
+    background-image: url(../assets/icons/close.svg);
+  }
+
+  &--home {
+    background-image: url(../assets/icons/home.svg);
+  }
+
+  &--plus {
+    background-image: url(../assets/icons/plus.svg);
+  }
+
+  &--minus {
+    background-image: url(../assets/icons/minus.svg);
+  }
+
+  &--bread-crumb {
+    background-image: url(../assets/icons/arrow-right-light.svg);
+  }
+}

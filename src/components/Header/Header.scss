@@ -1,0 +1,134 @@
+@import "../../styles/main.scss";
+
+.Header {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $elements-grey-c;
+
+  @include onTablet {
+    height: 48px;
+  }
+
+  &__logo {
+    display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &-image {
+      height: 24px;
+      width: 40px;
+      background-image: url(../../assets/main-logo.svg);
+    }
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__container-left {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    height: 100%;
+
+  }
+
+  &__container-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__burger {
+    display: none;
+    margin-left: 24px;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__navigation {
+    @include onTablet {
+      display: none;
+    }
+
+    &-list {
+      display: flex;
+      gap: 64px;
+      justify-content: space-between;
+      align-items: center;
+
+      &-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        border-bottom: 3px solid transparent;
+        transition-duration: $transition-duration;
+        @extend %navigation;
+      }
+    }
+  }
+
+  &__icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    border-left: 1px solid $elements-grey-c;
+    border-bottom: 3px solid transparent ;
+    transition-duration: $transition-duration;
+
+    @include onTablet {
+      width: 48px;
+    }
+
+    &-image {
+      position: relative;
+    }
+
+    &:hover {
+      .Header__icon-link-image {
+        transform: scale(1.2);
+      }
+    }
+
+    &-fav {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: -50%;
+      margin-right: -50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $red-c;
+      border-radius: 50%;
+
+      &-amount {
+        color: $white-c;
+        font-size: 9px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.navlink-active {
+  border-bottom: 3px solid $black-c;
+  color: $black-c;
+}

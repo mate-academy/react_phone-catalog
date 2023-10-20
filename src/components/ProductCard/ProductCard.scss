@@ -1,0 +1,109 @@
+@import "../../styles/main.scss";
+
+.ProductCard {
+  width: $card-width-desktop;
+  height: 507px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 24px;
+  border: 1px solid $elements-grey-c;
+  transition-duration: $transition-duration;
+
+  @include onTablet {
+    width: $card-width-mobile;
+    height: 400px;
+    padding: 20px 16px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(#172031, 0.26);
+  }
+
+  &__photo {
+    width: 208px;
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 16px;
+    }
+
+    &-item {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    width: 100%;
+
+    &-item {
+      @extend %body;
+    }
+  }
+
+  &__price {
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid $elements-grey-c;
+    margin-bottom: 16px;
+
+    @include onMobile {
+      margin-bottom: 8px;
+    }
+
+    &-current {
+      @extend %h2;
+    }
+
+    &-before {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 39px;
+      color: $dark-grey-c;
+      text-decoration: line-through;
+
+      @include onTablet {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    @extend %smallText;
+
+    @include onMobile {
+      gap: 4px;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: $dark-grey-c;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
