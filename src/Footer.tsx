@@ -1,13 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
+import { scrollToTop } from './utils/scrollTop';
 
 export const Footer: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <footer className="footer">
       <div className="footer__content">

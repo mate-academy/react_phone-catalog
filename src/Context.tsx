@@ -3,8 +3,6 @@ import { Product } from './types/Product';
 import { CartProduct } from './types/CartProduct';
 
 type ContextProps = {
-  query: string,
-  setQuery(string: string): void,
   activeProduct: Product | null,
   setActiveProduct(product: Product): void,
   chosenProducts: Product[],
@@ -20,9 +18,7 @@ type ProviderProps = {
 };
 
 export const Context = React.createContext<ContextProps>({
-  query: '',
   activeProduct: null,
-  setQuery: () => {},
   setActiveProduct: () => {},
   chosenProducts: [],
   setChosenProducts: () => {},
@@ -33,14 +29,11 @@ export const Context = React.createContext<ContextProps>({
 });
 
 export const Provider: React.FC<ProviderProps> = ({ children }) => {
-  const [query, setQuery] = useState('');
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
   const [chosenProducts, setChosenProducts] = useState<Product[]>([]);
   const [productsToBuy, setProductsToBuy] = useState<CartProduct[]>([]);
   const [loadingItem, setLoadingItem] = useState<null | number>(null);
   const contextValue = {
-    query,
-    setQuery,
     activeProduct,
     setActiveProduct,
     chosenProducts,

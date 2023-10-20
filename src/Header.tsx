@@ -31,7 +31,7 @@ export const Header: React.FC = () => {
     }, 1000,
   );
 
-  const delay = useCallback(handleInputChange, []);
+  const delay = useCallback(handleInputChange, [pathname]);
 
   useEffect(() => {
     if (!filterQuery) {

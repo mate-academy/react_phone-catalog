@@ -12,15 +12,9 @@ import { Favourites } from './Favourites';
 import { Cart } from './Cart';
 import { Footer } from './Footer';
 import { ProductTypes } from './types/productTypes';
-import { SearchTypes } from './types/SearchTypes';
 import { LocaleStorageTypes } from './types/LocaleStorageTypes';
-import { useUpdateSearch } from './utils/hooks';
 
 const App = () => {
-  const { searchParams } = useUpdateSearch();
-  const page = searchParams.get(SearchTypes.page) || '';
-  const perPage = searchParams.get(SearchTypes.perPage) || '';
-  const sort = searchParams.get(SearchTypes.sort) || '';
   const activeProduct = JSON.parse(
     localStorage.getItem(LocaleStorageTypes.product) as string,
   ) || null;
@@ -51,9 +45,6 @@ const App = () => {
                 <Products
                   productType={ProductTypes.phones}
                   type="phone"
-                  page={page}
-                  sort={sort}
-                  perPage={perPage}
                 />
               </>
             )}
@@ -77,9 +68,6 @@ const App = () => {
                 <Products
                   productType={ProductTypes.tablets}
                   type="tablet"
-                  page={page}
-                  sort={sort}
-                  perPage={perPage}
                 />
               </>
             )}
@@ -103,9 +91,6 @@ const App = () => {
                 <Products
                   productType={ProductTypes.accessories}
                   type="accessory"
-                  page={page}
-                  sort={sort}
-                  perPage={perPage}
                 />
               </>
             )}

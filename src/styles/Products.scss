@@ -200,6 +200,7 @@
       &--disabled {
         cursor: default;
         opacity: 0.5;
+        pointer-events: none;
 
         &:hover {
           border-color: #e2e6e9;

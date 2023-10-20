@@ -13,6 +13,7 @@ import {
 export const Cart = () => {
   const { setProductsToBuy, loadingItem, setLoadingItem } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMessageActive, setIsMessageActive] = useState(false);
 
   const remove = (index: number) => {
     setLoadingItem(index);
@@ -82,6 +83,14 @@ export const Cart = () => {
     });
 
     return quantity;
+  };
+
+  const OnCheckout = () => {
+    setIsMessageActive(true);
+
+    setTimeout(() => {
+      setIsMessageActive(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -249,9 +258,18 @@ export const Cart = () => {
               type="button"
               aria-label="checkout"
               className="cart__mainButton"
+              onClick={OnCheckout}
             >
               Checkout
             </button>
+            <div
+              className={classNames(
+                'cart__checkout_message',
+                { 'cart__checkout_message--active': isMessageActive },
+              )}
+            >
+              Sorry, this feature is not emplemented yet.
+            </div>
           </div>
         </div>
       )}

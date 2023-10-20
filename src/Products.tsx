@@ -12,22 +12,18 @@ import { Loader } from './Loader';
 import { getProducts } from './api/products';
 import { NoResults } from './NoResults';
 import { ProductTypes } from './types/productTypes';
+import { SearchTypes } from './types/SearchTypes';
 import { useUpdateSearch } from './utils/hooks';
+import { scrollToTop } from './utils/scrollTop';
 
 type Props = {
   productType: ProductTypes,
   type: string,
-  page: string | null,
-  perPage: string | null,
-  sort: string | null,
 };
 
 export const Products: React.FC<Props> = ({
   productType,
   type,
-  page,
-  perPage,
-  sort,
 }) => {
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
@@ -39,6 +35,9 @@ export const Products: React.FC<Props> = ({
   const [sortOrder, setSortOrder] = useState('Newest');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const page = searchParams.get(SearchTypes.page) || '';
+  const perPage = searchParams.get(SearchTypes.perPage) || '';
+  const sort = searchParams.get(SearchTypes.sort) || '';
   const query = searchParams.get('query');
   let filteredProducts = [...products];
   let pagesAmount = 0;
@@ -64,6 +63,7 @@ export const Products: React.FC<Props> = ({
 
   const onPageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+    scrollToTop();
   };
 
   const moveLeft = () => (
@@ -101,14 +101,6 @@ export const Products: React.FC<Props> = ({
     getDevices();
     setSortOrder(SortTypes.newest);
     setPhonesPerPage(8);
-
-    return (
-      updateSearch({
-        page: null,
-        perPage: null,
-        sort: null,
-      })
-    );
   }, [pathname]);
 
   useEffect(() => {
@@ -200,6 +192,7 @@ export const Products: React.FC<Props> = ({
                 onClick={() => {
                   setIsSortDropdownActive(!isSortDropdownActive);
                 }}
+                onBlur={() => setIsSortDropdownActive(false)}
               >
                 {sortOrder}
               </button>
@@ -253,6 +246,7 @@ export const Products: React.FC<Props> = ({
                 onClick={() => {
                   setIsPageDropdownActive(!isPageDropdownActive);
                 }}
+                onBlur={() => setIsPageDropdownActive(false)}
               >
                 {phonesPerPage}
               </button>
@@ -314,10 +308,7 @@ export const Products: React.FC<Props> = ({
                     'products__page_link',
                     { 'products__page_link--disabled': currentPage <= 1 },
                   )}
-                  disabled={currentPage <= 1}
-                  onClick={(event) => {
-                    event.preventDefault();
-
+                  onClick={() => {
                     moveLeft();
                     updateSearch({ page: String(currentPage - 1) });
                   }}
@@ -338,9 +329,7 @@ export const Products: React.FC<Props> = ({
                       'products__page_link',
                       { 'products__page_link--active': currentPage === item },
                     )}
-                    onClick={(event) => {
-                      event.preventDefault();
-
+                    onClick={() => {
                       onPageChange(item);
                       updateSearch({ page: String(item) });
                     }}
@@ -361,13 +350,7 @@ export const Products: React.FC<Props> = ({
                       currentPage > (pagesAmount - 1),
                     },
                   )}
-                  disabled={currentPage > (pagesAmount - 1)}
-                  aria-disabled={
-                    currentPage > (pagesAmount - 1) ? 'true' : 'false'
-                  }
-                  onClick={(event) => {
-                    event.preventDefault();
-
+                  onClick={() => {
                     moveRight();
                     updateSearch({ page: String(currentPage + 1) });
                   }}

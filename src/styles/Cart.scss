@@ -166,6 +166,7 @@
   }
 
   &__checkout {
+    position: relative;
     box-sizing: border-box;
     width: 368px;
     height: 206px;
@@ -214,6 +215,26 @@
       background-color: #fff;
       border: 1px solid #313237;
       color: #313237;
+    }
+  }
+
+  &__checkout_message {
+    position: absolute;
+    top: 250px;
+    left: 85px;
+    width: 210px;
+    height: 50px;
+    z-index: 20;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #89939a;
+    opacity: 0;
+
+    transition: opacity 0.3s;
+
+    &--active {
+      opacity: 1;
     }
   }
 }
