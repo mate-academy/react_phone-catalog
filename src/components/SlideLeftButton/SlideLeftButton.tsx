@@ -18,7 +18,6 @@ export const SlideLeftButton: React.FC<Props> = ({
         disabled: isDisabled,
       })}
       onClick={onSlideLeft}
-      disabled={isDisabled}
     >
       <div className="icon icon--left" />
     </button>

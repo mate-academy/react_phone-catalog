@@ -19,7 +19,6 @@ export const SlideRightButton: React.FC<Props> = ({
         disabled: isDisabled,
       })}
       onClick={onSlideRight}
-      disabled={isDisabled}
     >
       <div className="icon icon--right" />
     </button>
