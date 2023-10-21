@@ -7,7 +7,7 @@ export const MenuMobile = () => {
 
       <NavLink
         to="/"
-        className="header__menu-link"
+        className="header__menu-link header__menu-link--cres"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="Icons/Close">

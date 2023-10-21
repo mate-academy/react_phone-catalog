@@ -181,7 +181,8 @@
     background-color: $c-primary;
     height: 100vh;
     z-index: 3;
-    padding: 24px;
+    padding: 0 24px;
+    overflow: hidden;
 
     &-list {
       list-style: none;
@@ -209,6 +210,11 @@
       font-family: Mont, sans-serif;
       font-size: 14px;
       font-weight: normal;
+
+      &--cres {
+        display: block;
+        margin-top: 24px;
+      }
     }
   }
 }

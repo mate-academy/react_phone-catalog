@@ -181,8 +181,9 @@ export const PhoneDescription: React.FC<Props> = ({
         </div>
         <div className="filter__nav--2-item">
           <NavLink
+            onClick={() => navigate(-1)}
             className="item__link"
-            to="/phones"
+            to="#"
           >
             Back
           </NavLink>

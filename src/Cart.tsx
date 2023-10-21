@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable max-len */
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { NotFoundItems } from './NotFound';
@@ -10,6 +10,7 @@ import { addItem, minusItem, removeItem } from './redux/cartReducer';
 export const Cart = () => {
   const { items } = useAppSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const sum = items.reduce((prev, current) => prev + current.price, 0);
 
@@ -61,7 +62,11 @@ export const Cart = () => {
       <div className="basket">
         <div className="filter__nav">
           <div className="filter__nav--1-item">
-            <NavLink to="#phones" className="page__link">
+            <NavLink
+              onClick={() => navigate(-1)}
+              to="#"
+              className="page__link"
+            >
               Back
             </NavLink>
           </div>
