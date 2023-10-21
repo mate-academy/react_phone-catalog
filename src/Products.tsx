@@ -1,4 +1,4 @@
-import {
+import React, {
   useState,
   useEffect,
 } from 'react';
@@ -35,9 +35,9 @@ export const Products: React.FC<Props> = ({
   const [sortOrder, setSortOrder] = useState('Newest');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const page = searchParams.get(SearchTypes.page) || '';
-  const perPage = searchParams.get(SearchTypes.perPage) || '';
-  const sort = searchParams.get(SearchTypes.sort) || '';
+  const page = searchParams.get(SearchTypes.page) || 1;
+  const perPage = searchParams.get(SearchTypes.perPage) || 8;
+  const sort = searchParams.get(SearchTypes.sort) || 'newest';
   const query = searchParams.get('query');
   let filteredProducts = [...products];
   let pagesAmount = 0;
@@ -97,10 +97,28 @@ export const Products: React.FC<Props> = ({
     });
   };
 
+  const onWindowClick = (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+
+    if (target && target.className) {
+      const { className } = target;
+
+      if (className !== 'products__dropdown_item'
+        && className !== 'products__dropdown') {
+        setIsSortDropdownActive(false);
+        setIsPageDropdownActive(false);
+      }
+    }
+  };
+
+  document.body.addEventListener('click', onWindowClick);
+
   useEffect(() => {
     getDevices();
     setSortOrder(SortTypes.newest);
     setPhonesPerPage(8);
+
+    return (document.body.removeEventListener('click', onWindowClick));
   }, [pathname]);
 
   useEffect(() => {
@@ -192,7 +210,6 @@ export const Products: React.FC<Props> = ({
                 onClick={() => {
                   setIsSortDropdownActive(!isSortDropdownActive);
                 }}
-                onBlur={() => setIsSortDropdownActive(false)}
               >
                 {sortOrder}
               </button>
@@ -204,7 +221,7 @@ export const Products: React.FC<Props> = ({
                 )}
               >
                 <li
-                  className="products__dropdown_item "
+                  className="products__dropdown_item"
                 >
                   <button
                     type="button"
@@ -246,7 +263,6 @@ export const Products: React.FC<Props> = ({
                 onClick={() => {
                   setIsPageDropdownActive(!isPageDropdownActive);
                 }}
-                onBlur={() => setIsPageDropdownActive(false)}
               >
                 {phonesPerPage}
               </button>
