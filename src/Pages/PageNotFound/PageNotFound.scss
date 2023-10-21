@@ -1,0 +1,23 @@
+.pageNotFound {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    font-size: 42px;
+    margin-bottom: 48px;
+  }
+
+  &__img {
+    display: block;
+    background-image: url(../../img/Icons/error.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 124px;
+    width: 124px;
+  }
+}

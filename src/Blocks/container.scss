@@ -1,0 +1,17 @@
+.container {
+  padding: 0 30px;
+  margin: 0 auto;
+  max-width: 1920px;
+
+  @include onTablet {
+    padding: 0 70px;
+  }
+
+  @include onDesktopSmall {
+    padding: 0 220px;
+  }
+
+  @include onDesktop {
+    padding: 0 280px;
+  }
+}

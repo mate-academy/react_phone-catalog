@@ -1,0 +1,109 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.card-carousel {
+  &__title {
+    color: $color-primary;
+  }
+
+  &__component {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+  }
+
+  .container {
+    padding: 0 30px;
+    margin: 0 auto;
+    max-width: 1920px;
+
+    @include onTablet {
+      padding: 0 70px;
+    }
+
+    @include onDesktopSmall {
+      padding: 0 220px;
+    }
+
+    @include onDesktop {
+      padding: 0 280px;
+    }
+  }
+
+  &__base-container {
+    width: 250px;
+    margin: 0 auto;
+
+    @include onTabletLarge {
+      width: 540px;
+    }
+
+    @include onDesktopSmall {
+      width: 810px;
+    }
+
+    @include onDesktopMedium {
+      width: 1080px;
+    }
+
+    @include onDesktop {
+      margin: 0 auto;
+      width: 1340px;
+    }
+  }
+
+  &__box {
+    display: flex;
+    gap: 12px;
+
+    @include onDesktop {
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #b4bdc4;
+
+    transition: all 0.1s linear;
+
+    &:active {
+      background-color: #f4f6f8;
+    }
+  }
+
+  &__disabled {
+    background-color: #f4f6f8;
+  }
+
+  &__arr {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    height: 100%;
+
+    &--left {
+      background-image: url(../../img/Icons/arr-left.svg);
+    }
+
+    &--right {
+      background-image: url(../../img/Icons/arr-right.svg);
+    }
+  }
+
+  &__card-container {
+    display: flex;
+    gap: 22px;
+  }
+
+  &__wrapper {
+    padding: 0;
+    overflow: hidden;
+  }
+}

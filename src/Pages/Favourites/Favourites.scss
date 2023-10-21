@@ -1,0 +1,75 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.favorite {
+  &__wrap-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text-empty {
+    font-size: 18px;
+    margin-bottom: 48px;
+    text-align: center;
+
+    @include onDesktopSmall {
+      font-size: 42px;
+    }
+  }
+
+  &__img-empty {
+    display: block;
+    background-image: url(../../img/Icons/favorite.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 72px;
+    width: 72px;
+
+    @include onDesktopSmall {
+      height: 124px;
+      width: 124px;
+    }
+  }
+
+  &__root-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  &__home-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__root-name {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+    color: $color-secondary;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__cataloge {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include onDesktop {
+      margin: 80px;
+    }
+  }
+
+  &__text-less {
+    text-align: center;
+  }
+}

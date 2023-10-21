@@ -1,0 +1,203 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.catalog {
+  &__root-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  &__home-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__arr-right {
+    height: 12px;
+    width: 12px;
+  }
+
+  &__root-name {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+    color: $color-secondary;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__information-wrapper {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__quantity {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+
+  &__sort-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__sort-title {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 15px;
+    margin-bottom: 4px;
+    color: $color-secondary;
+
+    @include onTablet {
+      font-size: 12px;
+    }
+  }
+
+  &__button-dropdown {
+    padding: 0 15px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 160px;
+    height: 40px;
+    border: 1px solid #b4bdc4;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--right {
+      width: 80px;
+    }
+
+    @include onTablet {
+      width: 140px;
+    }
+
+    @include onDesktopSmall {
+      width: 160px;
+    }
+
+    @include onDesktop {
+      width: 180px;
+    }
+  }
+
+  &__button-text {
+    color: $color-primary;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__drop-icon {
+    height: 8px;
+  }
+
+  &__cataloge {
+    margin-bottom: 40px;
+  }
+
+  &__box-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+  }
+
+  &__button-select {
+    display: flex;
+    gap: 8px;
+
+    &:active {
+      background-color: floralwhite;
+    }
+  }
+
+  &__dropdown-content {
+    position: absolute;
+    margin-top: 4px;
+    background-color: #fff;
+    border: 1px solid #e2e6e9;
+    width: inherit;
+  }
+
+  &__button {
+    color: $color-primary;
+    border: 1px solid #b4bdc4;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &__disabled {
+    pointer-events: none;
+    background-color: #e2e6e9;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__error-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__error-text {
+    font-size: 42px;
+    margin-bottom: 48px;
+  }
+
+  &__error-img {
+    display: block;
+    background-image: url(../../img/Icons/error.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 124px;
+    width: 124px;
+  }
+
+  &__text-less {
+    text-align: center;
+  }
+
+  &__text-empty {
+    font-size: 18px;
+    margin-bottom: 48px;
+    text-align: center;
+
+    @include onDesktopSmall {
+      font-size: 42px;
+    }
+  }
+
+  &__information {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+
+    @include onDesktopSmall {
+      font-size: 16px;
+    }
+  }
+}

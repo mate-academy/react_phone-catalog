@@ -1,0 +1,31 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.paginate {
+  padding: 0 15px;
+  border: 1px solid #e2e6e9;
+  width: 160px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: $color-primary;
+  transition: all 0.1s linear;
+
+  @include onTablet {
+    width: 140px;
+  }
+
+  @include onDesktopSmall {
+    width: 160px;
+  }
+
+  @include onDesktop {
+    width: 180px;
+  }
+
+  &:hover {
+    background-color: #f4f6f8;
+  }
+}

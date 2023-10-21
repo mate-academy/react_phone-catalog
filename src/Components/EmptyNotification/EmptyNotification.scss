@@ -1,0 +1,37 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.emptyNotificataion {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 48px;
+    text-align: center;
+
+    @include onDesktopSmall {
+      font-size: 42px;
+    }
+  }
+
+  &__img {
+    display: block;
+    background-image: url(../../img/Icons/empty.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 72px;
+    width: 72px;
+
+    @include onDesktopSmall {
+      height: 124px;
+      width: 124px;
+    }
+  }
+}

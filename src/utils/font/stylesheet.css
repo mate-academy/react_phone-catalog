@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "montbold";
+  src: url("mont-bold-webfont.woff2") format("woff2"),
+    url("mont-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montregular";
+  src: url("mont-regular-webfont.woff2") format("woff2"),
+    url("mont-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montsemibold_italic";
+  src: url("mont-semibolditalic-webfont.woff2") format("woff2"),
+    url("mont-semibolditalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

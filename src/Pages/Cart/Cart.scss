@@ -1,0 +1,242 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.cart {
+  &__wrap-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text-empty {
+    font-size: 42px;
+    margin-bottom: 48px;
+    width: 75%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img-empty {
+    display: block;
+    background-image: url(../../img/Icons/cart-img.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 124px;
+    width: 124px;
+  }
+
+  &__root-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  &__home-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__arr-right {
+    height: 12px;
+    width: 12px;
+  }
+
+  &__root-name {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+    color: $color-secondary;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__grid {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      grid-gap: 16px;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__cataloge {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include onDesktop {
+      margin: 0;
+    }
+  }
+
+  &__item {
+    padding: 20px 30px;
+    border: 1px solid #e2e6e9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include onDesktopSmall {
+      flex-direction: row;
+    }
+
+    &:hover {
+      box-shadow: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__left-box {
+    display: flex;
+    gap: 21px;
+    margin-bottom: 8px;
+    align-items: center;
+
+    @include onDesktop {
+      margin-bottom: 0;
+      gap: 32px;
+    }
+  }
+
+  &__right-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  &__chosen-item {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__chosen-img {
+    display: block;
+    height: 66px;
+  }
+
+  &__choosen-item-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    height: 42px;
+    width: 100%;
+
+    @include onTablet {
+      flex-shrink: 0;
+    }
+  }
+
+  &__button-cross {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border: none;
+
+    &--img {
+      height: 24px;
+    }
+  }
+
+  &__quantity-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__button-cataloge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e2e6e9;
+    transition: 0.3s linear;
+
+    &:hover {
+      background-color: #e2e6e9;
+    }
+  }
+
+  &__button-disabled {
+    pointer-events: none;
+    background-color: #e2e6e9;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__checkout {
+    border: 1px solid #e2e6e9;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__checkout-button {
+    width: 50%;
+    text-align: center;
+    height: 48px;
+    color: $color-white;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: $color-primary;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $color-primary;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    @include onDesktop {
+      width: 100%;
+    }
+  }
+
+  &__totalLength {
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    width: 100%;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__notification {
+    transition: 0.5s linear;
+  }
+
+  &__notification-text {
+    margin: 48px 0 36px;
+    text-align: center;
+  }
+}

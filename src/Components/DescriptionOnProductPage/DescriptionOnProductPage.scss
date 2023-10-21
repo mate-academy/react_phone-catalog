@@ -1,0 +1,83 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.description {
+  &__desc-char {
+    color: $color-primary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+  }
+
+  &__secondary-block {
+    margin-bottom: 80px;
+    display: block;
+    gap: 75px;
+
+    @include onDesktopSmall {
+      display: flex;
+    }
+  }
+
+  &__secondary-left {
+    max-width: 578px;
+  }
+
+  &__secondary-right {
+    width: 80%;
+  }
+
+  &__secondary-title {
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    width: 100%;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__general-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  &__general-info-title {
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+
+  &__general-text {
+    color: #89939a;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__desc {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 16px;
+
+    @include onDesktopSmall {
+      justify-content: space-between;
+    }
+  }
+
+  &__box-left,
+  &__box-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__desc-title {
+    color: $color-secondary;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

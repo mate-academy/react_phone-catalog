@@ -1,0 +1,42 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 66px;
+  left: 0;
+  z-index: 1;
+  transition: 0.3s all;
+  transform: translateX(-130%);
+
+  &--active {
+    transition: 0.3s all;
+    transform: translateX(0);
+  }
+
+  @include onDesktopSmall {
+    display: none;
+  }
+
+  &__blur {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+  }
+
+  &__list {
+    width: 140px;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include onTablet {
+      width: 30%
+    }
+  }
+}

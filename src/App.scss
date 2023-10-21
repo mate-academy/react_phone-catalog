@@ -1,1 +1,9 @@
 // not empty
+@import "./utils/reset";
+@import "./utils/variables";
+@import "./utils/mixins";
+
+@import "./Blocks/page.scss";
+@import "./Blocks/logo.scss";
+@import "./Blocks/container.scss";
+@import "./Blocks/grid.scss";
