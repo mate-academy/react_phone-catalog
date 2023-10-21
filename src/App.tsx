@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { Category } from './types/Category';
 import { Search } from './components/Search';
 import { CartContext } from './contexts/CartContext';
+import { FavouritesContext } from './contexts/FavouritesContext';
 
 const menuItems = [
   'home',
@@ -20,6 +21,7 @@ const menuItems = [
 export const App: React.FC = () => {
   const location = useLocation();
   const { totalQuantity } = useContext(CartContext);
+  const { favourites } = useContext(FavouritesContext);
 
   const getPageName = () => {
     const index = location.pathname.lastIndexOf('/');
@@ -67,19 +69,27 @@ export const App: React.FC = () => {
             )}
 
             {!isCartOpened && (
-              <NavLink
-                to="favourites"
-                className={({ isActive }) => classNames(
-                  'nav__link',
-                  'nav__link--favourites',
-                  {
-                    'nav__link--active': isActive,
-                  },
+              <div className="App__link-wrapper">
+                <NavLink
+                  to="favourites"
+                  className={({ isActive }) => classNames(
+                    'nav__link',
+                    'nav__link--favourites',
+                    {
+                      'nav__link--active': isActive,
+                    },
+                  )}
+                />
+
+                {favourites.length > 0 && (
+                  <div className="App__total-quantity">
+                    {favourites.length}
+                  </div>
                 )}
-              />
+              </div>
             )}
 
-            <div className="App__cart-link-wrapper">
+            <div className="App__link-wrapper">
               <NavLink
                 to="cart"
                 className={({ isActive }) => classNames(
@@ -91,9 +101,11 @@ export const App: React.FC = () => {
                 )}
               />
 
-              <div className="App__total-quantity">
-                {totalQuantity}
-              </div>
+              {totalQuantity > 0 && (
+                <div className="App__total-quantity">
+                  {totalQuantity}
+                </div>
+              )}
             </div>
           </div>
         </div>

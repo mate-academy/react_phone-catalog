@@ -4,19 +4,6 @@
   display: flex;
   column-gap: 8px;
 
-  &__add-to-cart {
-    &--added {
-      color: #27ae60;
-      background-color: transparent;
-      border: 1px solid $elementsGray;
-
-      &:hover {
-        box-shadow: none;
-        cursor: initial;
-      }
-    }
-  }
-
   &__add-to-favourites {
     width: 40px;
     height: 40px;
@@ -33,6 +20,10 @@
     &:hover {
       border-color: $primeryGray;
       cursor: pointer;
+    }
+
+    &--added {
+      background-image: url(../../img/icons/favourites-added.svg);
     }
   }
 }
