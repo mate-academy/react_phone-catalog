@@ -67,6 +67,7 @@ export const Actions: React.FC<Props> = ({ product }) => {
           'Actions__add-to-favourites--added': isItemInFavourites,
         })}
         onClick={handleAddToFavourites}
+        data-cy="addToFavorite"
       />
     </div>
   );

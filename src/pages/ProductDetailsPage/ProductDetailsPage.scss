@@ -18,6 +18,13 @@
     letter-spacing: -0.01em;
   }
 
+  &__details-not-found {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   &__details {
     display: grid;
     grid-template-columns: 1fr 1fr;

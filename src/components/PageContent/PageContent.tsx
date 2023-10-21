@@ -9,6 +9,7 @@ import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
 import { getCategoryName } from '../../helpers/funcs';
 import { ProductsContext } from '../../contexts/ProductsContext';
+import { SearchParams } from '../../types/SearchParams';
 
 enum SortBy {
   Age = 'age',
@@ -16,18 +17,12 @@ enum SortBy {
   Price = 'price',
 }
 
-enum SearchParams {
-  perPage = 'perPage',
-  activePage = 'activePage',
-  sortBy = 'sortBy',
-}
-
-const perPageValues = ['4', '8', '16', 'all'];
-
 type Props = {
   title: string,
   products: Product[],
 };
+
+const perPageValues = ['4', '8', '16', 'all'];
 
 export const PageContent: React.FC<Props> = ({
   title,
@@ -36,6 +31,7 @@ export const PageContent: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const { isLoading } = useContext(ProductsContext);
 
+  const query = searchParams.get(SearchParams.query) || '';
   const perPage = searchParams.get(SearchParams.perPage) || perPageValues[2];
   const normalizedPerPage = perPage !== 'all'
     ? Number(perPage)
@@ -45,7 +41,13 @@ export const PageContent: React.FC<Props> = ({
 
   const startIndex = normalizedPerPage * (activePage - 1);
   const endIndex = startIndex + normalizedPerPage;
-  const visibleProducts = products
+
+  const filteredProducts = query === ''
+    ? products
+    : products.filter(product => (
+      product.name.toLowerCase().includes(query.toLowerCase())));
+
+  const visibleProducts = filteredProducts
     .sort((a: Product, b: Product) => {
       switch (sortBy) {
         case SortBy.Age:
@@ -158,22 +160,30 @@ export const PageContent: React.FC<Props> = ({
             </div>
           </div>
 
-          <div data-cy="productList" className="PageContent__phones">
-            {visibleProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {!filteredProducts.length ? (
+            <div className="PageContent__no-search-results title">
+              No search results
+            </div>
+          ) : (
+            <>
+              <div data-cy="productList" className="PageContent__products">
+                {visibleProducts.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
 
-          <div className="PageContent__pagination-wrapper">
-            {normalizedPerPage < products.length && (
-              <Pagination
-                productsCount={products.length}
-                perPage={normalizedPerPage}
-                activePage={activePage}
-                setActivePage={setActivePage}
-              />
-            )}
-          </div>
+              <div className="PageContent__pagination-wrapper">
+                {normalizedPerPage < filteredProducts.length && (
+                  <Pagination
+                    productsCount={filteredProducts.length}
+                    perPage={normalizedPerPage}
+                    activePage={activePage}
+                    setActivePage={setActivePage}
+                  />
+                )}
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

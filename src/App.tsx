@@ -26,10 +26,11 @@ export const App: React.FC = () => {
   const getPageName = () => {
     const index = location.pathname.lastIndexOf('/');
 
-    return location.pathname.slice(index + 1) as Category;
+    return location.pathname.slice(index + 1);
   };
 
-  const isSearchShown = Object.values(Category).includes(getPageName());
+  const isSearchShown = [...Object.values(Category), 'favourites']
+    .includes(getPageName());
   const isCartOpened = location.pathname.includes('cart');
 
   return (
@@ -69,44 +70,40 @@ export const App: React.FC = () => {
             )}
 
             {!isCartOpened && (
-              <div className="App__link-wrapper">
-                <NavLink
-                  to="favourites"
-                  className={({ isActive }) => classNames(
-                    'nav__link',
-                    'nav__link--favourites',
-                    {
-                      'nav__link--active': isActive,
-                    },
-                  )}
-                />
-
+              <NavLink
+                to="favourites"
+                className={({ isActive }) => classNames(
+                  'nav__link',
+                  'nav__link--favourites',
+                  {
+                    'nav__link--active': isActive,
+                  },
+                )}
+              >
                 {favourites.length > 0 && (
                   <div className="App__total-quantity">
                     {favourites.length}
                   </div>
                 )}
-              </div>
+              </NavLink>
             )}
 
-            <div className="App__link-wrapper">
-              <NavLink
-                to="cart"
-                className={({ isActive }) => classNames(
-                  'nav__link',
-                  'nav__link--cart',
-                  {
-                    'nav__link--active': isActive,
-                  },
-                )}
-              />
-
+            <NavLink
+              to="cart"
+              className={({ isActive }) => classNames(
+                'nav__link',
+                'nav__link--cart',
+                {
+                  'nav__link--active': isActive,
+                },
+              )}
+            >
               {totalQuantity > 0 && (
                 <div className="App__total-quantity">
                   {totalQuantity}
                 </div>
               )}
-            </div>
+            </NavLink>
           </div>
         </div>
       </header>

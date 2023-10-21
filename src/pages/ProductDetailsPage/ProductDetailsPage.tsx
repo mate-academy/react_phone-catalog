@@ -3,11 +3,7 @@ import './ProductDetailsPage.scss';
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import {
-  MAIN_URL,
-  getProductDetails,
-  getSuggestedProducts,
-} from '../../helpers/api';
+import { MAIN_URL, getProductDetails } from '../../helpers/api';
 import { Loader } from '../../components/Loader';
 import { Actions } from '../../components/Actions';
 import { Product } from '../../types/Product';
@@ -21,8 +17,8 @@ export const ProductDetailsPage = () => {
   // eslint-disable-next-line max-len
   const [productDetails, setProductDetails] = useState<any>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const { productId = '' } = useParams();
   const { products } = useContext(ProductsContext);
   const hasProductDetails = !!Object.values(productDetails).length;
@@ -63,11 +59,12 @@ export const ProductDetailsPage = () => {
     setIsLoading(true);
 
     getProductDetails(productId)
-      .then(setProductDetails)
+      .then(data => {
+        setProductDetails(data);
+        setHasError(false);
+      })
+      .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
-
-    getSuggestedProducts(10)
-      .then(setSuggestedProducts);
   }, [productId]);
 
   const specificationsList = (specs: typeof specifications) => {
@@ -84,11 +81,34 @@ export const ProductDetailsPage = () => {
     ));
   };
 
+  const getSuggestedProducts = (productsCount: number) => {
+    const generateIndex = () => Math.floor(Math.random() * products.length);
+    const result: Product[] = [];
+
+    for (let i = 0; i < productsCount; i += 1) {
+      let index = generateIndex();
+
+      while (result.includes(products[index])) {
+        index = generateIndex();
+      }
+
+      result.push(products[index]);
+    }
+
+    return result;
+  };
+
   return (
     <div className="ProductDetailsPage">
       {isLoading && <Loader />}
 
-      {!isLoading && hasProductDetails && (
+      {!isLoading && hasError && (
+        <div className="ProductDetailsPage__details-not-found title">
+          Phone was not found
+        </div>
+      )}
+
+      {!isLoading && !hasError && hasProductDetails && (
         <>
           <div className="ProductDetailsPage__breadcrumbs-wrapper">
             <BreadCrumbs />
@@ -187,7 +207,7 @@ export const ProductDetailsPage = () => {
 
           <ProductsSlider
             sliderTitle="You may also like"
-            products={suggestedProducts}
+            products={getSuggestedProducts(10)}
           />
         </>
       )}

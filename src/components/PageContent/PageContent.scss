@@ -43,7 +43,7 @@
     cursor: pointer;
   }
 
-  &__phones {
+  &__products {
     display: grid;
     gap: 40px 16px;
     grid-template-columns: repeat(4, 1fr);
@@ -54,5 +54,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__no-search-results {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
