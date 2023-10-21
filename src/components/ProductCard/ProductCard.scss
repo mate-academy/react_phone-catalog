@@ -3,6 +3,7 @@
 .ProductCard {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
 
   border: 1px solid $elementsGray;
@@ -14,13 +15,16 @@
   }
 
   &__image-wrapper {
-    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    height: 208px;
     padding: 32px 32px 0;
   }
 
   &__image {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    height: 100%;
   }
 
   &__info {

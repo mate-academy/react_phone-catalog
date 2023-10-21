@@ -5,25 +5,15 @@
   column-gap: 8px;
 
   &__add-to-cart {
-    flex-grow: 1;
+    &--added {
+      color: #27ae60;
+      background-color: transparent;
+      border: 1px solid $elementsGray;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-weight: 600;
-    line-height: 21px;
-    text-align: center;
-    color: #fff;
-
-    background-color: $primeryGray;
-    border: none;
-
-    transition: box-shadow $duration;
-
-    &:hover {
-      box-shadow: 0 0 13px rgba(23, 32, 49, 0.26);
-      cursor: pointer;
+      &:hover {
+        box-shadow: none;
+        cursor: initial;
+      }
     }
   }
 

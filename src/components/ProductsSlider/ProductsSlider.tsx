@@ -22,7 +22,7 @@ export const ProductsSlider: React.FC<Props> = ({ sliderTitle, products }) => {
   const isLastProduct = offset === maxOffset;
 
   const slidesStyle = {
-    width: `${(100 / FRAME_PRODUCTS_COUNT) * products.length}%`,
+    width: `${(products.length / FRAME_PRODUCTS_COUNT) * 100}%`,
     transform: `translateX(-${offset}%)`,
   };
 

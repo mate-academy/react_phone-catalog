@@ -2,9 +2,12 @@
   &__list {
     display: flex;
     column-gap: 64px;
+    height: 100%;
   }
 
   &__item {
+    height: 100%;
+
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -16,8 +19,9 @@
   &__link {
     position: relative;
 
-    display: block;
-    padding: 26px 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
 
     transition: color $duration;
 
@@ -40,6 +44,24 @@
 
         background-color: $primeryGray;
       }
+    }
+
+    &--favourites,
+    &--cart {
+      width: 64px;
+      height: 64px;
+
+      background-position: center;
+      background-repeat: no-repeat;
+      border-left: 2px solid $elementsGray;
+    }
+
+    &--favourites {
+      background-image: url(../../img/icons/favourites.svg);
+    }
+
+    &--cart {
+      background-image: url(../../img/icons/cart.svg);
     }
   }
 }

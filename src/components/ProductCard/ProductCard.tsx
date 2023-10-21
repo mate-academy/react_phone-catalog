@@ -74,7 +74,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           ))}
         </ul>
 
-        <Actions />
+        <Actions product={product} />
       </div>
     </Link>
   );

@@ -17,20 +17,4 @@
   &__search-wrapper {
     border-left: 2px solid $elementsGray;
   }
-
-  &__link {
-    width: 64px;
-
-    background-position: center;
-    background-repeat: no-repeat;
-    border-left: 2px solid $elementsGray;
-
-    &--favourites {
-      background-image: url(../../img/icons/favourites.svg);
-    }
-
-    &--cart {
-      background-image: url(../../img/icons/cart.svg);
-    }
-  }
 }

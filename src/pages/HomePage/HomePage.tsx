@@ -1,64 +1,48 @@
 import './HomePage.scss';
 
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ImagesSlider } from '../../components/ImagesSlider';
-import { getBrandNewProducts, getHotPriceProducts } from '../../helpers/api';
 import { Category } from '../../types/Category';
 import { getCategoryName } from '../../helpers/funcs';
+import { ProductsContext } from '../../contexts/ProductsContext';
+import { Product } from '../../types/Product';
 
 export const HomePage = () => {
-  const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
-  const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
+  const { products } = useContext(ProductsContext);
 
-  // const phones: Product[] = [];
-  // const tablets: Product[] = [];
-  // const accessories: Product[] = [];
+  const hotPriceProducts = [...products]
+    .sort((a: Product, b: Product) => {
+      return (b.fullPrice - b.price) - (a.fullPrice - a.price);
+    });
 
-  useEffect(() => {
-    Promise.all([getHotPriceProducts(), getBrandNewProducts()])
-      .then(products => {
-        setHotPriceProducts(products[0]);
-        setBrandNewProducts(products[1]);
-      });
-  }, []);
+  const brandNewProducts = [...products]
+    .sort((a: Product, b: Product) => {
+      return b.price - a.price;
+    });
 
-  // products.forEach(product => {
-  //   switch (product.type) {
-  //     case 'phone':
-  //       phones.push(product);
-  //       break;
+  const categoryProductsCount = {
+    [Category.Phones]: 0,
+    [Category.Tablets]: 0,
+    [Category.Accessories]: 0,
+  };
 
-  //     case 'tablet':
-  //       tablets.push(product);
-  //       break;
-
-  //     case 'accessory':
-  //       accessories.push(product);
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  // });
-
-  // const returnProductsCount = (category: Categories) => {
-  //   switch (category) {
-  //     case Categories.Phones:
-  //       return phones.length;
-
-  //     case Categories.Tablets:
-  //       return tablets.length;
-
-  //     case Categories.Accessories:
-  //       return accessories.length;
-
-  //     default:
-  //       return 0;
-  //   }
-  // };
+  products.forEach(product => {
+    switch (product.category) {
+      case Category.Phones:
+        categoryProductsCount[Category.Phones] += 1;
+        break;
+      case Category.Tablets:
+        categoryProductsCount[Category.Tablets] += 1;
+        break;
+      case Category.Accessories:
+        categoryProductsCount[Category.Accessories] += 1;
+        break;
+      default:
+        break;
+    }
+  });
 
   return (
     <div className="HomePage">
@@ -94,7 +78,7 @@ export const HomePage = () => {
                 </h3>
 
                 <span className="HomePage__category-info">
-                  {`${0 || 'No'} models`}
+                  {`${categoryProductsCount[category] || 'No'} models`}
                 </span>
               </Link>
             ))}

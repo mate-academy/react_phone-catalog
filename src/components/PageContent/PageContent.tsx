@@ -1,6 +1,6 @@
 import './PageContent.scss';
 
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Loader } from '../Loader';
@@ -8,6 +8,7 @@ import { BreadCrumbs } from '../BreadCrumbs';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
 import { getCategoryName } from '../../helpers/funcs';
+import { ProductsContext } from '../../contexts/ProductsContext';
 
 enum SortBy {
   Age = 'age',
@@ -25,16 +26,15 @@ const perPageValues = ['4', '8', '16', 'all'];
 
 type Props = {
   title: string,
-  getProducts: () => Promise<Product[]>,
+  products: Product[],
 };
 
 export const PageContent: React.FC<Props> = ({
   title,
-  getProducts,
+  products,
 }) => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const { isLoading } = useContext(ProductsContext);
 
   const perPage = searchParams.get(SearchParams.perPage) || perPageValues[2];
   const normalizedPerPage = perPage !== 'all'
@@ -59,13 +59,6 @@ export const PageContent: React.FC<Props> = ({
       }
     })
     .slice(startIndex, endIndex);
-
-  useEffect(() => {
-    setIsLoading(true);
-    getProducts()
-      .then(setProducts)
-      .finally(() => setIsLoading(false));
-  }, []);
 
   const setParam = (name: string, value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -110,7 +103,7 @@ export const PageContent: React.FC<Props> = ({
 
       {!isLoading && !!products.length && (
         <>
-          <h1 className="PageContent__title">
+          <h1 className="PageContent__title title">
             {getCategoryName(title)}
           </h1>
 

@@ -1,12 +1,18 @@
+import { useContext } from 'react';
 import { PageContent } from '../../components/PageContent';
 import { Category } from '../../types/Category';
-import { getTablets } from '../../helpers/api';
+import { ProductsContext } from '../../contexts/ProductsContext';
 
-export const TabletsPage = () => {
+export const TabletsPage: React.FC = () => {
+  const { products } = useContext(ProductsContext);
+
+  const tablets = products
+    .filter(product => product.category === Category.Tablets);
+
   return (
     <PageContent
       title={Category.Tablets}
-      getProducts={getTablets}
+      products={tablets}
     />
   );
 };

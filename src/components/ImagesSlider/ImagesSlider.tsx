@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import './ImagesSlider.scss';
 
 const slidesImagesUrls = [
-  './img/slides/slide-1.png',
-  './img/slides/slide-2.png',
-  './img/slides/slide-3.png',
+  './_new/img/banner-phones.png',
+  './_new/img/banner-tablets.png',
+  './_new/img/banner-accessories.png',
 ];
 
 export const ImagesSlider = () => {

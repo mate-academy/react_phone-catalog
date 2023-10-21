@@ -1,6 +1,6 @@
 import './ProductDetailsPage.scss';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import {
@@ -14,6 +14,7 @@ import { Product } from '../../types/Product';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Back } from '../../components/Back';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { ProductsContext } from '../../contexts/ProductsContext';
 // import { ProductDetails } from '../../types/ProductDetails';
 
 export const ProductDetailsPage = () => {
@@ -23,6 +24,7 @@ export const ProductDetailsPage = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const { productId = '' } = useParams();
+  const { products } = useContext(ProductsContext);
   const hasProductDetails = !!Object.values(productDetails).length;
   const {
     name,
@@ -55,6 +57,8 @@ export const ProductDetailsPage = () => {
     cell,
   };
 
+  const product = products.find(item => item.itemId === productId);
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -64,7 +68,7 @@ export const ProductDetailsPage = () => {
 
     getSuggestedProducts(10)
       .then(setSuggestedProducts);
-  }, []);
+  }, [productId]);
 
   const specificationsList = (specs: typeof specifications) => {
     return Object.entries(specs).map(spec => (
@@ -145,7 +149,7 @@ export const ProductDetailsPage = () => {
               </div>
 
               <div className="ProductDetailsPage__actions-wrapper">
-                <Actions />
+                <Actions product={product} />
               </div>
 
               <ul

@@ -1,6 +1,8 @@
+import { Category } from './Category';
+
 export interface Product {
   capacity: string,
-  category: 'phones' | 'tablets' | 'accessories',
+  category: Category,
   color: string,
   fullPrice: number,
   id: string,

@@ -7,25 +7,28 @@ import {
   useLocation,
 } from 'react-router-dom';
 import classNames from 'classnames';
+import { useContext } from 'react';
 import { Category } from './types/Category';
 import { Search } from './components/Search';
+import { CartContext } from './contexts/CartContext';
+
+const menuItems = [
+  'home',
+  ...Object.values(Category),
+];
 
 export const App: React.FC = () => {
   const location = useLocation();
-
-  const menuItems = [
-    'home',
-    ...Object.values(Category),
-  ];
+  const { totalQuantity } = useContext(CartContext);
 
   const getPageName = () => {
     const index = location.pathname.lastIndexOf('/');
 
-    return location.pathname.slice(index + 1);
+    return location.pathname.slice(index + 1) as Category;
   };
 
-  const isSearchShown = Object.values(Category)
-    .includes(getPageName() as Category);
+  const isSearchShown = Object.values(Category).includes(getPageName());
+  const isCartOpened = location.pathname.includes('cart');
 
   return (
     <div className="App">
@@ -34,24 +37,26 @@ export const App: React.FC = () => {
           <div className="header__content">
             <Link to="/" className="logo header__logo">Logo</Link>
 
-            <nav className="nav">
-              <ul className="nav__list">
-                {menuItems.map(item => (
-                  <li key={item} className="nav__item">
-                    <NavLink
-                      to={item === 'home' ? '/' : item}
-                      className={
-                        ({ isActive }) => classNames('nav__link', {
-                          'nav__link--active': isActive,
-                        })
-                      }
-                    >
-                      {item}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            {!isCartOpened && (
+              <nav className="nav">
+                <ul className="nav__list">
+                  {menuItems.map(item => (
+                    <li key={item} className="nav__item">
+                      <NavLink
+                        to={item === 'home' ? '/' : item}
+                        className={
+                          ({ isActive }) => classNames('nav__link', {
+                            'nav__link--active': isActive,
+                          })
+                        }
+                      >
+                        {item}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
 
             <div className="header__stretchable-block" />
 
@@ -61,15 +66,35 @@ export const App: React.FC = () => {
               </div>
             )}
 
-            <NavLink
-              to="favourites"
-              className="header__link header__link--favourites"
-            />
+            {!isCartOpened && (
+              <NavLink
+                to="favourites"
+                className={({ isActive }) => classNames(
+                  'nav__link',
+                  'nav__link--favourites',
+                  {
+                    'nav__link--active': isActive,
+                  },
+                )}
+              />
+            )}
 
-            <Link
-              to="cart"
-              className="header__link header__link--cart"
-            />
+            <div className="App__cart-link-wrapper">
+              <NavLink
+                to="cart"
+                className={({ isActive }) => classNames(
+                  'nav__link',
+                  'nav__link--cart',
+                  {
+                    'nav__link--active': isActive,
+                  },
+                )}
+              />
+
+              <div className="App__total-quantity">
+                {totalQuantity}
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -83,9 +108,9 @@ export const App: React.FC = () => {
       <footer className="footer">
         <div className="container container--main">
           <div className="footer__content">
-            <Link to="/" className="logo footer__logo">Logo</Link>
+            <Link to="/" className="logo">Logo</Link>
 
-            <nav className="nav">
+            <nav className="nav footer__nav">
               <ul className="nav__list">
                 <li className="nav__item">
                   <a
