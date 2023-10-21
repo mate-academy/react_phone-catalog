@@ -12,9 +12,9 @@
   &:hover {
     border-color: $black-c;
   }
+}
 
-  &:disabled {
-    opacity: 50%;
-    pointer-events: none;
-  }
+.disabled {
+  opacity: 50%;
+  pointer-events: none;
 }

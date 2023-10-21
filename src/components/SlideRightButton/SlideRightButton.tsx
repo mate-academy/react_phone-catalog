@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import './SlideRightButton.scss';
 
 type Props = {
@@ -14,7 +15,9 @@ export const SlideRightButton: React.FC<Props> = ({
     <button
       data-cy="paginationRight"
       type="button"
-      className="SlideLeftButton"
+      className={classNames('SlideRightButton', {
+        disabled: isDisabled,
+      })}
       onClick={onSlideRight}
       disabled={isDisabled}
     >

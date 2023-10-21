@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import './SlideLeftButton.scss';
 
 type Props = {
@@ -13,7 +14,9 @@ export const SlideLeftButton: React.FC<Props> = ({
     <button
       data-cy="paginationLeft"
       type="button"
-      className="SlideLeftButton"
+      className={classNames('SlideLeftButton', {
+        disabled: isDisabled,
+      })}
       onClick={onSlideLeft}
       disabled={isDisabled}
     >
