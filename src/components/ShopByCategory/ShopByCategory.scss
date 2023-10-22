@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+
+.shop-by-category {
+  margin-top: 80px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    letter-spacing: -1%;
+    color: $navbarLinkColor;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__img {
+    @include hover(transform, scale(1.03));
+    cursor: pointer;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      cursor: pointer;
+    }
+
+    &-description {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25.56px;
+      color: $navbarLinkColor;
+    }
+
+    &-amount {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $footerNavLinksColor;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}

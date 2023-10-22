@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  & :first-child {
+    margin-right: 8px;
+  }
+
+  & :last-child {
+    margin-left: 8px;
+  }
+}

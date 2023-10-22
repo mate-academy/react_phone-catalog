@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+
+.pagination-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $borderBottocNavbarColor;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @include hover(transform, scale(1.2));
+
+
+  &:hover {
+    border: 1px solid $navbarLinkColor;
+  }
+
+  &-black {
+    border: none;
+    background-color: $navbarLinkColor;
+    color: #fff;
+  }
+
+  &--side:active {
+    border: none;
+    background-color: $navbarLinkColor;
+    color: #fff;
+  }
+}
+
+

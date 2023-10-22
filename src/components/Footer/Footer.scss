@@ -1,6 +1,10 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins';
 
+.main-container {
+  border-top: 1px solid $borderBottocNavbarColor;
+}
+
 .footer__wrapper {
   display: flex;
   justify-content: space-between;
@@ -71,6 +75,13 @@
     align-items: center;
     font-weight: 500;
     cursor: pointer;
-    @include hover(transform, scale(1.2));
+    background-color: transparent;
+    @include hover(border, 1px solid $footerButtonBorderColor);
+
+    &:active {
+      border: none;
+      background-color: $navbarLinkColor;
+      color: #fff;
+    }
   }
 }

@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+.slider-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.hot-prices {
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    letter-spacing: -1%;
+    color: $navbarLinkColor;
+  }
+  &__top-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__slider-button {
+    border: 1px solid $footerButtonBorderColor;
+    width: 32px;
+    height: 32px;
+    @include hover(border, 1px solid $navbarLinkColor);
+    background: transparent;
+    cursor: pointer;
+
+    &:active {
+      border: none;
+      background-color: $navbarLinkColor;
+      color: #fff;
+    }
+    &-wrapper {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.card-container {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.products-list {
+  margin-top: 40px;
+
+  &__select {
+    border: 1px solid $footerButtonBorderColor;
+    height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $navbarLinkColor;
+    padding: 0 12px;
+
+    &--sort {
+      width: 176px;
+    }
+
+    &--amount {
+      width: 128px;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: $footerNavLinksColor;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      &-main {
+        display: flex;
+        gap: 16px;
+      }
+    }
+  }
+}

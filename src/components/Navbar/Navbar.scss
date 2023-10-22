@@ -1,6 +1,10 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins";
 
+.hidden {
+  display: none;
+}
+
 .links-wrapper {
   display: flex;
   gap: 64px;
@@ -20,6 +24,7 @@
 
 .logo__img {
   display: block;
+  @include hover(transform, scale(1.2));
 }
 
 .nav {
@@ -62,6 +67,36 @@
       opacity: 1;
     }
   }
+
+  &__search {
+    border-left: 1px solid $borderBottocNavbarColor;
+    padding-inline: 24px;
+    width: 327px;
+
+    &-input {
+      width: 279px;
+      height: 64px;
+      border: none;
+      outline: none;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17.89px;
+      font-size: 16px;
+      color: $navbarLinkColor;
+      background: url(../../images/Magnificer.svg) right center no-repeat;
+
+      &::placeholder {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17.89px;
+        color: $footerButtonBorderColor;
+      }
+
+      &:focus::placeholder {
+        opacity: 0;
+      }
+    }
+  }
 }
 
 .is-active {
@@ -88,6 +123,7 @@
 
   &--like {
     background-image: url(../../images/Heart.svg);
+    position: relative;
   }
 
   &--cart {
@@ -104,5 +140,21 @@
   border-right: 1px solid $borderBottocNavbarColor;
 }
 
+.logo--amount {
+  position: absolute;
+  top: 19px;
+  right: 17px;
+  width: 14px;
+  height: 14px;
+  background-color: $redColor;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 11.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 

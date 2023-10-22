@@ -1,0 +1,147 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: $cardWidth;
+  height: 507px;
+  padding: 32px 24px 24px;
+  transition: transform, color, 0.3s;
+  border: 1px solid $borderBottocNavbarColor;
+  position: relative;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &--margin-vertical {
+    margin: 10px 0;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &__img {
+    height: 208px;
+    width: 208px;
+  }
+
+  &__title {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $navbarLinkColor;
+    transition: color, 0.3s;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-top: 6.5px;
+
+    &-discount {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 30.8px;
+      color: $navbarLinkColor;
+    }
+
+    &-amount {
+      text-decoration: line-through;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28.12px;
+      color: $footerNavLinksColor;
+    }
+  }
+
+  &__line {
+    margin-top: 6.5px;
+    width: 100%;
+    height: 1px;
+    background-color: $borderBottocNavbarColor;
+  }
+
+  &__description {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-about {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__button {
+    &-cart {
+      width: 176px;
+      height: 40px;
+      background-color: $navbarLinkColor;
+      color: #fff;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      @include hover(transform, scale(1.03));
+
+      &--selected {
+        border: 1px solid $borderBottocNavbarColor;
+        background-color: transparent;
+        color: $greenColor;
+
+      }
+    }
+
+    &-like {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border: 1px solid $footerButtonBorderColor;
+      &:hover {
+        border: 1px solid $navbarLinkColor;
+      }
+
+      &--white {
+        transition: background-image, 0.3s;
+        background: url(../../images/Heart.svg) no-repeat center;
+      }
+
+      &--red {
+      transition: background-image, 0.3s;
+      background: url(../../images/HeartRed.svg) no-repeat center;
+      border: 1px solid $borderBottocNavbarColor;
+      }
+    }
+
+    &-wrapper {
+        position: absolute;
+        top: 443px;
+        display: flex;
+        gap: 8px;
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+  }
+}
+
+.about {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+  color: $footerNavLinksColor;
+
+  &-description {
+    font-size: 12px;
+    line-height: 15.34px;
+    font-weight: 600;
+    color: $navbarLinkColor;
+  }
+}
