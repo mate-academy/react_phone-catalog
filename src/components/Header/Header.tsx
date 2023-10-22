@@ -36,7 +36,9 @@ export const Header = () => {
           className="Header__burger"
           onClick={() => setIsMenuShown(true)}
         >
-          <div className="Header__burger-img icon icon--menu" />
+          <span className="Header__burger-span Header__burger-span--one" />
+          <span className="Header__burger-span Header__burger-span--two" />
+          <span className="Header__burger-span Header__burger-span--three" />
         </button>
 
         <MobileMenu isMenuShown={isMenuShown} setIsMenuShown={setIsMenuShown} />

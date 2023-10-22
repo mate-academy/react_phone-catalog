@@ -52,9 +52,35 @@
   &__burger {
     display: none;
     margin-left: 24px;
+    width: 32px;
+    height: 32px;
+    gap: 5px;
+    justify-content: center;
+    flex-direction: column;
 
     @include onTablet {
+      display: flex;
+    }
+
+    &-span {
       display: block;
+      height: 3px;
+      width: 26px;
+      background-color: $black-c;
+      border-radius: 5px;
+    }
+
+
+    &:hover .Header__burger-span--one {
+      animation: changeWidth 2s ease infinite;
+    }
+
+    &:hover .Header__burger-span--two {
+      animation: changeWidth1 2s ease infinite;
+    }
+
+    &:hover .Header__burger-span--three {
+      animation: changeWidth2 2s ease infinite;
     }
   }
 
@@ -131,4 +157,58 @@
 .navlink-active {
   border-bottom: 3px solid $black-c;
   color: $black-c;
+}
+
+@keyframes changeWidth {
+  0% {
+    width: 26px;
+  }
+  25% {
+    width: 30px;
+  }
+  50% {
+    width: 15px;
+  }
+  75% {
+    width: 30px;
+  }
+  100% {
+    width: 26px;
+  }
+}
+
+@keyframes changeWidth1 {
+  0% {
+    width: 26px;
+  }
+  25% {
+    width: 14px;
+  }
+  50% {
+    width: 30px;
+  }
+  75% {
+    width: 12px;
+  }
+  100% {
+    width: 26px;
+  }
+}
+
+@keyframes changeWidth2 {
+  0% {
+    width: 20px;
+  }
+  25% {
+    width: 5px;
+  }
+  50% {
+    width: 30px;
+  }
+  75% {
+    width: 30px;
+  }
+  100% {
+    width: 20px;
+  }
 }
