@@ -16,6 +16,10 @@ export const Search: React.FC<Props> = ({ page }) => {
   const timeoutId = useRef(0);
 
   const setQuery = (value: string) => {
+    if (value === '' && query === '') {
+      return;
+    }
+
     const newSearchParams = new URLSearchParams(searchParams);
 
     if (value !== '') {
@@ -23,6 +27,8 @@ export const Search: React.FC<Props> = ({ page }) => {
     } else {
       newSearchParams.delete(SearchParams.query);
     }
+
+    newSearchParams.set(SearchParams.activePage, '1');
 
     setSearchParams(newSearchParams);
   };
