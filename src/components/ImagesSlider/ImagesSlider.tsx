@@ -2,11 +2,12 @@ import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 
 import './ImagesSlider.scss';
+import { MAIN_URL } from '../../helpers/api';
 
 const slidesImagesUrls = [
-  './_new/img/banner-phones.png',
-  './_new/img/banner-tablets.png',
-  './_new/img/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
+  'img/banner-accessories.png',
 ];
 
 export const ImagesSlider = () => {
@@ -72,7 +73,7 @@ export const ImagesSlider = () => {
             {slidesImagesUrls.map((url, index) => (
               <div key={url} className="ImagesSlider__slide">
                 <img
-                  src={url}
+                  src={`${MAIN_URL}/${url}`}
                   alt={`Slide ${index + 1}`}
                   className="ImagesSlider__slide-image"
                 />
