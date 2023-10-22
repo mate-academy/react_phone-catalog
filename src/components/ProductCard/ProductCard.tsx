@@ -1,8 +1,6 @@
 import {
   FC,
   useContext,
-  useEffect,
-  useState,
 } from 'react';
 import cn from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -32,19 +30,6 @@ export const ProductCard: FC<Props> = ({ product }) => {
     ram,
     id,
   } = product;
-
-  const [hasBeenAdded, setHasBeenAdded]
-  = useState(false);
-  const [hasBeenLiked, setHasBeenLiked]
-  = useState(false);
-
-  useEffect(() => {
-    setHasBeenLiked(localStorage.getItem('liked') === id.toString());
-  }, [localStorage.getItem('liked')]);
-
-  useEffect(() => {
-    return setHasBeenAdded(localStorage.getItem('added') === id.toString());
-  }, [localStorage.getItem('added')]);
 
   return (
     <Link
@@ -91,7 +76,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
           </div>
         </div>
         <div className="card__button-wrapper">
-          {!hasBeenAdded ? (
+          {!localStorage.getItem(`addedProduct-${product.id}`) ? (
             <button
               className="card__button-cart"
               type="button"
@@ -111,11 +96,11 @@ export const ProductCard: FC<Props> = ({ product }) => {
           <button
             aria-label="like"
             className={cn('card__button-like', {
-              'card__button-like--white': !hasBeenLiked,
-              'card__button-like--red': hasBeenLiked,
+              'card__button-like--white': !localStorage.getItem(`likedProduct-${product.id}`),
+              'card__button-like--red': !!localStorage.getItem(`likedProduct-${product.id}`),
             })}
             type="button"
-            onClick={(e) => handleLikeFn(e, product)}
+            onClick={e => handleLikeFn(e, product)}
           />
         </div>
       </div>

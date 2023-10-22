@@ -47,11 +47,6 @@ export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const [hasBeenAdded, setHasBeenAdded]
-  = useState(false);
-  const [hasBeenLiked, setHasBeenLiked]
-  = useState(false);
-
   const modifiedImagesUrl = useMemo(() => {
     return productDetails?.images
       .map((image) => image.replace('phones', 'products'));
@@ -75,14 +70,6 @@ export const ProductDetailsPage = () => {
 
     setDevice(foundedDevice);
   };
-
-  useEffect(() => {
-    setHasBeenLiked(localStorage.getItem('liked') === id.toString());
-  }, [localStorage.getItem('liked'), id]);
-
-  useEffect(() => {
-    setHasBeenAdded(localStorage.getItem('added') === id.toString());
-  }, [localStorage.getItem('added'), id]);
 
   const [
     fetchProductDetails,
@@ -243,7 +230,7 @@ export const ProductDetailsPage = () => {
                 </div>
 
                 <div className="product-details__price-buttons">
-                  {!hasBeenAdded ? (
+                  {!localStorage.getItem(`addedProduct-${id}`) ? (
                     <button
                       className="product-details__button-cart"
                       type="button"
@@ -264,8 +251,8 @@ export const ProductDetailsPage = () => {
                   <button
                     aria-label="like"
                     className={cn('product-details__button-like', {
-                      'product-details__button-like--white': !hasBeenLiked,
-                      'product-details__button-like--red': hasBeenLiked,
+                      'product-details__button-like--white': !localStorage.getItem(`likedProduct-${id}`),
+                      'product-details__button-like--red': !!localStorage.getItem(`likedProduct-${id}`),
                     })}
                     type="button"
                     onClick={(e) => handleLikeFn(e, device)}

@@ -56,11 +56,11 @@ export const NavbarContextProvider: React.FC<NavbarContextProps> = ({
 
     if (!isLiked) {
       setLikedDevices((devices) => [...devices, product]);
-      localStorage.setItem('liked', `${product.id}`);
+      localStorage.setItem(`likedProduct-${product.id}`, 'liked');
     } else {
       setLikedDevices((devices) => devices
         .filter((device) => device.id !== product.id));
-      localStorage.removeItem('liked');
+      localStorage.removeItem(`likedProduct-${product.id}`);
     }
   };
 
@@ -72,11 +72,11 @@ export const NavbarContextProvider: React.FC<NavbarContextProps> = ({
 
     if (!isAdded) {
       setAddedDevices((devices) => [...devices, product]);
-      localStorage.setItem('added', `${product.id}`);
+      localStorage.setItem(`addedProduct-${product.id}`, 'added');
     } else {
       setAddedDevices((devices) => devices
         .filter((device) => device.id !== product.id));
-      localStorage.removeItem('added');
+      localStorage.removeItem(`addedProduct-${product.id}`);
     }
   };
 

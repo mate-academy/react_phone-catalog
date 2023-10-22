@@ -20,12 +20,12 @@ export const Navbar = () => {
   const { query, handleQChange, device } = useContext(NavbarContext);
 
   useEffect(() => {
-    setAmountLiked(Object.keys(localStorage)
+    setAmountLiked(Object.values(localStorage)
       .filter(it => it === 'liked').length);
   }, [likedDevices.length]);
 
   useEffect(() => {
-    setAmountAdded(Object.keys(localStorage)
+    setAmountAdded(Object.values(localStorage)
       .filter(it => it === 'added').length);
   }, [addedDevices.length]);
 
