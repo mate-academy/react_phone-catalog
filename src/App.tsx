@@ -43,7 +43,6 @@ const App = () => {
   const [cartProducts, setCartProducts] = useLocalStorage([], 'cartItems');
 
   const searchQuery = useAppSelector((state) => state.search.query);
-
   const loadProducts = async () => {
     setIsLoading(true);
 
