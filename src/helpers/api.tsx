@@ -10,5 +10,5 @@ export const getProducts: () => Promise<Product[]> = () => {
 
 export const getProductDetails = (productId: string) => {
   return fetch(`${MAIN_URL}/products/${productId}.json`)
-    .then(result => result.json());
+    .then(response => response.json());
 };

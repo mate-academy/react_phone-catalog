@@ -5,5 +5,25 @@
 
   &--main {
     padding: 0 152px;
+
+    @include onLargeScreen {
+      padding: 0 52px;
+    }
+
+    @include onMediumScreen {
+      padding: 0 102px;
+    }
+
+    @include onSmallScreen {
+      padding: 0 52px;
+    }
+
+    @include onExtraSmall {
+      padding: 0 102px;
+    }
+
+    @media (max-width: 500px) {
+      padding: 0 52px;
+    }
   }
 }

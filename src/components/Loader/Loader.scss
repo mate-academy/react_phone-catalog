@@ -1,8 +1,8 @@
 @import "../../styles/utils/variables";
 
 .Loader {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -15,7 +15,7 @@
     content: "";
 
     border-radius: 50%;
-    border: 8px solid $iconsGray;
+    border: 6px solid $iconsGray;
     border-right-color: $primeryGray;
 
     animation: rotate infinite 0.6s linear;

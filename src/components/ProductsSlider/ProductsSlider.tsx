@@ -4,6 +4,22 @@ import { ProductCard } from '../ProductCard';
 
 import './ProductsSlider.scss';
 
+const screenWidth = document.documentElement.clientWidth;
+const isMediumScreen = screenWidth <= 992 && screenWidth > 576;
+const isExtraSmallScreen = screenWidth <= 576;
+
+const getFrameProductsCount = () => {
+  if (isExtraSmallScreen) {
+    return 1;
+  }
+
+  if (isMediumScreen) {
+    return 2;
+  }
+
+  return 4;
+};
+
 type Props = {
   sliderTitle: string,
   products: Product[],
@@ -12,17 +28,16 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ sliderTitle, products }) => {
   const [offset, setOffset] = useState(0);
 
-  const FRAME_PRODUCTS_COUNT = 4;
-  const SCROLL_PRODUCTS_COUNT = 2;
-
+  const frameProductsCount = getFrameProductsCount();
+  const scrollProductsCount = isMediumScreen ? 1 : 2;
   const oneOffsetStep = 100 / products.length;
-  const offsetStep = oneOffsetStep * SCROLL_PRODUCTS_COUNT;
-  const maxOffset = 100 - (oneOffsetStep * FRAME_PRODUCTS_COUNT);
+  const offsetStep = oneOffsetStep * scrollProductsCount;
+  const maxOffset = 100 - (oneOffsetStep * frameProductsCount);
   const isFirstProduct = offset === 0;
   const isLastProduct = offset === maxOffset;
 
   const slidesStyle = {
-    width: `${(products.length / FRAME_PRODUCTS_COUNT) * 100}%`,
+    width: `${(products.length / frameProductsCount) * 100}%`,
     transform: `translateX(-${offset}%)`,
   };
 

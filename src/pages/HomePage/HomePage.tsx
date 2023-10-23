@@ -46,7 +46,7 @@ export const HomePage = () => {
 
   return (
     <div className="HomePage">
-      <section className="HomePage__section">
+      <section className="HomePage__section HomePage__images-slider-wrapper">
         <ImagesSlider />
       </section>
 

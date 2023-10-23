@@ -32,3 +32,48 @@
     }
   }
 }
+
+@mixin activeLink {
+  position: relative;
+
+  &--active {
+    color: $primeryGray;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+
+      display: block;
+      content: "";
+      height: 3px;
+
+      background-color: $primeryGray;
+    }
+  }
+}
+
+@mixin onLargeScreen {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onMediumScreen {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin onSmallScreen {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onExtraSmall {
+  @media (max-width: 576px) {
+    @content;
+  }
+}

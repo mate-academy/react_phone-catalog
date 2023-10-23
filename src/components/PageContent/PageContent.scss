@@ -1,4 +1,5 @@
 @import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .PageContent {
   &__breadcrumbs-wrapper {
@@ -48,6 +49,14 @@
     gap: 40px 16px;
     grid-template-columns: repeat(4, 1fr);
     margin-bottom: 40px;
+
+    @include onMediumScreen {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onExtraSmall {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__pagination-wrapper {

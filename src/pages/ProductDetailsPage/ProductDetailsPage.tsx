@@ -19,7 +19,7 @@ export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
-  const { productId = '' } = useParams();
+  const { productId } = useParams();
   const { products } = useContext(ProductsContext);
   const hasProductDetails = !!Object.values(productDetails).length;
   const {
@@ -56,6 +56,10 @@ export const ProductDetailsPage = () => {
   const product = products.find(item => item.itemId === productId);
 
   useEffect(() => {
+    if (!productId) {
+      return;
+    }
+
     setIsLoading(true);
 
     getProductDetails(productId)

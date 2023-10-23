@@ -1,4 +1,5 @@
 @import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .HomePage {
   &__section {
@@ -9,15 +10,43 @@
     margin-bottom: 24px;
   }
 
+  &__images-slider-wrapper {
+    @include onMediumScreen {
+      display: none;
+    }
+  }
+
   &__categories {
     display: flex;
     column-gap: 16px;
+
+    @include onSmallScreen {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, auto);
+      row-gap: 16px;
+    }
+
+    @include onExtraSmall {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+    }
   }
 
   &__category {
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    @for $index from 0 through 2 {
+      &:nth-child(#{$index + 1}) {
+        @include onSmallScreen {
+          grid-row: #{1 + $index} / #{2 + $index};
+          grid-column: #{1 + $index} / #{3 + $index};
+        }
+      }
+    }
   }
 
   &__category-image-wrapper {

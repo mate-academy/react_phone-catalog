@@ -7,7 +7,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Category } from './types/Category';
 import { Search } from './components/Search';
 import { CartContext } from './contexts/CartContext';
@@ -22,91 +22,117 @@ export const App: React.FC = () => {
   const location = useLocation();
   const { totalQuantity } = useContext(CartContext);
   const { favourites } = useContext(FavouritesContext);
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
 
-  const getPageName = () => {
+  const pageName = (() => {
     const index = location.pathname.lastIndexOf('/');
 
     return location.pathname.slice(index + 1);
-  };
+  })();
 
   const isSearchShown = [...Object.values(Category), 'favourites']
-    .includes(getPageName());
+    .includes(pageName);
   const isCartOpened = location.pathname.includes('cart');
 
   return (
     <div className="App">
-      <header className="header">
-        <div className="container">
-          <div className="header__content">
-            <Link to="/" className="logo header__logo">Logo</Link>
+      <div className="App__header-wrapper">
+        <header className="header">
+          <div className="container">
+            <div className="header__content">
+              <Link
+                to="/"
+                className="logo logo--header header__logo"
+              >
+                Logo
+              </Link>
 
-            {!isCartOpened && (
-              <nav className="nav">
-                <ul className="nav__list">
-                  {menuItems.map(item => (
-                    <li key={item} className="nav__item">
-                      <NavLink
-                        to={item === 'home' ? '/' : item}
-                        className={
-                          ({ isActive }) => classNames('nav__link', {
-                            'nav__link--active': isActive,
-                          })
-                        }
-                      >
-                        {item}
-                      </NavLink>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            )}
+              {!isCartOpened && (
+                <div
+                  className={classNames('header__menu', {
+                    'header__menu--opened': isMenuOpened,
+                  })}
+                >
+                  <nav className="nav">
+                    <ul className="nav__list nav__list--menu">
+                      {menuItems.map(item => (
+                        <li key={item} className="nav__item">
+                          <NavLink
+                            to={item === 'home' ? '/' : item}
+                            className={
+                              ({ isActive }) => classNames(
+                                'nav__link',
+                                'nav__link--menu',
+                                { 'nav__link--active': isActive },
+                              )
+                            }
+                            onClick={() => setIsMenuOpened(false)}
+                          >
+                            {item}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </div>
+              )}
 
-            <div className="header__stretchable-block" />
+              {!isCartOpened && (
+                <button
+                  type="button"
+                  className="header__link header__link--burger"
+                  aria-label="Open menu"
+                  onClick={() => setIsMenuOpened(!isMenuOpened)}
+                />
+              )}
 
-            {isSearchShown && (
-              <div className="header__search-wrapper">
-                <Search page={getPageName()} />
-              </div>
-            )}
+              <div className="header__stretchable-block" />
 
-            {!isCartOpened && (
+              {isSearchShown && (
+                <div className="header__search-wrapper">
+                  <Search key={pageName} page={pageName} />
+                </div>
+              )}
+
+              {!isCartOpened && (
+                <NavLink
+                  to="favourites"
+                  className={({ isActive }) => classNames(
+                    'header__link',
+                    'header__link--favourites',
+                    {
+                      'header__link--active': isActive,
+                    },
+                  )}
+                >
+                  {favourites.length > 0 && (
+                    <div className="App__total-quantity">
+                      {favourites.length}
+                    </div>
+                  )}
+                </NavLink>
+              )}
+
               <NavLink
-                to="favourites"
+                to="cart"
                 className={({ isActive }) => classNames(
-                  'nav__link',
-                  'nav__link--favourites',
+                  'header__link',
+                  'header__link--cart',
                   {
-                    'nav__link--active': isActive,
+                    'header__link--active': isActive,
                   },
                 )}
               >
-                {favourites.length > 0 && (
+                {totalQuantity > 0 && (
                   <div className="App__total-quantity">
-                    {favourites.length}
+                    {totalQuantity}
                   </div>
                 )}
               </NavLink>
-            )}
-
-            <NavLink
-              to="cart"
-              className={({ isActive }) => classNames(
-                'nav__link',
-                'nav__link--cart',
-                {
-                  'nav__link--active': isActive,
-                },
-              )}
-            >
-              {totalQuantity > 0 && (
-                <div className="App__total-quantity">
-                  {totalQuantity}
-                </div>
-              )}
-            </NavLink>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
       <main className="App__main">
         <div className="container container--main">
@@ -117,7 +143,7 @@ export const App: React.FC = () => {
       <footer className="footer">
         <div className="container container--main">
           <div className="footer__content">
-            <Link to="/" className="logo">Logo</Link>
+            <Link to="/" className="logo footer__logo">Logo</Link>
 
             <nav className="nav footer__nav">
               <ul className="nav__list">
