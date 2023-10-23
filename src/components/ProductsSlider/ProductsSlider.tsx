@@ -4,22 +4,6 @@ import { ProductCard } from '../ProductCard';
 
 import './ProductsSlider.scss';
 
-const screenWidth = document.documentElement.clientWidth;
-const isMediumScreen = screenWidth <= 992 && screenWidth > 576;
-const isExtraSmallScreen = screenWidth <= 576;
-
-const getFrameProductsCount = () => {
-  if (isExtraSmallScreen) {
-    return 1;
-  }
-
-  if (isMediumScreen) {
-    return 2;
-  }
-
-  return 4;
-};
-
 type Props = {
   sliderTitle: string,
   products: Product[],
@@ -27,6 +11,22 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ sliderTitle, products }) => {
   const [offset, setOffset] = useState(0);
+
+  const screenWidth = document.documentElement.clientWidth;
+  const isMediumScreen = screenWidth <= 992 && screenWidth > 576;
+  const isExtraSmallScreen = screenWidth <= 576;
+
+  const getFrameProductsCount = () => {
+    if (isExtraSmallScreen) {
+      return 1;
+    }
+
+    if (isMediumScreen) {
+      return 2;
+    }
+
+    return 4;
+  };
 
   const frameProductsCount = getFrameProductsCount();
   const scrollProductsCount = isMediumScreen ? 1 : 2;
