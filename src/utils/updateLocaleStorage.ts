@@ -27,7 +27,7 @@ export const setFavouritesTolocaleStorage = (
 export const getFavouritesFromLocaleStorage = (name: LocaleStorageTypes) => {
   return (
     JSON.parse(
-      localStorage.getItem(name) as LocaleStorageTypes,
+      localStorage.getItem(name) || '',
     ) as Product[]
   ) || [];
 };

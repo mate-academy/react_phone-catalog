@@ -12,12 +12,12 @@ import { Favourites } from './Favourites';
 import { Cart } from './Cart';
 import { Footer } from './Footer';
 import { ProductTypes } from './types/productTypes';
-import { LocaleStorageTypes } from './types/LocaleStorageTypes';
+// import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 const App = () => {
-  const activeProduct = JSON.parse(
-    localStorage.getItem(LocaleStorageTypes.product) as string,
-  ) || null;
+  // const activeProduct = JSON.parse(
+  // localStorage.getItem(LocaleStorageTypes.product) as string,
+  // ) || null;
 
   return (
     <div className="app">
@@ -39,72 +39,80 @@ const App = () => {
 
           <Route
             path="/phones"
-            element={(
-              <>
-                <Navigation />
-                <Products
-                  productType={ProductTypes.phones}
-                  type="phone"
-                />
-              </>
-            )}
-          />
-
-          <Route
-            path={`/phones/:${activeProduct?.id}`}
-            element={(
-              <>
-                <Navigation />
-                <ProductDetails />
-              </>
-            )}
-          />
+          >
+            <Route
+              index
+              element={(
+                <>
+                  <Navigation />
+                  <Products
+                    productType={ProductTypes.phones}
+                    type="phone"
+                  />
+                </>
+              )}
+            />
+            <Route
+              path=":activeProductId"
+              element={(
+                <>
+                  <Navigation />
+                  <ProductDetails />
+                </>
+              )}
+            />
+          </Route>
 
           <Route
             path="/tablets"
-            element={(
-              <>
-                <Navigation />
-                <Products
-                  productType={ProductTypes.tablets}
-                  type="tablet"
-                />
-              </>
-            )}
-          />
-
-          <Route
-            path={`/tablets/:${activeProduct?.id}`}
-            element={(
-              <>
-                <Navigation />
-                <ProductDetails />
-              </>
-            )}
-          />
+          >
+            <Route
+              index
+              element={(
+                <>
+                  <Navigation />
+                  <Products
+                    productType={ProductTypes.tablets}
+                    type="tablet"
+                  />
+                </>
+              )}
+            />
+            <Route
+              path=":activeProductId"
+              element={(
+                <>
+                  <Navigation />
+                  <ProductDetails />
+                </>
+              )}
+            />
+          </Route>
 
           <Route
             path="/accessories"
-            element={(
-              <>
-                <Navigation />
-                <Products
-                  productType={ProductTypes.accessories}
-                  type="accessory"
-                />
-              </>
-            )}
-          />
-
-          <Route
-            path={`/accessories/:${activeProduct?.id}`}
-            element={(
-              <>
-                <Navigation />
-                <ProductDetails />
-              </>
-            )}
-          />
+          >
+            <Route
+              element={(
+                <>
+                  <Navigation />
+                  <Products
+                    productType={ProductTypes.accessories}
+                    type="accessory"
+                  />
+                </>
+              )}
+            />
+            <Route
+              path=":activeProductId"
+              element={(
+                <>
+                  <Navigation />
+                  <ProductDetails />
+                </>
+              )}
+            />
+          </Route>
 
           <Route
             path="/favourites"

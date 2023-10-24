@@ -3,13 +3,13 @@ import {
   useEffect,
   useContext,
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { Product } from './types/Product';
+// import { Product } from './types/Product';
 import { Details } from './types/Details';
-import { LocaleStorageTypes } from './types/LocaleStorageTypes';
+// import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { Loader } from './Loader';
-import { getDetails } from './api/products';
+import { getDetails, getProducts } from './api/products';
 import { ProductsSlider } from './ProductsSlider';
 import { GoBack } from './GoBack';
 import { Context } from './Context';
@@ -19,6 +19,7 @@ import {
   updateCart,
   updateFavourites,
 } from './utils/productManipulations';
+import { Product } from './types/Product';
 
 type Props = {
   favouritesTimeout?: number,
@@ -27,6 +28,7 @@ type Props = {
 export const ProductDetails: React.FC<Props> = ({
   favouritesTimeout,
 }) => {
+  const { activeProductId } = useParams();
   const avaliebleColors = ['#f0f0f0', '#000', '#62849c', '#96999b'];
   const avaliebleCapacity = [64, 264, 512];
   const {
@@ -42,9 +44,7 @@ export const ProductDetails: React.FC<Props> = ({
   const [activeColor, setActiveColor] = useState(avaliebleColors[0]);
   const [activeCapacity, setActiveCapacity] = useState(avaliebleCapacity[0]);
   const [isPhotoActive, setIsPhotoActive] = useState(false);
-  const activeProduct = JSON.parse(
-    localStorage.getItem(LocaleStorageTypes.product) as string,
-  );
+  const [activeProduct, setProduct] = useState<Product | null>(null);
   const display = details?.display.screenResolution.slice(
     details?.display.screenResolution.indexOf('(') + 1,
     details?.display.screenResolution.length - 1,
@@ -68,10 +68,16 @@ export const ProductDetails: React.FC<Props> = ({
     setIsError(false);
 
     try {
-      const response = await getDetails((activeProduct as Product).id);
+      if (activeProductId) {
+        const response = await getDetails(activeProductId);
+        const ProdsFromSerfer = await getProducts();
 
-      setDetails(response as Details);
-      setActiveImageUrl(getUrl((response as Details).images[0]));
+        setProduct((ProdsFromSerfer as Product[]).find(
+          item => item.id === activeProductId,
+        ) || null);
+        setDetails(response as Details);
+        setActiveImageUrl(getUrl((response as Details).images[0]));
+      }
     } catch (error) {
       setIsError(false);
     } finally {
@@ -81,7 +87,7 @@ export const ProductDetails: React.FC<Props> = ({
 
   useEffect(() => {
     get();
-  }, [activeProduct?.name]);
+  }, [activeProduct?.name, pathname]);
 
   return (
     <div className="details">

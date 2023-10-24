@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { Product } from './types/Product';
-import { LocaleStorageTypes } from './types/LocaleStorageTypes';
+// import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import {
   findProductOnCart,
   findProductOnFavourites,
@@ -24,16 +24,8 @@ export const ProductCard: React.FC<Props> = ({
     setChosenProducts,
     setProductsToBuy,
     setLoadingItem,
+    setActiveProduct,
   } = useContext(Context);
-  // let isProductOnCart = false;
-  // let isProductOnFavourites = false;
-
-  useEffect(() => {
-    if (product) {
-      // isProductOnCart = findProductOnCart(product.id);
-      // isProductOnFavourites = findProductOnFavourites(product.id);
-    }
-  }, [product]);
 
   return (
     product && (
@@ -41,9 +33,7 @@ export const ProductCard: React.FC<Props> = ({
         className="product__link"
         to={`/${product.type}s/${product.id}`}
         onClick={() => {
-          localStorage.setItem(
-            LocaleStorageTypes.product, JSON.stringify(product),
-          );
+          setActiveProduct(product);
         }}
       >
         {product && (
