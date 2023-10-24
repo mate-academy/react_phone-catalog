@@ -40,7 +40,8 @@
     gap: 64px;
 
     @include onMobile {
-      gap: 20px;
+      flex-direction: column;
+      gap: 16px;
     }
 
     &-link {

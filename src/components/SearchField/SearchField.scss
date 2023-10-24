@@ -20,6 +20,10 @@
     width: 200px;
   }
 
+  @media (max-width: 360px) {
+    display: none;
+  }
+
   &__input {
     height: 32px;
     flex-grow: 1;

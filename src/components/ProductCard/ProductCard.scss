@@ -1,6 +1,7 @@
 @import "../../styles/main.scss";
 
 .ProductCard {
+  position: relative;
   width: $card-width-desktop;
   height: 507px;
   display: flex;
@@ -11,7 +12,7 @@
   transition-duration: $transition-duration;
 
   @include onTablet {
-    width: $card-width-mobile;
+    width: $card-width-tablet;
     height: 400px;
     padding: 20px 16px;
   }
@@ -87,10 +88,6 @@
     gap: 8px;
     margin-bottom: 16px;
     @extend %smallText;
-
-    @include onMobile {
-      gap: 4px;
-    }
 
     &-container {
       display: flex;

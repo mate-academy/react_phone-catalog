@@ -83,7 +83,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="ProductCard__buttons">
         <AddToCartButton product={product} />
-
         <AddToFavButton product={product} />
       </div>
     </Link>

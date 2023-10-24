@@ -32,6 +32,12 @@
       height: 250px;
     }
 
+    @include onMobile {
+      width: 320px;
+      height: 200px;
+      gap: 10px;
+    }
+
     &-button {
       width: 32px;
       height: 32px;
@@ -48,12 +54,21 @@
       @include onTablet {
         width: 150px;
       }
+
+      @include onMobile {
+        width: 120px;
+        margin-top: 0;
+      }
     }
 
     &-message {
       @extend %h3;
       color: $dark-grey-c;
       text-align: center;
+
+      @include onMobile {
+        font-size: 14px;
+      }
     }
   }
 

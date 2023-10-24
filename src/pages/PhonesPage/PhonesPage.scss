@@ -43,12 +43,17 @@
     @include onTablet {
       margin: 20px 0;
     }
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &__out-stock {
     align-self: center;
     margin: 100px ;
     text-align: center;
+    min-width: 280px;
 
     &-big {
       @extend %h2;

@@ -27,12 +27,13 @@
 
   &__select {
     position: absolute;
-    width: 100%;
+    width: 176px;
     display: flex;
     flex-direction: column;
     margin-top: 4px;
     padding: 8px 0;
     background-color: $white-c;
+    z-index: 1;
     border: 1px solid $elements-grey-c;
 
     &-option {

@@ -41,11 +41,15 @@ $card-gap: 16px;
     }
 
     @include onTablet {
-      width: $card-width-mobile * 3 + $card-gap * 2;
+      width: $card-width-tablet * 3 + $card-gap * 2;
     }
 
     @include onMobile {
-      width: $card-width-mobile * 2 + $card-gap;
+      width: $card-width-tablet * 2 + $card-gap;
+
+      @media (max-width: 500px) {
+        width: $card-width-tablet;
+      }
     }
 
     &-list {
