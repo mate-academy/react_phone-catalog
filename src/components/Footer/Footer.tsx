@@ -1,8 +1,12 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 import logo from '../../images/Logo.svg';
 
 export const Footer = () => {
+  const handleButtonClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="main-container">
       <div className="container">
@@ -33,9 +37,13 @@ export const Footer = () => {
 
           <div className="footer-button-wrapper">
             Back to top
-            <Link to="/" className="footer-button">
+            <button
+              type="button"
+              className="footer-button"
+              onClick={handleButtonClick}
+            >
               ^
-            </Link>
+            </button>
           </div>
         </div>
       </div>

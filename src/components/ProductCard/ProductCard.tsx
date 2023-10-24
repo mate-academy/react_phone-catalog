@@ -17,7 +17,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
   const modifiedImageUrl = product.imageUrl.replace('phones', 'products');
   const [searchParams] = useSearchParams();
   const {
-    handleAddFn,
+    handleAddToCartFn,
     handleLikeFn,
   } = useContext(NavbarContext);
 
@@ -80,7 +80,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
             <button
               className="card__button-cart"
               type="button"
-              onClick={(e) => handleAddFn(e, product)}
+              onClick={(e) => handleAddToCartFn(e, product)}
             >
               Add to cart
             </button>
@@ -88,9 +88,9 @@ export const ProductCard: FC<Props> = ({ product }) => {
             <button
               className="card__button-cart card__button-cart--selected"
               type="button"
-              onClick={(e) => handleAddFn(e, product)}
+              onClick={(e) => handleAddToCartFn(e, product)}
             >
-              Selected
+              Added to cart
             </button>
           )}
           <button

@@ -10,6 +10,7 @@ export interface Product {
   screen: string;
   capacity: string;
   ram: string;
+  amout?: number;
 }
 
 export enum Sort {

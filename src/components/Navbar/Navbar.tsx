@@ -109,14 +109,14 @@ export const Navbar = () => {
           />
         </div>
         <div className="logo--like-wrapper">
-          <NavLink to="/" className="logo logo--like">
+          <NavLink to="/favorites" className="logo logo--like">
             {amountLiked !== 0 && (
               <span className="logo--amount">{amountLiked}</span>
             )}
           </NavLink>
 
         </div>
-        <NavLink to="/" className="logo logo--cart">
+        <NavLink to="/cart" className="logo logo--cart">
           {amountAdded !== 0 && (
             <span className="logo--amount">{amountAdded}</span>
           )}

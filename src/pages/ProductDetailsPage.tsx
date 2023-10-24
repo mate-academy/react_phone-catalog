@@ -17,6 +17,7 @@ import { useFetching } from '../helpers/UseFetchig';
 import Loader from '../components/Loader/Loader';
 import { getFinalPrice } from '../helpers/getFinalPrice';
 import { NavbarContext } from '../context/NavbarContext';
+import { ProductsSlider } from '../components/ProductsSlider/ProductsSlider';
 
 export const ProductDetailsPage = () => {
   const [searchParams] = useSearchParams();
@@ -35,11 +36,13 @@ export const ProductDetailsPage = () => {
     ram: '',
   };
   const [device, setDevice] = useState<Product>(defaultProduct);
+  const [devices, setDevices] = useState<Product[]>([]);
   const {
     type,
     price,
     discount,
     id,
+    ram,
   } = device;
   const colors = ['gold', 'green', 'black', 'white'];
   const [selectedButton, setSelectedButton] = useState('');
@@ -53,7 +56,7 @@ export const ProductDetailsPage = () => {
   }, [productDetails?.id]);
   const [bigImage, setBigImage] = useState('');
 
-  const { handleAddFn, handleLikeFn } = useContext(NavbarContext);
+  const { handleAddToCartFn, handleLikeFn } = useContext(NavbarContext);
 
   const getProductDetails = async () => {
     const response = await fetch(`${URL_PRODUCT_DETAILS}${productId}.json`);
@@ -66,6 +69,9 @@ export const ProductDetailsPage = () => {
   const getDevices = async () => {
     const response = await fetch(URL_PRODUCTS);
     const data = await response.json();
+
+    setDevices(data);
+
     const foundedDevice = data.find((dev: Product) => dev.id === productId);
 
     setDevice(foundedDevice);
@@ -81,6 +87,28 @@ export const ProductDetailsPage = () => {
     fetchProductDetails();
     getDevices();
   }, [productId]);
+
+  const detailsTech = [
+    'Screen',
+    'Resolution',
+    'CPU',
+    'RAM',
+    'Built in memory',
+    'Camera',
+    'USB',
+    'Cell',
+  ];
+
+  const details = [
+    productDetails?.display.screenSize,
+    productDetails?.display.screenResolution,
+    productDetails?.hardware.cpu,
+    productDetails?.storage.ram,
+    productDetails?.storage.flash,
+    productDetails?.camera.primary,
+    productDetails?.hardware.usb,
+    productDetails?.connectivity.cell,
+  ];
 
   return (
     <div className="container container--details">
@@ -123,13 +151,13 @@ export const ProductDetailsPage = () => {
             <div className="product-details__images-wrapper-small">
               {modifiedImagesUrl && modifiedImagesUrl.map(image => (
                 <div
-                  key={image}
-                  role="button"
-                  tabIndex={0}
                   className={cn('product-details__image-small-wrapper',
                     { 'selected-image': image === bigImage })}
                   onClick={() => setBigImage(image)}
                   onKeyPress={() => setBigImage(image)}
+                  key={image}
+                  role="button"
+                  tabIndex={0}
                 >
                   <img
                     className="product-details__image-small"
@@ -234,7 +262,7 @@ export const ProductDetailsPage = () => {
                     <button
                       className="product-details__button-cart"
                       type="button"
-                      onClick={(e) => handleAddFn(e, device)}
+                      onClick={(e) => handleAddToCartFn(e, device)}
                     >
                       Add to cart
                     </button>
@@ -243,7 +271,7 @@ export const ProductDetailsPage = () => {
                       className="product-details__button-cart
                       product-details__button-cart--selected"
                       type="button"
-                      onClick={(e) => handleAddFn(e, device)}
+                      onClick={(e) => handleAddToCartFn(e, device)}
                     >
                       Selected
                     </button>
@@ -275,7 +303,7 @@ export const ProductDetailsPage = () => {
                   <li className="product-details__details-li
                     product-details__details-li--light"
                   >
-                    Processor
+                    CPU
                   </li>
                   <li className="product-details__details-li
                     product-details__details-li--light"
@@ -298,16 +326,58 @@ export const ProductDetailsPage = () => {
                   <li className="product-details__details-li
                     product-details__details-li--dark"
                   >
-                    Processor
+                    {productDetails?.hardware.cpu}
                   </li>
                   <li className="product-details__details-li
                     product-details__details-li--dark"
                   >
-                    RAM
+                    {ram}
                   </li>
                 </ul>
               </div>
             </div>
+          </div>
+
+          <div className="product-details__about-wrapper">
+            <div className="product-details__about">
+              <h3 className="product-details__about-title">About</h3>
+              <div className="horizontal-line" />
+              <p className="product-details__about-description">
+                {productDetails?.description}
+              </p>
+            </div>
+
+            <div className="product-details__tech">
+              <h3 className="product-details__about-title">Tech specs</h3>
+              <div className="horizontal-line" />
+
+              <div className="product-details__tech-wrapper">
+                <ul className="product-details__tech-list">
+                  {detailsTech.map(tech => (
+                    <li className="product-details__tech-list-li
+                    product-details__tech-list-li--light"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+
+                <ul className="product-details__tech-list
+                product-details__tech-list--text-align"
+                >
+                  {details.map(tech => (
+                    <li className="product-details__tech-list-li
+                      product-details__tech-list-li--dark"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="brand-new-models">
+            <ProductsSlider title="You may also like" products={devices} />
           </div>
         </div>
       )}

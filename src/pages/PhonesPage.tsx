@@ -67,7 +67,7 @@ export const PhonesPage = () => {
           />
         )}
 
-        {isLoadingPhones && <Loader />}
+        {isLoadingPhones && !isErrorPhones && <Loader />}
       </div>
     </div>
   );
