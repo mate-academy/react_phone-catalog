@@ -5,6 +5,7 @@ export const DEF_START_PAGE = 1;
 export const DEF_PAGE_STEP = 16;
 export const DEF_SORT = '?sort=age&shown=16';
 
+export const DEF_CONTACTS = 'email: soi4.toxa@ukr.net';
 export const GITHUB_REPO
   = 'https://github.com/mate-academy/react_phone-catalog/pull/234';
 

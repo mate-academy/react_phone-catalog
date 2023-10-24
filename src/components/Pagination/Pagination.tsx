@@ -5,41 +5,19 @@ import { useEffect, useState } from 'react';
 import { SearchParams } from '../../types/SearchParams';
 import { OptionsForSort } from '../../types/OptionsForSort';
 import { SearchLink } from '../SearchLink';
+import { getMainWidth } from '../../helpers/getMainWidth';
 import {
   DEF_START_PAGE,
-  MIN_WIDTH_DESKTOP,
-  MIN_WIDTH_TABLET,
   WIDTH_BIG_GAP_PAG,
   WIDTH_FOUR_ICON,
   WIDTH_GAP_PAG,
   WIDTH_ICON_PAG,
-  WIDTH_MAIN_DESKTOP,
-  WIDTH_MARGINS_MOBILE,
-  WIDTH_MARGINS_TABLET,
   WIDTH_TWO_ICON,
 } from '../../helpers/consts';
 
 type Props = {
   totalPages: number,
   onSetCurrentPage: (page: number) => void,
-};
-
-const getMainWidth = () => {
-  const windowWidth = window.innerWidth;
-  const windowScreenWigth = window.screen.width;
-  const width = windowWidth < windowScreenWigth
-    ? windowWidth
-    : windowScreenWigth;
-
-  if (width < MIN_WIDTH_DESKTOP) {
-    return width - WIDTH_MARGINS_TABLET;
-  }
-
-  if (width < MIN_WIDTH_TABLET) {
-    return width - WIDTH_MARGINS_MOBILE;
-  }
-
-  return WIDTH_MAIN_DESKTOP;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -132,7 +110,7 @@ export const Pagination: React.FC<Props> = ({
     return () => {
       window.removeEventListener('resize', getCorrectPagination);
     };
-  }, [currentPage]);
+  }, [currentPage, shownPerPage]);
 
   return (
     <div className="pagination">

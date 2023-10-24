@@ -2,7 +2,11 @@ import './Footer.scss';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
-import { GITHUB_REPO, MIN_WIDTH_TABLET } from '../../helpers/consts';
+import {
+  DEF_CONTACTS,
+  GITHUB_REPO,
+  MIN_WIDTH_TABLET,
+} from '../../helpers/consts';
 
 export const Footer = () => {
   const [isShownGoToTop, setIsShownGoToTop] = useState<boolean>(true);
@@ -75,6 +79,7 @@ export const Footer = () => {
                   type="button"
                   className="footer__nav-link nav__link"
                   onClick={() => {}}
+                  title={DEF_CONTACTS}
                 >
                   Contacts
                 </button>

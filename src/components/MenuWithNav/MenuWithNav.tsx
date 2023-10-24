@@ -4,8 +4,12 @@ import { Header } from '../Header/Header';
 import './MenuWithNav.scss';
 import { NamesByHeader } from '../../types/NamesByHeader';
 import { NamesByLinks } from '../../types/NamesByLinks';
-import { DEF_SORT, GITHUB_REPO } from '../../helpers/consts';
 import { getState } from '../../helpers/getState';
+import {
+  DEF_CONTACTS,
+  DEF_SORT,
+  GITHUB_REPO,
+} from '../../helpers/consts';
 
 type Props = {
   quantityLiked: number,
@@ -136,6 +140,7 @@ export const MenuWithNav: React.FC<Props> = ({
             <li className="menu__item menu__item--space">
               <div
                 className="menu__link"
+                title={DEF_CONTACTS}
               >
                 {NamesByHeader.Contacts}
               </div>

@@ -75,60 +75,62 @@ export const HorizontProductCard: React.FC<Props> = ({
 
   return (
     <div className="horizont-card">
-      <div className="horizont-card__left">
-        <button
-          type="button"
-          className="horizont-card__close"
-          onClick={handlerClickDeleteToCart}
-          data-cy="cartDeleteButton"
-        >
-          ×
-        </button>
+      <button
+        type="button"
+        className="horizont-card__button-close"
+        onClick={handlerClickDeleteToCart}
+        data-cy="cartDeleteButton"
+      >
+        ×
+      </button>
 
-        <Link
-          to={`${NamesByLinks.Phones}/${phoneId}`}
-          state={getState(pathname, search)}
-          className="horizont-card__image--container"
-        >
-          <img
-            src={`${BASE_URL}/${image}`}
-            alt={`${BASE_URL}/${image}`}
-            className="horizont-card__image"
-          />
-        </Link>
-
-        <div className="horizont-card__name">{name}</div>
-      </div>
-
-      <div className="horizont-card__right">
-        <div className="horizont-card__pagination">
-          <button
-            type="button"
-            className={classNames(
-              'horizont-card__pagination--button',
-              { 'is-disabled': quantity === 1 },
-            )}
-            disabled={quantity === 1}
-            onClick={handlerClickMinus}
+      <div className="horizont-card__content">
+        <div className="horizont-card__img-and-name">
+          <Link
+            to={`${NamesByLinks.Phones}/${phoneId}`}
+            state={getState(pathname, search)}
+            className="horizont-card__image--container"
           >
-            –
-          </button>
+            <img
+              src={`${BASE_URL}/${image}`}
+              alt={`${BASE_URL}/${image}`}
+              className="horizont-card__image"
+            />
+          </Link>
 
-          <span className="horizont-card__pagination--number">
-            {quantity}
-          </span>
-
-          <button
-            type="button"
-            className="horizont-card__pagination--button"
-            disabled={false}
-            onClick={handlerClickPlus}
-          >
-            +
-          </button>
+          <div className="horizont-card__name">{name}</div>
         </div>
 
-        <h2 className="title__h-two">{`$${price}`}</h2>
+        <div className="horizont-card__pagination-and-price">
+          <div className="horizont-card__pagination">
+            <button
+              type="button"
+              className={classNames(
+                'horizont-card__pagination--button',
+                { 'is-disabled': quantity === 1 },
+              )}
+              disabled={quantity === 1}
+              onClick={handlerClickMinus}
+            >
+              –
+            </button>
+
+            <span className="horizont-card__pagination--number">
+              {quantity}
+            </span>
+
+            <button
+              type="button"
+              className="horizont-card__pagination--button"
+              disabled={false}
+              onClick={handlerClickPlus}
+            >
+              +
+            </button>
+          </div>
+
+          <h2 className="title__h-two">{`$${price}`}</h2>
+        </div>
       </div>
     </div>
   );

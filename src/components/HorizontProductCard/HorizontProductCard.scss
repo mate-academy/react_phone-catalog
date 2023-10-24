@@ -4,29 +4,13 @@
 .horizont-card {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   width: 100%;
   padding: $paddingRightCartPage;
   border: 1px solid $colorElements;
-  box-sizing: border-box;
 
-  @include onMobile {
-    flex-direction: column;
-    gap: 20px;
-    align-items: end;
-  }
-
-  &__left {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @include onMobile {
-      margin: 0 auto;
-    }
-  }
-
-  &__close {
+  &__button-close {
     height: 21px;
     width: 21px;
     font-size: 21px;
@@ -38,6 +22,27 @@
       color: $colorPrimary;
       cursor: pointer;
     }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    width: 97%;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+
+      width: 90%;
+    }
+  }
+
+  &__img-and-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__image {
@@ -64,11 +69,10 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-
     color: $colorPrimary;
   }
 
-  &__right {
+  &__pagination-and-price {
     display: flex;
     justify-content: space-between;
     align-items: center;

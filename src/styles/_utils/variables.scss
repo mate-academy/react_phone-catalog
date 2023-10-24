@@ -59,16 +59,16 @@ $minwidthDetailsMobile: 320px;
 $heightDetailsImg: 442px;
 $heightSmallImg: 80px;
 $gapBetweenSmallImgs:
-  ($heightDetailsImg - 5 * $heightSmallImg) / 4;
+  ($heightDetailsImg - 5 * $heightSmallImg - 14) / 4;
 
 $heightDetailsImgTablet: 300px;
 $heightSmallImgTablet: 55px;
 $gapBetweenSmallImgsTablet:
-  ($heightDetailsImgTablet - 5 * $heightSmallImgTablet) / 4;
+  ($heightDetailsImgTablet - 5 * $heightSmallImgTablet - 12) / 4;
 
 $heightDetailsImgMobile: 200px;
 $heightSmallImgMobile: 37px;
 $gapBetweenSmallImgsMobile:
-  ($heightDetailsImgMobile - 5 * $heightSmallImgMobile) / 4;
+  ($heightDetailsImgMobile - 5 * $heightSmallImgMobile - 12) / 4;
 
 $paddingRightCartPage: 21px;

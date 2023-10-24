@@ -41,6 +41,13 @@ export const Select: React.FC<Props> = ({
 
   return (
     <div className="select" ref={ref}>
+      <select
+        hidden
+        aria-label={searchParam}
+        name={searchParam}
+        id={searchParam}
+      />
+
       <button
         type="button"
         className="select__button"

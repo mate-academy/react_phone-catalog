@@ -35,7 +35,7 @@ export const SelectCapacity: React.FC<Props> = ({
               state={getState(pathname, search)}
               className={getClassForLink}
             >
-              {`${pr.capacity.slice(0, -2)} GB`}
+              {`${parseFloat(pr.capacity)} GB`}
             </NavLink>
           </li>
         ))}
