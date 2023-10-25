@@ -106,7 +106,7 @@ export const ProductsList: FC<Props> = ({ devices }) => {
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>
-            <option value={devices.length}>all</option>
+            <option value={devices.length || 4}>all</option>
           </select>
         </div>
       </div>

@@ -11,6 +11,11 @@
   font-family: $defaultFont;
 }
 
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 .container {
   padding-inline: 152px;
 
@@ -50,7 +55,7 @@
     cursor: pointer;
 
     &:active {
-      border: none;
+      border: 1px solid $navbarLinkColor;
       background-color: $navbarLinkColor;
       color: #fff;
     }
@@ -84,6 +89,7 @@
 
 .devices {
   margin-top: 24px;
+
 
   &__way {
     display: block;
@@ -501,8 +507,8 @@
   &__card-wrapper {
     margin-top: 40px;
     display: flex;
-    gap: 16px;
     flex-wrap: wrap;
+    gap: 16px;
   }
 
   &__amount {

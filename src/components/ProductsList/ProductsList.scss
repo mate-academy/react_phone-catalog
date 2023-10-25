@@ -3,8 +3,9 @@
 .card-container {
   margin-top: 24px;
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 auto;
 }
 .products-list {
   margin-top: 40px;
