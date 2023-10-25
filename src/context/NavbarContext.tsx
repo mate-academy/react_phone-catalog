@@ -28,6 +28,8 @@ interface ContextValue {
     par: Product) => void;
   handleAddToCartFn: (event: React.MouseEvent<HTMLButtonElement>,
     par: Product) => void;
+  products: Product[];
+  setProducts: Dispatch<SetStateAction<Product[]>>;
 }
 
 export const NavbarContext = createContext<ContextValue>({
@@ -40,6 +42,8 @@ export const NavbarContext = createContext<ContextValue>({
   device: '',
   handleAddToCartFn: () => {},
   handleLikeFn: () => {},
+  products: [],
+  setProducts: () => {},
 });
 
 export const NavbarContextProvider: React.FC<NavbarContextProps> = ({
@@ -49,45 +53,57 @@ export const NavbarContextProvider: React.FC<NavbarContextProps> = ({
   const [addedDevices, setAddedDevices] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const getAddedToCardProducts = async () => {
+  const getProducts = async () => {
     const response = await fetch(URL_PRODUCTS);
     const data = await response.json();
-    const addedDevicesId = Object.entries(localStorage)
-      .filter((device) => device[1] === 'added')
-      .map((dev) => dev[0])
-      .map((d) => {
-        const index = d.indexOf('-');
 
-        return d.slice(index + 1);
-      });
-    const filteredAddedDevices = data
-      .filter((device: Product) => addedDevicesId.includes(device.id));
-
-    setAddedDevices(filteredAddedDevices);
+    setProducts(data);
   };
 
-  const getLikedProducts = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
-    const likedDevicesId = Object.entries(localStorage)
-      .filter((device) => device[1] === 'liked')
-      .map((dev) => dev[0])
-      .map((d) => {
-        const index = d.indexOf('-');
+  const getAddedToCardProducts = () => {
+    if (products.length) {
+      const addedDevicesId = Object.entries(localStorage)
+        .filter((device) => device[1] === 'added')
+        .map((dev) => dev[0])
+        .map((d) => {
+          const index = d.indexOf('-');
 
-        return d.slice(index + 1);
-      });
-    const filteredLikedDevices = data
-      .filter((device: Product) => likedDevicesId.includes(device.id));
+          return d.slice(index + 1);
+        });
+      const filteredAddedDevices = products
+        .filter((device: Product) => addedDevicesId.includes(device.id));
 
-    setLikedDevices(filteredLikedDevices);
+      setAddedDevices(filteredAddedDevices);
+    }
   };
+
+  const getLikedProducts = () => {
+    if (products.length) {
+      const likedDevicesId = Object.entries(localStorage)
+        .filter((device) => device[1] === 'liked')
+        .map((dev) => dev[0])
+        .map((d) => {
+          const index = d.indexOf('-');
+
+          return d.slice(index + 1);
+        });
+      const filteredLikedDevices = products
+        .filter((device: Product) => likedDevicesId.includes(device.id));
+
+      setLikedDevices(filteredLikedDevices);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   useEffect(() => {
     getAddedToCardProducts();
     getLikedProducts();
-  }, []);
+  }, [products.length]);
 
   const handleLikeFn = (e: React.MouseEvent<HTMLButtonElement>,
     product: Product) => {
@@ -169,6 +185,8 @@ export const NavbarContextProvider: React.FC<NavbarContextProps> = ({
     device,
     handleAddToCartFn,
     handleLikeFn,
+    products,
+    setProducts,
   };
 
   return (

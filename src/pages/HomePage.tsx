@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 import sliderImage from '../images/banner-phones.png';
 import sliderImage1 from '../images/banner-tablets.png';
 import sliderImage2 from '../images/banner-accessories.png';
-
-import { useFetching } from '../helpers/UseFetchig';
 import { Product } from '../types/Product';
 import { ProductsSlider } from '../components/ProductsSlider/ProductsSlider';
 import Loader from '../components/Loader/Loader';
 import { ShopByCategory } from '../components/ShopByCategory/ShopByCategory';
-import { URL_PRODUCTS } from '../helpers/Url';
+import { NavbarContext } from '../context/NavbarContext';
 
 export const HomePage = () => {
   const [discountedProducts, setDiscountedProducts] = useState<Product[]>([]);
@@ -21,6 +19,7 @@ export const HomePage = () => {
   });
   const [sliderIndex, setSliderIndex] = useState(0);
   const sliderImages = [sliderImage, sliderImage1, sliderImage2];
+  const { products } = useContext(NavbarContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,16 +45,14 @@ export const HomePage = () => {
     }
   };
 
-  const getAmountOfDevices = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
-    const phonesAmount = data.filter(
+  const getAmountOfDevices = () => {
+    const phonesAmount = products.filter(
       (device: Product) => device.type === 'phone',
     ).length;
-    const tabletsAmount = data.filter(
+    const tabletsAmount = products.filter(
       (device: Product) => device.type === 'tablet',
     ).length;
-    const accessoriesAmount = data.filter(
+    const accessoriesAmount = products.filter(
       (device: Product) => device.type === 'accessory',
     ).length;
 
@@ -67,18 +64,16 @@ export const HomePage = () => {
     });
   };
 
-  const getHotPriceProducts = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
-    const filteredData = data.filter((product: Product) => product.discount);
+  const getHotPriceProducts = () => {
+    const filteredData = products
+      .filter((product: Product) => product.discount);
 
     setDiscountedProducts(filteredData);
   };
 
   const getBrandNewProducts = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
-    const filteredData = data.filter((product: Product) => !product.discount);
+    const filteredData = products
+      .filter((product: Product) => !product.discount);
     const sortedData = filteredData.sort(
       (a: Product, b: Product) => b.price - a.price,
     );
@@ -86,23 +81,11 @@ export const HomePage = () => {
     setExpensiveProducts(sortedData);
   };
 
-  const [
-    fetchDiscoutedProducts,
-    isLoadingDiscountetProducts,
-    isErrorDiscountedProducts,
-  ] = useFetching(getHotPriceProducts);
-
-  const [
-    fetchExpensiveProducts,
-    isLoadingExpensiveProducts,
-    isErrorExpensiveProducts,
-  ] = useFetching(getBrandNewProducts);
-
   useEffect(() => {
-    fetchDiscoutedProducts();
-    fetchExpensiveProducts();
+    getBrandNewProducts();
+    getHotPriceProducts();
     getAmountOfDevices();
-  }, []);
+  }, [products.length]);
 
   return (
     <div className="container">
@@ -173,7 +156,7 @@ export const HomePage = () => {
       </div>
 
       <div className="hot-prices">
-        {isLoadingDiscountetProducts && !isErrorDiscountedProducts && (
+        {!discountedProducts.length && (
           <Loader />
         )}
         <ProductsSlider title="Hot prices" products={discountedProducts} />
@@ -182,7 +165,7 @@ export const HomePage = () => {
       <ShopByCategory amountOfDevices={amountOfDevices} />
 
       <div className="brand-new-models">
-        {isLoadingExpensiveProducts && !isErrorExpensiveProducts && <Loader />}
+        {!expensiveProducts.length && <Loader />}
         <ProductsSlider title="Brand new models" products={expensiveProducts} />
       </div>
     </div>
