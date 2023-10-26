@@ -1,119 +1,65 @@
 import { Product } from '../types/Product';
 import { CartProduct } from '../types/CartProduct';
-import { LocaleStorageTypes } from '../types/LocaleStorageTypes';
-import {
-  setCartItemsToLocaleStorage,
-  getCartItemsFromLocaleStorage,
-  setFavouritesTolocaleStorage,
-  getFavouritesFromLocaleStorage,
-} from './updateLocaleStorage';
-
-export const findProductOnCart = (id: string) => {
-  let match = false;
-
-  getCartItemsFromLocaleStorage(LocaleStorageTypes.toBuy).forEach(device => {
-    if (device.id === id) {
-      match = true;
-
-      return match;
-    }
-
-    return match;
-  });
-
-  return match;
-};
-
-export const findProductOnFavourites = (id: string) => {
-  let match = false;
-
-  if (getFavouritesFromLocaleStorage(
-    LocaleStorageTypes.favourites,
-  ).length > 0) {
-    getFavouritesFromLocaleStorage(
-      LocaleStorageTypes.favourites,
-    ).map(device => {
-      if (device.id === id) {
-        match = true;
-
-        return match;
-      }
-
-      return match;
-    });
-  }
-
-  return match;
-};
 
 export const updateFavourites = (
+  chosenProducts: Product[],
   setChosenProducts: (items: Product[]) => void,
-  setLoadingItem: (ind: number | null) => void,
+  setLoadingItem: (ind: string) => void,
   event: React.SyntheticEvent,
   item: Product,
   favouritesTimeout = 0,
 ) => {
   event.preventDefault();
 
-  let ProductIndex = 0;
+  const productToManipulate
+    = chosenProducts.find(device => device.id === item.id);
 
-  getFavouritesFromLocaleStorage(
-    LocaleStorageTypes.favourites,
-  ).map((device, index) => {
-    if (device.id === item.id) {
-      ProductIndex = index;
-    }
-
-    return null;
-  });
-
-  if (findProductOnFavourites(item.id) === false) {
+  if (!productToManipulate) {
     const toFavourites = [
-      ...getFavouritesFromLocaleStorage(LocaleStorageTypes.favourites),
+      ...chosenProducts,
       item,
     ];
 
     setChosenProducts(toFavourites);
-    setFavouritesTolocaleStorage(LocaleStorageTypes.favourites, toFavourites);
+
+    // eslint-disable-next-line
+    console.log(toFavourites, 'adding')
   } else {
-    setLoadingItem(ProductIndex);
+    setLoadingItem(productToManipulate.id);
 
-    const toFavourites = [
-      ...getFavouritesFromLocaleStorage(
-        LocaleStorageTypes.favourites,
-      ).slice(0, ProductIndex),
-      ...getFavouritesFromLocaleStorage(
-        LocaleStorageTypes.favourites,
-      ).slice(ProductIndex + 1),
-    ];
-
-    setChosenProducts(toFavourites as Product[]);
+    const toFavourites = chosenProducts.filter(device => device.id !== item.id);
 
     setTimeout(() => {
-      setFavouritesTolocaleStorage(LocaleStorageTypes.favourites, toFavourites);
-      setLoadingItem(null);
+      setChosenProducts(toFavourites);
+      setLoadingItem('');
     }, favouritesTimeout);
+
+    // eslint-disable-next-line
+    console.log(toFavourites, 'deleting')
   }
 };
 
 export const updateCart = (
+  productsToBuy: CartProduct[],
   setProductsToBuy: (items: CartProduct[]) => void,
   event: React.SyntheticEvent,
   item: Product,
 ) => {
   event.preventDefault();
 
-  if (findProductOnCart(item.id) === false) {
+  if (!(productsToBuy.find(device => device.id === item.id))) {
     const toBuy = [
-      ...getCartItemsFromLocaleStorage(LocaleStorageTypes.toBuy),
+      ...productsToBuy,
       {
         id: item.id,
         quantity: 1,
         item,
       },
-    ] as CartProduct[];
+    ];
 
-    setCartItemsToLocaleStorage(LocaleStorageTypes.toBuy, toBuy);
+    // eslint-disable-next-line
+    console.log(toBuy, 'toByu')
+
     setProductsToBuy(toBuy);
   }
 };

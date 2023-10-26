@@ -15,6 +15,7 @@ import { ProductTypes } from './types/productTypes';
 import { SearchTypes } from './types/SearchTypes';
 import { useUpdateSearch } from './utils/hooks';
 import { scrollToTop } from './utils/scrollTop';
+import { Navigation } from './Navigation';
 
 type Props = {
   productType: ProductTypes,
@@ -173,6 +174,8 @@ export const Products: React.FC<Props> = ({
 
   return (
     <div className="products">
+
+      <Navigation />
       <h1 className="products__title">
         {`${productType}`}
       </h1>

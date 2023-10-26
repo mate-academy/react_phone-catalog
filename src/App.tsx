@@ -12,13 +12,10 @@ import { Favourites } from './Favourites';
 import { Cart } from './Cart';
 import { Footer } from './Footer';
 import { ProductTypes } from './types/productTypes';
+import { NoResults } from './NoResults';
 // import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 const App = () => {
-  // const activeProduct = JSON.parse(
-  // localStorage.getItem(LocaleStorageTypes.product) as string,
-  // ) || null;
-
   return (
     <div className="app">
       <Header />
@@ -44,7 +41,6 @@ const App = () => {
               index
               element={(
                 <>
-                  <Navigation />
                   <Products
                     productType={ProductTypes.phones}
                     type="phone"
@@ -56,7 +52,6 @@ const App = () => {
               path=":activeProductId"
               element={(
                 <>
-                  <Navigation />
                   <ProductDetails />
                 </>
               )}
@@ -70,7 +65,6 @@ const App = () => {
               index
               element={(
                 <>
-                  <Navigation />
                   <Products
                     productType={ProductTypes.tablets}
                     type="tablet"
@@ -82,7 +76,6 @@ const App = () => {
               path=":activeProductId"
               element={(
                 <>
-                  <Navigation />
                   <ProductDetails />
                 </>
               )}
@@ -95,7 +88,6 @@ const App = () => {
             <Route
               element={(
                 <>
-                  <Navigation />
                   <Products
                     productType={ProductTypes.accessories}
                     type="accessory"
@@ -107,7 +99,6 @@ const App = () => {
               path=":activeProductId"
               element={(
                 <>
-                  <Navigation />
                   <ProductDetails />
                 </>
               )}
@@ -135,7 +126,7 @@ const App = () => {
 
           <Route
             path="/*"
-            element={<p>Page not found</p>}
+            element={<NoResults productType="Page" />}
           />
         </Routes>
       </main>

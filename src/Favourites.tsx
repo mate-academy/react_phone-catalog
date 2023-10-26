@@ -7,17 +7,16 @@ import { useSearchParams } from 'react-router-dom';
 import { Context } from './Context';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
-import { getFavouritesFromLocaleStorage } from './utils/updateLocaleStorage';
-import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 export const Favourites = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const { loadingItem } = useContext(Context);
+  const {
+    loadingItem,
+    chosenProducts,
+  } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
-  const filteredProducts = getFavouritesFromLocaleStorage(
-    LocaleStorageTypes.favourites,
-  ).filter(
+  const filteredProducts = chosenProducts.filter(
     product => product.name.toLowerCase().includes(query.toLowerCase()),
   );
 
@@ -55,11 +54,8 @@ export const Favourites = () => {
 
           {(filteredProducts.length > 0
             && !isLoading) && (
-            filteredProducts.map((
-              product,
-              index,
-            ) => (
-              index !== loadingItem ? (
+            filteredProducts.map(product => (
+              product.id !== loadingItem ? (
                 <ProductCard
                   product={product}
                   favouritesTimeout={1000}
@@ -76,9 +72,7 @@ export const Favourites = () => {
             ))
           )}
 
-          {(getFavouritesFromLocaleStorage(
-            LocaleStorageTypes.favourites,
-          ).length === 0
+          {(filteredProducts.length === 0
             && !isLoading) && (
             <h2 className="favourites__title favourites__title--error">
               Favourites not found

@@ -1,4 +1,9 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+//  useContext
+} from 'react';
 import { debounce } from 'lodash';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -9,8 +14,13 @@ import {
 } from './utils/updateLocaleStorage';
 import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { SearchTypes } from './types/SearchTypes';
+// import { Context } from './Context';
 
 export const Header: React.FC = () => {
+  // const {
+  //   chosenProducts,
+  //   productsToBuy,
+  // } = useContext(Context);
   const { pathname } = useLocation();
   const { updateSearch } = useUpdateSearch();
   const [searchParams] = useSearchParams();
@@ -106,10 +116,11 @@ export const Header: React.FC = () => {
         <div className="header__container">
           <input
             className={classNames('header__filter', {
-              'header__filter--active': pathname.slice(1) !== '',
+              'header__filter--active': pathname.slice(1) !== ''
+              && pathname.split('/').length !== 3,
             })}
             type="text"
-            placeholder={`Search in ${pathname.slice(1)}...`}
+            placeholder={`Search in ${pathname.split('/')[1]}...`}
             disabled={pathname.slice(1) === ''}
             value={query}
             onChange={(event) => {

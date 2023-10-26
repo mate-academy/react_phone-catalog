@@ -3,10 +3,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { Product } from './types/Product';
-// import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import {
-  findProductOnCart,
-  findProductOnFavourites,
   updateCart,
   updateFavourites,
 } from './utils/productManipulations';
@@ -21,20 +18,21 @@ export const ProductCard: React.FC<Props> = ({
   favouritesTimeout,
 }) => {
   const {
+    chosenProducts,
+    productsToBuy,
     setChosenProducts,
     setProductsToBuy,
     setLoadingItem,
-    setActiveProduct,
   } = useContext(Context);
+
+  // eslint-disable-next-line
+  console.log(chosenProducts)
 
   return (
     product && (
       <Link
         className="product__link"
         to={`/${product.type}s/${product.id}`}
-        onClick={() => {
-          setActiveProduct(product);
-        }}
       >
         {product && (
           <div className="product">
@@ -76,16 +74,17 @@ export const ProductCard: React.FC<Props> = ({
                   'product__button_add',
                   {
                     'product__button_add--active':
-                    findProductOnCart(product.id),
+                    productsToBuy.find(device => device.id === product.id),
                   },
                 )}
                 onClick={(event) => updateCart(
+                  productsToBuy,
                   setProductsToBuy,
                   event,
                   product,
                 )}
               >
-                {findProductOnCart(product.id)
+                {productsToBuy.find(device => device.id === product.id)
                   ? 'Added to cart'
                   : 'Add to cart'}
               </button>
@@ -96,10 +95,11 @@ export const ProductCard: React.FC<Props> = ({
                   'product__button_favourites',
                   {
                     'product__button_favourites--active':
-                    findProductOnFavourites(product.id),
+                    chosenProducts.find(device => device.id === product.id),
                   },
                 )}
                 onClick={(event) => updateFavourites(
+                  chosenProducts,
                   setChosenProducts,
                   setLoadingItem,
                   event,

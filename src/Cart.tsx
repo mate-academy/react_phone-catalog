@@ -3,34 +3,26 @@ import { useState, useContext, useEffect } from 'react';
 import { Loader } from './Loader';
 import { Context } from './Context';
 import { CartProduct } from './types/CartProduct';
-import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { GoBack } from './GoBack';
-import {
-  setCartItemsToLocaleStorage,
-  getCartItemsFromLocaleStorage,
-} from './utils/updateLocaleStorage';
 
 export const Cart = () => {
-  const { setProductsToBuy, loadingItem, setLoadingItem } = useContext(Context);
+  const {
+    productsToBuy,
+    setProductsToBuy,
+    loadingItem,
+    setLoadingItem,
+  } = useContext(Context);
   const [isLoading, setIsLoading] = useState(false);
   const [isMessageActive, setIsMessageActive] = useState(false);
 
-  const remove = (index: number) => {
-    setLoadingItem(index);
+  const remove = (id: string) => {
+    setLoadingItem(id);
 
     setTimeout(() => {
-      const toBuy = ([
-        ...getCartItemsFromLocaleStorage(
-          LocaleStorageTypes.toBuy,
-        ).slice(0, index),
-        ...getCartItemsFromLocaleStorage(
-          LocaleStorageTypes.toBuy,
-        ).slice(index + 1),
-      ]);
+      const toBuy = productsToBuy.filter(device => device.id !== id);
 
-      setCartItemsToLocaleStorage(LocaleStorageTypes.toBuy, toBuy);
       setProductsToBuy(toBuy);
-      setLoadingItem(null);
+      setLoadingItem('');
     }, 1000);
   };
 
@@ -41,16 +33,11 @@ export const Cart = () => {
     };
 
     const toBuy = ([
-      ...getCartItemsFromLocaleStorage(
-        LocaleStorageTypes.toBuy,
-      ).slice(0, index),
+      ...productsToBuy.slice(0, index),
       newItem,
-      ...getCartItemsFromLocaleStorage(
-        LocaleStorageTypes.toBuy,
-      ).slice(index + 1),
+      ...productsToBuy.slice(index + 1),
     ]);
 
-    setCartItemsToLocaleStorage(LocaleStorageTypes.toBuy, toBuy);
     setProductsToBuy(toBuy);
   };
 
@@ -61,7 +48,7 @@ export const Cart = () => {
   const getCost = () => {
     let cost = 0;
 
-    getCartItemsFromLocaleStorage(LocaleStorageTypes.toBuy).forEach(product => {
+    productsToBuy.forEach(product => {
       if (product.item.discount === 0) {
         cost += (product.item.price * product.quantity);
       } else {
@@ -78,7 +65,7 @@ export const Cart = () => {
   const getQuantity = () => {
     let quantity = 0;
 
-    getCartItemsFromLocaleStorage(LocaleStorageTypes.toBuy).forEach(product => {
+    productsToBuy.forEach(product => {
       quantity += product.quantity;
     });
 
@@ -112,22 +99,18 @@ export const Cart = () => {
         </div>
       )}
 
-      {(getCartItemsFromLocaleStorage(
-        LocaleStorageTypes.toBuy,
-      ).length > 0 && !isLoading) && (
+      {(productsToBuy.length > 0 && !isLoading) && (
         <div className="cart__container">
           <div className="cart__products">
-            {getCartItemsFromLocaleStorage(
-              LocaleStorageTypes.toBuy,
-            ).map((item, index) => (
-              index !== loadingItem ? (
+            {productsToBuy.map((item, index) => (
+              item.id !== loadingItem ? (
                 <div className="cart__item">
                   <div className="cart__content">
                     <button
                       type="button"
                       aria-label="Delete"
                       className="cart__button"
-                      onClick={() => remove(index)}
+                      onClick={() => remove(item.id)}
                     />
                     <img
                       className="cart__image"
@@ -187,7 +170,7 @@ export const Cart = () => {
                         type="button"
                         aria-label="Delete"
                         className="cart__button"
-                        onClick={() => remove(index)}
+                        onClick={() => remove(item.id)}
                       />
                       <img
                         className="cart__image"
@@ -274,9 +257,7 @@ export const Cart = () => {
         </div>
       )}
 
-      {(getCartItemsFromLocaleStorage(
-        LocaleStorageTypes.toBuy,
-      ).length === 0 && !isLoading) && (
+      {(productsToBuy.length === 0 && !isLoading) && (
         <h2 className="cart__title cart__title--error">
           Products not found
         </h2>

@@ -7,6 +7,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 // import { Product } from './types/Product';
 import { Details } from './types/Details';
+import { Navigation } from './Navigation';
 // import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { Loader } from './Loader';
 import { getDetails, getProducts } from './api/products';
@@ -14,12 +15,11 @@ import { ProductsSlider } from './ProductsSlider';
 import { GoBack } from './GoBack';
 import { Context } from './Context';
 import {
-  findProductOnCart,
-  findProductOnFavourites,
   updateCart,
   updateFavourites,
 } from './utils/productManipulations';
 import { Product } from './types/Product';
+import { NoResults } from './NoResults';
 
 type Props = {
   favouritesTimeout?: number,
@@ -32,6 +32,8 @@ export const ProductDetails: React.FC<Props> = ({
   const avaliebleColors = ['#f0f0f0', '#000', '#62849c', '#96999b'];
   const avaliebleCapacity = [64, 264, 512];
   const {
+    chosenProducts,
+    productsToBuy,
     setChosenProducts,
     setProductsToBuy,
     setLoadingItem,
@@ -45,6 +47,7 @@ export const ProductDetails: React.FC<Props> = ({
   const [activeCapacity, setActiveCapacity] = useState(avaliebleCapacity[0]);
   const [isPhotoActive, setIsPhotoActive] = useState(false);
   const [activeProduct, setProduct] = useState<Product | null>(null);
+  const productType = pathname.split('/')[1];
   const display = details?.display.screenResolution.slice(
     details?.display.screenResolution.indexOf('(') + 1,
     details?.display.screenResolution.length - 1,
@@ -79,7 +82,7 @@ export const ProductDetails: React.FC<Props> = ({
         setActiveImageUrl(getUrl((response as Details).images[0]));
       }
     } catch (error) {
-      setIsError(false);
+      setIsError(true);
     } finally {
       setIsLoading(false);
     }
@@ -87,25 +90,26 @@ export const ProductDetails: React.FC<Props> = ({
 
   useEffect(() => {
     get();
-  }, [activeProduct?.name, pathname]);
+  }, [pathname]);
 
   return (
     <div className="details">
-      <GoBack />
-      <h1 className="details__title">{activeProduct?.name}</h1>
 
       {isLoading && (
         <Loader />
       )}
 
-      {isError && (
-        <p data-cy="peopleLoadingError" className="has-text-danger">
-          Something went wrong
-        </p>
+      {(isError || (!isLoading && !isError && !activeProduct)) && (
+        <NoResults
+          productType={`${productType.slice(0, productType.length - 1)}`}
+        />
       )}
 
       {(!isLoading && !isError && activeProduct) && (
         <>
+          <Navigation />
+          <GoBack />
+          <h1 className="details__title">{activeProduct?.name}</h1>
           <div className="details__product">
             <div className="details__photo_container">
               {details?.images.map(imageUrl => (
@@ -239,16 +243,19 @@ export const ProductDetails: React.FC<Props> = ({
                     'details__button_add',
                     {
                       'details__button_add--active':
-                      findProductOnCart(activeProduct.id) === true,
+                      productsToBuy.find(
+                        device => device.id === activeProduct.id,
+                      ),
                     },
                   )}
                   onClick={(event) => updateCart(
+                    productsToBuy,
                     setProductsToBuy,
                     event,
                     activeProduct,
                   )}
                 >
-                  {findProductOnCart(activeProduct.id) === true
+                  {productsToBuy.find(device => device.id === activeProduct.id)
                     ? 'Added to cart'
                     : 'Add to cart'}
                 </button>
@@ -259,10 +266,13 @@ export const ProductDetails: React.FC<Props> = ({
                     'details__button_favourites',
                     {
                       'details__button_favourites--active':
-                      findProductOnFavourites(activeProduct.id),
+                      chosenProducts.find(
+                        device => device.id === activeProduct.id,
+                      ),
                     },
                   )}
                   onClick={(event) => updateFavourites(
+                    chosenProducts,
                     setChosenProducts,
                     setLoadingItem,
                     event,
@@ -398,9 +408,6 @@ export const ProductDetails: React.FC<Props> = ({
         </>
       )}
 
-      {(!isLoading && !isError && !activeProduct) && (
-        <h3>No product</h3>
-      )}
       <div
         className={classNames(
           'details__cover',
