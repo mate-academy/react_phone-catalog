@@ -1,7 +1,7 @@
 export const Header = () => {
   return (
     <header className="header">
-      <nav className="nav-row">
+      <nav className="nav">
         <a href="/" className="logo">
           LOGO
         </a>

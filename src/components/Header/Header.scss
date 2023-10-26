@@ -1,0 +1,32 @@
+.header {
+  padding: 20px 24px;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+
+  &-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &__link {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 11px;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      color: $gray_seconary;
+
+      &:hover {
+        color: $gray_primary;
+      }
+    }
+  }
+}

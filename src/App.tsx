@@ -1,10 +1,8 @@
-import './App.scss';
 import { Header } from './components/Header/Header';
+import './App.scss';
 
-const App = () => (
+export const App = () => (
   <div className="App">
     <Header />
   </div>
 );
-
-export default App;

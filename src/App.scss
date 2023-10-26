@@ -1,1 +1,5 @@
-// not empty
+@import "./styles/utils/reset";
+@import "./styles/utils/vars";
+@import "./styles/blocks/page.scss";
+@import "./components/Header/Header.scss";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");

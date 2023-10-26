@@ -1,0 +1,13 @@
+.page {
+  scroll-behavior: smooth;
+  font-family: $font-main;
+
+  &__body {
+    background-color: $white;
+    color: $gray_seconary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
