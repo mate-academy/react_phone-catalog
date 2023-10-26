@@ -1,0 +1,29 @@
+@import "../../styles/style_utils";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__buttons-container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page-item {
+    @include square(32px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $elements;
+    color: black;
+
+    &--active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
+  &__arrow-item {
+    @include squareButton(32px);
+  }
+}

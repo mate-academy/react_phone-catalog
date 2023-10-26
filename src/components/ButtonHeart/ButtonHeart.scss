@@ -1,0 +1,18 @@
+@import "../../styles/style_utils";
+
+.button-fav {
+  @include square(40px);
+  border: 1px solid $icons;
+  background-image: url("../../img/icons/Favourites\ \(Heart\ Like\).svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &--selected {
+    border: 1px solid $elements;
+    background-image: url("../../img/icons/Favourites Filled (Heart Like).svg");
+  }
+}

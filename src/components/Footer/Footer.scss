@@ -1,0 +1,47 @@
+@import "../../styles/style_utils";
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 96px;
+  border-top: 1px solid $elements;
+  padding: 0 152px;
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $secondary;
+    letter-spacing: 0.48px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__back-label {
+    color: $secondary;
+    cursor: pointer;
+  }
+
+  &__back-button {
+    @include squareButton(32px);
+  }
+}

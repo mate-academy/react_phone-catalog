@@ -1,0 +1,40 @@
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin madeIcon($size) {
+  display: block;
+  @include square($size);
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin squareButton($size) {
+  @include square($size);
+  border: 1px solid $icons;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & svg {
+    fill: $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:disabled {
+    border-color: $icons;
+
+    &:hover {
+      border-color: $icons;
+    }
+
+    & svg {
+      fill: $icons;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "../../styles/style_utils";
+
+.product-slider {
+  &__top {
+    @extend %section-title;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../styles/style_utils";
+
+.navigation {
+  display: flex;
+
+  &__icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+  }
+
+  &__icon {
+    @include madeIcon(16px);
+  }
+}

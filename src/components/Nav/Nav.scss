@@ -1,0 +1,25 @@
+@import "../../styles/style_utils";
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+
+  &__item {
+    @extend %uppercase;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+
+    &--is-active::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      margin-top: 24px;
+      background-color: $primary;
+    }
+  }
+}
