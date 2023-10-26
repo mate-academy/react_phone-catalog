@@ -1,0 +1,7 @@
+.noSearchResults {
+  @extend %h3;
+
+  &__query {
+    color: $colorSecondary;
+  }
+}

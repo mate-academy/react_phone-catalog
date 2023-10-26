@@ -1,0 +1,11 @@
+.logo {
+  width: 40px;
+  height: 11px;
+  background-image: url("../../image/icons/LOGO.svg");
+  align-self: center;
+  margin-left: 24px;
+
+  &--footer {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    @extend %uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      border-bottom: 3px solid $colorPrimary;
+      color: $colorPrimary;
+    }
+  }
+
+  &__link-footer {
+    @extend %uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    @include hover(color, $colorPrimary);
+  }
+}

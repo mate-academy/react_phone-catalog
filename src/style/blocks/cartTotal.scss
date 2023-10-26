@@ -1,0 +1,43 @@
+.cartTotal {
+  box-sizing: border-box;
+  width: 368px;
+  height: 206px;
+  border: 1px solid $colorElements;
+  padding: 24px;
+  
+  &__amount {
+    @extend %h1;
+    text-align: center;
+  }
+
+  &__quantity {
+    @extend %body-text-14;
+    color: $colorSecondary;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__line {
+    border-bottom: 1px solid $colorElements;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    @extend %buttons;
+    width: 320px;
+    height: 48px;
+    border: none;
+    outline: none;
+    background-color: $colorPrimary;
+    padding: 0;
+    cursor: pointer;
+
+    @include hover(box-shadow, $boxShadowButon);
+  }
+
+  &__message {
+    @extend %body-text-14;
+    color: $colorRed;
+    margin-top: 30px;
+  }
+}

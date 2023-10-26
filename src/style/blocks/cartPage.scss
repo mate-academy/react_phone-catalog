@@ -1,0 +1,13 @@
+.cartPage {
+  &__title {
+    @extend %h1;
+    margin: 0 0 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 752px 368px;
+    gap: 16px;
+    margin-bottom: 87px;
+  }
+}

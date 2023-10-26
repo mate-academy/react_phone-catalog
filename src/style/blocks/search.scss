@@ -1,0 +1,44 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 327px;
+  height: 64px;
+  box-shadow: -1px 0 0 $colorElements;
+  background-color: $colorWhite;
+  padding: 23px 24px;
+
+  &:hover {
+    background-color: $colorHover;
+  }
+
+  &__input {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    outline: none;
+    @extend %buttons;
+    line-height: 18px;
+    color: $colorPrimary;
+    background: url(../../image/icons/search.svg) no-repeat;
+    background-position: right center;
+
+    &--focus {
+      background: none;
+    }
+
+    &::placeholder {
+      color: $colorIconsPlaceholders;
+    }
+  }
+
+  &__button {
+    @include square(16);
+    border: 0;
+    padding: 0;
+    outline: none;
+    background: url(../../image/icons/cross_hover.svg) no-repeat center;
+    cursor: pointer;
+  }
+}

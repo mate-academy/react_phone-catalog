@@ -1,0 +1,25 @@
+.backButton {
+  position: relative;
+  width: 66px;
+  height: 16px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin-bottom: 16px;
+  @extend %small-text-12;
+  color: $colorSecondary;
+  text-align: center;
+  line-height: 16px;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    @include square(16);
+    position: absolute;
+    left: 0;
+    margin-right: 4px;
+    background: url(../../image/icons/button_prev.svg) no-repeat center;
+  }
+
+  @include hover(color, $colorPrimary);
+}

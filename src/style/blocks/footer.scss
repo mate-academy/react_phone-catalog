@@ -1,0 +1,41 @@
+.footer {
+  height: 96px;
+  background: $colorWhite;
+  box-shadow: 0 -1px 0 $colorElements;
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__backToTopButton {
+    @extend %small-text-12;
+    height: 32px;
+    border: none;
+    outline: none;
+    padding: 0;
+    background-color: $colorWhite;
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &--cart {
+      visibility: hidden;
+    }
+    
+    &::after {
+      content: " ";
+      @include square(32);
+      box-sizing: border-box;
+      border: 1px solid $colorIcons;
+      background: url("../../image/icons/bactToTopButton.svg") no-repeat center;
+    }
+
+    @include hoverWithAfter(
+      color, $colorPrimary, "border-color", $colorPrimary,
+    );
+  }
+}

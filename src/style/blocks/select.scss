@@ -1,0 +1,69 @@
+.select {
+  position: relative;
+
+  &__title {
+    @extend %small-text-12;
+    margin-bottom: 4px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+
+    box-sizing: border-box;
+    background-color: $colorWhite;
+    border: 1px solid $colorIconsPlaceholders;
+    padding: 10px 12px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    @extend %buttons;
+    color: $colorPrimary;
+
+    @include hover("border-color", $colorSecondary);
+
+    &:focus {
+      border-color: $colorPrimary;
+    }
+    
+    &::after {
+      content: "";
+      @include square(10);
+      background: url("../../image/icons/arrow_down.svg") no-repeat;
+    }
+
+    &--isOpen::after {
+      background-image: url("../../image/icons/arrow_up.svg");
+    }
+  }
+  
+  &__list {
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: $colorWhite;
+    opacity: 0.8;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    border: 1px solid $colorElements;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    @extend %body-text-14;
+    color: $colorSecondary;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    cursor: pointer;
+
+    @include hover("color", $colorPrimary);
+  }
+}

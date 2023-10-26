@@ -1,0 +1,21 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin hoverWithAfter($_property, $_toValue, $_propertyAfter, $_toValueAfter) {
+  transition: all 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+    &::after {
+      #{$_propertyAfter}: $_toValueAfter;
+    }
+  }
+}
+
+@mixin square($_size) {
+  width: $_size + px;
+  height: $_size + px;
+}

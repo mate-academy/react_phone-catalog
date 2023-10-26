@@ -1,0 +1,39 @@
+.breadcrumbs {
+  &__list {
+    height: 16px;
+    display: flex;
+    gap: 13px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    gap: 13px;
+  }
+
+  &__link {
+    @extend %small-text-12;
+    text-decoration: none;
+    color: $colorPrimary;
+    line-height: 16px;
+    text-align: center;
+
+    &--disabled {
+      pointer-events: none;
+      color: $colorSecondary;
+    }
+  }
+
+  &__link-home {
+    @include square(16);
+    background-image: url("../../image/icons/Home.svg");
+  }
+
+  &__separator {
+    @include square(16);
+    background: url("../../image/icons/breadcrumbs_separator.svg") no-repeat center;
+  }
+}

@@ -1,0 +1,87 @@
+.cartItem {
+  display: grid;
+  grid-template-columns: 512px 240px;
+  box-sizing: border-box;
+  width: 752px;
+  height: 128px;
+  border: 1px solid $colorElements;
+
+  &__product-info {
+    display: flex;
+    align-items: center;
+    gap: 31px;
+  }
+
+  &__button-remove {
+    @include square(16);
+    padding: 0;
+    margin-left: 24px;
+    border: none;
+    background: url("../../image/icons/cross.svg") no-repeat center;
+    cursor: pointer;
+
+    @include hover(background-image, url("../../image/icons/cross_hover.svg"));
+  }
+
+  &__foto {
+    display: flex;
+    justify-content: center;
+    @include square(80);
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__title {
+    text-decoration: none;
+    @extend %body-text-14;
+  }
+
+  &__product-cost {
+    display: flex;
+    align-items: center;
+    gap: 43px;
+  }
+
+  &__counter {
+    display: flex;
+
+    &-button {
+      @include square(32);
+      padding: 0;
+      border: 1px solid $colorIconsPlaceholders;
+      background-color: $colorWhite;
+      cursor: pointer;
+  
+      &--decrease {
+        background: url("../../image/icons/minus.svg") no-repeat center;
+        cursor: auto;
+
+        &-active {
+          background: url("../../image/icons/minus_active.svg") no-repeat center;
+          cursor: pointer;
+
+          @include hover(border-color, $colorPrimary);
+        }
+      }
+  
+      &--increase {
+        background: url("../../image/icons/plus.svg") no-repeat center;
+
+        @include hover(border-color, $colorPrimary);
+      }
+    }
+
+    &-quantity {
+      @include square(32);
+      @extend %body-text-14;
+      text-align: center;
+      line-height: 32px;
+    }
+  }
+
+  &__cost {
+    @extend %h2;
+  }
+}
