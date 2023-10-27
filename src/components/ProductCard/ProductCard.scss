@@ -66,7 +66,6 @@
 
   &__info-block {
     margin-bottom: 16px;
-
   }
 
   &__info {
@@ -93,20 +92,6 @@
   }
 
   &__button {
-    @extend %buttons;
-    width: 176px;
-    height: 40px;
-    background-color: $primary;
-    color: $white;
-    line-height: 21px;
-
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
-    }
-
-    &-selected {
-      border: 1px solid $elements;
-      color: $green;
-    }
+    @include primaryButton;
   }
 }

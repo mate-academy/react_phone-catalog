@@ -9,13 +9,8 @@ iframe {
 }
 
 body {
+  @extend %body-text;
   margin: 0;
-  font-family: "Mont", sans-serif;
-  font-weight: 500;
-
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: 0;
 }
 
 h1 {

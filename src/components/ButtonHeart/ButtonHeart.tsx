@@ -1,9 +1,8 @@
 import classNames from 'classnames';
-import { Product } from '../../types/Product';
 import './ButtonHeart.scss';
 
 type Props = {
-  product: Product;
+  productId: string;
 };
 
 export const ButtonHeart: React.FC<Props> = () => {

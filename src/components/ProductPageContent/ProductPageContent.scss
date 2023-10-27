@@ -30,24 +30,23 @@
     display: flex;
     flex-direction: column;
 
-    &-select-label {
+    &-dropdown-label {
       @extend %small-text;
       margin-bottom: 4px;
       color: $secondary;
       line-height: normal;
     }
 
-    &-select {
-      @extend %buttons;
-      padding: 10px 111px 9px 12px;
-      border-color: $icons;
+    &-dropdown {
+      @include dropDown;
 
-      appearance: none;
-      background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
-      background-repeat: no-repeat;
-      background-position: right 0.7rem top 50%;
-      background-size: 16px;
-      color: $primary;
+      &--sort {
+        width: 176px;
+      }
+
+      &--perPage {
+        width: 128px;
+      }
     }
   }
 }

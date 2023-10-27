@@ -39,6 +39,14 @@
   line-height: 15px;
 }
 
+%body-text {
+font-family: "Mont", sans-serif;
+color: $primary;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+}
+
 %section-title {
   line-height: normal;
   letter-spacing: -0.32px;

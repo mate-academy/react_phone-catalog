@@ -11,10 +11,17 @@ import { Loader } from '../Loader';
 import { ProductsList } from '../ProductsList';
 import { Pagination } from '../Pagination';
 import { NoResults } from '../NoResults';
+import { Dropdown } from '../DropDown';
 
 type Props = {
   title: string
 };
+
+// const dropdownSortOptions = [
+//   { age: 'Newest' },
+//   { name: 'Alphabetically' },
+//   { price: 'Cheapest' },
+// ];
 
 const listOfOptions = [4, 8, 16];
 
@@ -42,6 +49,13 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
     setSearchWith({
       page: '1',
       perPage: evt.target.value,
+    });
+  }
+
+  function handlePerPageChange2(val: number | string) {
+    setSearchWith({
+      page: '1',
+      perPage: val.toString(),
     });
   }
 
@@ -78,7 +92,7 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
 
   const filteredProducts: Product[] = useMemo(() => {
     return filterProducts(products, sortType);
-  }, [products]);
+  }, [products, sortType]);
 
   const listToRender = filteredProducts
     .slice(indexOfFirstProduct, indexOfLastProduct);
@@ -99,15 +113,18 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
         <div className="products__filters">
           <div className="products__filter">
             <label
-              className="products__filter-select-label"
-              htmlFor="filter-select"
+              className="products__filter-dropdown-label"
+              htmlFor="filter-dropdown"
             >
               Sort by
             </label>
 
             <select
-              className="products__filter-select"
-              id="filter-select"
+              className="
+              products__filter-dropdown
+              products__filter-dropdown--sort
+              "
+              id="filter-dropdown"
               onChange={handleOptionChange}
               defaultValue={sortType}
             >
@@ -131,19 +148,29 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
             </select>
           </div>
 
+          <Dropdown
+            options={listOfOptions}
+            defaultOption={perPage}
+            selectedOption={perPage}
+            changeOption={(val) => handlePerPageChange2(val)}
+          />
+
           <div className="products__filter">
             <label
-              className="products__filter-select-label"
-              htmlFor="filter-select"
+              className="products__filter-dropdown-label"
+              htmlFor="filter-dropdown"
             >
               Items on page
             </label>
 
             <select
-              className="products__filter-select"
+              className="
+              products__filter-dropdown
+              products__filter-dropdown--perPage
+              "
               onChange={handlePerPageChange}
               defaultValue={perPage}
-              id="filter-select"
+              id="filter-dropdown"
             >
               {listOfOptions.map(option => (
                 <option

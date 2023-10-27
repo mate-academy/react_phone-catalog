@@ -1,0 +1,58 @@
+@import "../../styles/style_utils";
+/* Dropdown.css */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background-color: #fff;
+  color: $primary;
+  cursor: pointer;
+  width: 200px;
+
+  @extend %buttons;
+  text-align: left;
+  height: 40px;
+  padding-left: 10px;
+  border: 1px solid $icons;
+
+  appearance: none;
+  background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 16px;
+  color: $primary;
+
+  &:hover {
+    border-color: $secondary;
+  }
+
+  &:focus {
+    border-color: $secondary;
+    background-image: url("../../img/icons/Chevron\ \(Arrow\ Up\).svg");
+  }
+}
+
+.dropdown-options {
+  position: absolute;
+  top: 103%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid $elements;
+}
+
+.dropdown-options li {
+  @extend %body-text;
+  color: $secondary;
+  height: 32px;
+  line-height: 32px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.dropdown-options li:hover {
+  color: $primary;
+}

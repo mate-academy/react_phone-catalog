@@ -1,3 +1,4 @@
+import { PhoneDetails } from '../types/PhoneDetails';
 import { Product } from '../types/Product';
 
 export const BASE_API_URL
@@ -67,4 +68,8 @@ export function getBrandNewProducts() {
     .then(newProducts => newProducts
       .sort((product1, product2) => product2.fullPrice - product1.fullPrice)
       .slice(0, 20));
+}
+
+export function getProductDetails(productId: string) {
+  return getFromServer<PhoneDetails>(`${phoneDetailsURL}/${productId}.json`);
 }

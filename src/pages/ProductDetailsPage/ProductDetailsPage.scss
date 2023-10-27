@@ -1,0 +1,179 @@
+@import "../../styles/style_utils";
+
+.details-page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+  &__section {
+    margin-bottom: 80px;
+
+    &--small {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-column-gap: 16px;
+    column-gap: 16px;
+    grid-row-gap: 32px;
+    row-gap: 32px;
+  }
+
+  &__small-photos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1/3;
+  }
+
+  &__small-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1/3;
+  }
+
+  &__small-photo-container {
+    padding: 0.5em;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    max-height: 80px;
+    max-width: 80px;
+    border: 1px solid $elements;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    &--selected {
+      border-color: $primary;
+
+      &:hover {
+        border-color: $primary;
+      }
+    }
+  }
+
+  &__small-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__big-photo-container {
+    max-width: 464px;
+    max-height: 464px;
+    grid-column: 3 / 13;
+  }
+
+  &__big-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__phone-info {
+    grid-column: 14 / 21;
+  }
+
+  &__info-container {
+    border-bottom: 1px solid $elements;
+    width: 100%;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__info-text {
+    @extend %small-text;
+    margin-bottom: 8px;
+    color: $secondary;
+  }
+
+  &__phone-colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__phone-color {
+    @include square(32px);
+    border-radius: 50%;
+    border: 3px solid $white;
+    outline: 1px solid $primary;
+    background-color: #FCDBC1;
+  }
+
+  &__capacity-buttons {
+    display: flex;
+  }
+
+  &__capacity-button {
+    @extend %body-text;
+    padding: 7px 8px 4px;
+    border: 2px solid $icons;
+  }
+
+  &__detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      @extend %small-text;
+      color: $secondary;
+    }
+
+    &-text {
+      @extend %small-text;
+      color: $primary;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+
+    &--sale {
+      color: $primary;
+      line-height: 140%;
+    }
+
+    &--full {
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    @include primaryButton;
+  }
+}

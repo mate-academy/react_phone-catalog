@@ -1,4 +1,5 @@
 import './ProductCard.scss';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Product } from '../../types/Product';
 import { ButtonHeart } from '../ButtonHeart/ButtonHeart';
@@ -10,12 +11,23 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    name, fullPrice, price, image, capacity, ram, screen,
+    name,
+    fullPrice,
+    price,
+    image,
+    capacity,
+    ram,
+    screen,
+    itemId,
+    id,
   } = product;
   const onlyFullPrice = useContext(PriceContext) || false;
 
   return (
-    <li className="product-card">
+    <Link
+      to={itemId}
+      className="product-card"
+    >
       <div className="product-card__img-container">
         <img
           src={`./_new/${image}`}
@@ -81,11 +93,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </button>
 
           <ButtonHeart
-            product={product}
+            productId={id}
           />
         </div>
 
       </div>
-    </li>
+    </Link>
   );
 };

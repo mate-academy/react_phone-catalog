@@ -7,6 +7,9 @@ import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import {
+  ProductDetailsPage,
+} from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => (
   <Router>
@@ -14,9 +17,20 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="/home" element={<Navigate to="/" />} />
-        <Route path="/phones" element={<PhonesPage />} />
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
+
+        <Route path="/tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
+
+        <Route path="/accessories" element={<AccessoriesPage />}>
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<ErrorPage />} />
