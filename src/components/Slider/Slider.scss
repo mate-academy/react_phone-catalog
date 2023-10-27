@@ -1,0 +1,44 @@
+.Slider {
+  height: 432px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 400px;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__dot {
+    height: 24px;
+    width: 24px;
+    background-image: url(../../images/slider/Slider_dot.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--active {
+      background-image: url(../../images/slider/Slider_dot-active.svg);
+    }
+  }
+}

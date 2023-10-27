@@ -1,0 +1,50 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.ShopByCategory {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    @extend %text-title;
+    margin: 0;
+  }
+
+  &__categories {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__category {
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-decoration: none;
+    }
+
+    &-image {
+      height: 368px;
+      width: 368px;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &-title {
+      @extend %text-semi-title;
+      margin: 0;
+    }
+
+    &-count {
+      @extend %text-body;
+      color: $gray-second;
+    }
+  }
+}

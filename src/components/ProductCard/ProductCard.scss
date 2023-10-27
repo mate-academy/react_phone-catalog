@@ -1,0 +1,107 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.ProductCard {
+  text-decoration: none;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    width: 272px;
+    height: 507px;
+    border: 1px solid $gray-elements;
+    padding: 24px;
+  }
+
+  &__image {
+    height: 100%;
+
+    &-container {
+      width: 208px;
+      height: 208px;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__name {
+    @extend %text-body;
+    margin: 0;
+    min-height: 42px;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__new-price {
+    @extend %text-important;
+  }
+
+  &__full-price {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    color: $gray-second;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $gray-elements;
+  }
+
+  &__features {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__feature {
+    display: flex;
+    justify-content: space-between;
+
+    &-name {
+      @extend %text-small;
+    }
+
+    &-value {
+      @extend %text-small;
+      color: $gray-main;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-card {
+    font-family: "Mont-Semibold", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $white;
+
+    width: 176px;
+    height: 40px;
+    background-color: $gray-main;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+}

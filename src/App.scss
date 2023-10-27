@@ -1,1 +1,94 @@
-// not empty
+@import "./styles/utils/variables";
+
+.App__main {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  width: 100%;
+}
+
+.icon {
+  height: 64px;
+  width: 64px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 3px solid transparent;
+
+  &--active {
+    border-bottom: 3px solid $gray-main;
+  }
+
+  &--fav {
+    background-image: url(./images/icons/Favourites.svg);
+    border-left: 1px solid $gray-elements;
+  }
+
+  &--cart {
+    background-image: url(./images/icons/Shopping_cart.svg);
+    border-left: 1px solid $gray-elements;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1136px;
+}
+
+.button {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  border: 1px solid $gray-icons;
+  background-color: $html-bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+
+  &:hover {
+    border: 1px solid $gray-main;
+  }
+
+  &:disabled {
+    border: 1px solid $gray-elements;
+    cursor: auto;
+  }
+
+  &--back-to-top {
+    background-image: url(./images/icons/Arrow_up.svg);
+  }
+
+  &--slider {
+    height: 400px;
+    width: 32px;
+
+    &-back {
+      background-image: url(./images/icons/Arrow_left.svg);
+    }
+
+    &-forward {
+      background-image: url(./images/icons/Arrow_right.svg);
+    }
+  }
+
+  &--prev {
+    background-image: url(./images/icons/Arrow_left.svg);
+
+    &:disabled {
+      background-image: url(./images/icons/Arrow_left-disabled.svg);
+    }
+  }
+
+  &--next {
+    background-image: url(./images/icons/Arrow_right.svg);
+
+    &:disabled {
+      background-image: url(./images/icons/Arrow_left-disabled.svg);
+    }
+  }
+
+  &--like {
+    height: 40px;
+    width: 40px;
+    background-image: url(./images/icons/Favourites.svg);
+  }
+}

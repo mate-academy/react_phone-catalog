@@ -1,0 +1,66 @@
+@import "./variables";
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: url(../../fonts/Mont-Bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: url(../../fonts/Mont-Regular.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: url(../../fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+%text-uppercase {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+%text-small {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: $gray-second;
+
+}
+
+%text-body {
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-main;
+}
+
+%text-important {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  color: $gray-main;
+}
+
+%text-title {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $gray-main;
+}
+
+%text-semi-title {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: $gray-main;
+}

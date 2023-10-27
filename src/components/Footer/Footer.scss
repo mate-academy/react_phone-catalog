@@ -1,0 +1,44 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.Footer {
+  margin-top: 72px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+
+  &__nav {
+    &-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 64px;
+    }
+
+    &-link {
+      @extend %text-uppercase;
+      color: $gray-second;
+
+      &:hover {
+        color: $gray-main;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+
+    &-text {
+      @extend %text-small;
+      color: $gray-second;
+    }
+  }
+}

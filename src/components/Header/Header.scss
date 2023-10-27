@@ -1,0 +1,26 @@
+@import "../../styles/utils/variables";
+
+.Header {
+  height: 64px;
+  margin: 0 0 40px;
+  border-bottom: 1px solid $gray-elements;
+
+  &__content {
+    padding-left: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo-and-nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__fav-and-cart {
+    display: flex;
+    align-items: center;
+  }
+}
