@@ -1,8 +1,8 @@
 import React from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
-import App from './App';
 import { HomePage } from './pages/HomePage';
+import App from './App';
 
 export const Root: React.FC = () => (
   <AppProvider>
