@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getHotPriceProducts } from '../../helpers/products';
 import { Product } from '../../types/Product';
 import { ProductsSlider } from '../ProductsSlider';
-import './HotPrices.scss';
 
 export const HotPrices: React.FC = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);

@@ -5,7 +5,6 @@ import { Slider } from '../../components/Slider';
 import { HotPrices } from '../../components/HotPrices';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { BrandNew } from '../../components/BrandNew';
-import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   const { isLoading } = useContext(AppContext);
