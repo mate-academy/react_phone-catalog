@@ -33,6 +33,7 @@ export const Header: React.FC<Props> = ({
   const { pathname, search } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get(SearchParams.Query) || '';
+
   const [debounceQuery, setDebounceQuery] = useState(query);
 
   const getClassForLeftTabs = ({ isActive }: { isActive: boolean }) => {
@@ -67,17 +68,19 @@ export const Header: React.FC<Props> = ({
     }
   };
 
-  const debounceSearch = useCallback(debounce((newQuery: string) => {
+  const debounceSearch = useCallback(debounce((
+    oldSearchParams: URLSearchParams, newQuery: string,
+  ) => {
     const newParams = { query: newQuery || null };
 
-    setSearchParams(getSearchWith(searchParams, newParams));
+    setSearchParams(getSearchWith(oldSearchParams, newParams));
   }, 1000), []);
 
   const handlerQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
 
     setDebounceQuery(newQuery);
-    debounceSearch(newQuery);
+    debounceSearch(searchParams, newQuery);
   };
 
   const handlerDeleteQuery = () => {

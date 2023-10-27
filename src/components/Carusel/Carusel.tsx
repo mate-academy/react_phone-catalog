@@ -175,16 +175,6 @@ export const Carusel: React.FC = () => {
             )}
             onClick={() => handlerCLickPoint(index)}
           />
-          // <div
-          //   key={image}
-          //   className={classNames(
-          //     'carusel__point',
-          //     {
-          //       'is-selected': caruselsImg === imagesoForCarusel
-          //         .indexOf(image),
-          //     },
-          //   )}
-          // />
         ))}
       </div>
     </div>

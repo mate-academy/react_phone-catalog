@@ -1,11 +1,17 @@
 export const debounce = (
-  callback: (newQuery: string) => void, delay: number,
+  callback: (
+    oldSerchParams: URLSearchParams,
+    newQuery: string
+  ) => void, delay: number,
 ) => {
   let timerId = 0;
 
-  return (args: string) => {
+  return (oldSerchParams: URLSearchParams, newQuery: string) => {
     window.clearTimeout(timerId);
 
-    timerId = window.setTimeout(() => callback(args), delay);
+    timerId = window.setTimeout(
+      () => callback(oldSerchParams, newQuery),
+      delay,
+    );
   };
 };

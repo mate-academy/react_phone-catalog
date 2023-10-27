@@ -276,9 +276,9 @@ export const Pagination: React.FC<Props> = ({
                       'pagination__link',
                       { active: currentPage === pageNumber },
                     )}
-                    params={{
-                      [SearchParams.PageNumber]: pageNumber.toString(),
-                    }}
+                    params={
+                      { [SearchParams.PageNumber]: pageNumber.toString() }
+                    }
                     onClick={() => onSetCurrentPage(pageNumber)}
                   >
                     {pageNumber}
