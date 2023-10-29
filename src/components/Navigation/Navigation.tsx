@@ -60,7 +60,13 @@ export const Navigation = () => {
           })}
           to="/favorites"
         >
-          <img src="new/img/icons/favorites.svg" alt="favorites" />
+
+          <img
+            src={location.pathname === '/favorites'
+              ? 'new/img/icons/favorites-filled.svg'
+              : 'new/img/icons/favorites.svg'}
+            alt="favorites"
+          />
         </NavLink>
 
         <NavLink

@@ -6,10 +6,13 @@ import { Footer } from './components/Footer';
 export const App = () => (
   <>
     <div className="App">
-      <Header />
-      <Outlet />
-      <Footer />
+      <div className="app-container">
+        <Header />
+        <div className="content">
+          <Outlet />
+        </div>
+        <Footer />
+      </div>
     </div>
-
   </>
 );

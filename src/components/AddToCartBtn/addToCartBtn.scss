@@ -1,0 +1,23 @@
+.addToCartBtn {
+  width: 176px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  line-height: 21px;
+  padding: 10px 36px;
+  background-color: $gray-primary;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+
+  &-wide {
+    width: 263px;
+    height: 48px;
+    font-weight: 600;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+}

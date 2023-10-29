@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
-import './HomePage.scss';
+// import './HomePage.scss';
 import { Product } from '../../types/Product';
 import { getHotPriceProducts } from '../../utils/getHotPriceProducts';
 import { HotPrices } from '../../components/HotPrices';

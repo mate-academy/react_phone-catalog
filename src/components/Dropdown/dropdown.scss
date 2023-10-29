@@ -1,5 +1,4 @@
 .dropdown {
-
   &__label {
     color: $gray-secondary;
     font-size: 12px;
@@ -10,10 +9,12 @@
   &__select {
     display: block;
     width: 176px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     padding: 10px 12px;
     cursor: pointer;
     border: 1px solid $gray-icons-placeholders;
-    appearance: none;
     background-image: url("../../images/arrow-down.svg");
     background-repeat: no-repeat;
     background-position: right 8% center;
@@ -23,5 +24,6 @@
     color: $gray-primary;
     font-weight: 600;
     line-height: 21px;
+    background-color: white;
   }
 }

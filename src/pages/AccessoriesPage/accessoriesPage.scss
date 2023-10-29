@@ -1,0 +1,23 @@
+.accessoriespage {
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__productslist {
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    display: block;
+    color: $gray-secondary;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+}

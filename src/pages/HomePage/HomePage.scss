@@ -2,5 +2,10 @@
   &__banner {
     margin-top: 40px;
     margin-bottom: 72px;
+
+    // @include onDesktop {
+    //   margin-top: 40px;
+    //   margin-bottom: 72px;
+    // }
   }
 }

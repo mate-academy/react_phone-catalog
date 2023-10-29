@@ -1,0 +1,58 @@
+.features-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  &__title {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all ease 0.3s;
+
+    &:hover {
+      color: $gray-primary;
+      font-weight: 600;
+      scale: 1.2;
+    }
+
+    &-wide {
+      color: $gray-secondary;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: $gray-primary;
+        font-weight: 600;
+        scale: 1.2;
+      }
+    }
+  }
+
+  &__value {
+    color: $gray-primary;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.5s ease;
+
+    &:hover {
+      color: $gray-secondary;
+      font-weight: 600;
+      scale: 1.2;
+    }
+
+    &-wide {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: $gray-secondary;
+        font-weight: 600;
+        scale: 1.2;
+      }
+    }
+  }
+}

@@ -49,6 +49,7 @@
     justify-content: center;
     align-items: center;
     border-left: 1px solid $gray-elements;
+    fill: red;
   }
 
   &__search {
@@ -57,6 +58,7 @@
     align-items: center;
     width: 327px;
     padding: 21px;
+    cursor: pointer;
 
     &-placeholder {
       font-size: 14px;
@@ -69,6 +71,7 @@
       background-image: url("../../images/search.svg");
       background-repeat: no-repeat;
       background-position: right center;
+      cursor: pointer;
 
       &:focus {
         color: var(--gray-primary, #313237);
@@ -109,4 +112,5 @@
     }
 
   }
+
 }

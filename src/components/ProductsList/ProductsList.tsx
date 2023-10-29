@@ -1,19 +1,18 @@
 import React from 'react';
-import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
+import { Product } from '../../types/Product';
 
-type Props = {
-  phones: Product[],
+type Props<T> = {
+  products: T[],
 };
 
-export const ProductsList: React.FC<Props> = ({ phones }) => (
+export const ProductsList: React.FC<Props<Product>> = ({ products }) => (
   <div
-    className="productslist phonespage__productslist"
+    className="productslist"
     data-cy="productList"
   >
-    {phones.map(phone => (
-      <ProductCard key={phone.id} product={phone} />
+    {products.map((product: Product) => (
+      <ProductCard key={product.id} product={product} />
     ))}
   </div>
-
 );

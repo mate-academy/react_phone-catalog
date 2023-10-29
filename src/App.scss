@@ -1,8 +1,8 @@
 @import "./styles/helpers/reset.scss";
 @import "./styles/helpers/fonts.scss";
 @import "./styles/helpers/variables.scss";
-@import "./styles/helpers/mixins.scss";
 @import "./styles/helpers/cssEffects.scss";
+@import "./styles/helpers/mixins.scss";
 
 @import "./styles/blocks/title.scss";
 @import "./styles/blocks/container.scss";
@@ -23,3 +23,22 @@
 @import "../src/components/Dropdown/dropdown.scss";
 // @import "../src/components/DropdownPagination/dropdownPagination.scss";
 @import "../src/components/Pagination/pagination.scss";
+@import "./pages/TabletsPage/tabletsPage.scss";
+@import "../src/components/NoResults/noResults.scss";
+@import "../src/components/ProductDetails/productDetails.scss";
+@import "./pages/ProductDetailsPage/productDetailsPage.scss";
+@import "../src/components/AddToCartBtn/addToCartBtn.scss";
+@import "../src/components/AddToFavorite/addToFavorite.scss";
+@import "../src/components/FeaturesInfo/featuresInfo.scss";
+@import "../src/pages/FavoritesPage/favoritesPage.scss";
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content {
+  flex-grow: 1;
+}

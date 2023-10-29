@@ -11,6 +11,7 @@ export const DropdownPagination: React.FC<Props> = ({ initialValue }) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
 
     newSearchParams.set('perPage', event.target.value);
+
     setSearchParams(newSearchParams);
   };
 

@@ -17,7 +17,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
     setSearchParams(newSearchParams);
   };
 
-  const currentPage = Number(searchParams.get('page') || '1');
+  const currentPage = +(searchParams.get('page') || '1');
 
   const handlePrevClick = () => {
     if (currentPage > 1) {
