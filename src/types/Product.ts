@@ -1,8 +1,10 @@
+import { Category } from './Categoty';
+
 export interface Product {
   id: string,
   name: string,
   age: number,
-  type: 'phone' | 'tablet' | 'accessory';
+  type: Category,
   imageUrl: string,
   snippet: string,
   price: number,

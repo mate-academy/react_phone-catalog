@@ -17,6 +17,11 @@
 
   &--arrow {
     background: no-repeat center url("../../icons/arrow-right.svg");
+    transition: all $effect-duration ease-in-out;
+
+    &:not(:disabled):hover {
+      border: 1px solid $gray-primary;
+    }
     
     &-top {
       transform: rotate(-90deg);
@@ -52,6 +57,20 @@
 
     &:hover {
       border: 1px solid $gray-primary;
+    }
+  }
+
+  &--number {
+    border: 1px solid $gray-elements;
+    @extend %body-text;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &.active {
+      background: $gray-primary;
+      color: $gray-white;
     }
   }
 }

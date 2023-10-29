@@ -1,15 +1,15 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from '../../components/Loader/Loader';
-import { useGetProductsQuery } from '../../features/API/apiSlice';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import './HomePage.scss';
 import { getProductCount } from '../../helpers/getProductCount';
 import { Carousel } from '../../components/Carousel/Carousel';
+import { ProductContext } from '../../context/ProductContext';
 
 export const HomePage = () => {
-  const { data: products = [], isLoading } = useGetProductsQuery();
+  const { products, isLoading } = useContext(ProductContext);
 
   const hotPriceProducts = useMemo(() => {
     return products

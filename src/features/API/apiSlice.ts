@@ -1,21 +1,14 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+/* eslint-disable max-len */
 import { Product } from '../../types/Product';
-import { ProductDetails } from '../../types/ProductDetails';
 
-const BASE_URL
-  = 'https://mate-academy.github.io/react_phone-catalog/api/products';
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api';
 
-export const apiSlice = createApi({
-  reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: '' }),
-  endpoints: (builder) => ({
-    getProducts: builder.query<Product[], void>({
-      query: () => `${BASE_URL}.json`,
-    }),
-    getProductDetail: builder.query<ProductDetails, string>({
-      query: (productId) => `${BASE_URL}/${productId}.json`,
-    }),
-  }),
-});
+export const getProducts: () => Promise<Product[]> = () => {
+  return fetch(`${BASE_URL}/products.json`)
+    .then((response) => response.json());
+};
 
-export const { useGetProductsQuery, useGetProductDetailQuery } = apiSlice;
+export const getProductDetails = (productId: string) => {
+  return fetch(`${BASE_URL}/products/${productId}.json`)
+    .then((response) => response.json());
+};
