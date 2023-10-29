@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { ProductContext } from '../../context/ProductContext';
 import { Category } from '../../types/Categoty';
 import { Loader } from '../../components/Loader/Loader';
-import './PhonePage.scss';
 import ProductList from '../../components/ProductList/ProductList';
 import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
+import './PhonesPage.scss';
 
 export const PhonesPage = () => {
   const { isLoading, products } = useContext(ProductContext);
@@ -19,7 +19,7 @@ export const PhonesPage = () => {
       </div>
 
       {!isLoading && !phones.length && (
-        <h1>
+        <h1 className="PhonePage__title">
           Mobile phones not found
         </h1>
       )}

@@ -6,8 +6,10 @@ import {
 } from 'react-router-dom';
 import App from '../App';
 import { HomePage } from '../pages/HomePage/HomePage';
-import { PhonesPage } from '../pages/PhonesPage/PhonePage';
+import { PhonesPage } from '../pages/PhonePage/PhonesPage';
 import { ProductProvider } from '../context/ProductContext';
+import { TabletsPage } from '../pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from '../pages/AccessoriesPage/AccessoriesPage';
 
 export const Root = () => (
   <ProductProvider>
@@ -20,6 +22,8 @@ export const Root = () => (
             element={<Navigate to="/" replace />}
           />
           <Route path="phones" element={<PhonesPage />} />
+          <Route path="tablets" element={<TabletsPage />} />
+          <Route path="accessories" element={<AccessoriesPage />} />
         </Route>
       </Routes>
     </Router>
