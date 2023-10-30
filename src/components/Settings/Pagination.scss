@@ -1,0 +1,28 @@
+@import "../../styles/utils";
+
+.pagination {
+  display: flex;
+  gap: 16px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    @include createButton(32px, 32px);
+    border: solid 1px $elementsColor;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %bodyText;
+
+    &--active {
+      background-color: $primaryColor;
+      border-color: $primaryColor;
+      color: white;
+    }
+  }
+}

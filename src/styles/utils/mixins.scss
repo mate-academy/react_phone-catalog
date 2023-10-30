@@ -1,0 +1,15 @@
+@mixin createButton($width, $height) {
+  display: block;
+  border: 0;
+  width: $width;
+  height: $height;
+  cursor: pointer;
+  font-family: Montserrat, sans-serif;
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

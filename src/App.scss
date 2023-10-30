@@ -1,1 +1,8 @@
-// not empty
+@import "reset.css";
+
+@import "./styles/_utils";
+
+@import "./styles/page";
+@import "./styles/constainer";
+@import "styles/content-wrapper";
+@import "./styles/hidden";

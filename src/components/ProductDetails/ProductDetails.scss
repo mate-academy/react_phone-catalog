@@ -1,0 +1,204 @@
+@import "../../styles/utils";
+
+.product-details {
+
+  &__title {
+    @extend %boldH1;
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    margin-bottom: 80px;
+  }
+
+  &_img-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__info-container {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 50%;
+  }
+
+  &__selected-picture {
+    display: block;
+    width: 442px;
+    height: 442px;
+  }
+
+  &__label {
+    display: block;
+    @extend %smallText;
+    margin-bottom: 8px;
+  }
+
+  &__colors-container {
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__color {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: solid 1px $primaryColor;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      background-color: transparent;
+      border: solid 2px white;
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+  }
+
+  &__capacity-container {
+    margin-bottom: 16px;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__capacity-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity {
+    @extend %bodyText;
+    padding: 8px;
+    color: white;
+    border: 0;
+    background-color: $primaryColor;
+    font-family: Montserrat, sans-serif;
+  }
+
+  &__price {
+    margin-bottom: 16px;
+  }
+
+  &__total-price {
+    @extend %boldH1;
+    margin-right: 8px;
+  }
+
+  &__full-price {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__short-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__value {
+    @extend %smallText;
+    color: $primaryColor;
+  }
+
+  &__id {
+    @extend %smallText;
+  }
+
+  &__additional {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__additional-header {
+    @extend %boldH2;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+      margin-top: 16px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__about,
+  &__tech {
+    flex-basis: 50%;
+  }
+
+  &__about-title {
+    @extend %h3Title;
+    margin-bottom: 16px;
+  }
+
+  &__about-description {
+    @extend %bodyText;
+    margin-bottom: 32px;
+  }
+
+  &__tech {
+    margin-bottom: 80px;
+  }
+
+  &__tech-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tech-label {
+    @extend %bodyText;
+    color: $secondaryColor;
+  }
+
+  &__tech-description {
+    @extend %bodyText;
+    color: $primaryColor;
+  }
+}

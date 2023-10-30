@@ -1,0 +1,32 @@
+@import "../../styles/utils";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 65px;
+  margin-bottom: 15px;
+
+  &__home {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../img/icons/home.svg");
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../img/icons/arrow-right-disabled.svg");
+  }
+
+  &__link {
+    @extend %smallText;
+    text-decoration: none;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

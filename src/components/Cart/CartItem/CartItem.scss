@@ -1,0 +1,64 @@
+@import "../../../styles/utils";
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $elementsColor;
+  padding: 24px 40px 24px 24px;
+
+  &__delete {
+    @include createButton(16px, 16px);
+    background-image: url("../../../img/icons/delete-icon.svg");
+    background-color: white;
+  }
+
+  &__product {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__title {
+    @extend %bodyText;
+    width: 295px;
+  }
+
+  &__button {
+    @include createButton(32px, 32px);
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__quantity-and-price {
+    display: flex;
+    align-items: center;
+    gap: 43px;
+  }
+
+  &__quantity-container {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__minus {
+    background-image: url("../../../img/icons/minus.svg");
+  }
+
+  &__plus {
+    background-image: url("../../../img/icons/plus.svg");
+  }
+
+  &__price {
+    @extend %boldH2;
+  }
+}

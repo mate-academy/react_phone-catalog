@@ -70,7 +70,7 @@ to links container.
     - Create `getAccessories` method fetching the products with `type`: `accessory`
     - Implement `NoResults` component displayed if there are no products available containing text `<Category name> not found`
 
-### Product details page
+### ProductCard details page
 1. Create `ProductDetailsPage` available at `/product/:productId`
     - `ProductCard` should be a link to the details page
 1. Fetch phone details from API taking the `phoneId` from the URL
@@ -102,7 +102,7 @@ to links container.
 1. (*) Save the `Cart` to the `localSotrage` on each change and read it on page load.
 
 ### Favorites
-1. Create `FavoritesPage` it should show the `ProductsList` with all the favorite products
+1. Create `FavouritesPage` it should show the `ProductsList` with all the favorite products
 1. Add ability to add/remove favorite products by pressing a hart and add `data-cy="addToFavorite"` attribute to this `<button>` element.
 1. (*) Show the favorites count near the `Favorites` icon in the header
 

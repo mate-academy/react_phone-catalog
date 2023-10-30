@@ -1,0 +1,7 @@
+@import "../../styles/utils";
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+}

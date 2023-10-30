@@ -1,0 +1,13 @@
+@import "../../styles/utils";
+
+.categories {
+
+  &__header {
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

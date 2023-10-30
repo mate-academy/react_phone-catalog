@@ -1,0 +1,24 @@
+@import "../../../styles/utils";
+
+.back {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  @extend %smallText;
+  color: $secondaryColor;
+  background-color: white;
+  border: 0;
+  font-family: Montserrat, sans-serif;
+  padding: 0;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../../../img/icons/arrow-right-disabled.svg");
+    transform: scaleX(-1);
+  }
+}

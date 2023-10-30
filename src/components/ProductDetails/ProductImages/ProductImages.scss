@@ -1,0 +1,23 @@
+@import "../../../styles/utils";
+
+.product-images {
+  display: flex;
+
+  &__container {
+    height: 464px;
+    overflow: hidden;
+  }
+
+  &__picture {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid 1px $secondaryColor;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
+}

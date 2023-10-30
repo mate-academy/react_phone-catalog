@@ -1,0 +1,20 @@
+@import "../../styles/utils";
+
+.favourites {
+
+  &__title {
+    @extend %boldH1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    display: block;
+    @extend %smallText;
+    margin-bottom: 40px;
+  }
+
+  &__empty {
+    @extend %not-fount-title;
+    margin-top: 24px;
+  }
+}

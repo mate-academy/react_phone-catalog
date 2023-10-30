@@ -1,0 +1,26 @@
+@import "../../../styles/utils";
+
+.to-favorites-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $iconsColor;
+  cursor: pointer;
+  background-image: url("../../../img/icons/favorites.svg");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border-color: $primaryColor;
+  }
+
+  &--active {
+    background-image: url("../../../img/icons/favorites-active.svg");
+    border-color: $elementsColor;
+
+    &:hover {
+      border-color: $elementsColor;
+    }
+  }
+}

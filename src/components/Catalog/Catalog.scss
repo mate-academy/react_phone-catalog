@@ -1,0 +1,25 @@
+@import "../../styles/utils";
+
+.catalog {
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    display: block;
+    @extend %bodyText;
+  }
+
+  &__not-found {
+    @extend %not-fount-title;
+  }
+
+  &__breadcrumbs {
+    margin-bottom: 15px;
+  }
+
+  &__product-list {
+    margin-bottom: 40px;
+  }
+}
