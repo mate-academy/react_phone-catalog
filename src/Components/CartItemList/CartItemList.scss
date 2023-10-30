@@ -1,0 +1,9 @@
+.CartItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media screen and (max-width: 890px) {
+    gap: 10px;
+  }
+}

@@ -1,0 +1,19 @@
+svg {
+  transition: all 0.4s ease-in-out;
+}
+
+.ChevronUp {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    svg {
+      
+      fill: #313237;
+    }
+  }
+}

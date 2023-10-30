@@ -1,0 +1,395 @@
+// local variables
+$darkGray: #313237;
+$ligthishGray: #89939a;
+$veryLightGray: #e2e6e9;
+$content-width2: 1000px;
+$content-width3: 850px;
+$content-width4: 700px;
+$content-width5: 550px;
+$width: 320px;
+
+.AddtoCardDetails {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 720px) {
+    display: grid;
+    gap: 0 24px;
+    width: 100%;
+    margin-bottom: -50px;
+  }
+
+  @media screen and (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__chooseColor {
+    border-bottom: 1px solid $veryLightGray;
+    width: $width;
+    margin-bottom: 24px;
+
+    @media screen and (max-width: 1040px) {
+      width: 290px;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: 260px;
+    }
+
+    @media screen and (max-width: 720px) {
+      grid-column: 1;
+    }
+
+    @media screen and (max-width: 570px) {
+      width: 180px;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 160px;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: 100%;
+    }
+  }
+
+  &__lightText {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: $ligthishGray;
+
+    @media screen and (max-width: 390px) {
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  &__colorBtns {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+
+    @media screen and (max-width:1040px) {
+      margin-bottom: 18px;
+    }
+
+    @media screen and (max-width: 500px) {
+      gap: 4px;
+    }
+
+    @media screen and (max-width: 390px) {
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+
+  &__colorBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $veryLightGray;
+    outline: none;
+    background: none;
+    transition: border 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid $ligthishGray;
+    }
+  }
+
+  &__color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  &__capacityBtn {
+    border: 1px solid #b4bdc3;
+    background: none;
+    width: 63px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $darkGray;
+    transition: all 0.3s ease-in-out;
+
+    @media screen and (max-width: 1040px) {
+      width: 56px;
+      height: 28px;
+      font-size: 13px;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: 50px;
+      height: 26px;
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: 60px;
+      height: 30px;
+      font-size: 13px;
+    }
+
+    &.Selected {
+      border: 1px solid $darkGray;
+      background: $darkGray;
+      color: #fff;
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 720px) {
+      grid-column: 2;
+      grid-row: 1;
+      transform: translateY(-10px);
+    }
+  }
+
+  &__discount {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: $darkGray;
+
+    @media screen and (max-width: 1040px) {
+      font-size: 28px;
+    }
+
+    @media screen and (max-width: 890px) {
+      font-size: 26px;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 22px;
+    }
+
+    @media screen and (max-width: 440px) {
+      font-size: 20px;
+    }
+  }
+
+  &__original {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 41px;
+    color: $ligthishGray;
+    text-decoration: line-through;
+
+    @media screen and (max-width: 890px) {
+      font-size: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 18px;
+    }
+
+    @media screen and (max-width: 440px) {
+      font-size: 16px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 1040px) {
+      margin-bottom: 26px;
+    }
+
+    @media screen and (max-width: 720px) {
+      grid-column: 2;
+      grid-row: 2;
+      transform: translateY(-30px);
+    }
+
+    @media screen and (max-width: 390px) {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      gap: 26px;
+    }
+
+    @media screen and (max-width: 350px) {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      gap: 10px;
+    }
+  }
+
+  &__addBtn {
+    width: 263px;
+    height: 48px;
+    font-size: 14px;
+    border: 1px solid $darkGray;
+    color: white;
+    background: $darkGray;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 #17203142;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: 240px;
+      height: 42px;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: 210px;
+      font-size: 13px;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 190px;
+      font-size: 13px;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: 130px;
+      font-size: 12px;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: 263px;
+      height: 42px;
+      font-size: 13px;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: 250px;
+      height: 42px;
+      font-size: 13px;
+    }
+
+    &.Selected {
+      border: 1px solid #e2e6e9;
+      color: #27ae60;
+      background: none;
+
+      &:hover,
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__heartBtn {
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: 1px solid #b4bdc3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid $darkGray;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: 42px;
+      height: 42px;
+    }
+  }
+
+  &__specs {
+    width: $width;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @media screen and (max-width: 1040px) {
+      width: 290px;
+    }
+
+    @media screen and (max-width: 1040px) {
+      width: 260px;
+    }
+
+    @media screen and (max-width: 720px) {
+      grid-column: 2;
+      grid-row: 3;
+      transform: translateY(-50px);
+    }
+
+    @media screen and (max-width:500px) {
+      width: 240px;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: 180px;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: 100%;
+    }
+  }
+
+  &__specsUnit {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specsKey {
+    font-size: 12px;
+    line-height: 15px;
+    color: $ligthishGray;
+    
+    &.Regular {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__specsValue {
+    max-width: 150px;
+    text-align: right;
+    font-size: 12px;
+    line-height: 15px;
+    color: $darkGray;
+
+    @media screen and (max-width: 500px) {
+      max-width: 120px;
+    }
+
+    @media screen and (max-width: 440px) {
+      max-width: 110px;
+    }
+
+    &.Regular {
+      font-size: 14px;
+      line-height: 21px;
+      max-width: 300px;
+
+      @media screen and (max-width: 500px) {
+        max-width: 200px;
+      }
+    }
+  }
+}

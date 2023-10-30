@@ -1,0 +1,38 @@
+.ProductList {
+  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 272px);
+  grid-template-rows: auto;
+  gap: 40px 16px;
+
+  @media screen and (max-width:1180px) {
+    & {
+      grid-template-columns: repeat(4, 220px);
+      gap: 20px;
+    }
+  }
+
+  @media screen and (max-width: 1040px) {
+    & {
+      grid-template-columns: repeat(2, 220px);
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 570px) {
+    grid-template-columns: repeat(2, 205px);
+    gap: 10px;
+  }
+
+  @media screen and (max-width: 440px) {
+    grid-template-columns: repeat(2, 180px);
+  }
+
+  @media screen and (max-width: 390px) {
+    grid-template-columns: repeat(2, 160px);
+  }
+
+  @media screen and (max-width: 350px) {
+    grid-template-columns: repeat(2, 145px);
+  }
+}

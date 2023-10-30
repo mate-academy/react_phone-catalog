@@ -1,0 +1,106 @@
+//loacal variables
+$content-width2: 1000px;
+$content-width3: 850px;
+$content-width4: 700px;
+$content-width5: 550px;
+$content-width6: 480px;
+$content-width7: 420px;
+$content-width8: 370px;
+$content-width9: 330px;
+$content-width10: 300px;
+$darkGray: #313237;
+$ligthishGray: #89939a;
+
+.Header {
+  &__route {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 15px;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: 1180px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 720px) {
+      margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 570px) {
+      width: $content-width6;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: $content-width7;
+    }
+
+    @media screen and (max-width: 440px) {
+      width: $content-width8;
+    }
+
+    @media screen and (max-width: 390px) {
+      width: $content-width9;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: $content-width10;
+    }
+  }
+
+  &__svg {
+    height: 15px;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__routeText {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color: $ligthishGray;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      color: $darkGray;
+    }
+  }
+
+  &__back {
+    margin-top: 40px;
+    position: relative;
+    left: -4px;
+  }
+
+  &__title {
+    margin-top: 16px;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: $darkGray;
+
+    @media screen and (max-width: 1180px) {
+      font-size: 26px;
+      line-height: 36px;
+    }
+
+    @media screen and (max-width: 890px) {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    @media screen and (max-width: 720px) {
+      font-size: 22px;
+      line-height: 30px;
+      margin-bottom: 5px;
+      margin-top: 10px;
+    }
+  }
+}

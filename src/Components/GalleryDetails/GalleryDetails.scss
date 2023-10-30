@@ -1,0 +1,101 @@
+// local variables
+$squireSize: 464px;
+
+.GalleryDetails {
+  display: flex;
+  gap: 27px;
+
+  @media screen and (max-width: 1180px) {
+    gap: 15px;
+  }
+
+  @media screen and (max-width: 720px) {
+    flex-direction: column-reverse;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media screen and (max-width: 890px) {
+      gap: 10px;
+    }
+
+    @media screen and (max-width: 720px) {
+      flex-direction: row;
+      width: 100%;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 350px) {
+      gap: 8px;
+    }
+  }
+
+  &__btn {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #e2e6e9;
+    outline: none;
+    background: none;
+    transition: border 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border: 1px solid #c4c4c4;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: 70px;
+      height: 70px;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__pics {
+    width: 100%;
+  }
+
+  &__rigth {
+    width: $squireSize;
+    height: $squireSize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 1040px) {
+      width: 430px;
+      height: 430px;
+    }
+
+    @media screen and (max-width: 890px) {
+      width: 330px;
+      height: 330px;
+    }
+
+    @media screen and (max-width: 350px) {
+      width: 300px;
+      height: 300px;
+    }
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+    }
+  }
+
+  &__mainImg {
+    width: 100%;
+
+    @media screen and (max-width: 720px) {
+      width: auto;
+      height: 100%;
+    }
+  }
+}
