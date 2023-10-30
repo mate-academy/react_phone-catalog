@@ -1,0 +1,52 @@
+@import "../../utils/variables.scss";
+
+.side_menu {
+  position: absolute;
+  height: 91%;
+  border-right: 1px solid $secondary-color;
+  background-color: #fff;
+  top: 56px;
+  z-index: 1;
+  padding-inline: 50px;
+  transition: transform 1s ease;
+  transform: translateX(-100%);
+
+  &--visible {
+    transform: translateX(0);
+
+  }
+}
+
+.side_item {
+  margin-top: 20px;
+}
+
+.side_list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+}
+
+.side_link {
+  color: $secondary-color;
+  padding-block: 10px;
+
+  &--active {
+    color: $primary-color;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 100%;
+      background-color: $primary-color;
+      height: 3px;
+    }
+  }
+}
+
+.side_box {
+  overflow: hidden;
+}

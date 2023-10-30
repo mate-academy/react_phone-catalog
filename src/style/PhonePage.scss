@@ -1,0 +1,45 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.phones-page {
+  width: 100%;
+
+  &_sort-box {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &_top {
+    margin-top: 40px;
+  }
+
+  &_title {
+    color: $primary-color;
+    margin-bottom: 8px;
+  }
+
+  &_body {
+    margin-top: 24px;
+    margin-bottom: 64px;
+  }
+
+  &_no-result {
+    margin-top: 20px;
+
+    @include onDesktopSm {
+      margin-top: 60px;
+    }
+  }
+}
+
+.dd-sort-box {
+  width: 176px;
+  position: relative;
+}
+
+.dd-items-box {
+  width: 128px;
+  position: relative;
+}
