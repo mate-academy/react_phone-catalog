@@ -41,15 +41,6 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       newItem.count = 1;
       newItem.inCart = false;
       newItem.totalAmount = newItem.price;
-      const index = currentProducts
-        .findIndex(product => product.id === newItem.id);
-
-      currentProducts.splice(index, 1, newItem);
-
-      setProducts(currentProducts);
-      setLocalStore(currentStoreState.filter(prod => prod.id !== newItem.id));
-
-      return;
     }
 
     const index = currentProducts
