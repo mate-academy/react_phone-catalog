@@ -1,0 +1,34 @@
+@import "../../assets/styles/variables/variables.scss";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  &__arrow {
+    margin: 0 14px;
+    svg {
+      path {
+        fill: $gray-icons;
+      }
+    }
+  }
+  &__link {
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+    color: $gray-primary;
+    font-family: $MontSemiBold;
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+  &__text {
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-secondary;
+    font-family: $MontSemiBold;
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

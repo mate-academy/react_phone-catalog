@@ -1,0 +1,79 @@
+@import "../../assets/styles/variables/variables.scss";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  width: max-content;
+  &__list {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    li {
+      list-style: none;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $gray-element;
+  margin: 0 4px;
+  font-size: 14px;
+  background: $white;
+  line-height: 20px;
+  cursor: pointer;
+  &_active {
+    display: flex;
+    background: #000;
+    color: $white;
+  }
+  &_show {
+    display: flex;
+  }
+}
+
+.prev-btn {
+  width: 32px;
+  height: 32px;
+  background: $white;
+  margin-right: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $gray-icons;
+  cursor: pointer;
+  svg {
+    transform: rotate(180deg);
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.next-btn {
+  width: 32px;
+  height: 32px;
+  background: $white;
+  margin-left: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $gray-icons;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.dots {
+  display: none;
+  &_show {
+    display: block;
+  }
+}

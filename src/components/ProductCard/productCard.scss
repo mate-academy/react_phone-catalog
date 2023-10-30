@@ -1,0 +1,67 @@
+@import "../../assets/styles/variables/variables.scss";
+
+.product-card {
+  padding: 24px;
+  border: 1px solid $gray-element;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 507px;
+  transition: 0.4s;
+  &:hover {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+  &__image {
+    margin-bottom: 24px;
+    width: auto;
+    height: 216px;
+  }
+  &__title {
+    color: $gray-primary;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 7px;
+    font-family: $MontRegular;
+    min-height: 42px;
+  }
+  &__price {
+    color: $gray-primary;
+    font-size: 22px;
+    line-height: 30px;
+    padding-bottom: 7px;
+    font-family: $MontBold;
+    span {
+      color: $gray-secondary;
+      text-decoration: line-through;
+      margin-left: 10px;
+      font-family: $MontRegular;
+    }
+  }
+  &__properties {
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px 0;
+    border-top: 1px solid $gray-element;
+  }
+  &__propItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: $gray-secondary;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+  &__propValue {
+    color: $gray-primary;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  &__nav {
+    display: flex;
+    padding-top: 16px;
+    margin-top: auto;
+  }
+}

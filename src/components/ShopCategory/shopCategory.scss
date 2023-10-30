@@ -1,0 +1,36 @@
+@import "../../assets/styles/variables/variables.scss";
+
+.shopCategory {
+  margin-top: 80px;
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 40px;
+  }
+  &__block {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0 16px;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    img {
+      margin-bottom: 24px;
+    }
+  }
+  &__name {
+    font-size: 20px;
+    line-height: 25px;
+    color: $gray-primary;
+    font-family: $MontSemiBold;
+    margin-bottom: 4px;
+  }
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+    text-decoration: none;
+  }
+}

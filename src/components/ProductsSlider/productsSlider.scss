@@ -1,0 +1,55 @@
+@import "../../assets/styles/variables/variables.scss";
+
+.products-slider {
+  position: relative;
+  &__nav {
+    margin-bottom: 24px;
+  }
+  &__title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .slick-list {
+    margin: 0 -16px;
+  }
+
+  .slick-slide > div {
+    padding: 0 16px;
+    height: 100%;
+  }
+
+  .slick-slider {
+    .next-arrow {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $gray-icons;
+      top: -60px;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $white;
+      cursor: pointer;
+    }
+    
+    .prev-arrow {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $gray-icons;
+      top: -60px;
+      right: 48px;
+      left: unset;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $white;
+      cursor: pointer;
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

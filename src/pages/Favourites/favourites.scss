@@ -1,0 +1,18 @@
+@import "../../assets/styles/variables/variables.scss";
+
+.favourites {
+  &__title {
+    margin-bottom: 8px;
+  }
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+    margin-bottom: 40px;
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+  }
+}
