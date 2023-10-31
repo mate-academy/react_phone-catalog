@@ -2,6 +2,7 @@ import {
   useState,
   useEffect,
   useContext,
+  useCallback,
 } from 'react';
 import {
   NavLink,
@@ -10,6 +11,7 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import cn from 'classnames';
+import debounce from 'lodash.debounce';
 import { ICONS } from '../../icons';
 import { GlobalContext } from '../../Context/GlobalContext';
 import { PhoneMenu } from '../PhoneMenu/PhoneMenu';
@@ -36,9 +38,10 @@ export const Header = () => {
   const [isFilterAvailable, setIsFilterAvailable] = useState<boolean>(false);
   const [placeHolder, setPlaceHolder] = useState<string>('');
   const [searchParams, setSearchParams] = useSearchParams();
+  const [appliedQuery, setAppliedQuery] = useState<string>('');
   const { localStore, setIsMobMenuVisible } = useContext(GlobalContext);
   const { pathname } = useLocation();
-  const query = searchParams.get('query') || '';
+  const query = searchParams.get('query') || appliedQuery;
   const itemsInCart = localStore.filter(prod => prod.inCart);
   let totalInCart = 0;
   const totalInFav = localStore.filter(prod => prod.inFavourite);
@@ -89,19 +92,23 @@ export const Header = () => {
     }
   }, [pathname]);
 
+  const applyQuery = useCallback(debounce(setSearchParams, 500), []);
+
   const setProductsFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
-    const searchValue = event.currentTarget.value;
+    const val = event.currentTarget.value;
 
-    if (params.has('query') && !searchValue) {
+    setAppliedQuery(val);
+
+    if (params.has('query') && !val) {
       params.delete('query');
-      setSearchParams(params);
+      applyQuery(params);
 
       return;
     }
 
-    params.set('query', searchValue);
-    setSearchParams(params);
+    params.set('query', val);
+    applyQuery(params);
   };
 
   const clearFilter = () => {
@@ -109,6 +116,7 @@ export const Header = () => {
 
     params.delete('query');
     setSearchParams(params);
+    setAppliedQuery('');
   };
 
   return (
@@ -166,7 +174,7 @@ export const Header = () => {
                 type="text"
                 className="search_input btn-text-style"
                 placeholder={placeHolder}
-                value={query}
+                value={appliedQuery}
                 onChange={setProductsFilter}
               />
               <button

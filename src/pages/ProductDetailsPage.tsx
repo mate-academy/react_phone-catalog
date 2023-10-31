@@ -130,7 +130,7 @@ export const ProductDetailsPage = () => {
     <div className="product-details">
       <div className="page-navigation">
         <div className="page-navigation_address">
-          <a href="/" className="page-navigation_link">
+          <a href="#/" className="page-navigation_link">
             <img src={ICONS.iconHome} alt="Icon home" />
           </a>
           <img src={ICONS.arrowRignt} alt="Arrow right" />
