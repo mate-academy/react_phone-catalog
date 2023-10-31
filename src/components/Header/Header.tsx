@@ -1,11 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 import './Header.scss';
+import { Search } from '../Search';
 
 export const Header: React.FC = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className="Header">
       <div className="Header__content">
@@ -15,6 +18,12 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="Header__fav-and-cart">
+          {(pathname === '/phones'
+            || pathname === '/tablets'
+            || pathname === '/accessories'
+            || pathname === '/favorites') && (
+            <Search />
+          )}
           <NavLink
             to="/favorites"
             className={({ isActive }) => classNames('icon icon--fav', {

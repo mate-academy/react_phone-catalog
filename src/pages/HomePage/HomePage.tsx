@@ -11,7 +11,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      { isLoading && (<Loader />) }
+      {isLoading && (<Loader />)}
       <Slider />
       <HotPrices />
       <ShopByCategory />

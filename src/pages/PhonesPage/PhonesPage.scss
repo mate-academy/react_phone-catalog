@@ -1,0 +1,35 @@
+@import "../../styles/utils/typography";
+
+.PhonesPage {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__models-count {
+    @extend %text-body;
+    color: $gray-second;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

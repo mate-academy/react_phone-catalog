@@ -20,7 +20,7 @@ export const Slider: React.FC = () => {
   const [firstImage, setFirstImage] = useState(0);
 
   const lastVisible = SLIDER_IMAGES.length - 1;
-  const translateValue = ITEM_WIDTH * firstImage;
+  const translateValue = (firstImage) * ITEM_WIDTH;
 
   const scrollForward = useCallback(() => {
     setFirstImage(firstImage === lastVisible

@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { getHotPriceProducts } from '../../helpers/products';
-import { Product } from '../../types/Product';
+import React, { useContext } from 'react';
+import { AppContext } from '../../context/AppContext';
 import { ProductsSlider } from '../ProductsSlider';
 
 export const HotPrices: React.FC = () => {
-  const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    getHotPriceProducts()
-      .then(setHotPriceProducts);
-  }, []);
+  const { hotPriceProducts } = useContext(AppContext);
 
   return (
     <div className="HotPrices">

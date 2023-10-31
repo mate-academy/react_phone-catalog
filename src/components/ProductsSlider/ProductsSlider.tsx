@@ -63,16 +63,14 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       >
         {products.map(product => (
           <div
+            key={product.id}
             style={{
               width: sliderWidth,
               transform: `translateX(-${translateValue}px)`,
               transition: `transform ${ANIMATION_DURATION}ms ease`,
             }}
           >
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
+            <ProductCard product={product} />
           </div>
         ))}
       </div>

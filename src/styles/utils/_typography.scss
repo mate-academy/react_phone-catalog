@@ -32,6 +32,7 @@
   font-size: 12px;
   line-height: 15px;
   color: $gray-second;
+  margin: 0;
 
 }
 
@@ -40,6 +41,8 @@
   font-size: 14px;
   line-height: 21px;
   color: $gray-main;
+  margin: 0;
+  text-decoration: none;
 }
 
 %text-important {
@@ -56,11 +59,20 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   color: $gray-main;
+  margin: 0;
 }
 
 %text-semi-title {
   font-family: "Mont-SemiBold", sans-serif;
   font-size: 20px;
   line-height: 26px;
+  color: $gray-main;
+}
+
+%text-input {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
   color: $gray-main;
 }

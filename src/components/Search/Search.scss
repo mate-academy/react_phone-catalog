@@ -1,0 +1,40 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/typography";
+
+.Search {
+  height: 64px;
+  width: 327px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid $gray-elements;
+
+  &__input {
+    height: 100%;
+    width: 200px;
+    background-color: $html-bg-color;
+    border: none;
+    outline: none;
+    @extend %text-input;
+
+    &::placeholder {
+      color: $gray-icons;
+    }
+  }
+
+  &__clear {
+    height: 16px;
+    width: 16px;
+    background-color: $html-bg-color;
+    background-image: url(../../images/icons/Close.svg);
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../images/icons/Search.svg);
+  }
+}

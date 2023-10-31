@@ -13,7 +13,9 @@ type AppContextType = {
   tabletsCount: string,
   accessoriesCount: string,
   brandNewProducts: Product[],
+  hotPriceProducts: Product[],
   isLoading: boolean,
+  getCategoryItems: (category: Category) => Product[],
 };
 
 export const AppContext = React.createContext<AppContextType>({
@@ -22,7 +24,9 @@ export const AppContext = React.createContext<AppContextType>({
   tabletsCount: '',
   accessoriesCount: '',
   brandNewProducts: [],
+  hotPriceProducts: [],
   isLoading: false,
+  getCategoryItems: () => [],
 });
 
 type Props = {
@@ -50,14 +54,29 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     .sort((prod1, prod2) => prod2.year - prod1.year)
     .sort((prod1, prod2) => prod2.price - prod1.price);
 
+  const hotPriceProducts = [...products]
+    .sort((prod1, prod2) => {
+      const discoutValue1 = (prod1.fullPrice - prod1.price);
+      const discoutValue2 = (prod2.fullPrice - prod2.price);
+
+      return discoutValue2 - discoutValue1;
+    });
+
+  const getCategoryItems = useCallback((category: Category) => {
+    return [...products].filter(item => item.category === category);
+  }, [products]);
+
   const getCategoryCount = useCallback((category: Category) => {
-    const countedItems = [...products]
-      .filter(item => item.category === category);
+    const countedItems = getCategoryItems(category);
 
     return countedItems.length === 1
       ? `${countedItems.length} model`
       : `${countedItems.length} models`;
-  }, [products]);
+  }, [getCategoryItems]);
+
+  // const phones = getCategoryItems(Category.phone);
+  // const tablets = getCategoryItems(Category.tablet);
+  // const accessories = getCategoryItems(Category.accessory);
 
   const phonesCount = getCategoryCount(Category.phone);
   const tabletsCount = getCategoryCount(Category.tablet);
@@ -70,6 +89,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     accessoriesCount,
     brandNewProducts,
     isLoading,
+    hotPriceProducts,
+    getCategoryItems,
   });
 
   return (
