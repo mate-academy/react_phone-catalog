@@ -84,10 +84,10 @@
   width: 15px;
   height: 15px;
 
-  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   text-decoration: none;
+  padding: 24px;
 
   &--fav {
     background-image: url(../../Icons/favourites.svg);
@@ -128,14 +128,11 @@
     &::after {
       content: "";
       position: absolute;
-      top: 38px;
-      left: -25px;
-      right: 0;
+      left: 0;
+      bottom: -1px;
       border-radius: 8px;
       background-color: $mainColor;
-      height: 0;
       width: 65px;
-      opacity: 0;
       transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
     }
 
@@ -166,6 +163,7 @@
   font-size: 7px;
   color: $whiteColor;
   position: absolute;
-  top: -5px;
-  left: 8px;
+  top: calc(50% - 6px);
+  left: calc(50% + 6px);
+  transform: translate(-50%, -50%);
 }

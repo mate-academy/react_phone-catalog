@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Phone } from '../../types/Phone';
 import { CartItem } from '../../types/CartItem';
 
 type Props = {
+  // eslint-disable-next-line react/require-default-props
   phone?: Phone,
   cartProducts: CartItem[],
   setCartProducts: React.Dispatch<React.SetStateAction<CartItem[]>>,
@@ -13,9 +15,12 @@ export const CartButton: React.FC<Props> = ({
   cartProducts,
   setCartProducts,
 }) => {
-  const isInCart = phone ? cartProducts.some(
-    (cartProduct) => cartProduct.id === phone.id,
-  ) : false;
+  const [buttonText, setButtonText] = useState('Add to cart');
+  const [isInCart, setIsInCart] = useState(
+    phone ? cartProducts.some(
+      (cartProduct) => cartProduct.id === phone.id,
+    ) : false,
+  );
 
   const handleAddToCart = () => {
     if (phone) {
@@ -29,6 +34,9 @@ export const CartButton: React.FC<Props> = ({
 
           updatedCartProducts.splice(existingCartItemIndex, 1);
 
+          setButtonText('Add to cart');
+          setIsInCart(false);
+
           return updatedCartProducts;
         }
 
@@ -37,6 +45,9 @@ export const CartButton: React.FC<Props> = ({
           quantity: 1,
           product: phone,
         };
+
+        setButtonText('Added to cart');
+        setIsInCart(true);
 
         return [...prevCartProducts, newCartItem];
       });
@@ -56,7 +67,7 @@ export const CartButton: React.FC<Props> = ({
           'phone__button--clicked': isInCart,
         })}
       >
-        Add to cart
+        {buttonText}
       </button>
     </div>
   );
