@@ -14,9 +14,9 @@ import { AppContext } from '../../context/AppContext';
 import { getPhones } from '../../helpers/products';
 import { Product } from '../../types/Product';
 import { Sort } from '../../types/Sort';
-import './PhonesPage.scss';
 import { getSearchWith } from '../../helpers/getSearchWith';
 import { NoSearchResults } from '../../components/NoSearchResults';
+import './PhonesPage.scss';
 
 type Dropdown = 'sort' | 'perPage' | null;
 
