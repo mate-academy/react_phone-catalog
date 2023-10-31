@@ -2,7 +2,7 @@ import {
   useState,
   useEffect,
   useContext,
-  useCallback,
+  useRef,
 } from 'react';
 import {
   NavLink,
@@ -11,7 +11,6 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import cn from 'classnames';
-import debounce from 'lodash.debounce';
 import { ICONS } from '../../icons';
 import { GlobalContext } from '../../Context/GlobalContext';
 import { PhoneMenu } from '../PhoneMenu/PhoneMenu';
@@ -38,10 +37,10 @@ export const Header = () => {
   const [isFilterAvailable, setIsFilterAvailable] = useState<boolean>(false);
   const [placeHolder, setPlaceHolder] = useState<string>('');
   const [searchParams, setSearchParams] = useSearchParams();
-  const [appliedQuery, setAppliedQuery] = useState<string>('');
+  const query = searchParams.get('query') || '';
+  const [appliedQuery, setAppliedQuery] = useState<string>(query);
   const { localStore, setIsMobMenuVisible } = useContext(GlobalContext);
   const { pathname } = useLocation();
-  const query = searchParams.get('query') || appliedQuery;
   const itemsInCart = localStore.filter(prod => prod.inCart);
   let totalInCart = 0;
   const totalInFav = localStore.filter(prod => prod.inFavourite);
@@ -66,6 +65,7 @@ export const Header = () => {
   }, []);
 
   useEffect(() => {
+    setAppliedQuery('');
     switch (pathname) {
       case '/phones':
         setIsFilterAvailable(true);
@@ -92,7 +92,7 @@ export const Header = () => {
     }
   }, [pathname]);
 
-  const applyQuery = useCallback(debounce(setSearchParams, 500), []);
+  const timerId = useRef(0);
 
   const setProductsFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
@@ -100,15 +100,19 @@ export const Header = () => {
 
     setAppliedQuery(val);
 
-    if (params.has('query') && !val) {
-      params.delete('query');
-      applyQuery(params);
+    window.clearTimeout(timerId.current);
 
-      return;
-    }
+    timerId.current = window.setTimeout(() => {
+      if (params.has('query') && !val) {
+        params.delete('query');
+        setSearchParams(params);
 
-    params.set('query', val);
-    applyQuery(params);
+        return;
+      }
+
+      params.set('query', val);
+      setSearchParams(params);
+    }, 500);
   };
 
   const clearFilter = () => {
