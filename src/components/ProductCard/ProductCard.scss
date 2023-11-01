@@ -90,8 +90,4 @@
     display: flex;
     gap: 8px;
   }
-
-  &__button {
-    @include primaryButton;
-  }
 }

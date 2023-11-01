@@ -1,0 +1,32 @@
+@import "../../styles/style_utils";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &__icon {
+    user-select: none;
+
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    & svg {
+      object-position: center;
+      object-fit: contain;
+    }
+  }
+
+  &__current {
+    @extend %small-text;
+    color: $secondary;
+  }
+
+  &__link {
+    @extend %small-text;
+    color: $primary;
+    user-select: none;
+  }
+}

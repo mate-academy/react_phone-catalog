@@ -53,7 +53,7 @@ export const Categories: React.FC = () => {
         </Link>
 
         <Link
-          to="#/tablets"
+          to="/tablets"
           className="categories__link"
         >
           <div
@@ -76,7 +76,7 @@ export const Categories: React.FC = () => {
         </Link>
 
         <Link
-          to="#/accesories"
+          to="/accessories"
           className="categories__link"
         >
           <div

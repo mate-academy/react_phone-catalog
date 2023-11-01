@@ -1,0 +1,15 @@
+@import "../../styles/style_utils";
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+
+  &__text {
+    text-align: center;
+    color: $secondary;
+  }
+}

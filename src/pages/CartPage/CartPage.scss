@@ -1,0 +1,105 @@
+@import "../../styles/style_utils";
+
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-column-gap: 16px;
+    column-gap: 16px;
+    grid-row-gap: 32px;
+    row-gap: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1/17;
+  }
+
+  &__btn-delete {
+    @include square(40px);
+    margin-right: 24px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid $elements;
+    min-height: 128px;
+    grid-gap: 24px;
+    gap: 24px;
+
+    &-name {
+      display: block;
+      flex-grow: 1;
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__img-container {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__quantity-buttons {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    // margin-right: 43px;
+  }
+
+  &__quantity-button {
+    @include squareButton(32px);
+
+    &:disabled {
+      border-color: $elements;
+    }
+  }
+
+  &__item-price {
+    width: 80px;
+    text-align: right;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    border: 1px solid $elements;
+    grid-column: 17/-1;
+    height: max-content;
+
+    &-quantity {
+      color: $secondary;
+      text-align: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid $elements;
+      width: 100%;
+    }
+  }
+
+  &__checkout-button {
+    @include primaryButton;
+  }
+}

@@ -1,11 +1,12 @@
 @import "../../styles/style_utils";
 
 .details-page {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 
-  &__section {
+  &__section:not(:last-child) {
     margin-bottom: 80px;
 
     &--small {
@@ -109,7 +110,7 @@
     border-radius: 50%;
     border: 3px solid $white;
     outline: 1px solid $primary;
-    background-color: #FCDBC1;
+    background-color: #fcdbc1;
   }
 
   &__capacity-buttons {
@@ -175,5 +176,55 @@
 
   &__button {
     @include primaryButton;
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+  }
+
+  &__tech {
+    grid-column: 14 / -1;
+  }
+
+  &__second-title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+
+    &--about {
+      margin-bottom: 32px;
+    }
+
+    &--tech {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__about-description {
+    &-item:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    &-title {
+      margin-bottom: 16px;
+    }
+
+    &-text {
+      color: $secondary;
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &-description {
+      color: $secondary;
+      text-align: center;
+    }
   }
 }

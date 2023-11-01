@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  getBrandNewProducts, getHotPriceProducts, getProducts,
+  getBrandNewProducts, getHotPriceProducts, getProducts, getSuggestedProducts,
 } from '../../api/products';
 import { Product } from '../../types/Product';
 import { ProductList } from '../SliderList';
@@ -27,6 +27,9 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
         break;
       case 'Brand new models':
         fetch = getBrandNewProducts;
+        break;
+      case 'You may also like':
+        fetch = getSuggestedProducts;
         break;
       default:
         fetch = getProducts;

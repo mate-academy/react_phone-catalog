@@ -22,7 +22,7 @@ export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
         disabled={current === 0}
       >
         <ReactSVG
-          src="/img/icons/Chevron (Arrow Left).svg"
+          src="img/icons/Chevron (Arrow Left).svg"
         />
       </button>
 
@@ -36,7 +36,7 @@ export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
         onClick={() => changePage(current + 1)}
       >
         <ReactSVG
-          src="/img/icons/Chevron (Arrow Right).svg"
+          src="img/icons/Chevron (Arrow Right).svg"
         />
       </button>
     </div>

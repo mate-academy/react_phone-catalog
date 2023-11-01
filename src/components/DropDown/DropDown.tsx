@@ -1,62 +1,75 @@
-import React, { useState } from 'react';
-import './DropDown.scss';
+import { useState } from 'react';
+import classNames from 'classnames';
+import { CSSTransition } from 'react-transition-group';
+import { DropDownOption } from '../../types/DropDownOptions';
+import './Dropdown.scss';
 
 type Props = {
-  options: string[] | number[],
-  defaultOption: string | number,
-  selectedOption: string | number,
-  changeOption: (optionName: string | number) => void,
+  options: DropDownOption[];
+  currentValue: string,
+  onChange: (v: string) => void,
+  isSmall?: boolean,
 };
 
 export const Dropdown: React.FC<Props> = ({
-  options,
-  selectedOption,
-  defaultOption,
-  changeOption,
+  options, isSmall, onChange, currentValue,
 }) => {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
+  const optionName = options.find(option => {
+    return option.value === currentValue;
+  })?.name || currentValue;
+
+  const handleBlur = () => {
+    setIsSelected(false);
   };
 
-  const closeDropdown = () => {
-    setDropdownOpen(false);
+  const handleClick = () => {
+    setIsSelected(!isSelected);
   };
 
-  const handleOptionSelect = (option: string | number) => {
-    changeOption(option);
-    closeDropdown();
+  const handleSelectChange = (select: string) => {
+    onChange(select);
+    setIsSelected(false);
   };
 
   return (
     <div
-      className="dropdown-container"
+      className={classNames(
+        'dropdown',
+        { 'dropdown--small': isSmall },
+      )}
+      onBlur={handleBlur}
     >
-      <p>Sort</p>
       <button
-        className="dropdown-button"
-        onClick={toggleDropdown}
+        className={classNames(
+          'dropdown__button',
+          { 'dropdown__button--active': isSelected },
+        )}
         type="button"
+        onClick={handleClick}
       >
-        {selectedOption || defaultOption}
+        {optionName}
       </button>
-      {isDropdownOpen && (
-        <div
-          className="dropdown-options"
-          onBlur={closeDropdown}
-        >
-          {options.map(option => (
-            <li
-              key={option}
-              onClick={() => handleOptionSelect(option)}
-              aria-hidden
+
+      <CSSTransition
+        in={isSelected}
+        timeout={300}
+        unmountOnExit
+        classNames="dropdown__content"
+      >
+        <div className="dropdown__content">
+          {options.map(({ name, value }) => (
+            <button
+              className="dropdown__option"
+              type="button"
+              onClick={() => handleSelectChange(value)}
             >
-              {option}
-            </li>
+              {name}
+            </button>
           ))}
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 };

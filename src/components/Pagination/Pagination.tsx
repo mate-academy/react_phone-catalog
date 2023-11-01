@@ -15,7 +15,7 @@ export function getNumbers(from: number, to: number): number[] {
 
 interface Props {
   total: number;
-  perPage: number;
+  perPage: string;
   currentPage: number;
 }
 
@@ -24,18 +24,18 @@ export const Pagination: React.FC<Props> = ({
   perPage,
   currentPage,
 }) => {
-  const lastPage = Math.ceil(total / perPage);
-  const allPagesCount = Math.ceil(total / perPage);
+  const lastPage = Math.ceil(total / +perPage);
+  const allPagesCount = Math.ceil(total / +perPage);
 
   function getFromPage() {
     let from = 1;
 
     if (currentPage > 3) {
       from = currentPage - 1;
-    }
 
-    if (currentPage + 2 > allPagesCount) {
-      from = allPagesCount - 3;
+      if (currentPage + 2 > allPagesCount) {
+        from = allPagesCount - 3;
+      }
     }
 
     return from;
@@ -46,10 +46,10 @@ export const Pagination: React.FC<Props> = ({
 
     if (currentPage + 2 < allPagesCount) {
       to = currentPage + 1;
-    }
 
-    if (currentPage < 3) {
-      to = 4;
+      if (currentPage < 3) {
+        to = 4;
+      }
     }
 
     return to;
@@ -111,6 +111,7 @@ export const Pagination: React.FC<Props> = ({
               params={{ page: page.toString() }}
               data-cy="pageLink"
               className="page-link"
+              key={page}
             >
               <button
                 key={page}

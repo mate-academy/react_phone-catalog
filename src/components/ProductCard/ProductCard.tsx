@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { Product } from '../../types/Product';
 import { ButtonHeart } from '../ButtonHeart/ButtonHeart';
 import { PriceContext } from '../../storage/fullPriceContext';
+import { AddToCartButton } from '../AddToCartButton';
 
 type Props = {
   product: Product;
@@ -24,24 +25,32 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const onlyFullPrice = useContext(PriceContext) || false;
 
   return (
-    <Link
-      to={itemId}
+    <li
       className="product-card"
+      key={id}
     >
-      <div className="product-card__img-container">
-        <img
-          src={`./_new/${image}`}
-          alt={name}
-          className="product-card__img"
-        />
+      <div
+        className="product-card__img-container"
+      >
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+        >
+          <img
+            src={image}
+            alt={name}
+            className="product-card__img"
+          />
+        </Link>
       </div>
 
       <div className="product-card__detail">
-        <p
-          className="product-card__name"
+        <Link
+          to={itemId}
         >
-          {name}
-        </p>
+          <p className="product-card__name">
+            {name}
+          </p>
+        </Link>
 
         <div className="product-card__prices">
           <div className="product-card__price product-card__price--sale">
@@ -85,19 +94,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="product-card__buttons">
-          <button
-            className="product-card__button"
-            type="button"
-          >
-            Add to cart
-          </button>
+          <AddToCartButton
+            product={product}
+          />
 
           <ButtonHeart
-            productId={id}
+            product={product}
           />
         </div>
 
       </div>
-    </Link>
+    </li>
   );
 };

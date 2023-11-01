@@ -73,3 +73,9 @@ export function getBrandNewProducts() {
 export function getProductDetails(productId: string) {
   return getFromServer<PhoneDetails>(`${phoneDetailsURL}/${productId}.json`);
 }
+
+export function getSuggestedProducts() {
+  return getProducts()
+    .then(productsArray => productsArray.sort(() => Math.random() - 0.5)
+      .slice(0, 20));
+}

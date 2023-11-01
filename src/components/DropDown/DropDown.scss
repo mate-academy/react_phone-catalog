@@ -1,58 +1,100 @@
 @import "../../styles/style_utils";
-/* Dropdown.css */
-.dropdown-container {
-  position: relative;
+
+.dropdown {
   display: inline-block;
-}
-
-.dropdown-button {
-  background-color: #fff;
-  color: $primary;
-  cursor: pointer;
-  width: 200px;
-
-  @extend %buttons;
-  text-align: left;
+  position: relative;
+  width: 176px;
   height: 40px;
-  padding-left: 10px;
-  border: 1px solid $icons;
 
-  appearance: none;
-  background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
-  background-repeat: no-repeat;
-  background-position: right 0.7rem top 50%;
-  background-size: 16px;
-  color: $primary;
-
-  &:hover {
-    border-color: $secondary;
+  &--small {
+    width: 128px;
   }
 
-  &:focus {
-    border-color: $secondary;
-    background-image: url("../../img/icons/Chevron\ \(Arrow\ Up\).svg");
+  &__button {
+    @extend %buttons;
+
+    box-sizing: border-box;
+    color: $primary;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px 12px;
+    border: 1px solid $icons;
+
+    text-align: left;
+
+    background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 16px;
+
+    &--active {
+      border: 1px solid $primary;
+      background-image: url("../../img/icons/Chevron\ \(Arrow\ Up\).svg");
+    }
+
+    &:hover {
+      border: 1px solid $secondary;
+    }
+
+    & svg {
+      fill: $primary;
+    }
   }
-}
 
-.dropdown-options {
-  position: absolute;
-  top: 103%;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  background-color: #fff;
-  border: 1px solid $elements;
-}
+  &__content {
+    position: absolute;
+    top: calc(100% + 4px);
+    z-index: 1;
 
-.dropdown-options li {
-  @extend %body-text;
-  color: $secondary;
-  height: 32px;
-  line-height: 32px;
-  padding-left: 10px;
-  cursor: pointer;
-}
+    display: flex;
+    flex-direction: column;
 
-.dropdown-options li:hover {
-  color: $primary;
+    width: 100%;
+    border: 1px solid $elements;
+    padding: 8px 0;
+
+    background-color: $white;
+
+    &-enter {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: $transition;
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: $transition;
+    }
+  }
+
+  &__option {
+    @extend %body-text;
+    width: 100%;
+    padding: 6px 12px;
+
+    background-color: $white;
+    color: $secondary;
+    text-align: left;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: $primary;
+    }
+  }
 }
