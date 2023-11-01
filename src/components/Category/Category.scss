@@ -43,30 +43,10 @@
     background-size: 368px;
     transition: transform 0.3s;
 
+    cursor: pointer;
+
     &:hover {
       transform: scale(1.1);
-    }
-  }
-
-
-  &__phone {
-    cursor: pointer;
-    &--img {
-      background-image: url("../../categoryImg/phone_category.6ddd2c76.png");
-    }
-  }
-
-  &__tablets {
-    cursor: pointer;
-    &--img {
-      background-image: url("../../categoryImg/tablet_category.6336ca9e.png");
-    }
-  }
-
-  &__accessories {
-    cursor: pointer;
-    &--img {
-      background-image: url("../../categoryImg/accessories_category.05d41563.png");
     }
   }
 }
