@@ -27,7 +27,7 @@ export const TabletsPage = () => {
 
           <p className="error__desc">
             Maybe you want to go back to
-            <a href="https://danylopasko.github.io/react_phone-catalog/#/" className="error__link"> Home page </a>
+            <a href="https://Kinderwagen.github.io/react_phone-catalog/#/" className="error__link"> Home page </a>
             ?
           </p>
         </div>

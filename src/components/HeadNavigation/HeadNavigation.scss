@@ -97,14 +97,11 @@
     &::after {
       content: "";
       position: absolute;
-      top: 38px;
-      left: -25px;
-      right: 0;
+      left: 0;
+      bottom: -1px;
       border-radius: 8px;
       background-color: $mainColor;
-      height: 0;
-      width: 66px;
-      opacity: 0;
+      width: 65px;
       transition: height 0.3s ease, opacity 0.3s ease, color 0.3s;
     }
 

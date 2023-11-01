@@ -29,9 +29,12 @@
   }
 }
 
-.input {
+input {
   border: none;
   outline: none;
+
+  display: block;
+  width: 100%;
 
   &::placeholder {
     font-family: Mont-SemiBold, sans-serif;
@@ -43,10 +46,12 @@
     border: none;
     outline: none;
   }
+
   &:focus {
     border: none;
     outline: none;
   }
+
 }
 
 .button {
