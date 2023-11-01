@@ -34,7 +34,7 @@ export const Footer = () => {
           <ul className="footer__nav__list">
             <li className="footer__nav__item">
               <a
-                href="/"
+                href="https://github.com/liza-strykharchuk"
                 className="footer__nav__link"
               >
                 GITHUB
@@ -43,7 +43,7 @@ export const Footer = () => {
 
             <li className="footer__nav__item">
               <a
-                href="#phones"
+                href="/"
                 className="footer__nav__link"
               >
                 CONTACTS
@@ -52,7 +52,7 @@ export const Footer = () => {
 
             <li className="footer__nav__item">
               <a
-                href="#tablets"
+                href="/"
                 className="footer__nav__link"
               >
                 RIGHTS
