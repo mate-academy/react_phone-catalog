@@ -8,9 +8,13 @@ import classNames from 'classnames';
    [key: string]: string | string[] | null,
  };
 
-function getSearchWith(currentParams: URLSearchParams, paramsToUpdate: SearchParams): string {
+function getSearchWith(
+  currentParams: URLSearchParams,
+  paramsToUpdate: SearchParams,
+): string {
   const newParams = new URLSearchParams(currentParams);
 
+  // eslint-disable-next-line
   for (const [key, value] of Object.entries(paramsToUpdate)) {
     if (value === null) {
       newParams.delete(key);
@@ -42,19 +46,28 @@ export const Search = () => {
 
   return (
     <div className="form">
-      <label className="form__label">
+      <label
+        className="form__label"
+        htmlFor="searchInput"
+      >
         <input
           type="text"
           className="form__input"
           value={query}
-          placeholder={`Search in ${pathname.split('/')[1]}...`}
+          placeholder={`Search in ${
+            pathname.split('/')[1]
+          }...`}
           onChange={onQueryChange}
         />
       </label>
 
+      {/* eslint-disable-next-line */}
       <button
         type="button"
-        className={classNames('form__img', query ? 'form__cross' : 'form__search')}
+        className={classNames('form__img',
+          query
+            ? 'form__cross'
+            : 'form__search')}
         onClick={isClearSearch}
       />
     </div>

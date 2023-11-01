@@ -37,7 +37,10 @@ export const LikeProduct: React.FC<Props> = ({
           ))}
         </div>
       )
-        : (<div className="likePage__not">You haven't liked any products yet!</div>
+        : (
+          <div className="likePage__not">
+            You haven&apos;t liked any products yet!
+          </div>
         )}
     </div>
   );

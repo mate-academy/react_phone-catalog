@@ -36,7 +36,9 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <div className="pagination">
+      {/* eslint-disable-next-line */}
       <button
+        type="button"
         className={classNames(
           'pagination__item',
           'pagination__left',
@@ -50,6 +52,7 @@ export const Pagination: React.FC<Props> = ({
 
       {pageNumbers.map((item) => (
         <button
+          type="button"
           className={classNames(
             'pagination__item',
             'pagination__item--text', {
@@ -63,7 +66,9 @@ export const Pagination: React.FC<Props> = ({
         </button>
       ))}
 
+      {/* eslint-disable-next-line */}
       <button
+        type="button"
         className={classNames(
           'pagination__item',
           'pagination__right',

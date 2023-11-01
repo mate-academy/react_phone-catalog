@@ -57,10 +57,14 @@ export const PhoneCriteria: React.FC<Props> = ({
 
   const idProduct = products.find(pr => pr.phoneId === productId);
 
-  const whatProductToShow = productsDetails.find(pr => pr.name === idProduct?.name);
+  const whatProductToShow = productsDetails
+    .find(pr => pr.name === idProduct?.name);
 
-  const selectPr = likeProduct.find(phone => phone.phoneId === whatProductToShow?.id);
-  const addPr = addProduct.find(phone => phone.phoneId === whatProductToShow?.id);
+  const selectPr = likeProduct
+    .find(phone => phone.phoneId === whatProductToShow?.id);
+
+  const addPr = addProduct
+    .find(phone => phone.phoneId === whatProductToShow?.id);
 
   const handleLikeClick = () => {
     if (idProduct) {
@@ -76,7 +80,9 @@ export const PhoneCriteria: React.FC<Props> = ({
 
   const [imgButton, setImgButton] = useState(whatProductToShow?.images[0]);
   const [colorButton, setColorButton] = useState(whatProductToShow?.color);
-  const [capacityButton, setCapacityButton] = useState(whatProductToShow?.capacity);
+  const [capacityButton, setCapacityButton] = useState(
+    whatProductToShow?.capacity,
+  );
 
   useEffect(() => {
     setImgButton(whatProductToShow?.images[0]);
@@ -118,6 +124,7 @@ export const PhoneCriteria: React.FC<Props> = ({
           <div className="phoneCriteria__miniContainer">
             {whatProductToShow?.images.map(img => (
               <button
+                type="button"
                 className={
                   `phoneCriteria__mini ${img === imgButton ? 'phoneCriteria__mini--active' : ''}`
                 }
@@ -134,37 +141,65 @@ export const PhoneCriteria: React.FC<Props> = ({
           </div>
 
           <img
-            src={`https://mate-academy.github.io/react_phone-catalog/_new/${imgButton}`}
+            src={
+              `https://mate-academy.github.io/react_phone-catalog/_new/${
+                imgButton
+              }`
+            }
             alt="mainImg"
             className="phoneCriteria__img"
           />
         </div>
 
         <div className="phoneCriteria__chooseOption">
-          <div className="phoneCriteria__color phoneCriteria__chooseOption--container">
-            <h2 className="phoneCriteria__chooseOption--header">Available colors</h2>
+          <div className="
+            phoneCriteria__color
+            phoneCriteria__chooseOption--container"
+          >
+            <h2 className="phoneCriteria__chooseOption--header">
+              Available colors
+            </h2>
 
             <div className="phoneCriteria__color--colorsContainer">
               {whatProductToShow?.colorsAvailable.map((color, index) => (
+                // eslint-disable-next-line
                 <button
-                  className={`phoneCriteria__color--colors ${color === colorButton ? 'phoneCriteria__color--active' : ''}`}
+                  className={
+                    `phoneCriteria__color--colors ${
+                      color === colorButton
+                        ? 'phoneCriteria__color--active'
+                        : ''
+                    }`
+                  }
                   style={{ backgroundColor: colors[color] }}
+                  // eslint-disable-next-line
                   key={index}
                   onClick={() => linkColor(color)}
+                  type="button"
                 />
               ))}
             </div>
           </div>
 
-          <div className="phoneCriteria__capacity phoneCriteria__chooseOption--container">
-            <h2 className="phoneCriteria__chooseOption--header">Select capacity</h2>
+          <div className="
+            phoneCriteria__capacity
+            phoneCriteria__chooseOption--container"
+          >
+            <h2 className="phoneCriteria__chooseOption--header">
+              Select capacity
+            </h2>
 
             <div className="phoneCriteria__capacity--capacityContainer">
               {whatProductToShow?.capacityAvailable.map(cap => (
                 <button
-                  className={`phoneCriteria__capacity--gb ${cap === capacityButton ? 'phoneCriteria__capacity--active' : ''}`}
+                  className={`phoneCriteria__capacity--gb ${
+                    cap === capacityButton
+                      ? 'phoneCriteria__capacity--active'
+                      : ''
+                  }`}
                   key={cap}
                   onClick={() => linkCapacity(cap)}
+                  type="button"
                 >
                   {cap}
                 </button>
@@ -184,14 +219,24 @@ export const PhoneCriteria: React.FC<Props> = ({
 
           <div className="phone__button">
             <button
-              className={`phone__button--add ${addPr ? 'phone__button--add--active' : ''}`}
+              className={`phone__button--add ${
+                addPr
+                  ? 'phone__button--add--active'
+                  : ''}`}
               onClick={() => handleAddClick()}
+              type="button"
             >
               Add to cart
             </button>
+            {/* eslint-disable-next-line */}
             <button
-              className={`phone__button--like ${selectPr ? 'phone__button--like--active' : ''}`}
+              className={`phone__button--like ${
+                selectPr
+                  ? 'phone__button--like--active'
+                  : ''
+              }`}
               onClick={() => handleLikeClick()}
+              type="button"
             />
           </div>
 

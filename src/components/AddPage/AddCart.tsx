@@ -60,9 +60,11 @@ export const AddCart: React.FC<Props> = ({
 
   return (
     <div className="addPage__minicontainer" key={id}>
+      {/* eslint-disable-next-line */}
       <button
         className="addPage__cross addPage__buttonImg"
         onClick={handleDelete}
+        type="button"
       />
       <img
         src={` https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
@@ -80,6 +82,7 @@ export const AddCart: React.FC<Props> = ({
         <button
           className="addPage__button"
           onClick={handleMinus}
+          type="button"
         >
           <p className="addPage__minus addPage__buttonImg" />
         </button>
@@ -89,6 +92,7 @@ export const AddCart: React.FC<Props> = ({
         <button
           className="addPage__button"
           onClick={handlePlus}
+          type="button"
         >
           <p className="addPage__plus addPage__buttonImg" />
         </button>

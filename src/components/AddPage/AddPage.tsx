@@ -82,18 +82,24 @@ export const AddPage: React.FC<Props> = ({
                   <button
                     className="addPage__checkout"
                     onClick={handleCheckout}
+                    type="button"
                   >
                     Checkout
                   </button>
                 </div>
               </>
             )
-              : (<div className="addPage__not">You haven't add any products yet!</div>
+              : (
+                <div className="addPage__not">
+                  You haven&apos;t added any products yet!
+                </div>
               )}
           </div>
         </>
       ) : (
-        <div className="addPage__not">We are sorry, but this action hasn't been implemented yet</div>
+        <div className="addPage__not">
+          We are sorry, but this action hasn&apos;t been implemented yet
+        </div>
       )}
     </div>
   );

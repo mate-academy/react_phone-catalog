@@ -4,7 +4,9 @@ import './Footer.scss';
 export const Footer = () => {
   const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
 
+  // eslint-disable-next-line
   const logo: string = require('../../icons/logo.svg').default;
+  // eslint-disable-next-line
   const arrowUp: string = require('../../icons/chevron-arrow-up-hover.svg').default;
 
   function checkIfPageHasScroll() {
@@ -66,6 +68,7 @@ export const Footer = () => {
             onClick={handleClick}
             id="myBtn"
             className="footer__up"
+            type="button"
           >
             <div className="footer__up--container">
               <div className="footer__up--text"> Back to top</div>

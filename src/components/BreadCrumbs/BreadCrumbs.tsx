@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './BreadCrumbs.scss';
 
 type Props = {
+  // eslint-disable-next-line
   productName?: string;
 };
 

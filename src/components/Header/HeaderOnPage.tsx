@@ -39,8 +39,8 @@ export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
   return (
     <header className="header">
       <div className="container">
-        <a
-          href="/"
+        <NavLink
+          to="/"
           className="header__img"
         />
         <nav className="nav">

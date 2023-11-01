@@ -1,16 +1,19 @@
 import { StylesConfig } from 'react-select';
 
+// eslint-disable-next-line
 type myoptiontype = {
   value: string;
   label: string;
 };
 
+// eslint-disable-next-line
 type myoptiontype2 = {
   value: number;
   label: string;
 };
 
-  type ismulti = false;
+// eslint-disable-next-line
+type ismulti = false;
 
 const customoptionstyles = {
   backgroundColor: '#fff',

@@ -125,13 +125,16 @@ export const Phone: React.FC<Props> = ({
         <button
           className={`phone__button--add ${addPr ? 'phone__button--add--active' : ''}`}
           onClick={() => handleAddClick(product)}
+          type="button"
         >
           Add to cart
         </button>
 
+        {/* eslint-disable-next-line */}
         <button
           className={`phone__button--like ${selectPr ? 'phone__button--like--active' : ''}`}
           onClick={() => handleLikeClick(product)}
+          type="button"
         />
       </div>
     </li>

@@ -1,8 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Select, { SingleValue, ActionMeta } from 'react-select';
 
 import { Product } from '../../helpers/Product';
-import { filterPr, getCategory, getLengthByCategory } from '../../helpers/utils';
+import {
+  filterPr,
+  getCategory,
+  getLengthByCategory,
+} from '../../helpers/utils';
 import { Phone } from '../Phone/Phone';
 import { Pagination } from '../Pagination/Pagination';
 
@@ -10,7 +15,6 @@ import { selectstyle, selectstyle2 } from './ProductLogicStyle';
 
 import './ProductLogic.scss';
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
-import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   products: Product[];
@@ -47,7 +51,10 @@ export const ProductLogic: React.FC<Props> = ({
   ];
 
   const [perPage, setPerPage] = useState({ value: 16, label: '16' });
-  const [sortCategory, setSortCategory] = useState({ value: 'year', label: 'Newest' });
+  const [sortCategory, setSortCategory] = useState({
+    value: 'year', label: 'Newest',
+  });
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePage = (numberOfPage: number) => {
@@ -66,7 +73,8 @@ export const ProductLogic: React.FC<Props> = ({
       const newCard = products.filter((product) => {
         const productWords = product.name.toLowerCase().split(' ');
 
-        return searchTerms.every((term) => productWords.some((word) => word.includes(term)));
+        return searchTerms.every((term) => productWords
+          .some((word) => word.includes(term)));
       });
 
       setStateCard(newCard);
@@ -135,7 +143,9 @@ export const ProductLogic: React.FC<Props> = ({
                 </div>
 
                 <div className="productsCategory__sortBy">
-                  <div className="productsCategory__sortBy--name">Items on page</div>
+                  <div className="productsCategory__sortBy--name">
+                    Items on page
+                  </div>
                   <Select
                     id="perPageSelector"
                     className="productsCategory__control"
@@ -170,11 +180,15 @@ export const ProductLogic: React.FC<Props> = ({
               )}
             </>
           ) : (
-            <h2 className="productsCategory__none">We currently don't have this product in our store</h2>
+            <h2 className="productsCategory__none">
+              We currently don&apos;t have this product in our store
+            </h2>
           )}
         </>
       ) : (
-        <h2 className="productsCategory__none">There are no goods by your criteria</h2>
+        <h2 className="productsCategory__none">
+          There are no goods by your criteria
+        </h2>
       )}
     </div>
   );
