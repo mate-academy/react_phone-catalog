@@ -7,15 +7,12 @@ import { Product } from '../../helpers/Product';
 import './HeaderStyles.scss';
 import { Search } from '../Search/Search';
 
-import logo from '../../icons/logo.svg';
-
 type Props = {
   likeProduct: Product[],
   addProduct: Product[],
 };
 
 export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
-
   const isActiveTab = ({ isActive }: { isActive: boolean }) => classNames(
     'nav__link', { nav__active: isActive },
   );
@@ -45,9 +42,7 @@ export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
         <a
           href="/"
           className="header__img"
-        >
-          <img src={logo} alt="logo" />
-        </a>
+        />
         <nav className="nav">
           <ul className="nav__list">
             <li className="nav__item">
