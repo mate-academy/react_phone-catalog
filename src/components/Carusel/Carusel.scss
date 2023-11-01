@@ -1,0 +1,66 @@
+@import "../../helpers/variables.scss";
+
+.carousel {
+  height: 400px;
+  margin-top: 50px;
+
+  &__slide {
+    background-position: center;
+
+    &--phones {
+      background-image: url(../../banerImg/banner-phones.png);
+    }
+
+    &--tablets {
+      background-image: url(../../banerImg/banner-tablets.png);
+    }
+
+    &--accessories {
+      background-image: url(../../banerImg/banner-accessories.png);
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    border: 1px solid $liteGrayColor;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    background-color: $whiteColor;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $grayColor;
+    }
+
+    &--prev {
+      background-image: url(../../icons/chevron-arrow-left.svg);
+    }
+
+    &--next {
+      background-image: url(../../icons/chevron-arrow-right.svg);
+    }
+  }
+}
+
+.carousel__effect > div {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 400px;
+  width: calc(100% - 64px - 32px);
+}
+
+ ul.indicators {
+  gap: 14px;
+}
+
+ul.indicators .carousel__effect:before {
+  width: 14px;
+  height: 4px;
+  border-radius: 0%;
+  background-color: $grayColor;
+}

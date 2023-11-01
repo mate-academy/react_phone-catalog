@@ -1,0 +1,34 @@
+@import "../../helpers/variables.scss";
+
+.likePage {
+  min-height: 66vh;
+  padding: $pagePadding;
+
+  &__header {
+    color: $grayColor;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+  }
+
+  &__counter {
+    color: $liteGrayColor;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  &__not {
+    color: $grayColor;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+  }
+}

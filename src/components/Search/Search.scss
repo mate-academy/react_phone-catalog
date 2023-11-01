@@ -1,0 +1,45 @@
+@import "../../helpers/variables.scss";
+
+.form {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+
+  max-width: 326px;
+  height: 64px;
+  border: $border;
+  border-bottom: none;
+
+  &__input {
+    border: none;
+    outline: none;
+    max-width: 326px;
+    height: 64px;
+
+    & ::placeholder {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17.89px;
+      color: $iconsColor;
+    }
+
+  }
+
+  &__search {
+    background-image: url("../../icons/search.svg");
+  }
+
+  &__cross {
+    background-image: url("../../icons/close-hover.svg");
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+
+    border: none;
+    background-color: $whiteColor;
+  }
+}

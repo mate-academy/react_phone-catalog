@@ -1,0 +1,116 @@
+@import "../../helpers/variables.scss";
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $whiteColor;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+
+  &__img {
+    width: 40px;
+    height: 24px;
+    margin-left: 25px;
+    position: relative;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__chose {
+    display: block;
+    width: 64px;
+    height: 64px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: -1px 0 0 $elementsColor;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  &__like {
+    background-image: url(../../icons/Favourites.svg);
+  }
+
+  &__add {
+    background-image: url(../../icons/Cart.svg);
+  }
+
+  &__amount {
+    height: 14px;
+    width: 14px;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: 600;
+    color: $whiteColor;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background-color: $redColor;
+    border-radius: 50%;
+  }
+}
+
+.nav__list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__item {
+  display: flex;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.nav__link {
+  color: $liteGrayColor;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 23px 0;
+  margin-left: 65px;
+  position: relative;
+
+
+  &:hover {
+    color: $grayColor;
+  }
+}
+
+.nav__active {
+  color: $grayColor;
+
+  &::after {
+    position: absolute;
+    border-radius: 8px;
+    height: 4px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: $grayColor;
+    content: "";
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+

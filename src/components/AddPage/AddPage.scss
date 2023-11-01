@@ -1,0 +1,155 @@
+@import "../../helpers/variables.scss";
+
+.addPage {
+  min-height: $pageHeight;
+  padding: $pagePadding;
+  padding-top: 24px;
+
+  &__header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    color: $grayColor;
+    margin-top: 40px;
+  }
+
+  &__body{
+    display: flex;
+  }
+
+  &__cross {
+    background-image: url("../../icons/close.svg");
+    border: none;
+    background-color: $whiteColor;
+    margin-right: 16px;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 24px;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $grayColor;
+    width: 295px;
+    margin-right: 49px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: $border;
+    padding: 8px;
+    background-color: $whiteColor;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &--container {
+      display: flex;
+    }
+  }
+
+  &__minus {
+    background-image: url("../../icons/minus-disabled.svg");
+  }
+
+  &__plus {
+    background-image: url("../../icons/plus.svg");
+  }
+
+  &__buttonImg {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  &__phoneProce {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: $grayColor;
+    margin-left: 43px;
+  }
+
+  &__minicontainer {
+    display: flex;
+    align-items: center;
+    border: $border;
+    padding: 24px;
+    margin-bottom: 16px;
+    max-width: 752px;
+  }
+
+  &__phoneCounter {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $grayColor;
+  }
+
+  &__totalContainer {
+    border: $border;
+    padding: 24px;
+    max-width: 368px;
+    height: 230px;
+    margin-left: 16px;
+
+    &--mimi {
+      border-bottom: $border;
+      padding-bottom: 24px;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+    }
+  }
+
+  &__totalPrice {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    color: $grayColor;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $liteGrayColor;
+  }
+
+  &__checkout {
+    width: 320px;
+    height: 48px;
+
+    background-color: $grayColor;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $whiteColor;
+    cursor: pointer;
+    margin-top: 24px;
+  }
+
+  &__not {
+    color: $grayColor;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    margin-top: 20px;
+  }
+}

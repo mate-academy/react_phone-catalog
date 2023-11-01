@@ -1,0 +1,79 @@
+@import "../../helpers/variables.scss";
+
+.productsCategory {
+  padding: $pagePadding;
+
+  &__header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    color: $grayColor;
+
+    margin: 0;
+    padding-bottom: 8px;
+  }
+
+  &__length {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $liteGrayColor;
+
+    margin: 0;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  &__sortBy {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+
+    &--container {
+      display: flex;
+      margin-top: 40px;
+    }
+
+    &--name {
+      padding-bottom: 4px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 15px;
+      color: $liteGrayColor;
+    }
+  }
+
+  &__control {
+    background-color: $whiteColor;
+    border-color: $iconsColor;
+    padding: 10px 12px 10px 0;
+
+    position: relative;
+
+    cursor: pointer;
+  }
+
+  &__items {
+    cursor: pointer;
+    position: absolute;
+    padding: 10px 12px;
+    background-color: $whiteColor;
+
+    &:hover {
+      background-color: $hoverColor;
+    }
+  }
+
+  &__none {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 41px;
+    color: $grayColor;
+  }
+}

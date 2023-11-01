@@ -1,0 +1,38 @@
+@import "../../helpers/variables.scss";
+
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+
+  margin: 24px 0 40px 0;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  &__arrow {
+    background-image: url("../../icons/chevron-arrow-right.svg");
+  }
+
+  &__home {
+    background-image: url("../../icons/home.svg");
+  }
+
+  &__category {
+    color: $liteGrayColor;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+
+    margin-right: 8px;
+  }
+
+  &__link {
+    color: $grayColor;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+  }
+}

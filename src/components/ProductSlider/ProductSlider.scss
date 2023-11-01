@@ -1,0 +1,66 @@
+@import "../../helpers/variables.scss";
+
+.products {
+  margin-top: 75px;
+
+  &__header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    color: $grayColor;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+
+    &--header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.sliderButton {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  border: 1px solid $grayColor;
+  cursor: pointer;
+
+  &--prev {
+    background-image: url("../../icons/chevron-arrow-left.svg");
+    margin-right: 16px;
+
+    &:hover {
+      border-color: $grayColor;
+      background-image: url("../../icons/chevron-arrow-left-hover.svg");
+    }
+
+    &:disabled {
+      background-image: url("../../icons/chevron-arrow-left.svg");
+      border-color: $liteGrayColor;
+      cursor: unset;
+    }
+  }
+
+  &--next {
+    background-image: url("../../icons/chevron-arrow-right.svg");
+
+    &:hover {
+      border-color: $grayColor;
+      background-image: url("../../icons/chevron-arrow-right-hover.svg");
+    }
+
+    &:disabled {
+      background-image: url("../../icons/chevron-arrow-right.svg");
+      border-color: $liteGrayColor;
+      cursor: unset;
+    }
+  }
+}

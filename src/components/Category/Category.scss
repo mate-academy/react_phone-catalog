@@ -1,0 +1,72 @@
+@import "../../helpers/variables.scss";
+
+.category {
+  margin-bottom: 80px;
+
+  &__header {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    color: $grayColor;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $grayColor;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25.5px;
+  }
+
+  &__name {
+    color: $liteGrayColor;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__img {
+    margin-bottom: 24px;
+    height: 368px;
+    width: 368px;
+
+    object-fit: cover;
+    object-position: center;
+    background-size: 368px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+
+  &__phone {
+    cursor: pointer;
+    &--img {
+      background-image: url("../../categoryImg/phone_category.6ddd2c76.png");
+    }
+  }
+
+  &__tablets {
+    cursor: pointer;
+    &--img {
+      background-image: url("../../categoryImg/tablet_category.6336ca9e.png");
+    }
+  }
+
+  &__accessories {
+    cursor: pointer;
+    &--img {
+      background-image: url("../../categoryImg/accessories_category.05d41563.png");
+    }
+  }
+}
