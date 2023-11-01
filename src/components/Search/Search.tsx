@@ -1,7 +1,9 @@
 import { debounce } from 'lodash';
-import { useCallback, useRef, useState } from 'react';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import './Search.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { SearchParams, getSearchWith } from '../../helpers/searchHelpers';
 
@@ -10,8 +12,11 @@ export const Search: React.FC = () => {
   const searchQuery = searchParams.get('query') || '';
 
   const [query, setQuery] = useState(searchQuery);
+  const [appliedQuery, setAppliedQuery] = useState(searchQuery);
 
   const searchInput = useRef<HTMLInputElement>(null);
+
+  const { pathname } = useLocation();
 
   function setSearchWith(params: SearchParams) {
     const search = getSearchWith(searchParams, params);
@@ -22,6 +27,7 @@ export const Search: React.FC = () => {
   const handleAppliedChange = (
     newQuery: string,
   ) => {
+    setAppliedQuery(newQuery);
     setSearchWith({ query: newQuery || null });
   };
 
@@ -45,6 +51,11 @@ export const Search: React.FC = () => {
     applyQuery('');
   };
 
+  useEffect(() => {
+    setQuery('');
+    handleAppliedChange('');
+  }, [pathname]);
+
   return (
     <div className="search">
       <input
@@ -54,31 +65,34 @@ export const Search: React.FC = () => {
         value={query}
         onChange={handleSearchChange}
         ref={searchInput}
-        placeholder="Search in favourites..."
+        placeholder={`Search in ${pathname.split('/')[1]}...`}
       />
+      {appliedQuery && null}
 
-      {query ? (
-        <button
-          className="search__icon-box"
-          data-cy="searchDelete"
-          onClick={handleResetSearch}
-          type="button"
-        >
-          <ReactSVG
-            src="img/icons/Close.svg"
-          />
-        </button>
-      ) : (
-        <div
-          className="search__icon-box"
-          onClick={handleSearchFocus}
-          aria-hidden
-        >
-          <ReactSVG
-            src="img/icons/Search.svg"
-          />
-        </div>
-      )}
+      <div className="search__icon-container">
+        {query ? (
+          <button
+            className="search__icon-box"
+            data-cy="searchDelete"
+            onClick={handleResetSearch}
+            type="button"
+          >
+            <ReactSVG
+              src="img/icons/Close.svg"
+            />
+          </button>
+        ) : (
+          <div
+            className="search__icon-box"
+            onClick={handleSearchFocus}
+            aria-hidden
+          >
+            <ReactSVG
+              src="img/icons/Search.svg"
+            />
+          </div>
+        )}
+      </div>
 
     </div>
   );

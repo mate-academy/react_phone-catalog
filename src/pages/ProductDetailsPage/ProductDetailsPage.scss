@@ -213,6 +213,26 @@
     }
   }
 
+  &__tech-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      @extend %body-text;
+      color: $secondary;
+    }
+
+    &-text {
+      @extend %body-text;
+      color: $primary;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
   &__error {
     display: flex;
     flex-grow: 1;

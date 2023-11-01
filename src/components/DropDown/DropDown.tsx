@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
+import { ReactSVG } from 'react-svg';
 import { CSSTransition } from 'react-transition-group';
 import { DropDownOption } from '../../types/DropDownOptions';
 import './Dropdown.scss';
@@ -49,7 +50,13 @@ export const Dropdown: React.FC<Props> = ({
         type="button"
         onClick={handleClick}
       >
-        {optionName}
+        <span>
+          {optionName}
+        </span>
+
+        {isSelected
+          ? <ReactSVG src="img/icons/Chevron (Arrow Up).svg" />
+          : <ReactSVG src="img/icons/Chevron (Arrow Down).svg" />}
       </button>
 
       <CSSTransition

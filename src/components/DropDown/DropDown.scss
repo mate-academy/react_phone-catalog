@@ -27,14 +27,8 @@
 
     text-align: left;
 
-    background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
-    background-repeat: no-repeat;
-    background-position: right 0.7rem top 50%;
-    background-size: 16px;
-
     &--active {
       border: 1px solid $primary;
-      background-image: url("../../img/icons/Chevron\ \(Arrow\ Up\).svg");
     }
 
     &:hover {
@@ -42,7 +36,7 @@
     }
 
     & svg {
-      fill: $primary;
+      fill: $icons;
     }
   }
 

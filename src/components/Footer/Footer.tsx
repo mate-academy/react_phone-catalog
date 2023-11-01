@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
           onClick={handleScrollToTop}
         >
           <ReactSVG
-            src="/img/icons/Chevron (Arrow Up).svg"
+            src="img/icons/Chevron (Arrow Up).svg"
           />
         </button>
       </div>

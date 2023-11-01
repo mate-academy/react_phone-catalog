@@ -61,7 +61,9 @@ export const Nav = () => {
 
       <ul className="navbar__right-side">
         {isVisible.includes(pathname) && (
-          <Search />
+          <Search
+            key={pathname}
+          />
         )}
 
         <div className="navbar__icon-box">

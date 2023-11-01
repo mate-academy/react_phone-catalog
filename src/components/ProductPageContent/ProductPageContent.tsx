@@ -1,5 +1,5 @@
 import './ProductPageContent.scss';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   getAccessories, getPhones, getProducts, getTablets,
@@ -33,18 +33,14 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const filteredItems = useMemo(() => {
-    return filterQuery(products, query);
-  }, [query, products]);
+  const filteredItems = filterQuery(products, query);
 
-  const visibleItems = useMemo(() => {
-    return getFilterProducts(
-      filteredItems,
-      sortType,
-      perPage,
-      currentPage,
-    );
-  }, [filteredItems, sortType, currentPage, perPage]);
+  const visibleItems = getFilterProducts(
+    filteredItems,
+    sortType,
+    perPage,
+    currentPage,
+  );
 
   const totalProducts = filteredItems.length;
   const totalPages = Math.ceil(totalProducts / +perPage);
@@ -91,7 +87,7 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
     fetch()
       .then(setProducts)
       .finally(() => setIsLoading(false));
-  }, [title]);
+  }, []);
 
   return (
     <div className="products">

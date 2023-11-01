@@ -250,75 +250,75 @@ export const ProductDetailsPage = () => {
                     Tech specs
                   </h2>
 
-                  <ul className="details-page__detail-list">
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                  <ul className="details-page__tech-list">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Screen
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.screen}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Resolution
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.resolution}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Processor
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.processor}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         RAM
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.ram}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Built in memory
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.capacity}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Camera
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.camera}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Zoom
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.zoom}
                       </p>
                     </li>
 
-                    <li className="details-page__detail-item">
-                      <h3 className="details-page__detail-item-title">
+                    <li className="details-page__tech-item">
+                      <h3 className="details-page__tech-item-title">
                         Cell
                       </h3>
-                      <p className="details-page__detail-item-text">
+                      <p className="details-page__tech-item-text">
                         {product.cell}
                       </p>
                     </li>
