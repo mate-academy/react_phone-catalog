@@ -38,7 +38,7 @@ export const Categories: React.FC = () => {
             categories__photo-container--yelow"
           >
             <img
-              src="./_new/img/category-phones.png"
+              src="img/category-phones.png"
               alt="phone"
               className="categories__photo"
             />
@@ -61,7 +61,7 @@ export const Categories: React.FC = () => {
             categories__photo-container--grey"
           >
             <img
-              src="./_new/img/category-tablets.png"
+              src="img/category-tablets.png"
               alt=""
               className="categories__photo"
             />
@@ -84,7 +84,7 @@ export const Categories: React.FC = () => {
             categories__photo-container--red"
           >
             <img
-              src="./_new/img/category-accessories.png"
+              src="img/category-accessories.png"
               alt=""
               className="categories__photo"
             />
