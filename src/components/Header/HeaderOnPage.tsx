@@ -1,17 +1,20 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { Product } from '../../helpers/Product';
 import './HeaderStyles.scss';
 import { Search } from '../Search/Search';
 
+import logo from '../../icons/logo.svg';
+
 type Props = {
-  likeProduct: Product[];
-  addProduct: Product[];
+  likeProduct: Product[],
+  addProduct: Product[],
 };
 
 export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
-  const logo: string = require('../../icons/logo.svg').default;
 
   const isActiveTab = ({ isActive }: { isActive: boolean }) => classNames(
     'nav__link', { nav__active: isActive },
@@ -30,6 +33,11 @@ export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
   const path = ['/phones', '/tablets', '/accessories'];
 
   const showSearch = path.includes(pathname);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [navigate]);
 
   return (
     <header className="header">

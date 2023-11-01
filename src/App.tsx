@@ -5,7 +5,7 @@ import {
   Outlet,
 } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import './App.scss';
 
@@ -28,14 +28,6 @@ type Props = {
   likeProduct: Product[];
   addProduct: Product[];
 };
-
-function ScrollToTop() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  return null;
-}
 
 const OutletPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
   return (
@@ -83,7 +75,7 @@ export const App = () => {
       setLikeProduct([...likeProduct, product]);
 
       localStorage.setItem('likeProduct', JSON.stringify(
-        [...likeProduct, product]
+        [...likeProduct, product],
       ));
     }
   };
@@ -102,17 +94,21 @@ export const App = () => {
       setAddProduct([...addProduct, product]);
 
       localStorage.setItem('chart', JSON.stringify(
-        [...addProduct, product]
+        [...addProduct, product],
       ));
     }
   };
 
   return (
     <Routes>
-      <Route element={<ScrollToTop />} />
       <Route
         path="/"
-        element={<OutletPage likeProduct={likeProduct} addProduct={addProduct} />}
+        element={(
+          <OutletPage
+            likeProduct={likeProduct}
+            addProduct={addProduct}
+          />
+        )}
       >
         <Route
           index
