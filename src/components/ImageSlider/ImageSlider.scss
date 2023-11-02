@@ -64,5 +64,20 @@
     justify-content: center;
     align-items: center;
     border: 1px solid $icons;
+    transition: $transition;
+
+    & svg {
+      transform: scale(1);
+      transition: $transition;
+      fill: $primary;
+    }
+
+    &:hover {
+      border-color: $primary;
+
+      & svg {
+        transform: scale(1.4);
+      }
+    }
   }
 }

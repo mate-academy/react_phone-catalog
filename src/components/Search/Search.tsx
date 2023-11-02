@@ -1,6 +1,6 @@
 import { debounce } from 'lodash';
 import {
-  useCallback, useEffect, useRef, useState,
+  useCallback, useRef, useState,
 } from 'react';
 import './Search.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -50,11 +50,6 @@ export const Search: React.FC = () => {
     setQuery('');
     applyQuery('');
   };
-
-  useEffect(() => {
-    setQuery('');
-    handleAppliedChange('');
-  }, [pathname]);
 
   return (
     <div className="search">

@@ -1,5 +1,5 @@
 import './Nav.scss';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
@@ -9,8 +9,13 @@ import { FavContext } from '../../storage/FavContext';
 import { CartContext } from '../../storage/CartContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
-  'navbar__item',
+  'navbar__item', 'navbar__item-after',
   { 'navbar__item--is-active': isActive },
+);
+
+const getIconLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
+  'navbar__icon-link', 'navbar__icon-link-after',
+  { 'navbar__icon-link--is-active': isActive },
 );
 
 const isVisible = ['/phones', '/tablets', '/accessories', '/favourites'];
@@ -30,33 +35,37 @@ export const Nav = () => {
       <ul className="navbar__left-side">
         <Logo />
 
-        <NavLink
-          to="/"
-          className={getLinkClass}
-        >
-          Home
-        </NavLink>
+        {pathname !== '/cart' && (
+          <>
+            <NavLink
+              to="/"
+              className={getLinkClass}
+            >
+              Home
+            </NavLink>
 
-        <NavLink
-          to="/phones"
-          className={getLinkClass}
-        >
-          Phones
-        </NavLink>
+            <NavLink
+              to="/phones"
+              className={getLinkClass}
+            >
+              Phones
+            </NavLink>
 
-        <NavLink
-          to="/tablets"
-          className={getLinkClass}
-        >
-          Tablets
-        </NavLink>
+            <NavLink
+              to="/tablets"
+              className={getLinkClass}
+            >
+              Tablets
+            </NavLink>
 
-        <NavLink
-          to="/accessories"
-          className={getLinkClass}
-        >
-          Accessories
-        </NavLink>
+            <NavLink
+              to="/accessories"
+              className={getLinkClass}
+            >
+              Accessories
+            </NavLink>
+          </>
+        )}
       </ul>
 
       <ul className="navbar__right-side">
@@ -66,24 +75,32 @@ export const Nav = () => {
           />
         )}
 
-        <div className="navbar__icon-box">
-          <Link to="/favourites" className="navbar__icon">
-            <div className="navbar__icon-container">
-              <ReactSVG
-                src="img/icons/Favourites (Heart Like).svg"
-              />
+        {pathname !== '/cart' && (
+          <NavLink
+            to="/favourites"
+            className={getIconLinkClass}
+          >
+            <div className="navbar__icon-box">
+              <div className="navbar__icon-container">
+                <ReactSVG
+                  src="img/icons/Favourites (Heart Like).svg"
+                />
 
-              {favProducts.length > 0 && (
-                <div className="navbar__counter">
-                  {favProducts.length}
-                </div>
-              )}
+                {favProducts.length > 0 && (
+                  <div className="navbar__counter">
+                    {favProducts.length}
+                  </div>
+                )}
+              </div>
             </div>
-          </Link>
-        </div>
+          </NavLink>
+        )}
 
-        <div className="navbar__icon-box">
-          <Link to="/cart" className="navbar__icon">
+        <NavLink
+          to="/cart"
+          className={getIconLinkClass}
+        >
+          <div className="navbar__icon-box">
             <div className="navbar__icon-container">
               <ReactSVG
                 src="img/icons/Shopping bag (Cart).svg"
@@ -95,8 +112,8 @@ export const Nav = () => {
                 </div>
               )}
             </div>
-          </Link>
-        </div>
+          </div>
+        </NavLink>
       </ul>
     </nav>
   );

@@ -22,7 +22,24 @@
 
   &__btn-delete {
     @include square(40px);
-    margin-right: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    transition: $transition;
+
+    & svg {
+      fill: $icons;
+    }
+
+    &:hover {
+      background-color: $hover-bg;
+      border-color: $elements;
+
+      & svg {
+        fill: $primary;
+      }
+    }
   }
 
   &__title {
@@ -38,9 +55,19 @@
     grid-gap: 24px;
     gap: 24px;
 
+    &-link {
+      flex-grow: 1;
+      text-decoration: none;
+      transition: $transition;
+
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     &-name {
       display: block;
-      flex-grow: 1;
     }
   }
 
@@ -53,19 +80,28 @@
     height: 80px;
   }
 
+  &__img-link {
+    display: block;
+  }
+
   &__img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
     object-position: center;
+    transform: scale(1);
+    transition: $transition;
+
+     &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__quantity-buttons {
     display: flex;
     align-items: center;
     gap: 13px;
-    // margin-right: 43px;
   }
 
   &__quantity-button {

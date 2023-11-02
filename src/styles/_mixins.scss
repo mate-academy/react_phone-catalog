@@ -17,24 +17,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: $transition;
 
   & svg {
+    transform: scale(1);
     fill: $primary;
   }
 
   &:hover {
     border-color: $primary;
+
+    & svg {
+      transition: $transition;
+      transform: scale(1.4);
+    }
   }
 
   &:disabled {
-    border-color: $icons;
+    border-color: $elements;
 
     &:hover {
-      border-color: $icons;
+      border-color: $elements;
     }
 
     & svg {
       fill: $icons;
+      transform: scale(1);
     }
   }
 }
@@ -46,6 +54,8 @@
   background-color: $primary;
   color: $white;
   line-height: 21px;
+  box-shadow: none;
+  transition: $transition;
 
   &:hover {
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
@@ -77,5 +87,14 @@
 
   & option {
     background-color: #fff;
+  }
+}
+
+@mixin scale {
+  transform: scale(1);
+  transition: $transition;
+
+  &:hover {
+    transform: scale(1.2);
   }
 }

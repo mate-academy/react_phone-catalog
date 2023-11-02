@@ -11,12 +11,11 @@ type Props = {
 
 export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
   return (
-    <div className="slider-buttons">
+    <div className="slider__buttons">
       <button
         type="button"
         className={classNames(
-          "slider-button",
-          { 'slider-button--active': current !== 0 }
+          "slider__button",
         )}
         onClick={() => changePage(current - 1)}
         disabled={current === 0}
@@ -29,8 +28,7 @@ export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
       <button
         type="button"
         className={classNames(
-          "slider-button",
-          { 'slider-button--active': current !== 4 }
+          "slider__button",
         )}
         disabled={current === 4}
         onClick={() => changePage(current + 1)}

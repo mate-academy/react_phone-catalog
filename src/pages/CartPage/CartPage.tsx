@@ -1,4 +1,5 @@
 import './CartPage.scss';
+import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { useContext } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -35,7 +36,9 @@ export const CartPage: React.FC = () => {
             <ul className="cart-page__list">
               {cartItems.map(item => {
                 const { id, quantity, product } = item;
-                const { name, image, price } = product;
+                const {
+                  name, image, price, category, itemId,
+                } = product;
 
                 return (
                   <li
@@ -54,17 +57,27 @@ export const CartPage: React.FC = () => {
                       />
                     </button>
 
-                    <div className="cart-page__img-container">
-                      <img
-                        src={image}
-                        className="cart-page__img"
-                        alt="product"
-                      />
-                    </div>
+                    <Link
+                      to={`/${category}/${itemId}`}
+                      className="cart-page__img-link"
+                    >
+                      <div className="cart-page__img-container">
+                        <img
+                          src={image}
+                          alt={name}
+                          className="cart-page__img"
+                        />
+                      </div>
+                    </Link>
 
-                    <p className="cart-page__item-name">
-                      {name}
-                    </p>
+                    <Link
+                      to={`/${category}/${itemId}`}
+                      className="cart-page__item-link"
+                    >
+                      <p className="cart-page__item-name">
+                        {name}
+                      </p>
+                    </Link>
 
                     <div className="cart-page__quantity-buttons">
                       <button

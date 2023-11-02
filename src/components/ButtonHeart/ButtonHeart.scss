@@ -1,11 +1,13 @@
 @import "../../styles/style_utils";
 
 .button-fav {
-  @include square(40px);
+  min-width: 40px;
+  min-height: 40px;
   border: 1px solid $icons;
   background-image: url("../../img/icons/Favourites\ \(Heart\ Like\).svg");
   background-repeat: no-repeat;
   background-position: center;
+  transition: $transition;
 
   &:hover {
     border: 1px solid $primary;

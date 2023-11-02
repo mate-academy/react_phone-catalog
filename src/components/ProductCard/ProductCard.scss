@@ -5,11 +5,12 @@
   border: 1px solid $elements;
   height: 507px;
   padding: 24px 32px 24px 24px;
-  transition: transform 0.3s;
+  box-shadow: none;
+  transition: $transition;
   cursor: url("../../img/icons/Cursor.svg"), auto;
 
   &:hover {
-    transform: scale(1.06);
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
   }
 
   &__name {

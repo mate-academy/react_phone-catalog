@@ -4,28 +4,55 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 
   &__left-side {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 64px;
+    height: 100%;
   }
 
   &__item {
     @extend %uppercase;
     position: relative;
-    display: inline-block;
-    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: $white;
+    transition: $transition;
 
-    &--is-active::after {
-      position: absolute;
-      content: "";
-      display: block;
-      width: 100%;
-      height: 3px;
-      margin-top: 24px;
-      background-color: $primary;
+    &-after {
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        transform: translateY(3px);
+        opacity: 0;
+        transition: all 0.2s ease-in;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: $primary;
+      }
+    }
+
+    &--is-active {
+      color: $primary;
+
+      &::after {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background-color: $hover-bg;
     }
   }
 
@@ -36,28 +63,73 @@
   &__icon-box {
     width: 64px;
     height: 64px;
+    background-color: $white;
+    transition: $transition;
+
+    &:hover {
+      background-color: $hover-bg;
+    }
   }
 
-  &__icon {
-    position: relative;
+  &__icon-box {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    height: 100%;
-    box-sizing: border-box;
     box-shadow: -1px 0 0 $elements;
   }
 
   &__icon-container {
-    position: relative;
     width: 16px;
     height: 16px;
+    transition: $transition;
+    transform: scale(1);
 
     & > svg {
       display: block;
       width: 100%;
       height: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  &__icon-link {
+    position: relative;
+    background-color: $white;
+    transition: $transition;
+
+    &-after {
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        transform: translateY(3px);
+        opacity: 0;
+        transition: all 0.2s ease-in;
+
+        width: 100%;
+        height: 3px;
+
+        background-color: $primary;
+      }
+    }
+
+    &--is-active {
+      color: $primary;
+
+      &::after {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background-color: $hover-bg;
     }
   }
 
