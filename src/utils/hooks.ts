@@ -48,7 +48,7 @@ export function useLocaleStorage<T>(
 
   const save = (newValue: T) => {
     localStorage.setItem(key, JSON.stringify(newValue));
-    setValue(value);
+    setValue(newValue);
   };
 
   return [value, save];

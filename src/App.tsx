@@ -4,7 +4,6 @@ import {
   Routes,
 } from 'react-router-dom';
 import { Header } from './Header';
-import { Navigation } from './Navigation';
 import { Home } from './Home';
 import { Products } from './Products';
 import { ProductDetails } from './ProductDetails';
@@ -109,7 +108,6 @@ const App = () => {
             path="/favourites"
             element={(
               <>
-                <Navigation />
                 <Favourites />
               </>
             )}

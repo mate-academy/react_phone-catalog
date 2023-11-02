@@ -2,25 +2,20 @@ import {
   useCallback,
   useEffect,
   useState,
-//  useContext
+  useContext,
 } from 'react';
 import { debounce } from 'lodash';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useUpdateSearch } from './utils/hooks';
-import {
-  getCartItemsFromLocaleStorage,
-  getFavouritesFromLocaleStorage,
-} from './utils/updateLocaleStorage';
-import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 import { SearchTypes } from './types/SearchTypes';
-// import { Context } from './Context';
+import { Context } from './Context';
 
 export const Header: React.FC = () => {
-  // const {
-  //   chosenProducts,
-  //   productsToBuy,
-  // } = useContext(Context);
+  const {
+    chosenProducts,
+    productsToBuy,
+  } = useContext(Context);
   const { pathname } = useLocation();
   const { updateSearch } = useUpdateSearch();
   const [searchParams] = useSearchParams();
@@ -136,13 +131,9 @@ export const Header: React.FC = () => {
             to="/favourites"
           >
             <div className="header__stroke" />
-            {getFavouritesFromLocaleStorage(
-              LocaleStorageTypes.favourites,
-            ).length > 0 && (
+            {chosenProducts.length > 0 && (
               <div className="header__circle">
-                {getFavouritesFromLocaleStorage(
-                  LocaleStorageTypes.favourites,
-                ).length}
+                {chosenProducts.length}
               </div>
             )}
           </NavLink>
@@ -154,13 +145,9 @@ export const Header: React.FC = () => {
             to="/cart"
           >
             <div className="header__bag" />
-            {getCartItemsFromLocaleStorage(
-              LocaleStorageTypes.toBuy,
-            ).length > 0 && (
+            {productsToBuy.length > 0 && (
               <div className="header__circle">
-                {getCartItemsFromLocaleStorage(
-                  LocaleStorageTypes.toBuy,
-                ).length}
+                {productsToBuy.length}
               </div>
             )}
           </NavLink>

@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Context } from './Context';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
+import { Navigation } from './Navigation';
 
 export const Favourites = () => {
   const [searchParams] = useSearchParams();
@@ -30,6 +31,8 @@ export const Favourites = () => {
 
   return (
     <div className="favourites">
+
+      <Navigation />
       <h1 className="favourites__title">
         Favourites
       </h1>
