@@ -28,7 +28,6 @@ export const AddCart: React.FC<Props> = ({
   useEffect(() => {
     const savedQuantity = localStorage.getItem(`quantity_${product.phoneId}`);
 
-    localStorage.setItem(`quantity_${product.phoneId}`, '1');
     if (savedQuantity) {
       setStateQuantity(parseInt(savedQuantity, 10));
     }
@@ -36,6 +35,8 @@ export const AddCart: React.FC<Props> = ({
 
   const handleDelete = () => {
     onAddtoChart(product);
+
+    localStorage.setItem(`quantity_${product.phoneId}`, '1');
   };
 
   const handlePlus = () => {
