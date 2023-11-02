@@ -2,24 +2,23 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Product } from '../types/Product';
-import { URL_PRODUCTS } from '../helpers/Url';
 import { useFetching } from '../helpers/UseFetchig';
 import Loader from '../components/Loader/Loader';
 import { NavbarContext } from '../context/NavbarContext';
 
 export const AccessoriesPage = () => {
   const [devices, setDevices] = useState<Product[]>([]);
-  const { query } = useContext(NavbarContext);
+  const { query, products } = useContext(NavbarContext);
 
   const getAccessories = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
-    const filteredData = data.filter(
-      (product: Product) => product.type === 'accessory'
-      && product.name.toLowerCase().includes(query.toLowerCase()),
-    );
+    if (products.length) {
+      const filteredData = products.filter(
+        (product: Product) => product.type === 'accessory'
+        && product.name.toLowerCase().includes(query.toLowerCase()),
+      );
 
-    setDevices(filteredData);
+      setDevices(filteredData);
+    }
   };
 
   const [
@@ -30,7 +29,7 @@ export const AccessoriesPage = () => {
 
   useEffect(() => {
     fetchAccessories();
-  }, [query]);
+  }, [query, products.length]);
 
   const [searchParams] = useSearchParams();
 

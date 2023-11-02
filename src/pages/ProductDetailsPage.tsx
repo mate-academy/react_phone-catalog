@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 import cn from 'classnames';
 import { Product, ProductDetails } from '../types/Product';
-import { URL_PRODUCTS, URL_PRODUCT_DETAILS } from '../helpers/Url';
+import { URL_PRODUCT_DETAILS } from '../helpers/Url';
 import { useFetching } from '../helpers/UseFetchig';
 import Loader from '../components/Loader/Loader';
 import { getFinalPrice } from '../helpers/getFinalPrice';
@@ -36,7 +36,6 @@ export const ProductDetailsPage = () => {
     ram: '',
   };
   const [device, setDevice] = useState<Product>(defaultProduct);
-  const [devices, setDevices] = useState<Product[]>([]);
   const {
     type,
     price,
@@ -49,6 +48,7 @@ export const ProductDetailsPage = () => {
   const [selectedCapacity, setSelectedCapacity] = useState(0);
   const { productId } = useParams();
   const navigate = useNavigate();
+  const { products } = useContext(NavbarContext);
 
   const modifiedImagesUrl = useMemo(() => {
     return productDetails?.images
@@ -66,15 +66,12 @@ export const ProductDetailsPage = () => {
     setBigImage(data.images[0].replace('phones', 'products'));
   };
 
-  const getDevices = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
+  const getDevices = () => {
+    const foundedDevice = products.find((dev: Product) => dev.id === productId);
 
-    setDevices(data);
-
-    const foundedDevice = data.find((dev: Product) => dev.id === productId);
-
-    setDevice(foundedDevice);
+    if (foundedDevice) {
+      setDevice(foundedDevice);
+    }
   };
 
   const [
@@ -86,7 +83,7 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     fetchProductDetails();
     getDevices();
-  }, [productId]);
+  }, [productId, products.length]);
 
   const detailsTech = [
     'Screen',
@@ -377,7 +374,7 @@ export const ProductDetailsPage = () => {
             </div>
           </div>
           <div className="brand-new-models">
-            <ProductsSlider title="You may also like" products={devices} />
+            <ProductsSlider title="You may also like" products={products} />
           </div>
         </div>
       )}

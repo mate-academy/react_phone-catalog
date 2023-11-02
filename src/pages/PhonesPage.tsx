@@ -6,14 +6,13 @@ import {
 import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Product } from '../types/Product';
-import { URL_PRODUCTS } from '../helpers/Url';
 import { useFetching } from '../helpers/UseFetchig';
 import Loader from '../components/Loader/Loader';
 import { NavbarContext } from '../context/NavbarContext';
 
 export const PhonesPage = () => {
   const [devices, setDevices] = useState<Product[]>([]);
-  const { query } = useContext(NavbarContext);
+  const { query, products } = useContext(NavbarContext);
 
   const filterDevices = (devs: Product[]) => {
     return devs
@@ -22,22 +21,22 @@ export const PhonesPage = () => {
   };
 
   const getPhones = async () => {
-    const response = await fetch(URL_PRODUCTS);
-    const data = await response.json();
-    const filteredData = data.filter(
-      (product: Product) => product.type === 'phone',
-    );
+    if (products.length) {
+      const filteredData = products.filter(
+        (product: Product) => product.type === 'phone',
+      );
 
-    const finallyFilteredData = filterDevices(filteredData);
+      const finallyFilteredData = filterDevices(filteredData);
 
-    setDevices(finallyFilteredData);
+      setDevices(finallyFilteredData);
+    }
   };
 
   const [fetchPhones, isLoadingPhones, isErrorPhones] = useFetching(getPhones);
 
   useEffect(() => {
     fetchPhones();
-  }, [query]);
+  }, [query, products.length]);
 
   const [searchParams] = useSearchParams();
 
