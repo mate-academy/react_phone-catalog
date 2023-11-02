@@ -61,22 +61,18 @@
   }
 
   &__icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 64px;
     height: 64px;
     background-color: $white;
+    box-shadow: -1px 0 0 $elements;
     transition: $transition;
 
     &:hover {
       background-color: $hover-bg;
     }
-  }
-
-  &__icon-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    box-shadow: -1px 0 0 $elements;
   }
 
   &__icon-container {

@@ -60,7 +60,6 @@
       text-decoration: none;
       transition: $transition;
 
-
       &:hover {
         text-decoration: underline;
       }
@@ -93,7 +92,7 @@
     transform: scale(1);
     transition: $transition;
 
-     &:hover {
+    &:hover {
       transform: scale(1.2);
     }
   }
