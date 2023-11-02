@@ -53,7 +53,7 @@
       font-weight: 500;
       font-size: 22px;
       line-height: 28.12px;
-      color:$liteGrayColor;
+      color: $liteGrayColor;
       text-decoration: line-through;
     }
   }
@@ -63,7 +63,6 @@
     font-size: 12px;
     line-height: 15.34px;
     margin-top: 16px;
-
 
     &--container {
       display: flex;
@@ -94,14 +93,19 @@
       font-weight: 600;
       font-size: 14px;
       line-height: 21px;
-      color:$whiteColor;
+      color: $whiteColor;
       background-color: $grayColor;
       max-width: 320px;
       height: 40px;
       margin-right: 8px;
       flex-grow: 1;
-
+      border: none;
       cursor: pointer;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
 
       &--active {
         background-color: $whiteColor;
@@ -119,10 +123,10 @@
       background-color: $whiteColor;
       border: $border;
       cursor: pointer;
-      transition: all .3s ease-out;
+      transition: box-shadow 0.3s;
 
       &:hover {
-        border: 1px solid $grayColor;
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
       }
 
       &--active {
@@ -131,4 +135,3 @@
     }
   }
 }
-

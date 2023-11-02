@@ -109,16 +109,18 @@
       width: 30px;
       height: 30px;
       margin-right: 8px;
-
       border-radius: 50px;
-
       border: 2px solid $whiteColor;
-
       outline: $border;
 
       cursor: pointer;
-    }
 
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
+    }
 
     &--active {
       outline: 1px solid $grayColor;
@@ -155,6 +157,12 @@
       border: 1px solid $iconsColor;
 
       cursor: pointer;
+
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
     }
 
     &--active {
@@ -163,12 +171,17 @@
       border: 1px solid $grayColor;
 
       color: $whiteColor;
+
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
     }
   }
 
   &__cost {
     display: flex;
-    padding-bottom: 6px;
     padding-top: 36px;
     padding-bottom: 16px;
     align-items: center;

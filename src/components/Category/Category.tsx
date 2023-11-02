@@ -15,11 +15,11 @@ export const Category: React.FC<Props> = ({ product }) => {
     return arr.filter(pr => pr.category === category).length;
   };
 
-    // eslint-disable-next-line
+  // eslint-disable-next-line
     const phoneBaner: string = require("../../categoryImg/phone_category.6ddd2c76.png").default;
-     // eslint-disable-next-line
+  // eslint-disable-next-line
      const tabletsBaner: string = require("../../categoryImg/tablet_category.6336ca9e.png").default;
-      // eslint-disable-next-line
+  // eslint-disable-next-line
     const accessoriesBaner: string = require("../../categoryImg/accessories_category.05d41563.png").default;
 
   return (

@@ -90,6 +90,7 @@
   padding: 23px 0;
   margin-left: 65px;
   position: relative;
+  transition: color 0.3s;
 
   &:hover {
     color: $grayColor;
