@@ -1,0 +1,17 @@
+@import '../../../../app/assets/styles/index';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.icon {
+  fill: $dark-primary;
+  width: 16px;
+  height: 16px;
+}

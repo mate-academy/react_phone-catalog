@@ -1,0 +1,25 @@
+@import '../../app/assets/styles/index';
+
+.wrapper {
+  position: relative;
+  height: 16px;
+}
+
+.total {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: $red;
+  border: 1px solid $white;
+  border-radius: 50%;
+  color: $white;
+  text-align: center;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 600;
+}

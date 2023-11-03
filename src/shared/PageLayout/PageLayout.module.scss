@@ -1,0 +1,16 @@
+@import '../../app/assets/styles';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1168px;
+  padding: 24px 16px 80px;
+  margin: 0 auto;
+  gap: 36px;
+
+  @include md-device {
+    padding-top: 40px;
+    gap: 80px;
+  }
+}

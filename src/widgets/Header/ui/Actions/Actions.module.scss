@@ -1,0 +1,21 @@
+@import '../../../../app/assets/styles/index';
+
+.actions {
+  display: flex;
+}
+
+.action {
+  width: 48px;
+  height: 48px;
+  box-shadow: -1px 0px 0px 0px $dark-elements;
+  transition: background-color 0.3s ease-in-out;
+
+  @include md-device {
+    width: 64px;
+    height: 64px;
+  }
+
+  &:hover {
+    background-color: $dark-background;
+  }
+}

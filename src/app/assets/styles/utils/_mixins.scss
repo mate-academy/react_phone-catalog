@@ -1,0 +1,13 @@
+@import 'variables';
+
+@mixin md-device {
+  @media (min-width: $md-device-size) {
+    @content;
+  }
+}
+
+@mixin lg-device {
+  @media (min-width: $lg-device-size) {
+    @content;
+  }
+}

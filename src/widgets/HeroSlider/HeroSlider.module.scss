@@ -1,0 +1,60 @@
+@import '../../app/assets/styles';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.body {
+  display: flex;
+  gap: 16px;
+}
+
+.slider {
+  height: 280px;
+
+  @include md-device {
+    height: 400px;
+  }
+}
+
+.navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background: $white;
+  border: 1px solid $dark-placeholders;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-background;
+  }
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginationBullet {
+  width: 14px;
+  height: 4px;
+  background: $dark-primary;
+  border-radius: 0;
+}

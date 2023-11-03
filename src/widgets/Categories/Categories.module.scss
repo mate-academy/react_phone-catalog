@@ -1,0 +1,25 @@
+@import "../../app/assets/styles";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include md-device {
+    flex-direction: row;
+  }
+}

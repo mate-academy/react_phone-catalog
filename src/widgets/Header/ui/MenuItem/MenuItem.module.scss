@@ -1,0 +1,45 @@
+@import '../../../../app/assets/styles/index';
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: $dark-secondary;
+  transition: color 0.3s ease-in-out;
+
+  @include lg-device {
+    padding: 27px 0 26px;
+    font-size: 12px;
+    line-height: 11px;
+  }
+
+  &:hover {
+    color: $dark-primary;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: $dark-primary;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.active {
+  color: $dark-primary;
+
+  &::before {
+    height: 3px;
+  }
+}

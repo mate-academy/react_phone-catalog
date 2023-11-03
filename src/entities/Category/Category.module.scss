@@ -1,0 +1,72 @@
+@import "../../app/assets/styles";
+
+.link {
+  display: block;
+
+  @include md-device {
+    flex: 1 1 33.33%;
+  }
+}
+
+.img {
+  position: relative;
+  width: 100%;
+  padding-bottom: 200px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: #EB5757;
+
+  @include md-device {
+    padding-bottom: 100%;
+    margin-bottom: 24px;
+  }
+
+  img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.phones {
+  background: #FCDBC1;
+
+  img {
+    height: 122%;
+    object-position: 73px 8px;
+  }
+}
+
+.tablets {
+  background: #8D8D92;
+
+  img {
+    height: 138%;
+    object-position: 47px 20px;
+  }
+}
+
+.accessories {
+  background: #973D5F;
+
+  img {
+    height: 100%;
+    object-position: 50px 45px;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.total {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  color: $dark-secondary;
+}

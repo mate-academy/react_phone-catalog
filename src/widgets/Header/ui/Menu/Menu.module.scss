@@ -1,0 +1,69 @@
+@import '../../../../app/assets/styles/index';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  gap: 16px;
+
+  @include lg-device {
+    padding-left: 24px;
+    gap: 64px;
+  }
+}
+
+.logo {
+  width: 68px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0; top: 49px;
+  width: 100%;
+  height: calc(100% - 49px);
+  padding: 14px;
+  background: $white;
+  transform: translateX(-100vw);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+
+  @include md-device {
+    top: 65px;
+    height: calc(100% - 65px);
+  }
+
+  @include lg-device {
+    display: block;
+    position: static;
+    background: none;
+    transform: none;
+    transition: none;
+    padding: 0;
+  }
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+  gap: 24px;
+
+  @include lg-device {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
