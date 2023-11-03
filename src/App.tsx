@@ -12,7 +12,6 @@ import { Cart } from './Cart';
 import { Footer } from './Footer';
 import { ProductTypes } from './types/productTypes';
 import { NoResults } from './NoResults';
-// import { LocaleStorageTypes } from './types/LocaleStorageTypes';
 
 const App = () => {
   return (
@@ -85,6 +84,7 @@ const App = () => {
             path="/accessories"
           >
             <Route
+              index
               element={(
                 <>
                   <Products
