@@ -10,6 +10,14 @@ export const Header = () => {
         </NavLink>
         <PageNavList />
       </nav>
+      <div className="header__right-block">
+        <div className="favorites right-block--prop">
+          <NavLink to="/favorites" className="favorites__link icon" />
+        </div>
+        <div className="cart right-block--prop">
+          <NavLink to="/cart" className="cart__link icon" />
+        </div>
+      </div>
     </header>
   );
 };

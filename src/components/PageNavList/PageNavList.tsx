@@ -11,7 +11,7 @@ export const PageNavList = () => {
   return (
     <ul className="nav-list">
       { pageNavList.map(navLink => (
-        <li className="nav-list__item">
+        <li className="nav-list__item" key={navLink.text}>
           <PageNavLink
             to={navLink.to}
             text={navLink.text}
