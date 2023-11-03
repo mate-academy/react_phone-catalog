@@ -5,6 +5,7 @@
 .logo {
   font-size: 21px;
   font-weight: 700;
+  color: $gray_primary;
 }
 
 .nav {
@@ -12,9 +13,9 @@
   gap: 64px;
 
   &-list {
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    gap: 64px;
 
     &__link {
       font-size: 12px;
@@ -23,6 +24,7 @@
       letter-spacing: 0.48px;
       text-transform: uppercase;
       color: $gray_seconary;
+      transition: color 0.2s ease-in;
 
       &:hover {
         color: $gray_primary;
