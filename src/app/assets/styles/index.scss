@@ -1,5 +1,5 @@
-@import 'normalize.css';
-@import './utils';
+@import "normalize.css";
+@import "./utils";
 
 html {
   scroll-behavior: smooth;
@@ -9,7 +9,13 @@ html {
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -20,14 +26,15 @@ a {
   color: inherit;
 }
 
-ul, li {
+ul,
+li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 body {
-  font-family: Mont, 'sans-serif';
+  font-family: "Mont", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

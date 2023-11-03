@@ -1,4 +1,4 @@
-@import '../../../../app/assets/styles/index';
+@import "../../../../app/assets/styles/index";
 
 .actions {
   display: flex;
@@ -7,7 +7,7 @@
 .action {
   width: 48px;
   height: 48px;
-  box-shadow: -1px 0px 0px 0px $dark-elements;
+  box-shadow: -1px 0 0 0 $dark-elements;
   transition: background-color 0.3s ease-in-out;
 
   @include md-device {

@@ -1,4 +1,4 @@
-@import '../../../../app/assets/styles/index';
+@import "../../../../app/assets/styles/index";
 
 .link {
   position: relative;
@@ -25,7 +25,7 @@
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;

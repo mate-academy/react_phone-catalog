@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 @mixin md-device {
   @media (min-width: $md-device-size) {

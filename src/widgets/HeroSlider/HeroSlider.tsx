@@ -1,5 +1,10 @@
 import { useRef } from 'react';
-import { Swiper as SwiperType, Navigation, Pagination, Autoplay } from 'swiper';
+import {
+  Swiper as SwiperType,
+  Navigation,
+  Pagination,
+  Autoplay,
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.scss';
@@ -38,7 +43,7 @@ export const HeroSlider = () => {
           }}
           loop
           autoplay={{
-            delay: 2500,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           className={styles.slider}

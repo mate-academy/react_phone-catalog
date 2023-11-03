@@ -1,10 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { IProduct } from './product.interface';
 import styles from './ProductCard.module.scss';
 
 type Props = {
   product: IProduct,
-  actions: ReactNode,
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -14,7 +13,6 @@ export const ProductCard: React.FC<Props> = ({
     fullPrice,
     image,
   },
-  actions,
 }) => {
   return (
     <div className={styles.wrapper}>
@@ -28,7 +26,6 @@ export const ProductCard: React.FC<Props> = ({
           <span className={styles.fullPrice}>{`$${fullPrice}`}</span>
         </div>
       </div>
-      {actions}
     </div>
   );
 };

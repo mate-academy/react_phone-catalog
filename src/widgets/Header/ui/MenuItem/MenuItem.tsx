@@ -1,8 +1,8 @@
 import React from 'react';
+import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import { IMenuItem } from './menu-item.interface';
 import styles from './MenuItem.module.scss';
-import classNames from 'classnames';
 
 type Props = {
   item: IMenuItem,

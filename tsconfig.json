@@ -1,6 +1,7 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "src",
+    "declaration.d.ts"
   ]
 }

@@ -14,8 +14,6 @@ export const Default = () => {
       .then(setProducts);
   }, []);
 
-  console.log(products);
-
   return (
     <PageLayout>
       <HeroSlider />
