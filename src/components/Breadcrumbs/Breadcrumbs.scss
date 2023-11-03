@@ -1,4 +1,5 @@
 @import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
 
 .Breadcrumbs {
   display: flex;
@@ -19,6 +20,17 @@
   }
 
   &__page-title {
+    @extend %text-small;
+    text-transform: capitalize;
+    text-decoration: none;
+    margin: 0;
+
+    &--dark {
+      color: $gray-main;
+    }
+  }
+
+  &__product-title {
     @extend %text-small;
     margin: 0;
   }

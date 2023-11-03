@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 import './Header.scss';
 import { Search } from '../Search';
+import { FavContext } from '../../context/FavContext';
+import { Counter } from '../Counter/Counter';
+import { CartContext } from '../../context/CartContext';
+import favIcon from '../../images/icons/Favourites.svg';
+import cartIcon from '../../images/icons/Shopping_cart.svg';
+
+const getClassName = ({ isActive }: { isActive: boolean }) => {
+  return classNames('Navbar__button', {
+    'Navbar__button--active': isActive,
+  });
+};
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
+  const { fav } = useContext(FavContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <div className="Header">
@@ -26,16 +39,34 @@ export const Header: React.FC = () => {
           )}
           <NavLink
             to="/favorites"
-            className={({ isActive }) => classNames('icon icon--fav', {
-              'icon--active': isActive,
-            })}
-          />
+            className={getClassName}
+          >
+            <div className="Action">
+              <img
+                src={favIcon}
+                alt="Favorites"
+                className="Action__img"
+              />
+              {!!fav.length && (
+                <Counter count={fav.length} />
+              )}
+            </div>
+          </NavLink>
           <NavLink
             to="/cart"
-            className={({ isActive }) => classNames('icon icon--cart', {
-              'icon--active': isActive,
-            })}
-          />
+            className={getClassName}
+          >
+            <div className="Action">
+              <img
+                src={cartIcon}
+                alt="Shopping cart"
+                className="Action__img"
+              />
+              {!!cart.length && (
+                <Counter count={cart.length} />
+              )}
+            </div>
+          </NavLink>
         </div>
       </div>
     </div>

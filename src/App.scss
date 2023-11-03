@@ -8,9 +8,6 @@
 
   &__main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 72px;
     width: 100%;
   }
 }
@@ -103,6 +100,10 @@
     height: 40px;
     width: 40px;
     background-image: url(./images/icons/Favourites.svg);
+
+    &-active {
+      background-image: url(./images/icons/Favourites_filled.svg);
+    }
   }
 
   &--dropdown {
@@ -120,6 +121,26 @@
     &:focus {
       border: 1px solid $gray-main;
     }
+  }
+
+  &__add-to-cart {
+    font-family: "Mont-Semibold", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $white;
+
+    height: 40px;
+    flex: 1;
+    background-color: $gray-main;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  &__added-to-cart {
+    color: $green;
+    background-color: $html-bg-color;
+    border: 1px solid $gray-elements;
   }
 }
 
@@ -190,5 +211,95 @@
     &:hover {
       color: $gray-main;
     }
+  }
+}
+
+.Back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__text {
+    @extend %text-small;
+    margin: 0;
+  }
+}
+
+.Feature {
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    @extend %text-small;
+  }
+
+  &__value {
+    @extend %text-small;
+    color: $gray-main;
+  }
+}
+
+.About {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-column: 1 / 13;
+}
+
+.TechSpecs {
+  grid-column: 14 / -1;
+}
+
+.Description {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    @extend %text-semi-title;
+  }
+
+  &__text {
+    @extend %text-body;
+    color: $gray-second;
+  }
+}
+
+.Action {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__img {
+    height: 16px;
+    width: 16px;
   }
 }

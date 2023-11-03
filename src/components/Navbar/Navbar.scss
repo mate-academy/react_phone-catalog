@@ -28,4 +28,20 @@
       border-bottom: 3px solid $gray-main;
     }
   }
+
+  &__button {
+    height: 64px;
+    width: 64px;
+    border-bottom: 3px solid transparent;
+    border-left: 1px solid $gray-elements;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      border-bottom: 3px solid $gray-main;
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard';
+import { ProductCart } from '../ProductCart';
 import './ProductsSlider.scss';
 
 type Props = {
@@ -70,7 +70,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               transition: `transform ${ANIMATION_DURATION}ms ease`,
             }}
           >
-            <ProductCard product={product} />
+            <ProductCart product={product} />
           </div>
         ))}
       </div>

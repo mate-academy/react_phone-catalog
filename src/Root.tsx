@@ -5,22 +5,23 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import { AppProvider } from './context/AppContext';
 import App from './App';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root: React.FC = () => (
-  <AppProvider>
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<Navigate to="/" />} />
+  <HashRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" />} />
 
-          <Route path="/phones" element={<PhonesPage />} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
-      </Routes>
-    </HashRouter>
-  </AppProvider>
+      </Route>
+    </Routes>
+  </HashRouter>
 );

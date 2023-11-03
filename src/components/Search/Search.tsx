@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 import { getSearchWith } from '../../helpers/getSearchWith';
 import './Search.scss';
 
@@ -17,7 +16,7 @@ export const Search: React.FC = () => {
     setSearchParams(getSearchWith(
       searchParams, { query: currentQuery || null },
     ));
-  }, [pathname, searchParams, setSearchParams]);
+  }, [searchParams, setSearchParams]);
 
   const applyQuery = useMemo(
     () => debounce(setSearchParams, 1000),
@@ -26,7 +25,7 @@ export const Search: React.FC = () => {
 
   const deleteQuery = () => {
     setQuery('');
-    applyQuery(getSearchWith(
+    setSearchParams(getSearchWith(
       searchParams, {
         query: null,
       },
@@ -55,7 +54,6 @@ export const Search: React.FC = () => {
         placeholder={`Search in ${pathname.slice(1)}...`}
         value={query}
         onChange={handleQueryChange}
-        onBlur={handleQueryChange}
       />
 
       {query ? (

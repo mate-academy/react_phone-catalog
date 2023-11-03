@@ -32,16 +32,6 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
 
   return (
     <div className="Pagination" data-cy="pagination">
-      {/* <Link
-        to={{
-          search: getSearchWith(
-            searchParams, {
-              page: handlePrevPage(),
-            },
-          ).toString(),
-        }}
-        className="button button--prev"
-      /> */}
       <button
         type="button"
         data-cy="paginationLeft"
