@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import { CartContext } from '../../context/CartContext';
 import { FavContext } from '../../context/FavContext';
 import { CartItemType } from '../../types/CartItemType';
@@ -16,9 +16,10 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
   const { cart, handleAddToCart } = useContext(CartContext);
   const { fav, handleAddToFav } = useContext(FavContext);
 
-  const isAddedToCart = cart
-    .some((item: CartItemType) => item.product.itemId === newProduct.itemId);
-  const isAddedToFav = fav.find(item => item.itemId === newProduct.itemId);
+  const isAddedToCart = cart.find((item: CartItemType) => {
+    return item.product.itemId === newProduct?.itemId;
+  });
+  const isAddedToFav = fav.find(item => item.itemId === newProduct?.itemId);
 
   const {
     image,

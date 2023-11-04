@@ -15,6 +15,8 @@ import { PhoneInfo } from '../../types/PhoneInfo';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { BackButton } from '../../components/BackButton/BackButton';
 import './ProductDetailsPage.scss';
+import { CartItemType } from '../../types/CartItemType';
+import { BASE_URL } from '../../utils/fetchClient';
 
 type PhoneColorsType = {
   black: string,
@@ -86,28 +88,16 @@ export const ProductDetailsPage: React.FC = () => {
     setSelectedImage(url);
   };
 
-  const isAddedToCart = cart
-    .find(prod => prod.product.itemId === currentProduct?.itemId);
+  const isAddedToCart = cart.find((item: CartItemType) => {
+    return item.product.itemId === productId;
+  });
 
-  const isAddedToFav = fav
-    .find(prod => prod.itemId === currentProduct?.itemId);
-
-  const handleAddToCartClick = () => {
-    if (currentProduct && isAddedToCart) {
-      handleAddToCart(currentProduct);
-    }
-  };
-
-  const handleAddToFavClick = () => {
-    if (currentProduct && isAddedToFav) {
-      handleAddToFav(currentProduct);
-    }
-  };
+  const isAddedToFav = fav.find(prod => prod.itemId === productId);
 
   return (
     <div className="ProductDetailsPage">
       <div className="container">
-        {productDetails && !isLoading && (
+        {productDetails && !isLoading && currentProduct && (
           <>
             <div className="ProductDetailsPage__content">
               <div className="ProductDetailsPage__section">
@@ -139,7 +129,7 @@ export const ProductDetailsPage: React.FC = () => {
                         onClick={() => handleImageSelect(image)}
                       >
                         <img
-                          src={image}
+                          src={`${BASE_URL}/products/${image}`}
                           alt={image}
                           className="ProductDetailsPage__image"
                         />
@@ -233,7 +223,7 @@ export const ProductDetailsPage: React.FC = () => {
                         className={classNames('button__add-to-cart', {
                           'button__added-to-cart': isAddedToCart,
                         })}
-                        onClick={handleAddToCartClick}
+                        onClick={() => handleAddToCart(currentProduct)}
                       >
                         {isAddedToCart ? (
                           'Added to cart'
@@ -248,7 +238,7 @@ export const ProductDetailsPage: React.FC = () => {
                         className={classNames('button button--like', {
                           'button--like-active': isAddedToFav,
                         })}
-                        onClick={handleAddToFavClick}
+                        onClick={() => handleAddToFav(currentProduct)}
                       />
                     </div>
                   </div>
