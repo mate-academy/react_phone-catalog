@@ -12,9 +12,9 @@ import { CartContext } from '../../context/CartContext';
 import { FavContext } from '../../context/FavContext';
 import { getProductInfo } from '../../helpers/products';
 import { PhoneInfo } from '../../types/PhoneInfo';
-import './ProductDetailsPage.scss';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { BackButton } from '../../components/BackButton/BackButton';
+import './ProductDetailsPage.scss';
 
 type PhoneColorsType = {
   black: string,
@@ -139,7 +139,7 @@ export const ProductDetailsPage: React.FC = () => {
                         onClick={() => handleImageSelect(image)}
                       >
                         <img
-                          src={`_new/${image}`}
+                          src={image}
                           alt={image}
                           className="ProductDetailsPage__image"
                         />
