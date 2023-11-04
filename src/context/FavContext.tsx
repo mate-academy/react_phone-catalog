@@ -1,10 +1,11 @@
 import React from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { Product } from '../types/Product';
 
 type FavContextType = {
-  fav: string[],
-  setFav: (v: string[]) => void,
-  handleAddToFav: (id: string) => void,
+  fav: Product[],
+  setFav: (v: Product[]) => void,
+  handleAddToFav: (item: Product) => void,
 };
 
 export const FavContext = React.createContext<FavContextType>({
@@ -18,13 +19,13 @@ type Props = {
 };
 
 export const FavProvider: React.FC<Props> = ({ children }) => {
-  const [fav, setFav] = useLocalStorage<string>('fav', []);
+  const [fav, setFav] = useLocalStorage<Product>('fav', []);
 
-  function handleAddToFav(productId: string) {
-    if (fav.includes(productId)) {
-      setFav([...fav].filter(item => item !== productId));
+  function handleAddToFav(item: Product) {
+    if (fav.find(prod => prod.itemId === item.itemId)) {
+      setFav([...fav].filter(prod => prod.itemId !== item.itemId));
     } else {
-      setFav([...fav, productId]);
+      setFav([...fav, item]);
     }
   }
 

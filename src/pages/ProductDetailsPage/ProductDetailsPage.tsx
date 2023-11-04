@@ -11,11 +11,10 @@ import { AppContext } from '../../context/AppContext';
 import { CartContext } from '../../context/CartContext';
 import { FavContext } from '../../context/FavContext';
 import { getProductInfo } from '../../helpers/products';
-import arrow from '../../images/icons/Arrow_left.svg';
-import { Category } from '../../types/Category';
 import { PhoneInfo } from '../../types/PhoneInfo';
 import './ProductDetailsPage.scss';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { BackButton } from '../../components/BackButton/BackButton';
 
 type PhoneColorsType = {
   black: string,
@@ -49,25 +48,29 @@ const PhoneColors: PhoneColorsType = {
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
-  const category = pathname.slice(1).split('/')[0] as Category;
+  const currentPage = pathname.slice(1).split('/')[0];
   const { productId } = useParams();
-  const [product, setProduct] = useState<PhoneInfo>();
+  const [productDetails, setProductDetails] = useState<PhoneInfo>();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string>('');
   const { cart, handleAddToCart } = useContext(CartContext);
   const { fav, handleAddToFav } = useContext(FavContext);
-  const { hotPriceProducts } = useContext(AppContext);
+  const { products, hotPriceProducts } = useContext(AppContext);
 
   const allImages = useMemo(() => {
-    return product?.images || [];
-  }, [product]);
+    return productDetails?.images || [];
+  }, [productDetails]);
+
+  const currentProduct = useMemo(() => {
+    return products.find(prod => prod.itemId === productId);
+  }, [productId, products]);
 
   useEffect(() => {
     if (productId) {
       setIsLoading(true);
 
       getProductInfo(productId)
-        .then(setProduct)
+        .then(setProductDetails)
         .catch(() => { })
         .finally(() => {
           setIsLoading(false);
@@ -83,40 +86,46 @@ export const ProductDetailsPage: React.FC = () => {
     setSelectedImage(url);
   };
 
-  const isAddedToCart = cart.some(item => item === productId);
-  const isAddedToFav = fav.some(item => item === productId);
+  const isAddedToCart = cart
+    .find(prod => prod.product.itemId === currentProduct?.itemId);
+
+  const isAddedToFav = fav
+    .find(prod => prod.itemId === currentProduct?.itemId);
+
+  const handleAddToCartClick = () => {
+    if (currentProduct && isAddedToCart) {
+      handleAddToCart(currentProduct);
+    }
+  };
+
+  const handleAddToFavClick = () => {
+    if (currentProduct && isAddedToFav) {
+      handleAddToFav(currentProduct);
+    }
+  };
 
   return (
     <div className="ProductDetailsPage">
       <div className="container">
-        {product && !isLoading && (
+        {productDetails && !isLoading && (
           <>
             <div className="ProductDetailsPage__content">
               <div className="ProductDetailsPage__section">
                 <div className="ProductDetailsPage__top">
                   <Breadcrumbs
-                    category={category}
-                    productName={product.name}
+                    page={currentPage}
+                    productName={productDetails.name}
                   />
                   <div className="ProductDetailsPage__back-and-title">
-                    <Link to=".." className="Back">
-                      <img
-                        src={arrow}
-                        alt="Arrow"
-                        className="Back__icon"
-                      />
-                      <p className="Back__text">
-                        Back
-                      </p>
-                    </Link>
+                    <BackButton />
                     <h2 className="ProductDetailsPage__product-title">
-                      {product.name}
+                      {productDetails.name}
                     </h2>
                   </div>
                 </div>
 
                 <ul className="ProductDetailsPage__images">
-                  {product.images.map(image => (
+                  {productDetails.images.map(image => (
                     <li
                       key={image}
                       className={classNames('ProductDetailsPage__item', {
@@ -152,16 +161,16 @@ export const ProductDetailsPage: React.FC = () => {
                         Available colors
                       </p>
                       <ul className="ProductDetailsPage__colors">
-                        {product.colorsAvailable.map(color => (
+                        {productDetails.colorsAvailable.map(color => (
                           <li
                             key={color}
                             className={classNames('ProductDetailsPage__color', {
                               'ProductDetailsPage__color--selected':
-                                product.color === color,
+                                productDetails.color === color,
                             })}
                           >
                             <Link
-                              to={pathname.replace(product.color, color)}
+                              to={pathname.replace(productDetails.color, color)}
                               className="ProductDetailsPage__color-link"
                             >
                               <span
@@ -182,20 +191,20 @@ export const ProductDetailsPage: React.FC = () => {
                         Select capacity
                       </p>
                       <ul className="ProductDetailsPage__capacity-list">
-                        {product.capacityAvailable.map(capacity => (
+                        {productDetails.capacityAvailable.map(capacity => (
                           <li
                             key={capacity}
                             className="ProductDetailsPage__capacity-item"
                           >
                             <Link
                               to={pathname.replace(
-                                product.capacity.toLowerCase(),
+                                productDetails.capacity.toLowerCase(),
                                 capacity.toLowerCase(),
                               )}
                               className={classNames(
                                 'ProductDetailsPage__capacity', {
                                   'ProductDetailsPage__capacity--selected':
-                                    product.capacity === capacity,
+                                    productDetails.capacity === capacity,
                                 },
                               )}
                             >
@@ -210,10 +219,12 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className="ProductDetailsPage__price-and-buttons">
                     <div className="ProductDetailsPage__prices">
                       <span className="ProductDetailsPage__price-discount">
-                        {`$${product.priceDiscount}`}
+                        &#36;
+                        {productDetails.priceDiscount}
                       </span>
                       <span className="ProductDetailsPage__price-full">
-                        {`$${product.priceRegular}`}
+                        &#36;
+                        {productDetails.priceRegular}
                       </span>
                     </div>
                     <div className="ProductDetailsPage__actions">
@@ -222,7 +233,7 @@ export const ProductDetailsPage: React.FC = () => {
                         className={classNames('button__add-to-cart', {
                           'button__added-to-cart': isAddedToCart,
                         })}
-                        onClick={() => handleAddToCart(product.id)}
+                        onClick={handleAddToCartClick}
                       >
                         {isAddedToCart ? (
                           'Added to cart'
@@ -233,10 +244,11 @@ export const ProductDetailsPage: React.FC = () => {
                       <button
                         type="button"
                         aria-label="Like"
+                        data-cy="addToFavorite"
                         className={classNames('button button--like', {
                           'button--like-active': isAddedToFav,
                         })}
-                        onClick={() => handleAddToFav(product.id)}
+                        onClick={handleAddToFavClick}
                       />
                     </div>
                   </div>
@@ -244,22 +256,26 @@ export const ProductDetailsPage: React.FC = () => {
                     <ul className="Feature__list">
                       <li className="Feature__item">
                         <p className="Feature__name">Screen</p>
-                        <p className="Feature__value">{product.screen}</p>
+                        <p className="Feature__value">
+                          {productDetails.screen}
+                        </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Resolution</p>
                         <p className="Feature__value">
-                          {product.resolution.replace('х', ' х ')}
+                          {productDetails.resolution.replace('х', ' х ')}
                         </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Processor</p>
-                        <p className="Feature__value">{product.processor}</p>
+                        <p className="Feature__value">
+                          {productDetails.processor}
+                        </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">RAM</p>
                         <p className="Feature__value">
-                          {product.ram.replace('GB', ' GB')}
+                          {productDetails.ram.replace('GB', ' GB')}
                         </p>
                       </li>
                     </ul>
@@ -278,7 +294,7 @@ export const ProductDetailsPage: React.FC = () => {
 
                   <div className="Description">
                     <ul className="Description__list">
-                      {product.description.map(item => (
+                      {productDetails.description.map(item => (
                         <li className="Description__item">
                           <h4 className="Description__title">
                             {item.title}
@@ -306,42 +322,50 @@ export const ProductDetailsPage: React.FC = () => {
                     <ul className="Feature__list">
                       <li className="Feature__item">
                         <p className="Feature__name">Screen</p>
-                        <p className="Feature__value">{product.screen}</p>
+                        <p className="Feature__value">
+                          {productDetails.screen}
+                        </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Resolution</p>
                         <p className="Feature__value">
-                          {product.resolution.replace('х', ' х ')}
+                          {productDetails.resolution.replace('х', ' х ')}
                         </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Processor</p>
-                        <p className="Feature__value">{product.processor}</p>
+                        <p className="Feature__value">
+                          {productDetails.processor}
+                        </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">RAM</p>
                         <p className="Feature__value">
-                          {product.ram.replace('GB', ' GB')}
+                          {productDetails.ram.replace('GB', ' GB')}
                         </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Built in memory</p>
                         <p className="Feature__value">
-                          {product.capacity.replace('GB', ' GB')}
+                          {productDetails.capacity.replace('GB', ' GB')}
                         </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Camera</p>
-                        <p className="Feature__value">{product.camera}</p>
+                        <p className="Feature__value">
+                          {productDetails.camera}
+                        </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Zoom</p>
-                        <p className="Feature__value">{product.zoom}</p>
+                        <p className="Feature__value">
+                          {productDetails.zoom}
+                        </p>
                       </li>
                       <li className="Feature__item">
                         <p className="Feature__name">Cell</p>
                         <p className="Feature__value">
-                          {product.cell.join(', ')}
+                          {productDetails.cell.join(', ')}
                         </p>
                       </li>
                     </ul>

@@ -67,6 +67,18 @@
     background-image: url(./images/icons/Arrow_up.svg);
   }
 
+  &--minus {
+    background-image: url(./images/icons/Minus.svg);
+
+    &:disabled {
+      background-image: url(./images/icons/Minus-disabled.svg);
+    }
+  }
+
+  &--plus {
+    background-image: url(./images/icons/Plus.svg);
+  }
+
   &--slider {
     height: 400px;
     width: 32px;
@@ -211,23 +223,6 @@
     &:hover {
       color: $gray-main;
     }
-  }
-}
-
-.Back {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  text-decoration: none;
-
-  &__icon {
-    height: 16px;
-    width: 16px;
-  }
-
-  &__text {
-    @extend %text-small;
-    margin: 0;
   }
 }
 

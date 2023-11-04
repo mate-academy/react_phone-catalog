@@ -1,27 +1,40 @@
-import React from 'react';
 import {
   HashRouter,
   Navigate,
   Route,
   Routes,
 } from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
+import { CartProvider } from './context/CartContext';
+import { FavProvider } from './context/FavContext';
 import App from './App';
+import { CartPage } from './pages/CartPage/CartPage';
+import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
-export const Root: React.FC = () => (
-  <HashRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
-        <Route path="home" element={<Navigate to="/" />} />
+export const Root = () => (
+  <AppProvider>
+    <FavProvider>
+      <CartProvider>
+        <HashRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route path="home" element={<Navigate to="/" />} />
 
-        <Route path="phones">
-          <Route index element={<PhonesPage />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
-        </Route>
-      </Route>
-    </Routes>
-  </HashRouter>
+              <Route path="phones">
+                <Route index element={<PhonesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
+              <Route path="favorites" element={<FavoritesPage />} />
+              <Route path="cart" element={<CartPage />} />
+            </Route>
+          </Routes>
+        </HashRouter>
+      </CartProvider>
+    </FavProvider>
+  </AppProvider>
 );

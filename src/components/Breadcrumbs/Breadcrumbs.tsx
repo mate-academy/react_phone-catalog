@@ -2,17 +2,19 @@ import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import homeIcon from '../../images/icons/Home.svg';
-import { Category } from '../../types/Category';
 import './Breadcrumbs.scss';
 
 type Props = {
-  category: Category | undefined,
+  page: string,
   productName?: string,
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
+export const Breadcrumbs: React.FC<Props> = ({ page, productName }) => {
   return (
-    <div className="Breadcrumbs">
+    <div
+      className="Breadcrumbs"
+      data-cy="breadCrumbs"
+    >
       <Link to="/" className="Breadcrumbs__home">
         <img
           src={homeIcon}
@@ -23,12 +25,12 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
 
       <div className="Breadcrumbs__arrow" />
       <Link
-        to={`/${category}`}
+        to={`/${page}`}
         className={classNames('Breadcrumbs__page-title', {
           'Breadcrumbs__page-title--dark': productName,
         })}
       >
-        {category}
+        {page}
       </Link>
 
       {productName && (

@@ -3,17 +3,22 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import { FavContext } from '../../context/FavContext';
+import { CartItemType } from '../../types/CartItemType';
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/fetchClient';
 import './ProductCart.scss';
 
 type Props = {
-  product: Product,
+  newProduct: Product,
 };
 
-export const ProductCart: React.FC<Props> = ({ product }) => {
+export const ProductCart: React.FC<Props> = ({ newProduct }) => {
   const { cart, handleAddToCart } = useContext(CartContext);
   const { fav, handleAddToFav } = useContext(FavContext);
+
+  const isAddedToCart = cart
+    .some((item: CartItemType) => item.product.itemId === newProduct.itemId);
+  const isAddedToFav = fav.find(item => item.itemId === newProduct.itemId);
 
   const {
     image,
@@ -25,10 +30,7 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
     screen,
     capacity,
     ram,
-  } = product;
-
-  const isAddedToCart = cart.some(item => item === product.itemId);
-  const isAddedToFav = fav.some(item => item === product.itemId);
+  } = newProduct;
 
   return (
     <div className="ProductCart">
@@ -92,7 +94,7 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
           className={classNames('button__add-to-cart', {
             'button__added-to-cart': isAddedToCart,
           })}
-          onClick={() => handleAddToCart(product.itemId)}
+          onClick={() => handleAddToCart(newProduct)}
         >
           {isAddedToCart ? (
             'Added to cart'
@@ -103,10 +105,11 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
         <button
           type="button"
           aria-label="Like"
+          data-cy="addToFavorite"
           className={classNames('button button--like', {
             'button--like-active': isAddedToFav,
           })}
-          onClick={() => handleAddToFav(product.itemId)}
+          onClick={() => handleAddToFav(newProduct)}
         />
       </div>
     </div>

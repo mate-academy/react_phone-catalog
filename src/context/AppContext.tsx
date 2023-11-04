@@ -30,7 +30,7 @@ export const AppContext = React.createContext<AppContextType>({
 });
 
 type Props = {
-  children: React.ReactNode,
+  children: React.ReactNode;
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
@@ -73,10 +73,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       ? `${countedItems.length} model`
       : `${countedItems.length} models`;
   }, [getCategoryItems]);
-
-  // const phones = getCategoryItems(Category.phone);
-  // const tablets = getCategoryItems(Category.tablet);
-  // const accessories = getCategoryItems(Category.accessory);
 
   const phonesCount = getCategoryCount(Category.phone);
   const tabletsCount = getCategoryCount(Category.tablet);

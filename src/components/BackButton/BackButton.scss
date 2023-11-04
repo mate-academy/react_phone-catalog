@@ -1,0 +1,18 @@
+@import "../../styles/utils/typography";
+
+.Back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__text {
+    @extend %text-small;
+    margin: 0;
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../styles/utils/typography";
+
+.CartPage {
+  padding: 40px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1 / 17;
+  }
+}

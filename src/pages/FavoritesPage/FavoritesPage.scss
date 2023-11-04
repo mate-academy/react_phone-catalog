@@ -1,0 +1,26 @@
+@import "../../styles/utils/typography";
+
+.Favorites {
+  padding: 24px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__models-count {
+    @extend %text-body;
+    color: $gray-second;
+  }
+}

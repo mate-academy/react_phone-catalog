@@ -17,7 +17,6 @@ import { Sort } from '../../types/Sort';
 import { getSearchWith } from '../../helpers/getSearchWith';
 import { NoSearchResults } from '../../components/NoSearchResults';
 import './PhonesPage.scss';
-import { Category } from '../../types/Category';
 
 type Dropdown = 'sort' | 'perPage' | null;
 
@@ -121,19 +120,19 @@ export const PhonesPage: React.FC = () => {
     <div className="PhonesPage">
       <div className="container">
         <div className="PhonesPage__content">
-          <Breadcrumbs category={Category.phone} />
+          <Breadcrumbs page="Phones" />
 
           <div className="PhonesPage__main-info">
             <h2 className="PhonesPage__title">
               Mobile phones
             </h2>
-            <p className="PhonesPage__models-count">
+            <span className="PhonesPage__models-count">
               {query ? (
                 `${visiblePhones.length} result${visiblePhones.length === 1 ? '' : 's'}`
               ) : (
                 `${phonesCount}`
               )}
-            </p>
+            </span>
           </div>
 
           {isLoading && !visiblePhones.length && !!query && (<Loader />)}
