@@ -7,19 +7,27 @@ export const BurgerMenu = () => {
   return (
     <div className="burgermenu">
       {isActiveMenu ? (
-        <img
-          src="new/img/icons/close.svg"
-          alt="burger-menu"
-          className="burgermenu__icon-close"
+        <button
+          type="submit"
           onClick={() => setIsActiveMenu(false)}
-        />
+        >
+          <img
+            src="new/img/icons/close.svg"
+            alt="burger-menu"
+            className="burgermenu__icon-close"
+          />
+        </button>
       ) : (
-        <img
-          src="new/img/icons/menu.svg"
-          alt="burger-menu"
-          className="burgermenu__icon"
+        <button
+          type="submit"
           onClick={() => setIsActiveMenu(true)}
-        />
+        >
+          <img
+            src="new/img/icons/menu.svg"
+            alt="burger-menu"
+            className="burgermenu__icon"
+          />
+        </button>
       )}
     </div>
   );
