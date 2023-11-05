@@ -1,4 +1,11 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .tabletspage {
+  &__button-back {
+    margin-top: 40px;
+  }
+
   &__dropdowns {
     display: flex;
     gap: 16px;

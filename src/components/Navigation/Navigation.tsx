@@ -1,5 +1,9 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
+import { useAppSelector } from '../../app/hooks';
+import { Search } from '../Search';
+
+import './nav.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => cn('nav__link',
   {
@@ -9,6 +13,12 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => cn('nav__link',
 export const Navigation = () => {
   const location = useLocation();
   const phonesPageIsActive = location.pathname === '/phones';
+  const tabletsPageIsActive = location.pathname === '/tablets';
+  const accessoriesPageIsActive = location.pathname === '/accessories';
+  const favoritesPageIsActive = location.pathname === '/favorites';
+  const favorites = useAppSelector(state => state.favorites);
+  const cartItems = useAppSelector(state => state.cartItems);
+  const normalizePathname = location.pathname.slice(1);
 
   return (
     <nav className="nav header__nav">
@@ -44,14 +54,12 @@ export const Navigation = () => {
       </div>
 
       <div className="nav__favorite">
-        {phonesPageIsActive && (
-          <div className="nav__search">
-            <input
-              className="nav__search-placeholder"
-              type="text"
-              placeholder="Search in phones..."
-            />
-          </div>
+        {(phonesPageIsActive
+        || tabletsPageIsActive
+        || accessoriesPageIsActive
+        || favoritesPageIsActive
+        ) && (
+          <Search category={normalizePathname} />
         )}
 
         <NavLink
@@ -60,13 +68,26 @@ export const Navigation = () => {
           })}
           to="/favorites"
         >
-
           <img
-            src={location.pathname === '/favorites'
-              ? 'new/img/icons/favorites-filled.svg'
-              : 'new/img/icons/favorites.svg'}
+            className="nav__favorites-main-icon"
+            src="new/img/icons/favorites.svg"
             alt="favorites"
           />
+
+          {favorites.length > 0
+            && (
+              <div className="nav__favorites-quantity">
+                <img
+                  className="nav__favorites-quantity-ellipse"
+                  src="new/img/icons/quantity.svg"
+                  alt="favorites-quantity"
+                />
+                <span className="nav__favorites-quantity-content">
+                  {favorites.length}
+                </span>
+
+              </div>
+            )}
         </NavLink>
 
         <NavLink
@@ -75,7 +96,26 @@ export const Navigation = () => {
           })}
           to="/cart"
         >
-          <img src="new/img/icons/cart.svg" alt="cart" />
+          <img
+            className="nav__cart-main-icon"
+            src="new/img/icons/cart.svg"
+            alt="cartItems"
+          />
+
+          {cartItems.length > 0
+            && (
+              <div className="nav__cart-quantity">
+                <img
+                  className="nav__cart-quantity-ellipse"
+                  src="new/img/icons/quantity.svg"
+                  alt="cart-quantity"
+                />
+                <span className="nav__cart-quantity-content">
+                  {cartItems.length}
+                </span>
+
+              </div>
+            )}
         </NavLink>
       </div>
     </nav>

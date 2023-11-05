@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link, useParams } from 'react-router-dom';
@@ -5,7 +6,7 @@ import {
   useState, useMemo, useEffect, useContext, useCallback,
 } from 'react';
 import { AddToCartBtn } from '../AddToCartBtn';
-// import { AddToFavorite } from '../AddToFavorite';
+import { AddToFavorite } from '../AddToFavorite';
 import { ProductDescription } from '../../types/ProductDescription';
 import { Color } from '../Color/Color';
 import { Pallette } from '../../types/Palette';
@@ -13,6 +14,8 @@ import { FeaturesInfo } from '../FeaturesInfo';
 import { ProductsSlider } from '../ProductsSlider';
 import { getSuggestedProducts } from '../../utils/getSuggestedProducts';
 import { ProductsContext } from '../ProductsContext';
+
+import './productDetails.scss';
 
 type Props = {
   productDetails?: ProductDescription,
@@ -23,7 +26,18 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
   const [activeColor, setActiveColor] = useState('');
   const [activeCapacity, setActiveCapacity] = useState('');
   const { productId } = useParams();
+
+  function changeCapacity(itemId: string, capacityValue: string) {
+    const itemIdArray = itemId.split('-');
+
+    itemIdArray[itemIdArray.length - 2] = capacityValue.toLowerCase();
+
+    return itemIdArray.join('-');
+  }
+
   const products = useContext(ProductsContext);
+
+  const product = products.find(item => item.phoneId === productId);
 
   const randomProducts = useMemo(() => {
     return getSuggestedProducts(products);
@@ -44,9 +58,14 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
   }, [productDetails]);
 
   let productIdNew: string;
+  let productIdValue: string;
 
   if (productId) {
     productIdNew = productId.slice(0, productId.lastIndexOf('-'));
+  }
+
+  if (productId) {
+    productIdValue = productId;
   }
 
   const handleCurrentImage = useCallback((image: string) => {
@@ -56,8 +75,6 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
   const handleColorChange = useCallback((color: string) => {
     setActiveColor(color);
   }, [setActiveColor]);
-
-  // console.log(productDetails)
 
   return (
     <div className="product-details">
@@ -126,16 +143,20 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
 
             <div className="product-details__capacity-values">
               {productDetails?.capacityAvailable.map(capacity => (
-                <button
-                  type="button"
-                  className={capacity === activeCapacity
-                    ? 'product-details__capacity-value--active'
-                    : 'product-details__capacity-value'}
-                  key={`${productDetails.id}-${capacity}`}
-                  onClick={() => setActiveCapacity(capacity)}
-                >
-                  {capacity}
-                </button>
+                <Link to={`../${changeCapacity(productIdValue, capacity)}`}>
+                  <button
+                    type="button"
+                    className={capacity === activeCapacity
+                      ? 'product-details__capacity-value--active'
+                      : 'product-details__capacity-value'}
+                    key={`${productDetails.id}-${capacity}`}
+                    onClick={() => {
+                      setActiveCapacity(capacity);
+                    }}
+                  >
+                    {capacity}
+                  </button>
+                </Link>
               ))}
             </div>
           </div>
@@ -148,13 +169,14 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
               {productDetails?.priceRegular}
             </div>
             <div className="product-details__prev-price">
+              $
               {productDetails?.priceDiscount}
             </div>
           </div>
 
           <div className="product-details__buttons">
-            <AddToCartBtn wide />
-            {/* <AddToFavorite wide product={products[productId]} /> */}
+            {product && <AddToCartBtn wide product={product} />}
+            {product && <AddToFavorite wide product={product} />}
           </div>
 
           <div className="product-details__info">

@@ -11,6 +11,10 @@ import { Pagination } from '../../components/Pagination';
 import { getNumbers } from '../../utils/getNumbers';
 import { getTablets } from '../../utils/getProducts';
 import { NoResults } from '../../components/NoResults';
+import { NoSearchResults } from '../../components/NoSearchResults';
+import { BackButton } from '../../components/BackButton';
+
+import './tabletsPage.scss';
 
 export const TabletsPage = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -18,6 +22,7 @@ export const TabletsPage = () => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || '';
+  const query = searchParams.get('query') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = +(searchParams.get('page') || '1');
 
@@ -33,23 +38,23 @@ export const TabletsPage = () => {
   }
 
   if (tablets.length > 0) {
+    const preparedProducts = getPreparedProducts(
+      tablets, { query, sort },
+    );
+
     let pages: number[] | undefined;
 
     if (tablets && perPage && perPage !== 'all') {
-      pages = getNumbers(1, Math.ceil(tablets.length / +perPage));
+      pages = getNumbers(1, Math.ceil(preparedProducts.length / +perPage));
     } else {
       pages = getNumbers(1, 1);
     }
 
     const firstItem = (currentPage - 1) * +perPage;
 
-    const lastItem = firstItem + +perPage > tablets.length
-      ? tablets.length
+    const lastItem = firstItem + +perPage > preparedProducts.length
+      ? preparedProducts.length
       : firstItem + +perPage;
-
-    const preparedProducts = getPreparedProducts(
-      tablets, { sort },
-    );
 
     return (
       <div className="tabletspage">
@@ -57,23 +62,32 @@ export const TabletsPage = () => {
 
           <BreadCrumbs />
 
-          <h1 className="title rainbow-text tabletspage__title">Tablets</h1>
-          <span className="tabletspage__quantity">
-            {tablets.length}
-            {' '}
-            models
-          </span>
-          <div className="tabletspage__dropdowns">
-            <Dropdown initialValue={sort} />
-            <DropdownPagination initialValue={perPage} />
-          </div>
+          {preparedProducts.length === 0 && <NoSearchResults />}
 
-          <ProductsList products={perPage === 'all'
-            ? preparedProducts
-            : preparedProducts.slice(firstItem, lastItem)}
-          />
+          {preparedProducts.length > 0
+            && (
+              <>
+                <h1 className="title rainbow-text tabletspage__title">
+                  Tablets
+                </h1>
+                <span className="tabletspage__quantity">
+                  {preparedProducts.length}
+                  {' '}
+                  models
+                </span>
+                <div className="tabletspage__dropdowns">
+                  <Dropdown initialValue={sort} />
+                  <DropdownPagination initialValue={perPage} />
+                </div>
 
-          <Pagination pages={pages} />
+                <ProductsList products={perPage === 'all'
+                  ? preparedProducts
+                  : preparedProducts.slice(firstItem, lastItem)}
+                />
+
+                <Pagination pages={pages} />
+              </>
+            )}
 
         </div>
       </div>
@@ -81,6 +95,11 @@ export const TabletsPage = () => {
   }
 
   return (
-    <NoResults />
+    <div className="container">
+      <div className="tabletspage__button-back">
+        <BackButton />
+      </div>
+      <NoResults />
+    </div>
   );
 };

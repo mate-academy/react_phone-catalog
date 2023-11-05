@@ -1,5 +1,11 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .brand-new-products {
-  padding-bottom: 80px;
+
+  @include onTablet {
+    padding-bottom: 80px;
+  }
 
   &__title {
     margin-bottom: 24px;

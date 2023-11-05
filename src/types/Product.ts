@@ -8,6 +8,7 @@ export interface Product {
   price: number,
   screen: string,
   capacity: string,
+  quantity: number,
   color: string,
   ram: string,
   year: number,

@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import './dropdown.scss';
 
 type Props = {
   initialValue: string,
@@ -11,6 +12,8 @@ export const Dropdown: React.FC<Props> = ({ initialValue }) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
 
     newSearchParams.set('sort', event.target.value);
+    newSearchParams.set('page', '1');
+
     setSearchParams(newSearchParams);
   };
 

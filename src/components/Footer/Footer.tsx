@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { scrollToTop } from '../../utils/scrollToTop';
 
+import './footer.scss';
+
 export const Footer = () => (
   <footer className="footer">
     <div className="container">

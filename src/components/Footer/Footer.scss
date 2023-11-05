@@ -1,15 +1,47 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .footer {
-  padding-top: 43px;
-  padding-bottom: 42px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 
   &__content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      // align-items: center;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 20px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
   }
 
   &__links {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      order: 1;
+      margin-bottom: 0;
+    }
 
   }
 
@@ -37,6 +69,10 @@
 
   &__back {
     display: flex;
+
+    @include onMobile {
+      order: 3;
+    }
 
     &-btn {
       cursor: pointer;

@@ -8,6 +8,7 @@ import { App } from './App';
 import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
@@ -18,7 +19,6 @@ import store from './app/store';
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-
       <ProductsProvider>
         <Routes>
           <Route path="/" element={<App />}>
@@ -39,11 +39,19 @@ ReactDOM.render(
               <Route path=":productId" element={<ProductDetailsPage />} />
             </Route>
 
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/cart" element={<CartPage />} />
+            <Route path="/favorites">
+              <Route index element={<FavoritesPage />} />
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
+
+            <Route path="/cart">
+              <Route index element={<CartPage />} />
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
 
             <Route path="/home" element={<Navigate to="/" replace />} />
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
+
+            <Route path="*" index element={<NotFoundPage />} />
           </Route>
         </Routes>
       </ProductsProvider>
@@ -52,13 +60,3 @@ ReactDOM.render(
 
   document.getElementById('root'),
 );
-
-//       <Route path="favourites" element={<FavouritesPage />} />
-//       <Route path="cart" element={<CartPage />} />
-
-//       <Route path="/menu" element={<Menu />} />
-
-//       <Route path="*" element={<NotFoundPage />} />
-//     </Route>
-//   </Routes>
-// );

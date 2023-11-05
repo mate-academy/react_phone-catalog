@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductDetails } from '../../utils/httpClient';
@@ -5,9 +6,13 @@ import { ProductDescription } from '../../types/ProductDescription';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Loader } from '../../components/Loader';
 import { ProductDetails } from '../../components/ProductDetails';
+import { BackButton } from '../../components/BackButton';
+
+import './productDetailsPage.scss';
 
 export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [productDetails, setProductDetails] = useState<ProductDescription>();
   const { productId } = useParams();
 
@@ -15,6 +20,7 @@ export const ProductDetailsPage = () => {
     setIsLoading(true);
     getProductDetails(String(productId))
       .then(setProductDetails)
+      .catch((err) => setError(err.message))
       .finally(() => setIsLoading(false));
   }, [productId]);
 
@@ -23,17 +29,29 @@ export const ProductDetailsPage = () => {
       <div className="container">
         {isLoading && <Loader />}
 
-        <BreadCrumbs />
+        {error
+          && (
+            <>
+              <div className="product-details-page__button-back">
+                <BackButton />
+              </div>
+              <p className="product-details-page__not-found">
+                Phone was not found
+              </p>
+            </>
+          )}
 
-        <div
-          className="product-details-page__button-back"
-          data-cy="backButton"
-        >
-          <img src="new/img/icons/arrow-left.svg" alt="arrow-back" />
-          <span>Back</span>
-        </div>
+        {!error
+          && (
+            <>
+              <BreadCrumbs />
+              <BackButton />
 
-        <ProductDetails productDetails={productDetails} />
+              <ProductDetails
+                productDetails={productDetails}
+              />
+            </>
+          )}
 
       </div>
 

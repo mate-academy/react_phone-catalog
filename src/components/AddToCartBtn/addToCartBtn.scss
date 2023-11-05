@@ -1,3 +1,6 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .addToCartBtn {
   width: 176px;
   height: 40px;
@@ -11,10 +14,28 @@
   border: 2px solid transparent;
   transition: all 0.3s ease-in-out;
 
+  &-added {
+    width: 176px;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    color: #27ae60;
+    font-weight: 600;
+    padding: 9px 25px 8px;
+  }
+
   &-wide {
     width: 263px;
     height: 48px;
     font-weight: 600;
+
+    &-added {
+      width: 263px;
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      color: #27ae60;
+      font-weight: 600;
+      padding: 9px 25px 8px;
+    }
   }
 
   &:hover {

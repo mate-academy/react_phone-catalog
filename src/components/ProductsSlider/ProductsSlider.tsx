@@ -10,7 +10,6 @@ import './productsSlider.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
-// import { scrollToTop } from '../../utils/scrollToTop';
 
 type Props = {
   products: Product[],
@@ -21,13 +20,22 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
     <div
       className="swiper-container"
     >
-      <div className="swiper-button-prev">
-        <img
-          className="swiper__arrow-left"
-          src="new/img/icons/arrow-left.svg"
-          alt="arrow-left"
-        />
-      </div>
+      {/* <div className="swiper__buttons">
+        <div className="swiper-button-prev">
+          <img
+            className="swiper__arrow-left"
+            src="new/img/icons/arrow-left.svg"
+            alt="arrow-left"
+          />
+        </div>
+        <div className="swiper-button-next">
+          <img
+            className="swiper__arrow-right"
+            src="new/img/icons/arrow-right.svg"
+            alt="arrow-right"
+          />
+        </div>
+      </div> */}
 
       <Swiper
         spaceBetween={16}
@@ -39,13 +47,13 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
           640: {
             slidesPerView: 2,
           },
-          // 768: {
-          //   slidesPerView: 2,
-          // },
-          1024: {
+          768: {
+            slidesPerView: 2,
+          },
+          900: {
             slidesPerView: 3,
           },
-          1136: {
+          1170: {
             slidesPerView: 4,
           },
         }}
@@ -55,20 +63,11 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
         {products.map(product => (
           <SwiperSlide
             key={uuidv4()}
-            // onClick={scrollToTop}
           >
             <ProductCard key={product.id} product={product} />
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div className="swiper-button-next">
-        <img
-          className="swiper__arrow-right"
-          src="new/img/icons/arrow-right.svg"
-          alt="arrow-right"
-        />
-      </div>
     </div>
   );
 };

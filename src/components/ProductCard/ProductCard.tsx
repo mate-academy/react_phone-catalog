@@ -2,6 +2,9 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { AddToCartBtn } from '../AddToCartBtn';
 import { AddToFavorite } from '../AddToFavorite';
+import { scrollToTop } from '../../utils/scrollToTop';
+
+import './productCard.scss';
 
 type Props = {
   product: Product,
@@ -13,10 +16,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   let path: string;
 
-  if (productId) {
-    path = `../${product.itemId}`;
+  if (pathname === '/') {
+    path = `${product.category}/${product.itemId}`;
+    scrollToTop();
   } else {
     path = `${pathname}/${product.itemId}`;
+    scrollToTop();
+  }
+
+  if (productId) {
+    path = `../${product.itemId}`;
   }
 
   const {
@@ -73,7 +82,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
           <div className="product__buttons">
             <div className="product__buttons-cart">
-              <AddToCartBtn />
+              <AddToCartBtn product={product} />
             </div>
 
             <div className="product__buttons-favorite">

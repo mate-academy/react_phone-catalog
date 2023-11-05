@@ -11,6 +11,10 @@ import { Pagination } from '../../components/Pagination';
 import { getNumbers } from '../../utils/getNumbers';
 import { getAccessories } from '../../utils/getProducts';
 import { NoResults } from '../../components/NoResults';
+import { NoSearchResults } from '../../components/NoSearchResults';
+import { BackButton } from '../../components/BackButton';
+
+import './accessoriesPage.scss';
 
 export const AccessoriesPage = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
@@ -18,6 +22,7 @@ export const AccessoriesPage = () => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || '';
+  const query = searchParams.get('query') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = +(searchParams.get('page') || '1');
 
@@ -33,23 +38,23 @@ export const AccessoriesPage = () => {
   }
 
   if (accessories.length > 0) {
+    const preparedProducts = getPreparedProducts(
+      accessories, { query, sort },
+    );
+
     let pages: number[] | undefined;
 
     if (accessories && perPage && perPage !== 'all') {
-      pages = getNumbers(1, Math.ceil(accessories.length / +perPage));
+      pages = getNumbers(1, Math.ceil(preparedProducts.length / +perPage));
     } else {
       pages = getNumbers(1, 1);
     }
 
     const firstItem = (currentPage - 1) * +perPage;
 
-    const lastItem = firstItem + +perPage > accessories.length
-      ? accessories.length
+    const lastItem = firstItem + +perPage > preparedProducts.length
+      ? preparedProducts.length
       : firstItem + +perPage;
-
-    const preparedProducts = getPreparedProducts(
-      accessories, { sort },
-    );
 
     return (
       <div className="Accessoriespage">
@@ -57,32 +62,43 @@ export const AccessoriesPage = () => {
 
           <BreadCrumbs />
 
-          <h1 className="title rainbow-text accessoriespage__title">
-            Accessories
-          </h1>
-          <span className="Accessoriespage__quantity">
-            {accessories.length}
-            {' '}
-            models
-          </span>
-          <div className="Accessoriespage__dropdowns">
-            <Dropdown initialValue={sort} />
-            <DropdownPagination initialValue={perPage} />
-          </div>
+          {preparedProducts.length === 0 && <NoSearchResults />}
 
-          <ProductsList products={perPage === 'all'
-            ? preparedProducts
-            : preparedProducts.slice(firstItem, lastItem)}
-          />
+          {preparedProducts.length > 0
+            && (
+              <>
+                <h1 className="title rainbow-text accessoriespage__title">
+                  Accessories
+                </h1>
+                <span className="Accessoriespage__quantity">
+                  {preparedProducts.length}
+                  {' '}
+                  models
+                </span>
+                <div className="Accessoriespage__dropdowns">
+                  <Dropdown initialValue={sort} />
+                  <DropdownPagination initialValue={perPage} />
+                </div>
 
-          <Pagination pages={pages} />
+                <ProductsList products={perPage === 'all'
+                  ? preparedProducts
+                  : preparedProducts.slice(firstItem, lastItem)}
+                />
 
+                <Pagination pages={pages} />
+              </>
+            )}
         </div>
       </div>
     );
   }
 
   return (
-    <NoResults />
+    <div className="container">
+      <div className="accessoriespage__button-back">
+        <BackButton />
+      </div>
+      <NoResults />
+    </div>
   );
 };

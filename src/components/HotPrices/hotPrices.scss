@@ -1,6 +1,13 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .hot-prices {
-  padding-bottom: 80px;
-  
+  padding-bottom: 40px;
+
+  @include onTablet {
+    padding-bottom: 80px;
+  }
+
   &__title {
     margin-bottom: 24px;
   }

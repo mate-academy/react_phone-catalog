@@ -2,14 +2,24 @@ import { Product } from '../types/Product';
 import { Sort } from '../types/Sort';
 
 type FilterParams = {
-  sort: string,
+  sort?: string,
+  query: string,
 };
 
 export const getPreparedProducts = (products: Product[],
   {
     sort,
+    query,
   }: FilterParams) => {
-  const visibleProducts = [...products];
+  let visibleProducts = [...products];
+
+  if (query) {
+    visibleProducts = visibleProducts.filter(
+      product => product.name.toLowerCase().includes(
+        query.trim().toLowerCase(),
+      ),
+    );
+  }
 
   if (sort) {
     visibleProducts.sort((product1, product2) => {

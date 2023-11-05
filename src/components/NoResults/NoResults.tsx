@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import './noResults.scss';
 
 export const NoResults = () => {
   const { pathname } = useLocation();

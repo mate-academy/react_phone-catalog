@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Slider } from '../../components/Slider';
-// import './HomePage.scss';
 import { Product } from '../../types/Product';
 import { getHotPriceProducts } from '../../utils/getHotPriceProducts';
 import { HotPrices } from '../../components/HotPrices';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { getBrandNewProducts } from '../../utils/getBrandNewProducts';
 import { BrandNewProducts } from '../../components/BrandNewProducts';
+
+import './HomePage.scss';
 
 export const HomePage = () => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);

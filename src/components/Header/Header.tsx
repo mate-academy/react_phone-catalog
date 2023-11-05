@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Navigation } from '../Navigation';
+import './header.scss';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Header = () => (
   <>
@@ -16,6 +18,9 @@ export const Header = () => (
             alt="logo"
           />
         </Link>
+
+        <BurgerMenu />
+
         <Navigation />
       </div>
     </header>

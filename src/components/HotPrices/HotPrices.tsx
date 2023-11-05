@@ -1,5 +1,6 @@
 import { Product } from '../../types/Product';
 import { ProductsSlider } from '../ProductsSlider';
+import './hotPrices.scss';
 
 type Props = {
   products: Product[],

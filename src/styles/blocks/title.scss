@@ -1,8 +1,12 @@
 .title {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.32px;
   color: $gray-primary;
   cursor: grab;
+
+  @include onTablet {
+    font-size: 32px;
+  }
 }

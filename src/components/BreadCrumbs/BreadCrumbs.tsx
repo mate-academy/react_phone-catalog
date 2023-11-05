@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { normalizePath } from '../../utils/normalizePath';
+import './breadCrumbs.scss';
 
 const normalizePathname = (pathname: string) => {
   return pathname.slice(0, 1).toUpperCase() + pathname.slice(1);
@@ -9,13 +11,18 @@ export const BreadCrumbs = () => {
   const { pathname } = useLocation();
   const partsOfPath = pathname.split('/').filter(part => part);
   const partsWithoutLast = partsOfPath.slice(0, partsOfPath.length - 1);
-  const lastPart = partsOfPath.slice(-1);
+  const lastPart = partsOfPath.slice(-1).toString();
 
   return (
     <>
-      <div className="breadcrumbs">
+      <div
+        className="breadcrumbs"
+        data-cy="breadCrumbs"
+      >
         <div className="breadcrumbs__img">
-          <img src="new/img/icons/home.svg" alt="home-icon" />
+          <a className="breadcrumbs__img-home" href="/">
+            <img src="new/img/icons/home.svg" alt="home-icon" />
+          </a>
         </div>
 
         {partsOfPath.length > 1 ? (
@@ -37,7 +44,7 @@ export const BreadCrumbs = () => {
               <img src="new/img/icons/arrow-right.svg" alt="arrow-right" />
             </div>
             <div className="breadcrumbs__path">
-              <p>{normalizePathname(lastPart.toString())}</p>
+              <p>{normalizePath(lastPart)}</p>
             </div>
           </>
         ) : (

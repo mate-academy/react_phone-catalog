@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
+import './slider.scss';
+
 const imagesUrl: string[] = [
   'new/img/banner/banner-phones.png',
   'new/img/banner/banner-tablets.jpg',

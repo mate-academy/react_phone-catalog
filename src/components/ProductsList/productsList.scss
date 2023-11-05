@@ -1,3 +1,6 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .productslist {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

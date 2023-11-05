@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../ProductsContext';
 
+import './shopByCategory.scss';
+
 export const ShopByCategory = () => {
   const products = useContext(ProductsContext);
   const phones = products.filter(product => product.category === 'phones');

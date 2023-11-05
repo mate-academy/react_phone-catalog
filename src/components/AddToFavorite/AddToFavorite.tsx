@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   addToFavorites, removeFromFavorites,
 } from '../../features/favoritesSlice';
+import './addToFavorite.scss';
 
 type Props = {
   wide?: boolean;
@@ -34,12 +35,10 @@ export const AddToFavorite: React.FC<Props> = ({ wide, product }) => {
     }
   };
 
-  // eslint-disable-next-line no-console
-  console.log(favorites);
-
   return (
     <button
       type="button"
+      data-cy="addToFavorite"
       className={`addToFavorite ${wide ? 'addToFavorite-wide' : ''}`}
       onClick={(event) => {
         event.preventDefault();
@@ -56,10 +55,3 @@ export const AddToFavorite: React.FC<Props> = ({ wide, product }) => {
     </button>
   );
 };
-
-// <img
-//             src={location.pathname === '/favorites'
-//               ? 'new/img/icons/favorites-filled.svg'
-//               : 'new/img/icons/favorites.svg'}
-//             alt="favorites"
-//           />

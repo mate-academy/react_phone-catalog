@@ -11,6 +11,9 @@ import { DropdownPagination } from '../../components/DropdownPagination';
 import { Pagination } from '../../components/Pagination';
 import { getNumbers } from '../../utils/getNumbers';
 import { NoResults } from '../../components/NoResults';
+import { NoSearchResults } from '../../components/NoSearchResults';
+
+import './phonesPage.scss';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -18,6 +21,7 @@ export const PhonesPage = () => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sort') || '';
+  const query = searchParams.get('query') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = +(searchParams.get('page') || '1');
 
@@ -33,23 +37,23 @@ export const PhonesPage = () => {
   }
 
   if (phones.length > 0) {
+    const preparedProducts = getPreparedProducts(
+      phones, { query, sort },
+    );
+
     let pages: number[] | undefined;
 
     if (phones && perPage && perPage !== 'all') {
-      pages = getNumbers(1, Math.ceil(phones.length / +perPage));
+      pages = getNumbers(1, Math.ceil(preparedProducts.length / +perPage));
     } else {
       pages = getNumbers(1, 1);
     }
 
     const firstItem = (currentPage - 1) * +perPage;
 
-    const lastItem = firstItem + +perPage > phones.length
-      ? phones.length
+    const lastItem = firstItem + +perPage > preparedProducts.length
+      ? preparedProducts.length
       : firstItem + +perPage;
-
-    const preparedProducts = getPreparedProducts(
-      phones, { sort },
-    );
 
     return (
       <div className="phonespage">
@@ -57,27 +61,34 @@ export const PhonesPage = () => {
 
           <BreadCrumbs />
 
-          <h1 className="title rainbow-text phonespage__title">
-            Mobile Phones
-          </h1>
-          <span className="phonespage__quantity">
-            {phones.length}
-            {' '}
-            models
-          </span>
-          <div className="phonespage__dropdowns">
-            <Dropdown initialValue={sort} />
-            <DropdownPagination initialValue={perPage} />
-          </div>
+          {preparedProducts.length === 0 && <NoSearchResults />}
 
-          <div className="phonespage__productslist">
-            <ProductsList products={perPage === 'all'
-              ? preparedProducts
-              : preparedProducts.slice(firstItem, lastItem)}
-            />
-          </div>
+          {preparedProducts.length > 0
+            && (
+              <>
+                <h1 className="title rainbow-text phonespage__title">
+                  Mobile Phones
+                </h1>
+                <span className="phonespage__quantity">
+                  {preparedProducts.length}
+                  {' '}
+                  models
+                </span>
+                <div className="phonespage__dropdowns">
+                  <Dropdown initialValue={sort} />
+                  <DropdownPagination initialValue={perPage} />
+                </div>
 
-          <Pagination pages={pages} />
+                <div className="phonespage__productslist">
+                  <ProductsList products={perPage === 'all'
+                    ? preparedProducts
+                    : preparedProducts.slice(firstItem, lastItem)}
+                  />
+                </div>
+
+                <Pagination pages={pages} />
+              </>
+            )}
         </div>
       </div>
     );

@@ -1,0 +1,14 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.button-back {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+
+  &-text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

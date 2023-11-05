@@ -1,3 +1,5 @@
+import './featuresInfo.scss';
+
 type Props = {
   title: string,
   value?: string,

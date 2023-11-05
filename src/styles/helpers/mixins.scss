@@ -11,13 +11,13 @@
 }
 
 @mixin onSmallDesktop {
-  @media (min-width: 1024px) {
+  @media (min-width: 1170px) {
     @content;
   }
 }
 
-@mixin onDesktop {
-  @media (min-width: 1280px) {
-    @content;
-  }
-}
+// @mixin onDesktop {
+//   @media (min-width: 1280px) {
+//     @content;
+//   }
+// }

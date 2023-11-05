@@ -1,5 +1,13 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
 .slider {
-  margin: 0 auto;
+  display: none;
+
+  @include onTablet {
+    display: block;
+    margin: 0 auto;
+  }
 
   &__wrapper {
     display: flex;

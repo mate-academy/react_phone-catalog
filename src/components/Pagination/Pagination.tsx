@@ -1,7 +1,7 @@
-// import { useState } from 'react';
 import cn from 'classnames';
 
 import { useSearchParams } from 'react-router-dom';
+import './pagination.scss';
 
 type Props = {
   pages: number[],
