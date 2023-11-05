@@ -19,7 +19,7 @@ export const CardButtons: React.FC<Props> = ({ card, info }) => {
 
   const isAddedToCart = useMemo(() => (
     cart.find(value => value.id === card.id)
-  ), [cart]);
+  ), [cart, card.id]);
 
   const handleClickCart = () => {
     if (isAddedToCart) {

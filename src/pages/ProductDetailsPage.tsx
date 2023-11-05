@@ -64,7 +64,7 @@ export const ProductDetailsPage = () => {
 
     dispatch(initPhones());
     dispatch(initProduct(productId));
-  }, [productId]);
+  }, [productId, dispatch]);
 
   const handleColor = (color: string) => {
     if (!product) {

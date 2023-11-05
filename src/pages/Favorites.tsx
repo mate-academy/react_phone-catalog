@@ -27,7 +27,7 @@ export const Favorites = () => {
     }
 
     return newFavorites;
-  }, [searchParams.get('query'), favorites]);
+  }, [searchParams, favorites]);
 
   if (error) {
     return (<Error />);

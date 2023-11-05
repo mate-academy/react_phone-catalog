@@ -15,7 +15,13 @@ export const ProductsList: React.FC<Props> = React.memo((
   const page = searchParams.get('page') || DEFAULT_PAGE;
   const count = searchParams.get('perPage') || DEFAULT_PER_PAGE;
   const start = +page;
-  const end = +count;
+  let end;
+
+  if (count === 'All') {
+    end = products.length;
+  } else {
+    end = +count;
+  }
 
   return (
     <div className="phones phones--list" data-cy="productList">

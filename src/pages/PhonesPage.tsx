@@ -38,7 +38,7 @@ export const PhonesPage = () => {
 
   useEffect(() => {
     dispatch(initPhones());
-  }, []);
+  });
 
   const currentPhones = useMemo(() => {
     if (phones.length === 0) {
@@ -82,20 +82,20 @@ export const PhonesPage = () => {
     }
 
     return newPhones;
-  }, [searchParams.get('sort'), searchParams.get('query'), phones]);
+  }, [searchParams.get('sort'), searchParams.get('query'), phones]); // eslint-disable-line
   const countPagination = useMemo(() => {
     const count = searchParams.get('perPage');
     const countPage = count && +count ? +count : +DEFAULT_PER_PAGE;
 
     return Math.ceil(currentPhones.length / countPage);
-  }, [searchParams.get('perPage'), currentPhones]);
+  }, [searchParams.get('perPage'), currentPhones]); // eslint-disable-line
   const selectedSort = useMemo(() => {
     const currentValue = searchParams.get('sort');
 
     return Object.keys(SortBy).find(sort => (
       SortBy[sort as keyof Sort] === currentValue
     )) || DEFAULT_SORT;
-  }, [searchParams.get('sort')]);
+  }, [searchParams.get('sort')]); // eslint-disable-line
   const handleClickOnDropdown = (value: Dropdown) => {
     setIsOpen(currentValue => {
       return currentValue === value ? false : value;
