@@ -8,7 +8,11 @@
 
   &-text {
     color: $gray-secondary;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
+
+    @include onTablet {
+      font-size: 12px;
+    }
   }
 }

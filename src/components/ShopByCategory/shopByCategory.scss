@@ -4,7 +4,7 @@
 .shop-by-category {
   display: flex;
   flex-direction: column;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 
   @include onSmallDesktop {
     padding-bottom: 80px;
