@@ -1,0 +1,39 @@
+.shop-by-category {
+  margin-top: 80px;
+
+  &__categories {
+    margin-top: 24px;
+  }
+}
+
+.categories {
+  display: flex;
+  gap: 16px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      scale: 1.03;
+    }
+  }
+
+  &__category-title {
+    margin-top: 24px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #313237;
+  }
+
+  &__category-count {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

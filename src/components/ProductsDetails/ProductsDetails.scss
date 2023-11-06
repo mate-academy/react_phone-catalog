@@ -1,0 +1,288 @@
+.products-details {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__main-info {
+    margin-top: 40px;
+  }
+
+  &__description {
+    margin-top: 80px;
+  }
+}
+
+.main-info {
+  display: flex;
+  justify-content: space-between;
+
+  &__product-id {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #b4bdc4;
+  }
+}
+
+.product-images {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  &__main-image {
+    width: 464px;
+    height: 464px;
+
+  }
+}
+
+.small-images {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+
+  &__image {
+    padding: 7px;
+    border: 1px solid #c4c4c4;
+    width: 79px;
+    height: 79px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &--is-active {
+      border: 1px solid #313237;
+    }
+
+    &:hover {
+      scale: 1.05;
+      border: 1px solid #313237;
+    }
+  }
+}
+
+.info-image {
+  width: 100%;
+  height: 100%;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+}
+
+.selecting-block {
+  display: flex;
+  flex-direction: column;
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    margin-bottom: 48px;
+  }
+
+  &__capacity {
+    margin-bottom: 48px;
+  }
+
+  &__price {
+    margin-bottom: 16px;
+  }
+
+  &__detail-buttons {
+    margin-bottom: 32px;
+  }
+}
+
+.colors {
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 76px;
+    height: 1px;
+    background-color: #e2e6e9;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item-circle {
+    border: 1px solid #e2e6e9;
+    border-radius: 36px;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &--is-active {
+      border-color: #313237;
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  &__item {
+    border: 2px solid #fff;
+    border-radius: 36px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.capacity {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 76px;
+    height: 1px;
+    background-color: #e2e6e9;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    list-style-type: none;
+  }
+
+  &__item {
+    padding: 7px 8px 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    border: 1px solid #b4bdc4;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &--is-active {
+      color: #fff;
+      background-color: #313237;
+      border-color: #313237;
+    }
+  }
+}
+
+.detail-buttons {
+  display: flex;
+}
+
+.detail-options {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #89939a;
+
+      &--big {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+
+    &--value {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+      color: #313237;
+
+      &--big {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+  }
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+
+  &__about {
+    width: 560px;
+  }
+
+  &__specs {
+    width: 512px;
+  }
+
+  &__title {
+    position: relative;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: #313237;
+
+    &::after {
+      content: "";
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 47px;
+      height: 1px;
+      background-color: #e2e6e9;
+    }
+  }
+
+  &__text {
+    margin-top: 48px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__options {
+    margin-top: 41px;
+  }
+}

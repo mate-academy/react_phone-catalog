@@ -1,1 +1,123 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src: url(assets/fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  src: url(assets/fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url(assets/fonts/Mont-SemiBold.otf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: "Mont", Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  margin-top: 80px;
+
+  &__title {
+    margin-top: 40px;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+
+    &--is-hidden {
+      display: none;
+    }
+
+    &--is-cart {
+      margin-top: 16px;
+    }
+  }
+}
+
+.category-page {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 1136px;
+
+  &__status {
+    margin-top: 24px;
+  }
+
+  &__pagination {
+    align-self: center;
+    margin-top: 40px;
+  }
+
+  &__back {
+    margin-top: 42px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover > p {
+      color: #313237;
+    }
+  }
+}
+
+.status {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+
+  &--is-hidden {
+    display: none;
+  }
+
+  &__home-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    object-position: center;
+    height: min-content;
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: #89939a;
+    transition: all 0.3s;
+  }
+
+  &__parent-title {
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: #313237;
+  }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
