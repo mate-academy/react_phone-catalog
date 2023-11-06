@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { CartItemType } from '../types/CartItemType';
 import { Product } from '../types/Product';
@@ -87,3 +87,5 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+export const useCart = () => useContext(CartContext);

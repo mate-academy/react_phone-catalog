@@ -1,10 +1,13 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { getProducts } from '../helpers/products';
 import { Category } from '../types/Category';
+import { Errors } from '../types/Errors';
 import { Product } from '../types/Product';
 
 type AppContextType = {
@@ -15,6 +18,9 @@ type AppContextType = {
   brandNewProducts: Product[],
   hotPriceProducts: Product[],
   isLoading: boolean,
+  errorMessage: string,
+  setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
+  removeError: (t?: number) => void,
   getCategoryItems: (category: Category) => Product[],
 };
 
@@ -26,6 +32,9 @@ export const AppContext = React.createContext<AppContextType>({
   brandNewProducts: [],
   hotPriceProducts: [],
   isLoading: false,
+  errorMessage: '',
+  setErrorMessage: () => { },
+  removeError: () => { },
   getCategoryItems: () => [],
 });
 
@@ -36,6 +45,13 @@ type Props = {
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const removeError = (time = 3000) => {
+    setTimeout(() => {
+      setErrorMessage('');
+    }, time);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,24 +59,29 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     getProducts()
       .then(setProducts)
       .catch(() => {
-        // setErrorMessage('Error');
+        setErrorMessage(Errors.loadingProducts);
+        removeError();
       })
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
-  const brandNewProducts = [...products]
-    .sort((prod1, prod2) => prod2.year - prod1.year)
-    .sort((prod1, prod2) => prod2.price - prod1.price);
+  const brandNewProducts = useMemo(() => {
+    return [...products]
+      .sort((prod1, prod2) => prod2.year - prod1.year)
+      .sort((prod1, prod2) => prod2.price - prod1.price);
+  }, [products]);
 
-  const hotPriceProducts = [...products]
-    .sort((prod1, prod2) => {
-      const discoutValue1 = (prod1.fullPrice - prod1.price);
-      const discoutValue2 = (prod2.fullPrice - prod2.price);
+  const hotPriceProducts = useMemo(() => {
+    return [...products]
+      .sort((prod1, prod2) => {
+        const discoutValue1 = (prod1.fullPrice - prod1.price);
+        const discoutValue2 = (prod2.fullPrice - prod2.price);
 
-      return discoutValue2 - discoutValue1;
-    });
+        return discoutValue2 - discoutValue1;
+      });
+  }, [products]);
 
   const getCategoryItems = useCallback((category: Category) => {
     return [...products].filter(item => item.category === category);
@@ -85,6 +106,9 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     accessoriesCount,
     brandNewProducts,
     isLoading,
+    errorMessage,
+    setErrorMessage,
+    removeError,
     hotPriceProducts,
     getCategoryItems,
   });
@@ -95,3 +119,5 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     </AppContext.Provider>
   );
 };
+
+export const useProducts = () => useContext(AppContext);

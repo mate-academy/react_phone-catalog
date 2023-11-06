@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCart } from '../ProductCart';
 import './ProductsSlider.scss';
@@ -21,19 +21,19 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const lastVisible = products.length - 1;
   const sliderWidth = (CARD_WIDTH * FRAME_SIZE) + (GAP * (FRAME_SIZE - 1));
 
-  const scrollForward = () => {
+  const scrollForward = useCallback(() => {
     setFirstProduct(firstProduct === lastVisible
       ? 0
       : currentProd => currentProd + STEP);
-  };
+  }, [firstProduct, lastVisible]);
 
-  const scrollBack = () => {
+  const scrollBack = useCallback(() => {
     const nextProduct = firstProduct - STEP;
 
     setFirstProduct(nextProduct < 0
       ? 0
       : nextProduct);
-  };
+  }, [firstProduct]);
 
   return (
     <div className="ProductsSlider">

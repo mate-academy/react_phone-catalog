@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/getSearchWith';
-import './Pagination.scss';
 import { getNumbers } from '../../helpers/getNumbers';
+import './Pagination.scss';
 
 type Props = {
   pages: number,
@@ -14,24 +14,27 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
   const selectedPage = +(searchParams.get('page') || 1);
   const pagesArray = getNumbers(pages);
 
-  const handlePrevPage = () => {
+  const handlePrevPage = useCallback(() => {
     const currentPage = +(searchParams.get('page') || 1);
 
     setSearchParams(
       getSearchWith(searchParams, { page: (currentPage - 1).toString() }),
     );
-  };
+  }, [searchParams, setSearchParams]);
 
-  const handleNextPage = () => {
+  const handleNextPage = useCallback(() => {
     const currentPage = +(searchParams.get('page') || 1);
 
     setSearchParams(
       getSearchWith(searchParams, { page: (currentPage + 1).toString() }),
     );
-  };
+  }, [searchParams, setSearchParams]);
 
   return (
-    <div className="Pagination" data-cy="pagination">
+    <div
+      className="Pagination"
+      data-cy="pagination"
+    >
       <button
         type="button"
         data-cy="paginationLeft"

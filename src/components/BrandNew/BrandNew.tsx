@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { AppContext } from '../../context/AppContext';
+import React from 'react';
+import { useProducts } from '../../context/AppContext';
 import { ProductsSlider } from '../ProductsSlider';
 
 export const BrandNew: React.FC = () => {
-  const { brandNewProducts } = useContext(AppContext);
+  const { brandNewProducts } = useProducts();
 
   return (
     <div className="BrandNew">

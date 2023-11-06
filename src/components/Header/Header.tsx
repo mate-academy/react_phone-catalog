@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { FavContext } from '../../context/FavContext';
+import { CartContext } from '../../context/CartContext';
+
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
-import './Header.scss';
 import { Search } from '../Search';
-import { FavContext } from '../../context/FavContext';
 import { Counter } from '../Counter/Counter';
-import { CartContext } from '../../context/CartContext';
 import favIcon from '../../images/icons/Favourites.svg';
 import cartIcon from '../../images/icons/Shopping_cart.svg';
+import './Header.scss';
 
 const getClassName = ({ isActive }: { isActive: boolean }) => {
   return classNames('Navbar__button', {
@@ -27,7 +28,8 @@ export const Header: React.FC = () => {
       <div className="Header__content">
         <div className="Header__logo-and-nav">
           <Logo />
-          <Navbar />
+
+          {pathname !== '/cart' && (<Navbar />)}
         </div>
 
         <div className="Header__fav-and-cart">
@@ -37,21 +39,25 @@ export const Header: React.FC = () => {
             || pathname === '/favorites') && (
             <Search />
           )}
-          <NavLink
-            to="/favorites"
-            className={getClassName}
-          >
-            <div className="Action">
-              <img
-                src={favIcon}
-                alt="Favorites"
-                className="Action__img"
-              />
-              {!!fav.length && (
-                <Counter count={fav.length} />
-              )}
-            </div>
-          </NavLink>
+
+          {pathname !== '/cart' && (
+            <NavLink
+              to="/favorites"
+              className={getClassName}
+            >
+              <div className="Action">
+                <img
+                  src={favIcon}
+                  alt="Favorites"
+                  className="Action__img"
+                />
+                {!!fav.length && (
+                  <Counter count={fav.length} />
+                )}
+              </div>
+            </NavLink>
+          )}
+
           <NavLink
             to="/cart"
             className={getClassName}

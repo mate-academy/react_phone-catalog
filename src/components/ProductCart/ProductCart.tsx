@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { CartContext } from '../../context/CartContext';
-import { FavContext } from '../../context/FavContext';
-import { CartItemType } from '../../types/CartItemType';
+import { useCart } from '../../context/CartContext';
+import { useFav } from '../../context/FavContext';
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/fetchClient';
 import './ProductCart.scss';
@@ -13,11 +12,11 @@ type Props = {
 };
 
 export const ProductCart: React.FC<Props> = ({ newProduct }) => {
-  const { cart, handleAddToCart } = useContext(CartContext);
-  const { fav, handleAddToFav } = useContext(FavContext);
+  const { cart, handleAddToCart } = useCart();
+  const { fav, handleAddToFav } = useFav();
 
   const isAddedToCart = cart
-    .find((item: CartItemType) => item.product.itemId === newProduct.itemId);
+    .find(item => item.product.itemId === newProduct.itemId);
   const isAddedToFav = fav.find(item => item.itemId === newProduct.itemId);
 
   const {
@@ -56,7 +55,7 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
               {fullPrice}
             </span>
           </div>
-          <div className="ProductCart__line" />
+          <div className="Decorative-line" />
         </div>
         <ul className="ProductCart__features">
           <li className="ProductCart__feature">
@@ -73,7 +72,7 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
               Capacity
             </span>
             <span className="ProductCart__feature-value">
-              {capacity}
+              {capacity.replace('GB', ' GB')}
             </span>
           </li>
 
@@ -82,7 +81,7 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
               RAM
             </span>
             <span className="ProductCart__feature-value">
-              {ram}
+              {ram.replace('GB', ' GB')}
             </span>
           </li>
         </ul>
@@ -104,10 +103,10 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
         </button>
         <button
           type="button"
-          aria-label="Like"
+          aria-label="Favorite"
           data-cy="addToFavorite"
-          className={classNames('button button--like', {
-            'button--like-active': isAddedToFav,
+          className={classNames('button button--fav', {
+            'button--fav-active': isAddedToFav,
           })}
           onClick={() => handleAddToFav(newProduct)}
         />

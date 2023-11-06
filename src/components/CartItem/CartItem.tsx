@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import { CartItemType } from '../../types/CartItemType';
 import { Product } from '../../types/Product';
@@ -21,6 +22,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     name,
     price,
     itemId,
+    category,
   } = item.product as Product;
 
   return (
@@ -35,16 +37,21 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           data-cy="cartDeleteButton"
           onClick={() => removeFromCart(itemId)}
         />
-        <div className="CartItem__image-container">
-          <img
-            src={`${BASE_URL}/${image}`}
-            alt={name}
-            className="CartItem__image"
-          />
-        </div>
-        <span className="CartItem__title">
-          {name}
-        </span>
+        <Link
+          to={`/${category}/${itemId}`}
+          className="CartItem__link"
+        >
+          <div className="CartItem__image-container">
+            <img
+              src={`${BASE_URL}/${image}`}
+              alt={name}
+              className="CartItem__image"
+            />
+          </div>
+          <span className="CartItem__title">
+            {name}
+          </span>
+        </Link>
       </div>
 
       <div className="CartItem__quan-and-price">

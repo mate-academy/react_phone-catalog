@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/Product';
 
@@ -41,3 +41,5 @@ export const FavProvider: React.FC<Props> = ({ children }) => {
     </FavContext.Provider>
   );
 };
+
+export const useFav = () => useContext(FavContext);

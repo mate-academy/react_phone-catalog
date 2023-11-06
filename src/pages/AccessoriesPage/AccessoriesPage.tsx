@@ -1,31 +1,26 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { Loader } from '../../components/Loader';
-import { Pagination } from '../../components/Pagination';
-import { ProductsList } from '../../components/ProductsList';
 import { useProducts } from '../../context/AppContext';
-import { getPhones } from '../../helpers/products';
-import { Product } from '../../types/Product';
-import { Sort } from '../../types/Sort';
-import { getSearchWith } from '../../helpers/getSearchWith';
-import { NoSearchResults } from '../../components/NoSearchResults';
-import { Dropdown } from '../../types/Dropdown';
-import { Errors } from '../../types/Errors';
-import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
-import './PhonesPage.scss';
+import { getAccessories } from '../../helpers/products';
+import { Loader } from '../../components/Loader';
 import { NoResults } from '../../components/NoResults/NoResults';
+import { Errors } from '../../types/Errors';
+import { Product } from '../../types/Product';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
+import { Dropdown } from '../../types/Dropdown';
+import { Sort } from '../../types/Sort';
+import { NoSearchResults } from '../../components/NoSearchResults';
+import { getSearchWith } from '../../helpers/getSearchWith';
+import { ProductsList } from '../../components/ProductsList';
+import { Pagination } from '../../components/Pagination';
 
-export const PhonesPage: React.FC = () => {
+export const AccessoriesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const { phonesCount, setErrorMessage, removeError } = useProducts();
+  const { accessoriesCount, setErrorMessage, removeError } = useProducts();
 
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [activeDropdown, setActiveDropdown] = useState<Dropdown>(null);
 
@@ -37,10 +32,10 @@ export const PhonesPage: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getPhones()
-      .then(setPhones)
+    getAccessories()
+      .then(setAccessories)
       .catch(() => {
-        setErrorMessage(Errors.loadingPhones);
+        setErrorMessage(Errors.loadingAccessories);
         removeError();
       })
       .finally(() => {
@@ -48,49 +43,49 @@ export const PhonesPage: React.FC = () => {
       });
   }, [setErrorMessage, removeError]);
 
-  const getVisiblePhones = useCallback(() => {
-    let currentPhones = [...phones];
+  const getVisibleAccessories = useCallback(() => {
+    let currentAccessories = [...accessories];
 
     switch (sortBy) {
       case SORT_OPTIONS.Alphabetically:
-        currentPhones = currentPhones.sort((phone1, phone2) => {
+        currentAccessories = currentAccessories.sort((phone1, phone2) => {
           return phone1.name.localeCompare(phone2.name);
         });
         break;
 
       case SORT_OPTIONS.Cheapest:
-        currentPhones = currentPhones.sort((phone1, phone2) => {
+        currentAccessories = currentAccessories.sort((phone1, phone2) => {
           return phone1.price - phone2.price;
         });
         break;
 
       case SORT_OPTIONS.Newest:
-        currentPhones = currentPhones
+        currentAccessories = currentAccessories
           .sort((phone1, phone2) => phone2.year - phone1.year)
           .sort((item1, item2) => item2.price - item1.price);
         break;
 
       default:
-        return currentPhones;
+        return currentAccessories;
     }
 
     if (query) {
-      currentPhones = currentPhones.filter(phone => {
+      currentAccessories = currentAccessories.filter(phone => {
         return phone.name.toLowerCase()
           .includes(query.toLowerCase());
       });
     }
 
-    return currentPhones;
-  }, [phones, query, sortBy]);
+    return currentAccessories;
+  }, [accessories, query, sortBy]);
 
-  const visiblePhones = getVisiblePhones();
-  const numberOfPages = Math.ceil(visiblePhones.length / +perPage) || 1;
+  const visibleAccessories = getVisibleAccessories();
+  const numberOfPages = Math.ceil(visibleAccessories.length / +perPage) || 1;
 
   const firstItem = (page - 1) * +perPage;
-  const lastItem = page * +perPage < visiblePhones.length
+  const lastItem = page * +perPage < visibleAccessories.length
     ? page * +perPage
-    : visiblePhones.length;
+    : visibleAccessories.length;
 
   const handleDropdownClick = useCallback((value: Dropdown) => {
     setActiveDropdown(value === activeDropdown
@@ -115,32 +110,32 @@ export const PhonesPage: React.FC = () => {
     <div className="CategoryPage">
       <div className="container">
         <div className="CategoryPage__content">
-          <Breadcrumbs page="Phones" />
+          <Breadcrumbs page="Accessories" />
 
           <div className="CategoryPage__main-info">
             <h1 className="CategoryPage__title">
-              Mobile phones
+              Accessories
             </h1>
             <span className="CategoryPage__models-count">
               {query ? (
-                `${visiblePhones.length} result${visiblePhones.length === 1 ? '' : 's'}`
+                `${visibleAccessories.length} result${visibleAccessories.length === 1 ? '' : 's'}`
               ) : (
-                `${phonesCount}`
+                `${accessoriesCount}`
               )}
             </span>
           </div>
 
           {isLoading && (<Loader />)}
 
-          {!phones.length && !isLoading && (
-            <NoResults category="Phones" />
+          {!accessories.length && !isLoading && (
+            <NoResults category="Accessories" />
           )}
 
-          {!visiblePhones.length && !isLoading && !!query && (
+          {!visibleAccessories.length && !isLoading && !!query && (
             <NoSearchResults />
           )}
 
-          {!!visiblePhones.length && (
+          {!!visibleAccessories.length && (
             <div className="CategoryPage__dropdowns">
               <div className="Dropdown">
                 <p className="Dropdown__title">
@@ -238,8 +233,10 @@ export const PhonesPage: React.FC = () => {
             </div>
           )}
 
-          {!isLoading && !!visiblePhones.length && (
-            <ProductsList products={visiblePhones.slice(firstItem, lastItem)} />
+          {!isLoading && !!visibleAccessories.length && (
+            <ProductsList
+              products={visibleAccessories.slice(firstItem, lastItem)}
+            />
           )}
 
           {numberOfPages > 1 && perPage !== 'All' && (

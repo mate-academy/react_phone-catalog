@@ -1,11 +1,12 @@
 @import "../../styles/utils/typography";
 
-.PhonesPage {
+.CategoryPage {
   padding: 24px 0 0;
 
   &__content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 40px;
   }
 

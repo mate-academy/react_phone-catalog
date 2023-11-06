@@ -108,7 +108,7 @@
     }
   }
 
-  &--like {
+  &--fav {
     height: 40px;
     width: 40px;
     background-image: url(./images/icons/Favourites.svg);
@@ -297,4 +297,10 @@
     height: 16px;
     width: 16px;
   }
+}
+
+.Decorative-line {
+  height: 1px;
+  width: 100%;
+  background-color: $gray-elements;
 }

@@ -10,43 +10,16 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { AppContext } from '../../context/AppContext';
 import { CartContext } from '../../context/CartContext';
 import { FavContext } from '../../context/FavContext';
-import { getProductInfo } from '../../helpers/products';
-import { PhoneInfo } from '../../types/PhoneInfo';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { BackButton } from '../../components/BackButton/BackButton';
-import './ProductDetailsPage.scss';
+import { ProductNotFound } from '../../components/ProductNotFound';
+import { PhoneColorsType } from '../../types/PhoneColorsType';
+import { PhoneInfo } from '../../types/PhoneInfo';
 import { CartItemType } from '../../types/CartItemType';
+import { getProductInfo } from '../../helpers/products';
+import { PHONE_COLORS } from '../../constants/constants';
 import { BASE_URL } from '../../utils/fetchClient';
-
-type PhoneColorsType = {
-  black: string,
-  coral: string,
-  gold: string,
-  green: string,
-  midnightgreen: string,
-  purple: string,
-  red: string,
-  rosegold: string,
-  silver: string,
-  spacegray: string,
-  white: string,
-  yellow: string,
-};
-
-const PhoneColors: PhoneColorsType = {
-  black: '#202020',
-  coral: '#e4664f',
-  gold: '#fbd7bd',
-  green: '#ade1cd',
-  midnightgreen: '#4e5850',
-  purple: '#d1cddb',
-  red: '#ba0c2f',
-  rosegold: '#fddcd7',
-  silver: '#ebebe3',
-  spacegray: '#5f5f5f',
-  white: '#f9f6ef',
-  yellow: '#ffe680',
-};
+import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -97,6 +70,10 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="ProductDetailsPage">
       <div className="container">
+        {!productDetails && (
+          <ProductNotFound />
+        )}
+
         {productDetails && !isLoading && currentProduct && (
           <>
             <div className="ProductDetailsPage__content">
@@ -139,7 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
                 </ul>
                 <div className="ProductDetailsPage__main-image">
                   <img
-                    src={`_new/${selectedImage}`}
+                    src={`${BASE_URL}/${selectedImage}`}
                     alt={selectedImage}
                     className="ProductDetailsPage__main-image-selected"
                   />
@@ -167,7 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
                                 className="ProductDetailsPage__color-circle"
                                 style={{
                                   backgroundColor:
-                                    PhoneColors[color as keyof PhoneColorsType],
+                                  PHONE_COLORS[color as keyof PhoneColorsType],
                                 }}
                               />
                             </Link>
@@ -175,7 +152,9 @@ export const ProductDetailsPage: React.FC = () => {
                         ))}
                       </ul>
                     </div>
-                    <div className="ProductDetailsPage__line" />
+
+                    <div className="Decorative-line" />
+
                     <div className="ProductDetailsPage__capacity-info">
                       <p className="ProductDetailsPage__capacity-text">
                         Select capacity
@@ -204,7 +183,9 @@ export const ProductDetailsPage: React.FC = () => {
                         ))}
                       </ul>
                     </div>
-                    <div className="ProductDetailsPage__line" />
+
+                    <div className="Decorative-line" />
+
                   </div>
                   <div className="ProductDetailsPage__price-and-buttons">
                     <div className="ProductDetailsPage__prices">
@@ -235,8 +216,8 @@ export const ProductDetailsPage: React.FC = () => {
                         type="button"
                         aria-label="Like"
                         data-cy="addToFavorite"
-                        className={classNames('button button--like', {
-                          'button--like-active': isAddedToFav,
+                        className={classNames('button button--fav', {
+                          'button--fav-active': isAddedToFav,
                         })}
                         onClick={() => handleAddToFav(currentProduct)}
                       />
@@ -279,7 +260,7 @@ export const ProductDetailsPage: React.FC = () => {
                     <h3 className="ProductDetailsPage__section-title">
                       About
                     </h3>
-                    <div className="ProductDetailsPage__line" />
+                    <div className="Decorative-line" />
                   </div>
 
                   <div className="Description">
@@ -305,7 +286,7 @@ export const ProductDetailsPage: React.FC = () => {
                     <h3 className="ProductDetailsPage__section-title">
                       Tech specs
                     </h3>
-                    <div className="ProductDetailsPage__line" />
+                    <div className="Decorative-line" />
                   </div>
 
                   <div className="TechSpecs">

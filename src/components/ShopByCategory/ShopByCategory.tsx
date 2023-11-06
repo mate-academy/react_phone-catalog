@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../../context/AppContext';
+import { useProducts } from '../../context/AppContext';
 import './ShopByCategory.scss';
 
 import categoryPhones from '../../images/categories/phones.png';
@@ -12,7 +12,7 @@ export const ShopByCategory: React.FC = () => {
     phonesCount,
     tabletsCount,
     accessoriesCount,
-  } = useContext(AppContext);
+  } = useProducts();
 
   return (
     <div className="ShopByCategory">
@@ -46,6 +46,7 @@ export const ShopByCategory: React.FC = () => {
                 </div>
               </Link>
             </div>
+
             <div className="ShopByCategory__category">
               <Link
                 to="/tablets"
@@ -66,6 +67,7 @@ export const ShopByCategory: React.FC = () => {
                 </div>
               </Link>
             </div>
+
             <div className="ShopByCategory__category">
               <Link
                 to="/accessories"

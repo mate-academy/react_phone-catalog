@@ -13,6 +13,9 @@ import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 export const Root = () => (
   <AppProvider>
@@ -29,8 +32,20 @@ export const Root = () => (
                 <Route path=":productId" element={<ProductDetailsPage />} />
               </Route>
 
+              <Route path="tablets">
+                <Route index element={<TabletsPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
+              <Route path="accessories">
+                <Route index element={<AccessoriesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
               <Route path="favorites" element={<FavoritesPage />} />
               <Route path="cart" element={<CartPage />} />
+
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </HashRouter>

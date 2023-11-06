@@ -28,11 +28,11 @@ export const Slider: React.FC = () => {
       : currentImg => currentImg + 1);
   }, [firstImage, lastVisible]);
 
-  const scrollBack = () => {
+  const scrollBack = useCallback(() => {
     setFirstImage(firstImage === 0
       ? lastVisible
       : currentImg => currentImg - 1);
-  };
+  }, [firstImage, lastVisible]);
 
   useEffect(() => {
     const interval = setInterval(scrollForward, 5000);

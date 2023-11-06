@@ -15,6 +15,22 @@ export const getPhones = () => {
     });
 };
 
+export const getTablets = () => {
+  return getProducts()
+    .then((products: Product[]) => {
+      return [...products]
+        .filter(item => item.category === Category.tablet);
+    });
+};
+
+export const getAccessories = () => {
+  return getProducts()
+    .then((products: Product[]) => {
+      return [...products]
+        .filter(item => item.category === Category.accessory);
+    });
+};
+
 export const getProductInfo = (id: string) => {
   return client.get<PhoneInfo>(`/products/${id}.json`);
 };
