@@ -1,0 +1,72 @@
+@import '../../styles/utils';
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
+
+  &__photo {
+    height: 288px;
+    width: 288px;
+    margin-bottom: 24px;
+
+    overflow: hidden;
+
+    @include onTablet {
+      height: 368px;
+      width: 368px;
+    }
+
+    &:hover > .category__image {
+      scale: 1.1;
+    }
+
+    &--phones {
+      background-color: bisque;
+    }
+
+    &--tablets {
+      background: #8b8b90;
+    }
+
+    &--accessories {
+      background: #973d5f;
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: left;
+    transition: scale $transition-duration;
+
+    top: 10%;
+    left: 20%;
+
+    &--tablets {
+      top: 15%;
+      transform: scale(1.2);
+    }
+
+    &--accessories {
+      left: 10%;
+    }
+  }
+
+  &__title {
+    @extend %h3;
+  }
+
+  &__text {
+    @extend %bodyText;
+    color: $c-gray-secondary;
+  }
+}

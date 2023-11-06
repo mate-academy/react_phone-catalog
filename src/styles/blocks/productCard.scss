@@ -1,0 +1,71 @@
+@import '../../styles/utils';
+
+.productCard {
+  padding: 23px;
+  width: $card-width;
+
+  border: 1px solid $c-gray-elements;
+  background: $c-white;
+
+  transition:
+    transform $transition-duration,
+    border-color $transition-duration;
+
+  &:hover {
+    border-color: $c-gray-primary;
+  }
+
+  &__image {
+    height: 208px;
+    width: 208px;
+    margin: 8px 8px 24px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @extend %bodyText;
+    margin-bottom: 8px;
+    min-height: 42px;
+  }
+
+  &__price {
+    padding-bottom: 8px;
+    border-bottom: 1px solid $c-gray-elements;
+
+    &-main {
+      @extend %h2;
+      margin-right: 8px;
+    }
+
+    &-discount {
+      @extend %bodyText;
+      font-size: 22px;
+      color: $c-gray-secondary;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__info {
+    margin: 16px 0;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %smallText;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &-title {
+      color: $c-gray-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
