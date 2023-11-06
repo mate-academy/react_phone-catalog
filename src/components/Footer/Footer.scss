@@ -1,7 +1,52 @@
 .Footer {
-  height: 96px;
+  &__content {
+    margin-inline: auto;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1136px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    color: #89939a;
+    text-decoration: none;
+
+    &--semibold {
+      text-transform: none;
+      font-weight: 600;
+    }
+  }
+
+  &__to-top {
+    margin-left: 16px;
+    height: 32px;
+    width: 32px;
+
+    border: solid 1px #b4bdc3;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  &__vector-icon {
+    transform: rotate(-90deg);
+  }
 }
