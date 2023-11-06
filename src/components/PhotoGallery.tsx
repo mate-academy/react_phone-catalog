@@ -8,10 +8,10 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ images }) => {
   const [
     currentMainPhoto,
     setCurrentMainPhoto,
-  ] = useState(`_new/${images[0]}`);
+  ] = useState(`https://mate-academy.github.io/react_phone-catalog/_new/${images[0]}`);
 
   const correctSrc = (str: string) => {
-    return `_new/${str}`;
+    return `https://mate-academy.github.io/react_phone-catalog/_new/${str}`;
   };
 
   const onPhotoHandler = (str: string) => {
