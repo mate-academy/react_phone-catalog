@@ -10,12 +10,23 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
+    }
   }
 
   &__link {

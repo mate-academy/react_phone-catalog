@@ -95,6 +95,10 @@
 
     &:checked ~ .nav__list .nav__item {
       height: 64px;
+
+      &:last-child {
+        box-shadow: 0 1px 0 0 $c-gray-elements;
+      }
     }
   }
 }
