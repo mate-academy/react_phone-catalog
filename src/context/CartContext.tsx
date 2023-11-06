@@ -7,18 +7,18 @@ type CartContextType = {
   cart: CartItemType[],
   setCart: (v: CartItemType[]) => void,
   handleAddToCart: (newProduct: Product) => void,
-  removeFromCart: (productId: number) => void,
-  increaseQuantity: (productId: number) => void,
-  decreaseQuantity: (productId: number) => void,
+  removeFromCart: (productId: string) => void,
+  increaseQuantity: (productId: string) => void,
+  decreaseQuantity: (productId: string) => void,
 };
 
 export const CartContext = React.createContext<CartContextType>({
   cart: [],
-  setCart: () => {},
-  handleAddToCart: () => {},
-  removeFromCart: () => {},
-  increaseQuantity: () => {},
-  decreaseQuantity: () => {},
+  setCart: () => { },
+  handleAddToCart: () => { },
+  removeFromCart: () => { },
+  increaseQuantity: () => { },
+  decreaseQuantity: () => { },
 });
 
 type Props = {
@@ -29,7 +29,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const [cart, setCart] = useLocalStorage<CartItemType>('cart', []);
 
   function handleAddToCart(newProduct: Product) {
-    if (cart.some(item => item.product.itemId === newProduct.itemId)) {
+    if (cart.find(item => item.product.itemId === newProduct.itemId)) {
       setCart(
         [...cart].filter(item => item.product.itemId !== newProduct.itemId),
       );
@@ -37,7 +37,6 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
       setCart([
         ...cart,
         {
-          id: cart.length + 1,
           quantity: 1,
           product: newProduct,
         },
@@ -45,14 +44,15 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   }
 
-  const removeFromCart = (productId: number) => setCart(
-    cart.filter(item => item.id !== productId),
+  const removeFromCart = (productId: string) => setCart(
+    cart.filter(item => item.product.itemId !== productId),
   );
 
-  const increaseQuantity = (productId: number) => {
+  const increaseQuantity = (productId: string) => {
     const cartCopy = [...cart];
 
-    const currentProduct = cartCopy.find(item => item.id === productId);
+    const currentProduct = cartCopy
+      .find(item => item.product.itemId === productId);
 
     if (currentProduct) {
       currentProduct.quantity += 1;
@@ -60,10 +60,11 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const decreaseQuantity = (productId: number) => {
+  const decreaseQuantity = (productId: string) => {
     const cartCopy = [...cart];
 
-    const currentProduct = cartCopy.find(item => item.id === productId);
+    const currentProduct = cartCopy
+      .find(item => item.product.itemId === productId);
 
     if (currentProduct) {
       currentProduct.quantity -= 1;

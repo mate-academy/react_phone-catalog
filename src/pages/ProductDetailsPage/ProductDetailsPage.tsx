@@ -88,11 +88,11 @@ export const ProductDetailsPage: React.FC = () => {
     setSelectedImage(url);
   };
 
-  const isAddedToCart = cart.find((item: CartItemType) => {
+  const isAddedToCart = cart.some((item: CartItemType) => {
     return item.product.itemId === productId;
   });
 
-  const isAddedToFav = fav.find(prod => prod.itemId === productId);
+  const isAddedToFav = fav.some(prod => prod.itemId === productId);
 
   return (
     <div className="ProductDetailsPage">
@@ -129,7 +129,7 @@ export const ProductDetailsPage: React.FC = () => {
                         onClick={() => handleImageSelect(image)}
                       >
                         <img
-                          src={`${BASE_URL}/products/${image}`}
+                          src={`${BASE_URL}/${image}`}
                           alt={image}
                           className="ProductDetailsPage__image"
                         />

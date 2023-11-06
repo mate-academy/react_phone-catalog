@@ -19,14 +19,16 @@ export const CartPage: React.FC = () => {
           </div>
 
           <div className="CartPage__main">
-            <ul className="CartPage__list">
-              {cart.map(cartItem => (
-                <CartItem
-                  key={cartItem.id}
-                  item={cartItem}
-                />
-              ))}
-            </ul>
+            {!!cart.length && (
+              <ul className="CartPage__list">
+                {cart.map(cartItem => (
+                  <CartItem
+                    key={cartItem.product.itemId}
+                    item={cartItem}
+                  />
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>

@@ -16,10 +16,9 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
   const { cart, handleAddToCart } = useContext(CartContext);
   const { fav, handleAddToFav } = useContext(FavContext);
 
-  const isAddedToCart = cart.find((item: CartItemType) => {
-    return item.product.itemId === newProduct?.itemId;
-  });
-  const isAddedToFav = fav.find(item => item.itemId === newProduct?.itemId);
+  const isAddedToCart = cart
+    .find((item: CartItemType) => item.product.itemId === newProduct.itemId);
+  const isAddedToFav = fav.find(item => item.itemId === newProduct.itemId);
 
   const {
     image,

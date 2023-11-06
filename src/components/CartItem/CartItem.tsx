@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { CartItemType } from '../../types/CartItemType';
+import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/fetchClient';
 import './CartItem.scss';
 
@@ -19,7 +20,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     image,
     name,
     price,
-  } = item.product;
+    itemId,
+  } = item.product as Product;
 
   return (
     <li
@@ -31,7 +33,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           aria-label="Delete"
           className="CartItem__clear"
           data-cy="cartDeleteButton"
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(itemId)}
         />
         <div className="CartItem__image-container">
           <img
@@ -52,7 +54,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             aria-label="Remove"
             className="button button--minus"
             disabled={item.quantity === 1}
-            onClick={() => decreaseQuantity(item.id)}
+            onClick={() => decreaseQuantity(itemId)}
           />
           <p className="CartItem__quantity">
             {item.quantity || 1}
@@ -61,7 +63,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             type="button"
             aria-label="Add"
             className="button button--plus"
-            onClick={() => increaseQuantity(item.id)}
+            onClick={() => increaseQuantity(itemId)}
           />
         </div>
         <span className="CartItem__price">
