@@ -1,4 +1,4 @@
-@import '../utils';
+@import "../utils";
 
 .navLinkHeader {
   position: relative;
@@ -9,7 +9,7 @@
   align-items: center;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
 
@@ -23,7 +23,7 @@
   &--icon {
     width: 64px;
 
-    box-shadow: -1px 0px 0px $c-gray-elements;
+    box-shadow: -1px 0 0 $c-gray-elements;
 
     & > span {
       position: absolute;

@@ -1,4 +1,4 @@
-@import '../utils';
+@import "../utils";
 
 .nav {
   &__list {
@@ -45,7 +45,6 @@
     }
   }
 
-
   &__button {
     @include buregrLine;
 
@@ -65,13 +64,13 @@
     }
 
     &::before {
-      content: '';
+      content: "";
       @include buregrLine;
       margin-top: -8px;
     }
 
     &::after {
-      content: '';
+      content: "";
       @include buregrLine;
       margin-top: 8px;
     }
@@ -81,7 +80,7 @@
     display: none;
 
     &:checked + .nav__button-container .nav__button::before {
-      margin-top: 0px;
+      margin-top: 0;
       transform: rotate(405deg);
     }
 
@@ -90,7 +89,7 @@
     }
 
     &:checked + .nav__button-container .nav__button::after {
-      margin-top: 0px;
+      margin-top: 0;
       transform: rotate(-405deg);
     }
 
