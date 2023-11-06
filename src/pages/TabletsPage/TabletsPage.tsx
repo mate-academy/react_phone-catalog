@@ -88,7 +88,6 @@ export const TabletsPage = () => {
                 <Pagination pages={pages} />
               </>
             )}
-
         </div>
       </div>
     );

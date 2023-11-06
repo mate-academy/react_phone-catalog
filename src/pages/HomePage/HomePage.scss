@@ -2,7 +2,6 @@
 @import "../../styles/helpers/mixins.scss";
 
 .homepage {
-
   &__banner {
     @include onTablet {
       margin-top: 40px;
@@ -10,9 +9,4 @@
 
     }
   }
-
-    // @include onSmallDesktop {
-    //   margin-top: 40px;
-    //   margin-bottom: 72px;
-    // }
 }

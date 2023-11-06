@@ -8,35 +8,23 @@
 @import "./styles/blocks/container.scss";
 @import "../src/styles/blocks/logo.scss";
 
-// @import "./pages/HomePage/HomePage.scss";
-// @import "../src/components/Header/header.scss";
-// @import "../src/components/Navigatio/n/nav.scss";
-// @import "../src/components/BackButton/backButton.scss";
-// @import "../src/components/Search/search.scss";
-// @import "../src/components/Slider/slider.scss";
-// @import "../src/components/ProductCard/productCard.scss";
-// @import "../src/components/ProductsSlider/productsSlider.scss";
-// @import "../src/components/HotPrices/hotPrices.scss";
-// @import "../src/components/ShopByCategory/shopByCategory.scss";
-// @import "../src/components/BrandNewProducts/brandNewProducts.scss";
-// @import "../src/components/Footer/footer.scss";
-// @import "./pages/PhonesPage/phonesPage.scss";
-// @import "../src/components/BreadCrumbs/breadCrumbs.scss";
-// @import "../src/components/ProductsList/productsList.scss";
-// @import "../src/components/Dropdown/dropdown.scss";
-// @import "../src/components/DropdownPagination/dropdownPagination.scss";
-// @import "../src/components/Pagination/pagination.scss";
-// @import "./pages/TabletsPage/tabletsPage.scss";
-// @import "../src/components/NoResults/noResults.scss";
-// @import "../src/components/ProductDetails/productDetails.scss";
-// @import "./pages/ProductDetailsPage/productDetailsPage.scss";
-// @import "./pages/AccessoriesPage/accessoriesPage.scss";
-// @import "../src/components/AddToCartBtn/addToCartBtn.scss";
-// @import "../src/components/AddToFavorite/addT/oFavorite.scss";
-// @import "../src/components/FeaturesInfo/featuresInfo.scss";
-// @import "../src/pages/FavoritesPage/favoritesPage.scss";
-// @import "../src/pages/CartPage/cartPage.scss";
-// @import "../src/pages/NotFoundPage/notFoundPage.scss";
+* {
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
 
 .app-container {
   height: 100vh;

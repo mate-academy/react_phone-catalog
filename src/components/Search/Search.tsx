@@ -1,11 +1,6 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-console */
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// import debounce from 'lodash.debounce';
 
 import './search.scss';
 
@@ -16,18 +11,11 @@ type Props = {
 export const Search: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isActive, setIsActive] = useState(false);
-  // const [appliedQuery, setAppliedQuery] = useState('');
-
-  // const applyQuery = useCallback(
-  //   debounce(setAppliedQuery, 1000),
-  //   [],
-  // )
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
 
     newSearchParams.set('query', event.target.value);
-    // applyQuery(event.target.value);
 
     setSearchParams(newSearchParams);
 

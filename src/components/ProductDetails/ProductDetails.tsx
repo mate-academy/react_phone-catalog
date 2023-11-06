@@ -1,6 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Link, useParams } from 'react-router-dom';
 import {
   useState, useMemo, useEffect, useContext, useCallback,

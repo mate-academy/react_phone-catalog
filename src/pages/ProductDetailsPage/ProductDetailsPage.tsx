@@ -52,9 +52,7 @@ export const ProductDetailsPage = () => {
               />
             </>
           )}
-
       </div>
-
     </div>
   );
 };
