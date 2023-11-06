@@ -3,9 +3,14 @@
 
 .breadcrumbs {
   display: flex;
+  align-items: center;
   padding-top: 24px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   gap: 8px;
+
+  @include onTablet {
+    padding-bottom: 40px;
+  }
 
   &__img,
   &__arrow,

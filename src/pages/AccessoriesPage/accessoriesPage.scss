@@ -3,7 +3,11 @@
 
 .accessoriespage {
   &__button-back {
-    margin-top: 40px;
+    margin-top: 20px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
   }
 
   &__dropdowns {

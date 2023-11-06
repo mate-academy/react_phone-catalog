@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import {
   useState, useMemo, useEffect, useContext, useCallback,
 } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { AddToCartBtn } from '../AddToCartBtn';
 import { AddToFavorite } from '../AddToFavorite';
 import { ProductDescription } from '../../types/ProductDescription';
@@ -90,7 +91,7 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
                 className="product-details__thumbnail"
                 onClick={() => handleCurrentImage(image)}
                 role="none"
-                key={image}
+                key={uuidv4()}
               >
                 <img
                   className="product-details__thumbnail-img"
@@ -119,7 +120,7 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
           <div className="product-details__available-colors">
             {productDetails?.colorsAvailable.map(color => (
               <div
-                key={color}
+                key={uuidv4()}
                 className="product-details__color"
                 onClick={() => handleColorChange(color)}
               >
@@ -149,7 +150,7 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
                     className={capacity === activeCapacity
                       ? 'product-details__capacity-value--active'
                       : 'product-details__capacity-value'}
-                    key={`${productDetails.id}-${capacity}`}
+                    key={uuidv4()}
                     onClick={() => {
                       setActiveCapacity(capacity);
                     }}
@@ -208,7 +209,7 @@ export const ProductDetails: React.FC<Props> = ({ productDetails }) => {
           {productDetails?.description.map((description) => (
             <div
               className="product-details__about-content"
-              key={`${productDetails.id}-${description.title}`}
+              key={uuidv4()}
             >
               <h3 className="product-details__about-content-title">
                 {description.title}

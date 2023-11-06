@@ -2,11 +2,16 @@
 @import "../../styles/helpers/mixins.scss";
 
 .cartpage {
+
   &__button-back {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
 
     &-text {
       color: $gray-secondary;
@@ -22,19 +27,47 @@
 
   &__content {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      gap: 0;
+    }
   }
 
   &__items {
-    margin-right: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+
+    @include onTablet {
+      gap: 16px;
+    }
   }
 
   &__item {
+    width: 280px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 31px 40px 31px 24px;
+    padding: 20px;
     border: 1px solid $gray-elements;
+    gap: 15px;
+
+    @include onTablet {
+      width: 752px;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      padding: 31px 40px 31px 24px;
+      border: 1px solid $gray-elements;
+    }
 
     &-close-icon {
       display: flex;
@@ -49,8 +82,15 @@
 
     &-name {
       color: $gray-primary;
-      width: 295px;
-      margin-right: 49px;
+      width: 280px;
+      text-align: center;
+
+      @include onTablet {
+        width: 295px;
+        margin-right: 49px;
+        text-align: left;
+
+      }
     }
 
     &-button-subtract,
@@ -67,7 +107,11 @@
 
     &-button-add {
       margin-left: 13px;
-      margin-right: 43px;
+      margin-right: 13px;
+
+      @include onTablet {
+        margin-right: 43px;
+      }
     }
 
     &-button-subtract-img,
@@ -84,7 +128,12 @@
   }
 
   &__amount {
-    width: 368px;
+    width: 280px;
+
+    @include onTablet {
+      width: 368px;
+    }
+
     &-total {
       color: $gray-primary;
       font-size: 32px;
@@ -108,30 +157,42 @@
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
-      padding: 14px 126px 13px 125px;
       background-color: $gray-primary;
       margin: 24px auto;
-      transition: all .3s ease;
+      padding: 14px 100px 13px;
+      transition: all 0.3s ease;
+
+      @include onTablet {
+        padding: 14px 126px 13px 125px;
+      }
 
       &:hover {
         background: $gray-primary;
-        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
       }
     }
 
     &-line {
-      width: 321px;
+      width: 100%;
       background-color: $gray-elements;
+
+      @include onTablet {
+        width: 321px;
+      }
     }
   }
 
   &__no-items {
-    margin-top: 70px;
+    margin-top: 40px;
     color: #313237;
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.32px;
     text-align: center;
+
+    @include onTablet {
+      margin-top: 70px;
+    }
   }
 
   &__checkout-message {

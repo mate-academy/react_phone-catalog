@@ -3,8 +3,14 @@
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
   list-style-type: none;
+
+  @include onTablet {
+    flex-wrap: nowrap;
+  }
 
   &__prev,
   &__next,

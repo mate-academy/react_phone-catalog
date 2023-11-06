@@ -44,7 +44,10 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
           prevEl: '.swiper-button-prev',
         }}
         breakpoints={{
-          640: {
+          320: {
+            slidesPerView: 1,
+          },
+          460: {
             slidesPerView: 2,
           },
           768: {

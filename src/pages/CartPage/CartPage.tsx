@@ -53,20 +53,6 @@ export const CartPage = () => {
         <div className="cartpage__button-back">
           <BackButton />
         </div>
-        {/* <button
-          className="cartpage__button-back"
-          data-cy="backButton"
-          onClick={() => navigate('-1')}
-        >
-          <img
-            src="new/img/icons/arrow-left.svg"
-            alt="arrow-back"
-            className="cartpage__button-back-img"
-          />
-          <span className="cartpage__button-back-text">
-            Back
-          </span>
-        </button> */}
 
         <h1 className="title rainbow-text cartpage__title">
           Cart

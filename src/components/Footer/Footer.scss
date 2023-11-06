@@ -2,8 +2,12 @@
 @import "../../styles/helpers/mixins.scss";
 
 .footer {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 50px;
+
+  @include onTablet {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
 
   &__content {
     display: flex;

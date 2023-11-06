@@ -9,18 +9,40 @@
 
   &__main-properties {
     display: flex;
+    flex-direction: column;
     margin-bottom: 80px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 80px;
+    }
   }
 
   &__images {
     display: flex;
+    flex-direction: column;
     margin-right: 75px;
+
+    @include onTablet {
+      display: flex;
+      margin-right: 75px;
+      flex-direction: row;
+    }
   }
 
   &__thumbnails {
     display: flex;
-    flex-direction: column;
-    margin-right: 28px;
+    flex-wrap: wrap;
+    // margin-bottom: 15px;
+    // margin-right: 28px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      margin-right: 28px;
+      margin-bottom: 15px;
+    }
 
   }
 
@@ -40,10 +62,18 @@
   }
 
   &__original {
-    width: 442px;
-    height: 442px;
-    padding-left: 30px;
-    padding-right: 30px;
+    width: 280px;
+    height: 340px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    @include onTablet {
+      width: 442px;
+      height: 442px;
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-bottom: 0;
+    }
 
     &-img {
       display: flex;
@@ -56,7 +86,11 @@
   }
 
   &__characteristics {
-    width: 320px;
+    width: 280px;
+
+    @include onTablet {
+      width: 320px;
+    }
 
   }
 
@@ -147,12 +181,24 @@
 
   &__additional-properties {
     display: flex;
+    flex-direction: column;
     gap: 64px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      gap: 64px;
+    }
   }
 
   &__about {
-    width: 559px;
+    width: 280px;
     margin-bottom: 80px;
+
+    @include onTablet {
+      width: 559px;
+      margin-bottom: 80px;
+    }
 
     &-title {
       color: $gray-primary;
@@ -168,6 +214,7 @@
       }
 
     }
+
     &-content-title {
       color: $gray-primary;
       font-size: 20px;
@@ -184,7 +231,12 @@
   }
 
   &__tech {
-    width: 512px;
+    display: none;
+
+    @include onTablet {
+      width: 512px;
+      display: block;
+    }
 
     &-title {
       color: $gray-primary;
@@ -198,6 +250,7 @@
       margin-top: 25px;
     }
   }
+
   &__may-like {
     padding-bottom: 80px;
 

@@ -3,6 +3,18 @@
 
 .productslist {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  row-gap: 40px;
+  grid-template-columns: repeat(1fr);
+  row-gap: 20px;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+  }
+
+  @include onSmallDesktop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+  }
 }

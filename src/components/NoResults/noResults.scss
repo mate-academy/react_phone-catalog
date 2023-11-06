@@ -2,7 +2,8 @@
 @import "../../styles/helpers/mixins.scss";
 
 .no-results {
-  padding-top: 60px;
+  padding-top: 40px;
+  text-align: center;
 
   &__content {
     display: flex;
@@ -12,6 +13,14 @@
 
   &__title {
     margin-bottom: 30px;
+  }
+
+  &__img {
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
   }
 
 }

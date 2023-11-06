@@ -14,6 +14,7 @@ import { NoResults } from '../../components/NoResults';
 import { NoSearchResults } from '../../components/NoSearchResults';
 
 import './phonesPage.scss';
+import { Search } from '../../components/Search';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -74,6 +75,11 @@ export const PhonesPage = () => {
                   {' '}
                   models
                 </span>
+
+                <div className="phonespage__mobile-search">
+                  <Search category="phones" />
+                </div>
+
                 <div className="phonespage__dropdowns">
                   <Dropdown initialValue={sort} />
                   <DropdownPagination initialValue={perPage} />

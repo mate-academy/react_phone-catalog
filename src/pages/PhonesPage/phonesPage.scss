@@ -4,7 +4,28 @@
 .phonespage {
   &__dropdowns {
     display: flex;
+    flex-direction: column;
     gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__mobile-search .search {
+    padding: 10px 10px 10px 0;
+    width: 280px;
+    margin-bottom: 15px;
+    border: 1px solid $gray-elements;
+
+    & .search-placeholder {
+      padding-left: 10px;
+    }
+
+    @include onTablet {
+      display: none;
+    }
   }
 
   &__productslist {

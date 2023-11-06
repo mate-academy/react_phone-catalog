@@ -2,7 +2,6 @@ import { NavLink, Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import './mobileMenu.scss';
-import { useEffect } from 'react';
 
 type Props = {
   isOpen: boolean;
@@ -13,21 +12,10 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
   'mobilemenu__link',
   {
     'mobilemenu__link--is-active': isActive,
-  });
+  },
+);
 
 export const MobileMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]);
-
   return (
     <nav className={`mobilemenu ${isOpen ? 'open' : ''}`}>
       <div className="mobilemenu__header">
