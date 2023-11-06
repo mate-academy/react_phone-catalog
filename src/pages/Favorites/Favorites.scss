@@ -1,0 +1,12 @@
+@import "../../scss//variables";
+
+.Favorites {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: $secondColor;
+    margin-bottom: 40px;
+  }
+}

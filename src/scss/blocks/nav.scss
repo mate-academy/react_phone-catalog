@@ -1,0 +1,94 @@
+@import "../variables";
+@import "../mixins";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform $transition-fast-time cubic-bezier(0.25,0.72,0.51,0.96);
+
+  @include onLaptop() {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    flex-direction: column;
+    transform: translateX(-150%);
+    width: 100%;
+    z-index: 1;
+    background-color: #fff;
+  }
+
+  &__mobile {
+    transform: translateX(0);
+  }
+
+  &__pages {
+    list-style: none;
+    display: flex;
+    gap: 64px;
+
+    @include onLaptop() {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 0;
+    }
+  }
+
+  &__page {
+    @include onLaptop() {
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 1px 2px $borderItem;
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 64px;
+    color: $secondColor;
+    padding: 26px 0;
+
+    @include onLaptop() {
+      display: inline-block;
+      width: 100%;
+      padding: 0;
+    }
+
+    &--active {
+      color: $primaryColor;
+
+      @include onLaptop() {
+        background-color: $borderItem;
+      }
+
+      &::after {
+        @include is-active;
+
+        @include onLaptop() {
+          height: 0;
+        }
+      }
+    }
+
+    &:hover {
+      color: $primaryColor;
+
+      @include onLaptop() {
+        background-color: $borderItem;
+      }
+
+      &::after {
+        @include is-active;
+
+        @include onLaptop() {
+          height: 0;
+        }
+      }
+    }
+  }
+}

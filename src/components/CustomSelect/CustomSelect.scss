@@ -1,0 +1,60 @@
+@import "./../../scss//variables";
+
+.CustomSelect {
+  position: relative;
+  border: 1px solid $buttonBorderColor;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  padding-left: 12px;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $secondColor;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 12px;
+    background-image: url("../../img/icons/Chevron\ \(Arrow\ Down\).svg");
+    transition: $transition-fast-time all ease-in-out;
+  }
+
+  &:active {
+    border-color: $primaryColor;
+  }
+
+  &--active::after {
+    transform: rotate(-180deg);
+  }
+
+  &__options {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 44px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid $borderItem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  &__option {
+    height: 40px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+    color: $secondColor;
+    font-style: normal;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #fafbfc;
+      color: $primaryColor;
+    }
+  }
+}

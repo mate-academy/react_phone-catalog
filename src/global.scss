@@ -1,0 +1,20 @@
+@import "./fonts/Mont/fonts.css";
+
+html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+ul,
+h1,
+p,
+h3,
+input,
+h2 {
+  margin: 0;
+  padding: 0;
+}

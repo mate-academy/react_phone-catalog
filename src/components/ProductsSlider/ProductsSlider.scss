@@ -1,0 +1,28 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/blocks/arrowsButton.scss";
+
+.ProductsSlider {
+  overflow: hidden;
+
+  &__top {
+    @include flex-center-between;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 16px;
+    transition: transform $transition-time cubic-bezier(0.25,0.72,0.51,0.96);
+  }
+}

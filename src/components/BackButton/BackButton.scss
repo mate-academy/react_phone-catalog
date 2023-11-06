@@ -1,0 +1,16 @@
+@import "../../scss//variables";
+
+.BackButton {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+
+  &__text {
+    font-size: 12px;
+    color: $secondColor;
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+}

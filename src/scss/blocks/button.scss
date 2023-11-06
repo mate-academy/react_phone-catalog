@@ -1,0 +1,35 @@
+@import "../variables";
+
+.button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  transition: all $transition-fast-time cubic-bezier(0.25,0.72,0.51,0.96);
+  font-family: Mont, Arial, Helvetica, sans-serif;
+
+  &--active {
+    background-color: $primaryColor;
+    color: #fff;
+  }
+
+  &:hover {
+    border: 1px solid $primaryColor;
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled:active {
+    transform: none;
+    box-shadow: none;
+  }
+}

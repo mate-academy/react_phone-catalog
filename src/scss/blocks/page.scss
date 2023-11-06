@@ -1,0 +1,39 @@
+@import "../variables";
+
+.page {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  color: $primaryColor;
+  font-size: 14px;
+  flex: 1 0 auto;
+
+  &__section {
+    margin-bottom: 80px;
+  }
+
+  &__sectionTitle {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__breadcrumbs {
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__notification {
+    margin-top: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: $secondColor;
+    margin-bottom: 40px;
+  }
+
+  &__backButton {
+    margin-bottom: 16px;
+  }
+}

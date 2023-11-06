@@ -1,0 +1,17 @@
+@import "./../../scss//variables";
+
+.Pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    border-color: $borderItem;
+  }
+}
