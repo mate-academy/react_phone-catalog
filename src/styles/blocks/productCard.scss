@@ -1,4 +1,4 @@
-@import '../../styles/utils';
+@import "../../styles/utils";
 
 .productCard {
   padding: 23px;
@@ -7,9 +7,7 @@
   border: 1px solid $c-gray-elements;
   background: $c-white;
 
-  transition:
-    transform $transition-duration,
-    border-color $transition-duration;
+  transition: transform $transition-duration, border-color $transition-duration;
 
   &:hover {
     border-color: $c-gray-primary;

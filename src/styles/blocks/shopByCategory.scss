@@ -1,4 +1,4 @@
-@import '../../styles/utils';
+@import "../../styles/utils";
 
 .category {
   display: flex;
@@ -8,6 +8,28 @@
 
   @include onDesktop {
     flex-direction: row;
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: left;
+    transition: scale $transition-duration;
+
+    top: 10%;
+    left: 20%;
+
+    &--tablets {
+      top: 15%;
+      transform: scale(1.2);
+    }
+
+    &--accessories {
+      left: 10%;
+    }
   }
 
   &__photo {
@@ -36,28 +58,6 @@
 
     &--accessories {
       background: #973d5f;
-    }
-  }
-
-  &__image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: left;
-    transition: scale $transition-duration;
-
-    top: 10%;
-    left: 20%;
-
-    &--tablets {
-      top: 15%;
-      transform: scale(1.2);
-    }
-
-    &--accessories {
-      left: 10%;
     }
   }
 
