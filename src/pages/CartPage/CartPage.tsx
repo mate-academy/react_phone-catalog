@@ -145,7 +145,6 @@ export const CartPage = () => {
                     We are sorry, but this feature is not implemented yet
                   </p>
                 )}
-
               </div>
 
             </div>
