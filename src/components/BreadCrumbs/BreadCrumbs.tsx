@@ -20,9 +20,13 @@ export const BreadCrumbs = () => {
         data-cy="breadCrumbs"
       >
         <div className="breadcrumbs__img">
-          <a className="breadcrumbs__img-home" href="/">
-            <img src="new/img/icons/home.svg" alt="home-icon" />
-          </a>
+          <Link to="/">
+            <img
+              className="breadcrumbs__img-home"
+              src="new/img/icons/home.svg"
+              alt="home-icon"
+            />
+          </Link>
         </div>
 
         {partsOfPath.length > 1 ? (

@@ -94,11 +94,13 @@ export const CartPage = () => {
                         alt="subtract-icon"
                       />
                     </button>
-                    <span
+
+                    <p
                       data-cy="productQauntity"
+                      className="cartpage__item-quantity"
                     >
                       {cartItem.quantity}
-                    </span>
+                    </p>
                     <button
                       className="cartpage__item-button-add"
                       onClick={() => dispatch(increaseQuantity(cartItem.id))}
@@ -109,6 +111,7 @@ export const CartPage = () => {
                         alt="add-icon"
                       />
                     </button>
+
                     <p className="cartpage__item-price">
                       $
                       {cartItem.fullPrice * cartItem.quantity}

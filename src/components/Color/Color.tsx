@@ -13,8 +13,8 @@ export const Color: React.FC<Props> = ({ color, borderColor }) => (
       fill="none"
     >
       <rect
-        x="2"
-        y="2"
+        x="1.5"
+        y="1.5"
         width="28"
         height="28"
         rx="14"
@@ -25,8 +25,8 @@ export const Color: React.FC<Props> = ({ color, borderColor }) => (
       <rect
         x="0.5"
         y="0.5"
-        width="31"
-        height="31"
+        width="30"
+        height="30"
         rx="15.5"
         stroke={borderColor}
       />

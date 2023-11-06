@@ -40,13 +40,10 @@
   &__items {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 0;
     padding: 0;
-    gap: 15px;
-
-    @include onTablet {
-      gap: 16px;
-    }
+    gap: 16px;
   }
 
   &__item {
@@ -60,17 +57,19 @@
     gap: 15px;
 
     @include onTablet {
-      width: 600px;
+      width: 80%;
       display: flex;
       flex-wrap: nowrap;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       padding: 31px 40px 31px 24px;
-      border: 1px solid $gray-elements;
     }
 
     @include onSmallDesktop {
       width: 752px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     &-close-icon {
@@ -85,6 +84,7 @@
     }
 
     &-name {
+      display: flex;
       color: $gray-primary;
       width: 280px;
       text-align: center;
@@ -93,13 +93,13 @@
         width: 295px;
         margin-right: 49px;
         text-align: left;
-
       }
     }
 
     &-button-subtract,
     &-button-add {
       display: flex;
+      flex-grow: 0;
       border: 1px solid $gray-elements;
       padding: 8px;
       cursor: pointer;
@@ -128,6 +128,10 @@
       font-size: 22px;
       font-weight: 700;
       line-height: 140%;
+    }
+
+    &-quantity {
+      display: flex;
     }
   }
 

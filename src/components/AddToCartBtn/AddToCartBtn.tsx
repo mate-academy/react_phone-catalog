@@ -26,8 +26,9 @@ export const AddToCartBtn: React.FC<Props> = ({ wide, product }) => {
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     } else {
       dispatch(addToCart(productItem));
+      const updatedProductItem = { ...productItem, quantity: 1 };
 
-      const updatedCartItems = [...cartItems, productItem];
+      const updatedCartItems = [...cartItems, updatedProductItem];
 
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
     }

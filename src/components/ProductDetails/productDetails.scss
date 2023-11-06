@@ -72,14 +72,15 @@
   &__original {
     width: 280px;
     height: 340px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 30px;
+    object-fit: cover;
 
     @include onTablet {
       width: 442px;
       height: 442px;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 50px;
+      padding-right: 50px;
       margin-bottom: 0;
     }
 
@@ -89,6 +90,8 @@
       align-items: center;
       width: 100%;
       height: 100%;
+      border-radius: 40px;
+
     }
   }
 
@@ -115,10 +118,6 @@
 
   &__color {
     cursor: pointer;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1px solid $gray-elements;
 
     &:not(:last-child) {
       margin-right: 8px;
