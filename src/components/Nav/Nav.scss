@@ -1,0 +1,20 @@
+.Nav {
+  height: 100%;
+  display: flex;
+  gap: 64px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 40px;
+
+  &__item {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    color: #89939a;
+    text-decoration: none;
+  }
+}

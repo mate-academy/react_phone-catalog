@@ -1,1 +1,38 @@
-// not empty
+@font-face {
+  font-family: "Mont";
+  font-weight: 500;
+  src: url(./helpers/fonts/Mont-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Mont";
+  font-style: normal;
+  font-weight: 600;
+  src: url(./helpers/fonts/Mont-SemiBold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Mont";
+  font-weight: 700;
+  src: url(./helpers/fonts/Mont-Bold.otf) format("opentype");
+}
+
+iframe {
+  display: none;
+}
+
+body,
+h1,
+h2,
+h3,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font: inherit;
+}
