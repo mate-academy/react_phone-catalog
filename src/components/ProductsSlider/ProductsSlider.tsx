@@ -20,7 +20,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
     <div
       className="swiper-container"
     >
-      {/* <div className="swiper__buttons">
+      <div className="swiper__buttons">
         <div className="swiper-button-prev">
           <img
             className="swiper__arrow-left"
@@ -35,7 +35,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
             alt="arrow-right"
           />
         </div>
-      </div> */}
+      </div>
 
       <Swiper
         spaceBetween={16}
@@ -47,10 +47,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
           320: {
             slidesPerView: 1,
           },
-          460: {
-            slidesPerView: 2,
-          },
-          768: {
+          600: {
             slidesPerView: 2,
           },
           900: {

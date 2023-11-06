@@ -18,7 +18,6 @@
       font-size: 12px;
       font-weight: 600;
     }
-
   }
 
   &__title {
@@ -28,11 +27,12 @@
   &__content {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
 
     @include onTablet {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       gap: 0;
     }
   }
@@ -60,13 +60,17 @@
     gap: 15px;
 
     @include onTablet {
-      width: 752px;
+      width: 600px;
       display: flex;
       flex-wrap: nowrap;
       justify-content: center;
       align-items: center;
       padding: 31px 40px 31px 24px;
       border: 1px solid $gray-elements;
+    }
+
+    @include onSmallDesktop {
+      width: 752px;
     }
 
     &-close-icon {
@@ -131,6 +135,7 @@
     width: 280px;
 
     @include onTablet {
+      margin: 20px auto 0;
       width: 368px;
     }
 

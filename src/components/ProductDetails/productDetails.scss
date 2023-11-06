@@ -14,6 +14,18 @@
 
     @include onTablet {
       display: flex;
+      flex-direction: column;
+      margin-bottom: 80px;
+    }
+
+    @media (min-width: 1023px) and (max-width: 1170px) {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 80px;
+    }
+
+    @include onSmallDesktop {
+      display: flex;
       flex-direction: row;
       margin-bottom: 80px;
     }
@@ -34,8 +46,6 @@
   &__thumbnails {
     display: flex;
     flex-wrap: wrap;
-    // margin-bottom: 15px;
-    // margin-right: 28px;
 
     @include onTablet {
       display: flex;
@@ -43,7 +53,6 @@
       margin-right: 28px;
       margin-bottom: 15px;
     }
-
   }
 
   &__thumbnail {
@@ -58,7 +67,6 @@
       width: 66px;
       height: 66px;
     }
-
   }
 
   &__original {
@@ -82,7 +90,6 @@
       width: 100%;
       height: 100%;
     }
-
   }
 
   &__characteristics {
@@ -187,17 +194,22 @@
     @include onTablet {
       display: flex;
       flex-direction: row;
+      gap: 0;
+    }
+
+    @include onSmallDesktop {
+      display: flex;
+      flex-direction: row;
       gap: 64px;
     }
   }
 
   &__about {
-    width: 280px;
+    width: 80%;
     margin-bottom: 80px;
 
-    @include onTablet {
-      width: 559px;
-      margin-bottom: 80px;
+    @include onSmallDesktop {
+      width: 560px;
     }
 
     &-title {
@@ -233,7 +245,7 @@
   &__tech {
     display: none;
 
-    @include onTablet {
+    @include onSmallDesktop {
       width: 512px;
       display: block;
     }

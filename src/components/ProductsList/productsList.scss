@@ -12,6 +12,12 @@
     row-gap: 20px;
   }
 
+  @media (min-width: 860px) and (max-width: 1170px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+  }
+
   @include onSmallDesktop {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

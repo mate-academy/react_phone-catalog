@@ -23,7 +23,7 @@
       padding-left: 10px;
     }
 
-    @include onTablet {
+    @include onSmallDesktop {
       display: none;
     }
   }

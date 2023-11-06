@@ -22,7 +22,15 @@
     padding: 26px 0;
 
     &:not(:last-child) {
-      margin-right: 64px;
+      margin-right: 48px;
+
+      @include onSmallDesktop {
+        margin-right: 64px;
+      }
+
+      @include onSmallDesktop {
+        margin-right: 64px;
+      }
     }
 
     &--is-active {
@@ -44,6 +52,14 @@
     &:hover {
       color: $gray-primary;
       transition: all 0.3s;
+    }
+  }
+
+  &__search {
+    display: none;
+
+    @include onSmallDesktop {
+      display: block;
     }
   }
 
@@ -104,31 +120,6 @@
     &:hover {
       border: 1px solid $gray-primary;
       transition: all 0.3s;
-    }
-  }
-
-  &__favorites, &__cart {
-    &-quantity {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-
-      &-ellipse {
-        position: relative;
-        width: 18px;
-        height: 18px;
-      }
-
-      &-content {
-        position: absolute;
-        top: 15%;
-        left: 50%;
-        transform: translate(-50%);
-        color: #fff;
-        font-size: 9px;
-        font-weight: 600;
-        z-index: 2;
-      }
     }
   }
 }

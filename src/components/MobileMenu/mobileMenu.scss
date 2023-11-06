@@ -2,7 +2,7 @@
 @import "../../styles/helpers/mixins.scss";
 
 .mobilemenu {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   background-color: white;
   top: 0;
@@ -11,13 +11,20 @@
   transition: all 0.3s ease;
   height: 100vh;
 
+  @include onSmallDesktop {
+    display: none;
+  }
+
   &.open {
-    overflow: hidden;
     top: 0;
     left: 0;
     right: 0;
     height: 100vh;
     width: 100%;
+
+    @include onSmallDesktop {
+      display: none;
+    }
   }
 
   &__header {

@@ -54,13 +54,15 @@ export const Navigation = () => {
       </div>
 
       <div className="nav__favorite">
-        {(phonesPageIsActive
-        || tabletsPageIsActive
-        || accessoriesPageIsActive
-        || favoritesPageIsActive
-        ) && (
-          <Search category={normalizePathname} />
-        )}
+        <div className="nav__search">
+          {(phonesPageIsActive
+            || tabletsPageIsActive
+            || accessoriesPageIsActive
+            || favoritesPageIsActive
+          ) && (
+            <Search category={normalizePathname} />
+          )}
+        </div>
 
         <NavLink
           className={({ isActive }) => cn('nav__favorites', {
