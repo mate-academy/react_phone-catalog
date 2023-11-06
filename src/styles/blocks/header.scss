@@ -1,0 +1,26 @@
+@import '../utils';
+
+.header {
+  height: $header-height;
+  padding-left: 24px;
+
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: 0px 1px 0px 0px #E2E6E9;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @include onDesktop {
+      width: fit-content;
+      gap: 48px;
+    }
+  }
+
+  &__top-actions {
+    display: flex;
+  }
+}

@@ -1,0 +1,34 @@
+.page {
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__go-back {
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    color: $c-gray-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    &-title {
+      color: $c-gray-icons-placeholders;
+      margin-bottom: 4px;
+    }
+  }
+}

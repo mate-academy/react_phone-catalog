@@ -1,0 +1,13 @@
+.section {
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    color: $c-gray-secondary;
+    margin-bottom: 40px;
+  }
+}

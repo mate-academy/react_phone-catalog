@@ -1,0 +1,130 @@
+@import '../../styles/utils';
+
+.button {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  border: 1px solid $c-gray-icons-placeholders;
+  cursor: pointer;
+
+  @include hover(border-color, $c-gray-primary);
+
+  &__arrow {
+    &--up {
+    rotate: -90deg;
+    }
+
+    &--down {
+      rotate: 90deg;
+    }
+
+    &--left {
+      rotate: 180deg;
+    }
+  }
+
+  &:disabled {
+    border-color: $c-gray-elements;
+    cursor: initial;
+
+    & path {
+      fill: $c-gray-icons-placeholders;
+    }
+  }
+
+  &__favourites {
+    height: 40px;
+    width: 40px;
+
+    &.active {
+      border-color: $c-gray-elements;
+
+      @include hover(border-color, $c-gray-icons-placeholders);
+
+      & path {
+        fill: #EB5757;
+        stroke: none;
+      }
+    }
+  }
+
+  &__number {
+    height: 100%;
+    width: 100%;
+    padding: 6px 8px;
+
+    @extend %bodyText;
+    border-color: $c-gray-elements;
+    color: #000;
+
+    &.active {
+      color: $c-white;
+      background-color: $c-gray-primary;
+      border-color: $c-gray-primary;
+    }
+  }
+
+  &__color {
+    border: 1px solid $c-gray-elements;
+    border-radius: 50%;
+
+    @include hover(border-color, $c-gray-icons-placeholders);
+
+    &.active {
+      border-color: $c-gray-primary;
+    }
+
+    & span {
+      height: 100%;
+      width: 100%;
+
+      border: 2px solid $c-white;
+      border-radius: 50%;
+    }
+  }
+
+  &__text {
+    height: 40px;
+    min-width: 176px;
+
+    @extend %buttons;
+    color: $c-white;
+
+    background-color: $c-gray-primary;
+    border-color: $c-gray-primary;
+
+    @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.26));
+
+    &.active {
+      border-color: $c-gray-elements;
+      background-color: $c-white;
+      color: #27AE60;
+      box-shadow: none;
+      cursor: initial;
+    }
+  }
+
+  &__image {
+    padding: 2px;
+    background-color: inherit;
+
+    @include onDesktop {
+      padding: 4px;
+    }
+
+    &.active {
+      border-color: $c-gray-primary;
+    }
+
+    & img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

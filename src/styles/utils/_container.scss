@@ -1,0 +1,14 @@
+@import '../utils';
+
+.container {
+  margin: 0 16px;
+
+  @include onTablet {
+    margin: 0 24px;
+  }
+
+  @include onDesktop {
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+}
