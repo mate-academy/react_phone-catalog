@@ -22,9 +22,6 @@ export const Card: React.FC<Props> = ({ card }) => {
 
   const correctUrl = `https://mate-academy.github.io/react_phone-catalog/_new/${image}`;
 
-  // eslint-disable-next-line no-console
-  console.log(image);
-
   return (
     <div className="card" data-cy="cardsContainer">
       <Link to={`/phones/${itemId}`} className="card__content">
