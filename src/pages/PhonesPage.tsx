@@ -38,7 +38,7 @@ export const PhonesPage = () => {
 
   useEffect(() => {
     dispatch(initPhones());
-  });
+  }, []);// eslint-disable-line
 
   const currentPhones = useMemo(() => {
     if (phones.length === 0) {

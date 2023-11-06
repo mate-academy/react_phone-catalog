@@ -14,7 +14,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(initPhones());
-  });
+  }, []);// eslint-disable-line
 
   return (
     <main className="main">

@@ -27,7 +27,7 @@ export const Favorites = () => {
     }
 
     return newFavorites;
-  }, [searchParams, favorites]);
+  }, [searchParams.get('query'), favorites]);// eslint-disable-line
 
   if (error) {
     return (<Error />);

@@ -25,8 +25,8 @@ export const Search = () => {
     setSearchParams(getSearchWith(
       searchParams, { query: searchParams.get('query') || null },
     ));
-  }, [pathname, searchParams, setSearchParams]);
-  const applyQuery = useCallback(debounce(setSearchParams, 1000), [pathname]);
+  }, [pathname]);// eslint-disable-line
+  const applyQuery = useCallback(debounce(setSearchParams, 1000), [pathname]);// eslint-disable-line
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
 

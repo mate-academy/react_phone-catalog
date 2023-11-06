@@ -64,7 +64,7 @@ export const ProductDetailsPage = () => {
 
     dispatch(initPhones());
     dispatch(initProduct(productId));
-  }, [productId, dispatch]);
+  }, [productId]);// eslint-disable-line
 
   const handleColor = (color: string) => {
     if (!product) {

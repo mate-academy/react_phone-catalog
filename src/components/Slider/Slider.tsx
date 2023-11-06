@@ -57,7 +57,7 @@ export const Slider = () => {
     const interval = setInterval(handleNext, 5000);
 
     return () => clearInterval(interval);
-  }, [currentImage, currentWidth]);
+  }, [currentImage, currentWidth]);// eslint-disable-line
 
   return (
     <div className="slider">
