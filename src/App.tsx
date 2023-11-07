@@ -1,9 +1,21 @@
+import { Outlet } from 'react-router-dom';
+
 import './App.scss';
 
 const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <>
+    <header>
+      <h1>header</h1>
+    </header>
+
+    <main>
+      <Outlet />
+    </main>
+
+    <footer>
+      <h2>footer</h2>
+    </footer>
+  </>
 );
 
 export default App;
