@@ -2,7 +2,6 @@
 @import "../../styles/helpers/mixins.scss";
 
 .cartpage {
-
   &__button-back {
     margin-top: 20px;
     margin-bottom: 16px;
@@ -25,81 +24,106 @@
   }
 
   &__content {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 16px;
 
     @include onTablet {
       display: flex;
       justify-content: center;
-      gap: 0;
     }
   }
 
   &__items {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
     gap: 16px;
   }
 
   &__item {
-    width: 280px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 20px 0;
     border: 1px solid $gray-elements;
     gap: 15px;
 
     @include onTablet {
-      width: 80%;
-      display: flex;
+      width: 100%;
       flex-wrap: nowrap;
-      justify-content: space-between;
-      align-items: center;
       padding: 31px 40px 31px 24px;
     }
 
     @include onSmallDesktop {
       width: 752px;
-      display: flex;
       justify-content: space-between;
+    }
+
+    &-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
+
+      @include onTablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &-close-button {
+      padding: 0;
     }
 
     &-close-icon {
       display: flex;
-      margin-right: 21px;
+      margin-bottom: 10px;
+
+      @include onTablet {
+        margin-right: 34px;
+        margin-bottom: 0;
+      }
     }
 
     &-img {
-      width: 56px;
+      display: flex;
+      width: 46px;
       height: 66px;
-      margin-right: 41px;
+      margin-bottom: 10px;
+
+      @include onTablet {
+        margin-right: 41px;
+        margin-bottom: 0;
+      }
     }
 
     &-name {
       display: flex;
       color: $gray-primary;
-      width: 280px;
       text-align: center;
 
       @include onTablet {
         width: 295px;
-        margin-right: 49px;
+        margin-right: 10px;
         text-align: left;
       }
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      align-items: center;
     }
 
     &-button-subtract,
     &-button-add {
       display: flex;
-      flex-grow: 0;
       border: 1px solid $gray-elements;
       padding: 8px;
       cursor: pointer;
@@ -114,7 +138,7 @@
       margin-right: 13px;
 
       @include onTablet {
-        margin-right: 43px;
+        margin-right: 23px;
       }
     }
 
@@ -129,17 +153,13 @@
       font-weight: 700;
       line-height: 140%;
     }
-
-    &-quantity {
-      display: flex;
-    }
   }
 
   &__amount {
     width: 280px;
+    padding: 24px;
 
     @include onTablet {
-      margin: 20px auto 0;
       width: 368px;
     }
 
@@ -160,6 +180,7 @@
     }
 
     &-button {
+      width: 100%;
       display: block;
       color: #fff;
       text-align: center;
@@ -168,10 +189,10 @@
       line-height: 21px;
       background-color: $gray-primary;
       margin: 24px auto;
-      padding: 14px 100px 13px;
+      padding: 14px 0;
       transition: all 0.3s ease;
 
-      @include onTablet {
+      @include onSmallDesktop {
         padding: 14px 126px 13px 125px;
       }
 
@@ -184,10 +205,6 @@
     &-line {
       width: 100%;
       background-color: $gray-elements;
-
-      @include onTablet {
-        width: 321px;
-      }
     }
   }
 

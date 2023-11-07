@@ -64,58 +64,65 @@ export const CartPage = () => {
               <div className="cartpage__items">
                 {cartItems.map(cartItem => (
                   <div key={cartItem.id} className="cartpage__item">
-                    <button
-                      onClick={() => handleRemoveItem(cartItem)}
-                      data-cy="cartDeleteButton"
-                    >
-                      <img
-                        className="cartpage__item-close-icon"
-                        src="new/img/icons/close.svg"
-                        alt="close-icon"
-                      />
-                    </button>
-                    <Link to={`${pathname}/${cartItem.itemId}`}>
-                      <img
-                        className="cartpage__item-img"
-                        src={`new/${cartItem.image}`}
-                        alt="item"
-                      />
-                    </Link>
-                    <p className="cartpage__item-name">
-                      {cartItem.name}
-                    </p>
-                    <button
-                      className="cartpage__item-button-subtract"
-                      onClick={() => dispatch(decreaseQuantity(cartItem.id))}
-                    >
-                      <img
-                        className="cartpage__item-button-subtract-img"
-                        src="new/img/icons/subtract-icon.svg"
-                        alt="subtract-icon"
-                      />
-                    </button>
 
-                    <p
-                      data-cy="productQauntity"
-                      className="cartpage__item-quantity"
-                    >
-                      {cartItem.quantity}
-                    </p>
-                    <button
-                      className="cartpage__item-button-add"
-                      onClick={() => dispatch(increaseQuantity(cartItem.id))}
-                    >
-                      <img
-                        className="cartpage__item-button-add-img"
-                        src="new/img/icons/add-icon.svg"
-                        alt="add-icon"
-                      />
-                    </button>
+                    <div className="cartpage__item-main">
+                      <button
+                        onClick={() => handleRemoveItem(cartItem)}
+                        data-cy="cartDeleteButton"
+                        className="cartpage__item-close-button"
+                      >
+                        <img
+                          className="cartpage__item-close-icon"
+                          src="new/img/icons/close.svg"
+                          alt="close-icon"
+                        />
+                      </button>
+                      <Link to={`${pathname}/${cartItem.itemId}`}>
+                        <img
+                          className="cartpage__item-img"
+                          src={`new/${cartItem.image}`}
+                          alt="item"
+                        />
+                      </Link>
+                      <p className="cartpage__item-name">
+                        {cartItem.name}
+                      </p>
+                    </div>
 
-                    <p className="cartpage__item-price">
+                    <div className="cartpage__item-buttons">
+                      <button
+                        className="cartpage__item-button-subtract"
+                        onClick={() => dispatch(decreaseQuantity(cartItem.id))}
+                      >
+                        <img
+                          className="cartpage__item-button-subtract-img"
+                          src="new/img/icons/subtract-icon.svg"
+                          alt="subtract-icon"
+                        />
+                      </button>
+
+                      <p
+                        data-cy="productQauntity"
+                        className="cartpage__item-quantity"
+                      >
+                        {cartItem.quantity}
+                      </p>
+                      <button
+                        className="cartpage__item-button-add"
+                        onClick={() => dispatch(increaseQuantity(cartItem.id))}
+                      >
+                        <img
+                          className="cartpage__item-button-add-img"
+                          src="new/img/icons/add-icon.svg"
+                          alt="add-icon"
+                        />
+                      </button>
+                    </div>
+
+                    <div className="cartpage__item-price">
                       $
                       {cartItem.fullPrice * cartItem.quantity}
-                    </p>
+                    </div>
                   </div>
                 ))}
               </div>
