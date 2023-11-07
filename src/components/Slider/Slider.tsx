@@ -4,9 +4,9 @@ import cn from 'classnames';
 import './slider.scss';
 
 const imagesUrl: string[] = [
-  'new/img/banner/banner-phones.png',
-  'new/img/banner/banner-tablets.jpg',
-  'new/img/banner/banner-accessories.png',
+  'new/img/main/main-phones.png',
+  'new/img/main/main-tablets.jpg',
+  'new/img/main/main-accessories.png',
 ];
 
 const prepareImagesAlt = (url: string) => {
