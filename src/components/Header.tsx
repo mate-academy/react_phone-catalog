@@ -12,6 +12,7 @@ import { useAppSelector } from '../utils/hooks/hooks';
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const { favourites } = useAppSelector(state => state.favourites);
+  const { cartItems } = useAppSelector(state => state.cartItems);
   const showFavourites = !pathname.endsWith('cart');
 
   return (
@@ -31,7 +32,7 @@ export const Header: React.FC = () => {
 
         <NavLinkHeader type="icon" to="cart">
           <CartIcon />
-          <span>5</span>
+          {cartItems.length > 0 && <span>{cartItems.length}</span>}
         </NavLinkHeader>
       </div>
     </header>

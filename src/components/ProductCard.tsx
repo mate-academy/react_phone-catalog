@@ -14,6 +14,7 @@ import {
 } from '../store/slices/favouritesSlice';
 
 import '../styles/blocks/ProductCard.scss';
+import { addToCart } from '../store/slices/cartSlice';
 
 type Props = {
   product: Product;
@@ -35,11 +36,16 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
   } = product;
 
   const { favourites } = useAppSelector((state) => state.favourites);
+  const { cartItems } = useAppSelector((state) => state.cartItems);
   const dispatch = useAppDispatch();
 
   const hasInFavourites = useMemo(() => {
     return favourites.some((fav) => fav.id === product.id);
   }, [favourites, product]);
+
+  const hasInCart = useMemo(() => {
+    return cartItems.some(item => item.id === product.id);
+  }, [cartItems, product]);
 
   const handleFavouritesChange = useCallback(() => {
     if (hasInFavourites) {
@@ -48,6 +54,14 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
       dispatch(addToFavourites(product));
     }
   }, [hasInFavourites]);
+
+  const handleCartItemsChange = useCallback((prod: Product) => {
+    if (hasInCart) {
+      return;
+    }
+
+    dispatch(addToCart(prod));
+  }, [hasInCart]);
 
   return (
     <div className="productCard" data-cy="cardsContainer" style={{ transform }}>
@@ -93,7 +107,16 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
         </ul>
 
         <div className="productCard__buttons">
-          <Button content={ButtonType.TEXT}>Add to cart</Button>
+          <Button
+            content={ButtonType.TEXT}
+            onClick={() => handleCartItemsChange(product)}
+            className={cn({ active: hasInCart })}
+            disabled={hasInCart}
+          >
+            {hasInCart
+              ? 'Added to cart'
+              : 'Add to cart'}
+          </Button>
 
           <Button
             content={ButtonType.FAVOURITES}
