@@ -7,7 +7,7 @@ import { ProductsCardType } from '../types/ProductsCardType';
 
 import { getHotPriceProducts } from '../utils/helpers/getHotPriceProducts';
 import { getBrandNewProducts } from '../utils/helpers/getBrandNewProducts';
-import '../styles/blocks/productsSlider.scss';
+import '../styles/blocks/ProductsSlider.scss';
 
 type Props = {
   type: ProductsCardType;

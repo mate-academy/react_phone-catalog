@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAppSelector } from '../utils/hooks/hooks';
 import { getProductsCount } from '../utils/helpers/getProductsCount';
 
-import '../styles/blocks/shopByCategory.scss';
+import '../styles/blocks/ShopByCategory.scss';
 
 export const ShopByCategory = () => {
   const { products } = useAppSelector((state) => state.products);

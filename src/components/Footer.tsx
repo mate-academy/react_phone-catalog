@@ -2,7 +2,7 @@ import { Logo } from './Logo';
 import { Button } from './Button';
 import { ButtonType } from '../types/ButtonType';
 
-import '../styles/blocks/footer.scss';
+import '../styles/blocks/Footer.scss';
 
 export const Footer = () => {
   return (

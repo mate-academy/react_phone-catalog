@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 
-import '../styles/blocks/navLinkHeader.scss';
+import '../styles/blocks/NavLinkHeader.scss';
 
 type Props = NavLinkProps & {
   type: 'text' | 'icon';

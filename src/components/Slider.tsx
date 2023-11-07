@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { Button } from './Button';
 import { ButtonType } from '../types/ButtonType';
 
-import '../styles/blocks/slider.scss';
+import '../styles/blocks/Slider.scss';
 
 type Image = {
   name: 'phones' | 'tablets' | 'accessories';

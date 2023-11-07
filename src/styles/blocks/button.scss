@@ -55,10 +55,6 @@
   }
 
   &__number {
-    height: 100%;
-    width: 100%;
-    padding: 6px 8px;
-
     @extend %bodyText;
     border-color: $c-gray-elements;
     color: #000;

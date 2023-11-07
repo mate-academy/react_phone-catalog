@@ -1,10 +1,19 @@
+import { useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../types/Product';
+import cn from 'classnames';
+
 import { Button } from './Button';
+import { Product } from '../types/Product';
 import { ButtonType } from '../types/ButtonType';
 import { ProductsCardType } from '../types/ProductsCardType';
 
-import '../styles/blocks/productCard.scss';
+import { useAppDispatch, useAppSelector } from '../utils/hooks/hooks';
+import {
+  addToFavourites,
+  deleteFromFavourites,
+} from '../store/slices/favouritesSlice';
+
+import '../styles/blocks/ProductCard.scss';
 
 type Props = {
   product: Product;
@@ -24,6 +33,21 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
     category,
     itemId,
   } = product;
+
+  const { favourites } = useAppSelector((state) => state.favourites);
+  const dispatch = useAppDispatch();
+
+  const hasInFavourites = useMemo(() => {
+    return favourites.some((fav) => fav.id === product.id);
+  }, [favourites, product]);
+
+  const handleFavouritesChange = useCallback(() => {
+    if (hasInFavourites) {
+      dispatch(deleteFromFavourites(product.id));
+    } else {
+      dispatch(addToFavourites(product));
+    }
+  }, [hasInFavourites]);
 
   return (
     <div className="productCard" data-cy="cardsContainer" style={{ transform }}>
@@ -71,7 +95,12 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
         <div className="productCard__buttons">
           <Button content={ButtonType.TEXT}>Add to cart</Button>
 
-          <Button content={ButtonType.FAVOURITES} data-cy="addToFavorite" />
+          <Button
+            content={ButtonType.FAVOURITES}
+            data-cy="addToFavorite"
+            onClick={handleFavouritesChange}
+            className={cn({ active: hasInFavourites })}
+          />
         </div>
       </div>
     </div>

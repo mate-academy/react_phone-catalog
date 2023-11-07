@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavLinkHeader } from './NavLinkHeader';
 
-import '../styles/blocks/navbar.scss';
+import '../styles/blocks/Navbar.scss';
 
 export const NavBar = () => {
   const [checked, setChecked] = useState(false);

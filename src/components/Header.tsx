@@ -1,13 +1,19 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { NavLinkHeader } from './NavLinkHeader';
 import { FavouritesIcon } from '../assets/images/icons/FavouritesIcon';
 import { CartIcon } from '../assets/images/icons/CartIcon';
 import { NavBar } from './NavBar';
 
-import '../styles/blocks/header.scss';
+import '../styles/blocks/Header.scss';
+import { useAppSelector } from '../utils/hooks/hooks';
 
 export const Header: React.FC = () => {
+  const { pathname } = useLocation();
+  const { favourites } = useAppSelector(state => state.favourites);
+  const showFavourites = !pathname.endsWith('cart');
+
   return (
     <header className="header">
       <div className="header__navigation">
@@ -16,10 +22,12 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__top-actions">
-        <NavLinkHeader type="icon" to="favourites">
-          <FavouritesIcon />
-          <span>1</span>
-        </NavLinkHeader>
+        {showFavourites && (
+          <NavLinkHeader type="icon" to="favourites">
+            <FavouritesIcon />
+            {favourites.length > 0 && <span>{favourites.length}</span>}
+          </NavLinkHeader>
+        )}
 
         <NavLinkHeader type="icon" to="cart">
           <CartIcon />

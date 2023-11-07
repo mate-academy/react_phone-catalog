@@ -9,7 +9,7 @@ import { SearchICon } from '../assets/images/icons/SearchIcon';
 import { CloseIcon } from '../assets/images/icons/CloseIcon';
 import { ButtonType } from '../types/ButtonType';
 
-import '../styles/blocks/button.scss';
+import '../styles/blocks/Button.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   content: ButtonType;
