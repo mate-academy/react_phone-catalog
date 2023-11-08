@@ -4,7 +4,7 @@
 
   &-item {
     text-decoration: none;
-    color: $SecondaryColor;
+    color: $secondaryColor;
     text-transform: uppercase;
     font-size: 12px;
     line-height: 11px;
@@ -12,7 +12,7 @@
     font-weight: 700;
 
     &:hover {
-      color: $PrimaryColor;
+      color: $primaryColor;
     }
   }
 

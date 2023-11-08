@@ -1,34 +1,112 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
-.product__item {
-  &-content {
-    display: flex;
-    flex-direction: column;
-    padding: 24px;
-    max-width: 272px;
-    border: 1px solid $ElementsColor;
-    transition: border 0.3s;
-  }
+.card {
+  box-sizing: border-box;
+  width: $cardWidth;
+  display: flex;
+  flex-direction: column;
+  background: $whiteColor;
+  border: 1px solid $elementsColor;
+  padding: 32px 24px 24px;
 
   &__link {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &-img {
-    display: flex;
-    height: 208px;
-    flex-basis: 208px;
-    object-fit: contain;
-    margin-bottom: 24px;
-  }
-
-  &-subtitle {
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    flex: 1 0 45px;
-    // @extend %body-text;
-    color: $PrimaryColor;
+  }
+
+  @include onMobile {
+    padding-bottom: 48px;
+  }
+
+  &__image {
+    max-height: 208px;
+  }
+
+  &-name-container {
+    margin: 0 0 8px;
+    height: 42px;
+  }
+
+  &__name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primaryColor;
+    margin: 0;
+  }
+
+  &__prices {
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $elementsColor;
+    margin-bottom: 16px;
+  }
+}
+
+.image-container {
+  padding: 0 8px;
+  max-width: fit-content;
+  margin-bottom: 24px;
+  align-self: center;
+}
+
+.prices {
+  display: flex;
+
+  &__current-price {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    color: $primaryColor;
+    margin: 0 8px 0 0;
+  }
+
+  &__full-price {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+    color: $secondaryColor;
+    margin: 0;
+  }
+}
+
+.product-info {
+  padding-top: 16px;
+
+  &__item {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondaryColor;
+    margin: 0 0 8px;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  &__value {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $primaryColor;
+    margin: 0 0 8px;
+
+    &:last-of-type {
+      margin: 0;
+    }
   }
 }

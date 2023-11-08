@@ -14,9 +14,12 @@
   }
 
   &__img {
+    width: 1040px;
+    height: 400px;
+    flex-shrink: 0;
     opacity: 0;
-    height: 0;
-    width: 0;
+    // height: 0;
+    // width: 0;
     transition: opacity 0.3s;
 
     &--active {

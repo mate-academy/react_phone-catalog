@@ -5,13 +5,21 @@ import {
 } from 'react';
 
 import { ShopByCategories } from '../../components/ShopByCategories';
-import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+import { ProductsSlider } from '../../components/ProductSlider/ProductSlider';
+import { InfiniteSlider } from '../../components/InfiniteSlider/InfiniteSlider';
+import { CatalogProduct } from '../../types/CatalogProduct';
 import { getProducts } from '../../utils/fetchData';
-import { Product } from '../../types/Product';
-import { Carousel } from '../../components/Carousel/Carousel';
+
+import './HomePage.scss';
+
+const carouselImagesUrl = [
+  './_new/img/banner-phones.png',
+  './_new/img/banner-tablets.png',
+  './_new/img/banner-accessories.png',
+];
 
 export const HomePage: FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<CatalogProduct[]>([]);
 
   useEffect(() => {
     getProducts()
@@ -44,18 +52,14 @@ export const HomePage: FC = () => {
   };
 
   return (
-    <div className="home-page">
-      <h1>Slider</h1>
-      <Carousel />
+    <div className="home-page main__page">
+      <InfiniteSlider carouselImagesUrl={carouselImagesUrl} />
 
-      <h1>Hot prices</h1>
-      <ProductSlider title="Hot prices" products={getHotPricesProducts()} />
+      <ProductsSlider title="Hot prices" products={getHotPricesProducts()} />
 
-      <h1>Categories</h1>
       <ShopByCategories />
 
-      <h1>New models</h1>
-      <ProductSlider title="Hot prices" products={getBrandNewModels()} />
+      <ProductsSlider title="Brand new models" products={getBrandNewModels()} />
     </div>
   );
 };
