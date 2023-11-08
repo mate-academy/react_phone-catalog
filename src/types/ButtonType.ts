@@ -1,5 +1,5 @@
 export enum ButtonType {
-  FAVOURITES = 'favourites',
+  FAVORITES = 'favorites',
   NUMBER = 'number',
   TEXT = 'text',
   COLOR = 'color',

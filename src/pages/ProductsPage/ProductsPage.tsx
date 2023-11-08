@@ -5,18 +5,20 @@ import { ProductsList } from '../../components/ProductsList';
 import { Loader } from '../../components/Loader';
 import { NoResults } from '../../components/NoResults';
 import { Dropdown } from '../../components/Dropdown';
-
 import { useAppSelector } from '../../utils/hooks/hooks';
 import { sortOptions } from '../../utils/helpers/sortOptions';
 import { perPageOptions } from '../../utils/helpers/perPageOtions';
 
 export const ProductsPage = () => {
-  const { products, isLoading, hasError } = useAppSelector(
+  const {
+    products,
+    isLoading,
+    hasError,
+  } = useAppSelector(
     (state) => state.products,
   );
   const { pathname } = useLocation();
   const productType = pathname.slice(1);
-
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || 'year';
   const title
@@ -26,7 +28,7 @@ export const ProductsPage = () => {
 
   const sortedProducts = useMemo(() => {
     return products
-      .filter((product) => product.category === productType)
+      .filter(product => product.category === productType)
       .sort((p1, p2) => {
         switch (sortBy) {
           case 'year':

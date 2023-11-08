@@ -1,8 +1,5 @@
 import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
+  useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
@@ -16,9 +13,9 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { addToCart } from '../../store/slices/cartSlice';
 import { fetchProductDetails } from '../../store/slices/productDetailsSlice';
 import {
-  addToFavourites,
-  deleteFromFavourites,
-} from '../../store/slices/favouritesSlice';
+  addToFavorites,
+  deleteFromFavorites,
+} from '../../store/slices/favoritesSlice';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/hooks';
 import { useColors } from '../../utils/helpers/colors';
 import { getCorrectParam } from '../../utils/helpers/getCorrectParam';
@@ -32,52 +29,55 @@ export const ProductDetailsPage = () => {
   const [imgIndex, setImgIndex] = useState(0);
   const { itemId = '' } = useParams();
   const navigate = useNavigate();
-  const {
-    productDetails,
-    isLoading,
-    hasError,
-  } = useAppSelector(state => state.productDetails);
-  const { favourites } = useAppSelector((state) => state.favourites);
+  const { productDetails, isLoading, hasError } = useAppSelector(
+    (state) => state.productDetails,
+  );
+  const { favorites } = useAppSelector((state) => state.favorites);
   const { cartItems } = useAppSelector((state) => state.cartItems);
-  const { products } = useAppSelector(state => state.products);
+  const { products } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   const colors = useColors();
 
-  const hasInFavourites = useMemo(() => {
-    return favourites.some((fav) => fav.itemId === itemId);
-  }, [favourites, itemId]);
+  const hasInFavorites = useMemo(() => {
+    return favorites.some((fav) => fav.itemId === itemId);
+  }, [favorites, itemId]);
 
   const hasInCart = useMemo(() => {
-    return cartItems.some(item => item.product.itemId === itemId);
+    return cartItems.some((item) => item.product.itemId === itemId);
   }, [cartItems, itemId]);
 
-  const handleGetParam = useCallback((newParam: string, type: ParamType) => {
-    navigate(`../${getCorrectParam(itemId, newParam, type)}`);
-  }, [itemId]);
+  const handleGetParam = useCallback(
+    (newParam: string, type: ParamType) => {
+      navigate(`../${getCorrectParam(itemId, newParam, type)}`);
+    },
+    [itemId],
+  );
 
   const handleAddToCart = useCallback(() => {
     if (hasInCart) {
       return;
     }
 
-    const foundProduct = products
-      .find(product => product.itemId === productDetails?.id);
+    const foundProduct = products.find(
+      (product) => product.itemId === productDetails?.id,
+    );
 
     if (foundProduct) {
       dispatch(addToCart(foundProduct));
     }
   }, [productDetails, products, hasInCart]);
 
-  const handleFavouritesChange = useCallback(() => {
-    const foundProduct = products
-      .find(product => product.itemId === productDetails?.id);
+  const handleFavoritesChange = useCallback(() => {
+    const foundProduct = products.find(
+      (product) => product.itemId === productDetails?.id,
+    );
 
-    if (hasInFavourites && foundProduct) {
-      dispatch(deleteFromFavourites(foundProduct.id));
+    if (hasInFavorites && foundProduct) {
+      dispatch(deleteFromFavorites(foundProduct.id));
     } else if (foundProduct) {
-      dispatch(addToFavourites(foundProduct));
+      dispatch(addToFavorites(foundProduct));
     }
-  }, [productDetails, products, hasInFavourites]);
+  }, [productDetails, products, hasInFavorites]);
 
   useEffect(() => {
     dispatch(fetchProductDetails(itemId));
@@ -97,7 +97,7 @@ export const ProductDetailsPage = () => {
 
       <h1 className="productDetails__title">
         {!isLoading && hasError
-          ? 'Can\'t load product details'
+          ? 'Phone was not found'
           : productDetails?.name}
       </h1>
 
@@ -111,7 +111,10 @@ export const ProductDetailsPage = () => {
                 grid__item--desktop-3-12
               "
             >
-              <img src={`/_new/${productDetails.images[imgIndex]}`} alt="main-img" />
+              <img
+                src={`/_new/${productDetails.images[imgIndex]}`}
+                alt="main-img"
+              />
             </div>
 
             <aside
@@ -127,15 +130,11 @@ export const ProductDetailsPage = () => {
                     <Button
                       content={ButtonType.IMAGE}
                       onClick={() => setImgIndex(index)}
-                      className={cn(
-                        'productDetails__thumbs-button',
-                        { active: imgIndex === index },
-                      )}
+                      className={cn('productDetails__thumbs-button', {
+                        active: imgIndex === index,
+                      })}
                     >
-                      <img
-                        src={`/_new/${imgSrc}`}
-                        alt="thumb"
-                      />
+                      <img src={`/_new/${imgSrc}`} alt="thumb" />
                     </Button>
                   </li>
                 ))}
@@ -158,9 +157,9 @@ export const ProductDetailsPage = () => {
                       <li key={color}>
                         <Button
                           content={ButtonType.COLOR}
-                          className={cn(
-                            { active: productDetails.color === color },
-                          )}
+                          className={cn({
+                            active: productDetails.color === color,
+                          })}
                           onClick={() => handleGetParam(color, ParamType.COLOR)}
                         >
                           <span
@@ -182,13 +181,13 @@ export const ProductDetailsPage = () => {
                       <li key={capacity}>
                         <Button
                           content={ButtonType.NUMBER}
-                          className={cn(
-                            'productDetails__actions-number',
-                            { active: productDetails.capacity === capacity },
+                          className={cn('productDetails__actions-number', {
+                            active: productDetails.capacity === capacity,
+                          })}
+                          onClick={() => handleGetParam(
+                            capacity,
+                            ParamType.CAPACITY,
                           )}
-                          onClick={
-                            () => handleGetParam(capacity, ParamType.CAPACITY)
-                          }
                         >
                           {capacity}
                         </Button>
@@ -214,15 +213,13 @@ export const ProductDetailsPage = () => {
                   className={cn({ active: hasInCart })}
                   onClick={handleAddToCart}
                 >
-                  {hasInCart
-                    ? 'Added to cart'
-                    : 'Add to cart'}
+                  {hasInCart ? 'Added to cart' : 'Add to cart'}
                 </Button>
 
                 <Button
-                  content={ButtonType.FAVOURITES}
-                  className={cn({ active: hasInFavourites })}
-                  onClick={handleFavouritesChange}
+                  content={ButtonType.FAVORITES}
+                  className={cn({ active: hasInFavorites })}
+                  onClick={handleFavoritesChange}
                 />
               </div>
 
@@ -271,13 +268,13 @@ export const ProductDetailsPage = () => {
             >
               <h2 className="productDetails__subtitle">About</h2>
 
-              {productDetails.description.map(description => (
+              {productDetails.description.map((description) => (
                 <div
                   className="productDetails__descrition"
                   key={description.title}
                 >
                   <h3>{description.title}</h3>
-                  {description.text.map(text => (
+                  {description.text.map((text) => (
                     <p key={text}>{text}</p>
                   ))}
                 </div>
@@ -302,9 +299,7 @@ export const ProductDetailsPage = () => {
                 </li>
 
                 <li className="productDetails__specs">
-                  <span
-                    className="productDetails__specs-title"
-                  >
+                  <span className="productDetails__specs-title">
                     Resolution
                   </span>
                   <span className="productDetails__specs-value">
@@ -327,9 +322,7 @@ export const ProductDetailsPage = () => {
                 </li>
 
                 <li className="productDetails__specs">
-                  <span
-                    className="productDetails__specs-title"
-                  >
+                  <span className="productDetails__specs-title">
                     Built in memory
                   </span>
                   <span className="productDetails__specs-value">

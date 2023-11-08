@@ -3,7 +3,7 @@ import App from '../App';
 import { HomePage } from '../pages/HomePage';
 import { ProductsPage } from '../pages/ProductsPage';
 import { ProductDetailsPage } from '../pages/ProductDetailsPage';
-import { FavouritesPage } from '../pages/FavouritesPage';
+import { FavoritesPage } from '../pages/FavoritesPage';
 import { CartPage } from '../pages/CartPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 
@@ -23,7 +23,7 @@ export const AppRouter = () => {
           </Route>
         ))}
 
-        <Route path="favourites" element={<FavouritesPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

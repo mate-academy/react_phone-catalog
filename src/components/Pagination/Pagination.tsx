@@ -25,13 +25,13 @@ export const Pagination: React.FC<Props> = ({
     { length: Math.ceil(totalItems / +perPage) },
     (_, i) => `${i + 1}`,
   );
-  const lastPageNumber = pages.length;
+  const lastPage = pages.length;
   const visiblePages = useMemo(
     () => pages.slice(
-      getStartPage(currentPage, lastPageNumber),
-      getEndPage(currentPage, lastPageNumber),
+      getStartPage(currentPage, lastPage),
+      getEndPage(currentPage, lastPage),
     ),
-    [currentPage, lastPageNumber],
+    [currentPage, lastPage],
   );
 
   const moveLeft = useCallback(() => {
@@ -68,19 +68,22 @@ export const Pagination: React.FC<Props> = ({
         />
       </li>
 
-      <li className="pagination__item">
-        <Button
-          content={ButtonType.NUMBER}
-          onClick={() => setPage('1')}
-          className={cn({ active: currentPage === 1 })}
-        >
-          1
-        </Button>
-      </li>
+      {lastPage !== 3 && (
+        <li className="pagination__item">
+          <Button
+            content={ButtonType.NUMBER}
+            onClick={() => setPage('1')}
+            className={cn({ active: currentPage === 1 })}
+          >
+            1
+          </Button>
+        </li>
+      )}
 
-      {currentPage > 2 && <p className="pagination__space">....</p>}
+      {currentPage > 2 && lastPage > 4 && (
+        <p className="pagination__space">....</p>)}
 
-      {visiblePages.map((page) => (
+      {lastPage > 1 && visiblePages.map((page) => (
         <li className="pagination__item" key={page}>
           <Button
             content={ButtonType.NUMBER}
@@ -92,19 +95,20 @@ export const Pagination: React.FC<Props> = ({
         </li>
       ))}
 
-      {currentPage < lastPageNumber - 2 && (
-        <>
-          <p className="pagination__space">....</p>
-          <li className="pagination__item">
-            <Button
-              content={ButtonType.NUMBER}
-              onClick={() => setPage(`${lastPageNumber}`)}
-              className={cn({ active: currentPage === lastPageNumber })}
-            >
-              {pages.length}
-            </Button>
-          </li>
-        </>
+      {currentPage < lastPage - 2 && lastPage > 4 && (
+        <p className="pagination__space">....</p>
+      )}
+
+      {currentPage < lastPage - 2 && (
+        <li className="pagination__item">
+          <Button
+            content={ButtonType.NUMBER}
+            onClick={() => setPage(`${lastPage}`)}
+            className={cn({ active: currentPage === lastPage })}
+          >
+            {lastPage}
+          </Button>
+        </li>
       )}
 
       <li className="pagination__item">
@@ -112,7 +116,7 @@ export const Pagination: React.FC<Props> = ({
           content={ButtonType.ARROW}
           data-cy="paginationRight"
           onClick={moveRight}
-          disabled={currentPage === lastPageNumber}
+          disabled={currentPage === lastPage}
         />
       </li>
     </ul>

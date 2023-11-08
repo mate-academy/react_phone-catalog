@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { ArrowRightIcon } from '../../assets/images/icons/ArrowRightIcon';
 import { PlusIcon } from '../../assets/images/icons/PlusIcon';
 import { MinusIcon } from '../../assets/images/icons/MinusIcon';
-import { FavouritesIcon } from '../../assets/images/icons/FavouritesIcon';
+import { FavoritesIcon } from '../../assets/images/icons/FavoritesIcon';
 import { SearchICon } from '../../assets/images/icons/SearchIcon';
 import { CloseIcon } from '../../assets/images/icons/CloseIcon';
 import { ButtonType } from '../../types/ButtonType';
@@ -25,7 +25,7 @@ export const Button: React.FC<Props> = ({
     arrow: <ArrowRightIcon />,
     plus: <PlusIcon />,
     minus: <MinusIcon />,
-    favourites: <FavouritesIcon />,
+    favorites: <FavoritesIcon />,
     search: <SearchICon />,
     close: <CloseIcon />,
   };

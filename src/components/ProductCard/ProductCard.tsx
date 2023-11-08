@@ -7,9 +7,9 @@ import { ButtonType } from '../../types/ButtonType';
 import { ProductsCardType } from '../../types/ProductsCardType';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks/hooks';
 import {
-  addToFavourites,
-  deleteFromFavourites,
-} from '../../store/slices/favouritesSlice';
+  addToFavorites,
+  deleteFromFavorites,
+} from '../../store/slices/favoritesSlice';
 import { addToCart } from '../../store/slices/cartSlice';
 import './ProductCard.scss';
 
@@ -32,25 +32,25 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
     itemId,
   } = product;
 
-  const { favourites } = useAppSelector((state) => state.favourites);
+  const { favorites } = useAppSelector((state) => state.favorites);
   const { cartItems } = useAppSelector((state) => state.cartItems);
   const dispatch = useAppDispatch();
 
-  const hasInFavourites = useMemo(() => {
-    return favourites.some((fav) => fav.id === product.id);
-  }, [favourites, product]);
+  const hasInFavorites = useMemo(() => {
+    return favorites.some((fav) => fav.id === product.id);
+  }, [favorites, product]);
 
   const hasInCart = useMemo(() => {
     return cartItems.some((item) => item.id === product.id);
   }, [cartItems, product]);
 
-  const handleFavouritesChange = useCallback(() => {
-    if (hasInFavourites) {
-      dispatch(deleteFromFavourites(product.id));
+  const handleFavoritesChange = useCallback(() => {
+    if (hasInFavorites) {
+      dispatch(deleteFromFavorites(product.id));
     } else {
-      dispatch(addToFavourites(product));
+      dispatch(addToFavorites(product));
     }
-  }, [hasInFavourites]);
+  }, [hasInFavorites]);
 
   const handleCartItemsChange = useCallback(
     (prod: Product) => {
@@ -117,10 +117,10 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
           </Button>
 
           <Button
-            content={ButtonType.FAVOURITES}
+            content={ButtonType.FAVORITES}
             data-cy="addToFavorite"
-            onClick={handleFavouritesChange}
-            className={cn({ active: hasInFavourites })}
+            onClick={handleFavoritesChange}
+            className={cn({ active: hasInFavorites })}
           />
         </div>
       </div>

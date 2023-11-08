@@ -1,13 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import productsReducer from './slices/productsSlice';
-import favouritesReducer from './slices/favouritesSlice';
+import favoritesReducer from './slices/favoritesSlice';
 import cartReducer from './slices/cartSlice';
 import productDetailsReducer from './slices/productDetailsSlice';
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
-    favourites: favouritesReducer,
+    favorites: favoritesReducer,
     cartItems: cartReducer,
     productDetails: productDetailsReducer,
   },

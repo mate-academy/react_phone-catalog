@@ -24,6 +24,7 @@
     width: 64px;
 
     box-shadow: -1px 0 0 $c-gray-elements;
+    transition: width $transition-duration, opacity $transition-duration;
 
     & > span {
       position: absolute;

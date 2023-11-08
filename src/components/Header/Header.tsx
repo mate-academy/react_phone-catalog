@@ -3,16 +3,21 @@ import { useLocation } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { NavLinkHeader } from '../NavLinkHeader';
 import { NavBar } from '../NavBar';
-import { FavouritesIcon } from '../../assets/images/icons/FavouritesIcon';
+import { FavoritesIcon } from '../../assets/images/icons/FavoritesIcon';
 import { CartIcon } from '../../assets/images/icons/CartIcon';
 import { useAppSelector } from '../../utils/hooks/hooks';
+import { Search } from '../Search';
 import './Header.scss';
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
-  const { favourites } = useAppSelector((state) => state.favourites);
+  const { favorites } = useAppSelector((state) => state.favorites);
   const { cartItems } = useAppSelector((state) => state.cartItems);
-  const showFavourites = !pathname.endsWith('cart');
+  const showFavorites = !pathname.endsWith('cart');
+  const showSearch = pathname.endsWith('phones')
+    || pathname.endsWith('tablets')
+    || pathname.endsWith('accessories')
+    || pathname.endsWith('favorites');
 
   return (
     <header className="header">
@@ -22,10 +27,12 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__top-actions">
-        {showFavourites && (
-          <NavLinkHeader type="icon" to="favourites">
-            <FavouritesIcon />
-            {favourites.length > 0 && <span>{favourites.length}</span>}
+        {showSearch && <Search />}
+
+        {showFavorites && (
+          <NavLinkHeader type="icon" to="favorites">
+            <FavoritesIcon />
+            {favorites.length > 0 && <span>{favorites.length}</span>}
           </NavLinkHeader>
         )}
 

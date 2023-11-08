@@ -7,12 +7,14 @@ export interface ProductsState {
   products: Product[];
   isLoading: boolean;
   hasError: boolean;
+  query: string;
 }
 
 const initialState: ProductsState = {
   products: [],
   isLoading: false,
   hasError: false,
+  query: '',
 };
 
 export const fetchProducts = createAsyncThunk('products/fetch', async () => {
@@ -27,6 +29,9 @@ const productsSlice = createSlice({
   reducers: {
     setProducts: (state: ProductsState, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
+    },
+    setQuery: (state: ProductsState, action: PayloadAction<string>) => {
+      state.query = action.payload;
     },
   },
 
@@ -48,5 +53,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, setQuery } = productsSlice.actions;
 export default productsSlice.reducer;

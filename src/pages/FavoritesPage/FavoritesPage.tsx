@@ -3,22 +3,22 @@ import { NoResults } from '../../components/NoResults';
 import { ProductsList } from '../../components/ProductsList';
 import { useAppSelector } from '../../utils/hooks/hooks';
 
-export const FavouritesPage = () => {
-  const { favourites } = useAppSelector((state) => state.favourites);
+export const FavoritesPage = () => {
+  const { favorites } = useAppSelector((state) => state.favorites);
 
   return (
     <div className="page container">
       <div className="page__breadcrumbs">
         <Breadcrumbs />
       </div>
-      {favourites.length > 0 ? (
+      {favorites.length > 0 ? (
         <>
-          <h1 className="page__title">Favourites</h1>
-          <p className="page__text">{`${favourites.length} items`}</p>
-          <ProductsList products={favourites} />
+          <h1 className="page__title">Favorites</h1>
+          <p className="page__text">{`${favorites.length} items`}</p>
+          <ProductsList products={favorites} />
         </>
       ) : (
-        <NoResults type="favourites" />
+        <NoResults type="favorites" />
       )}
     </div>
   );
