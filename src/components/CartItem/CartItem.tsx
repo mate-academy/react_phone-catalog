@@ -60,14 +60,19 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           </Link>
         </div>
 
-        <div className="cart-item__count" data-cy="productQauntity">
+        <div className="cart-item__count">
           <div className="cart-item__count-wrapper">
             <Button
               content={ButtonType.MINUS}
               disabled={quantity === 1}
               onClick={handleDecreaseCount}
             />
-            <p className="cart-item__count-number">{quantity}</p>
+            <p
+              className="cart-item__count-number"
+              data-cy="productQauntity"
+            >
+              {quantity}
+            </p>
             <Button content={ButtonType.PLUS} onClick={handleIncreaseCount} />
           </div>
 

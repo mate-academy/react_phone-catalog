@@ -18,6 +18,13 @@ export const CartPage = () => {
     );
   }, [cartItems]);
 
+  const totalQuantity = useMemo(() => {
+    return cartItems.reduce(
+      (sum, item) => sum + item.quantity,
+      0,
+    );
+  }, [cartItems]);
+
   const handleMessageShow = () => {
     setIsVisible(true);
 
@@ -51,7 +58,7 @@ export const CartPage = () => {
             <div className="cart-page__total grid__item--desktop-17-24">
               <h1>{`$${totalPrice}`}</h1>
 
-              <p>{`Total for ${cartItems.length} items`}</p>
+              <p>{`Total for ${totalQuantity} items`}</p>
 
               <Button
                 content={ButtonType.TEXT}

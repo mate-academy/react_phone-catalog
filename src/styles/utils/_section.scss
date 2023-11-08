@@ -2,8 +2,23 @@
   margin-bottom: 80px;
 
   &__title {
-    @extend %h1;
+    font-family: "Mont Bold", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 30.8px */
+    color: $c-gray-primary;
     margin-bottom: 24px;
+
+    @include onTablet {
+      font-family: "Mont Bold", sans-serif;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.32px;
+      color: $c-gray-primary;
+    }
   }
 
   &__text {

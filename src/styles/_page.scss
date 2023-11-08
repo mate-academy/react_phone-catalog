@@ -20,13 +20,9 @@
 
   &__options {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 24px;
-
-    @include onTablet {
-      flex-direction: row;
-    }
 
     &-title {
       color: $c-gray-icons-placeholders;
