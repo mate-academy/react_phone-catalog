@@ -16,7 +16,7 @@ export const AppRouter = () => {
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
-        {productPathes.map(path => (
+        {productPathes.map((path) => (
           <Route path={path} key={path}>
             <Route index element={<ProductsPage />} />
             <Route path=":itemId" element={<ProductDetailsPage />} />
