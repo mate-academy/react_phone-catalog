@@ -1,0 +1,8 @@
+@mixin pageGrid {
+  --column-count: 24;
+  --column-gap: 16px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column-count), 1fr);
+  grid-gap: 0 var(--column-gap);
+}
