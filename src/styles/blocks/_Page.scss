@@ -1,0 +1,15 @@
+.Page {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &-Body {
+    margin: 0;
+
+    font: normal 500 14px/1.5 "Mont", sans-serif;
+
+    color: $primary;
+  }
+}
