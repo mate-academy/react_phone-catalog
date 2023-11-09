@@ -1,1 +1,14 @@
-// not empty
+@import "./styles/utils";
+
+.App {
+  height: 100vh;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $white-color;
+
+  &__home-page {
+    margin-block: 40px 80px;
+  }
+}

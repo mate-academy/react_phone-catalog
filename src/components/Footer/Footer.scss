@@ -1,0 +1,30 @@
+@import "../../styles/utils";
+@import "../../styles/blocks/logo.scss";
+@import "../../styles/blocks/container.scss";
+@import "../../styles/blocks/nav.scss";
+@import "../../styles/blocks/icon.scss";
+@import "../../styles/blocks/button.scss";
+
+.footer {
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $elements-color;
+  display: flex;
+  align-items: center;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__button-text {
+    color: $secondary-color;
+    @extend %small-text;
+  }
+}

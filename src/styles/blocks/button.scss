@@ -1,0 +1,54 @@
+@import "../utils";
+
+.button {
+  cursor: pointer;
+
+  &__text {
+    @extend %buttons;
+  }
+
+  &--clear {
+    border: none;
+    background-color: $white-color;
+  }
+
+  &--direction {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &--card-add {
+    width: 176px;
+    background-color: $primery-color;
+    color: $white-color;
+
+    &:hover {
+      box-shadow: 0 3 13px 0 #17203142;
+    }
+  }
+
+  &--selected {
+    background-color: $elements-color;
+    color: $green-color;
+  }
+
+  &--favourites {
+    width: 40px;
+    height: 40px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &--hover {
+    &:hover {
+      border: 1px solid $primery-color;
+    }
+  }
+
+  &--slider {
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+}

@@ -1,0 +1,18 @@
+@import "../utils";
+
+.icon {
+  height: 16px;
+  width: 16px;
+
+  &--hover {
+    @include hover(transform, (scale(1.1)));
+  }
+
+  &--left {
+    transform: rotate(-90deg);
+  }
+
+  &--right {
+    transform: rotate(90deg);
+  }
+}

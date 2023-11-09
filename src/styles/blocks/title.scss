@@ -1,0 +1,7 @@
+@import "../utils";
+
+.title {
+  &--h2 {
+    @extend %h2-style;
+  }
+}

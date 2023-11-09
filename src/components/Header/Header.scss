@@ -1,0 +1,68 @@
+@import "../../styles/utils";
+@import "../../styles/blocks/logo.scss";
+@import "../../styles/blocks/nav.scss";
+@import "../../styles/blocks/icon.scss";
+@import "../../styles/blocks/button.scss";
+
+.header {
+  padding-left: 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  &__right-side {
+    display: flex;
+  }
+
+  &__icon-box {
+    display: flex;
+  }
+
+  &__img-contain {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1px 0 0 0 $elements-color;
+
+    &--is-active {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        background-color: $primery-color;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &__search {
+    padding: 24px;
+    width: 327px;
+    box-shadow: -1px 0 0 0 $elements-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-input {
+      border: none;
+      outline: none;
+      color: $primery-color;
+      font-family: $mont-regular;
+
+      &::placeholder {
+        color: $icons-color;
+        font-family: $mont-semibold;
+        size: 14px;
+      }
+    }
+  }
+}

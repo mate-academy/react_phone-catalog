@@ -1,0 +1,26 @@
+.slider-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__change-direction {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__cards-container {
+    overflow: hidden;
+  }
+
+}
