@@ -12,25 +12,4 @@
   &__go-back {
     margin-bottom: 16px;
   }
-
-  &__text {
-    color: $c-gray-secondary;
-    margin-bottom: 40px;
-  }
-
-  &__options {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
-
-    &-option {
-      max-width: 176px;
-      flex-grow: 1;
-    }
-
-    &-title {
-      color: $c-gray-icons-placeholders;
-      margin-bottom: 4px;
-    }
-  }
 }

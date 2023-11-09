@@ -14,7 +14,6 @@ export const FavoritesPage = () => {
       {favorites.length > 0 ? (
         <>
           <h1 className="page__title">Favorites</h1>
-          <p className="page__text">{`${favorites.length} items`}</p>
           <ProductsList products={favorites} />
         </>
       ) : (

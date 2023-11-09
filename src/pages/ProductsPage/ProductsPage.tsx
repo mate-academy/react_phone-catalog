@@ -4,10 +4,10 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductsList } from '../../components/ProductsList';
 import { Loader } from '../../components/Loader';
 import { NoResults } from '../../components/NoResults';
-import { Dropdown } from '../../components/Dropdown';
+// import { Dropdown } from '../../components/Dropdown';
 import { useAppSelector } from '../../utils/hooks/hooks';
-import { sortOptions } from '../../utils/helpers/sortOptions';
-import { perPageOptions } from '../../utils/helpers/perPageOtions';
+// import { sortOptions } from '../../utils/helpers/sortOptions';
+// import { perPageOptions } from '../../utils/helpers/perPageOtions';
 
 export const ProductsPage = () => {
   const {
@@ -49,30 +49,20 @@ export const ProductsPage = () => {
       <div className="page__breadcrumbs">
         <Breadcrumbs />
       </div>
+
       {isLoading && <Loader />}
+
       {!isLoading && hasError && (
         <h1 className="page__title">{`Can't load ${title}`}</h1>
       )}
+
       {!isLoading && !hasError && productsCount === 0 && (
         <NoResults type={title} />
       )}
+
       {!isLoading && !hasError && productsCount > 0 && (
         <>
           <h1 className="page__title">{title}</h1>
-          <p className="page__text">{`${productsCount} models`}</p>
-
-          <div className="page__options">
-            <div className="page__options-option">
-              <p className="page__options-title">Sort by</p>
-              <Dropdown params="sort" items={sortOptions} />
-            </div>
-
-            <div className="page__options-option">
-              <p className="page__options-title">Items on page</p>
-              <Dropdown params="perPage" items={perPageOptions} />
-            </div>
-          </div>
-
           <ProductsList products={sortedProducts} />
         </>
       )}
