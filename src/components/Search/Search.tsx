@@ -50,6 +50,10 @@ export const Search = () => {
   );
 
   useEffect(() => {
+    setButtonContent(ButtonType.SEARCH);
+  }, [pathname]);
+
+  useEffect(() => {
     aplyQuery(setQuery(query));
   }, [query]);
 
