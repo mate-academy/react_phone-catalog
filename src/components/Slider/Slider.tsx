@@ -11,9 +11,9 @@ type Image = {
 };
 
 const images: Image[] = [
-  { name: 'phones', path: './_new/img/banner-phones.png' },
-  { name: 'tablets', path: './_new/img/banner-tablets.png' },
-  { name: 'accessories', path: './_new/img/banner-accessories.png' },
+  { name: 'phones', path: 'new/img/banner-phones.png' },
+  { name: 'tablets', path: 'new/img/banner-phones.png' },
+  { name: 'accessories', path: 'new/img/banner-phones.png' },
 ];
 
 export const Slider: React.FC = () => {

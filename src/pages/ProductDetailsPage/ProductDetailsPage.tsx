@@ -112,7 +112,7 @@ export const ProductDetailsPage = () => {
               "
             >
               <img
-                src={`/_new/${productDetails.images[imgIndex]}`}
+                src={`new/${productDetails.images[imgIndex]}`}
                 alt="main-img"
               />
             </div>
@@ -134,7 +134,7 @@ export const ProductDetailsPage = () => {
                         active: imgIndex === index,
                       })}
                     >
-                      <img src={`/_new/${imgSrc}`} alt="thumb" />
+                      <img src={`new/${imgSrc}`} alt="thumb" />
                     </Button>
                   </li>
                 ))}
