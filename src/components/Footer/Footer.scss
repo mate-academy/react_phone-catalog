@@ -45,6 +45,16 @@
     &-text {
       @extend %smallText;
       color: $c-gray-secondary;
+
+      transition: color $transition-duration;
+    }
+
+    & button {
+      order: 1;
+
+      &:hover ~ .footer__anchor-text {
+        color: $c-gray-primary;
+      }
     }
   }
 }

@@ -62,12 +62,12 @@ export const ProductsPage = () => {
           <p className="page__text">{`${productsCount} models`}</p>
 
           <div className="page__options">
-            <div>
+            <div className="page__options-option">
               <p className="page__options-title">Sort by</p>
               <Dropdown params="sort" items={sortOptions} />
             </div>
 
-            <div>
+            <div className="page__options-option">
               <p className="page__options-title">Items on page</p>
               <Dropdown params="perPage" items={perPageOptions} />
             </div>

@@ -10,6 +10,7 @@
     margin-bottom: 40px;
 
     @media (min-width: 590px) {
+      justify-content: start;
       grid-template-columns: repeat(2, $card-width);
     }
 

@@ -45,13 +45,13 @@ export const Footer = () => {
         </ul>
 
         <div className="footer__anchor">
-          <span className="footer__anchor-text">Back to top</span>
-
           <Button
             content={ButtonType.ARROW}
             direction="up"
             onClick={() => window.scrollTo(0, 0)}
           />
+
+          <span className="footer__anchor-text">Back to top</span>
         </div>
       </div>
     </footer>

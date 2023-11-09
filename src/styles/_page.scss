@@ -20,9 +20,13 @@
 
   &__options {
     display: flex;
-    flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 24px;
+
+    &-option {
+      max-width: 176px;
+      flex-grow: 1;
+    }
 
     &-title {
       color: $c-gray-icons-placeholders;

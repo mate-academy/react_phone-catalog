@@ -1,16 +1,16 @@
 @import "../../styles/utils";
 
 .dropdown {
-  width: 176px;
+  width: 100%;
 
   &__arrow {
+    height: 16px;
+    width: 16px;
+
     position: absolute;
     top: 50%;
     right: 12px;
     transform: translateY(-50%) rotate(90deg);
-
-    height: 16px;
-    width: 16px;
 
     & path {
       fill: $c-gray-icons-placeholders;
