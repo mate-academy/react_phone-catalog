@@ -1,0 +1,26 @@
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+
+  @include onTablet {
+    padding: 0 30px;
+  }
+
+  @include onDesktop {
+    padding: 0;
+    max-width: 1136px;
+  }
+
+  &--slider {
+    padding: 0;
+
+    @include onTablet {
+      padding: 0 8px;
+    }
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+}

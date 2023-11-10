@@ -3,8 +3,6 @@
 @import "../../styles/utils/mixins";
 
 .ShopByCategory {
-  width: 100%;
-
   &__content {
     display: flex;
     flex-direction: column;
@@ -49,8 +47,8 @@
     }
 
     &-image {
-      height: 368px;
-      width: 368px;
+      height: 300px;
+      width: 300px;
 
       @include onTablet {
         width: 100%;

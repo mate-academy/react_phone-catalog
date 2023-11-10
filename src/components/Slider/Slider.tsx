@@ -66,7 +66,10 @@ export const Slider: React.FC<Props> = ({ itemWidth = 1040 }) => {
                 }}
                 className="Slider__list-item"
               >
-                <Link to={`/${image.alt}`} className="Slider__link">
+                <Link
+                  to={`/${image.alt}`}
+                  className="Slider__link"
+                >
                   <img
                     src={image.url}
                     alt={image.alt}

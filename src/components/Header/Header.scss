@@ -36,10 +36,6 @@
   }
 
   &__menu-button {
-    @include onDesktop {
-      display: none;
-    }
-
     height: 64px;
     width: 64px;
     display: flex;
@@ -54,6 +50,10 @@
       height: 20px;
       width: 20px;
       opacity: 0.8;
+    }
+
+    @include onDesktop {
+      display: none;
     }
   }
 }

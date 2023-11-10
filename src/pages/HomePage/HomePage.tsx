@@ -22,12 +22,12 @@ export const HomePage: React.FC = () => {
           </div>
         ) : (
           <>
-            <div className="container">
+            <div className="container container--slider">
               <div className="HomePage__slider">
-                <Slider itemWidth={360} />
+                <Slider itemWidth={300} />
               </div>
               <div className="HomePage__slider--tablet">
-                <Slider itemWidth={640} />
+                <Slider itemWidth={550} />
               </div>
               <div className="HomePage__slider--desktop">
                 <Slider itemWidth={1040} />

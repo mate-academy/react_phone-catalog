@@ -19,7 +19,7 @@
     overflow: hidden;
 
     @include onTablet {
-      height: 248px;
+      height: 280px;
     }
 
     @include onDesktop {
@@ -48,6 +48,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+  }
+
+  &__image {
+    height: 100%;
   }
 
   &__dots {
