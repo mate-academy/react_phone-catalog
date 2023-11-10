@@ -6,10 +6,10 @@ import './Breadcrumbs.scss';
 
 type Props = {
   page: string,
-  productName?: string,
+  productName?: string | null,
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ page, productName = '' }) => {
+export const Breadcrumbs: React.FC<Props> = ({ page, productName = null }) => {
   return (
     <div
       className="Breadcrumbs"
@@ -23,18 +23,18 @@ export const Breadcrumbs: React.FC<Props> = ({ page, productName = '' }) => {
         />
       </Link>
 
+      <div className="Breadcrumbs__arrow" />
+      <Link
+        to={`/${page}`}
+        className={classNames('Breadcrumbs__page-title', {
+          'Breadcrumbs__page-title--dark': productName,
+        })}
+      >
+        {page}
+      </Link>
+
       {productName && (
         <>
-          <div className="Breadcrumbs__arrow" />
-          <Link
-            to={`/${page}`}
-            className={classNames('Breadcrumbs__page-title', {
-              'Breadcrumbs__page-title--dark': productName,
-            })}
-          >
-            {page}
-          </Link>
-
           <div className="Breadcrumbs__arrow" />
 
           <p className="Breadcrumbs__product-title">
