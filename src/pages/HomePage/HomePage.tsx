@@ -14,9 +14,6 @@ export const HomePage = () => {
     setProducts(productsFromServer as Product[]);
   }, []);
 
-  // useEffect(() => {
-  // }, [products]);
-
   const getDiscountAmount = (product: Product) => {
     const { price, discount } = product;
 
@@ -49,7 +46,7 @@ export const HomePage = () => {
       >
         <h1 className="HomePage__title">Shop by category</h1>
 
-        <CategoriesList />
+        <CategoriesList products={products} />
 
       </section>
 

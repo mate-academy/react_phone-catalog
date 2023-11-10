@@ -21,13 +21,13 @@
   &__button {
     grid-column: span 1;
 
-    border: solid 1px #b4bdc3;
-    background-color: #fff;
+    border: solid 1px $icons-color;
+    background-color: $white-color;
 
     cursor: pointer;
 
     &:hover {
-      border-color: #313237;
+      border-color: $primary-color;
     }
   }
 
@@ -57,10 +57,10 @@
     height: 4px;
     width: 14px;
 
-    background-color: #e2e6e9;
+    background-color: $elements-color;
 
     &--active {
-      background-color: #313237;
+      background-color: $primary-color;
     }
   }
 }

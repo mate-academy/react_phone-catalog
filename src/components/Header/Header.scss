@@ -6,7 +6,7 @@
 
   display: flex;
   justify-content: space-between;
-  border-bottom: solid 1px #e2e6e9;
+  box-shadow: 0 1px 0 0 $elements-color;
 
   &__left {
     display: flex;
@@ -23,7 +23,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    border: solid 1px #e2e6e9;
+    box-shadow: -1px 0 0 0 $elements-color;
     position: relative;
 
     &:hover {

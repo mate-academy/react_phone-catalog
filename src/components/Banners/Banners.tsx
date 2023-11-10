@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
 
 import './Banners.scss';
-import classNames from 'classnames';
 
 const images = [
   '_new/img/banner-phones.png',
@@ -9,12 +9,14 @@ const images = [
   '_new/img/banner-accessories1.png',
 ];
 
+const lastImageIndex = images.length - 1;
+const scrollAmount = 1040;
+
 export const Banners = () => {
   const [bannerNumber, setBannerNumber] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
   const container = sliderRef.current;
 
-  const scrollAmount = 1040;
   // let intervalId = 0;
 
   useEffect(() => {
@@ -36,8 +38,8 @@ export const Banners = () => {
 
     if (container) {
       if (container.scrollLeft < scrollAmount) {
-        container.scrollLeft += scrollAmount * 2;
-        setBannerNumber(2);
+        container.scrollLeft += scrollAmount * lastImageIndex;
+        setBannerNumber(lastImageIndex);
       } else {
         container.scrollLeft -= scrollAmount;
         setBannerNumber(bannerNumber - 1);
@@ -47,8 +49,8 @@ export const Banners = () => {
 
   const carousel = () => {
     if (container) {
-      if (container.scrollLeft >= scrollAmount * 2) {
-        container.scrollLeft -= scrollAmount * 2;
+      if (container.scrollLeft >= scrollAmount * lastImageIndex) {
+        container.scrollLeft -= scrollAmount * lastImageIndex;
         setBannerNumber(0);
       } else {
         container.scrollLeft += scrollAmount;

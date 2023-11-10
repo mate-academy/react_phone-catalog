@@ -1,6 +1,6 @@
 @import "../../helpers/styles/mixins";
 
-.Category {
+.CategoryItem {
   grid-column: span 8;
   text-decoration: none;
 
@@ -9,10 +9,8 @@
   }
 
   &__products-count {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: #89939a;
+    @include bodyText;
+    color: $secondary-color;
 
     text-decoration: none;
   }

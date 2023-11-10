@@ -1,3 +1,5 @@
+@import "./variables";
+
 @mixin squareSize($size) {
   width: $size;
   height: $size;
@@ -21,7 +23,7 @@
   font-size: 32px;
   font-weight: 700;
   line-height: 41px;
-  color: #313237;
+  color: $primary-color;
 }
 
 @mixin sectionTitle_H1 {
@@ -45,20 +47,47 @@
   line-height: 26px;
 }
 
-@mixin navigationLink {
+@mixin bodyText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary-color;
+}
+
+@mixin buttonsText {
+  @include bodyText;
+
+  font-weight: 600;
+}
+
+@mixin smallText {
+  @include bodyText;
+
+  font-weight: 600;
   font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin upperCaseText {
+  @include bodyText;
+
   font-weight: 700;
+  font-size: 12px;
   line-height: 11px;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin navigationLink {
+  @include upperCaseText;
   position: relative;
 
-  color: #89939a;
+  color: $secondary-color;
   text-decoration: none;
 }
 
 @mixin navigationUnderline {
-  color: #313237;
+  color: $primary-color;
 
   &::after {
     content: "";
@@ -67,6 +96,6 @@
     display: block;
     height: 3px;
     width: 100%;
-    background-color: #313237;
+    background-color: $primary-color;
   }
 }

@@ -22,20 +22,20 @@
   &__button {
     @include squareSize(32px);
 
-    border: solid 1px #b4bdc3;
-    background-color: #fff;
+    border: solid 1px $icons-color;
+    background-color: $white-color;
     cursor: pointer;
 
     &:hover {
-      border-color: #313237;
+      border-color: $primary-color;
     }
 
     &--disabled {
-      border: 1px solid #e2e6e9;
+      border: 1px solid $elements-color;
       cursor: auto;
 
       &:hover {
-        border-color: #e2e6e9;
+        border-color: $elements-color;
       }
     }
   }

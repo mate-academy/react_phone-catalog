@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Category.scss';
+import './CategoryItem.scss';
 
 type Props = {
   name: string,
@@ -8,24 +8,24 @@ type Props = {
   amount: number,
 };
 
-export const Category: React.FC<Props> = ({ name, title, amount }) => {
+export const CategoryItem: React.FC<Props> = ({ name, title, amount }) => {
   return (
     <Link
       to={`/${name}`}
-      className="Category"
+      className="CategoryItem"
     >
       <img
-        className="Category__image"
+        className="CategoryItem__image"
         src={`/img/categories/category-${name}.png`}
         alt={`Category ${name}`}
       />
-      <div className="Category__info">
+      <div className="CategoryItem__info">
         <h3
-          className="Category__title"
+          className="CategoryItem__title"
         >
           {title}
         </h3>
-        <p className="Category__products-count">
+        <p className="CategoryItem__products-count">
           {`${amount} models`}
         </p>
       </div>

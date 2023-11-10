@@ -9,13 +9,14 @@ type Props = {
   products: Product[],
 };
 
+const scrollAmount = 1148;
+
 export const ProductsSlider: React.FC<Props> = ({ products }) => {
   const [isFirstImage, setIsFirstImage] = useState(true);
   const [isLastImage, setIsLastImage] = useState(false);
 
   const sliderRef = useRef<HTMLDivElement>(null);
   const container = sliderRef.current;
-  const scrollAmount = 1148;
 
   useEffect(() => {
     if (container) {

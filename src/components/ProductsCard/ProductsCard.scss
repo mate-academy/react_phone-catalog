@@ -2,8 +2,7 @@
 
 .ProductsCard {
   padding: 24px;
-  border: 1px solid #e2e6e9;
-  flex-basis: max-content;
+  border: 1px solid $elements-color;
 
   &__image {
     width: 206px;
@@ -12,12 +11,10 @@
   }
 
   &__name {
-    font-size: 14px;
-    font-weight: 500;
+    @include bodyText;
+
     height: 42px;
     margin-bottom: 7px;
-
-    color: #313237;
   }
 
   &__prices {
@@ -26,14 +23,12 @@
   }
 
   &__price {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 31px;
+    @include sectionTitle_H2;
 
     &--discount {
       font-weight: 500;
       text-decoration: line-through;
-      color: #89939a;
+      color: $secondary-color;
     }
   }
 
@@ -44,7 +39,7 @@
 
     padding-block: 16px;
 
-    border-top: 1px solid #e2e6e9;
+    border-top: 1px solid $elements-color;
   }
 
   &__field {
@@ -55,11 +50,11 @@
     line-height: 15px;
 
     &-key {
-      color: #89939a;
+      color: $secondary-color;
     }
 
     &-value {
-      color: #313237;
+      color: $primary-color;
     }
   }
 
@@ -73,14 +68,14 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
-      color: #fff;
+      color: $white-color;
 
-      background-color: #313237;
+      background-color: $primary-color;
       border: none;
       cursor: pointer;
 
       &:hover {
-        box-shadow: 0 3px 13px 0 #17203142;
+        box-shadow: 0 3px 13px 0 $add-cart-hover-color;
       }
     }
 
@@ -88,11 +83,11 @@
       @include squareSize(40px);
 
       background-color: inherit;
-      border: 1px solid #b4bdc3;
+      border: 1px solid $icons-color;
       cursor: pointer;
 
       &:hover {
-        border-color: #313237;
+        border-color: $primary-color;
       }
     }
   }

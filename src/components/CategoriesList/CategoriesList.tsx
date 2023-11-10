@@ -1,13 +1,36 @@
-import { Category } from '../Category';
+import { Product } from '../../helpers/types/Product';
+import { CategoryItem } from '../CategoryItem';
 import './CategoriesList.scss';
 
-export const CategoriesList = () => (
-  <div
-    className="CategoriesList"
-    data-cy="categoryLinksContainer"
-  >
-    <Category name="phones" title="Mobile phones" amount={95} />
-    <Category name="tablets" title="Tablets" amount={24} />
-    <Category name="accessories" title="Accessories" amount={100} />
-  </div>
-);
+type Props = {
+  products: Product[],
+};
+
+export const CategoriesList: React.FC<Props> = ({ products }) => {
+  const getProductsAmount = (name: string) => {
+    return products.filter((product) => product.type === name).length;
+  };
+
+  return (
+    <div
+      className="CategoriesList"
+      data-cy="categoryLinksContainer"
+    >
+      <CategoryItem
+        name="phones"
+        title="Mobile phones"
+        amount={getProductsAmount('phone')}
+      />
+      <CategoryItem
+        name="tablets"
+        title="Tablets"
+        amount={getProductsAmount('tablet')}
+      />
+      <CategoryItem
+        name="accessories"
+        title="Accessories"
+        amount={getProductsAmount('accessory')}
+      />
+    </div>
+  );
+};
