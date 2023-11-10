@@ -28,6 +28,24 @@
     }
   }
 
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+
+    &-svg-container {
+      @include madeIcon(50px);
+
+      & svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   &__btn-delete {
     @include square(40px);
     display: flex;
@@ -149,23 +167,5 @@
 
   &__checkout-button {
     @include primaryButton;
-  }
-
-  &__empty {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-grow: 1;
-
-    &-svg-container {
-      @include madeIcon(50px);
-
-      & svg {
-        width: 100%;
-        height: 100%;
-      }
-    }
   }
 }
