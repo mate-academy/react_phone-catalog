@@ -7,20 +7,40 @@
   height: 100%;
 
   &__section:not(:last-child) {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 
-    &--small {
+    @include onTablet {
+      margin-bottom: 60px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__section--small:not(:last-child) {
+    margin-bottom: 20px;
+
+    @include onTablet {
+      margin-bottom: 30px;
+    }
+
+    @include onDesktop {
       margin-bottom: 40px;
     }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 16px;
     column-gap: 16px;
     grid-row-gap: 32px;
     row-gap: 32px;
+
+    @include onDesktop {
+      grid-template-columns: repeat(24, 1fr);
+    }
   }
 
   &__small-photos-grid {
@@ -84,7 +104,13 @@
   }
 
   &__phone-info {
-    grid-column: 14 / 21;
+    grid-column: 1 / -1;
+    max-width: 320px;
+    width: 100%;
+
+    @include onDesktop {
+      grid-column: 14 / 21;
+    }
   }
 
   &__info-container {
@@ -183,7 +209,11 @@
   }
 
   &__tech {
-    grid-column: 14 / -1;
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 14 / -1;
+    }
   }
 
   &__second-title {
@@ -217,6 +247,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 550px;
+    width: 100%;
 
     &-title {
       @extend %body-text;

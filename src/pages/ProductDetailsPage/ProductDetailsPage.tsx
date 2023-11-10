@@ -66,7 +66,7 @@ export const ProductDetailsPage = () => {
         ) : (
           <>
             <section
-              className="details-page__section product-detail__section--small"
+              className="details-page__section details-page__section--small"
             >
               <h1
                 className="details-page__main-title"

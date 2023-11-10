@@ -1,0 +1,29 @@
+@import "../../styles/style_utils";
+
+.notification {
+  @extend %h2;
+  position: fixed;
+  bottom: 20px;
+  right: 0;
+  max-width: 300px;
+  padding: 2rem 2rem;
+  border: 1px solid $elements;
+  background-color: white;
+  border-radius: 0.25rem;
+  z-index: 2;
+
+  &-enter {
+    transform: translateX(100%);
+  }
+  &-enter-active {
+    transform: translateX(0);
+    transition: transform 1000ms;
+  }
+  &-exit {
+    transform: translateX(0);
+  }
+  &-exit-active {
+    transform: translateX(100%);
+    transition: transform 1000ms;
+  }
+}

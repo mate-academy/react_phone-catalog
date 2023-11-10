@@ -4,14 +4,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   height: 100%;
 
   &__left-side {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 64px;
+    gap: 20px;
     height: 100%;
+
+    @include onDesktop {
+      gap: 64px;
+    }
   }
 
   &__item {
@@ -58,6 +63,9 @@
 
   &__right-side {
     display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
   }
 
   &__icon-box {
@@ -65,7 +73,7 @@
     justify-content: center;
     align-items: center;
     width: 64px;
-    height: 64px;
+    height: 100%;
     background-color: $white;
     box-shadow: -1px 0 0 $elements;
     transition: $transition;
@@ -83,6 +91,7 @@
 
     & > svg {
       display: block;
+      fill: $primary;
       width: 100%;
       height: 100%;
     }

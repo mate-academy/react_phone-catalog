@@ -5,7 +5,7 @@ import { Nav } from '../Nav';
 export const Header: React.FC = () => {
   return (
     <header
-      className="page_header header"
+      className="header"
     >
       <Nav />
     </header>

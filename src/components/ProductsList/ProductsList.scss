@@ -1,5 +1,9 @@
+@import "../../styles/style_utils";
+
 .products-list {
-  display: grid;
-  gap: 40px 16px;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  row-gap: 40px;
+  column-gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
 }

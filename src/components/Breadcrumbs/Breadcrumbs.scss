@@ -7,11 +7,10 @@
   margin-bottom: 40px;
 
   &__icon {
-    user-select: none;
-
     display: block;
     width: 16px;
     height: 16px;
+    user-select: none;
 
     & svg {
       object-position: center;

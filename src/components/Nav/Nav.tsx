@@ -1,12 +1,16 @@
 import './Nav.scss';
+import { CSSTransition } from 'react-transition-group';
+
 import { NavLink, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
 import { FavContext } from '../../storage/FavContext';
 import { CartContext } from '../../storage/CartContext';
+import { Menu } from '../Menu';
+import { PageSizeContext } from '../../storage/PageSizeContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'navbar__item', 'navbar__item-after',
@@ -23,7 +27,10 @@ const isVisible = ['/phones', '/tablets', '/accessories', '/favourites'];
 export const Nav = () => {
   const { favProducts } = useContext(FavContext);
   const { cartItems } = useContext(CartContext);
+  const { isDesktopSize } = useContext(PageSizeContext);
   const { pathname } = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <nav
@@ -32,10 +39,32 @@ export const Nav = () => {
       role="navigation"
       aria-label="main navigation"
     >
+      <CSSTransition
+        in={isMenuOpen}
+        timeout={1000}
+        classNames="menu"
+        mountOnEnter
+        unmountOnExit
+      >
+        <Menu
+          closeMenu={closeMenu}
+        />
+      </CSSTransition>
+
       <ul className="navbar__left-side">
+        {!isDesktopSize && (
+          <div className="navbar__icon-container">
+            <ReactSVG
+              className="navbar__icon--menu"
+              src="img/icons/Hamburger.svg"
+              onClick={() => setIsMenuOpen(true)}
+            />
+          </div>
+        )}
+
         <Logo />
 
-        {pathname !== '/cart' && (
+        {(isDesktopSize && pathname !== '/cart') && (
           <>
             <NavLink
               to="/"
@@ -83,7 +112,7 @@ export const Nav = () => {
             <div className="navbar__icon-box">
               <div className="navbar__icon-container">
                 <ReactSVG
-                  src="img/icons/Favourites (Heart Like).svg"
+                  src="img/icons/Heart.svg"
                 />
 
                 {favProducts.length > 0 && (
@@ -103,7 +132,7 @@ export const Nav = () => {
           <div className="navbar__icon-box">
             <div className="navbar__icon-container">
               <ReactSVG
-                src="img/icons/Shopping bag (Cart).svg"
+                src="img/icons/Shopping bag.svg"
               />
 
               {cartItems.length > 0 && (
@@ -115,6 +144,9 @@ export const Nav = () => {
           </div>
         </NavLink>
       </ul>
+      {/* {isMobileSize && (
+
+      )} */}
     </nav>
   );
 };

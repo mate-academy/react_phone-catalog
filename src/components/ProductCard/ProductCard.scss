@@ -1,9 +1,10 @@
 @import "../../styles/style_utils";
 
 .product-card {
-  transform: scale(1);
   border: 1px solid $elements;
   height: 507px;
+  max-width: 272px;
+  width: 100%;
   padding: 24px 32px 24px 24px;
   box-shadow: none;
   transition: $transition;
@@ -89,6 +90,7 @@
 
   &__buttons {
     display: flex;
+    justify-content: space-between;
     gap: 8px;
   }
 }

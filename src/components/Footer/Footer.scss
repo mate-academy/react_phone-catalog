@@ -1,22 +1,30 @@
 @import "../../styles/style_utils";
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-
-  height: 96px;
+  align-items: start;
+  justify-self: end;
+  gap: 16px;
+  padding: 24px 16px;
   border-top: 1px solid $elements;
-  padding: 0 152px;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: center;
+    height: 96px;
+  }
 
   &__links {
     display: flex;
-    gap: 64px;
+    flex-direction: column;
+    gap: 10px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
+    }
   }
 
   &__link {

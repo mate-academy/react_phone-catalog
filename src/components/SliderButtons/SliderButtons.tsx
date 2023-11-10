@@ -3,13 +3,17 @@ import classNames from 'classnames';
 import './SliderButtons.scss';
 
 type Props = {
-  changePage: (page: number) => void;
-  current: number;
+  prevPage: () => void;
+  nextPage: () => void;
+  isLeftDisabled: boolean;
+  isRightDisabled: boolean;
 };
 
 /* eslint-disable */
 
-export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
+export const SliderButtons: React.FC<Props> = ({
+  isLeftDisabled, isRightDisabled, prevPage, nextPage,
+}) => {
   return (
     <div className="slider__buttons">
       <button
@@ -17,8 +21,8 @@ export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
         className={classNames(
           "slider__button",
         )}
-        onClick={() => changePage(current - 1)}
-        disabled={current === 0}
+        onClick={prevPage}
+        disabled={isLeftDisabled}
       >
         <ReactSVG
           src="img/icons/Chevron (Arrow Left).svg"
@@ -30,8 +34,8 @@ export const SliderButtons: React.FC<Props> = ({ changePage, current }) => {
         className={classNames(
           "slider__button",
         )}
-        disabled={current === 4}
-        onClick={() => changePage(current + 1)}
+        disabled={isRightDisabled}
+        onClick={nextPage}
       >
         <ReactSVG
           src="img/icons/Chevron (Arrow Right).svg"

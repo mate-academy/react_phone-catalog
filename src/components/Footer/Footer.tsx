@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { ReactSVG } from 'react-svg';
 import { Logo } from '../Logo';
 import './Footer.scss';
 import { handleScrollToTop } from './utils';
+import { ModalContext } from '../../storage/ModalContext';
 
 export const Footer: React.FC = () => {
+  const { setIsModalShow } = useContext(ModalContext);
+
   return (
     <footer className="footer">
       <Logo />
@@ -24,8 +28,10 @@ export const Footer: React.FC = () => {
           <a
             href="/"
             className="footer__link"
-            target="_blank"
-            rel="noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsModalShow(true);
+            }}
           >
             Contacts
           </a>
@@ -35,8 +41,9 @@ export const Footer: React.FC = () => {
           <a
             href="/"
             className="footer__link"
-            target="_blank"
-            rel="noreferrer"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
           >
             Rights
           </a>

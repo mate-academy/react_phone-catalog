@@ -6,7 +6,7 @@ type Props = {
   products: Product[];
 };
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const SliderList: React.FC<Props> = ({ products }) => {
   return (
     <ul
       className="product-slider__list"

@@ -12,10 +12,6 @@
 
   &__button {
     @extend %buttons;
-
-    box-sizing: border-box;
-    color: $primary;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,8 +19,10 @@
     width: 100%;
     height: 100%;
     padding: 10px 12px;
-    border: 1px solid $icons;
 
+    box-sizing: border-box;
+    color: $primary;
+    border: 1px solid $icons;
     text-align: left;
 
     &--active {

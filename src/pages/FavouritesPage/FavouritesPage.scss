@@ -1,7 +1,14 @@
 @import "../../styles/style_utils";
 
 .favourites {
+  width: 100%;
+
   &__title {
     margin-bottom: 8px;
+  }
+
+  &__text {
+    color: $secondary;
+    margin-bottom: 40px;
   }
 }

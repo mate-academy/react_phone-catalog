@@ -4,11 +4,15 @@ import { ReactSVG } from 'react-svg';
 import { useContext } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { CartContext } from '../../storage/CartContext';
+import {
+  NotificationContext, NotificationStatus,
+} from '../../storage/NotificationContext';
 
 export const CartPage: React.FC = () => {
   const {
-    cartItems, removeFromCart, changeQuantity,
+    cartItems, changeQuantity, handleCart,
   } = useContext(CartContext);
+  const { setNotification } = useContext(NotificationContext);
 
   const totalPrice = cartItems.reduce((acc, { quantity, product }) => {
     return acc + product.price * quantity;
@@ -17,6 +21,13 @@ export const CartPage: React.FC = () => {
   const totalQuantity = cartItems.reduce((acc, { quantity }) => {
     return acc + quantity;
   }, 0);
+
+  const handleCheckout = () => {
+    setNotification({
+      message: 'We are sorry, but this feature is not implemented yet',
+      color: NotificationStatus.Warning,
+    });
+  };
 
   return (
     <div className="cart-page">
@@ -49,7 +60,7 @@ export const CartPage: React.FC = () => {
                       type="button"
                       className="cart-page__btn-delete"
                       data-cy="cartDeleteButton"
-                      onClick={() => removeFromCart(name)}
+                      onClick={() => handleCart(product)}
                       aria-label="delete"
                     >
                       <ReactSVG
@@ -127,6 +138,7 @@ export const CartPage: React.FC = () => {
               <button
                 className="cart-page__checkout-button"
                 type="button"
+                onClick={handleCheckout}
               >
                 Checkout
               </button>

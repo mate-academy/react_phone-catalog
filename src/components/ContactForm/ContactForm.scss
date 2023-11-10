@@ -1,0 +1,60 @@
+@import "../../styles/style_utils";
+
+.contact-form {
+  @extend %body-text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 10px;
+
+  &__title {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 260px;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid $icons;
+    color: $primary;
+    outline: none;
+    text-align: left;
+
+    &:focus {
+      outline: none;
+      border-color: $secondary;
+    }
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+
+  &__label {
+    display:inline-block;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+  }
+
+  &__error {
+    font-size: .75rem;
+    margin-top: 0.25rem;
+    color: #f14668;
+  }
+
+  &__button {
+    @include primaryButton;
+  }
+}

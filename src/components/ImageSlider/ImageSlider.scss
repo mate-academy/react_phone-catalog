@@ -1,17 +1,30 @@
 @import "../../styles/style_utils";
 
 .banner {
+  --mobile-hight: 200px;
+  --tablet-hight: 300px;
+  --desktop-hight: 400px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   &__slider {
     display: flex;
     gap: 16px;
     margin-bottom: 8px;
     width: 100%;
-    height: 400px;
+    height: var(--mobile-hight);
+
+    @include onTablet {
+      height: var(--tablet-hight);
+    }
+
+    @include onDesktop {
+      height: var(--desktop-hight);
+    }
 
     &-box {
       width: 100%;
@@ -19,10 +32,18 @@
 
     &-img {
       width: 100%;
-      height: 400px;
+      height: var(--mobile-hight);
 
       object-fit: cover;
       object-position: center center;
+
+      @include onTablet {
+        height: var(--tablet-hight);
+      }
+
+      @include onDesktop {
+        height: var(--desktop-hight);
+      }
     }
 
     &-arrow {
@@ -58,11 +79,11 @@
   }
 
   &__button {
-    width: 32px;
-    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 32px;
+    height: auto;
     border: 1px solid $icons;
     transition: $transition;
 

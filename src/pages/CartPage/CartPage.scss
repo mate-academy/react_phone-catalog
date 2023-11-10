@@ -7,17 +7,25 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 16px;
     column-gap: 16px;
     grid-row-gap: 32px;
     row-gap: 32px;
+
+    @include onDesktop {
+      grid-template-columns: repeat(24, 1fr);
+    }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    grid-column: 1/17;
+    grid-column: 1/-1;
+
+    @include onDesktop {
+      grid-column: 1/17;
+    }
   }
 
   &__btn-delete {
@@ -122,8 +130,12 @@
     align-items: center;
     padding: 24px;
     border: 1px solid $elements;
-    grid-column: 17/-1;
     height: max-content;
+    grid-column: 1/-1;
+
+    @include onDesktop {
+      grid-column: 17/-1;
+    }
 
     &-quantity {
       color: $secondary;
@@ -131,6 +143,7 @@
       padding-bottom: 24px;
       border-bottom: 1px solid $elements;
       width: 100%;
+      margin-bottom: 24px;
     }
   }
 
