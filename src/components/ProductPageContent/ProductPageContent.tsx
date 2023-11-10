@@ -10,7 +10,7 @@ import { Loader } from '../Loader';
 import { ProductsList } from '../ProductsList';
 import { Pagination } from '../Pagination';
 import { NoResults } from '../NoResults';
-import { NoSearchPesult } from '../NoSearchPesult';
+import { NoSearchResult } from '../NoSearchResult';
 import { Dropdown } from '../Dropdown';
 import {
   sortOptions,
@@ -164,7 +164,7 @@ export const ProductPageContent: React.FC<Props> = ({ title }) => {
       )}
 
       {products.length !== 0 && !filteredItems.length && (
-        <NoSearchPesult
+        <NoSearchResult
           query={query}
         />
       )}

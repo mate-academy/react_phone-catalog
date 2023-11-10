@@ -38,8 +38,11 @@ export const ContactForm = () => {
   };
 
   const close = () => {
-    reset();
     setIsModalShow(false);
+
+    setTimeout(() => {
+      reset();
+    }, 300);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -67,7 +70,7 @@ export const ContactForm = () => {
     }
 
     setNotification({
-      message: 'We will be in touch shortly',
+      message: 'We contact with you soon',
       color: NotificationStatus.Success,
     });
 

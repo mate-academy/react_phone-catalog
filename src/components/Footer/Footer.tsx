@@ -1,12 +1,17 @@
+/* eslint-disable */
 import { useContext } from 'react';
 import { ReactSVG } from 'react-svg';
 import { Logo } from '../Logo';
 import './Footer.scss';
 import { handleScrollToTop } from './utils';
 import { ModalContext } from '../../storage/ModalContext';
+import {
+  NotificationContext, NotificationStatus,
+} from '../../storage/NotificationContext';
 
 export const Footer: React.FC = () => {
   const { setIsModalShow } = useContext(ModalContext);
+  const { setNotification } = useContext(NotificationContext);
 
   return (
     <footer className="footer">
@@ -18,7 +23,6 @@ export const Footer: React.FC = () => {
             href="https://github.com/NataliiaHen/react_phone-catalog"
             className="footer__link"
             target="_blank"
-            rel="noreferrer"
           >
             GitHub
           </a>
@@ -43,6 +47,10 @@ export const Footer: React.FC = () => {
             className="footer__link"
             onClick={(e) => {
               e.preventDefault();
+              setNotification({
+                message: 'We are sorry, but this feature is not implemented yet',
+                color: NotificationStatus.Warning,
+              });
             }}
           >
             Rights

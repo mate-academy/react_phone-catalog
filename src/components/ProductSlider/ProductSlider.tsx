@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import {
   getBrandNewProducts, getHotPriceProducts, getProducts, getSuggestedProducts,

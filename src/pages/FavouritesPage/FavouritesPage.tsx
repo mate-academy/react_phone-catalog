@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './FavouritesPage.scss';
-import { NoResults } from '../../components/NoResults';
 import { FavContext } from '../../storage/FavContext';
 import { ProductsList } from '../../components/ProductsList';
+import { EmptyCart } from '../../components/EmptyCart';
 
 export const Favourites = () => {
   const { favProducts } = useContext(FavContext);
@@ -13,9 +13,7 @@ export const Favourites = () => {
       <Breadcrumbs />
 
       {!favProducts.length && (
-        <NoResults
-          category="Favourites"
-        />
+        <EmptyCart />
       )}
 
       {favProducts.length > 0 && (

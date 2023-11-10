@@ -1,10 +1,10 @@
-import './NoSearchPesult.scss';
+import './NoSearchResult.scss';
 
 type Props = {
   query: string,
 };
 
-export const NoSearchPesult: React.FC<Props> = ({ query }) => (
+export const NoSearchResult: React.FC<Props> = ({ query }) => (
   <div className="no-results">
     <h1 className="no-results__title">
       {`No results for "${query}"`}

@@ -7,6 +7,7 @@ import { CartContext } from '../../storage/CartContext';
 import {
   NotificationContext, NotificationStatus,
 } from '../../storage/NotificationContext';
+import { EmptyCart } from '../../components/EmptyCart';
 
 export const CartPage: React.FC = () => {
   const {
@@ -38,7 +39,7 @@ export const CartPage: React.FC = () => {
       </h1>
 
       {!cartItems.length && (
-        <h1>Your cart is empty</h1>
+        <EmptyCart />
       )}
 
       {cartItems.length > 0 && (

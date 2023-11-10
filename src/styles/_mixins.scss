@@ -10,6 +10,12 @@
   }
 }
 
+@mixin onLaptop {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
 @mixin square($size) {
   width: $size;
   height: $size;
@@ -110,8 +116,4 @@
   &:hover {
     transform: scale(1.2);
   }
-}
-
-@mixin container {
-
 }

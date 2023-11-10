@@ -27,7 +27,7 @@ const isVisible = ['/phones', '/tablets', '/accessories', '/favourites'];
 export const Nav = () => {
   const { favProducts } = useContext(FavContext);
   const { cartItems } = useContext(CartContext);
-  const { isDesktopSize } = useContext(PageSizeContext);
+  const { isDesktopSize, isLaptopSize } = useContext(PageSizeContext);
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
@@ -52,7 +52,7 @@ export const Nav = () => {
       </CSSTransition>
 
       <ul className="navbar__left-side">
-        {!isDesktopSize && (
+        {!isDesktopSize && !isLaptopSize && (
           <div className="navbar__icon-container">
             <ReactSVG
               className="navbar__icon--menu"
@@ -64,7 +64,7 @@ export const Nav = () => {
 
         <Logo />
 
-        {(isDesktopSize && pathname !== '/cart') && (
+        {(isDesktopSize || isLaptopSize) && pathname !== '/cart' && (
           <>
             <NavLink
               to="/"
@@ -144,9 +144,6 @@ export const Nav = () => {
           </div>
         </NavLink>
       </ul>
-      {/* {isMobileSize && (
-
-      )} */}
     </nav>
   );
 };

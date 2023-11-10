@@ -80,7 +80,7 @@ export const Pagination: React.FC<Props> = ({
               disabled={currentPage === 1}
             >
               <ReactSVG
-                src="/img/icons/Chevron (Arrow Left).svg"
+                src="img/icons/Chevron (Arrow Left).svg"
               />
             </button>
           </SearchLink>
@@ -157,7 +157,7 @@ export const Pagination: React.FC<Props> = ({
               disabled={currentPage === lastPage}
             >
               <ReactSVG
-                src="/img/icons/Chevron (Arrow Right).svg"
+                src="img/icons/Chevron (Arrow Right).svg"
               />
             </button>
           </SearchLink>
