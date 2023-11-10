@@ -9,6 +9,10 @@
   padding: 24px;
   border: 1px solid $gray-elements;
 
+  @include onTablet {
+    width: 272px;
+  }
+
   &__link {
     display: flex;
     flex-direction: column;
@@ -32,17 +36,22 @@
   &__info {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 6px;
   }
 
   &__name {
     @extend %text-body;
     margin: 0;
-    min-height: 42px;
+
+    @include onTablet {
+      min-height: 42px;
+    }
   }
 
   &__prices {
     display: flex;
+    justify-content: left;
     align-items: center;
     gap: 8px;
   }

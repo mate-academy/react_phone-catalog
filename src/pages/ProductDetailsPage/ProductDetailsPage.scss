@@ -1,5 +1,6 @@
 @import "../../styles/utils/typography";
 @import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
 
 .ProductDetailsPage {
   padding: 24px 0 0;
@@ -7,18 +8,32 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 40px;
+
+    @include onDesktop {
+      gap: 80px;
+    }
   }
 
   &__section {
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    column-gap: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
+    }
 
     &-content {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 16px;
+
+      @include onDesktop {
+        gap: 32px;
+      }
     }
 
     &-top {
@@ -39,9 +54,13 @@
   &__top {
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    grid-column: 1 / -1;
-    padding: 0 0 40px;
+    gap: 28px;
+
+    @include onDesktop {
+      gap: 40px;
+      grid-column: 1 / -1;
+      padding: 0 0 40px;
+    }
   }
 
   &__back-and-title {
@@ -56,12 +75,22 @@
 
   &__images {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    grid-column: span 2;
+
+    &-list {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @include onTablet {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 16px;
+      }
+    }
+
+    grid-column: span 12;
   }
 
   &__item {
@@ -91,13 +120,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 464px;
-    width: 464px;
+    padding: 10px;
+    height: 400px;
+    width: 100%;
     background-color: $html-bg-color;
     grid-column: span 10;
 
+    @include onTablet {
+      padding: 0;
+      height: 464px;
+      width: 464px;
+    }
+
     &-selected {
-      height: 442px;
+      height: 100%;
     }
   }
 

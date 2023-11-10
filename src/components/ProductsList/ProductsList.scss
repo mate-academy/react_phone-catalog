@@ -1,5 +1,14 @@
+@import "../../styles/utils/mixins";
+
 .ProductsList {
   display: flex;
-  gap: 40px 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @include onTablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+  }
 }

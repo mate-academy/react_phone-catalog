@@ -26,8 +26,14 @@
   }
 
   &__main {
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+    }
   }
 
   &__list {
@@ -56,7 +62,10 @@
     }
 
     &-info {
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
 
     &-sum {

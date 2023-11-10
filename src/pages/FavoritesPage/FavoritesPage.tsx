@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { NoSearchResults } from '../../components/NoSearchResults';
 import { ProductsList } from '../../components/ProductsList';
+import { Search } from '../../components/Search';
 import { FavContext } from '../../context/FavContext';
 import './FavoritesPage.scss';
 
@@ -29,6 +30,11 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <div className="Favorites">
+      {!!visibleFav.length && (
+        <div className="CategoryPage__search">
+          <Search />
+        </div>
+      )}
       <div className="container">
         <div className="Favorites__content">
           <Breadcrumbs page="Favorites" />

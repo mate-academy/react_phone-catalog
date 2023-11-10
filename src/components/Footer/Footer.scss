@@ -14,13 +14,20 @@
 
   &__nav {
     &-list {
-      padding: 0;
+      padding: 24px 0;
       margin: 0;
       list-style: none;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      gap: 64px;
+      gap: 8px;
+
+      @include onTablet {
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 64px;
+      }
     }
 
     &-link {
@@ -35,7 +42,15 @@
 
   &__button {
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
 
     &-text {
       @extend %text-small;

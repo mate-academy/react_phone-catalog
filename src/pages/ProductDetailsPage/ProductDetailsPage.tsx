@@ -20,6 +20,7 @@ import { getProductInfo } from '../../helpers/products';
 import { PHONE_COLORS } from '../../constants/constants';
 import { BASE_URL } from '../../utils/fetchClient';
 import './ProductDetailsPage.scss';
+import { Loader } from '../../components/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
@@ -70,6 +71,8 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="ProductDetailsPage">
       <div className="container">
+        {isLoading && (<Loader />)}
+
         {!productDetails && (
           <ProductNotFound />
         )}
@@ -77,7 +80,7 @@ export const ProductDetailsPage: React.FC = () => {
         {productDetails && !isLoading && currentProduct && (
           <>
             <div className="ProductDetailsPage__content">
-              <div className="ProductDetailsPage__section">
+              <section className="ProductDetailsPage__section">
                 <div className="ProductDetailsPage__top">
                   <Breadcrumbs
                     page={currentPage}
@@ -86,41 +89,44 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className="ProductDetailsPage__back-and-title">
                     <BackButton />
                     <h2 className="ProductDetailsPage__product-title">
-                      {productDetails.name}
+                      {productDetails.name.replace('GB', ' GB')}
                     </h2>
                   </div>
                 </div>
 
-                <ul className="ProductDetailsPage__images">
-                  {productDetails.images.map(image => (
-                    <li
-                      key={image}
-                      className={classNames('ProductDetailsPage__item', {
-                        'ProductDetailsPage__item--active':
-                          selectedImage === image,
-                      })}
-                    >
-                      <Link
-                        to={pathname}
-                        className="ProductDetailsPage__image-link"
-                        onClick={() => handleImageSelect(image)}
+                <div className="ProductDetailsPage__images">
+                  <ul className="ProductDetailsPage__images-list">
+                    {productDetails.images.map(image => (
+                      <li
+                        key={image}
+                        className={classNames('ProductDetailsPage__item', {
+                          'ProductDetailsPage__item--active':
+                            selectedImage === image,
+                        })}
                       >
-                        <img
-                          src={`${BASE_URL}/${image}`}
-                          alt={image}
-                          className="ProductDetailsPage__image"
-                        />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <div className="ProductDetailsPage__main-image">
-                  <img
-                    src={`${BASE_URL}/${selectedImage}`}
-                    alt={selectedImage}
-                    className="ProductDetailsPage__main-image-selected"
-                  />
+                        <Link
+                          to={pathname}
+                          className="ProductDetailsPage__image-link"
+                          onClick={() => handleImageSelect(image)}
+                        >
+                          <img
+                            src={`${BASE_URL}/${image}`}
+                            alt={image}
+                            className="ProductDetailsPage__image"
+                          />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="ProductDetailsPage__main-image">
+                    <img
+                      src={`${BASE_URL}/${selectedImage}`}
+                      alt={selectedImage}
+                      className="ProductDetailsPage__main-image-selected"
+                    />
+                  </div>
                 </div>
+
                 <div className="ProductDetailsPage__main-info">
                   <div className="ProductDetailsPage__product-options">
                     <div className="ProductDetailsPage__colors-and-id">
@@ -252,9 +258,9 @@ export const ProductDetailsPage: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </section>
 
-              <div className="ProductDetailsPage__section">
+              <section className="ProductDetailsPage__section">
                 <article className="ProductDetailsPage__section-content About">
                   <div className="ProductDetailsPage__section-top">
                     <h3 className="ProductDetailsPage__section-title">
@@ -342,16 +348,16 @@ export const ProductDetailsPage: React.FC = () => {
                     </ul>
                   </div>
                 </article>
-              </div>
+              </section>
 
-              <div className="ProductDetailsPage__section">
+              <section className="ProductDetailsPage__section">
                 <div className="ProductDetailsPage__section-slider">
                   <ProductsSlider
                     title="You may also like"
                     products={hotPriceProducts}
                   />
                 </div>
-              </div>
+              </section>
             </div>
           </>
         )}

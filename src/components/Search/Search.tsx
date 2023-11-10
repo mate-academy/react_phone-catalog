@@ -67,7 +67,6 @@ export const Search: React.FC = () => {
       ) : (
         <div className="Search__icon" />
       )}
-
     </div>
   );
 };

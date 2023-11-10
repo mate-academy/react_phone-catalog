@@ -1,6 +1,12 @@
 .Logo {
   display: flex;
-  height: 24px;
-  width: 40px;
-  background-image: url(../../images/icons/Logo.svg);
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  height: 100%;
+
+  &__img {
+    height: 24px;
+    width: 40px;
+  }
 }

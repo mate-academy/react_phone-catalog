@@ -18,8 +18,8 @@ import { NoSearchResults } from '../../components/NoSearchResults';
 import { Dropdown } from '../../types/Dropdown';
 import { Errors } from '../../types/Errors';
 import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
-import './PhonesPage.scss';
 import { NoResults } from '../../components/NoResults/NoResults';
+import { Search } from '../../components/Search';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -113,8 +113,12 @@ export const PhonesPage: React.FC = () => {
 
   return (
     <div className="CategoryPage">
+      <div className="CategoryPage__search">
+        <Search />
+      </div>
       <div className="container">
         <div className="CategoryPage__content">
+
           <Breadcrumbs page="Phones" />
 
           <div className="CategoryPage__main-info">
@@ -140,7 +144,7 @@ export const PhonesPage: React.FC = () => {
             <NoSearchResults />
           )}
 
-          {!!visiblePhones.length && (
+          {!!visiblePhones.length && !isLoading && (
             <div className="CategoryPage__dropdowns">
               <div className="Dropdown">
                 <p className="Dropdown__title">

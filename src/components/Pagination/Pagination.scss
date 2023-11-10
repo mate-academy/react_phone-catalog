@@ -3,9 +3,13 @@
 
 .Pagination {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   justify-content: center;
   align-items: center;
+
+  @include onTablet {
+    gap: 16px;
+  }
 
   &__list {
     display: flex;

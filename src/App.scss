@@ -1,5 +1,6 @@
 @import "./styles/utils/variables";
 @import "./styles/utils/typography";
+@import "./styles/utils/mixins";
 
 .App {
   display: flex;
@@ -37,6 +38,15 @@
 .container {
   margin: 0 auto;
   max-width: 1136px;
+  padding: 0 20px;
+
+  @include onTablet {
+    padding: 0 32px;
+  }
+
+  @include onDesktop {
+    padding: 0;
+  }
 }
 
 .button {
@@ -56,6 +66,18 @@
   &:disabled {
     border: 1px solid $gray-elements;
     cursor: auto;
+  }
+
+  &--menu {
+    height: 64px;
+    width: 64px;
+    background-image: url(./images/icons/icon-menu.svg);
+  }
+
+  &--close {
+    height: 64px;
+    width: 64px;
+    background-image: url(./images/icons/icon-close.svg);
   }
 
   &--disabled {
@@ -80,8 +102,13 @@
   }
 
   &--slider {
-    height: 400px;
+    height: 100%;
     width: 32px;
+    display: none;
+
+    @include onTablet {
+      display: inline-block;
+    }
 
     &-back {
       background-image: url(./images/icons/Arrow_left.svg);
@@ -108,6 +135,12 @@
     }
   }
 
+  &--mobile {
+    @include onTablet {
+      display: none;
+    }
+  }
+
   &--fav {
     height: 40px;
     width: 40px;
@@ -120,11 +153,16 @@
 
   &--dropdown {
     height: 40px;
-    width: 176px;
+    width: 165px;
     display: flex;
     align-items: center;
+    gap: 8px;
     justify-content: space-between;
     padding: 0 12px;
+
+    @include onTablet {
+      width: 176px;
+    }
 
     &-text {
       @extend %text-body;
@@ -254,8 +292,12 @@
 .About {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   grid-column: 1 / 13;
+
+  @include onTablet {
+    gap: 32px;
+  }
 }
 
 .TechSpecs {
@@ -303,4 +345,172 @@
   height: 1px;
   width: 100%;
   background-color: $gray-elements;
+}
+
+.Menu {
+  background-color: $html-bg-color;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  transform: translateX(100%);
+  transition: transform 0.5s;
+
+  @include onDesktop {
+    display: none;
+  }
+
+  &--opened {
+    transform: translateX(0);
+    overflow: hidden;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__button {
+    height: 64px;
+    width: 64px;
+    background-color: $html-bg-color;
+    outline: none;
+    border: 1px solid $gray-elements;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    background-image: url(./images/icons/icon-menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+
+    @include onDesktop {
+      display: none;
+    }
+
+    &--close {
+      background-image: url(./images/icons/icon-close.svg);
+      border: none;
+    }
+  }
+
+  &__nav {
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    &-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    &-link {
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    &-item {
+      @extend %text-uppercase;
+      font-size: 20px;
+      color: $gray-second;
+
+      &:hover {
+        color: $gray-main;
+      }
+    }
+  }
+}
+
+.menu {
+  @include onDesktop {
+    display: none;
+  }
+
+  &__button {
+    height: 64px;
+    width: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-left: 1px solid $gray-elements;
+    background-color: $html-bg-color;
+  }
+
+  &__img {
+    height: 20px;
+    width: 20px;
+    opacity: 0.8;
+  }
+}
+
+.CategoryPage {
+  &__content {
+    padding: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    height: 64px;
+    border-bottom: 1px solid $gray-elements;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include onTablet {
+      gap: 8px;
+    }
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__models-count {
+    @extend %text-body;
+    color: $gray-second;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }

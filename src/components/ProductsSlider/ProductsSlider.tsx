@@ -9,7 +9,7 @@ type Props = {
 };
 
 const CARD_WIDTH = 272;
-const STEP = 2;
+const STEP = 1;
 const FRAME_SIZE = 4;
 const GAP = 16;
 const ANIMATION_DURATION = 1000;

@@ -1,5 +1,9 @@
+@import "../../styles/utils/mixins";
+
 .Slider {
-  height: 432px;
+  @include onDesktop {
+    height: 432px;
+  }
 
   &__content {
     display: flex;
@@ -9,18 +13,41 @@
 
   &__main {
     display: flex;
-    gap: 16px;
+    gap: 8px;
+
+    height: 140px;
+    overflow: hidden;
+
+    @include onTablet {
+      height: 248px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+      gap: 16px;
+    }
   }
 
   &__list {
     display: flex;
-    // justify-content: center;
     align-items: center;
     overflow: hidden;
     list-style: none;
     padding: 0;
     margin: 0;
-    height: 400px;
+    height: 100%;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__dots {

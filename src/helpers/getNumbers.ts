@@ -1,7 +1,7 @@
-export function getNumbers(num: number): number[] {
+export function getNumbers(start: number, end: number): number[] {
   const numbers = [];
 
-  for (let i = 1; i <= num; i += 1) {
+  for (let i = start; i <= end; i += 1) {
     numbers.push(i);
   }
 

@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/getSearchWith';
-import { getNumbers } from '../../helpers/getNumbers';
 import './Pagination.scss';
+import { usePagination } from '../../hooks/usePagination';
 
 type Props = {
   pages: number,
@@ -12,7 +12,7 @@ type Props = {
 export const Pagination: React.FC<Props> = ({ pages }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedPage = +(searchParams.get('page') || 1);
-  const pagesArray = getNumbers(pages);
+  const pagesArray = usePagination(pages, 1, selectedPage);
 
   const handlePrevPage = useCallback(() => {
     const currentPage = +(searchParams.get('page') || 1);
@@ -45,27 +45,35 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
       />
 
       <ul className="Pagination__list">
-        {pagesArray.map(currPage => (
-          <Link
-            to={{
-              search: getSearchWith(
-                searchParams, { page: currPage.toString() },
-              ).toString(),
-            }}
-            className={classNames('Pagination__link', {
-              'Pagination__link--active': selectedPage === currPage,
-            })}
-            key={currPage}
-          >
-            <li
-              className={classNames('Pagination__item button', {
-                'Pagination__item--active': selectedPage === currPage,
+        {pagesArray.map(currPage => {
+          if (currPage === 'DOTS') {
+            return (
+              <li className="Pagination__item">...</li>
+            );
+          }
+
+          return (
+            <Link
+              to={{
+                search: getSearchWith(
+                  searchParams, { page: currPage.toString() },
+                ).toString(),
+              }}
+              className={classNames('Pagination__link', {
+                'Pagination__link--active': selectedPage === currPage,
               })}
+              key={currPage}
             >
-              {currPage}
-            </li>
-          </Link>
-        ))}
+              <li
+                className={classNames('Pagination__item button', {
+                  'Pagination__item--active': selectedPage === currPage,
+                })}
+              >
+                {currPage}
+              </li>
+            </Link>
+          );
+        })}
       </ul>
 
       <button
@@ -73,7 +81,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
         aria-label="Next page"
         data-cy="paginationRight"
         className="button button--next"
-        disabled={selectedPage === pagesArray.length}
+        disabled={selectedPage === pagesArray[pagesArray.length - 1]}
         onClick={handleNextPage}
       />
     </div>

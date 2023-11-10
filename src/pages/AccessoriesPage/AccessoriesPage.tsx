@@ -15,6 +15,7 @@ import { NoSearchResults } from '../../components/NoSearchResults';
 import { getSearchWith } from '../../helpers/getSearchWith';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
+import { Search } from '../../components/Search';
 
 export const AccessoriesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -108,6 +109,9 @@ export const AccessoriesPage: React.FC = () => {
 
   return (
     <div className="CategoryPage">
+      <div className="CategoryPage__search">
+        <Search />
+      </div>
       <div className="container">
         <div className="CategoryPage__content">
           <Breadcrumbs page="Accessories" />

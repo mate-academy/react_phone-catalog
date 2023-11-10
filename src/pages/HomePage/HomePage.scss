@@ -1,6 +1,39 @@
+@import "../../styles/utils/mixins";
+
 .HomePage {
-  padding: 40px 0 0;
+  padding: 16px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 72px;
+  gap: 36px;
+
+  @include onTablet {
+    padding: 40px 0 0;
+    gap: 72px;
+  }
+
+  &__slider {
+    @include onTablet {
+      display: none;
+    }
+
+    &--tablet {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+
+      @include onDesktop {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include onDesktop {
+        display: flex;
+      }
+    }
+  }
 }

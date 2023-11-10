@@ -7,12 +7,13 @@
 html {
   font-family: "Mont", sans-serif;
   background-color: $html-bg-color;
+  scroll-behavior: smooth;
+  width: 100vw;
 }
 
 body {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
 
 h1,

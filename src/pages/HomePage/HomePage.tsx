@@ -5,8 +5,8 @@ import { Slider } from '../../components/Slider';
 import { HotPrices } from '../../components/HotPrices';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { BrandNew } from '../../components/BrandNew';
-import './HomePage.scss';
 import { Errors } from '../../types/Errors';
+import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
   const { isLoading, errorMessage } = useProducts();
@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div className="HomePage">
-        {isLoading && (<Loader />)}
+        {isLoading && !errorMessage && (<Loader />)}
 
         {errorMessage === Errors.loadingProducts ? (
           <div className="ErrorMessage">
@@ -22,7 +22,18 @@ export const HomePage: React.FC = () => {
           </div>
         ) : (
           <>
-            <Slider />
+            <div className="container">
+              <div className="HomePage__slider">
+                <Slider itemWidth={360} />
+              </div>
+              <div className="HomePage__slider--tablet">
+                <Slider itemWidth={640} />
+              </div>
+              <div className="HomePage__slider--desktop">
+                <Slider itemWidth={1040} />
+              </div>
+            </div>
+
             <HotPrices />
             <ShopByCategory />
             <BrandNew />

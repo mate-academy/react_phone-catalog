@@ -16,6 +16,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+// import { Menu } from './components/Menu/Menu';
 
 export const Root = () => (
   <AppProvider>
@@ -23,6 +24,8 @@ export const Root = () => (
       <CartProvider>
         <HashRouter>
           <Routes>
+            {/* <Route path="menu" element={<Menu />} /> */}
+
             <Route path="/" element={<App />}>
               <Route index element={<HomePage />} />
               <Route path="home" element={<Navigate to="/" />} />

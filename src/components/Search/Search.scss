@@ -2,13 +2,12 @@
 @import "../../styles/utils/typography";
 
 .Search {
-  height: 64px;
-  width: 327px;
+  height: 100%;
+  width: 100%;
   padding: 0 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-left: 1px solid $gray-elements;
 
   &__input {
     height: 100%;
