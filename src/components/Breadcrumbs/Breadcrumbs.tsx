@@ -6,10 +6,10 @@ import './Breadcrumbs.scss';
 
 type Props = {
   page: string,
-  productName?: string | undefined,
+  productName?: string,
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ page, productName }) => {
+export const Breadcrumbs: React.FC<Props> = ({ page, productName = '' }) => {
   return (
     <div
       className="Breadcrumbs"
