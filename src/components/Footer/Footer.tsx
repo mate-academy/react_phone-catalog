@@ -3,6 +3,10 @@ import { Logo } from '../Logo';
 import './Footer.scss';
 
 export const Footer = () => {
+  const handleToTopScroll = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="Footer">
       <div className="Footer__content">
@@ -33,19 +37,20 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <Link
-          className="Footer__link Footer__link--semibold"
-          to="/"
-        >
+        <div className="Footer__to-top-scroll">
           Back to top
-          <button type="button" className="Footer__to-top">
+          <button
+            type="button"
+            className="Footer__to-top"
+            onClick={handleToTopScroll}
+          >
             <img
               src="/img/icons/vector_icon.svg"
               alt="Icon vector"
               className="Footer__vector-icon"
             />
           </button>
-        </Link>
+        </div>
       </div>
     </footer>
   );

@@ -1,3 +1,5 @@
+@import "../../helpers/styles/mixins";
+
 .Footer {
   &__content {
     margin-inline: auto;
@@ -7,35 +9,36 @@
     justify-content: space-between;
     align-items: center;
 
-    max-width: 1136px;
+    box-shadow: 0 -1px 0 0 #e2e6e9;
   }
 
   &__links {
+    height: 50%;
     display: flex;
     gap: 64px;
   }
 
   &__link {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    @include navigationLink;
 
-    color: #89939a;
-    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
 
-    &--semibold {
-      text-transform: none;
-      font-weight: 600;
+    &:hover {
+      @include navigationUnderline;
     }
   }
 
+  &__to-top-scroll {
+    @include navigationLink;
+    text-transform: none;
+    font-weight: 600;
+  }
+
   &__to-top {
+    @include squareSize(32px);
     margin-left: 16px;
-    height: 32px;
-    width: 32px;
 
     border: solid 1px #b4bdc3;
     background-color: #fff;

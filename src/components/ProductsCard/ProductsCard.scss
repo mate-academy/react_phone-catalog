@@ -1,0 +1,99 @@
+@import "../../helpers/styles/mixins";
+
+.ProductsCard {
+  padding: 24px;
+  border: 1px solid #e2e6e9;
+  flex-basis: max-content;
+
+  &__image {
+    width: 206px;
+    padding: 8px;
+    margin-bottom: 14px;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    height: 42px;
+    margin-bottom: 7px;
+
+    color: #313237;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+
+    &--discount {
+      font-weight: 500;
+      text-decoration: line-through;
+      color: #89939a;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding-block: 16px;
+
+    border-top: 1px solid #e2e6e9;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+
+    &-key {
+      color: #89939a;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+
+  &__add {
+    display: flex;
+    gap: 8px;
+
+    &-cart {
+      flex-grow: 1;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: #fff;
+
+      background-color: #313237;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+    }
+
+    &-favorites {
+      @include squareSize(40px);
+
+      background-color: inherit;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+
+      &:hover {
+        border-color: #313237;
+      }
+    }
+  }
+}

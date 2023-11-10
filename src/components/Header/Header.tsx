@@ -1,7 +1,15 @@
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+
 import { Logo } from '../Logo';
 import { Nav } from '../Nav';
 import './Header.scss';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return classNames('Header__link', {
+    'Header__link--is-active': isActive,
+  });
+};
 
 export const Header = () => {
   return (
@@ -14,7 +22,7 @@ export const Header = () => {
       <div className="Header__right">
         <NavLink
           to="/favorites"
-          className="Header__icon"
+          className={getLinkClass}
         >
           <img
             src="/img/icons/favorites_icon.svg"
@@ -24,7 +32,7 @@ export const Header = () => {
         </NavLink>
         <NavLink
           to="/cart"
-          className="Header__icon"
+          className={getLinkClass}
         >
           <img
             src="/img/icons/cart_icon.svg"

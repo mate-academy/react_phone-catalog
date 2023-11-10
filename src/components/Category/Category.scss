@@ -1,0 +1,23 @@
+@import "../../helpers/styles/mixins";
+
+.Category {
+  grid-column: span 8;
+  text-decoration: none;
+
+  &__image {
+    width: 100%;
+  }
+
+  &__products-count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939a;
+
+    text-decoration: none;
+  }
+
+  &__title {
+    @include sectionTitle_H3;
+  }
+}

@@ -1,0 +1,52 @@
+@import "../../helpers/styles/mixins";
+
+.ProductsSlider {
+  position: relative;
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: -60px;
+    right: 0;
+
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include squareSize(32px);
+
+    border: solid 1px #b4bdc3;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &--disabled {
+      border: 1px solid #e2e6e9;
+      cursor: auto;
+
+      &:hover {
+        border-color: #e2e6e9;
+      }
+    }
+  }
+
+  &__vector-icon {
+    &--left {
+      transform: rotate(180deg);
+    }
+
+    &--disabled {
+      filter: opacity(50%);
+    }
+  }
+}

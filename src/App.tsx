@@ -8,9 +8,10 @@ export const App = () => (
   <div className="App">
     <Header />
 
-    <Outlet />
-
-    <Footer />
+    <div className="App__container">
+      <Outlet />
+      <Footer />
+    </div>
   </div>
 );
 
