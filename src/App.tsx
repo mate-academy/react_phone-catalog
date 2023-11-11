@@ -6,10 +6,12 @@ import { Header } from './components/Header/Header';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App container">
       <Header />
 
-      <Outlet />
+      <div className="container container--main">
+        <Outlet />
+      </div>
 
       <Footer />
     </div>

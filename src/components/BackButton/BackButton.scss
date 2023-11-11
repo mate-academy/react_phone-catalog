@@ -1,0 +1,24 @@
+@import "../../styles/style-imports";
+
+.BackButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @extend %small-text;
+  background-color: transparent;
+  color: $gray-secondary;
+  cursor: pointer;
+
+  &::before {
+    display: block;
+    width: 16px;
+    height: 16px;
+    content: "";
+
+    background-image: url(../../icons/arrow-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(180deg);
+  }
+}

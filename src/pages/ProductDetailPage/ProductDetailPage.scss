@@ -1,0 +1,110 @@
+@import '../../styles/style-imports';
+
+.ProductDetailPage {
+  &__breadcrumb {
+    margin-top: 24px;
+  }
+
+  &__backButton {
+    margin-top: 40px;
+  }
+
+  &__name {
+    margin-top: 16px;
+  }
+
+  &__details {
+    margin-top: 40px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    row-gap: 80px;
+
+    @include onMediumScreen {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: 16px;
+
+    &--small-images {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      cursor: pointer;
+
+      &--wrapper {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 80px;
+        padding: 7px;
+
+        border: 1px solid $gray-elements;
+        background: transparent;
+
+        cursor: pointer;
+
+        transition: border-color 0.3s ease-in-out;
+
+        &--active {
+          border-color: $gray-primary;
+        }
+      }
+
+      &--image {
+        display: block;
+        height: 100%;
+        max-width: 100%;
+      }
+    }
+
+    &--big-image {
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      &-wrapper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 464px;
+      }
+    }
+  }
+
+  &__info {
+    &--price {
+      display: flex;
+      align-items: center;
+
+      &--discount {
+        display: inline;
+        margin-right: 8px;
+
+        @extend %h1;
+      }
+
+      &--full-prize {
+        display: inline;
+
+        font-family: "Mont-Regular", sans-serif;
+        font-size: 22px;
+        color: $gray-secondary;
+        text-decoration: line-through;
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 8px;
+      align-items: 8px;
+    }
+  }
+}

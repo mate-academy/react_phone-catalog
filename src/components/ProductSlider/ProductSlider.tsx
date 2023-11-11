@@ -4,11 +4,12 @@ import './ProductSlider.scss';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 
-type Props = {
+interface Props {
   products: Product[];
-};
+  title?: string;
+}
 
-export const ProductSlider: React.FC<Props> = ({ products }) => {
+export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   const itemsWidth = 272;
   const gap = 16;
 
@@ -34,21 +35,25 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="ProductSlider">
-      <div className="ProductSlider__buttons">
-        <Button
-          variant="arrow"
-          arrowDirection="left"
-          disabled={itemsScrolled === 0}
-          aria-label="swipe phones left"
-          onClick={handeSlideLeft}
-        />
+      <div className="ProductSlider__header">
+        <h2 className="ProductSlider__title">{title}</h2>
 
-        <Button
-          variant="arrow"
-          disabled={itemsScrolled === products.length - 4}
-          aria-label="swipe phones right"
-          onClick={handeSlideRight}
-        />
+        <div className="ProductSlider__buttons">
+          <Button
+            variant="arrow"
+            arrowDirection="left"
+            disabled={itemsScrolled === 0}
+            aria-label="swipe phones left"
+            onClick={handeSlideLeft}
+          />
+
+          <Button
+            variant="arrow"
+            disabled={itemsScrolled === products.length - 4}
+            aria-label="swipe phones right"
+            onClick={handeSlideRight}
+          />
+        </div>
       </div>
 
       <div className="ProductSlider__content">
@@ -70,4 +75,8 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
       </div>
     </div>
   );
+};
+
+ProductSlider.defaultProps = {
+  title: '',
 };

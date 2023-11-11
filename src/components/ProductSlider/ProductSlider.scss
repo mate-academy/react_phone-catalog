@@ -1,6 +1,11 @@
 .ProductSlider {
   position: relative;
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__buttons {
     display: flex;
     gap: 16px;

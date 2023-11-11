@@ -1,4 +1,15 @@
+@import "../style-imports";
+
 .container {
-  max-width: 1136px;
+  box-sizing: border-box;
+  max-width: 1440px;
   margin: 0 auto;
+
+  &--main {
+    padding: 0 152px;
+
+    @media (max-width: 1200px) {
+      padding: 0 52px;
+    }
+  }
 }

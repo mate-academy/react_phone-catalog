@@ -50,12 +50,9 @@ export const HomePage = () => {
           </h1>
 
           <section className="section">
-            <h2 className="section__title">
-              Hot prices
-            </h2>
-
             <ProductSlider
               products={hotPriceProducts}
+              title="Hot prices"
             />
           </section>
 
@@ -125,12 +122,9 @@ export const HomePage = () => {
           </section>
 
           <section className="section">
-            <h2 className="section__title">
-              Brand new models
-            </h2>
-
             <ProductSlider
               products={brandNewProducts}
+              title="Brand new models"
             />
           </section>
         </>

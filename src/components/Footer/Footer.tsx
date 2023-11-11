@@ -5,7 +5,7 @@ import { Button } from '../Button/Button';
 export const Footer = () => {
   return (
     <footer className="Footer">
-      <div className="Footer__content container">
+      <div className="Footer__content container container--main">
         <Logo />
 
         <ul className="Footer__list">

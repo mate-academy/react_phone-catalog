@@ -14,6 +14,8 @@
     font-weight: 600;
     font-size: 12px;
     text-transform: capitalize;
+    color: $gray-primary;
+
 
     &:not(:first-child)::before {
       display: block;
@@ -29,6 +31,10 @@
 
     &:last-child {
       color: $gray-secondary;
+    }
+
+    & > a {
+      color: $gray-primary;
     }
   }
 }
