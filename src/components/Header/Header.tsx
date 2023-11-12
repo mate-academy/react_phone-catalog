@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+import cn from 'classnames';
 import { NavLinkMain } from '../NavLinkMain/NavLink';
 import { NavBar } from '../Navbar/NavBar';
 import './Header.scss';
+import { CartContext } from '../../context/CartContext';
 
 export const Header = () => {
+  const { totalQuantity } = useContext(CartContext);
+
   return (
     <header className="Header">
       <div className="Header__navigation">
@@ -22,12 +27,17 @@ export const Header = () => {
 
         <NavLinkMain
           type="cart"
-          to="card"
+          to="cart"
         >
           <img
             src="icons/cart.svg"
             alt="favourites"
           />
+          <span
+            className={cn('Counter', { isActive: !!totalQuantity })}
+          >
+            {totalQuantity}
+          </span>
         </NavLinkMain>
       </div>
     </header>
