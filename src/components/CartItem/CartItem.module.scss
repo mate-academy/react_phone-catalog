@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  border: 1px solid $Elements;
+  padding: 24px;
+
+  @media (max-width: 425px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &Close {
+    border: none;
+  }
+
+  &Img {
+    max-height: 80px;
+    margin: 0 24px;
+  }
+
+  &Counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 50px;
+
+    @media (max-width: 425px) {
+      margin: 0;
+    }
+  }
+
+  &Price {
+    margin-left: 43px;
+
+    @media (max-width: 425px) {
+      margin: 0;
+    }
+  }
+}

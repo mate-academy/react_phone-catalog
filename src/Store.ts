@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { Product } from './types/Product';
 
-type Store = {
+type StoreProducts = {
   products: Product[],
   favouritesProducts: Product[],
   cartProducts: Product[],
@@ -17,7 +17,7 @@ const CartStorage = localStorage.getItem('Cart')
   ? JSON.parse(localStorage.getItem('Cart') || '')
   : [];
 
-export const useProducts = create<Store>((set) => ({
+export const useProducts = create<StoreProducts>((set) => ({
   products: [],
   favouritesProducts: FavouritStorage,
   cartProducts: CartStorage,

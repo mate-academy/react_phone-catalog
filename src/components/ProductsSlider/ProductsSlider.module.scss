@@ -2,10 +2,19 @@
 
 .wrapper {
   margin-bottom: 70px;
+
+  @media (max-width: 425px) {
+    margin-bottom: 10px;
+  }
 }
 
 .title {
   margin-bottom: 14px;
+
+  @media (max-width: 425px) {
+    text-align: center;
+    margin-bottom: 0;
+  }
 }
 
 .arrow {
@@ -17,7 +26,17 @@
   background: $White;
   border: 1px solid $Icons;
 
+  @media (max-width: 425px) {
+    display: none;
+  }
+
   &Prev {
     right: 58px;
+  }
+}
+
+.slider {
+  div > div:first-child {
+    margin: auto;
   }
 }

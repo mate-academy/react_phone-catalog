@@ -1,21 +1,21 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useNavigate } from 'react-router-dom';
 import styles from './GoToBack.module.scss';
 import arrowLeft from '../../img/icons/ArrowLeft.svg';
 
-export const GoToBack = () => {
+export const GoToBack: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.wrapper}>
+    <button
+      className={styles.wrapper}
+      onClick={() => navigate(-1)}
+      type="button"
+      data-cy="backButton"
+    >
       <img src={arrowLeft} alt="arrowLeft" />
-      <p
-        className="smallText"
-        onClick={() => navigate('../')}
-      >
+      <p className="smallText">
         Back
       </p>
-    </div>
+    </button>
   );
 };

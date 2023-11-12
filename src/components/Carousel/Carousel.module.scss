@@ -1,12 +1,12 @@
 @import "../../styles/variables.scss";
 
 .wrapper {
-  width: 1040px;
-  height: 400px;
+  width: Min(72.2vw, 1040px); // 1040px min(72.2vw, 1040px)
+  height: Min(27.7vw, 400px) ; //400px
   margin: 40px auto 72px;
 
   .img {
-    height: 400px;
+    height: Min(27.7vw, 400px); //400px
     width: 100%;
     object-fit: cover;
   }
@@ -31,6 +31,10 @@
 
     &:hover {
       border-color: $Primary;
+    }
+
+    @media (max-width: 425px) {
+      display: none;
     }
   }
 

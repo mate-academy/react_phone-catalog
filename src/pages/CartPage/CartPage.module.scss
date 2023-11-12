@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+
+.cart {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  margin-top: 24px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  &Items {
+    width: 70%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &Total {
+    width: 30%;
+    text-align: center;
+    border: 1px solid $Elements;
+    padding: 24px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    &Count {
+      color: $Secondary;
+    }
+
+    hr {
+      margin: 24px 0;
+    }
+
+    &Btn {
+      width: 100%;
+      height: 48px;
+    }
+  }
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  height: 70%;
+}

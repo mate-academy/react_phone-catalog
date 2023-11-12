@@ -1,18 +1,24 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import classNames from 'classnames';
-import styles from './Header.module.scss';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
-import logo from '../../img/icons/Logo.svg';
+import debounce from 'lodash.debounce';
+
+import styles from './Header.module.scss';
 import favoritesIcon from '../../img/icons/Favourites.svg';
 import cartIcon from '../../img/icons/Cart.svg';
 import Search from '../../img/icons/Search.svg';
+import Close from '../../img/icons/Close.svg';
 
 import { Icon } from '../Icon/Icon';
+import { useProducts } from '../../Store';
+import { NavBar } from '../NavBar';
 
-export const Header = () => {
+export const Header: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState(searchParams
+    .get('query') || '');
   const pathnameArr = useLocation().pathname.split('/');
   const carrPage = pathnameArr[pathnameArr.length - 1];
-
   const pagesHasSearch: { [key: string]: boolean } = {
     phones: true,
     tablets: true,
@@ -20,79 +26,83 @@ export const Header = () => {
     favourites: true,
     default: false,
   };
-
   const isShowSearch = pagesHasSearch[carrPage] || pagesHasSearch.default;
+  const favoritesCount = useProducts(state => state.favouritesProducts.length);
+  const cartCount = useProducts(state => state.cartProducts.length);
+  const handleSearchRequest = useMemo(() => debounce((value: string) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('query', value.trim());
+
+    if (!value.trim()) {
+      params.delete('query');
+    }
+
+    setSearchParams(params);
+  }, 500), [searchParams]);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    handleSearchRequest(e.target.value);
+  };
+
+  const cleanSearch = () => {
+    const params = new URLSearchParams(searchParams);
+
+    params.delete('query');
+    setSearchParams(params);
+    setSearchValue('');
+  };
+
+  useEffect(() => {
+    setSearchValue('');
+  }, [useLocation().pathname]);
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
-
-        <Icon path="/" icon={logo} alt="logo" />
-
-        <ul className={styles.nav}>
-          <li>
-            <NavLink
-              className={({ isActive }) => classNames('uppercase', {
-                [styles.active]: isActive,
-              })}
-              to="/"
-            >
-              home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => classNames('uppercase', {
-                [styles.active]: isActive,
-              })}
-              to="catalog/phones"
-            >
-              phones
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => classNames('uppercase', {
-                [styles.active]: isActive,
-              })}
-              to="catalog/tablets"
-            >
-              tablets
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={({ isActive }) => classNames('uppercase', {
-                [styles.active]: isActive,
-              })}
-              to="catalog/accessories"
-            >
-              accessories
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-
+      <NavBar />
       <div className={styles.rightBlock}>
-        { isShowSearch && (
-          <form action="#" className={styles.rightForm}>
+        {isShowSearch && (
+          <form action="#" className={styles.rightBlockForm}>
             <label>
-              <input type="text" placeholder={`Search in ${carrPage}...`} />
+              <input
+                type="text"
+                placeholder={`Search in ${carrPage}...`}
+                onChange={handleSearch}
+                value={searchValue}
+              />
             </label>
-            <img src={Search} alt="search" />
+            {searchValue ? (
+              <button type="button" onClick={cleanSearch}>
+                <img
+                  src={Close}
+                  alt="close"
+                />
+              </button>
+            ) : (
+              <img src={Search} alt="search" />
+            )}
           </form>
         )}
 
         <Icon
           path="/favourites"
           icon={favoritesIcon}
-          stylesName={styles.rightIcons}
-        />
+          stylesName={styles.rightBlockIconsItem}
+        >
+          {!!favoritesCount && (
+            <span className={styles.rightBlockCount}>{favoritesCount}</span>
+          )}
+        </Icon>
         <Icon
           path="/cart"
           icon={cartIcon}
-          stylesName={styles.rightIcons}
-        />
+          stylesName={styles.rightBlockIconsItem}
+        >
+          {!!cartCount && (
+            <span className={styles.rightBlockCount}>{cartCount}</span>
+          )}
+        </Icon>
       </div>
     </header>
   );

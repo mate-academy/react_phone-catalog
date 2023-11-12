@@ -11,9 +11,11 @@ import { Gallery } from '../../components/Gallery';
 import { Order } from '../../components/Order';
 import { SpecificationsProduct } from '../../components/SpecificationsProduct';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { Loader } from '../../components/Loader';
 
 export const ProductPage = () => {
   const { product } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
   const [productDetail, setProductDetail] = useState<ProductDetail>();
   const products = useProducts(state => state.products);
   const productId = (products
@@ -21,8 +23,12 @@ export const ProductPage = () => {
     .concat('00000').slice(0, 6);
 
   useEffect(() => {
+    setIsLoading(true);
+
     if (product) {
-      getDetails(product).then(setProductDetail);
+      getDetails(product)
+        .then(setProductDetail)
+        .finally(() => setIsLoading(false));
     }
   }, [product]);
 
@@ -30,6 +36,7 @@ export const ProductPage = () => {
     <>
       <ShowLocation />
       <GoToBack />
+      {isLoading && <Loader />}
       {productDetail && (
         <>
           <h1>{productDetail.name}</h1>
@@ -48,7 +55,12 @@ export const ProductPage = () => {
                   className={styles.descriptionElement}
                 >
                   <h3>{el.title}</h3>
-                  <div className={styles.descriptionElementInfo}>{el.text}</div>
+                  <div
+                    className={styles.descriptionElementInfo}
+                    data-cy="productDescription"
+                  >
+                    {el.text}
+                  </div>
                 </div>
               ))}
             </div>

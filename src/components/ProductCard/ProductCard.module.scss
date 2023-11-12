@@ -1,9 +1,14 @@
 @import "../../styles/variables.scss";
 
 .productCard {
+  position: relative;
   padding: 24px;
   border: 1px solid $Elements;
   width: max-content;
+
+  @media (max-width: 375px) {
+    padding: 8px;
+  }
 }
 
 .productImg {
@@ -42,7 +47,20 @@ hr {
 
   margin-top: 16px;
 
+  @media (max-width: 375px) {
+    justify-content: center;
+  }
+
   &Icon {
     padding: 12px;
+
+    @media (max-width: 375px) {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      border: none;
+      background: transparent;
+    }
   }
 }

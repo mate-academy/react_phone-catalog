@@ -18,7 +18,10 @@ export const HomePage = () => {
       <ProductsSlider title="Hot prices" products={sortDiscount(products)} />
       <div className={styles.categories}>
         <h1>Shop by category</h1>
-        <div className={styles.categoriesBlock}>
+        <div
+          className={styles.categoriesBlock}
+          data-cy="categoryLinksContainer"
+        >
           <div className={styles.categoriesProduct}>
             <Link
               to="catalog/phones"

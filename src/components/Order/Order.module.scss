@@ -5,6 +5,10 @@
   margin-right: 17%;
   color: $Secondary;
 
+  @media (max-width: 768px) {
+    margin: 0;
+  }
+
   &SmallTitle {
     margin-bottom: 9px;
   }
