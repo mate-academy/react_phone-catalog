@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = './_new/products';
+// eslint-disable-next-line max-len
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products';
 
 export async function getAllProducts() {
   const products = await axios.get(`${BASE_URL}.json`);
