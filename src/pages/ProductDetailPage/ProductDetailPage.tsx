@@ -26,9 +26,18 @@ export const ProductDetailPage = () => {
   const [activeImage, setActiveImage] = useState(0);
   const hasProductDetails = !!Object.values(productDetails).length && product;
 
+  const isItemInCart = false;
+  const isItemInFavourite = true;
+
   const {
     name,
     images,
+    display,
+    storage,
+    description,
+    connectivity,
+    camera,
+    android,
   } = productDetails;
 
   const getSuggestedProducts = (count: number) => {
@@ -143,11 +152,152 @@ export const ProductDetailPage = () => {
               <div className="ProductDetailPage__info--buttons">
                 <Button
                   variant="cart"
+                  card={isItemInCart ? 'added' : undefined}
+                  className="ProductDetailPage__info--buttons--cart"
                 >
-                  Add to cart
+                  {isItemInCart
+                    ? 'Added to cart'
+                    : 'Add to cart'}
                 </Button>
 
-                <Button variant="favourite" />
+                <Button
+                  variant="favourite"
+                  favourite={isItemInFavourite ? 'added' : undefined}
+                  className="ProductDetailPage__info--buttons--favourite"
+                />
+              </div>
+
+              <div className="ProductDetailPage__info--specs-small Characters">
+                <div className="Characters__row">
+                  <p className="Characters__row--key">
+                    Resolution
+                  </p>
+                  <p className="Characters__row--value">
+                    {display.screenResolution || '-'}
+                  </p>
+                </div>
+
+                <div className="Characters__row">
+                  <p className="Characters__row--key">
+                    Screen size
+                  </p>
+                  <p className="Characters__row--value">
+                    {display.screenSize || '-'}
+                  </p>
+                </div>
+
+                <div className="Characters__row">
+                  <p className="Characters__row--key">
+                    Capacity
+                  </p>
+                  <p className="Characters__row--value">
+                    {storage.flash || '-'}
+                  </p>
+                </div>
+
+                <div className="Characters__row">
+                  <p className="Characters__row--key">
+                    RAM
+                  </p>
+                  <p className="Characters__row--value">
+                    {storage.ram || '-'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="ProductDetailPage__about"
+              data-cy="productDescription"
+            >
+              <h2 className="ProductDetailPage__about--title">
+                About
+              </h2>
+
+              <p className="ProductDetailPage__about--description">
+                {description}
+              </p>
+            </div>
+
+            <div className="ProductDetailPage__tech-specs">
+              <h2 className="ProductDetailPage__tech-specs--title">
+                Tech specs
+              </h2>
+
+              <div
+                className="ProductDetailPage__tech-specs--char Tech-specs"
+              >
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Screen size
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {display.screenSize || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Resolution
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {display.screenResolution || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Bluetooth
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {connectivity.bluetooth || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Camera
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {camera.primary || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Camera features
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {camera.features.join(' + ') || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Capacity
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {storage.flash || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    RAM
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {storage.ram || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    OS
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {android.os || '-'}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

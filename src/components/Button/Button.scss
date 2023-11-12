@@ -22,7 +22,7 @@
     &:not(:disabled):hover {
       border: 1px solid $gray-primary;
     }
-    
+
     &-top {
       transform: rotate(-90deg);
     }
@@ -36,14 +36,20 @@
     width: 176px;
     height: 40px;
     background: $gray-primary;
-    
+
     @extend %buttons;
     color: $gray-white;
 
     transition: all $effect-duration ease-in-out;
-    
+
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &-added {
+      color: $green;
+      border: 1px solid $gray-elements;
+      background: transparent;
     }
   }
 
@@ -57,6 +63,10 @@
 
     &:hover {
       border: 1px solid $gray-primary;
+    }
+
+    &-added {
+      background: no-repeat center url("../../icons/favourites-added.svg");
     }
   }
 

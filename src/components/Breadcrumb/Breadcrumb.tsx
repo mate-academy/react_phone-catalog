@@ -8,7 +8,7 @@ export const Breadcrumb = () => {
 
   return (
     <div className="BreadCrumb" data-cy="breadCrumbs">
-      <Link to="/">
+      <Link to="/" className="BreadCrumb__home-icon">
         <img
           src="icons/home.svg"
           alt="favourites"

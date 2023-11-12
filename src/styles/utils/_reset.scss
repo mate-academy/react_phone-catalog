@@ -1,8 +1,14 @@
-h1, h2, h3, p, ul, body {
+h1,
+h2,
+h3,
+p,
+ul,
+body {
   margin: 0;
 }
 
-a, a:visited {
+a,
+a:visited {
   text-decoration: none;
 }
 
@@ -26,7 +32,8 @@ table {
   }
 }
 
-select, option {
+select,
+option {
   margin: 0;
   padding: 0;
 }

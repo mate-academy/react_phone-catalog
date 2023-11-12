@@ -5,6 +5,10 @@
   align-items: center;
   column-gap: 8px;
 
+  &__home-icon {
+    height: 16px;
+  }
+
   &__crumb {
     display: flex;
     gap: 8px;
@@ -15,7 +19,6 @@
     font-size: 12px;
     text-transform: capitalize;
     color: $gray-primary;
-
 
     &:not(:first-child)::before {
       display: block;
