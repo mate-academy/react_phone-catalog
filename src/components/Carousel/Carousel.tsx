@@ -45,21 +45,21 @@ export const Carousel = () => {
         <div>
           <img
             className={styles.img}
-            src="./_new/img/banner-phones.png"
+            src="new/img/banner-phones.png"
             alt="banner"
           />
         </div>
         <div>
           <img
             className={styles.img}
-            src="./_new/img/banner-accessories.png"
+            src="new/img/banner-accessories.png"
             alt="banner"
           />
         </div>
         <div>
           <img
             className={styles.img}
-            src="./_new/img/banner-tablets.png"
+            src="new/img/banner-tablets.png"
             alt="banner"
           />
         </div>

@@ -34,7 +34,7 @@ export const Gallery: React.FC<Props> = ({ productDetail }) => {
               <img
                 className={classNames([styles.galleryItem],
                   { [styles.active]: `http://localhost:3000/_new/${img}` === carrImg })}
-                src={`./_new/${img}`}
+                src={`new/${img}`}
                 alt="thumb"
                 onClick={() => changeImg(img)}
               />
@@ -44,7 +44,7 @@ export const Gallery: React.FC<Props> = ({ productDetail }) => {
         <div>
           <img
             className={styles.galleryLarge}
-            src={`./_new/${productDetail?.images[0]}`}
+            src={`new/${productDetail?.images[0]}`}
             alt="large"
             ref={galleryLargeRef}
           />
