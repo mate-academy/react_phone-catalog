@@ -177,12 +177,12 @@ export const Details: React.FC<Props> = ({ productDetails }) => {
             </div>
 
             <div className="details__price">
-              <span className="details__price-regular">
-                {`$${priceRegular}`}
-              </span>
-
               <span className="details__price-discount">
                 {`$${priceDiscount}`}
+              </span>
+
+              <span className="details__price-regular">
+                {`$${priceRegular}`}
               </span>
             </div>
 

@@ -192,15 +192,15 @@
     align-items: center;
 
     &-regular {
-      font-size: 32px;
-      font-weight: 700;
-    }
-
-    &-discount {
       font-size: 22px;
       font-weight: 500;
       color: $color-secondary;
       text-decoration: line-through;
+    }
+
+    &-discount {
+      font-size: 32px;
+      font-weight: 700;
     }
   }
 
