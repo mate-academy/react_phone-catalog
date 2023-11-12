@@ -27,7 +27,7 @@ export const HomePage = () => {
               to="catalog/phones"
               className={`${styles.categoriesProductImgBlock} ${styles.phones}`}
             >
-              <img src="./_new/img/category-phones.png" alt="phones" />
+              <img src="new/img/category-phones.png" alt="phones" />
             </Link>
             <h3>Mobile phones</h3>
             <p className="bodyText">{`${filterByCategory(products, 'phones').length} models`}</p>
@@ -37,7 +37,7 @@ export const HomePage = () => {
               to="catalog/tablets"
               className={`${styles.categoriesProductImgBlock} ${styles.tablets}`}
             >
-              <img src="./_new/img/category-tablets.png" alt="phones" />
+              <img src="new/img/category-tablets.png" alt="phones" />
             </Link>
             <h3>Tablets</h3>
             <p className="bodyText">{`${filterByCategory(products, 'tablets').length} models`}</p>
@@ -47,7 +47,7 @@ export const HomePage = () => {
               to="catalog/accessories"
               className={`${styles.categoriesProductImgBlock} ${styles.accessories}`}
             >
-              <img src="./_new/img/category-accessories.png" alt="phones" />
+              <img src="new/img/category-accessories.png" alt="phones" />
             </Link>
             <h3>Accessories</h3>
             <p className="bodyText">{`${filterByCategory(products, 'accessories').length} models`}</p>
