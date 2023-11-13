@@ -1,4 +1,5 @@
 @import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
 
 .Back {
   display: flex;
@@ -14,5 +15,9 @@
   &__text {
     @extend %text-small;
     margin: 0;
+  }
+
+  & &__text:hover {
+    color: $gray-main;
   }
 }

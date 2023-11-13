@@ -134,6 +134,14 @@
     background-color: $gray-main;
     border: 1px solid transparent;
     cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $gray-main;
+      background-color: $html-bg-color;
+      border: 1px solid $gray-main;
+    }
   }
 
   &__added-to-cart {

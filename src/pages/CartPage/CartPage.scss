@@ -89,6 +89,11 @@
       background-color: $gray-main;
       border: 1px solid transparent;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+      }
     }
 
     &-message {

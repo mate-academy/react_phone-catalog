@@ -9,6 +9,11 @@
   &__home-img {
     height: 16px;
     width: 16px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__arrow {
@@ -28,6 +33,10 @@
     &--dark {
       color: $gray-main;
     }
+  }
+
+  & &__page-title:hover {
+    color: $gray-second;
   }
 
   &__product-title {

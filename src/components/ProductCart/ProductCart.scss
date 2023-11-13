@@ -8,6 +8,11 @@
   height: 507px;
   padding: 24px;
   border: 1px solid $gray-elements;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(0.97);
+  }
 
   @include onTablet {
     width: 272px;

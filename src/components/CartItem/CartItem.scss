@@ -30,6 +30,11 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   &__link {
@@ -37,6 +42,11 @@
     align-items: center;
     gap: 24px;
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 
   &__image {
