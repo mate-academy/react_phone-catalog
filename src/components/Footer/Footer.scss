@@ -9,7 +9,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 96px;
+
+    @include onTablet {
+      justify-content: space-between;
+      align-items: center;
+      height: 96px;
+    }
   }
 
   &__nav {

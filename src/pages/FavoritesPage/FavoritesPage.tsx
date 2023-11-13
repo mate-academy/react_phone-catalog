@@ -37,7 +37,7 @@ export const FavoritesPage: React.FC = () => {
       )}
       <div className="container">
         <div className="Favorites__content">
-          <Breadcrumbs page="Favorites" />
+          <Breadcrumbs page={['Favorites']} />
 
           <div className="Favorites__main-info">
             <h2 className="Favorites__title">

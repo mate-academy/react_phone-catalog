@@ -119,7 +119,7 @@ export const PhonesPage: React.FC = () => {
       <div className="container">
         <div className="CategoryPage__content">
 
-          <Breadcrumbs page="Phones" />
+          <Breadcrumbs page={['Phones']} />
 
           <div className="CategoryPage__main-info">
             <h1 className="CategoryPage__title">

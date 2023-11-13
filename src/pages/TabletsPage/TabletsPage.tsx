@@ -110,7 +110,7 @@ export const TabletsPage: React.FC = () => {
     <div className="CategoryPage">
       <div className="container">
         <div className="CategoryPage__content">
-          <Breadcrumbs page="Tablets" />
+          <Breadcrumbs page={['Tablets']} />
 
           <div className="CategoryPage__main-info">
             <h1 className="CategoryPage__title">

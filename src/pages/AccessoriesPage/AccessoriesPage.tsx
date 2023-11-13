@@ -114,7 +114,7 @@ export const AccessoriesPage: React.FC = () => {
       </div>
       <div className="container">
         <div className="CategoryPage__content">
-          <Breadcrumbs page="Accessories" />
+          <Breadcrumbs page={['Accessories']} />
 
           <div className="CategoryPage__main-info">
             <h1 className="CategoryPage__title">

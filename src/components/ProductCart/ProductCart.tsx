@@ -32,7 +32,7 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
   } = newProduct;
 
   return (
-    <div className="ProductCart">
+    <li className="ProductCart">
       <Link to={`/${category}/${itemId}`} className="ProductCart__link">
         <div className="ProductCart__image-container">
           <img
@@ -111,6 +111,6 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
           onClick={() => handleAddToFav(newProduct)}
         />
       </div>
-    </div>
+    </li>
   );
 };

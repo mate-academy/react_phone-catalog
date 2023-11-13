@@ -42,12 +42,13 @@
 
   &__dropdowns {
     display: flex;
-    gap: 16px;
-  }
-
-  &__product-list {
-    display: flex;
+    // justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 8px;
+
+    @include onMobileXL {
+      // justify-content: flex-start;
+      gap: 16px;
+    }
   }
 }

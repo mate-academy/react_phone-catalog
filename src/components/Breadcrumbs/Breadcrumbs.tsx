@@ -5,11 +5,10 @@ import homeIcon from '../../images/icons/Home.svg';
 import './Breadcrumbs.scss';
 
 type Props = {
-  page: string,
-  productName?: string | null,
+  page: string[],
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ page, productName = null }) => {
+export const Breadcrumbs: React.FC<Props> = ({ page }) => {
   return (
     <div
       className="Breadcrumbs"
@@ -25,20 +24,19 @@ export const Breadcrumbs: React.FC<Props> = ({ page, productName = null }) => {
 
       <div className="Breadcrumbs__arrow" />
       <Link
-        to={`/${page}`}
+        to={`/${page[0]}`}
         className={classNames('Breadcrumbs__page-title', {
-          'Breadcrumbs__page-title--dark': productName,
+          'Breadcrumbs__page-title--dark': page.length > 1,
         })}
       >
-        {page}
+        {page[0]}
       </Link>
 
-      {productName && (
+      {page.length > 1 && (
         <>
           <div className="Breadcrumbs__arrow" />
-
           <p className="Breadcrumbs__product-title">
-            {productName}
+            {page[1]}
           </p>
         </>
       )}

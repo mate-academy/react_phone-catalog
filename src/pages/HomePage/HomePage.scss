@@ -12,14 +12,38 @@
   }
 
   &__slider {
-    @include onTablet {
+    @include onMobileXL {
       display: none;
+    }
+
+    &--mobileXL {
+      display: none;
+
+      @include onMobileXL {
+        display: flex;
+      }
+
+      @include onTablet {
+        display: none;
+      }
     }
 
     &--tablet {
       display: none;
 
       @include onTablet {
+        display: flex;
+      }
+
+      @include onTabletXL {
+        display: none;
+      }
+    }
+
+    &--tabletXL {
+      display: none;
+
+      @include onTabletXL {
         display: flex;
       }
 

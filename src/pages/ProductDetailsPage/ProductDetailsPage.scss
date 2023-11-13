@@ -75,6 +75,11 @@
 
   &__images {
     display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+    }
 
     &-list {
       display: flex;

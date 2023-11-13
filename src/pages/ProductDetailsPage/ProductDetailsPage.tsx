@@ -73,7 +73,7 @@ export const ProductDetailsPage: React.FC = () => {
       <div className="container">
         {isLoading && (<Loader />)}
 
-        {!productDetails && (
+        {!productDetails && !isLoading && (
           <ProductNotFound />
         )}
 
@@ -83,8 +83,10 @@ export const ProductDetailsPage: React.FC = () => {
               <section className="ProductDetailsPage__section">
                 <div className="ProductDetailsPage__top">
                   <Breadcrumbs
-                    page={currentPage}
-                    productName={productDetails.name}
+                    page={[
+                      currentPage,
+                      productDetails.name.replace('GB', ' GB'),
+                    ]}
                   />
                   <div className="ProductDetailsPage__back-and-title">
                     <BackButton />
