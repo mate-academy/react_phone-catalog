@@ -1,5 +1,5 @@
-import { HotPrice } from '../components/HotPrice';
 import { PictureSlider } from '../components/PictureSlider';
+import { HotPrice } from '../components/HotPrice';
 import { BrandNew } from '../components/BrandNew';
 import { ShopByCategory } from '../components/ShopByCategory';
 import '../styles/blocks/home-page.scss';

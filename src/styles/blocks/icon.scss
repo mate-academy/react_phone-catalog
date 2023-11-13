@@ -15,4 +15,8 @@
   &--right {
     transform: rotate(90deg);
   }
+
+  &--down {
+    transform: rotate(180deg);
+  }
 }

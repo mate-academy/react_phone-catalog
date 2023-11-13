@@ -9,4 +9,5 @@ export const ICONS = {
   close_icon: require('./close_icon.svg').default,
   search_icon: require('./search_icon.svg').default,
   favourites_like: require('./favourites_like.svg').default,
+  home_icon: require('./home_icon.svg').default,
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { GlobalContext } from '../../store/GlobalContext';
@@ -10,7 +10,7 @@ type Props = {
   product: Product,
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = memo(({ product }) => {
   const {
     id,
     discount,
@@ -81,43 +81,45 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className="card__info">
-        <p className="card__title">
-          {name}
-        </p>
-
-        <div className="card__price">
-          <p className="card__price-new">
-            {`$${price}`}
+        <Link to={`/phones/${id}`}>
+          <p className="card__title">
+            {name}
           </p>
-          {discount && (
-            <p className="card__price-old">
-              <s>{`$${fullPrice}`}</s>
-            </p>
-          )}
-        </div>
 
-        <div className="card__line" />
+          <div className="card__price">
+            <p className="card__price-new">
+              {`$${price}`}
+            </p>
+            {discount && (
+              <p className="card__price-old">
+                <s>{`$${fullPrice}`}</s>
+              </p>
+            )}
+          </div>
 
-        <div className="card__specs">
-          <div className="card__specs-box">
-            <p className="card__specs-title">Screen</p>
-            <p className="card__specs-details">
-              {screen}
-            </p>
+          <div className="card__line" />
+
+          <div className="card__specs">
+            <div className="card__specs-box">
+              <p className="card__specs-title">Screen</p>
+              <p className="card__specs-details">
+                {screen}
+              </p>
+            </div>
+            <div className="card__specs-box">
+              <p className="card__specs-title">Capacity</p>
+              <p className="card__specs-details">
+                {capacity}
+              </p>
+            </div>
+            <div className="card__specs-box">
+              <p className="card__specs-title">RAM</p>
+              <p className="card__specs-details">
+                {ram}
+              </p>
+            </div>
           </div>
-          <div className="card__specs-box">
-            <p className="card__specs-title">Capacity</p>
-            <p className="card__specs-details">
-              {capacity}
-            </p>
-          </div>
-          <div className="card__specs-box">
-            <p className="card__specs-title">RAM</p>
-            <p className="card__specs-details">
-              {ram}
-            </p>
-          </div>
-        </div>
+        </Link>
 
         <div className="card__btns">
           <div className="card__btns-container">
@@ -149,4 +151,4 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
     </div>
   );
-};
+});

@@ -2,9 +2,37 @@
 
 .button {
   cursor: pointer;
+  box-shadow: none;
+
+  &--dropdown {
+    width: 176px;
+    height: 40px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+
+    &-small {
+      width: 128px;
+    }
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+
+    &:focus {
+      border: 1px solid $primery-color;
+    }
+  }
 
   &__text {
     @extend %buttons;
+
+    &--color {
+      color: $primery-color;
+    }
   }
 
   &--clear {
@@ -30,7 +58,7 @@
   }
 
   &--selected {
-    background-color: $elements-color;
+    background-color: $white-color;
     color: $green-color;
   }
 

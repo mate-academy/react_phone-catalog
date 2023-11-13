@@ -31,6 +31,7 @@ export const Header = () => {
 
   useEffect(() => {
     setAppliedQuery('');
+
     switch (pathname) {
       case '/phones':
         setIsFilter(true);

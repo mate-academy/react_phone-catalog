@@ -1,7 +1,10 @@
-@import "../../styles/utils";
-
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 body,
@@ -11,6 +14,7 @@ h3,
 button,
 p,
 ul,
+li,
 input {
   margin: 0;
   padding: 0;
@@ -22,13 +26,4 @@ a {
 
 ul {
   list-style: none;
-}
-
-.App {
-  height: 100vh;
-  max-width: 1400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: $white-color;
 }

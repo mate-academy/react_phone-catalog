@@ -1,0 +1,41 @@
+@import "../../styles/utils";
+
+.pagination {
+  display: flex;
+  gap: 16px;
+
+  margin: auto;
+
+  &__numbers {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    &:hover {
+      border: 1px solid $primery-color;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      border: 1px solid $elements-color;
+    }
+
+    &--number {
+      color: #000;
+    }
+
+    &--selected {
+      background-color: $primery-color;
+      color: $white-color;
+    }
+  }
+}

@@ -1,6 +1,13 @@
 @import "../utils";
 
 .title {
+
+  &--h1 {
+    @extend %h1-style;
+
+    color: $primery-color;
+  }
+
   &--h2 {
     @extend %h2-style;
   }

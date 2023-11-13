@@ -1,6 +1,7 @@
 @import "./styles/utils";
 
 .App {
+  scroll-behavior: smooth;
   height: 100vh;
   max-width: 1400px;
   display: flex;
@@ -10,5 +11,9 @@
 
   &__home-page {
     margin-block: 40px 80px;
+  }
+
+  &__phones-page {
+    margin-block: 24px 80px;
   }
 }
