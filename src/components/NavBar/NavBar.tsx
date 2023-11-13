@@ -9,7 +9,7 @@ import logo from '../../img/icons/Logo.svg';
 import { Icon } from '../Icon/Icon';
 
 export const NavBar = () => {
-  const isTablet = useMediaQuery('(max-width: 768px)');
+  const isTablet = useMediaQuery('(max-width: 992px)');
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (

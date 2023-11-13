@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
-
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
 import debounce from 'lodash.debounce';
 
 import styles from './Header.module.scss';
@@ -9,7 +9,6 @@ import cartIcon from '../../img/icons/Cart.svg';
 import Search from '../../img/icons/Search.svg';
 import Close from '../../img/icons/Close.svg';
 
-import { Icon } from '../Icon/Icon';
 import { useProducts } from '../../Store';
 import { NavBar } from '../NavBar';
 
@@ -85,24 +84,30 @@ export const Header: React.FC = () => {
           </form>
         )}
 
-        <Icon
-          path="/favourites"
-          icon={favoritesIcon}
-          stylesName={styles.rightBlockIconsItem}
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) => classNames([styles.rightBlockIconsItem],
+            {
+              [styles.rightBlockIconsItemActive]: isActive,
+            })}
         >
+          <img src={favoritesIcon} alt="favorites" />
           {!!favoritesCount && (
             <span className={styles.rightBlockCount}>{favoritesCount}</span>
           )}
-        </Icon>
-        <Icon
-          path="/cart"
-          icon={cartIcon}
-          stylesName={styles.rightBlockIconsItem}
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames([styles.rightBlockIconsItem],
+            {
+              [styles.rightBlockIconsItemActive]: isActive,
+            })}
         >
+          <img src={cartIcon} alt="favorites" />
           {!!cartCount && (
             <span className={styles.rightBlockCount}>{cartCount}</span>
           )}
-        </Icon>
+        </NavLink>
       </div>
     </header>
   );

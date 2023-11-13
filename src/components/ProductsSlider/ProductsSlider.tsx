@@ -17,7 +17,7 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const isSmallDesktop = useMediaQuery('(max-width: 1340px)');
-  const isMobile = useMediaQuery('(max-width: 425px)');
+  const isMobile = useMediaQuery('(max-width: 692px)');
   // eslint-disable-next-line no-nested-ternary
   const slidesToShow = isSmallDesktop
     ? isMobile ? 1 : 2

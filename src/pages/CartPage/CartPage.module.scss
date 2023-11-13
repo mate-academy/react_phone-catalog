@@ -7,7 +7,7 @@
 
   margin-top: 24px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     flex-direction: column;
   }
 
@@ -18,7 +18,7 @@
     flex-direction: column;
     gap: 16px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       width: 100%;
     }
   }
@@ -29,7 +29,7 @@
     border: 1px solid $Elements;
     padding: 24px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       width: 100%;
     }
 

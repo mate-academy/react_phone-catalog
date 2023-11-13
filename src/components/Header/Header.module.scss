@@ -41,7 +41,7 @@
         font-weight: 600;
       }
 
-      @media (max-width: 425px) {
+      @media (max-width: 658px) {
         display: none;
       }
     }
@@ -73,7 +73,21 @@
       padding: 24px;
       margin: -21px 0;
       border-left: 1px solid $Elements;
+
+      &Active {
+        color: $Primary;
+        position: relative;
+    
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          width: 100%;
+          background-color: $Primary;
+        }
+      }
     }
-  
   }
 }

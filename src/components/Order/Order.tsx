@@ -73,7 +73,7 @@ export const Order: React.FC<Props> = ({ productDetail }) => {
               className={classNames([styles.orderColorLink], {
                 [styles.orderColorLinkActive]: color === productDetail.color,
               })}
-              to={`../../catalog/phones/${idWithoutParams}-${productDetail.capacity}-${color}`}
+              to={`../../catalog/phones/${idWithoutParams}-${productDetail.capacity.toLocaleLowerCase()}-${color}`}
             >
               <li
                 className={styles.orderColor}
@@ -89,7 +89,7 @@ export const Order: React.FC<Props> = ({ productDetail }) => {
           {productDetail.capacityAvailable.map((capacity) => (
             <Link
               key={capacity}
-              to={`../../catalog/phones/${idWithoutParams}-${capacity}-${productDetail.color}`}
+              to={`../../catalog/phones/${idWithoutParams}-${capacity.toLocaleLowerCase()}-${productDetail.color}`}
             >
               <li
                 className={classNames([styles.orderCapacity], {

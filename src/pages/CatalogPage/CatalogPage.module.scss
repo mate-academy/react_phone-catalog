@@ -35,7 +35,7 @@
   display: flex;
   gap: 16px;
 
-  @media (max-width: 425px) {
+  @media (max-width: 658px) {
     flex-direction: column;
     align-items: center;
     gap: 0;
@@ -50,15 +50,15 @@
 
   margin-bottom: 80px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1320px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 658px) {
     grid-template-columns: 1fr;
   }
 }
