@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root,
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+iframe {
+  display: none;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-SemiBold.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("/fonts/Mont-Bold.otf");
+  font-weight: 700;
+}
