@@ -1,0 +1,14 @@
+.header {
+  user-select: text;
+  border: 1px solid red;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__nav {
+    display: flex;
+  }
+}
