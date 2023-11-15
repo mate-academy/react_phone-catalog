@@ -1,13 +1,11 @@
 import { Outlet } from 'react-router-dom';
 
 import './App.scss';
-import { Logo } from './components/Logo';
+import { Header } from './components/Header';
 
 const App = () => (
   <>
-    <header>
-      <Logo />
-    </header>
+    <Header />
 
     <main>
       <Outlet />
