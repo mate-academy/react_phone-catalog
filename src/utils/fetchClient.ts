@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+import { BASE_URL } from './const';
 
 function wait(delay: number) {
   return new Promise(resolve => {

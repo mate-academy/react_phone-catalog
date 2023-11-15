@@ -1,7 +1,6 @@
 @import "../utils";
 
 .title {
-
   &--h1 {
     @extend %h1-style;
 
@@ -10,5 +9,13 @@
 
   &--h2 {
     @extend %h2-style;
+
+    color: $primery-color;
+  }
+
+  &--empty-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

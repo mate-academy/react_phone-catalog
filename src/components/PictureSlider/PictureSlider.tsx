@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
 import cn from 'classnames';
-import { BANNER_IMGS } from '../../img/slider';
 import { ICONS } from '../../icons';
 import './PictureSlider.scss';
-
-const SLIDER_LIST = [
-  { id: 1, src: BANNER_IMGS.bannerTablet, alt: 'Tablets' },
-  { id: 2, src: BANNER_IMGS.bannerPhones, alt: 'Phones' },
-  { id: 3, src: BANNER_IMGS.bannerAccessories, alt: 'Accessories' },
-];
+import { SLIDER_LIST } from '../../utils/const';
 
 export const PictureSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -62,7 +62,12 @@ const ProductsSlider: React.FC<Props> = ({
 
   return (
     <>
-      <div className="slider-section">
+      <div
+        className="slider-section"
+        style={{
+          width: `${frameSize * itemWidth + (gap * (frameSize - 1))}px`,
+        }}
+      >
         <div className="slider-section__wrap">
           <h2 className="title title--h2">
             {sliderTitle}
@@ -100,9 +105,6 @@ const ProductsSlider: React.FC<Props> = ({
         <div
           className="slider-section__cards-container"
           data-cy="cardsContainer"
-          style={{
-            width: `${frameSize * itemWidth + (gap * (frameSize - 1))}px`,
-          }}
         >
           <ul
             className="slider-section__list"

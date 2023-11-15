@@ -2,7 +2,6 @@ import { useMemo, useContext } from 'react';
 import { GlobalContext } from '../../store/GlobalContext';
 import ProductsSlider from '../ProductsSlider/ProductsSlider';
 import { getBrandNewProducts } from '../../helpers/getProductsByCategories';
-import './BrandNew.scss';
 
 export const BrandNew = () => {
   const { products } = useContext(GlobalContext);

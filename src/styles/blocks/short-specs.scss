@@ -1,0 +1,32 @@
+@import "../utils";
+
+.short-specs {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+
+  &__name {
+    color: $secondary-color;
+
+    &--small-text {
+      @extend %small-text;
+    }
+
+    &--body-text {
+      @extend %body-text;
+    }
+  }
+
+  &__details {
+    text-align: right;
+    color: $primery-color;
+
+    &--small-text {
+      @extend %small-text;
+    }
+
+    &--body-text {
+      @extend %body-text;
+    }
+  }
+}

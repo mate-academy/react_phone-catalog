@@ -26,7 +26,7 @@ export const Footer = () => {
               <ul className="nav__list">
                 <li className="nav__item">
                   <NavLink
-                    to="/git"
+                    to="https://github.com/YuraMisura/react_phone-catalog"
                     className={getLinkClass}
                   >
                     GITHUB

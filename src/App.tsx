@@ -5,9 +5,9 @@ import './App.scss';
 
 export const App = () => {
   return (
-    <div>
+    <div className="App">
       <Header />
-      <main>
+      <main className="main">
         <Outlet />
       </main>
       <Footer />

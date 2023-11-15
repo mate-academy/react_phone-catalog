@@ -1,5 +1,5 @@
 import React, { useContext, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { GlobalContext } from '../../store/GlobalContext';
 import { Product } from '../../type/Product';
@@ -11,8 +11,10 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = memo(({ product }) => {
+  const [searchParams] = useSearchParams();
+
   const {
-    id,
+    phoneId,
     discount,
     image,
     name,
@@ -26,53 +28,18 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
   } = product;
 
   const {
-    products,
-    setProducts,
-    localStore,
-    setLocalStore,
+    handleAddCard,
   } = useContext(GlobalContext);
-
-  const handleAddCard = (card: Product, action: string) => {
-    const currentProducts = [...products];
-    let currentStore = [...localStore];
-    let updatedCard: Product = { ...card };
-
-    if (action === 'addCard') {
-      updatedCard = { ...card, isAddCard: !card.isAddCard };
-    }
-
-    if (action === 'favourites') {
-      updatedCard = { ...card, inFavourite: !card.inFavourite };
-    }
-
-    if (!updatedCard.isAddCard && !updatedCard.inFavourite) {
-      currentStore = currentStore
-        .filter(el => el.id !== updatedCard.id);
-    } else {
-      const indexStore = currentStore
-        .findIndex(storeEl => storeEl.id === card.id);
-
-      if (indexStore !== -1) {
-        currentStore.splice(indexStore, 1, updatedCard);
-      } else {
-        currentStore = [...currentStore, updatedCard];
-      }
-    }
-
-    const index = currentProducts.findIndex(el => el.id === card.id);
-
-    currentProducts.splice(index, 1, updatedCard);
-
-    setProducts(currentProducts);
-    setLocalStore(currentStore);
-  };
 
   return (
     <div
       className="card"
       data-qa="card"
     >
-      <Link to={`/phones/${id}`}>
+      <Link
+        to={`/phones/${phoneId}`}
+        state={{ search: searchParams.toString() }}
+      >
         <img
           src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
           alt={name}
@@ -81,7 +48,10 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
       </Link>
 
       <div className="card__info">
-        <Link to={`/phones/${id}`}>
+        <Link
+          to={`/phones/${phoneId}`}
+          state={{ search: searchParams.toString() }}
+        >
           <p className="card__title">
             {name}
           </p>

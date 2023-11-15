@@ -1,4 +1,4 @@
-@import "./styles/utils";
+@import "./styles/main.scss";
 
 .App {
   scroll-behavior: smooth;
@@ -16,4 +16,21 @@
   &__phones-page {
     margin-block: 24px 80px;
   }
+
+  &__tablets-page {
+    margin-block: 24px 80px;
+  }
+
+  &__accessories-page {
+    margin-block: 24px 80px;
+  }
+
+  &__product-details {
+    margin-block: 24px 80px;
+  }
+}
+
+.main {
+  flex-grow: 1;
+  overflow-y: auto;
 }

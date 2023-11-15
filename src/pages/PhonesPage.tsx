@@ -13,8 +13,6 @@ import { ProductsList } from '../components/ProductsList';
 import { ITEMS_ON_PAGE, SORT_BY } from '../utils/const';
 import { Pagination } from '../components/Pagination';
 import { getFilteredPhones } from '../helpers/getFilterdPhones';
-import { Product } from '../type/Product';
-import '../styles/blocks/phones-page.scss';
 import { NoSearchResults } from '../components/NoSearchResults';
 
 export const PhonesPage = () => {
@@ -28,7 +26,10 @@ export const PhonesPage = () => {
   const page = +(searchParams.get('page') || '1');
   const query = searchParams.get('query') || '';
 
-  const [sortedPhones, setSortedPhones] = useState<Product[]>([]);
+  const sortedPhones = getFilteredPhones(
+    products,
+    { sortBy, query, filter: 'phones' },
+  );
 
   const timerId = useRef(0);
 
@@ -38,12 +39,8 @@ export const PhonesPage = () => {
 
     timerId.current = window.setTimeout(() => {
       setIsLoading(false);
-      setSortedPhones(getFilteredPhones(
-        products,
-        { sortBy, query, filter: 'phones' },
-      ));
     }, 1000);
-  }, [page, perPage, sortBy, products, query]);
+  }, [page, perPage]);
 
   const TOTAL_AMOUNT = sortedPhones.length;
   const begin = (page * +perPage) - +perPage;
@@ -91,27 +88,31 @@ export const PhonesPage = () => {
           </div>
 
           {isLoading && <Loader />}
-          {!isLoading && TOTAL_AMOUNT
-            ? (
-              <div className="productList" data-cy="productList">
-                <ProductsList
-                  phones={
-                    perPage === 'all'
-                      ? sortedPhones
-                      : sortedPhones.slice(begin, end)
-                  }
-                />
-              </div>
-            ) : <NoSearchResults />}
+
+          {!isLoading && !TOTAL_AMOUNT && <NoSearchResults />}
+
+          {!isLoading && !!TOTAL_AMOUNT && (
+            <div className="productList" data-cy="productList">
+              <ProductsList
+                phones={
+                  perPage === 'all'
+                    ? sortedPhones
+                    : sortedPhones.slice(begin, end)
+                }
+              />
+            </div>
+          )}
         </div>
 
-        <div className="pagination">
-          <Pagination
-            total={TOTAL_AMOUNT}
-            perPage={+perPage}
-            currentPage={+page}
-          />
-        </div>
+        {!isLoading && !!TOTAL_AMOUNT && (
+          <div className="pagination">
+            <Pagination
+              total={TOTAL_AMOUNT}
+              perPage={+perPage}
+              currentPage={+page}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

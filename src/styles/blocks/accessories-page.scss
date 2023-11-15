@@ -1,0 +1,8 @@
+@import "../utils";
+@import "./title.scss";
+
+.accessories-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

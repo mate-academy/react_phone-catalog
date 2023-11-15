@@ -2,20 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Product } from '../type/Product';
 import { getProducts } from '../helpers/ProductServices';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { GlobalContextType } from '../type/Context';
 
-export const GlobalContext = React.createContext<({
-  products: Product[],
-  hasError: string,
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
-  localStore: Product[],
-  setLocalStore: (v: Product[]) => void,
-})>({
-    products: [],
-    hasError: '',
-    setProducts: () => { },
-    localStore: [],
-    setLocalStore: () => { },
-  });
+export const GlobalContext = React.createContext<GlobalContextType>({
+  products: [],
+  hasError: '',
+  setProducts: () => { },
+  localStore: [],
+  setLocalStore: () => { },
+  setHasError: () => { },
+  handleAddCard: () => { },
+});
 
 type Props = {
   children: React.ReactNode;
@@ -57,12 +54,49 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     fetchData();
   }, []);
 
+  const handleAddCard = (card: Product, action: string) => {
+    const currentProducts = [...products];
+    let currentStore = [...localStore];
+    let updatedCard: Product = { ...card };
+
+    if (action === 'addCard') {
+      updatedCard = { ...card, isAddCard: !card.isAddCard };
+    }
+
+    if (action === 'favourites') {
+      updatedCard = { ...card, inFavourite: !card.inFavourite };
+    }
+
+    if (!updatedCard.isAddCard && !updatedCard.inFavourite) {
+      currentStore = currentStore
+        .filter(el => el.id !== updatedCard.id);
+    } else {
+      const indexStore = currentStore
+        .findIndex(storeEl => storeEl.id === card.id);
+
+      if (indexStore !== -1) {
+        currentStore.splice(indexStore, 1, updatedCard);
+      } else {
+        currentStore = [...currentStore, updatedCard];
+      }
+    }
+
+    const index = currentProducts.findIndex(el => el.id === card.id);
+
+    currentProducts.splice(index, 1, updatedCard);
+
+    setProducts(currentProducts);
+    setLocalStore(currentStore);
+  };
+
   const value = {
     hasError,
     products,
     setProducts,
     localStore,
     setLocalStore,
+    setHasError,
+    handleAddCard,
   };
 
   return (

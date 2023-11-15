@@ -1,4 +1,6 @@
 @import "../utils";
+@import "../blocks/page-navigation";
+@import "../blocks/title";
 
 .phones-page {
   display: flex;
@@ -26,22 +28,5 @@
   &__wrap {
     display: flex;
     gap: 16px;
-  }
-}
-
-.page-navigation {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  &__link {
-    display: flex;
-    align-items: center;
-  }
-
-  &__text {
-    @extend %small-text;
-
-    color: $secondary-color;
   }
 }
