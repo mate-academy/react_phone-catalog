@@ -83,5 +83,7 @@
   "noFilteredGoods": "Немає товарів, які підходять під Ваш запит",
   "productCode": "Код товару",
   "buyButtonText": "Купити",
-  "addToWishList": "Додати до списку бажань"
+  "buyButtonTextRemove": "Видалити з кошика",
+  "addToWishList": "Додати до списку бажань",
+  "removeFromWishList": "Видалити зі списку бажань"
 }

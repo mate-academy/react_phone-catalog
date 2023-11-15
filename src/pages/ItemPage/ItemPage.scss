@@ -44,14 +44,15 @@
 
   &__content-info-title,
   &__content-info-id,
-  &__content-info-button-secondary {
+  &__content-info-button-secondary,
+  &__content-info-button-remove {
     text-align: center;
   }
 
   &__price,
   &__content-info-id,
   &__content-info-button-main,
-  &__content-info-button-secondary {
+  &__content-info-button-remove {
     margin-top: 16px;
   }
 
@@ -87,13 +88,27 @@
     }
   }
 
+  &__content-info-button-remove {
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include onDesktop {
+      position: relative;
+      max-width: 80%;
+    }
+  }
+
   &__content-info-button-secondary {
     width: 100%;
+    margin-top: 90px;
 
     cursor: pointer;
     transition: opacity $animationDuration;
 
     @include onDesktop {
+      margin-top: 16px;
 
       &:hover {
         opacity: 0.5;

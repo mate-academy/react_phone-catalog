@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { VirtuosoGrid } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-import { getData } from '../../helpers/httpClient';
+import * as goodsActions from '../../store/reducers/goodsSlice';
+
 import { ITEMS_PER_PAGE, loadMore } from '../../helpers/Pagination';
 import { getFilteredItems } from '../../helpers/getFIlteredItems';
 
@@ -29,9 +31,9 @@ const filterItems = [
 
 export const AllGenderPage: React.FC = React.memo(() => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const [searchParams] = useSearchParams();
-
   const currentLanguage = searchParams.get('lang') || 'en';
   const types = searchParams.getAll('type') || [];
   const drop = searchParams.getAll('drop') || [];
@@ -47,10 +49,12 @@ export const AllGenderPage: React.FC = React.memo(() => {
     year,
   };
 
-  const [totalGoods, setTotalGoods] = useState<Good[]>([]);
+  const {
+    goods: totalGoods,
+    isLoaded,
+    hasError,
+  } = useAppSelector(state => state.goods);
   const [renderedGoods, setRenderedGoods] = useState<Good[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
   const [totalItemsCount, setTotalItemsCount] = useState(0);
@@ -59,27 +63,23 @@ export const AllGenderPage: React.FC = React.memo(() => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
+    const fetchData = async () => {
+      await dispatch(goodsActions.init());
+      setTotalItemsCount(totalGoods.length);
 
-    getData<Good[]>('goods')
-      .then(response => {
-        setTotalGoods(response);
-        setTotalItemsCount(response.length);
+      setRenderedGoods(prevGoods => [
+        ...prevGoods,
+        ...totalGoods.slice(
+          currentPage * ITEMS_PER_PAGE,
+          (currentPage + 1) * ITEMS_PER_PAGE,
+        ),
+      ]);
+    };
 
-        setRenderedGoods(prevGoods => [
-          ...prevGoods,
-          ...response.slice(
-            currentPage * ITEMS_PER_PAGE,
-            (currentPage + 1) * ITEMS_PER_PAGE,
-          ),
-        ]);
-      })
-      .catch(() => setHasError(true))
-      .finally(() => setIsLoading(false));
+    fetchData();
   }, [updatedAt, currentPage]);
 
   const reload = () => {
-    setHasError(false);
     setUpdatedAt(new Date());
   };
 
@@ -94,6 +94,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
   return (
     <main className="allGender">
       <div className="container">
+
         {hasError && (
           <ErrorMessage
             rootClassName="allGender__items"
@@ -132,7 +133,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
                 itemClassName="allGender__section-list-item"
                 endReached={handleScrollEnd}
                 components={{
-                  Footer: () => (isLoading ? (<Loader />) : null),
+                  Footer: () => (isLoaded ? (<Loader />) : null),
                 }}
                 itemContent={(index, good) => {
                   const {

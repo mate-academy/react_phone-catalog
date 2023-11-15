@@ -1,12 +1,11 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { Outlet as Main } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import * as goodsActions from './store/reducers/goodsSlice';
 
 import { getScreenType } from './helpers/getScreenType';
-import { getData } from './helpers/httpClient';
-
 import { Resolutions } from './types/Resolutions';
-import { Good } from './types/Good';
 
 import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
@@ -16,14 +15,15 @@ import { Footer } from './components/Footer/Footer';
 import './App.scss';
 
 export const App: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { goods } = useAppSelector(state => state.goods);
+
   const [screenType, setScreenType] = useState(getScreenType());
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [isSearchOpened, setIsSearchOpened] = useState(false);
-  const [goods, setGoods] = useState<Good[]>([]);
 
   useEffect(() => {
-    getData<Good[]>('goods')
-      .then(setGoods);
+    dispatch(goodsActions.init());
   }, []);
 
   return (

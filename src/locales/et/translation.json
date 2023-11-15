@@ -83,5 +83,7 @@
   "noFilteredGoods": "Teie päringule vastavaid tooteid pole",
   "productCode": "Toote kood",
   "buyButtonText": "Osta",
-  "addToWishList": "Soovinimekirja lisama"
+  "buyButtonTextRemove": "Eemalda kotist",
+  "addToWishList": "Soovinimekirja lisama",
+  "removeFromWishList": "Eemalda sooviloendist"
 }

@@ -83,5 +83,7 @@
   "noFilteredGoods": "Нет товаров, которые подходят под Ваш запрос",
   "productCode": "Код товара",
   "buyButtonText": "Купить",
-  "addToWishList": "Добавить в список желаний"
+  "buyButtonTextRemove": "Убрать из корзины",
+  "addToWishList": "Добавить в список желаний",
+  "removeFromWishList": "Убрать из списка желаний"
 }

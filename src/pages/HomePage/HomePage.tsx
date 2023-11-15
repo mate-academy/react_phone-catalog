@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+
+import * as goodsActions from '../../store/reducers/goodsSlice';
+import * as previewsActions from '../../store/reducers/previewsSlice';
 
 import { makeUrl } from '../../helpers/makeUrl';
 import { makeAlt } from '../../helpers/makeAlt';
-import { getData } from '../../helpers/httpClient';
 import { getScreenType } from '../../helpers/getScreenType';
 
 import { NavLink } from '../../types/NavLink';
-import { Preview } from '../../types/Preview';
-import { Good } from '../../types/Good';
 import { Resolutions } from '../../types/Resolutions';
 
 import { Player } from '../../components/Player/Player';
@@ -23,41 +24,38 @@ import { GoodCard } from '../../components/GoodCard/GoodCard';
 import './HomePage.scss';
 
 export const HomePage: React.FC = React.memo(() => {
-  const [searchParams] = useSearchParams();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
+  const [searchParams] = useSearchParams();
   const currentLanguage = searchParams.get('lang') || 'en';
 
-  const [goodsForPreview, setGoodsForPreview] = useState<Good[]>([]);
-  const [goodsForSlider, setGoodsForSlider] = useState<Good[]>([]);
-
-  const [previews, setPreviews] = useState<Preview[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
   const [isModalActive, setIsModalActive] = useState(false);
   const [selectedImageUrl, setSelectedImageUrl] = useState('');
 
+  const {
+    goods,
+    isLoaded: goodsIsLoaded,
+    hasError: goodsHasError,
+  } = useAppSelector(state => state.goods);
+  const {
+    previews,
+    isLoaded: previewsIsLoaded,
+    hasError: previewsHasError,
+  } = useAppSelector(state => state.previews);
+
+  const goodsForHomePage = goods.slice(0, 5);
+  const previewsForHomePage = previews.slice(0, 6);
+
   useEffect(() => {
-    setIsLoading(true);
-
-    getData<Good[]>('goods')
-      .then(response => {
-        setGoodsForSlider(response);
-        setGoodsForPreview(response.slice(0, 5));
-      })
-      .catch(() => setHasError(true))
-      .finally(() => setIsLoading(false));
-
-    getData<Preview[]>('previews')
-      .then(response => setPreviews(response.slice(0, 6)))
-      .catch(() => setHasError(true))
-      .finally(() => setIsLoading(false));
+    dispatch(goodsActions.init());
+    dispatch(previewsActions.init());
   }, [updatedAt]);
 
   const reload = () => {
     setUpdatedAt(new Date());
-    setHasError(false);
   };
 
   const handleButtonClick = (link: string) => {
@@ -75,26 +73,26 @@ export const HomePage: React.FC = React.memo(() => {
         </section>
 
         <section className="homePage__goods page__section">
-          {isLoading && (
+          {goodsIsLoaded && (
             <Loader />
           )}
 
-          {hasError && (
+          {goodsHasError && (
             <ErrorMessage
               reload={reload}
               rootClassName="homePage__goods"
             />
           )}
 
-          {!isLoading && goodsForPreview.length > 0 && (
+          {!goodsIsLoaded && goods.length > 0 && (
             getScreenType() === Resolutions.Mobile ? (
               <Slider
-                goods={goodsForSlider}
+                goods={goodsForHomePage}
                 rootClassName="homePage"
               />
             ) : (
               <ul className="homePage__goods-list">
-                {goodsForPreview.map(good => {
+                {goodsForHomePage.map(good => {
                   const {
                     images,
                     name,
@@ -151,11 +149,11 @@ export const HomePage: React.FC = React.memo(() => {
             </Link>
           </div>
 
-          {isLoading && (
+          {previewsIsLoaded && (
             <Loader />
           )}
 
-          {hasError && (
+          {previewsHasError && (
             <ErrorMessage
               reload={reload}
               rootClassName="homePage__gallery"
@@ -174,9 +172,9 @@ export const HomePage: React.FC = React.memo(() => {
             />
           </Modal>
 
-          {!isLoading && previews.length > 0 && (
+          {!previewsIsLoaded && previews.length > 0 && (
             <ul className="homePage__gallery-list">
-              {previews.map(preview => {
+              {previewsForHomePage.map(preview => {
                 const { link, id } = preview;
 
                 return (

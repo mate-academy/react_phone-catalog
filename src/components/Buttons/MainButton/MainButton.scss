@@ -9,6 +9,7 @@
   background-color: $red-700;
 
   transition: width $animationDuration ease;
+  border: 2px solid transparent;
 
   @include onDesktop {
     width: 100%;

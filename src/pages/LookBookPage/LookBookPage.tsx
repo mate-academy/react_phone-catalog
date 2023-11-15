@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { VirtuosoGrid } from 'react-virtuoso';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
-import { getData } from '../../helpers/httpClient';
+import * as previewsActions from '../../store/reducers/previewsSlice';
+
 import { makeAlt } from '../../helpers/makeAlt';
 import { ITEMS_PER_PAGE, loadMore } from '../../helpers/Pagination';
 
@@ -13,9 +15,15 @@ import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import './LookBookPage.scss';
 
 export const LookBookPage: React.FC = React.memo(() => {
+  const dispatch = useAppDispatch();
+
+  const {
+    previews,
+    isLoaded,
+    hasError,
+  } = useAppSelector(state => state.previews);
+
   const [photos, setPhotos] = useState<Preview[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
   const [updatedAt, setUpdatedAt] = useState(new Date());
 
   const [totalItemsCount, setTotalItemsCount] = useState(0);
@@ -28,28 +36,27 @@ export const LookBookPage: React.FC = React.memo(() => {
   ) && setCurrentPage(prevPage => prevPage + 1);
 
   const reload = () => {
-    setHasError(false);
     setUpdatedAt(new Date());
   };
 
   useEffect(() => {
-    setIsLoading(true);
+    const fetchData = async () => {
+      await dispatch(previewsActions.init());
+      setTotalItemsCount(previews.length);
+    };
 
-    getData<Preview[]>('previews')
-      .then(response => {
-        setTotalItemsCount(response.length);
+    fetchData();
+  }, [updatedAt]);
 
-        setPhotos(prevPhotos => [
-          ...prevPhotos,
-          ...response.slice(
-            currentPage * ITEMS_PER_PAGE,
-            (currentPage + 1) * ITEMS_PER_PAGE,
-          ),
-        ]);
-      })
-      .catch(() => setHasError(true))
-      .finally(() => setIsLoading(false));
-  }, [updatedAt, currentPage]);
+  useEffect(() => {
+    setPhotos(prevPhotos => [
+      ...prevPhotos,
+      ...previews.slice(
+        currentPage * ITEMS_PER_PAGE,
+        (currentPage + 1) * ITEMS_PER_PAGE,
+      ),
+    ]);
+  }, [currentPage]);
 
   return (
     <main className="lookBook">
@@ -75,7 +82,7 @@ export const LookBookPage: React.FC = React.memo(() => {
               itemClassName="lookBook__section-list-item"
               endReached={handleScrollEnd}
               components={{
-                Footer: () => (isLoading ? (<Loader />) : null),
+                Footer: () => (isLoaded ? (<Loader />) : null),
               }}
               itemContent={(index, photo) => {
                 const { link } = photo;

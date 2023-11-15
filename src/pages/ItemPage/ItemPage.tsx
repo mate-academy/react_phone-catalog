@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+
+import * as goodsActions from '../../store/reducers/goodsSlice';
 
 import { Good } from '../../types/Good';
-import { getData } from '../../helpers/httpClient';
 
 import { GoodPrice } from '../../components/GoodPrice/GoodPrice';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
+import {
+  SecondaryButton,
+} from '../../components/Buttons/SecondaryButton/SecondaryButton';
 
 import './ItemPage.scss';
 
 export const ItemPage: React.FC = React.memo(() => {
   const params = useParams();
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const [currentGood, setCurrentGood] = useState<Good | null>(null);
+  const {
+    currentGood,
+    goodsToBag,
+    goodsToWishlist,
+  } = useAppSelector(state => state.goods);
+
   const {
     images,
     translationSlug,
@@ -25,10 +36,7 @@ export const ItemPage: React.FC = React.memo(() => {
   } = currentGood || {};
 
   useEffect(() => {
-    getData<Good[]>('goods')
-      .then(goods => setCurrentGood(
-        goods.find(good => good.seoUrl === params.seoUrl) as Good,
-      ));
+    dispatch(goodsActions.currentGood(params.seoUrl as string));
   }, []);
 
   return (
@@ -65,20 +73,47 @@ export const ItemPage: React.FC = React.memo(() => {
               {`${t('productCode')}: ${id}`}
             </p>
 
-            <MainButton
-              className="itemPage__content-info-button-main"
-              button
-              onClick={() => {}}
-              text={t('buyButtonText')}
-            />
+            {goodsToBag.includes(currentGood as Good) ? (
+              <SecondaryButton
+                className="itemPage__content-info-button-remove"
+                button
+                onClick={() => {
+                  dispatch(goodsActions.removeFromBag(id as number));
+                }}
+                text={t('buyButtonTextRemove')}
+              />
+            ) : (
+              <MainButton
+                className="itemPage__content-info-button-main"
+                button
+                onClick={() => {
+                  dispatch(goodsActions.addToBag(currentGood as Good));
+                }}
+                text={t('buyButtonText')}
+              />
+            )}
 
-            <button
-              className="itemPage__content-info-button-secondary"
-              type="button"
-              onClick={() => {}}
-            >
-              {t('addToWishList')}
-            </button>
+            {goodsToWishlist.includes(currentGood as Good) ? (
+              <button
+                className="itemPage__content-info-button-secondary"
+                type="button"
+                onClick={() => {
+                  dispatch(goodsActions.removeFromWishlist(id as number));
+                }}
+              >
+                {t('removeFromWishList')}
+              </button>
+            ) : (
+              <button
+                className="itemPage__content-info-button-secondary"
+                type="button"
+                onClick={() => {
+                  dispatch(goodsActions.addToWishList(currentGood as Good));
+                }}
+              >
+                {t('addToWishList')}
+              </button>
+            )}
           </div>
         </div>
       </div>
