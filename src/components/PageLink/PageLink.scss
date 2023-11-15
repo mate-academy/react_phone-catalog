@@ -1,0 +1,96 @@
+@import "../../styles/utils";
+
+.PageLink {
+  position: relative;
+
+  display: block;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: $secondary;
+
+  transition: color $transition-duration;
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    display: block;
+    height: 3px;
+    width: 100%;
+
+    background-color: $primary;
+
+    transform: scale(0);
+    transform-origin: right;
+    transition: transform $transition-duration;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
+    }
+  }
+
+  &_text {
+    padding-block-start: 27px;
+    padding-block-end: 26px;
+  }
+
+  &_heart,
+  &_cart {
+    --icon-size: 64px;
+    height: var(--icon-size);
+    width: var(--icon-size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: no-repeat center;
+
+    border: none;
+
+    box-shadow: -1px 0 0 0 $element;
+  }
+
+  &_heart {
+    background-image: url("../../images/icons/heart.svg");
+  }
+
+  &_cart {
+    background-image: url("../../images/icons/cart.svg");
+  }
+
+  &_active {
+    position: relative;
+
+    color: $primary;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+
+      display: block;
+      margin-top: 24px;
+      height: 3px;
+      width: 100%;
+
+      background-color: $primary;
+      transform: scale(1);
+    }
+  }
+}
