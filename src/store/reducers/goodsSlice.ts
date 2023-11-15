@@ -35,18 +35,30 @@ const goodsSlice = createSlice({
   initialState,
   reducers: {
     addToBag: (state, action: PayloadAction<Good>) => {
-      state.goodsToBag.push(action.payload);
+      const updatedBag = [...state.goodsToBag, action.payload];
+
+      state.goodsToBag = updatedBag;
+      localStorage.setItem('goodsToBag', JSON.stringify(updatedBag));
     },
     removeFromBag: (state, action: PayloadAction<number>) => {
-      state.goodsToBag = state.goodsToBag
+      const updatedBag = state.goodsToBag
         .filter(good => good.id !== action.payload);
+
+      state.goodsToBag = updatedBag;
+      localStorage.setItem('goodsToBag', JSON.stringify(updatedBag));
     },
     addToWishList: (state, action: PayloadAction<Good>) => {
-      state.goodsToWishlist.push(action.payload);
+      const updatedBag = [...state.goodsToWishlist, action.payload];
+
+      state.goodsToWishlist = updatedBag;
+      localStorage.setItem('goodsToWishlist', JSON.stringify(updatedBag));
     },
     removeFromWishlist: (state, action: PayloadAction<number>) => {
-      state.goodsToWishlist = state.goodsToWishlist
+      const updatedBag = state.goodsToWishlist
         .filter(good => good.id !== action.payload);
+
+      state.goodsToWishlist = updatedBag;
+      localStorage.setItem('goodsToWishlist', JSON.stringify(updatedBag));
     },
     currentGood: (state, action: PayloadAction<string>) => {
       state.currentGood = state.goods

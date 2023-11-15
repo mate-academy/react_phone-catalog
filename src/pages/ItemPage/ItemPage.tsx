@@ -20,11 +20,15 @@ export const ItemPage: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const {
-    currentGood,
-    goodsToBag,
-    goodsToWishlist,
-  } = useAppSelector(state => state.goods);
+  const { currentGood } = useAppSelector(state => state.goods);
+
+  const goodsToBag: Good[] = JSON.parse(
+    localStorage.getItem('goodsToBag') as string,
+  ) || [];
+
+  const goodsToWishlist: Good[] = JSON.parse(
+    localStorage.getItem('goodsToWishlist') as string,
+  ) || [];
 
   const {
     images,
@@ -73,7 +77,7 @@ export const ItemPage: React.FC = React.memo(() => {
               {`${t('productCode')}: ${id}`}
             </p>
 
-            {goodsToBag.includes(currentGood as Good) ? (
+            {goodsToBag.some(good => good.id === currentGood?.id) ? (
               <SecondaryButton
                 className="itemPage__content-info-button-remove"
                 button
@@ -93,7 +97,7 @@ export const ItemPage: React.FC = React.memo(() => {
               />
             )}
 
-            {goodsToWishlist.includes(currentGood as Good) ? (
+            {goodsToWishlist.some(good => good.id === currentGood?.id) ? (
               <button
                 className="itemPage__content-info-button-secondary"
                 type="button"
