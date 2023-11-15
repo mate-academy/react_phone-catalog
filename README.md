@@ -5,7 +5,6 @@ I have my own **UI design ([Link](https://www.figma.com/file/xejFOilkG3UWJZcGlZT
 <br>
 I have my own server where I'll fetch all data **([Link](https://gosyanich.cloudns.nz:9353/kuroso/goods.json))**. I can't update the data, because I haven't learn how to write my own `API` yet.
 <br>
-<sub>Also, at this moment there is only one good to test (may be I'll need more fields to good).</sub>
 <br>
 <sub>Last thing I want to add is that I made arrangements with my coordinator.</sub>
 
