@@ -1,0 +1,90 @@
+.header {
+  background: $gray-white;
+  box-shadow: 0 1px 0 0 #d2e6e9;
+  &__content {
+    @include pageMaxWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    height: 64px;
+    margin: auto;
+  }
+
+  &__favorites-card-buttons {
+    display: flex;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    display: inline-block;
+    height: 100%;
+    padding-block: 27px 24px;
+    text-decoration: none;
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+
+    color: #89939a;
+    &--active {
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
+    }
+  }
+  &__burger-menu-button {
+    opacity: 1;
+    &--is-active {
+      opacity: 0;
+    }
+  }
+}
+
+.favorites-card-buttons {
+  &__link {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: $gray-white;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+    border-right: 1px solid #e2e6e9;
+    &--active {
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
+    }
+    position: relative;
+  }
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+  &__amount-of-products {
+    position: absolute;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    background-color: #eb5757;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    text-decoration: none;
+    color: $gray-white;
+    text-align: center;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    line-height: normal;
+    left: 33px;
+    top: 18px;
+  }
+}

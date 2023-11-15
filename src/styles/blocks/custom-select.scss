@@ -1,0 +1,54 @@
+/* Basic styling for the custom select container */
+.custom-select {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 176px;
+  height: 40px;
+  padding: 10px 0 9px 12px;
+  flex-shrink: 0;
+  position: relative;
+  border: 1px solid #ccc;
+  cursor: pointer;
+
+  color: $gray-primary;
+
+  font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 21px; /* 150% */
+}
+
+.options {
+  box-sizing: border-box;
+  width: 176px;
+
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0 4px 0 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 8px 1px;
+
+  &__option {
+    box-sizing: border-box;
+
+    color: #89939a;
+    width: 176px;
+    height: 32px;
+    padding: 6px 0 5px 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fafbfc;
+      color: #313237;
+    }
+  }
+}
+
+.options--opened {
+  display: block;
+}

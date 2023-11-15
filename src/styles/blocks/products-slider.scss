@@ -1,0 +1,30 @@
+.products-slider {
+  // display: flex;
+  position: relative;
+
+  &__container-buttons {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: -60px;
+    left: 1054px;
+    z-index: 2;
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    padding: 0;
+    cursor: pointer;
+  }
+  &__container-products {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    gap: 16px;
+  }
+}

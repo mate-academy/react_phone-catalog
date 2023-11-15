@@ -1,0 +1,27 @@
+.breadcrumb {
+  &__breadcrumb-list {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.breadcrumb-item {
+
+  &__link {
+    height: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-decoration: none;
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

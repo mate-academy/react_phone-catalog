@@ -1,0 +1,54 @@
+.footer {
+  background: #fff;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+  &__content {
+    display: flex;
+    @include pageMaxWidth;
+    display: flex;
+    height: 96px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $gray-secondary;
+
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px; /* 91.667% */
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+  &__container {
+    display: flex;
+    gap: 64px;
+  }
+  &__backtotop-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+    &::before {
+      content: "Back to top";
+      position: absolute;
+      width: max-content;
+      right: 48px;
+
+      color: $gray-secondary;
+
+      /* Small text 12 */
+      font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      line-height: normal;
+    }
+  }
+}

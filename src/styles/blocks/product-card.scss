@@ -1,0 +1,122 @@
+.product-card {
+  display: grid;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 272px;
+  height: 507px;
+  border: 1px solid $gray-elements;
+  background: $gray-white;
+  padding: 32px 32px 24px;
+
+  &__link {
+    text-decoration: none;
+    color: $gray-primary;
+  }
+
+  &__phone-img {
+    box-sizing: border-box;
+    width: 208px;
+    height: 208px;
+    padding-inline: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    display: block;
+    min-height: 42px;
+    margin: 0;
+    margin-bottom: 8px;
+    font-family: Mont-Regular, Arial, Helvetica, sans-serif;
+    color: $gray-primary;
+
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    display: inline-block;
+    margin: 0;
+    color: $gray-primary;
+    margin-right: 8px;
+
+    /* H2 */
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    line-height: 140%; /* 30.8px */
+
+    &--discount {
+      color: $gray-secondary;
+      font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+      line-height: normal;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-card {
+    box-sizing: border-box;
+    width: 176px;
+    height: 40px;
+    background-color: #313237;
+
+    color: $gray-white;
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px; /* 150% */
+    cursor: pointer;
+
+    &--is-added {
+      color: #27ae60;
+      background-color: #e2e6e9;
+      border: 1px solid $gray-elements;
+    }
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__add-to-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 8px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $gray-icons-placeholders;
+    background-color: #fff;
+
+    cursor: pointer;
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}
+
+.description-phone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #e2e6e9;
+  margin-block: 8px 16px;
+  padding-top: 16px;
+
+  font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  &--title {
+    color: $gray-secondary;
+  }
+}
+
+.add-to-favorites__icon {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,70 @@
+.phones-page {
+  @include pageMaxWidth;
+  flex-grow: 1;
+  box-sizing: border-box;
+  margin: auto;
+  margin-bottom: 80px;
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+    color: $gray-primary;
+
+    /* H1 */
+    font-family: Mont-Bold, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+  &__amount-phone-text {
+    margin: 0;
+    margin-bottom: 40px;
+    color: $gray-secondary;
+
+    /* Body text 14 */
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+  }
+
+  &__result-items {
+    margin-block: 24px;
+    color: $gray-secondary;
+
+    /* Body text 14 */
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px; /* 150% */
+  }
+}
+
+.filter {
+  display: flex;
+  gap: 16px;
+  &__title {
+    margin: 0;
+    margin-bottom: 4px;
+    color: $gray-secondary;
+
+    /* Small text 12 */
+    font-family: Mont-SemiBold, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
+  &__selector {
+    width: 174px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 10px 12px 9px;
+    font-family: Mont-Regular, Arial, Helvetica, sans-serif;
+    border: 1px solid #b4bdc3;
+
+    &--items {
+      padding: 10px 12px 9px;
+      height: 40px;
+
+      &:hover {
+        background-color: $gray-background;
+      }
+    }
+  }
+}

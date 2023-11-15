@@ -1,0 +1,54 @@
+[
+  {
+    "age": 0,
+    "id": "banner1",
+    "type": "banner",
+    "imageUrl": "images/BannerHomePage.png",
+    "name": "Banner phones",
+    "snippet": "Best phones in our shop",
+    "price": 100,
+    "discount": 0,
+    "screen": "Full size",
+    "capacity": "",
+    "ram": ""
+  },
+  {
+    "age": 0,
+    "id": "banner2",
+    "type": "banner",
+    "imageUrl": "images/BannerHomePage.png",
+    "name": "Banner phones",
+    "snippet": "Best phones in our shop",
+    "price": 100,
+    "discount": 0,
+    "screen": "Full size",
+    "capacity": "",
+    "ram": ""
+  },
+  {
+    "age": 0,
+    "id": "banner3",
+    "type": "banner",
+    "imageUrl": "images/BannerHomePage.png",
+    "name": "Banner phones",
+    "snippet": "Best phones in our shop",
+    "price": 100,
+    "discount": 0,
+    "screen": "Full size",
+    "capacity": "",
+    "ram": ""
+  },
+  {
+    "age": 0,
+    "id": "banner4",
+    "type": "banner",
+    "imageUrl": "images/BannerHomePage.png",
+    "name": "Banner phones",
+    "snippet": "Best phones in our shop",
+    "price": 100,
+    "discount": 0,
+    "screen": "Full size",
+    "capacity": "",
+    "ram": ""
+  }
+]

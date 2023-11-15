@@ -1,0 +1,26 @@
+@import "./utils/mixins";
+@import "./utils/media_breakpoints.scss";
+
+@import "./blocks/breadcrumb";
+@import "./blocks/header";
+@import "./blocks/home-page";
+@import "./blocks/phones-page";
+@import "./blocks/product-card";
+@import "./blocks/product-details-page";
+@import "./blocks/products-list";
+@import "./blocks/products-slider";
+@import "./blocks/footer";
+@import "./blocks/custom-select";
+@import "./blocks/pagination";
+@import "./blocks/favorites-page";
+@import "./blocks/search-bar";
+@import "./blocks/cart-page";
+@import "./blocks/info-messages";
+@import "./blocks/pop-up";
+@import "./blocks/burger-menu";
+
+@import "./blocks/home-page-media";
+@import "./blocks/phones-page-media";
+@import "./blocks/favorites-page-media";
+@import "./blocks/card-page-media";
+@import "./blocks/product-details-page-media";
