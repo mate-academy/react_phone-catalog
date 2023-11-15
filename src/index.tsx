@@ -1,5 +1,10 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import App from './App';
 import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
@@ -21,6 +26,7 @@ ReactDOM.render(
           <Route path="accessories" element={<Accessories />} />
           <Route path="favourites" element={<Favourites />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="home" element={<Navigate to="/" />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

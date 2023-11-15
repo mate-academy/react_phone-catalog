@@ -1,6 +1,6 @@
-/*
-! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com
-*/
+/* stylelint-disable scss/at-rule-no-unknown */
+
+/* ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -584,20 +584,16 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.pointer-events-none {
-  pointer-events: none;
-}
-
-.pointer-events-auto {
-  pointer-events: auto;
-}
-
 .absolute {
   position: absolute;
 }
 
 .relative {
   position: relative;
+}
+
+.-bottom-1 {
+  bottom: -0.25rem;
 }
 
 .-right-12 {
@@ -614,6 +610,78 @@ video {
 
 .right-0 {
   right: 0px;
+}
+
+.-bottom-2 {
+  bottom: -0.5rem;
+}
+
+.-bottom-0 {
+  bottom: -0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
+.top-4 {
+  top: 1rem;
+}
+
+.top-8 {
+  top: 2rem;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.-left-0 {
+  left: -0px;
+}
+
+.-left-px {
+  left: -1px;
+}
+
+.top-12 {
+  top: 3rem;
+}
+
+.top-11 {
+  top: 2.75rem;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
+.top-14 {
+  top: 3.5rem;
+}
+
+.top-\[60px\] {
+  top: 60px;
+}
+
+.top-\[\] {
+  top: ;
 }
 
 .z-10 {
@@ -640,6 +708,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -664,6 +736,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.box-border {
+  box-sizing: border-box;
+}
+
 .block {
   display: block;
 }
@@ -674,6 +750,10 @@ video {
 
 .grid {
   display: grid;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-1 {
@@ -744,10 +824,6 @@ video {
   height: 100%;
 }
 
-.min-h-full {
-  min-height: 100%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -766,6 +842,10 @@ video {
 
 .w-\[1040px\] {
   width: 1040px;
+}
+
+.w-\[128px\] {
+  width: 128px;
 }
 
 .w-\[14px\] {
@@ -800,6 +880,10 @@ video {
   width: 100%;
 }
 
+.w-\[178px\] {
+  width: 178px;
+}
+
 .shrink-0 {
   flex-shrink: 0;
 }
@@ -809,12 +893,14 @@ video {
           transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.appearance-none {
+  -webkit-appearance: none;
+          appearance: none;
 }
 
-.cursor-auto {
-  cursor: auto;
+.auto-rows-min {
+  grid-auto-rows: -webkit-min-content;
+  grid-auto-rows: min-content;
 }
 
 .grid-cols-12 {
@@ -866,9 +952,18 @@ video {
           column-gap: 4rem;
 }
 
+.gap-x-2 {
+  -webkit-column-gap: 0.5rem;
+          column-gap: 0.5rem;
+}
+
 .gap-x-4 {
   -webkit-column-gap: 1rem;
           column-gap: 1rem;
+}
+
+.gap-y-1 {
+  row-gap: 0.25rem;
 }
 
 .self-center {
@@ -881,6 +976,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.rounded-none {
+  border-radius: 0px;
 }
 
 .border {
@@ -950,6 +1049,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-right-bottom {
   background-position: right bottom;
 }
@@ -984,6 +1088,30 @@ video {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.py-\[6px\] {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.pl-3 {
+  padding-left: 0.75rem;
 }
 
 .font-Mont {
@@ -1149,6 +1277,11 @@ iframe {
 .hover\:border-Primary:hover {
   --tw-border-opacity: 1;
   border-color: rgb(49 50 55 / var(--tw-border-opacity));
+}
+
+.hover\:text-Primary:hover {
+  --tw-text-opacity: 1;
+  color: rgb(49 50 55 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-button-hover:hover {

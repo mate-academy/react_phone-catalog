@@ -26,28 +26,40 @@ const App = () => {
               <StylishNavButton to="phones">Phones</StylishNavButton>
               <StylishNavButton to="tablets">tablets</StylishNavButton>
               <StylishNavButton to="accessories">accessories</StylishNavButton>
+              <StylishNavButton to="404">404</StylishNavButton>
             </nav>
 
             <div className="flex justify-self-end">
-              <StylishNavButton to="favorites" imgUrl="/Icons/Favourites.svg" />
+              <StylishNavButton
+                to="favourites"
+                imgUrl="/Icons/Favourites.svg"
+              />
               <StylishNavButton to="cart" imgUrl="/Icons/Cart.svg" />
             </div>
           </div>
         </div>
 
-        <div className="col-span-12 col-start-2 grid grid-cols-12 gap-x-4">
+        <div className="col-span-12 col-start-2 grid auto-rows-min grid-cols-12 gap-x-4">
           <Outlet />
         </div>
 
         <div className="col-span-12 col-start-2 flex h-[96px] items-center justify-between text-Secondary">
-          <Link to="/" className="ml-6 mr-16">
-            <img className="h-16 w-10" src="/Icons/Logo.svg" alt="" />
+          <Link to="/" className="flex h-full items-center">
+            <img className="h-full w-10" src="/Icons/Logo.svg" alt="" />
           </Link>
 
-          <nav className={`flex gap-x-16 ${typographyStyle.uppercase}`}>
-            <a href="#github">github</a>
-            <a href="#contacts">contacts</a>
-            <a href="#rights">rights</a>
+          <nav
+            className={`flex h-full items-center gap-x-16 ${typographyStyle.uppercase}`}
+          >
+            <a className="flex h-[96px] items-center" href="#github">
+              github
+            </a>
+            <a className="flex h-[96px] items-center" href="#contacts">
+              contacts
+            </a>
+            <a className="flex h-[96px] items-center" href="#rights">
+              rights
+            </a>
           </nav>
 
           <div className="flex h-full items-center gap-x-4 font-Mont text-[12px] font-semibold hover:cursor-pointer">
