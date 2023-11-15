@@ -14,20 +14,19 @@ import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { Button } from '../../components/Button/Button';
+import { CartContext } from '../../context/CartContext';
 
 export const ProductDetailPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   const { products } = useContext(ProductContext);
+  const { cartItems, setCartItems } = useContext(CartContext);
   const { productId } = useParams();
   const product = products.find(item => item.id === productId);
   const [productDetails, setProductDetails] = useState<ProductDetails>(Object);
   const [activeImage, setActiveImage] = useState(0);
   const hasProductDetails = !!Object.values(productDetails).length && product;
-
-  const isItemInCart = false;
-  const isItemInFavourite = true;
 
   const {
     name,
@@ -39,6 +38,11 @@ export const ProductDetailPage = () => {
     camera,
     android,
   } = productDetails;
+
+  const isItemInCart = product && cartItems.some(
+    item => item.id === product.id,
+  );
+  const isItemInFavourite = true;
 
   const getSuggestedProducts = (count: number) => {
     const generateIndex = () => Math.floor(Math.random() * products.length);
@@ -55,6 +59,20 @@ export const ProductDetailPage = () => {
     }
 
     return result;
+  };
+
+  const handleAddToCart = () => {
+    if (!product) {
+      return;
+    }
+
+    const newCartItem = [
+      ...cartItems,
+      { id: product.id, quantity: 1, product },
+    ];
+
+    setCartItems(newCartItem);
+    localStorage.setItem('cartItems', JSON.stringify(newCartItem));
   };
 
   useEffect(() => {
@@ -154,6 +172,7 @@ export const ProductDetailPage = () => {
                   variant="cart"
                   card={isItemInCart ? 'added' : undefined}
                   className="ProductDetailPage__info--buttons--cart"
+                  onClick={handleAddToCart}
                 >
                   {isItemInCart
                     ? 'Added to cart'

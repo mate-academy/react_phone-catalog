@@ -1,0 +1,116 @@
+@import '../../styles/style-imports';
+
+.CartPage {
+  &__backButton {
+    margin-top: 40px;
+  }
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    align-items: flex-start;
+
+    &--list {
+      flex-basis: 66.6%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &--sum {
+      flex-basis: 33.3%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid $gray-elements;
+      padding: 24px;
+    }
+  }
+}
+
+.List-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border: 1px solid $gray-elements;
+
+  &__left-side,
+  &__right-side {
+    display: flex;
+    align-items: center;
+  }
+
+  &__delete-button {
+    height: 16px;
+    width: 16px;
+    margin-right: 24px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__image {
+    max-width: 80px;
+    max-height: 80px;
+    margin-right: 24px;
+
+    &>img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    display: block;
+    width: 300px;
+    // margin-right: 49px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-right: 43px;
+  }
+
+  &__price {
+    width: 60px;
+  }
+}
+
+.Total-block {
+  &__total {
+    width: 100%;
+    padding-bottom: 24px;
+
+    text-align: center;
+    @extend %body-text;
+    color: $gray-secondary;
+
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  &__error {
+    opacity: 0;
+    height: 0;
+    transition: opacity 1s ease-in-out;
+
+    &--visible {
+      margin-top: 24px;
+      padding-top: 24px;
+      opacity: 1;
+      height: max-content;
+      border-top: 1px solid $gray-elements;
+    }
+  }
+}

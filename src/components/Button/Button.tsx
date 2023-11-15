@@ -4,7 +4,7 @@ import cn from 'classnames';
 import './Button.scss';
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: 'arrow' | 'cart' | 'favourite' | 'number';
+  variant?: 'arrow' | 'cart' | 'favourite' | 'number' | 'plus' | 'minus';
   arrowDirection?: 'top' | 'left';
   card?: 'added';
   favourite?: 'added';

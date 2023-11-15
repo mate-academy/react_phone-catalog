@@ -83,4 +83,12 @@
       color: $gray-white;
     }
   }
+
+  &--plus {
+    background: no-repeat center url("../../icons/plus.svg");
+  }
+
+  &--minus {
+    background: no-repeat center url("../../icons/minus.svg");
+  }
 }
