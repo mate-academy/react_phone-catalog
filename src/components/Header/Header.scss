@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.Header {
+  padding-inline-start: 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 1px 0 0 $element;
+
+  &-Left,
+  &-Right {
+    display: flex;
+    align-items: center;
+  }
+}
