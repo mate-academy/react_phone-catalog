@@ -15,6 +15,7 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { Button } from '../../components/Button/Button';
 import { CartContext } from '../../context/CartContext';
+import { FavouriteContext } from '../../context/FavouriteContext';
 
 export const ProductDetailPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,11 +23,15 @@ export const ProductDetailPage = () => {
 
   const { products } = useContext(ProductContext);
   const { cartItems, setCartItems } = useContext(CartContext);
+  const { favourites, setFavourites } = useContext(FavouriteContext);
   const { productId } = useParams();
   const product = products.find(item => item.id === productId);
   const [productDetails, setProductDetails] = useState<ProductDetails>(Object);
   const [activeImage, setActiveImage] = useState(0);
   const hasProductDetails = !!Object.values(productDetails).length && product;
+  const isItemInFavourites = useMemo(() => {
+    return product && favourites.some(item => item.id === product.id);
+  }, [favourites]);
 
   const {
     name,
@@ -42,7 +47,6 @@ export const ProductDetailPage = () => {
   const isItemInCart = product && cartItems.some(
     item => item.id === product.id,
   );
-  const isItemInFavourite = true;
 
   const getSuggestedProducts = (count: number) => {
     const generateIndex = () => Math.floor(Math.random() * products.length);
@@ -73,6 +77,26 @@ export const ProductDetailPage = () => {
 
     setCartItems(newCartItem);
     localStorage.setItem('cartItems', JSON.stringify(newCartItem));
+  };
+
+  const handleToFavourite = () => {
+    if (!product) {
+      return;
+    }
+
+    if (!isItemInFavourites) {
+      const newFavourites = [...favourites, product];
+
+      setFavourites(newFavourites);
+      localStorage.setItem('favourites', JSON.stringify(newFavourites));
+    } else {
+      const newFavourites = [...favourites].filter(
+        item => item.id !== product.id,
+      );
+
+      setFavourites(newFavourites);
+      localStorage.setItem('favourites', JSON.stringify(newFavourites));
+    }
   };
 
   useEffect(() => {
@@ -181,8 +205,10 @@ export const ProductDetailPage = () => {
 
                 <Button
                   variant="favourite"
-                  favourite={isItemInFavourite ? 'added' : undefined}
+                  favourite={isItemInFavourites ? 'added' : undefined}
                   className="ProductDetailPage__info--buttons--favourite"
+                  onClick={handleToFavourite}
+                  data-cy="addToFavorite"
                 />
               </div>
 

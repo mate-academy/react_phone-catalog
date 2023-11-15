@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { BackButton } from '../../components/BackButton/BackButton';
 import './CartPage.scss';
@@ -8,6 +9,7 @@ import { Button } from '../../components/Button/Button';
 export const CartPage = () => {
   const MAX_QUANTITY = 10;
   const MIN_QUANTITY = 1;
+  // const productPath = `/${type}s/${id}`;
 
   const {
     cartItems,
@@ -83,18 +85,25 @@ export const CartPage = () => {
                         src="icons/close.svg"
                         alt="delete item"
                       />
+
                     </button>
 
-                    <div className="List-item__image">
+                    <Link
+                      to={`/${item.product.type}s/${item.product.id}`}
+                      className="List-item__image"
+                    >
                       <img
                         src={item.product.imageUrl}
                         alt={item.product.name}
                       />
-                    </div>
+                    </Link>
 
-                    <div className="List-item__title">
+                    <Link
+                      to={`/${item.product.type}s/${item.product.id}`}
+                      className="List-item__title"
+                    >
                       {item.product.name}
-                    </div>
+                    </Link>
                   </div>
 
                   <div className="List-item__right-side">

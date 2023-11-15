@@ -4,9 +4,11 @@ import { NavLinkMain } from '../NavLinkMain/NavLink';
 import { NavBar } from '../Navbar/NavBar';
 import './Header.scss';
 import { CartContext } from '../../context/CartContext';
+import { FavouriteContext } from '../../context/FavouriteContext';
 
 export const Header = () => {
   const { totalQuantity } = useContext(CartContext);
+  const { favourites } = useContext(FavouriteContext);
   const isCartOpened = useLocation().pathname === '/cart';
 
   return (
@@ -19,12 +21,19 @@ export const Header = () => {
         {!isCartOpened && (
           <NavLinkMain
             type="favourite"
-            to="favourite"
+            to="favourites"
           >
             <img
               src="icons/favourites.svg"
               alt="favourites"
             />
+            {favourites.length > 0 && (
+              <span
+                className="Counter"
+              >
+                {favourites.length}
+              </span>
+            )}
           </NavLinkMain>
         )}
 

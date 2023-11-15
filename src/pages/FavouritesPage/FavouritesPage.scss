@@ -1,0 +1,24 @@
+@import "../../styles/style-imports";
+
+.FavouritesPage {
+  &__breadcrumb {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__counter {
+    @extend %body-text;
+    color: $gray-secondary;
+    margin-top: 8px;
+  }
+
+  &__list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+  }
+}

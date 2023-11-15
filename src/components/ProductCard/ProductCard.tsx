@@ -6,6 +6,7 @@ import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { Button } from '../Button/Button';
 import { makeCharFormated } from '../../helpers/makeCharacteristicFormated';
 import { CartContext } from '../../context/CartContext';
+import { FavouriteContext } from '../../context/FavouriteContext';
 
 type Props = {
   product: Product,
@@ -26,7 +27,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
   } = product;
   const { cartItems, setCartItems } = useContext(CartContext);
+  const { favourites, setFavourites } = useContext(FavouriteContext);
   const isItemInCart = cartItems.some(item => item.id === id);
+  const isItemInFavourites = useMemo(() => {
+    return favourites.some(item => item.id === id);
+  }, [favourites]);
 
   const productPath = `/${type}s/${id}`;
 
@@ -34,9 +39,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return calculateDiscount(product);
   }, []);
 
-  const handleAddToCart = (event: React.MouseEvent) => {
-    event.preventDefault();
-
+  const handleAddToCart = () => {
     if (!product) {
       return;
     }
@@ -45,6 +48,24 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
     setCartItems(newCartItem);
     localStorage.setItem('cartItems', JSON.stringify(newCartItem));
+  };
+
+  const handleToFavourite = () => {
+    if (!product) {
+      return;
+    }
+
+    if (!isItemInFavourites) {
+      const newFavourites = [...favourites, product];
+
+      setFavourites(newFavourites);
+      localStorage.setItem('favourites', JSON.stringify(newFavourites));
+    } else {
+      const newFavourites = [...favourites].filter(item => item.id !== id);
+
+      setFavourites(newFavourites);
+      localStorage.setItem('favourites', JSON.stringify(newFavourites));
+    }
   };
 
   return (
@@ -111,13 +132,18 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           variant="cart"
           card={isItemInCart ? 'added' : undefined}
           onClick={handleAddToCart}
+          data-cy="addToFavorite"
         >
           {isItemInCart
             ? 'Added to cart'
             : 'Add to cart'}
         </Button>
 
-        <Button variant="favourite" />
+        <Button
+          variant="favourite"
+          favourite={isItemInFavourites ? 'added' : undefined}
+          onClick={handleToFavourite}
+        />
       </div>
     </div>
   );
