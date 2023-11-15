@@ -9,7 +9,7 @@ export const BackButton = () => {
       data-cy="backButton"
       type="button"
       className="BackButton"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate('/home')}
     >
       <div className="icon icon--left" />
       Back

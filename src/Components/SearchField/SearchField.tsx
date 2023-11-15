@@ -2,6 +2,7 @@ import {
   useState,
   useRef,
   useEffect,
+  useCallback,
 } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
@@ -36,11 +37,11 @@ export const SearchField = () => {
     setInputQuery('');
   }, [pathname]);
 
-  const debouncedSearch = debounce((newQuery: string) => {
+  const debouncedSearch = useCallback(debounce((newQuery: string) => {
     setSearchParams(
       getSearchWith({ [SearchParams.Query]: newQuery || null }, searchParams),
     );
-  }, 1000);
+  }, 1000), []);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputQuery(event.target.value);
