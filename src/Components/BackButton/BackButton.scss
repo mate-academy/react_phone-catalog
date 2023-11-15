@@ -1,0 +1,18 @@
+@import "../../style/main.scss";
+
+.BackButton {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  @extend %smallText;
+  color: $dark-grey-c;
+  transition-duration: $transition-duration;
+  margin-top: 40px;
+
+  &:hover {
+    color: $black-c;
+    transform: scale(1.1);
+  }
+}

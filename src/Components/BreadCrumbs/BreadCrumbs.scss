@@ -1,0 +1,22 @@
+@import "../../style/main.scss";
+
+.BreadCrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @extend %smallText;
+  margin-top: 24px;
+
+  &__current {
+    padding-top: 3px;
+    color: $dark-grey-c;
+  }
+
+  &__link {
+    padding-top: 3px;
+    transition-duration: $transition-duration;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
