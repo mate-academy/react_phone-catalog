@@ -10,6 +10,7 @@ import { Resolutions } from './types/Resolutions';
 import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { Burger } from './components/Burger/Burger';
+import { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
 import { Footer } from './components/Footer/Footer';
 
 import './App.scss';
@@ -17,6 +18,7 @@ import './App.scss';
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const { goods } = useAppSelector(state => state.goods);
+  const [updatedAt, setUpdatedAt] = useState(new Date());
 
   const [screenType, setScreenType] = useState(getScreenType());
   const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -24,7 +26,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(goodsActions.init());
-  }, []);
+  }, [updatedAt]);
 
   return (
     <Suspense fallback="...loading">
@@ -70,7 +72,14 @@ export const App: React.FC = () => {
           )}
         </Transition>
 
-        <Main />
+        {goods.length ? (
+          <Main />
+        ) : (
+          <ErrorMessage
+            rootClassName=""
+            reload={() => setUpdatedAt(new Date())}
+          />
+        )}
 
         <Footer
           setIsMenuOpened={setIsMenuOpened}

@@ -129,6 +129,7 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 40px;
     row-gap: 20px;
+    list-style: none;
 
     @include onTablet {
       grid-template-columns: repeat(4, 1fr);

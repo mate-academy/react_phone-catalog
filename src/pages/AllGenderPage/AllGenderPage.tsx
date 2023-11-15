@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { VirtuosoGrid } from 'react-virtuoso';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 import * as goodsActions from '../../store/reducers/goodsSlice';
 
-import { ITEMS_PER_PAGE, loadMore } from '../../helpers/Pagination';
 import { getFilteredItems } from '../../helpers/getFIlteredItems';
 
-import { Good } from '../../types/Good';
 import { Filter } from '../../types/Filter';
 
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
@@ -50,46 +47,23 @@ export const AllGenderPage: React.FC = React.memo(() => {
   };
 
   const {
-    goods: totalGoods,
+    goods,
     isLoaded,
     hasError,
   } = useAppSelector(state => state.goods);
-  const [renderedGoods, setRenderedGoods] = useState<Good[]>([]);
   const [updatedAt, setUpdatedAt] = useState(new Date());
-
-  const [totalItemsCount, setTotalItemsCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const [isFilterOpened, setIsFilterOpened] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(goodsActions.init());
-      setTotalItemsCount(totalGoods.length);
-
-      setRenderedGoods(prevGoods => [
-        ...prevGoods,
-        ...totalGoods.slice(
-          currentPage * ITEMS_PER_PAGE,
-          (currentPage + 1) * ITEMS_PER_PAGE,
-        ),
-      ]);
-    };
-
-    fetchData();
-  }, [updatedAt, currentPage]);
+    dispatch(goodsActions.init());
+  }, [updatedAt]);
 
   const reload = () => {
     setUpdatedAt(new Date());
   };
 
-  const handleScrollEnd = () => loadMore(
-    ITEMS_PER_PAGE,
-    currentPage,
-    totalItemsCount,
-  ) && setCurrentPage(prevPage => prevPage + 1);
-
-  const filteredGoods = getFilteredItems(renderedGoods, filterObj);
+  const filteredGoods = getFilteredItems(goods, filterObj);
 
   return (
     <main className="allGender">
@@ -102,6 +76,10 @@ export const AllGenderPage: React.FC = React.memo(() => {
           />
         )}
 
+        {isLoaded && !hasError && (
+          <Loader />
+        )}
+
         <Modal
           active={isFilterOpened}
           setActive={setIsFilterOpened}
@@ -112,30 +90,19 @@ export const AllGenderPage: React.FC = React.memo(() => {
                 key={item}
                 rootClassName="allGender"
                 item={item}
-                goods={totalGoods}
+                goods={goods}
               />
             ))}
           </ul>
         </Modal>
 
-        {renderedGoods.length > 0 && (
+        {goods.length > 0 && (
           <section className="allGender__section">
             {filteredGoods.length ? (
-              <VirtuosoGrid
-                style={{
-                  height: 'min-content',
-                }}
-                data={filteredGoods}
-                useWindowScroll
-                totalCount={renderedGoods.length}
-                overscan={6}
-                listClassName="allGender__section-list"
-                itemClassName="allGender__section-list-item"
-                endReached={handleScrollEnd}
-                components={{
-                  Footer: () => (isLoaded ? (<Loader />) : null),
-                }}
-                itemContent={(index, good) => {
+              <ul
+                className="allGender__section-list"
+              >
+                {goods.map(good => {
                   const {
                     id,
                     seoUrl,
@@ -147,20 +114,24 @@ export const AllGenderPage: React.FC = React.memo(() => {
                   } = good;
 
                   return (
-                    <GoodCard
-                      key={index + id}
-                      rootClassName="allGender"
-                      seoUrl={seoUrl}
-                      currentLanguage={currentLanguage}
-                      imageLink={images[0]}
-                      name={name}
-                      translationSlug={translationSlug}
-                      sale={sale}
-                      price={price}
-                    />
+                    <li
+                      key={id}
+                      className="allGender__section-list-item"
+                    >
+                      <GoodCard
+                        rootClassName="allGender"
+                        seoUrl={seoUrl}
+                        currentLanguage={currentLanguage}
+                        imageLink={images[0]}
+                        name={name}
+                        translationSlug={translationSlug}
+                        sale={sale}
+                        price={price}
+                      />
+                    </li>
                   );
-                }}
-              />
+                })}
+              </ul>
             ) : (
               <p className="allGender__section-error-message">
                 {t('noGoods')}
