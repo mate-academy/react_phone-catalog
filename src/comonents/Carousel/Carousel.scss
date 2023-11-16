@@ -1,0 +1,17 @@
+@import "../../style/utils/vars.scss";
+
+.carousel {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 24px 0 0;
+
+  &__item {
+    padding-right: 16px;
+    transition: all 0.7s ease-in-out;
+  }
+
+  &__item:last-child {
+    padding-right: 0;
+  }
+}

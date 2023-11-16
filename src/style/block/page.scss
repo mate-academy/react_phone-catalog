@@ -1,0 +1,21 @@
+.page {
+  padding: 0 152px;
+
+  &__title {
+    padding: 40px 0 8px;
+  }
+
+  &__dropdown-container {
+    padding-top: 40px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__main-container {
+    padding-top: 24px;
+  }
+
+  &__fav-container {
+    padding-top: 40px;
+  }
+}

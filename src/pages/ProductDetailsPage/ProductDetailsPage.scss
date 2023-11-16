@@ -1,0 +1,88 @@
+@import "../../style/utils/vars.scss";
+
+.details {
+  padding: 0 152px;
+  text-transform: capitalize;
+
+  &__bread-crumbs {
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title {
+    padding-top: 16px;
+  }
+
+  &__main-container {
+    padding-top: 40px;
+    display: flex;
+  }
+
+  &__images-container {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-right: 16px;
+  }
+
+  &__image-container {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    border: 1px solid $elements;
+
+    &--selected {
+      border-color: $primary;
+    }
+
+    &:hover {
+      border-color: $secondary;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease-in-out;
+
+    &--selected:hover {
+      transform: scale(105%);
+    }
+  }
+
+  &__selected-img-container {
+    width: 464px;
+    height: 464px;
+    padding: 11px;
+    box-sizing: border-box;
+  }
+
+  &__inner-container {
+    padding-left: 64px;
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 32px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__carousel-container {
+    padding-top: 80px;
+  }
+}

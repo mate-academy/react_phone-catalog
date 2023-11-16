@@ -1,0 +1,73 @@
+@import "../../style/utils/vars.scss";
+
+.carts {
+  padding: 0 152px;
+  position: relative;
+
+  &__title {
+    padding-top: 16px;
+  }
+
+  &__main-container {
+    display: flex;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 752px;
+    gap: 16px;
+  }
+
+  &__qauntity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 368px;
+    height: 206px;
+    border: 1px solid $elements;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  &__total-price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__button {
+    width: 320px;
+    height: 48px;
+    background-color: $primary;
+    color: $white;
+
+    &__button:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 350px;
+    left: 152px;
+    right: 152px;
+    height: 100px;
+    font-size: 30px;
+    background-color: $red;
+    color: $white;
+    border: 1px solid $white;
+    opacity: 0;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+}

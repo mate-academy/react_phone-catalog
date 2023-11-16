@@ -1,0 +1,81 @@
+@import "../../style/utils/vars.scss";
+
+.options {
+  width: 320px;
+
+  &__container {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+
+    &--capacity {
+      padding-top: 24px;
+    }
+  }
+
+  &__select-container {
+    padding-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-button {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements;
+    background-color: $white;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    &--selected {
+      border-color: $primary;
+    }
+  }
+
+  &__color {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+    display: flex;
+    border-radius: 50%;
+
+    &--red {
+      background-color: $red;
+    }
+
+    &--green {
+      background-color: $green;
+    }
+
+    &--sec {
+      background-color: $secondary;
+    }
+  }
+
+  &__capacity {
+    background-color: $white;
+    color: $primary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    text-transform: uppercase;
+    padding: 7px 8px 4px;
+    border: 1px solid $icons;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    &--selected {
+      border-color: $primary;
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}

@@ -1,8 +1,10 @@
 # React Phone catalog
+
 - If you work alone follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
 - If you work in a team follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
 ## Description
+
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
 Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
@@ -12,11 +14,13 @@ tо fetch data (use actual `productId` as a last part of the URL before `.json`)
 Store the Cart in the `localStorage`
 
 ## Tasks
+
 - Create `pages`, `components` and `helpers` folders to structure your app
 - Use `scss` files per component
 - Use component names as BEM block names with all the other BEM rules applied
 
 ### App
+
 1. Add `<header>` with links to all the pages
     - The `Logo` and the `Nav` are aligned left
     - The `Favorites` and the `Cart` are aligned right
@@ -27,6 +31,7 @@ Store the Cart in the `localStorage`
     - (*) Implement `Back to top` button
 
 ### Home page
+
 1. Create `HomePage` available at `/` with just a title `Home page`
 1. Fetch products from API
     - Each product has a `type`: `phone`, `tablet` or `accessory`
@@ -49,6 +54,7 @@ to links container.
     - (*) Swipe pictures every 5 seconds
 
 ### Phones page
+
 1. Create `PhonesPage` available at `/phones` with a `<h1>` title `Mobile phones`
     - Create `getPhones` API call fetching the products with the `type`: `phone`
 1. Add `ProductsList` with `data-cy="productList"` attribute showing all the `phones`
@@ -62,6 +68,7 @@ to links container.
     - (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
 
 ## Tablets and accessories
+
 1. Create `TabletsPage` page with `<h1>` title `Tablets` available at `/tablets` working the same way as `PhonesPage`
     - Create `getTablets` method fetching the products with `type`: `tablet`
 1. Create `AccessoriesPage` with `<h1>` title `Accessories` page available at `/accessories` working the same way as `PhonesPage`
@@ -69,6 +76,7 @@ to links container.
     - Implement `NoResults` component displayed if there are no products available containing text `<Category name> not found`
 
 ### Product details page
+
 1. Create `ProductDetailsPage` available at `/product/:productId`
     - `ProductCard` should be a link to the details page
 1. Fetch phone details from API taking the `phoneId` from the URL
@@ -85,6 +93,7 @@ to links container.
     - The last part is a plain text all the other ones are links
 
 ### Cart
+
 1. Implement `CartPage` storing an array of `CartItems`
     - Each item should have `id`, `quantity` and a `product`
 1. `Add to cart` button in `ProductCart` should add a product to the `Cart`
@@ -100,11 +109,13 @@ to links container.
 1. (*) Save the `Cart` to the `localSotrage` on each change and read it on page load.
 
 ### Favorites
+
 1. Create `FavoritesPage` it should show the `ProductsList` with all the favorite products
 1. Add ability to add/remove favorite products by pressing a hart and add `data-cy="addToFavorite"` attribute to this `<button>` element.
 1. (*) Show the favorites count near the `Favorites` icon in the header
 
 ### Search
+
 1. Add a `Search` component with an input into the `<header>` to filter products
 1. It should be shown only at `/phones`, `/tablets`, `/accessories` and `/favorites` with an appropriate text
 1. The `x` sign with `data-cy="searchDelete"` attribute appears when the query is not empty and clears the search
@@ -114,5 +125,6 @@ to links container.
 1. (*) Implement `NoSearchResults` component and show it when there are no products matching the query
 
 ### Other tasks
+
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server

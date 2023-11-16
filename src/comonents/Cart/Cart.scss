@@ -1,0 +1,72 @@
+@import "../../style/utils/vars.scss";
+
+.cart {
+  display: flex;
+  align-items: center;
+  width: 752px;
+  height: 128px;
+  border: 1px solid $elements;
+
+  &__cross-container {
+    padding-left: 24px;
+  }
+
+  &__name-container {
+    width: 295px;
+  }
+
+  &__img-container {
+    width: 80px;
+    height: 80px;
+    padding: 0 24px;
+    box-sizing: content-box;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    padding: 7px;
+    box-sizing: content-box;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    outline: none;
+    background-color: $white;
+    border: 1px solid $icons;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--cross {
+      border: none;
+    }
+
+    &--minus {
+      border-color: $elements;
+      pointer-events: none;
+    }
+  }
+
+  &__button-container {
+    display: flex;
+    padding-left: 49px;
+  }
+
+  &__count {
+    padding: 5.5px 0;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+  }
+
+  &__price {
+    height: 31px;
+    padding-left: 43px;
+  }
+}

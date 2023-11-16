@@ -1,0 +1,32 @@
+@import "../../style/utils/vars.scss";
+
+.category {
+  &__container {
+    display: flex;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: flex-end;
+    width: 368px;
+    height: 368px;
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__title-container {
+    padding-top: 24px;
+  }
+}

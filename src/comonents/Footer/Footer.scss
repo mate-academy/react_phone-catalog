@@ -1,0 +1,32 @@
+@import "../../style/utils/vars.scss";
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 116px 152px 36px;
+
+  &__link-container {
+    gap: 64px;
+  }
+
+  &__button-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    background-color: $white;
+  }
+
+  &__button:hover {
+    border-color: $primary;
+  }
+}

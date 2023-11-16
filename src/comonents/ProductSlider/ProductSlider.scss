@@ -1,0 +1,27 @@
+@import "../../style/utils/vars.scss";
+
+.product-slider {
+  height: 32px;
+  width: 80px;
+  gap: 16px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    background-color: $white;
+    border: 1px solid $icons;
+    cursor: pointer;
+
+    &--disabled {
+      border-color: $elements;
+      pointer-events: none;
+    }
+  }
+
+  &__button:hover {
+    border-color: $primary;
+  }
+}
