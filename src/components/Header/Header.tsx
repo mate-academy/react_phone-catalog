@@ -10,12 +10,20 @@ export const Header: React.FC = () => {
         <a className="top-bar__links" href="/">
           <img className="logo" src={logo} alt="Logo" />
         </a>
-        <nav className="top-bar__links">
-          <a className="top-bar__link top-bar__link--active" href="/">Home</a>
-          <a className="top-bar__link" href="/">Phones</a>
-          <a className="top-bar__link" href="/">Tablets</a>
-          <a className="top-bar__link" href="/">Accessories</a>
-        </nav>
+        <ul className="top-bar__pages">
+          <li className="top-bar__page">
+            <a className="top-bar__link top-bar__link--active" href="/">Home</a>
+          </li>
+          <li className="top-bar__page">
+            <a className="top-bar__link" href="/">Phones</a>
+          </li>
+          <li className="top-bar__page">
+            <a className="top-bar__link" href="/">Tablets</a>
+          </li>
+          <li className="top-bar__page">
+            <a className="top-bar__link" href="/">Accessories</a>
+          </li>
+        </ul>
       </div>
       <div className="top-bar__options">
         <a className="top-bar__option" href="/">

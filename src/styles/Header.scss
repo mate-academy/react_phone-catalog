@@ -1,4 +1,4 @@
-body {
+* {
   margin: 0;
   box-sizing: border-box;
 }
@@ -14,7 +14,6 @@ body {
   display: flex;
   justify-content: space-between;
   line-height: 24px;
-  // align-items: center;
 
   &__nav {
     display: flex;
@@ -36,19 +35,26 @@ body {
     align-items: center;
   }
 
-  &__links {
+  &__pages {
     display: flex;
     align-items: center;
     gap: 64px;
     height: 100%;
-    // line-height: 100%;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__page {
+    height: 100%;
   }
 
   &__link {
     text-decoration: none;
     position: relative;
+    align-items: center;
+    display: flex;
     height: 100%;
-    line-height: 100%;
 
 
     &--active::before {

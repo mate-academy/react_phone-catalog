@@ -1,0 +1,10 @@
+.footer {
+  // display: flex;
+  height: 96px;
+  background-color: pink;
+  // padding-top: 100%;
+
+  &__nav {
+    display: flex;
+  }
+}
