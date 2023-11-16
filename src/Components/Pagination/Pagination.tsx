@@ -18,6 +18,9 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pages = getNumbers(1, pagesAmount);
+  const handlePageLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSlideLeft = () => {
     setSearchParams(
@@ -25,6 +28,7 @@ export const Pagination: React.FC<Props> = ({
         [SearchParams.Page]: `${currentPage - 1}`,
       }, searchParams),
     );
+    handlePageLinkClick();
   };
 
   const handleSlideRight = () => {
@@ -33,6 +37,7 @@ export const Pagination: React.FC<Props> = ({
         [SearchParams.Page]: `${currentPage + 1}`,
       }, searchParams),
     );
+    handlePageLinkClick();
   };
 
   return (
@@ -54,6 +59,7 @@ export const Pagination: React.FC<Props> = ({
             className={classNames('Pagination__pages-link', {
               active: currentPage === page,
             })}
+            onClick={handlePageLinkClick}
           >
             {page}
           </Link>
