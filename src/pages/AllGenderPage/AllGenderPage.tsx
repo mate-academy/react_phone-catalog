@@ -29,8 +29,8 @@ const filterItems = [
 export const AllGenderPage: React.FC = React.memo(() => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
   const [searchParams] = useSearchParams();
+
   const currentLanguage = searchParams.get('lang') || 'en';
   const types = searchParams.getAll('type') || [];
   const drop = searchParams.getAll('drop') || [];
@@ -102,7 +102,7 @@ export const AllGenderPage: React.FC = React.memo(() => {
               <ul
                 className="allGender__section-list"
               >
-                {goods.map(good => {
+                {filteredGoods.map(good => {
                   const {
                     id,
                     seoUrl,
