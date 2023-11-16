@@ -20,8 +20,12 @@ type GoodsState = {
 
 const initialState: GoodsState = {
   goods: [],
-  goodsToBag: [],
-  goodsToWishlist: [],
+  goodsToBag: JSON.parse(
+    localStorage.getItem('goodsToBag') as string,
+  ) || [],
+  goodsToWishlist: JSON.parse(
+    localStorage.getItem('goodsToWishlist') as string,
+  ) || [],
   currentGood: null,
   isLoaded: false,
   hasError: false,

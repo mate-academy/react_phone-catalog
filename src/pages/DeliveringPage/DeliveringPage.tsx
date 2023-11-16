@@ -20,6 +20,7 @@ export const DeliveringPage: React.FC = React.memo(() => {
 
             return (
               <DeliveringSection
+                key={name}
                 rootName={name}
                 rootClassName={className}
                 numberOfItems={numberOfItems}

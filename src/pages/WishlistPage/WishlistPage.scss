@@ -1,0 +1,50 @@
+@import "../../styles/utils.scss";
+
+.wishlist {
+
+  &__good-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    column-gap: 20px;
+
+    text-decoration: none;
+    color: $black-800;
+
+    @include onDesktop {
+      &:hover {
+        .wishlist__good-card-info-title {
+          color: $red-700;
+        }
+      }
+    }
+  }
+
+  &__good-card-image {
+    width: 200px;
+  }
+
+  &__good-card-info-title {
+    font-size: 20px;
+    font-weight: 500;
+    transition: color $animationDuration;
+  }
+
+  &__price {
+    margin-top: 4px;
+    justify-content: flex-start;
+  }
+
+  &__good-card-info-button {
+    margin-top: 20px;
+
+    cursor: pointer;
+    transition: color $animationDuration;
+
+    @include onDesktop {
+      &:hover {
+        color: $red-700;
+      }
+    }
+  }
+}

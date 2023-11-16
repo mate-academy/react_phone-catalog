@@ -86,5 +86,6 @@
   "buyButtonTextRemove": "Remove from Bag",
   "addToWishList": "Add to wishlist",
   "removeFromWishList": "Remove from wishlist",
-  "selectSize": "Select size/model"
+  "selectSize": "Select size/model",
+  "delete": "Delete"
 }

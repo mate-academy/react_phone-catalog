@@ -86,5 +86,6 @@
   "buyButtonTextRemove": "Убрать из корзины",
   "addToWishList": "Добавить в список желаний",
   "removeFromWishList": "Убрать из списка желаний",
-  "selectSize": "Выберите размер/модель"
+  "selectSize": "Выберите размер/модель",
+  "delete": "Удалить"
 }

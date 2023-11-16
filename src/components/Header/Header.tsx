@@ -5,10 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { getScreenType } from '../../helpers/getScreenType';
 import { makeUrl } from '../../helpers/makeUrl';
-import {
-  HEADER_LEFT_NAV_LINKS,
-  HEADER_RIGHT_NAV_LINKS,
-} from '../../helpers/NavLinks';
+import { HEADER_LEFT_NAV_LINKS } from '../../helpers/NavLinks';
 import { resetSearchParams } from '../../helpers/resetSearchParams';
 
 import '../../i18n';
@@ -25,14 +22,18 @@ type Props = {
   screenType?: Resolutions,
   setScreenType?: React.Dispatch<React.SetStateAction<Resolutions>>,
   setIsSearchOpened?: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsBagOpened?: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsWishlistOpened?: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
 export const Header: React.FC<Props> = React.memo(({
   isMenuOpened = false,
-  setIsMenuOpened = () => {},
+  setIsMenuOpened = () => { },
   screenType = Resolutions.Mobile,
-  setScreenType = () => {},
-  setIsSearchOpened = () => {},
+  setScreenType = () => { },
+  setIsSearchOpened = () => { },
+  setIsBagOpened = () => { },
+  setIsWishlistOpened = () => { },
 }) => {
   const handleResize = () => setScreenType(getScreenType());
   const { t } = useTranslation();
@@ -140,35 +141,63 @@ export const Header: React.FC<Props> = React.memo(({
               />
             </li>
 
-            {screenType === Resolutions.Desktop
-              && HEADER_RIGHT_NAV_LINKS.map(link => (
-                <li
-                  className="header__nav-list-item"
-                  key={link}
-                >
+            {screenType === Resolutions.Desktop && (
+              <>
+                <li className="header__nav-list-item">
                   <NavLink
                     className="header__nav-list-link"
                     to={{
-                      pathname: makeUrl(link),
+                      pathname: makeUrl(HeaderLink.Delivering),
                       search: resetSearchParams(searchParams),
                     }}
                   >
-                    {t(link)}
+                    {t(HeaderLink.Delivering)}
                   </NavLink>
                 </li>
-              ))}
+
+                <li className="header__nav-list-item">
+                  <button
+                    className="header__nav-list-link"
+                    type="button"
+                    onClick={() => setIsBagOpened(true)}
+                  >
+                    {t(HeaderLink.Bag)}
+                  </button>
+                </li>
+
+                <li className="header__nav-list-item">
+                  <button
+                    className="header__nav-list-link"
+                    type="button"
+                    onClick={() => setIsWishlistOpened(true)}
+                  >
+                    {t(HeaderLink.WishList)}
+                  </button>
+                </li>
+
+                <li className="header__nav-list-item">
+                  <NavLink
+                    className="header__nav-list-link"
+                    to={{
+                      pathname: makeUrl(HeaderLink.Profile),
+                      search: resetSearchParams(searchParams),
+                    }}
+                  >
+                    {t(HeaderLink.Profile)}
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             {screenType !== Resolutions.Desktop && !isMenuOpened && (
               <li className="header__nav-list-item">
-                <NavLink
+                <button
                   className="header__nav-list-link"
-                  to={{
-                    pathname: makeUrl(HeaderLink.Bag),
-                    search: resetSearchParams(searchParams),
-                  }}
+                  type="button"
+                  onClick={() => setIsBagOpened(true)}
                 >
                   {t(HeaderLink.Bag)}
-                </NavLink>
+                </button>
               </li>
             )}
 

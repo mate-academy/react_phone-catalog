@@ -11,7 +11,11 @@ import { Header } from './components/Header/Header';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { Burger } from './components/Burger/Burger';
 import { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
+import { Modal } from './components/Modal/Modal';
 import { Footer } from './components/Footer/Footer';
+
+import { BagPage } from './pages/BagPage/BagPage';
+import { WishlistPage } from './pages/WishlistPage/WishlistPage';
 
 import './App.scss';
 
@@ -23,6 +27,8 @@ export const App: React.FC = () => {
   const [screenType, setScreenType] = useState(getScreenType());
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [isSearchOpened, setIsSearchOpened] = useState(false);
+  const [isBagOpened, setIsBagOpened] = useState(false);
+  const [isWishlistOpened, setIsWishlistOpened] = useState(false);
 
   useEffect(() => {
     dispatch(goodsActions.init());
@@ -37,6 +43,8 @@ export const App: React.FC = () => {
           screenType={screenType}
           setScreenType={setScreenType}
           setIsSearchOpened={setIsSearchOpened}
+          setIsBagOpened={setIsBagOpened}
+          setIsWishlistOpened={setIsWishlistOpened}
         />
 
         <Transition
@@ -68,6 +76,7 @@ export const App: React.FC = () => {
               screenType={screenType}
               setScreenType={setScreenType}
               setIsSearchOpened={setIsSearchOpened}
+              setIsWishlistOpened={setIsWishlistOpened}
             />
           )}
         </Transition>
@@ -80,6 +89,20 @@ export const App: React.FC = () => {
             reload={() => setUpdatedAt(new Date())}
           />
         )}
+
+        <Modal
+          active={isBagOpened}
+          setActive={setIsBagOpened}
+        >
+          <BagPage />
+        </Modal>
+
+        <Modal
+          active={isWishlistOpened}
+          setActive={setIsWishlistOpened}
+        >
+          <WishlistPage />
+        </Modal>
 
         <Footer
           setIsMenuOpened={setIsMenuOpened}
