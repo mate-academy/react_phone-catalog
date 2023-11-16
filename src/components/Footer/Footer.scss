@@ -1,0 +1,92 @@
+@import "../../styles/utils";
+
+.Footer {
+  padding-block: 32px;
+
+  box-shadow: 0 -1px 0 0 $element;
+
+  &-Content {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+  }
+
+  &-Nav {
+    justify-self: center;
+  }
+
+  &-List {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 0 64px;
+  }
+
+  &-Link {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: $secondary;
+    transition: color $transition-duration;
+
+    &:hover {
+      color: $primary;
+    }
+
+  }
+
+  &-Button {
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 0 16px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+
+    color: $secondary;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition: color $transition-duration;
+
+    &::after {
+      content: "";
+
+      display: block;
+      height: 32px;
+      width: 32px;
+
+      background-image: url("../../images/icons/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+
+      border: 1px solid $icon-placeholder;
+
+      transform: rotate(270deg);
+      transition: border-color $transition-duration;
+    }
+
+    &:hover {
+      color: $primary;
+
+      &::after {
+        background-image: url("../../images/icons/arrow-right-hover.svg");
+        border-color: $primary;
+      }
+    }
+  }
+}
