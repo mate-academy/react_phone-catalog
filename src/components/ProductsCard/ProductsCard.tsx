@@ -24,11 +24,11 @@ export const ProductsCard: React.FC<Props> = ({
   };
 
   return (
-    <div className="ProductsCard" data-cy="cardsContainer">
+    <li className="ProductsCard" data-cy="cardsContainer">
       <img
         className="ProductsCard__image"
         src={imageUrl}
-        alt="APPLE A1419 iMac 27 Retina 5K Monoblock"
+        alt={name}
       />
       <p className="ProductsCard__name">
         {name}
@@ -82,6 +82,6 @@ export const ProductsCard: React.FC<Props> = ({
           />
         </button>
       </div>
-    </div>
+    </li>
   );
 };

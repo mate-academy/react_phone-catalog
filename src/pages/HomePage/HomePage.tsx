@@ -5,6 +5,7 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { Product } from '../../helpers/types/Product';
 import { Banners } from '../../components/Banners';
 import { CategoriesList } from '../../components/CategoriesList';
+import { getDiscountAmount } from '../../helpers/utils/getDiscount';
 import './HomePage.scss';
 
 export const HomePage = () => {
@@ -13,12 +14,6 @@ export const HomePage = () => {
   useEffect(() => {
     setProducts(productsFromServer as Product[]);
   }, []);
-
-  const getDiscountAmount = (product: Product) => {
-    const { price, discount } = product;
-
-    return price * (discount / 100);
-  };
 
   const hotProducts = products
     .filter(product => product.discount)

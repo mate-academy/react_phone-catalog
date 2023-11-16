@@ -6,8 +6,10 @@
   &__cards {
     display: flex;
     gap: 16px;
+
     overflow: hidden;
     scroll-behavior: smooth;
+    list-style: none;
   }
 
   &__buttons {

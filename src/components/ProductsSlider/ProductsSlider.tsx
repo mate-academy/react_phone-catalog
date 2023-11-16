@@ -15,7 +15,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
   const [isFirstImage, setIsFirstImage] = useState(true);
   const [isLastImage, setIsLastImage] = useState(false);
 
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLUListElement>(null);
   const container = sliderRef.current;
 
   useEffect(() => {
@@ -91,14 +91,14 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
         </button>
       </div>
 
-      <div className="ProductsSlider__cards" ref={sliderRef}>
+      <ul className="ProductsSlider__cards" ref={sliderRef}>
         {products.map(product => (
           <ProductsCard
             key={product.id}
             product={product}
           />
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

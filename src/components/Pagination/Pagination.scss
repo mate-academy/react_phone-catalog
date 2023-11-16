@@ -1,0 +1,42 @@
+@import "../../helpers/styles/mixins";
+
+.Pagination {
+  justify-content: center;
+  display: flex;
+  gap: 8px;
+  list-style: none;
+
+  &__link {
+    @include squareSize(32px);
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+
+    &--active {
+      border: none;
+      background-color: $primary-color;
+      color: $white-color;
+    }
+
+    &--arrow {
+      margin-inline: 8px;
+    }
+
+    &--disabled {
+      filter: opacity(50%);
+
+      &:hover {
+        border-color: $elements-color;
+      }
+    }
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+}
