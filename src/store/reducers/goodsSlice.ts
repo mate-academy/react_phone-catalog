@@ -4,12 +4,14 @@ import {
   PayloadAction,
   createAsyncThunk,
 } from '@reduxjs/toolkit';
-import { Good } from '../../types/Good';
 import { getData } from '../../helpers/httpClient';
+
+import { Good } from '../../types/Good';
+import { GoodToBag } from '../../types/GoodToBag';
 
 type GoodsState = {
   goods: Good[],
-  goodsToBag: Good[],
+  goodsToBag: GoodToBag[],
   goodsToWishlist: Good[],
   currentGood: Good | null,
   isLoaded: boolean,
@@ -34,7 +36,7 @@ const goodsSlice = createSlice({
   name: 'goods',
   initialState,
   reducers: {
-    addToBag: (state, action: PayloadAction<Good>) => {
+    addToBag: (state, action: PayloadAction<GoodToBag>) => {
       const updatedBag = [...state.goodsToBag, action.payload];
 
       state.goodsToBag = updatedBag;
@@ -42,7 +44,7 @@ const goodsSlice = createSlice({
     },
     removeFromBag: (state, action: PayloadAction<number>) => {
       const updatedBag = state.goodsToBag
-        .filter(good => good.id !== action.payload);
+        .filter(goodToBag => goodToBag.good.id !== action.payload);
 
       state.goodsToBag = updatedBag;
       localStorage.setItem('goodsToBag', JSON.stringify(updatedBag));

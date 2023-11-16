@@ -19,14 +19,10 @@ import './Burger.scss';
 type Props = {
   classNames: string,
   isMenuOpened: boolean,
-  setIsMenuOpened: (
-    param: boolean | ((prevState: boolean) => boolean)
-  ) => void,
+  setIsMenuOpened: React.Dispatch<React.SetStateAction<boolean>>,
   screenType: Resolutions,
-  setScreenType: (param: Resolutions) => void,
-  setIsSearchOpened: (
-    param: boolean | ((prevState: boolean) => boolean)
-  ) => void,
+  setScreenType: React.Dispatch<React.SetStateAction<Resolutions>>,
+  setIsSearchOpened: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
 export const Burger: React.FC<Props> = React.memo(({

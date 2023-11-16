@@ -21,10 +21,10 @@ import './Header.scss';
 
 type Props = {
   isMenuOpened?: boolean,
-  setIsMenuOpened?: (param: boolean | ((prevState: boolean) => boolean)) => void,
+  setIsMenuOpened?: React.Dispatch<React.SetStateAction<boolean>>,
   screenType?: Resolutions,
-  setScreenType?: (param: Resolutions) => void,
-  setIsSearchOpened?: (param: boolean | ((prevState: boolean) => boolean)) => void,
+  setScreenType?: React.Dispatch<React.SetStateAction<Resolutions>>,
+  setIsSearchOpened?: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
 export const Header: React.FC<Props> = React.memo(({
@@ -47,9 +47,7 @@ export const Header: React.FC<Props> = React.memo(({
   }, []);
 
   return (
-    <header
-      className="header"
-    >
+    <header className="header">
       <div className="container">
         <nav className="header__nav">
           <ul className="header__nav-list">

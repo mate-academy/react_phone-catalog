@@ -1,35 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Listbox } from '@headlessui/react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 
 import * as goodsActions from '../../store/reducers/goodsSlice';
 
 import { Good } from '../../types/Good';
+import { GoodToBag } from '../../types/GoodToBag';
+import { canUserBuy } from '../../helpers/canUserBuy';
 
 import { GoodPrice } from '../../components/GoodPrice/GoodPrice';
 import { MainButton } from '../../components/Buttons/MainButton/MainButton';
 import {
   SecondaryButton,
 } from '../../components/Buttons/SecondaryButton/SecondaryButton';
+import { Dropdown } from '../../components/Dropdown/Dropdown';
+import { Accordion } from '../../components/Accordion/Accordion';
 
 import './ItemPage.scss';
+import './ItemPageDropdown.scss';
+import './ItemPageAccordion.scss';
 
 export const ItemPage: React.FC = React.memo(() => {
   const params = useParams();
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const { currentGood } = useAppSelector(state => state.goods);
-
-  const goodsToBag: Good[] = JSON.parse(
-    localStorage.getItem('goodsToBag') as string,
-  ) || [];
-
-  const goodsToWishlist: Good[] = JSON.parse(
-    localStorage.getItem('goodsToWishlist') as string,
-  ) || [];
-
   const {
     images,
     translationSlug,
@@ -37,7 +36,20 @@ export const ItemPage: React.FC = React.memo(() => {
     sale,
     id,
     name,
+    sizes,
   } = currentGood || {};
+
+  const goodsToBag: GoodToBag[] = JSON.parse(
+    localStorage.getItem('goodsToBag') as string,
+  ) || [];
+
+  const goodsToWishlist: Good[] = JSON.parse(
+    localStorage.getItem('goodsToWishlist') as string,
+  ) || [];
+
+  const isUserBuy = useMemo(() => {
+    return canUserBuy(sizes, selectedSize);
+  }, [selectedSize, sizes]);
 
   useEffect(() => {
     dispatch(goodsActions.currentGood(params.seoUrl as string));
@@ -77,25 +89,51 @@ export const ItemPage: React.FC = React.memo(() => {
               {`${t('productCode')}: ${id}`}
             </p>
 
-            {goodsToBag.some(good => good.id === currentGood?.id) ? (
-              <SecondaryButton
-                className="itemPage__content-info-button-remove"
-                button
-                onClick={() => {
-                  dispatch(goodsActions.removeFromBag(id as number));
-                }}
-                text={t('buyButtonTextRemove')}
-              />
-            ) : (
-              <MainButton
-                className="itemPage__content-info-button-main"
-                button
-                onClick={() => {
-                  dispatch(goodsActions.addToBag(currentGood as Good));
-                }}
-                text={t('buyButtonText')}
-              />
+            {!!sizes?.length && (
+              <Dropdown
+                rootClassName="itemPage__content-info-size"
+                selectedItem={selectedSize}
+                setSelectedItem={setSelectedSize}
+                placeHolder={t('selectSize')}
+              >
+                {sizes?.map(size => (
+                  <Listbox.Option
+                    key={size}
+                    value={size}
+                    className="itemPage__content-info-size-dropdown-list-item"
+                  >
+                    {size}
+                  </Listbox.Option>
+                ))}
+              </Dropdown>
             )}
+
+            {goodsToBag
+              .some(goodToBag => goodToBag.good.id === currentGood?.id) ? (
+                <SecondaryButton
+                  className="itemPage__content-info-button-remove"
+                  button
+                  onClick={() => {
+                    dispatch(goodsActions.removeFromBag(id as number));
+                  }}
+                  text={t('buyButtonTextRemove')}
+                />
+              ) : (
+                <MainButton
+                  className="itemPage__content-info-button-main"
+                  button
+                  onClick={() => {
+                    const newGood = {
+                      good: currentGood as Good,
+                      size: selectedSize as string,
+                    };
+
+                    dispatch(goodsActions.addToBag(newGood));
+                  }}
+                  text={t('buyButtonText')}
+                  disabled={!isUserBuy}
+                />
+              )}
 
             {goodsToWishlist.some(good => good.id === currentGood?.id) ? (
               <button
@@ -118,6 +156,12 @@ export const ItemPage: React.FC = React.memo(() => {
                 {t('addToWishList')}
               </button>
             )}
+
+            <Accordion
+              rootClassName="itemPage__content-info"
+              title={t('description')}
+              description={t(`${translationSlug}Description`)}
+            />
           </div>
         </div>
       </div>

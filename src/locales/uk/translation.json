@@ -85,5 +85,6 @@
   "buyButtonText": "Купити",
   "buyButtonTextRemove": "Видалити з кошика",
   "addToWishList": "Додати до списку бажань",
-  "removeFromWishList": "Видалити зі списку бажань"
+  "removeFromWishList": "Видалити зі списку бажань",
+  "selectSize": "Виберіть розмір/модель"
 }

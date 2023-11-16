@@ -1,13 +1,13 @@
 @import "../../styles/utils.scss";
 
-.langDropdown {
+.lang-dropdown {
   position: relative;
   width: 50%;
 
   font-size: 18px;
   font-weight: 400;
 
-  &__button {
+  &-button {
     position: relative;
     width: 100%;
 
@@ -32,7 +32,7 @@
     }
   }
 
-  &__list {
+  &-list {
     width: 100%;
     position: absolute;
     top: 32px;
@@ -51,14 +51,10 @@
     }
   }
 
-  &__list-item {
+  &-list-item {
     width: 100%;
     padding: 8px 0;
     border-top: 1px solid $black-500;
-  }
-
-  &__list-item-button {
-    width: 100%;
 
     text-align: left;
     transition: color $animationDuration;

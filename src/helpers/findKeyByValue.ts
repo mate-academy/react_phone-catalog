@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const findKeyByValue = <T extends Record<string, any>>(
   objects: T[],
   targetValue: string | number | null,

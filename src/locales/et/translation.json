@@ -85,5 +85,6 @@
   "buyButtonText": "Osta",
   "buyButtonTextRemove": "Eemalda kotist",
   "addToWishList": "Soovinimekirja lisama",
-  "removeFromWishList": "Eemalda sooviloendist"
+  "removeFromWishList": "Eemalda sooviloendist",
+  "selectSize": "Vali suurus/mudel"
 }

@@ -42,6 +42,11 @@
     }
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
   &__text {
     position: relative;
     z-index: $z-index--1;

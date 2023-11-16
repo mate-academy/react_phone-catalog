@@ -7,6 +7,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^1.9.7",
     "classnames": "^2.3.2",
     "i18next": "^23.4.4",

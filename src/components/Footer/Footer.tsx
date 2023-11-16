@@ -53,9 +53,7 @@ export const Footer: React.FC<Props> = React.memo(({ setIsMenuOpened }) => {
           </nav>
 
           <div className="footer__lang-container">
-            <LangDropdown
-              rootClassName="footer"
-            />
+            <LangDropdown />
           </div>
 
           <div className="footer__social-list-container">

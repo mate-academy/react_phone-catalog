@@ -1,0 +1,21 @@
+@import "../../styles/utils.scss";
+
+.dropdown {
+
+  &-enter-active,
+  &-leave-active {
+    transition: opacity $animationDuration, transform $animationDuration;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  &-enter-to,
+  &-leave-from {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

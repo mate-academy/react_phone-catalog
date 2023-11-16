@@ -1,0 +1,48 @@
+@import "../../styles/utils.scss";
+
+.itemPage__content-info-accordion {
+  z-index: $z-index---1;
+  width: 90%;
+  margin-top: 50px;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @include onDesktop {
+    max-width: 80%;
+  }
+
+  &-title {
+    position: relative;
+    width: 100%;
+    padding: 12px 8px;
+
+    font-weight: 500;
+    text-align: left;
+
+    cursor: pointer;
+    border-bottom: 2px solid $red-700;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 8px;
+
+      width: 12px;
+      height: 12px;
+
+      background-image: url("../../images/selectAfter.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &-description {
+    margin-top: 8px;
+  }
+}

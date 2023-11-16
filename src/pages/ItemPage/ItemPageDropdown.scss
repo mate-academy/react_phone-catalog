@@ -1,0 +1,77 @@
+@import "../../styles/utils.scss";
+
+.itemPage__content-info-size-dropdown {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin-top: 70px;
+  width: 95%;
+
+  @include onDesktop {
+    max-width: 80%;
+  }
+
+  &-button {
+    position: relative;
+    width: 100%;
+
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    padding: 12px 8px;
+
+    cursor: pointer;
+    border-bottom: 2px solid $red-700;
+
+    &--unselected {
+      color: $black-300;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 8px;
+
+      width: 12px;
+      height: 12px;
+
+      background-image: url("../../images/selectAfter.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &-list {
+    position: absolute;
+    width: 100%;
+    background-color: $black-100;
+    z-index: $z-index--3;
+
+    margin-top: 8px;
+    list-style: none;
+
+    border: 2px solid $red-700;
+    border-top: none;
+  }
+
+  &-list-item {
+    cursor: pointer;
+    padding: 12px 8px;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    transition: color $animationDuration;
+
+    @include onDesktop {
+      &:hover {
+        color: $red-700;
+      }
+    }
+  }
+}

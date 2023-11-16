@@ -13,6 +13,7 @@ type Props = {
   className: string,
   button?: boolean,
   onClick?: () => void,
+  disabled?: boolean,
 };
 
 export const MainButton: React.FC<Props> = ({
@@ -21,6 +22,7 @@ export const MainButton: React.FC<Props> = ({
   className,
   button = false,
   onClick = () => {},
+  disabled = false,
 }) => {
   const [searchParams] = useSearchParams();
 
@@ -33,6 +35,7 @@ export const MainButton: React.FC<Props> = ({
         )}
         type="button"
         onClick={onClick}
+        disabled={disabled}
       >
         <p className="button--main__text">
           {text}

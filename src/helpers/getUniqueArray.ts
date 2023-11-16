@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const getUniqueArray = (array: any[]) => {
   const result: any[] = [];
 
