@@ -59,7 +59,7 @@ export const Category = () => {
               className={`category__link category__link--${link}`}
             >
               <img
-                src={`_new/img/category-${link}.png`}
+                src={`img/category/category-${link}.png`}
                 alt="category"
               />
             </Link>
