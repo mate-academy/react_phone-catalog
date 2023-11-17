@@ -7,7 +7,6 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import * as goodsActions from '../../store/reducers/goodsSlice';
 
 import { Good } from '../../types/Good';
-import { GoodToBag } from '../../types/GoodToBag';
 import { canUserBuy } from '../../helpers/canUserBuy';
 
 import { GoodPrice } from '../../components/GoodPrice/GoodPrice';
@@ -28,7 +27,11 @@ export const ItemPage: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
 
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  const { currentGood } = useAppSelector(state => state.goods);
+  const {
+    currentGood,
+    goodsToBag,
+    goodsToWishlist,
+  } = useAppSelector(state => state.goods);
   const {
     images,
     translationSlug,
@@ -38,14 +41,6 @@ export const ItemPage: React.FC = React.memo(() => {
     name,
     sizes,
   } = currentGood || {};
-
-  const goodsToBag: GoodToBag[] = JSON.parse(
-    localStorage.getItem('goodsToBag') as string,
-  ) || [];
-
-  const goodsToWishlist: Good[] = JSON.parse(
-    localStorage.getItem('goodsToWishlist') as string,
-  ) || [];
 
   const isUserBuy = useMemo(() => {
     return canUserBuy(sizes, selectedSize);
