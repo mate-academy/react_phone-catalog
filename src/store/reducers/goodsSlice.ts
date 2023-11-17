@@ -53,6 +53,22 @@ const goodsSlice = createSlice({
       state.goodsToBag = updatedBag;
       localStorage.setItem('goodsToBag', JSON.stringify(updatedBag));
     },
+    increaseQuantity: (state, action: PayloadAction<number>) => {
+      const currentGoodToBag = state.goodsToBag.find(goodToBag => {
+        return goodToBag.good.id === action.payload;
+      }) as GoodToBag;
+
+      currentGoodToBag.quantity += 1;
+    },
+    decreaseQuantity: (state, action: PayloadAction<number>) => {
+      const currentGoodToBag = state.goodsToBag.find(goodToBag => {
+        return goodToBag.good.id === action.payload;
+      }) as GoodToBag;
+
+      if (currentGoodToBag.quantity > 1) {
+        currentGoodToBag.quantity -= 1;
+      }
+    },
     addToWishList: (state, action: PayloadAction<Good>) => {
       const updatedBag = [...state.goodsToWishlist, action.payload];
 
@@ -93,6 +109,8 @@ export default goodsSlice.reducer;
 export const {
   addToBag,
   removeFromBag,
+  increaseQuantity,
+  decreaseQuantity,
   addToWishList,
   removeFromWishlist,
   currentGood,

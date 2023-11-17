@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import * as goodsActions from '../../store/reducers/goodsSlice';
 
 import { Good } from '../../types/Good';
+import { GoodToBag } from '../../types/GoodToBag';
 import { canUserBuy } from '../../helpers/canUserBuy';
 
 import { GoodPrice } from '../../components/GoodPrice/GoodPrice';
@@ -118,9 +119,10 @@ export const ItemPage: React.FC = React.memo(() => {
                   className="itemPage__content-info-button-main"
                   button
                   onClick={() => {
-                    const newGood = {
+                    const newGood: GoodToBag = {
                       good: currentGood as Good,
                       size: selectedSize as string,
+                      quantity: 1,
                     };
 
                     dispatch(goodsActions.addToBag(newGood));

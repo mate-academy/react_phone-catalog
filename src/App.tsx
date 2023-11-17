@@ -29,6 +29,8 @@ export const App: React.FC = () => {
   const [isSearchOpened, setIsSearchOpened] = useState(false);
   const [isBagOpened, setIsBagOpened] = useState(false);
   const [isWishlistOpened, setIsWishlistOpened] = useState(false);
+  const [isCheckoutModalOpened, setIsCheckoutModalOpened] = useState(false);
+  const [isPayNowButtonClicked, setIsPayNowButtonClicked] = useState(false);
 
   useEffect(() => {
     dispatch(goodsActions.init());
@@ -94,7 +96,11 @@ export const App: React.FC = () => {
           active={isBagOpened}
           setActive={setIsBagOpened}
         >
-          <BagPage />
+          <BagPage
+            setIsBagOpened={setIsBagOpened}
+            setIsCheckoutModalOpened={setIsCheckoutModalOpened}
+            setIsPayNowButtonClicked={setIsPayNowButtonClicked}
+          />
         </Modal>
 
         <Modal
@@ -102,6 +108,17 @@ export const App: React.FC = () => {
           setActive={setIsWishlistOpened}
         >
           <WishlistPage />
+        </Modal>
+
+        <Modal
+          active={isCheckoutModalOpened}
+          setActive={setIsCheckoutModalOpened}
+        >
+          {isPayNowButtonClicked ? (
+            'clicked by payNow'
+          ) : (
+            'clicked by checkout'
+          )}
         </Modal>
 
         <Footer

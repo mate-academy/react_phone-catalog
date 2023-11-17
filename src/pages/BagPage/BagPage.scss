@@ -1,1 +1,154 @@
 @import "../../styles/utils.scss";
+
+.bag {
+
+  &__goods-list {
+    list-style: none;
+  }
+
+  &__goods-list-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+    align-items: center;
+
+    &:not(:first-child) {
+      margin-top: 40px;
+    }
+
+    @include onTablet {
+      grid-template-columns: min-content 1fr;
+    }
+  }
+
+  &__goods-list-item-link {
+    text-decoration: none;
+    color: inherit;
+
+    @include onDesktop {
+      &:hover {
+        .bag__goods-list-item-info-title {
+          color: $red-700;
+        }
+      }
+    }
+  }
+
+  &__goods-list-item-image {
+    display: none;
+
+    width: 200px;
+    height: 200px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &__goods-list-item-info-title {
+    font-size: 24px;
+    font-weight: 500;
+
+    transition: color $animationDuration;
+  }
+
+  &__price {
+    margin-top: 4px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+
+    font-size: 20px;
+
+    &--old {
+      font-size: 18px;
+      text-decoration: line-through;
+      opacity: 0.4;
+    }
+  }
+
+  &__goods-list-item-info-size {
+    font-size: 16px;
+  }
+
+  &__goods-list-item-info-extra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__goods-list-item-info-extra-quantity-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__goods-list-item-info-extra-quantity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    font-size: 16px;
+  }
+
+  &__goods-list-item-info-extra-quantity-value,
+  &__goods-list-item-info-extra-quantity-buttons-button {
+    font-size: 24px;
+  }
+
+  &__goods-list-item-info-extra-quantity-buttons-button {
+    cursor: pointer;
+  }
+
+  &__goods-list-item-info-extra-button {
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  &__total {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__total-subTotal,
+  &__total-shipping,
+  &__total-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 18px;
+  }
+
+  &__total-subTotal-label,
+  &__total-shipping-label {
+    opacity: 0.6;
+  }
+
+  &__total-subTotal-value,
+  &__total-shipping-value,
+  &__total-total-label,
+  &__total-total-value {
+    font-weight: 500;
+  }
+
+  &__total-total-value {
+    color: $red-700;
+  }
+
+  &__buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__buttons-button-main {
+    position: relative;
+    max-width: 100%;
+  }
+}

@@ -62,13 +62,6 @@
   "tShirt": "T-Shirt",
   "accessories": "Accessories",
   "winter": "Winter",
-  "45": 38,
-  "38": 32.5,
-  "32": 27.5,
-  "30": 25,
-  "25": 23,
-  "20": 17,
-  "15": 13,
   "count": "Count",
   "price": "Price",
   "description": "Description",
@@ -88,5 +81,12 @@
   "removeFromWishList": "Remove from wishlist",
   "selectSize": "Select size/model",
   "delete": "Delete",
-  "wishlistEmpty": "Your wishlist is empty"
+  "wishlistEmpty": "Your wishlist is empty",
+  "bagEmpty": "Your bag is empty",
+  "quantity": "Quantity:",
+  "subTotal": "Subtotal:",
+  "shipping": "Shipping:",
+  "total": "Total:",
+  "payNow": "Pay now",
+  "checkout": "Checkout"
 }

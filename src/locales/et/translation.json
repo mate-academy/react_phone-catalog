@@ -62,13 +62,6 @@
   "tShirt": "T-särk",
   "accessories": "Aksessuaarid",
   "winter": "Talv",
-  "45": 45,
-  "38": 38,
-  "30": 30,
-  "32": 32,
-  "25": 25,
-  "20": 20,
-  "15": 15,
   "count": "Kogus",
   "price": "Hind",
   "description": "Kirjeldus",
@@ -88,5 +81,12 @@
   "removeFromWishList": "Eemalda sooviloendist",
   "selectSize": "Vali suurus/mudel",
   "delete": "Kustuta",
-  "wishlistEmpty": "Teie soovinimekiri on tühi"
+  "wishlistEmpty": "Teie soovinimekiri on tühi",
+  "bagEmpty": "Teie kott on tühi",
+  "quantity": "kogus:",
+  "subTotal": "Vahesumma:",
+  "shipping": "Tarne:",
+  "total": "Kokku:",
+  "payNow": "Maksa kohe",
+  "checkout": "Kassasse"
 }
