@@ -64,7 +64,7 @@ export const ProductCarousel: React.FC<Props> = ({ title = '' }) => {
           className="flex gap-x-4 transition-all"
           style={{ transform: `translateX(-${272 * index + 16 * index}px)` }}
         >
-          {products.length
+          {!!products.length
             && products
               .filter(product => product.year > 2018)
               .slice(0, allImages)

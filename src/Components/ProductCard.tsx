@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { Link } from 'react-router-dom';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductType } from '../Types/ProductType';
 import { FavouritesButton } from './FavouritesButton';
@@ -10,19 +11,22 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="flex w-[272px] flex-col border border-Elements p-6 transition-all hover:border hover:border-Primary">
-      <img
-        className="h-[208px] w-[208px] self-center object-contain"
-        src={`_new/${product.image}`}
-        alt=""
-      />
+      <Link to={`/catalogue/phones/${product.itemId}`}>
+        <img
+          className="h-[208px] w-[208px] self-center object-contain"
+          src={`/_new/${product.image}`}
+          alt=""
+        />
+      </Link>
 
       <hr className="h-6 border-0" />
 
-      <p
+      <Link
+        to={`/catalogue/phones/${product.itemId}`}
         className={`flex h-[42px] w-[224px] items-center ${typographyStyle.bodyText}`}
       >
         {product.name}
-      </p>
+      </Link>
 
       <hr className="h-2 border-0" />
 

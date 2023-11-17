@@ -8,12 +8,11 @@ import {
 import App from './App';
 import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
-import { Phones } from './pages/Phones';
-import { Tablets } from './pages/Tablets';
-import { Accessories } from './pages/Accessories';
-import { Favourites } from './pages/Favourites';
+import { Catalogue } from './pages/Catalogue';
 import { Cart } from './pages/Cart';
 import { AppContextProvider } from './Contexts/AppContext';
+import { ItemCard } from './pages/ItemCard';
+import { Favourites } from './pages/Favourites';
 
 ReactDOM.render(
   <AppContextProvider>
@@ -21,9 +20,9 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-          <Route path="phones" element={<Phones />} />
-          <Route path="tablets" element={<Tablets />} />
-          <Route path="accessories" element={<Accessories />} />
+          <Route path="catalogue/:catalogueId" element={<Catalogue />}>
+            <Route path=":itemId" element={<ItemCard />} />
+          </Route>
           <Route path="favourites" element={<Favourites />} />
           <Route path="cart" element={<Cart />} />
           <Route path="home" element={<Navigate to="/" />} />

@@ -6,6 +6,6 @@ export const typographyStyle = {
   uppercase:
     'font-Mont text-[12px] font-bold uppercase leading-[11px] tracking-[0.04em]',
   button: 'font-Mont text-[14px] font-semibold leading-[21px] tracking-[0]',
-  bodyText: 'font-Mont text-[14px] leading-[21px] tracking-[0]',
+  bodyText: 'font-Mont text-[14px] font-normal leading-[21px] tracking-[0]',
   smallText: 'font-Mont text-[12px] leading-[15px] tracking-[0]',
 };

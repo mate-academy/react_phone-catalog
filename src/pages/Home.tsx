@@ -12,7 +12,7 @@ export const Home = () => {
       <Carousel>
         <Link
           className="carousel-image block h-[400px] w-[1040px] shrink-0 object-cover"
-          to="phones"
+          to="catalogue/phones"
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
@@ -23,7 +23,7 @@ export const Home = () => {
 
         <Link
           className="carousel-image block h-[400px] w-[1040px] shrink-0 object-cover"
-          to="tablets"
+          to="catalogue/tablets"
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
@@ -34,7 +34,7 @@ export const Home = () => {
 
         <Link
           className="carousel-image block h-[400px] w-[1040px] shrink-0 object-cover"
-          to="accessories"
+          to="catalogue/accessories"
         >
           <img
             className="h-[400px] w-[1040px] object-cover"

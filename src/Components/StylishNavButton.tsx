@@ -1,16 +1,28 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
 import { ReactNode } from 'react';
-import { NavLink, useMatch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   children?: ReactNode;
   imgUrl?: string;
   to: string;
+  disabled?: boolean;
 };
 
-export const StylishNavButton: React.FC<Props> = ({ imgUrl, to, children }) => {
-  const location = useMatch(to);
+export const StylishNavButton: React.FC<Props> = ({
+  imgUrl,
+  to,
+  children,
+  disabled,
+}) => {
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    if (disabled) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <div
@@ -20,29 +32,40 @@ export const StylishNavButton: React.FC<Props> = ({ imgUrl, to, children }) => {
     >
       <NavLink
         className={({ isActive }) => {
-          return classNames('flex h-16 items-center transition-all', {
-            'text-Secondary': !isActive,
-            'absolute w-16 justify-center border border-Elements border-r-[white] hover:border-Primary':
-              imgUrl,
-          });
+          return classNames(
+            'box relative flex h-16 items-center overflow-hidden transition-all',
+            {
+              'text-Secondary': !isActive,
+              'absolute w-16 justify-center border border-r-0 border-Elements':
+                imgUrl,
+              'cursor-not-allowed': disabled,
+            },
+          );
         }}
+        onClick={handleOnClick}
         to={to}
       >
-        {imgUrl ? (
-          <img className="h-4 w-4" src={imgUrl} alt="Favourites" />
-        ) : (
-          children
+        {({ isActive }) => (
+          <>
+            {imgUrl ? (
+              <img className="h-4 w-4" src={imgUrl} alt="Favourites" />
+            ) : (
+              children
+            )}
+            <div
+              className={classNames(
+                'absolute bottom-0 h-[3px] w-full bg-Primary transition-all',
+                {
+                  'bottom-[-3px] group-hover:bottom-[-1px]':
+                    !isActive && !disabled,
+                  'bottom-[-3px] cursor-not-allowed group-hover:bottom-[-3px]':
+                    disabled,
+                },
+              )}
+            />
+          </>
         )}
       </NavLink>
-      <div
-        className={classNames(
-          'absolute bottom-0 h-[3px] w-full bg-Primary transition-all',
-          {
-            'bottom-[-3px] bg-Secondary group-hover:bottom-[-1px]':
-              !location?.pattern.path,
-          },
-        )}
-      />
     </div>
   );
 };

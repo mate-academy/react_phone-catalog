@@ -11,7 +11,7 @@ module.exports = {
       },
       colors: {
         current: 'currentColor',
-        'Hover-Bg': '#FAFBFC',
+        Background: '#FAFBFC',
         Secondary: '#89939A',
         Elements: '#E2E6E9',
         Primary: '#313237',
