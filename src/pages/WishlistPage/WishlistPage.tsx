@@ -32,10 +32,11 @@ export const WishlistPage: React.FC = React.memo(() => {
               key={id}
               to={`/${seoUrl}`}
             >
-              <img
+              <div
                 className="wishlist__good-card-image"
-                src={images[0]}
-                alt={translationSlug}
+                style={{
+                  backgroundImage: `url(${images[0]})`,
+                }}
               />
 
               <div className="wishlist__good-card-info">
