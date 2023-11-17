@@ -10,6 +10,7 @@ type Props = {
   stylesName?: string,
   onClick?: () => void,
   isCarousel?: boolean,
+  isDisabled?: boolean,
   children?: ReactNode,
 };
 
@@ -20,6 +21,7 @@ export const Icon: React.FC<Props> = ({
   stylesName = '',
   onClick,
   isCarousel,
+  isDisabled,
   children,
 }) => {
   if (path) {
@@ -37,13 +39,14 @@ export const Icon: React.FC<Props> = ({
   return (
     <button
       onClick={onClick}
+      disabled={isDisabled}
       type="button"
     >
       <img
         src={icon}
         alt={alt}
         className={classNames([styles.baseIcon], [stylesName], {
-          [styles.disabled]: isCarousel && !onClick?.name,
+          [styles.disabled]: (isCarousel && !onClick?.name) || isDisabled,
         })}
       />
       {children}

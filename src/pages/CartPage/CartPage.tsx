@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProducts } from '../../Store';
 
@@ -12,8 +12,24 @@ import styles from './CartPage.module.scss';
 export const CartPage = () => {
   const cartProducts = useProducts(state => state.cartProducts);
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
+  const [totlaItems, setTotlaItems] = useState(0);
   const [isOrder, setIsOrder] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const productCount: { [key: string]: number } = {};
+
+    cartProducts.forEach(prod => {
+      productCount[prod.id] = +(localStorage.getItem(prod.id) || 1);
+    });
+
+    const arrProductCount = Object.values(productCount);
+    const sumProductCount = arrProductCount.reduce((acc, curr) => {
+      return acc + curr;
+    }, 0);
+
+    setTotlaItems(sumProductCount);
+  }, [cartTotalPrice]);
 
   return (
     <>
@@ -38,7 +54,7 @@ export const CartPage = () => {
           </div>
           <div className={styles.cartTotal}>
             <h1>{numberToCurrency(cartTotalPrice)}</h1>
-            <p className={`bodyText ${styles.cartTotalCount}`}>{`Total for ${cartProducts.length} items`}</p>
+            <p className={`bodyText ${styles.cartTotalCount}`}>{`Total for ${totlaItems} items`}</p>
             <hr />
 
             <Button

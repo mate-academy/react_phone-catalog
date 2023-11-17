@@ -20,6 +20,20 @@
     margin: 0 24px;
   }
 
+  p {
+    width: 199px;
+    min-width: 80px;
+
+    @media (max-width: 1250px) {
+      width: 120px;
+    }
+
+    @media (max-width: 830px) {
+      width: 90px;
+    }
+
+  }
+
   &Counter {
     display: flex;
     align-items: center;

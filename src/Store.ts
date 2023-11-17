@@ -10,17 +10,17 @@ type StoreProducts = {
   setCartProducts: (newProducts: Product[]) => void,
 };
 
-const FavouritStorage = localStorage.getItem('Favourit')
+const favouritStorage = localStorage.getItem('Favourit')
   ? JSON.parse(localStorage.getItem('Favourit') || '')
   : [];
-const CartStorage = localStorage.getItem('Cart')
+const cartStorage = localStorage.getItem('Cart')
   ? JSON.parse(localStorage.getItem('Cart') || '')
   : [];
 
 export const useProducts = create<StoreProducts>((set) => ({
   products: [],
-  favouritesProducts: FavouritStorage,
-  cartProducts: CartStorage,
+  favouritesProducts: favouritStorage,
+  cartProducts: cartStorage,
   setProducts: (newProducts: Product[]) => set(() => ({
     products: newProducts,
   })),

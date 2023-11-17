@@ -30,8 +30,23 @@ export const CartItem: React.FC<Props> = ({ product, setCartTotalPrice }) => {
   );
   const handleDeleteItem = () => {
     toggleCart();
+
+    if (cartProducts.length === 1) {
+      localStorage.removeItem('Cart');
+    }
+
     setCartTotalPrice(prev => prev - (product.price * productCount));
     localStorage.removeItem(product.id);
+  };
+
+  const handleMinus = () => {
+    setProductCount(prev => prev - 1);
+    setCartTotalPrice(prev => prev - product.price);
+  };
+
+  const handlePlus = () => {
+    setProductCount(prev => prev + 1);
+    setCartTotalPrice(prev => prev + product.price);
   };
 
   useEffect(() => {
@@ -41,9 +56,6 @@ export const CartItem: React.FC<Props> = ({ product, setCartTotalPrice }) => {
 
   useEffect(() => {
     localStorage.setItem(product.id, productCount.toString());
-    if (!productCount) {
-      handleDeleteItem();
-    }
   }, [productCount]);
 
   return (
@@ -62,18 +74,13 @@ export const CartItem: React.FC<Props> = ({ product, setCartTotalPrice }) => {
       <div className={styles.cartItemCounter}>
         <Icon
           icon={minusIcon}
-          onClick={() => {
-            setProductCount(prev => prev - 1);
-            setCartTotalPrice(prev => prev - product.price);
-          }}
+          isDisabled={productCount === 1}
+          onClick={handleMinus}
         />
         {productCount}
         <Icon
           icon={plusIcon}
-          onClick={() => {
-            setProductCount(prev => prev + 1);
-            setCartTotalPrice(prev => prev + product.price);
-          }}
+          onClick={handlePlus}
         />
       </div>
       <h2 className={styles.cartItemPrice}>
