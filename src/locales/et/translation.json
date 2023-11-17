@@ -87,5 +87,6 @@
   "addToWishList": "Soovinimekirja lisama",
   "removeFromWishList": "Eemalda sooviloendist",
   "selectSize": "Vali suurus/mudel",
-  "delete": "Kustuta"
+  "delete": "Kustuta",
+  "wishlistEmpty": "Teie soovinimekiri on tühi"
 }

@@ -87,5 +87,6 @@
   "addToWishList": "Add to wishlist",
   "removeFromWishList": "Remove from wishlist",
   "selectSize": "Select size/model",
-  "delete": "Delete"
+  "delete": "Delete",
+  "wishlistEmpty": "Your wishlist is empty"
 }

@@ -87,5 +87,6 @@
   "addToWishList": "Добавить в список желаний",
   "removeFromWishList": "Убрать из списка желаний",
   "selectSize": "Выберите размер/модель",
-  "delete": "Удалить"
+  "delete": "Удалить",
+  "wishlistEmpty": "Ваш список желаний пуст"
 }

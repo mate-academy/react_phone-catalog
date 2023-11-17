@@ -64,7 +64,7 @@ export const WishlistPage: React.FC = React.memo(() => {
         })
       ) : (
         <p>
-          Your wishlist is empty
+          {t('wishlistEmpty')}
         </p>
       )}
     </section>
