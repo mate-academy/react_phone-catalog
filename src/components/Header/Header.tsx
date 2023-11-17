@@ -5,6 +5,8 @@ import { NavBar } from '../Navbar/NavBar';
 import './Header.scss';
 import { CartContext } from '../../context/CartContext';
 import { FavouriteContext } from '../../context/FavouriteContext';
+import { Search } from '../Search/Search';
+import { isSearchVisible } from '../../helpers/isSearchVisible';
 
 export const Header = () => {
   const { totalQuantity } = useContext(CartContext);
@@ -18,6 +20,8 @@ export const Header = () => {
       </div>
 
       <div className="Header__actions">
+        {isSearchVisible(useLocation()) && (<Search />)}
+
         {!isCartOpened && (
           <NavLinkMain
             type="favourite"

@@ -1,22 +1,22 @@
 import { useSearchParams } from 'react-router-dom';
 import './Filters.scss';
 import { SortBy } from '../../types/SortBy';
-import { SearchParams } from '../../types/SearchParams';
+import { SearchParamsType } from '../../types/SearchParamsTypes';
 
 const perPageValues = ['4', '8', '16', 'All'];
 
 export const Filters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortBy = searchParams.get(SearchParams.sortBy) || SortBy.Age;
-  const perPage = searchParams.get(SearchParams.perPage) || 'All';
+  const sortBy = searchParams.get(SearchParamsType.sortBy) || SortBy.Age;
+  const perPage = searchParams.get(SearchParamsType.perPage) || 'All';
 
   const setSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchParams((prevSearchParams) => {
       const params = new URLSearchParams(prevSearchParams);
 
-      params.set(SearchParams.activePage, '1');
-      params.set(SearchParams.sortBy, event.target.value);
+      params.set(SearchParamsType.activePage, '1');
+      params.set(SearchParamsType.sortBy, event.target.value);
 
       return params;
     });
@@ -26,8 +26,8 @@ export const Filters = () => {
     setSearchParams((prevSearchParams) => {
       const params = new URLSearchParams(prevSearchParams);
 
-      params.set(SearchParams.activePage, '1');
-      params.set(SearchParams.perPage, event.target.value);
+      params.set(SearchParamsType.activePage, '1');
+      params.set(SearchParamsType.perPage, event.target.value);
 
       return params;
     });

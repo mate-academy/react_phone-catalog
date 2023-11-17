@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import './Pagination.scss';
 import { Button } from '../Button/Button';
-import { SearchParams } from '../../types/SearchParams';
+import { SearchParamsType } from '../../types/SearchParamsTypes';
 
 type Props = {
   totalItems: number;
@@ -25,7 +25,9 @@ export const Pagination: React.FC<Props> = ({
   perPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentPage = Number(searchParams.get(SearchParams.activePage)) || 1;
+  const currentPage = Number(
+    searchParams.get(SearchParamsType.activePage),
+  ) || 1;
 
   const pageCount = useMemo(
     () => getNumbers(1, (Math.ceil(totalItems / perPage) || 1)),
@@ -41,16 +43,16 @@ export const Pagination: React.FC<Props> = ({
 
   const prevPageHandler = () => (
     currentPage !== 1
-    && setParam(SearchParams.activePage, String(currentPage - 1))
+    && setParam(SearchParamsType.activePage, String(currentPage - 1))
   );
 
   const nextPageHandler = () => (
     currentPage !== pageCount.length
-    && setParam(SearchParams.activePage, String(currentPage + 1))
+    && setParam(SearchParamsType.activePage, String(currentPage + 1))
   );
 
   const setPageHandler = (page: number) => (
-    setParam(SearchParams.activePage, String(page))
+    setParam(SearchParamsType.activePage, String(page))
   );
 
   return (

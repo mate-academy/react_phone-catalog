@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
@@ -6,30 +7,44 @@ import './ProductList.scss';
 import { Filters } from '../Filters/Filters';
 import { SortBy } from '../../types/SortBy';
 import { Pagination } from '../Pagination/Pagination';
-import { SearchParams } from '../../types/SearchParams';
+import { SearchParamsType } from '../../types/SearchParamsTypes';
+import { normalizeValue } from '../../helpers/normalizeValue';
 
 interface Props {
   products: Product[];
+  isfilterVisible?: boolean;
+  isPaginationVisible?: boolean;
 }
 
-const ProductList: React.FC<Props> = ({ products }) => {
+const ProductList: React.FC<Props> = ({
+  products,
+  isfilterVisible = true,
+  isPaginationVisible = true,
+}) => {
   const [searchParams] = useSearchParams();
 
-  const sortBy = searchParams.get(SearchParams.sortBy) || SortBy.Age;
-  const perPage = searchParams.get(SearchParams.perPage) || 'All';
-  const currentPage = Number(searchParams.get(SearchParams.activePage)) || 1;
+  const sortBy = searchParams.get(SearchParamsType.sortBy) || SortBy.Age;
+  const perPage = searchParams.get(SearchParamsType.perPage) || 'All';
+  const currentPage = Number(searchParams.get(
+    SearchParamsType.activePage,
+  )) || 1;
+  const query = searchParams.get(SearchParamsType.query) || '';
 
   const getNumberOfPerPage = (numberOfPage: string) => {
     return numberOfPage === 'All' ? products.length : Number(numberOfPage);
   };
 
-  const totalItems = products.length;
   const startIndex
     = getNumberOfPerPage(perPage) * currentPage - getNumberOfPerPage(perPage);
-  const endIndex
-    = Math.min(startIndex + getNumberOfPerPage(perPage), totalItems);
+  const endIndex = startIndex + getNumberOfPerPage(perPage);
 
-  const visibleProducts = products
+  const filteredProducts = query === ''
+    ? products
+    : products.filter(product => (
+      normalizeValue(product.name).includes(normalizeValue(query))
+    ));
+
+  const visibleProducts = filteredProducts
     .sort((a: Product, b: Product) => {
       switch (sortBy) {
         case SortBy.Age:
@@ -44,20 +59,30 @@ const ProductList: React.FC<Props> = ({ products }) => {
     })
     .slice(startIndex, endIndex);
 
+  const totalItems = filteredProducts.length;
+
   return (
     <>
-      <Filters />
+      {isfilterVisible && visibleProducts.length !== 0 && <Filters />}
 
-      <div className="ProductList">
-        {visibleProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {visibleProducts.length === 0
+        ? (
+          <h1>Sorry, we can not find your product</h1>
+        )
+        : (
+          <div className="ProductList">
+            {visibleProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
 
-      <Pagination
-        totalItems={totalItems}
-        perPage={Number(perPage)}
-      />
+      {isPaginationVisible && visibleProducts.length !== 0 && (
+        <Pagination
+          totalItems={totalItems}
+          perPage={Number(perPage)}
+        />
+      )}
 
     </>
   );

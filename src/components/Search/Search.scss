@@ -1,0 +1,43 @@
+@import "../../styles/style-imports";
+
+.Search {
+  position: relative;
+
+  &__input {
+    height: 100%;
+    padding: 22px 40px 22px 24px;
+
+    font-family: "Mont-SemiBold", sans-serif;
+    font-size: 14px;
+    color: $gray-primary;
+
+    border: 0;
+    background: $gray-background;
+    box-shadow: -1px 0 0 0 $gray-elements;
+
+    &::placeholder {
+      color: $gray-icons-placeholders;
+    }
+
+    &.has-icon {
+      background: no-repeat url("../../icons/search.svg");
+      background-position: top 24px right 24px;
+    }
+  }
+
+  &__clear-button {
+    display: none;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+
+    background: no-repeat center url("../../icons/close.svg");
+    cursor: pointer;
+
+    &.isActive {
+      display: block;
+    }
+  }
+}

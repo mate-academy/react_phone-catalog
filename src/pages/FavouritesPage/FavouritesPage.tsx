@@ -2,13 +2,13 @@ import { useContext } from 'react';
 import { Breadcrumb } from '../../components/Breadcrumb/Breadcrumb';
 import './FavouritesPage.scss';
 import { FavouriteContext } from '../../context/FavouriteContext';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
+import ProductList from '../../components/ProductList/ProductList';
 
 export const FavouritePage = () => {
   const { favourites } = useContext(FavouriteContext);
 
   return (
-    <div className="FavouritesPage">
+    <div className="FavouritesPage section">
       <div className="FavouritesPage__breadcrumb">
         <Breadcrumb />
       </div>
@@ -26,9 +26,11 @@ export const FavouritePage = () => {
       </p>
 
       <div className="FavouritesPage__list">
-        {favourites.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        <ProductList
+          products={favourites}
+          isfilterVisible={false}
+          isPaginationVisible={false}
+        />
       </div>
     </div>
   );
