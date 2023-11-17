@@ -88,5 +88,8 @@
   "shipping": "Shipping:",
   "total": "Total:",
   "payNow": "Pay now",
-  "checkout": "Checkout"
+  "checkout": "Checkout",
+  "continue": "Continue",
+  "congratsCheckout": "Congratulations checkout! Our manager will contact to you",
+  "congratsPaynow": "Congratulations pay now! Our manager will contact to you"
 }

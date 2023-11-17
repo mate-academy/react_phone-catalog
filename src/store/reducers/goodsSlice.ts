@@ -86,6 +86,10 @@ const goodsSlice = createSlice({
       state.currentGood = state.goods
         .find(good => good.seoUrl === action.payload) as Good;
     },
+    clear: (state) => {
+      state.goodsToBag = [];
+      localStorage.setItem('goodsToBag', JSON.stringify([]));
+    },
   },
   extraReducers: builder => {
     builder.addCase(init.pending, state => {
@@ -114,4 +118,5 @@ export const {
   addToWishList,
   removeFromWishlist,
   currentGood,
+  clear,
 } = goodsSlice.actions;

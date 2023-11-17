@@ -88,5 +88,8 @@
   "shipping": "Tarne:",
   "total": "Kokku:",
   "payNow": "Maksa kohe",
-  "checkout": "Kassasse"
+  "checkout": "Kassasse",
+  "continue": "Jätka",
+  "congratsCheckout": "Õnnitleme eduka tellimuse puhul! Meie juht võtab teiega peagi ühendust",
+  "congratsPaynow": "Õnnitleme eduka makse puhul! Meie haldur võtab teiega peagi ühendust"
 }

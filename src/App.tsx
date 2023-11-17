@@ -1,4 +1,5 @@
 import React, { useState, Suspense, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { Outlet as Main } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './store/hooks';
@@ -16,10 +17,13 @@ import { Footer } from './components/Footer/Footer';
 
 import { BagPage } from './pages/BagPage/BagPage';
 import { WishlistPage } from './pages/WishlistPage/WishlistPage';
+import { CheckoutPage } from './pages/CheckoutPage/CheckoutPage';
+import { PaynowPage } from './pages/PaynowPage/PaynowPage';
 
 import './App.scss';
 
 export const App: React.FC = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { goods } = useAppSelector(state => state.goods);
   const [updatedAt, setUpdatedAt] = useState(new Date());
@@ -31,6 +35,9 @@ export const App: React.FC = () => {
   const [isWishlistOpened, setIsWishlistOpened] = useState(false);
   const [isCheckoutModalOpened, setIsCheckoutModalOpened] = useState(false);
   const [isPayNowButtonClicked, setIsPayNowButtonClicked] = useState(false);
+  const [isSuccessCheckout, setIsSuccessCheckout] = useState(false);
+  const [isPaynowOpened, setIsPaynowOpened] = useState(false);
+  const [isSuccessPaynow, setIsSuccessPaynow] = useState(false);
 
   useEffect(() => {
     dispatch(goodsActions.init());
@@ -114,11 +121,41 @@ export const App: React.FC = () => {
           active={isCheckoutModalOpened}
           setActive={setIsCheckoutModalOpened}
         >
-          {isPayNowButtonClicked ? (
-            'clicked by payNow'
-          ) : (
-            'clicked by checkout'
-          )}
+          <CheckoutPage
+            isPayNowButtonClicked={isPayNowButtonClicked}
+            setIsPayNowButtonClicked={setIsPayNowButtonClicked}
+            setIsCheckoutModalOpened={setIsCheckoutModalOpened}
+            setIsSuccessCheckout={setIsSuccessCheckout}
+            setIsPaynowOpened={setIsPaynowOpened}
+          />
+        </Modal>
+
+        <Modal
+          active={isSuccessCheckout}
+          setActive={setIsSuccessCheckout}
+        >
+          <p>
+            {t('congratsCheckout')}
+          </p>
+        </Modal>
+
+        <Modal
+          active={isPaynowOpened}
+          setActive={setIsPaynowOpened}
+        >
+          <PaynowPage
+            setIsPaynowOpened={setIsPaynowOpened}
+            setIsSuccessPaynow={setIsSuccessPaynow}
+          />
+        </Modal>
+
+        <Modal
+          active={isSuccessPaynow}
+          setActive={setIsSuccessPaynow}
+        >
+          <p>
+            {t('congratsPaynow')}
+          </p>
         </Modal>
 
         <Footer

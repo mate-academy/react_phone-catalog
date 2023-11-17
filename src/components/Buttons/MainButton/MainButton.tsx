@@ -12,6 +12,7 @@ type Props = {
   where?: string,
   className: string,
   button?: boolean,
+  submit?: boolean,
   onClick?: () => void,
   disabled?: boolean,
 };
@@ -21,13 +22,14 @@ export const MainButton: React.FC<Props> = ({
   where = '',
   className,
   button = false,
-  onClick = () => {},
+  submit = false,
+  onClick = () => { },
   disabled = false,
 }) => {
   const [searchParams] = useSearchParams();
 
-  return (
-    (button ? (
+  if (button) {
+    return (
       <button
         className={classNames(
           'button button--main',
@@ -41,23 +43,43 @@ export const MainButton: React.FC<Props> = ({
           {text}
         </p>
       </button>
-    ) : (
-      <Link
-        to={{
-          pathname: where,
-          search: resetSearchParams(searchParams),
-        }}
-        className={
-          classNames(
-            'button button--main',
-            className,
-          )
-        }
+    );
+  }
+
+  if (submit) {
+    return (
+      <button
+        className={classNames(
+          'button button--main',
+          className,
+        )}
+        type="submit"
+        onClick={onClick}
+        disabled={disabled}
       >
         <p className="button--main__text">
           {text}
         </p>
-      </Link>
-    ))
+      </button>
+    );
+  }
+
+  return (
+    <Link
+      to={{
+        pathname: where,
+        search: resetSearchParams(searchParams),
+      }}
+      className={
+        classNames(
+          'button button--main',
+          className,
+        )
+      }
+    >
+      <p className="button--main__text">
+        {text}
+      </p>
+    </Link>
   );
 };
