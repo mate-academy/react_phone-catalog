@@ -1,0 +1,69 @@
+@import "../../styles/utils.scss";
+
+.checkout-dropdown {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: $z-index--2;
+
+  &-button {
+    position: relative;
+    width: 100%;
+
+    font-size: 18px;
+    text-align: left;
+    padding: 32px 8px 12px;
+
+    cursor: pointer;
+    border-bottom: 2px solid $red-700;
+
+    &--unselected {
+      color: $black-500;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 70%;
+      transform: translateY(-70%);
+      right: 8px;
+
+      width: 12px;
+      height: 12px;
+
+      background-image: url("../../images/selectAfter.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &-list {
+    position: absolute;
+    width: 100%;
+    background-color: $black-100;
+
+    margin-top: 8px;
+    list-style: none;
+
+    border: 2px solid $red-700;
+    border-top: none;
+  }
+
+  &-list-item {
+    cursor: pointer;
+    padding: 12px 8px;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    transition: color $animationDuration;
+
+    @include onDesktop {
+      &:hover {
+        color: $red-700;
+      }
+    }
+  }
+}

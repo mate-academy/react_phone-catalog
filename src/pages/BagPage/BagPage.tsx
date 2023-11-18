@@ -125,7 +125,7 @@ export const BagPage: React.FC<Props> = React.memo(({
                       <div className="bag__goods-list-item-info-extra-quantity">
                         {t('quantity')}
 
-                        <p className="bag__goods-list-item-info-extra-quantity-buttons">
+                        <div className="bag__goods-list-item-info-extra-quantity-buttons">
                           <button
                             className="bag__goods-list-item-info-extra-quantity-buttons-button"
                             type="button"
@@ -149,7 +149,7 @@ export const BagPage: React.FC<Props> = React.memo(({
                           >
                             +
                           </button>
-                        </p>
+                        </div>
                       </div>
 
                       <button
@@ -173,7 +173,10 @@ export const BagPage: React.FC<Props> = React.memo(({
               const { name, value } = item;
 
               return (
-                <div className={`bag__total-${name}`}>
+                <div
+                  className={`bag__total-${name}`}
+                  key={name}
+                >
                   <p className={`bag__total-${name}-label`}>
                     {t(name)}
                   </p>
