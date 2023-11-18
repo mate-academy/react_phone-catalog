@@ -38,6 +38,10 @@
         left: 0;
       }
     }
+
+    &--relative {
+      position: relative;
+    }
   }
 
   &__search {

@@ -1,18 +1,23 @@
-import { useRef, useState, useEffect } from 'react';
+import {
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
+import debounce from 'lodash.debounce';
 import { Link } from 'react-router-dom';
 import { ICONS } from '../icons';
+import { Loader } from '../components/Loader';
 
 export const AccessoriesPage = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const timerId = useRef(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const loaded = useCallback(
+    debounce(setIsLoading, 1000),
+    [],
+  );
 
   useEffect(() => {
-    setIsLoading(true);
-    window.clearTimeout(timerId.current);
-
-    timerId.current = window.setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    loaded(!isLoading);
   }, []);
 
   return (
@@ -36,10 +41,13 @@ export const AccessoriesPage = () => {
           <h1 className="title title--h1">Accessories Page</h1>
         </div>
 
-        {isLoading}
-        <h2 className="title title--h2 title--empty-page">
-          <strong>This page is under development</strong>
-        </h2>
+        {isLoading && <Loader />}
+
+        {!isLoading && (
+          <h2 className="title title--h2 title--empty-page">
+            <strong>This page is under development</strong>
+          </h2>
+        )}
       </div>
     </div>
   );

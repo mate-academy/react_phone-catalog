@@ -23,12 +23,12 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
     screen,
     capacity,
     ram,
-    isAddCard,
+    inCart,
     inFavourite,
   } = product;
 
   const {
-    handleAddCard,
+    handleChooseCart,
   } = useContext(GlobalContext);
 
   return (
@@ -95,20 +95,20 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
           <div className="card__btns-container">
             <button
               type="button"
-              className={cn('button button--card-add', {
-                'button--selected': isAddCard,
+              className={cn('button button--big button--card', {
+                'button--selected': inCart,
               })}
-              onClick={() => handleAddCard(product, 'addCard')}
+              onClick={() => handleChooseCart(product, 'addCard')}
             >
               <p className="button__text">
-                {isAddCard ? 'You`ve added' : 'Added to cart'}
+                {inCart ? 'You`ve added' : 'Added to cart'}
               </p>
             </button>
 
             <button
               type="button"
               className="button button--favourites button--hover"
-              onClick={() => handleAddCard(product, 'favourites')}
+              onClick={() => handleChooseCart(product, 'favourites')}
             >
               <img
                 alt="favourites"

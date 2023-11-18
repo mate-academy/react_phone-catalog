@@ -7,5 +7,5 @@ export type GlobalContextType = {
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   localStore: Product[],
   setLocalStore: (v: Product[]) => void,
-  handleAddCard: (card: Product, action: string) => void;
+  handleChooseCart: (card: Product, action: string) => void;
 };

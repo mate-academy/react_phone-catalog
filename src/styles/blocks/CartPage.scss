@@ -1,0 +1,111 @@
+@import "../utils.scss";
+
+.cart-page {
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-block: 40px 87px;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__items-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__items-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    width: 752px;
+    height: 128px;
+
+    display: flex;
+    padding: 24px;
+    align-items: center;
+
+    border: 1px solid $elements-color;
+  }
+
+  &__button {
+    margin-right: 31px;
+  }
+
+  &__item-img-box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    padding: 7px;
+    justify-content: center;
+    margin-right: 24px;
+  }
+
+  &__text {
+    width: 295px;
+    @extend %body-text;
+    color: $primery-color;
+    margin-right: 49px;
+  }
+
+  &__btns {
+    display: flex;
+    margin-right: 43px;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    @extend %body-text;
+    color: $primery-color;
+  }
+
+  &__break-line {
+    background-color: $elements-color;
+    height: 1px;
+  }
+
+  &__total-price {
+    @extend %h1-style;
+    color: $primery-color;
+  }
+
+  &__items-length {
+    @extend %body-text;
+    color: $secondary-color;
+  }
+
+  &__amount {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__total-amount-info {
+    text-align: center;
+    width: 368px;
+    height: 206px;
+    padding: 24px;
+    border: 1px solid $elements-color;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__message {
+    text-align: center;
+    @extend %body-text;
+    color: $primery-color;
+  }
+}

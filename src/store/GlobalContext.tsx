@@ -11,7 +11,7 @@ export const GlobalContext = React.createContext<GlobalContextType>({
   localStore: [],
   setLocalStore: () => { },
   setHasError: () => { },
-  handleAddCard: () => { },
+  handleChooseCart: () => { },
 });
 
 type Props = {
@@ -42,6 +42,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
             inFavourite: false,
             inCart: false,
             discount: item.fullPrice - item.price,
+            quantity: 1,
           };
         });
 
@@ -54,20 +55,32 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     fetchData();
   }, []);
 
-  const handleAddCard = (card: Product, action: string) => {
+  const handleChooseCart = (card: Product, action: string) => {
     const currentProducts = [...products];
     let currentStore = [...localStore];
     let updatedCard: Product = { ...card };
 
     if (action === 'addCard') {
-      updatedCard = { ...card, isAddCard: !card.isAddCard };
+      updatedCard = { ...card, inCart: !card.inCart };
     }
 
     if (action === 'favourites') {
       updatedCard = { ...card, inFavourite: !card.inFavourite };
     }
 
-    if (!updatedCard.isAddCard && !updatedCard.inFavourite) {
+    if (action === 'delete') {
+      updatedCard = { ...card, inCart: false };
+    }
+
+    if (action === 'addQuantity') {
+      updatedCard = { ...card, quantity: updatedCard.quantity + 1 };
+    }
+
+    if (action === 'deleteQuantity') {
+      updatedCard = { ...card, quantity: updatedCard.quantity - 1 };
+    }
+
+    if (!updatedCard.inCart && !updatedCard.inFavourite) {
       currentStore = currentStore
         .filter(el => el.id !== updatedCard.id);
     } else {
@@ -96,7 +109,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     localStore,
     setLocalStore,
     setHasError,
-    handleAddCard,
+    handleChooseCart,
   };
 
   return (

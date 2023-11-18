@@ -1,4 +1,8 @@
-import { useEffect, useState, useCallback } from 'react';
+import {
+  useEffect,
+  useState,
+  useContext,
+} from 'react';
 import {
   Link,
   NavLink,
@@ -6,31 +10,30 @@ import {
   useLocation,
 } from 'react-router-dom';
 import debounce from 'lodash.debounce';
-import './Header.scss';
 import { ICONS } from '../../icons';
 import { getLinkClass, getLinkIcon } from '../../helpers/getLinkClass';
+import { GlobalContext } from '../../store/GlobalContext';
+import {
+  getCartFavorites,
+  getCartItems,
+} from '../../helpers/getProductsByCategories';
 import { getSearchWith } from '../../helpers/searchHelper';
+import './Header.scss';
 
 export const Header = () => {
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const [appliedQuery, setAppliedQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState<string>('');
+  const { localStore } = useContext(GlobalContext);
+  const cartItems = getCartItems(localStore);
+  const cartFavorits = getCartFavorites(localStore);
 
-  const [isFilter, setIsFilter] = useState(true);
+  const [isFilter, setIsFilter] = useState(false);
   const [placeHolder, setPlaceHolder] = useState<string>('');
 
   useEffect(() => {
-    appliedQuery.toString();
-  }, [appliedQuery]);
-
-  const applyQuery = useCallback(
-    debounce(setAppliedQuery, 1000),
-    [],
-  );
-
-  useEffect(() => {
-    setAppliedQuery('');
+    setAppliedQuery(query);
 
     switch (pathname) {
       case '/phones':
@@ -58,13 +61,17 @@ export const Header = () => {
     }
   }, [pathname]);
 
-  const handelQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const search = getSearchWith(
-      searchParams, { query: e.target.value || null },
-    );
+  const debouncedSearch = debounce((value: string) => {
+    const search = getSearchWith(searchParams, { query: value || null });
 
-    applyQuery(e.target.value);
     setSearchParams(search);
+  }, 1000);
+
+  const handelQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.currentTarget.value;
+
+    setAppliedQuery(val);
+    debouncedSearch(val);
   };
 
   function clearFilter() {
@@ -121,7 +128,7 @@ export const Header = () => {
               type="text"
               className="header__search-input"
               placeholder={placeHolder}
-              value={query}
+              value={appliedQuery}
               onChange={handelQueryChange}
             />
 
@@ -130,7 +137,7 @@ export const Header = () => {
               className="button button--clear"
               onClick={() => clearFilter()}
             >
-              {query ? (
+              {appliedQuery ? (
                 <img
                   src={ICONS.close_icon}
                   alt="Clear search"
@@ -153,12 +160,15 @@ export const Header = () => {
             to="/favourites"
             className={getLinkIcon}
           >
-            <div className="header__img-contain">
+            <div className="header__img-contain header__img-contain--relative">
               <img
                 src={ICONS.favourites}
                 alt="favourites items"
                 className="icon icon--hover"
               />
+              {!!cartFavorits.length && (
+                <div className="icon icon--count">{cartFavorits.length}</div>
+              )}
             </div>
           </NavLink>
 
@@ -166,12 +176,16 @@ export const Header = () => {
             to="/cart"
             className={getLinkIcon}
           >
-            <div className="header__img-contain">
+            <div className="header__img-contain header__img-contain--relative">
               <img
                 src={ICONS.shopping_bag}
                 alt="My choice"
                 className="icon icon--hover"
               />
+
+              {!!cartItems.length && (
+                <div className="icon icon--count">{cartItems.length}</div>
+              )}
             </div>
           </NavLink>
         </div>

@@ -4,6 +4,20 @@
   height: 16px;
   width: 16px;
 
+  &--count {
+    text-align: center;
+    line-height: 14px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #eb5757;
+    color: #fff;
+    font-family: $mont-semibold;
+    font-size: 9px;
+    top: 16px;
+    right: 18px;
+  }
+
   &--hover {
     @include hover(transform, (scale(1.1)));
   }

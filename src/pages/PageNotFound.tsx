@@ -8,6 +8,10 @@ export const PageNotFound = () => {
   }, 2000);
 
   return (
-    <p>Error: Page not found</p>
+    <div className="page-not-found">
+      <h2 className="title title--h2 title--empty-page">
+        <strong>Page not found</strong>
+      </h2>
+    </div>
   );
 };

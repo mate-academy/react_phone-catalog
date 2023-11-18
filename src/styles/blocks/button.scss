@@ -4,6 +4,17 @@
   cursor: pointer;
   box-shadow: none;
 
+  &--count {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &--dropdown {
     width: 176px;
     height: 40px;
@@ -95,15 +106,29 @@
     }
   }
 
-  &--product-details-add {
-    width: 263px;
-    height: 48px;
+  &--big {
     background-color: $primery-color;
     color: $white-color;
 
     &:hover {
-      box-shadow: 0 3 13px 0 #17203142;
+      background: $primery-color;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
+  }
+
+  &--details {
+    width: 263px;
+    height: 48px;
+  }
+
+  &--checkout {
+    width: 320px;
+    height: 48px;
+  }
+
+  &--card {
+    width: 176px;
+    height: 40px;
   }
 
   &--product-details-favourites {
@@ -117,4 +142,9 @@
     background-color: $white-color;
     color: $green-color;
   }
+
+  &--disabled {
+    border: 1px solid $elements-color;
+  }
+
 }

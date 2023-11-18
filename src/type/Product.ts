@@ -13,6 +13,7 @@ export type Product = {
   year: number;
   image: string;
   inFavourite: boolean,
-  isAddCard: boolean,
+  inCart: boolean,
+  quantity: number,
   discount: number | 0;
 };

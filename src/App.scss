@@ -1,12 +1,10 @@
 @import "./styles/main.scss";
 
 .App {
-  scroll-behavior: smooth;
   height: 100vh;
   max-width: 1400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: $white-color;
 
   &__home-page {
@@ -32,5 +30,4 @@
 
 .main {
   flex-grow: 1;
-  overflow-y: auto;
 }

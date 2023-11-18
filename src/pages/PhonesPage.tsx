@@ -17,19 +17,16 @@ import { NoSearchResults } from '../components/NoSearchResults';
 
 export const PhonesPage = () => {
   const [searchParams] = useSearchParams();
-  const { products } = useContext(GlobalContext);
+  const {
+    products,
+  } = useContext(GlobalContext);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const query = searchParams.get('query') || '';
   const sortBy = searchParams.get('sortBy') || SORT_BY[0].id;
   const perPage = searchParams.get('perPage') || ITEMS_ON_PAGE[1].id;
   const page = +(searchParams.get('page') || '1');
-  const query = searchParams.get('query') || '';
-
-  const sortedPhones = getFilteredPhones(
-    products,
-    { sortBy, query, filter: 'phones' },
-  );
 
   const timerId = useRef(0);
 
@@ -40,9 +37,12 @@ export const PhonesPage = () => {
     timerId.current = window.setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, [page, perPage]);
+  }, [query]);
 
-  const TOTAL_AMOUNT = sortedPhones.length;
+  const sortedProducts = getFilteredPhones(
+    products, { sortBy, query },
+  );
+  const TOTAL_AMOUNT = sortedProducts.length;
   const begin = (page * +perPage) - +perPage;
   const end = Math.min(+begin + +perPage, TOTAL_AMOUNT);
 
@@ -67,7 +67,7 @@ export const PhonesPage = () => {
           <h1 className="title title--h1">Mobile phones</h1>
 
           <p className="phones-page__info">
-            {`${products.length} models`}
+            {`${sortedProducts.length} models`}
           </p>
         </div>
 
@@ -96,8 +96,8 @@ export const PhonesPage = () => {
               <ProductsList
                 phones={
                   perPage === 'all'
-                    ? sortedPhones
-                    : sortedPhones.slice(begin, end)
+                    ? sortedProducts
+                    : sortedProducts.slice(begin, end)
                 }
               />
             </div>

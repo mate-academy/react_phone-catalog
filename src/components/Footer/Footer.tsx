@@ -8,7 +8,7 @@ import { getLinkClass } from '../../helpers/getLinkClass';
 
 export const Footer = () => {
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (
