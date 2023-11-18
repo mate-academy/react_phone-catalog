@@ -16,6 +16,7 @@ import { CartProvider } from '../context/CartContext';
 import { CartPage } from '../pages/CartPage/CartPage';
 import { FavouriteProvider } from '../context/FavouriteContext';
 import { FavouritePage } from '../pages/FavouritesPage/FavouritesPage';
+import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
 
 export const Root = () => (
   <ProductProvider>
@@ -47,6 +48,7 @@ export const Root = () => (
 
               <Route path="cart" element={<CartPage />} />
               <Route path="favourites" element={<FavouritePage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </Router>

@@ -126,9 +126,9 @@ export const ProductDetailPage = () => {
     <div className="ProductDetailPage section">
       {isLoading && (<Loader />)}
 
-      {!isLoading && !hasError && !hasProductDetails && (
-        <h1 className="ProductDetailPage__name">
-          Product has no details
+      {!isLoading && hasError && !hasProductDetails && (
+        <h1 className="ProductDetailPage__error">
+          Product was not found
         </h1>
       )}
 

@@ -56,13 +56,14 @@ export const Pagination: React.FC<Props> = ({
   );
 
   return (
-    <ul className="Pagination">
+    <ul className="Pagination" data-cy="pagination">
       <li className="Pagination__arrow">
         <Button
           variant="arrow"
           arrowDirection="left"
           disabled={currentPage === 1}
           onClick={prevPageHandler}
+          data-cy="paginationLeft"
         />
       </li>
 
@@ -86,6 +87,7 @@ export const Pagination: React.FC<Props> = ({
           variant="arrow"
           disabled={currentPage === pageCount.length}
           onClick={nextPageHandler}
+          data-cy="paginationRight"
         />
       </li>
     </ul>

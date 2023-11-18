@@ -1,11 +1,11 @@
 @mixin onLargeScreen {
-  @media (max-width: 1200px) {
+  @media (max-width: 1440px) {
     @content;
   }
 }
 
 @mixin onMediumScreen {
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     @content;
   }
 }

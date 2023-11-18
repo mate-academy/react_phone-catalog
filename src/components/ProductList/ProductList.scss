@@ -1,6 +1,21 @@
+@import "../../styles/style-imports";
+
 .ProductList {
   margin-top: 24px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  // place-content: center;
+  // gap: 40px 16px;
+
+  // @include onMediumScreen {
+  //   grid-template-columns: repeat(3, 1fr);
+  // }
+
+  // @include onSmallScreen {
+  //   display: grid;
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
+  display: flex;
   gap: 40px 16px;
+  flex-wrap: wrap;
 }
