@@ -51,7 +51,7 @@
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
     "deploy": "mate-scripts deploy",
-    "tail": "npx tailwindcss -i ./src/input.css -o ./public/output.css --watch"
+    "tail": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "browserslist": {
     "production": [

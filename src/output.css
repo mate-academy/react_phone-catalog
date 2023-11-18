@@ -1,5 +1,27 @@
 /* stylelint-disable scss/at-rule-no-unknown */
 
+/* stylelint-disable color-hex-case */
+
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
+
+/* stylelint-disable declaration-block-no-duplicate-properties */
+
+/* stylelint-disable length-zero-no-unit */
+
+/* stylelint-disable declaration-colon-space-after */
+
+/* stylelint-disable selector-list-comma-newline-after */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable no-descending-specificity */
+
+/* stylelint-disable indentation */
+
+/* stylelint-disable string-quotes */
+
+/* stylelint-disable max-line-length */
+
 /* ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com */
 
 /*
@@ -1297,13 +1319,13 @@ iframe {
 @font-face {
   font-family: "Mont";
 
-  src: url("/fonts/Mont-Regular.otf");
+  src: url("./fonts/Mont-Regular.otf");
 }
 
 @font-face {
   font-family: "Mont";
 
-  src: url("/fonts/Mont-SemiBold.otf");
+  src: url("./fonts/Mont-SemiBold.otf");
 
   font-weight: 600;
 }
@@ -1311,7 +1333,7 @@ iframe {
 @font-face {
   font-family: "Mont";
 
-  src: url("/fonts/Mont-Bold.otf");
+  src: url("./fonts/Mont-Bold.otf");
 
   font-weight: 700;
 }

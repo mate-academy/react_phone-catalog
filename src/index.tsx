@@ -14,6 +14,8 @@ import { AppContextProvider } from './Contexts/AppContext';
 import { ItemCard } from './pages/ItemCard';
 import { Favourites } from './pages/Favourites';
 
+import './output.css';
+
 ReactDOM.render(
   <AppContextProvider>
     <Router>
