@@ -1,10 +1,31 @@
 // not empty
-@import './styles/Header.scss';
 @import './styles/variables.scss';
+@import './styles/Header.scss';
 @import './styles/Footer.scss';
 @import './styles/container.scss';
 
+@font-face {
+  font-family: Mont;
+  src: url(./public/fonts/Mont-Regular.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(./public/fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(./public/fonts/Mont-Bold.otf);
+  font-weight: bold;
+}
+
 .App {
+  font-family: Mont;
+  color: $gray-primary;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;

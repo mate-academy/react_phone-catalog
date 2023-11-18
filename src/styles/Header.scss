@@ -6,14 +6,20 @@
 .header {
   user-select: text;
   padding-left: 24px;
-  box-shadow: 0px 1px 0px 0px #e2e6e9;
+  box-shadow: 0px 1px 0px 0px $shadow-color;
   height: 64px;
 }
 
 .top-bar {
+  box-sizing: border-box;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   line-height: 24px;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
 
   &__nav {
     display: flex;
@@ -30,9 +36,14 @@
     width: 64px;
     display: flex;
     justify-content: center;
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    box-shadow: -1px 0px 0px 0px $shadow-color;
     height: 100%;
     align-items: center;
+    transition: background-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      background-color: $shadow-color;
+    }
   }
 
   &__pages {
@@ -47,20 +58,30 @@
 
   &__page {
     height: 100%;
+    transition: transform $effect-duration $animation-timing-function;
+
+    &:hover {
+      transform: scale($scale-value);
+    }
   }
 
   &__link {
+    color: $gray-secondary;
     text-decoration: none;
     position: relative;
     align-items: center;
     display: flex;
     height: 100%;
 
+    &--active {
+      color: $gray-primary;
+    }
+
 
     &--active::before {
       content: "";
       height: 3px;
-      background-color: #313237;
+      background-color: $gray-primary;
       position: absolute;
       bottom: 0;
       width: 100%;
@@ -70,6 +91,11 @@
 
 .logo {
   height: 24px;
+  transition: transform $effect-duration $animation-timing-function;
+
+  &:hover {
+    transform: scale($scale-value);
+  }
 }
 
 .icon {
