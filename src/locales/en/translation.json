@@ -117,5 +117,20 @@
   "cityPatternError": "City: Only letters",
   "phoneNumberPlaceholder": "Phone number",
   "phoneNumberRequiredError": "Phone number: Required",
-  "phoneNumberPatternError": "Phone number: Only digits"
+  "phoneNumberPatternError": "Phone number: Only digits",
+  "cardNumberPlaceholder": "Card number",
+  "cardNumberRequiredError": "Card number: Required",
+  "cardNumberPatternError": "Card number: Only 16 digits",
+  "nameOnCardPlaceholder": "Name on card",
+  "nameOnCardRequiredError": "Name on card: Required",
+  "nameOnCardPatternError": "Name on card: Only letters",
+  "cvcPlaceholder": "CVC",
+  "cvcRequiredError": "CVC: Required",
+  "cvcPatternError": "CVC: Only 3 digits",
+  "yearPlaceholder": "Year",
+  "yearRequiredError": "Year: Required",
+  "yearPatternError": "Year: From 2000 to 2050",
+  "monthPlaceholder": "Month",
+  "monthRequiredError": "Month: Required",
+  "monthPatternError": "Month: Only letters"
 }

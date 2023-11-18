@@ -117,5 +117,20 @@
   "cityPatternError": "Linn: Ainult tähed",
   "phoneNumberPlaceholder": "Telefoninumber",
   "phoneNumberRequiredError": "Telefoninumber: Nõutav",
-  "phoneNumberPatternError": "Telefoninumber: Ainult numbrid"
+  "phoneNumberPatternError": "Telefoninumber: Ainult numbrid",
+  "cardNumberPlaceholder": "Kaardi number",
+  "cardNumberRequiredError": "Kaardi number: Nõutav",
+  "cardNumberPatternError": "Kaardi number: Ainult 16 numbrit",
+  "nameOnCardPlaceholder": "Nimi kaardil",
+  "nameOnCardRequiredError": "Nimi kaardil: Nõutav",
+  "nameOnCardPatternError": "Nimi kaardil: Ainult tähed",
+  "cvcPlaceholder": "CVC",
+  "cvcRequiredError": "CVC: Nõutav",
+  "cvcPatternError": "CVC: Ainult 3 numbrit",
+  "yearPlaceholder": "Aasta",
+  "yearRequiredError": "Aasta: Nõutav",
+  "yearPatternError": "Aasta: 2000 kuni 2050",
+  "monthPlaceholder": "Kuu",
+   "monthRequiredError": "Kuu: Nõutav",
+   "monthPatternError": "Kuu: Ainult tähed"
 }

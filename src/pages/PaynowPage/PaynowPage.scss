@@ -1,1 +1,48 @@
 @import "../../styles/utils.scss";
+
+.payNow {
+
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  &__items-extra {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+  }
+
+  &__item {
+    width: auto;
+
+    position: relative;
+    display: block;
+  }
+
+  &__item-error {
+    color: $red-700;
+    position: absolute;
+  }
+
+  &__item-input {
+    width: 100%;
+    padding: 48px 8px 16px;
+
+    outline: none;
+    border: none;
+    border-bottom: 2px solid $red-700;
+
+    @include onMobileLarge {
+      padding-top: 32px;
+    }
+  }
+
+  &__submit-button {
+    margin-top: 40px;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+  }
+}

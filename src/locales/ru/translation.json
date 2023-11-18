@@ -117,5 +117,20 @@
   "cityPatternError": "Город: Только буквы",
   "phoneNumberPlaceholder": "Номер телефона",
   "phoneNumberRequiredError": "Номер телефона: Обязательно",
-  "phoneNumberPatternError": "Номер телефона: Только цифры"
+  "phoneNumberPatternError": "Номер телефона: Только цифры",
+  "cardNumberPlaceholder": "Номер карты",
+  "cardNumberRequiredError": "Номер карты: Обязательно",
+  "cardNumberPatternError": "Номер карты: Только 16 цифр",
+  "nameOnCardPlaceholder": "Имя на карточке",
+  "nameOnCardRequiredError": "Имя на карточке: Обязательно",
+  "nameOnCardPatternError": "Имя на карточке: Только буквы",
+  "cvcPlaceholder": "CVC",
+  "cvcRequiredError": "CVC: Обязательно",
+  "cvcPatternError": "CVC: Только 3 цифры",
+  "yearPlaceholder": "Год",
+  "yearRequiredError": "Год: Обязательно",
+  "yearPatternError": "Год: От 2000 до 2050",
+  "monthPlaceholder": "Месяц",
+  "monthRequiredError": "Месяц: Обязательно",
+  "monthPatternError": "Месяц: Только буквы"
 }

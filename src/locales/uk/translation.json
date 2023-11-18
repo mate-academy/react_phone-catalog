@@ -117,5 +117,20 @@
   "cityPatternError": "Місто: Тільки літери",
   "phoneNumberPlaceholder": "Номер телефону",
   "phoneNumberRequiredError": "Номер телефону: Обов'язково",
-  "phoneNumberPatternError": "Номер телефону: Тільки цифри"
+  "phoneNumberPatternError": "Номер телефону: Тільки цифри",
+  "cardNumberPlaceholder": "Номер картки",
+  "cardNumberRequiredError": "Номер картки: Обов'язково",
+  "cardNumberPatternError": "Номер картки: Тільки 16 цифр",
+  "nameOnCardPlaceholder": "Ім'я на картці",
+  "nameOnCardRequiredError": "Ім'я на картці: Обов'язково",
+  "nameOnCardPatternError": "Ім'я на картці: Тільки літери",
+  "cvcPlaceholder": "CVC",
+  "cvcRequiredError": "CVC: Обов'язково",
+  "cvcPatternError": "CVC: Тільки 3 цифри",
+  "yearPlaceholder": "Рік",
+  "yearRequiredError": "Рік: Обов'язково",
+  "yearPatternError": "Рік: Від 2000 до 2050",
+  "monthPlaceholder": "Місяць",
+  "monthRequiredError": "Місяць: Обов'язково",
+  "monthPatternError": "Місяць: Тільки літери"
 }
