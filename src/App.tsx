@@ -14,7 +14,7 @@ const App = () => {
       <GridContainer>
         <div className="relative z-20 col-span-full flex h-16 items-center border-b-[1px] border-Elements bg-white">
           <Link to="/" className="ml-6 mr-16">
-            <img className="h-16 w-10" src="/Icons/Logo.svg" alt="" />
+            <img className="h-16 w-10" src="./Icons/Logo.svg" alt="" />
           </Link>
 
           <div className="flex w-full justify-between">
@@ -51,11 +51,13 @@ const App = () => {
                   <img className="h-4 w-4" src="/Icons/Search.svg" alt="" />
                 </div>
               )}
+
               <StylishNavButton
                 to="favourites"
-                imgUrl="/Icons/Favourites.svg"
+                imgUrl="./Icons/Favourites.svg"
               />
-              <StylishNavButton to="cart" imgUrl="/Icons/Cart.svg" />
+
+              <StylishNavButton to="cart" imgUrl="./Icons/Cart.svg" />
             </div>
           </div>
         </div>

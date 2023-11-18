@@ -39,7 +39,7 @@ export const ItemCard = () => {
           className={`flex w-min items-center gap-1 text-Secondary ${typographyStyle.smallText}`}
           to={`/catalogue/${catalogueId}`}
         >
-          <img src="/Icons/Chevron (Arrow Left).svg" alt="back" />
+          <img src="./Icons/Chevron (Arrow Left).svg" alt="back" />
           Back
         </Link>
 
@@ -63,7 +63,7 @@ export const ItemCard = () => {
                     >
                       <img
                         className="h-16 w-16 object-contain"
-                        src={`/_new/${url}`}
+                        src={`./_new/${url}`}
                         alt=""
                       />
                     </button>
@@ -73,7 +73,7 @@ export const ItemCard = () => {
             <div className="flex h-[464px] w-[464px] items-center justify-center">
               <img
                 className="h-[442px] w-[442px] object-contain"
-                src={`/_new/${currentImage}`}
+                src={`./_new/${currentImage}`}
                 alt=""
               />
             </div>

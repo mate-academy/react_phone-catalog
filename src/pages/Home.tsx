@@ -16,7 +16,7 @@ export const Home = () => {
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
-            src="/_new/img/banner-phones.png"
+            src="./_new/img/banner-phones.png"
             alt="phones"
           />
         </Link>
@@ -27,7 +27,7 @@ export const Home = () => {
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
-            src="/_new/img/banner-tablets.png"
+            src="./_new/img/banner-tablets.png"
             alt="tablets"
           />
         </Link>
@@ -38,7 +38,7 @@ export const Home = () => {
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
-            src="/_new/img/banner-accessories.png"
+            src="./_new/img/banner-accessories.png"
             alt="accessories"
           />
         </Link>

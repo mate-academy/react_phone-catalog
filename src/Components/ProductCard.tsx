@@ -15,7 +15,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <Link to={`/catalogue/phones/${product.itemId}`}>
         <img
           className="h-[208px] w-[208px] self-center object-contain"
-          src={`/_new/${product.image}`}
+          src={`./_new/${product.image}`}
           alt=""
         />
       </Link>
