@@ -19,7 +19,8 @@
     transition: opacity $effect-duration;
   }
 
-  &:hover, &.is-active {
+  &:hover,
+  &.is-active {
     color: $gray-primary;
 
     &::after {
@@ -31,7 +32,8 @@
     padding: 27px 0 26px;
   }
 
-  &--cart, &--favourite {
+  &--cart,
+  &--favourite {
     display: flex;
     justify-content: center;
     align-items: center;

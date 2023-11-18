@@ -9,6 +9,7 @@ import { SortBy } from '../../types/SortBy';
 import { Pagination } from '../Pagination/Pagination';
 import { SearchParamsType } from '../../types/SearchParamsTypes';
 import { normalizeValue } from '../../helpers/normalizeValue';
+import { NoSearchResult } from '../NoSearchResult/NoSearchResult';
 
 interface Props {
   products: Product[];
@@ -66,9 +67,7 @@ const ProductList: React.FC<Props> = ({
       {isfilterVisible && visibleProducts.length !== 0 && <Filters />}
 
       {visibleProducts.length === 0
-        ? (
-          <h1>Sorry, we can not find your product</h1>
-        )
+        ? (<NoSearchResult />)
         : (
           <div className="ProductList">
             {visibleProducts.map(product => (

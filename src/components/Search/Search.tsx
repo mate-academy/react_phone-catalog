@@ -58,6 +58,7 @@ export const Search = () => {
         className={cn('Search__clear-button', { isActive: query !== '' })}
         aria-label="clear-search"
         onClick={onClearQuery}
+        data-cy="searchDelete"
       />
     </div>
   );
