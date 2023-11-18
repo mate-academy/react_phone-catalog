@@ -11,7 +11,13 @@ export const Footer: React.FC = () => {
           </a>
           <ul>
             <li>
-              <a href="/">Github</a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/vitalii-fedusov?tab=repositories"
+              >
+                Github
+              </a>
             </li>
             <li>
               <a href="/">Contacts</a>

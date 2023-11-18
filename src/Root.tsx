@@ -1,7 +1,10 @@
 import {
-  HashRouter as Router, Routes, Route, Navigate,
+  Navigate,
+  Route,
+  Routes,
+  HashRouter as Router,
 } from 'react-router-dom';
-import App from './App';
+import { App } from './App';
 
 export const Root = () => (
   <Router>
@@ -9,6 +12,12 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route path="home" element={<Navigate to="/" />} />
         <Route index element={<h1 className="title">Home page</h1>} />
+        <Route path="phones" element={<h1 className="title">Phones</h1>} />
+        <Route path="tablets" element={<h1 className="title">Tablets</h1>} />
+        <Route
+          path="accessories"
+          element={<h1 className="title">Accessories</h1>}
+        />
 
         {/* <Route
           path="tabs"
