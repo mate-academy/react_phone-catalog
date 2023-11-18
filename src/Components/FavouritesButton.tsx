@@ -18,7 +18,7 @@ export const FavouritesButton: React.FC<Props> = () => {
   return (
     <button
       className={classNames(
-        'flex h-10 w-10 items-center justify-center border  transition-all hover:border-Primary',
+        'flex h-full w-full items-center justify-center border  transition-all hover:border-Primary',
         { 'border-Icons': !active, 'border-Elements': active },
       )}
       type="button"

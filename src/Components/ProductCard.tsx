@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductType } from '../Types/ProductType';
 import { FavouritesButton } from './FavouritesButton';
+import { AddToCart } from './AddToCart';
 
 type Props = {
   product: ProductType;
@@ -43,30 +44,28 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <hr className="mb-4 mt-2 border" />
 
-      <div className={`mb-2 flex justify-between ${typographyStyle.button}`}>
-        <div className="text-Secondary">Screen</div>
-        <div>{product.screen}</div>
+      <div className="flex flex-col gap-y-2">
+        <div className={`flex justify-between ${typographyStyle.button}`}>
+          <div className="text-Secondary">Screen</div>
+          <div>{product.screen}</div>
+        </div>
+        <div className={`flex justify-between ${typographyStyle.button}`}>
+          <div className="text-Secondary">Capacity</div>
+          <div>{product.capacity}</div>
+        </div>
+        <div className={`flex justify-between ${typographyStyle.button}`}>
+          <div className="text-Secondary">RAM</div>
+          <div>{product.ram}</div>
+        </div>
       </div>
-      <div className={`mb-2 flex justify-between ${typographyStyle.button}`}>
-        <div className="text-Secondary">Capacity</div>
-        <div>{product.capacity}</div>
-      </div>
-      <div className={`flex justify-between ${typographyStyle.button}`}>
-        <div className="text-Secondary">RAM</div>
-        <div>{product.ram}</div>
-      </div>
-
       <hr className="mb-4 border-0" />
 
-      <div className={`flex gap-2 ${typographyStyle.button}`}>
-        <button
-          className="h-10 w-[176px] bg-Primary shadow-Primary transition-all hover:shadow-button-hover"
-          type="button"
-        >
-          <span className="text-white">Add to cart</span>
-        </button>
+      <div className={`flex h-10 gap-2 ${typographyStyle.button}`}>
+        <AddToCart />
 
-        <FavouritesButton />
+        <div className="w-10 shrink-0">
+          <FavouritesButton />
+        </div>
       </div>
     </div>
   );

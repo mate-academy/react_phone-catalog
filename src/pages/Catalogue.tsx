@@ -10,6 +10,7 @@ import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductCard } from '../Components/ProductCard';
 import { ArrowButton } from '../Components/ArrowButton';
 import { scrollToTop } from '../utils/scrollToTop';
+import { StylishTextButton } from '../Components/StylishTextButton';
 
 const options: OptionType[] = [
   { value: 8, label: '8' },
@@ -70,7 +71,9 @@ export const Catalogue = () => {
     <>
       <hr className="col-span-full mb-6 border-0" />
 
-      <div className="col-span-full flex h-4 items-center gap-x-2">
+      <div
+        className={`col-span-full flex h-4 items-center gap-x-2 ${typographyStyle.smallText}`}
+      >
         <Link to="/">
           <img src="/Icons/Home.svg" alt="home" />
         </Link>
@@ -85,12 +88,7 @@ export const Catalogue = () => {
           <>
             <img src="/Icons/Chevron (Arrow Right).svg" alt="home" />
 
-            <Link
-              className="capitalize"
-              to={`/catalogue/${catalogueId}/${itemId}`}
-            >
-              {currentItem?.name}
-            </Link>
+            <span className="text-Secondary">{currentItem?.name}</span>
           </>
         )}
       </div>
@@ -178,27 +176,8 @@ export const Catalogue = () => {
           <div className="col-span-full flex justify-center gap-x-2">
             <ArrowButton direction="left" />
 
-            <button
-              className={classNames(
-                `h-8 w-8 border border-Elements hover:border-Primary ${typographyStyle.button}`,
-                {
-                  'border-Primary bg-Primary text-white': true,
-                },
-              )}
-            >
-              1
-            </button>
-
-            <button
-              className={classNames(
-                `h-8 w-8 border border-Elements hover:border-Primary ${typographyStyle.button}`,
-                {
-                  'border-Primary bg-Primary text-white': false,
-                },
-              )}
-            >
-              2
-            </button>
+            <StylishTextButton active>1</StylishTextButton>
+            <StylishTextButton>2</StylishTextButton>
 
             <ArrowButton direction="right" />
           </div>

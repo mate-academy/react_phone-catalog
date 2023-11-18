@@ -7,7 +7,7 @@ import { ArrowButton } from './Components/ArrowButton';
 import { scrollToTop } from './utils/scrollToTop';
 
 const App = () => {
-  const { catalogueId } = useParams();
+  const { catalogueId, itemId } = useParams();
 
   return (
     <>
@@ -41,7 +41,7 @@ const App = () => {
             </nav>
 
             <div className="flex justify-self-end">
-              {catalogueId && (
+              {catalogueId && !itemId && (
                 <div className="flex h-full w-80 items-center border border-r-0 border-Elements px-6 ">
                   <input
                     className={`h-full w-80 outline-none ${typographyStyle.button}`}

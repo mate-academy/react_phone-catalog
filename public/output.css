@@ -644,6 +644,11 @@ video {
   grid-column-start: 2;
 }
 
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -668,6 +673,10 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .ml-6 {
   margin-left: 1.5rem;
 }
@@ -678,6 +687,10 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .block {
@@ -700,12 +713,20 @@ video {
   height: 2.5rem;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .h-16 {
   height: 4rem;
 }
 
 .h-2 {
   height: 0.5rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .h-4 {
@@ -744,6 +765,14 @@ video {
   height: 42px;
 }
 
+.h-\[442px\] {
+  height: 442px;
+}
+
+.h-\[464px\] {
+  height: 464px;
+}
+
 .h-\[72px\] {
   height: 72px;
 }
@@ -764,12 +793,24 @@ video {
   width: 2.5rem;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
 .w-16 {
   width: 4rem;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .w-4 {
   width: 1rem;
+}
+
+.w-6 {
+  width: 1.5rem;
 }
 
 .w-8 {
@@ -812,8 +853,34 @@ video {
   width: 28px;
 }
 
+.w-\[320px\] {
+  width: 320px;
+}
+
 .w-\[368px\] {
   width: 368px;
+}
+
+.w-\[442px\] {
+  width: 442px;
+}
+
+.w-\[464px\] {
+  width: 464px;
+}
+
+.w-\[512px\] {
+  width: 512px;
+}
+
+.w-\[560px\] {
+  width: 560px;
+}
+
+.w-fit {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .w-full {
@@ -874,6 +941,10 @@ video {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
 }
@@ -925,6 +996,14 @@ video {
   row-gap: 0.25rem;
 }
 
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
+.gap-y-8 {
+  row-gap: 2rem;
+}
+
 .self-center {
   align-self: center;
 }
@@ -937,12 +1016,20 @@ video {
   overflow: hidden;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .border {
   border-width: 1px;
 }
 
 .border-0 {
   border-width: 0px;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-b-\[1px\] {
@@ -966,6 +1053,11 @@ video {
 .border-Primary {
   --tw-border-opacity: 1;
   border-color: rgb(49 50 55 / var(--tw-border-opacity));
+}
+
+.border-\[\#c4c4c4\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(196 196 196 / var(--tw-border-opacity));
 }
 
 .bg-Background {
@@ -1037,6 +1129,11 @@ video {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .px-6 {
