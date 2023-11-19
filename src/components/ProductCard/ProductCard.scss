@@ -1,0 +1,128 @@
+.product-card {
+  padding: 32px 24px 24px;
+  border: 1px solid #E2E6E9;
+  width: 272px;
+  height: 507px;
+  display: flex;
+  flex-direction: column;
+
+    &__img {
+      margin: 0 auto;
+      width: 145px;
+      height: 200px;
+    }
+
+    &__buttons {
+      display: flex;
+      margin-top: 16px;
+    }
+
+    &__name {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      margin-top: 24px;
+      height: 42px;
+    }
+
+    &__prices {
+      display: flex;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    &__discount {
+      font-family: 'Mont-Bold';
+      font-size: 22px;
+      margin-right: 8px;
+    }
+
+    &__no-discount {
+      font-family: 'Mont-Regular';
+      font-size: 22px;
+      color: #89939A;
+    }
+
+    &__description {
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    &__screen {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__capacity {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__ram {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__add-to-card-button {
+      font-family: 'Mont-Regular';
+      font-size: 14px;
+      background-color: #313237;
+      border: none;
+      line-height: 21px;
+      color: white;
+      width: 176px;
+      height: 40px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    &__favorites-button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    &__line {
+      width: 224px;
+      border: 1px solid #E2E6E9;
+      margin-top: 6px;
+    }
+  }
+
+.screen {
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  color: #89939A;
+}
+
+.oled {
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  color: #313237;
+}
+
+.capacity {
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  color: #89939A;
+}
+
+.six-four-gb {
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  color: #313237;
+}
+
+.ram {
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  color: #89939A;
+}
+
+.four-gb {
+  font-family: 'Mont-SemiBold';
+  font-size: 12px;
+  color: #313237;
+}

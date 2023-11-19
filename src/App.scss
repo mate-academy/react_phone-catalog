@@ -1,1 +1,65 @@
-// not empty
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('./fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Mont-SemiBold';
+  src: url('./fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Mont-Regular';
+  src: url('./fonts/Mont-Regular.otf') format('opentype');
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.shop-by-category {
+  margin: 0 auto;
+  width: 1136px;
+
+  &__container {
+    margin-top: 24px;
+  }
+
+  &__title {
+    font-family: 'Mont-Bold';
+    font-size: 32px;
+    color: #313237;
+  }
+
+  &__link {
+    display:inline-flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  &__text {
+    font-family: "Mont-SemiBold";
+    font-size: 20px;
+    color: #313237;
+    margin-top: 24px;
+  }
+
+  &__models {
+    font-family: 'Mont-Regular';
+    font-size: 14px;
+    color: #89939A;
+    margin-top: 4px;
+  }
+}
