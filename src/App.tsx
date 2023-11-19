@@ -1,13 +1,20 @@
 /* eslint-disable max-len */
+import { useContext } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import { GridContainer } from './Components/GridContainer';
 import { typographyStyle } from './CustomStyles/Typography';
 import { StylishNavButton } from './Components/StylishNavButton';
 import { ArrowButton } from './Components/ArrowButton';
 import { scrollToTop } from './utils/scrollToTop';
+import { appContext } from './Contexts/AppContext';
 
 const App = () => {
+  const { favorites, cartItems } = useContext(appContext);
   const { catalogueId, itemId } = useParams();
+
+  const getTotalCartItem = () => {
+    return cartItems.reduce((prev, acc) => prev + acc.quantity, 0);
+  };
 
   return (
     <>
@@ -48,16 +55,21 @@ const App = () => {
                     placeholder={`Search in ${catalogueId}...`}
                     type="text"
                   />
-                  <img className="h-4 w-4" src="/Icons/Search.svg" alt="" />
+                  <img className="h-4 w-4" src="./Icons/Search.svg" alt="" />
                 </div>
               )}
 
               <StylishNavButton
+                counter={favorites.length}
                 to="favourites"
                 imgUrl="./Icons/Favourites.svg"
               />
 
-              <StylishNavButton to="cart" imgUrl="./Icons/Cart.svg" />
+              <StylishNavButton
+                counter={getTotalCartItem()}
+                to="cart"
+                imgUrl="./Icons/Cart.svg"
+              />
             </div>
           </div>
         </div>
@@ -68,7 +80,7 @@ const App = () => {
 
         <div className="col-span-12 col-start-2 flex h-[96px] items-center justify-between text-Secondary">
           <Link to="/" className="flex h-full items-center">
-            <img className="h-full w-10" src="/Icons/Logo.svg" alt="" />
+            <img className="h-full w-10" src="./Icons/Logo.svg" alt="" />
           </Link>
 
           <nav

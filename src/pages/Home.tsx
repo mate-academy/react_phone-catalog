@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Carousel from '../Components/Carousel';
 import { ProductCarousel } from '../Components/ProductCarousel';
 import { ShopByCategory } from '../Components/ShopByCategory';
+import { baseUrl } from '../api/api';
 
 export const Home = () => {
   return (
@@ -16,7 +17,7 @@ export const Home = () => {
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
-            src="./_new/img/banner-phones.png"
+            src={`${baseUrl}/_new/img/banner-phones.png`}
             alt="phones"
           />
         </Link>
@@ -27,7 +28,7 @@ export const Home = () => {
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
-            src="./_new/img/banner-tablets.png"
+            src={`${baseUrl}/_new/img/banner-tablets.png`}
             alt="tablets"
           />
         </Link>
@@ -38,7 +39,7 @@ export const Home = () => {
         >
           <img
             className="h-[400px] w-[1040px] object-cover"
-            src="./_new/img/banner-accessories.png"
+            src={`${baseUrl}/_new/img/banner-accessories.png`}
             alt="accessories"
           />
         </Link>

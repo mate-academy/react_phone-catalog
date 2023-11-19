@@ -27,7 +27,7 @@ body {
 }
 
 iframe {
-  width: 100px;
+  display: none;
 }
 
 @font-face {

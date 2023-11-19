@@ -30,6 +30,11 @@ module.exports = {
       backgroundPosition: {
         categoryBanner: 'left 73px top 32px',
       },
+      backgroundImage: {
+        'phone-ctg': 'url("./assets/img/phone.png")',
+        'tablet-ctg': 'url("./assets/img/tablet.png")',
+        'accessory-ctg': 'url("./assets/img/accessory.png")',
+      },
     },
   },
   plugins: [],

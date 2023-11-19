@@ -27,11 +27,8 @@ export const ShopByCategory = () => {
         >
           <div
             className={classNames(
-              'mb-6 h-[368px] w-[368px] bg-[#FCDBC1] bg-right-bottom bg-no-repeat',
+              'bg-phone-ctg mb-6 h-[368px] w-[368px] bg-[#FCDBC1] bg-right-bottom bg-no-repeat',
             )}
-            style={{
-              backgroundImage: 'url(/assets/img/phone.png)',
-            }}
           />
           <h3 className={`mb-1 ${typographyStyle.h3}`}>Mobile phones</h3>
           <p className={`text-Secondary ${typographyStyle.bodyText}`}>
@@ -44,12 +41,7 @@ export const ShopByCategory = () => {
           to="catalogue/tablets"
           onClick={handleOnClick}
         >
-          <div
-            className="mb-6 h-[368px] w-[368px] bg-[#8D8D92] bg-right-bottom bg-no-repeat"
-            style={{
-              backgroundImage: 'url(/assets/img/tablet.png)',
-            }}
-          />
+          <div className="bg-tablet-ctg mb-6 h-[368px] w-[368px] bg-[#8D8D92] bg-right-bottom bg-no-repeat" />
           <h3 className={`mb-1 ${typographyStyle.h3}`}>Tablets</h3>
           <p className={`text-Secondary ${typographyStyle.bodyText}`}>
             24 models
@@ -61,12 +53,7 @@ export const ShopByCategory = () => {
           to="catalogue/accessories"
           onClick={handleOnClick}
         >
-          <div
-            className="mb-6 h-[368px] w-[368px] bg-[#973D5F] bg-right-bottom bg-no-repeat"
-            style={{
-              backgroundImage: 'url(/assets/img/accessory.png)',
-            }}
-          />
+          <div className="bg-accessory-ctg mb-6 h-[368px] w-[368px] bg-[#973D5F] bg-right-bottom bg-no-repeat" />
           <h3 className={`mb-1 ${typographyStyle.h3}`}>Accessories</h3>
           <p className={`text-Secondary ${typographyStyle.bodyText}`}>
             100 models

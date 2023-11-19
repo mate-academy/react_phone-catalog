@@ -8,7 +8,7 @@ type Props = {
   active?: boolean;
 };
 
-export const StylishTextButton: React.FC<Props> = ({ children, active }) => {
+export const PaginationButton: React.FC<Props> = ({ children, active }) => {
   return (
     <button
       type="button"

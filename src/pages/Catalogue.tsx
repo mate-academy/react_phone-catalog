@@ -10,7 +10,7 @@ import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductCard } from '../Components/ProductCard';
 import { ArrowButton } from '../Components/ArrowButton';
 import { scrollToTop } from '../utils/scrollToTop';
-import { StylishTextButton } from '../Components/StylishTextButton';
+import { PaginationButton } from '../Components/PaginationButton';
 
 const options: OptionType[] = [
   { value: 8, label: '8' },
@@ -75,10 +75,10 @@ export const Catalogue = () => {
         className={`col-span-full flex h-4 items-center gap-x-2 ${typographyStyle.smallText}`}
       >
         <Link to="/">
-          <img src="/Icons/Home.svg" alt="home" />
+          <img src="./Icons/Home.svg" alt="home" />
         </Link>
 
-        <img src="/Icons/Chevron (Arrow Right).svg" alt="home" />
+        <img src="./Icons/Chevron (Arrow Right).svg" alt="home" />
 
         <Link className="capitalize" to={`/catalogue/${catalogueId}`}>
           {catalogueId}
@@ -86,7 +86,7 @@ export const Catalogue = () => {
 
         {!!itemId && (
           <>
-            <img src="/Icons/Chevron (Arrow Right).svg" alt="home" />
+            <img src="./Icons/Chevron (Arrow Right).svg" alt="home" />
 
             <span className="text-Secondary">{currentItem?.name}</span>
           </>
@@ -176,8 +176,8 @@ export const Catalogue = () => {
           <div className="col-span-full flex justify-center gap-x-2">
             <ArrowButton direction="left" />
 
-            <StylishTextButton active>1</StylishTextButton>
-            <StylishTextButton>2</StylishTextButton>
+            <PaginationButton active>1</PaginationButton>
+            <PaginationButton>2</PaginationButton>
 
             <ArrowButton direction="right" />
           </div>
