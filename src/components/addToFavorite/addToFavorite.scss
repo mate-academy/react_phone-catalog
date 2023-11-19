@@ -1,0 +1,21 @@
+@import "../../variabls.scss";
+
+.like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid $icons;
+  cursor: pointer;
+  width: 100%;
+  max-width: 48px;
+}
+  
+.like-button:hover {
+  border: 1px solid $primary;
+}
+
+.hearth {
+  width: 16px;
+  height: 16px;
+}

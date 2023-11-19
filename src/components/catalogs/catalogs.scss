@@ -1,0 +1,77 @@
+@import "../../variabls.scss";
+
+.wrapper-catalogs {
+  display: flex;
+  width: 100%;
+  max-width: 1136px;
+  justify-content: space-between;
+  margin: 80px auto;
+  cursor: pointer;
+}
+
+@media screen and (max-width: $lg) {
+  .wrapper-catalogs {
+    max-width: 825px;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .wrapper-catalogs {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 368px;
+  margin-top: 10px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+
+    & span:first-child {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      color: $primary;
+    }
+
+    & span:last-child {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary;
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .catalog {
+    max-width: 260px;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .catalog {
+    max-width: 320px;
+
+    & span:first-child {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    & span:last-child {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+}

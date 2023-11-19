@@ -1,0 +1,52 @@
+@import "../../variabls.scss";
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  border-top: 1px solid $secondary;
+  min-height: 64px;
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 293px;
+
+    & a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 11px;
+      color: $secondary;
+    }
+  }
+
+  &__back-top {
+    & span {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $secondary;
+    }
+
+    & button {
+      border: 1px solid $icons;
+      width: 32px;
+      height: 32px;
+      transform: rotate(90deg);
+      background-color: transparent;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .footer {
+    flex-direction: column;
+    min-height: 140px;
+  }
+}

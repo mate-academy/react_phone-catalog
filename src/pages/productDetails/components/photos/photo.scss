@@ -1,0 +1,64 @@
+@import "../../../../variabls.scss";
+
+.list-photo-details {
+  display: flex;
+  margin-right: 64px;
+  
+  &__image {
+    border: 1px solid $icons;
+    width: fit-content;
+    padding: 7px;
+    margin-top: 16px;
+    background-color: transparent;
+    cursor: pointer;
+
+    & img {
+      width: 80px;
+      height: 80px;
+    }
+
+  }
+}
+
+@media screen and (max-width: $md) {
+  .list-photo-details {
+    flex-direction: column;
+
+    &__image {
+      margin-left: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .list-photo-details {
+    margin-right: 0;
+  }
+}
+  
+.wrapper-photo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 27px;
+}
+
+@media screen and (max-width: $md) {
+  .wrapper-photo {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width:$sm) {
+  .wrapper-photo {
+    max-width: 90%;
+    margin: 20px auto;
+
+    & img {
+      width: 100%;
+    }
+  }
+}

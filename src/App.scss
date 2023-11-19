@@ -1,1 +1,32 @@
-// not empty
+@import "./variabls.scss";
+
+body {
+  margin: 0;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  max-width: 1440px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 64px 1fr 64px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: $lg) {
+  .App {
+    grid-template-rows: 160px 1fr;
+  }
+}
+
+.main {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-bottom: 80px;
+  min-height: 100vh;
+}

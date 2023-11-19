@@ -1,0 +1,85 @@
+@import "../../variabls.scss";
+
+.product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 100px auto 0;
+}
+
+@media screen and (max-width: $sm) {
+  .product {
+    max-width: 320px;
+  }
+}
+
+.product-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  color: $primary;
+  padding-left: 16px;
+  margin: 0;
+}
+
+@media screen and (max-width: $sm) {
+  .product-title {
+    font-size: 22px;
+    line-height: 30px;
+    padding-left: 0;
+  }
+}
+
+.wrapper-slider-product {
+  display: flex;
+  justify-content: center;
+}
+
+.prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 51px;
+  top: -37px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: 1px solid $icons;
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: -37px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: 1px solid $icons;
+}
+
+.prev:hover,
+.next:hover {
+  border-color: $primary;
+}
+
+@media screen and (max-width: $sm) {
+  .prev,
+  .next {
+    width: 28px;
+    height: 28px;
+    top: -35px;
+  }
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  margin: 0 auto;
+}

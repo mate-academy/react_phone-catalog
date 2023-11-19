@@ -1,0 +1,76 @@
+@import "../../variabls.scss";
+
+.dropdown {
+  width: 100%;
+}
+
+.currently-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 176px;
+  border: 1px solid $icons;
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  & img {
+    transition: all 0.3s ease;
+  }
+}
+
+.currently-value:hover {
+  border: 1px solid $secondary;
+}
+
+.elements {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: $white;
+  margin-top: 4px;
+  cursor: pointer;
+
+  & button {
+    display: flex;
+    padding: 6px 0 6px 6px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+    cursor: pointer;
+  }
+}
+
+.active-menu {
+  max-height: 200px;
+  transition: all 0.3s ease;
+  border: 1px solid $elements;
+}
+
+.selected {
+  background-color: $hover !important;
+}
+
+.disable {
+  color: $primary !important;
+  text-decoration: line-through;
+}
+
+.open {
+  transform: rotate(-90deg);
+}
+
+.close {
+  transform: rotate(90deg);
+}

@@ -1,0 +1,107 @@
+@import "../../variabls.scss";
+
+.wrapper-shopping {
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  max-width: 1137px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: $lg) {
+  .wrapper-shopping {
+    align-items: center;
+  }
+}
+
+.main-info-shopping {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: $lg) {
+  .main-info-shopping {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+.wrapper-shopping-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.total-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 368px;
+  height: 206px;
+  border: 1px solid $icons;
+  margin-top: 16px;
+
+  &__cost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h2 {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 41px;
+      color: $primary;
+      margin: 0;
+    }
+
+    & span {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $secondary;
+    }
+  }
+
+  &__checkout {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid $secondary;
+    width: 100%;
+    max-width: 321px;
+    padding-top: 24px;
+
+    & button {
+      border: none;
+      background-color: $primary;
+      width: 320px;
+      height: 48px;
+      color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .total-info {
+    width: 752px;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .total-info {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .total-info {
+    &__checkout {
+      & button {
+        width: 250px;
+      }
+    }
+  }
+}

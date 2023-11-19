@@ -1,0 +1,64 @@
+@import "../../variabls.scss";
+
+.wrapper-banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 98%;
+  max-width: 1137px;
+  margin: 40px auto 0;
+}
+
+.baner {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 1037px;
+  height: 400px;
+  margin: 0 1%;
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: $lg) {
+  .baner {
+    width: 730px;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .baner {
+    width: 500px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .baner {
+    width: 320px;
+    margin: 0;
+  }
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 400px;
+  border: 1px solid $icons;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+@media screen and (max-width: $sm) {
+  .arrow {
+    width: 26px;
+  }
+}
+
+@media screen and (max-width: $md) {
+  .arrow {
+    height: 200px;
+  }
+}

@@ -1,0 +1,47 @@
+@import "../../../../variabls.scss";
+@import "../../../../mixin.scss";
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 320px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elements;
+
+  & span {
+    @include span;
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .colors {
+    margin-top: 40px;
+  }
+}
+
+.color {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $elements;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 2px;
+  cursor: pointer;
+
+  & div {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
+}
+
+.wrapper-colors {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 149px;
+  margin-top: 9px;
+}

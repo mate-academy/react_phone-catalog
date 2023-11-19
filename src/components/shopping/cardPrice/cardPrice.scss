@@ -1,0 +1,98 @@
+@import "../../../variabls.scss";
+
+.warpper-card-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 752px;
+  height: 128px;
+  border: 1px solid $elements;
+  margin-top: 16px;
+}
+
+@media screen and (max-width: $md) {
+  .warpper-card-price {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .warpper-card-price {
+    flex-direction: column-reverse;
+    height: 100%;
+    padding-bottom: 15px;
+  }
+}
+
+.delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.describe-card {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  max-width: 250px;
+
+  & h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+    max-width: 295px;
+    margin-left: 31px;
+  }
+
+  & img {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+@media screen and (max-width: $sm) {
+  .describe-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+    & h3 {
+      margin-left: 0;
+    }
+  }
+}
+
+.count-product {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    margin: 0 14px;
+    border: 1px solid $icons;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__value {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+  }
+}
+
+.product-price {
+  text-align: center;
+  width: 80px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  color: $primary;
+}

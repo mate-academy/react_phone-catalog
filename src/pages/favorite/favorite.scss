@@ -1,0 +1,43 @@
+@import "../../variabls.scss";
+
+.favorite {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  max-width: 1152px;
+  margin: 0 auto;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+@media screen and (max-width: $md) {
+  .favorite {
+    align-items: center;
+  }
+}
+
+.list-favorite-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: $md) {
+  .list-favorite-wrapper {
+    justify-content: center;
+  }
+}
+
+.count-product {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary;
+}
+
+.favorite-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  color: $primary;
+}

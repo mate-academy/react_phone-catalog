@@ -1,0 +1,96 @@
+@import "../../variabls.scss";
+
+.details-wrapper {
+  width: 100%;
+  max-width: 1137px;
+  margin: 0 auto;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+@media screen and (max-width: $lg) {
+  .details-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 98%;
+
+    & h1 {
+      text-align: center;
+    }
+  }
+}
+
+.wrapper-info {
+  display: flex;
+}
+
+@media screen and (max-width: $lg) {
+  .wrapper-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.active {
+  border-color: $primary;
+}
+
+.active-memory {
+  background-color: $primary !important;
+  color: $white;
+}
+
+.describe-details {
+  display: flex;
+  margin-top: 81px;
+
+  &__about {
+    margin-right: 64px;
+
+    & h2 {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+      color: $primary;
+      border-bottom: 1px solid $elements;
+      padding-bottom: 20px;
+    }
+
+    & p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $icons;
+      max-width: 559px;
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 512px;
+
+    & h2 {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+      color: $primary;
+      border-bottom: 1px solid $elements;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .describe-details {
+    flex-direction: column;
+    align-items: center;
+
+    &__about {
+      margin-right: 0;
+      max-width: 512px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import "../../variabls.scss";
+@import "../../mixin.scss";
+
+.wrapper-way {
+  display: flex;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  align-items: center;
+
+  & img {
+    margin-right: 20px;
+  }
+
+  & span {
+    @include span;
+  }
+
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $primary;
+  text-decoration: none;
+
+  & img {
+    margin: 0 14px;
+  }
+}
+
+.home-link {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper-productName {
+  margin-left: 20px;
+  color: $secondary;
+}
