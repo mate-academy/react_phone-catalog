@@ -46,7 +46,6 @@ export const HomePage: React.FC = React.memo(() => {
     hasError: previewsHasError,
   } = useAppSelector(state => state.previews);
 
-  const goodsForHomePage = goods.slice(0, 5);
   const previewsForHomePage = previews.slice(0, 6);
 
   useEffect(() => {
@@ -87,12 +86,12 @@ export const HomePage: React.FC = React.memo(() => {
           {!goodsIsLoaded && goods.length > 0 && (
             getScreenType() === Resolutions.Mobile ? (
               <Slider
-                goods={goodsForHomePage}
+                goods={goods}
                 rootClassName="homePage"
               />
             ) : (
               <ul className="homePage__goods-list">
-                {goodsForHomePage.map(good => {
+                {goods.map(good => {
                   const {
                     images,
                     name,

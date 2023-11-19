@@ -4,13 +4,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 import { useTranslation } from 'react-i18next';
 
-import { giveCurrency } from '../../helpers/giveCurrency';
-
 import { Good } from '../../types/Good';
 
 import './Slider.scss';
 import 'swiper/swiper.scss';
 import 'swiper/modules/pagination/pagination.scss';
+import { GoodPrice } from '../GoodPrice/GoodPrice';
 
 type Props = {
   goods: Good[],
@@ -40,6 +39,7 @@ export const Slider: React.FC<Props> = React.memo(({
           seoUrl,
           translationSlug,
           price,
+          sale,
         } = good;
 
         return (
@@ -65,9 +65,11 @@ export const Slider: React.FC<Props> = React.memo(({
                   {t(translationSlug)}
                 </h2>
 
-                <p className={`${rootClassName}__goods-list-item-info-price`}>
-                  {`${t(price.toString())} ${giveCurrency(currentLanguage)}`}
-                </p>
+                <GoodPrice
+                  rootClassName="homePage-list-item-info"
+                  sale={sale}
+                  price={price}
+                />
               </div>
             </Link>
           </SwiperSlide>

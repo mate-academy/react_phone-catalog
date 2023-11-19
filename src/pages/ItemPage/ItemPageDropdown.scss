@@ -4,6 +4,7 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  z-index: $z-index--2;
 
   margin-top: 70px;
   width: 95%;

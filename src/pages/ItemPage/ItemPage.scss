@@ -82,7 +82,6 @@
 
   &__content-info-button-main {
     width: 90%;
-    z-index: $z-index---1;
 
     @include onDesktop {
       max-width: 80%;
