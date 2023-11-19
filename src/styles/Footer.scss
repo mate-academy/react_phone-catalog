@@ -1,20 +1,53 @@
 .footer {
-  display: flex;
+  box-sizing: border-box;
+  margin-inline: auto;
   height: 96px;
-  align-items: center;
-  justify-content: center;
 
   &__container {
+    box-sizing: border-box;
     height: 100%;
-    background-color: pink;
+    // background-color: pink;
     width: $container-width;
     justify-content: center;
     align-items: center;
+    display: flex;
   }
 
   &__nav {
+    width: 100%;
+    height: 80%;
     display: flex;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: $gray-secondary;
+    font-weight: 600;
+  }
+
+  &__arrow-up {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__link {
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-secondary;
+    transition: border $effect-duration $animation-timing-function;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
   }
 }

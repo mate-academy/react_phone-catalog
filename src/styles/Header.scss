@@ -46,22 +46,39 @@
     }
   }
 
-  &__pages {
-    display: flex;
-    align-items: center;
-    gap: 64px;
-    height: 100%;
-    margin: 0;
-    list-style: none;
-    padding: 0;
-  }
 
-  &__page {
+}
+
+.logo {
+  height: 24px;
+  transition: transform $effect-duration $animation-timing-function;
+
+  &:hover {
+    transform: scale($scale-value);
+  }
+}
+
+.icon {
+  height: 16px;
+}
+
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  height: 100%;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+
+  &__item {
     height: 100%;
     transition: transform $effect-duration $animation-timing-function;
 
     &:hover {
       transform: scale($scale-value);
+      overflow: hidden;
     }
   }
 
@@ -89,15 +106,4 @@
   }
 }
 
-.logo {
-  height: 24px;
-  transition: transform $effect-duration $animation-timing-function;
 
-  &:hover {
-    transform: scale($scale-value);
-  }
-}
-
-.icon {
-  height: 16px;
-}

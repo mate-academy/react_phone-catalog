@@ -4,6 +4,10 @@
 @import './styles/Footer.scss';
 @import './styles/container.scss';
 
+html {
+  // scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: Mont;
   src: url(./public/fonts/Mont-Regular.otf);

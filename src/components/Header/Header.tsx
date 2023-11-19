@@ -6,8 +6,8 @@ import favourites from '../../images/favourites-hart-like.svg';
 import bag from '../../images/shopping-bag.svg';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => (
-  classNames('top-bar__link', {
-    'top-bar__link--active': isActive,
+  classNames('list__link', {
+    'list__link--active': isActive,
   })
 );
 
@@ -18,19 +18,19 @@ export const Header: React.FC = () => {
         <NavLink className="logo" to="/">
           <img className="logo__image" src={logo} alt="Logo" />
         </NavLink>
-        <ul className="top-bar__pages">
-          <li className="top-bar__page">
+        <ul className="list">
+          <li className="list__item">
             <NavLink className={getLinkClass} to="/">
               Home
             </NavLink>
           </li>
-          <li className="top-bar__page">
+          <li className="list__item">
             <NavLink className={getLinkClass} to="/phones">Phones</NavLink>
           </li>
-          <li className="top-bar__page">
+          <li className="list__item">
             <NavLink className={getLinkClass} to="/tablets">Tablets</NavLink>
           </li>
-          <li className="top-bar__page">
+          <li className="list__item">
             <NavLink className={getLinkClass} to="/accessories">
               Accessories
             </NavLink>
