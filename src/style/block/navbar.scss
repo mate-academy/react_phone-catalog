@@ -3,14 +3,38 @@
   justify-content: space-between;
   gap: 24px;
 
+  &__item {
+    padding: 28px 20px 24px;
+    color: $secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    position: relative;
+
+    &--icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 63px;
+      padding: 0;
+      position: relative;
+      border-left: 1px solid $elements;
+
+      &:hover {
+        background-color: $hover;
+      }
+    }
+  }
+
   &__link {
     display: flex;
     align-items: center;
     height: min-content;
-
-    &:hover > .navbar__item {
-      color: $primary;
-    }
 
     &--active > .navbar__item {
       color: $primary;
@@ -39,33 +63,9 @@
         z-index: 1;
       }
     }
-  }
 
-  &__item {
-    padding: 28px 20px 24px;
-    color: $secondary;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-    vertical-align: middle;
-    position: relative;
-
-    &--icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 64px;
-      height: 63px;
-      padding: 0;
-      position: relative;
-      border-left: 1px solid $elements;
-
-      &:hover {
-        background-color: $hover;
-      }
+    &:hover > .navbar__item {
+      color: $primary;
     }
   }
 

@@ -14,6 +14,19 @@
     padding: 20px 44px 20px 24px;
   }
 
+  &__search {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 600;
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+
   &__search-container {
     display: flex;
     align-items: center;
@@ -25,22 +38,10 @@
     &:hover {
       background-color: $hover;
 
+      &,
       .header__search {
         background-color: $hover;
       }
-    }
-  }
-
-  &__search {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-style: normal;
-    font-size: 14px;
-    font-weight: 600;
-
-    &::placeholder {
-      color: $icons;
     }
   }
 
