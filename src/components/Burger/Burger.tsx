@@ -47,6 +47,7 @@ export const Burger: React.FC<Props> = React.memo(({
         setIsMenuOpened={setIsMenuOpened}
         screenType={screenType}
         setScreenType={setScreenType}
+        setIsSearchOpened={setIsSearchOpened}
       />
 
       <div className="container">

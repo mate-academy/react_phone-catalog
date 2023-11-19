@@ -56,7 +56,10 @@ export const Header: React.FC<Props> = React.memo(({
               <li className="header__nav-list-item">
                 <button
                   type="button"
-                  onClick={() => setIsMenuOpened(prevState => !prevState)}
+                  onClick={() => {
+                    setIsSearchOpened(false);
+                    setIsMenuOpened(prevState => !prevState);
+                  }}
                 >
                   <svg
                     className="icon icon--burger"
