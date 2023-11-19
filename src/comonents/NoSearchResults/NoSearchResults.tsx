@@ -1,7 +1,7 @@
 export const NoSearchResults = () => {
   return (
     <h3>
-      NoSearchResults
+      No search results
     </h3>
   );
 };

@@ -5,6 +5,7 @@
   width: 16px;
   height: 16px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &--logo {
     background-image: url(../../img/Icons/Logo.svg);
@@ -14,7 +15,7 @@
 
   &--arrow {
     background-image: url(../../img/Icons/Arrow.svg);
-    cursor: auto;
+    cursor: pointer;
   }
 
   &--arrow-dis {
@@ -44,6 +45,10 @@
 
   &--home {
     background-image: url(../../img/Icons/Home.svg);
+
+    &:hover {
+      transform: scale(110%);
+    }
   }
 
   &--search {

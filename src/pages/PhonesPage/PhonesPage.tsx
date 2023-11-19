@@ -1,3 +1,5 @@
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Loader } from '../../comonents/Loader';
 import { Dropdown } from '../../comonents/Dropdown';
 import { Pagination } from '../../comonents/Pagination';
@@ -9,6 +11,7 @@ import { NoSearchResults } from '../../comonents/NoSearchResults';
 import { BreadCrumbs } from '../../comonents/BreadCrumbs';
 
 import '../../style/block/page.scss';
+import { getSearchWith } from '../../helpers/utils/getSearchWith';
 
 export const PhonesPage = () => {
   const {
@@ -24,6 +27,8 @@ export const PhonesPage = () => {
     isLoading,
     phones,
     isError,
+    prevSearch,
+    setPrevSearch,
   } = useProducts();
   const sortedPhones = SortProducts(phones, sort, query);
   const totalLength = sortedPhones.length;
@@ -33,6 +38,7 @@ export const PhonesPage = () => {
   const productsForCurrentPage = sortedPhones.slice(
     startIndex, startIndex + perPageToNum,
   );
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const renderContext = () => {
     if (!isLoading && phones.length === 0) {
@@ -48,19 +54,27 @@ export const PhonesPage = () => {
     }
 
     return (
-      <>
-        <ProductList productsForCurrentPage={productsForCurrentPage} />
-
-        {pageCount.length > 1 && (
-          <Pagination
-            currentPage={page}
-            pageCount={pageCount}
-            totalLength={totalLength}
-          />
-        )}
-      </>
+      <ProductList productsForCurrentPage={productsForCurrentPage} />
     );
   };
+
+  useEffect(() => {
+    if (query) {
+      setSearchParams(getSearchWith(searchParams, { page: null }));
+    }
+
+    if (!query && sort === prevSearch.sort && perPage === prevSearch.perPage) {
+      setSearchParams(getSearchWith(
+        searchParams, { page: prevSearch.page.toString() },
+      ));
+    }
+  }, [query, sort, perPage]);
+
+  useEffect(() => {
+    if (!query) {
+      setPrevSearch({ page, sort, perPage });
+    }
+  }, [query, sort, perPage, page]);
 
   return (
     <section className="page">
@@ -92,6 +106,14 @@ export const PhonesPage = () => {
       ) : (
         <div className="page__main-container">
           {renderContext()}
+
+          {pageCount.length > 1 && (
+            <Pagination
+              currentPage={page}
+              pageCount={pageCount}
+              totalLength={totalLength}
+            />
+          )}
         </div>
       )}
     </section>

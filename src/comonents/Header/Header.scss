@@ -11,7 +11,7 @@
   }
 
   &__logo-container {
-    padding: 20px 64px 20px 24px;
+    padding: 20px 44px 20px 24px;
   }
 
   &__search-container {
@@ -20,9 +20,14 @@
     width: 327px;
     padding: 24px;
     border-left: 1px solid $elements;
+    cursor: text;
 
     &:hover {
       background-color: $hover;
+
+      .header__search {
+        background-color: $hover;
+      }
     }
   }
 
@@ -41,6 +46,6 @@
 
   &__clear-button {
     border: none;
-    background-color: $white;
+    background-color: inherit;
   }
 }

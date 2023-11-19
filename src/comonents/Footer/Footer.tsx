@@ -13,6 +13,7 @@ export const Footer = () => {
     <footer className="footer">
       <Link
         to="/"
+        title="Back to home page"
         className="icon icon--logo"
         onClick={handleButtonClick}
       />

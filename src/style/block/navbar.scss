@@ -1,35 +1,33 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  gap: 64px;
-
-  &__container {
-    position: relative;
-    padding-top: 20px;
-
-    &--icons {
-      padding: 0;
-      border-left: 1px solid $elements;
-
-      &:hover {
-        background-color: $hover;
-      }
-    }
-  }
+  gap: 24px;
 
   &__link {
-    color: $secondary;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    height: min-content;
 
-    &--active {
+    &:hover > .navbar__item {
+      color: $primary;
+    }
+
+    &--active > .navbar__item {
       color: $primary;
 
       &::after {
+        position: absolute;
+        top: 61px;
+        left: 20px;
+        right: 20px;
+        content: "";
+        height: 3px;
+        background-color: $primary;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      &--icon::after {
         position: absolute;
         top: 61px;
         left: -1px;
@@ -43,13 +41,32 @@
     }
   }
 
-  &__icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
+  &__item {
+    padding: 28px 20px 24px;
+    color: $secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    vertical-align: middle;
     position: relative;
+
+    &--icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 63px;
+      padding: 0;
+      position: relative;
+      border-left: 1px solid $elements;
+
+      &:hover {
+        background-color: $hover;
+      }
+    }
   }
 
   &__quantity {

@@ -37,4 +37,9 @@
     flex-direction: column;
     gap: 8px;
   }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    transition: all 0.2s ease;
+  }
 }

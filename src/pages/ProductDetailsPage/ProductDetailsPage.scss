@@ -9,6 +9,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
+    & > a:hover {
+      color: $secondary;
+    }
   }
 
   &__title {
@@ -35,7 +39,7 @@
     border: 1px solid $elements;
 
     &--selected {
-      border-color: $primary;
+      border-color: $secondary;
     }
 
     &:hover {

@@ -14,6 +14,7 @@
     background-color: $white;
     border: 1px solid $icons;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 
     &--disabled {
       border-color: $elements;

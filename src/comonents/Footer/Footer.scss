@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 116px 152px 36px;
+  padding: 112px 152px 32px;
 
   &__link-container {
     gap: 64px;
@@ -24,6 +24,7 @@
     height: 32px;
     border: 1px solid $icons;
     background-color: $white;
+    transition: all 0.3s ease-in-out;
   }
 
   &__button:hover {

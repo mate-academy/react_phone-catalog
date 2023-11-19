@@ -20,6 +20,7 @@
     border: 1px solid $icons;
     box-sizing: border-box;
     background-color: $white;
+    transition: all 0.3s ease;
   }
 
   &__arrow:hover {

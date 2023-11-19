@@ -19,7 +19,7 @@ export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isCartPage = location.pathname === '/cart';
-  const isProductDetailsPage = location.pathname === `/phones/:${selectedProductId}`;
+  const isProductDetailsPage = location.pathname === `/phones/${selectedProductId}`;
   const getPlaceholderText = location.pathname.split('/')[1];
 
   const getLinkClass = (
@@ -60,36 +60,36 @@ export const Header = () => {
     <header className="header">
       <div className="header__container">
         <div className="header__logo-container">
-          <NavLink to="/">
+          <NavLink to="/" title="Back to home page">
             <span className="icon icon--logo" />
           </NavLink>
         </div>
 
         {!isCartPage && (
           <nav className="navbar">
-            <div className="navbar__container">
-              <NavLink to="/" className={getLinkClass}>
+            <NavLink to="/" className={getLinkClass}>
+              <p className="navbar__item">
                 Home
-              </NavLink>
-            </div>
+              </p>
+            </NavLink>
 
-            <div className="navbar__container">
-              <NavLink to="/phones" className={getLinkClass}>
+            <NavLink to="/phones" className={getLinkClass}>
+              <p className="navbar__item">
                 Phones
-              </NavLink>
-            </div>
+              </p>
+            </NavLink>
 
-            <div className="navbar__container">
-              <NavLink to="/tablets" className={getLinkClass}>
+            <NavLink to="/tablets" className={getLinkClass}>
+              <p className="navbar__item">
                 Tablets
-              </NavLink>
-            </div>
+              </p>
+            </NavLink>
 
-            <div className="navbar__container">
-              <NavLink to="/accessories" className={getLinkClass}>
+            <NavLink to="/accessories" className={getLinkClass}>
+              <p className="navbar__item">
                 Accessories
-              </NavLink>
-            </div>
+              </p>
+            </NavLink>
           </nav>
         )}
       </div>
@@ -122,38 +122,34 @@ export const Header = () => {
         )}
 
         {!isCartPage && (
-          <div className="navbar__container navbar__container--icons">
-            <NavLink
-              to="/favourites"
-              className={getLinkClass}
-            >
-              <div className="navbar__icon-container">
-                <span className="icon icon--favourites" />
-                {favourites.length > 0 && (
-                  <span className="navbar__quantity">
-                    {favourites.length}
-                  </span>
-                )}
-              </div>
-            </NavLink>
-          </div>
-        )}
-
-        <div className="navbar__container navbar__container--icons">
           <NavLink
-            to="/cart"
+            to="/favourites"
             className={getLinkClass}
           >
-            <div className="navbar__icon-container">
-              <span className="icon icon--cart" />
-              {carts.length > 0 && (
+            <div className="navbar__item navbar__item--icon">
+              <span className="icon icon--favourites" />
+              {favourites.length > 0 && (
                 <span className="navbar__quantity">
-                  {carts.length}
+                  {favourites.length}
                 </span>
               )}
             </div>
           </NavLink>
-        </div>
+        )}
+
+        <NavLink
+          to="/cart"
+          className={getLinkClass}
+        >
+          <div className="navbar__item navbar__item--icon">
+            <span className="icon icon--cart" />
+            {carts.length > 0 && (
+              <span className="navbar__quantity">
+                {carts.length}
+              </span>
+            )}
+          </div>
+        </NavLink>
       </div>
     </header>
   );

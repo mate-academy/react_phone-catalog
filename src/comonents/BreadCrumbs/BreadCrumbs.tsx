@@ -14,7 +14,11 @@ export const BreadCrumbs: React.FC<Props> = ({ linkName }) => {
 
       <span className="icon icon--arrow-dis icon--next" />
 
-      <p className="text text--small text--gray">{linkName}</p>
+      <p
+        className="text text--small text--gray"
+      >
+        {linkName}
+      </p>
     </div>
   );
 };

@@ -1,1 +1,7 @@
 @import "./style/index.scss";
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

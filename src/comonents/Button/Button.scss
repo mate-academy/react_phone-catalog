@@ -10,20 +10,26 @@
     color: $white;
     width: 176px;
     height: 40px;
+    transition: all 0.3s ease-in-out;
 
     &--details {
       width: 263px;
       height: 48px;
     }
 
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      transform: scale(105%);
+    }
+
     &--selected {
       border: 1px solid $elements;
       background-color: $white;
       color: $green;
-    }
 
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      &:hover {
+        border-color: $primary;
+      }
     }
   }
 
@@ -35,6 +41,7 @@
     border: 1px solid $icons;
     width: 40px;
     height: 40px;
+    transition: all 0.3s ease-in-out;
 
     &--details {
       width: 48px;
@@ -43,6 +50,8 @@
 
     &:hover {
       border-color: $primary;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      transform: scale(105%);
     }
   }
 }

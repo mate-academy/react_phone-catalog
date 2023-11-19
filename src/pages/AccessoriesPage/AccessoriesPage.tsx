@@ -48,19 +48,7 @@ export const AccessoriesPage = () => {
     }
 
     return (
-      <>
-        <ProductList
-          productsForCurrentPage={productsForCurrentPage}
-        />
-
-        {pageCount.length > 1 && (
-          <Pagination
-            currentPage={page}
-            pageCount={pageCount}
-            totalLength={totalLength}
-          />
-        )}
-      </>
+      <ProductList productsForCurrentPage={productsForCurrentPage} />
     );
   };
 
@@ -94,6 +82,14 @@ export const AccessoriesPage = () => {
       ) : (
         <div className="page__main-container">
           {renderContext()}
+
+          {pageCount.length > 1 && (
+            <Pagination
+              currentPage={page}
+              pageCount={pageCount}
+              totalLength={totalLength}
+            />
+          )}
         </div>
       )}
     </section>

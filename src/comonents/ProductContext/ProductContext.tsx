@@ -10,6 +10,8 @@ import { getAccessories } from '../api/accessories';
 import { ProductDeatails } from '../../type/ProductDetails';
 import { useLocalStorage } from '../../helpers/localStorage/useLocalStorage';
 import { fetchProducts, fetchDetails } from '../../helpers/fetch/fetchClient';
+import { filterProductsById }
+  from '../../helpers/functions/sortHelperFunctions';
 
 type Props = {
   children: React.ReactNode;
@@ -49,6 +51,16 @@ type ProductsContextProps = {
     productsToUpdare: Product[], productToCheck: Product) => Product[],
   isProductNotFound: boolean;
   isError: string,
+  prevSearch: {
+    sort: string,
+    page: number,
+    perPage: string,
+  },
+  setPrevSearch: (prevSearch: {
+    sort: string,
+    page: number,
+    perPage: string,
+  }) => void,
 };
 
 export const ProductsContext = React.createContext<ProductsContextProps>({
@@ -119,6 +131,12 @@ export const ProductsContext = React.createContext<ProductsContextProps>({
   getArrayUpdates: () => [],
   isProductNotFound: false,
   isError: '',
+  prevSearch: {
+    sort: '',
+    page: 1,
+    perPage: '',
+  },
+  setPrevSearch: () => { },
 });
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
@@ -249,6 +267,11 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const perPage = searchParams.get('perPage') || '16';
   const query = searchParams.get('query') || '';
   const itemsPerPage = 4;
+  const [prevSearch, setPrevSearch] = useState({
+    sort: '',
+    page: 1,
+    perPage: '',
+  });
 
   function getArrayLength(array: Product[]) {
     return array.length - itemsPerPage;
@@ -302,9 +325,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     let updatedProducts = [];
 
     if (productIsAdded) {
-      updatedProducts = productsToUpdare.filter(
-        product => product.id !== productToCheck.id,
-      );
+      updatedProducts = filterProductsById(productsToUpdare, productToCheck.id);
     } else {
       updatedProducts = [...productsToUpdare, productToCheck];
     }
@@ -346,6 +367,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     getArrayUpdates,
     isProductNotFound,
     isError,
+    prevSearch,
+    setPrevSearch,
   };
 
   return (

@@ -18,7 +18,7 @@
     gap: 8px;
   }
 
-  &__color-button {
+  &__color-label {
     position: relative;
     width: 32px;
     height: 32px;
@@ -27,7 +27,7 @@
     background-color: $white;
 
     &:hover {
-      border-color: $secondary;
+      border-color: $primary;
     }
 
     &--selected {
@@ -60,10 +60,7 @@
   &__capacity {
     background-color: $white;
     color: $primary;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
+
     text-transform: uppercase;
     padding: 7px 8px 4px;
     border: 1px solid $icons;
@@ -77,5 +74,9 @@
       background-color: $primary;
       color: $white;
     }
+  }
+
+  &__input {
+    display: none;
   }
 }
