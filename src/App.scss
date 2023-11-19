@@ -152,10 +152,11 @@
   margin: 40px 0 137px;
 }
 
-.slider {
+.slider-box {
   display: flex;
   height: 432px;
   gap: 16px;
+  margin-bottom: 8px;
 
   &__button {
     display: flex;
@@ -170,7 +171,6 @@
   }
 
   &__container {
-    margin-bottom: 8px;
     width: 1040px;
     background-repeat: no-repeat;
     background-position: center;

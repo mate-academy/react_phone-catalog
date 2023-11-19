@@ -32,46 +32,46 @@ export const Home = () => {
   return (
     <div className="home-page">
       <div className="container">
-        <section className="slider-box">
-          <div className="slider">
+        <section className="slider">
+          <div className="slider-box">
             <button
               type="button"
-              className="slider__button previous"
+              className="slider-box__button previous"
               onClick={handleLeftShift}
             >
-              <div className="slider__arrow arrow-left icon" />
+              <div className="slider-box__arrow arrow-left icon" />
             </button>
-            <div className={`slider__container item-${selectedBanner}`} />
+            <div className={`slider-box__container item-${selectedBanner}`} />
             <button
               type="button"
-              className="slider__button next"
+              className="slider-box__button next"
               onClick={handleRightShift}
             >
-              <div className="slider__arrow arrow-right icon" />
+              <div className="slider-box__arrow arrow-right icon" />
             </button>
           </div>
-          <div className="slider__dots">
+          <div className="slider-box__dots">
             <button
               type="button"
               className={classNames(
-                'slider__dot',
-                { 'slider__dot--active': selectedBanner === 1 },
+                'slider-box__dot',
+                { 'slider-box__dot--active': selectedBanner === 1 },
               )}
               onClick={() => setSelectedBanner(1)}
             />
             <button
               type="button"
               className={classNames(
-                'slider__dot',
-                { 'slider__dot--active': selectedBanner === 2 },
+                'slider-box__dot',
+                { 'slider-box__dot--active': selectedBanner === 2 },
               )}
               onClick={() => setSelectedBanner(2)}
             />
             <button
               type="button"
               className={classNames(
-                'slider__dot',
-                { 'slider__dot--active': selectedBanner === 3 },
+                'slider-box__dot',
+                { 'slider-box__dot--active': selectedBanner === 3 },
               )}
               onClick={() => setSelectedBanner(3)}
             />
