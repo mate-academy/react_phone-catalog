@@ -1155,11 +1155,6 @@ video {
   border-color: rgb(49 50 55 / var(--tw-border-opacity));
 }
 
-.border-\[\#c4c4c4\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(196 196 196 / var(--tw-border-opacity));
-}
-
 .border-\[\#ddd\] {
   --tw-border-opacity: 1;
   border-color: rgb(221 221 221 / var(--tw-border-opacity));
@@ -1459,6 +1454,10 @@ iframe {
   src: url("./fonts/Mont-Bold.otf");
 
   font-weight: 700;
+}
+
+.hover\:cursor-not-allowed:hover {
+  cursor: not-allowed;
 }
 
 .hover\:cursor-pointer:hover {

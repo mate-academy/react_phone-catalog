@@ -1,30 +1,56 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
-import React, { Fragment, useContext, useState } from 'react';
+import React, {
+  Fragment, useContext, useEffect, useState,
+} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { PhoneType } from '../Types/PhoneType';
-import { baseUrl } from '../api/api';
+import { api, baseUrl } from '../api/api';
 import { TextButton } from '../Components/TextButton';
 import { FavouritesButton } from '../Components/FavouritesButton';
 import { getHash } from '../utils/hash';
-import { ProductCarousel } from '../Components/ProductCarousel';
+import { ProductsSlider } from '../Components/ProductsSlider';
 import { appContext } from '../Contexts/AppContext';
 import { ProductType } from '../Types/ProductType';
 
 type Props = {
   currentItem: PhoneType;
-  currentProdct: ProductType;
 };
 
-export const ItemCard: React.FC<Props> = ({ currentItem, currentProdct }) => {
-  const { cartItems, setCartItems } = useContext(appContext);
+export const ItemCard: React.FC<Props> = ({ currentItem }) => {
+  const {
+    cartItems, setCartItems, favorites, setFavorites,
+  }
+    = useContext(appContext);
   const { itemId, catalogueId } = useParams();
   const [isLiked, setIsLiked] = useLocalStorage(currentItem.id, false);
-  const [currentImage, setCurrentImage] = useState(currentItem.images[0]);
+  const [showcaseImage, setShowcaseImage] = useState(currentItem.images[0]);
+  const [suggestedProducts, setSuggestedProducts] = useState<ProductType[]>([]);
+  const [product, setProduct] = useState<ProductType | null>(null);
+
+  const toggleFavorite = () => {
+    if (!product) {
+      return;
+    }
+
+    if (isLiked) {
+      setFavorites(
+        favorites.filter(favProduct => favProduct.itemId !== product.itemId),
+      );
+      setIsLiked(false);
+    } else {
+      setFavorites([...favorites, product]);
+      setIsLiked(true);
+    }
+  };
 
   const addToCart = () => {
+    if (!product) {
+      return;
+    }
+
     const cartItemIndex = cartItems.findIndex(
       item => item.product.itemId === currentItem.id,
     );
@@ -35,9 +61,17 @@ export const ItemCard: React.FC<Props> = ({ currentItem, currentProdct }) => {
       newItems[cartItemIndex].quantity += 1;
       setCartItems([...newItems]);
     } else {
-      setCartItems([...cartItems, { quantity: 1, product: currentProdct }]);
+      setCartItems([...cartItems, { quantity: 1, product }]);
     }
   };
+
+  useEffect(() => {
+    const prodictsResponse = api.getSuggestedProducts();
+    const productResponse = api.getProductById(currentItem.id);
+
+    prodictsResponse.then(setSuggestedProducts);
+    productResponse.then(setProduct);
+  }, []);
 
   return (
     <div className="col-span-full">
@@ -63,8 +97,13 @@ export const ItemCard: React.FC<Props> = ({ currentItem, currentProdct }) => {
                 return (
                   <button
                     type="button"
-                    className="flex h-20 w-20 items-center justify-center border border-[#c4c4c4]"
-                    onClick={() => setCurrentImage(url)}
+                    className={classNames(
+                      'flex h-20 w-20 items-center justify-center border border-Elements transition-all hover:border-Primary',
+                      {
+                        'border-Primary': url === showcaseImage,
+                      },
+                    )}
+                    onClick={() => setShowcaseImage(url)}
                     key={url}
                   >
                     <img
@@ -79,7 +118,7 @@ export const ItemCard: React.FC<Props> = ({ currentItem, currentProdct }) => {
           <div className="flex h-[464px] w-[464px] items-center justify-center">
             <img
               className="h-[442px] w-[442px] object-contain"
-              src={`${baseUrl}/_new/${currentImage}`}
+              src={`${baseUrl}/_new/${showcaseImage}`}
               alt=""
             />
           </div>
@@ -161,7 +200,7 @@ export const ItemCard: React.FC<Props> = ({ currentItem, currentProdct }) => {
               <TextButton onClick={addToCart}>Add to cart</TextButton>
 
               <div className="h-12 w-12 shrink-0">
-                <FavouritesButton active={isLiked} onClick={setIsLiked} />
+                <FavouritesButton active={isLiked} onClick={toggleFavorite} />
               </div>
             </div>
 
@@ -263,7 +302,7 @@ export const ItemCard: React.FC<Props> = ({ currentItem, currentProdct }) => {
 
       <hr className="h-20 border-0" />
 
-      <ProductCarousel title="You may also like" />
+      <ProductsSlider products={suggestedProducts} title="You may also like" />
     </div>
   );
 };

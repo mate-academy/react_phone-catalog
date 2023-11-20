@@ -4,28 +4,138 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 import Select, { StylesConfig, ClassNamesConfig } from 'react-select';
 
 import classNames from 'classnames';
-import { useContext, useEffect } from 'react';
-import { appContext, OptionType } from '../Contexts/AppContext';
+import { useContext, useEffect, useState } from 'react';
+import { appContext } from '../Contexts/AppContext';
+import type {
+  OptionPaginationType,
+  OptionSortType,
+} from '../Contexts/AppContext';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductCard } from '../Components/ProductCard';
-import { ArrowButton } from '../Components/ArrowButton';
 import { scrollToTop } from '../utils/scrollToTop';
-import { PaginationButton } from '../Components/PaginationButton';
+import { Pagintaion } from '../Components/Pagintaion';
+import { PaginationHelper } from '../utils/PaginationHelper';
 
-const options: OptionType[] = [
-  { value: 8, label: '8' },
-  { value: 16, label: '16' },
-  { value: 32, label: '32' },
+const paginationOptions: OptionPaginationType[] = [
+  { value: '8', label: '8' },
+  { value: '16', label: '16' },
+  { value: '32', label: '32' },
+  { value: 'All', label: 'All' },
+];
+
+const sortOptions: OptionSortType[] = [
+  { value: 'year', label: 'Newest' },
+  { value: 'name', label: 'Alphabetically' },
+  { value: 'price', label: 'Cheapest' },
 ];
 
 export const Catalogue = () => {
   const {
-    products, perPage, setPerPage, currentItem,
+    visibleProducts,
+    categoryProducts,
+    currentItem,
+    setSearchParams,
+    searchParams,
   } = useContext(appContext);
+  const currentPage = searchParams.get('page');
+  const perPage = searchParams.get('per-page');
+  const sortBy = searchParams.get('sort-by');
   const { catalogueId, itemId } = useParams();
+  const [sortOption, setSortOption] = useState<OptionSortType>({
+    value: sortBy || 'year',
+    label: 'Newest',
+  });
+  const [paginationOption, setPaginationOption]
+    = useState<OptionPaginationType>({
+      value: perPage || '8',
+      label: perPage || '8',
+    });
 
-  const handleOptionChange = (item: unknown) => {
-    setPerPage(item as OptionType);
+  const pagination = new PaginationHelper(
+    visibleProducts,
+    +paginationOption.value,
+  );
+
+  const pages = Array.from({ length: pagination.pageCount() })
+    .fill(0)
+    .map((_, i) => i + 1);
+
+  const handlePagintaionChange = (item: OptionPaginationType) => {
+    setSearchParams(params => {
+      params.set('per-page', item.value.toString());
+
+      return params;
+    });
+
+    setPaginationOption(() => {
+      switch (item.value) {
+        case '8': {
+          return {
+            value: item.value,
+            label: item.value,
+          };
+        }
+
+        case '16': {
+          return {
+            value: item.value,
+            label: item.value,
+          };
+        }
+
+        case '32': {
+          return {
+            value: item.value,
+            label: item.value,
+          };
+        }
+
+        default:
+          return {
+            value: '8',
+            label: '8',
+          };
+      }
+    });
+  };
+
+  const handleSortChange = (item: OptionSortType) => {
+    setSearchParams(params => {
+      params.set('sort-by', item.value.toString());
+
+      return params;
+    });
+
+    setSortOption(() => {
+      switch (item.value) {
+        case 'year': {
+          return {
+            value: item.value,
+            label: 'Newest',
+          };
+        }
+
+        case 'name': {
+          return {
+            value: item.value,
+            label: 'Alphabetically',
+          };
+        }
+
+        case 'price': {
+          return {
+            value: item.value,
+            label: 'Cheapest',
+          };
+        }
+
+        default:
+          return {
+            value: item.value,
+            label: 'Newest',
+          };
+      }
+    });
   };
 
   const customStyles: StylesConfig = {
@@ -51,7 +161,7 @@ export const Catalogue = () => {
   };
 
   const customClasses: ClassNamesConfig = {
-    menuList: () => `text-Secondary border py-2 border-Elements bg-white  ${typographyStyle.bodyText}`,
+    menuList: () => `text-Secondary border py-2 border-Elements bg-white ${typographyStyle.bodyText}`,
     option: state => classNames(
       'flex items-center h-8 hover:text-Primary hover:bg-Background',
       {
@@ -65,7 +175,37 @@ export const Catalogue = () => {
 
   useEffect(() => {
     scrollToTop();
-  }, []);
+
+    if (!currentPage) {
+      setSearchParams(params => {
+        params.set('page', '1');
+
+        return params;
+      });
+    }
+
+    if (!perPage) {
+      setPaginationOption({
+        value: '8',
+        label: '8',
+      });
+    }
+
+    if (!sortBy) {
+      setSortOption({
+        value: 'year',
+        label: 'Newest',
+      });
+    }
+  }, [searchParams]);
+
+  useEffect(() => {
+    setSearchParams(params => {
+      params.set('page', '1');
+
+      return params;
+    });
+  }, [perPage]);
 
   return (
     <>
@@ -106,7 +246,9 @@ export const Catalogue = () => {
           <p
             className={`col-span-full text-Secondary ${typographyStyle.bodyText}`}
           >
-            {`${products.length} ${products.length === 1 ? 'model' : 'models'}`}
+            {`${categoryProducts.length} ${
+              categoryProducts.length === 1 ? 'model' : 'models'
+            }`}
           </p>
 
           <hr className="col-span-full mb-10 border-0" />
@@ -123,14 +265,17 @@ export const Catalogue = () => {
                 </label>
 
                 <Select
+                  value={sortOption}
+                  isSearchable={false}
                   unstyled
                   aria-labelledby="aria-label"
                   inputId="aria-example-input"
                   styles={customStyles}
                   className={`h-10 w-[176px] appearance-none text-Primary ${typographyStyle.button}`}
                   classNames={customClasses}
-                  defaultValue={{ value: 'newest', label: 'Newest' }}
-                  options={[{ value: 'newest', label: 'Newest' }]}
+                  defaultValue={sortOptions[0]}
+                  options={sortOptions}
+                  onChange={e => handleSortChange(e as OptionSortType)}
                 />
               </div>
 
@@ -144,16 +289,17 @@ export const Catalogue = () => {
                 </label>
 
                 <Select
-                  value={perPage}
+                  value={paginationOption}
+                  isSearchable={false}
                   unstyled
                   aria-labelledby="aria-label"
                   inputId="aria-example-input"
                   styles={customStyles}
                   className={`h-10 w-[128px] appearance-none text-Primary ${typographyStyle.button}`}
                   classNames={customClasses}
-                  onChange={handleOptionChange}
-                  defaultValue={options[0]}
-                  options={options}
+                  onChange={e => handlePagintaionChange(e as OptionPaginationType)}
+                  defaultValue={paginationOptions[0]}
+                  options={paginationOptions}
                 />
               </div>
             </div>
@@ -161,26 +307,27 @@ export const Catalogue = () => {
 
           <hr className="col-span-full mb-6 border-0" />
 
+          {currentPage && perPage && !Number.isNaN(+perPage) && (
+            <Pagintaion currentPage={+currentPage} pages={pages} />
+          )}
+
+          <hr className="col-span-full mb-6 border-0" />
+
           <div className="col-span-full grid grid-cols-4 gap-4">
-            {!!products.length
-              && products
-                .sort((a, b) => b.year - a.year)
-                .slice(0, perPage.value)
+            {!!visibleProducts
+              && currentPage
+              && perPage
+              && visibleProducts
+                .slice(
+                  (+currentPage - 1) * +perPage,
+                  (+currentPage - 1) * +perPage + +perPage,
+                )
                 .map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
           </div>
 
           <hr className="col-span-full mb-10 border-0" />
-
-          <div className="col-span-full flex justify-center gap-x-2">
-            <ArrowButton direction="left" />
-
-            <PaginationButton active>1</PaginationButton>
-            <PaginationButton>2</PaginationButton>
-
-            <ArrowButton direction="right" />
-          </div>
         </>
       )}
 

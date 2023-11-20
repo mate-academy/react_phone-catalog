@@ -1,15 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { ArrowButton } from './ArrowButton';
 import { ProductCard } from './ProductCard';
-import { appContext } from '../Contexts/AppContext';
 import { typographyStyle } from '../CustomStyles/Typography';
+import { ProductType } from '../Types/ProductType';
 
 type Props = {
   title?: string;
+  products: ProductType[];
 };
 
-export const ProductCarousel: React.FC<Props> = ({ title = '' }) => {
-  const { products } = useContext(appContext);
+export const ProductsSlider: React.FC<Props> = ({ title = '', products }) => {
   const [index, setIndex] = useState(0);
   const pages = 3;
   const perPage = 4;

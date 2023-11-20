@@ -38,13 +38,20 @@ export const Favourites = () => {
 
       <hr className="col-span-full mb-6 border-0" />
 
-      <div className="col-span-full grid grid-cols-4 gap-4">
-        {!!favorites.length
-          && favorites
+      {!favorites.length ? (
+        <div className="col-span-full">
+          Products you chose as favourites will appear here
+        </div>
+      ) : (
+        <div className="col-span-full grid grid-cols-4 gap-4">
+          {favorites
             .sort((a, b) => b.year - a.year)
             .slice(0, 5)
-            .map(product => <ProductCard key={product.id} product={product} />)}
-      </div>
+            .map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+      )}
     </>
   );
 };

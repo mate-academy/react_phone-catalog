@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { baseUrl } from '../api/api';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductType } from '../Types/ProductType';
@@ -59,15 +60,19 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       </button>
 
       <div className="flex h-20 w-20 items-center justify-center">
-        <img
-          className="h-16 w-16 object-contain"
-          src={`${baseUrl}/_new/${product.image}`}
-          alt=""
-        />
+        <Link to={`/catalogue/${product.category}/${product.itemId}`}>
+          <img
+            className="h-16 w-16 object-contain"
+            src={`${baseUrl}/_new/${product.image}`}
+            alt=""
+          />
+        </Link>
       </div>
 
       <div className="flex min-h-[42px] grow">
-        <p>{product.name}</p>
+        <Link to={`/catalogue/${product.category}/${product.itemId}`}>
+          {product.name}
+        </Link>
       </div>
 
       <div className="flex">

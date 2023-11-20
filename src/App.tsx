@@ -32,11 +32,11 @@ const App = () => {
 
               <StylishNavButton to="catalogue/phones">phones</StylishNavButton>
 
-              <StylishNavButton disabled to="catalogue/tablets">
+              <StylishNavButton to="catalogue/tablets">
                 tablets
               </StylishNavButton>
 
-              <StylishNavButton disabled to="catalogue/accessories">
+              <StylishNavButton to="catalogue/accessories">
                 accessories
               </StylishNavButton>
 

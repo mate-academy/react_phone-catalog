@@ -17,8 +17,8 @@ import { Favourites } from './pages/Favourites';
 import './output.css';
 
 ReactDOM.render(
-  <AppContextProvider>
-    <Router>
+  <Router>
+    <AppContextProvider>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
@@ -31,7 +31,7 @@ ReactDOM.render(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </Router>
-  </AppContextProvider>,
+    </AppContextProvider>
+  </Router>,
   document.getElementById('root'),
 );

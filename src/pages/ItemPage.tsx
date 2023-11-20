@@ -9,30 +9,22 @@ import { Loader } from '../Components/Loader';
 
 import { scrollToTop } from '../utils/scrollToTop';
 import { ItemCard } from './ItemCard';
-import { ProductType } from '../Types/ProductType';
 
 export const ItemPage = () => {
   const { itemId } = useParams();
   const { currentItem, setCurrentItem } = useContext(appContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState<ProductType | null>(
-    null,
-  );
 
   const fetchItem = async () => {
     setCurrentItem(null);
-    setCurrentProduct(null);
     setIsLoading(true);
 
     try {
       const data = await api.getInfo.phone(itemId);
-      const product = await api.getNewPhoneById(itemId);
 
       setCurrentItem(data);
-      setCurrentProduct(product);
     } catch {
       setCurrentItem(null);
-      setCurrentProduct(null);
     } finally {
       setIsLoading(false);
     }
@@ -46,10 +38,10 @@ export const ItemPage = () => {
 
   return (
     <>
-      {isLoading || !currentItem || !currentProduct ? (
+      {isLoading || !currentItem ? (
         <Loader />
       ) : (
-        <ItemCard currentItem={currentItem} currentProdct={currentProduct} />
+        <ItemCard currentItem={currentItem} />
       )}
     </>
   );
