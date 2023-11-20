@@ -37,6 +37,13 @@ export const HomePage = () => {
           title="Hot prices"
         />
       </section>
+
+      <section className="Page-Section">
+        <ProductsSlider
+          products={getBrandNewProducts}
+          title="Brand new models"
+        />
+      </section>
     </>
   );
 };
