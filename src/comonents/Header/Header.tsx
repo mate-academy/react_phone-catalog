@@ -1,8 +1,8 @@
 import classNames from 'classnames';
+import debounce from 'lodash.debounce';
 
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
-import debounce from 'lodash.debounce';
 import { useProducts } from '../ProductContext';
 import { getSearchWith } from '../../helpers/utils/getSearchWith';
 import { SearchParams } from '../../type/SearchParams';
@@ -15,11 +15,14 @@ export const Header = () => {
     favourites,
     selectedProductId,
     query,
+    links,
   } = useProducts();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isCartPage = location.pathname === '/cart';
-  const isProductDetailsPage = location.pathname === `/phones/${selectedProductId}`;
+  const isProductDetailsPage = links.some(
+    link => location.pathname === `/${link}/${selectedProductId}`,
+  );
   const getPlaceholderText = location.pathname.split('/')[1];
 
   const getLinkClass = (
@@ -95,7 +98,10 @@ export const Header = () => {
       </div>
 
       <div className="header__container">
-        {!isCartPage && !isHomePage && !isProductDetailsPage && (
+        {!isCartPage
+        && !isHomePage
+        && !isProductDetailsPage
+        && (
           <label className="header__search-container">
             <input
               type="search"

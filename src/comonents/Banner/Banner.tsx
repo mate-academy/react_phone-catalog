@@ -9,7 +9,7 @@ import './Banner.scss';
 export const Banner = () => {
   const { links } = useProducts();
   const [activeSlide, setActiveSlide] = useState(0);
-  const totalSlides = links.length;
+  const totalSlides = links.slice(0, 3).length;
 
   const handleButtonClick = (action: 'next' | 'prev') => {
     if (action === 'next') {
@@ -45,27 +45,28 @@ export const Banner = () => {
           <span className="icon icon--arrow icon--prev" />
         </button>
 
-        <div className="banner__carousel">
-          {links.map((link, index) => (
-            <Link
-              key={link}
-              to={`/${link}`}
-              className={`banner__link
+        <ul className="banner__carousel">
+          {links.slice(0, 3).map((link, index) => (
+            <li key={link}>
+              <Link
+                to={`/${link}`}
+                className={`banner__link
               ${index === activeSlide ? 'banner__link--active' : ''}
               ${index === activeSlide + 1 ? 'banner__link--next' : ''}
               ${index === activeSlide - 1 ? 'banner__link--prev' : ''}
               ${activeSlide === 0 && index === totalSlides - 1 ? 'banner__link--prev' : ''}
               ${activeSlide === totalSlides - 1 && index === 0 ? 'banner__link--next' : ''}
               `}
-            >
-              <img
-                className="banner__img"
-                src={`img/banner/banner-${link}.png`}
-                alt={`${link} banner`}
-              />
-            </Link>
+              >
+                <img
+                  className="banner__img"
+                  src={`img/banner/banner-${link}.png`}
+                  alt={`${link} banner`}
+                />
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <button
           type="button"

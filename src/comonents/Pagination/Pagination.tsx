@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { Link, useSearchParams } from 'react-router-dom';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { getSearchWith } from '../../helpers/utils/getSearchWith';
 
 import './Pagination.scss';
@@ -17,7 +17,7 @@ export const Pagination: React.FC<Props> = ({
   pageCount,
   totalLength,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [
     isPrevDisabled,
@@ -34,11 +34,11 @@ export const Pagination: React.FC<Props> = ({
     return [isPrevDisabledValue, isNextDisabledValue, isPrevValue, isNextValue];
   }, [currentPage, pageCount.length, totalLength]);
 
-  useEffect(() => {
-    if (isPrevDisabled) {
-      setSearchParams(getSearchWith(searchParams, { page: null }));
-    }
-  }, [isPrevDisabled]);
+  // useEffect(() => {
+  //   if (isPrevDisabled) {
+  //     setSearchParams(getSearchWith(searchParams, { page: null }));
+  //   }
+  // }, [isPrevDisabled]);
 
   return (
     <ul className="pagination" data-cy="pagination">

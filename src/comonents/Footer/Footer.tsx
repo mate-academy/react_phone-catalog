@@ -19,20 +19,26 @@ export const Footer = () => {
       />
 
       <div className="container footer__link-container">
-        <a
+        <Link
           className="text text--small text--gray"
-          href="https://github.com/Pa1eOrc/react_phone-catalog"
+          to="https://github.com/Pa1eOrc/react_phone-catalog"
           target="_blank"
           rel="noopener noreferrer"
         >
           Github
-        </a>
-        <a href="/#" className="text text--small text--gray">
+        </Link>
+        <Link
+          to="/"
+          className="text text--small text--gray"
+        >
           Contacts
-        </a>
-        <a href="/#" className="text text--small text--gray">
+        </Link>
+        <Link
+          to="/"
+          className="text text--small text--gray"
+        >
           Rights
-        </a>
+        </Link>
       </div>
 
       <div className="footer__button-container">

@@ -1,21 +1,20 @@
 import classNames from 'classnames';
 
-import { useState } from 'react';
 import { useProducts } from '../../comonents/ProductContext';
 import { Cart } from '../../comonents/Cart';
 import { getFilteredCarts } from '../../helpers/utils/getFilteredCart';
 import { Product } from '../../type/Product';
 import { getTotalPrice } from '../../helpers/utils/getTotalPrice';
-
-import './CartPage.scss';
 import { BackButton } from '../../comonents/BackButton';
 
+import './CartPage.scss';
+
 export const CartPage = () => {
-  const { setCarts } = useProducts();
+  const { setCarts, isMessage, setIsMessage } = useProducts();
   const { carts } = useProducts();
   const filteredCarts = getFilteredCarts(carts);
   const totalPrice = getTotalPrice(carts);
-  const [isMessage, setIsMessage] = useState(false);
+  // const [isMessage, setIsMessage] = useState(false);
 
   const handleCartAction = (
     id: string, action: 'add' | 'delete' | 'deleteAll',

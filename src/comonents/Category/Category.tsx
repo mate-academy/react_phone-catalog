@@ -48,7 +48,7 @@ export const Category = () => {
       </h1>
 
       <ul className="category__container">
-        {links.map(link => (
+        {links.slice(0, 3).map(link => (
           <li
             key={link}
             data-cy="categoryLinksContainer"

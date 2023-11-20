@@ -60,11 +60,11 @@
     left: 152px;
     right: 152px;
     height: 100px;
-    font-size: 30px;
     background-color: $red;
-    color: $white;
     border: 1px solid $white;
     opacity: 0;
+    font-size: 30px;
+    color: $white;
 
     &--active {
       opacity: 1;

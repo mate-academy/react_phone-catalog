@@ -59,6 +59,12 @@ export const PhonesPage = () => {
   };
 
   useEffect(() => {
+    if (page === 1) {
+      setSearchParams(getSearchWith(searchParams, { page: null }));
+    }
+  }, [page, searchParams]);
+
+  useEffect(() => {
     if (query) {
       setSearchParams(getSearchWith(searchParams, { page: null }));
     }

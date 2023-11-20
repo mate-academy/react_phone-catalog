@@ -28,6 +28,7 @@
 
     &:hover {
       border-color: $primary;
+      cursor: pointer;
     }
 
     &--selected {
@@ -67,6 +68,7 @@
 
     &:hover {
       border-color: $secondary;
+      cursor: pointer;
     }
 
     &--selected {

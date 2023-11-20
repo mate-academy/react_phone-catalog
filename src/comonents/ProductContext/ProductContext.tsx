@@ -61,6 +61,8 @@ type ProductsContextProps = {
     page: number,
     perPage: string,
   }) => void,
+  isMessage: boolean,
+  setIsMessage: (isMessage: boolean) => void,
 };
 
 export const ProductsContext = React.createContext<ProductsContextProps>({
@@ -137,6 +139,8 @@ export const ProductsContext = React.createContext<ProductsContextProps>({
     perPage: '',
   },
   setPrevSearch: () => { },
+  isMessage: false,
+  setIsMessage: () => {},
 });
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
@@ -149,8 +153,9 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const links = ['phones', 'tablets', 'accessories'];
+  const links = ['phones', 'tablets', 'accessories', 'favourites'];
   const [isError, setIsError] = useState('');
+  const [isMessage, setIsMessage] = useState(false);
 
   useEffect(() => {
     fetchProducts(
@@ -369,6 +374,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     isError,
     prevSearch,
     setPrevSearch,
+    isMessage,
+    setIsMessage,
   };
 
   return (

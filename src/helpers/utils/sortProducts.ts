@@ -1,7 +1,7 @@
 import { Product } from '../../type/Product';
 
 export function SortProducts(products: Product[], sort: string, query: string) {
-  let sortedProducts = [];
+  let sortedProducts: Product[] = [];
 
   switch (sort) {
     case 'age':
@@ -34,9 +34,14 @@ export function SortProducts(products: Product[], sort: string, query: string) {
   }
 
   if (query) {
-    sortedProducts = sortedProducts.filter(
-      product => product.name.toLowerCase().includes(query.toLowerCase()),
-    );
+    const queryArray = query.split(' ');
+
+    queryArray.forEach(queryValue => {
+      sortedProducts = sortedProducts.filter(
+        product => product.name.toLowerCase(
+        ).includes(queryValue.toLowerCase()),
+      );
+    });
   }
 
   return sortedProducts;
