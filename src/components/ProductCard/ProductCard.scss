@@ -1,0 +1,109 @@
+.product__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 272px;
+  padding: 24px 24px;
+  border: 1px solid #E2E6E9;
+
+  &--top {
+    position: relative;
+    &::after {
+      position: absolute;
+      bottom: -8px;
+      content: "";
+      background-color: #E2E6E9;
+      width: 100%;
+      height: 1px;
+    }
+  }
+
+  &--img {
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &--name {
+    font-family: 'Montserrat', sans-serif;
+    color: #313237;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 6px;
+    height: 42px;
+  }
+
+  &--price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+
+    &-total {
+      font-family: 'Montserrat', sans-serif;
+      color: #313237;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &-full {
+      font-family: 'Montserrat', sans-serif;
+      color: #89939A;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration: line-through;
+    }
+  }
+
+  &--desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+    color: #89939A;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 16px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-detail {
+      font-family: 'Montserrat', sans-serif;
+      color: #313237;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  &--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 24px;
+
+    &-cart {
+      text-decoration: none;
+      padding: 10px 48px;
+      background-color: #313237;
+      color: #fff;
+
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px
+    }
+  }
+}

@@ -1,8 +1,13 @@
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
 
-import App from './App';
+import { HashRouter as Router } from 'react-router-dom';
+import { App } from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
+export const Root = () => (
+  <Router>
+    <App />
+  </Router>
 );
+
+ReactDom.render(<Root />, document.getElementById('root'));

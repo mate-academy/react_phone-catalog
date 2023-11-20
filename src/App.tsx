@@ -1,8 +1,22 @@
 import './App.scss';
+import { Routes, Route } from 'react-router-dom';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { HomePage } from './pages/HomePage';
+import { Phones } from './pages/PhonesPage';
+import { TabletPage } from './pages/TabletPage';
+import { Accessories } from './pages/Accessories';
 
-const App = () => (
+export const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/phones" element={<Phones />} />
+      <Route path="/tablets" element={<TabletPage />} />
+      <Route path="/accessories" element={<Accessories />} />
+    </Routes>
+    <Footer />
   </div>
 );
 

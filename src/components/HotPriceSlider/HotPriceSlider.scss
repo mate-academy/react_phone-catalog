@@ -1,0 +1,51 @@
+.slider {
+  width: 1088px;
+  height: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__header {
+    font-family: 'Montserrat', sans-serif;
+    color: #313237;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+  }
+
+  &__slider {
+    position: relative;
+    width: 1088px;
+    height: 520px;
+    overflow: hidden;
+  }
+
+  &__line {
+    display: flex;
+    position: absolute;
+    left: 0;
+    gap: 16px;
+
+    width: 1088px;
+    transition: all ease 1s;
+  }
+}
