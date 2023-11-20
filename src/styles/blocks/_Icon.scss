@@ -1,0 +1,43 @@
+@import "../../styles/utils/";
+
+.Icon {
+  --icon-size: 32px;
+  height: var(--icon-size);
+  width: var(--icon-size);
+
+  display: block;
+
+  border: 1px solid $icon-placeholder;
+
+  transition: border-color $transition-duration;
+
+  background: no-repeat center;
+
+  &_heart {
+    background-image: url("../../images/icons/heart.svg");
+  }
+
+  &_cart {
+    background-image: url("../../images/icons/cart.svg");
+  }
+
+  &_arrow {
+    background-image: url("../../images/icons/arrow-right.svg");
+
+    &:disabled {
+      background-image: url("../../images/icons/arrow-right-disabled.svg");
+    }
+
+    &_left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:disabled {
+    border-color: $element;
+  }
+}
