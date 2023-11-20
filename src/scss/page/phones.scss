@@ -1,0 +1,35 @@
+.phonesPage {
+  &__listPhones {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__itemsAmount {
+    margin-top: 8px;
+    color: $gray-secondary;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: "Mont Regular", sans-serif;
+  }
+
+  &__wrapper {
+    margin-top: 25px;
+  }
+
+  &__dropDownContainer {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+}

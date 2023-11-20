@@ -1,0 +1,23 @@
+.navigation {
+  font-size: 12px;
+  font-style: normal;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $gray-secondary;
+    font-family: "Mont Bold", sans-serif;
+    padding-block: 24px;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}

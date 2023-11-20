@@ -1,0 +1,57 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__arrow {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons-placeholders;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &--disable {
+      cursor: not-allowed;
+      pointer-events: none;
+      text-decoration: none;
+      border-color: $gray-elements;
+    }
+  }
+
+  &__link {
+    box-sizing: border-box;
+    color: #000;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-elements;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &--active {
+      background: $gray-primary;
+      color: #fff;
+    }
+  }
+}

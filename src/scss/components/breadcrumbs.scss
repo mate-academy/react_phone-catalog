@@ -1,0 +1,27 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__crumb {
+    color: $gray-primary;
+    font-family: "Mont SemiBold", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+    display: block;
+
+    &--disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      text-decoration: none;
+      color: $gray-secondary;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

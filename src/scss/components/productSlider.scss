@@ -1,0 +1,39 @@
+.productSlider {
+  &__phoneListWrap {
+    overflow: hidden;
+  }
+
+  &__phoneList {
+    display: flex;
+    gap: 16px;
+    transition: transform 1200ms ease 0s;
+  }
+
+  &__topPart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__actionBlock {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons-placeholders;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--disabled {
+      border: 1px solid $gray-elements;
+      cursor: auto;
+    }
+  }
+
+}

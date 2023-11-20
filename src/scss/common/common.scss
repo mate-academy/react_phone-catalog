@@ -1,0 +1,41 @@
+.activeLink {
+  border-bottom: 3px solid $gray-primary;
+  color: $gray-primary;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.logo {
+  &__img {
+    width: 40px;
+    height: 24px;
+  }
+}
+
+.container {
+  width: 1136px;
+  padding-inline: 30px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Mont Bold", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  color: $gray-primary;
+
+  &--notYet {
+    text-align: center;
+    margin-top: 24px;
+  }
+}
+
+.pageEmpty {
+  text-align: center;
+  margin-top: 20vh;
+}

@@ -1,0 +1,26 @@
+.favoritePage {
+  &__wrapper {
+    padding-top: 25px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__itemCount {
+    display: block;
+    color: $gray-secondary;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    margin-bottom: 80px;
+  }
+
+  &__breadCrumb {
+    margin-bottom: 40px;
+  }
+}
