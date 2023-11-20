@@ -1,0 +1,87 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 507px;
+  box-sizing: border-box;
+  border: 1px solid $gray;
+  background: $main-white;
+
+  &:hover {
+    border-color: $gray-primary;
+  }
+
+  &__imgContainer {
+    display: flex;
+    padding: 32px 32px 0;
+  }
+
+  &__infoContaiter {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @extend %subtitle;
+    color: $gray-primary;
+    height: 42px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 6.5px 0;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 16px;
+
+    &--new {
+      line-height: 140%;
+      color: $gray-primary;
+    }
+
+    &--old {
+      line-height: normal;
+      text-decoration: line-through;
+      color: $gray-secondary;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+
+    &--line {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--key {
+      color: $gray-secondary;
+    }
+
+    &--val {
+      color: $gray-primary;
+    }
+  }
+
+  &__buttonContaiter {
+    display: flex;
+    gap: 8px;
+  }
+}

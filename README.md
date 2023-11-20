@@ -30,7 +30,7 @@ Store the Cart in the `localStorage`
 
 ### Home page
 1. Create `HomePage` available at `/` with just a title `Home page`
-1. Fetch products from API
+1. Fetch 
     - Each product has a `type`: `phone`, `tablet` or `accessory`
     - `price` is given before `discount`
     - `discount` is give in percents `%`

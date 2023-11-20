@@ -1,0 +1,97 @@
+.selector {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 4px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 126px;
+    font-size: 12px;
+    height: 40px;
+    margin-bottom: 4px;
+    padding: 10px 5px;
+    border: 1px solid $gray-icons-placeholders;
+
+    @include onTablet {
+      font-size: 14px;
+      width: 176px;
+      padding: 10px 12px;
+    }
+
+    @include onDesktop {
+      font-size: 14px;
+      width: 176px;
+      padding: 10px 12px;
+    }
+
+    @include onDesktopXL {
+      font-size: 14px;
+      width: 176px;
+      padding: 10px 12px;
+    }
+  }
+
+  &__iconContainer {
+    pointer-events: none;
+    width: 32px;
+    height: 32px;
+
+    &--icon {
+      width: 32px;
+      height: 32px;
+      background-image: url("../assets/arrow_down_dis.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 280px;
+    z-index: 1;
+    width: 126px;
+    box-sizing: border-box;
+    border: 1px solid $gray;
+    background: $main-white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    @include onTablet {
+      top: 330px;
+      width: 176px;
+    }
+
+    @include onDesktop {
+      top: 330px;
+      width: 176px;
+    }
+
+    @include onDesktopXL {
+      top: 330px;
+      width: 176px;
+    }
+  }
+
+  &__option {
+    display: flex;
+    width: 176px;
+    @extend %subtitle;
+    padding: 6px 12px;
+    color: $gray-secondary;
+
+    &:hover {
+      color: $gray-primary;
+      font-weight: 600;
+    }
+  }
+}

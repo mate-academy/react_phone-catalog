@@ -1,0 +1,113 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1155px;
+
+  &__links {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+
+    @include onDesktopXL {
+      flex-direction: row;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  &__photoContainer {
+    display: flex;
+    box-sizing: border-box;
+    width: 270px;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+
+    @include onTablet {
+      width: 368px;
+      height: 368px;
+    }
+
+    @include onDesktop {
+      width: 300px;
+      height: 300px;
+    }
+
+    @include onDesktopXL {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--phones {
+      background-color: bisque;
+    }
+
+    &--tablets {
+      background-color: gray;
+    }
+
+    &--accessories {
+      background-color: #ad3a49;
+    }
+  }
+
+  &__photo {
+    width: 386px;
+    height: 457px;
+
+    object-fit: cover;
+    object-position: left;
+    position: relative;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.07);
+    }
+
+    &--phones {
+      top: 4px;
+      left: 45px;
+    }
+
+    &--tablets {
+      top: 20px;
+      left: 25px;
+    }
+
+    &--accessories {
+      width: auto;
+      height: 320px;
+      top: 48px;
+      left: 26px;
+    }
+  }
+
+  &__main-title {
+    @extend %title-text;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    color: $gray-primary;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    @extend %subtitle;
+    color: $gray-secondary;
+  }
+}

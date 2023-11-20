@@ -1,0 +1,34 @@
+.favourites {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %title-text;
+    margin: 20px 0 8px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+    @include onDesktop {
+      margin-top: 40px;
+    }
+    @include onDesktopXL {
+      margin-top: 40px;
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 40px;
+    color: $gray-secondary;
+  }
+
+  &__content {
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+}

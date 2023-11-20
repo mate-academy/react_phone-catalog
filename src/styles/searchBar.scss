@@ -1,0 +1,83 @@
+.search {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-right: 15px;
+
+  @include onTablet {
+    padding: 23px 24px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
+
+  @include onDesktop {
+    padding: 23px 24px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
+
+  @include onDesktopXL {
+    width: 327px;
+    padding: 23px 24px;
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+  }
+
+  &__bar {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__input {
+    display: flex;
+    justify-content: flex-start;
+    color: $gray-icons-placeholders;
+    border-style: none;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    outline: none;
+
+    &::after {
+      content: "";
+      display: none;
+      appearance: none;
+    }
+
+    @include onTablet {
+      font-size: 14px;
+    }
+
+    @include onDesktop {
+      font-size: 14px;
+    }
+
+    @include onDesktopXL {
+      font-size: 14px;
+    }
+  }
+
+  [type="search"]::-webkit-search-cancel-button,
+  [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url("../assets/search.svg");
+
+    &--active {
+      background-image: url("../assets/close.svg");
+      &:hover {
+        background-image: url("../assets/close_black.svg");
+      }
+    }
+  }
+}

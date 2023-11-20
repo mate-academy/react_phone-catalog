@@ -1,0 +1,33 @@
+@mixin onMobile {
+  @media (max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 640px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin onDesktopXL {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin imgSize80 {
+  width: 80px;
+  height: 80px;
+}
+
+@mixin imgSize66 {
+  width: 66px;
+  height: 66px;
+}

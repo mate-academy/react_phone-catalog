@@ -1,0 +1,14 @@
+.goBack {
+  display: flex;
+  align-items: flex-start;
+  width: 66px;
+  gap: 4px;
+  padding: 40px 0 16px;
+
+  &__span {
+    height: 16px;
+    padding-right: 0;
+    align-items: flex-start;
+    color: $gray-secondary;
+  }
+}

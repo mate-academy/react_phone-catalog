@@ -1,0 +1,31 @@
+.notification {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 65px;
+  width: auto;
+  height: 81px;
+  padding: 10px;
+  border: 1px solid $gray;
+  background-color: #f6f6f6;
+
+  &--text {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    font-weight: 700;
+    color: $green;
+  }
+
+  &__close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+
+    &--cross {
+      width: 16px;
+      height: 16px;
+      background-image: url("../assets/close_black.svg");
+    }
+  }
+}

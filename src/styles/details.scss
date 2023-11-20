@@ -1,0 +1,392 @@
+.details {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %title-text;
+    margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    display: inline-block;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 32px;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    width: 100%;
+
+    @include onDesktopXL {
+      width: 512px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+
+    @include onTablet {
+      margin: auto;
+    }
+
+    @include onDesktop {
+      margin: auto;
+    }
+
+    @include onDesktopXL {
+      margin: auto;
+    }
+
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+
+    @include onDesktopXL {
+      flex-direction: row;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+
+    @include onDesktopXL {
+      flex-direction: row;
+    }
+  }
+
+  //PhotoBlock
+  &__photoBlock {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__photo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__photo {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border: 1px solid $gray-icons-placeholders;
+
+    @include onTablet {
+      @include imgSize80();
+    }
+
+    @include onDesktop {
+      @include imgSize80();
+    }
+
+    @include onDesktopXL {
+      @include imgSize80();
+    }
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+
+      @include onTablet {
+        @include imgSize66();
+      }
+  
+      @include onDesktop {
+        @include imgSize66();
+      }
+
+      @include onDesktopXL {
+        @include imgSize66();
+      }
+    }
+  }
+
+  &__mainPhoto {
+    display: flex;
+    align-items: center;
+
+    &--photo {
+      width: 210px;
+      height: 276px;
+      object-fit: contain;
+
+      @include onTablet {
+        width: 442px;
+        height: 442px;
+      }
+  
+      @include onDesktop {
+        width: 442px;
+        height: 442px;
+      }
+
+      @include onDesktopXL {
+        width: 442px;
+        height: 442px;
+      }
+    }
+  }
+
+  //BaseInfoBlock
+  &__baseInfo {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+
+    @include onTablet {
+      width: 320px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+
+    @include onDesktopXL {
+      width: 320px;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 24px;
+  }
+
+  &__colors-title {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: $gray-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__colors-list {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__colors-item {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $gray-icons-placeholders;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--active {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__capacity {
+    border-bottom: 1px solid $gray;
+    margin-bottom: 32px;
+  }
+
+  &__capacity-title {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: $gray-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__capacity-list {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__capacity-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 63px;
+    height: 32px;
+    padding: 7px 8px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    border: 1px solid $gray-icons-placeholders;
+    background-color: $main-white;
+    color: $gray-primary;
+    &:active {
+      color: $gray-primary;
+    }
+    &:visited {
+      color: $gray-primary;
+    }
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--active {
+      background-color: $gray-primary;
+      color: $main-white;
+      &:visited {
+        color: $main-white;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &--discount {
+      @extend %title-text;
+    }
+
+    &--regular {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration-line: line-through;
+      color: $gray-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  //Description
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+
+    &--tech {
+      font-weight: 500;
+
+      @include onTablet {
+        font-size: 14px;
+      }
+
+      @include onDesktop {
+        font-size: 14px;
+      }
+
+      @include onDesktopXL {
+        font-size: 14px;
+      }
+    }
+
+    &--line {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--key {
+      color: $gray-secondary;
+    }
+
+    &--val {
+      color: $gray-primary;
+    }
+  }
+
+  //AboutBlock
+  &__about {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+
+    @include onTablet {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 512px;
+    }
+
+    @include onDesktopXL {
+      width: 512px;
+    }
+  }
+
+  &__aboutInfo {
+    margin-bottom: 32px;
+
+    &--subtitle {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: $gray-primary;
+      margin-bottom: 16px;
+    }
+
+    &--text {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+      color: $gray-secondary;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tech {
+    width: auto;
+
+    @include onTablet {
+      width: 512px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+
+    @include onDesktopXL {
+      width: 512px;
+    }
+  }
+}

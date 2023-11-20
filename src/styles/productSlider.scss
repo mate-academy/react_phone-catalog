@@ -1,0 +1,72 @@
+.productSlider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1155px;
+  overflow: hidden;
+  height: auto;
+  margin: 0 auto;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &--title {
+      @extend %title-text;
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    @extend %button;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--disabled {
+      border-color: $gray;
+
+      &:hover {
+        border-color: $gray;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    @extend %list;
+    gap: 16px;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    max-width: 1150px;
+
+    width: 273px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @include onTablet {
+      width: 563px;
+    }
+
+    @include onDesktop {
+      width: 850px;
+    }
+
+    @include onDesktopXL {
+      width: 1150px;
+    }
+  }
+}

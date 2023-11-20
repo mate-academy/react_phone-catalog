@@ -1,0 +1,268 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    @extend %title-text;
+    padding: 0 0 24px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    gap: 16px;
+    width: 100%;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onDesktop {
+      flex-direction: column;
+    }
+
+    @include onDesktopXL {
+      flex-direction: row;
+    }
+  }
+
+  &__items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    border: 1px solid $gray;
+    justify-content: space-between;
+
+    @include onTablet {
+      flex-direction: column;
+      width: 100%;
+      height: 128px;
+      padding: 14px;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      width: 752px;
+      height: 128px;
+      padding: 24px;
+    }
+
+    @include onDesktopXL {
+      flex-direction: row;
+      width: 752px;
+      height: 128px;
+      padding: 24px;
+    }
+  }
+
+  &__item-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__item-delete {
+    display: block;
+
+    &--cross {
+      width: 16px;
+      height: 16px;
+      background-image: url("../assets/close.svg");
+
+      &:hover {
+        background-image: url("../assets/close_black.svg");
+      }
+    }
+  }
+
+  &__image-block {
+    display: flex;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    padding: 6px;
+
+    &--img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    @include onDesktop {
+      @include imgSize80();
+      padding: 7px;
+
+      &--img {
+        @include imgSize66();
+        object-fit: contain;
+      }
+    }
+
+    @include onDesktopXL {
+      @include imgSize80();
+      padding: 7px;
+
+      &--img {
+        @include imgSize66();
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__item-name {
+    @extend %subtitle;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__quantity-minus {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray;
+    padding: 8px;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--disabled {
+      &:hover {
+        border-color: $gray;
+      }
+    }
+
+    &--minus {
+      width: 16px;
+      height: 16px;
+      background-image: url("../assets/Minus.svg");
+    }
+
+    &--minus-disabled {
+      filter: invert(1);
+    }
+
+  }
+
+  &__quantity-plus {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray;
+    padding: 8px;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--plus {
+      width: 16px;
+      height: 16px;
+      background-image: url("../assets/Plus.svg");
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include onDesktop {
+      margin-left: 43px;
+    }
+
+    @include onDesktopXL {
+      margin-left: 43px;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    border: 1px solid $gray;
+
+    @include onDesktop {
+      width: 368px;
+      height: 206px;
+    }
+
+    @include onDesktopXL {
+      width: 368px;
+      height: 206px;
+    }
+  }
+
+  &__total-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid $gray;
+    padding: 24px;
+  }
+
+  &__total-price {
+    @extend %title-text;
+    color: $gray-primary;
+  }
+
+  &__total-items {
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-secondary;
+  }
+
+  &__checkout {
+    display: block;
+    margin: auto;
+    padding: 24px;
+  }
+
+  &__checkout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 225px;
+    height: 48px;
+    background-color: $gray-primary;
+
+    @include onTablet {
+      width: 300px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+
+    @include onDesktopXL {
+      width: 320px;
+    }
+
+    &--text {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      color: $main-white;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.logo {
+  display: flex;
+  align-content: center;
+  padding: 24px 0 24px 24px;
+
+  @include onTablet {
+    padding: 24px;
+  }
+
+  @include onDesktop {
+    padding: 24px;
+  }
+
+  @include onDesktopXL {
+    padding: 24px;
+  }
+
+  &__img {
+    display: block;
+    background-image: url("../assets/logo.svg");
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 24px;
+    margin-top: 10px;
+  }
+}

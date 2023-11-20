@@ -1,0 +1,105 @@
+.pagination {
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    @include onMobile {
+      gap: 3px;
+    }
+  }
+
+  &__left {
+    @extend %button;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--disabled {
+      border-color: $gray;
+
+      &:hover {
+        border-color: $gray;
+      }
+    }
+  }
+
+  &__rigth {
+    @extend %button;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--disabled {
+      border-color: $gray;
+
+      &:hover {
+        border-color: $gray;
+      }
+    }
+  }
+
+  &__num {
+    @extend %button;
+
+    &--active {
+      background-color: black;
+    }
+
+    &--inactive {
+      background-color: white;
+    }
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__num-link {
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    @extend %subtitle;
+
+    &--active {
+      color: white;
+    }
+
+    &--inactive {
+      color: black;
+    }
+
+    &--span {
+      @include onTablet {
+        width: 32px;
+      }
+
+      @include onDesktop {
+        width: 32px;
+      }
+
+      @include onDesktopXL {
+        width: 32px;
+      }
+    }
+
+    @include onMobile {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+  }
+}

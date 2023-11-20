@@ -1,0 +1,37 @@
+.pageDetails {
+  &__title {
+    @extend %title-text;
+    margin: 20px 0 8px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+    @include onDesktop {
+      margin-top: 40px;
+    }
+    @include onDesktopXL {
+      margin-top: 40px;
+    }
+  }
+
+  &__subtitle {
+    @extend %subtitle;
+    margin-bottom: 20px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+    @include onDesktopXL {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__sort {
+    display: flex;
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+}

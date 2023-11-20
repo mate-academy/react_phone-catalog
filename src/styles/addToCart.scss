@@ -1,0 +1,25 @@
+.addToCart {
+  display: flex;
+  justify-content: center;
+  width: 176px;
+  height: 40px;
+  padding: 10px 38px;
+  background-color: $gray-primary;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $main-white;
+
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--selected {
+    border: 1px solid $gray;
+    background-color: $main-white;
+    color: $green;
+  }
+}

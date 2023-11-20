@@ -1,0 +1,29 @@
+.scrollUp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__container {
+    @extend %button;
+    background-color: transparent;
+    padding: 8px;
+    margin-right: 24px;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}

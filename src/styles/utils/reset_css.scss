@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+label {
+  cursor: pointer;
+}

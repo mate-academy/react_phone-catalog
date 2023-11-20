@@ -1,0 +1,215 @@
+.slider {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 200px;
+  margin: 40px auto 70px;
+  width: 100%;
+
+  @include onTablet {
+    height: 300px;
+    margin: 40px auto 90px;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    height: 400px;
+    margin: 40px auto 104px;
+  }
+
+  @include onDesktopXL {
+    height: 400px;
+    margin: 40px auto 104px;
+  }
+
+  &__button {
+    height: 200px;
+    width: 32px;
+    background-color: transparent;
+    border: 1px solid $gray-icons-placeholders;
+
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
+
+    @include onDesktopXL {
+      height: 400px;
+    }
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__list {
+    display: flex;
+    @extend %list;
+  }
+
+  &__main {
+    display: flex;
+    height: auto;
+    max-width: 1040px;
+    width: 400px;
+    overflow: hidden;
+
+    @include onTablet {
+      width: 600px;
+      margin: 0 16px;
+    }
+
+    @include onDesktop {
+      width: 963px;
+      margin: 0 16px;
+    }
+
+    @include onDesktopXL {
+      width: 1040px;
+      margin: 0 16px;
+    }
+
+    &--photos {
+      display: block;
+      width: 400px;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+
+      @include onTablet {
+        width: 600px;
+        height: 300px;
+      }
+
+      @include onDesktop {
+        width: 963px;
+        height: 400px;
+      }
+
+      @include onDesktopXL {
+        width: 1040px;
+        height: 400px;
+      }
+    }
+  }
+
+  &__tab {
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      display: block;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+
+    @include onDesktopXL {
+      display: none;
+    }
+  }
+
+  &__desc {
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: block;
+    }
+
+    @include onDesktopXL {
+      display: none;
+    }
+  }
+
+  &__descXL {
+    @include onMobile {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+
+    @include onDesktopXL {
+      display: block;
+    }
+  }
+
+  &__mob {
+    @include onMobile {
+      display: block;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+
+    @include onDesktopXL {
+      display: none;
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    top: 310px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include onTablet {
+      top: 415px;
+    }
+
+    @include onDesktop {
+      top: 522px;
+    }
+
+    @include onDesktopXL {
+      top: 522px;
+    }
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    margin-right: 14px;
+
+    background-color: lightgrey;
+    border: none;
+    transition: all 0.5s;
+
+    &--active {
+      background-color: black;
+    }
+
+    &:hover {
+      background-color: black;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
