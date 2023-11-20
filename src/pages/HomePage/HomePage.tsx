@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/productsSlice';
 import { getProductDiscount } from '../../utils/getProductDiscount';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -17,10 +18,16 @@ export const HomePage = () => {
       .sort((a, b) => getProductDiscount(a) - getProductDiscount(b));
   }, [products]);
 
-  // eslint-disable-next-line no-console
-  console.log(getHotPriceProducts);
-
   return (
-    <h1>Home page</h1>
+    <>
+      <h1>Home page</h1>
+
+      <section className="Page-Section">
+        <ProductsSlider
+          products={getHotPriceProducts}
+          title="Hot prices"
+        />
+      </section>
+    </>
   );
 };
