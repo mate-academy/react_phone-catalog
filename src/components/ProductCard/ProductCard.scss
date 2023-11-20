@@ -1,0 +1,97 @@
+@import "../../styles/utils/";
+
+.ProductCard {
+  padding-inline: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid $element;
+
+  &-ImgContainer {
+    padding-block-start: 32px;
+    padding-inline: 8px;
+  }
+
+  &-Img {
+    display: block;
+    object-fit: contain;
+  }
+
+  &-Content {
+    padding-block: 24px;
+  }
+
+  &-Title {
+    margin: 0 0 6px;
+    font-size: inherit;
+  }
+
+  &-Prices {
+    margin-block-end: 6px;
+
+    display: flex;
+    align-items: center;
+    grid-gap: 0 8px;
+  }
+
+  &-Break {
+    margin: 0 0 16px;
+    border-top: 0;
+  }
+
+  &-DiscountPrice {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  &-Price {
+    font-size: 22px;
+    line-height: normal;
+    text-decoration: line-through;
+
+    color: $secondary;
+  }
+
+  &-Specs {
+    margin-block-end: 13px;
+
+    display: grid;
+    grid-gap: 5px 0;
+  }
+
+  &-Spec {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--last {
+      margin-block-end: 16px;
+    }
+  }
+
+  &-SpecText {
+    font-size: 12px;
+    font-weight: 600;
+
+    color: $secondary;
+  }
+
+  &-SpecValue {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &-Buttons {
+    display: flex;
+    align-items: center;
+    gap: 0 8px;
+  }
+
+  &-Icon {
+    --icon-size: 40px;
+    padding: 0;
+  }
+}
