@@ -18,6 +18,15 @@ export const HomePage = () => {
       .sort((a, b) => getProductDiscount(a) - getProductDiscount(b));
   }, [products]);
 
+  const getBrandNewProducts = useMemo(() => {
+    return products
+      .filter(product => product.discount === 0)
+      .sort((a, b) => a.price - b.price);
+  }, [products]);
+
+  // eslint-disable-next-line no-console
+  console.log(getBrandNewProducts);
+
   return (
     <>
       <h1>Home page</h1>
