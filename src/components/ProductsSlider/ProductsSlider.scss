@@ -1,0 +1,34 @@
+@import "../../styles/utils/";
+
+.ProductsSlider {
+  &-Top {
+    margin-block-end: 24px;
+
+    @include pageGrid;
+  }
+
+  &-SectionTitle {
+    grid-column: 1/23;
+
+    margin: 0;
+  }
+
+  &-Icon {
+    grid-column: span 1;
+  }
+
+  &-Window {
+    overflow-x: hidden;
+  }
+
+  &-Slides {
+    display: flex;
+    gap: 0 16px;
+
+    transition: transform $transition-duration;
+
+    & > .ProductCard {
+      max-width: 272px;
+    }
+  }
+}
