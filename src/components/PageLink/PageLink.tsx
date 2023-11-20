@@ -20,10 +20,10 @@ export const PageLink: React.FC<Props> = ({
         PageLink_text: linkType === PageLinkType.TEXT,
       },
       {
-        PageLink_heart: linkType === PageLinkType.HEART,
+        'PageLink_heart Icon Icon_heart': linkType === PageLinkType.HEART,
       },
       {
-        PageLink_cart: linkType === PageLinkType.CART,
+        'PageLink_cart Icon Icon_cart': linkType === PageLinkType.CART,
       },
       {
         PageLink_active: isActive,

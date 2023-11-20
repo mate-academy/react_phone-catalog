@@ -34,15 +34,6 @@
     transition: transform $transition-duration;
   }
 
-  &:hover {
-    color: $primary;
-
-    &:hover::after {
-      transform: scale(1);
-      transform-origin: left;
-    }
-  }
-
   &_text {
     padding-block-start: 27px;
     padding-block-end: 26px;
@@ -51,26 +42,8 @@
   &_heart,
   &_cart {
     --icon-size: 64px;
-    height: var(--icon-size);
-    width: var(--icon-size);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: no-repeat center;
-
-    border: none;
-
     box-shadow: -1px 0 0 0 $element;
-  }
-
-  &_heart {
-    background-image: url("../../images/icons/heart.svg");
-  }
-
-  &_cart {
-    background-image: url("../../images/icons/cart.svg");
+    border: none;
   }
 
   &_active {
@@ -91,6 +64,15 @@
 
       background-color: $primary;
       transform: scale(1);
+    }
+  }
+
+  &:hover {
+    color: $primary;
+
+    &:hover::after {
+      transform: scale(1);
+      transform-origin: left;
     }
   }
 }
