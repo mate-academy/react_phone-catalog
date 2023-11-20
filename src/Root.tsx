@@ -5,31 +5,22 @@ import {
   HashRouter as Router,
 } from 'react-router-dom';
 import { App } from './App';
+import { HomePage } from './pages/HomePage/HomePage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 export const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="home" element={<Navigate to="/" />} />
-        <Route index element={<h1 className="title">Home page</h1>} />
-        <Route path="phones" element={<h1 className="title">Phones</h1>} />
-        <Route path="tablets" element={<h1 className="title">Tablets</h1>} />
-        <Route
-          path="accessories"
-          element={<h1 className="title">Accessories</h1>}
-        />
-
-        {/* <Route
-          path="tabs"
-          element={<h1 className="title">Tabs page</h1>}
-        >
-          <Route path=":tabId?" element={<TabsSection />} />
-        </Route> */}
-
-        <Route
-          path="*"
-          element={<h1 className="title">Page not found</h1>}
-        />
+        <Route index element={<HomePage />} />
+        <Route path="phones" element={<PhonesPage />} />
+        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </Router>

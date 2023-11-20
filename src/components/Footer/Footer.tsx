@@ -1,4 +1,5 @@
 import React from 'react';
+// import logo from '../../images/logo.svg';
 import logo from '../../images/logo.svg';
 import arrowUp from '../../images/arrow-up.svg';
 
