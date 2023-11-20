@@ -8,6 +8,7 @@ Implement Products catalog following [this design](https://www.figma.com/file/uE
 Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
 and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/dell-streak-7.json)
 tо fetch data (use actual `productId` as a last part of the URL before `.json`).
+[DEMO](https://oleksii-bieliaiev.github.io/react_phone-catalog/)
 
 If you want to change any API data for the phones you can update the files in the `/public/api` folder, and use you project link as a `BASE_API_URL`.
 

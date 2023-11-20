@@ -1,0 +1,28 @@
+
+.navigation {
+  &__list {
+    display: flex;
+    gap: 60px;
+  }
+
+  &__link {
+    padding: 22px 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    color: #89939a;
+    transition: color 0.3s, border-color 0.3s;
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      color: #313237;
+      border-color: #313237;
+    }
+
+    &:hover {
+      color: #313237;
+      border-color: #313237;
+    }
+  }
+}
