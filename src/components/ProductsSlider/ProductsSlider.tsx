@@ -68,6 +68,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
       <div className="ProductsSlider-Window">
         <div
           className="ProductsSlider-Slides"
+          data-cy="cardsContainer"
           style={styleProductList}
         >
           {products.map(product => (
