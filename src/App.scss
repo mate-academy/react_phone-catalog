@@ -141,7 +141,7 @@
     padding: 16px;
     background-image: url("./assets/images/icons/arrow_button.svg");
     background-size: 16px;
-    border: 1px solid var(--gray-icons-placeholders, $gray_light);
+    border: 1px solid $gray_light;
   }
 }
 
@@ -150,10 +150,10 @@
 /* home page */
 
 .home-page {
-  margin: 40px 0 137px;
+  margin-top: 40px;
 }
 
-.slider-section {
+.slider__section {
   margin-bottom: 137px;
 }
 
@@ -254,42 +254,40 @@
 
   &__section {
     width: 100%;
+    margin-bottom: 80px;
 
     &-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-  }
-
-  &__slider {
-    display: flex;
-    gap: 16px;
-
-    &-buttons {
-      display: flex;
-      gap: 16px;
-      height: 32px;
+      margin-bottom: 24px;
     }
   }
 }
 
-.section__title {
-  margin-bottom: 24px;
+.shop__slider {
+  display: flex;
+  gap: 16px;
+
+  &-buttons {
+    display: flex;
+    gap: 16px;
+    height: 32px;
+  }
 }
 
 /* item card */
 
 .item {
   &__card {
-    height: 507px;
-    width: 272px;
+    padding: 32px 23px 24px;
+    width: 254px;
     border: 1px solid #e2e6e9;
   }
 
   &__image {
     display: block;
-    margin: 32px auto 24px;
+    margin-bottom: 24px;
     width: 208px;
     height: 208px;
   }
@@ -344,10 +342,6 @@
   }
 }
 
-.card__content {
-  margin: 0 24px 24px;
-}
-
 .descriptions__flex-box {
   display: flex;
   justify-content: space-between;
@@ -355,4 +349,171 @@
 
 .text-strike {
   text-decoration-line: line-through;
+}
+
+/* card button box */
+
+.item__actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* add to cart button */
+
+.add-to-card {
+  height: 40px;
+  width: 176px;
+  background-color: $gray_primary;
+  color: $white;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  font-size: 14px;
+}
+
+/* add to cart button end region */
+
+/* add to favourite button */
+
+.add-to-favourite {
+  height: 40px;
+  width: 40px;
+  border: 1px solid $gray_light;
+  background-image: url("./assets/images/icons/favourites.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* add to favourite button end region */
+
+/* shop by category */
+
+.categories__section {
+  margin-bottom: 80px;
+}
+
+.categories__title {
+  margin-bottom: 24px;
+}
+
+.categories__cards {
+  display: flex;
+  gap: 16px;
+}
+
+.category__card {
+
+  &-image {
+    display: block;
+    margin-bottom: 24px;
+    height: 368px;
+    width: 344px;
+    border: 1px solid $gray_light;
+  }
+}
+
+.section__subtitle {
+  width: max-content;
+}
+
+.category__range {
+  width: max-content;
+  color: $gray_seconary;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  font-size: 14px;
+}
+/* shop by category end region*/
+
+/* new models section */
+
+.new-models {
+  &__section {
+    width: 100%;
+    margin-bottom: 80px;
+
+    &-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+/* new models section end region */
+
+/* Phone page */
+
+.path-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 12px;
+}
+
+.arrow-path {
+  background-image: url("./assets/images/icons/arrow_icon_light-gray.svg");
+  width: 16px;
+  transform: rotate(90deg);
+}
+
+.home__link {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background-image: url("./assets/images/icons/home.svg");
+}
+
+.phone__page {
+  margin-top: 24px;
+}
+
+.phones-range {
+  margin: 8px 0 40px;
+}
+
+.selectors__wrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.selector__title {
+  margin-bottom: 5px;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 12px;
+}
+
+.select__field {
+  border: 1px solid $gray_light;
+  color: $gray_primary;
+  font-weight: 600;
+
+  &:hover {
+    border-color: $gray_primary;
+  }
+
+  &--sort {
+    width: 176px;
+    height: 40px;
+  }
+
+  &--items {
+    width: 128px;
+    height: 40px;
+  }
+}
+
+.products-field {
+  margin-bottom: 40px;
+  display: flex;
+  column-gap: 16px;
+  row-gap: 40px;
+  flex-wrap: wrap;
 }

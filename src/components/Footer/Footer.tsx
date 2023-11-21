@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { NavLink } from 'react-router-dom';
+import { scrollToTop } from '../../services/scrollToTop';
 
 export const Footer = () => {
   return (
@@ -38,7 +40,11 @@ export const Footer = () => {
             </ul>
             <div className="to-top__block">
               Back to top
-              <NavLink className="to-top__button icon" to="/" />
+              <button
+                type="button"
+                className="to-top__button icon"
+                onClick={scrollToTop}
+              />
             </div>
           </nav>
         </div>
