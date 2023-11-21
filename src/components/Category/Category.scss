@@ -1,0 +1,41 @@
+@import "../../styles/utils/";
+
+.Category {
+  &-Container {
+    margin-block-end: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 24px 0;
+
+    &_mobile {
+      background-color: #f8dbc1;
+    }
+
+    &_tablet {
+      background-color: #8d8d92;
+    }
+
+    &_accessory {
+      background-color: #973d5f;
+    }
+  }
+
+  &-Link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &-Title {
+    margin: 0 0 4px;
+
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  &-Total {
+    color: $secondary;
+  }
+}
