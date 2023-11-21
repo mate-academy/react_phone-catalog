@@ -1,0 +1,53 @@
+.footer {
+  margin-top: auto;
+  border-top: 1px solid #dbdbdb;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 43px 152px 43px 152px;
+
+  &__nav-link {
+    font-family: 'Mont-SemiBold';
+    font-size: 12px;
+    text-decoration: none;
+    color: #89939A;
+    margin-right: 64px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__right-block {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+
+    &:hover &-text {
+      color: #313237;
+    }
+
+    &-button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    &-text {
+      font-family: 'Mont-SemiBold';
+      color: #89939A;
+      font-size: 12px;
+      margin-right: 16px;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color:#313237;
+      }
+    }
+  }
+}

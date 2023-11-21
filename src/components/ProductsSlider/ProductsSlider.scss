@@ -1,0 +1,39 @@
+.products-slider {
+  width: 1136px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 72px 0 24px 0;
+  }
+
+  &__title {
+    font-family: 'Mont-Bold';
+    font-size: 32px;
+    color: #313237;
+  }
+
+  &__cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 auto;
+    height: 572px;
+    transition: transform 0.3s;
+  }
+
+  &__button--left {
+    transform: scaleX(-1);
+    margin-right: 16px;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+}
