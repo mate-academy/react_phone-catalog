@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/productsSlice';
 import { getProductDiscount } from '../../utils/getProductDiscount';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { ShopByCategory } from '../../components/ShopByCategory';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -24,9 +25,6 @@ export const HomePage = () => {
       .sort((a, b) => a.price - b.price);
   }, [products]);
 
-  // eslint-disable-next-line no-console
-  console.log(getBrandNewProducts);
-
   return (
     <>
       <h1>Home page</h1>
@@ -37,6 +35,8 @@ export const HomePage = () => {
           title="Hot prices"
         />
       </section>
+
+      <ShopByCategory />
 
       <section className="Page-Section">
         <ProductsSlider
