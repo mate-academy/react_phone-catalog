@@ -1,0 +1,41 @@
+@import "../../utils/variables.scss";
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $iconsColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $whiteColor;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $mainColor;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    border: 1px solid $elementsColor;
+    font-family: inherit;
+
+    &--active {
+      background-color: $mainColor;
+      color: $whiteColor;
+    }
+  }
+}

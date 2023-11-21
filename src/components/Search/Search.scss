@@ -1,0 +1,60 @@
+@import "../../utils/variables.scss";
+
+.search {
+  &__content {
+    width: 327px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 24px;
+    height: 65px;
+    border-left: 1px solid $elementsColor;
+    border-right: 1px solid $elementsColor;
+    border-bottom: 0 solid $elementsColor;
+
+    transition: border-left 0.3s, border-right 0.3s, border-bottom 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      color: $mainColor;
+      border-left: 1px solid $mainColor;
+      border-right: 1px solid $mainColor;
+      border-bottom: 1px solid $mainColor;
+    }
+  }
+
+  &__img {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+input {
+  border: none;
+  outline: none;
+
+  display: block;
+  width: 100%;
+
+  &::placeholder {
+    font-family: Mont-SemiBold, sans-serif;
+    color: $iconsColor;
+    font-size: 14px;
+  }
+
+  &:active {
+    border: none;
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+}
+
+.button {
+  border: none;
+  background-color: $whiteColor;
+}

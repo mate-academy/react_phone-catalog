@@ -1,0 +1,90 @@
+@import "../../utils/variables.scss";
+
+.footer {
+  &__content {
+    border-top: 1px solid $elementsColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 60px;
+    height: 100px;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 64px;
+
+    &--item {
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: Mont-Bold, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: $secondaryColor;
+
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $mainColor;
+      }
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &--text {
+      font-size: 12px;
+      font-family: inherit;
+      text-decoration: none;
+      color: $secondaryColor;
+      border: none;
+      background-color: $whiteColor;
+
+      transition: color 0.3s ease;
+
+      &:hover {
+        cursor: pointer;
+        color: $mainColor;
+      }
+    }
+
+    &--container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $iconsColor;
+      background-color: $whiteColor;
+
+      transition: border-color 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $mainColor;
+      }
+    }
+
+    &--img {
+      width: 10px;
+      height: 10px;
+
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(../../Icons/arrow-up-black.svg);
+      object-fit: cover;
+    }
+  }
+}
+
+.tablets-page,
+
+.accessories {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
