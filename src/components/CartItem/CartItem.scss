@@ -1,0 +1,82 @@
+@import "../../styles/utils";
+
+.cart-item {
+  border: 1px solid $c-gray-elements;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+
+    width: fit-content;
+    margin: 0 auto;
+    padding: 24px 40px 24px 24px;
+
+    @include onTablet {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-close {
+      width: 16px;
+      height: 16px;
+      border: none;
+
+      & path {
+        fill: $c-gray-secondary;
+      }
+
+      &:hover path {
+        fill: $c-gray-primary;
+      }
+    }
+
+    &-image-wrapper {
+      height: 80px;
+      width: 80px;
+      padding: 7px;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    &-name {
+      max-width: 295px;
+      @extend %bodyText;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include onTablet {
+      max-width: 200px;
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    &-number {
+      min-width: 16px;
+      text-align: center;
+      @extend %bodyText;
+    }
+  }
+}

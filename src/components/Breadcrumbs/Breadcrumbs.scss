@@ -1,0 +1,29 @@
+@import "../../styles/utils";
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    height: 16px;
+    @extend %smallText;
+  }
+
+  &__item {
+    display: flex;
+    gap: 8px;
+
+    &:last-child > .breadcrumbs__link {
+      color: $c-gray-secondary;
+
+      @include hover(color, $c-gray-primary);
+    }
+  }
+
+  &__arrow > path {
+    fill: $c-gray-icons-placeholders;
+  }
+}

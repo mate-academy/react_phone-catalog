@@ -1,0 +1,30 @@
+@import "../../styles/utils";
+
+.go-back {
+  display: flex;
+
+  @extend %smallText;
+  color: $c-gray-secondary;
+
+  background-color: $c-white;
+  border: none;
+
+  transition: color $transition-duration;
+  cursor: pointer;
+
+  &__arrow {
+    transform: rotate(180deg);
+    margin-right: 4px;
+
+    transition: margin $transition-duration;
+  }
+
+  &:hover {
+    color: $c-gray-primary;
+
+    & .go-back__arrow {
+      margin-left: -4px;
+      margin-right: 8px;
+    }
+  }
+}

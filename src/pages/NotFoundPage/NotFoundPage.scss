@@ -1,0 +1,18 @@
+@import "../../styles/utils";
+
+.notFoundPage {
+  height: $main-height;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & p {
+    font-size: 24px;
+
+    & a {
+      color: $c-red;
+    }
+  }
+}

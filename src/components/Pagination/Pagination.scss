@@ -1,0 +1,9 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__space {
+    margin-top: 15px;
+  }
+}
