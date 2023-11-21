@@ -1,0 +1,65 @@
+@import "../../styles/utils";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  box-shadow: 0 1px 0 $c-elements;
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link-icon {
+    display: flex;
+    padding: 23px;
+    position: relative;
+    box-shadow: -1px 0 0 $c-elements;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $c-primary;
+      transition: all 0.3s ease-in-out;
+      transform: scale(0);
+    }
+
+    &--active {
+      color: $c-primary;
+
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+
+    span {
+      position: absolute;
+      right: 27%;
+      top: 29%;
+      @extend %flex-center;
+      @extend %small-text;
+      font-size: 9px;
+      line-height: 12px;
+      color: $c-white;
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      border: 1px solid $c-white;
+      background-color: $c-red;
+    }
+  }
+}

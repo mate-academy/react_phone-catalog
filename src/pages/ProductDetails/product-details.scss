@@ -1,0 +1,132 @@
+@import "../../styles/utils";
+
+.product-details {
+  margin-bottom: 80px;
+
+  &__breadcrumbs {
+    margin: 24px 0 40px;
+  }
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  &__slider {
+    grid-column: 1 / 13;
+  }
+
+  &__action {
+    grid-column: 14 / 21;
+    margin-bottom: 109px;
+  }
+
+  &__colors {
+    margin-bottom: 48px;
+  }
+
+  &__small-text {
+    @extend %small-text;
+    color: $c-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__select-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__select {
+    border-bottom: 1px solid $c-elements;
+    padding-bottom: 24px;
+    &:first-child {
+      margin-bottom: 24px;
+    }
+
+    margin-bottom: 32px;
+  }
+
+  &__price-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__regular {
+    display: block;
+    @extend %h2-reg;
+    color: $c-secondary;
+    text-decoration: line-through;
+  }
+
+  &__discount {
+    display: block;
+    @extend %h1;
+    color: $c-primary;
+    margin-right: 8px;
+  }
+
+  &__actions-button {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__botom {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+  }
+
+  &__subtitle {
+    @extend %h2;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $c-elements;
+    margin-bottom: 32px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__info-title {
+    @extend %h3;
+    padding-bottom: 16px;
+    color: $c-primary;
+  }
+
+  &__info-text {
+    @extend %body-text;
+    color: $c-secondary;
+  }
+
+  &__description {
+    grid-column: 1 / 13;
+  }
+
+  &__tech-specs {
+    grid-column: 14 / 25;
+  }
+
+  &__tech-specs li {
+    @extend %body-text;
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../styles/utils";
+
+.results-search {
+  &__count {
+    margin: 24px 0;
+  }
+
+  &__not-found {
+    @extend %h2;
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+}

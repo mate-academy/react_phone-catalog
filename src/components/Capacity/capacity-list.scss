@@ -1,0 +1,23 @@
+@import "../../styles/utils";
+
+.capacity {
+  @extend %flex-center;
+  @extend %body-text;
+  width: 63px;
+  height: 32px;
+  background-color: transparent;
+  color: $c-primary;
+  border: 1px solid $c-elements;
+  transition: border 0.3s;
+
+  &--active {
+    color: $c-white;
+    border: 1px solid $c-primary;
+    background-color: $c-primary;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+}
