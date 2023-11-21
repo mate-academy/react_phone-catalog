@@ -141,12 +141,6 @@ export const Catalogue = () => {
   useEffect(() => {
     scrollToTop();
 
-    setSearchParams(params => {
-      params.set('page', '1');
-
-      return params;
-    });
-
     if (!perPage) {
       setPaginationOption(defaultPaginationOption);
     }
@@ -154,6 +148,14 @@ export const Catalogue = () => {
     if (!sortBy) {
       setSortOption(defaultSortOption);
     }
+  }, [searchParams]);
+
+  useEffect(() => {
+    setSearchParams(params => {
+      params.set('page', '1');
+
+      return params;
+    });
   }, [perPage]);
 
   return (
