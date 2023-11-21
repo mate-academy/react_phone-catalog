@@ -1,0 +1,132 @@
+@import "/src/style/main.scss";
+
+.carts {
+  border: 1px solid $color-shadow;
+  margin-bottom: 16px;
+
+  &:hover {
+    transition: 0.3s ease;
+    border-color: $gray-primary;
+  }
+
+  &__content {
+    display: block;
+    padding: 24px 40px 24px 24px;
+
+    @include onTablet {
+      display: flex;
+      align-items: center;
+    }
+
+    @include onDesktop {
+      display: flex;
+    }
+
+    &--wrapper {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      @include onTablet {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.cart {
+  &__img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 24px;
+
+    @include onTablet {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__name {
+    color: $gray-primary;
+    max-width: 295px;
+
+    @include onTablet {
+      width: 295px;
+    }
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    margin: 12px 0;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96px;
+    height: 32px;
+
+    margin: 0 25px 0 10px;
+
+    @include onTablet {
+      margin: 0 25px;
+    }
+
+    @include onDesktop {
+      margin: 0 40px 0 50px;
+    }
+  }
+
+  &__price {
+    color: $gray-primary;
+
+    font-size: 22px;
+    line-height: 140%;
+
+    &--wrapper {
+      display: flex;
+    }
+  }
+
+  &__button {
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $gray-icons-placeholders;
+
+    &--close {
+      width: 16px;
+      height: 16px;
+      background-image: url("../../images/icons/Close.svg");
+      border: none;
+
+      &:hover {
+        background-color: $gray-primary;
+        transition: border 0.5s, background-image 0.5s, background-color 0.5s;
+      }
+    }
+
+    &--plus {
+      background-image: url("../../images/icons/Plus.svg");
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+
+    &--minus {
+      background-image: url("../../images/icons/Minus.svg");
+    }
+  }
+}

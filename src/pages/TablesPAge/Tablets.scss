@@ -1,0 +1,79 @@
+@import "/src/style/main.scss";
+
+.tablets {
+  @include onTablet {
+    max-width: 1136px;
+  }
+
+  @include onDesktop {
+    width: 1136px;
+  }
+
+  &__description {
+    &--h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 200px;
+      margin: 8px auto;
+
+      @include onTablet {
+        height: 100px;
+        width: 400px;
+        margin: 8px auto;
+      }
+
+      @include onDesktop {
+        height: 100px;
+        width: 400px;
+        margin: 8px auto;
+      }
+    }
+
+    &--title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      margin: 8px auto;
+      padding: auto;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      @include onTablet {
+        height: 100px;
+        font-size: 16px;
+      }
+
+      @include onDesktop {
+        height: 100px;
+        font-size: 16px;
+      }
+    }
+
+    &--home {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: auto;
+      padding: auto;
+
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+
+      @include onTablet {
+        width: 400px;
+        font-size: 16px;
+      }
+
+      @include onDesktop {
+        width: 400px;
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+@import "/src/style/main.scss";
+
+.footer {
+  box-shadow: 0 -1px 0 0 $color-shadow;
+
+  margin: 0 24px;
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1136px;
+  background: $gray-white;
+
+  @include onTablet {
+    height: 96px;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    height: 96px;
+    width: 1136px;
+  }
+
+  &__logo {
+    margin: 20px auto 0;
+
+    @include onTablet {
+      margin: 0;
+    }
+
+    width: 40px;
+    height: 24px;
+    background-image: url("../../images/Logo.png");
+  }
+
+  &__description {
+    display: flex;
+    gap: 12px;
+
+    @include onTablet {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    margin: 20px auto;
+
+    @include onTablet {
+      margin: 0;
+    }
+
+    color: $gray-secondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      color: $gray-primary;
+      transition: color 0.5s ease;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    margin: auto 0 24px;
+    height: 32px;
+
+    @include onTablet {
+      justify-content: flex-start;
+      margin: 0;
+    }
+
+    &--text {
+      color: $gray-secondary;
+    }
+
+    &--arrow {
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      background-color: $gray-white;
+      top: 0;
+
+      display: flex;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $gray-icons-placeholders;
+      background-image: url("../../images/icons/Arrow.svg");
+      transform: rotate(270deg);
+
+      &:hover {
+        border: 1px solid $gray-primary;
+        transition: border 0.5s ease;
+      }
+    }
+
+    &--fake {
+      margin: 0;
+      padding: 0;
+      height: 0;
+    }
+  }
+}
