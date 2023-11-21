@@ -1,0 +1,13 @@
+.Action {
+  height: 28px;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &__img {
+    height: 16px;
+    width: 16px;
+  }
+}

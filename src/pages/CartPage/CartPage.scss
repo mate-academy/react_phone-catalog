@@ -1,0 +1,108 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.CartPage {
+  padding: 40px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__is-empty {
+    @extend %text-important;
+    color: $gray-second;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1 / 17;
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    grid-column: 18 / -1;
+
+    &-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      padding: 24px;
+      height: max-content;
+
+      border: 1px solid $gray-elements;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-sum {
+      @extend %text-title;
+    }
+
+    &-text {
+      @extend %text-body;
+      color: $gray-second;
+    }
+
+    &-button {
+      font-family: "Mont-Semibold", sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: $white;
+
+      height: 40px;
+      width: 100%;
+      background-color: $gray-main;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+
+    &-message {
+      padding: 24px;
+      height: max-content;
+      border: 1px solid $gray-elements;
+
+      @extend %text-important;
+      text-align: center;
+    }
+  }
+}

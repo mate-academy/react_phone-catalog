@@ -1,0 +1,21 @@
+.icon {
+  height: 64px;
+  width: 64px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 3px solid transparent;
+
+  &--active {
+    border-bottom: 3px solid $gray-main;
+  }
+
+  &--fav {
+    background-image: url(../../images/icons/Favourites.svg);
+    border-left: 1px solid $gray-elements;
+  }
+
+  &--cart {
+    background-image: url(../../images/icons/Shopping_cart.svg);
+    border-left: 1px solid $gray-elements;
+  }
+}
