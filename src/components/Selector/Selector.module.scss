@@ -1,0 +1,75 @@
+@import "../../styles/variables.scss";
+
+.selector {
+  user-select: none;
+
+  margin: 40px 0 24px;
+
+  @media (max-width: 425px) {
+    margin: 15px 0 24px;
+  }
+
+  &Title {
+    color: $Secondary;
+    margin-bottom: 4px;
+  }
+
+  &Selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 176px;
+    height: 40px;
+    padding: 12px;
+
+    border: 1px solid $Icons;
+
+    
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      border: 1px solid $Secondary;
+    }
+
+    &:focus {
+      border: 1px solid $Primary;
+    }
+  }
+
+  &List {
+    position: absolute;
+    z-index: 10;
+
+    width: 176px;
+    margin-top: 2px;
+
+    border: 1px solid $Secondary;
+    
+    button {
+
+      display: block;
+      width: 100%;
+      text-align: left;
+
+      color: $Secondary;
+      padding: 10px 12px;
+      
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $Primary;
+        background-color: $HoverAndBG;
+      }
+
+      &:first-child {
+        padding-top: 15px;
+      }
+      &:last-child {
+        padding-bottom: 15px;
+      }
+    }
+  }
+}

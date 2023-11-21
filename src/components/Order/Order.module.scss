@@ -1,0 +1,86 @@
+@import "../../styles/variables.scss";
+
+.order {
+  flex-grow: 1;
+  margin-right: 17%;
+  color: $Secondary;
+
+  @media (max-width: 992px) {
+    margin: 0;
+  }
+
+  &SmallTitle {
+    margin-bottom: 9px;
+  }
+
+  &Block {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid $Elements;
+  }
+
+  &AvailableBlock {
+    display: flex;
+    gap: 8px;
+  }
+
+  &Color {
+    padding: 14px;
+    border-radius: 50%;
+
+    &Link {
+      padding: 1px;
+      border-radius: 50%;
+      border: 2px solid $Elements;
+
+      &Active {
+        border-color: $Primary;
+      }
+    }
+  }
+
+  &Capacity {
+    padding: 5px 8px;
+    border: 1px solid $Icons;
+
+    &Active {
+      background: $Primary;
+      border-color: $Primary;
+      color: $White;
+    }
+  }
+
+  &Price {
+    color: $Primary;
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &FullPrice {
+    color: $Secondary;
+
+    text-justify: inter-cluster;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &Btns {
+    display: flex;
+    gap: 8px;
+
+    margin-bottom: 32px;
+
+    &Btn {
+      height: 48px;
+      flex-grow: 1;
+    }
+
+    &Icon {
+      padding: 15px;
+      height: auto;
+    }
+  }
+}

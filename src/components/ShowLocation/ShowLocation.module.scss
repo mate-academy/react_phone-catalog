@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.showLocationBlock {
+  display: flex;
+  align-items: center;
+
+  color: $Secondary;
+  font-weight: 600;
+  font-size: 0.75rem;
+
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  &img {
+    opacity: 0.1;
+  }
+}
+
+.link {
+  transition: color 0.3s ease;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    color: $Primary;
+
+    &::before {
+      width: 100%;
+      background: $Primary;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.specifications {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  color: $Primary;
+
+  &:last-child {
+    margin: 0;
+  }
+
+  &Name {
+    color: $Secondary;
+  }
+}

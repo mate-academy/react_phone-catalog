@@ -1,0 +1,98 @@
+@import "../../styles/variables.scss";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $White;
+  
+  padding: 20px 0 21px 24px;
+  box-shadow: 0 1px 0 0 $Elements;
+
+  &Burger {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    span {
+      height: 2px;
+      width: 24px;
+      background: $Primary;
+    }
+  }
+
+  .rightBlock {
+    display: flex;
+    align-items: center;
+
+    &Form {
+      width: 300px;
+      height: 64px;
+  
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      padding-left: 24px;
+      margin: -21px 23px -24px 0;
+      box-shadow: -1px 0 0 0 $Elements;
+  
+      input::placeholder {
+        color: $Icons;
+        font-weight: 600;
+      }
+
+      @media (max-width: 658px) {
+        display: none;
+      }
+    }
+    &Count {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+
+      min-width: 18px;
+      min-height: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: $Red;
+      border-radius: 50%;
+      border: 2px solid $White;
+
+      font-size: 9px;
+      line-height: 9px;
+      font-weight: 600;
+      color: $White;
+    }
+
+    &IconsItem {
+      position: relative;
+
+      padding: 24px;
+      margin: -21px 0;
+      border-left: 1px solid $Elements;
+
+      &Active {
+        color: $Primary;
+        position: relative;
+    
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          width: 100%;
+          background-color: $Primary;
+        }
+      }
+    }
+  }
+}

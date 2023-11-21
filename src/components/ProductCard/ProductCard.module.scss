@@ -1,0 +1,66 @@
+@import "../../styles/variables.scss";
+
+.productCard {
+  position: relative;
+  padding: 24px;
+  border: 1px solid $Elements;
+  width: max-content;
+
+  @media (max-width: 375px) {
+    padding: 8px;
+  }
+}
+
+.productImg {
+  width: 208px;
+  height: 208px;
+  object-fit: contain;
+  margin: 0 auto 24px;
+}
+
+.productTitle {
+  font-weight: 500;
+  margin-bottom: 6.5px;
+  max-width: 180px;
+  word-wrap: break-word;
+}
+
+hr {
+  background: $Elements;
+  height: 1px;
+
+  margin: 6.5px 0 16px;
+}
+
+.fullPrice {
+  color: $Secondary;
+  font-weight: 500;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  margin-top: 16px;
+
+  @media (max-width: 375px) {
+    justify-content: center;
+  }
+
+  &Icon {
+    padding: 12px;
+
+    @media (max-width: 375px) {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      border: none;
+      background: transparent;
+    }
+  }
+}

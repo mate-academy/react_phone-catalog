@@ -1,0 +1,54 @@
+@import "../../styles/variables.scss";
+
+.wrapper {
+  width: Min(72.2vw, 1040px); // 1040px min(72.2vw, 1040px)
+  height: Min(27.7vw, 400px) ; //400px
+  margin: 40px auto 72px;
+
+  .img {
+    height: Min(27.7vw, 400px); //400px
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 0;
+    bottom: 5px;
+    z-index: 10;
+
+    padding: 0 8px;
+    background-color: #fff;
+    border: 1px solid $Icons;
+
+    &Next {
+      right: -47px;
+    }
+
+    &Prev {
+      left: -47px;
+    }
+
+    &:hover {
+      border-color: $Primary;
+    }
+
+    @media (max-width: 425px) {
+      display: none;
+    }
+  }
+
+  .indicator {
+    height: 4px;
+    width: 14px;
+    margin: 0 10px;
+    background-color: $Elements;
+    
+    cursor: initial;
+  }
+
+  .active {
+    background-color: $Primary;
+  }
+
+}

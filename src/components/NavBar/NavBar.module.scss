@@ -1,0 +1,96 @@
+@import "../../styles/variables.scss";
+
+.Nav {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  color: $Secondary;
+
+  .active {
+    color: $Primary;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -26px;
+      height: 3px;
+      width: 100%;
+      background-color: $Primary;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    a {
+      font-size: 30px;
+    }
+  }
+
+  &Left {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    gap: 64px;
+  }
+
+  &Menu {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-right: 1px solid $Elements;
+    padding: 25px;
+    margin: -25px 0 -28px -27px;
+
+  
+    span {
+      height: 2px;
+      width: 24px;
+      background-color: $Primary;
+
+      transition: transform 0.3s ease;
+    }
+
+    &Active {
+      span:first-child {
+        transform: rotate(45deg) translateY(3.5px);
+      }
+
+      span:nth-child(2) {
+        display: none;
+      }
+
+      span:last-child {
+        transform: rotate(-45deg) translateY(-3.5px);
+      }
+    }
+  }
+
+  &Tablet {
+    position: absolute;
+    z-index: 100;
+    top: -100vh;
+    left: 0;
+
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: $White;
+
+    transition: top 0.3s ease;
+
+    &Active {
+      top: 66px;
+
+      padding-top: 70px;
+    }
+  }
+}

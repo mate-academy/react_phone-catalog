@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "parser": "scss",
+        "singleQuote": false,
+        "semi": true
+      }
+    }
+  ]
+}

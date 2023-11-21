@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  border: 1px solid $Elements;
+  padding: 24px;
+
+  @media (max-width: 678px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &Close {
+    border: none;
+  }
+
+  &Img {
+    max-height: 80px;
+    margin: 0 24px;
+  }
+
+  p {
+    width: 199px;
+    min-width: 80px;
+
+    @media (max-width: 1250px) {
+      width: 120px;
+    }
+
+    @media (max-width: 830px) {
+      width: 90px;
+    }
+
+  }
+
+  &Counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: 50px;
+
+    @media (max-width: 678px) {
+      margin: 0;
+    }
+  }
+
+  &Price {
+    margin-left: 43px;
+
+    @media (max-width: 678px) {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+
+  span {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: 5px solid;
+    border-radius: 50%;
+    border-color: transparent #000 #000;
+    animation: cssload-spin 690ms infinite linear;
+    @keyframes cssload-spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

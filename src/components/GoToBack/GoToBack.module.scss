@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin: 40px 0 16px;
+  background: transparent;
+
+  p {
+    color: $Secondary;
+    cursor: pointer;
+    margin-top: 1px;
+  }
+}

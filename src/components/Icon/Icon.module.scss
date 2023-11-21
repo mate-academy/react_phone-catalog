@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.baseIcon {
+  padding: 8px;
+  border: 1px solid $Icons;
+  background: $White;
+
+  &:hover {
+    border-color: $Primary;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  border-color: $Elements !important;
+  cursor: not-allowed;
+}
