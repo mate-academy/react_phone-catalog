@@ -1,0 +1,95 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.footer {
+  width: 100%;
+  height: 96px;
+  border-top: 1px solid $color-elements;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    max-width: $container-max-width;
+    height: 100%;
+    margin-inline: auto;
+
+    @include onTablet {
+      padding-inline: $pad-container-tablet;
+    }
+
+    @include onPhone {
+      padding-inline: $pad-container-phone;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: $links-gaps;
+    height: 100%;
+
+    @include onPhone {
+      gap: 24px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 5px 0;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $color-secondary;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary;
+      background-color: $color-hover;
+    }
+  }
+
+  &__back-to-top {
+    height: 32px;
+    padding: 0;
+    border: none;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: transparent;
+    color: $color-secondary;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &::after {
+      content: "\203A";
+      display: inline-block;
+      height: 100%;
+      width: 32px;
+      margin-left: 16px;
+      border: 1px solid $color-icons;
+      color: $color-primary;
+      line-height: 30px;
+      font-size: 20px;
+      transform: rotateZ(-90deg);
+      transition: border-color 0.3s;
+    }
+
+    &:hover {
+      background-color: $color-hover;
+      color: $color-primary;
+
+      &::after {
+        border-color: $color-primary;
+      }
+    }
+
+    @include onPhone {
+      display: none;
+    }
+  }
+}

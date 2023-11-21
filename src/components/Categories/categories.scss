@@ -1,0 +1,78 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.categories {
+  width: 100%;
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__image {
+    transform: translate(10%, 5%);
+    object-fit: cover;
+    object-position: top left;
+    width: 386px;
+    height: 386px;
+    transition: all 0.3s;
+
+    @include onPhone {
+      width: 200px;
+      height: 200px;
+    }
+
+    @include onTablet {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
+  &__card {
+    max-width: 386px;
+    min-width: 0;
+    text-decoration: none;
+
+    &:hover .categories__image {
+      transform: translate(0);
+    }
+  }
+
+  &__card-image {
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 100%;
+    margin-bottom: 24px;
+
+    &--phones {
+      background-color: #fcdcc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973c60;
+    }
+  }
+
+  &__name {
+    margin-bottom: 4px;
+    font-size: 20px;
+    line-height: 26px;
+    color: $color-primary;
+  }
+
+  &__quantity {
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}

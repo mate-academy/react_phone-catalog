@@ -1,0 +1,29 @@
+.promo {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__screen {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__slider {
+    width: 100%;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__slide {
+    display: flex;
+    gap: 16px;
+  }
+}

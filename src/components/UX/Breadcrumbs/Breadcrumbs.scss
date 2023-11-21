@@ -1,0 +1,34 @@
+@import "../../../styles/utils/variables";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    opacity: 0.5;
+  }
+
+  &__link {
+    height: 15px;
+    font-size: 12px;
+    line-height: 18px;
+    text-decoration: none;
+    color: $color-primary;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &:last-child {
+      color: $color-secondary;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@import "./variables";
+
+%nav-link-decoration {
+  position: absolute;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  width: 100%;
+  background-color: $color-primary;
+}
+
+%standard-button-behavior {
+  border: 1px solid $color-icons;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: $color-primary;
+    background-color: $color-hover;
+  }
+
+  &:active {
+    border: 1px solid $color-icons;
+    background-color: $color-white;
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+    background-color: $color-white;
+    cursor: auto;
+    transform: none;
+  }
+}
+
+%main-button-styles {
+  flex-grow: 1;
+  height: 100%;
+  padding: 0;
+  vertical-align: top;
+  border: none;
+  background-color: $color-primary;
+  color: $color-white;
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &:active {
+    transform: scale(97%);
+  }
+}

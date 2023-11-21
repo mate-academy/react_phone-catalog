@@ -1,0 +1,30 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+
+.page {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+
+  &__container {
+    flex-grow: 1;
+    max-width: $container-max-width;
+    margin-inline: auto;
+
+    @include onTablet {
+      padding-inline: $pad-container-tablet;
+    }
+
+    @include onPhone {
+      padding-inline: $pad-container-phone;
+    }
+  }
+
+  &__section {
+    margin-bottom: 80px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

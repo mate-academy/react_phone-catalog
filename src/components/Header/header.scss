@@ -1,0 +1,127 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-left: 24px;
+  height: 64px;
+  border-bottom: 1px solid $color-elements;
+
+  @include onPhone {
+    padding-left: 10px;
+  }
+
+  &__left {
+    display: flex;
+    margin-right: $links-gaps;
+
+    @include onTablet {
+      margin-right: 10px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &__logo {
+    margin-right: $links-gaps;
+
+    @include onPhone {
+      margin-right: 0;
+    }
+  }
+
+  &__nav {
+    @include onPhone {
+      position: absolute;
+      top: 64px;
+      display: flex;
+      justify-content: center;
+      height: 0;
+      width: 100%;
+      border-bottom: 1px solid $color-elements;
+      background-color: $color-white;
+      transition: all 1s;
+      opacity: 0;
+      visibility: hidden;
+
+      &--active {
+        height: 64px;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &-list {
+      display: flex;
+      gap: $links-gaps;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      @include onTablet {
+        gap: 10px;
+      }
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+
+  &__tile {
+    position: relative;
+    width: 64px;
+    border-left: 1px solid $color-elements;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-image {
+      width: 16px;
+      height: 16px;
+    }
+
+    &-sticker {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-100%);
+    }
+  }
+
+  &__menu-button {
+    display: none;
+    height: 100%;
+    width: 64px;
+    border: none;
+    border-inline: 1px solid $color-elements;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    @include onPhone {
+      display: inline;
+    }
+  }
+}
