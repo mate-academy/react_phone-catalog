@@ -1,8 +1,9 @@
 import './App.scss';
+import { Router } from './router/Router';
 
 const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Router />
   </div>
 );
 

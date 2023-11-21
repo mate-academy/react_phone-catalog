@@ -1,0 +1,87 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+
+.main-container {
+  border-top: 1px solid $borderBottocNavbarColor;
+}
+
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  &-nav {
+    &__list {
+      list-style-type: none;
+      display: flex;
+      gap: 64px;
+    }
+
+    &__link {
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+      color: $footerNavLinksColor;
+      display: block;
+      height: 96px;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: $navbarLinkColor;
+        opacity: 0;
+        transition: opacity, 0.3s;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-button-wrapper {
+    display: flex;
+    gap: 16px;
+    color: $footerNavLinksColor;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+    align-items: center;
+  }
+
+  &-button {
+    border: 1px solid $footerButtonBorderColor;
+    color: $navbarLinkColor;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: transparent;
+    @include hover(border, 1px solid $footerButtonBorderColor);
+
+    &:active {
+      border: none;
+      background-color: $navbarLinkColor;
+      color: #fff;
+    }
+  }
+}

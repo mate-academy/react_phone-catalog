@@ -1,0 +1,66 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins';
+
+.cart-item {
+  border: 1px solid $borderBottocNavbarColor;
+  padding: 24px 40px 24px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  width: 752px;
+
+  &__amount {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: 1px solid $imageBorderColor;
+    color: $imageBorderColor;
+    cursor: pointer;
+
+    &:hover {
+      color: $navbarLinkColor;
+      border: 1px solid $navbarLinkColor;
+    }
+    &-delete {
+      width: 16px;
+      height: 16px;
+      background: url(../../images/delete.svg) no-repeat center;
+      border: none;
+      cursor: pointer;
+      @include hover(transform, scale(1.5));
+    }
+  }
+
+  &__buttons-wrapper {
+    position: absolute;
+    display: flex;
+    right: 144px;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__price {
+    position: absolute;
+    right: 40px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: $navbarLinkColor;
+  }
+}
