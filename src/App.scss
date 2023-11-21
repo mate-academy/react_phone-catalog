@@ -1,5 +1,5 @@
 // not empty
-@import './styles/fonts';
+@import "./styles/fonts";
 
 .header {
   display: flex;
@@ -22,8 +22,8 @@
 
     &--link {
       text-decoration: none;
-      color: #89939A;
-      font-family: 'Montserrat', sans-serif;
+      color: #89939a;
+      font-family: "Montserrat", sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 700;
@@ -54,8 +54,8 @@
 
     &--link {
       text-decoration: none;
-      color: #89939A;
-      font-family: 'Montserrat', sans-serif;
+      color: #89939a;
+      font-family: "Montserrat", sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 700;
@@ -70,8 +70,8 @@
     gap: 16px;
     align-items: center;
     text-decoration: none;
-    color: #89939A;
-    font-family: 'Montserrat', sans-serif;
+    color: #89939a;
+    font-family: "Montserrat", sans-serif;
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
@@ -115,4 +115,3 @@
     margin: 0 auto;
   }
 }
-

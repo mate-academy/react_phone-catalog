@@ -9,7 +9,7 @@ export const ProductCards = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/products.json')
+    fetch('http://localhost:3000/_new/products.json')
       .then((response) => response.json())
       .then((productsFromServer) => setProducts(productsFromServer));
   }, []);

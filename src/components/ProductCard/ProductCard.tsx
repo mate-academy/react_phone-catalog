@@ -11,13 +11,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="product__card">
       <div className="product__card--top">
-        <img className="product__card--img" src={product.imageUrl} alt="card" />
+        <img className="product__card--img" src={`_new/${product.image}`} alt="card" />
         <p className="product__card--name">{product.name}</p>
         <div className="product__card--price">
           <div className="product__card--price-total">
-            {`$${product.price - (product.discount / 100) * product.price}`}
+            {product.price}
           </div>
-          <div className="product__card--price-full">{`$${product.price}`}</div>
+          <div className="product__card--price-full">{`$${product.fullPrice}`}</div>
         </div>
       </div>
 
@@ -39,7 +39,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="product__card--button">
-        <a href="/" className="product__card--button-cart">Add to cart</a>
+        <a href="/" className="product__card--button-cart">
+          Add to cart
+        </a>
         <img src={favorite} alt="add to favorite" />
       </div>
     </div>

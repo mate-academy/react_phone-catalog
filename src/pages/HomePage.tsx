@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import banner from '../images/Banner.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { HotPriceSlider } from '../components/HotPriceSlider/HotPriceSlider';
 import './HomePage.scss';
 import { Categories } from '../components/Categories/Categories';
+import { ProductSlider } from '../components/ProductSlider/ProductSlider';
 
 export const HomePage = () => {
   const [index, setIndex] = useState(0);
@@ -21,17 +20,29 @@ export const HomePage = () => {
         className="carousel"
       >
         <Carousel.Item>
-          <img className="carousel__inner" src={banner} alt="banner" />
+          <img
+            className="carousel__inner"
+            src="_new/img/banner-phones.png"
+            alt="banner"
+          />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="carousel__inner" src={banner} alt="banner" />
+          <img
+            className="carousel__inner"
+            src="_new/img/banner-tablets.png"
+            alt="banner"
+          />
         </Carousel.Item>
         <Carousel.Item>
-          <img className="carousel__inner" src={banner} alt="banner" />
+          <img
+            className="carousel__inner"
+            src="_new/img/banner-accessories.png"
+            alt="banner"
+          />
         </Carousel.Item>
       </Carousel>
       <div className="home__slider">
-        <HotPriceSlider />
+        <ProductSlider />
       </div>
       <div className="home__categories">
         <Categories />
