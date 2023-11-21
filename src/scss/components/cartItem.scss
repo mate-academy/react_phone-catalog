@@ -1,0 +1,72 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  grid-gap: 20px;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid $gray-elements;
+
+  &:hover {
+    transition: 0.3s ease;
+    border-color: $gray-primary;
+  }
+
+  &__photo {
+    box-sizing: border-box;
+    padding: 7px;
+  }
+
+  &__img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__itemName {
+    width: 295px;
+    color: $gray-primary;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__action {
+    display: grid;
+    grid-template-columns: repeat(3, 32px);
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid $gray-elements;
+
+    &:hover {
+      border-color: $gray-icons-placeholders;
+    }
+  }
+
+  &__itemAmount {
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+
+  }
+
+  &__totalPrice {
+    display: block;
+
+    color: $gray-primary;
+    font-family: "Mont Bold", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    line-height: 140%;
+  }
+}

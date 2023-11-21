@@ -1,0 +1,38 @@
+.footer {
+  border-top: 1px solid #e2e6e9;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 94px;
+  }
+
+  &__textBack {
+    font-family: "Mont SemiBold", sans-serif;
+    color: $gray-secondary;
+    font-size: 12px;
+    margin-right: 16px;
+  }
+
+  &__backTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons-placeholders;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+}

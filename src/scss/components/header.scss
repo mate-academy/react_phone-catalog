@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+  border-bottom: 1px solid $gray-elements;
+
+  &__action {
+    display: flex;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__navigation {
+    margin-right: 64px;
+  }
+
+  &__logo {
+    margin-left: 24px;
+  }
+
+  &__icon {
+    position: relative;
+    text-decoration: none;
+    box-sizing: border-box;
+    height: 64px;
+    width: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    &:hover {
+      background-color: #fafbfc;
+    }
+  }
+
+  &__iconRed {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+
+    color: #fff;
+    font-size: 9px;
+    font-family: "Mont SemiBold", sans-serif;
+
+    width: 12px;
+    height: 12px;
+    background-color: $red-icon;
+    border-radius: 100%;
+    border: 1px solid #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,1 +1,43 @@
-// not empty
+@import "./scss/common/index.scss";
+@import "./scss/components/header.scss";
+@import "./scss/components/navigation.scss";
+@import "./scss/components/footer.scss";
+@import "./scss/components/loader.scss";
+@import "./scss/page/home.scss";
+@import "./scss/components/slider.scss";
+@import "./scss/components/productSlider.scss";
+@import "./scss/components/productCard.scss";
+@import "./scss/components/categories.scss";
+@import "./scss/components/buttonBack.scss";
+@import "./scss/page/favorite.scss";
+@import "./scss/page/cart.scss";
+@import "./scss/page/phones.scss";
+@import "./scss/page/productDetail.scss";
+@import "./scss/components/cartItem.scss";
+@import "./scss/components/dropDown.scss";
+@import "./scss/components/pagination.scss";
+@import "./scss/components/breadcrumbs.scss";
+@import "./scss/components/imageSwitcher.scss";
+@import "./scss/components/productOption.scss";
+@import "./scss/components/productsList.scss";
+@import "./scss/components/search.scss";
+
+html,
+body {
+  font-family: "Mont Regular", sans-serif;
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+
+.App {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}

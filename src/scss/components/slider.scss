@@ -1,0 +1,51 @@
+.slider {
+  &__wrapper {
+    padding-top: 40px;
+  }
+
+  &__photoBlock {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__img {
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    border: 1px solid $gray-icons-placeholders;
+  }
+
+  &__photosWrap {
+    overflow: hidden;
+  }
+
+  &__photos {
+    width: 1040px;
+    white-space: nowrap;
+    transition: transform 1200ms ease 0s;
+  }
+
+  &__switchers {
+    width: 70px;
+    height: 24px;
+    margin: 0 auto;
+    margin-top: 8px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__switch {
+    width: 14px;
+    height: 4px;
+    background-color: $gray-icons-placeholders;
+
+    &--selected {
+      background-color: $gray-primary;
+    }
+  }
+}

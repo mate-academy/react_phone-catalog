@@ -1,0 +1,16 @@
+.buttonBack {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: end;
+  padding: 0;
+
+  color: $gray-secondary;
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 12px;
+  line-height: normal;
+
+  &:hover {
+    color: $gray-primary;
+  }
+}

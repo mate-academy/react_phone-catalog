@@ -1,0 +1,185 @@
+.productOption {
+  width: 320px;
+
+  &__colorsContainer {
+    margin-bottom: 32px;
+  }
+
+  &__titleH3 {
+    color: $gray-secondary;
+    font-family: "Mont SemiBold", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__color {
+    border: 1px solid $gray-elements;
+    border-radius: 100%;
+
+    &:hover {
+      border-color: $gray-icons-placeholders;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--isActive {
+      border-color: $gray-primary;
+      cursor: default;
+    }
+  }
+
+  &__colorInside {
+    display: block;
+    width: 29px;
+    height: 29px;
+    border-radius: 100%;
+
+    border: 2px solid #fff;
+  }
+
+  &__capacityContainer {
+    margin-bottom: 32px;
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__capacity {
+    color: $gray-primary;
+    display: block;
+    text-align: center;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+    padding: 7px 8px 4px;
+
+    border: 1px solid $gray-icons-placeholders;
+
+    &:hover {
+      border-color: $gray-primary;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--isActive {
+      background-color: $gray-primary;
+      color: #fff;
+      border-color: $gray-primary;
+      cursor: default;
+    }
+  }
+
+  &__prices {
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__fullPrice {
+    color: $gray-primary;
+    font-family: "Mont Bold", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__discountedPrice {
+    color: $gray-secondary;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    line-height: normal;
+    text-decoration-line: line-through;
+  }
+
+  &__action {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__addToCard {
+    width: 100%;
+    height: 48px;
+    background-color: $gray-primary;
+    font-family: "Mont SemiBold", sans-serif;
+    box-sizing: border-box;
+
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--selected {
+      background-color: #fff;
+      color: #27ae60;
+      border: 1px solid $gray-elements;
+    }
+  }
+
+  &__addToFavorite {
+    padding-inline: 15px;
+    height: 48px;
+    border: 1px solid $gray-icons-placeholders;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--selected {
+      border-color: $gray-elements;
+    }
+  }
+
+  &__infoSection {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+
+    font-family: "Mont SemiBold", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  &__infoLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: $gray-secondary;
+  }
+
+  &__infoRight {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    text-align: right;
+    color: $gray-primary;
+  }
+
+}

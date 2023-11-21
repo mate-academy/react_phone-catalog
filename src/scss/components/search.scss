@@ -1,0 +1,31 @@
+.search {
+  &__input {
+    border: none;
+    outline: 0;
+    background: none;
+    width: 100%;
+
+    color: $gray-primary;
+    font-family: "Mont SemiBold", sans-serif;
+
+    &::placeholder {
+      color: #b4bdc3;
+      font-size: 14px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    width: 327px;
+    height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 24px;
+
+    border-left: 1px solid $gray-elements;
+
+    &:focus-within {
+      background-color: #fafbfc;
+    }
+  }
+}

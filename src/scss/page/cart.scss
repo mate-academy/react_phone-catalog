@@ -1,0 +1,72 @@
+.cart {
+  &__wrapper {
+    padding-top: 40px;
+  }
+
+  &__list {
+    width: 752px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 24px;
+  }
+
+  &__amount {
+    color: $gray-primary;
+    font-family: "Mont Bold", sans-serif;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__total {
+    width: 368px;
+    height: 206px;
+    border: 1px solid $gray-elements;
+    padding: 24px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__button {
+    background: $gray-primary;
+    height: 48px;
+    width: 100%;
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__itemsAmount {
+    color: $gray-secondary;
+    text-align: center;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__title {
+    margin-top: 16px;
+  }
+}

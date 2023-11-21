@@ -1,0 +1,106 @@
+.productDetail {
+
+  &__breadcrumbs {
+    margin-top: 24px;
+  }
+
+  &__back {
+    margin-top: 50px;
+  }
+
+  &__titleMain {
+    margin-top: 16px;
+  }
+
+  &__infoTop {
+    margin-top: 40px;
+    display: flex;
+    gap: 64px;
+  }
+
+  &__infoBottom {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    gap: 64px;
+  }
+
+  &__infoBottomLeft {
+    width: 571px;
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+  }
+
+  &__infoBottomRight {
+    width: 501px;
+  }
+
+  &__titleH2 {
+    color: $gray-primary;
+    font-family: "Mont Bold", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    line-height: 140%;
+
+    display: block;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__titleH3 {
+    font-family: "Mont SemiBold", sans-serif;
+    color: $gray-primary;
+    font-size: 20px;
+    font-style: normal;
+    line-height: normal;
+  }
+
+  &__p {
+    color: $gray-secondary;
+
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+
+  &__blokL {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: $gray-secondary;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+  }
+
+  &__blokR {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: $gray-primary;
+    font-family: "Mont Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+    text-align: right;
+  }
+
+}
