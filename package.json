@@ -8,16 +8,23 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "bulma": "^0.9.3",
+    "classnames": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-hook-form": "^7.47.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "^4.0.3",
+    "react-select": "^5.7.7",
+    "react-slideshow-image": "^4.2.1",
+    "react-swipe": "^6.0.4",
+    "swipe-js-iso": "^2.1.5"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
     "@mate-academy/cypress-tools": "^1.0.4",
     "@mate-academy/eslint-config-react": "*",
     "@mate-academy/eslint-config-react-typescript": "*",
-    "@mate-academy/scripts": "^1.2.1",
+    "@mate-academy/scripts": "^1.2.8",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^17.0.23",
@@ -31,6 +38,7 @@
     "mochawesome-merge": "^4.2.0",
     "mochawesome-report-generator": "^6.2.0",
     "node-sass": "^6.0.1",
+    "react-error-overlay": "^6.0.9",
     "stylelint": "^13.13.1",
     "typescript": "^4.6.3"
   },

@@ -1,0 +1,254 @@
+@import "../../helpers/variables.scss";
+
+.phoneCriteria {
+  padding: $pagePadding;
+
+  &__grid {
+    display: grid;
+    column-gap: 16px;
+    row-gap: 32px;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__name {
+    color: $grayColor;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40.9px;
+    margin-bottom: 40px;
+    margin-top: 16px;
+  }
+
+  &__miniContainer {
+    display: flex;
+    flex-direction: column;
+
+    & :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__containerImg {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__mini {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: $border;
+    background-color: $whiteColor;
+
+    margin-bottom: 16px;
+
+    cursor: pointer;
+
+    &--active {
+      border-color: $grayColor;
+    }
+
+    &--img {
+      width: 80px;
+      height: 80px;
+
+      padding: 5px;
+
+      object-fit: contain;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__img {
+    width: 464px;
+    height: 464px;
+
+    margin-left: 16px;
+
+    object-fit: contain;
+  }
+
+  &__chooseOption {
+
+    &--header {
+      color: $liteGrayColor;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15.34px;
+    }
+
+    &--container {
+      min-width: 320px;
+
+      padding-bottom: 24px;
+
+      border-bottom: $border;
+    }
+  }
+
+  &__color {
+
+    &--colorsContainer {
+      display: flex;
+      flex-direction: row;
+
+      & :last-child {
+        margin-right: 0;
+      }
+    }
+
+    &--colors {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+      border-radius: 50px;
+      border: 2px solid $whiteColor;
+      outline: $border;
+
+      cursor: pointer;
+
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
+    }
+
+    &--active {
+      outline: 1px solid $grayColor;
+    }
+
+  }
+
+  &__capacity {
+
+    &--capacityContainer {
+      display: flex;
+      flex-direction: row;
+
+      & :last-child {
+        margin-right: 0;
+      }
+    }
+
+    &--gb {
+      color: $grayColor;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 8px;
+      width: 56px;
+      height: 32px;
+
+      background-color: $whiteColor;
+      border: 1px solid $iconsColor;
+
+      cursor: pointer;
+
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
+    }
+
+    &--active {
+      background-color: $grayColor;
+
+      border: 1px solid $grayColor;
+
+      color: $whiteColor;
+
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+
+  &__cost {
+    display: flex;
+    padding-top: 36px;
+    padding-bottom: 16px;
+    align-items: center;
+
+    &--discount {
+      color: $grayColor;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40.9px;
+      margin-right: 7px;
+    }
+
+    &--real {
+      color: $liteGrayColor;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28.12px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__details {
+    margin-top: 80px;
+    grid-column: 1/13;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__about {
+    width: 50%;
+    margin-right: 68px;
+
+    &--header {
+      color: $grayColor;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 30.8px;
+
+      padding-bottom: 16px;
+      margin: 0;
+
+      border-bottom: $border;
+    }
+
+    &--title {
+      color: $grayColor;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25.56px;
+    }
+
+    &--text {
+      color: $liteGrayColor;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    &--container {
+
+      &--mini {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  &__tech {
+    width: 50%;
+  }
+}

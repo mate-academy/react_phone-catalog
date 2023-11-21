@@ -1,0 +1,22 @@
+@import "../../helpers/variables.scss";
+
+.backButton {
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../icons/chevron-arrow-left-hover.svg");
+    margin-right: 4px;
+  }
+
+  &__text {
+    color: $liteGrayColor;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+  }
+}

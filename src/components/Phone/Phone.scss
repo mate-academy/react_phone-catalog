@@ -1,0 +1,137 @@
+@import "../../helpers/variables.scss";
+
+.phone {
+  list-style: none;
+  margin-right: 16px;
+  padding: 24px;
+  border: $border;
+  margin-bottom: 40px;
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+    margin-bottom: 24px;
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $grayColor;
+    width: 224px;
+    margin-bottom: 6px;
+    min-height: 42px;
+    text-decoration: none;
+
+    cursor: pointer;
+  }
+
+  &__cost {
+    display: flex;
+    border-bottom: $border;
+    padding-bottom: 6px;
+    min-height: 31px;
+
+    &--discount {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 30.8px;
+      color: $grayColor;
+      padding-right: 8px;
+    }
+
+    &--real {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28.12px;
+      color: $liteGrayColor;
+      text-decoration: line-through;
+    }
+  }
+
+  &__criteria {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+    margin-top: 16px;
+
+    &--container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 16px;
+      }
+    }
+
+    &--big {
+      color: $liteGrayColor;
+    }
+
+    &--small {
+      color: $grayColor;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+
+    &--add {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: $whiteColor;
+      background-color: $grayColor;
+      max-width: 320px;
+      height: 40px;
+      margin-right: 8px;
+      flex-grow: 1;
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
+
+      &--active {
+        background-color: $whiteColor;
+        color: $greenColor;
+        border: $border;
+      }
+    }
+
+    &--like {
+      width: 40px;
+      height: 40px;
+      background-image: url("../../icons/favSmall.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $whiteColor;
+      border: $border;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 5px 5px 5px rgba(23, 32, 49, 0.26);
+      }
+
+      &--active {
+        background-image: url("../../icons/favourites-filled.svg");
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import "../../helpers/variables.scss";
+
+.footer {
+  width: 100%;
+  background: $whiteColor;
+  box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 0px 150px;
+  margin-top: 80px;
+  bottom: 0;
+
+  &__img {
+    width: 40px;
+    height: 24px;
+    position: relative;
+  }
+
+  &__up {
+    color: $liteGrayColor;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 23px 0;
+    margin-left: 65px;
+    border: none;
+    cursor: pointer;
+    background-color: $whiteColor;
+
+    &--container {
+      display: flex;
+      align-items: center;
+    }
+
+    &--text {
+      margin-right: 8px;
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    border: $border;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__nav__list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__nav__item {
+    display: flex;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__nav__link {
+    color: $liteGrayColor;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 23px 0;
+    margin-left: 65px;
+    position: relative;
+
+    border-bottom: 5px solid transparent;
+
+    &:hover {
+      color: $grayColor;
+    }
+  }
+}
