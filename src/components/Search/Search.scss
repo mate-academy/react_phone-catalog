@@ -1,0 +1,51 @@
+@import "../../styles/utils";
+
+.Search {
+  position: relative;
+
+  @media (max-width: 1020px) {
+    position: absolute;
+    right: 0;
+    top: 65px;
+    box-shadow: 0 1px 0 0 $color-elements;
+  }
+
+  &__input {
+    padding: 0 0 0 24px;
+    width: 327px;
+    height: 64px;
+    box-shadow: -1px 0 0 0 $color-elements;
+    border: none;
+    outline: none;
+    color: $color-primary;
+    @extend %text-buttons;
+
+    &:focus {
+      background-color: $color-hover;
+    }
+
+    &::placeholder {
+      color: $color-icons;
+    }
+  }
+
+  &__icon {
+    display: block;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    @include square(16px);
+    @include iconsBackground;
+
+    &--search {
+      background-image: url("../../assets/icons/search.svg");
+    }
+
+    &--close {
+      border: none;
+      padding: 0;
+      background-image: url("../../assets/icons/close.svg");
+      cursor: pointer;
+    }
+  }
+}

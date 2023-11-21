@@ -1,0 +1,178 @@
+@import "../../styles/utils";
+
+.ProductDetailsPage {
+  position: relative;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__wrapper {
+    margin-bottom: 80px;
+    display: flex;
+    gap: 64px;
+
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__images {
+    flex-shrink: 1;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__all-images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 81px;
+    height: 464px;
+    overflow-y: scroll;
+  }
+
+  &__image-wrapper {
+    padding: 8px;
+    border: 1px solid $color-elements;
+    background-color: inherit;
+
+    &--selected {
+      border-color: $color-primary;
+    }
+  }
+
+  &__image {
+    display: block;
+    @include square(64px);
+  }
+
+  &__displayed-image-wrapper {
+    @include square(464px);
+    padding: 11px;
+  }
+
+  &__displayed-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 320px;
+  }
+
+  &__info-id {
+    @extend %text-small;
+    color: $color-icons;
+    position: absolute;
+    top: 129px;
+    right: 0;
+  }
+
+  &__about {
+    width: 560px;
+    flex-shrink: 1;
+  }
+
+  &__about-title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 32px;
+  }
+
+  &__about-text {
+    color: $color-secondary;
+  }
+
+  &__specs {
+    width: 512px;
+    flex-shrink: 1;
+  }
+
+  &__specs-title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 32px;
+  }
+
+  &__specs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__spec-name {
+    color: $color-secondary;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__prices {
+    margin-bottom: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__old-price {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+    color: $color-secondary;
+    text-decoration-line: line-through;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    @extend %text-small;
+  }
+
+  &__detail-name {
+    color: $color-secondary;
+  }
+
+  &__detail-text {
+    text-align: end;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  &__add-button {
+    width: 263px;
+    height: 48px;
+  }
+
+  &__favourites-button {
+    @include square(48px);
+  }
+
+  &__suggested-title {
+    margin-bottom: 24px;
+  }
+}

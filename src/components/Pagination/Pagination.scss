@@ -1,0 +1,10 @@
+.Pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+}

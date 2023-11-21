@@ -1,0 +1,26 @@
+@import "./styles/utils";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  @extend %text-body;
+  color: $color-primary;
+}
+
+h1 {
+  @extend %title-large;
+}
+
+h2 {
+  @extend %title-medium;
+}
+
+h3 {
+  @extend %title-small;
+}
+
+button {
+  cursor: pointer;
+}
