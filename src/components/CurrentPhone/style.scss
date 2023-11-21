@@ -1,0 +1,354 @@
+@import "../../styles/index.scss";
+
+.phoneDetails {
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__navBreadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__navBack {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin: 0 0 40px;
+    @include onMobile {
+      font-size: 26px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__section {
+    display: grid;
+    grid-template: auto 1fr / 1fr 1fr;
+    gap: 80px 64px;
+    @include onMiniTablet {
+      place-content: center;
+      grid-template: auto auto auto auto/ 1fr;
+      gap: 28px 44px;
+    }
+    @include onMobile {
+      place-content: center;
+      grid-template: auto auto auto auto/ 1fr;
+      gap: 20px 24px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    @include onMiniTablet {
+      justify-content: center;
+    }
+    @include onMobile {
+      justify-content: center;
+    }
+    &IdText {
+      @extend %smallText;
+      color: $c-icons;
+      margin: 0;
+
+      @include onTablet {
+        display: none;
+      }
+      @include onMiniTablet {
+        display: none;
+      }
+      @include onMobile {
+        display: none;
+      }
+
+    }
+  }
+
+  &__listItems {
+    @include onMobile {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  &__listItem {
+    max-width: 80px;
+    width: 100%;
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include onMobile {
+      display: block;
+      max-width: 60px;
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+
+  &__listItemButton {
+    cursor: pointer;
+    display: flex;
+    background-color: initial;
+    width: 80px;
+    height: 80px;
+    padding: 4px;
+    border: 1px solid #c4c4c4;
+    @include onMobile {
+      border-right-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  &__listItemImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__photos {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    @include onMiniTablet {
+      grid-template-columns: 76px auto;
+      place-items: center;
+      gap: 14px;
+    }
+    @include onMobile {
+      grid-template: auto auto / auto;
+      place-items: center;
+      gap: 14px;
+      &Small {
+        grid-row: 2/ 2;
+        min-width: 100%;
+      }
+    }
+  }
+
+  &__photo {
+    box-sizing: border-box;
+    max-width: 464px;
+    max-height: 464px;
+    width: 100%;
+    height: 100%;
+    padding: 11px;
+    &Big {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    @include onMobile {
+      grid-row: 1 / 1;
+    }
+  }
+}
+
+.infoSelect {
+  box-sizing: border-box;
+  max-width: 320px;
+  width: 100%;
+
+  &__buttonsWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+    margin-bottom: 32px;
+  }
+
+  &__btnAddToCart {
+    box-sizing: border-box;
+    @include addButton(width, 263px);
+    padding: 12px 0;
+  }
+
+  &__button-favorite {
+    box-sizing: border-box;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    border: 1px solid $c-iconsSecondary;
+    cursor: pointer;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    .icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      transform: translateY(2px);
+      transition: all 0.3s ease-in-out;
+      &-hearth {
+        background-image: url("../../images/icons/favorites.svg");
+        &--selected {
+          background-image: url("../../images/icons/favoritesSelected.svg");
+        }
+      }
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid #313237;
+    }
+  }
+
+  @include onMiniTablet {
+    min-width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @include onMobile {
+    min-width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__list {
+    @include onMiniTablet {
+      display: block;
+      width: 100%;
+    }
+    @include onMobile {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__text {
+    @extend %smallText;
+    font-weight: 600;
+    color: $c-secondary;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+    height: 32px;
+  }
+
+  &__underline {
+    display: inline-block;
+    border-bottom: 1px solid $c-elements;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 24px;
+    &--mb32 {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__color {
+    display: block;
+    box-sizing: border-box;
+    outline: 1px solid $c-elements;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 31px;
+    height: 31px;
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+    @include hover(border-color, transparent);
+    &--selected {
+      outline-color: $c-primary;
+    }
+  }
+
+  &__capacities {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__capacitiesBtn {
+    @extend %bodyText;
+    cursor: pointer;
+    text-align: center;
+    color: #000;
+    padding: 7px 8px 4px;
+    background-color: #fff;
+    border: 1px solid $c-icons;
+    @include hover(border-color, black);
+    &--selected {
+      background-color: $c-primary;
+      color: #fff;
+      border-color: $c-primary;
+      @include hover(border-color, $c-icons);
+    }
+  }
+
+  &__listItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__listTitle {
+    @extend %smallText;
+    color: $c-secondary;
+  }
+
+  &__listSpecs {
+    @extend %smallText;
+    color: $c-primary;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    &Regular {
+      color: $c-secondary;
+      font-size: 22px;
+      text-decoration-line: line-through;
+    }
+    &Discount {
+      margin-right: 8px;
+      @extend %h1;
+    }
+  }
+}
+
+.description {
+  &__title {
+    margin: 0 0 16px;
+    @extend %h2;
+  }
+}
+
+.specification {
+  &__title {
+    @extend .description__title;
+  }
+  @include onMobile {
+    margin-bottom: 20px;
+  }
+  @include onMiniTablet {
+    margin-bottom: 20px;
+  }
+}
+
+.colorsList {
+  display: flex;
+  &__item {
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

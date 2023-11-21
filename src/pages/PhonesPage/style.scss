@@ -1,0 +1,73 @@
+@import "../../styles/index.scss";
+
+.breadcrumbsContainer {
+  margin: 24px 0 40px;
+  @include onMobile {
+    margin: 24px 0;
+  }
+}
+
+.pageTitle {
+  @extend %h1;
+  margin: 0 0 8px;
+}
+
+.subTitle {
+  @extend %bodyText;
+  color: $c-secondary;
+  margin-top: 0;
+  margin-bottom: 40px;
+  @include onMobile {
+    margin-bottom: 20px;
+  }
+}
+
+.product {
+  &__selection {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+    @include onMobile {
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__title {
+    @extend %smallText;
+    color: $c-secondary;
+    margin-bottom: 4px;
+  }
+
+  // &__sortBy {
+  //   box-sizing: border-box;
+  //   width: 176px;
+  //   height: 40px;
+  //   line-height: 40px;
+  //   padding-left: 12px;
+  //   border: 1px solid $c-iconsSecondary;
+  //   @extend %buttons;
+  //   background: transparent;
+  //   background-repeat: no-repeat;
+  //   background-position-x: calc( 100% - 15px );
+  //   background-position-y: 50%;
+  //   background-image: url("../../images/icons/arrowDown.svg");
+  //   outline-color: transparent;
+  //   @include focus(background-image, url("../../images/icons/arrowUp.svg"));
+  //   @include focus(outline-color, #313237);
+  // }
+}
+
+// .sortBy {
+//   &__option {
+//     font-family: "Mont", sans-serif;
+//     font-weight: 500;
+//     display: block;
+//     white-space-collapse: collapse;
+//     text-wrap: nowrap;
+//     min-height: 20px;
+//     padding: 100px 2px 1px;
+//   }
+// }

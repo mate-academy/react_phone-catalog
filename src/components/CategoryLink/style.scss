@@ -1,0 +1,39 @@
+@import "../../styles/index.scss";
+
+.item {
+  &__link {
+    text-decoration: inherit;
+  }
+  &__imgContainer {
+    height: 368px;
+    width: 368px;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 24px;
+    @include onTablet {
+      max-width: 100%;
+      width: auto;
+    }
+    @include onMiniTablet {
+      max-width: 100%;
+      width: auto;
+    }
+    @include onMobile {
+      margin-bottom: 12px;
+      max-width: 100%;
+      width: auto;
+    }
+  }
+  &__img {
+    position: absolute;
+  }
+  &__title {
+    @extend %h3;
+    margin: 0 0 4px;
+  }
+  &__subtitle {
+    @extend %bodyText;
+    color: $c-secondary;
+  }
+}

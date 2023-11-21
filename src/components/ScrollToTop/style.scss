@@ -1,0 +1,57 @@
+@import "../../styles/index.scss";
+
+.backToTop {
+  display: flex;
+  position: relative;
+  width: 128px;
+  color: $c-secondary;
+  line-height: 32px;
+  @include onMiniTablet {
+    width: auto;
+  }
+  @include onMobile {
+    width: auto;
+  }
+  &__icon {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $c-iconsSecondary;
+    background-image: url("../../images/icons/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 86px;
+    @include onMiniTablet {
+      margin-left: 0;
+    }
+    @include onMobile {
+      margin-left: 0;
+    }
+    &::before {
+      font-weight: 600;
+      font-size: 12px;
+      box-sizing: border-box;
+      content: "Back to top";
+      line-height: 32px;
+      color: $c-secondary;
+      position: absolute;
+      padding: 0 20px 0 0;
+      left: 0;
+      top: 0;
+      @include hover(color, $c-primary);
+      @include onMiniTablet {
+        content: none;
+      }
+      @include onMobile {
+        content: none;
+      }
+    }
+    @include hover(border-color, $c-primary);
+    &:hover {
+      &::before {
+        color: $c-primary;
+      }
+    }
+  }
+}

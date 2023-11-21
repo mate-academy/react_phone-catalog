@@ -1,1 +1,42 @@
-// not empty
+@import "./styles/index.scss";
+
+body,
+ul,
+li {
+  margin: 0;
+}
+
+li {
+  display: block;
+}
+
+ul {
+  padding: 0;
+}
+
+html,
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+}
+
+.main {
+  min-height: calc(100vh - 96px - 66px);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1136px;
+  overflow: hidden;
+  padding: 0 20px;
+  @include onMiniTablet {
+    max-width: 560px;
+  }
+  @include onTablet {
+    max-width: 848px;
+  }
+}

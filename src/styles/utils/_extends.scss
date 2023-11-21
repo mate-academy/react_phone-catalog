@@ -1,0 +1,72 @@
+%h1 {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
+}
+
+%h2 {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: #313237;
+}
+
+%h3 {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: #313237;
+}
+
+%uppercase {
+  font-family: "Mont", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #313237;
+}
+
+%buttons {
+  font-family: "Mont", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: #313237;
+}
+
+%bodyText {
+  @extend %buttons;
+  font-weight: 500;
+}
+
+%smallText {
+  @extend %buttons;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+%buttonSVG {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+%underline {
+  display: inline-block;
+  border-bottom: 1px solid #e2e6e9;
+  height: 1px;
+  width: 100%;
+  margin-bottom: 16px;
+}

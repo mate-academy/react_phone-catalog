@@ -1,0 +1,14 @@
+@import "../../styles/index.scss";
+
+.description {
+  &__subtitle {
+    @extend %h3;
+    margin: 0 0 16px;
+  }
+
+  &__text {
+    @extend %bodyText;
+    color: $c-secondary;
+    margin: 0 0 32px;
+  }
+}

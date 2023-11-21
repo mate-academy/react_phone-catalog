@@ -1,0 +1,29 @@
+@import "../../styles/index.scss";
+
+.products {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    @include onMobile {
+      justify-content: center;
+    }
+    @include onTablet {
+      gap: 7px;
+    }
+    @include onDesktop {
+      justify-content: start;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    @include onMobile {
+      margin-bottom: 12px;
+    }
+    @include onTablet {
+      margin-bottom: 12px;
+    }
+    margin-bottom: 24px;
+  }
+}

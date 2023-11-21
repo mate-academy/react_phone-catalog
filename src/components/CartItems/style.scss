@@ -1,0 +1,10 @@
+@import "../../styles/index.scss";
+
+.cartItems__list {
+  &Item {
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
