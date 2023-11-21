@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { appContext } from '../Contexts/AppContext';
-import { CartItem } from '../Components/CartItem';
+import { CartItemCard } from '../Components/CartItem';
 import { TextButton } from '../Components/TextButton';
 
 export const Cart = () => {
-  const { cartItems } = useContext(appContext);
+  const { cartItems, setCartItems } = useContext(appContext);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const getTotalPrice = () => {
     const totalPrice = cartItems.reduce(
@@ -16,6 +17,46 @@ export const Cart = () => {
     );
 
     return totalPrice;
+  };
+
+  const getTotalItems = () => {
+    const totalPrice = cartItems.reduce((prev, acc) => acc.quantity + prev, 0);
+
+    return totalPrice;
+  };
+
+  const handleCheckout = () => {
+    setErrorMessage('We are sorry, but this feature is not implemented yet');
+  };
+
+  const addOneToCartItem = (cartItemIndex: number) => {
+    const newItems = [...cartItems];
+
+    newItems[cartItemIndex].quantity += 1;
+    setCartItems(newItems);
+  };
+
+  const removeCartItem = (cartItemIndex: number) => {
+    const newItems = [
+      ...cartItems.slice(0, cartItemIndex),
+      ...cartItems.slice(cartItemIndex + 1, cartItems.length),
+    ];
+
+    setCartItems(newItems);
+  };
+
+  const removeOneFromCartItem = (cartItemIndex: number) => {
+    const newItems = [...cartItems];
+
+    newItems[cartItemIndex].quantity -= 1;
+
+    if (newItems[cartItemIndex].quantity < 1) {
+      removeCartItem(cartItemIndex);
+
+      return;
+    }
+
+    setCartItems(newItems);
   };
 
   return (
@@ -44,16 +85,25 @@ export const Cart = () => {
         <div className="flex gap-x-4">
           <div className="flex flex-col gap-y-4">
             {!!cartItems.length
-              && cartItems.map(item => (
-                <CartItem key={item.product.id} product={item.product} />
+              && cartItems.map((item, i) => (
+                <CartItemCard
+                  increment={() => addOneToCartItem(i)}
+                  decrement={() => removeOneFromCartItem(i)}
+                  removeProduct={() => removeCartItem(i)}
+                  key={item.id}
+                  cartItem={item}
+                />
               ))}
           </div>
 
           <div className="h-[206px] w-[368px] border border-Elements p-6">
             <div className="flex flex-col items-center">
-              <p className={typographyStyle.h1}>{`$${getTotalPrice()}`}</p>
+              <p className={typographyStyle.h1}>
+                $
+                {`${getTotalPrice()}`}
+              </p>
               <p className={`text-Secondary ${typographyStyle.smallText}`}>
-                {`Total for ${cartItems.length} ${
+                {`Total for ${getTotalItems()} ${
                   cartItems.length === 1 ? 'item' : 'items'
                 }`}
               </p>
@@ -61,8 +111,9 @@ export const Cart = () => {
 
             <hr className="my-6" />
 
-            <div className="h-12 w-full">
-              <TextButton>Checkout</TextButton>
+            <div className="relative h-12 w-full">
+              <div className="absolute bottom-full text-xs">{errorMessage}</div>
+              <TextButton onClick={handleCheckout}>Checkout</TextButton>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
+/* eslint-disable max-len */
 import classNames from 'classnames';
 
-/* eslint-disable max-len */
 type Props = {
   active: boolean;
   onClick: (bool: boolean) => void;

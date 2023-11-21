@@ -1,65 +1,23 @@
 /* eslint-disable max-len */
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../api/api';
 import { typographyStyle } from '../CustomStyles/Typography';
-import { ProductType } from '../Types/ProductType';
-import { appContext } from '../Contexts/AppContext';
+import { CartItem } from '../Types/CartItem';
 
 type Props = {
-  product: ProductType;
+  cartItem: CartItem;
+  increment: () => void;
+  decrement: () => void;
+  removeProduct: () => void;
 };
 
-export const CartItem: React.FC<Props> = ({ product }) => {
-  const { cartItems, setCartItems } = useContext(appContext);
-
-  const getItemsQuantity = () => {
-    return cartItems.find(item => item.product.itemId === product.itemId)
-      ?.quantity;
-  };
-
-  const addToCart = () => {
-    const cartItemIndex = cartItems.findIndex(
-      item => item.product.itemId === product.itemId,
-    );
-
-    if (cartItemIndex >= 0) {
-      const newItems = [...cartItems];
-
-      newItems[cartItemIndex].quantity += 1;
-      setCartItems([...newItems]);
-    }
-  };
-
-  const removeOneFromCart = () => {
-    const cartItemIndex = cartItems.findIndex(
-      item => item.product.itemId === product.itemId,
-    );
-
-    if (cartItemIndex >= 0) {
-      const newItems = [...cartItems];
-
-      newItems[cartItemIndex].quantity -= 1;
-
-      if (newItems[cartItemIndex].quantity < 1) {
-        setCartItems([
-          ...newItems.filter(item => item.product.itemId !== product.itemId),
-        ]);
-
-        return;
-      }
-
-      setCartItems([...newItems]);
-    }
-  };
-
-  const removeProduct = () => {
-    const newItems = [
-      ...cartItems.filter(item => item.product.itemId !== product.itemId),
-    ];
-
-    setCartItems([...newItems]);
-  };
+export const CartItemCard: React.FC<Props> = ({
+  cartItem,
+  increment,
+  decrement,
+  removeProduct,
+}) => {
+  const { product } = cartItem;
 
   return (
     <div className="flex h-[128px] w-[752px] items-center border border-Elements">
@@ -87,19 +45,19 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <button
           className="flex h-8 w-8 items-center justify-center border border-Elements"
           type="button"
-          onClick={addToCart}
+          onClick={increment}
         >
           <img src="./Icons/Plus.svg" alt="" />
         </button>
 
         <div className="flex h-8 w-8 items-center justify-center">
-          <p>{getItemsQuantity()}</p>
+          <p>{cartItem.quantity}</p>
         </div>
 
         <button
           className="flex h-8 w-8 items-center justify-center border border-Elements"
           type="button"
-          onClick={removeOneFromCart}
+          onClick={decrement}
         >
           <img src="./Icons/Minus.svg" alt="" />
         </button>

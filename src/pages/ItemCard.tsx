@@ -61,7 +61,10 @@ export const ItemCard: React.FC<Props> = ({ currentItem }) => {
       newItems[cartItemIndex].quantity += 1;
       setCartItems([...newItems]);
     } else {
-      setCartItems([...cartItems, { quantity: 1, product }]);
+      setCartItems([
+        ...cartItems,
+        { quantity: 1, product, id: product.itemId },
+      ]);
     }
   };
 

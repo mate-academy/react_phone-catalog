@@ -23,9 +23,29 @@ export const Pagintaion: React.FC<Props> = ({ pages, currentPage }) => {
     });
   };
 
+  const nextPage = () => {
+    setSearchParams(params => {
+      params.set('page', (currentPage + 1).toString());
+
+      return params;
+    });
+  };
+
+  const prevPage = () => {
+    setSearchParams(params => {
+      params.set('page', (currentPage - 1).toString());
+
+      return params;
+    });
+  };
+
   return (
     <div className="col-span-full flex justify-center gap-x-2">
-      <ArrowButton direction="left" />
+      <ArrowButton
+        onClick={prevPage}
+        disabled={currentPage === 1}
+        direction="left"
+      />
 
       {!!pages.length
         && pages.map(page => (
@@ -38,7 +58,11 @@ export const Pagintaion: React.FC<Props> = ({ pages, currentPage }) => {
           </PaginationButton>
         ))}
 
-      <ArrowButton direction="right" />
+      <ArrowButton
+        onClick={nextPage}
+        disabled={currentPage === pages.length}
+        direction="right"
+      />
     </div>
   );
 };

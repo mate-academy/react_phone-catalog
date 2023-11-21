@@ -42,10 +42,10 @@ export const Catalogue = () => {
 
   const { catalogueId, itemId } = useParams();
 
-  const searchQuery = searchParams.get('query') || '';
-  const currentPage = searchParams.get('page') || '1';
-  const perPage = searchParams.get('per-page') || '8';
-  const sortBy = searchParams.get('sort-by') || '';
+  const searchQuery = searchParams.get('query');
+  const currentPage = searchParams.get('page');
+  const perPage = searchParams.get('per-page');
+  const sortBy = searchParams.get('sort-by');
 
   const defaultSortOption: OptionSortType = {
     value: sortBy || 'year',
@@ -282,7 +282,7 @@ export const Catalogue = () => {
         && !!pages.length
         && !searchQuery
         && !itemId
-        && !Number.isNaN(+perPage) && (
+        && !Number.isNaN(perPage || 8) && (
         <Pagintaion currentPage={+currentPage} pages={pages} />
       )}
     </>

@@ -626,6 +626,10 @@ video {
   bottom: -3px;
 }
 
+.bottom-full {
+  bottom: 100%;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -1309,6 +1313,11 @@ video {
 
 .text-\[8px\] {
   font-size: 8px;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold {
