@@ -1,0 +1,55 @@
+@import "../../styles/style_utils";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  justify-self: end;
+  gap: 16px;
+  padding: 24px 16px;
+  border-top: 1px solid $elements;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: center;
+    height: 96px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @extend %uppercase;
+    color: $secondary;
+    letter-spacing: 0.48px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__back-label {
+    color: $secondary;
+    cursor: pointer;
+  }
+
+  &__back-button {
+    @include squareButton(32px);
+  }
+}

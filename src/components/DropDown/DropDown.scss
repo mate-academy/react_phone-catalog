@@ -1,0 +1,92 @@
+@import "../../styles/style_utils";
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  width: 176px;
+  height: 40px;
+
+  &--small {
+    width: 128px;
+  }
+
+  &__button {
+    @extend %buttons;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px 12px;
+
+    box-sizing: border-box;
+    color: $primary;
+    border: 1px solid $icons;
+    text-align: left;
+
+    &--active {
+      border: 1px solid $primary;
+    }
+
+    &:hover {
+      border: 1px solid $secondary;
+    }
+
+    & svg {
+      fill: $icons;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: calc(100% + 4px);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    border: 1px solid $elements;
+    padding: 8px 0;
+
+    background-color: $white;
+
+    &-enter {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    &-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: $transition;
+    }
+
+    &-exit {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: $transition;
+    }
+  }
+
+  &__option {
+    @extend %body-text;
+    width: 100%;
+    padding: 6px 12px;
+
+    background-color: $white;
+    color: $secondary;
+    text-align: left;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: $primary;
+    }
+  }
+}

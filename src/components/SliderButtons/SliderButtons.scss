@@ -1,0 +1,10 @@
+@import "../../styles/style_utils";
+
+.slider__buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.slider__button {
+  @include squareButton(32px);
+}

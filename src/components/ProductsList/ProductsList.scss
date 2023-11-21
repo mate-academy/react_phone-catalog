@@ -1,0 +1,9 @@
+@import "../../styles/style_utils";
+
+.products-list {
+  display: flex;
+  row-gap: 40px;
+  column-gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}

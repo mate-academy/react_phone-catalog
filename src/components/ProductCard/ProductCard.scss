@@ -1,0 +1,96 @@
+@import "../../styles/style_utils";
+
+.product-card {
+  border: 1px solid $elements;
+  height: 507px;
+  max-width: 272px;
+  width: 100%;
+  padding: 24px 32px 24px 24px;
+  box-shadow: none;
+  transition: $transition;
+  cursor: url("../../img/icons/Cursor.svg"), auto;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__name {
+    margin-bottom: 6px;
+    height: 42px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $primary;
+  }
+
+  &__img-container {
+    display: flex;
+    justify-content: center;
+    height: 208px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    display: block;
+
+    height: 100%;
+    max-width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+
+    &--sale {
+      color: $primary;
+      line-height: 140%;
+    }
+
+    &--full {
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $secondary;
+    }
+  }
+
+  &__info-block {
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    @extend %small-text;
+
+    &-title {
+      color: $secondary;
+    }
+
+    &-text {
+      color: $primary;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+}

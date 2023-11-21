@@ -1,0 +1,73 @@
+@import "../../styles/style_utils";
+
+.products {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__section {
+    margin-bottom: 20px;
+
+    @include onTablet {
+      margin-bottom: 30px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+
+    &--small {
+      margin-bottom: 20px;
+
+      @include onTablet {
+        margin-bottom: 20px;
+      }
+
+      @include onDesktop {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    color: $secondary;
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    flex-direction: column;
+
+    &-dropdown-label {
+      @extend %small-text;
+      margin-bottom: 4px;
+      color: $secondary;
+      line-height: normal;
+    }
+
+    &-dropdown {
+      @include dropDown;
+
+      &--sort {
+        width: 176px;
+      }
+
+      &--perPage {
+        width: 128px;
+      }
+    }
+  }
+}

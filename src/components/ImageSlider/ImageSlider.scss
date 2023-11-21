@@ -1,0 +1,104 @@
+@import "../../styles/style_utils";
+
+.banner {
+  --mobile-hight: 200px;
+  --tablet-hight: 300px;
+  --desktop-hight: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+    width: 100%;
+    height: var(--mobile-hight);
+
+    @include onTablet {
+      height: var(--tablet-hight);
+    }
+
+    @include onDesktop {
+      height: var(--desktop-hight);
+    }
+
+    &-box {
+      width: 100%;
+    }
+
+    &-img {
+      width: 100%;
+      height: var(--mobile-hight);
+
+      object-fit: cover;
+      object-position: center center;
+
+      @include onTablet {
+        height: var(--tablet-hight);
+      }
+
+      @include onDesktop {
+        height: var(--desktop-hight);
+      }
+    }
+
+    &-arrow {
+      fill: $primary;
+    }
+  }
+
+  &__slide {
+    opacity: 0;
+    transition: opacity 1s;
+
+    &-dots {
+      display: flex;
+      gap: 14px;
+      width: 80px;
+      height: 24px;
+    }
+
+    &-dot {
+      height: 4px;
+      width: 14px;
+      background-color: $elements;
+
+      &--active {
+        background-color: $primary;
+      }
+    }
+  }
+
+  &__slide.active {
+    opacity: 1;
+    transition: opacity 1s;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: auto;
+    border: 1px solid $icons;
+    transition: $transition;
+
+    & svg {
+      transform: scale(1);
+      transition: $transition;
+      fill: $primary;
+    }
+
+    &:hover {
+      border-color: $primary;
+
+      & svg {
+        transform: scale(1.4);
+      }
+    }
+  }
+}

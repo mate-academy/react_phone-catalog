@@ -1,0 +1,24 @@
+<svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="24" fill="#E5E5E5"/>
+<g id="Home page (1440)" clip-path="url(#clip0_0_1)">
+<rect width="1440" height="2596" transform="translate(-680 -512)" fill="white"/>
+<g id="Banner slider">
+<g id="Dots">
+<g id="Group 18">
+<rect id="Rectangle 23" x="5" y="10" width="14" height="4" fill="#313237"/>
+</g>
+<g id="Group 19">
+<rect id="Rectangle 23_2" x="33" y="10" width="14" height="4" fill="#E2E6E9"/>
+</g>
+<g id="Group 20">
+<rect id="Rectangle 23_3" x="61" y="10" width="14" height="4" fill="#E2E6E9"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="2596" fill="white" transform="translate(-680 -512)"/>
+</clipPath>
+</defs>
+</svg>
