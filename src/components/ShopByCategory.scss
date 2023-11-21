@@ -1,0 +1,74 @@
+@import "../styles/variables.scss";
+
+.shop-by-category {
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__image-box {
+    margin-bottom: 24px;
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    transition: all $transition-time;
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+
+    &:hover {
+      transform: scale(101%);
+      box-shadow: 0 0 10px 1px rgba(0,0,0,0.35);
+    }
+  }
+
+  &__image {
+    display: block;
+
+    &--phones {
+      width: 386px;
+      height: 457px;
+      object-fit: cover;
+      object-position: left 73px top 8px;
+    }
+
+    &--tablets {
+      width: 546px;
+      object-position: left 22px top 20px;
+    }
+
+    &--accessories {
+      width: 680px;
+      margin-top: 55px;
+      margin-left: 30px;
+    }
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__product-count {
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

@@ -1,0 +1,80 @@
+@import "../styles/variables.scss";
+
+.banner-slider {
+  display: flex;
+  gap: 16px;
+  position: relative;
+
+  &__button {
+    width: 32px;
+    height: 400px;
+    border: 1px solid $gray-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    cursor: pointer;
+    transition: border-color $transition-time;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--left {
+      background-image: url(../img/icons/arrow-left.svg);
+    }
+
+    &--right {
+      background-image: url(../img/icons/arrow-right.svg);
+    }
+  }
+
+  &__body {
+    width: 1040px;
+    height: 400px;
+    transition: width $transition-time;
+    overflow: hidden;
+  }
+
+  &__list {
+    width: 3120px;
+    height: 400px;
+    transition: transform $transition-time, width $transition-time;
+  }
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    transition: width $transition-time, height $transition-time;
+  }
+
+  &__dots {
+    position: absolute;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    width: 80px;
+    height: 24px;
+    padding: 10px 5px;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__dot-item {
+    width: 14px;
+    height: 4px;
+    background-color: $gray-elements;
+    cursor: pointer;
+    transition: background-color $transition-time;
+
+    &:hover {
+      background-color: $gray-secondary;
+    }
+
+    &--active {
+      background-color: $gray-primary;
+    }
+  }
+}

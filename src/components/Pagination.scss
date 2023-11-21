@@ -1,0 +1,48 @@
+@import "../styles/variables.scss";
+
+.pagination {
+  display: flex;
+  gap: 8px;
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-elements;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    &--left {
+      background-image: url(../img/icons/arrow-left.svg);
+      border-color: $gray-icons;
+    }
+
+    &--right {
+      background-image: url(../img/icons/arrow-right.svg);
+      border-color: $gray-icons;
+    }
+
+    &--disabled {
+      cursor: none;
+      border-color: $gray-elements;
+      pointer-events: none;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $gray-primary;
+      cursor: none;
+      pointer-events: none;
+    }
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+}

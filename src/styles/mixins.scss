@@ -1,0 +1,8 @@
+@import "../styles/variables.scss";
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-time ease;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

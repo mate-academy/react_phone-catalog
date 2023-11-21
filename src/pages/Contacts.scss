@@ -1,0 +1,23 @@
+@import "../styles/variables.scss";
+@import "../styles/extends.scss";
+@import "../styles/mixins.scss";
+
+.contacts {
+  @extend %pageMargins;
+
+  &__bread-crumbs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    @extend %h1-Title;
+  }
+
+  &__link {
+    color: $gray-secondary;
+    font-size: 20px;
+    font-weight: 500;
+    @include hover(color, $gray-primary);
+  }
+}

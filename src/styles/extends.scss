@@ -1,0 +1,13 @@
+@import "../styles/variables.scss";
+
+%pageMargins {
+  padding-top: 24px;
+  margin-bottom: 80px;
+}
+
+%h1-Title {
+  color: $gray-primary;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+}

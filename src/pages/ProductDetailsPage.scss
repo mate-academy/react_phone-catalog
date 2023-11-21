@@ -1,0 +1,257 @@
+@import "../styles/variables.scss";
+@import "../styles/extends.scss";
+
+.product {
+  @extend %pageMargins;
+
+  &__not-found {
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__bread-crumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back-link {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    @extend %h1-Title;
+  }
+
+  &__main {
+    display: flex;
+    gap: 76px;
+    margin-bottom: 80px;
+  }
+
+  &__images {
+    display: flex;
+    gap: 27px;
+  }
+
+  &__images-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image-box {
+    width: 80px;
+    height: 80px;
+    padding: 6px;
+    border: 1px solid $gray-elements;
+    transition: border-color $transition-time;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--active {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__image-main {
+    width: 442px;
+    height: 442px;
+    object-fit: contain;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__details-title {
+    margin-bottom: 8px;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__details-text {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__details-items {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__colors-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $gray-elements;
+  }
+
+  &__color {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+  
+  &__capacity {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__capacity-item {
+    height: 32px;
+    padding: 7px 8px 4px;
+    border: 1px solid $gray-icons;
+
+    &--selected {
+      background-color: $gray-primary;
+      color: #fff;
+      border-color: $gray-primary;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__price-discount {
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__price-regular {
+    color: $gray-secondary;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration-line: line-through;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-value {
+    color: $gray-primary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__description {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__about {
+    width: 559px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__description-title {
+    color: $gray-primary;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__paragraph-text {
+    margin-bottom: 16px;
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__paragraph {
+    margin-bottom: 32px;
+
+    &:last-of-type {
+      margin: 0;
+
+      & .product__paragraph-text {
+        margin: 0;
+      }
+    }
+  }
+
+  &__paragraph-title {
+    margin-bottom: 16px;
+    color: $gray-primary;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__specification {
+    width: 512px;
+  }
+
+  &__specs-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__specs-text {
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__specs-value {
+    color: $gray-primary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: right;
+  }
+
+  &__also-like-title {
+    margin-bottom: 24px;
+    @extend %h1-Title;
+  }
+}

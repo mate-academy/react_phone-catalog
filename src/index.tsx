@@ -1,8 +1,14 @@
 import ReactDOM from 'react-dom';
-
-import App from './App';
+import { Root } from './Root';
+import { CartProvider } from './context/CartContext';
+import './index.scss';
+import { FavouritesProvider } from './context/FavouritesContext';
 
 ReactDOM.render(
-  <App />,
+  <CartProvider>
+    <FavouritesProvider>
+      <Root />
+    </FavouritesProvider>
+  </CartProvider>,
   document.getElementById('root'),
 );

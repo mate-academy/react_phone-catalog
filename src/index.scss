@@ -1,0 +1,13 @@
+@import "./styles/reset.scss";
+@import "./styles/fonts.scss";
+@import "./styles/variables.scss";
+@import "./styles/mixins.scss";
+@import "./styles/extends.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Mont", Arial, Helvetica, sans-serif;
+}
