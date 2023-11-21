@@ -1,0 +1,45 @@
+@import "../../style/utils/vars.scss";
+
+.pagination {
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    width: 32px;
+    height: 32px;
+
+    &--disabled {
+      border-color: $elements;
+      pointer-events: none;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    border: 1px solid $icons;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--active {
+      color: $white;
+      background-color: $primary;
+      border-color: $primary;
+      pointer-events: none;
+    }
+  }
+}

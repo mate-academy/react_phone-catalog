@@ -1,0 +1,17 @@
+@import "../../style/utils/vars.scss";
+
+.back {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+
+  &__button {
+    border: none;
+    background-color: $white;
+    color: $secondary;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

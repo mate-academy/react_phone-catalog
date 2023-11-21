@@ -1,0 +1,37 @@
+@import "../../style/utils/vars.scss";
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 80px;
+
+  &__description {
+    width: 560px;
+  }
+
+  &__tech {
+    width: 512px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--container {
+      padding-top: 32px;
+    }
+  }
+
+  &__title {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+  }
+
+  &__text {
+    padding-top: 32px;
+    color: $secondary;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+}

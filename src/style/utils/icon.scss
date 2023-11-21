@@ -1,0 +1,77 @@
+.icon {
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &--logo {
+    background-image: url(../../img/Icons/Logo.svg);
+    width: 40px;
+    height: 24px;
+  }
+
+  &--arrow {
+    background-image: url(../../img/Icons/Arrow.svg);
+    cursor: pointer;
+  }
+
+  &--arrow-dis {
+    background-image: url(../../img/Icons/Arrow_gray.svg);
+    cursor: auto;
+  }
+
+  &--prev {
+    transform: rotate(-90deg);
+  }
+
+  &--next {
+    transform: rotate(90deg);
+  }
+
+  &--down {
+    transform: rotate(180deg);
+  }
+
+  &--favourites {
+    background-image: url(../../img/Icons/Favourites.svg);
+  }
+
+  &--favourites-red {
+    background-image: url(../../img/Icons/Favourites__red.svg);
+  }
+
+  &--home {
+    background-image: url(../../img/Icons/Home.svg);
+
+    &:hover {
+      transform: scale(110%);
+    }
+  }
+
+  &--search {
+    background-image: url(../../img/Icons/Search.svg);
+  }
+
+  &--cart {
+    background-image: url(../../img/Icons/Card.svg);
+  }
+
+  &--cross {
+    background-image: url(../../img/Icons/Close.svg);
+  }
+
+  &--plus {
+    background-image: url(../../img/Icons/Plus.svg);
+  }
+
+  &--minus {
+    background-image: url(../../img/Icons/Minus.svg);
+  }
+
+  &--minus-gray {
+    background-image: url(../../img/Icons/Minus_gray.svg);
+  }
+}

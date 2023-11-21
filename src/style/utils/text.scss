@@ -1,0 +1,55 @@
+.text {
+  color: $primary;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+
+  &--uppercase {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  &--gray {
+    color: $secondary;
+  }
+
+  &--small {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  &--strikethrough {
+    text-decoration: line-through;
+  }
+
+  &--h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    line-height: normal;
+  }
+
+  &--h2 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30px;
+  }
+
+  &--h2-strikethrough {
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration: line-through;
+    color: $secondary;
+    line-height: normal;
+  }
+
+  &--h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,17 @@
+.home-page {
+  width: 1440px;
+  padding: 0 152px;
+
+  &__banner {
+    padding-top: 40px;
+  }
+
+  &__hot-price {
+    padding-top: 72px;
+  }
+
+  &__brand-new,
+  &__category {
+    padding-top: 80px;
+  }
+}
