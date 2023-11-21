@@ -1,0 +1,53 @@
+@import "../../styles/utils";
+
+.picture-slider {
+  height: 432px;
+  margin-top: 40px;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__images-container {
+    width: 1040px;
+    height: 400px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &__slider-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    left: 0;
+    top: 0;
+  }
+
+  &__dots {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  &__dot-container {
+    padding: 10px 5px;
+  }
+
+  &__dot {
+    background-color: $elements-color;
+    height: 4px;
+    width: 14px;
+    transition: background-color 1000ms ease-in-out;
+
+    &--active {
+      background-color: $primery-color;
+    }
+  }
+}

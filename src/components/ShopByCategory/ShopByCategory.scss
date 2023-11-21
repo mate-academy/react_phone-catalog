@@ -1,0 +1,51 @@
+@import "../../styles/utils";
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 368px);
+    column-gap: 16px;
+  }
+
+  &__wrap-link {
+    height: 443px;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 368px;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+  }
+
+  &__img--phones {
+    background-color: #fcdbc1;
+    background-image: url("../../img/categories/phones.png");
+  }
+
+  &__img--tablets {
+    background-color: #8d8d92;
+    background-image: url("../../img/categories//tablets.png");
+  }
+
+  &__img--accessories {
+    background-color: #d53c51;
+    background-image: url("../../img/categories/accessories.png");
+  }
+
+  &__title {
+    @extend %h3-style;
+    color: $primery-color;
+  }
+
+  &__info {
+    @extend %body-text;
+    color: $secondary-color;
+  }
+}

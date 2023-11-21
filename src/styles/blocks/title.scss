@@ -1,0 +1,24 @@
+@import "../utils";
+
+.title {
+  &--h1 {
+    @extend %h1-style;
+    color: $primery-color;
+  }
+
+  &--h2 {
+    @extend %h2-style;
+    color: $primery-color;
+  }
+
+  &--h3 {
+    @extend %h3-style;
+    color: $primery-color;
+  }
+
+  &--empty-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

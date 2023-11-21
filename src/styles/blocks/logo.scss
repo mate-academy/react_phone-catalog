@@ -1,0 +1,11 @@
+@import "../_utils.scss";
+
+.logo {
+  display: block;
+  width: 40px;
+  height: 24px;
+
+  &__img {
+    @include hover(transform, (scale(1.1)));
+  }
+}

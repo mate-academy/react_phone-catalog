@@ -1,0 +1,78 @@
+@import "../../styles/utils";
+
+.card {
+  width: 272px;
+  height: 507px;
+  border: 1px solid $elements-color;
+
+  &__img {
+    margin: 32px 32px 0;
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+
+    @include hover(transform, (scale(1.1)));
+  }
+
+  &__info {
+    margin: 24px;
+  }
+
+  &__title {
+    @extend %body-text;
+    color: $primery-color;
+    margin-bottom: 8px;
+    height: 42px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    &-new {
+      @extend %h2-style;
+      color: $primery-color;
+    }
+
+    &-old {
+      font-family: $mont-regular;
+      color: $secondary-color;
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+
+  &__line {
+    background-color: $elements-color;
+    height: 1px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    &-box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      @extend %small-text;
+      color: $secondary-color;
+    }
+
+    &-details {
+      @extend %small-text;
+      color: $primery-color;
+    }
+  }
+
+  &__btns-container {
+    display: flex;
+    gap: 8px;
+  }
+}

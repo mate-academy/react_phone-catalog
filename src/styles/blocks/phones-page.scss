@@ -1,0 +1,32 @@
+@import "../utils";
+@import "../blocks/page-navigation";
+@import "../blocks/title";
+
+.phones-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__info {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__wrap {
+    display: flex;
+    gap: 16px;
+  }
+}

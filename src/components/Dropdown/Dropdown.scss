@@ -1,0 +1,11 @@
+@import "../../styles/utils";
+
+.dropdown-box {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+}

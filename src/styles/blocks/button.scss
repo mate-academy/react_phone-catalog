@@ -1,0 +1,150 @@
+@import "../utils";
+
+.button {
+  cursor: pointer;
+  box-shadow: none;
+
+  &--count {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--dropdown {
+    width: 176px;
+    height: 40px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+
+    &-small {
+      width: 128px;
+    }
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+
+    &:focus {
+      border: 1px solid $primery-color;
+    }
+  }
+
+  &__text {
+    @extend %buttons;
+
+    &--color {
+      color: $primery-color;
+    }
+  }
+
+  &--clear {
+    border: none;
+    background-color: $white-color;
+  }
+
+  &--direction {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &--card-add {
+    width: 176px;
+    background-color: $primery-color;
+    color: $white-color;
+
+    &:hover {
+      box-shadow: 0 3 13px 0 #17203142;
+    }
+  }
+
+  &--favourites {
+    width: 40px;
+    height: 40px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &--hover {
+    &:hover {
+      border: 1px solid $primery-color;
+    }
+  }
+
+  &--slider {
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &--details-page {
+    display: flex;
+    align-items: center;
+    border: none;
+  }
+
+  &--slide-details {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border: 1px solid #e2e6e9;
+    padding: 7px;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 2px 0.5px $primery-color;
+    }
+  }
+
+  &--big {
+    background-color: $primery-color;
+    color: $white-color;
+
+    &:hover {
+      background: $primery-color;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &--details {
+    width: 263px;
+    height: 48px;
+  }
+
+  &--checkout {
+    width: 320px;
+    height: 48px;
+  }
+
+  &--card {
+    width: 176px;
+    height: 40px;
+  }
+
+  &--product-details-favourites {
+    width: 48px;
+    height: 48px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &--selected {
+    background-color: $white-color;
+    color: $green-color;
+  }
+
+  &--disabled {
+    border: 1px solid $elements-color;
+  }
+
+}

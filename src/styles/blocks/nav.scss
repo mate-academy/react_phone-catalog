@@ -1,0 +1,35 @@
+@import "../utils";
+
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__link {
+    position: relative;
+    @extend %upper-case;
+    color: $secondary-color;
+
+    &:hover {
+      color: $primery-color;
+    }
+
+    &--is-active {
+      color: $primery-color;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        background-color: $primery-color;
+        height: 3px;
+        bottom: -23px;
+        left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import "../utils";
+
+.dropdown {
+  display: inline-flex;
+  position: relative;
+  vertical-align: top;
+
+  &__menu {
+    display: none;
+    width: 176px;
+    position: absolute;
+    top: calc(100% + 4px);
+    z-index: 4;
+
+    &--small {
+      width: 128px;
+    }
+  }
+
+  &__is-active {
+    .dropdown__menu {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background-color: $white-color;
+    border-radius: 0;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    padding-block: 8px;
+  }
+
+  &__item {
+    @extend %body-text;
+    color: $secondary-color;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 32px;
+    text-align: inherit;
+    white-space: nowrap;
+    width: 100%;
+    padding-left: 12px;
+
+    &:hover {
+      background-color: $hoverPlusBG;
+      color: $primery-color;
+    }
+  }
+}
