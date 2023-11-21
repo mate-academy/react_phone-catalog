@@ -11,6 +11,7 @@ import { ProductCard } from '../Components/ProductCard';
 import { scrollToTop } from '../utils/scrollToTop';
 import { Pagintaion } from '../Components/Pagintaion';
 import { PaginationHelper } from '../utils/PaginationHelper';
+import { Loader } from '../Components/Loader';
 
 type OptionPaginationType = { value: string; label: string };
 type OptionSortType = {
@@ -207,7 +208,7 @@ export const Catalogue = () => {
               }`}
           </p>
 
-          {!searchQuery && (
+          {!searchQuery && !!visibleProducts.length && (
             <>
               <hr className="col-span-full mb-10 border-0" />
 
@@ -265,12 +266,16 @@ export const Catalogue = () => {
 
           <hr className="col-span-full mb-6 border-0" />
 
-          <div className="col-span-full grid grid-cols-4 gap-4">
-            {!!visibleProducts.length
-              && visibleProducts.map(product => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-          </div>
+          {!visibleProducts.length ? (
+            <Loader />
+          ) : (
+            <div className="col-span-full grid grid-cols-4 gap-4">
+              {!!visibleProducts.length
+                && visibleProducts.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+          )}
 
           <hr className="col-span-full mb-10 border-0" />
         </>

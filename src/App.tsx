@@ -96,7 +96,7 @@ const App = () => {
           <nav
             className={`flex h-full items-center gap-x-16 ${typographyStyle.uppercase}`}
           >
-            <a className="flex h-[96px] items-center" href="#github">
+            <a className="flex h-[96px] items-center" href="https://github.com/donizer/react_phone-catalog/">
               github
             </a>
             <a className="flex h-[96px] items-center" href="#contacts">
