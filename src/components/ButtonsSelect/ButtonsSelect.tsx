@@ -30,7 +30,7 @@ export const ButtonsSelect: React.FC<Props> = ({
             <div className="buttons__button-container" key={content}>
               <Link
                 to={prepareLink(location.pathname, ChangeType.COLOR, content)}
-                state={{ path: location.pathname }}
+                state={{ path: location.pathname, loaderOff: true }}
               >
                 <Button
                   content="color"
@@ -47,7 +47,7 @@ export const ButtonsSelect: React.FC<Props> = ({
               <Link
                 to={prepareLink(location.pathname,
                   ChangeType.CAPACITY, content)}
-                state={{ path: location.pathname }}
+                state={{ path: location.pathname, loaderOff: true }}
               >
                 <Button
                   content="text"

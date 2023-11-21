@@ -4,7 +4,7 @@
 import '../../styles/pages/ProductDetails/ProductDetails.scss';
 
 import { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Crumbs } from '../../components/Crumbs';
 import { GoBackButton } from '../../components/GoBackButton';
 import { ButtonsSelect } from '../../components/ButtonsSelect';
@@ -41,6 +41,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedImageId, setSelectedImageId] = useState(0);
   const { itemId } = useParams();
+  const location = useLocation();
 
   const normalizedItemId = itemId || '';
 
@@ -99,7 +100,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
 
   return (
     <main className="product-details">
-      {isLoading && (
+      {isLoading && !location.state.loaderOff && (
         <Loader />
       )}
 
