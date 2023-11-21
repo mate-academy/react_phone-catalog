@@ -1,0 +1,102 @@
+@import "/src/style/main.scss";
+
+.like {
+  margin: 32px auto 0;
+
+  &__wrapper {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin: 0 auto 28px;
+
+    width: 272px;
+
+    @include onTablet {
+      width: 560px;
+    }
+
+    @include onDesktop {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 24px;
+    width: 200px;
+
+    @include onTablet {
+      font-size: 32px;
+      width: auto;
+    }
+  }
+
+  &__button {
+    background: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-color: #fff;
+
+    display: flex;
+
+    &--left {
+      height: 32px;
+      width: 32px;
+      border: 1px solid #e2e6e9;
+      margin-right: 8px;
+      background-image: url(../../images/icons/ArrowLeft.svg);
+
+      &--active {
+        background-image: url(../../images/icons/ArrowLeft.svg);
+      }
+    }
+
+    &--right {
+      height: 32px;
+      width: 32px;
+      border: 1px solid #e2e6e9;
+      background-image: url(../../images/icons/ArrowRight.svg);
+
+      &--active {
+        background-image: url(../../images/icons/ArrowRight.svg);
+      }
+    }
+  }
+}
+
+.swiper {
+  &-slide {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  &__slider {
+    height: 100%;
+    width: 1136px;
+  }
+
+  &__like {
+    height: 100%;
+
+    @include onDesktop {
+      width: 1136px;
+    }
+  }
+}
+
+.swiper-container {
+  width: 480px;
+}
+
+@media screen and (min-width: 900px) {
+  .swiper-container {
+    width: 900px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
+  }
+}

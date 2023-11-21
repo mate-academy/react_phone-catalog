@@ -1,0 +1,41 @@
+@import "/src/style/main.scss";
+
+.phones {
+  &__list {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(1, 272px);
+    row-gap: 20px;
+
+    justify-content: center;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 272px);
+      gap: 16px;
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 272px);
+      width: 1136px;
+    }
+
+    &--card {
+      margin-bottom: 40px;
+
+      &:nth-child(4n) {
+        gap: 0;
+      }
+    }
+  }
+}
+
+.title {
+  &_p {
+    color: $gray-secondary;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

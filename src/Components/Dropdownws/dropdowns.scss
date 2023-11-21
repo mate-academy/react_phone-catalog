@@ -1,0 +1,44 @@
+@import "/src/style/main.scss";
+
+.dropdowns {
+  margin: 20px 0;
+  
+  @include onTablet {
+    display: flex;
+    margin: 40px 0 0;
+    gap: 20px;
+  }
+
+  &__sort {
+    font-family: "Montserrat", sans-serif;
+    padding: 8px;
+    color: $gray-primary;
+    margin-top: 4px;
+    width: 176px;
+    height: 40px;
+    border: 1px solid $gray-icons-placeholders;
+    margin-bottom: 20px;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+      transition: border 0.5s ease;
+      cursor: pointer;
+    }
+  }
+
+  &__items {
+    font-family: "Montserrat", sans-serif;
+    padding: 8px;
+    color: $gray-primary;
+    margin-top: 4px;
+    width: 176px;
+    height: 40px;
+    border: 1px solid $gray-icons-placeholders;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+      transition: border 0.5s ease;
+      cursor: pointer;
+    }
+  }
+}

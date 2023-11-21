@@ -1,0 +1,41 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 25px 0 40px;
+
+  &__icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-color: $gray-white;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__pages {
+    text-decoration: none;
+  }
+
+  &__button {
+    border: none;
+    background-image: url("../../images//icons/Home.svg");
+  }
+
+  &__arrow {
+    background-image: url("../../images/icons/ArrowRightDisabled.svg");
+  }
+
+  &__phoneId {
+    color: $gray-secondary;
+  }
+}
+
+.title {
+  margin: 40px 0 0;
+
+  &__p {
+    color: $gray-secondary;
+    margin-top: 8px;
+  }
+}

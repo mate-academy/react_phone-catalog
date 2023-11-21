@@ -1,0 +1,147 @@
+@import "/src/style/main.scss";
+
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 64px;
+  height: 64px;
+
+  &__logo {
+    width: 40px;
+    margin: 0 64px 0 24px;
+    background-image: url("../../images/LOGO.svg");
+  }
+
+  &__favourites {
+    text-decoration: none;
+    box-shadow: -1px 0 0 0 $color-shadow;
+    background-image: url("../../images/icons/Favourites.svg");
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 64px;
+      height: 3px;
+      background-color: $gray-primary;
+    }
+  }
+
+  &__shopping {
+    box-shadow: -1px 0 0 0 $color-shadow;
+    background-image: url("../../images/icons/Shopping.svg");
+
+    &--active {
+      position: relative;
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
+    }
+  }
+
+  &__menu {
+    box-shadow: -1px 0 0 0 $color-shadow;
+    background-image: url("../../images/icons/BurgerMenu.svg");
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__close {
+    box-shadow: -1px 0 0 0 $color-shadow;
+    background-image: url("../../images/icons/MenuCloce.svg");
+
+    @include onTablet {
+      display: none;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  align-items: center;
+  background: $gray-white;
+  box-shadow: 0 1px 0 0 $color-shadow;
+  box-sizing: border-box;
+
+  &__personally {
+    display: flex;
+    gap: 64px;
+
+    &:nth-last-child(1) {
+      gap: 0;
+    }
+
+    &:first-child {
+      gap: 0;
+      margin: 0;
+    }
+  }
+
+  &__links {
+    display: none;
+    gap: 64px;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__link {
+    position: relative;
+    box-sizing: border-box;
+    padding: 27px 0 26px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: $gray-secondary;
+
+    &--active {
+      color: $gray-primary;
+    }
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $gray-primary;
+    }
+
+    &:last-child {
+      margin-right: 2px;
+    }
+  }
+}
+
+.slected {
+  position: relative;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  background-color: #eb5757;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  top: 30%;
+  left: 50%;
+
+  &__text {
+    color: #fff;
+    text-align: center;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

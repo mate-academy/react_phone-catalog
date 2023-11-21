@@ -1,0 +1,209 @@
+@import "/src/style/main.scss";
+
+.params {
+  max-width: 320px;
+
+  @include onDesktop {
+    width: 420px;
+  }
+
+  &__color {
+    padding: 0 0 24px;
+    margin: 0 0 24px;
+    border-bottom: 1px solid $color-shadow;
+
+    &--heading {
+      color: $gray-secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__capacity {
+    padding: 0 0 24px;
+    margin: 0 0 24px;
+    border-bottom: 1px solid $color-shadow;
+
+    &--heading {
+      color: $gray-secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__shop {
+    &__price {
+      display: flex;
+      position: relative;
+      margin-top: 6px;
+      gap: 8px;
+      align-items: center;
+
+      &--current {
+        margin: 0;
+        color: $gray-primary;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 140%;
+      }
+
+      &--discount {
+        margin: 0;
+        color: $gray-secondary;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: line-through;
+        max-width: 320px;
+      }
+    }
+
+    &__button {
+      display: flex;
+      margin: 16px 0 0;
+      align-items: center;
+      justify-content: space-between;
+
+      &--add {
+        width: 100%;
+        height: 40px;
+        color: $gray-white;
+        background: $gray-primary;
+        border: none;
+        font-weight: 600;
+
+        &:hover {
+          background: $gray-primary;
+          color: orangered;
+          transition: color 0.5s;
+          box-shadow: 3px 3px 13px 0 rgba(23, 32, 49, 0.26);
+        }
+      }
+
+      &--isActive {
+        width: 100%;
+        height: 40px;
+        font-weight: 600;
+        color: #27ae60;
+        background: $gray-white;
+        border: 1px solid $gray-icons-placeholders;
+
+        &:hover {
+          color: maroon;
+          transition: color 0.5s;
+        }
+      }
+
+      &--favourites {
+        &-wrapper {
+          margin-left: 8px;
+          width: 40px;
+          height: 40px;
+          background-color: $gray-white;
+          border: solid 1px $gray-icons-placeholders;
+
+          &:hover {
+            border: 1px solid $gray-primary;
+          }
+        }
+
+        height: 40px;
+        color: $gray-primary;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        background-image: url("../../images/icons/Favourites.svg");
+
+        &--isActive {
+          background-image: url("../../images/icons/FavouritesSelected.svg");
+        }
+      }
+    }
+  }
+
+  &__description {
+    margin: 32px 0 0;
+
+    &--specs {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--name {
+      color: $gray-secondary;
+    }
+
+    &--value {
+      color: $gray-primary;
+    }
+  }
+}
+
+.colors {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__border {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $color-shadow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: gray;
+      transition: 0.3s ease;
+    }
+
+    &--selected {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+
+  }
+}
+
+.capacities {
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 63px;
+    height: 32px;
+    text-decoration: none;
+    border: 1px solid $gray-icons-placeholders;
+
+    color: $gray-primary;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--selected {
+      color: #fff;
+      background-color: $gray-primary;
+    }
+  }
+}

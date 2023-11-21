@@ -1,0 +1,88 @@
+@import "/src/style/main.scss";
+
+.cart {
+  max-width: 1136px;
+  margin: 0 24px;
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 40px 0 24px;
+
+    &--cart {
+      margin-top: 16px;
+    }
+  }
+
+  &__content {
+    @include onDesktop {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--cards {
+      max-width: 752px;
+      margin: 0 auto;
+    }
+  }
+
+  &__outcome {
+    margin: 0 auto 20px;
+    padding: 24px;
+
+    max-width: 368px;
+    max-height: 206px;
+    border: 1px solid $color-shadow;
+
+    @include onDesktop {
+      margin-left: 16px;
+    }
+
+    &--price {
+      text-align: center;
+    }
+
+    &--total {
+      margin: 0 auto;
+      text-align: center;
+      color: $gray-secondary;
+      min-width: 100%;
+      border-bottom: 1px solid $color-shadow;
+
+      @include onTablet {
+        width: 320px;
+      }
+    }
+
+    &--checkout {
+      margin-top: 24px;
+      width: 100%;
+      height: 48px;
+
+      background-color: $gray-primary;
+      color: $gray-white;
+      border: none;
+
+      font-family: "Montserrat",
+        sans-serif;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+
+      &:active {
+        background-color: $gray-white;
+        color: #27ae60;
+        border: 1px solid $color-shadow;
+        box-shadow: none;
+      }
+    }
+  }
+}
