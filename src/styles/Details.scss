@@ -1,0 +1,350 @@
+.details {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  display: block;
+  padding: 0 178px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+    margin-bottom: 45px;
+  }
+
+  &__product {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+  &__photo_container {
+    grid-column: 1 / 3;
+    margin-bottom: 70px;
+  }
+
+  &__small_photo {
+    height: 80px;
+    width: 80px;
+    border: 1px solid #e2e6e9;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 16px;
+    cursor: pointer;
+
+    transition: border-color 0.3s;
+
+    &--active {
+      border-color: #313237;
+    }
+  }
+
+  &__photo {
+    width: 464px;
+    height: 464px;
+    grid-row: 1;
+    grid-column: 3 / 13;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    margin-bottom: 70px;
+    cursor: zoom-in;
+
+    transition: transform 0.3s;
+
+    &--active {
+      transform: scale(150%) translateX(35%);
+      z-index: 35;
+      cursor: zoom-out;
+    }
+  }
+
+  &__cover {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #313237;
+    transform: scale(300%);
+    z-index: 30;
+    opacity: 0.6;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__characteristics {
+    grid-column: 14 / 21;
+  }
+
+  &__subtitle {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    margin: 0 0 12px;
+    padding: 0;
+  }
+
+  &__color_container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  &__color_button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__color_border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #e2e6e9;
+    border-radius: 50%;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    &--active {
+      border-color: #313237;
+    }
+  }
+
+  &__color {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: #e2e6e9;
+    margin-bottom: 24px;
+  }
+
+  &__capacity_container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  &__capacity_button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &__capacity {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    border: 1px solid #b4bdc3;
+    padding: 4px 8px;
+
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+
+    &:hover {
+      color: #fff;
+      border-color: #313237;
+      background-color: #313237;
+    }
+
+    &--active {
+      color: #fff;
+      border-color: #313237;
+      background-color: #313237;
+    }
+  }
+
+  &__price_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+
+    &_old {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 28px;
+      color: #89939a;
+      text-decoration: line-through;
+    }
+  }
+
+  &__button_container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+  }
+
+  &__button_add {
+    display: flex;
+    flex-grow: 1;
+    cursor: pointer;
+    height: 48px;
+    background-color: #313237;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    border: none;
+
+    transition: border 0.3s, background-color 0.3s, color 0.3s;
+
+    &--active {
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      color: #27ae60;
+    }
+  }
+
+  &__button_favourites {
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 48px;
+    width: 48px;
+    border: 1px solid #b4bdc3;
+    background-color: #fff;
+    background-image: url(".././images/Stroke.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    margin-left: 16px;
+
+    transition: border-color 0.3s;
+
+    &--active {
+      background-image: url(".././images/StrokeRed.svg");
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  &__description_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
+    margin-bottom: 7px;
+  }
+
+  &__description {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+  }
+
+  &__value {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #313237;
+  }
+
+  &__id {
+    display: flex;
+    justify-content: right;
+    grid-column: 21 / 25;
+    grid-row: 1;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #b4bdc3;
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+    grid-row: 2;
+    margin-bottom: 80px;
+
+    &--techSpecs {
+      grid-column: 14 / 25;
+    }
+
+    &_title {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 31px;
+      color: #313237;
+      padding: 0;
+      margin: 0 0 30px;
+    }
+
+    &_subtitle {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      color: #313237;
+      padding: 20px 0 0;
+      margin: 0 0 30px;
+    }
+
+    &_text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+      padding: 0;
+      margin: 0 0 50px;
+    }
+
+    &_specs {
+      padding: 20px 0 0;
+    }
+
+    &_container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      flex-grow: 1;
+      margin-bottom: 12px;
+    }
+  
+    &_spec {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939a;
+    }
+  
+    &_value {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #313237;
+    }
+  }
+}

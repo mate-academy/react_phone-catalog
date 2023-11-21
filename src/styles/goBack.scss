@@ -1,0 +1,30 @@
+.goGack {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0 25px;
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url("../images/StrokeLeft.svg");
+    background-position: center;
+    background-size: 6px;
+    background-repeat: no-repeat;
+  }
+
+  &__button {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 15px;
+    color: #89939a;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+}

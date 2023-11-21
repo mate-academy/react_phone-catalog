@@ -1,0 +1,76 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  padding: 20px 178px;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    width: 40px;
+    height: 11px;
+    background-image: url("../images/LOGO.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__link_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding-left: 100px;
+  }
+
+  &__link {
+    display: block;
+    margin: 0;
+    text-decoration: none;
+    color: #89939a;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 700;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__button_container {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__button_text {
+    color: #89939a;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid #b4bdc3;
+    background-image: url("../images/StrokeTop.svg");
+    background-position: center;
+    background-size: 17px;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    cursor: pointer;
+
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}

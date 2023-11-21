@@ -1,0 +1,240 @@
+.cart {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 178px;
+
+  &__title {
+    color: #313237;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    margin: 0 0 15px;
+    z-index: 15;
+
+    &--error {
+      font-size: 30px;
+      margin: 20px 0 80px;
+      text-align: center;
+    }
+  }
+
+  &__loader_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    margin-bottom: 35px;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-grow: 1;
+    margin-bottom: 80px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: 1;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    height: 138px;
+    max-height: 138px;
+    border: 1px solid #e2e6e9;
+    padding: 0 35px 0 30px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__button {
+    height: 16px;
+    width: 16px;
+    background-image: url("../images/Close.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &__subtitle {
+    color: #313237;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+  }
+
+  &__amount {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &__quantity {
+    display: flex;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    align-items: center;
+  }
+
+  &__number {
+    text-align: center;
+    width: 12px;
+  }
+
+  &__changeAmount {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    background-position: center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &__remove {
+    background-image: url("../images/Minus.svg");
+  }
+
+  &__add {
+    background-image: url("../images/Plus.svg");
+  }
+
+  &__price_container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__price {
+    color: #313237;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 700;
+  }
+
+  &__list_container {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    opacity: 0.5;
+  }
+
+  &__list_loader {
+    position: absolute;
+    display: block;
+    top: 32px;
+    left: 50%;
+  }
+
+  &__cost {
+    display: flex;
+    height: 206px;
+    flex-grow: 1;
+    border: 1px solid #e2e6e9;
+  }
+
+  &__checkout {
+    position: relative;
+    box-sizing: border-box;
+    width: 368px;
+    height: 206px;
+    border: 1px solid #e2e6e9;
+    padding: 30px;
+  }
+
+  &__totalCost {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    color: #313237;
+    text-align: center;
+    margin: 0 0 10px;
+  }
+
+  &__totalQuantity {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+    text-align: center;
+    margin: 0 0 30px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: #e2e6e9;
+  }
+
+  &__mainButton {
+    width: 100%;
+    height: 48px;
+    background-color: #313237;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+
+    &:active {
+      background-color: #fff;
+      border: 1px solid #313237;
+      color: #313237;
+    }
+  }
+
+  &__checkout_message {
+    position: absolute;
+    top: 250px;
+    left: 85px;
+    width: 210px;
+    height: 50px;
+    z-index: 20;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: #89939a;
+    opacity: 0;
+
+    transition: opacity 0.3s;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+}

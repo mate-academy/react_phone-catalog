@@ -55,7 +55,7 @@ to links container.
     - Create `getPhones` API call fetching the products with the `type`: `phone`
 1. Add `ProductsList` with `data-cy="productList"` attribute showing all the `phones`
 1. Implement a `Loader` to show it while waiting for the data from server
-1. Add ability to sort the products by `age` (`Newest`, `value="age"`), `name` (`Alphabetically`, `value="name"`) and `price` (`Cheapest`, `value="price"`) using `<select>` element.
+1. Add ability to sort the products by `age` (`Newest`, `value="age"`), `name` (`Alphabetically`, `value="name"`) and `price` (``1``, `value="price"`) using `<select>` element.
     - (*) save sort order in the URL `?sort=age` and apply it after the page reload
 1. Add `Pagination` using `data-cy="pagination"` for it's components container and `Items on page` using `<select>` element with `4`, `8`, `16` and `all` options. Add attributes `data-cy="paginationLeft"` and `data-cy="paginationRight"` to pagination buttons
     - It should limit the products you show to the user
