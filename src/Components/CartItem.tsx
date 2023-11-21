@@ -53,9 +53,17 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     }
   };
 
+  const removeProduct = () => {
+    const newItems = [
+      ...cartItems.filter(item => item.product.itemId !== product.itemId),
+    ];
+
+    setCartItems([...newItems]);
+  };
+
   return (
     <div className="flex h-[128px] w-[752px] items-center border border-Elements">
-      <button className="mx-6" type="button">
+      <button onClick={removeProduct} className="mx-6" type="button">
         <img src="./Icons/Close.svg" alt="" />
       </button>
 

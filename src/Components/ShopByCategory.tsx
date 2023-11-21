@@ -8,12 +8,6 @@ import { appContext } from '../Contexts/AppContext';
 export const ShopByCategory = () => {
   const { products } = useContext(appContext);
 
-  const handleOnClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => {
-    e.preventDefault();
-  };
-
   return (
     <>
       <h2 className={`col-span-6  ${typographyStyle.h1}`}>Shop by category</h2>
@@ -22,7 +16,6 @@ export const ShopByCategory = () => {
 
       <div className="col-span-12  flex gap-x-4">
         <Link
-          className={classNames('', { 'cursor-not-allowed': false })}
           to="catalogue/phones"
         >
           <div
@@ -37,9 +30,7 @@ export const ShopByCategory = () => {
         </Link>
 
         <Link
-          className={classNames('', { 'cursor-not-allowed': true })}
           to="catalogue/tablets"
-          onClick={handleOnClick}
         >
           <div className="bg-tablet-ctg mb-6 h-[368px] w-[368px] bg-[#8D8D92] bg-right-bottom bg-no-repeat" />
           <h3 className={`mb-1 ${typographyStyle.h3}`}>Tablets</h3>
@@ -49,9 +40,7 @@ export const ShopByCategory = () => {
         </Link>
 
         <Link
-          className={classNames('', { 'cursor-not-allowed': true })}
           to="catalogue/accessories"
-          onClick={handleOnClick}
         >
           <div className="bg-accessory-ctg mb-6 h-[368px] w-[368px] bg-[#973D5F] bg-right-bottom bg-no-repeat" />
           <h3 className={`mb-1 ${typographyStyle.h3}`}>Accessories</h3>

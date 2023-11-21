@@ -6,15 +6,17 @@ import Select, { StylesConfig, ClassNamesConfig } from 'react-select';
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import { appContext } from '../Contexts/AppContext';
-import type {
-  OptionPaginationType,
-  OptionSortType,
-} from '../Contexts/AppContext';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductCard } from '../Components/ProductCard';
 import { scrollToTop } from '../utils/scrollToTop';
 import { Pagintaion } from '../Components/Pagintaion';
 import { PaginationHelper } from '../utils/PaginationHelper';
+
+type OptionPaginationType = { value: string; label: string };
+type OptionSortType = {
+  value: string;
+  label: string;
+};
 
 const paginationOptions: OptionPaginationType[] = [
   { value: '8', label: '8' },
@@ -37,105 +39,67 @@ export const Catalogue = () => {
     setSearchParams,
     searchParams,
   } = useContext(appContext);
-  const currentPage = searchParams.get('page');
-  const perPage = searchParams.get('per-page');
-  const sortBy = searchParams.get('sort-by');
+
   const { catalogueId, itemId } = useParams();
-  const [sortOption, setSortOption] = useState<OptionSortType>({
+
+  const searchQuery = searchParams.get('query') || '';
+  const currentPage = searchParams.get('page') || '1';
+  const perPage = searchParams.get('per-page') || '8';
+  const sortBy = searchParams.get('sort-by') || '';
+
+  const defaultSortOption: OptionSortType = {
     value: sortBy || 'year',
-    label: 'Newest',
-  });
+    label: sortBy
+      ? sortOptions.find(option => option.value === sortBy)?.label || 'Newest'
+      : 'Newest',
+  };
+
+  const defaultPaginationOption: OptionPaginationType = {
+    value: perPage || '8',
+    label: perPage || '8',
+  };
+
+  const [sortOption, setSortOption]
+    = useState<OptionSortType>(defaultSortOption);
   const [paginationOption, setPaginationOption]
-    = useState<OptionPaginationType>({
-      value: perPage || '8',
-      label: perPage || '8',
-    });
+    = useState<OptionPaginationType>(defaultPaginationOption);
 
   const pagination = new PaginationHelper(
-    visibleProducts,
+    categoryProducts,
     +paginationOption.value,
   );
-
   const pages = Array.from({ length: pagination.pageCount() })
     .fill(0)
     .map((_, i) => i + 1);
 
-  const handlePagintaionChange = (item: OptionPaginationType) => {
+  const setSearchAndSetOption = (
+    item: OptionPaginationType | OptionSortType,
+    key: string,
+  ) => {
     setSearchParams(params => {
-      params.set('per-page', item.value.toString());
+      params.set(key, item.value.toString());
 
       return params;
     });
 
-    setPaginationOption(() => {
-      switch (item.value) {
-        case '8': {
-          return {
-            value: item.value,
-            label: item.value,
-          };
-        }
+    switch (key) {
+      case 'per-page':
+        setPaginationOption(item as OptionPaginationType);
+        break;
+      case 'sort-by':
+        setSortOption(item as OptionSortType);
+        break;
+      default:
+        break;
+    }
+  };
 
-        case '16': {
-          return {
-            value: item.value,
-            label: item.value,
-          };
-        }
-
-        case '32': {
-          return {
-            value: item.value,
-            label: item.value,
-          };
-        }
-
-        default:
-          return {
-            value: '8',
-            label: '8',
-          };
-      }
-    });
+  const handlePagintaionChange = (item: OptionPaginationType) => {
+    setSearchAndSetOption(item, 'per-page');
   };
 
   const handleSortChange = (item: OptionSortType) => {
-    setSearchParams(params => {
-      params.set('sort-by', item.value.toString());
-
-      return params;
-    });
-
-    setSortOption(() => {
-      switch (item.value) {
-        case 'year': {
-          return {
-            value: item.value,
-            label: 'Newest',
-          };
-        }
-
-        case 'name': {
-          return {
-            value: item.value,
-            label: 'Alphabetically',
-          };
-        }
-
-        case 'price': {
-          return {
-            value: item.value,
-            label: 'Cheapest',
-          };
-        }
-
-        default:
-          return {
-            value: item.value,
-            label: 'Newest',
-          };
-      }
-    });
+    setSearchAndSetOption(item, 'sort-by');
   };
 
   const customStyles: StylesConfig = {
@@ -177,35 +141,21 @@ export const Catalogue = () => {
     scrollToTop();
 
     if (!currentPage) {
-      setSearchParams(params => {
-        params.set('page', '1');
-
-        return params;
-      });
+      setSearchAndSetOption({ value: '1', label: '1' }, 'page');
     }
 
     if (!perPage) {
-      setPaginationOption({
-        value: '8',
-        label: '8',
-      });
+      setPaginationOption(defaultPaginationOption);
     }
 
     if (!sortBy) {
-      setSortOption({
-        value: 'year',
-        label: 'Newest',
-      });
+      setSortOption(defaultSortOption);
     }
   }, [searchParams]);
 
   useEffect(() => {
-    setSearchParams(params => {
-      params.set('page', '1');
-
-      return params;
-    });
-  }, [perPage]);
+    setSearchAndSetOption({ value: '1', label: '1' }, 'page');
+  }, [perPage, sortBy]);
 
   return (
     <>
@@ -246,85 +196,80 @@ export const Catalogue = () => {
           <p
             className={`col-span-full text-Secondary ${typographyStyle.bodyText}`}
           >
-            {`${categoryProducts.length} ${
-              categoryProducts.length === 1 ? 'model' : 'models'
-            }`}
+            {searchQuery && `found ${visibleProducts.length} models`}
+
+            {!searchQuery && categoryProducts.length === 0 && 'not found'}
+
+            {!searchQuery
+              && categoryProducts.length !== 0
+              && `${categoryProducts.length} ${
+                categoryProducts.length === 1 ? 'model' : 'models'
+              }`}
           </p>
 
-          <hr className="col-span-full mb-10 border-0" />
+          {!searchQuery && (
+            <>
+              <hr className="col-span-full mb-10 border-0" />
 
-          <form className="col-span-full flex">
-            <div className="flex gap-x-4">
-              <div className="flex flex-col gap-y-1">
-                <label
-                  className={`block text-Secondary ${typographyStyle.smallText}`}
-                  id="aria-label"
-                  htmlFor="aria-example-input"
-                >
-                  Sort by
-                </label>
+              <form className="col-span-full flex">
+                <div className="flex gap-x-4">
+                  <div className="flex flex-col gap-y-1">
+                    <label
+                      className={`block text-Secondary ${typographyStyle.smallText}`}
+                      id="aria-label"
+                      htmlFor="aria-example-input"
+                    >
+                      Sort by
+                    </label>
 
-                <Select
-                  value={sortOption}
-                  isSearchable={false}
-                  unstyled
-                  aria-labelledby="aria-label"
-                  inputId="aria-example-input"
-                  styles={customStyles}
-                  className={`h-10 w-[176px] appearance-none text-Primary ${typographyStyle.button}`}
-                  classNames={customClasses}
-                  defaultValue={sortOptions[0]}
-                  options={sortOptions}
-                  onChange={e => handleSortChange(e as OptionSortType)}
-                />
-              </div>
+                    <Select
+                      options={sortOptions}
+                      onChange={e => handleSortChange(e as OptionSortType)}
+                      value={sortOption}
+                      isSearchable={false}
+                      unstyled
+                      aria-labelledby="aria-label"
+                      inputId="aria-example-input"
+                      styles={customStyles}
+                      className={`h-10 w-[176px] appearance-none text-Primary ${typographyStyle.button}`}
+                      classNames={customClasses}
+                    />
+                  </div>
 
-              <div className="flex flex-col gap-y-1">
-                <label
-                  className={`block text-Secondary ${typographyStyle.smallText}`}
-                  id="aria-label"
-                  htmlFor="aria-example-input"
-                >
-                  Per page
-                </label>
+                  <div className="flex flex-col gap-y-1">
+                    <label
+                      className={`block text-Secondary ${typographyStyle.smallText}`}
+                      id="aria-label"
+                      htmlFor="aria-example-input"
+                    >
+                      Per page
+                    </label>
 
-                <Select
-                  value={paginationOption}
-                  isSearchable={false}
-                  unstyled
-                  aria-labelledby="aria-label"
-                  inputId="aria-example-input"
-                  styles={customStyles}
-                  className={`h-10 w-[128px] appearance-none text-Primary ${typographyStyle.button}`}
-                  classNames={customClasses}
-                  onChange={e => handlePagintaionChange(e as OptionPaginationType)}
-                  defaultValue={paginationOptions[0]}
-                  options={paginationOptions}
-                />
-              </div>
-            </div>
-          </form>
-
-          <hr className="col-span-full mb-6 border-0" />
-
-          {currentPage && perPage && !Number.isNaN(+perPage) && (
-            <Pagintaion currentPage={+currentPage} pages={pages} />
+                    <Select
+                      value={paginationOption}
+                      isSearchable={false}
+                      unstyled
+                      aria-labelledby="aria-label"
+                      inputId="aria-example-input"
+                      styles={customStyles}
+                      className={`h-10 w-[128px] appearance-none text-Primary ${typographyStyle.button}`}
+                      classNames={customClasses}
+                      onChange={e => handlePagintaionChange(e as OptionPaginationType)}
+                      options={paginationOptions}
+                    />
+                  </div>
+                </div>
+              </form>
+            </>
           )}
 
           <hr className="col-span-full mb-6 border-0" />
 
           <div className="col-span-full grid grid-cols-4 gap-4">
-            {!!visibleProducts
-              && currentPage
-              && perPage
-              && visibleProducts
-                .slice(
-                  (+currentPage - 1) * +perPage,
-                  (+currentPage - 1) * +perPage + +perPage,
-                )
-                .map(product => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+            {!!visibleProducts.length
+              && visibleProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
           </div>
 
           <hr className="col-span-full mb-10 border-0" />
@@ -332,6 +277,14 @@ export const Catalogue = () => {
       )}
 
       <hr className="col-span-full mb-20 border-0" />
+
+      {currentPage
+        && !!pages.length
+        && !searchQuery
+        && !itemId
+        && !Number.isNaN(+perPage) && (
+        <Pagintaion currentPage={+currentPage} pages={pages} />
+      )}
     </>
   );
 };

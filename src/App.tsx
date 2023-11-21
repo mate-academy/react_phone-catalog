@@ -9,8 +9,22 @@ import { scrollToTop } from './utils/scrollToTop';
 import { appContext } from './Contexts/AppContext';
 
 const App = () => {
-  const { favorites, cartItems } = useContext(appContext);
+  const {
+    favorites,
+    cartItems,
+    searchParams,
+    setSearchParams,
+  } = useContext(appContext);
   const { catalogueId, itemId } = useParams();
+  const searchQuery = searchParams.get('query') || '';
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchParams(params => {
+      params.set('query', event.target.value);
+
+      return params;
+    });
+  };
 
   const getTotalCartItem = () => {
     return cartItems.reduce((prev, acc) => prev + acc.quantity, 0);
@@ -39,18 +53,14 @@ const App = () => {
               <StylishNavButton to="catalogue/accessories">
                 accessories
               </StylishNavButton>
-
-              <StylishNavButton to="404">404</StylishNavButton>
-
-              <StylishNavButton to="catalogue/phones/apple-iphone-11-64gb-purple">
-                Apple iPhone 11
-              </StylishNavButton>
             </nav>
 
             <div className="flex justify-self-end">
               {catalogueId && !itemId && (
                 <div className="flex h-full w-80 items-center border border-r-0 border-Elements px-6 ">
                   <input
+                    value={searchQuery}
+                    onChange={handleInputChange}
                     className={`h-full w-80 outline-none ${typographyStyle.button}`}
                     placeholder={`Search in ${catalogueId}...`}
                     type="text"
@@ -97,7 +107,7 @@ const App = () => {
             </a>
           </nav>
 
-          <div className="flex h-full items-center gap-x-4 font-Mont text-[12px] font-semibold hover:cursor-pointer">
+          <div className="flex h-full items-center gap-x-4 font-Mont text-[12px] font-semibold">
             <label className="hover:cursor-pointer" htmlFor="to-top">
               Back to top:
             </label>

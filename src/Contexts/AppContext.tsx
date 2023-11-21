@@ -1,6 +1,8 @@
+/* eslint-disable max-len */
 import {
   createContext, useState, useCallback, useEffect,
 } from 'react';
+import { debounce } from 'lodash';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 import { api } from '../api/api';
@@ -13,7 +15,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-type DefaultAppType = {
+type AppContextType = {
   products: ProductType[];
   setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
   categoryProducts: ProductType[];
@@ -30,13 +32,7 @@ type DefaultAppType = {
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
 };
 
-export type OptionPaginationType = { value: string; label: string };
-export type OptionSortType = {
-  value: string;
-  label: string;
-};
-
-const DefaultAppValues: DefaultAppType = {
+const DefaultAppValues: AppContextType = {
   products: [],
   setProducts: () => null,
   categoryProducts: [],
@@ -53,26 +49,27 @@ const DefaultAppValues: DefaultAppType = {
   setCartItems: () => null,
 };
 
-export const appContext = createContext<DefaultAppType>(DefaultAppValues);
+export const appContext = createContext<AppContextType>(DefaultAppValues);
 
 export const AppContextProvider: React.FC<Props> = ({ children }) => {
-  const params = useLocation();
-
+  const { pathname } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductType[]>([]);
   const [categoryProducts, setCategoryProducts] = useState<ProductType[]>([]);
   const [visibleProducts, setVisibleProducts] = useState<ProductType[]>([]);
   const [currentItem, setCurrentItem] = useState<PhoneType | null>(null);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
   const [favorites, setFavorites] = useLocalStorage<ProductType[]>(
     'favorites',
     [],
   );
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  const perPage = searchParams.get('per-page');
-  const sortBy = searchParams.get('sort-by');
+  const searchQuery = searchParams.get('query') || '';
+  const perPage = searchParams.get('per-page') || '8';
+  const sortBy = searchParams.get('sort-by') || 'year';
+  const page = searchParams.get('page') || '1';
 
-  const state: DefaultAppType = {
+  const state: AppContextType = {
     products,
     setProducts,
     categoryProducts,
@@ -93,11 +90,9 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     try {
       const data = await api.getNewPhones();
 
-      if (!data) {
-        return;
+      if (data) {
+        setProducts(data);
       }
-
-      setProducts(data);
     } catch {
       setProducts([]);
     }
@@ -108,63 +103,70 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    let preparedVisibleProducts = [...products];
-
-    if (params) {
-      preparedVisibleProducts = preparedVisibleProducts.filter(product => {
-        return params.pathname.includes(product.category);
-      });
-    }
+    const preparedVisibleProducts = products.filter(product => {
+      return pathname.includes(product.category);
+    });
 
     setCategoryProducts(preparedVisibleProducts);
-  }, [products, params]);
+  }, [products, pathname]);
+
+  const sortProducts = (productsToSort: ProductType[], sortType: string) => {
+    switch (sortType) {
+      case 'year':
+        return productsToSort.sort((a, b) => {
+          const yearComparison = b.year - a.year;
+          const priceComparison = b.price - a.price;
+
+          return yearComparison !== 0 ? yearComparison : priceComparison;
+        });
+      case 'price':
+        return productsToSort.sort((a, b) => a.price - b.price);
+      case 'name':
+        return productsToSort.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+      default:
+        return productsToSort;
+    }
+  };
 
   useEffect(() => {
     let preparedVisibleProducts = [...categoryProducts];
 
-    if (sortBy) {
-      switch (sortBy) {
-        case 'year':
-          preparedVisibleProducts = preparedVisibleProducts.sort((a, b) => {
-            const yearComparison = b.year - a.year;
-            const priceComparison = b.price - a.price;
+    const debouncedFilter = debounce((array: ProductType[]) => {
+      let newArr = [...array];
 
-            return yearComparison !== 0 ? yearComparison : priceComparison;
-          });
+      newArr = array.filter(product => {
+        return product.name
+          .toLowerCase()
+          .includes(searchQuery.trim().toLowerCase());
+      });
 
-          break;
-        case 'price':
-          preparedVisibleProducts = preparedVisibleProducts.sort(
-            (a, b) => a.price - b.price,
-          );
-          break;
-        case 'name':
-          preparedVisibleProducts = preparedVisibleProducts.sort((a, b) => {
-            if (a.name.toLowerCase() > b.name.toLowerCase()) {
-              return 1;
-            }
+      setVisibleProducts(newArr);
+    }, 500);
 
-            if (a.name.toLowerCase() < b.name.toLowerCase()) {
-              return -1;
-            }
+    if (searchQuery) {
+      setVisibleProducts([]);
+      debouncedFilter(preparedVisibleProducts);
 
-            return 0;
-          });
-          break;
-
-        default:
-      }
+      return;
     }
 
-    // if (perPage) {
-    //   preparedVisibleProducts = preparedVisibleProducts.slice(
-    //     0,
-    //     perPage !== 'All' && perPage ? +perPage : products.length,
-    //   );
-    // }
+    if (sortBy) {
+      preparedVisibleProducts = sortProducts(preparedVisibleProducts, sortBy);
+    } else {
+      preparedVisibleProducts = sortProducts(preparedVisibleProducts, 'year');
+    }
+
+    if (perPage !== 'All') {
+      const startIndex = (+page - 1) * +perPage;
+
+      preparedVisibleProducts = preparedVisibleProducts.slice(
+        startIndex,
+        startIndex + +perPage,
+      );
+    }
 
     setVisibleProducts(preparedVisibleProducts);
-  }, [perPage, sortBy, categoryProducts, params.pathname]);
+  }, [perPage, searchQuery, page, sortBy, categoryProducts]);
 
   return <appContext.Provider value={state}>{children}</appContext.Provider>;
 };
