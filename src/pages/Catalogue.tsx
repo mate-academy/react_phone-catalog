@@ -44,7 +44,7 @@ export const Catalogue = () => {
   const { catalogueId, itemId } = useParams();
 
   const searchQuery = searchParams.get('query');
-  const currentPage = searchParams.get('page');
+  const currentPage = searchParams.get('page') || 1;
   const perPage = searchParams.get('per-page');
   const sortBy = searchParams.get('sort-by');
 
@@ -141,9 +141,11 @@ export const Catalogue = () => {
   useEffect(() => {
     scrollToTop();
 
-    if (!currentPage) {
-      setSearchAndSetOption({ value: '1', label: '1' }, 'page');
-    }
+    setSearchParams(params => {
+      params.set('page', '1');
+
+      return params;
+    });
 
     if (!perPage) {
       setPaginationOption(defaultPaginationOption);
@@ -152,11 +154,7 @@ export const Catalogue = () => {
     if (!sortBy) {
       setSortOption(defaultSortOption);
     }
-  }, [searchParams]);
-
-  useEffect(() => {
-    setSearchAndSetOption({ value: '1', label: '1' }, 'page');
-  }, [perPage, sortBy]);
+  }, [perPage]);
 
   return (
     <>

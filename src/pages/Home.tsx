@@ -28,14 +28,12 @@ export const Home = () => {
 
         <BannerItem
           src={`${baseUrl}/_new/img/banner-tablets.png`}
-          to="catalogue/phones"
-          disabled
+          to="catalogue/tablets"
         />
 
         <BannerItem
           src={`${baseUrl}/_new/img/banner-accessories.png`}
-          to="catalogue/phones"
-          disabled
+          to="catalogue/accessories"
         />
       </Carousel>
 
