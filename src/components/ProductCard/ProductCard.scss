@@ -1,0 +1,127 @@
+@import "../../styles/main.scss";
+
+.product-card {
+  position: relative;
+  box-sizing: border-box;
+  width: 280px;
+  padding: 24px;
+  background-color: $white-color;
+  border: 1px solid $elements-color;
+  transition: all 0.5s;
+
+  @include onDesktop {
+    max-width: 272px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    font-size: 60px;
+    text-decoration: none;
+    transition: all 0.5s;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include squareSize(208px);
+    margin-bottom: 24px;
+  }
+
+  &__picture {
+    height: 100%;
+  }
+
+  &__title {
+    width: 224px;
+    height: 42px;
+    margin-bottom: 8px;
+    @extend %body-text;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__discountPrice {
+    @extend %h2-text;
+  }
+
+  &__fullPrice {
+    @extend %h2-text;
+    font-weight: $font-weight-regular;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    @extend %body-small-text;
+  }
+
+  &__feature-item {
+    display: flex;
+    justify-content: space-between;
+    color: $secondary-color;
+  }
+
+  &__feature-info {
+    display: flex;
+    color: $primary-color;
+  }
+}
+
+.card {
+  animation: fadeInSlideIn 0.5s ease-in-out;
+
+  &-enter {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeInSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/main.scss";
+
+.navbar {
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    @extend %uppercase-text;
+    text-decoration: none;
+    color: $secondary-color;
+    border-bottom: 2px solid transparent;
+    border-radius: 20%;
+
+    @include onDesktop {
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+    }
+
+    &--active {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:hover {
+      color: $primary-color;
+      transition: color 0.5s;
+    }
+  }
+}

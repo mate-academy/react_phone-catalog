@@ -1,0 +1,14 @@
+[
+  {
+    "title": "phones",
+    "image": "img/banners/banner-phones.png"
+  },
+  {
+    "title": "tablets",
+    "image": "img/banners/banner-tablets.png"
+  },
+  {
+    "title": "accessories",
+    "image": "img/banners/banner-accessories.png"
+  }
+]

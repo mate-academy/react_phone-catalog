@@ -1,0 +1,105 @@
+@import "../../styles/main.scss";
+
+.header {
+  position: absolute;
+  box-sizing: border-box;
+  height: 64px;
+  margin-bottom: 16px;
+
+  @include onDesktop {
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    @include onDesktop {
+      padding-left: 24px;
+      padding-right: 64px;
+    }
+
+    &--cart {
+      padding-left: 24px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include onDesktop {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  height: 64px;
+
+  &__menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid $elements-color;
+
+    @include onDesktop {
+      display: none;
+    }
+
+    &:hover {
+      border-bottom: none;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $elements-color;
+  }
+
+  &__link {
+    display: flex;
+    padding: 22px 24px;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.5s;
+
+    @include onDesktop {
+      border-bottom: 3px solid transparent;
+    }
+
+    &--button {
+      background-color: $white-color;
+      border-top-style: none;
+      border-right-style: none;
+      border-left-style: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      @include onDesktop {
+        border-color: $icons-color;
+      }
+    }
+
+    &--active {
+      border-color: $primary-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
+  }
+}

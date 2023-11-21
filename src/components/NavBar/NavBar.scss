@@ -1,0 +1,29 @@
+@import "../../styles/main.scss";
+
+.navbar {
+  display: flex;
+  gap: 64px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 54px;
+  border-bottom: 1px solid $elements-color;
+  background-color: $white-color;
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 14px 24px;
+    box-shadow: inset 3px 47px 35px -58px rgba(23, 32, 49, 0.28),
+      -7px 17px 15px rgba(23, 32, 49, 0.14);
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@import "../../styles/main.scss";
+
+.top-button {
+  display: flex;
+  align-items: center;
+
+  @extend %body-small-text;
+  color: $secondary-color;
+  text-decoration: none;
+  transition: color 0.5s, border 0.5s;
+
+  &__text {
+    display: none;
+
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+
+  &:hover .topButton__icon {
+    border-color: $primary-color;
+  }
+
+  &__icon {
+    padding: 9px;
+    border: 1px solid $icons-color;
+    transition: color 0.5s, border 0.5s;
+
+    @include onDesktop {
+      margin-left: 16px;
+    }
+  }
+}

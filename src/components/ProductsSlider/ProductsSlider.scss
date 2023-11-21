@@ -1,0 +1,46 @@
+@import "../../styles/main.scss";
+
+.products-slider {
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include squareSize(32px);
+    padding: 0 6px;
+    box-sizing: border-box;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+    cursor: pointer;
+    transition: color 0.5s, border 0.5s;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      border-color: $elements-color;
+      cursor: auto;
+    }
+  }
+
+  &__content {
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+}

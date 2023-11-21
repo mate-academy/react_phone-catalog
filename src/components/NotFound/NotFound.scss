@@ -1,0 +1,27 @@
+@import "../../styles/main.scss";
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    height: 340px;
+    width: 280px;
+    margin-bottom: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/notFoundImage/404-page-animation.gif);
+
+    @include onDesktop {
+      height: 400px;
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+
+  &__text {
+    display: flex;
+    justify-content: center;
+    @extend %h1-text;
+  }
+}

@@ -1,0 +1,88 @@
+@import "../../styles/main.scss";
+
+.icon {
+  display: block;
+  @include squareSize(16px);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__favorite {
+    background-image: url(../../images/icons/Favorite.svg);
+
+    &--active {
+      background-image: url(../../images/icons/favorite-selected.svg);
+    }
+  }
+
+  &__cart {
+    background-image: url(../../images/icons/Cart.svg);
+  }
+
+  &__arrow-up {
+    background-image: url(../../images/icons/arrow-up.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-up-disabled.svg);
+    }
+  }
+
+  &__arrow-down {
+    background-image: url(../../images/icons/arrow-down.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-down-disabled.svg);
+    }
+  }
+
+  &__arrow-left {
+    background-image: url(../../images/icons/arrow-left.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-left-disabled.svg);
+    }
+  }
+
+  &__arrow-right {
+    background-image: url(../../images/icons/arrow-right.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-right-disabled.svg);
+    }
+  }
+
+  &__home {
+    background-image: url(../../images/icons/Home.svg);
+  }
+
+  &__search {
+    background-image: url(../../images/icons/Loupe.svg);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__cross {
+    background-image: url(../../images/icons/cross.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/cross-disabled.svg);
+    }
+  }
+
+  &__menu {
+    background-image: url(../../images/icons/menu-burger.svg);
+  }
+
+  &__minus {
+    background-image: url(../../images/icons/minus.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/minus-disabled.svg);
+    }
+  }
+
+  &__plus {
+    background-image: url(../../images/icons/plus.svg);
+  }
+}

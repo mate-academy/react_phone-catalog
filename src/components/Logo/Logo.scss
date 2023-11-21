@@ -1,0 +1,9 @@
+@import "../../styles/main.scss";
+
+.logo {
+  height: 14px;
+
+  @include onDesktop {
+    height: initial;
+  }
+}
