@@ -1,0 +1,52 @@
+@import "../../style/main.scss";
+
+.Footer {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 96px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $elements-grey-c;
+
+  &__logo {
+    display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &-image {
+      height: 24px;
+      width: 40px;
+      background-image: url(../../assets/main-logo.svg);
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-link {
+      transition-duration: $transition-duration;
+      @extend %navigation;
+    }
+  }
+}
