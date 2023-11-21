@@ -1,12 +1,11 @@
 import ReactDOM from 'react-dom';
-// import { createRoot } from 'react-dom/client';
 
 import { Root } from './Root';
+import { CatalogProvider } from './helpers/CatalogContext/CatalogContext';
 
 ReactDOM.render(
-  <Root />,
+  <CatalogProvider>
+    <Root />
+  </CatalogProvider>,
   document.getElementById('root'),
 );
-
-// createRoot(document.getElementById('root') as HTMLDivElement)
-//   .render(<Root />);

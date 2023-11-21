@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import iphone from 'public/_new/img/phones/apple-iphone-11/black/00.jpg';
+import React, { useEffect } from 'react';
 import { Phone } from '../../Types/Phone';
+import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
 
 // eslint-disable-next-line
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -13,7 +14,7 @@ function getData<T>(url: string): Promise<T> {
 const getPhones = () => getData<Phone[]>('');
 
 export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const { phones, setPhones } = useProducts();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,28 +23,31 @@ export const PhonesPage: React.FC = () => {
 
         setPhones(data);
       } catch (error) {
-        // console.error('Error fetching data:', error);
         throw new Error();
       }
     };
 
     fetchData();
-  }, []);
+  }, [setPhones]);
 
-  // console.log(phones[0].image);
+  // setTimeout(() => {
+  //   console.log(phones);
+  // }, 1000);
 
   return (
     <>
       <h1>Phones Page</h1>
-      <img src={iphone} alt="ihpah" />
+      <p>{`phones arr length is: ${phones.length}`}</p>
 
-      {phones.map(phone => (
+      <ProductsSlider />
+
+      {/* {phones.map(phone => (
         <ul key={phone.id}>
           <h1>{phone.name}</h1>
-          <img src={phone.image} alt={phone.name} />
+          <img src={`_new/${phone.image}`} alt={phone.name} />
           <p>url</p>
         </ul>
-      ))}
+      ))} */}
     </>
   );
 };
