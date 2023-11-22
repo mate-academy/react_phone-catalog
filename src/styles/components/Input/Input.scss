@@ -1,0 +1,45 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.search {
+  height: 64px;
+  width: 350px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 1px solid #{$elements-color};
+
+  &.has-icon {
+    background: no-repeat url("../../../images/icons/search-icon.svg");
+    background-position: top 24px right 24px;
+  }
+
+  &:focus {
+    background: none;
+  }
+
+  &__input {
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 0;
+
+    &::placeholder {
+      @include buttonsTextStyling;
+      color: #{$secondary-color};
+    }
+  }
+
+  &__button {
+    display: none;
+    height: 16px;
+    width: 16px;
+    background: center no-repeat url("../../../images/icons/close-icon.svg");
+    border: none;
+
+    &.is-visible {
+      display: inherit;
+    }
+  }
+}

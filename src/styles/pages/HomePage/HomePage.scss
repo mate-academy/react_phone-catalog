@@ -1,0 +1,52 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.home-page {
+  margin: 0;
+  padding: 40px 152px 80px;
+  display: flex;
+  gap: 80px;
+  flex-direction: column;
+  align-items: center;
+
+  &__category-blocks {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__categories-title {
+    @include h1TextStyling;
+    margin: 0;
+  }
+
+  &__category-title {
+    @include h3TextStyling;
+    margin: 24px 0 0;
+  }
+
+  &__pieces-quantity {
+    @include smallTextStyling;
+    color: #{$secondary-color};
+    margin: 4px 0 0;
+  }
+
+  &__category-img {
+    width: 368px;
+    height: 368px;
+    object-fit: cover;
+  }
+
+  &__phones {
+    background-color: #fcdbc1;
+  }
+
+  &__tablets {
+    background-color: #8d8d92;
+  }
+
+  &__accessories {
+    background-color: #973d5f;
+  }
+}

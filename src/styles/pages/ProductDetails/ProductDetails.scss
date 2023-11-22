@@ -1,0 +1,224 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.product-details {
+  min-height: calc(100vh - 160px);
+  width: fit-content;
+  margin: 0 auto;
+  padding: 24px 0 80px;
+
+  & ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  &__go-back {
+    margin-top: 40px;
+    margin-left: 18px;
+  }
+
+  &__sad-message {
+    @include h1TextStyling;
+    margin-top: 200px;
+  }
+
+  &__title {
+    @include h1TextStyling;
+    margin: 16px 0 0;
+  }
+
+  &__touchable-content {
+    margin-top: 47px;
+    display: flex;
+  }
+
+  &__small-images {
+    margin-right: 27px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__small-image {
+    padding: 7px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #{$elements-color};
+    object-fit: contain;
+
+    &:hover {
+      border-color: #{$icons-placeholders-color};
+    }
+
+    &.is-active {
+      border-color: #{$primary-color};
+    }
+  }
+
+  &__big-image {
+    margin: auto 0;
+    margin-right: 75px;
+    width: 442px;
+    height: 442px;
+    object-fit: contain;
+  }
+
+  &__buy-fav-buttons {
+    margin-top: 16px;
+    height: 48px;
+    width: 319px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__fav-button {
+    width: 60px;
+  }
+
+  &__prices {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    margin: 0;
+    @include h1TextStyling;
+  }
+
+  &__full-price {
+    margin: 0;
+    @include h2TextStyling;
+    font-family: "Mont Regular", sans-serif;
+    color: #{$secondary-color};
+    text-decoration: line-through;
+  }
+
+  &__button-selector {
+    position: relative;
+    padding-bottom: 24px;
+
+    &:nth-child(2) {
+      margin-top: 16px;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 320px;
+      height: 1px;
+      background-color: #{$elements-color};
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__small-about {
+    margin: 32px 0 0;
+    display: flex;
+    justify-content: space-between;
+
+    &-left {
+      margin: 0;
+      @include smallTextStyling;
+      color: #{$secondary-color};
+    }
+
+    &-right {
+      @include smallTextStyling;
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  &__articles {
+    margin: 32px 0 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 65px;
+  }
+
+  &__tech-specs {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      position: relative;
+      width: 512px;
+      padding-bottom: 16px;
+      @include h1TextStyling;
+      margin: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #{$elements-color};
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    &-filling {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-left {
+      margin: 0;
+      @include smallTextStyling;
+      color: #{$secondary-color};
+    }
+
+    &-right {
+      @include smallTextStyling;
+      margin: 0;
+      text-align: right;
+    }
+  }
+
+  &__about {
+    width: 560px;
+
+    &-title {
+      position: relative;
+      padding-bottom: 16px;
+      @include h1TextStyling;
+      margin: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #{$elements-color};
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    &-article {
+      margin: 32px 0 0;
+
+      &-title {
+        @include h3TextStyling;
+        margin: 0;
+      }
+
+      &-content {
+        @include bodyTextStyling;
+        color: #{$secondary-color};
+        margin: 16px 0 0;
+      }
+    }
+  }
+
+  &__slider {
+    margin: 80px 0 0;
+  }
+}

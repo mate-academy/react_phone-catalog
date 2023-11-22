@@ -1,0 +1,14 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.not-found {
+  height: calc(100vh - 160px);
+  padding: 80px 0;
+  width: fit-content;
+  margin: auto;
+
+  &__title {
+    @include h1TextStyling;
+    margin-top: 200px;
+  }
+}

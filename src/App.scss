@@ -1,1 +1,8 @@
-// not empty
+@import "./styles/utils/variables.scss";
+@import "./styles/utils/mixins.scss";
+@import "./styles/utils/fonts.scss";
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+}

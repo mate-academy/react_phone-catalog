@@ -1,0 +1,144 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.card {
+  width: 272px;
+  box-sizing: border-box;
+  padding: 32px 27px 24px;
+  border: 1px solid #{$elements-color};
+
+  & a {
+    text-decoration: none;
+  }
+
+  &__image {
+    display: block;
+    width: 208px;
+    height: 208px;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+
+  &__title {
+    @include bodyTextStyling;
+
+    margin: 24px 0 0;
+    min-height: 42px;
+  }
+
+  &__price-container {
+    position: relative;
+    margin: 6.5px 0 0;
+    display: flex;
+    gap: 8px;
+    padding-bottom: 6.5px;
+
+    @include h2TextStyling;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #{$elements-color};
+    }
+  }
+
+  &__actual-price {
+    margin: 0;
+  }
+
+  &__initial-price {
+    margin: 0;
+    font-weight: 500;
+    color: #{$secondary-color};
+    text-decoration: line-through;
+  }
+
+  &__info-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 16px 0 0;
+  }
+
+  &__info-title {
+    @include smallTextStyling;
+    color: #{$secondary-color};
+    margin: 0;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-value {
+    margin: 0;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    color: #{$primary-color};
+    text-align: right;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__buttons-container {
+    margin: 16px 0 0;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__add-button {
+    width: 176px;
+    height: 40px;
+
+    background-color: #{$primary-color};
+    @include buttonsTextStyling;
+    color: #fff;
+    border: none;
+
+    transition: 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &.is-active {
+      border: 1px solid #{$elements-color};
+      color: #{$green-color};
+      background-color: #fff;
+    }
+  }
+
+  &__fav-button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #{$icons-placeholders-color};
+    background: center no-repeat url("../../../images/icons/favourites-icon.svg");
+    background-color: #fff;
+
+    transition: 0.4s ease;
+
+    &:hover {
+      border-color: #{$primary-color};
+    }
+
+    &.is-active {
+      background: center no-repeat url("../../../images/icons/favourites-icon-active.svg");
+    }
+  }
+}

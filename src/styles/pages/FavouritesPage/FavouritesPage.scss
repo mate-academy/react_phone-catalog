@@ -1,0 +1,30 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.fav-page {
+  padding: 24px 0 80px;
+  width: fit-content;
+  min-height: calc(100vh - 160px);
+  margin: 0 auto;
+
+  &__title {
+    margin: 40px 0 0;
+    @include h1TextStyling;
+  }
+
+  &__quantity {
+    margin: 8px 0 0;
+    @include smallTextStyling;
+    color: #{$secondary-color};
+  }
+
+  &__product-list {
+    margin: 24px 0 40px;
+  }
+
+  &__sad-message {
+    margin: 160px 0 0;
+    @include h1TextStyling;
+    text-align: center;
+  }
+}

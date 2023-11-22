@@ -1,0 +1,72 @@
+@mixin h1TextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont Bold", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+@mixin h2TextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont Bold", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+@mixin h3TextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@mixin uppercaseTextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont Bold", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}
+
+@mixin buttonsTextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+}
+
+@mixin bodyTextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont Regular", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+@mixin smallTextStyling() {
+  color: #{$primary-color};
+
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

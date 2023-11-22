@@ -1,0 +1,90 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.header {
+  height: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 0 #{$elements-color};
+  border-bottom: 1px solid #{$elements-color};
+  padding-left: 24px;
+
+  &__actions {
+    display: flex;
+  }
+
+  &__fav {
+    width: 64px;
+    height: 64px;
+    background: center no-repeat url(../../../images/icons/favourites-icon.svg);
+    border: 1px solid #{$elements-color};
+  }
+
+  &__cart {
+    width: 64px;
+    height: 64px;
+    background: center no-repeat url(../../../images/icons/shop-card-icon.svg);
+    border: 1px solid #{$elements-color};
+  }
+}
+
+.nav {
+  flex-grow: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  gap: 64px;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 64px;
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+    box-sizing: border-box;
+    height: 64px;
+    padding-top: 27px;
+  }
+
+  &__link {
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    @include uppercaseTextStyling;
+    color: #{$secondary-color};
+    transition: all 0.4s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background-color: #{$primary-color};
+      opacity: 0;
+
+      transition: opacity 0.4s ease;
+    }
+
+    &:hover,
+    &--is-active {
+      color: #{$primary-color};
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

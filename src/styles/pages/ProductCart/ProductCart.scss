@@ -1,0 +1,36 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.cart {
+  min-height: calc(100vh - 202px);
+  margin: 0 auto;
+  width: fit-content;
+
+  &__title {
+    margin: 41px 0 0;
+    @include h1TextStyling;
+  }
+
+  &__back-link {
+    margin-top: 41px;
+    margin-left: 16px;
+  }
+
+  &__content-container {
+    margin: 24px 0 0;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__sad-message {
+    margin: 160px 0 0;
+    @include h1TextStyling;
+    text-align: center;
+  }
+}

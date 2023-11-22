@@ -1,0 +1,97 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.button {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #{$icons-placeholders-color};
+  background: center no-repeat #fff;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #{$primary-color};
+  }
+
+  &:disabled {
+    cursor: default;
+    border-color: #{$elements-color};
+  }
+
+  &--arrow {
+    background-image: url("../../../images/icons/arrow-right.svg");
+
+    &-left {
+      transform: rotate(180deg);
+    }
+
+    &-upper {
+      transform: rotate(-90deg);
+    }
+
+    &:disabled {
+      background-image: url("../../../images/icons/arrow-right-disabled.svg");
+    }
+  }
+
+  &--math {
+    background-image: url("../../../images/icons/plus.svg");
+
+    &-minus {
+      background-image: url("../../../images/icons/minus.svg");
+
+      &:disabled {
+        background-image: url("../../../images/icons/minus-disabled.svg");
+      }
+    }
+  }
+
+  &--text {
+    background-color: #fff;
+    color: #{$primary-color};
+    transition: 0.4s ease;
+
+    &.is-active {
+      background-color: #{$primary-color};
+      color: #fff;
+    }
+
+    &.is-selected {
+      color: #{$green-color};
+    }
+  }
+
+  &--color {
+    border-radius: 50%;
+    padding: 3px;
+    border: 1px solid #{$elements-color};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: #{$icons-placeholders-color};
+    }
+
+    &.is-active {
+      border-color: #{$primary-color};
+    }
+
+    & > span {
+      display: inline-block;
+      width: 1.6em;
+      height: 1.6em;
+
+      border-radius: 50%;
+    }
+  }
+
+  &--fav {
+    padding: 0;
+    background: center no-repeat url("../../../images/icons/favourites-icon.svg");
+    transition: 0.4s ease;
+
+    &.is-active {
+      background-image: url("../../../images/icons/favourites-icon-active.svg");
+    }
+  }
+}

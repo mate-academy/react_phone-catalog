@@ -1,0 +1,20 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.buttons {
+  &__title {
+    @include smallTextStyling;
+    color: #{$secondary-color};
+  }
+
+  &__buttons-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  &__button-container--color {
+    width: 32px;
+    height: 32px;
+  }
+}

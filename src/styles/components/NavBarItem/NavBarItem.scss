@@ -1,0 +1,63 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+
+.nav-item {
+  position: relative;
+  padding-top: 2px;
+  height: 100%;
+  box-sizing: border-box;
+  display: block;
+  transition: 0.4s ease;
+
+  &-text {
+    @include uppercaseTextStyling;
+    color: #{$secondary-color};
+    text-decoration: none;
+  }
+
+  &-fav,
+  &-cart {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #{$elements-color};
+
+    background: center no-repeat;
+  }
+
+  &-fav {
+    background-image: url("../../../images/icons/favourites-icon.svg");
+  }
+
+  &-cart {
+    background-image: url("../../../images/icons/shop-card-icon.svg");
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #{$primary-color};
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+  }
+
+  &:hover,
+  &.is-active {
+    color: #{$primary-color};
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+  }
+}
