@@ -1,0 +1,105 @@
+@import "../../styles/main.scss";
+
+.MobileMenu {
+  background: $elements-grey-c;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: none;
+  transform: translateX(-100%);
+  opacity: 0.3;
+  transition-duration: $transition-duration;
+
+  @include onTablet {
+    display: block;
+  }
+
+  &__top {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $icons-grey-c;
+  }
+
+  &__logo-link {
+    display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &-image {
+      height: 24px;
+      width: 40px;
+      background-image: url(../../assets/main-logo.svg);
+    }
+  }
+
+  &__close-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 100%;
+    border-left: 1px solid $icons-grey-c;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      .MobileMenu__close-link-image {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__container {
+    margin: 32px 80px;
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      &-link {
+        color: $black-c;
+        @extend %button;
+        font-size: 16px;
+        font-weight: 700;
+        position: relative;
+
+        @include onMobile {
+          font-size: 14px;
+        }
+
+        &::after {
+          content: "";
+          width: 0%;
+          height: 6%;
+          background: linear-gradient(90deg, $black-c 0%, $elements-grey-c 80%);
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transition-duration: $transition-duration;
+        }
+
+        &:hover {
+          &::after {
+            width: 150%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.menu-shown {
+  transform: translateX(0%);
+  opacity: 1;
+}

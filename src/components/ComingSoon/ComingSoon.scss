@@ -1,0 +1,89 @@
+@import "../../styles/main.scss";
+
+.ComingSoon {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__modal {
+    width: 600px;
+    height: 400px;
+    padding: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background-color: $hover-c;
+    z-index: 10;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+
+    @include onTablet {
+      width: 400px;
+      height: 250px;
+    }
+
+    @include onMobile {
+      width: 320px;
+      height: 200px;
+      gap: 10px;
+    }
+
+    &-button {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 10px;
+      right: 0;
+    }
+
+    &-image {
+      margin-top: 10px;
+      width: 250px;
+      animation: sway 1s ease-in-out infinite alternate;
+
+      @include onTablet {
+        width: 150px;
+      }
+
+      @include onMobile {
+        width: 120px;
+        margin-top: 0;
+      }
+    }
+
+    &-message {
+      @extend %h3;
+      color: $dark-grey-c;
+      text-align: center;
+
+      @include onMobile {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @keyframes sway {
+    from {
+      transform: rotateZ(8deg);
+      transform-origin: top center;
+    }
+    to {
+      transform: rotateZ(0);
+      transform-origin: top center;
+    }
+    to {
+      transform: rotateZ(-2deg);
+      transform-origin: top center;
+    }
+  }
+}

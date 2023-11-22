@@ -1,0 +1,71 @@
+@import "../../styles/main.scss";
+
+.SearchField {
+  width: 327px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid $elements-grey-c;
+  padding: 24px;
+
+  @include onDesktop {
+    width: 250px;
+  }
+
+  @include onTablet {
+    padding: 12px;
+  }
+
+  @include onMobile {
+    width: 200px;
+  }
+
+  @media (max-width: 360px) {
+    display: none;
+  }
+
+  &__input {
+    height: 32px;
+    flex-grow: 1;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: $black-c;
+
+    @include onMobile {
+      font-size: 12px;
+    }
+
+    &:focus {
+      background-color: $hover-c;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 600;
+      color: $icons-grey-c;
+
+      @include onMobile {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.focus {
+  background-color: $hover-c;
+}
