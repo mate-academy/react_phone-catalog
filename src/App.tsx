@@ -95,21 +95,34 @@ const App = () => {
             className={`flex h-full items-center gap-x-16 ${typographyStyle.uppercase}`}
           >
             <a
-              className="flex h-[96px] items-center"
+              className="flex h-[96px] items-center  transition-all hover:text-Primary"
               href="https://github.com/donizer/react_phone-catalog/"
+              target="_blank"
+              rel="noreferrer"
             >
               github
             </a>
-            <a className="flex h-[96px] items-center" href="#contacts">
+            <a
+              className="flex h-[96px] items-center  transition-all hover:text-Primary"
+              href="#contacts"
+              onClick={e => e.preventDefault()}
+            >
               contacts
             </a>
-            <a className="flex h-[96px] items-center" href="#rights">
+            <a
+              className="flex h-[96px] items-center  transition-all hover:text-Primary"
+              href="#rights"
+              onClick={e => e.preventDefault()}
+            >
               rights
             </a>
           </nav>
 
           <div className="flex h-full items-center gap-x-4 font-Mont text-[12px] font-semibold">
-            <label className="hover:cursor-pointer" htmlFor="to-top">
+            <label
+              className="transition-all hover:cursor-pointer hover:text-Primary"
+              htmlFor="to-top"
+            >
               Back to top:
             </label>
             <ArrowButton id="to-top" direction="up" onClick={scrollToTop} />
