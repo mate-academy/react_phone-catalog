@@ -1,0 +1,52 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.category {
+  margin-top: 80px;
+
+  &__list {
+    @include onDesktop {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__list-item {
+    margin-top: 24px;
+  }
+
+  &__list-link {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__list-img {
+    height: 300px;
+    width: 300px;
+
+    @include onTablet {
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__list-description {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: $primary;
+  }
+
+  &__list-title {
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: $primary;
+  }
+}

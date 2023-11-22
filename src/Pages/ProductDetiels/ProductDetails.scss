@@ -1,0 +1,300 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.return-button {
+  position: relative;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $secondary;
+  border: none;
+  margin-left: 20px;
+  margin-top: 40px;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &::before {
+    position: absolute;
+    color: $secondary;
+    left: -20px;
+    content: url(../../icons/left-arrow.svg);
+  }
+}
+
+.details {
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+
+    @include onSmallDesktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 64px;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 32px;
+
+    @include onSmallDesktop {
+      margin-top: 0;
+    }
+  }
+
+  &__actions-wrapper {
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__spec-name {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__spec-value {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $primary;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    @include onSmallDesktop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 64px;
+    }
+
+  }
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+  }
+
+  &__main-photo {
+    object-fit: contain;
+    margin-top: 10px;
+
+    @include onTablet {
+      width: 300px;
+      height: 300px;
+      margin-top: 0;
+    }
+
+    @include onTablet {
+      width: 464px;
+      height: 464px;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: column;
+  }
+
+  &__item-button {
+    border: 1px solid $element-color;
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+
+  &__item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+}
+
+.price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__full {
+    display: inline-block;
+    color: $primary;
+    margin: 0 8px 0 0;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__discount {
+    color: $secondary;
+    font-family: inherit;
+    text-decoration: line-through;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__add-to-cart {
+    width: 220px;
+    height: 40px;
+    font-family: inherit;
+    font-size: 14px;
+    color: $main-white;
+    background-color: $primary;
+    border: 1px solid rgba(226, 230, 233, 0);
+    cursor: pointer;
+
+    &--added {
+      border-color: $icons-color;
+      background-color: $main-white;
+      color: $main-green;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    @include onTablet {
+      width: 263px;
+    }
+  }
+
+  &__add-to-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: $main-white;
+    border: 1px solid $icons-color;
+  }
+}
+
+.description-about {
+  &__title {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $primary;
+  }
+
+  &__paragraphs {
+    margin-top: 16px;
+    padding-top: 32px;
+    border-top: 1px solid $element-color;
+  }
+
+  &__paragraph {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondary;
+  }
+}
+
+.description-tech-specs {
+  margin-top: 32px;
+
+  @include onSmallDesktop {
+    margin-top: 0;
+  }
+
+  &__title {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $primary;
+  }
+
+  &__list {
+    margin-top: 16px;
+    padding-top: 32px;
+    border-top: 1px solid $element-color;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__item-name {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondary;
+  }
+
+  &__item-value {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $primary;
+  }
+}
+
+.product-slider-wrapper {
+  margin-top: 40px;
+}

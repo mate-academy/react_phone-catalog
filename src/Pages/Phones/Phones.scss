@@ -1,0 +1,23 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.pagination-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.product-list-container {
+  margin-top: 24px;
+}
+
+.sort-container {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.phones__description {
+  margin-top: 40px;
+}

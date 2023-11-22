@@ -1,0 +1,70 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.carousel-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    display: flex;
+  }
+}
+
+.carousel {
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+
+  &__img {
+    width: 520px;
+    height: 200px;
+    object-fit: cover;
+
+    @include onSmallDesktop {
+      width: 780px;
+      height: 300px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      height: 400px;
+    }
+  }
+
+  &__button {
+    border: 1px solid $icons-color;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &__dots {
+    margin: 0, auto;
+  }
+
+  &__dot {
+    cursor: pointer;
+    width: 15px;
+    height: 5px;
+    background-color: $icons-color;
+    border: $icons-color;
+    margin-inline: 5px;
+
+    &--active {
+      background-color: $primary;
+    }
+
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

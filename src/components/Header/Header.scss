@@ -1,0 +1,115 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  background: $main-white;
+  box-shadow: 0 1px 0 0 $element-color;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  &__content {
+    max-width: 1440px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    height: 64px;
+    margin: auto;
+
+    @include onTablet {
+      padding-left: 40px;
+    }
+  }
+
+  &__search {
+    position: relative;
+  }
+
+  &__search-icon {
+    border: none;
+    position: absolute;
+    top: 24px;
+    right: 12px;
+  }
+
+  &__search-input {
+    height: 64px;
+    max-width: 200px;
+    border: none;
+    box-shadow: -1px 0 0 0 $element-color;
+    padding-inline-start: 24px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    color: $primary;
+    padding-right: 40px;
+
+    @include onTablet {
+      max-width: 260px;
+    }
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+
+    &:focus {
+      background-image: none;
+    }
+
+    &::placeholder {
+      color: $icons-color;
+    }
+
+    @include onTablet {
+      width: 327px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.favorites-card-buttons__link {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $main-white;
+  box-shadow: -1px 0 0 0 $element-color;
+  border-right: 1px solid $element-color;
+  position: relative;
+
+  &--active {
+    color: $primary;
+    border-bottom: 3px solid $primary;
+  }
+}
+
+.icon__count {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 600;
+  color: $main-white;
+  border: 1px solid $main-white;
+  border-radius: 50%;
+  background-color: $main-red;
+}

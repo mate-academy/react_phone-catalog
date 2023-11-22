@@ -1,0 +1,27 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.product-list {
+  font-family: inherit;
+  display: grid;
+  max-width: 1136px;
+  grid-gap: 16px;
+  gap: 16px;
+  padding: 0;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+
+  @include onTablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include onSmallDesktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

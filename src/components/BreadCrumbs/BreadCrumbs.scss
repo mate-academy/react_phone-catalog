@@ -1,0 +1,33 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.breadcrumbs {
+  display: flex;
+  gap: 32px;
+}
+
+.crumb {
+  position: relative;
+
+  &__link {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &:not(:last-child)::after {
+    display: inline-block;
+    content: "";
+    height: 16px;
+    width: 16px;
+    background-image: url(../../icons/ArrowRight.svg);
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 125%;
+  }
+
+  &:last-child {
+    color: $secondary;
+  }
+}

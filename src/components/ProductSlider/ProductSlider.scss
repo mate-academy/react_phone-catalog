@@ -1,0 +1,37 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.product-slider {
+  &__list {
+    display: flex;
+    overflow: hidden;
+    gap: 14px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    &--disabled {
+      border-color: $element-color;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}

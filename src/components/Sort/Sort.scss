@@ -1,0 +1,60 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.sort {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__description {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__value {
+    border: 1px solid $icons-color;
+    height: 40px;
+    color: $primary;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 12px;
+    padding-right: 60px;
+    cursor: pointer;
+    background: transparent;
+    appearance: none;
+    background-image: url("../../icons/Chevron\ \(Arrow\ Down\).svg");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    & option {
+      border: 1px solid $element-color;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      color: $secondary;
+
+      &:hover {
+        color: $primary;
+        background-color: $main-white;
+      }
+    }
+
+    @include onTablet {
+      padding-right: 80px;
+    }
+  }
+}

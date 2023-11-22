@@ -1,0 +1,76 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.footer {
+  background: $main-white;
+  box-shadow: 0 -1px 0 0 $element-color;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-top: 80px;
+
+  &__content {
+    max-width: 1440px;
+    box-sizing: border-box;
+    margin: auto;
+    padding-inline: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+
+    @include onSmallDesktop {
+      padding-inline: 152px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    @include onSmallDesktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $secondary;
+    font-family: inherit;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    text-transform: uppercase;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $main-white;
+    border: 1px solid $icons-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  &__button:before {
+    content: "Back to top";
+    position: absolute;
+    width: max-content;
+    right: 48px;
+    color: $secondary;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
