@@ -1,0 +1,45 @@
+@import "../../styles/utils/variables";
+
+.Search {
+  position: relative;
+  height: 100%;
+
+  &__input {
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 24px 50px 24px 24px;
+
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      font-weight: 600;
+      color: $iconsGray;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+
+    width: 16px;
+    height: 16px;
+
+    background-image: url(../../img/icons/search.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+
+    &--not-empty-search {
+      background-image: url(../../img/icons/cross-primery.svg);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

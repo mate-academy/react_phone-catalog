@@ -1,0 +1,69 @@
+.footer {
+  border-top: 2px solid $elementsGray;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+
+    @include onSmallScreen {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto;
+      row-gap: 30px;
+    }
+  }
+
+  &__logo {
+    @include onSmallScreen {
+      justify-self: start;
+      grid-row: 2 / 3;
+    }
+  }
+
+  &__nav {
+    @include onSmallScreen {
+      grid-column: 1 / 3;
+      justify-self: center;
+    }
+  }
+
+  &__to-top {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondaryGray;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &::after {
+      display: block;
+      content: "";
+      width: 32px;
+      height: 32px;
+
+      border: 1px solid $iconsGray;
+      background-image: url(../../img/icons/corner-up.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      transition: border-color $duration;
+    }
+
+    &:hover::after {
+      border-color: $primeryGray;
+    }
+
+    @include onSmallScreen {
+      grid-column: 2 / 3;
+      justify-self: end;
+    }
+  }
+}

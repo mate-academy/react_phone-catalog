@@ -1,0 +1,50 @@
+.nav {
+  height: 100%;
+
+  &__list {
+    display: flex;
+    column-gap: 64px;
+    height: 100%;
+
+    &--menu {
+      @include onSmallScreen {
+        flex-direction: column;
+        row-gap: 30px;
+      }
+    }
+  }
+
+  &__item {
+    height: 100%;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.48px;
+
+    color: $secondaryGray;
+  }
+
+  &__link {
+    @include activeLink;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: min-content;
+
+    transition: color $duration;
+
+    &:hover {
+      color: $primeryGray;
+    }
+
+    &--menu {
+      @include onSmallScreen {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}

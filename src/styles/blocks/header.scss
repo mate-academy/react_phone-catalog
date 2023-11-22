@@ -1,0 +1,91 @@
+.header {
+  border-bottom: 2px solid $elementsGray;
+  background-color: $white;
+
+  &__content {
+    display: flex;
+  }
+
+  &__logo {
+    margin-left: 24px;
+    margin-right: 64px;
+  }
+
+  &__menu {
+    @include onMediumScreen {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      transform: translateY(-20%);
+
+      background-color: $white;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+
+      transition: transform $duration;
+    }
+
+    @include onSmallScreen {
+      top: initial;
+    }
+
+    &--opened {
+      @include onMediumScreen {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  &__link {
+    @include activeLink;
+
+    &--burger,
+    &--favourites,
+    &--cart {
+      width: 64px;
+      height: 64px;
+
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &--burger {
+      display: none;
+
+      background-image: url(../../img/icons/burger2.svg);
+      background-size: 24px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      @include onMediumScreen {
+        display: block;
+      }
+    }
+
+    &--favourites,
+    &--cart {
+      border-left: 2px solid $elementsGray;
+    }
+
+    &--favourites {
+      background-image: url(../../img/icons/favourites.svg);
+    }
+
+    &--cart {
+      background-image: url(../../img/icons/cart.svg);
+    }
+  }
+
+  &__stretchable-block {
+    flex-grow: 1;
+  }
+
+  &__search-wrapper {
+    border-left: 2px solid $elementsGray;
+  }
+}

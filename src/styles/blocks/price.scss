@@ -1,0 +1,19 @@
+.price {
+  font-size: 22px;
+
+  &__discount {
+    margin-right: 8px;
+
+    font-weight: 700;
+
+    &--font-size--32px {
+      font-size: 32px;
+    }
+  }
+
+  &__full {
+    font-weight: 500;
+    color: $secondaryGray;
+    text-decoration: line-through;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/utils/variables";
+
+.Back {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  &::before {
+    display: block;
+    width: 16px;
+    height: 16px;
+    content: "";
+
+    background-image: url(../../img/icons/corner-previous.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__button {
+    color: $secondaryGray;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}

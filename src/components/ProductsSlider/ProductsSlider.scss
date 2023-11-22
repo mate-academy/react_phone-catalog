@@ -1,0 +1,34 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.ProductsSlider {
+  &__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+  }
+
+  &__button {
+    @include sliderButton;
+
+    width: 32px;
+    height: 32px;
+  }
+
+  &__slides-wrapper {
+    overflow: hidden;
+  }
+
+  &__slides {
+    display: flex;
+    column-gap: 16px;
+
+    transition: transform $duration;
+  }
+}
