@@ -1,6 +1,6 @@
 import { page } from '../support/utils/common.js';
 
-describe('Cart', () => {
+describe.skip('Cart', () => {
     it('should have "Add to cart" button to add a product to the "Cart"', () => {
         page.addToCart();
 

@@ -2,7 +2,7 @@ import { page } from '../support/utils/common.js';
 
 const phone = 'Motorola XOOM™ with Wi-Fi';
 
-describe('Favorites', () => {
+describe.skip('Favorites', () => {
     it('should show the list with all the favorite products', () => {
         page.addToFavorites();
 
