@@ -1,0 +1,46 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  background-color: $white;
+  box-shadow: 0 1px 0 0 $elements;
+
+  @include tablet {
+    justify-content: space-between;
+  }
+
+  &__logo {
+    margin: 0 (2 * $block-size);
+
+    @include tablet {
+      margin: 0 (3 * $block-size);
+    }
+
+    @include desktop {
+      margin: 0 (4 * $block-size) 0 (3 * $block-size);
+    }
+  }
+
+  &__nav-container {
+    display: flex;
+  }
+
+  &__button-container {
+    display: flex;
+    width: 100%;
+
+    @include tablet {
+      width: fit-content;
+    }
+  }
+
+  &__button {
+    display: block;
+    width: 2 * $button-width;
+    height: 2 * $button-width;
+    box-shadow: -1px 0 0 0 $elements;
+  }
+}

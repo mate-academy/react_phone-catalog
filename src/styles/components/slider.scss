@@ -1,0 +1,84 @@
+.slider {
+  &--first {
+    margin-bottom: 5 * $block-size;
+
+    @include small-desktop {
+      margin-bottom: 9 * $block-size;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include big-title;
+    color: $primary;
+    
+    @include tablet {
+      @include main-title;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: $block-size;
+    
+    @include tablet {
+      gap: $gap;
+    }
+  }
+  
+  &__button {
+    width: 3 * $block-size;
+    height: 3 * $block-size;
+    border: 1px solid $icons;
+    transition: all $half-duration;
+    cursor: pointer;
+    
+    @include tablet {
+      width: $button-width;
+      height: $button-width;
+    }
+
+    &--left {
+      background: url(../../img/icons/chevron-arrow-left-hover.svg) no-repeat center;
+
+      &:disabled {
+        background: url(../../img/icons/chevron-arrow-left.svg) no-repeat center;
+      }
+    }
+
+    &--right {
+      background: url(../../img/icons/chevron-arrow-right-hover.svg) no-repeat center;
+
+      &:disabled {
+        background: url(../../img/icons/chevron-arrow-right.svg) no-repeat center;
+      }
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &:disabled {
+      border-color: $elements;
+      cursor: default;
+    }
+  }
+
+  &__track-container {
+    overflow: hidden;
+  }
+  
+  &__track {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: $gap;
+    transition: transform $half-duration;
+  }
+}

@@ -1,0 +1,11 @@
+.no-results {
+  @include buttons-text;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: $secondary;
+  
+  @include tablet {
+    @include small-title;
+  }
+}

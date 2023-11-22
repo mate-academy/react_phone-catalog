@@ -1,0 +1,236 @@
+.cart {
+  &__title {
+    @include big-title;
+    margin-bottom: 3 * $block-size;
+    
+    @include tablet {
+      @include main-title;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    
+    @include small-desktop {
+      gap: 5 * $block-size;
+    }
+    
+    @include desktop {
+      flex-direction: row;
+      gap: $gap;
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    width: 100%;
+    
+    @include desktop {
+      width: 47 * $gap;
+    }
+  }
+  
+  &__product {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 3 * $block-size;
+    align-items: center;
+    padding: (3 * $block-size);
+    width: 100%;
+    border: 1px solid $elements;
+
+    @include small-desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      padding-right: (5 * $block-size);
+    }
+  }
+
+  &__product-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3 * $block-size;
+  }
+
+  &__delete-button {
+    width: $gap;
+    height: $gap;
+    background: url(../../img/icons/close.svg) no-repeat center;
+    background-color: $white;
+    border: 0;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../../img/icons/close-hover.svg);
+    }
+
+    &--phone {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+      }
+    }
+  }
+
+  &__name {
+    @include body-text;
+    color: $primary;
+    text-align: center;
+    
+    @include tablet {
+      width: 29 * $block-size;
+      text-align: left;
+    }
+    
+    @include small-desktop {
+      width: 49 * $block-size;
+    }
+    
+    @include desktop {
+      width: 37 * $block-size;
+    }
+  }
+
+  &__image-container {
+    box-sizing: border-box;
+    position: relative;
+    padding: 7px;
+    width: 14 * $gap;
+    height: 14 * $gap;
+    
+    @include tablet {
+      width: 5 * $gap;
+      height: 5 * $gap;
+    }
+  }
+
+  &__image {
+    position: relative;
+    left: 50%;
+    max-height: 100%;
+    transform: translateX(-50%);
+  }
+
+  &__quantity-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12 * $block-size;
+  }
+
+  &__quantity-button {
+    width: 4 * $block-size;
+    height: 4 * $block-size;
+    background-color: $white;
+    border: 1px solid $icons;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--minus {
+      background: url(../../img/icons/minus.svg) no-repeat center;
+
+      &:disabled {
+        border-color: $elements;
+        background-image: url(../../img/icons/minus-disabled.svg);
+        cursor: default;
+      }
+    }
+
+    &--plus {
+      background: url(../../img/icons/plus.svg) no-repeat center;
+
+      &:disabled {
+        border-color: $elements;
+        background-image: url(../../img/icons/plus-disabled.svg);
+      }
+    }
+  }
+
+  &__quantity {
+    @include body-text;
+    color: $primary;
+  }
+
+  &__product-price {
+    @include big-title;
+    color: $primary;
+  }
+
+  &__cost {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 3 * $block-size;
+    padding: 3 * $block-size;
+    height: fit-content;
+    width: 100%;
+    border: 1px solid $elements;
+    
+    @include desktop {
+      width: 23 * $gap;
+    }
+  }
+
+  &__total-price {
+    @include main-title;
+    text-align: center;
+    color: $primary;
+  }
+
+  &__total-quantity {
+    @include body-text;
+    text-align: center;
+    color: $secondary;
+  }
+
+  &__line {
+    height: 1px;
+    background-color: $elements;
+  }
+
+  &__checkout-button {
+    @include buttons-text;
+    width: 100%;
+    height: 6 * $block-size;
+    color: $white;
+    background-color: $primary;
+    border: 0;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--clicked {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+
+      &:disabled {
+        box-shadow: none;
+        cursor: default;
+      }
+    }
+  }
+}

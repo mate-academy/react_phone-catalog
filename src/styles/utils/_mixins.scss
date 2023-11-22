@@ -1,0 +1,81 @@
+@mixin main-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+}
+
+@mixin big-title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin small-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin uppercase-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin page-sizes {
+  margin: 0 auto;
+  padding: (5 * $block-size) 0 (28 * $block-size);
+  width: $card-width;
+  
+  @include tablet {
+    padding-bottom: 22 * $block-size;
+    width: $tablet-width;
+  }
+
+  @include small-desktop {
+    width: $small-desktop-width;
+  }
+
+  @include desktop {
+    width: $width;
+  }
+}

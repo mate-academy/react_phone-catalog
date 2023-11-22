@@ -1,0 +1,25 @@
+.loader {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+
+  &__spiner {
+    width: 50px;
+    height: 50px;
+    border: 8px solid $icons;
+    border-top: 8px solid $secondary;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

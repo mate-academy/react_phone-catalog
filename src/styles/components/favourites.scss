@@ -1,0 +1,30 @@
+.favourites {
+  &__title {
+    @include big-title;
+    margin-bottom: $block-size;
+    
+    @include tablet {
+      @include main-title;
+    }
+  }
+  
+  &__count {
+    @include body-text;
+    color: $secondary;
+    margin-bottom: 3 * $block-size;
+    
+    @include small-desktop {
+      margin-bottom: 5 * $block-size;
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap;
+    
+    @include small-desktop {
+      gap: (5 * $block-size) $gap;
+    }
+  }
+}

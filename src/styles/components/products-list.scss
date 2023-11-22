@@ -1,0 +1,99 @@
+.products-list {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2 * $block-size;
+    
+    @include small-desktop {
+      gap: (5 * $block-size) (2 * $block-size);
+    }
+  }
+
+  &__sort-form {
+    display: flex;
+    gap: $gap;
+    margin-bottom: 24px;
+  }
+  
+  &__sort {
+    position: relative;
+    width: 176px;
+  
+    &:last-child {
+      width: 128px;
+    }
+  }
+
+  &__sort-by {
+    @include small-text;
+    margin-bottom: 4px;
+    color: $secondary;
+  }
+
+  &__selector {
+    @include body-text;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    width: 100%;
+    height: 40px;
+    background-color: $white;
+    border: 1px solid $icons;
+    color: $primary;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    &--active {
+      border-color: $secondary;
+    }
+  }
+
+  &__icon {
+    width: 2 * $block-size;
+    height: 2 * $block-size;
+    background: url(../../img/icons/chevron-arrow-down.svg) no-repeat center;
+    transition: all $half-duration;
+
+    &--active {
+      background-image: url(../../img/icons/chevron-arrow-up.svg);
+    }
+  }
+
+  &__options-container {
+    box-sizing: border-box;
+    position: absolute;
+    top: 63px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 0;
+    border: 1px solid $elements;
+    background-color: $white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__option {
+    @include body-text;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    height: 32px;
+    color: $secondary;
+    background-color: $white;
+    border: 0;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary;
+      background-color: $hover;
+    }
+  }
+}

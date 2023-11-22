@@ -1,0 +1,13 @@
+.not-found {
+  &__title {
+    @include big-title;
+    padding-top: 250px;
+    width: 100%;
+    text-align: center;
+    color: $primary;
+
+    @include tablet {
+      @include main-title;
+    }
+  }
+}

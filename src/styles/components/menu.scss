@@ -1,0 +1,83 @@
+.menu {
+  @include desktop {
+    display: none;
+  }
+  
+  &__icon {
+    display: block;
+    width: 2 * $button-width;
+    height: 2 * $button-width;
+    border: 0;
+    background: url(../../img/icons/burger.svg) no-repeat center;
+    background-color: $white;
+    background-size: 16px;
+    box-shadow: 1px 0 0 0 $elements;
+    transition: all $half-duration;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $hover;
+    }
+  
+    &--active {
+      background: url(../../img/icons/burger-active.svg) no-repeat center;
+      background-size: 16px;
+    }
+  }
+
+  &__nav-list {
+    overflow: hidden;
+    box-sizing: border-box;
+    position: absolute;
+    top: 2 * $button-width;
+    padding: 8 * $gap 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: $white;
+    border-top: 1px solid $elements;
+    transform: translateX(-100%);
+    transition: all $half-duration;
+
+    &--active {
+      transform: translateX(0);
+    }
+  }
+
+  &__nav-item {
+    margin: 0 auto;
+    width: $card-width;
+
+    @include tablet {
+      width: $tablet-width;
+
+      &--phone {
+        display: none;
+      }
+    }
+  }
+  
+  &__nav-link {
+    @include uppercase-text;
+    display: block;
+    margin: 0 auto $gap;
+    padding: (2 *  $block-size) 0;
+    width: 100%;
+    text-align: center;
+    color: $secondary;
+    transition: all $half-duration;
+
+    @include tablet {
+      @include small-title;
+      padding: (3 *  $block-size) 0;
+    }
+    
+    &:hover {
+      background-color: $hover;
+      color: $primary;
+    }
+
+    &--active {
+      color: $primary;
+    }
+  }
+}

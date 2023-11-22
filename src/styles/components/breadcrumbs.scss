@@ -1,0 +1,34 @@
+.breadcrumbs {
+  @include small-text;
+  display: flex;
+  gap: $block-size;
+  margin-bottom: 3 * $block-size;
+
+  @include small-desktop {
+    margin-bottom: 5 * $block-size;
+  }
+
+  &__home {
+    display: block;
+    width: $gap;
+    height: $gap;
+    background: url("../../img/icons/home.svg") no-repeat center;
+  }
+
+  &__icon {
+    display: block;
+    width: $gap;
+    height: $gap;
+    background: url("../../img/icons/chevron-arrow-right.svg") no-repeat center;
+  }
+
+  &__link {
+    padding-top: 1px;
+    color: $primary;
+  }
+
+  &__text {
+    padding-top: 1px;
+    color: $secondary;
+  }
+}
