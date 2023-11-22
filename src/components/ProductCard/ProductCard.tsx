@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { useCartFavorites } from '../../providers/CartFavoritesProvider';
 
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
 export const ProductCard = ({ product }: any) => {
   const {
     name, price, fullPrice, screen, capacity, ram, image, id, itemId,
@@ -47,7 +49,7 @@ export const ProductCard = ({ product }: any) => {
       <Link to={`${path}`} className="card-link" data-qa="card" key={itemId}>
         <div className="card" data-qa="card" key={id}>
           <img
-            src={`/_new/${image || product.images[0]}`}
+            src={`${BASE_URL}${image || product.images[0]}`}
             alt={name}
             className="card_image"
           />

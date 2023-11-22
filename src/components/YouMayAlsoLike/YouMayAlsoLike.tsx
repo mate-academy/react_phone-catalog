@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import ProductsSlider from '../ProductsSlider/ProductSlider';
 import './YouMayAlsoLike.scss';
 import { getSuggestedProducts } from '../../helpers/apis';
 import { Product } from '../../helpers/types/Product';
+import ProductsSlider from '../ProductsSlider/ProductSlider';
 
 interface YouMayAlsoLikeProps {
   productId: string;
