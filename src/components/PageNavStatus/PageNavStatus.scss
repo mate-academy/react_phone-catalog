@@ -1,0 +1,32 @@
+@import "../../styles/main.scss";
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+
+  &--is-hidden {
+    display: none;
+  }
+
+  &__home {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    @extend %small-text;
+    margin: 0;
+    color: $color-secondary;
+    text-align: center;
+    transition: all 0.5s;
+  }
+
+  &__parent-title {
+    @extend %small-text;
+    color: $color-primary;
+    text-align: center;
+    text-decoration: none;
+  }
+}

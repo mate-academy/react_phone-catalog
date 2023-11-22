@@ -1,0 +1,8 @@
+@import "../../styles/main.scss";
+
+.no-results {
+  padding-top: 40px;
+
+  @extend %h1-text;
+  color: $color-primary;
+}

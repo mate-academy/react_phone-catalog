@@ -1,0 +1,37 @@
+@import "../../styles/main.scss";
+
+.product-list {
+  display: grid;
+
+  &__products {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__no-results {
+    justify-content: flex-start;
+    margin: 0 0 40px;
+    padding-top: 40px;
+
+    @extend %h1-text;
+    color: $color-primary;
+  }
+}

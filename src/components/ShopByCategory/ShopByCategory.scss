@@ -1,0 +1,85 @@
+@import "../../styles/main.scss";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+      gap: 16px;
+    }
+  }
+
+  &__image {
+    height: 200px;
+    width: 100%;
+    object-fit: scale-down;
+    object-position: bottom right;
+    margin-bottom: 14px;
+    transition: all 0.5s;
+
+    @include onTablet {
+      margin-bottom: 24px;
+      height: 230px;
+    }
+
+    @include onDesktop {
+      height: 368px;
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__item-container {
+    margin-bottom: 28px;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      transform: scale(0.95);
+    }
+
+    &:hover .categories__image {
+      color: $color-white;
+      background-color: $color-background;
+      border-radius: 20px;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+  }
+
+  &__name {
+    @extend %h3-text;
+    margin-bottom: 4px;
+    color: $color-primary;
+  }
+
+  &__count {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+}

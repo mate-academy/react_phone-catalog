@@ -1,0 +1,89 @@
+@import "../../styles/main.scss";
+
+.icon {
+  @include squareSize(16px);
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__favorite {
+    background-image: url(../../images/icons/heart-like.svg);
+
+    &--active {
+      background-image: url(../../images/icons/heart-like-filled.svg);
+    }
+  }
+
+  &__menu-burger {
+    background-image: url(../../images/icons/menu.svg);
+  }
+
+  &__cross {
+    background-image: url(../../images/icons/cross.svg);
+  }
+
+  &__cart {
+    background-image: url(../../images/icons/cart.svg);
+  }
+
+  &__search {
+    background-image: url(../../images/icons/search.svg);
+  }
+
+  &__home {
+    width: 14px;
+    background-image: url(../../images/icons/home.svg);
+  }
+
+  &__arrow-left {
+    background-image: url(../../images/icons/arrow-left-hover.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-left.svg);
+    }
+  }
+
+  &__arrow-right {
+    background-image: url(../../images/icons/arrow-right-hover.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-right.svg);
+    }
+  }
+
+  &__arrow-up {
+    background-image: url(../../images/icons/arrow-up-hover.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-up.svg);
+    }
+  }
+
+  &__arrow-down {
+    background-image: url(../../images/icons/arrow-down-hover.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/arrow-down.svg);
+    }
+  }
+
+  &__close {
+    background-image: url(../../images/icons/close.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/close-hover.svg);
+    }
+  }
+
+  &__minus {
+    background-image: url(../../images/icons/minus.svg);
+
+    &--disabled {
+      background-image: url(../../images/icons/minus-hover.svg);
+    }
+  }
+
+  &__plus {
+    background-image: url(../../images/icons/plus.svg);
+  }
+}

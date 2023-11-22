@@ -1,0 +1,50 @@
+@import "../../styles/main.scss";
+
+.product-slider {
+  gap: 24px;
+  cursor: default;
+
+  &__title {
+    margin-right: 8px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__body {
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__button {
+    @include squareSize(32px);
+    box-sizing: border-box;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      border: 1px solid $color-elements;
+      cursor: default;
+    }
+  }
+}

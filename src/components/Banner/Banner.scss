@@ -1,0 +1,69 @@
+@import "../../styles/main.scss";
+
+.banner {
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    height: 200px;
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
+  }
+
+  &__image {
+    @include squareSize(100%);
+    position: absolute;
+    object-fit: cover;
+    transition: all 0.5s;
+    opacity: 0;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+}
+
+.banner-pagination {
+  &__item {
+    width: 14px;
+    height: 4px;
+    border: transparent;
+    background-color: $color-elements;
+    transition: all 0.5s;
+    outline: none;
+    cursor: pointer;
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}
