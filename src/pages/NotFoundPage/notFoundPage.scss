@@ -1,0 +1,35 @@
+@import "../../style-utils/style-utils";
+
+.no-page {
+  box-sizing: border-box;
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+
+  &__title {
+    @include h1Text;
+  }
+
+  &__code {
+    @include h2Text;
+  }
+
+  &__description {
+    @include bodyText;
+    color: $color-secondary;
+  }
+
+  &__button {
+    @include primaryButton;
+    @include buttonsText;
+    padding: 0 12px;
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,48 @@
+@import "../../style-utils/style-utils";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include onPhone {
+    gap: 4px;
+  }
+
+  &__icon {
+    user-select: none;
+
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    transition: $transition;
+
+    & svg {
+      object-position: center;
+      object-fit: contain;
+    }
+
+    &--hover {
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+
+  &__current {
+    @include smallText;
+    line-height: 1;
+  }
+
+  &__link {
+    @include smallText;
+    line-height: 1;
+    color: $color-primary;
+    user-select: none;
+  }
+}
+
+.test {
+  color: white;
+}

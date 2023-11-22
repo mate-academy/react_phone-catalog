@@ -1,0 +1,96 @@
+@import "../../style-utils/style-utils";
+
+.categories {
+  &__title {
+    @include h1Text;
+    margin-bottom: 24px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    display: block;
+    flex: 1 1 33%;
+
+    @include onTablet {
+      flex: 0 0;
+    }
+  }
+
+  &__link-image-container {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    margin-bottom: 24px;
+
+    transition: 0.25s ease;
+
+    @include onLaptop {
+      margin-bottom: 20px;
+    }
+
+    @include onTablet {
+      margin-bottom: 18px;
+      padding-bottom: 200px;
+    }
+
+    @include onPhone {
+      margin-bottom: 12px;
+      padding-bottom: 125px;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 20px -20px rgba(0, 0, 0, 0.45),
+        25px 0 20px -20px rgba(0, 0, 0, 0.45);
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    &--phone {
+      background-color: #fcdbc1;
+    }
+
+    &--tablet {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__link-image {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+
+    @include onTablet {
+      width: 71%;
+      height: auto;
+    }
+  }
+
+  &__link-title {
+    @include h3Text;
+  }
+
+  &__models {
+    @include bodyText;
+    color: $color-secondary;
+  }
+}

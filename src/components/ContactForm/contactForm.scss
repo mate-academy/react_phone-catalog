@@ -1,0 +1,54 @@
+@import "../../style-utils/style-utils";
+
+.contact-form {
+  &__title {
+    @include h2Text;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    color: $color-primary;
+    padding: 10px 12px;
+    border: 1px solid $color-icons;
+    outline: none;
+    text-align: left;
+
+    &:focus-visible {
+      border: 1px solid $color-primary;
+    }
+
+    &::placeholder {
+      color: $color-icons;
+    }
+  }
+
+  &__set {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__error {
+    color: $color-red;
+    font-size: 10px;
+  }
+
+  &__button {
+    @include buttonsText;
+    @include primaryButton;
+    margin-top: 12px;
+    width: 100%;
+  }
+
+}

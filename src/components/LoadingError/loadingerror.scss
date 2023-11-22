@@ -1,0 +1,41 @@
+@import "../../style-utils/style-utils";
+
+.loading-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+    @include onPhone {
+      flex-direction: column;
+    }
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+
+    & * {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    @include h2Text;
+    text-align: center;
+  }
+
+  &__description {
+    @include bodyText;
+    text-align: center;
+  }
+}

@@ -1,0 +1,54 @@
+@import "../../style-utils/style-utils";
+
+.notification {
+  z-index: 3;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 300px;
+  height: 70px;
+  padding: 12px;
+  border: 1px solid $color-icons;
+
+  color: $color-white;
+  background-color: $color-white;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+
+  @include onPhone {
+    bottom: 16px;
+    right: 16px;
+
+    width: 200px;
+    height: 60px;
+
+    font-size: 12px;
+  }
+}
+
+.notification-fade {
+  &-enter {
+    transform: translateX(350px);
+  }
+
+  &-enter-active {
+    transform: translateX(0);
+    transition: all 400ms;
+  }
+
+  &-exit {
+    transform: translateX(0);
+  }
+
+  &-exit-active {
+    transform: translateX(350px);
+    transition: all 400ms;
+  }
+}

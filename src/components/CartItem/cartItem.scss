@@ -1,0 +1,106 @@
+@import "../../style-utils/style-utils";
+
+.cart-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  min-height: 128px;
+  padding-inline: 24px;
+  padding-block: 16px;
+  border: 1px solid $color-elements;
+
+  @include onTablet {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__close {
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      background-color: $color-hover;
+      border: 1px solid $color-elements;
+    }
+  }
+
+  &__preview {
+    width: 80px;
+    height: 80px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include onTablet {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__preview-img {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__title {
+    @include bodyText;
+
+    @include onTablet() {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @include onPhone() {
+      font-size: 14px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__quantity-box {
+    display: flex;
+  }
+
+  &__quantity-button {
+    @include squareButton(32px);
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 32px;
+    height: 32px;
+  }
+
+  &__price {
+    @include h2Text;
+
+    display: block;
+    width: 80px;
+    text-align: right;
+
+    @include onTablet {
+      width: max-content;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import "../../style-utils/style-utils";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__button {
+    @include squareButton(32px);
+
+    @include onPhone {
+      display: none;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    @include squareButton(32px);
+
+    &--active {
+      @include squareButtonSelected;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: flex-end;
+  }
+}

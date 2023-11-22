@@ -1,0 +1,25 @@
+@import "../../style-utils/style-utils";
+
+.home-page {
+  width: 100%;
+
+  &__section {
+    margin-bottom: 80px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onLaptop {
+      margin-bottom: 72px;
+    }
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onPhone {
+      margin-bottom: 48px;
+    }
+  }
+}

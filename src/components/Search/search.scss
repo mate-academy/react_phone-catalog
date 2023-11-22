@@ -1,0 +1,64 @@
+@import "../../style-utils/style-utils";
+
+.search {
+  cursor: text;
+  position: relative;
+  max-width: 326px;
+  width: 100%;
+  box-sizing: border-box;
+
+  height: 100%;
+  box-shadow: -1px 0 0 0 $color-elements;
+
+  &__icon-container {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+
+    & svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__input {
+    @include buttonsText;
+    color: $color-primary;
+
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+
+    padding: 8px 40px 8px 24px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s;
+
+    @include onTablet {
+      padding: 8px 36px 8px 18px;
+    }
+
+    @include onPhone {
+      padding: 8px 36px 8px 12px;
+    }
+
+    &::placeholder {
+      @include bodyText;
+      line-height: 1;
+      color: $color-icons;
+    }
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    &:focus-visible {
+      background-color: $color-hover;
+    }
+  }
+}

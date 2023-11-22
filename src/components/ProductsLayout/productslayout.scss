@@ -1,0 +1,57 @@
+@import "../../style-utils/style-utils";
+
+.products-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__section {
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
+
+    @include onPhone {
+      margin-bottom: 28px;
+    }
+
+    &--small {
+      margin-bottom: 24px;
+
+      @include onTablet {
+        margin-bottom: 20px;
+      }
+
+      @include onPhone {
+        margin-bottom: 18px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    @include h1Text;
+    margin-bottom: 8px;
+  }
+
+  &__models {
+    @include bodyText;
+    color: $color-secondary;
+  }
+
+  &__sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__dropdown-title {
+    @include smallText;
+    display: block;
+    margin-bottom: 8px;
+  }
+}

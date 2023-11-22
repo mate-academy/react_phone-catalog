@@ -1,0 +1,69 @@
+@import "../../style-utils/style-utils";
+
+.footer {
+  box-shadow: 0 -1px 0 0 $color-elements;
+
+  &__container {
+    @include containerBase;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 96px;
+    padding: 0 24px;
+
+    @include onPhone {
+      height: 72px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+
+    @include onTablet {
+      gap: 8px;
+    }
+
+    @include onPhone {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  &__link {
+    display: block;
+
+    @include uppercaseText;
+
+    padding: 42px 8px 43px;
+
+    @include onPhone {
+      padding: 0;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+  }
+
+  &__back-text {
+    cursor: pointer;
+    @include smallText;
+
+    @include onPhone {
+      display: none;
+    }
+  }
+
+  &__back-button {
+    @include squareButton(32px);
+  }
+}

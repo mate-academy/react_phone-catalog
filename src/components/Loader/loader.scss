@@ -1,0 +1,35 @@
+@import "../../style-utils/style-utils";
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  user-select: none;
+
+  &--full-page {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  &__content {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-left-color: $color-primary;
+    animation: load 1.2s infinite linear;
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

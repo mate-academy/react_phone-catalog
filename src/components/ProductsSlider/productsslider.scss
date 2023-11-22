@@ -1,0 +1,46 @@
+@import "../../style-utils/style-utils";
+
+.product-slider {
+  --cardSize: 272px;
+  --sliderGap: 16px;
+  --itemIndex: 0;
+  --itemsVisible: 4;
+  --slideValue: calc(
+    var(--itemsVisible) * (var(--cardSize) + var(--sliderGap))
+  );
+
+  &__title {
+    @include h1Text;
+  }
+
+  &__top-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  &__slider-container {
+    display: flex;
+    overflow: hidden;
+    width: calc(var(--slideValue) - var(--sliderGap));
+    margin: 0 auto;
+  }
+
+  &__slider {
+    display: flex;
+    gap: var(--sliderGap);
+    transform: translateX(calc(var(--slideValue) * var(--itemIndex) * -1 ));
+    transition: all 2000ms;
+  }
+
+  &__button-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include squareButton(32px);
+  }
+}

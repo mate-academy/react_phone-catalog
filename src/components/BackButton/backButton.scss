@@ -1,0 +1,24 @@
+@import "../../style-utils/style-utils";
+
+.back-button {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  cursor: pointer;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    color: $color-primary;
+  }
+
+  &__text {
+    @include smallText;
+    line-height: 1;
+  }
+
+  &:hover &__text {
+    color: $color-primary;
+  }
+}

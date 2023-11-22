@@ -1,0 +1,103 @@
+@import "../../style-utils/style-utils";
+
+.image-slider {
+  --gap: 16px;
+  --button-width: 32px;
+
+  display: flex;
+  flex-direction: column;
+  flex-basis: 1136px;
+
+  &__content {
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: 8px;
+  }
+
+  &__images-wrapper {
+    display: flex;
+
+    width: calc(100% - ((var(--button-width) * 2) + (var(--gap) * 2)));
+    height: 432px;
+
+    overflow: hidden;
+
+    box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px,
+      rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onPhone {
+      width: 100%;
+      height: 200px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    width: 100%;
+  }
+
+  &__image {
+    display: flex;
+    object-fit: cover;
+    object-position: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slide-button {
+    @include squareButton(var(--button-width));
+    height: auto;
+
+    @include onTablet {
+      --button-width: 28px;
+    }
+
+    @include onPhone {
+      display: none;
+    }
+  }
+
+  &__small-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__small-button-wrap {
+    display: grid;
+    place-items: center;
+    user-select: none;
+    cursor: pointer;
+
+    width: 24px;
+    height: 24px;
+
+    &:hover > div {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__small-button {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+    transition: 0.3s ease;
+
+    @include onPhone {
+      width: 10px;
+      height: 3px;
+    }
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}
