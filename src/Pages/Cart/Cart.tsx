@@ -60,7 +60,7 @@ export const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
                   </button>
                   <img
                     className="cart__list-img"
-                    src={`${mainURL}${item.product.image}`}
+                    src={`${mainURL}/${item.product.image}`}
                     alt={item.product.name}
                   />
 

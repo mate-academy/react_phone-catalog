@@ -138,7 +138,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                       onClick={() => setSelectedPicture(image)}
                     >
                       <img
-                        src={`${mainURL}./_new/${image}`}
+                        src={`${mainURL}/${image}`}
                         className="list__item-img"
                         alt="thumb"
                       />
@@ -149,7 +149,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
               {selectedPicture && (
                 <img
                   className="gallery__main-photo"
-                  src={`${mainURL}${selectedPicture}`}
+                  src={`${mainURL}/${selectedPicture}`}
                   alt="Selected"
                 />
               )}

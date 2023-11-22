@@ -82,7 +82,7 @@ export const Card: React.FC<Props> = ({
         }}
       >
         <img
-          src={`${mainURL}${image}`}
+          src={`${mainURL}/${image}`}
           alt="Phone"
           className="product-card__phone-img"
         />

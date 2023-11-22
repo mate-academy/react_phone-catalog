@@ -11,9 +11,9 @@ export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const interval = 3000;
   const images = [
-    './_new/img/banner-accessories.png',
-    './_new/img/banner-phones.png',
-    './_new/img/banner-tablets.png'];
+    '/img/banner-accessories.png',
+    '/img/banner-phones.png',
+    '/img/banner-tablets.png'];
 
   // Function to handle rotating images
   const goToPrevious = () => {
