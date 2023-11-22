@@ -1,0 +1,75 @@
+.favoritespage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1136px;
+  padding: 0 152px 0;
+  margin: auto;
+
+  &_currentpage {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &_homelink {
+      width: 16px;
+      height: 16px;
+      background-image: url('../../imgs/Icons/Home.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      padding-right: 10px;
+    }
+
+    &_arrow {
+      width: 16px;
+      height: 16px;
+      background-image: url('../../imgs/Icons/Vector\ Disabled\ left.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(180deg);
+      padding-right: 10px;
+    }
+
+    &_pagename {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+    }
+  }
+
+  &_title {
+    align-self: flex-start;
+    font-family: 'Mont', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+.favoriteswindow {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 1136px;
+  max-width: 1136px;
+
+  &_product {
+    padding-bottom: 40px;
+
+    &:not(:nth-child(4n)) {
+      padding-right: 16px;
+    }
+  }
+}

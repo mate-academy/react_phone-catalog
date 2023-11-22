@@ -1,0 +1,24 @@
+.carousel_image-1 {
+  background-image: url("../../imgs/carouselImg/banner-phones.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel_image-2 {
+  background-image: url("../../imgs/carouselImg/banner-tablets.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel_image-3 {
+  background-image: url("../../imgs/carouselImg/banner-accessories.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.Homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
