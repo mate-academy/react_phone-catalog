@@ -1,0 +1,184 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../helpers/fonts/Mont-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.Phonespage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 0 152px 0;
+
+  &_container {
+    width: 100%;
+    max-width: 1136px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_currentpage {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    align-self: flex-start;
+    align-items: center;
+
+    &_homelink {
+      width: 16px;
+      height: 16px;
+      background-image: url('../../imgs/Icons/Home.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      padding-right: 10px;
+    }
+
+    &_arrow {
+      width: 16px;
+      height: 16px;
+      background-image: url('../../imgs/Icons/Vector\ Disabled\ left.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(180deg);
+      padding-right: 10px;
+    }
+
+    &_pagename {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+    }
+  }
+
+  &_title {
+    font-family: 'Mont', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #313237;
+    align-self: flex-start;
+  }
+
+  &_nophone {
+    display: flex;
+    margin: 60px auto;
+    text-align: center;
+    font-family: 'Mont', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &_modelslength {
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #89939A;
+    align-self: flex-start;
+    padding-bottom: 40px;
+  }
+
+  &_selections {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    padding-bottom: 20px;
+
+    &_sorting {
+      display: flex;
+      flex-direction: column;
+      padding-right: 16px;
+
+      &_label {
+        font-family: 'Mont', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #89939A;
+        padding-bottom: 5px;
+      }
+
+      &_selection {
+        width: 176px;
+        height: 40px;
+        border: 1px solid #B4BDC3;
+        font-family: 'Mont', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #313237;
+        cursor: pointer;
+        padding-left: 10px;
+      }
+    }
+
+    &_itemscount {
+      display: flex;
+      flex-direction: column;
+
+      &_label {
+        font-family: "Mont";
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #89939A;
+        padding-bottom: 5px;
+      }
+
+      &_selection {
+        width: 176px;
+        height: 40px;
+        border: 1px solid #B4BDC3;
+        font-family: "Mont";
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #313237;
+        cursor: pointer;
+        padding-left: 10px;
+      }
+    }
+  }
+
+
+}
+
+.Phoneswindow {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1136px;
+  max-width: 1136px;
+
+  &_product {
+    padding-bottom: 40px;
+
+    &:not(:nth-child(4n)) {
+      padding-right: 16px;
+    }
+  }
+}

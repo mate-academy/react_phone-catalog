@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../helpers/fonts/Mont-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cartitem {
+  display: flex;
+  flex-direction: row;
+  width: 752px;
+  height: 128px;
+  border: 1px solid #E2E6E9;
+  align-items: center;
+  margin-bottom: 16px;
+
+  &_name {
+    display: flex;
+    align-items: center;
+    width: 295px;
+    height: 42px;
+    margin-right: 49px;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #313237;
+  }
+
+  &_quantity {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+
+  }
+
+  &_price {
+    font-family: 'Mont',sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #313237;
+  }
+
+  &_button {
+
+    &_minus {
+      width: 32px;
+      height: 32px;
+      background-image: url('../../imgs/Icons/Minus.svg');
+      background-repeat: no-repeat;
+      background-color: #fff;
+      border: 1px solid #B4BDC3;
+      background-position: center;
+      cursor: pointer;
+    }
+
+    &_plus {
+      width: 32px;
+      height: 32px;
+      background-image: url('../../imgs/Icons/Plus.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid #B4BDC3;
+      background-color: #fff;
+      cursor: pointer;
+      margin-right: 35px;
+    }
+
+    &_delete {
+      width: 32px;
+      height: 32px;
+      background-image: url('../../imgs/Icons/delete\ button.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0 24px 0;
+      cursor: pointer;
+      border: none;
+      background-color: #fff;
+    }
+  }
+
+  &_image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 24px;
+  }
+}

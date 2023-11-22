@@ -1,0 +1,71 @@
+.main-container {
+  height: 400px;
+  width: 1040px;
+  display: flex;
+  justify-content: center;
+}
+
+.window {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.all-pages-container {
+  height: 100%;
+  display: flex;
+
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+}
+
+.button-right {
+  width: 32px;
+  height: 400px;
+  background-image: url("../../imgs/Icons/Chevron\ \(Arrow\ Right\).svg");
+  background-color: #fff;
+  transform: rotate(180deg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-size: 30px;
+  margin-left: 16px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+}
+
+.button-left {
+  background-image: url("../../imgs/Icons/Chevron\ \(Arrow\ Right\).svg");
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-size: 30px;
+  width: 32px;
+  height: 400px;
+  margin-right: 16px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.dots-1, .dots-2, .dots-3 {
+  background-color: #B4BDC3;
+  width: 14px;
+  height: 4px;
+  margin: 0 4px;
+}
+
+.dots-1.active,
+.dots-2.active,
+.dots-3.active {
+  background-color: #313237;
+}
