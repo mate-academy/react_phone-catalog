@@ -1,0 +1,56 @@
+@import "./variables";
+
+%h1 {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 700;
+  size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $gray-primary;
+}
+
+%h2 {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 700;
+  size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: $gray-primary;
+}
+
+%h3 {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-weight: 600;
+  size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: $gray-primary;
+}
+
+%uppercase {
+  font-family: "Mont-Bold", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%buttons {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-text {
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%small-text {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}

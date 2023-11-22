@@ -1,0 +1,17 @@
+@import "../../styles/style-imports";
+
+.Navbar {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__item {
+    @extend %uppercase;
+
+    &--logo {
+      padding: 20px 0;
+    }
+  }
+}

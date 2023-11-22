@@ -1,0 +1,28 @@
+@import "../../styles/style-imports";
+
+.Filters {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+
+  &__selection {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__title {
+      @extend %small-text;
+      color: $gray-secondary;
+    }
+
+    &__select {
+      padding: 10px 12px 9px;
+      @extend %buttons;
+      border: 1px solid $gray-icons-placeholders;
+      cursor: pointer;
+
+      appearance: none;
+      background: url(../../icons/gray-arrow-down.svg) no-repeat right 12px center;
+    }
+  }
+}

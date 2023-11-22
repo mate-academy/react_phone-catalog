@@ -1,0 +1,26 @@
+@import "../../styles/style-imports";
+
+.NotFoundPage {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    width: 176px;
+    height: 40px;
+    flex-shrink: 0;
+
+    background: $gray-primary;
+    border: 1px solid $gray-icons-placeholders;
+    color: $gray-white;
+    text-align: center;
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+  }
+}

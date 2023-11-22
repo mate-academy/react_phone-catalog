@@ -1,0 +1,43 @@
+@import "../../styles/_style-imports.scss";
+
+.BreadCrumb {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  &__home-icon {
+    height: 16px;
+  }
+
+  &__crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    font-family: "Mont-SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: capitalize;
+    color: $gray-primary;
+
+    &:not(:first-child)::before {
+      display: block;
+      width: 16px;
+      height: 16px;
+      content: "";
+
+      background-image: url(../../icons/arrow-right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.5;
+    }
+
+    &:last-child {
+      color: $gray-secondary;
+    }
+
+    & > a {
+      color: $gray-primary;
+    }
+  }
+}

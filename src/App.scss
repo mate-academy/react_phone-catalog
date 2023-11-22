@@ -1,1 +1,9 @@
-// not empty
+@import "./styles/fonts";
+@import "./styles/utils/reset";
+@import "./styles/typo";
+@import "./styles/global";
+@import "./styles/blocks";
+
+.App {
+  font-family: "Mont-Regular", sans-serif;
+}

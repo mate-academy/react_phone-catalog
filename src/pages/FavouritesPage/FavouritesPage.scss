@@ -1,0 +1,21 @@
+@import "../../styles/style-imports";
+
+.FavouritesPage {
+  &__breadcrumb {
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__counter {
+    @extend %body-text;
+    color: $gray-secondary;
+    margin-top: 8px;
+  }
+
+  &__list {
+    margin-top: 40px;
+  }
+}

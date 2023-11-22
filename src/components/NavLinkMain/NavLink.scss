@@ -1,0 +1,44 @@
+@import "../../styles/style-imports";
+
+.NavLinkMain {
+  position: relative;
+  color: $gray-secondary;
+  transition: all $effect-duration;
+
+  &::after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    display: block;
+    bottom: 0;
+    opacity: 0;
+
+    background-color: $gray-primary;
+    transition: opacity $effect-duration;
+  }
+
+  &:hover,
+  &.is-active {
+    color: $gray-primary;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &--text {
+    padding: 27px 0 26px;
+  }
+
+  &--cart,
+  &--favourite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+
+    box-shadow: -1px 0 0 0 $gray-elements;
+  }
+}

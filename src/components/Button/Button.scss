@@ -1,0 +1,94 @@
+@import "../../styles/style-imports";
+
+.Button {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  background-color: transparent;
+  border: 1px solid $gray-icons-placeholders;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &--arrow {
+    background: no-repeat center url("../../icons/arrow-right.svg");
+    transition: all $effect-duration ease-in-out;
+
+    &:not(:disabled):hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &-top {
+      transform: rotate(-90deg);
+    }
+
+    &-left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &--cart {
+    width: 176px;
+    height: 40px;
+    background: $gray-primary;
+
+    @extend %buttons;
+    color: $gray-white;
+
+    transition: all $effect-duration ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &-added {
+      color: $green;
+      border: 1px solid $gray-elements;
+      background: transparent;
+    }
+  }
+
+  &--favourite {
+    min-width: 40px;
+    min-height: 40px;
+    background: no-repeat center url("../../icons/favourite.svg");
+    border: 1px solid $gray-icons-placeholders;
+
+    transition: border-color $effect-duration ease-in-out;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &-added {
+      background: no-repeat center url("../../icons/favourites-added.svg");
+    }
+  }
+
+  &--number {
+    border: 1px solid $gray-elements;
+    @extend %body-text;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &.active {
+      background: $gray-primary;
+      color: $gray-white;
+    }
+  }
+
+  &--plus {
+    background: no-repeat center url("../../icons/plus.svg");
+  }
+
+  &--minus {
+    background: no-repeat center url("../../icons/minus.svg");
+  }
+}

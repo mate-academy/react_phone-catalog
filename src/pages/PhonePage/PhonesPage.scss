@@ -1,0 +1,16 @@
+@import "../../styles/style-imports.scss";
+
+.PhonePage {
+  margin-top: 25px;
+
+  &__title {
+    @extend %h1;
+    margin-top: 40px;
+  }
+
+  &__count-of-models {
+    @extend %body-text;
+    color: $gray-secondary;
+    margin-top: 8px;
+  }
+}
