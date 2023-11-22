@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPhones } from '../../helpers/apis';
 import './ShopByCategory.scss';
@@ -6,14 +6,16 @@ import './ShopByCategory.scss';
 export const ShopByCategory = () => {
   const [phones, setPhones] = useState([]);
 
-  getPhones('products.json')
-    .then((data: any) => {
-      setPhones(data);
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.error('Error loading data:', error);
-    });
+  useEffect(() => {
+    getPhones('products.json')
+      .then((data: any) => {
+        setPhones(data);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error loading data:', error);
+      });
+  }, []);
 
   return (
     <div className="upperdiv">
