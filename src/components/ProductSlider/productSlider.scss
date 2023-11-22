@@ -1,0 +1,77 @@
+@import "../../helpers/variables.scss";
+
+.slider {
+  width: 1136px;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 32px;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-left: 16px;
+    // width: 272px;
+    height: 507px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $grey-fourth-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s;
+
+    &:not(.slider__btn-left--disabled):not(.slider__btn-right--disabled):hover {
+      border-color: $grey-primary-color;
+    }
+  }
+
+  &__btn-left {
+    margin-right: 16px;
+    background-image: url(../../Images/Icons/ArrowLeft.svg);
+
+    &--disabled {
+      margin-right: 16px;
+      border-color: $grey-third-color;
+      cursor: default;
+      background-image: url(../../Images/Icons/ArrowLeft.svg);
+    }
+  }
+
+  &__btn-right {
+    background-image: url(../../Images/Icons/ArrowRight.svg);
+
+    &--disabled {
+      border-color: $grey-third-color;
+      cursor: default;
+      background-image: url(../../Images/Icons/ArrowRight.svg);
+    }
+  }
+}

@@ -1,1 +1,80 @@
-// not empty
+@import "./helpers/variables.scss";
+// @import "./helpers/fonts.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main-section {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1136px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-regular;
+  color: $grey-primary-color;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: inherit;
+  font-family: inherit;
+}
+
+p,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: $font-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: $font-semibold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}

@@ -1,0 +1,24 @@
+.cart-page {
+  width: 1136px;
+
+  &__back-btn {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin: 0 0 24px;
+  }
+
+  &__message {
+    font-size: 30px;
+  }
+
+  &__list {
+    margin-right: 16px;
+  }
+
+  &__content {
+    display: flex;
+  }
+}

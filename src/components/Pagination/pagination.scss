@@ -1,0 +1,102 @@
+@import "../../helpers/variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    transition: all 0.3s;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__button-left {
+    background-image: url(../../Images/Icons/ArrowLeft.svg);
+
+    &:not(.pagination__button-left--disabled):hover {
+      border-color: $grey-primary-color;
+    }
+
+    &--disabled {
+      // margin-right: 16px;
+      border-color: $grey-third-color;
+      cursor: none;
+      pointer-events: none;
+
+      background-image: url(../../Images/Icons/ArrowLeft.svg);
+    }
+  }
+
+  &__button-right {
+    background-image: url(../../Images/Icons/ArrowRight.svg);
+
+    &:not(.pagination__button-right--disabled):hover {
+      border-color: $grey-primary-color;
+    }
+
+    &--disabled {
+      border-color: $grey-primary-color;
+      cursor: none;
+      pointer-events: none;
+
+      background-image: url(../../Images/Icons/ArrowRight.svg);
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0 16px;
+  }
+
+  &__item {
+    margin-right: 8px;
+
+    &--active {
+      color: #fff;
+      background-color: $grey-primary-color;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $grey-fourth-color;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $grey-primary-color;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $grey-primary-color;
+    }
+  }
+
+  &__break {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+
+    width: 16px;
+    height: 32px;
+  }
+}

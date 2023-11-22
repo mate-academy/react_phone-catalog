@@ -1,0 +1,89 @@
+@import "../../helpers/variables.scss";
+
+.product-details {
+
+  width: 1136px;
+
+  &__navigation {
+    margin: 24px 0 40px;
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin: 0 0 40px;
+    font-size: 32px;
+  }
+
+  &__presentation {
+    display: flex;
+    margin-bottom: 80px;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__main-info {
+    width: 320px;
+  }
+
+  &__capacitys {
+    margin-bottom: 32px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 16px;
+  }
+
+  &__current-price {
+    margin: 0 8px 0 0;
+    letter-spacing: -0.32px;
+    font-size: 32px;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    color: $grey-secondary-color;
+    text-decoration-line: line-through;
+  }
+
+  &__action {
+    display: flex;
+    margin-bottom: 32px;
+    width: 100%;
+  }
+
+  &__button {
+    margin-right: 8px;
+    width: 260px;
+    height: 48px;
+  }
+
+  &__fav {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__info-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-title {
+    margin-bottom: 8px;
+    font-size: 14px;
+
+    font-family: $font-semibold;
+    color: $grey-secondary-color;
+  }
+
+  &__info-value {
+    font-family: $font-semibold;
+  }
+}

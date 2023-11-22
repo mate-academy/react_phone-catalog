@@ -1,0 +1,105 @@
+@import "../../helpers/variables.scss";
+
+.cart-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 24px;
+  width: 100%;
+  height: 128px;
+  border: 1px solid $grey-third-color;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__button-delete {
+    margin-right: 24px;
+  }
+
+  &__link {
+    display: flex;
+    width: 440px;
+  }
+
+  &__img-box {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-right: 31px;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img {
+    height: 66px;
+    width: 66px;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    font-family: $font-bold;
+    font-size: 22px;
+    line-height: 140%;
+    color: $grey-primary-color;
+  }
+
+  &__quantity-box {
+    display: flex;
+    align-items: center;
+    margin-right: 43px;
+  }
+
+  &__button-img {
+    transition: all 0.3s;
+    height: 16px;
+    width: 16px;
+
+    &:hover {
+      filter: brightness(30%);
+    }
+  }
+
+  &__button {
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-color;
+    transition: border-color 0.3s;
+
+    &:not(.cart-item__button-decrease--disabled):hover {
+      border-color: $grey-primary-color;
+    }
+  }
+
+  &__button-decrease {
+    &--disabled {
+      cursor: default;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__amount {
+    display: flex;
+    justify-content: space-between;
+  }
+}

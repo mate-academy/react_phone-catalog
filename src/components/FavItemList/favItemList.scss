@@ -1,0 +1,8 @@
+.fav-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  // border: 1px solid #e2e6e9;
+}

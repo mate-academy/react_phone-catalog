@@ -1,0 +1,72 @@
+@import "../../helpers/variables.scss";
+
+.category {
+  &__img-box {
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(106%);
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+
+    &-small {
+      margin-top: 24px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &__img-phones {
+    width: 368px;
+    margin-top: 8px;
+    margin-left: 73px;
+  }
+
+  &__img-tablets {
+    width: 546px;
+    margin-top: 20px;
+    margin-left: 22px;
+  }
+
+  &__img-accessories {
+    width: 680px;
+    margin-top: 55px;
+    margin-left: 30px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    line-height: 21px;
+    color: $grey-secondary-color;
+  }
+
+  &__link-container {
+    display: flex;
+  }
+
+  &__link {
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

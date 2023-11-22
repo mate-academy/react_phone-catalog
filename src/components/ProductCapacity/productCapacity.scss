@@ -1,0 +1,46 @@
+@import "../../helpers/variables.scss";
+
+.product-capacities {
+  padding-bottom: 24px;
+  border-bottom: 1.5px solid $grey-third-color;
+
+  &__title {
+    margin: 0 0 8px;
+    font-family: $font-semibold;
+    font-size: 12px;
+    color: $grey-secondary-color;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    width: 60px;
+    height: 32px;
+    background-color: gray;
+
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    width: 56px;
+    height: 32px;
+    padding: 4px;
+    border: 1.5px solid $grey-fourth-color;
+    transition: border-color 0.3s;
+
+    &:not(.product-colors__link--active):hover {
+      border-color: $grey-primary-color;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $grey-primary-color;
+      border-color: $grey-primary-color;
+    }
+  }
+}

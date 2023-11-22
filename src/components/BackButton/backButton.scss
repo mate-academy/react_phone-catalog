@@ -1,0 +1,18 @@
+@import "../../helpers/variables.scss";
+
+.back-button {
+  display: flex;
+  align-items: center;
+  font-family: $font-semibold;
+  color: $grey-secondary-color;
+  transition: color 0.3s;
+  font-size: 14px;
+
+  &:hover {
+    color: $grey-primary-color;
+  }
+
+  &__arrow {
+    margin-right: 4px;
+  }
+}

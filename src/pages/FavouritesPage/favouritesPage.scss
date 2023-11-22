@@ -1,0 +1,27 @@
+@import "../../helpers/variables.scss";
+
+.favourites {
+  width: 1136px;
+
+  &__title {
+    margin: 0 0 8px;
+    letter-spacing: -0.32px;
+    font-size: 32px;
+  }
+
+  &__breadcrumbs {
+    margin-top: 23px;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 21px;
+    color: $grey-secondary-color;
+  }
+}
