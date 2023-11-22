@@ -1104,6 +1104,10 @@ video {
   row-gap: 2rem;
 }
 
+.place-self-center {
+  place-self: center;
+}
+
 .self-center {
   align-self: center;
 }

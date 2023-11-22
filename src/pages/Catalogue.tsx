@@ -1,12 +1,9 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
-import classNames from 'classnames';
-
 import {
   useContext, useEffect, useState, useCallback,
 } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
-import Select, { ClassNamesConfig } from 'react-select';
 
 import { appContext } from '../Contexts/AppContext';
 import { typographyStyle } from '../CustomStyles/Typography';
@@ -16,12 +13,10 @@ import { Pagintaion } from '../Components/Pagintaion';
 import { PaginationHelper } from '../utils/PaginationHelper';
 import { Loader } from '../Components/Loader';
 import { api } from '../api/api';
+import { StylishReactSelect } from '../Components/StylishReactSelect';
 
 type OptionPaginationType = { value: string; label: string };
-type OptionSortType = {
-  value: string;
-  label: string;
-};
+type OptionSortType = { value: string; label: string };
 
 const paginationOptions: OptionPaginationType[] = [
   { value: '8', label: '8' },
@@ -101,27 +96,12 @@ export const Catalogue = () => {
     }
   };
 
-  const handlePagintaionChange = (item: OptionPaginationType) => {
+  const handlePaginationChange = (item: OptionPaginationType) => {
     setSearchAndSetOption(item, 'per-page');
   };
 
   const handleSortChange = (item: OptionSortType) => {
     setSearchAndSetOption(item, 'sort-by');
-  };
-
-  const customClasses: ClassNamesConfig = {
-    menu: () => 'rounded-none',
-    menuList: () => `text-Secondary border py-2 border-Elements bg-white ${typographyStyle.bodyText}`,
-    control: () => 'rounded-none border border-Icons px-3 py-0 shadow-none focus-within:border-Primary hover:border-Secondary',
-    option: state => classNames(
-      'flex h-8 items-center px-3 py-0 hover:bg-Background hover:text-Primary',
-      {
-        'bg-Background text-Primary': state.isSelected,
-      },
-    ),
-    dropdownIndicator: state => classNames('transition-all', {
-      'rotate-180': state.selectProps.menuIsOpen,
-    }),
   };
 
   const fetchData = useCallback(async () => {
@@ -227,16 +207,11 @@ export const Catalogue = () => {
                       Sort by
                     </label>
 
-                    <Select
+                    <StylishReactSelect
                       options={sortOptions}
                       onChange={e => handleSortChange(e as OptionSortType)}
                       value={sortOption}
-                      isSearchable={false}
-                      unstyled
-                      aria-labelledby="aria-label"
-                      inputId="aria-example-input"
                       className={`h-10 w-[176px] appearance-none text-Primary ${typographyStyle.button}`}
-                      classNames={customClasses}
                     />
                   </div>
 
@@ -249,16 +224,11 @@ export const Catalogue = () => {
                       Per page
                     </label>
 
-                    <Select
-                      value={paginationOption}
-                      isSearchable={false}
-                      unstyled
-                      aria-labelledby="aria-label"
-                      inputId="aria-example-input"
-                      className={`h-10 w-[128px] appearance-none text-Primary ${typographyStyle.button}`}
-                      classNames={customClasses}
-                      onChange={e => handlePagintaionChange(e as OptionPaginationType)}
+                    <StylishReactSelect
                       options={paginationOptions}
+                      onChange={e => handlePaginationChange(e as OptionPaginationType)}
+                      value={paginationOption}
+                      className={`h-10 w-[128px] appearance-none text-Primary ${typographyStyle.button}`}
                     />
                   </div>
                 </div>
