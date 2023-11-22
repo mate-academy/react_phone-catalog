@@ -1,0 +1,9 @@
+.container {
+  padding: 0 20px;
+  margin: 0 auto;
+
+  @include onSmallDesktop {
+    padding: 0;
+    max-width: 1136px;
+  }
+}

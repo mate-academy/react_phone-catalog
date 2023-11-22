@@ -1,0 +1,88 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+
+  @include onSmallDesktop {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onSmallDesktop {
+      flex-direction: row;
+    }
+  }
+
+  &__phones,
+  &__tablets,
+  &__accessories {
+    cursor: pointer;
+    width: 280px;
+    height: auto;
+    transition: all 0.5s ease;
+
+    @include onTablet {
+      width: 300px;
+    }
+
+    @include onSmallDesktop {
+      width: 368px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+
+    &:hover {
+      scale: 0.9;
+    }
+  }
+
+  &__phones-img,
+  &__tablets-img,
+  &__accessories-img {
+    display: flex;
+    width: 100%;
+    margin-bottom: 24px;
+    filter: brightness(70%);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      filter: brightness(100%);
+    }
+  }
+
+  &__phones-title,
+  &__tablets-title,
+  &__accessories-title {
+    color: $gray-primary;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 4px;
+  }
+
+  &__phones-description,
+  &__tablets-description,
+  &__accessories-description {
+    color: $gray-secondary;
+  }
+}

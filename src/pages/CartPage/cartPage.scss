@@ -1,0 +1,227 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.cartpage {
+  &__button-back {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+
+    &-text {
+      color: $gray-secondary;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border: 1px solid $gray-elements;
+    gap: 15px;
+
+    @include onTablet {
+      width: 100%;
+      flex-wrap: nowrap;
+      padding: 31px 40px 31px 24px;
+    }
+
+    @include onSmallDesktop {
+      width: 752px;
+      justify-content: space-between;
+    }
+
+    &-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      @include onTablet {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &-close-button {
+      padding: 0;
+    }
+
+    &-close-icon {
+      display: flex;
+      margin-bottom: 10px;
+
+      @include onTablet {
+        margin-right: 34px;
+        margin-bottom: 0;
+      }
+    }
+
+    &-img {
+      display: flex;
+      width: 46px;
+      height: 66px;
+      margin-bottom: 10px;
+
+      @include onTablet {
+        margin-right: 41px;
+        margin-bottom: 0;
+      }
+    }
+
+    &-name {
+      display: flex;
+      color: $gray-primary;
+      text-align: center;
+
+      @include onTablet {
+        width: 295px;
+        margin-right: 10px;
+        text-align: left;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    &-button-subtract,
+    &-button-add {
+      display: flex;
+      border: 1px solid $gray-elements;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    &-button-subtract {
+      margin-right: 13px;
+    }
+
+    &-button-add {
+      margin-left: 13px;
+      margin-right: 13px;
+
+      @include onTablet {
+        margin-right: 23px;
+      }
+    }
+
+    &-button-subtract-img,
+    &-button-add-img {
+      display: flex;
+    }
+
+    &-price {
+      color: $gray-primary;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 140%;
+    }
+  }
+
+  &__amount {
+    width: 280px;
+    padding: 24px;
+
+    @include onTablet {
+      width: 368px;
+    }
+
+    &-total {
+      color: $gray-primary;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: -0.32px;
+      text-align: center;
+    }
+
+    &-text {
+      text-align: center;
+      color: $gray-secondary;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    &-button {
+      width: 100%;
+      display: block;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      background-color: $gray-primary;
+      margin: 24px auto;
+      padding: 14px 0;
+      transition: all 0.3s ease;
+
+      @include onSmallDesktop {
+        padding: 14px 126px 13px 125px;
+      }
+
+      &:hover {
+        background: $gray-primary;
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
+
+    &-line {
+      width: 100%;
+      background-color: $gray-elements;
+    }
+  }
+
+  &__no-items {
+    margin-top: 40px;
+    color: #313237;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    text-align: center;
+
+    @include onTablet {
+      margin-top: 70px;
+    }
+  }
+
+  &__checkout-message {
+    text-align: center;
+  }
+}

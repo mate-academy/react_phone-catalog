@@ -1,0 +1,44 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.addToCartBtn {
+  width: 176px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  line-height: 21px;
+  padding: 10px 36px;
+  background-color: $gray-primary;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+
+  &-added {
+    width: 176px;
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    color: #27ae60;
+    font-weight: 600;
+    padding: 9px 25px 8px;
+  }
+
+  &-wide {
+    width: 263px;
+    height: 48px;
+    font-weight: 600;
+
+    &-added {
+      width: 263px;
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+      color: #27ae60;
+      font-weight: 600;
+      padding: 9px 25px 8px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+}

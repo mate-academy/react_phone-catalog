@@ -1,0 +1,40 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.swiper {
+  &-container {
+    position: relative;
+  }
+
+  &-button-prev,
+  &-button-next {
+    display: none;
+
+    @include onSmallDesktop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &-button-prev {
+    position: absolute;
+    left: 1056px;
+    top: -45px;
+    &::after {
+      display: none;
+    }
+  }
+
+  &-button-next {
+    position: absolute;
+    right: 0;
+    top: -45px;
+    &::after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.footer {
+  padding-top: 50px;
+
+  @include onTablet {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 20px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      order: 1;
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__link-github,
+  &__link-contacts,
+  &__link-rights {
+    display: block;
+    align-items: center;
+    color: $gray-secondary;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+    @include onTablet {
+      font-size: 12px;
+    }
+
+    &:hover {
+      color: $gray-primary;
+    }
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+  }
+
+  &__back {
+    display: flex;
+
+    @include onMobile {
+      order: 3;
+    }
+
+    &-btn {
+      cursor: pointer;
+      padding: 8px;
+      border: 1px solid $gray-icons-placeholders;
+
+      &-img {
+        display: flex;
+      }
+    }
+
+    &-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $gray-secondary;
+      font-size: 12px;
+      font-weight: 600;
+      margin-right: 16px;
+    }
+  }
+}

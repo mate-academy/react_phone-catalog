@@ -1,0 +1,51 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.header {
+  padding: 20px;
+
+  @include onTablet {
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    background: white;
+    width: 100%;
+    box-shadow: 0 1px 0 0 $gray-elements;
+    padding: 0 0 0 24px;
+    border-left: 1px solid $gray-elements;
+    border-right: 1px solid $gray-elements;
+    background-color: #fff;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+
+    @include onSmallDesktop {
+      margin-right: 64px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    @include onTablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-grow: 1;
+    }
+  }
+}

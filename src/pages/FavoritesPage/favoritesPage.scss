@@ -1,0 +1,40 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.favoritespage {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    display: block;
+    margin-bottom: 40px;
+    color: $gray-secondary;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: $gray-secondary;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__no-items {
+    margin-top: 40px;
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    text-align: center;
+
+    @include onTablet {
+      margin-top: 70px;
+    }
+  }
+}

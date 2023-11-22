@@ -1,0 +1,60 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.mobilemenu {
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  top: 0;
+  left: -100%;
+  padding: 20px;
+  transition: all 0.3s ease;
+  height: 100vh;
+
+  @include onSmallDesktop {
+    display: none;
+  }
+
+  &.open {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+
+    @include onSmallDesktop {
+      display: none;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    color: $gray-primary;
+  }
+
+  &__link,
+  &__favorites,
+  &__cart {
+    color: $gray-secondary;
+    font-family: "Mont", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 0;
+
+    &--is-active {
+      position: relative;
+      color: $gray-primary;
+    }
+  }
+}

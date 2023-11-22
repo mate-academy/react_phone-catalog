@@ -1,1 +1,39 @@
-// not empty
+@import "./styles/helpers/reset.scss";
+@import "./styles/helpers/fonts.scss";
+@import "./styles/helpers/variables.scss";
+@import "./styles/helpers/cssEffects.scss";
+@import "./styles/helpers/mixins.scss";
+
+@import "./styles/blocks/title.scss";
+@import "./styles/blocks/container.scss";
+@import "../src/styles/blocks/logo.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.content {
+  flex-grow: 1;
+}

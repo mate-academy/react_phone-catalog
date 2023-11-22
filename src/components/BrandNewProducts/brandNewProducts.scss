@@ -1,0 +1,17 @@
+@import "../../styles/helpers/variables.scss";
+@import "../../styles/helpers/mixins.scss";
+
+.brand-new-products {
+
+  @include onTablet {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__slider .product__fullPrice {
+    display: none;
+  }
+}
