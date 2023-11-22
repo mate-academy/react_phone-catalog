@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { Link, useLocation } from 'react-router-dom';
 import '../../styles/components/ButtonsSelect/ButtonsSelect.scss';
 import { ChangeType, prepareLink } from '../../utils/routerService';
@@ -20,6 +21,10 @@ export const ButtonsSelect: React.FC<Props> = ({
   const colors = useColors();
   const location = useLocation();
 
+  const reduceHistory = () => {
+    history.replaceState(location.state, '', `#${location.state.prevPath}`);
+  };
+
   return (
     <div className="buttons">
       <h1 className="buttons__title">{title}</h1>
@@ -30,11 +35,16 @@ export const ButtonsSelect: React.FC<Props> = ({
             <div className="buttons__button-container" key={content}>
               <Link
                 to={prepareLink(location.pathname, ChangeType.COLOR, content)}
-                state={{ path: location.pathname, loaderOff: true }}
+                state={{
+                  path: location.pathname,
+                  loaderOff: true,
+                  prevPath: location.state.prevPath,
+                }}
               >
                 <Button
                   content="color"
                   isActive={content === activeContent}
+                  onClick={reduceHistory}
                 >
                   <span style={{ background: colors.get(content) }} />
                 </Button>
@@ -47,11 +57,16 @@ export const ButtonsSelect: React.FC<Props> = ({
               <Link
                 to={prepareLink(location.pathname,
                   ChangeType.CAPACITY, content)}
-                state={{ path: location.pathname, loaderOff: true }}
+                state={{
+                  path: location.pathname,
+                  loaderOff: true,
+                  prevPath: location.state.prevPath,
+                }}
               >
                 <Button
                   content="text"
                   isActive={content === activeContent}
+                  onClick={reduceHistory}
                 >
                   {content}
                 </Button>
