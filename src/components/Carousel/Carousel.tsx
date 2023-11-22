@@ -11,9 +11,9 @@ export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const interval = 3000;
   const images = [
-    '/img/banner-accessories.png',
-    '/img/banner-phones.png',
-    '/img/banner-tablets.png'];
+    'img/banner-accessories.png',
+    'img/banner-phones.png',
+    'img/banner-tablets.png'];
 
   // Function to handle rotating images
   const goToPrevious = () => {
@@ -59,7 +59,7 @@ export const Carousel = () => {
           {images.map((image, index) => (
             <img
               key={image}
-              src={`${mainURL}${image}`}
+              src={`${mainURL}/${image}`}
               alt={`Imag ${index}`}
               className={classNames('carousel__img', {
                 visible: index === currentIndex,
