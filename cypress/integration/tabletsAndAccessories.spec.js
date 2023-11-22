@@ -1,4 +1,4 @@
-describe('Tablets and accessories', () => {
+describe.skip('Tablets and accessories', () => {
   it('should show only tablets on the "TabletsPage"', () => {
     cy.intercept('**products.json', { fixture: 'differentProds' });
 

@@ -1,11 +1,10 @@
 /* eslint-disable max-len */
 import {
-  createContext, useState, useCallback, useEffect,
+  createContext, useState, useEffect,
 } from 'react';
 import { debounce } from 'lodash';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
-import { api } from '../api/api';
 
 import type { ProductType } from '../Types/ProductType';
 import type { PhoneType } from '../Types/PhoneType';
@@ -85,22 +84,6 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     cartItems,
     setCartItems,
   };
-
-  const fetchData = useCallback(async () => {
-    try {
-      const data = await api.getNewPhones();
-
-      if (data) {
-        setProducts(data);
-      }
-    } catch {
-      setProducts([]);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const preparedVisibleProducts = products.filter(product => {

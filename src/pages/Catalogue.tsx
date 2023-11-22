@@ -1,10 +1,13 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
-import { Link, Outlet, useParams } from 'react-router-dom';
-import Select, { StylesConfig, ClassNamesConfig } from 'react-select';
-
 import classNames from 'classnames';
-import { useContext, useEffect, useState } from 'react';
+
+import {
+  useContext, useEffect, useState, useCallback,
+} from 'react';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import Select, { ClassNamesConfig } from 'react-select';
+
 import { appContext } from '../Contexts/AppContext';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { ProductCard } from '../Components/ProductCard';
@@ -12,6 +15,7 @@ import { scrollToTop } from '../utils/scrollToTop';
 import { Pagintaion } from '../Components/Pagintaion';
 import { PaginationHelper } from '../utils/PaginationHelper';
 import { Loader } from '../Components/Loader';
+import { api } from '../api/api';
 
 type OptionPaginationType = { value: string; label: string };
 type OptionSortType = {
@@ -33,12 +37,14 @@ const sortOptions: OptionSortType[] = [
 ];
 
 export const Catalogue = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     visibleProducts,
     categoryProducts,
     currentItem,
     setSearchParams,
     searchParams,
+    setProducts,
   } = useContext(appContext);
 
   const { catalogueId, itemId } = useParams();
@@ -103,40 +109,38 @@ export const Catalogue = () => {
     setSearchAndSetOption(item, 'sort-by');
   };
 
-  const customStyles: StylesConfig = {
-    control: state => ({
-      ...state,
-      borderRadius: 0,
-      border: '1px solid #B4BDC3',
-      boxShadow: 'none',
-      padding: '0 12px',
-      ':hover': {
-        borderColor: '#89939A',
-      },
-      ':focus-within': {
-        borderColor: '#313237',
-      },
-    }),
-    menu: state => ({ ...state, borderRadius: '0' }),
-    option: state => ({
-      ...state,
-      display: 'flex',
-      padding: '0 12px',
-    }),
-  };
-
   const customClasses: ClassNamesConfig = {
+    menu: () => 'rounded-none',
     menuList: () => `text-Secondary border py-2 border-Elements bg-white ${typographyStyle.bodyText}`,
+    control: () => 'rounded-none border border-Icons px-3 py-0 shadow-none focus-within:border-Primary hover:border-Secondary',
     option: state => classNames(
-      'flex items-center h-8 hover:text-Primary hover:bg-Background',
+      'flex h-8 items-center px-3 py-0 hover:bg-Background hover:text-Primary',
       {
-        'text-Primary bg-Background': state.isSelected,
+        'bg-Background text-Primary': state.isSelected,
       },
     ),
     dropdownIndicator: state => classNames('transition-all', {
       'rotate-180': state.selectProps.menuIsOpen,
     }),
   };
+
+  const fetchData = useCallback(async () => {
+    setIsLoading(true);
+
+    try {
+      const data = await api.getNewPhones();
+
+      setProducts(data);
+    } catch {
+      setProducts([]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [catalogueId]);
 
   useEffect(() => {
     scrollToTop();
@@ -231,7 +235,6 @@ export const Catalogue = () => {
                       unstyled
                       aria-labelledby="aria-label"
                       inputId="aria-example-input"
-                      styles={customStyles}
                       className={`h-10 w-[176px] appearance-none text-Primary ${typographyStyle.button}`}
                       classNames={customClasses}
                     />
@@ -252,7 +255,6 @@ export const Catalogue = () => {
                       unstyled
                       aria-labelledby="aria-label"
                       inputId="aria-example-input"
-                      styles={customStyles}
                       className={`h-10 w-[128px] appearance-none text-Primary ${typographyStyle.button}`}
                       classNames={customClasses}
                       onChange={e => handlePagintaionChange(e as OptionPaginationType)}
@@ -266,7 +268,7 @@ export const Catalogue = () => {
 
           <hr className="col-span-full mb-6 border-0" />
 
-          {!visibleProducts.length ? (
+          {isLoading ? (
             <Loader />
           ) : (
             <div className="col-span-full grid grid-cols-4 gap-4">

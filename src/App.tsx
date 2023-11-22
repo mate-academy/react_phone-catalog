@@ -10,11 +10,9 @@ import { appContext } from './Contexts/AppContext';
 
 const App = () => {
   const {
-    favorites,
-    cartItems,
-    searchParams,
-    setSearchParams,
-  } = useContext(appContext);
+    favorites, cartItems, searchParams, setSearchParams,
+  }
+    = useContext(appContext);
   const { catalogueId, itemId } = useParams();
   const searchQuery = searchParams.get('query') || '';
 
@@ -84,7 +82,7 @@ const App = () => {
           </div>
         </div>
 
-        <div className="col-span-12 col-start-2 grid auto-rows-min grid-cols-12 gap-x-4">
+        <div className="relative col-span-12 col-start-2 grid auto-rows-min grid-cols-12 gap-x-4">
           <Outlet />
         </div>
 
@@ -96,7 +94,10 @@ const App = () => {
           <nav
             className={`flex h-full items-center gap-x-16 ${typographyStyle.uppercase}`}
           >
-            <a className="flex h-[96px] items-center" href="https://github.com/donizer/react_phone-catalog/">
+            <a
+              className="flex h-[96px] items-center"
+              href="https://github.com/donizer/react_phone-catalog/"
+            >
               github
             </a>
             <a className="flex h-[96px] items-center" href="#contacts">
