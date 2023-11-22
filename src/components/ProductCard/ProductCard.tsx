@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { useCartFavorites } from '../../providers/CartFavoritesProvider';
 
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+const BASE_URL
+= 'https://mate-academy.github.io/react_phone-catalog/public/_new/';
 
 export const ProductCard = ({ product }: any) => {
   const {
