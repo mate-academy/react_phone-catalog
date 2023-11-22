@@ -1,0 +1,159 @@
+.cart {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 16px;
+  max-width: 1136px;
+
+  &__list {
+    grid-column: 1 / 17;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $elements-color;
+    height: 128px;
+    padding: 0 40px 0 24px;
+  }
+
+  &__name {
+    width: 250px;
+    color: inherit;
+  }
+
+  &__close {
+    border: 1px solid transparent;
+    width: 16px;
+    height: 16px;
+    background-color: $white-color;
+    background-image: url("../../image/Close.svg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.2));
+
+    &--message {
+      background-color: $red-color;
+      background-image: url("../../image/Close.svg");
+    }
+  }
+
+  &__image-wrapper {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $icons-color;
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    @include hover(border-color, $primery-color);
+
+    &--minus {
+      background-image: url("../../image/Minus.svg");
+    }
+
+    &--plus {
+      background-image: url("../../image/plus.svg");
+    }
+
+    &--disabled {
+      border-color: $elements-color;
+      background-image: url("../../image/Minus_Gray.svg");
+      cursor: no-drop;
+
+      @include hover(border-color, $elements-color);
+    }
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__card-price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  &__total {
+    position: relative;
+    grid-column: 17 / 25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid $elements-color;
+    height: min-content;
+    padding: 24px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__description {
+    color: $secondary-color;
+  }
+
+  &__line {
+    margin: 24px 0;
+    width: 100%;
+    height: 1px;
+    background-color: $elements-color;
+  }
+
+  &__checkout {
+    border: 1px solid $primery-color;
+    width: 320px;
+    height: 48px;
+    background-color: $primery-color;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    color: $white-color;
+
+    @include hover(box-shadow, 0 3px 13px 0 #17203142);
+  }
+
+  &__message {
+    position: absolute;
+    transform: translateY(200px);
+    padding: 20px;
+    background-color: $red-color;
+  }
+
+  &__paragraph {
+    text-align: center;
+    color: $white-color;
+  }
+}

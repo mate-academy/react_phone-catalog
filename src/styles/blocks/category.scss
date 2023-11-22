@@ -1,0 +1,26 @@
+.category {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  &__item {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $primery-color;
+  }
+
+  &__count {
+    color: $secondary-color;
+  }
+
+  &__image {
+    width: 368px;
+    height: 368px;
+  }
+}

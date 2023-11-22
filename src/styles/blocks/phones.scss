@@ -1,0 +1,12 @@
+.phones {
+  display: flex;
+  gap: 40px 16px;
+  max-width: 1136px;
+  overflow: hidden;
+
+  &--list {
+    flex-wrap: wrap;
+    overflow: visible;
+    margin-bottom: 40px;
+  }
+}
