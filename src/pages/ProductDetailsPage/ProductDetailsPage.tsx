@@ -175,7 +175,13 @@ const ProductDetailsPage = () => {
                       className={`Productsdetails_availableoptions_availablecolors_colors
                   ${product.color === color ? 'active' : ''}`}
                       style={{ backgroundColor: Colors[color] }}
-                      onClick={() => setIsColorLoading(true)}
+                      onClick={(e) => {
+                        if (product.color !== color) {
+                          setIsColorLoading(true);
+                        } else {
+                          e.preventDefault();
+                        }
+                      }}
                     />
                   );
                 })}
@@ -206,7 +212,13 @@ const ProductDetailsPage = () => {
                         to={`/phones/${newPath}`}
                         className={`Productsdetails_availableoptions_availablecapacity_capacity_each
                     ${product.capacity === capacity ? 'active' : ''}`}
-                        onClick={() => setIsCapacityLoading(true)}
+                        onClick={(e) => {
+                          if (product.capacity !== capacity) {
+                            setIsCapacityLoading(true);
+                          } else {
+                            e.preventDefault();
+                          }
+                        }}
                       >
                         {capacity}
                       </Link>

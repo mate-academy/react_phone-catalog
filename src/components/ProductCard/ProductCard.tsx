@@ -47,7 +47,7 @@ export const ProductCard = ({ product }: any) => {
       <Link to={`${path}`} className="card-link" data-qa="card" key={itemId}>
         <div className="card" data-qa="card" key={id}>
           <img
-            src={`${process.env.PUBLIC_URL}/_new/${image || product.images[0]}`}
+            src={`/_new/${image || product.images[0]}`}
             alt={name}
             className="card_image"
           />
