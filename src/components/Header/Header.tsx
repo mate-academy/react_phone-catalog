@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import classNames from 'classnames';
-import favorite from '../images/favorite.svg';
-import cart from '../images/cart.svg';
-import logo from '../images/Logo.svg';
+import favorite from '../../images/favorite.svg';
+import cart from '../../images/cart.svg';
+import logo from '../../images/Logo.svg';
+import './Header.scss';
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);

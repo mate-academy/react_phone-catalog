@@ -9,14 +9,16 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
-    <div className="product__card">
+    <div className="product__card" data-cy="cardsContainer">
       <div className="product__card--top">
-        <img className="product__card--img" src={`_new/${product.image}`} alt="card" />
+        <img
+          className="product__card--img"
+          src={`_new/${product.image}`}
+          alt="card"
+        />
         <p className="product__card--name">{product.name}</p>
         <div className="product__card--price">
-          <div className="product__card--price-total">
-            {product.price}
-          </div>
+          <div className="product__card--price-total">{product.price}</div>
           <div className="product__card--price-full">{`$${product.fullPrice}`}</div>
         </div>
       </div>

@@ -1,0 +1,67 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  &__button {
+    width: 32px;
+    bottom: 1px solid #b4bdc3;
+    background-color: #fff;
+  }
+  &__body {
+    display: flex;
+    gap: 18px;
+  }
+
+  &__slider {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    position: relative;
+    width: 1040px;
+    height: 400px;
+    overflow: hidden;
+
+    &--line {
+      display: flex;
+      position: absolute;
+      left: 0;
+      transition: all ease 1s;
+
+      &-item {
+        width: 1040px;
+        height: 400px;
+      }
+    }
+
+    &--pagination {
+      display: flex;
+      margin: 0 auto;
+      width: 80px;
+      height: 24px;
+
+      &-item {
+        background-color: #e2e6e9;
+        height: 2px;
+        width: 10px;
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 16px;
+    margin: 0 auto;
+
+    &--item {
+      background-color: #e2e6e9;
+      color: #e2e6e9;
+      height: 8px;
+      width: 20px;
+    }
+  }
+}
+
+.active {
+  color: #000;
+  background-color: #000;
+}

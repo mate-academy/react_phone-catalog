@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+  height: 64px;
+
+  &__left {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+
+    &--link {
+      text-decoration: none;
+      color: #89939a;
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 11px; /* 91.667% */
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 49px;
+  }
+}

@@ -1,11 +1,11 @@
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { HomePage } from './pages/HomePage';
-import { PhonesPage } from './pages/PhonesPage';
-import { TabletPage } from './pages/TabletPage';
-import { Accessories } from './pages/Accessories';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import { HomePage } from './pages/HomePage/HomePage';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+import { TabletPage } from './pages/TabletPage/TabletPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/Accessories';
 
 export const App = () => (
   <div className="App">
@@ -14,7 +14,7 @@ export const App = () => (
       <Route path="/" element={<HomePage />} />
       <Route path="/phones" element={<PhonesPage />} />
       <Route path="/tablets" element={<TabletPage />} />
-      <Route path="/accessories" element={<Accessories />} />
+      <Route path="/accessories" element={<AccessoriesPage />} />
     </Routes>
     <Footer />
   </div>

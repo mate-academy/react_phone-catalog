@@ -1,0 +1,66 @@
+.phones {
+  margin: 0 auto;
+
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__count {
+    font-family: "Montserrat", sans-serif;
+    color: #89939a;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__top  {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    &--name {
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: #89939a;
+    }
+  }
+
+  &__filter {
+    margin-bottom: 14px;
+    display: flex;
+    gap: 16px;
+    &--item {
+
+
+      &-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        color: #89939a;
+      }
+
+      &-select {
+        width: 176px;
+        height: 40px;
+        border: 1px solid #b4bdc3;
+      }
+    }
+  }
+
+  &__catalog {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}

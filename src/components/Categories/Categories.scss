@@ -21,6 +21,49 @@
   display: flex;
   flex-direction: column;
 
+  &__picture {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+
+    &--1 {
+      background-color: #ffe3ca
+    }
+
+    &--2 {
+      background-color: #8d8d92;
+    }
+
+    &--3 {
+      background-color: #973d5f;
+    }
+
+    &--img {
+      position: absolute;
+
+      &-phones {
+        left: 120px;
+        top: 42px;
+        width: 287px;
+        height: 331px;
+      }
+
+      &-tablets {
+        left: 108px;
+        top: 68px;
+        width: 287px;
+        height: 331px;
+      }
+
+      &-accessories {
+        left: 120px;
+        top: 82px;
+        width: 403px;
+        height: 287px;
+      }
+      }
+  }
   &__title {
     font-family: "Montserrat", sans-serif;
     color: #313237;
@@ -30,13 +73,6 @@
     line-height: normal;
     margin-bottom: 0;
   }
-
-  &__img {
-    width: 360px;
-    height: 360px;
-    margin-bottom: 24px;
-  }
-
   &__num {
     font-family: "Montserrat", sans-serif;
     color: #89939a;

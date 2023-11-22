@@ -1,5 +1,6 @@
-import logo from '../images/Logo.svg';
-import top from '../images/top.svg';
+import logo from '../../images/Logo.svg';
+import top from '../../images/top.svg';
+import './Footer.scss';
 
 export const Footer = () => {
   return (
