@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import './Carousel.scss';
 import rightArrow from '../../icons/right-arrow.svg';
 import leftArrow from '../../icons/left-arrow.svg';
+import { mainURL } from '../../utils/mainUrl';
 
 export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -58,7 +59,7 @@ export const Carousel = () => {
           {images.map((image, index) => (
             <img
               key={image}
-              src={`${process.env.PUBLIC_URL}${image}`}
+              src={`${mainURL}${image}`}
               alt={`Imag ${index}`}
               className={classNames('carousel__img', {
                 visible: index === currentIndex,

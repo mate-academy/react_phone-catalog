@@ -6,6 +6,7 @@ import heart from '../../icons/favorite.svg';
 import heartAdded from '../../icons/favoriteLiked.svg';
 import { Product } from '../../types/productType';
 import { CartItem } from '../../types/cartType';
+import { mainURL } from '../../utils/mainUrl';
 
 type Props = {
   itemId: string,
@@ -81,7 +82,7 @@ export const Card: React.FC<Props> = ({
         }}
       >
         <img
-          src={`${process.env.PUBLIC_URL}/_new/${image}`}
+          src={`${mainURL}${image}`}
           alt="Phone"
           className="product-card__phone-img"
         />

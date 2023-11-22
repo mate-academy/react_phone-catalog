@@ -12,6 +12,7 @@ import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { CartItem } from '../../types/cartType';
 import heart from '../../icons/favorite.svg';
 import heartAdded from '../../icons/favoriteLiked.svg';
+import { mainURL } from '../../utils/mainUrl';
 
 type Props = {
   setFavorites: React.Dispatch<React.SetStateAction<Product[]>>,
@@ -137,7 +138,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
                       onClick={() => setSelectedPicture(image)}
                     >
                       <img
-                        src={`${process.env.PUBLIC_URL}./_new/${image}`}
+                        src={`${mainURL}./_new/${image}`}
                         className="list__item-img"
                         alt="thumb"
                       />
@@ -148,7 +149,7 @@ export const ProductDetailsPage: React.FC<Props> = ({
               {selectedPicture && (
                 <img
                   className="gallery__main-photo"
-                  src={`${process.env.PUBLIC_URL}./_new/${selectedPicture}`}
+                  src={`${mainURL}${selectedPicture}`}
                   alt="Selected"
                 />
               )}

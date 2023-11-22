@@ -6,6 +6,7 @@ import { CartItem } from '../../types/cartType';
 import './Cart.scss';
 import close from '../../icons/Close.svg';
 import plus from '../../icons/plus.svg';
+import { mainURL } from '../../utils/mainUrl';
 
 type Props = {
   cartItems: CartItem[];
@@ -59,7 +60,7 @@ export const Cart: React.FC<Props> = ({ cartItems, setCartItems }) => {
                   </button>
                   <img
                     className="cart__list-img"
-                    src={`${process.env.PUBLIC_URL}./_new/${item.product.image}`}
+                    src={`${mainURL}${item.product.image}`}
                     alt={item.product.name}
                   />
 
