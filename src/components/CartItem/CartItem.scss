@@ -1,0 +1,145 @@
+@import "../../helpers/styles/variables.scss";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 24px;
+  width: 100%;
+
+  border: 1px solid $grey-elements;
+
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__button-delete {
+    margin-right: 24px;
+  }
+
+  &__link {
+    display: flex;
+    width: 450px;
+  }
+
+  &__img-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 24px;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img {
+    height: 66px;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    margin-right: 48px;
+    font-size: 14px;
+
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+
+    font-family: $font-bold;
+    font-size: 22px;
+    line-height: 140%;
+  }
+
+  &__quantity-box {
+    display: flex;
+    align-items: center;
+    margin-right: 44px;
+  }
+
+  &__button-img {
+    transition: all 0.3s;
+
+    &:hover {
+      filter: brightness(30%);
+    }
+  }
+
+  &__button {
+    margin: 0;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $grey-icons;
+
+    transition: border-color 0.3s;
+
+    &:not(.cart-item__button-decrease--disabled):hover {
+      border-color: $grey-primary-color;
+    }
+  }
+
+  &__button-decrease {
+    &--disabled {
+      cursor: default;
+    }
+  }
+
+  &__quantity {
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__amount {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    width: 350px;
+    padding: 12px;
+
+    &__amount {
+      width: 90px;
+      flex-direction: column-reverse;
+    }
+
+    &__name {
+      width: 100px;
+      font-size: 12px;
+      margin-right: 20px;
+    }
+
+    &__button-delete {
+      margin-right: 16px;
+    }
+
+    &__price {
+      padding-left: 16px;
+      margin-bottom: 4px;
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &__button {
+      margin: 0;
+      width: 32px;
+      height: 32px;
+    }
+
+    &__quantity-box {
+      margin-right: 4px;
+    }
+
+    &__img-box {
+      margin-right: 0;
+    }
+  }
+}

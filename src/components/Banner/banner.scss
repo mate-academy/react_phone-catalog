@@ -1,0 +1,120 @@
+@import "../../helpers/styles/variables.scss";
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+
+  &__caroucel {
+    display: flex;
+    height: 100%;
+    max-width: 1040px;
+
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 32px;
+    border: 1px solid $grey-icons;
+    background-color: #fff;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $grey-primary-color;
+    }
+
+    &--left {
+      margin-right: 16px;
+
+      background-image: url(../../images/Icons/button_banner_left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &--right {
+      margin-left: 16px;
+
+      background-image: url(../../images/Icons/button_banner_right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__img {
+    height: 400px;
+
+    object-fit: cover;
+  }
+
+  &__indicators {
+    position: absolute;
+    left: 48%;
+    top: 522px;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    margin-right: 14px;
+
+    background-color: $grey-elements;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: $grey-icons;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      background-color: $grey-primary-color;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 340px;
+    height: 180px;
+
+    &__caroucel {
+      height: 180px;
+      max-width: 320px;
+
+      overflow: hidden;
+    }
+
+    &__indicators {
+      left: 43%;
+      top: 280px;
+    }
+
+    &__img {
+      width: 320px;
+      height: 180px;
+
+      object-fit: cover;
+    }
+
+    &__button {
+      &--right {
+        margin-left: 6px;
+      }
+
+      &--left {
+        margin-right: 6px;
+      }
+    }
+  }
+}

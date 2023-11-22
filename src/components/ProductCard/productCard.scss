@@ -1,0 +1,153 @@
+@import "../../helpers/styles/variables.scss";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+
+  border: 1px solid #e2e6e9;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__img {
+    margin: 0 auto;
+    margin-bottom: 24px;
+    height: 208px;
+
+    object-fit: contain;
+  }
+
+  &__title {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  &__price {
+    display: flex;
+    margin-bottom: 16px;
+    padding-bottom: 6.5px;
+    padding-top: 6.5px;
+
+    font-size: 22px;
+    border-bottom: 1px solid $grey-secondary-color;
+  }
+
+  &__price-discount {
+    color: $grey-elements;
+    text-decoration: line-through;
+  }
+
+  &__price-regular {
+    margin-right: 8px;
+
+    font-family: $font-bold;
+    font-size: 22px;
+    color: $grey-primary-color;
+  }
+
+  &__properties {
+    margin-bottom: 16px;
+  }
+
+  &__property {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    font-family: $font-semibold;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__property-title {
+    color: $grey-secondary-color;
+  }
+
+  &__buttons {
+    display: flex;
+    font-family: $font-regular;
+  }
+
+  &__button-cart {
+    width: 176px;
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  &__button-fav {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    width: 153px;
+    height: 284px;
+    padding: 12px 8px 8px;
+    font-size: 10px;
+
+    &__img {
+      margin-bottom: 12px;
+      height: 88px;
+    }
+
+    &__title {
+      height: 20px;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    &__price {
+      display: flex;
+      margin-bottom: 8px;
+      padding-bottom: 3px;
+      padding-top: 3px;
+      font-size: 14px;
+    }
+
+    &__price-regular {
+      margin-right: 4px;
+
+      font-family: $font-bold;
+      font-size: 14px;
+      color: $grey-primary-color;
+    }
+
+    &__properties {
+      margin-bottom: 8px;
+    }
+
+    &__property {
+      margin-bottom: 4px;
+    }
+
+    &__buttons {
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    &__button-cart {
+      width: 100px;
+      height: 28px;
+      margin-right: 4px;
+    }
+
+    &__button-fav {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}

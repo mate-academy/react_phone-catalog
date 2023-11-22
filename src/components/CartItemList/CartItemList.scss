@@ -1,0 +1,10 @@
+.cart-list {
+  width: 752px;
+
+  @media (max-width: 768px) {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

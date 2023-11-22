@@ -1,0 +1,15 @@
+@import "../../helpers/styles/variables.scss";
+
+.back-button {
+  font-family: $font-semibold;
+  color: $grey-secondary-color;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $grey-primary-color;
+  }
+
+  &__arrow {
+    margin-right: 4px;
+  }
+}

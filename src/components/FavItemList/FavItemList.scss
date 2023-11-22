@@ -1,0 +1,18 @@
+@import "../../helpers/styles/variables.scss";
+
+.fav-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  &__message {
+    font-family: $font-semibold;
+    font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

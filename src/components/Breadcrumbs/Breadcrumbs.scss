@@ -1,0 +1,33 @@
+@import "../../helpers/styles/variables.scss";
+
+.breadcrumbs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__home-link {
+    margin-right: 6px;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__arrow {
+    margin: 0 8px;
+  }
+
+  &__link {
+    font-family: $font-semibold;
+    color: $grey-primary-color;
+
+    &--active {
+      color: $grey-secondary-color;
+      cursor: default;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+}

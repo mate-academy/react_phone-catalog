@@ -1,0 +1,99 @@
+@import "../../helpers/styles/variables.scss";
+
+.slider {
+  width: 1160px;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 28px;
+  }
+
+  &__list {
+    display: flex;
+    padding: 0 12px 12px;
+  }
+
+  &__item {
+    margin-left: 16px;
+    height: 507px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+
+    background-color: #fff;
+    border: 1px solid $grey-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: all 0.3s;
+
+    &:not(.slider__btn-left--disabled):not(.slider__btn-right--disabled):hover {
+      border-color: $grey-primary-color;
+    }
+  }
+
+  &__btn-left {
+    margin-right: 16px;
+    background-image: url(../../images/Icons/button_banner_left.svg);
+
+    &--disabled {
+      margin-right: 16px;
+      border-color: $grey-elements;
+      cursor: default;
+
+      background-image: url(../../images/Icons/button_arrow_left.svg);
+    }
+  }
+
+  &__btn-right {
+    background-image: url(../../images/Icons/button_banner_right.svg);
+
+    &--disabled {
+      border-color: $grey-elements;
+      cursor: default;
+
+      background-image: url(../../images/Icons/button_arrow_right.svg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 340px;
+
+    &__header {
+      margin-bottom: 12px;
+    }
+
+    &__title {
+      margin-bottom: 0;
+      margin-right: 16px;
+    }
+
+    &__item {
+      height: 276px;
+      margin-left: 12px;
+    }
+  }
+}
