@@ -1,0 +1,40 @@
+@import "../../_utils";
+
+.dropdown {
+  position: relative;
+
+  &__text {
+    @extend %small-text;
+    color: $c-secondary;
+  }
+
+  &__list {
+    position: absolute;
+    top: 45px;
+
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 0;
+
+    list-style: none;
+
+    border: 1px solid $c-elements;
+    background-color: $c-white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    &--visible {
+      display: flex;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 6px 12px;
+
+    color: $c-secondary;
+    @extend %body-text;
+
+    @include hover(color, $c-primary);
+  }
+}

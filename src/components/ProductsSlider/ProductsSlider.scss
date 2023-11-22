@@ -1,0 +1,47 @@
+@import "../../utils";
+
+.products-slider {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 273px;
+  padding-bottom: 15px;
+  margin: 0 auto;
+
+  @include onTablet {
+    width: 560px;
+  }
+
+  @include onDesktop {
+    width: 850px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 100%;
+  }
+
+  &__top {
+    @include flexCenter;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__carousel {
+    display: flex;
+    gap: 8px;
+
+    @include onTablet {
+      gap: 16px;
+    }
+  }
+}

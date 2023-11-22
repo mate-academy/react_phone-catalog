@@ -1,0 +1,18 @@
+@import "../../_utils";
+
+.logo {
+  margin: 0 5px 0 25px;
+
+  &__image {
+    width: 40px;
+    height: 11px;
+
+    @include onTablet {
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  @include onTablet {
+    margin-right: 65px;
+  }
+}

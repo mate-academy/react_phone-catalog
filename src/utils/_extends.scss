@@ -1,0 +1,65 @@
+%h1 {
+  font-family: "Mont-Bold", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $c-primary;
+}
+
+%h2 {
+  font-family: "Mont-Bold", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140%;
+  color: $c-primary;
+}
+
+%h3 {
+  font-family: "Mont-SemiBold", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  color: $c-primary;
+}
+
+%uppercase {
+  font-family: "Mont-Bold", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $c-primary;
+}
+
+%buttons-text {
+  font-family: "Mont-Semibold", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-primary;
+}
+
+%body-text {
+  font-family: "Mont-Regular", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $c-primary;
+}
+
+%small-text {
+  font-family: "Mont-Semibold", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: $c-primary;
+}

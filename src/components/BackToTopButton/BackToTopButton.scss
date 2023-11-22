@@ -1,0 +1,11 @@
+@import "../../_utils";
+
+.back-to-top {
+  @include flexCenter;
+  gap: 16px;
+
+  &__text {
+    @extend %small-text;
+    color: $c-secondary;
+  }
+}

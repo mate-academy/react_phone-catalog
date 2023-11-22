@@ -1,0 +1,87 @@
+@import "../../_utils";
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--search {
+    background-image: url(/icons/search.svg);
+  }
+
+  &--remove {
+    width: 19px;
+    height: 19px;
+
+    background-image: url(/icons/remove.svg);
+
+    &:hover {
+      animation: move 0.3s linear;
+    }
+  }
+
+  &--favorites {
+    background-image: url(/icons/favorites.svg);
+  }
+
+  &--favorites-filled {
+    background-image: url(/icons/favorites-filled.svg);
+  }
+
+  &--cart {
+    background-image: url(/icons/cart.svg);
+  }
+
+  &--burger-menu {
+    width: 19px;
+    height: 19px;
+
+    background-image: url(/icons/burger-menu.svg);
+
+    @include hover(background-image, url(/icons/burger-menu-hover.svg));
+  }
+
+  &--arrow-up {
+    background-image: url(/icons/arrow-up.svg);
+  }
+
+  &--arrow-down {
+    background-image: url(/icons/arrow-down.svg);
+  }
+
+  &--arrow-left {
+    background-image: url(/icons/arrow-left.svg);
+  }
+
+  &--arrow-left-disabled {
+    background-image: url(/icons/arrow-left-disabled.svg);
+  }
+
+  &--arrow-right {
+    background-image: url(/icons/arrow-right.svg);
+  }
+
+  &--arrow-right-disabled {
+    background-image: url(/icons/arrow-right-disabled.svg);
+  }
+
+  &--home {
+    background-image: url(/icons/home.svg);
+  }
+
+  &--minus {
+    background-image: url(/icons/minus.svg);
+  }
+
+  &--minus-disabled {
+    background-image: url(/icons/minus-disabled.svg);
+  }
+
+  &--plus {
+    background-image: url(/icons/plus.svg);
+  }
+}

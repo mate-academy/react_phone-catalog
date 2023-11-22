@@ -1,0 +1,20 @@
+@import "../../utils";
+
+.counter {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+
+  background-color: $c-red;
+  color: $c-white;
+
+  font-family: "Mont-Regular", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-size: 9px;
+  line-height: 15px;
+  text-align: center;
+}

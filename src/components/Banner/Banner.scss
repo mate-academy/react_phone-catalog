@@ -1,0 +1,54 @@
+@import "../../_utils";
+
+.banner {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+
+  &__carousel-container {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__carousel {
+    white-space: nowrap;
+  }
+
+  &__img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+
+    @include onTablet {
+      height: 400px;
+    }
+  }
+
+  &__indicators {
+    @include flexCenter;
+    gap: 14px;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+
+    background-color: $c-elements;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+
+    &--active {
+      background-color: $c-primary;
+    }
+  }
+}

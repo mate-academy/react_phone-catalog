@@ -1,0 +1,54 @@
+@import "../../_utils";
+
+.nav {
+  &__list {
+    display: flex;
+
+    list-style: none;
+
+    @include onTablet {
+      gap: 35px;
+    }
+
+    @include onDesktop {
+      gap: 65px;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    height: 65px;
+
+    color: $c-secondary;
+
+    @extend %uppercase;
+
+    @include hover(color, $c-primary);
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      width: 0;
+      height: 3px;
+
+      background-color: $c-primary;
+
+      transition: width 0.3s;
+    }
+
+    &--active {
+      color: $c-primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

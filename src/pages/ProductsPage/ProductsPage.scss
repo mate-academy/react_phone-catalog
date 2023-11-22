@@ -1,0 +1,81 @@
+@import "../../utils";
+
+.products-page {
+  padding: 0 25px;
+  margin: 20px auto 80px;
+
+  @include onTablet {
+    max-width: 700px;
+    padding: 0;
+  }
+
+  @include onDesktop {
+    max-width: 900px;
+    margin-top: 25px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1136px;
+  }
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__nav {
+    margin-bottom: 20px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__filter-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    color: $c-secondary;
+    @extend %small-text;
+
+    &--sort-by {
+      width: 176px;
+    }
+
+    &--items-per-page {
+      width: 128px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    margin-bottom: 16px;
+
+    animation: $initialAnimation;
+
+    @include onDesktop {
+      justify-content: unset;
+    }
+  }
+
+  &__count {
+    margin-bottom: 40px;
+
+    color: $c-secondary;
+    @extend %body-text;
+  }
+}

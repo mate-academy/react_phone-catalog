@@ -1,0 +1,57 @@
+@import "../../utils";
+
+.favorites-page {
+  padding: 0 25px;
+  margin: 20px auto 80px;
+
+  @include onTablet {
+    max-width: 700px;
+    padding: 0;
+  }
+
+  @include onDesktop {
+    max-width: 900px;
+    margin-top: 25px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1136px;
+  }
+}
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__nav {
+    margin-bottom: 20px;
+
+    @include onDesktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    @extend %h1;
+  }
+
+  &__count {
+    color: $c-secondary;
+    @extend %body-text;
+  }
+
+  &__products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    animation: $initialAnimation;
+
+    @include onDesktop {
+      justify-content: unset;
+    }
+  }
+}
