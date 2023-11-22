@@ -49,7 +49,7 @@ export const ProductCard = ({ product }: any) => {
       <Link to={`${path}`} className="card-link" data-qa="card" key={itemId}>
         <div className="card" data-qa="card" key={id}>
           <img
-            src={image ? `${BASE_URL}${image}` : `${BASE_URL}${product.images[0]}`}
+            src={BASE_URL + (image || product.images[0])}
             alt={name}
             className="card_image"
           />
