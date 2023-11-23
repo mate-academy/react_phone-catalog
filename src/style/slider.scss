@@ -1,0 +1,64 @@
+.slider {
+  margin-bottom: 80px;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 18px;
+    gap: 16px;
+  }
+
+  &__img {
+    width: 1040px;
+    object-fit: cover;
+
+    &-container {
+      height: 400px;
+      overflow: hidden;
+      width: 1040px;
+
+      &-inner {
+        display: flex;
+        flex-direction: row;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    border: 1px solid #89939a;
+
+    &--left {
+      transform: scale(-1);
+    }
+  }
+
+  &__button-img--activity {
+    opacity: 0.3;
+  }
+}
+
+.dots {
+  &__indicators {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  &__indicator {
+    background-color: $color-secondary-2;
+    display: block;
+    width: 14px;
+    height: 4px;
+  }
+
+  &__indicator--is-active {
+    background-color: $color-primary;
+  }
+}
