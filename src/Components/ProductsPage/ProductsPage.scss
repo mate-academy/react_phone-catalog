@@ -1,0 +1,13 @@
+@import '../../Helpers/Helpers.scss';
+
+.products {
+   min-height: 100vh;
+   max-width: max-content;
+   margin: 0 auto;
+   
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

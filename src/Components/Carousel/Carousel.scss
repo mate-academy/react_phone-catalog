@@ -1,0 +1,79 @@
+@import "../../Helpers/Helpers.scss";
+
+.carousel {
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 50px;
+
+  @media (min-width: 400px) {
+    width: 405px;
+  }
+
+  @include desktop() {
+    width: 815px;
+  }
+
+  &__container {
+    width: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @media (min-width: 420px) {
+      width: 405px;
+    }
+
+    @include desktop() {
+      width: 815px;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+
+    @include tablet() {
+      font-size: 32px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button {
+    border: 1px solid $grey-dark;
+    background-color: #fff;
+
+    >img {
+      width: 10px;
+      height: 10px;
+    }
+
+    &--active {
+      background-color: $grey-lite;
+    }
+  }
+
+  &__items {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &__failed {
+    font-size: 32px;
+    color: $red;
+    font-weight: 600;
+    line-height: 28px;
+
+    letter-spacing: 20px;
+    text-align: center;
+  }
+}

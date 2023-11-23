@@ -1,0 +1,31 @@
+@import "../../Helpers/Helpers.scss";
+
+.notFound {
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+  text-align: center;
+
+  &__img {
+    width: 250px;
+    height: 200px;
+    margin: 0 auto;
+
+    @include tablet() {
+      width: 450px;
+      height: 350px;
+    }
+  }
+
+  &__error {
+    color: $red;
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  &__message {
+    font-size: 22px;
+    font-weight: 500;
+    color: $grey-dark;
+    line-height: 25px;
+  }
+}

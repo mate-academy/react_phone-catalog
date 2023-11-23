@@ -1,0 +1,69 @@
+@import "../../Helpers/Helpers.scss";
+
+.productCart {
+  padding: 20px 10px;
+  border: 1px solid $grey-lite;
+  gap: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include tablet() {
+    gap: 30px;
+  }
+
+  &__img {
+    width: 20px;
+    height: 30px;
+
+    @include tablet() {
+      width: 30px;
+      height: 50px;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__name {
+    font-size: 8px;
+
+    @media (min-width: 700px) {
+      font-size: 12px;
+    }
+
+    @media (min-width: 840px) {
+      width: 150px;
+    }
+  }
+
+  &__button {
+    border: 1px solid $grey-lite;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    line-height: 10px;
+    padding: 0;
+    color: $black;
+
+    @include tablet() {
+      width: 30px;
+      height: 30px;
+    }
+
+    &--cross {
+      background-color: #fff;
+      border: 0;
+      color: $grey-dark;
+    }
+  }
+
+  &__price {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../Helpers/Helpers.scss";
+
+.query {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid $grey-lite;
+  padding: 0 5px;
+
+  @media (min-width: 820px) {
+    display: flex;
+  }
+
+  &__input {
+    border: 0;
+    width: 100%;
+    padding: 5px;
+    outline: none;
+
+    &::placeholder {
+      font-size: 13px;
+      letter-spacing: -0.5px;
+      font-weight: 500;
+      color: $grey-dark;
+    }
+  }
+
+  &__img {
+    width: 15px;
+    height: 15px;
+
+    &--cross {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+  }
+}

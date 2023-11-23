@@ -1,0 +1,34 @@
+@import "../../Helpers/Helpers.scss";
+
+.empty {
+  margin-top: 20px;
+  width: 250px;
+  text-align: center;
+
+  @include tablet {
+    width: 500px;
+  }
+
+  @include desktop {
+    width: 800px;
+  }
+  
+  &__img {
+    width: 150px;
+    height: 150px;
+
+    @include tablet() {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__message {
+    max-width: 400px;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 35px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,22 @@
+.menu {
+  height: 100vh;
+  position: fixed;
+  top: 51px;
+  left: 0;
+  right: 0;
+  align-items: center;
+  z-index: 1;
+
+  transition: 300ms;
+
+  &--smooth {
+    transform: translateX(0);
+    transition: 300ms;
+    overflow: hidden;
+  }
+
+  &__container {
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.19);
+  }
+}

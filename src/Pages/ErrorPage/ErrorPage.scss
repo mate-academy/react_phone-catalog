@@ -1,0 +1,17 @@
+@import "../../Helpers/Helpers.scss";
+
+.error {
+  text-align: center;
+  margin: 0 auto;
+
+  &__img {
+    width: 300px;
+    height: 300px;
+  }
+
+  &__message {
+    font-size: 20px;
+    font-weight: 600;
+    color: $red;
+  }
+}
