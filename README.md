@@ -5,8 +5,8 @@
 ## Description
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
-Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.json)
-and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/dell-streak-7.json)
+Use [products](https://mate-academy.github.io/react_phone-catalog/_new/products.json)
+and [product details](https://mate-academy.github.io/react_phone-catalog/_new/products/apple-iphone-7-32gb-black.json)
 tо fetch data (use actual `productId` as a last part of the URL before `.json`).
 
 If you want to change any API data for the phones you can update the files in the `/public/api` folder, and use you project link as a `BASE_API_URL`.
@@ -63,7 +63,7 @@ to links container.
     - Hide all the pagination elements if there are a few items (less than 1 smallest page size)
     - (*) Save `?page=2&perPage=8` in the URL and apply them after the page reload
 
-## Tablets and accessories
+### Tablets and accessories
 1. Create `TabletsPage` page with `<h1>` title `Tablets` available at `/tablets` working the same way as `PhonesPage`
     - Create `getTablets` method fetching the products with `type`: `tablet`
 1. Create `AccessoriesPage` with `<h1>` title `Accessories` page available at `/accessories` working the same way as `PhonesPage`
