@@ -17,13 +17,19 @@ export const Sort: React.FC<Props> = ({
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchParams(
-      getSearchWith(searchParams, { sort: event.target.value || null }),
+      getSearchWith(searchParams, {
+        sort: event.target.value || null,
+        page: '1',
+      }),
     );
   };
 
   const handleItemsCountChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchParams(
-      getSearchWith(searchParams, { perPage: event.target.value }),
+      getSearchWith(searchParams, {
+        perPage: event.target.value,
+        page: '1',
+      }),
     );
   };
 
