@@ -1,0 +1,33 @@
+@import "../../styleUtils/variables.scss";
+
+.AddToCartButton {
+  border: 0 none;
+  height: 40px;
+  width: 176px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $grey-primary;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+
+  cursor: pointer;
+
+  transition-duration: 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px #000;
+  }
+
+  &.isProductAdded {
+    border: 1px solid #e2e6e9;
+    color: #27ae60;
+    background-color: transparent;
+
+    &:hover {
+      box-shadow: 0 3px 13px #171f3042;
+    }
+  }
+}

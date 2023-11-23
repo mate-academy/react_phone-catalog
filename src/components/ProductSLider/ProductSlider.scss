@@ -1,0 +1,111 @@
+@import "../../styleUtils/mixins.scss";
+@import "../../styleUtils/variables.scss";
+
+.container {
+  margin-bottom: 80px;
+
+}
+
+.ProductsSlider {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include onMobile {
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    font-family: "MontBold", sans-serif;
+    color: #313237;
+    font-size: 32px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+
+    @include onMobile {
+      font-size: 26px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background: none;
+
+    border: 1px solid #b4bdc3;
+
+    cursor: pointer;
+
+    transition-duration: 0.3s;
+
+    &.disabled {
+      border-color: #e2e6e9;
+    }
+
+    &.disabled:hover {
+      border-color: #e2e6e9;
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
+
+    @include onMobile {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    margin-top: 24px;
+    gap: 16px;
+
+    @include onTablet {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.arrow--left {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/arrowLeft--icon.svg);
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}
+
+.arrow--right {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(/assets/arrowRight--icon.svg);
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}

@@ -1,0 +1,26 @@
+.back {
+  display: flex;
+  background: none;
+  margin-top: 40px;
+  align-items: center;
+  gap: 5px;
+
+
+  &__image {
+    display: block;
+    background-image: url(/assets/arrowLeft--icon.svg);
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+    background-position: center;
+    background-repeat: no-repeat
+  }
+
+  &__title {
+    color: #89939A;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+  }
+}

@@ -1,0 +1,68 @@
+@import "../../../styleUtils/mixins.scss";
+
+.productPage {
+  &__content {
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    margin-top: 20px;
+    color: #313237;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__subtitle {
+    color: #89939a;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__filters {
+    display: flex;
+    margin-top: 40px;
+    gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      align-content: center;
+    }
+  }
+
+  &__label {
+    color: #89939a;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    flex-wrap: wrap;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      
+    }
+  }
+
+  &__empty {
+    font-weight: 700;
+    margin-top: 60px;
+    font-size: 32px;
+  }
+}

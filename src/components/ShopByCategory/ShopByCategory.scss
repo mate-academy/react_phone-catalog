@@ -1,0 +1,83 @@
+@import "../../styleUtils/mixins.scss";
+@import "../../styleUtils/variables.scss";
+
+.category {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    text-align: left;
+    color: $grey-primary;
+    margin-block: 24px 4px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: $grey-secondary;
+  }
+
+  &__links {
+    display: flex;
+    gap: 16px;
+
+    @include onTablet {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @include onMobile {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__image {
+    width: 368px;
+    height: 368px;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+    background-size: 368px;
+
+    @include onTablet {
+      width: 240px;
+      height: 240px;
+      background-size: 240px;
+    }
+
+    &--phone {
+      background-image: url("../../images/phone_category.png");
+    }
+
+    &--tablet {
+      background-image: url("../../images/tablet_category.png");
+    }
+
+    &--accessory {
+      background-image: url("../../images/accessories_category.png");
+    }
+  }
+}

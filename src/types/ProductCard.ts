@@ -1,0 +1,16 @@
+export interface ProductCardType {
+  image: string,
+  name: string,
+  price: number,
+  fullPrice: number,
+  screen: string,
+  capacity: string,
+  ram: string,
+  itemId: string,
+  category: string,
+  id: string,
+  phoneId: string,
+  quantity: number,
+  color: string,
+  year: number,
+}
