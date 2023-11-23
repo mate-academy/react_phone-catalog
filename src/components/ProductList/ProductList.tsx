@@ -22,7 +22,7 @@ export const ProductList: React.FC<Props> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const handleChangeDetailsId = (id: string) => (
-    navigate(`${location.pathname.slice(0, location.pathname.lastIndexOf('/'))}/${id}`)
+    navigate(`${location.pathname}/${id}`)
   );
 
   return (

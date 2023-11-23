@@ -164,6 +164,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  margin-top: 32px;
 
   &__full {
     display: inline-block;
@@ -295,6 +296,91 @@
   }
 }
 
+.select-capacity {
+  margin-top: 24px;
+
+  &__title {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__selector {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__btn {
+    border-color: $icons-color;
+    color: $primary;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    width: 60px;
+    height: 32px;
+
+    &--active {
+      background-color: $primary;
+      color: $main-white;
+    }
+  }
+}
+
+.select-color {
+  &__title {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary;
+  }
+
+  &__selector {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__color {
+    left: 2px;
+    top: 2px;
+    position: absolute;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  }
+
+  &__btn {
+    position: relative;
+    border: 2px solid $element-color;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: $icons-color;
+    }
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+}
+
 .product-slider-wrapper {
   margin-top: 40px;
+}
+
+.wraper {
+  width: 100%;
+  height: 1px;
+  background-color: $element-color;
+  margin-top: 24px;
 }

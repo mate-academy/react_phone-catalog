@@ -17,8 +17,12 @@
 
   &__buttons {
     width: 80px;
-    display: flex;
     justify-content: space-between;
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
   }
 
   &__button {

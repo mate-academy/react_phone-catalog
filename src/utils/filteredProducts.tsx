@@ -5,9 +5,12 @@ export const getSortedProducts = (
   sort: string,
   query: string | null,
 ) => {
-  const filterdPhones = query
-    ? [...products].filter(phone => phone.name.toLowerCase().trim()
-      .includes(query.toString().toLowerCase()))
+  const queries = query?.toString().toLowerCase().split(' ');
+
+  const filterdPhones = queries
+    ? [...products].filter(phone => (
+      queries.every(word => phone.name.toLowerCase().trim().includes(word))
+    ))
     : [...products];
 
   if (sort === 'age') {

@@ -9,31 +9,60 @@ import { mainURL } from '../../utils/mainUrl';
 
 export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const interval = 3000;
+  const interval = 5000;
+  const [itemWidth, setItemWidth] = useState(0);
   const images = [
     'img/banner-accessories.png',
     'img/banner-phones.png',
     'img/banner-tablets.png'];
 
-  // Function to handle rotating images
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => (
-      prevIndex > 0 ? prevIndex - 1 : images.length - 1
-    ));
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+
+      if (windowWidth < 980) {
+        setItemWidth(520);
+      } else if (windowWidth < 1200) {
+        setItemWidth(780);
+      } else {
+        setItemWidth(1040);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const goToNext = () => {
+    const lastIndex = images.length - 1;
+
     setCurrentIndex((prevIndex) => (
-      prevIndex < images.length - 1 ? prevIndex + 1 : 0
+      prevIndex + 1 > lastIndex ? lastIndex : prevIndex + 1
     ));
+
+    if (currentIndex === lastIndex) {
+      setCurrentIndex(0);
+    }
   };
 
-  const rotateImages = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  const goToPrevious = () => {
+    const lastIndex = images.length - 1;
+
+    setCurrentIndex((prevIndex) => (
+      prevIndex - 1 > 0 ? prevIndex - 1 : 0
+    ));
+
+    if (currentIndex === 0) {
+      setCurrentIndex(lastIndex);
+    }
   };
 
   useEffect(() => {
-    const timer = setInterval(rotateImages, interval);
+    const timer = setInterval(goToNext, interval);
 
     return () => {
       clearInterval(timer);
@@ -49,7 +78,6 @@ export const Carousel = () => {
           onClick={() => goToPrevious()}
         >
           <img
-            // className="favorites-card-buttons__icon icon--favorite"
             src={leftArrow.toString()}
             alt="Favorites"
           />
@@ -61,10 +89,11 @@ export const Carousel = () => {
               key={image}
               src={`${mainURL}/${image}`}
               alt={`Imag ${index}`}
-              className={classNames('carousel__img', {
-                visible: index === currentIndex,
-                hidden: index !== currentIndex,
-              })}
+              className="carousel__img"
+              style={{
+                transform: `translateX(-${currentIndex * itemWidth}px)`,
+                transition: '1000ms',
+              }}
             />
           ))}
         </div>

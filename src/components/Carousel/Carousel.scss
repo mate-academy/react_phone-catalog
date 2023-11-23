@@ -18,6 +18,24 @@
   grid-gap: 16px;
   gap: 16px;
 
+  &__slider {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    overflow: hidden;
+    width: 520px;
+    height: 200px;
+
+    @include onSmallDesktop {
+      width: 780px;
+      height: 300px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      height: 400px;
+    }
+  }
+
   &__img {
     width: 520px;
     height: 200px;

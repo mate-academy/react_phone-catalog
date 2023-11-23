@@ -35,6 +35,7 @@ export const HomePage: React.FC<Props> = ({
       </div>
       <div className="home-page__hot-price">
         <ProductSlider
+          id="hot-price"
           products={products}
           title="Hot Price"
           step={1}
@@ -55,6 +56,7 @@ export const HomePage: React.FC<Props> = ({
 
       <div className="home-page__new-brend">
         <ProductSlider
+          id="new-brend"
           products={brandNewProducts}
           title="Brand new models"
           step={1}

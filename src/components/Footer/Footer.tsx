@@ -15,7 +15,11 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <img src={logo.toString()} alt="logo" />
+        <Link
+          to="./"
+        >
+          <img src={logo.toString()} alt="logo" />
+        </Link>
         <div className="footer__links">
           <Link
             target="_blank"
