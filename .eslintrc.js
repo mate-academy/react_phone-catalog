@@ -8,5 +8,8 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': ["error", {
       assert: "either",
     }],
+      'no-console': 'off',
+      'no-nested-ternary': 'off',
+
   },
 };

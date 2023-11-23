@@ -1,0 +1,78 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+@import "../../utils/mixins";
+
+.categories {
+  &__title {
+    @extend %h1;
+
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__card {
+    width: 368px;
+    display: flex;
+    flex-direction: column;
+
+    @include onSmallMobile {
+      width: 325px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 368px;
+    position: relative;
+    margin-bottom: 24px;
+    transition: all 0.3s linear;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &-phones {
+      background-color: #fcdbc1;
+    }
+
+    &-tablets {
+      background-color: #8d8d92;
+    }
+    
+    &-accessories {
+      background-color: #973d5f;
+    }
+
+    &-position {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    @extend %h3;
+
+    &:hover {
+      color: #575759;
+    }
+  }
+
+  &__count {
+    color: $secondary-color;
+    @extend %body-text;
+  }
+}

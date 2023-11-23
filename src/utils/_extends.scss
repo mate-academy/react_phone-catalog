@@ -1,0 +1,85 @@
+@import "../utils/variables";
+
+%h1 {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+%h2 {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}
+
+%h3 {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+%link {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+%body-text {
+  color: $primary-color;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+%small-text {
+  color: $secondary-color;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+%button {
+  text-align: center;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+%price-light {
+  color: $secondary-color;
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+  
+%uppercase {
+  color: $secondary-color;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+}

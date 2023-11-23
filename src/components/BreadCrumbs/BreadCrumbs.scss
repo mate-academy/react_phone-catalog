@@ -1,0 +1,40 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+
+.breadCrumbs {
+  display: flex;
+  margin-bottom: 40px;
+
+  &__home-link {
+    margin-right: 10px;
+    width: 16px;
+    height: 20px;
+  }
+
+  &__link {
+    margin-right: 8px;
+    @extend %link;
+
+    line-height: 19px;
+    height: 15px;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    pointer-events: auto;
+    text-align: center;
+
+    &:last-child {
+      pointer-events: none;
+      color: $secondary-color;
+    }
+  }
+
+  &__img {
+    margin-right: 8px;
+  }
+
+  &__name {
+    display: inline-block;
+    height: 16px;
+    transform: translateY(-20%);
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+@import "../../utils/mixins";
+
+.nav {
+  display: flex;
+  gap: 64px;
+  height: 100%;
+
+  @include onTablet {
+    display: none;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %uppercase;
+    
+    text-transform: uppercase;
+    position: relative;
+    height: 64px;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+      transition: all 0.3s ease-in-out;
+      transform-origin: left;
+      transform: scale(0);
+
+    }
+
+    &--active {
+      color: $primary-color;
+
+      &::after {
+        color: $primary-color;
+        transform: scale(1);
+      }
+    }
+  }
+}
