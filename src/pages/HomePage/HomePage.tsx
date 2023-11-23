@@ -38,7 +38,7 @@ export const Home = () => {
           <div className="slider-box">
             <button
               type="button"
-              className="slider__button slider-box__button previous"
+              className="slider__button slider-box__button"
               onClick={handleLeftShift}
             >
               <div className="slider__arrow arrow-left icon" />
@@ -46,7 +46,7 @@ export const Home = () => {
             <div className={`slider-box__container item-${selectedBanner}`} />
             <button
               type="button"
-              className="slider__button slider-box__button next"
+              className="slider__button slider-box__button"
               onClick={handleRightShift}
             >
               <div className="slider__arrow arrow-right icon" />
@@ -99,17 +99,20 @@ export const Home = () => {
           </div>
           <div className="shop__slider">
             <div className="item__card">
-              <img
-                src=""
-                alt="item-name"
-                className="item__image"
-              />
-              <div className="card__content">
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
                 <p
                   className="item__title"
                 >
                   Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
                 </p>
+              </NavLink>
+
+              <div className="card__content">
                 <div className="item__prices">
                   <div className="new-price">$799</div>
                   <div className="old-price text-strike">$899</div>
@@ -140,13 +143,136 @@ export const Home = () => {
               </div>
             </div>
             <div className="item__card">
-              hot item 2
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
+                <p
+                  className="item__title"
+                >
+                  Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+                </p>
+              </NavLink>
+
+              <div className="card__content">
+                <div className="item__prices">
+                  <div className="new-price">$799</div>
+                  <div className="old-price text-strike">$899</div>
+                </div>
+                <div className="item__descriptions">
+                  <div className="screen-size descriptions__flex-box">
+                    <p className="description--title">Screen</p>
+                    <p className="description--value">5.8” OLED</p>
+                  </div>
+                  <div className="capacity descriptions__flex-box">
+                    <p className="description--title">Capacity</p>
+                    <p className="description--value">64 GB</p>
+                  </div>
+                  <div className="memory descriptions__flex-box">
+                    <p className="description--title">RAM</p>
+                    <p className="description--value">4 GB</p>
+                  </div>
+                </div>
+                <div className="item__actions">
+                  <button
+                    type="button"
+                    className="add-to-card"
+                  >
+                    Add to cart
+                  </button>
+                  <button type="button" className="add-to-favourite" />
+                </div>
+              </div>
             </div>
             <div className="item__card">
-              hot item 3
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
+                <p
+                  className="item__title"
+                >
+                  Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+                </p>
+              </NavLink>
+
+              <div className="card__content">
+                <div className="item__prices">
+                  <div className="new-price">$799</div>
+                  <div className="old-price text-strike">$899</div>
+                </div>
+                <div className="item__descriptions">
+                  <div className="screen-size descriptions__flex-box">
+                    <p className="description--title">Screen</p>
+                    <p className="description--value">5.8” OLED</p>
+                  </div>
+                  <div className="capacity descriptions__flex-box">
+                    <p className="description--title">Capacity</p>
+                    <p className="description--value">64 GB</p>
+                  </div>
+                  <div className="memory descriptions__flex-box">
+                    <p className="description--title">RAM</p>
+                    <p className="description--value">4 GB</p>
+                  </div>
+                </div>
+                <div className="item__actions">
+                  <button
+                    type="button"
+                    className="add-to-card"
+                  >
+                    Add to cart
+                  </button>
+                  <button type="button" className="add-to-favourite" />
+                </div>
+              </div>
             </div>
             <div className="item__card">
-              hot item 4
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
+                <p
+                  className="item__title"
+                >
+                  Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+                </p>
+              </NavLink>
+
+              <div className="card__content">
+                <div className="item__prices">
+                  <div className="new-price">$799</div>
+                  <div className="old-price text-strike">$899</div>
+                </div>
+                <div className="item__descriptions">
+                  <div className="screen-size descriptions__flex-box">
+                    <p className="description--title">Screen</p>
+                    <p className="description--value">5.8” OLED</p>
+                  </div>
+                  <div className="capacity descriptions__flex-box">
+                    <p className="description--title">Capacity</p>
+                    <p className="description--value">64 GB</p>
+                  </div>
+                  <div className="memory descriptions__flex-box">
+                    <p className="description--title">RAM</p>
+                    <p className="description--value">4 GB</p>
+                  </div>
+                </div>
+                <div className="item__actions">
+                  <button
+                    type="button"
+                    className="add-to-card"
+                  >
+                    Add to cart
+                  </button>
+                  <button type="button" className="add-to-favourite" />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -208,17 +334,20 @@ export const Home = () => {
           </div>
           <div className="shop__slider">
             <div className="item__card">
-              <img
-                src=""
-                alt="item-name"
-                className="item__image"
-              />
-              <div className="card__content">
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
                 <p
                   className="item__title"
                 >
                   Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
                 </p>
+              </NavLink>
+
+              <div className="card__content">
                 <div className="item__prices">
                   <div className="new-price">$799</div>
                   <div className="old-price text-strike">$899</div>
@@ -249,13 +378,136 @@ export const Home = () => {
               </div>
             </div>
             <div className="item__card">
-              hot item 2
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
+                <p
+                  className="item__title"
+                >
+                  Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+                </p>
+              </NavLink>
+
+              <div className="card__content">
+                <div className="item__prices">
+                  <div className="new-price">$799</div>
+                  <div className="old-price text-strike">$899</div>
+                </div>
+                <div className="item__descriptions">
+                  <div className="screen-size descriptions__flex-box">
+                    <p className="description--title">Screen</p>
+                    <p className="description--value">5.8” OLED</p>
+                  </div>
+                  <div className="capacity descriptions__flex-box">
+                    <p className="description--title">Capacity</p>
+                    <p className="description--value">64 GB</p>
+                  </div>
+                  <div className="memory descriptions__flex-box">
+                    <p className="description--title">RAM</p>
+                    <p className="description--value">4 GB</p>
+                  </div>
+                </div>
+                <div className="item__actions">
+                  <button
+                    type="button"
+                    className="add-to-card"
+                  >
+                    Add to cart
+                  </button>
+                  <button type="button" className="add-to-favourite" />
+                </div>
+              </div>
             </div>
             <div className="item__card">
-              hot item 3
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
+                <p
+                  className="item__title"
+                >
+                  Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+                </p>
+              </NavLink>
+
+              <div className="card__content">
+                <div className="item__prices">
+                  <div className="new-price">$799</div>
+                  <div className="old-price text-strike">$899</div>
+                </div>
+                <div className="item__descriptions">
+                  <div className="screen-size descriptions__flex-box">
+                    <p className="description--title">Screen</p>
+                    <p className="description--value">5.8” OLED</p>
+                  </div>
+                  <div className="capacity descriptions__flex-box">
+                    <p className="description--title">Capacity</p>
+                    <p className="description--value">64 GB</p>
+                  </div>
+                  <div className="memory descriptions__flex-box">
+                    <p className="description--title">RAM</p>
+                    <p className="description--value">4 GB</p>
+                  </div>
+                </div>
+                <div className="item__actions">
+                  <button
+                    type="button"
+                    className="add-to-card"
+                  >
+                    Add to cart
+                  </button>
+                  <button type="button" className="add-to-favourite" />
+                </div>
+              </div>
             </div>
             <div className="item__card">
-              hot item 4
+              <NavLink to="/">
+                <img
+                  src=""
+                  alt="item-name"
+                  className="item__image"
+                />
+                <p
+                  className="item__title"
+                >
+                  Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+                </p>
+              </NavLink>
+
+              <div className="card__content">
+                <div className="item__prices">
+                  <div className="new-price">$799</div>
+                  <div className="old-price text-strike">$899</div>
+                </div>
+                <div className="item__descriptions">
+                  <div className="screen-size descriptions__flex-box">
+                    <p className="description--title">Screen</p>
+                    <p className="description--value">5.8” OLED</p>
+                  </div>
+                  <div className="capacity descriptions__flex-box">
+                    <p className="description--title">Capacity</p>
+                    <p className="description--value">64 GB</p>
+                  </div>
+                  <div className="memory descriptions__flex-box">
+                    <p className="description--title">RAM</p>
+                    <p className="description--value">4 GB</p>
+                  </div>
+                </div>
+                <div className="item__actions">
+                  <button
+                    type="button"
+                    className="add-to-card"
+                  >
+                    Add to cart
+                  </button>
+                  <button type="button" className="add-to-favourite" />
+                </div>
+              </div>
             </div>
           </div>
         </section>

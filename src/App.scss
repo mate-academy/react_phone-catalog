@@ -517,3 +517,50 @@
   row-gap: 40px;
   flex-wrap: wrap;
 }
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  height: 32px;
+  gap: 16px;
+
+  &__field {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray_light;
+    background-image: url("./assets/images/icons/arrow_button.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    font-size: 14px;
+    border: 1px solid #e2e6e9;
+  }
+}
+
+.previous {
+  transform: rotate(-90deg);
+}
+
+.next {
+  transform: rotate(90deg);
+}

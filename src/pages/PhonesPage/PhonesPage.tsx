@@ -43,17 +43,20 @@ export const Phones = () => {
         </div>
         <div className="products-field">
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -84,17 +87,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -125,17 +131,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -166,17 +175,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -207,17 +219,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -248,17 +263,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -289,17 +307,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -330,17 +351,20 @@ export const Phones = () => {
             </div>
           </div>
           <div className="item__card">
-            <img
-              src=""
-              alt="item-name"
-              className="item__image"
-            />
-            <div className="card__content">
+            <NavLink to="/">
+              <img
+                src=""
+                alt="item-name"
+                className="item__image"
+              />
               <p
                 className="item__title"
               >
                 Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
               </p>
+            </NavLink>
+
+            <div className="card__content">
               <div className="item__prices">
                 <div className="new-price">$799</div>
                 <div className="old-price text-strike">$899</div>
@@ -370,6 +394,17 @@ export const Phones = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="pagination">
+          <button type="button" className="pagination__button previous" />
+          <div className="pagination__field">
+            <NavLink to="#1" className="pagination__link">1</NavLink>
+            <NavLink to="#2" className="pagination__link">2</NavLink>
+            <NavLink to="#3" className="pagination__link">3</NavLink>
+            <NavLink to="#4" className="pagination__link">4</NavLink>
+            <NavLink to="#5" className="pagination__link">5</NavLink>
+          </div>
+          <button type="button" className="pagination__button next" />
         </div>
       </div>
     </div>
