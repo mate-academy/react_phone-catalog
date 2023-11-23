@@ -1,0 +1,33 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  &__link {
+    display: inline-block;
+    height: 100%;
+    padding-block: 27px 24px;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $secondary;
+    cursor: pointer;
+
+    &--active {
+      color: $primary;
+      border-bottom: 3px solid $primary;
+    }
+  }
+
+  &__logo {
+    padding-top: 5px;
+  }
+}

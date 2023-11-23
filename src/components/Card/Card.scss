@@ -1,0 +1,128 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.product-card {
+  font-family: inherit;
+  list-style: none;
+  display: grid;
+  box-sizing: border-box;
+  height: 507px;
+  border: 1px solid $element-color;
+  background: $main-white;
+  padding: 24px;
+  justify-content: center;
+  width: 272px;
+
+  &__link {
+    font-family: inherit;
+    list-style: none;
+    text-decoration: none;
+    color: $primary;
+  }
+
+  &__phone-img {
+    font-family: inherit;
+    list-style: none;
+    color: $primary;
+    box-sizing: border-box;
+    width: 208px;
+    height: 208px;
+    padding-inline: 12px;
+    margin-bottom: 24px;
+    object-fit: contain;
+  }
+
+  &__title {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $primary;
+  }
+
+  &__price {
+    display: inline-block;
+    color: $primary;
+    margin: 0 8px 0 0;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+
+    &--discount {
+      font-weight: 500;
+      color: $secondary;
+      font-family: inherit;
+      text-decoration: line-through;
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-card {
+    width: 176px;
+    height: 40px;
+    font-family: inherit;
+    font-size: 14px;
+    color: $main-white;
+    background-color: $primary;
+    border: 1px solid rgba(226, 230, 233, 0);
+    cursor: pointer;
+
+    &--added {
+      border-color: $icons-color;
+      background-color: $main-white;
+      color: $main-green;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__add-to-favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: $main-white;
+    border: 1px solid $icons-color;
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+}
+
+.container-price {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 8px;
+}
+
+.description-phone {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid $element-color;
+  margin-block: 8px 16px;
+  padding-top: 16px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+
+  &--title {
+    color: $secondary;
+  }
+
+  &--value {
+    color: $primary;
+
+  }
+}

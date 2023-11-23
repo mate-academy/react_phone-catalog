@@ -1,0 +1,18 @@
+export type Product = {
+  name: string,
+  age: string,
+  category: string,
+  id: string,
+  itemId: string,
+  phoneId: string,
+  image: string,
+  snippet: string,
+  price: number,
+  fullPrice: number,
+  discount: number,
+  screen: string,
+  capacity: string,
+  ram: string,
+  color: string,
+  year: number,
+};

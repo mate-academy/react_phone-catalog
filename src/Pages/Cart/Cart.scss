@@ -1,0 +1,176 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.cart {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__list-item {
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid $element-color;
+
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-row-gap: 16px;
+    row-gap: 16px;
+    display: grid;
+
+    @include onTablet {
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    @include onSmallDesktop {
+      gap: 32px;
+    }
+
+    @include onDesktop {
+      padding-right: 80px;
+    }
+  }
+
+  &__list-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    grid-row: 2/3;
+  }
+
+  &__list-title {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    grid-row: 2/3;
+    flex-grow: 1;
+  }
+
+  &__list-remove {
+    width: 16px;
+    height: 16px;
+    grid-row: 1/2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__list-price {
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    grid-row: 3/4;
+    justify-self: flex-end;
+  }
+
+  &__total {
+    border: 1px solid $element-color;
+    padding: 24px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include onDesktop {
+      max-width: 400px;
+    }
+  }
+
+  &__total-price {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.01em;
+  }
+
+  &__total-quantity {
+    font-size: 14px;
+    font-weight: 500;
+    color: $secondary;
+  }
+
+  &__total-wraper {
+    width: 100%;
+    height: 1px;
+    background-color: $element-color;
+  }
+
+  &__total-button {
+    height: 40px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    color: $main-white;
+    background-color: $primary;
+    border: 1px solid rgba(226, 230, 233, 0);
+    cursor: pointer;
+
+    @include onDesktop {
+      width: 320px;
+    }
+  }
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  grid-row: 3/4;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    background-color: transparent;
+
+    &--disabled {
+      border-color: $element-color;
+      cursor: not-allowed;
+
+    }
+  }
+}
+
+.return-button {
+  position: relative;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $secondary;
+  border: none;
+  margin-left: 20px;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &::before {
+    position: absolute;
+    color: $secondary;
+    left: -20px;
+    content: url(../../icons/left-arrow.svg);
+  }
+}
+
+.cart-title {
+  margin-top: 24px;
+}

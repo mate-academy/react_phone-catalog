@@ -1,0 +1,24 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 52px;
+
+  &__hot-price {
+    margin-top: 36px;
+
+    @include onSmallDesktop {
+      margin-top: 72px;
+    }
+  }
+
+  &__new-brend {
+    margin-top: 80px;
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.pagination {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 40px, auto, 0;
+
+  &__item {
+    border: 1px solid rgba(33, 33, 36, 1);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &--active {
+      color: $main-white;
+      background-color: $primary;
+    }
+
+    &--disabled {
+      border-color: $element-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--disabled {
+      cursor: not-allowed;
+    }
+  }
+}

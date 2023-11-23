@@ -1,0 +1,82 @@
+@import "../../utils/mixins";
+@import "../../utils/variables";
+@import "../../reset.scss";
+@import "../../fonts.scss";
+
+.bm-burger-button {
+  position: relative;
+  width: 16px;
+  height: 12px;
+
+  @include onTablet {
+    width: 20px;
+    height: 16px;
+  }
+
+  @include onSmallDesktop {
+    width: 24px;
+    height: 20px;
+  }
+}
+
+.bm-burger-bars {
+  background: $primary;
+}
+
+.bm-burger-bars-hover {
+  background: $secondary;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  margin-left: -40px;
+  margin-top: -32px;
+  height: 100%;
+}
+
+.bm-menu {
+  background: $main-white;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  margin-top: -32px;
+}
+
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-item-list {
+  padding: 0.8em;
+}
+
+.bm-item {
+  display: inline-block;
+  padding-block: 15px;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: $secondary;
+
+  &.active:not(:first-child) {
+    color: $primary;
+    border-bottom: 3px solid $primary;
+  }
+}
+
+.bm-overlay {
+  background: $primary;
+  margin-left: -40px;
+  margin-top: -32px;
+}
