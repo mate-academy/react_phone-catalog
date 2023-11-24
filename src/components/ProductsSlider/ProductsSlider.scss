@@ -1,0 +1,63 @@
+@import '../../utils/main.scss';
+
+.productsSlider {
+  margin-top: 80px;
+  width: 100%;
+  height: 572px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &--title  {
+      @extend %h1;
+      color: $gray-primary-color;
+    }
+  }
+
+  &__header--btn {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons-color;
+    transition: border 0.3s;
+    cursor: pointer;
+    background-color: transparent;
+
+    &:hover {
+      border: 1px solid $gray-primary-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__content {
+    height: 507px;
+    overflow: hidden;
+    width: 100%;
+    // width: calc((272px + 16px) * 4);
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    transition-duration: 1s;
+  }
+}
+
+.is-added {
+  border: 1px solid $gray-primary-color;
+}
