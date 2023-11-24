@@ -1,1 +1,21 @@
-// not empty
+@import '/src/utils/main.scss';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &__container {
+    width: 100%;
+    max-width: 1136px;
+  }
+}
