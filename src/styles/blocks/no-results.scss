@@ -1,0 +1,15 @@
+.no-results {
+  color: $color-primary;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    &::before {
+      content: none;
+    }
+
+    width: 150px;
+  }
+}

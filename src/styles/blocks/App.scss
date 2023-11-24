@@ -1,0 +1,23 @@
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Mont", sans-serif;
+  scroll-behavior: smooth;
+  position: relative;
+
+  &__menu {
+    position: absolute;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    &--is-active {
+      transform: translateX(0);
+    }
+  }
+
+  &__not-found {
+    padding: 40px;
+  }
+}

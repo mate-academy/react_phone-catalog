@@ -1,0 +1,26 @@
+.menu {
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  background-color: $color-white;
+  color: $color-primary;
+
+  &__close {
+    position: absolute;
+    height: 0;
+    right: 0;
+    top: 0;
+    font-size: 80px;
+    transform: rotate(45deg);
+    background-color: inherit;
+  }
+
+  &__list {
+    margin-left: 30px;
+    margin-top: 60px;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 180%;
+    text-transform: uppercase;
+  }
+}
