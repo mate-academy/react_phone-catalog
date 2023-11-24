@@ -1,0 +1,123 @@
+.category {
+  margin: 80px 0;
+
+  &__header {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    flex-grow: 1;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+  }
+
+  &__buttons {
+    display: none;
+
+    @media (max-width: 660px) {
+      display: flex;
+      width: 80px;
+      justify-content: space-between;
+    }
+  }
+
+  &__static-container {
+    @media (max-width: 660px) {
+      overflow: hidden;
+      margin: 0 auto;
+      width: 368px + 16px;
+    }
+  }
+
+  &__dynamic-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+
+    @media (max-width: 660px) {
+      display: block;
+      width: max-content;
+    }
+  }
+
+  &__card {
+    &:nth-child(1) {
+      grid-column: 1 / 2;
+    }
+
+    &:nth-child(2) {
+      grid-column: 2 / 3;
+    }
+
+    &:nth-child(3) {
+      grid-column: 3 / 4;
+    }
+
+    @media (max-width: 660px) {
+      width: 368px;
+      display: inline-block;
+      margin: 0 8px;
+    }
+  }
+
+  &__img-container {
+    padding-bottom: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #ae3a60;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    object-fit: cover;
+
+    &--phones {
+      width: 386px;
+      top: (10 / 368) * 100%;
+      left: (75 / 368) * 100%;
+    }
+
+    &--tablets {
+      width: 546px;
+      top: (20 / 368) * 100%;
+      left: (25 / 368) * 100%;
+    }
+
+    &--accessories {
+      width: 685px;
+      top: (53 / 368) * 100%;
+      left: (35 / 368) * 100%;
+    }
+  }
+
+  &__card-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: $color-primary;
+    margin-bottom: 4px;
+  }
+
+  &__card-amount {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}
