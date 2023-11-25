@@ -1,0 +1,72 @@
+.footer {
+  border-top: 1px solid $c-gray-light;
+  background-color: white;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 15px;
+
+    @include onTablet {
+      padding: 26px 30px;
+    }
+
+    @include onDesktopSmall {
+      padding: 36px 152px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &-link {
+    color: $c-gray-middle;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:not(&:last-child) {
+      padding-right: 10px;
+      font-size: 10px;
+
+      @include onTablet {
+        padding-right: 64px;
+
+      }
+    }
+  }
+
+  &__button-container {
+    display: flex;
+
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+
+    &-link {
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 15px;
+      text-align: right;
+      color: $c-gray-middle;
+      padding-right: 16px;
+
+      @include onTablet {
+        font-size: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.icon {
+
+  &--hidden {
+    display: none;
+  }
+
+  &--elipse {
+    position: absolute;
+    z-index: 2;
+    left: 15px;
+    bottom: 35px;
+
+    @include onTablet {
+      bottom: 30px;
+      left: 33px;
+    }
+
+    &--2 {
+      left: 35px;
+
+      @include onTablet {
+        left: 100px;
+      }
+    }
+  }
+
+  &-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 128px;
+    position: absolute;
+    left: 90%;
+  }
+
+  width: 22px;
+  height: 19px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &-link {
+    display: block;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: $c-gray-light;
+      width: 73px;
+      height: 1px;
+      transform: rotate(90deg) translate(10px, 45px);
+      margin-left: -10px;
+    }
+  }
+}
