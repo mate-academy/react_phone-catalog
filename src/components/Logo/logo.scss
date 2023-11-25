@@ -1,0 +1,11 @@
+@import "../../base/mixins.scss";
+
+.logo {
+  &--header {
+    margin: 0 65px 0 25px;
+  
+    @include onMobile {
+      margin: 0 40px 0 25px;
+    }
+  }
+}

@@ -1,0 +1,145 @@
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
+
+.shopping-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
+  @include onTablet {
+    width: 800px;
+    padding-top: 40px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1200px;
+  }
+
+  &__notification {
+    transition: transform 0.5s;
+    position: fixed;
+    right: 0;
+    top: 80px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+
+    @include onMobile {
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    @include onLaptop {
+      flex-direction: row;
+    }
+  }
+
+  &__products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    @include flex-center;
+    flex-direction: column;
+    padding: 24px;
+    max-height: 206px;
+    box-sizing: border-box;
+    border: 1px solid $elements-color;
+
+    @include onMobile {
+      width: 80%;
+      align-self: center;
+    }
+
+    @include onTablet {
+      width: 60%;
+      align-self: center;
+    }
+
+    @include onLaptop {
+      width: 30%;
+      align-self: start;
+    }
+
+    &--light {
+      border: 1px solid $elements-color;
+    }
+  
+    &--dark {
+      border: 1px solid $hover-dark-color;
+    }
+  }
+
+  &__total-container {
+    @include flex-center;
+    flex-direction: column;
+    padding-bottom: 24px;
+    width: 100%;
+    margin-bottom: 24px;
+
+    &--light {
+      border-bottom: 1px solid $elements-color;
+    }
+
+    &--dark {
+      border-bottom: 1px solid $hover-dark-color;
+    }
+  }
+
+  &__sum {
+    @extend %h1;
+    margin: 0;
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__number-of-items {
+    @extend %body-text;
+    color: $secondary-color;
+    margin: 0;
+  }
+
+  &__checkout {
+    width: 320px;
+    height: 48px;
+    background-color: $primary-color;
+    color: $white-color;
+    transition: box-shadow 0.3s;
+
+    @include onMobile {
+      width: 200px;
+    }
+
+    @include onLaptop {
+      width: 260px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+
+    &:hover {
+      @extend %button-product--hover;
+    }
+  }
+}

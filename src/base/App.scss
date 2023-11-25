@@ -1,0 +1,65 @@
+@import "../base/variables.scss";
+@import "../partials/placeholders.scss";
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: local("Mont-Regular"),
+    url("../fonts/Mont-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: local("Mont-Bold"),
+    url("../fonts/Mont-Bold.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: local("Mont-SemiBold"),
+    url("../fonts/Mont-SemiBold.otf") format("truetype");
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.App {
+  transition: all 0.3s;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.dark {
+  background-color: $primary-dark-color;
+}
+
+.title {
+  @extend %h1;
+  margin: 0;
+
+  &--dark {
+    color: $white-color;
+  }
+}

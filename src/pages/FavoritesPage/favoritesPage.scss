@@ -1,0 +1,49 @@
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
+
+.favorite-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
+  @include onTablet {
+    width: 800px;
+    padding-top: 40px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    min-width: 1200px;
+  }
+
+  &__sum {
+    @extend %body-text;
+    margin: 8px 0;
+
+    &--light {
+      color: $secondary-color;
+    }
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    @include onMobile {
+      justify-content: center;
+    }
+  }
+}

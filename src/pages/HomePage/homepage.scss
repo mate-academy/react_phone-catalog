@@ -1,0 +1,22 @@
+@import "../../base/mixins.scss";
+
+.homepage-container {
+  margin: 0 auto;
+
+  @include onMobile {
+    width: 550px;
+  }
+
+  @include onTablet {
+    width: 800px;
+    padding-top: 40px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1125px;
+  }
+}

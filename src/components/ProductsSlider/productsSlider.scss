@@ -1,0 +1,83 @@
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+@import "../../partials/placeholders.scss";
+
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow: hidden;
+
+  @include onMobile {
+    margin: 0 auto;
+    width: 273px;
+  }
+
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1125px;
+  }
+  
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__inner {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.5s;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include square(32px);
+    transition: all 0.3s;
+    box-sizing: border-box;
+
+    &--light {
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
+    }
+
+    &--dark {
+      background-color: $border-line-dark-color;
+
+      &:hover {
+        background-color: $hover-dark-color;
+      }
+    }
+  }
+}
+
+.disabled {
+  cursor: default;
+
+  &--light,
+  &--light:hover {
+    border: 1px solid $elements-color;
+  }
+
+  &--dark,
+  &--dark:hover {
+    background-color: $primary-dark-color;
+    border: 1px solid $border-line-dark-color;
+  }
+}

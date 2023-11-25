@@ -1,0 +1,63 @@
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+@import "../../partials/placeholders.scss";
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0 80px;
+
+  @include onMobile {
+    padding: 40px 20px 0;
+  }
+
+  @include onTablet {
+    width: 800px;
+  }
+
+  @include onLaptop {
+    width: 1000px;
+  }
+
+  @include onDesktop {
+    width: 1400px;
+  }
+
+  &__quantity {
+    @extend %body-text;
+    color: $secondary-color;
+    margin-bottom: 40px;
+  }
+
+  &__filter-wrapper {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__filter-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__filter-button__description {
+    @extend %small-text;
+    color: $secondary-color;
+  }
+
+  &__products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 40px;
+
+    @include onMobile {
+      justify-content: center;
+    }
+  }
+
+  &__pagination {
+    margin: 0 auto;
+  }
+}

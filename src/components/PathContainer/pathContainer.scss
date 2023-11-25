@@ -1,0 +1,63 @@
+@import "../../partials/placeholders.scss";
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+
+.path-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__arrow {
+    @include flex-center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__back-to-home {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__path-link {
+    @extend %small-text;
+    align-self: center;
+    margin: 0;
+    transition: color 0.3s;
+
+    &--light {
+      color: $primary-color;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+
+    &--dark {
+      color: $hover-color;
+
+      &:hover {
+        color: $elements-color;
+      }
+    }
+  }
+
+  &__path-text {
+    @extend %small-text;
+    align-self: center;
+    margin: 0;
+
+    &--light {
+      color: $secondary-color;
+    }
+
+    &--dark {
+      color: $elements-color;
+    }
+  }
+}

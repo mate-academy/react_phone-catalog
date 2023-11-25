@@ -1,0 +1,87 @@
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+
+.banner {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 72px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: hidden;
+  }
+
+  &__inner {
+    white-space: nowrap;
+    transition: transform 0.5s;
+  }
+
+  &__img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+
+    @include onMobile {
+      height: 500px;
+    }
+  }
+
+  &__indicators {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    transition: background-color 0.3s;
+
+    &--light {
+      background-color: $elements-color;
+    }
+
+    &--dark {
+      background-color: $secondary-dark-color;
+    }
+
+    &--active {
+      &__light {
+        background-color: $primary-color;
+      }
+
+      &__dark {
+        background-color: $elements-color;
+      }
+    }
+  }
+
+  &__button {
+    height: 400px;
+    padding: 0;
+    width: 32px;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    box-sizing: border-box;
+
+    &--light {
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
+    }
+
+    &--dark {
+      background-color: $border-line-dark-color;
+
+      &:hover {
+        background-color: $hover-dark-color;
+      }
+    }
+  }
+}

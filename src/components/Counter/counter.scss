@@ -1,0 +1,25 @@
+@import "../../base/mixins.scss";
+@import "../../base/variables.scss";
+
+.counter {
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 15px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  border-radius: 50%;
+  background-color: $red-color;
+  color: $white-color;
+  font-family: "Mont-Regular", "Times New Roman", Times, serif;
+  font-style: normal;
+  font-size: 9px;
+
+  &--light {
+    border: 1px solid $white-color;
+  }
+
+  &--dark {
+    border: 1px solid $primary-dark-color;
+  }
+}

@@ -1,0 +1,187 @@
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+@import "../../partials/placeholders.scss";
+
+.header {
+  transition: all 0.3s;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &--light {
+      background-color: $white-color;
+      border-bottom: 1px solid $border-line-color;
+    }
+
+    &--dark {
+      background-color: $primary-dark-color;
+      border-bottom: 1px solid $border-line-dark-color;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @include onMobile {
+      width: fit-content;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: 64px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include onMobile {
+      gap: 30px;
+    }
+  }
+
+  &__right-bar {
+    display: flex;
+  }
+
+  &__nav-item {
+    @include flex-center;
+    height: 100%;
+    position: relative;
+
+    &::after {
+      @include focused-line;
+      width: 0%;
+    }
+  }
+
+  &__nav-link {
+    @extend %uppercase;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.5s ease;
+    color: $secondary-color;
+
+    @include onMobile {
+      font-size: 11px;
+    }
+
+    &--light {
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    &--dark {
+      &:hover {
+        color: $white-color;
+      }
+    }
+
+    &--highlighted {
+      &__light {
+        color: $primary-color;
+      }
+
+      &__dark {
+        color: $white-color;
+      }
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    @include square(64px);
+    position: relative;
+    cursor: pointer;
+
+    &--light {
+      background-color: $white-color;
+      border-left: 1px solid $border-line-color;
+    }
+  
+    &--dark {
+      background-color: $primary-dark-color;
+      border-left: 1px solid $border-line-dark-color;
+    }
+
+    & * {
+      @include square(17px);
+    }
+
+    &::after {
+      @include focused-line;
+      width: 0%;
+    }
+  }
+
+  &__form {
+    display: flex;
+    padding-left: 24px;
+    transition: all 0.5s ease;
+
+    @include onMobile {
+      padding-left: 10px;
+    }
+
+    &--light {
+      border-left: 1px solid $border-line-color;
+      background-color: $hover-color;
+    }
+    
+    &--dark {
+      border-left: 1px solid $border-line-dark-color;
+      background-color: $primary-color;
+    }
+    
+    &--without-input {
+      padding: 0;
+      background-color: transparent;
+    }
+
+    & button {
+      @include square(64px);
+      background-color: transparent;
+    }
+  }
+
+  &__search-bar {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    @extend %buttons-text;
+
+    @include onMobile {
+      width: 120px;
+      font-size: 12px;
+    }
+
+    &--dark {
+      color: $hover-color;
+    }
+
+    &--not-visible {
+      position: absolute;
+      z-index: -1;
+    }
+
+    &::placeholder {
+      color: $secondary-color;
+    }
+  }
+}
+
+.focused {
+  &__light::after {
+    @include focused-line;
+    background-color: $primary-color;
+  }
+
+  &__dark::after {
+    @include focused-line;
+    background-color: $white-color;
+  }
+}

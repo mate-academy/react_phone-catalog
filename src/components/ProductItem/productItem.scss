@@ -1,0 +1,116 @@
+@import "../../base/variables.scss";
+@import "../../base/mixins.scss";
+@import "../../partials/placeholders.scss";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 32px 24px 24px;
+  transition: all 0.3s;
+
+  @include onMobile {
+    width: $widthOnMobile;
+  }
+
+  @include onTablet {
+    width: $widthOnTablet;
+  }
+
+  @include onLaptop {
+    width: $widthOnLaptop;
+  }
+
+  @include onDesktop {
+    width: $widthOnDesktop;
+  }
+  
+  &--light {
+    border: 1px solid $elements-color;
+    
+    &:hover {
+      @extend %button-product--hover;
+    }
+  }
+
+  &--dark {
+    background-color: $primary-color;
+    border: 1px solid $hover-dark-color;
+
+    &:hover {
+      border: 1px solid $icons-dark-color;
+    }
+  }
+
+  &__link {
+    @include flex-center;
+    flex-direction: column;
+  }
+
+  &__image {
+    @include square(208px);
+    object-fit: contain;
+  }
+
+  &__name {
+    @extend %body-text;
+    margin: 24px 0 0;
+    flex: 1 0 45px;
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  &__price {
+    @extend %h2;
+    margin: 0;
+
+    &--dark {
+      color: $hover-color;
+    }
+  }
+
+  &__full-price {
+    @extend %h2;
+    font-family: "Mont-SemiBold", "Times New Roman", Times, serif;
+    margin: 0;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-top: 1px solid $elements-color;
+    padding-top: 16px;
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      @extend %small-text;
+      color: $secondary-color;
+      margin: 0;
+    }
+
+    &-value {
+      @extend %small-text;
+      margin: 0;
+
+      &--dark {
+        color: $elements-color;
+      }
+    }
+  }
+}
