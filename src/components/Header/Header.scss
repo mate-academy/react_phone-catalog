@@ -1,0 +1,114 @@
+@import "../../utils/variables";
+@import "../../utils//extends";
+@import "../../utils/mixins";
+
+.header {
+  box-shadow: 0 1px 0 0 $light-grey;
+
+  &__link {
+    display: flex;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-left: 1px solid $light-grey;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+      transition: all 0.3s ease-in-out;
+      transform-origin: left;
+      transform: scale(0);
+
+    }
+
+    &--active {
+      color: $primary-color;
+
+      &::after {
+        color: $primary-color;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__left-side {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    height: 100%;
+
+    @include onSmallMobile {
+      gap: 15px;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    gap: 0;
+  }
+  
+  &__icon--count {
+    width: 14px;
+    height: 14px;
+    background-color: #eb5757;
+    border-radius: 50%;
+    position: absolute;
+    color: $white-color;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    left: 50%;
+    bottom: 50%;
+  }
+  
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    padding-left: 24px;
+  }
+}
+
+.open-menu {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @media (min-width: 1001px) {
+    display: none;
+  }
+
+  &__button::before {
+    top: 10px;
+    content: "";
+    position: absolute;
+    width: 20px;
+    background-color: $primary-color;
+    height: 2px;
+  }
+
+  &__button::after {
+    bottom: 10px;
+    content: "";
+    position: absolute;
+    width: 20px;
+    background-color: $primary-color;
+    height: 2px;
+  }
+}

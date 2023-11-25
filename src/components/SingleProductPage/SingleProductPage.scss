@@ -1,0 +1,331 @@
+@import "../../utils/variables";
+@import "../../utils/extends";
+@import "../../utils/mixins";
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+
+  // @media(max-width:900px) {
+  //   width: 300px;
+  // }
+
+  @include onMobile {
+    width: 100%;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    @extend %h1;
+  }
+
+  &__top {
+    display: flex;
+    margin-bottom: 91px;
+
+    @include onMobile {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__images-list {
+    display: flex;
+    margin-bottom: 20px;
+
+    @include on650px {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on650px {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__image {
+    border: 1px solid #c4c4c4;
+    width: 80px;
+    height: 80px;
+
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      transform: scale(1.3);
+      border: none;
+    }
+  }
+
+  &__img-big {
+    max-width: 442px;
+    height: 442px;
+
+    @include onTablet {
+      max-width: 322px;
+      max-height: 322px;
+    }
+
+    @include onSmallMobile {
+      max-width: 80%;
+      max-height: 322px;
+      object-fit: contain;
+    }
+  }
+
+  &__img-little {
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    padding: 7px;
+    cursor: pointer;
+  }
+
+  .active {
+    border: 1px solid $primary-color;
+  }
+
+  &__img-current {
+    padding: 11px;
+    text-align: center;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+
+    @include onSmallMobile {
+      width: 260px;
+    }
+  }
+
+  &__subTitle {
+    @extend %small-text;
+
+    margin-bottom: 8px;
+  }
+
+  &__select__container {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  &__colors {
+    display: flex;
+    margin-bottom: 24px;
+    flex-direction: column;
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $white-color;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &__backGround {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+    }
+  }
+
+  &__capasity {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+
+    &__btn {
+      width: 63px;
+      height: 32px;
+      padding: 7px;
+      background-color: $white-color;
+      border: 1px solid #b4bdc3;
+      text-align: center;
+      @extend %body-text;
+
+      cursor: pointer;
+
+      &:hover {
+        background-color: $primary-color;
+        color: #fff;
+      }
+
+      &-active {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+  }
+
+  &__price-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+
+  &__price {
+    @extend %h1;
+  }
+
+  &__price-crossed {
+    @extend %price-light;
+
+    text-decoration-line: line-through ;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    &-add {
+      width: 263px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $primary-color;
+      color: $white-color;
+      text-align: center;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      @include onMobile {
+        width: 100%;
+      }
+
+      &--active {
+        border: 1px solid $light-grey;
+        background-color: $white-color;
+        color: $green;
+      }
+
+      &:hover {
+        box-shadow: 0 1px 3px rgba(23, 32, 49, 0.66);
+      }
+    }
+
+    &-favourite {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $media-grey;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      background-color: #fff;
+
+      &:hover {
+        box-shadow: 0 1px 3px rgba(23, 32, 49, 0.66);
+      }
+    }
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__name {
+      @extend %small-text;
+    }
+
+    &__value {
+      text-align: right;
+      @extend %link;
+
+    }
+
+    &--detailed {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__heading {
+    @extend %h2;
+
+    padding-bottom: 10px;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 32px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+
+    @include onMobile {
+      width: 100%;
+    }
+  }
+
+  &__techSpecs {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    @include onMobile {
+      width: 100%;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
