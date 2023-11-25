@@ -1,0 +1,99 @@
+.button {
+  height: 40px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &--add {
+    width: 150px;
+    background-color: $c-primary;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-right: 10px;
+
+    &:hover {
+      background-color: $c-white;
+      color: $c-primary;
+      border: 1px solid $c-primary;
+    }
+
+    &--descr {
+      width: 263px;
+      margin-right: 8px;
+    }
+
+    &--selected {
+      background-color: $c-white;
+      border: 1px solid $c-gray-light;
+      color: #27ae60;
+    }
+  }
+
+  &--arrow-up {
+    width: 40px;
+    border: 1px solid #b4bdc4;
+    background-color: $c-white;
+    transform: rotate(270deg);
+  }
+
+  &--like {
+    width: 40px;
+    border: 1px solid #b4bdc4;
+    background-color: $c-white;
+  }
+
+  &--pagination {
+    width: 32px;
+    height: 32px;
+    background-color: $c-white;
+    color: $c-white;
+    border: 1px solid $c-gray-light;
+    box-sizing: border-box;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__like-icon {
+    height: 13.55px;
+    width: 15.33px;
+    display: block;
+  }
+
+  &__container {
+    display: flex;
+
+    &--descr {
+      padding-bottom: 40px;
+    }
+
+    &--home-page {
+      width: 80px;
+      display: flex;
+      justify-content: space-between;
+
+      @include onTablet {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--categories {
+        @include onDesktopSmall {
+          display: none;
+        }
+      }
+    }
+  }
+}

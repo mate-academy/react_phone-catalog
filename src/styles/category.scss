@@ -1,0 +1,143 @@
+.category {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+
+  &__catalog {
+
+    @include onTablet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  &__card {
+    margin: 0 auto 45px;
+    width: 300px;
+    height: 400px;
+
+    @include onTablet {
+      margin: 0;
+      width: 368px;
+      height: 500px;
+    }
+
+    &__img {
+      padding-bottom: 24px;
+    }
+
+    &__link {
+      &-container {
+        display: block;
+        text-decoration: none;
+      }
+
+      &--main {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+        color: $c-primary;
+        display: block;
+        margin: 0;
+      }
+
+      &--secondary {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        display: block;
+        color: $c-gray-middle;
+        text-decoration: none;
+        margin: 0;
+      }
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+      width: 300px;
+      height: 350px;
+
+      @include onTablet {
+        width: 368px;
+        height: 422px;
+      }
+
+      position: relative;
+
+      &::before {
+        content: "";
+        background-image: url("../images/category-phones.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+    }
+
+    &--tablets {
+      width: 300px;
+      height: 350px;
+
+      @include onTablet {
+        width: 368px;
+        height: 422px;
+      }
+
+      background-color: #8d8d92;
+
+      position: relative;
+
+      &::before {
+        content: "";
+        background-image: url("../images/category-tablets.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+    }
+
+    &--accessories {
+      width: 300px;
+      height: 350px;
+
+      @include onTablet {
+        width: 368px;
+        height: 422px;
+      }
+
+      background-color: #973d5f;
+      position: relative;
+
+      &::before {
+        content: "";
+        background-image: url("../images/category-asc.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  &-title {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
