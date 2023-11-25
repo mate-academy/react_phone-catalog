@@ -1,0 +1,208 @@
+.navbar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 64px;
+  z-index: 1;
+  user-select: none;
+  box-sizing: border-box;
+  box-shadow: 0 1px 5px -1px $color-dark;
+
+  @include desktop-end {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 15px;
+  }
+
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 64px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    color: $color-gray;
+    transition: color 0.3s ease;
+
+    @include desktop-end {
+      padding: 15px;
+    }
+
+    &-isActive {
+      color: $color-dark;
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: $color-dark;
+        position: absolute;
+        bottom: 0;
+
+        @include desktop-end {
+          display: none;
+        }
+      }
+    }
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+
+    @include desktop-end {
+      display: block;
+      width: 35px;
+      height: 25px;
+      margin: 0;
+      position: absolute;
+      cursor: pointer;
+      opacity: 0;
+      z-index: 2;
+      -webkit-touch-callout: none;
+
+      &:checked ~ .navbar__hamburger-item {
+        opacity: 1;
+        transform: rotate(45deg) translate(3px,-1px);
+        background: $color-dark;
+      }
+
+      &:checked ~ .navbar__hamburger-item:nth-child(4) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+      }
+
+      &:checked ~ .navbar__hamburger-item:nth-child(3) {
+        transform: rotate(-45deg) translate(-5px,11px);
+      }
+
+      &:checked ~ .navbar__menu {
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  &__hamburger-item {
+    display: none;
+
+    @include desktop-end {
+      display: block;
+      width: 33px;
+      height: 4px;
+      margin-bottom: 5px;
+      position: relative;
+      background-color: $color-gray;
+      border-radius: 3px;
+      z-index: 1;
+      transform-origin: 4px 0;
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1),
+        background-color 0.5s cubic-bezier(0.77,0.2,0.05,1),
+        opacity 0.55s ease;
+
+      &:first-child {
+        transform-origin: 0% 0%;
+      }
+      &:nth-child(3) {
+        transform-origin: 0% 100%;
+      }
+    }
+  }
+
+  &__menu {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    & ul {
+      display: flex;
+
+      @include desktop-end {
+        display: block;
+      }
+    }
+
+    @include desktop-end {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: absolute;
+      box-sizing: border-box;
+      width: 300px;
+      height: 100vh;
+      right: -300px;
+      top: 0;
+      margin: -20px;
+      padding: 75px 50px 50px;
+      background: $color-active;
+      -webkit-font-smoothing: antialiased;
+      box-shadow: -1px 1px 0 $color-elements;
+      transform-origin: 0% 0%;
+      transform: translateX(0%);
+      transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1);
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 64px;
+    text-decoration: none;
+    color: $color-gray;
+    box-shadow: -1px 0 0 $color-elements;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+
+    @include desktop-end {
+      justify-content: start;
+      margin-top: 20px;
+
+      &-isActive {
+        color: $color-dark;
+      }
+    }
+
+    &::after {
+      @include desktop-end {
+        content: attr(data-after);
+        margin-left: 10px;
+      }
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__count {
+    position: relative;
+    bottom: 15%;
+    height: 14px;
+    width: 14px;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: 600;
+    color: $color-white;
+    background-color: $color-red;
+    border-radius: 50%;
+
+    @include desktop-end {
+      order: 1;
+      padding: 0 5px;
+      margin: 0 5px;
+    }
+  }
+}

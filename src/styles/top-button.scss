@@ -1,0 +1,28 @@
+.button-top {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $color-gray;
+  border: none;
+  background-color: transparent;
+  margin-right: 25px;
+
+  @include on-mobile {
+    align-self: flex-end;
+  }
+
+  &:hover {
+    color: $color-dark;
+    cursor: pointer;
+  }
+
+  &__img {
+    @include buttons-effect;
+    height: 12px;
+    width: 12px;
+    padding: 11px;
+    margin-left: 16px;
+    vertical-align: middle;
+
+  }
+}

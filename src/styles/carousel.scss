@@ -1,0 +1,38 @@
+.carousel {
+  display: flex;
+  justify-content: center;
+  margin: 40px 20px 0;
+
+  &__content {
+    display: flex;
+    margin: 0 16px;
+    overflow: hidden;
+  }
+
+  &__images {
+    max-height: 400px;
+    transition: 0.8s;
+  }
+
+  &__button {
+    box-sizing: content-box;
+    @include buttons-effect;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+
+    &__item {
+      width: 18px;
+      height: 4px;
+      margin-right: 14px;
+      background-color: $color-elements;
+
+      &-isActive {
+        background-color: $color-dark;
+      }
+    }
+  }
+}

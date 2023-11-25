@@ -1,0 +1,42 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  @include on-mobile {
+    width: 480px;
+  }
+
+  &__button {
+    height: 32px;
+    @include buttons-effect;
+
+    &:disabled {
+      color: $color-gray;
+      box-shadow: none;
+    }
+
+    &:first-of-type {
+      margin-right: 16px;
+    }
+
+    &:last-of-type {
+      margin-left: 16px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    @include buttons-effect;
+    width: 30px;
+    height: 30px;
+
+    &-isActive {
+      background-color: $color-dark;
+      color: $color-white;
+    }
+  }
+}

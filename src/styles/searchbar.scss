@@ -1,0 +1,45 @@
+.searchbar {
+  position: relative;
+
+  @include desktop-end {
+    margin: -20px 20px 30px;
+  }
+
+  &__field {
+    height: calc(100% - 1px);
+    width: 327px;
+    font-family: "Mont", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 10px 0 27px;
+    margin-right: 1px;
+    border: none;
+    outline: none;
+    box-shadow: -1px 1px 0 $color-elements;
+
+    @include desktop-end {
+      height: 64px;
+      width: 100%;
+      border: 1px solid $color-elements;
+      border-radius: 15px;
+    }
+
+    &:focus {
+      background-color: $color-active;
+    }
+
+    &::placeholder {
+      color: $color-border;
+    }
+
+    &:hover {
+      background-color: $color-active;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: calc(50% - 8px);
+    margin-left: 5px;
+  }
+}

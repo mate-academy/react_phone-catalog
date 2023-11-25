@@ -1,0 +1,128 @@
+@keyframes name-of-animation {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.product-content {
+  display: flex;
+  gap: 16px;
+  width: 1120px;
+
+  @include desktop-end {
+    width: 568px;
+    margin: 0 auto;
+  }
+
+  @include on-mobile {
+    box-sizing: border-box;
+    max-width: 480px;
+    gap: 0;
+  }
+
+  &-isWrap {
+    flex-wrap: wrap;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 32px 29px 24px;
+    border: 1px solid $color-border;
+    width: 208px;
+    animation: name-of-animation 0.5s ease-in;
+
+    @include on-mobile {
+      margin: 10px 60px 0;
+      width: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 1px 5px -1px $color-dark;
+    }
+
+    &__img {
+      display: block;
+      margin: 0 auto;
+      width: 208px;
+      height: 208px;
+      margin-bottom: 24px;
+
+      @include on-mobile {
+        width: 270px;
+        height: 270px;
+      }
+    }
+
+    &__title {
+      min-height: 42px;
+      margin-bottom: 8px;
+      color: $color-dark;
+    }
+
+    &__price {
+      display: flex;
+      gap: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: 22px;
+      border-bottom: 1px solid $color-elements;
+
+      &-old {
+        font-weight: 500;
+        text-decoration-line: line-through;
+        color: $color-gray;
+      }
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+
+      &-items {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        font-size: 13px;
+
+        &__params {
+          color: $color-gray;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 8px;
+      height: 40px;
+
+      &-cart {
+        width: 100%;
+        font-weight: 600;
+        @include buttons-submit;
+
+        &-isAdded {
+          color: $color-green;
+          background-color: $color-active;
+          box-shadow: 0 1px 5px -1px $color-dark;
+          transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+        }
+      }
+
+      &-favorites {
+        width: 40px;
+        @include buttons-submit;
+        background-color: transparent;
+        border: 1px solid $color-border;
+      }
+    }
+  }
+}

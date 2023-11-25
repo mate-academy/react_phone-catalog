@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0 40px;
+
+  @include desktop-end {
+    margin: 40px 25px;
+  }
+
+  @include on-mobile {
+    margin: 25px 10px 40px;
+  }
+
+  &__link {
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-dark;
+    text-transform: capitalize;
+
+    &-isActive {
+      color: $color-gray;
+      pointer-events: none;
+    }
+  }
+
+  &__img {
+    display: flex;
+    margin-right: 13px;
+  }
+}
