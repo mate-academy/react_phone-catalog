@@ -1,0 +1,37 @@
+.mob-content {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.mobiles {
+  margin-left: 152px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__image {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__rigth {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__text {
+    color: var(--gray-secondary, #89939a);
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  @media (max-width: 1300px) {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
