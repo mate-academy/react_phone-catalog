@@ -1,0 +1,15 @@
+@mixin contentPaddingInline() {
+  padding-inline: 152px;
+}
+
+@mixin container() {
+  max-width: 1136px;
+  margin: 0 auto;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property}, $effect-duration;
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

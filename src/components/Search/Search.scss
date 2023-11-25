@@ -1,0 +1,51 @@
+@import "../../styles/global-imports";
+
+.Search {
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+
+  &.isVisible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__input {
+    min-width: 327px;
+    height: 100%;
+    padding: 22px 0 22px 24px;
+
+    font-family: "Mont Semibold", sans-serif;
+    font-size: 14px;
+    color: $c-primary;
+
+    border: none;
+    box-shadow: -1px 0 0 0 $c-elements;
+
+    &.has-icon {
+      background: no-repeat url("../../images/icons/icon-search.svg");
+      background-position: top 24px right 24px;
+    }
+
+    &::placeholder {
+      color: $c-icons;
+    }
+  }
+
+  &__clear-button {
+    display: none;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+
+    background: no-repeat center url("../../images/icons/icon-close-primary.svg");
+
+    cursor: pointer;
+
+    &.isActive {
+      display: block;
+    }
+  }
+}
