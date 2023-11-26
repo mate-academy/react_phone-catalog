@@ -37,7 +37,7 @@ export const ProductCard: React.FC = () => {
     },
     {
       id: 3,
-      src: '_new/img/banner-accessories.png',
+      src: './img/banner-accessories.png',
       alt: 'banner-accessories',
     },
   ];
