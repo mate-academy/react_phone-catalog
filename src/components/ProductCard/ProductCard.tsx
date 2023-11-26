@@ -4,19 +4,23 @@ import SwiperCore, {
   Pagination,
   Scrollbar,
   A11y,
+  Autoplay,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/swiper.scss';
+import 'swiper/components/a11y/a11y.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+import 'swiper/components/autoplay';
 
 SwiperCore.use([
   Navigation,
   Pagination,
   Scrollbar,
   A11y,
+  Autoplay,
 ]);
 
 export const ProductCard: React.FC = () => {
@@ -48,16 +52,12 @@ export const ProductCard: React.FC = () => {
         slidesPerView={1}
         spaceBetween={30}
         loop
+        // autoplay={{ delay: 5000 }}
         pagination={{
           clickable: true,
         }}
         navigation
         className="mySwiper"
-        // onInit={(swiper) => console.log('Swiper initialized', swiper)}
-        // onSlideChange={(swiper) => {
-        //   console.log('Slide index changed to: ', swiper.activeIndex);
-        // }}
-        // onReachEnd={() => console.log('Swiper end reached')}
       >
         {
           banners.map(banner => (
