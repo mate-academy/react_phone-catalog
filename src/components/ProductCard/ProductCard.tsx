@@ -27,12 +27,12 @@ export const ProductCard: React.FC = () => {
   const banners = [
     {
       id: 1,
-      src: '_new/img/banner-phones.png',
+      src: './img/banner-phones.png',
       alt: 'banner-phones',
     },
     {
       id: 2,
-      src: '_new/img/banner-tablets.png',
+      src: './img/banner-tablets.png',
       alt: 'banner-tablets',
     },
     {

@@ -60,13 +60,17 @@
 }
 
 .swiper-button-prev {
-  border: 1px solid $gray-secondary;
-  grid-column: span12 !important;
-  height: 400px !important;
+  background-color: aqua;
+  height: 100% !important;
+  // width: 32px !important;
+  left: 0 !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  grid-column: 1 / 5 !important;
+
   &::after {
     background-image: url('../src/images/arrow-left.svg');
-    width: 100px;
-    // height: 100px;
+    width: 100%;
     height: 100%;
   }
 }
