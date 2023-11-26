@@ -1,0 +1,61 @@
+@import "../../styles/main.scss";
+
+$card-gap: 16px;
+
+.ProductSlider {
+  width: 100%;
+  height: 572px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    height: 461px;
+  }
+
+  &__header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    height: 42px;
+    margin-bottom: 24px;
+
+    &-title {
+      @extend %h1;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__content {
+    height: 100%;
+    overflow: hidden;
+    width: $card-width-desktop * 4 + $card-gap * 3;
+
+    @include onDesktop {
+      width: $card-width-desktop * 3 + $card-gap * 2;
+    }
+
+    @include onTablet {
+      width: $card-width-tablet * 3 + $card-gap * 2;
+    }
+
+    @include onMobile {
+      width: $card-width-tablet * 2 + $card-gap;
+
+      @media (max-width: 500px) {
+        width: $card-width-tablet;
+      }
+    }
+
+    &-list {
+      display: flex;
+      gap: $card-gap;
+      transition-duration: 1s;
+    }
+  }
+}
