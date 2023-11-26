@@ -52,7 +52,7 @@ export const ProductCard: React.FC = () => {
         slidesPerView={1}
         spaceBetween={30}
         loop
-        // autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 5000 }}
         pagination={{
           clickable: true,
         }}

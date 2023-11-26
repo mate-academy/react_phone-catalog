@@ -35,65 +35,99 @@
 
 .swiper-container {
   width: 100%;
-  // border: 1px solid black;
-  height: 400px;
+  height: 432px;
   display: grid;
   grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: 400px 1fr;
+  row-gap: 8px;
 }
 
 .swiper-wrapper {
   padding-inline-start: 0;
+  height: 24px;
+  width: 80px;
 }
 
-// .swiper-slide {
-//   display: flex;
-// }
-
-.swiper-pagination {
-  // bottom: 0;
-  // color: yellow;
-  // padding: 0;
-}
-
-.swiper-button-next::after, .swiper-button-prev::after {
+.swiper-button-next::after,
+.swiper-button-prev::after {
   content: "" !important;
 }
 
 .swiper-button-prev {
-  background-color: aqua;
+  border: 1px solid $gray-secondary;
   height: 100% !important;
-  // width: 32px !important;
+  width: 32px !important;
   left: 0 !important;
   top: 0 !important;
   margin-top: 0 !important;
-  grid-column: 1 / 5 !important;
+  grid-row: 1 / 2;
+  // grid-column: 1 / 5 !important;
+  transition: border $effect-duration $animation-timing-function;
+
+  &:hover {
+    border: 1px solid $gray-primary;
+  }
 
   &::after {
-    background-image: url('../src/images/arrow-left.svg');
-    width: 100%;
-    height: 100%;
+    background-image: url('../src/images/arrow-left-black.svg');
+    width: 16px;
+    height: 16px;
   }
 }
 
 .swiper-button-next {
+  border: 1px solid $gray-secondary;
+  height: 100% !important;
+  width: 32px !important;
+  right: 0 !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  grid-row: 1 / 2;
+  // grid-column: 1 / 5 !important;
+  transition: border $effect-duration $animation-timing-function;
+
+  &:hover {
+    border: 1px solid $gray-primary;
+  }
   &::after {
-    background-image: url('../src/images/arrow-right.svg');
-    width: 100px;
-    height: 100px;
+    background-image: url('../src/images/arrow-right-black.svg');
+    width: 16px;
+    height: 16px;
   }
 }
 
-.swiper-slide, .swiper-slide-active {
+.swiper-slide,
+.swiper-slide-active {
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(24, 1fr);
   place-items: center;
   position: relative;
   align-items: center;
+  overflow: hidden;
 }
 
 .swiper-image {
   grid-column: 2 / 24;
   position: absolute;
   width: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $gray-primary !important;
+}
+
+.swiper-pagination {
+  display: flex;
+  bottom: 0 !important;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  &-bullet {
+    margin: 0 !important;
+    width: 20px !important;
+    border-radius: 0 !important;
+  }
 }
