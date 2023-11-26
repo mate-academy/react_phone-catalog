@@ -1,0 +1,21 @@
+@import "../../styles/main.scss";
+
+.ProductList {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @include onMobile {
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      margin-bottom: 16px;
+    }
+  }
+}

@@ -1,0 +1,343 @@
+@import "../../styles/main.scss";
+
+.ProductDetailsPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    margin-top: 16px;
+    @extend %h1;
+
+    @include onMobile {
+      margin-top: 12px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    margin-top: 40px;
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+      gap: 46px;
+      margin-top: 24px;
+    }
+
+    @include onMobile {
+      gap: 32px;
+      margin-top: 12px;
+    }
+
+    &-imgs-wrapper {
+      display: flex;
+
+      @include onTablet {
+        gap: 92px;
+      }
+
+      @include onMobile {
+        gap: 0;
+      }
+    }
+  }
+
+  &__actions {
+    margin-right: 130px;
+
+    @include onDesktop {
+      margin-right: 60px;
+    }
+
+    @include onTablet {
+      margin-right: 0;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 12px;
+    }
+
+    @include onMobile {
+      gap: 6px;
+    }
+
+    &-button {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      margin-right: 16px;
+      border: 1px solid $elements-grey-c;
+      transition-duration: $transition-duration;
+
+      @include onTablet {
+        width: 68px;
+        height: 68px;
+      }
+
+      @include onMobile {
+        width: 55px;
+        height: 55px;
+      }
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+      }
+    }
+
+    &-item {
+      max-height: 100%;
+    }
+  }
+
+  &__current-image {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 64px;
+    overflow: hidden;
+
+    @include onDesktop {
+      margin-right: 28px;
+    }
+
+    @include onTablet {
+      width: 390px;
+      height: 390px;
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      width: 300px;
+      height: 300px;
+    }
+
+    &-item {
+      max-height: 100%;
+      animation: showImage 1s ease;
+    }
+  }
+
+  &__options {
+    height: 80px;
+    border-bottom: 1px solid $elements-grey-c;
+    margin-bottom: 24px;
+
+    @include onMobile {
+      height: 68px;
+    }
+
+    &-title {
+      @extend %smallText;
+      color: $dark-grey-c;
+      margin-bottom: 8px;
+    }
+
+    &-list {
+      display: flex;
+      gap: 8px;
+
+      @include onTablet {
+        gap: 12px;
+      }
+    }
+
+    &-color {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      border: 1px solid $elements-grey-c;
+      border-radius: 50%;
+      transition-duration: $transition-duration;
+
+      @include onTablet {
+        width: 36px;
+        height: 36px;
+      }
+
+      &:hover {
+        border-color: $icons-grey-c;
+      }
+
+      &-link {
+        width: 100%;
+        border: 2px solid $white-c;
+        border-radius: 50%;
+      }
+    }
+
+    &-cap {
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $icons-grey-c;
+      transition-duration: $transition-duration;
+
+      &:hover {
+        border-color: $black-c;
+      }
+
+      &-link {
+        @extend %body;
+        margin-inline: 8px;
+      }
+    }
+  }
+
+  &__prices {
+    margin-top: 32px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &-now {
+      @extend %h1;
+    }
+
+    &-before {
+      color: $dark-grey-c;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+
+    @include onMobile {
+      gap: 24px;
+    }
+  }
+
+  &__info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @extend %smallText;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: $dark-grey-c;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__id {
+    @extend %smallText;
+    color: $dark-grey-c;
+  }
+
+  &__more {
+    display: flex;
+    gap: 64px;
+    margin: 80px 0;
+
+    @include onTablet {
+      flex-direction: column-reverse;
+      margin: 60px 0;
+      gap: 48px;
+    }
+
+    &-title {
+      height: 48px;
+      border-bottom: 1px solid $elements-grey-c;
+      &-item {
+        @extend %h2;
+      }
+    }
+
+    &-about {
+      max-width: 560px;
+
+      @include onTablet {
+        max-width: none;
+      }
+
+      &-article {
+        margin-top: 32px;
+
+        @include onTablet {
+          margin-top: 24px;
+        }
+
+        &-title {
+          @extend %h3;
+        }
+
+        &-info {
+          @extend %body;
+          color: $dark-grey-c;
+          margin-top: 16px;
+        }
+      }
+    }
+
+    &-tech {
+      width: 100%;
+
+      &-content {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &-wrap {
+        display: flex;
+        justify-content: space-between;
+        @extend %body;
+      }
+
+      &-property {
+        color: $dark-grey-c;
+      }
+    }
+  }
+}
+
+.color-option-active {
+  border-color: $black-c;
+}
+
+.capacity-option-active {
+  background-color: $black-c;
+  color: $white-c;
+}
+
+.image-active {
+  border: 1px solid $black-c;
+}
+
+@keyframes showImage {
+  from {
+    opacity: 0.2;
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
