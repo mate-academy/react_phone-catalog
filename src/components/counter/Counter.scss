@@ -1,0 +1,18 @@
+@import "../../styles/variables.scss";
+
+.counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid $white;
+  background-color: $red;
+  border-radius: 50%;
+  color: white;
+  line-height: 16px;
+  text-align: center;
+  font-size: 11px;
+  font-family: $semi-bold;
+  transform: translate(-100%, 100%);
+}

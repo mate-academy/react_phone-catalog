@@ -1,0 +1,68 @@
+@import "../../styles/variables.scss";
+
+.select {
+  .control {
+    position: relative;
+  }
+
+  .options {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--gray-elements, #e2e6e9);
+    background: $white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    .option {
+      width: 100%;
+      border: none;
+      color: $secondary;
+      font-family: $regular;
+
+      &:hover {
+        background-color: $hoverBG;
+        color: $primary;
+      }
+    }
+  }
+
+  .label {
+    margin-bottom: 4px;
+    font-family: $regular;
+    font-size: $small-text;
+    line-height: $small-line-height;
+    color: $secondary;
+    text-align: start;
+  }
+
+  &-button {
+    margin-top: 4px;
+    width: 100%;
+    padding: 10px 12px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $icons;
+    font-family: $semi-bold;
+    font-size: $body-text;
+    line-height: $body-line-height;
+    background-color: $white;
+    color: $primary;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $secondary;
+    }
+
+    &:focus {
+      border-color: $primary;
+    }
+
+    svg {
+      pointer-events: none;
+    }
+  }
+}
