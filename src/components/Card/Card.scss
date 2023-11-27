@@ -1,0 +1,135 @@
+@import "../../style/fonts/fonts.scss";
+@import "../../style/mixin/mixin.scss";
+@import "../../style/variables/variables.scss";
+
+.card {
+  width: 272px;
+  height: 507px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+
+  &__info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__head {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+  }
+
+  &__btn {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--buy {
+      width: calc(100% - 40px);
+      background-color: $blackWite;
+      color: $Wite;
+      font-size: 14px;
+      font-family: "Mont-600", sans-serif;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+
+      &.select {
+        color: #27ae60;
+        background-color: transparent;
+        border: 1px solid #e2e6e9;
+      }
+    }
+
+    &--like {
+      border: 1px solid #b4bdc3;
+      width: 40px;
+      background-image: url(../../icon/like.png);
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      &:hover {
+        border-color: #313237;
+      }
+
+      &.liked {
+        background-image: url(../../icon/likeRed.png);
+      }
+    }
+  }
+
+  &__container {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    height: 42px;
+    display: block;
+    color: $blackWite;
+    font-size: 14px;
+    font-family: "Mont-500", sans-serif;
+    line-height: 21px;
+    margin-bottom: 8px;
+    text-decoration: none;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-family: "Mont-700", sans-serif;
+    color: $blackWite;
+
+    &--sale {
+      font-size: 18px;
+      text-decoration-line: line-through;
+      color: $Grey;
+      font-family: "Mont-600", sans-serif;
+      margin-left: 8px;
+    }
+  }
+
+  &__img {
+    height: 208px;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    &-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: "Mont-600", sans-serif;
+
+    &--title {
+      color: $Grey;
+    }
+
+    &--charac {
+      color: $blackWite;
+    }
+  }
+}

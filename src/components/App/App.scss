@@ -1,0 +1,432 @@
+@import "../../style/fonts/fonts.scss";
+@import "../../style/mixin/mixin.scss";
+@import "../../style/variables/variables.scss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  &__list {
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  &__mobiel {
+    display: flex;
+    width: 100%;
+    overflow: initial !important;
+  }
+
+  &__count {
+    color: $Grey;
+    font-size: 14px;
+    font-family: "Mont-500", sans-serif;
+    line-height: 21px;
+
+    &--margin {
+      display: block;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-family: "Mont-700", sans-serif;
+    letter-spacing: -0.32px;
+  }
+
+  &__filter {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include inIpad {
+    padding: 0 40px;
+  }
+
+  @include inDesktop {
+    padding: 0 55px;
+  }
+}
+
+.header {
+  max-height: 40px;
+  box-sizing: border-box;
+  position: sticky;
+  z-index: 12;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 0 #e2e6e9;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  @include inDesktop {
+    max-height: 64px;
+  }
+  
+  &__buy {
+    display: flex;
+    box-shadow: -1px 0 0 #e2e6e9;
+  }
+
+  &__content {
+    padding: 14px 0 14px 24px;
+    display: flex;
+    align-items: center;
+
+    @include inIpad {
+      gap: 64px;
+    }
+
+    @include inDesktop {
+      height: 64px;
+      padding: 0 26px ;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    position: relative;
+    box-shadow: -1px 0 0 #e2e6e9;
+
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @include inDesktop {
+      width: 64px;
+    }
+
+    &--like {
+      background-image: url(../../icon/like.png);
+    }
+
+    &--cart {
+      background-image: url(../../icon/bag.png);
+    }
+
+    &--menu {
+      position: relative;
+      outline: none;
+      border: none;
+      background-color: #fff;
+
+      @include inDesktop {
+        display: none;
+      }
+  
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        display: block;
+        background-color: $blackWite;
+        height: 2px;
+        width: 15px;
+        transition: transform ease 0.3s;
+      }
+
+      &::after {
+        left: 9px;
+        transform: rotate(315deg);
+      }
+  
+      &::before {
+        right: 7px;
+        transform: rotate(-135deg);
+      }
+  
+      &.active::before {
+        transform: rotate(-45deg);
+        right: 7px;
+      }
+  
+      &.active::after {
+        transform: rotate(225deg);
+        left: 9px;
+        
+      }
+
+      @include inDesktop {
+        &::after {
+          left: 20px;
+          transform: rotate(315deg);
+        }
+    
+        &::before {
+          right: 20px;
+          transform: rotate(-135deg);
+        }
+    
+        &.active::before {
+          transform: rotate(-45deg);
+          right: 20px;
+        }
+    
+        &.active::after {
+          transform: rotate(225deg);
+          left: 20px;
+          
+        }
+      }
+  
+      
+    }
+  }
+
+  &__search {
+    width: 210px;
+    display: flex;
+    padding: 12px;
+    justify-content: space-between;
+
+    @include inDesktop {
+      padding: 24px;
+    }
+
+    @include inSearch {
+      width: 320px;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.logo {
+  display: block;
+  background-image: url(../../icon/logo.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 40px;
+}
+
+.count {
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background-color: #eb5757;
+  border-radius: 50%;
+  font-family: "Mont-600", sans-serif;
+  line-height: 12px;
+  text-align: center;
+  font-size: 9px;
+  color: #fff;
+  top: 6px;
+  right: 7px;
+  border: 1px solid #fff;
+
+  @include inDesktop {
+    top: 16px;
+    right: 17px;
+  }
+}
+
+.navigation {
+  height: 100%;
+  display: flex;
+
+  &--mobiel {
+    z-index: 1;
+    background-color: #e2e6e9;
+    position: absolute;
+    height: 60vh;
+    width: 300px;
+    transform: translate(0, -110%);
+    transition: transform ease 0.4s;
+
+    &.active {
+      transform: translate(0, -25px);
+    }
+
+    &__list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    &__item {
+      list-style: none;
+    }
+
+    &__link {
+      font-family: "Mont-700", sans-serif;
+      text-decoration: none;
+      color: #89939a;
+      text-transform: uppercase;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        color: #313237;
+      }
+    }
+  }
+
+  &__list {
+    height: 100%;
+    margin: 0;
+    display: none;
+
+    &.active {
+      border-bottom: solid 2px $blackWite;
+    }
+
+    @include inDesktop {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-family: "Mont-700", sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 100%;
+    color: $Grey;
+    padding: 7px;
+
+    &.active {
+      color: $blackWite;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: calc(100% - 14px);
+        height: 3px;
+        background-color: $blackWite;
+        bottom: -20px;
+        left: 7px;
+      }
+    }
+
+    &:hover {
+      transition: 0.3s;
+      color: #313237;
+    }
+  }
+}
+
+.field {
+  &__search {
+    &--input {
+      outline: none;
+      border: none;
+
+      &::placeholder {
+        font-family: "Mont-600", sans-serif;
+      }
+    }
+
+    &--btn {
+      display: block;
+      padding: 0;
+      height: 16px;
+      width: 16px;
+      border: none;
+      background-image: url(../../icon/Search.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #fff;
+      cursor: pointer;
+
+      &.close {
+        background-image: url(../../icon/Close.png);
+      }
+    }
+  }
+}
+
+.footer {
+  height: 96px;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &__nav {
+    display: none;
+
+    @include inDesktop {
+      display: block;
+    }
+  }
+
+  &__content {
+    padding: 32px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+   
+    gap: 64px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $Grey;
+    font-size: 12px;
+    font-family: "Mont-700", sans-serif;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    &:hover {
+      transition: 0.3s;
+      color: #313237;
+    }
+  }
+
+  &__back {
+    font-family: "Mont-600", sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+
+    &-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+}

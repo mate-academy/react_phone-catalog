@@ -1,0 +1,147 @@
+@import "../../style/fonts/fonts.scss";
+@import "../../style/variables/variables.scss";
+@import "../../style/mixin/mixin.scss";
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 24px 0 40px;
+  height: 16px;
+
+  &__home {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../icon/Home.png);
+    background-size: cover;
+    display: block;
+  }
+
+  &__arrow {
+    background-image: url(../../icon/ChevronArrowRight.png);
+    height: 16px;
+    width: 16px;
+    background-size: cover;
+    display: block;
+    background-repeat: no-repeat;
+
+    &--back {
+      background-image: url(../../icon/ChevronArrowLeft.png);
+    }
+  }
+
+  &__location {
+    color: $Grey;
+    font-family: "Mont-600", sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+  }
+}
+
+.page {
+  &__list {
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  &__mobiel {
+    display: flex;
+    width: 100%;
+    overflow: initial !important;
+  }
+
+  &__count {
+    color: $Grey;
+    font-size: 14px;
+    font-family: "Mont-500", sans-serif;
+    line-height: 21px;
+
+    &--margin {
+      display: block;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-family: "Mont-700", sans-serif;
+    letter-spacing: -0.32px;
+  }
+
+  &__filter {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #89939a;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-family: "Mont-500", sans-serif;
+    line-height: 21px;
+    cursor: pointer;
+
+    &-prev {
+      background-image: url(../../icon/ChevronBlackRight.png);
+      border-color: #b4bdc3;
+      transform: rotate(180deg);
+    }
+
+    &-next {
+      background-image: url(../../icon/ChevronBlackRight.png);
+      border-color: #b4bdc3;
+    }
+
+    &:hover {
+      border-color: $blackWite;
+    }
+
+    &.active {
+      border: none;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+.filter {
+  &__title {
+    font-size: 12px;
+    font-family: "Mont-600", sans-serif;
+    color: $Grey;
+  }
+}
+
+.main {
+  &__not-found {
+    height: calc(100vh - 185px);
+  }
+}

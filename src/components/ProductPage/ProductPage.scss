@@ -1,0 +1,465 @@
+@import "../../style/fonts/fonts.scss";
+@import "../../style/mixin/mixin.scss";
+@import "../../style/variables/variables.scss";
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 24px 0 40px;
+
+  &__go-back {
+    color: $Grey;
+    font-family: "Mont-600", sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__home {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../icon/Home.png);
+    background-size: cover;
+    display: block;
+  }
+
+  &__arrow {
+    background-image: url(../../icon/ChevronArrowRight.png);
+    height: 16px;
+    width: 16px;
+    background-size: cover;
+    display: block;
+    background-repeat: no-repeat;
+
+    &--back {
+      background-image: url(../../icon/ChevronArrowLeft.png);
+    }
+  }
+
+  &__location {
+    color: $Grey;
+    font-family: "Mont-600", sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.main {
+  min-height: calc(100vh - 185px);
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__section {
+    &--title {
+      font-size: 32px;
+      font-family: "Mont-700", sans-serif;
+      letter-spacing: -0.32px;
+    }
+  }
+}
+
+.btn {
+  &__block {
+    display: flex;
+    gap: 16px;
+  }
+
+  &:hover {
+    filter: brightness(0);
+    border-color: #313237;
+  }
+
+  &--next {
+    background-image: url(../../icon/ChevronBlackRight.png);
+  }
+
+  &--prev {
+    background-image: url(../../icon/ChevronBlackRight.png);
+    transform: rotate(180deg);
+  }
+}
+
+.card {
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow: hidden;
+    width: 272px;
+
+    @media (min-width: 600px) {
+      width: 576px;
+    }
+
+    @media (min-width: 927px) {
+      width: 848px;
+    }
+
+    @media (min-width: 1245px) {
+      width: 1170px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 16px;
+    padding: 0;
+    transition: all 0.3s;
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+}
+
+.product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 80px;
+  column-gap: 64px;
+
+  &__img {
+    height: 64px;
+  }
+
+  &__title-name {
+    font-size: 12px;
+    font-family: "Mont-600", sans-serif;
+    color: $Grey;
+  }
+
+  &__all-imgs {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include inIpad {
+      flex-direction: column;
+    }
+  }
+
+  &__active-img {
+    max-width: 464px;
+    height: 464px;
+    padding: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > img {
+      width: 100%;
+
+      @include inIpad {
+        height: 100%;
+      }
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &--border {
+      border: none !important;
+      display: none !important;
+
+      @media (min-width: 650px) {
+        display: block !important;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 80px;
+    }
+
+    &-imgs {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include inIpad {
+        flex-direction: row;
+      }
+    }
+
+    &-img {
+      box-sizing: border-box;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      border: 1px solid #e2e6e9;
+      background-color: #fff;
+  
+      &.active {
+        border-color: $blackWite;
+      }
+    }
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    &--rosegold {
+      background-color: #fcc1ef;
+    }
+
+    &--black {
+      background-color: #1c1e1d;
+    }
+
+    &--silver {
+      background-color: #e1e1d9;
+    }
+    
+    &--gold {
+      background-color: #fcdbc1;
+    }
+
+    &--green {
+      background-color: #a0d4be;
+    }
+
+    &--spacegray {
+      background-color: #3e3d3b;
+    }
+
+    &--yellow {
+      background-color: #fee581;
+    }
+
+    &--midnightgreen {
+      background-color: #35403a;
+    }
+
+    &--purple {
+      background-color: #cdc4d7;
+    }
+
+    &--white {
+      background-color: #fcf7f1;
+    }
+
+    &--red {
+      background-color: #b80a2d;
+    }
+
+    &--coral {
+      background-color: #fa5d4a;
+    }
+  }
+
+  &__info {
+    &-block {
+      padding-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-bottom: 1px solid #e2e6e9;
+
+      &:last-child {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  &__price {
+    color: $blackWite;
+    font-size: 32px;
+    font-family: "Mont-700", sans-serif;
+    letter-spacing: -0.32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--discount {
+      color: #89939a;
+      font-size: 22px;
+      font-family: "Mont-500", sans-serif;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__btn {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--buy {
+      width: calc(100% - 40px);
+      background-color: $blackWite;
+      color: $Wite;
+      font-size: 14px;
+      font-family: "Mont-600", sans-serif;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+
+      &.select {
+        color: #27ae60;
+        background-color: transparent;
+        border: 1px solid #e2e6e9;
+      }
+    }
+
+    &--like {
+      border: 1px solid #b4bdc3;
+      width: 40px;
+      background-image: url(../../icon/like.png);
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      &:hover {
+        border-color: #313237;
+      }
+
+      &.liked {
+        background-image: url(../../icon/likeRed.png);
+      }
+    }
+  }
+
+  &__buy {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+  }
+
+  &__charac {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    &-item {
+      font-family: "Mont-600", sans-serif;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__spec {
+    color: $Grey;
+  }
+}
+
+.tech-specs {
+  width: 510px;
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Mont-500", sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__spec {
+    color: $Grey;
+
+  }
+
+  &__value {
+    max-width: 50%;
+    color: $blackWite;
+  }
+}
+
+.about {
+  width: 560px;
+
+  &__head {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__main-title {
+    color: $blackWite;
+    font-family: "Mont-700", sans-serif;
+    font-size: 22px;
+    line-height: 140%;
+    margin: 0;
+  }
+
+  &__title-description {
+    color: $blackWite;
+    font-size: 20px;
+    font-family: "Mont-600", sans-serif;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__text {
+    color: $Grey;
+    font-size: 14px;
+    font-family: "Mont-500", sans-serif;
+    line-height: 21px;
+  }
+}
+
+.info {
+  width: 320px;
+}

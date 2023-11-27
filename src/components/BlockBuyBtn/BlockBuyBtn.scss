@@ -1,0 +1,48 @@
+@import "../../style/variables/variables.scss";
+
+.cart {
+  &__btn {
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+
+    &--buy {
+      width: calc(100% - 40px);
+      background-color: $blackWite;
+      color: $Wite;
+      font-size: 14px;
+      font-family: "Mont-600", sans-serif;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+
+      &.select {
+        color: #27ae60;
+        background-color: transparent;
+        border: 1px solid #e2e6e9;
+      }
+    }
+
+    &--like {
+      border: 1px solid #b4bdc3;
+      width: 40px;
+      background-image: url(../../icon/like.png);
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      &:hover {
+        border-color: #313237;
+      }
+
+      &.liked {
+        background-image: url(../../icon/likeRed.png);
+      }
+    }
+  }
+}

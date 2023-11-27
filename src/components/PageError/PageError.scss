@@ -1,0 +1,30 @@
+@import "../../style/fonts/fonts.scss";
+@import "../../style/variables/variables.scss";
+
+.main {
+  &__section {
+    &--title {
+      font-size: 32px;
+      font-family: "Mont-700", sans-serif;
+      letter-spacing: -0.32px;
+    }
+  }
+}
+
+.error {
+  height: calc(100vh - 185px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__btn {
+    padding: 5px 20px;
+    font-family: "Mont-600", sans-serif;
+    font-size: 16px;
+    background-color: $blackWite;
+    outline: none;
+    color: $Wite;
+    border: 2px solid $blackWite;
+  }
+}
