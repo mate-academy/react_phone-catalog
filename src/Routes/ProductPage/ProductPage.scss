@@ -1,0 +1,35 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.products-page {
+  margin-bottom: 80px;
+
+  &__title {
+    @include h1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include body-text;
+    color: $color-gray;
+    margin-bottom: 40px;
+  }
+
+  &__selectors {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__loader-wrapper {
+    @include flex-center;
+  }
+
+  &__products-list {
+    margin-bottom: 40px;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}

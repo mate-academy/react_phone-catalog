@@ -1,0 +1,33 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.about {
+  flex-basis: 50%;
+
+  &__title {
+    @include h2;
+    margin-bottom: 48px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-title {
+      margin-bottom: 16px;
+      @include h3;
+    }
+
+    &-text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-text {
+      @include body-text;
+      color: $color-gray;
+    }
+  }
+}

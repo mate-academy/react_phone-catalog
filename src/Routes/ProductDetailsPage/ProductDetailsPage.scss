@@ -1,0 +1,34 @@
+@import "@css-utils/mixins.scss";
+
+.product-details {
+  &__name {
+    @include h1;
+    margin-bottom: 40px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__id {
+    @include small-text;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__specs {
+    width: 512px;
+  }
+
+  &__slider {
+    margin-bottom: 80px;
+  }
+
+  &__loader {
+    margin: 0 auto;
+  }
+}

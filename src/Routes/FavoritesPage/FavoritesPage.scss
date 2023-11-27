@@ -1,0 +1,15 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.favorites {
+  &__title {
+    @include h1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include body-text;
+    color: $color-gray;
+    margin-bottom: 40px;
+  }
+}

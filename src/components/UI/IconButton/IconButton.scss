@@ -1,0 +1,32 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/_mixins.scss";
+
+.button {
+  @include flex-center;
+  flex-shrink: 0;
+  width: 32px;
+  background-color: #fff;
+  border: 1px solid $color-light-gray;
+  transition: border 0.5s;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    border-color: $color-dark;
+  }
+
+  &__icon {
+    filter: invert(17%) sepia(1%) saturate(7136%) hue-rotate(193deg)
+      brightness(88%) contrast(86%);
+  }
+
+  &:disabled {
+    cursor: default;
+    border: 1px solid $color-platinum;
+
+    & .button__icon {
+      filter: invert(91%) sepia(10%) saturate(212%) hue-rotate(164deg)
+        brightness(83%) contrast(86%);
+    }
+  }
+}

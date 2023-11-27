@@ -1,0 +1,18 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.search-results {
+  padding-top: 24px;
+
+  &__count {
+    @include body-text;
+    color: $color-gray;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include h1;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,1 @@
+export { ProductCardSlider } from './ProductCardSlider';

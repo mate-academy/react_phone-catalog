@@ -1,0 +1,22 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/_mixins.scss";
+
+.fav-button {
+  @include flex-center;
+  cursor: pointer;
+  border: 1px solid $color-light-gray;
+  background-color: #fff;
+
+  &:hover {
+    border-color: $color-dark;
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+
+    &--liked {
+      filter: none;
+    }
+  }
+}

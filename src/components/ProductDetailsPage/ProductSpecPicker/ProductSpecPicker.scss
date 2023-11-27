@@ -1,0 +1,19 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.spec-picker {
+  border-bottom: 1px solid $color-platinum;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+
+  &__title {
+    @include small-text;
+    color: $color-gray;
+    margin-bottom: 8px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+}

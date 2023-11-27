@@ -1,0 +1,28 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.cart-summary {
+  padding: 24px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  border: 1px solid $color-platinum;
+
+  &__title {
+    @include h1;
+  }
+
+  &__total {
+    @include body-text;
+    color: $color-gray;
+    border-bottom: 1px solid $color-platinum;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__error {
+    padding-top: 20px;
+    @include body-text;
+    color: $color-red;
+  }
+}

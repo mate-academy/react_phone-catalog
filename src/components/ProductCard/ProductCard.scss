@@ -1,0 +1,59 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.product-card {
+  width: 272px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: border 0.1s ease-in-out;
+  border: 1px solid $color-platinum;
+
+  &:hover {
+    border-color: $color-dark;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-dark;
+  }
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+    align-self: center;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    height: 42px;
+    @include body-text;
+    margin-bottom: 7px;
+  }
+
+  &__price {
+    @include h2;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-platinum;
+    margin-bottom: 16px;
+
+    &--strike {
+      margin-left: 8px;
+      text-decoration: line-through;
+      font-weight: 500;
+      line-height: 28px;
+      color: $color-gray;
+    }
+  }
+
+  &__spec {
+    margin-bottom: 16px;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+  }
+}

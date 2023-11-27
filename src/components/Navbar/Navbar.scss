@@ -1,0 +1,125 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/_mixins.scss";
+
+.nav {
+  height: 64px;
+  padding-left: 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #c4c7c9;
+
+  &__list {
+    display: flex;
+    gap: 64px;
+    margin-left: 64px;
+
+    @include for-tablets {
+      flex-direction: column;
+      gap: 0;
+      position: fixed;
+      height: 100vh;
+      width: 200px;
+      z-index: 5;
+      background-color: $color-platinum;
+      top: 64px;
+      right: -100%;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+      transition: right 0.3s ease-in-out;
+
+      &--active {
+        right: 0;
+      }
+    }
+
+    &-icons {
+      display: flex;
+      margin-left: auto;
+    }
+  }
+
+  &__item {
+    @include flex-center;
+
+    &--align-left {
+      margin-left: auto;
+    }
+  }
+
+  &__link {
+    transition: color 0.5s;
+    line-height: 64px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 12px;
+    width: 100%;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-gray;
+
+    &:hover {
+      color: $color-dark;
+    }
+
+    &--icon {
+      position: relative;
+      border-left: 1px solid #c4c7c9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+
+      &:hover {
+        border-left: 1px solid $color-dark;
+        border-bottom: 1px solid $color-dark;
+      }
+    }
+
+    &--active {
+      color: $color-dark;
+      box-shadow: inset 0 -3px 0 $color-dark;
+    }
+  }
+
+  &__count {
+    @include flex-center;
+    padding-top: 1px;
+    height: 15px;
+    width: 15px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    color: #fff;
+    background-color: $color-red;
+    position: absolute;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+    top: 27%;
+    left: 51%;
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+  }
+
+  &__menu-button {
+    background-color: #fff;
+    border: none;
+    width: 64px;
+    height: 63px;
+    border-left: 1px solid #c4c7c9;
+    cursor: pointer;
+    display: none;
+
+    &:hover {
+      border-left: 1px solid $color-dark;
+      border-bottom: 1px solid $color-dark;
+    }
+
+    @include for-tablets {
+      display: block;
+    }
+  }
+}

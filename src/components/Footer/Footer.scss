@@ -1,0 +1,71 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/_mixins.scss";
+
+.footer {
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -1px 0 #e2e6e9;
+  padding: 0 152px;
+
+  @include for-tablets {
+    padding: 0 20px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+
+    @include for-tablets--smaller {
+      gap: 32px;
+    }
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $color-gray;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.5s;
+
+    &:hover {
+      color: $color-dark;
+    }
+  }
+
+  &__icon {
+    filter: invert(21%) sepia(0%) saturate(15%) hue-rotate(218deg)
+      brightness(95%) contrast(101%);
+    border: 1px solid $color-light-gray;
+    padding: 11px;
+  }
+
+  &__button {
+    font-family: Mont,
+      system-ui,
+      -apple-system,
+      sans-serif;
+    background-color: #fff;
+    transition: color 0.5s;
+    line-height: 15px;
+    font-weight: 600;
+    color: $color-gray;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:hover {
+      color: $color-dark;
+
+      .footer__icon {
+        border-color: $color-dark;
+      }
+    }
+  }
+}

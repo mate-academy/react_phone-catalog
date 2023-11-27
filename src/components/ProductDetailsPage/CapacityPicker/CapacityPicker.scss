@@ -1,0 +1,22 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.capacity {
+  display: inline-block;
+  text-decoration: none;
+  @include body-text;
+  padding: 7px 8px 4px;
+  color: $color-dark;
+  border: 1px solid $color-light-gray;
+
+  &:hover {
+    border-color: $color-dark;
+  }
+
+  &--active {
+    background-color: $color-dark;
+    color: #fff;
+    border: none;
+    pointer-events: none;
+  }
+}

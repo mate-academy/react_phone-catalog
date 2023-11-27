@@ -1,0 +1,20 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.app {
+  font-family: "Mont", system-ui, -apple-system, sans-serif;
+  color: $color-dark;
+
+  &__main {
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @include for-tablets {
+      padding: 0 35px;
+    }
+
+    @include for-tablets--smaller {
+      padding: 0 5px;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import "@css-utils/_variables.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    border: 1px solid $color-platinum;
+    transition: border 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-dark;
+    }
+
+    &--active {
+      border: none;
+      background-color: $color-dark;
+      color: #fff;
+    }
+  }
+
+  &__pages-container {
+    width: 112px;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    gap: 8px;
+  }
+}

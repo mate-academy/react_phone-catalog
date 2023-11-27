@@ -1,0 +1,48 @@
+@import "@css-utils/_variables.scss";
+@import "@css-utils/mixins.scss";
+
+.search-bar {
+  border-left: 1px solid #c4c7c9;
+  height: 63px;
+  width: 327px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include for-tablets {
+    width: 100%;
+  }
+
+  &:focus-within {
+    background-color: $color-seasalt;
+  }
+
+  &__field {
+    font-family: Mont, system-ui, -apple-system, sans-serif;
+    @include body-text;
+    font-weight: 600;
+    color: $color-dark;
+    padding-left: 24px;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+
+    &:focus {
+      background-color: $color-seasalt;
+    }
+
+    &::placeholder {
+      color: $color-light-gray;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: $color-seasalt;
+    cursor: pointer;
+  }
+
+  &__icon {
+    padding: 0 20px;
+  }
+}

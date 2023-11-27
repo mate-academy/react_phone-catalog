@@ -1,0 +1,20 @@
+@import "@css-utils/_variables.scss";
+
+.specification-table {
+  width: 100%;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__details {
+    color: $color-gray;
+  }
+}
