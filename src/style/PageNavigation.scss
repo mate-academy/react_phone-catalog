@@ -1,0 +1,51 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.page-navigation {
+  grid-column: span 6;
+
+  @include onTablet {
+    grid-column: span 12;
+  }
+
+  @include onDesktopSm {
+    grid-column: span 24;
+  }
+
+  &_address {
+    width: max-content;
+    height: 16px;
+    margin-top: 25px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &_link {
+    display: flex;
+  }
+
+  &_box {
+    margin-top: 40px;
+  }
+}
+
+.return-back {
+  padding: 0;
+  background-color: #fff;
+  border: none;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 40px;
+  color: $secondary-color;
+
+  &_text {
+    transition: 0.5s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+}

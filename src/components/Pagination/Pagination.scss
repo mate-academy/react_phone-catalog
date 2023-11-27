@@ -1,0 +1,51 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  &_list {
+    display: flex;
+  }
+
+}
+
+.page-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: #000;
+
+  &:first-child {
+    margin-right: 16px;
+  }
+
+  &:last-child {
+    margin-left: 8px;
+  }
+
+  &--active {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  &--hide {
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+}
+
+.page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  padding: 6px 9px;
+}

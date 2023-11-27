@@ -1,0 +1,67 @@
+@import "../../utils/variables.scss";
+
+.dd-container {
+  height: 40px;
+}
+
+.dd-select {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $icons-color;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 12px;
+}
+
+.dd-select img {
+  transition: transform 0.5s ease;
+}
+
+.dd-label {
+  display: block;
+  color: $secondary-color;
+  margin-bottom: 4px;
+}
+
+.dd-arrow {
+  transform: rotate(180deg);
+}
+
+.dd-content {
+  background-color: #fff;
+  padding-block: 8px;
+  border: 1px solid $icons-color;
+  width: 100%;
+  margin-top: 4px;
+  position: absolute;
+  transition: 0.5s ease;
+  transform: scaleY(0);
+
+  opacity: 0;
+  visibility: hidden;
+
+  &_active {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+  }
+}
+
+.dd-item {
+  height: 32px;
+  width: 100%;
+  padding-left: 12px;
+  border: none;
+  background-color: #fff;
+  color: $secondary-color;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.dd-item:hover,
+.dd-item-select {
+  background-color: $hover-bg-color;
+  color: $primary-color;
+}
