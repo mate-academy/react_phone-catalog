@@ -1,0 +1,10 @@
+@import "../utils/mixins";
+
+@import "./nav-list.scss";
+@import "./nav-item.scss";
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

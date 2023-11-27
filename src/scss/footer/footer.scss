@@ -1,0 +1,22 @@
+@import "../utils/_variables";
+@import "../utils/mixins";
+@import "../MQ/breakpoints.scss";
+@import "./footer-container.scss";
+@import "./footer-actions.scss";
+
+.footer {
+  position: relative;
+  height: $footer-height;
+  border-top: 1px solid $border-color-gray;
+  padding: 0 20px;
+
+  @include sm {
+    flex-direction: column;
+    height: 90vh;
+    background-color: $border-color-gray;
+
+    &__nav {
+      position: relative;
+    }
+  }
+}

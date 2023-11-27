@@ -1,0 +1,28 @@
+@import "../../utils/variables";
+@import "../../MQ/breakpoints.scss";
+
+.page-container {
+  margin: 104px auto 0 ;
+  max-width: $desktop-width;
+  min-width: 360px;
+  overflow: hidden;
+
+  padding: 0 30px;
+  flex-grow: 1;
+
+  @include md {
+    max-width: 912px;
+  }
+}
+
+.is-active {
+  color: #fff;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}

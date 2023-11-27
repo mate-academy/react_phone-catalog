@@ -1,0 +1,13 @@
+@import "./utils/mixins";
+
+.top-actions {
+  display: flex;
+
+  @include onPhone {
+    z-index: 101;
+  }
+
+  & a {
+    padding: 24px;
+  }
+}

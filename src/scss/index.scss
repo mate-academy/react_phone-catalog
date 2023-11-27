@@ -1,0 +1,33 @@
+@import "./header/header.scss";
+@import "./nav/nav.scss";
+@import "./logo.scss";
+@import "./icon.scss";
+@import "./baner/baner.scss";
+@import "./product-card/product-card.scss";
+@import "./arrow-button.scss";
+@import "./slider..scss";
+@import "./categories/categories.scss";
+@import "./footer/footer.scss";
+@import "./pagination/pagination.scss";
+@import "./bread-crumbs.scss";
+@import "./search.scss";
+@import "./pages/cart-page/cart-page.scss";
+@import "./pages/favourites-page/favourites-page.scss";
+@import "./pages/home-page/home-page.scss";
+@import "./pages/product-details-page/product-details.scss";
+@import "./pages/products-page/products-page.scss";
+@import "./block-title.scss";
+@import "./dropdowns.scss";
+@import "./product-actions/product-actions.scss";
+@import "./top-actions.scss";
+@import "./utils/reset.scss";
+@import "./error.scss";
+@import "./characteristic-item.scss";
+@import "./fonts.scss";
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

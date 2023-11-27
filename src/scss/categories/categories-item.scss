@@ -1,0 +1,31 @@
+@import "../utils/_variables";
+@import "../utils/mixins";
+
+.categories {
+  &__item {
+    text-decoration: none;
+
+    & img {
+      width: 100%;
+      flex-shrink: 1;
+      // @include onTab {
+      //   width: 220px;
+      //   height: 220px;
+      // }
+
+      @include onPhone {
+        width: 100%;
+      }
+    }
+        
+    &--title {
+      @include text(20px, 500, $primary-dark-color);
+      text-decoration: none;
+    }
+
+    &--total-amount {
+      @include text(14px, 500, $primary-gray-color);
+      text-decoration: none;
+    }
+  }
+}

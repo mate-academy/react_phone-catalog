@@ -1,0 +1,14 @@
+@import "../utils/_variables";
+@import "../utils/mixins";
+
+.card {
+  &__title {
+    margin-bottom: 8px;
+    @include text(14px, 500, $primary-dark-color);
+    width: 100%;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

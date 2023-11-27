@@ -1,0 +1,18 @@
+@mixin text($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  font-family: "Mont", sans-serif;
+
+}
+
+@mixin onTab {
+  @media (min-width: 568px) and (max-width: 1023px) {
+    @content;
+  }
+}
+@mixin onPhone {
+  @media (min-width: 320px) and (max-width: 568px) {
+    @content;
+  }
+}

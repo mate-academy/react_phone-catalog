@@ -1,0 +1,56 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.carousel {
+  &-item img {
+    width: 100%;
+    
+    height: 400px;
+
+    @include onTab {
+      height: 350px;
+    }
+
+    @include onPhone {
+      height: 200px;
+    }
+  }
+
+  &-indicators {
+    bottom: -45px;
+    z-index: 0;
+  }
+
+  &-indicators [data-bs-target] {
+    background-color: $primary-dark-color;
+    height: 5px;
+    width: 18px;
+  }
+
+  &-control {
+    &-next {
+      @extend .border-gray;
+      width: 32px;
+      z-index: 0;
+
+      & ::after {
+        content: "_";
+        color: transparent;
+        background-image: url("../assests/Arrow-right.svg");
+        background-repeat: no-repeat;
+      }
+
+    }
+
+    &-prev {
+      border: 1px solid $border-color-gray;
+      width: 32px;
+      z-index: 0;
+      & ::after {
+        content: "_";
+        background-image: url("../assests/Arrow-left.svg");
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}

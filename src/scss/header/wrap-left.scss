@@ -1,0 +1,28 @@
+@import "../utils/_variables";
+@import "../utils/extends";
+@import "../MQ/breakpoints.scss";
+
+.header {
+  &__wrap-left {
+    display: flex;
+    gap: 65px;
+    transition: left 0.5s  ease;
+    padding-right: 64px;
+
+    &--mobile {
+      @extend .flex-between-center;
+      gap: 15px;
+      padding: 0 10px 0 15px;
+    }
+
+    &--show-menu {
+      display: none;
+      @include sm {
+        position: relative;
+        left: -50px;
+        display: block;
+        z-index: 1;
+      }
+    }
+  }
+}

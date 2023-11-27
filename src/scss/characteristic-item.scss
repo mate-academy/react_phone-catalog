@@ -1,0 +1,20 @@
+@import "./utils/variables";
+@import "./utils/mixins";
+@import "./utils/extends";
+
+.characteristics {
+  &__item {
+    @extend .flex-between-center;
+    margin-bottom: 8px;
+  
+    &--name {
+      @include text(12px, 500, $primary-gray-color);
+    }
+  
+    &--characteristic {
+      position: relative;
+      @include text(12px, 500, $primary-dark-color);
+      bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+@import "./MQ/breakpoints.scss";
+
+.icon {
+  position: relative;
+  @extend .flex-center;
+  border-left: 1px solid $border-color-gray;
+  padding: 0 25px;
+  height: 100%;
+
+  @include sm {
+    padding: 0 15px;
+  }
+
+  & img {
+    width: 15px;
+  }
+   
+  &-info__info {
+    position: absolute;
+    @extend .flex-center;
+    left: 53%;
+    bottom: 53%;
+    font-size: 70%;
+    color: #e2e6e9;
+    width: 13px;
+    height: 13px;
+    background: #eb5757;
+    border: 1px solid #fff;
+    border-radius: 50%;
+  }
+}

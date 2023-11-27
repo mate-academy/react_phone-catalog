@@ -1,0 +1,53 @@
+@import "./utils/mixins";
+@import "./MQ/breakpoints.scss";
+@import "./utils/variables";
+
+.slider {
+  overflow: hidden;
+  margin-bottom: 80px;
+  width: 100%;
+
+  &__description {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  &__title {
+    @include text (32px, 700, $primary-dark-color);
+    margin: 0;
+  }
+
+  &__navigation {
+    display: flex;
+    height: 32px;
+    gap: 16px;
+  }
+
+  &__content {
+    margin: 0 auto;
+    overflow: hidden;
+    @include lg {
+      width: 928px;
+    }
+
+    @include md {
+      width: 692px;
+    }
+
+    @include sm {
+      width: 456px;
+    }
+
+    @media (min-width: 272px) and (max-width: 510px) {
+      width: 220px;
+    }
+  }
+
+  &__list {
+    transition: margin 1s ease;
+    display: flex;
+    gap: 16px;
+  }
+}

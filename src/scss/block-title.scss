@@ -1,0 +1,16 @@
+@import "./utils/mixins";
+@import "./utils/variables";
+
+.title {
+  margin-bottom: 40px;
+  grid-area: title;
+    
+  &__title {
+    margin: 0;
+    @include text(32px, 700, $primary-dark-color);
+  }
+
+  &__subtitle {
+    @include text(14px, 500, $primary-gray-color);
+  }
+}

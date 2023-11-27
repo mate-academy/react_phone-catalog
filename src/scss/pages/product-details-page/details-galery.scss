@@ -1,0 +1,53 @@
+@import "../../utils/extends";
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.details {
+  &__galery {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    width: 70%;
+    
+
+        
+    &--small {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &--item {
+        width: 80px;
+        height: 80px;
+        @extend .flex-center;
+        @extend .border-gray;
+
+        @include onPhone {
+          width: 60px;
+          height: 60px;
+        }
+
+        & img {
+          height: 80%;
+        }
+      }
+    }
+
+    &--large {
+      @extend .flex-center;
+      width: 442px;
+      height: 442px;
+      margin-left: 80px;
+
+      @include onPhone {
+        width: 220px;
+        height: 300px;
+        margin-left: 20px;
+      }
+    
+      & img {
+        height: 80%;
+      }
+    }
+  }
+}

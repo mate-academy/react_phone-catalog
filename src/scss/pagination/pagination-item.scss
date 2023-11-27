@@ -1,0 +1,13 @@
+@import "../utils/variables";
+@import "../utils/extends";
+
+.pagination {
+  &__item {
+    position: relative;
+    @extend .flex-center;
+    @extend .border-gray;
+    @include text(14px, 500, $primary-dark-color);
+    min-width: $icon-width;
+    min-height: $icon-width;
+  }
+}

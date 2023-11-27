@@ -1,0 +1,91 @@
+@import "../..//utils/variables";
+@import "../../utils/extends";
+@import "../../utils/mixins";
+@import "../../MQ/breakpoints.scss";
+
+.cart {
+  &__item {
+    @extend .flex-between-center;
+    gap: 40px;
+    margin-bottom: 16px;
+    padding: 48px 40px;
+    border: 1px solid $border-color-gray;
+
+    @include md {
+      width: 100%;
+    }
+
+    @include sm {
+      flex-direction: column;
+    }
+
+    &--remove img {
+      @include sm {
+        position: relative;
+        top: -40px;
+        right: -110px;
+        width: 32px;
+
+      }
+      
+    }
+
+    &--img {
+      max-width: 66px;
+      max-height: 66px;
+
+      @include sm {
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+
+    &--name {
+      @include text(14px, 500, $primary-dark-color );
+    }
+  
+    &--quantity {
+      width: 15px;
+      text-align: center;
+      @include text(14px, 500, $primary-dark-color);
+    }
+
+    &--panel {
+      @extend .flex-center;
+      gap: 10px;
+
+      &--name {
+        @extend .flex-center;
+      }
+    }
+
+    &--action {
+      @extend .flex-center;
+      width: 32px;
+      height: 32px;
+      @extend .border-gray;
+      border-radius: 0;
+    }
+
+    &--price {
+      @include text(32px, 700, $primary-dark-color );
+      text-align: center;
+      padding: 8px;
+      margin: 0;
+      margin-left: 43px;
+
+      @include onPhone {
+        margin: 0;
+      }
+    }
+
+    &-exit {
+      opacity: 1;
+    }
+
+    &-exit-active {
+      opacity: 0;
+      transition: all 500ms ease-out;
+    }
+  }
+}

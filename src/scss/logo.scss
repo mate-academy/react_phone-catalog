@@ -1,0 +1,7 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+
+.logo {
+  @extend .flex-center;
+  z-index: 1000;
+}

@@ -1,0 +1,9 @@
+@import "../utils/mixins";
+
+.pagination {
+  &__list {
+    display: flex;
+    gap: 8px;
+    position: relative;
+  }
+}

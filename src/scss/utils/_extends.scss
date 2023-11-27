@@ -1,0 +1,34 @@
+@import "./variables";
+
+.border-gray {
+  border: 1px solid $border-color-gray;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid $primary-dark-color;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    cursor: pointer;
+  }
+}
+
+.border-dark {
+  border-color: $primary-dark-color;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

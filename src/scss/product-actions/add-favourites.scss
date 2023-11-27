@@ -1,0 +1,16 @@
+@import "../utils/extends";
+@import "../utils/variables";
+
+.actions {
+  &--add-favorite {
+    @extend .flex-center;
+    @extend .border-gray;
+    width: 20%;
+    min-width: $icon-width;
+    height: 40px;
+
+    & img {
+      width: 15px;
+    }
+  }
+}

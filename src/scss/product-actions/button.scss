@@ -1,0 +1,23 @@
+@import "../utils/variables";
+@import "../utils/extends";
+@import "../utils/mixins";
+
+.actions {
+  &--button {
+    width: 85%;
+    height: 40px;
+    background-color: $primary-dark-color;
+    @extend .border-gray;
+    color: #fff;
+    @include text(14px, 500, #fff);
+         
+    &--disabled {
+      background-color: #fff;
+      color: #27ae60;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import "../utils/_variables";
+@import"../utils/extends";
+@import "../utils/mixins";
+@import "../MQ/breakpoints.scss";
+
+@import "./pagination-list.scss";
+@import "./pagination-item.scss";
+
+.pagination {
+  @extend .flex-center;
+  margin: 0 auto 80px;
+  gap: 8px;
+  max-width: 100%;
+
+  @include md {
+    width: 680px;
+  }
+}
+
+.right-button {
+  position: relative;
+}

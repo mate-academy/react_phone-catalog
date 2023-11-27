@@ -1,0 +1,23 @@
+@import "../utils/_variables";
+@import "../utils/extends";
+@import "../utils/mixins";
+
+.footer {
+  &__action {
+    @extend .flex-between-center;
+    gap: 16px;
+
+    @include onPhone {
+      position: relative;
+      bottom: -100px;
+      background-color: $border-color-gray;
+    }
+
+    &--description {
+      @include text(12px, 500, $primary-gray-color);
+      @include onPhone {
+        font-size: 14px;
+      }
+    }
+  }
+}

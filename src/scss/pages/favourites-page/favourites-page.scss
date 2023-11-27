@@ -1,0 +1,31 @@
+@import "../../MQ/breakpoints.scss";
+
+.favourites {
+  
+  &__container {
+    padding: 0;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    transition: width 0.5s ease-in;
+    padding: 0 0 20px;
+
+    @include xl {
+      justify-content: flex-start;
+    }
+  }
+
+  &__item {
+    &-exit {
+      opacity: 1;
+      &-active {
+        opacity: 0;
+        transition: all 500ms ease-out;
+      }
+    }
+  }
+}

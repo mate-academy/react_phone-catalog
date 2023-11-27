@@ -1,0 +1,24 @@
+@import "../utils/_variables";
+@import "../utils/mixins";
+
+.card {
+  &__price {
+    width: 100%;
+    margin-bottom: 8px;
+    border-bottom: 1px solid $border-color-gray;
+
+    &:hover {
+      opacity: 0.7;
+    }
+        
+    &--with-discont {
+      @include text(22px, 700, $primary-dark-color);
+    }
+
+    &--without-discont {
+      @include text(22px, 500, $primary-gray-color);
+      margin-left: 8px;
+      text-decoration-line: line-through;
+    }
+  }
+}

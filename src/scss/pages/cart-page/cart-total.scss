@@ -1,0 +1,71 @@
+@import "../../utils/extends";
+@import "../../utils/mixins";
+@import "../../utils/variables";
+
+.cart {
+  & h1 {
+    @include text(32px, 900, $primary-dark-color );
+  }
+    
+  &__total {
+    grid-area: action;
+    padding: 24px;
+    border: 1px solid #e2e6e9;
+    width: 368px;
+    box-sizing: border-box;
+    height: fit-content;
+    
+    @include onTab {
+      position: relative;
+      margin: 0 auto;
+    }
+    
+    @include onPhone {
+      width: 100%;
+    }
+    
+    &--amount {
+      border-bottom: 1px solid #e2e6e9;
+      margin-bottom: 24px;
+    }
+    
+    & h1 {
+      padding: 0;
+      text-align: center;
+    }
+    
+    & p {
+      @include text(14px, 500, $primary-gray-color );
+      padding: 0;
+      margin: 0;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    
+    & button {
+      width: 100%;
+      @extend .flex-center;
+      @include text(14px, 500, #fff);
+      padding: 14px;
+      background: $primary-dark-color;
+      color: #fff;
+    }
+
+    &--message {
+      position: absolute;
+      @extend .flex-center;
+      transition: right 0.8s ease;
+      width: 500px;
+      height: 100px;
+      border: 1px solid $border-color-gray;
+
+      @include onPhone {
+        width: 300px;
+      }
+
+      & span {
+        @include text (14px, 500, $primary-gray-color);
+      }
+    }
+  }
+}

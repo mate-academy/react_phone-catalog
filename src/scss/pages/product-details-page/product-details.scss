@@ -1,0 +1,31 @@
+@import "../../utils/extends";
+@import "../../utils/_mixins";
+
+@import "./details-galery.scss";
+@import "./details-characteristics.scss";
+@import "./details-about.scss";
+@import "../../MQ/breakpoints.scss";
+
+.details {
+  &__title {
+    @include text(22px, 700, $primary-dark-color);
+  }
+
+  &__blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 64px;
+
+    @include md {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+    }
+
+    @include sm {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 80px;
+    }
+  }
+}

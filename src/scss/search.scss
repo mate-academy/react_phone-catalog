@@ -1,0 +1,39 @@
+@import "./utils/_variables";
+@import "./utils/extends";
+@import "./utils/mixins";
+
+.search {
+  @extend .flex-between-center;
+  padding: 0 24px;
+  border-left: 1px solid $border-color-gray;
+
+  @include onPhone {
+    padding: 0 10px;
+  }
+
+  & img {
+    @extend .flex-between-center;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    width: 327px;
+
+    &::placeholder {
+      @include text (14px, 500, $primary-gray-color);
+    }
+
+    @include onTab {
+      width: 130px;
+    }
+
+    @include onPhone {
+      max-width: 100px;
+    }
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}

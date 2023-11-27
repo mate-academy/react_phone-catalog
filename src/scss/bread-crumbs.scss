@@ -1,0 +1,36 @@
+@import "./utils/_variables";
+@import"./utils/extends";
+@import "./utils/mixins";
+
+.bread-crumbs {
+  @extend .flex-column;
+  gap: 40px;
+  margin-bottom: 40px;
+
+  &--path {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  
+    & a {
+      color: $primary-dark-color;
+    }
+
+    & span {
+      @include text (12px, 500, $primary-gray-color);
+    }
+  }
+
+  &--text {
+    @include text(12px, 500, $primary-gray-color);
+  }
+
+  &--go-back {
+    display: flex;
+    gap: 8px;
+
+    & span {
+      @include text(12px, 500, $primary-gray-color);
+    }
+  }
+}
