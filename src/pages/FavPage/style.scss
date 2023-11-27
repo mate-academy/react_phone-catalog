@@ -1,0 +1,11 @@
+.fav-page {
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    color: var(--secondary-color);
+    margin-bottom: 72px;
+  }
+}

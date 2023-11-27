@@ -1,1 +1,31 @@
-// not empty
+@import "./styles/utils/vars.scss";
+@import "./styles/utils/fonts.scss";
+@import "./styles/utils/reset.scss";
+@import "./styles/blocks/icon.scss";
+@import "./styles/blocks/link.scss";
+@import "./styles/blocks/buttons.scss";
+@import "./styles/blocks/title.scss";
+
+.App {
+  display: grid;
+  grid-template-rows: 64px 1fr 96px;
+  height: 100vh;
+  color: var(--primary-color);
+  font-family: var(--font-regular);
+  font-size: 14px;
+  line-height: 21px;
+
+  &__main {
+    padding-bottom: 80px;
+  }
+
+  &__breadcrumb {
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+}

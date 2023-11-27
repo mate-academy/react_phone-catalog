@@ -1,0 +1,29 @@
+.pagination {
+  &__page-btn {
+    height: 32px;
+    width: 32px;
+
+    &-selected {
+      color: #fff;
+      background: var(--primary-color);
+    }
+  }
+
+  &__buttons {
+    gap: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__slide-btn {
+    height: 32px;
+    width: 32px;
+  }
+
+  &__slide-btn--disabled {
+    border-color: var(--border-primary-color);
+    pointer-events: none;
+    cursor: default;
+  }
+}

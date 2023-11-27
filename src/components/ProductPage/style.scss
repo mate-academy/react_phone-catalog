@@ -1,0 +1,20 @@
+.products {
+  &__title {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    color: var(--secondary-color);
+  }
+
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__filter {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}

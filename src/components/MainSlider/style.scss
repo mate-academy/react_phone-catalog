@@ -1,0 +1,82 @@
+.Carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    overflow: hidden;
+    margin: 0 16px;
+    border-radius: 5px;
+
+    &-item {
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__button {
+    position: relative;
+    width: 32px;
+    height: 400px;
+    border: 1px solid var(--border-secondary-color);
+    background-color: #ffff;
+    transition: background-color var(--tranistion-time) ease-in-out;
+
+    &:hover {
+      background-color: #e2e6e9;
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      width: 16px;
+      height: 16px;
+    }
+
+    &--left::after {
+      background-image: url(../../images/arrows/arrow-left.svg);
+    }
+
+    &--right::after {
+      background-image: url(../../images/arrows/arrow-right.svg);
+    }
+  }
+
+  &__pick-buttons {
+    position: absolute;
+    left: 50%;
+    bottom: -18px;
+    transform: translateX(-50%);
+  }
+
+  &__pick-button {
+    border: 0;
+    width: 14px;
+    height: 4px;
+    background-color: var(--border-primary-color);
+    transition: background-color var(--tranistion-time) ease-in-out ;
+
+    &:hover {
+      background-color: var(--border-secondary-color);
+    }
+
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
+
+    &--active {
+      background: var(--primary-color);
+
+      &:hover {
+        background-color: var(--primary-color);
+      }
+    }
+  }
+}

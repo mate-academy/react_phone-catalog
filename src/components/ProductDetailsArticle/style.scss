@@ -1,0 +1,14 @@
+.product-article {
+  &__title {
+    margin: 0;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    margin: 0;
+    color: var(--secondary-color);
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+}

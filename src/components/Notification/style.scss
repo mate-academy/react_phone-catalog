@@ -1,0 +1,16 @@
+.notification {
+  opacity: 1;
+  transition: opacity var(--tranistion-time) ease-in-out;
+  border: 2px solid var(--primary-color);
+  padding: 10px;
+  width: 300px;
+
+  font-family: var(--font-bold);
+  font-size: 18px;
+
+  &--hidden {
+    border-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

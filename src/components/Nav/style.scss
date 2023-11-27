@@ -1,0 +1,42 @@
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    padding: 24px 0;
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding: 24px 0;
+
+    &::after {
+      opacity: 0;
+      transition: opacity var(--tranistion-time) ease-in-out;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      background-color: var(--primary-color);
+    }
+
+    &--active {
+      color: var(--primary-color);
+
+      &::after {
+        opacity: 1;
+        background-color: var(--primary-color);
+      }
+    }
+  }
+}

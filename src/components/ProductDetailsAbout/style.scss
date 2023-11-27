@@ -1,0 +1,7 @@
+.product-about {
+  &__article {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+}

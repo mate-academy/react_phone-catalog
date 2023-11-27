@@ -1,0 +1,22 @@
+.button {
+  border: 2px solid transparent;
+  font-family: var(--font-semibold);
+  text-align: center;
+  color: #fff;
+  box-shadow: 0;
+  transition: box-shadow var(--tranistion-time) ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 13px rgba(23, 32, 49, 0.6);
+  }
+
+  &--primary {
+    background: var(--primary-color);
+  }
+
+  &--selected {
+    border-color: var(--border-primary-color);
+    background-color: #fff;
+    color: var(--selected-color);
+  }
+}

@@ -1,0 +1,17 @@
+.back-button {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  padding: 4px;
+  font-family: var(--font-semibold);
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--secondary-color);
+
+  transition: color var(--tranistion-time) ease-in-out;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}

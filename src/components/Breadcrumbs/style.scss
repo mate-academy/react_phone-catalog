@@ -1,0 +1,18 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-semibold);
+  font-size: 12px;
+  line-height: 15px;
+
+  &__part {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__text {
+    color: var(--secondary-color);
+  }
+}

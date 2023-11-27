@@ -1,0 +1,13 @@
+.link {
+  font-family: var(--font-bold);
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  transition: color var(--tranistion-time) ease-in-out;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
