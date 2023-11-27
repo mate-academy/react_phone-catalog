@@ -1,0 +1,45 @@
+@import "../../styles/vars";
+
+.header {
+  padding-left: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-header-brd;
+
+  &__nav {
+    margin-right: auto;
+  }
+
+  &__icon {
+    position: relative;
+    height: $icon-size-XL;
+    width: $icon-size-XL;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-left: 1px solid $color-header-brd;
+  }
+
+  &__countLabel {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 600;
+    
+    border-radius: 50%;
+    color: $color-white;
+    background-color: $color-red;
+    z-index: 10;
+
+  }
+}

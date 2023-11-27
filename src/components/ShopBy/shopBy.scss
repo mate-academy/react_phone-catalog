@@ -1,0 +1,60 @@
+@import "../../styles/vars";
+@import "../../styles/extends";
+
+.shopBy {
+  &__title {
+    margin-bottom: 24px;
+    @extend %h1;
+  }
+
+  &__categories {
+    display: grid;
+    grid-template-columns: repeat(3, 368px);
+    gap: $gap;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+
+    &-img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  &__link {
+    @extend %h3;
+    margin-bottom: 4px;
+    display: block;
+    color: $color-primary;
+    text-decoration: none;
+  }
+
+  &__category-count {
+    @extend %text-normal;
+    color: $color-secondary;
+  }
+
+  &__container {
+    position: relative;
+    max-width: 368px;
+    height: 368px;
+    background-color: $color-gold;
+    margin-bottom: 24px;
+    transition: all $transitionDuration ease-in-out;
+
+    &--grey {
+      background-color: $color-secondary;
+    }
+
+    &--red {
+      background-color: $color-bg-red;
+    }
+
+    &:hover {
+      border-radius: 40px;
+    }
+  }
+}

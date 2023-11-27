@@ -1,0 +1,24 @@
+{
+  "capacity": [
+    "128GB",
+    "256GB",
+    "512GB"
+  ],
+  "colors": [
+    {
+      "color": "pacific-blue",
+      "hex": "#2E4755"
+    },
+    {
+      "color": "graphite",
+      "hex": "#4C4A46"
+    }
+  ],
+  "processor": "Apple A14 Bionic",
+  "ram": "6GB",
+  "screen": "6.7",
+  "resolution": "2778x1284",
+  "camera": "12Mp + 12Mp + 12Mp (Triple)",
+  "zoom": "Optical, 2.5x",
+  "cell": "GSM, LTE, 5G"
+}

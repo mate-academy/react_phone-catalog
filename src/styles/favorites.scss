@@ -1,0 +1,23 @@
+@import "../styles/vars";
+@import "../styles/mixins";
+
+.favorites {
+  padding-bottom: 80px;
+
+  &__title {
+    padding-bottom: 8px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    color: $color-primary;
+  }
+
+  &__count {
+    display: block;
+    margin-bottom: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}

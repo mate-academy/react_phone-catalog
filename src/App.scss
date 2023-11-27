@@ -1,1 +1,14 @@
-// not empty
+.App {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+
+  &__section {
+    padding: 40px 0;
+  }
+}

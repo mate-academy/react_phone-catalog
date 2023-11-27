@@ -1,0 +1,41 @@
+@import "../styles/vars";
+@import "../styles/extends";
+
+.page {
+
+  &__main {
+    height: 100%;
+  }
+
+  &__products {
+    padding-bottom: $padding-size;
+  }
+
+  &__title {
+    @extend %h1;
+    padding-bottom: 8px;
+    color: $color-primary;
+  }
+
+  &__models-count {
+    @extend %text-normal;
+    display: block;
+    margin-bottom: 60px;
+    color: $color-secondary;
+  }
+
+  &__selectWrapper {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $gap;
+  }
+
+  &__block {
+    padding: $padding-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,32 @@
+@import "../../styles/vars";
+@import "../../styles/extends";
+
+.search {
+  all: unset;
+  padding: 22px;
+  min-width: 327px;
+  font-family: inherit;
+  color: $color-primary;
+  border-left: 1px solid $color-elements;
+
+  &::placeholder {
+    @extend %text-normal;
+    font-weight: bold;
+    color: $color-icons;
+  }
+
+  &:focus {
+    background-color: $color-hover;
+  }
+
+  &__btn,
+  &__img {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+  }
+
+  &__container {
+    position: relative;
+  }
+}

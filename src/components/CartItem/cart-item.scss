@@ -1,0 +1,37 @@
+@import "../../styles/vars";
+@import "../../styles/extends";
+
+.cart-item {
+  @extend %text-normal;
+  padding: 24px 40px 24px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid $color-elements;
+
+  &__buttons {
+    margin: 0 42px;
+    display: flex;
+  }
+
+  &__name {
+    max-width: 35ch;
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__count {
+    width: $icon-size-S;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+  }
+}

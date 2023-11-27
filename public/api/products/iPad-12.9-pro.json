@@ -1,0 +1,23 @@
+{
+  "capacity": [
+    "256GB",
+    "512GB"
+  ],
+  "colors": [
+    {
+      "color": "silver",
+      "hex": "#F5F5F0"
+    },
+    {
+      "color": "space-gray",
+      "hex": "#2C2827"
+    }
+  ],
+  "processor": "Apple M1",
+  "ram": "16GB",
+  "screen": "12.9",
+  "resolution": "2796x1290",
+  "camera": "12Mp + 10Mp (Dual)",
+  "zoom": "Optical, 2.5x",
+  "cell": "GPS, GLONASS, GALILEO, QZSS (WiFi + Cellular model only)"
+}
