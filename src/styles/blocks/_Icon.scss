@@ -31,6 +31,14 @@
     &_left {
       transform: rotate(180deg);
     }
+
+    &_down {
+      transform: rotate(90deg);
+    }
+
+    &_up {
+      transform: rotate(-90deg);
+    }
   }
 
   &:hover {
