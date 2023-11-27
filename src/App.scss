@@ -129,3 +129,61 @@
     border-radius: 0 !important;
   }
 }
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+  grid-template-rows: 100px, 1fr;
+}
+
+.slick-slider {
+  height: 400px;
+  width: 100%;
+  display: grid !important;
+  grid-row: 2 / 3;
+  grid-column: span 24;
+}
+
+.slick-list {
+  height: 500px;
+  grid-column: span 24;
+}
+
+.slick-image {
+  width: 200px;
+}
+
+.slick-arrow {
+  background: blue !important;
+  position: relative !important;
+}
+
+.slick-prev {
+  left: 0 !important;
+  grid-column: -3 / -2;
+  grid-row: 1 / 2;
+
+  &::before {
+    content: "Hot prices";
+    width: 100px;
+    height: 22px;
+  }
+}
+
+.slick-next {
+  right: 0 !important;
+  grid-column: -2 / -1;
+  grid-row: 1 / 2;
+}
+
+.slick-title {
+  grid-row: 1 / 2;
+  grid-column: span 6;
+}
+
+.card {
+  &__image {
+    width: 70px;
+  }
+}

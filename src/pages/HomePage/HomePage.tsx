@@ -1,11 +1,10 @@
 import { ProductCard } from '../../components/ProductCard/ProductCard';
-import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
+import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 
 export const HomePage: React.FC = () => {
   return (
     <>
-      <h1>Home Page</h1>
-      <ProductsSlider />
+      <ProductSlider />
       <ProductCard />
     </>
   );
