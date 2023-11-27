@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer_logo-box">
-        <a href="/" className="footer_logo">
+        <a href="#/" className="footer_logo">
           <img src={ICONS.logo} alt="Logo" />
         </a>
       </div>
@@ -18,7 +18,9 @@ export const Footer = () => {
         <ul className="footer_list">
           <li className="footer_item">
             <a
-              href="#git"
+              href="https://github.com/"
+              rel="noreferrer"
+              target="_blank"
               className="footer_link uppercase-text-style"
             >
               GITHUB
