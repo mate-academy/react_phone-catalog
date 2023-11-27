@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 64px;
+
+  &__image {
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    .logo__image {
+      transform: scale(1.2);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #b4bdc4;
+  background-color: #fff;
+
+  cursor: pointer;
+
+  &--big {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__icon {
+    fill: #b4bdc4;
+  }
+
+  &:disabled {
+    fill: #b4bdc4;
+    border-color: #e2e6e9;
+
+    cursor: auto;
+  }
+
+  &:hover:enabled {
+    border-color: #313237;
+
+    .arrow__icon {
+      fill: #313237;
+    }
+  }
+}
