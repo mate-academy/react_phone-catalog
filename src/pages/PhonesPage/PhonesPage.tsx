@@ -2,13 +2,15 @@ import { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/productsSlice';
 import { ProductList } from '../../components/ProductList';
+import { Loader } from '../../components/Loader';
 import { ProductType } from '../../types/ProductType';
+import { Status } from '../../types/Status';
 
 import './PhonesPage.scss';
 
 export const PhonesPage = () => {
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector(state => state.products);
+  const { products, status } = useAppSelector(state => state.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -23,7 +25,8 @@ export const PhonesPage = () => {
     <>
       <h1>Mobile phones</h1>
 
-      <ProductList products={getPhones} />
+      {status === Status.LOADING && <Loader />}
+      {status === Status.IDLE && <ProductList products={getPhones} />}
     </>
   );
 };
