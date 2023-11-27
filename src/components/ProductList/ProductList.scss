@@ -1,0 +1,11 @@
+@import "../../styles/utils/";
+
+.ProductList {
+  @include pageGrid;
+
+  & > .ProductCard {
+    grid-column: span 6;
+
+    margin-block-end: 40px;
+  }
+}
