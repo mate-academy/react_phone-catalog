@@ -1,0 +1,42 @@
+@import "../../helpers/variables.scss";
+
+.button {
+  &__add-to-favorite {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $iconsColor;
+    padding: 0;
+    background-color: transparent;
+    position: relative;
+    transition: all 0.3s;
+
+    &::after {
+      content: url("../../assets/svg/Favourites.svg");
+      position: absolute;
+      height: 16px;
+      top: 11px;
+      left: 11px;
+
+      transition: all 0.3s;
+
+    }
+
+    &:hover {
+      border-color: $primaryColor;
+      cursor: pointer;
+
+      &::after {
+        transform: scale(1.2);
+      }
+    }
+
+    &--selected {
+      border-color: $elementsColor;
+
+      &::after {
+        content: url("../../assets/svg/Favoruites_selected.svg");
+      }
+    }
+  }
+}

@@ -1,28 +1,36 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Category } from '../../types/Category';
-
 import './CategoriesLink.scss';
 
 type Props = {
-  category: Category,
+  url: string;
+  imageUrl: string;
+  title: string;
+  amount: number;
 };
 
-export const CategoriesLink: FC<Props> = ({ category }) => {
+export const CategoriesLink: FC<Props> = ({
+  url,
+  imageUrl,
+  title,
+  amount,
+}) => {
   return (
-    <div className="categories__link">
-      <Link to={category.url} className="category__item">
-        <div className="category__image-container">
-          <img
-            src={category.imgSrc}
-            alt={category.title}
-            className="category__image"
-          />
-        </div>
-        <p className="category__title">{category.title}</p>
-        <p className="category__description">{`${category.count} models`}</p>
-      </Link>
-    </div>
+    <Link
+      to={url}
+      className="categories__link category"
+    >
+      <div className="category-image-container">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="category__image"
+        />
+      </div>
+
+      <p className="category__title">{title}</p>
+      <p className="category__items-amount">{`${amount} models`}</p>
+    </Link>
   );
 };

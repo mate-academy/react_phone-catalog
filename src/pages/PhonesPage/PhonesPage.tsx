@@ -1,32 +1,38 @@
 import { FC, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-
-import { Loader } from '../../components/Loader';
-import { PagePath } from '../../components/PagePath/PagePath';
 import { CatalogProduct } from '../../types/CatalogProduct';
+import { Loader } from '../../components/Loader';
+import {
+  getCurrentProductList,
+} from '../../helpers/pagesMethods';
 import { getProducts } from '../../utils/fetchData';
-import { getCurrentProductList } from '../../helpers/pagesMethods';
+import { PagePath } from '../../components/PagePath/PagePath';
 import { SortBySelect } from '../../components/SortBySelect/SortBySelect';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
-import { NoSearchResult } from '../../components/NoSearchResult/NoSearchResult';
 import { LoadMore } from '../../components/LoadMore/LoadMore';
+import { ProductsList } from '../../components/ProductsList/ProductsList';
+import { PaginationPage } from '../../components/PaginationPage/PaginationPage';
+import { NoSearchResult } from '../../components/NoSearchResult/NoSearchResult';
+import {
+  ItemsOnPageSelect,
+} from '../../components/ItemsOnPageSelect/ItemsOnPageSelect';
+
+import './PhonesPage.scss';
 
 export const PhonesPage: FC = () => {
   const [phonesList, setPhonesList] = useState<CatalogProduct[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isInitialised, setIsInitialised] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [paginationTotal, setPaginationTotal] = useState(0);
-  const [currentPhonesList, setCurrentPhonesList]
-    = useState<CatalogProduct[]>([]);
 
   const [searchParams] = useSearchParams();
-
-  const sort = searchParams.get('sort') || '';
-  const query = searchParams.get('query') || '';
-  const previousPage = searchParams.get('previousPage') || '8';
-  const page = searchParams.get('page') || '1';
-
   const location = useLocation();
+  const sort = searchParams.get('sort') || '';
+  const page = searchParams.get('page') || '1';
+  const previousPage = searchParams.get('perPage') || '8';
+  const query = searchParams.get('query') || '';
+
+  const [currentPhonesList, setCurrentPhonesList]
+    = useState<CatalogProduct[]>([]);
 
   const navigate = useNavigate();
 
@@ -34,10 +40,10 @@ export const PhonesPage: FC = () => {
     try {
       setIsLoading(true);
 
-      const productFromServer = await getProducts();
+      const productsFromServer = await getProducts();
 
-      const phones = productFromServer
-        .filter(product => product.category === 'phones');
+      const phones = productsFromServer
+        .filter((product: CatalogProduct) => product.category === 'phones');
 
       const currentList = getCurrentProductList(
         phones,
@@ -50,20 +56,20 @@ export const PhonesPage: FC = () => {
 
       setPhonesList(phones);
       setCurrentPhonesList(currentList);
-      setIsInitialised(true);
+      setIsInitialized(true);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      navigate('/notfound');
+      navigate('/notfound', { replace: true });
     }
   };
 
   useEffect(() => {
-    if (!isInitialised) {
+    if (!isInitialized) {
       handleLoading();
     }
 
-    if (isInitialised) {
+    if (isInitialized) {
       setIsLoading(true);
 
       const currentList = getCurrentProductList(
@@ -84,12 +90,18 @@ export const PhonesPage: FC = () => {
   }, [location]);
 
   return (
-    <div className="products__page">
+    <div
+      className="
+        main__products-page
+        main__products-page--width
+        products-page
+      "
+    >
       <PagePath url="/phones" title="Phones" />
 
-      <h1>Mobile phones</h1>
+      <h1 className="products-page__title page-title">Mobile phones</h1>
 
-      {isInitialised && phonesList.length && (
+      {isInitialized && !!phonesList.length && (
         <>
           <p className="products-page__total-amount">
             {`${phonesList.length} models`}
@@ -98,16 +110,14 @@ export const PhonesPage: FC = () => {
           <div className="products-page__selectors selectors">
             <SortBySelect />
 
-            {/* <ItemsOnPageSelect /> */}
+            <ItemsOnPageSelect />
           </div>
         </>
       )}
 
-      {isLoading && (
-        <Loader />
-      )}
+      {isLoading && <Loader />}
 
-      {!isLoading && currentPhonesList.length ? (
+      {!isLoading && !!currentPhonesList.length ? (
         <>
           <ProductsList
             products={currentPhonesList}
@@ -118,16 +128,22 @@ export const PhonesPage: FC = () => {
             <>
               <LoadMore
                 productsList={phonesList}
-                currentProducsList={currentPhonesList}
+                currentProductsList={currentPhonesList}
                 setCurrentProductsList={setCurrentPhonesList}
+                total={paginationTotal}
+              />
+
+              <PaginationPage
                 total={paginationTotal}
               />
             </>
           )}
         </>
-      ) : (isLoading && (
-        <NoSearchResult />
-      ))}
+      ) : (
+        !isLoading && (
+          <NoSearchResult />
+        )
+      )}
     </div>
   );
 };

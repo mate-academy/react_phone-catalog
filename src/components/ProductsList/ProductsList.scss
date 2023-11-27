@@ -1,0 +1,47 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: $cardWidth * 4 + $cardsGapHor * 3;
+
+  @include onLaptop {
+    width: $cardWidth * 3 + $cardsGapHor * 2;
+  }
+
+  @include onTablet {
+    width: $cardWidth * 2 + $cardsGapHor * 1;
+  }
+
+  @include onMobile {
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__card {
+    margin: 0 16px 40px 0;
+
+    @include onDesktop {
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+
+    @include onLaptop {
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+
+    @include onTablet {
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+
+    @include onMobile {
+      margin-right: 0;
+    }
+  }
+}

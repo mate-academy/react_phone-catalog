@@ -172,6 +172,7 @@ export const ProductsSlider: FC<Props> = ({
             onClick={() => handleShowNext(currentSlider.current)}
             className="pagination-button slider__button slider__button--next"
             disabled={isNextDisabled}
+            style={{ backgroundImage: 'url(../../assets/svg/ArrowRight.svg)' }}
           />
         </div>
       </div>

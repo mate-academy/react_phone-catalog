@@ -3,6 +3,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { ShopByCategories } from '../../components/ShopByCategories';
 import { ProductsSlider } from '../../components/ProductSlider/ProductSlider';
@@ -11,6 +12,7 @@ import { CatalogProduct } from '../../types/CatalogProduct';
 import { getProducts } from '../../utils/fetchData';
 
 import './HomePage.scss';
+import { MobileSwiper } from '../../components/MobileSwiper/MobileSwiper';
 
 const carouselImagesUrl = [
   './_new/img/banner-phones.png',
@@ -21,12 +23,7 @@ const carouselImagesUrl = [
 export const HomePage: FC = () => {
   const [products, setProducts] = useState<CatalogProduct[]>([]);
 
-  useEffect(() => {
-    getProducts()
-      .then((productsFromServer) => {
-        setProducts(productsFromServer);
-      });
-  }, []);
+  const navigate = useNavigate();
 
   const getHotPricesProducts = () => {
     const hotPriceProducts = products
@@ -51,13 +48,48 @@ export const HomePage: FC = () => {
     return brandNewModels;
   };
 
+  const phonesAmount = products.filter(
+    (product: CatalogProduct) => product.category === 'phones',
+  ).length;
+
+  const tabletsAmount = products.filter(
+    (product: CatalogProduct) => product.category === 'tablet',
+  ).length;
+
+  const accessoriesAmount = products.filter(
+    (product: CatalogProduct) => product.category === 'accessory',
+  ).length;
+
+  const handleLoading = async () => {
+    try {
+      const productsFromServer = await getProducts();
+
+      setProducts(productsFromServer);
+    } catch (error) {
+      navigate('/notfound', { replace: true });
+    }
+  };
+
+  useEffect(() => {
+    handleLoading();
+  }, []);
+
   return (
     <div className="home-page main__page">
       <InfiniteSlider carouselImagesUrl={carouselImagesUrl} />
 
       <ProductsSlider title="Hot prices" products={getHotPricesProducts()} />
 
-      <ShopByCategories />
+      <MobileSwiper
+        title="Hot prices"
+        products={getHotPricesProducts()}
+      />
+
+      <ShopByCategories
+        phonesAmount={phonesAmount}
+        tabletsAmount={tabletsAmount}
+        accessoriesAmount={accessoriesAmount}
+      />
 
       <ProductsSlider title="Brand new models" products={getBrandNewModels()} />
     </div>

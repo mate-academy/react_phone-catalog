@@ -2,6 +2,7 @@ import React from 'react';
 
 import { CatalogProduct } from '../types/CatalogProduct';
 import { SortBy } from './enums';
+import { getProducts } from '../utils/fetchData';
 
 export const handleSort = (array: CatalogProduct[], sortValue: string) => {
   switch (sortValue) {
@@ -110,4 +111,42 @@ export const handleLoadMore = (
   ));
 
   setCurrentArray(prevArray => [...prevArray, ...arrayToAdd]);
+};
+
+export const getSuggestProducts = async (
+  screen: string,
+  capacity: string,
+  itemId: string,
+) => {
+  try {
+    const products = await getProducts();
+
+    const suggestProducts = products.filter((product: CatalogProduct) => {
+      if (product.itemId !== itemId
+        && (product.screen === screen || product.capacity === capacity)) {
+        return product;
+      }
+
+      return null;
+    });
+
+    return suggestProducts;
+  } catch (error) {
+    return [];
+  }
+};
+
+export const getLinkToProduct = (
+  category: string,
+  nameId: string,
+  capacity: string,
+  color: string,
+) => {
+  return `/${category}/${nameId}-${capacity.toLowerCase()}-${color}`;
+};
+
+export const getMemoryCapacity = (capacity: string) => {
+  const number = parseFloat(capacity);
+
+  return `${number}${capacity.replace(`${number}`, '')}`;
 };

@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { CatalogProduct } from '../../types/CatalogProduct';
 
 import './ProductItem.scss';
+import { CardButtons } from '../CardButtons/CardButtons';
 
 type Props = {
   product: CatalogProduct;
@@ -30,11 +31,12 @@ export const ProductItem: FC<Props> = ({
   } = product;
 
   return (
-    <div className={classNames(
-      'card',
-      { slider__card: isSlider },
-      { 'products-list__card': isProductsList },
-    )}
+    <div
+      className={classNames(
+        'card',
+        { slider__card: isSlider },
+        { 'products-list__card': isProductsList },
+      )}
     >
       <Link
         to={`/${category}/${itemId}`}
@@ -68,7 +70,9 @@ export const ProductItem: FC<Props> = ({
             <p className="product-info__item">RAM</p>
           </div>
           <div className="product-info__values">
-            <p className="product-info__value">{`${screen}`}</p>
+            <p className="product-info__value">
+              {`${screen}`}
+            </p>
             <p className="product-info__value">
               {capacity}
             </p>
@@ -78,6 +82,18 @@ export const ProductItem: FC<Props> = ({
           </div>
         </div>
       </Link>
+
+      <CardButtons
+        id={itemId}
+        product={category}
+        name={name}
+        price={price}
+        imageUrl={image}
+        fullPrice={fullPrice}
+        screen={screen}
+        capacity={capacity}
+        ram={ram}
+      />
     </div>
   );
 };

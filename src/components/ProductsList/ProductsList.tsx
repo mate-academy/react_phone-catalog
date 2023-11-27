@@ -2,6 +2,8 @@ import { FC, useState } from 'react';
 import { CatalogProduct } from '../../types/CatalogProduct';
 import { ProductItem } from '../ProductItem/ProductItem';
 
+import './ProductsList.scss';
+
 type Props = {
   products: CatalogProduct[];
   isSlider: boolean;

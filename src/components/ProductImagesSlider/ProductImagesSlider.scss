@@ -1,0 +1,45 @@
+@import "../../helpers/variables.scss";
+
+.slider {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  height: 464px;
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__button {
+    transition: all 0.3s;
+    border: 1px solid $iconsColor;
+    height: 80px;
+    width: 80px;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &--active {
+      border: 1px solid $primaryColor;
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex: 1 1 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.2s ease;
+  }
+}

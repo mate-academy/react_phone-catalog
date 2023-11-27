@@ -5,10 +5,11 @@
   justify-content: space-around;
   background-color: $whiteColor;
 
-  // &__container {
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 62px;
+  }
 
   &-item {
     text-decoration: none;
@@ -22,11 +23,6 @@
     &:hover {
       color: $primaryColor;
     }
-  }
-
-  &__container {
-    display: flex;
-    gap: 62px;
   }
 
   &-back {

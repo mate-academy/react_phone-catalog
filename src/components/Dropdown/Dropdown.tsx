@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
 
+import './Dropdown.scss';
+
 type Props = {
   title: string;
   selectedValue: string;

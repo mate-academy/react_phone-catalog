@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
+import './PagePath.scss';
+
 type Props = {
   url: string;
   title: string;
@@ -12,9 +14,9 @@ export const PagePath: FC<Props> = ({ url, title, productName }) => {
   return (
     <div className="products__page__path path">
       <Link to="/" className="path__home-icon path__icon" />
-      <div className="path__container">
+      <div className="path-block-container">
         <div className="path__arrow-right-icon path__icon" />
-        <Link to={url}>
+        <Link className="path__path-name" to={url}>
           {title}
         </Link>
       </div>

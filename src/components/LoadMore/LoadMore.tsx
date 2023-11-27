@@ -8,7 +8,7 @@ import { usePagination } from '../../helpers/usePagination';
 
 type Props = {
   productsList: CatalogProduct[];
-  currentProducsList: CatalogProduct[];
+  currentProductsList: CatalogProduct[];
   setCurrentProductsList: React.Dispatch<React
     .SetStateAction<CatalogProduct[]>>;
   total: number;
@@ -16,7 +16,7 @@ type Props = {
 
 export const LoadMore: FC<Props> = ({
   productsList,
-  currentProducsList,
+  currentProductsList,
   setCurrentProductsList,
   total,
 }) => {
@@ -38,7 +38,7 @@ export const LoadMore: FC<Props> = ({
     handleLoadMore(
       sortedProducts,
       previousPage,
-      currentProducsList,
+      currentProductsList,
       setCurrentProductsList,
     );
   };

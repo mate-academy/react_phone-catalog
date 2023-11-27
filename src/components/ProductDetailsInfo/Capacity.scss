@@ -1,0 +1,51 @@
+@import "../../helpers/variables.scss";
+
+.capacity {
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elementsColor;
+
+  &__capacity-title {
+    margin: 0 0 8px;
+  }
+
+  &__capacity-icons {
+    display: flex;
+  }
+
+  &__capacity-icon {
+    background: $whiteColor;
+    padding: 7px 8px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    vertical-align: bottom;
+    color: $primaryColor;
+    border: 1px solid $iconsColor;
+    text-decoration: none;
+
+    margin-right: 8px;
+
+    transition: all 0.3s;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    &.capacity-active {
+      border: 0;
+      background: $primaryColor;
+      color: $whiteColor;
+      box-shadow: none;
+      cursor: none;
+      pointer-events: none;
+    }
+  }
+}
