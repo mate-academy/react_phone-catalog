@@ -1,0 +1,12 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.home-page {
+  &__block {
+    margin-top: 80px;
+
+    &--last {
+      margin-bottom: 80px;
+    }
+  }
+}

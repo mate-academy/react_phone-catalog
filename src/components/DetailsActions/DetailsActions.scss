@@ -1,0 +1,119 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.actions {
+  width: 320px;
+
+  &__label {
+    @extend %small-text;
+    margin-top: 24px;
+    color: $secondary;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elementColor;
+  }
+
+  &__color-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__color-link {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    background-color: $white;
+    border: 1px solid $elementColor;
+    border-radius: 50%;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+
+  &__capacity-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  &__capacity-link {
+    @extend %text;
+    display: block;
+    padding: 7px 8px;
+    background-color: $white;
+    color: $primary;
+    border: 1px solid $elementColor;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--active {
+      background-color: $primary;
+      color: $white;
+      border-color: transparent;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__price-discount {
+    @extend %h1;
+    color: $primary;
+  }
+
+  &__price-regular {
+    @extend %h2-reg;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 1px;
+    color: $secondary;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 48px;
+    grid-template-rows: 48px;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+    width: 100%;
+    margin-top: 32px;
+  }
+
+  &__characteristic {
+    @extend %small-text;
+    color: $secondary;
+  }
+
+  &__value {
+    @extend %small-text;
+    justify-self: end;
+    color: $primary;
+  }
+}

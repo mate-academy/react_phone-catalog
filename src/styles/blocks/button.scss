@@ -1,0 +1,94 @@
+.button {
+  @extend %button;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: $primary;
+  border: none;
+  text-decoration: none;
+  color: $white;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+
+  &--selected,
+  &:active {
+    background-color: $white;
+    color: $green;
+    border: 1px solid $iconColor;
+  }
+}
+
+.button-square {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid $iconColor;
+  background-color: $white;
+  color: $primary;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:active,
+  &:hover {
+    border-color: $primary;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+  
+  &--like {
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/icons/like.svg);
+  }
+
+  &--filled {
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/icons/filled_like.svg);
+  }
+
+  &--high {
+    height: 100%;
+  }
+
+  &--close {
+    width: 16px;
+    height: 16px;
+    background-image: url(/img/icons/close.svg);
+    border: none;
+    opacity: 0.3;
+    transition: all 0.3s ;
+
+    &:hover {
+      opacity: 1;
+      box-shadow: none;
+    }
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
+
+.item-button {
+  width: 14px;
+  height: 4px;
+  background-color: $elementColor;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &--active {
+    background-color: $primary;
+  }
+}

@@ -1,0 +1,56 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.navbar {
+  margin-left: 64px;
+  
+  &__list {
+    @extend %uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 64px;
+    list-style: none;
+    height: 64px;
+  }
+
+  &__item {
+    position: relative;
+    height: 100%;
+  }
+    
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: $secondary;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $primary;
+      transition: all 0.3s ease;
+      transform: scale(0);
+    }
+
+    &--active {
+      color: $primary;
+
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

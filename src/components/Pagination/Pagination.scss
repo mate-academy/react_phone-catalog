@@ -1,0 +1,45 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.pagination {
+  display: flex;
+  gap: 8px;
+
+  &__list {
+    @extend %text;
+    display: flex;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $elementColor;
+    color: $primary;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &--active {
+      background-color: $primary;
+      border-color: transparent;
+      color: $white;
+    }
+  }
+}

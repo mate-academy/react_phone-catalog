@@ -1,0 +1,69 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 $elementColor;
+  padding-left: 24px;
+
+  &__left {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__icon-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    box-shadow: -1px 0 0 $elementColor;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $primary;
+      transition: all 0.3s ease;
+      transform: scale(0);
+    }
+
+    &--active {
+      color: $primary;
+      
+      &::after {
+        content: "";
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__count {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+    line-height: 12px;
+    font-weight: 600;
+    background-color: $red;
+    border-radius: 50%;
+    color: $white;
+  }
+}

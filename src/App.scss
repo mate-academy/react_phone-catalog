@@ -1,1 +1,7 @@
-// not empty
+@import "./styles/utils/extends";
+@import "./styles/utils/variables";
+@import "./styles/utils/fonts";
+
+@import "./styles/blocks/reset.scss";
+@import "./styles/blocks/page.scss";
+@import "./styles/blocks/button.scss";

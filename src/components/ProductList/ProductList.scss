@@ -1,0 +1,29 @@
+.product-list {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    margin-bottom: 80px;
+  }
+
+  &__pickers {
+    display: flex;
+    gap: 16px;
+  }
+  
+  &__product-items {
+    display: grid;
+    grid-template-columns: repeat(4, 272px);
+    justify-content: center;
+    justify-items: center;
+    margin-top: 24px;
+    row-gap: 40px;
+    column-gap: 16px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}

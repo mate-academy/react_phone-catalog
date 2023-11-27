@@ -1,0 +1,68 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.cart-page {
+  &__button-back {
+    margin-top: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-top: 16px;
+    color: $primary;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__notification {
+    @extend %h2;
+    flex-grow: 2;
+    color: $secondary;
+    text-align: center;
+  }
+
+  &__total-box {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: center;
+    border: 1px solid $elementColor;
+  }
+
+  &__total-price {
+    @extend %h1;
+    margin-top: 24px;
+  }
+
+  &__items-count {
+    @extend %text;
+    text-align: center;
+    color: $secondary;
+
+    &:after {
+      content: "";
+      display: block;
+      margin-top: 24px;
+      width: 320px;
+      height: 1px;
+      background-color: $elementColor;
+    }
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    margin: 24px;
+    color: $white;
+    background-color: $primary;
+    outline: none;
+    border: none;
+  }
+}

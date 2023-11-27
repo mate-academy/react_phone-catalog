@@ -7,10 +7,17 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/react-redux": "^7.1.25",
+    "@types/redux": "^3.6.0",
     "bulma": "^0.9.3",
+    "classnames": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-redux": "^8.0.7",
+    "react-router-dom": "^6.12.0",
+    "react-scripts": "^4.0.3",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
@@ -31,7 +38,9 @@
     "mochawesome-merge": "^4.2.0",
     "mochawesome-report-generator": "^6.2.0",
     "node-sass": "^6.0.1",
+    "redux-devtools-extension": "^2.13.9",
     "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^9.0.5",
     "typescript": "^4.6.3"
   },
   "scripts": {

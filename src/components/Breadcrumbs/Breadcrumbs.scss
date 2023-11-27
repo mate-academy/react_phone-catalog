@@ -1,0 +1,43 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.breadcrumb {
+  &__list {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  &__item {
+    height: 100%;
+
+    &:not(:last-of-type) {
+      margin-right: 13px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__link {
+    @extend %small-text;
+    align-items: center;
+    height: 100%;
+    margin-left: 13px;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: $primary;
+    cursor: pointer;
+
+    &--disabled {
+      pointer-events: none;
+      color: $secondary;
+    }
+  }
+
+  &__home-link {
+    display: block;
+    line-height: 0;
+  }
+}

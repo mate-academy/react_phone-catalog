@@ -1,0 +1,31 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.details-page {
+  &__navigate {
+    margin-top: 24px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-top: 16px;
+    color: $primary;
+  }
+
+  &__button-back {
+    margin-top: 40px;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    row-gap: 80px;
+    column-gap: 65px;
+    margin-top: 40px;
+  }
+
+  &__slider {
+    margin: 80px 0;
+  }
+}

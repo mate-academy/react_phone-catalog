@@ -1,0 +1,34 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.about {
+  &__title {
+    @extend %h2;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elementColor;
+    color: $primary;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__subtitle {
+    @extend %h3;
+    color: $primary;
+  }
+
+  &__description {
+    @extend %text;
+    color: $secondary;
+  }
+}

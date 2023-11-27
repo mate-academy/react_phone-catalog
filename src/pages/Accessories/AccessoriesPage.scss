@@ -1,0 +1,23 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.accessories-page {
+  &__title {
+    @extend %h1;
+    margin-top: 40px;
+    color: $primary;
+  }
+
+  &__description {
+    @extend %text;
+    margin-top: 8px;
+    color: $secondary;
+  }
+
+  &__notification {
+    @extend %h2;
+    flex-grow: 2;
+    color: $secondary;
+    text-align: center;
+  }
+}

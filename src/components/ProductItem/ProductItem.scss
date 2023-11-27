@@ -1,0 +1,94 @@
+@import "../../styles/utils/extends";
+@import "../../styles/utils/variables";
+
+.product-item {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 272px;
+    border: 1px solid $elementColor;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $primary;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: end;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 208px;
+    height: 208px;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__subtitle {
+    @extend %text;
+    display: flex;
+    flex: 1 0 42px;
+    color: $primary;
+    margin-top: 24px;
+
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $elementColor;
+  }
+
+  &__price-discount {
+    @extend %h2;
+    color: $primary;
+  }
+
+  &__price-regular {
+    @extend %h2-reg;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 1px;
+    color: $secondary;
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  &__characteristic {
+    @extend %small-text;
+    color: $secondary;
+  }
+
+  &__value {
+    @extend %uppercase;
+    justify-self: end;
+    color: $primary;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: 40px;
+    gap: 8px;
+    margin-top: 16px;
+  }
+}
