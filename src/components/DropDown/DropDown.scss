@@ -1,0 +1,106 @@
+@import "../../styles/utils/";
+
+.DropDown {
+  position: relative;
+  width: 176px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px 0;
+
+  &-Label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+
+    color: $secondary;
+  }
+
+  &-Button {
+    padding-block: 0;
+    padding-inline: 12px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: start;
+
+    border: 1px solid $icon-placeholder;
+
+    color: $primary;
+
+    background-color: $white;
+
+    &_active {
+      border-color: $primary;
+    }
+
+    &:hover {
+      border-color: $secondary;
+    }
+  }
+
+  &-Icon {
+    --icon-size: 16px;
+    border: none;
+  }
+
+  &-List {
+    position: absolute;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    border: 1px solid $element;
+
+    background-color: $white;
+
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    transform-origin: left 40px;
+    transform: scale(0);
+
+    transition: transform $transition-duration;
+
+    pointer-events: none;
+
+    &_active {
+      margin: 4px 0 0;
+
+      transform: scale(1) translateY(58px);
+
+      pointer-events: all;
+    }
+  }
+
+  &-Option {
+    width: 174px;
+    height: 40px;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: start;
+
+    border: none;
+
+    color: $secondary;
+
+    background-color: $white;
+
+    transition: color $transition-duration,
+      background-color $transition-duration;
+
+    &:hover {
+      color: $primary;
+
+      background-color: $background;
+    }
+  }
+}
