@@ -4,6 +4,7 @@ import { fetchProducts } from '../../features/productsSlice';
 import { getProductDiscount } from '../../utils/getProductDiscount';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ShopByCategory } from '../../components/ShopByCategory';
+import { Slider } from '../../components/Slider';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +28,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1>Home page</h1>
+      <Slider />
 
       <section className="Page-Section">
         <ProductsSlider
