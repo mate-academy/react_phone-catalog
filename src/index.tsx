@@ -1,8 +1,11 @@
 import ReactDOM from 'react-dom';
 
-import App from './App';
+import { Root } from './Root';
+import { CatalogProvider } from './helpers/CatalogContext/CatalogContext';
 
 ReactDOM.render(
-  <App />,
+  <CatalogProvider>
+    <Root />
+  </CatalogProvider>,
   document.getElementById('root'),
 );
