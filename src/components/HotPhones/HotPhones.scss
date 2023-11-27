@@ -1,0 +1,88 @@
+@import "../../utils/variables.scss";
+
+.hot-phones {
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-inline: 60px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-family: Mont-Bold, sans-serif;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__phones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $iconsColor;
+    background-color: $whiteColor;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: border-color 0.3s;
+
+    &--right {
+      background-image: url(../../Icons/arrow-right-black.svg);
+    }
+
+    &--left {
+      background-image: url(../../Icons/arrow-left-black.svg);
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: $mainColor;
+    }
+
+    &--disabled {
+      border-color: $elementsColor;
+
+      &--left {
+        background-image: url(../../Icons/arrow-left.svg);
+
+        &:hover {
+          cursor: auto;
+          border-color: $elementsColor;
+        }
+      }
+
+      &--right {
+        background-image: url(../../Icons/arrow-right.svg);
+      }
+    }
+  }
+}
+
+.products-slider {
+  &__top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  &__nagigate {
+    display: flex;
+  }
+}
