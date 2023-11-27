@@ -1,0 +1,119 @@
+.cart {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  min-height: calc(100vh - 190px);
+
+  @include onTablet {
+    min-height: calc(100vh - 250px);
+  }
+
+  @include onDesktop {
+    min-height: calc(100vh - 290px);
+    flex-direction: row;
+  }
+
+  &__title {
+    padding: 16px 0 24px;
+  }
+
+  &__element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+    border: 1px solid $gray-elements;
+
+    @include onTablet {
+      padding: 20px;
+    }
+
+    @include onDesktop {
+      padding: 24px;
+    }
+  }
+
+  &__empty {
+    width: 275px;
+    height: 170px;
+
+    @include onTablet {
+      width: 600px;
+      height: 115px;
+    }
+
+    @include onDesktop {
+      width: 752px;
+      height: 128px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  &__total {
+    @include onTablet {
+      padding-top: 16px;
+    }
+
+    @include onDesktop {
+      padding-top: 95px;
+    }
+
+    &__info {
+      width: 275px;
+      height: 206px;
+
+      @include onTablet {
+        width: 600px;
+      }
+  
+      @include onDesktop {
+        width: 368px;
+        height: 206px;
+      }
+
+      display: flex;
+      flex-direction: column;
+
+      &__text {
+        color: $gray-secondary;
+      }
+
+      &__divider {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        &__line {
+          width: 225px;
+          height: 1px;
+          background-color: $gray-elements;
+
+          @include onTablet {
+            width: 550px;
+          }
+      
+          @include onDesktop {
+            width: 321px;
+          }
+        }
+      }
+
+      &__button {
+        width: 225px;
+        height: 40px;
+
+        @include onTablet {
+          width: 320px;
+          height: 48px;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}

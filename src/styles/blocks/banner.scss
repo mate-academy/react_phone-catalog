@@ -1,0 +1,74 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__main {
+    display: flex;
+    gap: 12px;
+
+    @include onTablet {
+      gap: 16px;
+    }
+  }
+
+  &__cover {
+    height: 240px;
+    display: flex;
+
+    @include onTablet {
+      height: 280px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    overflow: hidden;
+    width: 220px;
+
+    @include onTablet {
+      width: 560px;
+    }
+    
+    @include onDesktop {
+      width: 1040px;
+    }
+  }
+
+  &__image {
+    width: 400px;
+    min-height: 240px;
+
+    @include onTablet {
+      width: 560px;
+      min-height: 280px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 240px;
+
+    @include onTablet {
+      width: 32px;
+      height: 280px;
+    }
+
+    @include onDesktop {
+      height: 400px;
+    }
+  }
+}

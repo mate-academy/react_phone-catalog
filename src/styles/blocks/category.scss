@@ -1,0 +1,113 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+
+    @include onTablet {
+      gap: 24px;
+    }
+
+    &__content {
+      overflow: hidden;
+      width: 262px;
+      height: 204px;
+      position: relative;
+      box-sizing: border-box;
+
+      @include onTablet {
+        width: 204px;
+        height: 304px;
+      }
+
+      @include onDesktop {
+        width: 368px;
+        height: 368px;
+      }
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+
+    &__image {
+      position: absolute;
+
+      &--phone {
+        left: 35px;
+        top: 0;
+        height: 457px;
+
+        @include onTablet {
+          left: 25px;
+        }
+
+        @include onDesktop {
+          left: 75px;
+          top: 25px;
+        }
+      }
+
+      &--tablet {
+        left: 35px;
+        top: 5px;
+        height: 546px;
+
+        @include onTablet {
+          left: 25px;
+          top: 10px;
+        }
+
+        @include onDesktop {
+          left: 75px;
+          top: 35px;
+        }
+      }
+
+      &--acc {
+        left: 50px;
+        top: 40px;
+        height: 295px;
+
+        @include onTablet {
+          top: 50px;
+        }
+
+        @include onDesktop {
+          top: 75px;
+        }
+      }
+    }
+
+    &--beige {
+      background-color: #fcdbc1;
+      border: 1px solid #fcdbc1;
+    }
+  
+    &--gray {
+      background-color: #8d8d92;
+      border: 1px solid #8d8d92;
+    }
+  
+    &--red {
+      background-color: #973d5f;
+      border: 1px solid #973d5f;
+    }
+  }
+}

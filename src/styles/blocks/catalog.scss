@@ -1,0 +1,19 @@
+.catalog {
+  &__items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 24px;
+
+    @include onTablet {
+      gap: 40px;
+      justify-content: start;
+    }
+
+    @include onDesktop {
+      column-gap: 16px;
+      row-gap: 40px;
+    }
+  }
+}

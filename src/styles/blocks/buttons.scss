@@ -1,0 +1,154 @@
+.button {
+  width: 176px;
+  height: 40px;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  background: $gray-primary;
+  box-sizing: border-box;
+
+  &--big {
+    width: 263px;
+    height: 48px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &:disabled {
+    cursor: auto;
+  }
+
+  &.active {
+    color: $green;
+    background: $white;
+    border: 1px solid $gray-elements;
+    box-shadow: none;
+  }
+}
+
+.slider-button {
+  width: 28px;
+  height: 28px;
+  box-sizing: border-box;
+  border: 1px solid $gray-icons;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include onTablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: $gray-primary;
+  }
+
+  &:disabled {
+    cursor: auto;
+    border-color: $gray-elements;
+  }
+
+  &__left {
+    background-image: url(../../images/icons/arrow-left.svg);
+
+    &:disabled {
+      background-image: url(../../images/icons/arrow-left-disabled.svg);
+    }
+  }
+
+  &__right {
+    background-image: url(../../images/icons/arrow-right.svg);
+
+    &:disabled {
+      background-image: url(../../images/icons/arrow-right-disabled.svg);
+    }
+  }
+
+  &__plus {
+    background-image: url(../../images/icons/plus.svg);
+  }
+
+  &__minus {
+    background-image: url(../../images/icons/minus.svg);
+
+    &:disabled {
+      background-image: url(../../images/icons/minus-disabled.svg);
+    }
+  }
+
+  &__down {
+    background-image: url(../../images/icons/arrow-right.svg);
+  }
+
+  &__paggination {
+    border: 1px solid $gray-icons;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active,
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+  }
+}
+
+.favorite-button {
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid $gray-icons;
+  background-color: #fff;
+  background-image: url(../../images/icons/heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--big {
+    width: 48px;
+    height: 48px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border-color: $gray-primary;
+  }
+
+  &:disabled {
+    cursor: auto;
+  }
+
+  &.active {
+    border-color: $gray-elements;
+    background-image: url(../../images/icons/heart-like.svg);
+  }
+}
+
+.back-button {
+  display: flex;
+  gap: 5px;
+  line-height: 16px;
+  align-items: self-end;
+  cursor: pointer;
+}
+
+.close-button {
+  border: none;
+  background-color: inherit;
+  position: absolute;
+  right: 8px;
+
+  @include onTablet {
+    right: 14px;
+  }
+
+  @include onDesktop {
+    right: 24px;
+  }
+}

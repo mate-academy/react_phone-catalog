@@ -1,0 +1,46 @@
+.phones {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__subtitle {
+      color: $gray-secondary;
+      padding-top: 8px;
+    }
+
+    &__dropdowns {
+      display: flex;
+      gap: 8px;
+
+      @include onTablet {
+        gap: 16px;
+      }
+    }
+  }
+
+  &__catalog {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 16px;
+    padding-top: 24px;
+
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+
+      &__paggination {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: max-content;
+      }
+    }
+  }
+}

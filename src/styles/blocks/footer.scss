@@ -1,0 +1,65 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $gray-elements;
+  box-sizing: border-box;
+  padding: 22px 32px;
+
+  @include onTablet {
+    padding: 0 82px;
+  }
+
+  @include onDesktop {
+    padding: 0 152px;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__centre {
+    display: none;
+
+    @include onTablet {
+      color: $gray-secondary;
+      display: inherit;
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    box-sizing: border-box;
+    height: 96px;
+    color: $gray-secondary;
+    padding-top: 42px;
+  }
+
+  &__link.active,
+  &__link:hover {
+    padding-top: 0;
+    &::before {
+      content: "";
+      width: inherit;
+      height: 3px;
+      display: block;
+      margin-bottom: 39px;
+      background-color: $gray-primary;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__icon {
+    transform: rotate(-90deg);
+  }
+}

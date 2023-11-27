@@ -1,0 +1,209 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $gray-elements;
+  box-sizing: border-box;
+
+  &__left {
+    display: flex;
+    padding-left: 20px;
+    color: $gray-secondary;
+
+    @include onTablet {
+      gap: 30px;
+      padding-left: 24px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+
+    &__menu {
+      display: none;
+      gap: 25px;
+
+      @include onTablet {
+        gap: 30px;
+        display: inherit;
+      }
+
+      @include onDesktop {
+        gap: 64px;
+      }
+    }
+
+    &__dropdown-menu {
+      display: flex;
+      justify-content: center;
+      width: calc(100vw - 175px);
+
+      @include onTablet {
+        display: none;
+      }
+
+      &__title {
+        padding-top: 25px;
+        color: $gray-secondary;
+
+        &.active {
+          color: $gray-primary;
+        }
+      }
+    }
+  }
+
+  &__link {
+    box-sizing: border-box;
+    padding-top: 25px;
+    height: 54px;
+
+    @include onTablet {
+      padding-top: 27px;
+      height: 64px;
+    }
+
+    @include onDesktop {
+      padding-top: 25px;
+    }
+  }
+
+  &__link.active,
+  &__link:hover {
+    &::after {
+      content: "";
+      width: inherit;
+      height: 3px;
+      display: block;
+      margin-top: 24px;
+      background-color: $gray-primary;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    height: 54px;
+    border-left: 1px solid $gray-elements;
+    padding: 0 8px;
+    position: relative;
+
+    @include onTablet {
+      padding: 0 14px;
+      height: 64px;
+    }
+
+    @include onDesktop {
+      padding: 0 24px;
+    }
+
+    &:hover {
+      background-color: $gray-background;
+    }
+
+    &__input {
+      outline-style: none;
+      border: none;
+      color: $gray-primary;
+      font-size: 12px;
+      font-weight: 600;
+      background-color: inherit;
+      width: 125px;
+
+      @include onTablet {
+        width: 150px;
+      }
+  
+      @include onDesktop {
+        width: 275px;
+      }
+
+      &::placeholder {
+        color: $gray-icons;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    height: 54px;
+
+    @include onTablet {
+      height: 64px;
+    }
+  }
+
+  &__icon {
+    width: 54px;
+    height: inherit;
+    border-left: 1px solid $gray-elements;
+
+    @include onTablet {
+      width: 64px;
+    }
+
+    &__cover {
+      position: absolute;
+    }
+
+    &__image {
+      position: relative;
+      left: 19px;
+
+      @include onTablet {
+        left: 24px;
+      }
+    }
+  
+    &__amount {
+      display: block;
+      position: relative;
+      z-index: 2;
+      bottom: 40px;
+      left: 30px;
+
+      width: 12px;
+      height: 12px;
+
+      color: $white;
+      font-size: 8px;
+      font-weight: 600;
+      line-height: 12px;
+      text-align: center;
+
+      box-sizing: border-box;
+      border: 1px solid $white;
+      border-radius: 70%;
+      background-color: $red;
+
+      @include onTablet {
+        left: 35px;
+        bottom: 45px;
+        width: 14px;
+        height: 14px;
+        line-height: 14px;
+        font-size: 9px;
+      }
+    }
+  
+    &::after {
+      content: "";
+      width: inherit;
+      height: 3px;
+      display: block;
+      position: absolute;
+      top: 52px;
+
+      @include onTablet {
+        top: 62px;
+      }
+    }
+    
+    &.active,
+    &:hover {
+      &::after {
+        background-color: $gray-primary;
+      }
+    }
+  }
+}

@@ -8,9 +8,13 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "bulma": "^0.9.3",
+    "classnames": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-favicon": "^2.0.3",
+    "react-router-dom": "^6.14.2",
+    "react-scripts": "^4.0.3",
+    "react-spinners": "^0.13.8"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",

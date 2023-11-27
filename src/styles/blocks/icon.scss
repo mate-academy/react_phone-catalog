@@ -1,0 +1,81 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &--search {
+    background-image: url(../../images/icons/search.svg);
+  }
+
+  &--cart {
+    height: 54px;
+
+    @include onTablet {
+      height: 64px;
+    }
+    background-image: url(../../images/icons/cart.svg);
+  }
+
+  &--favorites {
+    height: 54px;
+
+    @include onTablet {
+      height: 64px;
+    }
+    background-image: url(../../images/icons/heart.svg);
+  }
+
+  &--close {
+    background-image: url(../../images/icons/close.svg);
+  }
+
+  &--cross {
+    background-image: url(../../images/icons/cross.svg);
+  }
+
+  &--home {
+    background-image: url(../../images/icons/home.svg);
+  }
+
+  &--arrow,
+  &--nav {
+    background-image: url(../../images/icons/arrow-right.svg);
+  }
+
+  &--back {
+    background-image: url(../../images/icons/arrow-left.svg);
+  }
+
+  &--dropdown {
+    background-image: url(../../images/icons/arrow-left-disabled.svg);
+
+    &.active {
+      background-image: url(../../images/icons/arrow-right-disabled.svg);
+    }
+  }
+
+  &--dots {
+    width: 80px;
+    height: 24px;
+    cursor: auto;
+
+    @include onTablet {
+      width: 80px;
+      height: 24px;
+    }
+
+    &--0 {
+      background-image: url(../../images/icons/dots.svg);
+    }
+
+    &--1 {
+      background-image: url(../../images/icons/dots--1.svg);
+    }
+
+    &--2 {
+      background-image: url(../../images/icons/dots--2.svg);
+    }
+  }
+}

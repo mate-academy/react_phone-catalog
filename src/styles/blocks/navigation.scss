@@ -1,0 +1,27 @@
+.navigation {
+  margin: 0 auto;
+  padding-top: 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  max-width: 280px;
+  
+  @include onTablet {
+    max-width: 660px;
+  }
+
+  @include onDesktop {
+    max-width: 1136px;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    line-height: 16px;
+    @include onTablet {
+      align-items: self-end;
+    }
+  }
+}

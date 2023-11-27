@@ -1,0 +1,300 @@
+.cardPage {
+  &__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__zone {
+      display: flex;
+      flex-direction: column;
+
+      @include onTablet {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+    }
+
+    &__id {
+      text-align: end;
+
+      @include onDesktop {
+        display: none;
+      }
+    }
+  }
+
+  &__props {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-direction: column;
+
+    @include onTablet {
+      gap: 40px;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    &__images {
+      display: flex;
+      gap: 12px;
+      flex-direction: column;
+
+      @include onTablet {
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      &__small {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        width: 60px;
+
+        @include onTablet {
+          flex-direction: column;
+          width: 80px;
+          gap: 16px;
+        }
+      }
+
+      &__big {
+        display: flex;
+        justify-content: center;
+
+        width: 265px;
+        height: 265px;
+
+        @include onTablet {
+          width: 442px;
+          height: 442px;
+        }
+      }
+    }
+
+    &__image--cover {
+      display: flex;
+      justify-content: center;
+      border: 1px solid $gray-elements;
+      width: 60px;
+      height: 60px;
+
+      @include onTablet {
+        width: 80px;
+        height: 80px;
+      }
+
+      &:hover {
+        border: 1px solid $gray-primary;
+        cursor: pointer;
+      }
+
+      &.active {
+        border: 1px solid $gray-secondary;
+      }
+    }
+
+    &__image--small {
+      max-height: 65px;
+      max-width: 65px;
+
+      @include onTablet {
+        max-height: 80px;
+        max-width: 80px;
+      }
+    }
+
+    &__image--big {
+      height: 265px;
+      padding: 11px;
+
+      @include onTablet {
+        height: 442px;
+      }
+    }
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      width: 275px;
+      
+      @include onTablet {
+        width: 512px;
+      }
+
+      &__sections {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        width: 275px;
+
+        @include onTablet {
+          width: 660px;
+        }
+
+        @include onDesktop {
+          width: 320px;
+        }
+      }
+
+      &__section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &__circles {
+        display: flex;
+        gap: 8px;
+      }
+
+      &__circle {
+        border: 1px solid $gray-elements;
+        border-radius: 50%;
+
+        &--inner {
+          border: 2px solid $white;
+          height: 28px;
+          width: 28px;
+          border-radius: 50%;
+        }
+
+        &.active,
+        &:hover {
+          border: 1px solid $gray-primary;
+        }
+      }
+
+      &__capacities {
+        display: flex;
+        gap: 8px;
+      }
+
+      &__capacity {
+        width: 56px;
+        height: 32px;
+      }
+
+      &__price-section {
+        padding-top: 8px;
+      }
+
+      &__price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &--old {
+          color: $gray-secondary;
+          font-weight: 500;
+          text-decoration: line-through;
+        }
+      }
+      
+      &__buttons {
+        display: flex;
+        gap: 8px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      &__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      &__title {
+        color: $gray-secondary;
+      }
+
+      &__id {
+        display: none;
+
+        @include onDesktop {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__details {
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 275px;
+
+      @include onTablet {
+        width: 560px;
+      }
+
+      &__block {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 275px;
+
+      @include onTablet {
+        width: 512px;
+      }
+
+      &__block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      &__element {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__title-line {
+      border-bottom: 1px solid $gray-elements;
+    }
+
+    &__gray-text {
+      color: $gray-secondary;
+    }
+
+    &__info {
+      max-width: 150px;
+      text-align: end;
+
+      @include onTablet {
+        max-width: max-content;
+      }
+    }
+  }
+}
