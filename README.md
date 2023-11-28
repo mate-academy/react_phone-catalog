@@ -1,7 +1,3 @@
-# React Phone catalog
-- If you work alone follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
-- If you work in a team follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
-
 ## Description
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
@@ -118,3 +114,5 @@ to links container.
 ### Other tasks
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+
+[DEMO LINK](https://JulyaPetrovskaya.github.io/react_phone-catalog)
