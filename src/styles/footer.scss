@@ -1,0 +1,138 @@
+.footer {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 96px;
+  border-top: 1px solid var(--color-light-2);
+
+  @include max-laptop {
+    min-height: 88px;
+  }
+
+  @include max-tablet {
+    min-height: auto;
+    padding: 30px 0;
+  }
+
+  .section__container {
+    height: 100%;
+  }
+
+  &__block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    @include max-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__logos {
+    position: absolute;
+    left: 0;
+    display: flex;
+    width: 40px;
+
+    @include max-tablet {
+      position: relative;
+      left: auto;
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__logo {
+    position: relative;
+    width: 100%;
+  }
+
+  &__items {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+
+    @include max-tablet {
+      width: 100%;
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-right: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include max-laptop {
+      margin-right: 44px;
+    }
+
+    @include max-small {
+      text-align: center;
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-grey-2);
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: color var(--time);
+
+    &:hover {
+      color: var(--color-black);
+    }
+  }
+
+  &__anchor {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+
+    @include max-tablet {
+      position: relative;
+      right: auto;
+    }
+  }
+
+  &__label {
+    color: var(--color-grey-2);
+    margin-right: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__btn {
+    transform: rotate(-90deg);
+
+    &:active {
+      transform: rotate(-90deg) translateX(-5px);
+    }
+  }
+}

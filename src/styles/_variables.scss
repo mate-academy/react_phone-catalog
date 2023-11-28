@@ -1,0 +1,26 @@
+:root {
+  --color-white: #fff;
+  --color-light: #fafbfc;
+  --color-light-2: #e2e6e9;
+  --color-grey: #b4bdc3;
+  --color-grey-2: #89939a;
+  --color-black: #313237;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --header-height: 64px;
+  --header-height-with-search: 112px;
+  --font: 'Mont', sans-serif;
+  --time: 0.3s;
+}
+
+@include max-laptop {
+  :root {
+    --header-height: 60px;
+  }
+}
+
+@include max-phone {
+  :root {
+    --header-height: 56px;
+  }
+}

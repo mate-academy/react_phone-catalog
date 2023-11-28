@@ -8,21 +8,26 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "bulma": "^0.9.3",
+    "classnames": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-router-dom": "^6.20.0",
+    "react-router-hash-link": "^2.4.3",
+    "react-scripts": "^4.0.3",
+    "swiper": "^6.8.4"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
     "@mate-academy/cypress-tools": "^1.0.4",
     "@mate-academy/eslint-config-react": "*",
     "@mate-academy/eslint-config-react-typescript": "*",
-    "@mate-academy/scripts": "^1.2.1",
+    "@mate-academy/scripts": "^1.2.12",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "@types/react-router-hash-link": "^2.4.9",
     "cypress": "^9.5.3",
     "eslint": "^7.32.0",
     "eslint-plugin-cypress": "^2.11.2",

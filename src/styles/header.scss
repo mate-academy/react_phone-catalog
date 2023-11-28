@@ -1,0 +1,432 @@
+.header {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-light-2);
+
+  &__layer {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100% - var(--header-height));
+    background-color: rgba(226, 230, 233, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--time), visibility var(--time);
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+
+    &:last-child {
+      @include max-phone {
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+  }
+
+  &__logos {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 88px;
+    height: 100%;
+    padding: 0 24px;
+    transition: opacity var(--time);
+    margin-right: 40px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @include max-laptop {
+      width: 80px;
+      padding: 0 20px;
+      margin-right: 24px;
+    }
+
+    @include max-tablet-portrait {
+      margin-right: 0;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    width: 100%;
+  }
+
+  &__items {
+    position: relative;
+    display: flex;
+    list-style: none;
+
+    @include max-tablet-portrait {
+      position: fixed;
+      top: var(--header-height);
+      right: 0;
+      flex-direction: column;
+      width: 481px;
+      height: calc(100% - var(--header-height));
+      background-color: var(--color-white);
+      overflow: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(481px);
+      transition: opacity var(--time), visibility var(--time),
+        transform var(--time);
+    }
+
+    @include max-tablet {
+      width: 441px;
+      transform: translateX(441px);
+    }
+
+    @include max-phone {
+      width: 100%;
+      transform: translateX(100%);
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-right: 64px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @include max-laptop {
+      margin-right: 44px;
+    }
+
+    @include max-tablet-portrait {
+      width: 100%;
+      height: 46px;
+      border-bottom: 1px solid var(--color-light-2);
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-grey-2);
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: color var(--time);
+
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 3px;
+      background-color: var(--color-black);
+      transition: width var(--time);
+
+      @include max-tablet-portrait {
+        right: auto;
+        left: 0;
+        width: 2px;
+        height: 0;
+        transition: height var(--time);
+      }
+
+      @include max-phone {
+        display: none;
+      }
+    }
+
+    &:hover {
+      color: var(--color-black);
+    }
+
+    &--active {
+      color: var(--color-black);
+
+      &::before {
+        right: auto;
+        left: 0;
+        width: 100%;
+
+        @include max-tablet-portrait {
+          bottom: auto;
+          top: 0;
+          width: 2px;
+          height: 100%;
+        }
+      }
+    }
+
+    @include max-tablet-portrait {
+      padding: 0 20px;
+    }
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 328px;
+    border-left: 1px solid var(--color-light-2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--time), visibility var(--time);
+
+    @include max-laptop {
+      width: 300px;
+    }
+
+    @include max-tablet {
+      width: 260px;
+    }
+
+    @include max-phone {
+      order: 1;
+      width: 100%;
+      height: 50%;
+      border-left: none;
+      border-top: 1px solid var(--color-light-2);
+    }
+  }
+
+  &__input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0 50px 0 24px;
+    transition: color var(--time);
+
+    &::placeholder {
+      color: var(--color-grey);
+    }
+  }
+
+  &__submit {
+    position: absolute;
+    right: 24px;
+    display: flex;
+    width: 16px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    transition: opacity var(--time);
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    display: flex;
+    border-left: 1px solid var(--color-light-2);
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 100%;
+    transition: background-color var(--time);
+
+    &::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 3px;
+      background-color: var(--color-black);
+      transition: width var(--time);
+    }
+
+    &:not(&:last-child) {
+      border-right: 1px solid var(--color-light-2);
+    }
+
+    &:hover {
+      background-color: var(--color-light-2);
+    }
+
+    &--active {
+      &::before {
+        right: auto;
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    @include max-laptop {
+      width: 60px;
+    }
+
+    @include max-phone {
+      width: 56px;
+    }
+  }
+
+  &__imgs {
+    position: relative;
+    display: flex;
+    width: 16px;
+  }
+
+  &__img {
+    position: relative;
+    width: 100%;
+  }
+
+  &__counter {
+    position: absolute;
+    z-index: 1;
+    top: -7px;
+    right: -7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-white);
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+    background-color: var(--color-red);
+  }
+
+  &__burgers {
+    display: none;
+    cursor: pointer;
+    border-left: 1px solid var(--color-light-2);
+
+    @include max-tablet-portrait {
+      display: flex;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 24px;
+    height: 14px;
+
+    &::before,
+    &::after,
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-black);
+      transition: top var(--time), bottom var(--time), left var(--time),
+        transform var(--time), opacity var(--time), visibility var(--time);
+    }
+
+    &::before {
+      content: '';
+      top: 0;
+    }
+
+    &::after {
+      content: '';
+      bottom: 0;
+    }
+  }
+
+  &--menu-open {
+    .header__layer {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .header__items {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .header__burger {
+      &::before {
+        top: 6px;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 6px;
+        transform: rotate(-45deg);
+      }
+
+      span {
+        left: 10px;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &--search-visible {
+    @include max-phone {
+      height: var(--header-height-with-search);
+    }
+
+    .header__logos {
+      @include max-phone {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        height: 50%;
+      }
+    }
+
+    .header__layer,
+    .header__items {
+      @include max-phone {
+        top: var(--header-height-with-search);
+        height: calc(100% - var(--header-height-with-search));
+      }
+    }
+
+    .header__search {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .header__icons,
+    .header__burgers {
+      @include max-phone {
+        height: 50%;
+      }
+    }
+  }
+}
