@@ -1,0 +1,75 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+  box-sizing: content-box;
+
+  @include onDesktop {
+    width: $cardWidth * 4 + $cardsGapHor * 3;
+  }
+
+  @include onLaptop {
+    width: $cardWidth * 3 + $cardsGapHor * 2;
+  }
+
+  @include onTablet {
+    width: $cardWidth * 2 + $cardsGapHor;
+  }
+
+  @include onMobile {
+    width: $cardWidth;
+  }
+
+  &__header-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+    margin: 0 0 24px;
+  }
+
+  &__cards-block {
+    display: flex;
+    box-sizing: content-box;
+    justify-content: flex-start;
+    overflow-x: hidden;
+  }
+
+  &__card {
+    margin-right: $cardsGapHor;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      margin-right: 0;
+    }
+  }
+
+  &__buttons-container {
+    display: flex;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__button {
+
+    &--next {
+      margin-left: 16px;
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+
+  max-width: fit-content;
+
+  @include onMobile {
+    align-items: center;
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+    margin: 0 0 24px;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+
+    @include onDesktop {
+      width: $cardWidth * 4 + $cardsGapHor * 3;
+    }
+
+    @include onLaptop {
+      width: $cardWidth * 3 + $cardsGapHor * 2;
+    }
+
+    @include onTablet {
+      width: $cardWidth * 2 + $cardsGapHor;
+
+      flex-wrap: wrap;
+    }
+
+    @include onMobile {
+      width: 80vw;
+
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__link {
+    margin-right: 16px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    @include onTablet {
+      &:nth-child(even) {
+        margin-right: 0;
+      }
+    }
+
+    @include onMobile {
+      margin: 0 0 32px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

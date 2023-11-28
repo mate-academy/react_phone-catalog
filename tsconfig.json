@@ -1,6 +1,6 @@
 {
   "extends": "@mate-academy/students-ts-config",
   "include": [
-    "src"
+    "src", "src/components", "src/custom.d.ts"
   ]
 }

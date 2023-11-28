@@ -1,0 +1,62 @@
+@import "../../helpers/mixins.scss";
+@import "../../helpers/variables.scss";
+
+.path {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__container {
+    text-decoration: none;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+  }
+
+  &__home-icon {
+    background-image: url("../../assets/svg/PathHome.svg");
+
+    @include onMobile {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__arrow-right-icon {
+    background-image: url("../../assets/svg/PathRight.svg");
+  }
+
+  &__path-name {
+    margin: 0 8px 0 0;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    height: fit-content;
+    color: $secondaryColor;
+    flex-grow: 1;
+    max-width: fit-content;
+    transition: all 0.3s;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    &--link {
+      &:hover {
+        color: $primaryColor;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-block-container {
+    display: flex;
+
+    @include onMobile {
+      margin-bottom: 8px;
+    }
+  }
+}
