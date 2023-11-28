@@ -1,0 +1,42 @@
+@import '../../styles/main.scss';
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  .slider-container {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
+
+  }
+
+  .product-card {
+    width: 272px; // Adjust this based on your product card width
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    right: 0;
+  }
+}

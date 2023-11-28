@@ -1,0 +1,171 @@
+@import '../../styles/main.scss';
+
+.card {
+  box-sizing: border-box;
+  // width: 272px;
+  // height: 507px;
+  padding: 32px 24px 24px 24px;
+  border: 1px solid #E2E6E9;
+  font-family: Mont, sans-serif;
+  background-color: #fff;
+  // margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 272px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &__imageContainer {
+    // width: 208px;
+    height: 208px;
+    position: relative;
+    // box-sizing: border-box;
+    margin-bottom: 24px;
+    // width: 100%;
+    // max-height: 208px;
+    // overflow: hidden;
+    padding: 0 8px;
+    max-width: fit-content;
+    align-self: center;
+  }
+
+  &__image {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+    // object-fit: cover;
+    // object-position: center;
+    max-height: 208px;
+  }
+
+  &__item {
+    height: 42px;
+    @extend %body-text;
+    color: $colorPrimary;
+    margin-bottom: 7px;
+  }
+
+  &__price {
+    position: relative;
+    margin-bottom: 23px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &__text {
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 140%;
+      color: $colorPrimary;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: -7px;
+      left: 0;
+      right: 0;
+      content: "";
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+
+    &__sale {
+      @extend %old-price-text;
+      text-decoration-line: line-through;
+      color: $colorSecondary;
+
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &__items {
+      @extend %small-text;
+      color: $colorSecondary;
+    }
+
+    &__item {
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__values {
+      display: flex;
+      flex-direction: column;
+      @extend %small-text;
+      color: $colorPrimary;
+    }
+
+    &__value {
+      text-align: right;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__shopContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    width: 176px;
+    height: 40px;
+    background-color: $colorPrimary;
+    @extend %buttons-text;
+    text-align: center;
+    color: #FFFFFF;
+    transition: all 0.5s;
+
+    &:hover {
+      box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26)
+    }
+
+    &:active {
+      border: 1px solid #E2E6E9;
+      color: #27AE60;
+      background-color: #fff;
+    }
+  }
+
+  &__favoritesBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #B4BDC4;
+    transition: all 0.5s;
+
+    &:hover {
+      border: 1px solid $colorPrimary;
+    }
+  }
+
+  &__favoritesImg {
+    width: 15.34px;
+    height: 13.55px;
+
+
+    &:active {
+      background-color: $colorRed;
+
+      path {
+        fill: $colorRed;
+      }
+    }
+  }
+}

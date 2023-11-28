@@ -1,0 +1,183 @@
+@import '../../styles/main.scss';
+
+.pagination {
+  // display: flex;
+  // list-style: none;
+  // align-items: center;
+  // padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  &__container {
+    display: flex;
+    list-style-type: none;
+  }
+
+  &__btn {
+    border: 1px solid #B4BDC3;
+    padding: 8px;
+    height: 32px;
+    width: 32px;
+
+    &.disabled {
+      pointer-events: none;
+      border: 1px solid #E2E6E9;
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__item {
+    font-family: Mont, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid #E2E6E9;
+    padding: 7px 13px 4px 14px;
+    height: 32px;
+    text-align: center;
+    margin: auto 8px;
+    color: #000000;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    // min-width: 32px;
+
+    // &:first-child {
+    //   margin-right: 16px;
+    // }
+
+    // &:last-child {
+    //   margin-left: 16px;
+    // }
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &.selected {
+      color: #fff;
+      background-color: #313237;
+    }
+
+    // &.disabled {
+    //   pointer-events: none;
+
+    //   // .arrow::before {
+    //   //   // border-right: 0.12em solid rgba(0, 0, 0, 0.43);
+    //   //   // border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+    //   // }
+
+    //   &:hover {
+    //     background-color: transparent;
+    //     cursor: default;
+    //   }
+    // }
+  }
+
+  &__dots {
+    background-color: transparent;
+    cursor: default;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+    }
+  }
+
+  &__arrow {
+    // &::before {
+    //   position: relative;
+    //   content: '';
+    //   display: inline-block;
+    //   width: 0.4em;
+    //   height: 0.4em;
+    //   border-right: 0.12em solid rgba(0, 0, 0, 0.87);
+    //   border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+    // }
+
+    &--left {
+      transform: rotate(-180deg);
+    }
+
+    // &--right {
+    //   // transform: rotate(45deg);
+    // }
+
+  }
+}
+
+.pagination-container {
+  display: flex;
+  list-style-type: none;
+
+  .pagination-item {
+    padding: 0 12px;
+    height: 32px;
+    text-align: center;
+    margin: auto 4px;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: 0.01071em;
+    border-radius: 16px;
+    line-height: 1.43;
+    font-size: 13px;
+    min-width: 32px;
+
+    &.dots:hover {
+      background-color: transparent;
+      cursor: default;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .arrow {
+      &::before {
+        position: relative;
+        /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
+        content: '';
+        /* By using an em scale, the arrows will size with the font */
+        display: inline-block;
+        width: 0.4em;
+        height: 0.4em;
+        border-right: 0.12em solid rgba(0, 0, 0, 0.87);
+        border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+      }
+
+      &.left {
+        transform: rotate(-135deg) translate(-50%);
+      }
+
+      &.right {
+        transform: rotate(45deg);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      border: 1px solid #E2E6E9;
+
+      .arrow::before {
+        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
+        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+      }
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}

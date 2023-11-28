@@ -1,0 +1,22 @@
+@import '../../styles/main.scss';
+
+.favoritesPage {
+  font-family: Mont, sans-serif;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+    margin-bottom: 40px;
+  }
+}
