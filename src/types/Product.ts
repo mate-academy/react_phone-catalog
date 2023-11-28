@@ -1,13 +1,15 @@
-export interface Product {
-  id: string;
-  age: number;
-  capacity: string;
-  discount: number;
-  imageUrl: string;
+export type Product = {
+  id: number;
+  category: string;
+  phoneId: string;
+  itemId: string;
   name: string;
+  fullPrice: number;
   price: number;
-  ram: string;
-  type: string;
   screen: string;
-  snippet: string;
-}
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
+};

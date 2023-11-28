@@ -2,6 +2,7 @@
 import { useContext, useEffect, useMemo } from 'react';
 import { MainContext } from '../context/MainContext';
 import { Banner } from '../components/Banner';
+import { ProductsSlider } from '../components/ProductsSlider';
 
 export const HomePage = () => {
   const {
@@ -18,32 +19,22 @@ export const HomePage = () => {
   }, []);
 
   const getHotPriceProducts = useMemo(() => {
-    return products;
+    return products.sort((a, b) => {
+      return b.fullPrice - b.price - (a.fullPrice - a.price);
+    });
   }, [products]);
 
   const getBrandNewProducts = useMemo(() => {
     return products
-      .filter(({ discount }) => discount === 0)
+      .filter(({ fullPrice, price }) => fullPrice - price <= 40)
       .sort((a, b) => b.price - a.price);
   }, [products]);
 
   return (
     <>
       <Banner />
-
-      {getHotPriceProducts.map((product) => (
-        <h3 className="h3" key={product.id}>
-          <p>{product.price}</p>
-        </h3>
-      ))}
-
-      <br />
-
-      {getBrandNewProducts.map((product) => (
-        <h3 className="h3" key={product.id}>
-          <p>{product.price}</p>
-        </h3>
-      ))}
+      <ProductsSlider title="Hot prices" items={getHotPriceProducts} />
+      <ProductsSlider title="Brand new models" items={getBrandNewProducts} />
     </>
   );
 };

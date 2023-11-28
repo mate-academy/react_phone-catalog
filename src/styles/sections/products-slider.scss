@@ -1,0 +1,71 @@
+.products-slider {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 80px;
+
+  @include max-laptop {
+    padding-bottom: 60px;
+  }
+
+  @include max-phone {
+    padding-bottom: 40px;
+  }
+
+  &__block {
+    position: relative;
+    width: 100%;
+  }
+
+  &__title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+
+    @include max-phone {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__swiper {
+    position: relative;
+    width: 100%;
+    padding-top: 64px;
+
+    @include max-tablet {
+      overflow: visible;
+    }
+
+    @include max-phone {
+      padding-top: 0;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      top: 5px;
+
+      @include max-phone {
+        display: none;
+      }
+    }
+
+    .swiper-button-prev {
+      left: auto;
+      right: 48px;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+}
