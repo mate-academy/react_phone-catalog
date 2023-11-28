@@ -11,22 +11,22 @@ export const ProductImagesSlider: FC<Props> = ({ images }) => {
   const [isSelected, setIsSelected] = useState(images[0]);
 
   return (
-    <div className="slider">
-      <div className="slider__col">
+    <div className="sliders">
+      <div className="sliders__col">
         {images.map((image) => (
           <button
             key={image}
             aria-label="image"
             type="button"
-            className={classNames('slider__button', {
-              'slider__button--active': isSelected === image,
+            className={classNames('sliders__button', {
+              'sliders__button--active': isSelected === image,
             })}
-            style={{ backgroundImage: `url(_new/${image})` }}
+            style={{ backgroundImage: `url(${image})` }}
             onClick={() => setIsSelected(image)}
           />
         ))}
       </div>
-      <img className="slider__main" src={`_new/${isSelected}`} alt="main" />
+      <img className="sliders__main" src={`${isSelected}`} alt="main" />
     </div>
   );
 };

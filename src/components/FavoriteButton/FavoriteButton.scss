@@ -12,7 +12,7 @@
     transition: all 0.3s;
 
     &::after {
-      content: url("../../assets/svg/Favourites.svg");
+      content: url("../../assets/svg/Favorite.svg");
       position: absolute;
       height: 16px;
       top: 11px;
@@ -35,7 +35,7 @@
       border-color: $elementsColor;
 
       &::after {
-        content: url("../../assets/svg/Favoruites_selected.svg");
+        content: url("../../assets/svg/Favorite__selected.svg");
       }
     }
   }

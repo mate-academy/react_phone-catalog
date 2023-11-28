@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import React, { FC, useEffect, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ProductDetails } from '../../types/ProductDetails';
 import { getProductDetails } from '../../utils/fetchData';
 import { getSuggestProducts } from '../../helpers/pagesMethods';
@@ -53,6 +53,18 @@ export const ItemCardPage: FC = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handeBackNavigateClick = () => {
+    navigate(-1);
+  };
+
+  const handleKeyBack = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter') {
+      handeBackNavigateClick();
+    }
+  };
+
   useEffect(() => {
     handleLoading();
   }, [productId]);
@@ -98,6 +110,22 @@ export const ItemCardPage: FC = () => {
             title={category}
             productName={currentProduct.name}
           />
+
+          <div className="products-page__back-button back-button">
+            <div className="back-button__arrow" />
+
+            <div
+              onClick={handeBackNavigateClick}
+              className="back-button__button"
+              role="button"
+              tabIndex={0}
+              aria-label="back-button"
+              onKeyDown={handleKeyBack}
+              data-cy="backButton"
+            >
+              Back
+            </div>
+          </div>
 
           <h1
             className="

@@ -4,7 +4,7 @@
 .slider {
   display: flex;
   flex-direction: column;
-
+  padding-bottom: 80px;
   box-sizing: content-box;
 
   @include onDesktop {

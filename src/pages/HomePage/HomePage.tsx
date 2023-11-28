@@ -15,9 +15,9 @@ import './HomePage.scss';
 import { MobileSwiper } from '../../components/MobileSwiper/MobileSwiper';
 
 const carouselImagesUrl = [
-  './_new/img/banner-phones.png',
-  './_new/img/banner-tablets.png',
-  './_new/img/banner-accessories.png',
+  'img/banner-phones.png',
+  'img/banner-tablets.png',
+  'img/banner-accessories.png',
 ];
 
 export const HomePage: FC = () => {

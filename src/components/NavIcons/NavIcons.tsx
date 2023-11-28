@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const NavIcons: FC = () => {
   return (
     <>
-      <NavLink to="/favourites">
+      <NavLink to="/favorites">
         <img src="img/Icons/Favourites.svg" alt="Favourites" />
       </NavLink>
 

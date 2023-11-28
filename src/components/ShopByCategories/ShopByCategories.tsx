@@ -25,21 +25,21 @@ export const ShopByCategories: FC<Props> = ({
       >
         <CategoriesLink
           url="/phones"
-          imageUrl="_new/img/category-phones.png"
+          imageUrl="img/category-phones.png"
           title="Mobile phones"
           amount={phonesAmount}
         />
 
         <CategoriesLink
           url="/tablets"
-          imageUrl="_new/img/category-tablets.png"
+          imageUrl="img/category-tablets.png"
           title="Tablets"
           amount={tabletsAmount}
         />
 
         <CategoriesLink
           url="/accessories"
-          imageUrl="_new/img/category-accessories.png"
+          imageUrl="img/category-accessories.png"
           title="Accessories"
           amount={accessoriesAmount}
         />

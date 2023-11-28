@@ -1,5 +1,4 @@
 import { FC } from 'react';
-// import Slider from 'react-slick';
 import Slider, { CustomArrowProps } from 'react-slick';
 import classNames from 'classnames';
 

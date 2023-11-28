@@ -1,11 +1,12 @@
 import { FC, useState } from 'react';
 import { CatalogProduct } from '../../types/CatalogProduct';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { FavoriteItem } from '../../types/FavoriteItem';
 
 import './ProductsList.scss';
 
 type Props = {
-  products: CatalogProduct[];
+  products: CatalogProduct[] | FavoriteItem[];
   isSlider: boolean;
 };
 

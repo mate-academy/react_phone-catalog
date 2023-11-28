@@ -12,6 +12,13 @@
 
 @font-face {
   font-family: "Mont";
-  src: url("./fonts/Mont-Bold.otf");
+  src: url("./fonts/Mont-SemiBold.otf");
   font-weight: 600;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Mont", sans-serif;
 }

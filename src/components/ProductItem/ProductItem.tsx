@@ -6,9 +6,10 @@ import { CatalogProduct } from '../../types/CatalogProduct';
 
 import './ProductItem.scss';
 import { CardButtons } from '../CardButtons/CardButtons';
+import { FavoriteItem } from '../../types/FavoriteItem';
 
 type Props = {
-  product: CatalogProduct;
+  product: CatalogProduct | FavoriteItem;
   isSlider: boolean;
   isProductsList: boolean,
 };
@@ -44,7 +45,7 @@ export const ProductItem: FC<Props> = ({
       >
         <div className="image-container">
           <img
-            src={`./_new/${image}`}
+            src={`${image}`}
             alt={name}
             className="card__image"
           />

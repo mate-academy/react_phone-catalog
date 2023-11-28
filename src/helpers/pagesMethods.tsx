@@ -3,6 +3,7 @@ import React from 'react';
 import { CatalogProduct } from '../types/CatalogProduct';
 import { SortBy } from './enums';
 import { getProducts } from '../utils/fetchData';
+import { FavoriteItem } from '../types/FavoriteItem';
 
 export const handleSort = (array: CatalogProduct[], sortValue: string) => {
   switch (sortValue) {
@@ -149,4 +150,15 @@ export const getMemoryCapacity = (capacity: string) => {
   const number = parseFloat(capacity);
 
   return `${number}${capacity.replace(`${number}`, '')}`;
+};
+
+export const getCurrentFavorites = (
+  query: string,
+  products: FavoriteItem[],
+) => {
+  const newArray = products
+    .filter((product: FavoriteItem) => product.name.toLowerCase()
+      === query.toLowerCase());
+
+  return newArray;
 };

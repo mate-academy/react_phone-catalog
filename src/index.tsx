@@ -13,6 +13,9 @@ import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { ItemCardPage } from './pages/ItemCardPage/ItemCardPage';
+import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+
+import './index.scss';
 
 ReactDOM.render(
   <Router>
@@ -26,9 +29,17 @@ ReactDOM.render(
           <Route path=":productId" element={<ItemCardPage />} />
         </Route>
 
-        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":productId" element={<ItemCardPage />} />
+        </Route>
 
-        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="accessories">
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":productId" element={<ItemCardPage />} />
+        </Route>
+
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Route>
 
       <Route path="notfound" element={<NotFoundPage />} />
