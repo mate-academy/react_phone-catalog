@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import './Header.scss';
 
 import { Link, NavLink } from 'react-router-dom';
+
+// tslint-disable-next-line
 import Logo from '../../Images/Icons/logo.svg';
 
 export const Header = () => {
