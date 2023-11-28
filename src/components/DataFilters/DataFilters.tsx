@@ -6,7 +6,7 @@ import { Phones } from '../../types/Phones';
 import './dataFilters.scss';
 import ArrowDown from '../../images/icons/arrow_down.svg';
 import { FilterType } from '../../types/FilterType';
-import { SearchContext } from '../ContextProvider';
+import { SearchContext } from '../ContextProviders';
 
 type Props = {
   dataPhones: Phones[],
@@ -55,13 +55,13 @@ export const DataFilters: React.FC<Props> = ({
       switch (typeOfFilter) {
         case FilterType.Age:
           return dataPhones.sort((a, b) => b.year - a.year)
-          && filterInput;
+            && filterInput;
         case FilterType.Name:
           return dataPhones.sort((a, b) => a.name.localeCompare(b.name))
-          && filterInput;
+            && filterInput;
         case FilterType.Price:
           return dataPhones.sort((a, b) => b.fullPrice - a.fullPrice)
-          && filterInput;
+            && filterInput;
         default:
           return item;
       }

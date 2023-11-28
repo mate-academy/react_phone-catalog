@@ -6,6 +6,10 @@ export const getData = () => {
   return client.get<Phones[]>();
 };
 
+// export const getDataDetails = () => {
+//   return client.get<ProductDetailsType[]>();
+// };
+
 export const getProductDetails = (productId: string) => {
-  return client2.get<ProductDetailsType>(`/products/${productId}.json`);
+  return client2.get<ProductDetailsType>(productId);
 };

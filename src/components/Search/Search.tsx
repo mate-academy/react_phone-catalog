@@ -1,25 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Search.scss';
+import { useSearchParams } from 'react-router-dom';
 import SearchIcon from '../../images/icons/Search.png';
-import { SearchContext } from '../ContextProvider';
+import { getSearchWith } from '../../utils/searchHelper';
 
 type Props = {
   placeholder: string,
 };
 
 export const Search: React.FC<Props> = ({ placeholder }) => {
-  const searchContext = useContext(SearchContext);
+  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const searchContext = useContext(SearchContext);
+
+  const getQuery = () => {
+    const paramsToUpdate = {
+      query,
+    };
+
+    setSearchParams(getSearchWith(searchParams, paramsToUpdate));
+  };
+
+  useEffect(() => {
+    getQuery();
+  }, [query]);
+
+  // const getSelectedValue = () => {
+  //   if (type === 'items-on-page') {
+  //     const paramsToUpdate = {
+  //       perPage: value,
+  //       page: '1',
+  //     };
+
+  //     setSearchParams(getSearchWith(searchParams, paramsToUpdate));
+  //   }
+  // };
 
   return (
     <div className="searchForm">
       <label className="searchForm__label">
         <input
-          value={searchContext?.searchValue}
+          value={query}
           type="Search"
           placeholder={placeholder}
           className="searchForm__input"
           onChange={
-            (event) => searchContext?.setSearchValue(event.target.value)
+            (event) => setQuery(event.target.value)
           }
         />
         <img

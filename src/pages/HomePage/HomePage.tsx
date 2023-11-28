@@ -68,9 +68,13 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
+    const controller = new AbortController();
+
     loadProductsData();
     getHotPriceProducts();
     getBrandNewProducts();
+
+    return () => controller.abort();
   }, []);
 
   return (

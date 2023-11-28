@@ -16,8 +16,8 @@ export const Header = () => {
   const tabletsLocation = location.pathname.includes('tablets');
   const accessoriesLocation = location.pathname.includes('accessories');
   const searchCondition = phonesLocation
-  || tabletsLocation
-  || accessoriesLocation;
+    || tabletsLocation
+    || accessoriesLocation;
   const [placeholderValue, setPlaceholderValue] = useState('');
 
   useMemo(() => {
@@ -101,19 +101,19 @@ export const Header = () => {
         {searchCondition && (
           <Search placeholder={placeholderValue} />
         )}
+        <Link to="/favorites" className="header__iconsBlock">
+          {/* <div className="header__iconsBlock"> */}
 
-        <div className="header__iconsBlock">
-          <Link to="/favorites">
-            <div className="header__iconsFavorites">
-              <img
-                src={FavoritesIcon}
-                alt="Favorites"
-                className="header__iconsFavoritesImage"
-              />
-            </div>
-          </Link>
+          <div className="header__iconsFavorites">
+            <img
+              src={FavoritesIcon}
+              alt="Favorites"
+              className="header__iconsFavoritesImage"
+            />
+          </div>
 
-        </div>
+          {/* </div> */}
+        </Link>
 
         <div className={classNames(
           'header__iconsBlock',

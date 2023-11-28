@@ -10,7 +10,8 @@ import { TabletsPage } from './pages/TabletsPage';
 import { PhonesPage } from './pages/PhonesPage';
 import { CartPage } from './pages/CartPage';
 import { HomePage } from './pages/HomePage';
-import { ContextProvider } from './components/ContextProvider/ContextProvider';
+import { ContextProvider }
+  from './components/ContextProviders/ContextProviders';
 
 const App = () => {
   return (
@@ -22,15 +23,15 @@ const App = () => {
             <Route path="/home" element={<HomePage />} />
             <Route path="/" element={<Navigate to="/home" replace />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/phones" element={<PhonesPage />} />
-            <Route path="/phones/:id" element={<ProductDetailsPage />} />
+            <Route path="/phones">
+              <Route index element={<PhonesPage />} />
+              <Route path=":phonesId" element={<ProductDetailsPage />} />
+            </Route>
             <Route path="/tablets" element={<TabletsPage />} />
             <Route path="/accessories" element={<AccessoriesPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-
-          <PhonesPage />
         </div>
 
         <Footer />

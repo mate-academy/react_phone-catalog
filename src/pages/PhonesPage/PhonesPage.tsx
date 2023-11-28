@@ -1,28 +1,74 @@
 import { useEffect, useState } from 'react';
 import './phonesPage.scss';
+import { useSearchParams } from 'react-router-dom';
 import { getData } from '../../api/data';
 import { Phones } from '../../types/Phones';
-import { DataFilters } from '../../components/DataFilters';
-import { ItemsOnPage } from '../../components/ItemsOnPage';
 import { ProductList } from '../../components/ProductList';
-import { Pagination } from '../../components/Pagination';
+// import { PaginationSearchParams }
+//   from '../../components/Pagination/PaginationSearchParams';
+// import { DataFilters } from '../../components/DataFilters';
+// import { ItemsOnPage } from '../../components/ItemsOnPage';
+// import { ProductList } from '../../components/ProductList';
+// import { Pagination } from '../../components/Pagination';
+import { getSearchWith } from '../../utils/searchHelper';
+import { PaginationSearchParams }
+  from '../../components/Pagination/PaginationSearchParams';
+import { getSortedProducts } from '../../utils/getSortedProducts';
+import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
 export const PhonesPage = () => {
-  // const [isPhonesDataLoading, setIsPhonesDataLoading] = useState(false);
   const [dataPhones, setDataPhones] = useState<Phones[]>([]);
-  const [filtredPhones, setFiltredPhones] = useState<Phones[]>([]);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(dataPhones.length);
-  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const handleChangeItemsPerPage = (value: number) => {
-    setItemsPerPage(value);
-    setCurrentPage(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(4);
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  // const indexOflastItem = currentPage * itemsPerPage;
+  // const indexOfFirstItem = indexOflastItem - itemsPerPage;
+  // let paginatedData = dataPhones.slice(indexOfFirstItem, indexOflastItem);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const itemsOnPage = searchParams.get('perPage') || 'All';
+  const currentPage = searchParams.get('page') || '1';
+  const sort = searchParams.get('sort') || '';
+  const query = searchParams.get('query') || '';
+
+  const firstPageIndex = (+currentPage - 1) * itemsPerPage;
+  const lastPageIndex = firstPageIndex + itemsPerPage;
+
+  const sortedPhoneList
+    = getSortedProducts(dataPhones, sort, query);
+
+  let paginatedData = sortedPhoneList.slice(firstPageIndex, lastPageIndex);
+
+  paginatedData = itemsOnPage === 'All'
+    ? paginatedData = sortedPhoneList
+    : paginatedData;
+
+  const updatedPerPage = () => {
+    if (itemsOnPage !== 'All') {
+      setItemsPerPage(+itemsOnPage);
+    }
   };
 
-  const onPageChange = (page: number) => {
-    if (page !== currentPage) {
-      setCurrentPage(page);
-    }
+  // const onPageChange = (page: number) => {
+  //   if (page !== +currentPage) {
+  //     setCurrentPage(page);
+  //   }
+  // };
+
+  const handlePageChange = (page: number) => {
+    const paramsToUpdate = {
+      page: page.toString(),
+    };
+
+    setSearchParams(getSearchWith(searchParams, paramsToUpdate));
+  };
+
+  const getSelectedPage = () => {
+    const paramsToUpdate = {
+      page: currentPage.toString(),
+    };
+
+    setSearchParams(getSearchWith(searchParams, paramsToUpdate));
   };
 
   const getPhones = async () => {
@@ -30,7 +76,7 @@ export const PhonesPage = () => {
       // setIsPhonesDataLoading(true);
       const dataProducts = await getData();
       const phones
-      = dataProducts.filter(product => product.category === 'phones');
+        = dataProducts.filter(product => product.category === 'phones');
 
       setDataPhones(phones);
     } catch (error) {
@@ -44,34 +90,52 @@ export const PhonesPage = () => {
     getPhones();
   }, []);
 
-  // const mobilePhones = productsData.filter(product => product.category === 'phones');
+  useEffect(() => {
+    updatedPerPage();
+  }, [itemsOnPage]);
+
+  useEffect(() => {
+    getSelectedPage();
+  }, [currentPage]);
+
   const countMobilePhones = dataPhones.length;
 
   return (
     <>
+      <Breadcrumbs />
       <h1 className="phonesPage__title">Mobile phones</h1>
       <p className="phonesPage__description">{`${countMobilePhones} models`}</p>
-      <div className="phonesPage__sortContainer">
-        <DataFilters
+
+      {/* <DataFilters
           dataPhones={dataPhones}
           setFiltredPhones={setFiltredPhones}
         />
         <ItemsOnPage
           setItemsPerPage={handleChangeItemsPerPage}
-        />
-      </div>
+          // dataPhones={dataPhones}
+          dataLength={dataPhones.length}
+        /> */}
 
       <ProductList
-        dataPhones={filtredPhones}
+        dataPhones={paginatedData}
       />
-
-      <Pagination
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        dataPhones={dataPhones}
-        onPageChange={onPageChange}
-        setCurrentPage={setCurrentPage}
-      />
+      {itemsOnPage !== 'All' && (
+        <PaginationSearchParams
+          countDatas={sortedPhoneList.length} // totalCount
+          itemsPerPage={itemsPerPage} // pageSize
+          onPageChange={handlePageChange}// onPageChange
+          currentPage={+currentPage}
+        />
+      )}
+      {/* {itemsOnPage !== 'All' && (
+        <Pagination
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          countDatas={countMobilePhones}
+          onPageChange={onPageChange}
+          setCurrentPage={setCurrentPage}
+        />
+      )} */}
 
     </>
   );

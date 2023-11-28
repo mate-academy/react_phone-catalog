@@ -14,6 +14,15 @@
 
   &__mainDetales {
     margin-bottom: 80px;
+
+    &__productID {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      color: $colorIcons;
+    }
+
     &__imagesContainer {
       display: flex;
       justify-content: center;
@@ -29,21 +38,58 @@
       gap: 16px;
     }
 
-    &__smallImage {
-      display: flex;
-      justify-content: center;
-      box-sizing: border-box;
+    &__smallImageContainer {
+      display: block;
       padding: 8px;
       width: 80px;
       height: 80px;
-      border: 1px solid #c4c4c4;
+      border: 1px solid #E2E6E9;
       transition: all .5s;
       cursor: pointer;
+
+      &:hover{
+        border: 1px solid $colorSecondary;
+      }
+
+      &:active {
+        border: 1px solid #313237;
+      }
+    }
+
+    &__smallImage {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    &__mainImageContiner {
+      display: block;
+      width: 442px;
+      height: 442px;
+      padding: 11px;
+    }
+
+    &__mainImage {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
     }
 
     &__colors {
       position: relative;
       margin-bottom: 48px;
+
+      &::after {
+        position: absolute;
+        bottom: -24px;
+        left: 0;
+        right: 0;
+        content: "";
+        height: 1px;
+        background-color: #E2E6E9;
+      }
 
       &__title {
         font-style: normal;
@@ -59,27 +105,32 @@
         gap: 8px;
       }
 
+      &__icon {
+        box-sizing: initial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1px;
+        border: 2px solid #E2E6E9;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        transition: all 0.3s;
+
+        &:hover {
+          border: 2px solid #B4BDC3;
+        }
+
+        &:active {
+          border: 2px solid $colorPrimary;
+        }
+      }
+
       &__circle {
-        border: 2px solid #313237;
-        border-radius: 36px;
-        width: 28px;
-        height: 28px;
-
-        &--1 {
-          background-color: #FCDBC1;
-        }
-
-        &--2 {
-          background-color: #5F7170
-        }
-
-        &--3 {
-          background-color: #4C4C4C;
-        }
-
-        &--4 {
-          background-color: #F0F0F0;
-        }
+        border: 1px solid #e2e6e9;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
       }
     }
 
@@ -101,16 +152,23 @@
         margin-bottom: 8px;
       }
 
-
-
       &__item {
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
         text-align: center;
         color: #313237;
-        border: 1px solid #B4BDC4;
+        border: 1px solid $colorIcons;
         padding: 7px 8px 4px 8px;
+
+        &:hover {
+          border: 1px solid $colorPrimary;
+        }
+
+        &:active {
+          background-color: $colorPrimary;
+          color: #fff;
+        }
       }
 
       &::after {
@@ -234,6 +292,11 @@
     }
 
     &__value {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      color: $colorPrimary;
 
       margin-bottom: 8px;
 
@@ -245,20 +308,12 @@
     &__options {
       display: flex;
       flex-direction: column;
-        &::after {
-          position: absolute;
-          bottom: -24px;
-          left: 0;
-          right: 0;
-          content: "";
-          height: 1px;
-          background-color: #E2E6E9;
-        }
-      }
+    }
   }
 
   &__additionalDetails {
     font-family: Mont, sans-serif;
+
     &__title {
       position: relative;
       font-weight: 700;
@@ -278,6 +333,10 @@
       }
     }
 
+    &__block {
+      margin-bottom: 32px;
+    }
+
     &__paragraphName {
       font-weight: 600;
       font-size: 20px;
@@ -291,11 +350,10 @@
       font-size: 14px;
       line-height: 21px;
       color: #89939A;
-      margin-bottom: 32px;
 
-      &:last-child {
-        margin-bottom: 80px;
-      }
+      // &:last-child {
+      //   margin-bottom: 80px;
+      // }
     }
 
     &__specs {
@@ -303,6 +361,7 @@
         display: flex;
         justify-content: space-between;
       }
+
       &__title {
         position: relative;
         font-weight: 700;

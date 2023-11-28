@@ -1,37 +1,37 @@
-import React from 'react';
-import { Phones } from '../../types/Phones';
+import React, { useMemo } from 'react';
+// import { Phones } from '../../types/Phones';
 import './pagination.scss';
 
 type Props = {
   itemsPerPage: number,
   currentPage: number,
-  dataPhones: Phones[],
+  countDatas: number,
 
   onPageChange: (number: number) => void,
-  setCurrentPage: (cb: (currentPage: number) => number) => void
+  setCurrentPage: (cb: (currentPage: number) => number) => void,
+
 };
 
 export const Pagination: React.FC<Props> = ({
   itemsPerPage,
   currentPage,
-  dataPhones,
+  countDatas,
 
   onPageChange,
   setCurrentPage,
+
 }) => {
-  // const indexOflastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOflastItem - itemsPerPage;
-  // const currentItem = dataPhones.slice(indexOfFirstItem, indexOflastItem);
+  const pagesNumbers = useMemo(() => {
+    const pageNumbers = [];
 
-  // const lastItem = Math.min(itemsPerPage * currentPage, dataPhones.length);
-  // const firstItem = itemsPerPage * (currentPage - 1) + 1;
+    for (let i = 1; i <= Math.ceil(countDatas / itemsPerPage); i += 1) {
+      pageNumbers.push(i);
+    }
 
-  const pageNumbers = [];
-  const numberOfPages = Math.ceil(dataPhones.length / itemsPerPage);
+    return pageNumbers;
+  }, [countDatas, itemsPerPage]);
 
-  for (let i = 1; i <= Math.ceil(dataPhones.length / itemsPerPage); i += 1) {
-    pageNumbers.push(i);
-  }
+  const numberOfPages = Math.ceil(countDatas / itemsPerPage);
 
   const nextPage = () => {
     if (currentPage !== numberOfPages) {
@@ -45,51 +45,43 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
-  // const range = (start: number, end: number) => {
-  //   return [...Array(end).keys()].map((el) => el + start);
-  // };
-
-  // const pagesCount = Math.ceil(total / itemsPerPage);
-  // const pages = range(1, pagesCount);
-  // const liClasses = classNames({
-  //   "page-item": true,
-  //   active: page === currentPage,
-  // });
-
   return (
     <div>
       <ul className="pagination">
         <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-          <a
+          <button
+            type="button"
             className="pagination__page-link"
-            href="#prev"
+            // href="#prev"
             aria-disabled={currentPage === 1 ? 'true' : 'false'}
             onClick={prevPage}
           >
             «
-          </a>
+          </button>
         </li>
-        {pageNumbers.map(number => (
+        {pagesNumbers.map(number => (
           <li className={`pagination__page-item ${currentPage === number ? 'active' : ''}`} key={number}>
-            <a
+            <button
+              type="button"
               className="pagination__page-link"
-              href={`#${number}`}
+              // href={`#${number}`}
               onClick={() => onPageChange(number)}
             >
               {number}
-            </a>
+            </button>
           </li>
         ))}
 
         <li className={`pagination__page-item ${currentPage === numberOfPages ? 'disabled' : ''}`}>
-          <a
+          <button
+            type="button"
             className="pagination__page-link"
-            href="#next"
+            // href="#next"
             aria-disabled={currentPage === numberOfPages ? 'true' : 'false'}
             onClick={nextPage}
           >
             »
-          </a>
+          </button>
         </li>
       </ul>
     </div>

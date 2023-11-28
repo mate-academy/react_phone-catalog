@@ -4,7 +4,7 @@
   font-family: Mont, sans-serif;
 
   &__title {
-@extend %body-text;
+    @extend %body-text;
     color: $colorSecondary;
   }
 
@@ -64,7 +64,7 @@
   &__option {
     padding: 14px 12px;
     cursor: pointer;
-@extend %body-text;
+    @extend %body-text;
 
     &__highlighted {
       color: $colorPrimary;

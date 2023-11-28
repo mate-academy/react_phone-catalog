@@ -5,6 +5,8 @@
   font-family: Mont, sans-serif;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 
   // @media (min-width: 1161px) {
   //   width: 272px * 4 + 16px * 3;
@@ -52,8 +54,8 @@
 
   &__body {
     display: flex;
-    margin: 0 auto;
-    overflow: hidden;
+    // margin: 0 auto;
+    // overflow: hidden;
   }
 
 }

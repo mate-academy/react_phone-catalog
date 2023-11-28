@@ -1,28 +1,121 @@
 import './productDetailsPage.scss';
-import BigImg from '../../images/productDetails/bigImg.png';
-import SmallImg1 from '../../images/productDetails/imageSmall_1.png';
-import SmallImg2 from '../../images/productDetails/imageSmall_2.png';
-import SmallImg3 from '../../images/productDetails/imageSmall_3.png';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import FavoritesImg from '../../images/icons/Favourites (Heart Like).svg';
+import { getData, getProductDetails } from '../../api/data';
+import { ProductDetailsType } from '../../types/ProductDetailsType';
+import { Phones } from '../../types/Phones';
+import { ProductsSlider } from '../../components/ProductsSlider';
+
+type Params = {
+  phonesId: string;
+};
 
 export const ProductDetailsPage = () => {
-  //   const [productDetails, setProductDetails] = useState<ProductDetailsType>()
+  const [productDetails, setProductDetails] = useState<ProductDetailsType>();
+  const [bigImageLink, setBigImageLink]
+    = useState<string | undefined>(productDetails?.images[0]);
+  const [similarProducts, setSimilarProducts] = useState<Phones[]>([]);
+  // const [colorOfProduct, setColorOfProduct]
+  //   = useState<string | undefined>(productDetails?.color);
+  // const [productColorsLink, setProductColorsLink] = useState<string>();
+  const { phonesId = '*' } = useParams<Params>();
+  const navigate = useNavigate();
 
-  //   const params = useParams();
-  // const getDetails = async () => {
-  //   const productDetails = await getProductDetails('1')
-  //   setProductDetails(productDetails)
+  const productTypeName = phonesId.split('-').slice(0, 3).join('-');
+
+  // const defaultPhonesId = '*';
+  // const actualPhonesId = phonesId !== undefined ? phonesId : defaultPhonesId;
+
+  const getDetails = async () => {
+    if (!phonesId) {
+      return;
+    }
+
+    const details = await getProductDetails(phonesId);
+
+    setProductDetails(details);
+    setBigImageLink(`_new/${details.images[0]}`);
+  };
+
+  const handleImageChange = (item: string) => {
+    setBigImageLink(`_new/${item}`);
+
+    return `_new/${item}`;
+  };
+
+  const getNewColorProduct = (color: string) => {
+    const idArray = phonesId.split('-');
+
+    idArray.pop();
+    idArray.push(color);
+
+    const updatedPhonesId = idArray?.join('-');
+
+    return navigate(`/phones/${updatedPhonesId}`);
+  };
+
+  const getSimilarProducts = async () => {
+    try {
+      // setIsPhonesDataLoading(true);
+      const dataProducts = await getData();
+
+      const dataSimilarModels
+        = dataProducts.filter(product => {
+          const productPhoneId = product.phoneId.split('-');
+          const firstThreeWords = productPhoneId.slice(0, 3);
+          const newString = firstThreeWords.join('-');
+
+          return newString === productTypeName;
+        });
+
+      setSimilarProducts(dataSimilarModels);
+    } catch (error) {
+      Error('Error');
+      // setIsPhonesDataLoading(false);
+    } finally {
+      // setIsPhonesDataLoading(false);
+    }
+  };
+
+  // const handleColorChange = (color: string) => {
+  //   if (!phonesId) {
+  //     return;
+  //   }
+
+  //   // if (!colorOfProduct) {
+  //   //   return;
+  //   // }
+
+  //   // setColorOfProduct(color);
+
+  //   const idArray = phonesId.split('-');
+
+  //   idArray.pop();
+  //   idArray.push(color);
+
+  //   const updatedPhonesId = idArray?.join('-');
+
+  //   // setProductColorsLink(updatedPhonesId);
   // };
 
+  useEffect(() => {
+    getDetails();
+  }, [phonesId]);
+
+  useEffect(() => {
+    getSimilarProducts();
+  }, []);
+
   // useEffect(() => {
-  // getDetails()
-  // }, []);
+  //   handleColorChange();
+  // }, [colorOfProduct]);
 
   return (
     <>
       <section className="productDetails">
         <h1 className="productDetails__title">
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
+          {productDetails?.name}
         </h1>
         <div
           className="productDetails__mainDetails"
@@ -32,7 +125,7 @@ export const ProductDetailsPage = () => {
               className="productDetails__mainDetales__productID
               grid__item--desktop-23-24"
             >
-              ID: 802390
+              {`ID: ${productDetails?.namespaceId}`}
             </div>
             <div
               className="productDetails__mainDetales
@@ -43,28 +136,32 @@ export const ProductDetailsPage = () => {
                 className="productDetails__mainDetales__imageSidebar
                 grid__item--desktop-1-2"
               >
-                <img
-                  src={SmallImg1}
-                  alt="product small"
-                  className="productDetails__mainDetales__smallImage"
-                />
-                <img
-                  src={SmallImg2}
-                  alt="product small"
-                  className="productDetails__mainDetales__smallImage"
-                />
-                <img
-                  src={SmallImg3}
-                  alt="product small"
-                  className="productDetails__mainDetales__smallImage"
-                />
+                {productDetails?.images.map(item => (
+                  <button
+                    type="button"
+                    key={item}
+                    className="productDetails__mainDetales__smallImageContainer"
+                    onClick={() => handleImageChange(item)}
+                  >
+                    <img
+                      src={`_new/${item}`}
+                      alt="product small"
+                      className="productDetails__mainDetales__smallImage"
+                    />
+                  </button>
+
+                ))}
               </div>
 
               <div
-                className="productDetails__mainDetales__mainImage
+                className="productDetails__mainDetales__mainImageContiner
                 grid__item--desktop-4-11"
               >
-                <img src={BigImg} alt="Main big" />
+                <img
+                  className="productDetails__mainDetales__mainImage"
+                  src={bigImageLink || `_new/${productDetails?.images[0]}`}
+                  alt="Main big"
+                />
               </div>
             </div>
 
@@ -83,22 +180,26 @@ export const ProductDetailsPage = () => {
                 <div
                   className="productDetails__mainDetales__colors__container"
                 >
-                  <div
-                    className="productDetails__mainDetales__colors__circle
-                    productDetails__mainDetales__colors__circle--1"
-                  />
-                  <span
-                    className="productDetails__mainDetales__colors__circle
-                    productDetails__mainDetales__colors__circle--2"
-                  />
-                  <span
-                    className="productDetails__mainDetales__colors__circle
-                    productDetails__mainDetales__colors__circle--3"
-                  />
-                  <span
-                    className="productDetails__mainDetales__colors__circle
-                    productDetails__mainDetales__colors__circle--4"
-                  />
+                  {productDetails?.colorsAvailable.map(color => (
+                    // colors Link
+
+                    <button
+                      onClick={() => getNewColorProduct(color)}
+                      type="button"
+                      key={color}
+                      className="productDetails__mainDetales__colors__icon"
+                    >
+                      <div
+                        className="
+                        productDetails__mainDetales__colors__circle
+                        "
+                        style={{
+                          backgroundColor: color,
+                        }}
+                      />
+                    </button>
+
+                  ))}
                 </div>
               </div>
 
@@ -112,21 +213,14 @@ export const ProductDetailsPage = () => {
                 <div
                   className="productDetails__mainDetales__itemContainer"
                 >
-                  <div
-                    className="productDetails__mainDetales__capacity__item"
-                  >
-                    64 GB
-                  </div>
-                  <div
-                    className="productDetails__mainDetales__capacity__item"
-                  >
-                    256 GB
-                  </div>
-                  <div
-                    className="productDetails__mainDetales__capacity__item"
-                  >
-                    512 GB
-                  </div>
+                  {productDetails?.capacityAvailable.map(item => (
+                    <div
+                      className="productDetails__mainDetales__capacity__item"
+                      key={item}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
 
               </div>
@@ -140,12 +234,12 @@ export const ProductDetailsPage = () => {
                   <h2
                     className="productDetails__mainDetales__price__full"
                   >
-                    $1099
+                    {`$${productDetails?.priceRegular}`}
                   </h2>
                   <h2
                     className="productDetails__mainDetales__price__discont"
                   >
-                    $1199
+                    {`$${productDetails?.priceDiscount}`}
                   </h2>
                 </div>
               </div>
@@ -205,22 +299,22 @@ export const ProductDetailsPage = () => {
                   <div
                     className="productDetails__mainDetales__value"
                   >
-                    6.5” OLED
+                    {productDetails?.screen}
                   </div>
                   <div
                     className="productDetails__mainDetales__value"
                   >
-                    2688x1242
+                    {productDetails?.resolution}
                   </div>
                   <div
                     className="productDetails__mainDetales__value"
                   >
-                    Apple A12 Bionic
+                    {productDetails?.processor}
                   </div>
                   <div
                     className="productDetails__mainDetales__value"
                   >
-                    3 GB
+                    {productDetails?.ram}
                   </div>
                 </div>
               </div>
@@ -235,55 +329,24 @@ export const ProductDetailsPage = () => {
               <h1 className="productDetails__additionalDetails__title">
                 About
               </h1>
-              <h2 className="productDetails__additionalDetails__paragraphName">
-                And then there was Pro
-              </h2>
-              <p
-                className="productDetails__additionalDetails__paragraph"
-              >
-                A transformative triple‑camera system
-                that adds tons of capability without complexity.
-                An unprecedented leap in battery life.
-                And a mind‑blowing chip that doubles down on machine learning
-                and pushes the boundaries of what a smartphone can do.
-                Welcome to the first iPhone powerful enough to be called Pro.
-              </p>
-              <h2
-                className="productDetails__additionalDetails__paragraphName"
-              >
-                Camera
-              </h2>
-              <p
-                className="productDetails__additionalDetails__paragraph"
-              >
-                Meet the first triple‑camera system to combine cutting‑edge
-                technology with the legendary simplicity of iPhone.
-                Capture up to four times more scene. Get beautiful images in
-                drastically lower light. Shoot the highest‑quality
-                video in a smartphone —
-                then edit with the same tools you love for photos.
-                You’ve never shot with anything like it.
-              </p>
-              <h2
-                className="productDetails__additionalDetails__paragraphName"
-              >
-                Shoot it. Flip it. Zoom it.
-                Crop it. Cut it. Light it.
-                Tweak it. Love it.
-              </h2>
-              <p
-                className="productDetails__additionalDetails__paragraph"
-              >
-                iPhone 11 Pro lets you capture videos that
-                are beautifully true to life,
-                with greater detail and smoother motion.
-                Epic processing power means it can shoot
-                4K video with extended dynamic range and
-                cinematic video stabilization — all at 60 fps.
-                You get more creative control, too,
-                with four times more scene and powerful
-                new editing tools to play with.
-              </p>
+              {productDetails?.description.map(item => (
+                <div
+                  className="productDetails__additionalDetails__block"
+                  key={item.title}
+                >
+                  <h2
+                    className="productDetails__additionalDetails__paragraphName"
+                  >
+                    {item.title}
+                  </h2>
+                  <p
+                    className="productDetails__additionalDetails__paragraph"
+                  >
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+
             </div>
 
             <div
@@ -291,7 +354,7 @@ export const ProductDetailsPage = () => {
             grid__item--desktop-14-24"
             >
               <h1 className="productDetails__additionalDetails__specs__title">
-                About
+                Tech specs
               </h1>
               <div className="productDetails__additionalDetails__specs__tech">
                 <div
@@ -345,42 +408,42 @@ export const ProductDetailsPage = () => {
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    6.5” OLED
+                    {productDetails?.screen}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    2688x1242
+                    {productDetails?.resolution}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    Apple A12 Bionic
+                    {productDetails?.processor}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    3 GB
+                    {productDetails?.ram}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    64 GB
+                    {productDetails?.capacity}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    12 Mp + 12 Mp + 12 Mp (Triple)
+                    {productDetails?.camera}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    Optical, 2x
+                    {productDetails?.zoom}
                   </div>
                   <div
                     className="productDetails__additionalDetails__specs__value"
                   >
-                    GSM, LTE, UMTS
+                    {productDetails?.cell.join(', ')}
                   </div>
                 </div>
               </div>
@@ -392,10 +455,12 @@ export const ProductDetailsPage = () => {
           </div>
 
         </div>
-
-        {/* add component carusel */}
       </section>
 
+      <ProductsSlider
+        title="You may also like"
+        productsData={similarProducts}
+      />
     </>
 
   );

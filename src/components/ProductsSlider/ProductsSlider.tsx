@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { useWindowSize } from '../../hooks/useWindowSize';
 import ArrowRight from '../../images/icons/arrow_right_small.svg';
+import ArrowRightDisable from '../../images/icons/Arrow_Right_disabled.svg';
 import ArrowLeftDisabled from '../../images/icons/arrow_left_disabled.svg';
+import ArrowLeft from '../../images/icons/arrow_left.svg';
 import './productsSlider.scss';
 import { Phones } from '../../types/Phones';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -23,7 +25,7 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
 
   const sliderSettings = {
     step: 1,
-    itemWidth: 288,
+    itemWidth: 281,
     itemsOnPage: itemsInSlider,
     animationDuration: 500,
     infinity: false,
@@ -38,9 +40,22 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
   } = sliderSettings;
 
   const disablePrevButton = (position <= 0) && !infinity;
-  const disableNextButton = (position
+  const disableNextButton = ((position
     >= productsData.length - itemsOnPage)
-    && !infinity;
+    && !infinity);
+
+  // const disableNextButton = () => {
+  //   if (productsData.length <= 4) {
+  //     return true;
+  //   }
+
+  //   if (position >= productsData.length - itemsOnPage
+  //     && !infinity) {
+  //     return false;
+  //   }
+
+  //   return false;
+  // };
 
   const slideLimit = -((productsData.length * itemWidth)
     - (itemWidth * itemsOnPage));
@@ -123,7 +138,7 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
           >
             {!disablePrevButton && (
               <img
-                src={ArrowRight}
+                src={ArrowLeft}
                 alt="arrow left"
                 className="sliderBtn__img--left"
               />
@@ -156,7 +171,7 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
 
             {disableNextButton && (
               <img
-                src={ArrowLeftDisabled}
+                src={ArrowRightDisable}
                 alt="arrow right"
                 className="sliderBtn__img--right"
               />
@@ -178,7 +193,7 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
             <ProductCard
               key={product.id}
               productData={product}
-              priceToken={product.price}
+              // priceToken={product.price}
             />
           ))}
         </div>

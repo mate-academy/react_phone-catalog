@@ -12,5 +12,4 @@ export interface Phones {
   ram: string,
   year: number,
   image: string
-
 }

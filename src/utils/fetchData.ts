@@ -1,5 +1,7 @@
 const BASE_URL
 = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
+const PRODUCT_DETAILS
+= 'https://mate-academy.github.io/react_phone-catalog/_new/products/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -49,7 +51,7 @@ function request2<T>(
   }
 
   return wait(500)
-    .then(() => fetch(BASE_URL + url, options))
+    .then(() => fetch(`${PRODUCT_DETAILS}${url}.json`, options))
     .then(response => {
       if (!response.ok) {
         throw new Error();

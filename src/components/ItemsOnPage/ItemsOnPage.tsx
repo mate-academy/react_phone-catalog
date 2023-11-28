@@ -1,16 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import ArrowDown from '../../images/icons/arrow_down.svg';
 import './itemsOnPage.scss';
 import { SelectOption } from '../../types/SelectOtion';
 
 type Props = {
-  setItemsPerPage: (item: number) => void
+  setItemsPerPage: (item: number) => void,
+  dataLength:number,
 };
 
-export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
+export const ItemsOnPage: React.FC<Props> = ({
+  setItemsPerPage, dataLength }) => {
   const options = [
-    { value: 0, label: 'All' },
+    { value: dataLength, label: 'All' },
     { value: 4, label: '4' },
     { value: 8, label: '8' },
     { value: 16, label: '16' },
@@ -20,9 +22,11 @@ export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
 
-  useMemo(() => {
+  // console.log(value?.value)
+
+  useEffect(() => {
     setItemsPerPage(value?.value);
-  }, []);
+  }, [value]);
 
   const selectOption = (option: SelectOption) => {
     if (option !== value) {
@@ -70,26 +74,31 @@ export const ItemsOnPage: React.FC<Props> = ({ setItemsPerPage }) => {
         )}
         >
           {options.map((option, index) => (
-            <button
-              type="button"
+            <li
               key={option.value}
-              className={classNames(
-                'itemsOnPage__option',
-                { itemsOnPage__option__selected: isOptionSelected(option) },
-                {
-                  itemsOnPage__option__highlighted: index === highlightedIndex,
-                },
-              )}
-              onMouseEnter={() => setHighlightedIndex(index)}
-              onClick={e => {
-                e.stopPropagation();
-                selectOption(option);
-                setIsOpen(false);
-              }}
             >
-              {option.label}
+              <option
+                // type="button"
+                className={classNames(
+                  'itemsOnPage__option',
+                  {
+                    itemsOnPage__option__selected: isOptionSelected(option),
+                    itemsOnPage__option__highlighted:
+                    index === highlightedIndex,
+                  },
+                )}
+                onMouseEnter={() => setHighlightedIndex(index)}
+                onClick={e => {
+                  selectOption(option);
+                  e.stopPropagation();
+                  setIsOpen(false);
+                }}
+              >
+                {option.label}
 
-            </button>
+              </option>
+            </li>
+
           ))}
         </ul>
       </div>

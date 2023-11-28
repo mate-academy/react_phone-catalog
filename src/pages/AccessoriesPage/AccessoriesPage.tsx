@@ -57,6 +57,8 @@ export const AccessoriesPage = () => {
         />
         <ItemsOnPage
           setItemsPerPage={handleChangeItemsPerPage}
+          // dataPhones={dataAccessories}
+          dataLength={dataAccessories.length}
         />
       </div>
       <ProductList
@@ -66,7 +68,7 @@ export const AccessoriesPage = () => {
       <Pagination
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
-        dataPhones={filtredAccessories}
+        countDatas={countAccessories}
         onPageChange={onPageChange}
         setCurrentPage={setCurrentPage}
       />
