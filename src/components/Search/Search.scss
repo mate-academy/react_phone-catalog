@@ -1,0 +1,36 @@
+@import "../../utils/vars";
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid $light-gray;
+
+  &__input {
+    font-size: 14px;
+    color: $main-gray;
+    height: 64px;
+    outline: 0;
+    border: 0;
+    padding-inline: 24px 50px;
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+  }
+
+  &__input::placeholder {
+    color: #b4bdc3;
+  }
+
+  &__button {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+  }
+
+  &__button:hover {
+    cursor: pointer;
+  }
+}

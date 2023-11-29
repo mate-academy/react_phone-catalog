@@ -1,0 +1,10 @@
+@import "../../utils/vars";
+
+.tablet-page {
+  display: flex;
+  flex-direction: column;
+
+  &__count {
+    color: $gray-secondary;
+  }
+}

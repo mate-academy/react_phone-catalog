@@ -1,0 +1,83 @@
+@import "../../utils/vars";
+@import "../../utils/extend";
+@import "../../utils/mixins";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid $light-gray;
+  margin-bottom: 16px;
+  height: 128px;
+  padding: 24px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__delete {
+    background-color: transparent;
+    width: 16px;
+    height: 16px;
+    margin-right: 31px;
+    cursor: pointer;
+  }
+
+  &__delete:hover {
+    transform: scale(1.2);
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    margin-right: 31px;
+  }
+
+  &__name {
+    display: flex;
+    gap: 7px;
+    margin-right: 49px;
+    max-width: 295px;
+    width: 295px;
+
+    &__char {
+      max-width: 180px;
+      @extend %body-text;
+    }
+  }
+
+  &__action-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid $light-gray;
+    margin-right: 13px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $main-gray;
+    }
+
+    &:disabled {
+      cursor: default;
+      border-color: $light-gray;
+    }
+  }
+
+  &__quantity {
+    color: black;
+    @extend %body-text;
+
+    margin-right: 13px;
+  }
+
+  &__price {
+    margin-left: 43px;
+    @extend %h2;
+  }
+}

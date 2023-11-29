@@ -1,0 +1,67 @@
+@import "../../utils/vars";
+
+.banner {
+  margin-top: 40px;
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin: 0 auto 20px;
+    justify-content: center;
+  }
+
+  &__list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__item {
+    height: 400px;
+  }
+
+  &__image {
+    object-fit: cover;
+    object-position: center;
+    height: 400px;
+  }
+
+  &__button {
+    width: 32px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #b4bdc3;
+    transition: all 0.3s;
+  }
+
+  &__button:hover {
+    cursor: pointer;
+    border: 1px solid $main-gray;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__indicator {
+    border: none;
+    background-color: $light-gray;
+    width: 14px;
+    height: 4px;
+  }
+
+  &__indicator:hover {
+    cursor: pointer;
+  }
+
+  &__indicator--active {
+    background-color: $main-gray;
+  }
+}

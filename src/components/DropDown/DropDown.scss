@@ -1,0 +1,76 @@
+@import "../../utils/vars";
+@import "../../utils/mixins";
+
+.dropdown {
+  position: relative;
+
+  &__text {
+    // @extend %small-text;
+    color: $gray-secondary;
+  }
+
+  &__current {
+    font-family: "Mont", sans-serif;
+    font-weight: 500;
+    line-height: 21px;
+    color: $main-gray;
+  }
+
+  &__list {
+    position: absolute;
+    top: 45px;
+
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 0;
+
+    list-style: none;
+
+    border: 1px solid $light-gray;
+    background-color: #fff;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    &--visible {
+      display: flex;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 6px 12px;
+
+    color: $gray-secondary;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 21px;
+
+    @include hover(color, $main-gray);
+    @include hover(background-color, #FAFBFC);
+  }
+}
+
+.button--dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+
+  border: 1px solid $icons-color;
+
+  :last-child {
+    transition: transform 0.3s;
+  }
+
+  &-focus {
+    &:focus {
+      border-color: $main-gray;
+
+      :last-child {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

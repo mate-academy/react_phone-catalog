@@ -1,0 +1,25 @@
+@import "../../utils/vars";
+
+.breadcrumbs {
+  display: flex;
+  margin-block: 25px 40px;
+
+  &__part {
+    display: flex;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: $gray-secondary;
+  }
+
+  &__separator {
+    display: flex;
+    height: 16px;
+    width: 16px;
+    margin-inline: 8px;
+  }
+
+  &__right-arrow {
+    transform: rotate(90deg);
+  }
+}
