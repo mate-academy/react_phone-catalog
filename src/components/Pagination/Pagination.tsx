@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -47,27 +48,16 @@ export const Pagination: React.FC<Props> = ({ totalItems }) => {
         <button
           type="button"
           data-cy="paginationLeft"
-          className={classNames('Pagination__link Pagination__link--arrow', {
-            'Pagination__link--disabled': isFirstPage,
+          className={classNames('Pagination__arrow Pagination__arrow--left', {
+            'Pagination__arrow--disabled': isFirstPage,
           })}
           disabled={isFirstPage}
           onClick={handlePreviousPage}
-        >
-          <img
-            src="img/icons/vector_icon.svg"
-            alt="Vector icon"
-            className="Pagination__arrow Pagination__arrow--left"
-          />
-        </button>
+        />
       </li>
 
       {pageItems.map(pageItem => (
-        <li
-          key={pageItem}
-          className={classNames('Pagination__item', {
-            'Pagination__item--active': pageItem === currentPage,
-          })}
-        >
+        <li key={pageItem} className="Pagination__item">
           <button
             type="button"
             className={classNames('Pagination__link', {
@@ -84,18 +74,12 @@ export const Pagination: React.FC<Props> = ({ totalItems }) => {
         <button
           type="button"
           data-cy="paginationRight"
-          className={classNames('Pagination__link Pagination__link--arrow', {
-            'Pagination__link--disabled': isLastPage,
+          className={classNames('Pagination__arrow', {
+            'Pagination__arrow--disabled': isLastPage,
           })}
           disabled={isLastPage}
           onClick={handleNextPage}
-        >
-          <img
-            src="img/icons/vector_icon.svg"
-            alt="Vector icon"
-            className="Pagination__arrow"
-          />
-        </button>
+        />
       </li>
     </ul>
   );

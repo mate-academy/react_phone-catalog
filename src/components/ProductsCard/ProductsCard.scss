@@ -2,8 +2,8 @@
 
 .ProductsCard {
   padding: 24px;
-  border: 1px solid $elements-color;
   grid-column: span 6;
+  border: 1px solid $elements-color;
 
   &__image {
     width: 206px;
@@ -46,6 +46,7 @@
   &__field {
     display: flex;
     justify-content: space-between;
+
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
@@ -83,12 +84,17 @@
     &-favorites {
       @include squareSize(40px);
 
-      background-color: inherit;
       border: 1px solid $icons-color;
+      background: no-repeat center url(../../helpers/icons/icon_favorites.svg);
       cursor: pointer;
 
       &:hover {
         border-color: $primary-color;
+      }
+
+      &--selected {
+        border-color: $elements-color;
+        background-image: url(../../helpers/icons/icon_favorites_selected.svg);
       }
     }
   }

@@ -100,3 +100,10 @@
     background-color: $primary-color;
   }
 }
+
+@mixin logo {
+  height: 100%;
+  width: 40px;
+
+  background: no-repeat center url(../../helpers/icons/icon_logo.svg);
+}

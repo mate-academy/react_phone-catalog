@@ -24,8 +24,8 @@
   &__button {
     @include squareSize(32px);
 
-    border: solid 1px $icons-color;
-    background-color: $white-color;
+    border: 1px solid $icons-color;
+    background: no-repeat center url(../../helpers/icons/icon_vector.svg);
     cursor: pointer;
 
     &:hover {
@@ -33,22 +33,17 @@
     }
 
     &--disabled {
-      border: 1px solid $elements-color;
+      border-color: $elements-color;
+      background-image: url(../../helpers/icons/icon_vector_disabled.svg);
       cursor: auto;
 
       &:hover {
         border-color: $elements-color;
       }
     }
-  }
 
-  &__vector-icon {
     &--left {
       transform: rotate(180deg);
-    }
-
-    &--disabled {
-      filter: opacity(50%);
     }
   }
 }

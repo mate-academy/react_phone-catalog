@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import productsFromServer from '../../helpers/api/products.json';
-import { ProductsSlider } from '../../components/ProductsSlider';
-import { Product } from '../../helpers/types/Product';
-import { Banners } from '../../components/Banners';
-import { CategoriesList } from '../../components/CategoriesList';
-import { getDiscountAmount } from '../../helpers/utils/getDiscount';
-import './HomePage.scss';
+import './styles/Page.scss';
+import productsFromServer from '../helpers/api/products.json';
+import { getDiscountAmount } from '../helpers/utils/getDiscount';
+import { Product } from '../helpers/types/Product';
+
+import { ProductsSlider } from '../components/ProductsSlider';
+import { Banners } from '../components/Banners';
+import { CategoriesList } from '../components/CategoriesList';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,25 +29,25 @@ export const HomePage = () => {
     });
 
   return (
-    <div className="HomePage">
+    <div className="Page Page--bigger--intervals">
       <Banners />
 
-      <section className="HomePage__hot-prices">
-        <h1 className="HomePage__title">Hot prices</h1>
+      <section className="Page__section hot-prices">
+        <h1 className="Page__title">Hot prices</h1>
         <ProductsSlider products={hotProducts} />
       </section>
 
       <section
-        className="HomePage__shop-by-category"
+        className="Page__section shop-by-category"
       >
-        <h1 className="HomePage__title">Shop by category</h1>
+        <h1 className="Page__title">Shop by category</h1>
 
         <CategoriesList products={products} />
 
       </section>
 
-      <section className="HomePage__brand-new">
-        <h1 className="HomePage__title">Brand new models</h1>
+      <section className="Page__section brand-new">
+        <h1 className="Page__title">Brand new models</h1>
         <ProductsSlider products={newProducts} />
       </section>
     </div>

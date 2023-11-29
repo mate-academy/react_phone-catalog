@@ -11,8 +11,6 @@
   &__products-count {
     @include bodyText;
     color: $secondary-color;
-
-    text-decoration: none;
   }
 
   &__title {

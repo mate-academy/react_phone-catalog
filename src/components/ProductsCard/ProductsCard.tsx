@@ -1,15 +1,24 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import classNames from 'classnames';
 
 import { Product } from '../../helpers/types/Product';
 import './ProductsCard.scss';
+import { useAppDispatch, useAppSelector } from '../../helpers/app/hooks';
+import {
+  addProduct,
+  removeProduct,
+} from '../../helpers/features/favoritesSlice';
 
 type Props = {
   product: Product,
 };
 
-export const ProductsCard: React.FC<Props> = ({
-  product: {
+export const ProductsCard: React.FC<Props> = ({ product }) => {
+  const dispatch = useAppDispatch();
+  const { favorites } = useAppSelector(state => state.favorites);
+
+  const {
     imageUrl,
     name,
     price,
@@ -17,10 +26,24 @@ export const ProductsCard: React.FC<Props> = ({
     screen,
     capacity,
     ram,
-  },
-}) => {
+  } = product;
+
   const getDiscountedPrice = () => {
     return price - price * (discount / 100);
+  };
+
+  const getIsFavorite = () => {
+    return favorites.some(favorite => favorite.id === product.id);
+  };
+
+  const handleToggleFavorites = () => {
+    const isFavorite = getIsFavorite();
+
+    if (isFavorite) {
+      dispatch(removeProduct(product.id));
+    } else {
+      dispatch(addProduct(product));
+    }
   };
 
   return (
@@ -75,12 +98,14 @@ export const ProductsCard: React.FC<Props> = ({
         <button type="button" className="ProductsCard__add-cart">
           Add to cart
         </button>
-        <button type="button" className="ProductsCard__add-favorites">
-          <img
-            src="/img/icons/favorites_icon.svg"
-            alt="Favorites Icon"
-          />
-        </button>
+        <button
+          type="button"
+          className={classNames('ProductsCard__add-favorites', {
+            'ProductsCard__add-favorites--selected': getIsFavorite(),
+          })}
+          data-cy="addToFavorite"
+          onClick={handleToggleFavorites}
+        />
       </div>
     </li>
   );

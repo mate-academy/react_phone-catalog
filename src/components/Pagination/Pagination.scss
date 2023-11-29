@@ -8,33 +8,45 @@
 
   &__link {
     @include squareSize(32px);
+
     border: 1px solid $elements-color;
     background-color: $white-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
 
     &--active {
       border: none;
       background-color: $primary-color;
       color: $white-color;
     }
+  }
 
-    &--arrow {
-      margin-inline: 8px;
+  &__arrow {
+    @include squareSize(32px);
+
+    margin-inline: 8px;
+
+    border: 1px solid $icons-color;
+    background: no-repeat center url(../../helpers/icons/icon_vector.svg);
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
     }
 
     &--disabled {
-      filter: opacity(50%);
+      border-color: $elements-color;
+      background-image: url(../../helpers/icons/icon_vector_disabled.svg);
+      cursor: auto;
 
       &:hover {
         border-color: $elements-color;
       }
     }
 
-    &:hover {
-      border-color: $primary-color;
-    }
-  }
-
-  &__arrow {
     &--left {
       transform: rotate(180deg);
     }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
@@ -55,23 +56,14 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
       <div className="ProductsSlider__buttons">
         <button
           type="button"
-          className={classNames('ProductsSlider__button', {
-            'ProductsSlider__button--disabled': isFirstImage,
-          })}
+          className={classNames(
+            'ProductsSlider__button ProductsSlider__button--left', {
+              'ProductsSlider__button--disabled': isFirstImage,
+            },
+          )}
           onClick={moveLeft}
           disabled={isFirstImage}
-        >
-          <img
-            src="/img/icons/vector_icon.svg"
-            alt="Icon vector"
-            className={classNames(
-              'ProductsSlider__vector-icon ProductsSlider__vector-icon--left',
-              {
-                'ProductsSlider__vector-icon--disabled': isFirstImage,
-              },
-            )}
-          />
-        </button>
+        />
 
         <button
           type="button"
@@ -80,15 +72,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
           })}
           onClick={moveRight}
           disabled={isLastImage}
-        >
-          <img
-            src="/img/icons/vector_icon.svg"
-            alt="Icon vector"
-            className={classNames('ProductsSlider__vector-icon', {
-              'ProductsSlider__vector-icon--disabled': isLastImage,
-            })}
-          />
-        </button>
+        />
       </div>
 
       <ul className="ProductsSlider__cards" ref={sliderRef}>

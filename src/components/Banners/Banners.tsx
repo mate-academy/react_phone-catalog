@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import './Banners.scss';
 
 const images = [
-  '_new/img/banner-phones.png',
-  '_new/img/banner-tablets1.png',
-  '_new/img/banner-accessories1.png',
+  'img/banners/banner-phones.png',
+  'img/banners/banner-tablets.png',
+  'img/banners/banner-accessories.png',
 ];
 
 const lastImageIndex = images.length - 1;
@@ -70,15 +71,9 @@ export const Banners = () => {
       <div className="Banners">
         <button
           type="button"
-          className="Banners__button"
+          className="Banners__button Banners__button--left"
           onClick={moveLeft}
-        >
-          <img
-            src="/img/icons/vector_icon.svg"
-            alt="Icon vector"
-            className="Banners__vector-icon Banners__vector-icon--left"
-          />
-        </button>
+        />
 
         <div className="Banners__container" ref={sliderRef}>
           {images.map((image, index) => (
@@ -95,13 +90,7 @@ export const Banners = () => {
           type="button"
           className="Banners__button"
           onClick={moveRight}
-        >
-          <img
-            src="/img/icons/vector_icon.svg"
-            alt="Icon vector"
-            className="Banners__vector-icon"
-          />
-        </button>
+        />
 
         <div className="Banners__indicators">
           {images.map((image, imgIndex) => (

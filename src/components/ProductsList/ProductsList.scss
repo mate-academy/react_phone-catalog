@@ -7,7 +7,6 @@
   }
 
   &__select {
-    position: relative;
     width: 176px;
     margin-bottom: 24px;
 
@@ -15,33 +14,13 @@
     flex-direction: column;
     gap: 4px;
 
-    &-label {
-      @include smallText;
-    }
-
-    &-field {
-      @include buttonsText;
-
-      padding-inline: 12px;
-      height: 40px;
-
-      border: solid 1px $icons-color;
-      background-color: $white-color;
-
-      appearance: none;
-      cursor: pointer;
-    }
-
-    &-arrow {
-      position: absolute;
-      right: 15px;
-      bottom: 15px;
-      transform: rotate(90deg);
-    }
-
     &--narrow {
       width: 128px;
     }
+  }
+
+  &__label {
+    @include smallText;
   }
 
   &__content {

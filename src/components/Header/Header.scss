@@ -13,16 +13,26 @@
     padding-left: 25px;
   }
 
+  &__logo {
+    @include logo;
+  }
+
   &__right {
     display: flex;
-    height: 100%;
-    align-items: center;
+  }
+
+  &__link-wrapper {
+    background: no-repeat center url(../../helpers/icons/icon_favorites.svg);
+
+    &--cart {
+      background-image: url(../../helpers/icons/icon_cart.svg);
+    }
   }
 
   &__link {
     height: 100%;
+    width: 64px;
     display: flex;
-    justify-content: center;
     box-shadow: -1px 0 0 0 $elements-color;
     position: relative;
 
@@ -37,5 +47,22 @@
 
   &__image {
     padding-inline: 25px;
+  }
+
+  &__count {
+    @include squareSize(12px);
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    background-color: $red-color;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 12px;
+    text-align: center;
+    color: $white-color;
   }
 }

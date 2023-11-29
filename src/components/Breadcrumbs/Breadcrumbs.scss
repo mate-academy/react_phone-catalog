@@ -1,0 +1,11 @@
+@import "../../helpers/styles/mixins";
+
+.Breadcrumbs {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+
+  &__folder {
+    @include smallText;
+  }
+}

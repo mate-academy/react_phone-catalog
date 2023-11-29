@@ -1,0 +1,37 @@
+@import "../../helpers/styles/mixins";
+
+.Page {
+  padding-top: 24px;
+  padding-bottom: 80px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &--bigger--intervals {
+    padding-top: 40px;
+    gap: 80px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    @include sectionTitle_H1;
+  }
+
+  &__amount {
+    @include bodyText;
+
+    color: $secondary-color;
+  }
+}

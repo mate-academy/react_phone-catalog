@@ -1,5 +1,5 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
-import { Logo } from '../Logo';
 import './Footer.scss';
 
 export const Footer = () => {
@@ -10,7 +10,11 @@ export const Footer = () => {
   return (
     <footer className="Footer">
       <div className="Footer__content">
-        <Logo />
+        <Link
+          to="/"
+          className="Footer__logo"
+          onClick={handleToTopScroll}
+        />
 
         <div className="Footer__links">
           <Link
@@ -37,19 +41,13 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <div className="Footer__to-top-scroll">
-          Back to top
+        <div className="Footer__to-top">
+          <p className="Footer__to-top-text">Back to top</p>
           <button
             type="button"
-            className="Footer__to-top"
+            className="Footer__to-top-link"
             onClick={handleToTopScroll}
-          >
-            <img
-              src="/img/icons/vector_icon.svg"
-              alt="Icon vector"
-              className="Footer__vector-icon"
-            />
-          </button>
+          />
         </div>
       </div>
     </footer>

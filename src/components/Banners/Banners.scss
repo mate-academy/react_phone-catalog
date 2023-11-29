@@ -21,18 +21,18 @@
   &__button {
     grid-column: span 1;
 
-    border: solid 1px $icons-color;
-    background-color: $white-color;
+    border: 1px solid $icons-color;
+    background: no-repeat center url(../../helpers/icons/icon_vector.svg);
 
     cursor: pointer;
+
+    &--left {
+      transform: rotate(180deg);
+    }
 
     &:hover {
       border-color: $primary-color;
     }
-  }
-
-  &__vector-icon--left {
-    transform: rotate(180deg);
   }
 
   &__indicators {
