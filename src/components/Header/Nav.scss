@@ -1,0 +1,46 @@
+@import "../../utils/mixins";
+@import "../../utils/vars";
+
+.nav {
+  &__list {
+    display: flex;
+    gap: 64px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: $gray-secondary;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $main-gray;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -22px;
+      height: 3px;
+      width: 0;
+      background-color: $main-gray;
+      transition: width 0.3s ease;
+      transform-origin: left center;
+    }
+
+    &--active {
+      color: $main-gray;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

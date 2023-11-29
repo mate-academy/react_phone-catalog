@@ -1,0 +1,20 @@
+@import "../../utils/extend";
+
+.back-button {
+  display: flex;
+  align-items: center;
+  @extend %small-text;
+  background-color: #fff;
+  cursor: pointer;
+  margin-bottom: 16px;
+  color: $gray-secondary;
+
+  &::before {
+    content: "";
+    background: url(../../icons/arrow-left.svg);
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    transform: translateY(-10%);
+  }
+}

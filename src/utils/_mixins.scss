@@ -1,0 +1,39 @@
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin hoverUnderline {
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -24px;
+    height: 3px;
+    width: 100%;
+    background-color: $main-gray;
+
+    transition: transform 0.3s;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

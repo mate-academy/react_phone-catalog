@@ -1,0 +1,97 @@
+@import "./utils/extend";
+@import "./utils/vars";
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+
+  &__counter {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: #fff;
+    font-style: normal;
+    font-size: 9px;
+    line-height: 15px;
+    text-align: center;
+  }
+
+  &__block {
+    position: relative;
+    display: flex;
+    width: 64px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -2px;
+      height: 3px;
+      width: 0;
+      background-color: $main-gray;
+      transition: width 0.3s ease;
+      transform-origin: left center;
+    }
+
+    &--active {
+      color: $main-gray;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &--favorites {
+    background-image: url(./icons/favorites.svg);
+  }
+
+  &--favorites--red {
+    background-image: url(./icons/favorites-red.svg);
+  }
+
+  &--cart {
+    background-image: url(./icons/cart.svg);
+    width: 13.33px;
+    height: 14.67px;
+  }
+
+  &--home {
+    background-image: url(./icons/home.svg);
+  }
+
+  &--search {
+    background-image: url(./icons/search.svg);
+  }
+
+  &--cancel {
+    background-image: url(./icons/cancel.svg);
+  }
+
+  &--arrow {
+    background-image: url(./icons/arrow.svg);
+  }
+
+  &--arrow--down {
+    transform: rotate(180deg);
+    background-image: url(./icons/arrow.svg);
+  }
+
+  &--arrow--gray--down {
+    background-image: url(./icons/arrow-gray-down.svg);
+  }
+
+  &--close {
+    background-image: url(./icons//close-gray.svg);
+  }
+}

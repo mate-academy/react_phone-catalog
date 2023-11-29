@@ -1,1 +1,51 @@
-// not empty
+@font-face {
+  font-family: "Mont";
+  src: url("fonts/Mont-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("fonts/Mont-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url("fonts/Mont-SemiBold.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@import "./utils/reset";
+@import "./utils/extend";
+
+iframe {
+  display: none;
+}
+
+body {
+  margin: 0;
+}
+
+.App {
+  font-family: "Mont", sans-serif;
+}
+
+.wrapper {
+  max-width: 1136px;
+  min-width: 320px;
+  margin: 0 auto;
+  min-height: calc(100vh - 200px);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  @extend %h1;
+}

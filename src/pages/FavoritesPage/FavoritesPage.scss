@@ -1,0 +1,18 @@
+@import "../../utils/vars";
+@import "../../utils/extend";
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-block: 40px 80px;
+  }
+
+  &__count {
+    color: $gray-secondary;
+  }
+}

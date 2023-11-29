@@ -1,0 +1,44 @@
+@import "../../utils/vars";
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    color: $main-gray;
+    border: 1px solid $light-gray;
+    transition: all 0.3s;
+  }
+
+  &__link:hover {
+    border: 1px solid $main-gray;
+  }
+}
+
+.disabled {
+  color: $light-gray;
+  pointer-events: none;
+  text-decoration: none;
+  cursor: not-allowed;
+  transition: all 0.3s;
+}
+
+.active {
+  border: 1px solid transparent;
+  background-color: $main-gray;
+  color: #fff;
+  transition: all 0.3s;
+}

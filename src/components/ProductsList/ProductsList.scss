@@ -1,0 +1,36 @@
+@import "../../utils/vars";
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+  margin-block: 40px 80px;
+
+  &__filters {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__dropdown-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 176px;
+  }
+
+  &__dropdown-wrapper--per-page {
+    width: 128px;
+  }
+
+  &__dropdown-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: $gray-secondary;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    gap: 40px 16px;
+  }
+}

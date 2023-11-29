@@ -1,0 +1,50 @@
+@import "../../utils/vars";
+
+.productSlider {
+  margin-top: 72px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin: 0 auto 20px;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #b4bdc3;
+    transition: all 0.3s;
+  }
+
+  &__button:hover {
+    cursor: pointer;
+    border: 1px solid $main-gray;
+  }
+}
