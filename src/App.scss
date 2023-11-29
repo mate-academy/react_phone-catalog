@@ -1,20 +1,7 @@
 // not empty
 @import "./styles/fonts";
 
-.is-active {
-  color: #313237;
-  position: relative;
 
-  &::after {
-    content: "";
-    width: 100%;
-    height: 3px;
-    top: 24px;
-    background-color: #313237;
-    position: absolute;
-    display: block;
-  }
-}
 
 .products {
   display: flex;

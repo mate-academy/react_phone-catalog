@@ -1,34 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/Product';
 import './ProductSlider.scss';
 
-export const ProductSlider = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+type Props = {
+  name: string,
+  products: Product[]
+};
+
+export const ProductSlider: React.FC<Props> = ({ name, products }) => {
   const [offset, setOffset] = useState(0);
-  // const [leftside, setLeftside] = useState('');
-
-  function getPriceProduct() {
-    fetch('http://localhost:3000/_new/products.json')
-      .then((response) => response.json())
-      .then((productsFromServer) => setProducts(productsFromServer));
-
-    return products
-      .sort((a, b) => a.price - b.price);
-  }
-
-  useEffect(() => {
-    getPriceProduct();
-  }, []);
 
   function handleNextSlide() {
     setOffset(prevOffset => prevOffset + 1088);
     if (offset > 17408) {
       setOffset(0);
     }
-
-    // eslint-disable-next-line no-console
-    console.log(offset);
   }
 
   function handlePrevSlide() {
@@ -39,15 +26,12 @@ export const ProductSlider = () => {
     } else {
       setOffset((prevOffset) => prevOffset - 1088);
     }
-
-    // eslint-disable-next-line no-console
-    console.log(offset);
   }
 
   return (
     <div className="slider">
       <div className="slider__top">
-        <h1 className="slider__header">Hot prices</h1>
+        <h1 className="slider__header">{name}</h1>
         <div className="slider__buttons">
           <button
             type="button"

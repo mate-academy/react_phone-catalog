@@ -1,0 +1,23 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  border-top: none;
+  border-bottom: none;
+  width: 327px;
+  height: 64px;
+  padding: 0 24px;
+
+  &__input {
+    border: none;
+    outline: none;
+    width: 263px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #b4bdc3;
+  }
+}

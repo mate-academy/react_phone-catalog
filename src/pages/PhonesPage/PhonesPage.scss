@@ -1,6 +1,15 @@
 .phones {
   margin: 0 auto;
 
+  &__error {
+    font-family: "Montserrat", sans-serif;
+    color: #313237;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+    padding: 50px 50px;
+  }
   &__title {
     font-family: "Montserrat", sans-serif;
     font-size: 32px;
@@ -8,6 +17,7 @@
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
+    margin-bottom: 8px;
   }
 
   &__count {
@@ -17,9 +27,60 @@
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+    margin: 0;
   }
 
-  &__top  {
+  &__filter {
+    display: flex;
+    gap: 16px;
+    margin: 40px 0 24px;
+
+    &--item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    &--name {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: #89939a;
+    }
+  }
+
+   &__select {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px 111px 12px 14px;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    color: #313237;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    &--1 {
+      padding: 14px 103px 12px 14px;
+    }
+
+    &--item {
+      align-items: center;
+      font-family: "Montserrat", sans-serif;
+      color: #313237;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  &__top {
     display: flex;
     gap: 8px;
     margin-bottom: 40px;
@@ -34,33 +95,16 @@
     }
   }
 
-  &__filter {
+  &__filters {
     margin-bottom: 14px;
     display: flex;
     gap: 16px;
-    &--item {
-
-
-      &-name {
-        font-family: "Montserrat", sans-serif;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        color: #89939a;
-      }
-
-      &-select {
-        width: 176px;
-        height: 40px;
-        border: 1px solid #b4bdc3;
-      }
-    }
   }
 
   &__catalog {
     display: flex;
-    gap: 16px;
+    gap: 8px;
+    width: 1140px;
     flex-wrap: wrap;
   }
 }

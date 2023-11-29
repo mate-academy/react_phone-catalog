@@ -23,8 +23,17 @@ export const Carousel = () => {
     }
   }
 
-  // eslint-disable-next-line no-console
-  console.log(offset);
+  setTimeout(() => {
+    setOffset(offset + 1040);
+
+    if (offset < 0) {
+      setOffset(2080);
+    }
+
+    if (offset > 1040) {
+      setOffset(0);
+    }
+  }, 5000);
 
   return (
     <div className="carousel">

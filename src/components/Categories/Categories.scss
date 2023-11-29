@@ -20,6 +20,8 @@
 .category {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
 
   &__picture {
     position: relative;
@@ -28,7 +30,7 @@
     overflow: hidden;
 
     &--1 {
-      background-color: #ffe3ca
+      background-color: #ffe3ca;
     }
 
     &--2 {
@@ -62,7 +64,7 @@
         width: 403px;
         height: 287px;
       }
-      }
+    }
   }
   &__title {
     font-family: "Montserrat", sans-serif;
