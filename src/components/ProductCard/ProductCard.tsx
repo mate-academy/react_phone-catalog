@@ -40,7 +40,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
       title: product?.name,
       imageUrl: product?.imageUrl,
       price: product.price * ((100 - product.discount) / 100),
-      color: 'Beige',
+      color: 'Black',
       capacity: 64,
       quantity: 1,
     };
@@ -67,7 +67,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
     <div className="card" data-cy="cardsContainer">
       <Link to={`/phones/${id}`} className="card__link">
         <img src={`${imageUrl}`} alt={name} className="card__img" />
-        <h2 className="card__title">{name}</h2>
+        <h2 className="card__title">{`${name} Black 64GB`}</h2>
 
         <div className="card__price">
           {discount === 0 ? (

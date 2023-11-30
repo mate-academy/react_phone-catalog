@@ -8,19 +8,19 @@ const categoryLinks = [
   {
     name: 'Mobile phones',
     path: '/phones',
-    img: '_new/img/category-phones.png',
+    img: 'img/category-phones.png',
     type: 'phone',
   },
   {
     name: 'Tablets',
     path: '/tablets',
-    img: '_new/img/category-tablets.png',
+    img: 'img/category-tablets.png',
     type: 'tablet',
   },
   {
     name: 'Accessories',
     path: '/accessories',
-    img: '_new/img/category-accessories.png',
+    img: 'img/category-accessories.png',
     type: 'accessory',
   },
 ];

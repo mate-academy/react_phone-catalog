@@ -61,12 +61,12 @@ export const ProductDetailsPage = () => {
   const colors = [
     ['#FCDBC1', 'Beige'],
     ['#5F7170', 'Green'],
-    ['#4C4C4C', 'Grey'],
+    ['#4C4C4C', 'Black'],
     ['#F0F0F0', 'White'],
   ];
   const capacity = [64, 256, 512];
   const [currentColor, setCurrentColor] = useState<string | string[]>(
-    colors[0][1],
+    colors[2][1],
   );
   const [currentCapacity, setCurrentCapacity] = useState(capacity[0]);
 
@@ -125,7 +125,7 @@ export const ProductDetailsPage = () => {
 
           {productDetails && product && (
             <section className="details">
-              <h1 className="details__title">{productDetails?.name}</h1>
+              <h1 className="details__title">{`${productDetails?.name} ${currentColor} ${currentCapacity}GB`}</h1>
               <div className="details__top">
                 <div className="details__images-list">
                   <div className="details__images">
