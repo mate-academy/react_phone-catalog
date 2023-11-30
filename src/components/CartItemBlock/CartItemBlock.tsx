@@ -62,23 +62,25 @@ export const CartItemBlock:React.FC<Props> = ({ item }) => {
           </Link>
         </div>
 
-        <div className="cart-item__container">
-          <button
-            type="button"
-            className="cart-item__action-quantity"
-            disabled={quantity === 1}
-            onClick={onClickDecrease}
-          >
-            -
-          </button>
-          <span className="cart-item__quantity">{quantity}</span>
-          <button
-            type="button"
-            className="cart-item__action-quantity"
-            onClick={onClickIncrease}
-          >
-            +
-          </button>
+        <div className="cart-item__container--right">
+          <div className="cart-item__count">
+            <button
+              type="button"
+              className="cart-item__action-quantity"
+              disabled={quantity === 1}
+              onClick={onClickDecrease}
+            >
+              -
+            </button>
+            <span className="cart-item__quantity">{quantity}</span>
+            <button
+              type="button"
+              className="cart-item__action-quantity"
+              onClick={onClickIncrease}
+            >
+              +
+            </button>
+          </div>
           <div className="cart-item__price">{`$${price * quantity}`}</div>
         </div>
       </div>

@@ -10,11 +10,23 @@
   margin-bottom: 16px;
   height: 128px;
   padding: 24px;
+  width: 752px;
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+  }
+
+  &__container--right {
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
   }
 
   &__delete {
@@ -77,7 +89,6 @@
   }
 
   &__price {
-    margin-left: 43px;
     @extend %h2;
   }
 }
