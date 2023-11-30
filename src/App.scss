@@ -183,6 +183,7 @@
 }
 
 .card {
+  border: 1px solid $gray-secondary;
   &__image {
     width: 70px;
   }

@@ -59,7 +59,7 @@ export const ProductCard: React.FC = () => {
         <Slider {...settings}>
           {sorted.map(card => (
             <div className="card" key={card.id}>
-              <img className="card__image" src={`_new/${card.image}`} alt="phone_image" />
+              <img className="card__image" src={card.image} alt="phone_image" />
               <h3 className="card__name">{card.name}</h3>
               <div className="card__price">
                 <p className="card__hot-price">{card.price}</p>

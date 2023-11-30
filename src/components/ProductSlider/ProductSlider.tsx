@@ -44,7 +44,6 @@ export const ProductSlider: React.FC = () => {
 
   return (
     <>
-      {/* <h1>Product Card</h1> */}
       <Swiper
         id="main"
         tag="section"
