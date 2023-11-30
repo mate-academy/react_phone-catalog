@@ -5,6 +5,7 @@ import cart from '../../images/cart.svg';
 import logo from '../../images/Logo.svg';
 import './Header.scss';
 import { Search } from '../Search/Search';
+import { useCart } from '../../CartContext';
 
 const getLinkClass
   = ({ isActive }: { isActive: boolean }) => classNames('header__nav--link',
@@ -13,9 +14,7 @@ const getLinkClass
 export const Header = () => {
   const location = useLocation();
   const path = location.pathname;
-
-  // eslint-disable-next-line no-console
-  console.log(path);
+  const { cartQuantity } = useCart();
 
   return (
     <header className="header">
@@ -62,8 +61,10 @@ export const Header = () => {
         <NavLink to="/favorites" className={getLinkClass}>
           <img src={favorite} alt="favorite" className="header__right--img" />
         </NavLink>
-        <NavLink to="/cart">
-          <img src={cart} alt="favorite" className="header__right--img" />
+        <NavLink to="/cart" className={getLinkClass}>
+          <img src={cart} alt="cart" className="header__cart--img" />
+          {cartQuantity !== 0
+            && <p className="header__cart--quantity">{cartQuantity}</p>}
         </NavLink>
       </div>
     </header>

@@ -1,0 +1,62 @@
+.cart__item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  padding: 31px 40px;
+  margin: 0 16px 16px 0;
+  width: 752px;
+
+  &--remove {
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+    margin-right: 31px;
+  }
+
+  &--img {
+    width: 55px;
+    height: 66px;
+    margin-right: 40px;
+  }
+
+  &--name{
+    font-family: "Montserrat", sans-serif;
+    color: #313237;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-right: 70px;
+  }
+
+  &--quantity {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-right: 43px;
+
+    &-button {
+      border: 1px solid #E2E6E9;
+      padding: 6px 8px;
+      cursor: pointer;
+    }
+
+    &-number {
+      color: #000;
+      font-family: "Montserrat", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &--price {
+    color: #313237;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+  }
+}

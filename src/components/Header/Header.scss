@@ -39,6 +39,31 @@
     align-items: center;
     gap: 49px;
   }
+
+  &__cart {
+    text-decoration: none;
+
+    &--img {
+      position: relative;
+      top: 18px;
+    }
+
+    &--quantity {
+      position: relative;
+      top: -15px;
+      left: 7px;
+      border: 1px solid red;
+      border-radius: 50%;
+      background-color: red;
+      color: #fff;
+      padding: 0 3px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 9px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
 }
 
 .is-active {

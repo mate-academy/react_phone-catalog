@@ -2,12 +2,18 @@ import React from 'react';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import favorite from '../../images/favorite.svg';
+import { useCart } from '../../CartContext';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { addToCart, cartItems } = useCart();
+
+  // eslint-disable-next-line no-console
+  console.log(cartItems);
+
   return (
     <div className="product__card" data-cy="cardsContainer">
       <div className="product__card--top">
@@ -41,9 +47,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="product__card--button">
-        <a href="/" className="product__card--button-cart">
+        <button
+          type="button"
+          className="product__card--button-cart"
+          onClick={() => {
+            addToCart(product.id);
+          }}
+        >
           Add to cart
-        </a>
+        </button>
         <img src={favorite} alt="add to favorite" />
       </div>
     </div>
