@@ -1,0 +1,39 @@
+@import "../../helpers/styles/mixins";
+
+.Search {
+  position: relative;
+
+  &__input {
+    @include buttonsText;
+    width: 280px;
+
+    padding: 21px;
+    border: none;
+    box-shadow: -1px 0 0 0 $elements-color;
+
+    &::placeholder {
+      color: $icons-color;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $hover-color;
+    }
+  }
+
+  &__button {
+    @include squareSize(16px);
+
+    position: absolute;
+    top: 25px;
+    right: 25px;
+
+    border: none;
+    background: no-repeat center url(../../helpers/icons/icon_search.svg);
+
+    &--delete {
+      background: no-repeat center url(../../helpers/icons/icon_cross.svg);
+      cursor: pointer;
+    }
+  }
+}

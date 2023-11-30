@@ -54,4 +54,8 @@
       box-shadow: 0 3px 13px 0 $add-cart-hover-color;
     }
   }
+
+  &__not-implemented {
+    @include bodyText;
+  }
 }

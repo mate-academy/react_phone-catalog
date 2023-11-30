@@ -1,13 +1,14 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
-import { sortProducts } from '../../helpers/utils/sortProducts';
+import { getFilteredProducts } from '../../helpers/utils/getFilteredProducts';
 import { Product } from '../../helpers/types/Product';
 import { ProductsCard } from '../ProductsCard';
 import { Pagination } from '../Pagination';
 import { Dropdown } from '../Dropdown';
 import './ProductsList.scss';
 import { Option } from '../../helpers/types/Option';
+import { NoSearchResults } from '../NoSearchResults';
 
 type Props = {
   products: Product[];
@@ -33,23 +34,24 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || 'age';
+  const query = searchParams.get('query') || '';
   const page = searchParams.get('page') || '1';
-  const perPage = searchParams.get('perPage') || 'all';
+  const perPage = searchParams.get('perPage') || '8';
 
-  const sortedProducts = useMemo(
-    () => sortProducts(products, sort), [products, sort],
-  );
+  const filteredProducts = useMemo(() => {
+    return getFilteredProducts(products, sort, query);
+  }, [products, sort, query]);
 
   useEffect(() => {
     if (perPage !== 'all') {
       const fromItem = (+page - 1) * +perPage + 1;
-      const toItem = Math.min(+page * +perPage, products.length);
+      const toItem = Math.min(+page * +perPage, filteredProducts.length);
 
-      setVisibleProducts(sortedProducts.slice(fromItem - 1, toItem));
+      setVisibleProducts(filteredProducts.slice(fromItem - 1, toItem));
     } else {
-      setVisibleProducts([...sortedProducts]);
+      setVisibleProducts([...filteredProducts]);
     }
-  }, [sortedProducts, page, perPage]);
+  }, [filteredProducts, page, perPage]);
 
   const handleSortChange = (option: string) => {
     searchParams.set('sort', option);
@@ -64,7 +66,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="ProductsList">
-      {pathName !== '/favorites' && (
+      {pathName !== '/favorites' && !!filteredProducts.length && (
         <div className="ProductsList__selections">
           <div className="ProductsList__select">
             <p className="ProductsList__label">Sort by</p>
@@ -75,18 +77,21 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
             />
           </div>
 
-          <div className="ProductsList__select ProductsList__select--narrow">
-            <p className="ProductsList__label">Items on page</p>
-            <Dropdown
-              parameterOptions={perPageOptions}
-              currentOptionName={perPage}
-              onChange={handlePerPageChange}
-            />
-          </div>
-          {/* <option value="age">Newest</option>
-              <option value="name">Alphabetically</option>
-              <option value="price">Cheapest</option> */}
+          {filteredProducts.length >= 4 && (
+            <div className="ProductsList__select ProductsList__select--narrow">
+              <p className="ProductsList__label">Items on page</p>
+              <Dropdown
+                parameterOptions={perPageOptions}
+                currentOptionName={perPage}
+                onChange={handlePerPageChange}
+              />
+            </div>
+          )}
         </div>
+      )}
+
+      {!filteredProducts.length && (
+        <NoSearchResults />
       )}
 
       <ul className="ProductsList__content" data-cy="productList">
@@ -95,8 +100,11 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
         ))}
       </ul>
 
-      {perPage !== 'all' && products.length > Number(perPage) && (
-        <Pagination totalItems={products.length} />
+      {perPage !== 'all' && filteredProducts.length > +perPage && (
+        <Pagination
+          totalItems={filteredProducts.length}
+          onPage={+perPage}
+        />
       )}
     </div>
   );

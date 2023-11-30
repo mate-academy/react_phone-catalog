@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 
 import './styles/Page.scss';
 import productsFromServer from '../helpers/api/products.json';
-import { getDiscountAmount } from '../helpers/utils/getDiscount';
 import { Product } from '../helpers/types/Product';
+import {
+  getHotProducts,
+  getNewProducts,
+} from '../helpers/utils/getSortedProducts';
 
 import { ProductsSlider } from '../components/ProductsSlider';
 import { Banners } from '../components/Banners';
@@ -16,17 +19,9 @@ export const HomePage = () => {
     setProducts(productsFromServer as Product[]);
   }, []);
 
-  const hotProducts = products
-    .filter(product => product.discount)
-    .sort((product1, product2) => {
-      return getDiscountAmount(product2) - getDiscountAmount(product1);
-    });
+  const hotProducts = getHotProducts(products);
 
-  const newProducts = products
-    .filter(product => !product.discount)
-    .sort((product1, product2) => {
-      return product2.price - product1.price;
-    });
+  const newProducts = getNewProducts(products);
 
   return (
     <div className="Page Page--gap--wider Page--padding--top--wider">

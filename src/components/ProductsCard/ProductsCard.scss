@@ -6,7 +6,7 @@
   border: 1px solid $elements-color;
 
   &__image {
-    width: 206px;
+    @include squareSize(206px);
     padding: 8px;
     margin-bottom: 14px;
   }

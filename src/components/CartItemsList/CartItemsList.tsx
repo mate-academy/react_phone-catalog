@@ -47,7 +47,9 @@ export const CartItemList: React.FC<Props> = ({ cart }) => {
           Checkout
         </button>
         {isCheckout && (
-          <p>We are sorry, but this feature is not implemented yet</p>
+          <p className="CartItemsList__not-implemented">
+            We are sorry, but this feature is not implemented yet
+          </p>
         )}
       </div>
     </div>

@@ -8,14 +8,14 @@ import './Pagination.scss';
 
 type Props = {
   totalItems: number,
+  onPage: number,
 };
 
-export const Pagination: React.FC<Props> = ({ totalItems }) => {
+export const Pagination: React.FC<Props> = ({ totalItems, onPage }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page');
-  const perPage = searchParams.get('perPage') || totalItems;
 
-  const numberOfPages = Math.ceil(totalItems / Number(perPage)) || 1;
+  const numberOfPages = Math.ceil(totalItems / onPage) || 1;
   const currentPage = Number(page) || 1;
 
   const pageItems = getNumbers(1, numberOfPages);

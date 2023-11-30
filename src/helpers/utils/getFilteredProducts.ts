@@ -1,8 +1,22 @@
 import { getDiscountedPrice } from './getDiscount';
 import { Product } from '../types/Product';
 
-export const sortProducts = (products: Product[], sort: string) => {
-  const sortedProducts = [...products];
+export const getFilteredProducts = (
+  products: Product[],
+  sort: string,
+  query: string,
+) => {
+  let sortedProducts = [...products];
+
+  if (query) {
+    const lowerQuery = query.toLowerCase();
+
+    sortedProducts = sortedProducts.filter(product => {
+      const lowerName = product.name.toLowerCase();
+
+      return lowerName.includes(lowerQuery);
+    });
+  }
 
   switch (sort) {
     case 'age':

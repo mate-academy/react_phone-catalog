@@ -6,5 +6,5 @@ type Props = {
 };
 
 export const NoResults: React.FC<Props> = ({ categoryName }) => (
-  <p>{`${categoryName} not found`}</p>
+  <p className="NoResults">{`${categoryName} not found`}</p>
 );

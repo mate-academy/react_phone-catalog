@@ -1,10 +1,16 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  Link,
+  NavLink,
+  useLocation,
+} from 'react-router-dom';
 import classNames from 'classnames';
 
 import { Nav } from '../Nav';
 import './Header.scss';
 import { useAppSelector } from '../../helpers/app/hooks';
 import { getTotalQuantity } from '../../helpers/utils/getTotalAmount';
+import { Search } from '../Search';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return classNames('Header__link', {
@@ -13,9 +19,22 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 };
 
 export const Header = () => {
-  const location = useLocation();
   const { favorites } = useAppSelector(state => state.favorites);
   const { cart } = useAppSelector(state => state.cart);
+
+  const [isSearchAvailable, setIsSearchAvailable] = useState(false);
+
+  const location = useLocation();
+  const path = location.pathname;
+
+  useEffect(() => {
+    setIsSearchAvailable(
+      path === '/phones'
+      || path === '/tablets'
+      || path === '/accessories'
+      || path === '/favorites',
+    );
+  }, [path]);
 
   const handleToTopScroll = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,13 +48,16 @@ export const Header = () => {
           className="Header__logo"
           onClick={handleToTopScroll}
         />
-        {location.pathname !== '/cart' && (
+        {path !== '/cart' && (
           <Nav />
         )}
       </div>
 
       <div className="Header__right">
-        {location.pathname !== '/cart' && (
+        {isSearchAvailable && (
+          <Search />
+        )}
+        {path !== '/cart' && (
           <div className="Header__link-wrapper">
             <NavLink
               to="/favorites"
