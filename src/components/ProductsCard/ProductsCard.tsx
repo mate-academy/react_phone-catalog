@@ -6,9 +6,15 @@ import { Product } from '../../helpers/types/Product';
 import './ProductsCard.scss';
 import { useAppDispatch, useAppSelector } from '../../helpers/app/hooks';
 import {
-  addProduct,
-  removeProduct,
+  addToFavorites,
+  removeFromFavorites,
 } from '../../helpers/features/favoritesSlice';
+
+import {
+  addToCart,
+  removeFromCart,
+} from '../../helpers/features/cartSlice';
+import { getDiscountedPrice } from '../../helpers/utils/getDiscount';
 
 type Props = {
   product: Product,
@@ -17,6 +23,7 @@ type Props = {
 export const ProductsCard: React.FC<Props> = ({ product }) => {
   const dispatch = useAppDispatch();
   const { favorites } = useAppSelector(state => state.favorites);
+  const { cart } = useAppSelector(state => state.cart);
 
   const {
     imageUrl,
@@ -28,21 +35,31 @@ export const ProductsCard: React.FC<Props> = ({ product }) => {
     ram,
   } = product;
 
-  const getDiscountedPrice = () => {
-    return price - price * (discount / 100);
-  };
-
   const getIsFavorite = () => {
     return favorites.some(favorite => favorite.id === product.id);
+  };
+
+  const getIsInCart = () => {
+    return cart.some(cartItem => cartItem.id === product.id);
   };
 
   const handleToggleFavorites = () => {
     const isFavorite = getIsFavorite();
 
     if (isFavorite) {
-      dispatch(removeProduct(product.id));
+      dispatch(removeFromFavorites(product.id));
     } else {
-      dispatch(addProduct(product));
+      dispatch(addToFavorites(product));
+    }
+  };
+
+  const handleToggleCartItem = () => {
+    const isInCart = getIsInCart();
+
+    if (isInCart) {
+      dispatch(removeFromCart(product.id));
+    } else {
+      dispatch(addToCart(product));
     }
   };
 
@@ -59,7 +76,7 @@ export const ProductsCard: React.FC<Props> = ({ product }) => {
       <div className="ProductsCard__prices">
         {!!discount && (
           <p className="ProductsCard__price">
-            {`$${getDiscountedPrice()}`}
+            {`$${getDiscountedPrice(product)}`}
           </p>
         )}
         <p
@@ -95,9 +112,20 @@ export const ProductsCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="ProductsCard__add">
-        <button type="button" className="ProductsCard__add-cart">
-          Add to cart
+        <button
+          type="button"
+          className={classNames('ProductsCard__add-cart', {
+            'ProductsCard__add-cart--selected': getIsInCart(),
+          })}
+          onClick={handleToggleCartItem}
+        >
+          {getIsInCart() ? (
+            <p>Added to cart</p>
+          ) : (
+            <p>Add to cart</p>
+          )}
         </button>
+
         <button
           type="button"
           className={classNames('ProductsCard__add-favorites', {

@@ -29,7 +29,7 @@ export const HomePage = () => {
     });
 
   return (
-    <div className="Page Page--bigger--intervals">
+    <div className="Page Page--gap--wider Page--padding--top--wider">
       <Banners />
 
       <section className="Page__section hot-prices">

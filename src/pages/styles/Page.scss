@@ -8,9 +8,16 @@
   flex-direction: column;
   gap: 40px;
 
-  &--bigger--intervals {
+  &--padding--top--wider {
     padding-top: 40px;
+  }
+
+  &--gap--wider {
     gap: 80px;
+  }
+
+  &--gap--narrower {
+    gap: 24px;
   }
 
   &__section {
@@ -23,6 +30,10 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    &--gap--wider {
+      gap: 16px;
+    }
   }
 
   &__title {

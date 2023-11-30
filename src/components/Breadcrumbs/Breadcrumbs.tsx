@@ -15,7 +15,7 @@ export const Breadcrumbs = () => {
   });
 
   return (
-    <div className="Breadcrumbs">
+    <div data-cy="breadCrumbs" className="Breadcrumbs">
       <img src={iconHome} alt="Home Icon" />
       <img src={iconVector} alt="Vector Icon" />
       <p className="Breadcrumbs__folder">{breadcrumbs[0]}</p>

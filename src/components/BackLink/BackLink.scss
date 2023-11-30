@@ -1,0 +1,19 @@
+@import "../../helpers/styles/mixins";
+
+.BackLink {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+
+  &__vector {
+    transform: rotate(180deg);
+  }
+
+  &__button {
+    @include smallText;
+
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+}
