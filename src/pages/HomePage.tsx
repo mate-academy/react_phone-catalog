@@ -3,6 +3,7 @@ import { useContext, useEffect, useMemo } from 'react';
 import { MainContext } from '../context/MainContext';
 import { Banner } from '../components/Banner';
 import { ProductsSlider } from '../components/ProductsSlider';
+import { Categories } from '../components/Categories';
 
 export const HomePage = () => {
   const {
@@ -34,6 +35,7 @@ export const HomePage = () => {
     <>
       <Banner />
       <ProductsSlider title="Hot prices" items={getHotPriceProducts} />
+      <Categories />
       <ProductsSlider title="Brand new models" items={getBrandNewProducts} />
     </>
   );

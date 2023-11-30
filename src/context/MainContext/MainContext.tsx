@@ -10,22 +10,34 @@ interface Props {
 
 export const MainContext = React.createContext<{
   products: Product[];
+  phones: Product[];
+  tablets: Product[];
+  accessories: Product[];
   isLoaderActive: boolean;
   isMenuOpen: boolean;
   isHeaderSearchVisible: boolean;
   documentTitle: string;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
+  setTablets: React.Dispatch<React.SetStateAction<Product[]>>;
+  setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
   setIsLoaderActive: React.Dispatch<React.SetStateAction<boolean>>;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsHeaderSearchVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setDocumentTitle: React.Dispatch<React.SetStateAction<string>>;
 }>({
   products: [],
+  phones: [],
+  tablets: [],
+  accessories: [],
   isLoaderActive: true,
   isMenuOpen: false,
   isHeaderSearchVisible: false,
   documentTitle: 'Home Page',
   setProducts: () => {},
+  setPhones: () => {},
+  setTablets: () => {},
+  setAccessories: () => {},
   setIsLoaderActive: () => {},
   setIsMenuOpen: () => {},
   setIsHeaderSearchVisible: () => {},
@@ -40,6 +52,9 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [documentTitle, setDocumentTitle] = useState('Home Page');
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
 
   useEffect(() => {
     const { body } = document;
@@ -48,7 +63,14 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
     body.style.overflow = isMenuOpen ? 'hidden' : '';
 
     fetchData()
-      .then((data) => setProducts(data))
+      .then((data: Product[]) => {
+        setProducts(data);
+        setPhones(data.filter(({ category }) => category === 'phones'));
+        setTablets(data.filter(({ category }) => category === 'tablets'));
+        setAccessories(
+          data.filter(({ category }) => category === 'accessories')
+        );
+      })
       .finally(() => setIsLoaderActive(false));
   }, [documentTitle, isMenuOpen]);
 
@@ -56,6 +78,12 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
     () => ({
       products,
       setProducts,
+      phones,
+      setPhones,
+      tablets,
+      setTablets,
+      accessories,
+      setAccessories,
       isLoaderActive,
       setIsLoaderActive,
       isMenuOpen,
@@ -68,6 +96,12 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
     [
       products,
       setProducts,
+      phones,
+      setPhones,
+      tablets,
+      setTablets,
+      accessories,
+      setAccessories,
       isLoaderActive,
       setIsLoaderActive,
       isMenuOpen,
