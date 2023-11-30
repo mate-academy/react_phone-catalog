@@ -62,8 +62,8 @@ export const ProductCard: React.FC = () => {
               <img className="card__image" src={card.image} alt="phone_image" />
               <h3 className="card__name">{card.name}</h3>
               <div className="card__price">
-                <p className="card__hot-price">{card.price}</p>
-                <p className="card__full-price">{card.fullPrice}</p>
+                <p className="card__hot-price">{`$${card.price}`}</p>
+                <p className="card__full-price">{`$${card.fullPrice}`}</p>
               </div>
               <div className="card__info">
                 <div className="card__row">
@@ -79,7 +79,7 @@ export const ProductCard: React.FC = () => {
                   <p className="card__char-value">{card.ram}</p>
                 </div>
               </div>
-              <div>
+              <div className="card__button">
                 <a className="card__link" href="/">Add to cart</a>
                 <div className="card__icon" />
               </div>

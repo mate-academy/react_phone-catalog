@@ -87,6 +87,7 @@
   &:hover {
     border: 1px solid $gray-primary;
   }
+
   &::after {
     background-image: url('../src/images/arrow-right-black.svg');
     width: 16px;
@@ -131,22 +132,20 @@
 }
 
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  column-gap: 16px;
-  grid-template-rows: 100px, 1fr;
+  position: relative;
 }
 
+.slick-title {}
+
 .slick-slider {
-  height: 400px;
   width: 100%;
   display: grid !important;
-  grid-row: 2 / 3;
   grid-column: span 24;
+  position: relative !important;
 }
 
 .slick-list {
-  height: 500px;
+  // height: 500px;
   grid-column: span 24;
 }
 
@@ -156,16 +155,15 @@
 
 .slick-arrow {
   background: blue !important;
-  position: relative !important;
+  position: absolute !important;
 }
 
 .slick-prev {
-  left: 0 !important;
-  grid-column: -3 / -2;
-  grid-row: 1 / 2;
+  left: auto !important;
+  top: -10px !important;
+  right: 30px !important;
 
   &::before {
-    content: "Hot prices";
     width: 100px;
     height: 22px;
   }
@@ -173,18 +171,58 @@
 
 .slick-next {
   right: 0 !important;
-  grid-column: -2 / -1;
-  grid-row: 1 / 2;
+  top: -10px !important;
 }
 
-.slick-title {
-  grid-row: 1 / 2;
-  grid-column: span 6;
-}
 
 .card {
   border: 1px solid $gray-secondary;
+  padding: 32px 24px 24px 24px;
+  width: 272px;
+
   &__image {
-    width: 70px;
+    width: 208px;
+    margin-inline: auto;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $gray-primary;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    font-size: 22px;
+    line-height: 140%;
+    gap: 8px;
+    border-bottom: 1px solid $gray-secondary;
+    margin-bottom: 16px;
+  }
+
+  &__hot-price {
+    font-weight: 700;
+  }
+
+  &__full-price {
+    color: $gray-secondary;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: line-through;
+    text-decoration-style: solid;
+    text-decoration-line: strikethrough;
+  }
+
+  &__row {
+    display: flex;
+    // gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__button {
+    display: flex;
   }
 }
