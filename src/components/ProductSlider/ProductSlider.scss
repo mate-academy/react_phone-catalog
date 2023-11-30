@@ -67,9 +67,45 @@
   }
 
   &__button {
+    &--prev {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elementsColor;
+      background-color: transparent;
+      transition: all 0.3s;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../../assets/svg/ArrowLeft.svg");
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:disabled {
+        cursor: default;
+        border-color: $elementsColor;
+      }
+    }
 
     &--next {
       margin-left: 16px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elementsColor;
+      background-color: transparent;
+      transition: all 0.3s;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../../assets/svg/ArrowRight.svg");
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:disabled {
+        cursor: default;
+        border-color: $elementsColor;
+      }
     }
   }
 }

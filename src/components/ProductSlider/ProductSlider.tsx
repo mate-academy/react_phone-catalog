@@ -161,7 +161,8 @@ export const ProductsSlider: FC<Props> = ({
             name="Prev"
             aria-label="buttonPrev"
             onClick={() => handleShowPrevious(currentSlider.current)}
-            className="pagination-button pagination-button--prev slider__button"
+            className="pagination-button
+             pagination-button--prev slider__button--prev"
             disabled={isPrevDisabled}
           />
 
@@ -172,7 +173,6 @@ export const ProductsSlider: FC<Props> = ({
             onClick={() => handleShowNext(currentSlider.current)}
             className="pagination-button slider__button slider__button--next"
             disabled={isNextDisabled}
-            style={{ backgroundImage: 'url(../../assets/svg/ArrowRight.svg)' }}
           />
         </div>
       </div>

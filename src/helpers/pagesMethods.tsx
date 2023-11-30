@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CatalogProduct } from '../types/CatalogProduct';
-import { SortBy } from './enums';
+import { Location, SortBy } from './enums';
 import { getProducts } from '../utils/fetchData';
 import { FavoriteItem } from '../types/FavoriteItem';
 
@@ -161,4 +161,8 @@ export const getCurrentFavorites = (
       === query.toLowerCase());
 
   return newArray;
+};
+
+export const isLocation = (itemValue: string): itemValue is Location => {
+  return Object.values<string>(Location).includes(itemValue);
 };

@@ -10,3 +10,10 @@ export enum PreviousPage {
   Sixteen = '16',
   All = 'all',
 }
+
+export enum Location {
+  Phones = 'phones',
+  Tablets = 'tablets',
+  Accessories = 'accessories',
+  Favorites = 'favorites',
+}

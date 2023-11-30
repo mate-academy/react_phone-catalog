@@ -20,8 +20,8 @@ export const FavoriteButton: FC<FavoriteItem> = ({
 }) => {
   const {
     favorites,
-    handleAddToFavorite,
-    handleRemoveFromFavorite,
+    handleAddToFavorites,
+    handleRemoveFromFavorites,
   } = useContext(FavoriteStorageContext);
 
   const [isFavorite, setIsFavorite] = useState(() => {
@@ -34,12 +34,12 @@ export const FavoriteButton: FC<FavoriteItem> = ({
   });
 
   const handleFavorite = () => {
-    if (!handleAddToFavorite || !handleRemoveFromFavorite) {
+    if (!handleAddToFavorites || !handleRemoveFromFavorites) {
       return;
     }
 
     if (isFavorite) {
-      handleRemoveFromFavorite(itemId);
+      handleRemoveFromFavorites(itemId);
       setIsFavorite(false);
     } else {
       const newItem = {
@@ -54,7 +54,7 @@ export const FavoriteButton: FC<FavoriteItem> = ({
         ram,
       };
 
-      handleAddToFavorite(newItem);
+      handleAddToFavorites(newItem);
       setIsFavorite(true);
     }
   };

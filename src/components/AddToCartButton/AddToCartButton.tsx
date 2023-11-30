@@ -65,7 +65,7 @@ export const AddToCartButton: FC<Props> = ({
         { button__selected: isInCart },
       )}
     >
-      {isInCart ? 'Remove from cart' : 'Add to cart'}
+      {isInCart ? 'Added to cart' : 'Add to cart'}
     </button>
   );
 };

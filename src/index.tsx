@@ -16,6 +16,7 @@ import { ItemCardPage } from './pages/ItemCardPage/ItemCardPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 
 import './index.scss';
+import { CartPage } from './pages/CartPage/CartPage';
 
 ReactDOM.render(
   <Router>
@@ -40,6 +41,7 @@ ReactDOM.render(
         </Route>
 
         <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Route>
 
       <Route path="notfound" element={<NotFoundPage />} />

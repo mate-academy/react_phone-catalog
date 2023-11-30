@@ -6,7 +6,16 @@
   background-color: $whiteColor;
   box-shadow: 0 1px 0 $elementsColor;
 
+  &__interactive {
+    height: 100%;
+    display: flex;
+  }
+
   // width: 1440px;
   // height: 64px;
   // flex-shrink: 0;
+}
+
+.icons-container {
+  display: flex;
 }
