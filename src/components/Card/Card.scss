@@ -1,0 +1,40 @@
+@import "../style/main.scss";
+
+.card {
+  &__phones {
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 128px;
+    width: 752px;
+    border: 1px solid $gray-elements;
+  }
+  &__img {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__count {
+    position: absolute;
+    display: flex;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: $red;
+    justify-content: center;
+    align-items: center;
+    top: 3%;
+    right: 11%;
+  }
+  &__count-text {
+    color: $gray-white;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+  }
+}

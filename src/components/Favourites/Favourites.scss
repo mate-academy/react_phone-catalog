@@ -1,0 +1,22 @@
+@import "../style/main.scss";
+
+.favourites {
+  &__count {
+    position: absolute;
+    display: flex;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: $red;
+    justify-content: center;
+    align-items: center;
+    top: 3%;
+    right: 15.5%;
+  }
+  &__count-text {
+    color: $gray-white;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 600;
+  }
+}

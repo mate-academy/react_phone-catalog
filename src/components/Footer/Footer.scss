@@ -1,0 +1,51 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 152px;
+  height: 96px;
+  background: #fff;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &__link {
+    display: flex;
+    gap: 64px;
+    text-decoration: none;
+  }
+
+  &__text {
+    text-decoration: none;
+    color: #89939a;
+    font-weight: 700;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  &__top {
+    display: flex;
+  }
+
+  &__back {
+    color: #89939a;
+    padding: 20px;
+  }
+
+  &__button--top {
+    margin: 10px 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+    background-image: url(../../img/icon/ArrowRight.png);
+    rotate: (-90deg);
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &:disabled {
+      border: 1px solid #e2e6e9;
+    }
+  }
+}

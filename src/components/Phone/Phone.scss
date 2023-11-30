@@ -1,0 +1,23 @@
+.phones {
+  margin: 0 auto 80px;
+
+  &__item {
+    list-style: none;
+    text-decoration: none;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  &__input {
+    display: flex;
+    justify-content: start;
+    padding: 16px 20px;
+    gap: 20px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-decoration: none;
+  }
+}

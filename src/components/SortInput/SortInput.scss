@@ -1,0 +1,18 @@
+.sort {
+  display: flex;
+  flex-direction: column;
+  color: #89939a;
+  font-size: 12px;
+  font-weight: 600;
+
+  &__select {
+    width: 188px;
+    height: 40px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    color: #313237;
+    border: 1px solid #b4bdc3;
+  }
+}

@@ -1,0 +1,275 @@
+@import "../style/main.scss";
+
+.details {
+  &__container {
+    display: flex;
+    flex: 50%;
+  }
+
+  &__subtitle {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__title--main {
+    display: flex;
+    padding: 20px 0 40px;
+  }
+
+  &__title--name {
+    padding: 0 0 50px;
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__about {
+    padding: 8px 64px 32px 0;
+    width: 50%;
+  }
+
+  &__about-title {
+    color: $gray-primary;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__description {
+    margin: 0 0 32px;
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__tech {
+    width: 50%;
+  }
+  &__title {
+    box-shadow: 0 1px 0 0 $gray-elements;
+  }
+}
+
+.photos {
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include onTablet {
+    flex-direction: row;
+    display: flex;
+  }
+
+  &__side {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 20px auto;
+
+    @include onTablet {
+      display: block;
+      width: 70px;
+    }
+
+    @include onDesktop {
+      display: block;
+      width: 80px;
+    }
+  }
+
+  &__buttons {
+    padding: 0;
+    width: 60px;
+    height: 60px;
+
+    background: $gray-white;
+    border: 1px solid $gray-secondary;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      width: 70px;
+      height: 70px;
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__sidePhoto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+
+    @include onTablet {
+      display: block;
+      width: 65px;
+      height: 65px;
+    }
+
+    @include onDesktop {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__main {
+    margin: 0 16px;
+
+    width: 320px;
+    height: 320px;
+    background: $gray-white;
+
+    @include onTablet {
+      margin: 0 24px 0 16px;
+      width: 380px;
+      height: 380px;
+    }
+
+    @include onDesktop {
+      margin: 0 64px 0 16px;
+      width: 464px;
+      height: 464px;
+    }
+
+    &__img {
+      width: 320px;
+      height: 320px;
+
+      @include onTablet {
+        width: 380px;
+        height: 380px;
+      }
+
+      @include onDesktop {
+        width: 464px;
+        height: 464px;
+      }
+
+      object-fit: contain;
+    }
+  }
+}
+
+.params {
+  max-width: 320px;
+  @include onDesktop {
+    width: 420px;
+  }
+
+  &__color {
+    padding: 0 0 24px;
+    margin: 0 0 24px;
+    border-bottom: 1px solid $gray-icons-placeholders;
+
+    &--heading {
+      color: $gray-secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__capacity {
+    padding: 0 0 24px;
+    margin: 0 0 24px;
+    border-bottom: 1px solid $gray-icons-placeholders;
+
+    &--heading {
+      color: $gray-secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__description {
+    margin: 32px 0 0;
+
+    &--specs {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--value {
+      color: #313237;
+    }
+  }
+}
+
+.colors {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__border {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $gray-icons-placeholders;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      border-color: gray;
+      transition: 0.3s ease;
+    }
+
+    &--selected {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+
+  }
+}
+
+.capacities {
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 63px;
+    height: 32px;
+    text-decoration: none;
+    border: 1px solid $gray-icons-placeholders;
+
+    color: #313237;
+    font-size: 14px;
+    font-weight: 500;
+
+    &--selected {
+      color: #fff;
+      background-color: #313237;
+    }
+  }
+}

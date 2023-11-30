@@ -1,0 +1,67 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+  height: 64px;
+  padding: 0 152px;
+  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  margin: 0 0 40px;
+
+  &__logo {
+    margin: 30px 0 0 24px;
+    height: 64px;
+    width: 64px;
+    background-image: url(../Header/imgHeader/Logo.png);
+    background-repeat: no-repeat;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    padding: 10px;
+    height: 100%;
+    color: rgba(137, 147, 154, 1);
+    text-decoration: none;
+    list-style: none;
+    gap: 64px;
+
+    &-active {
+      color: rgba(49, 50, 55, 1);
+    }
+  }
+  &__favourites {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(226, 230, 233, 1);
+    background-image: url(../Header/imgHeader/Favourites.png);
+    background-repeat: no-repeat;
+    object-fit: contain;
+
+    &-active {
+      color: rgba(49, 50, 55, 1);
+    }
+  }
+
+  &__right {
+    display: flex;
+    width: 30%;
+    justify-content: flex-end;
+  }
+
+  &__bag {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(226, 230, 233, 1);
+    background-image: url(../Header/imgHeader/Cart.png);
+    background-repeat: no-repeat;
+    object-fit: contain;
+  }
+}
+
+.icon {
+  height: 50px;
+  background-color: aqua;
+}

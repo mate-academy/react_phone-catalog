@@ -1,0 +1,38 @@
+.pagination {
+  &__button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    list-style: none;
+    text-decoration: none;
+    border: 1px solid  #e2e6e9;
+
+    &-active {
+      background-color: #313237;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 32px;
+    height: 32px;
+    list-style: none;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    &-active {
+      color: #fff;
+    }
+  }
+}

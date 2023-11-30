@@ -1,0 +1,29 @@
+@import "../style/main.scss";
+
+.button {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  :hover {
+    color: green;
+    box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+  }
+  &__link {
+    color: $gray-white;
+    text-align: center;
+    text-decoration: none;
+    background-color: $gray-primary;
+    height: 40px;
+    width: 176px;
+    font-weight: 600;
+
+    &-active {
+      color: $green-2;
+      background-color: $gray-white;
+      border: 1px solid $gray-elements;
+    }
+  }
+
+}

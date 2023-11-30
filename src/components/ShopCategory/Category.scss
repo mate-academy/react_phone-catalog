@@ -1,0 +1,51 @@
+.category {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0 50px;
+
+  &__box {
+    display: flex;
+    width: 33%;
+    height: 600px;
+    margin: 0 auto 20px;
+  }
+
+  &__container {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    margin: 0 0 24px;
+
+    &--1 {
+      background-color: #fcdbc1;
+    }
+    &--2 {
+      background-color: rgba(141, 141, 146, 1);
+    }
+    &--3 {
+      background-color: rgba(151, 61, 95, 1);
+    }
+  }
+  &__img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    margin: 30px 72px 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: rgba(49, 50, 55, 1);
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(137, 147, 154, 1);
+  }
+
+}

@@ -1,0 +1,14 @@
+.icon__favourites {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(226, 230, 233, 1);
+  background-image: url(../Header/imgHeader/Favourites.png);
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-position: center;
+
+  &-active {
+    color: rgba(49, 50, 55, 1);
+    background-image: url(../../img/icon/Addtofovourites.png);
+  }
+}

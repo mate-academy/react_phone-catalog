@@ -1,9 +1,40 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { Card } from './components/Card/Card';
+import { PhoneProvider } from './components/Context/contex';
+import { Favourites } from './components/Favourites/Favourites';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import './components/Header/Header.scss';
+import { HomePage } from './components/HomePage/HomePage';
+import { Phone } from './components/Phone/Phone';
+import { ProductDetails } from './components/ProductDetals/ProductDetals';
+import { Tablets } from './components/Tablets/Tablets';
 
 const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <PhoneProvider>
+    <div className="App">
+      <Header />
+      <div className="section">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/phones">
+            <Route index element={<Phone />} />
+            <Route path=":idPhone" element={<ProductDetails />} />
+          </Route>
+          <Route path="/tablets" element={<Tablets />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/cart" element={<Card />} />
+          <Route
+            path="*"
+            element={<h1 className="title">Page not found</h1>}
+          />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
+  </PhoneProvider>
 );
 
 export default App;
