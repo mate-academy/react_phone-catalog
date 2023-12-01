@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './AccessoriesPage.scss';
-import { Product } from '../../types/Product';
+import { Product } from '../../Types/Product';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import home from '../../images/home.svg';
 import arrowright from '../../images/arrowright.svg';

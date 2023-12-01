@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './PhonesPage.scss';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../../types/Product';
+import { Product } from '../../Types/Product';
 import home from '../../images/home.svg';
 import arrowright from '../../images/arrowright.svg';
 import { ProductList } from '../../components/ProductList/ProductList';
@@ -19,23 +19,24 @@ export const PhonesPage = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  useEffect(
-    () => {
-      setLoading(true);
-      setTimeout(() => {
-        getItems()
-          .then((productsFormServer) => {
-            setProducts(productsFormServer
-              .filter((product: Product) => product.category === 'phones'));
-          })
-          .catch(() => setErrorMessage('Something went wrong'))
-          .finally(() => setLoading(false));
-      }, 1000);
-    }, [],
-  );
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      getItems()
+        .then((productsFormServer) => {
+          setProducts(
+            productsFormServer.filter(
+              (product: Product) => product.category === 'phones',
+            ),
+          );
+        })
+        .catch(() => setErrorMessage('Something went wrong'))
+        .finally(() => setLoading(false));
+    }, 1000);
+  }, []);
 
   const filteredByQuery = products
-    .filter(product => product.name
+    .filter((product) => product.name
       .toLowerCase().includes(query.toLowerCase()));
 
   const selectedPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -73,10 +74,7 @@ export const PhonesPage = () => {
 
   const total = filteredByQuery.length;
   const startItem = (currentPage - 1) * perPage;
-  const endItem
-      = currentPage * perPage < total
-        ? currentPage * perPage
-        : total;
+  const endItem = currentPage * perPage < total ? currentPage * perPage : total;
   const visibleItems = filteredByQuery.slice(startItem, endItem);
 
   return (

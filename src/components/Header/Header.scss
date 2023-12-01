@@ -7,7 +7,7 @@
   height: 64px;
   border: 1px solid #e2e6e9;
   border-top: none;
-  border-left:  none;
+  border-left: none;
   border-right: none;
 
   &__left {
@@ -41,16 +41,21 @@
   }
 
   &__cart {
+    position: relative;
     text-decoration: none;
+    &:active { 
+      position: absolute;
 
-    &--img {
-      position: relative;
-      top: 18px;
+      &:nth-child(1) {
+        position: absolute;
+        top: -35px;
+      }
     }
+
 
     &--quantity {
       position: relative;
-      top: -15px;
+      top: -12px;
       left: 7px;
       border: 1px solid red;
       border-radius: 50%;

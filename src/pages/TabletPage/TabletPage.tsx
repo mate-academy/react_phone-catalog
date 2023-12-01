@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../PhonesPage/PhonesPage.scss';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../../types/Product';
+import { Product } from '../../Types/Product';
 import home from '../../images/home.svg';
 import arrowright from '../../images/arrowright.svg';
 import { ProductList } from '../../components/ProductList/ProductList';
@@ -25,8 +25,11 @@ export const TabletPage = () => {
     setTimeout(() => {
       getItems()
         .then((productsFormServer) => {
-          setProducts(productsFormServer
-            .filter((product: Product) => product.category === 'tablets'));
+          setProducts(
+            productsFormServer.filter(
+              (product: Product) => product.category === 'tablets',
+            ),
+          );
         })
         .catch(() => setErrorMessage('Something went wrong'))
         .finally(() => setLoading(false));
@@ -34,8 +37,8 @@ export const TabletPage = () => {
   }, []);
 
   const filteredByQuery = products
-    .filter((product) => product.name
-      .toLowerCase().includes(query.toLowerCase()));
+    .filter((product) => product.name.toLowerCase()
+      .includes(query.toLowerCase()));
 
   const selectedPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setPerPage(+event.target.value);
@@ -132,7 +135,7 @@ export const TabletPage = () => {
       </div>
 
       {!loading && products.length === 0 && (
-        <p className="phones__error">{ errorMessage }</p>
+        <p className="phones__error">{errorMessage}</p>
       )}
       <div data-cy="pagination" style={{ margin: '0 auto' }}>
         <Pagination

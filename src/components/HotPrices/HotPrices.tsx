@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
+import { Product } from '../../Types/Product';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 
 export const HotPrices = () => {

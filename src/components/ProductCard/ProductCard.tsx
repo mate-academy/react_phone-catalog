@@ -1,18 +1,22 @@
-import React from 'react';
-import { Product } from '../../types/Product';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { Product } from '../../Types/Product';
 import './ProductCard.scss';
 import favorite from '../../images/favorite.svg';
-import { useCart } from '../../CartContext';
+import { useCart } from '../Contexsts/CartContext';
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { addToCart, cartItems } = useCart();
+  const { addToCart } = useCart();
+  const [active, setActive] = useState(false);
 
-  // eslint-disable-next-line no-console
-  console.log(cartItems);
+  const handleClick = () => {
+    addToCart(product.id);
+    setActive(!active);
+  };
 
   return (
     <div className="product__card" data-cy="cardsContainer">
@@ -49,9 +53,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <div className="product__card--button">
         <button
           type="button"
-          className="product__card--button-cart"
+          className={classNames('product__card--button-cart', {
+            'is-active': active,
+          })}
           onClick={() => {
-            addToCart(product.id);
+            handleClick();
           }}
         >
           Add to cart

@@ -1,23 +1,28 @@
 // eslint-disable-next-line import/no-cycle
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useCart } from '../../CartContext';
+import { useCart } from '../../components/Contexsts/CartContext';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { formatCurrency } from '../../helpers/formatCurrency';
 import './CartPage.scss';
 import { getItems } from '../../services/fetch';
-import { Product } from '../../types/Product';
+import { Product } from '../../Types/Product';
 
 export const CartPage = () => {
   const { cartItems, cartQuantity } = useCart();
   const [items, setItems] = useState<Product[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getItems().then(products => setItems(products));
+    getItems().then((products) => setItems(products));
   });
 
   return (
     <div className="cart">
-      <button type="button" className="cart__button">
+      <button
+        type="button"
+        className="cart__button"
+        onClick={() => navigate('..')}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -45,13 +50,11 @@ export const CartPage = () => {
 
         <div className="cart__total">
           <span className="cart__total--price">
-            {formatCurrency(
-              cartItems.reduce((total, cartItem) => {
-                const item = items.find((i) => i.id === cartItem.id);
+            {`$${cartItems.reduce((total, cartItem) => {
+              const item = items.find((i) => i.id === cartItem.id);
 
-                return total + (item?.price || 0) * cartItem.quantity;
-              }, 0),
-            )}
+              return total + (item?.price || 0) * cartItem.quantity;
+            }, 0)}`}
           </span>
           <span className="cart__total--text">{`Total for ${cartQuantity} items`}</span>
 

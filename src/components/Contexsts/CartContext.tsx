@@ -11,7 +11,10 @@ export type CartItem = {
 
 type CartsContext = {
   addToCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
   getItemQuantity: (id: number) => void;
+  increaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
   cartQuantity: number;
   cartItems: CartItem[];
 };
@@ -40,13 +43,17 @@ function useLocalStorage<T>(key: string, startValue: T): [T, (v: T) => void] {
 }
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems]
-    = useLocalStorage<CartItem[]>('cartItems', []);
-  const cartQuantity = cartItems
-    .reduce((quantity, item) => item.quantity + quantity, 0);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    'cartItems',
+    [],
+  );
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0,
+  );
 
   const getItemQuantity = (id: number) => {
-    return cartItems.find(item => item.id === id)?.quantity || 0;
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
 
   const addToCart = (id: number) => {
@@ -67,49 +74,56 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  // const increaseQuantity = (id: number) => {
-  //   setCartItems((currItems: CartItem[]) => {
-  //     if (currItems.find(item => item.id === id) == null) {
-  //       return [...cartItems, { id, quantity: 1 }];
-  //     }
+  const increaseQuantity = (id: number) => {
+    if (cartItems.find(item => item.id === id) == null) {
+      setCartItems([...cartItems, { id, quantity: 1 }]);
+    } else {
+      const newCartItems = cartItems.map(
+        (item: CartItem) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
 
-  //     return currItems.map(item => {
-  //       if (item.id === id) {
-  //         return { ...item, quantity: item.quantity + 1 };
-  //       }
+          return item;
+        },
+      );
 
-  //       return item;
-  //     });
-  //   });
-  // };
+      setCartItems(newCartItems);
+    }
+  };
 
-  // const decreaseQuantity = (id: number) => {
-  //   setCartItems((currItems: CartItem[]) => {
-  //     if (currItems.find(item => item.id === id) == null) {
-  //       return [...cartItems, { id, quantity: 1 }];
-  //     }
+  const decreaseQuantity = (id: number) => {
+    if (cartItems.find(item => item.id === id) == null) {
+      setCartItems([...cartItems, { id, quantity: 1 }]);
+    } else {
+      const newCartItems = cartItems.map(
+        (item: CartItem) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          }
 
-  //     return currItems.map(item => {
-  //       if (item.id === id) {
-  //         return { ...item, quantity: item.quantity - 1 };
-  //       }
+          return item;
+        },
+      );
 
-  //       return item;
-  //     });
-  //   });
-  // };
+      setCartItems(newCartItems);
+    }
+  };
 
-  // const removeFromCart = (id: number) => {
-  //   setCartItems((currItems: CartItem[]) => {
-  //     return currItems.filter(item => item.id !== id);
-  //   });
-  // };
+  const removeFromCart = (id: number) => {
+    const newCarts = cartItems.filter(item => item.id !== id);
+
+    setCartItems(newCarts);
+  };
 
   return (
     <CartContext.Provider
       value={{
         addToCart,
         getItemQuantity,
+        increaseQuantity,
+        decreaseQuantity,
+        removeFromCart,
         cartItems,
         cartQuantity,
       }}

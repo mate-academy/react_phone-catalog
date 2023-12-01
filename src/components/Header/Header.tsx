@@ -5,11 +5,11 @@ import cart from '../../images/cart.svg';
 import logo from '../../images/Logo.svg';
 import './Header.scss';
 import { Search } from '../Search/Search';
-import { useCart } from '../../CartContext';
+import { useCart } from '../Contexsts/CartContext';
 
-const getLinkClass
-  = ({ isActive }: { isActive: boolean }) => classNames('header__nav--link',
-    { 'is-active': isActive });
+const getLinkClass = ({ isActive }
+: { isActive: boolean }) => classNames('header__nav--link',
+  { 'is-active': isActive });
 
 export const Header = () => {
   const location = useLocation();
@@ -40,31 +40,19 @@ export const Header = () => {
       </div>
 
       <div className="header__right">
-        {path === '/phones'
-          && (
-            <Search
-              placeholder="Search in phones"
-            />
-          )}
-        {path === '/tablets'
-          && (
-            <Search
-              placeholder="Search in tablets"
-            />
-          )}
-        {path === '/accessories'
-          && (
-            <Search
-              placeholder="Search in accessories"
-            />
-          )}
+        {path === '/phones' && <Search placeholder="Search in phones" />}
+        {path === '/tablets' && <Search placeholder="Search in tablets" />}
+        {path === '/accessories' && (
+          <Search placeholder="Search in accessories" />
+        )}
         <NavLink to="/favorites" className={getLinkClass}>
           <img src={favorite} alt="favorite" className="header__right--img" />
         </NavLink>
         <NavLink to="/cart" className={getLinkClass}>
           <img src={cart} alt="cart" className="header__cart--img" />
-          {cartQuantity !== 0
-            && <p className="header__cart--quantity">{cartQuantity}</p>}
+          {cartQuantity !== 0 && (
+            <p className="header__cart--quantity">{cartQuantity}</p>
+          )}
         </NavLink>
       </div>
     </header>

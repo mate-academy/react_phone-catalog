@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Product } from '../../types/Product';
+import { Product } from '../../Types/Product';
 import './ProductSlider.scss';
 
 type Props = {
-  name: string,
-  products: Product[]
+  name: string;
+  products: Product[];
 };
 
 export const ProductSlider: React.FC<Props> = ({ name, products }) => {
   const [offset, setOffset] = useState(0);
 
   function handleNextSlide() {
-    setOffset(prevOffset => prevOffset + 1088);
+    setOffset((prevOffset) => prevOffset + 1088);
     if (offset > 17408) {
       setOffset(0);
     }
