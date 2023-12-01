@@ -8,9 +8,9 @@ interface ProductsSliderProps {
   title: string,
 }
 
-export const ProductSlider: React.FC<ProductsSliderProps> = ({ 
-  products, 
-  title 
+export const ProductSlider: React.FC<ProductsSliderProps> = ({
+  products,
+  title,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const maxIndex = Math.ceil(products.length / 4) - 1;

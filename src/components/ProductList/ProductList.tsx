@@ -30,7 +30,7 @@ export const ProductList: React.FC<ProductListProps> = ({
     const sortProducts = (productsToSort: Product[]) => {
       if (sortBy === 'age') {
         return [...productsToSort]
-        .sort((a, b) => new Date(b.year).getTime() - new Date(a.year).getTime());
+          .sort((a, b) => new Date(b.year).getTime() - new Date(a.year).getTime());
       }
 
       if (sortBy === 'name') {
@@ -57,8 +57,8 @@ export const ProductList: React.FC<ProductListProps> = ({
     setCurrentPage(page);
   };
 
-  const handleShowAllProductsChange: 
-    React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+  const handleShowAllProductsChange:
+  React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     const { value } = e.target;
 
     if (value === 'all') {
@@ -75,7 +75,7 @@ export const ProductList: React.FC<ProductListProps> = ({
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedProducts
-  .slice(indexOfFirstProduct, indexOfLastProduct);
+    .slice(indexOfFirstProduct, indexOfLastProduct);
 
   return (
     <div className="ProductList" data-cy="productList">

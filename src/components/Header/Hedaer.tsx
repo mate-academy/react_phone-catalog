@@ -2,8 +2,7 @@ import classNames from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => 
-  classNames('header__nav-link', {
+const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames('header__nav-link', {
   'is-active': isActive,
 });
 

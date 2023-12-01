@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../../type/Product';
 import { useContext } from 'react';
+import { Product } from '../../type/Product';
 import { AppContext } from '../../context/AppContext';
 import './ShopByCategory.scss';
 

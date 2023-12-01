@@ -3,8 +3,7 @@ import './Footer.scss';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => 
-  classNames('footer__nav-link', {
+const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames('footer__nav-link', {
   'footer-active': isActive,
 });
 
