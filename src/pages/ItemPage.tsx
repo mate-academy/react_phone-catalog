@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../api/api';
 import { appContext } from '../Contexts/AppContext';
-import { Loader } from '../components/Loader';
+import { Loader } from '../Components/Loader';
 
 import { scrollToTop } from '../utils/scrollToTop';
 import { ItemCard } from './ItemCard';

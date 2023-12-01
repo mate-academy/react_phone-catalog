@@ -3,8 +3,8 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { appContext } from '../Contexts/AppContext';
-import { CartItemCard } from '../components/CartItem';
-import { TextButton } from '../components/TextButton';
+import { CartItemCard } from '../Components/CartItem';
+import { TextButton } from '../Components/TextButton';
 
 export const Cart = () => {
   const { cartItems, setCartItems } = useContext(appContext);

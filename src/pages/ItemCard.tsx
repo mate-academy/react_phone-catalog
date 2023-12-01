@@ -8,10 +8,10 @@ import { useLocalStorage } from 'usehooks-ts';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { PhoneType } from '../Types/PhoneType';
 import { api, baseUrl } from '../api/api';
-import { TextButton } from '../components/TextButton';
-import { FavouritesButton } from '../components/FavouritesButton';
+import { TextButton } from '../Components/TextButton';
+import { FavouritesButton } from '../Components/FavouritesButton';
 import { getHash } from '../utils/hash';
-import { ProductsSlider } from '../components/ProductsSlider';
+import { ProductsSlider } from '../Components/ProductsSlider';
 import { appContext } from '../Contexts/AppContext';
 import { ProductType } from '../Types/ProductType';
 

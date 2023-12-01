@@ -7,13 +7,13 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 
 import { appContext } from '../Contexts/AppContext';
 import { typographyStyle } from '../CustomStyles/Typography';
-import { ProductCard } from '../components/ProductCard';
+import { ProductCard } from '../Components/ProductCard';
 import { scrollToTop } from '../utils/scrollToTop';
-import { Pagintaion } from '../components/Pagintaion';
+import { Pagintaion } from '../Components/Pagintaion';
 import { PaginationHelper } from '../utils/PaginationHelper';
-import { Loader } from '../components/Loader';
+import { Loader } from '../Components/Loader';
 import { api } from '../api/api';
-import { StylishReactSelect } from '../components/StylishReactSelect';
+import { StylishReactSelect } from '../Components/StylishReactSelect';
 
 type OptionPaginationType = { value: string; label: string };
 type OptionSortType = { value: string; label: string };

@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
 import { useEffect, useState } from 'react';
-import Carousel from '../components/Carousel';
-import { ProductsSlider } from '../components/ProductsSlider';
-import { ShopByCategory } from '../components/ShopByCategory';
+import Carousel from '../Components/Carousel';
+import { ProductsSlider } from '../Components/ProductsSlider';
+import { ShopByCategory } from '../Components/ShopByCategory';
 import { api, baseUrl } from '../api/api';
 import { ProductType } from '../Types/ProductType';
-import { BannerItem } from '../components/BannerItem';
+import { BannerItem } from '../Components/BannerItem';
 
 export const Home = () => {
   const [expensivePhones, setExpensivePhones] = useState<ProductType[]>([]);

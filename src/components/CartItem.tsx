@@ -45,9 +45,9 @@ export const CartItemCard: React.FC<Props> = ({
         <button
           className="flex h-8 w-8 items-center justify-center border border-Elements"
           type="button"
-          onClick={increment}
+          onClick={decrement}
         >
-          <img src="./Icons/Plus.svg" alt="" />
+          <img src="./Icons/Minus.svg" alt="" />
         </button>
 
         <div className="flex h-8 w-8 items-center justify-center">
@@ -57,9 +57,9 @@ export const CartItemCard: React.FC<Props> = ({
         <button
           className="flex h-8 w-8 items-center justify-center border border-Elements"
           type="button"
-          onClick={decrement}
+          onClick={increment}
         >
-          <img src="./Icons/Minus.svg" alt="" />
+          <img src="./Icons/Plus.svg" alt="" />
         </button>
       </div>
 

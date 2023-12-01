@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { typographyStyle } from '../CustomStyles/Typography';
 import { appContext } from '../Contexts/AppContext';
-import { ProductCard } from '../components/ProductCard';
+import { ProductCard } from '../Components/ProductCard';
 
 export const Favourites = () => {
   const { favorites } = useContext(appContext);

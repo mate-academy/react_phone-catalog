@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import { useContext } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
-import { GridContainer } from './components/GridContainer';
+import { GridContainer } from './Components/GridContainer';
 import { typographyStyle } from './CustomStyles/Typography';
-import { StylishNavButton } from './components/StylishNavButton';
-import { ArrowButton } from './components/ArrowButton';
+import { StylishNavButton } from './Components/StylishNavButton';
+import { ArrowButton } from './Components/ArrowButton';
 import { scrollToTop } from './utils/scrollToTop';
 import { appContext } from './Contexts/AppContext';
+import logo from './Icons/Logo.svg';
 
 const App = () => {
   const {
@@ -33,7 +34,7 @@ const App = () => {
       <GridContainer>
         <div className="relative z-20 col-span-full flex h-16 items-center border-b-[1px] border-Elements bg-white">
           <Link to="/" className="ml-6 mr-16">
-            <img className="h-16 w-10" src="./Icons/Logo.svg" alt="" />
+            <img className="h-16 w-10" src={logo} alt="logo" />
           </Link>
 
           <div className="flex w-full justify-between">
@@ -70,7 +71,7 @@ const App = () => {
               <StylishNavButton
                 counter={favorites.length}
                 to="favourites"
-                imgUrl="./Icons/Favourites.svg"
+                imgUrl="./Icons/Favorites.svg"
               />
 
               <StylishNavButton
