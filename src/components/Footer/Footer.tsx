@@ -3,7 +3,8 @@ import './Footer.scss';
 import classNames from 'classnames';
 import { useEffect } from 'react';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames('footer__nav-link', {
+const getLinkClass = ({ isActive }: {
+  isActive: boolean }) => classNames('footer__nav-link', {
   'footer-active': isActive,
 });
 
@@ -73,8 +74,19 @@ export const Footer = () => {
           </ul>
 
           <div className="footer__button">
-            <p className="footer__button-name" aria-label="BacktoTop">Back to top</p>
-            <button type="button" className="footer__button-top" onClick={scrollToTop} />
+            <p
+              className="footer__button-name"
+              aria-label="BacktoTop"
+            >
+              Back to top
+            </p>
+
+            <button
+              type="button"
+              className="footer__button-top"
+              aria-label="BacktoTop"
+              onClick={scrollToTop}
+            />
           </div>
         </div>
       </div>

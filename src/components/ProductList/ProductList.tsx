@@ -30,7 +30,8 @@ export const ProductList: React.FC<ProductListProps> = ({
     const sortProducts = (productsToSort: Product[]) => {
       if (sortBy === 'age') {
         return [...productsToSort]
-          .sort((a, b) => new Date(b.year).getTime() - new Date(a.year).getTime());
+          .sort((a, b) => new Date(b.year)
+            .getTime() - new Date(a.year).getTime());
       }
 
       if (sortBy === 'name') {

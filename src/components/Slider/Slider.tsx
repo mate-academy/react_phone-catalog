@@ -41,11 +41,19 @@ export const Slider: React.FC<SliderProps> = () => {
   };
 
   const renderCustomIndicators = () => {
-    return slides.map((_slides, index) => (
-      <div
-        key={index}
+    return slides.map((slide, index) => (
+      <button
+        key={slide.image}
+        type="button"
+        aria-label="Indicator"
+        tabIndex={0}
         className={`custom-indicator ${currentIndex === index ? 'active' : ''}`}
         onClick={() => setCurrentIndex(index)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handlePrev();
+          }
+        }}
       />
     ));
   };
@@ -59,8 +67,8 @@ export const Slider: React.FC<SliderProps> = () => {
         selectedItem={currentIndex}
         onChange={(index) => setCurrentIndex(index)}
       >
-        {slides.map((slide, index) => (
-          <div key={index}>
+        {slides.map((slide) => (
+          <div key={slide.image}>
 
             <img
               src={slide.image}
@@ -73,13 +81,17 @@ export const Slider: React.FC<SliderProps> = () => {
 
       <div className="indicators-container">
         <button
+          type="button"
           className="slider_arrows-left"
           onClick={handlePrev}
+          aria-label="Previous Slide"
         />
 
         <button
+          type="button"
           className="slider_arrows-right"
           onClick={handleNext}
+          aria-label="Next Slide"
         />
 
         {renderCustomIndicators()}

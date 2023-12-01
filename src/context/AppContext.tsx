@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Product } from '../type/Product';
 import { Category } from '../type/Category';
 import { getHotPriceProducts } from '../utils/utils';
+import { BASE_API_URL } from '../helpers/fetchClient';
+
+export { BASE_API_URL } from '../helpers/fetchClient';
 
 type Props = {
   children: React.ReactNode;
@@ -32,10 +35,9 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const [hotPriceProducts, setHotPriceProducts] = useState<Product[]>([]);
 
   const fetchProducts = () => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/_new/products.json')
+    fetch(BASE_API_URL)
       .then(response => response.json())
-      .then(data => setProducts(data))
-      .catch(error => console.error('Error', error));
+      .then(data => setProducts(data));
   };
 
   useEffect(() => {
@@ -43,17 +45,19 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   const getPhones = () => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/_new/products.json')
+    fetch(BASE_API_URL)
       .then(response => response.json())
       .then(data => {
         setProducts(data);
-      })
-      .catch(error => console.error('Error:', error));
+      });
   };
 
   useEffect(() => {
-    const filteredProducts = products.filter(item => item.price > 0);
-    const hotPrice = filteredProducts.length > 0 ? getHotPriceProducts(filteredProducts) : [];
+    const filteredProducts = products
+      .filter(item => item.price > 0);
+    const hotPrice = filteredProducts.length > 0
+      ? getHotPriceProducts(filteredProducts)
+      : [];
 
     setHotPriceProducts(hotPrice);
   }, [products]);
