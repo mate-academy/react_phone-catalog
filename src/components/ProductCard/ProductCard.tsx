@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 
 import './ProductCard.scss';
@@ -7,8 +8,11 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const path = `/${phone.type}s/${phone.id}`;
+
   return (
-    <div
+    <Link
+      to={path}
       className="card"
       data-cy="cardsContainer"
     >
@@ -55,6 +59,6 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
           aria-label="button"
         />
       </div>
-    </div>
+    </Link>
   );
 };

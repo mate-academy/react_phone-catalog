@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { Product } from './types/Product';
+import { getProducts } from './helpers/fetchClient';
 
 import './App.scss';
-import { Product } from './types/Product';
-
-import { getProducts } from './helpers/fetchClient';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,7 +18,7 @@ const App = () => {
     setIsLoading(true);
 
     try {
-      const productsFromServer = await getProducts();
+      const productsFromServer = await getProducts() as Product[];
 
       localStorage.setItem('products', JSON.stringify(productsFromServer));
 

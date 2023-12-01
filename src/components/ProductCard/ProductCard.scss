@@ -3,6 +3,20 @@
   flex-direction: column;
   border: 1px solid #f3f3f3;
   height: 100%;
+  color: #313237;
+
+  &:link {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
 
   &__img {
     width: 208px;

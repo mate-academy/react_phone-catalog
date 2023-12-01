@@ -1,3 +1,4 @@
+import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { ProductList } from '../../components/ProductList';
 import { Product } from '../../types/Product';
 
@@ -13,6 +14,7 @@ export const PhonesPage = () => {
 
   return (
     <div className="container">
+      <BreadCrumbs />
       <h1 className="name__page">Mobile phones</h1>
       <p className="count__page">
         {`${phones.length} ${phones.length <= 1 ? 'model' : 'models'}`}

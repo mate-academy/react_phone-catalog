@@ -13,6 +13,8 @@ import { TabletsPage } from './pagas/TabletsPage';
 import { AccessoriesPage } from './pagas/AccessoriesPage';
 import { FavoritesPage } from './pagas/FavoritesPage';
 import { CartPage } from './pagas/CartPage';
+import { ProductDetailsPage }
+  from './pagas/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => {
   return (
@@ -20,21 +22,28 @@ export const Root = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-
-          <Route path="/phones">
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="phones">
             <Route index element={<PhonesPage />} />
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage />}
+            />
           </Route>
-          <Route path="/tablets">
+          <Route path="tablets">
             <Route index element={<TabletsPage />} />
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage />}
+            />
           </Route>
-          <Route path="/accessories">
+          <Route path="accessories">
             <Route index element={<AccessoriesPage />} />
           </Route>
-          <Route path="/favourites">
+          <Route path="favourites">
             <Route index element={<FavoritesPage />} />
           </Route>
-          <Route path="/cart">
+          <Route path="cart">
             <Route index element={<CartPage />} />
           </Route>
 

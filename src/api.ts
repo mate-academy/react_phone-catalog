@@ -1,21 +1,24 @@
+import { client } from './helpers/fetchClient';
 import { Product } from './types/Product';
+import { ProductDetails } from './types/ProductDetails';
 
-// eslint-disable-next-line max-len
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
-
-function wait(delay: number): Promise<void> {
-  return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
+export enum Categories {
+  Phones = 'phones',
+  Tablets = 'tablets',
+  Accessories = 'accessories',
 }
 
-function get<T>(url: string): Promise<T> {
-  // eslint-disable-next-line prefer-template
-  const fullURL = BASE_URL + url + '.json';
+export const getProducts = () => {
+  return client.get<Product[]>('products.json');
+};
 
-  return wait(300)
-    .then(() => fetch(fullURL))
-    .then(res => res.json());
-}
+export const getProductsByCategoty = (type: Categories) => {
+  return client.get<Product[]>('products.json')
+    .then((products => products.filter(
+      product => product.type === type,
+    )));
+};
 
-export const getPhones = () => get<Product[]>('/phones');
+export const getProductDetails = (productId: string) => {
+  return client.get<ProductDetails>(`products/${productId}.json`);
+};
