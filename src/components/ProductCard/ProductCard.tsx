@@ -9,7 +9,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-
   return (
     <div className="product-card" data-cy="cardsContainer">
       <li
