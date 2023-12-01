@@ -1,0 +1,72 @@
+@import '../../style/variables';
+
+.ProductList {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &_container--select {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 40px;
+  }
+
+  &__top {
+    margin: 0;
+
+    &--count {
+      display: block;
+      margin-bottom: 40px;
+      color: $secondary;
+      font-family: "Mont-Regular";
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &__display {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  &__select {
+    width: 176px;
+    height: 40px;
+    padding: 10px;
+    appearance: none;
+
+    background-image: url(../../images/arrow_down.svg);
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid $icons;
+
+    font-family: "Mont-SemiBold";
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    &-page {
+      width: 128px;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-family: "Mont-Regular";
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+  }
+}

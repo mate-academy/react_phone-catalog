@@ -1,0 +1,60 @@
+@import '../../style/variables';
+
+.category {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__title {
+    font-family: "Mont-Bold";
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1%;
+    margin-top: 80px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  &__name {
+    font-family: "Mont-Regular";
+    font-size: 20px;
+    line-height: 25px;
+    color: $primary;
+    margin: 0;
+    padding-top: 24px;
+  }
+
+  &__amount {
+    font-family: "Mont-Regular";
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+  }
+
+  &__phones {
+    background-image: url(../../images/category-phones.png);
+
+    &--image {
+    width: 368px;
+    height: 386px;
+    }
+  }
+
+  &__tablets {
+    background-image: url(../../images/category-tablets.png);
+  }
+
+  &__accessories {
+    background-image: url(../../images/category-accessories.png);
+  }
+}

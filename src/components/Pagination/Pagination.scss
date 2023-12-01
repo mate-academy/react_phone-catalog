@@ -1,0 +1,43 @@
+@import '../../style/variables';
+
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 16px;
+}
+
+.page-link {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  background-color: $white;
+
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-item {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $elements;
+  background-color: $white;
+
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.prev {
+  background-image: url(../../images/arrow-right.svg);
+}
+
+.next {
+  background-image: url(../../images/arrow-left.svg);
+}
+
+.active {
+  color: white;
+  background-color: $primary;
+}

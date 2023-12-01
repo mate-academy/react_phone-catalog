@@ -1,0 +1,94 @@
+@import '../../style/variables';
+
+.product-card {
+  border: 1px solid $elements;
+  width: 272px;
+  height: 507px;
+}
+
+.phone {
+  list-style: none;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img {
+    width: 145px;
+    height: 200px;
+    margin: 32px 32px 24px 64px;
+  }
+
+  &__name {
+    font-family: "Mont-Regular";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $navbarLinkColor;
+    margin: 0px 24px 8px 24px;
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+    margin: 0px 24px 8px 24px;
+
+    
+
+    &--discount {
+      font-family: "Mont-Bold";
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 31px;
+      color: $navbarLinkColor;
+    }
+
+    &--real {
+      font-family: "Mont-Regular";
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: $footerNavLinksColor;
+      text-decoration: line-through;
+    }
+  }
+
+  &__criteria {
+
+    &--container {
+      display: flex;
+      justify-content: space-between;
+      margin: 0px 24px 8px 24px;
+    }
+
+    &--big {
+      font-family: "Mont-Regular";
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: $secondary;
+    }
+
+    &--small {
+      font-family: "Mont-SemiBold";
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: $primary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin: 16px 24px 0px 24px;
+  }
+
+  &__border {
+    border-bottom: 1px solid $elements;
+    width: 224px;
+    margin: 0px 7px 16px 24px;
+  }
+}

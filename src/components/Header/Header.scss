@@ -1,0 +1,76 @@
+@import '../../style/variables';
+
+.header {
+  box-sizing: border-box;
+  &__nav {
+    border-bottom: 1px solid $borderBottocNavbarColor;
+  }
+
+  &__nav-logo {
+    width: 40px;
+    height: 11px;
+
+    background-image: url(../../images/Logo.svg);
+    background-repeat: no-repeat;
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $footerNavLinksColor;
+  
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+
+    &:hover {
+      color: $navbarLinkColor;
+    }
+  }
+
+  &__nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+  }
+
+  &__nav-right {
+    display: flex;
+    align-items: center;
+    
+  }
+
+  &__nav-left{
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.icon {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-sizing: border-box;
+  width: 64px;
+  height: 64px;
+  border-left: 1px solid $borderBottocNavbarColor;
+
+
+  &-fav {
+    background-image: url(../../images/Heart.svg);
+  }
+
+  &-cart {
+    background-image: url(../../images/Cart.svg);
+  }
+}
+
+.is-active {
+  color: $navbarLinkColor;
+  border-bottom: 3px solid $primary;
+  padding: 0 0 22px;
+}

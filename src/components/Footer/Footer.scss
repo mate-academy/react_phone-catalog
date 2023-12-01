@@ -1,0 +1,67 @@
+@import '../../style/variables';
+
+.footer {
+  margin: 0 auto;
+  max-width: 1136px;
+  padding: 22px 0 22px 0;
+  
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-item {
+      display: flex;
+      gap: 64px;
+    }
+
+    &-list {
+      text-decoration: none;
+      list-style: none;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: $secondary;
+      text-transform: uppercase;
+
+      font-family: "Mont-Bold";
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 4%;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+
+    &-top {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      border: 1px solid $icons;
+      background-color: $white;
+
+      background-image: url(../../images/arrow_up.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+.border {
+  margin-top: 80px;
+  border-top: 1px solid $elements;
+}
+
+.backto__top {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: 1px solid $icons;
+  background-color: $white;
+}

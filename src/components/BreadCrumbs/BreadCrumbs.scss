@@ -1,0 +1,29 @@
+@import '../../style/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+
+  &__link {
+    text-decoration: none;
+    font-family: "Mont-Regular";
+    color: $secondary;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  &__home-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/Home.svg);
+  }
+  
+  &__separator {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/arrow-left.svg);
+  }
+}
