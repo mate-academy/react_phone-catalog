@@ -1,0 +1,24 @@
+.breadCrumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+  margin-bottom: 45px;
+}
+
+.icons {
+  width: 16px;
+  height: 16px;
+
+  &--home {
+    background-image: url(../../icons/Home.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+
+  &--bread-crumb {
+    background-image: url(../../icons/Arrow_Right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
