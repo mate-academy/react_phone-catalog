@@ -11,7 +11,8 @@ export function sortProductsByNewest(products: Product[]): Product[] {
 export function getHotPriceProducts(products: Product[]): Product[] {
   const hotPriceProducts = products
     .filter(product => product.price > 0)
-    .sort((a, b) => Math.abs(a.price * (a.price / 100)) - Math.abs(b.price * (b.price / 100)));
+    .sort((a, b) => Math.abs(a.price * (
+    a.price / 100)) - Math.abs(b.price * (b.price / 100)));
 
   return hotPriceProducts;
 }

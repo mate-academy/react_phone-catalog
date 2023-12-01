@@ -3,7 +3,7 @@ import { Header } from './components/Header/Hedaer';
 import './App.scss';
 import { Footer } from './components/Footer/Footer';
 
-export const App: React.FC = () => (
+export const App = () => (
   <div className="App">
     <Header />
 

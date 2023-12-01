@@ -13,8 +13,8 @@ export const Breadcrumbs = () => {
         <span className="breadcrumbs__home-icon" />
       </NavLink>
 
-      {paths.map((path, index) => (
-        <React.Fragment key={index}>
+      {paths.map((path) => (
+        <React.Fragment key={path}>
           <span className="breadcrumbs__separator" />
           <Link to={`/${path}`} className="breadcrumbs__link">
             {path.charAt(0).toUpperCase() + path.slice(1)}
