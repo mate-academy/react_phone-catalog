@@ -9,8 +9,6 @@ import { Loader } from '../../components/Loader';
 import { HotPhones } from '../../components/HotPhones';
 import { getProducts } from '../../api';
 
-import './ProductDetailsPage.scss';
-
 export const getProductById = (products: Product[], id: string) => {
   return products.find(product => product.id === id);
 };
