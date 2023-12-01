@@ -16,9 +16,9 @@ export const Slider: React.FC<SliderProps> = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const slides = [
-    { image: '/image/banner-phones.png' },
-    { image: '/image/banner-tablets.png' },
-    { image: '/image/banner-accessories.png' },
+    { image: 'image/banner-phones.png' },
+    { image: 'image/banner-tablets.png' },
+    { image: 'image/banner-accessories.png' },
   ];
 
   const settings = {

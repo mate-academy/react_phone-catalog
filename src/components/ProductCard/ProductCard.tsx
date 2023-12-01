@@ -9,6 +9,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+
   return (
     <div className="product-card" data-cy="cardsContainer">
       <li
@@ -16,7 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       >
         <Link className="phone__link" to={`/${product.category}/${product.phoneId}`}>
           <img
-            src={`_new/${product.image}`}
+            src={`https://mate-academy.github.io/react_phone-catalog/_new/${product.image}`}
             alt={product.name}
             className="phone__img"
           />
