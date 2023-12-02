@@ -1,0 +1,67 @@
+.category {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  &__item {
+    grid-column: span 8;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__link {
+    display: flex;
+    height: 368px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  &__subtitle {
+    margin-bottom: 4xp;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__paragraph {
+    color: $gray-secondary;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__image {
+    position: absolute;
+    height: 100%;
+
+    &--phones {
+      // height: 120%;
+    }
+  }
+
+  &__phones {
+    background-color: $cream-color;
+  }
+
+  &__tablets {
+    background-color: lightgray;
+  }
+
+  &__accessories {
+    background-color: brown;
+  }
+}

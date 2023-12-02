@@ -31,7 +31,7 @@ export const ProductCard: React.FC = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export const ProductCard: React.FC = () => {
 
   return (
     <>
-      <div className="card-container">
+      <div className="card-container" data-cy="cardsContainer">
         <h1 className="slick-title">Hot Prices</h1>
         <Slider {...settings}>
           {sorted.map(card => (

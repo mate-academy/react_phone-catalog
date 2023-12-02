@@ -1,0 +1,103 @@
+.card {
+  border: 1px solid $gray-secondary;
+  padding: 32px 24px 24px 24px;
+  width: 272px;
+
+  &__image {
+    width: 208px;
+    margin-inline: auto;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $gray-primary;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    font-size: 22px;
+    line-height: 140%;
+    gap: 8px;
+    border-bottom: 1px solid $gray-secondary;
+    margin-bottom: 16px;
+  }
+
+  &__hot-price {
+    font-weight: 700;
+  }
+
+  &__full-price {
+    color: $gray-secondary;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: line-through;
+    text-decoration-style: solid;
+    text-decoration-line: strikethrough;
+  }
+
+  &__info {
+    margin-bottom: 16px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__char-name {
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__char-value {
+    color: $gray-primary;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__button {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__link {
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    background-color: $gray-primary;
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow $effect-duration $animation-timing-function;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__icon {
+    height: 100%;
+    background-image: url('../../src/images/favourites-hart-like.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $gray-secondary;
+    flex-shrink: 0;
+    width: 40px;
+    transition: border-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+}
