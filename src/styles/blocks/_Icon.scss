@@ -24,8 +24,13 @@
   &_arrow {
     background-image: url("../../images/icons/arrow-right.svg");
 
-    &:disabled {
+    &:disabled,
+    &_disabled {
+      border-color: $element;
+
       background-image: url("../../images/icons/arrow-right-disabled.svg");
+
+      pointer-events: none;
     }
 
     &_left {
