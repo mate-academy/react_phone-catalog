@@ -1,0 +1,56 @@
+@import "../../helpers/utils/utils";
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &:hover {
+    &__img {
+      transform: scale(1.2);
+
+      &--transform-scale {
+        transform: scale(2.2);
+      }
+    }
+  }
+
+  &__wrapper-img {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+
+    overflow: hidden;
+  }
+
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    left: 25%;
+    top: 15%;
+
+    transition: transform 0.3s linear;
+
+    &--transform-scale {
+      transform: scale(2);
+      left: 50%;
+    }
+  }
+
+  &__name {
+    color: $primary;
+
+    font-size: 20px;
+    font-family: $semi-bold-fonts;
+  }
+
+  &__available {
+    color: $secondary;
+
+    font-size: 14px;
+    font-family: $regular-fonts;
+    line-height: 21px;
+  }
+}

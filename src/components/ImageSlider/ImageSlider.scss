@@ -1,0 +1,63 @@
+@import "../../helpers/utils/utils";
+
+.slider {
+  &__content {
+    @include pageGrid();
+
+    row-gap: 18px;
+
+    @include onTable {
+      @include contentPaddingInline();
+    }
+  }
+
+  &__slides {
+    grid-column: 1 / -1;
+    overflow: hidden;
+
+    @include onTable {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__list {
+    display: flex;
+    width: 100%;
+
+    transition: transform $animationDurationSlider;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    height: 80vh;
+
+    @include onTable {
+      height: auto;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__points {
+    display: flex;
+    justify-content: center;
+    gap: 33px;
+
+    grid-column: 1 / -1;
+  }
+
+  &__point {
+    width: 14px;
+    height: 4px;
+
+    background-color: $elements;
+
+    &--isActive {
+      background-color: $primary;
+    }
+  }
+}

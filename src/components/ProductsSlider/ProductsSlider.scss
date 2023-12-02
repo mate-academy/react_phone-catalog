@@ -1,0 +1,58 @@
+@import "../../helpers/utils/utils";
+
+.products-slider {
+  &__content {
+    @include pageGrid();
+    @include contentPaddingInline();
+
+    row-gap: 24px;
+  }
+
+  &__top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    grid-column: 1 / -1;
+  }
+
+  &__title {
+    @include titleSection();
+  }
+
+  &__control-panel {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__slides {
+    grid-column: 1 / -1;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+
+    transition: transform $animationDurationSlider;
+  }
+
+  &__slide {
+    min-width: 250px;
+
+    flex: 0 0 calc(50% - 16px);
+
+    @include onTable {
+      flex-basis: calc(33.3% - 16px);
+    }
+
+    @include onDesktop {
+      flex-basis: calc(25% - 16px);
+    }
+  }
+}

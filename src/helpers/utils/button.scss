@@ -1,0 +1,29 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid $icon;
+
+  @include hover(border-color, $primary);
+
+  &--btn-add-card {
+    border: none;
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+    @include hover(border-color, none);
+  }
+
+  &--disable {
+    opacity: 0.5;
+    cursor: default;
+    @include hover(border-color, $icon);
+  }
+
+  &--onTable-turnOn {
+    display: none;
+
+    @include onTable {
+      display: flex;
+    }
+  }
+}

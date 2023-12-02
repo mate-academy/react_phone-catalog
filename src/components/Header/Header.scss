@@ -1,0 +1,64 @@
+@import "../../helpers/utils/utils";
+
+.header {
+  background-color: $header-background-color;
+
+  box-shadow: 0 1px 0 0 $elements;
+
+  &__content {
+    @include contentPaddingInline();
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onDesktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__logo-nav-bar {
+    display: flex;
+    align-items: center;
+
+    gap: 64px;
+  }
+
+  &__logo {
+    padding-block: 20px;
+
+    @include onDesktop {
+      margin-left: 20px;
+    }
+    @include hover(transform, scale(1.1));
+  }
+
+  &__nav {
+    display: none;
+
+    @include onTable {
+      display: block;
+    }
+  }
+
+  &__favorites-cart {
+    display: none;
+
+    @include onTable {
+      display: flex;
+    }
+  }
+
+  &__favorites-cart-link {
+    padding: 24px;
+    border: 1px solid $elements;
+
+    @include hover(border-color, $primary);
+  }
+
+  &__menu {
+    @include onTable {
+      display: none;
+    }
+  }
+}

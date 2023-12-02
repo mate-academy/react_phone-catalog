@@ -1,0 +1,40 @@
+@import "../../helpers/utils/utils";
+
+.nav {
+  display: flex;
+  gap: 40px;
+
+  color: $nav-text-color;
+
+  &__link {
+    font-size: 12px;
+    font-family: $bold-fonts;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    padding-block: 27px;
+
+    @include hover(color, $primary);
+  }
+
+  &__is-active {
+    position: relative;
+
+    color: $primary;
+
+    &::after {
+      position: absolute;
+      z-index: 1;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+
+      content: "";
+
+      height: 3px;
+
+      background-color: $primary;
+    }
+  }
+}

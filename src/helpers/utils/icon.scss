@@ -1,0 +1,36 @@
+.icon {
+  width: 16px;
+  height: 16px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__favorites {
+    background-image: url(../../icon/favorites.svg);
+  }
+
+  &__cart {
+    background-image: url(../../icon/cart.svg);
+  }
+
+  &__btn-prev {
+    background-image: url(../../icon/btn-prev.svg);
+
+    &--transform-scaleX {
+      transform: scaleX(-1);
+    }
+  }
+
+  &__menu {
+    background-image: url(../../icon/menu.svg);
+  }
+}
+
+.icon-logo {
+  width: 40px;
+  height: 24px;
+
+  background-image: url(../../icon/logo.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}

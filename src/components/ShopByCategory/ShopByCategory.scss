@@ -1,0 +1,27 @@
+@import "../../helpers/utils/utils";
+
+.shop-by-category {
+  &__content {
+    @include pageGrid();
+    @include contentPaddingInline();
+
+    row-gap: 24px;
+  }
+
+  &__title {
+    @include titleSection();
+    grid-column: 1 / -1;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+
+    grid-column: 1 / -1;
+    overflow: hidden;
+  }
+
+  &__item {
+    flex: 0 0 calc(33.3%);
+  }
+}

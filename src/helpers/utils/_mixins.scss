@@ -1,0 +1,52 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s linear;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin titleSection() {
+  color: $primary;
+
+  font-size: 32px;
+  font-family: $bold-fonts;
+  letter-spacing: -0.32px;
+}
+
+@mixin contentPaddingInline() {
+  padding-inline: 30px;
+
+  @include onTable {
+    padding-inline: 34px;
+  }
+
+  @include onDesktop {
+    padding-inline: 152px;
+  }
+}
+
+@mixin onTable() {
+  @media (min-width:$table-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop() {
+  @media (min-width:$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin pageGrid() {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include onTable() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}
