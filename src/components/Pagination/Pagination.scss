@@ -1,0 +1,42 @@
+@import "../../styles/utils/";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0 16px;
+
+  &-List {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    gap: 0 8px;
+  }
+
+  &-Item {
+    border: 1px solid $element;
+
+    transition: all $transition-duration;
+
+    &_active {
+      color: $white;
+
+      background-color: $primary;
+    }
+  }
+
+  &-Link {
+    --size: 32px;
+    height: var(--size);
+    width: var(--size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: inherit;
+  }
+}
