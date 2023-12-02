@@ -1,37 +1,100 @@
 @import "../../helpers/variables.scss";
+@import "../../helpers/mixins.scss";
 
 .footer {
+  margin-top: 100px;
   display: flex;
+  width: 100%;
   justify-content: space-around;
-  background-color: $whiteColor;
+  background: $whiteColor;
+  box-shadow: 0 -1px 0 $elementsColor;
+
+  @include onMobile {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo {
+    padding: 38px 0;
+
+    @include onMobile {
+      width: 30vw;
+      padding: 24px 0 0;
+    }
+  }
 
   &__container {
     display: flex;
-    justify-content: space-between;
-    gap: 62px;
-  }
 
-  &-item {
-    text-decoration: none;
-    color: $secondaryColor;
-    text-transform: uppercase;
+    &-item {
+      padding: 42px 0;
+      margin-right: 64px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $secondaryColor;
+      font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.48px;
+      font-weight: 700;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      @include onMobile {
+        margin-right: 32px;
+      }
+    }
+  }
+}
+
+.footer-back {
+  display: flex;
+  margin: 32px 0;
+  flex-wrap: wrap;
+  align-content: center;
+
+  &__title {
+    font-style: normal;
+    font-weight: 600;
     font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    font-weight: 700;
+    line-height: 15px;
+    text-align: right;
+    color: $secondaryColor;
+    padding: 8px 0;
+    margin: 0 16px 0 0;
+
+    transition: all 0.3s;
 
     &:hover {
       color: $primaryColor;
     }
   }
 
-  &-back {
-    &__title {
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      color: $secondaryColor;
+  &__button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $iconsColor;
+
+    position: relative;
+
+    transition: all 0.3s;
+
+    &::after {
+      content: url("../../assets/svg/ArrowRight.svg");
+      position: absolute;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
     }
+
+    &:hover {
+      border-color: $primaryColor;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }

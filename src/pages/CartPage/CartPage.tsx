@@ -6,6 +6,8 @@ import { NoResults } from '../../components/NoResult/NoResult';
 import { CartItem } from '../../components/CartItem/CartItem';
 import { CartTotalPrice } from '../../components/CartTotalPrice/CartTotalPrice';
 
+import './CartPage.scss';
+
 export const CartPage: FC = () => {
   const {
     cartItems,
@@ -79,12 +81,13 @@ export const CartPage: FC = () => {
         </div>
       </div>
 
+      <h1 className="cart__items-title">Cart</h1>
+
       {!cartItems.length ? (
         <NoResults title="Your cart is empty" imageUrl="img/emptyCart.jpg" />
       ) : (
         <div className="cart__info-container">
           <div className="cart__items-container">
-            <h1 className="cart__items-title">Cart</h1>
             {cartItems.map((item: CartProduct) => (
               <CartItem
                 key={item.id}

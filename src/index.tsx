@@ -14,9 +14,9 @@ import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { ItemCardPage } from './pages/ItemCardPage/ItemCardPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { CartPage } from './pages/CartPage/CartPage';
 
 import './index.scss';
-import { CartPage } from './pages/CartPage/CartPage';
 
 ReactDOM.render(
   <Router>

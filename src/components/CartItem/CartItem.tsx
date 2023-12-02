@@ -62,7 +62,10 @@ export const CartItem: FC<Props> = ({
             cart-item__count-button--decrease"
           />
 
-          <p className="cart-item__count-title">
+          <p
+            className="cart-item__count-title"
+            data-cy="productQauntity"
+          >
             {currentCount}
           </p>
 

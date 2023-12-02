@@ -101,6 +101,8 @@ export const PhonesPage: FC = () => {
 
       <h1 className="products-page__title page-title">Mobile phones</h1>
 
+      {isLoading && <Loader />}
+
       {isInitialized && !!phonesList.length && (
         <>
           <p className="products-page__total-amount">
@@ -114,8 +116,6 @@ export const PhonesPage: FC = () => {
           </div>
         </>
       )}
-
-      {isLoading && <Loader />}
 
       {!isLoading && !!currentPhonesList.length ? (
         <>

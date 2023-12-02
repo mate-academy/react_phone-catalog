@@ -8,19 +8,45 @@
   padding: 0;
 
   &__button {
+    display: flex;
+
+    &--prev {
+      margin-right: 16px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elementsColor;
+      background-color: transparent;
+      transition: all 0.3s;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../../assets/svg/ArrowLeft.svg");
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &--next {
+      margin-left: 8px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elementsColor;
+      background-color: transparent;
+      transition: all 0.3s;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("../../assets/svg/ArrowRight.svg");
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     &--mobile {
       @include onMobile {
         display: none;
       }
     }
-  }
-
-  &__button-prev {
-    margin-right: 16px;
-  }
-
-  &__button-next {
-    margin-left: 8px;
   }
 
   &__item {

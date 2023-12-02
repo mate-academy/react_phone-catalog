@@ -171,14 +171,21 @@ export const ItemCardPage: FC = () => {
             </div>
 
             <div className="product-details__description">
-              <div className="product-details__about about">
+              <div
+                className="product-details__about about"
+                data-cy="productDescription"
+              >
                 <h2 className="about__description-title description-title">
                   About
                 </h2>
 
                 <div className="about__description-text">
                   {currentProduct.description.map(section => (
-                    <div className="about__container" key={section.title}>
+                    <div
+                      className="about__container"
+                      key={section.title}
+                      data-cy="breadCrumbs"
+                    >
                       <p className="about__section-title">
                         {section.title}
                       </p>

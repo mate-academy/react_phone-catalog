@@ -72,7 +72,7 @@ export const FavoriteButton: FC<FavoriteItem> = ({
       onClick={handleFavorite}
       className={classNames(
         'button__add-to-favorite',
-        { 'button__add-to-fav--selected': isFavorite },
+        { 'button__add-to-favorite--selected': isFavorite },
       )}
       aria-label="add-to-favorite"
     />

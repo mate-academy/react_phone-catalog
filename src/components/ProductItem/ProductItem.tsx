@@ -33,6 +33,7 @@ export const ProductItem: FC<Props> = ({
 
   return (
     <div
+      data-cy="cardsContainer"
       className={classNames(
         'card',
         { slider__card: isSlider },

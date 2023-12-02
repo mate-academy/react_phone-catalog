@@ -28,7 +28,7 @@
     &::after {
       content: "";
       display: block;
-      padding-bottom: 70%;
+      // padding-bottom: 70%;
 
       @include onTablet {
         padding-bottom: 100%;

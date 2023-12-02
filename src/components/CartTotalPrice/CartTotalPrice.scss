@@ -31,4 +31,88 @@
     border-bottom: 1px solid $elementsColor;
     margin-bottom: 24px;
   }
+
+  &__total-price {
+    font-style: normal;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primaryColor;
+    margin: 0;
+  }
+
+  &__total-items {
+    color: $secondaryColor;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__checkout-button {
+    padding: 14px 125px 14px 126px;
+    background-color: $primaryColor;
+    border: 0;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $whiteColor;
+
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
+
+    @include onLaptop {
+      padding: 14px 80px;
+    }
+
+    @include onMobile {
+      width: 90vw;
+      padding: 14px;
+    }
+  }
+}
+
+.message-container {
+  position: absolute;
+  top: 110%;
+
+  padding: 32px 16px 16px;
+  border: 1px solid $elementsColor;
+  background-color: $whiteColor;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondaryColor;
+
+  &__button {
+    position: absolute;
+    top: 10%;
+    right: 2.5%;
+
+    height: 16px;
+    width: 16px;
+    background-color: transparent;
+    border: 0;
+    background-image: url("../../assets/svg/DeleteButton.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background-image: url("../../assets/svg/DeleteButtonHover.svg");
+    }
+  }
 }

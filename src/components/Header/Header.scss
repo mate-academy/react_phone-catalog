@@ -1,19 +1,22 @@
 @import "../../helpers/variables.scss";
 
 .header {
+  text-align: center;
   display: flex;
   justify-content: space-between;
   background-color: $whiteColor;
   box-shadow: 0 1px 0 $elementsColor;
+  line-height: 4em;
+
+  &__search {
+    height: 100%;
+    align-self: flex-start;
+  }
 
   &__interactive {
     height: 100%;
     display: flex;
   }
-
-  // width: 1440px;
-  // height: 64px;
-  // flex-shrink: 0;
 }
 
 .icons-container {

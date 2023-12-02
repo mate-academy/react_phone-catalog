@@ -59,8 +59,7 @@ export const PaginationBlock: React.FC<Props> = ({
           type="button"
           className="
             pagination-button
-            pagination-button--prev
-            pagination__button
+            pagination__button--prev
           "
           aria-label="buttonPrev"
           disabled={currentPage === 1}
@@ -109,8 +108,7 @@ export const PaginationBlock: React.FC<Props> = ({
           type="button"
           className="
             pagination-button
-            pagination__button
-          "
+            pagination__button--next"
           aria-label="buttonNext"
           disabled={currentPage === lastPage}
           onClick={handleNextClick}
