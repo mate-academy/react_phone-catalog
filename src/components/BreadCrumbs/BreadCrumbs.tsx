@@ -13,7 +13,7 @@ export function capitalize(word: string) {
 }
 
 // eslint-disable-next-line react/require-default-props
-export const BreadCrumbs:React.FC<Props> = ({ product = null }) => {
+export const BreadCrumbs:React.FC<Props> = ({ product }) => {
   const { pathname } = useLocation();
   const caregoryName = pathname.slice(1).split('/')[0];
 
@@ -38,7 +38,7 @@ export const BreadCrumbs:React.FC<Props> = ({ product = null }) => {
             {capitalize(caregoryName)}
           </Link>
 
-          <div className="icon icon--bread-crumb" />
+          <div className="icons icons--bread-crumb" />
 
           <span className="breadCrumbs__current">
             {product.name}

@@ -6,6 +6,8 @@ import { Product } from './types/Product';
 import { getProducts } from './helpers/fetchClient';
 
 import './App.scss';
+import { CartProvider } from './context/CartProvider';
+import { FavouritesProvider } from './context/FavouritesProvider';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,13 +41,17 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <CartProvider>
+      <FavouritesProvider>
+        <div className="App">
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </FavouritesProvider>
+    </CartProvider>
   );
 };
 

@@ -1,0 +1,31 @@
+@import "../../style/utils/mixins";
+
+.AddToCart {
+  width: 263px;
+  height: 48px;
+  background-color: #313237;
+  transition-duration: 0.2s;
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+
+  @include onTablet {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  @include onTablet {
+    width: 145px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+  }
+
+  &.added-to-cart {
+    border: 1px solid #e2e6e9;
+    background-color: #fff;
+    color: #27ae60;
+  }
+}
