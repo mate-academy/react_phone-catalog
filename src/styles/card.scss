@@ -1,16 +1,18 @@
 .card {
   border: 1px solid $gray-secondary;
   padding: 32px 24px 24px 24px;
-  width: 272px;
+  // width: 272px;
+  // margin-right: 16px;
 
   &__image {
-    width: 208px;
+    max-width: 208px;
+    max-height: 208px;
     margin-inline: auto;
     margin-bottom: 24px;
   }
 
   &__name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 21px;
     color: $gray-primary;
@@ -34,9 +36,8 @@
     color: $gray-secondary;
     font-style: normal;
     font-weight: 500;
+    position: relative;
     text-decoration: line-through;
-    text-decoration-style: solid;
-    text-decoration-line: strikethrough;
   }
 
   &__info {

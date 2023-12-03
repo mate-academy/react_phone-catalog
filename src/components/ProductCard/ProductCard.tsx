@@ -31,7 +31,7 @@ export const ProductCard: React.FC = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
   };
 
   useEffect(() => {
@@ -43,7 +43,11 @@ export const ProductCard: React.FC = () => {
       try {
         const data = await client.fetchPhones();
 
-        setPhones(data);
+        const mappedData = data.map((phone) => {
+          return { ...phone, name: `${phone.name} (iMT9G2FS/A)` };
+        });
+
+        setPhones(mappedData);
       } catch (error) {
         throw new Error();
       }

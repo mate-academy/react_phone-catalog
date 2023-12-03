@@ -47,6 +47,8 @@
   &__image {
     position: absolute;
     height: 100%;
+    // background-position: bottom;
+    object-position: bottom;
 
     &--phones {
       // height: 120%;
