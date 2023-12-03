@@ -34,5 +34,10 @@
     color: $greenColor;
 
     padding: 10px 36px;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px rgba(23, 32, 49, 0.26);
+    }
   }
 }
