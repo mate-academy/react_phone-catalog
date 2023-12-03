@@ -23,7 +23,11 @@ export const AddToCartButton: FC<Props> = ({
   price,
   imageUrl,
 }) => {
-  const { cartItems, handleAddToCart } = useContext(CartStorageContext);
+  const {
+    cartItems,
+    handleAddToCart,
+    handleRemoveFromCart,
+  } = useContext(CartStorageContext);
 
   const [isInCart, setIsInCart] = useState(() => {
     try {
@@ -33,22 +37,27 @@ export const AddToCartButton: FC<Props> = ({
     }
   });
 
-  const handleAddItem = () => {
-    if (isInCart || !handleAddToCart) {
+  const handleCart = () => {
+    if (!handleAddToCart || !handleRemoveFromCart) {
       return;
     }
 
-    const newItem = {
-      id,
-      quantity: 1,
-      product,
-      name,
-      price,
-      imageUrl,
-    };
+    if (isInCart) {
+      handleRemoveFromCart(id);
+      setIsInCart(false);
+    } else {
+      const newItem = {
+        id,
+        quantity: 1,
+        product,
+        name,
+        price,
+        imageUrl,
+      };
 
-    handleAddToCart(newItem);
-    setIsInCart(true);
+      handleAddToCart(newItem);
+      setIsInCart(true);
+    }
   };
 
   useEffect(() => {
@@ -58,7 +67,7 @@ export const AddToCartButton: FC<Props> = ({
   return (
     <button
       type="button"
-      onClick={handleAddItem}
+      onClick={handleCart}
       className={classNames(
         'button__buy',
         { 'button__add-to-cart': !isInCart },

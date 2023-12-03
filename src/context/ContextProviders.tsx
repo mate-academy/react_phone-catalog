@@ -49,6 +49,17 @@ export const ContextProviders: FC = ({ children }) => {
     setCartItems([...cartItems, addedValue]);
   };
 
+  const handleRemoveFromCart = (itemId: string) => {
+    if (!setCartItems) {
+      return;
+    }
+
+    const filteredItems = cartItems
+      .filter((item: CartProduct) => item.id !== itemId);
+
+    setCartItems(filteredItems);
+  };
+
   const handleAddToFavorites = (addedValue: FavoriteItem) => {
     if (!setFavorites) {
       return;
@@ -112,8 +123,9 @@ export const ContextProviders: FC = ({ children }) => {
           value={{
             cartItems,
             setCartItems,
-            getTotalPrice,
             handleAddToCart,
+            handleRemoveFromCart,
+            getTotalPrice,
             getTotalCartItems,
           }}
         >
