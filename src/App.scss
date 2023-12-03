@@ -1,1 +1,12 @@
-// not empty
+@import "./styles/variables";
+@import "./styles/fonts";
+@import "./styles/controls";
+@import "./components/Header/Header";
+
+* {
+  font-family: "Mont", sans-serif;
+}
+
+body {
+  margin: 0;
+}

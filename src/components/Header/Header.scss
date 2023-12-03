@@ -1,0 +1,173 @@
+.header {
+  position: relative;
+  padding-left: 24px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+
+  &__left {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    &-list {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      gap: 64px;
+    }
+
+    &-item {
+      list-style: none;
+      height: 100%;
+    }
+
+    &-link {
+      position: relative;
+      display: block;
+      height: 100%;
+      line-height: 64px;
+      text-decoration: none;
+      color: $secondary-color;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        transform: scale(0);
+        background-color: $primary-color;
+        transition: transform 0.3s;
+      }
+
+      &.active {
+        color: $primary-color;
+
+        &::after {
+          transform: none;
+        }
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__search {
+    height: 100%;
+    width: 327px;
+
+    padding-inline: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: -1px 0 0 0 $elements-color;
+    box-sizing: border-box;
+    border-bottom: none;
+
+    &-input {
+      border: none;
+      outline: none;
+      color: $primary-color;
+      font-size: 14px;
+      font-weight: 600;
+
+      &::placeholder {
+        color: $icons-color;
+      }
+    }
+
+    &-icon {
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    &-button {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      &:active {
+        .header__search-icon {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__user-choice {
+    height: 100%;
+    background-color: transparent;
+    box-shadow: -1px 0 0 0 $elements-color;
+    cursor: pointer;
+
+    &-icon {
+      display: block;
+      transition: transform 0.1s;
+    }
+
+    &-count {
+      position: absolute;
+      top: 30%;
+      right: 30%;
+      background-color: $red-color;
+      border-radius: 50%;
+      min-width: 10px;
+      height: 10px;
+      text-align: center;
+      color: white;
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 11px;
+
+      transition: transform 0.1s;
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    &-link {
+      position: relative;
+      padding-inline: 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &:active {
+        .header__user-choice-icon,
+        .header__user-choice-count {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

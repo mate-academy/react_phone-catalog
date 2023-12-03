@@ -1,0 +1,11 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__smile {
+    &-content {
+      font-size: 40px;
+    }
+  }
+}
