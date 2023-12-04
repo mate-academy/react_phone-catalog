@@ -1,0 +1,179 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.header {
+  grid-area: header;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+  display: flex;
+  justify-content: space-between;
+
+  &_left-box {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 10px 12px;
+    gap: 32px;
+
+    @include onTablet {
+      margin: 10px 0 10px 24px;
+    }
+
+    @include onDesktopSm {
+      margin: 20px 0 20px 24px;
+    }
+  }
+
+  &_right-box {
+    display: flex;
+    align-items: center;
+  }
+
+  &_logo {
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &_right-links {
+    padding: 20px;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+    position: relative;
+
+    &--active {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        background-color: $primary-color;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    @include onDesktopSm {
+      padding: 24px;
+    }
+  }
+
+  &_menu {
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../icons/icon_menu.png");
+  }
+}
+
+.nav {
+  &_list {
+    display: flex;
+    gap: 32px;
+
+    @include onDesktopLg {
+      gap: 64px;
+    }
+  }
+
+  &_link {
+    color: $secondary-color;
+    padding: 24px 0;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.is-active {
+  color: $primary-color;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    background-color: $primary-color;
+    height: 3px;
+    bottom: 0;
+  }
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.items-number {
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  line-height: 14px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #eb5757;
+  color: #fff;
+  font-family: Mont_semibold, sans-serif;
+  font-size: 9px;
+  top: 16px;
+  right: 18px;
+}
+
+.search {
+  height: 100%;
+  position: relative;
+
+  &_input {
+    height: 100%;
+    width: 165px;
+    padding-left: 8px;
+    outline: none;
+    border: none;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+    color: $primary-color;
+
+    &:focus {
+      background-color: $hover-bg-color;
+    }
+
+    &::placeholder {
+      color: $icons-color;
+      font-size: 12px;
+
+      @include onDesktopSm {
+        font-size: 16px;
+      }
+    }
+
+    @include onTablet {
+      width: 220px;
+    }
+
+    @include onDesktopSm {
+      width: 327px;
+      padding-left: 24px;
+    }
+  }
+
+  &_clear {
+    top: 20px;
+    right: 12px;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background-color: transparent;
+    border: none;
+
+    @include onDesktopLg {
+      top: 24px;
+      right: 24px;
+    }
+  }
+}

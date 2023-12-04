@@ -1,0 +1,74 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.cart-item {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  border: 1px solid #e2e6e9;
+  padding-top: 15px;
+
+  @include onDesktopSm {
+    display: flex;
+    align-items: center;
+    padding: 24px 40px 24px 24px;
+  }
+
+  &_btns {
+    display: flex;
+    align-items: center;
+    grid-row: 2;
+    grid-column: span 2;
+    justify-self: center;
+
+    @include onDesktopSm {
+      margin-right: 43px;
+    }
+  }
+
+  &_delete {
+    display: flex;
+    border: none;
+    background-color: #fff;
+    justify-self: center;
+
+    @include onDesktopSm {
+      margin-right: 24px;
+    }
+  }
+
+  &_img-box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+
+    @include onDesktopSm {
+      margin-right: 24px;
+    }
+  }
+
+  &_name {
+    color: $primary-color;
+    grid-column: 3 / 7;
+
+    @include onDesktopSm {
+      width: 295px;
+      margin-right: 49px;
+    }
+  }
+
+  &_count {
+    width: 32px;
+    text-align: center;
+    color: #000;
+  }
+
+  &_amount {
+    width: 85px;
+    color: $primary-color;
+    grid-row: 2;
+    grid-column: -1 / -3;
+  }
+}
