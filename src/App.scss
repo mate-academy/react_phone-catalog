@@ -1,1 +1,119 @@
-// not empty
+@import "./utils/variables.scss";
+@import "./utils/mixins.scss";
+
+@font-face {
+  font-family: 'Mont';
+  src: url('./helpers/fonts/Mont-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('./helpers/fonts/Mont-Bold.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  cursor: url('./imgs/Icons/Cursor.svg'), auto;
+  box-sizing: border-box;
+}
+
+.main {
+  padding: 0 152px;
+}
+
+.Footer {
+  height: 96px;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+  align-items: center;
+
+  @include onMobile {
+    margin: 0;
+  }
+
+
+  &_logo {
+    display: flex;
+    background-image: url('./imgs/Icons/Logo\ \(2\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px;
+    height: 24px;
+    padding-left: 60px;
+  }
+
+  &_content {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_link {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    box-sizing: border-box;
+    padding-block: 24px;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    align-items: center;
+    display: inline-flex;
+    margin: 0 18px;
+    color: $secondaryColor;
+    text-transform: uppercase;
+  }
+
+  .back-to-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 24px;
+
+    &_button {
+      background-repeat: no-repeat;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      background-image: url('./imgs/Icons/Slider\ button\ -\ Default\ \(right\).svg');
+      transform: rotate(270deg);
+      background-position: center;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #B4BDC3;
+      background-color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid #313237;
+      }
+    }
+
+    &_p {
+      margin: 0;
+      margin-right: 16px;
+      font-family: "Mont-Bold", sans-serif;
+      color: $secondaryColor;
+      letter-spacing: 0.04em;
+      font-size: 12px;
+    }
+  }
+}

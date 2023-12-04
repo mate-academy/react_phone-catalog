@@ -1,0 +1,204 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../../helpers/fonts/Mont-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont-Bold';
+  src: url('../../helpers/fonts/Mont-Bold.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.Menuitems {
+  &_menu-items {
+    display: flex;
+    justify-content: flex-start;
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &_search {
+    display: block;
+    @include onMobile {
+      display: none;
+    }
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &_icons {
+    display: flex;
+    width: 15px;
+    height: 15px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    padding: 24px;
+
+    &-cart {
+      display: flex;
+      background-image: url("../../imgs/cart.jpg");
+      position: relative;
+
+      &:hover {
+        cursor: pointer;
+        border: 1px solid #313237;
+      }
+
+      &.active {
+        color: #313237;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          background-color: #313237;
+          position: absolute;
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+          width: 100%;
+          height: 3px;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      &_length {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        width: 14px;
+        height: 14px;
+        border: 1px #fff;
+        background-color: #eb5757;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        border-radius: 50%;
+        border-radius: 50%;
+        font-family: 'Mont', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 0em;
+        text-align: center;
+      }
+    }
+
+    &-fav {
+      display: flex;
+      background-image: url("../../imgs/Favourites.jpg");
+      position: relative;
+
+      &:hover {
+        cursor: pointer;
+        border: 1px solid #313237;
+      }
+
+      &.active {
+        color: #313237;
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          background-color: #313237;
+          position: absolute;
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+          width: 100%;
+          height: 3px;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      &_length {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        width: 14px;
+        height: 14px;
+        border: 1px #fff;
+        background-color: #eb5757;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        border-radius: 50%;
+        font-family: 'Mont', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 12px;
+        letter-spacing: 0em;
+        text-align: center;
+      }
+    }
+
+  }
+
+  &_link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0 18px;
+    padding: 26px 0;
+    color: $secondaryColor;
+
+    &.active {
+      color: #313237;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        background-color: #313237;
+        position: absolute;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $mainColor;
+    }
+  }
+}
+
+.button-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-right: 1px solid $elementsColor;
+  border-left: 1px solid $elementsColor;
+}

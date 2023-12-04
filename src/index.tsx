@@ -1,5 +1,14 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import ReactDOM from 'react-dom';
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
+import { CartFavoritesProvider } from './providers/CartFavoritesProvider';
+
+ReactDOM.render(
+  <Router>
+    <CartFavoritesProvider>
+      <App />
+    </CartFavoritesProvider>
+  </Router>,
+  document.getElementById('root'),
+);
