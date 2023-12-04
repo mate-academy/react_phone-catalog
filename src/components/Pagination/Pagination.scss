@@ -1,0 +1,41 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.Pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      background-color: $gray-main;
+    }
+  }
+
+  &__link {
+    @extend %text-body;
+
+    color: $black;
+
+    &--active {
+      color: $white;
+    }
+  }
+}

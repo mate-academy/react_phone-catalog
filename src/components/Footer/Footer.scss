@@ -1,0 +1,67 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.Footer {
+  margin-top: 72px;
+  border-top: 1px solid $gray-elements;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      justify-content: space-between;
+      align-items: center;
+      height: 96px;
+    }
+  }
+
+  &__nav {
+    &-list {
+      padding: 24px 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+
+      @include on-tablet {
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 64px;
+      }
+    }
+
+    &-link {
+      @extend %text-uppercase;
+
+      color: $gray-second;
+
+      &:hover {
+        color: $gray-main;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    &-text {
+      @extend %text-small;
+
+      color: $gray-second;
+    }
+  }
+}

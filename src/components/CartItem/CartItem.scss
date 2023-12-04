@@ -1,0 +1,105 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/typography";
+
+.CartItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $gray-elements;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__main-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__clear {
+    background-color: $html-bg-color;
+    background-image: url(../../images/icons/Remove-from-cart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    outline: none;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    @include on-tablet {
+      height: 66px;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      width: 100px;
+
+      @include on-tablet {
+        height: 80px;
+        width: 80px;
+      }
+    }
+  }
+
+  &__title {
+    @extend %text-body;
+
+    max-width: 300px;
+  }
+
+  &__quan-and-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 40px;
+    }
+  }
+
+  &__quantity {
+    @extend %text-body;
+
+    &-area {
+      width: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__price {
+    @extend %text-important;
+  }
+}

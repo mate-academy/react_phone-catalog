@@ -1,0 +1,63 @@
+@import "../../styles/utils/mixins";
+
+.HomePage {
+  padding: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  @include on-tablet {
+    padding: 40px 0 0;
+    gap: 72px;
+  }
+
+  &__slider {
+    @include on-mobile-xl {
+      display: none;
+    }
+
+    &--mobileXL {
+      display: none;
+
+      @include on-mobile-xl {
+        display: flex;
+      }
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+
+      @include on-tablet-xl {
+        display: none;
+      }
+    }
+
+    &--tabletXL {
+      display: none;
+
+      @include on-tablet-xl {
+        display: flex;
+      }
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+      }
+    }
+  }
+}

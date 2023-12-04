@@ -1,0 +1,8 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.NoResults {
+  @extend %text-important;
+
+  color: $gray-second;
+}

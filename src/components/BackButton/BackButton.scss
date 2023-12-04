@@ -1,0 +1,24 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.Back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__text {
+    @extend %text-small;
+
+    margin: 0;
+  }
+
+  & &__text:hover {
+    color: $gray-main;
+  }
+}

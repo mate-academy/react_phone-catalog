@@ -1,0 +1,23 @@
+.Description {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    @extend %text-semi-title;
+  }
+
+  &__text {
+    @extend %text-body;
+
+    color: $gray-second;
+  }
+}
