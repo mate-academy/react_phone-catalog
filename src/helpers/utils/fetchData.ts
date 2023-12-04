@@ -15,3 +15,27 @@ function getPhones() {
 export const client = {
   fetchPhones: () => getPhones(),
 };
+
+export function getHotPriceProducts(phonesWithDiscount: Phone[], type: string) {
+  const preparedPhones = [...phonesWithDiscount];
+
+  preparedPhones.filter(phone => phone.category === type);
+
+  preparedPhones.sort((a, b) => {
+    return (b.fullPrice - b.price) - (a.fullPrice - a.price);
+  });
+
+  return preparedPhones;
+}
+
+export function getNewProducts(phones: Phone[], type: string) {
+  const preparedPhones = [...phones];
+
+  preparedPhones.filter(phone => phone.category === type);
+
+  preparedPhones.sort((a, b) => {
+    return b.year - a.year;
+  });
+
+  return preparedPhones;
+}

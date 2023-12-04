@@ -1,52 +1,59 @@
+import { useEffect } from 'react';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+import { Category } from '../../components/Category/Category';
+import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
+import {
+  client,
+  getHotPriceProducts,
+  getNewProducts,
+} from '../../helpers/utils/fetchData';
+
+enum Categories {
+  Phones = 'phones',
+}
 
 export const HomePage: React.FC = () => {
+  const {
+    hotPricePhones,
+    setHotPriceProducts,
+    newPhones,
+    setNewProducts,
+  } = useProducts();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await client.fetchPhones();
+
+        const mappedData = data.map((phone) => {
+          return { ...phone, name: `${phone.name} (iMT9G2FS/A)` };
+        });
+
+        setHotPriceProducts(getHotPriceProducts(mappedData, Categories.Phones));
+        setNewProducts(getNewProducts(mappedData, Categories.Phones));
+      } catch (error) {
+        throw new Error();
+      }
+    };
+
+    fetchData();
+  }, [setHotPriceProducts, setNewProducts]);
+
   return (
     <>
       <ProductSlider />
-      <ProductCard />
-      <div className="category">
-        <h1 className="category__title">Shop by category</h1>
-        <ul className="category__list">
-          <li className="category__item">
-            <a className="category__link category__phones" href="/phones">
-              <img
-                className="category__image category__image--phones"
-                src="img/category-phones.png"
-                alt="Mobile phones"
-              />
-            </a>
-            <h2 className="category__subtitle">Mobile phones</h2>
-            <p className="category__paragraph">95 modesl</p>
-          </li>
-          <li className="category__item">
-            <a className="category__link category__tablets" href="/tablets">
-              <img
-                className="category__image"
-                src="img/category-tablets.png"
-                alt="Tablets"
-              />
-            </a>
-            <h2 className="category__subtitle">Tablets</h2>
-            <p className="category__paragraph">24 modesl</p>
-          </li>
-          <li className="category__item">
-            <a
-              className="category__link category__accessories"
-              href="/accessories"
-            >
-              <img
-                className="category__image"
-                src="img/category-accessories.png"
-                alt="Accessories"
-              />
-            </a>
-            <h2 className="category__subtitle">Accessories</h2>
-            <p className="category__paragraph">100 modesl</p>
-          </li>
-        </ul>
-      </div>
+      <ProductCard
+        discount
+        title="Hot prices"
+        products={hotPricePhones}
+      />
+      <Category />
+      <ProductCard
+        discount={false}
+        title="Brand new models"
+        products={newPhones}
+      />
     </>
   );
 };

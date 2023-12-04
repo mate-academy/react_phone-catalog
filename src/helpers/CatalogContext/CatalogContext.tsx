@@ -1,15 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import { Phone } from '../../Types/Phone';
-// import { useLocalStorage } from '../hooks/UseLocalStorage';
 
 interface ICatalogContext {
-  phones: Phone[],
-  setPhones: (phonesFromServer: Phone[]) => void,
+  hotPricePhones: Phone[],
+  setHotPriceProducts: (phonesFromServer: Phone[]) => void,
+  newPhones: Phone[],
+  setNewProducts: (phonesFromServer: Phone[]) => void,
 }
 
 export const CatalogContext = React.createContext<ICatalogContext>({
-  phones: [],
-  setPhones: () => {},
+  hotPricePhones: [],
+  setHotPriceProducts: () => {},
+  newPhones: [],
+  setNewProducts: () => {},
 });
 
 export const useProducts
@@ -20,13 +23,17 @@ type Props = {
 };
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [hotPricePhones, setHotPriceProducts] = useState<Phone[]>([]);
+  const [newPhones, setNewProducts] = useState<Phone[]>([]);
 
   const value = useMemo(() => ({
-    phones,
-    setPhones,
+    hotPricePhones,
+    setHotPriceProducts,
+    newPhones,
+    setNewProducts,
   }), [
-    phones,
+    hotPricePhones,
+    newPhones,
   ]);
 
   return (
