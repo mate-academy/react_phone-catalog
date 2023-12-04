@@ -7,9 +7,9 @@ import { getUniqueId } from '../../helpers/getFunctions/getUniqueld';
 
 export const ImageSlider: React.FC = () => {
   const images = [
-    './_new/img/banner-phones.png',
-    './_new/img/banner-tablets.png',
-    './_new/img/banner-accessories.png',
+    './new/img/banner-phones.png',
+    './new/img/banner-tablets.png',
+    './new/img/banner-accessories.png',
   ];
 
   const [index, setIndex] = useState(1);
@@ -42,7 +42,7 @@ export const ImageSlider: React.FC = () => {
             )}
             disabled={index === 1}
           >
-            <div className="icon icon__btn-prev" />
+            <div className="icon icon__btn-arrow" />
           </button>
 
           <div className="slider__slides">
@@ -81,8 +81,8 @@ export const ImageSlider: React.FC = () => {
             <div
               className="
               icon
-              icon__btn-prev
-              icon__btn-prev--transform-scaleX"
+              icon__btn-arrow
+              icon__btn-arrow--rigth"
             />
           </button>
 

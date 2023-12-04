@@ -5,21 +5,10 @@
   flex-direction: column;
   gap: 24px;
 
-  &:hover {
-    &__img {
-      transform: scale(1.2);
-
-      &--transform-scale {
-        transform: scale(2.2);
-      }
-    }
-  }
-
   &__wrapper-img {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
-
     overflow: hidden;
   }
 
@@ -39,9 +28,19 @@
     }
   }
 
+  &:hover {
+    .category-card__img {
+      transform: scale(1.2);
+    }
+
+    .category-card__img--transform-scale {
+      transform: scale(2.2);
+    }
+  }
+
   &__name {
     color: $primary;
-
+    
     font-size: 20px;
     font-family: $semi-bold-fonts;
   }

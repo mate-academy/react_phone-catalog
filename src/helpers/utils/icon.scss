@@ -13,11 +13,15 @@
     background-image: url(../../icon/cart.svg);
   }
 
-  &__btn-prev {
-    background-image: url(../../icon/btn-prev.svg);
+  &__btn-arrow {
+    background-image: url(../../icon/btn-arrow.svg);
 
-    &--transform-scaleX {
+    &--rigth {
       transform: scaleX(-1);
+    }
+
+    &--top {
+      transform: rotate(90deg);
     }
   }
 

@@ -11,7 +11,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => (
   <article className="product-cards">
     <img
-      src={`./_new/${product.image}`}
+      src={`./new/${product.image}`}
       alt={product.name}
       className="product-cards__img"
     />

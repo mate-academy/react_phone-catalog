@@ -95,7 +95,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
                 <div
                   className="
                     icon
-                    icon__btn-prev"
+                    icon__btn-arrow"
                 />
               </button>
 
@@ -114,8 +114,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
                 <div
                   className="
                     icon
-                    icon__btn-prev
-                    icon__btn-prev--transform-scaleX"
+                    icon__btn-arrow
+                    icon__btn-arrow--rigth"
                 />
               </button>
             </div>

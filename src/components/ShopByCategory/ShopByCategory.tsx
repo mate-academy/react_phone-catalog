@@ -9,19 +9,19 @@ export const ShopByCategory: React.FC = () => {
       name: 'Mobile phones',
       backgroundColor: '#fcdbc1',
       link: '/phones',
-      imageUrl: '/_new/img/category-phones.png',
+      imageUrl: '/new/img/category-phones.png',
     },
     {
       name: 'Tablets',
       backgroundColor: '#8d8d92',
       link: '/tablets',
-      imageUrl: '/_new/img/category-tablets.png',
+      imageUrl: '/new/img/category-tablets.png',
     },
     {
       name: 'Accessories',
       backgroundColor: '#973d5f',
       link: '/accessories',
-      imageUrl: '/_new/img/category-accessories.png',
+      imageUrl: '/new/img/category-accessories.png',
     },
   ];
 
