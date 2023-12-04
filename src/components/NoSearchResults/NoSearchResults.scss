@@ -1,0 +1,15 @@
+@import "../../styles/utils/typography";
+
+.NoSearchResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  @extend %text-important;
+
+  &__image {
+    height: 32px;
+    width: 32px;
+  }
+}

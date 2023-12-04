@@ -1,0 +1,292 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.ProductDetailsPage {
+  padding: 24px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include onDesktop {
+      gap: 80px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include onDesktop {
+        gap: 32px;
+      }
+    }
+
+    &-top {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-title {
+      @extend %text-important;
+    }
+
+    &-slider {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    @include onDesktop {
+      gap: 40px;
+      grid-column: 1 / -1;
+      padding: 0 0 40px;
+    }
+  }
+
+  &__back-and-title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__product-title {
+    @extend %text-title;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    &-list {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @include onTablet {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 16px;
+      }
+    }
+
+    grid-column: span 12;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray-elements;
+
+    &--active {
+      border-color: $gray-main;
+    }
+  }
+
+  &__image {
+    height: 66px;
+
+    &-link {
+      height: 80px;
+      width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__main-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 400px;
+    width: 100%;
+    background-color: $html-bg-color;
+    grid-column: span 10;
+
+    @include onTablet {
+      padding: 0;
+      height: 464px;
+      width: 464px;
+    }
+
+    &-selected {
+      height: 100%;
+    }
+  }
+
+  &__main-info {
+    grid-column: 14 / -5;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__product-options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &-text {
+      @extend %text-small;
+    }
+
+    &-and-id {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 2px solid $gray-elements;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-icons;
+    }
+
+    &--selected {
+      border-color: $gray-main;
+    }
+
+    &-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+    }
+
+    &-circle {
+      height: 24px;
+      width: 24px;
+      border-radius: 50%;
+      padding: 2px;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $gray-elements;
+  }
+
+  &__capacity {
+    border: 1px solid $gray-elements;
+    @extend %text-body;
+    padding: 8px;
+
+    &:hover {
+      border-color: $gray-main;
+    }
+
+    &--selected {
+      background-color: $gray-main;
+      color: $white;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-text {
+      @extend %text-small;
+    }
+
+    &-list {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  &__price-and-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    &-discount {
+      @extend %text-title;
+    }
+
+    &-full {
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      text-decoration: line-through;
+      color: $gray-second;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    flex: 1;
+  }
+}

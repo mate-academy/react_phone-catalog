@@ -1,0 +1,36 @@
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+  // width: max-content;
+  // max-width: 560px;
+
+  @include onMobileXL {
+    max-width: 640px;
+  }
+
+  @include onTablet {
+    max-width: 800px;
+  }
+
+  @include onTabletXL {
+    max-width: 1080px;
+  }
+
+  @include onDesktop {
+    padding: 0;
+    max-width: 1136px;
+  }
+
+  &--slider {
+    padding: 0;
+
+    @include onTablet {
+      padding: 0 8px;
+    }
+
+    @include onDesktop {
+      padding: 0;
+    }
+  }
+}

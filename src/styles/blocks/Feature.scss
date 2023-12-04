@@ -1,0 +1,24 @@
+.Feature {
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    @extend %text-small;
+  }
+
+  &__value {
+    @extend %text-small;
+    color: $gray-main;
+  }
+}
