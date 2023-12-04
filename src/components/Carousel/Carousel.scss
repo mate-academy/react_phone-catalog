@@ -1,8 +1,25 @@
+@import "../../utils/mixins.scss";
+
+.div-for-dots {
+  display: none;
+  @include onTablet {
+    display: block;
+  }
+  @include onSmallDesktop {
+    display: block;
+  }
+}
+
 .main-container {
   height: 400px;
-  width: 1040px;
+  width: 1136px;
   display: flex;
   justify-content: center;
+
+  @include onTablet {
+    width: 100%;
+    max-width: 640px;
+  }
 }
 
 .window {
@@ -57,7 +74,9 @@
   margin-top: 15px;
 }
 
-.dots-1, .dots-2, .dots-3 {
+.dots-1,
+.dots-2,
+.dots-3 {
   background-color: #B4BDC3;
   width: 14px;
   height: 4px;

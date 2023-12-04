@@ -1,3 +1,4 @@
+@import "../../utils/mixins.scss";
 .Header_search {
   &_input-container {
     box-shadow: -1px 0px 0px 0px #E2E6E9;
@@ -7,6 +8,24 @@
     position: relative;
     display: flex;
     align-items: center;
+    @include onTablet {
+      height: 50px;
+      width: 250px;
+      display: flex;
+      justify-content: flex-start;
+      margin-right: auto;
+      border: #89939A 1px solid;
+      margin-bottom: 20px;
+    }
+    @include onMobile {
+      height: 50px;
+      width: 250px;
+      display: flex;
+      justify-content: flex-start;
+      margin-right: auto;
+      border: #89939A 1px solid;
+      margin-bottom: 20px;
+    }
   }
 
   &-delete {

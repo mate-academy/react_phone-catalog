@@ -8,7 +8,7 @@
 
   &_title {
     align-self: flex-start;
-    width: 800px;
+    max-width: 800px;
     height: 41px;
     font-family: "Mont", sans-serif;
     font-size: 32px;
@@ -22,7 +22,7 @@
 
   &_message {
     margin: auto;
-    width: 800px;
+    max-width: 800px;
     height: 41px;
     font-family: "Mont", sans-serif;
     font-size: 32px;

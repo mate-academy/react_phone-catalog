@@ -5,6 +5,8 @@
   font-style: normal;
 }
 
+@import "../../utils/mixins.scss";
+
 .Parentcontainer {
   display: flex;
   flex-direction: row;
@@ -14,11 +16,23 @@
 .Productsdetails {
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   width: 100%;
-  max-width: 1136px;
-  padding: 0 152px 0;
+  max-width: 1170px;
+  @media (min-width: 1472) {
+    padding: 0 152px;
+  }
+
+  @include onTablet {
+    padding-left: 40px;
+    margin: 0;
+  }
+
+  @include onMobile {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 20px;
+  }
 
   &_loader {
     margin-top: 200px;
@@ -106,7 +120,7 @@
 
   &_title {
     align-self: flex-start;
-    width: 800px;
+    max-width: 800px;
     height: 41px;
     font-family: "Mont", sans-serif;
     font-size: 32px;
@@ -120,16 +134,30 @@
 
   &_phoneinfo {
     display: flex;
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &_images {
     display: flex;
     margin-right: 64px;
+    @include onMobile {
+      flex-direction: column;
+      margin-right: 0;
+    }
 
     &_smallimages {
       display: flex;
       flex-direction: column;
       margin-right: 15px;
+      @include onMobile {
+        flex-direction: row;
+      }
 
       &_smallimage {
         width: 80px;
@@ -156,6 +184,10 @@
       width: 464px;
       height: 464px;
       object-fit: contain;
+      @include onMobile {
+        width: 70%;
+        height: 70%;
+      }
     }
   }
 
@@ -341,6 +373,9 @@
       display: flex;
       flex-direction: column;
       margin-top: 32px;
+      @include onTablet {
+        width: 600px;
+      }
 
       &_screen {
         display: flex;
@@ -454,14 +489,34 @@
 
   &_moreinformation {
     display: flex;
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &_about {
     display: flex;
     flex-direction: column;
-    width: 560px;
+    max-width: 560px;
     margin-right: 64px;
     margin-top: 80px;
+
+    @include onTablet {
+      flex-direction: column;
+      margin-right: 0;
+      max-width: 560px;
+      width: 80%;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      margin-right: 0;
+      max-width: 560px;
+    }
 
     &_title {
       font-family: 'Mont', sans-serif;
@@ -473,9 +528,21 @@
     }
 
     &_line {
-      width: 560px;
+      max-width: 560px;
       border: 1px solid #E2E6E9;
       margin-top: 16px;
+
+      @include onTablet {
+        max-width: 560px;
+      }
+
+      @include onMobile {
+        max-width: 560px;
+      }
+
+      @include onSmallDesktop {
+        width: 560px;
+      }
     }
 
     &_first {
@@ -567,7 +634,15 @@
     display: flex;
     flex-direction: column;
     margin-top: 80px;
-    width: 560px;
+    max-width: 560px;
+
+    @include onTablet {
+      max-width: 560px;
+    }
+
+    @include onMobile {
+      max-width: 560px;
+    }
 
     &_title {
       font-family: 'Mont', sans-serif;
@@ -579,9 +654,21 @@
     }
 
     &_line {
-      width: 560px;
+      max-width: 560px;
       border: 1px solid #E2E6E9;
       margin-top: 16px;
+
+      @include onTablet {
+        max-width: 560px;
+      }
+
+      @include onMobile {
+        max-width: 560px;
+      }
+
+      @include onSmallDesktop {
+        width: 560px;
+      }
     }
 
     &_caracteristics {

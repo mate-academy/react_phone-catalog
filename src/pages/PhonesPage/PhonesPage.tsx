@@ -6,6 +6,7 @@ import { getPhones } from '../../helpers/apis';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import Pagination from '../../components/Pagination/Pagination';
 import Loader from '../../components/Loader/Loader';
+import { Search } from '../../components/Search/Search';
 
 export const PhonesPage = () => {
   const [productData, setProductData] = useState<Product[]>([]);
@@ -117,6 +118,10 @@ export const PhonesPage = () => {
 
         <h1 className="Phonespage_title">Mobile phones</h1>
         <p className="Phonespage_modelslength">{`${productData.length} models`}</p>
+
+        <div className="Phonespage_search">
+          <Search />
+        </div>
 
         <div className="Phonespage_selections">
           <div className="Phonespage_selections_sorting">

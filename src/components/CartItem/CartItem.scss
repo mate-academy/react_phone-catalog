@@ -5,6 +5,8 @@
   font-style: normal;
 }
 
+@import "../../utils/mixins.scss";
+
 .cartitem {
   display: flex;
   flex-direction: row;
@@ -13,11 +15,17 @@
   border: 1px solid #E2E6E9;
   align-items: center;
   margin-bottom: 16px;
+  @include onTablet {
+    width: 100%;
+  }
+  @include onMobile {
+    width: 100%;
+  }
 
   &_name {
     display: flex;
     align-items: center;
-    width: 295px;
+    max-width: 295px;
     height: 42px;
     margin-right: 49px;
     font-family: 'Mont', sans-serif;
@@ -27,6 +35,16 @@
     letter-spacing: 0em;
     text-align: left;
     color: #313237;
+
+    @include onTablet {
+      width: 100%;
+      max-width: 295px;
+    }
+    @include onMobile {
+      width: 100%;
+      max-width: 295px;
+      margin-right: auto;
+    }
   }
 
   &_quantity {

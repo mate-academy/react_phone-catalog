@@ -258,6 +258,7 @@ const ProductDetailsPage = () => {
                     onClick={handleRemoveFromFavorites}
                     type="button"
                     className="Productsdetails_availableoptions_buttons_fav"
+                    aria-label="favbutton-added"
                   >
                     <div className="Productsdetails_availableoptions_buttons_fav_image-added" />
                   </button>
@@ -266,6 +267,7 @@ const ProductDetailsPage = () => {
                     onClick={handleAddToFavorites}
                     type="button"
                     className="Productsdetails_availableoptions_buttons_fav"
+                    aria-label="favbutton"
                   >
                     <div className="Productsdetails_availableoptions_buttons_fav_image" />
                   </button>

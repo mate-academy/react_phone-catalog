@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { v4 as uuidv4 } from 'uuid';
 import './YouMayAlsoLike.scss';
 import { getSuggestedProducts } from '../../helpers/apis';
 import { Product } from '../../helpers/types/Product';
@@ -26,7 +28,7 @@ export const YouMayAlsoLike: React.FC<YouMayAlsoLikeProps> = (
         <ProductsSlider
           productData={productData}
           title="You like"
-          keyExtractor={(product: Product) => product.id}
+          sliderId={`youMayAlsoLikeSlider-${uuidv4()}`}
         />
       </div>
     </div>

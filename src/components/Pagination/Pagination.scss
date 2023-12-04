@@ -1,8 +1,16 @@
+@import "../../utils/mixins.scss";
+
 .pagination {
   display: flex;
   position: relative;
   justify-content: center;
+  flex-wrap: wrap;
   padding-bottom: 40px;
+  row-gap: 20px;
+
+  @include onSmallDesktop {
+    display: flex;
+  }
 
   &_number {
     width: 32px;

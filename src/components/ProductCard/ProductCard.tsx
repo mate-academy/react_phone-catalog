@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
+import React from 'react';
 import { useCartFavorites } from '../../providers/CartFavoritesProvider';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
@@ -115,6 +116,7 @@ export const ProductCard = ({ product }: any) => {
                 onClick={handleRemoveFromFavorites}
                 type="button"
                 className="card_buttons_fav"
+                aria-label="Remove from Favorites"
               >
                 <div className="card_buttons_fav_image-added" />
               </button>
@@ -123,6 +125,7 @@ export const ProductCard = ({ product }: any) => {
                 onClick={handleAddToFavorites}
                 type="button"
                 className="card_buttons_fav"
+                aria-label="Add to Favorites"
               >
                 <div className="card_buttons_fav_image" />
               </button>

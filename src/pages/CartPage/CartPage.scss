@@ -4,20 +4,44 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@import "../../utils/mixins.scss";
 .cartpage {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 0 152px 0;
   width: 1136px;
   max-width: 1136px;
+  @media (min-width: 1472) {
+    padding: 0 152px;
+  }
+  @include onMobile {
+    padding: 0 20px;
+  }
+
+  @include onTablet {
+    padding: 20px;
+  }
 
   &_content {
     display: flex;
     flex-direction: row;
+    @include onTablet {
+      flex-direction: column;
+    }
+    @include onMobile{
+      flex-direction: column;
+    }
 
     &_withmessage {
       margin-left: 16px;
+      @include onTablet {
+        display: flex;
+        justify-content: center;
+      }
+      @include onMobile {
+        display: flex;
+        justify-content: center;
+      }
 
       &_bracket {
         margin-bottom: 24px;

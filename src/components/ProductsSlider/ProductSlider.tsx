@@ -1,47 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { v4 as uuidv4 } from 'uuid';
+import 'swiper/swiper.scss';
+import { Navigation } from 'swiper';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './ProductSlider.scss';
 import { Product } from '../../helpers/types/Product';
 
-const CARD_WIDTH = 272 + 16;
-
 const ProductsSlider = ({
-  productData, title, keyExtractor,
+  productData, title, sliderId,
 }:
 {
   productData: Product[],
   title: React.ReactNode,
-  keyExtractor: (product: Product) => string,
+  sliderId: string;
 }) => {
-  const [offset, setOffset] = useState(864);
-  const leftButtonRef = useRef<HTMLButtonElement | null>(null);
-  const rightButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
-  const handlePrev = () => {
-    const newOffset = Math.min(offset + CARD_WIDTH, 864);
-
-    setOffset(newOffset);
+  const handleSlideChange = (swiper: any) => {
+    setCurrentSlide(swiper.activeIndex);
   };
-
-  const handleNext = () => {
-    const newOffset = Math.max(offset - CARD_WIDTH, -864);
-
-    setOffset(newOffset);
-  };
-
-  useEffect(() => {
-    if (offset === 864) {
-      leftButtonRef.current?.classList.add('disabled');
-    } else {
-      leftButtonRef.current?.classList.remove('disabled');
-    }
-
-    if (offset === -864) {
-      rightButtonRef.current?.classList.add('disabled');
-    } else {
-      rightButtonRef.current?.classList.remove('disabled');
-    }
-  }, [offset]);
 
   return (
     <div data-cy="cardsContainer" className="slider">
@@ -49,30 +28,53 @@ const ProductsSlider = ({
         <h1 className="slider_titlewithbuttons_title">{title}</h1>
         <div className="slider_buttons">
           <button
-            ref={leftButtonRef}
-            onClick={handlePrev}
             type="button"
-            className="slider_buttons_left"
+            className={`slider_buttons_left ${currentSlide === 0 ? 'disabled' : ''} ${sliderId}-left`}
             aria-label="Previous"
+            disabled={currentSlide === 0}
+            onClick={() => setCurrentSlide(currentSlide - 1)}
           />
 
           <button
-            ref={rightButtonRef}
-            onClick={handleNext}
             type="button"
-            className="slider_buttons_right"
+            className={`slider_buttons_right ${currentSlide === 7 ? 'disabled' : ''} ${sliderId}-right`}
             aria-label="Next"
+            disabled={currentSlide === productData.length - 1}
+            onClick={() => setCurrentSlide(currentSlide + 1)}
           />
         </div>
       </div>
 
-      <div className="slider_products" style={{ transform: `translateX(${offset}px)` }}>
-        {productData.map(product => {
-          return (
-            <ProductCard product={product} key={keyExtractor(product)} />
-          );
-        })}
-      </div>
+      <Swiper
+        className="slider_products"
+        spaceBetween={16}
+        navigation={{
+          nextEl: `.${sliderId}-right`,
+          prevEl: `.${sliderId}-left`,
+        }}
+        breakpoints={{
+          272: {
+            slidesPerView: 1,
+          },
+          600: {
+            slidesPerView: 2,
+          },
+          848: {
+            slidesPerView: 3,
+          },
+          1170: {
+            slidesPerView: 4,
+          },
+        }}
+        modules={[Navigation]}
+        onSlideChange={(swiper) => handleSlideChange(swiper)}
+      >
+        {productData.map(product => (
+          <SwiperSlide key={uuidv4()}>
+            <ProductCard product={product} key={product.id} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };

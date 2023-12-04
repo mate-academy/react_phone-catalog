@@ -4,13 +4,30 @@
   font-weight: normal;
   font-style: normal;
 }
+@import "../../utils/mixins.scss";
 
 .Phonespage {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 0 152px 0;
+  @media (min-width: 1472) {
+    padding: 0 152px;
+  }
+  @include onMobile {
+    padding: 20px;
+  }
+
+  @include onTablet {
+    padding: 20px;
+  }
+  &_search {
+    display: flex;
+    align-self: flex-start;
+    @include onSmallDesktop {
+      display: none;
+    }
+  }
 
   &_container {
     width: 100%;
@@ -169,13 +186,32 @@
 }
 
 .Phoneswindow {
-  display: flex;
-  flex-wrap: wrap;
-  width: 1136px;
-  max-width: 1136px;
+  align-self: flex-start;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  row-gap: 20px;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+  }
+
+  @media (min-width: 860px) and (max-width: 1170px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 20px;
+  }
+
+  @include onSmallDesktop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 20px;
+  }
 
   &_product {
     padding-bottom: 40px;
+
 
     &:not(:nth-child(4n)) {
       padding-right: 16px;

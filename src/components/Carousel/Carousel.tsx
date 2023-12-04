@@ -3,7 +3,11 @@ import {
 } from 'react';
 import './Carousel.scss';
 
-const PAGE_WIDTH = 1040;
+let pageWidth = 1040;
+
+if (window.innerWidth < 1170 && window.innerWidth > 700) {
+  pageWidth = 600;
+}
 
 export const Carousel = ({ children }: any) => {
   const [pages, setPages] = useState([]);
@@ -12,13 +16,13 @@ export const Carousel = ({ children }: any) => {
 
   const handleLeftClick = () => {
     setOffset(currentOffset => {
-      const newOffset = currentOffset + PAGE_WIDTH;
+      const newOffset = currentOffset + pageWidth;
       const newActiveDot = Math.max(activeDot - 1, 0);
 
       if (newOffset > 0) {
         setActiveDot(pages.length - 1);
 
-        return -(PAGE_WIDTH * (pages.length - 1));
+        return -(pageWidth * (pages.length - 1));
       }
 
       setActiveDot(newActiveDot);
@@ -29,8 +33,8 @@ export const Carousel = ({ children }: any) => {
 
   const handleRightClick = () => {
     setOffset(currentOffset => {
-      const newOffset = currentOffset - PAGE_WIDTH;
-      const maxOffset = -(PAGE_WIDTH * (pages.length - 1));
+      const newOffset = currentOffset - pageWidth;
+      const maxOffset = -(pageWidth * (pages.length - 1));
 
       if (newOffset < maxOffset) {
         setActiveDot(0);
@@ -38,7 +42,7 @@ export const Carousel = ({ children }: any) => {
         return 0;
       }
 
-      const newActiveDot = Math.abs(newOffset / PAGE_WIDTH);
+      const newActiveDot = Math.abs(newOffset / pageWidth);
 
       setActiveDot(newActiveDot);
 
@@ -52,8 +56,8 @@ export const Carousel = ({ children }: any) => {
         return cloneElement(child, {
           style: {
             height: '100%',
-            minWidth: `${PAGE_WIDTH}px`,
-            maxWidth: `${PAGE_WIDTH}px`,
+            minWidth: `${pageWidth}px`,
+            maxWidth: `${pageWidth}px`,
           },
         });
       }),
