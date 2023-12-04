@@ -1,0 +1,89 @@
+@import "../../styles/utils/mixins";
+
+.Slider {
+  @include on-desktop {
+    height: 432px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 8px;
+
+    height: 120px;
+    overflow: hidden;
+
+    @include on-mobileXL {
+      height: 160px;
+    }
+
+    @include on-tablet {
+      height: 220px;
+    }
+
+    @include on-tabletXL {
+      height: 300px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__dot {
+    height: 24px;
+    width: 24px;
+    background-image: url(../../images/slider/Slider_dot.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--active {
+      background-image: url(../../images/slider/Slider_dot-active.svg);
+    }
+  }
+}

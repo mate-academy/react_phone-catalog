@@ -1,0 +1,152 @@
+.button {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  border: 1px solid $gray-icons;
+  background-color: $html-bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+
+  &:hover {
+    border: 1px solid $gray-main;
+  }
+
+  &:disabled {
+    border: 1px solid $gray-elements;
+    cursor: auto;
+  }
+
+  &--menu {
+    height: 64px;
+    width: 64px;
+    background-image: url(../../images/icons/icon-menu.svg);
+  }
+
+  &--close {
+    height: 64px;
+    width: 64px;
+    background-image: url(../../images/icons/icon-close.svg);
+  }
+
+  &--disabled {
+    border: 1px solid $gray-elements;
+    cursor: auto;
+  }
+
+  &--back-to-top {
+    background-image: url(../../images/icons/Arrow_up.svg);
+  }
+
+  &--minus {
+    background-image: url(../../images/icons/Minus.svg);
+
+    &:disabled {
+      background-image: url(../../images/icons/Minus-disabled.svg);
+    }
+  }
+
+  &--plus {
+    background-image: url(../../images/icons/Plus.svg);
+  }
+
+  &--slider {
+    height: 100%;
+    width: 32px;
+    display: none;
+
+    @include on-tablet {
+      display: inline-block;
+    }
+
+    &-back {
+      background-image: url(../../images/icons/Arrow_left.svg);
+    }
+
+    &-forward {
+      background-image: url(../../images/icons/Arrow_right.svg);
+    }
+  }
+
+  &--prev {
+    background-image: url(../../images/icons/Arrow_left.svg);
+
+    &:disabled {
+      background-image: url(../../images/icons/Arrow_left-disabled.svg);
+    }
+  }
+
+  &--next {
+    background-image: url(../../images/icons/Arrow_right.svg);
+
+    &:disabled {
+      background-image: url(../../images/icons/Arrow_right-disabled.svg);
+    }
+  }
+
+  &--mobile {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--fav {
+    height: 40px;
+    width: 40px;
+    background-image: url(../../images/icons/Favourites.svg);
+
+    &-active {
+      background-image: url(../../images/icons/Favourites_filled.svg);
+    }
+  }
+
+  &--dropdown {
+    height: 40px;
+    width: 165px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: space-between;
+    padding: 0 12px;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    &-text {
+      @extend %text-body;
+    }
+
+    &:focus {
+      border: 1px solid $gray-main;
+    }
+  }
+
+  &__add-to-cart {
+    font-family: Mont-Semibold, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: $white;
+
+    height: 40px;
+    flex: 1;
+    background-color: $gray-main;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $gray-main;
+      background-color: $html-bg-color;
+      border: 1px solid $gray-main;
+    }
+  }
+
+  &__added-to-cart {
+    color: $green;
+    background-color: $html-bg-color;
+    border: 1px solid $gray-elements;
+  }
+}

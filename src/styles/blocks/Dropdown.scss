@@ -1,0 +1,70 @@
+.Dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__title {
+    @extend %text-small;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__icon {
+    background-image: url(../../images/icons/Arrow_down.svg);
+    height: 16px;
+    width: 16px;
+
+    &--active {
+      background-image: url(../../images/icons/Arrow_up-light.svg);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    width: 100%;
+    background-color: $white;
+    z-index: -1;
+    opacity: 0;
+
+    transform: translateY(5px);
+    transition: all 0.35s;
+
+    &--opened {
+      transform: 0;
+      z-index: 1;
+      opacity: 1;
+    }
+  }
+
+  &__item {
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:hover {
+      background-color: $html-bg-color;
+      color: $gray-main;
+    }
+  }
+
+  &__link {
+    padding: 6px 12px;
+
+    @extend %text-body;
+
+    color: $gray-second;
+    text-decoration: none;
+
+    &:hover {
+      color: $gray-main;
+    }
+  }
+}

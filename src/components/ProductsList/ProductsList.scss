@@ -1,0 +1,19 @@
+@import "../../styles/utils/mixins";
+
+.ProductsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  @include on-desktop {
+    gap: 40px 16px;
+  }
+}

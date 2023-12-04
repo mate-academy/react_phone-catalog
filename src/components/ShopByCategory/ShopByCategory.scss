@@ -1,0 +1,84 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.ShopByCategory {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    @extend %text-title;
+    margin: 0;
+    text-align: center;
+
+    @include on-tablet {
+      text-align: left;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__category {
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(0.95);
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+
+      @include on-desktop {
+        gap: 24px;
+      }
+    }
+
+    &-image {
+      height: 300px;
+      width: 300px;
+
+      @include on-tablet {
+        width: 100%;
+        height: 33%;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+
+      @include on-desktop {
+        gap: 4px;
+      }
+    }
+
+    &-title {
+      @extend %text-semi-title;
+      margin: 0;
+    }
+
+    &-count {
+      @extend %text-body;
+      color: $gray-second;
+    }
+  }
+}

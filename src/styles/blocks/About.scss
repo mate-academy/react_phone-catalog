@@ -1,0 +1,10 @@
+.About {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  grid-column: 1 / 13;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+}

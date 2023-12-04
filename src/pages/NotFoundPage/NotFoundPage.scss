@@ -1,0 +1,21 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.NotFoundPage {
+  padding: 40px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    @extend %text-important;
+    color: $gray-second;
+  }
+
+  &__link {
+    @extend %text-important;
+  }
+}

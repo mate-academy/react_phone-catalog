@@ -1,0 +1,105 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.ProductCart {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 507px;
+  padding: 24px;
+  border: 1px solid $gray-elements;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(0.97);
+  }
+
+  @include on-tablet {
+    width: 272px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__image {
+    height: 100%;
+
+    &-container {
+      width: 208px;
+      height: 208px;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+  }
+
+  &__name {
+    @extend %text-body;
+    margin: 0;
+
+    @include on-tablet {
+      min-height: 42px;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__new-price {
+    @extend %text-important;
+  }
+
+  &__full-price {
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    color: $gray-second;
+    text-decoration: line-through;
+  }
+
+  &__features {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__feature {
+    display: flex;
+    justify-content: space-between;
+
+    &-name {
+      @extend %text-small;
+    }
+
+    &-value {
+      @extend %text-small;
+      color: $gray-main;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    padding: 16px 0 0;
+  }
+}
