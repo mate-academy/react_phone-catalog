@@ -8,8 +8,8 @@
   gap: 8px;
 
   @include on-tablet {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+
     gap: 12px;
   }
 

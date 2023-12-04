@@ -47,6 +47,7 @@
 
   &__name {
     @extend %text-body;
+
     margin: 0;
 
     @include on-tablet {
@@ -66,7 +67,7 @@
   }
 
   &__full-price {
-    font-family: "Mont-Regular", sans-serif;
+    font-family: Mont-Regular, sans-serif;
     font-size: 22px;
     font-weight: 500;
     line-height: 28px;
@@ -93,6 +94,7 @@
 
     &-value {
       @extend %text-small;
+
       color: $gray-main;
     }
   }

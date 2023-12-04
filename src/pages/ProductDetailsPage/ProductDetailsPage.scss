@@ -216,7 +216,9 @@
 
   &__capacity {
     border: 1px solid $gray-elements;
+
     @extend %text-body;
+
     padding: 8px;
 
     &:hover {

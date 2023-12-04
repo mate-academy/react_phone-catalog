@@ -37,6 +37,7 @@
 
     &-link {
       @extend %text-uppercase;
+
       color: $gray-second;
 
       &:hover {
@@ -59,6 +60,7 @@
 
     &-text {
       @extend %text-small;
+
       color: $gray-second;
     }
   }

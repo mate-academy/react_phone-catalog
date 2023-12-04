@@ -11,6 +11,7 @@
 
   &__title {
     @extend %text-title;
+
     margin: 0;
     text-align: center;
 
@@ -73,11 +74,13 @@
 
     &-title {
       @extend %text-semi-title;
+
       margin: 0;
     }
 
     &-count {
       @extend %text-body;
+
       color: $gray-second;
     }
   }

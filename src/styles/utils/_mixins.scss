@@ -4,7 +4,7 @@
   }
 }
 
-@mixin on-tabletXL {
+@mixin on-tablet-xl {
   @media (min-width: 840px) {
     @content;
   }
@@ -16,7 +16,7 @@
   }
 }
 
-@mixin on-mobileXL {
+@mixin on-mobile-xl {
   @media (min-width: 420px) {
     @content;
   }

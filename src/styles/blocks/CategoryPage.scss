@@ -37,6 +37,7 @@
 
   &__models-count {
     @extend %text-body;
+
     color: $gray-second;
   }
 
@@ -45,8 +46,7 @@
     flex-wrap: wrap;
     gap: 8px;
 
-    @include on-mobileXL {
-      // justify-content: flex-start;
+    @include on-mobile-xl {
       gap: 16px;
     }
   }

@@ -3,7 +3,7 @@
   padding: 0 20px;
   overflow: hidden;
 
-  @include on-mobileXL {
+  @include on-mobile-xl {
     max-width: 640px;
   }
 
@@ -11,7 +11,7 @@
     max-width: 800px;
   }
 
-  @include on-tabletXL {
+  @include on-tablet-xl {
     max-width: 1080px;
   }
 

@@ -12,14 +12,14 @@
   }
 
   &__slider {
-    @include on-mobileXL {
+    @include on-mobile-xl {
       display: none;
     }
 
     &--mobileXL {
       display: none;
 
-      @include on-mobileXL {
+      @include on-mobile-xl {
         display: flex;
       }
 
@@ -35,7 +35,7 @@
         display: flex;
       }
 
-      @include on-tabletXL {
+      @include on-tablet-xl {
         display: none;
       }
     }
@@ -43,7 +43,7 @@
     &--tabletXL {
       display: none;
 
-      @include on-tabletXL {
+      @include on-tablet-xl {
         display: flex;
       }
 

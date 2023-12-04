@@ -22,6 +22,7 @@
 
   &__is-empty {
     @extend %text-important;
+
     color: $gray-second;
   }
 
@@ -74,11 +75,12 @@
 
     &-text {
       @extend %text-body;
+
       color: $gray-second;
     }
 
     &-button {
-      font-family: "Mont-Semibold", sans-serif;
+      font-family: Mont-Semibold, sans-serif;
       font-size: 14px;
       line-height: 21px;
       text-align: center;
@@ -102,6 +104,7 @@
       border: 1px solid $gray-elements;
 
       @extend %text-important;
+
       text-align: center;
     }
   }

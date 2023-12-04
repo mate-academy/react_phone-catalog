@@ -1,22 +1,20 @@
-@import "./styles/reset";
-@import "./main";
-
-@import "./styles/utils/variables";
-@import "./styles/utils/typography";
-@import "./styles/utils/mixins";
-
-@import "./styles/blocks/icon.scss";
-@import "./styles/blocks/container.scss";
-@import "./styles/blocks/button.scss";
-@import "./styles/blocks/Dropdown.scss";
-@import "./styles/blocks/Feature.scss";
-@import "./styles/blocks/About.scss";
-@import "./styles/blocks/TechSpecs.scss";
-@import "./styles/blocks/Description.scss";
-@import "./styles/blocks/Action.scss";
-@import "./styles/blocks/Decorative-line.scss";
-@import "./styles/blocks/Menu.scss";
-@import "./styles/blocks/CategoryPage.scss";
+@use "./styles/reset.scss";
+@use "./main.scss";
+@use "./styles/utils/variables.scss";
+@use "./styles/utils/typography.scss";
+@use "./styles/utils/mixins.scss";
+@use "./styles/blocks/icon.scss";
+@use "./styles/blocks/container.scss";
+@use "./styles/blocks/button.scss";
+@use "./styles/blocks/Dropdown.scss";
+@use "./styles/blocks/Feature.scss";
+@use "./styles/blocks/About.scss";
+@use "./styles/blocks/TechSpecs.scss";
+@use "./styles/blocks/Description.scss";
+@use "./styles/blocks/Action.scss";
+@use "./styles/blocks/Decorative-line.scss";
+@use "./styles/blocks/Menu.scss";
+@use "./styles/blocks/CategoryPage.scss";
 
 .App {
   display: flex;

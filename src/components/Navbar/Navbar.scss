@@ -27,6 +27,7 @@
 
   &__item {
     @extend %text-uppercase;
+
     color: $gray-second;
     padding: 24px 0;
     border-bottom: 3px solid transparent;
