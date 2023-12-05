@@ -1,4 +1,4 @@
-@import '../../utils/main.scss';
+@import "../../utils/main.scss";
 
 .productsSlider {
   margin-top: 80px;
@@ -8,13 +8,15 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  margin-bottom: 80px;
 
   &__header {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 24px;
 
-    &--title  {
+    &--title {
       @extend %h1;
       color: $gray-primary-color;
     }
@@ -44,7 +46,7 @@
   }
 
   &__content {
-    height: 507px;
+    height: 100%;
     overflow: hidden;
     width: 100%;
     // width: calc((272px + 16px) * 4);

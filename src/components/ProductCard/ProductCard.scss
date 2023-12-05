@@ -1,4 +1,4 @@
-@import '../../utils/main.scss';
+@import "../../utils/main.scss";
 
 .productCard {
   display: flex;
@@ -102,6 +102,12 @@
   @extend %body-text;
   color: $white-color;
   cursor: pointer;
+  transition: box-shadow $transition-duration;
+
+  &:hover {
+    box-shadow: 0px 5px 13px 0px rgba(23, 32, 49, 0.26);
+  }
+
 }
 
 .buttonFav {
@@ -116,14 +122,5 @@
 
   &:hover {
     border: 1px solid $gray-primary-color;
-  }
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-
-  &--fav {
-    background-image: url(../../icons/heard.svg);
   }
 }

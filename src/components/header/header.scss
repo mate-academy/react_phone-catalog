@@ -1,6 +1,4 @@
-@import '../../utils/variables';
-@import '../../utils/extends';
-@import '../../utils/resets';
+@import "../../utils/main.scss";
 
 .header {
   box-sizing: border-box;
@@ -29,6 +27,25 @@
     align-items: center;
     height: 100%;
   }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &--link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 100%;
+      border-left: 1px solid $elements-color;
+
+      &-img {
+        position: relative;
+      }
+    }
+  }
 }
 
 .nav {
@@ -52,16 +69,6 @@
     &:hover {
       color: $gray-primary-color;
     }
-
-    &:hover::after {
-      content: "";
-      position: absolute;
-      top: 36px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: $gray-primary-color;
-    }
   }
 }
 
@@ -79,14 +86,3 @@
   }
 }
 
-.icon {
-  &--like {
-    background-image: url(../../icons/heard.svg);
-    border-left: 1px solid $elements-color;
-    border-right: 1px solid $elements-color;
-  }
-
-  &--shop {
-    background-image: url(../../icons/shoping.svg);
-  }
-}

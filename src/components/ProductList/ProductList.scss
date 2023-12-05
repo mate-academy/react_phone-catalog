@@ -1,0 +1,14 @@
+@import "../../utils/main.scss";
+
+.productList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+
+  &__item {
+    display: flex;
+    margin-bottom: 40px;
+  }
+}

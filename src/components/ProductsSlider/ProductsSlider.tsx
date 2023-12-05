@@ -10,12 +10,14 @@ interface Props {
   products: Product[],
   isLoading: boolean,
   isError: boolean,
+  title: string,
 }
 
 export const ProductsSlider: React.FC<Props> = ({
   products,
   isLoading,
   isError,
+  title,
 }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -32,7 +34,7 @@ export const ProductsSlider: React.FC<Props> = ({
     <section className="productsSlider">
       <div className="productsSlider__header">
         <h1 className="productsSlider__header--title">
-          Hot prices
+          {title}
         </h1>
         <div className="productsSlider__header--btn">
           <button
@@ -56,7 +58,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
       <div className="productsSlider__content">
         {isLoading && !isError && <Loader />}
-        {isError && (
+        {!isLoading && isError && (
           <p>
             Error: Unable to load data from server!
           </p>

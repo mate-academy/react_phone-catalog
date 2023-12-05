@@ -1,5 +1,5 @@
 export type ProductDetails = {
-  id: number,
+  id: string,
   namespaceId: string,
   name: string,
   capacityAvailable: string[],

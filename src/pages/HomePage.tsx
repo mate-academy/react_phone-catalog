@@ -3,6 +3,7 @@ import { ProductsSlider } from '../components/ProductsSlider';
 import { Slider } from '../components/Slider/Slider';
 import { Product } from '../types/Product';
 import { getProducts } from '../api/productsApi';
+import { Categories } from '../components/Categories';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -24,8 +25,8 @@ export const HomePage = () => {
   const sortHotPrice = [...products]
     .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
 
-  // const sortNewModels = [...products]
-  // .sort((a, b) => b.year - a.year);
+  const sortNewModels = [...products]
+    .sort((a, b) => b.year - a.year);
 
   return (
     <div className="container">
@@ -34,6 +35,14 @@ export const HomePage = () => {
         products={sortHotPrice}
         isLoading={isLoading}
         isError={isError}
+        title="Hot prices"
+      />
+      <Categories />
+      <ProductsSlider
+        products={sortNewModels}
+        isLoading={isLoading}
+        isError={isError}
+        title="Brand new models"
       />
     </div>
   );

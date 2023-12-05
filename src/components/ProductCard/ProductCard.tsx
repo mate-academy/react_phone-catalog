@@ -11,6 +11,7 @@ const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
+    phoneId,
     name,
     price,
     fullPrice,
@@ -21,7 +22,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   return (
-    <Link to="/" className="productCard">
+    <Link
+      to={`/${product.category}/${phoneId}`}
+      className="productCard"
+      data-cy="cardsContainer"
+    >
       <div className="productCard__photo">
         <img src={`${BASE_URL}${image}`} alt="product" className="productCard__img" />
       </div>
@@ -80,6 +85,5 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </button>
       </div>
     </Link>
-
   );
 };

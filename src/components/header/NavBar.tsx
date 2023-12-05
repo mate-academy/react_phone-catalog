@@ -1,13 +1,22 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './header.scss';
 import logo from '../../icons/logo.svg';
+import { SearchField } from '../SearchField';
 
 export const NavBar: React.FC = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) => {
     return classNames('nav__link', { 'is-active': isActive });
   };
+
+  const { pathname } = useLocation();
+  const isSearchShown = pathname === '/phones'
+    || pathname === '/tablets'
+    || pathname === '/accessories'
+    || pathname === '/favorites';
+
+  // const isCartOpen = pathname !== '/shop';
 
   return (
     <>
@@ -43,6 +52,15 @@ export const NavBar: React.FC = () => {
               </li>
             </ul>
           </div>
+        </div>
+        <div className="header__icons">
+          {isSearchShown && <SearchField />}
+          <NavLink to="/favorites" className="header__icons--link">
+            <div className="header__icons--link-img icon icon--fav" />
+          </NavLink>
+          <NavLink to="/shop" className="header__icons--link">
+            <div className="header__icons--link-img icon icon--shop" />
+          </NavLink>
         </div>
       </header>
     </>

@@ -1,4 +1,4 @@
-@import '../../utils/main.scss';
+@import "../../utils/main.scss";
 
 .slider {
   display: flex;
@@ -25,6 +25,7 @@
     height: 100%;
     width: 300%;
     display: flex;
+    gap: 1px;
     transition-duration: 1s;
   }
 
@@ -82,4 +83,3 @@
   background-color: $gray-primary-color;
   border: 1px solid $gray-primary-color;
 }
-

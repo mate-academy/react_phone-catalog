@@ -1,0 +1,80 @@
+@import "../../utils/main.scss";
+
+.footer {
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $elements-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--img {
+      width: 40px;
+      height: 24px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    &--link {
+      @extend %uppercase;
+      color: $gray-secondary-color;
+      transition: color $transition-duration;
+
+      &:hover {
+        color: $gray-primary-color;
+      }
+    }
+  }
+
+  &__backToTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+
+    &--message {
+      @extend %small-text;
+      color: $gray-secondary-color;
+      cursor: pointer;
+      transition: color $transition-duration;
+
+      &:hover {
+        color: $gray-primary-color;
+      }
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 32px;
+      border: 1px solid $gray-icons-color;
+      cursor: pointer;
+      transition: border $transition-duration;
+
+      &:hover {
+        border: 1px solid $gray-primary-color;
+      }
+    }
+  }
+}
+

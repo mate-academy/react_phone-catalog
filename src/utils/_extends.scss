@@ -19,11 +19,6 @@
   font-style: normal;
   line-height: 41px;
   letter-spacing: -0.32px;
-
-  // @include onTablet {
-    font-size: 22px;
-    line-height: 31px;
-  // }
 }
 
 %h2 {
@@ -32,11 +27,6 @@
   font-size: 22px;
   font-style: normal;
   line-height: 140%;
-
-  // @include onTablet {
-    font-size: 18px;
-    line-height: 25px;
-  // }
 }
 
 %h3 {
@@ -45,11 +35,6 @@
   font-style: normal;
   font-weight: 600;
   line-height: 26px;
-
-  // @include onTablet {
-    font-size: 16px;
-    line-height: 22px;
-  // }
 }
 
 %uppercase {
