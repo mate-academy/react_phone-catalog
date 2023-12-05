@@ -67,11 +67,11 @@ export const Header = () => {
           </div>
         )}
 
-        <NavLink 
+        <NavLink
           to="favorites"
           className={({ isActive }: { isActive: boolean }) => classNames(
-            'header__favorites', 
-            'nav__link', 
+            'header__favorites',
+            'nav__link',
             { nav__active: isActive },
           )}
         >
