@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import { Product } from '../../helpers/types/Product';
-import { ProductsCard } from '../ProductsCard';
+import { ProductCard } from '../ProductCard';
 import './ProductsSlider.scss';
 
 type Props = {
@@ -77,10 +77,9 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
 
       <ul className="ProductsSlider__cards" ref={sliderRef}>
         {products.map(product => (
-          <ProductsCard
-            key={product.id}
-            product={product}
-          />
+          <li key={product.id} className="ProductsSlider__item">
+            <ProductCard product={product} />
+          </li>
         ))}
       </ul>
     </div>

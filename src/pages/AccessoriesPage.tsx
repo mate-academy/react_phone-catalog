@@ -1,36 +1,41 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import './styles/Page.scss';
-import productsFromServer from '../helpers/api/products.json';
 import { Product } from '../helpers/types/Product';
 
 import { Loader } from '../components/Loader';
 import { ProductsList } from '../components/ProductsList';
 import { NoResults } from '../components/NoResults';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { useGetProductsQuery } from '../helpers/api/productsApi';
 
 export const AccessoriesPage = () => {
+  const { data: products, isLoading } = useGetProductsQuery();
   const [accessories, setAccessories] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   useEffect(() => {
-    setIsLoading(true);
-    setAccessories(
-      productsFromServer
-        .filter(product => product.type === 'accessory') as Product[],
-    );
-
-    setIsLoading(false);
-  }, []);
+    if (products) {
+      setAccessories(products
+        .filter(product => product.type === 'accessory'));
+    }
+  }, [products]);
 
   return (
     <div className="Page">
-      <Breadcrumbs />
+      {!query && (
+        <>
+          <Breadcrumbs />
 
-      <div className="Page__top">
-        <h1 className="Page__title">Accessories</h1>
-        <p className="Page__amount">{`${accessories.length} models`}</p>
-      </div>
+          <div className="Page__top">
+            <h1 className="Page__title">Accessories</h1>
+            <p className="Page__amount">{`${accessories.length} models`}</p>
+          </div>
+        </>
+      )}
 
       {isLoading && (
         <Loader />

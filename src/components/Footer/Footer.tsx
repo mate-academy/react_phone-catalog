@@ -19,7 +19,7 @@ export const Footer = () => {
         <div className="Footer__links">
           <Link
             className="Footer__link"
-            to="https://rialleons.github.io/react_phone-catalog/"
+            to="https://github.com/rialleons/react_phone-catalog/"
             target="_blank"
             rel="noopener noreferrer"
           >

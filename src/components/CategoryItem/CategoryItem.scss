@@ -1,11 +1,15 @@
 @import "../../helpers/styles/mixins";
 
 .CategoryItem {
-  grid-column: span 8;
   text-decoration: none;
 
   &__image {
     width: 100%;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 
   &__products-count {

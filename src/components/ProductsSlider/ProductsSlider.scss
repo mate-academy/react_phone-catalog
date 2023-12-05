@@ -3,15 +3,6 @@
 .ProductsSlider {
   position: relative;
 
-  &__cards {
-    display: flex;
-    gap: 16px;
-
-    overflow: hidden;
-    scroll-behavior: smooth;
-    list-style: none;
-  }
-
   &__buttons {
     position: absolute;
     top: -60px;
@@ -45,5 +36,14 @@
     &--left {
       transform: rotate(180deg);
     }
+  }
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+
+    overflow: hidden;
+    scroll-behavior: smooth;
+    list-style: none;
   }
 }

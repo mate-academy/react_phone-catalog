@@ -1,3 +1,7 @@
+import './styles/Page.scss';
+
 export const NotFoundPage = () => (
-  <h1 className="title">Page not found</h1>
+  <div className="Page">
+    <h1 className="Page__title">Page not found</h1>
+  </div>
 );

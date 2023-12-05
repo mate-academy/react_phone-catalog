@@ -2,4 +2,10 @@
 
 .CategoriesList {
   @include pageGrid;
+
+  list-style: none;
+
+  &__item {
+    grid-column: span 8;
+  }
 }

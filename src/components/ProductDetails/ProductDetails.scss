@@ -1,0 +1,120 @@
+@import "../../helpers/styles/mixins";
+
+.ProductDetails {
+  @include pageGrid;
+  row-gap: 80px;
+
+  &__left-top {
+    display: flex;
+    gap: 16px;
+    grid-column: 1 / 12;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image-link {
+    @include squareSize(80px);
+
+    background: none;
+    border: 1px solid $elements-color;
+    cursor: pointer;
+
+    &--active {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__image {
+    @include squareSize(64px);
+
+    &--big {
+      @include squareSize(440px);
+      padding: 12px;
+    }
+  }
+
+  &__right-top {
+    grid-column: 13 / 19;
+  }
+
+  &__prices {
+    margin-bottom: 16px;
+
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    @include sectionTitle_H1;
+
+    &--discount {
+      @include sectionTitle_H2;
+
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $secondary-color;
+    }
+  }
+
+  &__add {
+    margin-bottom: 32px;
+  }
+
+  &__info {
+    @include smallText;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--text--bigger {
+      @include bodyText;
+    }
+  }
+
+  &__field {
+
+    display: flex;
+    justify-content: space-between;
+
+    &-key {
+      color: $secondary-color;
+    }
+
+    &-value {
+      color: $primary-color;
+      text-align: right;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / 12;
+  }
+
+  &__title {
+    @include sectionTitle_H2;
+    margin-bottom: 16px;
+  }
+
+  &__divider {
+    border-top: 1px solid $elements-color;
+    margin-bottom: 32px;
+  }
+
+  &__description {
+    @include bodyText;
+
+    color: $secondary-color;
+  }
+
+  &__specs {
+    grid-column: 13 / 25;
+
+    @include bodyText;
+  }
+}

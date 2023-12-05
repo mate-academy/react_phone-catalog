@@ -1,13 +1,14 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
+import './ProductsList.scss';
 import { getFilteredProducts } from '../../helpers/utils/getFilteredProducts';
 import { Product } from '../../helpers/types/Product';
-import { ProductsCard } from '../ProductsCard';
+import { Option } from '../../helpers/types/Option';
+
+import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
 import { Dropdown } from '../Dropdown';
-import './ProductsList.scss';
-import { Option } from '../../helpers/types/Option';
 import { NoSearchResults } from '../NoSearchResults';
 
 type Props = {
@@ -42,10 +43,12 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     return getFilteredProducts(products, sort, query);
   }, [products, sort, query]);
 
+  const { length } = filteredProducts;
+
   useEffect(() => {
     if (perPage !== 'all') {
       const fromItem = (+page - 1) * +perPage + 1;
-      const toItem = Math.min(+page * +perPage, filteredProducts.length);
+      const toItem = Math.min(+page * +perPage, length);
 
       setVisibleProducts(filteredProducts.slice(fromItem - 1, toItem));
     } else {
@@ -66,7 +69,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="ProductsList">
-      {pathName !== '/favorites' && !!filteredProducts.length && (
+      {pathName !== '/favorites' && length > 1 && (
         <div className="ProductsList__selections">
           <div className="ProductsList__select">
             <p className="ProductsList__label">Sort by</p>
@@ -77,7 +80,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
             />
           </div>
 
-          {filteredProducts.length >= 4 && (
+          {length > 4 && (
             <div className="ProductsList__select ProductsList__select--narrow">
               <p className="ProductsList__label">Items on page</p>
               <Dropdown
@@ -90,19 +93,27 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
         </div>
       )}
 
-      {!filteredProducts.length && (
+      {!!query && !!length && (
+        <p className="ProductsList__search-count">
+          {`${length} result${length > 1 ? 's' : ''}`}
+        </p>
+      )}
+
+      {!length && (
         <NoSearchResults />
       )}
 
       <ul className="ProductsList__content" data-cy="productList">
         {visibleProducts.map((product) => (
-          <ProductsCard key={product.id} product={product} />
+          <li key={product.id} className="ProductsList__item">
+            <ProductCard product={product} />
+          </li>
         ))}
       </ul>
 
-      {perPage !== 'all' && filteredProducts.length > +perPage && (
+      {perPage !== 'all' && length > +perPage && (
         <Pagination
-          totalItems={filteredProducts.length}
+          totalItems={length}
           onPage={+perPage}
         />
       )}

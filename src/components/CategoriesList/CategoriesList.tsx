@@ -12,25 +12,31 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
   };
 
   return (
-    <div
+    <ul
       className="CategoriesList"
       data-cy="categoryLinksContainer"
     >
-      <CategoryItem
-        name="phones"
-        title="Mobile phones"
-        amount={getProductsAmount('phone')}
-      />
-      <CategoryItem
-        name="tablets"
-        title="Tablets"
-        amount={getProductsAmount('tablet')}
-      />
-      <CategoryItem
-        name="accessories"
-        title="Accessories"
-        amount={getProductsAmount('accessory')}
-      />
-    </div>
+      <li className="CategoriesList__item">
+        <CategoryItem
+          name="phones"
+          title="Mobile phones"
+          amount={getProductsAmount('phone')}
+        />
+      </li>
+      <li className="CategoriesList__item">
+        <CategoryItem
+          name="tablets"
+          title="Tablets"
+          amount={getProductsAmount('tablet')}
+        />
+      </li>
+      <li className="CategoriesList__item">
+        <CategoryItem
+          name="accessories"
+          title="Accessories"
+          amount={getProductsAmount('accessory')}
+        />
+      </li>
+    </ul>
   );
 };

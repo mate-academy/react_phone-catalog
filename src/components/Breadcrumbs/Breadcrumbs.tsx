@@ -1,24 +1,56 @@
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
+import './Breadcrumbs.scss';
 import iconHome from '../../helpers/icons/icon_home.svg';
 import iconVector from '../../helpers/icons/icon_vector_disabled.svg';
-import './Breadcrumbs.scss';
+import { Product } from '../../helpers/types/Product';
+import { useGetProductsQuery } from '../../helpers/api/productsApi';
+import { capitalize, getPlural } from '../../helpers/utils/stringHelpers';
 
 export const Breadcrumbs = () => {
+  const [path, setPath] = useState('');
+  const [currentProduct, setCurrentProduct] = useState<Product>();
+
   const location = useLocation();
+  const { productId } = useParams();
 
-  const path = location.pathname.split('/');
+  const { data: products } = useGetProductsQuery();
 
-  const breadcrumbs = path.slice(1, path.length).map(breadcrumb => {
-    return breadcrumb.charAt(0).toUpperCase()
-      + breadcrumb.slice(1, breadcrumb.length);
-  });
+  useEffect(() => {
+    if (products && productId) {
+      setCurrentProduct(products.find(product => product.id === productId));
+    }
+  }, [productId, products]);
+
+  useEffect(() => {
+    if (!productId) {
+      setPath(location.pathname.slice(1, location.pathname.length));
+    } else if (currentProduct) {
+      setPath(getPlural(currentProduct.type));
+    }
+  }, [location.pathname, currentProduct]);
 
   return (
     <div data-cy="breadCrumbs" className="Breadcrumbs">
-      <img src={iconHome} alt="Home Icon" />
+      <Link to="/" className="Breadcrumbs__link">
+        <img src={iconHome} alt="Home Icon" />
+      </Link>
       <img src={iconVector} alt="Vector Icon" />
-      <p className="Breadcrumbs__folder">{breadcrumbs[0]}</p>
+      {productId ? (
+        <Link to={`/${path}`} className="Breadcrumbs__link">
+          <p className="Breadcrumbs__folder">{capitalize(path)}</p>
+        </Link>
+      ) : (
+        <p className="Breadcrumbs__folder">{capitalize(path)}</p>
+      )}
+
+      {productId && (
+        <>
+          <img src={iconVector} alt="Vector Icon" />
+          <p className="Breadcrumbs__folder">{currentProduct?.name}</p>
+        </>
+      )}
     </div>
   );
 };

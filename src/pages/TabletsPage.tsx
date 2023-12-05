@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import './styles/Page.scss';
-import productsFromServer from '../helpers/api/products.json';
+import { useGetProductsQuery } from '../helpers/api/productsApi';
 import { Product } from '../helpers/types/Product';
 
 import { Loader } from '../components/Loader';
@@ -10,27 +11,31 @@ import { NoResults } from '../components/NoResults';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const TabletsPage = () => {
+  const { data: products, isLoading } = useGetProductsQuery();
   const [tablets, setTablets] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   useEffect(() => {
-    setIsLoading(true);
-    setTablets(
-      productsFromServer
-        .filter(product => product.type === 'tablet') as Product[],
-    );
-
-    setIsLoading(false);
-  }, []);
+    if (products) {
+      setTablets(products
+        .filter(product => product.type === 'tablet'));
+    }
+  }, [products]);
 
   return (
     <div className="Page">
-      <Breadcrumbs />
+      {!query && (
+        <>
+          <Breadcrumbs />
 
-      <div className="Page__top">
-        <h1 className="Page__title">Tablets</h1>
-        <p className="Page__amount">{`${tablets.length} models`}</p>
-      </div>
+          <div className="Page__top">
+            <h1 className="Page__title">Tablets</h1>
+            <p className="Page__amount">{`${tablets.length} models`}</p>
+          </div>
+        </>
+      )}
 
       {isLoading && (
         <Loader />

@@ -23,11 +23,22 @@
     @include smallText;
   }
 
+  &__search-count {
+    @include bodyText;
+    margin-bottom: 24px;
+
+    color: $secondary-color;
+  }
+
   &__content {
     @include pageGrid;
     margin-bottom: 40px;
     row-gap: 40px;
 
     list-style: none;
+  }
+
+  &__item {
+    grid-column: span 6;
   }
 }
