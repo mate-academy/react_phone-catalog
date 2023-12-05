@@ -1,0 +1,11 @@
+.line {
+  position: absolute;
+  border-radius: 8px;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background: $grey-third-color;
+  content: "";
+  transition: transform 0.3s;
+}
