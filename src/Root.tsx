@@ -36,6 +36,11 @@ export const Root = () => (
             path="tablets"
             element={<ProductsPage productType={ProductType.TABLET} />}
           />
+
+          <Route
+            path="accessories"
+            element={<ProductsPage productType={ProductType.ACCESSORY} />}
+          />
         </Route>
       </Routes>
     </Router>
