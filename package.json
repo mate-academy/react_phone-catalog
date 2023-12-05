@@ -29,8 +29,8 @@
     "@mate-academy/stylelint-config": "^0.0.11",
     "@types/lodash": "^4.14.202",
     "@types/node": "^17.0.45",
-    "@types/react": "^18.2.41",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@types/uuid": "^9.0.7",
     "cypress": "^9.5.3",
     "eslint": "^7.32.0",
@@ -42,7 +42,7 @@
     "node-sass": "^7.0.1",
     "postcss": "^8.4.12",
     "stylelint": "^15.11.0",
-    "typescript": "^5.3.2"
+    "typescript": "^4.6.3"
   },
   "scripts": {
     "start": "mate-scripts start -l",

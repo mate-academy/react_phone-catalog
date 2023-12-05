@@ -105,8 +105,9 @@
 
     &-fav {
       display: flex;
-      background-image: url("../../imgs/Favourites.jpg");
+      background-image: url("../../imgs/Icons/Favourites\ \(Heart\ Like\).svg");
       position: relative;
+      border: none;
 
       &:hover {
         cursor: pointer;

@@ -13,6 +13,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Header } from './components/Header/Header';
 
+
 const App = () => {
   return (
     <div className="App">

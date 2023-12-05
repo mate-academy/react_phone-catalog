@@ -79,6 +79,11 @@
     margin: 0 18px;
     color: $secondaryColor;
     text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+      color: $mainColor;
+    }
   }
 
   .back-to-top {

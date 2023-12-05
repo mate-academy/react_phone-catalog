@@ -1,5 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
 import './MobileMenu.scss';
+import React from 'react';
 
 type Props = {
   isOpen: boolean;

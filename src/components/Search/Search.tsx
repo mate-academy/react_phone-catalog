@@ -1,5 +1,6 @@
 import './Search.scss';
 import { debounce } from 'lodash';
+import React from 'react';
 import { useCallback, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
@@ -52,8 +53,6 @@ export const Search = () => {
       return newSearchParams;
     });
   };
-
-  // const isPhonePage = location.pathname.startsWith('/phones');
 
   return (
     <div className="Header_search">
