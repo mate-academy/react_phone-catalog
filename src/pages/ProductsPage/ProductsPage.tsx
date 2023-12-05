@@ -12,6 +12,7 @@ import { ProductType } from '../../types/ProductType';
 import { Status } from '../../types/Status';
 import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
+import { NoResults } from '../../components/NoResults';
 
 type Props = {
   productType: ProductType;
@@ -70,13 +71,24 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
 
   return (
     <>
-      <h1>{pageTitle[productType]}</h1>
+      {status === Status.IDLE
+        && totalProductsByType > 0
+        && <h1>{pageTitle[productType]}</h1>}
 
-      <ProductListFilter />
+      {status === Status.IDLE
+        && totalProductsByType > 0
+        && <ProductListFilter />}
 
-      {status === Status.LOADING && <Loader />}
+      {status === Status.LOADING
+        && <Loader />}
 
-      {status === Status.IDLE && <ProductList products={paginated} />}
+      {status === Status.IDLE
+        && totalProductsByType === 0
+        && <NoResults productType={productType} />}
+
+      {status === Status.IDLE
+        && <ProductList products={paginated} />}
+
       {totalProductsByType > productsPerPage
         && (
           <Pagination
