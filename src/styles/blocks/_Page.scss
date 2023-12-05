@@ -13,7 +13,8 @@
     color: $primary;
   }
 
-  &-Header {
+  &-Header,
+  &-NoResults {
     margin-block-end: 40px;
   }
 
