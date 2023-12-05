@@ -1,15 +1,121 @@
+@import "../../helpers/variables";
+@import "../../helpers/sharedStyles";
+
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 24px;
-
-  &__nav {
-    position: relative;
-    display: flex;
-  }
+  background: $white-color;
+  box-shadow: 0 2px 4px $grey-third-color;
+  font-family: $font-semibold;
+  text-align: center;
 
   &__logo {
-    margin-right: 64px;
+    margin-top: 15px;
+    width: 40px;
+    height: 24px;
+    margin-left: 25px;
+    position: relative;
+    background-image: url("../../Images/Icons/logo.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  &__icon-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 327px;
+    height: 64px;
+  }
+
+  &__favorites {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    background-image: url("../../Images/Icons/FavouritesHeartLike.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: -1px 0 0 $grey-third-color;
+    cursor: pointer;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  &__list {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $grey-light-color;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 26px 0;
+    margin-left: 64px;
+    position: relative;
+    transition: color 0.5s;
+
+    &:not(.nav__active)::after {
+      @extend .line;
+      transform: scaleX(0);
+    }
+ 
+    &:not(.nav__active):hover {
+      color: $grey-primery-color;
+
+      &::after {
+        @extend .line;
+        transform: scaleX(1);
+      }
+      
+    }
+  }
+
+  &__active {
+    color: $grey-primery-color;
+  
+    &::after {
+      position: absolute;
+      border-radius: 8px;
+      height: 4px;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background: $grey-primery-color;
+      content: "";
+    }
   }
 }

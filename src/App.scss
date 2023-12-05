@@ -1,3 +1,16 @@
+@import "helpers/variables";
+
 * {
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // font-family: $font-regular;
+  color: $grey-primery-color;
+  font-size: 12px;
 }
