@@ -1,0 +1,11 @@
+@import "./../../../../styles/variables.scss";
+
+.dot {
+  width: 15px;
+  height: 5px;
+  background-color: $elements-color;
+
+  &--active {
+    background-color: $primary-color;
+  }
+}

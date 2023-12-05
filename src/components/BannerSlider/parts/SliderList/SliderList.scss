@@ -1,0 +1,13 @@
+.slider {
+  &__wrapper {
+    display: flex;
+    overflow: hidden;
+    height: 400px;
+  }
+
+  &__list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+}

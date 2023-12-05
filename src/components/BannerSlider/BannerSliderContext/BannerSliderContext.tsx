@@ -1,0 +1,102 @@
+import React, {
+  createContext,
+  useMemo, useState,
+  useCallback,
+  useEffect,
+} from 'react';
+
+const TRANSITION_DURATION = 300;
+
+const images: Image[] = [
+  { id: 0, url: '_new/img/banner-phones.png' },
+  { id: 1, url: '_new/img/banner-tablets.png' },
+  { id: 2, url: '_new/img/banner-accessories.png' },
+];
+
+type BannerSliderContextData = {
+  images: Image[];
+  currentSlide: Image;
+  transitionDuration: number;
+  position: number;
+  setPosition: React.Dispatch<React.SetStateAction<number>>;
+  setTransitionDuration: React.Dispatch<React.SetStateAction<number>>;
+  restartInterval: () => void;
+  setCurrentSlide: React.Dispatch<React.SetStateAction<Image>>;
+};
+
+const defaultContextData: BannerSliderContextData = {
+  images,
+  currentSlide: images[0],
+  transitionDuration: TRANSITION_DURATION,
+  position: 1,
+  setPosition: () => { },
+  setTransitionDuration: () => { },
+  restartInterval: () => { },
+  setCurrentSlide: () => { },
+};
+
+export const BannerSLiderContext
+  = createContext<BannerSliderContextData>(defaultContextData);
+
+export const BannerSliderProvider: React.FC = ({ children }) => {
+  const [currentSlide, setCurrentSlide] = useState(images[0]);
+  const [transitionDuration, setTransitionDuration]
+    = useState(TRANSITION_DURATION);
+  const [position, setPosition] = useState(1);
+
+  const setUpSliderInterval = useCallback((ms: number) => {
+    let intervalId: NodeJS.Timeout;
+
+    return () => {
+      clearInterval(intervalId);
+
+      intervalId = setInterval(() => {
+        setPosition((prev) => {
+          if (prev === images.length) {
+            setCurrentSlide(images[0]);
+
+            setTimeout(() => {
+              setTransitionDuration(0);
+              setPosition(1);
+            }, TRANSITION_DURATION);
+
+            return images.length + 1;
+          }
+
+          setCurrentSlide(images[prev]);
+
+          return prev + 1;
+        });
+      }, ms);
+    };
+  }, []);
+
+  const restartInterval = useCallback(setUpSliderInterval(5000), []);
+
+  const value = useMemo(() => ({
+    images,
+    currentSlide,
+    transitionDuration,
+    position,
+    setPosition,
+    setTransitionDuration,
+    restartInterval,
+    setCurrentSlide,
+  }), [currentSlide, transitionDuration, position]);
+
+  useEffect(() => {
+    restartInterval();
+  }, [restartInterval]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTransitionDuration(TRANSITION_DURATION);
+    }, 1);
+  }, [transitionDuration]);
+
+  return (
+    <BannerSLiderContext.Provider value={value}>
+      {children}
+    </BannerSLiderContext.Provider>
+  );
+};

@@ -1,0 +1,15 @@
+.banner-slider {
+  &__arrow {
+    flex: 1;
+
+    &--prev,
+    &--next {
+      height: 100%;
+
+      &:active {
+        transform: none;
+        background-color: rgb(250, 250, 250);
+      }
+    }
+  }
+}
