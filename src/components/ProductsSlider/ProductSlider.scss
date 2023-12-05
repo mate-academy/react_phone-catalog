@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../helpers/fonts/Mont-Bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@import "../../utils/mixins.scss";
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  width: 1170px;
+  height: 572px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+
+  @include oneCard {
+    width: 272px;
+    height: 100%;
+  }
+
+  @include twoCard {
+    width: 600px;
+  }
+
+  @include threeCard {
+    width: 848px;
+  }
+
+  &_buttons {
+    display: none;
+
+    @include onSmallDesktop {
+      display: block;
+    }
+
+    &_left {
+      width: 32px;
+      height: 32px;
+      background-image: url('../../imgs/Icons/Slider\ button\ -\ Default\ \(right\).svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #fff;
+      margin-right: 8px;
+      transform: rotate(180deg);
+      cursor: pointer;
+      border: 1px solid #B4BDC3;
+
+      &:hover {
+        border: 1px solid #000;
+      }
+
+      &.disabled {
+        background-image: url('../../imgs/Icons/Vector\ Disabled\ left.svg');
+        transform: none;
+      }
+    }
+
+    &_right {
+      width: 32px;
+      height: 32px;
+      background-image: url('../../imgs/Icons/Slider\ button\ -\ Default\ \(right\).svg');
+      background-repeat: no-repeat;
+      background-color: #fff;
+      background-position: center;
+      cursor: pointer;
+      border: 1px solid #B4BDC3;
+
+      &:hover {
+        border: 1px solid #000;
+      }
+
+      &.disabled {
+        background-image: url('../../imgs/Icons/Vector\ Disabled\ left.svg');
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &_titlewithbuttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    &_title {
+      display: flex;
+      font-family: "Mont";
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+      width: 80%;
+
+      @include onMobile {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        line-height: 100%;
+        text-align: left;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @include onTablet {
+        width: 100%;
+        text-align: left;
+        justify-content: center;
+        align-items: center;
+      }
+
+    }
+  }
+
+  &_products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 16px;
+    transition: transform 0.3s ease;
+  }
+}

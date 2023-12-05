@@ -1,0 +1,230 @@
+@font-face {
+  font-family: 'Mont';
+  src: url('../../helpers/fonts/Mont-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 507px;
+  border: 1px solid #E2E6E9;
+  box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid #000;
+  }
+
+  &_image {
+    width: 208px;
+    height: 208px;
+    margin: 32px auto 32px;
+    object-fit: contain;
+  }
+
+  &_name {
+    display: flex;
+    justify-content: center;
+    height: 42px;
+    margin: 0 24px 0;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #313237;
+    padding-bottom: 8px;
+  }
+
+  &_prices {
+    display: flex;
+    margin: 0 24px 0;
+
+    &_actualprice {
+      margin-right: 8px;
+      font-family: "Mont", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 31px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+
+    &_fullprice {
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+      text-decoration: line-through;
+    }
+  }
+
+  &_screen {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 24px 0;
+    padding-bottom: 8px;
+    height: 15px;
+
+    &_name {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+    }
+
+    &_number {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: right;
+    }
+  }
+
+  &_capacity {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 24px 0;
+    padding-bottom: 8px;
+    height: 15px;
+
+    &_name {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+    }
+
+    &_number {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: right;
+    }
+  }
+
+  &_line {
+    border: 1px solid #E2E6E9;
+    margin: 7.5px 24px 15px;
+  }
+
+  &_ram {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 24px 0;
+    padding-bottom: 16px;
+    height: 15px;
+
+    &_name {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+    }
+
+    &_number {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: right;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+
+    &_cart {
+      background: #313237;
+      width: 176px;
+      height: 40px;
+      margin-right: 8px;
+      font-family: 'Mont', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #FFFFFF;
+      cursor: pointer;
+
+      &-added {
+        background: #fff;
+        width: 176px;
+        height: 40px;
+        margin-right: 8px;
+        font-family: 'Mont', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+        letter-spacing: 0em;
+        border: 1px solid #E2E6E9;
+        text-align: center;
+        color: #27ae60;
+        cursor: pointer;
+      }
+    }
+
+    &_fav {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #B4BDC3;
+      cursor: pointer;
+      background-color: #fff;
+
+      &_image {
+        background-image: url('../../imgs/Icons/Add\ to\ fovourites\ -\ Default.svg');
+        background-color: #fff;
+        width: 16px;
+        height: 16px;
+        margin: auto;
+
+        background-position-x: center;
+        background-position-y: center;
+        background-repeat: no-repeat;
+
+        &-added {
+          background-image: url('../../imgs/Icons/FavoritesAdded.svg');
+          background-color: #fff;
+          width: 16px;
+          height: 16px;
+          margin: auto;
+
+          background-position-x: center;
+          background-position-y: center;
+          background-repeat: no-repeat;
+        }
+      }
+
+
+    }
+  }
+}

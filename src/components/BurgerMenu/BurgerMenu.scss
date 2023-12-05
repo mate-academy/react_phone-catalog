@@ -1,0 +1,44 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.burgermenu {
+  display: flex;
+  margin-right: 20px;
+
+  @include onTablet {
+    display: none;
+  }
+
+  @include onSmallDesktop {
+    display: none;
+  }
+
+  &_icon {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-image: url('../../imgs/Icons/burger-menu-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+    background-color: white;
+    border: none;
+  }
+
+  &_icon-close {
+    display: flex;
+    align-items: center;
+    // margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-image: url('../../imgs/Icons/Close.svg');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+    background-color: white;
+    border: none;
+  }
+}

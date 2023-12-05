@@ -1,0 +1,91 @@
+@import "../../utils/mixins.scss";
+
+.pagination {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+  row-gap: 20px;
+
+  @include onSmallDesktop {
+    display: flex;
+  }
+
+  &_number {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+    margin-right: 8px;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #000000;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid #000;
+    }
+
+    &_active {
+      background-color: #000;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      margin-right: 8px;
+      font-family: 'Mont', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      letter-spacing: 0em;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid #000;
+      }
+    }
+  }
+
+  &_arrowleft {
+    width: 32px;
+    height: 32px;
+    background-image: url('../../imgs/Icons/Slider\ button\ -\ Default\ \(right\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 8px;
+    transform: rotate(180deg);
+    cursor: pointer;
+    border: 1px solid #B4BDC3;
+
+    &:hover {
+      border: 1px solid #000;
+    }
+
+    &:disabled {
+      background-image: url('../../imgs/Icons/Vector\ Disabled\ left.svg');
+      transform: none;
+    }
+  }
+
+  &_arrowright {
+    width: 32px;
+    height: 32px;
+    background-image: url('../../imgs/Icons/Slider\ button\ -\ Default\ \(right\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: 1px solid #B4BDC3;
+
+    &:hover {
+      border: 1px solid #000;
+    }
+
+    &:disabled {
+      background-image: url('../../imgs/Icons/Vector\ Disabled\ left.svg');
+      transform: rotate(180deg);
+    }
+  }
+}

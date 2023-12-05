@@ -1,0 +1,73 @@
+@import "../../utils/mixins.scss";
+.Tabletspage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 1136px;
+  @media (min-width: 1472) {
+    padding: 0 152px;
+  }
+  @include onTablet {
+    padding: 0 40px;
+  }
+
+  &_title {
+    align-self: flex-start;
+    max-width: 800px;
+    height: 41px;
+    font-family: "Mont", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: #313237;
+    margin-bottom: 40px;
+  }
+
+  &_message {
+    margin: auto;
+    max-width: 800px;
+    height: 41px;
+    font-family: "Mont", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #313237;
+    margin-bottom: 40px;
+  }
+
+  &_backlink {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    align-self: flex-start;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+    margin-bottom: 40px;
+
+    &_arrow {
+      width: 16px;
+      height: 16px;
+      background-image: url('../../imgs/Icons/Slider\ button\ -\ Default\ \(right\).svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(180deg);
+      padding-right: 10px;
+    }
+
+    &_title {
+      font-family: 'Mont', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: #89939A;
+    }
+  }
+}

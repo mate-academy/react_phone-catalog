@@ -1,0 +1,35 @@
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 700px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 700px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin onSmallDesktop {
+  @media (min-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin oneCard {
+  @media (min-width: 300px) and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin twoCard {
+  @media (min-width: 600px) and (max-width: 848px) {
+    @content;
+  }
+}
+
+@mixin threeCard {
+  @media (min-width: 848px) and (max-width: 1170px) {
+    @content;
+  }
+}
