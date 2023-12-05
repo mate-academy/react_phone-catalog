@@ -9,7 +9,8 @@ import { store } from './app/store';
 
 import App from './App';
 import { HomePage } from './pages/HomePage';
-import { PhonesPage } from './pages/PhonesPage';
+import { ProductsPage } from './pages/ProductsPage';
+import { ProductType } from './types/ProductType';
 
 export const Root = () => (
   <Provider store={store}>
@@ -28,7 +29,12 @@ export const Root = () => (
 
           <Route
             path="phones"
-            element={<PhonesPage />}
+            element={<ProductsPage productType={ProductType.PHONE} />}
+          />
+
+          <Route
+            path="tablets"
+            element={<ProductsPage productType={ProductType.TABLET} />}
           />
         </Route>
       </Routes>
