@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom/client";
+import ReactDOM from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import App from './App';
 import { CartFavoritesProvider } from './providers/CartFavoritesProvider';

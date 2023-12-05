@@ -4,7 +4,6 @@ import './YouMayAlsoLike.scss';
 import { getSuggestedProducts } from '../../helpers/apis';
 import { Product } from '../../helpers/types/Product';
 import ProductsSlider from '../ProductsSlider/ProductSlider';
-import React from 'react';
 
 interface YouMayAlsoLikeProps {
   productId: string;

@@ -1,6 +1,5 @@
 import './Search.scss';
 import { debounce } from 'lodash';
-import React from 'react';
 import { useCallback, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
