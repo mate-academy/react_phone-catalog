@@ -7,9 +7,10 @@ import { Home } from './Page/Home';
 import { Phone } from './Page/Phones';
 import { Tablet } from './Page/Tablets';
 import { Accessories } from './Page/Accessories';
-import { Favorites } from './Page/Favorites';
-import { Cart } from './Page/Cart';
+import { FavouritesPage } from './Page/Favorites';
+import { CartPage } from './Page/CartPage';
 import { DetailPhonePage } from './Page/DetailPhone';
+import { PhoneRoot } from './Page/PhoneRoot';
 // import { loaderPhoneDetail } from './features/phonesApi/apiFetch';
 // import { PhoneDetail } from './components/Phones/PhoneDetail';
 
@@ -27,19 +28,22 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       {
         path: 'phones',
-        element: <Phone />,
+        element: <PhoneRoot />,
         children: [
           {
-            path: 'phones/:phoneId',
+            index: true,
+            element: <Phone />,
+          },
+          {
+            path: ':phoneId',
             element: <DetailPhonePage />,
-            // loader: loaderPhoneDetail,
           },
         ],
       },
       { path: 'tablets', element: <Tablet /> },
       { path: 'accesories', element: <Accessories /> },
-      { path: 'favorites', element: <Favorites /> },
-      { path: 'cart', element: <Cart /> },
+      { path: 'favorites', element: <FavouritesPage /> },
+      { path: 'cart', element: <CartPage /> },
     ],
   },
 ]);

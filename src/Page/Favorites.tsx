@@ -1,5 +1,7 @@
-export const Favorites = () => {
+import { Favourites } from '../components/Favourites/Favourites';
+
+export const FavouritesPage = () => {
   return (
-    <h1>Favorites</h1>
+    <Favourites />
   );
 };

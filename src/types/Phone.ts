@@ -11,5 +11,8 @@ export interface Phone {
   color: string,
   ram: string,
   year: number,
-  image: string
+  image: string,
+  quantity: number,
+  totalPrice: number,
+  selected: boolean,
 }

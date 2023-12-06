@@ -11,12 +11,14 @@ import { useGetPhoneByIdQuery } from '../features/phonesApi/api';
 export const DetailPhonePage = () => {
   const { phoneId } = useParams();
   // const { phone }: Data = useLoaderData() as { phone: Phone };
-
   const { data } = useGetPhoneByIdQuery(phoneId || '');
 
   // console.log(data);
 
   return (
-    <PhoneDetail phone={data} />
+    <>
+      <PhoneDetail phone={data} />
+    </>
+
   );
 };
