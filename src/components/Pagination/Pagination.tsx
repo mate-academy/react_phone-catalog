@@ -3,8 +3,8 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { getNumbers } from '../../helpers/utils/getNumbers';
 import './Pagination.scss';
+import { getNumbers } from '../../helpers/utils/getNumbers';
 
 type Props = {
   totalItems: number,
@@ -43,16 +43,16 @@ export const Pagination: React.FC<Props> = ({ totalItems, onPage }) => {
   };
 
   return (
-    <ul className="Pagination" data-cy="pagination">
+    <ul data-cy="pagination" className="Pagination">
       <li className="Pagination__item">
         <button
-          type="button"
           data-cy="paginationLeft"
+          type="button"
           className={classNames('Pagination__arrow Pagination__arrow--left', {
             'Pagination__arrow--disabled': isFirstPage,
           })}
-          disabled={isFirstPage}
           onClick={handlePreviousPage}
+          disabled={isFirstPage}
         />
       </li>
 
@@ -72,13 +72,13 @@ export const Pagination: React.FC<Props> = ({ totalItems, onPage }) => {
 
       <li className="Pagination__item">
         <button
-          type="button"
           data-cy="paginationRight"
+          type="button"
           className={classNames('Pagination__arrow', {
             'Pagination__arrow--disabled': isLastPage,
           })}
-          disabled={isLastPage}
           onClick={handleNextPage}
+          disabled={isLastPage}
         />
       </li>
     </ul>

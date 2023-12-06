@@ -6,9 +6,9 @@ import './ProductDetails.scss';
 import { ProductInfo } from '../../helpers/types/ProductInfo';
 import { Product } from '../../helpers/types/Product';
 import { useGetProductsQuery } from '../../helpers/api/productsApi';
-import { ProductAdd } from '../ProductAdd';
 import { getDiscountedPrice } from '../../helpers/utils/getDiscount';
 import { capitalize } from '../../helpers/utils/stringHelpers';
+import { ProductAdd } from '../ProductAdd';
 
 type Props = {
   productInfo: ProductInfo;
@@ -63,7 +63,7 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
 
   return (
     <div className="ProductDetails">
-      <div className="ProductDetails__left-top">
+      <div className="ProductDetails__image-container">
         <div className="ProductDetails__images">
           {images.map(image => (
             <button
@@ -75,28 +75,30 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
               onClick={() => handleImageChange(image)}
             >
               <img
-                className="ProductDetails__image"
                 src={image}
                 alt={image}
+                className="ProductDetails__image"
               />
             </button>
           ))}
         </div>
+
         <img
-          className="ProductDetails__image ProductDetails__image--big"
           src={activeImage}
           alt={activeImage}
+          className="ProductDetails__image ProductDetails__image--big"
         />
       </div>
 
       {currentProduct && (
-        <div className="ProductDetails__right-top">
+        <div className="ProductDetails__interactive">
           <div className="ProductDetails__prices">
             {!!currentProduct.discount && (
               <p className="ProductDetails__price">
                 {`$${getDiscountedPrice(currentProduct)}`}
               </p>
             )}
+
             <p
               className={classNames('ProductDetails__price', {
                 'ProductDetails__price--discount': !!currentProduct.discount,
@@ -124,8 +126,8 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
       )}
 
       <section
-        className="ProductDetails__about"
         data-cy="productDescription"
+        className="ProductDetails__about"
       >
         <h2 className="ProductDetails__title">About</h2>
 
@@ -148,6 +150,7 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
           {Object.entries(longInfo).map(([key, value]) => (
             <div key={key} className="ProductDetails__field">
               <p className="ProductDetails__field-key">{capitalize(key)}</p>
+
               <p className="ProductDetails__field-value">
                 {value || '-'}
               </p>

@@ -18,24 +18,17 @@ export const Banners = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const container = sliderRef.current;
 
-  // let intervalId = 0;
+  let intervalId = 0;
 
   useEffect(() => {
     if (container) {
-      container.scrollLeft = scrollAmount * bannerNumber;
+      container.scrollLeft = 0;
+      setBannerNumber(0);
     }
-  }, [bannerNumber]);
-
-  // useEffect(() => {
-  //   intervalId = window.setInterval(() => {
-  //     carousel();
-  //   }, 5000);
-
-  //   return () => clearInterval(intervalId);
-  // });
+  }, [container]);
 
   const moveLeft = () => {
-    // clearInterval(intervalId);
+    clearInterval(intervalId);
 
     if (container) {
       if (container.scrollLeft < scrollAmount) {
@@ -60,8 +53,16 @@ export const Banners = () => {
     }
   };
 
+  useEffect(() => {
+    intervalId = window.setInterval(() => {
+      carousel();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  });
+
   const moveRight = () => {
-    // clearInterval(intervalId);
+    clearInterval(intervalId);
 
     carousel();
   };
@@ -96,8 +97,8 @@ export const Banners = () => {
           {images.map((image, imgIndex) => (
             <button
               key={image}
-              className="Banners__link"
               type="button"
+              className="Banners__link"
               onClick={() => setBannerNumber(imgIndex)}
             >
               <div

@@ -1,9 +1,10 @@
 @import "../../helpers/styles/mixins";
 
 .Nav {
+  padding-left: 64px;
+
   display: flex;
   gap: 64px;
-  padding-left: 64px;
 
   &__link {
     @include navigationLink;

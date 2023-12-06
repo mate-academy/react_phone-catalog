@@ -1,6 +1,6 @@
+import './CategoriesList.scss';
 import { Product } from '../../helpers/types/Product';
 import { CategoryItem } from '../CategoryItem';
-import './CategoriesList.scss';
 
 type Props = {
   products: Product[],
@@ -13,8 +13,8 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
 
   return (
     <ul
-      className="CategoriesList"
       data-cy="categoryLinksContainer"
+      className="CategoriesList"
     >
       <li className="CategoriesList__item">
         <CategoryItem
@@ -23,6 +23,7 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
           amount={getProductsAmount('phone')}
         />
       </li>
+
       <li className="CategoriesList__item">
         <CategoryItem
           name="tablets"
@@ -30,6 +31,7 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
           amount={getProductsAmount('tablet')}
         />
       </li>
+
       <li className="CategoriesList__item">
         <CategoryItem
           name="accessories"

@@ -50,6 +50,7 @@ export const Search = () => {
         value={currentQuery}
         onChange={handleQueryChange}
       />
+
       <button
         data-cy="searchDelete"
         type="button"

@@ -1,7 +1,7 @@
 import sampleSize from 'lodash.samplesize';
 
-import { getDiscountAmount } from './getDiscount';
 import { Product } from '../types/Product';
+import { getDiscountAmount } from './getDiscount';
 
 export const getHotProducts = (products: Product[]) => {
   return products
@@ -23,7 +23,7 @@ export const getSuggestedProducts = (
   products: Product[],
   productId: string,
 ) => {
-  const suggestedProducts = [...products]
+  const suggestedProducts = products
     .filter(product => product.id !== productId);
 
   return sampleSize(suggestedProducts, 8);

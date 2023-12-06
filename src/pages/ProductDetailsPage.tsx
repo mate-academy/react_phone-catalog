@@ -7,6 +7,7 @@ import {
   useGetProductsQuery,
 } from '../helpers/api/productsApi';
 import { Product } from '../helpers/types/Product';
+import { getSuggestedProducts } from '../helpers/utils/getSortedProducts';
 
 import { BackButton } from '../components/BackButton';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -14,7 +15,6 @@ import { Loader } from '../components/Loader';
 import { ProductDetails } from '../components/ProductDetails';
 import { NoResults } from '../components/NoResults';
 import { ProductsSlider } from '../components/ProductsSlider';
-import { getSuggestedProducts } from '../helpers/utils/getSortedProducts';
 
 export const ProductDetailsPage = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
@@ -22,19 +22,23 @@ export const ProductDetailsPage = () => {
   const { data: productDetails, isLoading, isError } = (
     useGetProductDetailsQuery(productId || '')
   );
-  const { data: products } = useGetProductsQuery();
+  const {
+    data: products,
+    isLoading: isLoadingProducts,
+  } = useGetProductsQuery();
 
   useEffect(() => {
     if (products && productId) {
       setSuggestedProducts(getSuggestedProducts(products, productId));
     }
-  }, [products]);
+  }, [products, productId]);
 
   return (
     <div className="Page">
       <Breadcrumbs />
       <div className="Page__top Page__top--gap--wider">
         <BackButton />
+
         {!isError && (
           <h1 className="Page__title">{productDetails?.name}</h1>
         )}
@@ -54,7 +58,8 @@ export const ProductDetailsPage = () => {
         suggested
      ">
         <h1 className="Page__title">You may also like</h1>
-        {isLoading ? (
+
+        {isLoadingProducts ? (
           <Loader />
         ) : (
           <ProductsSlider products={suggestedProducts} />

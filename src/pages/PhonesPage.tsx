@@ -32,6 +32,7 @@ export const PhonesPage = () => {
 
           <div className="Page__top">
             <h1 className="Page__title">Mobile Phones</h1>
+
             <p className="Page__amount">{`${phones.length} models`}</p>
           </div>
         </>

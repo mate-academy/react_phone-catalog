@@ -49,11 +49,13 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
           className="CartItemCard__delete"
           onClick={removeCartItem}
         />
+
         <img
           src={product.imageUrl}
           alt={product.name}
           className="CartItemCard__image"
         />
+
         <p className="CartItemCard__description">{product.name}</p>
       </div>
 
@@ -68,7 +70,9 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
             onClick={decreaseQuantity}
             disabled={quantity <= 1}
           />
+
           <p className="CartItemCard__quantity">{quantity}</p>
+
           <button
             type="button"
             className="CartItemCard__button CartItemCard__button--add"

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { Product } from '../../helpers/types/Product';
 import { getDiscountedPrice } from '../../helpers/utils/getDiscount';
-import { ProductAdd } from '../ProductAdd';
 import { capitalize } from '../../helpers/utils/stringHelpers';
+import { ProductAdd } from '../ProductAdd';
 
 type Props = {
   product: Product,
@@ -37,9 +37,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         className="ProductCard__content"
       >
         <img
-          className="ProductCard__image"
           src={imageUrl}
           alt={name}
+          className="ProductCard__image"
         />
 
         <p className="ProductCard__name">

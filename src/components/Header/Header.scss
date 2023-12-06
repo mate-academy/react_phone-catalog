@@ -30,11 +30,12 @@
   }
 
   &__link {
+    position: relative;
     height: 100%;
     width: 64px;
+
     display: flex;
     box-shadow: -1px 0 0 0 $elements-color;
-    position: relative;
 
     &:hover {
       @include navigationUnderline;

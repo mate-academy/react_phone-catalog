@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import './CategoryItem.scss';
 
 type Props = {
@@ -15,17 +16,19 @@ export const CategoryItem: React.FC<Props> = ({ name, title, amount }) => {
       className="CategoryItem"
     >
       <img
-        className="CategoryItem__image"
         src={`/img/categories/category-${name}.png`}
         alt={`Category ${name}`}
+        className="CategoryItem__image"
       />
+
       <div className="CategoryItem__info">
         <h3
           className="CategoryItem__title"
         >
           {title}
         </h3>
-        <p className="CategoryItem__products-count">
+
+        <p className="CategoryItem__count">
           {`${amount} models`}
         </p>
       </div>

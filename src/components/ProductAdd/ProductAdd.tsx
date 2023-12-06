@@ -3,16 +3,12 @@ import classNames from 'classnames';
 
 import './ProductAdd.scss';
 import { useAppDispatch, useAppSelector } from '../../helpers/app/hooks';
+import { addToCart, removeFromCart } from '../../helpers/features/cartSlice';
+import { Product } from '../../helpers/types/Product';
 import {
   addToFavorites,
   removeFromFavorites,
 } from '../../helpers/features/favoritesSlice';
-
-import {
-  addToCart,
-  removeFromCart,
-} from '../../helpers/features/cartSlice';
-import { Product } from '../../helpers/types/Product';
 
 type Props = {
   product: Product,
@@ -68,11 +64,11 @@ export const ProductAdd: React.FC<Props> = ({ product }) => {
       </button>
 
       <button
+        data-cy="addToFavorite"
         type="button"
         className={classNames('ProductAdd__favorites', {
           'ProductAdd__favorites--selected': getIsFavorite(),
         })}
-        data-cy="addToFavorite"
         onClick={handleToggleFavorites}
       />
     </div>

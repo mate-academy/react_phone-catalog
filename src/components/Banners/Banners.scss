@@ -2,6 +2,7 @@
 
 .Banners {
   @include pageGrid;
+
   height: 400px;
   position: relative;
 
@@ -23,7 +24,6 @@
 
     border: 1px solid $icons-color;
     background: no-repeat center url(../../helpers/icons/icon_vector.svg);
-
     cursor: pointer;
 
     &--left {

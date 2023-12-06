@@ -1,6 +1,6 @@
 import './styles/Page.scss';
-import { BackButton } from '../components/BackButton';
 import { useAppSelector } from '../helpers/app/hooks';
+import { BackButton } from '../components/BackButton';
 import { CartItemList } from '../components/CartItemsList';
 
 export const CartPage = () => {
@@ -10,6 +10,7 @@ export const CartPage = () => {
     <div className="Page Page--gap--narrower Page--padding--top--wider">
       <div className="Page__top Page__top--gap--wider">
         <BackButton />
+
         <h1 className="Page__title">Cart</h1>
       </div>
 

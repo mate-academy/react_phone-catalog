@@ -2,6 +2,7 @@
 
 .ProductCard {
   padding: 24px;
+
   border: 1px solid $elements-color;
   transition: all 0.5s;
 
@@ -16,6 +17,7 @@
 
   &__image {
     @include squareSize(206px);
+
     padding: 8px;
     margin-bottom: 14px;
   }

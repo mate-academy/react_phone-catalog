@@ -12,8 +12,9 @@
     }
   }
 
-  &__products-count {
+  &__count {
     @include bodyText;
+
     color: $secondary-color;
   }
 

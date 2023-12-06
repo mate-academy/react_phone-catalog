@@ -46,11 +46,11 @@ export const HomePage = () => {
         {!!products && (
           <CategoriesList products={products} />
         )}
-
       </section>
 
       <section className="Page__section brand-new">
         <h1 className="Page__title">Brand new models</h1>
+
         {isLoading ? (
           <Loader />
         ) : (

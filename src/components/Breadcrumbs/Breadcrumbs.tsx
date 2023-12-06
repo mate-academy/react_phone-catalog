@@ -36,7 +36,9 @@ export const Breadcrumbs = () => {
       <Link to="/" className="Breadcrumbs__link">
         <img src={iconHome} alt="Home Icon" />
       </Link>
+
       <img src={iconVector} alt="Vector Icon" />
+
       {productId ? (
         <Link to={`/${path}`} className="Breadcrumbs__link">
           <p className="Breadcrumbs__folder">{capitalize(path)}</p>
@@ -48,6 +50,7 @@ export const Breadcrumbs = () => {
       {productId && (
         <>
           <img src={iconVector} alt="Vector Icon" />
+
           <p className="Breadcrumbs__folder">{currentProduct?.name}</p>
         </>
       )}

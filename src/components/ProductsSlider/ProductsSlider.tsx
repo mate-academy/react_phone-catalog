@@ -2,9 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
+import './ProductsSlider.scss';
 import { Product } from '../../helpers/types/Product';
 import { ProductCard } from '../ProductCard';
-import './ProductsSlider.scss';
 
 type Props = {
   products: Product[],
@@ -23,7 +23,7 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
     if (container) {
       container.scrollLeft = 0;
     }
-  }, []);
+  }, [container]);
 
   const moveLeft = () => {
     setIsLastImage(false);

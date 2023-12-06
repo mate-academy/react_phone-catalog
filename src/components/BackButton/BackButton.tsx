@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import iconVector from '../../helpers/icons/icon_vector.svg';
+
 import './BackButton.scss';
+import iconVector from '../../helpers/icons/icon_vector.svg';
 
 export const BackButton = () => {
   const navigate = useNavigate();
@@ -12,10 +13,11 @@ export const BackButton = () => {
         alt="Vector Icon"
         className="BackButton__vector"
       />
+
       <button
         data-cy="backButton"
-        className="BackButton__button"
         type="button"
+        className="BackButton__button"
         onClick={() => navigate(-1)}
       >
         Back

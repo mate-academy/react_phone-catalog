@@ -1,5 +1,5 @@
-import { getDiscountedPrice } from './getDiscount';
 import { Product } from '../types/Product';
+import { getDiscountedPrice } from './getDiscount';
 
 export const getFilteredProducts = (
   products: Product[],

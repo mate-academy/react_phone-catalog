@@ -2,12 +2,14 @@
 
 .ProductDetails {
   @include pageGrid;
+
   row-gap: 80px;
 
-  &__left-top {
+  &__image-container {
+    grid-column: 1 / 12;
+
     display: flex;
     gap: 16px;
-    grid-column: 1 / 12;
   }
 
   &__images {
@@ -33,12 +35,13 @@
 
     &--big {
       @include squareSize(440px);
+
       padding: 12px;
     }
   }
 
-  &__right-top {
-    grid-column: 13 / 19;
+  &__interactive {
+    grid-column: 14 / 20;
   }
 
   &__prices {
@@ -78,7 +81,6 @@
   }
 
   &__field {
-
     display: flex;
     justify-content: space-between;
 
@@ -98,12 +100,13 @@
 
   &__title {
     @include sectionTitle_H2;
+
     margin-bottom: 16px;
   }
 
   &__divider {
-    border-top: 1px solid $elements-color;
     margin-bottom: 32px;
+    border-top: 1px solid $elements-color;
   }
 
   &__description {
@@ -113,8 +116,8 @@
   }
 
   &__specs {
-    grid-column: 13 / 25;
-
     @include bodyText;
+
+    grid-column: 13 / 25;
   }
 }

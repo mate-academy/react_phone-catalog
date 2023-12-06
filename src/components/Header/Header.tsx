@@ -6,10 +6,11 @@ import {
 } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Nav } from '../Nav';
 import './Header.scss';
 import { useAppSelector } from '../../helpers/app/hooks';
 import { getTotalQuantity } from '../../helpers/utils/getTotalAmount';
+
+import { Nav } from '../Nav';
 import { Search } from '../Search';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
@@ -48,6 +49,7 @@ export const Header = () => {
           className="Header__logo"
           onClick={handleToTopScroll}
         />
+
         {path !== '/cart' && (
           <Nav />
         )}

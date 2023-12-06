@@ -3,12 +3,12 @@ import { useSearchParams } from 'react-router-dom';
 
 import './styles/Page.scss';
 import { Product } from '../helpers/types/Product';
+import { useGetProductsQuery } from '../helpers/api/productsApi';
 
 import { Loader } from '../components/Loader';
 import { ProductsList } from '../components/ProductsList';
 import { NoResults } from '../components/NoResults';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { useGetProductsQuery } from '../helpers/api/productsApi';
 
 export const AccessoriesPage = () => {
   const { data: products, isLoading } = useGetProductsQuery();

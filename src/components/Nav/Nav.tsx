@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+
 import './Nav.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {

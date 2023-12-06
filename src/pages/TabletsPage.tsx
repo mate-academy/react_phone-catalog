@@ -32,6 +32,7 @@ export const TabletsPage = () => {
 
           <div className="Page__top">
             <h1 className="Page__title">Tablets</h1>
+
             <p className="Page__amount">{`${tablets.length} models`}</p>
           </div>
         </>
