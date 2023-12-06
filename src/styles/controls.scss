@@ -7,7 +7,7 @@
   font-weight: 600;
   line-height: 150%;
   transition: all 0.2s;
-  padding-block: 10px;
+  height: 40px;
   width: 176px;
 
   &:hover {
@@ -20,7 +20,7 @@
 
   &.wide {
     width: 263px;
-    padding-block: 14px;
+    height: 48px;
   }
 
   &.selected {
@@ -47,10 +47,21 @@
     background-image: url("../images/icons/arrow-right.svg");
   }
 
+  &.favourite {
+    width: 40px;
+    height: 40px;
+    background-image: url("../images/icons/heart.svg");
+
+    &.selected {
+      background-image: url("../images/icons/heart-filled.svg");
+    }
+  }
+
   &.slider-right:disabled,
   &.slider-left:disabled {
     border-color: $elements-color;
   }
+
   &.slider-left:disabled {
     background-image: url("../images/icons/arrow-left-grey.svg");
   }
@@ -64,7 +75,7 @@
   }
 
   &:active {
-    transform: scale(0.95);
+    background-color: rgb(240, 240, 240);
   }
 }
 
@@ -123,7 +134,7 @@
       overflow-y: scroll;
       max-height: 350%;
 
-      + .dropdown-arrow {
+      +.dropdown-arrow {
         transform: scaleY(-1);
       }
     }

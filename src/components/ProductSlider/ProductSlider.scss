@@ -1,0 +1,51 @@
+@import "../../styles/variables.scss";
+
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+
+    &-controls {
+      display: flex;
+      gap: 16px;
+      align-self: center;
+    }
+  }
+
+  &__content {
+    align-self: center;
+    --elements-count: 4;
+    overflow: hidden;
+
+    @media (max-width: 1200px) {
+      --elements-count: 3;
+    }
+
+    @media (max-width: 800px) {
+      --elements-count: 2;
+    }
+
+    @media (max-width: 400px) {
+      --elements-count: 1;
+    }
+
+    width: calc(calc(var(--elements-count)
+    * ($product-width + $products-slider-gap)) - $products-slider-gap);
+  }
+
+  &__list {
+    display: grid;
+    column-gap: 16px;
+    grid-auto-flow: column;
+    list-style: none;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &__item {
+    grid-column: span 1;
+  }
+}

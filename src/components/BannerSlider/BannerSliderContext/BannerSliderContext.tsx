@@ -18,6 +18,10 @@ type BannerSliderContextData = {
   currentSlide: Image;
   transitionDuration: number;
   position: number;
+  isLeftDisabled: boolean;
+  setIsLeftDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  isRightDisabled: boolean;
+  setIsRightDisabled: React.Dispatch<React.SetStateAction<boolean>>;
   setPosition: React.Dispatch<React.SetStateAction<number>>;
   setTransitionDuration: React.Dispatch<React.SetStateAction<number>>;
   restartInterval: () => void;
@@ -29,6 +33,10 @@ const defaultContextData: BannerSliderContextData = {
   currentSlide: images[0],
   transitionDuration: TRANSITION_DURATION,
   position: 1,
+  isLeftDisabled: false,
+  isRightDisabled: false,
+  setIsLeftDisabled: () => { },
+  setIsRightDisabled: () => { },
   setPosition: () => { },
   setTransitionDuration: () => { },
   restartInterval: () => { },
@@ -43,6 +51,8 @@ export const BannerSliderProvider: React.FC = ({ children }) => {
   const [transitionDuration, setTransitionDuration]
     = useState(TRANSITION_DURATION);
   const [position, setPosition] = useState(1);
+  const [isLeftDisabled, setIsLeftDisabled] = useState(false);
+  const [isRightDisabled, setIsRightDisabled] = useState(false);
 
   const setUpSliderInterval = useCallback((ms: number) => {
     let intervalId: NodeJS.Timeout;
@@ -78,6 +88,10 @@ export const BannerSliderProvider: React.FC = ({ children }) => {
     currentSlide,
     transitionDuration,
     position,
+    isLeftDisabled,
+    isRightDisabled,
+    setIsLeftDisabled,
+    setIsRightDisabled,
     setPosition,
     setTransitionDuration,
     restartInterval,
