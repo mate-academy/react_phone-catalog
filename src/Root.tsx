@@ -11,6 +11,7 @@ import App from './App';
 import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ProductType } from './types/ProductType';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
   <Provider store={store}>
@@ -27,10 +28,17 @@ export const Root = () => (
             element={<Navigate to="/" replace />}
           />
 
-          <Route
-            path="phones"
-            element={<ProductsPage productType={ProductType.PHONE} />}
-          />
+          <Route path="phones">
+            <Route
+              index
+              element={<ProductsPage productType={ProductType.PHONE} />}
+            />
+
+            <Route
+              path=":productId"
+              element={<ProductDetailsPage />}
+            />
+          </Route>
 
           <Route
             path="tablets"
