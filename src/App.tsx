@@ -23,6 +23,7 @@ import { NotFound } from './components/NotFound/NotFound';
 import { PhoneCriteria } from './components/PhoneCriteria/PhoneCriteria';
 import { AddPage } from './components/AddPage/AddPage';
 import { LikeProduct } from './components/LikeProducts/LikeProducts';
+import { HeaderMenu } from './components/HeaderMenu/HeaderMenu';
 
 type Props = {
   likeProduct: Product[];
@@ -110,6 +111,13 @@ export const App = () => {
           />
         )}
       >
+
+        <Route
+          path="menu"
+          element={(
+            <HeaderMenu />
+          )}
+        />
         <Route
           index
           element={(

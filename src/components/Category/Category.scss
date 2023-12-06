@@ -25,12 +25,24 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
+
+    @include onDesktop {
+      margin-bottom: 32px;
+     }
   }
 
   &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @include onDesktop {
+      flex-direction: column;
+     }
+
+    @include onPhone {
+      flex-direction: column;
+     }
   }
 
   &__img {

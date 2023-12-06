@@ -3,6 +3,12 @@
 .carousel {
   height: 400px;
   margin-top: 50px;
+  margin-bottom: 75px;
+
+  @include onPhone {
+    height: 352px;
+    margin-top: 24px;
+  }
 
   &__slide {
     background-position: center;
@@ -41,6 +47,10 @@
     &--next {
       background-image: url(../../icons/chevron-arrow-right.svg);
     }
+
+    @include onPhone {
+      display: none;
+    }
   }
 }
 
@@ -52,6 +62,10 @@
   background-size: cover;
   height: 400px;
   width: calc(100% - 64px - 32px);
+
+  @include onPhone {
+    width: 100%;
+  }
 }
 
  ul.indicators {

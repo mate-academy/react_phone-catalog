@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Product } from './Product';
 
 export const filterPr = (
@@ -37,3 +38,15 @@ export const getLengthByCategory = (products: Product[], category: string) => {
 export const getCategory = (products: Product[], category: string) => {
   return products.filter(product => product.category === category);
 };
+
+export const isActiveTab = ({ isActive }: { isActive: boolean }) => classNames(
+  'nav__link', { nav__active: isActive },
+);
+
+export const isActiveLike = ({ isActive }: { isActive: boolean }) => classNames(
+  'header__like', 'header__chose', { nav__active: isActive },
+);
+
+export const isActiveAdd = ({ isActive }: { isActive: boolean }) => classNames(
+  'header__add', 'header__chose', { nav__active: isActive },
+);

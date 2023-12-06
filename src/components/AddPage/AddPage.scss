@@ -5,6 +5,10 @@
   padding: $pagePadding;
   padding-top: 24px;
 
+  @include onDesktop {
+    padding: 32px 24px;
+  }
+
   &__header {
     font-weight: 700;
     font-size: 32px;
@@ -13,8 +17,24 @@
     margin-top: 40px;
   }
 
+  &__container {
+    display: inline;
+
+    @include onDesktop {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
   &__body{
     display: flex;
+
+    @include onDesktop {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &__cross {
@@ -29,6 +49,10 @@
     height: 80px;
     object-fit: contain;
     margin-right: 24px;
+
+    @include onPhone {
+      margin-right: 8px;
+    }
   }
 
   &__name {
@@ -36,8 +60,10 @@
     font-size: 14px;
     line-height: 21px;
     color: $grayColor;
-    width: 295px;
-    margin-right: 49px;
+
+    @include onPhone {
+      width: 128px;
+    }
   }
 
   &__button {
@@ -85,6 +111,29 @@
     padding: 24px;
     margin-bottom: 16px;
     max-width: 752px;
+
+    @include onDesktop {
+      width: 592px;
+    }
+
+     @include onPhone {
+      width: 288px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__imgAndName {
+    display: flex;
+    align-items: center;
+    margin-right: 49px;
+
+    @include onDesktop {
+      margin-right: 24px;
+    }
+
+    @include onPhone {
+      margin-bottom: 16px;
+    }
   }
 
   &__phoneCounter {

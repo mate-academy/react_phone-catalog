@@ -62,22 +62,26 @@ export const AddCart: React.FC<Props> = ({
   return (
     <div className="addPage__minicontainer" key={id}>
       {/* eslint-disable-next-line */}
-      <button
-        className="addPage__cross addPage__buttonImg"
-        onClick={handleDelete}
-        type="button"
-      />
-      <img
-        src={` https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
-        alt="phone"
-        className="addPage__img"
-      />
-      <Link
-        className="addPage__name"
-        to={`/${category}/${phoneId}`}
-      >
-        {name}
-      </Link>
+
+      <div className="addPage__imgAndName">
+        <button
+          className="addPage__cross addPage__buttonImg"
+          onClick={handleDelete}
+          type="button"
+        />
+
+        <img
+          src={` https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
+          alt="phone"
+          className="addPage__img"
+        />
+        <Link
+          className="addPage__name"
+          to={`/${category}/${phoneId}`}
+        >
+          {name}
+        </Link>
+      </div>
 
       <div className="addPage__button--container">
         <button

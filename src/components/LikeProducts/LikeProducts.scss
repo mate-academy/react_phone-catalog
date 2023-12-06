@@ -4,6 +4,10 @@
   min-height: 66vh;
   padding: $pagePadding;
 
+  @include onDesktop {
+    padding: 32px 24px;
+   }
+
   &__header {
     color: $grayColor;
     font-weight: 700;
@@ -23,6 +27,15 @@
     justify-content: center;
     flex-wrap: wrap;
     justify-content: flex-start;
+
+    @include onDesktop {
+      justify-content: center;
+      flex-wrap: nowrap;
+     }
+
+     @include onPhone {
+      flex-wrap: wrap;
+     }
   }
 
   &__not {

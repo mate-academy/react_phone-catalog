@@ -3,11 +3,25 @@
 .phoneCriteria {
   padding: $pagePadding;
 
+  @include onDesktop {
+    padding: 32px 24px;
+   }
+
+   @include onPhone {
+     padding: 24px 16px;
+   }
+
   &__grid {
     display: grid;
     column-gap: 16px;
     row-gap: 32px;
     grid-template-columns: repeat(24, 1fr);
+
+    @include onDesktop {
+      display: flex;
+      flex-direction: column;
+
+     }
   }
 
   &__name {
@@ -208,11 +222,23 @@
     grid-column: 1/13;
     display: flex;
     flex-direction: row;
+
+    @include onPhone {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 56px;
+    }
   }
 
   &__about {
     width: 50%;
     margin-right: 68px;
+
+    @include onPhone {
+      margin-right: 0px;
+      margin-bottom: 56px;
+      width: 100%;
+    }
 
     &--header {
       color: $grayColor;
@@ -250,5 +276,10 @@
 
   &__tech {
     width: 50%;
+
+    @include onPhone {
+      margin-bottom: 56px;
+      width: 100%;
+    }
   }
 }

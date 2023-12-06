@@ -13,3 +13,17 @@ $pagePadding: 0 152px;
 $pageHeight: 70vh;
 
 
+@mixin onPhone {
+  @media (max-width:640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (max-width:1024px) {
+    @content;
+  }
+}
+
+
+

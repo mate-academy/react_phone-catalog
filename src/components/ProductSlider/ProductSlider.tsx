@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 import cn from 'classnames';
 
@@ -28,6 +28,7 @@ export const ProductSlider: React.FC<Props> = ({
   onAddtoChart,
 }) => {
   const [startIndex, setStartIndex] = useState(0);
+  const [visibleCardCount, setVisibleCardCount] = useState(4);
 
   const handlePrevClick = () => {
     setStartIndex((prev) => Math.max(0, prev - 1));
@@ -35,25 +36,38 @@ export const ProductSlider: React.FC<Props> = ({
 
   const handleNextClick = () => {
     setStartIndex((prev) => Math.min(
-      prev + 1, products.length - 4,
+      prev + 1, products.length - visibleCardCount,
     ));
   };
+
+  const updateVisibleCardCount = () => {
+    const newVisibleCardCount = window.innerWidth <= 1024 ? 1 : 4;
+
+    setVisibleCardCount(newVisibleCardCount);
+  };
+
+  useEffect(() => {
+    updateVisibleCardCount();
+    window.addEventListener('resize', updateVisibleCardCount);
+
+    return () => {
+      window.removeEventListener('resize', updateVisibleCardCount);
+    };
+  }, []);
 
   const visibleCards = useMemo(() => {
     const newPr = filterPr(products, filterBy);
 
-    return newPr.slice(startIndex, startIndex + 4);
-  }, [products, startIndex]);
+    return newPr.slice(startIndex, startIndex + visibleCardCount);
+  }, [products, startIndex, filterBy, visibleCardCount]);
 
   const prevDisables = startIndex === 0;
-  const nextDisables = startIndex === products.length - 4;
+  const nextDisables = startIndex === products.length - visibleCardCount;
 
   return (
     <div className="products">
       <div className="products__container--header">
-        <h1 className="products__header">
-          {title}
-        </h1>
+        <h1 className="products__header">{title}</h1>
 
         <div>
           <button

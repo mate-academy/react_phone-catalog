@@ -3,6 +3,14 @@
 .productsCategory {
   padding: $pagePadding;
 
+  @include onDesktop {
+    padding: 32px 24px;
+   }
+
+   @include onPhone {
+     padding: 24px 16px;
+   }
+
   &__header {
     font-weight: 700;
     font-size: 32px;
@@ -28,6 +36,10 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     padding: 0;
+
+    @include onDesktop {
+      justify-content: center;
+     }
   }
 
   &__sortBy {

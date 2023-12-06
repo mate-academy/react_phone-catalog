@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
-import classNames from 'classnames';
 import { Product } from '../../helpers/Product';
 import './HeaderStyles.scss';
 import { Search } from '../Search/Search';
+
+import { isActiveTab, isActiveAdd, isActiveLike } from '../../helpers/utils';
 
 type Props = {
   likeProduct: Product[],
@@ -13,17 +14,7 @@ type Props = {
 };
 
 export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
-  const isActiveTab = ({ isActive }: { isActive: boolean }) => classNames(
-    'nav__link', { nav__active: isActive },
-  );
-
-  const isActiveLike = ({ isActive }: { isActive: boolean }) => classNames(
-    'header__like', 'header__chose', { nav__active: isActive },
-  );
-
-  const isActiveAdd = ({ isActive }: { isActive: boolean }) => classNames(
-    'header__add', 'header__chose', { nav__active: isActive },
-  );
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 745);
 
   const { pathname } = useLocation();
 
@@ -36,6 +27,26 @@ export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
     window.scrollTo(0, 0);
   }, [navigate]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 650);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleIconClick = () => {
+    if (pathname === '/addPage' || pathname === '/favourites') {
+      navigate('/menu');
+    } else {
+      window.history.back();
+    }
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -43,49 +54,45 @@ export const HeaderOnPage: React.FC<Props> = ({ likeProduct, addProduct }) => {
           to="/"
           className="header__img"
         />
-        <nav className="nav">
-          <ul className="nav__list">
-            <li className="nav__item">
-              <NavLink
-                to="/"
-                className={isActiveTab}
-              >
-                Home
-              </NavLink>
-            </li>
 
-            <li className="nav__item">
-              <NavLink
-                to="/phones"
-                className={isActiveTab}
-              >
-                Phones
-              </NavLink>
-            </li>
-
-            <li className="nav__item">
-              <NavLink
-                to="/tablets"
-                className={isActiveTab}
-              >
-                Tablets
-              </NavLink>
-            </li>
-
-            <li className="nav__item">
-              <NavLink
-                to="/accessories"
-                className={isActiveTab}
-              >
-                Accessories
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+        {!isSmallScreen && (
+          <nav className="nav">
+            <ul className="nav__list">
+              <li className="nav__item">
+                <NavLink to="/" className={isActiveTab}>
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink to="/phones" className={isActiveTab}>
+                  Phones
+                </NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink to="/tablets" className={isActiveTab}>
+                  Tablets
+                </NavLink>
+              </li>
+              <li className="nav__item">
+                <NavLink to="/accessories" className={isActiveTab}>
+                  Accessories
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
 
       <div className="header__buttons">
         {showSearch ? <Search /> : null}
+
+        {isSmallScreen && (
+          <NavLink
+            to="menu"
+            onClick={handleIconClick}
+            className="header__chose nav__burger"
+          />
+        )}
 
         <NavLink to="favourites" className={isActiveLike}>
           {likeProduct.length !== 0 && (
