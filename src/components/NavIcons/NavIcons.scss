@@ -1,3 +1,26 @@
-.navbar__icon {
-  line-height: 4em;
+@import "../../helpers/variables.scss";
+
+.navbar {
+  &__icon {
+    line-height: 4em;
+  }
+
+  &__counter {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $redColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--text {
+      text-align: center;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 9px;
+      text-decoration: none;
+      color: $whiteColor;
+    }
+  }
 }

@@ -1,10 +1,15 @@
 import classNames from 'classnames';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './NavIcons.scss';
+import { CartStorageContext } from '../../context/CartStorageContext';
+import { FavoriteStorageContext } from '../../context/FavoriteStorageContext';
 
 export const NavIcons: FC = () => {
+  const { cartItems } = useContext(CartStorageContext);
+  const { favorites } = useContext(FavoriteStorageContext);
+
   return (
     <>
       <NavLink
@@ -17,6 +22,14 @@ export const NavIcons: FC = () => {
       >
         <img src="img/Icons/Favourites.svg" alt="Favourites" />
 
+        {favorites.length > 0 && (
+          <div className="navbar__counter">
+            <p className="navbar__counter--text">
+              {favorites.length}
+            </p>
+          </div>
+        )}
+
       </NavLink>
 
       <NavLink
@@ -28,6 +41,14 @@ export const NavIcons: FC = () => {
         )}
       >
         <img src="img/Icons/Cart.svg" alt="Cart" />
+
+        {cartItems.length > 0 && (
+          <div className="navbar__counter">
+            <p className="navbar__counter--text">
+              {cartItems.length}
+            </p>
+          </div>
+        )}
 
       </NavLink>
     </>
