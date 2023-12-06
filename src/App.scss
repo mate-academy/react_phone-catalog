@@ -7,6 +7,17 @@
   font-family: "Mont", sans-serif;
 }
 
-body {
+:root {
+  --product-width: #{$product-width};
+  --products-slider-gap: #{$products-slider-gap};
+}
+
+p,
+body,
+h1,
+h2,
+ul,
+li {
   margin: 0;
+  padding: 0;
 }

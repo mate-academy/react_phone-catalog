@@ -1,5 +1,10 @@
 .home-page {
   margin-inline: auto;
   padding-inline: 100px;
-  max-width: 1120px;
+  max-width: 1136px;
+  padding-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
