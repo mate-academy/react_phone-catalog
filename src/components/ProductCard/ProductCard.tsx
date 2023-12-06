@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { getProductDiscount } from '../../utils/getProductDiscount';
 
@@ -17,26 +18,33 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     screen,
     capacity,
     ram,
+    id,
+    type,
   } = product;
 
   const discountPrice = getProductDiscount(product);
+  const productDetailsPath = `/${type}s/${id}`;
 
   return (
     <article className="ProductCard">
       <div className="ProductCard-ImgContainer">
-        <img
-          className="ProductCard-Img"
-          src={imageUrl}
-          alt="ProductCard"
-          width={IMG_SIZE}
-          height={IMG_SIZE}
-          loading="eager"
-          decoding="async"
-        />
+        <Link to={productDetailsPath}>
+          <img
+            className="ProductCard-Img"
+            src={imageUrl}
+            alt="ProductCard"
+            width={IMG_SIZE}
+            height={IMG_SIZE}
+            loading="eager"
+            decoding="async"
+          />
+        </Link>
       </div>
 
       <div className="ProductCard-Content">
-        <h2 className="ProductCard-Title">{name}</h2>
+        <Link to={productDetailsPath}>
+          <h2 className="ProductCard-Title">{name}</h2>
+        </Link>
 
         <div className="ProductCard-Prices">
           <span className="ProductCard-DiscountPrice">
