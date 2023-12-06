@@ -25,7 +25,7 @@ export const CartItemList: React.FC<Props> = ({ cart }) => {
     <div className="CartItemsList">
       <div className="CartItemsList__items">
         {cart.map(cartItem => (
-          <CartItemCard key={cartItem.id} cartItem={cartItem} />
+          <CartItemCard key={cartItem.phoneId} cartItem={cartItem} />
         ))}
       </div>
 

@@ -20,7 +20,7 @@ export const AccessoriesPage = () => {
   useEffect(() => {
     if (products) {
       setAccessories(products
-        .filter(product => product.type === 'accessory'));
+        .filter(product => product.category === 'accessories'));
     }
   }, [products]);
 

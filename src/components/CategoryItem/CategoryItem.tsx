@@ -16,7 +16,7 @@ export const CategoryItem: React.FC<Props> = ({ name, title, amount }) => {
       className="CategoryItem"
     >
       <img
-        src={`/img/categories/category-${name}.png`}
+        src={`img/categories/category-${name}.png`}
         alt={`Category ${name}`}
         className="CategoryItem__image"
       />

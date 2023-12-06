@@ -23,7 +23,7 @@ export const favoritesSlice = createSlice({
       action: PayloadAction<string>,
     ) => {
       state.favorites = state.favorites
-        .filter(favorite => favorite.id !== action.payload);
+        .filter(favorite => favorite.phoneId !== action.payload);
     },
   },
 });

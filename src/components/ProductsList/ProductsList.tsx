@@ -112,10 +112,12 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       </ul>
 
       {perPage !== 'all' && length > +perPage && (
-        <Pagination
-          totalItems={length}
-          onPage={+perPage}
-        />
+        <div className="ProductsList__pagination">
+          <Pagination
+            totalItems={length}
+            onPage={+perPage}
+          />
+        </div>
       )}
     </div>
   );

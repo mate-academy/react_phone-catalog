@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import './CartItemCard.scss';
 import { CartItem } from '../../helpers/types/CartItem';
-import { getDiscountedPrice } from '../../helpers/utils/getDiscount';
 import { useAppDispatch } from '../../helpers/app/hooks';
 import {
   decreaseAmount,
@@ -21,23 +20,19 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
   const { quantity, product } = cartItem;
 
   const removeCartItem = () => {
-    dispatch(removeFromCart(product.id));
+    dispatch(removeFromCart(product.phoneId));
   };
 
   const decreaseQuantity = () => {
-    dispatch(decreaseAmount(product.id));
+    dispatch(decreaseAmount(product.phoneId));
   };
 
   const increaseQuantity = () => {
-    dispatch(increaseAmount(product.id));
+    dispatch(increaseAmount(product.phoneId));
   };
 
   const getPrice = () => {
-    const realPrice = product.discount
-      ? getDiscountedPrice(product)
-      : product.price;
-
-    return realPrice * quantity;
+    return product.price * quantity;
   };
 
   return (
@@ -51,7 +46,7 @@ export const CartItemCard: React.FC<Props> = ({ cartItem }) => {
         />
 
         <img
-          src={product.imageUrl}
+          src={product.image}
           alt={product.name}
           className="CartItemCard__image"
         />

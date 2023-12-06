@@ -20,7 +20,7 @@ export const TabletsPage = () => {
   useEffect(() => {
     if (products) {
       setTablets(products
-        .filter(product => product.type === 'tablet'));
+        .filter(product => product.category === 'tablets'));
     }
   }, [products]);
 

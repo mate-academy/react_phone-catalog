@@ -24,6 +24,8 @@
 
   &__image {
     @include squareSize(66px);
+
+    object-fit: contain;
   }
 
   &__description {

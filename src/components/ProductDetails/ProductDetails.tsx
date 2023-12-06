@@ -6,8 +6,8 @@ import './ProductDetails.scss';
 import { ProductInfo } from '../../helpers/types/ProductInfo';
 import { Product } from '../../helpers/types/Product';
 import { useGetProductsQuery } from '../../helpers/api/productsApi';
-import { getDiscountedPrice } from '../../helpers/utils/getDiscount';
-import { capitalize } from '../../helpers/utils/stringHelpers';
+import { capitalize } from '../../helpers/utils/capitalize';
+import { hasDiscount } from '../../helpers/utils/getDiscount';
 import { ProductAdd } from '../ProductAdd';
 
 type Props = {
@@ -16,33 +16,36 @@ type Props = {
 
 export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
   const [activeImage, setActiveImage] = useState('');
-  const [currentProduct, setCurrentProduct] = useState<Product>();
+  const [chosenProduct, setChosenProduct] = useState<Product>();
   const { data: products } = useGetProductsQuery();
 
   const {
     id,
     images,
-    display,
-    hardware,
-    storage,
+    screen,
+    resolution,
+    processor,
+    ram,
     description,
+    capacity,
     camera,
-    connectivity,
+    zoom,
+    cell,
   } = productInfo;
 
   const shortInfo = {
-    screen: display.screenSize,
-    resolution: display.screenResolution,
-    processor: hardware.cpu,
-    ram: storage.ram,
+    screen,
+    resolution,
+    processor,
+    ram,
   };
 
   const longInfo = {
     ...shortInfo,
-    camera: camera.primary,
-    bluetooth: connectivity.bluetooth,
-    'wi-Fi': connectivity.wifi,
-    cell: connectivity.cell,
+    'built in memory': capacity,
+    camera,
+    zoom,
+    cell: cell.join(', '),
   };
 
   useEffect(() => {
@@ -51,8 +54,8 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
 
   useEffect(() => {
     if (products) {
-      setCurrentProduct(
-        products.find(product => product.id === id),
+      setChosenProduct(
+        products.find(product => product.phoneId === id),
       );
     }
   }, [products, id]);
@@ -90,40 +93,43 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
         />
       </div>
 
-      {currentProduct && (
-        <div className="ProductDetails__interactive">
-          <div className="ProductDetails__prices">
-            {!!currentProduct.discount && (
-              <p className="ProductDetails__price">
-                {`$${getDiscountedPrice(currentProduct)}`}
-              </p>
-            )}
-
-            <p
-              className={classNames('ProductDetails__price', {
-                'ProductDetails__price--discount': !!currentProduct.discount,
-              })}
-            >
-              {`$${currentProduct.price}`}
-            </p>
-          </div>
-
-          <div className="ProductDetails__add">
-            <ProductAdd product={currentProduct} />
-          </div>
-
-          <div className="ProductDetails__info">
-            {Object.entries(shortInfo).map(([key, value]) => (
-              <div key={key} className="ProductDetails__field">
-                <p className="ProductDetails__field-key">{capitalize(key)}</p>
-                <p className="ProductDetails__field-value">
-                  {value || '-'}
+      <div className="ProductDetails__interactive">
+        {chosenProduct && (
+          <>
+            <div className="ProductDetails__prices">
+              {hasDiscount(chosenProduct) && (
+                <p className="ProductDetails__price">
+                  {`$${chosenProduct.price}`}
                 </p>
-              </div>
-            ))}
-          </div>
+              )}
+
+              <p
+                className={classNames('ProductDetails__price', {
+                  'ProductDetails__price--discount': hasDiscount(chosenProduct),
+                })}
+              >
+                {`$${chosenProduct.fullPrice}`}
+              </p>
+            </div>
+
+            <div className="ProductDetails__add">
+              <ProductAdd product={chosenProduct} />
+            </div>
+          </>
+        )}
+
+        <div className="ProductDetails__info">
+          {Object.entries(shortInfo).map(([key, value]) => (
+            <div key={key} className="ProductDetails__field">
+              <p className="ProductDetails__field-key">{capitalize(key)}</p>
+
+              <p className="ProductDetails__field-value">
+                {value || '-'}
+              </p>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
 
       <section
         data-cy="productDescription"
@@ -133,9 +139,19 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
 
         <div className="ProductDetails__divider" />
 
-        <p className="ProductDetails__description">
-          {description}
-        </p>
+        <div className="ProductDetails__chapters">
+          {description.map(chapter => (
+            <div key={chapter.title} className="ProductDetails__chapter">
+              <h3 className="ProductDetails__subheader">{chapter.title}</h3>
+
+              {chapter.text.map(content => (
+                <p key={content} className="ProductDetails__description">
+                  {content}
+                </p>
+              ))}
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="ProductDetails__specs">

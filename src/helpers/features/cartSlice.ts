@@ -18,24 +18,24 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state: CartState, action: PayloadAction<Product>) => {
       state.cart.push({
-        id: action.payload.id,
+        phoneId: action.payload.phoneId,
         quantity: 1,
         product: action.payload,
       });
     },
     removeFromCart: (state: CartState, action: PayloadAction<string>) => {
       state.cart = state.cart
-        .filter(cartItem => cartItem.id !== action.payload);
+        .filter(cartItem => cartItem.phoneId !== action.payload);
     },
     decreaseAmount: (state: CartState, action: PayloadAction<string>) => {
       const index = state.cart
-        .findIndex(cartItem => cartItem.id === action.payload);
+        .findIndex(cartItem => cartItem.phoneId === action.payload);
 
       state.cart[index].quantity -= 1;
     },
     increaseAmount: (state: CartState, action: PayloadAction<string>) => {
       const index = state.cart
-        .findIndex(cartItem => cartItem.id === action.payload);
+        .findIndex(cartItem => cartItem.phoneId === action.payload);
 
       state.cart[index].quantity += 1;
     },

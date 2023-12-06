@@ -1,6 +1,11 @@
 @import "../../helpers/styles/mixins";
 
 .Footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 1136px;
+
   &__content {
     margin-inline: auto;
     height: 96px;

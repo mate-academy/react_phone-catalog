@@ -5,7 +5,7 @@ import { ProductInfo } from '../types/ProductInfo';
 export const productsApi = createApi({
   reducerPath: 'productsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://mate-academy.github.io/react_phone-catalog/api',
+    baseUrl: 'https://mate-academy.github.io/react_phone-catalog/_new',
   }),
   endpoints: (builder) => ({
     getProducts: builder.query<Product[], void>({

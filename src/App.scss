@@ -12,6 +12,9 @@ body {
 }
 
 .App {
+  position: relative;
+  min-height: 100vh;
+
   &__container {
     max-width: 1136px;
     margin: auto;

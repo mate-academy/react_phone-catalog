@@ -33,6 +33,8 @@
   &__image {
     @include squareSize(64px);
 
+    object-fit: contain;
+
     &--big {
       @include squareSize(440px);
 
@@ -107,6 +109,22 @@
   &__divider {
     margin-bottom: 32px;
     border-top: 1px solid $elements-color;
+  }
+
+  &__chapters {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__subheader {
+    @include sectionTitle_H3;
   }
 
   &__description {

@@ -1,7 +1,7 @@
 @import "../../helpers/styles/mixins";
 
 .ProductCard {
-  padding: 24px;
+  padding: 23px;
 
   border: 1px solid $elements-color;
   transition: all 0.5s;
@@ -16,10 +16,12 @@
   }
 
   &__image {
-    @include squareSize(206px);
+    @include squareSize(208px);
 
     padding: 8px;
     margin-bottom: 14px;
+
+    object-fit: contain;
   }
 
   &__name {

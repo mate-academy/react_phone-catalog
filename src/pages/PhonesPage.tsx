@@ -20,7 +20,7 @@ export const PhonesPage = () => {
   useEffect(() => {
     if (products) {
       setPhones(products
-        .filter(product => product.type === 'phone'));
+        .filter(product => product.category === 'phones'));
     }
   }, [products]);
 

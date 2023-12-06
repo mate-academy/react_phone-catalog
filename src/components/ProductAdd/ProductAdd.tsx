@@ -20,18 +20,18 @@ export const ProductAdd: React.FC<Props> = ({ product }) => {
   const { cart } = useAppSelector(state => state.cart);
 
   const getIsFavorite = () => {
-    return favorites.some(favorite => favorite.id === product.id);
+    return favorites.some(favorite => favorite.phoneId === product.phoneId);
   };
 
   const getIsInCart = () => {
-    return cart.some(cartItem => cartItem.id === product.id);
+    return cart.some(cartItem => cartItem.phoneId === product.phoneId);
   };
 
   const handleToggleFavorites = () => {
     const isFavorite = getIsFavorite();
 
     if (isFavorite) {
-      dispatch(removeFromFavorites(product.id));
+      dispatch(removeFromFavorites(product.phoneId));
     } else {
       dispatch(addToFavorites(product));
     }
@@ -41,7 +41,7 @@ export const ProductAdd: React.FC<Props> = ({ product }) => {
     const isInCart = getIsInCart();
 
     if (isInCart) {
-      dispatch(removeFromCart(product.id));
+      dispatch(removeFromCart(product.phoneId));
     } else {
       dispatch(addToCart(product));
     }

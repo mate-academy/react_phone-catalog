@@ -30,6 +30,7 @@ export const Footer = () => {
           <Link
             to="/"
             className="Footer__link"
+            onClick={handleToTopScroll}
           >
             Contacts
           </Link>
@@ -37,6 +38,7 @@ export const Footer = () => {
           <Link
             to="/"
             className="Footer__link"
+            onClick={handleToTopScroll}
           >
             Rights
           </Link>

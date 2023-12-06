@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import './ProductCard.scss';
 import { Product } from '../../helpers/types/Product';
-import { getDiscountedPrice } from '../../helpers/utils/getDiscount';
-import { capitalize } from '../../helpers/utils/stringHelpers';
+import { capitalize } from '../../helpers/utils/capitalize';
+import { hasDiscount } from '../../helpers/utils/getDiscount';
 import { ProductAdd } from '../ProductAdd';
 
 type Props = {
@@ -14,11 +14,11 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    id,
-    imageUrl,
+    phoneId,
+    image,
     name,
     price,
-    discount,
+    fullPrice,
     screen,
     capacity,
     ram,
@@ -33,11 +33,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="ProductCard" data-cy="cardsContainer">
       <Link
-        to={`/product/${id}`}
+        to={`/product/${phoneId}`}
         className="ProductCard__content"
       >
         <img
-          src={imageUrl}
+          src={image}
           alt={name}
           className="ProductCard__image"
         />
@@ -47,17 +47,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </p>
 
         <div className="ProductCard__prices">
-          {!!discount && (
+          {hasDiscount(product) && (
             <p className="ProductCard__price">
-              {`$${getDiscountedPrice(product)}`}
+              {`$${price}`}
             </p>
           )}
           <p
             className={classNames('ProductCard__price', {
-              'ProductCard__price--discount': !!discount,
+              'ProductCard__price--discount': hasDiscount(product),
             })}
           >
-            {`$${price}`}
+            {`$${fullPrice}`}
           </p>
         </div>
 

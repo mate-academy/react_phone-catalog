@@ -1,7 +1,7 @@
 import { Product } from './Product';
 
 export type CartItem = {
-  id: string,
+  phoneId: string,
   quantity: number,
   product: Product,
 };

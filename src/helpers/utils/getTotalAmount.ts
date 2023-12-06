@@ -1,5 +1,4 @@
 import { CartItem } from '../types/CartItem';
-import { getDiscountedPrice } from './getDiscount';
 
 export const getTotalQuantity = (cart: CartItem[]) => {
   return cart.reduce((totalQuantity, cartItem) => {
@@ -9,8 +8,6 @@ export const getTotalQuantity = (cart: CartItem[]) => {
 
 export const getTotalPrice = (cart: CartItem[]) => {
   return cart.reduce((totalPrice, cartItem) => {
-    const discountedPrice = getDiscountedPrice(cartItem.product);
-
-    return totalPrice + cartItem.quantity * discountedPrice;
+    return totalPrice + cartItem.quantity * cartItem.product.price;
   }, 0);
 };

@@ -6,7 +6,7 @@ import iconHome from '../../helpers/icons/icon_home.svg';
 import iconVector from '../../helpers/icons/icon_vector_disabled.svg';
 import { Product } from '../../helpers/types/Product';
 import { useGetProductsQuery } from '../../helpers/api/productsApi';
-import { capitalize, getPlural } from '../../helpers/utils/stringHelpers';
+import { capitalize } from '../../helpers/utils/capitalize';
 
 export const Breadcrumbs = () => {
   const [path, setPath] = useState('');
@@ -19,7 +19,8 @@ export const Breadcrumbs = () => {
 
   useEffect(() => {
     if (products && productId) {
-      setCurrentProduct(products.find(product => product.id === productId));
+      setCurrentProduct(products
+        .find(product => product.phoneId === productId));
     }
   }, [productId, products]);
 
@@ -27,7 +28,7 @@ export const Breadcrumbs = () => {
     if (!productId) {
       setPath(location.pathname.slice(1, location.pathname.length));
     } else if (currentProduct) {
-      setPath(getPlural(currentProduct.type));
+      setPath(currentProduct.category);
     }
   }, [location.pathname, currentProduct]);
 
@@ -40,19 +41,17 @@ export const Breadcrumbs = () => {
       <img src={iconVector} alt="Vector Icon" />
 
       {productId ? (
-        <Link to={`/${path}`} className="Breadcrumbs__link">
-          <p className="Breadcrumbs__folder">{capitalize(path)}</p>
-        </Link>
-      ) : (
-        <p className="Breadcrumbs__folder">{capitalize(path)}</p>
-      )}
-
-      {productId && (
         <>
+          <Link to={`/${path}`} className="Breadcrumbs__link">
+            <p className="Breadcrumbs__folder">{capitalize(path)}</p>
+          </Link>
+
           <img src={iconVector} alt="Vector Icon" />
 
           <p className="Breadcrumbs__folder">{currentProduct?.name}</p>
         </>
+      ) : (
+        <p className="Breadcrumbs__folder">{capitalize(path)}</p>
       )}
     </div>
   );

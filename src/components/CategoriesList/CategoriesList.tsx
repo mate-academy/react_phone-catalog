@@ -8,7 +8,7 @@ type Props = {
 
 export const CategoriesList: React.FC<Props> = ({ products }) => {
   const getProductsAmount = (name: string) => {
-    return products.filter((product) => product.type === name).length;
+    return products.filter((product) => product.category === name).length;
   };
 
   return (
@@ -20,7 +20,7 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
         <CategoryItem
           name="phones"
           title="Mobile phones"
-          amount={getProductsAmount('phone')}
+          amount={getProductsAmount('phones')}
         />
       </li>
 
@@ -28,7 +28,7 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
         <CategoryItem
           name="tablets"
           title="Tablets"
-          amount={getProductsAmount('tablet')}
+          amount={getProductsAmount('tablets')}
         />
       </li>
 
@@ -36,7 +36,7 @@ export const CategoriesList: React.FC<Props> = ({ products }) => {
         <CategoryItem
           name="accessories"
           title="Accessories"
-          amount={getProductsAmount('accessory')}
+          amount={getProductsAmount('accessories')}
         />
       </li>
     </ul>

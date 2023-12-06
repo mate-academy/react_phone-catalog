@@ -1,5 +1,4 @@
 import { Product } from '../types/Product';
-import { getDiscountedPrice } from './getDiscount';
 
 export const getFilteredProducts = (
   products: Product[],
@@ -21,12 +20,12 @@ export const getFilteredProducts = (
   switch (sort) {
     case 'age':
       sortedProducts
-        .sort((product1, product2) => product1.age - product2.age);
+        .sort((product1, product2) => product2.year - product1.year);
       break;
     case 'price':
       sortedProducts
         .sort((product1, product2) => {
-          return getDiscountedPrice(product1) - getDiscountedPrice(product2);
+          return (product1.price - product2.price);
         });
       break;
     case 'name':
