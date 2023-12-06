@@ -1,0 +1,13 @@
+@import "../../helpers/utils/utils";
+
+.no-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 40px;
+
+  &__message {
+    @include message();
+  }
+}

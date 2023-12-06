@@ -1,3 +1,7 @@
+@import "../../helpers/utils/utils";
+
 .accessories {
-  padding: 12px;
+  &__content {
+    @include contentPaddingInline();
+  }
 }

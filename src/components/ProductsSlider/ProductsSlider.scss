@@ -2,10 +2,7 @@
 
 .products-slider {
   &__content {
-    @include pageGrid();
     @include contentPaddingInline();
-
-    row-gap: 24px;
   }
 
   &__top-bar {
@@ -13,7 +10,7 @@
     align-items: center;
     justify-content: space-between;
 
-    grid-column: 1 / -1;
+    margin-bottom: 24px;
   }
 
   &__title {
@@ -31,28 +28,18 @@
   }
 
   &__slides {
-    grid-column: 1 / -1;
     overflow: hidden;
+    width: 100%;
   }
 
   &__list {
     display: flex;
     gap: 16px;
 
-    transition: transform $animationDurationSlider;
+    transition: transform 0.3s ease-in-out;
   }
 
   &__slide {
-    min-width: 250px;
-
-    flex: 0 0 calc(50% - 16px);
-
-    @include onTable {
-      flex-basis: calc(33.3% - 16px);
-    }
-
-    @include onDesktop {
-      flex-basis: calc(25% - 16px);
-    }
+    min-width: 272px;
   }
 }

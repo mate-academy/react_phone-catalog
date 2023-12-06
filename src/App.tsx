@@ -7,21 +7,35 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Footer } from './components/Footer';
+import { Menu } from './components/Menu';
 
-const App = () => (
-  <div className="App">
-    <Header />
+const App = () => {
+  const toggleMenu = () => {
+    const appMenu = document.querySelector('.App__menu');
 
-    <Routes>
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/phones" element={<PhonesPage />} />
-      <Route path="/tablets" element={<TabletsPage />} />
-      <Route path="/accessories" element={<AccessoriesPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    if (appMenu) {
+      appMenu.classList.toggle('App__menu--open');
+    }
 
-    <Footer />
-  </div>
-);
+    document.body.classList.toggle('menu-open');
+  };
+
+  return (
+    <div className="App">
+      <Header toggleMenu={toggleMenu} />
+      <Menu toggleMenu={toggleMenu} />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/tablets" element={<TabletsPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

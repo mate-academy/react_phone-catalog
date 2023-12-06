@@ -1,3 +1,5 @@
+@import "../../helpers/utils/_mixins.scss";
+
 .icon {
   width: 16px;
   height: 16px;
@@ -9,12 +11,16 @@
     background-image: url(../../icon/favorites.svg);
   }
 
+  &__home {
+    background-image: url(../../icon/home.svg);
+  }
+
   &__cart {
     background-image: url(../../icon/cart.svg);
   }
 
-  &__btn-arrow {
-    background-image: url(../../icon/btn-arrow.svg);
+  &__arrow-primary {
+    background-image: url(../../icon/arrow-primary.svg);
 
     &--rigth {
       transform: scaleX(-1);
@@ -25,8 +31,20 @@
     }
   }
 
+  &__arrow-secondary {
+    background-image: url(../../icon/arrow-secondary.svg);
+
+    &--rigth {
+      transform: rotate(-90deg);
+    }
+  }
+
   &__menu {
     background-image: url(../../icon/menu.svg);
+  }
+
+  &__close {
+    background-image: url(../../icon/close.svg);
   }
 }
 
@@ -37,4 +55,6 @@
   background-image: url(../../icon/logo.svg);
   background-position: center;
   background-repeat: no-repeat;
+
+  @include hover(transform, scale(1.1));
 }

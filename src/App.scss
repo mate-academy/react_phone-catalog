@@ -24,6 +24,33 @@
 .App {
   font-family: "Mont-Regular", sans-serif;
   background-color: $page-background-color;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+
+    transition: all 0.3s;
+    opacity: 1;
+    transform: translateX(-100%);
+    pointer-events: none;
+
+    &--open {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 .container {

@@ -1,5 +1,6 @@
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} 0.3s linear;
+
   &:hover {
     #{$_property}: $_toValue;
   }
@@ -13,11 +14,22 @@
   letter-spacing: -0.32px;
 }
 
+@mixin message() {
+  color: $secondary;
+  font-size: 22px;
+  padding: 24px;
+  background-color: $message-background;
+  border: 1px solid $primary;
+  border-radius: 15px;
+
+  text-align: center;
+}
+
 @mixin contentPaddingInline() {
   padding-inline: 30px;
 
   @include onTable {
-    padding-inline: 34px;
+    padding-inline: 50px;
   }
 
   @include onDesktop {

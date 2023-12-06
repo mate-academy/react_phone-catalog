@@ -1,0 +1,124 @@
+@import "../../helpers/utils/utils";
+
+.products-catalog {
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include titleSection();
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $secondary;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__search-panel {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn-wrapper {
+    position: relative;
+  }
+
+  &__btn-label {
+    color: $secondary;
+
+    font-size: 12px;
+    font-family: $semi-bold-fonts;
+
+    margin-bottom: 4px;
+  }
+
+  &__btn {
+    display: flex;
+    gap: 83px;
+
+    padding: 10px 12px;
+  }
+
+  &__btn-value {
+    color: $primary;
+
+    font-size: 14px;
+    font-family: $semi-bold-fonts;
+    line-height: 21px;
+
+    &--sort {
+      min-width: 70px;
+    }
+
+    &--itemsNumber {
+      min-width: 18px;
+    }
+  }
+
+  &__dropdown-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 70px;
+    border: 1px solid $elements;
+  }
+
+  &__dropdown-menu-item {
+    display: flex;
+  }
+
+  &__btn-option {
+    @include hover(background-color, $elements);
+    width: 100%;
+
+    text-align: left;
+    padding: 5px 12px;
+  }
+
+  &__option-value {
+    color: $secondary;
+
+    font-size: 14px;
+    font-family: $semi-bold-fonts;
+
+    margin-bottom: 4px;
+
+    @include hover(color, $primary);
+
+    &--selected {
+      color: $primary;
+    }
+  }
+
+  &__page-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    margin-bottom: 80px;
+  }
+
+  &__pages-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn-control-page {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__btn-page {
+    width: 32px;
+    height: 32px;
+
+    &--active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}

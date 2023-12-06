@@ -15,8 +15,8 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [index, setIndex] = useState(0);
   const [offsetX, setOffsetX] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(0);
-  const [countProducts, setProducts] = useState(0);
+  const slideWidth = 272;
+  const [countProducts, setCountProducts] = useState(0);
 
   const productSlideRef = useRef<HTMLLIElement | null>(null);
 
@@ -39,39 +39,23 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   };
 
   useEffect(() => {
-    const updateSlideWidth = () => {
-      if (productSlideRef.current) {
-        setSlideWidth(productSlideRef.current.offsetWidth);
-      }
+    switch (true) {
+      case window.innerWidth >= 1440:
+        setCountProducts(4);
+        break;
 
-      switch (true) {
-        case window.innerWidth >= 1440:
-          setProducts(4);
-          break;
+      case window.innerWidth >= 1234:
+        setCountProducts(3);
+        break;
 
-        case window.innerWidth >= 768:
-          setProducts(3);
-          break;
+      case window.innerWidth >= 620:
+        setCountProducts(2);
+        break;
 
-        case window.innerWidth >= 575:
-          setProducts(2);
-          break;
-
-        default:
-          setProducts(1);
-      }
-
-      updateSlide(0, 0);
-    };
-
-    updateSlideWidth();
-
-    window.addEventListener('resize', updateSlideWidth);
-
-    return () => {
-      window.removeEventListener('resize', updateSlideWidth);
-    };
-  }, [products]);
+      default:
+        setCountProducts(1);
+    }
+  }, [window.innerWidth]);
 
   return (
     <section className="main__products-slider products-slider">
@@ -95,7 +79,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
                 <div
                   className="
                     icon
-                    icon__btn-arrow"
+                    icon__arrow-primary"
                 />
               </button>
 
@@ -114,8 +98,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
                 <div
                   className="
                     icon
-                    icon__btn-arrow
-                    icon__btn-arrow--rigth"
+                    icon__arrow-primary
+                    icon__arrow-primary--rigth"
                 />
               </button>
             </div>
@@ -124,6 +108,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           <div className="products-slider__slides">
             <ul
               className="products-slider__list"
+              data-cy="cardsContainer"
               style={{
                 transform: `translateX(${offsetX}px)`,
               }}

@@ -2,9 +2,16 @@
 
 .nav {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 
   color: $nav-text-color;
+
+  @include onTable {
+    flex-direction: row;
+    gap: 40px;
+  }
 
   &__link {
     font-size: 12px;
@@ -13,9 +20,14 @@
     letter-spacing: 0.48px;
     text-transform: uppercase;
 
-    padding-block: 27px;
+    padding-block: 16px;
 
     @include hover(color, $primary);
+
+    @include onTable {
+      padding-block: 27px;
+
+    }
   }
 
   &__is-active {

@@ -8,8 +8,12 @@
   &__wrapper-img {
     position: relative;
     width: 100%;
-    padding-bottom: 100%;
+    padding-bottom: 75%;
     overflow: hidden;
+
+    @include onTable() {
+      padding-bottom: 100%;
+    }
   }
 
   &__img {
@@ -40,7 +44,7 @@
 
   &__name {
     color: $primary;
-    
+
     font-size: 20px;
     font-family: $semi-bold-fonts;
   }

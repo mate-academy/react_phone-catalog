@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import './ImageSlider.scss';
@@ -29,6 +29,18 @@ export const ImageSlider: React.FC = () => {
     updateSlide(offsetX - 100, index + 1);
   };
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (index === 3) {
+        updateSlide(0, 1);
+      } else {
+        handleNextBtn();
+      }
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [index]);
+
   return (
     <section className="main__slider slider">
       <div className="container">
@@ -42,7 +54,7 @@ export const ImageSlider: React.FC = () => {
             )}
             disabled={index === 1}
           >
-            <div className="icon icon__btn-arrow" />
+            <div className="icon icon__arrow-primary" />
           </button>
 
           <div className="slider__slides">
@@ -81,8 +93,8 @@ export const ImageSlider: React.FC = () => {
             <div
               className="
               icon
-              icon__btn-arrow
-              icon__btn-arrow--rigth"
+              icon__arrow-primary
+              icon__arrow-primary--rigth"
             />
           </button>
 

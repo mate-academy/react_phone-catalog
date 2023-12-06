@@ -4,50 +4,70 @@ import classNames from 'classnames';
 
 import './NavBar.scss';
 
-export const NavBar: React.FC = () => (
-  <nav className="nav">
-    <NavLink
-      className={({ isActive }) => (
-        classNames('nav__link', {
-          'nav__is-active': isActive,
-        })
-      )}
-      to="/home"
-    >
-      Home
-    </NavLink>
+type Props = {
+  toggleMenu?: () => void;
+};
 
-    <NavLink
-      className={({ isActive }) => (
-        classNames('nav__link', {
-          'nav__is-active': isActive,
-        })
-      )}
-      to="/phones"
-    >
-      Phones
-    </NavLink>
+export const NavBar: React.FC<Props> = ({ toggleMenu }) => {
+  const handleNalLink = () => {
+    if (toggleMenu) {
+      toggleMenu();
+    }
+  };
 
-    <NavLink
-      className={({ isActive }) => (
-        classNames('nav__link', {
-          'nav__is-active': isActive,
-        })
-      )}
-      to="/tablets"
-    >
-      Tablets
-    </NavLink>
+  return (
+    <nav className="nav nav__menu">
+      <NavLink
+        onClick={handleNalLink}
+        className={({ isActive }) => (
+          classNames('nav__link', {
+            'nav__is-active': isActive,
+          })
+        )}
+        to="/"
+      >
+        Home
+      </NavLink>
 
-    <NavLink
-      className={({ isActive }) => (
-        classNames('nav__link', {
-          'nav__is-active': isActive,
-        })
-      )}
-      to="/accessories"
-    >
-      Accessories
-    </NavLink>
-  </nav>
-);
+      <NavLink
+        onClick={handleNalLink}
+        className={({ isActive }) => (
+          classNames('nav__link', {
+            'nav__is-active': isActive,
+          })
+        )}
+        to="/phones"
+      >
+        Phones
+      </NavLink>
+
+      <NavLink
+        onClick={handleNalLink}
+        className={({ isActive }) => (
+          classNames('nav__link', {
+            'nav__is-active': isActive,
+          })
+        )}
+        to="/tablets"
+      >
+        Tablets
+      </NavLink>
+
+      <NavLink
+        onClick={handleNalLink}
+        className={({ isActive }) => (
+          classNames('nav__link', {
+            'nav__is-active': isActive,
+          })
+        )}
+        to="/accessories"
+      >
+        Accessories
+      </NavLink>
+    </nav>
+  );
+};
+
+NavBar.defaultProps = {
+  toggleMenu: () => {},
+};

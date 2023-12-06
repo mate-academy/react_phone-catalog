@@ -57,7 +57,9 @@ export const Footer: React.FC = () => {
               className="footer__top-btn button"
               onClick={handleTopButton}
             >
-              <div className="icon icon__btn-arrow icon__btn-arrow--top" />
+              <div
+                className="icon icon__arrow-primary icon__arrow-primary--top"
+              />
             </button>
           </div>
         </div>

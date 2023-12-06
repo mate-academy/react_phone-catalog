@@ -1,0 +1,14 @@
+@import "../../helpers/utils/utils";
+
+.products-list {
+  &__grid {
+    @include pageGrid();
+    row-gap: 40px;
+
+    margin-block: 24px 40px;
+  }
+
+  &__item {
+    grid-column: span 6;
+  }
+}

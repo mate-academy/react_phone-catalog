@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
@@ -5,7 +6,11 @@ import classNames from 'classnames';
 import { NavBar } from '../NavBar';
 import './Header.scss';
 
-export const Header: React.FC = () => (
+type Props = {
+  toggleMenu: () => void,
+};
+
+export const Header: React.FC<Props> = ({ toggleMenu }) => (
   <header className="header">
     <div className="container">
       <div className="header__content">
@@ -38,7 +43,12 @@ export const Header: React.FC = () => (
           </NavLink>
         </div>
 
-        <div className="header__menu icon icon__menu" />
+        <button
+          className="header__menu"
+          onClick={toggleMenu}
+        >
+          <div className="icon icon__menu" />
+        </button>
       </div>
     </div>
   </header>

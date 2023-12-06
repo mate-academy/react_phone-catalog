@@ -2,9 +2,13 @@
 
 .footer {
   border-top: 1px solid $elements;
+  margin-top: auto;
 
   &__content {
     display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
     align-items: center;
     justify-content: space-between;
 
@@ -15,11 +19,19 @@
     font-size: 12px;
     font-family: $semi-bold-fonts;
 
+    @include onTable {
+      flex-direction: row;
+    }
+
   }
 
   &__social-links {
     display: flex;
-    gap: 64px;
+    gap: 32px;
+
+    @include onTable {
+      gap: 64px;
+    }
   }
 
   &__link {
@@ -27,6 +39,7 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
+    text-align: center;
 
     @include hover(color, $primary);
   }

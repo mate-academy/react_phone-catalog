@@ -15,13 +15,19 @@
 
   &__list {
     display: flex;
+    flex-direction: column;
+
     gap: 16px;
 
     grid-column: 1 / -1;
     overflow: hidden;
+
+    @include onTable() {
+      flex-direction: row;
+    }
   }
 
   &__item {
-    flex: 0 0 calc(33.3%);
+    flex: 0 0 33.3%;
   }
 }

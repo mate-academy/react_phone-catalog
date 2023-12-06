@@ -1,3 +1,7 @@
-.NotFoundPage {
-  padding: 12px;
+@import "../../helpers/utils/utils";
+
+.phones {
+  &__content {
+    @include contentPaddingInline();
+  }
 }

@@ -7,18 +7,21 @@ export const ShopByCategory: React.FC = () => {
   const categorys = [
     {
       name: 'Mobile phones',
+      type: 'phones',
       backgroundColor: '#fcdbc1',
       link: '/phones',
       imageUrl: '/new/img/category-phones.png',
     },
     {
       name: 'Tablets',
+      type: 'tablets',
       backgroundColor: '#8d8d92',
       link: '/tablets',
       imageUrl: '/new/img/category-tablets.png',
     },
     {
       name: 'Accessories',
+      type: 'accessories',
       backgroundColor: '#973d5f',
       link: '/accessories',
       imageUrl: '/new/img/category-accessories.png',
@@ -33,7 +36,10 @@ export const ShopByCategory: React.FC = () => {
             Shop by category
           </h2>
 
-          <ul className="shop-by-category__list">
+          <ul
+            data-cy="categoryLinksContainer"
+            className="shop-by-category__list"
+          >
             {
               categorys.map(category => (
                 <li
