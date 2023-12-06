@@ -3,9 +3,16 @@ import { Logo } from '../UI/Logo';
 import classes from './MainNavigation.module.scss';
 import { FavoritesIcon } from '../UI/FavoritesIcon';
 import { ShopIcon } from '../UI/ShopIcon';
-// import cl from 'classnames';
+import { useAppSelector } from '../app/hooks';
+import {
+  selectQuantityFavourites,
+} from '../features/favouritesSlices/favouritesSlice';
+import { selectQuantityCart } from '../features/cartSlices/cartSlice';
 
 export const MainNavigation = () => {
+  const quantityFavourites = useAppSelector(selectQuantityFavourites);
+  const quantityCart = useAppSelector(selectQuantityCart);
+
   return (
     <header className={classes.header}>
       <nav className={classes.nav}>
@@ -32,11 +39,13 @@ export const MainNavigation = () => {
         <ul className={classes.list__left}>
           <li className={classes.link}>
             <NavLink to="/favorites">
+              {quantityFavourites}
               <FavoritesIcon />
             </NavLink>
           </li>
           <li className={classes.link}>
             <NavLink to="/cart">
+              {quantityCart}
               <ShopIcon />
             </NavLink>
           </li>
