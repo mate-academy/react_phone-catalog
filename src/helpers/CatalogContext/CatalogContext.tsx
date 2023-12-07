@@ -6,6 +6,8 @@ interface ICatalogContext {
   setHotPriceProducts: (phonesFromServer: Phone[]) => void,
   newPhones: Phone[],
   setNewProducts: (phonesFromServer: Phone[]) => void,
+  // cardsHeight: number,
+  // setCardsHeight: (height: number) => void,
 }
 
 export const CatalogContext = React.createContext<ICatalogContext>({
@@ -13,6 +15,8 @@ export const CatalogContext = React.createContext<ICatalogContext>({
   setHotPriceProducts: () => {},
   newPhones: [],
   setNewProducts: () => {},
+  // cardsHeight: 576,
+  // setCardsHeight: () => {},
 });
 
 export const useProducts
@@ -25,15 +29,19 @@ type Props = {
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [hotPricePhones, setHotPriceProducts] = useState<Phone[]>([]);
   const [newPhones, setNewProducts] = useState<Phone[]>([]);
+  // const [cardsHeight, setCardsHeight] = useState(576);
 
   const value = useMemo(() => ({
     hotPricePhones,
     setHotPriceProducts,
     newPhones,
     setNewProducts,
+    // cardsHeight,
+    // setCardsHeight,
   }), [
     hotPricePhones,
     newPhones,
+    // cardsHeight,
   ]);
 
   return (

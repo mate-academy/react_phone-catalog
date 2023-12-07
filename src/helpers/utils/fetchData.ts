@@ -3,9 +3,20 @@ import { Phone } from '../../Types/Phone';
 // eslint-disable-next-line
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
+function wait(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function getData<T>(url: string): Promise<T> {
-  return fetch(BASE_URL + url)
-    .then(response => response.json());
+  return wait(300)
+    .then(() => fetch(BASE_URL + url))
+    .then(response => {
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
+    });
 }
 
 function getPhones() {

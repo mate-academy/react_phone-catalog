@@ -1,15 +1,18 @@
 import { NavLink } from 'react-router-dom';
+import phones from '../../images/category/category-phones.png';
+import tablets from '../../images/category/category-tablets.png';
+import accessories from '../../images/category/category-accessories.png';
 
 export const Category: React.FC = () => {
   return (
-    <div className="category">
+    <div className="category" data-cy="categoryLinksContainer">
       <h1 className="category__title">Shop by category</h1>
       <ul className="category__list">
         <li className="category__item">
           <NavLink className="category__link category__phones" to="/phones">
             <img
               className="category__image category__image--phones"
-              src="img/category-phones.png"
+              src={phones}
               alt="Mobile phones"
             />
           </NavLink>
@@ -20,7 +23,7 @@ export const Category: React.FC = () => {
           <NavLink className="category__link category__tablets" to="/tablets">
             <img
               className="category__image"
-              src="img/category-tablets.png"
+              src={tablets}
               alt="Tablets"
             />
           </NavLink>
@@ -34,7 +37,7 @@ export const Category: React.FC = () => {
           >
             <img
               className="category__image"
-              src="img/category-accessories.png"
+              src={accessories}
               alt="Accessories"
             />
           </NavLink>

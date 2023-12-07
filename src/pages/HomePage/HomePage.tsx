@@ -1,4 +1,10 @@
-import { useEffect } from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+import React, {
+  useEffect,
+  CSSProperties,
+  useState,
+} from 'react';
+import RotateLoader from 'react-spinners/ClipLoader';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { Category } from '../../components/Category/Category';
@@ -13,13 +19,22 @@ enum Categories {
   Phones = 'phones',
 }
 
+const override: CSSProperties = {
+  display: 'block',
+  margin: '0 auto',
+  padding: '100 100',
+};
+
 export const HomePage: React.FC = () => {
   const {
     hotPricePhones,
     setHotPriceProducts,
     newPhones,
     setNewProducts,
+    // cardsHeight,
   } = useProducts();
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +47,7 @@ export const HomePage: React.FC = () => {
 
         setHotPriceProducts(getHotPriceProducts(mappedData, Categories.Phones));
         setNewProducts(getNewProducts(mappedData, Categories.Phones));
+        setIsLoading(false);
       } catch (error) {
         throw new Error();
       }
@@ -43,17 +59,38 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <ProductSlider />
-      <ProductCard
-        discount
-        title="Hot prices"
-        products={hotPricePhones}
-      />
+      {isLoading ? (
+        <div className="loader">
+          <RotateLoader
+            color="#313237"
+            cssOverride={override}
+            size={200}
+          />
+        </div>
+      ) : (
+        <ProductCard
+          discount
+          title="Hot prices"
+          products={hotPricePhones}
+        />
+      )}
+
       <Category />
-      <ProductCard
-        discount={false}
-        title="Brand new models"
-        products={newPhones}
-      />
+      {isLoading ? (
+        <div className="loader">
+          <RotateLoader
+            color="#313237"
+            cssOverride={override}
+            size={200}
+          />
+        </div>
+      ) : (
+        <ProductCard
+          discount={false}
+          title="Brand new models"
+          products={newPhones}
+        />
+      )}
     </>
   );
 };

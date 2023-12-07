@@ -43,27 +43,4 @@
     font-weight: 500;
     line-height: 21px;
   }
-
-  &__image {
-    position: absolute;
-    height: 100%;
-    // background-position: bottom;
-    object-position: bottom;
-
-    &--phones {
-      // height: 120%;
-    }
-  }
-
-  &__phones {
-    background-color: $cream-color;
-  }
-
-  &__tablets {
-    background-color: lightgray;
-  }
-
-  &__accessories {
-    background-color: brown;
-  }
 }
