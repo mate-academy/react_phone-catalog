@@ -1,9 +1,12 @@
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 import './App.scss';
 
 const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <body>
+    <Header />
+    <Footer />
+  </body>
 );
 
 export default App;

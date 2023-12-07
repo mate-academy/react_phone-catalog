@@ -1,0 +1,29 @@
+@import "../../helpers/utils";
+
+.nav {
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link a {
+    @extend %mont-bold-style;
+
+    display: flex;
+    align-items: center;
+
+    height: $header-height;
+
+    letter-spacing: 0.48px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $gray-secondary;
+
+    transition: color 0.4s;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}

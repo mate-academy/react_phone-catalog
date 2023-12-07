@@ -1,0 +1,11 @@
+@mixin onTablet() {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin onMobile() {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}

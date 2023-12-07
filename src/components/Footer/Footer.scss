@@ -1,0 +1,60 @@
+@import "../../helpers/utils";
+
+.footer {
+  height: $footer-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -1px 0 0 $gray-elements;
+  color: $gray-secondary;
+
+  &__network-nav {
+    display: flex;
+    gap: $nav-gap;
+  }
+
+  &__network-link {
+    @extend %mont-bold-style;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: $gray-secondary;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+
+  &__arrow-back-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    font-size: 12px;
+    @extend %mont-semibold-style;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__arrow-back {
+    height: 32px;
+    width: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    margin-right: 20px;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}
