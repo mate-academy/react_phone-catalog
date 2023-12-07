@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import './ProductDetails.scss';
@@ -8,6 +9,7 @@ import { Product } from '../../helpers/types/Product';
 import { useGetProductsQuery } from '../../helpers/api/productsApi';
 import { capitalize } from '../../helpers/utils/capitalize';
 import { hasDiscount } from '../../helpers/utils/getDiscount';
+import { colorToHex } from '../../helpers/utils/colorToHex';
 import { ProductAdd } from '../ProductAdd';
 
 type Props = {
@@ -21,13 +23,17 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
 
   const {
     id,
+    namespaceId,
     images,
+    colorsAvailable,
+    capacity,
+    color,
+    capacityAvailable,
     screen,
     resolution,
     processor,
     ram,
     description,
-    capacity,
     camera,
     zoom,
     cell,
@@ -94,6 +100,48 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
       </div>
 
       <div className="ProductDetails__interactive">
+        <h4 className="ProductDetails__small-title">Avialable colors</h4>
+
+        <div className="ProductDetails__choose">
+          {colorsAvailable.map(oneColor => (
+            <Link
+              key={oneColor}
+              to={`/product/${namespaceId}-${capacity.toLowerCase()}-${oneColor}`}
+              className="ProductDetails__color-link"
+            >
+              <div
+                className="ProductDetails__color"
+                style={{
+                  backgroundColor: colorToHex(oneColor),
+                }}
+              />
+            </Link>
+          ))}
+        </div>
+
+        <div className="
+          ProductDetails__divider
+          ProductDetails__divider--margin--small"
+        />
+
+        <h4 className="ProductDetails__small-title">Select capacity</h4>
+
+        <div className="ProductDetails__choose">
+          {capacityAvailable.map(oneCapacity => (
+            <Link
+              key={oneCapacity}
+              to={`/product/${namespaceId}-${oneCapacity.toLowerCase()}-${color}`}
+              className={classNames('ProductDetails__capacity', {
+                'ProductDetails__capacity--active': capacity === oneCapacity,
+              })}
+            >
+              <p>{oneCapacity}</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="ProductDetails__divider" />
+
         {chosenProduct && (
           <>
             <div className="ProductDetails__prices">
@@ -130,6 +178,8 @@ export const ProductDetails: React.FC<Props> = ({ productInfo }) => {
           ))}
         </div>
       </div>
+
+      <p className="ProductDetails__id">{`ID: ${chosenProduct?.id}`}</p>
 
       <section
         data-cy="productDescription"

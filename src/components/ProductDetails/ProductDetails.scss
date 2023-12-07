@@ -46,6 +46,53 @@
     grid-column: 14 / 20;
   }
 
+  &__small-title {
+    @include smallText;
+    margin-bottom: 8px;
+  }
+
+  &__choose {
+    margin-bottom: 24px;
+
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-link {
+    @include squareSize(32px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+  }
+
+  &__color {
+    @include squareSize(28px);
+
+    border: 2px solid $white-color;
+    border-radius: 50%;
+  }
+
+  &__capacity {
+    @include bodyText;
+
+    padding: 8px;
+    padding-bottom: 4px;
+
+    border: 1.5px solid $icons-color;
+    text-decoration: none;
+
+    &--active {
+      border: none;
+      background-color: $primary-color;
+      color: $white-color;
+      cursor: auto;
+    }
+  }
+
   &__prices {
     margin-bottom: 16px;
 
@@ -96,6 +143,14 @@
     }
   }
 
+  &__id {
+    @include smallText;
+
+    grid-column: 22 / 24;
+
+    text-align: right;
+  }
+
   &__about {
     grid-column: 1 / 12;
   }
@@ -109,6 +164,10 @@
   &__divider {
     margin-bottom: 32px;
     border-top: 1px solid $elements-color;
+
+    &--margin--small {
+      margin-bottom: 24px;
+    }
   }
 
   &__chapters {
