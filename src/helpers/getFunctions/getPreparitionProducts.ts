@@ -10,7 +10,7 @@ export const getPreparitionProducts = (
   const page = searchParams.get('page') || '1';
 
   const start = (+page - 1) * (+itemsNumber) || 0;
-  const end = (+page - 1) * (+itemsNumber) + (+itemsNumber) || 0;
+  const end = (+page - 1) * (+itemsNumber) + (+itemsNumber) || products.length;
 
   return (
     products.sort((productFirst, productSecond) => {

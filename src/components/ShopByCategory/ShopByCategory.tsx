@@ -10,21 +10,21 @@ export const ShopByCategory: React.FC = () => {
       type: 'phones',
       backgroundColor: '#fcdbc1',
       link: '/phones',
-      imageUrl: '/new/img/category-phones.png',
+      imageUrl: './new/img/category-phones.png',
     },
     {
       name: 'Tablets',
       type: 'tablets',
       backgroundColor: '#8d8d92',
       link: '/tablets',
-      imageUrl: '/new/img/category-tablets.png',
+      imageUrl: './new/img/category-tablets.png',
     },
     {
       name: 'Accessories',
       type: 'accessories',
       backgroundColor: '#973d5f',
       link: '/accessories',
-      imageUrl: '/new/img/category-accessories.png',
+      imageUrl: './new/img/category-accessories.png',
     },
   ];
 

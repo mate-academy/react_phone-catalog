@@ -43,10 +43,30 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   const [isOpenSort, setIsOpenSort] = useState(false);
   const [isOpenItems, setIsOpenItems] = useState(false);
 
-  const visiblePages = Math.ceil(products.length / +itemsNumber)
+  const countPages = Math.ceil(products.length / +itemsNumber)
     || false;
 
-  const visibleProducts = getPreparitionProducts(products, searchParams);
+  const getVisblePages = () => {
+    const pages: number[] = [];
+
+    if (!countPages) {
+      return pages;
+    }
+
+    for (let i = 1; i <= countPages; i += 1) {
+      pages.push(i);
+    }
+
+    if (+page >= 4 && +page !== pages.length) {
+      return pages.slice(+page - 3, +page + 1);
+    }
+
+    if (+page === pages.length) {
+      return pages.slice(pages.length - 4, pages.length);
+    }
+
+    return pages.slice(0, 4);
+  };
 
   const handleBtnSort = () => {
     setIsOpenSort(!isOpenSort);
@@ -60,13 +80,10 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
 
     if (option === 'Cheapest') {
       params.sort = 'price';
-      // setSearchWith({ sort: 'price' });
     } else if (option === 'Name') {
       params.sort = 'name';
-      // setSearchWith({ sort: 'name' });
     } else {
       params.sort = 'name';
-      // setSearchWith({ sort: 'year' });
     }
 
     params.page = '1';
@@ -110,6 +127,9 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
     setSearchWith({ page: `${currentPage}` });
     toTopPage();
   };
+
+  const visblePages = getVisblePages();
+  const visibleProducts = getPreparitionProducts(products, searchParams);
 
   return (
     <div className="products-catalog">
@@ -248,7 +268,7 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
           />
 
           {
-            visiblePages && (
+            countPages && (
               <div className="products-catalog__page-controls">
                 <button
                   onClick={handleBtnPrevPage}
@@ -263,23 +283,23 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
                 </button>
 
                 <ul className="products-catalog__pages-list">
-                  {[...Array(visiblePages)].map((_, index) => (
+                  {visblePages.map(pageValue => (
                     <li
                       key={getUniqueId()}
                       className="products-catalog__page-item"
                     >
                       <button
-                        onClick={() => handleBtnPage(index + 1)}
+                        onClick={() => handleBtnPage(pageValue)}
                         className={classNames(
                           'products-catalog__btn-page',
                           'button',
                           {
                             'products-catalog__btn-page--active':
-                              +page === index + 1,
+                              +page === pageValue,
                           },
                         )}
                       >
-                        {index + 1}
+                        {pageValue}
                       </button>
                     </li>
                   ))}
@@ -290,9 +310,9 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
                   className={classNames(
                     'products-catalog__btn-control-page',
                     'button',
-                    { 'button--disable': +page === visiblePages },
+                    { 'button--disable': +page === countPages },
                   )}
-                  disabled={visiblePages === +page}
+                  disabled={countPages === +page}
                 >
                   <div
                     className="
