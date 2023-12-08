@@ -2,8 +2,25 @@
 
 .brand {
   display: block;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+  }
+
   &__button {
     display: flex;
+    justify-content: flex-end;
     justify-items: end;
     height: 32px;
 
@@ -19,8 +36,6 @@
     }
 
     &--left {
-      height: 32px;
-      width: 32px;
       margin-right: 8px;
       rotate: (180deg);
       background-image: url(../../img/icon/ArrowRight.png);
@@ -35,8 +50,6 @@
     }
 
     &--right {
-      height: 32px;
-      width: 32px;
       margin-right: 8px;
       background-image: url(../../img/icon/ArrowRight.png);
 

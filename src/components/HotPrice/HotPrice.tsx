@@ -53,8 +53,8 @@ export const HotPrice = () => {
             nextEl: '.hot__button--right',
             prevEl: '.hot__button--left',
           }}
-          // spaceBetween={50}
-          slidesPerView={4}
+          spaceBetween={50}
+          slidesPerView={1}
           breakpoints={{
             640: {
               slidesPerView: 2,

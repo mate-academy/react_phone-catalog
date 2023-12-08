@@ -15,11 +15,6 @@ export const Favourites = () => {
 
   return (
     <section>
-      <Search
-        query={query}
-        setQuery={setQuery}
-      />
-
       <HomeIcon title="Favourites" />
 
       <h1>Favourites</h1>
@@ -27,9 +22,10 @@ export const Favourites = () => {
         {`${favouritesPhones.length} items `}
       </p>
 
-      <p data-cy="peopleLoadingError" className="has-text-danger">
-        Something went wrong
-      </p>
+      <Search
+        query={query}
+        setQuery={setQuery}
+      />
 
       { favouritesPhones.length === 0 && (
         <p data-cy="peopleLoadingError" className="has-text-danger">

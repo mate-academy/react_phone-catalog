@@ -10,6 +10,8 @@ import { HomePage } from './components/HomePage/HomePage';
 import { Phone } from './components/Phone/Phone';
 import { ProductDetails } from './components/ProductDetals/ProductDetals';
 import { Tablets } from './components/Tablets/Tablets';
+import { MenuBurger } from './components/MenuBurger/MenuBurger';
+import { Accessories } from './components/Accessories/Accessories';
 
 const App = () => (
   <PhoneProvider>
@@ -19,11 +21,13 @@ const App = () => (
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/menu" element={<MenuBurger />} />
           <Route path="/phones">
             <Route index element={<Phone />} />
             <Route path=":idPhone" element={<ProductDetails />} />
           </Route>
           <Route path="/tablets" element={<Tablets />} />
+          <Route path="/accessories" element={<Accessories />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/cart" element={<Card />} />
           <Route

@@ -10,6 +10,7 @@ import arrowRight from '../../img/icon/ArrowRight.png';
 import './ProductDetals.scss';
 import { AlsoLike } from '../AlsoLike/AlsoLike';
 import { ProductPhone } from '../../Type/phone';
+import { Loader } from '../Loader';
 
 export const ColorPallette: Record<string, string> = {
   rosegold: '#F9D2CD',
@@ -48,14 +49,6 @@ export const ProductDetails: React.FC = () => {
     }
   }, [idPhone, phone]);
 
-  // const find = phones.find(currentPhone => currentPhone.phoneId === idPhone);
-
-  // let favouritesPhone: ProductPhone;
-
-  // if (find !== undefined) {
-  //   favouritesPhone = find;
-  // }
-
   function favouritesPhone() {
     const find = phones.find(currentPhone => currentPhone.phoneId === idPhone);
 
@@ -68,11 +61,12 @@ export const ProductDetails: React.FC = () => {
 
   return (
     <div>
+      {isLoading && <Loader />}
       {!isLoading && (
         <section className="details">
           <div className="details__title--main">
             <HomeIcon title="Phones" />
-            <img src={arrowRight} alt="homeIcon" />
+            <img className="details__arrow" src={arrowRight} alt="homeIcon" />
             <span className="details__subtitle">{phone?.name}</span>
           </div>
           <h1 className="details__title--name">{phone?.name}</h1>

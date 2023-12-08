@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
+@import "../src/components/style/main.scss";
 
 html,
 body {
@@ -43,6 +44,15 @@ p {
 }
 
 section {
-  padding: 0 152px;
+  padding: 0 10px;
   margin: 0 0 80px;
+
+  @include onTablet {
+    padding: 0 20px;
+  }
+
+  @include onDesktop {
+    padding: 0 152px;
+    margin: 0 0 80px;
+  }
 }

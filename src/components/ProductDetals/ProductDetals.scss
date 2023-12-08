@@ -2,19 +2,30 @@
 
 .details {
   &__container {
-    display: flex;
-    flex: 50%;
+    display: block;
+    padding: 0 0 40px;
+
+    @include onTablet {
+      display: flex;
+      flex: 50%;
+    }
   }
 
   &__subtitle {
     color: $gray-secondary;
     font-size: 12px;
     font-weight: 600;
+    padding: 0 0 40px;
+  }
+
+  &__arrow {
+    height: 16px;
+    padding: 0 0 40px;
   }
 
   &__title--main {
     display: flex;
-    padding: 20px 0 40px;
+    align-items: center;
   }
 
   &__title--name {
@@ -26,8 +37,12 @@
   }
 
   &__about {
-    padding: 8px 64px 32px 0;
-    width: 50%;
+    display: block;
+
+    @include onTablet {
+      padding: 8px 64px 32px 0;
+      width: 50%;
+    }
   }
 
   &__about-title {
@@ -38,15 +53,23 @@
   }
 
   &__description {
-    margin: 0 0 32px;
+    padding: 10px;
     color: $gray-secondary;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
+    text-align: justify;
   }
 
   &__tech {
-    width: 50%;
+    display: block;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      // justify-content: center;
+    }
   }
   &__title {
     box-shadow: 0 1px 0 0 $gray-elements;

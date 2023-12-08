@@ -29,7 +29,6 @@ export const Search: React.FC <Props> = ({ query, setQuery }) => {
           value={query}
           onChange={handleQueryChange}
         />
-
         {!query.length && (
           <img
             className="search__icon"

@@ -1,7 +1,33 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="header__logo" />
@@ -19,16 +45,20 @@ export const Footer = () => {
           <p className="footer__text">rights</p>
         </Link>
       </div>
-      <div className="footer__top">
-        <p className="footer__back">
-          Back to top
-        </p>
-        <button
-          type="button"
-          aria-label="Mute volume"
-          className="footer__button--top"
-        />
-      </div>
+      {isVisible ? (
+        <div className="footer__top">
+          <p className="footer__back">
+            Back to top
+          </p>
+          <button
+            type="button"
+            aria-label="Mute volume"
+            className="footer__button--top"
+            onClick={scrollToTop}
+          />
+        </div>
+      )
+        : (<div className="container__button--fake" />)}
     </footer>
   );
 };

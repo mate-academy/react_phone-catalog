@@ -1,5 +1,11 @@
+@import "../style/main.scss";
 .phones {
   margin: 0 auto 80px;
+
+  &__text {
+    display: block;
+    margin: 0 0 40px;
+  }
 
   &__item {
     list-style: none;
@@ -9,15 +15,29 @@
   }
 
   &__input {
-    display: flex;
-    justify-content: start;
+    display: block;
     padding: 16px 20px;
-    gap: 20px;
+
+    @include onTablet {
+      display: flex;
+      justify-content: start;
+      gap: 10px;
+    }
+
   }
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    text-decoration: none;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 1fr);
+      // text-decoration: none;
+    }
   }
 }

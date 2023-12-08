@@ -1,29 +1,40 @@
-import { ThunkAction, Action } from '@reduxjs/toolkit';
-import { combineReducers, createStore } from 'redux';
+import { ThunkAction, Action, configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import favouritesSlice from '../features/favouritesSlice';
 import cardSlice from '../features/cardSlice';
 import { ProductPhone } from '../Type/phone';
-import { saveToLocalStorage, loadFromLocalStorage } from './useLocalStorage';
 
-// The key of this object will be the name of the store
-export const rootReducers = combineReducers({
+const rootReducers = combineReducers({
   favourites: favouritesSlice,
   card: cardSlice,
 });
 
-const store = createStore(rootReducers, loadFromLocalStorage());
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
-// listen for store changes and use saveToLocalStorage to
-// save them to localStorage
-store.subscribe(() => saveToLocalStorage('card', store.getState()));
-store.subscribe(() => saveToLocalStorage('favourites', store.getState()));
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 
-// export const store = configureStore({
-//   reducer: {
-//     favourites: favouritesSlice,
-//     card: cardSlice,
-//   },
-// });
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+});
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
@@ -37,4 +48,5 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >;
 /* eslint-enable @typescript-eslint/indent */
 
+export const persistor = persistStore(store);
 export default store;

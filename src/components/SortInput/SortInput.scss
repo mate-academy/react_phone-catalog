@@ -1,9 +1,15 @@
+@import "../style/main.scss";
 .sort {
   display: flex;
   flex-direction: column;
   color: #89939a;
   font-size: 12px;
   font-weight: 600;
+  margin: 10px 0;
+
+  @include onTablet {
+    margin: 0;
+  }
 
   &__select {
     width: 188px;

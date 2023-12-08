@@ -1,67 +1,154 @@
+@import "../style/main.scss";
+
 .header {
   display: flex;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 1);
   height: 64px;
-  padding: 0 152px;
+  padding: 0 10px;
   border-bottom: 1px solid rgba(226, 230, 233, 1);
   margin: 0 0 40px;
 
+  @include onTablet {
+    padding: 0 30px;
+  }
+
+  @include onDesktop {
+    padding: 0 100px;
+  }
+
   &__logo {
-    margin: 30px 0 0 24px;
-    height: 64px;
-    width: 64px;
+    margin: 20px 0 0;
+    height: 56px;
+    width: 56px;
     background-image: url(../Header/imgHeader/Logo.png);
     background-repeat: no-repeat;
+
+    @include onTablet {
+      margin: 30px 0 0 24px;
+      height: 64px;
+      width: 64px;
+    }
   }
 
   &__nav {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    padding: 10px;
+
+    @include onDesktop {
+      justify-content: space-between;
+    }
+  }
+
+  &__main {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
   }
 
   &__link {
-    padding: 10px;
+    padding: 27px 2px 18px;
     height: 100%;
     color: rgba(137, 147, 154, 1);
     text-decoration: none;
     list-style: none;
-    gap: 64px;
+    border-bottom: 4px solid transparent;
 
     &-active {
-      color: rgba(49, 50, 55, 1);
+      position: relative;
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
     }
   }
   &__favourites {
-    width: 64px;
+    position: relative;
+    width: 50px;
     height: 64px;
-    border: 1px solid rgba(226, 230, 233, 1);
+    box-shadow: -1px 0 0 0 $gray-elements;
     background-image: url(../Header/imgHeader/Favourites.png);
     background-repeat: no-repeat;
     object-fit: contain;
+    border-bottom: 4px solid transparent;
 
-    &-active {
-      color: rgba(49, 50, 55, 1);
+
+    &--active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 64px;
+      height: 3px;
+      background-color: $gray-primary;
+
+      // position: relative;
+      // color: $gray-primary;
+      // border-bottom: 3px solid $gray-primary;
+    }
+  }
+
+  &__container {
+    display: flex;
+
+    @include onDesktop {
+      width: 30%;
+      justify-content: flex-end;
     }
   }
 
   &__right {
     display: flex;
-    width: 30%;
     justify-content: flex-end;
   }
 
   &__bag {
     width: 64px;
     height: 64px;
-    border: 1px solid rgba(226, 230, 233, 1);
+    box-shadow: 1px 0 0 0 $gray-elements;
     background-image: url(../Header/imgHeader/Cart.png);
     background-repeat: no-repeat;
     object-fit: contain;
+
+    &--active {
+      position: relative;
+      color: $gray-primary;
+      border-bottom: 3px solid $gray-primary;
+    }
   }
 }
 
 .icon {
-  height: 50px;
-  background-color: aqua;
+  display: block;
+  margin: 18px 0 0;
+  width: 32px;
+  height: 32px;
+  object-fit: fill;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &__menu {
+    // box-shadow: -1px 0 0 0 $gray-elements ;
+    background-image: url("../../img/icon/burger-menu-svg.svg");
+
+    &:hover {
+      background-image: url(../../img/icon/Icon-Burger-menu-hover.png);
+    }
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__close {
+    background-image: url("../../img/icon/close.svg");
+
+    @include onTablet {
+      display: none;
+    }
+  }
 }
+

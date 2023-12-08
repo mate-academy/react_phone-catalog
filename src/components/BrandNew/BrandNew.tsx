@@ -26,9 +26,9 @@ export const BrandNew = () => {
 
   return (
     <section className="hot">
-      <div className="hot__container">
-        <h2 className="hot__title"> Brand new models </h2>
-        <div className="hot__button">
+      <div className="brand__container">
+        <div><h2 className="brand__title"> Brand new models </h2></div>
+        <div className="brand__button">
           <button
             type="button"
             aria-label="Mute volume"
@@ -50,19 +50,19 @@ export const BrandNew = () => {
             nextEl: '.brand__button--right',
             prevEl: '.brand__button--left',
           }}
-          // spaceBetween={50}
-          slidesPerView={4}
-          // breakpoints={{
-          //   640: {
-          //     slidesPerView: 2,
-          //   },
-          //   900: {
-          //     slidesPerView: 3,
-          //   },
-          //   1280: {
-          //     slidesPerView: 4,
-          //   },
-          // }}
+          spaceBetween={40}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            900: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper"
         >

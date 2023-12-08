@@ -3,22 +3,21 @@ import { getPhones } from '../../utils/fetch';
 import { Loader } from '../Loader';
 import { ProductPhone } from '../../Type/phone';
 import { HomeIcon } from '../HomeIcon/HomeIcon';
-import './Tablets.scss';
 
-export const Tablets = () => {
-  const [tablets, setTablets] = useState<ProductPhone[]>([]);
+export const Accessories = () => {
+  const [accessories, setAccessories] = useState<ProductPhone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     getPhones()
-      .then(setTablets)
+      .then(setAccessories)
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
   }, []);
 
-  const tablets2 = [...tablets]
-    .filter(phone => phone.name === 'tablet');
+  const accessories2 = [...accessories]
+    .filter(phone => phone.name === 'accessories');
 
   return (
     <section>
@@ -26,16 +25,16 @@ export const Tablets = () => {
         <Loader />
       )}
 
-      {!isLoading && tablets2.length === 0 && (
+      {!isLoading && accessories2.length === 0 && (
         <div className="tablets__container">
-          <HomeIcon title="Tablets" />
-          <h2>Tablets</h2>
-          <p>Tablets are not available yet </p>
+          <HomeIcon title="Accessories" />
+          <h2>Accessories</h2>
+          <p>Accessories are not available yet </p>
         </div>
 
       )}
 
-      {tablets2.length !== 0 && (
+      {accessories2.length !== 0 && (
         <h2>Tablets</h2>
       )}
       {!isLoading && isError && (
@@ -47,4 +46,4 @@ export const Tablets = () => {
   );
 };
 
-export default Tablets;
+export default Accessories;

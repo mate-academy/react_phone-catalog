@@ -1,11 +1,23 @@
+@import "../style/main.scss";
 .footer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  padding: 0 152px;
-  height: 96px;
+  padding: 0 10px;
+  height: 100%;
   background: #fff;
   box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  @include onTablet {
+    padding: 0 30px;
+    justify-content: space-between;
+  }
+
+  @include onDesktop {
+    padding: 0 152px;
+    justify-content: space-between;
+  }
 
   &__link {
     display: flex;

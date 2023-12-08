@@ -2,7 +2,7 @@
 
 .favourites {
   &__count {
-    position: absolute;
+    position: relative;
     display: flex;
     height: 14px;
     width: 14px;
@@ -10,8 +10,16 @@
     background-color: $red;
     justify-content: center;
     align-items: center;
-    top: 3%;
-    right: 15.5%;
+    top: 20%;
+    right: 10%;
+
+    // @include onTablet {
+    //   right: 15%;
+    // }
+
+    // @include onDesktop {
+    //   right: 10%;
+    // }
   }
   &__count-text {
     color: $gray-white;

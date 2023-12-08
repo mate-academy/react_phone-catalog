@@ -50,19 +50,19 @@ export const AlsoLike = () => {
             nextEl: '.like__button--right',
             prevEl: '.like__button--left',
           }}
-          // spaceBetween={50}
-          slidesPerView={4}
-          // breakpoints={{
-          //   640: {
-          //     slidesPerView: 2,
-          //   },
-          //   900: {
-          //     slidesPerView: 3,
-          //   },
-          //   1280: {
-          //     slidesPerView: 4,
-          //   },
-          // }}
+          spaceBetween={20}
+          slidesPerView={1}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+            },
+            900: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            },
+          }}
           modules={[EffectFade, Navigation, Pagination]}
           className="swiper"
         >
