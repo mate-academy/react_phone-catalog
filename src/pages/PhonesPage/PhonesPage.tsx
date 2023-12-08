@@ -103,7 +103,7 @@ export const PhonesPage: FC = () => {
 
       {isLoading && <Loader />}
 
-      {isInitialized && !!phonesList.length && (
+      {isInitialized && !!currentPhonesList.length && !isLoading && (
         <>
           <p className="products-page__total-amount">
             {`${phonesList.length} models`}

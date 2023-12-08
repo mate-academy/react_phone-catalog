@@ -16,7 +16,7 @@ export const ProductsList: FC<Props> = ({ products, isSlider }) => {
   return (
     <div
       data-cy="productList"
-      className="products-page__producs products-list"
+      className="products-page__products products-list"
     >
       {products.map(product => (
         <ProductItem

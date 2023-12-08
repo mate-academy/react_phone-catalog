@@ -4,6 +4,11 @@
   &__logo {
     padding-left: 24px;
     margin-right: 64px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__container {
@@ -11,7 +16,7 @@
   }
 
   &__item {
-    padding: 26px 0;
+    padding: 14px;
     margin-right: 64px;
     position: relative;
     text-decoration: none;
@@ -55,15 +60,25 @@
   }
 }
 
-.nav-link-active {
-  color: $primaryColor;
+.nav-link {
+  &-text {
+    transition: transform 0.3s ease;
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    border-bottom: 3px solid $primaryColor;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-active {
+    color: $primaryColor;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      border-bottom: 3px solid $primaryColor;
+    }
   }
 }

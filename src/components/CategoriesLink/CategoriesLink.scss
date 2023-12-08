@@ -4,6 +4,12 @@
 .category {
   text-decoration: none;
 
+  &:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1.01);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
   &-image-container {
     height: $cardWidth * 1.35;
     width: $cardWidth * 1.35;

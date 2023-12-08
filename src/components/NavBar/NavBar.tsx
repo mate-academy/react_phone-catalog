@@ -28,7 +28,7 @@ export const NavBar: FC = () => {
             { 'nav-link-active': isActive },
           )}
         >
-          Home
+          <p className="nav-link-text">Home</p>
         </NavLink>
 
         <NavLink
@@ -39,7 +39,7 @@ export const NavBar: FC = () => {
             { 'nav-link-active': isActive },
           )}
         >
-          Phones
+          <p className="nav-link-text">Phones</p>
         </NavLink>
 
         <NavLink
@@ -50,7 +50,7 @@ export const NavBar: FC = () => {
             { 'nav-link-active': isActive },
           )}
         >
-          Tablets
+          <p className="nav-link-text">Tablets</p>
         </NavLink>
 
         <NavLink
@@ -61,7 +61,7 @@ export const NavBar: FC = () => {
             { 'nav-link-active': isActive },
           )}
         >
-          Accessories
+          <p className="nav-link-text">Accessories</p>
         </NavLink>
       </div>
     </nav>

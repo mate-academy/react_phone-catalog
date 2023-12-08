@@ -3,6 +3,13 @@
 .navbar {
   &__icon {
     line-height: 4em;
+
+    &-image {
+      &:hover {
+        transition: transform 0.3s ease;
+        transform: scale(1.3);
+      }
+    }
   }
 
   &__counter {
@@ -22,5 +29,18 @@
       text-decoration: none;
       color: $whiteColor;
     }
+  }
+}
+
+.nav-link-active {
+  color: $primaryColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    border-bottom: 3px solid $primaryColor;
   }
 }

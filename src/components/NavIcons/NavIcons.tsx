@@ -20,7 +20,11 @@ export const NavIcons: FC = () => {
           { 'nav-link-active': isActive },
         )}
       >
-        <img src="img/Icons/Favourites.svg" alt="Favourites" />
+        <img
+          src="img/Icons/Favourites.svg"
+          alt="Favourites"
+          className="navbar__icon-image"
+        />
 
         {favorites.length > 0 && (
           <div className="navbar__counter">
@@ -40,7 +44,11 @@ export const NavIcons: FC = () => {
           { 'nav-link-active': isActive },
         )}
       >
-        <img src="img/Icons/Cart.svg" alt="Cart" />
+        <img
+          src="img/Icons/Cart.svg"
+          alt="Cart"
+          className="navbar__icon-image"
+        />
 
         {cartItems.length > 0 && (
           <div className="navbar__counter">
