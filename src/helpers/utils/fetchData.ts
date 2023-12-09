@@ -8,7 +8,7 @@ function wait(ms: number) {
 }
 
 function getData<T>(url: string): Promise<T> {
-  return wait(300)
+  return wait(500)
     .then(() => fetch(BASE_URL + url))
     .then(response => {
       if (!response.ok) {
@@ -26,6 +26,14 @@ function getPhones() {
 export const client = {
   fetchPhones: () => getPhones(),
 };
+
+export function getAllPhones(phones: Phone[], type: string) {
+  const preparedPhones = [...phones];
+
+  preparedPhones.filter(phone => phone.category === type);
+
+  return preparedPhones;
+}
 
 export function getHotPriceProducts(phonesWithDiscount: Phone[], type: string) {
   const preparedPhones = [...phonesWithDiscount];

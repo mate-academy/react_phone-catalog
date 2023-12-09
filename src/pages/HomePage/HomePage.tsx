@@ -1,10 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, {
   useEffect,
-  CSSProperties,
   useState,
 } from 'react';
-import RotateLoader from 'react-spinners/ClipLoader';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { Category } from '../../components/Category/Category';
@@ -14,16 +12,11 @@ import {
   getHotPriceProducts,
   getNewProducts,
 } from '../../helpers/utils/fetchData';
+import { Loader } from '../../components/Loader/Loader';
 
-enum Categories {
+export enum Categories {
   Phones = 'phones',
 }
-
-const override: CSSProperties = {
-  display: 'block',
-  margin: '0 auto',
-  padding: '100 100',
-};
 
 export const HomePage: React.FC = () => {
   const {
@@ -31,7 +24,6 @@ export const HomePage: React.FC = () => {
     setHotPriceProducts,
     newPhones,
     setNewProducts,
-    // cardsHeight,
   } = useProducts();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -60,13 +52,7 @@ export const HomePage: React.FC = () => {
     <>
       <ProductSlider />
       {isLoading ? (
-        <div className="loader">
-          <RotateLoader
-            color="#313237"
-            cssOverride={override}
-            size={200}
-          />
-        </div>
+        <Loader />
       ) : (
         <ProductCard
           discount
@@ -77,13 +63,7 @@ export const HomePage: React.FC = () => {
 
       <Category />
       {isLoading ? (
-        <div className="loader">
-          <RotateLoader
-            color="#313237"
-            cssOverride={override}
-            size={200}
-          />
-        </div>
+        <Loader />
       ) : (
         <ProductCard
           discount={false}

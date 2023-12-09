@@ -7,7 +7,7 @@ type Props = {
 
 export const Card: React.FC<Props> = ({ card, discount }) => {
   return (
-    <div className="card" key={card.id}>
+    <div className="card">
       <img className="card__image" src={card.image} alt="phone_image" />
       <h3 className="card__name">{card.name}</h3>
       <div className="card__price">

@@ -47,3 +47,25 @@ iframe {
   align-items: center;
   justify-content: center;
 }
+
+.phones-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+}
+
+.card {
+  grid-column: span 6;
+  margin-bottom: 40px;
+}
+
+[role=navigation] {
+  margin-top: -30px;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
