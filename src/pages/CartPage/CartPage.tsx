@@ -126,7 +126,7 @@ export const CartPage = () => {
                     </div>
 
                     <h2 className="List-item__price">
-                      {`$${item.product.price}`}
+                      {`$${item.product.price * item.quantity}`}
                     </h2>
                   </div>
                 </div>
