@@ -46,12 +46,10 @@
   margin-bottom: 20px;
 }
 
-.swiper-horizontal
-.swiper-pagination-bullets
-.swiper-pagination-bullet
-.swiper-pagination-horizontal
-.swiper-pagination-bullets
-.swiper-pagination-bullet {
+.swiper-horizontal,
+.swiper-pagination-bullets,
+.swiper-pagination-bullet,
+.swiper-pagination-horizontal {
   margin: -12px var(--swiper-pagination-bullet-horizontal-gap, 12px);
 }
 
@@ -59,9 +57,9 @@
   z-index: 10;
   color: aqua;
   width: var(--swiper-pagination-bullet-width,
-    var(--swiper-pagination-bullet-size, 20px));
+  var(--swiper-pagination-bullet-size, 20px));
   height: var(--swiper-pagination-bullet-height,
-    var(--swiper-pagination-bullet-size, 6px));
+  var(--swiper-pagination-bullet-size, 6px));
   display: inline-block;
   border-radius: var(--swiper-pagination-bullet-border-radius, 5%);
   background: #000;

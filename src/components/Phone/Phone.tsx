@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PaginationButton } from '../PaginationButton/PaginationButton';
 import { PaginationPhone } from '../PaginationPhone/PaginationPhone';
@@ -11,9 +11,11 @@ import { SortCategories } from '../../Type/sortCategory';
 import { Search } from '../Search/Search';
 import { HomeIcon } from '../HomeIcon/HomeIcon';
 import { Loader } from '../Loader';
+// import { PhoneContext } from '../Context/contex';
 
 export const Phone = () => {
   const [phones, setPhones] = useState <ProductPhone[]>([]);
+  // const { phones } = useContext(PhoneContext);
   const [searchParams] = useSearchParams();
   const [itemOnPage, setItemOnPage]
   = useState(+(searchParams.get('itemOnPage') || 16));

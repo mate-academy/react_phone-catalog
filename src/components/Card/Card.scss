@@ -35,12 +35,12 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
-      border-bottom: 1px solid #e2e6e9;;
+      border-bottom: 1px solid #e2e6e9;
     }
   }
 
   &__phones {
-    padding-inline-start: 0px;
+    padding-inline-start: 0;
 
     @include onTablet {
       width: 70%;
@@ -175,7 +175,6 @@
   font-size: 12px;
   font-weight: 700;
 
-
   &:hover {
     color: $gray-primary;
   }
@@ -193,4 +192,3 @@
     height: 16px;
   }
 }
-

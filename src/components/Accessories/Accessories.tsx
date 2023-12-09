@@ -20,29 +20,31 @@ export const Accessories = () => {
     .filter(phone => phone.name === 'accessories');
 
   return (
-    <section>
-      {isLoading && (
-        <Loader />
-      )}
+    <main>
+      <section>
+        {isLoading && (
+          <Loader />
+        )}
 
-      {!isLoading && accessories2.length === 0 && (
-        <div className="tablets__container">
-          <HomeIcon title="Accessories" />
-          <h2>Accessories</h2>
-          <p>Accessories are not available yet </p>
-        </div>
+        {!isLoading && accessories2.length === 0 && (
+          <div className="tablets__container">
+            <HomeIcon title="Accessories" />
+            <h2>Accessories</h2>
+            <p>Accessories are not available yet </p>
+          </div>
 
-      )}
+        )}
 
-      {accessories2.length !== 0 && (
-        <h2>Tablets</h2>
-      )}
-      {!isLoading && isError && (
-        <p data-cy="peopleLoadingError" className="has-text-danger">
-          Something went wrong
-        </p>
-      )}
-    </section>
+        {accessories2.length !== 0 && (
+          <h2>Tablets</h2>
+        )}
+        {!isLoading && isError && (
+          <p data-cy="peopleLoadingError" className="has-text-danger">
+            Something went wrong
+          </p>
+        )}
+      </section>
+    </main>
   );
 };
 

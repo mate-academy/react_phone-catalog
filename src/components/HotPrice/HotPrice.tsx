@@ -2,27 +2,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
 import { useContext } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-// import { getPhones } from '../../utils/fetch';
 import { PhoneContext } from '../Context/contex';
 import './hotPrice.scss';
-
-// import { ProducdPhone } from '../../Type/phone';
 import 'swiper/swiper.scss'; // core Swiper
 import 'swiper/modules/navigation/navigation.scss'; // Navigation module
 import 'swiper/modules/pagination/pagination.scss'; // Pagination module
 
 export const HotPrice = () => {
   const { phones } = useContext(PhoneContext);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [isError, setIsError] = useState(false);
-
-  // useEffect(() => {
-  //   getPhones()
-  //     .then(setPhones)
-  //     .catch(() => setIsError(true))
-  //     .finally(() => setIsLoading(false));
-  // }, []);
-
   const hotPricePhones = [...phones]
     .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
 
@@ -53,7 +40,7 @@ export const HotPrice = () => {
             nextEl: '.hot__button--right',
             prevEl: '.hot__button--left',
           }}
-          spaceBetween={50}
+          spaceBetween={20}
           slidesPerView={1}
           breakpoints={{
             640: {

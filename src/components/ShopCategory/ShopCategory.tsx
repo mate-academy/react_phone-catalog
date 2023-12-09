@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import './Category.scss';
 
 export const ShopCategory: React.FC = () => {
+  const URL = 'https://mate-academy.github.io/react_phone-catalog/';
+
   return (
     <section>
-      <h2>Shop by category</h2>
+      <h2 className="category__title">Shop by category</h2>
       <div
         className="category"
         data-cy="categoryLinksContainer"
@@ -18,7 +20,7 @@ export const ShopCategory: React.FC = () => {
             <div className="category__container category__container--1">
               <img
                 className="category__img"
-                src="./_new/img/category-phones.png"
+                src={`${URL}_new/img/category-phones.png`}
                 alt="phone"
               />
             </div>
@@ -27,7 +29,6 @@ export const ShopCategory: React.FC = () => {
               <p className="category__description"> 95 models</p>
             </div>
           </Link>
-
         </div>
         <div className="category__box">
           <Link
@@ -37,7 +38,7 @@ export const ShopCategory: React.FC = () => {
             <div className="category__container category__container--2">
               <img
                 className="category__img"
-                src="./_new/img/category-tablets.png"
+                src={`${URL}_new/img/category-tablets.png`}
                 alt="tablets"
               />
             </div>
@@ -56,7 +57,7 @@ export const ShopCategory: React.FC = () => {
             <div className="category__container category__container--3">
               <img
                 className="category__img"
-                src="./_new/img/category-accessories.png"
+                src={`${URL}_new/img/category-accessories.png`}
                 alt="accessories"
               />
             </div>
@@ -65,7 +66,6 @@ export const ShopCategory: React.FC = () => {
               <p className="category__description">100 models</p>
             </div>
           </Link>
-
         </div>
       </div>
     </section>

@@ -63,3 +63,13 @@
     }
   }
 }
+
+.product {
+  margin: 0 auto;
+  width: 272px;
+
+  @include onTablet {
+    width: 100%;
+  }
+}
+

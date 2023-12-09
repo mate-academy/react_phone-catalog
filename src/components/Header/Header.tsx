@@ -18,7 +18,9 @@ export const Header = () => {
   return (
     <header className="header">
       <nav className="header__nav">
-        <div className="header__logo" />
+        <Link to="/">
+          <div className="header__logo" />
+        </Link>
         <div className="header__main">
           <NavLink to="/" className={getLinkClass}>
             Home

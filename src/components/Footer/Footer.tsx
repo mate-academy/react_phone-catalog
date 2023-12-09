@@ -30,7 +30,9 @@ export const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="header__logo" />
+      <Link to="/">
+        <div className="header__logo" />
+      </Link>
       <div className="footer__link">
         <Link className="footer__text" to="https://github.com/Tetiana-Hishchak">
           <p className="footer__text">Github</p>

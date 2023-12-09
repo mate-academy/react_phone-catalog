@@ -17,25 +17,23 @@ const App = () => (
   <PhoneProvider>
     <div className="App">
       <Header />
-      <div className="section">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/menu" element={<MenuBurger />} />
-          <Route path="/phones">
-            <Route index element={<Phone />} />
-            <Route path=":idPhone" element={<ProductDetails />} />
-          </Route>
-          <Route path="/tablets" element={<Tablets />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/cart" element={<Card />} />
-          <Route
-            path="*"
-            element={<h1 className="title">Page not found</h1>}
-          />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/menu" element={<MenuBurger />} />
+        <Route path="/phones">
+          <Route index element={<Phone />} />
+          <Route path=":idPhone" element={<ProductDetails />} />
+        </Route>
+        <Route path="/tablets" element={<Tablets />} />
+        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/cart" element={<Card />} />
+        <Route
+          path="*"
+          element={<h1 className="title">Page not found</h1>}
+        />
+      </Routes>
       <Footer />
     </div>
   </PhoneProvider>

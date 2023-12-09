@@ -8,10 +8,11 @@ import 'swiper/modules/pagination/pagination.scss'; // Pagination module
 import './Carousel.scss';
 
 const images = [
-  './_new/img/banner-phones.png',
-  './_new/img/banner-tablets.png',
-  './_new/img/banner-accessories.png',
+  '_new/img/banner-phones.png',
+  '_new/img/banner-tablets.png',
+  '_new/img/banner-accessories.png',
 ];
+const URL = 'https://mate-academy.github.io/react_phone-catalog/';
 
 export const Carousel: React.FC = () => {
   return (
@@ -41,7 +42,7 @@ export const Carousel: React.FC = () => {
           >
             <img
               className="carousel__img"
-              src={image}
+              src={`${URL}${image}`}
               alt={`${index + 1}`}
             />
           </SwiperSlide>
