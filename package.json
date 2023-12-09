@@ -8,8 +8,11 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "bulma": "^0.9.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "classnames": "^2.3.2",
+    "react": "^18.3.0-canary-bbb9cb116-20231117",
+    "react-dom": "^18.3.0-canary-bbb9cb116-20231117",
+    "react-resize-detector": "^9.1.0",
+    "react-router-dom": "^6.19.0",
     "react-scripts": "^4.0.3"
   },
   "devDependencies": {
@@ -17,10 +20,10 @@
     "@mate-academy/cypress-tools": "^1.0.4",
     "@mate-academy/eslint-config-react": "*",
     "@mate-academy/eslint-config-react-typescript": "*",
-    "@mate-academy/scripts": "^1.2.1",
+    "@mate-academy/scripts": "^1.2.10",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "*",
-    "@types/node": "^17.0.23",
+    "@types/node": "^17.0.45",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "cypress": "^9.5.3",
