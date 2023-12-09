@@ -58,7 +58,7 @@ export const Carousel = () => {
             style={{ transform }}
           >
             <li>
-              <Link to="/phone" className="Carousel__link">
+              <Link to="/phones" className="Carousel__link">
                 <img
                   src="img/banners/banner-phones.png"
                   alt="Phones"
@@ -67,7 +67,7 @@ export const Carousel = () => {
               </Link>
             </li>
             <li>
-              <Link to="/phone" className="Carousel__link">
+              <Link to="/tablets" className="Carousel__link">
                 <img
                   src="img/banners/banner-tablets.png"
                   alt="Tablets"
@@ -76,7 +76,7 @@ export const Carousel = () => {
               </Link>
             </li>
             <li>
-              <Link to="/phone" className="Carousel__link">
+              <Link to="/accessories" className="Carousel__link">
                 <img
                   src="img/banners/banner-accessories.png"
                   alt="Accessories"
