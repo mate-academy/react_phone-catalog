@@ -12,7 +12,7 @@ type Props = {
 
 export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
   const [currentPage, setCurrentPage] = useState(currPage || 1);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({ page: '1' });
 
   const totalPages = Math.ceil(total / perPage);
   const visiblePages: number[] = [];
@@ -52,16 +52,17 @@ export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
 
   return (
     <div className="pagination">
-      {currentPage > 1
-        && (
-          <Link
-            to={{
-              search: getSearchWith(searchParams, { page: `${currentPage - 1}` }),
-            }}
-          >
-            <ArrowButton direction="left" handler={leftHandler} />
-          </Link>
-        )}
+      <Link
+        to={{
+          search: getSearchWith(searchParams, { page: `${currentPage - 1}` }),
+        }}
+      >
+        <ArrowButton
+          direction="left"
+          handler={leftHandler}
+          disabledButton={currentPage === 1}
+        />
+      </Link>
 
       <ul className="pagination__list">
         {currentVisiblePages.map(number => (
@@ -85,15 +86,17 @@ export const Pagination: React.FC<Props> = ({ total, perPage, currPage }) => {
         ))}
       </ul>
 
-      {currentPage < Math.max(...visiblePages) && (
-        <Link
-          to={{
-            search: getSearchWith(searchParams, { page: `${currentPage + 1}` }),
-          }}
-        >
-          <ArrowButton direction="right" handler={rightHandler} />
-        </Link>
-      )}
+      <Link
+        to={{
+          search: getSearchWith(searchParams, { page: `${currentPage + 1}` }),
+        }}
+      >
+        <ArrowButton
+          direction="right"
+          handler={rightHandler}
+          disabledButton={currentPage === totalPages}
+        />
+      </Link>
     </div>
   );
 };

@@ -7,9 +7,14 @@ import left from '../images/icons/Chevron (Arrow Left).svg';
 type Props = {
   direction: string,
   handler?: () => void,
+  disabledButton: boolean,
 };
 
-export const ArrowButton: React.FC<Props> = ({ direction, handler }) => {
+export const ArrowButton: React.FC<Props> = ({
+  direction,
+  handler,
+  disabledButton = false,
+}) => {
   const [arrow, setArrow] = useState('');
 
   useEffect(() => {
@@ -38,6 +43,7 @@ export const ArrowButton: React.FC<Props> = ({ direction, handler }) => {
     <button
       className="arrowButton"
       type="button"
+      disabled={disabledButton}
       onClick={handler}
     >
       <img src={arrow} alt="" />

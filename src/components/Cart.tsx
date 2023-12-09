@@ -7,10 +7,13 @@ import { RootState } from '../Reducers/store';
 
 export const Cart: React.FC = () => {
   const cart = useSelector((state: RootState) => state.cart);
+  let count = 0;
 
   const totalPrice = cart.reduce(
     (accumulator: number,
       currentValue: Products) => {
+      count += currentValue.count;
+
       return accumulator + currentValue.price * currentValue.count;
     },
     0,
@@ -19,8 +22,7 @@ export const Cart: React.FC = () => {
   const checkoutHandler = () => {
     Swal(
       'Well done!',
-      'We are sorry, but this feature is not implemented yet!',
-      'success',
+      'Success!',
     );
   };
 
@@ -39,7 +41,7 @@ export const Cart: React.FC = () => {
           <p className="cart__summary-text">
             <span>{`$${totalPrice}`}</span>
             <span className="cart__summary-total">
-              {`Total for ${cart.length} items`}
+              {`Total for ${count} items`}
             </span>
           </p>
 

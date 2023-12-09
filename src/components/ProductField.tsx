@@ -39,7 +39,7 @@ export const ProductField: React.FC<Props> = ({ product }) => {
         to={`/${product.category}/${product.itemId}`}
       >
         <img
-          src={`_new/${product.image}`}
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${product.image}`}
           alt=""
           className="productField__image"
         />
