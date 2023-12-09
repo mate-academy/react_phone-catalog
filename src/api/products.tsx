@@ -59,7 +59,7 @@ export function getAccessories() {
 export function getHotPriceProducts() {
   return getProducts()
     .then(newProducts => newProducts
-      .sort((product1, product2) => getSale(product1) - getSale(product2))
+      .sort((product1, product2) => getSale(product2) - getSale(product1))
       .slice(0, 20));
 }
 

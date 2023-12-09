@@ -1,5 +1,6 @@
+/* eslint-disable */
 import './ContactForm.scss';
-import { useContext, useState } from 'react';
+import React, { useContext, useState, memo } from 'react';
 import {
   NotificationContext, NotificationStatus,
 } from '../../storage/NotificationContext';
@@ -10,7 +11,7 @@ const regexSurname = /^\w{3,20}$/;
 const regexPhone = /^(\+?38)?\s?0\d{9}$/;
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const ContactForm = () => {
+export const ContactForm: React.FC = memo(() => {
   const { setNotification } = useContext(NotificationContext);
   const { setIsModalShow } = useContext(ModalContext);
 
@@ -203,4 +204,4 @@ export const ContactForm = () => {
       </form>
     </div>
   );
-};
+});

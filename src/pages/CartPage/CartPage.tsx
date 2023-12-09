@@ -1,15 +1,15 @@
 import './CartPage.scss';
+import React, { useContext, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
-import { useContext } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { CartContext } from '../../storage/CartContext';
+import { EmptyCart } from '../../components/EmptyCart';
 import {
   NotificationContext, NotificationStatus,
 } from '../../storage/NotificationContext';
-import { EmptyCart } from '../../components/EmptyCart';
 
-export const CartPage: React.FC = () => {
+export const CartPage: React.FC = memo(() => {
   const {
     cartItems, changeQuantity, handleCart,
   } = useContext(CartContext);
@@ -149,4 +149,4 @@ export const CartPage: React.FC = () => {
       )}
     </div>
   );
-};
+});

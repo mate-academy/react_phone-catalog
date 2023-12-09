@@ -1,9 +1,10 @@
-import { ProductPageContent } from '../../components/ProductPageContent';
+import React, { memo } from 'react';
+import { Catalog } from '../../components/Catalog';
 
-export const PhonesPage = () => {
+export const PhonesPage: React.FC = memo(() => {
   return (
-    <ProductPageContent
+    <Catalog
       title="Mobile phones"
     />
   );
-};
+});

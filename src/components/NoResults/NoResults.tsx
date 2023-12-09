@@ -1,10 +1,11 @@
 import './NoResults.scss';
+import React, { memo } from 'react';
 
 type Props = {
   category: string,
 };
 
-export const NoResults: React.FC<Props> = ({ category }) => (
+export const NoResults: React.FC<Props> = memo(({ category }) => (
   <div className="no-results">
     <h1 className="no-results__title">
       {`Sorry, but ${category} are out of stock`}
@@ -14,4 +15,4 @@ export const NoResults: React.FC<Props> = ({ category }) => (
       Please, choose another category.
     </p>
   </div>
-);
+));

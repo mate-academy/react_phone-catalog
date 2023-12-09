@@ -1,27 +1,33 @@
 import './Menu.scss';
+import React, { memo, useContext } from 'react';
 import { ReactSVG } from 'react-svg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { FavContext } from '../../storage/FavContext';
+import { CartContext } from '../../storage/CartContext';
+import { NavIcon } from '../NavIcon';
 import { Logo } from '../Logo';
 
 type Props = {
   closeMenu: () => void;
 };
 
-export const Menu: React.FC<Props> = ({ closeMenu }) => {
+export const Menu: React.FC<Props> = memo(({ closeMenu }) => {
+  const { favProducts } = useContext(FavContext);
+  const { cartItems } = useContext(CartContext);
+
   return (
-    <nav className="menu">
+    <aside className="menu">
       <div className="menu__top">
         <Logo />
 
-        <button
-          type="button"
-          className="menu__btn--cross"
-          onClick={closeMenu}
-        >
-          <ReactSVG
-            src="img/icons/Close.svg"
-          />
-        </button>
+        <div className="menu__icon-link menu__icon-link--close">
+          <NavIcon>
+            <ReactSVG
+              src="img/icons/Close.svg"
+              onClick={closeMenu}
+            />
+          </NavIcon>
+        </div>
       </div>
 
       <ul className="menu__list">
@@ -65,6 +71,34 @@ export const Menu: React.FC<Props> = ({ closeMenu }) => {
           </Link>
         </li>
       </ul>
-    </nav>
+
+      <div className="menu__bottom">
+        <NavLink
+          to="/favourites"
+          className="menu__icon-link menu__icon-link-after"
+        >
+          <NavIcon
+            itemsLength={favProducts.length}
+          >
+            <ReactSVG
+              src="img/icons/Heart.svg"
+            />
+          </NavIcon>
+        </NavLink>
+
+        <NavLink
+          to="/cart"
+          className="menu__icon-link menu__icon-link-after"
+        >
+          <NavIcon
+            itemsLength={cartItems.length}
+          >
+            <ReactSVG
+              src="img/icons/Shopping bag.svg"
+            />
+          </NavIcon>
+        </NavLink>
+      </div>
+    </aside>
   );
-};
+});

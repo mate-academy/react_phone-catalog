@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { CartContext } from '../../storage/CartContext';
@@ -8,7 +8,7 @@ type Props = {
   product: Product;
 };
 
-export const AddToCartButton: React.FC<Props> = ({ product }) => {
+export const AddToCartButton: React.FC<Props> = memo(({ product }) => {
   const { isInCart, handleCart } = useContext(CartContext);
   const selected = isInCart(product.name);
 
@@ -24,4 +24,4 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
       {selected ? 'Added to cart' : 'Add to cart'}
     </button>
   );
-};
+});

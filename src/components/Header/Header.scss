@@ -1,7 +1,10 @@
 @import "../../styles/style_utils";
 
 .header {
-  height: 64px;
-  padding-left: 20px;
+  height: 48px;
   border-bottom: 1px solid $elements;
+
+  @include onDesktop {
+    height: 64px;
+  }
 }

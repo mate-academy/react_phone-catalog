@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { ReactSVG } from 'react-svg';
 import { Logo } from '../Logo';
 import './Footer.scss';
@@ -9,7 +9,7 @@ import {
   NotificationContext, NotificationStatus,
 } from '../../storage/NotificationContext';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = memo(() => {
   const { setIsModalShow } = useContext(ModalContext);
   const { setNotification } = useContext(NotificationContext);
 
@@ -79,4 +79,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});

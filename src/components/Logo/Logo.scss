@@ -1,7 +1,10 @@
 .logo {
+  justify-self: start;
+  flex-grow: 1;
+  flex-shrink: 0;
   display: block;
-  width: 40px;
   height: 24px;
+  padding-inline: 20px;
 
   transition: all 0.3s;
 

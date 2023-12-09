@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import classNames from 'classnames';
 import './ButtonHeart.scss';
 import { FavContext } from '../../storage/FavContext';
@@ -8,7 +8,7 @@ type Props = {
   product: Product;
 };
 
-export const ButtonHeart: React.FC<Props> = ({ product }) => {
+export const ButtonHeart: React.FC<Props> = memo(({ product }) => {
   const { favProducts, addFav, removeFav } = useContext(FavContext);
   const isFav = favProducts.some(prod => prod.itemId === product.itemId);
 
@@ -32,4 +32,4 @@ export const ButtonHeart: React.FC<Props> = ({ product }) => {
       type="button"
     />
   );
-};
+});

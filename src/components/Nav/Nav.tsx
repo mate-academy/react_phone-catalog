@@ -1,16 +1,18 @@
 import './Nav.scss';
 import { CSSTransition } from 'react-transition-group';
-
 import { NavLink, useLocation } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import React, {
+  useContext, useState, memo, useCallback,
+} from 'react';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
 import { Logo } from '../Logo';
+import { Menu } from '../Menu';
 import { Search } from '../Search';
 import { FavContext } from '../../storage/FavContext';
 import { CartContext } from '../../storage/CartContext';
-import { Menu } from '../Menu';
 import { PageSizeContext } from '../../storage/PageSizeContext';
+import { NavIcon } from '../NavIcon';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'navbar__item', 'navbar__item-after',
@@ -24,13 +26,15 @@ const getIconLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
 
 const isVisible = ['/phones', '/tablets', '/accessories', '/favourites'];
 
-export const Nav = () => {
+export const Nav: React.FC = memo(() => {
   const { favProducts } = useContext(FavContext);
   const { cartItems } = useContext(CartContext);
-  const { isDesktopSize, isLaptopSize } = useContext(PageSizeContext);
+  const {
+    isDesktopSize, isLaptopSize,
+  } = useContext(PageSizeContext);
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const closeMenu = () => setIsMenuOpen(false);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
   return (
     <nav
@@ -51,99 +55,98 @@ export const Nav = () => {
         />
       </CSSTransition>
 
-      <ul className="navbar__left-side">
-        {!isDesktopSize && !isLaptopSize && (
-          <div className="navbar__icon-container">
-            <ReactSVG
-              className="navbar__icon--menu"
-              src="img/icons/Hamburger.svg"
-              onClick={() => setIsMenuOpen(true)}
-            />
-          </div>
-        )}
+      <Logo />
 
-        <Logo />
+      {(isDesktopSize || isLaptopSize) ? (
+        <>
+          <ul className="navbar__left-side">
+            {pathname !== '/cart' && (
+              <>
+                <NavLink
+                  to="/"
+                  className={getLinkClass}
+                >
+                  Home
+                </NavLink>
 
-        {(isDesktopSize || isLaptopSize) && pathname !== '/cart' && (
-          <>
-            <NavLink
-              to="/"
-              className={getLinkClass}
-            >
-              Home
-            </NavLink>
+                <NavLink
+                  to="/phones"
+                  className={getLinkClass}
+                >
+                  Phones
+                </NavLink>
 
-            <NavLink
-              to="/phones"
-              className={getLinkClass}
-            >
-              Phones
-            </NavLink>
+                <NavLink
+                  to="/tablets"
+                  className={getLinkClass}
+                >
+                  Tablets
+                </NavLink>
 
-            <NavLink
-              to="/tablets"
-              className={getLinkClass}
-            >
-              Tablets
-            </NavLink>
+                <NavLink
+                  to="/accessories"
+                  className={getLinkClass}
+                >
+                  Accessories
+                </NavLink>
+              </>
+            )}
+          </ul>
 
-            <NavLink
-              to="/accessories"
-              className={getLinkClass}
-            >
-              Accessories
-            </NavLink>
-          </>
-        )}
-      </ul>
-
-      <ul className="navbar__right-side">
-        {isVisible.includes(pathname) && (
-          <Search
-            key={pathname}
-          />
-        )}
-
-        {pathname !== '/cart' && (
-          <NavLink
-            to="/favourites"
-            className={getIconLinkClass}
-          >
-            <div className="navbar__icon-box">
-              <div className="navbar__icon-container">
-                <ReactSVG
-                  src="img/icons/Heart.svg"
-                />
-
-                {favProducts.length > 0 && (
-                  <div className="navbar__counter">
-                    {favProducts.length}
-                  </div>
-                )}
-              </div>
-            </div>
-          </NavLink>
-        )}
-
-        <NavLink
-          to="/cart"
-          className={getIconLinkClass}
-        >
-          <div className="navbar__icon-box">
-            <div className="navbar__icon-container">
-              <ReactSVG
-                src="img/icons/Shopping bag.svg"
+          <ul className="navbar__right-side">
+            {isVisible.includes(pathname) && (
+              <Search
+                key={pathname}
               />
+            )}
 
-              {cartItems.length > 0 && (
-                <div className="navbar__counter">
-                  {cartItems.length}
-                </div>
-              )}
-            </div>
+            {pathname !== '/cart' && (
+              <NavLink
+                to="/favourites"
+                className={getIconLinkClass}
+              >
+                <NavIcon
+                  itemsLength={favProducts.length}
+                >
+                  <ReactSVG
+                    src="img/icons/Heart.svg"
+                  />
+                </NavIcon>
+              </NavLink>
+            )}
+
+            <NavLink
+              to="/cart"
+              className={getIconLinkClass}
+            >
+              <NavIcon
+                itemsLength={cartItems.length}
+              >
+                <ReactSVG
+                  src="img/icons/Shopping bag.svg"
+                />
+              </NavIcon>
+            </NavLink>
+          </ul>
+        </>
+      ) : (
+        <>
+          {isVisible.includes(pathname) && (
+            <Search
+              key={pathname}
+            />
+          )}
+
+          <div className="navbar__icon-link">
+            <NavIcon>
+              <ReactSVG
+                src="img/icons/Hamburger.svg"
+                onClick={() => setIsMenuOpen(true)}
+              />
+            </NavIcon>
           </div>
-        </NavLink>
-      </ul>
+        </>
+      )}
     </nav>
   );
-};
+});

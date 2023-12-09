@@ -17,4 +17,16 @@
       height: 100%;
     }
   }
+
+  &__link {
+    padding: 10px 20px;
+    border: 1px solid $icons;
+    border-radius: 10px;
+    font-weight: bold;
+
+    &:hover {
+      border-color: $secondary;
+      background-color: $hover-bg;
+    }
+  }
 }

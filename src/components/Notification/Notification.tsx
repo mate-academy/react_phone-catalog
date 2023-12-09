@@ -2,13 +2,13 @@
 import { CSSTransition } from 'react-transition-group';
 import './Notification.scss';
 import React, {
-  useContext, useEffect, useRef, useState,
+  useContext, useEffect, useRef, useState, memo,
 } from 'react';
 import {
   NotificationContext,
 } from '../../storage/NotificationContext';
 
-export const Notification: React.FC = () => {
+export const Notification: React.FC = memo(() => {
   const { notification } = useContext(NotificationContext);
   const [show, setShow] = useState(false);
   const firstRenderRef = useRef(true);
@@ -46,4 +46,4 @@ export const Notification: React.FC = () => {
       </div>
     </CSSTransition>
   );
-};
+});

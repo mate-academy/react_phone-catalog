@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { useContext, memo } from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './FavouritesPage.scss';
 import { FavContext } from '../../storage/FavContext';
 import { ProductsList } from '../../components/ProductsList';
 import { EmptyCart } from '../../components/EmptyCart';
 
-export const Favourites = () => {
+export const Favourites = memo(() => {
   const { favProducts } = useContext(FavContext);
 
   return (
@@ -33,4 +33,4 @@ export const Favourites = () => {
       )}
     </div>
   );
-};
+});

@@ -1,10 +1,11 @@
 import './NoSearchResult.scss';
+import React, { memo } from 'react';
 
 type Props = {
   query: string,
 };
 
-export const NoSearchResult: React.FC<Props> = ({ query }) => (
+export const NoSearchResult: React.FC<Props> = memo(({ query }) => (
   <div className="no-results">
     <h1 className="no-results__title">
       {`No results for "${query}"`}
@@ -16,4 +17,4 @@ export const NoSearchResult: React.FC<Props> = ({ query }) => (
       Please try different criteria.
     </p>
   </div>
-);
+));

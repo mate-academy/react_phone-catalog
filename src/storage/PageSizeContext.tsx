@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 
 type Context = {
   width: number,
@@ -27,17 +27,17 @@ export const PageSizeProvider: React.FC<Props> = ({ children }) => {
     width >= 640 && width < 900,
   );
   const [isLaptopSize, setIsLaptopSize] = useState(
-    width >= 900 && width < 1168,
+    width >= 900 && width < 1200,
   );
-  const [isDesktopSize, setIsDesktopSize] = useState(width >= 1168);
+  const [isDesktopSize, setIsDesktopSize] = useState(width >= 1200);
 
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;
 
       setWidth(newWidth);
-      setIsDesktopSize(newWidth >= 1168);
-      setIsLaptopSize(newWidth >= 900 && newWidth < 1168);
+      setIsDesktopSize(newWidth >= 1200);
+      setIsLaptopSize(newWidth >= 900 && newWidth < 1200);
       setIsTabletSize(
         newWidth >= 640 && newWidth < 900,
       );

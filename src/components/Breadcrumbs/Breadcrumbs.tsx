@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import './Breadcrumbs.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
@@ -10,7 +11,7 @@ type Props = {
   productName?: string;
 };
 
-export const Breadcrumbs: React.FC<Props> = ({ productName }) => {
+export const Breadcrumbs: React.FC<Props> = memo(({ productName }) => {
   const { pathname } = useLocation();
   const directory = pathname.split('/')[1];
 
@@ -66,4 +67,4 @@ export const Breadcrumbs: React.FC<Props> = ({ productName }) => {
       )}
     </div>
   );
-};
+});

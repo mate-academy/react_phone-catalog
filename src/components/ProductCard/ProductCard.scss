@@ -1,14 +1,27 @@
 @import "../../styles/style_utils";
 
 .product-card {
-  border: 1px solid $elements;
+  grid-column: span 4;
+  flex-basis: 272px;
+  flex-grow: 1;
   height: 507px;
-  max-width: 272px;
-  width: 100%;
   padding: 24px 32px 24px 24px;
+  border: 1px solid $elements;
   box-shadow: none;
   transition: $transition;
   cursor: url("../../img/icons/Cursor.svg"), auto;
+
+  @include onTablet {
+    grid-column: span 6;
+  }
+
+  @include onLaptop {
+    grid-column: span 8;
+  }
+
+  @include onDesktop {
+    grid-column: span 6;
+  }
 
   &:hover {
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
@@ -26,8 +39,13 @@
     display: flex;
     justify-content: center;
     height: 208px;
-    margin: 0 auto;
     margin-bottom: 24px;
+  }
+
+  &__link-img {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__img {

@@ -1,4 +1,5 @@
 import './Pagination.scss';
+import React, { memo } from 'react';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
 import { SearchLink } from '../SearchLink';
@@ -19,7 +20,7 @@ interface Props {
   currentPage: number;
 }
 
-export const Pagination: React.FC<Props> = ({
+export const Pagination: React.FC<Props> = memo(({
   total,
   perPage,
   currentPage,
@@ -165,4 +166,4 @@ export const Pagination: React.FC<Props> = ({
       </div>
     </>
   );
-};
+});

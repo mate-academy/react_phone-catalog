@@ -1,6 +1,6 @@
 import './ProductCard.scss';
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import React, { useContext, memo } from 'react';
 import { Product } from '../../types/Product';
 import { ButtonHeart } from '../ButtonHeart/ButtonHeart';
 import { PriceContext } from '../../storage/fullPriceContext';
@@ -10,7 +10,8 @@ type Props = {
   product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = memo(({ product }) => {
+  const [searchParams] = useSearchParams();
   const {
     name,
     fullPrice,
@@ -20,9 +21,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
     screen,
     itemId,
+    category,
     id,
   } = product;
   const onlyFullPrice = useContext(PriceContext) || false;
+  const state = useLocation();
 
   return (
     <li
@@ -33,7 +36,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         className="product-card__img-container"
       >
         <Link
-          to={`/${product.category}/${product.itemId}`}
+          to={`/${category}/${itemId}`}
+          state={{ search: searchParams.toString() }}
+          className="product-card__link-img"
         >
           <img
             src={image}
@@ -45,7 +50,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="product-card__detail">
         <Link
-          to={itemId}
+          to={`/${category}/${itemId}`}
+          state={{ search: state.search }}
         >
           <p className="product-card__name">
             {name}
@@ -106,4 +112,4 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
     </li>
   );
-};
+});

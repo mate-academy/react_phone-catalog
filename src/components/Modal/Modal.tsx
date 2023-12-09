@@ -1,10 +1,16 @@
 import './Modal.scss';
 import { ReactSVG } from 'react-svg';
-import React, { useContext, useEffect, useState } from 'react';
+import React,
+{
+  useContext,
+  useEffect,
+  useState,
+  memo,
+} from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ModalContext } from '../../storage/ModalContext';
 
-export const Modal: React.FC = ({ children }) => {
+export const Modal: React.FC = memo(({ children }) => {
   const { isModalShow, setIsModalShow } = useContext(ModalContext);
   const [showForm, setShowForm] = useState(false);
 
@@ -58,4 +64,4 @@ export const Modal: React.FC = ({ children }) => {
       </div>
     </CSSTransition>
   );
-};
+});

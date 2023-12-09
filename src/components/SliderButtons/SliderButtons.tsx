@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
 import './SliderButtons.scss';
@@ -11,7 +12,7 @@ type Props = {
 
 /* eslint-disable */
 
-export const SliderButtons: React.FC<Props> = ({
+export const SliderButtons: React.FC<Props> = memo(({
   isLeftDisabled, isRightDisabled, prevPage, nextPage,
 }) => {
   return (
@@ -43,4 +44,4 @@ export const SliderButtons: React.FC<Props> = ({
       </button>
     </div>
   );
-};
+});

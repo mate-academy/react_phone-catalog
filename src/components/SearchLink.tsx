@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import { Link, LinkProps, useSearchParams } from 'react-router-dom';
 import { SearchParams, getSearchWith } from '../helpers/searchHelpers';
 
@@ -5,7 +6,7 @@ type Props = Omit<LinkProps, 'to'> & {
   params: SearchParams,
 };
 
-export const SearchLink: React.FC<Props> = ({
+export const SearchLink: React.FC<Props> = memo(({
   children,
   params,
   ...props
@@ -22,4 +23,4 @@ export const SearchLink: React.FC<Props> = ({
       {children}
     </Link>
   );
-};
+});

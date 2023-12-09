@@ -1,8 +1,9 @@
+import React, { memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './Container.scss';
 
-export const Container: React.FC = ({ children }) => {
+export const Container: React.FC = memo(({ children }) => {
   const { pathname } = useLocation();
 
   return (
@@ -13,4 +14,4 @@ export const Container: React.FC = ({ children }) => {
       {children}
     </div>
   );
-};
+});

@@ -16,6 +16,10 @@
       object-position: center;
       object-fit: contain;
     }
+
+    &:hover {
+      @include scale;
+    }
   }
 
   &__current {

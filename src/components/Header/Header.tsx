@@ -1,8 +1,8 @@
 import './Header.scss';
-import React from 'react';
+import React, { memo } from 'react';
 import { Nav } from '../Nav';
 
-export const Header: React.FC = () => {
+export const Header: React.FC = memo(() => {
   return (
     <header
       className="header"
@@ -10,4 +10,4 @@ export const Header: React.FC = () => {
       <Nav />
     </header>
   );
-};
+});

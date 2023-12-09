@@ -1,13 +1,13 @@
 import { debounce } from 'lodash';
-import {
-  useCallback, useRef, useState,
+import React, {
+  useRef, useState, memo,
 } from 'react';
 import './Search.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { ReactSVG } from 'react-svg';
 import { SearchParams, getSearchWith } from '../../helpers/searchHelpers';
 
-export const Search: React.FC = () => {
+export const Search: React.FC = memo(() => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') || '';
 
@@ -18,11 +18,11 @@ export const Search: React.FC = () => {
 
   const { pathname } = useLocation();
 
-  function setSearchWith(params: SearchParams) {
+  const setSearchWith = (params: SearchParams) => {
     const search = getSearchWith(searchParams, params);
 
     setSearchParams(search);
-  }
+  };
 
   const handleAppliedChange = (
     newQuery: string,
@@ -31,7 +31,7 @@ export const Search: React.FC = () => {
     setSearchWith({ query: newQuery || null });
   };
 
-  const applyQuery = useCallback(debounce(handleAppliedChange, 1000), []);
+  const applyQuery = debounce(handleAppliedChange, 1000);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -91,4 +91,4 @@ export const Search: React.FC = () => {
 
     </div>
   );
-};
+});

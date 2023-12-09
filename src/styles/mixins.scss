@@ -1,0 +1,149 @@
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin madeIcon($size) {
+  display: block;
+  @include square($size);
+
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@mixin squareButton($size) {
+  @include square($size);
+  border: 1px solid $icons;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: $transition;
+
+  & svg {
+    transform: scale(1);
+    fill: $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+
+    & svg {
+      transition: $transition;
+      transform: scale(1.4);
+    }
+  }
+
+  &:disabled {
+    border-color: $elements;
+
+    &:hover {
+      border-color: $elements;
+    }
+
+    & svg {
+      fill: $icons;
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin primaryButton() {
+  @extend %buttons;
+  width: 100%;
+  height: 40px;
+  background-color: $primary;
+  color: $white;
+  line-height: 21px;
+  box-shadow: none;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--selected {
+    border: 1px solid $elements;
+    color: $green;
+    background-color: $white;
+  }
+}
+
+@mixin dropDown {
+  @extend %buttons;
+  height: 40px;
+  padding-left: 10px;
+  border-color: $icons;
+
+  appearance: none;
+  background-image: url("../img/icons/Chevron\ \(Arrow\ Down\).svg");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem top 50%;
+  background-size: 16px;
+  color: $primary;
+
+  &:hover {
+    border-color: $secondary;
+  }
+
+  & option {
+    background-color: #fff;
+  }
+}
+
+@mixin scale {
+  transform: scale(1);
+  transition: $transition;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+@mixin contentPaddingInline {
+  padding-inline: 16px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onDesktop {
+    padding-inline: 32px;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+}
+
+@mixin pageGrid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  row-gap: 40px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onLaptop {
+    --columns: 24;
+  }
+}

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, memo, useCallback } from 'react';
 import {
   getBrandNewProducts, getHotPriceProducts, getProducts, getSuggestedProducts,
 } from '../../api/products';
@@ -13,7 +13,7 @@ type Props = {
   title: string
 };
 
-export const ProductSlider: React.FC<Props> = ({ title }) => {
+export const ProductSlider: React.FC<Props> = memo(({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [itemIndex, setItemIndex] = useState(0);
   const [itemsVisible, setItemsVisible] = useState(4);
@@ -63,8 +63,8 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
 
   const isLeftDisabled = itemIndex === 0;
   const isRightDisabled = (itemIndex + 1) * itemsVisible >= products.length;
-  const prevPage = () => setItemIndex(itemIndex - 1);
-  const nextPage = () => setItemIndex(itemIndex + 1);
+  const prevPage = useCallback(() => setItemIndex(currentInd => currentInd - 1), []);
+  const nextPage = useCallback(() => setItemIndex(currentInd => currentInd + 1), []);
 
   return (
     <div className="product-slider">
@@ -88,4 +88,4 @@ export const ProductSlider: React.FC<Props> = ({ title }) => {
       )}
     </div>
   );
-};
+});

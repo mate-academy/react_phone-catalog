@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import './ImageSlider.scss';
 import { ReactSVG } from 'react-svg';
 import classNames from 'classnames';
@@ -9,7 +9,7 @@ const bannersImages = [
   'img/banner-accessories.png',
 ];
 
-export const ImageSlider: React.FC = () => {
+export const ImageSlider: React.FC = memo(() => {
   const [current, setCurrent] = useState(0);
   const { length } = bannersImages;
 
@@ -27,7 +27,7 @@ export const ImageSlider: React.FC = () => {
     }, 5000);
 
     return () => clearTimeout(autoSlide);
-  });
+  }, []);
 
   return (
     <div className="banner">
@@ -96,4 +96,4 @@ export const ImageSlider: React.FC = () => {
       </div>
     </div>
   );
-};
+});

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { getProducts } from '../../api/products';
 import { Product, ProductType } from '../../types/Product';
 import './Categories.scss';
 
-export const Categories: React.FC = () => {
+export const Categories: React.FC = memo(() => {
   const [products, setProducts] = useState<Product[]>([]);
 
   const getQuantity = (type: ProductType) => products
@@ -17,7 +17,7 @@ export const Categories: React.FC = () => {
   useEffect(() => {
     getProducts()
       .then(setProducts);
-  });
+  }, []);
 
   return (
     <div className="categories">
@@ -101,4 +101,4 @@ export const Categories: React.FC = () => {
       </div>
     </div>
   );
-};
+});

@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import React, { useState, memo } from 'react';
 import classNames from 'classnames';
 import { ReactSVG } from 'react-svg';
 import { CSSTransition } from 'react-transition-group';
 import { DropDownOption } from '../../types/DropDownOptions';
 import './Dropdown.scss';
+import { SearchLink } from '../SearchLink';
+import { SearchParams } from '../../helpers/searchHelpers';
 
 type Props = {
   options: DropDownOption[];
   currentValue: string,
-  onChange: (v: string) => void,
+  type: string,
   isSmall?: boolean,
 };
 
-export const Dropdown: React.FC<Props> = ({
-  options, isSmall, onChange, currentValue,
+export const Dropdown: React.FC<Props> = memo(({
+  options, isSmall, currentValue, type,
 }) => {
   const [isSelected, setIsSelected] = useState(false);
 
@@ -29,9 +31,16 @@ export const Dropdown: React.FC<Props> = ({
     setIsSelected(!isSelected);
   };
 
-  const handleSelectChange = (select: string) => {
-    onChange(select);
-    setIsSelected(false);
+  const createLink = (option: string) => {
+    const obj = {} as SearchParams;
+
+    obj[type] = option === 'all'
+      ? null
+      : option.toString();
+
+    const newParams = { ...obj, page: null };
+
+    return newParams;
   };
 
   return (
@@ -66,17 +75,19 @@ export const Dropdown: React.FC<Props> = ({
         classNames="dropdown__content"
       >
         <div className="dropdown__content">
-          {options.map(({ name, value }) => (
-            <button
-              className="dropdown__option"
-              type="button"
-              onClick={() => handleSelectChange(value)}
-            >
-              {name}
-            </button>
-          ))}
+          {options.map(({ name, value }) => {
+            return (
+              <SearchLink
+                params={createLink(value)}
+                className="dropdown__option"
+                key={name}
+              >
+                {name}
+              </SearchLink>
+            );
+          })}
         </div>
       </CSSTransition>
     </div>
   );
-};
+});
