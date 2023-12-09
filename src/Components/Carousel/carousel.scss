@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row; /* Adjust to column layout */
+  flex-direction: row;
   margin-top: 40px;
 }
 
@@ -32,8 +32,8 @@
 
 .slider-container {
   overflow: hidden;
-  width: 1040px; /* Adjust as needed */
-  height: 400px; /* Adjust as needed */
+  width: 1040px;
+  height: 400px;
 }
 
 .slides {
@@ -53,22 +53,22 @@
 
 .dots-container {
   display: flex;
-  margin-top: 16px; /* Adjust as needed */
+  margin-top: 16px;
   align-items: center;
   justify-content: center;
 }
 
 .dot {
-  width: 14px; /* Adjust dot size as needed */
+  width: 14px;
   height: 4px;
-  background-color: #ccc; /* Default color for dots */
+  background-color: #ccc;
 
-  margin: 0 8px; /* Adjust dot spacing as needed */
+  margin: 0 8px;
   cursor: pointer;
 }
 
 .dot.active {
-  background-color: #333; /* Color for the active dot */
+  background-color: #333;
 }
 
 .chevron {

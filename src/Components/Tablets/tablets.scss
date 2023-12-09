@@ -71,7 +71,7 @@ line-height: normal;
 }
 
 .children{
-    flex: 0 1 calc(25% - 20px); /* 25% width for 4 items in a row, minus margin */
+    flex: 0 1 calc(25% - 20px);
     margin: 10px;
     box-sizing: border-box;
 

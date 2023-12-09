@@ -1,7 +1,7 @@
 import React from 'react';
 import './footer.scss';
 import Logo from './Logo.svg';
-import Chevron from './Chevron.svg'
+import Chevron from './Chevron.svg';
 
 const Footer: React.FC = () => {
   return (

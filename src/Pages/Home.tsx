@@ -20,14 +20,17 @@ const Home = () => {
         setFilteredProducts(data);
 
         const filteredDiscountedProducts = data.filter((product) => product.discount !== 0);
+
         setDiscountedProducts(filteredDiscountedProducts);
       })
       .catch((error) => console.error('Error fetching products:', error));
 
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
     setFavoriteProducts(storedFavorites);
 
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+
     setCartProducts(storedCart);
   }, []);
 

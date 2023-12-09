@@ -20,7 +20,7 @@ const Carousel = () => {
         key={index}
         className={`dot ${index === currentIndex ? 'active' : ''}`}
         onClick={() => goToSlide(index)}
-      ></div>
+      />
     ));
   };
 
@@ -35,21 +35,21 @@ const Carousel = () => {
   return (
     <>
       <div className="carousel-container">
-          <div className="button-left" onClick={goToPrev}>
-            <img className="chevron" src={ChevronLeft} alt="Previous" />
+        <div className="button-left" onClick={goToPrev}>
+          <img className="chevron" src={ChevronLeft} alt="Previous" />
+        </div>
+        <div className="slider-container">
+          <div className="slides" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            {images.map((image, index) => (
+              <div key={index} className="slide">
+                <img src={image} alt={`Slide ${index + 1}`} />
+              </div>
+            ))}
           </div>
-          <div className="slider-container">
-            <div className="slides" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-              {images.map((image, index) => (
-                <div key={index} className="slide">
-                  <img src={image} alt={`Slide ${index + 1}`} />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="button-right" onClick={goToNext}>
-            <img className="chevron" src={ChevronRight} alt="Next" />
-          </div>
+        </div>
+        <div className="button-right" onClick={goToNext}>
+          <img className="chevron" src={ChevronRight} alt="Next" />
+        </div>
 
       </div>
       <div className="dots-container">{renderDots()}</div>

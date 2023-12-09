@@ -20,6 +20,7 @@ export const Categories = () => {
           } else if (item.type === 'accessory') {
             acc.accessories += 1;
           }
+
           return acc;
         }, { tablets: 0, phones: 0, accessories: 0 });
 
@@ -29,26 +30,38 @@ export const Categories = () => {
   }, []);
 
   return (
-    <div className='categories-container'>
-      <h1 className='categories-title'>Shop by Category</h1>
+    <div className="categories-container">
+      <h1 className="categories-title">Shop by Category</h1>
 
-      <div className='categories-row'>
-        <NavLink to="/phones" className='category'>
-          <img src={phones} className='category-img phones' alt="phones" />
-          <h3 className='category-name'>Mobile Phones</h3>
-          <p className='category-counter'>{productCounts.phones} models</p>
+      <div className="categories-row">
+        <NavLink to="/phones" className="category">
+          <img src={phones} className="category-img phones" alt="phones" />
+          <h3 className="category-name">Mobile Phones</h3>
+          <p className="category-counter">
+            {productCounts.phones}
+            {' '}
+            models
+          </p>
         </NavLink>
 
-        <NavLink to="/tablets" className='category'>
-          <img src={tablets} className='category-img tablets' alt="tablets" />
-          <h3 className='category-name'>Tablets</h3>
-          <p className='category-counter'>{productCounts.tablets} models</p>
+        <NavLink to="/tablets" className="category">
+          <img src={tablets} className="category-img tablets" alt="tablets" />
+          <h3 className="category-name">Tablets</h3>
+          <p className="category-counter">
+            {productCounts.tablets}
+            {' '}
+            models
+          </p>
         </NavLink>
 
-        <NavLink to="/accessories" className='category'>
-          <img src={accessories} className='category-img accessories last' alt="accessories" />
-          <h3 className='category-name'>Accessories</h3>
-          <p className='category-counter'>{productCounts.accessories} models</p>
+        <NavLink to="/accessories" className="category">
+          <img src={accessories} className="category-img accessories last" alt="accessories" />
+          <h3 className="category-name">Accessories</h3>
+          <p className="category-counter">
+            {productCounts.accessories}
+            {' '}
+            models
+          </p>
         </NavLink>
       </div>
     </div>

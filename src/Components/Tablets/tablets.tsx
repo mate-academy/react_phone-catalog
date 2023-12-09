@@ -16,6 +16,7 @@ const Tablets = () => {
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
     setFavoriteProducts(storedFavorites);
   }, []);
 
@@ -25,9 +26,7 @@ const Tablets = () => {
       .then((data) => {
         const tabletProducts = data.filter((product) => product.type === 'tablet');
 
-        const filteredTablets = tabletProducts.filter((tablet) =>
-          tablet.name.toLowerCase().includes(searchInput.toLowerCase())
-        );
+        const filteredTablets = tabletProducts.filter((tablet) => tablet.name.toLowerCase().includes(searchInput.toLowerCase()));
 
         setTablets(filteredTablets);
 
@@ -39,6 +38,7 @@ const Tablets = () => {
           } else if (item.type === 'accessory') {
             acc.accessories += 1;
           }
+
           return acc;
         }, { tablets: 0, phones: 0, accessories: 0 });
 
@@ -50,6 +50,7 @@ const Tablets = () => {
   const handleAddToFavorite = (productId) => {
     if (!favoriteProducts.includes(productId)) {
       const updatedFavorites = [...favoriteProducts, productId];
+
       setFavoriteProducts(updatedFavorites);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     }
@@ -73,11 +74,16 @@ const Tablets = () => {
     return data.sort((a, b) => {
       if (sortBy === 'name') {
         return a.name.localeCompare(b.name);
-      } else if (sortBy === 'price') {
+      }
+
+      if (sortBy === 'price') {
         return a.price - b.price;
-      } else if (sortBy === 'discount') {
+      }
+
+      if (sortBy === 'discount') {
         return (b.discount || 0) - (a.discount || 0);
       }
+
       return 0;
     });
   };
@@ -85,6 +91,7 @@ const Tablets = () => {
   const getRangeForCurrentPage = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
+
     return { startIndex, endIndex };
   };
 
@@ -103,44 +110,48 @@ const Tablets = () => {
 
   return (
     <>
-      <div className='folder-holder'>
-        <button className='home-button'>
+      <div className="folder-holder">
+        <button className="home-button">
           <img src={home} alt="Home" />
         </button>
         <img src={chevron} alt="Chevron" />
-        <p className='page-name'>Tablets</p>
+        <p className="page-name">Tablets</p>
       </div>
-      <h3 className='page-title'>Tablets</h3>
-      <p className='product-counter'>{productCounts.tablets} models</p>
-      <div className='page-container'>
-        <div className='sort'>
-          <label htmlFor="sort" className='label-text'>Sort by:</label>
-          <select id="sort" value={sortBy} onChange={handleSortChange} className='select-sorter'>
+      <h3 className="page-title">Tablets</h3>
+      <p className="product-counter">
+        {productCounts.tablets}
+        {' '}
+        models
+      </p>
+      <div className="page-container">
+        <div className="sort">
+          <label htmlFor="sort" className="label-text">Sort by:</label>
+          <select id="sort" value={sortBy} onChange={handleSortChange} className="select-sorter">
             <option value="name">Name</option>
             <option value="price">Price</option>
             <option value="discount">Discount</option>
           </select>
         </div>
-        <div className='items'>
-          <label htmlFor="itemsPerPage" className='label-text'>Items per Page:</label>
-          <select id="itemsPerPage" value={itemsPerPage} onChange={handleItemsPerPageChange} className='select-items'>
+        <div className="items">
+          <label htmlFor="itemsPerPage" className="label-text">Items per Page:</label>
+          <select id="itemsPerPage" value={itemsPerPage} onChange={handleItemsPerPageChange} className="select-items">
             <option value={4}>4</option>
             <option value={8}>8</option>
             <option value={16}>16</option>
           </select>
         </div>
       </div>
-      <div className='search-container'>
+      <div className="search-container">
         <input
-          className='search-input'
-          type='text'
-          placeholder='Search in tablets...'
+          className="search-input"
+          type="text"
+          placeholder="Search in tablets..."
           style={{ width: '327px', height: '64px' }}
           value={searchInput}
           onChange={handleSearchInputChange}
         />
       </div>
-      <div className='products-container'>
+      <div className="products-container">
         {sortProducts(tablets, sortBy)
           .slice(getRangeForCurrentPage().startIndex, getRangeForCurrentPage().endIndex)
           .map((tablet) => (
@@ -152,8 +163,8 @@ const Tablets = () => {
             />
           ))}
       </div>
-      <div className='slider-holder'>
-        <button className='slider-button left' onClick={handlePrevPage}></button>
+      <div className="slider-holder">
+        <button className="slider-button left" onClick={handlePrevPage} />
         {Array.from({ length: Math.ceil(tablets.length / itemsPerPage) }, (_, index) => index + 1).map((page) => (
           <button
             className={`slider-button ${currentPage === page ? 'selected' : ''}`}
@@ -163,7 +174,7 @@ const Tablets = () => {
             {page}
           </button>
         ))}
-        <button className='slider-button right' onClick={handleNextPage}></button>
+        <button className="slider-button right" onClick={handleNextPage} />
       </div>
     </>
   );

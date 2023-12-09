@@ -12,6 +12,7 @@ const CartCard = ({ productId }) => {
 
   const getCounterForProduct = () => {
     const cartProduct = cartProducts.find((product) => product.id === productId);
+
     return cartProduct ? cartProduct.quantity : 0;
   };
 
@@ -49,26 +50,26 @@ const CartCard = ({ productId }) => {
   };
 
   const totalprice = () => {
-    return product.price * getCounterForProduct() + '$';
+    return `${product.price * getCounterForProduct()}$`;
   };
 
   return (
     <div className="cart-card">
-      <button className='x' onClick={handleRemoveFromCartClick}>
-        <img src={Close} alt="close"/>
+      <button className="x" onClick={handleRemoveFromCartClick}>
+        <img src={Close} alt="close" />
       </button>
       <img src={product.imageUrl} className="img" alt={product.name} />
-      <div className='name'>{product.name}</div>
-      <div className='buttons-holder1'>
-        <button className='plusminus' onClick={handleRemoveClick}>
-          <img src={Minus} className='' alt='minus' />
+      <div className="name">{product.name}</div>
+      <div className="buttons-holder1">
+        <button className="plusminus" onClick={handleRemoveClick}>
+          <img src={Minus} className="" alt="minus" />
         </button>
         <div>{getCounterForProduct()}</div>
-        <button className='plusminus' onClick={handleAddClick}>
-          <img src={Plus} className='' alt='plus' />
+        <button className="plusminus" onClick={handleAddClick}>
+          <img src={Plus} className="" alt="plus" />
         </button>
       </div>
-      <div className='totalprice'>{totalprice()}</div>
+      <div className="totalprice">{totalprice()}</div>
     </div>
   );
 };

@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
         <ul>
           <li>
             <div className={`rectangle ${location.pathname.includes('/cart') ? 'activeLink' : ''}`}>
-              <NavLink to="/cart" className='a'>
+              <NavLink to="/cart" className="a">
                 <img src={Group} alt="Logo" className="" />
                 {cartProducts.length > 0 && (
                   <div className="cart-count">{cartProducts.length}</div>
