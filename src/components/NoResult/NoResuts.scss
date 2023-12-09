@@ -19,8 +19,8 @@
   }
 
   &__image-container {
-    position: relative;
-
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
     max-height: 700px;
     width: 80vw;
@@ -28,7 +28,6 @@
     &::after {
       content: "";
       display: block;
-      // padding-bottom: 70%;
 
       @include onTablet {
         padding-bottom: 100%;
@@ -50,10 +49,7 @@
   }
 
   &__image {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-
+    max-width: 100%;
     object-fit: contain;
     object-position: center;
   }
