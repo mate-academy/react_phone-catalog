@@ -6,4 +6,8 @@
 
 .App {
   font-family: "Mont-Regular", sans-serif;
+
+  &__content {
+    min-height: 80vh;
+  }
 }
