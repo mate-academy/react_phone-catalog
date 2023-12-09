@@ -60,7 +60,7 @@ export const Carousel = () => {
             <li>
               <Link to="/phone" className="Carousel__link">
                 <img
-                  src="_new/img/banner-phones.png"
+                  src="img/banners/banner-phones.png"
                   alt="Phones"
                   className="Carousel__image"
                 />
@@ -69,7 +69,7 @@ export const Carousel = () => {
             <li>
               <Link to="/phone" className="Carousel__link">
                 <img
-                  src="_new/img/banner-tablets.png"
+                  src="img/banners/banner-tablets.png"
                   alt="Tablets"
                   className="Carousel__image"
                 />
@@ -78,7 +78,7 @@ export const Carousel = () => {
             <li>
               <Link to="/phone" className="Carousel__link">
                 <img
-                  src="_new/img/banner-accessories.png"
+                  src="img/banners/banner-accessories.png"
                   alt="Accessories"
                   className="Carousel__image"
                 />

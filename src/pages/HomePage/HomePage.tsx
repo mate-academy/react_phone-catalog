@@ -71,7 +71,7 @@ export const HomePage = () => {
                   className="HomePage__shop-by-category-link"
                 >
                   <img
-                    src="_new/img/category-phones.png"
+                    src="img/banners/category-phones.png"
                     alt="phones"
                   />
                   <h3>
@@ -89,7 +89,7 @@ export const HomePage = () => {
                   className="HomePage__shop-by-category-link"
                 >
                   <img
-                    src="_new/img/category-tablets.png"
+                    src="img/banners/category-tablets.png"
                     alt="tablets"
                   />
                   <h3>
@@ -107,7 +107,7 @@ export const HomePage = () => {
                   className="HomePage__shop-by-category-link"
                 >
                   <img
-                    src="_new/img/category-accessories.png"
+                    src="img/banners/category-accessories.png"
                     alt="accessories"
                   />
                   <h3>

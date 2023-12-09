@@ -4,12 +4,14 @@
   display: flex;
   align-items: center;
   column-gap: 8px;
+  height: 16px;
 
   &__home-icon {
     height: 16px;
   }
 
   &__crumb {
+    align-self: center;
     display: flex;
     gap: 8px;
     align-items: center;
