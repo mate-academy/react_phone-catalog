@@ -1,0 +1,157 @@
+@import url('https://fonts.cdnfonts.com/css/mont');
+
+.header{
+  height: 64px;
+  display:flex;
+  align-items: center;
+  background: var(--gray-white, #FFF);
+  box-shadow: 1px 1px 1px 1px #E2E6E9;
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+
+  .active{
+    position: relative;
+    color: var(--gray-primary, #313237);
+font-family: Mont;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: 11px;
+letter-spacing: 0.48px;
+text-transform: uppercase;
+text-decoration: underline;
+text-underline-offset: 28px;
+text-decoration-thickness: 0.2rem
+
+  }
+
+  .search-container{
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    border: none;
+  }
+
+  .cart-count{
+    position: relative;
+    bottom: 22px;
+    left: 5px;
+    background-color: red;
+    color: var(--gray-white, #FFF);
+text-align: center;
+font-family: Mont;
+font-size: 9px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+border-radius: 50%;
+  }
+
+  .favorite-count{
+    position: relative;
+    bottom: 22px;
+    left: 5px;
+    background-color: red;
+    color: var(--gray-white, #FFF);
+text-align: center;
+font-family: Mont;
+font-size: 9px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+border-radius: 50%;
+  }
+
+  nav{
+    display:flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ul{
+    display:flex;
+    text-decoration: none;
+    list-style: none;
+  }
+  li{
+    text-decoration: none;
+  }
+
+  .le{
+    margin-left: 64px;
+  }
+  a{
+    color: var(--gray-secondary, #89939A);
+  font-family: Mont;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px; /* 91.667% */
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  text-decoration: none;
+  }
+  .logo__image{
+  align-items: center;
+  margin-left: 24px;
+  }
+
+
+
+  .rectangle{
+    position: relative;
+    min-width: 64px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray-white, #FFF);
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+  width: 64px;
+  height: 64px;
+  text-decoration: none;
+
+  }
+
+  .rectangle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: black;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+  }
+
+  .rectangle.activeLink::after {
+    transform: scaleX(1);
+    visibility: visible;
+    text-decoration: none;
+  }
+  .rectangle {
+
+  }
+
+  .rectangle a {
+
+  }
+
+  .rectangle::after {
+    text-decoration: none;
+  }
+
+  .rectangle.activeLink a {
+    text-decoration: none;
+  }
+
+  .rectangle.activeLink::after {
+
+    text-decoration: none;
+  }
+}

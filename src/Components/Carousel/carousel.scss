@@ -1,0 +1,77 @@
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; /* Adjust to column layout */
+  margin-top: 40px;
+}
+
+.button-left,
+.button-right {
+  justify-content: center;
+  display: flex;
+  width: 32px;
+  height: 400px;
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 16px;
+  margin-right: 16px
+}
+
+.button-left {
+  left: 16px;
+}
+
+.button-right {
+  right: 16px;
+}
+
+.slider-container {
+  overflow: hidden;
+  width: 1040px; /* Adjust as needed */
+  height: 400px; /* Adjust as needed */
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.dots-container {
+  display: flex;
+  margin-top: 16px; /* Adjust as needed */
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px; /* Adjust dot size as needed */
+  height: 4px;
+  background-color: #ccc; /* Default color for dots */
+
+  margin: 0 8px; /* Adjust dot spacing as needed */
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333; /* Color for the active dot */
+}
+
+.chevron {
+ height: 16px;
+ width: 16px;
+}

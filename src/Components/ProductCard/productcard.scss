@@ -1,0 +1,157 @@
+@import url('https://fonts.cdnfonts.com/css/mont');
+
+.product-card{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 272px;
+  height: 507px;
+  box-sizing: border-box;
+  border: 1px solid var(--gray-elements, #E2E6E9);
+  background: var(--gray-white, #FFF);
+font-family: 'Mont', sans-serif;
+padding: 32px 24px 24px 24px;
+margin-left: 18px;
+margin-right: 27px;
+margin-bottom: 40px;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.button-add.added{
+  background-color: white;
+  color: green;
+  border: 1px solid var(--gray-elements, #E2E6E9);
+}
+
+.line {
+  width: 224px;
+  height: 1px;
+  background: #E2E6E9;
+  color: #E2E6E9;
+  margin-bottom: 16px;
+}
+
+.image{
+  display:flex;
+  width: 208px;
+height: 208px;
+align-items: center;
+justify-content: center;
+}
+
+.name{
+  display:flex;
+  flex-wrap:wrap;
+  overflow-x:hidden;
+  word-wrap: break-word;
+  color: var(--gray-primary, #313237);
+/* Body text 14 */
+font-family: 'Mont', sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px;
+box-sizing: border-box;
+width: 224px;
+height: 42px;
+}
+
+.original-price{
+
+color: var(--gray-secondary, #89939A);
+font-family: 'Mont', 'sans-serif' ;
+font-size: 22px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-decoration: line-through;
+}
+
+.discounted-price {
+  color: var(--gray-primary, #313237);
+/* H2 */
+font-family: 'Mont', 'sans-serif' ;
+font-size: 22px;
+font-style: normal;
+font-weight: 700;
+line-height: 140%; /* 30.8px */
+margin-right: 8px;
+}
+
+.prices{
+  display: flex
+}
+
+.button-like.liked{
+  background-image: url(./filledfavourites.svg);
+  transition: background-color 0.3s ease;  // Add a transition for a smooth color change
+}
+
+.price{
+  color: var(--gray-primary, #313237);
+  /* H2 */
+  font-family: 'Mont', 'sans-serif' ;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 30.8px */
+  margin-right: 8px;}
+
+.screen .capacity .ram{
+  color: var(--gray-secondary, #89939A);
+  /* Small text 12 */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.card-field{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.card-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.button-add{
+  width: 176px;
+  height: 40px;
+  color: var(--gray-white, #FFF);
+text-align: center;
+font-family: 'Mont' 'san-serif';
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 21px; /* 150% */
+background: var(--gray-primary, #313237);
+width: 176px;
+height: 40px;
+margin-right: 8px;
+border: none;
+}
+
+.button-like{
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  width: 40px;
+  height: 40px;
+  background-image: url(../header/Favourites.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  transition: background-color 0.3s ease; // Add a transition for a smooth color change
+}
+

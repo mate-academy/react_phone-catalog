@@ -1,0 +1,58 @@
+@import url('https://fonts.cdnfonts.com/css/mont');
+
+.title{
+  display:flex;
+  color: var(--gray-primary, #313237);
+font-family: 'Mont', 'sans-serif';
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.32px;
+align-items: center;
+justify-content: center;
+}
+
+.hotprices{
+  margin-top: 108px;
+  margin-bottom: 104px;
+
+}
+
+.cards-container {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--gray-icons-placeholders, #B4BDC3);
+  background-color: white;
+
+}
+
+.left{
+  background-image: url('./Chevron-left.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 16px
+
+}
+
+.discount-products-container .buttons-container .button.right.inactive {
+  opacity: 0.5;
+
+}
+.discount-products-container .buttons-container .button.left.inactive {
+  opacity: 0.5;
+
+}
+
+
+.right{
+  background-image: url('./Chevron-right.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
