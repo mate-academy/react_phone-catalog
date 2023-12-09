@@ -44,10 +44,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       return;
     }
 
-    const newCartItem = [...cartItems, { id, quantity: 1, product }];
+    if (!isItemInCart) {
+      const newCartItems = [...cartItems, { id, quantity: 1, product }];
 
-    setCartItems(newCartItem);
-    localStorage.setItem('cartItems', JSON.stringify(newCartItem));
+      setCartItems(newCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+    } else {
+      const newCartItems = [...cartItems].filter(item => item.id !== id);
+
+      setCartItems(newCartItems);
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+    }
   };
 
   const handleToFavourite = () => {
