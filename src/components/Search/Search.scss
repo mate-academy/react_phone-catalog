@@ -23,6 +23,10 @@
       background: no-repeat url("../../icons/search.svg");
       background-position: top 24px right 24px;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__clear-button {
