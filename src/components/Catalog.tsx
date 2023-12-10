@@ -18,8 +18,6 @@ export const Catalog: React.FC<Props> = ({
   currPage,
   query,
 }) => {
-  let listOfResults: Products[] = [];
-
   const processQuery = (str: string) => {
     const processedQuery = str ? str.toLowerCase().split(' ') : [];
 
@@ -29,7 +27,7 @@ export const Catalog: React.FC<Props> = ({
     return filteredResults;
   };
 
-  listOfResults = processQuery(query);
+  let listOfResults = processQuery(query);
 
   listOfResults = [...listOfResults].sort((el1, el2) => {
     switch (sort) {

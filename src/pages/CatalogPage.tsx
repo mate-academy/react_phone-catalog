@@ -77,7 +77,7 @@ export const CatalogPage: React.FC = () => {
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [category]);
+  }, [category, favorites]);
 
   if (fetchingData) {
     return (

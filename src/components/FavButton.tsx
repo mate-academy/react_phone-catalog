@@ -14,19 +14,21 @@ type Props = {
 };
 
 export const FavButton: React.FC<Props> = ({ phone }) => {
-  const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = useState<boolean>();
 
   const favs = useSelector((state: RootState) => state.favorites);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    setIsFav(favs.some((fav: Products) => fav.itemId === phone.itemId));
+    setIsFav(
+      favs.some((fav: Products) => fav.itemId === phone.itemId),
+    );
   }, [favs]);
+
+  const dispatch = useDispatch();
 
   const handler = (product: Products) => {
     if (isFav) {
-      dispatch(deleteFavorite(product.id));
+      dispatch(deleteFavorite(product.itemId));
     } else {
       dispatch(addFavorites(product));
     }

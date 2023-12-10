@@ -6,10 +6,17 @@
   min-height: 32px;
   max-height: 100%;
 
-  border: 1px solid $color-primary;
+  border: 1px solid $color-secondary-2;
+
+  &:hover {
+    border: 1px solid $gray-icons-placeholders;
+  }
 
   &:disabled {
-    // color: $color-secondary;
-    border: 1px solid $color-secondary-2;
+    cursor: default;
+
+    &:hover {
+      border: 1px solid $color-secondary-2;
+    }
   }
 }

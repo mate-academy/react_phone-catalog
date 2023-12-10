@@ -58,6 +58,14 @@
     &:hover {
       border: 1px solid $gray-icons-placeholders;
     }
+
+    &:disabled {
+      cursor: default;
+
+      &:hover {
+        border: 1px solid $color-secondary-2;
+      }
+    }
   }
 
   &__quantity-count {
