@@ -11,7 +11,6 @@ import { toUpperCaseFirstLetter } from '../helpers/helpers';
 import { RootState } from '../Reducers/store';
 import { Products } from '../type/Products';
 import { getProducts } from '../api/getData';
-import { Loader } from '../components/Loader/Loader';
 
 const FILTER_SORT = ['Age', 'Price', 'Name'];
 const FILTER_QUANTITY = ['16', '8', '4'];
@@ -32,8 +31,6 @@ export const CatalogPage: React.FC = () => {
 
   const favorites = useSelector((state: RootState) => state.favorites);
 
-  const [fetchingData, setFetchingData] = useState(true);
-
   useEffect(() => {
     setSort(searchParams.get('sort') || 'age');
     setQuantity(Number(searchParams.get('perPage') || '16'));
@@ -42,8 +39,6 @@ export const CatalogPage: React.FC = () => {
 
   const data = async () => {
     try {
-      setFetchingData(true);
-
       const result = await getProducts();
 
       const getCatalog = result
@@ -52,8 +47,6 @@ export const CatalogPage: React.FC = () => {
       setCatalog(getCatalog);
 
       setLiftedListLength(getCatalog.length);
-
-      setFetchingData(false);
     } catch {
       swal({
         icon: 'error',
@@ -65,27 +58,15 @@ export const CatalogPage: React.FC = () => {
 
   useEffect(() => {
     if (category === 'favorites') {
-      setFetchingData(true);
-
       setCatalog(favorites);
 
       setLiftedListLength(favorites.length);
-
-      setFetchingData(false);
     } else {
       data();
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [category, favorites]);
-
-  if (fetchingData) {
-    return (
-      <div className="container">
-        <Loader />
-      </div>
-    );
-  }
 
   return (
     <div className="container">
