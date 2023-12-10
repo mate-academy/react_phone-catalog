@@ -49,7 +49,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
 
           <Button
             variant="arrow"
-            disabled={itemsScrolled === products.length - 4}
+            disabled={itemsScrolled >= products.length - 4}
             aria-label="swipe phones right"
             onClick={handeSlideRight}
           />
