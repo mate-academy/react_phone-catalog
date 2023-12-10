@@ -4,6 +4,7 @@ import close from '../../img/icon/Close.png';
 import './Card.scss';
 
 export const Card = () => {
+  const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
   const cardPhones = useAppSelector(state => state.card.cardPhones);
   const dispatch = useAppDispatch();
   const totalPrice = cardPhones.reduce((accumulator, currentProduct) => {
@@ -53,7 +54,7 @@ export const Card = () => {
                   />
                 </button>
                 <div className="card__img">
-                  <img className="card__img" src={`_new/${phone.image}`} alt={phone.name} />
+                  <img className="card__img" src={`${URL}${phone.image}`} alt={phone.name} />
                 </div>
                 <div>
                   <p className="card__phone-name">{phone.name}</p>

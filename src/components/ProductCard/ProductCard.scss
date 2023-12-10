@@ -1,9 +1,9 @@
 .ProductCard {
-  max-width: 272px;
+  max-width: 260px;
   height: 508px;
   box-sizing: border-box;
   color: #313237;
-  width: 272px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +44,7 @@
   }
 
   &__photo {
-    width: 208px;
+    width: 200px;
     height: 208px;
     margin: 0 auto;
   }

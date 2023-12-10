@@ -1,8 +1,6 @@
 @import "../style/main.scss";
 
 .phones {
-  margin: 0 auto 80px;
-
   &__text {
     display: block;
     margin: 0 0 40px;
@@ -12,7 +10,7 @@
     list-style: none;
     text-decoration: none;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 2px;
   }
 
   &__input {
@@ -28,17 +26,29 @@
   }
 
   &__list {
+    margin: 10px auto;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    padding: 0;
+    grid-template-columns: repeat(1,260px);
+    grid-row-gap: 20px;
+    gap: 20px;
+    justify-content: center;
+    padding-inline-start: 0;
 
     @include onTablet {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 260px);
+      grid-gap: 16px;
+      gap: 16px;
     }
 
     @include onDesktop {
-      grid-template-columns: repeat(4, 1fr);
-      // text-decoration: none;
+      margin: 0;
+      grid-template-columns: repeat(4, 260px);
+      grid-gap: 4px;
     }
   }
+
 }
+
+// .container__list {
+//   margin: 0 50px;
+// }
