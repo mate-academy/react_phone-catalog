@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -45,20 +45,22 @@ const ProductList: React.FC<Props> = ({
       normalizeValue(product.name).includes(normalizeValue(query))
     ));
 
-  const visibleProducts = filteredProducts
-    .sort((a: Product, b: Product) => {
-      switch (sortBy) {
-        case SortBy.Age:
-          return b.age - a.age;
-        case SortBy.Name:
-          return a.name.localeCompare(b.name);
-        case SortBy.Price:
-          return a.price - b.price;
-        default:
-          return 0;
-      }
-    })
-    .slice(startIndex, endIndex);
+  const visibleProducts = useMemo(() => {
+    return filteredProducts
+      .sort((a: Product, b: Product) => {
+        switch (sortBy) {
+          case SortBy.Age:
+            return b.age - a.age;
+          case SortBy.Name:
+            return a.name.localeCompare(b.name);
+          case SortBy.Price:
+            return a.price - b.price;
+          default:
+            return 0;
+        }
+      })
+      .slice(startIndex, endIndex);
+  }, [filteredProducts]);
 
   const totalItems = filteredProducts.length;
 
