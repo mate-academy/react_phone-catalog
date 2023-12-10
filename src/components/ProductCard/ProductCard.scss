@@ -10,6 +10,7 @@
 
   border: 1px solid $elements-color;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease-in-out;
 
   &__top {
     display: flex;
@@ -30,6 +31,7 @@
       width: 208px;
       align-self: center;
       background-color: $elements-color;
+      transition: transform 0.3s ease-in-out;
     }
 
     &-title {
@@ -95,6 +97,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+  }
+
+  &:hover {
+    border-color: darken($elements-color, 10%);
+
+    .product-card__top-image {
+      transform: scale(1.1);
     }
   }
 }

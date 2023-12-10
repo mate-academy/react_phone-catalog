@@ -1,7 +1,7 @@
 export interface Item {
   age: number;
   id: string;
-  type: string;
+  type: ItemType;
   imageUrl: string;
   name: string;
   snippet: string;
@@ -10,4 +10,6 @@ export interface Item {
   screen: string;
   capacity: string;
   ram: string;
-};
+}
+
+type ItemType = 'phone' | 'tablet' | 'accessory';

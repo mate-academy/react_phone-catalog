@@ -40,16 +40,22 @@ export const ProductSlider: React.FC<Props> = ({ title, items }) => {
   }, [items]);
 
   useEffect(() => {
+    let isMounted = true;
+
     const firstObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsCurrentItemFirst(entry.isIntersecting);
+        if (isMounted) {
+          setIsCurrentItemFirst(entry.isIntersecting);
+        }
       },
       { threshold: 0.00001 },
     );
 
     const lastObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsCurrentItemLast(entry.isIntersecting);
+        if (isMounted) {
+          setIsCurrentItemLast(entry.isIntersecting);
+        }
       },
       { threshold: 0.00001 },
     );
@@ -63,6 +69,8 @@ export const ProductSlider: React.FC<Props> = ({ title, items }) => {
     }
 
     return () => {
+      isMounted = false;
+
       if (firstItem.current) {
         firstObserver.unobserve(firstItem.current);
       }

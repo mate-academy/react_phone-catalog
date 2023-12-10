@@ -6,15 +6,25 @@ import {
 } from 'react';
 import { Item } from '../types/Item';
 import { getAllProducts } from '../helpers/getProducts';
+import { useLocalStorage } from '../helpers/useLocalStorage';
+import { checkItemsAvailable } from '../helpers/checkItemsAvailable';
 
 type ContextType = {
   products: Item[];
+  favourites: Item[];
+  cart: Item[];
+  setFavourites: (products: Item[]) => void;
+  setCart: (products: Item[]) => void;
   isLoading: boolean;
   setProducts: (products: Item[]) => void;
 };
 
 const defaultValue: ContextType = {
   products: [],
+  favourites: [],
+  cart: [],
+  setFavourites: () => { },
+  setCart: () => { },
   isLoading: false,
   setProducts: () => { },
 };
@@ -24,12 +34,19 @@ export const ProductsContext = createContext(defaultValue);
 export const ProductsProvider: React.FC = ({ children }) => {
   const [products, setProducts] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [favourites, setFavourites]
+    = useLocalStorage<Item[]>('favouritesList', []);
+  const [cart, setCart] = useLocalStorage<Item[]>('cardList', []);
 
   const value = useMemo(() => ({
     products,
     isLoading,
+    favourites,
+    cart,
+    setFavourites,
+    setCart,
     setProducts,
-  }), [products]);
+  }), [products, isLoading, favourites, cart]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -41,7 +58,21 @@ export const ProductsProvider: React.FC = ({ children }) => {
       .finally(() => {
         setIsLoading(false);
       });
+
+    return () => setProducts([]);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setFavourites(checkItemsAvailable(favourites, products));
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setFavourites(checkItemsAvailable(cart, products));
+    }
+  }, [products]);
 
   return (
     <ProductsContext.Provider value={value}>

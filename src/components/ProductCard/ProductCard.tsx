@@ -1,8 +1,11 @@
 /* eslint-disable  jsx-a11y/control-has-associated-label */
+import { useCallback, useContext } from 'react';
+import cn from 'classnames';
 import { getCorrectImageUrl } from '../../helpers/getCorrectImageUrl';
 import { getMemoryString } from '../../helpers/getMemoryString';
 import { Item } from '../../types/Item';
 import './ProductCard.scss';
+import { ProductsContext } from '../../context/ProductsContext';
 
 type Props = {
   item: Item;
@@ -11,6 +14,31 @@ type Props = {
 const CURRENCY = '$';
 
 export const ProductCard: React.FC<Props> = ({ item }) => {
+  const {
+    favourites,
+    cart,
+    setCart,
+    setFavourites,
+  } = useContext(ProductsContext);
+
+  const handleFavouriteButton = useCallback((
+    product: Item,
+  ) => {
+    if (favourites.find((favItem) => favItem.id === product.id)) {
+      setFavourites(favourites.filter((favItem) => favItem.id !== product.id));
+    } else {
+      setFavourites([...favourites, product]);
+    }
+  }, [favourites]);
+
+  const handleAddToCartButton = useCallback((
+    product: Item,
+  ) => {
+    if (!cart.find((favItem) => favItem.id === product.id)) {
+      setCart([...cart, product]);
+    }
+  }, [cart]);
+
   return (
     <div className="product-card">
       <div className="product-card__top">
@@ -78,14 +106,20 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
         </div>
         <div className="product-card__bottom-controls">
           <button
-            className="primary-button"
+            className={cn('primary-button', {
+              selected: cart.find((favItem) => favItem.id === item.id),
+            })}
             type="button"
+            onClick={() => handleAddToCartButton(item)}
           >
             Add to cart
           </button>
           <button
             type="button"
-            className="simple-button favourite"
+            className={cn('simple-button', 'favourite', {
+              selected: favourites.find((favItem) => favItem.id === item.id),
+            })}
+            onClick={() => handleFavouriteButton(item)}
           />
         </div>
       </div>

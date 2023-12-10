@@ -1,0 +1,8 @@
+@mixin contentPaddingInline {
+  padding-inline: 100px;
+}
+
+@mixin maxWidth {
+  max-width: 1136px;
+  margin-inline: auto;
+}

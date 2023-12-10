@@ -1,0 +1,71 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements-color;
+
+  &__content {
+    @include maxWidth;
+    @include contentPaddingInline;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-block: 32px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+
+    &-item {
+      text-decoration: none;
+      color: $secondary-color;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__backToTop {
+    &-button {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      overflow: hidden;
+
+      &-title {
+        color: $secondary-color;
+        font-size: 12px;
+        font-weight: 600;
+        transform: translateX(120px);
+        opacity: 0;
+        transition: transform 0.3s ease-in-out,
+          opacity 0.3s ease-in-out;
+      }
+
+      &-arrow {
+        background-color: #fff;
+        z-index: 1;
+      }
+
+      &:hover {
+        .footer__backToTop-button-title {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

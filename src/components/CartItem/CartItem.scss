@@ -1,0 +1,6 @@
+.CartItem {
+  grid-column: 1/17;
+
+  display: grid;
+  grid-template-columns: subgrid;
+}

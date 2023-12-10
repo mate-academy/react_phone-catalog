@@ -10,11 +10,6 @@
     gap: 64px;
   }
 
-  &__logo {
-    display: flex;
-    align-items: center;
-  }
-
   &__nav {
     &-list {
       padding: 0;
@@ -24,11 +19,6 @@
       height: 100%;
       text-align: center;
       gap: 64px;
-    }
-
-    &-item {
-      list-style: none;
-      height: 100%;
     }
 
     &-link {
@@ -59,6 +49,17 @@
         color: $primary-color;
 
         &::after {
+          transform: none;
+        }
+      }
+    }
+
+    &-item {
+      list-style: none;
+      height: 100%;
+
+      &:hover {
+        .header__nav-link::after {
           transform: none;
         }
       }
