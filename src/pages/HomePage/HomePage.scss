@@ -1,8 +1,11 @@
+@import "../../styles/mixins.scss";
+
 .home-page {
-  margin-inline: auto;
-  padding-inline: 100px;
-  max-width: 1136px;
+  @include contentPaddingInline;
+  @include maxWidth;
+
   padding-top: 40px;
+  padding-bottom: 80px;
 
   display: flex;
   flex-direction: column;

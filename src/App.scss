@@ -1,10 +1,15 @@
 @import "./styles/variables";
 @import "./styles/fonts";
 @import "./styles/controls";
+@import "./styles/mixins";
 @import "./components/Header/Header";
 
 * {
   font-family: "Mont", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -16,8 +21,20 @@ p,
 body,
 h1,
 h2,
+h3,
+h4,
 ul,
 li {
   margin: 0;
   padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
 }

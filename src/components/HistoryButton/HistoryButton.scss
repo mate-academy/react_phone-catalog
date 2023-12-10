@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+
+.link {
+  display: flex;
+  width: min-content;
+  gap: 4px;
+  text-decoration: none;
+  color: $secondary-color;
+
+  &-text {
+    position: relative;
+
+    padding-top: 1px;
+    font-size: 12px;
+    font-weight: 600;
+
+    &::after {
+      display: flex;
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      background-color: $secondary-color;
+      height: 1px;
+      width: 0;
+      transition: width 0.2s ease-in-out;
+    }
+  }
+
+  &-image {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover {
+    .link-text::after {
+      width: 100%;
+    }
+
+    .link-image.back {
+      transform: translateX(-5px);
+    }
+  }
+}

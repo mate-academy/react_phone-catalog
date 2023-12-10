@@ -31,6 +31,7 @@
 }
 
 .simple-button {
+  box-sizing: border-box;
   background-color: transparent;
   border: 1px solid #b4bdc3;
   width: 32px;
@@ -47,6 +48,10 @@
     background-image: url("../images/icons/arrow-right.svg");
   }
 
+  &.arrow-up {
+    background-image: url("../images/icons/arrow-up.svg");
+  }
+
   &.favourite {
     width: 40px;
     height: 40px;
@@ -54,7 +59,36 @@
 
     &.selected {
       background-image: url("../images/icons/heart-filled.svg");
+      animation: scaleAnimation 0.6s ease-in-out;
+
+      @keyframes scaleAnimation {
+        0% {
+          background-size: 50%;
+        }
+
+        25% {
+          background-size: 80%;
+        }
+
+        50% {
+          background-size: 50%;
+        }
+
+        75% {
+          background-size: 80%;
+        }
+
+        100% {
+          background-size: 50%;
+        }
+      }
     }
+  }
+
+  
+
+  &.with-background {
+    background-color: #fff;
   }
 
   &.slider-right:disabled,
