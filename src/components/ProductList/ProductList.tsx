@@ -60,7 +60,7 @@ const ProductList: React.FC<Props> = ({
         }
       })
       .slice(startIndex, endIndex);
-  }, [filteredProducts]);
+  }, [filteredProducts, sortBy, startIndex, endIndex]);
 
   const totalItems = filteredProducts.length;
 
