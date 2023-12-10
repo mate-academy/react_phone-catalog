@@ -1,0 +1,64 @@
+.breadcrumbs {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 24px;
+
+  @include max-tablet {
+    display: none;
+  }
+
+  &__items {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &:not(&:last-child) {
+      padding-right: 24px;
+      margin-right: 8px;
+
+      &::after {
+        position: absolute;
+        content: '';
+        right: 0;
+        width: 16px;
+        height: 16px;
+        background-image: url('./../../assets/img/arrow_right_disabled.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    transition: color var(--time);
+
+    &:hover {
+      color: var(--color-grey-2);
+    }
+
+    &--disabled {
+      color: var(--color-grey-2);
+      pointer-events: none;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    width: 16px;
+    transition: opacity var(--time);
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

@@ -38,7 +38,7 @@ export const Categories = () => {
         <div className="categories__block">
           <div className="h1 categories__title">Shop by category</div>
 
-          <div className="categories__cards">
+          <div className="categories__cards" data-cy="categoryLinksContainer">
             {getCategories.map((category) => (
               <CategoryCard category={category} key={category.id} />
             ))}
