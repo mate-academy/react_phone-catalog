@@ -1,0 +1,63 @@
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+
+  .page-item {
+    margin: 0 2px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+
+    &.active {
+      font-weight: bold;
+    }
+
+    .page-button {
+      display: block;
+      width: 32px;
+      height: 32px;
+      background-color: #fafbfc;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      &:hover {
+        border-color: #313237;
+      }
+    }
+
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      background-color: #fafbfc;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e2e6e9;
+      color: #000;
+      text-align: center;
+      text-decoration: none;
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+
+      &:hover {
+        border: 1px solid #313237;
+      }
+
+      &.active {
+        background-color: #313237;
+        color: var(--gray-white, #fff);
+      }
+    }
+  }
+}

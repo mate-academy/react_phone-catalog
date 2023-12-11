@@ -1,0 +1,13 @@
+.no-results {
+  color: #313237;
+  font-family: var(--body-text-14-font-family);
+  font-size: 14px;
+  font-style: var(--body-text-14-font-style);
+  font-weight: var(--body-text-14-font-weight);
+  letter-spacing: var(--body-text-14-letter-spacing);
+  line-height: normal;
+  white-space: nowrap;
+  display: flex;
+  width: 100%;
+  padding-left: calc((100% - 1136px) / 2);
+}

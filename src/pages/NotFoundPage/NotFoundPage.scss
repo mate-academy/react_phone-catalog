@@ -1,0 +1,56 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .pathInscription {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding-left: calc((100% - 1136px) / 2);
+    margin-top: 24px;
+    margin-bottom: 40px;
+    text-decoration: none;
+
+    .nav-logo {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+
+      &:hover {
+        transform: scale(1.5);
+        transition: transform 1s;
+      }
+    }
+
+    &__arrowRight {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &__text {
+      color: var(--gray-secondary);
+      font-family: var(--body-text-14-font-family);
+      font-size: 12px;
+      font-style: var(--body-text-14-font-style);
+      font-weight: var(--body-text-14-font-weight);
+      letter-spacing: var(--body-text-14-letter-spacing);
+      line-height: normal;
+      white-space: nowrap;
+
+      &:hover {
+        transform: scale(1.15);
+        transition: transform 1s;
+      }
+    }
+  }
+
+  &__text {
+    width: 100%;
+    padding-left: calc((100% - 1136px) / 2);
+    margin-bottom: 8px;
+  }
+}

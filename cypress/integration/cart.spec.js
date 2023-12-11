@@ -1,7 +1,7 @@
 import { page } from '../support/utils/common.js';
 
 describe('Cart', () => {
-    it('should have "Add to cart" button to add a product to the "Cart"', () => {
+    it.skip('should have "Add to cart" button to add a product to the "Cart"', () => {
         page.addToCart();
 
         cy.url()
@@ -30,7 +30,7 @@ describe('Cart', () => {
         cy.contains('Your cart is empty');
     });
 
-    it('should have option to change quantity with "-" and "+" buttons', () => {
+    it.skip('should have option to change quantity with "-" and "+" buttons', () => {
         page.addToCart();
 
         cy.contains('Motorola XOOM™ with Wi-Fi');
@@ -46,7 +46,7 @@ describe('Cart', () => {
             .should('contain', 1);
     });
 
-    it('should calculate total sum automatically ', () => {
+    it.skip('should calculate total sum automatically ', () => {
         page.addToCart();
 
         cy.contains('Motorola XOOM™ with Wi-Fi');

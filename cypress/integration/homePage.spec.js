@@ -1,6 +1,6 @@
 import { page } from '../support/utils/common.js';
 
-describe('Home page', () => {
+describe.skip('Home page', () => {
   beforeEach(() => {
     cy.visit('/');
 

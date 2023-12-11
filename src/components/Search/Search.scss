@@ -1,0 +1,42 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 303px;
+  padding-left: 24px;
+
+  .nav-search {
+    flex-grow: 1;
+    width: 134px;
+    height: 18px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: "Mont-Bold", sans-serif;
+    line-height: 18px;
+    color: #313237;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 18px;
+      color: #b4bdc3;
+      font-family: "Mont-Regular", sans-serif;
+      position: relative;
+    }
+  }
+
+  .search-icon {
+    cursor: pointer;
+  }
+
+  &__delete-button {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+}

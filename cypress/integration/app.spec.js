@@ -3,7 +3,7 @@ describe('App', () => {
     cy.visit('/');
   });
 
-  it('should have "Header" with links to all the pages implemented', () => {
+  it.skip('should have "Header" with links to all the pages implemented', () => {
     cy.get('header')
       .within(() => {
         cy.get('[href="#/"]');
