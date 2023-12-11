@@ -10,12 +10,17 @@ import { Phone } from '../../Types/Phone';
 import { Categories } from '../HomePage/HomePage';
 import { Loader } from '../../components/Loader/Loader';
 import { Card } from '../../components/Card/Card';
+import { SortDropdown } from '../../components/Dropdowns/SortDropdown';
+import {
+  ItemsPerPageDropdown,
+} from '../../components/Dropdowns/ItemsPerPageDropdown';
 
 export const PhonesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
   const [itemsPerPage, setItemsPerPage] = useState(16);
   const [itemOffset, setItemOffset] = useState(0);
+  const [sortField, setSortField] = useState('Newest');
 
   const location = useLocation();
 
@@ -40,20 +45,12 @@ export const PhonesPage: React.FC = () => {
     fetchData();
   }, [setPhones]);
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + itemsPerPage;
-  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = phones.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(phones.length / itemsPerPage);
 
-  // Invoke when user click to request another page.
-  const handlePageClick = (event) => {
+  const handlePageClick = (event: { selected: number; }) => {
     const newOffset = (event.selected * itemsPerPage) % phones.length;
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset}`
-    // );
 
     setItemOffset(newOffset);
   };
@@ -65,6 +62,15 @@ export const PhonesPage: React.FC = () => {
         <h3>{location.pathname}</h3>
       </div>
       <h1>Mobile phones</h1>
+      <h1>{sortField}</h1>
+      <div className="dropdowns">
+        <SortDropdown setSortField={setSortField} currentField={sortField} />
+        <ItemsPerPageDropdown
+          setItemsPerPage={setItemsPerPage}
+          currentAmount={itemsPerPage}
+          length={phones.length}
+        />
+      </div>
       {isLoading ? (
         <Loader />
       ) : (
