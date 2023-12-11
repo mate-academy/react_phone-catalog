@@ -9,9 +9,7 @@
   background-repeat: no-repeat;
   background-position: center;
 
-  &:hover {
-    border: 1px solid $primary;
-  }
+  @include hover(border-color, $primary);
 
   &--selected {
     border: 1px solid $elements;

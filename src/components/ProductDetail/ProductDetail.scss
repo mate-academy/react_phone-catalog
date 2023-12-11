@@ -30,16 +30,6 @@
   }
 
   &__grid {
-    // display: grid;
-    // grid-template-columns: repeat(12, 1fr);
-    // grid-column-gap: 16px;
-    // column-gap: 16px;
-    // grid-row-gap: 32px;
-    // row-gap: 32px;
-
-    // @include onLaptop {
-    //   grid-template-columns: repeat(24, 1fr);
-    // }
     @include pageGrid;
     justify-items: center;
   }
@@ -88,16 +78,12 @@
     max-width: 80px;
     border: 1px solid $elements;
 
-    &:hover {
-      border-color: $secondary;
-    }
+    @include hover(border-color, $secondary);
 
     &--selected {
       border-color: $primary;
 
-      &:hover {
-        border-color: $primary;
-      }
+      @include hover(border-color, $primary);
     }
   }
 
@@ -180,14 +166,26 @@
     }
   }
 
-  &__capacity-buttons {
+  &__capacity-links {
     display: flex;
+    gap: 8px;
   }
 
-  &__capacity-button {
+  &__capacity-link {
     @extend %body-text;
-    padding: 7px 8px 4px;
-    border: 2px solid $icons;
+    width: 56px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border: 1px solid $icons;
+
+    @include hover(border-color, $primary);
+
+    &--selected {
+      background-color: $primary;
+      color: $white;
+      border-color: transparent;
+    }
   }
 
   &__detail-item {

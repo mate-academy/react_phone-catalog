@@ -24,9 +24,11 @@
     border-radius: 10px;
     font-weight: bold;
 
-    &:hover {
-      border-color: $secondary;
-      background-color: $hover-bg;
+    @include onLaptop {
+      &:hover {
+        border-color: $secondary;
+        background-color: $hover-bg;
+      }
     }
   }
 }

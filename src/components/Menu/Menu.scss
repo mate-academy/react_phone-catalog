@@ -15,6 +15,7 @@
     align-items: center;
     height: 48px;
     padding-left: 20px;
+    margin-bottom: 32px;
     border-bottom: 1px solid $elements;
   }
 
@@ -36,12 +37,6 @@
     transition: transform 300ms;
   }
 
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 32px;
-  }
-
   &__list {
     display: flex;
     flex-direction: column;
@@ -58,11 +53,10 @@
     @extend %uppercase;
     color: $primary;
     padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
     line-height: 150%;
 
-    &:hover {
-      border-bottom: 2px solid $primary;
-    }
+    @include hover(border-bottom-color, $primary);
   }
 
   &__btn--cross {
@@ -80,7 +74,6 @@
     height: 64px;
     border-top: 1px solid $elements;
   }
-
 
   &__icon-link {
     position: relative;
@@ -122,8 +115,6 @@
       flex-grow: 0;
     }
 
-    &:hover {
-      background-color: $hover-bg;
-    }
+    @include hover(background-color, $hover-bg);
   }
 }

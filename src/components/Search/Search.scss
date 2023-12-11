@@ -13,9 +13,11 @@
     border: 1px solid $elements;
     border-block-end: none;
 
-    &:focus {
-      outline: none;
-      background-color: $hover-bg;
+    @include onLaptop {
+      &:focus {
+        outline: none;
+        background-color: $hover-bg;
+      }
     }
   }
 
@@ -27,16 +29,13 @@
     width: 16px;
     height: 16px;
     transform: translateY(-50%);
+    cursor: pointer;
 
     & > svg {
       display: block;
       width: 100%;
       height: 100%;
       fill: $primary;
-    }
-
-    &:hover {
-      cursor: pointer;
     }
   }
 }

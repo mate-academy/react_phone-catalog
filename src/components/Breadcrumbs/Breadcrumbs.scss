@@ -17,9 +17,7 @@
       object-fit: contain;
     }
 
-    &:hover {
-      @include scale;
-    }
+    @include scale;
   }
 
   &__current {

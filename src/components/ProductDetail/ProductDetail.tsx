@@ -65,8 +65,15 @@ export const ProductDetail: React.FC<Props> = memo(({ productId }) => {
   const getLinkForColor = (newColor: string) => {
     const array = product?.id.split('-');
 
-    array?.pop();
-    array?.push(newColor);
+    array?.splice(-1, 1, newColor);
+
+    return array?.join('-');
+  };
+
+  const getLinkForCapacity = (newCapacity: string) => {
+    const array = product?.id.split('-');
+
+    array?.splice(-2, 1, newCapacity.toLowerCase());
 
     return array?.join('-');
   };
@@ -173,13 +180,21 @@ export const ProductDetail: React.FC<Props> = memo(({ productId }) => {
                     Select capacity
                   </div>
 
-                  <ul className="details-page__capacity-buttons">
-                    <button
-                      type="button"
-                      className="details-page__capacity-button"
-                    >
-                      125gb
-                    </button>
+                  <ul className="details-page__capacity-links">
+                    {product.capacityAvailable.map(currentCapacity => (
+                      <NavLink
+                        to={`/phones/${getLinkForCapacity(currentCapacity)}`}
+                        className={classNames(
+                          'details-page__capacity-link',
+                          {
+                            'details-page__capacity-link--selected':
+                              currentCapacity === product.capacity,
+                          },
+                        )}
+                      >
+                        {currentCapacity}
+                      </NavLink>
+                    ))}
                   </ul>
                 </div>
 

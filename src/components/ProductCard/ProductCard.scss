@@ -23,9 +23,7 @@
     grid-column: span 6;
   }
 
-  &:hover {
-    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
-  }
+  @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
 
   &__name {
     margin-bottom: 6px;

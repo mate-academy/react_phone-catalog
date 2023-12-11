@@ -33,9 +33,7 @@
     letter-spacing: 0.48px;
     transition: color 0.3s;
 
-    &:hover {
-      color: $primary;
-    }
+    @include hover(color, $primary);
   }
 
   &__back-to-top {

@@ -1,3 +1,5 @@
+@import "../../styles/style_utils";
+
 .logo {
   justify-self: start;
   flex-grow: 1;
@@ -5,10 +7,7 @@
   display: block;
   height: 24px;
   padding-inline: 20px;
+  transform: scale(1);
 
-  transition: all 0.3s;
-
-  &:hover {
-    transform: scale(1.2);
-  }
+  @include scale;
 }

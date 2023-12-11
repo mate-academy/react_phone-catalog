@@ -58,12 +58,14 @@
       fill: $icons;
     }
 
-    &:hover {
-      background-color: $hover-bg;
-      border-color: $elements;
+    @include onLaptop {
+      &:hover {
+        background-color: $hover-bg;
+        border-color: $elements;
 
-      & svg {
-        fill: $primary;
+        & svg {
+          fill: $primary;
+        }
       }
     }
   }
@@ -86,9 +88,7 @@
       text-decoration: none;
       transition: $transition;
 
-      &:hover {
-        text-decoration: underline;
-      }
+      @include hover(text-decoration, underline);
     }
 
     &-name {
@@ -116,11 +116,8 @@
     object-fit: contain;
     object-position: center;
     transform: scale(1);
-    transition: $transition;
 
-    &:hover {
-      transform: scale(1.2);
-    }
+    @include scale;
   }
 
   &__quantity-buttons {

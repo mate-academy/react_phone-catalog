@@ -29,9 +29,7 @@
       border: 1px solid $primary;
     }
 
-    &:hover {
-      border: 1px solid $secondary;
-    }
+    @include hover(border-color, $secondary);
 
     & svg {
       fill: $icons;
@@ -84,9 +82,11 @@
     color: $secondary;
     text-align: left;
 
-    &:hover {
-      background-color: $hover-bg;
-      color: $primary;
+    @include onLaptop {
+      &:hover {
+        background-color: $hover-bg;
+        color: $primary;
+      }
     }
   }
 }
