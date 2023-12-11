@@ -10,13 +10,21 @@ export const Footer = () => {
 
         <ul className="Footer__list">
           <li className="Footer__list-item">
-            <a href="https://github.com/2pasha">
+            <a
+              href="https://github.com/2pasha"
+              target="_blank"
+              rel="noreferrer"
+            >
               Github
             </a>
           </li>
 
           <li className="Footer__list-item">
-            <a href="https://www.linkedin.com/in/pavlo-kostyshyn-5871b8196/">
+            <a
+              href="https://www.linkedin.com/in/pavlo-kostyshyn-5871b8196/"
+              target="_blank"
+              rel="noreferrer"
+            >
               contacts
             </a>
           </li>
