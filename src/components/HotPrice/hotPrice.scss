@@ -7,6 +7,10 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .hot {
@@ -15,6 +19,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__title {
+    margin: 0 0 0 12px;
+  }
+
   &__button {
     justify-items: end;
     justify-content: end;
@@ -28,7 +37,6 @@
       background-position: center;
       flex-shrink: 0;
       border: 1px solid #b4bdc3;
-      margin-right: 16px;
     }
 
     &--left {

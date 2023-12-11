@@ -1,5 +1,22 @@
+@import "../style/main.scss";
+
 .homeIcon {
-  display: block;
+  display: flex;
   text-decoration: none;
-  padding: 0 0 40px;
+  gap: 8px;
+  padding: 0 0 20px;
+}
+
+.page__title {
+  color: $gray-secondary;
+  height: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: end;
+}
+
+.home__icon {
+  width: 16px;
+  height: 16px;
+  object-fit: cover;
 }

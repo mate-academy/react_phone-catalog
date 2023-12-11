@@ -1,21 +1,20 @@
-import { useState, useMemo, useEffect } from 'react';
+import {
+  useState, useMemo, useContext,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { PaginationButton } from '../PaginationButton/PaginationButton';
 import { PaginationPhone } from '../PaginationPhone/PaginationPhone';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { getPhones } from '../../utils/fetch';
-import { ProductPhone } from '../../Type/phone';
 import './Phone.scss';
 import { SortInput } from '../SortInput/SortInput';
 import { SortCategories } from '../../Type/sortCategory';
 import { Search } from '../Search/Search';
 import { HomeIcon } from '../HomeIcon/HomeIcon';
-import { Loader } from '../Loader';
-// import { PhoneContext } from '../Context/contex';
+import { PhoneContext } from '../Context/contex';
 
 export const Phone = () => {
-  const [phones, setPhones] = useState <ProductPhone[]>([]);
-  // const { phones } = useContext(PhoneContext);
+  // const [phones, setPhones] = useState <ProductPhone[]>([]);
+  const { phones } = useContext(PhoneContext);
   const [searchParams] = useSearchParams();
   const [itemOnPage, setItemOnPage]
   = useState(+(searchParams.get('itemOnPage') || 16));
@@ -27,15 +26,6 @@ export const Phone = () => {
   = useState(searchParams.get('query') || '');
   const lastTotalIndex = currentPage * (itemOnPage);
   const firstTotalIndex = lastTotalIndex - itemOnPage;
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getPhones()
-      .then(setPhones)
-      .catch()
-      .finally(() => setIsLoading(false));
-  }, []);
-
   const visiblePhone = useMemo(() => {
     let preparedPhone = phones;
 
@@ -75,39 +65,34 @@ export const Phone = () => {
         query={query}
         setQuery={setQuery}
       />
-      {isLoading && <Loader />}
-      {!isLoading && (
-        <>
-          <div className="phones__input">
-            <SortInput
-              sortValue={sortValue}
-              setSortValue={setSortValue}
-            />
-            <PaginationPhone
-              itemOnPage={itemOnPage}
-              setItemOnPage={setItemOnPage}
-            />
-          </div>
-          <ul className="phones__list">
-            {visiblePhone.map((phone) => (
-              <li
-                className="phones__item"
-                data-cy="item"
-                key={phone.id}
-              >
-                <ProductCard phone={phone} />
-              </li>
-            ))}
-          </ul>
+      <div className="phones__input">
+        <SortInput
+          sortValue={sortValue}
+          setSortValue={setSortValue}
+        />
+        <PaginationPhone
+          itemOnPage={itemOnPage}
+          setItemOnPage={setItemOnPage}
+        />
+      </div>
+      <ul className="phones__list">
+        {visiblePhone.map((phone) => (
+          <li
+            className="phones__item"
+            data-cy="item"
+            key={phone.id}
+          >
+            <ProductCard phone={phone} />
+          </li>
+        ))}
+      </ul>
 
-          <PaginationButton
-            total={phones.length}
-            itemOnPage={itemOnPage}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </>
-      )}
+      <PaginationButton
+        total={phones.length}
+        itemOnPage={itemOnPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </section>
   );
 };

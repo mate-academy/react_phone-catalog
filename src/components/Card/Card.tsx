@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addAmount, removeAmount, removeCard } from '../../features/cardSlice';
 import close from '../../img/icon/Close.png';
@@ -21,7 +22,6 @@ export const Card = () => {
   return (
     <main>
       <section>
-        {!cardPhones.length && <p>The basket is empty </p>}
         <button
           type="button"
           className="back"
@@ -31,6 +31,7 @@ export const Card = () => {
           back
         </button>
         <h1>Cart</h1>
+        {!cardPhones.length && <h2>The basket is empty </h2>}
         <div className="card__container">
           <ul
             className="card__phones"
@@ -100,13 +101,17 @@ export const Card = () => {
                 {cardPhones.length === 1 ? ' item' : ' items'}
               </p>
             </div>
-            <button
-              className="card__checkout"
-              type="button"
-              aria-label="checkout"
+            <Link
+              to="/cartbuy"
             >
-              Checkout
-            </button>
+              <button
+                className="card__checkout"
+                type="button"
+                aria-label="checkout"
+              >
+                Checkout
+              </button>
+            </Link>
 
           </div>
         </div>

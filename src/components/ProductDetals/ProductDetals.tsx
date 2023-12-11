@@ -1,16 +1,16 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { DetailsPhone } from '../../Type/DetailsPhone';
-import { getPhone, getPhones } from '../../utils/fetch';
+import { getPhone } from '../../utils/fetch';
 import { BuyButtonCart } from '../BuyButtonCard/BuyButtonCart';
 import { FavouritesIcon } from '../FavouritesIcon/FavouritesIcon';
 import { HomeIcon } from '../HomeIcon/HomeIcon';
 import arrowRight from '../../img/icon/ArrowRight.png';
 import './ProductDetals.scss';
 import { AlsoLike } from '../AlsoLike/AlsoLike';
-import { ProductPhone } from '../../Type/phone';
 import { Loader } from '../Loader';
+import { PhoneContext } from '../Context/contex';
 
 export const ColorPallette: Record<string, string> = {
   rosegold: '#F9D2CD',
@@ -32,14 +32,8 @@ export const ProductDetails: React.FC = () => {
   const [phone, setPhone] = useState<DetailsPhone | null>(null);
   const { idPhone } = useParams <{ idPhone: string }>();
   const [selected, setSelected] = useState(0);
-  const [phones, setPhones] = useState <ProductPhone[]>([]);
-
-  useEffect(() => {
-    getPhones()
-      .then(setPhones)
-      .catch()
-      .finally();
-  }, []);
+  const { phones } = useContext(PhoneContext);
+  const URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
   useEffect(() => {
     if (idPhone) {
@@ -59,6 +53,10 @@ export const ProductDetails: React.FC = () => {
     return null;
   }
 
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -69,6 +67,14 @@ export const ProductDetails: React.FC = () => {
             <img className="details__arrow" src={arrowRight} alt="homeIcon" />
             <span className="details__subtitle">{phone?.name}</span>
           </div>
+          <button
+            type="button"
+            className="back"
+            data-cy="backButton"
+            onClick={handleGoBack}
+          >
+            back
+          </button>
           <h1 className="details__title--name">{phone?.name}</h1>
           <div className="details__container">
             <div className="photos">
@@ -81,7 +87,7 @@ export const ProductDetails: React.FC = () => {
                     onClick={() => setSelected(index)}
                   >
                     <img
-                      src={`_new/${image}`}
+                      src={`${URL}${image}`}
                       alt="side_photo"
                       className="photos__sidePhoto"
                     />
@@ -91,7 +97,7 @@ export const ProductDetails: React.FC = () => {
               <div className="photos__main">
                 <img
                   className="photos__main__img"
-                  src={`_new/${phone?.images[selected]}`}
+                  src={`${URL}${phone?.images[selected]}`}
                   alt="main_photo"
                 />
               </div>

@@ -13,9 +13,9 @@ export const HomeIcon: React.FC<Props> = ({ title }) => {
       className="homeIcon"
       to="/"
     >
-      <img src={homeIcon} alt="homeIcon" />
-      <img src={arrowRight} alt="homeIcon" />
-      <span className="page__title">{title}</span>
+      <img className="home__icon" src={homeIcon} alt="homeIcon" />
+      <img className="home__icon" src={arrowRight} alt="homeIcon" />
+      <p className="page__title">{title}</p>
     </Link>
   );
 };

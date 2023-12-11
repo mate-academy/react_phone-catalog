@@ -38,22 +38,24 @@ export const Header = () => {
       </nav>
       <div className="header__container">
         <div className="header__right">
-          <NavLink
-            to="/favourites"
-            className={({ isActive }) => classNames(
-              'header__favourites',
-              {
-                'header__favourites--active': isActive,
-              },
+          <div className="header__ff">
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) => classNames(
+                'header__favourites',
+                {
+                  'header__favourites--active': isActive,
+                },
+              )}
+            />
+            {favouritesPhones.length !== 0 && (
+              <div className="favourites__count">
+                <span className="favourites__count-text">
+                  {favouritesPhones.length}
+                </span>
+              </div>
             )}
-          />
-          {favouritesPhones.length !== 0 && (
-            <div className="favourites__count">
-              <span className="favourites__count-text">
-                {favouritesPhones.length}
-              </span>
-            </div>
-          )}
+          </div>
           <NavLink
             to="/cart"
             className={({ isActive }) => classNames(

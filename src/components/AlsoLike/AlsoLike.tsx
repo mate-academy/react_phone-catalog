@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination } from 'swiper';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { getPhones } from '../../utils/fetch';
 import { PhoneContext } from '../Context/contex';
 import 'swiper/swiper.scss'; // core Swiper
 import 'swiper/modules/navigation/navigation.scss'; // Navigation module
@@ -10,17 +9,7 @@ import 'swiper/modules/pagination/pagination.scss'; // Pagination module
 import './AlsoLike.scss';
 
 export const AlsoLike = () => {
-  const { phones, setPhones } = useContext(PhoneContext);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    getPhones()
-      .then(setPhones)
-      .catch(() => setIsError(true))
-      .finally(() => setIsLoading(false));
-  }, []);
-
+  const { phones, isLoading, isError } = useContext(PhoneContext);
   const likePhones = phones.filter(phone => phone.fullPrice > 1200)
     .sort((a, b) => b.fullPrice - a.fullPrice);
 

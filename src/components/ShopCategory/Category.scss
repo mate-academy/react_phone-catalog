@@ -4,6 +4,7 @@
   display: block;
   padding: 20px;
   margin: 0 auto;
+  transition: transform 300ms;
 
   @include onTablet {
     display: flex;
@@ -25,11 +26,16 @@
     width: 272px;
     height: max-content;
     margin: 0 auto 50px;
+    &:hover {
+    	opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
 
     @include onTablet {
       display: flex;
       width: 33%;
       height: max-content;
+      gap: 16px;
       margin: 0 auto 20px;
     }
   }
@@ -48,6 +54,7 @@
 
     @include onDesktop {
       height: 368px;
+      max-width: 368px;
     }
 
     &--1 {
@@ -64,7 +71,7 @@
     display: block;
     height: 90%;
     width: 100%;
-    object-fit: fill;
+    object-fit: cover;
     margin: 30px 72px 0;
   }
 
@@ -86,3 +93,4 @@
   }
 
 }
+

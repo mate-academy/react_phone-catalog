@@ -16,6 +16,7 @@
 
   &__title {
     font-size: 28px;
+    margin: 0 0 0 12px;
   }
 
   &__button {
@@ -32,7 +33,6 @@
       background-position: center;
       flex-shrink: 0;
       border: 1px solid $gray-icons-placeholders;
-      margin-right: 16px;
     }
 
     &--left {
@@ -50,9 +50,9 @@
     }
 
     &--right {
-      margin-right: 8px;
       background-image: url(../../img/icon/ArrowRight.png);
-
+      margin-right: 8px;
+      
       &:hover {
         border: 1px solid $gray-primary;
       }
@@ -71,4 +71,15 @@
   @include onTablet {
     width: 100%;
   }
+
+  @include onDesktop {
+    margin: 0;
+  }
+}
+
+.swiper-horizontal,
+.swiper-pagination-bullets,
+.swiper-pagination-bullet,
+.swiper-pagination-horizontal {
+  margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 0);
 }

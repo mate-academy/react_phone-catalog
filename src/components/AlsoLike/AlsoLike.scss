@@ -6,6 +6,10 @@
     justify-content: space-between;
   }
 
+  &__title {
+    margin: 0 0 0 12px;
+  }
+
   &__button {
     display: flex;
     justify-items: end;
@@ -19,7 +23,6 @@
       background-position: center;
       flex-shrink: 0;
       border: 1px solid $gray-icons-placeholders;
-      margin-right: 16px;
     }
 
     &--left {
@@ -41,7 +44,6 @@
     &--right {
       height: 32px;
       width: 32px;
-      margin-right: 8px;
       background-image: url(../../img/icon/ArrowRight.png);
 
       &:hover {

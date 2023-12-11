@@ -12,6 +12,7 @@ import { ProductDetails } from './components/ProductDetals/ProductDetals';
 import { Tablets } from './components/Tablets/Tablets';
 import { MenuBurger } from './components/MenuBurger/MenuBurger';
 import { Accessories } from './components/Accessories/Accessories';
+import { CardBuy } from './components/CardBuy/CardBuy';
 
 const App = () => (
   <PhoneProvider>
@@ -29,6 +30,7 @@ const App = () => (
         <Route path="/accessories" element={<Accessories />} />
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/cart" element={<Card />} />
+        <Route path="/cartbuy" element={<CardBuy />} />
         <Route
           path="*"
           element={<h1 className="title">Page not found</h1>}

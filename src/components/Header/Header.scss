@@ -15,7 +15,7 @@
   }
 
   @include onDesktop {
-    padding: 0 100px;
+    padding: 0 80px;
   }
 
   &__logo {
@@ -28,6 +28,10 @@
 
     @include onTablet {
       padding: 0;
+    }
+
+    @include onDesktop {
+      padding: 0 64px 0 0;
     }
   }
 
@@ -56,9 +60,15 @@
     padding: 27px 2px 18px;
     height: 100%;
     color: rgba(137, 147, 154, 1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
     text-decoration: none;
     list-style: none;
     border-bottom: 4px solid transparent;
+    text-transform: uppercase;
 
     &-active {
       position: relative;
@@ -66,9 +76,14 @@
       border-bottom: 3px solid $gray-primary;
     }
   }
-  &__favourites {
+
+  &__ff {
     position: relative;
-    width: 50px;
+  }
+
+  &__favourites {
+    display: block;
+    width: 64px;
     height: 64px;
     box-shadow: -1px 0 0 0 $gray-elements;
     background-image: url(../Header/imgHeader/Favourites.png);

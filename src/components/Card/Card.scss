@@ -1,7 +1,6 @@
 @import "../style/main.scss";
 
 .card {
-
   &__container {
     display: block;
 
@@ -51,9 +50,11 @@
     position: relative;
     height: 16px;
     width: 16px;
+    object-fit: cover;
 
     &-img {
       position: absolute;
+      object-fit: cover;
       right: -1px;
       top: -1px;
 
@@ -89,12 +90,18 @@
     }
   }
   &__img {
+    object-fit: contain;
     width: 42px;
-    height: 42px;
+    height: 62px;
 
     @include onTablet {
-      width: 66px;
-      height: 66px;
+      width: 80px;
+      height: 80px;
+    }
+
+    @include onDesktop {
+      width: 100px;
+      height: 100px;
     }
   }
 
@@ -157,6 +164,17 @@
     color: $gray-white;
     text-align: center;
 
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active {
+      background-color: $gray-white;
+      color: #27ae60;
+      border: 1px solid $gray-elements;
+      box-shadow: none;
+    }
+
     @include onTablet {
       width: 80%;
     }
@@ -166,6 +184,7 @@
 
 .back {
   cursor: pointer;
+  padding: 0 0 4px 16px;
   background-color: $gray-white;
   border: none;
   text-transform: capitalize;
@@ -186,7 +205,7 @@
     background-position: left;
     background-repeat: no-repeat;
     rotate: (-180deg);
-    left: -10px;
+    left: 0;
     top: 0;
     width: 16px;
     height: 16px;
