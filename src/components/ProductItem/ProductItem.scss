@@ -11,10 +11,8 @@
   padding: 32px 24px 24px;
 
   &:hover {
-    // transform: scale(1.01);
     box-shadow: rgba(68, 68, 255, 0.25) 0 30px 60px -12px inset,
       rgba(255, 56, 56, 0.3) 0 18px 36px -18px inset;
-    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.7s ease;
 
   }
