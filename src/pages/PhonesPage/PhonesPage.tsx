@@ -83,6 +83,9 @@ export const PhonesPage: FC = () => {
 
       setCurrentPhonesList(currentList);
 
+      // console.log(`current list:${currentList.length}; phones list:${currentPhonesList.length}`);
+      // console.log(currentList, currentPhonesList);
+
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
@@ -124,7 +127,7 @@ export const PhonesPage: FC = () => {
             isSlider={false}
           />
 
-          {(currentPhonesList.length < phonesList.length) && (
+          {(currentPhonesList.length <= phonesList.length) && (
             <>
               <LoadMore
                 productsList={phonesList}

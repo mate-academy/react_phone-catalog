@@ -1,5 +1,9 @@
 import classNames from 'classnames';
-import { FC, useEffect, useState } from 'react';
+import {
+  FC,
+  // useEffect,
+  useState,
+} from 'react';
 
 import './Dropdown.scss';
 
@@ -48,9 +52,9 @@ export const DropdownSelect: FC<Props> = ({
     }
   };
 
-  useEffect(() => {
-    handleCurrentValue();
-  }, [selectedValue]);
+  // useEffect(() => {
+  //   handleCurrentValue();
+  // }, [selectedValue]);
 
   return (
     <div

@@ -2,10 +2,13 @@
 @import "../../helpers/mixins.scss";
 
 .products-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, $cardWidth);
+  display: flex;
+  flex-wrap: wrap;
+  width: $cardWidth * 4 + $cardsGapHor * 3;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, $cardWidth);
   grid-gap: 1rem;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   @include onLaptop {
     width: $cardWidth * 3 + $cardsGapHor * 2;
