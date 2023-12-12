@@ -1,7 +1,7 @@
+import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import './Breadcrumbs.scss';
-import { useMemo } from 'react';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
