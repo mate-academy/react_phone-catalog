@@ -12,6 +12,7 @@ import { HomePage } from './pages/HomePage';
 import { ProductsPage } from './pages/ProductsPage';
 import { ProductType } from './types/ProductType';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
   <Provider store={store}>
@@ -63,6 +64,11 @@ export const Root = () => (
               element={<ProductDetailsPage />}
             />
           </Route>
+
+          <Route
+            path="cart"
+            element={<CartPage />}
+          />
         </Route>
       </Routes>
     </Router>
