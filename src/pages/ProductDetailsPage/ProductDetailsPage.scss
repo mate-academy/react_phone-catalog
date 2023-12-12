@@ -46,7 +46,6 @@
     width: 100%;
 
     cursor: pointer;
-    // object-fit: contain;
   }
 
   &-Img {
@@ -66,7 +65,7 @@
   }
 
   &-SelectLabel {
-    margin-bottom: 16px;
+    margin-block-end: 16px;
 
     font-size: 12px;
     font-weight: 600;
@@ -100,6 +99,8 @@
     border: 1px solid $element;
 
     cursor: pointer;
+
+    transition: border-color $transition-duration;
 
     &:hover {
       border-color: $icon-placeholder;
@@ -142,6 +143,10 @@
     border: 1px solid $element;
 
     cursor: pointer;
+
+    transition: background-color $transition-duration,
+      color $transition-duration,
+      border-color $transition-duration;
 
     &:hover {
       border-color: $primary;
@@ -198,10 +203,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    // &--last {
-    //   margin-block-end: 16px;
-    // }
   }
 
   &-Label {
