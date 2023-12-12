@@ -8,7 +8,7 @@ const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 export const fetchPhoneDetail = createAsyncThunk<Phone, string>(
   'phoneDetail/fetchPhoneDetail',
   async (id: string) => {
-    const res = await axios.get<Phone>(`${BASE_URL}/products.json/${id}`);
+    const res = await axios.get<Phone>(`${BASE_URL}products/${id}.json`);
 
     return res.data;
   },
@@ -37,9 +37,7 @@ const phoneDetailSlice = createSlice({
       })
       .addCase(fetchPhoneDetail.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(state.phone);
         state.phone = action.payload;
-        console.log(state.phone);
       })
       .addCase(fetchPhoneDetail.rejected, (state, action) => {
         state.status = 'failed';

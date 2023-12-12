@@ -32,14 +32,14 @@ export const fetchPhones = createAsyncThunk<Phone[]>(
   },
 );
 
-export const fetchPhoneDetail = createAsyncThunk<Phone, string>(
-  'favourites/fetchPhoneDetail',
-  async (id: string) => {
-    const res = await axios.get<Phone>(`${BASE_URL}/products.json/${id}`);
+// export const fetchPhoneDetail = createAsyncThunk<Phone, string>(
+//   'favourites/fetchPhoneDetail',
+//   async (id: string) => {
+//     const res = await axios.get<Phone>(`${BASE_URL}/products.json/${id}`);
 
-    return res.data;
-  },
-);
+//     return res.data;
+//   },
+// );
 
 const favouritesSlices = createSlice({
   name: 'favourites',

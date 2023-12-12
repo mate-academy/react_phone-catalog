@@ -11,7 +11,6 @@ import {
 } from '../../features/favouritesSlices/favouritesSlice';
 
 export const Phones = () => {
-  console.log('render Phones');
   const [itemsPerPage, setItemsPerPage] = useState('');
   const phones = useAppSelector(selectPhones) || [];
   const status = useAppSelector(selectStatus);
@@ -23,8 +22,6 @@ export const Phones = () => {
       dispatch(fetchPhones());
     }
   }, [selectStatus, dispatch]);
-
-  console.log(phones);
 
   return (
     <>

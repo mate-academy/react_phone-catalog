@@ -8,7 +8,6 @@ import styles from '../Phones/Phones.module.scss';
 
 export const Favourites = () => {
   const favouritesPhones = useAppSelector(selectFavourites);
-  console.log(favouritesPhones);
 
   return (
     <Box>

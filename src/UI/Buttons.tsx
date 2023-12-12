@@ -14,8 +14,6 @@ export const Buttons: FC<Props> = ({
   handleAddToMyFavourites,
   selected,
 }) => {
-  console.log(selected);
-
   return (
     <div className={styles.buttons}>
       <button

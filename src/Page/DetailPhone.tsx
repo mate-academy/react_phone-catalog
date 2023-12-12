@@ -4,25 +4,28 @@ import { PhoneDetail } from '../components/Phones/PhoneDetail';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import {
   fetchPhoneDetail,
-  // selectPhone,
+  selectPhone,
+  selectStatus,
 } from '../features/phoneDetail/phoneDetailSlice';
-import { selectStatus } from '../features/favouritesSlices/favouritesSlice';
 
 export const DetailPhonePage = () => {
   const { phoneId } = useParams();
-  // const phone = useAppSelector(selectPhone);
+  const phone = useAppSelector(selectPhone);
   const status = useAppSelector(selectStatus);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    // console.log('phoneid', phoneId);
+    // console.log(status);
+    // console.log(phone);
     if (status === 'idle') {
       dispatch(fetchPhoneDetail(phoneId || ''));
     }
-  }, [dispatch, selectStatus]);
+  }, [dispatch, phoneId, status]);
 
   return (
     <>
-      <PhoneDetail />
+      <PhoneDetail phone={phone} />
     </>
   );
 };
