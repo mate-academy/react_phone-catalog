@@ -1,24 +1,28 @@
 import { useParams } from 'react-router-dom';
-// import { Phone } from '../types/Phone';
+import { useEffect } from 'react';
 import { PhoneDetail } from '../components/Phones/PhoneDetail';
-// import { PhoneDetail } from '../components/Phones/PhoneDetail';
-import { useGetPhoneByIdQuery } from '../features/phonesApi/api';
-
-// type Data = {
-//   phone: Phone;
-// };
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import {
+  fetchPhoneDetail,
+  // selectPhone,
+} from '../features/phoneDetail/phoneDetailSlice';
+import { selectStatus } from '../features/favouritesSlices/favouritesSlice';
 
 export const DetailPhonePage = () => {
   const { phoneId } = useParams();
-  // const { phone }: Data = useLoaderData() as { phone: Phone };
-  const { data } = useGetPhoneByIdQuery(phoneId || '');
+  // const phone = useAppSelector(selectPhone);
+  const status = useAppSelector(selectStatus);
+  const dispatch = useAppDispatch();
 
-  // console.log(data);
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchPhoneDetail(phoneId || ''));
+    }
+  }, [dispatch, selectStatus]);
 
   return (
     <>
-      <PhoneDetail phone={data} />
+      <PhoneDetail />
     </>
-
   );
 };

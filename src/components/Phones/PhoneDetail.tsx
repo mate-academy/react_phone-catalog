@@ -1,12 +1,18 @@
-import { FC } from 'react';
-import { Phone } from '../../types/Phone';
+// import { FC } from 'react';
+// import { Phone } from '../../types/Phone';
 import { Box } from '../../UI/Box';
+import { selectPhone } from '../../features/phoneDetail/phoneDetailSlice';
+import { useAppSelector } from '../../app/hooks';
 
-type Props = {
-  phone: Phone | undefined,
-};
+// type Props = {
+//   phone: Phone | null,
+// };
 
-export const PhoneDetail: FC<Props> = ({ phone }) => {
+export const PhoneDetail = () => {
+  // const { } = phone;
+  const phone = useAppSelector(selectPhone);
+  console.log(phone);
+
   return (
     <Box>
       <h1>Page Detail</h1>

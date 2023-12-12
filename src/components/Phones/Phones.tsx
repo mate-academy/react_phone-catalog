@@ -1,12 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box } from '../../UI/Box';
-import { useGetPhonesQuery } from '../../features/phonesApi/api';
 import { PhoneItem } from './PhoneItem';
 import styles from './Phones.module.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  fetchPhones,
+  restorePhones,
+  selectPhones,
+  selectStatus,
+} from '../../features/favouritesSlices/favouritesSlice';
 
 export const Phones = () => {
+  console.log('render Phones');
   const [itemsPerPage, setItemsPerPage] = useState('');
-  const { data = [] } = useGetPhonesQuery(itemsPerPage);
+  const phones = useAppSelector(selectPhones) || [];
+  const status = useAppSelector(selectStatus);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(restorePhones(phones));
+    if (status === 'idle') {
+      dispatch(fetchPhones());
+    }
+  }, [selectStatus, dispatch]);
+
+  console.log(phones);
 
   return (
     <>
@@ -26,8 +44,8 @@ export const Phones = () => {
           </select>
         </div>
         <ul className={styles.grid}>
-          {data.map((phone) => (
-            <li className={styles.children} key={phone.itemId}>
+          {phones.map((phone) => (
+            <li className={styles.children} key={phone.phoneId}>
               <PhoneItem phone={phone} />
             </li>
           ))}

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { FavoritesIcon } from './FavoritesIcon';
+import { FavoritesIcon } from '../icons/FavoritesIcon';
 import styles from './Buttons.module.scss';
-import { FavouritesIconRed } from './FavouritesIconRed';
+import { FavouritesIconRed } from '../icons/FavouritesIconRed';
 
 type Props = {
   handleAddPhoneToCart: () => void,
@@ -14,7 +14,7 @@ export const Buttons: FC<Props> = ({
   handleAddToMyFavourites,
   selected,
 }) => {
-  // console.log(selected);
+  console.log(selected);
 
   return (
     <div className={styles.buttons}>
