@@ -4,7 +4,7 @@
   padding: 23px;
 
   border: 1px solid $elements-color;
-  transition: all $transition-time;
+  transition: all 0.3s;
 
   &:hover {
     border-color: transparent;

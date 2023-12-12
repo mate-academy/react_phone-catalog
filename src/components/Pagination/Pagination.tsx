@@ -64,7 +64,7 @@ export const Pagination: React.FC<Props> = ({ totalItems, onPage }) => {
   }, [currentPage, pagesCount]);
 
   const handleToTopScroll = () => {
-    window.scrollTo({ top: 200, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handlePreviousPage = () => {

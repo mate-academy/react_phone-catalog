@@ -30,11 +30,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
   };
 
+  const handleToTopScroll = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="ProductCard" data-cy="cardsContainer">
       <Link
         to={`/product/${phoneId}`}
         className="ProductCard__content"
+        onClick={handleToTopScroll}
       >
         <img
           src={image}
