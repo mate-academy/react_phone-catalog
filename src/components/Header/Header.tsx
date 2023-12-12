@@ -26,7 +26,7 @@ export const Header: React.FC<Props> = ({
               to="/"
               className={setActiveClass}
             >
-              <img src="/_new/img/icons/logo.svg" alt="logo" />
+              <img src="_new/img/icons/logo.svg" alt="logo" />
             </NavLink>
           </div>
           <div className="nav-links">
@@ -48,12 +48,12 @@ export const Header: React.FC<Props> = ({
 
           <NavLink to="/favorites" className={setActiveClass}>
             <img
-              src="/_new/img/icons/favourites.svg"
+              src="_new/img/icons/favourites.svg"
               alt="favorites"
             />
           </NavLink>
           <NavLink to="/cart" className={setActiveClass}>
-            <img src="/_new/img/icons/bag.svg" alt="bag" />
+            <img src="_new/img/icons/bag.svg" alt="bag" />
           </NavLink>
         </div>
       </nav>
