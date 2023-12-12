@@ -115,29 +115,34 @@ iframe {
 //   }
 // }
 
-// .dropdowns {
-//   height: 40px;
-//   display: grid;
-//   grid-template-columns: repeat(24, 1fr);
-//   column-gap: 16px;
-// }
-
-// .items-on-page {
-//   grid-column: span 3;
-//   background-image: url('../src/images/arrow-down.svg');
-//   background-repeat: no-repeat;
-//   background-position: right;
-
-//   :focus {
-//     border: none;
-//   }
-// }
+.dropdowns-container {
+  height: 40px;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+}
 
 .dropdown {
+  grid-column: span 4;
 
+
+  &__button {
+    height: 40px;
+    width: 100%;
+
+    &--select {
+      background-image: url('../src/images/arrow-down.svg');
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+
+    &--focused {
+      background-image: url('../src/images/arrow-up-secondary.svg');
+    }
+
+    &--option {
+      // display: block;
+    }
+  }
 }
 
-.dropdown-content {
-  display: flex;
-  flex-direction: column;
-}

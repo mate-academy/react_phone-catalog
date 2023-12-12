@@ -23,13 +23,17 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
     { field: '16', id: 1 },
     { field: '8', id: 2 },
     { field: '4', id: 3 },
-    { field: 'all', id: 3 },
+    { field: 'all', id: 4 },
   ];
+
+  // console.log(length);
 
   const handleSelect = (amount: string) => {
     if (amount === 'all') {
       setItemsPerPage(length);
       setIsListVisible(false);
+
+      return;
     }
 
     if (+amount === currentAmount) {

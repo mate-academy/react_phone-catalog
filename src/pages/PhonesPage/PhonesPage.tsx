@@ -18,11 +18,13 @@ import {
 export const PhonesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(16);
   const [itemOffset, setItemOffset] = useState(0);
   const [sortField, setSortField] = useState('Newest');
 
   const location = useLocation();
+
+  // console.log(itemsPerPage);
 
   // console.log(location);
 
@@ -63,7 +65,7 @@ export const PhonesPage: React.FC = () => {
       </div>
       <h1>Mobile phones</h1>
       <h1>{sortField}</h1>
-      <div className="dropdowns">
+      <div className="dropdowns-container">
         <SortDropdown setSortField={setSortField} currentField={sortField} />
         <ItemsPerPageDropdown
           setItemsPerPage={setItemsPerPage}
@@ -80,15 +82,18 @@ export const PhonesPage: React.FC = () => {
           ))}
         </div>
       )}
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
+      {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+        />
+      )}
+
     </>
   );
 };
