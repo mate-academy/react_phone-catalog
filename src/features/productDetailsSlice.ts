@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Status } from '../types/Status';
-import { Product } from '../types/Product';
-import { getProduct } from '../api/product';
+import { ProductDetails } from '../types/ProductDetails';
+import { getProductDetails } from '../api/productDetails';
 
 export type ProductDetailsState = {
-  productDetails: Product | null;
+  productDetails: ProductDetails | null;
   status: Status;
 };
 
@@ -16,7 +16,7 @@ const initialState: ProductDetailsState = {
 
 export const fetchProductDetails = createAsyncThunk(
   'productDetails/fetch',
-  (productId: string) => getProduct(productId),
+  (productId: string) => getProductDetails(productId),
 );
 
 export const productDetailsSlice = createSlice({
