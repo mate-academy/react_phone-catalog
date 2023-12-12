@@ -24,15 +24,27 @@ export const Footer = () => {
         </Link>
 
         <div className="footer__nav">
-          <Link to="/" className="footer__nav--link">
+          <Link
+            to="https://github.com/Marinakyrychynska"
+            className="footer__nav--link"
+            target="_blank"
+          >
             Github
           </Link>
 
-          <Link to="/" className="footer__nav--link">
+          <Link
+            to="https://github.com/Marinakyrychynska"
+            className="footer__nav--link"
+            target="_blank"
+          >
             Contacts
           </Link>
 
-          <Link to="/" className="footer__nav--link">
+          <Link
+            to="https://github.com/Marinakyrychynska"
+            className="footer__nav--link"
+            target="_blank"
+          >
             Rights
           </Link>
         </div>

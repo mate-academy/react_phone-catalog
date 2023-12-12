@@ -1,2 +1,267 @@
 @import "../../utils/main.scss";
 
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    margin-top: 16px;
+    @extend %h1;
+    color: $gray-primary-color;
+  }
+
+  &__content {
+    display: flex;
+    margin-top: 40px;
+
+    &--img-container {
+      display: flex;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-right: 16px;
+
+    &--btn {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      background-color: transparent;
+      border: 1px solid $elements-color;
+      transition: border $transition-duration;
+
+      &:hover {
+        border: 1px solid $gray-secondary-color;
+      }
+    }
+
+    &--item {
+      max-height: 100%;
+    }
+  }
+
+  &__current--img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 464px;
+    height: 464px;
+    padding: 11px;
+    margin-right: 64px;
+
+    &-item {
+      max-height: 100%;
+    }
+  }
+
+  &__actions {
+    margin-right: 130px;
+  }
+
+  &__options {
+    height: 80px;
+    border-bottom: 1px solid $elements-color;
+    margin-bottom: 24px;
+
+    &--title {
+      @extend %small-text;
+      color: $gray-secondary-color;
+      margin-bottom: 8px;
+    }
+
+    &--list {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    &--color {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      border: 1px solid $elements-color;
+      border-radius: 50%;
+      transition: $transition-duration;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $gray-primary-color;
+      }
+
+      &-link {
+        width: 100%;
+        border: 2px solid $white-color;
+        border-radius: 50%;
+      }
+    }
+
+    &--cap {
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $gray-icons-color;
+      transition: $transition-duration;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $gray-primary-color;
+      }
+
+      &-link {
+        @extend %body-text;
+        color: $gray-primary-color;
+        margin-inline: 8px;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &--discont {
+      @extend %h2;
+      font-size: 32px;
+      color: $gray-primary-color;
+    }
+
+    &--regular {
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $gray-secondary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    &--add {
+      padding: 0;
+      width: 263px;
+      height: 48px;
+      border: 1px solid $gray-primary-color;
+      background-color: $gray-primary-color;
+      @extend %body-text;
+      color: $white-color;
+      cursor: pointer;
+      transition: box-shadow $transition-duration;
+
+      &:hover {
+        box-shadow: 5px 13px rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+
+    &--container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @extend %small-text;
+    }
+
+    &--title {
+      color: $gray-secondary-color;
+    }
+
+    &--description {
+      color: $gray-primary-color;
+    }
+  }
+
+  &__id {
+    @extend %small-text;
+    color: $elements-color;
+  }
+
+  &__details {
+    display: flex;
+    gap: 64px;
+    margin-top: 80px;
+
+    &--title {
+      height: 48px;
+      border-bottom: 1px solid $elements-color;
+
+      &-item {
+        @extend %h2;
+        color: $gray-primary-color;
+      }
+    }
+
+    &--about {
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      &-title {
+        @extend %h3;
+        color: $gray-primary-color;
+        margin-bottom: 16px;
+      }
+
+      &-text {
+        @extend %body-text;
+        color: $gray-secondary-color;
+      }
+    }
+
+    &--tech {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &-wrap {
+        display: flex;
+        justify-content: space-between;
+        @extend %body-text;
+        color: $gray-secondary-color;
+      }
+
+      &-value {
+        color: $gray-primary-color;
+      }
+    }
+  }
+}
+
+.img-active {
+  border-color: $gray-primary-color;
+}
+
+.color-active {
+  border-color: $gray-primary-color;
+}
+
+.cap-active {
+  background-color: $gray-primary-color;
+  color: $white-color;
+}

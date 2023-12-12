@@ -1,17 +1,23 @@
 import React from 'react';
 import './BreadCrambs.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProductDetails } from '../../types/ProductDetails';
 
 interface Props {
   product?: ProductDetails | null,
-  category: string,
 }
 
-export const BreadCrambs: React.FC<Props> = ({ product, category }) => {
+function capitalizeCategory(word: string) {
+  return word[0].toUpperCase() + word.slice(1);
+}
+
+export const BreadCrambs: React.FC<Props> = ({ product }) => {
+  const { pathname } = useLocation();
+  const categoryName = pathname.slice(1).split('/')[0];
+
   return (
-    <div className="breadCrambs">
-      <Link to="/" className="breadCrambs__link">
+    <div className="breadCrambs" data-cy="breadCrumbs">
+      <Link to="/" className="breadCrambs__link--home">
         <div className="icon icon--home" />
       </Link>
 
@@ -19,20 +25,19 @@ export const BreadCrambs: React.FC<Props> = ({ product, category }) => {
 
       {!product ? (
         <span className="breadCrambs__current">
-          {category}
+          {capitalizeCategory(categoryName)}
         </span>
       ) : (
         <>
-          <Link to={`/${category}`} className="breadCrambs__link">
-            {category}
+          <Link to={`/${categoryName}`} className="breadCrambs__link">
+            {capitalizeCategory(categoryName)}
           </Link>
 
           <div className="icon icon--right" />
 
           <span className="breadCrambs__current">
-            {product?.name}
+            {product.name}
           </span>
-
         </>
       )}
     </div>

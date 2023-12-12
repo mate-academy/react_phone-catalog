@@ -44,6 +44,30 @@
       &-img {
         position: relative;
       }
+
+      &-fav {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        top: 0;
+        right: 0;
+        margin-top: -30%;
+        margin-right: -40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $red-color;
+        border-radius: 50%;
+
+        &-amount {
+          font-family: "Mont-SemiBold", sans-serif;
+          font-size: 8px;
+          font-style: normal;
+          font-weight: 600;
+          color: $white-color;
+          text-align: center;
+        }
+      }
     }
   }
 }
@@ -85,4 +109,3 @@
     background-color: $gray-primary-color;
   }
 }
-

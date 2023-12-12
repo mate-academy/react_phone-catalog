@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 .icon {
   width: 16px;
@@ -8,6 +8,10 @@
 
   &--fav {
     background-image: url(../icons/heard.svg);
+
+    &-add {
+      background-image: url(../icons/heard-red.svg);
+    }
   }
 
   &--shop {
@@ -40,5 +44,13 @@
 
   &--delete {
     background-image: url(../icons/Close.svg);
+  }
+
+  &--minus {
+    background-image: url(../icons/minus.svg);
+  }
+
+  &--plus {
+    background-image: url(../icons/plus.svg);
   }
 }

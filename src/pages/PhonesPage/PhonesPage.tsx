@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './PhonesPage.scss';
 import { Product } from '../../types/Product';
-import { getProducts } from '../../api/productsApi';
+import { getPhones } from '../../api/productsApi';
 import { Loader } from '../../components/Loader';
 import { ProductList } from '../../components/ProductList';
 import { Pagination } from '../../components/Pagination';
@@ -37,7 +37,7 @@ export const PhonesPage: React.FC = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getProducts()
+    getPhones()
       .then(setProducts)
       .catch(() => {
         setIsError(true);
@@ -49,7 +49,7 @@ export const PhonesPage: React.FC = () => {
 
   return (
     <div className="productPage">
-      <BreadCrambs category="Phones" />
+      <BreadCrambs />
       <h1 className="productPage__title">Mobile phones</h1>
       {isLoading && <Loader />}
       {!isLoading && isError && (
@@ -75,7 +75,7 @@ export const PhonesPage: React.FC = () => {
         <ProductList products={currentItems} />
       ) : (
         <p className="NoSearchResults">
-          Now search results...
+          No search results...
         </p>
       )}
 
@@ -84,7 +84,6 @@ export const PhonesPage: React.FC = () => {
           currentPage={currentPage}
           pageAmount={pagesAmount}
         />
-
       )}
     </div>
   );

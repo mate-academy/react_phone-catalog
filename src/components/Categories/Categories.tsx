@@ -1,10 +1,20 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
 import './Categories.scss';
 import phones from '../../photo/category-phones.png';
 import tablets from '../../photo/category-tablets.png';
 import accessories from '../../photo/category-accessories.png';
+import { Product } from '../../types/Product';
 
-export const Categories = () => {
+interface Props {
+  products: Product[],
+}
+
+export const Categories: React.FC<Props> = ({ products }) => {
+  const categoryAmount = (type: string) => {
+    return products.filter(item => item.category === type).length;
+  };
+
   return (
     <section
       className="categories"
@@ -27,7 +37,7 @@ export const Categories = () => {
             Mobile phones
           </p>
           <span className="categories__item--amount">
-            95 models
+            {`${categoryAmount('phones')} models`}
           </span>
 
         </Link>
@@ -43,7 +53,7 @@ export const Categories = () => {
             Tablets
           </p>
           <span className="categories__item--amount">
-            95 models
+            {`${categoryAmount('tablets')} models`}
           </span>
         </Link>
         <Link className="categories__item" to="/accessories">
@@ -59,7 +69,7 @@ export const Categories = () => {
             Accessories
           </p>
           <span className="categories__item--amount">
-            95 models
+            {`${categoryAmount('accessories')} models`}
           </span>
         </Link>
       </div>
