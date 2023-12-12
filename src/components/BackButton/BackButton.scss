@@ -1,0 +1,25 @@
+@import "../../styles/utils/";
+
+.BackButton {
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: $secondary;
+
+  background-color: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  &-Icon {
+    --icon-size: 16px;
+    border: none;
+  }
+}
