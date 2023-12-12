@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import classes from './App.module.scss';
 import { Root } from './Page/Root';
@@ -11,8 +10,6 @@ import { FavouritesPage } from './Page/Favorites';
 import { CartPage } from './Page/CartPage';
 import { DetailPhonePage } from './Page/DetailPhone';
 import { PhoneRoot } from './Page/PhoneRoot';
-// import { loaderPhoneDetail } from './features/phonesApi/apiFetch';
-// import { PhoneDetail } from './components/Phones/PhoneDetail';
 
 // 'https://mate-academy.github.io/react_phone-catalog/_new/products' - просто урл до теелфонів в масиві
 // 'https://mate-academy.github.io/react_phone-catalog/_new/products/myid.json' - просто урл до окремих телефонів

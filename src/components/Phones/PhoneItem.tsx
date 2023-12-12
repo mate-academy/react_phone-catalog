@@ -5,11 +5,14 @@ import { Phone } from '../../types/Phone';
 import { useAppDispatch } from '../../app/hooks';
 import styled from './PhoneItem.module.scss';
 import { formatter } from '../../helper/formater';
-import { Buttons } from '../../UI/Buttons';
+// import { Buttons } from '../../UI/Buttons';
 import { addPhoneToCart } from '../../features/cartSlices/cartSlice';
 import {
   addToFavourites,
 } from '../../features/favouritesSlices/favouritesSlice';
+import { FavoritesIcon } from '../../icons/FavoritesIcon';
+import { FavouritesIconRed } from '../../icons/FavouritesIconRed';
+import styles from '../../UI/Buttons.module.scss';
 
 type Props = {
   phone: Phone
@@ -52,16 +55,18 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
   };
 
   const handleAddToMyFavourites = () => {
-    const newPhone: Phone = {
-      ...phone,
-      selected: !selected,
-    };
+    // const newPhone: Phone = {
+    //   ...phone,
+    //   selected: !selected,
+    // };
 
-    // console.log(selected);
+    // console.log(newPhone.selected);
     // console.log(newPhone);
 
-    dispatch(addToFavourites(newPhone));
+    dispatch(addToFavourites(phone));
   };
+
+  // console.log(selected);
 
   const formatPrice = formatter.format(price);
   const formatFullPrice = formatter.format(fullPrice);
@@ -69,7 +74,7 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
   return (
     <>
       <section className={styled.content}>
-        <Link to={phone.itemId}>
+        <Link to={phone.phoneId}>
           <article className={styled.image}>
             <img src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`} alt="Modile Phone" />
           </article>
@@ -91,11 +96,28 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
             <p>{`RAM - ${ram}`}</p>
           </div>
           <div>
-            <Buttons
+
+            <div className={styles.buttons}>
+              <button
+                type="button"
+                className={styles.buttons__add}
+                onClick={handleAddPhoneToCart}
+              >
+                Add to cart
+              </button>
+              <button
+                type="button"
+                className={styles.buttons__favorites}
+                onClick={handleAddToMyFavourites}
+              >
+                {!selected ? <FavoritesIcon /> : <FavouritesIconRed />}
+              </button>
+            </div>
+            {/* <Buttons
               handleAddPhoneToCart={handleAddPhoneToCart}
               handleAddToMyFavourites={handleAddToMyFavourites}
               selected={selected}
-            />
+            /> */}
           </div>
         </article>
       </section>

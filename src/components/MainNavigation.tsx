@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import { Logo } from '../UI/Logo';
+import { Logo } from '../icons/Logo';
 import classes from './MainNavigation.module.scss';
-import { FavoritesIcon } from '../UI/FavoritesIcon';
-import { ShopIcon } from '../UI/ShopIcon';
+import { FavoritesIcon } from '../icons/FavoritesIcon';
+import { ShopIcon } from '../icons/ShopIcon';
 import { useAppSelector } from '../app/hooks';
 import {
   selectQuantityFavourites,
