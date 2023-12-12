@@ -10,7 +10,7 @@ type Props = {
 export const PaginationPage: FC<Props> = ({ total }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || '1';
-  const previousPage = searchParams.get('previousPage') || '8';
+  const previousPage = searchParams.get('perPage') || '8';
 
   const handlePageSelect = (pageNumber: number) => {
     const paramsToUpdate = { page: !pageNumber ? null : `${pageNumber}` };
