@@ -28,7 +28,7 @@ export const ProductDetailsPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<string>('');
   const [thisModelProducts, setThisModelProducts] = useState<Product[]>([]);
-
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const {
     favoritesItems,
     addToFavorites,
@@ -133,22 +133,26 @@ export const ProductDetailsPage = () => {
   };
 
   const handleBackButtonClick = () => {
+    navigate(-1);
   };
 
-  const getSuggestedProducts = () => {
-    const shuffledProducts = [...products];
+  useEffect(() => {
+    const shuffleProducts = () => {
+      const shuffled = [...products];
 
-    for (let i = shuffledProducts.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
+      for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
 
-      [shuffledProducts[i], shuffledProducts[j]]
-        = [shuffledProducts[j], shuffledProducts[i]];
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      return shuffled;
+    };
+
+    if (products.length > 0) {
+      setSuggestedProducts(shuffleProducts());
     }
-
-    return shuffledProducts;
-  };
-
-  const suggestedProducts = getSuggestedProducts();
+  }, [products]);
 
   return (
     <div className="productDetailsPage">
@@ -294,7 +298,7 @@ export const ProductDetailsPage = () => {
                         : addToCart(product));
                   }}
                 >
-                  {containedInCart ? 'Selected' : 'Add to cart'}
+                  {containedInCart ? 'Added to cart' : 'Add to cart'}
                 </button>
 
                 <button

@@ -11,6 +11,8 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // console.log(products);
+
   const handleNext = () => {
     setCurrentIndex(prevIndex => {
       return prevIndex + 1 < products.length
