@@ -1,0 +1,18 @@
+@import "../../helpers/utils/utils";
+
+.products-header {
+  &__title {
+    @include titleSection();
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $secondary;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    margin-bottom: 40px;
+  }
+}

@@ -1,7 +1,5 @@
 @import "../../helpers/utils/utils";
 
 .accessories {
-  &__content {
-    @include contentPaddingInline();
-  }
+  @include pageProducts();
 }

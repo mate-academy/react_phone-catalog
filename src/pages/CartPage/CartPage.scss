@@ -1,0 +1,73 @@
+@import "../../helpers/utils/utils";
+
+.cart {
+  @include pageProducts();
+
+  &__header {
+    margin-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: $secondary;
+
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__title {
+    @include titleSection();
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 56px;
+    flex-direction: column;
+
+    @include onDesktop {
+      gap: 16px;
+      flex-direction: row;
+    }
+
+    margin-bottom: 87px;
+  }
+
+  &__list {
+    flex: 3;
+  }
+
+  &__total-bar {
+    flex: 1;
+  }
+
+  &__not-implement-message {
+    position: fixed;
+    top: 80px;
+    right: 50%;
+
+    color: $error-background;
+    font-size: 14px;
+    padding: 24px;
+    background-color: $white;
+    border: 1px solid $error-background;
+    border-radius: 15px;
+
+    text-align: center;
+
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateX(250%);
+
+    &--active {
+      opacity: 1;
+      transform: translateX(50%);
+    }
+  }
+}

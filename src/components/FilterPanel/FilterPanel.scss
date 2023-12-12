@@ -1,27 +1,8 @@
 @import "../../helpers/utils/utils";
 
-.products-catalog {
-  &__header {
-    margin-bottom: 40px;
-  }
-
-  &__title {
-    @include titleSection();
-    margin-bottom: 8px;
-  }
-
-  &__subtitle {
-    color: $secondary;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-  }
-
-  &__search-panel {
-    display: flex;
-    gap: 16px;
-  }
+.search-panel {
+  display: flex;
+  gap: 16px;
 
   &__btn-wrapper {
     position: relative;
@@ -91,34 +72,6 @@
 
     &--selected {
       color: $primary;
-    }
-  }
-
-  &__page-controls {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-
-    margin-bottom: 80px;
-  }
-
-  &__pages-list {
-    display: flex;
-    gap: 8px;
-  }
-
-  &__btn-control-page {
-    width: 32px;
-    height: 32px;
-  }
-
-  &__btn-page {
-    width: 32px;
-    height: 32px;
-
-    &--active {
-      background-color: $primary;
-      color: $white;
     }
   }
 }

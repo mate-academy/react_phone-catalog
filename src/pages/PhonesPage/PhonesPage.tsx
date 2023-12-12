@@ -31,11 +31,19 @@ export const PhonesPage: React.FC = () => {
     title: string,
   ) => {
     if (isLoading) {
-      return <Loader />;
+      return (
+        <div className="phones__loading">
+          <Loader />
+        </div>
+      );
     }
 
     if (isError) {
-      return <p className="error">Error</p>;
+      return (
+        <p className="favorites__error">
+          There was an error, please try again later
+        </p>
+      );
     }
 
     return <ProductsCatalog products={products} title={title} />;

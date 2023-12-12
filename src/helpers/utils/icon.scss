@@ -9,6 +9,10 @@
 
   &__favorites {
     background-image: url(../../icon/favorites.svg);
+
+    &--active {
+      background-image: url(../../icon/favorites-active.svg);
+    }
   }
 
   &__home {
@@ -45,6 +49,14 @@
 
   &__close {
     background-image: url(../../icon/close.svg);
+  }
+
+  &__minus {
+    background-image: url(../../icon/minus.svg);
+  }
+
+  &__plus {
+    background-image: url(../../icon/plus.svg);
   }
 }
 

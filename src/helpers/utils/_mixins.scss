@@ -25,6 +25,13 @@
   text-align: center;
 }
 
+@mixin loadingContainer() {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin contentPaddingInline() {
   padding-inline: 30px;
 
@@ -60,5 +67,24 @@
 
   @include onDesktop() {
     grid-template-columns: repeat(24, 1fr);
+  }
+}
+
+@mixin pageProducts() {
+  &__content {
+    @include contentPaddingInline();
+  }
+
+  &__loading {
+    @include loadingContainer();
+  }
+
+  &__error {
+    @include message();
+
+    color: $white;
+    background-color: $error-background;
+    border-color: $elements;
+    margin-top: 25vh;
   }
 }

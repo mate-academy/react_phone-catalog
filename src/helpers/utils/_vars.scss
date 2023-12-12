@@ -4,12 +4,15 @@ $secondary: #89939a;
 $icon: #b4bdc3;
 $elements: #e2e6e9;
 $white: #fff;
+$green: #27ae60;
 $message-background: #dbdee133;
+$error-background: #eb5757;
+$favorites-label: #eb5757;
 
 //fonts
-$bold-fonts: "Mont-Bold", sans-serif;
-$semi-bold-fonts: "Mont-SemiBold", sans-serif;
-$regular-fonts: "Mont-Regular", sans-serif;
+$bold-fonts: "Mont-Bold", sans-serif; //700
+$semi-bold-fonts: "Mont-SemiBold", sans-serif; //600
+$regular-fonts: "Mont-Regular", sans-serif; //400
 
 //page
 $page-background-color: $white;

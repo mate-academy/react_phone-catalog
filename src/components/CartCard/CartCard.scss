@@ -1,0 +1,71 @@
+@import "../../helpers/utils/utils";
+
+.cart-card {
+  display: flex;
+  justify-content: space-between;
+
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+
+  @include onTable() {
+    gap: 0;
+    flex-direction: row;
+  }
+
+  padding: 31px 40px 31px 24px;
+
+  border: 1px solid $elements;
+
+  &__left-section,
+  &__rigth-section {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__rigth-section {
+    gap: 43px;
+  }
+
+  &__img {
+    height: 66px;
+  }
+
+  &__name {
+    color: $primary;
+
+    font-size: 14px;
+    font-family: $semi-bold-fonts;
+    line-height: 21px;
+  }
+
+  &__count-contoller {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__count {
+    color: $primary;
+
+    font-size: 14px;
+    font-family: $semi-bold-fonts;
+    line-height: 21px;
+    width: 14px;
+    text-align: center;
+  }
+
+  &__contoller-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__price {
+    color: $primary;
+
+    font-size: 22px;
+    font-family: $bold-fonts;
+    line-height: 140%;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../helpers/utils/utils";
+
+.page-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  margin-bottom: 80px;
+
+  &__pages-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn-control-page {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__btn-page {
+    width: 32px;
+    height: 32px;
+
+    &--active {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}

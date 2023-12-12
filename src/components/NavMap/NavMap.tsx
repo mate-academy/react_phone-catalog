@@ -7,7 +7,6 @@ import './NavMap.scss';
 export const NavMap = () => {
   const path = window.location.hash;
   const links = path.split('/')[1].split('?')[0].split('/');
-  // const links = ['phones', 'apple-iphone-14-pro-128gb-gold'];
 
   const nameLinks = links.map(link => {
     const linkWords = link.split('-');

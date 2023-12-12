@@ -1,9 +1,14 @@
+import React from 'react';
 import './NoResult.scss';
 
-export const NoResult = () => (
+type Props = {
+  message: string,
+};
+
+export const NoResult: React.FC<Props> = ({ message }) => (
   <div className="no-result">
     <p className="no-result__message">
-      There are no products on this page
+      {message}
     </p>
   </div>
 );

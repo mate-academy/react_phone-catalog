@@ -1,55 +1,92 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { NavBar } from '../NavBar';
 import './Header.scss';
+import { ProductsContext } from '../ProductsContext';
 
 type Props = {
   toggleMenu: () => void,
 };
 
-export const Header: React.FC<Props> = ({ toggleMenu }) => (
-  <header className="header">
-    <div className="container">
-      <div className="header__content">
-        <div className="header__logo-nav-bar">
-          <NavLink
-            className="header__logo-link"
-            to="/"
-          >
-            <div className="header__logo icon-logo" />
-          </NavLink>
+export const Header: React.FC<Props> = ({ toggleMenu }) => {
+  const { favorites, carts } = useContext(ProductsContext);
 
-          <div className="header__nav">
-            <NavBar />
+  return (
+    <header className="header">
+      <div className="container">
+        <div className="header__content">
+          <div className="header__logo-nav-bar">
+            <NavLink
+              className="header__logo-link"
+              to="/"
+            >
+              <div className="header__logo icon-logo" />
+            </NavLink>
+
+            <div className="header__nav">
+              <NavBar />
+            </div>
           </div>
-        </div>
 
-        <div className="header__favorites-cart">
-          <NavLink
-            className={classNames('header__favorites-cart-link')}
-            to="/favorites"
+          <div className="header__favorites-cart">
+            <NavLink
+              className={({ isActive }) => (
+                classNames('header__favorites-cart-link', {
+                  'header__link-is-active': isActive,
+                })
+              )}
+              to="/favorites"
+            >
+              <div className="header__icon icon icon__favorites">
+                <div
+                  className={classNames(
+                    'header__label-count',
+                    {
+                      'header__label-count--display-none':
+                        favorites.length === 0,
+                    },
+                  )}
+                >
+                  {favorites.length}
+                </div>
+              </div>
+            </NavLink>
+
+            <NavLink
+              className={({ isActive }) => (
+                classNames('header__favorites-cart-link', {
+                  'header__link-is-active': isActive,
+                })
+              )}
+              to="/cart"
+            >
+              <div className="header__icon icon icon__cart">
+                <div
+                  className={classNames(
+                    'header__label-count',
+                    {
+                      'header__label-count--display-none':
+                        carts.length === 0,
+                    },
+                  )}
+                >
+                  {carts.length}
+                </div>
+              </div>
+            </NavLink>
+          </div>
+
+          <button
+            className="header__menu"
+            onClick={toggleMenu}
           >
-            <div className="header__favorites-icon icon icon__favorites" />
-          </NavLink>
-
-          <NavLink
-            className={classNames('header__favorites-cart-link')}
-            to="/cart"
-          >
-            <div className="header__favorites-icon icon icon__cart" />
-          </NavLink>
+            <div className="icon icon__menu" />
+          </button>
         </div>
-
-        <button
-          className="header__menu"
-          onClick={toggleMenu}
-        >
-          <div className="icon icon__menu" />
-        </button>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
