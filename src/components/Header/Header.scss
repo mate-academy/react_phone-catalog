@@ -40,7 +40,7 @@
     }
   }
 
-  &__favorites-cart {
+  &__favorites-cart-wrapper {
     display: none;
 
     @include onTable {
@@ -48,58 +48,14 @@
     }
   }
 
-  &__icon {
-    position: relative;
-  }
-
-  &__label-count {
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 14px;
-    height: 14px;
-
-    color: $white;
-    font-size: 9px;
-    font-family: $semi-bold-fonts;
-
-    border: 1px solid $white;
-    border-radius: 50%;
-    background-color: $favorites-label;
-
-    &--display-none {
-      display: none;
-    }
-  }
-
-  &__favorites-cart-link {
+  &__link {
     padding: 24px;
     border: 1px solid $elements;
 
     @include hover(border-color, $primary);
-  }
 
-  &__link-is-active {
-    position: relative;
-
-    color: $primary;
-
-    &::after {
-      position: absolute;
-      z-index: 1;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-
-      content: "";
-
-      height: 3px;
-
-      background-color: $primary;
+    &--is-active {
+      @include isLinkActive();
     }
   }
 

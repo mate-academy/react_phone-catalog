@@ -1,6 +1,8 @@
 @import "../../helpers/utils/_mixins.scss";
 
 .icon {
+  position: relative;
+
   width: 16px;
   height: 16px;
 
@@ -12,6 +14,30 @@
 
     &--active {
       background-image: url(../../icon/favorites-active.svg);
+    }
+  }
+
+  &__label-count {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14px;
+    height: 14px;
+
+    color: $white;
+    font-size: 9px;
+    font-family: $semi-bold-fonts;
+
+    border: 1px solid $white;
+    border-radius: 50%;
+    background-color: $favorites-label;
+
+    &--display-none {
+      display: none;
     }
   }
 

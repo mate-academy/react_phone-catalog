@@ -21,7 +21,7 @@ export const NavBar: React.FC<Props> = ({ toggleMenu }) => {
         onClick={handleNalLink}
         className={({ isActive }) => (
           classNames('nav__link', {
-            'nav__is-active': isActive,
+            'nav__link--is-active': isActive,
           })
         )}
         to="/"
@@ -33,7 +33,7 @@ export const NavBar: React.FC<Props> = ({ toggleMenu }) => {
         onClick={handleNalLink}
         className={({ isActive }) => (
           classNames('nav__link', {
-            'nav__is-active': isActive,
+            'nav__link--is-active': isActive,
           })
         )}
         to="/phones"
@@ -45,7 +45,7 @@ export const NavBar: React.FC<Props> = ({ toggleMenu }) => {
         onClick={handleNalLink}
         className={({ isActive }) => (
           classNames('nav__link', {
-            'nav__is-active': isActive,
+            'nav__link--is-active': isActive,
           })
         )}
         to="/tablets"
@@ -57,7 +57,7 @@ export const NavBar: React.FC<Props> = ({ toggleMenu }) => {
         onClick={handleNalLink}
         className={({ isActive }) => (
           classNames('nav__link', {
-            'nav__is-active': isActive,
+            'nav__link--is-active': isActive,
           })
         )}
         to="/accessories"

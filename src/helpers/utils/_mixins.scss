@@ -25,6 +25,26 @@
   text-align: center;
 }
 
+@mixin isLinkActive() {
+  position: relative;
+
+  color: $primary;
+
+  &::after {
+    position: absolute;
+    z-index: 1;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+
+    content: "";
+
+    height: 3px;
+
+    background-color: $primary;
+  }
+}
+
 @mixin loadingContainer() {
   height: 75vh;
   display: flex;

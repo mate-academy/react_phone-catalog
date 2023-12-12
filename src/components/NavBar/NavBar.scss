@@ -26,27 +26,10 @@
 
     @include onTable {
       padding-block: 27px;
-
     }
-  }
 
-  &__is-active {
-    position: relative;
-
-    color: $primary;
-
-    &::after {
-      position: absolute;
-      z-index: 1;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-
-      content: "";
-
-      height: 3px;
-
-      background-color: $primary;
+    &--is-active {
+      @include isLinkActive();
     }
   }
 }

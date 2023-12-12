@@ -31,21 +31,21 @@ export const Header: React.FC<Props> = ({ toggleMenu }) => {
             </div>
           </div>
 
-          <div className="header__favorites-cart">
+          <div className="header__favorites-cart-wrapper">
             <NavLink
               className={({ isActive }) => (
-                classNames('header__favorites-cart-link', {
-                  'header__link-is-active': isActive,
+                classNames('header__link', {
+                  'header__link--is-active': isActive,
                 })
               )}
               to="/favorites"
             >
-              <div className="header__icon icon icon__favorites">
+              <div className="icon icon__favorites">
                 <div
                   className={classNames(
-                    'header__label-count',
+                    'icon__label-count',
                     {
-                      'header__label-count--display-none':
+                      'icon__label-count--display-none':
                         favorites.length === 0,
                     },
                   )}
@@ -57,18 +57,18 @@ export const Header: React.FC<Props> = ({ toggleMenu }) => {
 
             <NavLink
               className={({ isActive }) => (
-                classNames('header__favorites-cart-link', {
-                  'header__link-is-active': isActive,
+                classNames('header__link', {
+                  'header__link--is-active': isActive,
                 })
               )}
               to="/cart"
             >
-              <div className="header__icon icon icon__cart">
+              <div className="icon icon__cart">
                 <div
                   className={classNames(
-                    'header__label-count',
+                    'icon__label-count',
                     {
-                      'header__label-count--display-none':
+                      'icon__label-count--display-none':
                         carts.length === 0,
                     },
                   )}
