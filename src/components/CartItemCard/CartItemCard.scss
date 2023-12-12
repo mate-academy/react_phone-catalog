@@ -8,10 +8,15 @@
 
   border: 1px solid $icons-color;
 
+  @include onPhone {
+    flex-direction: column;
+    gap: 20px;
+  }
+
   &__left {
     display: flex;
-    gap: 32px;
     align-items: center;
+    gap: 32px;
   }
 
   &__delete {
@@ -36,6 +41,10 @@
     display: flex;
     align-items: center;
     gap: 34px;
+
+    @include onPhone {
+      align-self: center;
+    }
   }
 
   &__counter {

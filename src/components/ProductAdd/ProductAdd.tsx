@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './ProductAdd.scss';
 import { useAppDispatch, useAppSelector } from '../../helpers/app/hooks';
-import { addToCart, removeFromCart } from '../../helpers/features/cartSlice';
+import { addToCart } from '../../helpers/features/cartSlice';
 import { Product } from '../../helpers/types/Product';
 import {
   addToFavorites,
@@ -37,12 +37,10 @@ export const ProductAdd: React.FC<Props> = ({ product }) => {
     }
   };
 
-  const handleToggleCartItem = () => {
+  const handleAddCartItem = () => {
     const isInCart = getIsInCart();
 
-    if (isInCart) {
-      dispatch(removeFromCart(product.phoneId));
-    } else {
+    if (!isInCart) {
       dispatch(addToCart(product));
     }
   };
@@ -54,7 +52,8 @@ export const ProductAdd: React.FC<Props> = ({ product }) => {
         className={classNames('ProductAdd__cart', {
           'ProductAdd__cart--selected': getIsInCart(),
         })}
-        onClick={handleToggleCartItem}
+        onClick={handleAddCartItem}
+        disabled={getIsInCart()}
       >
         {getIsInCart() ? (
           <p>Added to cart</p>

@@ -7,13 +7,21 @@
     @include buttonsText;
 
     padding: 21px;
-    width: 280px;
+    width: 240px;
 
     border: none;
-    box-shadow: -1px 0 0 0 $elements-color;
+    border-left: 1px solid $elements-color;
+
+    @include onPhone {
+      width: 145px;
+    }
 
     &::placeholder {
       color: $icons-color;
+
+      @include onPhone {
+        font-size: 10px;
+      }
     }
 
     &:focus {

@@ -1,5 +1,23 @@
 @import "./variables";
 
+@mixin onTablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin onPhoneDetails {
+  @media (max-width: $phone-details-width) {
+    @content;
+  }
+}
+
+@mixin onPhone {
+  @media (max-width: $phone-max-width) {
+    @content;
+  }
+}
+
 @mixin squareSize($size) {
   width: $size;
   height: $size;
@@ -10,6 +28,14 @@
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onPhone {
+    --columns: 6;
+  }
 }
 
 @mixin sectionTitle {
@@ -79,6 +105,10 @@
 
   color: $secondary-color;
   text-decoration: none;
+
+  @include onPhone {
+    font-size: 10px;
+  }
 }
 
 @mixin navigationUnderline {
@@ -101,4 +131,65 @@
   width: 40px;
 
   background: no-repeat center url(../../helpers/icons/icon_logo.svg);
+
+  @include onPhone {
+    transform: scale(0.8);
+  }
+}
+
+@mixin arrowButton {
+  @include squareSize(32px);
+
+  border: 1px solid $icons-color;
+  background: no-repeat center url(../../helpers/icons/icon_vector.svg);
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &--disabled {
+    border-color: $elements-color;
+    background-image: url(../../helpers/icons/icon_vector_disabled.svg);
+    cursor: auto;
+
+    &:hover {
+      border-color: $elements-color;
+    }
+  }
+
+  &--prev {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin dots {
+  &__dots {
+    position: absolute;
+    bottom: -32px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__dot-link {
+    padding-block: 10px;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__dot {
+    height: 4px;
+    width: 14px;
+
+    background-color: $elements-color;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
 }

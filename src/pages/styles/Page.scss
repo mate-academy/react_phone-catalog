@@ -42,6 +42,19 @@
 
   &__title {
     @include sectionTitle_H1;
+
+    &--mobile {
+      display: none;
+
+      @include onPhone {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    &--long {
+      margin-right: 90px;
+    }
   }
 
   &__amount {

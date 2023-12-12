@@ -1,26 +1,34 @@
 @import "../../helpers/styles/mixins";
 
 .Banners {
-  @include pageGrid;
-
-  height: 400px;
+  display: flex;
+  gap: 16px;
   position: relative;
 
-  &__container {
-    grid-column: span 22;
+  @include onPhone {
+    display: none;
+  }
 
-    display: flex;
+  &__wrapper {
     overflow: hidden;
-    scroll-behavior: smooth;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    transition: transform $transition-time;
   }
 
   &__banner {
-    height: 100%;
-    width: 1040px;
+    width: 100%;
   }
 
   &__button {
-    grid-column: span 1;
+    width: 32px;
 
     border: 1px solid $icons-color;
     background: no-repeat center url(../../helpers/icons/icon_vector.svg);
@@ -35,32 +43,5 @@
     }
   }
 
-  &__indicators {
-    position: absolute;
-    bottom: -32px;
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-  }
-
-  &__link {
-    padding-block: 10px;
-
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  &__indicator {
-    height: 4px;
-    width: 14px;
-
-    background-color: $elements-color;
-
-    &--active {
-      background-color: $primary-color;
-    }
-  }
+  @include dots;
 }

@@ -1,25 +1,32 @@
 @import "../../helpers/styles/mixins";
 
 .ProductDetails {
-  @include pageGrid;
+  &__id {
+    @include smallText;
 
-  row-gap: 80px;
+    text-align: right;
+  }
 
-  &__image-container {
-    grid-column: 1 / 12;
+  &__content {
+    @include pageGrid;
 
-    display: flex;
-    gap: 16px;
+    row-gap: 80px;
   }
 
   &__images {
+    grid-column: 1 / 3;
+
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onTablet {
+      display: none;
+    }
   }
 
   &__image-link {
-    @include squareSize(80px);
+    padding-block: 6px;
 
     background: none;
     border: 1px solid $elements-color;
@@ -38,16 +45,84 @@
     &--big {
       @include squareSize(440px);
 
-      padding: 12px;
+      @include onTablet {
+        @include squareSize(325px);
+      }
+
+      @include onPhone {
+        @include squareSize(280px);
+      }
+    }
+  }
+
+  @include dots;
+
+  &__dots {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__poster {
+    grid-column: 3 / 13;
+
+    position: relative;
+    place-self: center;
+
+    @include onTablet {
+      grid-column: 1 / 7;
+    }
+
+    @include onPhoneDetails {
+      grid-column: 1 / 13;
+    }
+
+    @include onPhone {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__button {
+    @include arrowButton;
+
+    position: absolute;
+    top: calc(50% - 16px);
+    right: 10px;
+
+    @include onTablet {
+      right: 0;
+    }
+
+    &--prev {
+      left: 10px;
+
+      @include onTablet {
+        left: 0;
+      }
     }
   }
 
   &__interactive {
-    grid-column: 14 / 20;
+    grid-column: 14 / 21;
+
+    @include onTablet {
+      grid-column: 7 / 13;
+    }
+
+    @include onPhoneDetails {
+      grid-column: 3 / 11;
+    }
+
+    @include onPhone {
+      grid-column: 1 / 7;
+    }
   }
 
   &__small-title {
     @include smallText;
+
     margin-bottom: 8px;
   }
 
@@ -65,8 +140,21 @@
     justify-content: center;
     align-items: center;
 
-    border: 1px solid $elements-color;
+    border: 1.5px solid $elements-color;
     border-radius: 50%;
+
+    &:hover {
+      border-color: $icons-color;
+    }
+
+    &--active {
+      border-color: $primary-color;
+      cursor: auto;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+    }
   }
 
   &__color {
@@ -82,8 +170,12 @@
     padding: 8px;
     padding-bottom: 4px;
 
-    border: 1.5px solid $icons-color;
+    border: 1.5px solid $elements-color;
     text-decoration: none;
+
+    &:hover {
+      border-color: $primary-color;
+    }
 
     &--active {
       border: none;
@@ -104,7 +196,7 @@
   &__price {
     @include sectionTitle_H1;
 
-    &--discount {
+    &--disc {
       @include sectionTitle_H2;
 
       font-weight: 500;
@@ -138,21 +230,17 @@
     }
 
     &-value {
-      color: $primary-color;
       text-align: right;
+      color: $primary-color;
     }
   }
 
-  &__id {
-    @include smallText;
-
-    grid-column: 22 / 24;
-
-    text-align: right;
-  }
-
   &__about {
-    grid-column: 1 / 12;
+    grid-column: 1 / 13;
+
+    @include onTablet {
+      grid-column: 1 / 7;
+    }
   }
 
   &__title {
@@ -195,6 +283,14 @@
   &__specs {
     @include bodyText;
 
-    grid-column: 13 / 25;
+    grid-column: 14 / 25;
+
+    @include onTablet {
+      grid-column: 7 / 13;
+    }
+
+    @include onPhone {
+      grid-column: 1 / 7;
+    }
   }
 }

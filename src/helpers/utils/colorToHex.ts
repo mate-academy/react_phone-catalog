@@ -11,7 +11,7 @@ export const colorToHex = (color: string) => {
     spacegray: '#575757',
     gold: '#ffd5b3',
     midnightgreen: '#5e7266',
-    silver: '#fffff0',
+    silver: '#d8d8d8',
     coral: '#f56549',
     rosegold: '#ffd5cf',
   };

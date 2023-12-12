@@ -3,8 +3,8 @@
 .Footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
   max-width: 1136px;
+  width: calc(100% - 40px);
 
   &__content {
     margin-inline: auto;
@@ -25,6 +25,14 @@
     height: 50%;
     display: flex;
     gap: 64px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+
+    @include onPhone {
+      gap: 16px;
+    }
   }
 
   &__link {
@@ -46,6 +54,10 @@
 
   &__to-top-text {
     @include smallText;
+
+    @include onPhone {
+      display: none;
+    }
   }
 
   &__to-top-link {

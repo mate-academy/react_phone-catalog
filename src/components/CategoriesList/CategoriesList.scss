@@ -3,9 +3,19 @@
 .CategoriesList {
   @include pageGrid;
 
+  row-gap: 24px;
+
   list-style: none;
 
   &__item {
     grid-column: span 8;
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+
+    @include onPhone {
+      grid-column: span 6;
+    }
   }
 }

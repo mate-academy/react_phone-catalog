@@ -4,6 +4,10 @@
   display: flex;
   gap: 16px;
 
+  @include onTablet {
+    flex-direction: column;
+  }
+
   &__items {
     flex-grow: 1;
 
@@ -22,6 +26,11 @@
     gap: 24px;
 
     border: 1px solid $elements-color;
+
+    @include onTablet {
+      align-self: center;
+      width: calc(100% - 50px);
+    }
   }
 
   &__info {

@@ -18,7 +18,7 @@ export const CartItemList: React.FC<Props> = ({ cart }) => {
   const handleCheckoutClick = () => {
     setIsCheckout(true);
 
-    setTimeout(() => setIsCheckout(false), 3000);
+    setTimeout(() => setIsCheckout(false), 4000);
   };
 
   return (

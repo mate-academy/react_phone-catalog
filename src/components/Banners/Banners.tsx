@@ -1,56 +1,53 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import './Banners.scss';
+import { useScreenSize } from '../../helpers/hooks/useScreenSize';
 
-const images = [
+const banners = [
   'img/banners/banner-phones.png',
   'img/banners/banner-tablets.png',
   'img/banners/banner-accessories.png',
 ];
 
-const lastImageIndex = images.length - 1;
-const scrollAmount = 1040;
-
 export const Banners = () => {
-  const [bannerNumber, setBannerNumber] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const container = sliderRef.current;
+  const [bannerWidth, setBannerWidth] = useState(1040);
+  const [position, setPosition] = useState(0);
+  const screenSize = useScreenSize();
+
+  useEffect(() => {
+    if (screenSize.width < 1176) {
+      setBannerWidth(screenSize.width - 136);
+    } else {
+      setBannerWidth(1040);
+    }
+  }, [screenSize.width]);
 
   let intervalId = 0;
 
-  useEffect(() => {
-    if (container) {
-      container.scrollLeft = 0;
-      setBannerNumber(0);
-    }
-  }, [container]);
-
-  const moveLeft = () => {
+  const handlePrevClick = () => {
     clearInterval(intervalId);
 
-    if (container) {
-      if (container.scrollLeft < scrollAmount) {
-        container.scrollLeft += scrollAmount * lastImageIndex;
-        setBannerNumber(lastImageIndex);
-      } else {
-        container.scrollLeft -= scrollAmount;
-        setBannerNumber(bannerNumber - 1);
+    setPosition((currentPosition) => {
+      if (currentPosition === 0) {
+        return currentPosition - bannerWidth * (banners.length - 1);
       }
-    }
+
+      return currentPosition + bannerWidth;
+    });
   };
 
   const carousel = () => {
-    if (container) {
-      if (container.scrollLeft >= scrollAmount * lastImageIndex) {
-        container.scrollLeft -= scrollAmount * lastImageIndex;
-        setBannerNumber(0);
-      } else {
-        container.scrollLeft += scrollAmount;
-        setBannerNumber(bannerNumber + 1);
+    setPosition((currentPosition) => {
+      const lastPosition = -bannerWidth * (banners.length - 1);
+
+      if (currentPosition === lastPosition) {
+        return 0;
       }
-    }
+
+      return currentPosition - bannerWidth;
+    });
   };
 
   useEffect(() => {
@@ -61,55 +58,79 @@ export const Banners = () => {
     return () => clearInterval(intervalId);
   });
 
-  const moveRight = () => {
+  const handleNextClick = () => {
     clearInterval(intervalId);
 
     carousel();
   };
 
+  const handleDotClick = (imgIndex: number) => {
+    clearInterval(intervalId);
+
+    setPosition(-imgIndex * bannerWidth);
+  };
+
   return (
-    <>
-      <div className="Banners">
-        <button
-          type="button"
-          className="Banners__button Banners__button--left"
-          onClick={moveLeft}
-        />
+    <div className="Banners">
+      <button
+        type="button"
+        className="Banners__button Banners__button--left"
+        onClick={handlePrevClick}
+      />
 
-        <div className="Banners__container" ref={sliderRef}>
-          {images.map((image, index) => (
-            <img
+      <div
+        className="Banners__wrapper"
+        style={{
+          width: `${bannerWidth}px`,
+        }}
+      >
+        <ul
+          className="Banners__list"
+          style={{
+            width: `${bannerWidth * banners.length}px`,
+          }}
+        >
+          {banners.map((image, index) => (
+            <li
               key={image}
-              src={image}
-              alt={`Banner ${index + 1}`}
-              className="Banners__banner"
-            />
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className="Banners__button"
-          onClick={moveRight}
-        />
-
-        <div className="Banners__indicators">
-          {images.map((image, imgIndex) => (
-            <button
-              key={image}
-              type="button"
-              className="Banners__link"
-              onClick={() => setBannerNumber(imgIndex)}
+              className="Banners__item"
+              style={{
+                width: `${bannerWidth}px`,
+                transform: `translateX(${position}px)`,
+              }}
             >
-              <div
-                className={classNames('Banners__indicator', {
-                  'Banners__indicator--active': bannerNumber === imgIndex,
-                })}
+              <img
+                src={image}
+                alt={`Banner ${index + 1}`}
+                className="Banners__banner"
               />
-            </button>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </>
+
+      <button
+        type="button"
+        className="Banners__button"
+        onClick={handleNextClick}
+      />
+
+      <div className="Banners__dots">
+        {banners.map((image, imgIndex) => (
+          <button
+            key={image}
+            type="button"
+            className="Banners__dot-link"
+            onClick={() => handleDotClick(imgIndex)}
+          >
+            <div
+              className={classNames('Banners__dot', {
+                'Banners__dot--active': imgIndex === -position / bannerWidth,
+              })}
+            />
+          </button>
+        ))}
+      </div>
+    </div>
   );
 };

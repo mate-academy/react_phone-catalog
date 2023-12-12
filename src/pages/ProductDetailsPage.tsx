@@ -57,7 +57,7 @@ export const ProductDetailsPage = () => {
         Page__section--padding-top
         suggested
      ">
-        <h1 className="Page__title">You may also like</h1>
+        <h1 className="Page__title Page__title--long">You may also like</h1>
 
         {isLoadingProducts ? (
           <Loader />

@@ -9,6 +9,7 @@ iframe {
 
 body {
   font-family: Mont, sans-serif;
+  min-width: 320px;
 }
 
 .App {
@@ -18,5 +19,9 @@ body {
   &__container {
     max-width: 1136px;
     margin: auto;
+
+    @media (max-width: 1176px) {
+      padding-inline: 20px;
+    }
   }
 }

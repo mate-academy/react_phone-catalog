@@ -3,6 +3,9 @@
 .ProductsSlider {
   position: relative;
 
+  display: flex;
+  justify-content: center;
+
   &__buttons {
     position: absolute;
     top: -60px;
@@ -13,37 +16,22 @@
   }
 
   &__button {
-    @include squareSize(32px);
-
-    border: 1px solid $icons-color;
-    background: no-repeat center url(../../helpers/icons/icon_vector.svg);
-    cursor: pointer;
-
-    &:hover {
-      border-color: $primary-color;
-    }
-
-    &--disabled {
-      border-color: $elements-color;
-      background-image: url(../../helpers/icons/icon_vector_disabled.svg);
-      cursor: auto;
-
-      &:hover {
-        border-color: $elements-color;
-      }
-    }
-
-    &--left {
-      transform: rotate(180deg);
-    }
+    @include arrowButton;
   }
 
-  &__cards {
+  &__wrapper {
+    overflow: hidden;
+  }
+
+  &__list {
     display: flex;
     gap: 16px;
+    margin-inline: 8px;
 
-    overflow: hidden;
-    scroll-behavior: smooth;
     list-style: none;
+  }
+
+  &__item {
+    transition: transform $transition-time;
   }
 }

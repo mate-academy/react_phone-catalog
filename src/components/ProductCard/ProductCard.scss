@@ -4,7 +4,7 @@
   padding: 23px;
 
   border: 1px solid $elements-color;
-  transition: all 0.5s;
+  transition: all $transition-time;
 
   &:hover {
     border-color: transparent;
@@ -12,6 +12,9 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
+
     text-decoration: none;
   }
 
@@ -21,6 +24,7 @@
     padding: 8px;
     margin-bottom: 14px;
 
+    align-self: center;
     object-fit: contain;
   }
 

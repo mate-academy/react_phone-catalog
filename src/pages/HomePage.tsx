@@ -28,6 +28,7 @@ export const HomePage = () => {
   return (
     <div className="Page Page--gap--wider Page--padding--top--wider">
       <Banners />
+      <h1 className="Page__title Page__title--mobile">Home page</h1>
 
       <section className="Page__section hot-prices">
         <h1 className="Page__title">Hot prices</h1>
@@ -49,7 +50,7 @@ export const HomePage = () => {
       </section>
 
       <section className="Page__section brand-new">
-        <h1 className="Page__title">Brand new models</h1>
+        <h1 className="Page__title Page__title--long">Brand new models</h1>
 
         {isLoading ? (
           <Loader />

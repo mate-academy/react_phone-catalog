@@ -1,8 +1,8 @@
 @import "../../helpers/styles/mixins";
 
 .Pagination {
-  justify-content: center;
   display: flex;
+  justify-content: center;
   gap: 8px;
 
   list-style: none;
@@ -26,30 +26,8 @@
   }
 
   &__arrow {
-    @include squareSize(32px);
+    @include arrowButton;
 
     margin-inline: 8px;
-
-    border: 1px solid $icons-color;
-    background: no-repeat center url(../../helpers/icons/icon_vector.svg);
-    cursor: pointer;
-
-    &:hover {
-      border-color: $primary-color;
-    }
-
-    &--disabled {
-      border-color: $elements-color;
-      background-image: url(../../helpers/icons/icon_vector_disabled.svg);
-      cursor: auto;
-
-      &:hover {
-        border-color: $elements-color;
-      }
-    }
-
-    &--left {
-      transform: rotate(180deg);
-    }
   }
 }

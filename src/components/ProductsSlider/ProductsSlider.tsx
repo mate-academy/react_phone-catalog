@@ -1,54 +1,69 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 
 import './ProductsSlider.scss';
 import { Product } from '../../helpers/types/Product';
+import { useScreenSize } from '../../helpers/hooks/useScreenSize';
 import { ProductCard } from '../ProductCard';
 
 type Props = {
   products: Product[],
 };
 
-const scrollAmount = 1148;
+const cellWidth = 284;
 
 export const ProductsSlider: React.FC<Props> = ({ products }) => {
-  const [isFirstImage, setIsFirstImage] = useState(true);
-  const [isLastImage, setIsLastImage] = useState(false);
+  const [position, setPosition] = useState(0);
+  const [isFirstCard, setIsFirstCard] = useState(true);
+  const [isLastCard, setIsLastCard] = useState(false);
+  const [frameSize, setFrameSize] = useState(4);
+  const screenSize = useScreenSize();
 
-  const sliderRef = useRef<HTMLUListElement>(null);
-  const container = sliderRef.current;
+  const amount = useMemo(() => products.length, [products]);
 
   useEffect(() => {
-    if (container) {
-      container.scrollLeft = 0;
+    if (screenSize.width < 600) {
+      setFrameSize(1);
+    } else if (screenSize.width < 900) {
+      setFrameSize(2);
+    } else if (screenSize.width < 1176) {
+      setFrameSize(3);
+    } else {
+      setFrameSize(4);
     }
-  }, [container]);
+  }, [screenSize.width]);
 
-  const moveLeft = () => {
-    setIsLastImage(false);
+  const handlePrevClick = () => {
+    setPosition((currentPosition) => {
+      setIsLastCard(false);
 
-    if (container) {
-      container.scrollLeft -= scrollAmount;
+      const firstIndex = -currentPosition / cellWidth;
 
-      if (container.scrollLeft - scrollAmount <= 0) {
-        setIsFirstImage(true);
+      if (firstIndex - frameSize <= 0) {
+        setIsFirstCard(true);
+
+        return currentPosition + cellWidth * firstIndex;
       }
-    }
+
+      return currentPosition + cellWidth * frameSize;
+    });
   };
 
-  const moveRight = () => {
-    setIsFirstImage(false);
+  const handleNextClick = () => {
+    setPosition((currentPosition) => {
+      setIsFirstCard(false);
 
-    if (container) {
-      container.scrollLeft += scrollAmount;
+      const lastIndex = -currentPosition / cellWidth + frameSize - 1;
 
-      const containerLength = (products.length / 4) * scrollAmount;
+      if (lastIndex + frameSize >= amount - 1) {
+        setIsLastCard(true);
 
-      if (container.scrollLeft + 3 * scrollAmount > containerLength) {
-        setIsLastImage(true);
+        return currentPosition - cellWidth * (amount - 1 - lastIndex);
       }
-    }
+
+      return currentPosition - cellWidth * frameSize;
+    });
   };
 
   return (
@@ -57,31 +72,50 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
         <button
           type="button"
           className={classNames(
-            'ProductsSlider__button ProductsSlider__button--left', {
-              'ProductsSlider__button--disabled': isFirstImage,
+            'ProductsSlider__button ProductsSlider__button--prev', {
+              'ProductsSlider__button--disabled': isFirstCard,
             },
           )}
-          onClick={moveLeft}
-          disabled={isFirstImage}
+          onClick={handlePrevClick}
+          disabled={isFirstCard}
         />
 
         <button
           type="button"
           className={classNames('ProductsSlider__button', {
-            'ProductsSlider__button--disabled': isLastImage,
+            'ProductsSlider__button--disabled': isLastCard,
           })}
-          onClick={moveRight}
-          disabled={isLastImage}
+          onClick={handleNextClick}
+          disabled={isLastCard}
         />
       </div>
 
-      <ul className="ProductsSlider__cards" ref={sliderRef}>
-        {products.map(product => (
-          <li key={product.id} className="ProductsSlider__item">
-            <ProductCard product={product} />
-          </li>
-        ))}
-      </ul>
+      <div
+        className="ProductsSlider__wrapper"
+        style={{
+          width: `${cellWidth * frameSize}px`,
+        }}
+      >
+        <ul
+          className="ProductsSlider__list"
+          style={{
+            width: `${cellWidth * amount}px`,
+          }}
+        >
+          {products.map(product => (
+            <li
+              key={product.id}
+              className="ProductsSlider__item"
+              style={{
+                width: `${cellWidth - 16}px`,
+                transform: `translateX(${position}px)`,
+              }}
+            >
+              <ProductCard product={product} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
