@@ -23,17 +23,17 @@ export const Header: React.FC<Props> = ({
         <div className="navbar__container">
           <div className="nav-logo">
             <NavLink
-              to="#/"
+              to="/"
               className={setActiveClass}
             >
               <img src="_new/img/icons/logo.svg" alt="logo" />
             </NavLink>
           </div>
           <div className="nav-links">
-            <NavLink to="#/" className={setActiveClass}>Home</NavLink>
-            <NavLink to="#/phones" className={setActiveClass}>Phones</NavLink>
-            <NavLink to="#/tablets" className={setActiveClass}>Tablets</NavLink>
-            <NavLink to="#/accessories" className={setActiveClass}>
+            <NavLink to="/" className={setActiveClass}>Home</NavLink>
+            <NavLink to="/phones" className={setActiveClass}>Phones</NavLink>
+            <NavLink to="/tablets" className={setActiveClass}>Tablets</NavLink>
+            <NavLink to="/accessories" className={setActiveClass}>
               Accessories
             </NavLink>
           </div>
@@ -46,13 +46,13 @@ export const Header: React.FC<Props> = ({
             />
           )}
 
-          <NavLink to="#/favorites" className={setActiveClass}>
+          <NavLink to="/favorites" className={setActiveClass}>
             <img
               src="_new/img/icons/favourites.svg"
               alt="favorites"
             />
           </NavLink>
-          <NavLink to="#/cart" className={setActiveClass}>
+          <NavLink to="/cart" className={setActiveClass}>
             <img src="_new/img/icons/bag.svg" alt="bag" />
           </NavLink>
         </div>

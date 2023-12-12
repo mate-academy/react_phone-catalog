@@ -18,16 +18,16 @@ import {
 ReactDOM.render(
   <Router>
     <Routes>
-      <Route path="#/" element={<App />}>
+      <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
-        <Route path="#/phones" element={<PhonesPage />} />
-        <Route path="#/tablets" element={<TabletsPage />} />
-        <Route path="#/accessories" element={<AccessoriesPage />} />
-        <Route path="#/favorites" element={<FavoritesPage />} />
-        <Route path="#/cart" element={<CartPage />} />
-        <Route path="#/contacts" element={<ContactsPage />} />
-        <Route path="#/rights" element={<RightsPage />} />
-        <Route path="#/product/:productId" element={<ProductDetailsPage />} />
+        <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/tablets" element={<TabletsPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/rights" element={<RightsPage />} />
+        <Route path="/product/:productId" element={<ProductDetailsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
