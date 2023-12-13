@@ -1,0 +1,97 @@
+.shop {
+  width: 1136px;
+  height: 508px;
+
+  &__name {
+    margin-bottom: 24px;
+    font-family: "Mont", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__img {
+    width: 368px;
+    height: 368px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      transition: 0.3s;
+    }
+
+    &--1 {
+      background: #fcdbc1;
+    }
+
+    &--2 {
+      background: #8d8d92;
+    }
+      
+    &--3 {
+      background: #973d5f;
+    }
+
+    &--phones {
+      background-position: 60px 50px;
+      background-size: 386px 457px;
+      background-image: url(../../img/category-phones.png);
+
+      &:hover {
+        background-position: 40px 50px;
+      }
+    }
+
+    &--tablets {
+      background-position: 60px 50px;
+      background-size: 546px 546px;
+      background-image: url(../../img/category-tablets.png);
+
+      &:hover {
+        background-position: 40px 50px;
+      }
+    }
+      
+    &--accessories {
+      background-position: 60px 75px;
+      background-size: 750px 400px;
+      background-image: url(../../img/category-accessories.png);
+
+      &:hover {
+        background-position: 40px 75px;
+      }
+    }
+  }
+
+  &__title {
+    margin: 24px 0 4px;
+    color: #313237;
+
+    font-family: "Mont", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__count {
+    margin: 0;
+    color: #89939a;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

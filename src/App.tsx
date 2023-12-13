@@ -1,10 +1,16 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import './App.scss';
+import classNames from 'classnames';
+import { Footer } from './components/Footer/Footer';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
+  'header__nav-link', { 'header__is-active': isActive },
+);
 
 export const App = () => {
   return (
     <>
-      <header className="header">
+      <header className="header" id="header">
         <div className="header__container">
           <div className="header__logo">
             <Link to="/">
@@ -17,27 +23,36 @@ export const App = () => {
           </div>
 
           <nav className="header__nav">
-            <NavLink to="/" className="header__nav--link">
-              HOME
-            </NavLink>
+            <div className="header__nav-item">
+              <NavLink to="/" className={getLinkClass}>
+                HOME
+              </NavLink>
+            </div>
 
-            <NavLink to="/phones" className="header__nav--link">
-              PHONES
-            </NavLink>
+            <div className="header__nav-item">
+              <NavLink to="/phones" className={getLinkClass}>
+                PHONES
+              </NavLink>
+            </div>
 
-            <NavLink to="/tablets" className="header__nav--link">
-              TABLETS
-            </NavLink>
+            <div className="header__nav-item">
+              <NavLink to="/tablets" className={getLinkClass}>
+                TABLETS
+              </NavLink>
+            </div>
 
-            <NavLink to="/accessories" className="header__nav--link">
-              ACCESSORIES
-            </NavLink>
+            <div className="header__nav-item">
+              <NavLink to="/accessories" className={getLinkClass}>
+                ACCESSORIES
+              </NavLink>
+            </div>
+
           </nav>
         </div>
 
         <div className="header__container">
           <div className="header__icons">
-            <NavLink to="/">
+            <NavLink to="/favorite" className={getLinkClass}>
               <img
                 src="img/mine/icons/Favourites (Heart Like).svg"
                 alt="Like"
@@ -46,7 +61,7 @@ export const App = () => {
           </div>
 
           <div className="header__icons">
-            <NavLink to="/">
+            <NavLink to="/cart" className={getLinkClass}>
               <img src="img/mine/icons/Shopping bag (Cart).svg" alt="Cart" />
             </NavLink>
           </div>
@@ -57,7 +72,9 @@ export const App = () => {
         <Outlet />
       </main>
 
-      <footer />
+      <footer className="footer">
+        <Footer />
+      </footer>
 
     </>
   );

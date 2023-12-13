@@ -1,0 +1,50 @@
+.slid {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+  overflow: hidden;
+  
+  &__title {
+    margin: 0;
+    font-family: "Mont", sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: #313237;
+  }
+  
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    &--img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  &__card {
+    display: flex;
+    gap: 16px;
+    width: 1136px;
+    height: 507px;
+    transition: transform 1s;
+  }
+}
