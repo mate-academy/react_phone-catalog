@@ -105,7 +105,7 @@ export const BannerSliderProvider: React.FC = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setTransitionDuration(TRANSITION_DURATION);
-    }, 1);
+    }, TRANSITION_DURATION);
   }, [transitionDuration]);
 
   return (

@@ -35,7 +35,9 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
     product: Item,
   ) => {
     if (!cart.find((favItem) => favItem.id === product.id)) {
-      setCart([...cart, product]);
+      const productToCart = { ...product, quantity: 1 };
+
+      setCart([...cart, productToCart]);
     }
   }, [cart]);
 
@@ -112,7 +114,11 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
             type="button"
             onClick={() => handleAddToCartButton(item)}
           >
-            Add to cart
+            {
+              cart.find((favItem) => favItem.id === item.id)
+                ? 'Added to cart'
+                : 'Add to cart'
+            }
           </button>
           <button
             type="button"

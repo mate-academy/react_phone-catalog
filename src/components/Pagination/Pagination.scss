@@ -1,0 +1,51 @@
+@import "../../styles/variables.scss";
+
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  list-style: none;
+  gap: 16px;
+
+  margin-top: 40px;
+
+  &__numbers {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: block;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: black;
+      transition: background-color 0.3s,
+        color 0.3s;
+
+      &.active {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+
+    &--dots {
+      display: flex;
+      flex-direction: column;
+      font-weight: 700;
+      line-height: 11px;
+      border: none;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+}

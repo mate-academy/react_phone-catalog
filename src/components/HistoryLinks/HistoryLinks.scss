@@ -1,0 +1,43 @@
+@import "../../styles/variables.scss";
+
+.HistoryLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__link {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 8px;
+
+    &-title {
+      display: flex;
+      position: relative;
+      color: $primary-color;
+      font-size: 12px;
+      font-weight: 600;
+      padding-top: 2px;
+
+      &.grey {
+        color: $secondary-color;
+      }
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        content: "";
+        width: 0;
+        background-color: $elements-color;
+        height: 1px;
+        transition: width 0.3s;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

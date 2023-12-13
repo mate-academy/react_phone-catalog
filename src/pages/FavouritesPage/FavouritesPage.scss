@@ -1,0 +1,27 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.FavouritesPage {
+  @include maxWidth;
+  @include contentPaddingInline;
+
+  @include contentPaddingInline;
+  @include maxWidth;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-count {
+      color: $secondary-color;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 150%;
+    }
+  }
+}

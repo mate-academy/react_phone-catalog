@@ -4,6 +4,7 @@
   height: 64px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
 
   &__left {
     display: flex;
@@ -99,6 +100,7 @@
       color: $primary-color;
       font-size: 14px;
       font-weight: 600;
+      padding-block: 20px;
 
       &::placeholder {
         color: $icons-color;

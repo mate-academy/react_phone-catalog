@@ -13,23 +13,23 @@ export type ItemDetails = {
   name: string;
   sizeAndWeight: SizeAndWeightType;
   storage: StorageType;
-}
+};
 
 type AndroidType = {
   os: string;
   ui: string;
-}
+};
 
 type BatteryType = {
   standbyTime: string;
   talkTime: string;
   type: string;
-}
+};
 
 type CameraType = {
   features: string[];
   primary: string;
-}
+};
 
 type ConnectivityType = {
   bluetooth: string;
@@ -37,13 +37,13 @@ type ConnectivityType = {
   gps: boolean;
   infrared: boolean;
   wifi: string;
-}
+};
 
 type DisplayType = {
   screenResolution: string;
   screenSize: string;
   touchScreen: boolean;
-}
+};
 
 type HardwareType = {
   accelerometer: boolean;
@@ -52,14 +52,14 @@ type HardwareType = {
   fmRadio: boolean;
   physicalKeyboard: boolean;
   usb: string;
-}
+};
 
 type SizeAndWeightType = {
   dimensions: string[];
   weight: string;
-}
+};
 
 type StorageType = {
   flash: string;
   ram: string;
-}
+};
