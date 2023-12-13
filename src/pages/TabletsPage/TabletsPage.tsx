@@ -30,7 +30,11 @@ export const TabletsPage = () => {
     const getTablets = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('/_new/products.json');
+        const response
+        = await fetch(
+          'https://mate-academy.github.io/react_phone-catalog/'
+          + '_new/products.json',
+        );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -125,11 +129,11 @@ export const TabletsPage = () => {
           <NavLink
             to="/"
           >
-            <img src="/_new/img/icons/home-logo.svg" alt="home-logo" />
+            <img src="/img/icons/home-logo.svg" alt="home-logo" />
           </NavLink>
         </div>
         <img
-          src="/_new/img/icons/GrayArrowRight.svg"
+          src="/img/icons/GrayArrowRight.svg"
           alt="arrowRight"
           className="pathInscription__arrowRight"
         />

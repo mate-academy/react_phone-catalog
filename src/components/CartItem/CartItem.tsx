@@ -24,13 +24,13 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         onClick={() => product && removeFromCart(product.id)}
       >
         <img
-          src="_new/img/icons/close.svg"
+          src="/img/icons/close.svg"
           alt="delete-button"
         />
       </button>
 
       <img
-        src={`/_new/${product.image}`}
+        src={`/${product.image}`}
         alt={product.name}
         className="cartItem__img"
       />
@@ -46,7 +46,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         >
           <img
             src={product.quantity === 1 || !product.quantity
-              ? '/_new/img/icons/Minus.svg' : '/_new/img/icons/MinusDark.svg'}
+              ? '/img/icons/Minus.svg' : '/img/icons/MinusDark.svg'}
             alt="counter-button"
           />
         </button>
@@ -62,7 +62,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           onClick={() => incrementQuantity(product.id)}
         >
           <img
-            src="/_new/img/icons/Plus.svg"
+            src="/img/icons/Plus.svg"
             alt="counter-button"
           />
         </button>

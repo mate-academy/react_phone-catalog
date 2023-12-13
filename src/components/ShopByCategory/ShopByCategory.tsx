@@ -8,7 +8,7 @@ export const ShopByCategory = () => (
       <NavLink to="/phones" className="category-item">
         <img
           className="category-image"
-          src="_new/img/ShopByCategoryImgs/phones-2.png"
+          src="/img/ShopByCategoryImgs/phones-2.png"
           alt="Mobile phones"
         />
         <div className="category-info">
@@ -19,7 +19,7 @@ export const ShopByCategory = () => (
       <NavLink to="/tablets" className="category-item">
         <img
           className="category-image"
-          src="_new/img/ShopByCategoryImgs/phones-1.png"
+          src="/img/ShopByCategoryImgs/phones-1.png"
           alt="Tablets"
         />
         <div className="category-info">
@@ -30,7 +30,7 @@ export const ShopByCategory = () => (
       <NavLink to="/accessories" className="category-item">
         <img
           className="category-image"
-          src="_new/img/ShopByCategoryImgs/phones.png"
+          src="/img/ShopByCategoryImgs/phones.png"
           alt="Accessories"
         />
         <div className="category-info">

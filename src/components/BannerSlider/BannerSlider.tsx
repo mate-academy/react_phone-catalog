@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import './BannerSlider.scss';
 
 const imageUrls = [
-  '_new/img/banner-phones.png',
-  '_new/img/banner-tablets.png',
-  '_new/img/banner-accessories.png',
+  '/img/banner-phones.png',
+  '/img/banner-tablets.png',
+  '/img/banner-accessories.png',
 ];
 
 export const BannerSlider: React.FC = () => {
@@ -46,7 +46,7 @@ export const BannerSlider: React.FC = () => {
             onClick={handlePrev}
           >
             <img
-              src="_new/img/icons/arrowRight.svg"
+              src="/img/icons/arrowRight.svg"
               alt="arrowLeft"
               style={{ transform: 'rotate(-90deg)' }}
             />
@@ -56,7 +56,7 @@ export const BannerSlider: React.FC = () => {
             onClick={handleNext}
           >
             <img
-              src="_new/img/icons/arrowRight.svg"
+              src="/img/icons/arrowRight.svg"
               alt="arrowRight"
               style={{ transform: 'rotate(90deg)' }}
             />

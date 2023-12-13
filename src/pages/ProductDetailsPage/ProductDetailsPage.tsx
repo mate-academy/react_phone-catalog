@@ -47,7 +47,8 @@ export const ProductDetailsPage = () => {
   const getProduct = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/_new/products/${productId}.json`);
+      // const response = await fetch(`/_new/products/${productId}.json`);
+      const response = await fetch(`https://mate-academy.github.io/react_phone-catalog/_new/products/${productId}.json`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -97,7 +98,11 @@ export const ProductDetailsPage = () => {
     const getPhones = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('/_new/products.json');
+        const response
+        = await fetch(
+          'https://mate-academy.github.io/react_phone-catalog/'
+          + '_new/products.json',
+        );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -169,11 +174,11 @@ export const ProductDetailsPage = () => {
               <NavLink
                 to="/"
               >
-                <img src="/_new/img/icons/home-logo.svg" alt="home-logo" />
+                <img src="/img/icons/home-logo.svg" alt="home-logo" />
               </NavLink>
             </div>
             <img
-              src="/_new/img/icons/GrayArrowRight.svg"
+              src="/img/icons/GrayArrowRight.svg"
               alt="arrowRight"
               className="pathInscription__arrowRight"
             />
@@ -184,7 +189,7 @@ export const ProductDetailsPage = () => {
               Phones
             </NavLink>
             <img
-              src="/_new/img/icons/GrayArrowRight.svg"
+              src="/img/icons/GrayArrowRight.svg"
               alt="arrowRight"
               className="pathInscription__arrowRight"
             />
@@ -198,7 +203,7 @@ export const ProductDetailsPage = () => {
             onClick={handleBackButtonClick}
           >
             <img
-              src="/_new/img/icons/arrowRight.svg"
+              src="/img/icons/arrowRight.svg"
               alt="arrowLeft"
               className="pathInscription__arrowRight"
               style={{ transform: 'rotate(-90deg)' }}
@@ -221,7 +226,7 @@ export const ProductDetailsPage = () => {
                   aria-label={`View ${productDetails.name} image ${index + 1}`}
                 >
                   <img
-                    src={`/_new/${image}`}
+                    src={`/${image}`}
                     alt={`${productDetails.name} view ${index + 1}`}
                     className="visually-hidden"
                   />
@@ -230,7 +235,7 @@ export const ProductDetailsPage = () => {
             </div>
             <div className="productDetails__image-box">
               <img
-                src={`/_new/${selectedImage}`}
+                src={`/${selectedImage}`}
                 alt="productDetails img"
                 className="productDetails__image"
               />
@@ -247,7 +252,7 @@ export const ProductDetailsPage = () => {
                       onClick={() => handleColorClick(color)}
                       onKeyDown={(event) => handleKeyDown(event, color)}
                       style={{
-                        backgroundImage: `url(/_new/${thisModelProducts.find(item => item.color === color)?.image})`,
+                        backgroundImage: `url(/${thisModelProducts.find(item => item.color === color)?.image})`,
                       }}
                       aria-label={`Select color ${color}`}
                     />
@@ -312,8 +317,8 @@ export const ProductDetailsPage = () => {
                 >
                   <img
                     src={containedInFavorites
-                      ? '/_new/img/icons/favouritesSelected.svg'
-                      : '/_new/img/icons/favourites.svg'}
+                      ? '/img/icons/favouritesSelected.svg'
+                      : '/img/icons/favourites.svg'}
                     alt="Add to favorites"
                     className="favorite__img"
                   />

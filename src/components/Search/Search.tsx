@@ -40,7 +40,7 @@ export const Search: React.FC<Props> = ({
 
       {!query ? (
         <img
-          src="/_new/img/icons/search.svg"
+          src="/img/icons/search.svg"
           alt="search"
           className="search-icon"
         />
@@ -55,7 +55,7 @@ export const Search: React.FC<Props> = ({
           }}
         >
           <img
-            src="_new/img/icons/DarkClose.svg"
+            src="/img/icons/DarkClose.svg"
             alt="delete-button"
           />
         </button>

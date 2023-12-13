@@ -6,10 +6,10 @@ export const NotFoundPage = () => {
     <div className="notFoundPage">
       <NavLink to="/" className="pathInscription">
         <div className="nav-logo">
-          <img src="/_new/img/icons/home-logo.svg" alt="home-logo" />
+          <img src="/img/icons/home-logo.svg" alt="home-logo" />
         </div>
         <img
-          src="/_new/img/icons/GrayArrowRight.svg"
+          src="/img/icons/GrayArrowRight.svg"
           alt="arrowRight"
           className="pathInscription__arrowRight"
           style={{ transform: 'rotate(180deg)' }}

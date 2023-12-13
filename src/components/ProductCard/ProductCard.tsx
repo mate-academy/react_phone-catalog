@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div key={product.id} className="product-card">
       <NavLink to={`/product/${product.phoneId}`} className="product-card__link">
         <img
-          src={`/_new/${product.image}`}
+          src={`/${product.image}`}
           alt={product.name}
         />
         <p className="product-name">{product.name}</p>
@@ -81,8 +81,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         >
           <img
             src={containedInFavorites
-              ? '/_new/img/icons/favouritesSelected.svg'
-              : '/_new/img/icons/favourites.svg'}
+              ? '/img/icons/favouritesSelected.svg'
+              : '/img/icons/favourites.svg'}
             alt="Add to favorites"
             className="favorite__img"
           />

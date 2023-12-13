@@ -12,7 +12,12 @@ export const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/_new/products.json');
+        // const response = await fetch('/_new/products.json');
+        const response
+        = await fetch(
+          'https://mate-academy.github.io/react_phone-catalog/'
+          + '_new/products.json',
+        );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');

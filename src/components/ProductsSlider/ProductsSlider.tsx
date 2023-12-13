@@ -11,8 +11,6 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // console.log(products);
-
   const handleNext = () => {
     setCurrentIndex(prevIndex => {
       return prevIndex + 1 < products.length
@@ -37,7 +35,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             disabled={currentIndex === 0}
           >
             <img
-              src="/_new/img/icons/arrowRight.svg"
+              src="/img/icons/arrowRight.svg"
               alt="arrowLeft"
               style={{ transform: 'rotate(-90deg)' }}
             />
@@ -48,7 +46,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             disabled={currentIndex === products.length - 4}
           >
             <img
-              src="/_new/img/icons/arrowRight.svg"
+              src="/img/icons/arrowRight.svg"
               alt="arrowRight"
               style={{ transform: 'rotate(90deg)' }}
             />
