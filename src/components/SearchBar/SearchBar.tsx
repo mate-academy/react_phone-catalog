@@ -60,7 +60,7 @@ export const SearchBar: React.FC<Props> = ({ sectionName, className }) => {
         <div
           className="search-bar__onMobile"
           style={{
-            transform: `translateX(${isOpenInput ? '0' : '100%'})`,
+            transform: `translateX(${isOpenInput ? '0' : '-100%'})`,
           }}
         >
           <input

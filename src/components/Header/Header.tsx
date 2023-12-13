@@ -106,12 +106,20 @@ export const Header: React.FC<Props> = ({ toggleMenu }) => {
             </div>
           </div>
 
-          <button
-            className="header__menu"
-            onClick={toggleMenu}
-          >
-            <div className="icon icon__menu" />
-          </button>
+          <div className="header__onMobile">
+            {isSearchBarActive && (
+              <SearchBar
+                className="header__search-bar"
+                sectionName={namePage}
+              />
+            )}
+            <button
+              className="header__menu"
+              onClick={toggleMenu}
+            >
+              <div className="icon icon__menu" />
+            </button>
+          </div>
         </div>
       </div>
     </header>
