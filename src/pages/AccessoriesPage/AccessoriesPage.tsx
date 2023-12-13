@@ -93,9 +93,9 @@ export const AccessoriesPage: FC = () => {
       main__products-page--width
       products-page"
     >
-      <PagePath url="/tablets" title="Tablets" />
+      <PagePath url="/accessories" title="Accessories" />
 
-      <h1 className="products-page__title page-title">Tablets</h1>
+      <h1 className="products-page__title page-title">Accessories</h1>
 
       {isInitialized && !!accessoriesList.length ? (
         <>

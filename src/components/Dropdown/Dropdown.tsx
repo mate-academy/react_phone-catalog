@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import {
   FC,
-  // useEffect,
+  useEffect,
   useState,
 } from 'react';
 
@@ -52,9 +52,9 @@ export const DropdownSelect: FC<Props> = ({
     }
   };
 
-  // useEffect(() => {
-  //   handleCurrentValue();
-  // }, [selectedValue]);
+  useEffect(() => {
+    handleCurrentValue();
+  }, [selectedValue]);
 
   return (
     <div
