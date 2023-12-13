@@ -36,7 +36,7 @@
     left: 0;
     z-index: 10;
 
-    transition: all 0.3s;
+    transition: all $animationDuration;
     opacity: 0;
     transform: translateX(-100%);
     pointer-events: none;

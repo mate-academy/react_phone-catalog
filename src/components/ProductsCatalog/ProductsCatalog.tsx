@@ -16,12 +16,18 @@ type Props = {
 
 export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
   const [searchParams] = useSearchParams();
-
+  const page = searchParams.get('page') || '1';
   const itemsNumber = searchParams.get('itemsOnPage') || '16';
-  const countPages = Math.ceil(products.length / +itemsNumber)
-    || false;
 
-  const visibleProducts = getPreparitionProducts(products, searchParams);
+  const sortedProducts = getPreparitionProducts(products, searchParams);
+
+  const start = (+page - 1) * (+itemsNumber) || 0;
+  const end = (+page - 1) * (+itemsNumber) + (+itemsNumber) || products.length;
+
+  const visibleProducts = sortedProducts.slice(start, end);
+
+  const countPages = Math.ceil(sortedProducts.length / +itemsNumber)
+    || false;
 
   return (
     <div className="products-catalog">
@@ -32,7 +38,7 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
         />
       </div>
 
-      {products.length ? (
+      {visibleProducts.length ? (
         <>
           <FilterPanel />
 
@@ -42,8 +48,8 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
           />
 
           {
-            countPages && (
-              <PageControl length={products.length} />
+            (countPages && countPages !== 1) && (
+              <PageControl length={sortedProducts.length} />
             )
           }
         </>

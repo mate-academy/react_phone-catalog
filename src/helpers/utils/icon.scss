@@ -12,6 +12,8 @@
   &__favorites {
     background-image: url(../../icon/favorites.svg);
 
+    transition: all $animationDuration linear;
+
     &--active {
       background-image: url(../../icon/favorites-active.svg);
     }
@@ -83,6 +85,10 @@
 
   &__plus {
     background-image: url(../../icon/plus.svg);
+  }
+
+  &__search {
+    background-image: url(../../icon/search.svg);
   }
 }
 

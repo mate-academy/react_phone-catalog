@@ -43,7 +43,7 @@ export const PageControl: React.FC<Props> = ({ length }) => {
       return pages.slice(+page - 3, +page + 1);
     }
 
-    if (+page === pages.length) {
+    if (+page === pages.length && +page !== 3) {
       return pages.slice(pages.length - 4, pages.length);
     }
 

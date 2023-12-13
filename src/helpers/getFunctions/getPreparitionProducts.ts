@@ -6,11 +6,7 @@ export const getPreparitionProducts = (
   searchParams: URLSearchParams,
 ) => {
   const sort = (searchParams.get('sort') as Sort) || 'age';
-  const itemsNumber = searchParams.get('itemsOnPage') || '16';
-  const page = searchParams.get('page') || '1';
-
-  const start = (+page - 1) * (+itemsNumber) || 0;
-  const end = (+page - 1) * (+itemsNumber) + (+itemsNumber) || products.length;
+  const query = searchParams.get('query') || '';
 
   return (
     products.sort((productFirst, productSecond) => {
@@ -24,6 +20,11 @@ export const getPreparitionProducts = (
 
       return productFirst[sort] - productSecond[sort];
     })
-      .slice(start, end)
+      .filter(product => (
+        product.name
+          .toLocaleLowerCase()
+          .includes(query.toLocaleLowerCase().trim())
+      ))
+
   );
 };

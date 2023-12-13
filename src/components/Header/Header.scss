@@ -40,12 +40,22 @@
     }
   }
 
-  &__favorites-cart-wrapper {
+  &__rigth-part {
     display: none;
 
     @include onTable {
       display: flex;
     }
+  }
+
+  &__search-bar {
+    @include onDesktop {
+      width: 367px;
+    }
+  }
+
+  &__favorites-cart-wrapper {
+    display: flex;
   }
 
   &__link {

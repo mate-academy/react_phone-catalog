@@ -36,7 +36,7 @@
     display: flex;
     gap: 16px;
 
-    transition: transform 0.3s ease-in-out;
+    transition: transform $animationDuration ease-in-out;
   }
 
   &__slide {

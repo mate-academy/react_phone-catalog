@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getUniqueId } from '../../helpers/getFunctions/getUniqueld';
 
 import './NavMap.scss';
 
 export const NavMap = () => {
-  const path = window.location.hash;
-  const links = path.split('/')[1].split('?')[0].split('/');
+  const location = useLocation();
+  const links = location.pathname.split('/')[1].split('?')[0].split('/');
 
   const nameLinks = links.map(link => {
     const linkWords = link.split('-');

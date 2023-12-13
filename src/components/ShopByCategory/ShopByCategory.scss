@@ -20,10 +20,10 @@
     gap: 16px;
 
     grid-column: 1 / -1;
-    overflow: hidden;
 
     @include onTable() {
       flex-direction: row;
+      overflow: hidden;
     }
   }
 

@@ -24,7 +24,7 @@
     left: 25%;
     top: 15%;
 
-    transition: transform 0.3s linear;
+    transition: transform $animationDuration linear;
 
     &--transform-scale {
       transform: scale(2);
