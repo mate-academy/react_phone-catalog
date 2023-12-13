@@ -29,7 +29,7 @@ export const Footer = () => {
               to="/"
               onClick={handleBackToTop}
             >
-              <img src="/img/icons/logo.svg" alt="logo" />
+              <img src="img/icons/logo.svg" alt="logo" />
             </NavLink>
           </div>
           <div className="nav-links">
@@ -55,7 +55,7 @@ export const Footer = () => {
             Back to top
             <div className="icon-container">
               <img
-                src="/img/icons/arrowRight.svg"
+                src="img/icons/arrowRight.svg"
                 alt="Go to top"
                 className="arrow-icon"
               />

@@ -47,7 +47,6 @@ export const ProductDetailsPage = () => {
   const getProduct = async () => {
     setIsLoading(true);
     try {
-      // const response = await fetch(`/_new/products/${productId}.json`);
       const response = await fetch(`https://mate-academy.github.io/react_phone-catalog/_new/products/${productId}.json`);
 
       if (!response.ok) {
@@ -174,11 +173,11 @@ export const ProductDetailsPage = () => {
               <NavLink
                 to="/"
               >
-                <img src="/img/icons/home-logo.svg" alt="home-logo" />
+                <img src="img/icons/home-logo.svg" alt="home-logo" />
               </NavLink>
             </div>
             <img
-              src="/img/icons/GrayArrowRight.svg"
+              src="img/icons/GrayArrowRight.svg"
               alt="arrowRight"
               className="pathInscription__arrowRight"
             />
@@ -189,7 +188,7 @@ export const ProductDetailsPage = () => {
               Phones
             </NavLink>
             <img
-              src="/img/icons/GrayArrowRight.svg"
+              src="img/icons/GrayArrowRight.svg"
               alt="arrowRight"
               className="pathInscription__arrowRight"
             />
@@ -203,7 +202,7 @@ export const ProductDetailsPage = () => {
             onClick={handleBackButtonClick}
           >
             <img
-              src="/img/icons/arrowRight.svg"
+              src="img/icons/arrowRight.svg"
               alt="arrowLeft"
               className="pathInscription__arrowRight"
               style={{ transform: 'rotate(-90deg)' }}
@@ -317,8 +316,8 @@ export const ProductDetailsPage = () => {
                 >
                   <img
                     src={containedInFavorites
-                      ? '/img/icons/favouritesSelected.svg'
-                      : '/img/icons/favourites.svg'}
+                      ? 'img/icons/favouritesSelected.svg'
+                      : 'img/icons/favourites.svg'}
                     alt="Add to favorites"
                     className="favorite__img"
                   />

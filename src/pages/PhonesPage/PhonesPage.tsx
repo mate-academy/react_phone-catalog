@@ -129,11 +129,11 @@ export const PhonesPage = () => {
           <NavLink
             to="/"
           >
-            <img src="/img/icons/home-logo.svg" alt="home-logo" />
+            <img src="img/icons/home-logo.svg" alt="home-logo" />
           </NavLink>
         </div>
         <img
-          src="/img/icons/GrayArrowRight.svg"
+          src="img/icons/GrayArrowRight.svg"
           alt="arrowRight"
           className="pathInscription__arrowRight"
         />

@@ -46,7 +46,7 @@ export const Pagination: React.FC<Props> = ({
             onClick={() => handleClickToPrevious(currentPage - 1)}
           >
             <img
-              src="/img/icons/arrowRight.svg"
+              src="img/icons/arrowRight.svg"
               alt="arrowLeft"
               style={{ transform: 'rotate(-90deg)' }}
             />
@@ -77,7 +77,7 @@ export const Pagination: React.FC<Props> = ({
             onClick={() => handleClickToNext(currentPage + 1)}
           >
             <img
-              src="/img/icons/arrowRight.svg"
+              src="img/icons/arrowRight.svg"
               alt="arrowRight"
               style={{ transform: 'rotate(90deg)' }}
             />

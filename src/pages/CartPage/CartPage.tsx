@@ -53,7 +53,7 @@ export const CartPage = () => {
         onClick={handleBackButtonClick}
       >
         <img
-          src="/img/icons/arrowRight.svg"
+          src="img/icons/arrowRight.svg"
           alt="arrowLeft"
           className="pathInscription__arrowRight"
           style={{ transform: 'rotate(-90deg)' }}

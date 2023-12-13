@@ -35,7 +35,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             disabled={currentIndex === 0}
           >
             <img
-              src="/img/icons/arrowRight.svg"
+              src="img/icons/arrowRight.svg"
               alt="arrowLeft"
               style={{ transform: 'rotate(-90deg)' }}
             />
@@ -46,7 +46,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
             disabled={currentIndex === products.length - 4}
           >
             <img
-              src="/img/icons/arrowRight.svg"
+              src="img/icons/arrowRight.svg"
               alt="arrowRight"
               style={{ transform: 'rotate(90deg)' }}
             />

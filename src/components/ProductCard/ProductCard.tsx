@@ -81,8 +81,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         >
           <img
             src={containedInFavorites
-              ? '/img/icons/favouritesSelected.svg'
-              : '/img/icons/favourites.svg'}
+              ? 'img/icons/favouritesSelected.svg'
+              : 'img/icons/favourites.svg'}
             alt="Add to favorites"
             className="favorite__img"
           />
