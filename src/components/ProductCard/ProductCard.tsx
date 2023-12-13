@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div key={product.id} className="product-card">
       <NavLink to={`/product/${product.phoneId}`} className="product-card__link">
         <img
-          src={`/${product.image}`}
+          src={`${product.image}`}
           alt={product.name}
         />
         <p className="product-name">{product.name}</p>
