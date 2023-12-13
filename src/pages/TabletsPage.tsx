@@ -6,7 +6,7 @@ import { HeroContent } from '../types/HeroContent';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Hero } from '../components/Hero';
 import { ProductsList } from '../components/ProductsList';
-import { ModelsNotExist } from '../components/ModelsNotExist';
+import { NoResults } from '../components/NoResults';
 
 export const TabletsPage = () => {
   const { setIsMenuOpen, setIsHeaderSearchVisible, setDocumentTitle, tablets } =
@@ -33,7 +33,7 @@ export const TabletsPage = () => {
       {tablets.length > 0 ? (
         <ProductsList products={tablets} />
       ) : (
-        <ModelsNotExist />
+        <NoResults categoryName={content.title} />
       )}
     </>
   );

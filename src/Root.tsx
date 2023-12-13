@@ -9,6 +9,7 @@ import {
   FavouritesPage,
   HomePage,
   PhonesPage,
+  ProductDetailsPage,
   TabletsPage,
 } from './pages';
 
@@ -19,7 +20,10 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="elements" element={<ElementsPage />} />
-          <Route path="phones" element={<PhonesPage />} />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favourites" element={<FavouritesPage />} />

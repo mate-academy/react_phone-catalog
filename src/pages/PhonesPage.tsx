@@ -6,7 +6,7 @@ import { MainContext } from '../context/MainContext';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Hero } from '../components/Hero';
 import { ProductsList } from '../components/ProductsList';
-import { ModelsNotExist } from '../components/ModelsNotExist';
+import { NoResults } from '../components/NoResults';
 
 export const PhonesPage = () => {
   const { setIsMenuOpen, setIsHeaderSearchVisible, setDocumentTitle, phones } =
@@ -33,7 +33,7 @@ export const PhonesPage = () => {
       {phones.length > 0 ? (
         <ProductsList products={phones} />
       ) : (
-        <ModelsNotExist />
+        <NoResults categoryName={content.title} />
       )}
     </>
   );

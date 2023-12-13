@@ -5,3 +5,9 @@ export const fetchData = () => {
     return response.json();
   });
 };
+
+export const fetchProductDetails = (productId: string) => {
+  return fetch(`${DATA_URL}/products/${productId}.json`).then((response) => {
+    return response.json();
+  });
+};

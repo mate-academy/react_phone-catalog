@@ -7,7 +7,7 @@ interface Props {
 
 export const ProductCard: React.FC<Props> = ({ item }) => (
   <div className="product-card">
-    <Link to="." className="product-card__imgs">
+    <Link to={`/phones/${item.itemId}`} className="product-card__imgs">
       <picture>
         <img
           className="product-card__img"
@@ -19,7 +19,7 @@ export const ProductCard: React.FC<Props> = ({ item }) => (
     </Link>
 
     <div className="product-card__cont">
-      <Link to="." className="text product-card__name">
+      <Link to={`/phones/${item.itemId}`} className="text product-card__name">
         {item.name}
       </Link>
 

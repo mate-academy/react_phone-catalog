@@ -36,7 +36,10 @@ export const Breadcrumbs = () => {
   return (
     <section className="section breadcrumbs">
       <div className="section__container">
-        <ul className="text text--size-2 breadcrumbs__items">
+        <ul
+          className="text text--size-2 breadcrumbs__items"
+          data-cy="breadCrumbs"
+        >
           <li className="breadcrumbs__item">
             <Link to="/" className="breadcrumbs__link">
               <picture>

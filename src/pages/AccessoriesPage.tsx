@@ -5,7 +5,7 @@ import { HeroContent } from '../types/HeroContent';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Hero } from '../components/Hero';
 import { ProductsList } from '../components/ProductsList';
-import { ModelsNotExist } from '../components/ModelsNotExist';
+import { NoResults } from '../components/NoResults';
 
 export const AccessoriesPage = () => {
   const {
@@ -36,7 +36,7 @@ export const AccessoriesPage = () => {
       {accessories.length > 0 ? (
         <ProductsList products={accessories} />
       ) : (
-        <ModelsNotExist />
+        <NoResults categoryName={content.title} />
       )}
     </>
   );

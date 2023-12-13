@@ -73,7 +73,7 @@ export const Pagination: React.FC<Props> = ({
       })}
     >
       <div className="section__container">
-        <ul className="pagination__items">
+        <ul className="pagination__items" data-cy="pagination">
           <li className="pagination__item pagination__item--prev">
             <button
               type="button"
@@ -81,6 +81,7 @@ export const Pagination: React.FC<Props> = ({
                 'arrow-btn--disabled': currentPage === 1,
               })}
               onClick={() => onPageChange(currentPage - 1)}
+              data-cy="paginationLeft"
             >
               <img
                 className="like-btn__icon"
@@ -114,6 +115,7 @@ export const Pagination: React.FC<Props> = ({
                 'arrow-btn--disabled': currentPage === total,
               })}
               onClick={() => onPageChange(currentPage + 1)}
+              data-cy="paginationRight"
             >
               <img
                 className="like-btn__icon"
