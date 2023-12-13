@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SelectSortBy.scss';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/SearchHelper';
@@ -7,7 +7,7 @@ import { getSelectedOptionText } from '../../helpers/helpers';
 export const SelectSortBy: React.FC = () => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentOption = searchParams.get('sort') || '';
+  const currentOption = searchParams.get('sort') || 'price';
 
   const handleSelectOption = (selectedValue: string) => {
     const newParam = { sort: selectedValue };
@@ -34,6 +34,12 @@ export const SelectSortBy: React.FC = () => {
 
     setIsSelectOpen(false);
   };
+
+  useEffect(() => {
+    if (!searchParams.get('sort')) {
+      setSearchParams(getSearchWith({ sort: 'price' }, searchParams));
+    }
+  }, [searchParams]);
 
   return (
     <div className="select">

@@ -1,12 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import './FavoritesPage.scss';
 import { BreadCrambs } from '../../components/BreadCrambs';
 import { FavoriteContext } from '../../api/context/FavotiteContext';
 import { ProductList } from '../../components/ProductList';
 import { CardEmpty } from '../../components/CardEmpty';
+import { Filter } from '../../helpers/Filters';
 
 export const FavoritesPage: React.FC = () => {
   const { favProducts } = useContext(FavoriteContext);
+  const [searchParams] = useSearchParams();
+  const filteredProducts = useMemo(() => {
+    return Filter(favProducts, searchParams);
+  }, [favProducts, searchParams]);
 
   return (
     <div className="favoritesPage">
@@ -27,8 +33,8 @@ export const FavoritesPage: React.FC = () => {
         {!favProducts.length ? (
           <CardEmpty />
         ) : (
-          favProducts.length !== 0 && (
-            <ProductList products={favProducts} />)
+          filteredProducts.length !== 0 && (
+            <ProductList products={filteredProducts} />)
         )}
       </div>
     </div>

@@ -5,7 +5,6 @@ import { getProductDetails, getProducts } from '../../api/productsApi';
 import { ProductDetails } from '../../types/ProductDetails';
 import './ProductDetailsPage.scss';
 import { Loader } from '../../components/Loader';
-import { NotFoundPage } from '../NotFoundPage';
 import { BreadCrambs } from '../../components/BreadCrambs';
 import { PRODUCTS_COLORS } from '../../helpers/typesColor';
 import { Product } from '../../types/Product';
@@ -13,6 +12,7 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { BackButton } from '../../components/BackButton';
 import { ButtonFavorites } from '../../components/ButtonFavorites';
 import { ButtonAddCard } from '../../components/ButtonAddCard';
+import { NotFoundPage } from '../NotFoundPage';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
@@ -50,10 +50,12 @@ export const ProductDetailsPage = () => {
     getProducts()
       .then(setProducts)
       .catch(() => {
-        setIsError(true);
+        setIsLoading(true);
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       });
   }, []);
 
