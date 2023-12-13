@@ -221,11 +221,11 @@ export const ProductDetailsPage = () => {
                   className="image-slider-button"
                   onClick={() => handleImageClick(image)}
                   tabIndex={0}
-                  style={{ background: `url('/_new/${image}') no-repeat center center / contain`, width: '80px', height: '80px' }}
+                  style={{ background: `url('${image}') no-repeat center center / contain`, width: '80px', height: '80px' }}
                   aria-label={`View ${productDetails.name} image ${index + 1}`}
                 >
                   <img
-                    src={`/${image}`}
+                    src={`${image}`}
                     alt={`${productDetails.name} view ${index + 1}`}
                     className="visually-hidden"
                   />
@@ -234,7 +234,7 @@ export const ProductDetailsPage = () => {
             </div>
             <div className="productDetails__image-box">
               <img
-                src={`/${selectedImage}`}
+                src={`${selectedImage}`}
                 alt="productDetails img"
                 className="productDetails__image"
               />
@@ -251,7 +251,7 @@ export const ProductDetailsPage = () => {
                       onClick={() => handleColorClick(color)}
                       onKeyDown={(event) => handleKeyDown(event, color)}
                       style={{
-                        backgroundImage: `url(/${thisModelProducts.find(item => item.color === color)?.image})`,
+                        backgroundImage: `url(${thisModelProducts.find(item => item.color === color)?.image})`,
                       }}
                       aria-label={`Select color ${color}`}
                     />
