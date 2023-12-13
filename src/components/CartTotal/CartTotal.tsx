@@ -1,25 +1,57 @@
+import { useContext } from 'react';
+import { ProductsContext } from '../../context/ProductsContext';
 import './CartTotal.scss';
 
 type Props = {
   total: number;
   itemsCount: number;
+  setNotification: React.Dispatch<React.SetStateAction<ErrorType>>;
 };
 
-export const CartTotal: React.FC<Props> = ({ total, itemsCount }) => {
-  return (
-    <div className="CartTotal">
-      <div className="CartTotal__info">
-        <p className="CartTotal__info-price">
-          {`$${total}`}
-        </p>
-        <p className="CartTotal__info-items">
-          {`Total for ${itemsCount} items`}
-        </p>
+export const CartTotal: React.FC<Props>
+  = ({ total, itemsCount, setNotification }) => {
+    const { cart, setCart } = useContext(ProductsContext);
+
+    const orderPlaceHandler = () => {
+      if (cart.length === 0) {
+        setNotification({
+          id: Date.now(),
+          isError: true,
+          type: 'warning',
+          text: 'Cart is empty',
+        });
+
+        return;
+      }
+
+      setCart([]);
+
+      setNotification({
+        id: Date.now(),
+        isError: true,
+        type: 'success',
+        text: 'Order placed successfully',
+      });
+    };
+
+    return (
+      <div className="CartTotal">
+        <div className="CartTotal__info">
+          <p className="CartTotal__info-price">
+            {`$${total}`}
+          </p>
+          <p className="CartTotal__info-items">
+            {`Total for ${itemsCount} items`}
+          </p>
+        </div>
+        <div className="CartTotal__divider" />
+        <button
+          type="button"
+          className="primary-button wide CartTotal__button"
+          onClick={orderPlaceHandler}
+        >
+          Checkout
+        </button>
       </div>
-      <div className="CartTotal__divider" />
-      <button type="button" className="primary-button wide CartTotal__button">
-        Checkout
-      </button>
-    </div>
-  );
-};
+    );
+  };

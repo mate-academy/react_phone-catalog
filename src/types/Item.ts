@@ -10,6 +10,7 @@ export interface Item {
   screen: string;
   capacity: string;
   ram: string;
+  quantity?: number;
 }
 
-type ItemType = 'phone' | 'tablet' | 'accessory';
+export type ItemType = 'phone' | 'tablet' | 'accessory';

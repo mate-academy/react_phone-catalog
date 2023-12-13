@@ -1,19 +1,27 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Title } from '../Title';
 import { ProductsContext } from '../../context/ProductsContext';
+
 import './Categories.scss';
 
 export const Categories = () => {
   const { products } = useContext(ProductsContext);
+
+  const scrollToTop = useCallback(() => {
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scroll({ top: 0 });
+    document.documentElement.style.scrollBehavior = 'smooth';
+  }, []);
 
   return (
     <div className="categories">
       <Title title="Shop by category" />
       <div className="categories__content">
         <Link
-          to="../phones"
+          to="/phones"
           className="categories__item"
+          onClick={scrollToTop}
         >
           <div className="categories__image categories__image--phones">
             <img
@@ -34,8 +42,9 @@ export const Categories = () => {
           </div>
         </Link>
         <Link
-          to="../tablets"
+          to="/tablets"
           className="categories__item"
+          onClick={scrollToTop}
         >
           <div className="categories__image categories__image--tablets">
             <img
@@ -56,8 +65,9 @@ export const Categories = () => {
           </div>
         </Link>
         <Link
-          to="../accessories"
+          to="/accessories"
           className="categories__item"
+          onClick={scrollToTop}
         >
           <div className="categories__image categories__image--accessories">
             <img

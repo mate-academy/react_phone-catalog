@@ -1,0 +1,23 @@
+@import "../../styles/mixins.scss";
+
+.ProductsList {
+  &__list {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 272px);
+    column-gap: 16px;
+    row-gap: 40px;
+    list-style: none;
+  }
+}
+
+.ProductsList-animation-exit {
+  opacity: 1;
+}
+
+.ProductsList-animation-exit-active {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 300ms linear,
+    transform 300ms linear;
+}

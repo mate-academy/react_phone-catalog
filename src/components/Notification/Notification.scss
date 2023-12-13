@@ -1,0 +1,87 @@
+.Notification {
+  position: fixed;
+  right: 70px;
+  top: 70px;
+  z-index: 1;
+  padding: 20px;
+  align-items: center;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  border-radius: 10px;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__text {
+    color: rgb(163, 20, 20);
+    font-weight: 700;
+  }
+
+  &.warning {
+    background-color: rgba(255, 0, 0, 0.5);
+
+    span {
+      color: rgb(163, 20, 20);
+    }
+
+    &::after {
+      background-color: #ffbebe;
+    }
+  }
+
+  &.success {
+    background-color: rgba(80, 231, 42, 0.5);
+
+    span {
+      color: rgb(53, 114, 38);
+    }
+
+    &::after {
+      background-color: rgb(209, 249, 200);
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    border-radius: 1px;
+    width: 0;
+    height: 2px;
+
+    animation: time 5s linear;
+  }
+}
+
+@keyframes time {
+  from {
+    width: 90%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+.notification-enter {
+  opacity: 0;
+}
+
+.notification-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.notification-exit {
+  opacity: 1;
+}
+
+.notification-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}

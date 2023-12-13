@@ -1,20 +1,59 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import {
+  NavLink,
+  Link,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import cn from 'classnames';
 import { LogoLink } from '../LogoLink';
 import { ProductsContext } from '../../context/ProductsContext';
+import { setDebounce } from '../../helpers/setDebounce';
 
 export const Header = () => {
   const { pathname } = useLocation();
   const [searchPlaceholder, setSearchPlaceholder] = useState('');
   const [isTabCard, setIsTabCard] = useState(false);
-  const { favourites, cart } = useContext(ProductsContext);
+  const {
+    favourites,
+    cart,
+    setIsLoading,
+  } = useContext(ProductsContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [inputValue, setInputValue]
+    = useState(searchParams.get('query') || '');
 
   const isLinkActive = (isActive: boolean) => {
     return cn('header__nav-link', {
       active: isActive,
     });
+  };
+
+  const debounce = useCallback(setDebounce(), []);
+
+  const setSearch = (value: string) => {
+    if (value) {
+      searchParams.set('query', value);
+    } else {
+      searchParams.delete('query');
+    }
+
+    setSearchParams(searchParams);
+    setIsLoading(false);
+  };
+
+  const onInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+
+    setInputValue(query);
+    setIsLoading(true);
+    debounce(setSearch, query);
   };
 
   useEffect(() => {
@@ -31,6 +70,10 @@ export const Header = () => {
       setSearchPlaceholder('');
     }
   }, [pathname]);
+
+  useEffect(() => {
+    setInputValue(searchParams.get('query') || '');
+  }, [searchParams.get('query')]);
 
   return (
     <header className="header" id="top">
@@ -80,8 +123,10 @@ export const Header = () => {
           <div className="header__search">
             <input
               type="text"
+              value={inputValue}
               className="header__search-input"
               placeholder={`Search in ${searchPlaceholder}...`}
+              onChange={onInputChanged}
             />
             {/* eslint-disable-next-line react/button-has-type */}
             <button className="header__search-button">

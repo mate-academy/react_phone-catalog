@@ -1,0 +1,22 @@
+@import "../../styles/variables.scss";
+
+.Filtration {
+  &__filters {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 24px;
+
+    &-items {
+      &-dropdown {
+        width: 126px;
+      }
+    }
+
+    &-description {
+      color: $secondary-color;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}

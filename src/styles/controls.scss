@@ -85,8 +85,6 @@
     }
   }
 
-  
-
   &.with-background {
     background-color: #fff;
   }
@@ -182,12 +180,21 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 150%;
+    text-decoration: none;
+    display: block;
+    background-color: transparent;
+    border: none;
 
     transition: color 0.2s;
     cursor: pointer;
 
     &:hover {
       color: $primary-color;
+    }
+
+    &.active {
+      color: white;
+      background-color: $primary-color;
     }
   }
 }

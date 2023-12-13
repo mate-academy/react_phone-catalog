@@ -16,7 +16,7 @@ type ContextType = {
   setFavourites: (products: Item[]) => void;
   setCart: (products: Item[]) => void;
   isLoading: boolean;
-  setProducts: (products: Item[]) => void;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 const defaultValue: ContextType = {
@@ -26,7 +26,7 @@ const defaultValue: ContextType = {
   setFavourites: () => { },
   setCart: () => { },
   isLoading: false,
-  setProducts: () => { },
+  setIsLoading: () => { },
 };
 
 export const ProductsContext = createContext(defaultValue);
@@ -43,9 +43,9 @@ export const ProductsProvider: React.FC = ({ children }) => {
     isLoading,
     favourites,
     cart,
+    setIsLoading,
     setFavourites,
     setCart,
-    setProducts,
   }), [products, isLoading, favourites, cart]);
 
   useEffect(() => {
