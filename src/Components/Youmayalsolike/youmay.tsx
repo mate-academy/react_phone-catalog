@@ -1,38 +1,52 @@
-// HotPrices.tsx
-
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard/Productcard';
-import './youmay.scss'; // Import your styling here
+import './youmay.scss';
+
+interface Product {
+  id: number;
+  discount: number;
+  // Add other properties based on your actual data structure
+}
 
 const YouMay: React.FC = () => {
-  const [discountedProducts, setDiscountedProducts] = useState([]);
+  const [discountedProducts, setDiscountedProducts] = useState<Product[]>([]);
   const [startIndex, setStartIndex] = useState(0);
-  const [favoriteProducts, setFavoriteProducts] = useState([]);
+  const [favoriteProducts, setFavoriteProducts] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
+    fetch(
+      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+    )
       .then((response) => response.json())
-      .then((data) => {
-        const filteredProducts = data.filter((product) => product.discount !== 0);
+      .then((data: Product[]) => {
+        const filteredProducts = data.filter(
+          (product) => product.discount !== 0,
+        );
 
         setDiscountedProducts(filteredProducts);
       })
-      .catch((error) => console.error('Error fetching products:', error));
+      .catch((error) => setDiscountedProducts([error])); // Set an empty array on error
   }, []);
 
   useEffect(() => {
-    const storedFavorites: string[] | null = JSON.parse(localStorage.getItem('favorites'));
+    const storedFavoritesString: string | null
+      = localStorage.getItem('favorites');
+    const storedFavorites: string[] = storedFavoritesString
+      ? JSON.parse(storedFavoritesString)
+      : [];
 
-    setFavoriteProducts(storedFavorites || []);
+    setFavoriteProducts(storedFavorites);
   }, []);
 
   const handleNext = () => {
-    setStartIndex((prevIndex) => Math.min(prevIndex + 1, discountedProducts.length - 1));
+    setStartIndex((prevIndex) => Math.min(
+      prevIndex + 1, discountedProducts.length - 1,
+    ));
   };
 
-  const handleAddToFavorite = (productId) => {
-    if (!favoriteProducts.includes(productId)) {
-      const updatedFavorites = [...favoriteProducts, productId];
+  const handleAddToFavorite = (productId: string) => {
+    if (!favoriteProducts.includes(productId.toString())) {
+      const updatedFavorites = [...favoriteProducts, productId.toString()];
 
       setFavoriteProducts(updatedFavorites);
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
@@ -53,6 +67,8 @@ const YouMay: React.FC = () => {
               className={`button left ${startIndex === 0 ? 'inactive' : ''}`}
               onClick={handlePrev}
               disabled={startIndex === 0}
+              type="button"
+              aria-label="Previous Button"
             />
           </div>
           <div className="button-container">
@@ -60,6 +76,8 @@ const YouMay: React.FC = () => {
               className={`button right ${startIndex + 4 >= discountedProducts.length ? 'inactive' : ''}`}
               onClick={handleNext}
               disabled={startIndex + 4 >= discountedProducts.length}
+              type="button"
+              aria-label="Next Button"
             />
           </div>
         </div>
@@ -67,12 +85,14 @@ const YouMay: React.FC = () => {
       <div className="cards-container">
         <div className="scrollable-container">
           {discountedProducts.length > 0 && (
-            discountedProducts.slice(startIndex, startIndex + 4).map((product) => (
+            discountedProducts.slice(
+              startIndex, startIndex + 4,
+            ).map((product) => (
               <ProductCard
                 key={product.id}
-                productId={product.id}
+                productId={product.id.toString()}
                 onAddToFavorite={handleAddToFavorite}
-                onAddToCart={() => {}}
+                onAddToCart={() => { }}
               />
             ))
           )}

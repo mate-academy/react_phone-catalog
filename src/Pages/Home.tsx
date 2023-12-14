@@ -1,35 +1,45 @@
 // Home.jsx
-import React, { useState, useEffect } from 'react';
-import Carousel from '../Components/Carousel/carousel';
+import { useState, useEffect } from 'react';
+import { Carousel } from '../Components/Carousel/carousel';
 import HotPrices from '../Components/HotPrices/hotprices';
-import Categories from '../Components/Categories/categories';
+import { Categories } from '../Components/Categories/categories';
 import Newmodels from '../Components/NewModels/newmodels';
+import { Product } from '../Components/ProductCard/types';
 
 const Home = () => {
-  const [discountedProducts, setDiscountedProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]); // Добавляем состояние для filteredProducts
+  const [discountedProducts, setDiscountedProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [startIndex, setStartIndex] = useState(0);
-  const [favoriteProducts, setFavoriteProducts] = useState([]);
-  const [cartProducts, setCartProducts] = useState([]);
+  const [favoriteProducts, setFavoriteProducts] = useState<string[]>([]);
+  const [cartProducts, setCartProducts] = useState<string[]>([]);
 
-  // Fetch and set initial data
   useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
+    fetch(
+      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+    )
       .then((response) => response.json())
       .then((data) => {
         setFilteredProducts(data);
 
-        const filteredDiscountedProducts = data.filter((product) => product.discount !== 0);
+        const filteredDiscountedProducts = data.filter(
+          (product: Product) => product.discount !== 0,
+        );
 
-        setDiscountedProducts(filteredDiscountedProducts);
+        setDiscountedProducts((prevDiscountedProducts) => [
+          ...prevDiscountedProducts,
+          ...filteredDiscountedProducts,
+        ]);
       })
-      .catch((error) => console.error('Error fetching products:', error));
-
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      .catch((error) => setDiscountedProducts([error]));
+    const storedFavoritesString = localStorage.getItem('favorites');
+    const storedFavorites = storedFavoritesString
+      ? JSON.parse(storedFavoritesString)
+      : [];
 
     setFavoriteProducts(storedFavorites);
 
-    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    const storedCartString = localStorage.getItem('cart');
+    const storedCart = storedCartString ? JSON.parse(storedCartString) : [];
 
     setCartProducts(storedCart);
   }, []);

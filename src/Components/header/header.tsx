@@ -2,41 +2,40 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './header.scss';
-import Logo from './Logo.svg';
-import Favourites from './Favourites.svg';
-import Group from './Group.svg';
-import { useFavoriteContext } from '../favoritescontext/FavoriteContext';
-import { useCartContext } from '../cartcontext/cartcontext';
+import {
+  useCartContext,
+  useFavoritesContext,
+} from '../cartcontext/cartcontext';
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const { favoriteProducts } = useFavoriteContext();
+  const { favoriteProducts } = useFavoritesContext();
   const { cartProducts } = useCartContext();
 
   return (
     <header className="header">
       <NavLink to="/">
-        <img src={Logo} alt="Logo" className="logo__image" />
+        <img src="/img/Logo.svg" alt="Logo" className="logo__image" />
       </NavLink>
       <nav className="nav">
         <ul>
           <li className="le">
-            <NavLink exact to="/" activeClassName="activeLink">
+            <NavLink to="/">
               Home
             </NavLink>
           </li>
           <li className="le">
-            <NavLink to="/phones" activeClassName="activeLink">
+            <NavLink to="/phones">
               Phones
             </NavLink>
           </li>
           <li className="le">
-            <NavLink to="/tablets" activeClassName="activeLink">
+            <NavLink to="/tablets">
               Tablets
             </NavLink>
           </li>
           <li className="le">
-            <NavLink to="/accessories" activeClassName="activeLink">
+            <NavLink to="/accessories">
               Accessories
             </NavLink>
           </li>
@@ -45,7 +44,7 @@ export const Header: React.FC = () => {
           <li>
             <div className={`rectangle ${location.pathname.includes('/cart') ? 'activeLink' : ''}`}>
               <NavLink to="/cart" className="a">
-                <img src={Group} alt="Logo" className="" />
+                <img src="/img/Group.svg" alt="Logo" className="" />
                 {cartProducts.length > 0 && (
                   <div className="cart-count">{cartProducts.length}</div>
                 )}
@@ -55,9 +54,11 @@ export const Header: React.FC = () => {
           <li>
             <div className={`rectangle ${location.pathname.includes('/favourites') ? 'activeLink' : ''}`}>
               <NavLink to="/favourites">
-                <img src={Favourites} alt="Logo" className="" />
+                <img src="/img/Favourites.svg" alt="Logo" className="" />
                 {favoriteProducts.length > 0 && (
-                  <div className="favorite-count">{favoriteProducts.length}</div>
+                  <div className="favorite-count">
+                    {favoriteProducts.length}
+                  </div>
                 )}
               </NavLink>
             </div>

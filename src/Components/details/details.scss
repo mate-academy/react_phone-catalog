@@ -26,6 +26,11 @@ line-height: normal;
   align-items: center;
 }
 
+.pictures{
+  display:flex;
+  flex-direction: column;
+}
+
 .page-back{
   display:flex;
   justify-content: center;
@@ -62,6 +67,7 @@ letter-spacing: -0.32px;
   border: 1px solid var(--gray-elements, #E2E6E9);
   margin-bottom: 16px;
   margin-right: 16px;
+  background: none;
 }
 
 

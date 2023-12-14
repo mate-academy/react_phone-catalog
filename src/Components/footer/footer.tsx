@@ -1,7 +1,5 @@
 import React from 'react';
 import './footer.scss';
-import Logo from './Logo.svg';
-import Chevron from './Chevron.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -9,19 +7,19 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-section1">
           <a href="#home">
-            <img src={Logo} alt="Logo" className="logo__image" />
+            <img src="/img/Logo.svg" alt="Logo" className="logo__image" />
           </a>
         </div>
         <div className="footer-section2">
           <ul>
-            <li><a href="#">GITHUB</a></li>
-            <li><a href="#">CONTACTS</a></li>
-            <li><a href="#">RIGHTS</a></li>
+            <li><a href="/github">GITHUB</a></li>
+            <li><a href="/contacts">CONTACTS</a></li>
+            <li><a href="/rights">RIGHTS</a></li>
           </ul>
         </div>
         <div className="footer-section3">
           <h2>Back to top</h2>
-          <img src={Chevron} alt="Chevron" className="chevron" />
+          <img src="/img/Chevron-right.svg" alt="Chevron" className="chevron" />
         </div>
       </div>
     </footer>

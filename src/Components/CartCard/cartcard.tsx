@@ -1,34 +1,38 @@
-// CartCard.jsx
-import React, { useState, useEffect } from 'react';
-import Close from './Close.svg';
-import Minus from './Minus.svg';
-import Plus from './Plus.svg';
+import { useState, useEffect } from 'react';
 import { useCartContext } from '../cartcontext/cartcontext';
 import './cartcard.scss';
+import { Product } from '../ProductCard/types';
 
-const CartCard = ({ productId }) => {
+interface CartCardProps {
+  productId: string;
+  onRemoveFromCart: (productId: string) => void;
+}
+
+const CartCard: React.FC<CartCardProps> = ({ productId }) => {
   const { cartProducts, addToCart, removeFromCart } = useCartContext();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
 
   const getCounterForProduct = () => {
-    const cartProduct = cartProducts.find((product) => product.id === productId);
+    const cartProduct = cartProducts.find(
+      (item: Product) => item.id === productId,
+    );
 
     return cartProduct ? cartProduct.quantity : 0;
   };
 
   useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
+    fetch(
+      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+    )
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: Product[]) => {
         const foundProduct = data.find((item) => item.id === productId);
 
         if (foundProduct) {
           setProduct(foundProduct);
-        } else {
-          console.error(`Product with ID ${productId} not found.`);
         }
       })
-      .catch((error) => console.error('Error fetching product list:', error));
+      .catch((error) => setProduct(error));
   }, [productId]);
 
   if (!product) {
@@ -49,24 +53,22 @@ const CartCard = ({ productId }) => {
     }
   };
 
-  const totalprice = () => {
-    return `${product.price * getCounterForProduct()}$`;
-  };
+  const totalprice = () => `${product.price * getCounterForProduct()}$`;
 
   return (
     <div className="cart-card">
-      <button className="x" onClick={handleRemoveFromCartClick}>
-        <img src={Close} alt="close" />
+      <button type="button" className="x" onClick={handleRemoveFromCartClick}>
+        <img src="img\Close.svg" alt="close" />
       </button>
       <img src={product.imageUrl} className="img" alt={product.name} />
       <div className="name">{product.name}</div>
       <div className="buttons-holder1">
-        <button className="plusminus" onClick={handleRemoveClick}>
-          <img src={Minus} className="" alt="minus" />
+        <button type="button" className="plusminus" onClick={handleRemoveClick}>
+          <img src="img\Minus.svg" className="" alt="minus" />
         </button>
         <div>{getCounterForProduct()}</div>
-        <button className="plusminus" onClick={handleAddClick}>
-          <img src={Plus} className="" alt="plus" />
+        <button type="button" className="plusminus" onClick={handleAddClick}>
+          <img src="img\Plus.svg" className="" alt="plus" />
         </button>
       </div>
       <div className="totalprice">{totalprice()}</div>

@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
-body {
-  font-family: 'Montserrat', sans-serif;
+@font-face {
+  font-family: 'Mont'; /* Название шрифта, которое вы будете использовать в своем CSS */
+  src: url('/fonts/Mont-Bold.otf') format('opentype'), /* Замените на путь к вашему WOFF2-файлу */
+  /* Дополнительные форматы шрифта, если нужно (например, для поддержки старых браузеров) */
 }
 
-body iframe{
-  display: none;
+body {
+  font-family: 'Mont', sans-serif; /* Используйте название шрифта, указанное в @font-face */
+
+  iframe{
+    display: none;
+  }
 }

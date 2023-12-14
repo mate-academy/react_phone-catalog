@@ -1,8 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../Layouts/MainLayout';
+import { MainLayout } from '../Layouts/MainLayout';
 import Home from '../Pages/Home';
 import ProductDetailsPage from '../Components/details/details';
-import { Products } from '../Components/Products/products';
 import Phones from '../Components/Phones/phones';
 import Tablets from '../Components/Tablets/tablets';
 import Favorites from '../Components/Favorites/favorites';

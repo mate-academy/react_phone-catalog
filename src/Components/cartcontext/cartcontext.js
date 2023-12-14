@@ -1,5 +1,5 @@
 // cartcontext.js
-import React, {
+import {
   createContext, useContext, useReducer, useEffect,
 } from 'react';
 
@@ -14,17 +14,25 @@ const initialCartState = {
 };
 
 const CartContext = createContext();
+const FavoriteContext = createContext();
 
 const cartReducer = (state, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
       const productId = action.payload;
-      const existingProduct = state.cartProducts.find((product) => product.id === productId);
+      const existingProduct = state.cartProducts
+        .find((product) => product.id === productId);
 
       if (existingProduct) {
         return {
           ...state,
-          cartProducts: state.cartProducts.map((product) => (product.id === productId ? { ...product, quantity: (product.quantity || 0) + 1 } : product)),
+          cartProducts: state.cartProducts.map(
+            (product) => (product.id === productId
+              ? {
+                ...product,
+                quantity: (product.quantity || 0) + 1,
+              } : product),
+          ),
         };
       }
 
@@ -38,13 +46,15 @@ const cartReducer = (state, action) => {
       const productId = action.payload;
       const updatedCartProducts = state.cartProducts.map((product) => {
         if (product.id === productId) {
-          const updatedQuantity = product.quantity !== undefined ? Math.max(product.quantity - 1, 0) : 0;
+          const updatedQuantity = product.quantity !== undefined
+            ? Math.max(product.quantity - 1, 0) : 0;
 
-          return updatedQuantity > 0 ? { ...product, quantity: updatedQuantity } : null;
+          return updatedQuantity > 0
+            ? { ...product, quantity: updatedQuantity } : null;
         }
 
         return product;
-      }).filter(Boolean); // Удаляем товары, у которых quantity стало равно 0
+      }).filter(Boolean);
 
       return {
         ...state,
@@ -66,7 +76,8 @@ const cartReducer = (state, action) => {
 
       return {
         ...state,
-        favoriteProducts: state.favoriteProducts.filter((id) => id !== productId),
+        favoriteProducts: state.favoriteProducts
+          .filter((id) => id !== productId),
       };
     }
 
@@ -103,17 +114,22 @@ export const CartProvider = ({ children }) => {
   }, [state.favoriteProducts]);
 
   return (
-    <CartContext.Provider
-      value={{
-        ...state,
-        addToCart,
-        removeFromCart,
-        addToFavorites,
-        removeFromFavorites,
-      }}
+    <FavoriteContext.Provider value={{
+      ...state,
+      addToFavorites,
+      removeFromFavorites,
+    }}
     >
-      {children}
-    </CartContext.Provider>
+      <CartContext.Provider
+        value={{
+          ...state,
+          addToCart,
+          removeFromCart,
+        }}
+      >
+        {children}
+      </CartContext.Provider>
+    </FavoriteContext.Provider>
   );
 };
 
@@ -122,6 +138,16 @@ export const useCartContext = () => {
 
   if (!context) {
     throw new Error('useCartContext must be used within a CartProvider');
+  }
+
+  return context;
+};
+
+export const useFavoritesContext = () => {
+  const context = useContext(FavoriteContext);
+
+  if (!context) {
+    throw new Error('useFavoritesContext must be used within a CartProvider');
   }
 
   return context;

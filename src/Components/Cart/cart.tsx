@@ -1,33 +1,43 @@
-// Cart.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CartCard from '../CartCard/cartcard';
 import useProducts from '../useproducts/useProducts';
-import chevronleft from './Chevron-left.svg';
 import { useCartContext } from '../cartcontext/cartcontext';
 import './cart.scss';
+import { Product } from '../ProductCard/types';
 
-const Cart = () => {
+interface CartProduct {
+  // eslint-disable-next-line react/no-unused-prop-types
+  id: string;
+  // eslint-disable-next-line react/no-unused-prop-types
+  quantity: number;
+}
+
+const Cart: React.FC = () => {
   const { cartProducts, removeFromCart } = useCartContext();
-  const [total, setTotal] = useState(0);
-  const products = useProducts();
+  const [total, setTotal] = useState<number>(0);
+  const products: Product[] = useProducts();
 
-  const handleRemoveFromCart = (productId) => {
+  const handleRemoveFromCart = (productId: string) => {
     removeFromCart(productId);
   };
 
   const calculateTotal = () => {
-    const calculatedTotal = cartProducts.reduce((acc, { id, quantity }) => {
-      const foundProduct = products.find((item) => item.id === id);
+    const calculatedTotal = cartProducts.reduce(
+      (acc: number, { id, quantity }: CartProduct) => {
+        const foundProduct = products.find(
+          (item: Product) => item.id === id,
+        );
 
-      if (foundProduct) {
-        acc += foundProduct.price * quantity;
-      } else {
-        console.error(`Product with ID ${id} not found.`);
-      }
+        if (foundProduct) {
+          const productTotal = foundProduct.price * quantity;
 
-      return acc;
-    }, 0);
+          return acc + productTotal;
+        }
+
+        return acc;
+      }, 0,
+    );
 
     setTotal(calculatedTotal);
   };
@@ -37,34 +47,44 @@ const Cart = () => {
   }, [cartProducts, products]);
 
   return (
-    <div className="product-div">
-      <div className="page-back__holder">
-        <img src={chevronleft} alt="Chevron" className="folder-chevron" />
-        <Link className="page-back" to="/">Back</Link>
-      </div>
-      <h3 className="title">Cart</h3>
-      <div className="cart-holder">
-        <div className="cart-cards">
-          {cartProducts.map(({ id }) => (
-            <CartCard
-              key={id}
-              productId={id}
-              onRemoveFromCart={handleRemoveFromCart}
-            />
-          ))}
+    <>
+      <div className="product-div">
+        <div className="page-back__holder">
+          <img
+            src="/img/Chevron-left.svg"
+            alt="Chevron"
+            className="folder-chevron"
+          />
+          <Link className="page-back" to="/">
+            Back
+          </Link>
         </div>
-        <div className="total">
-          <div className="total-money">
-            $
-            {total.toFixed(2)}
+        <h3 className="title">Cart</h3>
+        <div className="cart-holder">
+          <div className="cart-cards">
+            {cartProducts.map(({ id }: CartProduct) => (
+              <CartCard
+                key={id}
+                productId={id}
+                onRemoveFromCart={handleRemoveFromCart}
+              />
+            ))}
           </div>
-          <div className="total-total">Total for your items</div>
+          <div className="total">
+            <div className="total-money">
+              $
+              {total.toFixed(2)}
+            </div>
+            <div className="total-total">Total for your items</div>
 
-          <div className="line total" />
-          <button className="checkout">Checkout</button>
+            <div className="line total" />
+            <button type="button" className="checkout">
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

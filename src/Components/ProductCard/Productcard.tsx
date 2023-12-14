@@ -2,119 +2,161 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from './types';
 import './productcard.scss';
-import { useCartContext } from '../cartcontext/cartcontext';
+import {
+  useCartContext,
+  useFavoritesContext,
+} from '../cartcontext/cartcontext';
 
-const ProductCard = ({ productId }) => {
-  const [product, setProduct] = useState<Product | null>(null);
-  const {
-    cartProducts, addToCart, removeFromCart, favoriteProducts, addToFavorites, removeFromFavorites,
-  } = useCartContext();
+interface ProductCardProps {
+  productId: string;
+  // eslint-disable-next-line react/no-unused-prop-types
+  onAddToCart: (productId: string) => void;
+  // eslint-disable-next-line react/no-unused-prop-types
+  onAddToFavorite: (productId: string) => void;
+}
 
-  useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
-      .then((response) => response.json())
-      .then((data) => {
-        const foundProduct = data.find((item: Product) => item.id === productId);
+const ProductCard: React.FC<ProductCardProps>
+  = ({ productId }) => {
+    const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
+    const {
+      cartProducts,
+      addToCart,
+      removeFromCart,
+    } = useCartContext();
 
-        if (foundProduct) {
-          setProduct(foundProduct);
-        } else {
-          console.error(`Product with ID ${productId} not found.`);
+    const {
+      favoriteProducts,
+      addToFavorites,
+      removeFromFavorites,
+    } = useFavoritesContext();
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            // eslint-disable-next-line max-len
+            'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+          );
+          const data: Product[] = await response.json();
+
+          const foundProduct = data.find((item) => item.id === productId);
+
+          if (foundProduct) {
+            setCurrentProduct(foundProduct);
+          } else {
+            setCurrentProduct(null);
+          }
+        } catch (error) {
+          addToCart(productId);
         }
-      })
-      .catch((error) => console.error('Error fetching product list:', error));
-  }, [productId]);
+      };
 
-  const handleAddToCartClick = () => {
-    const isProductInCart = cartProducts.some((product) => product.id === productId);
+      fetchData();
+    }, [productId]);
 
-    if (isProductInCart) {
-      removeFromCart(productId);
-    } else {
-      addToCart(productId);
-    }
-  };
+    const handleAddToCartClick = () => {
+      const isProductInCart
+        = cartProducts.some((product: Product) => product.id === productId);
 
-  const handleAddToFavoritesClick = () => {
-    const isProductInFavorites = favoriteProducts.includes(productId);
+      if (isProductInCart) {
+        removeFromCart(productId);
+      } else {
+        addToCart(productId);
+      }
+    };
 
-    if (isProductInFavorites) {
-      removeFromFavorites(productId);
-    } else {
-      addToFavorites(productId);
-    }
-  };
+    const handleAddToFavoritesClick = () => {
+      const isProductInFavorites = favoriteProducts.includes(productId);
 
-  const calculateDiscountedPrice = () => {
-    if (product && product.discount) {
-      const discountedPrice = product.price - (product.price * product.discount) / 100;
+      if (isProductInFavorites) {
+        removeFromFavorites(productId);
+      } else {
+        addToFavorites(productId);
+      }
+    };
+
+    const calculateDiscountedPrice = () => {
+      if (currentProduct && currentProduct.discount) {
+        const discountedPrice = currentProduct.price
+          - (currentProduct.price * currentProduct.discount) / 100;
+
+        return (
+          <div className="prices">
+            <p className="discounted-price">
+              {discountedPrice}
+              $
+            </p>
+            <p className="original-price">
+              {currentProduct.price}
+              $
+            </p>
+          </div>
+        );
+      }
 
       return (
-        <div className="prices">
-          <p className="discounted-price">
-            {discountedPrice}
-            $
-          </p>
-          <p className="original-price">
-            {product.price}
-            $
-          </p>
-        </div>
+        <p className="price">
+          {currentProduct?.price}
+          $
+        </p>
       );
-    }
+    };
 
     return (
-      <p className="price">
-        {product?.price}
-        $
-      </p>
+      <div className="product-card">
+        <Link className="Link" to={`/${productId}`} state={{ product: currentProduct }}>
+          {currentProduct && (
+            <img
+              src={currentProduct.imageUrl}
+              className="image"
+              alt={currentProduct.name}
+            />
+          )}
+          {currentProduct && <h2 className="name">{currentProduct.name}</h2>}
+          {calculateDiscountedPrice()}
+          <div className="line" />
+          {currentProduct && (
+            <>
+              <div className="card-field">
+                <p className="screen">Screen</p>
+                <p>{currentProduct.screen}</p>
+              </div>
+              <div className="card-field">
+                <p className="capacity">Capacity</p>
+                {' '}
+                {currentProduct.capacity}
+              </div>
+              <div className="card-field">
+                <p className="ram">RAM</p>
+                {currentProduct.ram}
+              </div>
+            </>
+          )}
+        </Link>
+        <div className="card-buttons">
+          <button
+            type="button"
+            onClick={handleAddToCartClick}
+            className={cartProducts.some(
+              (product: Product) => product.id === productId,
+            )
+              ? 'button-add added' : 'button-add'}
+          >
+            {cartProducts.some((product: Product) => product.id === productId)
+              ? 'Added to cart' : 'Add to cart'}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleAddToFavoritesClick}
+            className={favoriteProducts.includes(productId)
+              ? 'button-like liked' : 'button-like'}
+          >
+            { }
+          </button>
+        </div>
+      </div>
     );
   };
-
-  return (
-    <div className="product-card">
-      <Link className="Link" to={`/${productId}`} state={{ product }}>
-        {product && <img src={product.imageUrl} className="image" alt={product.name} />}
-        {product && <h2 className="name">{product.name}</h2>}
-        {calculateDiscountedPrice()}
-        <div className="line" />
-        {product && (
-          <>
-            <div className="card-field">
-              <p className="screen">Screen</p>
-              <p>{product.screen}</p>
-            </div>
-            <div className="card-field">
-              <p className="capacity">Capacity</p>
-              {' '}
-              {product.capacity}
-            </div>
-            <div className="card-field">
-              <p className="ram">RAM</p>
-              {product.ram}
-            </div>
-          </>
-        )}
-      </Link>
-      <div className="card-buttons">
-        <button
-          type="button"
-          onClick={handleAddToCartClick}
-          className={cartProducts.some((product) => product.id === productId) ? 'button-add added' : 'button-add'}
-        >
-          {cartProducts.some((product) => product.id === productId) ? 'Added to cart' : 'Add to cart'}
-        </button>
-
-        <button
-          type="button"
-          onClick={handleAddToFavoritesClick}
-          className={favoriteProducts.includes(productId) ? 'button-like liked' : 'button-like'}
-        >
-          {/* Your like button content goes here */}
-        </button>
-      </div>
-    </div>
-  );
-};
 
 export default ProductCard;

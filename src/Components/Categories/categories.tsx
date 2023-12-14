@@ -1,32 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import './categories.scss'; // Импортируйте ваши стили здесь
-import phones from './phones.png';
-import tablets from './tablets.png';
-import accessories from './accesories.png';
+import './categories.scss'; // Import your styles here
+
+interface Item {
+  type: 'tablet' | 'phone' | 'accessory';
+  // Add other properties based on your actual data structure
+}
 
 export const Categories = () => {
-  const [productCounts, setProductCounts] = useState({ tablets: 0, phones: 0, accessories: 0 });
+  const [productCounts,
+    setProductCounts] = useState({ tablets: 0, phones: 0, accessories: 0 });
 
   useEffect(() => {
-    fetch('https://mate-academy.github.io/react_phone-catalog/api/products.json')
+    fetch(
+      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+    )
       .then((response) => response.json())
-      .then((data) => {
-        const counts = data.reduce((acc, item) => {
-          if (item.type === 'tablet') {
-            acc.tablets += 1;
-          } else if (item.type === 'phone') {
-            acc.phones += 1;
-          } else if (item.type === 'accessory') {
-            acc.accessories += 1;
-          }
+      .then((data: Item[]) => {
+        const counts = data.reduce(
+          (acc: {
+            tablets: number;
+            phones: number; accessories: number
+          }, item: Item) => {
+            const newAcc = { ...acc };
 
-          return acc;
-        }, { tablets: 0, phones: 0, accessories: 0 });
+            if (item.type === 'tablet') {
+              newAcc.tablets += 1;
+            } else if (item.type === 'phone') {
+              newAcc.phones += 1;
+            } else if (item.type === 'accessory') {
+              newAcc.accessories += 1;
+            }
+
+            return newAcc;
+          }, { tablets: 0, phones: 0, accessories: 0 },
+        );
 
         setProductCounts(counts);
       })
-      .catch((error) => console.error('Error fetching product list:', error));
+      .catch(() => []);
   }, []);
 
   return (
@@ -35,31 +47,40 @@ export const Categories = () => {
 
       <div className="categories-row">
         <NavLink to="/phones" className="category">
-          <img src={phones} className="category-img phones" alt="phones" />
+          <img
+            src="/img/phones.png"
+            className="category-img phones"
+            alt="phones"
+          />
           <h3 className="category-name">Mobile Phones</h3>
           <p className="category-counter">
             {productCounts.phones}
-            {' '}
             models
           </p>
         </NavLink>
 
         <NavLink to="/tablets" className="category">
-          <img src={tablets} className="category-img tablets" alt="tablets" />
+          <img
+            src="/img/tablets.png"
+            className="category-img tablets"
+            alt="tablets"
+          />
           <h3 className="category-name">Tablets</h3>
           <p className="category-counter">
             {productCounts.tablets}
-            {' '}
             models
           </p>
         </NavLink>
 
         <NavLink to="/accessories" className="category">
-          <img src={accessories} className="category-img accessories last" alt="accessories" />
+          <img
+            src="/img/accesories.png"
+            className="category-img accessories last"
+            alt="accessories"
+          />
           <h3 className="category-name">Accessories</h3>
           <p className="category-counter">
             {productCounts.accessories}
-            {' '}
             models
           </p>
         </NavLink>

@@ -5,4 +5,10 @@ export type Product = {
   screen: string;
   description: string;
   age: string;
+  id: string;
+  capacity: string;
+  discount: number;
+  imageUrl: string;
+  ram: string;
+  type: string;
 };

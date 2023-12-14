@@ -1,26 +1,49 @@
-// HotPrices.jsx
-import React from 'react';
+import React, { useEffect, Dispatch, SetStateAction } from 'react';
 import ProductCard from '../ProductCard/Productcard';
 import './hotprices.scss';
 
-const HotPrices = ({
+interface HotPricesProps {
+  discountedProducts: { id: string }[];
+  startIndex: number;
+  setStartIndex: React.Dispatch<React.SetStateAction<number>>;
+  favoriteProducts: string[];
+  setFavoriteProducts: Dispatch<SetStateAction<string[]>>; // Update this line
+  cartProducts: string[];
+  setCartProducts: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const HotPrices: React.FC<HotPricesProps> = ({
   discountedProducts,
   startIndex,
   setStartIndex,
   favoriteProducts,
-  setFavoriteProducts,
+  setFavoriteProducts, // This should be Dispatch<SetStateAction<string[]>>
   cartProducts,
   setCartProducts,
 }) => {
   const handleNext = () => {
-    setStartIndex((prevIndex) => Math.min(prevIndex + 1, discountedProducts.length - 1));
+    setStartIndex((prevIndex) => Math.min(
+      prevIndex + 1, discountedProducts.length - 1,
+    ));
   };
+
+  useEffect(() => {
+    const storedFavoritesString = localStorage.getItem('favorites');
+    const storedFavorites: string[] = storedFavoritesString
+      ? JSON.parse(storedFavoritesString)
+      : [];
+
+    setFavoriteProducts((prevFavorites) => {
+      // Use the previous state to ensure correct types
+      return [...prevFavorites, ...storedFavorites];
+    });
+  }, [setFavoriteProducts]);
 
   const handlePrev = () => {
     setStartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
-  const handleAddToCart = (productId) => {
+  const handleAddToCart = (productId: string) => {
     if (!cartProducts.includes(productId)) {
       const updatedCartProducts = [...cartProducts, productId];
 
@@ -29,25 +52,28 @@ const HotPrices = ({
     }
   };
 
-  const handleAddToFavorite = (productId) => {
+  const handleAddToFavorite = (productId: string) => {
     if (!favoriteProducts.includes(productId)) {
       const updatedFavoriteProducts = [...favoriteProducts, productId];
 
       setFavoriteProducts(updatedFavoriteProducts);
-      localStorage.setItem('favorites', JSON.stringify(updatedFavoriteProducts));
+      localStorage.setItem('favorites',
+        JSON.stringify(updatedFavoriteProducts));
     }
   };
 
   return (
     <div className="discount-products-container">
       <div className="title-holder">
-        <p className="title">Hot prices</p>
+        <p className="title" id="hotPricesTitle">Hot prices</p>
         <div className="buttons-container">
           <div className="button-container">
             <button
               className={`button left ${startIndex === 0 ? 'inactive' : ''}`}
               onClick={handlePrev}
               disabled={startIndex === 0}
+              type="button"
+              aria-labelledby="hotPricesTitle"
             />
           </div>
           <div className="button-container">
@@ -55,6 +81,8 @@ const HotPrices = ({
               className={`button right ${startIndex + 4 >= discountedProducts.length ? 'inactive' : ''}`}
               onClick={handleNext}
               disabled={startIndex + 4 >= discountedProducts.length}
+              type="button"
+              aria-labelledby="hotPricesTitle"
             />
           </div>
         </div>
@@ -62,7 +90,9 @@ const HotPrices = ({
       <div className="cards-container">
         <div className="scrollable-container">
           {discountedProducts.length > 0
-            && discountedProducts.slice(startIndex, startIndex + 4).map((product) => (
+            && discountedProducts.slice(
+              startIndex, startIndex + 4,
+            ).map((product) => (
               <ProductCard
                 key={product.id}
                 productId={product.id}
