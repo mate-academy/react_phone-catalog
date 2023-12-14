@@ -7,19 +7,19 @@ export const Slider = () => {
   const images = [
     {
       id: 1,
-      url: '_new/img/banner-phones.png',
+      url: 'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
       alt: 'Phones',
       link: '/phones',
     },
     {
       id: 2,
-      url: '_new/img/banner-tablets.png',
+      url: 'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
       alt: 'Tablets',
       link: '/tablets',
     },
     {
       id: 3,
-      url: '_new/img/banner-accessories.png',
+      url: 'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
       alt: 'Accessories',
       link: '/accessories',
     },
