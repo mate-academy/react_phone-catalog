@@ -1,0 +1,62 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+
+.phones {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 24px;
+  justify-content: center;
+  width: 1136px;
+  height: 100%;
+  
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-top: 24px;
+  }
+
+  &__main-container {
+    display: flex;
+    gap: 16px;
+  }
+
+
+  &__title {
+    color: $button-back-color;
+    @extend %Mont700;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__subtitle {
+    color: $feature-color;
+    @extend %Mont500;
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+    margin-top: 8px;
+
+    &_little {
+      margin-top: 40px;
+      font-size: 12px;
+    }
+  }
+
+  &__select {
+    text-transform: capitalize;
+    box-sizing: border-box;
+    width: 128px;
+    height: 40px;
+    color: $button-back-color;
+    @extend %Mont600;
+    font-size: 14px;
+    line-height: 21px; /* 150% */
+    padding-left: 8px;
+  }
+}

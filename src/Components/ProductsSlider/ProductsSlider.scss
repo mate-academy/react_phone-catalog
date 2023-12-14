@@ -1,0 +1,18 @@
+@import '../../styles/utils/typography';
+@import "../../styles/utils/variables";
+
+.product-slider-container {
+  width: 1140px;
+  margin: auto;
+}
+
+.product-slider {
+  &__title {
+    @extend %Mont700;
+    color: $button-back-color;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    margin-top: 80px;
+    margin-bottom: 24px;
+  }
+}

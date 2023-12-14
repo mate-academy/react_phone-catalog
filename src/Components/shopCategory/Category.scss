@@ -1,0 +1,71 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.category {
+
+  &-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  &__caption {
+    color:$button-back-color;
+    @extend %Mont700;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    text-align: start;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color:$button-back-color;
+    @extend %Mont600;
+    font-size: 20px;
+  }
+
+  &__subtitle {
+    color: $feature-color;
+    @extend %Mont500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &-img {
+    box-sizing: border-box;
+    height: 368px;
+    width: 368px;
+    background-repeat: no-repeat;
+    margin-bottom: 24px;
+    transition: all 0.3s;
+    cursor: pointer;
+
+
+    &:hover {
+      border-radius: 25px 0 25px 0;
+      transform: translateY(-10%);
+      box-shadow: 0 10px 10px rgba(0, 0.4, 0.4, 0.5);
+    }
+
+    &-1 {
+      background-image: url(../../Images/menu/image1.png);
+    }
+
+    &-2 {
+      background-image: url(../../Images/menu/image2.png);
+    }
+
+    &-3 {
+      background-image: url(../../Images/menu/image3.png);
+    }
+  }
+}

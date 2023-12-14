@@ -1,0 +1,22 @@
+@import "../../styles/utils/_typography";
+@import "../../styles/utils/variables";
+
+.search {
+
+  &__input {
+    display: flex;
+    @extend %Mont600;
+    color:$border-button-color;
+    font-size: 14px;
+    height: 64px;
+    width: 327px;
+    padding-left: 24px;
+    border: none;
+    border-left: 3px solid $border-color;
+    outline: none;
+
+    &:focus {
+      background:$search-color;
+    }
+  }
+}

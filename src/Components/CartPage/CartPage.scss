@@ -1,0 +1,168 @@
+@import '../../styles/utils/typography';
+@import '../../styles/utils/variables';
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: auto;
+  margin-top: 40px;
+  width: 1140px;
+  // height: 100%;
+  // min-height: 100vh;
+  
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__link {
+    background-image: url(../../Images/slider/arrow-right.svg);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+    padding-left: 15px;
+    @extend %Mont600;
+    color: $feature-color;
+    font-size: 12px;
+  }
+
+  &__title {
+    @extend %Mont700;
+    margin-top: 16px;
+    color:$button-back-color;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    grid-column: span 5;
+    width: 752px;
+    height: 128px;
+    border: 1px solid $border-color;
+  }
+
+  &__phone-img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    margin-right: 31px;
+  }
+
+  &__name {
+    @extend %Mont500;
+    color: $button-back-color;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    background-image: url(../../Images/menu/cross.svg);
+    margin-left: 24px;
+    margin-right: 25px;
+    cursor: pointer;
+  }
+
+  &__price {
+    @extend %Mont700;
+    color: $button-back-color;
+    font-size: 22px;
+    line-height: 140%;
+    grid-column: 5;
+    margin-left: auto;
+    margin-right: 40px;
+  }
+
+  &__button {
+    &-container {
+      display: flex;
+      align-items: center;
+      margin: auto;
+
+    }
+
+    &-add {
+      width: 32px;
+      height: 32px;
+      background-color: $white-color;
+      border: 1px solid $border-button-color;
+      margin-left: 13px;
+      cursor: pointer;
+    }
+
+    &-remove {
+      width: 32px;
+      height: 32px;
+      background-color: $white-color;
+      border: 1px solid $border-button-color;
+      margin-right: 13px;
+      cursor: pointer;
+    }
+
+    &-checkout {
+      @extend %Mont600;
+      width: 321px;
+      height: 48px;
+      background-color: $button-back-color;
+      color: $white-color;
+      font-size: 14px;
+      line-height: 21px; /* 150% */
+      text-align: center;
+
+      &-container {
+        display: flex;
+        margin: auto;
+        width: 321px;
+        border-top: 1px solid $border-color;
+        padding-top: 24px;
+      }
+    }
+  }
+
+  &__total {
+    @extend %Mont500;
+    color: $button-back-color;
+    text-align: center;
+    font-size: 14px;
+    line-height: 21px;
+
+    &-price {
+      &-amount {
+        display: flex;
+        justify-content: center;
+        @extend %Mont700;
+        color: $button-back-color;
+        font-size: 32px;
+        letter-spacing: -0.32px;
+        margin-top: 24px;
+      }
+    }
+
+    &-container {
+      width: 368px;
+      height: 206px;
+      margin-top: 103px;
+      border: 1px solid $border-color;
+    }
+
+    &-carts {
+      display: flex;
+      justify-content: center;
+      @extend %Mont500;
+      color: $feature-color;
+      font-size: 14px;
+      line-height: 21px;
+      margin-bottom: 24px;
+    }
+  }
+}

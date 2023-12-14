@@ -1,0 +1,285 @@
+@import '../../styles/utils/typography';
+@import '../../styles/utils/variables';
+
+.product-details {
+  width: 1140px;
+  margin: auto;
+  margin-top: 25px;
+
+  &-container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__main-container {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__mobile-container {
+    display: flex;
+    gap: 75px;
+  }
+
+  &__specs-container {
+    width: 320px;
+    margin-top: 32px;
+  }
+
+  &__price {
+    @extend %Mont700;
+    color: $button-back-color;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+
+    &-regular {
+      @extend %Mont500;
+      color: $feature-color;
+      font-size: 22px;
+      text-decoration: line-through;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 320px;
+      border-top: 1px solid $border-color;
+      padding-top: 32px;
+      margin-top: 24px;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 63px;
+    @extend %Mont500;
+    color: $button-back-color;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 21px;
+    border: 1px solid $border-button-color;
+
+    &-active {
+      background-color: $button-back-color;
+      color: $white-color;
+    }
+
+    &-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+  }
+
+  &__color {
+    &-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      width: 320px;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+
+    &-circle {
+      display: flex;
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 3px solid $white-color;
+
+      &-active {
+        &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 1px solid $button-back-color;
+          top: -3.6px;
+          left: -3.6px;
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid $border-color;
+        top: -3.6px;
+        left: -3.6px;
+      }
+    }
+  }
+
+  &-arrow {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../Images/menu/arrow-grey.svg)
+  }
+
+  &__title {
+    @extend %Mont600;
+    color:$button-back-color;
+    font-size: 20px;
+  }
+
+  &__main-title {
+    @extend %Mont700;
+    color:$button-back-color;
+    font-size: 22px;
+    line-height: 140%;
+    margin-top: 81px;
+  }
+
+  &__paragraph {
+    @extend %Mont500;
+    color: $feature-color;
+    font-size: 14px;
+    line-height: 21px;
+    width: 559px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+
+    &-container {
+      margin-top: 16px;
+      border-top: 1px solid $border-color;
+      width: 559px;
+      padding-top: 32px;
+
+      &_second {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 512px;
+      }
+    }
+  }
+
+  &__subtitle {
+    @extend %Mont600;
+    color: $feature-color;
+    font-size: 12px;
+  }
+
+  &__name {
+    @extend %Mont700;
+    color: $button-back-color;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &-back {
+    display: flex;
+    align-items: center;
+    @extend %Mont600;
+    color: $feature-color;
+    font-size: 12px;
+    text-decoration: none;
+    margin-bottom: 16px;
+
+    &::before {
+      display: block;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url(../../Images/slider/arrow-right.svg);
+    }
+  }
+
+  &__characteristics {
+    width: 512px;
+  }
+
+  &__characteristic {
+    @extend %Mont500;
+    color: $feature-color;
+    font-size: 14px;
+    line-height: 21px;
+
+    &_small {
+      @extend %Mont500;
+      color: $feature-color;
+      font-size: 12px;
+      line-height: 21px;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__value {
+    @extend %Mont500;
+    color: $button-back-color;
+    font-size: 14px;
+    line-height: 21px;
+
+    &_small {
+      @extend %Mont500;
+      color:$button-back-color;
+      font-size: 12px;
+      line-height: 21px;
+    }
+  }
+
+  &-images {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 40px;
+
+
+    &-container {
+      display: flex;
+      gap: 48px;
+    }
+  }
+
+  &-image {
+    width: 79px;
+    height: 79px;
+    object-fit: contain;
+    border: 2px solid $border-img-color;
+    cursor: pointer;
+
+    &-active {
+      border: 2px solid $button-back-color;
+    }
+
+    &_selected {
+      width: 442px;
+      height: 442px;
+      box-sizing: border-box;
+      object-fit: contain;
+      margin-top: 51px;
+    }
+  }
+
+  &-color {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    background-color: rebeccapurple;
+    color: red;
+    border: 1px solid green;
+
+    &-container {
+      gap: 8px;
+      margin-top: 40px;
+    }
+  }
+}
