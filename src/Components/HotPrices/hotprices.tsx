@@ -7,7 +7,7 @@ interface HotPricesProps {
   startIndex: number;
   setStartIndex: React.Dispatch<React.SetStateAction<number>>;
   favoriteProducts: string[];
-  setFavoriteProducts: Dispatch<SetStateAction<string[]>>; // Update this line
+  setFavoriteProducts: Dispatch<SetStateAction<string[]>>;
   cartProducts: string[];
   setCartProducts: React.Dispatch<React.SetStateAction<string[]>>;
 }
@@ -17,7 +17,7 @@ const HotPrices: React.FC<HotPricesProps> = ({
   startIndex,
   setStartIndex,
   favoriteProducts,
-  setFavoriteProducts, // This should be Dispatch<SetStateAction<string[]>>
+  setFavoriteProducts,
   cartProducts,
   setCartProducts,
 }) => {
@@ -34,7 +34,6 @@ const HotPrices: React.FC<HotPricesProps> = ({
       : [];
 
     setFavoriteProducts((prevFavorites) => {
-      // Use the previous state to ensure correct types
       return [...prevFavorites, ...storedFavorites];
     });
   }, [setFavoriteProducts]);

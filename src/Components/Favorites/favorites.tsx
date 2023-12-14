@@ -10,7 +10,6 @@ const Favorites: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>('');
 
   const handleAddToCart = (productId: string) => {
-    // Your implementation for adding to cart
     return productId;
   };
 

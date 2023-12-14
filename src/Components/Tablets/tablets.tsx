@@ -194,7 +194,7 @@ const Tablets: React.FC = () => {
             key={tablet.id}
             productId={tablet.id}
             onAddToFavorite={handleAddToFavorite}
-            onAddToCart={() => { }} // Add your implementation for onAddToCart
+            onAddToCart={() => { }}
           />
         ))}
       </div>

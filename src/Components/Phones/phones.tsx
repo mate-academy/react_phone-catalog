@@ -67,11 +67,20 @@ const Phones: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const handleFetchError = () => {
+      ('Error fetching or processing data:');
+      // Handle the error here, such as showing a user-friendly error message
+      // or performing other actions as needed.
+      // For example, you could set an error state to display an error message in your component.
+      // setErrorState('An error occurred while fetching data.');
+    };
+
     const fetchDataAndSetState = async () => {
       try {
         const data = await fetchData();
-        const phoneProducts
-          = data.filter((product) => product.type === 'phone');
+        const phoneProducts = data.filter(
+          (product) => product.type === 'phone',
+        );
         const filteredPhones = filterPhones(phoneProducts, searchInput);
 
         setPhones(filteredPhones);
@@ -79,12 +88,13 @@ const Phones: React.FC = () => {
 
         setProductCounts(counts);
       } catch (error) {
+        // Log the error or handle it in a way that aligns with your application's strategy
+        handleFetchError();
       }
     };
 
     fetchDataAndSetState();
   }, [searchInput]);
-
   const handleAddToFavorite = (productId: string) => {
     if (!favoriteProducts.includes(productId)) {
       const updatedFavorites = [...favoriteProducts, productId];

@@ -5,7 +5,6 @@ import './youmay.scss';
 interface Product {
   id: number;
   discount: number;
-  // Add other properties based on your actual data structure
 }
 
 const YouMay: React.FC = () => {
@@ -25,7 +24,7 @@ const YouMay: React.FC = () => {
 
         setDiscountedProducts(filteredProducts);
       })
-      .catch((error) => setDiscountedProducts([error])); // Set an empty array on error
+      .catch((error) => setDiscountedProducts([error]));
   }, []);
 
   useEffect(() => {

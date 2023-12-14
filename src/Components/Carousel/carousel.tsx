@@ -1,13 +1,12 @@
 // Carousel.tsx
 
 import { useState } from 'react';
-import './carousel.scss'; // Import your styling here
+import './carousel.scss';
 
 export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const basePath = '_new/img/';
 
-  // Concatenate the base path with the image filenames
   const images = [
     `${basePath}banner-accessories.png`,
     `${basePath}banner-phones.png`,
@@ -30,7 +29,7 @@ export const Carousel = () => {
           }
         }}
         role="button"
-        tabIndex={0} // make the element focusable
+        tabIndex={0}
         aria-label={`Slide ${index + 1}`}
       />
     ));
@@ -82,7 +81,7 @@ export const Carousel = () => {
             }
           }}
           role="button"
-          tabIndex={0} // make the element focusable
+          tabIndex={0}
           aria-label="Next"
         >
           <img className="chevron" src="img/Chevron-right.svg" alt="Next" />

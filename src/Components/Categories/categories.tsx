@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import './categories.scss'; // Import your styles here
+import './categories.scss';
 
 interface Item {
   type: 'tablet' | 'phone' | 'accessory';
-  // Add other properties based on your actual data structure
 }
 
 export const Categories = () => {
