@@ -106,7 +106,8 @@ export const PhonesPage = () => {
   const currentPage = +(searchParams.get('page') || 1);
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
-  const currentItems = displayedPhones.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems
+  = displayedPhones.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const params = new URLSearchParams(searchParams);
