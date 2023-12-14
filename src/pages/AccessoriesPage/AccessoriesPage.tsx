@@ -114,6 +114,10 @@ export const AccessoriesPage = () => {
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const params = new URLSearchParams(searchParams);
 
+    if (+event.target.value > perPage) {
+      params.set('page', '1');
+    }
+
     params.set('perPage', event.target.value);
     setSearchParams(params);
   };

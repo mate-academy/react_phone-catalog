@@ -9,22 +9,14 @@ const imageUrls = [
 
 export const BannerSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [imageQueue, setImageQueue] = useState(imageUrls);
-  const totalImages = 3;
 
   const handleNext = () => {
-    setImageQueue((queue) => {
-      const nextQueue = [...queue];
-      const shiftedItem = nextQueue.shift();
-
-      if (shiftedItem !== undefined) {
-        nextQueue.push(shiftedItem);
-      }
-
-      return nextQueue;
-    });
-
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex(prevIndex => (prevIndex - 1 + imageUrls.length)
+    % imageUrls.length);
   };
 
   useEffect(() => {
@@ -32,10 +24,6 @@ export const BannerSlider: React.FC = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  const handlePrev = () => {
-    setCurrentIndex(prevIndex => (prevIndex - 1 + totalImages) % totalImages);
-  };
 
   return (
     <>
@@ -69,7 +57,7 @@ export const BannerSlider: React.FC = () => {
           className="banner-slider__container"
           style={{ transform: `translateX(-${currentIndex * 1040}px)` }}
         >
-          {imageQueue.map((src) => (
+          {imageUrls.map((src) => (
             <img key={src} src={src} alt="BannerSlide" className="slider-img" />
           ))}
         </div>

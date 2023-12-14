@@ -4,10 +4,14 @@ import { Search } from '../Search/Search';
 
 type Props = {
   applyQuery: (arg: string) => void;
+  cartItemsLength: number;
+  favoritesItemsLength: number;
 };
 
 export const Header: React.FC<Props> = ({
   applyQuery,
+  cartItemsLength,
+  favoritesItemsLength,
 }) => {
   const currentPath = useLocation().pathname;
   const availableForSearch
@@ -47,13 +51,35 @@ export const Header: React.FC<Props> = ({
           )}
 
           <NavLink to="/favorites" className={setActiveClass}>
-            <img
-              src="img/icons/favourites.svg"
-              alt="favorites"
-            />
+            <div className="favorites-icon">
+              {favoritesItemsLength > 0 && (
+                <div className="favorites-icon__counter">
+                  <span className="favorites-icon__count">
+                    {favoritesItemsLength}
+                  </span>
+                </div>
+              )}
+              <img
+                src="img/icons/favourites.svg"
+                alt="favorites"
+                className="favorites-icon__img"
+              />
+            </div>
+
           </NavLink>
           <NavLink to="/cart" className={setActiveClass}>
-            <img src="img/icons/bag.svg" alt="bag" />
+            <div className="cart-icon">
+              {cartItemsLength > 0 && (
+                <div className="cart-icon__counter">
+                  <span className="cart-icon__count">{cartItemsLength}</span>
+                </div>
+              )}
+              <img
+                src="img/icons/bag.svg"
+                alt="bag"
+                className="cart-icon__img"
+              />
+            </div>
           </NavLink>
         </div>
       </nav>

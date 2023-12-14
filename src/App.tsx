@@ -65,6 +65,8 @@ const App = () => {
     <div className="App">
       <Header
         applyQuery={applyQuery}
+        cartItemsLength={cartItems.length}
+        favoritesItemsLength={favoritesItems.length}
       />
       <main className="main">
         <Outlet
