@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import './fonts/Mont-Bold.otf';
 import './fonts/Mont-Regular.otf';
 import './fonts/Mont-SemiBold.otf';
