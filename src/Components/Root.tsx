@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import App from '../App';
 import { HomePage } from './HomePage/HomePage';
 import { Favourites } from './Favourites/Favourites';
@@ -7,7 +8,6 @@ import { ProductProvider } from '../contexts/ProductContext';
 import { ProductDetails } from './ProductDetails/ProductDetails';
 import { CartPage } from './CartPage/CartPage';
 import { NotReadyPage } from './NotReadyPage/NotReadyPage';
-import { Provider } from 'react-redux';
 import { store } from '../app/store';
 
 export const Root = () => {
@@ -23,12 +23,12 @@ export const Root = () => {
                 <Route index element={<PhonesPage />} />
                 <Route path=":productId" element={<ProductDetails />} />
               </Route>
-              <Route index path='/tablets' element={<NotReadyPage />} />
-              <Route index path='/accessories' element={<NotReadyPage />} />
+              <Route index path="/tablets" element={<NotReadyPage />} />
+              <Route index path="/accessories" element={<NotReadyPage />} />
               <Route path="favourites">
                 <Route index element={<Favourites />} />
               </Route>
-              <Route path='bag' element={<CartPage />} />
+              <Route path="bag" element={<CartPage />} />
             </Route>
           </Routes>
         </ProductProvider>

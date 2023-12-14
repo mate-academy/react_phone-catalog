@@ -21,7 +21,7 @@ const App = () => {
         <Header />
 
         <ScrollToTop />
-        <body className='body'>
+        <body className="body">
           <Outlet />
         </body>
         <Footer />

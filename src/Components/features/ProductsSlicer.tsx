@@ -1,6 +1,6 @@
-import { getProducts } from "../../api/products";
-import { Product } from "../../types/product";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getProducts } from '../../api/products';
+import { Product } from '../../types/product';
 
 type ProductState = {
   products: Product[],
@@ -27,22 +27,22 @@ export const productsSlicer = createSlice({
       return {
         ...state,
         // loaded: true,
-      }
+      };
     }),
     builder.addCase(productsInit.fulfilled, (state, action) => {
       return {
         ...state,
         products: action.payload,
-      }
+      };
     });
     builder.addCase(productsInit.rejected, (state) => {
       return {
         ...state,
         // loaded: false,
         // hasError: 'Error',
-      }
+      };
     });
-  }
+  },
 });
 
 export default productsSlicer.reducer;

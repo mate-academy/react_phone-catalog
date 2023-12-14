@@ -13,16 +13,14 @@ export const ActionButtonsDetail: React.FC<Props> = ({ product }) => {
     favouriteProducts,
     setFavouriteProducts,
     cartProducts,
-    setCartProducts
+    setCartProducts,
   } = useContext(ProductContext);
 
   const isFavourite = favouriteProducts.some((favProduct) => favProduct.phoneId === product.phoneId);
 
-  const isCart = cartProducts.some((cartProduct) => cartProduct.phoneId === product.phoneId)
-
+  const isCart = cartProducts.some((cartProduct) => cartProduct.phoneId === product.phoneId);
 
   const handleAddFavourite = (product: Product) => {
-    // Если продукт уже в избранном, уберите его из списка избранных
     if (isFavourite) {
       console.log('Removing from favorites:', product);
       const updatedFavourites = favouriteProducts.filter((favProduct) => favProduct.phoneId !== product.phoneId);
@@ -31,7 +29,6 @@ export const ActionButtonsDetail: React.FC<Props> = ({ product }) => {
       localStorage.setItem('favouriteProducts', JSON.stringify(updatedFavourites));
       console.log('Updated favorites:', updatedFavourites);
     } else {
-      // В противном случае, добавьте продукт в избранное
       console.log('Adding to favorites:', product);
       const newFavourites = [...favouriteProducts, product];
 
@@ -57,10 +54,9 @@ export const ActionButtonsDetail: React.FC<Props> = ({ product }) => {
       localStorage.setItem('cartProducts', JSON.stringify(newCart));
       console.log('Updated cart:', newCart);
     }
-  }
+  };
 
   useEffect(() => {
-    // Извлечение избранных из localStorage при монтировании компонента
     const storedFavorites = localStorage.getItem('favouriteProducts');
 
     if (storedFavorites) {
@@ -80,7 +76,7 @@ export const ActionButtonsDetail: React.FC<Props> = ({ product }) => {
     <div className="product__button-container_detail">
       <button
         className={cn('product__button-add_detail',
-        { 'product__button-add_detail-active': isCart })}
+          { 'product__button-add_detail-active': isCart })}
         onClick={() => handleAddProduct(product)}
 
       >

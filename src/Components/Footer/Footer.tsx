@@ -33,9 +33,7 @@ export const Footer = () => {
             to=""
             className="footer__link-back"
             onClick={scrollToTop}
-          >
-
-          </NavLink>
+          />
         </div>
       </div>
     </footer>

@@ -22,15 +22,19 @@ export const Header = () => {
         {isFilterEnabled && <Search />}
         <div className="icon-favourites-container">
           <NavLink to="/favourites" className="icon icon-favourites" />
-          {favouriteProducts.length > 0 && <div className="icon icon-favourites-count">
-            {favouriteProducts.length}
-          </div>}
+          {favouriteProducts.length > 0 && (
+            <div className="icon icon-favourites-count">
+              {favouriteProducts.length}
+            </div>
+          )}
         </div>
-        <div className='icon-favourites-container'>
+        <div className="icon-favourites-container">
           <NavLink to="/bag" className="icon icon-bag" />
-          {cartProducts.length > 0 && <div className="icon icon-bag-count">
-            {cartProducts.length}
-          </div>}
+          {cartProducts.length > 0 && (
+            <div className="icon icon-bag-count">
+              {cartProducts.length}
+            </div>
+          )}
         </div>
       </div>
     </header>

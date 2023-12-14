@@ -13,13 +13,12 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
     favouriteProducts,
     setFavouriteProducts,
     cartProducts,
-    setCartProducts
+    setCartProducts,
   } = useContext(ProductContext);
 
   const isFavourite = favouriteProducts.some((favProduct) => favProduct.phoneId === product.phoneId);
 
-  const isCart = cartProducts.some((cartProduct) => cartProduct.phoneId === product.phoneId)
-
+  const isCart = cartProducts.some((cartProduct) => cartProduct.phoneId === product.phoneId);
 
   const handleAddFavourite = (product: Product) => {
     if (isFavourite) {
@@ -39,7 +38,6 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
     }
   };
 
-
   const handleAddProduct = (product: Product) => {
     if (isCart) {
       console.log('Removing from cart', product);
@@ -56,7 +54,7 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
       localStorage.setItem('cartProducts', JSON.stringify(newCart));
       console.log('Updated cart:', newCart);
     }
-  }
+  };
 
   useEffect(() => {
     const storedFavorites = localStorage.getItem('favouriteProducts');
@@ -78,7 +76,7 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
     <div className="product__button-container">
       <button
         className={cn('product__button-add',
-        { 'product__button-add-active': isCart })}
+          { 'product__button-add-active': isCart })}
         onClick={() => handleAddProduct(product)}
       >
         Add to card

@@ -54,7 +54,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
         cartProducts,
         setCartProducts,
         productPrice,
-        setProductPrice
+        setProductPrice,
       }}
     >
       {children}

@@ -1,14 +1,13 @@
 import './Slider.scss';
+import { useState } from 'react';
+import cn from 'classnames';
 import slideImage1 from '../../Images/slider/slide1.svg';
 import slideImage2 from '../../Images/slider/slide22.png';
 import slideImage3 from '../../Images/slider/slide33.png';
-import { useState } from 'react';
-import cn from 'classnames';
 
 const images = [slideImage1, slideImage2, slideImage3];
 
 export const Slider = () => {
-
   const itemWidth = 1040;
   const gap = 16;
 
@@ -19,7 +18,7 @@ export const Slider = () => {
       return position - (itemWidth + gap);
     });
 
-    setCurrentPage(prevCurrentPage => prevCurrentPage + 1)
+    setCurrentPage(prevCurrentPage => prevCurrentPage + 1);
   };
 
   const prevButton = () => {
@@ -27,8 +26,7 @@ export const Slider = () => {
       return position + (itemWidth + gap);
     });
 
-    setCurrentPage(prevCurrentPage => prevCurrentPage - 1)
-
+    setCurrentPage(prevCurrentPage => prevCurrentPage - 1);
   };
 
   const maxPosition = (itemWidth + gap) * 2;
@@ -41,10 +39,9 @@ export const Slider = () => {
   const handleClickPag = (index: number) => {
     setCurrentPage(index);
     setPosition(() => {
-      return -index * (itemWidth + gap)
-    })
-  }
-
+      return -index * (itemWidth + gap);
+    });
+  };
 
   return (
     <div>
@@ -74,11 +71,11 @@ export const Slider = () => {
           disabled={!canScrollNext}
         />
       </div>
-      <div className='pagination'>
+      <div className="pagination">
         {images.map((_, index) => (
           <button
             key={index}
-            className={cn('pagination__dot', {'pagination__dot_active' : currentPage === index})}
+            className={cn('pagination__dot', { pagination__dot_active: currentPage === index })}
             onClick={() => handleClickPag(index)}
           />
         ))}

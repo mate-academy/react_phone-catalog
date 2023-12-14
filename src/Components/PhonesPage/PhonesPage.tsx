@@ -3,8 +3,8 @@ import {
 } from 'react';
 // import { ProductContext } from '../../contexts/ProductContext';
 import './PhonesPage.scss';
-import { ProductCard } from '../ProductCard/ProductCard';
 import { useSearchParams } from 'react-router-dom';
+import { ProductCard } from '../ProductCard/ProductCard';
 import { getSearchWith } from '../../utils/searchHelper';
 import { Pagination } from './Pagination';
 import { Product } from '../../types/product';
@@ -21,8 +21,8 @@ export const PhonesPage = () => {
   const { products } = useAppSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(productsActions.productsInit())
-  }, [dispatch])
+    dispatch(productsActions.productsInit());
+  }, [dispatch]);
 
   const handlePageChange = (page: number) => {
     setSearchParams(getSearchWith(
@@ -62,7 +62,7 @@ export const PhonesPage = () => {
 
     switch (sortBy) {
       case 'No sorting':
-        return filteredProducts
+        return filteredProducts;
         break;
       case 'Newest':
         filteredProducts = filteredProducts.sort((a, b) => b.year - a.year);
@@ -123,67 +123,73 @@ export const PhonesPage = () => {
 
   return (
     <div className="phones">
-      {query && <div>
-        <h3 className='phones__subtitle'>{`${proccesedProducts.length} results`}</h3>
-        <div className='phones__list'>
-          {proccesedProducts.map((product) => (
-            <ProductCard product={product} key={product.id}/>
-          ))}
-        </div>
-        {!proccesedProducts.length &&
-        <h1 className='phones__title'>
-          there are no products matching your requests
-        </h1>}
-      </div>}
-
-      {!query && <div className='phones-container'>
-        <BackLink text="Phones" />
-        <h1 className="phones__title">Page with phones</h1>
-        <h3 className="phones__subtitle">{`${products.length} models`}</h3>
-        <div className="phones__main-container">
-          <div className="phones-container">
-            <h1 className="phones__subtitle phones__subtitle_little">Sort by</h1>
-            <select className="phones__select" value={sortProducts} onChange={handleSortChange}>
-              {sortBy.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
+      {query && (
+        <div>
+          <h3 className="phones__subtitle">{`${proccesedProducts.length} results`}</h3>
+          <div className="phones__list">
+            {proccesedProducts.map((product) => (
+              <ProductCard product={product} key={product.id} />
+            ))}
           </div>
-          <div className="phones-container">
-            <h1 className="phones__subtitle phones__subtitle_little">Items on page</h1>
-            <select className="phones__select" value={perPage} onChange={handleValueChange}>
-              {options.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.text}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <ul className="phones__list">
-          {perPage === options[0].value
-            ? proccesedProducts.map((product) => (
-              <li className="phones__item" key={product.id}>
-                <ProductCard product={product} />
-              </li>
-          ))
-            : filteredProducts.map((product) => (
-              <li className="phones__item" key={product.id}>
-                <ProductCard product={product} />
-              </li>
-          ))}
-        </ul>
-        {perPage !== options[0].value && (
-          <Pagination
-            total={total}
-            perPage={perPage}
-            currentPage={currentPage}
-            onPageChange={handlePageChange}
-          />
+          {!proccesedProducts.length
+        && (
+          <h1 className="phones__title">
+            there are no products matching your requests
+          </h1>
         )}
-      </div>}
+        </div>
+      )}
+
+      {!query && (
+        <div className="phones-container">
+          <BackLink text="Phones" />
+          <h1 className="phones__title">Page with phones</h1>
+          <h3 className="phones__subtitle">{`${products.length} models`}</h3>
+          <div className="phones__main-container">
+            <div className="phones-container">
+              <h1 className="phones__subtitle phones__subtitle_little">Sort by</h1>
+              <select className="phones__select" value={sortProducts} onChange={handleSortChange}>
+                {sortBy.map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="phones-container">
+              <h1 className="phones__subtitle phones__subtitle_little">Items on page</h1>
+              <select className="phones__select" value={perPage} onChange={handleValueChange}>
+                {options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.text}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <ul className="phones__list">
+            {perPage === options[0].value
+              ? proccesedProducts.map((product) => (
+                <li className="phones__item" key={product.id}>
+                  <ProductCard product={product} />
+                </li>
+              ))
+              : filteredProducts.map((product) => (
+                <li className="phones__item" key={product.id}>
+                  <ProductCard product={product} />
+                </li>
+              ))}
+          </ul>
+          {perPage !== options[0].value && (
+            <Pagination
+              total={total}
+              perPage={perPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,5 +1,10 @@
-import React, { useEffect, useState, useContext, useMemo } from 'react';
-import { Link, NavLink, useLocation, useParams } from 'react-router-dom';
+import React, {
+  useEffect, useState, useContext, useMemo,
+} from 'react';
+import {
+  Link, NavLink, useLocation, useParams,
+} from 'react-router-dom';
+import cn from 'classnames';
 import { getProductDetails, getSuggestedProducts } from '../../api/products';
 import { ProductDetailsType } from '../../types/productDetailsType';
 import { BackLink } from '../BackLink/BackLink';
@@ -9,14 +14,12 @@ import { ProductList } from '../ProductCard/ProductList';
 import { Product } from '../../types/product';
 import { ProductContext } from '../../contexts/ProductContext';
 import { ActionButtonsDetail } from '../AddFavourite/ActionButtonsDetail';
-import cn from 'classnames';
 import { Color, Colors } from './colors';
-
 
 export const ProductDetails = () => {
   const location = useLocation();
-  const {products} = useContext(ProductContext);
-  const {productId} = useParams();
+  const { products } = useContext(ProductContext);
+  const { productId } = useParams();
   const [productDetails, setProductDetails] = useState<ProductDetailsType>();
   const [selectedImage, setSelectedImage] = useState<string>();
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
@@ -25,11 +28,11 @@ export const ProductDetails = () => {
 
   const handleSelectColor = (color: string) => {
     setSelectedColor(color);
-  }
+  };
 
   const handleSelectCapacity = (capacity: string) => {
     setSelectedCapacity(capacity);
-  }
+  };
 
   const handleModalOpen = (image: string) => {
     setSelectedImage(image);
@@ -42,7 +45,6 @@ export const ProductDetails = () => {
   const currentProduct: Product = useMemo(() => {
     return products.find(product => product.itemId === productId) as Product || {} as Product;
   }, [productId, products]);
-
 
   useEffect(() => {
     if (productId) {
@@ -78,8 +80,8 @@ export const ProductDetails = () => {
               <div className="product-details-images">
                 {productDetails.images.map((image) => (
                   <img
-                    className={cn("product-details-image",
-                    {"product-details-image-active": image === selectedImage})}
+                    className={cn('product-details-image',
+                      { 'product-details-image-active': image === selectedImage })}
                     key={image}
                     src={`${BASE_URL}/${image}`}
                     alt="Product"
@@ -96,15 +98,15 @@ export const ProductDetails = () => {
             className="product-details-color-container"
           >
             <h1 className="product-details__subtitle">Available colors</h1>
-            <div className='product-details__color-container'>
+            <div className="product-details__color-container">
               {productDetails?.colorsAvailable.map((color) => (
                 <NavLink
-                  to={{pathname: location.pathname.replace(productDetails.color, color)}}
+                  to={{ pathname: location.pathname.replace(productDetails.color, color) }}
                   key={color}
                 >
                   <span
                     className={cn('product-details__color-circle', {
-                      'product-details__color-circle-active': color === selectedColor
+                      'product-details__color-circle-active': color === selectedColor,
                     })}
                     style={{ backgroundColor: Colors[color as Color] }}
                     onClick={() => handleSelectColor(color)}
@@ -115,24 +117,24 @@ export const ProductDetails = () => {
           </div>
           <div
             // className='product-details-color-container'
-            className='product-details-capacity-container'
+            className="product-details-capacity-container"
           >
             <h1 className="product-details__subtitle">
               Select capacity
             </h1>
-            <div className='product-details__capacity-container'>
+            <div className="product-details__capacity-container">
               {productDetails?.capacityAvailable.map((capacity) => (
                 <NavLink
                   // to={{pathname: location.pathname.replace(productDetails.capacity, capacity)}}
                   to={{
                     pathname: location.pathname.replace(
                       new RegExp(`${productDetails?.capacity}$`),
-                      capacity
+                      capacity,
                     ),
                   }}
                   key={capacity}
                   className={cn('product-details__capacity', {
-                    'product-details__capacity-active': capacity === selectedCapacity
+                    'product-details__capacity-active': capacity === selectedCapacity,
                   })}
                   onClick={() => handleSelectCapacity(capacity)}
                 >
@@ -143,12 +145,12 @@ export const ProductDetails = () => {
               ))}
             </div>
           </div>
-          <div className='product-details__price-container'>
-            <h1 className='product-details__price'>{`$${productDetails?.priceDiscount}`}</h1>
-            <h1 className='product-details__price-regular'>{`$${productDetails?.priceRegular}`}</h1>
+          <div className="product-details__price-container">
+            <h1 className="product-details__price">{`$${productDetails?.priceDiscount}`}</h1>
+            <h1 className="product-details__price-regular">{`$${productDetails?.priceRegular}`}</h1>
           </div>
-          <ActionButtonsDetail product={currentProduct}/>
-          <div className='product-details__specs-container'>
+          <ActionButtonsDetail product={currentProduct} />
+          <div className="product-details__specs-container">
             <div className="product-details__characteristic-container">
               <h2 className="product-details__characteristic_small">Screen</h2>
               <h2 className="product-details__value_small">

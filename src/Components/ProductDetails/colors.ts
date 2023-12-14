@@ -11,7 +11,7 @@ type Colors = {
   red: string,
   spacegray: string,
   coral: string,
-}
+};
 
 export type Color = keyof typeof Colors;
 

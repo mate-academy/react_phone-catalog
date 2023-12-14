@@ -8,7 +8,7 @@ export const Favourites = () => {
   const { favouriteProducts, setFavouriteProducts } = useContext(ProductContext);
 
   useEffect(() => {
-    console.log('UseEffect favourites works')
+    console.log('UseEffect favourites works');
     // Извлечение избранных из localStorage при монтировании компонента
     const storedFavorites = localStorage.getItem('favouriteProducts');
 
