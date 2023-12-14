@@ -9,7 +9,6 @@ export const Favourites = () => {
 
   useEffect(() => {
     console.log('UseEffect favourites works');
-    // Извлечение избранных из localStorage при монтировании компонента
     const storedFavorites = localStorage.getItem('favouriteProducts');
 
     if (storedFavorites) {
