@@ -106,7 +106,7 @@
   }
 
   &__count {
-    position: relative;
+    position: absolute;
     display: flex;
     height: 14px;
     width: 14px;
@@ -114,8 +114,9 @@
     background-color: $red;
     justify-content: center;
     align-items: center;
-    top: 20%;
-    right: 17%;
+    top: calc(50% - 13px);
+    left: calc(50% + 13px);
+    transform: translate(-50%, -50%);
   }
 
   &__count-text {

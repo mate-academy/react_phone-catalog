@@ -2,9 +2,6 @@
 
 .category {
   display: block;
-  padding: 20px;
-  margin: 0 auto;
-  transition: transform 300ms;
 
   @include onTablet {
     display: flex;
@@ -13,8 +10,14 @@
     padding: 20px 0 0;
   }
 
+  &__content {
+    width: 100%;
+    max-width: 1100px;
+  }
+
   &__title {
     text-align: center;
+    padding: 0 0 20px;
 
     @include onTablet {
       text-align: left;
@@ -26,15 +29,17 @@
     width: 272px;
     height: max-content;
     margin: 0 auto 50px;
-    &:hover {
-    	opacity: 0.5;
-      filter: alpha(opacity=50);
+    transition-duration: 0.3s;
+
+    & :hover {
+      opacity: 0.9;
+      transform: scale(95%);
     }
 
     @include onTablet {
       display: flex;
-      width: 33%;
       height: max-content;
+      flex: 33%;
       gap: 16px;
       margin: 0 auto 20px;
     }
@@ -91,6 +96,4 @@
     font-weight: 500;
     color: rgba(137, 147, 154, 1);
   }
-
 }
-

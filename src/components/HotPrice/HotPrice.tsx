@@ -15,64 +15,58 @@ export const HotPrice = () => {
 
   return (
     <section className="hot">
-      <div className="hot__container">
-        <h2 className="hot__title"> Hot prices </h2>
-        <div className="hot__button">
-          <button
-            type="button"
-            aria-label="Mute volume"
-            className="hot__button hot__button--left"
-          />
-          <button
-            type="button"
-            aria-label="Mute volume"
-            className="hot__button hot__button--right"
-          />
+      <div className="container">
+        <div className="hot__container">
+          <h2 className="hot__title"> Hot prices </h2>
+          <div className="hot__button">
+            <button
+              type="button"
+              aria-label="Mute volume"
+              className="hot__button hot__button--left"
+            />
+            <button
+              type="button"
+              aria-label="Mute volume"
+              className="hot__button hot__button--right"
+            />
+          </div>
+        </div>
+        <div
+          className="product"
+        >
+          <Swiper
+            data-cy="cardsContainer"
+            navigation={{
+              nextEl: '.hot__button--right',
+              prevEl: '.hot__button--left',
+            }}
+            slidesPerView={1}
+            spaceBetween={6}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              900: {
+                slidesPerView: 3,
+              },
+              1280: {
+                slidesPerView: 4,
+              },
+            }}
+            modules={[EffectFade, Navigation, Pagination]}
+            className="hot__swiper"
+          >
+            {hotPricePhones.map(phone => (
+              <SwiperSlide
+                className="swiper-slider"
+                key={phone.id}
+              >
+                <ProductCard phone={phone} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
-
-      <div
-        className="product"
-      >
-        <Swiper
-          data-cy="cardsContainer"
-          navigation={{
-            nextEl: '.hot__button--right',
-            prevEl: '.hot__button--left',
-          }}
-          spaceBetween={20}
-          slidesPerView={1}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-            },
-            900: {
-              slidesPerView: 3,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 5,
-            },
-          }}
-          modules={[EffectFade, Navigation, Pagination]}
-          className="swiper"
-        >
-          {hotPricePhones.map(phone => (
-            <SwiperSlide
-              className="swiper-slider"
-              key={phone.id}
-            >
-              <ProductCard phone={phone} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* {!isLoading && isError && (
-        <p>
-          Something went wrong
-        </p>
-      )} */}
     </section>
   );
 };

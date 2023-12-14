@@ -1,21 +1,18 @@
 @import "../style/main.scss";
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 0;
   background-color: rgba(255, 255, 255, 1);
-  height: 64px;
-  padding: 0 10px;
   border-bottom: 1px solid rgba(226, 230, 233, 1);
   margin: 0 0 40px;
+  height: 64px;
 
-  @include onTablet {
-    padding: 0 30px;
-  }
-
-  @include onDesktop {
-    padding: 0 80px;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 64px;
   }
 
   &__logo {
@@ -54,16 +51,21 @@
       justify-content: space-between;
       gap: 18px;
     }
+
+    @include onDesktop {
+      gap: 64px;
+    }
   }
 
   &__link {
-    padding: 27px 2px 18px;
+
     height: 100%;
     color: rgba(137, 147, 154, 1);
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 11px;
+    padding: 27px  0 24px;
     letter-spacing: 0.48px;
     text-decoration: none;
     list-style: none;
@@ -117,6 +119,7 @@
   }
 
   &__bag {
+    display: block;
     width: 64px;
     height: 64px;
     box-shadow: 1px 0 0 0 $gray-elements;
@@ -134,12 +137,13 @@
 
 .icon {
   display: block;
-  margin: 18px 0 0;
+  margin: 18px;
   width: 32px;
   height: 32px;
-  object-fit: fill;
+  object-fit: cover;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 
   &__menu {
     // box-shadow: -1px 0 0 0 $gray-elements ;
@@ -159,5 +163,19 @@
     @include onTablet {
       display: none;
     }
+  }
+}
+
+.headercontainer {
+  padding: 0 10px 50px;
+  max-width: 1440px;
+
+  @include onTablet {
+    padding: 0 0 60px;
+  }
+
+  @include onDesktop {
+    padding: 0;
+    margin: 0 auto;
   }
 }

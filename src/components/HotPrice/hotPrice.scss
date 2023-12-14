@@ -1,20 +1,29 @@
+@import "../style/main.scss";
+
 .swiper {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  &-slide {
-    display: flex;
-    justify-content: space-between;
-  }
 
-  &:last-child {
-    margin-right: 0;
+  &__hot {
+    height: 100%;
+
+    @include onDesktop {
+      width: 1136px;
+
+      &:nth-child(4n) {
+        margin-right: 0 !important;
+      }
+    }
+
+
   }
 }
 
 .hot {
   display: block;
+  width: 100%;
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -58,7 +67,7 @@
     &--right {
       height: 32px;
       width: 32px;
-      margin-right: 8px;
+      margin-right: 20px;
       background-image: url(../../img/icon/ArrowRight.png);
 
       &:hover {

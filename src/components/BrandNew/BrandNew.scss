@@ -3,6 +3,10 @@
 .brand {
   display: block;
 
+  @include onDesktop {
+    max-width: 1136px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -51,8 +55,8 @@
 
     &--right {
       background-image: url(../../img/icon/ArrowRight.png);
-      margin-right: 8px;
-      
+      margin-right: 20px;
+
       &:hover {
         border: 1px solid $gray-primary;
       }
@@ -72,9 +76,9 @@
     width: 100%;
   }
 
-  @include onDesktop {
-    margin: 0;
-  }
+  // @include onDesktop {
+  //   margin: 0 ;
+  // }
 }
 
 .swiper-horizontal,

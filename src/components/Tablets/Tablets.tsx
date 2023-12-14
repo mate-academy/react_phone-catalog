@@ -23,27 +23,29 @@ export const Tablets = () => {
   return (
     <main>
       <section>
-        {isLoading && (
-          <Loader />
-        )}
+        <div className="container">
+          {isLoading && (
+            <Loader />
+          )}
 
-        {!isLoading && tablets2.length === 0 && (
-          <div className="tablets__container">
-            <HomeIcon title="Tablets" />
+          {!isLoading && tablets2.length === 0 && (
+            <div className="tablets__container">
+              <HomeIcon title="Tablets" />
+              <h2>Tablets</h2>
+              <p>Tablets are not available yet </p>
+            </div>
+
+          )}
+
+          {tablets2.length !== 0 && (
             <h2>Tablets</h2>
-            <p>Tablets are not available yet </p>
-          </div>
-
-        )}
-
-        {tablets2.length !== 0 && (
-          <h2>Tablets</h2>
-        )}
-        {!isLoading && isError && (
-          <p data-cy="peopleLoadingError" className="has-text-danger">
-            Something went wrong
-          </p>
-        )}
+          )}
+          {!isLoading && isError && (
+            <p data-cy="peopleLoadingError" className="has-text-danger">
+              Something went wrong
+            </p>
+          )}
+        </div>
       </section>
     </main>
   );

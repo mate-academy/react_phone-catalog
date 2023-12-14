@@ -16,63 +16,65 @@ export const BrandNew = () => {
 
   return (
     <section className="hot">
-      <div className="brand__container">
-        <div><h2 className="brand__title"> Brand new models </h2></div>
-        <div className="brand__button">
-          <button
-            type="button"
-            aria-label="Mute volume"
-            className="hot__button brand__button--left"
-          />
-          <button
-            type="button"
-            aria-label="Mute volume"
-            className="hot__button brand__button--right"
-          />
+      <div className="container">
+        <div className="brand__container">
+          <div><h2 className="brand__title"> Brand new models </h2></div>
+          <div className="brand__button">
+            <button
+              type="button"
+              aria-label="Mute volume"
+              className="hot__button brand__button--left"
+            />
+            <button
+              type="button"
+              aria-label="Mute volume"
+              className="hot__button brand__button--right"
+            />
+          </div>
         </div>
-      </div>
 
-      <div
-        className="product"
-      >
-        <Swiper
-          navigation={{
-            nextEl: '.brand__button--right',
-            prevEl: '.brand__button--left',
-          }}
-          spaceBetween={40}
-          slidesPerView={1}
-          breakpoints={{
-            640: {
-              slidesPerView: 2,
-            },
-            900: {
-              slidesPerView: 3,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 5,
-            },
-          }}
-          modules={[EffectFade, Navigation, Pagination]}
-          className="swiper"
+        <div
+          className="product"
         >
-          {brandNew.map(phone => (
-            <SwiperSlide
-              className="swiper-slider"
-              key={phone.id}
-            >
-              <ProductCard phone={phone} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+          <Swiper
+            navigation={{
+              nextEl: '.brand__button--right',
+              prevEl: '.brand__button--left',
+            }}
+            spaceBetween={40}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              900: {
+                slidesPerView: 3,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 5,
+              },
+            }}
+            modules={[EffectFade, Navigation, Pagination]}
+            className="swiper"
+          >
+            {brandNew.map(phone => (
+              <SwiperSlide
+                className="swiper-slider"
+                key={phone.id}
+              >
+                <ProductCard phone={phone} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      {!isLoading && isError && (
-        <p>
-          Something went wrong
-        </p>
-      )}
+        {!isLoading && isError && (
+          <p>
+            Something went wrong
+          </p>
+        )}
+      </div>
     </section>
   );
 };

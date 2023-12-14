@@ -6,19 +6,21 @@ export const CardBuy = () => {
   return (
     <main>
       <section>
-        <button
-          type="button"
-          className="back"
-          data-cy="backButton"
-          onClick={handleGoBack}
-        >
-          back
-        </button>
+        <div className="container">
+          <button
+            type="button"
+            className="back"
+            data-cy="backButton"
+            onClick={handleGoBack}
+          >
+            back
+          </button>
 
-        <div>
-          Apologies for the inconvenience, but this page
-          <br />
-          are not available yet!
+          <div>
+            Apologies for the inconvenience, but this page
+            <br />
+            are not available yet!
+          </div>
         </div>
 
       </section>

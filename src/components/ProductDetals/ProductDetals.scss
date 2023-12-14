@@ -5,9 +5,9 @@
     display: block;
     padding: 0 0 40px;
 
-    @include onTablet {
+    @include onDesktop {
       display: flex;
-      flex: 50%;
+      width: 100%;
     }
   }
 
@@ -40,7 +40,7 @@
   &__about {
     display: block;
 
-    @include onTablet {
+    @include onDesktop {
       padding: 8px 64px 32px 0;
       width: 50%;
     }
@@ -48,9 +48,13 @@
 
   &__about-title {
     color: $gray-primary;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     line-height: 140%;
+
+    @include onTablet {
+      font-size: 32px;
+    }
   }
 
   &__description {
@@ -150,8 +154,6 @@
 
   &__main {
     margin: 0 16px;
-
-    width: 320px;
     height: 320px;
     background: $gray-white;
 
@@ -188,8 +190,15 @@
 
 .params {
   max-width: 320px;
-  @include onDesktop {
-    width: 420px;
+
+
+  &__container {
+    max-width: 320px;
+    margin: 0 auto;
+
+    @include onDesktop {
+      width: 420px;
+    }
   }
 
   &__color {

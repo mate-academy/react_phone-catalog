@@ -27,11 +27,15 @@ h3 {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   color: #313237;
-  font-size: 32px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.32px;
+
+  @include onTablet {
+    font-size: 32px;
+  }
 }
 
 p {
@@ -43,16 +47,17 @@ p {
   line-height: normal;
 }
 
-section {
-  padding: 0 10px;
-  margin: 0 0 80px;
+.container {
+  padding: 0 16px 50px;
+  max-width: 1400px;
 
   @include onTablet {
-    padding: 0 20px;
+    padding: 0 20px 60px;
   }
 
+
   @include onDesktop {
-    padding: 0 152px;
-    margin: 0 0 80px;
+    padding: 0 152px 70px;
+    margin: 0 auto;
   }
 }
