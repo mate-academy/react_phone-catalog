@@ -1,0 +1,130 @@
+.card {
+  width: 272px;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid #e2e6e9;
+
+  &:hover {
+    border: 1px solid #313237;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    width: 224px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    height: 42px;
+    margin-bottom: 6px;
+
+    &-title {
+      text-decoration: none;
+      color: #313237;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__line {
+    width: 224px;
+    height: 1px;
+    background: #e2e6e9;
+  }
+
+  &__prices {
+    margin-bottom: 6px;
+  }
+
+  &__price {
+    &--old {
+      margin-left: 8px;
+      font-family: Mont-Regular, sans-serif;
+      line-height: 28px;
+      text-decoration: line-through;
+      color: #89939a;
+    }
+  }
+
+  &__features {
+    margin: 16px 0;
+  }
+
+  &__feature {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-name {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: #89939a;
+    }
+
+    &-value {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-transform: uppercase;
+      color: #313237;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 176px;
+    height: 40px;
+    flex-shrink: 0;
+    background: #313237;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &-name {
+      color: #fff;
+      text-align: center;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  &__fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background: #fff;
+    border: 1px solid #e2e6e9;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1136px;
+  height: 96px;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+    &-git {
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 11px; /* 91.667% */
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      color: #89939a;
+
+      &:hover {
+        color: #313237 ;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      background: #fff;
+
+      cursor: pointer;
+  
+      &::after {
+        content: "Back to top";
+        position: absolute;
+        right: 100%;
+        display: block;
+        width: max-content;
+        margin-right: 16px;
+        align-items: center;
+        color: #b4bdc3;
+        transition: color 0.3s;
+      }
+
+      &:hover {
+        border: 1px solid #313237;
+      }
+
+      &:hover::after {
+        color: #313237;
+      }
+    }
+  }
+
+}
