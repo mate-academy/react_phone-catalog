@@ -1,0 +1,54 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.products-slider {
+  &_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_title {
+    letter-spacing: -0.32px;
+    color: $primary-color;
+  }
+
+  &_btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  &_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+
+    &--disabled {
+      border: 1px solid #e2e6e9;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &_body {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_container {
+    @include productSliderGrid;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+
+  &_list {
+    display: flex;
+    gap: 16px;
+    transition: transform 2000ms ease-in-out;
+    transform: translateX(-5472px);
+  }
+}

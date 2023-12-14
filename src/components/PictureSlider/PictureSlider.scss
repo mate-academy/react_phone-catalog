@@ -1,0 +1,61 @@
+@import "../../utils/variables.scss";
+
+.slider-container {
+  display: flex;
+}
+
+.slider-btn {
+  width: 32px;
+  height: 400px;
+}
+
+.images {
+  &-container {
+    margin: 0 16px;
+    width: 1040px;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  &_list {
+    display: flex;
+  }
+
+  &_item {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dot {
+  background-color: #e2e6e9;
+  height: 4px;
+  width: 14px;
+  transition: background-color 1000ms ease-in-out;
+
+  &--active {
+    background-color: $primary-color;
+  }
+}
+
+.dots {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.dot-container {
+  padding: 10px 5px;
+}
+
+.picture-slider {
+  margin-top: 40px;
+}

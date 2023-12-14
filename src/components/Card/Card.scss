@@ -1,0 +1,94 @@
+@import "../../utils/variables.scss";
+
+.product-card {
+  padding: 32px 24px 24px;
+  width: 272px;
+  border: 1px solid #e2e6e9;
+  transition: border-color 400ms ease-in-out;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &_img-container {
+    width: 208px;
+    height: 208px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &_title {
+    height: 42px;
+    display: block;
+    color: $primary-color;
+    line-height: 21px;
+    margin-top: 24px;
+  }
+
+  &_price {
+    display: flex;
+    align-items: center;
+    margin-top: 6.5px;
+
+    &_new {
+      color: $primary-color;
+      line-height: 30.8px;
+      margin-right: 8px;
+    }
+
+    &_old {
+      font-family: Mont_regular, sans-serif;
+      color: $secondary-color;
+      font-size: 22px;
+      line-height: 28.12px;
+    }
+  }
+
+  &_specs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    &-box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      line-height: 15px;
+      color: $secondary-color;
+    }
+
+    &-details {
+      line-height: 15px;
+      color: $primary-color;
+    }
+  }
+
+  &_btns {
+    display: flex;
+    align-content: stretch;
+  }
+}
+
+.btn_container {
+  background-color: $primary-color;
+  margin-right: 8px;
+}
+
+.btn-add-to-cart {
+  height: 40px;
+  width: 176px;
+}
+
+.btn-add-to-fav {
+  width: 40px;
+}
+
+.breaking-line {
+  margin-top: 8px;
+  background-color: #e2e6e9;
+  height: 1px;
+}

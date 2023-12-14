@@ -1,0 +1,6 @@
+@import "../../utils/mixins.scss";
+
+.page-products {
+  row-gap: 16px;
+  @include productSliderGrid;
+}
