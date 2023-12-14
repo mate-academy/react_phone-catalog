@@ -18,13 +18,13 @@
   &__logo {
     height: 56px;
     width: 56px;
-    padding: 0 10px 0 0;
+    padding: 0 10px 10px 0;
     background-image: url(../Header/imgHeader/Logo.png);
     background-repeat: no-repeat;
     background-position: center;
 
     @include onTablet {
-      padding: 0;
+      padding: 0 20px 0 0;
     }
 
     @include onDesktop {
