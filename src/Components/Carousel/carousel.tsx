@@ -60,7 +60,7 @@ export const Carousel = () => {
           tabIndex={0}
           aria-label="Previous"
         >
-          <img className="chevron" src="img/Chevron-left.svg" alt="Previous" />
+          <img className="chevron" src="/react_phone-catalog/img/Chevron-left.svg" alt="Previous" />
 
         </div>
         <div className="slider-container">
@@ -84,7 +84,7 @@ export const Carousel = () => {
           tabIndex={0}
           aria-label="Next"
         >
-          <img className="chevron" src="img/Chevron-right.svg" alt="Next" />
+          <img className="chevron" src="/react_phone-catalog/img/Chevron-right.svg" alt="Next" />
         </div>
       </div>
       <div

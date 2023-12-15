@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
   return (
     <header className="header">
       <NavLink to="/">
-        <img src="img/Logo.svg" alt="Logo" className="logo__image" />
+        <img src="/react_phone-catalog/img/Logo.svg" alt="Logo" className="logo__image" />
       </NavLink>
       <nav className="nav">
         <ul>
@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
           <li>
             <div className={`rectangle ${location.pathname.includes('/cart') ? 'activeLink' : ''}`}>
               <NavLink to="/cart" className="a">
-                <img src="img/Group.svg" alt="Logo" className="" />
+                <img src="/react_phone-catalog/img/Group.svg" alt="Logo" className="" />
                 {cartProducts.length > 0 && (
                   <div className="cart-count">{cartProducts.length}</div>
                 )}
@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
           <li>
             <div className={`rectangle ${location.pathname.includes('/favourites') ? 'activeLink' : ''}`}>
               <NavLink to="/favourites">
-                <img src="img/Favourites.svg" alt="Logo" className="" />
+                <img src="/react_phone-catalog/img/Favourites.svg" alt="Logo" className="" />
                 {favoriteProducts.length > 0 && (
                   <div className="favorite-count">
                     {favoriteProducts.length}

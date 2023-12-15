@@ -165,9 +165,9 @@ const Phones: React.FC = () => {
     <>
       <div className="folder-holder">
         <button type="button" className="home-button">
-          <img src="img/Home.svg" alt="Home" />
+          <img src="/react_phone-catalog/img/Home.svg" alt="Home" />
         </button>
-        <img src="img/Chevron-right.svg" alt="Chevron" />
+        <img src="/react_phone-catalog/img/Chevron-right.svg" alt="Chevron" />
         <p className="page-name">Phones</p>
       </div>
       <h3 className="page-title">Mobile phones</h3>

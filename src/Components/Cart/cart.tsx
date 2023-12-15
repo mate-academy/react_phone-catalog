@@ -51,7 +51,7 @@ const Cart: React.FC = () => {
       <div className="product-div">
         <div className="page-back__holder">
           <img
-            src="img/Chevron-left.svg"
+            src="/react_phone-catalog/img/Chevron-left.svg"
             alt="Chevron"
             className="folder-chevron"
           />
