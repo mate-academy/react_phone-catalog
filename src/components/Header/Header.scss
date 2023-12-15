@@ -3,9 +3,6 @@
 
 .header {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-left: 24px;
   background: $white-color;
   box-shadow: 0 2px 4px $grey-third-color;
@@ -29,25 +26,14 @@
     }
   }
   
-  &__icon-search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 327px;
-    height: 64px;
+  &__favorites {
+    background-image: url("../../Images/Icons/FavouritesHeartLike.svg");
+    @extend .header-icons;
   }
 
-  &__favorites {
-    display: block;
-    box-sizing: border-box;
-    position: relative;
-    width: 64px;
-    height: 64px;
-    background-image: url("../../Images/Icons/FavouritesHeartLike.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    box-shadow: -1px 0 0 $grey-third-color;
-    cursor: pointer;
+  &__shopping-cart {
+    background-image: url("../../Images/Icons/ShoppingCart.svg");
+    @extend .header-icons;
   }
 }
 
@@ -55,6 +41,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &__flex-start {
+    display: flex;
+    align-items: center;
+  }
+
+  &__flex-end {
+    display: flex;
+  }
 }
 
 .nav {
@@ -88,6 +83,10 @@
     position: relative;
     transition: color 0.5s;
 
+    &--last {
+      margin-left: 0;
+    }
+
     &:not(.nav__active)::after {
       @extend .line;
       transform: scaleX(0);
@@ -100,7 +99,6 @@
         @extend .line;
         transform: scaleX(1);
       }
-      
     }
   }
 

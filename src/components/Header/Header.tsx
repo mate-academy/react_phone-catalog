@@ -16,71 +16,90 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <Link
-          to="/"
-          className="header__logo"
-        />
+        <div className="container__flex-start">
+          <Link
+            to="/"
+            className="header__logo"
+          />
 
-        <nav className="nav">
-          <ul className="nav__list">
-            <li className="nav__item">
-              <NavLink
-                to="/"
-                className={isActiveTab}
-              >
-                Home
-              </NavLink>
-            </li>
+          <nav className="nav">
+            <ul className="nav__list">
+              <li className="nav__item">
+                <NavLink
+                  to="/"
+                  className={isActiveTab}
+                >
+                  Home
+                </NavLink>
+              </li>
 
-            <li className="nav__item">
-              <NavLink
-                to="/phones"
-                className={isActiveTab}
-              >
-                Phones
-              </NavLink>
-            </li>
+              <li className="nav__item">
+                <NavLink
+                  to="/phones"
+                  className={isActiveTab}
+                >
+                  Phones
+                </NavLink>
+              </li>
 
-            <li className="nav__item">
-              <NavLink
-                to="/tablets"
-                className={isActiveTab}
-              >
-                Tablets
-              </NavLink>
-            </li>
+              <li className="nav__item">
+                <NavLink
+                  to="/tablets"
+                  className={isActiveTab}
+                >
+                  Tablets
+                </NavLink>
+              </li>
 
-            <li className="nav__item">
-              <NavLink
-                to="/accessories"
-                className={isActiveTab}
-              >
-                Accessories
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+              <li className="nav__item">
+                <NavLink
+                  to="/accessories"
+                  className={isActiveTab}
+                >
+                  Accessories
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
 
-        {!isPathnameHome && (
-          <div className="header__icon-search">
+        <div className="container__flex-end">
+          {!isPathnameHome && (
             <Search />
-          </div>
-        )}
-
-        <NavLink
-          to="favorites"
-          className={({ isActive }: { isActive: boolean }) => classNames(
-            'header__favorites',
-            'nav__link',
-            { nav__active: isActive },
           )}
-        >
-          {/* {favourites.length > 0 && (
-            <div className="header__icon-count">
-              {favourites.length}
-            </div>
-          )} */}
-        </NavLink>
+
+          <NavLink
+            to="favorites"
+            className={({ isActive }: { isActive: boolean }) => classNames(
+              'header__favorites',
+              'nav__link',
+              'nav__link--last',
+              { nav__active: isActive },
+            )}
+          >
+            {/* {favourites.length > 0 && (
+              <div className="header__icon-count">
+                {favourites.length}
+              </div>
+            )} */}
+          </NavLink>
+
+          <NavLink
+            className={({ isActive }: { isActive: boolean }) => classNames(
+              'header__shopping-cart',
+              'nav__link',
+              'nav__link--last',
+              { nav__active: isActive },
+            )}
+            to="cart"
+          >
+            {/* {cart.length > 0 && (
+              <div className="header__icon-count">
+                {cart.length}
+              </div>
+            )} */}
+          </NavLink>
+        </div>
 
       </div>
     </header>

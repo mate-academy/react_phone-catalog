@@ -14,7 +14,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 24px;
   }
 
   &__input {
@@ -29,5 +28,13 @@
     &:focus {
       outline: none;
     }
+  }
+
+  &__img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: $white-color;
   }
 }

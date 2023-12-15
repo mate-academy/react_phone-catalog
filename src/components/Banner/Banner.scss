@@ -1,0 +1,89 @@
+@import "../../helpers/variables.scss";
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+
+  &--margin {
+    margin-top: 40px;
+    margin-bottom: 104px;
+  }
+
+  &__caroucel {
+    display: flex;
+    height: 100%;
+    max-width: 1040px;
+    overflow: hidden;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 32px;
+    border: 1px solid $border-color;
+    background-color: #fff;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $grey-primery-color;
+    }
+  
+    &--left {
+      margin-right: 16px;
+      background-image: url(../../Images/Icons/ArrowLeft.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  
+    &--right {
+      margin-left: 16px;
+      background-image: url(../../Images/Icons/ArrowRight.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__img {
+    height: 400px;
+    object-fit: cover;
+  }
+
+  &__indicators {
+    position: absolute;
+    left: 48%;
+    top: 512px;
+
+  }
+
+  &__indicator {
+    width: 14px;
+    height: 4px;
+    margin-right: 12px;
+
+    transition: all 0.5s;
+
+    background-color: $grey-third-color;
+
+    &:hover {
+      background-color: $grey-fourth-color;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      background-color: $grey-primery-color;
+    }
+  }
+}
