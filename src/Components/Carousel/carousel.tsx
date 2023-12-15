@@ -60,7 +60,7 @@ export const Carousel = () => {
           tabIndex={0}
           aria-label="Previous"
         >
-          <img className="chevron" src="/img/Chevron-left.svg" alt="Previous" />
+          <img className="chevron" src="img/Chevron-left.svg" alt="Previous" />
 
         </div>
         <div className="slider-container">

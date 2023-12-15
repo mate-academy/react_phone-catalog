@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-section1">
           <a href="#home">
-            <img src="/img/Logo.svg" alt="Logo" className="logo__image" />
+            <img src="img/Logo.svg" alt="Logo" className="logo__image" />
           </a>
         </div>
         <div className="footer-section2">
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="footer-section3">
           <h2>Back to top</h2>
-          <img src="/img/Chevron-right.svg" alt="Chevron" className="chevron" />
+          <img src="img/Chevron-right.svg" alt="Chevron" className="chevron" />
         </div>
       </div>
     </footer>

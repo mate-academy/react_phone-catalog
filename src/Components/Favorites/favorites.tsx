@@ -28,7 +28,7 @@ const Favorites: React.FC = () => {
         <button type="button" className="home-button">
           <img src="img/Home.svg" alt="Home" />
         </button>
-        <img src="/img/Chevron-right.svg" alt="Chevron" />
+        <img src="img/Chevron-right.svg" alt="Chevron" />
         <p className="page-name">Favorites</p>
       </div>
       <h3 className="page-title">Favorites</h3>
