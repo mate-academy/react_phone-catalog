@@ -41,7 +41,7 @@ export const ProductDetailsPage = () => {
   return (
     <>
       <Breadcrumbs />
-      <ProductDetails product={productDetails} />
+      <ProductDetails item={productDetails} />
       <ProductsSlider title="You may also like" items={getSuggestedProducts} />
     </>
   );

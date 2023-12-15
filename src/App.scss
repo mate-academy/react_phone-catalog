@@ -130,7 +130,8 @@ body {
 
   &__container {
     position: relative;
-    width: 1216px;
+    width: 100%;
+    max-width: 1216px;
     padding: 0 40px;
     margin: 0 auto;
 
@@ -270,6 +271,43 @@ h3,
   width: 32px;
   min-width: 32px;
   height: 32px;
+}
+
+.back-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-grey-2);
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  transition: color var(--time);
+
+  &::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-image: url('./assets/img/arrow_left.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-top: -2px;
+  }
+
+  &:hover {
+    color: var(--color-black);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .select {

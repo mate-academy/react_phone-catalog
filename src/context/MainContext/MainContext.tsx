@@ -3,6 +3,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { PROJECT_NAME } from '../../variables';
 import { fetchData } from '../../helpers/fetchData';
 import { Product } from '../../types/Product';
+import { CartItem } from '../../types/CartItem';
+import { getFromStorage, setToStorage } from '../../helpers/Storage';
 
 interface Props {
   children: React.ReactNode;
@@ -13,6 +15,7 @@ export const MainContext = React.createContext<{
   phones: Product[];
   tablets: Product[];
   accessories: Product[];
+  cartItems: CartItem[];
   isLoaderActive: boolean;
   isMenuOpen: boolean;
   isHeaderSearchVisible: boolean;
@@ -21,6 +24,7 @@ export const MainContext = React.createContext<{
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
   setTablets: React.Dispatch<React.SetStateAction<Product[]>>;
   setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setIsLoaderActive: React.Dispatch<React.SetStateAction<boolean>>;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsHeaderSearchVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +34,7 @@ export const MainContext = React.createContext<{
   phones: [],
   tablets: [],
   accessories: [],
+  cartItems: [],
   isLoaderActive: true,
   isMenuOpen: false,
   isHeaderSearchVisible: false,
@@ -38,6 +43,7 @@ export const MainContext = React.createContext<{
   setPhones: () => {},
   setTablets: () => {},
   setAccessories: () => {},
+  setCartItems: () => {},
   setIsLoaderActive: () => {},
   setIsMenuOpen: () => {},
   setIsHeaderSearchVisible: () => {},
@@ -55,12 +61,19 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    setCartItems(getFromStorage('cart'));
+  }, []);
 
   useEffect(() => {
     const { body } = document;
 
     document.title = `${PROJECT_NAME} | ${documentTitle}`;
     body.style.overflow = isMenuOpen ? 'hidden' : '';
+
+    setToStorage('cart', cartItems);
 
     fetchData()
       .then((data: Product[]) => {
@@ -72,7 +85,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
         );
       })
       .finally(() => setIsLoaderActive(false));
-  }, [documentTitle, isMenuOpen]);
+  }, [documentTitle, isMenuOpen, cartItems]);
 
   const value = useMemo(
     () => ({
@@ -84,6 +97,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setTablets,
       accessories,
       setAccessories,
+      cartItems,
+      setCartItems,
       isLoaderActive,
       setIsLoaderActive,
       isMenuOpen,
@@ -102,6 +117,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setTablets,
       accessories,
       setAccessories,
+      cartItems,
+      setCartItems,
       isLoaderActive,
       setIsLoaderActive,
       isMenuOpen,

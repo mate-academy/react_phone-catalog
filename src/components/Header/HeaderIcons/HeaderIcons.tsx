@@ -1,9 +1,29 @@
+import { useContext, useMemo } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-
-import { headerIcons } from '../../../variables/headerIcons';
+import { MainContext } from '../../../context/MainContext';
+import { HeaderIcons as Icons } from '../../../types/HeaderIcons';
 
 export const HeaderIcons = () => {
+  const { cartItems } = useContext(MainContext);
+
+  const headerIcons: Icons[] = useMemo(() => {
+    return [
+      {
+        id: 0,
+        path: 'favourites',
+        icon: './img/like.svg',
+        counter: 5,
+      },
+      {
+        id: 1,
+        path: 'cart',
+        icon: './img/cart.svg',
+        counter: cartItems.length,
+      },
+    ];
+  }, [cartItems]);
+
   const setActiveClass = ({ isActive }: { isActive: boolean }) => {
     return cn('header__icon', { 'header__icon--active': isActive });
   };

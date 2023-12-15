@@ -1,23 +1,59 @@
-/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+/* eslint-disable @typescript-eslint/comma-dangle */
+/* eslint-disable object-curly-newline */
+/* eslint-disable max-len */
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { MainContext } from '../../context/MainContext';
 import { ProductDetails as Details } from '../../types/ProductDetails';
+import { CartItem } from '../../types/CartItem';
+import { BackButton } from '../BackButton';
 
 interface Props {
-  product: Details | null;
+  item: Details | null;
 }
 
-export const ProductDetails: React.FC<Props> = ({ product }) => {
+export const ProductDetails: React.FC<Props> = ({ item }) => {
+  const { phones, cartItems, setCartItems } = useContext(MainContext);
   const [activeImg, setActiveImg] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (product) {
-      setActiveImg(product.images[0]);
+    if (item) {
+      setActiveImg(item.images[0]);
     }
-  }, [product]);
+  }, [item]);
+
+  const isBtnActive = useMemo(() => {
+    return (
+      item && cartItems.some((cartItem) => cartItem.product.itemId === item.id)
+    );
+  }, [item, cartItems]);
+
+  const addToCard = useCallback(
+    (id: string | null) => {
+      if (id) {
+        const selectedProduct = phones.filter(({ itemId }) => {
+          return itemId === id;
+        })[0];
+
+        const cartItem: CartItem = {
+          id: selectedProduct.id,
+          quantity: 1,
+          product: selectedProduct,
+        };
+
+        setCartItems((prevState) => {
+          if (!isBtnActive) {
+            return [...prevState, cartItem];
+          }
+
+          return prevState.filter((prevItem) => prevItem.id !== cartItem.id);
+        });
+      }
+    },
+    [isBtnActive]
+  );
 
   const getColor = (color: string) => {
     switch (color) {
@@ -48,20 +84,12 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     <section className="section product-details">
       <div className="section__container">
         <div className="product-details__block">
-          <button
-            type="button"
-            className="product-details__back"
-            data-cy="backButton"
-            onClick={() => navigate(-1)}
-          >
-            Back
-          </button>
-
-          <h1 className="h1 product-details__title">{product?.name}</h1>
+          <BackButton />
+          <h1 className="h1 product-details__title">{item?.name}</h1>
 
           <div className="product-details__wrapper">
             <div className="product-details__items">
-              {product?.images.map((image) => (
+              {item?.images.map((image) => (
                 <div
                   className={cn('product-details__item', {
                     'product-details__item--active': image === activeImg,
@@ -81,7 +109,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 <img
                   className="product-details__img"
                   src={activeImg}
-                  alt={product?.name}
+                  alt={item?.name}
                   loading="lazy"
                 />
               </picture>
@@ -92,17 +120,17 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 <div className="product-details__label">Available colors</div>
 
                 <div className="product-details__colors">
-                  {product?.colorsAvailable.map((color) => {
+                  {item?.colorsAvailable.map((color) => {
                     const backgroundColor = getColor(color);
 
                     return (
                       <Link
                         to={`/phones/${
-                          product.namespaceId
-                        }-${product.capacity.toLowerCase()}-${color}`}
+                          item.namespaceId
+                        }-${item.capacity.toLowerCase()}-${color}`}
                         className={cn('product-details__color', {
                           'product-details__color--active':
-                            color === product.color,
+                            color === item.color,
                         })}
                         key={color}
                       >
@@ -117,14 +145,14 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 <div className="product-details__label">Select capacity</div>
 
                 <div className="product-details__capacities">
-                  {product?.capacityAvailable.map((capacity) => (
+                  {item?.capacityAvailable.map((capacity) => (
                     <Link
                       to={`/phones/${
-                        product.namespaceId
-                      }-${capacity.toLowerCase()}-${product.color}`}
+                        item.namespaceId
+                      }-${capacity.toLowerCase()}-${item.color}`}
                       className={cn('product-details__capacity', {
                         'product-details__capacity--active':
-                          capacity === product.capacity,
+                          capacity === item.capacity,
                       })}
                       key={capacity}
                     >
@@ -136,16 +164,20 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
               <div className="product-details__prices">
                 <div className="h1 product-details__price">
-                  {product?.priceDiscount}
+                  {item?.priceDiscount}
                 </div>
                 <div className="product-details__price product-details__price--old">
-                  {product?.priceRegular}
+                  {item?.priceRegular}
                 </div>
               </div>
 
               <div className="product-details__btns">
-                <button type="button" className="btn">
-                  Add to cart
+                <button
+                  type="button"
+                  className={cn('btn', { 'btn--active': isBtnActive })}
+                  onClick={() => addToCard(item && item.id)}
+                >
+                  {isBtnActive ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <button type="button" className="like-btn">
                   <img
@@ -160,25 +192,23 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               <div className="product-details__cont">
                 <div className="product-details__line">
                   <div className="product-details__label">Screen</div>
-                  <div className="product-details__value">
-                    {product?.screen}
-                  </div>
+                  <div className="product-details__value">{item?.screen}</div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Resolution</div>
                   <div className="product-details__value">
-                    {product?.resolution}
+                    {item?.resolution}
                   </div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Processor</div>
                   <div className="product-details__value">
-                    {product?.processor}
+                    {item?.processor}
                   </div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">RAM</div>
-                  <div className="product-details__value">{product?.ram}</div>
+                  <div className="product-details__value">{item?.ram}</div>
                 </div>
               </div>
             </div>
@@ -194,7 +224,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 className="product-details__descriptions"
                 data-cy="productDescription"
               >
-                {product?.description.map((description) => (
+                {item?.description.map((description) => (
                   <div
                     className="product-details__description text"
                     key={description.title}
@@ -212,42 +242,38 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               <div className="product-details__cont">
                 <div className="product-details__line">
                   <div className="product-details__label">Screen</div>
-                  <div className="product-details__value">
-                    {product?.screen}
-                  </div>
+                  <div className="product-details__value">{item?.screen}</div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Resolution</div>
                   <div className="product-details__value">
-                    {product?.resolution}
+                    {item?.resolution}
                   </div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Processor</div>
                   <div className="product-details__value">
-                    {product?.processor}
+                    {item?.processor}
                   </div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">RAM</div>
-                  <div className="product-details__value">{product?.ram}</div>
+                  <div className="product-details__value">{item?.ram}</div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Camera</div>
-                  <div className="product-details__value">
-                    {product?.camera}
-                  </div>
+                  <div className="product-details__value">{item?.camera}</div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Zoom</div>
-                  <div className="product-details__value">{product?.zoom}</div>
+                  <div className="product-details__value">{item?.zoom}</div>
                 </div>
                 <div className="product-details__line">
                   <div className="product-details__label">Cell</div>
                   <div className="product-details__value">
-                    {product?.cell.map((cellItem, index) => (
+                    {item?.cell.map((cellItem, index) => (
                       <span key={cellItem}>
-                        {index === product?.cell.length - 1
+                        {index === item?.cell.length - 1
                           ? cellItem
                           : `${cellItem}, `}
                       </span>
