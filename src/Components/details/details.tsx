@@ -165,16 +165,16 @@ const ProductDetailsPage = () => {
       <div className="details">
         <div className="folder-holder">
           <button type="button" className="home-button">
-            <img src="/react_phone-catalog/img/home.svg" alt="Home" />
+            <img src={`${process.env.PUBLIC_URL}/img/home.svg`} alt="Home" />
           </button>
           <img
-            src="/react_phone-catalog/img/Chevron-right.svg"
+            src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`}
             alt="Chevron"
             className="folder-chevron"
           />
           <p className="page-folder">Phones</p>
           <img
-            src="/react_phone-catalog/img/Chevron-right.svg"
+            src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`}
             alt="Chevron"
             className="folder-chevron"
           />
@@ -182,7 +182,7 @@ const ProductDetailsPage = () => {
         </div>
         <div className="page-back__holder">
           <img
-            src="/react_phone-catalog/img/Chevron-left.svg"
+            src={`${process.env.PUBLIC_URL}/img/Chevron-left.svg`}
             alt="Chevron"
             className="folder-chevron"
           />

@@ -107,7 +107,7 @@ const ProductCard: React.FC<ProductCardProps>
         <Link className="Link" to={`/${productId}`} state={{ product: currentProduct }}>
           {currentProduct && (
             <img
-              src={currentProduct.imageUrl}
+              src={`${process.env.PUBLIC_URL}/${currentProduct.imageUrl}`}
               className="image"
               alt={currentProduct.name}
             />

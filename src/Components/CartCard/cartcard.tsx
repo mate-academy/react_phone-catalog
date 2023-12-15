@@ -58,17 +58,17 @@ const CartCard: React.FC<CartCardProps> = ({ productId }) => {
   return (
     <div className="cart-card">
       <button type="button" className="x" onClick={handleRemoveFromCartClick}>
-        <img src="/react_phone-catalog/img\Close.svg" alt="close" />
+        <img src={`${process.env.PUBLIC_URL}/img/Close.svg`} alt="close" />
       </button>
       <img src={product.imageUrl} className="img" alt={product.name} />
       <div className="name">{product.name}</div>
       <div className="buttons-holder1">
         <button type="button" className="plusminus" onClick={handleRemoveClick}>
-          <img src="/react_phone-catalog/img\Minus.svg" className="" alt="minus" />
+          <img src={`${process.env.PUBLIC_URL}/img/Minus.svg`} className="" alt="minus" />
         </button>
         <div>{getCounterForProduct()}</div>
         <button type="button" className="plusminus" onClick={handleAddClick}>
-          <img src="/react_phone-catalog/img\Plus.svg" className="" alt="plus" />
+          <img src={`${process.env.PUBLIC_URL}/img/Plus.svg`} className="" alt="plus" />
         </button>
       </div>
       <div className="totalprice">{totalprice()}</div>

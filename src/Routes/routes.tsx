@@ -1,5 +1,5 @@
 import {
-  createBrowserRouter, BrowserRouter, Routes, Route,
+  createBrowserRouter,
 } from 'react-router-dom';
 import { MainLayout } from '../Layouts/MainLayout';
 import Home from '../Pages/Home';
@@ -40,24 +40,24 @@ export const Router = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename: '/react_phone-catalog' });
 
-export const AppRouter = () => {
-  return (
-    <BrowserRouter basename="/react_phone-catalog">
-      <Routes>
-        <Route
-          path="/"
-          element={(<MainLayout />)}
-        >
-          <Route index element={<Home />} />
-          <Route path="phones" element={<Phones />} />
-          <Route path="tablets" element={<Tablets />} />
-          <Route path="favourites" element={<Favorites />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
+// export const AppRouter = () => {
+//   return (
+//     <BrowserRouter basename="/react_phone-catalog">
+//       <Routes>
+//         <Route
+//           path="/"
+//           element={(<MainLayout />)}
+//         >
+//           <Route index element={<Home />} />
+//           <Route path="phones" element={<Phones />} />
+//           <Route path="tablets" element={<Tablets />} />
+//           <Route path="favourites" element={<Favorites />} />
+//           <Route path="cart" element={<Cart />} />
+//           <Route path=":productId" element={<ProductDetailsPage />} />
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// };

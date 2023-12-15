@@ -26,9 +26,9 @@ const Favorites: React.FC = () => {
     <>
       <div className="folder-holder">
         <button type="button" className="home-button">
-          <img src="/react_phone-catalog/img/Home.svg" alt="Home" />
+          <img src={`${process.env.PUBLIC_URL}/img/Home.svg`} alt="Home" />
         </button>
-        <img src="/react_phone-catalog/img/Chevron-right.svg" alt="Chevron" />
+        <img src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`} alt="Chevron" />
         <p className="page-name">Favorites</p>
       </div>
       <h3 className="page-title">Favorites</h3>

@@ -47,7 +47,7 @@ export const Categories = () => {
       <div className="categories-row">
         <NavLink to="/phones" className="category">
           <img
-            src="/react_phone-catalog/img/phones.png"
+            src={`${process.env.PUBLIC_URL}/img/phones.png`}
             className="category-img phones"
             alt="phones"
           />
@@ -60,7 +60,7 @@ export const Categories = () => {
 
         <NavLink to="/tablets" className="category">
           <img
-            src="/react_phone-catalog/img/tablets.png"
+            src={`${process.env.PUBLIC_URL}/img/tablets.png`}
             className="category-img tablets"
             alt="tablets"
           />
@@ -73,7 +73,7 @@ export const Categories = () => {
 
         <NavLink to="/accessories" className="category">
           <img
-            src="/react_phone-catalog/img/accesories.png"
+            src={`${process.env.PUBLIC_URL}/img/accesories.png`}
             className="category-img accessories last"
             alt="accessories"
           />

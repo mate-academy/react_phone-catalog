@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import './carousel.scss';
+import ChevrolLeft from './img/Chevron-left.svg';
 
 export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,14 +61,14 @@ export const Carousel = () => {
           tabIndex={0}
           aria-label="Previous"
         >
-          <img className="chevron" src="/react_phone-catalog/img/Chevron-left.svg" alt="Previous" />
+          <img className="chevron" src={`${process.env.PUBLIC_URL}/img/Chevron-left.svg`} alt="Previous" />
 
         </div>
         <div className="slider-container">
           <div className="slides" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
             {images.map((image, index) => (
               <div key={image} className="slide">
-                <img src={image} alt={`Slide ${index + 1}`} />
+                <img src={`${process.env.PUBLIC_URL}/${image}`} alt={`Slide ${index + 1}`} />
               </div>
             ))}
           </div>
@@ -84,7 +85,7 @@ export const Carousel = () => {
           tabIndex={0}
           aria-label="Next"
         >
-          <img className="chevron" src="/react_phone-catalog/img/Chevron-right.svg" alt="Next" />
+          <img className="chevron" src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`} alt="Next" />
         </div>
       </div>
       <div
