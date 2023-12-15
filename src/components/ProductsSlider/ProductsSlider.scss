@@ -23,6 +23,9 @@
   &__cards-container {
     display: flex;
     gap: 16px;
-    overflow: hidden;
+
+    @include onDesktop {
+      overflow: hidden;
+    }
   }
 }

@@ -66,4 +66,20 @@
       color: $gray-main;
     }
   }
+
+  &--sort {
+    width: 50%;
+
+    @include onTablet {
+      width: 176px;
+    }
+  }
+
+  &--items {
+    width: 50%;
+
+    @include onTablet {
+      width: 128px;
+    }
+  }
 }

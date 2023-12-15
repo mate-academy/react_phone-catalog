@@ -146,7 +146,7 @@ export const PhonesPage: React.FC = () => {
 
           {!!visiblePhones.length && !isLoading && (
             <div className="CategoryPage__dropdowns">
-              <div className="Dropdown">
+              <div className="Dropdown Dropdown--sort">
                 <p className="Dropdown__title">
                   Sort by
                 </p>
@@ -193,7 +193,7 @@ export const PhonesPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="Dropdown">
+              <div className="Dropdown Dropdown--items">
                 <p className="Dropdown__title">
                   Items on page
                 </p>

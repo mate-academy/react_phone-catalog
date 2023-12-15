@@ -9,9 +9,13 @@ import './ProductCart.scss';
 
 type Props = {
   newProduct: Product,
+  sliderCard?: string,
 };
 
-export const ProductCart: React.FC<Props> = ({ newProduct }) => {
+export const ProductCart: React.FC<Props> = ({
+  newProduct,
+  sliderCard = '',
+}) => {
   const { cart, handleAddToCart } = useCart();
   const { fav, handleAddToFav } = useFav();
 
@@ -32,7 +36,10 @@ export const ProductCart: React.FC<Props> = ({ newProduct }) => {
   } = newProduct;
 
   return (
-    <li className="ProductCart">
+    <li className={classNames('ProductCart', {
+      'ProductCart--slider': sliderCard,
+    })}
+    >
       <Link to={`/${category}/${itemId}`} className="ProductCart__link">
         <div className="ProductCart__image-container">
           <img

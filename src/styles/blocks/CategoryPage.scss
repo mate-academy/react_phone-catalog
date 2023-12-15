@@ -41,14 +41,9 @@
   }
 
   &__dropdowns {
+    width: 100%;
     display: flex;
-    // justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-
-    @include onMobileXL {
-      // justify-content: flex-start;
-      gap: 16px;
-    }
+    // flex-wrap: wrap;
+    gap: 16px;
   }
 }

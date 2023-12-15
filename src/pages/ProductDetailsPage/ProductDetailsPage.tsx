@@ -297,58 +297,56 @@ export const ProductDetailsPage: React.FC = () => {
                     <div className="Decorative-line" />
                   </div>
 
-                  <div className="TechSpecs">
-                    <ul className="Feature__list">
-                      <li className="Feature__item">
-                        <p className="Feature__name">Screen</p>
-                        <p className="Feature__value">
-                          {productDetails.screen}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">Resolution</p>
-                        <p className="Feature__value">
-                          {productDetails.resolution.replace('х', ' х ')}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">Processor</p>
-                        <p className="Feature__value">
-                          {productDetails.processor}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">RAM</p>
-                        <p className="Feature__value">
-                          {productDetails.ram.replace('GB', ' GB')}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">Built in memory</p>
-                        <p className="Feature__value">
-                          {productDetails.capacity.replace('GB', ' GB')}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">Camera</p>
-                        <p className="Feature__value">
-                          {productDetails.camera}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">Zoom</p>
-                        <p className="Feature__value">
-                          {productDetails.zoom}
-                        </p>
-                      </li>
-                      <li className="Feature__item">
-                        <p className="Feature__name">Cell</p>
-                        <p className="Feature__value">
-                          {productDetails.cell.join(', ')}
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
+                  <ul className="Feature__list">
+                    <li className="Feature__item">
+                      <p className="Feature__name">Screen</p>
+                      <p className="Feature__value">
+                        {productDetails.screen}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">Resolution</p>
+                      <p className="Feature__value">
+                        {productDetails.resolution.replace('х', ' х ')}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">Processor</p>
+                      <p className="Feature__value">
+                        {productDetails.processor}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">RAM</p>
+                      <p className="Feature__value">
+                        {productDetails.ram.replace('GB', ' GB')}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">Built in memory</p>
+                      <p className="Feature__value">
+                        {productDetails.capacity.replace('GB', ' GB')}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">Camera</p>
+                      <p className="Feature__value">
+                        {productDetails.camera}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">Zoom</p>
+                      <p className="Feature__value">
+                        {productDetails.zoom}
+                      </p>
+                    </li>
+                    <li className="Feature__item">
+                      <p className="Feature__name">Cell</p>
+                      <p className="Feature__value">
+                        {productDetails.cell.join(', ')}
+                      </p>
+                    </li>
+                  </ul>
                 </article>
               </section>
 

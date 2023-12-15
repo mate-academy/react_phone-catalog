@@ -1,25 +1,16 @@
 .container {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
   overflow: hidden;
-  // width: max-content;
-  // max-width: 560px;
-
-  @include onMobileXL {
-    max-width: 640px;
-  }
 
   @include onTablet {
-    max-width: 800px;
-  }
-
-  @include onTabletXL {
-    max-width: 1080px;
+    padding: 0 24px;
+    max-width: 1136px;
   }
 
   @include onDesktop {
-    padding: 0;
-    max-width: 1136px;
+    box-sizing: content-box;
+    padding: 32px;
   }
 
   &--slider {

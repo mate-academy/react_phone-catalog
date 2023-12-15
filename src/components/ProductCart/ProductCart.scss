@@ -4,18 +4,22 @@
 .ProductCart {
   display: flex;
   flex-direction: column;
-  width: 272px;
+  width: 100%;
   height: 507px;
   padding: 24px;
   border: 1px solid $gray-elements;
   transition: all 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(0.97);
+  @include onTablet {
+    width: 100%;
   }
 
-  @include onTablet {
+  @include onDesktop {
     width: 272px;
+  }
+
+  &:hover {
+    transform: scale(0.97);
   }
 
   &__link {
@@ -101,5 +105,9 @@
     display: flex;
     gap: 8px;
     padding: 16px 0 0;
+  }
+
+  &--slider {
+    width: 272px;
   }
 }

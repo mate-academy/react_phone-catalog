@@ -8,22 +8,44 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 56px;
+
+    @include onTablet {
+      gap: 64px;
+    }
 
     @include onDesktop {
       gap: 80px;
     }
   }
 
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include onTablet {
+      gap: 40px;
+      grid-column: 1 / -1;
+      padding-bottom: 40px;
+    }
+  }
+
   &__section {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 32px;
+
+    @include onTablet {
+      --columns: 12;
+      display: grid;
+      grid-template-columns: repeat(var(--columns), 1fr);
+      column-gap: 16px;
+      row-gap: 0;
+    }
 
     @include onDesktop {
-      display: grid;
-      grid-template-columns: repeat(24, 1fr);
-      column-gap: 16px;
+      --columns: 24;
     }
 
     &-content {
@@ -31,7 +53,7 @@
       flex-direction: column;
       gap: 16px;
 
-      @include onDesktop {
+      @include onTablet {
         gap: 32px;
       }
     }
@@ -51,18 +73,6 @@
     }
   }
 
-  &__top {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
-    @include onDesktop {
-      gap: 40px;
-      grid-column: 1 / -1;
-      padding: 0 0 40px;
-    }
-  }
-
   &__back-and-title {
     display: flex;
     flex-direction: column;
@@ -70,20 +80,28 @@
   }
 
   &__product-title {
-    @extend %text-title;
+    @extend %text-title-mobile;
   }
 
   &__images {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: 16px;
 
     @include onTablet {
       flex-direction: row;
+      grid-column: 1 / 8;
+      gap: 0;
+    }
+
+    @include onDesktop {
+      grid-column: 1 / 13;
     }
 
     &-list {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: left;
+      gap: 8px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -91,18 +109,26 @@
       @include onTablet {
         flex-direction: column;
         justify-content: flex-start;
+      }
+
+      @include onDesktop {
         gap: 16px;
       }
     }
-
-    grid-column: span 12;
   }
 
   &__item {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 49px;
+    width: 49px;
     border: 1px solid $gray-elements;
+
+    @include onDesktop {
+      height: 80px;
+      width: 80px;
+    }
 
     &--active {
       border-color: $gray-main;
@@ -110,14 +136,14 @@
   }
 
   &__image {
-    height: 66px;
+    height: 100%;
 
     &-link {
-      height: 80px;
-      width: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 100%;
+      padding: 4px;
     }
   }
 
@@ -125,16 +151,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    height: 400px;
+    padding: 6px;
+    height: 288px;
     width: 100%;
     background-color: $html-bg-color;
     grid-column: span 10;
 
-    @include onTablet {
-      padding: 0;
+    @include onDesktop {
       height: 464px;
-      width: 464px;
     }
 
     &-selected {
@@ -143,10 +167,17 @@
   }
 
   &__main-info {
-    grid-column: 14 / -5;
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include onTablet {
+      grid-column: 8 / -1;
+    }
+
+    @include onDesktop {
+      grid-column: 14 / -5;
+    }
   }
 
   &__product-options {

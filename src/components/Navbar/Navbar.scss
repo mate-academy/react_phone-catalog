@@ -3,21 +3,23 @@
 @import "../../styles/utils/mixins";
 
 .Navbar {
+  height: 100%;
   display: none;
 
-  @include onDesktop {
+  @include onTablet {
     display: flex;
   }
 
   &__list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 64px;
+    gap: 32px;
     height: 100%;
+
+    @include onDesktop {
+      gap: 64px;
+    }
 
     &--menu {
       flex-direction: column;
@@ -28,9 +30,13 @@
   &__item {
     @extend %text-uppercase;
     color: $gray-second;
-    padding: 24px 0;
-    border-bottom: 3px solid transparent;
+    padding: 16px 0;
     cursor: pointer;
+    position: relative;
+
+    @include onDesktop {
+      padding: 24px 0;
+    }
 
     &:hover {
       color: $gray-main;
@@ -38,23 +44,36 @@
 
     &--active {
       color: $gray-main;
-      border-bottom: 3px solid $gray-main;
+
+      &::after {
+        @include afterStyle;
+      }
     }
   }
 
   &__button {
-    height: 64px;
-    width: 64px;
-    border-bottom: 3px solid transparent;
-    border-left: 1px solid $gray-elements;
-    cursor: pointer;
+    display: none;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include onTablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 48px;
+      border-left: 1px solid $gray-elements;
+      cursor: pointer;
+      position: relative;
+    }
+
+    @include onDesktop {
+      height: 64px;
+      width: 64px;
+    }
 
     &--active {
-      border-bottom: 3px solid $gray-main;
+      &::after {
+        @include afterStyle;
+      }
     }
 
     &--menu {

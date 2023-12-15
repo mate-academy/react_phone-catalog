@@ -1,3 +1,11 @@
+@import "../../styles/utils/mixins";
+
 .TechSpecs {
-  grid-column: 14 / -1;
+  @include onTablet {
+    grid-column: 1 / -1;
+  }
+
+  @include onDesktop {
+    grid-column: 14 / -1;
+  }
 }

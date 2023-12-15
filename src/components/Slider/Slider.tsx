@@ -3,27 +3,23 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Slider.scss';
 
-import phones from '../../images/slider/phones.png';
-import tablets from '../../images/slider/tablets.png';
-import accessories from '../../images/slider/accessories.png';
+// import phones from '../../images/slider/phones.png';
+// import tablets from '../../images/slider/tablets.png';
+// import accessories from '../../images/slider/accessories.png';
 
-const SLIDER_IMAGES = [
-  { url: phones, alt: 'phones' },
-  { url: tablets, alt: 'tablets' },
-  { url: accessories, alt: 'accessories' },
+const SLIDER_ITEMS = [
+  { src: '/phones' },
+  { src: '/tablets' },
+  { src: '/accessories' },
 ];
 
 const ANIMATION_DURATION = 1500;
 
-type Props = {
-  itemWidth: number,
-};
-
-export const Slider: React.FC<Props> = ({ itemWidth = 1040 }) => {
+export const Slider: React.FC = () => {
   const [firstImage, setFirstImage] = useState(0);
 
-  const lastVisible = SLIDER_IMAGES.length - 1;
-  const translateValue = (firstImage) * itemWidth;
+  const lastVisible = SLIDER_ITEMS.length - 1;
+  const translateValue = (firstImage) * 100;
 
   const scrollForward = useCallback(() => {
     setFirstImage(firstImage === lastVisible
@@ -53,30 +49,20 @@ export const Slider: React.FC<Props> = ({ itemWidth = 1040 }) => {
             className="button button--slider button--slider-back"
             onClick={scrollBack}
           />
-          <ul
-            className="Slider__list"
-            style={{ width: itemWidth }}
-          >
-            {SLIDER_IMAGES.map(image => (
+          <ul className="Slider__list">
+            {SLIDER_ITEMS.map((item, i) => (
               <li
-                key={image.url}
+                key={item.src}
                 style={{
-                  transform: `translateX(-${translateValue}px)`,
+                  transform: `translateX(-${translateValue}%)`,
                   transition: `transform ${ANIMATION_DURATION}ms ease`,
                 }}
                 className="Slider__list-item"
               >
                 <Link
-                  to={`/${image.alt}`}
-                  className="Slider__link"
-                >
-                  <img
-                    src={image.url}
-                    alt={image.alt}
-                    width={itemWidth}
-                    className="Slider__image"
-                  />
-                </Link>
+                  to={item.src}
+                  className={`Slider__link Slider__link--${i}`}
+                />
               </li>
             ))}
           </ul>
@@ -89,27 +75,14 @@ export const Slider: React.FC<Props> = ({ itemWidth = 1040 }) => {
         </div>
 
         <div className="Slider__dots">
-          <button
-            type="button"
-            aria-label="Previous"
-            className="button button--mobile button--prev"
-            onClick={scrollBack}
-          />
-          {SLIDER_IMAGES.map((image, i) => (
+          {SLIDER_ITEMS.map((item, i) => (
             <div
-              key={image.url}
+              key={item.src}
               className={classNames('Slider__dot', {
                 'Slider__dot--active': i === firstImage,
               })}
             />
           ))}
-
-          <button
-            type="button"
-            aria-label="Next"
-            className="button button--mobile button--next"
-            onClick={scrollForward}
-          />
         </div>
       </div>
     </div>

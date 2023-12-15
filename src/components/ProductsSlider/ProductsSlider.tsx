@@ -70,7 +70,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               transition: `transform ${ANIMATION_DURATION}ms ease`,
             }}
           >
-            <ProductCart newProduct={product} />
+            <ProductCart
+              newProduct={product}
+              sliderCard="isSliderCard"
+            />
           </div>
         ))}
       </div>

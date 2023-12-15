@@ -1,12 +1,8 @@
+@import "../../styles/utils/mixins";
+
 .Logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 24px;
   height: 100%;
-
-  &__img {
-    height: 24px;
-    width: 40px;
-  }
 }

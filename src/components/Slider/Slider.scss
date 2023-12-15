@@ -1,37 +1,43 @@
 @import "../../styles/utils/mixins";
+@import "../../styles/utils/variables";
 
 .Slider {
+  @include onTablet {
+    // width: $slider-width;
+  }
+
   @include onDesktop {
     height: 432px;
+    width: 1136px;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    @include onTablet {
+      // width: $slider-width;
+    }
+
+    @include onDesktop {
+      width: 100%;
+    }
   }
 
   &__main {
     display: flex;
     gap: 8px;
-
-    height: 120px;
-    overflow: hidden;
-
-    @include onMobileXL {
-      height: 160px;
-    }
+    height: 320px;
 
     @include onTablet {
-      height: 220px;
-    }
-
-    @include onTabletXL {
-      height: 300px;
+      // width: $slider-width;
+      height: 32vw;
     }
 
     @include onDesktop {
       height: 400px;
+      width: 1136px;
       gap: 16px;
     }
   }
@@ -40,10 +46,20 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    list-style: none;
     padding: 0;
     margin: 0;
     height: 100%;
+    width: 100vw;
+
+    @include onTablet {
+      width: 84vw;
+      height: 32vw;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      height: 400px;
+    }
 
     &-item {
       display: flex;
@@ -51,6 +67,10 @@
       align-items: center;
       height: 100%;
       width: 100%;
+
+      @include onTablet {
+        height: 32vw;
+      }
     }
   }
 
@@ -59,13 +79,32 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100vw;
     overflow: hidden;
-  }
 
-  &__image {
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include onDesktop {
+      height: 400px;
+    }
+
+    &--0 {
+      background-image: url(../../images/slider/slider-0-mobile.png);
+
+      @include onTablet {
+        background-image: url(../../images/slider/slider-0-desktop.png);
+      }
+    }
+
+    &--1 {
+      background-image: url(../../images/slider/tablets.png);
+    }
+
+    &--2 {
+      background-image: url(../../images/slider/accessories.png);
+    }
   }
 
   &__dots {

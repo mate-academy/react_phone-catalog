@@ -5,19 +5,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  padding: 24px 40px 24px 24px;
+  gap: 16px;
+  padding: 16px;
   border: 1px solid $gray-elements;
 
   @include onTablet {
     flex-direction: row;
+    padding: 24px;
+    gap: 24px;
   }
 
   &__main-info {
     display: flex;
+    justify-content: left;
     align-items: center;
-    gap: 24px;
+    gap: 23px;
+
+    @include onTablet {
+      gap: 32px;
+    }
   }
 
   &__clear {
@@ -40,9 +46,13 @@
   &__link {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 23px;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
+
+    @include onTablet {
+      gap: 32px;
+    }
 
     &:hover {
       transform: scale(1.03);
@@ -52,38 +62,32 @@
   &__image {
     height: 100%;
 
-    @include onTablet {
-      height: 66px;
-    }
-
     &-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100px;
-      width: 100px;
-
-      @include onTablet {
-        height: 80px;
-        width: 80px;
-      }
+      height: 80px;
+      width: 80px;
     }
   }
 
   &__title {
     @extend %text-body;
-    max-width: 300px;
+
+    // @include onTablet {
+    //   width: min(176px);
+    // }
   }
 
   &__quan-and-price {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
 
     @include onTablet {
-      flex-direction: row;
-      gap: 40px;
+      width: min-content;
+      gap: 24px;
     }
   }
 

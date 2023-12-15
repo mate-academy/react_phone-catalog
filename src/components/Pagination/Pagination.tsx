@@ -48,7 +48,12 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
         {pagesArray.map(currPage => {
           if (currPage === 'DOTS') {
             return (
-              <li className="Pagination__item">...</li>
+              <li
+                key={currPage}
+                className="Pagination__item"
+              >
+                ...
+              </li>
             );
           }
 

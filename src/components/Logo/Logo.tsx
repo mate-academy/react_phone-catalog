@@ -4,11 +4,11 @@ import logoIcon from '../../images/icons/Logo.svg';
 import './Logo.scss';
 
 export const Logo: React.FC = () => (
-  <NavLink to="/" className="Logo">
+  <NavLink to="/">
     <img
       src={logoIcon}
       alt="Logo"
-      className="Logo__img"
+      className="Logo"
     />
   </NavLink>
 );

@@ -11,7 +11,7 @@
   transform: translateX(100%);
   transition: transform 0.5s;
 
-  @include onDesktop {
+  @include onTablet {
     display: none;
   }
 
@@ -20,29 +20,62 @@
     overflow: hidden;
   }
 
-  &__actions {
+  &__top-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 48px;
     border-bottom: 1px solid $gray-elements;
   }
 
-  &__button {
+  &__bottom-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 64px;
-    width: 64px;
+    border-top: 1px solid $gray-elements;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__action {
+    height: 100%;
+    width: 50vw;
+    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+      border-left: 1px solid $gray-elements;
+    }
+
+    &--active::after {
+      @include afterStyle;
+      width: 50%;
+    }
+  }
+
+  &__logo {
+    height: 100%;
+    padding: 13px 16px;
+  }
+
+  &__button {
+    height: 48px;
+    width: 48px;
     background-color: $html-bg-color;
     outline: none;
-    border: 1px solid $gray-elements;
+    border: none;
+    border-left: 1px solid $gray-elements;
 
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-
-    background-image: url(../../images/icons/icon-menu.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.6;
 
     @include onDesktop {
       display: none;
@@ -55,59 +88,38 @@
   }
 
   &__nav {
-    padding: 40px;
-
-    display: flex;
-    flex-direction: column;
+    padding: 24px;
 
     &-list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-end;
-      gap: 12px;
-    }
-
-    &-link {
-      padding: 12px;
-      cursor: pointer;
+      align-items: center;
+      gap: 16px;
     }
 
     &-item {
-      @extend %text-uppercase;
-      font-size: 20px;
-      color: $gray-second;
+      height: 27px;
+    }
 
-      &:hover {
+    &-link {
+      @extend %text-uppercase;
+      color: $gray-second;
+      padding: 8px 0;
+
+      &--active {
         color: $gray-main;
+        position: relative;
+
+        &::after {
+          @include afterStyle;
+        }
       }
     }
   }
-}
-
-.menu {
-  @include onDesktop {
-    display: none;
-  }
-
-  &__button {
-    height: 64px;
-    width: 64px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    outline: none;
-    border-left: 1px solid $gray-elements;
-    background-color: $html-bg-color;
-  }
 
   &__img {
-    height: 20px;
-    width: 20px;
-    opacity: 0.8;
+    height: 16px;
+    width: 16px;
   }
 }

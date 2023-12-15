@@ -6,7 +6,7 @@ import { CartContext } from '../../context/CartContext';
 
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
-import { Search } from '../Search';
+// import { Search } from '../Search';
 import { Counter } from '../Counter/Counter';
 import favIcon from '../../images/icons/Favourites.svg';
 import cartIcon from '../../images/icons/Shopping_cart.svg';
@@ -21,6 +21,25 @@ const getClassName = ({ isActive }: { isActive: boolean }) => {
   });
 };
 
+const getMenuClassName = ({ isActive }: { isActive: boolean }) => {
+  return classNames('Menu__nav-link', {
+    'Menu__nav-link--active': isActive,
+  });
+};
+
+const getActionClassName = ({ isActive }: { isActive: boolean }) => {
+  return classNames('Menu__action', {
+    'Menu__action--active': isActive,
+  });
+};
+
+const menuNav = [
+  { href: '/', name: 'Home' },
+  { href: '/phones', name: 'Phones' },
+  { href: '/tablets', name: 'Tablets' },
+  { href: '/accessories', name: 'Accessories' },
+];
+
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const { fav } = useContext(FavContext);
@@ -33,20 +52,22 @@ export const Header: React.FC = () => {
       <div className="Header" id="header">
         <div className="Header__content">
           <div className="Header__logo-and-nav">
-            <Logo />
+            <div className="Header__logo">
+              <Logo />
+            </div>
 
             {pathname !== '/cart' && (<Navbar />)}
           </div>
 
           <div className="Header__fav-and-cart">
-            {(pathname === '/phones'
+            {/* {(pathname === '/phones'
               || pathname === '/tablets'
               || pathname === '/accessories'
               || pathname === '/favorites') && (
               <div className="Header__search">
                 <Search />
               </div>
-            )}
+            )} */}
 
             {pathname !== '/cart' && (
               <NavLink
@@ -103,65 +124,78 @@ export const Header: React.FC = () => {
           'Menu--opened': isMenuOpened,
         })}
       >
-        <div className="Menu__actions">
-          <Logo />
+        <div className="Menu__top-actions">
+          <div className="Menu__logo">
+            <Logo />
+          </div>
           <button
             type="button"
             aria-label="menu"
-            className="menu__button"
+            className="Menu__button"
             onClick={() => setIsMenuOpened(false)}
           >
             <img
               src={closeIcon}
               alt="Menu"
-              className="menu__img"
+              className="Menu__img"
             />
           </button>
         </div>
 
         <nav className="Menu__nav">
           <ul className="Menu__nav-list">
-            <li className="Menu__nav-link">
-              <NavLink
-                to="/"
+            {menuNav.map(elem => (
+              <li
+                key={elem.href}
                 className="Menu__nav-item"
-                onClick={() => setIsMenuOpened(false)}
               >
-                Home
-              </NavLink>
-            </li>
-
-            <li className="Menu__nav-link">
-              <NavLink
-                to="/phones"
-                className="Menu__nav-item"
-                onClick={() => setIsMenuOpened(false)}
-              >
-                Phones
-              </NavLink>
-            </li>
-
-            <li className="Menu__nav-link">
-              <NavLink
-                to="/tablets"
-                className="Menu__nav-item"
-                onClick={() => setIsMenuOpened(false)}
-              >
-                Tablets
-              </NavLink>
-            </li>
-
-            <li className="Menu__nav-link">
-              <NavLink
-                to="/accessories"
-                className="Menu__nav-item"
-                onClick={() => setIsMenuOpened(false)}
-              >
-                Accessories
-              </NavLink>
-            </li>
+                <NavLink
+                  to={elem.href}
+                  className={getMenuClassName}
+                  onClick={() => setIsMenuOpened(false)}
+                >
+                  {elem.name}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
+
+        <div className="Menu__bottom-actions">
+          <NavLink
+            to="/favorites"
+            className={getActionClassName}
+            onClick={() => setIsMenuOpened(false)}
+          >
+            <div className="Action">
+              <img
+                src={favIcon}
+                alt="Favorites"
+                className="Action__img"
+              />
+              {!!fav.length && (
+                <Counter count={fav.length} />
+              )}
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/cart"
+            className={getActionClassName}
+            onClick={() => setIsMenuOpened(false)}
+          >
+            <div className="Action">
+              <img
+                src={cartIcon}
+                alt="Shopping cart"
+                className="Action__img"
+              />
+              {!!cart.length && (
+                <Counter count={cart.length} />
+              )}
+            </div>
+          </NavLink>
+        </div>
       </aside>
     </>
   );

@@ -22,21 +22,12 @@ export const HomePage: React.FC = () => {
           </div>
         ) : (
           <>
-            <div className="container container--slider">
+            <div className="HomePage__top">
+              <h1 className="HomePage__title">
+                Welcome to Nice Gadgets store!
+              </h1>
               <div className="HomePage__slider">
-                <Slider itemWidth={300} />
-              </div>
-              <div className="HomePage__slider--mobileXL">
-                <Slider itemWidth={420} />
-              </div>
-              <div className="HomePage__slider--tablet">
-                <Slider itemWidth={550} />
-              </div>
-              <div className="HomePage__slider--tabletXL">
-                <Slider itemWidth={800} />
-              </div>
-              <div className="HomePage__slider--desktop">
-                <Slider itemWidth={1040} />
+                <Slider />
               </div>
             </div>
 

@@ -102,16 +102,12 @@
 
   &--dropdown {
     height: 40px;
-    width: 165px;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
     justify-content: space-between;
     padding: 0 12px;
-
-    @include onTablet {
-      width: 176px;
-    }
 
     &-text {
       @extend %text-body;

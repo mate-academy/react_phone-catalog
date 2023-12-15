@@ -1,11 +1,5 @@
 @mixin onDesktop {
-  @media (min-width: 1136px) {
-    @content;
-  }
-}
-
-@mixin onTabletXL {
-  @media (min-width: 840px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
@@ -16,8 +10,12 @@
   }
 }
 
-@mixin onMobileXL {
-  @media (min-width: 420px) {
-    @content;
-  }
+@mixin afterStyle {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: $gray-main;
 }

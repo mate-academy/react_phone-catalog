@@ -63,10 +63,17 @@
   text-decoration: none;
   text-align: left;
 
-  @include onDesktop {
+  @include onTablet {
     font-size: 32px;
     line-height: 41px;
   }
+}
+
+%text-title-mobile {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
 }
 
 %text-semi-title {

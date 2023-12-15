@@ -3,17 +3,21 @@
 .ProductsList {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 40px;
 
   @include onTablet {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    column-gap: 16px;
+    row-gap: 40px;
+    place-items: center stretch;
   }
 
   @include onDesktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 40px 16px;
   }
 }

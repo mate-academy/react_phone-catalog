@@ -2,36 +2,54 @@
 @import "../../styles/utils/variables";
 
 .Footer {
-  margin-top: 72px;
+  margin-top: 56px;
   border-top: 1px solid $gray-elements;
 
+  @include onTablet {
+    margin-top: 64px;
+  }
+
+  @include onDesktop {
+    margin-top: 80px;
+  }
+
   &__content {
+    padding: 32px 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
 
     @include onTablet {
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
       height: 96px;
     }
   }
 
+  &__logo {
+    height: 32px;
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+  }
+
   &__nav {
     &-list {
-      padding: 24px 0;
-      margin: 0;
-      list-style: none;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 8px;
 
       @include onTablet {
-        padding: 0;
         flex-direction: row;
         align-items: center;
-        gap: 64px;
+        gap: 14px;
+      }
+
+      @include onDesktop {
+        gap: 106px;
       }
     }
 
@@ -47,14 +65,16 @@
 
   &__button {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    gap: 16px;
 
     @include onTablet {
-      flex-direction: row;
+      width: max-content;
+      justify-content: right;
       align-items: center;
-      gap: 16px;
     }
 
     &-text {
