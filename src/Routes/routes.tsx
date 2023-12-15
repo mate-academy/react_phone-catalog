@@ -1,4 +1,6 @@
-import { createBrowserRouter } from 'react-router-dom';
+import {
+  createBrowserRouter, BrowserRouter, Routes, Route,
+} from 'react-router-dom';
 import { MainLayout } from '../Layouts/MainLayout';
 import Home from '../Pages/Home';
 import ProductDetailsPage from '../Components/details/details';
@@ -9,11 +11,11 @@ import Cart from '../Components/Cart/cart';
 
 export const Router = createBrowserRouter([
   {
-    path: '/react_phone-catalog',
+    path: '/',
     element: <MainLayout />,
     children: [
       {
-        path: '/react_phone-catalog',
+        path: '/',
         element: <Home />,
       },
       {
@@ -39,3 +41,23 @@ export const Router = createBrowserRouter([
     ],
   },
 ]);
+
+export const AppRouter = () => {
+  return (
+    <BrowserRouter basename="/react_phone-catalog">
+      <Routes>
+        <Route
+          path="/"
+          element={(<MainLayout />)}
+        >
+          <Route index element={<Home />} />
+          <Route path="phones" element={<Phones />} />
+          <Route path="tablets" element={<Tablets />} />
+          <Route path="favourites" element={<Favorites />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path=":productId" element={<ProductDetailsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
