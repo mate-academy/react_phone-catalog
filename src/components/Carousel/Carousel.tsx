@@ -20,7 +20,8 @@ export const Carousel: React.FC = () => {
       <div className="container">
         <div className="carousel__content">
           <button
-            className="carousel__button carousel__button--prev"
+            className="carousel__button
+            carousel__button--prev"
             type="button"
           >
             &lt;
@@ -33,9 +34,10 @@ export const Carousel: React.FC = () => {
             effect="fade"
             pagination={{ clickable: true }}
             slidesPerView={1}
+            loop
             autoplay={{ delay: 500 }}
             modules={[EffectFade, Navigation, Pagination, Autoplay]}
-            className="swiper"
+            className="mySwiper"
           >
             {images.map((image, index) => (
               <SwiperSlide

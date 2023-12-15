@@ -56,44 +56,55 @@ export const Phone = () => {
   }, [phones, sortValue, currentPage, itemOnPage, query]);
 
   return (
-    <section className="phones">
-      <div className="container">
-        <HomeIcon title="Phones" />
-        <h1>Mobile phones</h1>
-        <p className="phone__text">{`${phones.length}  models`}</p>
-        <Search
-          query={query}
-          setQuery={setQuery}
-        />
-        <div className="phones__input">
-          <SortInput
-            sortValue={sortValue}
-            setSortValue={setSortValue}
+    <main>
+      <section className="phones">
+        <div className="container">
+          <HomeIcon title="Phones" />
+          <h1>Mobile phones</h1>
+          {visiblePhone.length === 0 && (
+            <p className="phone__text"> There are not  models</p>
+          )}
+          {visiblePhone.length > 0 && (
+            <p className="phone__text">{`${visiblePhone.length}  models`}</p>
+          )}
+          <Search
+            query={query}
+            setQuery={setQuery}
           />
-          <PaginationPhone
-            itemOnPage={itemOnPage}
-            setItemOnPage={setItemOnPage}
-          />
-        </div>
-        <ul className="phones__list">
-          {visiblePhone.map((phone) => (
-            <li
-              className="phones__item"
-              data-cy="item"
-              key={phone.id}
-            >
-              <ProductCard phone={phone} />
-            </li>
-          ))}
-        </ul>
+          {visiblePhone.length > 8 && (
+            <div className="phones__input">
+              <SortInput
+                sortValue={sortValue}
+                setSortValue={setSortValue}
+              />
+              <PaginationPhone
+                itemOnPage={itemOnPage}
+                setItemOnPage={setItemOnPage}
+              />
+            </div>
+          )}
+          <ul className="phones__list">
+            {visiblePhone.map((phone) => (
+              <li
+                className="phones__item"
+                data-cy="item"
+                key={phone.id}
+              >
+                <ProductCard phone={phone} />
+              </li>
+            ))}
+          </ul>
 
-        <PaginationButton
-          total={phones.length}
-          itemOnPage={itemOnPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </div>
-    </section>
+          {visiblePhone.length > 5 && (
+            <PaginationButton
+              total={phones.length}
+              itemOnPage={itemOnPage}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
+        </div>
+      </section>
+    </main>
   );
 };

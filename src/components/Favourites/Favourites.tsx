@@ -20,47 +20,49 @@ export const Favourites = () => {
         .toLowerCase()));
 
   return (
-    <section>
-      <div className="container">
-        <HomeIcon title="Favourites" />
+    <main>
+      <section>
+        <div className="container">
+          <HomeIcon title="Favourites" />
 
-        {searchInPhones.length > 0 && (
-          <>
-            <h1>Favourites</h1>
-            <p>
-              {`${favouritesPhones.length} items `}
-            </p>
-            <Search
-              query={query}
-              setQuery={setQuery}
-            />
-          </>
-        )}
+          {searchInPhones.length > 0 && (
+            <>
+              <h1>Favourites</h1>
+              <p>
+                {`${favouritesPhones.length} items `}
+              </p>
+              <Search
+                query={query}
+                setQuery={setQuery}
+              />
+            </>
+          )}
 
-        { searchInPhones.length === 0 && (
-          <h2>
-            The favourites is empty
-          </h2>
-        )}
+          { searchInPhones.length === 0 && (
+            <h2>
+              The favourites is empty
+            </h2>
+          )}
 
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-          }}
-          className="phones__list"
-        >
-          {searchInPhones.map((phone) => (
-            <li
-              className="phones__item"
-              data-cy="item"
-              key={phone.id}
-            >
-              <ProductCard phone={phone} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+          <ul
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+            }}
+            className="phones__list"
+          >
+            {searchInPhones.map((phone) => (
+              <li
+                className="phones__item"
+                data-cy="item"
+                key={phone.id}
+              >
+                <ProductCard phone={phone} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </main>
   );
 };

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addAmount, removeAmount, removeCard } from '../../features/cardSlice';
-import close from '../../img/icon/Close.png';
+// import close from '../../img/icon/Close.png';
 import './Card.scss';
 
 export const Card = () => {
@@ -56,11 +56,11 @@ export const Card = () => {
                     aria-label="Decrement value"
                     onClick={() => dispatch(removeCard(phone))}
                   >
-                    <img
+                    {/* <img
                       className="card__icon-close-img"
                       src={close}
                       alt="close"
-                    />
+                    /> */}
                   </button>
                   <div className="card__img">
                     <img className="card__img" src={`${URL}${phone.image}`} alt={phone.name} />
@@ -70,25 +70,20 @@ export const Card = () => {
                   </div>
                   <div className="card__amount">
                     <button
-                      className="card__button"
+                      className="card__button card__button-minus"
                       type="button"
                       aria-label="Decrement value"
                       disabled={phone?.amount === 1}
                       onClick={() => dispatch(removeAmount(phone))}
-                    >
-                      -
-                    </button>
-
+                    />
                     <span className="card__amount-text">{phone?.amount}</span>
 
                     <button
-                      className="card__button"
+                      className="card__button card__button-plus"
                       type="button"
                       aria-label="Increment value"
                       onClick={() => dispatch(addAmount(phone))}
-                    >
-                      +
-                    </button>
+                    />
                   </div>
                   {phone.amount && (
                     <div>
