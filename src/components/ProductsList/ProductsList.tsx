@@ -1,10 +1,9 @@
 import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { sortByOptions, perPageOptions } from '../../variables/selectOptions';
-import { ProductCard } from '../ProductCard';
-import { Select } from '../Select';
 import { Pagination } from '../Pagination';
+import { ProductItems } from './ProductItems';
+import { ProductFilters } from './ProductFilters';
 
 interface Props {
   products: Product[];
@@ -53,16 +52,6 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     return arr;
   }, [products, sortValue, perPageValue, currentPageValue]);
 
-  const getSortOption = useMemo(() => {
-    return sortByOptions.filter((option) => option.value === sortValue)[0];
-  }, [sortValue]);
-
-  const getPerPageOption = useMemo(() => {
-    return perPageOptions.filter((option) => {
-      return option.value === perPageValue;
-    })[0];
-  }, [perPageValue]);
-
   const pagesCount = useMemo(() => {
     const perPage = +perPageValue;
     const isRemainderExist = products.length % perPage > 0;
@@ -75,35 +64,14 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <section className="section products-list">
       <div className="section__container">
-        <div className="products-list__filters">
-          <div className="products-list__filter">
-            <div className="products-list__label">Sort by</div>
-            <Select
-              paramsKey="sort"
-              options={sortByOptions}
-              selectedOption={getSortOption}
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-            />
-          </div>
+        <ProductFilters
+          sortValue={sortValue}
+          perPageValue={perPageValue}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
 
-          <div className="products-list__filter">
-            <div className="products-list__label">Items on page</div>
-            <Select
-              paramsKey="perPage"
-              options={perPageOptions}
-              selectedOption={getPerPageOption}
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-            />
-          </div>
-        </div>
-
-        <div className="products-list__items" data-cy="productList">
-          {filteredProducts.map((product) => (
-            <ProductCard item={product} key={product.id} />
-          ))}
-        </div>
+        <ProductItems items={filteredProducts} />
 
         <Pagination
           total={pagesCount}

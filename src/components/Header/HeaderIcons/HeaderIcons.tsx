@@ -5,7 +5,7 @@ import { MainContext } from '../../../context/MainContext';
 import { HeaderIcons as Icons } from '../../../types/HeaderIcons';
 
 export const HeaderIcons = () => {
-  const { cartItems } = useContext(MainContext);
+  const { favouritesItems, cartItems } = useContext(MainContext);
 
   const headerIcons: Icons[] = useMemo(() => {
     return [
@@ -13,7 +13,7 @@ export const HeaderIcons = () => {
         id: 0,
         path: 'favourites',
         icon: './img/like.svg',
-        counter: 5,
+        counter: favouritesItems.length,
       },
       {
         id: 1,
@@ -22,7 +22,7 @@ export const HeaderIcons = () => {
         counter: cartItems.length,
       },
     ];
-  }, [cartItems]);
+  }, [favouritesItems, cartItems]);
 
   const setActiveClass = ({ isActive }: { isActive: boolean }) => {
     return cn('header__icon', { 'header__icon--active': isActive });

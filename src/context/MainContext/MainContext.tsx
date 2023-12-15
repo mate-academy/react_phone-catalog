@@ -15,6 +15,7 @@ export const MainContext = React.createContext<{
   phones: Product[];
   tablets: Product[];
   accessories: Product[];
+  favouritesItems: Product[];
   cartItems: CartItem[];
   isLoaderActive: boolean;
   isMenuOpen: boolean;
@@ -24,6 +25,7 @@ export const MainContext = React.createContext<{
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
   setTablets: React.Dispatch<React.SetStateAction<Product[]>>;
   setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
+  setFavouritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setIsLoaderActive: React.Dispatch<React.SetStateAction<boolean>>;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,6 +36,7 @@ export const MainContext = React.createContext<{
   phones: [],
   tablets: [],
   accessories: [],
+  favouritesItems: [],
   cartItems: [],
   isLoaderActive: true,
   isMenuOpen: false,
@@ -43,6 +46,7 @@ export const MainContext = React.createContext<{
   setPhones: () => {},
   setTablets: () => {},
   setAccessories: () => {},
+  setFavouritesItems: () => {},
   setCartItems: () => {},
   setIsLoaderActive: () => {},
   setIsMenuOpen: () => {},
@@ -61,9 +65,11 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
+  const [favouritesItems, setFavouritesItems] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
+    setFavouritesItems(getFromStorage('favourites'));
     setCartItems(getFromStorage('cart'));
   }, []);
 
@@ -73,6 +79,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
     document.title = `${PROJECT_NAME} | ${documentTitle}`;
     body.style.overflow = isMenuOpen ? 'hidden' : '';
 
+    setToStorage('favourites', favouritesItems);
     setToStorage('cart', cartItems);
 
     fetchData()
@@ -85,7 +92,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
         );
       })
       .finally(() => setIsLoaderActive(false));
-  }, [documentTitle, isMenuOpen, cartItems]);
+  }, [documentTitle, isMenuOpen, favouritesItems, cartItems]);
 
   const value = useMemo(
     () => ({
@@ -97,6 +104,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setTablets,
       accessories,
       setAccessories,
+      favouritesItems,
+      setFavouritesItems,
       cartItems,
       setCartItems,
       isLoaderActive,
@@ -117,6 +126,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setTablets,
       accessories,
       setAccessories,
+      favouritesItems,
+      setFavouritesItems,
       cartItems,
       setCartItems,
       isLoaderActive,

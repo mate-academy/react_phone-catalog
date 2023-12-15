@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable object-curly-newline */
+/* eslint-disable operator-linebreak */
 import { Link } from 'react-router-dom';
 import { useContext, useCallback, useMemo } from 'react';
 import cn from 'classnames';
@@ -12,7 +13,29 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ item }) => {
-  const { cartItems, setCartItems } = useContext(MainContext);
+  const { favouritesItems, setFavouritesItems, cartItems, setCartItems } =
+    useContext(MainContext);
+
+  const isLikeActive = useMemo(() => {
+    return favouritesItems.some(
+      (favouritesItem) => favouritesItem.id === item.id
+    );
+  }, [item, favouritesItems]);
+
+  const addToFavourites = useCallback(
+    (selectedProduct: Product) => {
+      setFavouritesItems((prevState) => {
+        if (!isLikeActive) {
+          return [...prevState, selectedProduct];
+        }
+
+        return prevState.filter(
+          (prevItem) => prevItem.id !== selectedProduct.id
+        );
+      });
+    },
+    [isLikeActive]
+  );
 
   const isBtnActive = useMemo(() => {
     return cartItems.some((cartItem) => cartItem.product.id === item.id);
@@ -85,10 +108,15 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
           >
             {isBtnActive ? 'Added to cart' : 'Add to cart'}
           </button>
-          <button type="button" className="like-btn">
+          <button
+            data-cy="addToFavorite"
+            type="button"
+            className={cn('like-btn', { 'like-btn--active': isLikeActive })}
+            onClick={() => addToFavourites(item)}
+          >
             <img
               className="like-btn__icon"
-              src="./img/like.svg"
+              src={`./img/${isLikeActive ? 'like_active' : 'like'}.svg`}
               alt="like-btn"
               loading="lazy"
             />

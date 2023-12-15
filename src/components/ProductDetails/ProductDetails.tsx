@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable object-curly-newline */
+/* eslint-disable operator-linebreak */
 /* eslint-disable max-len */
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -15,7 +16,13 @@ interface Props {
 }
 
 export const ProductDetails: React.FC<Props> = ({ item }) => {
-  const { phones, cartItems, setCartItems } = useContext(MainContext);
+  const {
+    phones,
+    favouritesItems,
+    setFavouritesItems,
+    cartItems,
+    setCartItems,
+  } = useContext(MainContext);
   const [activeImg, setActiveImg] = useState('');
 
   useEffect(() => {
@@ -23,6 +30,36 @@ export const ProductDetails: React.FC<Props> = ({ item }) => {
       setActiveImg(item.images[0]);
     }
   }, [item]);
+
+  const isLikeActive = useMemo(() => {
+    return (
+      item &&
+      favouritesItems.some(
+        (favouritesItem) => favouritesItem.itemId === item.id
+      )
+    );
+  }, [item, favouritesItems]);
+
+  const addToFavourites = useCallback(
+    (id: string | null) => {
+      if (id) {
+        const selectedProduct = phones.filter(({ itemId }) => {
+          return itemId === id;
+        })[0];
+
+        setFavouritesItems((prevState) => {
+          if (!isLikeActive) {
+            return [...prevState, selectedProduct];
+          }
+
+          return prevState.filter(
+            (prevItem) => prevItem.id !== selectedProduct.id
+          );
+        });
+      }
+    },
+    [isLikeActive]
+  );
 
   const isBtnActive = useMemo(() => {
     return (
@@ -179,10 +216,17 @@ export const ProductDetails: React.FC<Props> = ({ item }) => {
                 >
                   {isBtnActive ? 'Added to cart' : 'Add to cart'}
                 </button>
-                <button type="button" className="like-btn">
+                <button
+                  data-cy="addToFavorite"
+                  type="button"
+                  className={cn('like-btn', {
+                    'like-btn--active': isLikeActive,
+                  })}
+                  onClick={() => addToFavourites(item && item.id)}
+                >
                   <img
                     className="like-btn__icon"
-                    src="./img/like.svg"
+                    src={`./img/${isLikeActive ? 'like_active' : 'like'}.svg`}
                     alt="like-btn"
                     loading="lazy"
                   />
