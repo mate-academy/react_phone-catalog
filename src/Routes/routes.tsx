@@ -13,27 +13,27 @@ export const Router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: '/',
+        path: '/react_phone-catalog',
         element: <Home />,
       },
       {
-        path: '/:productId',
+        path: '/react_phone-catalog/:productId',
         element: <ProductDetailsPage />,
       },
       {
-        path: '/phones',
+        path: '/react_phone-catalog/phones',
         element: <Phones />,
       },
       {
-        path: '/tablets',
+        path: '/react_phone-catalog/tablets',
         element: <Tablets />,
       },
       {
-        path: '/favourites',
+        path: '/react_phone-catalog/favourites',
         element: <Favorites />,
       },
       {
-        path: '/cart',
+        path: '/react_phone-catalog/cart',
         element: <Cart />,
       },
     ],

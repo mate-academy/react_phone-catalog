@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://petrolozynskyi.github.io/react_phone-catalog/",
+  "baseUrl": "http://localhost:3000",
   "video": true,
   "viewportHeight": 1920,
   "viewportWidth": 1080,
