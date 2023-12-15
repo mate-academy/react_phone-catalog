@@ -2,16 +2,14 @@
 
 import { useState } from 'react';
 import './carousel.scss';
-import ChevrolLeft from './img/Chevron-left.svg';
 
 export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const basePath = '_new/img/';
 
   const images = [
-    `${basePath}banner-accessories.png`,
-    `${basePath}banner-phones.png`,
-    `${basePath}banner-tablets.png`,
+    'banner-accessories.png',
+    'banner-phones.png',
+    'banner-tablets.png',
   ];
 
   const goToSlide = (index: number) => {
