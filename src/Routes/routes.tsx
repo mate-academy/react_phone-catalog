@@ -13,7 +13,7 @@ export const Router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: '/',
+        path: '/react_phone-catalog',
         element: <Home />,
       },
       {
