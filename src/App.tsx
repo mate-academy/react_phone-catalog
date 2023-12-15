@@ -1,7 +1,6 @@
 import './App.scss';
 import './Components/ProductCard/productcard.scss';
-import { RouterProvider } from 'react-router-dom';
-import { AppRouter, Router } from './Routes/routes';
+import { AppRouter } from './Routes/routes';
 
 const App = () => (
   <div className="App">
