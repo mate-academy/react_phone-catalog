@@ -56,6 +56,10 @@
       cursor: pointer;
       transition: color $transition-duration;
 
+      @include onTablet {
+        display: none;
+      }
+
       &:hover {
         color: $gray-primary-color;
       }

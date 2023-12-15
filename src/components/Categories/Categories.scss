@@ -5,10 +5,15 @@
   flex-direction: column;
   gap: 24px;
   margin-bottom: 80px;
+  max-height: 508px;
 
   &__title {
     @extend %h1;
     color: $gray-primary-color;
+
+    @include onTablet {
+      font-size: 24px;
+    }
   }
 
   &__content {
@@ -38,6 +43,10 @@
       color: $gray-primary-color;
       transition: opacity $transition-duration;
 
+      @include onTablet {
+        font-size: 18px;
+      }
+
       &:hover {
         opacity: 0.5;
       }
@@ -46,6 +55,10 @@
     &--amount {
       @extend %body-text;
       color: $gray-secondary-color;
+
+      @include onTablet {
+        font-size: 12px;
+      }
     }
   }
 }

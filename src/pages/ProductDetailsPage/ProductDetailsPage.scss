@@ -9,14 +9,38 @@
     margin-top: 16px;
     @extend %h1;
     color: $gray-primary-color;
+
+    @include onTablet {
+      font-size: 24px;
+    }
   }
 
   &__content {
     display: flex;
     margin-top: 40px;
 
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+      gap: 46px;
+      margin-top: 24px;
+    }
+
+    @include onMobile {
+      gap: 32px;
+      margin-top: 12px;
+    }
+
     &--img-container {
       display: flex;
+
+      @include onTablet {
+        gap: 92px;
+      }
+
+      @include onMobile {
+        gap: 0;
+      }
     }
   }
 
@@ -25,6 +49,14 @@
     flex-direction: column;
     gap: 16px;
     margin-right: 16px;
+
+    @include onTablet {
+      gap: 12px;
+    }
+
+    @include onMobile {
+      gap: 6px;
+    }
 
     &--btn {
       width: 80px;
@@ -36,6 +68,16 @@
       background-color: transparent;
       border: 1px solid $elements-color;
       transition: border $transition-duration;
+
+      @include onTablet {
+        width: 68px;
+        height: 68px;
+      }
+
+      @include onMobile {
+        width: 55px;
+        height: 55px;
+      }
 
       &:hover {
         border: 1px solid $gray-secondary-color;
@@ -56,6 +98,17 @@
     padding: 11px;
     margin-right: 64px;
 
+    @include onTablet {
+      width: 390px;
+      height: 390px;
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      width: 300px;
+      height: 300px;
+    }
+
     &-item {
       max-height: 100%;
     }
@@ -70,6 +123,10 @@
     border-bottom: 1px solid $elements-color;
     margin-bottom: 24px;
 
+    @include onMobile {
+      height: 68px;
+    }
+
     &--title {
       @extend %small-text;
       color: $gray-secondary-color;
@@ -80,6 +137,10 @@
       display: flex;
       gap: 8px;
       margin-bottom: 24px;
+
+      @include onTablet {
+        gap: 12px;
+      }
     }
 
     &--color {
@@ -90,6 +151,11 @@
       border-radius: 50%;
       transition: $transition-duration;
       cursor: pointer;
+
+      @include onTablet {
+        width: 36px;
+        height: 36px;
+      }
 
       &:hover {
         border-color: $gray-primary-color;
@@ -147,8 +213,12 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     gap: 8px;
+
+    @include onMobile {
+      gap: 24px;
+    }
 
     &--add {
       padding: 0;
@@ -199,6 +269,12 @@
     gap: 64px;
     margin-top: 80px;
 
+    @include onTablet {
+      flex-direction: column-reverse;
+      margin-top: 60px;
+      gap: 48px;
+    }
+
     &--title {
       height: 48px;
       border-bottom: 1px solid $elements-color;
@@ -214,6 +290,10 @@
       display: flex;
       flex-direction: column;
       gap: 32px;
+
+      @include onTablet {
+        max-width: none;
+      }
 
       &-title {
         @extend %h3;

@@ -8,6 +8,10 @@
   color: $white-color;
   transition: $transition-duration;
 
+  @include onTablet {
+    width: 140px;
+  }
+
   &:hover {
     box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
   }

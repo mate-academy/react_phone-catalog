@@ -9,17 +9,30 @@
   padding: 24px;
   justify-content: space-between;
 
+  @include onTablet {
+    width: 200px;
+    padding: 8px;
+  }
+
   &__input {
     height: 32px;
     border: none;
     outline: none;
     @extend %text-buttons;
     color: $gray-primary-color;
+
+    @include onTablet {
+      font-size: 12px;
+    }
   }
 
   ::placeholder {
     @extend %text-buttons;
     color: $gray-icons-color;
+
+    @include onTablet {
+      font-size: 12px;
+    }
   }
 
   &__btn {

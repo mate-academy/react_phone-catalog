@@ -74,9 +74,11 @@ export const AccessoriesPage: React.FC = () => {
       {currentItems.length ? (
         <ProductList products={currentItems} />
       ) : (
-        <p className="NoSearchResults">
-          No search results...
-        </p>
+        (!!searchParams.toString().length && (
+          <p className="NoSearchResults">
+            No search results...
+          </p>
+        ))
       )}
 
       {!!filteredProducts.length && pagesAmount !== 1 && (

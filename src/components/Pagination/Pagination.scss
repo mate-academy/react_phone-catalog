@@ -7,6 +7,10 @@
   gap: 16px;
   margin-bottom: 80px;
 
+  @include onMobile {
+    gap: 8px;
+  }
+
   &__btn {
     display: flex;
     justify-content: center;
@@ -27,6 +31,10 @@
     display: flex;
     gap: 6px;
 
+    @include onMobile {
+      flex-wrap: wrap;
+    }
+
     &--link {
       width: 32px;
       height: 32px;
@@ -40,6 +48,11 @@
 
       &:hover {
         border: 1px solid $gray-primary-color;
+      }
+
+      @include onMobile {
+        width: 24px;
+        height: 24px;
       }
     }
   }

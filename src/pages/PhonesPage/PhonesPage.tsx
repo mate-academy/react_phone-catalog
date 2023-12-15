@@ -16,7 +16,6 @@ export const PhonesPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
   const filteredProducts = useMemo(() => {
     return Filter(products, searchParams);
   }, [products, searchParams]);
@@ -25,12 +24,10 @@ export const PhonesPage: React.FC = () => {
   const perPage = +(searchParams.get('perPage') || '') || total;
   const pagesAmount = Math.ceil(total / perPage);
   // const query = searchParams.get('query' || '');
-
   const firstItem = (currentPage * +perPage) - perPage;
   const lastItem = (perPage * currentPage) < total
     ? perPage * currentPage
     : total;
-
   const currentItems = useMemo(() => {
     return filteredProducts.slice(firstItem, lastItem);
   }, [filteredProducts, firstItem, lastItem]);
@@ -57,7 +54,6 @@ export const PhonesPage: React.FC = () => {
           Error: Unable to load data from server!
         </p>
       )}
-
       {!isLoading && !isError && (
         <div className="productPage__content">
           <p className="productPage__amount">
@@ -66,19 +62,22 @@ export const PhonesPage: React.FC = () => {
         </div>
       )}
 
-      <div className="productPage__select">
-        <SelectSortBy />
-        <SelectItems />
-      </div>
+      {!!products.length && (
+        <div className="productPage__select">
+          <SelectSortBy />
+          <SelectItems />
+        </div>
+      )}
 
       {currentItems.length ? (
         <ProductList products={currentItems} />
       ) : (
-        <p className="NoSearchResults">
-          No search results...
-        </p>
+        (!!searchParams.toString().length && (
+          <p className="NoSearchResults">
+            No search results...
+          </p>
+        ))
       )}
-
       {!!filteredProducts.length && pagesAmount !== 1 && (
         <Pagination
           currentPage={currentPage}

@@ -5,6 +5,7 @@
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 .main {
@@ -16,5 +17,16 @@
   &__container {
     width: 100%;
     max-width: 1136px;
+
+    @include onTablet {
+      max-width: 750px;
+      margin: 0 64px;
+    }
+
+    @include onMobile {
+      max-width: 600px;
+      min-width: 320px;
+      margin: 0 16px;
+    }
   }
 }

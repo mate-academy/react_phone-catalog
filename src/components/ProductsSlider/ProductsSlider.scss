@@ -10,6 +10,10 @@
   justify-content: center;
   margin-bottom: 80px;
 
+  @include onTablet {
+    height: 465px;
+  }
+
   &__header {
     display: flex;
     width: 100%;
@@ -19,6 +23,10 @@
     &--title {
       @extend %h1;
       color: $gray-primary-color;
+
+      @include onTablet {
+        font-size: 24px;
+      }
     }
   }
 
@@ -46,10 +54,18 @@
   }
 
   &__content {
+    margin: 0 auto;
     height: 100%;
     overflow: hidden;
-    width: 100%;
-    // width: calc((272px + 16px) * 4);
+    width: calc((272px + 16px) * 4);
+
+    @include onTablet {
+      width: calc((220px + 16px) * 3);
+    }
+
+    @include onMobile {
+      width: calc((220px + 16px) * 2);
+    }
   }
 
   &__list {

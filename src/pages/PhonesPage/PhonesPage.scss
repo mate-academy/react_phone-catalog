@@ -30,9 +30,11 @@
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-top: 24px;
   border: 1px solid $gray-icons-color;
   border-radius: 10px;
   color: $gray-primary-color;
   @extend %h2;
+  padding: 30px;
 }

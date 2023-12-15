@@ -13,12 +13,28 @@
     max-width: 100%;
     display: flex;
     gap: 16px;
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onMobile {
+      height: 250px;
+    }
   }
 
   &__container {
     height: 100%;
     width: 1040px;
     overflow: hidden;
+
+    @include onTablet {
+      width: 654px;
+    }
+
+    @include onMobile {
+      width: 504px;
+    }
   }
 
   &__list {
@@ -44,7 +60,7 @@
   &__button {
     box-sizing: border-box;
     width: 32px;
-    height: 400px;
+    max-height: 100%;
     background: none;
     border: 1px solid $gray-icons-color;
     cursor: pointer;
