@@ -9,31 +9,31 @@ import Cart from '../Components/Cart/cart';
 
 export const Router = createBrowserRouter([
   {
-    path: '/',
+    path: '/react_phone-catalog',
     element: <MainLayout />,
     children: [
       {
-        path: '/react_phone-catalog',
+        path: '/',
         element: <Home />,
       },
       {
-        path: '/react_phone-catalog/:productId',
+        path: '/:productId',
         element: <ProductDetailsPage />,
       },
       {
-        path: '/react_phone-catalog/phones',
+        path: '/phones',
         element: <Phones />,
       },
       {
-        path: '/react_phone-catalog/tablets',
+        path: '/tablets',
         element: <Tablets />,
       },
       {
-        path: '/react_phone-catalog/favourites',
+        path: '/favourites',
         element: <Favorites />,
       },
       {
-        path: '/react_phone-catalog/cart',
+        path: '/cart',
         element: <Cart />,
       },
     ],
