@@ -7,9 +7,9 @@ export const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
-    'banner-accessories.png',
-    'banner-phones.png',
-    'banner-tablets.png',
+    'img/banner-accessories.png',
+    'img/banner-phones.png',
+    'img/banner-tablets.png',
   ];
 
   const goToSlide = (index: number) => {
