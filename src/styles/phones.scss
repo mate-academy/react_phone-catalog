@@ -1,0 +1,19 @@
+.phones {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+.phones-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+}

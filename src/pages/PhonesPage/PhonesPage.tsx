@@ -14,6 +14,8 @@ import { SortDropdown } from '../../components/Dropdowns/SortDropdown';
 import {
   ItemsPerPageDropdown,
 } from '../../components/Dropdowns/ItemsPerPageDropdown';
+import homeImage from '../../images/home.svg';
+import arrowRight from '../../images/arrow-right-secondary-color.svg';
 
 export const PhonesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,10 +25,6 @@ export const PhonesPage: React.FC = () => {
   const [sortField, setSortField] = useState('Newest');
 
   const location = useLocation();
-
-  // console.log(itemsPerPage);
-
-  // console.log(location);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,41 +57,43 @@ export const PhonesPage: React.FC = () => {
 
   return (
     <>
-      <div>
-        <i />
-        <h3>{location.pathname}</h3>
-      </div>
-      <h1>Mobile phones</h1>
-      <h1>{sortField}</h1>
-      <div className="dropdowns-container">
-        <SortDropdown setSortField={setSortField} currentField={sortField} />
-        <ItemsPerPageDropdown
-          setItemsPerPage={setItemsPerPage}
-          currentAmount={itemsPerPage}
-          length={phones.length}
-        />
-      </div>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className="phones-container">
-          {currentItems.map(phone => (
-            <Card card={phone} discount key={phone.id} />
-          ))}
+      <div className="phones">
+        <div className="path">
+          <img src={homeImage} alt="home_icon" />
+          <img src={arrowRight} alt="arrow_right" />
+          <h3>{location.pathname.slice(1)}</h3>
         </div>
-      )}
-      {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="next >"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-        />
-      )}
-
+        <h1 className="phones__title">Mobile phones</h1>
+        <h3 className="phones__subtitle">95 models</h3>
+        <div className="dropdowns-container">
+          <SortDropdown setSortField={setSortField} currentField={sortField} />
+          <ItemsPerPageDropdown
+            setItemsPerPage={setItemsPerPage}
+            currentAmount={itemsPerPage}
+            length={phones.length}
+          />
+        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className="phones-container">
+            {currentItems.map(phone => (
+              <Card card={phone} discount key={phone.id} />
+            ))}
+          </div>
+        )}
+        {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel=""
+            renderOnZeroPageCount={null}
+          />
+        )}
+      </div>
     </>
   );
 };

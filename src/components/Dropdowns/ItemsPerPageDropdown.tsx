@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { useBlur } from '../../helpers/hooks/UseBlur';
 
 type Props = {
   setItemsPerPage: (newAmount: number) => void,
@@ -14,6 +15,7 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
   length = 100,
 }) => {
   const [isListVisible, setIsListVisible] = useState(false);
+  const dropdownRef = useBlur(() => setIsListVisible(false));
 
   const handleClick = () => {
     setIsListVisible(!isListVisible);
@@ -25,8 +27,6 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
     { field: '4', id: 3 },
     { field: 'all', id: 4 },
   ];
-
-  // console.log(length);
 
   const handleSelect = (amount: string) => {
     if (amount === 'all') {
@@ -49,42 +49,38 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
   return (
     <div
       data-cy="UserSelector"
-      className="dropdown is-active"
+      className="dropdown"
+      ref={dropdownRef}
     >
-      <div className="dropdown-trigger">
-        <button
-          type="button"
-          className="button"
-          aria-haspopup="true"
-          aria-controls="dropdown-menu"
-          onClick={handleClick}
-        >
-          <span>{currentAmount || 'All'}</span>
+      <button
+        type="button"
+        className={classNames('dropdown__button dropdown__button--select', {
+          'dropdown__button--focused': isListVisible,
+        })}
+        aria-haspopup="true"
+        aria-controls="dropdown-menu"
+        onClick={handleClick}
+        onBlur={() => handleClick}
+      >
+        <span>{currentAmount <= 16 ? currentAmount : 'All'}</span>
 
-          <span className="icon is-small">
-            <i className="fas fa-angle-down" aria-hidden="true" />
-          </span>
-        </button>
-      </div>
+      </button>
 
-      <div className="dropdown-menu" id="dropdown-menu" role="menu">
-        {isListVisible && (
-          <div className="dropdown-content">
-            {values.map(option => (
-              <Link
-                onClick={() => handleSelect(option.field)}
-                className={classNames('dropdown-item', {
-                  'is-active': currentAmount && currentAmount === +option.field,
-                })}
-                key={option.id}
-                to="."
-              >
-                {option.field}
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
+      {isListVisible && (
+        <div className="option-container">
+          {values.map(option => (
+            <Link
+              role="button"
+              onClick={() => handleSelect(option.field)}
+              className="dropdown__button dropdown__button--option"
+              key={option.id}
+              to="."
+            >
+              {option.field}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

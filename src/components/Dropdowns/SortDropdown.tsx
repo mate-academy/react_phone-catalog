@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { useBlur } from '../../helpers/hooks/UseBlur';
 
 type Props = {
   setSortField: (newField: string) => void,
@@ -12,6 +13,7 @@ export const SortDropdown: React.FC<Props> = ({
   currentField,
 }) => {
   const [isListVisible, setIsListVisible] = useState(false);
+  const dropdownRef = useBlur(() => setIsListVisible(false));
 
   const handleClick = () => {
     setIsListVisible(!isListVisible);
@@ -38,32 +40,27 @@ export const SortDropdown: React.FC<Props> = ({
     <div
       data-cy="UserSelector"
       className="dropdown"
+      ref={dropdownRef}
     >
-      {/* <div className="dropdown__button-wrapper"> */}
       <button
         type="button"
         aria-haspopup="true"
         aria-controls="dropdown-menu"
         onClick={handleClick}
-        onBlur={() => handleClick}
         className={classNames('dropdown__button dropdown__button--select', {
           'dropdown__button--focused': isListVisible,
         })}
       >
         <span>{currentField || 'Choose a option'}</span>
       </button>
-      {/* </div> */}
 
-      {/* <div className="dropdown-menu" id="dropdown-menu" role="menu"> */}
       {isListVisible && (
         <div className="option-container">
           {options.map(option => (
             <Link
+              role="button"
               onClick={() => handleSelect(option.field)}
               className="dropdown__button dropdown__button--option"
-              // className={classNames('dropdown-item', {
-              //   'is-active': currentField && currentField === option.field,
-              // })}
               key={option.id}
               to="."
             >
@@ -72,7 +69,6 @@ export const SortDropdown: React.FC<Props> = ({
           ))}
         </div>
       )}
-      {/* </div> */}
     </div>
   );
 };

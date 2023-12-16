@@ -6,6 +6,9 @@
 @import './styles/swiper.scss';
 @import './styles/slick.scss';
 @import './styles/category.scss';
+@import './styles/icons.scss';
+@import './styles/path.scss';
+@import './styles/phones.scss';
 
 @font-face {
   font-family: Mont;
@@ -23,6 +26,15 @@
   font-family: Mont;
   src: url(./assets/fonts/Mont-Bold.otf);
   font-weight: bold;
+}
+
+@mixin buttonBorder {
+  border: 1px solid $gray-secondary;
+    transition: border-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
 }
 
 iframe {
@@ -48,13 +60,6 @@ iframe {
   justify-content: center;
 }
 
-.phones-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  column-gap: 16px;
-}
-
 .card {
   grid-column: span 6;
   margin-bottom: 40px;
@@ -70,70 +75,39 @@ iframe {
   justify-content: center;
 }
 
-// .sort-by {
-//   grid-column: span 4;
-//   background-image: url('../src/images/arrow-down.svg');
-//   background-repeat: no-repeat;
-//   background-position: right;
-
-//   :focus {
-//     border: none;
-//   }
-// }
-
-// select {
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   appearance: none;
-// }
-
-// select::-ms-expand {
-//   display: none;
-// }
-
-// .buttons {
-//   font-size: 14px;
-//   font-weight: 600;
-//   line-height: 21px;
-//   border: 1px solid $gray-secondary;
-//   transition: border-color $effect-duration $animation-timing-function;
-
-//   &:hover {
-//     border-color: $gray-primary;
-//   }
-
-//   &__item {
-//     height: 140px;
-//     color: $gray-secondary;
-//     font-weight: 500;
-//     line-height: 40px;
-
-//     &:hover {
-//       color: $gray-primary;
-//       background-color: $bg-white;
-//     }
-//   }
-// }
-
 .dropdowns-container {
   height: 40px;
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: 16px;
+  margin-bottom: 24px;
+
+}
+
+.option-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $gray-secondary;
+  z-index: 2;
 }
 
 .dropdown {
   grid-column: span 4;
 
-
   &__button {
     height: 40px;
     width: 100%;
+    background-color: $white;
+    text-decoration: none;
+    color: $gray-primary;
 
     &--select {
       background-image: url('../src/images/arrow-down.svg');
       background-repeat: no-repeat;
       background-position: right;
+      margin-bottom: 4px;
+      @include buttonBorder;
     }
 
     &--focused {
@@ -141,8 +115,12 @@ iframe {
     }
 
     &--option {
-      // display: block;
+      color: $gray-secondary;
+
+      &:hover {
+        background-color: $bg-white;
+        color: $gray-primary;
+      }
     }
   }
 }
-
