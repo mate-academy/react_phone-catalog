@@ -1,0 +1,32 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.footer {
+  &__container {
+    @include inline-padding-control;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: 96px;
+    box-shadow: 0 -1px 0 0 $border-color;
+    align-items: center;
+  }
+
+  &__toTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__p {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  }
+
+  &__logo {
+    @extend %logo;
+  }
+}

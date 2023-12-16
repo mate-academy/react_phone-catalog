@@ -1,0 +1,31 @@
+export interface ProductType {
+  id: string,
+  category: string,
+  phoneId: string,
+  itemId: string,
+  name: string,
+  fullPrice: number,
+  price: number,
+  screen: string,
+  capacity: string,
+  color: string,
+  ram: string,
+  year: number,
+  image: string,
+}
+
+// {
+//   "id": "1",
+//   "category": "phones",
+//   "phoneId": "apple-iphone-7-32gb-black",
+//   "itemId": "apple-iphone-7-32gb-black",
+//   "name": "Apple iPhone 7 32GB Black",
+//   "fullPrice": 400,
+//   "price": 375,
+//   "screen": "4.7' IPS",
+//   "capacity": "32GB",
+//   "color": "black",
+//   "ram": "2GB",
+//   "year": 2016,
+//   "image": "img/phones/apple-iphone-7/black/00.jpg"
+// },

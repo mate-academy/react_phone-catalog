@@ -1,0 +1,62 @@
+@import './../../style/extends';
+
+.dropdown {
+  position: relative;
+  &__category {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  };
+
+  &__button {
+    @extend %body-text;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+    height: 40px;
+    border: 1px solid $border-color;
+    background-color: #fff;
+    cursor: pointer;
+
+    &--sort {
+      width: 176px;
+    }
+
+    &--pages {
+      width: 128px;
+    }
+  };
+
+  &__list {
+    @extend %body-text;
+    
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    z-index: 3;
+    top: 60px;
+    border: 1px solid $shadow-color;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    background-color: #fff;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  };
+
+  &__item {
+    padding-left: 12px;
+    display: inline-block;
+  };
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-text-color;
+    line-height: 32px;
+  }
+}

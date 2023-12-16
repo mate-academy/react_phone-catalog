@@ -1,1 +1,10 @@
-// not empty
+@import './style/mixins';
+@import './style/reset';
+@import './style/extends';
+
+.app {
+  &__main {
+    @include inline-padding-control;
+    @extend %main-style;
+  }
+}

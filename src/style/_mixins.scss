@@ -1,0 +1,94 @@
+@import './variables';
+
+@mixin on-phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin on-big-desktop {
+  @media (min-width: $big-desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin inline-padding-control {
+  padding-inline: 20px;
+
+  @include on-tablet {
+    padding-inline: 72px;
+  }
+
+  @media (min-width: $big-desktop-min-width) {
+    padding-inline: 152px;
+    max-width: 1440px;
+    width: 100vw;
+  }
+}
+
+@mixin page-grid {
+  --colums: 2;
+
+  display: grid;
+  column-gap: 24px;
+  grid-template-columns: repeat(var(--colums), 1fr);
+
+  @include on-tablet {
+    --colums: 6;
+  }
+
+  @include on-desktop {
+    // --colums: 12;
+    --colums: 24;
+
+    column-gap: 16px;
+  }
+
+  @include on-big-desktop {
+    --colums: 24;
+    
+    column-gap: 16px;
+  }
+}
+
+;
+
+@mixin navigation-style {
+  .is-active {
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      display: block;
+      bottom: -22px;
+      background-color: $main-text-color;
+      border-radius: 3px;
+    }
+
+    color: $main-text-color;
+  }
+}
+
+;
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 300ms;
+
+  &:hover {
+    #{$_property}: $_toValue;
+    @content;
+  }
+}

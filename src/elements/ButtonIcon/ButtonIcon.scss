@@ -1,0 +1,124 @@
+@import './../../style/mixins';
+
+.buttonIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont-Semibold, $fallback-fonts;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  outline: none;
+  height: 32px;
+  width: 32px;
+  background-color: $main-bg-color;
+  border: 1px solid $border-color;
+  cursor: pointer;
+
+  @include hover(border-color, $main-text-color);
+
+  &--big {
+    height: 40px;
+    width: 40px;
+  }
+
+  &--large {
+    height: 400px;
+  }
+
+  &--shadow {
+    border: none;
+    box-shadow: -1px 1px 0 0 $shadow-color;
+  }
+
+  &--no-border {
+    border: none;
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &__icon-keeper {
+    @include hover(transform, scale(1.1));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    &--big {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 16px;
+    width: 16px;
+
+    &--cart {
+      background-image: url(./../../assets/icons/cart.svg);
+    }
+
+    &--close {
+      background-image: url(./../../assets/icons/close.svg);
+    }
+
+    &--down {
+      background-image: url(./../../assets/icons/down.svg);
+    }
+
+    &--heart {
+      background-image: url(./../../assets/icons/heart.svg);
+    }
+
+    &--heart-active {
+      background-image: url(./../../assets/icons/heart-active.svg);
+    }
+
+    &--home {
+      background-image: url(./../../assets/icons/home.svg);
+    }
+
+    &--left {
+      background-image: url(./../../assets/icons/left.svg);
+    }
+
+    &--left-light {
+      background-image: url(./../../assets/icons/left-light.svg);
+    }
+
+    &--loop {
+      background-image: url(./../../assets/icons/loop.svg);
+    }
+
+    &--minus {
+      background-image: url(./../../assets/icons/minus.svg);
+    }
+
+    &--plus {
+      background-image: url(./../../assets/icons/plus.svg);
+    }
+
+    &--right {
+      background-image: url(./../../assets/icons/right.svg);
+    }
+
+    &--right-light {
+      background-image: url(./../../assets/icons/right-light.svg);
+    }
+
+    &--up {
+      background-image: url(./../../assets/icons/up.svg);
+    }
+
+    &--up-light {
+      background-image: url(./../../assets/icons/up-light.svg);
+    }
+  }
+}

@@ -1,0 +1,95 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.productCard {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid $shadow-color;
+  width: 272px;
+  text-decoration: none;
+  color: $main-text-color;
+
+  &__image-container {
+    margin: 32px 32px 0;
+
+    display: flex;
+    justify-content: center;
+  };
+
+  &__image {
+    height: 208px;
+  };
+
+  &__content {
+    margin-inline: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__name-container {
+    margin-top: 24px;
+    height: 42px;
+    display: flex;
+    align-content: flex-start
+  }
+
+  &__name {
+    @extend %body-text;
+  };
+
+  &__prices {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+  };
+
+  &__price {
+    @extend %h2
+  };
+
+  &__fullprice {
+    font-size: 22px;
+    font-weight: 500;
+    color: $secondary-text-color;
+    text-decoration-line: line-through;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 4px;
+    position: relative;
+  };
+
+  &__line {
+    background-color: $shadow-color;
+    width: 100%;
+    height: 1px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__detail {
+    @extend %small-text;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__detail-name {
+    color: $secondary-text-color;
+  };
+
+  &__detail-model {
+    text-align: right;
+  };
+
+  &__buttons {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+  }
+};

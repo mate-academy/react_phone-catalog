@@ -1,0 +1,8 @@
+@import './../../style/mixins';
+
+.productsList {
+  @include page-grid;
+
+  row-gap: 40px;
+  margin-top: 24px;
+}

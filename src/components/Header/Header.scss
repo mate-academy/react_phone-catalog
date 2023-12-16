@@ -1,0 +1,26 @@
+@import './../../style/variables';
+@import './../../style/extends';
+
+.header{
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 1px 0 0 $shadow-color;
+  };
+
+  &__left {
+    display: flex;
+    align-items: center;
+  };
+
+  &__icons {
+    display: flex;
+  };
+
+  &__logo{
+    margin-left: 24px;
+
+    @extend %logo;
+  }
+};

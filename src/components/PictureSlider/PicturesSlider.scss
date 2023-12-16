@@ -1,0 +1,16 @@
+.picture-slider {
+  display: flex;
+  gap: 16px;
+
+  &__slides {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__img {
+    width: inherit;
+    height: 400px;
+  }
+}

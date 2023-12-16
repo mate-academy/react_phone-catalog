@@ -1,0 +1,35 @@
+@import './../../style/variables';
+@import './../../style/mixins';
+
+.buttonTexted {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont-Semibold, $fallback-fonts;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  outline: none;
+  height: 40px;
+  width: 176px;
+  background-color: $main-text-color;
+  border: none;
+  color: $main-bg-color;
+  text-align: center;
+
+
+    @include hover(background-color, $main-text-color);
+
+    &--active {
+      background: $main-bg-color;
+    }
+
+  &__text-active {
+    color: $secondary-accent-color;
+  }
+
+  &:hover > * {
+    color: $main-bg-color;
+  }
+}
+

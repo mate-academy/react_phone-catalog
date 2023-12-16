@@ -1,5 +1,10 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { Root } from './Root';
+import { ProductsProvider } from './store/ProductsContext';
 
 createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+  .render(
+    <ProductsProvider>
+      <Root />
+    </ProductsProvider>,
+  );

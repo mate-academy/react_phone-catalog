@@ -1,0 +1,34 @@
+@import './../style/extends';
+
+.page {
+  &__section {
+    margin-top: 105px;
+  }
+
+  &__title-h1 {
+    @extend %h1;
+  }
+
+  &__categiries {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__picture-slider {
+    margin-top: 40px;
+  }
+
+  &__prodCount {
+    @extend %body-text;
+
+    margin-top: 8px;
+    color: $secondary-text-color;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+  }
+};

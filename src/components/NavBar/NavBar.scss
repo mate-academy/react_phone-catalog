@@ -1,0 +1,28 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.navBar {
+  padding-left: 64px;
+
+  &__list {
+    display: flex;
+    gap: 64px;
+    height: fit-content;
+  }
+
+  &__item {
+    @include navigation-style;
+
+    &:not(:has(>.is-active)) {
+      @include hover(transform, scale(1.1));
+    }
+
+    position: relative;
+  }
+
+  &__link {
+    @extend %upper-case;
+
+    text-decoration: none;
+  }
+}
