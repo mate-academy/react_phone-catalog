@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
-  Navigation, EffectFade, Pagination, Autoplay,
+  Navigation, Pagination, Autoplay,
 } from 'swiper';
 import 'swiper/swiper.scss'; // core Swiper
 import 'swiper/modules/navigation/navigation.scss'; // Navigation module
@@ -31,12 +31,11 @@ export const Carousel: React.FC = () => {
               nextEl: '.carousel__button--next',
               prevEl: '.carousel__button--prev',
             }}
-            effect="fade"
             pagination={{ clickable: true }}
             slidesPerView={1}
             loop
-            autoplay={{ delay: 500 }}
-            modules={[EffectFade, Navigation, Pagination, Autoplay]}
+            autoplay={{ delay: 2500 }}
+            modules={[Navigation, Pagination, Autoplay]}
             className="mySwiper"
           >
             {images.map((image, index) => (
