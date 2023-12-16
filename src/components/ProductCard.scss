@@ -1,0 +1,91 @@
+.product-card {
+  grid-column: span 6;
+  box-sizing: border-box;
+  border: 1px solid #{$gray-border};
+  padding: 24px;
+  height: 507px;
+  width: 272px;
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    margin: 8px;
+    object-fit: contain;
+  }
+  &__name {
+    margin-top: 16px;
+    color: #{$gray};
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    height: 42px;
+  }
+  &__price {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    &-fullPrice {
+      margin-left: 8px;
+      color: #{$gray-secondary};
+      font-family: "Mont", sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration-line:line-through;
+    }
+  }
+  &__line {
+    height: 1px;
+    width: 224px;
+    background-color: #{$gray-border};
+    margin-top: 6.5px;
+    margin-bottom: 16px;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    &-label {
+      color: #{$gray-secondary};
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    &-value {
+      color: #{$gray};
+      text-align: right;
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    &-cart {
+      &--addedToCart {
+        color: #{$green};
+        background-color: #{$white};
+        border: 1px solid #{$gray-four};
+      }
+    }
+    &-favourites {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}

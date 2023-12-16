@@ -1,1 +1,18 @@
-// not empty
+@import "fonts";
+@import "./helpers/variables.scss";
+@import "./helpers/mixins.scss";
+@import "./helpers/controls.scss";
+@import "./components/Loader.scss";
+@import "./components/Header.scss";
+@import "./components/Footer.scss";
+@import "./components/Banner.scss";
+@import "./pages/HomePage.scss";
+@import "./components/ProductsSlider.scss";
+@import "./components/ProductCard.scss";
+@import "./components/ShopByCategory.scss";
+@import "./pages/PhonesPage.scss";
+@import "./components/ProductList.scss";
+
+body {
+  box-sizing: border-box;
+}

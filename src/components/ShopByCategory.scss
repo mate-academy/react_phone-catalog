@@ -1,0 +1,70 @@
+.shopBy {
+  grid-column: 1/25;
+  @include grid();
+
+  &__container{
+    grid-column: span 8;
+
+    &--link {
+      overflow: hidden;
+      position: absolute;
+      width: 368px;
+      height: 368px;
+
+      object-fit: contain;
+      &-phones {
+        background-color: #{$phones};
+      }
+      &-tablets {
+        background-color: #{$tablets};
+      }
+      &-accessories {
+        background-color: #{$accessories};
+      }
+      &-image {
+        &-phones {
+          position: relative;
+          left: 78px;
+          top: 8px;
+          width: 386px;
+          height: 457px;
+        }
+        &-tablets {
+          position: relative;
+          left: 22px;
+          top: 20px;
+          width: 546px;
+          height: 546px;
+          object-fit: cover;
+          object-position: left;
+        }
+        &-accessories {
+          position: relative;
+          left: 50px;
+          top: 55px;
+          height: 85%;
+          object-fit: cover;
+          object-position: left;
+        }
+
+      }
+    }
+    &--title {
+      color: #{$gray};
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-top: 400px;
+    }
+    &--description {
+      color: #{$gray-secondary};
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+}
