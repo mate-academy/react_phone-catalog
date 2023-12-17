@@ -55,7 +55,7 @@
 
     &--right {
       background-image: url(../../img/icon/ArrowRight.png);
-      margin-right: 20px;
+      // margin-right: 20px;
 
       &:hover {
         border: 1px solid $gray-primary;
@@ -76,14 +76,16 @@
     width: 100%;
   }
 
-  // @include onDesktop {
-  //   margin: 0 ;
-  // }
+  @include onDesktop {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
-.swiper-horizontal,
-.swiper-pagination-bullets,
-.swiper-pagination-bullet,
-.swiper-pagination-horizontal {
-  margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 0);
+.swiper-wrapper:nth-child(4n) {
+  margin-right: 0 !important;
+}
+
+.swiper-slide {
+  justify-content: center;
 }

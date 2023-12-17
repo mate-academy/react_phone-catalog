@@ -41,16 +41,19 @@ export const HotPrice = () => {
               prevEl: '.hot__button--left',
             }}
             slidesPerView={1}
-            spaceBetween={6}
+            spaceBetween={40}
             breakpoints={{
               640: {
                 slidesPerView: 2,
+                spaceBetween: 50,
               },
               900: {
                 slidesPerView: 3,
+                spaceBetween: 50,
               },
               1280: {
                 slidesPerView: 4,
+                spaceBetween: 0,
               },
             }}
             modules={[EffectFade, Navigation, Pagination]}

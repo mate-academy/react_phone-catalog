@@ -2,31 +2,33 @@
 
 .search {
   box-sizing: border-box;
-  position: relative;
-  top: 21%;
-  right: 9%;
+  display: block;
   width: min-content;
   background: #fff;
   box-shadow: -1px 0 0 0 0 #e2e6e9;
-  margin: 20px 10px;
-  border-radius: 5%;
-  border-left: 1px solid rgba(226, 230, 233, 1);
+  margin: 20px auto;
+  border: 1px solid rgba(226, 230, 233, 1);
+
+  @include onTablet {
+    margin: 20px 0;
+  }
 
   @include onDesktop {
     position: absolute;
     top: 0;
-    right: 140px;
+    right: 13%;
     margin: 0;
     border-radius: 0%;
+    border: none;
+    border-left: 1px solid rgba(226, 230, 233, 1);
   }
 
   &__container {
     display: flex;
-    // justify-content: space-between;
   }
 
   &__input {
-    padding: 21px;
+    padding: 10px;
     color: #b4bdc3;
     font-size: 14px;
     font-weight: 600;
@@ -37,12 +39,19 @@
     &::placeholder {
       color: #b4bdc3;
     }
+
+    @include onDesktop {
+      padding: 21px;
+    }
   }
 
   &__icon {
     height: 16px;
     width: 16px;
-    padding: 24px;
-    // box-shadow: -1px 1px 1px 1px #e2e6e9;
+    padding: 10px;
+
+    @include onDesktop {
+      padding: 24px;
+    }
   }
 }

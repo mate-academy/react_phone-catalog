@@ -168,7 +168,6 @@
 
 .headercontainer {
   padding: 0 10px 50px;
-  max-width: 1440px;
 
   @include onTablet {
     padding: 0 0 60px;
@@ -176,6 +175,10 @@
 
   @include onDesktop {
     padding: 0;
+    justify-content: center;
+  }
+
+  @media (min-width: 1441px) {
     margin: 0 auto;
   }
 }

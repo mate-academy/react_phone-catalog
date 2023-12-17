@@ -23,9 +23,8 @@ export const PaginationButton: React.FC<Props> = ({
   total, setCurrentPage, currentPage, itemOnPage,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  // const itemOnPage = +(searchParams.get('itemOnPage ') || 4);
-  // const currentPage = +(searchParams.get('currentPage') || 1);
   const pages = getNumbers(1, Math.ceil(total / itemOnPage)).map(page => page);
+
   const handlePageChange = (page: number) => () => {
     if (page !== currentPage && page > 0 && page <= pages.length) {
       const params = new URLSearchParams(searchParams);
@@ -35,6 +34,16 @@ export const PaginationButton: React.FC<Props> = ({
       setCurrentPage(page);
     }
   };
+
+  const lengthArray = new Array(total)
+    .fill(total).map((_, i) => i + 1);
+
+  let preperaPagination = lengthArray
+    .slice(+currentPage - 3, +currentPage + 2);
+
+  if (+currentPage <= 3) {
+    preperaPagination = [1, 2, 3, 4, 5];
+  }
 
   return (
     <ul className="pagination__button">
@@ -49,7 +58,7 @@ export const PaginationButton: React.FC<Props> = ({
           «
         </Link>
       </li>
-      {pages.map((page) => (
+      {preperaPagination.map((page) => (
         <li
           className={cn('pagination__item', {
             'pagination__item-active': page === currentPage,
