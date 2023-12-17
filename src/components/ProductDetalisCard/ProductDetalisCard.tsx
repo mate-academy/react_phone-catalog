@@ -139,7 +139,7 @@ export const ProductDetalisCard: React.FC<Props> = ({ product }) => {
 
         <div className="product-details-card__main-img-container">
           <img
-            src={`./_new/${images[imgActive]}`}
+            src={`./new/${images[imgActive]}`}
             alt=""
             className="product-details-card__img"
           />
