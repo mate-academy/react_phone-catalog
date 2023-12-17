@@ -1,38 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useBlur } from '../../helpers/hooks/UseBlur';
+import { SearchLink } from '../SearchLink/SearchLink';
 
-type Props = {
-  setSortField: (newField: string) => void,
-  currentField: string,
+type Option = {
+  field: string,
+  id: number,
+  value: SortField,
 };
 
-export const SortDropdown: React.FC<Props> = ({
-  setSortField = () => { },
-  currentField,
-}) => {
+export enum SortField {
+  AGE = 'age',
+  NAME = 'name',
+  PRICE = 'price',
+}
+
+export const SortDropdown: React.FC = () => {
   const [isListVisible, setIsListVisible] = useState(false);
   const dropdownRef = useBlur(() => setIsListVisible(false));
+  const [optionField, setOptionField] = useState('Newest');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [optionValue, setOptionValue] = useState('age');
+
+  useEffect(() => {
+    switch (searchParams.get('sort')) {
+      case SortField.PRICE:
+        setOptionField('Cheapest');
+
+        break;
+
+      case SortField.NAME:
+        setOptionField('Alphabetically');
+
+        break;
+
+      default:
+        setOptionField('Newest');
+    }
+  }, [searchParams]);
 
   const handleClick = () => {
     setIsListVisible(!isListVisible);
   };
 
   const options = [
-    { field: 'Newest', id: 1 },
-    { field: 'Alphabetically', id: 2 },
-    { field: 'Cheapest', id: 3 },
+    { field: 'Newest', id: 1, value: SortField.AGE },
+    { field: 'Alphabetically', id: 2, value: SortField.NAME },
+    { field: 'Cheapest', id: 3, value: SortField.PRICE },
   ];
 
-  const handleSelect = (option: string) => {
-    if (option === currentField) {
+  const handleSelect = (option: Option) => {
+    const { value } = option;
+
+    if (option.value === searchParams.get('sort')) {
       handleClick();
 
       return;
     }
 
-    setSortField(option);
+    setOptionValue(value);
     setIsListVisible(false);
   };
 
@@ -51,21 +78,21 @@ export const SortDropdown: React.FC<Props> = ({
           'dropdown__button--focused': isListVisible,
         })}
       >
-        <span>{currentField || 'Choose a option'}</span>
+        <span>{optionField || 'Choose a option'}</span>
       </button>
 
       {isListVisible && (
         <div className="option-container">
           {options.map(option => (
-            <Link
+            <SearchLink
               role="button"
-              onClick={() => handleSelect(option.field)}
+              onClick={() => handleSelect(option)}
               className="dropdown__button dropdown__button--option"
               key={option.id}
-              to="."
+              params={{ sort: option.value }}
             >
               {option.field}
-            </Link>
+            </SearchLink>
           ))}
         </div>
       )}

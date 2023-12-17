@@ -9,6 +9,7 @@
 @import './styles/icons.scss';
 @import './styles/path.scss';
 @import './styles/phones.scss';
+@import './styles/pagination.scss';
 
 @font-face {
   font-family: Mont;
@@ -63,16 +64,6 @@ iframe {
 .card {
   grid-column: span 6;
   margin-bottom: 40px;
-}
-
-[role=navigation] {
-  margin-top: -30px;
-  padding-left: 0;
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
 }
 
 .dropdowns-container {

@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 import { useBlur } from '../../helpers/hooks/UseBlur';
+import { SearchLink } from '../SearchLink/SearchLink';
 
 type Props = {
-  setItemsPerPage: (newAmount: number) => void,
   currentAmount: number,
   length: number,
 };
 
 export const ItemsPerPageDropdown: React.FC<Props> = ({
-  setItemsPerPage = () => { },
   currentAmount = 16,
   length = 100,
 }) => {
@@ -22,15 +20,14 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
   };
 
   const values = [
-    { field: '16', id: 1 },
-    { field: '8', id: 2 },
-    { field: '4', id: 3 },
-    { field: 'all', id: 4 },
+    { field: '16', id: 1, value: 16 },
+    { field: '8', id: 2, value: 8 },
+    { field: '4', id: 3, value: 4 },
+    { field: 'all', id: 4, value: length },
   ];
 
   const handleSelect = (amount: string) => {
     if (amount === 'all') {
-      setItemsPerPage(length);
       setIsListVisible(false);
 
       return;
@@ -42,7 +39,6 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
       return;
     }
 
-    setItemsPerPage(+amount);
     setIsListVisible(false);
   };
 
@@ -69,15 +65,15 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
       {isListVisible && (
         <div className="option-container">
           {values.map(option => (
-            <Link
+            <SearchLink
               role="button"
               onClick={() => handleSelect(option.field)}
               className="dropdown__button dropdown__button--option"
               key={option.id}
-              to="."
+              params={{ perPage: option.value.toString() }}
             >
               {option.field}
-            </Link>
+            </SearchLink>
           ))}
         </div>
       )}

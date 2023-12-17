@@ -1,0 +1,69 @@
+
+@mixin buttonBorder {
+  border: 1px solid $gray-secondary;
+    transition: border-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+}
+
+[role=navigation] {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+
+}
+
+[role=navigation]>li>a {
+  @include buttonBorder;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+}
+
+.selected>a {
+  background-color: $gray-primary;
+  color: #fff;
+  border: none !important;
+}
+
+.previous {
+  margin-right: 8px;
+  background-image: url('../images/arrow-left-black.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.previous.disabled {
+  background-image: url('../images/arrow-left.svg');
+}
+
+.previous.disabled>a:hover {
+  border-color: $gray-secondary;
+}
+
+.next {
+  margin-left: 8px;
+  background-image: url('../images/arrow-right-black.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.next.disabled {
+  background-image: url('../images/arrow-right-secondary.svg');
+}
+
+.next.disabled>a:hover {
+  border-color: $gray-secondary;
+}
