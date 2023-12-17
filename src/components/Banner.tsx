@@ -63,8 +63,8 @@ export const Banner = () => {
       <div className="banner--banner">
         <span className="banner--banner--item" style={BannerSlider}>
           <img
-            src="./_new/img/banner-accessories.png"
-            alt="banner"
+            src="img/banner-accessories.png"
+            alt="Banner Accessories"
             className="banner--banner--item-image"
           />
 
@@ -72,8 +72,8 @@ export const Banner = () => {
 
         <span className="banner--banner--item" style={BannerSlider}>
           <img
-            src="./_new/img/banner-phones.png"
-            alt="banner"
+            src="img/banner-phones.png"
+            alt="Banner Phones"
             className="banner--banner--item-image"
           />
 
@@ -81,8 +81,8 @@ export const Banner = () => {
 
         <span className="banner--banner--item" style={BannerSlider}>
           <img
-            src="./_new/img/banner-tablets.png"
-            alt="banner"
+            src="img/banner-tablets.png"
+            alt="Banner Tablets"
             className="banner--banner--item-image"
           />
         </span>

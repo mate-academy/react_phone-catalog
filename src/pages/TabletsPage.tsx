@@ -34,15 +34,14 @@ export const TabletsPage = () => {
           src="./img/arrowRight.svg"
           className="page__path--prev"
         />
-        <span className="page__path--page SmallText">Tablets</span>
+        <span className="page__path--page SmallText">Phones</span>
       </div>
-      <h1 className="page__title h1">Tablets</h1>
+      <h1 className="page__title h1">Mobile phones</h1>
 
       {!tablets && (<Loader />)}
       {tablets && tablets.length > 0 && (
-        <div data-cy="productList">
-          <ProductList products={tablets} />
-        </div>
+        <ProductList products={tablets} />
+
       )}
       {tablets && tablets.length === 0
       && (<NoResults />)}
