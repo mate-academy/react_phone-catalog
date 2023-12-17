@@ -1,0 +1,6 @@
+.noResults {
+  grid-column: 1 / 25;
+  &__message {
+    color: #{$gray-secondary};
+  }
+}

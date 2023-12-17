@@ -62,11 +62,11 @@ export const Header = () => {
           </span>
         </div>
         <NavLink
-          to="/favourites"
+          to="/favorites"
           className={getNavLinkActive('navbar__favourites')}
         >
           <img
-            alt="favourites"
+            alt="favorites"
             src="./img/favourites.svg"
             className="navbar__favourites--image"
           />

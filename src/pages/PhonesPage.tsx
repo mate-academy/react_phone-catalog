@@ -4,7 +4,7 @@ import { PageType, Product } from '../helpers/Types';
 import { ProductList } from '../components/ProductList';
 import { fetchTypeDevice } from '../helpers/Api';
 import { Loader } from '../components/Loader';
-import { NoItems } from '../components/NoItems';
+import { NoResults } from '../components/NoResults';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[] | null>(null);
@@ -36,16 +36,15 @@ export const PhonesPage = () => {
         />
         <span className="page__path--page SmallText">Phones</span>
       </div>
-      <p className="page__title h1">Mobile phones</p>
+      <h1 className="page__title h1">Mobile phones</h1>
 
       {!phones && (<Loader />)}
       {phones && phones.length > 0 && (
-        <ProductList
-          products={phones}
-        />
+        <ProductList products={phones} />
+
       )}
       {phones && phones.length === 0
-      && (<NoItems page={PageType.Phones} />)}
+      && (<NoResults />)}
     </div>
   );
 };

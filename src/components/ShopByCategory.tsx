@@ -11,11 +11,11 @@ export const ShopByCategory = () => {
 
   useEffect(() => {
     setPhones(() => products.filter((item) => (
-      item.category === PageType.Phones)).length);
+      item.type === PageType.Phones)).length);
     setTablets(() => products.filter((item) => (
-      item.category === PageType.Tablets)).length);
+      item.type === PageType.Tablets)).length);
     setAccessories(() => products.filter((item) => (
-      item.category === PageType.Accessories)).length);
+      item.type === PageType.Accessories)).length);
   }, []);
 
   return (

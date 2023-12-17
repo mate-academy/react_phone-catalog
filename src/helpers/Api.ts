@@ -1,14 +1,14 @@
 /* eslint-disable no-console */
 import { PageType, Product } from './Types';
 
-const path = './_new/products.json';
+const path = './api/products.json';
 
 export const fetchData = async (): Promise<Product[]> => {
   try {
     const response = await fetch(path);
     const jsonData = await response.json();
 
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     return jsonData;
   } catch (error) {
@@ -23,10 +23,10 @@ export const fetchTypeDevice
     const response = await fetch(path);
     const jsonData = await response.json();
 
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     const filteredData = jsonData.filter((item: Product) => (
-      item.category === categoryFilter));
+      item.type === categoryFilter));
 
     return filteredData;
   } catch (error) {

@@ -1,11 +1,11 @@
-export type Product = {
+/* export type Product = {
   id: string,
   category: string,
   phoneId: string,
   itemId: string,
   name: string,
   fullPrice: number,
-  price: number,
+  price: ,
   screen: string,
   capacity: string,
   color: string,
@@ -13,11 +13,26 @@ export type Product = {
   year: number,
   image: string,
 };
+*/
 
 export enum PageType {
-  Phones = 'phones',
-  Tablets = 'tablets',
-  Accessories = 'zccessories',
-  Favourites = 'favourites ',
+  Phones = 'phone',
+  Tablets = 'tablet',
+  Accessories = 'accessorie',
+  Favorites = 'favorites',
   Cart = 'cart',
 }
+
+export type Product = {
+  age: number,
+  id: string,
+  type: string,
+  imageUrl: string,
+  name: string,
+  snippet: string,
+  price: number,
+  discount: number,
+  screen: string,
+  capacity: string,
+  ram: string,
+};

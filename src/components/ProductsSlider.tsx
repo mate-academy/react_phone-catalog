@@ -67,7 +67,7 @@ export const ProductsSlider = (
           className="slider__arrow--image "
         />
       </button>
-      <ul className="slider">
+      <ul className="slider" data-cy="cardsContainer">
         {products.map((product) => (
           <ProductCard
             product={product}

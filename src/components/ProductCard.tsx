@@ -11,12 +11,29 @@ export const ProductCard = ({
   product, ProductSlider,
 }: ProductCardProps) => {
   const {
-    id, name, itemId, image, price, fullPrice, screen, capacity, ram,
+    id, name, imageUrl, price, discount, screen, capacity, ram,
   } = product;
 
   const {
     toggleToCart, toggleToFavourites, isInFavourites, isInCart,
   } = useMyContext();
+
+  const getFinalPrice = (startPrice: number, discountPrice: number) => {
+    if (discountPrice <= 0) {
+      return (<>{`$${startPrice}`}</>);
+    }
+
+    const finalPrice = ((startPrice * (100 - discount)) / 100).toFixed(0);
+
+    return (
+      <>
+        {`$${finalPrice}`}
+        <span className="productCard__price-fullPrice h2">
+          {`$${startPrice}`}
+        </span>
+      </>
+    );
+  };
 
   return (
     <li
@@ -24,13 +41,10 @@ export const ProductCard = ({
       className="productCard"
       style={ProductSlider}
     >
-      <img className="productCard__image" alt={itemId} src={`_new/${image}`} />
+      <img className="productCard__image" alt={id} src={imageUrl} />
       <p className="productCard__name BodyText">{name}</p>
       <h2 className="productCard__price h2">
-        {`$${price}`}
-        <span className="productCard__price-fullPrice h2">
-          {`$${fullPrice}`}
-        </span>
+        {getFinalPrice(price, discount)}
       </h2>
       <div className="productCard__line" />
 
@@ -55,9 +69,9 @@ export const ProductCard = ({
             'buttons',
             {
               'productCard__buttons-cart--addedToCart':
-            isInCart(itemId),
+            isInCart(id),
             })}
-          onClick={() => toggleToCart(itemId)}
+          onClick={() => toggleToCart(id)}
         >
           Add to cart
         </button>
@@ -65,9 +79,9 @@ export const ProductCard = ({
         <button
           type="button"
           className="productCard__buttons-favourites buttons"
-          onClick={() => toggleToFavourites(itemId)}
+          onClick={() => toggleToFavourites(id)}
         >
-          {isInFavourites(itemId) ? (
+          {isInFavourites(id) ? (
             <img
               alt="filledFavourites"
               src="./img/filledFavourites.svg"

@@ -15,13 +15,14 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
+
 a {
   text-decoration: none;
   color: #{$white};
 }
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -39,8 +40,8 @@ blockquote, q {
 	quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote::before, blockquote::after,
+q::before, q::after {
 	content: '';
 	content: none;
 }

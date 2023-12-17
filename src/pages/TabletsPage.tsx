@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PageType, Product } from '../helpers/Types';
 import { ProductList } from '../components/ProductList';
 import { fetchTypeDevice } from '../helpers/Api';
 import { Loader } from '../components/Loader';
-import { NoItems } from '../components/NoItems';
+import { NoResults } from '../components/NoResults';
 
 export const TabletsPage = () => {
   const [tablets, setTablets] = useState<Product[] | null>(null);
@@ -19,15 +20,32 @@ export const TabletsPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="page">
+      <div className="page__path">
+        <Link to="/" className="page__path--home">
+          <img
+            alt="arrowTop"
+            src="./img/home.svg"
+            className="page__path--home-image"
+          />
+        </Link>
+        <img
+          alt="arrowTop"
+          src="./img/arrowRight.svg"
+          className="page__path--prev"
+        />
+        <span className="page__path--page SmallText">Tablets</span>
+      </div>
+      <h1 className="page__title h1">Tablets</h1>
+
       {!tablets && (<Loader />)}
       {tablets && tablets.length > 0 && (
-        <ProductList
-          products={tablets}
-        />
+        <div data-cy="productList">
+          <ProductList products={tablets} />
+        </div>
       )}
       {tablets && tablets.length === 0
-      && (<NoItems page={PageType.Tablets} />)}
-    </>
+      && (<NoResults />)}
+    </div>
   );
 };

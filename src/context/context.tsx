@@ -48,41 +48,41 @@ export const MyContextProvider: React.FC<MyContextProviderProps>
 
   const toggleToFavourites = (itemId: string) => {
     const indexInFavourites = favourites.findIndex((item) => (
-      item.itemId === itemId));
+      item.id === itemId));
 
     if (indexInFavourites === -1) {
-      const product = products.find((item) => item.itemId === itemId);
+      const product = products.find((item) => item.id === itemId);
 
       if (product) {
         setFavourites((prev) => [...prev, product]);
       }
     } else {
       setFavourites((prev) => prev.filter((product) => (
-        product.itemId !== itemId)));
+        product.id !== itemId)));
     }
   };
 
   const toggleToCart = (itemId: string) => {
     const indexInCart = cart.findIndex((item) => (
-      item.itemId === itemId));
+      item.id === itemId));
 
     if (indexInCart === -1) {
-      const product = products.find((item) => item.itemId === itemId);
+      const product = products.find((item) => item.id === itemId);
 
       if (product) {
         setCart((prev) => [...prev, product]);
       }
     } else {
       setCart((prev) => prev.filter((product) => (
-        product.itemId !== itemId)));
+        product.id !== itemId)));
     }
   };
 
   const isInFavourites = (itemId: string): boolean => (
-    favourites.findIndex((item) => item.itemId === itemId) !== -1);
+    favourites.findIndex((item) => item.id === itemId) !== -1);
 
   const isInCart = (itemId: string): boolean => (
-    cart.findIndex((item) => item.itemId === itemId) !== -1);
+    cart.findIndex((item) => item.id === itemId) !== -1);
 
   return (
     <MyContext.Provider value={{

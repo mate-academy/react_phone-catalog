@@ -68,7 +68,7 @@ export const ProductList = ({ products }: ProductListProps) => {
       case SortEnum.Newest:
         setSortedProducts((items) => (
           [...items].sort((item, item2) => (
-            item2.year - item.year
+            item2.age - item.age
           ))
         ));
         break;
@@ -188,7 +188,7 @@ export const ProductList = ({ products }: ProductListProps) => {
         </label>
       </div>
 
-      <ul className="product__list">
+      <ul className="product__list" data-cy="productList">
         {productsPerPage && productsPerPage.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}

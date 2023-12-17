@@ -5,6 +5,11 @@
   height: 507px;
   width: 272px;
 
+  &:hover {
+    border: 1px solid #{$gray};
+    cursor: pointer;
+  }
+
   &__image {
     width: 208px;
     height: 208px;

@@ -4,7 +4,6 @@ import { ShopByCategory } from '../components/ShopByCategory';
 import { Banner } from '../components/Banner';
 import { useMyContext } from '../context/context';
 import { Product } from '../helpers/Types';
-import { Loader } from '../components/Loader';
 
 export const HomePage = () => {
   const { products } = useMyContext();
@@ -12,37 +11,41 @@ export const HomePage = () => {
   const [brandNew, setBrandNew] = useState<Product[]>([]);
 
   useEffect(() => {
-    setHotPrices(() => products.sort((product, product2) => (
-      (product2.fullPrice - product2.price)
-      - (product.fullPrice - product.price)
-    )));
+    const getHotPriceProducts = () => {
+      setHotPrices(() => products.filter((product) => product.discount > 0)
+        .sort((product, product2) => (
+          (product2.price * product2.discount) / 100)
+      - ((product.price * product.discount) / 100)));
+    };
 
-    setBrandNew(() => products.sort((product, product2) => (
-      product2.fullPrice - product.fullPrice
-    )));
+    const getBrandNewProducts = () => {
+      setBrandNew(() => products.filter((product) => product.discount <= 0)
+        .sort((product, product2) => (
+          product2.price - product.price
+        )));
+    };
+
+    getHotPriceProducts();
+    getBrandNewProducts();
   }, [products]);
 
   return (
     <div className="home">
       <Banner />
-      <div data-cy="cardsContainer">
-        {hotPrices.length > 0 ? (
-          <ProductsSlider
-            products={hotPrices}
-            title="Hot prices"
-          />
-        ) : (<Loader />)}
-      </div>
+
+      <ProductsSlider
+        products={hotPrices}
+        title="Hot prices"
+      />
 
       <div data-cy="categoryLinksContainer">
         <ShopByCategory />
       </div>
-      {brandNew.length > 0 ? (
-        <ProductsSlider
-          products={brandNew}
-          title="Brand new models"
-        />
-      ) : (<Loader />)}
+
+      <ProductsSlider
+        products={brandNew}
+        title="Brand new models"
+      />
 
     </div>
   );
