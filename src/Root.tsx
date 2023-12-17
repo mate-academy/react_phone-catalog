@@ -12,6 +12,7 @@ import {
   ProductDetailsPage,
   TabletsPage,
 } from './pages';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -28,6 +29,7 @@ export const Root = () => (
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route path="favourites" element={<FavouritesPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="*" element={<NotFoundPage title="Page not found" />} />
         </Route>
       </Routes>
     </MainProvider>

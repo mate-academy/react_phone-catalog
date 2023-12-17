@@ -7,6 +7,7 @@ import { ProductDetails as Details } from '../types/ProductDetails';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ProductDetails } from '../components/ProductDetails';
 import { ProductsSlider } from '../components/ProductsSlider';
+import { NotFoundPage } from './NotFoundPage';
 
 export const ProductDetailsPage = () => {
   const {
@@ -40,9 +41,18 @@ export const ProductDetailsPage = () => {
 
   return (
     <>
-      <Breadcrumbs />
-      <ProductDetails item={productDetails} />
-      <ProductsSlider title="You may also like" items={getSuggestedProducts} />
+      {productDetails ? (
+        <>
+          <Breadcrumbs />
+          <ProductDetails item={productDetails} />
+          <ProductsSlider
+            title="You may also like"
+            items={getSuggestedProducts}
+          />
+        </>
+      ) : (
+        <NotFoundPage title="Phone was not found" />
+      )}
     </>
   );
 };
