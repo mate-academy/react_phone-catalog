@@ -1,13 +1,13 @@
 .banner {
-  @include grid();
+  @include grid;
 
   &--arrow {
-    height: 400px;
+    height: 100%;
     &-left {
-      grid-column: 1 / 2;
+      grid-column: 1;
     }
     &-right {
-      grid-column: 24 / 25;
+      grid-column: 24;
     }
   }
 

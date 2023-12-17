@@ -1,17 +1,21 @@
+
 @import "fonts";
-@import "./helpers/variables.scss";
-@import "./helpers/mixins.scss";
-@import "./helpers/controls.scss";
-@import "./components/Loader.scss";
-@import "./components/Header.scss";
-@import "./components/Footer.scss";
-@import "./components/Banner.scss";
-@import "./pages/HomePage.scss";
-@import "./components/ProductsSlider.scss";
-@import "./components/ProductCard.scss";
-@import "./components/ShopByCategory.scss";
-@import "./pages/PhonesPage.scss";
-@import "./components/ProductList.scss";
+@import "./helpers/variables";
+@import "./helpers/reset";
+@import "./helpers/mixins";
+@import "./helpers/Typography";
+@import "./helpers/controls";
+@import "./components/Loader";
+@import "./components/Header";
+@import "./components/Footer";
+@import "./components/Banner";
+@import "./pages/HomePage";
+@import "./pages/Page";
+@import "./components/ProductsSlider";
+@import "./components/ProductCard";
+@import "./components/ShopByCategory";
+@import "./components/ProductList";
+
 
 body {
   box-sizing: border-box;

@@ -1,0 +1,26 @@
+.page {
+  @include grid;
+
+  margin-top: 24px;
+  row-gap: 0;
+  &__path {
+    grid-column: 1 / 25;
+    display: flex;
+    gap: 8px;
+    &--home {
+      width: 16px;
+      height: 16px;
+    }
+    &--page{
+      color: #{$gray-secondary};
+    }
+    &--prev{
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &__title {
+    grid-column: 1 / 25;
+    margin-top: 40px;
+  }
+}

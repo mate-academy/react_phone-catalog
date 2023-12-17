@@ -1,6 +1,5 @@
-.product-card {
+.productCard {
   grid-column: span 6;
-  box-sizing: border-box;
   border: 1px solid #{$gray-border};
   padding: 24px;
   height: 507px;
@@ -14,30 +13,17 @@
   }
   &__name {
     margin-top: 16px;
-    color: #{$gray};
-    font-family: "Mont", sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
     height: 42px;
   }
   &__price {
-    font-family: "Mont-Bold", sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
-
-    &-fullPrice {
-      margin-left: 8px;
+    display: flex;
+    gap: 8px;
+      &-fullPrice {
       color: #{$gray-secondary};
-      font-family: "Mont", sans-serif;
-      font-size: 22px;
-      font-style: normal;
+      font-family: Mont, sans-serif;
       font-weight: 500;
       line-height: normal;
-      text-decoration-line:line-through;
+      text-decoration-line: line-through;
     }
   }
   &__line {
@@ -55,20 +41,9 @@
 
     &-label {
       color: #{$gray-secondary};
-      font-family: "Mont-SemiBold", sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
     }
     &-value {
-      color: #{$gray};
       text-align: right;
-      font-family: "Mont-SemiBold", sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
     }
   }
   &__buttons {
@@ -77,6 +52,16 @@
     margin-top: 16px;
 
     &-cart {
+      height: 40px;
+      width: 176px;
+      text-align: center;
+      font-family: Mont-SemiBold, sans-serif;
+      font-weight: 600;
+      color: #{$white};
+      background-color: #{$gray};
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
       &--addedToCart {
         color: #{$green};
         background-color: #{$white};

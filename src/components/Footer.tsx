@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Footer = () => {
   const handleBacToTopButton = () => {
     window.scrollTo({
@@ -8,32 +10,32 @@ export const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer__logo">
+      <Link to="/" className="footer__logo">
         <img alt="log" src="./img/logo.svg" />
-      </div>
+      </Link>
 
       <div className="footer__links">
         <a
           href="https://github.com/Kozubowicz/react_phone-catalog"
-          className="footer__links--item"
+          className="footer__links--item Uppercase"
         >
           Github
         </a>
         <a
           href="/#"
-          className="footer__links--item"
+          className="footer__links--item Uppercase"
         >
           Contacts
         </a>
         <a
           href="/#"
-          className="footer__links--item"
+          className="footer__links--item Uppercase"
         >
           rights
         </a>
       </div>
 
-      <span className="footer__back--label">Back to top</span>
+      <span className="footer__back--label SmallText">Back to top</span>
       <button
         type="button"
         className="footer__back--button buttons"

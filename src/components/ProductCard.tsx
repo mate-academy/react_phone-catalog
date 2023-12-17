@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useMyContext } from '../context/context';
-import { Product } from '../helpers/Product';
+import { Product } from '../helpers/Types';
 
 export type ProductCardProps = {
   product: Product;
@@ -21,39 +21,40 @@ export const ProductCard = ({
   return (
     <li
       key={id}
-      className="product-card"
+      className="productCard"
       style={ProductSlider}
-      data-cy="cardsContainer"
     >
-      <img className="product-card__image" alt={itemId} src={`_new/${image}`} />
-      <h2 className="product-card__name">{name}</h2>
-      <span className="product-card__price">
+      <img className="productCard__image" alt={itemId} src={`_new/${image}`} />
+      <p className="productCard__name BodyText">{name}</p>
+      <h2 className="productCard__price h2">
         {`$${price}`}
-        <span className="product-card__price-fullPrice">
+        <span className="productCard__price-fullPrice h2">
           {`$${fullPrice}`}
         </span>
-      </span>
-      <div className="product-card__line" />
+      </h2>
+      <div className="productCard__line" />
 
-      <div className="product-card__details">
-        <span className="product-card__details-label">Screen</span>
-        <span className="product-card__details-value">{screen}</span>
+      <div className="productCard__details">
+        <span className="productCard__details-label SmallText">Screen</span>
+        <span className="productCard__details-value SmallText">{screen}</span>
       </div>
-      <div className="product-card__details">
-        <span className="product-card__details-label">Capacity</span>
-        <span className="product-card__details-value">{capacity}</span>
+      <div className="productCard__details">
+        <span className="productCard__details-label SmallText">Capacity</span>
+        <span className="productCard__details-value SmallText">
+          {capacity}
+        </span>
       </div>
-      <div className="product-card__details">
-        <span className="product-card__details-label">RAM</span>
-        <span className="product-card__details-value">{ram}</span>
+      <div className="productCard__details">
+        <span className="productCard__details-label SmallText">RAM</span>
+        <span className="productCard__details-value SmallText">{ram}</span>
       </div>
-      <div className="product-card__buttons">
+      <div className="productCard__buttons">
         <button
           type="button"
-          className={classNames('product-card__buttons-cart',
-            'buttons__cart',
+          className={classNames('productCard__buttons-cart',
+            'buttons',
             {
-              'product-card__buttons-cart--addedToCart':
+              'productCard__buttons-cart--addedToCart':
             isInCart(itemId),
             })}
           onClick={() => toggleToCart(itemId)}
@@ -63,7 +64,7 @@ export const ProductCard = ({
 
         <button
           type="button"
-          className="product-card__buttons-favourites buttons"
+          className="productCard__buttons-favourites buttons"
           onClick={() => toggleToFavourites(itemId)}
         >
           {isInFavourites(itemId) ? (

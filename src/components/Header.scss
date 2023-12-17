@@ -3,7 +3,7 @@ header {
   height: 64px;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 1px 0px 0px #{$gray-border};
+  box-shadow: 0 1px 0 0 #{$gray-border};
   background-color: #{$white};
 
   .navbar {
@@ -28,9 +28,6 @@ header {
 
       &--item {
         color: #{$gray-secondary};
-        font-family: "Mont-Bold", sans-serif;
-        font-size: 12px;
-        font-style: normal;
         font-weight: 700;
         line-height: 11px;
         letter-spacing: 0.48px;
@@ -42,7 +39,7 @@ header {
           color: #{$gray};
           position: relative;
 
-          &:after {
+          &::after {
             content: "";
             position: absolute;
             left: 0;
@@ -83,10 +80,6 @@ header {
         width: 16px;
         height: 16px;
         display: inline-block;
-
-        &.close {
-          background: url('./img/close.svg') no-repeat;
-        }
       }
 
       &:focus-within {
@@ -103,9 +96,9 @@ header {
       align-items: center;
       justify-content: center;
       border-left: 1px solid #{$gray-border};
+
       &:hover{
         cursor: pointer;
-
       }
       &--image {
         position: absolute;
@@ -121,7 +114,7 @@ header {
           border: 1px solid #{$white};
           color: #{$white};
           font-size: 9px;
-          font-family: "Mont-Semibold", sans-serif;
+          font-family: Mont-Semibold, sans-serif;
           font-weight: 600;
           text-align: center;
         }

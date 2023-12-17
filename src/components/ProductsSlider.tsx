@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Product } from '../helpers/Product';
+import { Product } from '../helpers/Types';
 import { ProductCard } from './ProductCard';
 
 export type ProductsSliderProps = {
@@ -43,11 +43,11 @@ export const ProductsSlider = (
 
   return (
     <div className="slider__header">
-      <h1 className="slider__header--title">{title}</h1>
+      <h1 className="slider__header--title h1">{title}</h1>
 
       <button
         type="button"
-        className="slider__header--arrow slider__header--arrow-left buttons"
+        className="slider__header--arrow buttons"
         onClick={prevProducts}
       >
         <img
@@ -58,7 +58,7 @@ export const ProductsSlider = (
       </button>
       <button
         type="button"
-        className="slider__header--arrow slider__header--arrow-right buttons"
+        className="slider__header--arrow buttons"
         onClick={nextProducts}
       >
         <img

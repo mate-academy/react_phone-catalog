@@ -1,84 +1,47 @@
 .product {
-  @include grid ();
-  margin-top: 24px;
-  &__path {
-    grid-column: 1 / 25;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    &--home {
-      &-image {
-        width: 16px;
-        height: 16px;
-      }
-    }
-    &--page{
-      color: #{$gray-secondary};
-      font-family: "Mont", sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      text-transform: capitalize;
-    }
-    &--prev{
-      width: 16px;
-      height: 16px;
-    }
-  }
-  &__title {
-    grid-column: 1 / 25;
-    font-family: "Mont-Bold", sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.32px;
-    text-transform: capitalize;
-  }
+  grid-column: 1 / 25;
+  margin-top: 8px;
   &__description {
     color: #{$gray-secondary};
-    font-family: "Mont", sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
-    white-space: nowrap;
   }
+
   &__pagination {
     grid-column: 1 / 25;
-    @include grid();
-    &--sort {
+    margin-top: 40px;
 
+    @include grid;
+    &--label {
+      color: #{$gray-secondary};
+    }
+
+    &--sort {
       &-by {
         grid-column: 1 / 5;
       }
       &-items {
         grid-column: 5 / 8;
       }
-      &-label{
-        color: #{$gray-secondary};
-        font-family: "Mont", sans-serif;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-      }
       &-select {
         width: 100%;
+        margin-top: 4px;
       }
     }
   }
   &__list {
     grid-column: 1 / 25;
-    @include grid();
+    margin-top: 24px;
+
+    @include grid;
+
+    row-gap: 40px;
   }
+
   &__buttons {
-    grid-column: 2 / 24;
     display: flex;
     justify-content: center;
     gap: 16px;
-
+    margin-top: 40px;
+    height: 32px;
     &-current {
       color: #{$white};
       background-color: #{$gray};

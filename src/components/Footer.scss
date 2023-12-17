@@ -5,7 +5,9 @@
   width: 100%;
   height: 96px;
   padding: 0;
-  @include grid();
+
+  @include grid;
+
   align-items: center;
   &__logo {
     grid-column: 1 / 3;
@@ -18,15 +20,7 @@
     justify-content: center;
 
     &--item {
-      text-transform: uppercase;
-      text-decoration: none;
       color: #{$gray-secondary};
-      font-family: "Mont-SemiBold", sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 11px;
-      letter-spacing: 0.48px;
     }
   }
   &__back {
@@ -34,11 +28,6 @@
       grid-column: 21 / 24;
       color: #{$gray-secondary};
       text-align: right;
-      font-family: "Mont", sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
     }
     &--button {
       grid-column: span 1;

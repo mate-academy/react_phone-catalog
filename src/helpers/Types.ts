@@ -13,3 +13,11 @@ export type Product = {
   year: number,
   image: string,
 };
+
+export enum PageType {
+  Phones = 'phones',
+  Tablets = 'tablets',
+  Accessories = 'zccessories',
+  Favourites = 'favourites ',
+  Cart = 'cart',
+}

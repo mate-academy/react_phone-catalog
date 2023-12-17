@@ -1,22 +1,33 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../helpers/Product';
+import { PageType, Product } from '../helpers/Types';
 import { ProductList } from '../components/ProductList';
-import { useMyContext } from '../context/context';
+import { NoItems } from '../components/NoItems';
+import { Loader } from '../components/Loader';
+import { fetchTypeDevice } from '../helpers/Api';
 
 export const AccessoriesPage = () => {
-  const { products } = useMyContext();
   const [accessories, setAccessories] = useState<Product[] | null>(null);
 
   useEffect(() => {
-    setAccessories(() => (
-      products.filter((product) => product.category === 'phone')));
-  }, [products]);
+    const feathPhonesData = async () => {
+      const jsonData = await fetchTypeDevice(PageType.Accessories);
+
+      setAccessories(() => jsonData);
+    };
+
+    feathPhonesData();
+  }, []);
 
   return (
-    <ProductList
-      page="accessories"
-      title="accessories"
-      products={accessories}
-    />
+    <>
+      {!accessories && (<Loader />)}
+      {accessories && accessories.length > 0 && (
+        <ProductList
+          products={accessories}
+        />
+      )}
+      {accessories && accessories.length === 0
+    && (<NoItems page={PageType.Accessories} />)}
+    </>
   );
 };

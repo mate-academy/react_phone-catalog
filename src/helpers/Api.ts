@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Product } from './Product';
+import { PageType, Product } from './Types';
 
 const path = './_new/products.json';
 
@@ -7,6 +7,8 @@ export const fetchData = async (): Promise<Product[]> => {
   try {
     const response = await fetch(path);
     const jsonData = await response.json();
+
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     return jsonData;
   } catch (error) {
@@ -16,15 +18,13 @@ export const fetchData = async (): Promise<Product[]> => {
 };
 
 export const fetchTypeDevice
-= async (categoryFilter: string): Promise<Product[]> => {
+= async (categoryFilter: PageType): Promise<Product[]> => {
   try {
     const response = await fetch(path);
     const jsonData = await response.json();
 
-    // Dodaj opóźnienie 500ms
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Filtruj obiekty z określoną wartością atrybutu "category"
     const filteredData = jsonData.filter((item: Product) => (
       item.category === categoryFilter));
 

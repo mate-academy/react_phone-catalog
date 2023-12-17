@@ -14,34 +14,37 @@ export const Header = () => {
   return (
     <header>
       <div className="navbar__left">
-        <div className="navbar__logo">
+        <NavLink
+          to="/"
+          className="navbar__logo"
+        >
           <img alt="log" src="./img/logo.svg" />
-        </div>
+        </NavLink>
         <nav className="navbar__link">
           <NavLink
             to="/"
-            className={getNavLinkActive('navbar__link--item')}
+            className={getNavLinkActive('navbar__link--item SmallText')}
           >
             home
           </NavLink>
 
           <NavLink
             to="/phones"
-            className={getNavLinkActive('navbar__link--item')}
+            className={getNavLinkActive('navbar__link--item SmallText')}
           >
             phones
           </NavLink>
 
           <NavLink
             to="/tablets"
-            className={getNavLinkActive('navbar__link--item')}
+            className={getNavLinkActive('navbar__link--item SmallText')}
           >
             tablets
           </NavLink>
 
           <NavLink
             to="/accessories"
-            className={getNavLinkActive('navbar__link--item')}
+            className={getNavLinkActive('navbar__link--item SmallText')}
           >
             accessories
           </NavLink>

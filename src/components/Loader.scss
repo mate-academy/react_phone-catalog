@@ -1,8 +1,10 @@
 .Loader {
+  grid-column: 1/25;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 
   &__content {
     border-radius: 50%;

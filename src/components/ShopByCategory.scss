@@ -1,8 +1,12 @@
 .shopBy {
   grid-column: 1/25;
-  @include grid();
+  margin-top: 80px;
 
-  &__container{
+  @include grid;
+  &__title {
+    grid-column: 1/25;
+  }
+  &__container {
     grid-column: span 8;
 
     &--link {
@@ -10,8 +14,11 @@
       position: absolute;
       width: 368px;
       height: 368px;
-
-      object-fit: contain;
+      transition: transform ease-in-out 300ms;
+      &:hover {
+        transform: scale(1.1);
+        z-index: 1;
+      }
       &-phones {
         background-color: #{$phones};
       }
@@ -46,25 +53,15 @@
           object-fit: cover;
           object-position: left;
         }
-
       }
     }
-    &--title {
-      color: #{$gray};
-      font-family: "Mont-SemiBold", sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
+
+    &--categoryTitle {
       margin-top: 400px;
     }
     &--description {
       color: #{$gray-secondary};
-      font-family: "Mont", sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 21px;
     }
+
   }
 }

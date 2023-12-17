@@ -1,8 +1,26 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useMyContext } from '../context/context';
+import { PageType } from '../helpers/Types';
 
 export const ShopByCategory = () => {
+  const { products } = useMyContext();
+  const [phones, setPhones] = useState<number>(0);
+  const [tablets, setTablets] = useState<number>(0);
+  const [accessories, setAccessories] = useState<number>(0);
+
+  useEffect(() => {
+    setPhones(() => products.filter((item) => (
+      item.category === PageType.Phones)).length);
+    setTablets(() => products.filter((item) => (
+      item.category === PageType.Tablets)).length);
+    setAccessories(() => products.filter((item) => (
+      item.category === PageType.Accessories)).length);
+  }, []);
+
   return (
     <div className="shopBy">
+      <h1 className="shopBy__title h1">Shop by category</h1>
       <div className="shopBy__container">
         <Link
           to="/phones"
@@ -14,8 +32,10 @@ export const ShopByCategory = () => {
             className="shopBy__container--link-image-phones"
           />
         </Link>
-        <h2 className="shopBy__container--title">Mobile Phones</h2>
-        <h3 className="shopBy__container--description">models</h3>
+        <h3 className="shopBy__container--categoryTitle h3">Mobile Phones</h3>
+        <p className="shopBy__container--description BodyText">
+          {`${phones} models`}
+        </p>
       </div>
 
       <div className="shopBy__container">
@@ -29,8 +49,10 @@ export const ShopByCategory = () => {
             className="shopBy__container--link-image-tablets "
           />
         </Link>
-        <h2 className="shopBy__container--title">Tablets</h2>
-        <h3 className="shopBy__container--description">models</h3>
+        <h3 className="shopBy__container--categoryTitle h3">Tablets</h3>
+        <p className="shopBy__container--description BodyText">
+          {`${tablets} models`}
+        </p>
       </div>
 
       <div className="shopBy__container">
@@ -45,8 +67,10 @@ export const ShopByCategory = () => {
             className="shopBy__container--link-image-accessories"
           />
         </Link>
-        <h2 className="shopBy__container--title">Accessories</h2>
-        <h3 className="shopBy__container--description">models</h3>
+        <h3 className="shopBy__container--categoryTitle h3">Accessories</h3>
+        <p className="shopBy__container--description BodyText">
+          {`${accessories} models`}
+        </p>
       </div>
     </div>
   );

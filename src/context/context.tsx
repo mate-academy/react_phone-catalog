@@ -1,7 +1,7 @@
 import {
   createContext, ReactNode, useContext, useEffect, useState,
 } from 'react';
-import { Product } from '../helpers/Product';
+import { Product } from '../helpers/Types';
 import { fetchData } from '../helpers/Api';
 
 interface MyContextProps {
