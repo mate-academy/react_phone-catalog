@@ -1,5 +1,5 @@
 import {
-  createHashRouter,
+  createBrowserRouter,
 } from 'react-router-dom';
 import { MainLayout } from '../Layouts/MainLayout';
 import Home from '../Pages/Home';
@@ -9,7 +9,7 @@ import Tablets from '../Components/Tablets/tablets';
 import Favorites from '../Components/Favorites/favorites';
 import Cart from '../Components/Cart/cart';
 
-export const Router = createHashRouter([
+export const Router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
