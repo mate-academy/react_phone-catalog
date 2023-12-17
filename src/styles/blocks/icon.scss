@@ -1,0 +1,26 @@
+.icon {
+  &--logo {
+    background-image: url('../../images/logo/logo.png');
+  }
+  &--close {
+    background-image: url('../../images/icons/icon-close.png');
+  }
+  &--menu {
+    background-image: url('../../images/icons/icon-menu.svg');
+  }
+  &--favourites {
+    background-image: url('../../images/icons/icon-favourites.png');
+  }
+  &--bag {
+    background-image: url('../../images/icons/icon-shopping-bag.png');
+  }
+  &--arrow-right {
+    background-image: url("../../images/icons/icon-arrow-right.png");
+  }
+  &--arrow-left {
+    background-image: url("../../images/icons/icon-arrow-left.png");
+  }
+  &--arrow-up {
+    background-image: url("../../images/icons/icon-arrow-up.png");
+  }
+}

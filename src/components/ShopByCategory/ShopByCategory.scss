@@ -1,0 +1,226 @@
+@import '../../styles/utils/main.scss';
+
+.ShopByCategory {
+  &__container {
+    margin-top: 40px;
+
+    @include onTablet {
+      margin-top: 72px;
+    }
+  }
+
+  &__title {
+    @include sectionTitle;
+    margin-right: auto;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  &__list {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: $product-card-gap;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+
+    @include hoverTransition(scale, $effectScaleSmall, $effectDurationNormal);
+    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
+
+    &__image {
+      width: $mobile-width;
+      height: $mobile-width;
+      object-fit: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      @include onDesktop {
+        width: 368px;
+        height: 368px;
+      }
+    }
+
+    &__title {
+      padding-top: 24px;
+      @include sectionItemTitle;
+      letter-spacing: 0em;
+
+      text-align: left;
+      color: black;
+    }
+
+    &__info {
+      @include sectionItemInfoTitle;
+      text-align: left;
+      color: $secondary-color;
+    }
+  }
+
+}
+
+.img {
+  &--phones {
+    background-image: url('../../../public/_new/img/category-phones.png');
+    ;
+  }
+
+  &--tablets {
+    background-image: url('../../../public/_new/img/category-tablets.png');
+    ;
+  }
+
+  &--accessories {
+    background-image: url('../../../public/_new/img/category-accessories.png');
+    ;
+  }
+}
+
+// .Shopbycategory {
+
+
+//   &_title {
+//     margin-right: auto;
+//     font-family: "Mont";
+//     font-size: 32px;
+//     font-weight: 700;
+//     line-height: 41px;
+//     letter-spacing: -0.01em;
+//     text-align: left;
+//     margin-bottom: 20px;
+//     text-decoration: none;
+//   }
+
+//   &_phones {
+//     margin-right: 16px;
+//     text-decoration: none;
+//     transition: transform 0.3s ease, filter 0.3s ease;
+
+//     &:hover {
+//       transform: scale(0.95);
+//       filter: brightness(80%);
+//     }
+
+//     &_title {
+//       padding-top: 24px;
+//       font-family: "Mont";
+//       font-size: 20px;
+//       font-weight: 600;
+//       line-height: 26px;
+//       letter-spacing: 0em;
+//       text-align: left;
+//       color: black;
+//     }
+
+//     &_image {
+//       background-image: url('../../imgs/categoryImgs/phones.png');
+//       background-size: 368px;
+//       background-repeat: no-repeat;
+//       background-position: center;
+//       width: 368px;
+//       height: 368px;
+//       object-fit: none;
+//     }
+
+//     &_models {
+//       font-family: 'Mont';
+//       font-size: 14px;
+//       font-weight: 500;
+//       line-height: 21px;
+//       letter-spacing: 0em;
+//       text-align: left;
+//       color: #89939A;
+//     }
+//   }
+
+//   &_tablets {
+//     margin-right: 16px;
+//     text-decoration: none;
+//     transition: transform 0.3s ease, filter 0.3s ease;
+
+//     &:hover {
+//       transform: scale(0.95);
+//       filter: brightness(80%);
+//     }
+
+//     &_title {
+//       padding-top: 24px;
+//       font-family: "Mont";
+//       font-size: 20px;
+//       font-weight: 600;
+//       line-height: 26px;
+//       letter-spacing: 0em;
+//       text-align: left;
+//       color: black;
+//     }
+
+//     &_image {
+//       background-image: url('../../imgs/categoryImgs/tablets.png');
+//       background-size: 368px;
+//       background-repeat: no-repeat;
+//       background-position: center;
+//       width: 368px;
+//       height: 368px;
+//       object-fit: contain;
+//     }
+
+//     &_models {
+//       font-family: 'Mont';
+//       font-size: 14px;
+//       font-weight: 500;
+//       line-height: 21px;
+//       letter-spacing: 0em;
+//       text-align: left;
+//       color: #89939A;
+//     }
+//   }
+
+//   &_accessories {
+//     text-decoration: none;
+//     transition: transform 0.3s ease, filter 0.3s ease;
+
+//     &:hover {
+//       transform: scale(0.95);
+//       filter: brightness(80%);
+//     }
+
+//     &_title {
+//       padding-top: 24px;
+//       font-family: "Mont";
+//       font-size: 20px;
+//       font-weight: 600;
+//       line-height: 26px;
+//       letter-spacing: 0em;
+//       text-align: left;
+//       color: black;
+//     }
+
+//     &_image {
+//       background-image: url('../../../public/_new/img/category-accessories.png');
+//       background-size: 368px;
+//       background-repeat: no-repeat;
+//       background-position: center;
+//       width: 368px;
+//       height: 368px;
+//       object-fit: contain;
+//     }
+
+//     &_models {
+//       font-family: 'Mont';
+//       font-size: 14px;
+//       font-weight: 500;
+//       line-height: 21px;
+//       letter-spacing: 0em;
+//       text-align: left;
+//       color: #89939A;
+//     }
+//   }
+// }

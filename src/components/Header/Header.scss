@@ -1,0 +1,22 @@
+@import '../../styles/utils/main.scss';
+
+.Header {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #{$secondary-color};
+    margin-bottom: 40px;
+  }
+
+  &__logo {
+    display: block;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    line-height: 100%;
+    margin-right: 65px;
+    margin-left: 24px;
+  }
+}

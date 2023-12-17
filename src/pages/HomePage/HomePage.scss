@@ -1,0 +1,10 @@
+// @import '../../styles/blocks/page.scss';
+
+.HomePage {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

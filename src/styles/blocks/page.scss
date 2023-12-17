@@ -1,0 +1,55 @@
+@import '../utils/vars.scss';
+@import '../utils/mixins.scss';
+
+.page {
+  &__container {
+    margin-inline: auto;
+    width: $mobile-width;
+    // min-width limit in .page__body
+    @include onTablet {
+      width: $tablet-width;
+    }
+
+    @include onDesktopSmall {
+      width: $desktopSmall-width;
+    }
+
+    @include onDesktop {
+      width: $desktop-width;
+      // max-width: $desktop-min-width;
+    }
+  }
+
+  &__body {
+    min-width: $mobile-min-width;
+    scroll-behavior: smooth;
+    background-color: $page-bckgrd-color;
+
+    &:has(.page__menu:target) {
+      overflow: hidden; /* not to scroll the page */
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    /*strach */
+    right: 0;
+    left: -100%;
+    bottom: 0;
+    opacity: 0;
+    height: 100vh;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition-property: transform, opacity;/*smooth disappear*/
+    transition-duration: $effectDurationNormal;
+
+    &--active {
+      opacity: 1;
+      transform: translateX(0%);
+      pointer-events: all;
+      transition-property: transform, opacity;/*smooth appear*/
+      transition-duration: $effectDurationNormal;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+/*#region Media Query*/
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktopSmall {
+  @media (min-width: $desktopSmall-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onScreen {
+  @media (min-width: $screen-min-width) {
+    @content;
+  }
+}
+
+@mixin onScreenLarge {
+  @media (min-width: $screenLarge-min-width) {
+    @content;
+  }
+}
+
+/*#endregion*/
+
+/*#region Page Base Grid*/
+@mixin pageGrid {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 20px;
+
+  @include onTablet {
+    --columns: 6;
+    column-gap: 30px;
+  }
+
+  @include onDesktopSmall {
+    --columns: 12;
+    column-gap: 20px;
+  }
+
+  @include onDesktop {
+    column-gap: 30px;
+  }
+}
+
+/*#endregion*/
+
+@mixin hoverTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin activeTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+
+  &:active {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin targetTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+
+  &:target {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin linkTitle() {
+  font-family: "Mont-Bold";
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin sectionTitle() {
+  font-family: "Mont-Bold";
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin sectionItemTitle() {
+  font-family: "Mont-Bold";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+@mixin sectionItemInfoTitle() {
+  font-family: "Mont-Bold";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+@mixin sectionItemInfo() {
+  font-family: "Mont-Bold";
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0em;
+}

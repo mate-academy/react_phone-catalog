@@ -1,0 +1,111 @@
+@import '../../styles/utils/main.scss';
+
+.Carousel {
+  &__container {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  &__dot--1,
+  &__dot--2,
+  &__dot--3 {
+    background-color: $icons-color;
+    width: 14px;
+    height: 4px;
+    margin: 0 4px;
+
+    &.active {
+      background-color: $primary-color;
+    }
+  }
+
+}
+
+.Screen {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    height: 400px;
+    width: 100%;
+  }
+
+  &__window {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    transition-property: width;
+    transition-duration: $effectDurationNormal;
+    transition-timing-function: ease-in-out;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &--animation {
+      animation-name: opacityFrom0To1;
+      animation-duration: $effectDurationVerrySlow;
+    }
+  }
+
+  &__btn {
+    width: 32px;
+    height: 100%;
+    background-color: $white-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    border: 1px solid #{$icons-color};
+    cursor: pointer;
+  }
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.dots-1,
+.dots-2,
+.dots-3 {
+  background-color: $icons-color;
+  width: 14px;
+  height: 4px;
+  margin: 0 4px;
+
+  &.active {
+    background-color: $primary-color;
+  }
+}
+
+@keyframes opacityFrom0To1 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

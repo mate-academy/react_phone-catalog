@@ -1,0 +1,40 @@
+@import './vars.scss';
+
+:export {
+  // :export make it accessible to JS
+  mobileWidth: $mobile-width;
+  tabletWidth: $tablet-width;
+  desktopSmallWidth: $desktopSmall-width;
+  desktopWidth: $desktop-width;
+
+  mobileMinWidth: $mobile-min-width;
+  tabletMinWidth: $tablet-min-width;
+  desktopSmallMinWidth: $desktopSmall-min-width;
+  desktopMinWidth: $desktop-min-width;
+  screenMinWidth: $screen-min-width;
+  screenLargeMinWidth: $screenLarge-min-width;
+
+  productCardGap: $product-card-gap;
+
+  effectDurationNormal: $effectDurationNormal;
+  effectDurationSlow: $effectDurationSlow;
+  effectDurationVerrySlow: $effectDurationVerrySlow;
+  effectScaleSmall: $effectScaleSmall;
+  effectScaleMedium: $effectScaleMedium;
+  effectScaleLarge: $effectScaleLarge;
+
+  primaryColor: $primary-color;
+  secondaryColor: $secondary-color;
+  iconsColor: $icons-color;
+  elementsColor: $elements-color;
+  hoverColor: $hover-color;
+  whiteColor: $white-color;
+  greenColor: $green-color;
+  redColor: $red-color;
+
+  // $page-bckgrd-color;
+  // $main-text-color;
+  // $secondary-text-color;
+
+  // etc...
+}

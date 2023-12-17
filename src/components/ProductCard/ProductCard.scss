@@ -1,0 +1,137 @@
+@import '../../styles/utils/main.scss';
+
+.ProductCard {
+  &:hover {
+    background-color: $hover-color;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 222px;
+    height: 450px;
+    box-sizing: content-box;
+    border-radius: 10px;
+    border: 1px solid $elements-color;
+    padding-top: 32px;
+    padding-bottom: 24px;
+    padding-inline: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img {
+    display: flex;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  &__info {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  &__name {
+    width: 100%;
+    margin-top: 24px;
+    font-family: "Mont";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-color;
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+
+    &--discount {
+      font-family: "Mont-Bold";
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 31px;
+      color: $primary-color;
+    }
+
+    &--fullPrice {
+      font-family: "Mont";
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: $primary-color;
+      text-decoration: line-through;
+    }
+  }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &--normal {
+      font-family: "Mont";
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: $secondary-color;
+    }
+
+    &--strong {
+      font-family: "Mont-SemiBold";
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      color: $primary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    padding-top: 16px;
+  }
+
+  &__button {
+    &__cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      background-color: $primary-color;
+      color: $white-color;
+      border: none;
+    }
+
+    &__fav {
+      height: 40px;
+      width: 40px;
+
+      background-image: url('../../images/icons/icon-favourites.png');
+      background-position: center;
+      background-repeat: no-repeat;
+
+      border: 1px solid $icons-color;
+      background-color: $white-color;
+      cursor: pointer;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    padding-top: 7px;
+    border-bottom: 1px solid $elements-color;
+  }
+}

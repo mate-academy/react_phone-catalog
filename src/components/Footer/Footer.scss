@@ -1,0 +1,80 @@
+@import '../../styles/utils/main.scss';
+
+.Footer {
+  &__container {
+    width: 100%;
+    margin-top: 40px;
+    border-top: 1px solid #{$secondary-color};
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__logo {
+    display: block;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    line-height: 100%;
+  }
+
+  &__links {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__link {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 24px;
+      @include linkTitle;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $secondary-color;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $primary-color;
+    }
+  }
+
+  .scroll-to-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $white-color;
+      border: 1px solid $icons-color;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid black;
+      }
+    }
+
+    &__title {
+      @include sectionItemInfo;
+      color: $secondary-color;
+    }
+  }
+}
