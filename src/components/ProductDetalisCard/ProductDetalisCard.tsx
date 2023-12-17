@@ -127,7 +127,7 @@ export const ProductDetalisCard: React.FC<Props> = ({ product }) => {
                   onClick={() => handleBtnImage(index)}
                 >
                   <img
-                    src={`./_new/${image}`}
+                    src={`./new/${image}`}
                     alt={product.name}
                     className="product-details-card__img"
                   />
