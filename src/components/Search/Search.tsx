@@ -46,16 +46,9 @@ export const Search: React.FC<Props> = ({ page }) => {
 
       <ButtonIcon
         type="event"
-        shape="close"
+        shape={query.length === 0 ? 'loop' : 'close'}
         onClick={reset}
-        dynamicClasses={[query.length === 0 ? 'hidden' : '', 'big']}
-      />
-
-      <ButtonIcon
-        type="link"
-        shape="loop"
-        path="/"
-        dynamicClasses={['shadow', 'big']}
+        dynamicClasses={['big', 'no-border']}
       />
     </div>
   );

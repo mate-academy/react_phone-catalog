@@ -1,4 +1,5 @@
 @import './../../style/mixins';
+@import './../../style/extends';
 
 .buttonIcon {
   display: flex;
@@ -17,9 +18,14 @@
 
   @include hover(border-color, $main-text-color);
 
-  &--big {
+  &--medium {
     height: 40px;
     width: 40px;
+  }
+
+  &--big {
+    height: 64px;
+    width: 64px;
   }
 
   &--large {
@@ -35,10 +41,6 @@
     border: none;
   }
 
-  &--hidden {
-    visibility: hidden;
-  }
-
   &__icon-keeper {
     @include hover(transform, scale(1.1));
 
@@ -47,11 +49,29 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    border: none;
 
     &--big {
       height: 40px;
       width: 40px;
     }
+  }
+
+  &__link {
+    @extend %body-text;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $main-text-color;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__link-active {
+    color: $main-bg-color;
+    background-color: $main-text-color;
   }
 
   &__icon {

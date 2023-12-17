@@ -1,20 +1,20 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ProductType } from '../../helpers/types/ProductType';
 import { ProductsContext } from '../../store/ProductsContext';
 import { isProductFavorite } from '../../helpers/utils/checkProductStatus';
 import './ButtonIcon.scss';
 
-type DynamicClass = 'big' | 'shadow' | 'hidden' | 'no-border' | 'large' | '';
+type DynamicClass = 'big' | 'shadow' | 'no-border' | 'large' | 'medium';
 type Shape = 'cart' | 'close' | 'down' | 'heart' | 'home' | 'left' | 'left-light' | 'loop' | 'minus' | 'plus' | 'right' | 'right-light' | 'up' | 'up-light';
 
 type Props = {
   type: 'event' | 'link';
   dynamicClasses?: DynamicClass[];
   shape?: Shape;
-  path?: string;
+  path?: any;
   product?: ProductType;
   text?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -32,6 +32,11 @@ export const ButtonIcon: React.FC<Props> = ({
   const { favoriteProducts } = useContext(ProductsContext);
 
   const DC = dynamicClasses?.map(cl => `buttonIcon--${cl}`).join(' ');
+
+  const getLinkNavClass = ({ isActive }: { isActive: boolean }) => (
+    classNames('buttonIcon__link', {
+      'buttonIcon__link-active': isActive,
+    }));
 
   return (
     <button
@@ -55,9 +60,9 @@ export const ButtonIcon: React.FC<Props> = ({
       )}
 
       {(type === 'link' && path) && (
-        <Link
+        <NavLink
           to={path}
-          className="header__link link"
+          className={getLinkNavClass}
         >
           <div className={classNames('buttonIcon__icon', `buttonIcon__icon--${shape}`, {
             'button__icon--heart-active': (product && isProductFavorite(favoriteProducts, product)),
@@ -67,7 +72,7 @@ export const ButtonIcon: React.FC<Props> = ({
               <p>{text}</p>
             )}
           </div>
-        </Link>
+        </NavLink>
       )}
     </button>
   );

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductsContext } from '../store/ProductsContext';
 import { Dropdown } from '../elements/Dropdown/Dropdown';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
@@ -12,6 +13,7 @@ import { ProductType } from '../helpers/types/ProductType';
 import { getProductsByCategory } from '../helpers/utils/api';
 import { Sort, getSortedProducts } from '../helpers/utils/getSortedProducts';
 import { namedSortOptions, pageSortOptions } from '../helpers/utils/constants';
+import { Pagination } from '../elements/Pagination/Pagination';
 
 type Props = {
   product: string;
@@ -19,9 +21,15 @@ type Props = {
 
 export const ProductPage: React.FC<Props> = ({ product }) => {
   const { query } = useContext(ProductsContext);
+  const [searchParams] = useSearchParams();
+
+  const page = searchParams.get('page') || '1';
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState(Sort.age);
+  const [perPage, setPerPage] = useState('4');
+
+  const IndexOfFirstVisibleItem = ((+page - 1) * +perPage) + 1;
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,6 +43,9 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
     getProductsByKey(products, 'category', product),
     query,
   ), sortBy);
+
+  const visibleProductsOnPage = visibleProducts.slice(IndexOfFirstVisibleItem, IndexOfFirstVisibleItem + (+perPage));
+
   const productCapitalName = product[0].toUpperCase() + product.slice(1);
 
   const handleSortClick = (key?: Sort) => {
@@ -49,7 +60,17 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
     }
   };
 
-  const handlePagesClick = () => {};
+  const handlePagesClick = (key?: string) => {
+    if (!key) {
+      return;
+    }
+
+    if (key === 'All') {
+      setPerPage(products.length.toString());
+    } else {
+      setPerPage(key);
+    }
+  };
 
   return (
     <main className="page">
@@ -86,7 +107,11 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
                 />
               </div>
 
-              <ProductsList products={visibleProducts} />
+              <ProductsList products={visibleProductsOnPage} />
+
+              <Pagination
+                products={visibleProducts}
+              />
             </>
           )}
         </>

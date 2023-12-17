@@ -85,7 +85,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <ButtonIcon
             type="event"
             shape="heart"
-            dynamicClasses={['big']}
+            dynamicClasses={['medium']}
             product={product}
             // eslint-disable-next-line react/jsx-no-bind
             onClick={() => handleFavoriteClick(product)}

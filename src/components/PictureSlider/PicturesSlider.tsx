@@ -27,8 +27,7 @@ export const PicturesSlider: React.FC = () => {
         type="event"
         shape="left-light"
         dynamicClasses={['large']}
-        // eslint-disable-next-line react/jsx-no-bind
-        onClick={setPrevImg}
+        onClick={() => setPrevImg()}
       />
 
       <div className="picture-slider__slides">

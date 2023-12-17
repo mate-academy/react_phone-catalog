@@ -37,11 +37,15 @@ export const Dropdown: React.FC<Props> = ({
 
     document.addEventListener('click', f);
 
-    return document.removeEventListener('click', f);
+    return () => document.removeEventListener('click', f);
   }, []);
 
   return (
-    <div className="dropdown">
+    <div
+      role="presentation"
+      className="dropdown"
+      onClick={(e => e.stopPropagation())}
+    >
       <p className="dropdown__category">{title}</p>
 
       <button
@@ -51,7 +55,6 @@ export const Dropdown: React.FC<Props> = ({
         aria-controls="dropdown-menu"
         aria-label="button"
         onClick={() => setIsOpen(!isOpen)}
-        // onBlur={() => setIsOpen(false)}
       >
         <span className="dropdown__option">{category}</span>
         <ButtonIcon
