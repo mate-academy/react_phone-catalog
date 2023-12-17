@@ -33,7 +33,7 @@ interface ProductDetails {
   description: string;
 }
 
-const basePath = '/img/';
+const basePath = `${process.env.PUBLIC_URL}/img/`;
 const images = [
   `${basePath}white.svg`,
   `${basePath}black.svg`,
@@ -165,7 +165,7 @@ const ProductDetailsPage = () => {
       <div className="details">
         <div className="folder-holder">
           <button type="button" className="home-button">
-            <img src={`${process.env.PUBLIC_URL}/img/home.svg`} alt="Home" />
+            <img src={`${process.env.PUBLIC_URL}/img/Home.svg`} alt="Home" />
           </button>
           <img
             src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`}
