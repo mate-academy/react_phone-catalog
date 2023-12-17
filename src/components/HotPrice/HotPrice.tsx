@@ -53,7 +53,7 @@ export const HotPrice = () => {
               },
               1280: {
                 slidesPerView: 4,
-                spaceBetween: 0,
+                spaceBetween: 10,
               },
             }}
             modules={[EffectFade, Navigation, Pagination]}

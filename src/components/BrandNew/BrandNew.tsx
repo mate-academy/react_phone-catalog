@@ -52,7 +52,7 @@ export const BrandNew = () => {
               },
               1280: {
                 slidesPerView: 4,
-                spaceBetween: 5,
+                spaceBetween: 10,
               },
             }}
             modules={[EffectFade, Navigation, Pagination]}
