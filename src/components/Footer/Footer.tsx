@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="main__footer footer">
+    <footer className="footer">
       <div className="container">
         <div className="footer__content">
           <NavLink

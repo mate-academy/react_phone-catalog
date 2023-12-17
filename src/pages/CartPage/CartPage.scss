@@ -1,7 +1,9 @@
 @import "../../helpers/utils/utils";
 
 .cart {
-  @include pageProducts();
+  &__content {
+    @include contentPaddingInline();
+  }
 
   &__header {
     margin-top: 40px;

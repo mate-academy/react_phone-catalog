@@ -65,7 +65,7 @@ export const SearchBar: React.FC<Props> = ({ sectionName, className }) => {
         >
           <input
             type="text"
-            className="search-bar__input search-bar__input"
+            className="search-bar__input"
             onChange={(event) => hanldeInputQuery(event)}
             value={queryInput}
             placeholder={`Search in ${sectionName}...`}
@@ -73,7 +73,7 @@ export const SearchBar: React.FC<Props> = ({ sectionName, className }) => {
 
           <button
             onClick={() => setIsOpenInput(false)}
-            className="search-bar__toggle-btn"
+            className="search-bar__toggle-btn search-bar__toggle-btn--close"
           >
             <div className="icon icon__close" />
           </button>

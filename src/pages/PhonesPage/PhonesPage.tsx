@@ -40,7 +40,7 @@ export const PhonesPage: React.FC = () => {
 
     if (isError) {
       return (
-        <p className="favorites__error">
+        <p className="phones__error">
           There was an error, please try again later
         </p>
       );
@@ -51,14 +51,10 @@ export const PhonesPage: React.FC = () => {
 
   return (
     <div className="main__phones phones">
-      <div className="container">
-        <div className="phones__content">
-          {getPhones(
-            phones,
-            'Mobile phones',
-          )}
-        </div>
-      </div>
+      {getPhones(
+        phones,
+        'Mobile phones',
+      )}
     </div>
   );
 };

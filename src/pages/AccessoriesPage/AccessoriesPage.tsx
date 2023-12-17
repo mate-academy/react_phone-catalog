@@ -40,7 +40,7 @@ export const AccessoriesPage: React.FC = () => {
 
     if (isError) {
       return (
-        <p className="favorites__error">
+        <p className="accessories__error">
           There was an error, please try again later
         </p>
       );
@@ -51,14 +51,10 @@ export const AccessoriesPage: React.FC = () => {
 
   return (
     <div className="main__accessories accessories">
-      <div className="container">
-        <div className="accessories__content">
-          {getAccessories(
-            accessories,
-            'Accessories',
-          )}
-        </div>
-      </div>
+      {getAccessories(
+        accessories,
+        'Accessories',
+      )}
     </div>
   );
 };

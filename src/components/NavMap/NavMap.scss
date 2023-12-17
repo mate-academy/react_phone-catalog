@@ -1,17 +1,29 @@
 @import "../../helpers/utils/utils";
 
 .nav-map {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  margin-block: 25px 40px;
-
   font-size: 12px;
   font-family: $semi-bold-fonts;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-block: 25px 40px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 16px;
+  }
+
   &__link {
     color: $primary;
+
+    @include hover(color, $secondary);
   }
 
   &__label {

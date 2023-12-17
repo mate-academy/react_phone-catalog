@@ -40,7 +40,7 @@ export const TabletsPage: React.FC = () => {
 
     if (isError) {
       return (
-        <p className="favorites__error">
+        <p className="tablets__error">
           There was an error, please try again later
         </p>
       );
@@ -51,14 +51,10 @@ export const TabletsPage: React.FC = () => {
 
   return (
     <div className="main__tablets tablets">
-      <div className="container">
-        <div className="tablets__content">
-          {getTablets(
-            tablets,
-            'Tablets',
-          )}
-        </div>
-      </div>
+      {getTablets(
+        tablets,
+        'Tablets',
+      )}
     </div>
   );
 };

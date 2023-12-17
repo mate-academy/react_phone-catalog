@@ -9,6 +9,8 @@ import { FilterPanel } from '../FilterPanel';
 import { ProductsHeader } from '../ProductsHeader';
 import { PageControl } from '../PageControl';
 
+import './ProductsCatalog.scss';
+
 type Props = {
   products: Product[],
   title: string,
@@ -30,32 +32,36 @@ export const ProductsCatalog: React.FC<Props> = ({ products, title }) => {
     || false;
 
   return (
-    <div className="products-catalog">
-      <div className="products-catalog__header">
-        <ProductsHeader
-          title={title}
-          length={products.length}
-        />
+    <section className="products-catalog">
+      <div className="container">
+        <div className="products-catalog__content">
+          <div className="products-catalog__header">
+            <ProductsHeader
+              title={title}
+              length={products.length}
+            />
+          </div>
+
+          {visibleProducts.length ? (
+            <>
+              <FilterPanel />
+
+              <ProductsList
+                products={visibleProducts}
+                data-cy="productList"
+              />
+
+              {
+                (countPages && countPages !== 1) && (
+                  <PageControl length={sortedProducts.length} />
+                )
+              }
+            </>
+          ) : (
+            <NoResult message="There are no products on this page" />
+          )}
+        </div>
       </div>
-
-      {visibleProducts.length ? (
-        <>
-          <FilterPanel />
-
-          <ProductsList
-            products={visibleProducts}
-            data-cy="productList"
-          />
-
-          {
-            (countPages && countPages !== 1) && (
-              <PageControl length={sortedProducts.length} />
-            )
-          }
-        </>
-      ) : (
-        <NoResult message="There are no products on this page" />
-      )}
-    </div>
+    </section>
   );
 };

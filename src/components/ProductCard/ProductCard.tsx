@@ -1,10 +1,13 @@
 /* eslint-disable react/button-has-type */
 import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { ProductsContext } from '../ProductsContext';
+import { addProduct } from '../../helpers/addFunction/addProduct';
+import { CartProduct } from '../../types/CartProduct';
 
 type Props = {
   product: Product,
@@ -27,39 +30,33 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const labelAddCartBtn = isCart ? 'Added to cart' : 'Add to cart';
 
   const hableFavoriteBtn = () => {
-    if (!favorites.find(productCurrent => productCurrent.id === product.id)) {
-      setFavorites([...favorites, product]);
-    } else {
-      const newFavorites
-        = favorites.filter(productCurrent => productCurrent.id !== product.id);
-
-      setFavorites(newFavorites);
-    }
+    addProduct<Product>(product, favorites, setFavorites);
   };
 
   const hableAddCartBtn = () => {
-    if (!carts.find(productCurrent => productCurrent.id === product.id)) {
-      setCarts([...carts, { ...product, quantity: 1 }]);
-    } else {
-      const newCarts
-        = carts.filter(productCurrent => productCurrent.id !== product.id);
-
-      setCarts(newCarts);
-    }
+    addProduct<CartProduct>({ ...product, quantity: 1 }, carts, setCarts);
   };
 
   return (
     <article className="product-cards">
-      <img
-        src={`./new/${product.image}`}
-        alt={product.name}
-        className="product-cards__img"
-      />
+      <NavLink
+        to={`/${product.category}/${product.phoneId}`}
+      >
+        <img
+          src={`./new/${product.image}`}
+          alt={product.name}
+          className="product-cards__img"
+        />
+      </NavLink>
 
       <div className="product-cards__header">
-        <h3 className="product-cards__title">
-          {product.name}
-        </h3>
+        <NavLink
+          to={`/${product.category}/${product.phoneId}`}
+        >
+          <h3 className="product-cards__title">
+            {product.name}
+          </h3>
+        </NavLink>
 
         <div className="product-cards__prices">
           <p className="product-cards__new-price">
@@ -72,7 +69,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
 
-      <div className="product-cards__separetor" />
+      <div className="product-cards__separator" />
 
       <div className="product-cards__specifications">
         <div className="product-cards__specification">

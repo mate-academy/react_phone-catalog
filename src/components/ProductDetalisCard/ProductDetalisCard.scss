@@ -1,7 +1,9 @@
 @import "../../helpers/utils/utils";
 
-.favorites {
+.product-details {
   &__content {
     @include contentPaddingInline();
   }
+
+  @include pageProducts();
 }

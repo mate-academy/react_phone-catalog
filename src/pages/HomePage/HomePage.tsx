@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import { Main } from '../../components/Main';
-
-import './HomePage.scss';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { getProducts } from '../../api/getProducts';
 import { Product } from '../../types/Product';
@@ -64,7 +61,7 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <Main>
+    <div className="main__home home">
       <ImageSlider />
 
       {getSlider(
@@ -82,6 +79,6 @@ export const HomePage: React.FC = () => {
         isLoadingNewProducts,
         isErrorNewProducts,
       )}
-    </Main>
+    </div>
   );
 };

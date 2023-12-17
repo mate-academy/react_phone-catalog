@@ -22,13 +22,14 @@ export const Header: React.FC<Props> = ({ toggleMenu }) => {
 
   const [isSearchBarActive, setIsSearchBarActive] = useState(false);
   const location = useLocation();
-  const namePage = location.pathname.split('/')[1];
+  const link = location.pathname;
+  const namePage = link.slice(1);
 
   useEffect(() => {
     setIsSearchBarActive(
-      namePage === 'phones'
-      || namePage === 'tablets'
-      || namePage === 'accessories',
+      link === '/phones'
+      || link === '/tablets'
+      || link === '/accessories',
     );
   }, [location.pathname]);
 

@@ -45,6 +45,13 @@
   }
 }
 
+@mixin separator() {
+  width: 100%;
+  height: 1px;
+
+  background-color: $elements;
+}
+
 @mixin loadingContainer() {
   height: 75vh;
   display: flex;
@@ -91,10 +98,6 @@
 }
 
 @mixin pageProducts() {
-  &__content {
-    @include contentPaddingInline();
-  }
-
   &__loading {
     @include loadingContainer();
   }
@@ -106,5 +109,7 @@
     background-color: $error-background;
     border-color: $elements;
     margin-top: 25vh;
+    width: 50%;
+    margin-inline: auto;
   }
 }

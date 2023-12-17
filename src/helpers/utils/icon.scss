@@ -61,6 +61,10 @@
     &--top {
       transform: rotate(90deg);
     }
+
+    &--left {
+      transform: rotate(-90deg);
+    }
   }
 
   &__arrow-secondary {

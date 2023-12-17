@@ -1,0 +1,308 @@
+@import "../../helpers/utils/utils";
+
+.product-details-card {
+  &__title {
+    color: $primary;
+
+    font-size: 32px;
+    font-family: $bold-fonts;
+    letter-spacing: -0.32px;
+
+    margin-bottom: 40px;
+  }
+
+  &__header {
+    @include pageGrid();
+    margin-bottom: 80px;
+
+    row-gap: 50px;
+  }
+
+  &__bottom {
+    @include pageGrid();
+    margin-bottom: 80px;
+
+    row-gap: 50px;
+  }
+
+  &__controls-img-btn {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    gap: 16px;
+
+    grid-column: span 1;
+
+    @include onDesktop {
+      grid-column: span 2;
+    }
+  }
+
+  &__btn-img {
+    padding: 8px;
+
+    border: 1px solid $icon;
+    @include hover(border-color, $primary);
+
+    &--active {
+      border-color: $primary;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    align-self: center;
+  }
+
+  &__main-img-container {
+    display: flex;
+    grid-column: 2 / -1;
+
+    @include onTable {
+      grid-column: span 5;
+    }
+
+    @include onDesktop {
+      grid-column: span 10;
+    }
+  }
+
+  &__active-panel {
+    grid-column: 1 / -1;
+
+    @include onTable {
+      grid-column: 8 / span 4;
+    }
+
+    @include onDesktop {
+      grid-column: 14 / span 7;
+    }
+  }
+
+  &__separator {
+    @include separator();
+
+    margin-block: 12px;
+
+    @include onDesktop {
+      margin-block: 24px;
+    }
+  }
+
+  &__about {
+    grid-column: span 4;
+
+    @include onTable {
+      grid-column: span 6;
+    }
+
+    @include onDesktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__tech {
+    grid-column: span 4;
+
+    @include onTable {
+      grid-column: 8 / span 5;
+    }
+
+    @include onDesktop {
+      grid-column: 14 / span 11;
+    }
+  }
+
+  &__section-title {
+    color: $primary;
+
+    font-size: 22px;
+    font-family: $bold-fonts;
+    line-height: 140%;
+  }
+}
+
+.active-panel {
+  &__title {
+    color: $secondary;
+
+    font-size: 12px;
+    font-family: $semi-bold-fonts;
+
+    margin-bottom: 8px;
+  }
+
+  &__color-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn-color {
+    width: 24px;
+    height: 24px;
+    border: 2px solid $icon;
+    border-radius: 50%;
+
+    @include hover(border-color, $primary);
+
+    &--active {
+      border-color: $primary;
+    }
+
+    @include onDesktop {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $primary;
+  }
+
+  &__separator {
+    @include separator();
+
+    margin-block: 12px;
+
+    @include onDesktop {
+      margin-block: 24px;
+    }
+  }
+
+  &__capacity-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__btn-capacity {
+    padding-inline: 7px;
+    background-color: $white;
+
+    font-size: 14px;
+    font-family: $semi-bold-fonts;
+
+    line-height: 21px;
+
+    padding-block: 10px;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+    @include hover(border-color, none);
+
+    &--active {
+      color: $white;
+      background-color: $primary;
+
+      border-color: $elements;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding-top: 8px;
+  }
+
+  &__price-discount {
+    color: $primary;
+    font-family: $bold-fonts;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__price-regular {
+    color: $secondary;
+    font-size: 22px;
+    font-family: $semi-bold-fonts;
+    text-decoration-line: line-through;
+  }
+
+  &__add-panel {
+    display: flex;
+    gap: 8px;
+
+    margin-block: 16px 32px;
+  }
+
+  &__btn-favorite {
+    padding: 12px;
+  }
+
+  &__specifications {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-bottom: 16px;
+  }
+
+  &__specification {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    font-family: $semi-bold-fonts;
+  }
+
+  &__specification-title {
+    color: $secondary;
+  }
+
+  &__specification-value {
+    color: $primary;
+  }
+}
+
+.description {
+  &__title {
+    color: $primary;
+
+    font-size: 20px;
+    font-family: $semi-bold-fonts;
+  }
+
+  &__text {
+    color: $secondary;
+
+    font-size: 14px;
+    font-family: $regular-fonts;
+    line-height: 21px;
+
+    margin-block: 16px 32px;
+  }
+}
+
+.specifications {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__specification {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__title {
+    color: $secondary;
+  }
+
+  &__value {
+    color: $primary;
+  }
+
+  &__cell {
+    display: flex;
+    gap: 5px;
+  }
+}

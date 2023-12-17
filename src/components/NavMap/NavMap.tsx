@@ -1,57 +1,86 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { getUniqueId } from '../../helpers/getFunctions/getUniqueld';
-
 import './NavMap.scss';
 
-export const NavMap = () => {
+type Props = {
+  nameProduct?: string
+};
+
+export const NavMap: React.FC<Props> = ({ nameProduct }) => {
   const location = useLocation();
-  const links = location.pathname.split('/')[1].split('?')[0].split('/');
-
-  const nameLinks = links.map(link => {
-    const linkWords = link.split('-');
-
-    if (linkWords.length !== 0) {
-      return linkWords.map(linkWord => (
-        linkWord.charAt(0).toUpperCase() + linkWord.slice(1)
-      )).join(' ');
-    }
-
-    return link.charAt(0).toUpperCase() + link.slice(1);
-  });
+  const categoryLabel = location.pathname.split('/')[1][0].toLocaleUpperCase()
+    + location.pathname.split('/')[1].slice(1);
+  const categoryLink = location.pathname.split('/')[1];
 
   return (
     <nav className="nav-map">
-      <NavLink
-        className="nav-map__link"
-        to="/"
-      >
-        <div className="icon icon__home" />
-      </NavLink>
+      <div className="nav-map__header">
+        <NavLink
+          className="nav-map__link"
+          to="/"
+        >
+          <div className="icon icon__home" />
+        </NavLink>
 
-      {links.map((link, index) => (
-        <React.Fragment key={getUniqueId()}>
-          <div
-            className="icon icon__arrow-secondary icon__arrow-secondary--rigth"
-          />
-          {index !== links.length - 1 ? (
+        <div
+          className="icon icon__arrow-secondary icon__arrow-secondary--rigth"
+        />
+
+        {
+          nameProduct ? (
             <NavLink
               className="nav-map__link"
-              to={`/${link}`}
-              key={getUniqueId()}
+              to={`/${categoryLink}`}
             >
-              {nameLinks[index]}
+              {categoryLabel}
             </NavLink>
           ) : (
             <p
               className="nav-map__label"
-              key={getUniqueId()}
             >
-              {nameLinks[index]}
+              {categoryLabel}
             </p>
-          )}
-        </React.Fragment>
-      ))}
+          )
+        }
+
+        {nameProduct && (
+          <>
+            <div
+              className="
+                icon
+                icon__arrow-secondary
+                icon__arrow-secondary--rigth
+              "
+            />
+
+            <p
+              className="nav-map__label"
+            >
+              {nameProduct}
+            </p>
+          </>
+        )}
+      </div>
+
+      {nameProduct && (
+        <div className="nav-map__bottom">
+          <div
+            className="icon icon__arrow-primary icon__arrow-secondary--left"
+          />
+
+          <NavLink
+            className="nav-map__link"
+            to={`/${categoryLink}`}
+          >
+            Back
+          </NavLink>
+        </div>
+      )}
+
     </nav>
   );
+};
+
+NavMap.defaultProps = {
+  nameProduct: undefined,
 };
