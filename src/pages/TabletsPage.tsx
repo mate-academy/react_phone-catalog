@@ -34,17 +34,18 @@ export const TabletsPage = () => {
           src="./img/arrowRight.svg"
           className="page__path--prev"
         />
-        <span className="page__path--page SmallText">Phones</span>
+        <span className="page__path--page SmallText">Tablets</span>
       </div>
-      <h1 className="page__title h1">Mobile phones</h1>
 
+      {tablets && tablets.length === 0
+        ? (<NoResults title="Tablets" />)
+        : (<h1 className="page__title h1">Tablets</h1>)}
       {!tablets && (<Loader />)}
       {tablets && tablets.length > 0 && (
         <ProductList products={tablets} />
 
       )}
-      {tablets && tablets.length === 0
-      && (<NoResults />)}
+
     </div>
   );
 };

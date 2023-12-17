@@ -2,7 +2,7 @@
   {
     "age": 0,
     "id": "motorola-xoom-with-wi-fi",
-    "type": "tablet",
+    "type": "tablets",
     "imageUrl": "img/products/motorola-xoom-with-wi-fi.0.jpg",
     "name": "Motorola XOOM™ with Wi-Fi",
     "snippet": "The Next, Next Generation\r\n\r\nExperience the future with Motorola XOOM with Wi-Fi, the world's first tablet powered by Android 3.0 (Honeycomb).",
@@ -14,7 +14,7 @@
   },
   {
     "age": 1,
-    "type": "tablet",
+    "type": "tablets",
     "id": "motorola-xoom",
     "imageUrl": "img/products/motorola-xoom.0.jpg",
     "name": "MOTOROLA XOOM™",
@@ -27,7 +27,7 @@
   },
   {
     "age": 2,
-    "type": "phone",
+    "type": "phones",
     "id": "motorola-atrix-4g",
     "imageUrl": "img/products/motorola-atrix-4g.0.jpg",
     "name": "MOTOROLA ATRIX™ 4G",
@@ -40,7 +40,7 @@
   },
   {
     "age": 3,
-    "type": "tablet",
+    "type": "tablets",
     "id": "dell-streak-7",
     "imageUrl": "img/products/dell-streak-7.0.jpg",
     "name": "Dell Streak 7",
@@ -53,7 +53,7 @@
   },
   {
     "age": 4,
-    "type": "phone",
+    "type": "phones",
     "id": "samsung-gem",
     "imageUrl": "img/products/samsung-gem.0.jpg",
     "name": "Samsung Gem™",
@@ -66,7 +66,7 @@
   },
   {
     "age": 5,
-    "type": "phone",
+    "type": "phones",
     "id": "dell-venue",
     "imageUrl": "img/products/dell-venue.0.jpg",
     "name": "Dell Venue",
@@ -79,7 +79,7 @@
   },
   {
     "age": 6,
-    "type": "phone",
+    "type": "phones",
     "id": "nexus-s",
     "imageUrl": "img/products/nexus-s.0.jpg",
     "name": "Nexus S",
@@ -92,7 +92,7 @@
   },
   {
     "age": 7,
-    "type": "phone",
+    "type": "phones",
     "id": "lg-axis",
     "imageUrl": "img/products/lg-axis.0.jpg",
     "name": "LG Axis",
@@ -105,7 +105,7 @@
   },
   {
     "age": 8,
-    "type": "tablet",
+    "type": "tablets",
     "id": "samsung-galaxy-tab",
     "imageUrl": "img/products/samsung-galaxy-tab.0.jpg",
     "name": "Samsung Galaxy Tab™",
@@ -118,7 +118,7 @@
   },
   {
     "age": 9,
-    "type": "phone",
+    "type": "phones",
     "id": "samsung-showcase-a-galaxy-s-phone",
     "imageUrl": "img/products/samsung-showcase-a-galaxy-s-phone.0.jpg",
     "name": "Samsung Showcase™ a Galaxy S™ phone",
@@ -131,7 +131,7 @@
   },
   {
     "age": 10,
-    "type": "phone",
+    "type": "phones",
     "id": "droid-2-global-by-motorola",
     "imageUrl": "img/products/droid-2-global-by-motorola.0.jpg",
     "name": "DROID™ 2 Global by Motorola",
@@ -144,7 +144,7 @@
   },
   {
     "age": 11,
-    "type": "phone",
+    "type": "phones",
     "id": "droid-pro-by-motorola",
     "imageUrl": "img/products/droid-pro-by-motorola.0.jpg",
     "name": "DROID™ Pro by Motorola",
@@ -157,7 +157,7 @@
   },
   {
     "age": 12,
-    "type": "phone",
+    "type": "phones",
     "id": "motorola-bravo-with-motoblur",
     "imageUrl": "img/products/motorola-bravo-with-motoblur.0.jpg",
     "name": "MOTOROLA BRAVO™ with MOTOBLUR™",
@@ -170,7 +170,7 @@
   },
   {
     "age": 13,
-    "type": "phone",
+    "type": "phones",
     "carrier": "T-Mobile",
     "id": "motorola-defy-with-motoblur",
     "imageUrl": "img/products/motorola-defy-with-motoblur.0.jpg",
@@ -184,7 +184,7 @@
   },
   {
     "age": 14,
-    "type": "phone",
+    "type": "phones",
     "id": "t-mobile-mytouch-4g",
     "imageUrl": "img/products/t-mobile-mytouch-4g.0.jpg",
     "name": "T-Mobile myTouch 4G",
@@ -197,7 +197,7 @@
   },
   {
     "age": 15,
-    "type": "phone",
+    "type": "phones",
     "id": "samsung-mesmerize-a-galaxy-s-phone",
     "imageUrl": "img/products/samsung-mesmerize-a-galaxy-s-phone.0.jpg",
     "name": "Samsung Mesmerize™ a Galaxy S™ phone",
@@ -210,7 +210,7 @@
   },
   {
     "age": 16,
-    "type": "phone",
+    "type": "phones",
     "id": "sanyo-zio",
     "imageUrl": "img/products/sanyo-zio.0.jpg",
     "name": "SANYO ZIO",
@@ -223,7 +223,7 @@
   },
   {
     "age": 17,
-    "type": "phone",
+    "type": "phones",
     "id": "samsung-transform",
     "imageUrl": "img/products/samsung-transform.0.jpg",
     "name": "Samsung Transform™",
@@ -236,7 +236,7 @@
   },
   {
     "age": 18,
-    "type": "phone",
+    "type": "phones",
     "id": "t-mobile-g2",
     "imageUrl": "img/products/t-mobile-g2.0.jpg",
     "name": "T-Mobile G2",
@@ -249,7 +249,7 @@
   },
   {
     "age": 19,
-    "type": "phone",
+    "type": "phones",
     "id": "motorola-charm-with-motoblur",
     "imageUrl": "img/products/motorola-charm-with-motoblur.0.jpg",
     "name": "Motorola CHARM™ with MOTOBLUR™",

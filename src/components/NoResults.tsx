@@ -1,9 +1,9 @@
-export const NoResults = () => {
+export type NoResultsProps = {
+  title: string
+};
+
+export const NoResults = ({ title }: NoResultsProps) => {
   return (
-    <div className="noResults">
-      <span className="noResults__message BodyText">
-        not found
-      </span>
-    </div>
+    <h1 className="page__title h1">{`${title} not found`}</h1>
   );
 };

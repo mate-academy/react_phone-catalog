@@ -50,15 +50,11 @@ export const Banner = () => {
     <div className="banner">
       <button
         type="button"
-        className="buttons banner--arrow banner--arrow-left "
+        className="buttons banner--arrow banner--arrow-left
+          buttons__arrow--left"
         onClick={prevBanner}
-      >
-        <img
-          alt="arrowLeft"
-          src="./img/arrowLeft.svg"
-          className="banner--arrow-image"
-        />
-      </button>
+        aria-label="arrow--left"
+      />
 
       <div className="banner--banner">
         <span className="banner--banner--item" style={BannerSlider}>
@@ -89,15 +85,11 @@ export const Banner = () => {
       </div>
       <button
         type="button"
-        className="banner--arrow banner--arrow-right buttons"
+        className="banner--arrow banner--arrow-right buttons
+          buttons__arrow--right"
         onClick={handleManualNextBanner}
-      >
-        <img
-          alt="arrowLeft"
-          src="./img/arrowRight.svg"
-          className="banner--arrow--image"
-        />
-      </button>
+        aria-label="arrow--right"
+      />
 
       <div className="banner--counter">
         <span className={classNames('banner--counter-indicator',

@@ -75,7 +75,7 @@ header {
       }
 
       &--input-icon-item {
-        background: url('./img/search.svg') no-repeat;
+        background: url('./../img/search.svg') no-repeat;
         background-size: auto;
         width: 16px;
         height: 16px;
@@ -84,7 +84,7 @@ header {
 
       &:focus-within {
         .navbar__search--input-icon-item {
-          background: url('./img/close.svg') no-repeat;
+          background: url('./../img/close.svg') no-repeat;
         }
       }
     }

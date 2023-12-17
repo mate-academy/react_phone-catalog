@@ -4,17 +4,42 @@
   background-color: #{$white};
   border: 1px solid #{$gray-four};
   display: flex;
-  align-items: center;
   justify-content: center;
+
   &:hover {
-    border: 1px solid #{$gray};
+    border: 1px solid $gray;
     cursor: pointer;
+  }
+
+  &__page {
+    color: #{$white};
+    background-color: #{$gray};
+  }
+
+  &__arrow {
+    &--right {
+      background: url('./../img/arrowRight.svg') no-repeat center;
+
+      &-disabled {
+        background: url('./../img/arrowRightDisabled.svg') no-repeat center;
+        pointer-events: none;
+      }
+    }
+    &--left {
+      background: url('./../img/arrowLeft.svg') no-repeat center;
+
+      &-disabled {
+        background: url('./../img/arrowLeftDisabled.svg') no-repeat center;
+        pointer-events: none;
+      }
+    }
   }
 }
 
 .selects {
   border: 1px solid #{$gray-four};
   padding: 10px;
+  text-transform: capitalize;
 
   &:focus {
     border: 1px solid #{$gray};

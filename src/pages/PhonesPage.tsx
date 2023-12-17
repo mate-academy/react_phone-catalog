@@ -36,15 +36,14 @@ export const PhonesPage = () => {
         />
         <span className="page__path--page SmallText">Phones</span>
       </div>
-      <h1 className="page__title h1">Mobile phones</h1>
 
+      {phones && phones.length === 0
+        ? (<NoResults title="Phones" />)
+        : (<h1 className="page__title h1">Mobile phones</h1>)}
       {!phones && (<Loader />)}
       {phones && phones.length > 0 && (
         <ProductList products={phones} />
-
       )}
-      {phones && phones.length === 0
-      && (<NoResults />)}
     </div>
   );
 };

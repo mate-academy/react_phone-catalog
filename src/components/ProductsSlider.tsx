@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import { Product } from '../helpers/Types';
 import { ProductCard } from './ProductCard';
 
@@ -41,32 +42,52 @@ export const ProductsSlider = (
     }
   };
 
+  const disablePaginationRight = (): boolean => {
+    const max = products.length - 4;
+
+    if (productSlider < max) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const disablePaginationLeft = (): boolean => {
+    const min = 0;
+
+    if (productSlider !== min) {
+      return false;
+    }
+
+    return true;
+  };
+
   return (
     <div className="slider__header">
       <h1 className="slider__header--title h1">{title}</h1>
 
       <button
         type="button"
-        className="slider__header--arrow buttons"
+        className={classNames(
+          'slider__header--arrow buttons buttons__arrow--left',
+          { 'buttons__arrow--left-disabled': disablePaginationLeft() },
+        )}
         onClick={prevProducts}
-      >
-        <img
-          alt="arrowLeft"
-          src="./img/arrowLeft.svg"
-          className="slider__arrow--image"
-        />
-      </button>
+        aria-label="arrow--left"
+        disabled={disablePaginationLeft()}
+      />
+
       <button
         type="button"
-        className="slider__header--arrow buttons"
+        className={classNames(
+          'slider__header--arrow buttons buttons__arrow--right',
+          { 'buttons__arrow--right-disabled': disablePaginationRight() },
+        )}
         onClick={nextProducts}
-      >
-        <img
-          alt="arrowLeft"
-          src="./img/arrowRight.svg"
-          className="slider__arrow--image "
-        />
-      </button>
+        aria-label="arrow--right"
+        disabled={disablePaginationRight()}
+      />
+
       <ul className="slider" data-cy="cardsContainer">
         {products.map((product) => (
           <ProductCard

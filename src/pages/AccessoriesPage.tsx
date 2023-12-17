@@ -36,16 +36,15 @@ export const AccessoriesPage = () => {
         />
         <span className="page__path--page SmallText">Accessories</span>
       </div>
-      <h1 className="page__title h1">Accessories</h1>
+      {accessories && accessories.length === 0
+        ? (<NoResults title="Accessories" />)
+        : (<h1 className="page__title h1">Accessories</h1>)}
 
       {!accessories && (<Loader />)}
       {accessories && accessories.length > 0 && (
-        <div data-cy="productList">
-          <ProductList products={accessories} />
-        </div>
+        <ProductList products={accessories} />
+
       )}
-      {accessories && accessories.length === 0
-      && (<NoResults />)}
     </div>
   );
 };
