@@ -1,4 +1,4 @@
-import { useMatch, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './NavBar.scss';
 
@@ -10,28 +10,27 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   });
 };
 
-export const NavBar = () => {
-  const match = useMatch('/fuck');
+const routes = [
+  { path: '/', label: 'Home' },
+  { path: '/phones', label: 'Phones' },
+  { path: '/tablets', label: 'Tablets' },
+  { path: '/accessories', label: 'Accessories' },
+];
 
+export const NavBar = () => {
   return (
     <nav className="nav">
       <ul className="nav__list">
-        <li className="nav__link">
-          <NavLink to="/" className={getLinkClass({ isActive: !!match })}>
-            Home
-          </NavLink>
-        </li>
-        <li className="nav__link">
-          <NavLink to="/fuck" className={getLinkClass({ isActive: !!match })}>
-            Phones
-          </NavLink>
-        </li>
-        <li className="nav__link">
-          <NavLink to="/">Tablets</NavLink>
-        </li>
-        <li className="nav__link">
-          <NavLink to="/">Accessories</NavLink>
-        </li>
+        {routes.map(({ path, label }) => (
+          <li key={path} className="nav__link">
+            <NavLink
+              to={path}
+              className={({ isActive }) => getLinkClass({ isActive })}
+            >
+              {label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
