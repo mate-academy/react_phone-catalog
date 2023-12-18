@@ -134,7 +134,7 @@ const ProductDetailsPage = () => {
 
     return (
       <p className="price">
-        {productDetails?.price}
+        {currentProduct?.price}
         $
       </p>
     );
@@ -215,7 +215,7 @@ const ProductDetailsPage = () => {
                         onClick={() => handlePictureClick(index)}
                       >
                         <img
-                          src={image}
+                          src={`${process.env.PUBLIC_URL}/${image}`}
                           alt={`Product ${index + 1}`}
                         />
                       </button>
@@ -225,7 +225,7 @@ const ProductDetailsPage = () => {
                 <div className="selected-picture">
                   {productDetails?.images[selectedPicture] && (
                     <img
-                      src={productDetails.images[selectedPicture]}
+                      src={`${process.env.PUBLIC_URL}/${productDetails.images[selectedPicture]}`}
                       alt="Selected Product"
                       className="selected-picture"
                     />
