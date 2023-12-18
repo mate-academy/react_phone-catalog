@@ -1,4 +1,6 @@
 import React, { useCallback, useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSwipeable } from 'react-swipeable';
 import { Product } from '../../types/Product';
 import { ProductCart } from '../ProductCart';
 import './ProductsSlider.scss';
@@ -35,6 +37,14 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       : nextProduct);
   }, [firstProduct]);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => scrollForward(),
+    onSwipedRight: () => scrollBack(),
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   return (
     <div className="ProductsSlider">
       <div className="ProductsSlider__title-and-buttons">
@@ -58,6 +68,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         </div>
       </div>
       <div
+        {...handlers}
         className="ProductsSlider__cards-container"
         data-cy="cardsContainer"
       >

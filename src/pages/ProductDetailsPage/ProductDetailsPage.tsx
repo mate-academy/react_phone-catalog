@@ -144,14 +144,15 @@ export const ProductDetailsPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <div {...handlers}>
-                    <div className="ProductDetailsPage__main-image">
-                      <img
-                        src={`${BASE_URL}/${selectedImage}`}
-                        alt={selectedImage}
-                        className="ProductDetailsPage__main-image-selected"
-                      />
-                    </div>
+                  <div
+                    {...handlers}
+                    className="ProductDetailsPage__main-image"
+                  >
+                    <img
+                      src={`${BASE_URL}/${selectedImage}`}
+                      alt={selectedImage}
+                      className="ProductDetailsPage__main-image-selected"
+                    />
                   </div>
                 </div>
 
@@ -300,7 +301,10 @@ export const ProductDetailsPage: React.FC = () => {
                   <div className="Description">
                     <ul className="Description__list">
                       {productDetails.description.map(item => (
-                        <li className="Description__item">
+                        <li
+                          key={item.title}
+                          className="Description__item"
+                        >
                           <h4 className="Description__title">
                             {item.title}
                           </h4>
