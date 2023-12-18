@@ -5,14 +5,20 @@ import React, {
   useState,
 } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
+
 import { AppContext } from '../../context/AppContext';
 import { CartContext } from '../../context/CartContext';
 import { FavContext } from '../../context/FavContext';
+
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { BackButton } from '../../components/BackButton/BackButton';
 import { ProductNotFound } from '../../components/ProductNotFound';
+import { Loader } from '../../components/Loader';
+
 import { PhoneColorsType } from '../../types/PhoneColorsType';
 import { PhoneInfo } from '../../types/PhoneInfo';
 import { CartItemType } from '../../types/CartItemType';
@@ -20,15 +26,16 @@ import { getProductInfo } from '../../helpers/products';
 import { PHONE_COLORS } from '../../constants/constants';
 import { BASE_URL } from '../../utils/fetchClient';
 import './ProductDetailsPage.scss';
-import { Loader } from '../../components/Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const { pathname } = useLocation();
   const currentPage = pathname.slice(1).split('/')[0];
   const { productId } = useParams();
+
   const [productDetails, setProductDetails] = useState<PhoneInfo>();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string>('');
+
   const { cart, handleAddToCart } = useContext(CartContext);
   const { fav, handleAddToFav } = useContext(FavContext);
   const { products, hotPriceProducts } = useContext(AppContext);
@@ -47,7 +54,7 @@ export const ProductDetailsPage: React.FC = () => {
 
       getProductInfo(productId)
         .then(setProductDetails)
-        .catch(() => { })
+        .catch(() => {})
         .finally(() => {
           setIsLoading(false);
         });
@@ -65,8 +72,25 @@ export const ProductDetailsPage: React.FC = () => {
   const isAddedToCart = cart.some((item: CartItemType) => {
     return item.product.itemId === productId;
   });
-
   const isAddedToFav = fav.some(prod => prod.itemId === productId);
+
+  type Direction = 'next' | 'prev';
+
+  const handleImageSwipe = (direction: Direction) => {
+    const imageIndex = allImages.findIndex(image => image === selectedImage);
+
+    setSelectedImage(direction === 'next'
+      ? allImages[imageIndex + 1] || allImages[0]
+      : allImages[imageIndex - 1] || allImages[allImages.length - 1]);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleImageSwipe('next'),
+    onSwipedRight: () => handleImageSwipe('prev'),
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   return (
     <div className="ProductDetailsPage">
@@ -120,12 +144,14 @@ export const ProductDetailsPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="ProductDetailsPage__main-image">
-                    <img
-                      src={`${BASE_URL}/${selectedImage}`}
-                      alt={selectedImage}
-                      className="ProductDetailsPage__main-image-selected"
-                    />
+                  <div {...handlers}>
+                    <div className="ProductDetailsPage__main-image">
+                      <img
+                        src={`${BASE_URL}/${selectedImage}`}
+                        alt={selectedImage}
+                        className="ProductDetailsPage__main-image-selected"
+                      />
+                    </div>
                   </div>
                 </div>
 
