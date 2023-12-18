@@ -9,3 +9,7 @@ html {
   background-color: $html-bg-color;
   scroll-behavior: smooth;
 }
+
+.menu-opened {
+  overflow: hidden;
+}

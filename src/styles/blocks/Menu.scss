@@ -1,12 +1,15 @@
 .Menu {
   background-color: $html-bg-color;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   transform: translateX(100%);
   transition: transform 0.5s;
@@ -27,17 +30,12 @@
     border-bottom: 1px solid $gray-elements;
   }
 
-  &__bottom-actions {
+  &__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 64px;
     border-top: 1px solid $gray-elements;
-
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
 
   &__action {

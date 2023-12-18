@@ -55,6 +55,11 @@ export const Header: React.FC = () => {
   || pathname === '/accessories'
   || pathname === '/favorites';
 
+  const handleMenuClick = () => {
+    setIsMenuOpened(!isMenuOpened);
+    document.body.classList.toggle('menu-opened');
+  };
+
   return (
     <>
       <div className="Header" id="header">
@@ -112,7 +117,7 @@ export const Header: React.FC = () => {
               type="button"
               aria-label="menu"
               className="Header__menu-button"
-              onClick={() => setIsMenuOpened(true)}
+              onClick={handleMenuClick}
             >
               <img
                 src={menuIcon}
@@ -125,52 +130,54 @@ export const Header: React.FC = () => {
       </div>
 
       <aside
+        id="menu"
         className={classNames('Menu', {
           'Menu--opened': isMenuOpened,
         })}
       >
-        <div className="Menu__top-actions">
-          <div className="Menu__logo">
-            <Logo />
+        <div className="Menu__top">
+          <div className="Menu__top-actions">
+            <div className="Menu__logo">
+              <Logo />
+            </div>
+            <button
+              type="button"
+              aria-label="menu"
+              className="Menu__button"
+              onClick={handleMenuClick}
+            >
+              <img
+                src={closeIcon}
+                alt="Menu"
+                className="Menu__img"
+              />
+            </button>
           </div>
-          <button
-            type="button"
-            aria-label="menu"
-            className="Menu__button"
-            onClick={() => setIsMenuOpened(false)}
-          >
-            <img
-              src={closeIcon}
-              alt="Menu"
-              className="Menu__img"
-            />
-          </button>
+          <nav className="Menu__nav">
+            <ul className="Menu__nav-list">
+              {menuNav.map(elem => (
+                <li
+                  key={elem.href}
+                  className="Menu__nav-item"
+                >
+                  <NavLink
+                    to={elem.href}
+                    className={getMenuClassName}
+                    onClick={handleMenuClick}
+                  >
+                    {elem.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        <nav className="Menu__nav">
-          <ul className="Menu__nav-list">
-            {menuNav.map(elem => (
-              <li
-                key={elem.href}
-                className="Menu__nav-item"
-              >
-                <NavLink
-                  to={elem.href}
-                  className={getMenuClassName}
-                  onClick={() => setIsMenuOpened(false)}
-                >
-                  {elem.name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="Menu__bottom-actions">
+        <div className="Menu__bottom">
           <NavLink
             to="/favorites"
             className={getActionClassName}
-            onClick={() => setIsMenuOpened(false)}
+            onClick={handleMenuClick}
           >
             <div className="Action">
               <img
@@ -187,7 +194,7 @@ export const Header: React.FC = () => {
           <NavLink
             to="/cart"
             className={getActionClassName}
-            onClick={() => setIsMenuOpened(false)}
+            onClick={handleMenuClick}
           >
             <div className="Action">
               <img
