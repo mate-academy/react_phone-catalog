@@ -22,7 +22,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = useContext(ProductsContext);
 
   const isFavorite
-    = favorites.find(productCurrent => productCurrent.id === product.id);
+    = favorites.find(productCurrent => (
+      productCurrent.itemId === product.itemId
+    ));
 
   const isCart
     = carts.find(productCurrent => productCurrent.id === product.id);

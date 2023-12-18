@@ -61,10 +61,10 @@ export const ProductDetalisCard: React.FC<Props> = ({ product }) => {
   } = useContext(ProductsContext);
 
   const isFavorite
-    = favorites.find(productCurrent => productCurrent.id === product.id);
+    = favorites.find(productCurrent => productCurrent.itemId === product.id);
 
   const isCart
-    = carts.find(productCurrent => productCurrent.id === product.id);
+    = carts.find(productCurrent => productCurrent.itemId === product.id);
 
   const labelAddCartBtn = isCart ? 'Added to cart' : 'Add to cart';
 
