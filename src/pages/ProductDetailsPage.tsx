@@ -172,7 +172,7 @@ export const ProductDetailsPage = () => {
           />
         </div>
       ) : errorMessage ? (
-        <div className="empty-pages" style={{ marginTop: "64px" }}>
+        <div className="empty-pages" style={{ marginTop: '64px' }}>
           <h1 className="empty-pages_title page-title-style">
             We&apos;re sorry, but the phone
             <br />
@@ -227,8 +227,8 @@ export const ProductDetailsPage = () => {
                     {currentProduct.colorsAvailable.map((color) => (
                       <Link
                         to={getNewPath({ color })}
-                        className={cn("available-colors_item", {
-                          "available-colors_item--select":
+                        className={cn('available-colors_item', {
+                          'available-colors_item--select':
                             currentProduct.color === color,
                         })}
                         key={color}
@@ -253,8 +253,8 @@ export const ProductDetailsPage = () => {
                     {currentProduct.capacityAvailable.map((memory) => (
                       <Link
                         to={getNewPath({ memory })}
-                        className={cn("available-memory_item body-text-style", {
-                          "available-memory_item--active":
+                        className={cn('available-memory_item body-text-style', {
+                          'available-memory_item--active':
                             currentProduct.capacity === memory,
                         })}
                         key={memory}
@@ -275,23 +275,24 @@ export const ProductDetailsPage = () => {
                   <button
                     type="button"
                     className={cn({
-                      "product-details_btn-cart": true,
-                      "body-text-style": true,
-                      "btn-cart": true,
-                      "btn-cart--animation": generalProduct?.inCart,
+                      'product-details_btn-cart': true,
+                      'body-text-style': true,
+                      'btn-cart': true,
+                      'btn-cart--animation': generalProduct?.inCart,
                     })}
+                    onClick={() => handleBtnClick('cart')}
                   >
-                    {generalProduct?.inCart ? "Added to cart" : "Add to cart"}
+                    {generalProduct?.inCart ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
                     type="button"
                     aria-label="Favourites"
-                    style={{ height: "48px", width: "48px" }}
+                    style={{ height: '48px', width: '48px' }}
                     className={cn({
-                      "btn-fav": true,
-                      "btn-fav--added": generalProduct?.inFavourite,
+                      'btn-fav': true,
+                      'btn-fav--added': generalProduct?.inFavourite,
                     })}
-                    onClick={() => handleBtnClick("favourites")}
+                    onClick={() => handleBtnClick('favourites')}
                   />
                 </div>
                 <table className="short-specs">
@@ -447,7 +448,7 @@ export const ProductDetailsPage = () => {
                         Cell
                       </p>
                       <p className="tech-specs_item-details body-text-style">
-                        {currentProduct.cell.join(", ")}
+                        {currentProduct.cell.join(', ')}
                       </p>
                     </li>
                   </ul>
