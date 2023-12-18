@@ -5,7 +5,7 @@ export const getPreparitionProducts = (
   products: Product[],
   searchParams: URLSearchParams,
 ) => {
-  const sort = (searchParams.get('sort') as Sort) || 'age';
+  const sort = (searchParams.get('sort') as Sort) || 'year';
   const query = searchParams.get('query') || '';
 
   return (

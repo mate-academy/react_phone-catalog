@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import './FilterPanel.scss';
-import { Sort } from '../../types/Sort';
 import {
   SearchParams,
   getSearchWith,
@@ -23,7 +22,6 @@ export const FilterPanel: React.FC = () => {
     setSearchParams(search);
   }
 
-  const sort = (searchParams.get('sort') as Sort) || 'age';
   const itemsNumber = searchParams.get('itemsOnPage') || '16';
 
   const [sortLabel, setSortLabel] = useState('Newest');
@@ -46,7 +44,7 @@ export const FilterPanel: React.FC = () => {
     } else if (option === 'Name') {
       params.sort = 'name';
     } else {
-      params.sort = 'name';
+      params.sort = 'year';
     }
 
     params.page = '1';
@@ -114,7 +112,7 @@ export const FilterPanel: React.FC = () => {
                     'search-panel__option-value',
                     {
                       'search-panel__option-value--selected':
-                        option === sort,
+                        option === sortLabel,
                     },
                   )}
                   >

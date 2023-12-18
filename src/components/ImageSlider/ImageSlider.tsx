@@ -7,9 +7,9 @@ import { getUniqueId } from '../../helpers/getFunctions/getUniqueld';
 
 export const ImageSlider: React.FC = () => {
   const images = [
-    './new/img/banner-phones.png',
-    './new/img/banner-tablets.png',
-    './new/img/banner-accessories.png',
+    './new/img/banner-phones.svg',
+    './new/img/banner-tablets.svg',
+    './new/img/banner-accessories.svg',
   ];
 
   const [index, setIndex] = useState(1);

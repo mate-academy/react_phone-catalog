@@ -46,6 +46,7 @@
     right: 0;
     top: 70px;
     border: 1px solid $elements;
+    z-index: 10;
   }
 
   &__dropdown-menu-item {
