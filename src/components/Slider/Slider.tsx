@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
 import './Slider.scss';
 
@@ -39,50 +41,60 @@ export const Slider: React.FC = () => {
     return () => clearInterval(interval);
   }, [firstImage, scrollForward]);
 
-  return (
-    <div className="Slider">
-      <div className="Slider__content">
-        <div className="Slider__main">
-          <button
-            type="button"
-            aria-label="Previous"
-            className="button button--slider button--slider-back"
-            onClick={scrollBack}
-          />
-          <ul className="Slider__list">
-            {SLIDER_ITEMS.map((item, i) => (
-              <li
-                key={item.src}
-                style={{
-                  transform: `translateX(-${translateValue}%)`,
-                  transition: `transform ${ANIMATION_DURATION}ms ease`,
-                }}
-                className="Slider__list-item"
-              >
-                <Link
-                  to={item.src}
-                  className={`Slider__link Slider__link--${i}`}
-                />
-              </li>
-            ))}
-          </ul>
-          <button
-            type="button"
-            aria-label="Next"
-            className="button button--slider button--slider-forward"
-            onClick={scrollForward}
-          />
-        </div>
+  const handlers = useSwipeable({
+    onSwipedLeft: () => scrollForward(),
+    onSwipedRight: () => scrollBack(),
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
-        <div className="Slider__dots">
-          {SLIDER_ITEMS.map((item, i) => (
-            <div
-              key={item.src}
-              className={classNames('Slider__dot', {
-                'Slider__dot--active': i === firstImage,
-              })}
+  return (
+    <div {...handlers}>
+      <div className="Slider">
+        <div className="Slider__content">
+          <div className="Slider__main">
+            <button
+              type="button"
+              aria-label="Previous"
+              className="button button--slider button--slider-back"
+              onClick={scrollBack}
             />
-          ))}
+            <ul className="Slider__list">
+              {SLIDER_ITEMS.map((item, i) => (
+                <li
+                  key={item.src}
+                  style={{
+                    transform: `translateX(-${translateValue}%)`,
+                    transition: `transform ${ANIMATION_DURATION}ms ease`,
+                  }}
+                  className="Slider__list-item"
+                >
+                  <Link
+                    to={item.src}
+                    className={`Slider__link Slider__link--${i}`}
+                  />
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              aria-label="Next"
+              className="button button--slider button--slider-forward"
+              onClick={scrollForward}
+            />
+          </div>
+
+          <div className="Slider__dots">
+            {SLIDER_ITEMS.map((item, i) => (
+              <div
+                key={item.src}
+                className={classNames('Slider__dot', {
+                  'Slider__dot--active': i === firstImage,
+                })}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

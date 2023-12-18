@@ -12,7 +12,7 @@
 
 @mixin afterStyle {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   height: 2px;
