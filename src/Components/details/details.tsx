@@ -45,7 +45,7 @@ const ProductDetailsPage = () => {
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
   const [productDetails,
     setProductDetails] = useState<ProductDetails | null>(null);
-  const [selectedPicture] = useState(0);
+  const [selectedPicture, setSelectedPicture] = useState(0);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const {
@@ -166,6 +166,10 @@ const ProductDetailsPage = () => {
     }
   };
 
+  const handlePictureClick = (index: number) => {
+    setSelectedPicture(index);
+  };
+
   return (
     <>
       <div className="details">
@@ -203,12 +207,12 @@ const ProductDetailsPage = () => {
               <div className="images-holder">
                 <div className="pictures">
                   {productDetails && 'images' in productDetails
-                    && (productDetails.images as string[]
-                    ).map((image, index) => (
+                    && productDetails.images.map((image, index) => (
                       <button
                         type="button"
                         key={image}
                         className={`image-holder ${index === selectedPicture ? 'selected-picture' : 'unselected-picture'}`}
+                        onClick={() => handlePictureClick(index)}
                       >
                         <img
                           src={image}
@@ -216,6 +220,7 @@ const ProductDetailsPage = () => {
                         />
                       </button>
                     ))}
+
                 </div>
                 <div className="selected-picture">
                   {productDetails?.images[selectedPicture] && (
