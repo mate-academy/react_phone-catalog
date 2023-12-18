@@ -13,10 +13,10 @@
 
   &__search {
     display: flex;
-    height: 64px;
+    height: 48px;
     border-bottom: 1px solid $gray-elements;
 
-    @include onTablet {
+    @include onDesktop {
       display: none;
     }
   }
@@ -43,7 +43,6 @@
   &__dropdowns {
     width: 100%;
     display: flex;
-    // flex-wrap: wrap;
     gap: 16px;
   }
 }

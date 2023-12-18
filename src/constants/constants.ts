@@ -24,7 +24,7 @@ export const PHONE_COLORS: PhoneColorsType = {
   yellow: '#ffe680',
 };
 
-export const sliderImageSize = {
-  height: 432,
-  width: 1040,
-};
+// export const sliderImageSize = {
+//   height: 432,
+//   width: 1040,
+// };

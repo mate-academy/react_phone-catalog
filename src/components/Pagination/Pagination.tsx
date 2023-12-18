@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/getSearchWith';
-import './Pagination.scss';
 import { usePagination } from '../../hooks/usePagination';
+import './Pagination.scss';
 
 type Props = {
   pages: number,

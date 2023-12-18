@@ -1,21 +1,26 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+
 import { useProducts } from '../../context/AppContext';
-import { getAccessories } from '../../helpers/products';
+
 import { Loader } from '../../components/Loader';
 import { NoResults } from '../../components/NoResults/NoResults';
-import { Errors } from '../../types/Errors';
-import { Product } from '../../types/Product';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
-import { Dropdown } from '../../types/Dropdown';
-import { Sort } from '../../types/Sort';
-import { NoSearchResults } from '../../components/NoSearchResults';
-import { getSearchWith } from '../../helpers/getSearchWith';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
 import { Search } from '../../components/Search';
+import { NoSearchResults } from '../../components/NoSearchResults';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+
+import { Dropdown } from '../../types/Dropdown';
+import { Sort } from '../../types/Sort';
+import { Errors } from '../../types/Errors';
+import { Product } from '../../types/Product';
+
+import { getAccessories } from '../../helpers/products';
+import { getSearchWith } from '../../helpers/getSearchWith';
+
+import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
 
 export const AccessoriesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -107,11 +112,19 @@ export const AccessoriesPage: React.FC = () => {
     return selectedSort || 'Newest';
   }, [searchParams]);
 
+  const isNoResultsVisible = !accessories.length && !isLoading;
+  const isNoSearchResultsVisible
+    = !visibleAccessories.length && !isLoading && !!query;
+  const isProductsListVisible = !isLoading && !!visibleAccessories.length;
+  const isPaginationVisible = numberOfPages > 1 && perPage !== 'All';
+
   return (
     <div className="CategoryPage">
-      <div className="CategoryPage__search">
-        <Search />
-      </div>
+      {!!visibleAccessories.length && (
+        <div className="CategoryPage__search">
+          <Search />
+        </div>
+      )}
       <div className="container">
         <div className="CategoryPage__content">
           <Breadcrumbs page={['Accessories']} />
@@ -120,6 +133,7 @@ export const AccessoriesPage: React.FC = () => {
             <h1 className="CategoryPage__title">
               Accessories
             </h1>
+
             <span className="CategoryPage__models-count">
               {query ? (
                 `${visibleAccessories.length} result${visibleAccessories.length === 1 ? '' : 's'}`
@@ -131,11 +145,11 @@ export const AccessoriesPage: React.FC = () => {
 
           {isLoading && (<Loader />)}
 
-          {!accessories.length && !isLoading && (
+          {isNoResultsVisible && (
             <NoResults category="Accessories" />
           )}
 
-          {!visibleAccessories.length && !isLoading && !!query && (
+          {isNoSearchResultsVisible && (
             <NoSearchResults />
           )}
 
@@ -237,13 +251,13 @@ export const AccessoriesPage: React.FC = () => {
             </div>
           )}
 
-          {!isLoading && !!visibleAccessories.length && (
+          {isProductsListVisible && (
             <ProductsList
               products={visibleAccessories.slice(firstItem, lastItem)}
             />
           )}
 
-          {numberOfPages > 1 && perPage !== 'All' && (
+          {isPaginationVisible && (
             <Pagination pages={numberOfPages} />
           )}
         </div>

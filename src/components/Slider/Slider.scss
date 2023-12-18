@@ -2,10 +2,6 @@
 @import "../../styles/utils/variables";
 
 .Slider {
-  @include onTablet {
-    // width: $slider-width;
-  }
-
   @include onDesktop {
     height: 432px;
     width: 1136px;
@@ -15,10 +11,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    @include onTablet {
-      // width: $slider-width;
-    }
 
     @include onDesktop {
       width: 100%;
@@ -31,8 +23,7 @@
     height: 320px;
 
     @include onTablet {
-      // width: $slider-width;
-      height: 32vw;
+      height: $slider-size;
     }
 
     @include onDesktop {
@@ -53,7 +44,7 @@
 
     @include onTablet {
       width: 84vw;
-      height: 32vw;
+      height: $slider-size;
     }
 
     @include onDesktop {
@@ -69,7 +60,7 @@
       width: 100%;
 
       @include onTablet {
-        height: 32vw;
+        height: $slider-size;
       }
     }
   }

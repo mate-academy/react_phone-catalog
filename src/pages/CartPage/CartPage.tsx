@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
+import { CartContext } from '../../context/CartContext';
 import { BackButton } from '../../components/BackButton';
 import { CartItem } from '../../components/CartItem/CartItem';
-import { CartContext } from '../../context/CartContext';
 import './CartPage.scss';
 
 export const CartPage: React.FC = () => {
@@ -28,6 +28,7 @@ export const CartPage: React.FC = () => {
         <div className="CartPage__content">
           <div className="CartPage__top">
             <BackButton />
+
             <h2 className="CartPage__title">
               Cart
             </h2>
@@ -36,6 +37,7 @@ export const CartPage: React.FC = () => {
           {!cart.length && (
             <span className="CartPage__is-empty">Your cart is empty</span>
           )}
+
           <div className="CartPage__main">
             <ul className="CartPage__list">
               {cart.map(cartItem => (
@@ -54,6 +56,7 @@ export const CartPage: React.FC = () => {
                       &#36;
                       {totalSum}
                     </span>
+
                     <p
                       className="CartPage__checkout-text"
                       data-cy="productQauntity"

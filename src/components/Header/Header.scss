@@ -44,13 +44,14 @@
   }
 
   &__search {
-    height: 64px;
-    width: 327px;
+    height: 48px;
     border-left: 1px solid $gray-elements;
     display: none;
 
-    @include onTablet {
+    @include onDesktop {
       display: flex;
+      width: 327px;
+      height: 64px;
     }
   }
 

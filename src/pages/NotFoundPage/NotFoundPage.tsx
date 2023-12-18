@@ -10,6 +10,7 @@ export const NotFoundPage: React.FC = () => {
           <h1 className="NotFoundPage__title">
             Oops, page not found.
           </h1>
+
           <Link to="/" className="NotFoundPage__link">
             Return to Home Page
           </Link>

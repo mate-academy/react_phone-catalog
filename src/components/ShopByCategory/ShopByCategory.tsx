@@ -21,6 +21,7 @@ export const ShopByCategory: React.FC = () => {
           <h2 className="ShopByCategory__title">
             Shop by category
           </h2>
+
           <div
             className="ShopByCategory__categories"
             data-cy="categoryLinksContainer"

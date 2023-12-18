@@ -22,6 +22,7 @@ import { Loader } from '../../components/Loader';
 import { PhoneColorsType } from '../../types/PhoneColorsType';
 import { PhoneInfo } from '../../types/PhoneInfo';
 import { CartItemType } from '../../types/CartItemType';
+
 import { getProductInfo } from '../../helpers/products';
 import { PHONE_COLORS } from '../../constants/constants';
 import { BASE_URL } from '../../utils/fetchClient';
@@ -92,16 +93,19 @@ export const ProductDetailsPage: React.FC = () => {
     trackMouse: true,
   });
 
+  const isProductNotFoundVisible = !productDetails && !isLoading;
+  const isProductInfoVisible = productDetails && !isLoading && currentProduct;
+
   return (
     <div className="ProductDetailsPage">
       <div className="container">
         {isLoading && (<Loader />)}
 
-        {!productDetails && !isLoading && (
+        {isProductNotFoundVisible && (
           <ProductNotFound />
         )}
 
-        {productDetails && !isLoading && currentProduct && (
+        {isProductInfoVisible && (
           <>
             <div className="ProductDetailsPage__content">
               <section className="ProductDetailsPage__section">
@@ -112,6 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
                       productDetails.name.replace('GB', ' GB'),
                     ]}
                   />
+
                   <div className="ProductDetailsPage__back-and-title">
                     <BackButton />
                     <h2 className="ProductDetailsPage__product-title">
@@ -144,6 +149,7 @@ export const ProductDetailsPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
+
                   <div
                     {...handlers}
                     className="ProductDetailsPage__main-image"
@@ -162,6 +168,7 @@ export const ProductDetailsPage: React.FC = () => {
                       <p className="ProductDetailsPage__colors-text">
                         Available colors
                       </p>
+
                       <ul className="ProductDetailsPage__colors">
                         {productDetails.colorsAvailable.map(color => (
                           <li
@@ -194,6 +201,7 @@ export const ProductDetailsPage: React.FC = () => {
                       <p className="ProductDetailsPage__capacity-text">
                         Select capacity
                       </p>
+
                       <ul className="ProductDetailsPage__capacity-list">
                         {productDetails.capacityAvailable.map(capacity => (
                           <li
@@ -222,17 +230,20 @@ export const ProductDetailsPage: React.FC = () => {
                     <div className="Decorative-line" />
 
                   </div>
+
                   <div className="ProductDetailsPage__price-and-buttons">
                     <div className="ProductDetailsPage__prices">
                       <span className="ProductDetailsPage__price-discount">
                         &#36;
                         {productDetails.priceDiscount}
                       </span>
+
                       <span className="ProductDetailsPage__price-full">
                         &#36;
                         {productDetails.priceRegular}
                       </span>
                     </div>
+
                     <div className="ProductDetailsPage__actions">
                       <button
                         type="button"
@@ -247,6 +258,7 @@ export const ProductDetailsPage: React.FC = () => {
                           'Add to cart'
                         )}
                       </button>
+
                       <button
                         type="button"
                         aria-label="Like"
@@ -258,6 +270,7 @@ export const ProductDetailsPage: React.FC = () => {
                       />
                     </div>
                   </div>
+
                   <div className="ProductDetailsPage__features Feature">
                     <ul className="Feature__list">
                       <li className="Feature__item">

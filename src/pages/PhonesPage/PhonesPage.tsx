@@ -5,21 +5,26 @@ import React, {
 } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+
+import { useProducts } from '../../context/AppContext';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { ProductsList } from '../../components/ProductsList';
-import { useProducts } from '../../context/AppContext';
-import { getPhones } from '../../helpers/products';
-import { Product } from '../../types/Product';
-import { Sort } from '../../types/Sort';
-import { getSearchWith } from '../../helpers/getSearchWith';
 import { NoSearchResults } from '../../components/NoSearchResults';
-import { Dropdown } from '../../types/Dropdown';
-import { Errors } from '../../types/Errors';
-import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
 import { NoResults } from '../../components/NoResults/NoResults';
 import { Search } from '../../components/Search';
+
+import { Product } from '../../types/Product';
+import { Sort } from '../../types/Sort';
+import { Dropdown } from '../../types/Dropdown';
+import { Errors } from '../../types/Errors';
+
+import { getPhones } from '../../helpers/products';
+import { getSearchWith } from '../../helpers/getSearchWith';
+
+import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -111,14 +116,23 @@ export const PhonesPage: React.FC = () => {
     return selectedSort || 'Newest';
   }, [searchParams]);
 
+  const isNoResultsVisible = !phones.length && !isLoading;
+  const isNoSearchResultsVisible
+    = !visiblePhones.length && !isLoading && !!query;
+  const areDropdownsVisible = !!visiblePhones.length && !isLoading;
+  const isProductsListVisible = !isLoading && !!visiblePhones.length;
+  const isPaginationVisible = numberOfPages > 1 && perPage !== 'All';
+
   return (
     <div className="CategoryPage">
-      <div className="CategoryPage__search">
-        <Search />
-      </div>
+      {!!visiblePhones.length && (
+        <div className="CategoryPage__search">
+          <Search />
+        </div>
+      )}
+
       <div className="container">
         <div className="CategoryPage__content">
-
           <Breadcrumbs page={['Phones']} />
 
           <div className="CategoryPage__main-info">
@@ -136,15 +150,15 @@ export const PhonesPage: React.FC = () => {
 
           {isLoading && (<Loader />)}
 
-          {!phones.length && !isLoading && (
+          {isNoResultsVisible && (
             <NoResults category="Phones" />
           )}
 
-          {!visiblePhones.length && !isLoading && !!query && (
+          {isNoSearchResultsVisible && (
             <NoSearchResults />
           )}
 
-          {!!visiblePhones.length && !isLoading && (
+          {areDropdownsVisible && (
             <div className="CategoryPage__dropdowns">
               <div className="Dropdown Dropdown--sort">
                 <p className="Dropdown__title">
@@ -242,11 +256,11 @@ export const PhonesPage: React.FC = () => {
             </div>
           )}
 
-          {!isLoading && !!visiblePhones.length && (
+          {isProductsListVisible && (
             <ProductsList products={visiblePhones.slice(firstItem, lastItem)} />
           )}
 
-          {numberOfPages > 1 && perPage !== 'All' && (
+          {isPaginationVisible && (
             <Pagination pages={numberOfPages} />
           )}
         </div>

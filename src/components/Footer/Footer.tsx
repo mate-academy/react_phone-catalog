@@ -14,6 +14,7 @@ export const Footer: React.FC = () => (
         <div className="Footer__logo">
           <Logo />
         </div>
+
         <nav className="Footer__nav">
           <ul className="Footer__nav-list">
             <li className="Footer__nav-item">
@@ -38,6 +39,7 @@ export const Footer: React.FC = () => (
             </li>
           </ul>
         </nav>
+
         <div className="Footer__button">
           <p className="Footer__button-text">
             Back to top

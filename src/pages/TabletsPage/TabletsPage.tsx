@@ -1,20 +1,28 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+
+import { useProducts } from '../../context/AppContext';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Loader } from '../../components/Loader';
 import { NoResults } from '../../components/NoResults/NoResults';
-import { useProducts } from '../../context/AppContext';
-import { getTablets } from '../../helpers/products';
-import { Errors } from '../../types/Errors';
-import { Product } from '../../types/Product';
-import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
-import { Dropdown } from '../../types/Dropdown';
-import { Sort } from '../../types/Sort';
 import { NoSearchResults } from '../../components/NoSearchResults';
 import { ProductsList } from '../../components/ProductsList';
 import { Pagination } from '../../components/Pagination';
+
+import { Errors } from '../../types/Errors';
+import { Product } from '../../types/Product';
+import { Dropdown } from '../../types/Dropdown';
+import { Sort } from '../../types/Sort';
+
+import { getTablets } from '../../helpers/products';
 import { getSearchWith } from '../../helpers/getSearchWith';
+import { SORT_OPTIONS, ITEMS_PER_PAGE } from '../../constants/constants';
 
 export const TabletsPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -106,6 +114,12 @@ export const TabletsPage: React.FC = () => {
     return selectedSort || 'Newest';
   }, [searchParams]);
 
+  const isNoResultsVisible = !tablets.length && !isLoading;
+  const isNoSearchResultsVisible
+    = !visibleTablets.length && !isLoading && !!query;
+  const isProductsListVisible = !isLoading && !!visibleTablets.length;
+  const isPaginationVisible = numberOfPages > 1 && perPage !== 'All';
+
   return (
     <div className="CategoryPage">
       <div className="container">
@@ -127,11 +141,11 @@ export const TabletsPage: React.FC = () => {
 
           {isLoading && (<Loader />)}
 
-          {!tablets.length && !isLoading && (
+          {isNoResultsVisible && (
             <NoResults category="Tablets" />
           )}
 
-          {!visibleTablets.length && !isLoading && !!query && (
+          {isNoSearchResultsVisible && (
             <NoSearchResults />
           )}
 
@@ -233,13 +247,13 @@ export const TabletsPage: React.FC = () => {
             </div>
           )}
 
-          {!isLoading && !!visibleTablets.length && (
+          {isProductsListVisible && (
             <ProductsList
               products={visibleTablets.slice(firstItem, lastItem)}
             />
           )}
 
-          {numberOfPages > 1 && perPage !== 'All' && (
+          {isPaginationVisible && (
             <Pagination pages={numberOfPages} />
           )}
         </div>

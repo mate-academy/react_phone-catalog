@@ -67,6 +67,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           />
         </div>
       </div>
+
       <div
         {...handlers}
         className="ProductsSlider__cards-container"

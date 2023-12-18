@@ -5,16 +5,7 @@ import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
 import './Slider.scss';
 
-// import phones from '../../images/slider/phones.png';
-// import tablets from '../../images/slider/tablets.png';
-// import accessories from '../../images/slider/accessories.png';
-
-const SLIDER_ITEMS = [
-  { src: '/phones' },
-  { src: '/tablets' },
-  { src: '/accessories' },
-];
-
+const SLIDER_ITEMS = ['/phones', '/tablets', '/accessories'];
 const ANIMATION_DURATION = 1500;
 
 export const Slider: React.FC = () => {
@@ -63,7 +54,7 @@ export const Slider: React.FC = () => {
             <ul className="Slider__list">
               {SLIDER_ITEMS.map((item, i) => (
                 <li
-                  key={item.src}
+                  key={item}
                   style={{
                     transform: `translateX(-${translateValue}%)`,
                     transition: `transform ${ANIMATION_DURATION}ms ease`,
@@ -71,7 +62,7 @@ export const Slider: React.FC = () => {
                   className="Slider__list-item"
                 >
                   <Link
-                    to={item.src}
+                    to={item}
                     className={`Slider__link Slider__link--${i}`}
                   />
                 </li>
@@ -88,7 +79,7 @@ export const Slider: React.FC = () => {
           <div className="Slider__dots">
             {SLIDER_ITEMS.map((item, i) => (
               <div
-                key={item.src}
+                key={item}
                 className={classNames('Slider__dot', {
                   'Slider__dot--active': i === firstImage,
                 })}

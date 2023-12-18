@@ -11,7 +11,10 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <div className="ProductsList" data-cy="productList">
       {products.map(product => (
-        <ProductCart newProduct={product} key={product.itemId} />
+        <ProductCart
+          newProduct={product}
+          key={product.itemId}
+        />
       ))}
     </div>
   );

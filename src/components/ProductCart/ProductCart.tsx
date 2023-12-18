@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+
 import { useCart } from '../../context/CartContext';
 import { useFav } from '../../context/FavContext';
+
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../utils/fetchClient';
 import './ProductCart.scss';
@@ -40,7 +42,10 @@ export const ProductCart: React.FC<Props> = ({
       'ProductCart--slider': sliderCard,
     })}
     >
-      <Link to={`/${category}/${itemId}`} className="ProductCart__link">
+      <Link
+        to={`/${category}/${itemId}`}
+        className="ProductCart__link"
+      >
         <div className="ProductCart__image-container">
           <img
             src={`${BASE_URL}/${image}`}
@@ -48,6 +53,7 @@ export const ProductCart: React.FC<Props> = ({
             className="ProductCart__image"
           />
         </div>
+
         <div className="ProductCart__info">
           <h2 className="ProductCart__name">
             {name}
@@ -64,6 +70,7 @@ export const ProductCart: React.FC<Props> = ({
           </div>
           <div className="Decorative-line" />
         </div>
+
         <ul className="ProductCart__features">
           <li className="ProductCart__feature">
             <span className="ProductCart__feature-name">

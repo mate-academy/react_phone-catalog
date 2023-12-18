@@ -1,10 +1,11 @@
 import React, { useCallback, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { FavContext } from '../../context/FavContext';
+
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { NoSearchResults } from '../../components/NoSearchResults';
 import { ProductsList } from '../../components/ProductsList';
 import { Search } from '../../components/Search';
-import { FavContext } from '../../context/FavContext';
 import './FavoritesPage.scss';
 
 export const FavoritesPage: React.FC = () => {
@@ -35,6 +36,7 @@ export const FavoritesPage: React.FC = () => {
           <Search />
         </div>
       )}
+
       <div className="container">
         <div className="Favorites__content">
           <Breadcrumbs page={['Favorites']} />

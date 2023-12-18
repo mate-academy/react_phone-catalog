@@ -73,10 +73,6 @@
 
   &__title {
     @extend %text-body;
-
-    // @include onTablet {
-    //   width: min(176px);
-    // }
   }
 
   &__quan-and-price {

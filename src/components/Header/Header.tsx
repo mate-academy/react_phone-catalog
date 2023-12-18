@@ -1,17 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+
 import { FavContext } from '../../context/FavContext';
 import { CartContext } from '../../context/CartContext';
 
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
-// import { Search } from '../Search';
+import { Search } from '../Search';
 import { Counter } from '../Counter/Counter';
+
 import favIcon from '../../images/icons/Favourites.svg';
 import cartIcon from '../../images/icons/Shopping_cart.svg';
 import menuIcon from '../../images/icons/icon-menu.svg';
 import closeIcon from '../../images/icons/icon-close.svg';
+
 import './Header.scss';
 import '../../App.scss';
 
@@ -47,6 +50,11 @@ export const Header: React.FC = () => {
 
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  const isSearchVisible = pathname === '/phones'
+  || pathname === '/tablets'
+  || pathname === '/accessories'
+  || pathname === '/favorites';
+
   return (
     <>
       <div className="Header" id="header">
@@ -60,14 +68,11 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="Header__fav-and-cart">
-            {/* {(pathname === '/phones'
-              || pathname === '/tablets'
-              || pathname === '/accessories'
-              || pathname === '/favorites') && (
+            {isSearchVisible && (
               <div className="Header__search">
                 <Search />
               </div>
-            )} */}
+            )}
 
             {pathname !== '/cart' && (
               <NavLink

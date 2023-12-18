@@ -26,9 +26,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
   } = item.product as Product;
 
   return (
-    <li
-      className="CartItem"
-    >
+    <li className="CartItem">
       <div className="CartItem__main-info">
         <button
           type="button"
