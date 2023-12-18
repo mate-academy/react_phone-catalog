@@ -38,6 +38,10 @@ export const Router = createBrowserRouter([
         path: '/cart',
         element: <Cart />,
       },
+      {
+        path: '/accessories',
+        element: <p>Sorry, but no accessories yet</p>,
+      },
     ],
   },
 ], { basename: '/react_phone-catalog' });

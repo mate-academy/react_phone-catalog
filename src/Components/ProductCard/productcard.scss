@@ -155,3 +155,16 @@ border: none;
   transition: background-color 0.3s ease; // Add a transition for a smooth color change
 }
 
+.product-card:hover{
+  border: 1px solid var(--Gray-Primary, #313237);
+}
+
+.button-add:hover{
+  box-shadow: 3px 3px 13px 2px rgba(23, 32, 49, 0.26);
+}
+
+.button-like:hover{
+  border: 1px solid var(--Gray-Primary, #313237);
+}
+
+

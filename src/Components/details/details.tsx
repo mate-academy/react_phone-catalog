@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import './details.scss';
 import YouMay from '../Youmayalsolike/youmay';
 import {
@@ -107,6 +107,12 @@ const ProductDetailsPage = () => {
     setSelectedCapacity(capacity);
   };
 
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  }; // Go back to the previous page in the history stack
+
   const calculateDiscountedPrice = () => {
     if (currentProduct?.discount) {
       const discountedPrice = currentProduct.price
@@ -186,7 +192,9 @@ const ProductDetailsPage = () => {
             alt="Chevron"
             className="folder-chevron"
           />
-          <Link className="page-back" to="/">Back</Link>
+          <button type="button" className="page-back" onClick={goBack}>
+            Back
+          </button>
         </div>
         <div>
           <h2 className="details-title">{productDetails?.name}</h2>

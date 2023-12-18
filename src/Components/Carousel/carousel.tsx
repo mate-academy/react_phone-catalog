@@ -1,6 +1,4 @@
-// Carousel.tsx
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './carousel.scss';
 
 export const Carousel = () => {
@@ -35,14 +33,22 @@ export const Carousel = () => {
   };
 
   const goToPrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0
-      ? images.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1
-      ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
+
+  const autoplayInterval = 3000;
+
+  useEffect(() => {
+    const autoplayTimer = setInterval(goToNext, autoplayInterval);
+
+    return () => clearInterval(autoplayTimer);
+  }, [currentIndex]);
 
   return (
     <>
@@ -60,7 +66,6 @@ export const Carousel = () => {
           aria-label="Previous"
         >
           <img className="chevron" src={`${process.env.PUBLIC_URL}/img/Chevron-left.svg`} alt="Previous" />
-
         </div>
         <div className="slider-container">
           <div className="slides" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -86,9 +91,7 @@ export const Carousel = () => {
           <img className="chevron" src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`} alt="Next" />
         </div>
       </div>
-      <div
-        className="dots-container"
-      >
+      <div className="dots-container">
         {renderDots()}
       </div>
     </>
