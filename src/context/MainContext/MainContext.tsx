@@ -16,6 +16,7 @@ export const MainContext = React.createContext<{
   tablets: Product[];
   accessories: Product[];
   favouritesItems: Product[];
+  searchItems: Product[];
   cartItems: CartItem[];
   isLoaderActive: boolean;
   isMenuOpen: boolean;
@@ -26,6 +27,7 @@ export const MainContext = React.createContext<{
   setTablets: React.Dispatch<React.SetStateAction<Product[]>>;
   setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
   setFavouritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  setSearchItems: React.Dispatch<React.SetStateAction<Product[]>>;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setIsLoaderActive: React.Dispatch<React.SetStateAction<boolean>>;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,6 +39,7 @@ export const MainContext = React.createContext<{
   tablets: [],
   accessories: [],
   favouritesItems: [],
+  searchItems: [],
   cartItems: [],
   isLoaderActive: true,
   isMenuOpen: false,
@@ -47,6 +50,7 @@ export const MainContext = React.createContext<{
   setTablets: () => {},
   setAccessories: () => {},
   setFavouritesItems: () => {},
+  setSearchItems: () => {},
   setCartItems: () => {},
   setIsLoaderActive: () => {},
   setIsMenuOpen: () => {},
@@ -66,6 +70,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
   const [favouritesItems, setFavouritesItems] = useState<Product[]>([]);
+  const [searchItems, setSearchItems] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
@@ -106,6 +111,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setAccessories,
       favouritesItems,
       setFavouritesItems,
+      searchItems,
+      setSearchItems,
       cartItems,
       setCartItems,
       isLoaderActive,
@@ -128,6 +135,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setAccessories,
       favouritesItems,
       setFavouritesItems,
+      searchItems,
+      setSearchItems,
       cartItems,
       setCartItems,
       isLoaderActive,
