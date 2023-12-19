@@ -1,15 +1,46 @@
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useMyContext } from '../context/context';
+import { PageTyphe } from '../helpers/Types';
 
 export const Header = () => {
+  const { favourites, cart } = useMyContext();
+  const location = useLocation().pathname.slice(1);
+  const [query, setQuery] = useState<string>('');
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const getNavLinkActive = (baseClass: string) => (
     { isActive }: { isActive: boolean },
   ) => {
     return classNames(baseClass, { 'navbar__link--item-active': isActive });
   };
 
-  const { favourites, cart } = useMyContext();
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+
+    setQuery(inputValue);
+
+    if (inputValue) {
+      searchParams.set('query', inputValue);
+    } else {
+      searchParams.delete('query');
+    }
+
+    setSearchParams(searchParams);
+  };
+
+  const handleCleanQuery = () => {
+    setQuery('');
+    searchParams.delete('query');
+    setSearchParams(searchParams);
+  };
+
+  useEffect(() => {
+    setQuery('');
+    searchParams.delete('query');
+    setSearchParams(searchParams);
+  }, [location]);
 
   return (
     <header>
@@ -51,16 +82,34 @@ export const Header = () => {
         </nav>
       </div>
       <div className="navbar__right">
-        <div className="navbar__search">
-          <input
-            type="text"
-            className="navbar__search--input"
-            placeholder="Search..."
-          />
-          <span className="navbar__search--input-icon">
-            <i className="navbar__search--input-icon-item" />
-          </span>
-        </div>
+
+        { (location === PageTyphe.Phones
+        || location === PageTyphe.Tablets
+        || location === PageTyphe.Accessories
+        || location === PageTyphe.Favorites)
+         && (
+           <div className="navbar__search">
+             <input
+               type="text"
+               className="navbar__search--input"
+               placeholder={`Search in ${location}...`}
+               value={query}
+               onChange={handleInput}
+             />
+             {query && query.length > 0
+               ? (
+                 <button
+                   className="navbar__search--input-item-clear"
+                   onClick={handleCleanQuery}
+                   aria-label="clear"
+                   type="button"
+                   data-cy="searchDelete"
+                 />
+               )
+               : (<div className="navbar__search--input-item-loop" />)}
+
+           </div>
+         )}
         <NavLink
           to="/favorites"
           className={getNavLinkActive('navbar__favourites')}

@@ -1,0 +1,40 @@
+.details {
+  grid-column: 1 / 25;
+
+  @include grid;
+
+  margin-top: 40px;
+  &__miniatures {
+    grid-column: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    &--button {
+      background-color: #{$white};
+      border: none;
+      &:hover {
+        border: 1px solid #{$gray-border};
+        cursor: pointer;
+      }
+    }
+  }
+  &__price {
+    grid-column: 14 / 21;
+  }
+  &__image {
+    grid-column: 3 / 14;
+  }
+  &__id {
+    grid-column: 21/25;
+    color: #{$gray-secondary};
+  }
+  &__about {
+    grid-column: 1 / 13;
+    &--p {
+      color: #{$gray-secondary};
+    }
+  }
+  &__techSpecs {
+    grid-column: 14 / 25;
+  }
+}

@@ -1,17 +1,21 @@
 import {
   createContext, ReactNode, useContext, useEffect, useState,
 } from 'react';
-import { Product } from '../helpers/Types';
+import { CartProps, Product } from '../helpers/Types';
 import { fetchData } from '../helpers/Api';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface MyContextProps {
   products: Product[];
   favourites: Product[];
-  cart: Product[];
+  cart: CartProps[];
   toggleToFavourites: (id: string) => void;
   toggleToCart: (id: string) => void;
   isInFavourites: (id: string) => boolean;
   isInCart: (id: string) => boolean;
+  increaseQuantityInCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  decreaseQuantityInCart: (id: number) => void;
 }
 
 const MyContext = createContext<MyContextProps | undefined>(undefined);
@@ -33,8 +37,9 @@ export const useMyContext = () => {
 export const MyContextProvider: React.FC<MyContextProviderProps>
 = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [favourites, setFavourites] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Product[]>([]);
+  const [favourites, setFavourites]
+  = useLocalStorage<Product[]>('favourites', []);
+  const [cart, setCart] = useLocalStorage<CartProps[]>('cart', []);
 
   useEffect(() => {
     const fetchDataFromJson = async () => {
@@ -64,25 +69,65 @@ export const MyContextProvider: React.FC<MyContextProviderProps>
 
   const toggleToCart = (itemId: string) => {
     const indexInCart = cart.findIndex((item) => (
-      item.id === itemId));
+      item.product.id === itemId));
 
     if (indexInCart === -1) {
       const product = products.find((item) => item.id === itemId);
 
       if (product) {
-        setCart((prev) => [...prev, product]);
+        setCart((prev) => [...prev, {
+          id: new Date().getTime(), product, quantity: 1,
+        }]);
       }
     } else {
       setCart((prev) => prev.filter((product) => (
-        product.id !== itemId)));
+        product.product.id !== itemId)));
     }
+  };
+
+  const increaseQuantityInCart = (id: number) => {
+    const itemsInCart = cart.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+
+      return item;
+    });
+
+    setCart(itemsInCart);
+  };
+
+  const removeFromCart = (id: number) => {
+    const itemsInCart = cart.filter((item) => item.id !== id);
+
+    setCart(itemsInCart);
+  };
+
+  const decreaseQuantityInCart = (id: number) => {
+    const itemsInCart = cart.map((item) => {
+      if (item.id === id) {
+        const updatedQuantity = item.quantity - 1;
+
+        if (updatedQuantity === 0) {
+          removeFromCart(id);
+
+          return null;
+        }
+
+        return { ...item, quantity: updatedQuantity };
+      }
+
+      return item;
+    }).filter((item) => item !== null) as CartProps[];
+
+    setCart(itemsInCart);
   };
 
   const isInFavourites = (itemId: string): boolean => (
     favourites.findIndex((item) => item.id === itemId) !== -1);
 
   const isInCart = (itemId: string): boolean => (
-    cart.findIndex((item) => item.id === itemId) !== -1);
+    cart.findIndex((item) => item.product.id === itemId) !== -1);
 
   return (
     <MyContext.Provider value={{
@@ -93,6 +138,9 @@ export const MyContextProvider: React.FC<MyContextProviderProps>
       toggleToCart,
       isInFavourites,
       isInCart,
+      increaseQuantityInCart,
+      removeFromCart,
+      decreaseQuantityInCart,
     }}
     >
       {children}

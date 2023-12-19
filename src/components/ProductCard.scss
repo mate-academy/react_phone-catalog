@@ -7,7 +7,6 @@
 
   &:hover {
     border: 1px solid #{$gray};
-    cursor: pointer;
   }
 
   &__image {
@@ -15,6 +14,7 @@
     height: 208px;
     margin: 8px;
     object-fit: contain;
+
   }
   &__name {
     margin-top: 16px;
@@ -33,7 +33,7 @@
   }
   &__line {
     height: 1px;
-    width: 224px;
+    width: 100%;
     background-color: #{$gray-border};
     margin-top: 6.5px;
     margin-bottom: 16px;
@@ -55,10 +55,11 @@
     display: flex;
     justify-content: space-between;
     margin-top: 16px;
+    gap: 8px;
 
     &-cart {
       height: 40px;
-      width: 176px;
+      width: 100%;
       text-align: center;
       font-family: Mont-SemiBold, sans-serif;
       font-weight: 600;

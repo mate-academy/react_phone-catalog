@@ -5,13 +5,15 @@
     color: #{$gray-secondary};
   }
 
-  &__pagination {
+  &__selects {
     grid-column: 1 / 25;
     margin-top: 40px;
+
 
     @include grid;
     &--label {
       color: #{$gray-secondary};
+      position: relative;
     }
 
     &--sort {

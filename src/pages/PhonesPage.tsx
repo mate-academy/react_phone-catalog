@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PageType, Product } from '../helpers/Types';
+import { ProductType, Product } from '../helpers/Types';
 import { ProductList } from '../components/ProductList';
 import { fetchTypeDevice } from '../helpers/Api';
 import { Loader } from '../components/Loader';
@@ -11,7 +11,7 @@ export const PhonesPage = () => {
 
   useEffect(() => {
     const feathPhonesData = async () => {
-      const jsonData = await fetchTypeDevice(PageType.Phones);
+      const jsonData = await fetchTypeDevice(ProductType.Phones);
 
       setPhones(() => jsonData);
     };

@@ -51,40 +51,33 @@ header {
       }
     }
     &__search {
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       border-left: 1px solid #{$gray-border};
+      position: relative;
 
       &--input {
-        padding-right: 64px;
-        padding-left: 24px;
+        padding: 23px 64px 23px 24px;
         outline: none;
         border: none;
-      }
-
-      &--input-icon {
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        bottom: 24px;
-        right: 24px;
-        display: flex;
-        cursor: pointer;
-      }
-
-      &--input-icon-item {
-        background: url('./../img/search.svg') no-repeat;
-        background-size: auto;
-        width: 16px;
-        height: 16px;
-        display: inline-block;
-      }
-
-      &:focus-within {
-        .navbar__search--input-icon-item {
-          background: url('./../img/close.svg') no-repeat;
+        &-item {
+          &-loop {
+            background: url('./../img/search.svg') no-repeat;
+            width: 16px;
+            height: 16px;
+            right: 15px;
+            position: absolute;
+          }
+          &-clear {
+            background: url('./../img/close.svg') no-repeat;
+            width: 16px;
+            height: 16px;
+            right: 15px;
+            position: absolute;
+            border: none;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -116,7 +109,9 @@ header {
           font-size: 9px;
           font-family: Mont-Semibold, sans-serif;
           font-weight: 600;
-          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }

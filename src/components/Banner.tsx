@@ -10,12 +10,6 @@ export const Banner = () => {
     transition: 'transform 500ms ease-in-out',
   };
 
-  const prevBanner = () => {
-    const min = 0;
-
-    setMoveBanner((prev) => ((prev - 1 < min) ? 2 : (prev - 1)));
-  };
-
   const nextBanner = () => {
     const max = 2;
 
@@ -38,11 +32,20 @@ export const Banner = () => {
         clearInterval(intervalId);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleManualNextBanner = () => {
     clearInterval(intervalId);
     nextBanner();
+    setUpInterval();
+  };
+
+  const prevBanner = () => {
+    const min = 0;
+
+    clearInterval(intervalId);
+    setMoveBanner((prev) => ((prev - 1 < min) ? 2 : (prev - 1)));
     setUpInterval();
   };
 

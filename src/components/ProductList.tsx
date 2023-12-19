@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Product } from '../helpers/Types';
 import { ProductCard } from './ProductCard';
 import { Pagination } from './Pagination';
+import { NoSearchResults } from './NoSearchResults';
 
 export type ProductListProps = {
   products: Product[]
@@ -23,6 +24,7 @@ export enum ItemsOnPage {
 
 export const ProductList = ({ products }: ProductListProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
 
   const [sortSelect, setSortSelect]
   = useState<string>(searchParams.get('sort') || SortEnum.Newest);
@@ -36,10 +38,6 @@ export const ProductList = ({ products }: ProductListProps) => {
 
   const [productsPerPage, setproductsPerPage] = useState<Product[]>([]);
   const [maxPages, setMaxPages] = useState<number>(0);
-
-  useEffect(() => {
-
-  }, [products, itemsPerPage]);
 
   const handleChanePage = (pageNum: number) => {
     setCurrentPage(() => pageNum);
@@ -72,7 +70,19 @@ export const ProductList = ({ products }: ProductListProps) => {
   };
 
   useEffect(() => {
+    setCurrentPage(() => 1);
+    searchParams.delete('page');
+    setSearchParams(searchParams);
+  }, [query]);
+
+  useEffect(() => {
     let sortedProducts = [...products];
+
+    if (query) {
+      sortedProducts = sortedProducts.filter((product) => (
+        product.name.toLowerCase().includes(query.toLocaleLowerCase())
+      ));
+    }
 
     switch (sortSelect) {
       case SortEnum.Alphabetically:
@@ -82,7 +92,8 @@ export const ProductList = ({ products }: ProductListProps) => {
         break;
       case SortEnum.Cheapest:
         sortedProducts = sortedProducts.sort((item, item2) => (
-          item.price - item2.price
+          (item.price - (item.price * item.discount) / 100)
+          - (item2.price - (item2.price * item2.discount) / 100)
         ));
         break;
       default:
@@ -101,7 +112,7 @@ export const ProductList = ({ products }: ProductListProps) => {
       setproductsPerPage(() => sortedProducts.slice(
         (curentPage - 1) * tmp, curentPage * tmp,
       ));
-      setMaxPages(() => Math.ceil(products.length / tmp));
+      setMaxPages(() => Math.ceil(sortedProducts.length / tmp));
     }
   }, [products, searchParams]);
 
@@ -111,13 +122,13 @@ export const ProductList = ({ products }: ProductListProps) => {
         {`${products?.length} models`}
       </p>
 
-      <div className="product__pagination">
-        <label className="product__pagination--sort-by
-          product__pagination--label SmallText"
+      <div className="product__selects">
+        <label className="product__selects--sort-by
+          product__selects--label SmallText"
         >
           Sort by
           <select
-            className="product__pagination--sort-select ButtonsText selects"
+            className="product__selects--sort-select ButtonsText selects"
             onChange={handleSortSelect}
             value={sortSelect}
           >
@@ -140,14 +151,15 @@ export const ProductList = ({ products }: ProductListProps) => {
               Cheapest
             </option>
           </select>
+          <span className="selects--icon" />
         </label>
 
-        <label className="product__pagination--sort-items
-          product__pagination--label"
+        <label className="product__selects--sort-items
+          product__selects--label SmallText"
         >
           Items on page
           <select
-            className="product__pagination--sort-select ButtonsText selects"
+            className="product__selects--sort-select ButtonsText selects"
             onChange={handleItemsSelect}
             value={itemsPerPage}
           >
@@ -180,14 +192,17 @@ export const ProductList = ({ products }: ProductListProps) => {
 
             </option>
           </select>
+          <span className="selects--icon" />
         </label>
       </div>
 
-      <ul className="product__list" data-cy="productList">
-        {productsPerPage && productsPerPage.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-      </ul>
+      {productsPerPage.length > 0 ? (
+        <ul className="product__list" data-cy="productList">
+          {productsPerPage && productsPerPage.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
+        </ul>
+      ) : (<NoSearchResults />)}
       { maxPages > 1
       && (
         <Pagination

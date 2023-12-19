@@ -38,9 +38,21 @@
 
 .selects {
   border: 1px solid #{$gray-four};
-  padding: 10px;
   text-transform: capitalize;
 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
+    &--icon {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 16px;
+      height: 16px;
+      background: url('./../img/arrowRight.svg') no-repeat;
+      transform: rotate(90deg);
+  }
   &:focus {
     border: 1px solid #{$gray};
     outline: none;
@@ -50,5 +62,10 @@
   }
   &--option {
     color: #{$gray-secondary};
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 10px;
   }
+
 }

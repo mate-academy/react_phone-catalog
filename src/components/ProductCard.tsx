@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import { useMyContext } from '../context/context';
 import { Product } from '../helpers/Types';
 
@@ -11,7 +12,7 @@ export const ProductCard = ({
   product, ProductSlider,
 }: ProductCardProps) => {
   const {
-    id, name, imageUrl, price, discount, screen, capacity, ram,
+    id, name, imageUrl, price, discount, screen, capacity, ram, type,
   } = product;
 
   const {
@@ -41,11 +42,16 @@ export const ProductCard = ({
       className="productCard"
       style={ProductSlider}
     >
-      <img className="productCard__image" alt={id} src={imageUrl} />
-      <p className="productCard__name BodyText">{name}</p>
-      <h2 className="productCard__price h2">
-        {getFinalPrice(price, discount)}
-      </h2>
+      <Link
+        to={`/${type}s/${id}`}
+      >
+        <img className="productCard__image" alt={id} src={imageUrl} />
+
+        <p className="productCard__name BodyText">{name}</p>
+        <h2 className="productCard__price h2">
+          {getFinalPrice(price, discount)}
+        </h2>
+      </Link>
       <div className="productCard__line" />
 
       <div className="productCard__details">
@@ -73,13 +79,14 @@ export const ProductCard = ({
             })}
           onClick={() => toggleToCart(id)}
         >
-          Add to cart
+          {isInCart(id) ? 'Added to cart' : 'Add to cart'}
         </button>
 
         <button
           type="button"
           className="productCard__buttons-favourites buttons"
           onClick={() => toggleToFavourites(id)}
+          data-cy="addToFavorite"
         >
           {isInFavourites(id) ? (
             <img

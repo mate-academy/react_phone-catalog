@@ -1,22 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useMyContext } from '../context/context';
-import { PageType } from '../helpers/Types';
+import { Product, ProductType } from '../helpers/Types';
 
-export const ShopByCategory = () => {
-  const { products } = useMyContext();
+export type ShopByCategoryProps = {
+  products: Product[]
+};
+
+export const ShopByCategory = ({ products }: ShopByCategoryProps) => {
   const [phones, setPhones] = useState<number>(0);
   const [tablets, setTablets] = useState<number>(0);
   const [accessories, setAccessories] = useState<number>(0);
 
   useEffect(() => {
     setPhones(() => products.filter((item) => (
-      item.type === PageType.Phones)).length);
+      item.type === ProductType.Phones)).length);
     setTablets(() => products.filter((item) => (
-      item.type === PageType.Tablets)).length);
+      item.type === ProductType.Tablets)).length);
     setAccessories(() => products.filter((item) => (
-      item.type === PageType.Accessories)).length);
-  }, []);
+      item.type === ProductType.Accessories)).length);
+  }, [products]);
 
   return (
     <div className="shopBy">

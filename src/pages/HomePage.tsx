@@ -39,7 +39,7 @@ export const HomePage = () => {
       />
 
       <div data-cy="categoryLinksContainer">
-        <ShopByCategory />
+        <ShopByCategory products={products} />
       </div>
 
       <ProductsSlider
