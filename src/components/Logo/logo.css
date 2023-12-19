@@ -1,0 +1,9 @@
+.logo {
+  display: block;
+  width: 40px;
+  height: 24px;
+  transition: all 0.3s;
+}
+.logo:hover {
+  transform: scale(1.2);
+}/*# sourceMappingURL=logo.css.map */

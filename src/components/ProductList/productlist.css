@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Mont";
+  src: url("../fonts/Mont-Regular.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("../fonts/Mont-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("../fonts/Mont-SemiBold.otf") format("opentype");
+  font-weight: 600;
+}
+.products-list {
+  display: flex;
+  row-gap: 40px;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  flex-wrap: wrap;
+}
+@media (max-width: 1024px) {
+  .products-list {
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .products-list {
+    row-gap: 32px;
+  }
+}
+@media (max-width: 480px) {
+  .products-list {
+    row-gap: 16px;
+  }
+}
+
+.list-item-fade-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.list-item-fade-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: transform 400ms, opacity 300ms;
+}/*# sourceMappingURL=productlist.css.map */
