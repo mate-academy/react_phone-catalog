@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Banner = () => {
   const [moveBanner, setMoveBanner] = useState<number>(0);
@@ -61,30 +62,35 @@ export const Banner = () => {
 
       <div className="banner--banner">
         <span className="banner--banner--item" style={BannerSlider}>
-          <img
-            src="img/banner-accessories.png"
-            alt="Banner Accessories"
-            className="banner--banner--item-image"
-          />
-
+          <Link to="/phones">
+            <img
+              src="img/banner-phones.png"
+              alt="Banner Phones"
+              className="banner--banner--item-image"
+            />
+          </Link>
         </span>
 
         <span className="banner--banner--item" style={BannerSlider}>
-          <img
-            src="img/banner-phones.png"
-            alt="Banner Phones"
-            className="banner--banner--item-image"
-          />
-
+          <Link to="/tablets">
+            <img
+              src="img/banner-tablets.png"
+              alt="Banner Tablets"
+              className="banner--banner--item-image"
+            />
+          </Link>
         </span>
 
         <span className="banner--banner--item" style={BannerSlider}>
-          <img
-            src="img/banner-tablets.png"
-            alt="Banner Tablets"
-            className="banner--banner--item-image"
-          />
+          <Link to="/accessories">
+            <img
+              src="img/banner-accessories.png"
+              alt="Banner Accessories"
+              className="banner--banner--item-image"
+            />
+          </Link>
         </span>
+
       </div>
       <button
         type="button"

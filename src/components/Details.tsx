@@ -57,8 +57,9 @@ export const Details = ({ product }: ProductDetailsProps) => {
               type="button"
               onClick={() => handleImageChange(img)}
               className="details__miniatures--button"
+              key={img}
             >
-              <img alt={img} src={img} key={img} />
+              <img alt={img} src={img} />
             </button>
           ))}
         </div>

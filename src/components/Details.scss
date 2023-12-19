@@ -25,8 +25,9 @@
     grid-column: 3 / 14;
   }
   &__id {
-    grid-column: 21/25;
+    grid-column: 22/25;
     color: #{$gray-secondary};
+    text-align: right;
   }
   &__about {
     grid-column: 1 / 13;
