@@ -21,13 +21,24 @@ export const Pagination: React.FC<Props> = ({
     setSearchWith,
   } = useContext(TechProductsContext);
 
+  const [searchParams] = useSearchParams();
+
   const handlePrevPage = () => {
     setSearchWith({ page: +page - 1 || null });
     moveToUp();
   };
 
-  const handlePage = () => {
+  const handlePage = (Page: number) => {
     moveToUp();
+
+    return (
+      {
+        search: getSearchWith(
+          searchParams,
+          { page: Page.toString() || null },
+        ),
+      }
+    );
   };
 
   const handleNextPage = () => {
@@ -36,7 +47,6 @@ export const Pagination: React.FC<Props> = ({
   };
 
   const pages = getPages(1, Math.ceil(visibleProducts.length / +perPage));
-  const [searchParams] = useSearchParams();
 
   return (
     <div
@@ -60,15 +70,7 @@ export const Pagination: React.FC<Props> = ({
           pages.map((Page) => (
             <li key={Page} className="pagination__pagination-item">
               <Link
-                to={
-                  {
-                    search: getSearchWith(
-                      searchParams,
-                      { page: Page.toString() || null },
-                    ),
-                  }
-                }
-                onClick={handlePage}
+                to={handlePage(Page)}
                 className={
                   classNames(
                     'pagination__pagination-link',

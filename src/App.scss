@@ -30,9 +30,9 @@ body {
 }
 
 .App {
+  color: $dark-gray;
   width: 1440px;
   margin: 0 auto;
-  color: $dark-gray;
 
   &__header-carousel {
     margin: 40px 0 104px;
