@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './MainSlider.scss';
+import { BASE_URL } from '../../api/api';
 
 export const MainSlider: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const MainSlider: React.FC = () => {
       <Carousel>
         <Carousel.Item interval={5000}>
           <img
-            src={`${process.env.PUBLIC_URL}/_new/img/banner-phones.png`}
+            src={`${BASE_URL}/_new/img/banner-phones.png`}
             alt="Main slider phones"
             className="main-slider__img"
           />
@@ -17,7 +18,7 @@ export const MainSlider: React.FC = () => {
 
         <Carousel.Item interval={5000}>
           <img
-            src={`${process.env.PUBLIC_URL}/_new/img/banner-tablets.png`}
+            src={`${BASE_URL}/_new/img/banner-tablets.png`}
             alt="Main slider tablets"
             className="main-slider__img"
           />
@@ -25,7 +26,7 @@ export const MainSlider: React.FC = () => {
 
         <Carousel.Item interval={5000}>
           <img
-            src={`${process.env.PUBLIC_URL}/_new/img/banner-accessories.png`}
+            src={`${BASE_URL}/_new/img/banner-accessories.png`}
             alt="Main slider accessories"
             className="main-slider__img"
           />

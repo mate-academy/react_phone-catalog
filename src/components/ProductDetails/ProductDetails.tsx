@@ -7,6 +7,7 @@ import { ProductDetailsType } from '../../types/ProductDetailsType';
 import './ProductDetails.scss';
 import { GeneralContext } from '../../helpers/GeneralContext';
 import { Product } from '../../types/Product';
+import { BASE_URL } from '../../api/api';
 
 type Props = {
   selectedItem: ProductDetailsType;
@@ -89,7 +90,7 @@ export const ProductDetails: React.FC<Props> = ({
               onClick={() => setMainPhotoId(index)}
             >
               <img
-                src={`${process.env.PUBLIC_URL}/_new/${image}`}
+                src={`${BASE_URL}/_new/${image}`}
                 alt={selectedItem.name}
               />
             </button>
@@ -98,7 +99,7 @@ export const ProductDetails: React.FC<Props> = ({
 
         <div className="productDetails__mainPhoto">
           <img
-            src={`${process.env.PUBLIC_URL}/_new/${selectedItem.images[mainPhotoId]}`}
+            src={`${BASE_URL}/_new/${selectedItem.images[mainPhotoId]}`}
             alt={selectedItem.name}
           />
         </div>

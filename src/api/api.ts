@@ -1,7 +1,9 @@
 import { Product } from '../types/Product';
 
-const BASE_API_URL
-  = 'https://mate-academy.github.io/react_phone-catalog/_new/products';
+export const BASE_URL
+  = 'https://mate-academy.github.io/react_phone-catalog';
+
+const BASE_API_URL = `${BASE_URL}/_new/products`;
 
 export const getAllProducts = (): Promise<Product[]> => {
   return fetch(`${BASE_API_URL}.json`)

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { GeneralContext } from '../../helpers/GeneralContext';
+import { BASE_URL } from '../../api/api';
 
 type Props = {
   product: Product,
@@ -72,7 +73,7 @@ export const ProductCard: React.FC<Props> = ({
       >
         <img
           className="productCard__img"
-          src={`${process.env.PUBLIC_URL}/_new/${product.image}`}
+          src={`${BASE_URL}/_new/${product.image}`}
           alt={product.name}
         />
 
