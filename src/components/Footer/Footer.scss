@@ -19,6 +19,16 @@
     .nav-logo {
       height: 24px;
       width: 40px;
+
+      img {
+        transition: transform 1s;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.5);
+        }
+      }
     }
 
     &__container {
@@ -60,6 +70,27 @@
             bottom: -24px;
           }
         }
+
+        transition: color 1s;
+
+        &:hover {
+          color: #313237;
+        }
+      }
+    }
+
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      transition: border 1s;
+
+      .arrow-icon {
+        width: 16px;
+        height: 16px;
       }
     }
 
@@ -77,23 +108,15 @@
       font-size: 12px;
       line-height: 15.34px;
       color: #89939a;
+      transition: color 1s;
 
       &:hover,
       &:focus {
         outline: none;
-      }
+        color: #313237;
 
-      .icon-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border: 1px solid #b4bdc3;
-
-        .arrow-icon {
-          width: 16px;
-          height: 16px;
+        .icon-container {
+          border: 1px solid var(--Gray-Primary, #313237);
         }
       }
     }

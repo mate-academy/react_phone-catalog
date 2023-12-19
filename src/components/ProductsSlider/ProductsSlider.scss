@@ -27,6 +27,7 @@
         padding: 8px;
         cursor: pointer;
         z-index: 2;
+        transition: border-color 1s;
 
         &:disabled {
           cursor: not-allowed;

@@ -16,9 +16,12 @@ export const Search: React.FC<Props> = ({
   const query = searchParams.get('query') || '';
 
   function setSearchWith(params: SearchParams) {
-    const search = getSearchWith(searchParams, params);
+    const searchString = getSearchWith(searchParams, params);
+    const updatedSearchParams = new URLSearchParams(searchString);
 
-    setSearchParams(search);
+    updatedSearchParams.set('page', '1');
+
+    setSearchParams(updatedSearchParams);
   }
 
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {

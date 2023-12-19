@@ -8,9 +8,19 @@ import { Product } from './types/Product';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
 const App = () => {
-  const [favoritesItems, setFavoritesItems] = useState<Product[]>([]);
+  const [favoritesItems, setFavoritesItems]
+    = useLocalStorage<Product[]>('favoritesItems', []);
   const [cartItems, setCartItems] = useLocalStorage<Product[]>('cartItems', []);
   const [appliedQuery, setAppliedQuery] = useState('');
+
+  let totalCartCount = 0;
+
+  const totalPrice = cartItems.reduce((acc, product) => {
+    totalCartCount += product.quantity || 1;
+    const itemTotal = product.price * (product.quantity || 1);
+
+    return acc + itemTotal;
+  }, 0);
 
   const applyQuery = useCallback(
     debounce(setAppliedQuery, 1000),
@@ -19,14 +29,19 @@ const App = () => {
 
   const addToFavorites = (product: Product) => {
     if (!favoritesItems.includes(product)) {
-      setFavoritesItems((prevItems: Product[]) => [...prevItems, product]);
+      setFavoritesItems([...favoritesItems, {
+        ...product,
+      }]);
     }
   };
 
   const removeFromFavorites = (productId: Product['id']) => {
-    setFavoritesItems((prevItems: Product[]) => prevItems.filter(
-      (item) => item.id !== productId,
-    ));
+    const requiredProduct
+      = favoritesItems.filter((item) => item.id !== productId);
+
+    if (requiredProduct) {
+      setFavoritesItems(requiredProduct);
+    }
   };
 
   const addToCart = (product: Product) => {
@@ -65,7 +80,7 @@ const App = () => {
     <div className="App">
       <Header
         applyQuery={applyQuery}
-        cartItemsLength={cartItems.length}
+        totalCartCount={totalCartCount}
         favoritesItemsLength={favoritesItems.length}
       />
       <main className="main">
@@ -80,6 +95,8 @@ const App = () => {
             incrementQuantity,
             decrementQuantity,
             appliedQuery,
+            totalCartCount,
+            totalPrice,
           }}
         />
       </main>

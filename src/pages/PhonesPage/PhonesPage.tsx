@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useOutletContext, useSearchParams } from 'react-router-dom';
-
 import './PhonesPage.scss';
 import { Product } from '../../types/Product';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
@@ -32,10 +31,10 @@ export const PhonesPage = () => {
       setIsLoading(true);
       try {
         const response
-        = await fetch(
-          'https://mate-academy.github.io/react_phone-catalog/'
-          + '_new/products.json',
-        );
+          = await fetch(
+            'https://mate-academy.github.io/react_phone-catalog/'
+            + '_new/products.json',
+          );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -92,6 +91,7 @@ export const PhonesPage = () => {
     setSortedPhones(sortedArray);
     const params = new URLSearchParams(searchParams);
 
+    params.set('page', '1');
     params.set('sort', sortValue);
     setSearchParams(params);
   };
@@ -107,15 +107,12 @@ export const PhonesPage = () => {
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
   const currentItems
-  = displayedPhones.slice(indexOfFirstItem, indexOfLastItem);
+    = displayedPhones.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const params = new URLSearchParams(searchParams);
 
-    if (+event.target.value > perPage) {
-      params.set('page', '1');
-    }
-
+    params.set('page', '1');
     params.set('perPage', event.target.value);
     setSearchParams(params);
   };
@@ -145,7 +142,7 @@ export const PhonesPage = () => {
         <p className="pathInscription__text">Phones</p>
       </div>
       <h1 className="phonesPage__title">Mobile phones</h1>
-      <p className="phonesPage__count">95 models</p>
+      <p className="phonesPage__count">{`${phones.length} models`}</p>
 
       {isLoading && <Loader />}
 

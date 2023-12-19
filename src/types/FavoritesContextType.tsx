@@ -10,4 +10,6 @@ export type FavoritesContextType = {
   incrementQuantity: (productId: Product['id']) => void;
   decrementQuantity: (productId: Product['id']) => void;
   appliedQuery: string;
+  totalCartCount: number;
+  totalPrice: number;
 };

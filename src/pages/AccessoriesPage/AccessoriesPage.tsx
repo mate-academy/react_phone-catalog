@@ -23,20 +23,20 @@ export const AccessoriesPage = () => {
   });
 
   const [displayedAccessories, setDisplayedAccessories]
-  = useState<Product[]>([]);
+    = useState<Product[]>([]);
 
   const { appliedQuery }
-  = useOutletContext<FavoritesContextType>();
+    = useOutletContext<FavoritesContextType>();
 
   useEffect(() => {
     const getAccessories = async () => {
       setIsLoading(true);
       try {
         const response
-        = await fetch(
-          'https://mate-academy.github.io/react_phone-catalog/'
-          + '_new/products.json',
-        );
+          = await fetch(
+            'https://mate-academy.github.io/react_phone-catalog/'
+            + '_new/products.json',
+          );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -82,7 +82,7 @@ export const AccessoriesPage = () => {
         break;
       case 'name':
         sortedArray
-        = [...accessories].sort((a, b) => a.name.localeCompare(b.name));
+          = [...accessories].sort((a, b) => a.name.localeCompare(b.name));
         break;
       case 'price':
         sortedArray = [...accessories].sort((a, b) => a.price - b.price);
@@ -94,6 +94,7 @@ export const AccessoriesPage = () => {
     setSortedAccessories(sortedArray);
     const params = new URLSearchParams(searchParams);
 
+    params.set('page', '1');
     params.set('sort', sortValue);
     setSearchParams(params);
   };
@@ -109,15 +110,12 @@ export const AccessoriesPage = () => {
   const indexOfLastItem = currentPage * perPage;
   const indexOfFirstItem = indexOfLastItem - perPage;
   const currentItems
-  = displayedAccessories.slice(indexOfFirstItem, indexOfLastItem);
+    = displayedAccessories.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const params = new URLSearchParams(searchParams);
 
-    if (+event.target.value > perPage) {
-      params.set('page', '1');
-    }
-
+    params.set('page', '1');
     params.set('perPage', event.target.value);
     setSearchParams(params);
   };
@@ -160,7 +158,7 @@ export const AccessoriesPage = () => {
       )}
 
       {!displayedAccessories.length && appliedQuery
-      && !isLoading && !hasError && (
+        && !isLoading && !hasError && (
         <NoSearchResults />
       )}
 

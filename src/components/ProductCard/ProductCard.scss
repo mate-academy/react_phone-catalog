@@ -23,10 +23,10 @@
     width: 208px;
     height: 208px;
     margin: 32px 8px 24px;
+    transition: transform 1s;
 
     &:hover {
-      transform: scale(1.25);
-      transition: transform 1s;
+      transform: scale(1.1);
     }
   }
 
@@ -99,6 +99,7 @@
     letter-spacing: 0;
     line-height: 21px;
     color: var(--gray-white);
+    transition: box-shadow 1s;
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
@@ -108,10 +109,11 @@
       color: var(--Green-2, #27ae60);
       border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
       background: none;
+      transition: border-color 1s;
     }
 
     &--selected:hover {
-      border: 1px solid #313237;
+      border-color: #313237;
     }
   }
 
@@ -126,6 +128,7 @@
     height: 40px;
     padding: 0;
     border: 1px solid #b4bdc3;
+    transition: border-color 1s;
 
     &__img {
       width: 16px;
@@ -134,7 +137,7 @@
     }
 
     &:hover {
-      border: 1px solid #313237;
+      border-color: #313237;
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
   }

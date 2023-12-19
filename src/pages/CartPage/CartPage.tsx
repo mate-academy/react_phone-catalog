@@ -10,17 +10,10 @@ export const CartPage = () => {
   const navigate = useNavigate();
   const {
     cartItems,
+    totalCartCount,
+    totalPrice,
   }
     = useOutletContext<FavoritesContextType>();
-
-  let totalAmount = 0;
-
-  const totalPrice = cartItems.reduce((acc, product) => {
-    totalAmount += product.quantity || 1;
-    const itemTotal = product.price * (product.quantity || 1);
-
-    return acc + itemTotal;
-  }, 0);
 
   const handleBackButtonClick = () => {
     navigate(-1);
@@ -77,7 +70,7 @@ export const CartPage = () => {
                 $
                 {totalPrice}
               </h1>
-              <p className="cartPage__total-text">{`Total for ${totalAmount} item${totalAmount > 1 ? 's' : ''}`}</p>
+              <p className="cartPage__total-text">{`Total for ${totalCartCount} item${totalCartCount > 1 ? 's' : ''}`}</p>
 
               <button
                 type="button"

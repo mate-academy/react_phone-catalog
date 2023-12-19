@@ -46,6 +46,7 @@ export const ProductDetailsPage = () => {
 
   const getProduct = async () => {
     setIsLoading(true);
+    setProductDetails(null);
     try {
       const response = await fetch(`https://mate-academy.github.io/react_phone-catalog/_new/products/${productId}.json`);
 
@@ -65,7 +66,9 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
-    getProduct();
+    if (productId) {
+      getProduct();
+    }
   }, [productId]);
 
   useEffect(() => {
@@ -98,10 +101,10 @@ export const ProductDetailsPage = () => {
       setIsLoading(true);
       try {
         const response
-        = await fetch(
-          'https://mate-academy.github.io/react_phone-catalog/'
-          + '_new/products.json',
-        );
+          = await fetch(
+            'https://mate-academy.github.io/react_phone-catalog/'
+            + '_new/products.json',
+          );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');

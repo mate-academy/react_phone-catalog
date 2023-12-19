@@ -5,24 +5,57 @@ import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import { Product } from '../../types/Product';
 import './HomePage.scss';
 
+interface CountOfProducts {
+  phones: number;
+  tablets: number;
+  accessories: number;
+}
+
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [hasError, setHasError] = useState<string>('');
+
+  const [countOfProducts, setCountOfProducts] = useState<CountOfProducts>({
+    phones: 0,
+    tablets: 0,
+    accessories: 0,
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response
-        = await fetch(
-          'https://mate-academy.github.io/react_phone-catalog/'
-          + '_new/products.json',
+          = await fetch(
+            'https://mate-academy.github.io/react_phone-catalog/'
+            + '_new/products.json',
+          );
+
+        const data = await response.json();
+
+        const phones
+          = data.filter(
+            (product: Product) => product.category === 'phones',
+          );
+        const tablets
+          = data.filter(
+            (product: Product) => product.category === 'tablets',
+          ).length;
+        const accessories
+          = data.filter(
+            (product: Product) => product.category === 'accessories',
+          ).length;
+
+        setCountOfProducts(
+          {
+            phones: phones.length,
+            tablets: tablets.length,
+            accessories: accessories.length,
+          },
         );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
-        const data = await response.json();
 
         setProducts(data);
       } catch (error) {
@@ -63,7 +96,7 @@ export const HomePage = () => {
       {!hasError && !!products.length && (
         <>
           <ProductsSlider title="Hot prices" products={hotPriceProducts} />
-          <ShopByCategory />
+          <ShopByCategory countOfProducts={countOfProducts} />
           <ProductsSlider
             title="Brand new models"
             products={brandNewProducts}

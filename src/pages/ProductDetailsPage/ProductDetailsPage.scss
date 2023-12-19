@@ -17,6 +17,11 @@
     cursor: pointer;
     margin-bottom: 16px;
     margin-top: 40px;
+    transition: transform 1s;
+
+    &:hover {
+      transform: scale(1.5);
+    }
   }
 
   .specs {
@@ -69,10 +74,10 @@
       width: 16px;
       height: 16px;
       flex-shrink: 0;
+      transition: transform 1s;
 
       &:hover {
         transform: scale(1.5);
-        transition: transform 1s;
       }
     }
 
@@ -94,14 +99,18 @@
 
       &--link {
         text-decoration: none;
+        transition: transform 1s;
 
         &:hover {
           color: #313237;
           transform: scale(1.3);
-          transition: transform 1s;
         }
       }
     }
+  }
+
+  &__back-button:hover .pathInscription__text {
+    color: #313237;
   }
 
   .productDetails {
@@ -134,8 +143,8 @@
         width: 80px;
         height: 80px;
         cursor: pointer;
-        transition: transform 0.3s ease;
         object-fit: contain;
+        transition: transform 1s;
 
         &:hover {
           transform: scale(1.05);
@@ -212,6 +221,7 @@
         background-repeat: no-repeat;
         background-size: auto;
         background-position: 6% 50%;
+        transition: box-shadow 0.5s;
 
         &--select {
           box-shadow: 0 0 0 1px #313237;
@@ -261,10 +271,15 @@
           font-weight: 500;
           line-height: 150%;
           cursor: pointer;
+          transition: border-color 1s;
 
           &--selected {
             background: var(--gray-primary, #313237);
             color: var(--gray-white, #fff);
+          }
+
+          &:hover {
+            border-color: #313237;
           }
         }
       }
@@ -318,6 +333,7 @@
         line-height: 21px;
         color: var(--gray-white);
         margin-right: 8px;
+        transition: box-shadow 1s;
 
         &:hover {
           box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
@@ -325,7 +341,13 @@
 
         &--selected {
           color: var(--Green-2, #27ae60);
+          border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
           background: none;
+          transition: border-color 1s;
+        }
+
+        &--selected:hover {
+          border-color: #313237;
         }
       }
 
@@ -340,6 +362,7 @@
         height: 48px;
         padding: 0;
         border: 1px solid #b4bdc3;
+        transition: border-color 1s;
 
         &__img {
           width: 16px;
@@ -348,7 +371,7 @@
         }
 
         &:hover {
-          border: 1px solid #313237;
+          border-color: #313237;
         }
       }
 
@@ -386,15 +409,6 @@
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-    }
-  }
-
-  &__back-button:hover {
-    transform: scale(1.5);
-    transition: transform 1s;
-
-    .pathInscription__text {
-      color: #313237;
     }
   }
 

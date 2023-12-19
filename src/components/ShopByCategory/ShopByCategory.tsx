@@ -1,7 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import './ShopByCategory.scss';
 
-export const ShopByCategory = () => (
+type Props = {
+  countOfProducts: {
+    phones: number;
+    tablets: number;
+    accessories: number;
+  };
+};
+
+export const ShopByCategory: React.FC<Props> = ({ countOfProducts }) => (
   <div className="shop-by-category">
     <div className="category-header">Shop by category</div>
     <div data-cy="categoryLinksContainer" className="categories">
@@ -13,7 +21,7 @@ export const ShopByCategory = () => (
         />
         <div className="category-info">
           <div className="text-wrapper">Mobile phones</div>
-          <div className="models-count">95 models</div>
+          <div className="models-count">{`${countOfProducts.phones || 0} models`}</div>
         </div>
       </NavLink>
       <NavLink to="/tablets" className="category-item">
@@ -24,7 +32,7 @@ export const ShopByCategory = () => (
         />
         <div className="category-info">
           <div className="text-wrapper">Tablets</div>
-          <div className="models-count">24 models</div>
+          <div className="models-count">{`${countOfProducts.tablets || 0} models`}</div>
         </div>
       </NavLink>
       <NavLink to="/accessories" className="category-item">
@@ -35,7 +43,7 @@ export const ShopByCategory = () => (
         />
         <div className="category-info">
           <div className="text-wrapper">Accessories</div>
-          <div className="models-count">100 models</div>
+          <div className="models-count">{`${countOfProducts.accessories || 0} models`}</div>
         </div>
       </NavLink>
     </div>

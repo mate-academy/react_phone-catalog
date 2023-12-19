@@ -22,10 +22,11 @@
     flex-shrink: 0;
     cursor: pointer;
     margin-bottom: 16px;
+    margin-top: 40px;
+    transition: transform 1s;
 
     &:hover {
       transform: scale(1.5);
-      transition: transform 1s;
 
       .pathInscription__text {
         color: #313237;
@@ -88,5 +89,10 @@
 
   &__checkout-message {
     color: red;
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
   }
 }

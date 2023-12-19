@@ -20,6 +20,7 @@
       background-color: #fafbfc;
       border: 1px solid #b4bdc3;
       cursor: pointer;
+      transition: border-color 1s;
 
       &:disabled {
         cursor: not-allowed;
@@ -49,9 +50,10 @@
       font-style: normal;
       font-weight: 500;
       line-height: 21px;
+      transition: border-color 1s;
 
       &:hover {
-        border: 1px solid #313237;
+        border-color: #313237;
       }
 
       &.active {

@@ -16,21 +16,32 @@ export const Pagination: React.FC<Props> = ({
   onPageChange,
 }) => {
   const numberOfLinks = Math.ceil(total / perPage);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handleLinkClick = (link: number) => {
     if (link !== currentPage) {
       onPageChange(link);
+      scrollToTop();
     }
   };
 
   const handleClickToPrevious = (previousLink: number) => {
     if (currentPage !== 1) {
       onPageChange(previousLink);
+      scrollToTop();
     }
   };
 
   const handleClickToNext = (nextLink: number) => {
     if (currentPage !== numberOfLinks) {
       onPageChange(nextLink);
+      scrollToTop();
     }
   };
 
