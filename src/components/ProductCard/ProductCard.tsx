@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
+import { Buttons } from '../ButtonsAddLike/Buttons';
 
 type Props = {
   product: Product
@@ -64,23 +65,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="card__actions">
-        <button
-          className="card__buy"
-          type="button"
-        >
-          <p className="card__buy-name">Add to cart</p>
-        </button>
-        <button
-          aria-label="button"
-          className="card__fav"
-          type="button"
-        >
-          <img
-            src="img/mine/icons/Favourites (Heart Like).svg"
-            alt=""
-            className="card__fav-img"
-          />
-        </button>
+        <Buttons />
       </div>
     </div>
   );

@@ -6,11 +6,14 @@ import './fonts/Mont-SemiBold.otf';
 import './index.scss';
 
 import { Root } from './Root';
+import { StorProvider } from './context/StorProvider';
 
 const container = document.getElementById('root') as HTMLElement;
 
 createRoot(container).render(
-  <Router>
-    <Root />
-  </Router>,
+  <StorProvider>
+    <Router>
+      <Root />
+    </Router>
+  </StorProvider>,
 );

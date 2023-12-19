@@ -2,6 +2,14 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer = () => {
+  const backToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className="bottom">
       <div className="bottom__logo">
@@ -39,11 +47,13 @@ export const Footer = () => {
       </div>
 
       <div className="bottom__top">
-        <a href="#header">
-          <button className="bottom__top-button" type="button">
-            <img src="img/mine/icons/Chevron (Arrow Up).svg" alt="up" />
-          </button>
-        </a>
+        <button
+          className="bottom__top-button"
+          type="button"
+          onClick={backToTop}
+        >
+          <img src="img/mine/icons/Chevron (Arrow Up).svg" alt="up" />
+        </button>
       </div>
     </div>
   );

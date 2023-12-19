@@ -1,0 +1,44 @@
+
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+  margin: 24px 0 40px;
+
+
+  &__img {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #313237;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-image: url("../../../public/img/mine/icons/Arrow\ brcr.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: #89939a;
+    }
+  }
+}

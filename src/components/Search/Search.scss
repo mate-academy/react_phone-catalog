@@ -1,0 +1,32 @@
+.search {
+  display: flex;
+  width: 300px;
+
+  &__input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+
+    color: #313237;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    &::placeholder {
+      color: #b4bcd3;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: #fff;
+    outline: none;
+  }
+}

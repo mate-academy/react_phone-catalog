@@ -1,0 +1,21 @@
+.search-window {
+      &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+    width: 1136px;
+    margin-bottom: 40px;
+  }
+
+  &__count {
+    width: max-content;
+    margin: 24px 0;
+    color: #89939a;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

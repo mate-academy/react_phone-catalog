@@ -3,9 +3,9 @@
   padding: 24px;
   box-sizing: border-box;
   border: 1px solid #e2e6e9;
+  transition: 0.3s;
 
   &:hover {
-    border: 1px solid #313237;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   }
 
@@ -86,45 +86,7 @@
   }
 
   &__actions {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__buy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 176px;
+    width: 224px;
     height: 40px;
-    flex-shrink: 0;
-    background: #313237;
-
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
-    }
-
-    &-name {
-      color: #fff;
-      text-align: center;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 21px;
-    }
-  }
-
-  &__fav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    width: 40px;
-    background: #fff;
-    border: 1px solid #e2e6e9;
-
-    &:hover {
-      border: 1px solid #313237;
-    }
   }
 }

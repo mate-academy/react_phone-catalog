@@ -1,42 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Slider } from '../components/Slider/Slider';
-import { Product } from '../types/Product';
 
 import '../styles/HomePage.scss';
 import { Loader } from '../components/Loader';
 import { ProductsSlider } from '../components/ProductsSlider/ProductsSlider';
 import { ShopCategory } from '../components/ShopCategory/ShopCategory';
-import { getProducts } from '../services/getProducts';
+
+import { StorContext } from '../context/StorContext';
 
 export const HomePage = () => {
-  const [hotProducts, setHotProducts] = useState<Product[]>([]);
-  const [newProducts, setNewProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { product, loading, error } = useContext(StorContext);
+  const count = product.length;
 
-  useEffect(() => {
-    setLoading(true);
+  const hotModel = [...product]
+    .sort((a, b) => ((b.fullPrice - b.price) - (a.fullPrice - a.price)));
 
-    getProducts()
-      .then(visibleProducts => {
-        const hotModel = [...visibleProducts]
-          .sort((a, b) => ((b.fullPrice - b.price) - (a.fullPrice - a.price)));
-
-        const newModel = [...visibleProducts]
-          .sort((a, b) => b.price - a.price);
-
-        setHotProducts(hotModel);
-        setNewProducts(newModel);
-      })
-      .catch(() => {
-        setError(true);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
-
-  const count = hotProducts.length;
+  const newModel = [...product]
+    .sort((a, b) => b.price - a.price);
 
   return (
     <>
@@ -47,7 +27,7 @@ export const HomePage = () => {
 
         <section className="home-page__section">
           {!error && !loading && (
-            <ProductsSlider product={hotProducts} title="Hot prices" />
+            <ProductsSlider product={hotModel} title="Hot prices" />
           )}
 
           {loading && (
@@ -61,7 +41,7 @@ export const HomePage = () => {
 
         <section className="home-page__section">
           {!error && !loading && (
-            <ProductsSlider product={newProducts} title="Brand new models" />
+            <ProductsSlider product={newModel} title="Brand new models" />
           )}
 
           {loading && (

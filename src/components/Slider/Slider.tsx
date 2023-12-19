@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './Slider.scss';
 import { Link } from 'react-router-dom';
 
@@ -7,19 +7,22 @@ export const Slider = () => {
   const images = [
     {
       id: 1,
-      url: 'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
+      url: 'https://mate-academy.github.io/react_phone-catalog/'
+        + '_new/img/banner-phones.png',
       alt: 'Phones',
       link: '/phones',
     },
     {
       id: 2,
-      url: 'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
+      url: 'https://mate-academy.github.io/react_phone-catalog/'
+        + '_new/img/banner-tablets.png',
       alt: 'Tablets',
       link: '/tablets',
     },
     {
       id: 3,
-      url: 'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
+      url: 'https://mate-academy.github.io/react_phone-catalog/'
+      + '_new/img/banner-accessories.png',
       alt: 'Accessories',
       link: '/accessories',
     },
@@ -46,7 +49,7 @@ export const Slider = () => {
     setCurrentSlide(currentSlide - 1);
   };
 
-  const handlerNextButton = () => {
+  const handlerNextButton = useCallback(() => {
     if (currentSlide === images.length) {
       setCurrentDuration(0);
       setCurrentSlide(0);
@@ -55,7 +58,7 @@ export const Slider = () => {
     }
 
     setCurrentSlide(currentSlide + 1);
-  };
+  }, [currentSlide, images.length]);
 
   const handlerDotClick = (dotId: number) => () => {
     if (!currentDuration) {
@@ -76,13 +79,13 @@ export const Slider = () => {
 
       setCurrentSlide(currentSlide - 1);
     }
-  }, [currentSlide]);
+  }, [currentSlide, currentDuration]);
 
   useEffect(() => {
     const timerId = setTimeout(handlerNextButton, 5000);
 
     return () => clearTimeout(timerId);
-  }, [currentSlide]);
+  }, [currentSlide, handlerNextButton]);
 
   return (
     <div className="slider">

@@ -1,0 +1,51 @@
+.phones {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+
+  &__title {
+    color: #313237;
+    width: max-content;
+    margin-bottom: 8px;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+  }
+
+  &__count {
+    width: max-content;
+    margin-bottom: 40px;
+    color: #89939a;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__sort-container{
+    display: flex;
+    width: max-content;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+    width: 1136px;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    width: 1136px;
+    margin-bottom: 80px;
+  }
+}
