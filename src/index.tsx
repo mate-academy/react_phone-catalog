@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable global-require */
 import { createRoot } from 'react-dom/client';
 import { Helmet } from 'react-helmet';
 
@@ -22,7 +24,11 @@ createRoot(document.getElementById('root') as HTMLElement)
   .render(
     <>
       <Helmet>
-        <link rel="icon" href="src/images/favicon.ico" type="image/x-icon" />
+        <link
+          rel="icon"
+          href={require('./images/favicon.svg').default}
+          type="image/x-icon"
+        />
       </Helmet>
 
       <Router>
