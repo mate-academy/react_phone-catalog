@@ -7,13 +7,20 @@ align-items: center;
 justify-content: space-between;
 margin-bottom: 16px;
 margin-right: 16px;
+overflow: hidden;
 
 }
 
 .x{
   background-color: white;
   border: none;
+  transition: transform 0.3s ease; /* Add a smooth transition effect */
+
+  &:hover {
+    transform: scale(1.5); /* No scaling on hover */
+  }
 }
+
 
 .img{
   width: 66px;
@@ -30,6 +37,12 @@ height: 66px;
   height: 32px;
   margin-right: 8px;
   margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.plusminus:hover{
+  transform: scale(1.1);
+  cursor:pointer;
 }
 
 .name-card{
@@ -41,6 +54,13 @@ font-size: 14px;
 font-style: normal;
 font-weight: 500;
 line-height: 21px; /* 150% */
+}
+
+.quantity {
+  /* Fixed width for the quantity display */
+  width: 32px;
+  text-align: center; /* Center the text */
+  font-size: 14px; /* Adjust the font size */
 }
 
 .buttons-holder1{
@@ -59,4 +79,8 @@ font-size: 22px;
 font-style: normal;
 font-weight: 700;
 line-height: 140%; /* 30.8px */
+min-width: 80px; /* Adjust the width as needed */
+max-width: 80px;
+text-align: right; /* Align the text to the right */
 }
+

@@ -180,13 +180,13 @@ const ProductDetailsPage = () => {
           <img
             src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`}
             alt="Chevron"
-            className="folder-chevron"
+            className="folder-chevron-details"
           />
           <p className="page-folder">Phones</p>
           <img
             src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`}
             alt="Chevron"
-            className="folder-chevron"
+            className="folder-chevron-details"
           />
           <p className="page-name">{productDetails?.name}</p>
         </div>
@@ -194,7 +194,7 @@ const ProductDetailsPage = () => {
           <img
             src={`${process.env.PUBLIC_URL}/img/Chevron-left.svg`}
             alt="Chevron"
-            className="folder-chevron"
+            className="folder-chevron-details"
           />
           <button type="button" className="page-back" onClick={goBack}>
             Back
@@ -258,7 +258,7 @@ const ProductDetailsPage = () => {
                   </div>
                   <div className="line lined" />
                 </div>
-                <div className="capacity">
+                <div className="capacity-details">
                   <p className="colors-title">Select capacity</p>
                   {['64GB', '256GB', '512GB'].map((capacity) => (
                     <button

@@ -52,5 +52,9 @@ flex-shrink: 0;
   font-weight: 600;
   line-height: normal;
     color: var(--gray-secondary, #89939A);
+
+    &:hover{
+      cursor:pointer;
+    }
   }
 }

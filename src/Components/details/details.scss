@@ -15,15 +15,16 @@ line-height: normal;
   align-items: center;
 }
 
-.folder-chevron{
+.folder-chevron-details{
   margin-right: 8px;
   margin-left: 8px;
 }
 
 .page-back__holder{
   display:flex;
-  margin-top:41px;
+  margin-top:40px;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .pictures{
@@ -45,6 +46,12 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 text-decoration: none;
+height: 16px;
+cursor: pointer;
+}
+
+.page-back:hover{
+  color:black;
 }
 
 .details-title{
@@ -61,6 +68,22 @@ letter-spacing: -0.32px;
 .pictures img{
  width: 100%;
  height: 100%;
+}
+
+.image-holder:hover{
+  border: 1px black solid;
+  cursor: pointer;
+}
+
+.capacity-button:hover{
+  border: 1px black solid;
+  cursor: pointer;
+}
+
+.color:hover{
+  border: 1px black solid;
+  border-radius: 80%;
+  cursor: pointer;
 }
 
 .image-holder{

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ProductCard from '../ProductCard/Productcard';
 import './Phones.scss';
 
@@ -9,6 +9,18 @@ interface Phone {
   price: number;
   discount?: number;
 }
+
+const debounce = <T extends (...args: any[]) => void>(
+  func: T,
+  delay: number,
+): ((...args: Parameters<T>) => void) => {
+  let timeoutId: NodeJS.Timeout;
+
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  };
+};
 
 const fetchData = async (): Promise<Phone[]> => {
   const response = await fetch(
@@ -158,16 +170,29 @@ const Phones: React.FC = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-    setCurrentPage(1);
+  // Debounced search input handler
+  const handleSearchInputChangeDebounced = useCallback(
+    debounce((value: string) => {
+      setSearchInput(value);
+      setCurrentPage(1);
+    }, 80), // Set the debounce delay (e.g., 300 milliseconds)
+    [],
+  );
+
+  const handleSearchInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { value } = e.target;
+
+    // Call the debounced handler with the input value
+    handleSearchInputChangeDebounced(value);
   };
 
   return (
     <>
       <div className="folder-holder">
         <button type="button" className="home-button">
-          <img src={`${process.env.PUBLIC_URL}/img/Home.svg`} alt="Home" />
+          <img src={`${process.env.PUBLIC_URL}/img/Home.svg`} alt="Home" className="home-button" />
         </button>
         <img src={`${process.env.PUBLIC_URL}/img/Chevron-right.svg`} alt="Chevron" />
         <p className="page-name">Phones</p>

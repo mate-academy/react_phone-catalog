@@ -66,7 +66,7 @@ const CartCard: React.FC<CartCardProps> = ({ productId }) => {
         <button type="button" className="plusminus" onClick={handleRemoveClick}>
           <img src={`${process.env.PUBLIC_URL}/img/Minus.svg`} className="" alt="minus" />
         </button>
-        <div>{getCounterForProduct()}</div>
+        <div className="quantity">{getCounterForProduct()}</div>
         <button type="button" className="plusminus" onClick={handleAddClick}>
           <img src={`${process.env.PUBLIC_URL}/img/Plus.svg`} className="" alt="plus" />
         </button>
