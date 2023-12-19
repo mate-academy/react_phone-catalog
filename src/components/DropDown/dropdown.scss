@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .dropdown {
   display: inline-block;
@@ -79,6 +79,7 @@
 
   &__option {
     @include bodyText;
+    
     width: 100%;
     padding: 6px 12px;
 

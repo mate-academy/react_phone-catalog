@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .search {
   cursor: text;
@@ -10,6 +10,7 @@
   height: 100%;
   box-shadow: -1px 0 0 0 $color-elements;
 
+
   &__icon-container {
     position: absolute;
     top: 50%;
@@ -19,6 +20,7 @@
     width: 16px;
     height: 16px;
 
+
     & svg {
       display: block;
       width: 100%;
@@ -26,8 +28,10 @@
     }
   }
 
+
   &__input {
     @include buttonsText;
+
     color: $color-primary;
 
     box-sizing: border-box;
@@ -47,15 +51,19 @@
       padding: 8px 36px 8px 12px;
     }
 
+
     &::placeholder {
       @include bodyText;
+      
       line-height: 1;
       color: $color-icons;
     }
 
+
     &:hover {
       background-color: $color-hover;
     }
+
 
     &:focus-visible {
       background-color: $color-hover;

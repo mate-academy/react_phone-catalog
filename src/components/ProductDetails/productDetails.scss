@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .details-page {
   display: flex;
@@ -27,8 +27,7 @@
 
   &__grid {
     display: grid;
-    column-gap: 16px;
-    row-gap: 32px;
+    gap: 16px 32px;
     grid-template-columns: repeat(24, 1fr);
 
     @include onTablet {
@@ -121,6 +120,7 @@
 
   &__actions-title {
     @include smallText;
+
     margin-bottom: 8px;
   }
 
@@ -156,6 +156,7 @@
 
     &-button {
       @include squareButton(56px);
+
       height: 32px;
 
       &--selected {
@@ -176,6 +177,7 @@
 
     &-old {
       @include h2Text;
+
       color: $color-secondary;
       font-weight: 500;
       text-decoration: line-through;
@@ -190,6 +192,7 @@
     &-cart {
       @include buttonsText;
       @include primaryButton;
+
       height: 48px;
 
       &--added {
@@ -222,6 +225,7 @@
 
     &-value {
       @include smallText;
+
       color: $color-primary;
     }
   }
@@ -277,22 +281,26 @@
 
     &-title {
       @include bodyText;
+
       color: $color-secondary;
     }
 
     &-text {
       text-align: right;
+
       @include bodyText;
     }
   }
 
   &__second-title {
     @include h2Text;
+
     margin-bottom: 16px;
   }
 
   &__third-title {
     @include h3Text;
+
     margin-bottom: 16px;
   }
 
@@ -310,6 +318,7 @@
 
     &-description {
       @include bodyText;
+
       color: $color-secondary;
     }
   }

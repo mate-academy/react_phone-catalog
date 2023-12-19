@@ -1,9 +1,9 @@
-@mixin containerBase {
+@mixin containerbase {
   max-width: 1168px;
   margin: 0 auto;
 }
 
-@mixin squareButton($size) {
+@mixin squarebutton($size) {
   position: relative;
   width: $size;
   height: $size;
@@ -40,19 +40,19 @@
 }
 
 // Міксін для стилізації вибраного стану квадратних кнопок
-@mixin squareButtonSelected {
+@mixin squarebuttonselected {
   color: $color-white;
   background-color: $color-primary;
   border: none;
 }
 
 // Міксін для стилізації вибраного стану квадратних кнопок з іконками
-@mixin squareButtonIconSelected {
+@mixin squarebuttoniconselected {
   border-color: $color-elements;
 }
 
 // Міксін для стилізації круглих кнопок
-@mixin roundButton {
+@mixin roundbutton {
   display: block;
   border-radius: 50%;
   border: 2px solid $color-white;
@@ -66,12 +66,12 @@
 }
 
 // Міксін для стилізації вибраного стану круглих кнопок
-@mixin roundButtonSelected {
+@mixin roundbuttonselected {
   outline: 1px solid $color-primary;
 }
 
 // Міксін для стилізації основних кнопок
-@mixin primaryButton {
+@mixin primarybutton {
   color: $color-white;
   flex-grow: 1;
   height: 40px;
@@ -81,7 +81,7 @@
   transition: 0.2s ease;
 
   // Медіазапит для телефонів
-  @include onPhone() {
+  @include onphone() {
     max-width: none;
   }
 
@@ -91,7 +91,7 @@
 }
 
 // Міксін для стилізації вибраного стану основних кнопок
-@mixin primaryButtonSelected {
+@mixin primarybuttonselected {
   color: $color-green;
   background-color: $color-white;
   border: 1px solid $color-elements;
@@ -103,7 +103,7 @@
 }
 
 // Міксін для стилізації тексту в верхньому регістрі
-@mixin uppercaseText {
+@mixin uppercasetext {
   color: $color-secondary;
   font-size: 12px;
   line-height: 11px;
@@ -117,7 +117,7 @@
 }
 
 // Міксін для стилізації невеликого тексту
-@mixin smallText {
+@mixin smalltext {
   color: $color-secondary;
   font-size: 12px;
   line-height: 16px;
@@ -125,7 +125,7 @@
 }
 
 // Міксін для стилізації тексту кнопок
-@mixin buttonsText {
+@mixin buttonstext {
   color: $color-white;
   font-size: 14px;
   line-height: 21px;
@@ -133,19 +133,19 @@
 }
 
 // Міксін для стилізації тексту тіла
-@mixin bodyText {
+@mixin bodytext {
   color: $color-primary;
   font-size: 14px;
   line-height: 1.5;
   font-weight: 500;
 
   // Медіазапит для планшетів
-  @include onTablet() {
+  @include ontablet() {
     font-size: 13px;
   }
 
   // Медіазапит для телефонів
-  @include onPhone() {
+  @include onphone() {
     font-size: 11px;
   }
 }
@@ -157,12 +157,12 @@
   line-height: 1.3;
 
   // Медіазапит для планшетів
-  @include onTablet() {
+  @include ontablet() {
     font-size: 18px;
   }
 
   // Медіазапит для телефонів
-  @include onPhone() {
+  @include onphone() {
     font-size: 16px;
   }
 }
@@ -174,12 +174,12 @@
   line-height: 1.4;
 
   // Медіазапит для планшетів
-  @include onTablet() {
+  @include ontablet() {
     font-size: 20px;
   }
 
   // Медіазапит для телефонів
-  @include onPhone() {
+  @include onphone() {
     font-size: 18px;
   }
 }
@@ -192,36 +192,36 @@
   letter-spacing: -0.01em;
 
   // Медіазапит для планшетів
-  @include onTablet() {
+  @include ontablet() {
     font-size: 28px;
   }
 
   // Медіазапит для телефонів
-  @include onPhone() {
+  @include onphone() {
     font-size: 24px;
   }
 }
 
 // Медіазапит-міксіни для різних точок розрізу
-@mixin onDesktop {
+@mixin ondesktop {
   @media (max-width: 1200px) {
     @content;
   }
 }
 
-@mixin onLaptop {
+@mixin onlaptop {
   @media (max-width: 1024px) {
     @content;
   }
 }
 
-@mixin onTablet {
+@mixin ontablet {
   @media (max-width: 768px) {
     @content;
   }
 }
 
-@mixin onPhone {
+@mixin onphone {
   @media (max-width: 480px) {
     @content;
   }

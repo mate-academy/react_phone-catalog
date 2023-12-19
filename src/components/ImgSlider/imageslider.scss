@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .image-slider {
   --gap: 16px;
@@ -23,8 +23,7 @@
 
     overflow: hidden;
 
-    box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px,
-      rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+    box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
 
     @include onTablet {
@@ -56,6 +55,7 @@
 
   &__slide-button {
     @include squareButton(var(--button-width));
+
     height: auto;
 
     @include onTablet {
@@ -97,6 +97,7 @@
       width: 10px;
       height: 3px;
     }
+
     &--active {
       background-color: $color-primary;
     }

@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .cart-item {
   box-sizing: border-box;
@@ -60,12 +60,12 @@
   &__title {
     @include bodyText;
 
-    @include onTablet() {
+    @include onTablet {
       text-align: center;
       font-size: 14px;
     }
 
-    @include onPhone() {
+    @include onPhone {
       font-size: 14px;
     }
 

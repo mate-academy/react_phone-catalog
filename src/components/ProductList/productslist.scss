@@ -1,9 +1,8 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .products-list {
   display: flex;
-  row-gap: 40px;
-  column-gap: 16px;
+  gap: 40px 16px;
   flex-wrap: wrap;
 
   @include onLaptop {

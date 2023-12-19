@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .no-results {
   display: flex;
@@ -12,11 +12,13 @@
 
   &__title {
     @include h2Text;
+
     text-align: center;
   }
 
   &__description {
     @include bodyText;
+
     text-align: center;
   }
 }

@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .cart-page {
   width: 100%;
@@ -12,6 +12,7 @@
 
   &__title {
     @include h1Text;
+
     margin-bottom: 16px;
   }
 
@@ -24,16 +25,17 @@
   &__actions-button {
     @include squareButton(32px);
     @include smallText;
+
     width: max-content;
     padding: 0 12px;
     line-height: 1;
   }
 
+
   &__grid {
     width: 100%;
     display: grid;
-    column-gap: 16px;
-    row-gap: 32px;
+    gap: 32px 16px;
     grid-template-columns: repeat(24, 1fr);
 
     @include onLaptop {
@@ -41,6 +43,7 @@
       grid-template-rows: auto auto;
     }
   }
+
 
   &__cart-items {
     grid-column: 1/16;
@@ -53,6 +56,7 @@
     flex-direction: column;
     gap: 16px;
   }
+
 
   &__cart-checkout-action {
     grid-column: 16/-1;
@@ -80,11 +84,13 @@
 
   &__total-price {
     @include h1Text;
+
     text-align: center;
   }
 
   &__total-quantity {
     @include bodyText;
+
     text-align: center;
     color: $color-secondary;
   }
@@ -98,6 +104,7 @@
   &__checkout-button {
     @include primaryButton;
     @include buttonsText;
+
     height: 48px;
     width: 100%;
   }
@@ -120,6 +127,7 @@
 
   &__cart-checkout-message {
     @include bodyText;
+
     z-index: 2;
     box-sizing: border-box;
     position: fixed;
@@ -142,6 +150,7 @@
   }
 }
 
+
 .checkout-message-fade {
   &-enter {
     transform: translateX(350px);
@@ -162,11 +171,13 @@
   }
 }
 
+
 .cart-item-fade {
   &-exit {
     transform: translateX(0);
     opacity: 1;
   }
+
 
   &-exit-active {
     opacity: 0;
@@ -175,19 +186,23 @@
   }
 }
 
+
 .reset-fade {
   &-enter {
     opacity: 0;
   }
+
 
   &-enter-active {
     opacity: 1;
     transition: all 200ms ease-in-out;
   }
 
+
   &-exit {
     opacity: 1;
   }
+
 
   &-exit-active {
     opacity: 0;

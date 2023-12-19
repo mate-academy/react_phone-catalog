@@ -1,18 +1,21 @@
 @font-face {
-  font-family: "Mont";
+  font-family: Mont;
   src: url("../fonts/Mont-Regular.otf") format("opentype");
   font-weight: 500;
 }
+
 @font-face {
-  font-family: "Mont";
+  font-family: Mont;
   src: url("../fonts/Mont-Bold.otf") format("opentype");
   font-weight: 700;
 }
+
 @font-face {
-  font-family: "Mont";
+  font-family: Mont;
   src: url("../fonts/Mont-SemiBold.otf") format("opentype");
   font-weight: 600;
 }
+
 .notification {
   z-index: 3;
   box-sizing: border-box;
@@ -32,6 +35,7 @@
   font-weight: 600;
   font-size: 16px;
 }
+
 @media (max-width: 480px) {
   .notification {
     bottom: 16px;
@@ -45,13 +49,16 @@
 .notification-fade-enter {
   transform: translateX(350px);
 }
+
 .notification-fade-enter-active {
   transform: translateX(0);
   transition: all 400ms;
 }
+
 .notification-fade-exit {
   transform: translateX(0);
 }
+
 .notification-fade-exit-active {
   transform: translateX(350px);
   transition: all 400ms;

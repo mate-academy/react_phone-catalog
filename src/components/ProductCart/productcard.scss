@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .product-card {
   box-sizing: border-box;
@@ -62,6 +62,7 @@
 
   &__price-old {
     @include h2Text;
+
     color: $color-secondary;
     font-weight: 500;
     text-decoration: line-through;
@@ -92,6 +93,7 @@
 
   &__description-detail {
     @include smallText;
+    
     color: $color-primary;
   }
 

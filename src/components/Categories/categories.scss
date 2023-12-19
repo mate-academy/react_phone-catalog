@@ -1,8 +1,9 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .categories {
   &__title {
     @include h1Text;
+
     margin-bottom: 24px;
   }
 
@@ -91,6 +92,7 @@
 
   &__models {
     @include bodyText;
+    
     color: $color-secondary;
   }
 }

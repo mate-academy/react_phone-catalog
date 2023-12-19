@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .breadcrumbs {
   display: flex;
@@ -32,11 +32,13 @@
 
   &__current {
     @include smallText;
+
     line-height: 1;
   }
 
   &__link {
     @include smallText;
+
     line-height: 1;
     color: $color-primary;
     user-select: none;

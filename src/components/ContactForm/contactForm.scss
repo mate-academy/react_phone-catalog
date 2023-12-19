@@ -1,8 +1,9 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .contact-form {
   &__title {
     @include h2Text;
+
     text-align: center;
     margin-bottom: 8px;
   }
@@ -47,8 +48,8 @@
   &__button {
     @include buttonsText;
     @include primaryButton;
+    
     margin-top: 12px;
     width: 100%;
   }
-
 }

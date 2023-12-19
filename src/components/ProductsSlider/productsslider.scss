@@ -1,12 +1,12 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .product-slider {
-  --cardSize: 272px;
-  --sliderGap: 16px;
-  --itemIndex: 0;
-  --itemsVisible: 4;
-  --slideValue: calc(
-    var(--itemsVisible) * (var(--cardSize) + var(--sliderGap))
+  --card-size: 272px;
+  --slider-gap: 16px;
+  --item-index: 0;
+  --items-visible: 4;
+  --slide-value: calc(
+    var(--items-visible) * (var(--card-size) + var(--slider-gap))
   );
 
   &__title {
@@ -24,14 +24,14 @@
   &__slider-container {
     display: flex;
     overflow: hidden;
-    width: calc(var(--slideValue) - var(--sliderGap));
+    width: calc(var(--slide-value) - var(--slider-gap));
     margin: 0 auto;
   }
 
   &__slider {
     display: flex;
-    gap: var(--sliderGap);
-    transform: translateX(calc(var(--slideValue) * var(--itemIndex) * -1 ));
+    gap: var(--slider-gap);
+    transform: translateX(calc(var(--slide-value) * var(--item-index) * -1));
     transition: all 2000ms;
   }
 

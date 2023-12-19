@@ -1,4 +1,4 @@
-@import '../../style-ultis/_style-ultis';
+@import "../../style-ultis/style-ultis";
 
 .modal {
   position: fixed;
@@ -13,7 +13,7 @@
   width: 100vw;
   height: 100vh;
   border: 1px solid $color-secondary;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 
   &__content {
     position: relative;
