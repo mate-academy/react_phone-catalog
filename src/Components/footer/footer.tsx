@@ -58,9 +58,30 @@ const Footer: React.FC = () => {
         </div>
         <div className="footer-section2">
           <ul>
-            <li><a href="/github">GITHUB</a></li>
-            <li><a href="/contacts">CONTACTS</a></li>
-            <li><a href="/rights">RIGHTS</a></li>
+            <li>
+              <NavLink
+                to="https://github.com/petrolozynskyi"
+              >
+                GITHUB
+              </NavLink>
+
+            </li>
+            <li>
+              <NavLink
+                to="https://github.com/petrolozynskyi"
+              >
+                CONTACTS
+              </NavLink>
+
+            </li>
+            <li>
+              <NavLink
+                to="https://github.com/petrolozynskyi"
+              >
+                RIGHTS
+              </NavLink>
+
+            </li>
           </ul>
         </div>
         <ScrollToTopButton />
