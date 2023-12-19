@@ -1,0 +1,63 @@
+@import '../../GeneralStyles/variables';
+
+.footer {
+  border-top: 1px solid $elements-color;
+  align-self: end;
+
+
+  &__container {
+    min-height: 96px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    border: none;
+    background-color: #fff;
+    margin: auto 0;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__scroll {
+    height: 32px;
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary-color;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: auto 0;
+
+    &-text {
+      margin-right: 16px;
+      transition: all $duration-time;
+    }
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      padding: 7px;
+      border: 1px solid $icons-color;
+      transition: all $duration-time;
+    }
+
+    &:hover {
+      .footer__scroll-text {
+        color: black;
+      }
+
+      .footer__scroll-icon {
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+
+}
