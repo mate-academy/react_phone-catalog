@@ -1,0 +1,12 @@
+.flex-products-container {
+  width: 1150px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 40px;
+  margin-bottom: 40px;
+
+  &--favourites {
+    margin-bottom: 80px;
+  }
+}

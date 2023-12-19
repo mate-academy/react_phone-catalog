@@ -1,0 +1,15 @@
+.products-page {
+  &__title {
+    margin: 0 0 8px;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__count-models {
+    margin: 0 0 40px;
+    color: $silver;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

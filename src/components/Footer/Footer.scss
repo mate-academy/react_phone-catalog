@@ -1,0 +1,71 @@
+@import "../../styles/utils/vars";
+
+.footer {
+  &__navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 36px 0;
+  }
+
+  &__navbar-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__navbar-menu-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__navbar-menu-item {
+    list-style: none;
+    margin-right: 64px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__navbar-menu-link {
+    text-decoration: none;
+    color: $silver;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover {
+      text-shadow: 4px 8px 6px rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__back-to-top-container {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__back-to-top-text {
+    text-decoration: none;
+    color: $silver;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__arrow-up-container {
+    border: 1px solid $gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    background-color: $white;
+    cursor: pointer;
+  }
+}

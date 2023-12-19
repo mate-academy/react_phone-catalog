@@ -1,0 +1,18 @@
+.also-like {
+  &__title-arrows-container {
+    grid-column: 1 / 25;
+    margin-bottom: 24px;
+
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+  }
+
+  &__title {
+    margin: 0;
+    grid-column: 1 / 8;
+    color: $dark-gray;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+}

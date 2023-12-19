@@ -1,0 +1,64 @@
+@import "../../styles/utils/vars";
+
+.pagination {
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+
+  &__pagination-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  &__pagination-item {
+    list-style: none;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:first-child {
+      margin-right: 16px;
+    }
+    
+
+    &:last-child {
+      margin-left: 16px;
+    }
+  }
+
+  &__pagination-button {
+    border: 1px solid $gray;
+    background-color: $white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $dark-gray;
+    }
+  }
+
+  &__pagination-link {
+    padding: 7px 14px;
+    cursor: pointer;
+    border: 1px solid $gray;
+    text-decoration: none;
+    color: $black;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      border: 1px solid $dark-gray;
+    }
+
+    &--active {
+      background-color: $dark-gray;
+      color: $white;
+    }
+  }
+}

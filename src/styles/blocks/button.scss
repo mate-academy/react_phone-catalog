@@ -1,0 +1,28 @@
+.button {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark-gray;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--added-in-cart {
+    background-color: $white;
+    border: 1px solid $green;
+    color: $green;
+    cursor: auto;
+  }
+
+  &--checkout {
+    height: 48px;
+  }
+}

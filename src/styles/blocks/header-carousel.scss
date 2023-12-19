@@ -1,0 +1,78 @@
+.header-carousel {
+  &__carousel-container {
+    grid-column: 1 / 25;
+    margin-bottom: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+  }
+
+  &__arrow {
+    background-color: $white;
+    cursor: pointer;
+    border: 1px solid $gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--prev {
+      grid-column: 1 / 2;
+
+      &:hover {
+        border: 1px solid $dark-gray;
+      }
+    }
+
+    &--next {
+      grid-column: 24 / 25;
+
+      &:hover {
+        border: 1px solid $dark-gray;
+      }
+    }
+  }
+
+  &__image-container {
+    grid-column: 2 / 24;
+  }
+
+  &__carousel-list {
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+    list-style: none;
+    width: 1040px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  &__carousel-pages {
+    grid-column: 12 / 14;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__slider-button {
+    width: 20px;
+    height: 7px;
+    cursor: pointer;
+    border: none;
+    background-color: $light-gray;
+
+    &--active {
+      background-color: $dark-gray;
+      width: 20px;
+      height: 7px;
+      cursor: pointer;
+    }
+  }
+}

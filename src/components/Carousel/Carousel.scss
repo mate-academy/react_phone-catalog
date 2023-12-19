@@ -1,0 +1,15 @@
+.carousel {
+  width: 1160px;
+
+  &__product-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    display: flex;
+  }
+
+  &__product-item {
+    margin: 0 8px;
+  }
+}
