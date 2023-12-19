@@ -1,6 +1,4 @@
-import {
-  createBrowserRouter,
-} from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom'; // Import createHashRouter
 import { MainLayout } from '../Layouts/MainLayout';
 import Home from '../Pages/Home';
 import ProductDetailsPage from '../Components/details/details';
@@ -9,7 +7,7 @@ import Tablets from '../Components/Tablets/tablets';
 import Favorites from '../Components/Favorites/favorites';
 import Cart from '../Components/Cart/cart';
 
-export const Router = createBrowserRouter([
+export const Router = createHashRouter([ // Use createHashRouter
   {
     path: '/',
     element: <MainLayout />,
@@ -47,9 +45,7 @@ export const Router = createBrowserRouter([
         element: <p>Page not found</p>,
       },
     ],
-  },
-], { basename: '/react_phone-catalog' });
-
+  }]);
 // export const AppRouter = () => {
 //   return (
 //     <BrowserRouter basename="/react_phone-catalog">

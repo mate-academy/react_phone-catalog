@@ -117,6 +117,13 @@ margin-right: 8px;
   align-items: center;
   margin-top: 4px;
   margin-bottom: 4px;
+  color: var(--Gray-Primary, #313237);
+text-align: right;
+font-family: Mont;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 }
 
 .card-buttons{
@@ -142,6 +149,7 @@ width: 176px;
 height: 40px;
 margin-right: 8px;
 border: none;
+cursor: pointer;
 }
 
 .button-like{
@@ -153,6 +161,7 @@ border: none;
   background-position: center;
   background-color: white;
   transition: background-color 0.3s ease; // Add a transition for a smooth color change
+  cursor: pointer;
 }
 
 .product-card:hover{
@@ -165,6 +174,36 @@ border: none;
 
 .button-like:hover{
   border: 1px solid var(--Gray-Primary, #313237);
+}
+
+.screen{
+  color: var(--Gray-Secondary, #89939A);
+/* Small text 12 */
+font-family: Mont;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.capacity{
+  color: var(--Gray-Secondary, #89939A);
+/* Small text 12 */
+font-family: Mont;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.ram{
+  color: var(--Gray-Secondary, #89939A);
+/* Small text 12 */
+font-family: Mont;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
 }
 
 

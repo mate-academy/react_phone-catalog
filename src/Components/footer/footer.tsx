@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import './footer.scss';
 
 const ScrollToTopButton: React.FC = () => {
@@ -51,9 +52,9 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section1">
-          <a href="#home">
+          <NavLink to="/">
             <img src={`${process.env.PUBLIC_URL}/img/Logo.svg`} alt="Logo" className="logo__image" />
-          </a>
+          </NavLink>
         </div>
         <div className="footer-section2">
           <ul>

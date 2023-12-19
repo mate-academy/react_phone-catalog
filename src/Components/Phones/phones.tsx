@@ -147,6 +147,8 @@ const Phones: React.FC = () => {
     return { startIndex, endIndex };
   };
 
+  const shouldRenderPagination = Math.ceil(phones.length / itemsPerPage) > 1;
+
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1,
       Math.ceil(phones.length / itemsPerPage)));
@@ -232,35 +234,35 @@ const Phones: React.FC = () => {
             />
           ))}
       </div>
-      <div className="slider-holder">
-        <button
-          type="button"
-          className="slider-button left"
-          aria-label="Previous Page"
-          onClick={handlePrevPage}
-        />
-        {Array.from(
-          {
-            length: Math.ceil(phones.length
-              / itemsPerPage),
-          }, (_, index) => index + 1,
-        ).map((page) => (
+      {shouldRenderPagination && (
+        <div className="slider-holder">
           <button
             type="button"
-            className={`slider-button ${currentPage === page ? 'selected' : ''}`}
-            key={page}
-            onClick={() => handlePageChange(page)}
-          >
-            {page}
-          </button>
-        ))}
-        <button
-          type="button"
-          className="slider-button right"
-          aria-label="Next Page"
-          onClick={handleNextPage}
-        />
-      </div>
+            className="slider-button left"
+            aria-label="Previous Page"
+            onClick={handlePrevPage}
+          />
+          {Array.from(
+            { length: Math.ceil(phones.length / itemsPerPage) },
+            (_, index) => index + 1,
+          ).map((page) => (
+            <button
+              type="button"
+              className={`slider-button ${currentPage === page ? 'selected' : ''}`}
+              key={page}
+              onClick={() => handlePageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            type="button"
+            className="slider-button right"
+            aria-label="Next Page"
+            onClick={handleNextPage}
+          />
+        </div>
+      )}
     </>
   );
 };
