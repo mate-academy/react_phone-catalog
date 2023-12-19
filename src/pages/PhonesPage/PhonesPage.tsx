@@ -25,12 +25,16 @@ export const PhonesPage: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
-  // const [itemOffset, setItemOffset] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
   const sort = searchParams.get('sort') || '';
+  const pageFromSearch = searchParams.get('page') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
-  const currentPage = +(searchParams.get('page') || 1);
+  // const currentPage = +(searchParams.get('page') || 1);
   const [preparedPhones, setPreparedPhones] = useState(phones);
-  const itemOffset = currentPage * itemsPerPage;
+  // const itemOffset = currentPage * itemsPerPage;
+  const [page, setPage] = useState(pageFromSearch);
+
+  console.log(pageFromSearch);
 
   useEffect(() => {
     const getSorted = () => {
@@ -60,10 +64,12 @@ export const PhonesPage: React.FC = () => {
   }, [phones, sort]);
 
   // useEffect(() => {
+  //   if (page) {
+  //     setSearchParams(prev => ({ ...prev, page }));
+  //   }
+  // }, [page, setSearchParams, searchParams]);
 
-  // });
-
-  const { pathname } = useLocation();
+  const { pathname, location } = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,16 +94,59 @@ export const PhonesPage: React.FC = () => {
   const currentItems = preparedPhones.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(phones.length / itemsPerPage);
 
-  // const handlePageClick = (event: { selected: number; }) => {
-  //   const newOffset = (event.selected * itemsPerPage) % phones.length;
-
-  //   setItemOffset(newOffset);
-  // };
   const handlePageClick = (event: { selected: number; }) => {
-    // console.log(event.selected);
-    getSearchWith(searchParams, { page: (event.selected + 1).toString() });
-    console.log(searchParams.get('page'));
+    const newOffset = (event.selected * itemsPerPage) % phones.length;
+
+    setItemOffset(newOffset);
+    const newPage = event.selected + 1;
+
+    setPage(newPage.toString());
+
+    // searchParams.set('page', newPage.toString());
+
+    // setSearchParams(searchParams);
+
+    setSearchParams(prev => {
+      // const params = Object.fromEntries(prev.entries());
+      prev.set('page', newPage.toString());
+
+      // console.log(params);
+      // console.log({ ...params, page: newPage.toString() });
+
+      return prev;
+    });
   };
+
+  // const handlePageClick = (event: { selected: number; }) => {
+  // todo event.selected set to set state
+  // console.log(event.selected);
+  // const newOffset = (event.selected * itemsPerPage) % phones.length;
+
+  // setItemOffset(newOffset);
+
+  // const params = new URLSearchParams(searchParams);
+
+  // const newPage = event.selected + 1;
+
+  // console.log(searchParams.entries());
+
+  // setSearchParams(prev => ({ ...prev, page: newPage.toString() }));
+
+  // getSearchWith(params, { page: newPage.toString() });
+  // window.location.pathname
+  //   = getSearchWith(params, { page: newPage.toString() });
+  // };
+
+  // const handlePageClick = (event: { selected: number; }) => {
+  //   console.log(event.selected);
+  //   const params = new URLSearchParams(searchParams);
+
+  //   const newPage = event.selected + 1;
+
+  //   params.set('page', newPage.toString());
+
+  //   getSearchWith(params, { page: newPage.toString() });
+  // };
 
   return (
     <>
