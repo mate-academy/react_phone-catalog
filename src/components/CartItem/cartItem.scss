@@ -11,7 +11,7 @@
   padding-block: 16px;
   border: 1px solid $color-elements;
 
-  @include onTablet {
+  @include ontablet {
     flex-direction: column;
     gap: 16px;
   }
@@ -42,7 +42,7 @@
       transform: scale(1.05);
     }
 
-    @include onTablet {
+    @include ontablet {
       width: 200px;
       height: 200px;
     }
@@ -58,14 +58,14 @@
   }
 
   &__title {
-    @include bodyText;
+    @include bodytext;
 
-    @include onTablet {
+    @include ontablet {
       text-align: center;
       font-size: 14px;
     }
 
-    @include onPhone {
+    @include onphone {
       font-size: 14px;
     }
 
@@ -79,7 +79,7 @@
   }
 
   &__quantity-button {
-    @include squareButton(32px);
+    @include squarebutton(32px);
   }
 
   &__quantity {
@@ -93,13 +93,13 @@
   }
 
   &__price {
-    @include h2Text;
+    @include h2text;
 
     display: block;
     width: 80px;
     text-align: right;
 
-    @include onTablet {
+    @include ontablet {
       width: max-content;
     }
   }

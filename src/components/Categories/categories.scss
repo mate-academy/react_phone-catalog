@@ -2,7 +2,7 @@
 
 .categories {
   &__title {
-    @include h1Text;
+    @include h1text;
 
     margin-bottom: 24px;
   }
@@ -11,7 +11,7 @@
     display: flex;
     gap: 16px;
 
-    @include onTablet {
+    @include ontablet {
       flex-direction: column;
     }
   }
@@ -20,7 +20,7 @@
     display: block;
     flex: 1 1 33%;
 
-    @include onTablet {
+    @include ontablet {
       flex: 0 0;
     }
   }
@@ -36,16 +36,16 @@
 
     transition: 0.25s ease;
 
-    @include onLaptop {
+    @include onlaptop {
       margin-bottom: 20px;
     }
 
-    @include onTablet {
+    @include ontablet {
       margin-bottom: 18px;
       padding-bottom: 200px;
     }
 
-    @include onPhone {
+    @include onphone {
       margin-bottom: 12px;
       padding-bottom: 125px;
     }
@@ -80,19 +80,19 @@
     object-fit: cover;
     object-position: top left;
 
-    @include onTablet {
+    @include ontablet {
       width: 71%;
       height: auto;
     }
   }
 
   &__link-title {
-    @include h3Text;
+    @include h3text;
   }
 
   &__models {
-    @include bodyText;
-    
+    @include bodytext;
+
     color: $color-secondary;
   }
 }

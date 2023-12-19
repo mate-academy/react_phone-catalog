@@ -14,7 +14,7 @@
 
     margin-bottom: 16px;
 
-    @include onPhone {
+    @include onphone {
       flex-direction: column;
     }
   }
@@ -30,14 +30,14 @@
   }
 
   &__title {
-    @include h2Text;
-    
+    @include h2text;
+
     text-align: center;
   }
 
   &__description {
-    @include bodyText;
-    
+    @include bodytext;
+
     text-align: center;
   }
 }

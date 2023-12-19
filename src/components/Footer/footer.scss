@@ -4,7 +4,7 @@
   box-shadow: 0 -1px 0 0 $color-elements;
 
   &__container {
-    @include containerBase;
+    @include containerbase;
   }
 
   &__content {
@@ -15,7 +15,7 @@
     height: 96px;
     padding: 0 24px;
 
-    @include onPhone {
+    @include onphone {
       height: 72px;
     }
   }
@@ -24,11 +24,11 @@
     display: flex;
     gap: 64px;
 
-    @include onTablet {
+    @include ontablet {
       gap: 8px;
     }
 
-    @include onPhone {
+    @include onphone {
       flex-direction: column;
       align-items: center;
       gap: 10px;
@@ -38,11 +38,11 @@
   &__link {
     display: block;
 
-    @include uppercaseText;
+    @include uppercasetext;
 
     padding: 42px 8px 43px;
 
-    @include onPhone {
+    @include onphone {
       padding: 0;
     }
   }
@@ -55,15 +55,15 @@
 
   &__back-text {
     cursor: pointer;
-    
-    @include smallText;
 
-    @include onPhone {
+    @include smalltext;
+
+    @include onphone {
       display: none;
     }
   }
 
   &__back-button {
-    @include squareButton(32px);
+    @include squarebutton(32px);
   }
 }

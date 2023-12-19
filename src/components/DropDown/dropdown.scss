@@ -15,7 +15,7 @@
   }
 
   &__button {
-    @include buttonsText;
+    @include buttonstext;
 
     box-sizing: border-box;
     color: $color-icons;
@@ -78,8 +78,8 @@
   }
 
   &__option {
-    @include bodyText;
-    
+    @include bodytext;
+
     width: 100%;
     padding: 6px 12px;
 

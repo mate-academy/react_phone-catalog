@@ -5,15 +5,15 @@
   gap: 40px 16px;
   flex-wrap: wrap;
 
-  @include onLaptop {
+  @include onlaptop {
     justify-content: center;
   }
 
-  @include onTablet {
+  @include ontablet {
     row-gap: 32px;
   }
 
-  @include onPhone {
+  @include onphone {
     row-gap: 16px;
   }
 }

@@ -5,7 +5,7 @@
   align-items: center;
   gap: 8px;
 
-  @include onPhone {
+  @include onphone {
     gap: 4px;
   }
 
@@ -31,13 +31,13 @@
   }
 
   &__current {
-    @include smallText;
+    @include smalltext;
 
     line-height: 1;
   }
 
   &__link {
-    @include smallText;
+    @include smalltext;
 
     line-height: 1;
     color: $color-primary;

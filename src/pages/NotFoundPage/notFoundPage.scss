@@ -1,5 +1,4 @@
-@import '../../style-ultis/style-ultis';
-
+@import "../../style-ultis/style-ultis";
 
 .no-page {
   box-sizing: border-box;
@@ -12,32 +11,27 @@
   gap: 12px;
   text-align: center;
 
-
   &__title {
-    @include h1Text;
+    @include h1text;
   }
-
 
   &__code {
-    @include h2Text;
+    @include h2text;
   }
 
-
   &__description {
-    @include bodyText;
+    @include bodytext;
 
     color: $color-secondary;
   }
 
-
   &__button {
-    @include primaryButton;
-    @include buttonsText;
-    
+    @include primarybutton;
+    @include buttonstext;
+
     padding: 0 12px;
     flex-grow: 0;
     display: flex;
     align-items: center;
   }
-
 }

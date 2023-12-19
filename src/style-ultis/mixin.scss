@@ -39,19 +39,16 @@
   }
 }
 
-// Міксін для стилізації вибраного стану квадратних кнопок
 @mixin squarebuttonselected {
   color: $color-white;
   background-color: $color-primary;
   border: none;
 }
 
-// Міксін для стилізації вибраного стану квадратних кнопок з іконками
 @mixin squarebuttoniconselected {
   border-color: $color-elements;
 }
 
-// Міксін для стилізації круглих кнопок
 @mixin roundbutton {
   display: block;
   border-radius: 50%;
@@ -81,7 +78,7 @@
   transition: 0.2s ease;
 
   // Медіазапит для телефонів
-  @include onphone() {
+  @include onphone {
     max-width: none;
   }
 
@@ -140,64 +137,64 @@
   font-weight: 500;
 
   // Медіазапит для планшетів
-  @include ontablet() {
+  @include ontablet {
     font-size: 13px;
   }
 
   // Медіазапит для телефонів
-  @include onphone() {
+  @include onphone {
     font-size: 11px;
   }
 }
 
 // Міксін для стилізації тексту h3
-@mixin h3Text {
+@mixin h3text {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.3;
 
   // Медіазапит для планшетів
-  @include ontablet() {
+  @include ontablet {
     font-size: 18px;
   }
 
   // Медіазапит для телефонів
-  @include onphone() {
+  @include onphone {
     font-size: 16px;
   }
 }
 
 // Міксін для стилізації тексту h2
-@mixin h2Text {
+@mixin h2text {
   font-weight: bold;
   font-size: 22px;
   line-height: 1.4;
 
   // Медіазапит для планшетів
-  @include ontablet() {
+  @include ontablet {
     font-size: 20px;
   }
 
   // Медіазапит для телефонів
-  @include onphone() {
+  @include onphone {
     font-size: 18px;
   }
 }
 
 // Міксін для стилізації тексту h1
-@mixin h1Text {
+@mixin h1text {
   font-weight: bold;
   font-size: 32px;
   line-height: 1.3;
   letter-spacing: -0.01em;
 
   // Медіазапит для планшетів
-  @include ontablet() {
+  @include ontablet {
     font-size: 28px;
   }
 
   // Медіазапит для телефонів
-  @include onphone() {
+  @include onphone {
     font-size: 24px;
   }
 }

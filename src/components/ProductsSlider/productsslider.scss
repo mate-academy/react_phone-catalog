@@ -10,7 +10,7 @@
   );
 
   &__title {
-    @include h1Text;
+    @include h1text;
   }
 
   &__top-actions {
@@ -41,6 +41,6 @@
   }
 
   &__button {
-    @include squareButton(32px);
+    @include squarebutton(32px);
   }
 }

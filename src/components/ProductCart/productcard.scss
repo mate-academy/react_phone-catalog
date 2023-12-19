@@ -57,11 +57,11 @@
   }
 
   &__price-new {
-    @include h2Text;
+    @include h2text;
   }
 
   &__price-old {
-    @include h2Text;
+    @include h2text;
 
     color: $color-secondary;
     font-weight: 500;
@@ -88,12 +88,12 @@
   }
 
   &__description-title {
-    @include smallText;
+    @include smalltext;
   }
 
   &__description-detail {
-    @include smallText;
-    
+    @include smalltext;
+
     color: $color-primary;
   }
 
@@ -103,19 +103,19 @@
   }
 
   &__button-add-cart {
-    @include buttonsText;
-    @include primaryButton;
+    @include buttonstext;
+    @include primarybutton;
 
     &--added {
-      @include primaryButtonSelected;
+      @include primarybuttonselected;
     }
   }
 
   &__button-favorites {
-    @include squareButton(40px);
+    @include squarebutton(40px);
 
     &--added {
-      @include squareButtonIconSelected;
+      @include squarebuttoniconselected;
     }
   }
 }

@@ -11,13 +11,13 @@
   gap: 8px;
 
   &__title {
-    @include h2Text;
+    @include h2text;
 
     text-align: center;
   }
 
   &__description {
-    @include bodyText;
+    @include bodytext;
 
     text-align: center;
   }

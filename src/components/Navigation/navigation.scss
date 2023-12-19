@@ -4,7 +4,7 @@
   height: 64px;
   box-shadow: 0 1px 0 0 $color-elements;
 
-  @include onPhone {
+  @include onphone {
     height: 48px;
   }
 
@@ -15,7 +15,7 @@
     padding-left: 24px;
     height: 100%;
 
-    @include onPhone {
+    @include onphone {
       gap: 16px;
       padding-left: 16px;
     }
@@ -25,11 +25,11 @@
     display: flex;
     gap: 48px;
 
-    @include onLaptop {
+    @include onlaptop {
       gap: 32px;
     }
 
-    @include onPhone {
+    @include onphone {
       gap: 16px;
     }
   }
@@ -62,7 +62,7 @@
   }
 
   &__page-link {
-    @include uppercaseText;
+    @include uppercasetext;
 
     position: relative;
     padding: 27px 16px 26px;
@@ -82,7 +82,7 @@
     width: 64px;
     height: 64px;
 
-    @include onPhone {
+    @include onphone {
       width: 48px;
       height: 48px;
     }

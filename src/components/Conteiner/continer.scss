@@ -1,8 +1,8 @@
 @import "../../style-ultis/style-ultis";
 
 .container {
-  @include containerBase;
-  
+  @include containerbase;
+
   position: relative;
   box-sizing: border-box;
   display: flex;
@@ -11,7 +11,7 @@
   width: 100%;
   padding: 24px 16px 80px;
 
-  @include onTablet {
+  @include ontablet {
     padding-bottom: 60px;
     padding-top: 24px;
   }
@@ -19,7 +19,7 @@
   &--extend {
     padding-top: 48px;
 
-    @include onTablet {
+    @include ontablet {
       padding-top: 24px;
     }
   }

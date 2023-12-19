@@ -11,7 +11,7 @@
   }
 
   &__title {
-    @include h1Text;
+    @include h1text;
 
     margin-bottom: 16px;
   }
@@ -23,14 +23,13 @@
   }
 
   &__actions-button {
-    @include squareButton(32px);
-    @include smallText;
+    @include squarebutton(32px);
+    @include smalltext;
 
     width: max-content;
     padding: 0 12px;
     line-height: 1;
   }
-
 
   &__grid {
     width: 100%;
@@ -38,17 +37,16 @@
     gap: 32px 16px;
     grid-template-columns: repeat(24, 1fr);
 
-    @include onLaptop {
+    @include onlaptop {
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: auto auto;
     }
   }
 
-
   &__cart-items {
     grid-column: 1/16;
 
-    @include onLaptop {
+    @include onlaptop {
       grid-column: 1/-1;
     }
 
@@ -57,11 +55,10 @@
     gap: 16px;
   }
 
-
   &__cart-checkout-action {
     grid-column: 16/-1;
 
-    @include onLaptop {
+    @include onlaptop {
       grid-row: 2;
       grid-column: 1/-1;
     }
@@ -83,13 +80,13 @@
   }
 
   &__total-price {
-    @include h1Text;
+    @include h1text;
 
     text-align: center;
   }
 
   &__total-quantity {
-    @include bodyText;
+    @include bodytext;
 
     text-align: center;
     color: $color-secondary;
@@ -102,8 +99,8 @@
   }
 
   &__checkout-button {
-    @include primaryButton;
-    @include buttonsText;
+    @include primarybutton;
+    @include buttonstext;
 
     height: 48px;
     width: 100%;
@@ -118,15 +115,15 @@
   }
 
   &__empty-title {
-    @include h1Text;
+    @include h1text;
   }
 
   &__empty-description {
-    @include bodyText;
+    @include bodytext;
   }
 
   &__cart-checkout-message {
-    @include bodyText;
+    @include bodytext;
 
     z-index: 2;
     box-sizing: border-box;
@@ -134,7 +131,7 @@
     bottom: 24px;
     right: 24px;
 
-    @include onPhone {
+    @include onphone {
       bottom: 8px;
       right: 8px;
     }
@@ -149,7 +146,6 @@
     text-align: center;
   }
 }
-
 
 .checkout-message-fade {
   &-enter {
@@ -171,13 +167,11 @@
   }
 }
 
-
 .cart-item-fade {
   &-exit {
     transform: translateX(0);
     opacity: 1;
   }
-
 
   &-exit-active {
     opacity: 0;
@@ -186,23 +180,19 @@
   }
 }
 
-
 .reset-fade {
   &-enter {
     opacity: 0;
   }
-
 
   &-enter-active {
     opacity: 1;
     transition: all 200ms ease-in-out;
   }
 
-
   &-exit {
     opacity: 1;
   }
-
 
   &-exit-active {
     opacity: 0;

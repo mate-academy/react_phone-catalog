@@ -2,7 +2,7 @@
 
 .contact-form {
   &__title {
-    @include h2Text;
+    @include h2text;
 
     text-align: center;
     margin-bottom: 8px;
@@ -46,9 +46,9 @@
   }
 
   &__button {
-    @include buttonsText;
-    @include primaryButton;
-    
+    @include buttonstext;
+    @include primarybutton;
+
     margin-top: 12px;
     width: 100%;
   }

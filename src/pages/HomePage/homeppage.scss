@@ -10,15 +10,15 @@
       margin-bottom: 0;
     }
 
-    @include onLaptop {
+    @include onlaptop {
       margin-bottom: 72px;
     }
 
-    @include onTablet {
+    @include ontablet {
       margin-bottom: 64px;
     }
 
-    @include onPhone {
+    @include onphone {
       margin-bottom: 48px;
     }
   }
