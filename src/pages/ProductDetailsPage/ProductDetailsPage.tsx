@@ -22,7 +22,6 @@ export const ProductDetailsPage = () => {
     = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedColor, setSelectedColor] = useState<string>('');
-
   const [selectedImage, setSelectedImage]
     = useState<string>(productDetails?.images[0] || '');
   const [isLoading, setIsLoading] = useState<boolean>(false);

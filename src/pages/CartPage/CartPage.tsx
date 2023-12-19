@@ -14,7 +14,6 @@ export const CartPage = () => {
     totalPrice,
   }
     = useOutletContext<FavoritesContextType>();
-
   const handleBackButtonClick = () => {
     navigate(-1);
   };
