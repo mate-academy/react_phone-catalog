@@ -21,12 +21,14 @@ export const ProductDetailsPage = () => {
   const [product, setProduct]
     = useState<Product | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedColor, setSelectedColor] = useState<string>('');
+  const [selectedColor, setSelectedColor]
+  = useState<string>(productDetails?.color || '');
   const [selectedImage, setSelectedImage]
     = useState<string>(productDetails?.images[0] || '');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<string>('');
-  const [thisModelProducts, setThisModelProducts] = useState<Product[]>([]);
+  const [thisModelProducts, setThisModelProducts]
+  = useState<Product[] | null>([]);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const {
     favoritesItems,
@@ -46,6 +48,7 @@ export const ProductDetailsPage = () => {
   const getProduct = async () => {
     setIsLoading(true);
     setProductDetails(null);
+    setSelectedColor('');
     try {
       const response = await fetch(`https://mate-academy.github.io/react_phone-catalog/_new/products/${productId}.json`);
 
@@ -168,7 +171,8 @@ export const ProductDetailsPage = () => {
         <NoResults productName="Product" />
       )}
 
-      {!isLoading && !hasError && !!productDetails && (
+      {!isLoading && !hasError && !!productDetails
+      && productDetails?.id === productId && (
         <>
           <div className="pathInscription" data-cy="breadCrumbs">
             <div className="nav-logo">
@@ -253,7 +257,7 @@ export const ProductDetailsPage = () => {
                       onClick={() => handleColorClick(color)}
                       onKeyDown={(event) => handleKeyDown(event, color)}
                       style={{
-                        backgroundImage: `url(${thisModelProducts.find(item => item.color === color)?.image})`,
+                        backgroundImage: `url(${thisModelProducts?.find(item => item.color === color)?.image})`,
                       }}
                       aria-label={`Select color ${color}`}
                     />
