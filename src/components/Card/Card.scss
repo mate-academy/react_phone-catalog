@@ -13,7 +13,7 @@
     height: 206px;
     border: 1px solid $gray-elements;
     text-align: center;
-    margin: 0 auto;
+    margin: 16px auto 0;
 
     @include onTablet {
       width: 30%;
@@ -74,10 +74,16 @@
     color: $gray-primary;
     font-size: 12px;
     font-style: normal;
+    width: 90px;
 
     @include onTablet {
       font-weight: 500;
       line-height: 21px;
+      width: 140px;
+    }
+
+    @include onDesktop {
+      width: 180px;
     }
   }
 
@@ -85,7 +91,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px;
+    padding: 8px;
     border: 1px solid $gray-elements;
     margin-bottom: 16px;
 
@@ -132,10 +138,18 @@
   }
 
   &__amount {
-    max-width: 100px;
+    width: 50px;
     display: flex;
     justify-content: space-between;
     gap: 4px;
+
+    @include onTablet {
+      width: 80px;
+    }
+
+    @include onDesktop {
+      width: 100px;
+    }
 
     &-text {
       font-size: 14px;
@@ -184,7 +198,7 @@
 
   &__checkout {
     margin: 24px;
-    width: 260px;
+    width: 240px;
     height: 48px;
     background-color: $gray-primary;
     color: $gray-white;

@@ -118,6 +118,14 @@
     justify-content: flex-end;
   }
 
+  &__search {
+    display: none;
+    
+    @include onDesktop {
+      display: block;
+    }
+  }
+
   &__bag {
     display: block;
     width: 64px;

@@ -21,8 +21,7 @@
   &__img {
     object-fit: cover;
     width: 100%;
-    // object-position: center;
-    height: 380px;
+    height: 400px;
   }
 
   &__button {
@@ -34,13 +33,6 @@
 .swiper-wrapper {
   margin-bottom: 20px;
 }
-
-// .swiper-horizontal,
-// .swiper-pagination-bullets,
-// .swiper-pagination-bullet,
-// .swiper-pagination-horizontal {
-//   margin: -12px var(--swiper-pagination-bullet-horizontal-gap, 12px);
-// }
 
 .swiper-pagination-bullet {
   z-index: 10;

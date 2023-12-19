@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addAmount, removeAmount, removeCard } from '../../features/cardSlice';
 // import close from '../../img/icon/Close.png';
@@ -22,8 +22,9 @@ export const Card = () => {
 
     return 0;
   }, 0);
+  const navigate = useNavigate();
   const handleGoBack = () => {
-    window.history.back();
+    navigate(-1);
   };
 
   return (
@@ -55,13 +56,7 @@ export const Card = () => {
                     type="button"
                     aria-label="Decrement value"
                     onClick={() => dispatch(removeCard(phone))}
-                  >
-                    {/* <img
-                      className="card__icon-close-img"
-                      src={close}
-                      alt="close"
-                    /> */}
-                  </button>
+                  />
                   <div className="card__img">
                     <img className="card__img" src={`${URL}${phone.image}`} alt={phone.name} />
                   </div>

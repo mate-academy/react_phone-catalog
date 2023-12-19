@@ -14,11 +14,19 @@
     left: calc(50% + 13px);
     transform: translate(-50%, -50%);
   }
-  
+
   &__count-text {
     color: $gray-white;
     text-align: center;
     font-size: 9px;
     font-weight: 600;
+  }
+
+  &__search {
+    display: block;
+
+    @include onDesktop {
+      display: none;
+    }
   }
 }

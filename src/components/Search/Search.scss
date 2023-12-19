@@ -3,7 +3,7 @@
 .search {
   box-sizing: border-box;
   display: block;
-  width: min-content;
+  width: 100%;
   background: #fff;
   box-shadow: -1px 0 0 0 0 #e2e6e9;
   margin: 20px auto;
@@ -14,25 +14,22 @@
   }
 
   @include onDesktop {
-    position: absolute;
-    top: 0;
-    right: 13%;
     margin: 0;
-    border-radius: 0%;
     border: none;
     border-left: 1px solid rgba(226, 230, 233, 1);
   }
 
   &__container {
     display: flex;
+    justify-content: space-between;
   }
 
   &__input {
+    width: 100%;
     padding: 10px;
     color: #b4bdc3;
     font-size: 14px;
     font-weight: 600;
-    width: min-content;
     border: none;
     outline: none;
 
@@ -48,7 +45,7 @@
   &__icon {
     height: 16px;
     width: 16px;
-    padding: 10px;
+    padding: 10px 20px;
 
     @include onDesktop {
       padding: 24px;

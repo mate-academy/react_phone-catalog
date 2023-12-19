@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { HomeIcon } from '../HomeIcon/HomeIcon';
@@ -8,8 +7,8 @@ import './Favourites.scss';
 
 export const Favourites = () => {
   const [searchParams] = useSearchParams();
-  const [query, setQuery]
-  = useState(searchParams.get('query') || '');
+  const query
+  = searchParams.get('query') || '';
   const favouritesPhones
     = useAppSelector(state => state.favourites.favouritesPhones);
 
@@ -31,24 +30,33 @@ export const Favourites = () => {
               <p>
                 {`${favouritesPhones.length} items `}
               </p>
-              <Search
-                query={query}
-                setQuery={setQuery}
-              />
+              <div className="favourites__search">
+                <Search />
+              </div>
             </>
           )}
 
-          { searchInPhones.length === 0 && (
+          { searchInPhones.length === 0 && !query && (
             <h2>
               The favourites is empty
             </h2>
           )}
 
+          { searchInPhones.length === 0 && query && (
+            <>
+              <div className="favourites__search">
+                <Search />
+              </div>
+              <h3>
+                There are not models in favourites
+                <br />
+                whith name includse
+                {` '${query}'`}
+              </h3>
+            </>
+          )}
+
           <ul
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-            }}
             className="phones__list"
           >
             {searchInPhones.map((phone) => (

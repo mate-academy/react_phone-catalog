@@ -27,10 +27,6 @@
     justify-content: space-between;
   }
 
-  &__title {
-    margin: 0 0 0 12px;
-  }
-
   &__button {
     justify-items: end;
     justify-content: end;
@@ -65,7 +61,6 @@
     &--right {
       height: 32px;
       width: 32px;
-      // margin-right: 20px;
       background-image: url(../../img/icon/ArrowRight.png);
 
       &:hover {

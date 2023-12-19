@@ -1,6 +1,9 @@
 import classNames from 'classnames';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import {
+  Link, NavLink, useLocation,
+} from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
+import { Search } from '../Search/Search';
 import './Header.scss';
 
 export const Header = () => {
@@ -40,6 +43,13 @@ export const Header = () => {
           </nav>
           <div className="header__container">
             <div className="header__right">
+              {(location.pathname === '/phones'
+                || location.pathname === '/favourites')
+                && (
+                  <div className="header__search">
+                    <Search />
+                  </div>
+                )}
               <div className="header__ff">
                 <NavLink
                   to="/favourites"

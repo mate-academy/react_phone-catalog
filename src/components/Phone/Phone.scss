@@ -13,6 +13,14 @@
     padding: 0 2px;
   }
 
+  &__search {
+    display: block;
+  
+    @include onDesktop {
+      display: none;
+    }
+  }
+
   &__input {
     display: block;
     padding: 16px 0;

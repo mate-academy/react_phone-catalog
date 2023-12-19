@@ -20,7 +20,6 @@
 
   &__title {
     font-size: 28px;
-    margin: 0 0 0 12px;
   }
 
   &__button {
@@ -55,7 +54,6 @@
 
     &--right {
       background-image: url(../../img/icon/ArrowRight.png);
-      // margin-right: 20px;
 
       &:hover {
         border: 1px solid $gray-primary;

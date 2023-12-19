@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { DetailsPhone } from '../../Type/DetailsPhone';
 import { getPhone } from '../../utils/fetch';
 import { BuyButtonCart } from '../BuyButtonCard/BuyButtonCart';
@@ -53,8 +53,9 @@ export const ProductDetails: React.FC = () => {
     return null;
   }
 
+  const navigate = useNavigate();
   const handleGoBack = () => {
-    window.history.back();
+    navigate(-1);
   };
 
   return (

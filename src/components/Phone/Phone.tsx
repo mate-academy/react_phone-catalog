@@ -21,8 +21,8 @@ export const Phone = () => {
   = useState(+(searchParams.get('currentPage') || 1));
   const [sortValue, setSortValue]
   = useState((searchParams.get('sortValue') || SortCategories.newest));
-  const [query, setQuery]
-  = useState(searchParams.get('query') || '');
+  const query
+  = searchParams.get('query') || '';
   const lastTotalIndex = currentPage * (itemOnPage);
   const firstTotalIndex = lastTotalIndex - itemOnPage;
 
@@ -71,19 +71,19 @@ export const Phone = () => {
           <HomeIcon title="Phones" />
           <h1>Mobile phones</h1>
           {visiblePhone.length === 0 && (
-            <p className="phone__text"> There are not  models</p>
+            <p className="phones__text"> There are not  models</p>
           )}
           {visiblePhone.length > 0 && query && (
-            <p className="phone__text">{`${visiblePhone.length}  models`}</p>
+            <p className="phones__text">{`${visiblePhone.length}  models`}</p>
           )}
 
           {visiblePhone.length > 0 && (
             <p className="phone__text">{`${phones.length}  models`}</p>
           )}
-          <Search
-            query={query}
-            setQuery={setQuery}
-          />
+          <div className="phones__search">
+            <Search />
+
+          </div>
           {!query && (
             <div className="phones__input">
               <SortInput
