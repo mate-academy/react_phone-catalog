@@ -45,7 +45,7 @@ export const ShopCategory: React.FC = () => {
               </div>
               <div>
                 Tablets
-                <p className="category__description">24 models</p>
+                <p className="category__description">0 models</p>
               </div>
             </Link>
 
@@ -64,7 +64,7 @@ export const ShopCategory: React.FC = () => {
               </div>
               <div>
                 Accessories
-                <p className="category__description">100 models</p>
+                <p className="category__description">0 models</p>
               </div>
             </Link>
           </div>

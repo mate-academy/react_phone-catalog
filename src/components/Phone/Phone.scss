@@ -3,7 +3,6 @@
 .phones {
   &__text {
     display: block;
-    margin: 0 0 40px;
   }
 
   &__item {
@@ -15,7 +14,7 @@
 
   &__search {
     display: block;
-  
+
     @include onDesktop {
       display: none;
     }

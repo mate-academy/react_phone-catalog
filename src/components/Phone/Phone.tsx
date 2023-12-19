@@ -68,16 +68,17 @@ export const Phone = () => {
     <main>
       <section className="phones">
         <div className="container">
-          <HomeIcon title="Phones" />
-          <h1>Mobile phones</h1>
+          {!query ? (
+            <>
+              <HomeIcon title="Phones" />
+              <h1>Mobile phones</h1>
+            </>
+          )
+            : <p className="phones__text">{`Result ${visiblePhone.length}`}</p>}
           {visiblePhone.length === 0 && (
             <p className="phones__text"> There are not  models</p>
           )}
-          {visiblePhone.length > 0 && query && (
-            <p className="phones__text">{`${visiblePhone.length}  models`}</p>
-          )}
-
-          {visiblePhone.length > 0 && (
+          {!query && (
             <p className="phone__text">{`${phones.length}  models`}</p>
           )}
           <div className="phones__search">

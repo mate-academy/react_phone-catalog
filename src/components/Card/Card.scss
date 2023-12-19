@@ -48,7 +48,7 @@
 
   &__icon-close {
     position: relative;
-    background-image: url(.././../img/icon/close.svg);
+    background-image: url(../../../src/img/icon/Close1.svg);
     height: 16px;
     width: 16px;
     object-fit: cover;
@@ -224,7 +224,7 @@
 
 .back {
   cursor: pointer;
-  padding: 0 0 4px 16px;
+  padding: 0 0 16px 16px;
   background-color: $gray-white;
   border: none;
   text-transform: capitalize;
