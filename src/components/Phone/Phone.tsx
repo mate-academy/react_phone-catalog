@@ -74,12 +74,12 @@ export const Phone = () => {
               <h1>Mobile phones</h1>
             </>
           )
-            : <p className="phones__text">{`Result ${visiblePhone.length}`}</p>}
+            : <p className="phones__text1">{`Result ${visiblePhone.length}`}</p>}
           {visiblePhone.length === 0 && (
             <p className="phones__text"> There are not  models</p>
           )}
           {!query && (
-            <p className="phone__text">{`${phones.length}  models`}</p>
+            <p className="phones__text1">{`${phones.length}  models`}</p>
           )}
           <div className="phones__search">
             <Search />
