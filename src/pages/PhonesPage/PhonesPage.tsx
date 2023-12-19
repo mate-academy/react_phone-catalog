@@ -18,7 +18,7 @@ import {
 } from '../../components/Dropdowns/ItemsPerPageDropdown';
 import homeImage from '../../images/home.svg';
 import arrowRight from '../../images/arrow-right-secondary-color.svg';
-import { getSearchWith } from '../../helpers/utils/seacrhHelper';
+// import { getSearchWith } from '../../helpers/utils/seacrhHelper';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,14 +27,14 @@ export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [itemOffset, setItemOffset] = useState(0);
   const sort = searchParams.get('sort') || '';
-  const pageFromSearch = searchParams.get('page') || '';
+  // const pageFromSearch = searchParams.get('page') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   // const currentPage = +(searchParams.get('page') || 1);
   const [preparedPhones, setPreparedPhones] = useState(phones);
   // const itemOffset = currentPage * itemsPerPage;
-  const [page, setPage] = useState(pageFromSearch);
+  // const [page, setPage] = useState(pageFromSearch);
 
-  console.log(pageFromSearch);
+  // console.log(pageFromSearch);
 
   useEffect(() => {
     const getSorted = () => {
@@ -69,7 +69,7 @@ export const PhonesPage: React.FC = () => {
   //   }
   // }, [page, setSearchParams, searchParams]);
 
-  const { pathname, location } = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,7 +100,7 @@ export const PhonesPage: React.FC = () => {
     setItemOffset(newOffset);
     const newPage = event.selected + 1;
 
-    setPage(newPage.toString());
+    // setPage(newPage.toString());
 
     // searchParams.set('page', newPage.toString());
 
