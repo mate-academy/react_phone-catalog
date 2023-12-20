@@ -1,4 +1,3 @@
-/* eslint-disable operator-linebreak */
 import { useContext, useEffect, useMemo } from 'react';
 import { MainContext } from '../context/MainContext';
 import { HeroContent } from '../types/HeroContent';
@@ -13,6 +12,7 @@ export const AccessoriesPage = () => {
     setIsHeaderSearchVisible,
     setDocumentTitle,
     accessories,
+    queryValue,
   } = useContext(MainContext);
 
   useEffect(() => {
@@ -21,20 +21,26 @@ export const AccessoriesPage = () => {
     setIsMenuOpen(false);
   }, []);
 
+  const filteredProducts = useMemo(() => {
+    return accessories.filter(({ name }) => {
+      return name.toLowerCase().includes(queryValue);
+    });
+  }, [accessories, queryValue]);
+
   const content: HeroContent = useMemo(() => {
     return {
       title: 'Accessories',
-      modelsNumber: accessories.length,
+      modelsNumber: filteredProducts.length,
     };
-  }, [accessories]);
+  }, [filteredProducts]);
 
   return (
     <>
       <Breadcrumbs />
       <Hero content={content} />
 
-      {accessories.length > 0 ? (
-        <ProductsList products={accessories} />
+      {filteredProducts.length > 0 ? (
+        <ProductsList products={filteredProducts} />
       ) : (
         <NoResults categoryName={content.title} />
       )}

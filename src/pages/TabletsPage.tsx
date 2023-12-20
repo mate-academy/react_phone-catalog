@@ -1,5 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable object-curly-newline */
 import { useContext, useEffect, useMemo } from 'react';
 import { MainContext } from '../context/MainContext';
 import { HeroContent } from '../types/HeroContent';
@@ -9,8 +7,13 @@ import { ProductsList } from '../components/ProductsList';
 import { NoResults } from '../components/NoResults';
 
 export const TabletsPage = () => {
-  const { setIsMenuOpen, setIsHeaderSearchVisible, setDocumentTitle, tablets } =
-    useContext(MainContext);
+  const {
+    setIsMenuOpen,
+    setIsHeaderSearchVisible,
+    setDocumentTitle,
+    tablets,
+    queryValue,
+  } = useContext(MainContext);
 
   useEffect(() => {
     setDocumentTitle('Tablets Page');
@@ -18,20 +21,26 @@ export const TabletsPage = () => {
     setIsMenuOpen(false);
   }, []);
 
+  const filteredProducts = useMemo(() => {
+    return tablets.filter(({ name }) => {
+      return name.toLowerCase().includes(queryValue);
+    });
+  }, [tablets, queryValue]);
+
   const content: HeroContent = useMemo(() => {
     return {
       title: 'Tablets',
-      modelsNumber: tablets.length,
+      modelsNumber: filteredProducts.length,
     };
-  }, [tablets]);
+  }, [filteredProducts]);
 
   return (
     <>
       <Breadcrumbs />
       <Hero content={content} />
 
-      {tablets.length > 0 ? (
-        <ProductsList products={tablets} />
+      {filteredProducts.length > 0 ? (
+        <ProductsList products={filteredProducts} />
       ) : (
         <NoResults categoryName={content.title} />
       )}

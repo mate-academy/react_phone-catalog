@@ -237,10 +237,6 @@
     outline: none;
     background-color: transparent;
     transition: opacity var(--time);
-
-    &:hover {
-      opacity: 0.75;
-    }
   }
 
   &__icons {

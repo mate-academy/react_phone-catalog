@@ -1,9 +1,10 @@
-import { useEffect, useMemo } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Pagination } from '../Pagination';
 import { ProductItems } from './ProductItems';
 import { ProductFilters } from './ProductFilters';
+import { MainContext } from '../../context/MainContext';
 
 interface Props {
   products: Product[];
@@ -11,18 +12,22 @@ interface Props {
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { queryValue } = useContext(MainContext);
   const sortValue = searchParams.get('sort');
   const perPageValue = searchParams.get('perPage') || '4';
   const currentPageValue = searchParams.get('page') || '1';
 
   useEffect(() => {
-    if (perPageValue === 'all') {
-      const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams);
 
+    if (perPageValue === 'all') {
       params.delete('page');
-      setSearchParams(params);
+    } else {
+      params.set('page', '1');
     }
-  }, [perPageValue]);
+
+    setSearchParams(params);
+  }, [perPageValue, queryValue]);
 
   const filteredProducts = useMemo(() => {
     let arr = [...products].sort((a, b) => b.year - a.year);

@@ -16,46 +16,46 @@ export const MainContext = React.createContext<{
   tablets: Product[];
   accessories: Product[];
   favouritesItems: Product[];
-  searchItems: Product[];
   cartItems: CartItem[];
   isLoaderActive: boolean;
   isMenuOpen: boolean;
   isHeaderSearchVisible: boolean;
   documentTitle: string;
+  queryValue: string;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
   setTablets: React.Dispatch<React.SetStateAction<Product[]>>;
   setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
   setFavouritesItems: React.Dispatch<React.SetStateAction<Product[]>>;
-  setSearchItems: React.Dispatch<React.SetStateAction<Product[]>>;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setIsLoaderActive: React.Dispatch<React.SetStateAction<boolean>>;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsHeaderSearchVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setDocumentTitle: React.Dispatch<React.SetStateAction<string>>;
+  setQueryValue: React.Dispatch<React.SetStateAction<string>>;
 }>({
   products: [],
   phones: [],
   tablets: [],
   accessories: [],
   favouritesItems: [],
-  searchItems: [],
   cartItems: [],
   isLoaderActive: true,
   isMenuOpen: false,
   isHeaderSearchVisible: false,
   documentTitle: 'Home Page',
+  queryValue: '',
   setProducts: () => {},
   setPhones: () => {},
   setTablets: () => {},
   setAccessories: () => {},
   setFavouritesItems: () => {},
-  setSearchItems: () => {},
   setCartItems: () => {},
   setIsLoaderActive: () => {},
   setIsMenuOpen: () => {},
   setIsHeaderSearchVisible: () => {},
   setDocumentTitle: () => {},
+  setQueryValue: () => {},
 });
 
 export const MainProvider: React.FC<Props> = ({ children }) => {
@@ -64,13 +64,13 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [isHeaderSearchVisible, setIsHeaderSearchVisible] = useState(false);
 
   const [documentTitle, setDocumentTitle] = useState('Home Page');
+  const [queryValue, setQueryValue] = useState('');
 
   const [products, setProducts] = useState<Product[]>([]);
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
   const [favouritesItems, setFavouritesItems] = useState<Product[]>([]);
-  const [searchItems, setSearchItems] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
@@ -111,8 +111,6 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setAccessories,
       favouritesItems,
       setFavouritesItems,
-      searchItems,
-      setSearchItems,
       cartItems,
       setCartItems,
       isLoaderActive,
@@ -123,6 +121,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setIsHeaderSearchVisible,
       documentTitle,
       setDocumentTitle,
+      queryValue,
+      setQueryValue,
     }),
     [
       products,
@@ -135,8 +135,6 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setAccessories,
       favouritesItems,
       setFavouritesItems,
-      searchItems,
-      setSearchItems,
       cartItems,
       setCartItems,
       isLoaderActive,
@@ -147,6 +145,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setIsHeaderSearchVisible,
       documentTitle,
       setDocumentTitle,
+      queryValue,
+      setQueryValue,
     ]
   );
 
