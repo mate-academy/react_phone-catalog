@@ -55,6 +55,7 @@ export const CartPage = () => {
                 <li key={id} className="CartPage__list-item">
                   <div className="CartPage__list-item-left-container">
                     <button
+                      aria-label="Delete button"
                       data-cy="cartDeleteButton"
                       type="button"
                       className="CartPage__list-item-button"
@@ -82,6 +83,7 @@ export const CartPage = () => {
                   <div className="CartPage__list-item-right-container">
                     <div className="CartPage__list-item-control">
                       <button
+                        aria-label="Control button"
                         type="button"
                         className="CartPage__list-item-control-button"
                         onClick={() => decrease(id)}
@@ -95,6 +97,7 @@ export const CartPage = () => {
                       </p>
 
                       <button
+                        aria-label="Control button"
                         type="button"
                         className="CartPage__list-item-control-button"
                         onClick={() => increase(product)}

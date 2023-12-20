@@ -13,6 +13,7 @@ export const SlideRightButton: React.FC<Props> = ({
 }) => {
   return (
     <button
+      aria-label="Pagination next"
       data-cy="paginationRight"
       type="button"
       className={classNames('SlideRightButton', {

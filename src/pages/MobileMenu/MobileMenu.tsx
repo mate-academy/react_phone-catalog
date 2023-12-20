@@ -39,6 +39,7 @@ export const MobileMenu: React.FC<Props> = ({
         </Link>
 
         <button
+          aria-label="Close button"
           type="button"
           className="MobileMenu__close-link"
           onClick={() => setIsMenuShown(false)}

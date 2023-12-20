@@ -12,6 +12,7 @@ export const SlideLeftButton: React.FC<Props> = ({
 }) => {
   return (
     <button
+      aria-label="Pagination previus"
       data-cy="paginationLeft"
       type="button"
       className={classNames('SlideLeftButton', {
