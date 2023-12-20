@@ -20,17 +20,7 @@ export const SortDropdown: React.FC = () => {
   const [isListVisible, setIsListVisible] = useState(false);
   const dropdownRef = useBlur(() => setIsListVisible(false));
   const [optionField, setOptionField] = useState('Newest');
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [optionValue, setOptionValue] = useState('age');
-  // const [sort, setSort] = useState('');
-
-  // useEffect(() => {
-  //   // read the params on component load and when any changes occur
-  //   // update the search params programmatically
-  //   if (sort) {
-  //     setSearchParams(({ sort: optionValue }));
-  //   }
-  // }, [searchParams, optionValue, setSearchParams, sort]);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     switch (searchParams.get('sort')) {
@@ -60,17 +50,13 @@ export const SortDropdown: React.FC = () => {
   ];
 
   const handleSelect = (option: Option) => {
-    const { value } = option;
-
     if (option.value === searchParams.get('sort')) {
       handleClick();
 
       return;
     }
 
-    setOptionValue(value);
     setIsListVisible(false);
-    // setSort(value);
   };
 
   return (
