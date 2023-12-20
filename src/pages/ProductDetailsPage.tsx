@@ -33,6 +33,8 @@ export const ProductDetailsPage = () => {
     fetchProductDetails(productId)
       .then((data) => setProductDetails(data))
       .finally(() => setIsLoaderActive(false));
+
+    window.scrollTo(0, 0);
   }, [productId]);
 
   const getSuggestedProducts = useMemo(() => {

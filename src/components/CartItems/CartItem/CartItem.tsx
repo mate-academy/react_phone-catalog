@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useContext, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { MainContext } from '../../../context/MainContext';
 import { CartItem as Item } from '../../../types/CartItem';
@@ -58,7 +59,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           </svg>
         </button>
 
-        <div className="cart__imgs">
+        <Link to={`/phones/${product.itemId}`} className="cart__imgs">
           <picture>
             <img
               className="cart__img"
@@ -67,9 +68,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
               loading="lazy"
             />
           </picture>
-        </div>
+        </Link>
 
-        <div className="text cart__name">{product.name}</div>
+        <Link to={`/phones/${product.itemId}`} className="text cart__name">
+          {product.name}
+        </Link>
       </div>
 
       <div className="cart__right">

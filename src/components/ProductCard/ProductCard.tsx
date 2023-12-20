@@ -79,9 +79,9 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
         </Link>
 
         <div className="product-card__prices">
-          <h2 className="h2 product-card__price">{item.price}</h2>
+          <h2 className="h2 product-card__price">{`$${item.price}`}</h2>
           <h2 className="h2 product-card__price product-card__price--old">
-            {item.fullPrice}
+            {`$${item.fullPrice}`}
           </h2>
         </div>
 

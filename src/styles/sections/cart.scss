@@ -227,6 +227,11 @@
     font-weight: 500;
     color: var(--color-black);
     padding-right: 24px;
+    transition: all 0.3s;
+
+    &:hover {
+      color: var(--color-red);
+    }
 
     @include max-tablet {
       padding-right: 20px;

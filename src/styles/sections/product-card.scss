@@ -6,6 +6,11 @@
   height: 100%;
   padding: 32px 24px 24px;
   border: 1px solid var(--color-light-2);
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: var(--color-grey-2);
+  }
 
   @include max-tablet-portrait {
     padding: 28px 20px 20px;
@@ -22,7 +27,6 @@
     height: 0;
     padding-bottom: 125%;
     margin: 0 auto 24px;
-    overflow: hidden;
   }
 
   &__img {
@@ -33,12 +37,6 @@
     height: 100%;
     object-fit: contain;
     object-position: center;
-    will-change: transform;
-    transition: transform 0.7s;
-
-    &:hover {
-      transform: scale(1.02);
-    }
   }
 
   &__cont {
