@@ -133,16 +133,23 @@ const Phones: React.FC = () => {
 
   const sortProducts = (data: Phone[]): Phone[] => {
     return data.sort((a, b) => {
+      const calculateDiscountedPrice = (product: Phone) => (
+        product.price - (product.price * (product.discount || 0)) / 100);
+
       if (sortBy === 'name') {
         return a.name.localeCompare(b.name);
       }
 
       if (sortBy === 'price') {
-        return a.price - b.price;
+        const discountedPriceA = calculateDiscountedPrice(a);
+        const discountedPriceB = calculateDiscountedPrice(b);
+
+        return discountedPriceA - discountedPriceB;
       }
 
       if (sortBy === 'discount') {
-        return (b.discount || 0) - (a.discount || 0);
+        return ((b.price / 100) * (b.discount || 0))
+          - ((a.price / 100) * (a.discount || 0));
       }
 
       return 0;

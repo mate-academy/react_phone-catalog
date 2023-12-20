@@ -1,8 +1,6 @@
 .carousel-container {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: row;
   margin-top: 40px;
 }
@@ -18,21 +16,21 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+}
+
+.button-left{
+  margin-right: 16px;
+}
+
+.button-right{
   margin-left: 16px;
-  margin-right: 16px
 }
 
-.button-left {
-  left: 16px;
-}
-
-.button-right {
-  right: 16px;
-}
 
 .slider-container {
   overflow: hidden;
-  width: 1040px;
+  width: 1070px;
   height: 400px;
 }
 
