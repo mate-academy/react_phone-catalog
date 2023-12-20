@@ -22,7 +22,7 @@ export const SortDropdown: React.FC<Props> = ({
   const currentOption = searchParams.get(searchParam) || '';
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
-  const handleSelectOption = (newParam: any) => {
+  const handleSelectOption = (newParam: { [key: string]: string }) => {
     if (searchParams.toString().includes(SearchParams.Page)) {
       setSearchParams(getSearchWith({
         ...newParam,

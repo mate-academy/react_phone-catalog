@@ -2,7 +2,7 @@ export const BASE_URL
   = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const GITHUB_URL
-= 'https://github.com/andrew17752985/react_redux-list-of-todos';
+= 'https://github.com/NasyTheSlayer';
 
 export const SORT_BY = {
   Newest: 'age',
