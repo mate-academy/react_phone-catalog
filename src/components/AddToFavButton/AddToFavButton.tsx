@@ -15,6 +15,7 @@ export const AddToFavButton: React.FC<Props> = ({ product }) => {
 
   return (
     <button
+      aria-label="Add to Favorites"
       data-cy="addToFavorite"
       type="button"
       className="AddToFavButton"

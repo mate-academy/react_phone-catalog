@@ -11,6 +11,7 @@ export const ComingSoon: React.FC<Props> = ({ onClose }) => {
     <div className="ComingSoon">
       <div className="ComingSoon__modal">
         <button
+          aria-label="Close modal"
           type="button"
           className="ComingSoon__modal-button"
           onClick={() => onClose(false)}

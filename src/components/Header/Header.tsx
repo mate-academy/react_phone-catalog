@@ -32,6 +32,7 @@ export const Header = () => {
         </Link>
 
         <button
+          aria-label="Open Menu"
           type="button"
           className="Header__burger"
           onClick={() => setIsMenuShown(true)}

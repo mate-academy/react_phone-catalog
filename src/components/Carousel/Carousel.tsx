@@ -59,6 +59,7 @@ export const Carousel: React.FC = () => {
     <section className="Carousel">
       <div className="Carousel__slider">
         <button
+          aria-label="Move to previous slide"
           type="button"
           className="Carousel__slider-button"
           onClick={handleLeftSlide}
@@ -86,6 +87,7 @@ export const Carousel: React.FC = () => {
         </div>
 
         <button
+          aria-label="Move to next slide"
           type="button"
           className="Carousel__slider-button"
           onClick={handleRightSlide}
