@@ -1,0 +1,52 @@
+.product {
+  grid-column: 1 / 25;
+  margin-top: 8px;
+  &__description {
+    color: #{$gray-secondary};
+  }
+
+  &__selects {
+    grid-column: 1 / 25;
+    margin-top: 40px;
+
+
+    @include grid;
+    &--label {
+      color: #{$gray-secondary};
+      position: relative;
+    }
+
+    &--sort {
+      &-by {
+        grid-column: 1 / 5;
+      }
+      &-items {
+        grid-column: 5 / 8;
+      }
+      &-select {
+        width: 100%;
+        margin-top: 4px;
+      }
+    }
+  }
+  &__list {
+    grid-column: 1 / 25;
+    margin-top: 24px;
+
+    @include grid;
+
+    row-gap: 40px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+    height: 32px;
+    &-current {
+      color: #{$white};
+      background-color: #{$gray};
+    }
+  }
+}

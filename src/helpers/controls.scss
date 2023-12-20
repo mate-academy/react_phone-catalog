@@ -1,0 +1,70 @@
+.buttons {
+  width: 32px;
+  height: 32px;
+  background-color: #{$white};
+  border: 1px solid #{$gray-four};
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    border: 1px solid $gray;
+    cursor: pointer;
+  }
+
+  &__page {
+    color: #{$white};
+    background-color: #{$gray};
+  }
+
+  &__arrow {
+    &--right {
+      background: url('./../img/arrowRight.svg') no-repeat center;
+
+      &-disabled {
+        background: url('./../img/arrowRightDisabled.svg') no-repeat center;
+        pointer-events: none;
+      }
+    }
+    &--left {
+      background: url('./../img/arrowLeft.svg') no-repeat center;
+
+      &-disabled {
+        background: url('./../img/arrowLeftDisabled.svg') no-repeat center;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.selects {
+  border: 1px solid #{$gray-four};
+  text-transform: capitalize;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+  &--icon {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    background: url('./../img/arrowRight.svg') no-repeat;
+    transform: rotate(90deg);
+  }
+  &:focus {
+    border: 1px solid #{$gray};
+    outline: none;
+  }
+  &--option {
+    color: #{$gray-secondary};
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}

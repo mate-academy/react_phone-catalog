@@ -1,0 +1,23 @@
+.slider {
+  grid-column: 1/25;
+
+  @include grid;
+
+  overflow: hidden;
+  grid-auto-flow: column;
+  justify-content: start;
+  &__header {
+    grid-column: 1/25;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+
+    @include grid;
+    &--title {
+      grid-column: 1/23;
+    }
+    &--arrow {
+      grid-column: span 1;
+    }
+  }
+}

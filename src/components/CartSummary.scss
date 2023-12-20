@@ -1,0 +1,27 @@
+.cartSummary {
+  border: 1px solid #{$gray-border};
+  grid-column: 17/25;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  &__quantity {
+    color: #{$gray-secondary};
+  }
+  &__separator {
+    margin-top: 24px;
+    width: 100%;
+    border: 1px solid #{$gray-border};
+  }
+  &__button {
+    margin-top: 24px;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+}

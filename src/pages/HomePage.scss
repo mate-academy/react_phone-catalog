@@ -1,0 +1,9 @@
+.home {
+  margin-top: 40px;
+  &__header {
+    grid-column: 1/25;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 72px;
+  }
+}

@@ -1,0 +1,48 @@
+.banner {
+  @include grid;
+
+  &--arrow {
+    height: 100%;
+    &-left {
+      grid-column: 1;
+    }
+    &-right {
+      grid-column: 24;
+    }
+  }
+
+  &--banner {
+    grid-column: 2 / 24;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 400px;
+
+    &--item {
+      flex: 0 0 100%;
+
+      &-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &--counter {
+    grid-column: 12 / 14;
+    height: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    justify-content: center;
+
+    &-indicator {
+      height: 4px;
+      width: 14px;
+      background-color: #{$gray-four};
+      &-active{
+        background-color: #{$black};
+      }
+    }
+  }
+}

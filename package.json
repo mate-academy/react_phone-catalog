@@ -1,5 +1,5 @@
 {
-  "name": "react_phone-catalog",
+  "name": "react_people-table-advanced",
   "homepage": ".",
   "version": "0.1.0",
   "keywords": [],
@@ -13,6 +13,7 @@
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5"
   },
@@ -41,7 +42,7 @@
   "scripts": {
     "start": "mate-scripts start -l",
     "build": "mate-scripts build",
-    "test": "mate-scripts test",
+    "test": "mate-scripts test -l",
     "lint-js": "mate-scripts lint -j",
     "lint-css": "mate-scripts lint -s",
     "lint": "npm run lint-js && npm run lint-css",

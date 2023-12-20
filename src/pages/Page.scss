@@ -1,0 +1,55 @@
+.page {
+  @include grid;
+
+  row-gap: 0;
+  &__path {
+    margin-top: 24px;
+    grid-column: 1 / 25;
+    display: flex;
+    gap: 8px;
+    &--home {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      gap: 8px
+    }
+    &--page{
+      color: #{$gray-secondary};
+      text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    &--prev{
+      width: 16px;
+      height: 16px;
+    }
+    &--back {
+      cursor: pointer;
+      background-color: #{$white};
+      border: none;
+      display: flex;
+      margin-top: 40px;
+      color: #{$gray-secondary};
+      &:hover {
+        color: #{$gray};
+      }
+    }
+  }
+  &__title {
+    grid-column: 1 / 25;
+    margin-top: 40px;
+  }
+  &__cart {
+    margin-top: 24px;
+    grid-column: 1 / 25;
+
+    @include grid;
+    &--list {
+      grid-column: 1 / 17;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}

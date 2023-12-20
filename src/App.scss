@@ -1,1 +1,27 @@
-// not empty
+
+@import "fonts";
+@import "./helpers/variables";
+@import "./helpers/reset";
+@import "./helpers/mixins";
+@import "./helpers/Typography";
+@import "./helpers/controls";
+@import "./components/Loader";
+@import "./components/Header";
+@import "./components/Footer";
+@import "./components/Banner";
+@import "./pages/HomePage";
+@import "./pages/Page";
+@import "./components/ProductsSlider";
+@import "./components/ProductCard";
+@import "./components/ShopByCategory";
+@import "./components/ProductList";
+@import "./components/NoResults";
+@import "./components/CartSummary";
+@import "./components/CartItem";
+@import "./components/ErrorMessage";
+@import "./components/Details";
+
+
+body {
+  box-sizing: border-box;
+}
