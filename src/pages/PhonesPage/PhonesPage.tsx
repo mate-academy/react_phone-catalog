@@ -18,23 +18,18 @@ import {
 } from '../../components/Dropdowns/ItemsPerPageDropdown';
 import homeImage from '../../images/home.svg';
 import arrowRight from '../../images/arrow-right-secondary-color.svg';
-// import { getSearchWith } from '../../helpers/utils/seacrhHelper';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
-  const [itemOffset, setItemOffset] = useState(0);
+  // const [itemOffset, setItemOffset] = useState(0);
   const sort = searchParams.get('sort') || '';
-  // const pageFromSearch = searchParams.get('page') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
-  // const currentPage = +(searchParams.get('page') || 1);
   const [preparedPhones, setPreparedPhones] = useState(phones);
-  // const itemOffset = currentPage * itemsPerPage;
-  // const [page, setPage] = useState(pageFromSearch);
-
-  // console.log(pageFromSearch);
+  const page = +(searchParams.get('page') || 1);
+  // const [page, setPage] = useState(+(searchParams.get('page') || 1));
 
   useEffect(() => {
     const getSorted = () => {
@@ -63,12 +58,6 @@ export const PhonesPage: React.FC = () => {
     setPreparedPhones(newPhones);
   }, [phones, sort]);
 
-  // useEffect(() => {
-  //   if (page) {
-  //     setSearchParams(prev => ({ ...prev, page }));
-  //   }
-  // }, [page, setSearchParams, searchParams]);
-
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -90,63 +79,51 @@ export const PhonesPage: React.FC = () => {
     fetchData();
   }, [setPhones]);
 
+  // useEffect(() => {
+  //   setPage(+(searchParams.get('page') || 1));
+  // }, [searchParams]);
+
+  // const endOffset = itemOffset + itemsPerPage;
+  // const currentItems = preparedPhones.slice(itemOffset, endOffset);
+  // const pageCount = Math.ceil(phones.length / itemsPerPage);
+
+  // const handlePageClick = (event: { selected: number; }) => {
+  //   const newOffset = (event.selected * itemsPerPage) % phones.length;
+
+  //   setItemOffset(newOffset);
+  //   const newPage = event.selected + 1;
+
+  //   setSearchParams(prev => {
+  //     const newParams = new URLSearchParams(prev.toString());
+
+  //     newParams.set('page', newPage.toString());
+
+  //     return newParams;
+  //   });
+  // };
+
+  const itemOffset = (page - 1) * itemsPerPage;
+
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = preparedPhones.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(phones.length / itemsPerPage);
 
   const handlePageClick = (event: { selected: number; }) => {
-    const newOffset = (event.selected * itemsPerPage) % phones.length;
+    // const newOffset = (event.selected * itemsPerPage) % phones.length;
 
-    setItemOffset(newOffset);
+    // setItemOffset(newOffset);
     const newPage = event.selected + 1;
 
-    // setPage(newPage.toString());
-
-    // searchParams.set('page', newPage.toString());
-
-    // setSearchParams(searchParams);
+    // setPage(newPage);
 
     setSearchParams(prev => {
-      // const params = Object.fromEntries(prev.entries());
-      prev.set('page', newPage.toString());
+      const newParams = new URLSearchParams(prev.toString());
 
-      // console.log(params);
-      // console.log({ ...params, page: newPage.toString() });
+      newParams.set('page', newPage.toString());
 
-      return prev;
+      return newParams;
     });
   };
-
-  // const handlePageClick = (event: { selected: number; }) => {
-  // todo event.selected set to set state
-  // console.log(event.selected);
-  // const newOffset = (event.selected * itemsPerPage) % phones.length;
-
-  // setItemOffset(newOffset);
-
-  // const params = new URLSearchParams(searchParams);
-
-  // const newPage = event.selected + 1;
-
-  // console.log(searchParams.entries());
-
-  // setSearchParams(prev => ({ ...prev, page: newPage.toString() }));
-
-  // getSearchWith(params, { page: newPage.toString() });
-  // window.location.pathname
-  //   = getSearchWith(params, { page: newPage.toString() });
-  // };
-
-  // const handlePageClick = (event: { selected: number; }) => {
-  //   console.log(event.selected);
-  //   const params = new URLSearchParams(searchParams);
-
-  //   const newPage = event.selected + 1;
-
-  //   params.set('page', newPage.toString());
-
-  //   getSearchWith(params, { page: newPage.toString() });
-  // };
 
   return (
     <>
@@ -183,6 +160,7 @@ export const PhonesPage: React.FC = () => {
             pageCount={pageCount}
             previousLabel=""
             renderOnZeroPageCount={null}
+            initialPage={page - 1}
           />
         )}
       </div>
