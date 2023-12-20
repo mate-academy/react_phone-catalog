@@ -5,14 +5,6 @@ import ProductCard from '../ProductCard/Productcard';
 import './tablets.scss';
 import { Product } from '../ProductCard/types';
 
-interface Tablet {
-  id: string;
-  type: string;
-  name: string;
-  price: number;
-  discount?: number;
-}
-
 const debounce = <T extends (...args: any[]) => void>(
   func: T,
   delay: number,
@@ -87,8 +79,7 @@ const Tablets: React.FC = () => {
   }, []);
 
   const handleFetchError = () => {
-    // Handle fetch error, e.g., display an error message
-    console.error('Failed to fetch tablets data');
+    <p>error</p>;
   };
 
   const fetchDataDebounced = useCallback(
