@@ -16,6 +16,8 @@ interface MyContextProps {
   increaseQuantityInCart: (id: number) => void;
   removeFromCart: (id: number) => void;
   decreaseQuantityInCart: (id: number) => void;
+  error: boolean;
+  handleError: () => void;
 }
 
 const MyContext = createContext<MyContextProps | undefined>(undefined);
@@ -129,6 +131,14 @@ export const MyContextProvider: React.FC<MyContextProviderProps>
   const isInCart = (itemId: string): boolean => (
     cart.findIndex((item) => item.product.id === itemId) !== -1);
 
+  const [error, setError] = useState<boolean>(false);
+
+  const handleError = () => {
+    setError(true);
+
+    setTimeout(() => setError(false), 5000);
+  };
+
   return (
     <MyContext.Provider value={{
       products,
@@ -141,6 +151,8 @@ export const MyContextProvider: React.FC<MyContextProviderProps>
       increaseQuantityInCart,
       removeFromCart,
       decreaseQuantityInCart,
+      error,
+      handleError,
     }}
     >
       {children}

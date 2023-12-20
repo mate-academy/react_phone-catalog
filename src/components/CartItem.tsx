@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { Link } from 'react-router-dom';
 import { useMyContext } from '../context/context';
 import { CartProps } from '../helpers/Types';
 
@@ -7,7 +8,9 @@ export type CartItemProps = {
 };
 
 export const CartItem = ({ cartItem }: CartItemProps) => {
-  const { id, quantity, product } = cartItem;
+  const {
+    id, quantity, product,
+  } = cartItem;
   const {
     removeFromCart,
     decreaseQuantityInCart,
@@ -23,12 +26,17 @@ export const CartItem = ({ cartItem }: CartItemProps) => {
         onClick={() => removeFromCart(id)}
         data-cy="cartDeleteButton"
       />
-      <img
-        alt={product.id}
-        src={product.imageUrl}
-        className="cartItem__image"
-      />
-      <p className="cartItem__title BodyText">{product.name}</p>
+      <Link
+        to={`/${product.type}s/${product.id}`}
+        className="cartItem__link"
+      >
+        <img
+          alt={product.id}
+          src={product.imageUrl}
+          className="cartItem__link--image"
+        />
+        <p className="cartItem__link--title BodyText">{product.name}</p>
+      </Link>
       <div className="cartItem__quantity BodyText">
         <button
           type="button"

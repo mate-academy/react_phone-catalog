@@ -1,6 +1,7 @@
 .cartSummary {
   border: 1px solid #{$gray-border};
   grid-column: 17/25;
+  align-self: start;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,5 +20,8 @@
     height: 48px;
     display: flex;
     justify-content: center;
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
   }
 }

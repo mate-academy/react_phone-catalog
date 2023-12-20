@@ -27,7 +27,7 @@ export const ProductDetailsPage = () => {
         if (productId) {
           const detailedData = await fetchDetailsData(productId);
 
-          setProduct(detailedData);
+          setProduct(() => detailedData);
           setDownloadError(false);
         }
       } catch (error) {
@@ -35,6 +35,7 @@ export const ProductDetailsPage = () => {
       }
     };
 
+    setProduct(() => null);
     getData();
   }, [productId]);
 

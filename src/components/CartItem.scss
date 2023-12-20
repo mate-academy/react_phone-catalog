@@ -5,6 +5,10 @@
   display: flex;
   align-items: center;
   gap: 24px;
+
+  &:hover {
+    border: 1px solid #{$gray};
+  }
   &__remove-button {
     width: 24px;
     height: 24px;
@@ -16,14 +20,20 @@
       background: url('./../img/close.svg') no-repeat center;
     }
   }
-  &__image {
-    width: 66px;
-    height: 66px;
-    object-fit: contain;
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    &--image {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+    }
+    &--title {
+      width: 295px;
+    }
   }
-  &__title {
-    width: 295px;
-  }
+
   &__quantity {
     display: flex;
     align-items: center;
@@ -46,8 +56,6 @@
         border: 1px solid $gray;
         cursor: pointer;
       }
-
     }
-
   }
 }

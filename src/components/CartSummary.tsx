@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { ErrorMessage } from './ErrorMessage';
+import { useMyContext } from '../context/context';
 
 export type CartSummaryProps = {
   itemsNum: number
@@ -7,13 +6,7 @@ export type CartSummaryProps = {
 };
 
 export const CartSummary = ({ itemsNum, totalPrice }: CartSummaryProps) => {
-  const [error, setError] = useState<boolean>(false);
-
-  const handleError = () => {
-    setError(true);
-
-    setTimeout(() => setError(false), 5000);
-  };
+  const { handleError } = useMyContext();
 
   return (
     <div className="cartSummary">
@@ -31,7 +24,6 @@ export const CartSummary = ({ itemsNum, totalPrice }: CartSummaryProps) => {
       >
         Checkout
       </button>
-      {error && <ErrorMessage />}
     </div>
   );
 };
