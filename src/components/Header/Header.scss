@@ -23,4 +23,25 @@
 
     @extend %logo;
   }
+
+  &__link {
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    content: '';
+    height: 14px;
+    width: 14px;
+    background-color: $main-accent-color;
+    color: $main-bg-color;
+    border-radius: 50%;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 19px;
+    left: 33px;
+    border: 1px solid $main-bg-color;
+  }
 };

@@ -1,5 +1,20 @@
+@import './../../style/variables';
+
 .buttonCircle {
   height: 32px;
   width: 32px;
   border-radius: 50px;
+  border: none;
+  background-color: $shadow-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__color {
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    z-index: 1;
+    border: 1px solid $main-bg-color;
+  }
 }

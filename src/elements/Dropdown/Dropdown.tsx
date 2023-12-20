@@ -79,9 +79,10 @@ export const Dropdown: React.FC<Props> = ({
             <Link
               className="dropdown__link"
               onClick={() => handleClick(key as Sort)}
+              // need also delete page val
               to={{
                 search: getSearchWith({
-                  [queryName]: key,
+                  [queryName]: key, page: null,
                 }, searchParams),
               }}
             >

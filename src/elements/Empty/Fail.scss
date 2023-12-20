@@ -1,0 +1,13 @@
+@import './../../style/extends';
+
+.fail {
+  display: flex;
+  justify-content: center;
+
+  &__title {
+    @extend %h1;
+
+    margin-block: 50px;
+  }
+
+}

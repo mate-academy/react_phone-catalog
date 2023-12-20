@@ -16,20 +16,27 @@
   border: none;
   color: $main-bg-color;
   text-align: center;
+  cursor: pointer;
 
+  @include hover(background-color, $main-text-color);
 
-    @include hover(background-color, $main-text-color);
+  &--active {
+    background: $main-bg-color;
+    border: 1px solid $border-color;
 
-    &--active {
-      background: $main-bg-color;
-    }
+    @include hover(background-color, $main-bg-color);
+  }
+
+  &--longer {
+    width: 263px;
+  }
 
   &__text-active {
     color: $secondary-accent-color;
-  }
 
-  &:hover > * {
-    color: $main-bg-color;
+    &:hover {
+      color: $main-accent-color;
+    }
   }
 }
 

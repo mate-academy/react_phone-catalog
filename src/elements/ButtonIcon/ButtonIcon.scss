@@ -41,6 +41,21 @@
     border: none;
   }
 
+  &--disabled {
+    border-color: $shadow-color;
+    pointer-events: none;
+    
+    @include hover(border-color, $shadow-color);
+  }
+
+  &--link-active {
+    background-color: $main-text-color;
+
+    & > a {
+      color: $main-bg-color;
+    }
+  }
+
   &__icon-keeper {
     @include hover(transform, scale(1.1));
 
@@ -69,9 +84,13 @@
     width: 100%;
   }
 
-  &__link-active {
-    color: $main-bg-color;
-    background-color: $main-text-color;
+  &__text {
+    &--backBtn {
+      padding-left: 20px;
+      color: $secondary-text-color;
+
+      @extend %small-text
+    }
   }
 
   &__icon {

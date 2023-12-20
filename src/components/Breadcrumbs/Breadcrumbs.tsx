@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import './Breadcrumbs.scss';
 import { DetailType } from '../../helpers/types/DetailType';
+import { capitalize } from '../../helpers/utils/capitalize';
 
 type Props = {
   page: string;
@@ -21,7 +23,16 @@ export const Breadcrumbs: React.FC<Props> = ({ page, product }) => {
 
         <div className="breadcrumbs__icon" />
 
-        <p className="breadcrumbs__info">{page}</p>
+        {product ? (
+          <Link
+            to={`/${page}`}
+            className="breadcrumbs__info"
+          >
+            {capitalize(page)}
+          </Link>
+        ) : (
+          <p className="breadcrumbs__info">{capitalize(page)}</p>
+        )}
 
         {product && (
           <>

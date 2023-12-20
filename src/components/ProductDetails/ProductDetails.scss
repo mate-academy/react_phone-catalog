@@ -1,0 +1,155 @@
+@import './../../style/extends';
+
+.details {
+  &__title {
+    @extend %h1;
+
+    margin-top: 16px;
+  }
+
+  &__title-h2 {
+    @extend %h2;
+  }
+
+  &__title-h3 {
+    @extend %h3;
+
+    margin-top: 32px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 81px 65px;
+    margin-top: 40px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+
+    &--interactive {
+      flex-direction: column;
+      gap: 24px;
+      max-width: 320px;
+    }
+
+    &--images {
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--column{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &--space {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &--images {
+      gap: 16px;
+    }
+
+    &--margin-top {
+      margin-top: 16px;
+    }
+  }
+
+  &__container {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $shadow-color;
+  }
+
+  &__image-button {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #C4C4C4;
+    background-color: $main-bg-color;
+
+    &--active {
+      border-color: $main-text-color;
+    }
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    object-fit: contain;
+    border-radius: 25%;
+
+    &--big {
+      height: 464px;
+      width: 464px;
+    }
+  }
+
+  &__name {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  }
+
+  &__info {
+    @extend %small-text;
+  }
+
+  &__small-text {
+    @extend %body-text;
+
+    &--name {
+      color: $secondary-text-color;
+    }
+
+    &--article {
+      margin-top: 16px;
+    }
+  }
+
+  &__price {
+    @extend %h1;
+  }
+
+  &__fullprice {
+    margin-left: 8px;
+    font-size: 22px;
+    font-family: Mont-Regular, $fallback-fonts;
+    color: $secondary-text-color;
+    text-decoration-line: line-through;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 3px;
+  }
+
+  &__capacity {
+    @extend %body-text;
+
+    height: 32px;
+    padding: 7px 8px;
+    background-color: $main-bg-color;
+    border: 1px solid $border-color;
+    color: $main-text-color;
+
+    &--selected {
+      background-color: $main-text-color;
+      color: $main-bg-color;
+    }
+  }
+};

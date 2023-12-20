@@ -1,3 +1,5 @@
+import { Fail } from '../elements/Empty/Fail';
+
 export const NotFoundPage = () => (
-  <h1>Not Found Page</h1>
+  <Fail title="Page not found" />
 );

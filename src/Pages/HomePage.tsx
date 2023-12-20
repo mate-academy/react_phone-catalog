@@ -30,11 +30,11 @@ export const HomePage: React.FC = () => {
 
   return (
     <main className="page">
-      <section className="page__section section section--picture-slider">
+      <section className="page__section">
         <PicturesSlider />
       </section>
 
-      <section className="page__section section section--hot-prices ">
+      <section className="page__section">
 
         <ProductSlider title="Hot prices">
           {hotProducts.map(prod => (
@@ -45,7 +45,7 @@ export const HomePage: React.FC = () => {
         </ProductSlider>
       </section>
 
-      <section className="page__section section section--shop-by-categories">
+      <section className="page__sections">
         <h2 className="page__title-h2">Shop by category</h2>
         <div className="page__categiries">
           {categoryImages.map(image => (
@@ -54,7 +54,7 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section className="page__section section section--new-models">
+      <section className="page__section">
         <div>
           <ProductSlider title="Brand new models">
             {newProducts.map(prod => (

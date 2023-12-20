@@ -1,0 +1,44 @@
+@import './../../style/extends';
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  height: 128px;
+  border: 1px solid $shadow-color;
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 31px;
+
+    &--right {
+      gap: 43px;
+      margin-right: 40px;
+    }
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    object-fit: contain;
+  }
+
+  &__name {
+    @extend %body-text;
+  }
+
+  &__increment {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__count {
+    @extend %body-text;
+  }
+}

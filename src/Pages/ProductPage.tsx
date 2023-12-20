@@ -6,7 +6,6 @@ import { Dropdown } from '../elements/Dropdown/Dropdown';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Loader } from '../elements/Loader/Loader';
-import { NoSearchResults } from '../elements/NoSearchResults/NoSearchResults';
 import './Page.scss';
 import { getProductsByKey, getProductsByQuery } from '../helpers/utils/getFilteredProducts';
 import { ProductType } from '../helpers/types/ProductType';
@@ -14,6 +13,8 @@ import { getProductsByCategory } from '../helpers/utils/api';
 import { Sort, getSortedProducts } from '../helpers/utils/getSortedProducts';
 import { namedSortOptions, pageSortOptions } from '../helpers/utils/constants';
 import { Pagination } from '../elements/Pagination/Pagination';
+import { capitalize } from '../helpers/utils/capitalize';
+import { Fail } from '../elements/Empty/Fail';
 
 type Props = {
   product: string;
@@ -46,8 +47,6 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
 
   const visibleProductsOnPage = visibleProducts.slice(IndexOfFirstVisibleItem, IndexOfFirstVisibleItem + (+perPage));
 
-  const productCapitalName = product[0].toUpperCase() + product.slice(1);
-
   const handleSortClick = (key?: Sort) => {
     if (!key) {
       return;
@@ -74,18 +73,19 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
 
   return (
     <main className="page">
-      <Breadcrumbs page={productCapitalName} />
-      <h1 className="page__title title title--h1">
-        {product === 'phones' ? `Mobile ${product}` : productCapitalName}
-      </h1>
+      <Breadcrumbs page={capitalize(product)} />
       {isLoading ? (
         <Loader />
       ) : (
         <>
           {visibleProducts.length === 0 ? (
-            <NoSearchResults />
+            <Fail title={`${capitalize(product)} not found`} />
           ) : (
             <>
+              <h1 className="page__title-h1 page__title-h1--product">
+                {product === 'phones' ? `Mobile ${product}` : capitalize(product)}
+              </h1>
+
               <p className="page__prodCount">
                 {visibleProducts.length > 1
                   ? `${visibleProducts.length} models`

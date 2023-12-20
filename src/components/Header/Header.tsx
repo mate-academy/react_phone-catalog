@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 import { NavBar } from '../NavBar/NavBar';
 import { Search } from '../Search/Search';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
+import { ProductsContext } from '../../store/ProductsContext';
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
+  const { favoriteProducts, cartedProducts } = useContext(ProductsContext);
   const curPage = pathname.split('/')[1];
   const shouldSearch = curPage === 'phones'
     || curPage === 'tablets'
@@ -27,19 +29,31 @@ export const Header: React.FC = () => {
         <div className="header__icons">
           {shouldSearch && (<Search page={curPage} />)}
 
-          <ButtonIcon
-            type="event"
-            shape="heart"
-            path="/"
-            dynamicClasses={['shadow', 'big']}
-          />
+          <div className="header__link">
+            <ButtonIcon
+              type="link"
+              shape="heart"
+              path="favourites"
+              dynamicClasses={['shadow', 'big']}
+            />
 
-          <ButtonIcon
-            type="event"
-            shape="cart"
-            path="/"
-            dynamicClasses={['shadow', 'big']}
-          />
+            {favoriteProducts.length > 0 && (
+              <div className="header__counter">{favoriteProducts.length}</div>
+            )}
+          </div>
+
+          <div className="header__link">
+            <ButtonIcon
+              type="link"
+              shape="cart"
+              path="cart"
+              dynamicClasses={['shadow', 'big']}
+            />
+
+            {cartedProducts.length > 0 && (
+              <div className="header__counter">{cartedProducts.length}</div>
+            )}
+          </div>
         </div>
       </div>
     </header>

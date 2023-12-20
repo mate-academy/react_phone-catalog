@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../store/ProductsContext';
 import { getProductsByKey } from '../../helpers/utils/getFilteredProducts';
 import './Category.scss';
+import { capitalize } from '../../helpers/utils/capitalize';
 
 type Props = {
   image: string;
@@ -10,9 +11,9 @@ type Props = {
 
 export const Category: React.FC<Props> = ({ image }) => {
   const { products } = useContext(ProductsContext);
-  const category = image.slice(image.lastIndexOf('-') + 1, image.indexOf('.'));
-  const capitalCategory = category
-    .slice(0, 1).toUpperCase() + category.slice(1);
+  const category = image.slice(
+    image.lastIndexOf('-') + 1, image.lastIndexOf('.'),
+  );
 
   const productsInCategory = getProductsByKey(products, 'category', category);
 
@@ -24,7 +25,7 @@ export const Category: React.FC<Props> = ({ image }) => {
         className="category__img"
       />
 
-      <h3 className="category__title">{capitalCategory}</h3>
+      <h3 className="category__title">{capitalize(category)}</h3>
       <p className="category__count">
         {productsInCategory.length > 0 ? (
           `${productsInCategory.length} models`

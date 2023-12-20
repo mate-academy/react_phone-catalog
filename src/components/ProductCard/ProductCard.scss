@@ -7,9 +7,11 @@
   flex-direction: column;
   justify-content: center;
   border: 1px solid $shadow-color;
-  width: 272px;
-  text-decoration: none;
-  color: $main-text-color;
+
+  &__link {
+    text-decoration: none;
+    color: $main-text-color;
+  }
 
   &__image-container {
     margin: 32px 32px 0;
@@ -70,6 +72,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: 16px;
   }
 
   &__detail {
