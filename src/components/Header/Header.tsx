@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {
   useState,
   useEffect,
@@ -102,7 +103,9 @@ export const Header = () => {
     window.clearTimeout(timerId.current);
 
     timerId.current = window.setTimeout(() => {
-      if (params.has('query') && !val) {
+      const keywords = val.split(' ');
+
+      if (params.has('query') && keywords.length === 0) {
         params.delete('query');
         setSearchParams(params);
 
@@ -113,7 +116,10 @@ export const Header = () => {
         params.set('page', '1');
       }
 
-      params.set('query', val);
+      keywords.forEach(keyword => {
+        params.set('query', keyword);
+      });
+
       setSearchParams(params);
     }, 500);
   };

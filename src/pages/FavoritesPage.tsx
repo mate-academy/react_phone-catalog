@@ -42,7 +42,7 @@ export const FavoritesPage = () => {
           </p>
         </div>
         <div className="phones-page_top" style={{ marginBottom: '40px' }}>
-          <h1 className="phones-page_title body-title-style">Favourites</h1>
+          <h1 className="phones-page_title page-title-style">Favourites</h1>
           <p
             className="body-text-style"
             style={{ color: inlineStyles.colors.secondaryColor }}
