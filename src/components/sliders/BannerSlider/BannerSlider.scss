@@ -1,0 +1,44 @@
+#banner__slider {
+  max-width: 1124px;
+  margin: 40px auto;
+
+  .splide__arrow {
+    border-radius: 0;
+    height: 100%;
+    border: 1px solid #b4bdc3;
+    background: white;
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+
+  .splide__pagination {
+    bottom: -8px;
+    transform: translateY(100%);
+  }
+
+  .splide__pagination__page {
+    border-radius: 0;
+    height: 5px;
+    width: 20px;
+    background: #b4bdc3;
+    margin: 0 7px;
+
+    &.is-active {
+      background: black;
+    }
+  }
+
+  .splide__slide {
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,44 @@
+.category {
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+  }
+
+  &__list {
+    margin-top: 24px;
+    display: flex;
+  }
+
+  &__item {
+    &-title {
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 20px;
+      margin-top: 24px;
+      color: #313237;
+    }
+
+    &-img:hover {
+      transform: scale(1.05);
+    }
+
+    & img {
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    &-amount {
+      margin-top: 8px;
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 14px;
+      color: #89939a;
+    }
+
+    &-link {
+      display: block;
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 16px;
+  }
+}

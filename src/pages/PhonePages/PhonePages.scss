@@ -1,0 +1,41 @@
+.mobile {
+  margin-top: 40px;
+
+  &__container {
+    margin: 25px 0 80px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 32px;
+    color: #313237;
+    font-family: "Mont-Bold", sans-serif;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: #89939a;
+    font-family: "Mont-Regular", sans-serif;
+    margin-top: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__dropdown {
+    display: flex;
+
+    > :first-child {
+      width: 176px;
+    }
+  }
+}
+
+.dropdown:last-child {
+  margin-left: 10px;
+}

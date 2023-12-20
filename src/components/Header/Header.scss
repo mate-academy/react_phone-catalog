@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 25px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    display: inline-block;
+    margin-right: 60px;
+    line-height: 0;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__icon {
+    border-left: 1px solid #dbdbdb;
+    line-height: 0;
+    display: inline-block;
+
+    &-basket,
+    &-favorite {
+      padding: 25px;
+      height: 100%;
+    }
+  }
+}
+
+.navbar {
+  &__list {
+    &-item {
+      position: relative;
+      font-family: "Mont-Bold", sans-serif;
+      font-size: 12px;
+      color: #89939a;
+      padding: 25px 0;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: 0.3s;
+
+      &:hover {
+        color: #313237;
+      }
+
+      &:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: #313237;
+      }
+
+      &.is-active::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: #313237;
+      }
+    }
+
+    &-item:not(:last-child) {
+      margin-right: 60px;
+    }
+  }
+}
