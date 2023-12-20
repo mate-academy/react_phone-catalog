@@ -112,7 +112,7 @@ export const Header = () => {
          )}
         <NavLink
           to="/favorites"
-          className={getNavLinkActive('navbar__favourites')}
+          className={getNavLinkActive('navbar__favourites navbar__link--item')}
         >
           <img
             alt="favorites"
@@ -128,7 +128,7 @@ export const Header = () => {
 
         <NavLink
           to="/cart"
-          className={getNavLinkActive('navbar__cart')}
+          className={getNavLinkActive('navbar__cart navbar__link--item')}
         >
           <img
             alt="cart"
