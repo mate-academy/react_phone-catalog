@@ -1,7 +1,68 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, {
+  useState, useEffect, ChangeEvent, useCallback,
+} from 'react';
 import ProductCard from '../ProductCard/Productcard';
 import './tablets.scss';
 import { Product } from '../ProductCard/types';
+
+interface Tablet {
+  id: string;
+  type: string;
+  name: string;
+  price: number;
+  discount?: number;
+}
+
+const debounce = <T extends (...args: any[]) => void>(
+  func: T,
+  delay: number,
+): ((...args: Parameters<T>) => void) => {
+  let timeoutId: NodeJS.Timeout;
+
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => func(...args), delay);
+  };
+};
+
+const fetchData = async (): Promise<Product[]> => {
+  const response = await fetch(
+    'https://mate-academy.github.io/react_phone-catalog/api/products.json',
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
+  }
+
+  const data: Product[] = await response.json();
+
+  return data;
+};
+
+const filterTablets = (data: Product[], searchInput: string): Product[] => {
+  return data.filter((tablet) => tablet.type === 'tablet'
+    && tablet.name.toLowerCase().includes(searchInput.toLowerCase()));
+};
+
+const calculateProductCounts = (data: Product[]): {
+  tablets: number; phones: number; accessories: number
+} => {
+  return data.reduce((acc, item) => {
+    if (item.type === 'tablet') {
+      return { ...acc, tablets: acc.tablets + 1 };
+    }
+
+    if (item.type === 'phone') {
+      return { ...acc, phones: acc.phones + 1 };
+    }
+
+    if (item.type === 'accessory') {
+      return { ...acc, accessories: acc.accessories + 1 };
+    }
+
+    return acc;
+  }, { tablets: 0, phones: 0, accessories: 0 });
+};
 
 const Tablets: React.FC = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -25,42 +86,35 @@ const Tablets: React.FC = () => {
     setFavoriteProducts(storedFavorites);
   }, []);
 
-  useEffect(() => {
-    fetch(
-      'https://mate-academy.github.io/react_phone-catalog/api/products.json',
-    )
-      .then((response) => response.json())
-      .then((data: Product[]) => {
+  const handleFetchError = () => {
+    // Handle fetch error, e.g., display an error message
+    console.error('Failed to fetch tablets data');
+  };
+
+  const fetchDataDebounced = useCallback(
+    debounce(async () => {
+      try {
+        const data = await fetchData();
         const tabletProducts = data.filter(
           (product: Product) => product.type === 'tablet',
         );
-        const filteredTablets = tabletProducts.filter((
-          tablet: Product,
-        ) => tablet.name.toLowerCase().includes(searchInput.toLowerCase()));
+        const filteredTablets = filterTablets(tabletProducts, searchInput);
 
         setTablets(filteredTablets);
 
-        const counts = data.reduce(
-          (acc, item) => {
-            const updatedAcc = { ...acc };
-
-            if (item.type === 'tablet') {
-              updatedAcc.tablets += 1;
-            } else if (item.type === 'phone') {
-              updatedAcc.phones += 1;
-            } else if (item.type === 'accessory') {
-              updatedAcc.accessories += 1;
-            }
-
-            return updatedAcc;
-          },
-          { tablets: 0, phones: 0, accessories: 0 },
-        );
+        const counts = calculateProductCounts(data);
 
         setProductCounts(counts);
-      })
-      .catch((error) => setProductCounts(error));
-  }, [searchInput]);
+      } catch (error) {
+        handleFetchError();
+      }
+    }, 500),
+    [searchInput],
+  );
+
+  useEffect(() => {
+    fetchDataDebounced();
+  }, [fetchDataDebounced]);
 
   const handleAddToFavorite = (productId: string) => {
     if (!favoriteProducts.includes(productId)) {
@@ -110,6 +164,8 @@ const Tablets: React.FC = () => {
     return { startIndex, endIndex };
   };
 
+  const shouldRenderPagination = Math.ceil(tablets.length / itemsPerPage) > 1;
+
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(
       prevPage + 1, Math.ceil(tablets.length / itemsPerPage),
@@ -122,7 +178,6 @@ const Tablets: React.FC = () => {
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
-    setCurrentPage(1);
   };
 
   return (
@@ -198,33 +253,35 @@ const Tablets: React.FC = () => {
           />
         ))}
       </div>
-      <div className="slider-holder">
-        <button
-          className="slider-button left"
-          onClick={handlePrevPage}
-          type="button"
-          aria-label="Previous Page"
-        />
-        {Array.from({
-          length: Math.ceil(tablets.length / itemsPerPage),
-        }, (_, index) => index + 1).map((page) => (
+      {shouldRenderPagination && (
+        <div className="slider-holder">
           <button
-            className={`slider-button ${currentPage === page ? 'selected' : ''}`}
-            key={page}
-            onClick={() => handlePageChange(page)}
+            className="slider-button left"
+            onClick={handlePrevPage}
             type="button"
-            aria-label={`Go to Page ${page}`}
-          >
-            {page}
-          </button>
-        ))}
-        <button
-          className="slider-button right"
-          onClick={handleNextPage}
-          type="button"
-          aria-label="Next Page"
-        />
-      </div>
+            aria-label="Previous Page"
+          />
+          {Array.from({
+            length: Math.ceil(tablets.length / itemsPerPage),
+          }, (_, index) => index + 1).map((page) => (
+            <button
+              className={`slider-button ${currentPage === page ? 'selected' : ''}`}
+              key={page}
+              onClick={() => handlePageChange(page)}
+              type="button"
+              aria-label={`Go to Page ${page}`}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            className="slider-button right"
+            onClick={handleNextPage}
+            type="button"
+            aria-label="Next Page"
+          />
+        </div>
+      )}
     </>
   );
 };

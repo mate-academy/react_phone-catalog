@@ -54,6 +54,7 @@ export const Categories = () => {
           <h3 className="category-name">Mobile Phones</h3>
           <p className="category-counter">
             {productCounts.phones}
+            {' '}
             models
           </p>
         </NavLink>
@@ -67,6 +68,7 @@ export const Categories = () => {
           <h3 className="category-name">Tablets</h3>
           <p className="category-counter">
             {productCounts.tablets}
+            {' '}
             models
           </p>
         </NavLink>
@@ -80,6 +82,7 @@ export const Categories = () => {
           <h3 className="category-name">Accessories</h3>
           <p className="category-counter">
             {productCounts.accessories}
+            {' '}
             models
           </p>
         </NavLink>
