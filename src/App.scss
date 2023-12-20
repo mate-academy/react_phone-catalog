@@ -1,24 +1,25 @@
 @font-face {
-  font-family: 'Mont'; /* Название шрифта, которое вы будете использовать в своем CSS */
-  src: url('/fonts/Mont-Bold.otf') format('opentype'), /* Замените на путь к вашему WOFF2-файлу */
-  /* Дополнительные форматы шрифта, если нужно (например, для поддержки старых браузеров) */
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Mont'; /* Название шрифта, которое вы будете использовать в своем CSS */
-  src: url('/fonts/Mont-Regular.otf') format('opentype'), /* Замените на путь к вашему WOFF2-файлу */
-  /* Дополнительные форматы шрифта, если нужно (например, для поддержки старых браузеров) */
+  font-family: 'Mont';
+  src: url('/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 500;
 }
+
 @font-face {
-  font-family: 'Mont'; /* Название шрифта, которое вы будете использовать в своем CSS */
-  src: url('/fonts/Mont-SemiBold.otf') format('opentype'), /* Замените на путь к вашему WOFF2-файлу */
-  /* Дополнительные форматы шрифта, если нужно (например, для поддержки старых браузеров) */
+  font-family: 'Mont';
+  src: url('/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 600;
 }
 
 body {
-  font-family: 'Mont', sans-serif; /* Используйте название шрифта, указанное в @font-face */
+  font-family: 'Mont', sans-serif;
+}
 
-  iframe{
-    display: none;
-  }
+iframe {
+  display: none;
 }

@@ -78,16 +78,12 @@ const Phones: React.FC = () => {
     setFavoriteProducts(storedFavorites);
   }, []);
 
-  useEffect(() => {
-    const handleFetchError = () => {
-      ('Error fetching or processing data:');
-      // Handle the error here, such as showing a user-friendly error message
-      // or performing other actions as needed.
-      // For example, you could set an error state to display an error message in your component.
-      // setErrorState('An error occurred while fetching data.');
-    };
+  const handleFetchError = () => {
+    <p>Loading error.</p>;
+  };
 
-    const fetchDataAndSetState = async () => {
+  const fetchDataDebounced = useCallback(
+    debounce(async () => {
       try {
         const data = await fetchData();
         const phoneProducts = data.filter(
@@ -100,13 +96,16 @@ const Phones: React.FC = () => {
 
         setProductCounts(counts);
       } catch (error) {
-        // Log the error or handle it in a way that aligns with your application's strategy
         handleFetchError();
       }
-    };
+    }, 500),
+    [searchInput],
+  );
 
-    fetchDataAndSetState();
-  }, [searchInput]);
+  useEffect(() => {
+    fetchDataDebounced();
+  }, [fetchDataDebounced]);
+
   const handleAddToFavorite = (productId: string) => {
     if (!favoriteProducts.includes(productId)) {
       const updatedFavorites = [...favoriteProducts, productId];
@@ -170,22 +169,10 @@ const Phones: React.FC = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
-  // Debounced search input handler
-  const handleSearchInputChangeDebounced = useCallback(
-    debounce((value: string) => {
-      setSearchInput(value);
-      setCurrentPage(1);
-    }, 80), // Set the debounce delay (e.g., 300 milliseconds)
-    [],
-  );
-
   const handleSearchInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const { value } = e.target;
-
-    // Call the debounced handler with the input value
-    handleSearchInputChangeDebounced(value);
+    setSearchInput(e.target.value);
   };
 
   return (
