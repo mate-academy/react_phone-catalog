@@ -1,5 +1,16 @@
+@import "../../styles/utils/mixins";
+
 .carousel {
-  width: 1160px;
+  margin: 0 auto;
+  width: 580px;
+
+  @include on1280 {
+    width: 870px;
+  }
+
+  @include on1440 {
+    width: 1160px;
+  }
 
   &__product-list {
     margin: 0;

@@ -24,13 +24,11 @@ export const Pagination: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
 
   const handlePrevPage = () => {
-    setSearchWith({ page: +page - 1 || null });
     moveToUp();
+    setSearchWith({ page: +page - 1 || null });
   };
 
   const handlePage = (Page: number) => {
-    moveToUp();
-
     return (
       {
         search: getSearchWith(
@@ -42,8 +40,8 @@ export const Pagination: React.FC<Props> = ({
   };
 
   const handleNextPage = () => {
-    setSearchWith({ page: +page + 1 || null });
     moveToUp();
+    setSearchWith({ page: +page + 1 || null });
   };
 
   const pages = getPages(1, Math.ceil(visibleProducts.length / +perPage));
@@ -58,11 +56,21 @@ export const Pagination: React.FC<Props> = ({
           <button
             type="button"
             data-cy="paginationLeft"
-            className="pagination__pagination-button"
+            className={
+              +page <= 1
+                ? 'pagination__disabled-pagination-button'
+                : 'pagination__pagination-button'
+            }
             onClick={handlePrevPage}
             disabled={+page <= 1}
           >
-            <div className="icon icon--arrow-left" />
+            <div
+              className={
+                +page <= 1
+                  ? 'icon icon--arrow-left-disabled'
+                  : 'icon icon--arrow-left'
+              }
+            />
           </button>
         </li>
 
@@ -71,6 +79,7 @@ export const Pagination: React.FC<Props> = ({
             <li key={Page} className="pagination__pagination-item">
               <Link
                 to={handlePage(Page)}
+                onClick={moveToUp}
                 className={
                   classNames(
                     'pagination__pagination-link',
@@ -92,11 +101,21 @@ export const Pagination: React.FC<Props> = ({
           <button
             type="button"
             data-cy="paginationRight"
-            className="pagination__pagination-button"
+            className={
+              +page >= pages.length
+                ? 'pagination__disabled-pagination-button'
+                : 'pagination__pagination-button'
+            }
             onClick={handleNextPage}
             disabled={+page >= pages.length}
           >
-            <div className="icon icon--arrow-right" />
+            <div
+              className={
+                +page >= pages.length
+                  ? 'icon icon--arrow-right-disabled'
+                  : 'icon icon--arrow-right'
+              }
+            />
           </button>
         </li>
       </ul>

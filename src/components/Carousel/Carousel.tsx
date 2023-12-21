@@ -1,18 +1,29 @@
+import { useEffect, useRef } from 'react';
 import { TechProduct } from '../../types/TechProduct';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { useContainerDimensions } from '../../helpers/widthCarousel';
 import './Carousel.scss';
 
 type Props = {
   movingCarousel: number,
   phones: TechProduct[],
+  setWidthCarousel: (width: number) => void,
 };
 
 export const Carousel: React.FC<Props> = ({
   movingCarousel,
   phones,
+  setWidthCarousel,
 }) => {
+  const carouselBlock = useRef(null);
+  const { width } = useContainerDimensions(carouselBlock);
+
+  useEffect(() => {
+    setWidthCarousel(width);
+  }, [width]);
+
   return (
-    <div className="carousel">
+    <div ref={carouselBlock} className="carousel">
       <ul className="carousel__product-list">
         {
           phones.map((phone) => {

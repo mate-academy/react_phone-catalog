@@ -1,5 +1,13 @@
 .logo {
   &__image {
-    height: 24px;
+    height: 18px;
+
+    @include on1280 {
+      height: 20px;
+    }
+
+    @include on1440 {
+      height: 24px;
+    }
   }
 }

@@ -1,5 +1,11 @@
 .grid-cover {
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   column-gap: 16px;
+
+  @include on1280 {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+  }
 }

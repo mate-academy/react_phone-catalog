@@ -1,29 +1,50 @@
 @import "../../styles/utils/vars";
+@import  "../../styles/utils/mixins";
 
 .cart {
-  grid-column: 1 / 25;
   margin-bottom: 87px;
+  grid-column: 1 / 13;
+
+  @include on1280 {
+    grid-column: 1 / 25;
+  }
 
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   column-gap: 16px;
 
+  @include on1280 {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
   &__left-block {
-    grid-column: 1 / 17;
+    grid-column: 1 / 13;
+
+    @include on1280 {
+      grid-column: 1 / 17;
+    }
 
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
     column-gap: 16px;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include on1280 {
+      grid-template-columns: repeat(16, 1fr);
+    }
   }
 
   &__cart-block {
-    grid-column: 1 / 17;
     border: 1px solid $light-gray;
     padding: 24px 40px 24px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    grid-column: 1 / 13;
+
+    @include on1280 {
+      grid-column: 1 / 17;
+    }
 
     &:last-child {
       margin: 0;
@@ -106,12 +127,16 @@
   }
 
   &__right-block {
-    grid-column: 17 / 25;
     border: 1px solid $light-gray;
     margin: 0 0 auto;
     padding: 24px;
     display: flex;
     flex-direction: column;
+    grid-column: 1 / 13;
+
+    @include on1280 {
+      grid-column: 17 / 25;
+    }
   }
 
   &__total-price-block {

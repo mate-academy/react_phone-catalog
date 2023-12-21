@@ -1,25 +1,41 @@
 @import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
 
 .selected-product {
   margin-bottom: 80px;
 
   &__title {
-    grid-column: 1 / 18;
     margin: 0 0 40px;
     font-size: 32px;
     letter-spacing: -0.32px;
+    grid-column: 1 / 13;
+
+    @include on1280 {
+      grid-column: 1 / 18;
+    }
   }
 
   &__photo-info-product-container {
-    grid-column: 1 / 25;
+    grid-column: 1 / 13;
+
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     column-gap: 16px;
     margin-bottom: 80px;
+
+    @include on1280 {
+      grid-column: 1 / 25;
+      grid-template-columns: repeat(24, 1fr);
+    }
   }
 
   &__left-block {
     grid-column: 1 / 13;
+    margin-bottom: 75px;
+
+    @include on1280 {
+      margin: 0;
+    }
 
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -27,7 +43,11 @@
   }
 
   &__mini-images-container {
-    grid-column: 1 / 3;
+    grid-column: 2 / 3;
+
+    @include on1280 {
+      grid-column: 1 / 3;
+    }
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -55,7 +75,11 @@
   }
 
   &__big-image-container {
-    grid-column: 4 / 11;
+    grid-column: 3 / 10;
+
+    @include on1280 {
+      grid-column: 4 / 11;
+    }
 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -73,7 +97,11 @@
   }
 
   &__right-block {
-    grid-column: 14 / 25;
+    grid-column: 1 / 13;
+
+    @include on1280 {
+      grid-column: 14 / 25;
+    }
 
     display: grid;
     grid-template-columns: repeat(11, 1fr);
@@ -82,11 +110,18 @@
   }
 
   &__colors-id-container {
-    grid-column: 1 / 12;
+    grid-column: 2 / 10;
 
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
+
+    @include on1280 {
+      grid-column: 1 / 12;
+      margin-bottom: 8px;
+    }
+
+    
   }
 
   &__colors-id-title {
@@ -98,7 +133,11 @@
 
   &__color-images-container {
     margin-bottom: 24px;
-    grid-column: 1 / 12;
+    grid-column: 2 / 10;
+
+    @include on1280 {
+      grid-column: 1 / 12;
+    }
   }
 
   &__colors-list {
@@ -140,7 +179,11 @@
 
   &__capacities-container {
     margin-bottom: 30px;
-    grid-column: 1 / 12;
+    grid-column: 2 / 10;
+
+    @include on1280 {
+      grid-column: 1 / 12;
+    }
   }
 
   &__capacity-title {
@@ -175,13 +218,17 @@
   }
 
   &__price-container {
-    grid-column: 1 / 5;
-
+    grid-column: 4 / 8;
+    margin-bottom: 25px;
     display: flex;
     column-gap: 8px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
+    
+    @include on1280 {
+      grid-column: 1 / 5;
+      margin-bottom: 16px;
+    }
   }
 
   &__price {
@@ -201,11 +248,14 @@
   }
 
   &__buttons-container {
-    grid-column: 1 / 8;
-
+    grid-column: 3 / 9;
     display: flex;
     column-gap: 8px;
     margin-bottom: 32px;
+
+    @include on1280 {
+      grid-column: 1 / 8;
+    }
   }
 
   &__button-add-to-cart {
@@ -234,7 +284,11 @@
   }
 
   &__charachters-container {
-    grid-column: 1 / 8;
+    grid-column: 3 / 9;
+
+    @include on1280 {
+      grid-column: 1 / 8;
+    }
 
     &--tech-specs {
       grid-column: 1 / 12;
@@ -254,32 +308,54 @@
   &__character-title {
     margin: 0;
     color: $silver;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
 
+    @include on1280 {
+      font-size: 12px;
+    }
+
     &--tech-specs {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
+
+      @include on1280 {
+        font-size: 14px;
+      }
     }
   }
 
   &__character {
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
 
+    @include on1280 {
+      font-size: 12px;
+    }
+
     &--tech-specs {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
+
+      @include on1280 {
+        font-size: 14px;
+      }
     }
   }
 
   &__more-info-about-product-container {
-    grid-column: 1 / 25;
+    grid-column: 1 / 13;
+
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     column-gap: 16px;
     margin-bottom: 80px;
+
+    @include on1280 {
+      grid-column: 1 / 25;
+      grid-template-columns: repeat(24, 1fr);
+    }
   }
 
   &__about-title {

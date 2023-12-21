@@ -81,6 +81,8 @@ export const SelectedProduct: React.FC<Props> = ({
   const [bigImageSelectProduct, setBigImageSelectProduct] = useState(images[0]);
 
   const [movingCarouselAlsoLike, setMovingCarouselAlsoLike] = useState(0);
+  const [widthCarousel, setWidthCarousel] = useState(0);
+  const endCarousel = productsAlsoLike.length - widthCarousel / 290;
 
   const getLinkClassColor = ({ isActive }:{ isActive: boolean }) => {
     return cn(
@@ -467,64 +469,66 @@ export const SelectedProduct: React.FC<Props> = ({
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="also-like__title-arrows-container">
-          <h1 className="also-like__title">
-            You may also like
-          </h1>
+      <div className="also-like__title-arrows-container">
+        <h1 className="also-like__title">
+          You may also like
+        </h1>
 
-          <div className="carousel-buttons">
-            <button
-              type="button"
+        <div className="carousel-buttons">
+          <button
+            type="button"
+            className={
+              !movingCarouselAlsoLike
+              // eslint-disable-next-line
+                ? 'carousel-buttons__arrow-disabled carousel-buttons__arrow-disabled--left'
+                : 'carousel-buttons__arrow carousel-buttons__arrow--left'
+            }
+            onClick={() => clickInPrev(
+              movingCarouselAlsoLike,
+              setMovingCarouselAlsoLike,
+            )}
+          >
+            <div
               className={
                 !movingCarouselAlsoLike
-                // eslint-disable-next-line
-                  ? 'carousel-buttons__arrow-disabled carousel-buttons__arrow-disabled--left'
-                  : 'carousel-buttons__arrow carousel-buttons__arrow--left'
+                  ? 'icon icon--arrow-left-disabled'
+                  : 'icon icon--arrow-left'
               }
-              onClick={() => clickInPrev(
-                movingCarouselAlsoLike,
-                setMovingCarouselAlsoLike,
-              )}
-            >
-              <div
-                className={
-                  !movingCarouselAlsoLike
-                    ? 'icon icon--arrow-left-disabled'
-                    : 'icon icon--arrow-left'
-                }
-              />
-            </button>
+            />
+          </button>
 
-            <button
-              type="button"
+          <button
+            type="button"
+            className={
+              movingCarouselAlsoLike === endCarousel
+              // eslint-disable-next-line
+                ? 'carousel-buttons__arrow-disabled carousel-buttons__arrow-disabled--right'
+                : 'carousel-buttons__arrow carousel-buttons__arrow--right'
+            }
+            onClick={() => clickInNext(
+              movingCarouselAlsoLike,
+              setMovingCarouselAlsoLike,
+              productsAlsoLike.length,
+              widthCarousel / 290,
+            )}
+          >
+            <div
               className={
-                movingCarouselAlsoLike === productsAlsoLike.length - 4
-                // eslint-disable-next-line
-                  ? 'carousel-buttons__arrow-disabled carousel-buttons__arrow-disabled--right'
-                  : 'carousel-buttons__arrow carousel-buttons__arrow--right'
+                movingCarouselAlsoLike === endCarousel
+                  ? 'icon icon--arrow-right-disabled'
+                  : 'icon icon--arrow-right'
               }
-              onClick={() => clickInNext(
-                movingCarouselAlsoLike,
-                setMovingCarouselAlsoLike,
-                productsAlsoLike.length,
-              )}
-            >
-              <div
-                className={
-                  movingCarouselAlsoLike === productsAlsoLike.length - 4
-                    ? 'icon icon--arrow-right-disabled'
-                    : 'icon icon--arrow-right'
-                }
-              />
-            </button>
-          </div>
+            />
+          </button>
         </div>
       </div>
 
       <Carousel
         movingCarousel={movingCarouselAlsoLike}
         phones={productsAlsoLike}
+        setWidthCarousel={setWidthCarousel}
       />
     </div>
   );

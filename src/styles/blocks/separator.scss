@@ -8,12 +8,20 @@
 
   &--under-phone-colors {
     margin-bottom: 24px;
-    grid-column: 1 / 8;
+    grid-column: 2 / 10;
+
+    @include on1280 {
+      grid-column: 1 / 8;
+    }
   }
 
   &--under-phone-capacities {
     margin-bottom: 32px;
-    grid-column: 1 / 8;
+    grid-column: 2 / 10;
+
+    @include on1280 {
+      grid-column: 1 / 8;
+    }
   }
 
   &--under-title-about {

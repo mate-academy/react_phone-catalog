@@ -43,6 +43,16 @@
     }
   }
 
+  &__disabled-pagination-button {
+    border: 1px solid $gray;
+    background-color: $white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__pagination-link {
     padding: 7px 14px;
     cursor: pointer;

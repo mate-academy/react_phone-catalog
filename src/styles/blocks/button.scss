@@ -24,5 +24,12 @@
 
   &--checkout {
     height: 48px;
+    width: 50%;
+    margin: 0 auto;
+
+    @include on1280 {
+      width: 100%;
+      margin: 0;
+    }
   }
 }

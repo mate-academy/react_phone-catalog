@@ -7,27 +7,48 @@
 
   &__block-category {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     column-gap: 16px;
 
+    @include on1280 {
+      grid-template-columns: repeat(8, 1fr);
+      column-gap: 16px;
+    }
+
     &--phones {
-      grid-column: 1 / 9;
+      grid-column: 1 / 5;
+
+      @include on1280 {
+        grid-column: 1 / 9;
+      }
     }
 
     &--tablets {
-      grid-column: 9 / 17;
+      grid-column: 5 / 9;
+
+      @include on1280 {
+        grid-column: 9 / 17;
+      }
     }
 
     &--accessories {
-      grid-column: 17 / 25;
+      grid-column: 9 / 13;
+
+      @include on1280 {
+        grid-column: 17 / 25;
+      }
     }
   }
 
   &__category {
     overflow: hidden;
     margin-bottom: 24px;
-    grid-column: 1 / 9;
     transition: transform 0.3s;
+    grid-column: 1 / 5;
+
+    @include on1280 {
+      grid-column: 1 / 9;
+    }
 
     &--phones {
       background-color: #fcdbc1;
@@ -49,10 +70,14 @@
   &__image-container {
     position: relative;
     background-repeat: no-repeat;
-    padding-bottom: 368px;
+    padding-bottom: 250px;
+
+    @include on1280 {
+      padding-bottom: 368px;
+    }
 
     &--phones {
-      top: 30px;
+      top: 40px;
       left: 70px;
       background-position: center;
       background-size: cover;
@@ -60,7 +85,7 @@
     }
 
     &--tablets {
-      top: 60px;
+      top: 80px;
       left: 20px;
       background-position: left;
       background-size: 120%;
@@ -68,7 +93,7 @@
     }
 
     &--accessories {
-      top: 30px;
+      top: 40px;
       left: 45px;
       background-position: 7%;
       background-size: 190%;

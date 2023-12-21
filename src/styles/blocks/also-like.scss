@@ -1,17 +1,21 @@
 .also-like {
   &__title-arrows-container {
-    grid-column: 1 / 25;
-    margin-bottom: 24px;
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: space-between;
+    width: 580px;
 
-    display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    column-gap: 16px;
+    @include on1280 {
+      width: 870px;
+    }
+
+    @include on1440 {
+      width: 1160px;
+    }
   }
 
   &__title {
     margin: 0;
-    grid-column: 1 / 8;
-    color: $dark-gray;
     font-size: 32px;
     letter-spacing: -0.32px;
   }

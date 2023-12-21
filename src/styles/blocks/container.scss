@@ -1,3 +1,11 @@
 .container {
-  padding: 0 152px;
+  padding: 0 25px;
+
+  @include on1280 {
+    padding: 0 70px;
+  }
+
+  @include on1440 {
+    padding: 0 152px;
+  }
 }

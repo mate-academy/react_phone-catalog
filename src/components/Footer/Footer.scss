@@ -1,9 +1,11 @@
 @import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
 
 .footer {
   &__navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 36px 0;
   }
 
@@ -23,7 +25,15 @@
 
   &__navbar-menu-item {
     list-style: none;
-    margin-right: 64px;
+    margin-right: 32px;
+
+    @include on1280 {
+      margin-right: 48px;
+    }
+
+    @include on1440 {
+      margin-right: 64px;
+    }
 
     &:last-child {
       margin: 0;
@@ -33,11 +43,21 @@
   &__navbar-menu-link {
     text-decoration: none;
     color: $silver;
-    font-size: 12px;
-    font-weight: 700;
     letter-spacing: 0.48px;
     text-transform: uppercase;
     transition: all 0.3s;
+    font-size: 7px;
+    font-weight: 700;
+
+    @include on1280 {
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    @include on1440 {
+      font-size: 12px;
+      font-weight: 700;
+    }
 
     &:hover {
       text-shadow: 4px 8px 6px rgba(0, 0, 0, 0.6);
@@ -64,8 +84,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 5px;
+    padding: 0 3px;
     background-color: $white;
     cursor: pointer;
+
+    @include on1440 {
+      padding: 0 5px;
+    }
   }
 }

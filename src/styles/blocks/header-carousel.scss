@@ -1,10 +1,14 @@
 .header-carousel {
-  &__carousel-container {
-    grid-column: 1 / 25;
-    margin-bottom: 20px;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  &__carousel-container {
+    margin-bottom: 25px;
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: 32px 1fr 32px;
     column-gap: 16px;
   }
 
@@ -25,7 +29,7 @@
     }
 
     &--next {
-      grid-column: 24 / 25;
+      grid-column: 3 / 4;
 
       &:hover {
         border: 1px solid $dark-gray;
@@ -34,7 +38,7 @@
   }
 
   &__image-container {
-    grid-column: 2 / 24;
+    grid-column: 2 / 3;
   }
 
   &__carousel-list {
@@ -42,23 +46,30 @@
     display: flex;
     overflow: hidden;
     list-style: none;
-    width: 1040px;
-    height: 400px;
     margin: 0 auto;
+    width: 750px;
+    height: 280px;
+
+    @include on1280 {
+      width: 1040px;
+      height: 400px;
+    }
   }
 
   &__image {
-    width: 1040px;
-    height: 400px;
     object-fit: cover;
+    width: 750px;
+    height: 280px;
+
+    @include on1280 {
+      width: 1040px;
+      height: 400px;
+    }
   }
 
   &__carousel-pages {
-    grid-column: 12 / 14;
-
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    column-gap: 20px;
   }
 
   &__slider-button {

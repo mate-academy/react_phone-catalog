@@ -1,10 +1,19 @@
 .flex-products-container {
-  width: 1150px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   column-gap: 16px;
   row-gap: 40px;
   margin-bottom: 40px;
+  width: 580px;
+
+  @include on1000 {
+    width: 870px;
+  }
+
+  @include on1280 {
+    width: 1160px;
+  }
 
   &--favourites {
     margin-bottom: 80px;

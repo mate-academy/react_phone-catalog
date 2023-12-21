@@ -1,4 +1,5 @@
 @import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
 
 .products {
   &__settings-for-output {
@@ -14,27 +15,44 @@
   }
 
   &__selects-container {
-    grid-column: 1 / 8;
+    grid-column: 1 / 6;
+
+    @include on1280 {
+      grid-column: 1 / 8;
+    }
 
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
     column-gap: 16px;
+    grid-template-columns: repeat(5, 1fr);
+
+    @include on1280 {
+      grid-template-columns: repeat(7, 1fr);
+    }
   }
 
   &__select-sort-container {
-    grid-column: 1 / 5;
-
+    grid-column: 1 / 4;
+    
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     column-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include on1280 {
+      grid-column: 1 / 5;
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &__select-count-items-container {
-    grid-column: 5 / 8;
-
+    grid-column: 4 / 7;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     column-gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include on1280 {
+      grid-column: 5 / 8;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &__title-sort-select {

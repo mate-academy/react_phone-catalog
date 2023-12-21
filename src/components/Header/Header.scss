@@ -1,4 +1,5 @@
 @import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
 
 .Header {
   border-left: 1px solid $light-gray;
@@ -26,8 +27,16 @@
   &__menu-item {
     display: inline-block;
     list-style: none;
-    margin-right: 64px;
+    margin-right: 32px;
     padding: 20px 0 19px;
+
+    @include on1280 {
+      margin-right: 48px;
+    }
+
+    @include on1440 {
+      margin-right: 64px;
+    }
 
     &:last-child {
       margin: 0;
@@ -37,11 +46,19 @@
   &__menu-link {
     text-decoration: none;
     color: $silver;
-    font-size: 12px;
+    font-size: 7px;
     font-weight: 700;
     letter-spacing: 0.48px;
     text-transform: uppercase;
     transition: all 0.3s;
+
+    @include on1280 {
+      font-size: 10px;
+    }
+
+    @include on1440 {
+      font-size: 12px;
+    }
 
     &:hover {
       text-shadow: 4px 8px 6px rgba(0,0,0,0.6);

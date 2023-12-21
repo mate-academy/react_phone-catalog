@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { moveToUp } from '../../helpers/movePageToUp';
 import './Footer.scss';
 
@@ -7,38 +8,47 @@ export const Footer = () => {
       <div className="container">
         <div className="footer__content">
           <div className="footer__navbar">
-            <a href="/" className="logo">
+            <Link
+              to="/"
+              className="logo"
+              onClick={moveToUp}
+            >
               <img
                 src="img/logo/Logo.svg"
                 alt="Logo"
                 className="logo__image"
               />
-            </a>
+            </Link>
 
             <nav className="footer__navbar-menu">
               <ul className="footer__navbar-menu-list">
                 <li className="footer__navbar-menu-item">
-                  <a
-                    href="https://github.com/Sirius9312/react_phone-catalog"
+                  <Link
+                    to="https://github.com/Sirius9312/react_phone-catalog"
                     className="footer__navbar-menu-link"
                   >
                     Github
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="footer__navbar-menu-item">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="footer__navbar-menu-link"
+                    onClick={moveToUp}
                   >
                     Contacts
-                  </a>
+                  </Link>
                 </li>
 
                 <li className="footer__navbar-menu-item">
-                  <a href="/" className="footer__navbar-menu-link">
+                  <Link
+                    to="/"
+                    className="footer__navbar-menu-link"
+                    onClick={moveToUp}
+                  >
                     Rights
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>

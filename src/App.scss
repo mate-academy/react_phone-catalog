@@ -1,5 +1,6 @@
 @import "./styles/utils/vars";
 @import "./styles/utils/fonts";
+@import "./styles/utils/mixins";
 @import "./styles/blocks/container.scss";
 @import "./styles/blocks/flex-app.scss";
 @import "./styles/blocks/grid-cover.scss";
@@ -20,19 +21,21 @@
 @import "./styles/blocks/separator.scss";
 
 html {
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: Mont, sans-serif;
+
+  @include lessOn900 {
+    min-width: 900px;
+  }
 }
 
 .App {
   color: $dark-gray;
-  width: 1440px;
-  margin: 0 auto;
 
   &__header-carousel {
     margin: 40px 0 104px;

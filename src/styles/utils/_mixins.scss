@@ -1,0 +1,23 @@
+@mixin lessOn900 {
+  @media (max-width: 899px) {
+    @content;
+  }
+}
+
+@mixin on1000 {
+  @media (min-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin on1280 {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin on1440 {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
