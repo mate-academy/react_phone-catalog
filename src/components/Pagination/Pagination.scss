@@ -1,0 +1,47 @@
+@import "../../styles/main.scss";
+
+.Pagination {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  @include onMobile {
+    gap: 8px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 6px;
+
+    @include onMobile {
+      flex-wrap: wrap;
+    }
+
+    &-link {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $elements-grey-c;
+      transition-duration: $transition-duration;
+      @extend %body;
+
+      @include onTablet {
+        width: 24px;
+        height: 24px;
+      }
+
+      &:hover {
+        border-color: $black-c;
+      }
+
+      &.active {
+        background-color: $black-c;
+        color: $white-c;
+      }
+    }
+  }
+}
