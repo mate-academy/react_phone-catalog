@@ -65,6 +65,7 @@ export const SortDropdown: React.FC = () => {
       className="dropdown"
       ref={dropdownRef}
     >
+      <p className="dropdown__name">Sort by</p>
       <button
         type="button"
         aria-haspopup="true"

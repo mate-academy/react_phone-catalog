@@ -1,4 +1,5 @@
 @import './styles/variables.scss';
+@import '../src/styles/utils/mixins.scss';
 @import './styles/Header.scss';
 @import './styles/Footer.scss';
 @import './styles/container.scss';
@@ -27,15 +28,6 @@
   font-family: Mont;
   src: url(./assets/fonts/Mont-Bold.otf);
   font-weight: bold;
-}
-
-@mixin buttonBorder {
-  border: 1px solid $gray-secondary;
-    transition: border-color $effect-duration $animation-timing-function;
-
-    &:hover {
-      border-color: $gray-primary;
-    }
 }
 
 iframe {
@@ -71,7 +63,7 @@ iframe {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 50px;
 
 }
 
@@ -86,12 +78,23 @@ iframe {
 .dropdown {
   grid-column: span 4;
 
+  &--per-page {
+    grid-column: span 3;
+  }
+
+  &__name {
+    @include bodyText;
+    color: $gray-secondary;
+    margin-bottom: 4px;
+  }
+
   &__button {
     height: 40px;
     width: 100%;
     background-color: $white;
     text-decoration: none;
     color: $gray-primary;
+    @include buttonsText;
 
     &--select {
       background-image: url('../src/images/arrow-down.svg');

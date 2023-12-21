@@ -1,0 +1,33 @@
+@mixin buttonBorder {
+  border: 1px solid $gray-secondary;
+    transition: border-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+}
+
+@mixin h1 {
+  font-weight: bold;
+  line-height: 41px;
+  font-size: 32px;
+  letter-spacing: -0.01em;
+}
+
+@mixin buttonsText {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin smallText {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: normal;
+}
+
+@mixin bodyText {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+}

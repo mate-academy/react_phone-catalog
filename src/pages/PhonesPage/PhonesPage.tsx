@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import {
@@ -24,12 +24,10 @@ export const PhonesPage: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
-  // const [itemOffset, setItemOffset] = useState(0);
   const sort = searchParams.get('sort') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const [preparedPhones, setPreparedPhones] = useState(phones);
   const page = +(searchParams.get('page') || 1);
-  // const [page, setPage] = useState(+(searchParams.get('page') || 1));
 
   useEffect(() => {
     const getSorted = () => {
@@ -58,8 +56,6 @@ export const PhonesPage: React.FC = () => {
     setPreparedPhones(newPhones);
   }, [phones, sort]);
 
-  const { pathname } = useLocation();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -79,29 +75,6 @@ export const PhonesPage: React.FC = () => {
     fetchData();
   }, [setPhones]);
 
-  // useEffect(() => {
-  //   setPage(+(searchParams.get('page') || 1));
-  // }, [searchParams]);
-
-  // const endOffset = itemOffset + itemsPerPage;
-  // const currentItems = preparedPhones.slice(itemOffset, endOffset);
-  // const pageCount = Math.ceil(phones.length / itemsPerPage);
-
-  // const handlePageClick = (event: { selected: number; }) => {
-  //   const newOffset = (event.selected * itemsPerPage) % phones.length;
-
-  //   setItemOffset(newOffset);
-  //   const newPage = event.selected + 1;
-
-  //   setSearchParams(prev => {
-  //     const newParams = new URLSearchParams(prev.toString());
-
-  //     newParams.set('page', newPage.toString());
-
-  //     return newParams;
-  //   });
-  // };
-
   const itemOffset = (page - 1) * itemsPerPage;
 
   const endOffset = itemOffset + itemsPerPage;
@@ -109,12 +82,7 @@ export const PhonesPage: React.FC = () => {
   const pageCount = Math.ceil(phones.length / itemsPerPage);
 
   const handlePageClick = (event: { selected: number; }) => {
-    // const newOffset = (event.selected * itemsPerPage) % phones.length;
-
-    // setItemOffset(newOffset);
     const newPage = event.selected + 1;
-
-    // setPage(newPage);
 
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev.toString());
@@ -131,10 +99,10 @@ export const PhonesPage: React.FC = () => {
         <div className="path">
           <img src={homeImage} alt="home_icon" />
           <img src={arrowRight} alt="arrow_right" />
-          <h3>{pathname.slice(1)}</h3>
+          <h3>Phones</h3>
         </div>
         <h1 className="phones__title">Mobile phones</h1>
-        <h3 className="phones__subtitle">95 models</h3>
+        <p className="phones__paragraph">{`${phones.length} models`}</p>
         <div className="dropdowns-container">
           <SortDropdown />
           <ItemsPerPageDropdown

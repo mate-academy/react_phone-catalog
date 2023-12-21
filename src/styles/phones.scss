@@ -4,11 +4,20 @@
 
   &__title {
     margin-bottom: 8px;
+    @include h1;
   }
 
-  &__subtitle {
+  &__paragraph {
+    @include bodyText;
+    color: $gray-secondary;
     margin-bottom: 40px;
   }
+}
+
+.path {
+  @include smallText;
+  color: $gray-secondary;
+  line-height: 16px;
 }
 
 .phones-container {

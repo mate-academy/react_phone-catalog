@@ -45,9 +45,10 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
   return (
     <div
       data-cy="UserSelector"
-      className="dropdown"
+      className="dropdown dropdown--per-page"
       ref={dropdownRef}
     >
+      <p className="dropdown__name">Items on page</p>
       <button
         type="button"
         className={classNames('dropdown__button dropdown__button--select', {
