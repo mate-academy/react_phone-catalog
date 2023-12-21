@@ -11,7 +11,7 @@ export const CartInfo: React.FC<Props> = ({ totalPrice, totalNumber }) => {
   return (
     <div className="cart__info">
       <div className="h1 cart__total">{`$${totalPrice}`}</div>
-      <div className="text cart__label">{`Total for ${totalNumber} items`}</div>
+      <div className="text cart__label">{`Total for ${totalNumber === 1 ? `${totalNumber} item` : `${totalNumber} items`}`}</div>
       <div className="cart__bottom">
         <button
           type="button"

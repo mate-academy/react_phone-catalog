@@ -23,6 +23,10 @@ export const CartPage = () => {
     return cartItems.reduce((a, b) => a + b.quantity * b.product.price, 0);
   }, [cartItems]);
 
+  const totalNumbers = useMemo(() => {
+    return cartItems.map(({ quantity }) => quantity).reduce((a, b) => a + b, 0);
+  }, [cartItems]);
+
   return (
     <section className="section cart">
       <div className="section__container">
@@ -33,10 +37,7 @@ export const CartPage = () => {
           {cartItems.length > 0 ? (
             <div className="cart__wrapper">
               <CartItems items={cartItems} />
-              <CartInfo
-                totalPrice={totalPrice}
-                totalNumber={cartItems.length}
-              />
+              <CartInfo totalPrice={totalPrice} totalNumber={totalNumbers} />
             </div>
           ) : (
             <h3 className="h3">Your cart is empty</h3>
