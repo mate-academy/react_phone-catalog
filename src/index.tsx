@@ -1,12 +1,9 @@
-import { createRoot } from 'react-dom/client';
-
-import { BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import { Root } from './Root';
 
-const container = document.getElementById('root') as HTMLElement;
+const root = document.getElementById('root');
 
-createRoot(container).render(
-  <Router>
-    <Root />
-  </Router>,
-);
+if (root) {
+  // eslint-disable-next-line react/no-deprecated
+  ReactDOM.render(<Root />, root);
+}
