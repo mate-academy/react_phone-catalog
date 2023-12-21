@@ -1,15 +1,23 @@
-import { useContext, useState } from 'react';
+/* eslint-disable object-curly-newline */
+import { useCallback, useContext, useEffect, useState } from 'react';
+import debounce from 'lodash.debounce';
 import { MainContext } from '../../../context/MainContext';
 
 export const HeaderSearch = () => {
   const { setQueryValue } = useContext(MainContext);
   const [value, setValue] = useState('');
+  const [appliedValue, setAppliedValue] = useState('');
+
+  useEffect(() => setQueryValue(appliedValue), [appliedValue]);
+
+  const applyQuery = useCallback(debounce(setAppliedValue, 1000), []);
 
   const search = (targetValue: string) => {
     const searchValue = targetValue.trim().toLowerCase();
 
-    setQueryValue(searchValue);
     setValue(targetValue);
+    applyQuery(searchValue);
+    setQueryValue(appliedValue);
   };
 
   return (
