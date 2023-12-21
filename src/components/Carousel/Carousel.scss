@@ -1,0 +1,104 @@
+@import "../../styles/main.scss";
+
+.Carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+
+  &__slider {
+    height: 400px;
+    max-width: 100%;
+    display: flex;
+    gap: 16px;
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onMobile {
+      height: 250px;
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 100%;
+      width: 32px;
+      border: 1px solid $icons-grey-c;
+      transition-duration: $transition-duration;
+
+      &:hover {
+        border-color: $black-c;
+        cursor: pointer;
+      }
+    }
+
+    &-container {
+      height: 100%;
+      width: 1040px;
+      overflow: hidden;
+
+      @include onDesktop {
+        width: 874px;
+      }
+
+      @include onTablet {
+        width: 654px;
+      }
+
+      @include onMobile {
+        width: 504px;
+      }
+    }
+
+    &-list {
+      height: 100%;
+      width: 300%;
+      display: flex;
+      gap: 1px;
+      transition-duration: 1s;
+    }
+
+    &-item {
+      height: 100%;
+      width: 33.33%;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+
+  &__position {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &-item {
+      width: 14px;
+      height: 5px;
+      background-color: $elements-grey-c;
+      transition-duration: $transition-duration;
+      border: 1px solid transparent;
+      border-radius: 5px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+        border: 1px solid $dark-grey-c;
+      }
+    }
+  }
+}
+
+.banner-active {
+  background-color: $black-c;
+}
