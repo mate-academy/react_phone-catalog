@@ -30,8 +30,12 @@ html {
   margin: 0 auto;
   padding: 0 20px;
 
+  @include onMobile {
+    max-width: 639px;
+  }
+
   @include onTablet {
-    max-width: 950px;
+    max-width: 949px;
   }
 
   @include onDesktop {

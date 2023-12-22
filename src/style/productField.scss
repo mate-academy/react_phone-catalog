@@ -2,16 +2,18 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 
-  padding: 21px;
+  padding: 20px;
   border: 1px solid $color-secondary-2;
 
-  align-items: center;
-
-  gap: 21px;
-
-  min-width: 400px;
   transition-duration: 0.3s;
+
+  @media (max-width: 639px) {
+    padding: 10px;
+    gap: 10px;
+  }
 
   &:hover {
     box-shadow: 1px 3px 13px 1px rgba(23, 32, 49, 0.26);
@@ -21,6 +23,10 @@
   &__close {
     width: 16px;
     height: 16px;
+
+    @media (max-width: 639px) {
+      width: 8px;
+    }
 
     &:hover {
       transform: scale(1.2);
@@ -32,12 +38,28 @@
     height: 66px;
 
     object-fit: contain;
+
+    @media (max-width: 639px) {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   &__name {
     white-space: nowrap;
     width: 295px;
     text-overflow: ellipsis;
+
+    @media (max-width: 949px) {
+      white-space: wrap;
+      width: 160px;
+    }
+
+    @media (max-width: 639px) {
+      font-size: 10px;
+      white-space: wrap;
+      width: 120px;
+    }
   }
 
   &__quantity {
@@ -54,6 +76,12 @@
     text-align: center;
     display: block;
     border: 1px solid $color-secondary-2;
+
+    @media (max-width: 639px) {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+    }
 
     &:hover {
       border: 1px solid $gray-icons-placeholders;
@@ -78,6 +106,13 @@
     font-style: normal;
     font-weight: 500;
     line-height: 32px;
+
+    @media (max-width: 639px) {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 10px;
+    }
   }
 
   &__price {
@@ -86,5 +121,9 @@
     font-style: normal;
     font-weight: 700;
     line-height: 32px;
+
+    @media (max-width: 639px) {
+      font-size: 14px;
+    }
   }
 }

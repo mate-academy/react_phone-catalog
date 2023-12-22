@@ -150,10 +150,6 @@
       bottom: 0;
 
       background-color: $color-primary;
-
-      @media (max-width: 640px) {
-        height: 48px;
-      }
     }
 
     &--link--active::after {
@@ -165,10 +161,6 @@
       bottom: 0;
 
       background-color: $color-primary;
-
-      @media (max-width: 640px) {
-        height: 48px;
-      }
     }
   }
 
