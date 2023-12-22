@@ -1,0 +1,92 @@
+// @import "../../styleUtils/mixins.scss";
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  &__content {
+    display: flex;
+    place-content: center;
+    gap: 16px;
+  }
+
+  &__images {
+    height: 400px;
+    width: 1040px;
+    position: relative;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 400px;
+    width: 1040px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+  }
+
+  &__img {
+    height: 400px;
+    width: 1040px;
+    object-fit: cover;
+  }
+
+  &__button {
+    background: none;
+    width: 32px;
+    border: 1px solid #b4bdc3;
+
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 5px;
+  }
+
+  &__dot {
+    background-color: #e2e6e9;
+    height: 4px;
+    left: 5px;
+    position: relative;
+    top: 10px;
+    width: 14px;
+
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &.active {
+      background-color: #313237;
+    }
+  }
+
+    &__arrow--left {
+      display: block;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(./../sliderphotos/chevron-left-solid.svg);
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+    }
+
+    &__arrow--right {
+      display: block;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(./../sliderphotos/chevron-right-solid.svg);
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+    }
+}
+

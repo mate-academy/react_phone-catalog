@@ -1,0 +1,122 @@
+.ProductsSlider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 200px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.ProductsSlider__content {
+  display: flex;
+  flex-direction: row;
+  place-content: space-between center;
+  align-content: center;
+  max-width: 1136px;
+}
+
+@media (max-width: 744px) {
+  .ProductsSlider__content {
+      justify-content: center
+  }
+}
+
+.ProductsSlider__title {
+  // font-family: "MontBold",sans-serif;
+  color: #313237;
+  font-size: 32px;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -.32px;
+  margin-bottom: 24px;
+  width: 100%;
+  font-weight: 600;
+}
+
+@media (max-width: 744px) {
+  .ProductsSlider__title {
+      font-size:26px
+  }
+}
+
+.ProductsSlider__buttons {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 16px;
+  gap: 16px;
+}
+
+@media (max-width: 744px) {
+  .ProductsSlider__buttons {
+      display:none
+  }
+}
+
+.ProductsSlider__button {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid #b4bdc3;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.ProductsSlider__button.disabled,.ProductsSlider__button.disabled:hover {
+  border-color: #e2e6e9;
+}
+
+.ProductsSlider__button:hover {
+  border-color: #313237;
+}
+
+@media (max-width: 744px) {
+  .ProductsSlider__button {
+      width:26px;
+      height: 26px;
+  }
+}
+
+.ProductsSlider__cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 24px;
+  grid-gap: 16px;
+  gap: 16px;
+}
+
+@media (max-width: 1194px) {
+  .ProductsSlider__cards {
+      -webkit-justify-content:center;
+      justify-content: center;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+  }
+}
+
+.ProductsSlider__card {
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.arrow--left {
+  background-image: url(../sliderphotos/chevron-left-solid.svg);
+}
+
+.arrow--left,.arrow--right {
+  display: block;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+}
+
+.arrow--right {
+  background-image: url(../sliderphotos/chevron-right-solid.svg);
+}

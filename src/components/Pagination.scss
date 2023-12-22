@@ -1,0 +1,71 @@
+.pagination {
+  margin-top: 40px;
+  grid-gap: 8px;
+  gap: 8px;
+}
+
+.pagination,.pagination__button {
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center
+}
+
+.pagination__button {
+  border: 1px solid #e2e6e9;
+  background: none;
+  height: 32px;
+  width: 32px;
+  -webkit-align-items: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.pagination__button:hover {
+  border-color: #313237
+}
+
+.pagination__button--prev {
+  margin-right: 8px
+}
+
+.pagination__button--next {
+  margin-left: 8px
+}
+
+.pagination__button.active {
+  background-color: #313237;
+  color: #fff
+}
+
+.pagination__button--page {
+  color: #000
+}
+
+.pagination__arrow {
+  width: 16px;
+  height: 16px;
+  margin: 0 auto;
+  display: block;
+  background-position: 50%;
+  background-repeat: no-repeat
+}
+
+.pagination__arrow--left {
+  background-image: url(../sliderphotos/chevron-left-solid.svg)
+}
+
+.pagination__arrow--right {
+  background-image: url(../sliderphotos/chevron-right-solid.svg)
+}
+
+.pagination__dots {
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: flex-end;
+  align-items: flex-end
+}
+
+.notFound,.pagination__dots {
+  display: flex
+}

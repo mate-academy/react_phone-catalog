@@ -1,0 +1,25 @@
+.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-left: -5px;
+  margin-bottom: 16px;
+}
+
+.back__image {
+  background-image: url(./../sliderphotos/chevron-left-solid.svg);
+  background-repeat: no-repeat;
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.back__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(137, 147, 154, 1);
+}

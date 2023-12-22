@@ -1,0 +1,38 @@
+.AddToCartButton {
+  border: 0;
+  height: 40px;
+  width: 176px;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  background-color: #313237;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  cursor: pointer;
+  transition-duration: .3s
+}
+
+.AddToCartButton:hover {
+  box-shadow: 0 3px 13px #000
+}
+
+.AddToCartButton.isProductAdded {
+  border: 1px solid #e2e6e9;
+  color: #27ae60;
+  background-color: transparent
+}
+
+.AddToCartButton.isProductAdded:hover {
+  box-shadow: 0 3px 13px rgba(23,31,48,0.26);
+}
+
+.AddToCartButton.is-clicked {
+  background-color: #fff;
+}
+
+.AddToCartButton.is-clicked:hover {
+  box-shadow: 0 3px 13px rgba(23, 110, 60, 0.5);
+}
