@@ -17,7 +17,17 @@
 
 .ProductsList-animation-exit-active {
   opacity: 0;
+  transition: opacity 300ms linear;
+}
+
+.ProductsList-animation-enter {
+  opacity: 0;
   transform: scale(0);
+}
+
+.ProductsList-animation-enter-active {
+  opacity: 1;
+  transform: scale(1);
   transition: opacity 300ms linear,
     transform 300ms linear;
 }

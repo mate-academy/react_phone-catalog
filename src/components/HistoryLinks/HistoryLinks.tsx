@@ -7,6 +7,23 @@ type Props = {
 };
 
 export const HistoryLinks: React.FC<Props> = ({ links }) => {
+  const getLinkContent = (link: HistoryLinkType, index: number) => {
+    return (
+      <>
+        <img
+          src="icons/arrow-right-grey.svg"
+          alt="arr"
+          className="HistoryLinks__link-arrow"
+        />
+        <p className={cn('HistoryLinks__link-title',
+          { grey: links.length - 1 === index })}
+        >
+          {link.title}
+        </p>
+      </>
+    );
+  };
+
   return (
     <div className="HistoryLinks">
       <Link className="HistoryLinks__link" to="/">
@@ -17,22 +34,23 @@ export const HistoryLinks: React.FC<Props> = ({ links }) => {
         />
       </Link>
       {links.map((link, index) => (
-        <Link
-          key={link.title}
-          className="HistoryLinks__link"
-          to={link.link}
-        >
-          <img
-            src="icons/arrow-right-grey.svg"
-            alt="arr"
-            className="HistoryLinks__link-arrow"
-          />
-          <p className={cn('HistoryLinks__link-title',
-            { grey: links.length - 1 === index })}
-          >
-            {link.title}
-          </p>
-        </Link>
+        link.link
+          ? (
+            <Link
+              key={link.title}
+              className="HistoryLinks__link"
+              to={link.link}
+            >
+              {getLinkContent(link, index)}
+            </Link>
+          ) : (
+            <span
+              key={link.title}
+              className="HistoryLinks__link"
+            >
+              {getLinkContent(link, index)}
+            </span>
+          )
       ))}
     </div>
   );

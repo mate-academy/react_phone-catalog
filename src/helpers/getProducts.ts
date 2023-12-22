@@ -7,5 +7,5 @@ export const getAllProducts = () => {
 };
 
 export const getProductById = (id: string) => {
-  return get<ItemDetails>(`${id}.json`);
+  return get<ItemDetails>(`products/${id}.json`);
 };

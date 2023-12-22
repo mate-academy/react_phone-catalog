@@ -1,11 +1,13 @@
 /* eslint-disable  jsx-a11y/control-has-associated-label */
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { getCorrectImageUrl } from '../../helpers/getCorrectImageUrl';
 import { getMemoryString } from '../../helpers/getMemoryString';
 import { Item } from '../../types/Item';
 import './ProductCard.scss';
 import { ProductsContext } from '../../context/ProductsContext';
+import { getLinkTypeByProduct } from '../../helpers/getLinkTypeByProduct';
 
 type Props = {
   item: Item;
@@ -21,9 +23,15 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
     setFavourites,
   } = useContext(ProductsContext);
 
+  const type: PageItemsType
+    = useMemo(() => getLinkTypeByProduct(item), [item]);
+
   const handleFavouriteButton = useCallback((
     product: Item,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
+    event.preventDefault();
+
     if (favourites.find((favItem) => favItem.id === product.id)) {
       setFavourites(favourites.filter((favItem) => favItem.id !== product.id));
     } else {
@@ -33,7 +41,10 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
 
   const handleAddToCartButton = useCallback((
     product: Item,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
+    event.preventDefault();
+
     if (!cart.find((favItem) => favItem.id === product.id)) {
       const productToCart = { ...product, quantity: 1 };
 
@@ -42,7 +53,10 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
   }, [cart]);
 
   return (
-    <div className="product-card">
+    <Link
+      to={`/${type}/${item.id}`}
+      className="product-card"
+    >
       <div className="product-card__top">
         <img
           src={getCorrectImageUrl(item.imageUrl)}
@@ -112,7 +126,7 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
               selected: cart.find((favItem) => favItem.id === item.id),
             })}
             type="button"
-            onClick={() => handleAddToCartButton(item)}
+            onClick={(event) => handleAddToCartButton(item, event)}
           >
             {
               cart.find((favItem) => favItem.id === item.id)
@@ -125,10 +139,10 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
             className={cn('simple-button', 'favourite', {
               selected: favourites.find((favItem) => favItem.id === item.id),
             })}
-            onClick={() => handleFavouriteButton(item)}
+            onClick={(event) => handleFavouriteButton(item, event)}
           />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

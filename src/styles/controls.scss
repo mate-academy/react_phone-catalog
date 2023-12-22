@@ -113,18 +113,21 @@
 
 .dropdown {
   position: relative;
-  height: 40px;
-  width: 176px;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  &-button {
+    height: 40px;
+    width: 176px;
 
-  background-color: transparent;
-  border: 1px solid $icons-color;
-  box-sizing: border-box;
-  padding-inline: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: transparent;
+    border: 1px solid $icons-color;
+    box-sizing: border-box;
+    padding-inline: 12px;
+  }
 
   &:hover {
     border-color: $secondary-color;
@@ -138,6 +141,10 @@
 
   &-arrow {
     transition: transform 0.3s;
+
+    &.rotate {
+      transform: scaleY(-1);
+    }
   }
 
   &-content {
@@ -165,10 +172,6 @@
       visibility: visible;
       overflow-y: scroll;
       max-height: 350%;
-
-      +.dropdown-arrow {
-        transform: scaleY(-1);
-      }
     }
   }
 

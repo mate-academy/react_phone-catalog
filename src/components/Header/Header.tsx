@@ -40,6 +40,7 @@ export const Header = () => {
   const setSearch = (value: string) => {
     if (value) {
       searchParams.set('query', value);
+      searchParams.delete('page');
     } else {
       searchParams.delete('query');
     }
@@ -53,19 +54,19 @@ export const Header = () => {
 
     setInputValue(query);
     setIsLoading(true);
-    debounce(setSearch, query);
+    debounce(() => setSearch(query));
   };
 
   useEffect(() => {
-    if (pathname === '/cart') {
+    if (pathname.toLowerCase() === '/cart') {
       setIsTabCard(true);
     } else {
       setIsTabCard(false);
     }
 
     if (['/phones', '/tablets', '/accessories', '/favourites']
-      .includes(pathname)) {
-      setSearchPlaceholder(pathname.slice(1));
+      .includes(pathname.toLowerCase())) {
+      setSearchPlaceholder(pathname.toLowerCase().slice(1));
     } else {
       setSearchPlaceholder('');
     }

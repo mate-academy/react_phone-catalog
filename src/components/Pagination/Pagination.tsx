@@ -46,7 +46,12 @@ export const Pagination: React.FC<Props> = ({
             <Link
               className={cn('simple-button', 'pagination__item-link',
                 { active: i === currentPage })}
-              to={{ search: getSearchString(searchParams, 'page', `${i}`) }}
+              to={{
+                search: getSearchString(
+                  searchParams,
+                  { page: `${i}` },
+                ),
+              }}
             >
               {i}
             </Link>
@@ -81,7 +86,10 @@ export const Pagination: React.FC<Props> = ({
           className="simple-button pagination__item-link"
           to={{
             search:
-              getSearchString(searchParams, 'page', `${getCurrentPage() - 1}`),
+              getSearchString(
+                searchParams,
+                { page: `${getCurrentPage() - 1}` },
+              ),
           }}
         >
           «
@@ -93,7 +101,10 @@ export const Pagination: React.FC<Props> = ({
           className="simple-button pagination__item-link"
           to={{
             search:
-              getSearchString(searchParams, 'page', `${getCurrentPage() + 1}`),
+              getSearchString(
+                searchParams,
+                { page: `${getCurrentPage() + 1}` },
+              ),
           }}
         >
           »
