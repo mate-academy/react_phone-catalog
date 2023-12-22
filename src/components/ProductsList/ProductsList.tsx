@@ -10,7 +10,7 @@ type Props = {
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
     <div className="ProductsList">
-      <ul className="ProductsList__list">
+      <ul data-cy="productList" className="ProductsList__list">
         <TransitionGroup component={null}>
           {products.map((product) => (
             <CSSTransition

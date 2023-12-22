@@ -135,6 +135,7 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
             }
           </button>
           <button
+            data-cy="addToFavorite"
             type="button"
             className={cn('simple-button', 'favourite', {
               selected: favourites.find((favItem) => favItem.id === item.id),

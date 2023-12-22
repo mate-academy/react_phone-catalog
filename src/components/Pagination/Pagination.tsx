@@ -80,9 +80,10 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <ul className="pagination">
+    <ul data-cy="pagination" className="pagination">
       <li className={cn('pagination__item', { disabled: isPageFirst })}>
         <Link
+          data-cy="paginationLeft"
           className="simple-button pagination__item-link"
           to={{
             search:
@@ -98,6 +99,7 @@ export const Pagination: React.FC<Props> = ({
       <div className="pagination__numbers">{getButtons()}</div>
       <li className={cn('pagination__item', { disabled: isPageLast })}>
         <Link
+          data-cy="paginationRight"
           className="simple-button pagination__item-link"
           to={{
             search:

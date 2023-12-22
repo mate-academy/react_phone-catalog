@@ -11,6 +11,12 @@ $product-container-height: 464px;
   flex-direction: column;
   gap: 80px;
 
+  &__splitter {
+    width: 100%;
+    height: 1px;
+    background-color: $elements-color;
+  }
+
   &__product {
     display: flex;
     flex-direction: column;
@@ -36,8 +42,10 @@ $product-container-height: 464px;
 
     &-block {
       grid-column: 1/3;
-      height: $product-container-height;
+      max-height: $product-container-height;
       overflow-y: scroll;
+
+      align-self: center;
 
       display: flex;
       flex-direction: column;
@@ -89,6 +97,13 @@ $product-container-height: 464px;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: fit-content;
+
+    &-title {
+      color: $secondary-color;
+      font-size: 12px;
+      font-weight: 600;
+    }
 
     &-colors {
       display: flex;
@@ -100,6 +115,177 @@ $product-container-height: 464px;
         flex-direction: row;
         gap: 8px;
       }
+
+      &-color {
+        border-radius: 50%;
+        border: 1px solid #c4c4c4;
+        aspect-ratio: 1;
+
+        &-value {
+          border-radius: 50%;
+          width: 29px;
+          margin: 3px;
+          box-sizing: border-box;
+          aspect-ratio: 1;
+        }
+
+        &:hover {
+          border-color: $primary-color;
+        }
+
+        &.active {
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    &-capacity {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &-list {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      &-button {
+        width: unset;
+        height: 32px;
+        background-color: transparent;
+        color: $primary-color;
+        border: 1px solid $icons-color;
+        font-weight: 500;
+
+        &.active {
+          background-color: $primary-color !important;
+          color: white;
+        }
+
+        &:hover {
+          background-color: $primary-color !important;
+          color: white;
+        }
+      }
+    }
+
+    &-price {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+
+      &-new {
+        color: $primary-color;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.32px;
+        line-height: 100%;
+      }
+
+      &-old {
+        color: $secondary-color;
+        font-size: 22px;
+        font-weight: 500;
+        text-decoration-line: line-through;
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+
+      &-favourite {
+        height: 100%;
+        aspect-ratio: 1;
+        width: max-content;
+      }
+    }
+
+    &-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      &-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      &-title {
+        color: $secondary-color;
+      }
+
+      &-value {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__description {
+    @include grid;
+
+    &-title {
+      color: $primary-color;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &-about {
+      grid-column: 1/13;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &-text {
+        margin-top: 16px;
+        color: $secondary-color;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 150%;
+      }
+    }
+
+    &-specs {
+      grid-column: 15/-1;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 150%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &-list {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      &-title {
+        color: $secondary-color;
+      }
+
+      &-value {
+        color: $primary-color;
+      }
     }
   }
 }
@@ -110,17 +296,16 @@ $product-container-height: 464px;
 
 .ProductDetailsPage__animation-enter-active {
   opacity: 1;
-  transition: opacity 300ms;
+  transition: opacity 500ms;
 }
 
 .ProductDetailsPage__animation-exit {
   opacity: 1;
-  position: absolute;
-  left: 0;
 }
 
 .ProductDetailsPage__animation-exit-active {
   opacity: 0;
   position: absolute;
-  transition: opacity 300ms;
+  top: 0;
+  transition: opacity 500ms;
 }

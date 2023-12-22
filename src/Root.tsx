@@ -62,7 +62,15 @@ export const Root = () => {
             </Route>
             <Route path="cart" element={<CartPage />} />
             <Route path="favourites" element={<FavouritesPage />} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route
+              path="not-found"
+              element={(
+                <NotFoundPage
+                  title="This device was not found on the server"
+                />
+              )}
+            />
+            <Route path="*" element={<NotFoundPage title="Page not found" />} />
           </Route>
         </Routes>
       </Router>

@@ -24,6 +24,9 @@ export const CartTotal: React.FC<Props>
         return;
       }
 
+      // eslint-disable-next-line no-alert
+      alert('We are sorry, but this feature is not implemented yet');
+
       setCart([]);
 
       setNotification({

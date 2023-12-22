@@ -12,6 +12,7 @@ export const HistoryButton: React.FC<Props> = ({ text, path }) => {
 
   return (
     <Link
+      data-cy="backButton"
       to={path || ''}
       onClick={() => !path && navigate(-1)}
       className="link"

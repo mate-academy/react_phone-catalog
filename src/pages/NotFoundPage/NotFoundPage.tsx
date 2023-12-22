@@ -1,9 +1,13 @@
 import './notFoundPage.scss';
 
-export const NotFoundPage = () => {
+type Props = {
+  title: string;
+};
+
+export const NotFoundPage: React.FC<Props> = ({ title }) => {
   return (
     <div className="not-found-page">
-      <h1 className="not-found-page__text">Page not found</h1>
+      <h1 className="not-found-page__text">{title}</h1>
       <div className="not-found-page__smile">
         <img
           className="not-found-page__smile-image"

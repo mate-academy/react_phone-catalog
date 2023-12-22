@@ -19,8 +19,8 @@
   }
 
   &.wide {
-    width: 263px;
-    height: 48px;
+    min-width: 263px;
+    min-height: 48px;
   }
 
   &.selected {
@@ -53,8 +53,9 @@
   }
 
   &.favourite {
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    aspect-ratio: 1/1;
     background-image: url("../images/icons/heart.svg");
 
     &.selected {

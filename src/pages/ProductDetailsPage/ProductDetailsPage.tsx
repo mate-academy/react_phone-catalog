@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import './ProductDetailsPage.scss';
@@ -23,6 +23,7 @@ import { Item } from '../../types/Item';
 import { Loader } from '../../components/Loader';
 import { getCorrectImageUrl } from '../../helpers/getCorrectImageUrl';
 import { Title } from '../../components/Title';
+import { getMemoryString } from '../../helpers/getMemoryString';
 
 export const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -76,10 +77,10 @@ export const ProductDetailsPage = () => {
       setIsLoading(true);
       getProductById(id)
         .then(setProductDetails)
-        .catch(() => nav('/'))
+        .catch(() => nav('/not-found'))
         .finally(() => setIsLoading(false));
     } else {
-      nav('/');
+      nav('/not-found');
     }
   }, [id, products]);
 
@@ -134,10 +135,8 @@ export const ProductDetailsPage = () => {
                     <TransitionGroup component={null}>
                       <CSSTransition
                         key={currentImageIndex}
-                        timeout={300}
+                        timeout={500}
                         classNames="ProductDetailsPage__animation"
-                        unmountOnExit
-                        mountOnEnter
                       >
                         <img
                           key={currentImageIndex}
@@ -152,12 +151,12 @@ export const ProductDetailsPage = () => {
                   </div>
                 </div>
                 <div className="ProductDetailsPage__topInfo">
-                  <div className="ProductDetailsPage__topInfo-colors">
+                  {/* <div className="ProductDetailsPage__topInfo-colors">
                     <p className="ProductDetailsPage__topInfo-title">
                       Available colors
                     </p>
                     <div className="ProductDetailsPage__topInfo-colors-list">
-                      <div className="ProductDetailsPage__topInfo-colors-color">
+                      <div className="ProductDetailsPage__topInfo-colors-color active">
                         <div
                           className="ProductDetailsPage__topInfo-colors-color-value"
                           style={{ backgroundColor: '#000' }}
@@ -185,28 +184,28 @@ export const ProductDetailsPage = () => {
                     <div className="ProductDetailsPage__topInfo-capacity-list">
                       <button
                         className="primary-button active
-                            ProductDetailsPage__topInfo-capacity-list-button"
+                            ProductDetailsPage__topInfo-capacity-button"
                         type="button"
                       >
                         64 GB
                       </button>
                       <button
                         className="primary-button
-                            ProductDetailsPage__topInfo-capacity-list-button"
+                            ProductDetailsPage__topInfo-capacity-button"
                         type="button"
                       >
                         256 GB
                       </button>
                       <button
                         className="primary-button
-                            ProductDetailsPage__topInfo-capacity-list-button"
+                            ProductDetailsPage__topInfo-capacity-button"
                         type="button"
                       >
                         512 GB
                       </button>
                     </div>
                   </div>
-                  <span className="ProductDetailsPage__splitter" />
+                  <span className="ProductDetailsPage__splitter" /> */}
                   <div className="ProductDetailsPage__topInfo-price">
                     <p className="ProductDetailsPage__topInfo-price-new">
                       {`$${(product.price
@@ -221,7 +220,8 @@ export const ProductDetailsPage = () => {
                   <div className="ProductDetailsPage__topInfo-buttons">
                     <button
                       className={cn('primary-button wide', {
-                        selected: cart.find((favItem) => favItem.id === product.id),
+                        selected: cart.find((favItem) => favItem.id
+                          === product.id),
                       })}
                       type="button"
                       onClick={(event) => handleAddToCartButton(product, event)}
@@ -234,27 +234,231 @@ export const ProductDetailsPage = () => {
                     </button>
                     <button
                       type="button"
-                      className={cn('simple-button', 'favourite', {
-                        selected: favourites.find((favItem) => favItem.id === product.id),
-                      })}
+                      className={cn('simple-button', 'favourite',
+                        'ProductDetailsPage__topInfo-buttons-favourite',
+                        {
+                          selected: favourites.find((favItem) => favItem.id
+                            === product.id),
+                        })}
                       onClick={(event) => handleFavouriteButton(product, event)}
                     />
                   </div>
                   <div className="ProductDetailsPage__topInfo-specs">
-                    <div className="ProductDetailsPage__topInfo-specs-block">
-                      <p className="ProductDetailsPage__topInfo-specs-block-title">
-                        Screen
-                      </p>
-                      <p className="ProductDetailsPage__topInfo-specs-block-value">
-                        {product.screen}
-                      </p>
-                    </div>
+                    {(productDetails.display.screenSize
+                      && productDetails.display.screenResolution)
+                      && (
+                        <div
+                          className="ProductDetailsPage__topInfo-specs-block"
+                        >
+                          <p className="ProductDetailsPage__topInfo-specs-title">
+                            Screen
+                          </p>
+                          <p className="ProductDetailsPage__topInfo-specs-value">
+                            {
+                              `${productDetails.display.screenSize}`
+                              + ` ${productDetails.display.screenResolution}`
+                            }
+                          </p>
+                        </div>
+                      )}
+                    {productDetails.storage.ram && (
+                      <div className="ProductDetailsPage__topInfo-specs-block">
+                        <p className="ProductDetailsPage__topInfo-specs-title">
+                          RAM
+                        </p>
+                        <p className="ProductDetailsPage__topInfo-specs-value">
+                          {getMemoryString(productDetails.storage.ram)}
+                        </p>
+                      </div>
+                    )}
+                    {productDetails.storage.flash && (
+                      <div className="ProductDetailsPage__topInfo-specs-block">
+                        <p className="ProductDetailsPage__topInfo-specs-title">
+                          Storage
+                        </p>
+                        <p className="ProductDetailsPage__topInfo-specs-value">
+                          {getMemoryString(productDetails.storage.flash)}
+                        </p>
+                      </div>
+                    )}
+                    {productDetails.battery.type && (
+                      <div className="ProductDetailsPage__topInfo-specs-block">
+                        <p className="ProductDetailsPage__topInfo-specs-title">
+                          Battery
+                        </p>
+                        <p className="ProductDetailsPage__topInfo-specs-value">
+                          {productDetails.battery.type}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
             <div className="ProductDetailsPage__description">
-              {productDetails?.android.os}
+              <div
+                data-cy="productDescription"
+                className="ProductDetailsPage__description-about"
+              >
+                <p className="ProductDetailsPage__description-title">
+                  About
+                </p>
+                <span className="ProductDetailsPage__splitter" />
+                <p className="ProductDetailsPage__description-about-text">
+                  {productDetails.description}
+                </p>
+              </div>
+              <div className="ProductDetailsPage__description-specs">
+                <p className="ProductDetailsPage__description-title">
+                  Tech specs
+                </p>
+                <span className="ProductDetailsPage__splitter" />
+                <div className="ProductDetailsPage__description-specs-list">
+                  {(productDetails.display.screenSize
+                    && productDetails.display.screenResolution)
+                    && (
+                      <div className="ProductDetailsPage__description-specs-block">
+                        <p className="ProductDetailsPage__description-specs-title">
+                          Screen
+                        </p>
+                        <p className="ProductDetailsPage__description-specs-value">
+                          {
+                            `${productDetails.display.screenSize}`
+                            + ` ${productDetails.display.screenResolution}`
+                          }
+                        </p>
+                      </div>
+                    )}
+                  {productDetails.storage.ram && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p
+                        className="ProductDetailsPage__description-specs-title"
+                      >
+                        RAM
+                      </p>
+                      <p
+                        className="ProductDetailsPage__description-specs-value"
+                      >
+                        {getMemoryString(productDetails.storage.ram)}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.storage.flash && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p
+                        className="ProductDetailsPage__description-specs-title"
+                      >
+                        Storage
+                      </p>
+                      <p
+                        className="ProductDetailsPage__description-specs-value"
+                      >
+                        {getMemoryString(productDetails.storage.flash)}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.battery.type && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        Battery
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.battery.type}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.android.os && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        System
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.android.os}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.camera.primary && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        Primary camera
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.camera.primary}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.hardware.cpu && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        Processor
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.hardware.cpu}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.hardware.accelerometer && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        Accelerometer
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.hardware.accelerometer ? 'Yes' : 'No'}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.hardware.fmRadio && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        FM-radio
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.hardware.fmRadio ? 'Yes' : 'No'}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.connectivity.wifi && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        Wi-fi
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.connectivity.wifi}
+                      </p>
+                    </div>
+                  )}
+                  {productDetails.connectivity.bluetooth && (
+                    <div
+                      className="ProductDetailsPage__description-specs-block"
+                    >
+                      <p className="ProductDetailsPage__description-specs-title">
+                        Bluetooth
+                      </p>
+                      <p className="ProductDetailsPage__description-specs-value">
+                        {productDetails.connectivity.bluetooth}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
             <div className="ProductDetailsPage__slider">
               <ProductSlider
