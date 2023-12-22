@@ -1,11 +1,17 @@
 export const getSearchString = (
   searchParams: URLSearchParams,
-  key: string,
-  value: string,
+  params:{ [key: string]: string | null },
 ) => {
   const urlSearchParams = new URLSearchParams(searchParams);
 
-  urlSearchParams.set(key, value);
+  Object.entries(params)
+    .forEach(([key, value]) => {
+      if (value) {
+        urlSearchParams.set(key, value);
+      } else {
+        urlSearchParams.delete(key);
+      }
+    });
 
   return urlSearchParams.toString();
 };

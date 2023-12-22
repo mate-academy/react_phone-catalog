@@ -32,11 +32,11 @@
         height: 1px;
         transition: width 0.3s;
       }
+    }
 
-      &:hover {
-        &::after {
-          width: 100%;
-        }
+    &:not(:last-child):hover {
+      .HistoryLinks__link-title::after {
+        width: 100%;
       }
     }
   }

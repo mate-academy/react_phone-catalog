@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useSearchParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 import cn from 'classnames';
 import { Pagination } from '../Pagination';
 import './Filtration.scss';
@@ -16,6 +19,7 @@ const sortOptions: { [key: string]: SortType } = {
   Newest: 'age',
   Alphabetically: 'name',
   Cheapest: 'price',
+  Expensive: '-price',
 };
 
 const perPageOptions: PerPageType[] = ['4', '8', '16', 'all'];
@@ -25,8 +29,9 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
   const [sort, setSort] = useState('Newest');
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
-  const [perPage, setPerPage] = useState<PerPageType>('16');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage]
+    = useState<PerPageType>(searchParams.get('perPage') as PerPageType || '16');
+  const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
 
   useEffect(() => {
     const sortOption = searchParams.get('sort');
@@ -39,7 +44,7 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
     } else {
       setSort('Newest');
       searchParams.set('sort', 'age');
-      setSearchParams(searchParams);
+      setSearchParams(new URLSearchParams(searchParams));
     }
   }, [searchParams.get('sort')]);
 
@@ -49,7 +54,6 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
     if (perPageOptions.includes(perPageOption as PerPageType)) {
       setPerPage(perPageOption as PerPageType);
     } else {
-      setPerPage('16');
       searchParams.set('perPage', '16');
       setSearchParams(searchParams);
     }
@@ -64,12 +68,12 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
         setCurrentPage(+currentPageOption);
       } else {
         setCurrentPage(1);
-        searchParams.set('page', '1');
+        searchParams.delete('page');
         setSearchParams(searchParams);
       }
     } catch {
       setCurrentPage(1);
-      searchParams.set('page', '1');
+      searchParams.delete('page');
       setSearchParams(searchParams);
     }
   }, [searchParams.get('page')]);
@@ -80,27 +84,36 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
         <div className="Filtration__filters-sort">
           <p className="Filtration__filters-description">Sort by</p>
           <div
-            tabIndex={0}
-            role="menu"
             className="dropdown"
-            onFocus={() => setIsSortOpen(prev => !prev)}
-            onBlur={() => setIsSortOpen(false)}
+            onBlur={() => setTimeout(() => setIsSortOpen(false), 100)}
           >
-            <p className="dropdown-text">
-              {sort}
-            </p>
-            <img
-              src="icons/arrow-down-grey.svg"
-              alt="arr"
-              className="dropdown-arrow"
-            />
-            <div className={cn('dropdown-content', { show: isSortOpen })}>
+            <button
+              type="button"
+              className="dropdown-button"
+              onClick={() => setIsSortOpen(prev => !prev)}
+            >
+              <p className="dropdown-text">
+                {sort}
+              </p>
+              <img
+                src="icons/arrow-down-grey.svg"
+                alt="arr"
+                className={cn('dropdown-arrow', { rotate: isSortOpen })}
+              />
+            </button>
+            <div
+              className={cn('dropdown-content', { show: isSortOpen })}
+            >
               {Object.entries(sortOptions).map(([key, option]) => (
                 <Link
                   key={key}
-                  to={{ search: getSearchString(searchParams, 'sort', option) }}
+                  to={{
+                    search: getSearchString(
+                      searchParams,
+                      { sort: option, page: null },
+                    ),
+                  }}
                   className={cn('dropdown-item', { active: sort === key })}
-                  onClick={event => event.currentTarget.blur()}
                 >
                   {key}
                 </Link>
@@ -111,30 +124,36 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
         <div className="Filtration__filters-items">
           <p className="Filtration__filters-description">Items on page</p>
           <div
-            tabIndex={0}
-            role="menu"
-            className="dropdown Filtration__filters-items-dropdown"
-            onFocus={() => setIsPerPageOpen(prev => !prev)}
-            onBlur={() => setIsPerPageOpen(false)}
+            className="dropdown"
+            onBlur={() => setTimeout(() => setIsPerPageOpen(false), 100)}
           >
-            <p className="dropdown-text">
-              {perPage}
-            </p>
-            <img
-              src="icons/arrow-down-grey.svg"
-              alt="arr"
-              className="dropdown-arrow"
-            />
+            <button
+              type="button"
+              className="dropdown-button
+                Filtration__filters-items-dropdown-button"
+              onClick={() => setIsPerPageOpen(prev => !prev)}
+            >
+              <p className="dropdown-text">
+                {perPage}
+              </p>
+              <img
+                src="icons/arrow-down-grey.svg"
+                alt="arr"
+                className={cn('dropdown-arrow', { rotate: isPerPageOpen })}
+              />
+            </button>
             <div className={cn('dropdown-content', { show: isPerPageOpen })}>
               {perPageOptions.map(option => (
                 <Link
                   key={option}
                   to={{
-                    search: getSearchString(searchParams, 'perPage', option),
+                    search: getSearchString(
+                      searchParams,
+                      { perPage: option, page: null },
+                    ),
                   }}
                   className={cn('dropdown-item',
                     { active: perPage === option })}
-                  onClick={event => event.currentTarget.blur()}
                 >
                   {option}
                 </Link>

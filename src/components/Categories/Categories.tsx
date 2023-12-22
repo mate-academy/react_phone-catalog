@@ -1,18 +1,13 @@
-import { useCallback, useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Title } from '../Title';
 import { ProductsContext } from '../../context/ProductsContext';
+import { scrollToTop } from '../../helpers/scrollToTop';
 
 import './Categories.scss';
 
 export const Categories = () => {
   const { products } = useContext(ProductsContext);
-
-  const scrollToTop = useCallback(() => {
-    document.documentElement.style.scrollBehavior = 'auto';
-    window.scroll({ top: 0 });
-    document.documentElement.style.scrollBehavior = 'smooth';
-  }, []);
 
   return (
     <div className="categories">
