@@ -8,9 +8,9 @@ import React, {
 const TRANSITION_DURATION = 300;
 
 const images: Image[] = [
-  { id: 0, url: '_new/img/banner-phones.png' },
-  { id: 1, url: '_new/img/banner-tablets.png' },
-  { id: 2, url: '_new/img/banner-accessories.png' },
+  { id: 0, url: 'img/utils/banner-phones.png' },
+  { id: 1, url: 'img/utils/banner-tablets.png' },
+  { id: 2, url: 'img/utils/banner-accessories.png' },
 ];
 
 type BannerSliderContextData = {
