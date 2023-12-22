@@ -17,5 +17,5 @@ export interface Product {
 export enum ProductType {
   Phone = 'phones',
   Tablet = 'tablets',
-  Accessory = 'accessory',
+  Accessories = 'accessories',
 }

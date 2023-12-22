@@ -144,10 +144,10 @@ export const ProductDetailsPage = () => {
               </div>
               <div className="product-details__price">
                 <h1 className="product-details__current-price">
-                  {`${productDetails?.priceDiscount}`}
+                  {`$${productDetails?.priceDiscount}`}
                 </h1>
                 <div className="product-details__full-price">
-                  {`${productDetails?.priceRegular}`}
+                  {`$${productDetails?.priceRegular}`}
                 </div>
               </div>
 

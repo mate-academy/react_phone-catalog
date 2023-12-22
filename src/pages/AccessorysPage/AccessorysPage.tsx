@@ -32,8 +32,8 @@ export const AccessorysPage = () => {
         products={productsAccessory}
         isError={isError}
         isLoading={isLoading}
-        category={ProductType.Accessory}
-        title="Accessorys"
+        category={ProductType.Accessories}
+        title="Accessoryies"
       />
     </section>
   );

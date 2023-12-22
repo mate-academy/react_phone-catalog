@@ -18,9 +18,11 @@
   }
 
   &__input {
-    font-family: $font-semibold;
+    font-family: $font-regular;
     font-size: 14px;
     border: none;
+    font-style: normal;
+    line-height: normal;
 
     &::placeholder {
       color: $grey-fourth-color;

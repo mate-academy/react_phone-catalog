@@ -36,6 +36,9 @@
     font-size: 14px;
     padding-left: 12px;
     line-height: 21px;
+    font-weight: 700;
+    letter-spacing: 0;
+    font-style: normal;
   }
 
   &__list {
@@ -45,9 +48,10 @@
     background-color: #fff;
     border: 1px solid $grey-third-color;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    color: $grey-secondary-color;
   }
 
-  &__is-active {
+  &__is--active {
     display: none;
   }
 
@@ -58,11 +62,17 @@
     padding-left: 12px;
     height: 40px;
     font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-style: normal;
     cursor: pointer;
     transition: all 0.3s;
+    font-family: $font-regular;
 
     &:hover {
       background-color: $grey-background;
+      color: $grey-primary-color;
     }
   }
 }

@@ -7,7 +7,7 @@ import { HomePage } from './pages/Homepage/HomePage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { TabletsPage } from './pages/TabletsPage/TabletsPage';
-import { AccessorysPage } from './pages/AccessoryPage/AccessoryPage';
+import { AccessorysPage } from './pages/AccessorysPage/AccessorysPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { PageNotFound } from './pages/PageNotFound/PageNotFound';

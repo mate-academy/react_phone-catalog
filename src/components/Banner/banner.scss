@@ -7,11 +7,6 @@
   height: 400px;
   width: 100%;
 
-  &--margin {
-    margin-top: 40px;
-    margin-bottom: 104px;
-  }
-
   &__caroucel {
     display: flex;
     height: 100%;
@@ -62,14 +57,14 @@
   &__indicators {
     position: absolute;
     left: 48%;
-    top: 512px;
+    top: 472px;
 
   }
 
   &__indicator {
     width: 14px;
     height: 4px;
-    margin-right: 12px;
+    margin-right: 14px;
 
     transition: all 0.5s;
 

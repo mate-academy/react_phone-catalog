@@ -6,6 +6,8 @@
   align-items: center;
   padding-left: 24px;
   box-shadow: 0 1px 0 $grey-third-color;
+  font-family: $font-bold;
+  color: $grey-secondary-color;
 
   &__nav {
     position: relative;
@@ -13,22 +15,24 @@
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
     margin-right: 64px;
   }
 
   &__choosed {
     display: flex;
-    max-width: 460px;
   }
 
   &__icon {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 64px;
     height: 64px;
-    position: relative;
     background: #fff;
+    box-shadow: -1px 0 0 $grey-third-color;
   }
 
   &__icon-search {
@@ -46,6 +50,8 @@
     align-items: center;
     font-size: 12px;
     line-height: 11px;
+    font-weight: 700;
+    font-style: normal;
     color: $grey-secondary-color;
     font-family: $font-bold;
     letter-spacing: 0.04em;
@@ -89,7 +95,7 @@
     margin-right: 64px;
 
     &::before {
-      bottom: -24px;
+      bottom: -19px;
     }
 
     &--is-active {
@@ -101,7 +107,7 @@
         height: 3px;
         position: absolute;
         left: 0;
-        bottom: -24px;
+        bottom: -19px;
         background-color: $grey-primary-color;
       }
     }
@@ -129,17 +135,30 @@
 
   &__icon-count {
     position: absolute;
-    left: 24px;
-    top: 24px;
+    left: 34px;
+    top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background-color: $red;
     color: #fff;
     font-family: $font-semibold;
     font-size: 9px;
+
+    &-div {
+      position: relative;
+    }
+
+    &-numbers {
+      box-sizing: border-box;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-45%, -55%);
+      color: #fff;
+    }
   }
 }

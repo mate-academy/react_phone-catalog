@@ -1,4 +1,5 @@
 import './dropDown.scss';
+import classNames from 'classnames';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Option } from '../../types/SortTypes';
@@ -60,27 +61,27 @@ export const DropDown: React.FC<Props> = ({
         </div>
       </button>
 
-      {isOpen && (
-        <ul
-          className="drop-down__list drop-down__is--active"
-        >
-          {options.map(option => (
-            <li key={option.label}>
-              <Link
-                className="drop-down-item"
-                to={{
-                  search: getSearchWith(
-                    searchParams, { [searchName]: option.value },
-                  ),
-                }}
-                onClick={() => handleSelectOption(option.value)}
-              >
-                {option.value}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul
+        className={classNames('drop-down__list', {
+          'drop-down__is--active': !isOpen,
+        })}
+      >
+        {options.map(option => (
+          <li key={option.label}>
+            <Link
+              className="drop-down__item"
+              to={{
+                search: getSearchWith(
+                  searchParams, { [searchName]: option.value },
+                ),
+              }}
+              onClick={() => handleSelectOption(option.value)}
+            >
+              {option.value}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

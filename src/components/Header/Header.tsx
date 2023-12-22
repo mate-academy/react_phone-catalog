@@ -115,7 +115,11 @@ export const Header = () => {
 
           {favourites.length > 0 && (
             <div className="header__icon-count">
-              {favourites.length}
+              <div className="header__icon-count-div">
+                <div className="header__icon-count-numbers">
+                  {favourites.length}
+                </div>
+              </div>
             </div>
           )}
         </NavLink>

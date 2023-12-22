@@ -43,16 +43,16 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
         <div className="product-card__price">
           {title === ProductSection.NewBrand ? (
             <div className="product-card__price-regular">
-              {`${fullPrice}`}
+              {`$${fullPrice}`}
             </div>
           ) : (
             <>
               <h2 className="product-card__price-regular">
-                {`${price}`}
+                {`$${price}`}
               </h2>
 
               <div className="product-card__price-discount">
-                {`${fullPrice}`}
+                {`$${fullPrice}`}
               </div>
             </>
           )}

@@ -1,20 +1,21 @@
 import classNames from 'classnames';
 import './banner.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import banner1 from '../../Images/Banner/banner-phones.png';
 import banner2 from '../../Images/Banner/banner-tablets.png';
 import banner3 from '../../Images/Banner/banner-accessories.png';
 
 export const Banner = () => {
   const [position, setPosition] = useState(0);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const imgWidth = imgRef.current?.offsetWidth || 1040;
   const bannerImg = [
     banner1,
     banner2,
     banner3,
   ];
 
-  const imgWidth = 1040;
-  const maxPosition = imgWidth * (bannerImg.length - 1);
+  const maxPosition = -imgWidth * (bannerImg.length - 1);
 
   const handleClickNext = () => {
     const newPosition = position - imgWidth;
@@ -37,7 +38,7 @@ export const Banner = () => {
   };
 
   const handleIndicator = (index: number) => {
-    setPosition(imgWidth * index);
+    setPosition(-imgWidth * index);
   };
 
   useEffect(() => {
@@ -51,7 +52,7 @@ export const Banner = () => {
   }, [position]);
 
   return (
-    <div className="banner banner--margin">
+    <div className="banner">
       <button
         className="banner__button banner__button--left"
         type="button"
@@ -74,6 +75,7 @@ export const Banner = () => {
               key={img}
             >
               <img
+                ref={imgRef}
                 className="banner__img"
                 width={imgWidth}
                 src={img}
@@ -97,7 +99,7 @@ export const Banner = () => {
             key={img}
             type="button"
             className={classNames('banner__indicator', {
-              'banner__indicator--active': position === imgWidth * index,
+              'banner__indicator--active': position === -imgWidth * index,
             })}
             onClick={() => handleIndicator(index)}
           >
