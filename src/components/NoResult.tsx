@@ -1,5 +1,5 @@
 import React from 'react';
-// import './NoResult.scss';
+import './NoResult.scss';
 
 type Props = {
   title: string,

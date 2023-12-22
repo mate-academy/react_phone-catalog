@@ -17,16 +17,8 @@ export const CartContext = React.createContext<ContextType>({
 });
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [storedProductsInCart] = useLocalStorage('cart', []);
-
-  // Ensure that the stored value is of type ProductCardType[]
-  const initialProductsInCart: ProductCardType[]
-  = Array.isArray(storedProductsInCart)
-    ? storedProductsInCart
-    : [];
-
   const [productsInCart, setProductsInCart]
-  = React.useState<ProductCardType[]>(initialProductsInCart);
+  = useLocalStorage('cart', []);
 
   const value = useMemo(() => (
     { productsInCart, setProductsInCart }

@@ -1,9 +1,26 @@
 import { NavLink, Link } from 'react-router-dom';
+import { useContext, useMemo } from 'react';
+import classNames from 'classnames';
 import { Logo } from './Logo';
 import './Navbar.scss';
 import { getLinkClass } from '../helpers/getLinkClass';
+import { CartContext } from '../context/CardContext';
+import { FavouriteContext } from '../context/FavouriteContext';
 
 export const Navbar = () => {
+  const { favouriteProducts } = useContext(FavouriteContext);
+  const { productsInCart } = useContext(CartContext);
+
+  const favItemsQuantity = useMemo(() => {
+    return favouriteProducts.length;
+  }, [favouriteProducts]);
+
+  const cartItemsQuantity = useMemo(() => {
+    return productsInCart.reduce((prevValue, currentValue) => {
+      return prevValue + currentValue.quantity;
+    }, 0);
+  }, [productsInCart]);
+
   return (
     <nav
       data-cy="nav"
@@ -47,6 +64,16 @@ export const Navbar = () => {
           >
             <div className="navbar-right__block">
               <div className="navbar__icons liked" />
+              <div
+                className={classNames({
+                  'navbar__fav-quantity-none': favItemsQuantity === 0,
+                  'navbar__fav-quantity': favItemsQuantity > 0,
+                })}
+              >
+                <span className="navbar__fav-quantity-num">
+                  {favItemsQuantity}
+                </span>
+              </div>
             </div>
           </Link>
           <Link
@@ -55,6 +82,16 @@ export const Navbar = () => {
           >
             <div className="navbar-right__block">
               <div className="navbar__icons backet" />
+              <div
+                className={classNames({
+                  'navbar__card-quantity-none': cartItemsQuantity === 0,
+                  'navbar__card-quantity': cartItemsQuantity > 0,
+                })}
+              >
+                <span className="navbar__cart-quantity-num">
+                  {cartItemsQuantity}
+                </span>
+              </div>
             </div>
           </Link>
         </div>
