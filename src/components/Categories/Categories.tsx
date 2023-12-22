@@ -12,7 +12,7 @@ export const Categories = () => {
   return (
     <div className="categories">
       <Title title="Shop by category" />
-      <div className="categories__content">
+      <div data-cy="categoryLinksContainer" className="categories__content">
         <Link
           to="/phones"
           className="categories__item"

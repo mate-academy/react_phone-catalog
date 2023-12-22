@@ -57,6 +57,13 @@ export const Header = () => {
     debounce(() => setSearch(query));
   };
 
+  const clearInput = () => {
+    setInputValue('');
+
+    setIsLoading(true);
+    debounce(() => setSearch(''));
+  };
+
   useEffect(() => {
     if (pathname.toLowerCase() === '/cart') {
       setIsTabCard(true);
@@ -130,12 +137,24 @@ export const Header = () => {
               onChange={onInputChanged}
             />
             {/* eslint-disable-next-line react/button-has-type */}
-            <button className="header__search-button">
-              <img
-                src="icons/search.svg"
-                alt="search"
-                className="header__search-icon"
-              />
+            <button
+              className="header__search-button"
+              onClick={clearInput}
+            >
+              {inputValue
+                ? (
+                  <img
+                    src="icons/cross.svg"
+                    alt="cross"
+                    className="header__search-icon"
+                  />
+                ) : (
+                  <img
+                    src="icons/search.svg"
+                    alt="search"
+                    className="header__search-icon"
+                  />
+                )}
             </button>
           </div>
         )}

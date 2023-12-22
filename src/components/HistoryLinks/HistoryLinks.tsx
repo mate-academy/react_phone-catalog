@@ -25,7 +25,7 @@ export const HistoryLinks: React.FC<Props> = ({ links }) => {
   };
 
   return (
-    <div className="HistoryLinks">
+    <div data-cy="breadCrumbs" className="HistoryLinks">
       <Link className="HistoryLinks__link" to="/">
         <img
           src="icons/home.svg"

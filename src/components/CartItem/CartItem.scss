@@ -2,6 +2,8 @@
 
 .CartItem {
   grid-column: 1/17;
+  text-decoration: none;
+  color: unset;
 
   display: flex;
   flex-direction: row;
