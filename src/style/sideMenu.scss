@@ -1,0 +1,49 @@
+@import "./utils/variables.scss";
+
+.side__menu {
+  position: absolute;
+  height: 100%;
+  border-right: 1px solid $color-secondary;
+  background-color: #fff;
+  top: 56px;
+  z-index: 1;
+  padding-inline: 50px;
+  transition: transform 2s ease;
+  transform: translateX(-100%);
+
+  &--visible {
+    transform: translateX(0);
+  }
+}
+
+.side__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.side__link {
+  color: $color-secondary;
+  padding-block: 10px;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &--active {
+    color: $color-primary;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      bottom: 0;
+
+      background-color: $color-primary;
+    }
+  }
+}
