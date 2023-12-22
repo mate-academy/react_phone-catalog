@@ -64,8 +64,6 @@ export const CatalogPage: React.FC = () => {
     } else {
       data();
     }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [category, favorites]);
 
   return (

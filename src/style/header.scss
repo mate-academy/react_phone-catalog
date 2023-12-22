@@ -1,17 +1,31 @@
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
   background: #fff;
   box-shadow: 1px 1px 1px $color-secondary-2;
-
-  height: 64px;
 
   padding-left: 24px;
 
   margin-bottom: 40px;
+
+  &__content {
+    max-width: 1136px;
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+
+    letter-spacing: 0.04em;
+
+    color: #89939a;
+  }
 
   &__logo {
     @media (min-width: 1200px) {
@@ -41,10 +55,10 @@
     @extend %uppercase;
   }
 
-  &__menu {
+  &__list {
     display: flex;
     flex-direction: row;
-    
+
     @media (min-width: 1200px) {
       gap: 64px;
     }
@@ -58,19 +72,20 @@
     }
 
     @media (max-width: 640px) {
-      gap: 16px;
+      gap: 12px;
     }
-  }
-
-  &__item {
-    position: relative;
   }
 
   &__link {
     padding: 27px 0;
     color: $color-secondary;
+    position: relative;
 
     transition-duration: 0.3s;
+
+    @media (max-width: 500px) {
+      font-size: 8px;
+    }
 
     &:hover {
       color: $color-primary;
@@ -120,6 +135,10 @@
       bottom: 0;
 
       width: 64px;
+
+      @media (max-width: 640px) {
+        height: 48px;
+      }
     }
 
     &--link:hover::after {
@@ -131,6 +150,10 @@
       bottom: 0;
 
       background-color: $color-primary;
+
+      @media (max-width: 640px) {
+        height: 48px;
+      }
     }
 
     &--link--active::after {
@@ -142,6 +165,10 @@
       bottom: 0;
 
       background-color: $color-primary;
+
+      @media (max-width: 640px) {
+        height: 48px;
+      }
     }
   }
 

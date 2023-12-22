@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import arrowRight from '../images/icons/Arrow_right.svg';
 import banner1 from '../images/banners/banner1.png';
 import banner2 from '../images/banners/banner2.png';
@@ -11,18 +12,32 @@ const slides = [
   banner3,
 ];
 
+const links = [
+  '/phones',
+  '/tablets',
+  '/accessories',
+];
+
 export const Slider: React.FC = () => {
-  const [translateXValue, setTranslateXValue] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
-  const width = 1040;
+  const width = activeImg * 100;
+  const transform = `translateX(-${width}%)`;
 
   const handleArrowClick = (direction: 'left' | 'right') => {
     if (direction === 'right') {
-      setActiveImg(activeImg + 1);
-      setTranslateXValue((prev) => prev - width);
-    } else {
-      setActiveImg(activeImg - 1);
-      setTranslateXValue(prev => prev + width);
+      if (activeImg === 2) {
+        setActiveImg(0);
+      } else {
+        setActiveImg(activeImg + 1);
+      }
+    }
+
+    if (direction === 'left') {
+      if (activeImg === 0) {
+        setActiveImg(2);
+      } else {
+        setActiveImg(activeImg - 1);
+      }
     }
   };
 
@@ -33,31 +48,32 @@ export const Slider: React.FC = () => {
           className="slider__button slider__button--left"
           type="button"
           onClick={() => handleArrowClick('left')}
-          disabled={translateXValue === 0}
         >
           <img
             src={arrowRight}
             alt="button left"
-            className={classNames({
-              'slider__button-img--activity': translateXValue === 0,
-            })}
+            className="slider__button-img"
           />
         </button>
 
         <div className="slider__img-container">
           <div
-            className="slider__img-container-inner"
-            style={{ transform: `translateX(${translateXValue}px)` }}
+            className="slider__img-container__list"
+            style={{ transform }}
           >
             {slides.map((img) => (
-              <>
-                <img
-                  key={img.length}
-                  className="slider__img"
-                  src={img}
-                  alt="banner"
-                />
-              </>
+              <div key={img}>
+                <Link
+                  to={links[activeImg]}
+                  className="slider__img-container__link"
+                >
+                  <img
+                    className="slider__img"
+                    src={img}
+                    alt="banner"
+                  />
+                </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -66,15 +82,11 @@ export const Slider: React.FC = () => {
           className="slider__button slider__button--right"
           type="button"
           onClick={() => handleArrowClick('right')}
-          disabled={translateXValue === -1 * (width * (slides.length - 1))}
         >
           <img
             src={arrowRight}
-            alt="button left"
-            className={classNames({
-              'slider__button-img--activity':
-              translateXValue === -1 * (width * (slides.length - 1)),
-            })}
+            alt="button right"
+            className="slider__button-img"
           />
         </button>
       </div>

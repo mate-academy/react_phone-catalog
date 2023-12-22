@@ -9,6 +9,16 @@
   height: 100%;
   transition-duration: 0.3s;
 
+  &__menu {
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/icons/icon_menu.png");
+  }
+
   &__add {
     font-weight: 600;
     font-size: 14px;
@@ -35,7 +45,6 @@
 
   &__fav {
     border: 1px solid $gray-icons-placeholders;
-
     width: 64px;
 
     &:hover {
