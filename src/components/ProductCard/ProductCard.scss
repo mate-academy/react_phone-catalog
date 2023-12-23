@@ -1,7 +1,9 @@
 .card {
+  display: block;
   padding: 32px 24px 24px;
   border: 1px solid #ccc;
   color: #313237;
+  text-decoration: none;
 
   &__img {
     max-width: 100%;
@@ -62,28 +64,5 @@
   &__button {
     display: flex;
     justify-content: space-between;
-
-    &-add {
-      font-family: "Mont-SemiBold", sans-serif;
-      font-size: 14px;
-      padding: 10px 0;
-      background: #313237;
-      color: #fff;
-      cursor: pointer;
-      width: 100%;
-      border: none;
-      line-height: 1;
-    }
-
-    &--favorite {
-      background: none;
-      border: 1px solid #b4bdc3;
-      padding: 12px;
-      margin-left: 8px;
-
-      &-img {
-        display: block;
-      }
-    }
   }
 }

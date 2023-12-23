@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { useSearchContext } from '../Context/Context';
 
 export const SearchField: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const { searchText, setSearchText } = useSearchContext();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [isFocus, setIsFocus] = useState(false);
@@ -16,13 +16,15 @@ export const SearchField: React.FC = () => {
     setSearchText(e.target.value);
   };
 
-  const handleChangeInput = () => {
-    if (isFocus && searchText.length > 0) {
-      setSearchText('');
-    }
+  const handleOpenClose = () => {
+    const hasTextInQuery = search && search.includes('query=');
 
-    if (inputRef.current && !isFocus) {
-      inputRef.current.focus();
+    if (hasTextInQuery && searchText.length > 0) {
+      setSearchText('');
+    } else if (!searchText.length) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
     }
   };
 
@@ -45,11 +47,12 @@ export const SearchField: React.FC = () => {
       <button
         type="button"
         className="searchField__button"
-        onClick={handleChangeInput}
+        onClick={handleOpenClose}
       >
-        <span className={classNames('searchField__img', {
-          'searchField__img-close': isFocus && searchText.length > 0,
-        })}
+        <span
+          className={classNames('searchField__img', {
+            'searchField__img-close': isFocus && searchText.length > 0,
+          })}
         />
       </button>
 

@@ -16,7 +16,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   onPageChange,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const updatePageInUrl = (page: number) => {
     setSearchParams((prevSearchParams) => {
@@ -27,10 +27,6 @@ export const Pagination: React.FC<PaginationProps> = ({
       return newSearchParams;
     });
   };
-
-  const getPage = Number(searchParams.get('page'));
-
-  console.log(getPage, currentPage, currentPage === 1);
 
   const handleLeftArrowClick = () => {
     if (currentPage > 1) {

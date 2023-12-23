@@ -28,6 +28,7 @@
   }
 
   &__icon {
+    position: relative;
     border-left: 1px solid #dbdbdb;
     line-height: 0;
     display: inline-block;
@@ -36,6 +37,27 @@
     &-favorite {
       padding: 25px;
       height: 100%;
+
+      &--counter {
+        position: absolute;
+        top: 18px;
+        right: 17px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        background-color: #eb5757;
+        width: 14px;
+        height: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &--length {
+        color: white;
+        font-size: 9px;
+        line-height: 1;
+        font-family: "Mont-SemiBold", sans-serif;
+      }
     }
   }
 }

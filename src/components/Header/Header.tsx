@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable no-trailing-spaces */
-import React from 'react';
 import './Header.scss';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
@@ -9,6 +8,7 @@ import logoImg from '../../images/LOGO.svg';
 import favoriteIcon from '../../images/Favorite_icon.svg';
 import basketIcon from '../../images/Basket_icon.svg';
 import { SearchField } from '../SearchField/SearchField';
+import { useSearchContext } from '../Context/Context';
 
 const getLinkClass = (
   { isActive }: { isActive: boolean },
@@ -18,7 +18,8 @@ const getLinkClass = (
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
-  const searchShow = pathname === '/phone';
+  const searchShow = pathname === '/phones';
+  const { getBasket, getFavorite } = useSearchContext();
 
   return (
     <header className="header">
@@ -32,8 +33,8 @@ export const Header: React.FC = () => {
           <nav className="navbar">
             <ul className="navbar__list">
               <NavLink to="/" className={getLinkClass}>home</NavLink>
-              <NavLink to="phone" className={getLinkClass}>phones</NavLink>
-              <NavLink to="tablet" className={getLinkClass}>tablets</NavLink>
+              <NavLink to="phones" className={getLinkClass}>phones</NavLink>
+              <NavLink to="tablets" className={getLinkClass}>tablets</NavLink>
               <NavLink to="accessory" className={getLinkClass}>accessories</NavLink>
             </ul>
           </nav>
@@ -44,10 +45,27 @@ export const Header: React.FC = () => {
 
           <Link to="/" className="navigation__icon">
             <img src={favoriteIcon} alt="icon_favorite" className="navigation__icon-favorite" />
+
+            {getFavorite.length !== 0 && (
+              <div className="navigation__icon-basket--counter">
+                <span className="navigation__icon-basket--length">
+                  {getFavorite.length}
+                </span>
+              </div>
+            )}
           </Link>
 
           <Link to="/" className="navigation__icon">
             <img src={basketIcon} alt="icon-basket" className="navigation__icon-basket" />
+
+            {getBasket.length !== 0 && (
+              <div className="navigation__icon-basket--counter">
+                <span className="navigation__icon-basket--length">
+                  {getBasket.length}
+                </span>
+              </div>
+            )}
+
           </Link>
         </div>
 

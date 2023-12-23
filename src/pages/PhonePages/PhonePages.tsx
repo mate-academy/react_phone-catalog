@@ -13,27 +13,40 @@ import { Product } from '../../types/Products';
 import './PhonePages.scss';
 import { useSearchContext } from '../../components/Context/Context';
 import { Pagination } from '../../components/Pagination/Pagination';
+import { getPhones } from '../../api/fetchData';
 
 const optionsSort = ['newest', 'alphabetically', 'price'];
 const optionsItemsPage = ['all', '4', '8', '16'];
 
-type Props = {
-  products: Product[];
-};
+export const PhonePages: React.FC = () => {
+  const [phoneProduct, setPhoneProduct] = useState<Product[]>([]);
 
-export const PhonePages: React.FC<Props> = ({ products }) => {
+  const loadProducts = async () => {
+    try {
+      const productsFromServer = await getPhones();
+
+      setPhoneProduct(productsFromServer);
+    } finally {
+      console.log('downLoad Phones');
+    }
+  };
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
   const { searchText } = useSearchContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedSort, setSelectedSort] = useState('');
   const [selectedPerPage, setSelectedPerPage] = useState(optionsItemsPage[0]);
-  const [preperedProducts, setPreperedProducts] = useState(products);
+  const [preperedProducts, setPreperedProducts] = useState(phoneProduct);
   const sortParam = searchParams.get('sort') || '';
   const perPageParam = searchParams.get('perPage') || '';
   const [totalPages, setTotalPages] = useState(1);
 
   const pageParam = searchParams.get('page');
   const [currentPage, setCurrentPage] = useState(pageParam ? Number(pageParam) : 1);
-  const [slicedProducts, setSliceProducts] = useState(products);
+  const [slicedProducts, setSliceProducts] = useState(phoneProduct);
 
   const handleOptionChange = (optionName: string, value: string) => {
     if (optionName === 'sort') {
@@ -56,7 +69,6 @@ export const PhonePages: React.FC<Props> = ({ products }) => {
     handleOptionChange('perPage', selectedOption);
     setCurrentPage(1);
 
-    // Скидую значення "page" на 1 після зміни параметра "perPage" у URL
     setSearchParams((prevSearchParams) => {
       prevSearchParams.delete('page');
       return new URLSearchParams(prevSearchParams.toString());
@@ -87,7 +99,7 @@ export const PhonePages: React.FC<Props> = ({ products }) => {
   // -----------------------------------------
 
   useEffect(() => {
-    const sorted = [...products];
+    const sorted = [...phoneProduct];
 
     switch (selectedSort) {
       case 'newest':
@@ -107,7 +119,7 @@ export const PhonePages: React.FC<Props> = ({ products }) => {
     });
 
     setPreperedProducts(filteredAndSortedProducts);
-  }, [products, selectedSort, selectedPerPage, searchText]);
+  }, [phoneProduct, selectedSort, selectedPerPage, searchText]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -135,7 +147,6 @@ export const PhonePages: React.FC<Props> = ({ products }) => {
       const defaultProducts = preperedProducts.slice(0, preperedProducts.length);
       setSliceProducts(defaultProducts);
       setTotalPages(1);
-
     }
 
   }, [preperedProducts, totalPages, currentPage, searchText]);
@@ -161,7 +172,7 @@ export const PhonePages: React.FC<Props> = ({ products }) => {
           <div className="mobile__title">
             Mobile phones
           </div>
-          <p className="mobile__count">{`${products.length} models`}</p>
+          <p className="mobile__count">{`${phoneProduct.length} models`}</p>
 
           <div className="mobile__dropdown">
             <DropDown

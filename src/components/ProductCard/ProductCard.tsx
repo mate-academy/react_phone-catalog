@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 import './ProductCard.scss';
-import favoriteIcon from './ProductCardImg/Favourites (Heart Like).svg';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Products';
+import { ButtonAddCard } from '../ButtonAddCard/ButtonAddCard';
+import { ButtonAddFavorite } from '../ButtonAddFavorite/ButtonAddFavorite';
 
 type Props = {
   product: Product;
@@ -12,6 +14,7 @@ const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
+    phoneId,
     name,
     price,
     fullPrice,
@@ -23,7 +26,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <>
-      <div className="card">
+      <Link
+        className="card"
+        to={`/${product.category}/${phoneId}`}
+      >
         <img
           src={`${BASE_URL}${image}`}
           alt="image__phone"
@@ -54,20 +60,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="card__button">
-          <button
-            className="card__button-add"
-            type="button"
-          >
-            Add to card
-          </button>
-          <button
-            className="card__button--favorite"
-            type="button"
-          >
-            <img src={favoriteIcon} alt="heart" className="card__button--favorite-img" />
-          </button>
+          <ButtonAddCard product={product} />
+          <ButtonAddFavorite product={product} />
         </div>
-      </div>
+      </Link>
     </>
 
   );
