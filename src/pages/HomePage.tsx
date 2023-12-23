@@ -82,6 +82,14 @@ export const HomePage = () => {
       <section className="App__header-carousel header-carousel">
         <div className="container">
           <div className="header-carousel__content">
+            <div className="header-carousel__mobile-header-image">
+              <img
+                alt="header mobile"
+                src="img/banner-phones.png"
+                className="header-carousel__mobile-image"
+              />
+            </div>
+
             <div className="header-carousel__carousel-container">
               <button
                 type="button"
@@ -177,6 +185,7 @@ export const HomePage = () => {
                   onClick={() => clickInPrev(
                     movingCarouselHotPrices,
                     setMovingCarouselHotPrices,
+                    widthCarousel / 290,
                   )}
                 >
                   <div
@@ -215,11 +224,62 @@ export const HomePage = () => {
               </div>
             </div>
 
-            <Carousel
-              phones={hotPriceProducts}
-              movingCarousel={movingCarouselHotPrices}
-              setWidthCarousel={setWidthCarousel}
-            />
+            <div className="mobile-carousel-container">
+              <button
+                type="button"
+                className={
+                  !movingCarouselHotPrices
+                  // eslint-disable-next-line
+                    ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+                    // eslint-disable-next-line
+                    : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+                }
+                onClick={() => clickInPrev(
+                  movingCarouselHotPrices,
+                  setMovingCarouselHotPrices,
+                  widthCarousel / 290,
+                )}
+              >
+                <div
+                  className={
+                    !movingCarouselHotPrices
+                      ? 'icon icon--mobile-arrow-left-disabled'
+                      : 'icon icon--mobile-arrow-left'
+                  }
+                />
+              </button>
+
+              <Carousel
+                phones={hotPriceProducts}
+                movingCarousel={movingCarouselHotPrices}
+                setWidthCarousel={setWidthCarousel}
+              />
+
+              <button
+                type="button"
+                className={
+                  movingCarouselHotPrices === endCarouselHotPrices
+                  // eslint-disable-next-line
+                    ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+                    // eslint-disable-next-line
+                    : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+                }
+                onClick={() => clickInNext(
+                  movingCarouselHotPrices,
+                  setMovingCarouselHotPrices,
+                  hotPriceProducts.length,
+                  widthCarousel / 290,
+                )}
+              >
+                <div
+                  className={
+                    movingCarouselHotPrices === endCarouselHotPrices
+                      ? 'icon icon--mobile-arrow-right-disabled'
+                      : 'icon icon--mobile-arrow-right'
+                  }
+                />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -326,6 +386,7 @@ export const HomePage = () => {
                   onClick={() => clickInPrev(
                     movingCarouselNewBrands,
                     setMovingCarouselNewBrands,
+                    widthCarousel / 290,
                   )}
                 >
                   <div
@@ -364,11 +425,62 @@ export const HomePage = () => {
               </div>
             </div>
 
-            <Carousel
-              phones={brandNewProducts}
-              movingCarousel={movingCarouselNewBrands}
-              setWidthCarousel={setWidthCarousel}
-            />
+            <div className="mobile-carousel-container">
+              <button
+                type="button"
+                className={
+                  !movingCarouselNewBrands
+                  // eslint-disable-next-line
+                    ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+                    // eslint-disable-next-line
+                    : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+                }
+                onClick={() => clickInPrev(
+                  movingCarouselNewBrands,
+                  setMovingCarouselNewBrands,
+                  widthCarousel / 290,
+                )}
+              >
+                <div
+                  className={
+                    !movingCarouselNewBrands
+                      ? 'icon icon--mobile-arrow-left-disabled'
+                      : 'icon icon--mobile-arrow-left'
+                  }
+                />
+              </button>
+
+              <Carousel
+                phones={brandNewProducts}
+                movingCarousel={movingCarouselNewBrands}
+                setWidthCarousel={setWidthCarousel}
+              />
+
+              <button
+                type="button"
+                className={
+                  movingCarouselNewBrands === endCarouselBrandNew
+                  // eslint-disable-next-line
+                    ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+                  // eslint-disable-next-line
+                    : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+                }
+                onClick={() => clickInNext(
+                  movingCarouselNewBrands,
+                  setMovingCarouselNewBrands,
+                  brandNewProducts.length,
+                  widthCarousel / 290,
+                )}
+              >
+                <div
+                  className={
+                    movingCarouselNewBrands === endCarouselBrandNew
+                      ? 'icon icon--mobile-arrow-right-disabled'
+                      : 'icon icon--mobile-arrow-right'
+                  }
+                />
+              </button>
+            </div>
           </div>
         </div>
       </section>

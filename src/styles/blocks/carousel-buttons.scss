@@ -1,7 +1,11 @@
 .carousel-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 16px;
+  display: none;
+
+  @include on640 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
 
   &__arrow {
     background-color: $white;
@@ -11,14 +15,6 @@
     justify-content: center;
     align-items: center;
     margin: 5px 0;
-
-    &--left {
-      grid-column: 1 / 2;
-    }
-
-    &--right {
-      grid-column: 2 / 3;
-    }
 
     &:hover {
       border: 1px solid $dark-gray;
@@ -32,13 +28,5 @@
     background-color: $white;
     border: 1px solid $light-gray;
     margin: 5px 0;
-
-    &--left {
-      grid-column: 1 / 2;
-    }
-
-    &--right {
-      grid-column: 2 / 3;
-    }
   }
 }

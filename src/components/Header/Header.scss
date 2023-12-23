@@ -2,11 +2,22 @@
 @import "../../styles/utils/mixins";
 
 .Header {
-  border-left: 1px solid $light-gray;
-  border-right: 1px solid $light-gray;
   box-shadow: 0 1px 0 0 $light-gray;
+  
   display: grid;
-  grid-template-columns: 1fr 327px 130px;
+  grid-template-columns: 70px 1fr 65px;
+
+  @include on450 {
+    grid-template-columns: 1fr 245px 65px;
+  }
+
+  @include on640 {
+    grid-template-columns: 1fr 327px 65px;
+  }
+
+  @include on1280 {
+    grid-template-columns: 1fr 327px 130px;
+  }
 
   &__container-menu {
     display: flex;
@@ -19,6 +30,14 @@
     align-items: center;
   }
 
+  &__menu {
+    display: none;
+
+    @include on1280 {
+      display: block;
+    }
+  }
+
   &__menu-list {
     margin: 0;
     padding: 0;
@@ -27,7 +46,6 @@
   &__menu-item {
     display: inline-block;
     list-style: none;
-    margin-right: 32px;
     padding: 20px 0 19px;
 
     @include on1280 {
@@ -97,8 +115,12 @@
   }
 
   &__right-buttons-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: none;
+
+    @include on1280 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__icon-wrapper {
@@ -152,5 +174,28 @@
     background-color: #eb5757;
     color: $white;
     font-size: 9px;
+  }
+
+  &__mobile-right-button-container {
+    @include on1280 {
+      display: none;
+    }
+  }
+
+  &__mobile-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $light-gray;
+  }
+
+  &__mobile-icon-link {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: none;
   }
 }

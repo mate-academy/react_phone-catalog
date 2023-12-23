@@ -46,6 +46,15 @@ export const Pagination: React.FC<Props> = ({
 
   const pages = getPages(1, Math.ceil(visibleProducts.length / +perPage));
 
+  // eslint-disable-next-line
+  const cutPages = (pages.length > 12 && page === pages[0].toString())
+    ? pages.slice(+page - 1, +page + 2)
+    // eslint-disable-next-line
+    : (pages.length > 12)
+      ? ((page === pages[pages.length - 1].toString())
+        ? pages.slice(+page - 3)
+        : pages.slice(+page - 2, +page + 1)) : pages;
+
   return (
     <div
       data-cy="pagination"
@@ -75,7 +84,7 @@ export const Pagination: React.FC<Props> = ({
         </li>
 
         {
-          pages.map((Page) => (
+          cutPages.map((Page) => (
             <li key={Page} className="pagination__pagination-item">
               <Link
                 to={handlePage(Page)}

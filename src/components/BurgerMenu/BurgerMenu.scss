@@ -1,0 +1,113 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.burger-header-menu {
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: $white;
+
+  @include on1280 {
+    display: none;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 65px 65px 65px;
+    margin: 0 0 40px;
+    box-shadow: 0 1px 0 0 $light-gray;
+  }
+
+  &__mobile-icon-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $light-gray;
+  }
+
+  &__mobile-icon-link {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+
+    &--is-active {
+      &::after {
+        display: block;
+        position: absolute;
+        border-radius: 8px;
+        width: 100%;
+        height: 3px;
+        background-color: $dark-gray;
+        bottom: 0;
+        content: "";
+      }
+    }
+  }
+
+  &__count-icon {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: $white;
+    font-size: 9px;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__menu-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__menu-item {
+    list-style: none;
+    margin: 0 0 25px;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__menu-link {
+    text-decoration: none;
+    color: $silver;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    @include on640 {
+      font-size: 25px;
+    }
+
+    &--is-active {
+      &::after {
+        display: block;
+        position: relative;
+        border-radius: 8px;
+        height: 3px;
+        background-color: $dark-gray;
+        bottom: -2px;
+        content: "";
+      }
+    }
+  }
+}

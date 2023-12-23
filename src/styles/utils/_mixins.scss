@@ -1,9 +1,22 @@
-@mixin lessOn900 {
-  @media (max-width: 899px) {
+@mixin lessOn320 {
+  @media (max-width: 320px) {
     @content;
   }
 }
 
+@mixin on450 {
+  @media (min-width: 450px) {
+    @content;
+  }
+}
+
+@mixin on640 {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+//flex-products-container
 @mixin on1000 {
   @media (min-width: 1000px) {
     @content;

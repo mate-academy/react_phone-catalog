@@ -1,9 +1,10 @@
 export const clickInPrev = (
   moving: number,
   setMoving: (m: number) => void,
+  frameSize: number,
 ) => {
-  if (moving - 2 > 0) {
-    setMoving(Math.max(moving - 2, 0));
+  if (moving - frameSize > 0) {
+    setMoving(Math.max(moving - frameSize, 0));
   } else {
     setMoving(0);
   }
@@ -15,9 +16,9 @@ export const clickInNext = (
   itemsLength: number,
   frameSize: number,
 ) => {
-  if (moving + 2 < itemsLength - frameSize) {
+  if (moving + frameSize < itemsLength - frameSize) {
     setMoving(Math.min(moving
-      + 2, itemsLength - frameSize));
+      + frameSize, itemsLength - frameSize));
   } else {
     setMoving(itemsLength - frameSize);
   }

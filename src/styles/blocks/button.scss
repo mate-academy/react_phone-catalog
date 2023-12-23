@@ -32,4 +32,13 @@
       margin: 0;
     }
   }
+
+  &--mobile-delete-from-cart {
+    width: 50%;
+    height: 48px;
+
+    @include on640 {
+      display: none;
+    }
+  }
 }

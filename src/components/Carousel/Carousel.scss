@@ -2,7 +2,11 @@
 
 .carousel {
   margin: 0 auto;
-  width: 580px;
+  width: 290px;
+
+  @include on640 {
+    width: 580px;
+  }
 
   @include on1280 {
     width: 870px;

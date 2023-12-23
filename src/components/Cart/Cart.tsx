@@ -88,6 +88,16 @@ export const Cart = () => {
                     </div>
 
                     <h2 className="cart__price">{`$${price * count}`}</h2>
+
+                    <button
+                      aria-label="deleteItemCart"
+                      type="button"
+                      data-cy="cartDeleteButton"
+                      className="button button--mobile-delete-from-cart"
+                      onClick={() => deleteFromCart(itemId)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );

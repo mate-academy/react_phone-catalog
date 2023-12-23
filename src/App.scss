@@ -2,6 +2,7 @@
 @import "./styles/utils/fonts";
 @import "./styles/utils/mixins";
 @import "./styles/blocks/container.scss";
+@import "./styles/blocks/mobile-carousel-container.scss";
 @import "./styles/blocks/flex-app.scss";
 @import "./styles/blocks/grid-cover.scss";
 @import "./styles/blocks/logo.scss";
@@ -29,16 +30,29 @@ body {
   padding: 0;
   font-family: Mont, sans-serif;
 
-  @include lessOn900 {
-    min-width: 900px;
+  @include lessOn320 {
+    min-width: 319px;
   }
 }
 
 .App {
   color: $dark-gray;
 
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: transform 0.3s;
+    z-index: 1;
+  }
+
   &__header-carousel {
-    margin: 40px 0 104px;
+    margin: 10px 0 104px;
+
+    @include on640 {
+      margin: 40px 0 104px;
+    }
   }
 
   &__products {
@@ -64,4 +78,17 @@ body {
 
 .icon-favourite-active {
   background-image: url(./images/icons/FavouritesActiveIcon.svg);
+}
+
+.mobile {
+  &__homepage-title {
+    margin: 30px 0 20px;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+
+    @include on640 {
+      display: none;
+    }
+  }
 }

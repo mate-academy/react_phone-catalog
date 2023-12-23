@@ -1,21 +1,23 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ButtonBack.scss';
 
-export const ButtonBack = () => {
-  const navigate = useNavigate();
+type Props = {
+  back?: string,
+};
 
+export const ButtonBack: React.FC<Props> = ({ back }) => {
   return (
     <div className="button-back">
       <div className="icon icon--arrow-left" />
 
-      <button
+      <Link
         type="button"
         data-cy="backButton"
         className="button-back__link"
-        onClick={() => navigate(-1)}
+        to={back ? `/${back}` : '/'}
       >
         Back
-      </button>
+      </Link>
     </div>
   );
 };

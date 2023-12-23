@@ -6,9 +6,18 @@
   }
 
   &__block-category {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 16px;
+    margin-bottom: 50px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    @include on640 {
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 16px;
+    }
 
     @include on1280 {
       grid-template-columns: repeat(8, 1fr);
@@ -16,7 +25,9 @@
     }
 
     &--phones {
-      grid-column: 1 / 5;
+      @include on640 {
+        grid-column: 1 / 5;
+      }
 
       @include on1280 {
         grid-column: 1 / 9;
@@ -24,7 +35,9 @@
     }
 
     &--tablets {
-      grid-column: 5 / 9;
+      @include on640 {
+        grid-column: 5 / 9;
+      }
 
       @include on1280 {
         grid-column: 9 / 17;
@@ -32,7 +45,9 @@
     }
 
     &--accessories {
-      grid-column: 9 / 13;
+      @include on640 {
+        grid-column: 9 / 13;
+      }
 
       @include on1280 {
         grid-column: 17 / 25;
@@ -44,7 +59,10 @@
     overflow: hidden;
     margin-bottom: 24px;
     transition: transform 0.3s;
-    grid-column: 1 / 5;
+
+    @include on640 {
+      grid-column: 1 / 5;
+    }
 
     @include on1280 {
       grid-column: 1 / 9;
@@ -70,34 +88,68 @@
   &__image-container {
     position: relative;
     background-repeat: no-repeat;
-    padding-bottom: 250px;
-
-    @include on1280 {
-      padding-bottom: 368px;
-    }
 
     &--phones {
       top: 40px;
-      left: 70px;
+      left: 104px;
       background-position: center;
-      background-size: cover;
+      background-size: 62%;
       background-image: url(../../../src/images/category-phones.png);
+      padding-bottom: 313px;
+
+      @include on450 {
+        top: 60px;
+        left: 130px;
+      }
+
+      @include on640 {
+        top: 40px;
+        left: 70px;
+        background-size: cover;
+        padding-bottom: 300px;
+      }
+
+      @include on1280 {
+        padding-bottom: 368px;
+      }
     }
 
     &--tablets {
-      top: 80px;
+      top: 90px;
       left: 20px;
+      padding-bottom: 568px;
       background-position: left;
       background-size: 120%;
       background-image: url(../../../src/images/category-tablets.png);
+
+      @include on640 {
+        top: 80px;
+        left: 20px;
+        padding-bottom: 300px;
+      }
+
+      @include on1280 {
+        padding-bottom: 368px;
+      }
     }
 
     &--accessories {
-      top: 40px;
+      top: 93px;
       left: 45px;
       background-position: 7%;
       background-size: 190%;
       background-image: url(../../../src/images/category-accessories.png);
+      padding-bottom: 430px;
+
+      @include on640 {
+        padding-bottom: 300px;
+        top: 55px;
+        left: 40px;
+      }
+
+      @include on1280 {
+        padding-bottom: 368px;
+      }
     }
   }
 

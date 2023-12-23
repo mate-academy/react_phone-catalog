@@ -10,9 +10,13 @@
   }
 
   &__navbar-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
+
+    @include on1280 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__navbar-menu-list {

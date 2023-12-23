@@ -1,7 +1,9 @@
 .grid-cover {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 16px;
+  @include on640 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+  }
 
   @include on1280 {
     display: grid;

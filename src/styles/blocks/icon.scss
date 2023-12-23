@@ -12,6 +12,10 @@
     background-image: url(../../images/icons/FavouritesIcon.svg);
   }
 
+  &--menu {
+    background-image: url(../../images/icons/menu-icon.svg);
+  }
+
   &--favourite {
     background-image: url(../../images/icons/FavouritesIcon.svg);
   }
@@ -76,5 +80,49 @@
 
   &--minus {
     background-image: url(../../images/icons/minus.svg);
+  }
+
+  &--mobile-arrow-left {
+    background-image: url(../../images/icons/header-arrow-left.svg);
+    width: 30px;
+    padding-bottom: 30px;
+
+    @include on640 {
+      width: 16px;
+      padding-bottom: 16px;
+    }
+  }
+
+  &--mobile-arrow-left-disabled {
+    width: 30px;
+    padding-bottom: 30px;
+    background-image: url(../../images/icons/arrow-left-disabled.svg);
+
+    @include on640 {
+      width: 16px;
+      padding-bottom: 16px;
+    }
+  }
+
+  &--mobile-arrow-right {
+    width: 30px;
+    padding-bottom: 30px;
+    background-image: url(../../images/icons/header-arrow-right.svg);
+
+    @include on640 {
+      width: 16px;
+      padding-bottom: 16px;
+    }
+  }
+
+  &--mobile-arrow-right-disabled {
+    width: 30px;
+    padding-bottom: 30px;
+    background-image: url(../../images/icons/arrow-right-disabled.svg);
+
+    @include on640 {
+      width: 16px;
+      padding-bottom: 16px;
+    }
   }
 }

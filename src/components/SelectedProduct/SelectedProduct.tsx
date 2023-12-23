@@ -79,6 +79,10 @@ export const SelectedProduct: React.FC<Props> = ({
   }, [Category]);
 
   const [bigImageSelectProduct, setBigImageSelectProduct] = useState(images[0]);
+  const [
+    movingMobileProductCarousel,
+    setMovingMobileProductCarousel,
+  ] = useState(0);
 
   const [movingCarouselAlsoLike, setMovingCarouselAlsoLike] = useState(0);
   const [widthCarousel, setWidthCarousel] = useState(0);
@@ -98,9 +102,35 @@ export const SelectedProduct: React.FC<Props> = ({
     );
   };
 
+  const prevMobileProductImage = () => {
+    if (movingMobileProductCarousel - 1 > 0) {
+      setMovingMobileProductCarousel(
+        Math.max(movingMobileProductCarousel - 1, 0),
+      );
+    } else {
+      setMovingMobileProductCarousel(0);
+    }
+  };
+
+  const nextMobileProductImage = () => {
+    if (movingMobileProductCarousel + 1 <= images.length - 1) {
+      setMovingMobileProductCarousel(
+        Math.min(movingMobileProductCarousel + 1, images.length - 1),
+      );
+    } else {
+      setMovingMobileProductCarousel(images.length - 1);
+    }
+  };
+
   return (
     <div className="selected-product">
-      <ButtonBack />
+      {
+        Category && (
+          <ButtonBack
+            back={Category}
+          />
+        )
+      }
 
       <div className="grid-cover">
         <h1 className="selected-product__title">
@@ -109,6 +139,77 @@ export const SelectedProduct: React.FC<Props> = ({
 
         <div className="selected-product__photo-info-product-container">
           <div className="selected-product__left-block">
+            <div
+              // eslint-disable-next-line
+              className="mobile-carousel-container mobile-carousel-container--mobile-product-photos"
+            >
+              <button
+                type="button"
+                className={
+                  !movingMobileProductCarousel
+                  // eslint-disable-next-line
+                    ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+                    // eslint-disable-next-line
+                    : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+                }
+                onClick={prevMobileProductImage}
+              >
+                <div
+                  className={
+                    !movingMobileProductCarousel
+                      ? 'icon icon--mobile-arrow-left-disabled'
+                      : 'icon icon--mobile-arrow-left'
+                  }
+                />
+              </button>
+
+              <div className="selected-product__mobile-photo-product-carousel">
+                <ul
+                  className="selected-product__carousel-list"
+                >
+                  {
+                    images.map((image) => (
+                      <li
+                        style={
+                          {
+                            transition: '500ms',
+                            transform: `translateX(-${movingMobileProductCarousel * 290}px)`,
+                          }
+                        }
+                        key={image}
+                      >
+                        <img
+                          alt="phone"
+                          src={image}
+                          className="selected-product__carousel-image"
+                        />
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <button
+                type="button"
+                className={
+                  movingMobileProductCarousel === images.length - 1
+                  // eslint-disable-next-line
+                    ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+                    // eslint-disable-next-line
+                    : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+                }
+                onClick={nextMobileProductImage}
+              >
+                <div
+                  className={
+                    movingMobileProductCarousel === images.length - 1
+                      ? 'icon icon--mobile-arrow-right-disabled'
+                      : 'icon icon--mobile-arrow-right'
+                  }
+                />
+              </button>
+            </div>
+
             <div className="selected-product__mini-images-container">
               {
                 images.map((image) => (
@@ -488,6 +589,7 @@ export const SelectedProduct: React.FC<Props> = ({
             onClick={() => clickInPrev(
               movingCarouselAlsoLike,
               setMovingCarouselAlsoLike,
+              widthCarousel / 290,
             )}
           >
             <div
@@ -525,11 +627,62 @@ export const SelectedProduct: React.FC<Props> = ({
         </div>
       </div>
 
-      <Carousel
-        movingCarousel={movingCarouselAlsoLike}
-        phones={productsAlsoLike}
-        setWidthCarousel={setWidthCarousel}
-      />
+      <div className="mobile-carousel-container">
+        <button
+          type="button"
+          className={
+            !movingCarouselAlsoLike
+            // eslint-disable-next-line
+              ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+              // eslint-disable-next-line
+              : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+          }
+          onClick={() => clickInPrev(
+            movingCarouselAlsoLike,
+            setMovingCarouselAlsoLike,
+            widthCarousel / 290,
+          )}
+        >
+          <div
+            className={
+              !movingCarouselAlsoLike
+                ? 'icon icon--mobile-arrow-left-disabled'
+                : 'icon icon--mobile-arrow-left'
+            }
+          />
+        </button>
+
+        <Carousel
+          movingCarousel={movingCarouselAlsoLike}
+          phones={productsAlsoLike}
+          setWidthCarousel={setWidthCarousel}
+        />
+
+        <button
+          type="button"
+          className={
+            movingCarouselAlsoLike === endCarousel
+            // eslint-disable-next-line
+              ? 'mobile-carousel-container__arrow-disabled mobile-carousel-container__arrow-disabled--right'
+              // eslint-disable-next-line
+              : 'mobile-carousel-container__arrow mobile-carousel-container__arrow--right'
+          }
+          onClick={() => clickInNext(
+            movingCarouselAlsoLike,
+            setMovingCarouselAlsoLike,
+            productsAlsoLike.length,
+            widthCarousel / 290,
+          )}
+        >
+          <div
+            className={
+              movingCarouselAlsoLike === endCarousel
+                ? 'icon icon--mobile-arrow-right-disabled'
+                : 'icon icon--mobile-arrow-right'
+            }
+          />
+        </button>
+      </div>
     </div>
   );
 };

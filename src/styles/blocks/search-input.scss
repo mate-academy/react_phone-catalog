@@ -3,13 +3,21 @@
   width: 100%;
   border: none;
   color: $dark-gray;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
+
+  @include on640 {
+    font-size: 14px;
+  }
 
   &::placeholder {
     color: $gray;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 600;
+
+    @include on640 {
+      font-size: 14px;
+    }
   }
 
   &:focus {

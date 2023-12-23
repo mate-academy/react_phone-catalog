@@ -1,0 +1,46 @@
+.mobile-carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--mobile-product-photos {
+    @include on640 {
+      display: none;
+    }
+  }
+
+  @include on640 {
+    padding: 0;
+  }
+
+  &__arrow {
+    background-color: $white;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 8px;
+
+    @include on640 {
+      display: none;
+    }
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &__arrow-disabled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    border: none;
+    padding: 60px 8px;
+
+    @include on640 {
+      display: none;
+    }
+  }
+}

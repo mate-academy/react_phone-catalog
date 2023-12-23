@@ -1,8 +1,9 @@
 @import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
 
 .pagination {
-  margin-bottom: 80px;
   display: flex;
+  margin-bottom: 80px;
   justify-content: center;
 
   &__pagination-list {
@@ -13,26 +14,37 @@
 
   &__pagination-item {
     list-style: none;
-    margin-right: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 13px;
 
     &:first-child {
-      margin-right: 16px;
+      margin-right: 8px;
     }
     
-
     &:last-child {
-      margin-left: 16px;
+      margin: 0;
+    }
+
+    @include on640 {
+      margin-right: 8px;
+
+      &:first-child {
+        margin-right: 16px;
+      }
+      
+  
+      &:last-child {
+        margin-left: 16px;
+      }
     }
   }
 
   &__pagination-button {
-    border: 1px solid $gray;
+    border: none;
     background-color: $white;
-    width: 35px;
-    height: 35px;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,35 +52,55 @@
 
     &:hover {
       border: 1px solid $dark-gray;
+    }
+
+    @include on640 {
+      border: 1px solid $gray;
+      width: 35px;
+      height: 35px;
     }
   }
 
   &__disabled-pagination-button {
-    border: 1px solid $gray;
     background-color: $white;
-    width: 35px;
-    height: 35px;
+    border: none;
     display: flex;
+    height: 25px;
     justify-content: center;
     align-items: center;
+
+    @include on640 {
+      width: 35px;
+      height: 35px;
+      border: 1px solid $gray;
+    }
   }
 
   &__pagination-link {
-    padding: 7px 14px;
-    cursor: pointer;
-    border: 1px solid $gray;
     text-decoration: none;
-    color: $black;
-    font-size: 14px;
+    cursor: pointer;
+    font-size: 22px;
     line-height: 21px;
-
-    &:hover {
-      border: 1px solid $dark-gray;
-    }
+    color: $gray;
 
     &--active {
-      background-color: $dark-gray;
-      color: $white;
+      color: $dark-gray;
+    }
+
+    @include on640 {
+      color: $dark-gray;
+      padding: 7px 14px;
+      font-size: 12px;
+      border: 1px solid $gray;
+
+      &:hover {
+        border: 1px solid $dark-gray;
+      }
+  
+      &--active {
+        background-color: $dark-gray;
+        color: $white;
+      }
     }
   }
 }

@@ -1,11 +1,19 @@
 .flex-products-container {
-  margin: 0 auto;
+  margin: 0 auto 40px;
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   row-gap: 40px;
-  margin-bottom: 40px;
-  width: 580px;
+
+  @include on640 {
+    width: 580px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 40px;
+    column-gap: 16px;
+    justify-content: flex-start;
+  }
 
   @include on1000 {
     width: 870px;

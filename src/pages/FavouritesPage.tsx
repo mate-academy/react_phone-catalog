@@ -40,7 +40,7 @@ export const FavouritesPage = () => {
           {
             filterFavouriteProducts.length > 0
               ? <Favourites favoriteProd={filterFavouriteProducts} />
-              : <h3>You have not favourite products</h3>
+              : <h3>Nothing found</h3>
           }
         </div>
       </div>
