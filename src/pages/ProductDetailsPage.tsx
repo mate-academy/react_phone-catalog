@@ -75,6 +75,7 @@ export const ProductCardPage: React.FC<Props> = ({ products }) => {
     if (currentProductDetails?.images[0] !== currentImage) {
       setCurrentImage(currentProductDetails?.images[0]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentProductDetails?.images]);
 
   const isItemInCart = productsInCart.some(

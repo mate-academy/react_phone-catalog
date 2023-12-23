@@ -12,6 +12,7 @@ export const Search: React.FC = () => {
   const location = useLocation();
   const currentPath = location.pathname.split('/')[1];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const applyQuery = useCallback(
     debounce(setSearchParams, 1000), [currentPath],
   );
