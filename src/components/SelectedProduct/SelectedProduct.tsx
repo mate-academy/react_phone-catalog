@@ -173,7 +173,7 @@ export const SelectedProduct: React.FC<Props> = ({
                         style={
                           {
                             transition: '500ms',
-                            transform: `translateX(-${movingMobileProductCarousel * 290}px)`,
+                            transform: `translateX(-${movingMobileProductCarousel * 250}px)`,
                           }
                         }
                         key={image}
