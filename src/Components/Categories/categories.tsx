@@ -76,7 +76,7 @@ export const Categories = () => {
         <NavLink to="/accessories" className="category">
           <img
             src={`${process.env.PUBLIC_URL}/img/accesories.png`}
-            className="category-img accessories last"
+            className="category-img accessories"
             alt="accessories"
           />
           <h3 className="category-name">Accessories</h3>

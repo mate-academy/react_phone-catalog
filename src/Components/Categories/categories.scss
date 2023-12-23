@@ -4,11 +4,13 @@
 }
 
 .categories-title {
-  margin-bottom: 16px;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--gray-primary, #313237);
-  font-family: 'Mont', 'sans-serif';
+  font-family: Mont;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -0.32px;
+color: var(--Gray-Primary, #313237);
 }
 
 .categories-row {
@@ -20,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-right: 20px;
+  margin-right: 7px;
 }
 
 
@@ -56,12 +58,12 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 390px;
-  height: 368px;
+  object-fit: cover;
+  width: 386px;
+  height: 386px;
 }
 
 .last{
-  width: 350px
 }
 
 .phones {

@@ -17,6 +17,7 @@ const Cart: React.FC = () => {
   const { cartProducts, removeFromCart } = useCartContext();
   const [total, setTotal] = useState<number>(0);
   const products: Product[] = useProducts();
+  const [showModal, setShowModal] = useState(false);
 
   const handleRemoveFromCart = (productId: string) => {
     removeFromCart(productId);
@@ -45,6 +46,14 @@ const Cart: React.FC = () => {
   useEffect(() => {
     calculateTotal();
   }, [cartProducts, products]);
+
+  const handleCheckoutClick = () => {
+    if (showModal) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  };
 
   return (
     <>
@@ -76,11 +85,22 @@ const Cart: React.FC = () => {
               {total.toFixed(2)}
             </div>
             <div className="total-total">Total for your items</div>
-
             <div className="line total" />
-            <button type="button" className="checkout">
+            <button
+              type="button"
+              className="checkout"
+              onClick={handleCheckoutClick}
+            >
               Checkout
             </button>
+
+            {showModal && (
+              <div className="modal">
+                <div className="modal-content">
+                  <p className="modal-text">Sorry, the checkout functionality is not implemented yet.</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

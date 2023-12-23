@@ -7,6 +7,7 @@ const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 const REMOVE_FROM_FAVORITES = 'REMOVE_FROM_FAVORITES';
+const FULL_REMOVE_FROM_CART = 'FULL_REMOVE_FROM_CART';
 
 const initialCartState = {
   cartProducts: JSON.parse(localStorage.getItem('cart')) || [],
@@ -18,6 +19,17 @@ const FavoriteContext = createContext();
 
 const cartReducer = (state, action) => {
   switch (action.type) {
+    case FULL_REMOVE_FROM_CART: {
+      const productId = action.payload;
+
+      return {
+        ...state,
+        cartProducts: state.cartProducts.filter(
+          product => product.id !== productId,
+        ),
+      };
+    }
+
     case ADD_TO_CART: {
       const productId = action.payload;
       const existingProduct = state.cartProducts
@@ -105,6 +117,10 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: REMOVE_FROM_FAVORITES, payload: productId });
   };
 
+  const fullRemoveFromCart = (productId) => {
+    dispatch({ type: FULL_REMOVE_FROM_CART, payload: productId });
+  };
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state.cartProducts));
   }, [state.cartProducts]);
@@ -125,6 +141,7 @@ export const CartProvider = ({ children }) => {
           ...state,
           addToCart,
           removeFromCart,
+          fullRemoveFromCart,
         }}
       >
         {children}

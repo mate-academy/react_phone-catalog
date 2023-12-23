@@ -17,6 +17,18 @@ align-items: center;
   justify-content: column;
 }
 
+
+
+.modal-text{
+  padding: 15px;
+  font-family: Mont;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+color: Dark Gray
+}
+
 .cart-cards{
   display:flex;
   flex-direction: column;
@@ -67,6 +79,7 @@ font-style: normal;
 font-weight: 600;
 line-height: 21px; /* 150% */
 border: none;
+cursor:pointer;
 }
 
 .folder-chevron{

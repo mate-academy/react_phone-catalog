@@ -81,7 +81,7 @@ border-radius: 50%;
   }
 
   .le{
-    margin-left: 64px;
+    margin-left: 39px;
   }
   a{
     color: var(--gray-secondary, #89939A);
@@ -93,6 +93,10 @@ border-radius: 50%;
   letter-spacing: 0.48px;
   text-transform: uppercase;
   text-decoration: none;
+  padding: 25px;
+  }
+  a:hover{
+    color: black;
   }
   .logo__image{
   align-items: center;

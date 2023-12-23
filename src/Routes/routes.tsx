@@ -38,7 +38,7 @@ export const Router = createHashRouter([ // Use createHashRouter
       },
       {
         path: '/accessories',
-        element: <p>Sorry, but no accessories yet</p>,
+        element: <p style={{ padding: '10px' }}>Sorry, but no accessories yet</p>,
       },
       {
         path: '*',

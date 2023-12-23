@@ -9,7 +9,9 @@ interface CartCardProps {
 }
 
 const CartCard: React.FC<CartCardProps> = ({ productId }) => {
-  const { cartProducts, addToCart, removeFromCart } = useCartContext();
+  const {
+    cartProducts, addToCart, removeFromCart, fullRemoveFromCart,
+  } = useCartContext();
   const [product, setProduct] = useState<Product | null>(null);
 
   const getCounterForProduct = () => {
@@ -40,7 +42,7 @@ const CartCard: React.FC<CartCardProps> = ({ productId }) => {
   }
 
   const handleRemoveFromCartClick = () => {
-    removeFromCart(productId);
+    fullRemoveFromCart(productId);
   };
 
   const handleAddClick = () => {
