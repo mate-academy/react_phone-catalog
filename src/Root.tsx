@@ -3,7 +3,6 @@
 /* eslint-disable max-len */
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import App from './App';
 import { HomePage } from './pages/HomePage/HomePage';
 import { PhonePages } from './pages/PhonePages/PhonePages';
 import { TabletPages } from './pages/TabletPages/TabletPages';
@@ -11,6 +10,7 @@ import { AccessoriesPages } from './pages/AccessoriesPages/AccessoriesPages';
 import { Product } from './types/Products';
 import { getProducts } from './api/fetchData';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
+import { App } from './App';
 
 export const Root: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);

@@ -4,7 +4,7 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { ContextProvider } from './components/Context/Context';
 
-const App = () => (
+export const App = () => (
   <ContextProvider>
     <div className="App">
       <Header />
@@ -19,5 +19,3 @@ const App = () => (
     </div>
   </ContextProvider>
 );
-
-export default App;
