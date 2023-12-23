@@ -75,6 +75,37 @@ const ProductCard: React.FC<ProductCardProps>
       }
     };
 
+    const handleRippleEffect = (e: React.MouseEvent<HTMLButtonElement>) => {
+      const button = e.currentTarget;
+
+      // Remove existing ripples
+      const existingRipples = button.getElementsByClassName('ripple');
+
+      for (const ripple of Array.from(existingRipples)) {
+        ripple.remove();
+      }
+
+      // Create a new ripple
+      const ripple = document.createElement('span');
+
+      ripple.classList.add('ripple');
+
+      const rect = button.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+
+      button.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    };
+
     const calculateDiscountedPrice = () => {
       if (currentProduct && currentProduct.discount) {
         const discountedPrice = currentProduct.price
@@ -136,7 +167,9 @@ const ProductCard: React.FC<ProductCardProps>
         <div className="card-buttons">
           <button
             type="button"
-            onClick={handleAddToCartClick}
+            onClick={(e) => {
+              handleAddToCartClick(); handleRippleEffect(e);
+            }}
             className={cartProducts.some(
               (product: Product) => product.id === productId,
             )
@@ -148,7 +181,9 @@ const ProductCard: React.FC<ProductCardProps>
 
           <button
             type="button"
-            onClick={handleAddToFavoritesClick}
+            onClick={(e) => {
+              handleAddToFavoritesClick(); handleRippleEffect(e);
+            }}
             className={favoriteProducts.includes(productId)
               ? 'button-like liked' : 'button-like'}
           >
