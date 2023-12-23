@@ -70,6 +70,7 @@ const Phones: React.FC = () => {
     = useState({ tablets: 0, phones: 0, accessories: 0 });
   const [favoriteProducts, setFavoriteProducts] = useState<string[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const storedFavorites: string[]
@@ -79,12 +80,14 @@ const Phones: React.FC = () => {
   }, []);
 
   const handleFetchError = () => {
-    <p>Loading error.</p>;
+    // Handle loading error
+    setLoading(false);
   };
 
   const fetchDataDebounced = useCallback(
     debounce(async () => {
       try {
+        setLoading(true); // Set loading to true when fetching data
         const data = await fetchData();
         const phoneProducts = data.filter(
           (product) => product.type === 'phone',
@@ -95,6 +98,7 @@ const Phones: React.FC = () => {
         const counts = calculateProductCounts(data);
 
         setProductCounts(counts);
+        setLoading(false); // Set loading to false when data is fetched
       } catch (error) {
         handleFetchError();
       }
@@ -239,7 +243,18 @@ const Phones: React.FC = () => {
           value={searchInput}
           onChange={handleSearchInputChange}
         />
+
+        {loading && (
+          <div className="search-loader-container">
+            <div className="search-loader" />
+          </div>
+        )}
       </div>
+      {loading && (
+        <div className="loader-container">
+          <div className="loader" />
+        </div>
+      )}
       <div className="products-container">
         {sortProducts(phones)
           .slice(getRangeForCurrentPage().startIndex,

@@ -23,6 +23,15 @@ const Cart: React.FC = () => {
     removeFromCart(productId);
   };
 
+  const calculateTotalItems = () => {
+    const totalItems = cartProducts.reduce(
+      (acc: number, { quantity }: { quantity: number }) => acc + quantity,
+      0,
+    );
+
+    return totalItems;
+  };
+
   const calculateTotal = () => {
     const calculatedTotal = cartProducts.reduce(
       (acc: number, { id, quantity }: CartProduct) => {
@@ -70,40 +79,58 @@ const Cart: React.FC = () => {
         </div>
         <h3 className="title">Cart</h3>
         <div className="cart-holder">
-          <div className="cart-cards">
-            {cartProducts.map(({ id }: CartProduct) => (
-              <CartCard
-                key={id}
-                productId={id}
-                onRemoveFromCart={handleRemoveFromCart}
-              />
-            ))}
-          </div>
-          <div className="total">
-            <div className="total-money">
-              $
-              {total.toFixed(2)}
+          {cartProducts.length > 0 ? (
+            <div className="cart-cards">
+              {cartProducts.map(({ id }: CartProduct) => (
+                <CartCard
+                  key={id}
+                  productId={id}
+                  onRemoveFromCart={handleRemoveFromCart}
+                />
+              ))}
             </div>
-            <div className="total-total">Total for your items</div>
-            <div className="line total" />
-            <button
-              type="button"
-              className="checkout"
-              onClick={handleCheckoutClick}
-            >
-              Checkout
-            </button>
-
-            {showModal && (
-              <div className="modal">
-                <div className="modal-content">
-                  <p className="modal-text">
-                    Sorry, the checkout functionality is not implemented yet.
-
-                  </p>
+          ) : (
+            <p>You have no items in cart.</p>
+          )}
+          <div
+            className="total"
+            style={
+              { border: cartProducts.length > 0 ? '1px solid #000' : 'none' }
+            }
+          >
+            {cartProducts.length > 0 ? (
+              <>
+                <div className="total-money">
+                  $
+                  {total.toFixed(2)}
                 </div>
-              </div>
-            )}
+                <div className="total-total">
+                  Total for your
+                  {' '}
+                  {calculateTotalItems()}
+                  {' '}
+                  {calculateTotalItems() === 1 ? 'item' : 'items'}
+                </div>
+                <div className="line total" />
+                <button
+                  type="button"
+                  className="checkout"
+                  onClick={handleCheckoutClick}
+                >
+                  Checkout
+                </button>
+
+                {showModal && (
+                  <div className="modal">
+                    <div className="modal-content">
+                      <p className="modal-text">
+                        Sorry, the checkout functionality is not implemented yet.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : null}
           </div>
         </div>
       </div>

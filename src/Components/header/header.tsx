@@ -41,16 +41,7 @@ export const Header: React.FC = () => {
           </li>
         </ul>
         <ul>
-          <li>
-            <div className={`rectangle ${location.pathname.includes('/cart') ? 'activeLink' : ''}`}>
-              <NavLink to="/cart" className="a">
-                <img src={`${process.env.PUBLIC_URL}/img/Group.svg`} alt="Logo" className="" />
-                {cartProducts.length > 0 && (
-                  <div className="cart-count">{cartProducts.length}</div>
-                )}
-              </NavLink>
-            </div>
-          </li>
+
           <li>
             <div className={`rectangle ${location.pathname.includes('/favourites') ? 'activeLink' : ''}`}>
               <NavLink to="/favourites">
@@ -59,6 +50,16 @@ export const Header: React.FC = () => {
                   <div className="favorite-count">
                     {favoriteProducts.length}
                   </div>
+                )}
+              </NavLink>
+            </div>
+          </li>
+          <li>
+            <div className={`rectangle ${location.pathname.includes('/cart') ? 'activeLink' : ''}`}>
+              <NavLink to="/cart" className="a">
+                <img src={`${process.env.PUBLIC_URL}/img/Group.svg`} alt="Logo" className="" />
+                {cartProducts.length > 0 && (
+                  <div className="cart-count">{cartProducts.length}</div>
                 )}
               </NavLink>
             </div>

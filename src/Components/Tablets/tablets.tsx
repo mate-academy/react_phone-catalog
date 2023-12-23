@@ -5,6 +5,13 @@ import ProductCard from '../ProductCard/Productcard';
 import './tablets.scss';
 import { Product } from '../ProductCard/types';
 
+interface Tablet {
+  id: string;
+  type: string;
+  name: string;
+  price: number;
+  discount?: number;
+}
 const debounce = <T extends (...args: any[]) => void>(
   func: T,
   delay: number,
@@ -68,6 +75,7 @@ const Tablets: React.FC = () => {
   });
   const [favoriteProducts, setFavoriteProducts] = useState<string[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const storedFavoritesString = localStorage.getItem('favorites');
@@ -79,12 +87,14 @@ const Tablets: React.FC = () => {
   }, []);
 
   const handleFetchError = () => {
-    <p>error</p>;
+    // Handle loading error
+    setLoading(false);
   };
 
   const fetchDataDebounced = useCallback(
     debounce(async () => {
       try {
+        setLoading(true);
         const data = await fetchData();
         const tabletProducts = data.filter(
           (product: Product) => product.type === 'tablet',
@@ -96,6 +106,7 @@ const Tablets: React.FC = () => {
         const counts = calculateProductCounts(data);
 
         setProductCounts(counts);
+        setLoading(false);
       } catch (error) {
         handleFetchError();
       }
@@ -130,18 +141,25 @@ const Tablets: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const sortProducts = (data: Product[]) => {
+  const sortProducts = (data: Tablet[]): Tablet[] => {
     return data.sort((a, b) => {
+      const calculateDiscountedPrice = (product: Tablet) => (
+        product.price - (product.price * (product.discount || 0)) / 100);
+
       if (sortBy === 'name') {
         return a.name.localeCompare(b.name);
       }
 
       if (sortBy === 'price') {
-        return a.price - b.price;
+        const discountedPriceA = calculateDiscountedPrice(a);
+        const discountedPriceB = calculateDiscountedPrice(b);
+
+        return discountedPriceA - discountedPriceB;
       }
 
       if (sortBy === 'discount') {
-        return (b.discount || 0) - (a.discount || 0);
+        return ((b.price / 100) * (b.discount || 0))
+          - ((a.price / 100) * (a.discount || 0));
       }
 
       return 0;
@@ -221,6 +239,11 @@ const Tablets: React.FC = () => {
           </select>
         </div>
       </div>
+      {loading && (
+        <div className="loader-container">
+          <div className="loader" />
+        </div>
+      )}
       <div className="search-container">
         <input
           className="search-input"
