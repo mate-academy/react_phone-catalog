@@ -83,6 +83,8 @@ border-radius: 50%;
   .le{
     margin-left: 39px;
   }
+
+
   a{
     color: var(--gray-secondary, #89939A);
   font-family: Mont;
@@ -98,6 +100,10 @@ border-radius: 50%;
   }
   a:hover{
     color: black;
+  }
+
+  .logo{
+    height: 22px
   }
   .logo__image{
   align-items: center;
