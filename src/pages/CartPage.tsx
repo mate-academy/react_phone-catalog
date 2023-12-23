@@ -80,12 +80,19 @@ export const CartPage: React.FC = () => {
                 <div className="CartPage__checkout">
                   <div className="CartPage__checkout-content">
                     <div className="CartPage__checkout-title">{`$${totalPrice}`}</div>
-
-                    <div
-                      className="CartPage__checkout-subtitle"
-                    >
-                      {`Total for ${totalQuantity} items`}
-                    </div>
+                    {totalQuantity === 1 ? (
+                      <div
+                        className="CartPage__checkout-subtitle"
+                      >
+                        {`Total for ${totalQuantity} item`}
+                      </div>
+                    ) : (
+                      <div
+                        className="CartPage__checkout-subtitle"
+                      >
+                        {`Total for ${totalQuantity} items`}
+                      </div>
+                    )}
 
                     <button
                       type="button"

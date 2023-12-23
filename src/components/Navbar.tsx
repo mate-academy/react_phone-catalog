@@ -1,6 +1,6 @@
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import {
-  useContext, useMemo, useState, useEffect,
+  useContext, useMemo,
 } from 'react';
 import classNames from 'classnames';
 import { Logo } from './Logo';
@@ -11,19 +11,15 @@ import { FavouriteContext } from '../context/FavouriteContext';
 import { Search } from './Search';
 
 export const Navbar = () => {
-  const [showSearch, setShowSearch] = useState(false);
-  const [shouldShowSearch, setShouldShowSearch] = useState(false);
-  const { pathname } = useLocation();
+  const currentLocation = useLocation();
   const { favouriteProducts } = useContext(FavouriteContext);
   const { productsInCart } = useContext(CartContext);
-
-  const handleShowSearch = () => {
-    setShowSearch(!showSearch);
-  };
-
-  useEffect(() => {
-    setShouldShowSearch(pathname === '/favourite');
-  }, [pathname]);
+  const showSearch = [
+    '/phones',
+    '/favourite',
+    '/tablets',
+    '/accessories',
+  ].includes(currentLocation.pathname);
 
   const favItemsQuantity = useMemo(() => {
     return favouriteProducts.length;
@@ -49,34 +45,33 @@ export const Navbar = () => {
             to="/"
             className={getLinkClass}
           >
-            Home
+            <span className="mont">Home</span>
           </NavLink>
 
           <NavLink
             to="/phones"
             className={getLinkClass}
           >
-            Phones
+            <span className="mont">Phones</span>
           </NavLink>
           <NavLink
             to="/tablets"
             className={getLinkClass}
           >
-            Tablets
+            <span className="mont">Tablets</span>
           </NavLink>
           <NavLink
             to="/accessories"
             className={getLinkClass}
           >
-            Accessories
+            <span className="mont">Accessories</span>
           </NavLink>
         </div>
         <div className="navbar__right">
-          {shouldShowSearch && <Search />}
+          {showSearch && <Search />}
           <Link
             to="/favourite"
             className="favourities__link"
-            onClick={handleShowSearch}
           >
             <div className="navbar-right__block">
               <div className="navbar__icons liked" />
