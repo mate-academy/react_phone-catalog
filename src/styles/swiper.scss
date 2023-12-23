@@ -5,7 +5,6 @@
   grid-template-columns: repeat(24, 1fr);
   grid-template-rows: 400px 1fr;
   row-gap: 8px;
-  // margin-top: -40px;
 }
 
 .swiper-wrapper {
@@ -25,7 +24,6 @@
   top: 0 !important;
   margin-top: 0 !important;
   grid-row: 1 / 2;
-  // grid-column: 1 / 5 !important;
   transition: border $effect-duration $animation-timing-function;
 
   &:hover {
@@ -47,7 +45,6 @@
   top: 0 !important;
   margin-top: 0 !important;
   grid-row: 1 / 2;
-  // grid-column: 1 / 5 !important;
   transition: border $effect-duration $animation-timing-function;
 
   &:hover {

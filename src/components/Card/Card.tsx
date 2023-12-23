@@ -1,3 +1,4 @@
+import { NavLink, useLocation } from 'react-router-dom';
 import { Phone } from '../../Types/Phone';
 
 type Props = {
@@ -6,9 +7,16 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ card, discount }) => {
+  const location = useLocation();
+  const path = location.pathname.includes('phones')
+    ? card.phoneId
+    : `phones/${card.phoneId}`;
+
   return (
     <div className="card">
-      <img className="card__image" src={card.image} alt="phone_image" />
+      <NavLink to={path} className="card__nav-link">
+        <img className="card__image" src={card.image} alt="phone_image" />
+      </NavLink>
       <h3 className="card__name">{card.name}</h3>
       <div className="card__price">
         {discount ? (

@@ -13,10 +13,7 @@ import {
   getNewProducts,
 } from '../../helpers/utils/fetchData';
 import { Loader } from '../../components/Loader/Loader';
-
-export enum Categories {
-  Phones = 'phones',
-}
+import { Categories } from '../../Types/Categories';
 
 export const HomePage: React.FC = () => {
   const {
@@ -31,7 +28,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await client.fetchPhones();
+        const data = await client.fetchProducts();
 
         const mappedData = data.map((phone) => {
           return { ...phone, name: `${phone.name} (iMT9G2FS/A)` };

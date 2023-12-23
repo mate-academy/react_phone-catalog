@@ -1,4 +1,6 @@
+import { Accessory } from '../../Types/Accessory';
 import { Phone } from '../../Types/Phone';
+import { Tablet } from '../../Types/Tablet';
 
 // eslint-disable-next-line
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -19,42 +21,46 @@ function getData<T>(url: string): Promise<T> {
     });
 }
 
-function getPhones() {
-  return getData<Phone[]>('');
+function getProducts() {
+  return getData<Products[]>('');
 }
 
 export const client = {
-  fetchPhones: () => getPhones(),
+  fetchProducts: () => getProducts(),
 };
 
-export function getAllPhones(phones: Phone[], type: string) {
-  const preparedPhones = [...phones];
+export type Products = Phone | Tablet | Accessory;
 
-  preparedPhones.filter(phone => phone.category === type);
+export function getAllProducts(products: Products[], type: string) {
+  const preparedProducts = [...products];
 
-  return preparedPhones;
+  preparedProducts.filter(prod => prod.category === type);
+
+  return preparedProducts;
 }
 
-export function getHotPriceProducts(phonesWithDiscount: Phone[], type: string) {
-  const preparedPhones = [...phonesWithDiscount];
+export function getHotPriceProducts(
+  prodWithDiscount: Products[], type: string,
+) {
+  const preparedProducts = [...prodWithDiscount];
 
-  preparedPhones.filter(phone => phone.category === type);
+  preparedProducts.filter(prod => prod.category === type);
 
-  preparedPhones.sort((a, b) => {
+  preparedProducts.sort((a, b) => {
     return (b.fullPrice - b.price) - (a.fullPrice - a.price);
   });
 
-  return preparedPhones;
+  return preparedProducts;
 }
 
-export function getNewProducts(phones: Phone[], type: string) {
-  const preparedPhones = [...phones];
+export function getNewProducts(products: Products[], type: string) {
+  const preparedProducts = [...products];
 
-  preparedPhones.filter(phone => phone.category === type);
+  preparedProducts.filter(prod => prod.category === type);
 
-  preparedPhones.sort((a, b) => {
+  preparedProducts.sort((a, b) => {
     return b.year - a.year;
   });
 
-  return preparedPhones;
+  return preparedProducts;
 }

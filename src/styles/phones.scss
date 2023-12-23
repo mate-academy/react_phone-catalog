@@ -12,6 +12,10 @@
     color: $gray-secondary;
     margin-bottom: 40px;
   }
+
+  &__prev-name {
+    color: $gray-primary
+  }
 }
 
 .path {
@@ -25,4 +29,19 @@
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: 16px;
+}
+
+.left-back {
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  width: min-content;
+  display: flex;
+  color: $gray-secondary;
+  gap: 4px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 12px;
+
+  @include hoverScale;
 }

@@ -31,3 +31,11 @@
   line-height: 21px;
   font-weight: 500;
 }
+
+@mixin hoverScale {
+  transition: transform $effect-duration $animation-timing-function;
+
+  &:hover {
+    transform: scale($scale-value);
+  }
+}

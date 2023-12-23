@@ -38,12 +38,21 @@ iframe {
   font-family: Mont;
   color: $gray-primary;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 96px 1fr 96px;
+  row-gap: 80px;
   height: 100%;
   min-height: 100vh;
-  gap: 80px;
+}
+
+.tablets, .phones {
+  display: flex;
+  flex-direction: column;
+  margin-top: -26px;
+
+  &__header {
+    margin-bottom: 48px;
+  }
 }
 
 .loader {

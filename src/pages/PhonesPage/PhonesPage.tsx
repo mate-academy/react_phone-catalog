@@ -4,10 +4,9 @@ import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import {
   client,
-  getAllPhones,
+  getAllProducts,
 } from '../../helpers/utils/fetchData';
 import { Phone } from '../../Types/Phone';
-import { Categories } from '../HomePage/HomePage';
 import { Loader } from '../../components/Loader/Loader';
 import { Card } from '../../components/Card/Card';
 import {
@@ -18,6 +17,7 @@ import {
 } from '../../components/Dropdowns/ItemsPerPageDropdown';
 import homeImage from '../../images/home.svg';
 import arrowRight from '../../images/arrow-right-secondary-color.svg';
+import { Categories } from '../../Types/Categories';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,13 +59,13 @@ export const PhonesPage: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await client.fetchPhones();
+        const data = await client.fetchProducts();
 
         const mappedData = data.map((phone) => {
           return { ...phone, name: `${phone.name} (iMT9G2FS/A)` };
         });
 
-        setPhones(getAllPhones(mappedData, Categories.Phones));
+        setPhones(getAllProducts(mappedData, Categories.Phones));
         setIsLoading(false);
       } catch (error) {
         throw new Error();
@@ -94,44 +94,42 @@ export const PhonesPage: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="phones">
-        <div className="path">
-          <img src={homeImage} alt="home_icon" />
-          <img src={arrowRight} alt="arrow_right" />
-          <h3>Phones</h3>
-        </div>
-        <h1 className="phones__title">Mobile phones</h1>
-        <p className="phones__paragraph">{`${phones.length} models`}</p>
-        <div className="dropdowns-container">
-          <SortDropdown />
-          <ItemsPerPageDropdown
-            currentAmount={itemsPerPage}
-            length={phones.length}
-          />
-        </div>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div className="phones-container">
-            {currentItems.map(phone => (
-              <Card card={phone} discount key={phone.id} />
-            ))}
-          </div>
-        )}
-        {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel=""
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel=""
-            renderOnZeroPageCount={null}
-            initialPage={page - 1}
-          />
-        )}
+    <div className="phones">
+      <div className="path">
+        <img src={homeImage} alt="home_icon" />
+        <img src={arrowRight} alt="arrow_right" />
+        <h3>Phones</h3>
       </div>
-    </>
+      <h1 className="phones__title">Mobile phones</h1>
+      <p className="phones__paragraph">{`${phones.length} models`}</p>
+      <div className="dropdowns-container">
+        <SortDropdown />
+        <ItemsPerPageDropdown
+          currentAmount={itemsPerPage}
+          length={phones.length}
+        />
+      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="phones-container">
+          {currentItems.map(phone => (
+            <Card card={phone} discount key={phone.id} />
+          ))}
+        </div>
+      )}
+      {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=""
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel=""
+          renderOnZeroPageCount={null}
+          initialPage={page - 1}
+        />
+      )}
+    </div>
   );
 };
