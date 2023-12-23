@@ -7,6 +7,10 @@
     flex-direction: row;
 
     gap: 64px;
+
+    @media (max-width: 639px) {
+      gap: 10px;
+    }
   }
 
   &__price {
@@ -22,6 +26,11 @@
     line-height: 41px;
 
     padding-bottom: 16px;
+
+    @media (max-width: 639px) {
+      font-size: 24px;
+      line-height: 28px;
+    }
 
     &-regular {
       font-weight: 500;
@@ -88,6 +97,12 @@
     height: 32px;
 
     border-radius: 50%;
+
+    @media (max-width: 639px) {
+      width: 20px;
+      height: 20px;
+    }
+
   }
 
   &__capacity {
@@ -119,6 +134,11 @@
 
       color: $color-primary;
       border: 1px solid $gray-icons-placeholders;
+
+      @media (max-width: 639px) {
+        font-size: 10px;
+        line-height: 12px;
+      }
 
       &:hover {
         border: 1px solid $color-primary;
@@ -180,11 +200,19 @@
 
   gap: 16px;
 
+  @media (max-width: 639px) {
+    gap: 8px;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 16px;
+
+    @media (max-width: 639px) {
+      gap: 8px;
+    }
   }
 
   &__item {
@@ -201,28 +229,55 @@
     height: 80px;
 
     object-fit: contain;
+
+    @media (max-width: 949px) {
+      width: 60px;
+      height: 60px;
+    }
+
+    @media (max-width: 639px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__main {
-    height: 100%;
-    width: 100%;
+    max-height: 400px;
+    width: 300px;
     border-radius: 9%;
 
     object-fit: contain;
 
+    @media (max-width: 949px) {
+      max-height: 320px;
+      width: 240px;
+    }
+
+    @media (max-width: 639px) {
+      max-height: 240px;
+      width: 180px;
+    }
+
     &-container {
       padding: 12px;
+
+      @media (max-width: 639px) {
+        padding: 6px;
+      }
     }
   }
 }
 
 .section {
-  width: 100%;
-
   display: flex;
-
   flex-direction: column;
   gap: 16px;
+
+  width: 100%;
+
+  @media (max-width: 639px) {
+    gap: 8px;
+  }
 
   &__paragraph {
     font-weight: 500;
@@ -232,6 +287,11 @@
     padding-bottom: 32px;
 
     border: none;
+
+    @media (max-width: 639px) {
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
 }
 
@@ -242,6 +302,11 @@
     padding-bottom: 16px;
     border-bottom: 1px solid $color-secondary-2;
     margin-bottom: 32px;
+
+    @media (max-width: 639px) {
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -252,6 +317,11 @@
     padding-bottom: 16px;
     border-bottom: 1px solid $color-secondary-2;
     margin-bottom: 32px;
+
+    @media (max-width: 639px) {
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
   }
 
   &__list {
@@ -283,6 +353,11 @@
     line-height: 21px;
 
     color: $color-primary;
+
+    @media (max-width: 639px) {
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
 }
 

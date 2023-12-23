@@ -30,6 +30,10 @@
     width: 176px;
     background-color: $color-primary;
 
+    @media (max-width: 639px) {
+      width: 100%;
+    }
+
     &:hover {
       color: $color-white;
       background: $color-primary;
@@ -46,6 +50,12 @@
   &__fav {
     border: 1px solid $gray-icons-placeholders;
     width: 64px;
+    position: relative;
+
+    &--image {
+      width: 16px;
+      height: 16px;
+    }
 
     &:hover {
       border: 1px solid $color-primary;

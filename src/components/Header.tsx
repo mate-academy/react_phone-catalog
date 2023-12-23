@@ -77,13 +77,13 @@ export const Header: React.FC = () => {
             >
               <button
                 type="button"
-                className="button button__cart"
+                className="button button__fav"
                 data-counter={`${favsList.length}`}
               >
                 <img
                   src={favIcon}
                   alt="favorites"
-                  className="button__cart--image"
+                  className="button__fav--image"
                 />
                 {favsList.length > 0 && (
                   <span className="header__total-items">{favsList.length}</span>
