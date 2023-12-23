@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Popup.scss';
+import './PopUp.scss';
 
 type Props = {
   onClose: () => void,

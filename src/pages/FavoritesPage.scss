@@ -1,3 +1,7 @@
+.favourites {
+  min-height: 78vh;
+}
+
 .favourites__list {
   display: flex;
   flex-wrap: wrap;
@@ -11,10 +15,6 @@
   color: rgba(49, 50, 55, 1);
   margin-top: 40px;
   margin-bottom: 8px;
-}
-
-.favourites__title--nothing {
-  margin-bottom: 63vh;
 }
 
 .favourites__quantity {

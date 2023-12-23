@@ -87,6 +87,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         className="cartItem__decrease"
         onClick={() => handleChangeQuantity(id, MINUS)}
         aria-label="label"
+        disabled={quantity === 1}
       >
         <div className="minus" />
       </button>

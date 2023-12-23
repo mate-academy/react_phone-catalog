@@ -5,8 +5,8 @@
   margin-bottom: 24px;
 }
 
-.CartPage__title--no-products {
-  margin-bottom: 63vh;
+.CartPage {
+  min-height: 78vh;
 }
 
 .CartPage__blocks {
@@ -62,6 +62,7 @@
   align-items: center;
   height: 48px;
   width: 320px;
+  cursor: pointer;
 }
 
 .CartPage__checkout-button-text {

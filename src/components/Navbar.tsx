@@ -1,15 +1,29 @@
-import { NavLink, Link } from 'react-router-dom';
-import { useContext, useMemo } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import {
+  useContext, useMemo, useState, useEffect,
+} from 'react';
 import classNames from 'classnames';
 import { Logo } from './Logo';
 import './Navbar.scss';
 import { getLinkClass } from '../helpers/getLinkClass';
 import { CartContext } from '../context/CardContext';
 import { FavouriteContext } from '../context/FavouriteContext';
+import { Search } from './Search';
 
 export const Navbar = () => {
+  const [showSearch, setShowSearch] = useState(false);
+  const [shouldShowSearch, setShouldShowSearch] = useState(false);
+  const { pathname } = useLocation();
   const { favouriteProducts } = useContext(FavouriteContext);
   const { productsInCart } = useContext(CartContext);
+
+  const handleShowSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
+  useEffect(() => {
+    setShouldShowSearch(pathname === '/favourite');
+  }, [pathname]);
 
   const favItemsQuantity = useMemo(() => {
     return favouriteProducts.length;
@@ -58,9 +72,11 @@ export const Navbar = () => {
           </NavLink>
         </div>
         <div className="navbar__right">
+          {shouldShowSearch && <Search />}
           <Link
             to="/favourite"
             className="favourities__link"
+            onClick={handleShowSearch}
           >
             <div className="navbar-right__block">
               <div className="navbar__icons liked" />

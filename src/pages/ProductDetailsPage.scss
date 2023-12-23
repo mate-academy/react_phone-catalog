@@ -8,7 +8,6 @@
 .ProductDetailsPage__main {
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin-bottom: 80px;
 }
 
@@ -21,16 +20,27 @@
 
 .ProductDetailsPage__photo {
   border: 1px solid rgba(226, 230, 233, 1);
-}
-
-.ProductDetailsPage__photo-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
   width: 80px;
 }
 
+.ProductDetailsPage__photo-img {
+  height: 66px;
+  width: auto;
+}
+
+.ProductDetailsPage__current {
+  min-width: 440px;
+  height: 442px;
+}
+
 .ProductDetailsPage__current-img {
-  height: 464px;
-  width: 464px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   margin-right: 64px;
 }
 
@@ -64,20 +74,6 @@
   border-bottom: 1px solid #c4c4c4;
   padding-bottom: 24px;
 }
-
-// .colors__text {
-//   color: #89939a;
-//   font-family: "MontSemiBold",Helvetica,sans-serif;
-//   font-size: 12px;
-//   font-style: normal;
-//   line-height: normal
-// }
-
-// .colors__list {
-//   margin-top: 8px;
-//   grid-gap: 8px;
-//   gap: 8px
-// }
 
 .colors__link,.colors__list,.colors__slider {
   display: flex
@@ -293,4 +289,10 @@
 
 .productCardPage__slider {
   margin-left: -212px;
+}
+
+.ProductDetailsPage__buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

@@ -75,7 +75,7 @@ export const ProductCardPage: React.FC<Props> = ({ products }) => {
     if (currentProductDetails?.images[0] !== currentImage) {
       setCurrentImage(currentProductDetails?.images[0]);
     }
-  }, [currentProductDetails?.images, currentImage]);
+  }, [currentProductDetails?.images]);
 
   const isItemInCart = productsInCart.some(
     (cartItem) => cartItem.phoneId === currentProductDetails?.id,
@@ -128,6 +128,10 @@ export const ProductCardPage: React.FC<Props> = ({ products }) => {
     return reccomended.filter((prod) => prod.id !== currentProduct?.id);
   }, [products, currentProduct]);
 
+  const handleImageClick = (image: string) => {
+    setCurrentImage(image);
+  };
+
   return (
     <div className="ProductDetailsPage">
       {isLoading && <Loader />}
@@ -151,7 +155,7 @@ export const ProductCardPage: React.FC<Props> = ({ products }) => {
                   <li
                     key={image}
                     className="ProductDetailsPage__photo"
-                    onClick={() => setCurrentImage(image)}
+                    onClick={() => handleImageClick(image)}
                   >
                     <img
                       className="ProductDetailsPage__photo-img"
