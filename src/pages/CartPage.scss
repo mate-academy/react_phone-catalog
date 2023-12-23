@@ -1,0 +1,72 @@
+.CartPage__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(49, 50, 55, 1);
+  margin-bottom: 24px;
+}
+
+.CartPage {
+  min-height: 78vh;
+}
+
+.CartPage__blocks {
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.CartPage__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.CartPage__checkout {
+  border: 1px solid rgba(226, 230, 233, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 368px;
+  height: 206px;
+}
+
+.CartPage__checkout-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.CartPage__checkout-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(49, 50, 55, 1);
+}
+
+.CartPage__checkout-subtitle {
+  color: rgba(137, 147, 154, 1);
+  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  text-align: center;
+  width: 321px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.CartPage__checkout-button {
+  background-color: rgba(49, 50, 55, 1);
+  border: 1px solid rgba(49, 50, 55, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 320px;
+  cursor: pointer;
+}
+
+.CartPage__checkout-button-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+}

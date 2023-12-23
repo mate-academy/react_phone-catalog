@@ -1,0 +1,22 @@
+.favourite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.favourite__heart {
+  background-image: url(./../sliderphotos/heart-like-favourites.svg);
+  background-repeat: no-repeat;
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.favourite__heart--active {
+  background-image: url(./../sliderphotos/red-heart.svg);
+}
+

@@ -1,0 +1,48 @@
+.DropDown {
+  position: relative;
+  width: 176px;
+  height: 40px
+}
+
+.DropDown__select {
+  border: 1px solid #b4bdc3;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 21px;
+  outline: none;
+  cursor: pointer;
+  background-image: url(../sliderphotos/chevron-arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) 50%;
+  background-size: 16px 16px;
+  padding: 10px 18px 10px 12px;
+  transition-duration: .3s
+}
+
+.DropDown__select--is-active {
+  background-image: url(../sliderphotos/chevron-arrow-up.svg)
+}
+
+.DropDown__select:hover {
+  border-color: #000
+}
+
+.DropDown__list {
+  position: absolute;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #b4bdc3;
+  z-index: 1
+}
+
+.DropDown__item {
+  width: 175px;
+  height: 40px;
+  padding: 10px 0 10px 12px;
+  cursor: pointer;
+  font-size: 14px
+}
+
+.DropDown__item:hover {
+  background-color: #f0f0f0
+}

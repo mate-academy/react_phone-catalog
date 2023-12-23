@@ -1,0 +1,78 @@
+.category__container {
+  margin-bottom: 150px;
+}
+
+.category__blocks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.category__block {
+  display: flex;
+  flex-direction: column;
+}
+
+.category__link {
+  display: flex;
+  flex-direction: column;
+}
+
+.category__phones-img {
+  background-image: url(./../sliderphotos/phones-by-category.svg);
+  background-repeat: no-repeat;
+  display: block;
+  height: 368px;
+  width: 368px;
+
+  margin-bottom: 24px;
+}
+
+.category__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(49, 50, 55, 1);
+
+  margin-bottom: 4px;
+}
+
+.category__phones-quantity {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(137, 147, 154, 1);
+}
+
+.category__tablets-img {
+  background-image: url(./../sliderphotos/tablets-by-category.svg);
+  background-repeat: no-repeat;
+  display: block;
+  height: 368px;
+  width: 368px;
+
+  margin-bottom: 24px;
+}
+
+.category__tablets-quantity {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(137, 147, 154, 1);
+}
+
+.category__accessories-img {
+  background-image: url(./../sliderphotos/accessories-by-category.svg);
+  background-repeat: no-repeat;
+  display: block;
+  height: 368px;
+  width: 368px;
+
+  margin-bottom: 24px;
+}
+
+.category__accessories-quantity {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(137, 147, 154, 1);
+}
+

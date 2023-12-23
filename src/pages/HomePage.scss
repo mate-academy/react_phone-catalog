@@ -1,0 +1,86 @@
+.section {
+  width: 100vw;
+}
+
+body {
+  background-color: rgb(103, 40, 204);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__settings {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 250px;
+    height: 40px;
+    background-color: rgb(103, 40, 204);
+    border: 1px solid black;
+    border-radius: 30px;
+    padding-inline: 10px;
+
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.input {
+  background-color: #bab3b3;
+  width: 50px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+  cursor: pointer;
+  outline: none;
+}
+
+.switch {
+  position: relative;
+  appearance: none;
+  outline: none;
+  width: 40px;
+  height: 21px;
+  background-color: rgb(2, 23, 32);
+  border: 1px solid #bab3b3;
+  border-radius: 50px;
+  box-shadow: inset -20px 0 0 0 #bab3b3;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.switch:checked {
+  border-color: #08c62b;
+  box-shadow: inset 20px 0 0 0 #08c62b;
+}
+
+.switch:checked::after {
+  left: 20px;
+  box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
+}
+

@@ -1,0 +1,55 @@
+.breadCrumbs {
+  margin-top: 24px;
+  -webkit-align-items: center;
+  align-items: center
+}
+
+.breadCrumbs,.breadCrumbs__list {
+  display: flex
+}
+
+.breadCrumbs__list {
+  grid-gap: 8px;
+  gap: 8px;
+  -webkit-align-content: center;
+  align-content: center
+}
+
+.breadCrumbs__arrow {
+  display: block;
+  background-image: url(../sliderphotos/chevron-right-solid.svg);
+  margin: 0 auto
+}
+
+.breadCrumbs__arrow,.breadCrumbs__icon {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px
+}
+
+.breadCrumbs__icon {
+  background-image: url(../sliderphotos/home-icon.svg);
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center
+}
+
+.breadCrumbs__item {
+  height: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: left
+}
+
+.breadCrumbs__item.active {
+  color: #89939a;
+  background: none
+}
+
+.breadCrumbs__item--link {
+  color: #313237
+}

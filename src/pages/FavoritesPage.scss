@@ -1,0 +1,25 @@
+.favourites {
+  min-height: 78vh;
+}
+
+.favourites__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 120px;
+}
+
+.favourites__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(49, 50, 55, 1);
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.favourites__quantity {
+  color: rgba(137, 147, 154, 1);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
