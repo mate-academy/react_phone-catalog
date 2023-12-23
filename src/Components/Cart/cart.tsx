@@ -97,7 +97,10 @@ const Cart: React.FC = () => {
             {showModal && (
               <div className="modal">
                 <div className="modal-content">
-                  <p className="modal-text">Sorry, the checkout functionality is not implemented yet.</p>
+                  <p className="modal-text">
+                    Sorry, the checkout functionality is not implemented yet.
+
+                  </p>
                 </div>
               </div>
             )}
