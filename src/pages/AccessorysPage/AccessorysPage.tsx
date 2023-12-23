@@ -4,7 +4,7 @@ import { Product, ProductType } from '../../types/Product';
 import { ProductPage } from '../ProductPage/ProductPage';
 
 export const AccessorysPage = () => {
-  const [productsAccessory, setProductsAccessory] = useState<Product[]>([]);
+  const [productsAccessories, setProductsAccessory] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -29,7 +29,7 @@ export const AccessorysPage = () => {
   return (
     <section className="phones">
       <ProductPage
-        products={productsAccessory}
+        products={productsAccessories}
         isError={isError}
         isLoading={isLoading}
         category={ProductType.Accessories}

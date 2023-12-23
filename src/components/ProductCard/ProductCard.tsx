@@ -10,7 +10,7 @@ type Props = {
   title?: ProductSection,
 };
 
-export const ProductCard: React.FC<Props> = ({ product, title }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     screen,
     capacity,
@@ -37,25 +37,19 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
           src={`./new/${image}`}
           alt={name}
         />
-        <div className="product-card__title">
+        <h2 className="product-card__title">
           {name}
-        </div>
+        </h2>
         <div className="product-card__price">
-          {title === ProductSection.NewBrand ? (
-            <div className="product-card__price-regular">
-              {`$${fullPrice}`}
-            </div>
-          ) : (
-            <>
-              <h2 className="product-card__price-regular">
-                {`$${price}`}
-              </h2>
 
-              <div className="product-card__price-discount">
-                {`$${fullPrice}`}
-              </div>
-            </>
-          )}
+          <h2 className="product-card__price-regular">
+            {`$${price}`}
+          </h2>
+
+          <div className="product-card__price-discount">
+            {`$${fullPrice}`}
+          </div>
+
         </div>
       </Link>
       <div className="product-card__properties">
