@@ -1,25 +1,55 @@
+import React, { useContext } from 'react';
 import './Buttons.scss';
+import classNames from 'classnames';
+import { Product } from '../../types/Product';
+import { StorContext } from '../../context/StorContext';
 
-export const Buttons = () => {
+type Props = {
+  product: Product;
+  isSelectedFav: boolean;
+  isSelectedInCart: boolean;
+};
+
+export const Buttons: React.FC<Props> = ({
+  product,
+  isSelectedFav,
+  isSelectedInCart,
+}) => {
+  const { handleToggleAddToCart, handleToggleLike } = useContext(StorContext);
+  const addToCart = () => handleToggleAddToCart(product);
+  const like = () => handleToggleLike(product);
+
   return (
     <div className="buttons">
       <button
-        className="buttons__buy"
+        className={classNames('buttons__buy', {
+          'buttons__buy--active': isSelectedInCart,
+        })}
         type="button"
+        onClick={addToCart}
       >
-        <p className="buttons__buy-name">Add to cart</p>
+        {`${isSelectedInCart ? 'Added to cart' : 'Add to cart'}`}
       </button>
 
       <button
         aria-label="button"
         className="buttons__fav"
         type="button"
+        onClick={like}
       >
-        <img
-          src="img/mine/icons/Favourites (Heart Like).svg"
-          alt=""
-          className="buttons__fav-img"
-        />
+        {!isSelectedFav ? (
+          <img
+            src="img/mine/icons/Favourites (Heart Like).svg"
+            alt=""
+            className="buttons__fav-img"
+          />
+        ) : (
+          <img
+            src="img\mine\icons\Favourites Filled (Heart Like).svg"
+            alt=""
+            className="buttons__fav-img"
+          />
+        )}
       </button>
     </div>
   );

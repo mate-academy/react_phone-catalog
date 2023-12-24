@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { Buttons } from '../ButtonsAddLike/Buttons';
+import { StorContext } from '../../context/StorContext';
 
 type Props = {
   product: Product
@@ -10,8 +11,6 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    // phoneId,
-    // id,
     category,
     itemId,
     name,
@@ -22,6 +21,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
     image,
   } = product;
+
+  const { favorites, inCart, isSelectedProduct } = useContext(StorContext);
+  const isSelectedFav = isSelectedProduct(itemId, favorites);
+  const isSelectedInCart = isSelectedProduct(itemId, inCart);
 
   return (
     <div className="card" data-cy="cardsContainer">
@@ -65,7 +68,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="card__actions">
-        <Buttons />
+        <Buttons
+          isSelectedFav={isSelectedFav}
+          isSelectedInCart={isSelectedInCart}
+          product={product}
+        />
       </div>
     </div>
   );

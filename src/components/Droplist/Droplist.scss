@@ -39,7 +39,6 @@
     font-weight: 600;
     line-height: 21px;
     box-sizing: border-box;
-
     &:hover {
       border: 1px solid #89939a;
     }
@@ -50,11 +49,15 @@
   }
 
   &__arrow {
-    transition: transform 0.3s;
-
-    &--open {
-      transform: rotate(180deg);
-    }
+    position: absolute;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    background-image: url('../../../public/img/mine/icons/Chevron (Arrow Down).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.5s;
+    pointer-events: none;
   }
 
   &__list-option {

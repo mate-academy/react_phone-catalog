@@ -1,7 +1,9 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './Header.scss';
+import { useContext } from 'react';
 import { Search } from '../Search/Search';
+import { StorContext } from '../../context/StorContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'header__nav-link', { 'header__is-active': isActive },
@@ -10,6 +12,8 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
 export const Header = () => {
   const location = useLocation();
   const paths = location.pathname;
+  const { inCartCount, favCount } = useContext(StorContext);
+
   const visualSearch = paths === '/phones'
     || paths === '/accessories'
     || paths === '/tablets'
@@ -70,12 +74,26 @@ export const Header = () => {
               src="img/mine/icons/Favourites (Heart Like).svg"
               alt="Like"
             />
+
+            {favCount !== 0
+              && (
+                <span className="header__icons--count">
+                  {favCount}
+                </span>
+              )}
           </NavLink>
         </div>
 
         <div className="header__icons">
           <NavLink to="/cart" className={getLinkClass}>
             <img src="img/mine/icons/Shopping bag (Cart).svg" alt="Cart" />
+
+            {inCartCount !== 0
+              && (
+                <span className="header__icons--count">
+                  {inCartCount}
+                </span>
+              )}
           </NavLink>
         </div>
       </div>

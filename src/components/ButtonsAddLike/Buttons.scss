@@ -11,18 +11,23 @@
     height: 40px;
     background: #313237;
 
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    color: #fff;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    box-sizing: border-box;
+
+    &--active {
+      background: white;
+      color: green;
+      border: 1px solid #e2e6e9;
     }
 
-    &-name {
-      color: #fff;
-      text-align: center;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 21px;
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
   }
 

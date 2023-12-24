@@ -64,13 +64,13 @@ export const Droplist: React.FC<Props> = ({
         onClick={handleClick}
       >
         {sortText}
-
-        <img
-          src="img/mine/icons/Chevron (Arrow Down).svg"
-          alt="arrow"
-          className={classNames('droplist__arrow', {
-            'droplist__arrow--open': isOpen,
-          })}
+        <span
+          className="droplist__arrow"
+          style={{
+            transform: isOpen
+              ? 'rotate(180deg)'
+              : 'rotate(0deg)',
+          }}
         />
       </button>
 

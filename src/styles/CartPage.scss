@@ -1,0 +1,123 @@
+.cart {
+  width: 1136px;
+  margin-bottom: 24px;
+
+  &__empty {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    color: #eb5757;
+  }
+
+  &__navigate {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: #313237;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    justify-content: space-between;
+    padding: 24px;
+    width: 360px;
+    height: 206px;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+
+    &:hover {
+      transition: 0.3s;
+      border: 1px solid #313237;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e6e9;
+
+    &-price {
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.32px;
+      color: #313237;
+    }
+
+    &-count {
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+      color: #89939a;
+    }
+  }
+
+  &__button {
+    width: 320px;
+    height: 48px;
+    background-color: #313237;
+    border: none;
+    color: white;
+
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    
+    &:hover {
+      transition: 0.3s;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__message {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    background-color: #eb5757;
+    bottom: -50px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  
+    &--clear {
+      opacity: 1;
+    }
+  }
+}
