@@ -4,14 +4,28 @@ import { Tablet } from '../../Types/Tablet';
 
 // eslint-disable-next-line
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
+// eslint-disable-next-line
+const PROD_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products';
 
 function wait(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function getData<T>(url: string): Promise<T> {
+export function getData<T>(url: string): Promise<T> {
   return wait(500)
     .then(() => fetch(BASE_URL + url))
+    .then(response => {
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
+    });
+}
+
+export function getPhoneData<T>(url: string): Promise<T> {
+  return wait(500)
+    .then(() => fetch(PROD_URL + url))
     .then(response => {
       if (!response.ok) {
         throw new Error();
