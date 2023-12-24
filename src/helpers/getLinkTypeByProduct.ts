@@ -1,4 +1,5 @@
 import { Item } from '../types/Item';
+import { PageItems } from '../types/others/types';
 
 export const getLinkTypeByProduct
   = (product: Item): PageItems => {

@@ -1,4 +1,5 @@
 import { Item } from '../types/Item';
+import { Sort } from '../types/others/types';
 
 export const getSortedProducts
 = (products: Item[], sortType: Sort) => {

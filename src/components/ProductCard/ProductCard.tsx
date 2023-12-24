@@ -8,6 +8,7 @@ import { Item } from '../../types/Item';
 import './ProductCard.scss';
 import { ProductsContext } from '../../context/ProductsContext';
 import { getLinkTypeByProduct } from '../../helpers/getLinkTypeByProduct';
+import { PageItems } from '../../types/others/types';
 
 type Props = {
   item: Item;

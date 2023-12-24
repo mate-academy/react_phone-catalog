@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import './HistoryLinks.scss';
+import { HistoryLink } from '../../types/others/types';
 
 type Props = {
   links: HistoryLink[];
