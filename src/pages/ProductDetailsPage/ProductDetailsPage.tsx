@@ -30,7 +30,7 @@ export const ProductDetailsPage: React.FC = () => {
     fetchData();
   }, [setPhone, phoneId]);
 
-  console.log(phone);
+  // console.log(phone);
 
   return (
     <div className="phones">
