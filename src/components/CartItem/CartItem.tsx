@@ -6,10 +6,11 @@ import { Item } from '../../types/Item';
 import './CartItem.scss';
 import { ProductsContext } from '../../context/ProductsContext';
 import { getLinkTypeByProduct } from '../../helpers/getLinkTypeByProduct';
+import { Error } from '../../types/others/types';
 
 type Props = {
   item: Item;
-  setError: React.Dispatch<React.SetStateAction<ErrorType>>;
+  setError: React.Dispatch<React.SetStateAction<Error>>;
 };
 
 export const CartItem: React.FC<Props> = ({ item, setError }) => {

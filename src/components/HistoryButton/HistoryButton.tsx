@@ -1,13 +1,14 @@
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
 import './HistoryButton.scss';
+import { memo } from 'react';
 
 type Props = {
   text: string;
   path?: string;
 };
 
-export const HistoryButton: React.FC<Props> = ({ text, path }) => {
+export const HistoryButton: React.FC<Props> = memo(({ text, path }) => {
   const navigate = useNavigate();
 
   return (
@@ -25,4 +26,4 @@ export const HistoryButton: React.FC<Props> = ({ text, path }) => {
       <p className="link-text">{text}</p>
     </Link>
   );
-};
+});

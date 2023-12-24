@@ -24,6 +24,7 @@ import { Loader } from '../../components/Loader';
 import { getCorrectImageUrl } from '../../helpers/getCorrectImageUrl';
 import { Title } from '../../components/Title';
 import { getMemoryString } from '../../helpers/getMemoryString';
+import { PageItems } from '../../types/others/types';
 
 export const ProductDetailsPage = () => {
   const { id } = useParams();
@@ -39,7 +40,7 @@ export const ProductDetailsPage = () => {
   const [productDetails, setProductDetails]
     = useState<ItemDetails | null>(null);
   const [product, setProduct] = useState<Item | null>(null);
-  const [linkType, setLinkType] = useState<PageItemsType>('/');
+  const [linkType, setLinkType] = useState<PageItems>('/');
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const nav = useNavigate();
 
@@ -85,13 +86,17 @@ export const ProductDetailsPage = () => {
   }, [id, products]);
 
   useEffect(() => {
-    if (id) {
-      const pr = products.find((item) => item.id === id);
+    if (!id) {
+      return;
+    }
 
-      setProduct(pr || null);
-      if (pr) {
-        setLinkType(getLinkTypeByProduct(pr));
-      }
+    const pr = products.find((item) => item.id === id);
+
+    if (pr) {
+      setProduct(pr);
+      setLinkType(getLinkTypeByProduct(pr));
+    } else {
+      setProduct(null);
     }
   }, [id, products]);
 

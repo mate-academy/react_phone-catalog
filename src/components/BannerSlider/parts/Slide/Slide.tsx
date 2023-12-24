@@ -1,3 +1,4 @@
+import { Image } from '../../../../types/others/types';
 import './Slide.scss';
 
 type Props = {

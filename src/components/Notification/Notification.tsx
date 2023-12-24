@@ -1,8 +1,9 @@
+import { PopUp } from '../../types/others/types';
 import './Notification.scss';
 
 type Props = {
   text: string;
-  type: NotificationType;
+  type: PopUp;
 };
 
 export const Notification: React.FC<Props> = ({ text, type }) => {

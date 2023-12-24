@@ -23,7 +23,7 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
     setFavourites,
   } = useContext(ProductsContext);
 
-  const type: PageItemsType
+  const type: PageItems
     = useMemo(() => getLinkTypeByProduct(item), [item]);
 
   const handleFavouriteButton = useCallback((

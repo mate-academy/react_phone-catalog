@@ -49,7 +49,7 @@ export const Header = () => {
     setIsLoading(false);
   };
 
-  const onInputChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
 
     setInputValue(query);
@@ -134,7 +134,7 @@ export const Header = () => {
               value={inputValue}
               className="header__search-input"
               placeholder={`Search in ${searchPlaceholder}...`}
-              onChange={onInputChanged}
+              onChange={handleInputChange}
             />
             {/* eslint-disable-next-line react/button-has-type */}
             <button

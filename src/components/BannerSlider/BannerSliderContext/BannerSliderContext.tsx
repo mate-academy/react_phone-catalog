@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useEffect,
 } from 'react';
+import { Image } from '../../../types/others/types';
 
 const TRANSITION_DURATION = 300;
 
@@ -57,8 +58,12 @@ export const BannerSliderProvider: React.FC = ({ children }) => {
   const setUpSliderInterval = useCallback((ms: number) => {
     let intervalId: NodeJS.Timeout;
 
-    return () => {
+    return (clear?: boolean) => {
       clearInterval(intervalId);
+
+      if (clear) {
+        return;
+      }
 
       intervalId = setInterval(() => {
         setPosition((prev) => {
@@ -100,6 +105,8 @@ export const BannerSliderProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     restartInterval();
+
+    return () => restartInterval(true);
   }, [restartInterval]);
 
   useEffect(() => {

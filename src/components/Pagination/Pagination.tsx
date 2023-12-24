@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import cn from 'classnames';
 import './Pagination.scss';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -20,7 +20,7 @@ export const Pagination: React.FC<Props> = ({
   const isPageFirst = currentPage === 1;
   const isPageLast = currentPage === numberOfPages;
 
-  const getCurrentPage = (): number => {
+  const getCurrentPage = useCallback((): number => {
     const page = searchParams.get('page');
 
     if (page) {
@@ -28,9 +28,9 @@ export const Pagination: React.FC<Props> = ({
     }
 
     return 1;
-  };
+  }, [searchParams.get('page')]);
 
-  const getButtons = (): JSX.Element[] => {
+  const getButtons = useCallback((): JSX.Element[] => {
     const array: JSX.Element[] = [];
     const startIndex = currentPage - 3 > 0 ? currentPage - 3 : 1;
     const endIndex
@@ -77,7 +77,7 @@ export const Pagination: React.FC<Props> = ({
     }
 
     return array;
-  };
+  }, [currentPage, numberOfPages, searchParams]);
 
   return (
     <ul data-cy="pagination" className="pagination">

@@ -9,28 +9,29 @@ import cn from 'classnames';
 import { Pagination } from '../Pagination';
 import './Filtration.scss';
 import { getSearchString } from '../../helpers/getSearchString';
+import { PerPage, Sort } from '../../types/others/types';
 
 type Props = {
   total: number;
   children: React.ReactNode;
 };
 
-const sortOptions: { [key: string]: SortType } = {
+const sortOptions: { [key: string]: Sort } = {
   Newest: 'age',
   Alphabetically: 'name',
   Cheapest: 'price',
   Expensive: '-price',
 };
 
-const perPageOptions: PerPageType[] = ['4', '8', '16', 'all'];
+const perPageOptions: PerPage[] = ['4', '8', '16', 'all'];
 
 export const Filtration: React.FC<Props> = ({ children, total }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sort, setSort] = useState('Newest');
+  const [sort, setSort] = useState(Object.keys(sortOptions)[0]);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isPerPageOpen, setIsPerPageOpen] = useState(false);
   const [perPage, setPerPage]
-    = useState<PerPageType>(searchParams.get('perPage') as PerPageType || '16');
+    = useState<PerPage>(searchParams.get('perPage') as PerPage || '16');
   const [currentPage, setCurrentPage] = useState(searchParams.get('page') || 1);
 
   useEffect(() => {
@@ -51,8 +52,8 @@ export const Filtration: React.FC<Props> = ({ children, total }) => {
   useEffect(() => {
     const perPageOption = searchParams.get('perPage') || '16';
 
-    if (perPageOptions.includes(perPageOption as PerPageType)) {
-      setPerPage(perPageOption as PerPageType);
+    if (perPageOptions.includes(perPageOption as PerPage)) {
+      setPerPage(perPageOption as PerPage);
     } else {
       searchParams.set('perPage', '16');
       setSearchParams(searchParams);

@@ -28,7 +28,7 @@ export const Root = () => {
                   <ProductsPage
                     type="phone"
                     title="Mobile phones"
-                    linkToThisPage="Phones"
+                    link="Phones"
                   />
                 )}
               />
@@ -41,7 +41,7 @@ export const Root = () => {
                   <ProductsPage
                     type="tablet"
                     title="Tablets"
-                    linkToThisPage="Tablets"
+                    link="Tablets"
                   />
                 )}
               />
@@ -54,7 +54,7 @@ export const Root = () => {
                   <ProductsPage
                     type="accessory"
                     title="Accessories"
-                    linkToThisPage="Accessories"
+                    link="Accessories"
                   />
                 )}
               />

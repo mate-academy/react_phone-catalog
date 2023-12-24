@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { ProductsContext } from '../../context/ProductsContext';
 import './CartTotal.scss';
+import { Error } from '../../types/others/types';
 
 type Props = {
   total: number;
   itemsCount: number;
-  setNotification: React.Dispatch<React.SetStateAction<ErrorType>>;
+  setNotification: React.Dispatch<React.SetStateAction<Error>>;
 };
 
 export const CartTotal: React.FC<Props>

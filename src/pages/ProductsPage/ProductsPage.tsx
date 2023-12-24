@@ -18,15 +18,16 @@ import { Loader } from '../../components/Loader';
 import { getSortedProducts } from '../../helpers/getSortedProducts';
 import { getProductsByPage } from '../../helpers/getProductsByPage';
 import { setDebounce } from '../../helpers/setDebounce';
+import { Sort } from '../../types/others/types';
 
 type Props = {
   type: ItemType;
   title: string;
-  linkToThisPage: string;
+  link: string;
 };
 
 export const ProductsPage: React.FC<Props>
-  = ({ type, title, linkToThisPage }) => {
+  = ({ type, title, link }) => {
     const { products, isLoading, setIsLoading } = useContext(ProductsContext);
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -42,7 +43,7 @@ export const ProductsPage: React.FC<Props>
       let filtredProducts = getFilteredProducts(typeProducts, query);
       const count = filtredProducts.length;
 
-      filtredProducts = getSortedProducts(filtredProducts, sort as SortType);
+      filtredProducts = getSortedProducts(filtredProducts, sort as Sort);
 
       let perPageValue = +perPage;
 
@@ -87,7 +88,7 @@ export const ProductsPage: React.FC<Props>
       <div className="ProductsPage">
         <HistoryLinks
           links={[
-            { title: linkToThisPage, link: `/${linkToThisPage}` },
+            { title: link, link: `/${link}` },
           ]}
         />
         <div className="ProductsPage__title">

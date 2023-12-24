@@ -1,7 +1,7 @@
 import { Item } from '../types/Item';
 
 export const getLinkTypeByProduct
-  = (product: Item): PageItemsType => {
+  = (product: Item): PageItems => {
     switch (product.type) {
       case 'phone':
         return 'Phones';

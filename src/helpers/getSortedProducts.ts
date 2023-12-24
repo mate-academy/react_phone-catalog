@@ -1,7 +1,7 @@
 import { Item } from '../types/Item';
 
 export const getSortedProducts
-= (products: Item[], sortType: SortType) => {
+= (products: Item[], sortType: Sort) => {
   switch (sortType) {
     case 'age':
       return products.sort((a, b) => a.age - b.age);

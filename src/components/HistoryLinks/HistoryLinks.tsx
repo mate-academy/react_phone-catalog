@@ -3,11 +3,11 @@ import cn from 'classnames';
 import './HistoryLinks.scss';
 
 type Props = {
-  links: HistoryLinkType[];
+  links: HistoryLink[];
 };
 
 export const HistoryLinks: React.FC<Props> = ({ links }) => {
-  const getLinkContent = (link: HistoryLinkType, index: number) => {
+  const getLinkContent = (link: HistoryLink, index: number) => {
     return (
       <>
         <img

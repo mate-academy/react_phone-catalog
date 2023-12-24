@@ -1,8 +1,5 @@
 import {
-  useCallback,
   useContext,
-  useEffect,
-  useState,
 } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { CartItem } from '../../components/CartItem';
@@ -13,36 +10,11 @@ import { ProductsContext } from '../../context/ProductsContext';
 import { CartTotal } from '../../components/CartTotal';
 import { getTotalPrice } from '../../helpers/getTotalPrice';
 import { Notification } from '../../components/Notification';
+import { useErrorTimer } from '../../helpers/useErrorTimer';
 
 export const CartPage = () => {
   const { cart } = useContext(ProductsContext);
-  const [error, setError] = useState<ErrorType>({
-    id: 0,
-    isError: false,
-    type: 'success',
-    text: '',
-  });
-
-  const createErrorTimer = useCallback(() => {
-    let timerId: NodeJS.Timeout;
-
-    return () => {
-      clearTimeout(timerId);
-
-      timerId = setTimeout(() => {
-        setError((prev) => ({ ...prev, isError: false }));
-      }, 5000);
-    };
-  }, [setError]);
-
-  const restartErrorInterval
-    = useCallback(createErrorTimer(), [createErrorTimer]);
-
-  useEffect(() => {
-    if (error.isError) {
-      restartErrorInterval();
-    }
-  }, [error.id]);
+  const { error, setErrorTimer } = useErrorTimer();
 
   return (
     <div className="CartPage">
@@ -66,7 +38,7 @@ export const CartPage = () => {
             total={getTotalPrice(cart)}
             itemsCount={cart
               .reduce((acc, item) => acc + (item.quantity || 1), 0)}
-            setNotification={setError}
+            setNotification={setErrorTimer}
           />
         </div>
       )}
@@ -79,7 +51,7 @@ export const CartPage = () => {
             mountOnEnter
             unmountOnExit
           >
-            <CartItem setError={setError} item={item} />
+            <CartItem setError={setErrorTimer} item={item} />
           </CSSTransition>
         ))}
       </TransitionGroup>
