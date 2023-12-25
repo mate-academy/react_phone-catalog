@@ -5,6 +5,7 @@
 import React, {
   createContext,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import { Product } from '../../types/Products';
@@ -15,36 +16,55 @@ interface ContextType {
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
   handleAddToBasket: (product: Product) => void;
   handleAddToFavorite: (product: Product) => void;
-  getBasket: Product[];
   getFavorite: Product[];
+  getBasket: Product[];
+  defaultStateValue: {
+    countBasket: number,
+    countFavorite: number,
+  }
 }
 
 const Context = createContext<ContextType | undefined>(undefined);
 
 export const ContextProvider: React.FC = ({ children }) => {
   const [searchText, setSearchText] = useState('');
-  const [, setReload] = useState<Product[]>([]);
+
+  const [defaultStateValue, setDefaultStateValue] = useState({
+    countBasket: 0,
+    countFavorite: 0,
+  });
 
   const getBasket: Product[] = getItem('basket') || [];
   const getFavorite: Product[] = getItem('favorite') || [];
 
+  useEffect(() => {
+
+    setDefaultStateValue((prevState) => {
+      return {
+        ...prevState,
+        countBasket: getBasket.length,
+        countFavorite: getFavorite.length,
+      };
+    });
+  }, []);
+
   const handleAddTo = (product: Product, list: Product[], listKey: string) => {
-    const productInclude = list.some(item => item.id === product.id);
+    const productIndex = list.findIndex(item => item.id === product.id);
+    const isProductInList = productIndex !== -1;
 
-    if (!productInclude) {
-      setItem(listKey, [...list, product]);
-      console.log('setItem', !productInclude);
-      setReload([...list, product]);
-    } else {
-      const updatedList = [...list];
-      const productIndex = list.findIndex(item => item.id === product.id);
+    const updatedList = isProductInList
+      ? list.filter(item => item.id !== product.id)
+      : [...list, product];
 
-      updatedList.splice(productIndex, 1);
+    setItem(listKey, updatedList);
 
-      setItem(listKey, updatedList);
-      setReload(updatedList);
-      console.log('noADD', !productInclude);
-    }
+    setDefaultStateValue((prevState) => {
+      return {
+        ...prevState,
+        countBasket: listKey === 'basket' ? prevState.countBasket + (isProductInList ? -1 : 1) : prevState.countBasket,
+        countFavorite: listKey === 'favorite' ? prevState.countFavorite + (isProductInList ? -1 : 1) : prevState.countFavorite,
+      };
+    });
   };
 
   const handleAddToBasket = (product: Product) => {
@@ -61,8 +81,9 @@ export const ContextProvider: React.FC = ({ children }) => {
       setSearchText,
       handleAddToBasket,
       handleAddToFavorite,
-      getBasket,
+      defaultStateValue,
       getFavorite,
+      getBasket,
     }}
     >
       {children}

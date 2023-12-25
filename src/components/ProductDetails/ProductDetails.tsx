@@ -30,6 +30,7 @@ export const ProductDetails: React.FC = () => {
     <section className="details">
       <div className="container">
         <BreadCrumbs />
+
       </div>
     </section>
 

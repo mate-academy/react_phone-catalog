@@ -19,7 +19,7 @@ const getLinkClass = (
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const searchShow = pathname === '/phones';
-  const { getBasket, getFavorite } = useSearchContext();
+  const { defaultStateValue } = useSearchContext();
 
   return (
     <header className="header">
@@ -46,10 +46,10 @@ export const Header: React.FC = () => {
           <Link to="/" className="navigation__icon">
             <img src={favoriteIcon} alt="icon_favorite" className="navigation__icon-favorite" />
 
-            {getFavorite.length !== 0 && (
+            {defaultStateValue.countFavorite !== 0 && (
               <div className="navigation__icon-basket--counter">
                 <span className="navigation__icon-basket--length">
-                  {getFavorite.length}
+                  {defaultStateValue.countFavorite}
                 </span>
               </div>
             )}
@@ -58,10 +58,10 @@ export const Header: React.FC = () => {
           <Link to="/" className="navigation__icon">
             <img src={basketIcon} alt="icon-basket" className="navigation__icon-basket" />
 
-            {getBasket.length !== 0 && (
+            {defaultStateValue.countBasket !== 0 && (
               <div className="navigation__icon-basket--counter">
                 <span className="navigation__icon-basket--length">
-                  {getBasket.length}
+                  {defaultStateValue.countBasket}
                 </span>
               </div>
             )}

@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 // local-storage.js
 // local-storage.ts
-
 // local-storage.ts
 
 export const getItem = <T>(key: string): T | null => {
