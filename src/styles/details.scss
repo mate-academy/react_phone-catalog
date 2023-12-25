@@ -3,6 +3,15 @@
   grid-template-columns: repeat(24, 1fr);
   height: 464px;
   border: 1px solid green;
+  column-gap: 16px;
+
+  &__big-photo-container {
+    grid-column: span 10;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 16px;
+    grid-template-rows: 464px;
+  }
 
   &__small-photo-container {
     grid-column: span 2;
@@ -13,6 +22,14 @@
     column-gap: 16px;
   }
 
+  &__big-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $gray-secondary;
+    grid-column: span 10;
+  }
+
   &__small-photo {
     display: flex;
     align-items: center;
@@ -21,6 +38,10 @@
     grid-auto-flow: row;
     grid-row: span 1;
     grid-column: span 2;
+  }
+
+  &__big-image {
+    max-height: 100%;
   }
 
   &__small-image {

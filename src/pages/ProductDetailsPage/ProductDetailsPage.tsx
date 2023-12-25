@@ -15,6 +15,12 @@ export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [phone, setPhone] = useState<PhoneDetail | null>(null);
 
+  const [selectedPhoto, setSelectedPhoto] = useState<string>('');
+
+  const handleChangePhoto = (src: string) => {
+    setSelectedPhoto(src);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,6 +28,7 @@ export const ProductDetailsPage: React.FC = () => {
 
         setPhone(data);
         setIsLoading(false);
+        handleChangePhoto(data?.images[0] || '');
       } catch (error) {
         throw new Error();
       }
@@ -30,33 +37,75 @@ export const ProductDetailsPage: React.FC = () => {
     fetchData();
   }, [setPhone, phoneId]);
 
-  // console.log(phone);
-
   return (
     <div className="phones">
       <div className="path">
         <img src={homeImage} alt="home_icon" />
         <img src={arrowRight} alt="arrow_right" />
-        <h3 className="phones__prev-name">Phones</h3>
+        <h3 className="phones__prev-page">Phones</h3>
         <img src={arrowRight} alt="arrow_right" />
         <h3>{upperPhoneId}</h3>
       </div>
-      <button type="button" className="left-back" onClick={() => navigate(-1)}>
+      <button
+        type="button"
+        className="left-back"
+        onClick={() => navigate(-1)}
+        data-cy="backButton"
+      >
         <img src={arrowLeft} alt="arrow_right" />
         <p>Back</p>
       </button>
-      <h1 className="phones__title">{upperPhoneId}</h1>
+      <h1 className="phones__title phones__title--mb-40px">{upperPhoneId}</h1>
       {isLoading ? (
         <Loader />
       ) : (
         <div className="details">
           <div className="details__small-photo-container">
             {phone?.images.map(image => (
-              <div key={phone.id} className="details__small-photo">
-                <img className="details__small-image" src={image} alt={image} />
+              <div
+                key={image}
+                className="details__small-photo"
+                onClick={() => handleChangePhoto(image)}
+                role="presentation"
+              >
+                <img
+                  className="details__small-image"
+                  src={image}
+                  alt={image}
+                />
               </div>
             ))}
           </div>
+          <div className="details__big-photo-container">
+            <div className="details__big-photo">
+              <img
+                className="details__big-image"
+                src={selectedPhoto}
+                alt={selectedPhoto}
+              />
+            </div>
+          </div>
+          {/* <aside className="details__aside">
+            <ul>
+              <li></li>
+            </ul>
+            <ul>
+              <li></li>
+            </ul>
+            <ul>
+              <li></li>
+            </ul>
+            <div>
+              <a href=""></a>
+              <div></div>
+            </div>
+            <ul>
+              <li>
+                <p></p>
+                <p></p>
+              </li>
+            </ul>
+          </aside> */}
         </div>
       )}
     </div>
