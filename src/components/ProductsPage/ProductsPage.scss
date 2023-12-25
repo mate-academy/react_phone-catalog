@@ -1,0 +1,50 @@
+@import "../../styles/utils";
+
+.productsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &--link {
+      display: flex;
+    }
+
+    &--path {
+      text-transform: capitalize;
+      color: $color-secondary;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--models {
+      color: $color-secondary;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &--sort {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+
+    &--table {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 40px;
+    }
+  }
+}

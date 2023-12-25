@@ -1,0 +1,87 @@
+@import "variables";
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 400;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  color: $color-primary;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  font-weight: 700;
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-weight: 600;
+  margin: 0;
+}
+
+.upperCase {
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.button {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.smallText {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  font-weight: 600;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.smallIcon,
+.smallButton {
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border: 1px solid $color-icons;
+  background-color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &--disabled {
+    border: 1px solid $color-elements;
+    cursor: auto;
+
+    &:hover {
+      border: 1px solid $color-elements;
+    }
+  }
+}

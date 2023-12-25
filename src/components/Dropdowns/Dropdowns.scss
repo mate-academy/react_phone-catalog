@@ -1,0 +1,53 @@
+@import "../../styles/utils";
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+
+  &__text {
+    color: $color-secondary;
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    width: 176px;
+    height: 40px;
+    background-color: inherit;
+    border: 1px solid $color-icons;
+    text-transform: capitalize;
+  }
+
+  &__content {
+    position: absolute;
+    top: 100%;
+    border: 1px solid $color-icons;
+    width: 176px;
+    margin-top: 4px;
+    padding: 8px 12px;
+    background-color: $color-white;
+    z-index: 1;
+
+    &--button {
+      padding: 0;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      background-color: $color-white;
+      border: none;
+      color: $color-secondary;
+      font-weight: 500;
+      width: 100%;
+      text-transform: capitalize;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}

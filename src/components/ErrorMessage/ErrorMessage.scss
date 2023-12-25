@@ -1,0 +1,10 @@
+@import "../../styles/utils";
+
+.errorMessage {
+  margin: 30px 15px;
+
+  &__text {
+    padding: 30px 15px;
+    background-color: $color-red;
+  }
+}

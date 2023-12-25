@@ -1,0 +1,196 @@
+@import "../../styles/utils";
+
+.header {
+  border-bottom: 1px solid $color-elements;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__left-side {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 24px;
+
+    &__navigation {
+      &--list {
+        display: flex;
+        flex-direction: row;
+        gap: 64px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      &--item {
+        &--link {
+          text-decoration: none;
+          color: $color-secondary;
+          position: relative;
+
+          &:hover {
+            color: $color-primary;
+          }
+
+          &::after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            bottom: -170%;
+            left: 0;
+            position: absolute;
+            background-color: $color-primary;
+
+            transition: transform $effect-duration;
+            transform: scale(0);
+            transform-origin: center;
+          }
+
+          &:hover::after {
+            transform: scale(1);
+          }
+
+          &--active {
+            color: $color-primary;
+
+            &::after {
+              content: "";
+              height: 3px;
+              width: 100%;
+              bottom: -170%;
+              left: 0;
+              position: absolute;
+              background-color: $color-primary;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+
+      &--logo {
+        transition: transform $effect-duration;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    flex-direction: row;
+
+    &__search {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 327px;
+      box-sizing: border-box;
+      padding-inline: 24px;
+      border-left: 1px solid $color-elements;
+
+      &--query {
+        height: 100%;
+        border: none;
+        padding: 0;
+        font-weight: 600;
+        color: $color-primary;
+
+        &::placeholder {
+          color: $color-icons;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &--icon {
+        width: 16px;
+
+        transition: transform $effect-duration;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      &--button {
+        background-color: inherit;
+        border: none;
+        padding: 0;
+        align-self: center;
+        display: flex;
+      }
+    }
+
+    &__icon {
+      border-left: 1px solid $color-elements;
+      position: relative;
+
+      &--logo {
+        display: block;
+        padding: 24px;
+
+        &--link {
+          display: block;
+          position: relative;
+
+          &:hover {
+            color: $color-primary;
+          }
+
+          &::after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            background-color: $color-primary;
+
+            transition: transform $effect-duration;
+            transform: scale(0);
+            transform-origin: center;
+          }
+
+          &:hover::after {
+            transform: scale(1);
+          }
+
+          &--active {
+            color: $color-primary;
+
+            &::after {
+              content: "";
+              height: 3px;
+              width: 100%;
+              bottom: 0;
+              left: 0;
+              position: absolute;
+              background-color: $color-primary;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+
+      &__counter {
+        color: $color-white;
+        width: 14px;
+        height: 14px;
+        background-color: $color-red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 11.5px;
+        position: absolute;
+        top: 30%;
+        right: 30%;
+      }
+    }
+  }
+}

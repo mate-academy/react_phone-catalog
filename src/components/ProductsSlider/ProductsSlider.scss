@@ -1,0 +1,26 @@
+@import "../../styles/utils";
+
+.productsSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    &--title {
+      margin: 0;
+    }
+
+    &--buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    transition: transform $effect-duration;
+  }
+}
