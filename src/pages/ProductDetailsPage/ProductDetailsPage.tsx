@@ -4,12 +4,12 @@ import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProductDetails } from '../../features/productDetailsSlice';
 import { fetchProducts } from '../../features/productsSlice';
+import { addToCart } from '../../features/cartItemsSlice';
 import { Loader } from '../../components/Loader';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { BackButton } from '../../components/BackButton';
 import { getProductDiscount } from '../../utils/getProductDiscount';
-
 import { Product } from '../../types/Product';
 import { Status } from '../../types/Status';
 
@@ -61,6 +61,12 @@ export const ProductDetailsPage = () => {
   const suggestedProducts = useMemo(() => {
     return products.filter((_, id) => id >= 4 && id < 16);
   }, [products]);
+
+  const { cartItems } = useAppSelector(state => state.cartItems);
+
+  const isItemInCart = useMemo(() => {
+    return cartItems.some(item => item.id === productId);
+  }, [cartItems, product]);
 
   return (
     <>
@@ -186,10 +192,24 @@ export const ProductDetailsPage = () => {
 
                 <div className="ProductDetail-Buttons">
                   <button
-                    className="ProductDetail-Button Button"
+                    className={cn(
+                      'ProductDetail-Button',
+                      'Button',
+                      { Button_in_cart: isItemInCart },
+                    )}
                     type="button"
+                    disabled={isItemInCart}
+                    onClick={() => dispatch(addToCart(
+                      {
+                        id: product.id,
+                        product,
+                        quantity: 1,
+                      },
+                    ))}
                   >
-                    Add to cart
+                    {isItemInCart
+                      ? 'Added to cart'
+                      : 'Add to cart'}
                   </button>
 
                   <button

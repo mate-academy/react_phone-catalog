@@ -1,0 +1,13 @@
+@import "../../styles/utils/";
+
+.Favourites {
+  &-Title {
+    margin: 0 0 8px;
+  }
+
+  &-Quantity {
+    margin-block-end: 40px;
+
+    color: $secondary;
+  }
+}

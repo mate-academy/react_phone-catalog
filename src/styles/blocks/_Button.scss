@@ -22,7 +22,17 @@
 
   transition: box-shadow $transition-duration;
 
+  cursor: pointer;
+
   &:hover {
     box-shadow: 0 3px 13px 0 #17203142;
+  }
+
+  &_in_cart {
+    color: $green;
+
+    background-color: $white;
+
+    border: 1px solid $element;
   }
 }

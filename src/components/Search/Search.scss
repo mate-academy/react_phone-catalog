@@ -1,0 +1,67 @@
+@import "../../styles/utils/";
+
+.Search {
+  position: relative;
+
+  &-Input {
+    padding: 24px;
+    width: 287px;
+
+    font: inherit;
+    font-weight: 600;
+
+    color: $primary;
+
+    border: none;
+
+    box-shadow: -1px 0 0 0 $element;
+
+    transition: background-color $transition-duration;
+
+    &_icon_search {
+      background-image: url("../../images/icons/search.svg");
+      background-repeat: no-repeat;
+      background-position: center right 24px;
+    }
+
+    &:placeholder-shown {
+      font: inherit;
+      font-weight: 600;
+
+      color: $icon-placeholder;
+    }
+
+    &:active,
+    &:focus-visible {
+      outline: none;
+
+      background-color: $background;
+    }
+  }
+
+  &-ClearButton {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+
+    padding: 0;
+    display: none;
+    width: 16px;
+    height: 16px;
+
+    border: none;
+
+    background-color: transparent;
+    background-image: url("../../images/icons/close-primary.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    &_active {
+      display: block;
+    }
+  }
+}

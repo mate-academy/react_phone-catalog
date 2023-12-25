@@ -1,4 +1,12 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addToCart } from '../../features/cartItemsSlice';
+import {
+  addToFavourites,
+  removeFromFavourites,
+} from '../../features/favouriteItemsSlice';
 import { Product } from '../../types/Product';
 import { getProductDiscount } from '../../utils/getProductDiscount';
 
@@ -11,6 +19,36 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const dispatch = useAppDispatch();
+
+  const { cartItems } = useAppSelector(state => state.cartItems);
+  const isItemInCart = useMemo(() => {
+    return cartItems.some(item => item.id === product.id);
+  }, [cartItems]);
+
+  const addProductToCart = () => dispatch(addToCart(
+    {
+      id: product.id,
+      product,
+      quantity: 1,
+    },
+  ));
+
+  const { favouriteItems } = useAppSelector(state => state.favouriteItems);
+  const isItemInFavourites = useMemo(() => {
+    return favouriteItems.some(item => item.id === product.id);
+  }, [favouriteItems]);
+
+  const toggleFavoriteProduct = () => {
+    if (isItemInFavourites) {
+      dispatch(removeFromFavourites(product.id));
+
+      return;
+    }
+
+    dispatch(addToFavourites(product));
+  };
+
   const {
     imageUrl,
     name,
@@ -22,7 +60,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     type,
   } = product;
 
-  const discountPrice = getProductDiscount(product);
+  const discountPrice = useMemo(() => {
+    return getProductDiscount(product);
+  }, [product]);
+
   const productDetailsPath = `/${type}s/${id}`;
 
   return (
@@ -80,16 +121,31 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="ProductCard-Buttons">
           <button
-            className="ProductCard-Button Button"
+            className={cn(
+              'ProductCard-Button',
+              'Button',
+              { Button_in_cart: isItemInCart },
+            )}
             type="button"
+            disabled={isItemInCart}
+            onClick={addProductToCart}
           >
-            Add to cart
+            {isItemInCart
+              ? 'Added to cart'
+              : 'Add to cart'}
           </button>
 
           <button
-            className="ProductCard-Icon Icon Icon_heart"
+            className={cn(
+              'ProductCard-Icon Icon',
+              {
+                Icon_heart: !isItemInFavourites,
+                Icon_heart_in_favoutites: isItemInFavourites,
+              },
+            )}
             type="button"
             aria-label="Heart"
+            onClick={toggleFavoriteProduct}
           />
         </div>
       </div>

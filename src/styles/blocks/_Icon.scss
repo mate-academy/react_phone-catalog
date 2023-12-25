@@ -15,6 +15,10 @@
 
   &_heart {
     background-image: url("../../images/icons/heart.svg");
+
+    &_in_favoutites {
+      background-image: url("../../images/icons/heart-red.svg");
+    }
   }
 
   &_cart {
@@ -23,6 +27,24 @@
 
   &_home {
     background-image: url("../../images/icons/home.svg");
+  }
+
+  &_delete {
+    background-image: url("../../images/icons/delete.svg");
+  }
+
+  &_plus {
+    background-image: url("../../images/icons/plus.svg");
+  }
+
+  &_minus {
+    background-image: url("../../images/icons/minus.svg");
+
+    &:disabled {
+      background-image: url("../../images/icons/minus-disabled.svg");
+
+      pointer-events: none;
+    }
   }
 
   &_arrow {

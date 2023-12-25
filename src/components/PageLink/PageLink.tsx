@@ -6,9 +6,11 @@ import './PageLink.scss';
 
 type Props = NavLinkProps & {
   linkType: PageLinkType
+  quantity?: number
 };
 export const PageLink: React.FC<Props> = ({
   linkType,
+  quantity,
   children,
   ...props
 }) => (
@@ -20,16 +22,21 @@ export const PageLink: React.FC<Props> = ({
         PageLink_text: linkType === PageLinkType.TEXT,
       },
       {
-        'PageLink_heart Icon Icon_heart': linkType === PageLinkType.HEART,
+        PageLink_heart: linkType === PageLinkType.HEART,
       },
       {
-        'PageLink_cart Icon Icon_cart': linkType === PageLinkType.CART,
+        PageLink_cart: linkType === PageLinkType.CART,
       },
       {
         PageLink_active: isActive,
       },
     )}
   >
+    {quantity && quantity > 0 && (
+      <span className="PageLink-Quantity">
+        {quantity}
+      </span>
+    )}
     {children}
   </NavLink>
 );

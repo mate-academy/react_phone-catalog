@@ -1,0 +1,50 @@
+@import "../../styles/utils/";
+
+.CartItem {
+  padding-block: 30px;
+  padding-inline: 24px 40px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid $element;
+
+  &-IconDelete {
+    --icon-size: 16px;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  &-ProductImage {
+    padding-inline: 31px;
+  }
+
+  &-Link {
+    text-decoration: none;
+
+    color: $primary;
+  }
+
+  &-Counter {
+    margin-inline-start: auto;
+
+    display: flex;
+    align-items: center;
+    column-gap: 13px;
+  }
+
+  &-Icon {
+    cursor: pointer;
+  }
+
+  &-Price {
+    padding-inline-start: 43px;
+
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: $primary;
+  }
+}

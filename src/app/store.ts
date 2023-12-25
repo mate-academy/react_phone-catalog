@@ -2,11 +2,15 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-cycle
 import productsReducer from '../features/productsSlice';
 import productDetailsReducer from '../features/productDetailsSlice';
+import cartItemsSlice from '../features/cartItemsSlice';
+import favouriteItemsSlice from '../features/favouriteItemsSlice';
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
     productDetails: productDetailsReducer,
+    cartItems: cartItemsSlice,
+    favouriteItems: favouriteItemsSlice,
   },
 });
 

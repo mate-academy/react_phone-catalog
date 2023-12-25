@@ -13,6 +13,7 @@ import { Status } from '../../types/Status';
 import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
 import { NoResults } from '../../components/NoResults';
+import { NoSearchResults } from '../../components/NoSearchResults';
 
 type Props = {
   productType: ProductType;
@@ -22,6 +23,7 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector(state => state.products);
   const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
   const sortBy = (searchParams.get('sort') || SortBy.AGE) as SortBy;
   const perPage = (searchParams.get('perPage') || '16') as PerPage;
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -37,14 +39,21 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
 
   const totalProductsByType = productsByType.length;
 
+  const filteredProducts = useMemo(() => {
+    return productsByType.filter(product => product
+      .name.toLowerCase().includes(query.toLowerCase()));
+  }, [productsByType, query]);
+
+  const totalFilteredProducts = filteredProducts.length;
+
   const sorted = useMemo(() => {
     return sortBy
-      ? productsByType
+      ? filteredProducts
         .sort((product1, product2) => {
           return compareProducts(product1, product2, sortBy);
         })
-      : productsByType;
-  }, [productsByType, sortBy]);
+      : filteredProducts;
+  }, [filteredProducts, sortBy]);
 
   const productsPerPage = useMemo(() => {
     return getProductsPerPage(perPage, totalProductsByType);
@@ -85,6 +94,10 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
       {status === Status.IDLE
         && totalProductsByType === 0
         && <NoResults productType={productType} />}
+
+      {status === Status.IDLE
+        && totalFilteredProducts === 0
+        && <NoSearchResults productType={productType} />}
 
       {status === Status.IDLE
         && <ProductList products={paginated} />}

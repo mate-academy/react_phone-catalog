@@ -39,11 +39,54 @@
     padding-block-end: 26px;
   }
 
-  &_heart,
-  &_cart {
+  &_heart {
     --icon-size: 64px;
+    height: var(--icon-size);
+    width: var(--icon-size);
+
+    background: no-repeat center;
+    background-image: url("../../images/icons/heart.svg");
+
     box-shadow: -1px 0 0 0 $element;
     border: none;
+  }
+
+  &_cart {
+    --icon-size: 64px;
+    height: var(--icon-size);
+    width: var(--icon-size);
+
+    background: no-repeat center;
+    background-image: url("../../images/icons/cart.svg");
+
+    box-shadow: -1px 0 0 0 $element;
+    border: none;
+  }
+
+  &-Quantity {
+    --size: 14px;
+    content: "";
+
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: var(--size);
+    height: var(--size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    color: $white;
+
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    background-color: red;
   }
 
   &_active {
