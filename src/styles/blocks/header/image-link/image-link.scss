@@ -8,6 +8,11 @@
   box-shadow: -1px 0 0 0 $light-gray;
   box-sizing: border-box;
 
+  @include for-small-desktop {
+    box-shadow: none;
+    border: 1px solid $light-gray;
+  }
+
   &.active::after {
     content: "";
     width: 100%;
@@ -32,10 +37,18 @@
 
     &.active::after {
       transform: translateY(-1px);
+
+      @include for-small-desktop {
+        transform: translateY(0);
+      }
     }
 
     & .image-link__counter {
       transform: translateX(1px) translateY(-1px);
+
+      @include for-small-desktop {
+        transform: translate(0);
+      }
     }
   }
 

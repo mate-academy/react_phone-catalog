@@ -16,6 +16,10 @@
     display: flex;
     gap: 16px;
     margin-top: 24px;
+
+    @include for-small-desktop {
+      flex-direction: column;
+    }
   }
 
   &__summary-wrapper {
@@ -52,24 +56,5 @@
       height: 1px;
       background: $light-gray;
     }
-  }
-
-  &__checkout-button {
-    background: $gray-close-black;
-    width: 100%;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 24px;
-  }
-
-  &__checkout-button-text {
-    color: $white;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 21px;
   }
 }

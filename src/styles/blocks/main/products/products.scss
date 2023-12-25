@@ -25,6 +25,10 @@
     margin-top: 40px;
     display: flex;
     gap: 16px;
+
+    @include small-mobile {
+      flex-direction: column;
+    }
   }
 
   &__list {

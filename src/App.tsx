@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 
 import './App.scss';
 import { HomePage } from './pages/HomePage';
@@ -18,47 +19,60 @@ import {
 import { CartPage } from './pages/CartPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { NotFoundPage } from './pages/NofFoundPage';
+import { DropDownMenu } from './components/DropDownMenu';
+import { DropDownMenuContext } from './helpers/context/DropDownMenuContext';
 
 const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const productFullLink = `${PRODUCT_LINK}/:productId`;
 
+  const collapseMenu = () => setIsMenuOpen(false);
+
+  const expandMenu = () => setIsMenuOpen(true);
+
   return (
-    <div className="App">
-      <Routes>
-        <Route path={HOME_LINK} element={<HomePage />} />
+    <div className="app">
+      <DropDownMenuContext.Provider value={{ collapseMenu, expandMenu }}>
+        <Routes>
+          <Route
+            path={HOME_LINK}
+            element={isMenuOpen ? <DropDownMenu /> : <HomePage />}
+          />
 
-        <Route
-          path={PHONES_LINK}
-          element={<PhonesPage />}
-        />
+          <Route
+            path={PHONES_LINK}
+            element={isMenuOpen ? <DropDownMenu /> : <PhonesPage />}
+          />
 
-        <Route
-          path={TABLETS_LINK}
-          element={<TabletsPage />}
-        />
+          <Route
+            path={TABLETS_LINK}
+            element={isMenuOpen ? <DropDownMenu /> : <TabletsPage />}
+          />
 
-        <Route
-          path={ACCESSORIES_LINK}
-          element={<AccessoriesPage />}
-        />
+          <Route
+            path={ACCESSORIES_LINK}
+            element={isMenuOpen ? <DropDownMenu /> : <AccessoriesPage />}
+          />
 
-        <Route
-          path={FAVORITES_LINK}
-          element={<FavoritesPage />}
-        />
+          <Route
+            path={FAVORITES_LINK}
+            element={isMenuOpen ? <DropDownMenu /> : <FavoritesPage />}
+          />
 
-        <Route
-          path={CART_LINK}
-          element={<CartPage />}
-        />
+          <Route
+            path={CART_LINK}
+            element={isMenuOpen ? <DropDownMenu /> : <CartPage />}
+          />
 
-        <Route
-          path={productFullLink}
-          element={<ProductDetailsPage />}
-        />
+          <Route
+            path={productFullLink}
+            element={isMenuOpen ? <DropDownMenu /> : <ProductDetailsPage />}
+          />
 
-        <Route path="/*" element={<NotFoundPage />} />
-      </Routes>
+          <Route path="/*" element={<NotFoundPage />} />
+        </Routes>
+      </DropDownMenuContext.Provider>
     </div>
   );
 };

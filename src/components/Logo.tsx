@@ -1,11 +1,21 @@
+import classNames from 'classnames';
+
 type LogoProps = {
-  imageClasses: string
+  imageExtraClass?: string
 };
 
-export const Logo = ({ imageClasses }: LogoProps) => (
-  <img
-    src="img/logo.svg"
-    alt="Logo"
-    className={imageClasses}
-  />
-);
+export const Logo = ({ imageExtraClass }: LogoProps) => {
+  const imageClasses = classNames('logo', imageExtraClass);
+
+  return (
+    <img
+      src="img/logo.svg"
+      alt="Logo"
+      className={imageClasses}
+    />
+  );
+};
+
+Logo.defaultProps = {
+  imageExtraClass: '',
+};

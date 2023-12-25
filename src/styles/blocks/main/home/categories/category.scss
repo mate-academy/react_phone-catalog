@@ -5,7 +5,6 @@
 
   &__image {
     width: 100%;
-    margin-top: 24px;
   }
 
   &__name {
@@ -15,6 +14,16 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+
+    @include for-mobile {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    @include small-mobile {
+      margin-top: 8px;
+      font-size: 10px;
+    }
   }
 
   &__count {
@@ -23,5 +32,15 @@
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+
+    @include for-mobile {
+      font-size: 10px;
+      line-height: 14px;
+    }
+
+    @include small-mobile {
+      font-size: 8px;
+      line-height: 12px;
+    }
   }
 }

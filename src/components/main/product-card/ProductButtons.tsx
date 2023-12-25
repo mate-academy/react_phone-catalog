@@ -10,6 +10,7 @@ import {
 } from '../../../helpers/context/FavoritesCountContext';
 import { Product } from '../../../helpers/types/Product';
 import { ProductInCart } from '../../../helpers/types/ProductInCart';
+import { Button } from '../Button';
 
 type ProductButtonsProps = {
   product: Product
@@ -34,12 +35,12 @@ export const ProductButtons = ({ product, areBig }: ProductButtonsProps) => {
   const { id } = product;
   const inCart = cartContains(id);
 
-  const buttonCartClasses = classNames('product-buttons__cart', {
-    'product-buttons__cart--clicked': inCart,
-    'product-buttons__cart--big': areBig,
+  const buttonCartClasses = classNames('button', {
+    'button--clicked': inCart,
+    'button--big': areBig,
   });
-  const textCartClass = classNames('product-buttons__cart-text', {
-    'product-buttons__cart-text--clicked': inCart,
+  const textCartClass = classNames('button__text', {
+    'button__text--clicked': inCart,
   });
   const buttonCartText = inCart ? 'Added to cart' : 'Add to cart';
   const favoritesButtonClasses = classNames('product-buttons__favorites', {
@@ -78,13 +79,13 @@ export const ProductButtons = ({ product, areBig }: ProductButtonsProps) => {
 
   return (
     <div className="product-buttons">
-      <button
-        className={buttonCartClasses}
-        type="button"
+      <Button
+        buttonClasses={buttonCartClasses}
         onClick={handleCartClick}
+        textClasses={textCartClass}
       >
-        <div className={textCartClass}>{buttonCartText}</div>
-      </button>
+        {buttonCartText}
+      </Button>
 
       <button
         className={favoritesButtonClasses}

@@ -134,11 +134,13 @@ export const ProductDetailsPage = () => {
     getProductFullInfo(productId)
       .then(setProductInfo)
       .catch(() => setIsBadId(true));
+
+    return () => handleClick(0);
   }, [productId]);
 
   return (
     <>
-      <Header hasSearch={false} activeCategory={productCategory} />
+      <Header activeLink={productCategory} hasSearch={false} />
 
       {product !== null && productInfo !== null ? (
 

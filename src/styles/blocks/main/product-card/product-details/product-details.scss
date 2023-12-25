@@ -9,12 +9,18 @@
     margin-top: 40px;
   }
 
-  &__title {
+  &__title,
+  &__buttons {
     margin-top: 16px;
   }
 
   &__content-up {
     display: flex;
+
+    @include for-desktop {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__small-photos {
@@ -24,12 +30,16 @@
   }
 
   &__big-photo {
-    width: 464px;
-    height: 464px;
+    width: 32.22vw;
+    min-width: 280px;
     padding: 11px;
     box-sizing: border-box;
     margin-left: 16px;
 
+    @include for-desktop {
+      margin-left: 0;
+      margin-top: 30px;
+    }
   }
 
   &__up-details {
@@ -37,16 +47,16 @@
     flex-direction: column;
     width: 100%;
     margin-left: 64px;
+
+    @include for-desktop {
+      margin-left: 0;
+    }
   }
 
   &__prices {
     display: flex;
     gap: 8px;
     align-items: center;
-  }
-
-  &__buttons {
-    margin-top: 16px;
   }
 
   &__specs {
@@ -71,6 +81,11 @@
     line-height: normal;
     width: 100%;
     text-align: end;
+
+    @include for-small-desktop {
+      margin-top: 16px;
+      text-align: center;
+    }
   }
 
   &__content-down {
@@ -78,6 +93,10 @@
     display: flex;
     gap: 64px;
     width: 100%;
+
+    @include for-small-desktop {
+      flex-direction: column;
+    }
 
     &-right,
     &-left {
@@ -92,12 +111,16 @@
 
   &__description {
     margin-top: 32px;
-    width: 560px;
+    width: 38.89vw;
     color: $gray;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+
+    @include for-desktop {
+      width: 100%;
+    }
   }
 
   &__slider {

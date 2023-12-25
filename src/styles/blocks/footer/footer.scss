@@ -1,5 +1,5 @@
 .footer {
-  width: 1440px;
+  width: 100vw;
   height: 96px;
   box-shadow: 0 -1px 0 0 $light-gray;
   display: flex;
@@ -10,28 +10,11 @@
 
   &__left {
     display: flex;
-    gap: 382px;
+    gap: 26.53vw;
   }
 
   &__logo {
     margin: 36px 0;
-  }
-
-  &__links {
-    display: flex;
-    gap: 64px;
-    margin: 43px 0;
-  }
-
-  &__link {
-    color: $gray;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-    text-decoration: none;
   }
 
   &__top {
@@ -48,6 +31,10 @@
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+
+      &:hover {
+        color: $gray-close-black;
+      }
     }
   }
 }

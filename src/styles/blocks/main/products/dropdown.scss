@@ -35,10 +35,18 @@
 
     &--big {
       min-width: $big-dropdown-width;
+
+      @include small-mobile {
+        max-width: $big-dropdown-width;
+      }
     }
 
     &--small {
       min-width: $small-dropdown-width;
+
+      @include small-mobile {
+        max-width: $small-dropdown-width;
+      }
     }
   }
 
@@ -72,6 +80,7 @@
     border: 1px solid $light-gray;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
     background-color: $white;
+    z-index: 3;
 
     &--big {
       min-width: $big-dropdown-width;

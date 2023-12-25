@@ -1,5 +1,5 @@
 @mixin set-padding {
-  padding: 0 152px;
+  padding: 0 10.56vw;
 }
 
 @mixin set-arrow-disabled {
@@ -12,6 +12,11 @@
   height: $search-icon-size;
   right: $search-left-padding;
   top: 24px;
+  z-index: 1;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 @mixin tech-small {
@@ -25,4 +30,28 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
+}
+
+@mixin for-small-desktop {
+  @media (max-width: 1030px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin small-mobile {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media (max-width: 1150px) {
+    @content;
+  }
 }

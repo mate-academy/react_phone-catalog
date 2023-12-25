@@ -16,7 +16,7 @@
 
   &__value {
     color: $gray-close-black;
-    max-width: 350px;
+    text-align: end;
 
     @include tech-small;
 

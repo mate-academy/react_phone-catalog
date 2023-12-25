@@ -4,6 +4,8 @@ import { ProductInfo } from '../types/ProductInfo';
 
 const PRODUCTS_URL
 = 'https://mate-academy.github.io/react_phone-catalog/api/products.json';
+const MAX_DOWNLOAD_RETRIES = 20;
+let downloadRetries = 0;
 
 export function getProducts(
   type: ProductType = ProductType.all,
@@ -11,6 +13,7 @@ export function getProducts(
   return fetch(PRODUCTS_URL)
     .then(response => response.json())
     .then((responseJson: Product[]) => {
+      downloadRetries = 0;
       const receivedProduct = responseJson.map(product => {
         const { price, discount } = product;
 
@@ -25,6 +28,17 @@ export function getProducts(
       return type === ProductType.all
         ? receivedProduct
         : receivedProduct.filter(product => product.type === type);
+    })
+    .catch(() => {
+      if (downloadRetries < MAX_DOWNLOAD_RETRIES) {
+        downloadRetries += 1;
+
+        return getProducts(type);
+      }
+
+      downloadRetries = 0;
+
+      return [];
     });
 }
 

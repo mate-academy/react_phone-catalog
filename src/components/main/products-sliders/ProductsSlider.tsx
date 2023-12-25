@@ -21,7 +21,11 @@ type ProductsSliderProps = {
   withoutId?: string
 };
 
-const SLIDER_COUNT_PRODUCTS = 4;
+const WIDTH = {
+  LARGE: 1440,
+  MEDIUM: 1024,
+  SMALL: 700,
+};
 
 export const ProductsSlider = ({
   type, children, withoutId = '',
@@ -29,13 +33,25 @@ export const ProductsSlider = ({
   const [products, setProducts] = useState<Product[]>([]);
   const [firstProductIndex, setFirstProductIndex] = useState(0);
 
+  let sliderCountProducts = 4;
+  const screenWidth = document.documentElement.clientWidth;
+
+  if (screenWidth < WIDTH.LARGE && screenWidth >= WIDTH.MEDIUM) {
+    sliderCountProducts = 3;
+  } else if (screenWidth < WIDTH.MEDIUM && screenWidth >= WIDTH.SMALL) {
+    sliderCountProducts = 2;
+  } else if (screenWidth < WIDTH.SMALL) {
+    sliderCountProducts = 1;
+  }
+
   const displayedProducts = products.slice(
     firstProductIndex,
-    SLIDER_COUNT_PRODUCTS + firstProductIndex,
+    sliderCountProducts + firstProductIndex,
   );
 
   const isLeftArrowDisabled = firstProductIndex === 0;
-  const isRightArrowDisabled = firstProductIndex + 4 === products.length;
+  const isRightArrowDisabled
+  = firstProductIndex + sliderCountProducts === products.length;
   const sliderClasses = classNames('products-slider', {
     'home__products-slider--down': type === ProductsSlidersType.newProducts,
     'home__products-slider--up': type === ProductsSlidersType.hotProducts,
@@ -49,7 +65,7 @@ export const ProductsSlider = ({
   };
 
   const handleClickRight = () => {
-    if (firstProductIndex + SLIDER_COUNT_PRODUCTS < products.length) {
+    if (firstProductIndex + sliderCountProducts < products.length) {
       setFirstProductIndex(firstProductIndex + 1);
     }
   };

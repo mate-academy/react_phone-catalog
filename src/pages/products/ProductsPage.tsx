@@ -36,7 +36,8 @@ export const ProductsPage = ({ categoryType }: ProductsPageProps) => {
     setDisplayedProducts,
   ] = useState<Product[] | null>(null);
   const [afterFilterProductsCount, setAfterFilterProductsCount] = useState(0);
-  const [serverProductsCount, setServerProductsCount] = useState(0);
+  const [serverProductsCount, setServerProductsCount] = useState(-1);
+  const [isRendered, setIsRendered] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -136,54 +137,60 @@ export const ProductsPage = ({ categoryType }: ProductsPageProps) => {
     || (!isCurrentPageValid);
 
   useEffect(() => {
-    if (searchParams.get(PER_PAGE_KEY) === null) {
-      searchParams.set(PER_PAGE_KEY, possiblePages[0]);
-    }
+    if (!isRendered) {
+      if (searchParams.get(PER_PAGE_KEY) === null) {
+        searchParams.set(PER_PAGE_KEY, possiblePages[0]);
+      }
 
-    if (searchParams.get(SORT_KEY) === null) {
-      searchParams.set(SORT_KEY, possibleSorts[0]);
-    }
+      if (searchParams.get(SORT_KEY) === null) {
+        searchParams.set(SORT_KEY, possibleSorts[0]);
+      }
 
-    setSearchParams(searchParams);
+      setSearchParams(searchParams, { replace: true });
+      setIsRendered(true);
+    }
   }, []);
 
   useEffect(() => {
-    productsDownloader
-      .then(receivedProducts => {
-        setServerProductsCount(receivedProducts.length);
+    if (searchParams.get('sort') !== null
+    && searchParams.get('perPage') !== null) {
+      productsDownloader
+        .then(receivedProducts => {
+          setServerProductsCount(receivedProducts.length);
 
-        let products = [...receivedProducts];
+          let products = [...receivedProducts];
 
-        if (queryLowerCase) {
-          products = receivedProducts.filter(
-            product => product.name.toLowerCase().includes(queryLowerCase),
-          );
-        }
+          if (queryLowerCase) {
+            products = receivedProducts.filter(
+              product => product.name.toLowerCase().includes(queryLowerCase),
+            );
+          }
 
-        setAfterFilterProductsCount(products.length);
-        products.sort((product1, product2) => {
-          switch (sort) {
-            case 'price':
-              return product1.price - product2.price;
-            default:
-            case 'name':
-              return product1.name.localeCompare(product2.name);
-            case 'age':
-              return product1.age - product2.age;
+          setAfterFilterProductsCount(products.length);
+          products.sort((product1, product2) => {
+            switch (sort) {
+              case 'price':
+                return product1.price - product2.price;
+              default:
+              case 'name':
+                return product1.name.localeCompare(product2.name);
+              case 'age':
+                return product1.age - product2.age;
+            }
+          });
+
+          if (!perPageString || perPageString === possiblePages[0]) {
+            setDisplayedProducts(products);
+          } else {
+            const startIndex = (currentPage - 1) * perPage;
+            const lastIndex = currentPage * perPage - 1;
+
+            setDisplayedProducts(products.filter(
+              (_, index) => index >= startIndex && index <= lastIndex,
+            ));
           }
         });
-
-        if (!perPageString || perPageString === possiblePages[0]) {
-          setDisplayedProducts(products);
-        } else {
-          const startIndex = (currentPage - 1) * perPage;
-          const lastIndex = currentPage * perPage - 1;
-
-          setDisplayedProducts(products.filter(
-            (_, index) => index >= startIndex && index <= lastIndex,
-          ));
-        }
-      });
+    }
   }, [queryLowerCase, sort, currentPage, perPageString]);
 
   return (

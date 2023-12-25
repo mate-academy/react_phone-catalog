@@ -1,8 +1,12 @@
+import { useContext } from 'react';
+
 import { Cart } from './image-link/Cart';
 import { Favourites } from './image-link/Favourites';
 import { Logo } from '../Logo';
 import { Nav } from './Nav';
 import { Search } from './Search';
+import { isBigScreen } from '../../helpers/functions/Functions';
+import { DropDownMenuContext } from '../../helpers/context/DropDownMenuContext';
 import { ProductType } from '../../helpers/enums/ProductType';
 
 type HeaderProps = {
@@ -12,7 +16,7 @@ type HeaderProps = {
   cartCount?: number
   hasNav?: boolean
   hasFavorites?: boolean
-  activeCategory?: ProductType
+  activeLink?: ProductType
 };
 
 export const Header = ({
@@ -22,24 +26,40 @@ export const Header = ({
   cartCount,
   hasNav,
   hasFavorites,
-  activeCategory,
-}: HeaderProps) => (
-  <header id="header" className="header">
-    <div className="header__part header__part--left">
-      <Logo imageClasses="header__logo logo" />
+  activeLink,
+}: HeaderProps) => {
+  const { expandMenu } = useContext(DropDownMenuContext);
 
-      {hasNav && <Nav activeCategory={activeCategory} />}
-    </div>
+  return (
+    <header id="header" className="header">
+      <div className="header__part header__part--left">
+        {isBigScreen() ? (
+          <>
+            <Logo imageExtraClass="header__logo logo" />
 
-    <div className="header__part">
-      {hasSearch && <Search currentPage={currentPage} />}
+            {hasNav && <Nav activeLink={activeLink} />}
+          </>
+        ) : (
+          <button
+            className="header__dropdown-menu"
+            onClick={expandMenu}
+            type="button"
+          >
+            <img src="img/menu.svg" alt="menu" />
+          </button>
+        )}
+      </div>
 
-      {hasFavorites && <Favourites count={favoritesCount} />}
+      <div className="header__part">
+        {hasSearch && <Search currentPage={currentPage} />}
 
-      <Cart count={cartCount} />
-    </div>
-  </header>
-);
+        {isBigScreen() && hasFavorites && <Favourites count={favoritesCount} />}
+
+        {isBigScreen() && <Cart count={cartCount} />}
+      </div>
+    </header>
+  );
+};
 
 Header.defaultProps = {
   favoritesCount: -1,
@@ -47,5 +67,5 @@ Header.defaultProps = {
   currentPage: '',
   hasNav: true,
   hasFavorites: true,
-  activeCategory: ProductType.all,
+  activeLink: ProductType.all,
 };

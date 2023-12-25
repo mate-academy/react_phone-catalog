@@ -5,7 +5,7 @@ import {
 } from '../components/main/home/categories/ShopByCategory';
 import {
   CategoriesSlider,
-} from '../components/main/home/categories/CategoriesSlider';
+} from '../components/main/home/categories/categories-slider/CategoriesSlider';
 import {
   ProductsSlider,
 } from '../components/main/products-sliders/ProductsSlider';

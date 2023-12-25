@@ -1,5 +1,7 @@
 import { ArrowDirections } from '../../helpers/enums/ArrowDirections';
+import { isBigScreen } from '../../helpers/functions/Functions';
 import { Arrow } from '../Arrow';
+import { BottomNavigation } from '../BottomNavigation';
 import { Logo } from '../Logo';
 
 type FooterProps = {
@@ -12,21 +14,9 @@ export const Footer = ({ hasTopNav = true }: FooterProps) => {
   return (
     <footer className="home__footer footer">
       <div className="footer__left">
-        <Logo imageClasses="footer__logo logo" />
+        <Logo imageExtraClass="footer__logo logo" />
 
-        <div className="footer__links">
-          <a
-            className="footer__link"
-            // eslint-disable-next-line max-len
-            href="https://github.com/AmadeuszAndroid/react_phone-catalog/tree/develop"
-          >
-            Github
-          </a>
-
-          <a className="footer__link" href="#/">Contacts</a>
-
-          <a className="footer__link" href="#/">rights</a>
-        </div>
+        {isBigScreen() && <BottomNavigation />}
       </div>
 
       {hasTopNav && (

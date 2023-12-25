@@ -1,5 +1,6 @@
 .search {
-  width: 327px;
+  width: 25.83vw;
+  min-width: 225px;
   height: 64px;
   position: relative;
 
@@ -17,6 +18,11 @@
     font-weight: 600;
     line-height: normal;
 
+    &:hover {
+      border: 1px solid $gray-close-black;
+      transform: translateX(-1px);
+    }
+
     &:focus {
       background-color: $white-gray;
       box-shadow: -1px 0 0 0 $light-gray;
@@ -33,8 +39,9 @@
   }
 
   &__label {
-    @include set-search-icon-style;
     cursor: text;
+
+    @include set-search-icon-style;
   }
 
   &__close {

@@ -11,7 +11,7 @@ export const Breadcrumbs = ({ path }: BreadcrumbsProps) => (
   <div data-cy="breadCrumbs" className="products__breadcrumbs breadcrumbs">
     <Link to="/">
       <img
-        className="breadcrumbs__image"
+        className="breadcrumbs__home"
         src="img/home-breadcrumbs.svg"
         alt="home"
       />
@@ -32,7 +32,11 @@ export const Breadcrumbs = ({ path }: BreadcrumbsProps) => (
             <p className="breadcrumbs__text">{text}</p>
           ) : (
             <Link to={link || ''}>
-              <span className="breadcrumbs__text">{text}</span>
+              <span
+                className="breadcrumbs__text breadcrumbs__link"
+              >
+                {text}
+              </span>
             </Link>
           )}
         </Fragment>

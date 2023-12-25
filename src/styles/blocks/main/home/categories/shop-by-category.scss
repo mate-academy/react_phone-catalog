@@ -2,15 +2,20 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  gap: 24px;
 
   &__categories {
     display: flex;
     width: 100%;
-    gap: 16px;
+    gap: 1.11vw;
   }
 
   &__link {
-    width: 368px;
+    width: 25.56vw;
     text-decoration: none;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }

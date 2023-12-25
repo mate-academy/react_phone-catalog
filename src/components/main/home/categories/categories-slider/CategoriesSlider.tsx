@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
-import { ArrowDirections } from '../../../../helpers/enums/ArrowDirections';
-import { Arrow } from '../../../Arrow';
+import { ArrowDirections } from '../../../../../helpers/enums/ArrowDirections';
+import { Arrow } from '../../../../Arrow';
+import { CategorySliderImage } from './CategorySliderImage';
 
 const FIVE_SECONDS = 5000;
 
@@ -15,22 +16,19 @@ enum CategoriesNumbers {
 export const CategoriesSlider = () => {
   const [displatedImageNumber, setDidplayedImageNumber] = useState(0);
 
-  let category;
+  const categoryNames = ['phones', 'tablets', 'accessories'];
+  const images = categoryNames.map(image => ({
+    src: `img/home/slider/banner-${image}.png`,
+    alt: image,
+  }));
 
-  switch (displatedImageNumber) {
-    case CategoriesNumbers.tablets:
-      category = 'tablets';
-      break;
-    case CategoriesNumbers.accessories:
-      category = 'accessories';
-      break;
-    case CategoriesNumbers.phones:
-    default:
-      category = 'phones';
-      break;
-  }
+  const areTablets = displatedImageNumber === CategoriesNumbers.tablets;
+  const areAccessories = displatedImageNumber === CategoriesNumbers.accessories;
 
-  const imageSrc = `img/home/slider/banner-${category}.png`;
+  const bannerClasses = classNames('categories-slider__images', {
+    'categories-slider__images--1': areTablets,
+    'categories-slider__images--2': areAccessories,
+  });
 
   const firstBarClasses = classNames('categories-slider__bar', {
     'categories-slider__bar--visible': displatedImageNumber === 0,
@@ -45,7 +43,7 @@ export const CategoriesSlider = () => {
   });
 
   const handleClickLeft = () => {
-    let newImageNumber;
+    let newImageNumber: number;
 
     if (displatedImageNumber === CategoriesNumbers.phones) {
       newImageNumber = CategoriesNumbers.accessories;
@@ -83,11 +81,21 @@ export const CategoriesSlider = () => {
           onClick={handleClickLeft}
         />
 
-        <img
-          className="categories-slider__image"
-          src={imageSrc}
-          alt="Banner"
-        />
+        <div className="categories-slider__content">
+          <ul className={bannerClasses}>
+            {images.map(image => {
+              const { src, alt } = image;
+
+              return (
+                <CategorySliderImage
+                  alt={alt}
+                  src={src}
+                  key={alt}
+                />
+              );
+            })}
+          </ul>
+        </div>
 
         <Arrow
           direction={ArrowDirections.right}

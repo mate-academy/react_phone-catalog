@@ -1,5 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+
 import { Counter } from './Counter';
+import {
+  DropDownMenuContext,
+} from '../../../helpers/context/DropDownMenuContext';
 
 type ImageLinkProps = {
   link: string
@@ -13,14 +18,22 @@ export const ImageLink = ({
   imageSource,
   alternativeName,
   itemsCount,
-}: ImageLinkProps) => (
-  <NavLink className="image-link" to={link}>
-    <img
-      className="image-link__icon"
-      src={imageSource}
-      alt={alternativeName}
-    />
+}: ImageLinkProps) => {
+  const { collapseMenu } = useContext(DropDownMenuContext);
 
-    {itemsCount !== -1 && <Counter count={itemsCount} />}
-  </NavLink>
-);
+  return (
+    <NavLink
+      className="image-link"
+      to={link}
+      onClick={collapseMenu}
+    >
+      <img
+        className="image-link__icon"
+        src={imageSource}
+        alt={alternativeName}
+      />
+
+      {itemsCount !== -1 && <Counter count={itemsCount} />}
+    </NavLink>
+  );
+};

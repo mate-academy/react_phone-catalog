@@ -9,6 +9,7 @@ export function useLocalStorage(key: string): [
   (newProducts: LocalStorageItem[]) => void,
   (productId: string) => boolean,
   number,
+  number,
 ] {
   const getProducts = () => {
     const savedProducts = localStorage.getItem(key);
@@ -29,5 +30,11 @@ export function useLocalStorage(key: string): [
       : storageProduct.product.id === productId;
   });
 
-  return [getProducts, saveProducts, contains, products.length];
+  const cartTotalSize = products.reduce((total, current) => {
+    const { quantity } = current as ProductInCart;
+
+    return total + quantity;
+  }, 0);
+
+  return [getProducts, saveProducts, contains, products.length, cartTotalSize];
 }

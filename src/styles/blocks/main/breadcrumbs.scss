@@ -7,6 +7,10 @@
   &__home {
     width: 16px;
     height: 16px;
+
+    &:hover {
+      transform: scale(1.5);
+    }
   }
 
   &__text {
@@ -15,5 +19,9 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+  }
+
+  &__link:hover {
+    color: $gray-close-black;
   }
 }
