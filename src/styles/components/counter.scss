@@ -1,0 +1,17 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 9px;
+  color: white;
+  background-color: red;
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 14px;
+  min-width: 14px;
+  max-width: max-content;
+  text-decoration: none;
+  transform: translate(200%, 100%);
+}

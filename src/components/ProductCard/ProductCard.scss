@@ -1,0 +1,88 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/typography.scss";
+
+.product-card {
+  display: grid;
+  width: 272px;
+  box-sizing: border-box;
+  border: 1px solid $gray-secondary;
+  padding: 24px;
+  transition: all $transition-speed;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__img-container {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__title-link {
+    text-decoration: none;
+    color: $gray-primary;
+    display: block;
+    height: 42px;
+    margin-bottom: 8px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__title {
+    @extend %body-text;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    @extend %h2;
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    color: $gray-secondary;
+    font-weight: 500;
+    text-decoration: line-through;
+  }
+
+  &__list {
+    display: grid;
+    gap: 8px;
+    padding: 16px 0;
+    border-top: 1px solid $gray-elements;
+    @extend %small-text;
+  }
+
+  &__list-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__property-value {
+    color: $gray-primary;
+  }
+
+  &__buttons {
+    width: 224px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+}

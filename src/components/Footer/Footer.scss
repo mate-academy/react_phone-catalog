@@ -1,0 +1,53 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/typography.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 152px;
+  border-top: 1px solid $gray-elements;
+  position: relative;
+
+  &__links {
+    position: absolute;
+    left: 50%;
+    display: flex;
+    gap: 64px;
+    transform: translateX(-50%);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $gray-secondary;
+    @extend %uppercase-text;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+
+  &__button-label {
+    display: flex;
+    align-items: center;
+
+    height: 32px;
+    padding-right: 16px;
+    @extend %small-text;
+    cursor: pointer;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    visibility: hidden;
+
+    &:hover .footer__button-label {
+      color: $gray-primary;
+    }
+
+    &--visible {
+      visibility: visible;
+    }
+  }
+}

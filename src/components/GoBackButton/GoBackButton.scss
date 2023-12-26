@@ -1,0 +1,25 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/typography.scss";
+
+.go-back-button {
+  @extend %small-text;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  margin: 40px 0 16px;
+  padding: 0;
+
+  &:hover {
+    color: $gray-primary;
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/icons/arrow-left.svg);
+  }
+}

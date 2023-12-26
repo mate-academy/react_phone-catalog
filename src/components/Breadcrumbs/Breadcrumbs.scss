@@ -1,0 +1,43 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/typography.scss";
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  align-content: center;
+
+  &__home {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-image: url(../../images/icons/home-crumb.svg);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  &__crumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__separator {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../images/icons/arrow-right-disabled.svg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    @extend %small-text;
+    color: $gray-secondary;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}

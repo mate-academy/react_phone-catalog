@@ -1,0 +1,77 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  align-items: center;
+
+  &__top {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    gap: 16px;
+    align-items: center;
+    height: 400px;
+    margin-bottom: 18px;
+  }
+
+  &__viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__links {
+    width: fit-content;
+    display: flex;
+    transition: transform ease-in 0.5s;
+  }
+
+  &__link {
+    display: block;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+
+    $banners: "phones", "tablets", "accessories";
+
+    @each $banner in $banners {
+      &--#{$banner} {
+        background-image: url("../../images/banners/banner-#{$banner}.png");
+      }
+    }
+  }
+
+  &__button {
+    @include button-base-style-n-hover;
+
+    height: 100%;
+
+    &--prev {
+      background-image: url(../../images/icons/arrow-left.svg);
+    }
+
+    &--next {
+      background-image: url(../../images/icons/arrow-right.svg);
+    }
+  }
+
+  &__dots {
+    width: 80px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    border: none;
+    background-color: $gray-elements;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &--active {
+      background-color: $gray-primary;
+    }
+  }
+}

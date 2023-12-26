@@ -1,0 +1,38 @@
+.button {
+  @include button-base-style-n-hover;
+
+  background-image: url(../../images/icons/arrow-top.svg);
+
+  &--disabled {
+    background-image: url(../../images/icons/arrow-top-disabled.svg);
+    pointer-events: none;
+
+    &:hover {
+      border-color: $gray-icons;
+      cursor: auto;
+    }
+  }
+
+  &--prev {
+    transform: rotate(-90deg);
+  }
+
+  &--next {
+    transform: rotate(90deg);
+  }
+
+  &--fav {
+    width: 40px;
+    height: 40px;
+    background-image: url(../../images/icons/icon-heart.svg);
+
+    &--big {
+      height: 48px;
+      width: 48px;
+    }
+
+    &--chosen {
+      background-image: url(../../images/icons/icon-heart-red.svg);
+    }
+  }
+}

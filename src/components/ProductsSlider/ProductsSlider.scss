@@ -1,0 +1,37 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/typography.scss";
+
+.products-slider {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__viewport {
+    max-width: 1136px;
+    overflow: hidden;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    transition: transform ease-in 0.5s;
+  }
+}

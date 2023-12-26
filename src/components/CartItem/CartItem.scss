@@ -1,0 +1,97 @@
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/vars.scss";
+@import "../../styles/typography.scss";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 40px 24px 24px;
+  box-sizing: border-box;
+  border: 1px solid $gray-elements;
+
+  &__right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__remove-btn {
+    background-image: url("../../images/icons/close.svg");
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url("../../images/icons/close--hover.svg");
+    }
+  }
+
+  &__img-container {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__item-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__name {
+    width: 100%;
+    margin-right: 48px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  &__change-amount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 96px;
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__btn {
+    @include button-base-style-n-hover;
+
+    &--min {
+      background-image: url(../../images/icons/minus.svg);
+
+      &--disabled {
+        background-image: url(../../images/icons/minus-disabled.svg);
+        pointer-events: none;
+
+        &:hover {
+          border-color: $gray-icons;
+        }
+      }
+    }
+
+    &--plus {
+      background-image: url(../../images/icons/plus.svg);
+    }
+  }
+
+  &__amount {
+    color: black;
+  }
+}

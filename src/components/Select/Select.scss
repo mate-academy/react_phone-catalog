@@ -1,0 +1,84 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/typography.scss";
+
+.select {
+  &__wrapper {
+    position: relative;
+  }
+
+  &__label {
+    margin-bottom: 4px;
+    @extend %small-text;
+  }
+
+  &__button {
+    @extend %buttons-text;
+    text-align: left;
+    width: 176px;
+    height: 40px;
+    padding: 10px 12px;
+    background-color: #fff;
+    border: 1px solid $gray-icons;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("../../images/icons/dropdown.svg");
+    background-position: bottom 10px right 12px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 1;
+
+    &:focus {
+      border-color: $gray-primary;
+      outline: none;
+    }
+
+    &--active {
+      background-image: url("../../images/icons/dropdown-up.svg");
+    }
+  }
+
+  &__dropdown {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    padding-block: 8px;
+    background-color: #fff;
+    border: 1px solid var(--gray-elements, #e2e6e9);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    pointer-events: none;
+
+    transform-origin: top;
+    transform: scale(1, 0);
+    transition: all $transition-speed;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    &--visible {
+      transform: scale(1, 1);
+      opacity: 1;
+      pointer-events: all;
+      height: fit-content;
+    }
+  }
+
+  &__option {
+    color: $gray-secondary;
+    width: 100%;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 6px 12px;
+
+    &:hover {
+      color: $gray-primary;
+      background-color: #fafbfc;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.page {
+  scroll-behavior: smooth;
+
+  &__body {
+    @extend %body-text;
+  }
+
+  &__app {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  // &__header {
+  // }
+
+  &__main {
+    max-width: 1136px;
+    margin-bottom: 80px;
+  }
+
+  // &__footer {
+  // }
+}

@@ -1,0 +1,17 @@
+.outlet {
+  padding-top: 25px;
+
+  &__content {
+    padding-top: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $gray-secondary;
+    margin-bottom: 40px;
+  }
+}

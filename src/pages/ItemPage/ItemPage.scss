@@ -1,0 +1,176 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/typography.scss";
+
+.item-page {
+  width: 1136px;
+  padding-top: 24px;
+
+  &__not-found {
+    @extend %h1;
+    text-align: center;
+    height: 30vh;
+  }
+
+  &__section {
+    width: 100%;
+  }
+
+  &__flex-container {
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 40px;
+  }
+
+  &__main-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__info-container {
+    width: 320px;
+  }
+
+  &__specifications {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  &__caption,
+  &__id {
+    @extend %small-text;
+    margin-bottom: 8px;
+  }
+
+  &__spec-container {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    background-color: $gray-elements;
+  }
+
+  &__color {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: solid 2px #fff;
+    outline: solid 1px $gray-elements;
+    transition: all $transition-speed;
+
+    &:hover,
+    &--active {
+      outline-color: $gray-primary;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    align-items: center;
+    color: $gray-primary;
+    height: 32px;
+    padding-inline: 8px;
+    border: 1px solid $gray-elements;
+    text-decoration: none;
+    background-color: transparent;
+    transition: all $transition-speed;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $gray-primary;
+      border-color: $gray-primary;
+    }
+  }
+
+  &__price {
+    @extend %h1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--old {
+      color: $gray-secondary;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__add-to-cart {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__props-list {
+    width: 100%;
+    display: grid;
+    gap: 8px;
+  }
+
+  &__prop-li {
+    display: flex;
+    justify-content: space-between;
+    @extend %small-text;
+  }
+
+  &__prop-value {
+    color: $gray-primary;
+  }
+
+  &__about {
+    display: grid;
+    gap: 32px;
+    width: 560px;
+  }
+
+  &__about-article {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__article-title {
+    @extend %h3;
+  }
+
+  &__article-p {
+    color: $gray-secondary;
+  }
+
+  &__section-title {
+    @extend %h2;
+    margin-bottom: 16px;
+  }
+
+  &__tech-specs {
+    display: grid;
+    gap: 8px;
+    padding-top: 25px;
+  }
+
+  &__tech-spec {
+    display: flex;
+    justify-content: space-between;
+    color: $gray-secondary;
+
+    &--value {
+      color: $gray-primary;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
+@import "../../styles/typography.scss";
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    gap: 64px;
+    @extend %uppercase-text;
+  }
+
+  &__item {
+    display: flex;
+    align-self: center;
+  }
+
+  &__link {
+    color: $gray-secondary;
+    text-decoration: none;
+    line-height: 1em;
+
+    &:hover {
+      color: $gray-primary;
+    }
+
+    &--is-active {
+      position: relative;
+
+      &::after {
+        @include active-link-after;
+        width: 100%;
+      }
+    }
+  }
+}

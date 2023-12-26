@@ -1,0 +1,38 @@
+.categories {
+  &__title {
+    margin-bottom: 24px;
+    @extend %h1;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.category {
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img {
+    transition: all $transition-speed;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    @extend %h3;
+    color: $gray-primary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__subtitle {
+    color: $gray-secondary;
+  }
+}

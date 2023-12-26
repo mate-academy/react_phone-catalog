@@ -1,0 +1,30 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property}, #{$transition-speed};
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin active-link-after {
+  position: absolute;
+  bottom: -26px;
+  display: block;
+  content: "";
+  height: 3px;
+  background-color: $gray-primary;
+}
+
+@mixin button-base-style-n-hover {
+  display: block;
+  height: 32px;
+  width: 32px;
+  background-color: #fff;
+  border: 1px solid $gray-icons;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $gray-primary;
+  }
+}

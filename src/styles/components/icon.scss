@@ -1,0 +1,30 @@
+.icon {
+  display: block;
+  height: 100%;
+  width: 64px;
+  box-sizing: border-box;
+  text-decoration: none;
+
+  border-left: 1px solid $gray-elements;
+
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+
+  transition: background-color $transition-speed;
+  &:hover {
+    background-color: $gray-background;
+  }
+
+  &--active {
+    border-bottom: 3px solid $gray-primary;
+  }
+
+  &--fav {
+    background-image: url(../../images/icons/icon-heart.svg);
+  }
+  &--cart {
+    background-image: url(../../images/icons/icon-cart.svg);
+    // border-right: 1px solid $gray-elements;
+  }
+}
