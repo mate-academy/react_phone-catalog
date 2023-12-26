@@ -8,12 +8,13 @@ type Props = {
   error: boolean;
   favorites: Product[];
   favCount: number;
-  handleToggleLike: (product: Product) => void;
+  handleLike: (product: Product) => void;
   inCart: CartDetale[];
   inCartCount: number;
-  handleToggleAddToCart: (product: Product) => void;
+  handleAddOrDeleteCart: (product: Product) => void;
   isSelectedProduct: (itemId: string, poducts: Product[]) => boolean;
   updateCount: (newCount: number, itemId: string) => void;
+
 };
 
 export const StorContext = React.createContext<Props>({
@@ -22,10 +23,10 @@ export const StorContext = React.createContext<Props>({
   error: false,
   favorites: [],
   favCount: 0,
-  handleToggleLike: () => {},
+  handleLike: () => {},
   inCart: [],
   inCartCount: 0,
-  handleToggleAddToCart: () => {},
+  handleAddOrDeleteCart: () => {},
   isSelectedProduct: () => false,
   updateCount: () => {},
 });

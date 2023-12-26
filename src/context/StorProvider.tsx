@@ -40,7 +40,7 @@ export const StorProvider: React.FC<Props> = ({ children }) => {
     return !!poducts.find((el: Product) => el.itemId === itemId);
   };
 
-  const handleToggleLike = (prod: Product) => {
+  const handleLike = (prod: Product) => {
     if (isSelectedProduct(prod.itemId, favorites)) {
       const newFavorites = favorites.filter(
         (fav: Product) => fav.itemId !== prod.itemId,
@@ -52,7 +52,7 @@ export const StorProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const handleToggleAddToCart = (item: Product | CartDetale) => {
+  const handleAddOrDeleteCart = (item: Product | CartDetale) => {
     const productWidthCount = { ...item, quantity: 1 };
 
     if (isSelectedProduct(productWidthCount.itemId, inCart)) {
@@ -84,10 +84,10 @@ export const StorProvider: React.FC<Props> = ({ children }) => {
     error,
     favorites,
     favCount,
-    handleToggleLike,
+    handleLike,
     inCart,
     inCartCount,
-    handleToggleAddToCart,
+    handleAddOrDeleteCart,
     isSelectedProduct,
     updateCount,
   };

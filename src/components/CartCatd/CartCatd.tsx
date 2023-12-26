@@ -9,13 +9,13 @@ type Props = {
 };
 
 export const CartCard: React.FC<Props> = ({ product }) => {
-  const { handleToggleAddToCart, updateCount } = useContext(StorContext);
+  const { handleAddOrDeleteCart, updateCount } = useContext(StorContext);
   const [count, setCount] = useState(product.quantity);
-  const addToCart = () => handleToggleAddToCart(product);
+  const addToCart = () => handleAddOrDeleteCart(product);
 
   useEffect(() => {
-    updateCount(count, product.itemId);
-  }, [count, product.itemId, updateCount]);
+    updateCount(count, product.itemId);// eslint-disable-next-line
+  }, [count, product.itemId]);
 
   return (
     <div>

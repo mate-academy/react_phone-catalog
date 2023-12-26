@@ -1,0 +1,148 @@
+.product-details {
+  width: 1136px;
+
+  &__top {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: #313237;
+
+    margin-bottom: 40px;
+  }
+
+  &__look-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+
+  &__text {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #89939a;
+
+    margin-bottom: 8px;
+  }
+
+  &__choice {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 24px;
+
+    &-list {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &__prices {
+    margin-bottom: 20px;
+  }
+
+  &__price {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    &--old {
+      margin-left: 8px;
+      font-family: Mont-Regular, sans-serif;
+      line-height: 28px;
+      text-decoration: line-through;
+      color: #89939a;
+    }
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__character {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-name {
+      margin-bottom: 8px;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px; 
+      color: #89939a;
+      text-transform: capitalize;
+    }
+
+    &-value {
+      text-align: end;
+      margin-bottom: 8px;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px; 
+      text-transform: uppercase;
+      color: #313237;
+    }
+  }
+
+  &__descript-container{
+    display: flex;
+    gap: 64px;
+    margin-bottom: 80px;
+  }
+
+  &__description {
+    max-width: 560px;
+  }
+
+  &__character-specs {
+    width: 100%;
+  }
+
+  &__name {
+    padding-bottom: 16px;
+    box-sizing: border-box;
+    border-bottom:1px solid #e2e6e9;
+    margin-bottom: 32px;
+  }
+
+  &__info-title {
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 16px;
+    color: #313237;
+  }
+
+  &__info-text {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 32px;
+    color: #89939a;
+  }
+}

@@ -1,0 +1,23 @@
+.capacity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 63px;
+  height: 32px;
+  background-color: transparent;
+  color: #313237;
+  border: 1px solid #e2e6e9;
+  transition: border 0.3s;
+  text-decoration: none;
+
+  &--active {
+    color: white;
+    border: 1px solid #313237;
+    background-color: #313237;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border: 1px solid #313237;
+  }
+}

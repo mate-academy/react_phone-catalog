@@ -1,0 +1,17 @@
+.colors-list {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  outline: 1px solid #e2e6e9;
+  transition: all 0.3s;
+
+  &--active {
+    outline: 1px solid #89939a;
+    pointer-events: none;
+  }
+
+  &:hover {
+    outline: 1px solid #313237;
+  }
+}

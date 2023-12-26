@@ -15,9 +15,9 @@ export const Buttons: React.FC<Props> = ({
   isSelectedFav,
   isSelectedInCart,
 }) => {
-  const { handleToggleAddToCart, handleToggleLike } = useContext(StorContext);
-  const addToCart = () => handleToggleAddToCart(product);
-  const like = () => handleToggleLike(product);
+  const { handleAddOrDeleteCart, handleLike } = useContext(StorContext);
+  const addToCart = () => handleAddOrDeleteCart(product);
+  const like = () => handleLike(product);
 
   return (
     <div className="buttons">

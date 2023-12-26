@@ -1,0 +1,54 @@
+.galery {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  height: 464px;
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__button {
+    transition: 0.3s;
+    height: 80px;
+    width: 80px;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &--active {
+      border: 1px solid gray;
+    }
+  }
+
+  &__img {
+    height: 66px;
+  }
+
+  &__photo {
+    display: flex;
+    justify-content: center;
+    height: 464px;
+    width: 464px;
+  }
+
+  &__main {
+    display: flex;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+
+    &--transition {
+      opacity: 0;
+    }
+  }
+}

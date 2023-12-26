@@ -1,7 +1,13 @@
-.phones {
+.product {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: max-content;
+  width: 1136px;
+
+  &__top {
+    width: 100%;
+  }
 
   &__title {
     color: #313237;
@@ -47,5 +53,39 @@
     justify-content: center;
     width: 1136px;
     margin-bottom: 80px;
+  }
+
+  &__nf {
+    position: absolute;
+    top: 100%;
+    left: calc(50% - 150px);
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: center;
+
+    &-title {
+      font-family: Mont, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    &-back {
+      text-decoration: none;
+      font-family: Mont, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: white;
+      background-color: #313237;
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
   }
 }

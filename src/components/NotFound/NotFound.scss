@@ -1,0 +1,16 @@
+.not-found {
+  display: flex;
+  width: 1136px;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: #313237;
+  }
+}
