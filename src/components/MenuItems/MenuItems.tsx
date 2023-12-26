@@ -1,23 +1,30 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useContext } from 'react';
 import cn from 'classnames';
-// import { Search } from '../Search/Search';
+
+import { AppContext } from '../../store/AppProvider';
+import { Search } from '../Search';
+
 import './MenuItems.scss';
 
 export const MenuItems = () => {
   const location = useLocation();
-  const favoritesCount = 34;
-  const cartCount = 12;
+  const [searchParams] = useSearchParams();
+  const {
+    favorites,
+    cart,
+  } = useContext(AppContext);
+
+  const favoritesCount = favorites.length;
+  const cartCount = cart.reduce((a, item) => a + item.quantity, 0);
 
   const isTarget = (path: string) => {
     return location.pathname === path;
   };
 
-  // const isPhonePage = (location.pathname.startsWith('/phones')
-  //   || location.pathname.startsWith('/favorites')
-  //   || location.pathname.startsWith('/tablets')
-  //   || location.pathname.startsWith('/accessories'))
-  //   && !location.pathname.match(/^\/phones\/[^/]+$/);
-
+  const isSearch = location.pathname.match(
+    /\/phones(?=$)|\/tablets(?=$)|\/accessories(?=$)|\/favorites(?=$)/gi,
+  );
   const isCartPage = location.pathname.startsWith('/cart');
 
   return (
@@ -63,22 +70,26 @@ export const MenuItems = () => {
       )}
 
       <div className="MenuItems__buttons">
-        {/* {isPhonePage && (
-          <div className="MenuItems_search">
+        {isSearch && (
+          <div className="MenuItems__search">
             <Search />
           </div>
-        )} */}
+        )}
 
         {!isCartPage && (
           <div className="MenuItems__button">
             <Link
               to="/favorites"
+              state={{
+                from: location.pathname,
+                search: searchParams.toString(),
+              }}
               className={cn('MenuItems__icon', 'icon--favourites', {
                 isTarget: isTarget('/favorites'),
               })}
             />
             {favoritesCount > 0 && (
-              <span className="MenuItems__icon__number">
+              <span className="MenuItems__icon__counter">
                 {favoritesCount}
               </span>
             )}
@@ -88,12 +99,16 @@ export const MenuItems = () => {
         <div className="MenuItems__button">
           <Link
             to="/cart"
+            state={{
+              from: location.pathname,
+              search: searchParams.toString(),
+            }}
             className={cn('MenuItems__icon', 'icon--bag', {
               isTarget: isTarget('/cart'),
             })}
           />
           {cartCount > 0 && (
-            <span className="MenuItems__icon__number">
+            <span className="MenuItems__icon__counter">
               {cartCount}
             </span>
           )}

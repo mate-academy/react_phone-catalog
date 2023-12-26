@@ -1,50 +1,138 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import * as ProductApi from '../../api/products';
-import { Product, ProductCategory } from '../../types/Product';
+import {
+  Product,
+} from '../../types/Product';
+import favoritesReducer, {
+  FavoritesItem,
+  actions as favoritesActions,
+} from '../../features/favorites';
+import cartReducer, {
+  CartItem,
+  actions as cartActions,
+} from '../../features/cart';
 
 type Props = {
   children: React.ReactNode;
 };
 
 type AppContextType = {
+  isLoading: boolean,
   products: Product[],
-  phones: Product[],
-  tablets: Product[],
-  accessories: Product[],
-  hotPriceProducts: Product[],
-  brandNewProducts: Product[],
+  cart: CartItem[],
+  favorites: FavoritesItem[],
+  addToCart: (productId: Product['itemId']) => void,
+  takeFromCart: (productId: Product['itemId']) => void,
+  removeFromCart: (productId: Product['itemId']) => void,
+  addToFavorites: (productId: Product['itemId']) => void,
+  takeFromFavorites: (productId: Product['itemId']) => void,
 };
 
 export const AppContext = React.createContext<AppContextType>({
+  isLoading: false,
   products: [],
-  phones: [],
-  tablets: [],
-  accessories: [],
-  hotPriceProducts: [],
-  brandNewProducts: [],
+  cart: [],
+  favorites: [],
+  addToCart: () => { },
+  takeFromCart: () => { },
+  removeFromCart: () => { },
+  addToFavorites: () => { },
+  takeFromFavorites: () => { },
 });
+
+const CART_STORAGE_KEY = 'cartStorage';
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [cart, cartDispatch] = useReducer(
+    cartReducer,
+    [],
+    (initVal) => {
+      const store = localStorage.getItem(CART_STORAGE_KEY);
+
+      return store ? JSON.parse(store) : initVal;
+    },
+  );
+  const [favorites, favoritesDispatch] = useReducer(favoritesReducer, []);
+  const navigate = useNavigate();
+
+  const addToCart = (productId: Product['itemId']) => {
+    const product = products.find(item => item.itemId === productId);
+
+    if (product) {
+      cartDispatch(cartActions.add(product));
+    }
+  };
+
+  const takeFromCart = (productId: Product['itemId']) => {
+    const product = products.find(item => item.itemId === productId);
+
+    if (product) {
+      cartDispatch(cartActions.take(product));
+    }
+  };
+
+  const removeFromCart = (productId: Product['itemId']) => {
+    const product = products.find(item => item.itemId === productId);
+
+    if (product) {
+      cartDispatch(cartActions.remove(product));
+    }
+  };
+
+  const addToFavorites = (productId: Product['itemId']) => {
+    const product = products.find(item => item.itemId === productId);
+
+    if (product) {
+      favoritesDispatch(favoritesActions.add(product));
+    }
+  };
+
+  const takeFromFavorites = (productId: Product['itemId']) => {
+    const product = products.find(item => item.itemId === productId);
+
+    if (product) {
+      favoritesDispatch(favoritesActions.take(product));
+    }
+  };
 
   useEffect(() => {
-    ProductApi.getProducts()
-      .then((p: Product[]) => {
-        setProducts(p);
-      });
-  }, []);
+    console.info('AppProvider->useEffect->CartLocalStorage');// eslint-disable-line
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart]);
 
-  const getCategory = useCallback((category: ProductCategory) => {
-    return [...products].filter(product => product.category === category);
-  }, [products]);
+  useEffect(() => {
+    setIsLoading(true);
+    console.info('AppProvider->useEffect->Loading');// eslint-disable-line
+
+    ProductApi.getProducts()
+      .then(setProducts)
+      .catch(() => {
+        navigate('/error', {
+          state: { errorMsg: 'Error at the downloading time attempt' },
+          replace: true,
+        });
+      })
+      .finally(() => setIsLoading(false));
+  }, [navigate]);
 
   const value = ({
+    isLoading,
     products,
-    phones: getCategory(ProductCategory.Phones),
-    tablets: getCategory(ProductCategory.Tablets),
-    accessories: getCategory(ProductCategory.Accessories),
-    hotPriceProducts: ProductApi.getHotPriceProducts(products),
-    brandNewProducts: ProductApi.getBrandNewProducts(products),
+    cart,
+    favorites,
+    addToCart,
+    takeFromCart,
+    removeFromCart,
+    addToFavorites,
+    takeFromFavorites,
   });
 
   return (

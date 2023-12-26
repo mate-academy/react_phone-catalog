@@ -11,8 +11,17 @@
   &--favourites {
     background-image: url('../../images/icons/icon-favourites.png');
   }
+  &--favourites-fill {
+    background-image: url('../../images/icons/icon-favourites-fill.png');
+  }
   &--bag {
     background-image: url('../../images/icons/icon-shopping-bag.png');
+  }
+  &--home {
+    background-image: url('../../images/icons/icon-home.png');
+  }
+  &--search {
+    background-image: url('../../images/icons/icon-search.png');
   }
   &--arrow-right {
     background-image: url("../../images/icons/icon-arrow-right.png");
@@ -22,5 +31,11 @@
   }
   &--arrow-up {
     background-image: url("../../images/icons/icon-arrow-up.png");
+  }
+  &--plus {
+    background-image: url("../../images/icons/icon-plus.png");
+  }
+  &--minus {
+    background-image: url("../../images/icons/icon-minus.png");
   }
 }

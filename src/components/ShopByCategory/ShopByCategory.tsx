@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../../store/AppProvider';
 
 import './ShopByCategory.scss';
+import { getAccessories, getPhones, getTablets } from '../../api/products';
 
 export const ShopByCategory = () => {
-  const { phones, tablets, accessories } = useContext(AppContext);
+  const { products } = useContext(AppContext);
+  const phones = getPhones(products);
+  const tablets = getTablets(products);
+  const accessories = getAccessories(products);
 
   return (
     <div className="ShopByCategory ShopByCategory__container">

@@ -1,30 +1,48 @@
 import {
-  HashRouter as Router, Routes, Route, Navigate,
+  HashRouter as Router, Routes, Route,
+  Navigate,
 } from 'react-router-dom';
+import { AppProvider } from './store/AppProvider/AppProvider';
+
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
-import { AppProvider } from './store/AppProvider/AppProvider';
+import { PhonesPage } from './pages/PhonesPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { ErrorPage } from './pages/ErrorPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { FavouritesPage } from './pages/FavouritesPage';
+import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
   <Router>
     <AppProvider>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<h1 className="title">Page not found</h1>} />
-
           <Route index element={<HomePage />} />
-          {/* <Route index path="/(home|menu| )/" element={<HomePage />} /> */}
-          {/* <Route path="phones" element={ } />
-        <Route path="tablets" element={ } />
-        <Route path="accessories" element={ } />
-        <Route path="favorites" element={ } />
-        <Route path="cart" element={ } /> */}
+          <Route path="home" element={<Navigate to="/" replace />} />
 
-          {/* <Route path="people">
-          <Route index element={<PeoplePage />} />
-          <Route path=":personSlug" element={<PeoplePage />} />
-        </Route> */}
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="tablets">
+            <Route index element={<TabletsPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="accessories">
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="favorites" element={<FavouritesPage />} />
+          <Route path="cart" element={<CartPage />} />
+
+          <Route path="error" element={<ErrorPage />} />
+          <Route path="*" element={<NotFoundPage title="Page not found" />} />
         </Route>
       </Routes>
     </AppProvider>

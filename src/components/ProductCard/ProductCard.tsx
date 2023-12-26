@@ -1,19 +1,31 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 
 import './ProductCard.scss';
+import { ProductCardButtons } from '../ProductCardButtons';
+import { BASE_URL } from '../../utils/httpClient';
 
-type ProductCardProps = {
+type Props = {
   product: Product;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+
   return (
     <div className="ProductCard" data-cy="cardsContainer">
       <div className="ProductCard__container">
-        <Link className="ProductCard__link" to={`/${product.category}/${product.phoneId}`}>
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          state={{
+            from: location.pathname,
+            search: searchParams.toString(),
+          }}
+          className="ProductCard__link"
+        >
           <img
-            src={`https://mate-academy.github.io/react_phone-catalog/_new/${product.image}`}
+            src={`${BASE_URL}${product.image}`}
             alt={product.name}
             className="ProductCard__img"
           />
@@ -24,12 +36,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Link>
 
         <div className="ProductCard__info">
-          <div className="ProductCard__cost">
-            <div className="ProductCard__cost--discount">
+          <div className="ProductCard__price">
+            <div className="ProductCard__price--discount">
               {`$${product.price}`}
             </div>
 
-            <div className="ProductCard__cost--fullPrice">
+            <div className="ProductCard__price--fullPrice">
               {`$${product.fullPrice}`}
             </div>
           </div>
@@ -66,19 +78,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
         </div>
 
-        <div className="ProductCard__buttons">
-          <button
-            type="button"
-            className="ProductCard__button__cart"
-          >
-            Add to Cart
-          </button>
-          <button
-            type="button"
-            className="ProductCard__button__fav"
-            aria-label="Add to Favorites"
-          />
-        </div>
+        <ProductCardButtons productId={product.itemId} />
       </div>
     </div>
   );

@@ -1,0 +1,308 @@
+@import '../../styles/utils/main.scss';
+
+.ProductDetails {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__path {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
+    @include fontSectionItemInfo;
+    color: $primary-color;
+
+    &-back {
+      display: flex;
+      width: fit-content;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 40px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__item-info {
+    @include fontSectionItemInfo;
+    color: $secondary-color;
+  }
+
+  &__title {
+    padding-top: 16px;
+    @include fontSectionTitle;
+    color: $primary-color;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    gap: 40px;
+
+    @include onDesktop {
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    &__left {
+      @include onDesktopSmall {
+        width: $tablet-width;
+      }
+    }
+
+    &__right {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 40px;
+
+      @include onTablet {
+        flex-direction: row;
+        width: 100%;
+      }
+    }
+
+    &__title {
+      @include fontH2;
+      text-align: left;
+    }
+
+    &__section {
+      &__title {
+        @include fontH3;
+        text-align: left;
+
+        &--about {
+          margin-top: 32px;
+          margin-bottom: 16px;
+        }
+      }
+
+      &__hr {
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin-block-start: 16px;
+        margin-block-end: 24px;
+        border: none;
+        background-color: $elements-color;
+      }
+
+      &__text {
+        @include fontCardName();
+        color: $secondary-color;
+      }
+    }
+
+    &__tech-specs {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0;
+
+      @include onDesktopSmall {
+        width: 512px;
+      }
+    }
+  }
+
+  &__ID {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    @include fontSectionItemInfo();
+    color: $icons-color;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+
+    @include onDesktopSmall {
+      flex-direction: row;
+    }
+  }
+
+  &__image {
+    object-fit: contain;
+    background-color: $white-color;
+
+    &--aside {
+      width: 80px;
+      height: 80px;
+    }
+
+    &--main {
+      display: flex;
+      margin-top: 16px;
+      margin-inline: auto;
+      width: $mobile-width;
+
+      @include onDesktopSmall {
+        width: 464px;
+        height: 464px;
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      @include onDesktopSmall {
+        flex-direction: column;
+      }
+    }
+
+    &__button {
+      padding: 0;
+      box-sizing: border-box;
+      width: fit-content;
+      cursor: pointer;
+      border: 1px solid $elements-color;
+      background-color: $white-color;
+
+      &--active {
+        border: 1px solid $primary-color; // $primary-color
+      }
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+
+  }
+
+  &__select {
+    display: flex;
+    flex-direction: column;
+    width: #{$mobile-width};
+
+    @include onDesktopSmall {
+      width: 320px;
+    }
+
+    &__section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &__title {
+      @include fontSectionItemInfo();
+      color: $secondary-color;
+    }
+
+    &__hr {
+      width: 100%;
+      height: 1px;
+      margin-block: 24px;
+      border: none;
+      background-color: $elements-color;
+    }
+
+    &__color {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid $elements-color;
+      text-decoration: none;
+
+      &--active {
+        border: 2px solid $primary-color;
+      }
+    }
+
+    &__capacity {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      padding-inline: 8px;
+      border: 2px solid $elements-color;
+      @include fontCardName();
+      background-color: $primary-color;
+      color: $white-color;
+      text-decoration: none;
+
+
+      &--active {
+        border: 2px solid $primary-color;
+        background-color: $white-color;
+        color: $primary-color;
+      }
+    }
+  }
+
+  // from ProductCard \|/
+  &__cost {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+
+    &--discount {
+      @include fontSectionTitle();
+      color: $primary-color;
+    }
+
+    &--fullPrice {
+      font-family: "Mont";
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: $secondary-color;
+      text-decoration: line-through;
+    }
+  }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &--normal {
+      @include fontSectionItemInfo();
+      font-family: "Mont";
+      color: $secondary-color;
+    }
+
+    &--strong {
+      @include fontSectionItemInfo();
+      font-family: "Mont-SemiBold";
+      color: $primary-color;
+    }
+  }
+
+  // from ProductCard /|\
+}

@@ -1,36 +1,70 @@
-import React from 'react';
-import { ProductCard } from '../ProductCard/ProductCard';
+import React, { useState } from 'react';
+import cn from 'classnames';
 
-import './ProductsSlider.scss';
 import { Product } from '../../types/Product';
+import { itemsOnScreen } from '../../helpers/mediaHelper';
+import { MediaWidth } from '../../types/Media';
+import './ProductsSlider.scss';
+import { Slider } from '../Slider';
 
 type Props = {
+  title: string,
   products: Product[],
-  itemWidth: number,
-  crntItemIndx: number,
-  gap: number,
 };
 
 export const ProductsSlider: React.FC<Props> = ({
+  title,
   products,
-  itemWidth,
-  crntItemIndx,
-  gap,
 }) => {
+  const [crntItemIndx, setCrntItemIndx] = useState(0);
+  const visibleProducts = products;
+
+  const handleNextClick = () => {
+    setCrntItemIndx(Math.min(
+      crntItemIndx + 1,
+      visibleProducts.length - itemsOnScreen(),
+    ));
+  };
+
+  const handlePrevClick = () => {
+    setCrntItemIndx(Math.max(crntItemIndx - 1, 0));
+  };
+
   return (
-    <div className="ProductsSlider__screen page__container">
-      <div
-        className="ProductsSlider__slider ProductsSlider__slider--transition"
-        style={{
-          display: 'flex',
-          gap: `${gap}px`,
-          transform: `translateX(-${itemWidth * crntItemIndx}px)`,
-        }}
-      >
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+    <div
+      data-cy="cardsContainer"
+      className="ProductsSlider ProductsSlider__container"
+    >
+      <div className="ProductsSlider__top">
+        <h2 className="ProductsSlider__title">{title}</h2>
+
+        <div className="ProductsSlider__buttons">
+          <button
+            type="button"
+            className={cn('ProductsSlider__button', 'icon--arrow-left', {
+              'ProductsSlider__button--disabled': !crntItemIndx,
+            })}
+            onClick={handlePrevClick}
+            aria-label="Previous"
+          />
+          <button
+            type="button"
+            className={cn('ProductsSlider__button', 'icon--arrow-right', {
+              'ProductsSlider__button--disabled':
+                !(crntItemIndx < visibleProducts.length - itemsOnScreen()),
+            })}
+            onClick={handleNextClick}
+            aria-label="Next"
+          />
+        </div>
       </div>
+
+      <Slider
+        products={visibleProducts}
+        itemWidth={MediaWidth.mobileWidth + MediaWidth.productCardGap - 0.5}
+        crntItemIndx={crntItemIndx}
+        gap={MediaWidth.productCardGap}
+      />
     </div>
   );
 };

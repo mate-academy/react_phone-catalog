@@ -3,7 +3,7 @@
 .Footer {
   &__container {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 80px;
     border-top: 1px solid #{$secondary-color};
   }
 
@@ -24,24 +24,24 @@
   &__links {
     display: flex;
     flex-grow: 1;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 64px;
+
+    @include onTablet {
+      justify-content: center;
+      gap: 64px;
+    }
   }
 
   &__link {
-    display: none;
-
-    @include onTablet {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-block: 24px;
-      @include linkTitle;
-      text-decoration: none;
-      text-transform: uppercase;
-      color: $secondary-color;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 24px;
+    @include fontLinkTitle;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $secondary-color;
 
     &:hover {
       cursor: pointer;
@@ -73,8 +73,13 @@
     }
 
     &__title {
-      @include sectionItemInfo;
-      color: $secondary-color;
+      display: none;
+
+      @include onTablet {
+        display: block;
+        @include fontSectionItemInfo;
+        color: $secondary-color;
+      }
     }
   }
 }

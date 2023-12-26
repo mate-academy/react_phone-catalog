@@ -5,6 +5,8 @@
   &__container {
     margin-inline: auto;
     width: $mobile-width;
+    // border: 1px solid red;
+
     // min-width limit in .page__body
     @include onTablet {
       width: $tablet-width;
@@ -24,31 +26,41 @@
     min-width: $mobile-min-width;
     scroll-behavior: smooth;
     background-color: $page-bckgrd-color;
+    transition-duration: $effectDurationNormal;
 
-    &:has(.page__menu:target) {
-      overflow: hidden; /* not to scroll the page */
+    &:has([class="AsideMenu isOpen"]) {
+      height: 100vh;
+      overflow: hidden;
+      /* not to scroll the page */
     }
   }
 
   &__menu {
     position: fixed;
-    top: 0;
     /*strach */
+    top: 0;
     right: 0;
-    left: -100%;
+    left: 0;
     bottom: 0;
+    z-index: -1;
     opacity: 0;
-    height: 100vh;
+    background-color: $page-bckgrd-color;
     pointer-events: none;
     transform: translateX(-100%);
-    transition-property: transform, opacity;/*smooth disappear*/
+    transition-property: transform, opacity;
+    /*smooth disappear*/
     transition-duration: $effectDurationNormal;
 
-    &--active {
+    @include onTablet {
+      display: none;
+    }
+
+    &--open {
       opacity: 1;
+      z-index: 1;
       transform: translateX(0%);
       pointer-events: all;
-      transition-property: transform, opacity;/*smooth appear*/
+      transition-property: transform, opacity;
       transition-duration: $effectDurationNormal;
     }
   }

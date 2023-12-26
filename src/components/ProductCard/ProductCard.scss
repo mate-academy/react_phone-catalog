@@ -37,24 +37,18 @@
   &__name {
     width: 100%;
     margin-top: 24px;
-    font-family: "Mont";
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
+    @include fontCardName;
     color: $primary-color;
   }
 
-  &__cost {
+  &__price {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-top: auto;
 
     &--discount {
-      font-family: "Mont-Bold";
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 31px;
+      @include fontH2;
       color: $primary-color;
     }
 
@@ -81,51 +75,21 @@
     width: 100%;
 
     &--normal {
+      @include fontSectionItemInfo();
       font-family: "Mont";
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 15px;
+      // font-size: 12px;
+      // font-weight: 600;
+      // line-height: 15px;
       color: $secondary-color;
     }
 
     &--strong {
+      @include fontSectionItemInfo();
       font-family: "Mont-SemiBold";
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 15px;
+      // font-size: 12px;
+      // font-weight: 600;
+      // line-height: 15px;
       color: $primary-color;
-    }
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-    padding-top: 16px;
-  }
-
-  &__button {
-    &__cart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-      background-color: $primary-color;
-      color: $white-color;
-      border: none;
-    }
-
-    &__fav {
-      height: 40px;
-      width: 40px;
-
-      background-image: url('../../images/icons/icon-favourites.png');
-      background-position: center;
-      background-repeat: no-repeat;
-
-      border: 1px solid $icons-color;
-      background-color: $white-color;
-      cursor: pointer;
     }
   }
 

@@ -12,24 +12,38 @@
   }
 
   &__icon {
-    // position: relative;
     width: 15px;
     height: 15px;
+    padding: 24px;
 
     background-position: center;
     background-repeat: no-repeat;
 
-    &__number {
+    &__counter {
       position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
-      top: 10px;
-      right: 10px;
-      height: 20px;
-      width: 20px;
+      top: 15px;
+      right: 15px;
+      height: 14px;
+      width: 14px;
+      border: 1px solid #{$white-color};
       border-radius: 50%;
+      @include fontIconCounter;
+      text-align: center;
+      color: $white-color;
       background-color: $red-color;
+    }
+  }
+
+  &__search {
+    display: none;
+
+    @include onDesktopSmall {
+      display: inline-block;
+      height: 100%;
+      width: 327px;
     }
   }
 
@@ -48,10 +62,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 65px;
-    height: 65px;
     border-right: 1px solid $elements-color;
     border-left: 1px solid $elements-color;
+
+    &:hover {
+      border-color: black;
+    }
+
+    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
   }
 
   &__link {
@@ -60,11 +78,7 @@
     align-items: center;
     width: fit-content;
     color: $secondary-color;
-    font-family: "Mont", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
+    @include fontLinkTitle;
     text-transform: uppercase;
     text-decoration: none;
 
@@ -87,14 +101,6 @@
     &:hover {
       cursor: pointer;
       color: $primary-color;
-    }
-  }
-
-  &__search {
-    display: none;
-
-    @include onDesktopSmall {
-      display: block;
     }
   }
 }

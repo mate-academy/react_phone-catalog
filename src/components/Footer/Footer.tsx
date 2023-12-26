@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './Footer.scss';
 
@@ -6,29 +6,29 @@ export const Footer = () => {
   return (
     <footer className="Footer Footer__container">
       <div className="Footer__content page__container">
-        <NavLink to="/" className="Footer__logo icon--logo" />
+        <Link to="/" className="Footer__logo icon--logo" />
 
         <div className="Footer__links">
-          <NavLink
+          <Link
             to="https://github.com/no4kar/react_phone-catalog"
             className="Footer__link"
           >
             github
-          </NavLink>
+          </Link>
 
-          <NavLink
+          <Link
             to="https://github.com/no4kar/react_phone-catalog"
             className="Footer__link"
           >
             contacts
-          </NavLink>
+          </Link>
 
-          <NavLink
+          <Link
             to="https://github.com/no4kar/react_phone-catalog"
             className="Footer__link"
           >
             rights
-          </NavLink>
+          </Link>
         </div>
 
         <div className="scroll-to-top">

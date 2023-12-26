@@ -1,17 +1,45 @@
 @import '../../styles/utils/main.scss';
 
 .ProductsSlider {
-  &__screen {
-    overflow: hidden;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  &__slider {
+  &__top {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    &--transition {
-      transition-property: transform;
-      transition-duration: $effectDurationNormal;
-      transition-timing-function: ease-in-out;
+  &__title {
+    @include fontSectionTitle;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    border: 1px solid $icons-color;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $white-color;
+
+    &--disabled {
+      border-color: $elements-color;
     }
+
+    &:hover {
+      border-color: black;
+    }
+
+    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
   }
 }

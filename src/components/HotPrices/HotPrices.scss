@@ -1,50 +1,12 @@
-@import '../../styles/utils/main.scss';
+@import "../../styles/utils/main.scss";
 
 .HotPrices {
   &__container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
     margin-top: 40px;
+    width: 100%;
 
     @include onTablet {
       margin-top: 72px;
     }
-  }
-
-  &__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__title {
-    @include sectionTitle;
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 16px;
-  }
-
-  &__button {
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-    border: 1px solid $elements-color;
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: $white-color;
-
-    &--enabled {
-      border-color: $icons-color;
-    }
-
-    &:hover {
-      border-color: black;
-    }
-
-    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
   }
 }

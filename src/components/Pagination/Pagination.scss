@@ -1,0 +1,49 @@
+@import '../../styles/utils/main.scss';
+
+.Pagination {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    @include fontCardName;
+    color: black;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+
+    &--disabled {
+      border-color: $elements-color;
+    }
+
+    &--active {
+      color: $white-color;
+      background-color: black;
+      border-color: $elements-color;
+    }
+
+    &:hover {
+      border-color: black;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

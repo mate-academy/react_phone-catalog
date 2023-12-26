@@ -1,0 +1,77 @@
+@import "../../styles/utils/main.scss";
+
+.FavouritesPage {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    align-self: flex-start;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  &__link {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &__title {
+      @include fontSectionItemInfo;
+
+      color: $secondary-color;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__title {
+    padding-top: 40px;
+    align-self: flex-start;
+    @include fontSectionTitle;
+
+    color: $primary-color;
+  }
+
+  &__info {
+    @include fontSectionItemInfo;
+
+    color: $secondary-color;
+    align-self: flex-start;
+    padding-top: 8px;
+  }
+
+  &__grid {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+    column-gap: $product-card-gap;
+    margin-top: 24px;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onDesktopSmall {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__error {
+    height: 200px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../styles/utils/main.scss';
+
+.Search {
+  &__container {
+    position: relative;
+    height: 100%;
+  }
+
+  &__input {
+    height: 100%;
+    width: 100%;
+    padding-left: 24px;
+    padding-right: 64px;
+    @include fontSectionItemInfoTitle;
+    box-sizing: border-box;
+    border-top: none;
+    border-bottom: none;
+    border-right: 1px solid $elements-color;
+    border-left: 1px solid $elements-color;
+
+    &:hover {
+      border-color: black;
+    }
+  }
+
+  &__icons,
+  &__button {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    z-index: 1;
+  }
+
+  &__icon {
+    position: relative;
+    height: 16px;
+    width: 16px;
+    transform: translate(-50%, -50%);
+  }
+}

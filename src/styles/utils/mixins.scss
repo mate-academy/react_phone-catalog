@@ -55,6 +55,7 @@
 
 /*#endregion*/
 
+/*#region Transition*/
 @mixin hoverTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
   transition-property: #{$property};
   transition-duration: #{$inTime};
@@ -81,42 +82,74 @@
     #{$property}: #{$toValue};
   }
 }
+/*#endregion*/
 
-@mixin linkTitle() {
-  font-family: "Mont-Bold";
+@mixin fontLinkTitle() {
+  font-family: "Mont-Bold", sans-serif;
   font-size: 12px;
   font-weight: 700;
   line-height: 11px;
   letter-spacing: 0.04em;
 }
 
-@mixin sectionTitle() {
-  font-family: "Mont-Bold";
+@mixin fontSectionTitle() {
+  font-family: "Mont-Bold", sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 41px;
   letter-spacing: -0.01em;
 }
 
-@mixin sectionItemTitle() {
-  font-family: "Mont-Bold";
+@mixin fontH2() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0em;
+}
+
+@mixin fontH3() {
+  font-family: "Mont", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+}
+
+@mixin fontSectionItemTitle() {
+  font-family: "Mont-Bold", sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
 }
 
-@mixin sectionItemInfoTitle() {
-  font-family: "Mont-Bold";
+@mixin fontSectionItemInfoTitle() {
+  font-family: "Mont-Bold", sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   letter-spacing: 0em;
 }
 
-@mixin sectionItemInfo() {
-  font-family: "Mont-Bold";
+@mixin fontSectionItemInfo() {
+  font-family: "Mont-Bold", sans-serif;
   font-size: 12px;
   font-weight: 600;
   line-height: 15px;
   letter-spacing: 0em;
+}
+
+@mixin fontIconCounter() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0em;
+}
+
+@mixin fontCardName() {
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
 }

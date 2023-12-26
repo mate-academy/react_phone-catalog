@@ -10,7 +10,7 @@
   }
 
   &__title {
-    @include sectionTitle;
+    @include fontSectionTitle;
     margin-right: auto;
     text-align: left;
     text-decoration: none;
@@ -51,7 +51,7 @@
 
     &__title {
       padding-top: 24px;
-      @include sectionItemTitle;
+      @include fontSectionItemTitle;
       letter-spacing: 0em;
 
       text-align: left;
@@ -59,7 +59,7 @@
     }
 
     &__info {
-      @include sectionItemInfoTitle;
+      @include fontSectionItemInfoTitle;
       text-align: left;
       color: $secondary-color;
     }

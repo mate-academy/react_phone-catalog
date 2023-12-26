@@ -1,0 +1,130 @@
+@import "../../styles/utils/main.scss";
+
+.ProductCategoryPage {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    align-self: flex-start;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  &__link {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &__title {
+      @include fontSectionItemInfo;
+
+      color: $secondary-color;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__title {
+    padding-top: 40px;
+    align-self: flex-start;
+    
+    @include fontSectionTitle;
+
+    color: $primary-color;
+  }
+
+  &__info {
+    @include fontSectionItemInfo;
+
+    color: $secondary-color;
+    align-self: flex-start;
+    padding-top: 8px;
+  }
+
+  &__selections {
+    display: flex;
+    align-self: flex-start;
+    gap: 16px;
+    padding-top: 40px;
+  }
+
+  &__selection {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__lable {
+      @include fontSectionItemInfo;
+
+      color: $secondary-color;
+    }
+
+    &__select {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid $icons-color;
+
+      @include fontSectionItemInfoTitle;
+
+      color: $primary-color;
+      cursor: pointer;
+
+      &--order {
+        width: 150px;
+
+        @include onTablet {
+          width: 176px;
+        }
+      }
+
+      &--item-per-page {
+        width: 107px;
+
+        @include onTablet {
+          width: 128px;
+        }
+      }
+    }
+  }
+
+  &__error {
+    height: 200px;
+    width: 100%;
+  }
+
+  &__grid {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+    column-gap: $product-card-gap;
+    margin-top: 24px;
+
+    @include onTablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include onDesktopSmall {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+}

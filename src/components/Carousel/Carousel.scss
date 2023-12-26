@@ -3,6 +3,7 @@
 .Carousel {
   &__container {
     display: none;
+    margin-top: 40px;
 
     @include onTablet {
       display: flex;
