@@ -1,21 +1,17 @@
 import { Link } from 'react-router-dom';
 import './CartPage.scss';
-import { useContext, useEffect } from 'react';
-import { ProductContext } from '../../contexts/ProductContext';
+import { useState } from 'react';
 import { CartProduct } from './CartProduct';
+import { useAppSelector } from '../../app/hooks';
 
 export const CartPage = () => {
-  const { cartProducts, productPrice, setProductPrice } = useContext(ProductContext);
+  const cartProducts = useAppSelector(state => state.cartProducts.items);
 
-  const storedPrice = localStorage.getItem('productPrice');
+  const productPrice = cartProducts.reduce(
+    (total, item) => total + (item.quantity * item.price), 0,
+  );
 
-  useEffect(() => {
-    console.log('useEffect in CartPage is running');
-
-    if (storedPrice) {
-      setProductPrice(JSON.parse(storedPrice));
-    }
-  }, [productPrice, storedPrice]);
+  const [hasError, setHasError] = useState(false);
 
   return (
     <div className="cart">
@@ -30,7 +26,7 @@ export const CartPage = () => {
 
         <div className="cart-container">
           {cartProducts.length ? (
-            cartProducts.map((product) => (
+            [...cartProducts].map((product) => (
               <CartProduct key={product.id} product={product} />
             ))
           ) : (
@@ -43,13 +39,33 @@ export const CartPage = () => {
           {`$${productPrice}`}
         </h1>
         <h2 className="cart__total-carts">
-          {`Total for ${cartProducts.length} items`}
+          {cartProducts.length === 1
+            ? `Total for ${cartProducts.length} item`
+            : `Total for ${cartProducts.length} items`}
         </h2>
         <div className="cart__button-checkout-container">
-          <button className="cart__button-checkout">
+          <button
+            type="button"
+            className="cart__button-checkout"
+            onClick={() => setHasError(true)}
+          >
             Checkout
           </button>
         </div>
+        {hasError
+          && (
+            <div className="cart__error">
+              <button
+                type="button"
+                aria-label="close"
+                className="cart__close cart__error__close"
+                onClick={() => setHasError(false)}
+              />
+              <h2 className="cart__error__title">
+                We are sorry, but this feature is not implemented yet
+              </h2>
+            </div>
+          )}
       </div>
     </div>
   );

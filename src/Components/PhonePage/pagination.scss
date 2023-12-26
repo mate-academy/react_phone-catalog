@@ -19,7 +19,6 @@
     width: 32px;
     height: 32px;
     border: 1px solid $border-color;
-
     justify-content: center;
     margin-top: 5px;
     align-items: center;
@@ -31,6 +30,10 @@
     line-height: 21px;
     list-style: none;
     transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $button-back-color;
+    }
 
     &-active {
       color: $white-color;
@@ -47,10 +50,19 @@
     list-style: none;
     width: 32px;
     height: 32px;
+    background-color: $white-color;
     background-image: url(../../Images/slider/arrow-right.svg);
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
+
+    &:hover {
+      border: 1px solid $button-back-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
 
     &-next {
       transform: rotate(180deg);
@@ -59,11 +71,6 @@
     &-active {
       color: $white-color;
       background-color: $button-back-color;
-    }
-
-    &-disabled {
-      pointer-events: none;
-      cursor: default;
     }
   }
 }

@@ -1,4 +1,4 @@
-type Colors = {
+type ColorPalette = {
   midnightgreen: string,
   rosegold: string,
   gold: string,
@@ -13,19 +13,19 @@ type Colors = {
   coral: string,
 };
 
-export type Color = keyof typeof Colors;
+export type Color = keyof ColorPalette;
 
-export const Colors: Colors = {
-  midnightgreen: '#5F6960',
-  rosegold: '#F9D2CD',
-  gold: '#F3DBC4',
-  silver: '#D9DADB',
+export const Colors: ColorPalette = {
+  midnightgreen: '#5f6960',
+  rosegold: '#f9d2cd',
+  gold: '#f3ddc4',
+  silver: '#d9dadb',
   black: '#363539',
-  green: '#BEE8D5',
-  yellow: '#FEE889',
-  white: '#FCF7F4',
-  purple: '#CCC2D6',
-  red: '#CD283F',
-  spacegray: '#4E4D4B',
-  coral: '#FD6A56',
+  green: '#bee8d5',
+  yellow: '#fee889',
+  white: '#fcf7f4',
+  purple: '#ccc2d6',
+  red: '#cd283f',
+  spacegray: '#4e4d4b',
+  coral: '#fd6a56',
 };

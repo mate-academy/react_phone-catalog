@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
 import { getNumbers } from './getNumbers';
 import './pagination.scss';
-import cn from 'classnames';
 import { getSearchWith } from '../../utils/searchHelper';
 
 type Props = {
@@ -30,9 +30,10 @@ export const Pagination: React.FC<Props> = ({
     startPage = Math.max(1, endPage - pagesToShow + 1);
   }
 
-  // const selectedPage = parseInt(page);
-
-  const handlePageChange = (page: number, event: React.MouseEvent<HTMLAnchorElement>) => {
+  const handlePageChange = (
+    page: number,
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) => {
     event.preventDefault();
     onPageChange(page);
   };
@@ -59,20 +60,19 @@ export const Pagination: React.FC<Props> = ({
     <div>
       <ul className="pagination__list">
         <li className="pagination__page">
-          <a
-            // className={cn({ 'active': pa })}
-            className={cn({
-              'pagination-arrow-disabled': currentPage === 1,
-            })}
+          <button
+            type="button"
+            aria-label="back"
+            className="pagination-arrow"
+            disabled={currentPage === 1}
             onClick={handlePrevPage}
-          >
-            <div className="pagination-arrow" />
-          </a>
+          />
         </li>
         {getNumbers(startPage, endPage).map(page => (
           <li className="pagination__page" key={page}>
             <a
-              className={cn('pagination__link', { 'pagination__link-active': page === currentPage })}
+              className={cn('pagination__link',
+                { 'pagination__link-active': page === currentPage })}
               href={`#${page}`}
               onClick={(event) => handlePageChange(page, event)}
             >
@@ -81,14 +81,13 @@ export const Pagination: React.FC<Props> = ({
           </li>
         ))}
         <li className="pagination__page">
-          <a
-            className={cn({
-              'pagination-arrow-disabled': currentPage === quantityPages,
-            })}
+          <button
+            type="button"
+            aria-label="forward"
+            className="pagination-arrow pagination-arrow-next"
             onClick={handleNextPage}
-          >
-            <div className="pagination-arrow pagination-arrow-next" />
-          </a>
+            disabled={currentPage === quantityPages}
+          />
         </li>
       </ul>
     </div>

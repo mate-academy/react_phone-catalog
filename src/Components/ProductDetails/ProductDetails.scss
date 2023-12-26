@@ -62,10 +62,12 @@
     font-size: 14px;
     line-height: 21px;
     border: 1px solid $border-button-color;
+    text-decoration: none;
 
     &-active {
       background-color: $button-back-color;
       color: $white-color;
+      text-decoration: none;
     }
 
     &-container {
@@ -94,6 +96,19 @@
       border-radius: 50%;
       border: 3px solid $white-color;
 
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid $border-color;
+        top: -3.8px;
+        left: -3.6px;
+        right: -3.0px;
+      }
+
       &-active {
         &::before {
           content: '';
@@ -106,18 +121,6 @@
           top: -3.6px;
           left: -3.6px;
         }
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 1px solid $border-color;
-        top: -3.6px;
-        left: -3.6px;
       }
     }
   }
@@ -242,7 +245,6 @@
     box-sizing: border-box;
     margin-top: 40px;
 
-
     &-container {
       display: flex;
       gap: 48px;
@@ -270,12 +272,6 @@
   }
 
   &-color {
-    width: 32px;
-    height: 32px;
-    margin-right: 8px;
-    background-color: rebeccapurple;
-    color: red;
-    border: 1px solid green;
 
     &-container {
       gap: 8px;

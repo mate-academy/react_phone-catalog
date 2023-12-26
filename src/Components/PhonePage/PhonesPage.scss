@@ -1,0 +1,117 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+
+.phones {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 24px;
+  justify-content: center;
+  width: 1136px;
+  height: 100%;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-top: 24px;
+  }
+
+  &__main-container {
+    display: flex;
+    gap: 16px;
+  }
+
+
+  &__title {
+    color: $button-back-color;
+    @extend %Mont700;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__subtitle {
+    color: $feature-color;
+    @extend %Mont500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 8px;
+
+    &_little {
+      margin-top: 40px;
+      font-size: 12px;
+    }
+  }
+
+  &__select {
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    width: 174px;
+    height: 32px;
+    text-decoration: none;
+    background-color: $white-color;
+    box-sizing: border-box;
+    @extend %Mont600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $feature-color;
+    cursor: pointer;
+
+    &-active {
+      color: $button-back-color;
+      background-color: $option-color;
+
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 176px;
+      height: 40px;
+      border: 1px solid $border-button-color;
+
+
+      &:hover {
+        border: 1px solid $feature-color;
+      }
+    }
+
+    &__list {
+      position: absolute;
+      margin-top: 4px;
+      text-decoration: none;
+      list-style: none;
+      border: 1px solid $border-color;
+    }
+
+    &-arrow {
+      background-image: url(../../Images/dropdown/arrow-drow.svg);
+      width: 16px;
+      height: 16px;
+      margin-right: 12px;
+
+      &_focus {
+        background-image: url(../../Images/dropdown/arrow-drow-focus.svg);
+      }
+    }
+
+    &-selected {
+      @extend %Mont600;
+      font-size: 14px;
+      line-height: 21px;
+      margin-left: 12px;
+      cursor: pointer;
+    }
+  }
+}

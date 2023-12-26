@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
+export const BASE_URL
+= 'https://mate-academy.github.io/react_phone-catalog/_new';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -11,7 +12,7 @@ type RequestMethod = 'GET';
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',
-  data: any = null,
+  data: unknown = null,
 ): Promise<T> {
   const options: RequestInit = { method };
 

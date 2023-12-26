@@ -16,7 +16,7 @@ export const ShopCategory: React.FC<Props> = ({ products }) => {
           </Link>
           <div>
             <h1 className="category__title">Mobile phones</h1>
-            <h2 className="category__subtitle">{`${products.length} models`}</h2>
+            <h2 className="category__subtitle">{`${products?.length} models`}</h2>
           </div>
         </div>
         <div className="category__little-container">

@@ -11,7 +11,11 @@
     width: 16px;
     height: 16px;
     background-image: url(../../Images/menu/back.svg);
+    transition: transform .3s;
 
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 
   &-home {

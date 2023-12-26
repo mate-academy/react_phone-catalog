@@ -10,23 +10,15 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    // id,
-    // category,
     phoneId,
-    // itemId,
     name,
     fullPrice,
     price,
     screen,
     capacity,
-    // color,
     ram,
-    // year,
     image,
-    // count,
   } = product;
-
-  // const { favouriteProducts, setFavouriteProducts } = useContext(ProductContext);
 
   return (
     <div className="product__card">

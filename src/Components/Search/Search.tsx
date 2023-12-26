@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import './Search.scss';
 import { useSearchParams } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 import { getSearchWith } from '../../utils/searchHelper';
 
 export const Search = () => {
@@ -9,15 +10,22 @@ export const Search = () => {
   const queryParam = searchParams.get('query');
   const [query, setQuery] = useState(queryParam || '');
 
+  const applyQuery = useCallback(
+  debounce((newSearchParams: string) => {
+    setSearchParams(newSearchParams);
+  }, 1000),
+  [searchParams],
+);
+
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
 
     setQuery(newQuery);
 
-    if (newQuery) {
-      setSearchParams(getSearchWith(searchParams, { query: newQuery }));
+    if (!newQuery) {
+      applyQuery(getSearchWith(searchParams, { query: null }));
     } else {
-      setSearchParams(getSearchWith(searchParams, { query: null }));
+      applyQuery(getSearchWith(searchParams, { query: newQuery }));
     }
   };
 

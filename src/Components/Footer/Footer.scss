@@ -19,6 +19,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      outline: none;
     }
   }
 
@@ -30,6 +31,7 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
+    cursor: pointer;
 
     &-back {
       color: $feature-color;
@@ -47,6 +49,9 @@
   }
 
   &__link {
+    text-decoration: none;
+    color: $feature-color;
+
     &-back {
       display: flex;
       align-items: center;
@@ -57,6 +62,12 @@
       background-repeat: no-repeat;
       background-position: center;
       border: 1px solid $border-color;
+      cursor: pointer;
+      background-color: $white-color;
+
+      &:hover {
+        border: 1px solid $button-color-hover;
+      }
     }
   }
 }

@@ -1,14 +1,16 @@
+import { useState } from 'react';
 import { Product } from '../../types/product';
 import { ProductCard } from './ProductCard';
 import './Product.scss';
-import { useState } from 'react';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   products: Product[];
   title: string;
+  loaded: boolean;
 };
 
-export const ProductList: React.FC<Props> = ({ products, title }) => {
+export const ProductList: React.FC<Props> = ({ products, title, loaded }) => {
   const itemWidth = 272;
   const gap = 16;
 
@@ -26,7 +28,7 @@ export const ProductList: React.FC<Props> = ({ products, title }) => {
     });
   };
 
-  const maxPosition = (products.length - 4) * (itemWidth + gap);
+  const maxPosition = (products?.length - 4) * (itemWidth + gap);
 
   const canScrollNext = position > maxPosition * -1;
   const canScrollPrev = position < 0;
@@ -38,6 +40,8 @@ export const ProductList: React.FC<Props> = ({ products, title }) => {
           <h1 className="product__title">{title}</h1>
           <div className="product__button-arrow-container">
             <button
+              type="button"
+              aria-label="prevButton"
               className="product__button"
               onClick={prevButton}
               disabled={!canScrollPrev}
@@ -45,6 +49,8 @@ export const ProductList: React.FC<Props> = ({ products, title }) => {
               <div className="product__button-arrow product__button-arrow-1" />
             </button>
             <button
+              type="button"
+              aria-label="nextButton"
               className="product__button"
               onClick={nextButton}
               disabled={!canScrollNext}
@@ -56,23 +62,24 @@ export const ProductList: React.FC<Props> = ({ products, title }) => {
 
         <div className="product-container">
           <div className="product__list">
-            {products.map(product => {
-              return (
-                <li
-                  key={product.id}
-                  style={{
-                    listStyle: 'none',
-                    transform: `translateX(${position}px)`,
-                    transition: '0.5s',
-                  }}
-                >
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                  />
-                </li>
-              );
-            })}
+            {loaded ? <Loader />
+              : products.map(product => {
+                return (
+                  <li
+                    key={product?.id}
+                    style={{
+                      listStyle: 'none',
+                      transform: `translateX(${position}px)`,
+                      transition: '0.5s',
+                    }}
+                  >
+                    <ProductCard
+                      key={product?.id}
+                      product={product}
+                    />
+                  </li>
+                );
+              })}
           </div>
         </div>
       </div>

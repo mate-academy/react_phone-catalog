@@ -12,6 +12,7 @@ export const Slider = () => {
   const gap = 16;
 
   const [position, setPosition] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const nextButton = () => {
     setPosition(() => {
@@ -34,8 +35,6 @@ export const Slider = () => {
   const canScrollNext = position > maxPosition * -1;
   const canScrollPrev = position < 0;
 
-  const [currentPage, setCurrentPage] = useState(0);
-
   const handleClickPag = (index: number) => {
     setCurrentPage(index);
     setPosition(() => {
@@ -47,6 +46,8 @@ export const Slider = () => {
     <div>
       <div className="slider-container">
         <button
+          type="button"
+          aria-label="prevButton"
           className="slider__button slider__button-left"
           onClick={prevButton}
           disabled={!canScrollPrev}
@@ -66,20 +67,23 @@ export const Slider = () => {
           ))}
         </div>
         <button
+          type="button"
+          aria-label="nextButton"
           className="slider__button slider__button-right"
           onClick={nextButton}
           disabled={!canScrollNext}
         />
       </div>
       <div className="pagination">
-        {images.map((_, index) => (
+        {images.map((_image, index) => (
           <button
-            key={index}
-            className={cn('pagination__dot', { pagination__dot_active: currentPage === index })}
+            type="button"
+            aria-label="button-pag"
+            className={cn('pagination__dot',
+              { pagination__dot_active: currentPage === index })}
             onClick={() => handleClickPag(index)}
           />
         ))}
-
       </div>
     </div>
   );

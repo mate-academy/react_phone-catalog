@@ -1,11 +1,14 @@
 import './CartPage.scss';
-import { useEffect, useState, useContext } from 'react';
 import { Product } from '../../types/product';
 import { BASE_URL } from '../../utils/fetchClient';
-import { ProductContext } from '../../contexts/ProductContext';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as cartActions from '../features/CartSlicer';
+import * as priceActions from '../features/ProductPrice';
+
+type CartItem = Product & { quantity: number };
 
 type Props = {
-  product: Product;
+  product: CartItem;
 };
 
 export const CartProduct: React.FC<Props> = ({ product }) => {
@@ -13,68 +16,69 @@ export const CartProduct: React.FC<Props> = ({ product }) => {
     image,
     name,
     price,
+    id,
+    quantity,
   } = product;
 
-  const { setProductPrice, cartProducts, setCartProducts } = useContext(ProductContext);
+  const dispatch = useAppDispatch();
 
-  const [total, setTotal] = useState<number>(1);
+  const cartProducts = useAppSelector(state => state.cartProducts.items);
 
-  // const handleAddProduct = () => {
-  //   setProductPrice((prevPrice) =>
-  //     prevPrice + price
-  //   )
-  // }
+  const isProductId = cartProducts.find(
+    (selectedProduct) => selectedProduct.id === id,
+  );
 
-  useEffect(() => {
-    setProductPrice((prevPrice: number) => prevPrice + price);
-  }, [price]);
-
-  const handleAddProduct = () => {
-    setTotal((prevTotal) => prevTotal + 1);
-    setProductPrice((prevPrice) => prevPrice + price);
+  const handleAddProduct = (productId: string) => {
+    if (isProductId) {
+      dispatch(cartActions.increaseQuantity(productId));
+    }
   };
 
-  const handleRemoveProduct = () => {
-    setTotal((prevTotal) => prevTotal - 1);
-    setProductPrice((prevPrice) => prevPrice - price);
+  const handleRemoveProduct = (productId: string) => {
+    if (isProductId) {
+      dispatch(cartActions.decreaseQuantity(productId));
+    }
   };
 
-  const handleDeleteProduct = (product: Product) => {
-    const newWPrice = product.price * total;
+  const handleDeleteProduct = (newProduct: Product) => {
+    if (isProductId) {
+      dispatch(priceActions.deleteProductPrice({ quantity: 1 }));
 
-    setProductPrice((prevPrice) => prevPrice - newWPrice);
-    const updatedProducts = cartProducts.filter(cartProduct => cartProduct !== product);
-
-    setCartProducts(updatedProducts);
+      dispatch(cartActions.deleteCartProducts(newProduct.id));
+    }
   };
 
   return (
     <div>
       <div className="cart__product">
         <button
+          type="button"
+          aria-label="close"
           className="cart__close"
           onClick={() => handleDeleteProduct(product)}
         />
-        <img className="cart__phone-img" src={`${BASE_URL}/${image}`} />
+        <img className="cart__phone-img" src={`${BASE_URL}/${image}`} alt={image} />
         <h1 className="cart__name">
           {`${name}`}
-          {' '}
-          <br />
-          (iMT9G2FS/A)
         </h1>
         <div className="cart__button-container">
           <button
+            type="button"
+            aria-label="remove"
             className="cart__button-remove"
-            onClick={handleRemoveProduct}
+            onClick={() => handleRemoveProduct(id)}
+            disabled={quantity <= 1}
           >
             -
           </button>
           <div className="cart__total">
-            {total}
+            {quantity}
           </div>
           <button
+            type="button"
+            aria-label="add"
             className="cart__button-add"
-            onClick={handleAddProduct}
+            onClick={() => handleAddProduct(id)}
           >
             +
           </button>

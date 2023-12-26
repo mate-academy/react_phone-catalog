@@ -1,4 +1,4 @@
-import '../PhonesPage/PhonesPage.scss';
+import '../PhonePage/PhonesPage.scss';
 import '../../App.scss';
 import { BackLink } from '../BackLink/BackLink';
 

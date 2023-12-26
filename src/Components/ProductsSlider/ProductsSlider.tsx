@@ -1,41 +1,46 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/product';
 import { ProductList } from '../ProductCard/ProductList';
 import { Slider } from '../Slider/Slider';
 import './ProductsSlider.scss';
-import { getProducts } from '../../api/products';
 import { ShopCategory } from '../shopCategory/ShopCategory';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as actions from '../features/ProductsSlicer';
+import { Product } from '../../types/product';
 
 export const ProductsSlider = () => {
-  useEffect(() => {
-    getProducts().then((response) => {
-      setProducts(response);
-    });
-  }, []);
+  const dispatch = useAppDispatch();
+  const { items: products, loaded } = useAppSelector(state => state.products);
 
   useEffect(() => {
-    getProducts().then((response) => {
-      const sortedProducts = response.slice();
+    dispatch(actions.productsInit());
+  }, [dispatch]);
 
-      sortedProducts.sort((a, b) => (b.year - a.year));
+  const [sortedProducts, setSortProducts] = useState<Product[]>([]);
 
-      setNewProducts(sortedProducts);
-    });
-  }, []);
+  useEffect(() => {
+    const updatedProducts = [...products];
 
-  const [products, setProducts] = useState<Product[]>([]);
+    updatedProducts.sort((a, b) => (b.year - a.year));
 
-  const [newProducts, setNewProducts] = useState<Product[]>([]);
+    setSortProducts(updatedProducts);
+  }, [products]);
 
   return (
     <>
-      {/* <SliderSwiper `/> */}
       <div className="product-slider-container">
         <Slider />
-        <ProductList products={products} title="Hot prices" />
+        <ProductList
+          products={products}
+          title="Hot prices"
+          loaded={loaded}
+        />
         <h1 className="product-slider__title">Shop by category</h1>
         <ShopCategory products={products} />
-        <ProductList products={newProducts} title="Brand new models" />
+        <ProductList
+          products={sortedProducts}
+          title="Brand new models"
+          loaded={loaded}
+        />
       </div>
     </>
   );

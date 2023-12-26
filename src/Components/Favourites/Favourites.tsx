@@ -1,20 +1,11 @@
-import { useContext, useEffect } from 'react';
 import './Favourites.scss';
-import { ProductContext } from '../../contexts/ProductContext';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { BackLink } from '../BackLink/BackLink';
+import { useAppSelector } from '../../app/hooks';
+import { Product } from '../../types/product';
 
 export const Favourites = () => {
-  const { favouriteProducts, setFavouriteProducts } = useContext(ProductContext);
-
-  useEffect(() => {
-    console.log('UseEffect favourites works');
-    const storedFavorites = localStorage.getItem('favouriteProducts');
-
-    if (storedFavorites) {
-      setFavouriteProducts(JSON.parse(storedFavorites));
-    }
-  }, [setFavouriteProducts]);
+  const favouriteProducts = useAppSelector(state => state.favourites.items);
 
   return (
     <div className="favourites">
@@ -22,7 +13,7 @@ export const Favourites = () => {
       <h1 className="favourites__title">Favourites</h1>
       <h2 className="favourites__subtitle">{`${favouriteProducts.length} items`}</h2>
       <div className="favourites-container">
-        {favouriteProducts.map((product) => (
+        {favouriteProducts.map((product: Product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
