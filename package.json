@@ -8,11 +8,15 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
     "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5"
   },
@@ -23,11 +27,13 @@
     "@mate-academy/scripts": "^1.2.12",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "^0.0.11",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
     "cypress": "^9.5.3",
-    "eslint": "^7.32.0",
     "eslint-plugin-cypress": "^2.11.2",
     "gh-pages": "^3.2.3",
     "mochawesome": "^7.1.3",
@@ -36,7 +42,7 @@
     "node-sass": "^7.0.1",
     "postcss": "^8.4.12",
     "stylelint": "^15.11.0",
-    "typescript": "^4.6.3"
+    "typescript": "^5.3.3"
   },
   "scripts": {
     "start": "mate-scripts start -l",

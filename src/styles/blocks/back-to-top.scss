@@ -1,0 +1,14 @@
+.back-to-top {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    padding-right: 16px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+
+    @include hover(color, $primery-color);
+  }
+}
