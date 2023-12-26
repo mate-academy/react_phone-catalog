@@ -1,0 +1,56 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__cart {
+    border: 1px solid $primery-color;
+    width: 176px;
+    height: 40px;
+    background-color: $primery-color;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    color: $white-color;
+
+    @include hover(box-shadow, 0 3px 13px 0 #17203142);
+
+    &--detail {
+      width: 263px;
+      height: 48px;
+    }
+
+    &--selected {
+      border-color: $elements-color;
+      background-color: $white-color;
+      color: $green-color;
+    }
+  }
+
+  &__favorite {
+    flex-shrink: 0;
+    border: 1px solid $secondary-color;
+    width: 40px;
+    height: 40px;
+    background-color: $white-color;
+    background-image: url(../../images/favorites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    @include hover(border-color, $primery-color);
+
+    &--detail {
+      width: 48px;
+      height: 48px;
+    }
+
+    &--selected {
+      border-color: $elements-color;
+      background-image: url(../../images/favourites-hover.svg);
+    }
+  }
+}
