@@ -1,8 +1,9 @@
 .details {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
+  // grid-template-rows: 464, 1fr;
+  row-gap: 81px;
   height: 464px;
-  border: 1px solid green;
   column-gap: 16px;
 
   &__big-photo-container {
@@ -26,7 +27,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $gray-secondary;
     grid-column: span 10;
   }
 
@@ -34,10 +34,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $gray-secondary;
     grid-auto-flow: row;
     grid-row: span 1;
     grid-column: span 2;
+    padding-block: 5px;
+    cursor: pointer;
+
+    @include buttonBorder;
   }
 
   &__big-image {
@@ -46,5 +49,54 @@
 
   &__small-image {
     max-height: 100%;
+  }
+
+  &__phone-id {
+    grid-column: 22 / 25;
+    display: flex;
+    justify-content: end;
+
+    @include smallText;
+    color: $gray-secondary;
+    font-weight: 600;
+  }
+
+  &__info {
+    
+  }
+}
+
+.selected {
+  border-color: $gray-primary;
+}
+
+.aside {
+  grid-column: 14 / 21;
+  // margin-block: auto;
+
+  &__price {
+    border: none;
+  }
+
+  &__button {
+    margin-bottom: 32px;
+  }
+
+  &__colors {
+    list-style: none;
+    display: flex;
+    position: absolute;
+
+    &::before {
+      position: relative;
+      top: 0;
+      content: "Avaliable colors";
+      color: $gray-secondary;
+      @include smallText;
+    }
+  }
+
+  &__color {
+    border: 1px solid black;
   }
 }

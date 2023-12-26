@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import homeImage from '../../images/home.svg';
 import arrowRight from '../../images/arrow-right-secondary-color.svg';
 import arrowLeft from '../../images/arrow-left-black.svg';
@@ -64,7 +65,9 @@ export const ProductDetailsPage: React.FC = () => {
             {phone?.images.map(image => (
               <div
                 key={image}
-                className="details__small-photo"
+                className={classNames('details__small-photo', {
+                  selected: selectedPhoto === image,
+                })}
                 onClick={() => handleChangePhoto(image)}
                 role="presentation"
               >
@@ -85,27 +88,59 @@ export const ProductDetailsPage: React.FC = () => {
               />
             </div>
           </div>
-          {/* <aside className="details__aside">
-            <ul>
-              <li></li>
+          <aside className="aside">
+            {/* <ul className="aside__colors">
+              <li className="aside__color aside__color"></li>
+              <li className="aside__color"></li>
+              <li className="aside__color"></li>
             </ul>
-            <ul>
+            <ul className="aside__capacity">
               <li></li>
-            </ul>
-            <ul>
-              <li></li>
-            </ul>
-            <div>
-              <a href=""></a>
-              <div></div>
+            </ul> */}
+            <div className="card__price aside__price">
+              {phone?.priceDiscount ? (
+                <>
+                  <p className="card__hot-price">{`$${phone?.priceDiscount}`}</p>
+                  <p className="card__full-price">{`$${phone?.priceRegular}`}</p>
+                </>
+              ) : (
+                <p className="card__hot-price">{`$${phone?.priceRegular}`}</p>
+              )}
             </div>
-            <ul>
-              <li>
-                <p></p>
-                <p></p>
-              </li>
+            <div className="card__info">
+              <div className="card__button aside__button">
+                <a className="card__link" href="/">Add to cart</a>
+                <div className="card__icon" />
+              </div>
+              <div className="card__row">
+                <p className="card__char-name">Screen</p>
+                <p className="card__char-value">{phone?.screen}</p>
+              </div>
+              <div className="card__row">
+                <p className="card__char-name">Capacity</p>
+                <p className="card__char-value">{phone?.capacity}</p>
+              </div>
+              <div className="card__row">
+                <p className="card__char-name">RAM</p>
+                <p className="card__char-value">{phone?.ram}</p>
+              </div>
+            </div>
+          </aside>
+          <p className="details__phone-id">ID: 802390</p>
+          {/* <section className="details__info">
+            <ul className="details__about">
+              <h2>About</h2>
+              {phone?.description.map(paragrahp => (
+                <div>
+                  <h3>{paragrahp.title}</h3>
+                  <div>{paragrahp.text}</div>
+                </div>
+              ))}
             </ul>
-          </aside> */}
+            <ul className="details__tech">
+              <h2>T</h2>
+            </ul>
+          </section> */}
         </div>
       )}
     </div>
