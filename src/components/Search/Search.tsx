@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, {
+import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -26,7 +27,7 @@ export const Search = () => {
     ));
   }, [pathname, searchParams, setSearchParams]);
 
-  const applyQuery = debounce(setSearchParams, 1000);
+  const applyQuery = useCallback(debounce(setSearchParams, 1000), [searchParams]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
