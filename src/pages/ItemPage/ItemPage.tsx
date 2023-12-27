@@ -5,7 +5,7 @@ import {
 } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
-import { GoBackButton } from '../../components/GoBackButton';
+import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
 import { ItemGallery } from '../../components/ItemGallery/ItemGallery';
 import { Loader } from '../../components/Loader';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';

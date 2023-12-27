@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Product } from '../../helpers/types';
+import type { Product } from '../../helpers/types';
 import { ProductList } from '../ProductList/ProductList';
 import { Select } from '../Select/Select';
 

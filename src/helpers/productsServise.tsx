@@ -1,6 +1,6 @@
 import { ItemDetails, Product } from './types';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 
 export function getProducts(): Promise<Product[]> {
   return fetch(`${API_URL}/products.json`)

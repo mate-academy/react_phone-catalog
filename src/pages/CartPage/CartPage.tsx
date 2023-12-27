@@ -3,7 +3,7 @@ import {
   useCallback, useContext, useEffect, useState,
 } from 'react';
 import { CartItem } from '../../components/CartItem';
-import { GoBackButton } from '../../components/GoBackButton';
+import { GoBackButton } from '../../components/GoBackButton/GoBackButton';
 import { ProductContext } from '../../helpers/ProductsContext';
 import './CartPage.scss';
 
