@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import { TyChangeEvtInputElmt } from '../../types/General';
@@ -9,26 +9,34 @@ import {
 import './Search.scss';
 
 export const Search = () => {
+  console.info('render Search');// eslint-disable-line
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery]
     = useState(searchParams.get(SearchParamsName.QUERY) || '');
   const page = location.pathname.slice(1, location.pathname.length);
 
-  function setSearchWith(params: SearchParams) {
-    setSearchParams(getSearchWith(searchParams, params));
-  }
+  const setSearchWith = (params: SearchParams) => {
+    setSearchParams(getSearchWith(searchParams, params));// eslint-disable-line
+  };
 
-  const applyQuery = useCallback(debounce(setSearchWith, 1000), []);
+  const applyQuery = useCallback(
+    debounce(setSearchWith, 1000),
+    [location.pathname],
+  );
+
+  useEffect(() => {
+    setSearchWith({ [SearchParamsName.QUERY]: query.trim() || null });
+  }, [location.pathname]);
 
   const handleQueryChange = (event: TyChangeEvtInputElmt) => {
     setQuery(event.target.value);
-    applyQuery({ query: event.target.value.trim() || null });
+    applyQuery({ [SearchParamsName.QUERY]: event.target.value.trim() || null });
   };
 
   const handleQueryClear = () => {
     setQuery('');
-    setSearchWith({ query: null });
+    setSearchWith({ [SearchParamsName.QUERY]: null });
   };
 
   return (

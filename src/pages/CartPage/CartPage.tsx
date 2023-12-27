@@ -61,71 +61,82 @@ export const CartPage: React.FC<Props> = (
         <div className="CartPage__content">
           <div className="CartPage__CartItems">
             {
-              visibleProducts.map((cartItem) => (
-                <div className="CartItem CartItem__container">
-                  <section className="CartItem__section CartItem__section--img">
-                    <button
-                      data-cy="cartDeleteButton"
-                      type="button"
-                      aria-label="cartDeleteButton"
-                      className="CartItem__button CartItem__button--delete"
-                      onClick={() => removeFromCart(cartItem.product.itemId)}
+              visibleProducts.map((cartItem) => {
+                const isFirst = cartItem.quantity <= 1;
+
+                return (
+                  <div className="CartItem CartItem__container">
+                    <section
+                      className="CartItem__section CartItem__section--img"
                     >
-                      <i className="CartItem__icon icon--close" />
-                    </button>
-
-                    <Link className="CartItem__link" to={`/${cartItem.product.category}/${cartItem.product.itemId}`}>
-                      <img
-                        src={`${BASE_URL}${cartItem.product.image}`}
-                        alt={cartItem.product.name}
-                        className="CartItem__img"
-                      />
-
-                      <p className="CartItem__name">
-                        {cartItem.product.name}
-                      </p>
-                    </Link>
-                  </section>
-
-                  <section className="CartItem__section">
-                    <div className="CartItem__buttons">
                       <button
+                        data-cy="cartDeleteButton"
                         type="button"
-                        aria-label="quantityDecrease"
-                        className={cn('CartItem__button',
-                          'CartItem__button--decrease',
-                          { 'CartItem__button--disabled': true })}
-                        onClick={() => takeFromCart(cartItem.product.itemId)}
+                        aria-label="cartDeleteButton"
+                        className="ProductsSlider__button
+                        CartItem__button--delete"
+                        onClick={() => removeFromCart(cartItem.product.itemId)}
                       >
-                        <i className="CartItem__icon icon--minus" />
+                        <i className="CartItem__icon icon--close" />
                       </button>
 
-                      <div className="CartItem__button CartItem__quantity">
-                        {cartItem.quantity}
+                      <Link className="CartItem__link" to={`/${cartItem.product.category}/${cartItem.product.itemId}`}>
+                        <img
+                          src={`${BASE_URL}${cartItem.product.image}`}
+                          alt={cartItem.product.name}
+                          className="CartItem__img"
+                        />
+
+                        <p className="CartItem__name">
+                          {cartItem.product.name}
+                        </p>
+                      </Link>
+                    </section>
+
+                    <section className="CartItem__section">
+                      <div className="CartItem__buttons">
+                        <button
+                          type="button"
+                          aria-label="quantityDecrease"
+                          className={cn('ProductsSlider__button', {
+                            'ProductsSlider__button--defualt': !isFirst,
+                            'ProductsSlider__button--disabled': isFirst,
+                          })}
+                          disabled={isFirst}
+                          onClick={() => takeFromCart(cartItem.product.itemId)}
+                        >
+                          <i className="ProductsSlider__icon icon--minus" />
+                        </button>
+
+                        <div className="CartItem__button CartItem__quantity">
+                          {cartItem.quantity}
+                        </div>
+
+                        <button
+                          data-cy="paginationRight"
+                          type="button"
+                          aria-label="quantityIncrease"
+                          className={cn('ProductsSlider__button', {
+                            'ProductsSlider__button--defualt': true,
+                            'ProductsSlider__button--disabled': false,
+                          })}
+                          disabled={false}
+                          onClick={() => addToCart(cartItem.product.itemId)}
+                        >
+                          <i className="ProductsSlider__icon icon--plus" />
+                        </button>
                       </div>
 
-                      <button
-                        data-cy="paginationRight"
-                        type="button"
-                        aria-label="quantityIncrease"
-                        className={cn('CartItem__button',
-                          'CartItem__button--increase',
-                          { 'CartItem__button--disabled': false })}
-                        onClick={() => addToCart(cartItem.product.itemId)}
-                      >
-                        <i className="CartItem__icon icon--plus" />
-                      </button>
-                    </div>
-
-                    <h2
-                      className="CartItem__price
+                      <h2
+                        className="CartItem__price
                       ProductCard__price--discount"
-                    >
-                      {`$${cartItem.product.price}`}
-                    </h2>
-                  </section>
-                </div>
-              ))
+                      >
+                        {`$${cartItem.product.price}`}
+                      </h2>
+                    </section>
+                  </div>
+                );
+              })
             }
           </div>
 

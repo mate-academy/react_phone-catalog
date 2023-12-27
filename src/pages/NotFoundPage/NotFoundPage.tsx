@@ -1,6 +1,7 @@
 import React from 'react';
-import './NotFoundPage.scss';
 import { NoResults } from '../../components/NoResults';
+
+import './NotFoundPage.scss';
 
 type Props = {
   title?: string,

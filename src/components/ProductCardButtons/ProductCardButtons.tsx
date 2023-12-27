@@ -6,11 +6,11 @@ import { AppContext } from '../../store/AppProvider';
 import { Product } from '../../types/Product';
 
 type Props = {
-  productId: Product['itemId'],
+  productItemId: Product['itemId'],
 };
 
 export const ProductCardButtons: React.FC<Props> = ({
-  productId,
+  productItemId,
 }) => {
   const {
     favorites,
@@ -21,22 +21,22 @@ export const ProductCardButtons: React.FC<Props> = ({
     takeFromFavorites,
   } = useContext(AppContext);
 
-  const isFavorite = favorites.some(item => item.itemId === productId);
-  const isInCart = cart.some(item => item.product.itemId === productId);
+  const isFavorite = favorites.some(item => item.itemId === productItemId);
+  const isInCart = cart.some(item => item.product.itemId === productItemId);
 
   const handleToCartClick = () => {
     if (isInCart) {
-      removeFromCart(productId);
+      removeFromCart(productItemId);
     } else {
-      addToCart(productId);
+      addToCart(productItemId);
     }
   };
 
   const handleToFavoritesClick = () => {
     if (isFavorite) {
-      takeFromFavorites(productId);
+      takeFromFavorites(productItemId);
     } else {
-      addToFavorites(productId);
+      addToFavorites(productItemId);
     }
   };
 

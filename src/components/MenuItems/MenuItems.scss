@@ -15,9 +15,21 @@
     width: 15px;
     height: 15px;
     padding: 24px;
-
     background-position: center;
     background-repeat: no-repeat;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      border-radius: 2px;
+      background-color: $primary-color;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      transform-origin: center left;
+    }
 
     &__counter {
       position: absolute;
@@ -82,25 +94,33 @@
     text-transform: uppercase;
     text-decoration: none;
 
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      border-radius: 2px;
+      background-color: $primary-color;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      transform-origin: center left;
+    }
 
-    &.isTarget {
+    &--target {
       position: relative;
+      text-shadow: 2px 3px rgba($elements-color, 0.7);
 
       &::after {
-        content: '';
-        position: absolute;
-        background-color: $primary-color;
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-        width: 100%;
-        height: 3px;
-        bottom: 0;
-        left: 0;
+        @include generalTtransition(width, 100%, $effectDurationVerrySlow);
       }
     }
 
+    @include hoverTransition(color, $primary-color, $effectDurationNormal);
+    @include hoverTransition(text-shadow, 2px 3px rgba($elements-color, 0.7), $effectDurationNormal);
+
     &:hover {
       cursor: pointer;
-      color: $primary-color;
     }
   }
 }

@@ -3,7 +3,11 @@ import {
 } from 'react';
 import './Carousel.scss';
 
-export const Carousel = ({ children }: any) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const Carousel:React.FC<Props> = ({ children }) => {
   const [pages, setPages] = useState([]);
   const [activeDot, setActiveDot] = useState(0);
 
@@ -43,7 +47,7 @@ export const Carousel = ({ children }: any) => {
 
   useEffect(() => {
     setPages(
-      Children.map(children, child => {
+      Children.map(children as never[], child => {
         return cloneElement(child, {
           className: 'Screen__img Screen__img--animation',
         });

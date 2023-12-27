@@ -83,7 +83,10 @@ export const ProductCategoryPage: React.FC<Props> = ({
   };
 
   const handleSortChange = (event: TyChangeEvtSelectElmt) => {
-    setSearchWith({ [SearchParamsName.SORT]: event.target.value || null });
+    setSearchWith({
+      [SearchParamsName.SORT]: event.target.value || null,
+      [SearchParamsName.PAGE]: '1',
+    });
   };
 
   const handleItemsPerPageChange = (event: TyChangeEvtSelectElmt): void => {

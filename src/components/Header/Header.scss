@@ -6,7 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    border-bottom: 1px solid #{$secondary-color};
+    border-bottom: 1px solid $elements-color;
   }
 
   &__logo {

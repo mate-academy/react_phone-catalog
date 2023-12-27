@@ -18,6 +18,8 @@ export const ProductsSlider: React.FC<Props> = ({
 }) => {
   const [crntItemIndx, setCrntItemIndx] = useState(0);
   const visibleProducts = products;
+  const isFirst = !(crntItemIndx);
+  const isLast = !(crntItemIndx < visibleProducts.length - itemsOnScreen());
 
   const handleNextClick = () => {
     setCrntItemIndx(Math.min(
@@ -41,21 +43,28 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className="ProductsSlider__buttons">
           <button
             type="button"
-            className={cn('ProductsSlider__button', 'icon--arrow-left', {
-              'ProductsSlider__button--disabled': !crntItemIndx,
+            className={cn('ProductsSlider__button', {
+              'ProductsSlider__button--defualt': !isFirst,
+              'ProductsSlider__button--disabled': isFirst,
             })}
+            disabled={isFirst}
             onClick={handlePrevClick}
             aria-label="Previous"
-          />
+          >
+            <i className="ProductsSlider__icon icon--arrow-left" />
+          </button>
           <button
             type="button"
-            className={cn('ProductsSlider__button', 'icon--arrow-right', {
-              'ProductsSlider__button--disabled':
-                !(crntItemIndx < visibleProducts.length - itemsOnScreen()),
+            className={cn('ProductsSlider__button', {
+              'ProductsSlider__button--defualt': !isLast,
+              'ProductsSlider__button--disabled': isLast,
             })}
+            disabled={isLast}
             onClick={handleNextClick}
             aria-label="Next"
-          />
+          >
+            <i className="ProductsSlider__icon icon--arrow-right" />
+          </button>
         </div>
       </div>
 
@@ -63,7 +72,7 @@ export const ProductsSlider: React.FC<Props> = ({
         products={visibleProducts}
         itemWidth={MediaWidth.mobileWidth + MediaWidth.productCardGap - 0.5}
         crntItemIndx={crntItemIndx}
-        gap={MediaWidth.productCardGap}
+        gap={MediaWidth.productCardGap - 0.5}
       />
     </div>
   );

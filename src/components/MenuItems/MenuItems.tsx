@@ -34,7 +34,7 @@ export const MenuItems = () => {
           <Link
             to="/"
             className={cn('MenuItems__link', {
-              isTarget: isTarget('/'),
+              'MenuItems__link--target': isTarget('/'),
             })}
           >
             home
@@ -43,7 +43,7 @@ export const MenuItems = () => {
           <Link
             to="/phones"
             className={cn('MenuItems__link', {
-              isTarget: isTarget('/phones'),
+              'MenuItems__link--target': isTarget('/phones'),
             })}
           >
             phones
@@ -52,7 +52,7 @@ export const MenuItems = () => {
           <Link
             to="/tablets"
             className={cn('MenuItems__link', {
-              isTarget: isTarget('/tablets'),
+              'MenuItems__link--target': isTarget('/tablets'),
             })}
           >
             tablets
@@ -61,7 +61,7 @@ export const MenuItems = () => {
           <Link
             to="/accessories"
             className={cn('MenuItems__link', {
-              isTarget: isTarget('/accessories'),
+              'MenuItems__link--target': isTarget('/accessories'),
             })}
           >
             accessories
@@ -85,7 +85,7 @@ export const MenuItems = () => {
                 search: searchParams.toString(),
               }}
               className={cn('MenuItems__icon', 'icon--favourites', {
-                isTarget: isTarget('/favorites'),
+                'MenuItems__link--target': isTarget('/favorites'),
               })}
             />
             {favoritesCount > 0 && (
@@ -104,7 +104,7 @@ export const MenuItems = () => {
               search: searchParams.toString(),
             }}
             className={cn('MenuItems__icon', 'icon--bag', {
-              isTarget: isTarget('/cart'),
+              'MenuItems__link--target': isTarget('/cart'),
             })}
           />
           {cartCount > 0 && (

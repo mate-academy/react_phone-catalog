@@ -17,6 +17,5 @@ export const HotPrices: React.FC = () => {
         products={getHotPriceProducts(products).slice(0, 16)}
       />
     </div>
-
   );
 };

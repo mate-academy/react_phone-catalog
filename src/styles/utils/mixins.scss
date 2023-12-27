@@ -56,6 +56,12 @@
 /*#endregion*/
 
 /*#region Transition*/
+@mixin generalTtransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  #{$property}: #{$toValue};
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+}
+
 @mixin hoverTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
   transition-property: #{$property};
   transition-duration: #{$inTime};
@@ -84,6 +90,7 @@
 }
 /*#endregion*/
 
+/*#region Font*/
 @mixin fontLinkTitle() {
   font-family: "Mont-Bold", sans-serif;
   font-size: 12px;
@@ -153,3 +160,4 @@
   font-size: 14px;
   line-height: 21px;
 }
+/*#endregion*/

@@ -47,20 +47,27 @@ export const AppContext = React.createContext<AppContextType>({
 });
 
 const CART_STORAGE_KEY = 'cartStorage';
+const FAVORITES_STORAGE_KEY = 'favoritesStorage';
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [cart, cartDispatch] = useReducer(
-    cartReducer,
-    [],
+    cartReducer, [],
     (initVal) => {
       const store = localStorage.getItem(CART_STORAGE_KEY);
 
       return store ? JSON.parse(store) : initVal;
     },
   );
-  const [favorites, favoritesDispatch] = useReducer(favoritesReducer, []);
+  const [favorites, favoritesDispatch] = useReducer(
+    favoritesReducer, [],
+    (initVal) => {
+      const store = localStorage.getItem(FAVORITES_STORAGE_KEY);
+
+      return store ? JSON.parse(store) : initVal;
+    },
+  );
   const navigate = useNavigate();
 
   const addToCart = (productId: Product['itemId']) => {
@@ -104,6 +111,11 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
+    console.info('AppProvider->useEffect->FavoritesLocalStorage');// eslint-disable-line
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
     console.info('AppProvider->useEffect->CartLocalStorage');// eslint-disable-line
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
@@ -116,12 +128,12 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       .then(setProducts)
       .catch(() => {
         navigate('/error', {
-          state: { errorMsg: 'Error at the downloading time attempt' },
+          state: { errorMsg: 'Error at the loading time' },
           replace: true,
         });
       })
       .finally(() => setIsLoading(false));
-  }, [navigate]);
+  }, []);
 
   const value = ({
     isLoading,

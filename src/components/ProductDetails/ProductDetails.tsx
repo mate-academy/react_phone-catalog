@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -10,24 +10,29 @@ import { colorsRegEx, getColor } from '../../helpers/colorHelper';
 import { ProductCardButtons } from '../ProductCardButtons';
 
 import './ProductDetails.scss';
+import { AppContext } from '../../store/AppProvider';
 
 type Props = {
-  productId: string;
+  productItemId: string;
 };
 
 export const ProductDetails: React.FC<Props> = ({
-  productId,
+  productItemId,
 }) => {
   const [productPrecise, setProductPrecise]
     = useState<ProductPrecise | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [mainImage, setMainImage] = useState('');
+  const { products } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
 
+  const productId = products
+    .find(item => item.itemId === productItemId)?.id || '0';
+
   useEffect(() => {
     setIsLoading(true);
-    getProductPrecise(productId)
+    getProductPrecise(productItemId)
       .then((p: ProductPrecise) => {
         setProductPrecise(p);
         setMainImage(p.images[0]);
@@ -41,7 +46,7 @@ export const ProductDetails: React.FC<Props> = ({
       .finally(() => {
         setIsLoading(false);
       });
-  }, [productId, navigate]);
+  }, [productItemId, navigate]);
 
   return (
     <div className="ProductDetails">
@@ -194,7 +199,7 @@ export const ProductDetails: React.FC<Props> = ({
                   </div>
                 </div>
 
-                <ProductCardButtons productId={productId} />
+                <ProductCardButtons productItemId={productItemId} />
 
                 <div className="ProductDetails__properties">
                   <div className="ProductDetails__property">
@@ -235,7 +240,7 @@ export const ProductDetails: React.FC<Props> = ({
                 </div>
               </div>
 
-              <div className="ProductDetails__ID">ID:??????</div>
+              <div className="ProductDetails__ID">{`ID:${productId}`}</div>
             </div>
           </div>
 

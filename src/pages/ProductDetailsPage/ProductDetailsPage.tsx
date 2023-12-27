@@ -15,14 +15,14 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="ProductDetailsPage page__container">
       {productId ? (
-        <ProductDetails productId={productId} />
+        <ProductDetails productItemId={productId} />
       ) : (
         <NoResults title="Invalid product ID" />
       )}
       <div className="ProductDetailsPage__you-may">
         <ProductsSlider
           title="You may also like"
-          products={[...products].slice(0, 16)}
+          products={products.slice(0, 16)}
         />
       </div>
 

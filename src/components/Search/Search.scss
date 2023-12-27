@@ -4,11 +4,19 @@
   &__container {
     position: relative;
     height: 100%;
+
+    // &:focus,
+    // &:focus-within {
+    //   border-top: none;
+    //   border-bottom: none;
+    //   border-right: 1px solid $elements-color;
+    //   border-left: 1px solid $elements-color;
+    // }
   }
 
   &__input {
-    height: 100%;
     width: 100%;
+    height: 100%;
     padding-left: 24px;
     padding-right: 64px;
     @include fontSectionItemInfoTitle;
@@ -17,25 +25,27 @@
     border-bottom: none;
     border-right: 1px solid $elements-color;
     border-left: 1px solid $elements-color;
-
-    &:hover {
-      border-color: black;
-    }
+    outline: none;
   }
 
   &__icons,
   &__button {
     display: flex;
-    position: absolute;
-    top: 50%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -50%;
     left: 90%;
-    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
   }
 
   &__icon {
-    position: relative;
-    height: 16px;
     width: 16px;
-    transform: translate(-50%, -50%);
+    height: 16px;
   }
 }

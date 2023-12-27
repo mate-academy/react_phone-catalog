@@ -23,23 +23,35 @@
   }
 
   &__button {
-    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 32px;
+    height: 32px;
+    padding: 0;
     cursor: pointer;
     border: 1px solid $icons-color;
-
-    background-repeat: no-repeat;
-    background-position: center;
     background-color: $white-color;
+
+    &--defualt {
+      border-color: $icons-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
+    }
 
     &--disabled {
       border-color: $elements-color;
     }
+  }
 
-    &:hover {
-      border-color: black;
-    }
-
-    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
