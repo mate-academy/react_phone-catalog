@@ -36,6 +36,7 @@ export const ProductDetailsPage = () => {
   const suggestedProducts = getSuggestedProducts(products, productId);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setIsLoader(true);
 
     const fetchData = async () => {
