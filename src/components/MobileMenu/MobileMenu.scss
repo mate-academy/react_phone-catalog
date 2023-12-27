@@ -1,0 +1,75 @@
+@import "../../utils/variables";
+@import "../../utils/mixins";
+
+.mobilemenu {
+  position: fixed;
+  z-index: 5;
+  background-color: white;
+  top: 0;
+  left: -100%;
+  padding: 20px;
+  transition: all 0.3s ease;
+  height: 100vh;
+
+  &_logo {
+    background-image: url('../../imgs/Icons/Logo\ \(2\).svg');
+    position: relative;
+    margin-right: 63px;
+    display: flex;
+    width: 40px;
+    height: 24px;
+  }
+
+  @include on-small-desktop {
+    display: none;
+  }
+
+  &.open {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+
+    @include on-small-desktop {
+      display: none;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-right: 40px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    color: $main-color;
+  }
+
+  &__link,
+  &__favorites,
+  &__cart {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 20px 0;
+
+    &--is-active {
+      position: relative;
+      color: $main-color;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: $main-color;
+    }
+  }
+}

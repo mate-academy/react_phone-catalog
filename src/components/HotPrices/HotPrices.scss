@@ -1,0 +1,14 @@
+@import "../../utils/mixins";
+
+.hotprices {
+  margin-top: 80px;
+  margin-bottom: 40px;
+
+  @include on-mobile {
+    margin: 0;
+  }
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+}
