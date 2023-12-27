@@ -27,7 +27,7 @@ export const ItemGallery: React.FC<Props> = ({ images }) => {
               )}
             >
               <img
-                src={`/${imgUrl}`}
+                src={imgUrl}
                 alt="product"
                 className="item-gallery__previw-img"
               />
