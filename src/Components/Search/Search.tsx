@@ -11,11 +11,11 @@ export const Search = () => {
   const [query, setQuery] = useState(queryParam || '');
 
   const applyQuery = useCallback(
-  debounce((newSearchParams: string) => {
-    setSearchParams(newSearchParams);
-  }, 1000),
-  [searchParams],
-);
+    debounce((newSearchParams: string) => {
+      setSearchParams(newSearchParams);
+    }, 1000),
+    [searchParams],
+  );
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
