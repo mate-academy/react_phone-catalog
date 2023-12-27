@@ -2,7 +2,6 @@
 import {
   Link,
   useLocation,
-  useNavigate,
   useParams,
 } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
@@ -21,7 +20,6 @@ import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { ProductNotFound } from '../../components/ProductNotFound/ProductNotFound';
 
 export const ProductDetailsPage = () => {
-  const navigate = useNavigate();
   const { productId = '' } = useParams();
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [isLoader, setIsLoader] = useState(false);
@@ -129,9 +127,8 @@ export const ProductDetailsPage = () => {
               </div>
 
               <div className="productDetailsPage__navigation--bottom">
-                <button
-                  type="button"
-                  onClick={() => navigate(-1)}
+                <Link
+                  to="../"
                   className="button productDetailsPage__navigation--link"
                   data-cy="backButton"
                 >
@@ -144,7 +141,7 @@ export const ProductDetailsPage = () => {
                   >
                     Back
                   </p>
-                </button>
+                </Link>
               </div>
             </section>
 

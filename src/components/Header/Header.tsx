@@ -4,7 +4,12 @@ import {
   useLocation,
   useSearchParams,
 } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import debounce from 'lodash.debounce';
 import { ICONS } from '../../images/icons/icons';
 import './Header.scss';
@@ -55,15 +60,19 @@ export const Header = () => {
   const favourites = products.filter(item => item.addedToFavourites === true);
   const carts = products.filter(item => item.addedToCart === true);
 
-  const debouncedQuery = debounce((value) => {
-    if (!value.trim()) {
-      searchParams.delete('query');
-      setSearchParams(searchParams);
-    } else {
-      searchParams.set('query', value.trim());
-      setSearchParams(searchParams);
-    }
-  }, 1000);
+  const debouncedQuery = useMemo(
+    () => debounce(
+      (value) => {
+        if (!value.trim()) {
+          searchParams.delete('query');
+          setSearchParams(searchParams);
+        } else {
+          searchParams.set('query', value.trim());
+          setSearchParams(searchParams);
+        }
+      }, 500,
+    ), [],
+  );
 
   const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;

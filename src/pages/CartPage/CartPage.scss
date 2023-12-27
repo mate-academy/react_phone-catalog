@@ -82,15 +82,16 @@
         &--quantity {
           display: flex;
           flex-direction: row;
-          gap: 13px;
           align-items: center;
           margin-inline: 25px 20px;
           width: 96px;
-          justify-content: center;
+          justify-content: space-between;
 
           &--counter {
             font-weight: 500;
             margin: 0;
+            width: 24px;
+            text-align: center;
           }
         }
 
@@ -131,6 +132,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
+
+          &:hover {
+            box-shadow: 0 2px 4px $color-primary;
+          }
         }
 
         &--message {
