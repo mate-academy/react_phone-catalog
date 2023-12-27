@@ -71,7 +71,7 @@ export const Header = () => {
 
         setSearchParams(searchParams);
       }, 500,
-    ), [],
+    ), [searchParams],
   );
 
   const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
