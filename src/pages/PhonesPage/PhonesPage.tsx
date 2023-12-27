@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import {
@@ -15,7 +15,6 @@ import {
 import {
   ItemsPerPageDropdown,
 } from '../../components/Dropdowns/ItemsPerPageDropdown';
-import homeImage from '../../images/home.svg';
 import arrowRight from '../../images/arrow-right-secondary-color.svg';
 import { Categories } from '../../Types/Categories';
 
@@ -95,8 +94,8 @@ export const PhonesPage: React.FC = () => {
 
   return (
     <div className="phones">
-      <div className="path">
-        <img src={homeImage} alt="home_icon" />
+      <div className="path" data-cy="breadCrumbs">
+        <Link to="/" className="go-home" />
         <img src={arrowRight} alt="arrow_right" />
         <h3>Phones</h3>
       </div>

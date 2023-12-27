@@ -128,3 +128,11 @@ iframe {
     }
   }
 }
+
+.go-home {
+  background-image: url('../src/images/home.svg');
+  height: 16px;
+  width: 16px;
+
+  @include hoverScale;
+}

@@ -18,7 +18,13 @@
   }
 
   &__prev-page {
-    color: $gray-primary
+    color: $gray-primary;
+    text-decoration: none;
+    font-weight: bold;
+    color: $gray-primary;
+
+    @include smallText;
+    @include hoverScale;
   }
 }
 
