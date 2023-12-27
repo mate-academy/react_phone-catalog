@@ -65,11 +65,11 @@ export const Header = () => {
       (value) => {
         if (!value.trim()) {
           searchParams.delete('query');
-          setSearchParams(searchParams);
         } else {
           searchParams.set('query', value.trim());
-          setSearchParams(searchParams);
         }
+
+        setSearchParams(searchParams);
       }, 500,
     ), [],
   );
