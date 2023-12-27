@@ -11,7 +11,7 @@ export function FavoritesPage() {
       <Breadcrumbs />
 
       <section className="outlet__content">
-        <h1 className="outlet__title">favorites</h1>
+        <h1 className="outlet__title">Favorites</h1>
         <p className="outlet__subtitle">
           {`${favorites.length} items`}
         </p>
