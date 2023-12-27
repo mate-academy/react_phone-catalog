@@ -1,21 +1,25 @@
 import { ProductDetails } from '../types/ProductDetails';
 
-export const getCorrectProductLink = (
-  details: ProductDetails | null,
-  newCapacity?: string,
-  newColor?: string,
-) => {
-  const productName = details?.namespaceId;
-  const capacity = details?.capacity;
-  const color = details?.color;
+export const getCorrectProductLink = ({
+  productDetails,
+  color,
+  capacity,
+}: {
+  productDetails: ProductDetails,
+  color?: string,
+  capacity?: string,
+}) => {
+  const productName = productDetails.namespaceId;
+  const newCapacity = productDetails.capacity;
+  const newColor = productDetails.color;
 
-  if (newColor && !newCapacity) {
-    return `${productName}-${capacity}-${newColor}`.toLowerCase();
-  }
-
-  if (!newColor && newCapacity) {
+  if (color && !capacity) {
     return `${productName}-${newCapacity}-${color}`.toLowerCase();
   }
 
-  return `${productName}-${capacity}-${color}`;
+  if (!color && capacity) {
+    return `${productName}-${capacity}-${newColor}`.toLowerCase();
+  }
+
+  return `${productName}-${newCapacity}-${newColor}`;
 };

@@ -36,24 +36,23 @@ export const ProductDetailsPage = () => {
   const [isError, setError] = useState(false);
   const [mainPhoto, setMainPhoto] = useState<string>();
 
-  const fetchProduct = async () => {
-    const productFromServer = await getProductById(productId);
-
-    setProduct(productFromServer);
-  };
-
   const fetchProductDetails = async () => {
     setIsLoading(true);
     try {
       const getDetailsFromServer = await getProductDetails(productId);
 
       setProductDetails(getDetailsFromServer);
-      setMainPhoto(productDetails?.images[0]);
     } catch {
       setError(true);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const fetchProduct = async () => {
+    const productFromServer = await getProductById(productId);
+
+    setProduct(productFromServer);
   };
 
   const fetchRandomProducts = async () => {
@@ -71,22 +70,20 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
-    fetchProduct();
+    if (productDetails?.images.length) {
+      setMainPhoto(productDetails.images[0]);
+    }
+  }, [productDetails]);
+
+  useEffect(() => {
     fetchProductDetails();
+    fetchProduct();
   }, [productId]);
 
   useEffect(() => {
     fetchRandomProducts();
   }, []);
 
-  useEffect(() => {
-    if (productDetails?.images.length) {
-      setMainPhoto(productDetails.images[0]);
-    }
-  }, [productDetails]);
-
-  const colors = productDetails?.colorsAvailable || [];
-  const currentColor = productDetails?.color || '';
   const images = productDetails?.images || [];
   const mainImg = mainPhoto || '';
   const capacitys = productDetails?.capacityAvailable || [];
@@ -109,7 +106,7 @@ export const ProductDetailsPage = () => {
 
       {!product && !isLoading && <PageNotFound />}
 
-      {!isError && !isLoading && !productDetails && <Loader />}
+      {!isError && isLoading && <Loader />}
 
       {!isLoading && !isError && (
         <>
@@ -128,8 +125,6 @@ export const ProductDetailsPage = () => {
               <div className="product-details__colors">
                 {productDetails && (
                   <ProductColor
-                    colors={colors}
-                    currentColor={currentColor}
                     productDetails={productDetails}
                   />
                 )}

@@ -10,7 +10,11 @@ export const getProducts = (url: string) => {
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
-        throw Error();
+        throw Error(`Failed to fetch products. Status: ${response.status}`);
+      }
+
+      if (!response.headers.get('content-type')?.includes('application/json')) {
+        throw new Error('Failed to get content-type');
       }
 
       return response.json();
@@ -40,7 +44,13 @@ export const getBrandNewProducts = async () => {
 };
 
 export const getProductDetails = async (id: string) => {
-  const productDetails: ProductDetails = await getProducts(`${detailsURL}${id}.json`);
+  const productDetailsResponse = await fetch(`${detailsURL}${id}.json`);
+
+  if (!productDetailsResponse.ok) {
+    throw new Error('Failed to fetch product details');
+  }
+
+  const productDetails: ProductDetails = await productDetailsResponse.json();
 
   return productDetails;
 };

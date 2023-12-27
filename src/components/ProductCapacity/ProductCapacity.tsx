@@ -20,9 +20,9 @@ export const ProductCapacity: React.FC<Props> = ({ productDetails }) => {
       <ul className="product-capacities__list">
         {capacities.map(capacity => {
           const isActive = productDetails.capacity === capacity;
-          const follow = getCorrectProductLink(
-            productDetails, capacity, undefined,
-          );
+          const follow = getCorrectProductLink({
+            productDetails, capacity,
+          });
 
           return (
             <Link
