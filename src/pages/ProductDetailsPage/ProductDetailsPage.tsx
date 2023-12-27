@@ -5,6 +5,10 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProductDetails } from '../../features/productDetailsSlice';
 import { fetchProducts } from '../../features/productsSlice';
 import { addToCart } from '../../features/cartItemsSlice';
+import {
+  addToFavourites,
+  removeFromFavourites,
+} from '../../features/favouriteItemsSlice';
 import { Loader } from '../../components/Loader';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -67,6 +71,21 @@ export const ProductDetailsPage = () => {
   const isItemInCart = useMemo(() => {
     return cartItems.some(item => item.id === productId);
   }, [cartItems, product]);
+
+  const { favouriteItems } = useAppSelector(state => state.favouriteItems);
+  const isItemInFavourites = useMemo(() => {
+    return favouriteItems.some(item => item.id === productId);
+  }, [favouriteItems]);
+
+  const toggleFavoriteProduct = () => {
+    if (productId && isItemInFavourites) {
+      dispatch(removeFromFavourites(productId));
+
+      return;
+    }
+
+    dispatch(addToFavourites(product));
+  };
 
   return (
     <>
@@ -213,9 +232,16 @@ export const ProductDetailsPage = () => {
                   </button>
 
                   <button
-                    className="ProductDetail-Icon Icon Icon_heart"
+                    className={cn(
+                      'ProductDetail-Icon Icon',
+                      {
+                        Icon_heart: !isItemInFavourites,
+                        Icon_heart_in_favoutites: isItemInFavourites,
+                      },
+                    )}
                     type="button"
                     aria-label="Heart"
+                    onClick={toggleFavoriteProduct}
                   />
                 </div>
 
@@ -320,14 +346,6 @@ export const ProductDetailsPage = () => {
                     </span>
 
                     {productDetails?.camera.primary}
-                  </div>
-
-                  <div className="ProductDetail-TechSpec">
-                    <span className="ProductDetail-TechLabel">
-                      Additional features
-                    </span>
-
-                    {productDetails?.additionalFeatures}
                   </div>
 
                   <div className="ProductDetail-TechSpec">
