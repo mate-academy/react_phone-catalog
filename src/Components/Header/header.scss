@@ -1,0 +1,120 @@
+@import '../../styles/utils/typography';
+@import '../../styles/utils/variables';
+
+.header {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  padding-right: 0;
+  box-shadow: 0 3px 0 0 $border-color;
+  box-sizing: border-box;
+  height: 64px;
+
+  &-container {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.icon {
+  display: flex;
+
+  &-container {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &-favourites {
+    box-sizing: content-box;
+    display: flex;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    top: 3px;
+    background-image: url(../../Images/heart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-bottom: 3px solid transparent;
+
+
+    &:hover {
+      border-bottom: 3px solid $button-color-hover;
+    }
+
+    &-active {
+      border-bottom: 3px solid $button-color-hover;
+    }
+
+    &-count {
+      @extend %mont-600;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 33px;
+      left: 32.9px;
+      color:$white-color;
+      border-radius: 50%;
+      font-size: 9px;
+      width: 14px;
+      height: 14px;
+      background-color: $favourite-color;
+      border: 1px solid $white-color;
+      transition: all 0.3s;
+    }
+
+    &-container {
+      box-sizing: border-box;
+      position: relative;
+      border-bottom: 3px solid transparent;
+      border-left: 3px solid $border-color;
+    }
+  }
+
+  &-bag {
+    box-sizing: content-box;
+    display: flex;
+    position: relative;
+    top: 3px;
+    width: 64px;
+    height: 64px;
+    background-image: url(../../Images/bag.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover {
+      border-bottom: 3px solid $button-color-hover;
+    }
+
+    &-active {
+      border-bottom: 3px solid $button-color-hover;
+    }
+
+    &-count {
+      @extend %mont-600;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 33px;
+      left: 32.9px;
+      color:$white-color;
+      border-radius: 50%;
+      font-size: 9px;
+      width: 14px;
+      height: 14px;
+      background-color: $favourite-color;
+      border: 1px solid $white-color;
+      transition: all 0.3s;
+    }
+
+    &-container {
+      position: relative;
+      border-left: 3px solid $border-color;
+    }
+  }
+}

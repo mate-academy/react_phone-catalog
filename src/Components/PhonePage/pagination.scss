@@ -1,0 +1,77 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.pagination {
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    margin-top: 40px;
+    list-style: none;
+    transition: all 0.3s;
+  }
+
+  &__link {
+    @extend %mont-500;
+
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-color;
+    justify-content: center;
+    margin-top: 5px;
+    align-items: center;
+    text-decoration: none;
+    color: $button-back-color;
+    text-align: center;
+    font-size: 14px;
+    line-height: 21px;
+    list-style: none;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $button-back-color;
+    }
+
+    &-active {
+      color: $white-color;
+       border: none;
+      width: 32px;
+      height: 32px;
+      background-color: $button-back-color;
+    }
+  }
+
+  &-arrow {
+    border: 1px solid $border-color;
+    margin-top: 5px;
+    list-style: none;
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    background-image: url(../../Images/slider/arrow-right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $button-back-color;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &-next {
+      transform: rotate(180deg);
+    }
+
+    &-active {
+      color: $white-color;
+      background-color: $button-back-color;
+    }
+  }
+}

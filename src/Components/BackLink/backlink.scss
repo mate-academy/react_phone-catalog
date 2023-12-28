@@ -1,0 +1,40 @@
+@import '../../styles/utils/typography';
+@import '../../styles/utils/variables';
+
+.back {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &__link {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../Images/menu/back.svg);
+    transition: transform .3s;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  &-home {
+    display: flex;
+    width: 16px;
+    height: 16px;
+  }
+
+  &-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../Images/menu/arrow-grey.svg);
+  }
+
+  &__title {
+    @extend %mont-600;
+
+    color: $feature-color;
+    font-size: 12px;
+  }
+}
