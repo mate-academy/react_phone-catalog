@@ -1,0 +1,21 @@
+.backButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+  gap: 4px;
+  font-family: "Mont-SemiBold", sans-serif;
+  color: #89939a;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    color: #313237;
+  }
+
+  &__icon {
+    background: url("./BackButtonImg/backByttonImg.svg") no-repeat;
+    width: 16px;
+    height: 16px;
+  }
+}

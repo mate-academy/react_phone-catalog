@@ -1,3 +1,303 @@
 .details {
-  display: block;
+  margin-bottom: 80px;
+
+  // &__line {
+  //   display: block;
+  //   border: 1px solid #e2e6e9;
+  //   width: 100%;
+  // }
+
+  &__title {
+    margin-top: 16px;
+    font-size: 32px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+
+  &__photos {
+    width: 50%;
+    display: flex;
+    align-items: center;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-btn {
+      width: 80px;
+      height: 80px;
+      background: transparent;
+      border: 1px solid #c4c4c4;
+      padding: 7px;
+
+      &:hover {
+        border-color: #000;
+      }
+
+      &--active {
+        border: 1px solid #000;
+      }
+    }
+
+    &-btn:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    &-img {
+      max-height: 100%;
+    }
+
+    &-current {
+      display: flex;
+      justify-content: center;
+      width: 442px;
+      height: 442px;
+      padding: 11px;
+      margin-left: 24px;
+
+    }
+  }
+
+  &__options {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: "Mont-SemiBold", sans-serif;
+    color: #89939a;
+
+    &-list {
+      width: 50%;
+    }
+
+    &-line {
+      border: 1px solid #e2e6e9;
+      margin: 24px 0 30px;
+      display: block;
+    }
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+
+    &-title {
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 12px;
+      color: #89939a;
+      margin-bottom: 8px;
+    }
+
+    &-list {
+      display: flex;
+    }
+
+    &-item {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      border: 1px solid #e2e6e9;
+      border-radius: 50%;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+
+      &:hover {
+        border-color: #000;
+      }
+
+      &--active {
+        border-color: #000;
+      }
+
+      &-link {
+        width: 100%;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        transition: filter 0.3s ease;
+
+        &:hover {
+          filter: saturate(200%);
+        }
+      }
+    }
+  }
+
+  &__capacity {
+    margin: 24px 0;
+    &-title {
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 12px;
+      color: #89939a;
+      margin-bottom: 8px;
+    }
+
+    &-list {
+      display: flex;
+    }
+
+    &-item {
+      border: 1px solid #b4bdc3;
+      transition: 0.3s;
+
+      &:not(&-active):hover {
+        border-color: #313237;
+      }
+
+      &-active {
+        background-color: #313237;
+      }
+
+      &-item:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+
+    &-link {
+      font-family: "Mont-Regular", sans-serif;
+      text-decoration: none;
+      padding: 7px 8px;
+      display: block;
+      color: #313237;
+      font-size: 14px;
+      line-height: 1;
+
+      &-active {
+        color: #fff;
+      }
+    }
+  }
+
+  &__price {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    line-height: 1;
+
+    &-discount {
+      display: flex;
+      align-items: center;
+      font-family: "Mont-Bold", sans-serif;
+      font-size: 32px;
+      color: #313237;
+    }
+
+    &-regular {
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 22px;
+      color: #89939a;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+  }
+
+  &__info {
+    margin-top: 32px;
+
+    &-container {
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &-title {
+      color: #89939a;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+
+  &__bottom {
+    margin: 80px 0;
+    display: flex;
+  }
+
+  &__tech {
+    width: 50%;
+
+    &-title {
+      font-family: "Mont-Bold", sans-serif;
+      font-size: 22px;
+      color: #313237;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 14px;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &-name {
+      color: #89939a;
+      line-height: 21px;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+
+  &__about {
+    padding-right: 50px;
+    width: 50%;
+
+    &-line {
+      border: 1px solid #e2e6e9;
+      margin: 16px 0 30px;
+      display: block;
+    }
+
+    &-title {
+      font-family: "Mont-Bold", sans-serif;
+      font-size: 22px;
+      color: #313237;
+    }
+
+    &-item {
+
+      &:not(:last-child) {
+        margin-bottom: 32px;
+      }
+
+      &-title {
+        font-family: "Mont-SemiBold", sans-serif;
+        font-size: 20px;
+        color: #313237;
+      }
+
+      &-description {
+        font-family: "Mont-Regular", sans-serif;
+        margin-top: 16px;
+        color: #89939a;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 500px;
+      }
+    }
+  }
 }

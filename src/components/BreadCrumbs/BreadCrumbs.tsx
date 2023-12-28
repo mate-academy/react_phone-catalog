@@ -20,9 +20,7 @@ export const BreadCrumbs: React.FC = () => {
         currentLink += `/${crumb.toLowerCase()}`;
 
         const formattedCrumb = `${crumb.toLowerCase().replace(/-/g, ' ')}`;
-
-        console.log(currentLink, 'current');
-
+        
         return (
           <div className="breadcrumbs__link" key={crumb}>
             <div className="breadcrumbs__icon" />
