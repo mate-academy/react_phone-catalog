@@ -157,6 +157,9 @@
     align-items: center;
     gap: 24px;
     text-decoration: none;
+
+    @include hoverTransition(scale, $effectScaleSmall, $effectDurationNormal);
+    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
   }
 
   &__img {

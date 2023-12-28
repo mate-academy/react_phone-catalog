@@ -122,18 +122,21 @@ export const ProductCategoryPage: React.FC<Props> = ({
               >
                 Sort Order:
               </label>
-              <select
-                id="sortOrder"
-                value={sortBy}
-                onChange={handleSortChange}
-                className="
+
+              <div className="select__arrow">
+                <select
+                  id="sortOrder"
+                  value={sortBy}
+                  onChange={handleSortChange}
+                  className="
             ProductCategoryPage__selection__select
             ProductCategoryPage__selection__select--order"
-              >
-                <option value={SortBy.age}>Newest</option>
-                <option value={SortBy.name}>Alphabetically</option>
-                <option value={SortBy.price}>Cheapest</option>
-              </select>
+                >
+                  <option value={SortBy.age}>Newest</option>
+                  <option value={SortBy.name}>Alphabetically</option>
+                  <option value={SortBy.price}>Cheapest</option>
+                </select>
+              </div>
             </div>
 
             <div className="ProductCategoryPage__selection">
@@ -143,19 +146,21 @@ export const ProductCategoryPage: React.FC<Props> = ({
               >
                 Items Per Page:
               </label>
-              <select
-                id="itemsPerPage"
-                value={itemsPerPage}
-                onChange={handleItemsPerPageChange}
-                className="
+              <div className="select__arrow">
+                <select
+                  id="itemsPerPage"
+                  value={itemsPerPage}
+                  onChange={handleItemsPerPageChange}
+                  className="
             ProductCategoryPage__selection__select
             ProductCategoryPage__selection__select--item-per-page"
-              >
-                <option value="">All</option>
-                <option value="4">4</option>
-                <option value="8">8</option>
-                <option value="16">16</option>
-              </select>
+                >
+                  <option value="">All</option>
+                  <option value="4">4</option>
+                  <option value="8">8</option>
+                  <option value="16">16</option>
+                </select>
+              </div>
             </div>
           </div>
 

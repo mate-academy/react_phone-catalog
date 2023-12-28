@@ -80,7 +80,11 @@ export const CartPage: React.FC<Props> = (
                         <i className="CartItem__icon icon--close" />
                       </button>
 
-                      <Link className="CartItem__link" to={`/${cartItem.product.category}/${cartItem.product.itemId}`}>
+                      <Link
+                        to={`/${cartItem.product.category}/${cartItem.product.itemId}`}
+                        state={{ from: location.pathname }}
+                        className="CartItem__link"
+                      >
                         <img
                           src={`${BASE_URL}${cartItem.product.image}`}
                           alt={cartItem.product.name}

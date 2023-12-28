@@ -24,9 +24,9 @@ export const Pagination: React.FC<Props> = ({
 
   const pageNumbers
     = getNumbers(1, Math.ceil(total / perPage));
-  const isFirstPage: boolean
+  const isFirst: boolean
     = crntPage === pageNumbers[0];
-  const isLastPage: boolean
+  const isLast: boolean
     = crntPage === pageNumbers[pageNumbers.length - 1];
 
   return (
@@ -35,11 +35,12 @@ export const Pagination: React.FC<Props> = ({
         data-cy="paginationLeft"
         type="button"
         aria-label="paginationLeft"
-        className={cn('Pagination__button', {
-          'Pagination__button--disabled': isFirstPage,
+        className={cn('ProductsSlider__button', {
+          'ProductsSlider__button--defualt': !isFirst,
+          'ProductsSlider__button--disabled': isFirst,
         })}
-        disabled={isFirstPage}
-        onClick={() => isFirstPage || onPageChange(crntPage - 1)}
+        disabled={isFirst}
+        onClick={() => isFirst || onPageChange(crntPage - 1)}
       >
         <i className="Pagination__icon icon--arrow-left" />
       </button>
@@ -64,11 +65,12 @@ export const Pagination: React.FC<Props> = ({
         data-cy="paginationRight"
         type="button"
         aria-label="paginationRight"
-        className={cn('Pagination__button', {
-          'Pagination__button--disabled': isLastPage,
+        className={cn('ProductsSlider__button', {
+          'ProductsSlider__button--defualt': !isLast,
+          'ProductsSlider__button--disabled': isLast,
         })}
-        disabled={isLastPage}
-        onClick={() => isLastPage || onPageChange(crntPage + 1)}
+        disabled={isLast}
+        onClick={() => isLast || onPageChange(crntPage + 1)}
       >
         <i className="Pagination__icon icon--arrow-right" />
       </button>

@@ -69,14 +69,18 @@
     }
 
     &__select {
+      position: relative;
       padding: 12px;
       text-align: left;
       border: 1px solid $icons-color;
+      outline: none;
 
       @include fontSectionItemInfoTitle;
 
       color: $primary-color;
       cursor: pointer;
+
+      @include hoverTransition(border-color, $primary-color, $effectDurationNormal);
 
       &--order {
         width: 150px;

@@ -6,6 +6,8 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
 import { Loader } from './components/Loader';
+
+import './styles/utils/main.scss';
 import './App.scss';
 
 export const App = () => {

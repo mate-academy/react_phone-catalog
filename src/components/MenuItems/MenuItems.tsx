@@ -23,13 +23,13 @@ export const MenuItems = () => {
   };
 
   const isSearch = location.pathname.match(
-    /\/phones(?=$)|\/tablets(?=$)|\/accessories(?=$)|\/favorites(?=$)/gi,
+    /\/phones(?=$)|\/tablets(?=$)|\/accessories(?=$)|\/favorites(?=$)/gi,// eslint-disable-line
   );
   const isCartPage = location.pathname.startsWith('/cart');
 
   return (
     <>
-      {!isCartPage && (
+      {true && (// !isCartPage
         <div className="MenuItems MenuItems__container">
           <Link
             to="/"

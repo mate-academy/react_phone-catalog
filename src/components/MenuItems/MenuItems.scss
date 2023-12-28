@@ -42,7 +42,9 @@
       width: 14px;
       border: 1px solid #{$white-color};
       border-radius: 50%;
+
       @include fontIconCounter;
+      
       text-align: center;
       color: $white-color;
       background-color: $red-color;

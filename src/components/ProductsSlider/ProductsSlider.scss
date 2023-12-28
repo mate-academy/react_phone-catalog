@@ -36,10 +36,7 @@
     &--defualt {
       border-color: $icons-color;
 
-      &:hover {
-        border-color: $primary-color;
-      }
-
+      @include hoverTransition(border-color, $primary-color, $effectDurationNormal);
       @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
     }
 

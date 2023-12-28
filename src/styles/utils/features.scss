@@ -1,0 +1,31 @@
+.mark__border {
+  border: 1px solid red;
+}
+
+.select__arrow {
+  position: relative;
+  width: fit-content;
+
+  &>select {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    z-index: 1;
+
+    display: block;
+    height: 16px;
+    width: 16px;
+
+    background-image: url('../../images/icons/icon-arrow-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+}
