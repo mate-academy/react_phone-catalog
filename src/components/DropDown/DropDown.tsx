@@ -34,10 +34,10 @@ export const DropDown: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    const value = searchParams.get(searchName);
+    const valueParams = searchParams.get(searchName);
 
-    if (value && options.find(option => option.value === value)) {
-      setSelectOption(value);
+    if (valueParams && options.find(option => option.value === valueParams)) {
+      setSelectOption(valueParams);
     } else {
       setSelectOption(initialValue);
     }
@@ -45,7 +45,7 @@ export const DropDown: React.FC<Props> = ({
 
   return (
     <div className="drop-down">
-      <label htmlFor="" className="drop-down__title">
+      <label className="drop-down__title">
         {label}
       </label>
       <button

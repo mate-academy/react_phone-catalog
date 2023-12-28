@@ -1,7 +1,7 @@
 export enum SortTypes {
   Newest = 'Newest',
-  Cheapest = 'Cheapest',
   Alphabetically = 'Alphabetically',
+  Cheapest = 'Cheapest',
 }
 
 export interface Option {

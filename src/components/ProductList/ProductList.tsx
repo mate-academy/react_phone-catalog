@@ -85,7 +85,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
               key={product.id}
             >
               <ProductCard
-                title={ProductSection.HotPrice}
+                title={ProductSection.NewBrand}
                 product={product}
               />
             </li>

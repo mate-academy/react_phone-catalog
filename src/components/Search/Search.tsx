@@ -11,6 +11,7 @@ export const Search = () => {
   const searchField = pathname.slice(1);
 
   const query = searchParams.get('query') || '';
+
   const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams(getSearchWith(searchParams,
       { query: event.target.value || null }));
@@ -22,7 +23,7 @@ export const Search = () => {
 
   return (
     <div className="search">
-      <label htmlFor="" className="search__label">
+      <label className="search__label">
         <input
           type="text"
           className="search__input"

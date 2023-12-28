@@ -15,7 +15,7 @@ export const getSortedProducts = (
         case SortTypes.Cheapest:
           return a.price - b.price;
         case SortTypes.Newest:
-          return a.year - b.year;
+          return b.year - a.year;
         default:
           throw new Error('Sort type error');
       }
