@@ -70,45 +70,25 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   );
   const navigate = useNavigate();
 
-  const addToCart = (productId: Product['itemId']) => {
-    const product = products.find(item => item.itemId === productId);
+  function cartFn(actionKey: keyof (typeof cartActions)) {
+    return (productId: Product['itemId']) => {
+      const product = products.find(item => item.itemId === productId);
 
-    if (product) {
-      cartDispatch(cartActions.add(product));
-    }
-  };
+      if (product) {
+        cartDispatch(cartActions[actionKey](product));
+      }
+    };
+  }
 
-  const takeFromCart = (productId: Product['itemId']) => {
-    const product = products.find(item => item.itemId === productId);
+  function favoritesFn(actionKey: keyof (typeof favoritesActions)) {
+    return (productId: Product['itemId']) => {
+      const product = products.find(item => item.itemId === productId);
 
-    if (product) {
-      cartDispatch(cartActions.take(product));
-    }
-  };
-
-  const removeFromCart = (productId: Product['itemId']) => {
-    const product = products.find(item => item.itemId === productId);
-
-    if (product) {
-      cartDispatch(cartActions.remove(product));
-    }
-  };
-
-  const addToFavorites = (productId: Product['itemId']) => {
-    const product = products.find(item => item.itemId === productId);
-
-    if (product) {
-      favoritesDispatch(favoritesActions.add(product));
-    }
-  };
-
-  const takeFromFavorites = (productId: Product['itemId']) => {
-    const product = products.find(item => item.itemId === productId);
-
-    if (product) {
-      favoritesDispatch(favoritesActions.take(product));
-    }
-  };
+      if (product) {
+        favoritesDispatch(favoritesActions[actionKey](product));
+      }
+    };
+  }
 
   useEffect(() => {
     console.info('AppProvider->useEffect->FavoritesLocalStorage');// eslint-disable-line
@@ -140,11 +120,11 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     products,
     cart,
     favorites,
-    addToCart,
-    takeFromCart,
-    removeFromCart,
-    addToFavorites,
-    takeFromFavorites,
+    addToCart: cartFn('add'),
+    takeFromCart: cartFn('take'),
+    removeFromCart: cartFn('remove'),
+    addToFavorites: favoritesFn('add'),
+    takeFromFavorites: favoritesFn('take'),
   });
 
   return (
