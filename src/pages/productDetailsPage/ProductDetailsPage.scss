@@ -178,10 +178,6 @@
   &__details {
     width: 50%;
 
-    @include onTablet {
-
-    }
-
     @include onDesktop {
       width: 100%;
     }

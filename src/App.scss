@@ -1,10 +1,9 @@
-@import "./styles/index.scss";
+@import "./styles/index";
 
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
 
   &__main {
     flex: 1;
