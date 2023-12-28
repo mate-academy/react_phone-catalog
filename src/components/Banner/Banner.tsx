@@ -39,25 +39,19 @@ export const Banner = () => {
       </button>
       <div className="slider">
         <Slider ref={ref} {...settings}>
-          <div className="">
-            <img
-              src="/img/banner-phones_new.webp"
+          <div className="slider__image-container">
+            <div
               className="slide slide-1"
-              alt="banner"
             />
           </div>
-          <div className="">
-            <img
-              src="/img/banner-accessories.png"
+          <div className="slider__image-container">
+            <div
               className="slide slide-2"
-              alt="banner"
             />
           </div>
-          <div className="">
-            <img
-              src="/img/banner-tablets.jpeg"
+          <div className="slider__image-container">
+            <div
               className="slide slide-3"
-              alt="banner"
             />
           </div>
         </Slider>

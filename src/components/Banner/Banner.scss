@@ -15,6 +15,14 @@
     display: flex;
     margin-top: 40px;
   }
+
+  &__image-container {
+    width: 80vw;
+    height: 40vh;
+    max-width: 1040px;
+    max-height: 400px;
+    
+  }
 }
 
 .slide {
@@ -23,4 +31,19 @@
   max-width: 1040px;
   max-height: 400px;
   object-fit: contain;
+
+  &-1 {
+    background-image: url(../../icons/images/banner-phones_new.webp);
+    background-size: contain;
+  }
+
+  &-2 {
+    background-image: url(../../icons/images/banner-tablets.jpeg);
+    background-size: contain;
+  }
+
+  &-3 {
+    background-image: url(../../icons/images/banner-accessories.png);
+    background-size: contain;
+  }
 }
