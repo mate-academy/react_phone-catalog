@@ -27,8 +27,8 @@ export const ProductDetails: React.FC<Props> = ({
   const navigate = useNavigate();
   const location = useLocation();
 
-  const productId = products
-    .find(item => item.itemId === productItemId)?.id || '0';
+  const product = products.find(item => item.itemId === productItemId);
+  const category = product?.category || '';
 
   useEffect(() => {
     setIsLoading(true);
@@ -58,14 +58,14 @@ export const ProductDetails: React.FC<Props> = ({
         <div className="ProductDetails__container">
           <div className="ProductDetails__path">
             <Link
-              to="/"
+              to={`/${category}`}
               className="ProductDetails__link ProductDetails__icon icon--home"
             />
 
             <div className="ProductDetails__icon icon--arrow-right" />
 
             <Link to="/phones" className="ProductDetails__link">
-              Phones
+              {`${category.charAt(0).toUpperCase() + category.slice(1)}`}
             </Link>
 
             <div className="ProductDetails__icon icon--arrow-right" />
@@ -77,7 +77,7 @@ export const ProductDetails: React.FC<Props> = ({
 
           <Link
             to={{
-              pathname: location.state?.from,
+              pathname: `/${product?.category || ''}`,
               search: location.state?.search,
             }}
             className="ProductDetails__link ProductDetails__link-back"
@@ -240,7 +240,7 @@ export const ProductDetails: React.FC<Props> = ({
                 </div>
               </div>
 
-              <div className="ProductDetails__ID">{`ID:${productId}`}</div>
+              <div className="ProductDetails__ID">{`ID:${product?.id || '0'}`}</div>
             </div>
           </div>
 
