@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import './Search.scss';
 import { useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
@@ -10,11 +10,11 @@ export const Search = () => {
   const queryParam = searchParams.get('query');
   const [query, setQuery] = useState(queryParam || '');
 
-  const applyQuery = useCallback(
-    debounce((newSearchParams: string) => {
+  const applyQuery = useMemo(
+    () => debounce((newSearchParams: string) => {
       setSearchParams(newSearchParams);
     }, 1000),
-    [searchParams],
+    [setSearchParams],
   );
 
   const handleQueryChange = (event: ChangeEvent<HTMLInputElement>) => {
