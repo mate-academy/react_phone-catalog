@@ -1,0 +1,20 @@
+@import "/src/styles/utils/vars";
+
+.productSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__phoneList {
+    margin: 0 auto;
+  }
+
+  &__action {
+    display: flex;
+    gap: 16px;
+  }
+}
+

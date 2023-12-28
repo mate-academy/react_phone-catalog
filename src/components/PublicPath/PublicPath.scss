@@ -1,0 +1,10 @@
+@import "../../styles/utils/vars";
+
+.public-path {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 24px;
+  height: 16px;
+  box-sizing: content-box;
+}

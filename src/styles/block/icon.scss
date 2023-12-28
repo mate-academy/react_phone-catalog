@@ -1,0 +1,78 @@
+.icon {
+  display: flex;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &--arrow {
+    background-image: url(../../icons/Arrow.svg);
+  }
+
+  &--arrow-dis {
+    background-image: url(../../icons/Arrow_gray.svg);
+    cursor: auto;
+  }
+
+  &--down {
+    transform: rotate(180deg);
+  }
+
+  &--back {
+    transform: rotate(270deg);
+  }
+
+  &--home {
+    background-image: url(../../icons/Home.svg);
+  }
+
+  &--next {
+    transform: rotate(90deg);
+  }
+
+  &--close {
+    background-image: url(../../icons/Close-gray.svg);
+  }
+
+  &--minus {
+    background-image: url(../../icons/Minus_gray.svg);
+    padding: 8px;
+    border: 1px solid $elements;
+  }
+
+  &--plus {
+    background-image: url(../../icons/Plus.svg);
+    padding: 8px;
+    border: 1px solid $elements;
+  }
+
+  &--search {
+    background-image: url(../../icons/Search.svg);
+  }
+
+  &--close {
+    background-image: url(../../icons/Close.svg);
+  }
+
+  &--cross {
+    background-image: url(../../icons/cross.png);
+  }
+
+  &--menu {
+    background-image: url(../../icons/menu.svg);
+  }
+
+  &--fav {
+    background-image: url(../../icons/Favourites.svg);
+    &:hover {
+      background-image: url(../../icons/Favourites__red.svg);
+    }
+  }
+
+  &--busket {
+    background-image: url(../../icons/Card.svg);
+  }
+}

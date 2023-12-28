@@ -1,0 +1,38 @@
+* {
+  font-family: "Mont", sans-serif;
+  color: $primary;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 12px;
+}
+
+body,
+p,
+button,
+h1,
+h2,
+h3,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}

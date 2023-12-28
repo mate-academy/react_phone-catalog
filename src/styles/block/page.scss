@@ -1,0 +1,9 @@
+.page {
+  &__logo {
+    background-image: url(../../icons/apple-logo.svg);
+    background-position: center;
+    background-size: cover;
+    width: 60px;
+    height: 24px;
+  }
+}

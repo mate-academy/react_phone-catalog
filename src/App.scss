@@ -1,1 +1,13 @@
-// not empty
+@import "./styles/index.scss";
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+
+  &__main {
+    flex: 1;
+    margin-bottom: 80px;
+  }
+}

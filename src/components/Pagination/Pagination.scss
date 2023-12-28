@@ -1,0 +1,30 @@
+@import "/src/styles/utils/vars";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $elements;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &-active {
+      border: 0;
+      background-color: $primary;
+      color: $white;
+    }
+
+    &-arrow {
+      border: 1px solid $icons;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import "/src/styles/utils/vars";
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 42px 0;
+  border-top: 1px solid $elements;
+
+  &__information {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    color: $secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+
+  &__scroll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.arrow-top {
+  background-image: url("../../icons/Arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid $elements;
+  height: 32px;
+  width: 32px;
+}

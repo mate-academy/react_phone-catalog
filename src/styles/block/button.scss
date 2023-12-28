@@ -1,0 +1,85 @@
+@import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
+
+.button {
+  &__cross {
+    background-color: $white;
+    border: none;
+  }
+
+  &-arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $elements;
+    background-color: $white;
+  }
+
+  &__cart {
+    background-color: $primary;
+    color: $white;
+    font-weight: 600;
+    line-height: 21px;
+
+    border: 0;
+    width: 16px;
+    height: 40px;
+
+    width: 176px;
+    height: 40px;
+
+    &::after {
+      content: "Add to cart";
+    }
+
+    &-details {
+      width: 176px;
+
+      @include onTablet {
+        width: 263px;
+        height: 40px;
+      }
+    }
+
+    &-selected {
+      background-color: $white;
+      color: $green;
+      border: 1px solid $elements;
+      &::after {
+        content: "Added to cart";
+      }
+    }
+
+    &-checkout {
+      background-color: $primary;
+      color: $white;
+      font-weight: 600;
+      line-height: 21px;
+
+      border: 0;
+
+      width: 320px;
+      height: 48px;
+      &::after {
+        content: "Checkout";
+      }
+    }
+  }
+
+  &__fav {
+    background-color: #fff;
+    background-image: url(/icons/Favourites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $icons;
+    width: 40px;
+    height: 40px;
+
+    &-selected {
+      background-image: url(/icons/Favourites__red.svg);
+      border: 1px solid $elements;
+    }
+  }
+}

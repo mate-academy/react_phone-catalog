@@ -1,0 +1,20 @@
+@import '../../styles/utils/mixins';
+
+.favourites {
+  @include contentPaddingInline;
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  &__counter {
+
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+}
