@@ -11,6 +11,10 @@
   background-color: transparent;
   font-family: Mont-Regular, sans-serif;
 
+  @include onTablet {
+    display: none;
+  }
+
   &__message {
     font-size: 12px;
     font-weight: 600;

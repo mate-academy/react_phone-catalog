@@ -25,6 +25,10 @@
   border: 1px solid $light-gray;
   cursor: pointer;
 
+  @include onMobile {
+    width: 100%;
+  }
+
   &::-ms-expand {
     display: none;
   }

@@ -11,6 +11,16 @@
   border: 1px solid $light-gray;
   transition-duration: $transition-duration;
 
+  @include onTablet {
+    width: $card-width-tablet;
+    height: 400px;
+    padding: 20px 16px;
+  }
+
+  @include onMobile {
+    margin: 0 auto;
+  }
+
   &:hover {
     box-shadow: 0 4px 8px rgba($secondary-color, 0.26);
   }
@@ -22,6 +32,11 @@
     justify-content: center;
     margin-bottom: 24px;
 
+    @include onTablet {
+      height: 140px;
+      margin-bottom: 16px;
+    }
+
     &-item {
       height: 100%;
     }
@@ -31,6 +46,10 @@
     height: 42px;
     display: flex;
     align-items: center;
+
+    @include onTablet {
+      height: 30px;
+    }
 
     &-item {
       font-family: Mont-Regular, sans-serif;
@@ -46,6 +65,10 @@
     gap: 8px;
     border-bottom: 1px solid $light-gray;
     margin-bottom: 16px;
+
+    @include onMobile {
+      margin-bottom: 8px;
+    }
 
     &-new {
       @extend %h2;
@@ -68,6 +91,10 @@
     margin-bottom: 16px;
 
     @extend %text;
+
+    @include onTablet {
+      gap: 4px;
+    }
 
     &-container {
       display: flex;

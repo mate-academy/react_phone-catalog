@@ -4,9 +4,15 @@
   display: flex;
   gap: 64px;
 
+  @include onTablet {
+    display: none;
+  }
+
   &__link {
     color: $secondary-color;
     padding-block: 25px;
+
+
 
     &-active {
       color: $main-color;

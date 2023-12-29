@@ -6,8 +6,16 @@
   gap: 24px;
   max-height: 508px;
 
+  @include onTablet {
+    max-height: 100%;
+  }
+
   &__title {
     @extend %h1;
+
+    @include onTablet {
+      font-size: 20px;
+    }
   }
 
   &__content {
@@ -15,6 +23,12 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @include onMobile {
+      @media (max-width: 400px) {
+        flex-direction: column;
+      }
+    }
   }
 
   &__category {
@@ -41,10 +55,30 @@
       height: 100%;
     }
 
+    &-description {
+      @include onMobile {
+        @media (max-width: 400px) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          order: -1;
+        }
+      }
+    }
+
     &-title {
       margin-top: 24px;
 
       @extend %h3;
+
+      @include onTablet {
+        margin-top: 4px;
+      }
+
+      @include onMobile {
+        margin: 0;
+        font-size: 14px;
+      }
     }
 
     &-amount {
@@ -53,6 +87,11 @@
       margin-top: 4px;
       font-size: 14px;
       line-height: 21px;
+
+      @include onMobile {
+        margin-top: 0;
+        font-size: 12px;
+      }
     }
   }
 }

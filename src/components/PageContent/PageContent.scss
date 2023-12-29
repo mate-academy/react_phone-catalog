@@ -5,6 +5,11 @@
     @extend %h1;
 
     margin: 40px 0 8px;
+
+    @include onTablet {
+      margin-top: 20px;
+      font-size: 20px;
+    }
   }
 
   &__amount {
@@ -21,6 +26,11 @@
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
+
+    @include onMobile {
+      margin-top: 20px;
+      flex-direction: column;
+    }
   }
 }
 

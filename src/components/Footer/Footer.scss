@@ -35,6 +35,11 @@
     align-items: center;
     gap: 64px;
 
+    @include onMobile {
+      flex-direction: column;
+      gap: 5px;
+    }
+
     &-link {
       transition-duration: $transition-duration;
       font-family: Mont-Bold, sans-serif;

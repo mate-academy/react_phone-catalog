@@ -1,3 +1,5 @@
+@import './mixins';
+
 .icon {
   width: 16px;
   height: 16px;
@@ -26,6 +28,11 @@
     padding: 0 4px;
     font-size: 9px;
     color: #fff;
+
+    @include onTablet {
+      top: 10px;
+      right: 10px;
+    }
   }
 
   &-cart {

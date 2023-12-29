@@ -4,6 +4,7 @@
   position: relative;
   min-height: 100vh;
   padding-bottom: 96px;
+  overflow-x: hidden;
 }
 
 .main {
@@ -13,8 +14,22 @@
   width: 100%;
   margin-bottom: 80px;
 
+  @include onMobile {
+    margin-bottom: 20px;
+  }
+
   &__container {
     width: 100%;
     max-width: 1136px;
+
+    @include onTablet {
+      max-width: 750px;
+      padding-inline: 25px;
+    }
+
+    @include onMobile {
+      max-width: 600px;
+      min-width: 320px;
+    }
   }
 }

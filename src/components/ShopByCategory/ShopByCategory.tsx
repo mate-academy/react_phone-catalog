@@ -44,12 +44,14 @@ export const ShopByCategory = () => {
                   className="shop-by-category__category-image"
                 />
               </div>
-              <p className="shop-by-category__category-title">
-                {capitalizeFirstLetter(category)}
-              </p>
-              <span className="shop-by-category__category-amount">
-                {`${modelsAmount(category)} models`}
-              </span>
+              <div className="shop-by-category__category-description">
+                <p className="shop-by-category__category-title">
+                  {capitalizeFirstLetter(category)}
+                </p>
+                <span className="shop-by-category__category-amount">
+                  {`${modelsAmount(category)} models`}
+                </span>
+              </div>
             </Link>
           );
         })}

@@ -2,9 +2,18 @@ import './ProductSlider.scss';
 import React, {
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
+import {
+  CARDS_AMOUNT_DESKTOP,
+  CARDS_AMOUNT_MOBILE,
+  CARDS_AMOUNT_TABLET,
+  MAX_WIDTH_DESKTOP,
+  MAX_WIDTH_MOBILE,
+  MAX_WIDTH_TABLET,
+} from '../../helpers/vars';
 import { Loader } from '../Loader';
 import { GlobalContext } from '../../store';
 import { ProductCard } from '../ProductCard';
@@ -18,24 +27,41 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   const { isLoading } = useContext(GlobalContext);
-  const CARDS_PER_PAGE = 4;
 
-  const amountOfBlocks = Math.floor(products.length / CARDS_PER_PAGE);
+  const getCardsPerPage = useMemo(() => {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < MAX_WIDTH_DESKTOP) {
+      if (windowWidth < MAX_WIDTH_TABLET) {
+        if (windowWidth < MAX_WIDTH_MOBILE) {
+          return CARDS_AMOUNT_MOBILE;
+        }
+
+        return CARDS_AMOUNT_TABLET;
+      }
+
+      return CARDS_AMOUNT_TABLET;
+    }
+
+    return CARDS_AMOUNT_DESKTOP;
+  }, []);
+
   const firstProductBlock = 0;
-  const lastProductBlock = products.length % CARDS_PER_PAGE === 0
+  const amountOfBlocks = Math.floor(products.length / getCardsPerPage);
+  const lastProductBlock = products.length % getCardsPerPage === 0
     ? amountOfBlocks - 1
     : amountOfBlocks;
 
   const [currentBlock, setCurrentBlock] = useState(firstProductBlock);
+  const [sliderWidth, setSliderWidth] = useState(0);
 
   const isFirstBlock = currentBlock === firstProductBlock;
   const isLastBlock = currentBlock === lastProductBlock;
-  const [sliderWidth, setSliderWidth] = useState(0);
+
   const slider = useRef<HTMLDivElement>(null);
   const productList = useRef<HTMLUListElement>(null);
 
-  const transformValue = isFirstBlock
-    ? 0
+  const transformValue = isFirstBlock ? 0
     : (sliderWidth * currentBlock) + (16 * currentBlock);
 
   useEffect(() => {

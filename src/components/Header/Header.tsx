@@ -1,15 +1,17 @@
 import './Header.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import { Search } from '../Search';
 import { Navigation } from '../Navigation';
 import { GlobalContext } from '../../store';
+import { MobileMenu } from '../../pages/MobileMenu';
 
 export const Header = () => {
   const { pathname } = useLocation();
   const { favourites, cart } = useContext(GlobalContext);
+  const [isMenuShown, setIsMenuShown] = useState(false);
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
     { 'navigation__link-active': isActive },
@@ -23,6 +25,19 @@ export const Header = () => {
         </Link>
         <Navigation />
       </div>
+
+      <button
+        type="button"
+        aria-label="burger"
+        className="header__burger"
+        onClick={() => setIsMenuShown(true)}
+      >
+        <span className="header__burger-span header__burger-span--one" />
+        <span className="header__burger-span header__burger-span--two" />
+        <span className="header__burger-span header__burger-span--three" />
+      </button>
+
+      <MobileMenu isMenuShown={isMenuShown} setIsMenuShown={setIsMenuShown} />
 
       <div className="header__right">
         <div className="header__search">

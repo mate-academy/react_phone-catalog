@@ -9,26 +9,62 @@
     margin-top: 16px;
 
     @extend %h1;
+
+    @include onMobile {
+      font-size: 20px;
+    }
   }
 
   &__content {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+      gap: 46px;
+      margin-top: 24px;
+    }
+
+    @include onMobile {
+      gap: 0;
+      margin: 0;
+    }
   }
 
   &__images-wrapper {
     display: flex;
+
+    @include onTablet {
+      margin: 0 auto;
+      gap: 10px
+    }
+
+    @include onMobile {
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
   }
 
   &__description {
     width: 27%;
+
+    @include onTablet {
+      width: 100%;
+    }
   }
 
   &__images {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onMobile {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
     &-button {
       width: 80px;
@@ -40,6 +76,12 @@
       margin-right: 16px;
       border: 1px solid $light-gray;
       transition-duration: $transition-duration;
+
+      @include onMobile {
+        margin-right: 0;
+        width: 60px;
+        height: 60px;
+      }
 
       &:hover {
         box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
@@ -60,9 +102,23 @@
     overflow: hidden;
     margin-right: 28px;
 
+    @include onTablet {
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      width: 100%;
+      height: 60%;
+    }
+
     &-item {
       max-height: 100%;
       animation: show-image 1s ease;
+
+      @include onMobile {
+        animation: none;
+        width: 90%;
+      }
     }
   }
 
@@ -152,12 +208,21 @@
     @extend %text;
 
     color: $icon-color;
+
+    @include onTablet {
+      display: none;
+    }
   }
 
   &__more {
     display: flex;
     gap: 64px;
     margin: 80px 0;
+
+    @include onTablet {
+      margin-top: 0;
+      flex-direction: column;
+    }
 
     &-title {
       padding-bottom: 16px;
@@ -168,6 +233,10 @@
 
     &-about {
       width: 55%;
+
+      @include onTablet {
+        width: 100%;
+      }
 
       &-article {
         margin-top: 32px;
@@ -189,6 +258,10 @@
     &-tech {
       width: 45%;
 
+      @include onTablet {
+        width: 100%;
+      }
+
       &-content {
         margin-top: 25px;
         display: flex;
@@ -205,6 +278,12 @@
 
       &-property {
         color: $secondary-color;
+      }
+
+      &-value {
+        @include onMobile {
+          min-width: fit-content;
+        }
       }
     }
   }

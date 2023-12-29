@@ -11,6 +11,11 @@
   border-bottom: 1px solid $light-gray;
   margin-bottom: 40px;
 
+  @include onTablet {
+    height: 48px;
+    position: relative;
+  }
+
   &__left {
     display: flex;
     align-items: center;
@@ -37,7 +42,41 @@
     &-icon {
       padding: 33px;
       border-left: 1px solid $light-gray;
+
+      @include onTablet {
+        padding: 24px;
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+    width: 32px;
+    height: 32px;
+    gap: 5px;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    order: -1;
+
+    @include onTablet {
+      display: flex;
+    }
+
+    &-span {
+      display: block;
+      height: 3px;
+      width: 26px;
+      background-color: $main-color;
+      border-radius: 5px;
+    }
+  }
+
+  &__search {
+    @include onMobile {
+      position: absolute;
+      bottom: -30px;
+      right: 0;
     }
   }
 }
-

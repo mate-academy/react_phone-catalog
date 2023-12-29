@@ -13,6 +13,14 @@
     display: flex;
     gap: 16px;
 
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onMobile {
+      height: 250px;
+    }
+
     &-button {
       display: flex;
       align-items: center;
@@ -26,6 +34,10 @@
       &:hover {
         border-color: $main-color;
         cursor: pointer;
+      }
+
+      @include onMobile {
+        display: none;
       }
     }
 

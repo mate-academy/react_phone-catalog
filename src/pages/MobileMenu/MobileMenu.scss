@@ -1,0 +1,100 @@
+@import "../../styles/main.scss";
+
+.mobile-menu {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: none;
+  opacity: 0.3;
+  background: $background-color;
+  transform: translateY(-100%);
+  transition-duration: $transition-duration;
+
+  @include onTablet {
+    display: block;
+  }
+
+  &__top {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $icon-color;
+  }
+
+  &__logo-link {
+    display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &-image {
+      height: 24px;
+      width: 40px;
+      background-image: url(../../assets/icons/Logo.svg);
+    }
+  }
+
+  &__close-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 100%;
+    background-color: transparent;
+  }
+
+  &__container {
+    padding: 24px;
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-transform: none;
+
+      &-link {
+        color: $main-color;
+        font-size: 18px;
+        font-weight: 700;
+        position: relative;
+
+        @extend %button;
+
+        @include onMobile {
+          font-size: 14px;
+        }
+
+        &::after {
+          content: "";
+          width: 0%;
+          height: 6%;
+          background: linear-gradient(90deg, $main-color 0%, $light-gray 80%);
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transition-duration: $transition-duration;
+        }
+
+        &:hover {
+          &::after {
+            width: 150%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.menu-shown {
+  transform: translateX(0%);
+  opacity: 1;
+}
