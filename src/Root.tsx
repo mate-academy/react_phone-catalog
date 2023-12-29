@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { CartPage } from './pages/CartPage';
 import { HomePage } from './pages/HomePage';
@@ -10,7 +10,7 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
-  <BrowserRouter>
+  <Router>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
@@ -25,5 +25,5 @@ export const Root = () => (
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-  </BrowserRouter>
+  </Router>
 );
