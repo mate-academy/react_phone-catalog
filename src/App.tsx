@@ -9,11 +9,9 @@ export const App = () => {
       <header className="head">
         <Header />
       </header>
-
       <main className="main">
         <Outlet />
       </main>
-
       <footer className="footer">
         <Footer />
       </footer>

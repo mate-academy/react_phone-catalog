@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <div className="bottom">
       <div className="bottom__logo">
-        <Link to="/" onClick={goTop}>
+        <Link to="/">
           <img
             src="img/mine/LOGO.svg"
             alt="Logo"
