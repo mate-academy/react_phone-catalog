@@ -1,0 +1,73 @@
+@import "../../styles/utils/variables";
+
+.img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+
+  &__dot {
+    cursor: pointer;
+    border: none;
+    background-color: $border-color;
+    width: 14px;
+    height: 4px;
+
+    &_active {
+      background-color: $button-back-color;
+    }
+  }
+}
+
+.slider {
+  display: flex;
+  margin: auto;
+  margin-top: 40px;
+  overflow: hidden;
+  gap: 16px;
+  height: 400px;
+  width: 1040px;
+
+  &-container {
+    display: flex;
+    position: relative;
+  }
+
+  &__button {
+    position: absolute;
+    height: 400px;
+    width: 32px;
+    border: 1px solid $border-button-color;
+    margin: 40px 152px;
+    background: none;
+    cursor: pointer;
+    top: 0;
+
+    &-right {
+      position: absolute;
+      background-image: url(../../Images/slider/arrow-right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(180deg);
+      right: -150px;
+      z-index: 2;
+    }
+
+    &-left {
+      position: absolute;
+      background-image: url(../../Images/slider/arrow-right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      left: -150px;
+      z-index: 2;
+    }
+  }
+}

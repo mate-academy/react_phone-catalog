@@ -1,0 +1,235 @@
+@import '../../styles/utils/typography';
+@import '../../styles/utils/variables';
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: auto;
+  margin-top: 40px;
+  width: 1140px;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__link {
+    @extend %mont-600;
+
+    background-image: url(../../Images/slider/arrow-right.svg);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+    padding-left: 15px;
+    color: $feature-color;
+    font-size: 12px;
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    margin-top: 16px;
+    color:$button-back-color;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 752px;
+    height: 128px;
+    border: 1px solid $border-color;
+  }
+
+  &__phone-img {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+    margin-right: 41px;
+  }
+
+  &__name {
+    @extend %mont-500;
+
+    color: $button-back-color;
+    font-size: 14px;
+    line-height: 21px;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: none;
+    background-image: url(../../Images/menu/cross.svg);
+    margin-left: 24px;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: transform .3s;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  &__price {
+    @extend %mont-700;
+
+    color: $button-back-color;
+    font-size: 22px;
+    line-height: 140%;
+    grid-column: 5;
+    margin-right: 40px;
+  }
+
+  &__button {
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      margin-left: auto;
+      margin-right: 43px;
+
+    }
+
+    &-add {
+      width: 32px;
+      height: 32px;
+      background-color: $white-color;
+      border: 1px solid $border-button-color;
+      margin-left: 13px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $button-color-hover;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &-remove {
+      width: 32px;
+      height: 32px;
+      background-color: $white-color;
+      border: 1px solid $border-button-color;
+      margin-right: 13px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $button-color-hover;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &-checkout {
+      @extend %mont-600;
+
+      cursor: pointer;
+      width: 321px;
+      height: 48px;
+      background-color: $button-back-color;
+      color: $white-color;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      transition: box-shadow .2s;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+
+      &-container {
+        display: flex;
+        margin: auto;
+        width: 321px;
+        border-top: 1px solid $border-color;
+        padding-top: 24px;
+      }
+    }
+  }
+
+  &__error {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 35px;
+    height: 80px;
+    width: 300px;
+    background-color: $favourite-color;
+
+    &__title {
+      @extend %mont-500;
+
+      position: absolute;
+      top: 10px;
+      display: flex;
+      color: $search-color;
+      text-align: center;
+      font-size: 14px;
+      line-height: 21px;
+      margin: 10px;
+    }
+
+    &__close {
+      margin: 0;
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  &__total {
+    @extend %mont-500;
+
+    color: $button-back-color;
+    text-align: center;
+    font-size: 14px;
+    line-height: 21px;
+
+    &-price {
+      &-amount {
+        @extend %mont-700;
+
+        display: flex;
+        justify-content: center;
+        color: $button-back-color;
+        font-size: 32px;
+        letter-spacing: -0.32px;
+        margin-top: 24px;
+      }
+    }
+
+    &-container {
+      width: 368px;
+      height: 206px;
+      margin-top: 103px;
+      border: 1px solid $border-color;
+    }
+
+    &-carts {
+      @extend %mont-500;
+
+      display: flex;
+      justify-content: center;
+      color: $feature-color;
+      font-size: 14px;
+      line-height: 21px;
+      margin-bottom: 24px;
+    }
+  }
+}
