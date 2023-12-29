@@ -1,6 +1,7 @@
 @import "../../styles/utils/vars.scss";
 
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -8,7 +9,6 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  width: 100%;
 
   &__left {
     display: flex;

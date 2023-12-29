@@ -1,8 +1,7 @@
-// import { debounce } from 'lodash';
+import { useDebounce } from 'use-debounce';
 import classNames from 'classnames';
 import {
-  // useCallback,
-  useContext, useState,
+  useContext, useEffect, useState,
 } from 'react';
 import {
   Link, NavLink, useLocation, useSearchParams,
@@ -18,27 +17,21 @@ export function Header() {
   const { favorites, addedToCart } = useContext(ProductContext);
   const location = useLocation();
   const [query, setQuery] = useState(searchParams.get('query') || '');
+  const [value] = useDebounce(query, 500);
 
-  const setQueryToSearchParams = (value: string) => {
-    setQuery(value);
-
-    if (!value.trim()) {
+  const setQueryToSearchParams = (queryValue: string) => {
+    if (!queryValue.trim()) {
       searchParams.delete('query');
     } else {
-      searchParams.set('query', value.trim());
+      searchParams.set('query', queryValue.trim());
     }
 
     setSearchParams(searchParams);
   };
 
-  // const debouncedOnChange = useCallback(
-  //   debounce(setQueryToSearchParams, 1000), [],
-  // );
-
-  // const handleQueryChange = (value: string) => {
-  //   setQuery(value);
-  //   debouncedOnChange(value);
-  // };
+  useEffect(() => {
+    setQueryToSearchParams(value);
+  }, [value]);
 
   return (
     <header className="page__header header">
@@ -62,7 +55,7 @@ export function Header() {
             placeholder="Search in phones..."
             className="header__input"
             value={query}
-            onChange={(e) => setQueryToSearchParams(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
             // onChange={(e) => handleQueryChange(e.target.value)}
           />
 
@@ -73,7 +66,7 @@ export function Header() {
                 aria-label="clear"
                 type="button"
                 className="header__input-btn"
-                onClick={() => setQueryToSearchParams('')}
+                onClick={() => setQuery('')}
                 // onClick={() => handleQueryChange('')}
               />
             )}
