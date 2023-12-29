@@ -11,10 +11,14 @@
   box-sizing: border-box;
   border: 1px solid $gray-elements;
 
-  &__right {
+  &__left {
     display: flex;
     gap: 24px;
     align-items: center;
+  }
+
+  &__right {
+    display: flex;
   }
 
   &__remove-btn {
@@ -50,7 +54,7 @@
   }
 
   &__name {
-    width: 100%;
+    max-width: 200px;
     margin-right: 48px;
 
     &:hover {
@@ -63,11 +67,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 96px;
+    width: 96px;
+    margin-right: 42px;
   }
 
   &__price {
     @extend %h2;
+    width: 90px;
+    // justify-self: flex-start;
   }
 
   &__btn {

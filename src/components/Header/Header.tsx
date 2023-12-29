@@ -1,7 +1,7 @@
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 import classNames from 'classnames';
 import {
-  useCallback,
+  // useCallback,
   useContext, useState,
 } from 'react';
 import {
@@ -20,25 +20,25 @@ export function Header() {
   const [query, setQuery] = useState(searchParams.get('query') || '');
 
   const setQueryToSearchParams = (value: string) => {
-    const params = new URLSearchParams(searchParams);
+    setQuery(value);
 
-    if (value === '') {
-      params.delete('query');
+    if (!value.trim()) {
+      searchParams.delete('query');
     } else {
-      params.set('query', value.trim());
+      searchParams.set('query', value.trim());
     }
 
-    setSearchParams(params);
+    setSearchParams(searchParams);
   };
 
-  const debouncedOnChange = useCallback(
-    debounce(setQueryToSearchParams, 1), [],
-  );
+  // const debouncedOnChange = useCallback(
+  //   debounce(setQueryToSearchParams, 1000), [],
+  // );
 
-  const handleQueryChange = (value: string) => {
-    setQuery(value);
-    debouncedOnChange(value);
-  };
+  // const handleQueryChange = (value: string) => {
+  //   setQuery(value);
+  //   debouncedOnChange(value);
+  // };
 
   return (
     <header className="page__header header">
@@ -62,7 +62,8 @@ export function Header() {
             placeholder="Search in phones..."
             className="header__input"
             value={query}
-            onChange={(e) => handleQueryChange(e.target.value)}
+            onChange={(e) => setQueryToSearchParams(e.target.value)}
+            // onChange={(e) => handleQueryChange(e.target.value)}
           />
 
           {query === ''
@@ -72,7 +73,8 @@ export function Header() {
                 aria-label="clear"
                 type="button"
                 className="header__input-btn"
-                onClick={() => handleQueryChange('')}
+                onClick={() => setQueryToSearchParams('')}
+                // onClick={() => handleQueryChange('')}
               />
             )}
         </div>

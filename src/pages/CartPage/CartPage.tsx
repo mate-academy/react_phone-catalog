@@ -9,7 +9,7 @@ import './CartPage.scss';
 
 export function CartPage() {
   const {
-    addedToCart, setCartPrices, totalPrices,
+    addedToCart, cartContentData, setCartContentData, totalPrices,
   } = useContext(ProductContext);
   const [isMessage, setIsMessage] = useState(false);
 
@@ -32,8 +32,12 @@ export function CartPage() {
       };
     });
 
-    setCartPrices(newValue);
+    setCartContentData(newValue);
   }, [addedToCart]);
+
+  const totalItemsCount = cartContentData
+    .map(item => item.amount)
+    .reduce((sum, i) => sum + i, 0);
 
   return (
     <>
@@ -61,7 +65,7 @@ export function CartPage() {
                     {`$${totalPrices}`}
                   </p>
                   <p className="cart__price-description">
-                    {`Total for ${addedToCart.length} items`}
+                    {`Total for ${totalItemsCount} items`}
                   </p>
                 </div>
                 <button

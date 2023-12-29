@@ -14,7 +14,7 @@ export const CartItem: React.FC<Props> = ({
   product,
 }) => {
   const {
-    cartPrices, setCartPrices, addedToCart,
+    cartContentData, setCartContentData, addedToCart,
     setTotalPrices, addToCartHandler,
   } = useContext(ProductContext);
 
@@ -22,26 +22,27 @@ export const CartItem: React.FC<Props> = ({
     = useLocalStorsge<number>(`${product.phoneId}amount`, 1);
 
   useEffect(() => {
-    const cartItem = cartPrices.find(obj => obj.phoneId === product.phoneId);
+    const cartItem = cartContentData
+      .find(obj => obj.phoneId === product.phoneId);
 
     if (cartItem) {
-      const newCartPrices = [...cartPrices];
+      const newCartPrices = [...cartContentData];
       const index = newCartPrices.indexOf(cartItem);
 
       newCartPrices[index].amount = amountOfProduct;
 
-      setCartPrices(newCartPrices);
+      setCartContentData(newCartPrices);
     } else {
-      const newCartPrices = [...cartPrices, {
+      const newCartPrices = [...cartContentData, {
         phoneId: product.phoneId,
         price: product.price,
         amount: amountOfProduct,
       }];
 
-      setCartPrices(newCartPrices);
+      setCartContentData(newCartPrices);
     }
 
-    const newValue = cartPrices
+    const newValue = cartContentData
       .map(obj => obj.price * obj.amount)
       .reduce((sum, i) => sum + i, 0);
 
@@ -50,7 +51,7 @@ export const CartItem: React.FC<Props> = ({
 
   return (
     <article className="cart-item">
-      <div className="cart-item__right">
+      <div className="cart-item__left">
         <button
           aria-label="remove item"
           type="button"
@@ -72,28 +73,30 @@ export const CartItem: React.FC<Props> = ({
           </p>
         </Link>
       </div>
-      <div className="cart-item__change-amount">
-        <button
-          aria-label="decrease amount"
-          type="button"
-          className={classNames(
-            'cart-item__btn cart-item__btn--min',
-            { 'cart-item__btn--min--disabled': amountOfProduct === 1 },
-          )}
-          onClick={() => setAmountOfProduct(amountOfProduct - 1)}
-        />
-        <p className="cart-item__amount" data-cy="productQauntity">
-          {amountOfProduct}
-        </p>
-        <button
-          aria-label="increase amount"
-          type="button"
-          className="cart-item__btn cart-item__btn--plus"
-          onClick={() => setAmountOfProduct(amountOfProduct + 1)}
-        />
-      </div>
+      <div className="cart-item__right">
+        <div className="cart-item__change-amount">
+          <button
+            aria-label="decrease amount"
+            type="button"
+            className={classNames(
+              'cart-item__btn cart-item__btn--min',
+              { 'cart-item__btn--min--disabled': amountOfProduct === 1 },
+            )}
+            onClick={() => setAmountOfProduct(amountOfProduct - 1)}
+          />
+          <p className="cart-item__amount" data-cy="productQauntity">
+            {amountOfProduct}
+          </p>
+          <button
+            aria-label="increase amount"
+            type="button"
+            className="cart-item__btn cart-item__btn--plus"
+            onClick={() => setAmountOfProduct(amountOfProduct + 1)}
+          />
+        </div>
 
-      <p className="cart-item__price">{`$${product.price * amountOfProduct}`}</p>
+        <p className="cart-item__price">{`$${product.price * amountOfProduct}`}</p>
+      </div>
     </article>
   );
 };

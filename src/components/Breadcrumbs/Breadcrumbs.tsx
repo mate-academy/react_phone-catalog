@@ -22,10 +22,13 @@ export const Breadcrumbs = () => {
         .join(' ');
 
       return (
-        <div className="breadcrumbs__crumb" data-cy="breadCrumbs">
+        <div
+          className="breadcrumbs__crumb"
+          data-cy="breadCrumbs"
+          key={crumb}
+        >
           <div className="breadcrumbs__separator" />
           <NavLink
-            key={crumb}
             to={currentLink}
             className="breadcrumbs__link"
           >

@@ -1,8 +1,7 @@
 import {
-  createContext, useEffect, useMemo, useState,
+  createContext, useMemo, useState,
 } from 'react';
 import { useLocalStorsge } from '../hooks/useLocalStorage';
-import { getProducts } from './productsServise';
 import { CartProperty, Product } from './types';
 
 type Props = {
@@ -18,8 +17,8 @@ interface IProductContext {
   addedToCart: Product[],
   setAddedToCart: (p: Product[]) => void,
   addToCartHandler: (id: string) => void,
-  cartPrices: CartProperty[],
-  setCartPrices: (v: CartProperty[]) => void,
+  cartContentData: CartProperty[],
+  setCartContentData: (v: CartProperty[]) => void,
   totalPrices: number,
   setTotalPrices: (n: number) => void,
 }
@@ -33,8 +32,8 @@ const defaultValue = {
   addedToCart: [],
   setAddedToCart: () => { },
   addToCartHandler: () => { },
-  cartPrices: [],
-  setCartPrices: () => { },
+  cartContentData: [],
+  setCartContentData: () => { },
   totalPrices: 0,
   setTotalPrices: () => { },
 };
@@ -47,15 +46,11 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
     = useLocalStorsge<Product[]>('favorites', []);
   const [addedToCart, setAddedToCart]
     = useLocalStorsge<Product[]>('addedToCart', []);
-  const [cartPrices, setCartPrices]
+  const [cartContentData, setCartContentData]
     = useLocalStorsge<CartProperty[]>(
       'cartPrices', [{ phoneId: 'none', price: 0, amount: 0 }],
     );
   const [totalPrices, setTotalPrices] = useLocalStorsge('totalPrices', 0);
-
-  useEffect(() => {
-    getProducts().then(setProducts);
-  });
 
   function addTofavoritesHandler(chosenProductID: string) {
     if (favorites.find(item => item.phoneId === chosenProductID)) {
@@ -78,8 +73,8 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
         [...addedToCart].filter(item => item.phoneId !== chosenProductID),
       );
 
-      setCartPrices(
-        [...cartPrices].filter(item => item.phoneId !== chosenProductID),
+      setCartContentData(
+        [...cartContentData].filter(item => item.phoneId !== chosenProductID),
       );
 
       localStorage.removeItem(`${chosenProductID}amount`);
@@ -89,7 +84,7 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
 
       if (chosenProduct) {
         setAddedToCart([...addedToCart, chosenProduct]);
-        setCartPrices([...cartPrices, {
+        setCartContentData([...cartContentData, {
           phoneId: chosenProductID,
           price: chosenProduct.price,
           amount: 1,
@@ -107,8 +102,8 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
     addedToCart,
     setAddedToCart,
     addToCartHandler,
-    cartPrices,
-    setCartPrices,
+    cartContentData,
+    setCartContentData,
     totalPrices,
     setTotalPrices,
   }), [favorites, addedToCart, products, totalPrices]);
