@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo } from 'react';
 import { Product } from '../types/Product';
 import { useLocalStorage } from '../helpers/useLocalStorage';

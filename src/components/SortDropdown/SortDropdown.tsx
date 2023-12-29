@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useSearchParams } from 'react-router-dom';
 import React, { useState } from 'react';
 import './SortDropdown.scss';

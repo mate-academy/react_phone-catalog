@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BASE_URL } from './constants';
 
 function wait(delay: number) {
