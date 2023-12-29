@@ -5,12 +5,13 @@ import { Product } from '../../../types/Products';
 
 type Props = {
   products: Product[]
+  title: string,
 };
 
-export const ProductSlider: React.FC<Props> = ({ products }) => {
+export const ProductSlider: React.FC<Props> = ({ products, title }) => {
   return (
     <section className="product">
-      <h1 className="product__title">Hot prices</h1>
+      <h1 className="product__title">{title}</h1>
       <Splide
         id="product__slider"
         aria-label="Baner-first"

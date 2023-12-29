@@ -14,9 +14,9 @@ export const HomePage: React.FC<Props> = ({ products }) => {
   return (
     <div className="container">
       <BannerSlider />
-      <ProductSlider products={products} />
-      <Category />
-      <ProductSlider products={products} />
+      <ProductSlider products={products} title="Shop by category" />
+      <Category products={products} />
+      <ProductSlider products={products} title="Brand new models" />
     </div>
   );
 };

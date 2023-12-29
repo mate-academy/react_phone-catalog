@@ -1,16 +1,20 @@
 import { Product } from '../types/Products';
 
 const BASE_URL
-= 'https://mate-academy.github.io/react_phone-catalog/_new';
+  = 'https://mate-academy.github.io/react_phone-catalog/_new';
 
 const request = (url: string) => {
-  return fetch(BASE_URL + url).then((res) => {
-    if (!res.ok) {
-      throw new Error();
-    }
+  return fetch(BASE_URL + url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('test');
+      }
 
-    return res.json();
-  });
+      return res.json();
+    }).catch((error) => {
+      // eslint-disable-next-line no-alert
+      window.alert(`Error: ${error.message}`);
+    });
 };
 
 export const getProducts = () => request('/products.json');

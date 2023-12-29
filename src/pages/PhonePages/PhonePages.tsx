@@ -14,25 +14,27 @@ import './PhonePages.scss';
 import { useSearchContext } from '../../components/Context/Context';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { getPhones } from '../../api/fetchData';
+import { Loader } from '../../components/Loader/Loader';
+import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 
 const optionsSort = ['newest', 'alphabetically', 'price'];
 const optionsItemsPage = ['all', '4', '8', '16'];
 
 export const PhonePages: React.FC = () => {
   const [phoneProduct, setPhoneProduct] = useState<Product[]>([]);
-
-  const loadProducts = async () => {
-    try {
-      const productsFromServer = await getPhones();
-
-      setPhoneProduct(productsFromServer);
-    } finally {
-      console.log('downLoad Phones');
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    loadProducts();
+    setIsLoading(true);
+    getPhones()
+      .then(setPhoneProduct)
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const { searchText } = useSearchContext();
@@ -43,7 +45,6 @@ export const PhonePages: React.FC = () => {
   const sortParam = searchParams.get('sort') || '';
   const perPageParam = searchParams.get('perPage') || '';
   const [totalPages, setTotalPages] = useState(1);
-
   const pageParam = searchParams.get('page');
   const [currentPage, setCurrentPage] = useState(pageParam ? Number(pageParam) : 1);
   const [slicedProducts, setSliceProducts] = useState(phoneProduct);
@@ -189,24 +190,35 @@ export const PhonePages: React.FC = () => {
             />
           </div>
 
-          <div className="mobile__list">
-            {slicedProducts.map(product => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-      {totalPages !== 1 && !!preperedProducts.length && (
-        <Pagination
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          currentPage={currentPage}
-        />
-      )}
+          {isError && (
+            <ErrorMessage />
+          )}
 
+          {/* ------------------- */}
+          {isLoading && !isError ? (
+            <Loader />
+          ) : (
+            <div className="mobile__list">
+              {slicedProducts.map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {totalPages !== 1 && !!preperedProducts.length && (
+          <Pagination
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+          />
+        )}
+
+        {/* ------------------- */}
+      </div>
     </section>
   );
 };
