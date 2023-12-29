@@ -1,4 +1,4 @@
-
+@import "../../styles/utils/utils";
 
 .breadcrumbs {
   display: flex;
@@ -13,17 +13,14 @@
   }
 
   &__link {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    @include smal-text;
+    
     display: flex;
     gap: 8px;
     align-items: center;
     text-decoration: none;
     text-transform: capitalize;
-    color: #313237;
+    color: $c-gray-primary;
 
     &::before {
       content: "";
@@ -37,7 +34,7 @@
 
     &--disabled {
       pointer-events: none;
-      color: #89939a;
+      color: $c-gray-secondary;
     }
   }
 }

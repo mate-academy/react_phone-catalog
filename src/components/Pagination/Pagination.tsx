@@ -1,8 +1,9 @@
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/serchWith';
 import './Pagination.scss';
+import { goTop } from '../../helpers/goTop';
 
 type Props = {
   total: number;
@@ -17,11 +18,31 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const [searchParams] = useSearchParams('');
   const lastPage = Math.ceil(total / perPage);
-  const numberOfPages = [];
+  const pages = [];
 
   for (let n = 1; n <= lastPage; n += 1) {
-    numberOfPages.push(n);
+    pages.push(n);
   }
+
+  let visiblePages;
+
+  if (pages.length <= 5) {
+    visiblePages = pages;
+  } else if (currentPage < 3) {
+    visiblePages = [...pages.slice(0, 3), ...pages.slice(-1)];
+  } else if (currentPage > pages.length - 2) {
+    visiblePages = [...pages.slice(0, 1), ...pages.slice(-3)];
+  } else {
+    visiblePages = [
+      ...pages.slice(0, 1),
+      ...pages.slice(currentPage - 2, currentPage + 1),
+      ...pages.slice(-1),
+    ];
+  }
+
+  useEffect(() => {
+    goTop();
+  }, [currentPage]);
 
   return (
     <div className="pagination">
@@ -35,7 +56,7 @@ export const Pagination: React.FC<Props> = ({
           'pagination__arrow',
           {
             'pagination__arrow-left--disabled':
-              currentPage === numberOfPages[0],
+              currentPage === pages[0],
           },
         )}
       >
@@ -43,25 +64,41 @@ export const Pagination: React.FC<Props> = ({
       </Link>
 
       <ul className="pagination__list">
-        {numberOfPages.map((n) => {
+        {visiblePages.map((n) => {
           const numberPage = n.toString();
 
           return (
-            <li key={numberPage} className="pagination__item">
-              <Link
-                to={{
-                  search: getSearchWith(searchParams, { page: numberPage }),
-                }}
-                className={classNames(
-                  'pagination__link',
-                  {
-                    'pagination__link--active': currentPage === n,
-                  },
+            <>
+              {n === pages.length
+                && currentPage < pages.length - 2
+                && pages.length > 5
+                && (
+                  <span className="pagination__dots">...</span>
                 )}
-              >
-                {numberPage}
-              </Link>
-            </li>
+
+              <li key={numberPage} className="pagination__item">
+                <Link
+                  to={{
+                    search: getSearchWith(searchParams, { page: numberPage }),
+                  }}
+                  className={classNames(
+                    'pagination__link',
+                    {
+                      'pagination__link--active': currentPage === n,
+                    },
+                  )}
+                >
+                  {numberPage}
+                </Link>
+              </li>
+
+              {n === 1
+                && currentPage > 3
+                && pages.length > 5
+                && (
+                  <span className="pagination__dots">...</span>
+                )}
+            </>
           );
         })}
       </ul>
@@ -76,7 +113,7 @@ export const Pagination: React.FC<Props> = ({
           'pagination__arrow',
           {
             'pagination__arrow-right--disabled':
-            currentPage === numberOfPages[numberOfPages.length - 1],
+            currentPage === pages[pages.length - 1],
           },
         )}
       >

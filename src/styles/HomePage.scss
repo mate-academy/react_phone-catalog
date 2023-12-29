@@ -1,8 +1,21 @@
+@import "./utils/utils";
+
 .home-page {
+  margin: 0 16px;
+  max-width: $desktop-width;
+  width: 100%;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-desktop {
+    margin: 0 auto;
+  }
 
   &__section {
     margin-top: 40px;
     margin-bottom: 80px;
-    width: 1136px;
+    max-width: $desktop-width;
   }
 }

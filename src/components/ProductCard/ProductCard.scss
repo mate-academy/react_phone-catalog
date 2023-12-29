@@ -1,8 +1,10 @@
+@import "../../styles/utils/utils";
+
 .card {
   width: 272px;
   padding: 24px;
   box-sizing: border-box;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $c-gray-elements;
   transition: 0.3s;
 
   &:hover {
@@ -23,19 +25,16 @@
 
     &-title {
       text-decoration: none;
-      color: #313237;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 21px;
+      color: $c-gray-primary;
+
+      @include body-text;
     }
   }
 
   &__line {
     width: 224px;
     height: 1px;
-    background: #e2e6e9;
+    background: $c-gray-elements;
   }
 
   &__prices {
@@ -43,18 +42,13 @@
   }
 
   &__price {
-    font-family: Mont, sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
+    @include h2;
 
     &--old {
       margin-left: 8px;
-      font-family: Mont-Regular, sans-serif;
       line-height: 28px;
       text-decoration: line-through;
-      color: #89939a;
+      color: $c-gray-secondary;
     }
   }
 
@@ -72,22 +66,16 @@
     }
 
     &-name {
-      font-family: Mont, sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
-      color: #89939a;
+      @include smal-text;
+
+      color: $c-gray-secondary;
     }
 
     &-value {
-      font-family: Mont, sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
+      @include smal-text;
+      
       text-transform: uppercase;
-      color: #313237;
+      color: $c-gray-primary;
     }
   }
 

@@ -35,16 +35,27 @@ export const CartPage = () => {
         <h2 className="cart__empty">Your cart is empty!</h2>
       ) : (
         <>
-          <div className="cart__container">
-            <div className="cart__products">
+          <div className="cart__container grid grid--block">
+            <div className="
+              cart__products
+              grid__item--desktop-1-16
+              grid__item--tablet-1-8"
+            >
               {inCart.map((prod) => (
                 <CartCard key={prod.id} product={prod} />
               ))}
             </div>
-            <div className="cart__total">
+
+            <div className="
+              cart__total
+              grid__item--desktop-17-24
+              grid__item--tablet-9-12"
+            >
               <div className="cart__info">
                 <h2 className="cart__info-price">{`$${totalSum}`}</h2>
-                <p className="cart__info-count">{`Total for ${inCartCount} items`}</p>
+                <p className="cart__info-count">
+                  {`Total for ${inCartCount} items`}
+                </p>
               </div>
 
               <button

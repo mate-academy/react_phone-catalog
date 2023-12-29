@@ -53,7 +53,7 @@ export const Search = memo(() => {
           aria-label="button"
           onClick={clearQuery}
         >
-          <img src="img/mine/icons/Close.svg" alt="" />
+          <img src="img/mine/icons/Close.svg" alt="close" />
         </button>
       ) : (
         <button
@@ -62,7 +62,7 @@ export const Search = memo(() => {
           disabled
           aria-label="button"
         >
-          <img src="img/mine/icons/Search.svg" alt="" />
+          <img src="img/mine/icons/Search.svg" alt="search" />
         </button>
       )}
     </div>

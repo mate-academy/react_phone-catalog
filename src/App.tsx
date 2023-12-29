@@ -6,7 +6,7 @@ import { Header } from './components/Header/Header';
 export const App = () => {
   return (
     <>
-      <header>
+      <header className="head">
         <Header />
       </header>
 
@@ -17,7 +17,6 @@ export const App = () => {
       <footer className="footer">
         <Footer />
       </footer>
-
     </>
   );
 };

@@ -1,7 +1,9 @@
+import {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './Header.scss';
-import { useContext } from 'react';
 import { Search } from '../Search/Search';
 import { StorContext } from '../../context/StorContext';
 
@@ -10,18 +12,29 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
 );
 
 export const Header = () => {
+  const { pathname } = useLocation();
   const location = useLocation();
-  const paths = location.pathname;
   const { inCartCount, favCount } = useContext(StorContext);
+  const exit = useRef<HTMLButtonElement>(null);
+  const [burger, setBurger] = useState(false);
 
-  const visualSearch = paths === '/phones'
-    || paths === '/accessories'
-    || paths === '/tablets'
-    || paths === '/favourites';
+  useEffect(() => {
+    document.addEventListener('click', (e) => {
+      if (e.target !== exit.current) {
+        setBurger(false);
+      }
+    });
+    setBurger(false);
+  }, [location]);
+
+  const visualSearch = pathname === '/phones'
+    || pathname === '/accessories'
+    || pathname === '/tablets'
+    || pathname === '/favourites';
 
   return (
     <div className="header">
-      <div className="header__container">
+      <div className="header__link-container">
         <div className="header__logo">
           <Link to="/">
             <img
@@ -32,7 +45,11 @@ export const Header = () => {
           </Link>
         </div>
 
-        <nav className="header__nav">
+        <nav className={classNames(
+          'header__nav',
+          { 'header__nav--disable': !burger },
+        )}
+        >
           <div className="header__nav-item">
             <NavLink to="/" className={getLinkClass}>
               HOME
@@ -56,8 +73,8 @@ export const Header = () => {
               ACCESSORIES
             </NavLink>
           </div>
-
         </nav>
+
       </div>
 
       <div className="header__container">
@@ -95,6 +112,27 @@ export const Header = () => {
                 </span>
               )}
           </NavLink>
+        </div>
+
+        <div className="header__icons burger">
+          <button
+            type="button"
+            ref={exit}
+            className="header__burger"
+            onClick={() => {
+              setBurger(!burger);
+            }}
+
+          >
+            {!burger && (
+              <span className="header__menu header__menu--open" />
+            )}
+
+            {burger && (
+              <span className="header__menu header__menu--close" />
+            )}
+
+          </button>
         </div>
       </div>
     </div>

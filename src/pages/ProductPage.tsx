@@ -100,6 +100,13 @@ export const ProductPage = () => {
 
   const visibleProducts = sortProduct().slice(start, end);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
       <div className="product">
@@ -167,7 +174,11 @@ export const ProductPage = () => {
                     Sorry, product not found &#128577;
                   </h3>
 
-                  <Link to="/home" className="product__nf-back">
+                  <Link
+                    to="/home"
+                    onClick={scrollToTop}
+                    className="product__nf-back"
+                  >
                     Go Home
                   </Link>
                 </div>

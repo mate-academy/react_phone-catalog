@@ -1,3 +1,5 @@
+@import "../../styles/utils/utils";
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -17,19 +19,16 @@
     width: 32px;
     height: 32px;
     box-sizing: border-box;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $c-gray-icons-placeholders;
 
-    &-left--disabled {
-      pointer-events: none;
-    }
-
+    &-left--disabled,
     &-right--disabled {
       pointer-events: none;
     }
 
     &:hover {
       box-sizing: border-box;
-      border: 1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
   }
 
@@ -37,11 +36,11 @@
     width: 32px;
     height: 32px;
     box-sizing: border-box;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $c-gray-icons-placeholders;
 
     &:hover {
       box-sizing: border-box;
-      border: 1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
   }
 
@@ -51,18 +50,15 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    color: #000;
+    color: $c-gray-primary;
     text-align: center;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
     text-decoration: none;
-
+    
+    @include body-text;
+    
     &--active {
-      background-color: #313237;
-      color: white;
+      background-color: $c-gray-primary;
+      color: $c-white;
     }
   }
 }

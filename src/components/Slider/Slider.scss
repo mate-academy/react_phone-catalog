@@ -1,66 +1,61 @@
+@import "../../styles/utils/utils";
+
 .slider {
-  grid-column: 1 / -1;
-  
   &__container {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 18px;
-    height: 400px;
-    gap: 20px;
+    gap: 16px;
+    margin-bottom: 8px;
   }
 
   &__button {
-    background: #fff;
-    border: 1px solid #b4bdc3;
+    max-height: 400px;
+    background: $c-white;
+    border: 1px solid $c-gray-icons-placeholders;
     box-sizing: border-box;
 
     &:hover {
-      background: #fafbfc;
-      border: 1px solid #313237;
+      background: $c-gray-background;
+      border: 1px solid $c-gray-primary;
       box-sizing: border-box;
     }
   }
 
-  &__imgs-wrapper {
+  &__wrapper {
     display: flex;
-    flex-grow: 1;
+    flex-direction: row;
+    width: 100%;
     overflow: hidden;
   }
 
-  &__imgs-container {
-    display: flex;
-
+  &__slide {
+    flex-shrink: 0;
+    flex-basis: 100%;
+    transition: transform 0.3s;
   }
 
   &__img {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
     object-fit: cover;
-    object-position: center;
-    width: 1040px;
-    height: 400px;
   }
 
-  &__slides-dots {
+  &__pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 14px;
-    list-style: none;
   }
 
-  &__slide-dot {
-    width: 14px;
+  &__bullet {
     height: 4px;
+    width: 14px;
+    margin: 10px 8px;
+    background-color: $c-gray-elements;
     border: none;
-    background-color: #e2e6e9;
+    transition: background-color 0.3s;
     cursor: pointer;
-    transition: all 0.3s;
 
-    &--selected {
-      background-color: #313237;
-    }
-
-    &:hover {
-      background-color: #89939a;
+    &.active {
+      background-color: $c-gray-primary;
     }
   }
 }

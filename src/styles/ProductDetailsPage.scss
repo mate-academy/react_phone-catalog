@@ -1,36 +1,30 @@
+@import "./utils/utils";
+
 .product-details {
-  width: 1136px;
+  max-width: $desktop-width;
+  width: 100%;
+  box-sizing: border-box;
 
   &__top {
     margin-bottom: 16px;
   }
 
   &__title {
-    font-family: Mont, sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.32px;
-    color: #313237;
+    @include h1;
 
+    color: $c-gray-primary;
     margin-bottom: 40px;
   }
 
   &__look-container {
-    display: flex;
-    width: 100%;
     margin-bottom: 80px;
+    box-sizing: border-box;
   }
 
   &__text {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    color: #89939a;
+    @include smal-text;
 
+    color: $c-gray-secondary;
     margin-bottom: 8px;
   }
 
@@ -40,7 +34,7 @@
     width: 320px;
     padding-bottom: 24px;
     box-sizing: border-box;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $c-gray-elements;
     margin-bottom: 24px;
 
     &-list {
@@ -54,23 +48,37 @@
   }
 
   &__price {
-    font-family: Mont, sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
+    @include h2;
 
     &--old {
       margin-left: 8px;
-      font-family: Mont-Regular, sans-serif;
       line-height: 28px;
       text-decoration: line-through;
-      color: #89939a;
+      color: $c-gray-secondary;
     }
   }
 
   &__buttons {
     margin-bottom: 32px;
+  }
+
+  &__detal {
+    &-name {
+      margin-bottom: 8px;
+      color: $c-gray-secondary;
+      text-transform: capitalize;
+
+      @include smal-text;
+    }
+
+    &-value {
+      text-align: end;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      color: $c-gray-primary;
+
+      @include smal-text;
+    }
   }
 
   &__character {
@@ -83,38 +91,31 @@
 
     &-name {
       margin-bottom: 8px;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 21px; 
-      color: #89939a;
+      color: $c-gray-secondary;
       text-transform: capitalize;
+
+      @include body-text;
     }
 
     &-value {
       text-align: end;
       margin-bottom: 8px;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 21px; 
       text-transform: uppercase;
-      color: #313237;
+      color: $c-gray-primary;
+
+      @include body-text;
     }
   }
 
-  &__descript-container{
+  &__descript-container {
     display: flex;
     gap: 64px;
     margin-bottom: 80px;
+    max-width: $desktop-width;
+    width: 100%;
   }
 
-  &__description {
-    max-width: 560px;
-  }
-
+  &__description,
   &__character-specs {
     width: 100%;
   }
@@ -122,27 +123,25 @@
   &__name {
     padding-bottom: 16px;
     box-sizing: border-box;
-    border-bottom:1px solid #e2e6e9;
+    border-bottom: 1px solid $c-gray-elements;
     margin-bottom: 32px;
   }
 
   &__info-title {
-    font-family: Mont, sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    @include h3;
+
     margin-bottom: 16px;
-    color: #313237;
+    color: $c-gray-primary;
   }
 
   &__info-text {
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
+    @include body-text;
+    
     margin-bottom: 32px;
-    color: #89939a;
+    color: $c-gray-secondary;
+  }
+
+  &__slider {
+    width: 100%;
   }
 }

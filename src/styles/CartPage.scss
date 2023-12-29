@@ -1,14 +1,17 @@
+@import "./utils/utils";
+
 .cart {
-  width: 1136px;
+  display: flex;
+  flex-direction: column;
+  max-width: $desktop-width;
+  width: 100%;
   margin-bottom: 24px;
+  padding: 0 20px;
 
   &__empty {
-    font-family: Mont, sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
-    color: #eb5757;
+    @include h2;
+
+    color: $c-red;
   }
 
   &__navigate {
@@ -18,22 +21,27 @@
 
   &__title {
     margin-bottom: 24px;
-    font-family: Mont, sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.32px;
-    color: #313237;
+    color: $c-gray-primary;
+
+    @include h1;
   }
 
   &__container {
     display: flex;
-    gap: 16px;
+    align-self: center;
+
+    @include on-tablet {
+      display: grid;
+    }
+
+    @include on-desktop {
+      display: grid;
+    }
   }
 
   &__products {
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 16px;
   }
@@ -43,17 +51,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    margin: 40px 0;
     justify-content: space-between;
     padding: 24px;
-    width: 360px;
-    height: 206px;
-    border: 1px solid #e2e6e9;
+    height: fit-content;
+    border: 1px solid $c-gray-elements;
     box-sizing: border-box;
+
+    @include on-tablet {
+      margin: 0;
+    }
 
     &:hover {
       transition: 0.3s;
-      border: 1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
   }
 
@@ -63,41 +74,27 @@
     align-items: center;
     width: 100%;
     padding-bottom: 24px;
-    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 20px;
+    border-bottom: 1px solid $c-gray-elements;
 
     &-price {
-      font-family: Mont, sans-serif;
-      font-size: 32px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      letter-spacing: -0.32px;
-      color: #313237;
+      @include h1;
     }
 
     &-count {
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 21px;
-      color: #89939a;
+      @include body-text;
     }
   }
 
   &__button {
-    width: 320px;
+    width: 100%;
     height: 48px;
-    background-color: #313237;
+    background-color: $c-gray-primary;
     border: none;
-    color: white;
-
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 21px;
+    color: $c-white;
     
+    @include big-text;
+
     &:hover {
       transition: 0.3s;
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
@@ -111,11 +108,11 @@
     align-items: center;
     width: 100%;
     height: 30px;
-    background-color: #eb5757;
+    background-color: $c-red;
     bottom: -50px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-  
+
     &--clear {
       opacity: 1;
     }

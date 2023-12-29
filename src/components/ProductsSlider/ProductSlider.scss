@@ -1,21 +1,15 @@
+@import "../../styles/utils/utils";
+
 .slid {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
   margin-bottom: 80px;
   overflow: hidden;
-  
+
   &__title {
-    margin: 0;
-    font-family: Mont, sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.32px;
-    color: #313237;
+    @include h1;
+    
+    color: $c-gray-primary;
   }
-  
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -32,11 +26,12 @@
   &__button {
     width: 32px;
     height: 32px;
-    background: #fff;
-    border:1px solid #b4bdc3;
+    background: $c-white;
+    box-sizing: border-box;
+    border: 1px solid $c-gray-icons-placeholders;
 
     &:hover {
-      border:1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
 
     &-img {
@@ -45,24 +40,22 @@
       justify-content: center;
 
       &--disabled {
-        color: #e2e6e9;
+        color: $c-gray-elements;
       }
     }
 
     &--disabled {
-      border:1px solid #e2e6e9;
+      border: 1px solid $c-gray-elements;
       pointer-events: none;
+
       &:hover {
-        border:1px solid #e2e6e9;
+        border: 1px solid $c-gray-elements;
       }
     }
   }
-  
+
   &__card {
     display: flex;
     gap: 16px;
-    width: 1136px;
-    height: 507px;
-    transition: transform 1s;
   }
 }

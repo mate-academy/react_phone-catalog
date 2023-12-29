@@ -32,11 +32,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         className="card__image"
         to={`../../${category}/${itemId}`}
       >
-        <img src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`} alt={name} />
+        <img
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
+          alt={name}
+        />
       </Link>
 
       <div className="card__name">
-        <Link className="card__name-title" to={`../../${category}/${itemId}`}>
+        <Link
+          className="card__name-title"
+          to={`../../${category}/${itemId}`}
+        >
           {name}
         </Link>
       </div>

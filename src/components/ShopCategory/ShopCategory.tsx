@@ -1,6 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './ShopCategory.scss';
-import React from 'react';
 
 type Props = {
   count: number

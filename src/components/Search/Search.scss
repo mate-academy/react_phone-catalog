@@ -1,32 +1,33 @@
+@import "../../styles/utils/utils";
+
 .search {
   display: flex;
-  width: 300px;
+  justify-content: space-between;
+  width: 100%;
+
+  @include on-desktop {
+    display: flex;
+    width: 300px;
+  }
 
   &__input {
     flex-grow: 1;
     border: none;
     outline: none;
+    color: $c-gray-primary;
 
-    color: #313237;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    @include big-text;
 
     &::placeholder {
-      color: #b4bcd3;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
+      color: $c-gray-icons-placeholders;
+      
+      @include big-text;
     }
   }
 
   &__button {
     border: none;
-    background-color: #fff;
+    background-color: $c-white;
     outline: none;
   }
 }

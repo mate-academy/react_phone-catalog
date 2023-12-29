@@ -96,12 +96,24 @@ export const ProductDetailsPage = () => {
           <>
             <div className="product-details__title ">{productDet.name}</div>
 
-            <div className="product-details__look-container">
-              <div className="product-details__galery">
+            <div className="
+              product-details__look-container
+              grid
+              grid--block"
+            >
+              <div className="
+                product-details__galery grid__item--tablet-1-6
+                grid__item--desktop-1-12
+"
+              >
                 <ProductGalery image={productDet.images} />
               </div>
 
-              <div className="product-details__menu-container">
+              <div className="
+                product-details__menu-container
+                grid__item--tablet-8-12
+                grid__item--desktop-14-20"
+              >
                 <div className="product-details__choice">
                   <p className="product-details__text">
                     Available colors
@@ -144,7 +156,10 @@ export const ProductDetailsPage = () => {
                 <div className="product-details__character">
                   <ul className="product-details__list">
                     {charProd.keys.map((key) => (
-                      <li key={key} className="product-details__character-name">
+                      <li
+                        key={key}
+                        className="product-details__detal-name"
+                      >
                         {key}
                       </li>
                     ))}
@@ -154,7 +169,7 @@ export const ProductDetailsPage = () => {
                     {charProd.values.map((value) => (
                       <li
                         key={value}
-                        className="product-details__character-value"
+                        className="product-details__detal-value"
                       >
                         {value}
                       </li>
@@ -164,9 +179,16 @@ export const ProductDetailsPage = () => {
               </div>
             </div>
 
-            <div className="product-details__descript-container">
+            <div className="
+              product-details__descript-container
+              grid
+              grid--block"
+            >
               <div
-                className="product-details__description"
+                className="
+                  product-details__description
+                  grid__item--tablet-1-12
+                  grid__item--desktop-1-12"
                 data-cy="productDescription"
               >
                 <h2 className="product-details__name">About</h2>
@@ -183,7 +205,11 @@ export const ProductDetailsPage = () => {
                 </div>
               </div>
 
-              <div className="product-details__character-specs">
+              <div className="
+                product-details__character-specs
+                grid__item--tablet-1-12
+                grid__item--desktop-14-24"
+              >
                 <h2 className="product-details__name">Tech specs</h2>
                 <div className="product-details__character">
                   <ul className="product-details__list">

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import React, { useState } from 'react';
+import classNames from 'classnames';
 import './ProductGalery.scss';
 
 type Props = {
@@ -20,7 +20,11 @@ export const ProductGalery: React.FC<Props> = ({ image = [] }) => {
 
   return (
     <div className="galery">
-      <div className="galery__cards">
+      <div className="
+        galery__cards
+        grid__item--tablet-1-1
+        grid__item--desktop-1-2"
+      >
         {image.map((img) => (
           <button
             key={img}
@@ -40,7 +44,11 @@ export const ProductGalery: React.FC<Props> = ({ image = [] }) => {
           </button>
         ))}
       </div>
-      <div className="galery__photo">
+      <div className="
+        galery__photo
+        grid__item--tablet-2-7
+        grid__item--desktop-3-12"
+      >
         <img
           className={classNames(
             'galery__main', { 'galery__main--transition': isTransitioning },

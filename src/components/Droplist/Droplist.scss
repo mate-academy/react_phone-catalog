@@ -1,24 +1,22 @@
+@import "../../styles/utils/utils";
 
 .droplist {
   position: relative;
 
-  &:first-child{
+  &:first-child {
     width: 176px;
   }
 
-  &:last-child{
+  &:last-child {
     width: 128px;
   }
 
   &__label {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    color: #89939a;
-    margin-bottom: 4px;
     position: relative;
+    margin-bottom: 4px;
+    color: $c-gray-secondary;
+    
+    @include smal-text;
   }
 
   &__select {
@@ -28,23 +26,21 @@
     padding: 10px;
     height: 40px;
     width: 100%;
-    background-color: white;
-    border: 1px solid #b4bdc3;
+    background-color: $c-white;
+    border: 1px solid $c-gray-icons-placeholders;
     outline: none;
-    color: #313237;
+    color: $c-gray-primary;
     transition: 0.3s;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 21px;
     box-sizing: border-box;
+    
+    @include big-text;
+
     &:hover {
-      border: 1px solid #89939a;
+      border: 1px solid $c-gray-secondary;
     }
 
     &:focus {
-      border: 1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
   }
 
@@ -64,21 +60,21 @@
     position: absolute;
     top: 110%;
     width: 100%;
-    border: 1px solid #b4bdc3;
+    border: 1px solid $c-gray-icons-placeholders;
     padding: 8px 0;
-    background-color: white;
+    background-color: $c-white;
   }
 
   &__option {
     text-decoration: none;
     cursor: pointer;
-    background-color: white;
+    background-color: $c-white;
     height: 32px;
     transition: all 0.3s;
     padding: 0 12px;
 
     &:hover {
-      background-color: #fafbfc;
+      background-color: $c-gray-background;
     }
   }
 
@@ -87,16 +83,13 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    color: #89939a;
+    color: $c-gray-secondary;
     text-decoration: none;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
+
+    @include body-text;
 
     &:hover {
-      color: #313237;
+      color: $c-gray-primary;
     }
   }
 }

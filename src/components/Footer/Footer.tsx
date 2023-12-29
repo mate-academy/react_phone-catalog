@@ -1,19 +1,12 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { goTop } from '../../helpers/goTop';
 
 export const Footer = () => {
-  const backToTop = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <div className="bottom">
       <div className="bottom__logo">
-        <Link to="/">
+        <Link to="/" onClick={goTop}>
           <img
             src="img/mine/LOGO.svg"
             alt="Logo"
@@ -50,7 +43,7 @@ export const Footer = () => {
         <button
           className="bottom__top-button"
           type="button"
-          onClick={backToTop}
+          onClick={goTop}
         >
           <img src="img/mine/icons/Chevron (Arrow Up).svg" alt="up" />
         </button>

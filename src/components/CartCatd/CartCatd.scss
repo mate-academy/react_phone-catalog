@@ -1,11 +1,36 @@
+@import "../../styles/utils/utils";
+
 .cart-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 752px;
-  height: 128px;
   box-sizing: border-box;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $c-gray-elements;
+  padding: 24px;
 
+  @include on-desktop {
+    flex-direction: row;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    @include on-desktop {
+      width: fit-content;
+    }
+  }
 
   &__remove {
     display: flex;
@@ -14,8 +39,7 @@
     width: 16px;
     height: 16px;
     margin: 24px;
-
-    background-color: white;
+    background-color: $c-white;
     border: none;
 
     &:hover {
@@ -31,12 +55,13 @@
   }
 
   &__name {
-    width: 295px;
+    width: 100%;
     margin: 0 50px 0 24px;
   }
 
   &__actions {
     display: flex;
+    flex-direction: row;
     margin-right: 43px;
   }
 
@@ -45,12 +70,9 @@
     align-items: center;
     justify-content: center;
     width: 32px;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
-    color: #313237;
+    color: $c-gray-primary;
+    
+    @include body-text;
   }
 
   &__btn {
@@ -58,33 +80,31 @@
     width: 32px;
     height: 32px;
     align-items: center;
-    background-color: white;
-    border: 1px solid #e2e6e9; 
+    background-color: $c-white;
+    border: 1px solid $c-gray-elements;
 
     &--disabled {
       pointer-events: none;
-      &:hover{
-        border: 1px solid #e2e6e9;
+
+      &:hover {
+        border: 1px solid $c-gray-elements;
       }
     }
 
     &:hover {
       transition: 0.3s;
-      border: 1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
   }
 
   &__price {
-    font-family: Mont, sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 140%;
-    color: #313237;
+    @include h2;
+    
+    color: $c-gray-primary;
   }
 
   &:hover {
     transition: 0.3s;
-    border: 1px solid #313237;
+    border: 1px solid $c-gray-primary;
   }
 }

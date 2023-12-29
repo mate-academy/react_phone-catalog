@@ -1,10 +1,9 @@
-import classNames from 'classnames';
 import React, {
   useRef, useEffect, useState,
 } from 'react';
+import classNames from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/serchWith';
-
 import './Droplist.scss';
 
 type Props = {

@@ -21,7 +21,7 @@ export const ProductsSlider: React.FC<Props> = ({ product, title }) => {
   const totalCards = product.length;
 
   const handleNext = () => {
-    newCard = visibleCard + 4;
+    newCard = visibleCard + 1;
 
     if (newCard > totalCards) {
       newCard = totalCards;
@@ -31,7 +31,7 @@ export const ProductsSlider: React.FC<Props> = ({ product, title }) => {
   };
 
   const handlePrev = () => {
-    newCard = visibleCard - 4;
+    newCard = visibleCard - 1;
 
     if (newCard < cardsCount) {
       newCard = cardsCount;

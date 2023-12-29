@@ -1,9 +1,21 @@
+@import "../../styles/utils/utils";
+
 .bottom {
+  padding: 32px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 1136px;
-  height: 96px;
+  flex-direction: column;
+  gap: 32px;
+  max-width: $desktop-width;
+  width: 100%;
+  height: max-content;
+  flex-grow: 1;
+
+  
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__logo {
     display: flex;
@@ -12,21 +24,25 @@
 
   &__link {
     display: flex;
-    align-items: center;
-    gap: 64px;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 64px;
+    }
 
     &-git {
-      font-family: Mont, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 700;
       line-height: 11px;
       letter-spacing: 0.48px;
       text-transform: uppercase;
-      color: #89939a;
+      color: $c-gray-secondary;
 
       &:hover {
-        color: #313237 ;
+        color: $c-gray-primary;
       }
     }
 
@@ -37,8 +53,7 @@
 
   &__top {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    justify-content: end;
 
     &-button {
       position: relative;
@@ -47,8 +62,8 @@
 
       width: 32px;
       height: 32px;
-      border: 1px solid #b4bdc3;
-      background: #fff;
+      border: 1px solid $c-gray-icons-placeholders;
+      background: $c-white;
 
       cursor: pointer;
   
@@ -60,18 +75,17 @@
         width: max-content;
         margin-right: 16px;
         align-items: center;
-        color: #b4bdc3;
+        color: $c-gray-icons-placeholders;
         transition: color 0.3s;
       }
 
       &:hover {
-        border: 1px solid #313237;
+        border: 1px solid $c-gray-primary;
       }
 
       &:hover::after {
-        color: #313237;
+        color: $c-gray-primary;
       }
     }
   }
-
 }

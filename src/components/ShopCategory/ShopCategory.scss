@@ -1,27 +1,34 @@
-.shop {
-  width: 1136px;
-  height: 508px;
+@import "../../styles/utils/utils";
 
+.shop {
   &__name {
     margin-bottom: 24px;
-    font-family: Mont, sans-serif;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: -0.32px;
+
+    @include h1;
   }
 
   &__container {
     display: flex;
     gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
   }
 
   &__img {
-    width: 368px;
-    height: 368px;
+    width: 320px;
+    height: 320px;
     background-repeat: no-repeat;
     background-position: center;
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+    }
 
     &:hover {
       transition: 0.3s;
@@ -34,7 +41,7 @@
     &--2 {
       background: #8d8d92;
     }
-      
+
     &--3 {
       background: #973d5f;
     }
@@ -58,7 +65,7 @@
         background-position: 40px 50px;
       }
     }
-      
+
     &--accessories {
       background-position: 60px 75px;
       background-size: 750px 400px;
@@ -72,13 +79,10 @@
 
   &__title {
     margin: 24px 0 4px;
-    color: #313237;
-
-    font-family: Mont, sans-serif;
+    color: $c-gray-primary;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
+
   }
 
   &__link {
@@ -86,12 +90,13 @@
   }
 
   &__count {
-    margin: 0;
-    color: #89939a;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 21px;
+    margin-bottom: 30px;
+    color: $c-gray-secondary;
+    
+    @include body-text;
+
+    @include on-desktop {
+      margin: 0;
+    }
   }
 }

@@ -1,19 +1,36 @@
+@import "../../styles/utils/utils";
+
 .galery {
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   gap: 16px;
   width: 100%;
-  height: 464px;
+  height: 100%;
+  margin-bottom: 80px;
+  box-sizing: border-box;
+
+  @include on-desktop {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
 
   &__cards {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+
+    @include on-desktop {
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 
   &__button {
     transition: 0.3s;
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     background-color: transparent;
     background-size: contain;
     background-repeat: no-repeat;
@@ -21,31 +38,45 @@
     border: none;
     box-sizing: border-box;
 
+    @include on-desktop {
+      height: 80px;
+      width: 80px;
+    }
+
     &:hover {
-      border: 1px solid #313237;
+      border: 1px solid $c-gray-primary;
     }
 
     &--active {
-      border: 1px solid gray;
+      border: 1px solid $c-gray-secondary;
     }
   }
 
   &__img {
-    height: 66px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 
   &__photo {
     display: flex;
     justify-content: center;
-    height: 464px;
-    width: 464px;
+    height: 360px;
+    width: 360px;
+
+    @include on-desktop {
+      height: 464px;
+      width: 464px;
+    }
   }
 
   &__main {
-    display: flex;
     height: 100%;
+    width: 100%;
+    object-fit: contain;
     transition: opacity 0.3s ease-in-out;
     opacity: 1;
+    box-sizing: border-box;
 
     &--transition {
       opacity: 0;
