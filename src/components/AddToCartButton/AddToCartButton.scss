@@ -1,0 +1,24 @@
+@import "../../styles/main";
+
+.AddToCartButton {
+  width: 176px;
+  height: 40px;
+  background-color: $black-c;
+  transition-duration: $transition-duration;
+
+  @extend %button;
+
+  @include on-tablet {
+    width: 145px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+  }
+
+  &.added-to-cart {
+    border: 1px solid $elements-grey-c;
+    background-color: $white-c;
+    color: $green-c;
+  }
+}
