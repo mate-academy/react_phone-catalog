@@ -88,15 +88,13 @@
   margin-top: 15px;
 }
 
-.dots-1,
-.dots-2,
-.dots-3 {
+.dot {
   background-color: $icons-color;
   width: 14px;
   height: 4px;
   margin: 0 4px;
 
-  &.active {
+  &--active {
     background-color: $primary-color;
   }
 }

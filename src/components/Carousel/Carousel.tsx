@@ -1,13 +1,19 @@
 import {
-  useEffect, useState, Children, cloneElement,
+  useEffect,
+  useState,
+  Children,
+  cloneElement,
+  ReactElement,
 } from 'react';
+import cn from 'classnames';
+
 import './Carousel.scss';
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const Carousel:React.FC<Props> = ({ children }) => {
+export const Carousel: React.FC<Props> = ({ children }) => {
   const [pages, setPages] = useState([]);
   const [activeDot, setActiveDot] = useState(0);
 
@@ -46,6 +52,7 @@ export const Carousel:React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
+    console.info((Children.toArray(children)[0] as ReactElement)?.key);// eslint-disable-line
     setPages(
       Children.map(children as never[], child => {
         return cloneElement(child, {
@@ -88,9 +95,18 @@ export const Carousel:React.FC<Props> = ({ children }) => {
       </div>
 
       <div className="dots">
-        <div className={`dots-1 ${activeDot === 0 ? 'active' : ''}`} />
-        <div className={`dots-2 ${activeDot === 1 ? 'active' : ''}`} />
-        <div className={`dots-3 ${activeDot === 2 ? 'active' : ''}`} />
+        <div className={cn('dot', {
+          'dot--active': activeDot === 0,
+        })}
+        />
+        <div className={cn('dot', {
+          'dot--active': activeDot === 1,
+        })}
+        />
+        <div className={cn('dot', {
+          'dot--active': activeDot === 2,
+        })}
+        />
       </div>
     </div>
   );
