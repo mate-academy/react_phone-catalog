@@ -15,25 +15,30 @@ export const Slider = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
   const nextButton = () => {
-    setPosition(() => {
-      return position - (itemWidth + gap);
-    });
-
-    setCurrentPage(prevCurrentPage => prevCurrentPage + 1);
+    if (position <= (itemWidth + gap) * -2) {
+      setPosition(0);
+      setCurrentPage(prevCurrentPage => prevCurrentPage - 2);
+    } else {
+      setPosition(() => {
+        return position - (itemWidth + gap);
+      });
+      setCurrentPage(prevCurrentPage => prevCurrentPage + 1);
+    }
   };
 
   const prevButton = () => {
-    setPosition(() => {
-      return position + (itemWidth + gap);
-    });
-
-    setCurrentPage(prevCurrentPage => prevCurrentPage - 1);
+    if (position >= 0) {
+      setPosition(() => {
+        return position + (itemWidth + gap) * -2;
+      });
+      setCurrentPage(prevCurrentPage => prevCurrentPage + 2);
+    } else {
+      setPosition(() => {
+        return position + (itemWidth + gap);
+      });
+      setCurrentPage(prevCurrentPage => prevCurrentPage - 1);
+    }
   };
-
-  const maxPosition = (itemWidth + gap) * 2;
-
-  const canScrollNext = position > maxPosition * -1;
-  const canScrollPrev = position < 0;
 
   const handleClickPag = (index: number) => {
     setCurrentPage(index);
@@ -50,7 +55,6 @@ export const Slider = () => {
           aria-label="prevButton"
           className="slider__button slider__button-left"
           onClick={prevButton}
-          disabled={!canScrollPrev}
         />
         <div className="slider">
           {images.map((image) => (
@@ -71,7 +75,6 @@ export const Slider = () => {
           aria-label="nextButton"
           className="slider__button slider__button-right"
           onClick={nextButton}
-          disabled={!canScrollNext}
         />
       </div>
       <div className="pagination">

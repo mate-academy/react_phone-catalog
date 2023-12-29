@@ -8,6 +8,7 @@ import { ProductDetails } from './ProductDetails/ProductDetails';
 import { CartPage } from './CartPage/CartPage';
 import { NotReadyPage } from './NotPage/NotReadyPage';
 import { store } from '../app/store';
+import { NotFoundPage } from './NotPage/NotFoundPage';
 
 export const Root = () => {
   return (
@@ -27,6 +28,7 @@ export const Root = () => {
               <Route index element={<Favourites />} />
             </Route>
             <Route path="bag" element={<CartPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Provider>

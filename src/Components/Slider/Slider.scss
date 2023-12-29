@@ -51,10 +51,6 @@
     cursor: pointer;
     top: 0;
 
-    &:disabled {
-      background-color: $border-color;
-    }
-
     &-right {
       position: absolute;
       background-image: url(../../Images/slider/arrow-right.svg);
