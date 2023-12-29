@@ -40,7 +40,9 @@ export const ProductDetails: React.FC = () => {
           setIsError(true);
         })
         .finally(() => {
-          setIsLoading(false);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
         });
     }
   }, [productId]);
@@ -83,7 +85,7 @@ export const ProductDetails: React.FC = () => {
   return (
     <section className="details">
       <div className="container">
-        {isLoading ? (
+        {isLoading && !isError ? (
           <Loader />
         ) : (
           <>
