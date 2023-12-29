@@ -1,0 +1,52 @@
+@import "../../styles/main";
+
+.footer {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: space-between;
+  border-top: 1px solid $light-gray;
+
+  &__logo {
+    display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &-image {
+      height: 24px;
+      width: 40px;
+      background-image: url(../../assets/icons/Logo.svg);
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+
+    &-link {
+      transition-duration: $transition-duration;
+      font-family: Mont-Bold, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 4%;
+      color: $secondary-color;
+      line-height: 11px;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}

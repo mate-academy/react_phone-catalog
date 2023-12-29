@@ -1,0 +1,92 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  &-fav {
+    background-image: url('../assets/icons/Favourites-icon.svg');
+
+    &:hover {
+      background-color: $background-color;
+    }
+
+    &-fill {
+      background-image: url('../assets/icons/Favourites-icon-filled.svg');
+    }
+  }
+
+  &-amount {
+    position: absolute;
+    top: 20px;
+    right: 18px;
+    background-color: $red;
+    border-radius: 50%;
+    padding: 0 4px;
+    font-size: 9px;
+    color: #fff;
+  }
+
+  &-cart {
+    background-image: url('../assets/icons/Cart-icon.svg');
+
+    &:hover {
+      background-color: $background-color;
+    }
+  }
+
+  &-left {
+    background-image: url('../assets/icons/arrow-left.svg');
+  }
+
+  &-right {
+    background-image: url('../assets/icons/arrow-right.svg');
+  }
+
+  &-up {
+    &::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      display: block;
+      background-image: url('../assets/icons/arrow-right.svg');
+      transform: rotate(270deg);
+
+    }
+  }
+
+  &-down {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      display: block;
+      background-image: url('../assets/icons/arrow-down-gray.svg');
+      bottom: 20%;
+      right: 5%;
+    }
+  }
+
+  &-home {
+    background-image: url('../assets/icons/Home.svg');
+  }
+
+  &-breadcrumbs {
+    background-image: url('../assets/icons/breadcrumbs-separator.svg');
+  }
+
+  &-cross {
+    background-image: url('../assets/icons/Close.svg');
+    opacity: 0.5;
+  }
+
+  &-minus {
+    background-image: url('../assets/icons/Minus.svg');
+  }
+
+  &-plus {
+    background-image: url('../assets/icons/Plus.svg');
+  }
+}

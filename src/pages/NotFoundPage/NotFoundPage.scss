@@ -1,0 +1,40 @@
+@import "../../styles/main";
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: $red;
+
+  &__title {
+    @extend %h1;
+
+    margin-bottom: 24px;
+
+    &-404 {
+      font-size: 100px;
+      font-family: Mont-Semibold, sans-serif;
+    }
+  }
+
+  &__info {
+    color: $main-color;
+    font-family: Mont-Regular, sans-serif;
+
+    &-link {
+      margin-inline: 7px;
+      font-family: Mont-Bold, sans-serif;
+      font-size: 15px;
+    }
+  }
+
+  &__link {
+    font-family: Mont-Semibold, sans-serif;
+    margin-inline: 5px;
+    text-decoration: underline;
+    color: $red;
+  }
+}

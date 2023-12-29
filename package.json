@@ -13,8 +13,13 @@
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-paginate": "^8.2.0",
+    "react-router-dom": "^6.21.0",
     "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5"
+    "react-slick": "^0.29.0",
+    "react-transition-group": "^4.4.5",
+    "slick-carousel": "^1.8.1",
+    "use-react-router-breadcrumbs": "^4.0.1"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
@@ -26,6 +31,7 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/react-slick": "^0.23.12",
     "cypress": "^9.5.3",
     "eslint": "^7.32.0",
     "eslint-plugin-cypress": "^2.11.2",

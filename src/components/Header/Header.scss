@@ -1,0 +1,43 @@
+@import "../../styles/main";
+
+.header {
+  font-family: Mont-Bold, sans-serif;
+  padding-left: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-bottom: 1px solid $light-gray;
+  margin-bottom: 40px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__logo {
+    display: flex;
+
+    &-image {
+      background-image: url("../../assets/icons/Logo.svg");
+      width: 40px;
+      height: 24px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+
+    &-icon {
+      padding: 33px;
+      border-left: 1px solid $light-gray;
+    }
+  }
+}
+

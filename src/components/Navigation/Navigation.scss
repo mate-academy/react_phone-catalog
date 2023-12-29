@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.navigation {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    color: $secondary-color;
+    padding-block: 25px;
+
+    &-active {
+      color: $main-color;
+      position: relative;
+
+      &::after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: $main-color;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}

@@ -1,1 +1,20 @@
-// not empty
+@import "./styles/main";
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 96px;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 80px;
+
+  &__container {
+    width: 100%;
+    max-width: 1136px;
+  }
+}

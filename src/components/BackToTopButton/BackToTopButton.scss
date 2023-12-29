@@ -1,0 +1,36 @@
+@import "../../styles/main";
+
+.back-to-top {
+  height: 32px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  transition-duration: $transition-duration;
+  color: $secondary-color;
+  background-color: transparent;
+  font-family: Mont-Regular, sans-serif;
+
+  &__message {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icon-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: $transition-duration;
+  }
+
+  &:hover {
+    color: $main-color;
+
+    .back-to-top__button {
+      border: 1px solid $main-color;
+    }
+  }
+}

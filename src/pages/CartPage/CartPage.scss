@@ -1,0 +1,155 @@
+@import "../../styles/main";
+
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: -40px;
+
+  &__title {
+    @extend %h1;
+
+    margin-top: 16px;
+  }
+
+  &__content {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__checkout {
+    width: 368px;
+    max-height: 206px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid $light-gray;
+
+    &_total {
+      height: 96px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid $light-gray;
+
+      &-price {
+        @extend %h1;
+      }
+
+      &-amount {
+        font-size: 14px;
+        color: $secondary-color;
+        font-family: Mont-Regular, sans-serif;
+        line-height: 21px;
+      }
+    }
+
+    &-button {
+      height: 48px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $main-color;
+      transition-duration: $transition-duration;
+
+      @extend %button;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+      }
+    }
+  }
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $light-gray;
+
+  &__left-container,
+  &__right-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__button-delete {
+    margin-left: 24px;
+
+    @extend %button;
+  }
+
+  &__photo {
+    width: 80px;
+    height: 80px;
+    margin-left: 24px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_img {
+      width: 42px;
+    }
+  }
+
+  &__name {
+    margin-left: 24px;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    border-bottom: 1px solid transparent;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__counter {
+    margin-left: 50px;
+    width: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+
+    &_button {
+      height: 32px;
+      width: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $icon-color;
+      transition-duration: $transition-duration;
+      background-color: transparent;
+
+      &:hover {
+        border-color: $main-color;
+      }
+
+      &:disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__price {
+    margin-left: 43px;
+    margin-right: 40px;
+
+    @extend %h2;
+  }
+}

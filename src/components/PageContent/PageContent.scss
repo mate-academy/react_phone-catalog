@@ -1,0 +1,31 @@
+@import '../../styles/main';
+
+.page-content {
+  &__title {
+    @extend %h1;
+
+    margin: 40px 0 8px;
+  }
+
+  &__amount {
+    color: $secondary-color;
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-block: 8px 0;
+  }
+
+  &__selects {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+
+.empty-message {
+  font-size: 20px;
+  margin-top: 30px;
+}
