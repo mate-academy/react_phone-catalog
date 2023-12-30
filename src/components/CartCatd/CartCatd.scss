@@ -10,6 +10,7 @@
 
   @include on-desktop {
     flex-direction: row;
+    justify-content: space-between;
   }
 
   &__container {
