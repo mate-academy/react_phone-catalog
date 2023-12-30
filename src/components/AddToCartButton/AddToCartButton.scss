@@ -1,0 +1,20 @@
+@import "../../styles/main";
+
+.add-to-cart-button {
+  width: 80%;
+  height: 40px;
+  background-color: $main-color;
+  transition-duration: $transition-duration;
+
+  @extend %button;
+
+  &:hover {
+    box-shadow: 0 0 8px 1px rgba($main-color, 0.3);
+  }
+
+  &.added-to-cart {
+    border: 1px solid $light-gray;
+    background-color: #fff;
+    color: $green;
+  }
+}

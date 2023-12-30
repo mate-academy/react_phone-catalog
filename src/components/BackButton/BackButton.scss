@@ -1,0 +1,22 @@
+@import "../../styles/main";
+
+.button-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition-duration: $transition-duration;
+  margin-top: 40px;
+
+  &__button {
+    background: transparent;
+    padding-left: 20px;
+    font-family: Mont-Semibold, sans-serif;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &:hover {
+    color: #fff;
+    transform: translateX(-30%);
+  }
+}
