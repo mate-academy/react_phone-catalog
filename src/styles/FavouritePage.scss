@@ -1,0 +1,57 @@
+@import "./utils/utils";
+
+.favourites {
+  max-width: $desktop-width;
+  width: 100%;
+  margin-top: 30px;
+
+  @include on-desktop {
+    margin: 0;
+  }
+
+  &__top {
+    width: 100%;
+  }
+
+  &__title {
+    color: $c-gray-primary;
+    width: max-content;
+    margin-bottom: 8px;
+
+    @include h1;
+  }
+
+  &__count {
+    width: max-content;
+    margin-bottom: 40px;
+    color: $c-gray-secondary;
+    
+    @include body-text;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    row-gap: 40px;
+    width: 100%;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, $card-width);
+    }
+
+    @media (min-width: 960px) {
+      display: grid;
+      grid-template-columns: repeat(3, $card-width);
+    }
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(4, $card-width);
+    }
+  }
+}

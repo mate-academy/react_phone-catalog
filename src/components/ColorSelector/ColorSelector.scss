@@ -1,0 +1,19 @@
+@import "../../styles/utils/utils";
+
+.colors-list {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid $c-white;
+  outline: 1px solid $c-gray-elements;
+  transition: all 0.3s;
+
+  &--active {
+    outline: 1px solid $c-gray-secondary;
+    pointer-events: none;
+  }
+
+  &:hover {
+    outline: 1px solid $c-gray-primary;
+  }
+}

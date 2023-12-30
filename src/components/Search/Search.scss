@@ -1,0 +1,33 @@
+@import "../../styles/utils/utils";
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include on-desktop {
+    display: flex;
+    width: 300px;
+  }
+
+  &__input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    color: $c-gray-primary;
+
+    @include big-text;
+
+    &::placeholder {
+      color: $c-gray-icons-placeholders;
+      
+      @include big-text;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: $c-white;
+    outline: none;
+  }
+}

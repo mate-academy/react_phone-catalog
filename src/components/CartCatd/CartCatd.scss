@@ -1,0 +1,111 @@
+@import "../../styles/utils/utils";
+
+.cart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid $c-gray-elements;
+  padding: 24px;
+
+  @include on-desktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @include on-desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    @include on-desktop {
+      width: 200px;
+    }
+  }
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin: 24px;
+    background-color: $c-white;
+    border: none;
+
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.1);
+    }
+  }
+
+  &__img {
+    width: 66px;
+    height: 80px;
+    margin: 7px;
+  }
+
+  &__name {
+    width: 100%;
+    margin: 0 50px 0 24px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    margin-right: 43px;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    color: $c-gray-primary;
+    
+    @include body-text;
+  }
+
+  &__btn {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    background-color: $c-white;
+    border: 1px solid $c-gray-elements;
+
+    &--disabled {
+      pointer-events: none;
+
+      &:hover {
+        border: 1px solid $c-gray-elements;
+      }
+    }
+
+    &:hover {
+      transition: 0.3s;
+      border: 1px solid $c-gray-primary;
+    }
+  }
+
+  &__price {
+    @include h2;
+    
+    color: $c-gray-primary;
+  }
+
+  &:hover {
+    transition: 0.3s;
+    border: 1px solid $c-gray-primary;
+  }
+}

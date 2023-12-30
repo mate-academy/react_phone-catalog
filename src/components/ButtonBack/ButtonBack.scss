@@ -1,0 +1,22 @@
+@import "../../styles/utils/utils";
+
+.button-back {
+  padding: 0;
+  border: none;
+  display: flex;
+  gap: 4px;
+  background-color: white;
+  color: $c-gray-secondary;
+  transition: color 0.3s;
+  
+  @include smal-text;
+
+  &::after {
+    content: "Back";
+    height: 16px;
+  }
+
+  &:hover {
+    color: $c-gray-primary;
+  }
+}

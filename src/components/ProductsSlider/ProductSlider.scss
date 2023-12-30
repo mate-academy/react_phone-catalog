@@ -1,0 +1,61 @@
+@import "../../styles/utils/utils";
+
+.slid {
+  margin-bottom: 80px;
+  overflow: hidden;
+
+  &__title {
+    @include h1;
+    
+    color: $c-gray-primary;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background: $c-white;
+    box-sizing: border-box;
+    border: 1px solid $c-gray-icons-placeholders;
+
+    &:hover {
+      border: 1px solid $c-gray-primary;
+    }
+
+    &-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--disabled {
+        color: $c-gray-elements;
+      }
+    }
+
+    &--disabled {
+      border: 1px solid $c-gray-elements;
+      pointer-events: none;
+
+      &:hover {
+        border: 1px solid $c-gray-elements;
+      }
+    }
+  }
+
+  &__card {
+    display: flex;
+    gap: 16px;
+  }
+}

@@ -1,1 +1,24 @@
-// not empty
+@import "./styles/utils/utils";
+
+.head {
+  margin: 0;
+  padding: 0;
+  height: $header-height;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  min-height: $main-height;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  height: $footer-height;
+  border-top: 1px solid $c-gray-elements;
+  box-sizing: border-box;
+}

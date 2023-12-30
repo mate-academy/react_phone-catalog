@@ -1,0 +1,18 @@
+@import "../../styles/utils/utils";
+
+.not-found {
+  display: flex;
+  max-width: $desktop-width;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $c-gray-primary;
+    
+    @include h1;
+  }
+}

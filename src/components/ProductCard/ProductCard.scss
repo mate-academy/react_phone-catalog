@@ -1,0 +1,87 @@
+@import "../../styles/utils/utils";
+
+.card {
+  width: 272px;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid $c-gray-elements;
+  transition: 0.3s;
+
+  &:hover {
+    border: 1px solid $c-gray-primary;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    width: 224px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    height: 42px;
+    margin-bottom: 6px;
+
+    &-title {
+      text-decoration: none;
+      color: $c-gray-primary;
+
+      @include body-text;
+    }
+  }
+
+  &__line {
+    width: 224px;
+    height: 1px;
+    background: $c-gray-elements;
+  }
+
+  &__prices {
+    margin-bottom: 6px;
+  }
+
+  &__price {
+    @include h2;
+
+    &--old {
+      margin-left: 8px;
+      line-height: 28px;
+      text-decoration: line-through;
+      color: $c-gray-secondary;
+    }
+  }
+
+  &__features {
+    margin: 16px 0;
+  }
+
+  &__feature {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-name {
+      @include smal-text;
+
+      color: $c-gray-secondary;
+    }
+
+    &-value {
+      @include smal-text;
+      
+      text-transform: uppercase;
+      color: $c-gray-primary;
+    }
+  }
+
+  &__actions {
+    width: 224px;
+    height: 40px;
+  }
+}

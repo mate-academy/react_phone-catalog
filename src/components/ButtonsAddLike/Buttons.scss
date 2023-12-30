@@ -1,0 +1,49 @@
+@import "../../styles/utils/utils";
+
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  &__buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+    width: 100%;
+    background: $c-gray-primary;
+    color: $c-white;
+    text-align: center;
+
+    @include big-text;
+
+    &--active {
+      background: $c-white;
+      color: green;
+      border: 1px solid $c-gray-elements;
+    }
+
+    &:hover {
+      border: 1px solid $c-gray-primary;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+    flex-shrink: 0;
+    width: 40px;
+    background: $c-white;
+    border: 1px solid $c-gray-elements;
+
+    &:hover {
+      border: 1px solid $c-gray-primary;
+    }
+  }
+}

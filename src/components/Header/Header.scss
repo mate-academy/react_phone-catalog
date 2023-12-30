@@ -1,0 +1,241 @@
+@import "../../styles/utils/utils";
+
+.header {
+  position: relative;
+  display: flex;
+  height: 64px; 
+  z-index: 1;
+  border-bottom: 1px solid $c-gray-elements;
+  box-sizing: border-box;
+  transition: transform 0.3s;
+
+  @include on-desktop {
+    z-index: 1;
+    margin-bottom: 0;
+  }
+
+  &__link-container {
+    display: flex;
+    background-color: $c-white;
+    flex-grow: 1;
+  }
+  
+  &__container {
+    display: flex;
+    background-color: $c-white;
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    margin-right: 64px;
+    margin-left: 24px;
+    z-index: 1;
+  }
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    top: 64px;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: $c-gray-primary;
+    transform: translateY(0%);
+    transition: transform 0.5s;
+  
+    &--disable {
+      transform: translateY(-120%);
+      transition: transform 0.5s;
+
+      @include on-desktop {
+        display: block;
+        transform: none;
+      }
+    }
+
+    @include on-desktop {
+      position: static;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      padding: 0;
+      flex-direction: row;
+      background-color: $c-white;
+      z-index: 1;
+    }
+
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      z-index: -1;
+      box-sizing: border-box;
+    }
+
+    &-link {
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      text-align: left;
+      color: $c-gray-secondary;
+      transition: 0.3s;
+      z-index: -1;
+      box-sizing: border-box;
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: fit-content;
+        background-color: $c-gray-primary;
+        transition: all 0.3s ease-in-out;
+        transform: scale(0);
+      }
+  
+      &:hover {
+        color: $c-white;
+
+        @include on-desktop {
+          color: $c-gray-primary;
+        }
+      }
+    }
+  }
+
+  &__search {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    left: 0;
+    top: 64px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $c-gray-elements;
+    width: 100%;
+    height: 50%;
+    z-index: -2;
+
+    @include on-desktop {
+      margin: 0;
+      position: static;
+      display: flex;
+      z-index: 1;
+      border-left: 1px solid $c-gray-elements;
+      border-bottom: none;
+      max-width: 320px;
+      height: 100%;
+      padding: 0 24px;
+    }
+  }
+
+  &__icons {
+    padding: 0;
+    position: relative;
+    border-left: 1px solid $c-gray-elements;
+    box-sizing: border-box;
+    z-index: 1;
+
+    &--container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+    }
+
+
+    &--count {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 25%;
+      right: 25%;
+      color: $c-white;
+      text-align: center;
+      font-size: 9px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      background: $c-red;
+      box-sizing: border-box;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &__is-active {
+    color: $c-red;
+
+    @include on-desktop {
+      color: $c-gray-primary;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 3px;
+      left: 0;
+      bottom: 0;
+      transition: all 0.3s ease-in-out;
+      transform: scale(1);
+      background-color: $c-gray-primary;
+      box-sizing: border-box;
+    }
+  }
+
+  &__burger {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &__menu {
+    pointer-events: none;
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    &--open {
+      background-image: url("../../img/menu_FILL0_wght400_GRAD0_opsz24.svg");
+    }
+
+    &--close {
+      background-image: url("../../img/close_FILL0_wght400_GRAD0_opsz24.svg");
+    }
+  }
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  box-sizing: border-box;
+
+  @include on-desktop {
+    display: none;
+  }
+}

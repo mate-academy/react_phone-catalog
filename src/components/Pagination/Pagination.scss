@@ -1,0 +1,64 @@
+@import "../../styles/utils/utils";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0 8px;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 16px;
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid $c-gray-icons-placeholders;
+
+    &-left--disabled,
+    &-right--disabled {
+      pointer-events: none;
+    }
+
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid $c-gray-primary;
+    }
+  }
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid $c-gray-icons-placeholders;
+
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid $c-gray-primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: $c-gray-primary;
+    text-align: center;
+    text-decoration: none;
+    
+    @include body-text;
+    
+    &--active {
+      background-color: $c-gray-primary;
+      color: $c-white;
+    }
+  }
+}
