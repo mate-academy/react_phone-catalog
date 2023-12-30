@@ -89,6 +89,18 @@
     &:hover {
       box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
     }
+
+    &--added {
+      background-color: #fff;
+      color: $green;
+
+      @include buttonBorder;
+
+      &:hover {
+        box-shadow: none;
+        border-color: $gray-secondary;
+      }
+    }
   }
 
   &__icon {

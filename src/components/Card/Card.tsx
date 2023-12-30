@@ -1,5 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import { Phone } from '../../Types/Phone';
+import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
 
 type Props = {
   card: Phone,
@@ -11,6 +13,18 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
   const path = location.pathname.includes('phones')
     ? card.phoneId
     : `phones/${card.phoneId}`;
+
+  const { cartPhones, setCartPhones } = useProducts();
+
+  const addToCart = (phone: Phone) => {
+    const setOfPhones = new Set([...cartPhones, phone]);
+
+    const newPhones: Phone[] = Array.from(setOfPhones);
+
+    setCartPhones(newPhones);
+  };
+
+  const cartPhonesIds = cartPhones.map(phone => phone.id);
 
   return (
     <div className="card">
@@ -43,7 +57,15 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
         </div>
       </div>
       <div className="card__button">
-        <a className="card__link" href="/">Add to cart</a>
+        <div
+          onClick={() => addToCart(card)}
+          className={classNames('card__link', {
+            'card__link--added': cartPhonesIds.includes(card.id),
+          })}
+          role="presentation"
+        >
+          {cartPhonesIds.includes(card.id) ? 'Added to cart' : 'Add to cart'}
+        </div>
         <div className="card__icon" />
       </div>
     </div>

@@ -36,17 +36,15 @@
     width: 64px;
     display: flex;
     justify-content: center;
+    align-items: center;
     box-shadow: -1px 0px 0px 0px $shadow-color;
     height: 100%;
-    align-items: center;
     transition: background-color $effect-duration $animation-timing-function;
 
     &:hover {
       background-color: $shadow-color;
     }
   }
-
-
 }
 
 .logo {
@@ -58,8 +56,12 @@
   }
 }
 
-.icon {
-  height: 16px;
+.item-amount {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  background-color: $red;
+  color: #fff;
 }
 
 
@@ -106,4 +108,39 @@
   }
 }
 
+.cart-is-active {
+  border-bottom: 3px solid $gray-primary;
+}
 
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  // border: 1px solid black;
+}
+
+.icon {
+  height: 16px;
+
+  &--with-amount {
+    position: relative;
+    // top: 16px;
+    right: -50%;
+  }
+}
+
+.item-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 600px;
+  position: relative;
+  top: -14px;
+  right: -14px;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}

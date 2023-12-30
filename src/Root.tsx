@@ -13,6 +13,7 @@ import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import {
   ProductDetailsPage,
 } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from './pages/CartPage/CartPage';
 
 export const Root = () => (
   <Router>
@@ -24,6 +25,8 @@ export const Root = () => (
         <Route path="phones/:phoneId" element={<ProductDetailsPage />} />
         <Route path="tablets" element={<TabletsPage />} />
         <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="cart" element={<CartPage />} />
+        {/* <Route path="favourites" element={<FavoritesPage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
