@@ -1,0 +1,75 @@
+@import "../../styles/utils/variables";
+
+.card {
+  display: block;
+  border: 1px solid $elements-color;
+  width: 272px;
+  padding: 32px 24px 24px;
+  color: inherit;
+
+  &__image {
+    margin: 0 8px 24px;
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 6.5px;
+    min-height: 42px;
+    color: $primery-color;
+  }
+
+  &__prices {
+    display: flex;
+    margin-bottom: 6.5px;
+  }
+
+  &__price {
+    margin-right: 8px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    line-height: 28px;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__line {
+    margin-bottom: 16px;
+    height: 1px;
+    background-color: $elements-color;
+  }
+
+  &__info-wrapper {
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__char-name {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__char {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

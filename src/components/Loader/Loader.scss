@@ -1,0 +1,25 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &__content {
+    animation: load8 1.2s infinite linear;
+    border-radius: 50%;
+    margin: 1em auto;
+    border: 0.3em solid #ddd;
+    border-left-color: #000;
+    width: 2em;
+    height: 2em;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

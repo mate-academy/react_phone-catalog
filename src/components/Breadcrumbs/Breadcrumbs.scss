@@ -1,0 +1,32 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  height: 16px;
+
+  &__home {
+    font-size: 0;
+    line-height: 0;
+  }
+
+  &__image {
+    width: 16px;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+
+    @include hover(color, $primery-color);
+
+    &--category {
+      color: $primery-color;
+    }
+  }
+}
