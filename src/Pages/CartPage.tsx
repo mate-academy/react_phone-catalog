@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { ButtonIcon } from '../elements/ButtonIcon/ButtonIcon';
-import { ProductsContext } from '../store/ProductsContext';
 import { Cart } from '../components/Cart/Cart';
 import { Fail } from '../elements/Empty/Fail';
+import { useAppSelector } from '../store/hooks';
 
 export const CartPage: React.FC = () => {
-  const { cartedProducts } = useContext(ProductsContext);
+  const cartedProducts = useAppSelector(state => state.cartedProducts);
   const [totalPrice, setTotalPrice] = useState<number>(cartedProducts
     .reduce((sum, cart) => sum + cart.price, 0) || 0);
 
@@ -14,8 +14,8 @@ export const CartPage: React.FC = () => {
       <div className="page__backBtn">
         <ButtonIcon
           type="link"
-          shape="left-light"
-          path="/"
+          shape="left"
+          path=".."
           text="Back"
           dynamicClasses={['no-border']}
           backBtn

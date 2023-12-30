@@ -1,21 +1,23 @@
+/* eslint-disable max-len */
 import { useSearchParams } from 'react-router-dom';
-import { useContext, useMemo } from 'react';
+import { useMemo } from 'react';
 import _debounce from 'lodash/debounce';
-import { ProductsContext } from '../../store/ProductsContext';
 import { Params, getSearchWith } from '../../helpers/utils/getSearch';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import './Search.scss';
+import { useAppDispatch } from '../../store/hooks';
+import { setQuery } from '../../features/querySlice';
 
 type Props = {
   page: string;
 };
 
 export const Search: React.FC<Props> = ({ page }) => {
-  const { setQuery } = useContext(ProductsContext);
+  const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  const applyQuery = useMemo(() => (_debounce(setQuery, 1000)), [setQuery]);
+  const applyQuery = useMemo(() => (_debounce((newQuery: string) => dispatch(setQuery(newQuery)), 1000)), [dispatch]);
 
   function setParams(params: Params) {
     const search = getSearchWith(params, searchParams);

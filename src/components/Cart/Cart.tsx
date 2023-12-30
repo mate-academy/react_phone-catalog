@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { ProductType } from '../../helpers/types/ProductType';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import { BASE_URL } from '../../helpers/utils/constants';
-import { ProductsContext } from '../../store/ProductsContext';
 import './Cart.scss';
+import { removeFromCart } from '../../features/cartSlice';
 
 type Props = {
   product: ProductType;
@@ -11,12 +12,12 @@ type Props = {
 };
 
 export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
-  const { setCartedProducts } = useContext(ProductsContext);
+  const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const { name, image, price } = product;
 
   const handleCloseClick = () => {
-    setCartedProducts(cur => cur.filter(prod => prod.id !== product.id));
+    dispatch(removeFromCart(product.id));
     setTotalPrice(cur => cur - price);
   };
 

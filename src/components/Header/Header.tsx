@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 import { NavBar } from '../NavBar/NavBar';
 import { Search } from '../Search/Search';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
-import { ProductsContext } from '../../store/ProductsContext';
+import { useAppSelector } from '../../store/hooks';
 
 export const Header: React.FC = () => {
+  const cartedProducts = useAppSelector(state => state.cartedProducts);
+  const favouriteProducts = useAppSelector(state => state.favouriteProducts);
   const { pathname } = useLocation();
-  const { favoriteProducts, cartedProducts } = useContext(ProductsContext);
   const curPage = pathname.split('/')[1];
   const shouldSearch = curPage === 'phones'
     || curPage === 'tablets'
@@ -37,8 +38,8 @@ export const Header: React.FC = () => {
               dynamicClasses={['shadow', 'big']}
             />
 
-            {favoriteProducts.length > 0 && (
-              <div className="header__counter">{favoriteProducts.length}</div>
+            {favouriteProducts.length > 0 && (
+              <div className="header__counter">{favouriteProducts.length}</div>
             )}
           </div>
 

@@ -1,9 +1,10 @@
-/* eslint-disable max-len */
 import classNames from 'classnames';
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { ProductType } from '../../helpers/types/ProductType';
-import { ProductsContext } from '../../store/ProductsContext';
 import './ButtonTexted.scss';
+import { useAppSelector } from '../../store/hooks';
+import { addToCart, removeFromCart } from '../../features/cartSlice';
 
 type Props = {
   product: ProductType;
@@ -18,10 +19,12 @@ export const ButtonTexted: React.FC<Props> = ({
   textActive,
   width,
 }) => {
-  const { cartedProducts, setCartedProducts } = useContext(ProductsContext);
+  const dispatch = useDispatch();
+  const cartedProducts = useAppSelector(state => state.cartedProducts);
 
   function isProductCarted() {
-    const copy = [...cartedProducts];
+    // const copy = [...cartedProducts];
+    const copy = Array.from(cartedProducts);
 
     return copy.map(car => JSON.stringify(car))
       .includes(JSON.stringify(product));
@@ -29,9 +32,9 @@ export const ButtonTexted: React.FC<Props> = ({
 
   function handleCartClick(prod: ProductType) {
     if (isProductCarted()) {
-      setCartedProducts(cur => cur.filter(item => item !== prod));
+      dispatch(removeFromCart(prod.id));
     } else {
-      setCartedProducts(cur => [...cur, prod]);
+      dispatch(addToCart(prod));
     }
   }
 

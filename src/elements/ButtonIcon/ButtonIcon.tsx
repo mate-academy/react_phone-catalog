@@ -1,13 +1,15 @@
 /* eslint-disable max-len */
+import React from 'react';
 import classNames from 'classnames';
-import React, { useContext } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { ProductType } from '../../helpers/types/ProductType';
-import { ProductsContext } from '../../store/ProductsContext';
 import './ButtonIcon.scss';
+import { useAppSelector } from '../../store/hooks';
+import { addToFavourite, removeFromFavourite } from '../../features/favouriteSlice';
 
 type DynamicClass = 'big' | 'shadow' | 'no-border' | 'large' | 'medium' | 'link-active' | 'disabled' | '';
-type Shape = 'cart' | 'close' | 'down' | 'heart' | 'home' | 'left' | 'left-light' | 'loop' | 'minus' | 'plus' | 'right' | 'right-light' | 'up' | 'up-light';
+type Shape = 'cart' | 'close' | 'down' | 'heart' | 'home' | 'left' | 'loop' | 'minus' | 'plus' | 'right' | 'up';
 
 type Props = {
   type: 'event' | 'link';
@@ -19,6 +21,7 @@ type Props = {
   disable?: boolean;
   checkFav?: boolean;
   backBtn?: boolean;
+  disactive?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
@@ -32,13 +35,15 @@ export const ButtonIcon: React.FC<Props> = ({
   disable,
   checkFav,
   backBtn,
+  disactive,
   onClick,
 }) => {
-  const { favoriteProducts, setFavoriteProducts } = useContext(ProductsContext);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const favouriteProducts = useAppSelector(state => state.favouriteProducts);
 
   function isProductFavorite() {
-    const copy = [...favoriteProducts];
+    // const copy = [...favouriteProducts];
+    const copy = Array.from(favouriteProducts);
 
     return copy.map(fav => JSON.stringify(fav))
       .includes(JSON.stringify(product));
@@ -50,21 +55,15 @@ export const ButtonIcon: React.FC<Props> = ({
     }
 
     if (isProductFavorite()) {
-      setFavoriteProducts(cur => cur.filter(item => item !== product));
+      dispatch(removeFromFavourite(product.id));
     } else {
-      setFavoriteProducts(cur => [...cur, product]);
+      dispatch(addToFavourite(product));
     }
   }
 
   const DC = dynamicClasses?.map(cl => `buttonIcon--${cl}`).join(' ');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (backBtn) {
-      // () => navigate('..');
-      navigate(-1);
-      // window.history.go(-1);
-    }
-
     if (checkFav) {
       handleFavoriteClick();
     }
@@ -89,6 +88,7 @@ export const ButtonIcon: React.FC<Props> = ({
           <div className={classNames(
             'buttonIcon__icon',
             `buttonIcon__icon--${shape}`, {
+              'buttonIcon__icon--disactive': disactive,
               'buttonIcon__icon--heart-active': (product && shape === 'heart' && isProductFavorite()),
             },
           )}
@@ -104,6 +104,7 @@ export const ButtonIcon: React.FC<Props> = ({
         >
           <div className={classNames('buttonIcon__icon', `buttonIcon__icon--${shape}`, {
             'button__icon--heart-active': (product && isProductFavorite()),
+            'buttonIcon__icon--disactive': disactive,
           })}
           >
             {text && (

@@ -1,35 +1,36 @@
 /* eslint-disable max-len */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { DetailType } from '../../helpers/types/DetailType';
 import { ButtonCircle } from '../../elements/ButtonCircle/ButtonCircle';
 import './ProductDetails.scss';
 import {
-  capacities,
   getImgUrl,
   getProductImages,
 } from '../../helpers/utils/details';
 import { ButtonTexted } from '../../elements/ButtonTexted/ButtonTexted';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
-import { ProductsContext } from '../../store/ProductsContext';
 import { getPruductFromDetail } from '../../helpers/utils/getProductFromDetail';
 import { capitalize } from '../../helpers/utils/capitalize';
+import { useAppSelector } from '../../store/hooks';
 
 type Props = {
   product: DetailType;
 };
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
-  const { products } = useContext(ProductsContext);
-  const [curCapasity, setCurCapasity] = useState('64');
+  const { products } = useAppSelector(state => state.products);
+
   const {
     name,
+    color,
     colorsAvailable,
     priceRegular,
     priceDiscount,
     images: imgs,
     id,
+    namespaceId,
     description,
     screen,
     resolution,
@@ -39,6 +40,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     zoom,
     cell,
     capacity,
+    capacityAvailable,
   } = product;
 
   const shortInfo = {
@@ -60,12 +62,6 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
   const images = getProductImages(imgs.length, urlImg);
 
   const [selectedImg, setSelectedImg] = useState(images[0]);
-
-  // here I dont need images as dependencies
-  // how omit linter mistake?
-  useEffect(() => {
-    setSelectedImg(images[0]);
-  }, [product, images]);
 
   return (
     <div className="details">
@@ -110,11 +106,11 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               <p className="details__name">{`ID: ${getPruductFromDetail(products, id).id}`}</p>
             </div>
             <ul className="details__wrapper">
-              {colorsAvailable.map(color => (
+              {colorsAvailable.map(col => (
                 <ButtonCircle
-                  key={color}
-                  color={color}
-                  path={`/phones/${id.slice(0, id.lastIndexOf('-'))}-${color}`}
+                  key={col}
+                  color={col}
+                  path={`/phones/${namespaceId}-${capacity.toLowerCase()}-${col}`}
                 />
               ))}
             </ul>
@@ -125,18 +121,17 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           <div className="details__wrapper details__wrapper--column">
             <p className="details__name">Select capasity</p>
             <ul className="details__wrapper">
-              {capacities.map(cap => (
+              {capacityAvailable.map(cap => (
                 <Link
-                  to={`/phones/${id.slice(0, id.lastIndexOf('-') - 2)}-${cap}gb${id.slice(id.lastIndexOf('-'))}`}
+                  to={`/phones/${namespaceId}-${cap.toLowerCase()}-${color}`}
                   key={cap}
                   type="button"
                   aria-label="button"
-                  onClick={() => setCurCapasity(cap)}
                   className={classNames('details__capacity', {
-                    'details__capacity--active': cap === curCapasity,
+                    'details__capacity--selected': cap === capacity,
                   })}
                 >
-                  {`${cap} GB`}
+                  {cap}
                 </Link>
               ))}
             </ul>
@@ -146,8 +141,8 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
           <div className="details__wrapper--column">
             <div className="details__wrapper">
-              <p className="details__price">{`$${priceRegular}`}</p>
-              <p className="details__fullprice">{`$${priceDiscount}`}</p>
+              <p className="details__price">{`$${priceDiscount}`}</p>
+              <p className="details__fullprice">{`$${priceRegular}`}</p>
             </div>
 
             <div className="details__wrapper details__wrapper--margin-top">
@@ -203,7 +198,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             {Object.entries(longInfo).map(([key, value]) => (
               <div key={value} className="details__wrapper details__wrapper--space">
                 <p className="details__small-text details__small-text--name">{capitalize(key)}</p>
-                <p className="details__spec">{value || '-'}</p>
+                <p className="details__small-text">{value || '-'}</p>
               </div>
             ))}
           </div>

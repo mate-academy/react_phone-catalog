@@ -11,10 +11,12 @@
     display: flex;
     align-items: center;
     gap: 31px;
+    margin-left: 24px;
 
     &--right {
       gap: 43px;
       margin-right: 40px;
+      margin-left: 0;
     }
   }
 

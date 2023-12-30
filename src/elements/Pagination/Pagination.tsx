@@ -45,8 +45,9 @@ export const Pagination: React.FC<Props> = ({
         <ButtonIcon
           type="link"
           dynamicClasses={isArrowDisabled('prev') ? ['disabled'] : ['']}
-          shape={isArrowDisabled('prev') ? 'left' : 'left-light'}
+          shape="left"
           disable={isArrowDisabled('prev')}
+          disactive={isArrowDisabled('prev')}
           path={{
             search: getSearchWith({
               page: findNextPage('prev'),
@@ -73,8 +74,9 @@ export const Pagination: React.FC<Props> = ({
       <ButtonIcon
         type="link"
         dynamicClasses={isArrowDisabled('next') ? ['disabled'] : ['']}
-        shape={isArrowDisabled('next') ? 'right' : 'right-light'}
+        shape="right"
         disable={isArrowDisabled('next')}
+        disactive={isArrowDisabled('next')}
         path={{
           search: getSearchWith({
             page: findNextPage('next'),

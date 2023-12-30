@@ -1,16 +1,9 @@
-import { Outlet } from 'react-router-dom';
-import './App.scss';
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
+import { Provider } from 'react-redux';
+import { Root } from './Root';
+import { store } from './store/store';
 
 export const App = () => (
-  <div className="app">
-    <Header />
-
-    <main className="app__main">
-      <Outlet />
-    </main>
-
-    <Footer />
-  </div>
+  <Provider store={store}>
+    <Root />
+  </Provider>
 );

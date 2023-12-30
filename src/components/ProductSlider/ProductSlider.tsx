@@ -13,6 +13,7 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ children, title }) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
@@ -30,13 +31,14 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
         <div className="product-slider__icons">
           <ButtonIcon
             type="event"
-            shape="left-light"
+            shape="left"
             onClick={handlePrevious}
+            disactive={activeIndex === 0}
           />
 
           <ButtonIcon
             type="event"
-            shape="right-light"
+            shape="right"
             onClick={handleNext}
           />
         </div>
@@ -44,7 +46,7 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
 
       <Swiper
         onSwiper={setSwiperRef}
-        // loop
+        onRealIndexChange={(el: SwiperClass) => setActiveIndex(el.activeIndex)}
         slidesPerView={4}
         className="product-slider__slides"
         spaceBetween={16}

@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ProductsContext } from '../store/ProductsContext';
 import { Dropdown } from '../elements/Dropdown/Dropdown';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList/ProductsList';
@@ -15,13 +14,14 @@ import { namedSortOptions, pageSortOptions } from '../helpers/utils/constants';
 import { Pagination } from '../elements/Pagination/Pagination';
 import { capitalize } from '../helpers/utils/capitalize';
 import { Fail } from '../elements/Empty/Fail';
+import { useAppSelector } from '../store/hooks';
 
 type Props = {
   product: string;
 };
 
 export const ProductPage: React.FC<Props> = ({ product }) => {
-  const { query } = useContext(ProductsContext);
+  const query = useAppSelector(state => state.query);
   const [searchParams] = useSearchParams();
 
   const page = searchParams.get('page') || '1';
@@ -109,9 +109,11 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
 
               <ProductsList products={visibleProductsOnPage} />
 
-              <Pagination
-                products={visibleProducts}
-              />
+              {+perPage < 16 && (
+                <Pagination
+                  products={visibleProducts}
+                />
+              )}
             </>
           )}
         </>

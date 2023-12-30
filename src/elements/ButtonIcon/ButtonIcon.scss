@@ -44,7 +44,7 @@
   &--disabled {
     border-color: $shadow-color;
     pointer-events: none;
-    
+
     @include hover(border-color, $shadow-color);
   }
 
@@ -128,10 +128,6 @@
       background-image: url(./../../assets/icons/left.svg);
     }
 
-    &--left-light {
-      background-image: url(./../../assets/icons/left-light.svg);
-    }
-
     &--loop {
       background-image: url(./../../assets/icons/loop.svg);
     }
@@ -148,16 +144,12 @@
       background-image: url(./../../assets/icons/right.svg);
     }
 
-    &--right-light {
-      background-image: url(./../../assets/icons/right-light.svg);
-    }
-
     &--up {
       background-image: url(./../../assets/icons/up.svg);
     }
 
-    &--up-light {
-      background-image: url(./../../assets/icons/up-light.svg);
+    &--disactive {
+      filter: invert(75%) sepia(12%) saturate(170%) hue-rotate(161deg) brightness(99%) contrast(88%);
     }
   }
 }

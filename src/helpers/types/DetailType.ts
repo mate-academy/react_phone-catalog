@@ -1,6 +1,6 @@
 export type DetailType = {
   id: string;
-  namespaseId: string;
+  namespaceId: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;

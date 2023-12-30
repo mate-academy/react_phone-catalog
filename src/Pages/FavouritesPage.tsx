@@ -1,29 +1,29 @@
-import React, { useContext } from 'react';
-import { ProductsContext } from '../store/ProductsContext';
+import React from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Fail } from '../elements/Empty/Fail';
 import './Page.scss';
+import { useAppSelector } from '../store/hooks';
 
 export const FavouritesPage: React.FC = () => {
-  const { favoriteProducts } = useContext(ProductsContext);
+  const favouriteProducts = useAppSelector(state => state.favouriteProducts);
 
   return (
     <div className="page">
       <Breadcrumbs page="Favourites" />
 
-      {favoriteProducts.length === 0 ? (
+      {favouriteProducts.length === 0 ? (
         <Fail title="Your favourites are empty" />
       ) : (
         <div className="page__main">
           <h1 className="page__title-h1 page__title-h1--product">Favourites</h1>
           <p className="page__prodCount">
-            {favoriteProducts.length > 1
-              ? `${favoriteProducts.length} models`
-              : `${favoriteProducts.length} model`}
+            {favouriteProducts.length > 1
+              ? `${favouriteProducts.length} models`
+              : `${favouriteProducts.length} model`}
           </p>
 
-          <ProductsList products={favoriteProducts} />
+          <ProductsList products={favouriteProducts} />
         </div>
       )}
     </div>

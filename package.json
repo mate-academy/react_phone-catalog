@@ -8,6 +8,7 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
     "classnames": "^2.3.2",
@@ -18,9 +19,12 @@
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.1",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
     "sort-by": "^1.2.0",
     "swiper": "^11.0.5",
     "use-debounce": "^10.0.0"

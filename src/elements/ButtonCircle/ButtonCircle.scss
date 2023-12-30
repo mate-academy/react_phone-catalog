@@ -1,4 +1,4 @@
-@import './../../style/variables';
+@import './../../style/extends';
 
 .buttonCircle {
   height: 32px;
@@ -9,6 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include hover(transform, scale(1.1));
 
   &__color {
     height: 30px;

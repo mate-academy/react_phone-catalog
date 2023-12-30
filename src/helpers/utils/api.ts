@@ -38,9 +38,3 @@ export async function getProductsByCategory(category: string) {
     .then(products => products
       .filter(product => product.category === category));
 }
-
-export async function getBanners(): Promise<ProductType[]> {
-  return new Promise(resolve => setTimeout(resolve, delay))
-    .then(() => fetch('img/banners'))
-    .then(response => response.json());
-}

@@ -60,7 +60,7 @@ export const Dropdown: React.FC<Props> = ({
         <ButtonIcon
           type="event"
           dynamicClasses={['no-border']}
-          shape={isOpen ? 'up-light' : 'down'}
+          shape={isOpen ? 'up' : 'down'}
         />
       </button>
 

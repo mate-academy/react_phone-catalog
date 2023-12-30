@@ -25,7 +25,7 @@ export const PicturesSlider: React.FC = () => {
     <div className="picture-slider">
       <ButtonIcon
         type="event"
-        shape="left-light"
+        shape="left"
         dynamicClasses={['large']}
         onClick={() => setPrevImg()}
       />
@@ -40,7 +40,7 @@ export const PicturesSlider: React.FC = () => {
 
       <ButtonIcon
         type="event"
-        shape="right-light"
+        shape="right"
         dynamicClasses={['large']}
         onClick={() => setNextImg()}
       />
