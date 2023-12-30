@@ -1,10 +1,12 @@
 import storage from 'redux-persist/lib/storage';
-import { PersistConfig } from 'redux-persist';
-import { RootState } from './store';
+import { persistReducer } from 'redux-persist';
+import rootReducer from './rootReducer';
 
-const persistConfig: PersistConfig<RootState> = {
+const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['favouriteProducts', 'cartedProducts'],
 };
 
-export default persistConfig;
+export const persistedReducer = persistReducer(persistConfig, rootReducer);
+export default persistedReducer;

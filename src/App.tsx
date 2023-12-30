@@ -1,9 +1,12 @@
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Root } from './Root';
-import { store } from './store/store';
+import { persistor, store } from './store/store';
 
 export const App = () => (
   <Provider store={store}>
-    <Root />
+    <PersistGate loading={null} persistor={persistor}>
+      <Root />
+    </PersistGate>
   </Provider>
 );

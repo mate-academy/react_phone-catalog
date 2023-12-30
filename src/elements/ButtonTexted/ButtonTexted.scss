@@ -19,6 +19,7 @@
   cursor: pointer;
 
   @include hover(background-color, $main-text-color);
+  
   // @include hover(transform, scale(1.03));
 
   &--active {
