@@ -11,7 +11,7 @@
   background-color: transparent;
   font-family: Mont-Regular, sans-serif;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 

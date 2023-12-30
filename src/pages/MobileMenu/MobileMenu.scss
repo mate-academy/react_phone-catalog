@@ -1,4 +1,4 @@
-@import "../../styles/main.scss";
+@import "../../styles/main";
 
 .mobile-menu {
   height: 100vh;
@@ -13,7 +13,7 @@
   transform: translateY(-100%);
   transition-duration: $transition-duration;
 
-  @include onTablet {
+  @include on-tablet {
     display: block;
   }
 
@@ -69,7 +69,7 @@
 
         @extend %button;
 
-        @include onMobile {
+        @include on-mobile {
           font-size: 14px;
         }
 

@@ -11,7 +11,7 @@
   border-bottom: 1px solid $light-gray;
   margin-bottom: 40px;
 
-  @include onTablet {
+  @include on-tablet {
     height: 48px;
     position: relative;
   }
@@ -43,7 +43,7 @@
       padding: 33px;
       border-left: 1px solid $light-gray;
 
-      @include onTablet {
+      @include on-tablet {
         padding: 24px;
       }
     }
@@ -59,7 +59,7 @@
     background-color: transparent;
     order: -1;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
     }
 
@@ -73,7 +73,7 @@
   }
 
   &__search {
-    @include onMobile {
+    @include on-mobile {
       position: absolute;
       bottom: -30px;
       right: 0;

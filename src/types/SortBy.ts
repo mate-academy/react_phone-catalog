@@ -1,5 +1,5 @@
 export const sortBy = {
-  age: 'Newest',
+  year: 'Newest',
   name: 'Alphabetically',
   price: 'Cheapest',
 };

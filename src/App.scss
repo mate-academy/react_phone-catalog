@@ -14,7 +14,7 @@
   width: 100%;
   margin-bottom: 80px;
 
-  @include onMobile {
+  @include on-mobile {
     margin-bottom: 20px;
   }
 
@@ -22,12 +22,12 @@
     width: 100%;
     max-width: 1136px;
 
-    @include onTablet {
+    @include on-tablet {
       max-width: 750px;
       padding-inline: 25px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       max-width: 600px;
       min-width: 320px;
     }

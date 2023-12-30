@@ -8,12 +8,16 @@ export const getSortedProducts = (
 ) => {
   let sortedProducts: Product[] = [...products];
   const query = searchParams.get(SearchParams.Query)?.trim().toLowerCase();
-  const sortType = searchParams.get(SearchParams.Sort);
+  const sortType = searchParams.get(SearchParams.Sort) || SortTypes.AGE;
 
   if (query) {
     sortedProducts = sortedProducts.filter(item => {
-      return item.name.toLowerCase().includes(query.toLowerCase());
+      return item.name.toLowerCase().includes(query);
     });
+  }
+
+  if (!sortType) {
+    return sortedProducts;
   }
 
   sortedProducts.sort((a: Product, b: Product) => {

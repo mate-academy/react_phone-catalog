@@ -13,11 +13,11 @@
     display: flex;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       height: 300px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       height: 250px;
     }
 
@@ -36,7 +36,7 @@
         cursor: pointer;
       }
 
-      @include onMobile {
+      @include on-mobile {
         display: none;
       }
     }

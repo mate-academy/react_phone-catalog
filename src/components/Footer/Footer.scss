@@ -35,7 +35,7 @@
     align-items: center;
     gap: 64px;
 
-    @include onMobile {
+    @include on-mobile {
       flex-direction: column;
       gap: 5px;
     }

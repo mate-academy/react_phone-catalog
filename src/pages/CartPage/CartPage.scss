@@ -11,7 +11,7 @@
 
     margin-top: 16px;
 
-    @include onMobile {
+    @include on-mobile {
       font-size: 20px;
     }
   }
@@ -21,7 +21,7 @@
     display: flex;
     gap: 16px;
 
-    @include onMobile {
+    @include on-mobile {
       flex-direction: column;
     }
   }
@@ -41,7 +41,7 @@
     gap: 24px;
     border: 1px solid $light-gray;
 
-    @include onMobile {
+    @include on-mobile {
       width: 100%;
     }
 
@@ -88,7 +88,7 @@
   align-items: center;
   border: 1px solid $light-gray;
 
-  @include onMobile {
+  @include on-mobile {
     display: inline;
     padding: 5px;
   }
@@ -104,7 +104,7 @@
 
     @extend %button;
 
-    @include onMobile {
+    @include on-mobile {
       order: 2;
     }
   }
@@ -122,7 +122,7 @@
     justify-content: center;
     align-items: center;
 
-    @include onMobile {
+    @include on-mobile {
       margin-left: 0;
       padding: 0;
     }
@@ -155,7 +155,7 @@
     font-size: 14px;
     line-height: 21px;
 
-    @include onMobile {
+    @include on-mobile {
       margin-left: 0;
     }
 
@@ -186,7 +186,7 @@
 
     @extend %h2;
 
-    @include onMobile {
+    @include on-mobile {
       margin: 0 10px 0 20px;
     }
   }

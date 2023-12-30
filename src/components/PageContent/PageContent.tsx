@@ -1,6 +1,6 @@
 import './PageContent.scss';
 import React, { useContext, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { GlobalContext } from '../../store';
 import { sortBy } from '../../types/SortBy';
@@ -16,6 +16,8 @@ import { Pagination } from '../Pagination';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { ProductList } from '../ProductList';
 import { NoSearchResults } from '../NoSearchResults';
+import { SortTypes } from '../../types/SortTypes';
+import { SearchParams } from '../../types/SearchParams';
 
 type Props = {
   title: string,
@@ -24,10 +26,11 @@ type Props = {
 
 export const PageContent: React.FC<Props> = ({ title, itemsList }) => {
   const { isLoading } = useContext(GlobalContext);
+  const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentPage = searchParams.get('page') || '1';
-  const sortType = searchParams.get('sort') || sortBy.age;
-  const perPage = searchParams.get('perPage') || itemsCount[16];
+  const currentPage = searchParams.get(SearchParams.Page) || '1';
+  const sortType = searchParams.get(SearchParams.Sort) || SortTypes.AGE;
+  const perPage = searchParams.get(SearchParams.PerPage) || itemsCount[16];
 
   const sortedProducts = getSortedProducts(itemsList, searchParams);
 
@@ -96,7 +99,9 @@ export const PageContent: React.FC<Props> = ({ title, itemsList }) => {
         </div>
       )}
 
-      {itemsList.length !== 0 && sortedProducts.length !== 0 && (
+      {itemsList.length !== 0
+        && sortedProducts.length !== 0
+        && pathname !== '/favourites' && (
         <div className="page-content__selects">
           <Dropdown
             label="Sort by"

@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: 80px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 40px;
   }
 }

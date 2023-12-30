@@ -8,7 +8,7 @@
   color: $secondary-color;
   border-left: 1px solid $light-gray;
 
-  @include onMobile {
+  @include on-mobile {
     width: auto;
     border-left: none;
     border-bottom: 1px solid $light-gray;
@@ -33,7 +33,7 @@
       font-size: 12px;
     }
 
-    @include onMobile {
+    @include on-mobile {
       padding-inline: 0;
     }
   }

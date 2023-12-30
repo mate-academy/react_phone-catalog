@@ -6,7 +6,7 @@
 
     margin: 40px 0 8px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-top: 20px;
       font-size: 20px;
     }
@@ -25,9 +25,8 @@
     margin-top: 40px;
     display: flex;
     gap: 16px;
-    margin-bottom: 24px;
 
-    @include onMobile {
+    @include on-mobile {
       margin-top: 20px;
       flex-direction: column;
     }

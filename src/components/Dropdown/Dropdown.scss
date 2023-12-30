@@ -25,7 +25,7 @@
   border: 1px solid $light-gray;
   cursor: pointer;
 
-  @include onMobile {
+  @include on-mobile {
     width: 100%;
   }
 
