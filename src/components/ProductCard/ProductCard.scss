@@ -8,6 +8,7 @@
   transition: 0.3s;
 
   &:hover {
+    border: 1px solid $c-gray-primary;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   }
 

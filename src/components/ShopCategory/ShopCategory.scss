@@ -28,10 +28,11 @@
     @include on-desktop {
       width: 368px;
       height: 368px;
+      transition-duration: 0.3s;
     }
 
     &:hover {
-      transition: 0.3s;
+      transition-duration: 0.3s;
     }
 
     &--1 {

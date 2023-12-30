@@ -53,14 +53,14 @@ export const Slider = () => {
   }, [position]);
 
   useEffect(() => {
-    if (toched) {
-      return () => {};
-    }
+    const interval = setInterval(() => {
+      if (!toched) {
+        moveRight();
+      }
+    }, 3000);
 
-    const interval = setInterval(moveRight, 5000);
-
-    return () => clearInterval(interval);// eslint-disable-next-line
-  }, [position, toched]);
+    return () => clearInterval(interval);
+  }, [position, toched, moveRight]);
 
   return (
     <div className="slider">
@@ -71,7 +71,7 @@ export const Slider = () => {
           type="button"
           onClick={() => {
             moveLeft();
-            setToched(true);
+            setToched(false);
           }}
         >
           <img src="img/mine/icons/Arrow Left.svg" alt="arrow" />
@@ -96,7 +96,7 @@ export const Slider = () => {
           type="button"
           onClick={() => {
             moveRight();
-            setToched(true);
+            setToched(false);
           }}
         >
           <img src="img/mine/icons/Arrow Right.svg" alt="arrow" />

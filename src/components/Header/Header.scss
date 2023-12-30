@@ -142,13 +142,18 @@
   &__icons {
     padding: 0;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
     border-left: 1px solid $c-gray-elements;
     box-sizing: border-box;
     z-index: 1;
+
+    &--container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+    }
+
 
     &--count {
       position: absolute;
@@ -224,6 +229,12 @@
 }
 
 .burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  box-sizing: border-box;
+
   @include on-desktop {
     display: none;
   }

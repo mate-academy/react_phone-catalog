@@ -87,34 +87,38 @@ export const Header = () => {
 
         <div className="header__icons">
           <NavLink to="/favourites" className={getLinkClass}>
-            <img
-              src="img/mine/icons/Favourites (Heart Like).svg"
-              alt="Like"
-            />
+            <div className="header__icons--container">
+              <img
+                src="img/mine/icons/Favourites (Heart Like).svg"
+                alt="Like"
+              />
 
-            {favCount !== 0
-              && (
-                <span className="header__icons--count">
-                  {favCount}
-                </span>
-              )}
+              {favCount !== 0
+                && (
+                  <span className="header__icons--count">
+                    {favCount}
+                  </span>
+                )}
+            </div>
           </NavLink>
         </div>
 
         <div className="header__icons">
           <NavLink to="/cart" className={getLinkClass}>
-            <img src="img/mine/icons/Shopping bag (Cart).svg" alt="Cart" />
+            <div className="header__icons--container">
+              <img src="img/mine/icons/Shopping bag (Cart).svg" alt="Cart" />
 
-            {inCartCount !== 0
-              && (
-                <span className="header__icons--count">
-                  {inCartCount}
-                </span>
-              )}
+              {inCartCount !== 0
+                && (
+                  <span className="header__icons--count">
+                    {inCartCount}
+                  </span>
+                )}
+            </div>
           </NavLink>
         </div>
 
-        <div className="header__icons burger">
+        <div className="burger">
           <button
             type="button"
             ref={exit}

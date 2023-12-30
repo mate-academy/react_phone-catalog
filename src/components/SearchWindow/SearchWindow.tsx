@@ -13,6 +13,7 @@ export const SearchWindow: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="search-window">
+
       <p className="search-window__count">
         {count}
         {' '}

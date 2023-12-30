@@ -5,8 +5,7 @@
   width: 100%;
 
   &__container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
     gap: 16px;
     row-gap: 40px;
