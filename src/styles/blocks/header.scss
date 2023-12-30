@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $elements-color;
+  padding-left: 24px;
+
+  &__left {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__logo {
+    align-self: center;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $elements-color;
+    width: 64px;
+    height: 64px;
+
+    @include hover(background-color, $elements-color);
+  }
+
+  &__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__count {
+    position: absolute;
+    transform: translate(50%, -50%);
+    display: block;
+    border: 1px solid $hoverAndBg-color;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    background-color: $red-color;
+    font-weight: 600;
+    font-size: 9px;
+    line-height: 13px;
+    text-align: center;
+    color: $white-color;
+  }
+}

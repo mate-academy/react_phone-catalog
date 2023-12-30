@@ -1,0 +1,50 @@
+@import "./utils/variables";
+@import "./utils/reset";
+@import "./utils/mixins";
+
+@import "blocks/header";
+@import "blocks/logo";
+@import "blocks/nav";
+@import "blocks/active-link";
+@import "blocks/main";
+@import "blocks/icon";
+@import "blocks/dropdown";
+@import "blocks/phones";
+@import "blocks/category";
+@import "blocks/detail";
+@import "blocks/cart";
+@import "blocks/footer";
+@import "blocks/back-to-top";
+
+
+@font-face {
+  font-family: Mont;
+  src: url("../fonts/Mont-Regular.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("../fonts/Mont-Bold.otf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("../fonts/Mont-SemiBold.otf");
+  font-weight: 600;
+}
+
+html {
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primery-color;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  // max-width: 1136px;
+}
