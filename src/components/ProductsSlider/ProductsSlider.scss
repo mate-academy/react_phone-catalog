@@ -1,0 +1,33 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/typography";
+
+.ProductsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title-and-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %text-title !optional;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__cards-container {
+    display: flex;
+    gap: 16px;
+
+    @include onDesktop {
+      overflow: hidden;
+    }
+  }
+}

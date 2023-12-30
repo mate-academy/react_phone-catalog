@@ -1,1 +1,30 @@
-// not empty
+@import "./styles/reset.scss";
+@import "./main.scss";
+
+@import "./styles/utils/variables";
+@import "./styles/utils/typography";
+@import "./styles/utils/mixins";
+
+@import "./styles/blocks/icon.scss";
+@import "./styles/blocks/container.scss";
+@import "./styles/blocks/button.scss";
+@import "./styles/blocks/Dropdown.scss";
+@import "./styles/blocks/Feature.scss";
+@import "./styles/blocks/About.scss";
+@import "./styles/blocks/TechSpecs.scss";
+@import "./styles/blocks/Description.scss";
+@import "./styles/blocks/Action.scss";
+@import "./styles/blocks/Decorative-line.scss";
+@import "./styles/blocks/Menu.scss";
+@import "./styles/blocks/CategoryPage.scss";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    flex: 1;
+    width: 100%;
+  }
+}

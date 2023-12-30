@@ -1,0 +1,91 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+@font-face {
+  font-family: "Mont-Bold";
+  src: url(../../styles/fonts/Mont-Bold.woff);
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Mont-SemiBold";
+  src: url(../../styles/fonts/Mont-Bold.woff);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Mont-Regular";
+  src: url(../../styles/fonts/Mont-Bold.woff);
+  font-weight: 500;
+}
+
+%text-uppercase {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+%text-small {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  color: $gray-second;
+  margin: 0;
+}
+
+%text-body {
+  font-family: "Mont-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $gray-main;
+  margin: 0;
+  text-decoration: none;
+}
+
+%text-important {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  color: $gray-main;
+}
+
+%text-title {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+  color: $gray-main;
+  margin: 0;
+  text-decoration: none;
+  text-align: left;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%text-title-mobile {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+%text-semi-title {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: $gray-main;
+}
+
+%text-input {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: $gray-main;
+}

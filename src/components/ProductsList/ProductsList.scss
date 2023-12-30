@@ -1,0 +1,23 @@
+@import "../../styles/utils/mixins";
+
+.ProductsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+
+  @include onTablet {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    column-gap: 16px;
+    row-gap: 40px;
+    place-items: center stretch;
+  }
+
+  @include onDesktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+  }
+}

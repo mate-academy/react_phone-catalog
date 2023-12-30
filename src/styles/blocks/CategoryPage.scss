@@ -1,0 +1,48 @@
+.CategoryPage {
+  &__content {
+    padding: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    height: 48px;
+    border-bottom: 1px solid $gray-elements;
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    @include onTablet {
+      gap: 8px;
+    }
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__models-count {
+    @extend %text-body;
+    color: $gray-second;
+  }
+
+  &__dropdowns {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+  }
+}

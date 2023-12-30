@@ -1,0 +1,15 @@
+@import "./styles/utils/variables.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Mont", sans-serif;
+  background-color: $html-bg-color;
+  scroll-behavior: smooth;
+}
+
+.menu-opened {
+  overflow: hidden;
+}

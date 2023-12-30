@@ -1,0 +1,21 @@
+.Feature {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    @extend %text-small;
+  }
+
+  &__value {
+    @extend %text-small;
+    color: $gray-main;
+  }
+}

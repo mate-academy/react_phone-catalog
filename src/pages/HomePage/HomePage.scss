@@ -1,0 +1,47 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+@import "../../styles/utils/typography";
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include onTablet {
+    gap: 72px;
+  }
+
+  &__top {
+    @include onDesktop {
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $gray-main;
+    padding: 24px 16px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+      padding: 32px 24px;
+    }
+
+    @include onDesktop {
+      padding: 56px 0;
+    }
+  }
+
+  &__slider {
+    @include onTablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
