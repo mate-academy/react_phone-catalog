@@ -37,7 +37,7 @@ export const ProductDetailsPage = () => {
     isSelectedInCart = isSelectedProduct(itemProduct?.itemId || '', inCart);
   }
 
-  const random = product.sort(() => Math.random() - 0.5);
+  const [randomProducts, setRandomProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     setLoading(true);
@@ -46,7 +46,13 @@ export const ProductDetailsPage = () => {
       .then((prod) => setProductDet(prod))
       .catch(() => setError(true))
       .finally(() => setLoading(false));
-  }, [productId]);
+
+    if (randomProducts.length === 0) {
+      const randomProductsList = [...product].sort(() => Math.random() - 0.5);
+
+      setRandomProducts(randomProductsList);
+    }
+  }, [productId, product, randomProducts]);
 
   let techSpecs = { keys: [''], values: [''] };
   let charProd = { keys: [''], values: [''] };
@@ -238,7 +244,10 @@ export const ProductDetailsPage = () => {
             </div>
 
             <div className="product-details__slider">
-              <ProductsSlider product={random} title="You may also like" />
+              <ProductsSlider
+                product={randomProducts}
+                title="You may also like"
+              />
             </div>
           </>
         )}
