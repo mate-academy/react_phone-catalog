@@ -13,6 +13,14 @@
     color: $primary;
   }
 
+  &-Root {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &-Header,
   &-NoResults {
     margin-block-end: 40px;
