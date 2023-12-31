@@ -23,9 +23,15 @@
     padding-block: 24px;
   }
 
+  &-Content > a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   &-Title {
     margin: 0 0 6px;
     font-size: inherit;
+
   }
 
   &-Prices {

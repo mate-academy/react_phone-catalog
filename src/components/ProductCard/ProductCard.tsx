@@ -26,13 +26,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     return cartItems.some(item => item.id === product.id);
   }, [cartItems]);
 
-  const addProductToCart = () => dispatch(addToCart(
-    {
-      id: product.id,
-      product,
-      quantity: 1,
-    },
-  ));
+  const addProductToCart = () => dispatch(
+    addToCart(
+      {
+        id: product.id,
+        product,
+        quantity: 1,
+      },
+    ),
+  );
 
   const { favouriteItems } = useAppSelector(state => state.favouriteItems);
   const isItemInFavourites = useMemo(() => {
