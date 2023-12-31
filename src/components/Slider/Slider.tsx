@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import bannerPhones from '../../images/banner/banner-phones.png';
 import bannerTablets from '../../images/banner/banner-tablets.png';
-import bannerAaccessories from '../../images/banner/banner-accessories.png';
+import bannerAccessories from '../../images/banner/banner-accessories.png';
 
 import './Slider.scss';
 
@@ -72,35 +73,41 @@ export const Slider = () => {
               transform: `TranslateX(${offsetWidth}px)`,
             }}
           >
-            <img
-              className="Slider-Slide"
-              src={bannerPhones}
-              alt="Slider banner"
-              width={IMG_WIDTH}
-              height={IMG_HEIGHT}
-              loading="lazy"
-              decoding="async"
-            />
+            <Link to="/phones">
+              <img
+                className="Slider-Slide"
+                src={bannerPhones}
+                alt="Slider banner"
+                width={IMG_WIDTH}
+                height={IMG_HEIGHT}
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
 
-            <img
-              className="Slider-Slide"
-              src={bannerTablets}
-              alt="Slider banner"
-              width={IMG_WIDTH}
-              height={IMG_HEIGHT}
-              loading="lazy"
-              decoding="async"
-            />
+            <Link to="/tablets">
+              <img
+                className="Slider-Slide"
+                src={bannerTablets}
+                alt="Slider banner"
+                width={IMG_WIDTH}
+                height={IMG_HEIGHT}
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
 
-            <img
-              className="Slider-Slide"
-              src={bannerAaccessories}
-              alt="Slider banner"
-              width={IMG_WIDTH}
-              height={IMG_HEIGHT}
-              loading="lazy"
-              decoding="async"
-            />
+            <Link to="/accessories">
+              <img
+                className="Slider-Slide"
+                src={bannerAccessories}
+                alt="Slider banner"
+                width={IMG_WIDTH}
+                height={IMG_HEIGHT}
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
           </div>
         </div>
 
