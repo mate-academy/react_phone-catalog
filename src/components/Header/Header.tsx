@@ -5,9 +5,17 @@ import { PageLinkType } from '../../types/PageLinkType';
 import { Logo } from '../Logo';
 import { Nav } from '../Nav';
 import { PageLink } from '../PageLink';
+import { Counter } from '../Counter';
 import { Search } from '../Search';
 
 import './Header.scss';
+
+const validSearchPathes = [
+  '/phones',
+  '/tablets',
+  '/accessories',
+  '/favourites',
+];
 
 export const Header = () => {
   const { cartItems } = useAppSelector(state => state.cartItems);
@@ -18,20 +26,18 @@ export const Header = () => {
   }, [cartItems]);
 
   const { favouriteItems } = useAppSelector(state => state.favouriteItems);
-  const favouriteQuantity = favouriteItems.length;
+  const favouriteQuantity = useMemo(() => {
+    return favouriteItems.length;
+  }, [favouriteItems]);
 
   const location = useLocation();
-  const isCartPage = location.pathname === '/cart';
+  const isCartPage = useMemo(() => {
+    return location.pathname === '/cart';
+  }, [location]);
 
-  const validSearchPathes = [
-    '/phones',
-    '/tablets',
-    '/accessories',
-    '/favourites',
-  ];
-
-  const isVisibleSearch = validSearchPathes
-    .some(path => path === location.pathname);
+  const isVisibleSearch = useMemo(() => {
+    return validSearchPathes.some(path => path === location.pathname);
+  }, [location]);
 
   return (
     <header className="Page-Header Header">
@@ -48,15 +54,17 @@ export const Header = () => {
           <PageLink
             to="/favourites"
             linkType={PageLinkType.HEART}
-            quantity={favouriteQuantity}
-          />
+          >
+            <Counter quantity={favouriteQuantity} />
+          </PageLink>
         )}
 
         <PageLink
           to="/cart"
           linkType={PageLinkType.CART}
-          quantity={cartQuantity}
-        />
+        >
+          <Counter quantity={cartQuantity} />
+        </PageLink>
       </div>
     </header>
   );

@@ -1,0 +1,36 @@
+@import "../../styles/utils";
+
+.Counter {
+  --position: 18px;
+  --size: 14px;
+  content: "";
+
+  position: absolute;
+  top: var(--position);
+  right: var(--position);
+
+  width: var(--size);
+  height: var(--size);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  color: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  &_active {
+    color: $white;
+
+    border-color: $white;
+
+    background-color: $red;
+  }
+}

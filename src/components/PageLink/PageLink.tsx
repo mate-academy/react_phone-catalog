@@ -6,11 +6,9 @@ import './PageLink.scss';
 
 type Props = NavLinkProps & {
   linkType: PageLinkType
-  quantity?: number
 };
 export const PageLink: React.FC<Props> = ({
   linkType,
-  quantity,
   children,
   ...props
 }) => (
@@ -32,11 +30,6 @@ export const PageLink: React.FC<Props> = ({
       },
     )}
   >
-    {quantity && quantity > 0 && (
-      <span className="PageLink-Quantity">
-        {quantity}
-      </span>
-    )}
     {children}
   </NavLink>
 );
