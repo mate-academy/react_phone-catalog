@@ -58,7 +58,6 @@ export const Header: React.FC = () => {
         >
           <div className="icon-container">
             <img
-              // className="icon"
               className={classNames('icon', {
                 'icon--with-amount': cartPhones.length > 0,
               })}

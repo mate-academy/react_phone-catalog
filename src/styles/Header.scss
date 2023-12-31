@@ -56,15 +56,6 @@
   }
 }
 
-.item-amount {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  background-color: $red;
-  color: #fff;
-}
-
-
 .list {
   display: flex;
   align-items: center;
@@ -113,11 +104,10 @@
 }
 
 .icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 28px;
+  height: 28px;
+
   position: absolute;
-  // border: 1px solid black;
 }
 
 .icon {
@@ -125,8 +115,8 @@
 
   &--with-amount {
     position: relative;
-    // top: 16px;
-    right: -50%;
+    left: 2px;
+    top: 2px;
   }
 }
 
@@ -137,10 +127,12 @@
   font-size: 9px;
   font-weight: 600px;
   position: relative;
-  top: -14px;
-  right: -14px;
   height: 14px;
   width: 14px;
   border-radius: 50%;
   border: 2px solid #fff;
+  background-color: $red;
+  color: #fff;
+  top: -30px;
+  left: 16px;
 }
