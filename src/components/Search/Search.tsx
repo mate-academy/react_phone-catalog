@@ -5,7 +5,7 @@ import { QueryParams } from '../../types/QueryParams';
 import { getSearchWith, SearchParams } from '../../utils/searchHelper';
 import './Search.scss';
 
-export const Search = () => {
+export const Search: React.FC = () => {
   const location = useLocation().pathname.slice(1);
 
   const [searchParams, setSearchParams] = useSearchParams();

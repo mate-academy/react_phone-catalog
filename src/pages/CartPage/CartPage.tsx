@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import { BackLink } from '../../components/BackLink';
 import { CartItem } from '../../components/CartItem';
@@ -13,6 +13,14 @@ export const CartPage: React.FC = () => {
   }, [cart]);
 
   const [isModalActive, setIsModalActive] = useState(false);
+
+  useEffect(() => {
+    if (isModalActive) {
+      document.body.classList.add('lock-scroll');
+    } else {
+      document.body.classList.remove('lock-scroll');
+    }
+  }, [isModalActive]);
 
   return (
     <div className="CartPage">
@@ -31,7 +39,7 @@ export const CartPage: React.FC = () => {
             <div className="CartPage__total">
               <h1 className="CartPage__total-price">{`$${total}`}</h1>
               <p className="CartPage__total-text" data-cy="productQauntity">
-                {`Total for ${totalQuantity} items`}
+                {totalQuantity === 1 ? 'Total for 1 item' : `Total for ${totalQuantity} items`}
               </p>
               <button
                 type="button"

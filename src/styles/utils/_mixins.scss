@@ -16,3 +16,27 @@
   background-size: 16px 16px;
   background-repeat: no-repeat;
 }
+
+@mixin onXSmallScreen {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin onSmallScreen {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin onMediumScreen {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin onLargeScreen {
+  @media (min-width: 992px) {
+    @content;
+  }
+}

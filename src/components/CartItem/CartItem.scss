@@ -9,33 +9,62 @@
   gap: 24px;
   align-items: center;
 
+  @include onXSmallScreen {
+    position: relative;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   &__delete {
     border: none;
     display: block;
     @include square(16px);
     background-image: url(../../assets/icons/close-light.svg);
     @include iconsBackground;
+
+    @include onXSmallScreen {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+    }
   }
 
   &__image-wrapper {
     padding: 7px;
     @include square(80px);
+
+    @include onXSmallScreen {
+      @include square(50vw);
+    }
   }
 
   &__image {
     display: block;
     @include square(66px);
+
+    @include onXSmallScreen {
+      @include square(100%);
+    }
   }
 
   &__name {
     margin-right: 25px;
-    width: 295px;
+    max-width: 295px;
+
+    @include onXSmallScreen {
+      margin: 0;
+      text-align: center;
+    }
   }
 
   &__amount {
     margin-right: 19px;
     display: flex;
     gap: 13px;
+
+    @include onXSmallScreen {
+      margin: 0;
+    }
   }
 
   &__amount-number {
@@ -47,5 +76,9 @@
 
   &__price {
     margin-right: 16px;
+
+    @include onXSmallScreen {
+      margin: 0;
+    }
   }
 }

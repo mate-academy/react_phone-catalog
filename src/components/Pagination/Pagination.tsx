@@ -42,7 +42,7 @@ export const Pagination: React.FC<Props> = ({ total }) => {
             <button
               type="button"
               onClick={() => handlePageChange(page)}
-              className={cn('button', {
+              className={cn('button button--page', {
                 'button--active': currentPage === page,
               })}
             >

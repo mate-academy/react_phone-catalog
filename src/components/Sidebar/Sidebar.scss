@@ -1,0 +1,70 @@
+@import "../../styles/utils";
+
+.Sidebar {
+  position: relative;
+  z-index: 200;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  &__window {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    height: 100vh;
+    width: 192px;
+    padding-top: 48px;
+    position: fixed;
+    right: 0;
+    top: 65px;
+    background-color: $color-white;
+    transition: all 0.3s;
+
+    @include onXSmallScreen {
+      padding-top: 24px;
+      width: 144px;
+      top: 49px;
+    }
+
+    &--visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(0);
+      box-shadow: 0 0 50vw 50vw rgba(0, 0, 0, 0.3);
+      clip-path: inset(0 0 0px -80vw);
+    }
+  }
+
+  &__links {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    @include onXSmallScreen {
+      gap: 16px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: 24px;
+    @extend %text-uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+    @include hover(color, $color-primary);
+    @include hover(transform, scale(1.2));
+    @include onXSmallScreen {
+      font-size: 10px;
+    }
+
+    &--active {
+      color: $color-primary;
+      border-bottom: 1px solid $color-primary;
+    }
+  }
+}

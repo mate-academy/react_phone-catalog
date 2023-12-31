@@ -3,13 +3,6 @@
 .Search {
   position: relative;
 
-  @media (max-width: 1020px) {
-    position: absolute;
-    right: 0;
-    top: 65px;
-    box-shadow: 0 1px 0 0 $color-elements;
-  }
-
   &__input {
     padding: 0 0 0 24px;
     width: 327px;
@@ -19,6 +12,12 @@
     outline: none;
     color: $color-primary;
     @extend %text-buttons;
+
+    @include onXSmallScreen {
+      width: 100vw;
+      height: 48px;
+      font-size: 12px;
+    }
 
     &:focus {
       background-color: $color-hover;
@@ -37,8 +36,16 @@
     @include square(16px);
     @include iconsBackground;
 
+    @include onXSmallScreen {
+      top: 16px;
+    }
+
     &--search {
       background-image: url("../../assets/icons/search.svg");
+
+      @media (max-width: 1049px) {
+        display: none;
+      }
     }
 
     &--close {

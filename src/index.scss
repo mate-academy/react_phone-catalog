@@ -11,6 +11,11 @@ html {
 
 h1 {
   @extend %title-large;
+
+  @include onXSmallScreen {
+    font-size: 24px;
+    line-height: 32px;
+  }
 }
 
 h2 {
@@ -23,4 +28,8 @@ h3 {
 
 button {
   cursor: pointer;
+}
+
+.lock-scroll {
+  overflow: hidden;
 }

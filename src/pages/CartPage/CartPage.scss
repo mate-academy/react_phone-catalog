@@ -12,6 +12,10 @@
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+
+    @include onXSmallScreen {
+      justify-content: center;
+    }
   }
 
   &__items {
@@ -20,6 +24,11 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onXSmallScreen {
+      width: 70vw;
+      flex-direction: column;
+    }
   }
 
   &__total {

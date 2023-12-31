@@ -35,17 +35,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => (
       <div className="ProductCard__details">
         <div className="ProductCard__detail">
           <p className="ProductCard__detail-name">Screen</p>
-          <p className="ProductCard__detail-text">{product.screen}</p>
+          <p className="ProductCard__detail-text">{product.screen || '-'}</p>
         </div>
 
         <div className="ProductCard__detail">
           <p className="ProductCard__detail-name">Capacity</p>
-          <p className="ProductCard__detail-text">{product.capacity}</p>
+          <p className="ProductCard__detail-text">{product.capacity || '-'}</p>
         </div>
 
         <div className="ProductCard__detail">
           <p className="ProductCard__detail-name">RAM</p>
-          <p className="ProductCard__detail-text">{product.ram}</p>
+          <p className="ProductCard__detail-text">{product.ram || '-'}</p>
         </div>
       </div>
 

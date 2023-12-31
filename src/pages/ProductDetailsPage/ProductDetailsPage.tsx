@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import cn from 'classnames';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import * as productsService from '../../services/productsService';
@@ -104,11 +105,19 @@ export const ProductDetailsPage: React.FC = () => {
                     <div
                       className="ProductDetailsPage__displayed-image-wrapper"
                     >
-                      <img
-                        src={images[displayedImage]}
-                        alt={details.name}
-                        className="ProductDetailsPage__displayed-image"
-                      />
+                      <TransitionGroup component={null}>
+                        <CSSTransition
+                          key={displayedImage}
+                          timeout={300}
+                          classNames="slide"
+                        >
+                          <img
+                            src={images[displayedImage]}
+                            alt={details.name}
+                            className="ProductDetailsPage__displayed-image"
+                          />
+                        </CSSTransition>
+                      </TransitionGroup>
                     </div>
                   </div>
 

@@ -41,6 +41,10 @@
     @include iconsBackground;
     @include hover(border-color, $color-primary);
 
+    @include onXSmallScreen {
+      display: none;
+    }
+
     &--prev {
       background-image: url("../../assets/icons/arrow-left.svg");
       &:disabled {

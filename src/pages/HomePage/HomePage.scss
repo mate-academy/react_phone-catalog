@@ -22,9 +22,15 @@
   gap: 16px;
   justify-content: center;
 
-  @media (max-width: 992px) {
+  @include onSmallScreen {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+  }
+
+  &__category {
+    @include onSmallScreen {
+      width: 70vw;
+    }
   }
 
   &__link {
@@ -37,6 +43,10 @@
   &__link-image {
     margin-bottom: 24px;
     width: 100%;
+
+    @include onSmallScreen {
+      margin-bottom: 16px;
+    }
   }
 
   &__text {

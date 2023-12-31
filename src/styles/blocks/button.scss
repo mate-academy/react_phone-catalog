@@ -5,6 +5,10 @@
   @include iconsBackground;
   @include hover(border-color, $color-primary);
 
+  @include onXSmallScreen {
+    @include square(24px);
+  }
+
   &--active {
     border-color: $color-primary;
     background-color: $color-primary;
@@ -38,6 +42,13 @@
     &:disabled {
       background-image: url("../../assets/icons/arrow-right-disabled.svg");
     }
+  }
+
+  &--page {
+    border: 1px solid $color-elements;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &:disabled {

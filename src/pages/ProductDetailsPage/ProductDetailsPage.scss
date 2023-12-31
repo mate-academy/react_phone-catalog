@@ -13,7 +13,7 @@
     display: flex;
     gap: 64px;
 
-    @media (max-width: 992px) {
+    @include onMediumScreen {
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -23,6 +23,12 @@
     flex-shrink: 1;
     display: flex;
     gap: 16px;
+
+    @include onMediumScreen {
+      flex-direction: column-reverse;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &__all-images {
@@ -32,9 +38,23 @@
     width: 81px;
     height: 464px;
     overflow-y: scroll;
+
+    @include onMediumScreen {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      height: 100px;
+      overflow-y: auto;
+      overflow-x: scroll;
+    }
+
+    @include onSmallScreen {
+      justify-content: start;
+    }
   }
 
   &__image-wrapper {
+    height: 82px;
     padding: 8px;
     border: 1px solid $color-elements;
     background-color: inherit;
@@ -50,8 +70,14 @@
   }
 
   &__displayed-image-wrapper {
+    overflow: hidden;
     @include square(464px);
     padding: 11px;
+
+    @include onMediumScreen {
+      flex-direction: column-reverse;
+      @include square(70vw);
+    }
   }
 
   &__displayed-image {
@@ -66,6 +92,10 @@
     flex-direction: column;
     justify-content: center;
     width: 320px;
+
+    @media (max-width: 368px) {
+      width: 100%;
+    }
   }
 
   &__info-id {
@@ -74,6 +104,11 @@
     position: absolute;
     top: 129px;
     right: 0;
+
+    @include onMediumScreen {
+      position: relative;
+      top: -24px;
+    }
   }
 
   &__about {
@@ -89,6 +124,10 @@
 
   &__about-text {
     color: $color-secondary;
+
+    @include onMediumScreen {
+      text-align: justify;
+    }
   }
 
   &__specs {
@@ -175,4 +214,20 @@
   &__suggested-title {
     margin-bottom: 24px;
   }
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}
+.slide-enter-active {
+  transform: translateX(0%);
+  transition: transform 300ms ease-in-out;
+}
+.slide-exit {
+  transform: translateX(0%);
+  opacity: 0;
+}
+.slide-exit-active {
+  transform: translateX(-100%);
+  transition: transform 300ms ease-in-out;
 }

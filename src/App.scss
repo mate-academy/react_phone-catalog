@@ -20,6 +20,10 @@
   box-shadow: 0 1px 0 0 $color-elements;
   z-index: 100;
 
+  @include onXSmallScreen {
+    height: 48px;
+  }
+
   &__wrapper {
     display: flex;
 
@@ -27,6 +31,52 @@
       gap: 64px;
     }
   }
+
+  &__nav {
+    @include onSmallScreen {
+      display: none;
+    }
+  }
+}
+
+.search {
+  @media (max-width: 1049px) {
+    display: none;
+  }
+
+  &--small {
+    @media (max-width: 1049px) {
+      display: block;
+      position: absolute;
+      top: 65px;
+      right: 0;
+      box-shadow: 0 1px 0 0 $color-elements;
+    }
+
+    @include onXSmallScreen {
+      top: 49px;
+    }
+  }
+}
+
+.search-small-enter {
+  max-height: 0;
+}
+
+.search-small-enter-active {
+  overflow: hidden;
+  max-height: 64px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.search-small-exit {
+  max-height: 64px;
+}
+
+.search-small-exit-active {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
 }
 
 .main {
@@ -37,7 +87,13 @@
 
 .container {
   margin: 0 auto;
+  width: 100%;
+  padding-inline: 24px;
 
+  @media (min-width: 576px) {
+    width: 540px;
+    padding: 0;
+  }
   @media (min-width: 768px) {
     width: 720px;
   }
@@ -57,16 +113,38 @@
   background-color: $color-white;
   box-shadow: 0 -1px 0 0 $color-elements;
 
+  @include onXSmallScreen {
+    padding-inline: 24px;
+    height: 64px;
+    justify-content: space-evenly;
+  }
+
+  @include onMediumScreen {
+    padding-inline: 64px;
+  }
+
   &__logo {
     margin-right: 80px;
     display: flex;
     align-items: center;
+
+    @include onMediumScreen {
+      margin: 0;
+    }
   }
 
   &__link-wrapper {
     display: flex;
     align-items: center;
     gap: 64px;
+
+    @include onXSmallScreen {
+      display: none;
+    }
+
+    @include onMediumScreen {
+      gap: 24px;
+    }
   }
 
   &__link {
@@ -74,6 +152,10 @@
     color: $color-secondary;
     text-decoration: none;
     @include hover(color, $color-primary);
+
+    @include onXSmallScreen {
+      font-size: 10px;
+    }
   }
 
   &__button-wrapper {
@@ -85,26 +167,67 @@
   &__button-text {
     @extend %text-small;
     color: $color-secondary;
+
+    @include onXSmallScreen {
+      display: block;
+    }
+
+    @include onMediumScreen {
+      display: none;
+    }
   }
 }
 
 .icon {
   width: 64px;
+  height: 100%;
   position: relative;
   display: block;
   box-shadow: -1px 0 0 0 $color-elements;
-  background-image: url(./assets/icons/favourites.svg);
   @include iconsBackground;
   text-decoration: none;
   z-index: 1;
   @include hover(background-size, 24px 24px);
 
+  @include onXSmallScreen {
+    width: 48px;
+  }
+
+  &--favourites {
+    background-image: url(./assets/icons/favourites.svg);
+  }
+
   &--cart {
     background-image: url(./assets/icons/cart.svg);
   }
 
+  &--menu {
+    padding: 24px;
+
+    @include onXSmallScreen {
+      padding: 16px;
+    }
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &--search {
+    background-image: url("./assets/icons/search.svg");
+    box-shadow: none;
+
+    @media (min-width: 1050px) {
+      display: none;
+    }
+  }
+
   &--active {
     border-bottom: 3px solid $color-primary;
+
+    @include onSmallScreen {
+      border-bottom: 1px solid $color-primary;
+    }
   }
 
   &__quantity {
@@ -122,5 +245,33 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    @include onXSmallScreen {
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  &__lines {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    justify-content: center;
+    align-items: flex-end;
+    @include hover(transform, scale(1.3));
+  }
+
+  &__line {
+    height: 2px;
+    width: 16px;
+    display: block;
+    background-color: $color-primary;
+    transition: width 0.3s;
+
+    &--short {
+      width: 8px;
+    }
   }
 }
