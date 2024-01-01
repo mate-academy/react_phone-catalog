@@ -12,30 +12,7 @@
     }
   }
 
-  &__dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-  }
-
-  &__dot--1,
-  &__dot--2,
-  &__dot--3 {
-    background-color: $icons-color;
-    width: 14px;
-    height: 4px;
-    margin: 0 4px;
-
-    &.active {
-      background-color: $primary-color;
-    }
-  }
-
-}
-
-.Screen {
-  &__container {
+  &__content {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -44,58 +21,43 @@
     width: 100%;
   }
 
-  &__window {
+  &__screen {
     display: block;
-    height: 100%;
     width: 100%;
     overflow: hidden;
+  }
 
-    transition-property: width;
-    transition-duration: $effectDurationNormal;
-    transition-timing-function: ease-in-out;
+  &__imgs {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    transform: translateX(-100%);
   }
 
   &__img {
-    height: 100%;
+    flex-shrink: 0;
     width: 100%;
     object-fit: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
-    &--animation {
+    &__animation {
       animation-name: opacityFrom0To1;
       animation-duration: $effectDurationVerrySlow;
+
+      &--slip-right {
+        animation-name: slip-right;
+      }
+
+      &--slip-left {
+        animation-name: slip-left;
+      }
     }
   }
 
-  &__btn {
-    width: 32px;
+  &__button {
     height: 100%;
-    background-color: $white-color;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 30px;
-    border: 1px solid #{$icons-color};
-    cursor: pointer;
-  }
-}
-
-.dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15px;
-}
-
-.dot {
-  background-color: $icons-color;
-  width: 14px;
-  height: 4px;
-  margin: 0 4px;
-
-  &--active {
-    background-color: $primary-color;
   }
 }
 
@@ -106,5 +68,25 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes slip-right {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slip-left {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
   }
 }

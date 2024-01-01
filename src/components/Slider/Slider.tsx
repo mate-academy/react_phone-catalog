@@ -21,7 +21,7 @@ export const Slider: React.FC<Props> = ({
   return (
     <div className="Slider__container">
       <div
-        className="Slider__screen Slider__screen--transition"
+        className="Slider__imgs Slider__imgs--transition"
         style={{
           display: 'flex',
           gap: `${gap}px`,

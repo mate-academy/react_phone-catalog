@@ -65,7 +65,10 @@ export const CartPage: React.FC<Props> = (
                 const isFirst = cartItem.quantity <= 1;
 
                 return (
-                  <div className="CartItem CartItem__container">
+                  <div
+                    key={cartItem.product.itemId}
+                    className="CartItem CartItem__container"
+                  >
                     <section
                       className="CartItem__section CartItem__section--img"
                     >

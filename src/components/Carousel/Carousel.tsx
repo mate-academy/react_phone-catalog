@@ -7,22 +7,31 @@ import {
 } from 'react';
 import cn from 'classnames';
 
+import { CarouselDots } from '../CarouselDots/CarouselDots';
+
 import './Carousel.scss';
 
 type Props = {
   children: React.ReactNode;
 };
+// type CL = ReturnType<typeof cloneElement>;
+
+let childrenKeys: { key: string }[] = [];
 
 export const Carousel: React.FC<Props> = ({ children }) => {
-  const [pages, setPages] = useState([]);
+  const [pages, setPages] = useState<ReactElement[]>([]);
   const [activeDot, setActiveDot] = useState(0);
 
   const handleLeftClick = () => {
     setPages((crntPages) => {
-      const updatedPages: [] = Children.map(
+      const updatedPages = Children.map(
         [crntPages[crntPages.length - 1], ...crntPages.slice(0, -1)],
         (page) => cloneElement(page, {
-          className: 'Screen__img Screen__img--animation',
+          className: cn(
+            'Carousel__img',
+            'Carousel__img__animation',
+            'Carousel__img__animation--slip-left',
+          ),
         }),
       );
 
@@ -36,10 +45,14 @@ export const Carousel: React.FC<Props> = ({ children }) => {
 
   const handleRightClick = () => {
     setPages((crntPages) => {
-      const updatedPages: [] = Children.map(
+      const updatedPages = Children.map(
         [...crntPages.slice(1), crntPages[0]],
         (page) => cloneElement(page, {
-          className: 'Screen__img Screen__img--animation',
+          className: cn(
+            'Carousel__img',
+            'Carousel__img__animation',
+            'Carousel__img__animation--slip-right',
+          ),
         }),
       );
 
@@ -52,11 +65,15 @@ export const Carousel: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-    console.info((Children.toArray(children)[0] as ReactElement)?.key);// eslint-disable-line
+    childrenKeys = Children.map(children, child => ({
+      key: (child as ReactElement)?.key || '',
+    })) as { key: string }[];
+
+    console.info(childrenKeys);// eslint-disable-line
     setPages(
-      Children.map(children as never[], child => {
+      Children.map(children as ReactElement[], child => {
         return cloneElement(child, {
-          className: 'Screen__img Screen__img--animation',
+          className: cn('Carousel__img', 'Carousel__img__animation'),
         });
       }),
     );
@@ -73,41 +90,41 @@ export const Carousel: React.FC<Props> = ({ children }) => {
   }, [pages]);
 
   return (
-    <div className="Carousel__container">
-      <div className="Screen__container">
+    <div className="Carousel Carousel__container">
+      <div className="Carousel__content">
         <button
           type="button"
-          className="Screen__btn icon--arrow-left"
+          className={cn('ProductsSlider__button',
+            'ProductsSlider__button--defualt',
+            'Carousel__button')}
           aria-label="scrollLeft"
           onClick={handleLeftClick}
-        />
+        >
+          <i className="ProductsSlider__icon icon--arrow-left" />
+        </button>
 
-        <div className="Screen__window">
-          {pages}
+        <div className="Carousel__screen">
+          <div className="Carousel__imgs">
+            {pages}
+          </div>
         </div>
 
         <button
           type="button"
-          className="Screen__btn icon--arrow-right"
+          className={cn('ProductsSlider__button',
+            'ProductsSlider__button--defualt',
+            'Carousel__button')}
           aria-label="scrollRight"
           onClick={handleRightClick}
-        />
+        >
+          <i className="ProductsSlider__icon icon--arrow-right" />
+        </button>
       </div>
 
-      <div className="dots">
-        <div className={cn('dot', {
-          'dot--active': activeDot === 0,
-        })}
-        />
-        <div className={cn('dot', {
-          'dot--active': activeDot === 1,
-        })}
-        />
-        <div className={cn('dot', {
-          'dot--active': activeDot === 2,
-        })}
-        />
-      </div>
+      <CarouselDots
+        items={childrenKeys}
+        activeDot={activeDot}
+      />
     </div>
   );
 };
