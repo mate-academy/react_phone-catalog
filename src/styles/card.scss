@@ -116,5 +116,9 @@
     &:hover {
       border-color: $gray-primary;
     }
+
+    &--added {
+      background-image: url('../../src/images/favourites-hart-filled-red.svg');
+    }
   }
 }

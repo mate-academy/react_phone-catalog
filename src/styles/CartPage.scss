@@ -33,6 +33,8 @@
     cursor: pointer;
 
     @include buttonBorder;
+
+
   }
 
   &__delete {
@@ -45,11 +47,23 @@
   }
 
   &__minus {
-    background-image: url('../images/minus-secondary.svg');
+    background-image: url('../images/minus-primary.svg');
+
+    &--disabled {
+      background-image: url('../images/minus-secondary.svg');
+      &:hover {
+        border-color: $gray-secondary;
+        cursor: no-drop;
+      }
+    }
   }
 
   &__plus {
     background-image: url('../images/plus.svg');
+  }
+
+  &__phone-price {
+    @include h2;
   }
 
   &__aside {
@@ -70,7 +84,7 @@
     margin-bottom: 24px;
   }
 
-  &__price {
+  &__total-price {
     @include h1;
   }
 
@@ -86,6 +100,7 @@
     justify-content: center;
     background-color: $gray-primary;
     color: #fff;
+    text-align: center;
   }
 }
 

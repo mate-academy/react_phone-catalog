@@ -14,12 +14,39 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
     ? card.phoneId
     : `phones/${card.phoneId}`;
 
-  const { cartPhones, setCartPhones } = useProducts();
+  const {
+    cartPhones,
+    setCartPhones,
+    favourites,
+    setFavourites,
+  } = useProducts();
+
+  const addToFavourites = (phone: Phone) => {
+    if (favourites.find(i => i.id === phone.id)) {
+      return;
+    }
+
+    const newFavourites = [...favourites, phone];
+
+    setFavourites(newFavourites);
+  };
+
+  const removeFromFavourites = (phone: Phone) => {
+    const newFavourites = favourites.filter(i => i.id !== phone.id);
+
+    setFavourites(newFavourites);
+  };
 
   const addToCart = (phone: Phone) => {
-    const setOfPhones = new Set([...cartPhones, phone]);
+    const newPhone = { id: phone.id, quantity: 1, product: { ...phone } };
 
-    const newPhones: Phone[] = Array.from(setOfPhones);
+    if (cartPhones.find(i => i.id === newPhone.id)) {
+      return;
+    }
+
+    const setOfPhones = new Set([...cartPhones, newPhone]);
+
+    const newPhones = Array.from(setOfPhones);
 
     setCartPhones(newPhones);
   };
@@ -66,7 +93,21 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
         >
           {cartPhonesIds.includes(card.id) ? 'Added to cart' : 'Add to cart'}
         </div>
-        <div className="card__icon" />
+        {favourites.find(i => i.id === card.id) ? (
+          <div
+            className="card__icon card__icon--added"
+            data-cy="addToFavorite"
+            role="presentation"
+            onClick={() => removeFromFavourites(card)}
+          />
+        ) : (
+          <div
+            className="card__icon"
+            data-cy="addToFavorite"
+            role="presentation"
+            onClick={() => addToFavourites(card)}
+          />
+        )}
       </div>
     </div>
   );

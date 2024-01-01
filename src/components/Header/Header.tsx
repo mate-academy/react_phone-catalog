@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../images/logo.svg';
-import favourites from '../../images/favourites-hart-like.svg';
+import favouritesImg from '../../images/favourites-hart-like.svg';
 import bag from '../../images/shopping-bag.svg';
 import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
 
@@ -14,7 +14,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => (
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const { cartPhones } = useProducts();
+  const { cartPhones, favourites } = useProducts();
 
   return (
     <header className="header top-bar">
@@ -44,9 +44,31 @@ export const Header: React.FC = () => {
         )}
       </div>
       <div className="top-bar__options">
+        <div className="top-bar__option">
+          <input type="text" />
+          <img src="" alt="" />
+        </div>
         {!location.pathname.includes('cart') && (
-          <NavLink className="top-bar__option" to="/favourites">
-            <img className="icon" src={favourites} alt="favourites" />
+          <NavLink
+            className={classNames('top-bar__option', {
+              'cart-is-active': location.pathname.includes('favourites'),
+            })}
+            to="/favourites"
+          >
+            <div className="icon-container">
+              <img
+                className={classNames('icon', {
+                  'icon--with-amount': favourites.length > 0,
+                })}
+                src={favouritesImg}
+                alt="favourites"
+              />
+              {favourites.length > 0 && (
+                <div className="item-amount">
+                  {favourites.length}
+                </div>
+              )}
+            </div>
           </NavLink>
         )}
 
