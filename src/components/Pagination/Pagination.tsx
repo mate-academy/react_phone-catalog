@@ -1,75 +1,99 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { getSearchWith } from '../../helpers/getSearchWith';
+import { usePagination } from '../../helpers/usePagination';
 
 import './Pagination.scss';
 
 type Props = {
-  numberOfPages: number,
-  currentPage: number,
-  setCurrentPage: (x: number) => void,
+  pages: number,
 };
 
-export const Pagination: React.FC<Props> = ({
-  numberOfPages,
-  currentPage,
-  setCurrentPage,
-}) => {
-  const nPages = [];
+export const Pagination: React.FC<Props> = ({ pages }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedPage = +(searchParams.get('page') || 1);
+  const pagesArray = usePagination(pages, 1, selectedPage);
 
-  for (let i = 1; i <= numberOfPages; i += 1) {
-    nPages.push(i);
-  }
+  const handlePrevPage = useCallback(() => {
+    const currentPage = +(searchParams.get('page') || 1);
 
-  const nextPage = () => {
-    if (currentPage !== numberOfPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+    setSearchParams(
+      getSearchWith(searchParams, { page: (currentPage - 1).toString() }),
+    );
+  }, [searchParams, setSearchParams]);
 
-  const prevPage = () => {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  const handleNextPage = useCallback(() => {
+    const currentPage = +(searchParams.get('page') || 1);
+
+    setSearchParams(
+      getSearchWith(searchParams, { page: (currentPage + 1).toString() }),
+    );
+  }, [searchParams, setSearchParams]);
 
   return (
-    <ul className="pagination" data-cy="pagination">
-      <Link
-        to="/phones"
-        aria-disabled={currentPage === 1}
-        onClick={prevPage}
+    <div
+      className="Pagination"
+      data-cy="pagination"
+    >
+      <button
+        type="button"
+        data-cy="paginationLeft"
+        aria-label="Prev page"
+        className="button-arrow"
+        disabled={selectedPage === 1}
+        onClick={handlePrevPage}
       >
-        <li className="pagination__item pagination__item-arrow">
-          <span className="icon icon--arrow icon--back" />
-        </li>
-      </Link>
+        <span className="icon icon--arrow icon--back" />
+      </button>
 
-      {nPages.map(p => (
-        <Link
-          key={p}
-          to="/phones"
-          onClick={() => setCurrentPage(p)}
-        >
-          <li
-            className={classNames('pagination__item',
-              {
-                'pagination__item-active': currentPage === p,
+      <ul className="Pagination__list">
+        {pagesArray.map(currPage => {
+          if (currPage === 'DOTS') {
+            return (
+              <li
+                key={currPage}
+                className="Pagination__item"
+              >
+                ...
+              </li>
+            );
+          }
+
+          return (
+            <Link
+              to={{
+                search: getSearchWith(
+                  searchParams, { page: currPage.toString() },
+                ).toString(),
+              }}
+              className={classNames('Pagination__link, button-arrow', {
+                'Pagination__link--active': selectedPage === currPage,
               })}
-          >
-            {p}
-          </li>
-        </Link>
-      ))}
+              key={currPage}
+            >
+              <li
+                className={classNames('Pagination__item button', {
+                  'Pagination__item--active': selectedPage === currPage,
+                })}
+              >
+                {currPage}
+              </li>
+            </Link>
+          );
+        })}
+      </ul>
 
-      <Link
-        to="/phones"
-        onClick={nextPage}
+      <button
+        type="button"
+        aria-label="Next page"
+        data-cy="paginationRight"
+        className="button-arrow"
+        disabled={selectedPage === pagesArray[pagesArray.length - 1]}
+        onClick={handleNextPage}
       >
-        <li className="pagination__item pagination__item-arrow">
-          <span className="icon icon--arrow icon--next" />
-        </li>
-      </Link>
-    </ul>
+        <span className="icon icon--arrow icon--next" />
+      </button>
+    </div>
   );
 };

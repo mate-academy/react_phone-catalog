@@ -2,32 +2,20 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useState } from 'react';
 import {
-  Link, NavLink, useLocation, useSearchParams,
+  Link, NavLink, useLocation,
 } from 'react-router-dom';
 import classNames from 'classnames';
-import { useData } from '../../helpers/DataContext';
-import { getSearchWith } from '../../helpers/getSearchWith';
 
 import './Header.scss';
+import { useProductStore } from '../../helpers/store';
+import { Search } from '../Search';
 
 export const Header = () => {
-  const { pageURL, query } = useData();
   const location = useLocation();
   const PhonesPage = location.pathname === '/phones';
   const TabletsPage = location.pathname === '/tablets';
   const AccessoriesPage = location.pathname === '/accessories';
   const FavouritesPage = location.pathname === '/favourites';
-  const [inputValue, setInputValue] = useState(query);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
-  const clearInput = () => {
-    setSearchParams(getSearchWith(searchParams, { query: null }));
-    setInputValue(query);
-  };
 
   const getLinkClass = (
     { isActive }: { isActive: boolean },
@@ -57,8 +45,14 @@ export const Header = () => {
     document.body.classList.toggle('menu-opened');
   };
 
+  const favProductsId = useProductStore((state) => state.favProductsId);
+  const cartProductsId = useProductStore((state) => state.cartProducts);
+
   return (
-    <div className="header">
+    <div
+      id="header"
+      className="header"
+    >
       {screenWidth > 650
         ? (
           <>
@@ -76,28 +70,19 @@ export const Header = () => {
               </NavLink>
               <NavLink
                 to="/phones"
-                className={({ isActive }) => classNames('header__nav__link',
-                  {
-                    'is-Active': isActive,
-                  })}
+                className={getLinkClass}
               >
                 Phones
               </NavLink>
               <NavLink
                 to="/tablets"
-                className={({ isActive }) => classNames('header__nav__link',
-                  {
-                    'is-Active': isActive,
-                  })}
+                className={getLinkClass}
               >
                 Tablets
               </NavLink>
               <NavLink
                 to="/accessories"
-                className={({ isActive }) => classNames('header__nav__link',
-                  {
-                    'is-Active': isActive,
-                  })}
+                className={getLinkClass}
               >
                 Accessories
               </NavLink>
@@ -106,39 +91,39 @@ export const Header = () => {
             <div className="header__utils">
               {(PhonesPage || TabletsPage || AccessoriesPage || FavouritesPage)
                 && (
-                  <div className="header__input-container">
-                    <input
-                      className="header__input"
-                      type="text"
-                      placeholder={`Search in ${pageURL?.slice(1)}..`}
-                      value={inputValue}
-                      onChange={handleInputChange}
-                    />
-                    {inputValue
-                      ? (
-                        <button
-                          type="button"
-                          onClick={clearInput}
-                          title="clear input"
-                          data-cy="searchDelete"
-                        >
-                          <span className="icon icon--close" />
-                        </button>
-                      )
-                      : <span className="icon icon--search" />}
-                  </div>
+                  <Search />
                 )}
 
-              <Link
-                className="header__fav"
+              <NavLink
+                className={(
+                  { isActive }: { isActive: boolean },
+                ) => classNames('header__icon',
+                  {
+                    'is-Active': isActive,
+                  })}
                 to="/favourites"
                 title="Favourities"
-              />
-              <Link
-                className="header__busket"
+              >
+                <span className="icon icon--fav header__fav">
+                  {favProductsId.length >= 1
+                    && <span className="header__icon-counter">{favProductsId.length}</span>}
+                </span>
+              </NavLink>
+              <NavLink
+                className={(
+                  { isActive }: { isActive: boolean },
+                ) => classNames('header__icon',
+                  {
+                    'is-Active': isActive,
+                  })}
                 to="/cart"
                 title="Cart"
-              />
+              >
+                <span className="icon icon--busket">
+                  {cartProductsId.length >= 1
+                    && <span className="header__icon-counter">{cartProductsId.length}</span>}
+                </span>
+              </NavLink>
             </div>
           </>
         )
@@ -176,7 +161,7 @@ export const Header = () => {
             className="Menu__cross"
             onClick={handleMenuClick}
           >
-            <span className="icon icon--cross" />
+            <span className="icon icon--close" />
           </button>
         </div>
         <div className="Menu__main">
@@ -212,29 +197,7 @@ export const Header = () => {
         <div className="Menu__bottom">
           <div className="Menu__bottom-search">
             {(PhonesPage || TabletsPage || AccessoriesPage || FavouritesPage)
-              && (
-                <div className="Menu__input-container">
-                  <input
-                    className="Menu__input"
-                    type="text"
-                    placeholder={`Search in ${pageURL?.slice(1)}..`}
-                    value={inputValue}
-                    onChange={handleInputChange}
-                  />
-                  {inputValue
-                    ? (
-                      <button
-                        type="button"
-                        onClick={clearInput}
-                        title="clear input"
-                        data-cy="searchDelete"
-                      >
-                        <span className="icon icon--close" />
-                      </button>
-                    )
-                    : <span className="icon icon--search" />}
-                </div>
-              )}
+              && <Search />}
           </div>
           <div className="Menu__bottom-utils">
             <Link

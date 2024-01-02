@@ -86,9 +86,9 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
   const perPageDropdown: DropdownIterface = {
     name: 'perPage',
     options: {
-      4: '4',
-      8: '8',
       16: '16',
+      8: '8',
+      4: '4',
       All: 'all',
     },
     isOpen: false,

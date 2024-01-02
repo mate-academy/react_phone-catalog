@@ -10,9 +10,35 @@ import { ProductSlider } from '../../components/ProductSlider';
 import './ProductDetailsPage.scss';
 import { ColorPallette } from '../../types/CoroPallette';
 import { BackButton } from '../../components/BackButton';
+import { useProductStore } from '../../helpers/store';
 
 export const ProductDetailsPage = () => {
   const { productDetails, products } = useData();
+
+  const favProductsId = useProductStore((state) => state.favProductsId);
+  const addFavProduct = useProductStore((state) => state.addFavProductId);
+  const deleteFavProduct = useProductStore((state) => state.deleteFavProductId);
+  const isProductFav = favProductsId.find(p => p === productDetails?.id);
+  const handleFavButtonClick = () => {
+    if (isProductFav && productDetails) {
+      deleteFavProduct(productDetails.id);
+    } else if (productDetails) {
+      addFavProduct(productDetails.id);
+    }
+  };
+
+  const cartProducts = useProductStore((state) => state.cartProducts);
+  const addCartProduct = useProductStore((state) => state.addCartProductId);
+  const deleteCartProduct = useProductStore((state) => state.deleteCartProductId);
+  const isProductAddedToCart = cartProducts.find(p => p.name === productDetails?.id);
+  const handleCartButtonClick = () => {
+    if (isProductAddedToCart && productDetails) {
+      deleteCartProduct(productDetails.id);
+    } else if (productDetails) {
+      addCartProduct(productDetails.id);
+    }
+  };
+
   const { pathname, state } = useLocation();
   const path = pathname.split('-');
   const capi = path[3];
@@ -23,13 +49,13 @@ export const ProductDetailsPage = () => {
 
   const filteredSuggestedProducts = products?.filter(p => p.capacity === productDetails?.capacity).slice(0, 8);
 
-  if (!productDetails) {
-    return <p>idi nahui</p>;
-  }
-
   const handleCapacityChange = (c: string) => {
     setSelectedCapacity(c);
   };
+
+  if (!productDetails) {
+    return <p>idi nahui</p>;
+  }
 
   const {
     id,
@@ -170,12 +196,22 @@ export const ProductDetailsPage = () => {
           </div>
           <div className="options-block__buttons">
             <button
-              className="button__cart button__cart-details"
+              className={
+                classNames('button__cart', {
+                  'button__cart-selected': isProductAddedToCart,
+                })
+              }
               type="button"
+              onClick={handleCartButtonClick}
             />
             <button
-              className="button__fav"
+              className={
+                classNames('button__fav', {
+                  'button__fav-selected': isProductFav,
+                })
+              }
               type="button"
+              onClick={handleFavButtonClick}
             />
           </div>
           <div className="options-block__details">

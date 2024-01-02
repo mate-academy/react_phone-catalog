@@ -10,7 +10,7 @@ export const FavouritesPage = () => {
   const { products } = useData();
   const favProductsId = useProductStore((state) => state.favProductsId);
 
-  const favFilteredProducts = products?.filter(p => favProductsId.find(fp => fp === p.id));
+  const favFilteredProducts = products?.filter(p => favProductsId.find(fp => fp === p.phoneId));
 
   return (
     <div className="favourites">

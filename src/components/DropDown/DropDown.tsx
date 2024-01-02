@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';

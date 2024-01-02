@@ -7,27 +7,28 @@ import { useData } from '../../helpers/DataContext';
 
 export const CartPage = () => {
   const { products } = useData();
-  const cartProductsId = useProductStore((state) => state.cartProductsId);
-  // const cartPrices = useProductStore((state) => state.cartPrices);
-  // const addCartPrice = useProductStore((state) => state.addCartPrice);
-  // const deleteCartPrice = useProductStore((state) => state.deleteCartPrice);
+  const cartProductsId = useProductStore((state) => state.cartProducts);
   const deleteCartProduct = useProductStore((state) => state.deleteCartProductId);
-  const cartFilteredProducts = products?.filter(p => cartProductsId.find(fp => fp === p.id));
+  const incQuantity = useProductStore((state) => state.incQuantity);
+  const decQuantity = useProductStore((state) => state.decQuantity);
+  const cartFilteredProducts = products?.filter(p => cartProductsId.find(product => product.name === p.phoneId));
+
   const handleDeleteFromCart = (id: string) => {
     deleteCartProduct(id);
   };
 
+  const handleIncQuantity = (id: string) => {
+    incQuantity(id);
+  };
+
+  const handleDecQuantity = (id: string) => {
+    decQuantity(id);
+  };
+
   const totalValueOfProducts = cartFilteredProducts?.reduce(
-    (acc, curVal) => acc + curVal.price,
+    (acc, curVal) => acc + (curVal.price * (cartProductsId.find(p => p.name === curVal.phoneId)?.quantity || 1)),
     0,
   );
-
-  // const totalValueOfCounter = cartPrices?.reduce(
-  //   (acc, curVal) => acc + +curVal,
-  //   0,
-  // );
-
-  // const totalValueOfProductsWithCounter = totalValueOfProducts + totalValueOfCounter;
 
   return (
     <div className="cart">
@@ -41,45 +42,60 @@ export const CartPage = () => {
             ? (
               <>
                 <div className="cart__main__list-container">
-                  {cartFilteredProducts.map(p => (
-                    <>
-                      <div className="cart__main__item">
-                        <button
-                          type="button"
-                          className="button__cross"
-                          onClick={() => handleDeleteFromCart(p.id)}
+                  {cartFilteredProducts.map(p => {
+                    const kek = cartProductsId.find(pr => pr.name === p.phoneId);
+
+                    return (
+                      <>
+                        <div
+                          className="cart__main__item"
+                          key={p.id}
                         >
-                          <span className="icon icon--close" />
-                        </button>
-                        <img
-                          className="cart__main__item__image"
-                          src={p.image}
-                          alt={p.name}
-                        />
-                        <span>
-                          {p.name}
-                          <br />
-                          (iMT9G2FS/A)
-                        </span>
-                        <div className="counter">
+
                           <button
                             type="button"
-                            onClick={() => { }}
+                            className="cart__main__item__button-cross"
+                            onClick={() => handleDeleteFromCart(p.phoneId)}
                           >
-                            <span className="icon icon--minus" />
+                            <span className="icon icon--close" />
                           </button>
-                          <span>1</span>
-                          <button
-                            type="button"
-                            onClick={() => { }}
-                          >
-                            <span className="icon icon--plus" />
-                          </button>
+                          <div className="cart__main__item-top">
+                            <img
+                              className="cart__main__item__image"
+                              src={p.image}
+                              alt={p.name}
+                            />
+                            <span>
+                              {p.name}
+                              <br />
+                              (iMT9G2FS/A)
+                            </span>
+                          </div>
+                          <div className="cart__main__item-bottom">
+                            <div className="counter">
+                              <button
+                                type="button"
+                                className="cart__main__item__button"
+                                disabled={kek?.quantity === 1}
+                                onClick={() => handleDecQuantity(p.phoneId)}
+                              >
+                                <span className="icon icon--minus" />
+                              </button>
+                              <span>{kek?.quantity}</span>
+                              <button
+                                type="button"
+                                className="cart__main__item__button"
+                                onClick={() => handleIncQuantity(p.phoneId)}
+                              >
+                                <span className="icon icon--plus" />
+                              </button>
+                            </div>
+                            <span className="text text--h2">{`$${p.price}`}</span>
+                          </div>
                         </div>
-                        <span className="text text--h2">{`$${p.price}`}</span>
-                      </div>
-                    </>
-                  ))}
+                      </>
+                    );
+                  })}
                 </div>
                 <div className="cart__main__price">
                   <div className="price__main">
@@ -89,7 +105,7 @@ export const CartPage = () => {
                     </span>
                   </div>
                   <button
-                    className="button__cart-checkout"
+                    className="button__checkout"
                     type="button"
                   />
                 </div>

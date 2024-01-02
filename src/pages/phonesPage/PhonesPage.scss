@@ -1,7 +1,9 @@
 @import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
 
 .phones-page {
-  padding-inline: 52px;
+  @include contentPaddingInline;
+  max-width: calc(320px * 4);
 
   &__header {
     margin-top: 40px;

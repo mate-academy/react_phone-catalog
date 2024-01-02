@@ -21,24 +21,24 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
   const favProductsId = useProductStore((state) => state.favProductsId);
   const addFavProduct = useProductStore((state) => state.addFavProductId);
   const deleteFavProduct = useProductStore((state) => state.deleteFavProductId);
-  const isProductFav = favProductsId.find(p => p === product.id);
+  const isProductFav = favProductsId.find(p => p === product.phoneId);
   const handleFavButtonClick = () => {
     if (isProductFav) {
-      deleteFavProduct(product.id);
+      deleteFavProduct(product.phoneId);
     } else {
-      addFavProduct(product.id);
+      addFavProduct(product.phoneId);
     }
   };
 
-  const cartProductsId = useProductStore((state) => state.cartProductsId);
+  const cartProducts = useProductStore((state) => state.cartProducts);
   const addCartProduct = useProductStore((state) => state.addCartProductId);
   const deleteCartProduct = useProductStore((state) => state.deleteCartProductId);
-  const isProductAddedToCart = cartProductsId.find(p => p === product.id);
+  const isProductAddedToCart = cartProducts.find(p => p.name === product.phoneId);
   const handleCartButtonClick = () => {
     if (isProductAddedToCart) {
-      deleteCartProduct(product.id);
+      deleteCartProduct(product.phoneId);
     } else {
-      addCartProduct(product.id);
+      addCartProduct(product.phoneId);
     }
   };
 

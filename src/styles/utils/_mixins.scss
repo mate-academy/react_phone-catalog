@@ -26,4 +26,8 @@
   @include onDesktop {
     padding-inline: 55px;
   }
+
+  @include onLarge {
+    margin: 0 auto;
+  }
 }

@@ -19,29 +19,73 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 368px;
-      height: 206px;
+      height: 20vh;
       border: 1px solid $elements;
+
+      @include onTablet {
+        width: 368px;
+        height: 206px;
+      }
     }
 
     &__list {
       display: flex;
+      flex-direction: column-reverse;
       gap: 16px;
+
+      @include onDesktop {
+        flex-direction: row;
+      }
     }
 
     &__item {
       display: flex;
-      align-items: center;
-      justify-content: space-around;
-      width: 752px;
-      height: 128px;
+      flex-direction: column;
+      width: 70vw;
       border: 1px solid $elements;
       margin-bottom: 16px;
+
+      @include onDesktop {
+        flex-direction: row;
+        gap: 50px;
+        width: 752px;
+        height: 128px;
+      }
+
+      &-top {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        padding: 15px;
+      }
+
+      &-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+
+        @include onDesktop {
+          justify-content: center;
+          gap: 100px;
+        }
+      }
 
       &__image {
         height: 66px;
         width: 66px;
         object-fit: contain;
+      }
+
+      &__button {
+        padding: 8px;
+        border: 1px solid $elements;
+        background-color: #fff;
+
+        &-cross {
+          padding: 5px;
+          border: none;
+        }
       }
     }
   }

@@ -39,14 +39,10 @@
 
   &--minus {
     background-image: url(../../icons/Minus_gray.svg);
-    padding: 8px;
-    border: 1px solid $elements;
   }
 
   &--plus {
     background-image: url(../../icons/Plus.svg);
-    padding: 8px;
-    border: 1px solid $elements;
   }
 
   &--search {
@@ -67,6 +63,8 @@
 
   &--fav {
     background-image: url(../../icons/Favourites.svg);
+    width: 20px;
+    height: 20px;
     &:hover {
       background-image: url(../../icons/Favourites__red.svg);
     }
@@ -74,5 +72,7 @@
 
   &--busket {
     background-image: url(../../icons/Card.svg);
+    width: 20px;
+    height: 20px;
   }
 }

@@ -1,0 +1,37 @@
+@import '../../styles/utils/vars';
+
+.Search {
+  height: 100%;
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__input {
+    height: 100%;
+    width: 200px;
+    background-color: $white;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+
+  &__clear {
+    height: 16px;
+    width: 16px;
+    background-color: $white;
+    background-image: url(../../icons/Close.svg);
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../icons/Search.svg);
+  }
+}

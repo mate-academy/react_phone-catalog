@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ProgressBar } from 'react-loader-spinner';
 import { DropDown } from '../../components/DropDown';
 import { Pagination } from '../../components/Pagination';
 import { ProductList } from '../../components/ProductList';
@@ -14,23 +16,41 @@ export const PhonesPage = () => {
     sortDropdown,
     perPageDropdown,
     sort,
-    perPage,
   } = useData();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(16);
+  const [searchParams] = useSearchParams();
+  const page = +(searchParams.get('page') || 1);
+
+  useEffect(() => {
+    const perPage = searchParams.get('perPage') || '16';
+
+    if (perPage !== 'all') {
+      setProductsPerPage(+perPage);
+    }
+
+    if (products && perPage === 'all') {
+      setProductsPerPage(products.length);
+    }
+  }, [products, searchParams]);
 
   if (!products) {
-    return <p>idi nahui</p>;
+    return (
+      <div className="loader">
+        <ProgressBar
+          visible
+          height="80"
+          width="80"
+          barColor="#4fa94d"
+          borderColor="#51E5FF"
+          ariaLabel="progress-bar-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
+    );
   }
 
-  let productsPerPage;
-
-  if (perPage !== 'all') {
-    productsPerPage = +perPage;
-  } else {
-    productsPerPage = products?.length;
-  }
-
-  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfLastProduct = page * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products?.slice(indexOfFirstProduct, indexOfLastProduct);
   const nPages = Math.ceil(products.length / productsPerPage);
@@ -61,25 +81,17 @@ export const PhonesPage = () => {
         />
       </div>
 
-      {productsPerPage < 16
-        ? (
-          <>
-            <ProductList
-              currentProducts={currentProducts}
-            />
+      <div className="phones-page__content">
+        <ProductList
+          currentProducts={(productsPerPage < 17) ? currentProducts : products}
+        />
+      </div>
 
-            <Pagination
-              numberOfPages={nPages}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
-          </>
-        )
-        : (
-          <ProductList
-            currentProducts={products}
-          />
-        )}
+      <div className="phone-page__pagination">
+        <Pagination
+          pages={nPages}
+        />
+      </div>
     </div>
   );
 };

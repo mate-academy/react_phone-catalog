@@ -9,19 +9,15 @@ type FavSlice = {
 };
 
 type CartSlice = {
-  cartProductsId: string[];
+  cartProducts: {
+    name: string;
+    quantity: number;
+  }[];
   addCartProductId: (productId: string) => void;
   deleteCartProductId: (productId: string) => void;
+  incQuantity: (productId: string) => void;
+  decQuantity: (productId: string) => void;
 };
-
-// type CartTotalSlice = {
-//   cartPrices: [{
-//     quantity: number,
-//     productId: string,
-//   }];
-//   addCartPrice: (productId: string) => void;
-//   deleteCartPrice: (productId: string) => void;
-// };
 
 export const createFavSlice: StateCreator<FavSlice> = (set) => ({
   favProductsId: [],
@@ -34,36 +30,43 @@ export const createFavSlice: StateCreator<FavSlice> = (set) => ({
 });
 
 export const createCartSlice: StateCreator<CartSlice> = (set) => ({
-  cartProductsId: [],
+  cartProducts: [],
   addCartProductId: (productId: string) => set((state) => ({
-    cartProductsId: [...state.cartProductsId, productId],
+    cartProducts: [
+      ...state.cartProducts,
+      {
+        name: productId,
+        quantity: 1,
+      },
+    ],
   })),
   deleteCartProductId: (productId: string) => set((state) => ({
-    cartProductsId: state.cartProductsId.filter((id) => id !== productId),
+    cartProducts: state.cartProducts.filter(
+      (product) => product.name !== productId,
+    ),
+  })),
+
+  incQuantity: (productId: string) => set((state) => ({
+    cartProducts: state.cartProducts.map((product) => ({
+      ...product,
+      quantity:
+          product.name === productId ? product.quantity + 1 : product.quantity,
+    })),
+  })),
+  decQuantity: (productId: string) => set((state) => ({
+    cartProducts: state.cartProducts.map((product) => ({
+      ...product,
+      quantity:
+          product.name === productId ? product.quantity - 1 : product.quantity,
+    })),
   })),
 });
-
-// export const createCartTotalSlice: StateCreator<CartTotalSlice> = (set) => ({
-//   cartPrices: [
-//     {
-//       productId: '',
-//       quantity: 1,
-//     },
-//   ],
-//   addCartPrice: (productId: string) => set((state) => ({
-//     cartPrices: { ...state.cartPrices, quantity: state.cartPrices.quantity + 1 },
-//   })),
-//   deleteCartPrice: (productId: string) => set((state) => ({
-//     cartPrices: { ...state.cartPrices, quantity: state.cartPrices.quantity - 1 },
-//   })),
-// });
 
 export const useProductStore = create<FavSlice & CartSlice>()(
   persist(
     (...args) => ({
       ...createFavSlice(...args),
       ...createCartSlice(...args),
-      // ...createCartTotalSlice(...args),
     }),
     {
       name: 'id-storage',

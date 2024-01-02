@@ -62,6 +62,11 @@
     font-size: 14px;
     font-weight: 600;
 
+    &__button {
+      border: none;
+      background-color: $elements;
+    }
+
     &::placeholder {
       color: $icons;
     }
@@ -86,29 +91,32 @@
       }
     }
   }
-
-  &__fav {
-    background-image: url(../../icons/Favourites.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 24px;
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 64px;
     height: 64px;
     border-left: 1px solid #e2e6e9;
+    position: relative;
 
-    &:hover {
-      background-image: url(../../icons/Favourites__red.svg);
+    &-counter {
+      font-size: 9px;
+      position: absolute;
+      text-align: center;
+      top: 30%;
+      right: 30%;
+      color: #fff;
+      width: 14px;
+      height: 13px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background-color: #eb5757;
     }
   }
 
   &__busket {
     background-image: url(../../icons/Card.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 24px;
-    width: 64px;
-    height: 64px;
-    border-left: 1px solid #e2e6e9;
   }
 }
 
@@ -154,13 +162,12 @@
   }
 
   &__logo {
-        background-color: $icons;
+    background-color: $icons;
     background-image: url(../../icons/apple-logo.png);
     background-position: center;
     background-size: cover;
     width: 60px;
     height: 24px;
-
   }
 
   &__cross {
@@ -200,6 +207,11 @@
     border: none;
     outline: 0;
     background-color: $icons;
+
+    &__button {
+      border: none;
+      background-color: $elements;
+    }
 
     &::placeholder {
       color: $primary;

@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <div className="footer">
       <Link
@@ -33,13 +39,14 @@ export const Footer = () => {
         </p>
       </div>
 
-      <Link
+      <button
+        type="button"
+        onClick={scrollToTop}
         className="footer__scroll"
-        to="/"
       >
         <div className="footer__link">Back to top</div>
         <div className="arrow-top" />
-      </Link>
+      </button>
     </div>
   );
 };

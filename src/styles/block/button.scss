@@ -48,19 +48,25 @@
         content: "Added to cart";
       }
     }
+  }
 
-    &-checkout {
-      background-color: $primary;
-      color: $white;
-      font-weight: 600;
-      line-height: 21px;
+  &__checkout {
+    background-color: $primary;
+    color: $white;
+    border: none;
+    width: 320px;
+    height: 48px;
 
-      border: 0;
+    &::after {
+      content: "Checkout";
+    }
 
-      width: 320px;
-      height: 48px;
+    &:hover {
+      background-color: #fff;
+      border: 1px solid $elements;
+      color: red;
       &::after {
-        content: "Checkout";
+        content: "Not implemented yet";
       }
     }
   }
