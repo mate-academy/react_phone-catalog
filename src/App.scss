@@ -121,6 +121,9 @@ iframe {
 
     &--option {
       color: $gray-secondary;
+      padding-left: 12px;
+      display: flex;
+      align-items: center;
 
       &:hover {
         background-color: $bg-white;

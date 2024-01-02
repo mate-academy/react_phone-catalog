@@ -42,7 +42,43 @@
     transition: background-color $effect-duration $animation-timing-function;
 
     &:hover {
-      background-color: $shadow-color;
+      background-color: $bg-white;
+    }
+  }
+
+  &__input-container {
+    width: 326px;
+    padding-inline: 24px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    border: none;
+    height: 100%;
+
+    transition: background-color $effect-duration $animation-timing-function;
+
+    &:hover {
+      background-color: $bg-white;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__clear-query {
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    background-image: url('../../src/images/cross-secondary.svg');
+    background-color: #fff;
+    border: none;
+
+    &:hover {
+      background-image: url('../../src/images/cross-primary.svg');
     }
   }
 }

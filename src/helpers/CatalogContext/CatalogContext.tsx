@@ -12,6 +12,8 @@ interface ICatalogContext {
   setCartPhones: (newPhones: CartPhone[]) => void,
   favourites: Phone[],
   setFavourites: (newFavourites: Phone[]) => void,
+  query: string,
+  setQuery: (newQuery: string) => void,
 }
 
 export const CatalogContext = React.createContext<ICatalogContext>({
@@ -23,6 +25,8 @@ export const CatalogContext = React.createContext<ICatalogContext>({
   setCartPhones: () => { },
   favourites: [],
   setFavourites: () => { },
+  query: '',
+  setQuery: () => { },
 });
 
 export const useProducts
@@ -39,6 +43,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [favourites, setFavourites] = useLocalStorage<Phone[]>(
     'favourites', [],
   );
+  const [query, setQuery] = useState('');
 
   const value = useMemo(() => ({
     hotPricePhones,
@@ -49,6 +54,8 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     setCartPhones,
     favourites,
     setFavourites,
+    query,
+    setQuery,
   }), [
     hotPricePhones,
     newPhones,
@@ -56,6 +63,8 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     setCartPhones,
     favourites,
     setFavourites,
+    query,
+    setQuery,
   ]);
 
   return (

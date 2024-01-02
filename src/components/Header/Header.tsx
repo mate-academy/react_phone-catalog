@@ -1,10 +1,11 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../images/logo.svg';
 import favouritesImg from '../../images/favourites-hart-like.svg';
 import bag from '../../images/shopping-bag.svg';
 import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
+import magnifier from '../../images/search.svg';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => (
   classNames('list__link', {
@@ -14,7 +15,36 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => (
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const { cartPhones, favourites } = useProducts();
+  const {
+    cartPhones,
+    favourites,
+    query,
+    setQuery,
+  } = useProducts();
+  const page = location.pathname.replace('/', '');
+
+  const [, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev.toString());
+
+      newParams.set('query', query);
+
+      if (!newParams.get('query')) {
+        newParams.delete('query');
+      }
+
+      return newParams;
+    });
+  }, [query, setSearchParams]);
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // console.log('Filtering by', event.target.value);
+
+    setTimeout(() => {}, 1000);
+    setQuery(event.target.value);
+  };
 
   return (
     <header className="header top-bar">
@@ -44,10 +74,34 @@ export const Header: React.FC = () => {
         )}
       </div>
       <div className="top-bar__options">
-        <div className="top-bar__option">
-          <input type="text" />
-          <img src="" alt="" />
-        </div>
+        {(page === 'favourites'
+          || page === 'phones'
+          || page === 'tablets'
+          || page === 'accessories') && (
+          <label
+            htmlFor="input"
+            className="top-bar__option top-bar__input-container"
+          >
+            <input
+              id="input"
+              className="top-bar__input"
+              type="text"
+              placeholder={`Search in ${page}...`}
+              value={query}
+              onChange={(event) => handleQueryChange(event)}
+            />
+            {query ? (
+              <button
+                className="top-bar__clear-query"
+                type="button"
+                onClick={() => setQuery('')}
+                aria-label="clear-query"
+              />
+            ) : (
+              <img src={magnifier} alt="magnifier-icon" />
+            )}
+          </label>
+        )}
         {!location.pathname.includes('cart') && (
           <NavLink
             className={classNames('top-bar__option', {

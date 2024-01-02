@@ -17,6 +17,8 @@ import {
 } from '../../components/Dropdowns/ItemsPerPageDropdown';
 import arrowRight from '../../images/arrow-right-secondary-color.svg';
 import { Categories } from '../../Types/Categories';
+import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
+import { SearchResult } from '../../components/SearchResult/SearchResult';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +29,19 @@ export const PhonesPage: React.FC = () => {
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const [preparedPhones, setPreparedPhones] = useState(phones);
   const page = +(searchParams.get('page') || 1);
+
+  const { query } = useProducts();
+  const [searchingPhones, setSearchingPhones] = useState(preparedPhones);
+
+  useEffect(() => {
+    const lowerQuery = query.toLowerCase();
+
+    const searching = preparedPhones.filter(
+      i => i.name.toLowerCase().includes(lowerQuery),
+    );
+
+    setSearchingPhones(searching);
+  }, [query, preparedPhones]);
 
   useEffect(() => {
     const getSorted = () => {
@@ -93,42 +108,48 @@ export const PhonesPage: React.FC = () => {
   };
 
   return (
-    <div className="phones">
-      <div className="path" data-cy="breadCrumbs">
-        <Link to="/" className="go-home" />
-        <img src={arrowRight} alt="arrow_right" />
-        <h3>Phones</h3>
-      </div>
-      <h1 className="phones__title">Mobile phones</h1>
-      <p className="phones__paragraph">{`${phones.length} models`}</p>
-      <div className="dropdowns-container">
-        <SortDropdown />
-        <ItemsPerPageDropdown
-          currentAmount={itemsPerPage}
-          length={phones.length}
-        />
-      </div>
-      {isLoading ? (
-        <Loader />
+    <>
+      {query ? (
+        <SearchResult results={searchingPhones} />
       ) : (
-        <div className="phones-container">
-          {currentItems.map(phone => (
-            <Card card={phone} discount key={phone.id} />
-          ))}
+        <div className="phones">
+          <div className="path" data-cy="breadCrumbs">
+            <Link to="/" className="go-home" />
+            <img src={arrowRight} alt="arrow_right" />
+            <h3>Phones</h3>
+          </div>
+          <h1 className="phones__title">Mobile phones</h1>
+          <p className="phones__paragraph">{`${phones.length} models`}</p>
+          <div className="dropdowns-container">
+            <SortDropdown />
+            <ItemsPerPageDropdown
+              currentAmount={itemsPerPage}
+              length={phones.length}
+            />
+          </div>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div className="phones-container">
+              {currentItems.map(phone => (
+                <Card card={phone} discount key={phone.id} />
+              ))}
+            </div>
+          )}
+          {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=""
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              pageCount={pageCount}
+              previousLabel=""
+              renderOnZeroPageCount={null}
+              initialPage={page - 1}
+            />
+          )}
         </div>
       )}
-      {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel=""
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel=""
-          renderOnZeroPageCount={null}
-          initialPage={page - 1}
-        />
-      )}
-    </div>
+    </>
   );
 };
