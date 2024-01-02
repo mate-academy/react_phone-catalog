@@ -1,0 +1,52 @@
+$gray-primary: #313237;
+$gray-secondary: #89939A;
+$gray-icons: #B4BDC3;
+$gray-elements: #E2E6E9;
+$gray-white: #FFF;
+
+.swiper {
+  height: 430px;
+  position: relative;
+  display: flex;
+  margin-bottom: 70px;
+
+  &-img {
+    display: flex;
+    height: 400px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+
+  &-button {
+    position: absolute;
+    display: flex;
+    width: 32px;
+    height: 400px;
+    border: 1px solid $gray-icons;
+    z-index: 10;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    &-next {
+      right: 0;
+      justify-content: end;
+    }
+  }
+
+  .swiper-pagination {
+    display: block;
+    &-bullet {
+      height: 3px;
+      width: 14px;
+      border-radius: 0;
+      background-color: $gray-secondary;
+
+      &-active {
+        background-color: $gray-primary;
+      }
+    }
+  }
+}

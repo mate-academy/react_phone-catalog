@@ -1,0 +1,31 @@
+$gray-primary: #313237;
+$gray-secondary: #89939A;
+$gray-icons: #B4BDC3;
+$gray-elements: #E2E6E9;
+$gray-white: #FFF;
+
+.phones-swiper {
+  position: static;
+
+  &-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-button {
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
+    color: $gray-primary;
+  }
+
+  &-slide {
+    margin-top: 0 auto;
+  }
+}

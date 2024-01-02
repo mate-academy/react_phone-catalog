@@ -1,0 +1,124 @@
+$gray-primary: #313237;
+$gray-secondary: #89939A;
+$gray-icons: #B4BDC3;
+$gray-elements: #E2E6E9;
+$gray-white: #FFF;
+
+.card {
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  border: 1px solid $gray-elements;
+
+  &__img {
+    display: block;
+    height: 208px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    min-height: 42px;
+    color: $gray-primary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 6px;
+    text-decoration: none;
+  }
+
+  &__price {
+    position: relative;
+    display: flex;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+
+    &-new {
+      display: flex;
+      color: $gray-primary;
+      font-size: 22px;
+      font-weight: 700;
+      padding-right: 4px;
+      text-decoration: none;
+    }
+
+    &-old {
+      display: flex;
+      color: $gray-secondary;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 1px;
+      width: 100%;
+      bottom: 0;
+      background: $gray-elements;
+    }
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &-last {
+      margin-bottom: 16px;
+    }
+
+    &-type {
+      color: $gray-secondary;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    &-value {
+      color: $gray-primary;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+
+    &-add {
+      display: flex;
+      width: 176px;
+      height: 40px;
+      background: $gray-primary;
+
+      text-decoration: none;
+      color: $gray-white;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &-like {
+      width: 40px;
+      height: 40px;
+      border: 1px solid $gray-icons;
+      background: #fff;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .selected {
+    background: #fff;
+    color: #27AE60;
+    border: 1px solid $gray-elements;
+  }
+}

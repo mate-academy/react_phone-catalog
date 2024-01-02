@@ -1,0 +1,24 @@
+$gray-primary: #313237;
+$gray-elements: #E2E6E9;
+
+.prise {
+  height: 572px;
+  margin-bottom: 80px;
+
+  &__title {
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+}
+
+.phones-swiper {
+  height: 507px;
+
+  &-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-elements;
+  }
+}

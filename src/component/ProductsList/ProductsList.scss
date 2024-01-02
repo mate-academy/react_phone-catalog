@@ -1,0 +1,7 @@
+.ProductsList {
+  display: grid;
+  grid-template-columns: repeat(4, 272px);
+  gap: 40px 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
