@@ -14,13 +14,14 @@ export const FavouritesPage = () => {
 
   return (
     <div className="favourites">
-      <PublicPath linkName="Favourites" />
+      <PublicPath linkName="favourites" />
       <div className="phones-page__header">
         <h2 className="text--h1 favourites__header">Favourites</h2>
-        <span className="text text--small text--gray">{`${favFilteredProducts?.length} models`}</span>
+        {favFilteredProducts && favFilteredProducts?.length > 1
+        && <span className="text text--small text--gray">{`${favFilteredProducts.length} models`}</span>}
 
         <div className="favourites__content">
-          {favFilteredProducts
+          {favFilteredProducts && favFilteredProducts?.length > 1
             ? (
               favFilteredProducts.map(p => (
                 <ProductItem product={p} />

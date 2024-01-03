@@ -1,8 +1,12 @@
 @import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
 
 .product {
-  width: 272px;
-  height: 507px;
+  width: 90vw;
+  @include onTablet {
+    width: 272px;
+    height: 507px;
+  }
   border: 1px solid $elements;
   padding: 24px;
 

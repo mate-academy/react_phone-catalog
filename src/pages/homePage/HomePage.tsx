@@ -38,9 +38,9 @@ export const HomePage: React.FC = () => {
               className="categories__image-container"
             >
               <div className="categories__image categories__image-1" />
+              <h3 className="text--h3">Mobile phones</h3>
+              <span className="text text--small text--gray">{`${products.length} models`}</span>
             </Link>
-            <h3 className="text--h3">Mobile phones</h3>
-            <span className="text text--small text--gray">{`${products.length} models`}</span>
           </div>
 
           <div className="categories__block">
@@ -49,9 +49,9 @@ export const HomePage: React.FC = () => {
               className="categories__image-container"
             >
               <div className="categories__image categories__image-2" />
+              <h3 className="text--h3">Tablets</h3>
+              <span className="text text--small text--gray">0 models</span>
             </Link>
-            <h3 className="text--h3">Tablets</h3>
-            <span className="text text--small text--gray">0 models</span>
           </div>
 
           <div className="categories__block">
@@ -60,9 +60,9 @@ export const HomePage: React.FC = () => {
               className="categories__image-container"
             >
               <div className="categories__image categories__image-3" />
+              <h3 className="text--h3">Accessories</h3>
+              <span className="text text--small text--gray">0 models</span>
             </Link>
-            <h3 className="text--h3">Accessories</h3>
-            <span className="text text--small text--gray">0 models</span>
           </div>
 
         </div>

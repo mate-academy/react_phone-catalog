@@ -7,8 +7,14 @@
   max-height: 400px;
 
   &__button {
+    margin-top: 110px;
     width: 32px;
-    height: 400px;
+    height: 150px;
+
+    @include onTablet {
+      margin-top: 0;
+      height: 100%;
+    }
   }
 
   &-container {

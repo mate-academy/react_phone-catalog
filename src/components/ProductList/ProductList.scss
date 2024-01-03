@@ -1,8 +1,14 @@
+@import '../../styles/utils/mixins';
+
 .products {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
 
+  @include onTablet {
+    justify-content: flex-start;
+  }
+
   margin-bottom: 40px;
 }
-

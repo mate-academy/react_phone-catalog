@@ -86,6 +86,7 @@ export const PhonesPage = () => {
           currentProducts={(productsPerPage < 17) ? currentProducts : products}
         />
       </div>
+
       {productsPerPage < 17
         && (
           <div className="phone-page__pagination">

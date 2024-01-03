@@ -13,8 +13,14 @@
   &__main {
     position: relative;
     display: flex;
+    justify-content: center;
     gap: 16px;
     margin-top: 24px;
+    width: 100%;
+
+    @include onTablet {
+      justify-content: flex-start;
+    }
 
     &__price {
       display: flex;
@@ -43,7 +49,7 @@
     &__item {
       display: flex;
       flex-direction: column;
-      width: 70vw;
+      width: 100%;
       border: 1px solid $elements;
       margin-bottom: 16px;
 
