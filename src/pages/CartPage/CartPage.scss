@@ -26,6 +26,7 @@
     flex-direction: column;
     gap: 16px;
 
+
     &-item {
       display: flex;
       justify-content: space-between;
@@ -35,11 +36,13 @@
       &-left-container {
         display: flex;
         align-items: center;
+        width: 100%;
       }
 
       &-right-container {
         display: flex;
         align-items: center;
+        width: 100%;
       }
 
       &-button {
