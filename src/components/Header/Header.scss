@@ -1,22 +1,50 @@
 @import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
 
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   background-color: white;
   border-bottom: 1px solid $gray-elements;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
+
+  &__content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-left: 1px solid $gray-elements;
+  }
+
+  &__nav {
+    @include onTablet {
+      display: none;
+      width: 0;
+    }
+  }
+
+  &__menu-btn {
+    display: none;
+
+    @include onTablet {
+      display: block;
+      height: 100%;
+    }
+  }
 
   &__left {
     display: flex;
     padding: 20px 24px;
+    align-items: center;
   }
 
   &__logo {
     margin-right: 64px;
+
+    @include onMobile {
+      margin: 0;
+    }
   }
 
   &__right {
@@ -30,7 +58,6 @@
     align-content: center;
     align-items: center;
     padding-inline: 24px;
-    min-width: max-content;
     visibility: hidden;
     border-left: 1px solid $gray-elements;
 

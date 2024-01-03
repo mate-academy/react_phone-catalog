@@ -6,3 +6,14 @@ $gray-icons: #b4bdc3;
 $gray-background: #fafbfc;
 
 $transition-speed: 0.3s;
+
+$card-width: 272px;
+$page-padding: 152px;
+$button-width: 32px;
+$gap: 16px;
+$block-size: 8px;
+
+$width: 4 * $card-width + 3 * $gap;
+$small-desktop-width: 3 * $card-width + 2 * $gap;
+$tablet-width: 2 * $card-width + $gap;
+$mobile-width: $card-width;

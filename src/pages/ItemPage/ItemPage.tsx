@@ -85,7 +85,7 @@ export function ItemPage() {
           <GoBackButton />
 
           {itemDetails ? (
-            <>
+            <div className="item-page__content">
               <section className="item-page__section">
                 <h1 className="item-page__title">
                   {itemDetails.name}
@@ -276,7 +276,7 @@ export function ItemPage() {
                   </ul>
                 </section>
               </div>
-            </>
+            </div>
           )
             : <p className="item-page__not-found">No products found...</p>}
 

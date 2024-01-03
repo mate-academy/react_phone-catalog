@@ -1,9 +1,15 @@
 @import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
 @import "../../styles/typography.scss";
 
 .item-page {
-  width: 1136px;
   padding-top: 24px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__not-found {
     @extend %h1;
@@ -19,6 +25,12 @@
     display: flex;
     gap: 64px;
     margin-bottom: 80px;
+    width: 100%;
+    position: relative;
+
+    @include onTablet {
+      flex-direction: column;
+    }
   }
 
   &__title {
@@ -34,6 +46,10 @@
 
   &__info-container {
     width: 320px;
+
+    @include onSmallDesktop {
+      width: 100%;
+    }
   }
 
   &__specifications {
@@ -46,6 +62,12 @@
   &__id {
     @extend %small-text;
     margin-bottom: 8px;
+  }
+
+  &__id {
+    position: absolute;
+    top: -36px;
+    right: 0;
   }
 
   &__spec-container {
@@ -137,7 +159,11 @@
   &__about {
     display: grid;
     gap: 32px;
-    width: 560px;
+    width: $tablet-width;
+
+    @include onMobile {
+      width: 100%;
+    }
   }
 
   &__about-article {
@@ -168,6 +194,8 @@
     display: flex;
     justify-content: space-between;
     color: $gray-secondary;
+    gap: 8px;
+    text-align: right;
 
     &--value {
       color: $gray-primary;

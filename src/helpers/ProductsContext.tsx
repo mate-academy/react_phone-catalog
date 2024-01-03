@@ -1,5 +1,5 @@
 import {
-  createContext, useMemo, useState,
+  createContext, useEffect, useMemo, useState,
 } from 'react';
 import { useLocalStorsge } from '../hooks/useLocalStorage';
 import { CartProperty, Product } from './types';
@@ -21,6 +21,9 @@ interface IProductContext {
   setCartContentData: (v: CartProperty[]) => void,
   totalPrices: number,
   setTotalPrices: (n: number) => void,
+  isMenuActive: boolean,
+  setIsMenuActive: (n: boolean) => void,
+  windowWidth: number,
 }
 
 const defaultValue = {
@@ -36,6 +39,9 @@ const defaultValue = {
   setCartContentData: () => { },
   totalPrices: 0,
   setTotalPrices: () => { },
+  isMenuActive: false,
+  setIsMenuActive: () => { },
+  windowWidth: 0,
 };
 
 export const ProductContext = createContext<IProductContext>(defaultValue);
@@ -51,6 +57,20 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
       'cartPrices', [{ phoneId: 'none', price: 0, amount: 0 }],
     );
   const [totalPrices, setTotalPrices] = useLocalStorsge('totalPrices', 0);
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   function addTofavoritesHandler(chosenProductID: string) {
     if (favorites.find(item => item.phoneId === chosenProductID)) {
@@ -106,7 +126,12 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
     setCartContentData,
     totalPrices,
     setTotalPrices,
-  }), [favorites, addedToCart, products, totalPrices]);
+    isMenuActive,
+    setIsMenuActive,
+    windowWidth,
+  }), [
+    favorites, addedToCart, products, totalPrices, isMenuActive, windowWidth,
+  ]);
 
   return (
     <ProductContext.Provider value={value}>

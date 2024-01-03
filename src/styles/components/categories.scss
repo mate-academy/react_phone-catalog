@@ -5,8 +5,16 @@
   }
 
   &__content {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    @include onMobile {
+      grid-template-columns: none;
+      gap: 16px;
+      align-items: center;
+    }
   }
 }
 
@@ -16,6 +24,7 @@
   }
 
   &__img {
+    width: 100%;
     transition: all $transition-speed;
 
     &:hover {

@@ -1,0 +1,20 @@
+@import "../../styles/utils/vars.scss";
+
+.menu {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 100vh;
+
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-speed;
+  transform: translate(-100%);
+
+  &--active {
+    transform: translate(0);
+  }
+}

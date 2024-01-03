@@ -1,3 +1,7 @@
 .main {
   padding-inline: 152px;
+
+  @include onSmallDesktop {
+    padding: 0 48px;
+  }
 }

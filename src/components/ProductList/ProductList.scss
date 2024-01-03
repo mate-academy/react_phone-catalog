@@ -1,5 +1,7 @@
+@import "../../styles/utils/vars.scss";
+
 .product-list {
-  max-width: 1136px;
+  max-width: $width;
   display: flex;
   flex-wrap: wrap;
   gap: 40px 16px;

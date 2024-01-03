@@ -1,3 +1,5 @@
+@import "../utils/mixins.scss";
+
 .page {
   scroll-behavior: smooth;
 
@@ -6,21 +8,15 @@
   }
 
   &__app {
-    width: 100%;
+    position: relative;
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
   }
 
-  // &__header {
-  //   width: 100%;
-  // }
-
   &__main {
-    max-width: 1136px;
+    @include page-sizes;
+    margin: 0 auto;
     margin-bottom: 80px;
   }
-
-  // &__footer {
-  // }
 }

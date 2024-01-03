@@ -35,6 +35,7 @@ export const ItemGallery: React.FC<Props> = ({ images }) => {
           </li>
         ))}
       </ul>
+
       <div className="item-gallery__img-container">
         <img
           src={imgSrc}

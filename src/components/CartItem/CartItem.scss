@@ -11,6 +11,9 @@
   box-sizing: border-box;
   border: 1px solid $gray-elements;
 
+  @include onMobile {
+    flex-direction: column;
+  }
   &__left {
     display: flex;
     gap: 24px;
@@ -74,7 +77,6 @@
   &__price {
     @extend %h2;
     width: 90px;
-    // justify-self: flex-start;
   }
 
   &__btn {

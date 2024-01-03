@@ -4,7 +4,7 @@
 .slider {
   display: flex;
   flex-direction: column;
-  max-width: 1136px;
+  max-width: $width;
   align-items: center;
 
   &__top {
@@ -14,6 +14,11 @@
     align-items: center;
     height: 400px;
     margin-bottom: 18px;
+
+    @include onMobile {
+      grid-template-columns: 1fr;
+      height: 200px;
+    }
   }
 
   &__viewport {
@@ -25,6 +30,10 @@
     width: fit-content;
     display: flex;
     transition: transform ease-in 0.5s;
+
+    @include onMobile {
+      height: 200px;
+    }
   }
 
   &__link {
@@ -32,6 +41,10 @@
     height: 400px;
     background-position: center;
     background-size: cover;
+
+    @include onMobile {
+      height: 100%;
+    }
 
     $banners: "phones", "tablets", "accessories";
 
@@ -46,6 +59,10 @@
     @include button-base-style-n-hover;
 
     height: 100%;
+
+    @include onMobile {
+      display: none;
+    }
 
     &--prev {
       background-image: url(../../images/icons/arrow-left.svg);

@@ -35,6 +35,10 @@
     height: fit-content;
     box-sizing: border-box;
     border: 1px solid $gray-elements;
+
+    @include onMobile {
+      width: 100%;
+    }
   }
 
   &__price-container {

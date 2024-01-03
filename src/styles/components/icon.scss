@@ -25,6 +25,22 @@
   }
   &--cart {
     background-image: url(../../images/icons/icon-cart.svg);
-    // border-right: 1px solid $gray-elements;
+  }
+
+  &--menu {
+    background-image: url(../../images/icons/burger.svg);
+    background-size: 50%;
+    display: none;
+    border: none;
+    background-color: white;
+    height: 64px;
+
+    @include onTablet {
+      display: block;
+    }
+
+    &--active {
+      background-image: url(../../images/icons/burger-active.svg);
+    }
   }
 }

@@ -1,4 +1,5 @@
 @import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
 @import "../../styles/typography.scss";
 
 .products-slider {
@@ -25,8 +26,20 @@
   }
 
   &__viewport {
-    max-width: 1136px;
+    max-width: $width;
     overflow: hidden;
+
+    @include onSmallDesktop {
+      max-width: $small-desktop-width;
+    }
+
+    @include onTablet {
+      max-width: $tablet-width;
+    }
+
+    @include onMobile {
+      max-width: $mobile-width;
+    }
   }
 
   &__items {

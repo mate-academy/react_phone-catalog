@@ -6,6 +6,10 @@
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
   }
 
   &__product-list {
@@ -17,11 +21,19 @@
     display: flex;
     justify-content: center;
     gap: 16px;
+
+    @include onMobile {
+      gap: 8px;
+    }
   }
 
   &__pages-buttons {
     display: flex;
     gap: 8px;
+
+    @include onMobile {
+      gap: 2px;
+    }
   }
 
   &__page-button {
@@ -38,10 +50,18 @@
 
     &:first-child {
       margin-right: 10px;
+
+      @include onMobile {
+        margin-right: 6px;
+      }
     }
 
     &:last-child {
       margin-left: 10px;
+
+      @include onMobile {
+        margin-left: 6px;
+      }
     }
 
     &:hover {

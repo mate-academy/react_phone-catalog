@@ -1,4 +1,5 @@
 @import "../../styles/utils/vars.scss";
+@import "../../styles/utils/mixins.scss";
 @import "../../styles/typography.scss";
 
 .footer {
@@ -9,6 +10,13 @@
   padding: 32px 152px;
   border-top: 1px solid $gray-elements;
   position: relative;
+  box-sizing: border-box;
+
+  @include onTablet {
+    flex-direction: column-reverse;
+    gap: 32px;
+    padding: 16px;
+  }
 
   &__links {
     position: absolute;
@@ -16,6 +24,15 @@
     display: flex;
     gap: 64px;
     transform: translateX(-50%);
+
+    @include onTablet {
+      position: static;
+      justify-items: center;
+      align-items: center;
+      align-self: center;
+      gap: 16px;
+      transform: translateX(0%);
+    }
   }
 
   &__link {
