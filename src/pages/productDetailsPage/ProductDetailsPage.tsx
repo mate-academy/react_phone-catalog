@@ -94,8 +94,9 @@ export const ProductDetailsPage = () => {
             pathname: '..',
             search: state?.search,
           }}
+          className="text text--small text--gray"
         >
-          Phones
+          phones
         </Link>
 
         <span className="icon icon--arrow icon--next" />

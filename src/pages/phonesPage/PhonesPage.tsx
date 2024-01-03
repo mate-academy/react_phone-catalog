@@ -86,12 +86,14 @@ export const PhonesPage = () => {
           currentProducts={(productsPerPage < 17) ? currentProducts : products}
         />
       </div>
-
-      <div className="phone-page__pagination">
-        <Pagination
-          pages={nPages}
-        />
-      </div>
+      {productsPerPage < 17
+        && (
+          <div className="phone-page__pagination">
+            <Pagination
+              pages={nPages}
+            />
+          </div>
+        )}
     </div>
   );
 };
