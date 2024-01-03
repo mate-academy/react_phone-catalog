@@ -1,0 +1,214 @@
+@import "../../styles/main";
+
+.Header {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $elements-grey-c;
+
+  @include on-tablet {
+    height: 48px;
+  }
+
+  &__logo {
+    display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &-image {
+      height: 24px;
+      width: 40px;
+      background-image: url(../../assets/main-logo.svg);
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__container-left {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    height: 100%;
+
+  }
+
+  &__container-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__burger {
+    display: none;
+    margin-left: 24px;
+    width: 32px;
+    height: 32px;
+    gap: 5px;
+    justify-content: center;
+    flex-direction: column;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &-span {
+      display: block;
+      height: 3px;
+      width: 26px;
+      background-color: $black-c;
+      border-radius: 5px;
+    }
+
+    &:hover .Header__burger-span--one {
+      animation: changeWidth 2s ease infinite;
+    }
+
+    &:hover .Header__burger-span--two {
+      animation: changeWidth1 2s ease infinite;
+    }
+
+    &:hover .Header__burger-span--three {
+      animation: changeWidth2 2s ease infinite;
+    }
+  }
+
+  &__navigation {
+    @include on-tablet {
+      display: none;
+    }
+
+    &-list {
+      display: flex;
+      gap: 64px;
+      justify-content: space-between;
+      align-items: center;
+
+      &-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        border-bottom: 3px solid transparent;
+        transition-duration: $transition-duration;
+
+        @extend %navigation;
+      }
+    }
+  }
+
+  &__icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    border-left: 1px solid $elements-grey-c;
+    border-bottom: 3px solid transparent ;
+    transition-duration: $transition-duration;
+
+    @include on-tablet {
+      width: 48px;
+    }
+
+    &-image {
+      position: relative;
+    }
+
+    &:hover {
+      .Header__icon-link-image {
+        transform: scale(1.2);
+      }
+    }
+
+    &-fav {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: -50%;
+      margin-right: -50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $red-c;
+      border-radius: 50%;
+
+      &-amount {
+        color: $white-c;
+        font-size: 9px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.navlink-active {
+  border-bottom: 3px solid $black-c;
+  color: $black-c;
+}
+
+@keyframes change-width {
+  0% {
+    width: 26px;
+  }
+  25% {
+    width: 30px;
+  }
+  50% {
+    width: 15px;
+  }
+  75% {
+    width: 30px;
+  }
+  100% {
+    width: 26px;
+  }
+}
+
+@keyframes change-width1 {
+  0% {
+    width: 26px;
+  }
+  25% {
+    width: 14px;
+  }
+  50% {
+    width: 30px;
+  }
+  75% {
+    width: 12px;
+  }
+  100% {
+    width: 26px;
+  }
+}
+
+@keyframes change-width2 {
+  0% {
+    width: 20px;
+  }
+  25% {
+    width: 5px;
+  }
+  50% {
+    width: 30px;
+  }
+  75% {
+    width: 30px;
+  }
+  100% {
+    width: 20px;
+  }
+}
