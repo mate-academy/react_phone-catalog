@@ -87,13 +87,16 @@ export const PhonesPage = () => {
         />
       </div>
 
-      {productsPerPage < 17
-        && (
+      {currentProducts.length > 1 && productsPerPage < 17
+        ? (
           <div className="phone-page__pagination">
             <Pagination
               pages={nPages}
             />
           </div>
+        )
+        : (
+          <span className="text">There are no results on your request</span>
         )}
     </div>
   );

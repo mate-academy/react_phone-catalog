@@ -17,11 +17,12 @@ export const ProductList: React.FC<Props> = ({
       className="products"
     >
       {currentProducts
-        && currentProducts.map((product) => (
-          <li key={product.id}>
-            <ProductItem product={product} />
-          </li>
-        ))}
+        && (
+          currentProducts.map((product) => (
+            <li key={product.id}>
+              <ProductItem product={product} />
+            </li>
+          )))}
     </ul>
   );
 };
