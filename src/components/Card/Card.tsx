@@ -8,7 +8,7 @@ type Props = {
   discount: boolean,
 };
 
-export const Card: React.FC<Props> = ({ card, discount }) => {
+export const Card: React.FC<Props> = ({ card, discount = true }) => {
   const location = useLocation();
   const path = location.pathname.includes('phones')
     ? card.phoneId
@@ -21,24 +21,26 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
     setFavourites,
   } = useProducts();
 
-  const addToFavourites = (phone: Phone) => {
-    if (favourites.find(i => i.id === phone.id)) {
+  const cardId = card.id || '';
+
+  const addToFavourites = () => {
+    if (favourites.find(i => i.id === cardId)) {
       return;
     }
 
-    const newFavourites = [...favourites, phone];
+    const newFavourites = [...favourites, card];
 
     setFavourites(newFavourites);
   };
 
-  const removeFromFavourites = (phone: Phone) => {
-    const newFavourites = favourites.filter(i => i.id !== phone.id);
+  const removeFromFavourites = () => {
+    const newFavourites = favourites.filter(i => i.id !== cardId);
 
     setFavourites(newFavourites);
   };
 
-  const addToCart = (phone: Phone) => {
-    const newPhone = { id: phone.id, quantity: 1, product: { ...phone } };
+  const addToCart = () => {
+    const newPhone = { id: cardId, quantity: 1, product: { ...card } };
 
     if (cartPhones.find(i => i.id === newPhone.id)) {
       return;
@@ -52,6 +54,7 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
   };
 
   const cartPhonesIds = cartPhones.map(phone => phone.id);
+  const favouritesPhonesIds = favourites.map(phone => phone.id);
 
   return (
     <div className="card">
@@ -85,27 +88,27 @@ export const Card: React.FC<Props> = ({ card, discount }) => {
       </div>
       <div className="card__button">
         <div
-          onClick={() => addToCart(card)}
+          onClick={addToCart}
           className={classNames('card__link', {
-            'card__link--added': cartPhonesIds.includes(card.id),
+            'card__link--added': cartPhonesIds.includes(cardId),
           })}
           role="presentation"
         >
-          {cartPhonesIds.includes(card.id) ? 'Added to cart' : 'Add to cart'}
+          {cartPhonesIds.includes(cardId) ? 'Added to cart' : 'Add to cart'}
         </div>
-        {favourites.find(i => i.id === card.id) ? (
+        {favouritesPhonesIds.includes(cardId) ? (
           <div
             className="card__icon card__icon--added"
             data-cy="addToFavorite"
             role="presentation"
-            onClick={() => removeFromFavourites(card)}
+            onClick={removeFromFavourites}
           />
         ) : (
           <div
             className="card__icon"
             data-cy="addToFavorite"
             role="presentation"
-            onClick={() => addToFavourites(card)}
+            onClick={addToFavourites}
           />
         )}
       </div>

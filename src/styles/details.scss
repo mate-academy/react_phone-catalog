@@ -54,7 +54,7 @@
   &__phone-id {
     grid-column: 22 / 25;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 
     @include smallText;
     color: $gray-secondary;
