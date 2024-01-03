@@ -3,10 +3,12 @@
 
 .product {
   width: 90vw;
+
   @include onTablet {
     width: 272px;
     height: 507px;
   }
+
   border: 1px solid $elements;
   padding: 24px;
 
@@ -29,11 +31,9 @@
     &__name {
       display: flex;
       flex-direction: column;
-
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
-
       margin-bottom: 7px;
     }
 
@@ -58,7 +58,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
     margin-bottom: 16px;
 
     &__item {

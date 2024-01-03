@@ -70,7 +70,7 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
       key => options[key] === currentValue,
     );
 
-    return foundKey || '';
+    return foundKey || 'All';
   }
 
   const sortDropdown: DropdownIterface = {
@@ -89,7 +89,7 @@ export const DataProvider: React.FC<Props> = ({ children }) => {
       16: '16',
       8: '8',
       4: '4',
-      All: 'all',
+      All: 'All',
     },
     isOpen: false,
   };

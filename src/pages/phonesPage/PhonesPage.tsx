@@ -76,7 +76,7 @@ export const PhonesPage = () => {
         <DropDown
           dropdown={perPageDropdown}
           queryKey={perPageDropdown.name}
-          currentValue={productsPerPage.toString()}
+          currentValue={productsPerPage > 16 ? 'All' : productsPerPage.toString()}
           title="Items on page"
         />
       </div>

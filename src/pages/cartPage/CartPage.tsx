@@ -31,6 +31,11 @@ export const CartPage = () => {
     0,
   );
 
+  const totalCountOfProducts = cartProductsId.reduce(
+    (acc, curVal) => acc + curVal.quantity,
+    0,
+  );
+
   function showNotImplementedMessage() {
     const messageElement = document.getElementById('message');
 
@@ -114,7 +119,7 @@ export const CartPage = () => {
                   <div className="price__main">
                     <span className="text--h1">{`$${totalValueOfProducts}`}</span>
                     <span className="text text--small text--gray">
-                      {`Total for ${cartFilteredProducts?.length} items`}
+                      {`Total for ${totalCountOfProducts} items`}
                     </span>
                   </div>
                   <button
