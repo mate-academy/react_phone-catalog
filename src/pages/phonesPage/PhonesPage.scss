@@ -3,6 +3,7 @@
 
 .phones-page {
   @include contentPaddingInline;
+
   max-width: calc(320px * 4);
 
   &__header {

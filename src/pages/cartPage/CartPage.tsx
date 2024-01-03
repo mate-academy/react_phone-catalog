@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import './CartPage.scss';
@@ -29,6 +30,18 @@ export const CartPage = () => {
     (acc, curVal) => acc + (curVal.price * (cartProductsId.find(p => p.name === curVal.phoneId)?.quantity || 1)),
     0,
   );
+
+  function showNotImplementedMessage() {
+    const messageElement = document.getElementById('message');
+
+    if (messageElement) {
+      messageElement.style.display = 'block';
+
+      setTimeout(() => {
+        messageElement.style.display = 'none';
+      }, 3000);
+    }
+  }
 
   return (
     <div className="cart">
@@ -107,7 +120,14 @@ export const CartPage = () => {
                   <button
                     className="button__checkout"
                     type="button"
+                    onClick={showNotImplementedMessage}
                   />
+                  <div
+                    className="notification is-warning cart__message"
+                    id="message"
+                  >
+                    This functionality isn&apos;t implemented yet
+                  </div>
                 </div>
               </>
             )

@@ -4,12 +4,14 @@
 .cart {
   @include contentPaddingInline;
 
+
   &__utils {
     margin-top: 30px;
     margin-bottom: 30px;
   }
 
   &__main {
+    position: relative;
     display: flex;
     gap: 16px;
     margin-top: 24px;
@@ -88,6 +90,12 @@
         }
       }
     }
+  }
+
+  &__message {
+    display: none;
+    position: absolute;
+    top: 200px;
   }
 }
 

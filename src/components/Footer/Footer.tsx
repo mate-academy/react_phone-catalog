@@ -28,7 +28,6 @@ export const Footer = () => {
         </Link>
         <p
           className="footer__link"
-
         >
           Contacts
         </p>
@@ -45,7 +44,7 @@ export const Footer = () => {
         className="footer__scroll"
       >
         <div className="footer__link">Back to top</div>
-        <div className="arrow-top" />
+        <div className="arrow-top footer__arrow" />
       </button>
     </div>
   );

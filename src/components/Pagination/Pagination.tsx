@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
@@ -48,11 +49,11 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
       </button>
 
       <ul className="Pagination__list">
-        {pagesArray.map(currPage => {
+        {pagesArray.map((currPage, index) => {
           if (currPage === 'DOTS') {
             return (
               <li
-                key={currPage}
+                key={`DOTS_${index}`}
                 className="Pagination__item"
               >
                 ...
@@ -73,7 +74,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
               key={currPage}
             >
               <li
-                className={classNames('Pagination__item button', {
+                className={classNames('Pagination__item', {
                   'Pagination__item--active': selectedPage === currPage,
                 })}
               >

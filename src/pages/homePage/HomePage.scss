@@ -35,6 +35,12 @@
     background-repeat: no-repeat;
     margin-bottom: 24px;
 
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
     @include onTablet {
       height: 40vh;
     }
@@ -46,7 +52,7 @@
     &-1 {
       background-color: #000;
       background-image: url(../../icons/images/category-phone.jpeg);
-      background-position: center;      
+      background-position: center;
     }
 
     &-2 {

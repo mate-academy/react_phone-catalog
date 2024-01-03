@@ -195,24 +195,18 @@ export const Header = () => {
           </NavLink>
         </div>
         <div className="Menu__bottom">
-          <div className="Menu__bottom-search">
-            {(PhonesPage || TabletsPage || AccessoriesPage || FavouritesPage)
-              && <Search />}
-          </div>
-          <div className="Menu__bottom-utils">
-            <Link
-              className="Menu--icon icon--fav"
-              to="/favourites"
-              title="Favourities"
-              onClick={handleMenuClick}
-            />
-            <Link
-              className="Menu--icon icon--busket"
-              to="/cart"
-              title="Cart"
-              onClick={handleMenuClick}
-            />
-          </div>
+          <Link
+            className="Menu--icon icon--fav"
+            to="/favourites"
+            title="Favourities"
+            onClick={handleMenuClick}
+          />
+          <Link
+            className="icon--busket Menu--icon"
+            to="/cart"
+            title="Cart"
+            onClick={handleMenuClick}
+          />
         </div>
       </aside>
     </div>

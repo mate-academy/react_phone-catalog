@@ -15,6 +15,12 @@
     align-items: center;
     border: 1px solid $elements;
     background-color: $white;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+      border: 1px solid $primary;
+    }
   }
 
   &__cart {
@@ -62,12 +68,7 @@
     }
 
     &:hover {
-      background-color: #fff;
-      border: 1px solid $elements;
-      color: red;
-      &::after {
-        content: "Not implemented yet";
-      }
+      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -79,6 +80,13 @@
     border: 1px solid $icons;
     width: 40px;
     height: 40px;
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+      border: 1px solid $primary;
+    }
 
     &-selected {
       background-image: url(/icons/Favourites__red.svg);

@@ -87,19 +87,15 @@ export const ProductSlider: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className="productSlider__phoneListWrap">
-        <div
-          className="productSlider__phoneList"
-        >
-          <Slider ref={ref} {...settings}>
-            {filteredSuggestedProducts.map((f) => (
-              <ProductItem
-                key={f.id}
-                product={f}
-              />
-            ))}
-          </Slider>
-        </div>
+      <div className="productSlider__phoneList">
+        <Slider ref={ref} {...settings}>
+          {filteredSuggestedProducts.map((f) => (
+            <ProductItem
+              key={f.id}
+              product={f}
+            />
+          ))}
+        </Slider>
       </div>
     </div>
   );

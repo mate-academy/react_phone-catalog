@@ -3,9 +3,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import debounce from 'lodash/debounce';
 import { getSearchWith } from '../../helpers/getSearchWith';
+import { useData } from '../../helpers/DataContext';
 
 import './Search.scss';
-import { useData } from '../../helpers/DataContext';
 
 export const Search: React.FC = () => {
   const { pageURL } = useData();
@@ -46,9 +46,9 @@ export const Search: React.FC = () => {
 
   return (
     <>
-      <div className="header__input-container">
+      <div className="Search__input-container">
         <input
-          className="header__input"
+          className="Search__input"
           type="text"
           placeholder={`Search in ${pageURL?.slice(1)}..`}
           value={query}
@@ -61,7 +61,7 @@ export const Search: React.FC = () => {
               onClick={deleteQuery}
               title="clear input"
               data-cy="searchDelete"
-              className="header__input__button"
+              className="Search__button"
             >
               <span className="icon icon--close" />
             </button>

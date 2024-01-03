@@ -55,42 +55,6 @@
     display: flex;
   }
 
-  &__input {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 14px;
-    font-weight: 600;
-
-    &__button {
-      border: none;
-      background-color: $elements;
-    }
-
-    &::placeholder {
-      color: $icons;
-    }
-
-    &-container {
-      display: flex;
-      align-items: center;
-      cursor: text;
-
-      width: 30vw;
-      max-width: 300px;
-      padding: 0 24px;
-      border-left: 1px solid $elements;
-
-      &:hover {
-        background-color: $hoverbg;
-
-        &,
-        .header__input {
-          background-color: $hoverbg;
-        }
-      }
-    }
-  }
   &__icon {
     display: flex;
     justify-content: center;
@@ -185,54 +149,23 @@
 
   &__item {
     font-size: 20px;
+    color: $primary;
+
+    &:hover {
+      border-bottom: 1px solid $primary;
+    }
   }
 
   &__bottom {
     display: flex;
-    flex-direction: column;
-
-    &-utils {
-      display: flex;
-      justify-content: space-around;
-      height: 64px;
-    }
-    &-search {
-      height: 64px;
-    }
-  }
-
-  &__input {
     width: 100vw;
-    height: 62px;
-    border: none;
-    outline: 0;
-    background-color: $icons;
-
-    &__button {
-      border: none;
-      background-color: $elements;
-    }
-
-    &::placeholder {
-      color: $primary;
-      font-size: 15px;
-    }
-
-    &-container {
-      display: flex;
-      align-items: center;
-      box-sizing: border-box;
-      height: 64px;
-      padding: 0 24px;
-      border-top: 2px solid $primary;
-    }
+    height: 64px;
   }
 
   &--icon {
     background-repeat: no-repeat;
     background-position: center;
-    padding: 24px;
-    width: 50%;
+    width: 50vw;
     height: 64px;
     border: 1px solid $primary;
     border-top: 2px solid $primary;

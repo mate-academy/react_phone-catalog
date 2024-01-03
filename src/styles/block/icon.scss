@@ -46,6 +46,7 @@
   }
 
   &--search {
+    margin-right: 10px;
     background-image: url(../../icons/Search.svg);
   }
 
@@ -63,8 +64,6 @@
 
   &--fav {
     background-image: url(../../icons/Favourites.svg);
-    width: 20px;
-    height: 20px;
     &:hover {
       background-image: url(../../icons/Favourites__red.svg);
     }
@@ -72,7 +71,5 @@
 
   &--busket {
     background-image: url(../../icons/Card.svg);
-    width: 20px;
-    height: 20px;
   }
 }

@@ -1,4 +1,5 @@
 @import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
 
 .footer {
   display: flex;
@@ -6,10 +7,17 @@
   align-items: center;
   padding: 42px 0;
   border-top: 1px solid $elements;
+  background-color: $white;
 
   &__information {
     display: flex;
-    gap: 64px;
+    flex-direction: column;
+    gap: 5px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
+    }
   }
 
   &__link {
@@ -19,6 +27,11 @@
     line-height: 11px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      color: $primary;
+    }
   }
 
   &__scroll {
@@ -26,9 +39,16 @@
     flex-direction: row;
     align-items: center;
     gap: 16px;
-
     background-color: $white;
     border: none;
+  }
+
+  &__arrow {
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -37,6 +57,7 @@
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid $elements;
+  background-color: $white;
   height: 32px;
   width: 32px;
 }

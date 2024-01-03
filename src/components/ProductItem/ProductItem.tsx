@@ -94,6 +94,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
           onClick={handleCartButtonClick}
         />
         <button
+          data-cy="addToFavorite"
           className={
             classNames('button__fav', {
               'button__fav-selected': isProductFav,

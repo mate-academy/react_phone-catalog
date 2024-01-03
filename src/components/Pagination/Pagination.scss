@@ -23,13 +23,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &--active {
+      color: $white;
+    }
   }
 
   &__link {
     color: $primary;
 
     &--active {
-      color: $white;
+      border: none;
+      background-color: $primary;
     }
   }
 }
