@@ -1,0 +1,82 @@
+@import "../../styles/main";
+
+.header {
+  font-family: Mont-Bold, sans-serif;
+  padding-left: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-bottom: 1px solid $light-gray;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    height: 48px;
+    position: relative;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__logo {
+    display: flex;
+
+    &-image {
+      background-image: url("../../assets/icons/Logo.svg");
+      width: 40px;
+      height: 24px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+
+    &-icon {
+      padding: 33px;
+      border-left: 1px solid $light-gray;
+
+      @include on-tablet {
+        padding: 24px;
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+    width: 32px;
+    height: 32px;
+    gap: 5px;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    order: -1;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &-span {
+      display: block;
+      height: 3px;
+      width: 26px;
+      background-color: $main-color;
+      border-radius: 5px;
+    }
+  }
+
+  &__search {
+    @include on-mobile {
+      position: absolute;
+      bottom: -30px;
+      right: 0;
+    }
+  }
+}

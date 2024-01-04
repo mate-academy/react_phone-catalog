@@ -1,0 +1,22 @@
+@import "../../styles/main";
+
+.left-button,
+.right-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $icon-color;
+  background-color: transparent;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    border-color: $main-color;
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

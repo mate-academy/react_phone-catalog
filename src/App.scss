@@ -1,1 +1,35 @@
-// not empty
+@import "./styles/main";
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 96px;
+  overflow-x: hidden;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 80px;
+
+  @include on-mobile {
+    margin-bottom: 20px;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1136px;
+
+    @include on-tablet {
+      max-width: 750px;
+      padding-inline: 25px;
+    }
+
+    @include on-mobile {
+      max-width: 600px;
+      min-width: 320px;
+    }
+  }
+}

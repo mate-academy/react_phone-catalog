@@ -1,0 +1,114 @@
+@import "../../styles/main";
+
+.product-card {
+  position: relative;
+  width: $card-width-desktop;
+  height: 507px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 24px;
+  border: 1px solid $light-gray;
+  transition-duration: $transition-duration;
+
+  @include on-tablet {
+    width: $card-width-tablet;
+    height: 400px;
+    padding: 20px 16px;
+  }
+
+  @include on-mobile {
+    margin: 0 auto;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba($secondary-color, 0.26);
+  }
+
+  &__image {
+    width: 208px;
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      height: 140px;
+      margin-bottom: 16px;
+    }
+
+    &-item {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    height: 42px;
+    display: flex;
+    align-items: center;
+
+    @include on-tablet {
+      height: 30px;
+    }
+
+    &-item {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+    }
+  }
+
+  &__price {
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid $light-gray;
+    margin-bottom: 16px;
+
+    @include on-mobile {
+      margin-bottom: 8px;
+    }
+
+    &-new {
+      @extend %h2;
+    }
+
+    &-old {
+      font-size: 22px;
+      font-family: Mont-Regular, sans-serif;
+      color: $secondary-color;
+      line-height: 39px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    @extend %text;
+
+    @include on-tablet {
+      gap: 4px;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: $secondary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

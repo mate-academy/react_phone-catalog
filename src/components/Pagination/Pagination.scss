@@ -1,0 +1,47 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $icon-color;
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+
+    &:hover {
+      border: 1px solid $main-color;
+    }
+
+    &-prev {
+      margin-right: 8px;
+    }
+
+    &-next {
+      margin-left: 8px;
+
+    }
+
+    &:disabled {
+      opacity: .5;
+
+      &:hover {
+        border: 1px solid $icon-color;
+        cursor: pointer;
+      }
+    }
+
+    &-active {
+      color: #fff;
+      border: 1px solid $main-color;
+      background: $main-color;
+    }
+  }
+}
