@@ -64,8 +64,13 @@
     background-color: $primary;
     color: $white;
     border: none;
-    width: 320px;
+    width: 280px;
     height: 48px;
+
+    @include onDesktop {
+      width: 320px;
+      height: 48px;
+    }
 
     &::after {
       content: "Checkout";

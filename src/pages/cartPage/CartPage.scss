@@ -3,7 +3,7 @@
 
 .cart {
   @include contentPaddingInline;
-
+  width: 100%;
 
   &__utils {
     margin-top: 30px;
@@ -12,8 +12,6 @@
 
   &__main {
     position: relative;
-    display: flex;
-    justify-content: center;
     gap: 16px;
     margin-top: 24px;
     width: 100%;
@@ -30,6 +28,8 @@
       height: 20vh;
       border: 1px solid $elements;
 
+      width: 100%;
+
       @include onTablet {
         width: 368px;
         height: 206px;
@@ -41,6 +41,10 @@
       flex-direction: column-reverse;
       gap: 16px;
 
+      @include onTablet {
+        flex-direction: row;
+      }
+
       @include onDesktop {
         flex-direction: row;
       }
@@ -50,13 +54,14 @@
       display: flex;
       flex-direction: column;
       width: 100%;
+      max-width: 900px;
       border: 1px solid $elements;
       margin-bottom: 16px;
 
       @include onDesktop {
         flex-direction: row;
         gap: 50px;
-        width: 752px;
+
         height: 128px;
       }
 
@@ -65,6 +70,10 @@
         align-items: center;
         gap: 25px;
         padding: 15px;
+
+        @include onDesktop {
+          max-width: 280px;
+        }
       }
 
       &-bottom {
@@ -83,10 +92,15 @@
         height: 66px;
         width: 66px;
         object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.09);
+        }
       }
 
       &__button {
-        padding: 8px;
+        padding: 10px;
         border: 1px solid $elements;
         background-color: #fff;
 

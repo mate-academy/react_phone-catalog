@@ -15,7 +15,7 @@ export const Banner = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    speed: 4000,
+    speed: 1000,
   };
 
   const ref = useRef<Slider>(null);
