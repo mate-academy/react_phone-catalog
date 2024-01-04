@@ -1,5 +1,13 @@
+@import "../../styles/utils/";
+
 .Logo {
   display: flex;
 
   text-decoration: none;
+
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale($scale-factor);
+  }
 }
