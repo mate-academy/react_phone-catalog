@@ -29,13 +29,13 @@ export function Footer() {
           Github
         </a>
         <a
-          href="/"
+          href="#/"
           className="footer__link"
         >
           Contacts
         </a>
         <a
-          href="/"
+          href="#/"
           className="footer__link"
         >
           Rights
