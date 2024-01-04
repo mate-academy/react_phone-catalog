@@ -93,8 +93,16 @@ export const ProductDetailsPage = () => {
           || productsStatus === Status.LOADING)
         && <Loader />}
 
-      {(productDetailsStatus === Status.IDLE
-          && productsStatus === Status.IDLE)
+      {productDetailsStatus === Status.FAILED
+          && productsStatus === Status.IDLE
+          && (
+            <h1 className="ProductDetail-SectionTitle SectionTitle">
+              Product was not found
+            </h1>
+          )}
+
+      {productDetailsStatus === Status.IDLE
+          && productsStatus === Status.IDLE
         && (
           <>
             <Breadcrumbs />

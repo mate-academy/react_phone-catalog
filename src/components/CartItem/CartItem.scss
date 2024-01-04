@@ -17,7 +17,11 @@
   }
 
   &-ProductImage {
-    padding-inline: 31px;
+    margin-inline: 31px;
+
+    display: block;
+
+    object-fit: cover;
   }
 
   &-Link {

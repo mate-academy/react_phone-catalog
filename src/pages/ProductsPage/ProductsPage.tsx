@@ -37,7 +37,9 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
       .filter(product => product.type === productType);
   }, [products, productType]);
 
-  const totalProductsByType = productsByType.length;
+  const totalProductsByType = useMemo(() => {
+    return productsByType.length;
+  }, [productsByType]);
 
   const filteredProducts = useMemo(() => {
     return productsByType.filter(product => product
@@ -97,15 +99,16 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
 
       {status === Status.IDLE
         && totalFilteredProducts === 0
+        && query !== ''
         && <NoSearchResults productType={productType} />}
 
       {status === Status.IDLE
         && <ProductList products={paginated} />}
 
-      {totalProductsByType > productsPerPage
+      {totalFilteredProducts > productsPerPage
         && (
           <Pagination
-            total={totalProductsByType}
+            total={totalFilteredProducts}
             perPage={productsPerPage}
             currentPage={currentPage}
           />
