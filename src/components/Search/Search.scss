@@ -1,50 +1,40 @@
 @import "../../styles/utils/vars";
 
 .Search {
-  height: 100%;
-  width: 100%;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   &__button {
     border: none;
     background-color: $white;
   }
 
   &__input {
-    width: 100%;
+    width: 85%;
     height: 100%;
-    padding: 0 22px;
+    padding: 0 20px;
     border: none;
     outline: none;
     font-size: 14px;
     font-weight: 600;
     border-left: 1px solid $elements;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    cursor: text;
+    width: 30vw;
+    max-width: 300px;
+    border-bottom: 1px solid $elements;
 
     &:hover {
       background-color: $hoverbg;
     }
 
-    &__button {
-      border: none;
-      background-color: $elements;
+    &:hover .Search__button {
+      background-color: $hoverbg;
     }
 
-    &-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      cursor: text;
-      width: 30vw;
-      max-width: 300px;
-
-      border-bottom: 1px solid $elements;
-
-      &:hover {
-        background-color: $hoverbg;
-      }
+    &:hover .Search__input {
+      background-color: $hoverbg;
     }
   }
 }

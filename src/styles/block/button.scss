@@ -33,6 +33,10 @@
     width: 176px;
     height: 40px;
 
+    &:hover {
+      box-shadow: 1px 3px 13px 1px rgba(23, 32, 49, 0.26);
+    }
+
     &::after {
       content: "Add to cart";
     }
@@ -68,7 +72,7 @@
     }
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+      box-shadow: 1px 3px 13px 1px rgba(23, 32, 49, 0.26);
     }
   }
 

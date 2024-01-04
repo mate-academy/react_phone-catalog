@@ -3,6 +3,10 @@
 .favourites {
   @include contentPaddingInline;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   &__header {
     margin-bottom: 8px;
   }

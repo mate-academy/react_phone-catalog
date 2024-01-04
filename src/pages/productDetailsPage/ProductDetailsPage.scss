@@ -64,7 +64,6 @@
 .images-block {
   display: flex;
   justify-content: center;
-
 }
 
 .options-block {
@@ -121,6 +120,7 @@
       }
     }
   }
+
   &__capacity {
     width: 50%;
     border-bottom: 1px solid $elements;
@@ -144,6 +144,10 @@
       text-align: center;
       margin-top: 8px;
       margin-right: 8px;
+
+      &:hover {
+        box-shadow: 1px 3px 13px 1px rgba(23, 32, 49, 0.26);
+      }
 
       &--selected {
         color: $white;

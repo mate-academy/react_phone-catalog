@@ -46,7 +46,7 @@ export const Search: React.FC = () => {
 
   return (
     <>
-      <div className="Search__input-container">
+      <div className="Search-container">
         <input
           className="Search__input"
           type="text"
@@ -66,7 +66,11 @@ export const Search: React.FC = () => {
               <span className="icon icon--close" />
             </button>
           )
-          : <span className="icon icon--search" />}
+          : (
+            <div className="Search__button">
+              <span className="icon icon--search" />
+            </div>
+          )}
       </div>
     </>
   );

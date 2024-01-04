@@ -18,7 +18,7 @@ export const FavouritesPage = () => {
       <div className="phones-page__header">
         <h2 className="text--h1 favourites__header">Favourites</h2>
         {favFilteredProducts && favFilteredProducts?.length >= 1
-        && <span className="text text--small text--gray">{`${favFilteredProducts.length} models`}</span>}
+          && <span className="text text--small text--gray">{`${favFilteredProducts.length} models`}</span>}
 
         <div className="favourites__content">
           {favFilteredProducts && favFilteredProducts?.length >= 1

@@ -4,7 +4,7 @@
 .phones-page {
   @include contentPaddingInline;
 
-  max-width: calc(320px * 4);
+  max-width: calc(360px * 4);
 
   &__header {
     margin-top: 40px;
