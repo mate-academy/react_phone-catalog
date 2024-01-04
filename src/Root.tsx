@@ -15,9 +15,11 @@ import {
 } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { CartPage } from './pages/CartPage/CartPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
+import ScrollToTop from './helpers/ScrollToTop';
 
 export const Root = () => (
   <Router>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="home" element={<Navigate to="/" />} />

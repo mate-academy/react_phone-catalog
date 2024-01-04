@@ -29,9 +29,26 @@ export const PhonesPage: React.FC = () => {
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const [preparedPhones, setPreparedPhones] = useState(phones);
   const page = +(searchParams.get('page') || 1);
+  // const [searchPage, setSearchPage] = useState(page);
 
   const { query } = useProducts();
   const [searchingPhones, setSearchingPhones] = useState(preparedPhones);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+
+  // useEffect(() => {
+  //   const newPage = 1;
+
+  //   setSearchParams(prev => {
+  //     const newParams = new URLSearchParams(prev.toString());
+
+  //     newParams.set('page', newPage.toString());
+
+  //     return newParams;
+  //   });
+  // }, [setSearchParams, sort, itemsPerPage]);
 
   useEffect(() => {
     const lowerQuery = query.toLowerCase();

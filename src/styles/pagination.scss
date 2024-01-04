@@ -51,6 +51,7 @@
 
 .previous.disabled>a:hover {
   border-color: $gray-secondary;
+  cursor: no-drop;
 }
 
 .next {
@@ -66,4 +67,5 @@
 
 .next.disabled>a:hover {
   border-color: $gray-secondary;
+  cursor: no-drop;
 }

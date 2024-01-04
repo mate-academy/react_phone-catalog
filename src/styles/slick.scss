@@ -56,3 +56,10 @@
 .slick-next.slick-disabled {
   background-image: url('../../src/images/arrow-right-secondary-color.svg') !important;
 }
+
+.slick-disabled {
+  &:hover {
+    border-color: $gray-secondary !important;
+    cursor: no-drop;
+  }
+}

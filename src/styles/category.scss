@@ -26,6 +26,12 @@
     overflow: hidden;
     position: relative;
     margin-bottom: 24px;
+    transition: all $effect-duration $animation-timing-function;
+
+    &:hover {
+      box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.5);
+      transform: translateY(-5px);
+    }
   }
 
   &__subtitle {
