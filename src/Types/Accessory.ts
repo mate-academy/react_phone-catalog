@@ -2,7 +2,7 @@ export type Accessory = {
   id: string;
   category: string;
   phoneId: string;
-  itemID: string;
+  itemId: string;
   name: string;
   fullPrice: number;
   price: number;

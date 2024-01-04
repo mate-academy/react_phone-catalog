@@ -77,35 +77,39 @@ export const CartPage: React.FC = () => {
 
                 return (
                   <li className="cart__item" key={phone.id}>
-                    <button
-                      type="button"
-                      className="cart__button cart__delete"
-                      aria-label="delete"
-                      onClick={() => deleteFromCart(phone.id)}
-                      data-cy="cartDeleteButton"
-                    />
-                    <img
-                      className="cart__image"
-                      src={image}
-                      alt={name}
-                    />
-                    <div>{phone.product.name}</div>
-                    <button
-                      type="button"
-                      aria-label="decrease"
-                      className={classNames('cart__button cart__minus', {
-                        'cart__minus--disabled': phone.quantity === 1,
-                      })}
-                      onClick={() => subtractPhone(phone.id)}
-                    />
-                    <div>{phone.quantity}</div>
-                    <button
-                      onClick={() => addPhone(phone.id)}
-                      type="button"
-                      aria-label="increase"
-                      className="cart__button cart__plus"
-                    />
-                    <div className="cart__phone-price">{`$${price}`}</div>
+                    <div className="cart__item--half">
+                      <button
+                        type="button"
+                        className="cart__button cart__delete"
+                        aria-label="delete"
+                        onClick={() => deleteFromCart(phone.id)}
+                        data-cy="cartDeleteButton"
+                      />
+                      <img
+                        className="cart__image"
+                        src={image}
+                        alt={name}
+                      />
+                      <div>{phone.product.name}</div>
+                    </div>
+                    <div className="cart__item--half">
+                      <button
+                        type="button"
+                        aria-label="decrease"
+                        className={classNames('cart__button cart__minus', {
+                          'cart__minus--disabled': phone.quantity === 1,
+                        })}
+                        onClick={() => subtractPhone(phone.id)}
+                      />
+                      <div>{phone.quantity}</div>
+                      <button
+                        onClick={() => addPhone(phone.id)}
+                        type="button"
+                        aria-label="increase"
+                        className="cart__button cart__plus"
+                      />
+                      <div className="cart__phone-price">{`$${price}`}</div>
+                    </div>
                   </li>
                 );
               })}

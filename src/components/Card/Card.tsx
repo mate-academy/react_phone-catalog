@@ -21,7 +21,7 @@ export const Card: React.FC<Props> = ({ card, discount = true }) => {
     setFavourites,
   } = useProducts();
 
-  const cardId = card.id || '';
+  const cardId = card.id;
 
   const addToFavourites = () => {
     if (favourites.find(i => i.id === cardId)) {

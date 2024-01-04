@@ -5,6 +5,14 @@
     grid-column: span 16;
   }
 
+  &__item--half {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 460px;
+    gap: 16px;
+  }
+
   &__item {
     display: flex;
     margin-bottom: 16px;
