@@ -1,0 +1,167 @@
+.basket {
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  &__container {
+    display: flex;
+  }
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    margin: 14px 0 24px;
+    font-size: 32px;
+    color: #313237;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e2e6e9;
+    padding: 30px 40px 30px 24px;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    &-left,
+    &-right {
+      display: flex;
+      align-items: center;
+    }
+
+    &-remove {
+      background: none;
+      border: none;
+      margin-right: 25px;
+      width: 16px;
+      height: 16px;
+    }
+
+    &-icon {
+      position: relative;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+
+      & span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 1px;
+        background-color: #b4bdc3;
+        transform-origin: center;
+        transition: background-color 0.3s;
+
+        &:first-child {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:last-child {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+
+      &:hover span {
+        background-color: #313237;
+      }
+    }
+
+    &-link {
+      font-family: "Mont-Regular", sans-serif;
+      text-decoration: none;
+      font-size: 14px;
+      color: #313237;
+      margin-left: 24px;
+    }
+
+    &-img {
+      display: flex;
+      justify-content: center;
+      height: 66px;
+
+      & img {
+        display: block;
+        width: 50px;
+      }
+    }
+
+    &--counter {
+      display: flex;
+      align-items: center;
+      margin-left: 50px;
+
+      &-btn {
+        background: none;
+        border: 1px solid #e2e6e9;
+        padding: 8px;
+        cursor: pointer;
+      }
+
+      &-minus,
+      &-plus {
+        width: 16px;
+        height: 16px;
+      }
+
+      &-minus {
+        background: url("./Minus.svg");
+      }
+
+      &-plus {
+        background: url("./Plus.svg");
+      }
+
+      &-value {
+        margin: 0 13px;
+      }
+    }
+
+    &-price {
+      font-family: "Mont-Bold", sans-serif;
+      margin-left: 43px;
+      font-size: 22px;
+      color: #313237;
+    }
+  }
+
+  &__checkout {
+    border: 1px solid #e2e6e9;
+    padding: 24px;
+    max-height: 206px;
+    margin-left: 16px;
+    text-align: center;
+
+    &-price {
+      font-family: "Mont-Bold", sans-serif;
+      font-size: 32px;
+      color: #313237;
+      margin-bottom: 10px;
+    }
+
+    &-items {
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 14px;
+      color: #89939a;
+    }
+
+    &-line {
+      display: block;
+      border: 1px solid #e2e6e9;
+      margin: 24px 0;
+      width: 100%;
+    }
+
+    &-btn {
+      width: 320px;
+      background-color: #313237;
+      padding: 14px 0;
+      color: #fff;
+      font-size: 14px;
+      font-family: "Mont-SemiBold", sans-serif;
+      cursor: pointer;
+    }
+  }
+
+}

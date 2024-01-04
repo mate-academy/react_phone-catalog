@@ -34,3 +34,9 @@ body {
   padding: 0 15px;
   max-width: 1166px;
 }
+
+.App {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}

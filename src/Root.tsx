@@ -11,6 +11,8 @@ import { Product } from './types/Products';
 import { getProducts } from './api/fetchData';
 import { ProductDetails } from './components/ProductDetails/ProductDetails';
 import { App } from './App';
+import { FavoritePages } from './pages/FavoritePages/FavoritePages';
+import { BasketPages } from './pages/BasketPages/BasketPages';
 
 export const Root: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -47,6 +49,14 @@ export const Root: React.FC = () => {
 
           <Route path="accessory">
             <Route index element={<AccessoriesPages />} />
+          </Route>
+
+          <Route path="favorites">
+            <Route index element={<FavoritePages product={[]} />} />
+          </Route>
+
+          <Route path="basket">
+            <Route index element={<BasketPages />} />
           </Route>
 
         </Route>

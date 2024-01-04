@@ -16,6 +16,9 @@ interface ContextType {
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
   handleAddToBasket: (product: Product) => void;
   handleAddToFavorite: (product: Product) => void;
+  handleRemoveFromBasket: (productId: string) => void;
+  increment: (product: Product) => void;
+  visibleProducts: Product[],
   getFavorite: Product[];
   getBasket: Product[];
   defaultStateValue: {
@@ -56,13 +59,16 @@ export const ContextProvider: React.FC = ({ children }) => {
       ? list.filter(item => item.id !== product.id)
       : [...list, product];
 
+    console.log(updatedList.length);
+
     setItem(listKey, updatedList);
 
     setDefaultStateValue((prevState) => {
       return {
         ...prevState,
-        countBasket: listKey === 'basket' ? prevState.countBasket + (isProductInList ? -1 : 1) : prevState.countBasket,
-        countFavorite: listKey === 'favorite' ? prevState.countFavorite + (isProductInList ? -1 : 1) : prevState.countFavorite,
+        countBasket: listKey === 'basket' ? updatedList.length : prevState.countBasket,
+        
+        countFavorite: listKey === 'favorite' ? updatedList.length : prevState.countFavorite,
       };
     });
   };
@@ -75,15 +81,54 @@ export const ContextProvider: React.FC = ({ children }) => {
     handleAddTo(product, getFavorite, 'favorite');
   };
 
+  const handleRemoveFromBasket = (productId: string) => {
+    const updatedBasket = getBasket.filter(item => item.phoneId !== productId);
+
+    setItem('basket', updatedBasket);
+
+    setDefaultStateValue((prevState) => {
+      return {
+        ...prevState,
+        countBasket: updatedBasket.length,
+      };
+    });
+  };
+
+  const isInCard: string[] = [];
+
+  const visibleProducts = getBasket.filter(item => {
+    if (isInCard.includes(item.id)) {
+      return false;
+    }
+
+    isInCard.push(item.id);
+
+    return true;
+  });
+
+  const increment = (product: Product) => {
+    setItem('basket', [...getBasket, product]);
+
+    setDefaultStateValue((prevState) => {
+      return {
+        ...prevState,
+        countBasket: prevState.countBasket + 1,
+      };
+    });
+  };
+
   return (
     <Context.Provider value={{
       searchText,
+      increment,
       setSearchText,
       handleAddToBasket,
       handleAddToFavorite,
+      handleRemoveFromBasket,
       defaultStateValue,
       getFavorite,
       getBasket,
+      visibleProducts,
     }}
     >
       {children}

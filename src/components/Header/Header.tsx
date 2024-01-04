@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
         <div className="navigation__right">
           {searchShow && <SearchField />}
 
-          <Link to="/" className="navigation__icon">
+          <Link to="favorites" className="navigation__icon">
             <img src={favoriteIcon} alt="icon_favorite" className="navigation__icon-favorite" />
 
             {defaultStateValue.countFavorite !== 0 && (
@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
             )}
           </Link>
 
-          <Link to="/" className="navigation__icon">
+          <Link to="basket" className="navigation__icon">
             <img src={basketIcon} alt="icon-basket" className="navigation__icon-basket" />
 
             {defaultStateValue.countBasket !== 0 && (

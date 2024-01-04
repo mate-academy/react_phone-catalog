@@ -16,7 +16,6 @@ import { ButtonAddCard } from '../ButtonAddCard/ButtonAddCard';
 import { ButtonAddFavorite } from '../ButtonAddFavorite/ButtonAddFavorite';
 import { ProductSlider } from '../sliders/ProductSlider/ProductSlider';
 import { Loader } from '../Loader/Loader';
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
@@ -42,7 +41,7 @@ export const ProductDetails: React.FC = () => {
         .finally(() => {
           setTimeout(() => {
             setIsLoading(false);
-          }, 1000);
+          }, 500);
         });
     }
   }, [productId]);
@@ -55,7 +54,9 @@ export const ProductDetails: React.FC = () => {
         setIsError(true);
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       });
   }, []);
 
@@ -92,7 +93,7 @@ export const ProductDetails: React.FC = () => {
             <BreadCrumbs />
             <BackButton />
 
-            {!isError ? (
+            {productDetails && (
               <>
                 <h1 className="details__title">{name}</h1>
                 <div className="details__top">
@@ -286,8 +287,6 @@ export const ProductDetails: React.FC = () => {
                   <ProductSlider products={products} title="You may also like" />
                 )}
               </>
-            ) : (
-              <ErrorMessage />
             )}
           </>
         )}
