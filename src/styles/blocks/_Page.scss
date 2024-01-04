@@ -16,9 +16,8 @@
   &-Root {
     height: 100vh;
 
-    display: flex;
-    flex-direction: column;
-    // justify-content: space-between;
+    display: grid;
+    grid-template: auto 1fr auto / 1fr;
   }
 
   &-Header,
