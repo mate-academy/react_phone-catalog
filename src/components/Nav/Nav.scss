@@ -9,14 +9,16 @@
   &__list {
     display: flex;
     gap: 64px;
+    align-items: center;
+
     @extend %uppercase-text;
 
     &--aside {
       flex-direction: column;
       font-size: 24px;
 
-      @include onMobile {
-        gap: 24px;
+      @include onTablet {
+        gap: 16px;
       }
     }
   }
@@ -24,28 +26,29 @@
   &__item {
     display: flex;
     align-self: center;
+    height: 100%;
   }
 
   &__link {
+    height: $header-height;
+    padding-block: 26px;
     color: $gray-secondary;
     text-decoration: none;
     line-height: 1em;
+    align-self: center;
+    box-sizing: border-box;
+
+    @include onTablet {
+      padding-block: 4px;
+      height: auto;
+    }
 
     &:hover {
       color: $gray-primary;
     }
 
     &--is-active {
-      position: relative;
-
-      &::after {
-        @include active-link-after(-26px);
-        width: 100%;
-
-        @include onMobile {
-          @include active-link-after(-8px);
-        }
-      }
+      border-bottom: 3px solid $gray-primary;
     }
   }
 }

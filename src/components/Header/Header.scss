@@ -3,6 +3,7 @@
 
 .header {
   width: 100%;
+  height: $header-height;
   display: flex;
   background-color: white;
   border-bottom: 1px solid $gray-elements;
@@ -35,7 +36,7 @@
 
   &__left {
     display: flex;
-    padding: 20px 24px;
+    padding-left: 20px;
     align-items: center;
   }
 

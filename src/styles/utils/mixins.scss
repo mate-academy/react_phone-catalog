@@ -5,15 +5,6 @@
   }
 }
 
-@mixin active-link-after($bottomValue) {
-  position: absolute;
-  bottom: $bottomValue;
-  display: block;
-  content: "";
-  height: 3px;
-  background-color: $gray-primary;
-}
-
 @mixin button-base-style-n-hover {
   display: block;
   height: 32px;
