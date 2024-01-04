@@ -8,6 +8,6 @@
   transition: transform $transition-duration;
 
   &:hover {
-    transform: scale($scale-factor);
+    transform: scale(1.2);
   }
 }

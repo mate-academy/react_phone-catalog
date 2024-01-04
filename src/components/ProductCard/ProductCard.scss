@@ -9,6 +9,12 @@
 
   border: 1px solid $element;
 
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale($scale-factor);
+  }
+
   &-ImgContainer {
     padding-block-start: 32px;
     padding-inline: 8px;
