@@ -6,6 +6,7 @@ import './ProductCard.scss';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import { ButtonTexted } from '../../elements/ButtonTexted/ButtonTexted';
 import { capitalize } from '../../helpers/utils/capitalize';
+import { Line } from '../../elements/Line/Line';
 
 type Props = {
   product: ProductType;
@@ -17,6 +18,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     name,
     fullPrice,
     price,
+    phoneId,
+    category,
   } = product;
 
   const details: Array <keyof ProductType> = ['screen', 'capacity', 'ram'];
@@ -25,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div
       className="productCard"
     >
-      <Link to={`/${product.category}/${product.phoneId}`} className="productCard__link">
+      <Link to={`/${category}/${phoneId}`} className="productCard__link">
         <div className="productCard__image-container">
           <img
             className="productCard__image"
@@ -36,7 +39,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className="productCard__content">
-        <Link to={`/${product.category}/${product.phoneId}`} className="productCard__link">
+        <Link to={`/${category}/${phoneId}`} className="productCard__link">
           <div className="productCard__name-container">
             <p className="productCard__name">{name}</p>
           </div>
@@ -46,7 +49,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             <p className="productCard__fullprice">{`$${fullPrice}`}</p>
           </div>
 
-          <div className="productCard__line" />
+          <Line />
 
           <div className="productCard__details">
             {details.map(detail => (
@@ -69,7 +72,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <ButtonIcon
             type="event"
             shape="heart"
-            dynamicClasses={['medium']}
+            dynamicClasses={['medium', 'light-border']}
             product={product}
             checkFav
           />

@@ -18,7 +18,11 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchSelectedProduct(productId || null));
-  }, [productId, dispatch]);
+  }, [dispatch, productId]);
+
+  if (isLoading) {
+    return <div className="page"><Loader /></div>;
+  }
 
   if (!selectedProduct) {
     return <p>product not found</p>;
@@ -27,6 +31,7 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="page">
       <Breadcrumbs page="phones" product={selectedProduct} />
+      {/* <Loader /> */}
 
       <div className="page__backBtn">
         <ButtonIcon

@@ -10,11 +10,16 @@
   line-height: 21px;
   letter-spacing: 0;
   outline: none;
-  height: 32px;
-  width: 32px;
+  height: 25px;
+  width: 25px;
   background-color: $main-bg-color;
   border: 1px solid $border-color;
   cursor: pointer;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
 
   @include hover(border-color, $main-text-color);
 
@@ -24,12 +29,23 @@
   }
 
   &--big {
-    height: 64px;
-    width: 64px;
+    height: 40px;
+    width: 40px;
+
+    @include on-tablet {
+      height: 40px;
+      width: 40px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
   }
 
   &--large {
-    height: 400px;
+    height: calc(100% - 25px);
+    width: 100%;
   }
 
   &--shadow {
@@ -41,11 +57,17 @@
     border: none;
   }
 
-  &--disabled {
+  &--light-border {
+    @include hover (border-color, darken($border-color, 15%))
+  }
+
+  &--disactive {
     border-color: $shadow-color;
     pointer-events: none;
 
     @include hover(border-color, $shadow-color);
+    // @include hover(box-shadow, (3px, 3px, 13px 0 $main-text-color));
+    @include hover(box-shadow, $main-text-color);
   }
 
   &--link-active {
@@ -57,7 +79,7 @@
   }
 
   &__icon-keeper {
-    @include hover(transform, scale(1.1));
+    // @include hover(transform, scale(1.1));
 
     display: flex;
     justify-content: center;
@@ -69,6 +91,15 @@
     &--big {
       height: 40px;
       width: 40px;
+    }
+
+    &--biggest {
+      height: 50px;
+      width: 50px;
+    }
+
+    &--large {
+      width: 32px
     }
   }
 
@@ -82,9 +113,25 @@
     text-decoration: none;
     height: 100%;
     width: 100%;
+    position: relative;
+
+    &.is-active {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        display: block;
+        bottom: 0;
+        background-color: $main-text-color;
+        border-radius: 3px;
+        color: $main-text-color;
+      }
+    }
   }
 
   &__text {
+    line-height: 100%;
     &--backBtn {
       padding-left: 20px;
       color: $secondary-text-color;
@@ -93,15 +140,35 @@
     }
   }
 
+  &:has(.buttonIcon__icon--heart-active) {
+    border: 1px solid $main-text-color;
+  }
+
   &__icon {
     display: block;
     background-size:contain;
     background-repeat: no-repeat;
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
+    @include hover(transform, scale(1.1));
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--num {
+      @include hover(transform, scale(1));
+    }
 
     &--cart {
       background-image: url(./../../assets/icons/cart.svg);
+    }
+
+    &--cart-big {
+      background-image: url(./../../assets/icons/cart.svg);
+      height: 30px;
+      width: 30px;
     }
 
     &--close {
@@ -114,6 +181,12 @@
 
     &--heart {
       background-image: url(./../../assets/icons/heart.svg);
+    }
+
+    &--favourite-big {
+      background-image: url(./../../assets/icons/heart.svg);
+      height: 30px;
+      width: 30px;
     }
 
     &--heart-active {
@@ -130,6 +203,10 @@
 
     &--loop {
       background-image: url(./../../assets/icons/loop.svg);
+    }
+
+    &--menu {
+      background-image: url(./../../assets/icons/menu.svg);
     }
 
     &--minus {
@@ -149,6 +226,7 @@
     }
 
     &--disactive {
+      transition: filter 1s;
       filter: invert(75%) sepia(12%) saturate(170%) hue-rotate(161deg) brightness(99%) contrast(88%);
     }
   }

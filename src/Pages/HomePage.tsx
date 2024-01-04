@@ -5,7 +5,7 @@ import { ProductType } from '../helpers/types/ProductType';
 import {
   getHotPriceProducts,
   getNewModelsProducts,
-} from '../helpers/utils/api';
+} from '../api/api';
 import './Page.scss';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import {
@@ -13,10 +13,13 @@ import {
   Slide,
 } from '../components/ProductSlider/ProductSlider';
 import { categoryImages } from '../helpers/utils/constants';
+// import { useAppSelector } from '../store/hooks';
 
 export const HomePage: React.FC = () => {
   const [hotProducts, setHotProducts] = useState<ProductType[]>([]);
   const [newProducts, setNewProducts] = useState<ProductType[]>([]);
+  // const { selectedProduct } = useAppSelector(state => state.selectedProduct);
+  // console.log(selectedProduct);
 
   useEffect(() => {
     Promise.all([

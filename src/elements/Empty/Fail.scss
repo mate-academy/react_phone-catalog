@@ -1,6 +1,7 @@
 @import './../../style/extends';
 
 .fail {
+  grid-column: span 32;
   display: flex;
   justify-content: center;
 

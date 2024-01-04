@@ -6,39 +6,44 @@
   justify-content: center;
   align-items: center;
   font-family: Mont-Semibold, $fallback-fonts;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 12px;
+  line-height: 18px;
   letter-spacing: 0;
   outline: none;
   height: 40px;
-  width: 176px;
+  width: 100%;
   background-color: $main-text-color;
   border: none;
   color: $main-bg-color;
   text-align: center;
   cursor: pointer;
+  padding-inline: 5px;
 
-  @include hover(background-color, $main-text-color);
-  
-  // @include hover(transform, scale(1.03));
+  @include on-desktop {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  @include hover(background-color, darken($main-text-color, 5%));
+  @include hover(box-shadow, (0 2px 7px 0 $border-color));
+
 
   &--active {
     background: $main-bg-color;
-    border: 1px solid $border-color;
+    border: 1px solid $main-text-color;
 
     @include hover(background-color, $main-bg-color);
   }
 
   &--longer {
-    width: 263px;
+    @include on-desktop {
+      width: 263px;
+    }
   }
 
   &__text-active {
+    color: $shadow-color;
     color: $secondary-accent-color;
-
-    &:hover {
-      color: $main-accent-color;
-    }
   }
 }
 

@@ -1,26 +1,32 @@
 @import './../../style/extends';
 
 .product-slider {
-
   &__title-zone {
     display: flex;
     justify-content: space-between;
   }
 
-  &__title-h1 {
-    @extend %h1;
+  &__title-h2 {
+    @extend %h2;
   }
 
   &__icons {
     display: flex;
-    gap: 16px;
+    gap: 10px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
   }
 
   &__slides {
     display: flex;
-    margin-top: 24px;
-    height: 507px;
+    margin-top: 20px;
     gap: 16px;
     overflow: hidden;
+
+    @include on-tablet {
+      margin-top: 24px;
+    }
   }
 }

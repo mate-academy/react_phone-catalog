@@ -8,23 +8,22 @@ const getLinkNavClass = ({ isActive }: { isActive: boolean }) => (
     'is-active': isActive,
   }));
 
-  type Props = {
-    links: string[];
-  };
+type Props = {
+  links: string[];
+};
 
 export const NavBar: React.FC<Props> = ({ links }) => {
   return (
     <nav className="navBar">
       <ul className="navBar__list">
         {links.map(link => (
-          <li key={link} className="navBar__item">
-            <NavLink
-              to={link === 'home' ? '/' : link}
-              className={getLinkNavClass}
-            >
-              {link}
-            </NavLink>
-          </li>
+          <NavLink
+            key={link}
+            to={link === 'home' ? '/' : link}
+            className={getLinkNavClass}
+          >
+            {link}
+          </NavLink>
         ))}
       </ul>
     </nav>

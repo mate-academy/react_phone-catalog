@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getProductsByKey } from '../../helpers/utils/getFilteredProducts';
-import './Category.scss';
+import { getProductsByKey } from '../../helpers/getFunctions/getFilteredProducts';
 import { capitalize } from '../../helpers/utils/capitalize';
 import { useAppSelector } from '../../store/hooks';
+import './Category.scss';
 
 type Props = {
   image: string;

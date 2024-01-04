@@ -7,9 +7,10 @@ import { ProductType } from '../../helpers/types/ProductType';
 import './ButtonIcon.scss';
 import { useAppSelector } from '../../store/hooks';
 import { addToFavourite, removeFromFavourite } from '../../features/favouriteSlice';
+import { setFavouriteModal } from '../../features/modalSlice';
 
-type DynamicClass = 'big' | 'shadow' | 'no-border' | 'large' | 'medium' | 'link-active' | 'disabled' | '';
-type Shape = 'cart' | 'close' | 'down' | 'heart' | 'home' | 'left' | 'loop' | 'minus' | 'plus' | 'right' | 'up';
+type DynamicClass = 'big' | 'biggest' | 'shadow' | 'no-border' | 'large' | 'medium' | 'link-active' | 'disabled' | 'light-border' | '';
+type Shape = 'cart' | 'cart-big' | 'close' | 'down' | 'heart' | 'favourite-big' | 'home' | 'left' | 'loop' | 'minus' | 'menu' | 'plus' | 'right' | 'up' | 'num';
 
 type Props = {
   type: 'event' | 'link';
@@ -41,8 +42,12 @@ export const ButtonIcon: React.FC<Props> = ({
   const dispatch = useDispatch();
   const favouriteProducts = useAppSelector(state => state.favouriteProducts);
 
+  const getLinkNavClass = ({ isActive }: { isActive: boolean }) => (
+    classNames('buttonIcon__link', {
+      'is-active': isActive,
+    }));
+
   function isProductFavorite() {
-    // const copy = [...favouriteProducts];
     const copy = Array.from(favouriteProducts);
 
     return copy.map(fav => JSON.stringify(fav))
@@ -58,8 +63,11 @@ export const ButtonIcon: React.FC<Props> = ({
       dispatch(removeFromFavourite(product.id));
     } else {
       dispatch(addToFavourite(product));
+      dispatch(setFavouriteModal());
     }
   }
+
+  // console.log(path);
 
   const DC = dynamicClasses?.map(cl => `buttonIcon--${cl}`).join(' ');
 
@@ -80,7 +88,9 @@ export const ButtonIcon: React.FC<Props> = ({
       onClick={(e) => handleClick(e)}
       disabled={disable}
       className={classNames(
-        'buttonIcon', DC,
+        'buttonIcon', DC, {
+          'buttonIcon--disactive': disactive,
+        },
       )}
     >
       {(type === 'event') && (
@@ -98,9 +108,9 @@ export const ButtonIcon: React.FC<Props> = ({
 
       {(type === 'link' && path) && (
         <NavLink
-          to={path}
+          to={path.toString()}
           aria-disabled={disable}
-          className={classNames('buttonIcon__link')}
+          className={getLinkNavClass}
         >
           <div className={classNames('buttonIcon__icon', `buttonIcon__icon--${shape}`, {
             'button__icon--heart-active': (product && isProductFavorite()),

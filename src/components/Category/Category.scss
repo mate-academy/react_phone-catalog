@@ -1,8 +1,8 @@
 @import './../../style/extends';
+@import './../../style/mixins';
 
 .category {
-  width: 368px;
-  height: 368px;
+  grid-column: span 1;
   text-decoration: none;
 
   &__img {
@@ -23,7 +23,7 @@
 
   &__count {
     color: $secondary-text-color;
-    
+
     @extend %body-text;
   }
 }

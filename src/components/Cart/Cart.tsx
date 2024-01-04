@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ProductType } from '../../helpers/types/ProductType';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
@@ -14,7 +15,13 @@ type Props = {
 export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
-  const { name, image, price } = product;
+  const {
+    name,
+    image,
+    price,
+    category,
+    phoneId,
+  } = product;
 
   const handleCloseClick = () => {
     dispatch(removeFromCart(product.id));
@@ -35,7 +42,7 @@ export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
 
   return (
     <div className="cart">
-      <div className="cart__block">
+      <Link to={`/${category}/${phoneId}`} className="cart__block">
         <ButtonIcon
           type="event"
           shape="close"
@@ -50,7 +57,7 @@ export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
         />
 
         <p className="cart__name">{name}</p>
-      </div>
+      </Link>
 
       <div className="cart__block cart__block--right">
         <div className="cart__increment">

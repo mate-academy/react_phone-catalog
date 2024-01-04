@@ -1,10 +1,10 @@
 @import './variables';
 
-@mixin on-phone {
-  @media (max-width: 480px) {
-    @content;
-  }
-}
+// @mixin on-phone {
+//   @media (max-width: 480px) {
+//     @content;
+//   }
+// }
 
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
@@ -50,7 +50,6 @@
   }
 
   @include on-desktop {
-    // --colums: 12;
     --colums: 24;
 
     column-gap: 16px;
@@ -58,34 +57,14 @@
 
   @include on-big-desktop {
     --colums: 24;
-    
+
     column-gap: 16px;
   }
 }
 
-;
-
-@mixin navigation-style {
-  .is-active {
-    &::after {
-      content: '';
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      display: block;
-      bottom: -22px;
-      background-color: $main-text-color;
-      border-radius: 3px;
-    }
-
-    color: $main-text-color;
-  }
-}
-
-;
 
 @mixin hover($_property, $_toValue) {
-  transition: #{$_property} 300ms;
+  transition: #{$_property} 400ms;
 
   &:hover {
     #{$_property}: $_toValue;

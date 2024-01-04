@@ -1,0 +1,95 @@
+@import './../../../style/mixins';
+
+.images {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  @include on-desktop {
+    gap: 28px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    align-items: flex-start;
+    max-width: 100%;
+    max-height: 100%;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #C4C4C4;
+    background-color: $main-bg-color;
+
+    &--active {
+      border-color: $main-text-color;
+    }
+
+    // @include on-tablet {
+    //   height: 60px;
+    //   width: 60px;
+    // }
+
+    @include on-desktop {
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__image {
+    object-fit: contain;
+    height: 30px;
+    width: 30px;
+
+    // @include on-tablet {
+    //   height: 50px;
+    //   width: 50px;
+    // }
+
+    @include on-desktop {
+      height: 66px;
+      width: 66px;
+    }
+
+    &--big {
+      height: 240px;
+      width: 240px;
+
+      // @include on-tablet {
+      //   height: 350px;
+      //   width: 350px;
+      // }
+
+      @media (min-width: 800px) {
+        height: 300px;
+        width: 300px;
+      }
+
+      @include on-desktop {
+        height: 464px;
+        width: 464px;
+      }
+    }
+  }
+}

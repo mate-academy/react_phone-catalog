@@ -5,7 +5,12 @@ import rootReducer from './rootReducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favouriteProducts', 'cartedProducts'],
+  whitelist: [
+    'favouriteProducts',
+    'cartedProducts',
+    'selectedProduct',
+    'products',
+  ],
 };
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

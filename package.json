@@ -25,6 +25,7 @@
     "react-transition-group": "^4.4.5",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^3.1.0",
     "sort-by": "^1.2.0",
     "swiper": "^11.0.5",
     "use-debounce": "^10.0.0"

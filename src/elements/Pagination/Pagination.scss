@@ -4,4 +4,9 @@
   justify-content: center;
   margin-top: 40px;
   gap: 8px;
+
+  &__dots {
+    display: flex;
+    align-items: flex-end;
+  }
 }

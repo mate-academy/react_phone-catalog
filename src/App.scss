@@ -5,6 +5,9 @@
 .app {
   &__main {
     @include inline-padding-control;
+    @include page-grid;
     @extend %main-style;
+
+    scroll-behavior: smooth;
   }
 }

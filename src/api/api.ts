@@ -1,7 +1,10 @@
-import { DetailType } from '../types/DetailType';
-import { ProductType } from '../types/ProductType';
-import { BASE_URL } from './constants';
-import { getDiscountAmount, hasDiscount } from './discount';
+import { DetailType } from '../helpers/types/DetailType';
+import { ProductType } from '../helpers/types/ProductType';
+import { BASE_URL } from '../helpers/utils/constants';
+import {
+  getDiscountAmount,
+  hasDiscount,
+} from '../helpers/getFunctions/discount';
 
 const delay = 500;
 

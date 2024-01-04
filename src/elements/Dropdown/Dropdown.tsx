@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { getSearchWith } from '../../helpers/utils/getSearch';
-import { Sort } from '../../helpers/utils/getSortedProducts';
+import { getSearchWith } from '../../helpers/getFunctions/getSearch';
+import { Sort } from '../../helpers/getFunctions/getSortedProducts';
 import './Dropdown.scss';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 
@@ -11,6 +11,7 @@ type Props = {
   queryName: string;
   sortData: object;
   onClick: (key?: Sort) => void;
+  defaultVal: string;
 };
 
 export const Dropdown: React.FC<Props> = ({
@@ -18,14 +19,14 @@ export const Dropdown: React.FC<Props> = ({
   queryName,
   sortData,
   onClick,
+  defaultVal,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams] = useSearchParams();
 
   const search = searchParams.get(queryName) as keyof typeof sortData;
   const params = Object.entries(sortData);
-  const defaultParam = params[0][1];
-  const category = search ? sortData[search] : defaultParam;
+  const category = search ? sortData[search] : defaultVal;
 
   const handleClick = (key?: Sort) => {
     setIsOpen(!isOpen);
@@ -43,7 +44,7 @@ export const Dropdown: React.FC<Props> = ({
   return (
     <div
       role="presentation"
-      className="dropdown"
+      className={classNames('dropdown')}
       onClick={(e => e.stopPropagation())}
     >
       <p className="dropdown__category">{title}</p>
@@ -54,6 +55,7 @@ export const Dropdown: React.FC<Props> = ({
         aria-haspopup="true"
         aria-controls="dropdown-menu"
         aria-label="button"
+        defaultValue={defaultVal}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="dropdown__option">{category}</span>
@@ -79,7 +81,6 @@ export const Dropdown: React.FC<Props> = ({
             <Link
               className="dropdown__link"
               onClick={() => handleClick(key as Sort)}
-              // need also delete page val
               to={{
                 search: getSearchWith({
                   [queryName]: key, page: null,

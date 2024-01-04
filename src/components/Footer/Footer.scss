@@ -9,9 +9,25 @@
   &__content {
     display: flex;
     justify-content: space-between;
-    height: 96px;
+    height: 55px;
     box-shadow: 0 -1px 0 0 $border-color;
     align-items: center;
+
+    @include on-tablet {
+      height: 70px;
+    }
+
+    @include on-desktop {
+      height: 96px;
+    }
+  }
+
+  &__navBar {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
   }
 
   &__toTop {

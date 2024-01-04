@@ -1,0 +1,61 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.aside {
+  height: 50vh;
+  display: flex;
+  display: block;
+  width: 100vw;
+  justify-content: center;
+  grid-column: span 2;
+  position: absolute;
+  // z-index: -1;
+  background-color: $main-bg-color;
+  opacity: 0;
+  transform: translateY(-20px);
+  transform: translateY(-100px);
+  // transform: translateY(-10%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition: all, 0.3s;
+  pointer-events: none;
+
+  &--visible {
+  opacity: 1;
+  transition: all, 0.3s;
+  transform: translateY(0);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-block: 30px;
+  }
+
+  // &__item {
+  //   @include navigation-style;
+
+  //   &:not(:has(>.is-active)) {
+  //     @include hover(transform, scale(1.1));
+  //   }
+
+  //   position: relative;
+  // }
+
+  &__link {
+    @extend %upper-case;
+
+    text-decoration: none;
+  }
+
+  &__bg {
+    height: 100vh;
+    background-color: rgb(82, 86, 90);
+    opacity: 0.2;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+}

@@ -1,20 +1,21 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Dropdown } from '../elements/Dropdown/Dropdown';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList/ProductsList';
 import { Loader } from '../elements/Loader/Loader';
 import './Page.scss';
-import { getProductsByKey, getProductsByQuery } from '../helpers/utils/getFilteredProducts';
+import { getProductsByKey, getProductsByQuery } from '../helpers/getFunctions/getFilteredProducts';
 import { ProductType } from '../helpers/types/ProductType';
-import { getProductsByCategory } from '../helpers/utils/api';
-import { Sort, getSortedProducts } from '../helpers/utils/getSortedProducts';
+import { getProductsByCategory } from '../api/api';
+import { Sort, getSortedProducts } from '../helpers/getFunctions/getSortedProducts';
 import { namedSortOptions, pageSortOptions } from '../helpers/utils/constants';
 import { Pagination } from '../elements/Pagination/Pagination';
 import { capitalize } from '../helpers/utils/capitalize';
 import { Fail } from '../elements/Empty/Fail';
 import { useAppSelector } from '../store/hooks';
+import { Search } from '../components/Search/Search';
 
 type Props = {
   product: string;
@@ -28,7 +29,17 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState(Sort.age);
-  const [perPage, setPerPage] = useState('4');
+  const [perPage, setPerPage] = useState('8');
+
+  // const { products } = useAppSelector(state => state.products);
+  // console.log(products)
+
+  const { pathname } = useLocation();
+  const curPage = pathname.split('/')[1];
+  const shouldSearch = curPage === 'phones'
+    || curPage === 'tablets'
+    || curPage === 'accessories'
+    || curPage === 'favorites';
 
   const IndexOfFirstVisibleItem = ((+page - 1) * +perPage) + 1;
 
@@ -39,6 +50,9 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
       .then(setProducts)
       .finally(() => setIsLoading(false));
   }, [product]);
+
+  // console.log(product)
+  // console.log(products)
 
   const visibleProducts = getSortedProducts(getProductsByQuery(
     getProductsByKey(products, 'category', product),
@@ -98,13 +112,19 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
                   queryName="sortBy"
                   sortData={namedSortOptions}
                   onClick={handleSortClick}
+                  defaultVal="Newest"
                 />
                 <Dropdown
                   title="Items on page"
                   queryName="perPage"
                   sortData={pageSortOptions}
                   onClick={handlePagesClick}
+                  defaultVal="8"
                 />
+              </div>
+
+              <div className="page__search">
+                {shouldSearch && (<Search page={curPage} />)}
               </div>
 
               <ProductsList products={visibleProductsOnPage} />

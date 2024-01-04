@@ -2,7 +2,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { useMemo } from 'react';
 import _debounce from 'lodash/debounce';
-import { Params, getSearchWith } from '../../helpers/utils/getSearch';
+import { Params, getSearchWith } from '../../helpers/getFunctions/getSearch';
 import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import './Search.scss';
 import { useAppDispatch } from '../../store/hooks';

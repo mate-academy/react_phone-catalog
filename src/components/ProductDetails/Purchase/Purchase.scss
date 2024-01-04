@@ -1,0 +1,44 @@
+@import './../../../style/extends';
+// @import './../../../style/mixins';
+
+.purchase {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+
+    &--margin-top {
+      @include on-desktop {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  &__price {
+    @extend %h1;
+  }
+
+  &__fullprice {
+    margin-left: 8px;
+    font-size: 18px;
+    font-family: Mont-Regular, $fallback-fonts;
+    color: $secondary-text-color;
+    text-decoration-line: line-through;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 3px;
+
+    @include on-tablet {
+      font-size: 26px;
+    }
+
+    @include on-desktop {
+      font-size: 22px;
+    }
+  }
+}

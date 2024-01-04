@@ -1,0 +1,43 @@
+@import './../../../style/extends';
+
+.colors {
+  grid-area: 'colors';
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+
+  @include on-tablet {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__wrapper {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    @include on-tablet {
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+
+  &__name {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  }
+}

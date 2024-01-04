@@ -1,12 +1,23 @@
 @import './../../style/variables';
+@import './../../style/mixins';
 
 .search {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-left: 24px;
-  width: 327px;
-  height: 100%;
-  box-shadow: -1px 0 0 0 $shadow-color;
+  width: 200px;
+  height: 40px;
+  box-shadow: 1px 1px 2px 1px $border-color;
+  margin-top: 15px;
+
+  @include on-desktop {
+    margin-top: 0;
+    width: 327px;
+    height: 100%;
+    box-shadow: -1px 0 0 0 $shadow-color;
+    border: none;
+  }
 
   &__input {
     width: 100%;

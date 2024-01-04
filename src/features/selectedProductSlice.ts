@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { DetailType } from '../helpers/types/DetailType';
-import { getProductDetails } from '../helpers/utils/api';
+import { getProductDetails } from '../api/api';
 
 export interface SelectedProductState {
   selectedProduct: DetailType | null,
@@ -39,7 +39,7 @@ export const selectedProductSlice = createSlice({
         state.selectedProduct = action.payload;
       })
       .addCase(fetchSelectedProduct.rejected, (state) => {
-        // state.isLoading = true;
+        state.isLoading = false;
         state.hasError = true;
       });
   },

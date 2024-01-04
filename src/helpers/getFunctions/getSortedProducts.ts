@@ -3,6 +3,7 @@ import { ProductType } from '../types/ProductType';
 export enum Sort {
   name = 'name',
   age = 'year',
+  year = 'age',
   price = 'price',
 }
 
@@ -20,6 +21,7 @@ export function getSortedProducts(
       break;
 
     case 'year':
+    case 'age':
       preparedProducts.sort((a, b) => b.year - a.year);
       break;
 

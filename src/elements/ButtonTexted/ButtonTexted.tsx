@@ -5,6 +5,10 @@ import { ProductType } from '../../helpers/types/ProductType';
 import './ButtonTexted.scss';
 import { useAppSelector } from '../../store/hooks';
 import { addToCart, removeFromCart } from '../../features/cartSlice';
+import {
+  setCartModal,
+  // showCartModal,
+} from '../../features/modalSlice';
 
 type Props = {
   product: ProductType;
@@ -35,6 +39,8 @@ export const ButtonTexted: React.FC<Props> = ({
       dispatch(removeFromCart(prod.id));
     } else {
       dispatch(addToCart(prod));
+      dispatch(setCartModal());
+      // showCartModal();
     }
   }
 

@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/scss/navigation';
 
 type Props = {
-  children: React.ReactNode;
+  children: React.ReactNode[];
   title: string;
 };
 
@@ -26,7 +26,7 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
   return (
     <div className="product-slider">
       <div className="product-slider__title-zone">
-        <h2 className="product-slider__title-h1">{title}</h2>
+        <h2 className="product-slider__title-h2">{title}</h2>
 
         <div className="product-slider__icons">
           <ButtonIcon
@@ -40,6 +40,7 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
             type="event"
             shape="right"
             onClick={handleNext}
+            disactive={activeIndex === children?.length - 4}
           />
         </div>
       </div>
@@ -47,10 +48,23 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
       <Swiper
         onSwiper={setSwiperRef}
         onRealIndexChange={(el: SwiperClass) => setActiveIndex(el.activeIndex)}
-        slidesPerView={4}
         className="product-slider__slides"
         spaceBetween={16}
         scrollbar={{ draggable: true }}
+        breakpoints={{
+          320: {
+            slidesPerView: 2,
+          },
+          450: {
+            slidesPerView: 3,
+          },
+          800: {
+            slidesPerView: 3,
+          },
+          900: {
+            slidesPerView: 4,
+          },
+        }}
       >
         {children}
       </Swiper>

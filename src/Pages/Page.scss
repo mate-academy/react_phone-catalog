@@ -1,10 +1,34 @@
 @import './../style/extends';
+@import './../style/mixins';
 
 .page {
-  padding-bottom: 80px;
-  
+  grid-column: span 2;
+  padding-bottom: 40px;
+
+  @include on-tablet {
+    grid-column: span 6;
+    padding-bottom: 60px;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+    padding-bottom: 80px;
+  }
+
   &__section {
-    margin-top: 105px;
+    margin-top: 30px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      margin-top: 50px;
+      grid-column: span 6;
+    }
+
+    @include on-desktop{
+      margin-top: 105px;
+      grid-column: span 24;
+    }
+
 
     &--suggest {
       margin-top: 60px;
@@ -17,11 +41,25 @@
 
     &--price-block {
       border: 1px solid $shadow-color;
-      padding: 24px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      gap: 24px;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px;
+      gap: 15px;
+      width: 100%;
+
+      @include on-tablet {
+        padding: 15px;
+        gap: 15px;
+      }
+
+      @include on-desktop {
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+        gap: 24px;
+      }
     }
   }
 
@@ -29,19 +67,60 @@
     @extend %h1;
 
     &--product {
-      margin-top: 40px;
+      margin-top: 10px;
+
+      @include on-tablet {
+        margin-top: 20px;
+      }
+
+      @include on-desktop {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__title-h2 {
+    @extend %h2;
+    margin-top: 30px;
+
+    @include on-tablet {
+      margin-top: 50px;
+    }
+
+    @include on-desktop{
+      margin-top: 105px;
     }
   }
 
   &__backBtn {
-    margin-top: 40px;
+    margin-top: 15px;
+
+
+    @include on-desktop {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &--text {
+      @extend %small-text;
+
+      color: $secondary-text-color;
+    }
   }
 
   &__categiries {
     width: 100%;
-    display: flex;
-    gap: 16px;
-    margin-top: 24px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+
+    @include on-desktop {
+      margin-top: 24px;
+      column-gap: 16px;
+    }
   }
 
   &__picture-slider {
@@ -57,20 +136,44 @@
 
   &__dropdowns {
     display: flex;
-    gap: 16px;
-    margin-top: 40px;
+    gap: 12px;
+    margin-top: 20px;
+
+    @include on-tablet {
+      gap: 16px;
+      margin-top: 40px;
+    }
+  }
+
+  &__search {
+    height: fit-content;
+    @include on-desktop {
+      display: none;
+    }
   }
 
   &__content {
     display: flex;
     justify-content: space-between;
     margin-top: 24px;
+    flex-direction: column-reverse;
+    gap: 8px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
   }
 
   &__carts {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 16px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
   }
 
   &__total-price-block {
@@ -78,6 +181,7 @@
     flex-direction: column;
     align-items: center;
     max-height: 800px;
+    width: max-content;
   }
 
   &__total-price {
@@ -86,12 +190,13 @@
 
   &__total-price-text {
     @extend %body-text;
+    width: max-content;
 
     color: $secondary-text-color;
   }
 
   &__checkout {
-    width: 320px;
+    width: 50%;
     height: 48px;
     background-color: $main-text-color;
     color: $main-bg-color;
@@ -100,6 +205,11 @@
     align-items: center;
 
     @extend %body-text;
+
+    @include on-desktop {
+      width: 320px;
+      height: 48px;
+    }
   }
 
   &__line {

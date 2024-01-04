@@ -17,7 +17,9 @@ export const Footer: React.FC = () => {
         <div className="footer__content">
           <Link className="footer__logo" to="/" />
 
-          <NavBar links={footerLinks} />
+          <div className="footer__navBar">
+            <NavBar links={footerLinks} />
+          </div>
 
           <div className="footer__toTop">
             <p className="footer__p">Back to top</p>

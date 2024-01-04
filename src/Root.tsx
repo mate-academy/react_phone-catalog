@@ -11,6 +11,7 @@ import { NotFoundPage } from './Pages/NotFoundPage';
 import { ProductPage } from './Pages/ProductPage';
 import { FavouritesPage } from './Pages/FavouritesPage';
 import { CartPage } from './Pages/CartPage';
+// import { Aside } from './components/Aside/Aside';
 
 export const Root = (): JSX.Element => (
   <Router>
@@ -38,6 +39,7 @@ export const Root = (): JSX.Element => (
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
+      {/* <Route path="menu" element={<Aside />} /> */}
     </Routes>
   </Router>
 );
