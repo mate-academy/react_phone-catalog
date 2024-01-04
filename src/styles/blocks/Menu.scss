@@ -14,7 +14,7 @@
   transform: translateX(100%);
   transition: transform 0.5s;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 
@@ -51,7 +51,8 @@
     }
 
     &--active::after {
-      @include afterStyle;
+      @include after-style;
+      
       width: 50%;
     }
   }
@@ -74,7 +75,7 @@
     align-items: center;
     cursor: pointer;
 
-    @include onDesktop {
+    @include on-desktop {
       display: none;
     }
 
@@ -101,6 +102,7 @@
 
     &-link {
       @extend %text-uppercase;
+
       color: $gray-second;
       padding: 8px 0;
 
@@ -109,7 +111,7 @@
         position: relative;
 
         &::after {
-          @include afterStyle;
+          @include after-style;
         }
       }
     }

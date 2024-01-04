@@ -7,18 +7,18 @@
   flex-direction: column;
   gap: 56px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 72px;
   }
 
   &__top {
-    @include onDesktop {
+    @include on-desktop {
       margin: 0 auto;
     }
   }
 
   &__title {
-    font-family: "Mont-Bold", sans-serif;
+    font-family: Mont-Bold, sans-serif;
     font-weight: 700;
     font-size: 32px;
     line-height: 41px;
@@ -26,19 +26,19 @@
     color: $gray-main;
     padding: 24px 16px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 48px;
       line-height: 56px;
       padding: 32px 24px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding: 56px 0;
     }
   }
 
   &__slider {
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       justify-content: center;
       align-items: center;

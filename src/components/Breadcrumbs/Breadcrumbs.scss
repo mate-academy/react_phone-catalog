@@ -27,6 +27,7 @@
 
   &__page-title {
     @extend %text-small;
+    
     text-transform: capitalize;
     text-decoration: none;
     margin: 0;
@@ -42,6 +43,7 @@
 
   &__product-title {
     @extend %text-small;
+
     margin: 0;
     white-space: nowrap;
     overflow: hidden;

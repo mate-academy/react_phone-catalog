@@ -6,7 +6,7 @@
   height: 100%;
   display: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
   }
 
@@ -17,7 +17,7 @@
     gap: 32px;
     height: 100%;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 64px;
     }
 
@@ -29,12 +29,13 @@
 
   &__item {
     @extend %text-uppercase;
+    
     color: $gray-second;
     padding: 16px 0;
     cursor: pointer;
     position: relative;
 
-    @include onDesktop {
+    @include on-desktop {
       padding: 24px 0;
     }
 
@@ -46,7 +47,7 @@
       color: $gray-main;
 
       &::after {
-        @include afterStyle;
+        @include after-style;
       }
     }
   }
@@ -54,7 +55,7 @@
   &__button {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -65,14 +66,14 @@
       position: relative;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 64px;
       width: 64px;
     }
 
     &--active {
       &::after {
-        @include afterStyle;
+        @include after-style;
       }
     }
 

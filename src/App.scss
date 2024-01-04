@@ -1,30 +1,31 @@
-@import "./styles/reset.scss";
-@import "./main.scss";
-
+@import "./styles/reset";
+@import "./main";
 @import "./styles/utils/variables";
 @import "./styles/utils/typography";
 @import "./styles/utils/mixins";
-
-@import "./styles/blocks/icon.scss";
-@import "./styles/blocks/container.scss";
-@import "./styles/blocks/button.scss";
-@import "./styles/blocks/Dropdown.scss";
-@import "./styles/blocks/Feature.scss";
-@import "./styles/blocks/About.scss";
-@import "./styles/blocks/TechSpecs.scss";
-@import "./styles/blocks/Description.scss";
-@import "./styles/blocks/Action.scss";
-@import "./styles/blocks/Decorative-line.scss";
-@import "./styles/blocks/Menu.scss";
-@import "./styles/blocks/CategoryPage.scss";
+@import "./styles/blocks/icon";
+@import "./styles/blocks/container";
+@import "./styles/blocks/button";
+@import "./styles/blocks/Dropdown";
+@import "./styles/blocks/Feature";
+@import "./styles/blocks/About";
+@import "./styles/blocks/TechSpecs";
+@import "./styles/blocks/Description";
+@import "./styles/blocks/Action";
+@import "./styles/blocks/Decorative-line";
+@import "./styles/blocks/Menu";
+@import "./styles/blocks/CategoryPage";
 
 .App {
-  display: flex;
   flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  max-width: 100%;
 
   &__main {
     flex: 1;
     width: 100%;
+    max-width: 100vw;
   }
 }

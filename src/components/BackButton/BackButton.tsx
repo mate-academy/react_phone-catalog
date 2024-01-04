@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './BackButton.scss';
-import button from '../../images/icons/Arrow_left.svg'
+import button from '../../images/icons/Arrow_left.svg';
 
 export const BackButton: React.FC = () => {
   return (

@@ -9,7 +9,7 @@
   padding: 16px;
   border: 1px solid $gray-elements;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     padding: 24px;
     gap: 24px;
@@ -21,7 +21,7 @@
     align-items: center;
     gap: 23px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 32px;
     }
   }
@@ -50,7 +50,7 @@
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 32px;
     }
 
@@ -81,7 +81,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @include onTablet {
+    @include on-tablet {
       width: min-content;
       gap: 24px;
     }

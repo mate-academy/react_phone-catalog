@@ -1,11 +1,11 @@
-@import "./styles/utils/variables.scss";
+@import "./styles/utils/variables";
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: "Mont", sans-serif;
+  font-family: Mont, sans-serif;
   background-color: $html-bg-color;
   scroll-behavior: smooth;
 }

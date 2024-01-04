@@ -3,13 +3,13 @@
   flex-direction: column;
   gap: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: 1 / -1;
     gap: 32px;
     padding-bottom: 64px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 1 / 13;
     padding-bottom: 0;
   }

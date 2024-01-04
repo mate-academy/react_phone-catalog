@@ -16,6 +16,7 @@
 
   &__value {
     @extend %text-small;
+    
     color: $gray-main;
   }
 }

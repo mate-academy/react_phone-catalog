@@ -1,16 +1,16 @@
 @import "../../styles/utils/typography";
 @import "../../styles/utils/variables";
-@import "../../styles/utils/mixins.scss";
+@import "../../styles/utils/mixins";
 
 .Footer {
   margin-top: 56px;
   border-top: 1px solid $gray-elements;
 
-  @include onTablet {
+  @include on-tablet {
     margin-top: 64px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin-top: 80px;
   }
 
@@ -21,7 +21,7 @@
     align-items: flex-start;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -43,19 +43,20 @@
       justify-content: center;
       gap: 8px;
 
-      @include onTablet {
+      @include on-tablet {
         flex-direction: row;
         align-items: center;
         gap: 14px;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         gap: 106px;
       }
     }
 
     &-link {
       @extend %text-uppercase;
+
       color: $gray-second;
 
       &:hover {
@@ -72,7 +73,7 @@
     width: 100%;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       width: max-content;
       justify-content: right;
       align-items: center;
@@ -80,6 +81,7 @@
 
     &-text {
       @extend %text-small;
+
       color: $gray-second;
     }
   }

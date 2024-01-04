@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 16px;
   }
 
@@ -31,6 +31,7 @@
 
   &__link {
     @extend %text-body;
+    
     color: $black;
 
     &--active {

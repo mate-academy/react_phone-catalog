@@ -11,7 +11,7 @@
   border: 1px solid $gray-elements;
   transition: all 0.3s ease-in-out;
 
-  @include onDesktop {
+  @include on-desktop {
     width: 272px;
   }
 
@@ -48,9 +48,10 @@
 
   &__name {
     @extend %text-body;
+    
     margin: 0;
 
-    @include onTablet {
+    @include on-tablet {
       min-height: 42px;
     }
   }
@@ -67,7 +68,7 @@
   }
 
   &__full-price {
-    font-family: "Mont-Regular", sans-serif;
+    font-family: Mont-Regular, sans-serif;
     font-size: 22px;
     font-weight: 500;
     line-height: 28px;
@@ -94,6 +95,7 @@
 
     &-value {
       @extend %text-small;
+
       color: $gray-main;
     }
   }

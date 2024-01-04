@@ -59,6 +59,12 @@ export const FavoritesPage: React.FC = () => {
             <NoSearchResults />
           )}
 
+          {!visibleFav.length && (
+            <div className="Favorites__no-items">
+              There are no favorite items yet
+            </div>
+          )}
+
           <ProductsList products={visibleFav} />
         </div>
       </div>

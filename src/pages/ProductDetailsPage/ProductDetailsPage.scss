@@ -10,11 +10,11 @@
     flex-direction: column;
     gap: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 80px;
     }
   }
@@ -24,7 +24,7 @@
     flex-direction: column;
     gap: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 40px;
       grid-column: 1 / -1;
       padding-bottom: 40px;
@@ -36,15 +36,15 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       --columns: 12;
+      
       display: grid;
       grid-template-columns: repeat(var(--columns), 1fr);
-      column-gap: 16px;
-      row-gap: 0;
+      gap: 16px 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       --columns: 24;
     }
 
@@ -53,7 +53,7 @@
       flex-direction: column;
       gap: 16px;
 
-      @include onTablet {
+      @include on-tablet {
         gap: 32px;
       }
     }
@@ -88,13 +88,13 @@
     flex-direction: column-reverse;
     gap: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       grid-column: 1 / 8;
       gap: 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 1 / 13;
     }
 
@@ -106,12 +106,12 @@
       margin: 0;
       padding: 0;
 
-      @include onTablet {
+      @include on-tablet {
         flex-direction: column;
         justify-content: flex-start;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         gap: 16px;
       }
     }
@@ -125,7 +125,7 @@
     width: 49px;
     border: 1px solid $gray-elements;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 80px;
       width: 80px;
     }
@@ -157,7 +157,7 @@
     background-color: $html-bg-color;
     grid-column: span 10;
 
-    @include onDesktop {
+    @include on-desktop {
       height: 464px;
     }
 
@@ -171,11 +171,11 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 8 / -1;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 14 / -5;
     }
   }
@@ -247,7 +247,9 @@
 
   &__capacity {
     border: 1px solid $gray-elements;
+
     @extend %text-body;
+
     padding: 8px;
 
     &:hover {
@@ -303,7 +305,7 @@
     }
 
     &-full {
-      font-family: "Mont-Regular", sans-serif;
+      font-family: Mont-Regular, sans-serif;
       font-size: 22px;
       font-weight: 500;
       line-height: 28px;

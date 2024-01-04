@@ -3,12 +3,12 @@
   padding: 0 16px;
   overflow: hidden;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 0 24px;
     max-width: 1136px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     box-sizing: content-box;
     padding: 32px;
   }
@@ -16,11 +16,11 @@
   &--slider {
     padding: 0;
 
-    @include onTablet {
+    @include on-tablet {
       padding: 0 8px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding: 0;
     }
   }

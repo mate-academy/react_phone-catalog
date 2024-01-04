@@ -22,6 +22,7 @@
 
   &__is-empty {
     @extend %text-important;
+    
     color: $gray-second;
   }
 
@@ -30,7 +31,7 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onDesktop {
+    @include on-desktop {
       display: grid;
       grid-template-columns: repeat(24, 1fr);
       gap: 16px;
@@ -51,7 +52,7 @@
     gap: 32px;
     grid-column: 17 / -1;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 16px;
     }
 
@@ -78,11 +79,12 @@
 
     &-text {
       @extend %text-body;
+
       color: $gray-second;
     }
 
     &-button {
-      font-family: "Mont-Semibold", sans-serif;
+      font-family: Mont-Semibold, sans-serif;
       font-size: 14px;
       line-height: 21px;
       text-align: center;
@@ -106,6 +108,7 @@
       border: 1px solid $gray-elements;
 
       @extend %text-important;
+
       text-align: center;
     }
   }

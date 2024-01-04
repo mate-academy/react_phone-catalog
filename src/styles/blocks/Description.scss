@@ -17,6 +17,7 @@
 
   &__text {
     @extend %text-body;
+    
     color: $gray-second;
   }
 }

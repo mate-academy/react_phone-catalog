@@ -190,9 +190,9 @@ export const PhonesPage: React.FC = () => {
                           to={{
                             search: getSearchWith(
                               searchParams, {
-                              sort: value,
-                              page: '1',
-                            },
+                                sort: value,
+                                page: '1',
+                              },
                             ).toString(),
                           }}
                           className="Dropdown__link"
@@ -237,9 +237,9 @@ export const PhonesPage: React.FC = () => {
                           to={{
                             search: getSearchWith(
                               searchParams, {
-                              perPage: option,
-                              page: '1',
-                            },
+                                perPage: option,
+                                page: '1',
+                              },
                             ).toString(),
                           }}
                           className="Dropdown__link"

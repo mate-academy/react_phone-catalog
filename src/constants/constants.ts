@@ -1,5 +1,5 @@
-import { Sort } from '../types/Sort';
-import { PhoneColorsType } from '../types/PhoneColorsType';
+import { PhoneColorsType } from '../types/PhoneColorsType.js';
+import { Sort } from '../types/Sort.js';
 
 export const SORT_OPTIONS: Sort = {
   Newest: 'age',

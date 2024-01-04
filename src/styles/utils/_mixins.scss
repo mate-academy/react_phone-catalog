@@ -1,16 +1,16 @@
-@mixin onDesktop {
+@mixin on-desktop {
   @media (min-width: 1200px) {
     @content;
   }
 }
 
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: 640px) {
     @content;
   }
 }
 
-@mixin afterStyle {
+@mixin after-style {
   display: block;
   content: "";
   position: absolute;
