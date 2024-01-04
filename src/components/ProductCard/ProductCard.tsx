@@ -27,6 +27,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <Link
           to={`/${product.category}/${product.itemId}`}
           state={{ search: searchParams.toString() }}
+          className="product-card__img-link"
         >
           <img
             src={product.image}
