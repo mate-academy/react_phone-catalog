@@ -1,0 +1,40 @@
+@import "../../styles/utils/vars";
+
+.Search {
+  &__button {
+    border: none;
+    background-color: $white;
+  }
+
+  &__input {
+    width: 85%;
+    height: 100%;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-left: 1px solid $elements;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    cursor: text;
+    width: 30vw;
+    max-width: 300px;
+    border-bottom: 1px solid $elements;
+
+    &:hover {
+      background-color: $hoverbg;
+    }
+
+    &:hover .Search__button {
+      background-color: $hoverbg;
+    }
+
+    &:hover .Search__input {
+      background-color: $hoverbg;
+    }
+  }
+}

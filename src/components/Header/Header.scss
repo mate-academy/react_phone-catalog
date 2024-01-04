@@ -1,0 +1,173 @@
+@import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $elements;
+
+  height: 64px;
+  padding-left: 20px;
+
+  &-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+  }
+
+  &__menu {
+    border: none;
+    background-color: $white;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+
+    @include onTablet {
+      gap: 15px;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+
+    &__link {
+      display: flex;
+      color: $secondary;
+      font-weight: 700;
+      line-height: 11px;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      height: 64px;
+      align-items: center;
+
+      @include onDesktop {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__utils {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-left: 1px solid #e2e6e9;
+    position: relative;
+
+    &-counter {
+      font-size: 9px;
+      position: absolute;
+      text-align: center;
+      top: 30%;
+      right: 30%;
+      color: #fff;
+      width: 14px;
+      height: 13px;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      background-color: #eb5757;
+    }
+  }
+
+  &__busket {
+    background-image: url(../../icons/Card.svg);
+  }
+}
+
+.is-Active {
+  color: $primary;
+  border-bottom: 3px solid $primary;
+}
+
+.Menu {
+  overflow: hidden;
+  background-color: $icons;
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateX(100%);
+  transition: transform 0.5s;
+
+  @include onTablet {
+    display: none;
+  }
+
+  &--opened {
+    transform: translateX(0);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $icons;
+    width: 100%;
+    padding: 10px;
+
+    border-bottom: 1px solid $primary;
+  }
+
+  &__logo {
+    background-color: $icons;
+    background-image: url(../../icons/apple-logo.png);
+    background-position: center;
+    background-size: cover;
+    width: 60px;
+    height: 24px;
+  }
+
+  &__cross {
+    border: none;
+    background-color: $icons;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &__item {
+    font-size: 20px;
+    color: $primary;
+
+    &:hover {
+      border-bottom: 1px solid $primary;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    width: 100vw;
+    height: 64px;
+  }
+
+  &--icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50vw;
+    height: 64px;
+    border: 1px solid $primary;
+    border-top: 2px solid $primary;
+  }
+}

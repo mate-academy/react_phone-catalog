@@ -1,0 +1,137 @@
+@import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
+
+.cart {
+  @include contentPaddingInline;
+  width: 100%;
+
+  &__utils {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  &__main {
+    position: relative;
+    gap: 16px;
+    margin-top: 24px;
+    width: 100%;
+
+    @include onTablet {
+      justify-content: flex-start;
+    }
+
+    &__price {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 20vh;
+      border: 1px solid $elements;
+
+      width: 100%;
+
+      @include onTablet {
+        width: 368px;
+        height: 206px;
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 16px;
+
+      @include onTablet {
+        flex-direction: row;
+      }
+
+      @include onDesktop {
+        flex-direction: row;
+      }
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 900px;
+      border: 1px solid $elements;
+      margin-bottom: 16px;
+
+      @include onDesktop {
+        flex-direction: row;
+        gap: 50px;
+
+        height: 128px;
+      }
+
+      &-top {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        padding: 15px;
+
+        @include onDesktop {
+          max-width: 280px;
+        }
+      }
+
+      &-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+
+        @include onDesktop {
+          justify-content: center;
+          gap: 100px;
+        }
+      }
+
+      &__image {
+        height: 66px;
+        width: 66px;
+        object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.09);
+        }
+      }
+
+      &__button {
+        padding: 10px;
+        border: 1px solid $elements;
+        background-color: #fff;
+
+        &-cross {
+          padding: 5px;
+          border: none;
+        }
+      }
+    }
+  }
+
+  &__message {
+    display: none;
+    position: absolute;
+    top: 200px;
+  }
+}
+
+.price__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $elements;
+  margin-bottom: 24px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}

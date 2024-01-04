@@ -1,0 +1,17 @@
+@import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
+
+.productSlider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__action {
+    display: flex;
+    gap: 16px;
+  }
+}
+

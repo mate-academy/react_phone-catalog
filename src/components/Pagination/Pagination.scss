@@ -1,0 +1,40 @@
+@import "/src/styles/utils/vars";
+@import "/src/styles/utils/mixins";
+
+.Pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+
+  @include onTablet {
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--active {
+      color: $white;
+    }
+  }
+
+  &__link {
+    color: $primary;
+
+    &--active {
+      border: none;
+      background-color: $primary;
+    }
+  }
+}

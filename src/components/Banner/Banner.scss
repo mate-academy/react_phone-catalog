@@ -1,0 +1,55 @@
+@import "../../styles/utils/mixins";
+
+.slider {
+  width: 80vw;
+  height: 40vh;
+  max-width: 1040px;
+  max-height: 400px;
+
+  &__button {
+    margin-top: 110px;
+    width: 32px;
+    height: 150px;
+
+    @include onTablet {
+      margin-top: 0;
+      height: 100%;
+    }
+  }
+
+  &-container {
+    display: flex;
+    margin-top: 40px;
+  }
+
+  &__image-container {
+    width: 80vw;
+    height: 40vh;
+    max-width: 1040px;
+    max-height: 400px;
+  }
+}
+
+.slide {
+  width: 80vw;
+  height: 40vh;
+  max-width: 1040px;
+  max-height: 400px;
+  object-fit: contain;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &-1 {
+    background-image: url(../../icons/images/banner-phones_new.webp);
+  }
+
+  &-2 {
+    background-image: url(../../icons/images/banner-tablets.jpeg);
+  }
+
+  &-3 {
+    background-image: url(../../icons/images/banner-accessories.png);
+  }
+}
