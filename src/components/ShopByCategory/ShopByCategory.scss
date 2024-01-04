@@ -1,0 +1,97 @@
+@import "../../styles/main";
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 508px;
+
+  @include on-tablet {
+    max-height: 100%;
+  }
+
+  &__title {
+    @extend %h1;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include on-mobile {
+      @media (max-width: 400px) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+
+    &-wrapper {
+      position: relative;
+
+      &:hover {
+        &::after {
+          content: '';
+          width: 100%;
+          height: 99%;
+          position: absolute;
+          top: 0; left: 0;
+          background-color: rgba(0,0,0,0.4);
+        }
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-description {
+      @include on-mobile {
+        @media (max-width: 400px) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          order: -1;
+        }
+      }
+    }
+
+    &-title {
+      margin-top: 24px;
+
+      @extend %h3;
+
+      @include on-tablet {
+        margin-top: 4px;
+      }
+
+      @include on-mobile {
+        margin: 0;
+        font-size: 14px;
+      }
+    }
+
+    &-amount {
+      color: $secondary-color;
+      font-family: Mont-Regular, sans-serif;
+      margin-top: 4px;
+      font-size: 14px;
+      line-height: 21px;
+
+      @include on-mobile {
+        margin-top: 0;
+        font-size: 12px;
+      }
+    }
+  }
+}

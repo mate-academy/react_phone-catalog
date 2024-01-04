@@ -1,0 +1,9 @@
+@import "../../styles/main";
+
+.product-list {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-block: 40px;
+}
