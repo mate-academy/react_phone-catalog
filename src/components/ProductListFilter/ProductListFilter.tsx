@@ -10,10 +10,10 @@ const sortOptions = [
 ];
 
 const perPageOptions = [
+  { label: 'All', value: 'all' },
   { label: '16', value: '16' },
   { label: '8', value: '8' },
   { label: '4', value: '4' },
-  { label: 'All', value: 'all' },
 ];
 
 export const ProductListFilter = () => {

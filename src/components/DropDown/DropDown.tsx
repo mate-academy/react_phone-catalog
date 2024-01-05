@@ -27,9 +27,12 @@ export const DropDown: React.FC<Props> = ({
   const buttonText = getDropDownText(searchParam, options) || searchParam;
 
   const searchParamClick = (option: SelectOption) => {
+    const newParams = { [searchParamName]: option.value, page: '1' };
+
     setSearchParams(
-      getSearchWith(searchParams, { [searchParamName]: option.value }),
+      getSearchWith(searchParams, newParams),
     );
+
     setIsActive(false);
   };
 

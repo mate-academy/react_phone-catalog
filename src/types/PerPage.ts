@@ -1,1 +1,1 @@
-export type PerPage = '' | 'all' | '4' | '8' | '16';
+export type PerPage = '' | 'all' | '16' | '8' | '4';

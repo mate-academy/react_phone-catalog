@@ -58,7 +58,6 @@ export const Pagination: React.FC<Prop> = ({
             </SearchLink>
           </li>
         ))}
-
       </ul>
 
       <div

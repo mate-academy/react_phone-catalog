@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/productsSlice';
@@ -6,14 +6,18 @@ import { ProductListFilter } from '../../components/ProductListFilter';
 import { ProductList } from '../../components/ProductList';
 import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
-import { compareProducts } from '../../utils/compareProducts';
-import { getProductsPerPage } from '../../utils/getProductsPerPage';
 import { ProductType } from '../../types/ProductType';
 import { Status } from '../../types/Status';
 import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
 import { NoResults } from '../../components/NoResults';
 import { NoSearchResults } from '../../components/NoSearchResults';
+import {
+  useProducts,
+  useProductsTotal,
+  usePaginatedProducts,
+  useProductsPerPage,
+} from '../../hooks/useProducts';
 
 type Props = {
   productType: ProductType;
@@ -25,54 +29,22 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const sortBy = (searchParams.get('sort') || SortBy.AGE) as SortBy;
-  const perPage = (searchParams.get('perPage') || '16') as PerPage;
+  const perPage = (searchParams.get('perPage') || 'all') as PerPage;
   const currentPage = Number(searchParams.get('page')) || 1;
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
 
-  const productsByType = useMemo(() => {
-    return products
-      .filter(product => product.type === productType);
-  }, [products, productType]);
+  const preparedProducts = useProducts(products, productType, query, sortBy);
 
-  const totalProductsByType = useMemo(() => {
-    return productsByType.length;
-  }, [productsByType]);
+  const preparedProductsTotal = useProductsTotal(preparedProducts);
 
-  const filteredProducts = useMemo(() => {
-    return productsByType.filter(product => product
-      .name.toLowerCase().includes(query.toLowerCase()));
-  }, [productsByType, query]);
+  const productsPerPage = useProductsPerPage(preparedProducts, perPage);
 
-  const totalFilteredProducts = filteredProducts.length;
-
-  const sorted = useMemo(() => {
-    return sortBy
-      ? filteredProducts
-        .sort((product1, product2) => {
-          return compareProducts(product1, product2, sortBy);
-        })
-      : filteredProducts;
-  }, [filteredProducts, sortBy]);
-
-  const productsPerPage = useMemo(() => {
-    return getProductsPerPage(perPage, totalProductsByType);
-  }, [perPage, totalProductsByType]);
-
-  const firstItem = useMemo(() => {
-    return (currentPage - 1) * productsPerPage;
-  }, [currentPage, productsPerPage]);
-
-  const lastItem = useMemo(() => {
-    return Math.min(currentPage * productsPerPage, totalProductsByType);
-  }, [currentPage, productsPerPage, totalProductsByType]);
-
-  const paginated = useMemo(() => {
-    return sorted
-      .filter((_, index) => index >= firstItem && index < lastItem);
-  }, [sorted, firstItem, lastItem]);
+  const paginatedProducts = usePaginatedProducts(
+    preparedProducts, perPage, currentPage,
+  );
 
   const pageTitle = {
     [ProductType.PHONE]: 'Mobile phones',
@@ -80,38 +52,33 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
     [ProductType.ACCESSORY]: 'Accessories',
   };
 
+  const noResults = query === ''
+    ? <NoResults productType={productType} />
+    : <NoSearchResults productType={productType} />;
+
   return (
     <>
-      {status === Status.IDLE
-        && totalProductsByType > 0
-        && <h1>{pageTitle[productType]}</h1>}
+      {status === Status.LOADING && <Loader />}
 
       {status === Status.IDLE
-        && totalProductsByType > 0
-        && <ProductListFilter />}
-
-      {status === Status.LOADING
-        && <Loader />}
-
-      {status === Status.IDLE
-        && totalProductsByType === 0
-        && <NoResults productType={productType} />}
-
-      {status === Status.IDLE
-        && totalFilteredProducts === 0
-        && query !== ''
-        && <NoSearchResults productType={productType} />}
-
-      {status === Status.IDLE
-        && <ProductList products={paginated} />}
-
-      {totalFilteredProducts > productsPerPage
         && (
-          <Pagination
-            total={totalFilteredProducts}
-            perPage={productsPerPage}
-            currentPage={currentPage}
-          />
+          preparedProductsTotal === 0
+            ? noResults
+            : (
+              <>
+                <h1>{pageTitle[productType]}</h1>
+
+                <ProductListFilter />
+
+                <ProductList products={paginatedProducts} />
+
+                <Pagination
+                  total={preparedProductsTotal}
+                  perPage={productsPerPage}
+                  currentPage={currentPage}
+                />
+              </>
+            )
         )}
     </>
   );
