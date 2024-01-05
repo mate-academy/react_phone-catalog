@@ -4,6 +4,11 @@
   border: 1px solid #ccc;
   color: #313237;
   text-decoration: none;
+  transition: 0.3s;
+
+  &:hover {
+    border-color: #313237;
+  }
 
   &__img {
     max-width: 100%;

@@ -16,6 +16,7 @@ export const BasketPages: React.FC = () => {
     getBasket,
     visibleProducts,
     increment,
+    decrement,
   } = useSearchContext();
   const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
@@ -79,6 +80,8 @@ export const BasketPages: React.FC = () => {
                       <button
                         className="basket__item--counter-btn"
                         type="button"
+                        onClick={() => decrement(item)}
+                        disabled={countProducts(item.id) === 1}
                       >
                         <div className="basket__item--counter-minus" />
                       </button>
@@ -124,7 +127,7 @@ export const BasketPages: React.FC = () => {
           </div>
 
         ) : (
-          <EmptyCard />
+          <EmptyCard title="basket" />
         )}
 
       </div>

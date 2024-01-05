@@ -36,7 +36,7 @@ export const FavoritePages: React.FC<Props> = () => {
             ))}
           </div>
         ) : (
-          <EmptyCard />
+          <EmptyCard title="favorite" />
         )}
 
       </div>

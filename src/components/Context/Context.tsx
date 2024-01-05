@@ -18,6 +18,7 @@ interface ContextType {
   handleAddToFavorite: (product: Product) => void;
   handleRemoveFromBasket: (productId: string) => void;
   increment: (product: Product) => void;
+  decrement: (product: Product) => void;
   visibleProducts: Product[],
   getFavorite: Product[];
   getBasket: Product[];
@@ -59,15 +60,13 @@ export const ContextProvider: React.FC = ({ children }) => {
       ? list.filter(item => item.id !== product.id)
       : [...list, product];
 
-    console.log(updatedList.length);
-
     setItem(listKey, updatedList);
 
     setDefaultStateValue((prevState) => {
       return {
         ...prevState,
         countBasket: listKey === 'basket' ? updatedList.length : prevState.countBasket,
-        
+
         countFavorite: listKey === 'favorite' ? updatedList.length : prevState.countFavorite,
       };
     });
@@ -117,10 +116,30 @@ export const ContextProvider: React.FC = ({ children }) => {
     });
   };
 
+  const decrement = (product: Product) => {
+    const productIndex = getBasket.findIndex(item => item.id === product.id);
+
+    if (productIndex !== -1) {
+      const updatedBasket = [...getBasket];
+
+      updatedBasket.splice(productIndex, 1);
+
+      setItem('basket', updatedBasket);
+
+      setDefaultStateValue((prevState) => {
+        return {
+          ...prevState,
+          countBasket: prevState.countBasket - 1,
+        };
+      });
+    }
+  };
+
   return (
     <Context.Provider value={{
       searchText,
       increment,
+      decrement,
       setSearchText,
       handleAddToBasket,
       handleAddToFavorite,

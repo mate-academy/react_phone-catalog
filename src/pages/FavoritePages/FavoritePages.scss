@@ -1,8 +1,10 @@
 .favorite {
+  margin-bottom: 80px;
+
   &__title {
+    font-family: "Mont-Bold", sans-serif;
     font-size: 32px;
     color: #313237;
-    font-family: "Mont-Bold", sans-serif;
   }
 
   &__counter {

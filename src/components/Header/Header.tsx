@@ -19,6 +19,8 @@ const getLinkClass = (
 export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const searchShow = pathname === '/phones';
+  const favoriteShow = pathname === '/basket';
+
   const { defaultStateValue } = useSearchContext();
 
   return (
@@ -43,18 +45,20 @@ export const Header: React.FC = () => {
         <div className="navigation__right">
           {searchShow && <SearchField />}
 
-          <Link to="favorites" className="navigation__icon">
-            <img src={favoriteIcon} alt="icon_favorite" className="navigation__icon-favorite" />
+          {!favoriteShow && (
 
-            {defaultStateValue.countFavorite !== 0 && (
-              <div className="navigation__icon-basket--counter">
-                <span className="navigation__icon-basket--length">
-                  {defaultStateValue.countFavorite}
-                </span>
-              </div>
-            )}
-          </Link>
+            <Link to="favorites" className="navigation__icon">
+              <img src={favoriteIcon} alt="icon_favorite" className="navigation__icon-favorite" />
 
+              {defaultStateValue.countFavorite !== 0 && (
+                <div className="navigation__icon-basket--counter">
+                  <span className="navigation__icon-basket--length">
+                    {defaultStateValue.countFavorite}
+                  </span>
+                </div>
+              )}
+            </Link>
+          )}
           <Link to="basket" className="navigation__icon">
             <img src={basketIcon} alt="icon-basket" className="navigation__icon-basket" />
 

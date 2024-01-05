@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Product } from '../types/Products';
 
 const BASE_URL
@@ -12,12 +13,12 @@ const request = (url: string) => {
 
       return res.json();
     }).catch((error) => {
-      // eslint-disable-next-line no-alert
-      window.alert(`Error: ${error.message}`);
+      console.log(`Error: ${error.message}`);
     });
 };
 
 export const getProducts = () => request('/products.json');
+
 export const getSuggestedProducts = (id: string) => request(`/products/${id}.json`);
 
 export const getPhones = () => {

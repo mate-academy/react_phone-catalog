@@ -194,7 +194,6 @@ export const PhonePages: React.FC = () => {
             <ErrorMessage />
           )}
 
-          {/* ------------------- */}
           {isLoading && !isError ? (
             <Loader />
           ) : (

@@ -1,10 +1,10 @@
 import './EmptyCard.scss';
 
-export const EmptyCard = () => {
+export const EmptyCard: React.FC<{ title: string }> = ({ title }) => {
   return (
     <div className="empty">
       <div className="empty__title">
-        Your favorites is empty ...
+        {`Your ${title} is empty ...`}
       </div>
     </div>
   );
