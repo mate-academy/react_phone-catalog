@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { getSearchWith } from '../../utils/getSearchWith';
-
-import './Search.scss';
 import { debounce } from '../../utils/debounce';
 
-const delay = 300;
+import './Search.scss';
+
+const delay = 600;
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,9 +16,10 @@ export const Search = () => {
   const [query, setQuery] = useState(queryParam);
 
   const location = useLocation();
-  const currentPath = location.pathname
-    .split('/')
-    .filter(name => name !== '');
+
+  const currentPath = useMemo(() => {
+    return location.pathname.split('/').filter(name => name !== '');
+  }, [location]);
 
   useEffect(() => {
     setQuery(queryParam);
@@ -28,7 +31,7 @@ export const Search = () => {
   );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.currentTarget;
+    const { value } = event.target;
 
     setQuery(value);
 
