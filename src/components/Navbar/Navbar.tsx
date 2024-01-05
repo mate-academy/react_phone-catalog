@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 
 const getClassName = ({ isActive }: { isActive: boolean }) => {
-  return (classNames('Navbar__item', {
-    'Navbar_item-active': isActive,
-  }));
+  return classNames('Navbar__item', {
+    'Navbar__item--active': isActive,
+  });
 };
 
 export const Navbar: React.FC = () => {
