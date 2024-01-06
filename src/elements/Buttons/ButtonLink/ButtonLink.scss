@@ -1,7 +1,7 @@
-@import './../../style/mixins';
-@import './../../style/extends';
+@import './../../../style/mixins';
+@import './../../../style/extends';
 
-.buttonIcon {
+.buttonLink {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,11 +23,6 @@
 
   @include hover(border-color, $main-text-color);
 
-  &--medium {
-    height: 40px;
-    width: 40px;
-  }
-
   &--big {
     height: 40px;
     width: 40px;
@@ -43,11 +38,6 @@
     }
   }
 
-  &--large {
-    height: calc(100% - 25px);
-    width: 100%;
-  }
-
   &--shadow {
     border: none;
     box-shadow: -1px 1px 0 0 $shadow-color;
@@ -57,30 +47,23 @@
     border: none;
   }
 
-  &--light-border {
-    @include hover (border-color, darken($border-color, 15%))
-  }
-
   &--disactive {
     border-color: $shadow-color;
     pointer-events: none;
 
     @include hover(border-color, $shadow-color);
-    // @include hover(box-shadow, (3px, 3px, 13px 0 $main-text-color));
     @include hover(box-shadow, $main-text-color);
   }
 
   &--link-active {
     background-color: $main-text-color;
 
-    & > a {
+    &>a {
       color: $main-bg-color;
     }
   }
 
   &__icon-keeper {
-    // @include hover(transform, scale(1.1));
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,11 +74,6 @@
     &--big {
       height: 40px;
       width: 40px;
-    }
-
-    &--biggest {
-      height: 50px;
-      width: 50px;
     }
 
     &--large {
@@ -132,21 +110,15 @@
 
   &__text {
     line-height: 100%;
-    &--backBtn {
-      padding-left: 20px;
-      color: $secondary-text-color;
-
-      @extend %small-text
-    }
   }
 
-  &:has(.buttonIcon__icon--heart-active) {
+  &:has(.buttonLink__icon--heart-active) {
     border: 1px solid $main-text-color;
   }
 
   &__icon {
     display: block;
-    background-size:contain;
+    background-size: contain;
     background-repeat: no-repeat;
     height: 12px;
     width: 12px;
@@ -162,67 +134,23 @@
     }
 
     &--cart {
-      background-image: url(./../../assets/icons/cart.svg);
-    }
-
-    &--cart-big {
-      background-image: url(./../../assets/icons/cart.svg);
-      height: 30px;
-      width: 30px;
-    }
-
-    &--close {
-      background-image: url(./../../assets/icons/close.svg);
-    }
-
-    &--down {
-      background-image: url(./../../assets/icons/down.svg);
+      background-image: url(./../../../assets/icons/cart.svg);
     }
 
     &--heart {
-      background-image: url(./../../assets/icons/heart.svg);
-    }
-
-    &--favourite-big {
-      background-image: url(./../../assets/icons/heart.svg);
-      height: 30px;
-      width: 30px;
-    }
-
-    &--heart-active {
-      background-image: url(./../../assets/icons/heart-active.svg);
+      background-image: url(./../../../assets/icons/heart.svg);
     }
 
     &--home {
-      background-image: url(./../../assets/icons/home.svg);
+      background-image: url(./../../../assets/icons/home.svg);
     }
 
     &--left {
-      background-image: url(./../../assets/icons/left.svg);
-    }
-
-    &--loop {
-      background-image: url(./../../assets/icons/loop.svg);
-    }
-
-    &--menu {
-      background-image: url(./../../assets/icons/menu.svg);
-    }
-
-    &--minus {
-      background-image: url(./../../assets/icons/minus.svg);
-    }
-
-    &--plus {
-      background-image: url(./../../assets/icons/plus.svg);
+      background-image: url(./../../../assets/icons/left.svg);
     }
 
     &--right {
-      background-image: url(./../../assets/icons/right.svg);
-    }
-
-    &--up {
-      background-image: url(./../../assets/icons/up.svg);
+      background-image: url(./../../../assets/icons/right.svg);
     }
 
     &--disactive {

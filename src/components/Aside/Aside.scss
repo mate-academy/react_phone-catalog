@@ -9,13 +9,9 @@
   justify-content: center;
   grid-column: span 2;
   position: absolute;
-  // z-index: -1;
   background-color: $main-bg-color;
   opacity: 0;
   transform: translateY(-20px);
-  transform: translateY(-100px);
-  // transform: translateY(-10%);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   transition: all, 0.3s;
   pointer-events: none;
 
@@ -32,16 +28,6 @@
     gap: 30px;
     margin-block: 30px;
   }
-
-  // &__item {
-  //   @include navigation-style;
-
-  //   &:not(:has(>.is-active)) {
-  //     @include hover(transform, scale(1.1));
-  //   }
-
-  //   position: relative;
-  // }
 
   &__link {
     @extend %upper-case;

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Dropdown } from '../elements/Dropdown/Dropdown';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
 import { ProductsList } from '../components/ProductsList/ProductsList';
@@ -14,32 +14,24 @@ import { namedSortOptions, pageSortOptions } from '../helpers/utils/constants';
 import { Pagination } from '../elements/Pagination/Pagination';
 import { capitalize } from '../helpers/utils/capitalize';
 import { Fail } from '../elements/Empty/Fail';
-import { useAppSelector } from '../store/hooks';
-import { Search } from '../components/Search/Search';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { getSearchWith } from '../helpers/getFunctions/getSearch';
+import { setQuery } from '../features/querySlice';
 
 type Props = {
   product: string;
 };
 
 export const ProductPage: React.FC<Props> = ({ product }) => {
+  const dispatch = useAppDispatch();
   const query = useAppSelector(state => state.query);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const page = searchParams.get('page') || '1';
   const [products, setProducts] = useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sortBy, setSortBy] = useState(Sort.age);
   const [perPage, setPerPage] = useState('8');
-
-  // const { products } = useAppSelector(state => state.products);
-  // console.log(products)
-
-  const { pathname } = useLocation();
-  const curPage = pathname.split('/')[1];
-  const shouldSearch = curPage === 'phones'
-    || curPage === 'tablets'
-    || curPage === 'accessories'
-    || curPage === 'favorites';
 
   const IndexOfFirstVisibleItem = ((+page - 1) * +perPage) + 1;
 
@@ -51,8 +43,13 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
       .finally(() => setIsLoading(false));
   }, [product]);
 
-  // console.log(product)
-  // console.log(products)
+  useEffect(() => {
+    dispatch(setQuery(''));
+    const search = getSearchWith({ query: null }, searchParams);
+
+    setSearchParams(search);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product]);
 
   const visibleProducts = getSortedProducts(getProductsByQuery(
     getProductsByKey(products, 'category', product),
@@ -85,6 +82,10 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
     }
   };
 
+  if (visibleProducts.length === 0 && !query.length && !isLoading) {
+    return (<Fail text title={`Sorry! All ${product} are sold out`} />);
+  }
+
   return (
     <main className="page">
       <Breadcrumbs page={capitalize(product)} />
@@ -93,7 +94,7 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
       ) : (
         <>
           {visibleProducts.length === 0 ? (
-            <Fail title={`${capitalize(product)} not found`} />
+            <Fail noBck title={`${capitalize(product)} not found`} />
           ) : (
             <>
               <h1 className="page__title-h1 page__title-h1--product">
@@ -121,10 +122,6 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
                   onClick={handlePagesClick}
                   defaultVal="8"
                 />
-              </div>
-
-              <div className="page__search">
-                {shouldSearch && (<Search page={curPage} />)}
               </div>
 
               <ProductsList products={visibleProductsOnPage} />

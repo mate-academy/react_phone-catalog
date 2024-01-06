@@ -7,14 +7,6 @@
   justify-content: center;
   border: 1px solid $shadow-color;
 
-  // @include hover(transform, scale(1.01));
-  &:hover {
-    .productCard__image {
-      transition: transform 1s;
-    transform: scale(1.05);
-  }
-  }
-
   &__link {
     text-decoration: none;
     color: $main-text-color;
@@ -31,6 +23,7 @@
     @include on-tablet {
       margin: 20px 20px 0;
     }
+
     @include on-desktop {
       margin: 32px 32px 0;
     }
@@ -38,7 +31,6 @@
 
   &__image {
     height: 100%;
-    // width: 100%;
     transition: transform 800ms;
     max-height: 110px;
     object-fit: contain;
@@ -69,23 +61,14 @@
 
   &__name-container {
     margin-top: 24px;
-    // height: 42px;
     display: flex;
     align-content: flex-start
   }
 
   &__name {
     @extend %body-text;
+
     min-height: 48px;
-
-
-    // @include on-tablet {
-    //   min-height: 30px;
-    // }
-
-    // @include on-desktop {
-    //   margin-inline: 24px;
-    // }
   };
 
   &__prices {
@@ -159,5 +142,12 @@
     margin-bottom: 24px;
     display: flex;
     gap: 8px;
+  }
+
+  &:hover {
+    .productCard__image {
+      transition: transform 1s;
+    transform: scale(1.05);
+  }
   }
 };

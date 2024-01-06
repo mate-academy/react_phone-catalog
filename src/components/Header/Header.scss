@@ -34,7 +34,6 @@
   &__icon {
     @include on-tablet {
       display: none;
-      // z-index: 2;
     }
   }
 
@@ -86,14 +85,6 @@
       height: 14px;
       width: 14px;
       font-size: 9px;
-    }
-  }
-
-  &__search {
-    display: none;
-
-    @include on-desktop {
-      display: block;
     }
   }
 };

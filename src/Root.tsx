@@ -11,7 +11,9 @@ import { NotFoundPage } from './Pages/NotFoundPage';
 import { ProductPage } from './Pages/ProductPage';
 import { FavouritesPage } from './Pages/FavouritesPage';
 import { CartPage } from './Pages/CartPage';
-// import { Aside } from './components/Aside/Aside';
+import { ContactsPage } from './Pages/ContactsPage/ContactsPage';
+import { ReturnPage } from './Pages/ReturnsPage/ReturnPage';
+import { RightsPage } from './Pages/RightsPage/RightsPage';
 
 export const Root = (): JSX.Element => (
   <Router>
@@ -37,9 +39,12 @@ export const Root = (): JSX.Element => (
 
         <Route path="cart" element={<CartPage />} />
 
+        <Route path="contacts" element={<ContactsPage />} />
+        <Route path="returns" element={<ReturnPage />} />
+        <Route path="rights" element={<RightsPage />} />
+
         <Route path="*" element={<NotFoundPage />} />
       </Route>
-      {/* <Route path="menu" element={<Aside />} /> */}
     </Routes>
   </Router>
 );

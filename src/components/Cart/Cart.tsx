@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ProductType } from '../../helpers/types/ProductType';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import { BASE_URL } from '../../helpers/utils/constants';
 import './Cart.scss';
 import { removeFromCart } from '../../features/cartSlice';
+import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 type Props = {
   product: ProductType;
@@ -23,7 +23,7 @@ export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
     phoneId,
   } = product;
 
-  const handleCloseClick = () => {
+  const close = () => {
     dispatch(removeFromCart(product.id));
     setTotalPrice(cur => cur - price);
   };
@@ -42,14 +42,15 @@ export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
 
   return (
     <div className="cart">
-      <Link to={`/${category}/${phoneId}`} className="cart__block">
-        <ButtonIcon
-          type="event"
+      <div className="cart__close">
+        <ButtonEvent
           shape="close"
+          onClick={close}
           dynamicClasses={['no-border']}
-          onClick={handleCloseClick}
         />
+      </div>
 
+      <Link to={`/${category}/${phoneId}`} className="cart__block">
         <img
           src={`${BASE_URL}${image}`}
           alt={name}
@@ -61,17 +62,16 @@ export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
 
       <div className="cart__block cart__block--right">
         <div className="cart__increment">
-          <ButtonIcon
-            type="event"
+          <ButtonEvent
             shape="minus"
             onClick={() => decrease()}
+            disable={count === 1}
           />
+
           <p className="cart__count">{count}</p>
 
-          <ButtonIcon
-            type="event"
+          <ButtonEvent
             shape="plus"
-            disable={count <= 0}
             onClick={() => increase()}
           />
         </div>

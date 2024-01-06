@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { useAppSelector } from '../../store/hooks';
 import { Images } from './Images/Images';
 import { Colors } from './Colors/Colors';
 import { Purchase } from './Purchase/Purchase';
@@ -17,21 +16,13 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
-  const { selectedProduct } = useAppSelector(state => state.selectedProduct);
-
-  if (!selectedProduct) {
-    return <h1>h</h1>;
-  }
-
-  // console.log(selectedProduct)
-
   return (
     <div className="details">
       <h1 className="details__title">{product.name}</h1>
 
       <div className="details__content">
         <section className="details__section ">
-          <Images product={selectedProduct} />
+          <Images product={product} />
         </section>
 
         <section className="details__section details__section--interactive">

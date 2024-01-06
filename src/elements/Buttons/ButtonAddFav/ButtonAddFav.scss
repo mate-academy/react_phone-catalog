@@ -1,0 +1,110 @@
+@import './../../../style/mixins';
+@import './../../../style/extends';
+
+.buttonAddFav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont-Semibold, $fallback-fonts;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  background-color: $main-bg-color;
+  border: 1px solid $border-color;
+  cursor: pointer;
+
+  @include hover (border-color, darken($border-color, 15%));
+  @include hover(border-color, $main-text-color);
+
+
+  &--light-border {
+    @include hover (border-color, darken($border-color, 15%))
+  }
+
+
+  &--link-active {
+    background-color: $main-text-color;
+
+    & > a {
+      color: $main-bg-color;
+    }
+  }
+
+  &__icon-keeper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+
+    &--big {
+      height: 40px;
+      width: 40px;
+    }
+
+    &--biggest {
+      height: 50px;
+      width: 50px;
+    }
+
+    &--large {
+      width: 32px
+    }
+  }
+
+  &__link {
+    @extend %body-text;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $main-text-color;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    &.is-active {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        display: block;
+        bottom: 0;
+        background-color: $main-text-color;
+        border-radius: 3px;
+        color: $main-text-color;
+      }
+    }
+  }
+
+
+  &:has(.button__icon--heart-active) {
+    border: 1px solid $main-text-color;
+  }
+
+  &__icon {
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    background-image: url(./../../../assets/icons/heart.svg);
+
+    @include hover(transform, scale(1.1));
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--active {
+      background-image: url(./../../../assets/icons/heart-active.svg);
+    }
+  }
+}

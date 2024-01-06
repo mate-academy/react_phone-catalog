@@ -2,13 +2,14 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs/Breadcrumbs';
-import { ButtonIcon } from '../elements/ButtonIcon/ButtonIcon';
 import { ProductDetails } from '../components/ProductDetails/ProductDetails';
 import { ProductSlider, Slide } from '../components/ProductSlider/ProductSlider';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { Loader } from '../elements/Loader/Loader';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchSelectedProduct } from '../features/selectedProductSlice';
+import { ButtonBack } from '../elements/Buttons/ButtonBack/ButtonBack';
+import { Fail } from '../elements/Empty/Fail';
 
 export const ProductDetailsPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,24 +26,15 @@ export const ProductDetailsPage: React.FC = () => {
   }
 
   if (!selectedProduct) {
-    return <p>product not found</p>;
+    return <Fail title="Page not found" />;
   }
 
   return (
     <div className="page">
       <Breadcrumbs page="phones" product={selectedProduct} />
-      {/* <Loader /> */}
 
       <div className="page__backBtn">
-        <ButtonIcon
-          type="link"
-          shape="left"
-          path=".."
-          text="Back"
-          dynamicClasses={['no-border']}
-          backBtn
-          disactive
-        />
+        <ButtonBack />
       </div>
 
       {isLoading ? (

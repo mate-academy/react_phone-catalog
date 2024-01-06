@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ProductType } from '../../helpers/types/ProductType';
 import { getSearchWith } from '../../helpers/getFunctions/getSearch';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
+import { ButtonLink } from '../Buttons/ButtonLink/ButtonLink';
 import './Pagination.scss';
 
 type Props = {
@@ -32,15 +32,13 @@ export const Pagination: React.FC<Props> = ({
   }, [curPage, totalPages]);
 
   function findNextPage(direction: string) {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 100, left: 0, behavior: 'smooth' });
     if (direction === 'next') {
       return Math.min(curPage + 1, totalPages).toString();
     }
 
     return Math.max(curPage - 1, 1).toString();
   }
-
-  // console.log(findNextPage('next'));
 
   function isArrowDisabled(direction: string) {
     if (direction === 'next') {
@@ -53,12 +51,9 @@ export const Pagination: React.FC<Props> = ({
   return (
     <ul className="pagination">
       <li className="paginalion__item">
-        <ButtonIcon
-          type="link"
-          dynamicClasses={isArrowDisabled('prev') ? ['disabled'] : ['']}
+        <ButtonLink
           shape="left"
           disable={isArrowDisabled('prev')}
-          disactive={isArrowDisabled('prev')}
           path={{
             search: getSearchWith({
               page: findNextPage('prev'),
@@ -69,8 +64,7 @@ export const Pagination: React.FC<Props> = ({
 
       {visiblePages.map(page => (
         <li className="paginalion__item" key={page}>
-          <ButtonIcon
-            type="link"
+          <ButtonLink
             text={page}
             shape="num"
             dynamicClasses={String(curPage) === page ? ['link-active'] : ['']}
@@ -85,12 +79,9 @@ export const Pagination: React.FC<Props> = ({
 
       {curPage !== totalPages && (<p className="pagination__dots">...</p>)}
 
-      <ButtonIcon
-        type="link"
-        dynamicClasses={isArrowDisabled('next') ? ['disabled'] : ['']}
+      <ButtonLink
         shape="right"
         disable={isArrowDisabled('next')}
-        disactive={isArrowDisabled('next')}
         path={{
           search: getSearchWith({
             page: findNextPage('next'),

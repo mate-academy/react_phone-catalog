@@ -1,0 +1,48 @@
+@import './../../../style/mixins';
+@import './../../../style/extends';
+
+.buttonBack {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-family: Mont-Semibold, $fallback-fonts;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+
+  &__button {
+    background-color: $main-bg-color;
+    height: 25px;
+    width: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  &__icon {
+    background-image: url(./../../../assets/icons/left.svg);
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    transition: filter 1s;
+    filter: invert(75%) sepia(12%) saturate(170%) hue-rotate(161deg) brightness(99%) contrast(88%);
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  &__text {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  }
+}

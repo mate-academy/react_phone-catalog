@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { ButtonIcon } from '../elements/ButtonIcon/ButtonIcon';
 import { Cart } from '../components/Cart/Cart';
 import { Fail } from '../elements/Empty/Fail';
 import { useAppSelector } from '../store/hooks';
@@ -11,30 +9,13 @@ export const CartPage: React.FC = () => {
   const [totalPrice, setTotalPrice] = useState<number>(cartedProducts
     .reduce((sum, cart) => sum + cart.price, 0) || 0);
 
-  // const navigate = useNavigate();
-  // const goBack = () => {
-  //   navigate(-1);
-  // };
-
   return (
     <div className="page">
-      <div className="page__backBtn">
-        <ButtonIcon
-          type="link"
-          shape="left"
-          // path={goBack}
-          path=".."
-          dynamicClasses={['no-border']}
-          backBtn
-        />
-        <p className="page__backBtn--text">Back</p>
-      </div>
-
       {!cartedProducts.length ? (
         <Fail title="Your cart is empty" />
       ) : (
         <>
-          <h1 className="page__title-h1">Cart</h1>
+          <h1 className="page__title-h1 page__title-h1--product">Cart</h1>
           <div className="page__content">
             <section className="page__section page__section--cart">
               <ul className="page__carts">

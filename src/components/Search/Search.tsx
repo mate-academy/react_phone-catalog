@@ -3,10 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import { useMemo } from 'react';
 import _debounce from 'lodash/debounce';
 import { Params, getSearchWith } from '../../helpers/getFunctions/getSearch';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import './Search.scss';
 import { useAppDispatch } from '../../store/hooks';
 import { setQuery } from '../../features/querySlice';
+import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 type Props = {
   page: string;
@@ -29,6 +29,7 @@ export const Search: React.FC<Props> = ({ page }) => {
     applyQuery(e.target.value);
     setParams({ query: e.currentTarget.value || null });
     searchParams.set('query', e.target.value);
+    setParams({ page: '1' });
   };
 
   const reset = () => {
@@ -42,12 +43,11 @@ export const Search: React.FC<Props> = ({ page }) => {
         type="text"
         className="search__input"
         value={query}
-        placeholder={`Search in ${page}`}
+        placeholder={`Search in ${page}...`}
         onChange={handleChange}
       />
 
-      <ButtonIcon
-        type="event"
+      <ButtonEvent
         shape={query.length === 0 ? 'loop' : 'close'}
         onClick={reset}
         dynamicClasses={['big', 'no-border']}

@@ -81,6 +81,7 @@
 
   &__title-h2 {
     @extend %h2;
+
     margin-top: 30px;
 
     @include on-tablet {
@@ -95,18 +96,12 @@
   &__backBtn {
     margin-top: 15px;
 
+    @include on-tablet {
+      margin-top: 30px;
+    }
 
     @include on-desktop {
       margin-top: 40px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    &--text {
-      @extend %small-text;
-
-      color: $secondary-text-color;
     }
   }
 
@@ -147,6 +142,7 @@
 
   &__search {
     height: fit-content;
+
     @include on-desktop {
       display: none;
     }
@@ -190,8 +186,8 @@
 
   &__total-price-text {
     @extend %body-text;
-    width: max-content;
 
+    width: max-content;
     color: $secondary-text-color;
   }
 

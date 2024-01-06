@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
 import './ProductSlider.scss';
 import 'swiper/css';
 import 'swiper/scss/navigation';
+import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 type Props = {
   children: React.ReactNode[];
@@ -29,18 +29,16 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
         <h2 className="product-slider__title-h2">{title}</h2>
 
         <div className="product-slider__icons">
-          <ButtonIcon
-            type="event"
+          <ButtonEvent
             shape="left"
             onClick={handlePrevious}
-            disactive={activeIndex === 0}
+            disable={activeIndex === 0}
           />
 
-          <ButtonIcon
-            type="event"
+          <ButtonEvent
             shape="right"
             onClick={handleNext}
-            disactive={activeIndex === children?.length - 4}
+            disable={activeIndex === children?.length - 4}
           />
         </div>
       </div>

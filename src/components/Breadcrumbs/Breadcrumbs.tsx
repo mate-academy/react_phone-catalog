@@ -1,6 +1,7 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
+import { ButtonLink } from '../../elements/Buttons/ButtonLink/ButtonLink';
 import './Breadcrumbs.scss';
 import { DetailType } from '../../helpers/types/DetailType';
 import { capitalize } from '../../helpers/utils/capitalize';
@@ -14,8 +15,7 @@ export const Breadcrumbs: React.FC<Props> = ({ page, product }) => {
   return (
     <>
       <div className="breadcrumbs">
-        <ButtonIcon
-          type="link"
+        <ButtonLink
           shape="home"
           path="/"
           dynamicClasses={['no-border']}

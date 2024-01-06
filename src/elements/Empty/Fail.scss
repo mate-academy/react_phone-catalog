@@ -1,14 +1,40 @@
 @import './../../style/extends';
 
 .fail {
-  grid-column: span 32;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 55vh;
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
 
   &__title {
     @extend %h1;
 
-    margin-block: 50px;
+    margin-top: 10px;
+    align-self: center;
+
+    @include on-tablet {
+      margin-top: 20px;
+    }
   }
 
+  &__text {
+    @extend %h3;
+
+    align-self: center;
+    margin-top: 10px;
+
+    @include on-tablet {
+      margin-top: 20px;
+    }
+  }
 }

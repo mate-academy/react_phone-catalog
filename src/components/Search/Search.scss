@@ -1,18 +1,15 @@
-@import './../../style/variables';
 @import './../../style/mixins';
+@import './../../style/extends';
 
 .search {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 24px;
-  width: 200px;
-  height: 40px;
-  box-shadow: 1px 1px 2px 1px $border-color;
-  margin-top: 15px;
+  padding-left: 8px;
+  box-shadow: -1px 0 0 0 $shadow-color;
 
-  @include on-desktop {
-    margin-top: 0;
+  @include on-tablet {
+    padding-left: 24px;
     width: 327px;
     height: 100%;
     box-shadow: -1px 0 0 0 $shadow-color;
@@ -24,6 +21,12 @@
     height: 100%;
     border: none;
     outline: none;
+
+    &::placeholder {
+      color: $secondary-text-color;
+
+      @extend %small-text;
+    }
   }
 
   &__button.main{

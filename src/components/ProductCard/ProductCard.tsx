@@ -1,12 +1,13 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProductType } from '../../helpers/types/ProductType';
 import { BASE_URL } from '../../helpers/utils/constants';
 import './ProductCard.scss';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
-import { ButtonTexted } from '../../elements/ButtonTexted/ButtonTexted';
 import { capitalize } from '../../helpers/utils/capitalize';
 import { Line } from '../../elements/Line/Line';
+import { ButtonAddFav } from '../../elements/Buttons/ButtonAddFav/ButtonAddFav';
+import { ButtonAddCart } from '../../elements/Buttons/ButtonAddCart/ButtonAddCart';
 
 type Props = {
   product: ProductType;
@@ -22,7 +23,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     category,
   } = product;
 
-  const details: Array <keyof ProductType> = ['screen', 'capacity', 'ram'];
+  const details: Array<keyof ProductType> = ['screen', 'capacity', 'ram'];
 
   return (
     <div
@@ -63,19 +64,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
         </Link>
         <div className="productCard__buttons">
-          <ButtonTexted
-            text="Add to cart"
-            textActive="Added to cart"
-            product={product}
-          />
+          <ButtonAddCart product={product} />
 
-          <ButtonIcon
-            type="event"
-            shape="heart"
-            dynamicClasses={['medium', 'light-border']}
-            product={product}
-            checkFav
-          />
+          <ButtonAddFav product={product} />
         </div>
       </div>
     </div>

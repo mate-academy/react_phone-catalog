@@ -39,6 +39,7 @@ export const selectedProductSlice = createSlice({
         state.selectedProduct = action.payload;
       })
       .addCase(fetchSelectedProduct.rejected, (state) => {
+        state.selectedProduct = null;
         state.isLoading = false;
         state.hasError = true;
       });

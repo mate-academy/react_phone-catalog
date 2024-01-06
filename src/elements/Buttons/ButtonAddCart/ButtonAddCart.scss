@@ -1,7 +1,6 @@
-@import './../../style/variables';
-@import './../../style/mixins';
+@import './../../../style/mixins';
 
-.buttonTexted {
+.buttonAddCart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,15 +34,8 @@
     @include hover(background-color, $main-bg-color);
   }
 
-  &--longer {
-    @include on-desktop {
-      width: 263px;
-    }
-  }
-
   &__text-active {
     color: $shadow-color;
     color: $secondary-accent-color;
   }
 }
-

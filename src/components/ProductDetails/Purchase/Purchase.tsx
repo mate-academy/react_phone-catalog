@@ -1,12 +1,13 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { DetailType } from '../../../helpers/types/DetailType';
 import { useAppSelector } from '../../../store/hooks';
-import { ButtonTexted } from '../../../elements/ButtonTexted/ButtonTexted';
 import {
   getPruductFromDetail,
 } from '../../../helpers/getFunctions/getProductFromDetail';
-import { ButtonIcon } from '../../../elements/ButtonIcon/ButtonIcon';
 import './Purchase.scss';
+import { ButtonAddFav } from '../../../elements/Buttons/ButtonAddFav/ButtonAddFav';
+import { ButtonAddCart } from '../../../elements/Buttons/ButtonAddCart/ButtonAddCart';
 
 type Props = {
   product: DetailType,
@@ -28,20 +29,9 @@ export const Purchase: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="purchase__wrapper purchase__wrapper--margin-top">
-        <ButtonTexted
-          text="Add to cart"
-          textActive="Added to cart"
-          width="longer"
-          product={getPruductFromDetail(products, id)}
-        />
+        <ButtonAddCart product={getPruductFromDetail(products, id)} />
 
-        <ButtonIcon
-          type="event"
-          shape="heart"
-          dynamicClasses={['medium']}
-          product={getPruductFromDetail(products, id)}
-          checkFav
-        />
+        <ButtonAddFav product={getPruductFromDetail(products, id)} />
       </div>
     </div>
   );

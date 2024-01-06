@@ -1,5 +1,6 @@
+/* eslint-disable max-len */
 import React from 'react';
-import { ButtonCircle } from '../../../elements/ButtonCircle/ButtonCircle';
+import { ButtonCircle } from '../../../elements/Buttons/ButtonCircle/ButtonCircle';
 import {
   getPruductFromDetail,
 } from '../../../helpers/getFunctions/getProductFromDetail';
@@ -19,8 +20,6 @@ export const Colors: React.FC<Props> = ({ product }) => {
     capacity,
     colorsAvailable: colors,
   } = product;
-
-  // console.log(product);
 
   return (
     <div className="colors">

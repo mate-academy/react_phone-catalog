@@ -5,21 +5,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  align-items: center;
   gap: 20px;
   border: 1px solid $shadow-color;
   width: 100%;
   padding-block: 10px;
+  padding-left: 5px;
 
   @include on-tablet {
+    padding-left: 24px;
     flex-direction: row;
     height: 128px;
-    gap: 50px;
     gap: 20px;
   }
 
   &__block {
-    // @extend %body-text;
-
     display: flex;
     align-items: center;
     gap: 5px;
@@ -73,6 +74,7 @@
 
   &__name {
     @extend %body-text;
+
     width: 100px;
 
     @include on-tablet {
@@ -96,5 +98,16 @@
 
   &__count {
     @extend %body-text;
+
+    width: 5px;
+    text-align: center;
+  }
+
+  &__close {
+    align-self: flex-end;
+
+    @include on-tablet {
+      align-self: auto;
+    }
   }
 }

@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 import { NavBar } from '../NavBar/NavBar';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
+import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 export const Footer: React.FC = () => {
-  const footerLinks = ['github', 'contacts', 'rigthts'];
+  const footerLinks = ['contacts', 'returns & refunds', 'rights'];
 
-  const handleClick = () => {
+  const goTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -24,10 +24,9 @@ export const Footer: React.FC = () => {
           <div className="footer__toTop">
             <p className="footer__p">Back to top</p>
 
-            <ButtonIcon
-              type="event"
+            <ButtonEvent
               shape="up"
-              onClick={handleClick}
+              onClick={goTop}
             />
           </div>
         </div>

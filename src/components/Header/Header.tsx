@@ -3,9 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 import { NavBar } from '../NavBar/NavBar';
 import { Search } from '../Search/Search';
-import { ButtonIcon } from '../../elements/ButtonIcon/ButtonIcon';
+import { ButtonLink } from '../../elements/Buttons/ButtonLink/ButtonLink';
 import { useAppSelector } from '../../store/hooks';
 import { Aside } from '../Aside/Aside';
+import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 export const Header: React.FC = () => {
   const cartedProducts = useAppSelector(state => state.cartedProducts);
@@ -13,9 +14,9 @@ export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const curPage = pathname.split('/')[1];
   const pages = 'phones'
-  || 'tablets'
-  || 'accessories'
-  || 'favorites';
+    || 'tablets'
+    || 'accessories'
+    || 'favorites';
   const shouldSearch = pathname.endsWith(pages);
 
   const headerLinks = ['home', 'phones', 'tablets', 'accessories'];
@@ -48,10 +49,8 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="header__icon">
-            <ButtonIcon
-              type="event"
+            <ButtonEvent
               shape="menu"
-              path="menu"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               dynamicClasses={['shadow', 'big']}
             />
@@ -64,10 +63,10 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="header__link">
-            <ButtonIcon
-              type="link"
+            <ButtonLink
               shape="heart"
               path="favourites"
+              nav
               dynamicClasses={['shadow', 'big']}
             />
 
@@ -79,10 +78,10 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="header__link">
-            <ButtonIcon
-              type="link"
+            <ButtonLink
               shape="cart"
               path="cart"
+              nav
               dynamicClasses={['shadow', 'big']}
             />
 

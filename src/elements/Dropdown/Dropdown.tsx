@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/getFunctions/getSearch';
 import { Sort } from '../../helpers/getFunctions/getSortedProducts';
 import './Dropdown.scss';
-import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 
 type Props = {
   title: string;
@@ -59,10 +58,11 @@ export const Dropdown: React.FC<Props> = ({
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="dropdown__option">{category}</span>
-        <ButtonIcon
-          type="event"
-          dynamicClasses={['no-border']}
-          shape={isOpen ? 'up' : 'down'}
+
+        <div className={classNames('dropdown__icon', {
+          'dropdown__icon--up': isOpen,
+          'dropdown__icon--down': !isOpen,
+        })}
         />
       </button>
 

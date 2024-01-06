@@ -19,11 +19,6 @@
     height: 100%;
     width: 1px;
 
-    // @include on-tablet {
-    //   height: 100%;
-    //   width: 1px;
-    // }
-
     @include on-desktop {
       height: 1px;
       width: 100%;

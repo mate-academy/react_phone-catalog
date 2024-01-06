@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { changeColorToHex } from '../../helpers/utils/changeColorToHex';
+import { changeColorToHex } from '../../../helpers/utils/changeColorToHex';
 import './ButtonCircle.scss';
 
 type Props = {

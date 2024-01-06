@@ -9,13 +9,6 @@
     color: $secondary-text-color;
   };
 
-  // &--hide {
-  //   display: none;
-  //   @include on-tablet {
-  //     display: block;
-  //   }
-  // }
-
   &__button {
     @extend %body-text;
 
@@ -59,6 +52,30 @@
       visibility: hidden;
     }
   };
+
+  &__icon {
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    margin: 12px;
+    
+    @include hover(transform, scale(1.1));
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--down {
+      background-image: url(./../../assets/icons/down.svg);
+    }
+
+    &--up {
+      background-image: url(./../../assets/icons/up.svg);
+    }
+  }
 
   &__item {
     padding-left: 12px;

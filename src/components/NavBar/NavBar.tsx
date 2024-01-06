@@ -12,6 +12,18 @@ type Props = {
   links: string[];
 };
 
+const getPath = (link: string) => {
+  if (link === 'home') {
+    return './';
+  }
+
+  if (link === 'returns & refunds') {
+    return '/returns';
+  }
+
+  return link;
+};
+
 export const NavBar: React.FC<Props> = ({ links }) => {
   return (
     <nav className="navBar">
@@ -19,7 +31,7 @@ export const NavBar: React.FC<Props> = ({ links }) => {
         {links.map(link => (
           <NavLink
             key={link}
-            to={link === 'home' ? '/' : link}
+            to={getPath(link)}
             className={getLinkNavClass}
           >
             {link}
