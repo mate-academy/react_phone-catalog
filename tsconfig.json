@@ -2,5 +2,9 @@
   "extends": "@mate-academy/students-ts-config",
   "include": [
     "src"
-  ]
+  ],
+  "compilerOptions": {
+    "target": "es2015",
+    "downlevelIteration": true
+  }
 }

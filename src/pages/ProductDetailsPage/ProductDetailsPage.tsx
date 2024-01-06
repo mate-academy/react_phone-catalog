@@ -131,6 +131,11 @@ export const ProductDetailsPage: React.FC = () => {
     fetchData();
   }, [setSuggestedProducts]);
 
+  const formattedId = upperPhoneId
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
   return (
     <div className="phones">
       <div className="path" data-cy="breadCrumbs">
@@ -138,7 +143,7 @@ export const ProductDetailsPage: React.FC = () => {
         <img src={arrowRight} alt="arrow_right" />
         <Link to="/phones" className="phones__prev-page">Phones</Link>
         <img src={arrowRight} alt="arrow_right" />
-        <h3>{upperPhoneId}</h3>
+        <h3>{formattedId}</h3>
       </div>
       <button
         type="button"
@@ -149,7 +154,9 @@ export const ProductDetailsPage: React.FC = () => {
         <img src={arrowLeft} alt="arrow_right" />
         <p>Back</p>
       </button>
-      <h1 className="phones__title phones__title--mb-40px">{upperPhoneId}</h1>
+      <h1 className="phones__title phones__title--mb-40px">
+        {formattedId}
+      </h1>
       {isLoading ? (
         <Loader />
       ) : (

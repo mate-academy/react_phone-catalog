@@ -86,7 +86,7 @@ export const SortDropdown: React.FC = () => {
               onClick={() => handleSelect(option)}
               className="dropdown__button dropdown__button--option"
               key={option.id}
-              params={{ sort: option.value }}
+              params={{ sort: option.value, page: '1' }}
             >
               {option.field}
             </SearchLink>

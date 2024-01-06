@@ -30,6 +30,7 @@ export const Header: React.FC = () => {
       const newParams = new URLSearchParams(prev.toString());
 
       newParams.set('query', query);
+      // newParams.delete('page');
 
       if (!newParams.get('query')) {
         newParams.delete('query');
@@ -40,8 +41,13 @@ export const Header: React.FC = () => {
   }, [query, setSearchParams]);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log('Filtering by', event.target.value);
+    // setSearchParams(prev => {
+    //   const newParams = new URLSearchParams(prev.toString());
 
+    //   newParams.delete('page');
+
+    //   return newParams;
+    // });
     setTimeout(() => {}, 1000);
     setQuery(event.target.value);
   };

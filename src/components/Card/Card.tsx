@@ -1,4 +1,5 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { Phone } from '../../Types/Phone';
 import { useProducts } from '../../helpers/CatalogContext/CatalogContext';
@@ -9,10 +10,11 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ card, discount = true }) => {
-  const location = useLocation();
-  const path = location.pathname.includes('phones')
-    ? card.phoneId
-    : `phones/${card.phoneId}`;
+  // const location = useLocation();
+  // const path = location.pathname.includes('phones')
+  //   ? card.phoneId
+  //   : `phones/${card.phoneId}`;
+  const path = `/phones/${card.phoneId}`;
 
   const {
     cartPhones,

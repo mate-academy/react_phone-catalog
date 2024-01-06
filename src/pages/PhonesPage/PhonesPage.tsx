@@ -22,33 +22,47 @@ import { SearchResult } from '../../components/SearchResult/SearchResult';
 
 export const PhonesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [isLoading, setIsLoading] = useState(true);
   const [phones, setPhones] = useState<Phone[]>([]);
   const sort = searchParams.get('sort') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const [preparedPhones, setPreparedPhones] = useState(phones);
   const page = +(searchParams.get('page') || 1);
-  // const [searchPage, setSearchPage] = useState(page);
 
   const { query } = useProducts();
   const [searchingPhones, setSearchingPhones] = useState(preparedPhones);
 
+  const prevButton = document.querySelector('.previous');
+
+  prevButton?.replaceWith(prevButton.cloneNode(true));
+
+  const handlePageClick = (event: { selected: number; }) => {
+    const newPage = event.selected + 1;
+
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev.toString());
+
+      newParams.set('page', newPage.toString());
+
+      return newParams;
+    });
+  };
+
+  useEffect(() => {
+    const currPage = +(searchParams.get('page') || 1);
+    const linkPrevButton = prevButton?.querySelector('a');
+
+    if (currPage > 1) {
+      if (linkPrevButton) {
+        linkPrevButton.tabIndex = 0;
+      }
+      // prevButton?.classList.remove('disabled');
+    }
+  }, [searchParams, prevButton]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
-
-  // useEffect(() => {
-  //   const newPage = 1;
-
-  //   setSearchParams(prev => {
-  //     const newParams = new URLSearchParams(prev.toString());
-
-  //     newParams.set('page', newPage.toString());
-
-  //     return newParams;
-  //   });
-  // }, [setSearchParams, sort, itemsPerPage]);
 
   useEffect(() => {
     const lowerQuery = query.toLowerCase();
@@ -112,17 +126,21 @@ export const PhonesPage: React.FC = () => {
   const currentItems = preparedPhones.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(phones.length / itemsPerPage);
 
-  const handlePageClick = (event: { selected: number; }) => {
-    const newPage = event.selected + 1;
+  useEffect(() => {
+    const ul = document.querySelector('ul[role="navigation"]');
+    const listItems = ul?.querySelectorAll('li');
+    const paramsPage = searchParams.get('page');
 
-    setSearchParams(prev => {
-      const newParams = new URLSearchParams(prev.toString());
+    listItems?.forEach(li => {
+      if (li.classList.contains('selected') && li.innerText !== paramsPage) {
+        li.classList.remove('selected');
+      }
 
-      newParams.set('page', newPage.toString());
-
-      return newParams;
+      if (!li.classList.contains('selected') && li.innerText === paramsPage) {
+        li.classList.add('selected');
+      }
     });
-  };
+  }, [searchParams]);
 
   return (
     <>
