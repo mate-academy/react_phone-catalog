@@ -1,24 +1,46 @@
 import './search.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { getSearchWith } from '../../helpers/searchHelper';
 import closeIcon from '../../Images/Icons/Close.svg';
 import searchIcon from '../../Images/Icons/Search.svg';
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('query') || '');
   const location = useLocation();
   const { pathname } = location;
   const searchField = pathname.slice(1);
 
-  const query = searchParams.get('query') || '';
+  useEffect(() => {
+    const currentQuery = searchParams.get('query') || '';
 
-  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams(getSearchWith(searchParams,
-      { query: event.target.value || null }));
+    setQuery(currentQuery);
+    const debounceTimer = setTimeout(() => {
+      setSearchParams(query);
+    }, 1000);
+
+    return () => clearTimeout(debounceTimer);
+  }, []);
+
+  const clearSearch = () => {
+    setQuery('');
+    setSearchParams(getSearchWith(searchParams, {
+      query: null,
+    }));
   };
 
-  const isClearSearch = () => {
-    setSearchParams('');
+  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.value) {
+      clearSearch();
+    } else {
+      setQuery(event.target.value);
+      setSearchParams(getSearchWith(searchParams,
+        {
+          query: event.target.value,
+          page: '1',
+        }));
+    }
   };
 
   return (
@@ -36,7 +58,7 @@ export const Search = () => {
       <button
         type="button"
         className="search__button"
-        onClick={isClearSearch}
+        onClick={clearSearch}
         data-cy="searchDelete"
       >
         {query ? (

@@ -1,6 +1,6 @@
 import './productList.scss';
 import { useSearchParams } from 'react-router-dom';
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { getSortedProducts } from '../../helpers/getSortedProducts';
@@ -25,19 +25,9 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   const query = searchParams.get('query') || '';
 
-  const [debounceQuery, setDebounceQuery] = useState(query);
-
-  useEffect(() => {
-    const debounceTimer = setTimeout(() => {
-      setDebounceQuery(query);
-    }, 500);
-
-    return () => clearTimeout(debounceTimer);
-  }, [query]);
-
   const filteredProducts = useMemo(() => (
-    filterProducts(products, debounceQuery)
-  ), [products, debounceQuery]);
+    filterProducts(products, query)
+  ), [products, query]);
 
   const sortedProducts: Product[] = useMemo(() => (
     getSortedProducts(filteredProducts, sortBy)
