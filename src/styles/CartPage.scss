@@ -5,16 +5,32 @@
     grid-column: span 16;
   }
 
-  &__item--half {
+  &__item--first-half {
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 460px;
     gap: 16px;
+    grid-column: span 10;
+  }
+
+  &__item--second-half {
+    // display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    // grid-template-columns: 32px, 32px, 32px, 32px, 1fr;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 460px;
+    gap: 12px;
+    grid-column: span 6;
   }
 
   &__item {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-auto-flow: column;
     margin-bottom: 16px;
     padding: 24px;
     justify-content: space-between;
@@ -54,6 +70,7 @@
 
   &__minus {
     background-image: url('../images/minus-primary.svg');
+    grid-column: 2 / 3;
 
     &--disabled {
       background-image: url('../images/minus-secondary.svg');
@@ -64,11 +81,22 @@
     }
   }
 
+  &__quantity {
+    grid-column: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+  }
+
   &__plus {
     background-image: url('../images/plus.svg');
+    grid-column: 4 / 5;
   }
 
   &__phone-price {
+    grid-column: 5 / 6;
+
     @include h2;
   }
 

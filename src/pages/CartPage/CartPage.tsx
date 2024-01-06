@@ -77,7 +77,7 @@ export const CartPage: React.FC = () => {
 
                 return (
                   <li className="cart__item" key={phone.id}>
-                    <div className="cart__item--half">
+                    <div className="cart__item--first-half">
                       <button
                         type="button"
                         className="cart__button cart__delete"
@@ -92,7 +92,7 @@ export const CartPage: React.FC = () => {
                       />
                       <div>{phone.product.name}</div>
                     </div>
-                    <div className="cart__item--half">
+                    <div className="cart__item--second-half">
                       <button
                         type="button"
                         aria-label="decrease"
@@ -101,7 +101,7 @@ export const CartPage: React.FC = () => {
                         })}
                         onClick={() => subtractPhone(phone.id)}
                       />
-                      <div>{phone.quantity}</div>
+                      <div className="cart__quantity">{phone.quantity}</div>
                       <button
                         onClick={() => addPhone(phone.id)}
                         type="button"

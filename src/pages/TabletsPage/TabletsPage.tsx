@@ -30,50 +30,53 @@ export const TabletsPage: React.FC = () => {
     fetchData();
   }, [setTablets]);
 
-  const { query } = useProducts();
+  const { appliedQuery } = useProducts();
   const [searchingPhones, setSearchingPhones] = useState(tablets);
 
   useEffect(() => {
-    const lowerQuery = query.toLowerCase();
+    const lowerQuery = appliedQuery.toLowerCase();
 
     const searching = tablets.filter(
       i => i.name.toLowerCase().includes(lowerQuery),
     );
 
     setSearchingPhones(searching);
-  }, [query, tablets]);
+  }, [appliedQuery, tablets]);
 
   return (
-    <>
-      {query ? (
-        <SearchResult results={searchingPhones} />
-      ) : (
-        <div className="tablets">
-          <div className="path">
-            <img src={homeImage} alt="home_icon" />
-            <img src={arrowRight} alt="arrow_right" />
-            <h3>Tablets</h3>
-          </div>
-          <h1 className="tablets__header">Tablets</h1>
-
-          <div>
-            {isLoading ? (
-              <Loader />
-            ) : (
-              <div className="phones-container">
-                {tablets.map(tablet => (
-                  <Card card={tablet} discount key={tablet.id} />
-                ))}
+    <div className="tablets">
+      <div className="path">
+        <img src={homeImage} alt="home_icon" />
+        <img src={arrowRight} alt="arrow_right" />
+        <h3>Tablets</h3>
+      </div>
+      <>
+        {appliedQuery ? (
+          <SearchResult results={searchingPhones} />
+        ) : (
+          <>
+            <h1 className="tablets__header">Tablets</h1>
+            <div className="tablets">
+              <div>
+                {isLoading ? (
+                  <Loader />
+                ) : (
+                  <div className="phones-container">
+                    {tablets.map(tablet => (
+                      <Card card={tablet} discount key={tablet.id} />
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-          {!isLoading && tablets.length === 0 && (
-            <div>
-              <h1>There are no tablets yet</h1>
+              {!isLoading && tablets.length === 0 && (
+                <div>
+                  <h1>There are no tablets yet</h1>
+                </div>
+              )}
             </div>
-          )}
-        </div>
-      )}
-    </>
+          </>
+        )}
+      </>
+    </div>
   );
 };

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Link, useSearchParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import {
   client,
@@ -27,18 +27,12 @@ export const PhonesPage: React.FC = () => {
   const sort = searchParams.get('sort') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const [preparedPhones, setPreparedPhones] = useState(phones);
-  const page = +(searchParams.get('page') || 0);
-  const [currPage, setCurrPage] = useState(0);
+  const page = +(searchParams.get('page') || 1);
 
-  const { query } = useProducts();
-  const [searchingPhones, setSearchingPhones] = useState(preparedPhones);
+  const { appliedQuery } = useProducts();
 
   const handlePageClick = (event: { selected: number; }) => {
     const newPage = event.selected + 1;
-
-    console.log('selected page', event.selected);
-
-    setCurrPage(event.selected);
 
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev.toString());
@@ -49,40 +43,17 @@ export const PhonesPage: React.FC = () => {
     });
   };
 
-  // const prevButton = document.querySelector('.previous');
-
-  // prevButton?.replaceWith(prevButton.cloneNode(true));
-
-  // const [isPageReloaded, setIsPageReloaded] = useState(false);
-
-  // useEffect(() => {
-  //   const linkPrevButton = prevButton?.querySelector('a');
-
-  //   if (linkPrevButton && page > 1) {
-  //     linkPrevButton.tabIndex = 0;
-  //     prevButton?.classList.remove('disabled');
-  //     linkPrevButton.ariaDisabled = 'false';
-
-  //     if (!isPageReloaded) {
-  //       setIsPageReloaded(true);
-  //       window.location.reload();
-  //     }
-  //   }
-  // }, [searchParams, prevButton, page, isPageReloaded]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
 
-  useEffect(() => {
-    const lowerQuery = query.toLowerCase();
+  const searchingPhones = useMemo(() => {
+    return phones.filter(i => {
+      const lowerQuery = appliedQuery.toLowerCase();
 
-    const searching = preparedPhones.filter(
-      i => i.name.toLowerCase().includes(lowerQuery),
-    );
-
-    setSearchingPhones(searching);
-  }, [query, preparedPhones]);
+      return i.name.toLowerCase().includes(lowerQuery);
+    });
+  }, [appliedQuery, phones]);
 
   useEffect(() => {
     const getSorted = () => {
@@ -130,8 +101,7 @@ export const PhonesPage: React.FC = () => {
     fetchData();
   }, [setPhones]);
 
-  // const itemOffset = (page - 1) * itemsPerPage;
-  const itemOffset = (currPage) * itemsPerPage;
+  const itemOffset = (page - 1) * itemsPerPage;
 
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = preparedPhones.slice(itemOffset, endOffset);
@@ -153,52 +123,58 @@ export const PhonesPage: React.FC = () => {
     });
   }, [searchParams]);
 
-  console.log(currPage);
-
   return (
     <>
-      {query ? (
+      <div className="phones">
+        <div className="path" data-cy="breadCrumbs">
+          <Link to="/" className="go-home" />
+          <img src={arrowRight} alt="arrow_right" />
+          <h3>Phones</h3>
+        </div>
+        <>
+          {appliedQuery ? (
+            <SearchResult results={searchingPhones} />
+          ) : (
+            <>
+              <h1 className="phones__title">Mobile phones</h1>
+              <p className="phones__paragraph">{`${phones.length} models`}</p>
+              <div className="dropdowns-container">
+                <SortDropdown />
+                <ItemsPerPageDropdown
+                  currentAmount={itemsPerPage}
+                  length={phones.length}
+                />
+              </div>
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <div className="phones-container">
+                  {currentItems.map(phone => (
+                    <Card card={phone} discount key={phone.id} />
+                  ))}
+                </div>
+              )}
+              {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel=""
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel=""
+                  renderOnZeroPageCount={null}
+                  forcePage={page - 1}
+                />
+              )}
+            </>
+          )}
+        </>
+      </div>
+      {/* {appliedQuery ? (
         <SearchResult results={searchingPhones} />
       ) : (
-        <div className="phones">
-          <div className="path" data-cy="breadCrumbs">
-            <Link to="/" className="go-home" />
-            <img src={arrowRight} alt="arrow_right" />
-            <h3>Phones</h3>
-          </div>
-          <h1 className="phones__title">Mobile phones</h1>
-          <p className="phones__paragraph">{`${phones.length} models`}</p>
-          <div className="dropdowns-container">
-            <SortDropdown setCurrPage={setCurrPage} />
-            <ItemsPerPageDropdown
-              currentAmount={itemsPerPage}
-              length={phones.length}
-            />
-          </div>
-          {isLoading ? (
-            <Loader />
-          ) : (
-            <div className="phones-container">
-              {currentItems.map(phone => (
-                <Card card={phone} discount key={phone.id} />
-              ))}
-            </div>
-          )}
-          {(itemsPerPage >= 4 && itemsPerPage < phones.length) && (
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel=""
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={5}
-              pageCount={pageCount}
-              previousLabel=""
-              renderOnZeroPageCount={null}
-              // initialPage={page - 1}
-              forcePage={currPage}
-            />
-          )}
-        </div>
-      )}
+
+      )} */}
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import logo from '../../images/logo.svg';
@@ -13,6 +13,19 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => (
   })
 );
 
+// eslint-disable-next-line
+function debounce(callback: Function, delay: number) {
+  let timerId = 0;
+
+  return (...args: any) => {
+    window.clearTimeout(timerId);
+
+    timerId = window.setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+}
+
 export const Header: React.FC = () => {
   const location = useLocation();
   const {
@@ -20,17 +33,25 @@ export const Header: React.FC = () => {
     favourites,
     query,
     setQuery,
+    setAppliedQuery,
   } = useProducts();
   const page = location.pathname.replace('/', '');
 
   const [, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
+  const applyQuery = useCallback(
+    debounce(setAppliedQuery, 1000),
+    [],
+  );
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+    applyQuery(event.target.value);
+
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev.toString());
 
-      newParams.set('query', query);
-      // newParams.delete('page');
+      newParams.set('query', event.target.value);
 
       if (!newParams.get('query')) {
         newParams.delete('query');
@@ -38,18 +59,18 @@ export const Header: React.FC = () => {
 
       return newParams;
     });
-  }, [query, setSearchParams]);
+  };
 
-  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // setSearchParams(prev => {
-    //   const newParams = new URLSearchParams(prev.toString());
+  const resetSearchParams = () => {
+    setQuery('');
+    setAppliedQuery('');
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev.toString());
 
-    //   newParams.delete('page');
+      newParams.delete('query');
 
-    //   return newParams;
-    // });
-    setTimeout(() => {}, 1000);
-    setQuery(event.target.value);
+      return newParams;
+    });
   };
 
   return (
@@ -61,18 +82,38 @@ export const Header: React.FC = () => {
         {!location.pathname.includes('cart') && (
           <ul className="list">
             <li className="list__item">
-              <NavLink className={getLinkClass} to="/">
+              <NavLink
+                className={getLinkClass}
+                to="/"
+                onClick={resetSearchParams}
+              >
                 Home
               </NavLink>
             </li>
             <li className="list__item">
-              <NavLink className={getLinkClass} to="/phones">Phones</NavLink>
+              <NavLink
+                className={getLinkClass}
+                to="/phones"
+                onClick={resetSearchParams}
+              >
+                Phones
+              </NavLink>
             </li>
             <li className="list__item">
-              <NavLink className={getLinkClass} to="/tablets">Tablets</NavLink>
+              <NavLink
+                className={getLinkClass}
+                to="/tablets"
+                onClick={resetSearchParams}
+              >
+                Tablets
+              </NavLink>
             </li>
             <li className="list__item">
-              <NavLink className={getLinkClass} to="/accessories">
+              <NavLink
+                className={getLinkClass}
+                to="/accessories"
+                onClick={resetSearchParams}
+              >
                 Accessories
               </NavLink>
             </li>
@@ -83,31 +124,32 @@ export const Header: React.FC = () => {
         {(page === 'favourites'
           || page === 'phones'
           || page === 'tablets'
-          || page === 'accessories') && (
-          <label
-            htmlFor="input"
-            className="top-bar__option top-bar__input-container"
-          >
-            <input
-              id="input"
-              className="top-bar__input"
-              type="text"
-              placeholder={`Search in ${page}...`}
-              value={query}
-              onChange={(event) => handleQueryChange(event)}
-            />
-            {query ? (
-              <button
-                className="top-bar__clear-query"
-                type="button"
-                onClick={() => setQuery('')}
-                aria-label="clear-query"
+          || page === 'accessories')
+          && (
+            <label
+              htmlFor="input"
+              className="top-bar__option top-bar__input-container"
+            >
+              <input
+                id="input"
+                className="top-bar__input"
+                type="text"
+                placeholder={`Search in ${page}...`}
+                value={query}
+                onChange={(event) => handleQueryChange(event)}
               />
-            ) : (
-              <img src={magnifier} alt="magnifier-icon" />
-            )}
-          </label>
-        )}
+              {query ? (
+                <button
+                  className="top-bar__clear-query"
+                  type="button"
+                  onClick={resetSearchParams}
+                  aria-label="clear-query"
+                />
+              ) : (
+                <img src={magnifier} alt="magnifier-icon" />
+              )}
+            </label>
+          )}
         {!location.pathname.includes('cart') && (
           <NavLink
             className={classNames('top-bar__option', {

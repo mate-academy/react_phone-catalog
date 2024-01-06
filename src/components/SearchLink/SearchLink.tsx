@@ -3,11 +3,13 @@ import { getSearchWith, SearchParams } from '../../helpers/utils/seacrhHelper';
 
 type Props = Omit<LinkProps, 'to'> & {
   params: SearchParams,
+  // getLinkClass: string,
 };
 
 export const SearchLink: React.FC<Props> = ({
   children,
   params,
+  // getLinkClass,
   ...props
 }) => {
   const [searchParams] = useSearchParams();

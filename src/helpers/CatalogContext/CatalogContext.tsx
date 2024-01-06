@@ -14,6 +14,8 @@ interface ICatalogContext {
   setFavourites: (newFavourites: Phone[]) => void,
   query: string,
   setQuery: (newQuery: string) => void,
+  appliedQuery: string,
+  setAppliedQuery: (newAppliedQuery: string) => void,
 }
 
 export const CatalogContext = React.createContext<ICatalogContext>({
@@ -27,6 +29,8 @@ export const CatalogContext = React.createContext<ICatalogContext>({
   setFavourites: () => { },
   query: '',
   setQuery: () => { },
+  appliedQuery: '',
+  setAppliedQuery: () => { },
 });
 
 export const useProducts
@@ -44,6 +48,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     'favourites', [],
   );
   const [query, setQuery] = useState('');
+  const [appliedQuery, setAppliedQuery] = useState('');
 
   const value = useMemo(() => ({
     hotPricePhones,
@@ -56,6 +61,8 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     setFavourites,
     query,
     setQuery,
+    appliedQuery,
+    setAppliedQuery,
   }), [
     hotPricePhones,
     newPhones,
@@ -65,6 +72,8 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     setFavourites,
     query,
     setQuery,
+    appliedQuery,
+    setAppliedQuery,
   ]);
 
   return (

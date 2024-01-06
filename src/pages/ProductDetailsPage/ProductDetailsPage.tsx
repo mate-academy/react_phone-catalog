@@ -82,6 +82,88 @@ export const ProductDetailsPage: React.FC = () => {
     'Cell',
   ];
 
+  let phoneColor = phone?.color;
+  const phoneCapacity = phone?.capacity.replace('GB', ' GB');
+
+  const colors = phone?.colorsAvailable.map(i => {
+    if (i === 'spacegray') {
+      phoneColor = '#4c4c4c';
+
+      return '#4c4c4c';
+    }
+
+    if (i === 'midnightgreen') {
+      phoneColor = '#5f7170';
+
+      return '#5f7170';
+    }
+
+    if (i === 'gold') {
+      phoneColor = '#fcdbc1';
+
+      return '#fcdbc1';
+    }
+
+    if (i === 'silver') {
+      phoneColor = '#f5f5f0';
+
+      return '#f5f5f0';
+    }
+
+    if (i === 'white') {
+      phoneColor = '#f0f0f0';
+
+      return '#f0f0f0';
+    }
+
+    if (i === 'red') {
+      phoneColor = '#ba0c2e';
+
+      return '#ba0c2e';
+    }
+
+    if (i === 'green') {
+      phoneColor = '#aee1cd';
+
+      return '#aee1cd';
+    }
+
+    if (i === 'black') {
+      phoneColor = '#201d24';
+
+      return '#201d24';
+    }
+
+    if (i === 'purple') {
+      phoneColor = '#b8afe6';
+
+      return '#b8afe6';
+    }
+
+    if (i === 'yellow') {
+      phoneColor = '#ffe681';
+
+      return '#ffe681';
+    }
+
+    if (i === 'rosegold') {
+      phoneColor = '#fad7bd';
+
+      return '#fad7bd';
+    }
+
+    if (i === 'coral') {
+      phoneColor = '#ee7762';
+
+      return '#ee7762';
+    }
+
+    return i;
+  });
+
+  const capacities = phone?.capacityAvailable
+    .map(i => i.replace('GB', ' GB'));
+
   const techSpecsValues = [
     phone?.screen,
     phone?.resolution,
@@ -192,6 +274,39 @@ export const ProductDetailsPage: React.FC = () => {
                   </div>
                 </div>
                 <aside className="aside">
+                  <div className="colors">
+                    <h3 className="colors__title">Avaliable colors</h3>
+                    <ul className="colors__list">
+                      {colors?.map(color => (
+                        <li
+                          className={classNames('colors__item', {
+                            colors__selected: phoneColor === color,
+                            colors__disabled: phoneColor !== color,
+                          })}
+                        >
+                          <div
+                            className="colors__color"
+                            style={{ backgroundColor: `${color}` }}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="capacity colors">
+                    <h3 className="colors__title">Select capacity</h3>
+                    <ul className="colors__list">
+                      {capacities?.map(capacity => (
+                        <li
+                          className={classNames('capacity__item', {
+                            capacity__selected: capacity === phoneCapacity,
+                            capacity__disabled: capacity !== phoneCapacity,
+                          })}
+                        >
+                          {capacity}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                   <div className="card__price aside__price">
                     {phone?.priceDiscount ? (
                       <>
