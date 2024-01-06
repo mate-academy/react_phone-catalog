@@ -27,17 +27,18 @@ export const PhonesPage: React.FC = () => {
   const sort = searchParams.get('sort') || '';
   const itemsPerPage = +(searchParams.get('perPage') || 16);
   const [preparedPhones, setPreparedPhones] = useState(phones);
-  const page = +(searchParams.get('page') || 1);
+  const page = +(searchParams.get('page') || 0);
+  const [currPage, setCurrPage] = useState(0);
 
   const { query } = useProducts();
   const [searchingPhones, setSearchingPhones] = useState(preparedPhones);
 
-  const prevButton = document.querySelector('.previous');
-
-  prevButton?.replaceWith(prevButton.cloneNode(true));
-
   const handlePageClick = (event: { selected: number; }) => {
     const newPage = event.selected + 1;
+
+    console.log('selected page', event.selected);
+
+    setCurrPage(event.selected);
 
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev.toString());
@@ -48,17 +49,26 @@ export const PhonesPage: React.FC = () => {
     });
   };
 
-  useEffect(() => {
-    const currPage = +(searchParams.get('page') || 1);
-    const linkPrevButton = prevButton?.querySelector('a');
+  // const prevButton = document.querySelector('.previous');
 
-    if (currPage > 1) {
-      if (linkPrevButton) {
-        linkPrevButton.tabIndex = 0;
-      }
-      // prevButton?.classList.remove('disabled');
-    }
-  }, [searchParams, prevButton]);
+  // prevButton?.replaceWith(prevButton.cloneNode(true));
+
+  // const [isPageReloaded, setIsPageReloaded] = useState(false);
+
+  // useEffect(() => {
+  //   const linkPrevButton = prevButton?.querySelector('a');
+
+  //   if (linkPrevButton && page > 1) {
+  //     linkPrevButton.tabIndex = 0;
+  //     prevButton?.classList.remove('disabled');
+  //     linkPrevButton.ariaDisabled = 'false';
+
+  //     if (!isPageReloaded) {
+  //       setIsPageReloaded(true);
+  //       window.location.reload();
+  //     }
+  //   }
+  // }, [searchParams, prevButton, page, isPageReloaded]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -120,7 +130,8 @@ export const PhonesPage: React.FC = () => {
     fetchData();
   }, [setPhones]);
 
-  const itemOffset = (page - 1) * itemsPerPage;
+  // const itemOffset = (page - 1) * itemsPerPage;
+  const itemOffset = (currPage) * itemsPerPage;
 
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = preparedPhones.slice(itemOffset, endOffset);
@@ -142,6 +153,8 @@ export const PhonesPage: React.FC = () => {
     });
   }, [searchParams]);
 
+  console.log(currPage);
+
   return (
     <>
       {query ? (
@@ -156,7 +169,7 @@ export const PhonesPage: React.FC = () => {
           <h1 className="phones__title">Mobile phones</h1>
           <p className="phones__paragraph">{`${phones.length} models`}</p>
           <div className="dropdowns-container">
-            <SortDropdown />
+            <SortDropdown setCurrPage={setCurrPage} />
             <ItemsPerPageDropdown
               currentAmount={itemsPerPage}
               length={phones.length}
@@ -180,7 +193,8 @@ export const PhonesPage: React.FC = () => {
               pageCount={pageCount}
               previousLabel=""
               renderOnZeroPageCount={null}
-              initialPage={page - 1}
+              // initialPage={page - 1}
+              forcePage={currPage}
             />
           )}
         </div>

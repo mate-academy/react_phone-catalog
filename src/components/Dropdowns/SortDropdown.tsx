@@ -10,13 +10,19 @@ type Option = {
   value: SortField,
 };
 
+type Props = {
+  setCurrPage: (newPage: number) => void
+};
+
 export enum SortField {
   AGE = 'age',
   NAME = 'name',
   PRICE = 'price',
 }
 
-export const SortDropdown: React.FC = () => {
+export const SortDropdown: React.FC<Props> = ({
+  setCurrPage = () => {},
+}) => {
   const [isListVisible, setIsListVisible] = useState(false);
   const dropdownRef = useBlur(() => setIsListVisible(false));
   const [optionField, setOptionField] = useState('Newest');
@@ -50,6 +56,8 @@ export const SortDropdown: React.FC = () => {
   ];
 
   const handleSelect = (option: Option) => {
+    setCurrPage(1);
+
     if (option.value === searchParams.get('sort')) {
       handleClick();
 
