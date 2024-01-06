@@ -8,5 +8,5 @@ export const getImgUrl = (product: DetailType) => {
 };
 
 export const getProductImages = (length: number, part: string) => {
-  return Array.from(Array(length).keys()).map(num => `../api${part}/0${num}.jpg`);
+  return Array.from(Array(length).keys()).map(num => `api${part}/0${num}.jpg`);
 };

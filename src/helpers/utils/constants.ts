@@ -24,15 +24,15 @@ export const addresses = [
 ];
 
 export const banners = [
-  './../img/banners/banner-phones.png',
-  './../img/banners/banner-tablets.png',
-  './../img/banners/banner-accessories.png',
+  './img/banners/banner-phones.png',
+  './img/banners/banner-tablets.png',
+  './img/banners/banner-accessories.png',
 ];
 
 export const categoryImages = [
-  './../img/categories/category-phones.png',
-  './../img/categories/category-tablets.png',
-  './../img/categories/category-accessories.png',
+  './img/categories/category-phones.png',
+  './img/categories/category-tablets.png',
+  './img/categories/category-accessories.png',
 ];
 
 export const pageSortOptions = {

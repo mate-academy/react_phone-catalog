@@ -26,7 +26,8 @@ export async function getHotPriceProducts() {
   return getProducts()
     .then(products => products
       .filter(product => hasDiscount(product))
-      .sort((a, b) => getDiscountAmount(b) - getDiscountAmount(a)));
+      .sort((a, b) => getDiscountAmount(b) - getDiscountAmount(a))
+      .slice(0, 8));
 }
 
 export async function getNewModelsProducts() {
