@@ -1,0 +1,74 @@
+@import "../../styles/utils/vars";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  &__nav {
+    padding: 20px 0 20px 24px;
+  }
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.header__actions {
+  display: flex;
+  box-shadow: 0 0 0 1px #e2e6e9;
+}
+
+.actions__block {
+  padding: 24px;
+  width: 64px;
+  height: 64px;
+  box-shadow: 1px 0 0 0 #e2e6e9;
+}
+
+.cart__icon {
+  height: 16px;
+  width: 16px;
+  background-image: url("../../assets/img/icons/cart.svg");
+}
+
+.favourites__icon {
+  height: 16px;
+  width: 16px;
+  background-image: url("../../assets/img/icons/favourites.svg");
+}
+
+.menu {
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    color: $gray_seconary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+
+    &:hover {
+      color: $gray_primary;
+    }
+  }
+}
+
+.activ-link {
+  color: $gray_primary;
+
+  &::after {
+    position: relative;
+    top: 24px;
+    display: block;
+    content: "";
+    background-color: $gray_primary;
+    height: 3px;
+  }
+}

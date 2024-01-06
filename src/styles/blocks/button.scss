@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary__button {
+  color: $white;
+  background-color: $gray_primary;
+}

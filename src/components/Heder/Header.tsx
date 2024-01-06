@@ -1,18 +1,20 @@
 import { NavLink } from 'react-router-dom';
+import './header.scss';
+import { Logo } from '../Logo';
 
 export const Header = () => {
   return (
     <header className="header">
       <div className="header__nav">
         <nav className="nav-bar">
-          <NavLink to="/" className="logo icon" />
+          <Logo />
           <ul className="menu__list">
             <li className="menu__item">
               <NavLink
                 to="/home"
                 className={(
                   { isActive },
-                ) => (isActive ? 'menu__link action-link' : 'menu__link')}
+                ) => (isActive ? 'menu__link activ-link' : 'menu__link')}
               >
                 Home
               </NavLink>
@@ -22,7 +24,7 @@ export const Header = () => {
                 to="/phones"
                 className={(
                   { isActive },
-                ) => (isActive ? 'menu__link action-link' : 'menu__link')}
+                ) => (isActive ? 'menu__link activ-link' : 'menu__link')}
               >
                 Phones
               </NavLink>
@@ -32,7 +34,7 @@ export const Header = () => {
                 to="/tablets"
                 className={(
                   { isActive },
-                ) => (isActive ? 'menu__link action-link' : 'menu__link')}
+                ) => (isActive ? 'menu__link activ-link' : 'menu__link')}
               >
                 Tablets
               </NavLink>
@@ -42,7 +44,7 @@ export const Header = () => {
                 to="/accessories"
                 className={(
                   { isActive },
-                ) => (isActive ? 'menu__link action-link' : 'menu__link')}
+                ) => (isActive ? 'menu__link activ-link' : 'menu__link')}
               >
                 Accessories
               </NavLink>

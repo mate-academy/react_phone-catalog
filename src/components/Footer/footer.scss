@@ -1,0 +1,53 @@
+@import "../../styles/utils/vars";
+
+.footer {
+  width: 100%;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &__container {
+    padding-top: 42px;
+    padding-bottom: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    color: $gray_seconary;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+
+    &:hover {
+      color: $gray_primary;
+    }
+  }
+}
+
+.back-to-top {
+  position: relative;
+  font-size: 12px;
+  font-weight: 600;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: -48px;
+    top: -8px;
+    border: 1px solid $gray_light;
+    background-image: url("../../assets/img/icons/arrow_button.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

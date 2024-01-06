@@ -1,0 +1,64 @@
+@import "../../styles/utils/vars";
+
+.slider {
+  margin-top: 40px;
+  margin-bottom: 70px;
+
+  &__field {
+    margin-bottom: 20px;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__poster {
+    width: 1040px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__button {
+    width: 32px;
+    border: 1px solid $gray_seconary;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .prev {
+    background-image: url("../../assets/img/icons/arrow-left.svg");
+  }
+
+  .next {
+    background-image: url("../../assets/img/icons/arrow-right.svg");
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__dot {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: $gray_light;
+
+    &--active {
+      background-color: $gray_primary;
+    }
+  }
+}
+
+.poster--1 {
+  background-image: url("../../assets/img/pages/home/slider/banner-phones.png");
+}
+
+.poster--2 {
+  background-image: url("../../assets/img/pages/home/slider/banner-tablets.png");
+}
+
+.poster--3 {
+  background-image: url("../../assets/img/pages/home/slider/banner-accessories.png");
+}
