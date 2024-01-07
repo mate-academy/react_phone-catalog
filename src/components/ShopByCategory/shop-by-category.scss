@@ -1,0 +1,53 @@
+@import "../../styles/utils/vars";
+
+.shop-by-category {
+  &__title {
+    margin-bottom: 24px;
+  }
+}
+
+.category {
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__image {
+    margin-bottom: 24px;
+    height: 368px;
+    width: 368px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__title {
+    color: $gray_primary;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__quantity {
+    color: $gray_seconary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
+
+.phones .category__image {
+  background-image: url("../../assets/img/pages/home/categories/mobile.jpg");
+}
+
+.tablets .category__image {
+  background-image: url("../../assets/img/pages/home/categories/tablets.jpg");
+}
+
+.accessories .category__image {
+  background-image: url("../../assets/img/pages/home/categories/accessories.jpg");
+}

@@ -10,7 +10,7 @@ type Props = {
 
 export const ProductCard:React.FC<Props> = ({ product }) => {
   const {
-    id,
+    itemId,
     fullPrice,
     price,
     screen,
@@ -20,7 +20,7 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
   } = product;
 
   return (
-    <Link className="product-card" to="/" key={id}>
+    <Link className="product-card" to={`/phones/${itemId}`}>
       <img src={`./${image}`} alt={product.name} className="product__image" />
       <p className="product__title">
         {product.name}

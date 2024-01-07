@@ -2,14 +2,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
-import './promo.scss';
+import './products-list.scss';
 
 type Props = {
   title: string,
   products: Product[],
 };
 
-export const Promo: React.FC<Props> = ({ title, products }) => {
+export const ProductsList: React.FC<Props> = ({ title, products }) => {
   return (
     <section className="promo page__section">
       <div className="promo__top">
@@ -25,13 +25,15 @@ export const Promo: React.FC<Props> = ({ title, products }) => {
           />
         </div>
       </div>
-      <div className="promo__screen">
+      <ul className="promo__screen" data-cy="cardsContainer">
         {products.map(product => (
-          <ProductCard
-            product={product}
-          />
+          <li className="product-list__item" key={product.id}>
+            <ProductCard
+              product={product}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

@@ -2,9 +2,8 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useState } from 'react';
-import { Promo } from '../../components/Promo';
+import { ProductsList } from '../../components/ProductsList';
 import { Slider } from '../../components/Slider';
-import './home-page.scss';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../services/getProducts';
 import { ShopByCategory } from '../../components/ShopByCategory';
@@ -29,12 +28,12 @@ export const HomePage = () => {
   return (
     <>
       <Slider />
-      <Promo
+      <ProductsList
         title="Hot price"
         products={products}
       />
       <ShopByCategory />
-      <Promo
+      <ProductsList
         title="Brand new models"
         products={products}
       />
