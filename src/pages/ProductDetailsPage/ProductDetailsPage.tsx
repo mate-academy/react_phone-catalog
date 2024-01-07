@@ -87,73 +87,97 @@ export const ProductDetailsPage: React.FC = () => {
 
   const colors = phone?.colorsAvailable.map(i => {
     if (i === 'spacegray') {
-      phoneColor = '#4c4c4c';
+      if (phoneColor === 'spacegray') {
+        phoneColor = '#4c4c4c';
+      }
 
       return '#4c4c4c';
     }
 
     if (i === 'midnightgreen') {
-      phoneColor = '#5f7170';
+      if (phoneColor === 'midnightgreen') {
+        phoneColor = '#5f7170';
+      }
 
       return '#5f7170';
     }
 
     if (i === 'gold') {
-      phoneColor = '#fcdbc1';
+      if (phoneColor === 'gold') {
+        phoneColor = '#fcdbc1';
+      }
 
       return '#fcdbc1';
     }
 
     if (i === 'silver') {
-      phoneColor = '#f5f5f0';
+      if (phoneColor === 'silver') {
+        phoneColor = '#f5f5f0';
+      }
 
       return '#f5f5f0';
     }
 
     if (i === 'white') {
-      phoneColor = '#f0f0f0';
+      if (phoneColor === 'white') {
+        phoneColor = '#f0f0f0';
+      }
 
       return '#f0f0f0';
     }
 
     if (i === 'red') {
-      phoneColor = '#ba0c2e';
+      if (phoneColor === 'red') {
+        phoneColor = '#ba0c2e';
+      }
 
       return '#ba0c2e';
     }
 
     if (i === 'green') {
-      phoneColor = '#aee1cd';
+      if (phoneColor === 'green') {
+        phoneColor = '#aee1cd';
+      }
 
       return '#aee1cd';
     }
 
     if (i === 'black') {
-      phoneColor = '#201d24';
+      if (phoneColor === 'black') {
+        phoneColor = '#201d24';
+      }
 
       return '#201d24';
     }
 
     if (i === 'purple') {
-      phoneColor = '#b8afe6';
+      if (phoneColor === 'purple') {
+        phoneColor = '#b8afe6';
+      }
 
       return '#b8afe6';
     }
 
     if (i === 'yellow') {
-      phoneColor = '#ffe681';
+      if (phoneColor === 'yellow') {
+        phoneColor = '#ffe681';
+      }
 
       return '#ffe681';
     }
 
     if (i === 'rosegold') {
-      phoneColor = '#fad7bd';
+      if (phoneColor === 'rosegold') {
+        phoneColor = '#fad7bd';
+      }
 
       return '#fad7bd';
     }
 
     if (i === 'coral') {
-      phoneColor = '#ee7762';
+      if (phoneColor === 'coral') {
+        phoneColor = '#ee7762';
+      }
 
       return '#ee7762';
     }
@@ -279,6 +303,7 @@ export const ProductDetailsPage: React.FC = () => {
                     <ul className="colors__list">
                       {colors?.map(color => (
                         <li
+                          key={color}
                           className={classNames('colors__item', {
                             colors__selected: phoneColor === color,
                             colors__disabled: phoneColor !== color,
@@ -297,6 +322,7 @@ export const ProductDetailsPage: React.FC = () => {
                     <ul className="colors__list">
                       {capacities?.map(capacity => (
                         <li
+                          key={capacity}
                           className={classNames('capacity__item', {
                             capacity__selected: capacity === phoneCapacity,
                             capacity__disabled: capacity !== phoneCapacity,

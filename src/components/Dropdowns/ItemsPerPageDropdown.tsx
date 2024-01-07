@@ -71,7 +71,7 @@ export const ItemsPerPageDropdown: React.FC<Props> = ({
               onClick={() => handleSelect(option.field)}
               className="dropdown__button dropdown__button--option"
               key={option.id}
-              params={{ perPage: option.value.toString() }}
+              params={{ perPage: option.value.toString(), page: '1' }}
             >
               {option.field}
             </SearchLink>

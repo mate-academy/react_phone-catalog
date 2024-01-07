@@ -121,7 +121,9 @@ export const CartPage: React.FC = () => {
                   className="cart__total"
                   data-cy="productQauntity"
                 >
-                  {`Total for ${totalAmount} items`}
+                  {totalAmount === 1
+                    ? `Total for ${totalAmount} item`
+                    : `Total for ${totalAmount} items`}
                 </div>
               </div>
               <div

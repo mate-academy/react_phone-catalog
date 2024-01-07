@@ -17,7 +17,7 @@ export const Category: React.FC = () => {
             />
           </NavLink>
           <h2 className="category__subtitle">Mobile phones</h2>
-          <p className="category__paragraph">71 modesl</p>
+          <p className="category__paragraph">71 models</p>
         </li>
         <li className="category__item">
           <NavLink className="category__link category__tablets" to="/tablets">
@@ -28,7 +28,7 @@ export const Category: React.FC = () => {
             />
           </NavLink>
           <h2 className="category__subtitle">Tablets</h2>
-          <p className="category__paragraph">0 modesl</p>
+          <p className="category__paragraph">0 model</p>
         </li>
         <li className="category__item">
           <NavLink
@@ -42,7 +42,7 @@ export const Category: React.FC = () => {
             />
           </NavLink>
           <h2 className="category__subtitle">Accessories</h2>
-          <p className="category__paragraph">0 modesl</p>
+          <p className="category__paragraph">0 model</p>
         </li>
       </ul>
     </div>
