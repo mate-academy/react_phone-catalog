@@ -1,19 +1,16 @@
 import { useLayoutEffect } from 'react';
 import { nanoid } from 'nanoid';
-import { counter, useModalStore } from '../../store/store';
+import { useModalStore } from '../../store/store';
 
 export const Modal: React.FC = () => {
   const { isOpen, setIsOpen } = useModalStore();
-  const { setCount } = counter();
 
   const handleToggleModal = () => {
-    setCount('clearCart');
     setIsOpen(!isOpen);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
-      setCount('clearCart');
       handleToggleModal();
     }
   };
@@ -27,10 +24,7 @@ export const Modal: React.FC = () => {
       {isOpen && (
         <section
           className="modal"
-          onClick={() => {
-            setCount('clearCart');
-            setIsOpen(!isOpen);
-          }}
+          onClick={() => setIsOpen(!isOpen)}
           onKeyDown={e => handleKeyPress(e)}
           role="button"
           tabIndex={0}

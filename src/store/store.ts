@@ -22,12 +22,6 @@ export const counter = create<Counter>((set) => ({
       return { ...state, cart: res };
     }
 
-    if (key === 'clearCart') {
-      localStorage.removeItem('cart');
-
-      return { ...state, cart: '' };
-    }
-
     return { ...state };
   }),
 }));
