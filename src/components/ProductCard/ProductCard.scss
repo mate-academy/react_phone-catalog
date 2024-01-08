@@ -31,7 +31,7 @@
   }
 
   .product-name {
-    font-family: "Mont-Regular", sans-serif;
+    font-family: Mont-Regular, sans-serif;
     min-height: 42px;
     font-size: 14px;
     line-height: 21px;
@@ -45,7 +45,7 @@
     margin-bottom: 16px;
 
     .old-price {
-      font-family: "Mont-Regular", sans-serif;
+      font-family: Mont-Regular, sans-serif;
       font-weight: 500;
       text-decoration: line-through;
       color: #89939a;
@@ -58,7 +58,7 @@
     list-style: none;
     padding: 0;
     margin-bottom: 16px;
-    font-family: "Mont-Regular", sans-serif;
+    font-family: Mont-Regular, sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 15.34px;
@@ -94,7 +94,7 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    font-family: "Mont-Regular", sans-serif;
+    font-family: Mont-Regular, sans-serif;
     font-size: 14px;
     letter-spacing: 0;
     line-height: 21px;
@@ -106,7 +106,7 @@
     }
 
     &--selected {
-      color: var(--Green-2, #27ae60);
+      color: var(--green-2, #27ae60);
       border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
       background: none;
       transition: border-color 1s;

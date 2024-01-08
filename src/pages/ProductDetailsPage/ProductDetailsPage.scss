@@ -29,7 +29,7 @@
 
     &__title {
       color: var(--gray-primary, #313237);
-      font-family: "Mont-Bold", sans-serif;
+      font-family: Mont-Bold, sans-serif;
       font-size: 22px;
       font-style: normal;
       font-weight: 700;
@@ -40,7 +40,7 @@
     .specs-list {
       list-style: none;
       padding: 0;
-      font-family: "Mont-Regular", sans-serif;
+      font-family: Mont-Regular, sans-serif;
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
@@ -189,7 +189,7 @@
         text-align: left;
         font-size: 12px;
         color: #89939a;
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         margin-bottom: 24px;
 
         &__box {
@@ -202,7 +202,7 @@
 
       .availableColors {
         color: var(--gray-secondary, #89939a);
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         font-size: 12px;
         font-style: normal;
         font-weight: 600;
@@ -236,13 +236,13 @@
         width: 100%;
         font-size: 14px;
         color: var(--gray-secondary, #89939a);
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         padding-top: 24px;
         margin-bottom: 24px;
 
         &__text {
           color: var(--gray-secondary, #89939a);
-          font-family: "Mont-Regular", sans-serif;
+          font-family: Mont-Regular, sans-serif;
           font-size: 12px;
           font-style: normal;
           font-weight: 600;
@@ -265,7 +265,7 @@
           color: var(--gray-primary, #313237);
           text-align: center;
           border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
-          font-family: "Mont-Regular", sans-serif;
+          font-family: Mont-Regular, sans-serif;
           font-size: 14px;
           font-style: normal;
           font-weight: 500;
@@ -285,7 +285,7 @@
       }
 
       .price {
-        font-family: "Mont-Bold", sans-serif;
+        font-family: Mont-Bold, sans-serif;
         font-size: 32px;
         font-style: normal;
         font-weight: 700;
@@ -298,7 +298,7 @@
         align-items: center;
 
         .old-price {
-          font-family: "Mont-Regular", sans-serif;
+          font-family: Mont-Regular, sans-serif;
           font-size: 22px;
           font-style: normal;
           font-weight: 500;
@@ -326,7 +326,7 @@
         border: none;
         padding: 0;
         cursor: pointer;
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         font-size: 14px;
         font-style: normal;
         font-weight: 600;
@@ -340,7 +340,7 @@
         }
 
         &--selected {
-          color: var(--Green-2, #27ae60);
+          color: var(--green-2, #27ae60);
           border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
           background: none;
           transition: border-color 1s;
@@ -380,7 +380,7 @@
         list-style: none;
         padding: 0;
         margin-bottom: 16px;
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         font-weight: 600;
         font-size: 12px;
         line-height: 15.34px;
@@ -404,7 +404,7 @@
 
     &__id {
       color: var(--gray-icons-placeholders, #b4bdc3);
-      font-family: "Mont-Regular", sans-serif;
+      font-family: Mont-Regular, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
@@ -427,7 +427,7 @@
 
     &__title {
       color: var(--gray-primary, #313237);
-      font-family: "Mont-Bold", sans-serif;
+      font-family: Mont-Bold, sans-serif;
       font-size: 22px;
       font-style: normal;
       font-weight: 700;
@@ -438,7 +438,7 @@
     .description {
       &__title {
         color: var(--gray-primary, #313237);
-        font-family: "Mont-SemiBold", sans-serif;
+        font-family: Mont-SemiBold, sans-serif;
         font-size: 20px;
         font-style: normal;
         font-weight: 600;
@@ -449,7 +449,7 @@
 
       &__text {
         color: #89939a;
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;

@@ -48,7 +48,7 @@
       a {
         text-decoration: none;
         text-transform: uppercase;
-        font-family: "Mont-Bold", sans-serif;
+        font-family: Mont-Bold, sans-serif;
         font-weight: bold;
         font-size: 12px;
         line-height: 11px;
@@ -104,7 +104,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      font-family: "Mont-SemiBold", sans-serif;
+      font-family: Mont-SemiBold, sans-serif;
       font-size: 12px;
       line-height: 15.34px;
       color: #89939a;
@@ -116,7 +116,7 @@
         color: #313237;
 
         .icon-container {
-          border: 1px solid var(--Gray-Primary, #313237);
+          border: 1px solid var(--gray-primary, #313237);
         }
       }
     }

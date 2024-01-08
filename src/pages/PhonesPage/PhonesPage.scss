@@ -81,7 +81,7 @@
       flex-shrink: 0;
       border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
       color: var(--gray-primary, #313237);
-      font-family: "Mont-Regular", sans-serif;
+      font-family: Mont-Regular, sans-serif;
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
@@ -92,7 +92,7 @@
 
     &__option {
       color: var(--gray-primary, #313237);
-      font-family: "Mont-Regular", sans-serif;
+      font-family: Mont-Regular, sans-serif;
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
@@ -107,7 +107,6 @@
         flex-direction: column;
         margin-bottom: 24px;
         width: 100%;
-
       }
 
       .col-form-label {
@@ -127,7 +126,7 @@
         flex-shrink: 0;
         border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
         color: var(--gray-primary, #313237);
-        font-family: "Mont-Regular", sans-serif;
+        font-family: Mont-Regular, sans-serif;
         font-size: 14px;
         font-style: normal;
         font-weight: 600;
@@ -137,7 +136,7 @@
 
         &__option {
           color: var(--gray-primary, #313237);
-          font-family: "Mont-Regular", sans-serif;
+          font-family: Mont-Regular, sans-serif;
           font-size: 14px;
           font-style: normal;
           font-weight: 600;
