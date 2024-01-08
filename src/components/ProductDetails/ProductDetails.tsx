@@ -84,7 +84,10 @@ export const ProductDetails: React.FC = () => {
   const findProductById = products.find(currentProduct => currentProduct.phoneId === id);
 
   return (
-    <section className="details">
+    <section
+      className="details"
+      data-cy="productDescription"
+    >
       <div className="container">
         {isLoading && !isError ? (
           <Loader />

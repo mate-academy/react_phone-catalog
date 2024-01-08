@@ -47,6 +47,7 @@ export const SearchField: React.FC = () => {
       <button
         type="button"
         className="searchField__button"
+        data-cy="searchDelete"
         onClick={handleOpenClose}
       >
         <span

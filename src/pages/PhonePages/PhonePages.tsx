@@ -165,7 +165,10 @@ export const PhonePages: React.FC = () => {
   }, [searchParams]);
 
   return (
-    <section className="mobile__container">
+    <section
+      className="mobile__container"
+      data-cy="categoryLinksContainer"
+    >
       <div className="container">
 
         <BreadCrumbs />
@@ -197,7 +200,10 @@ export const PhonePages: React.FC = () => {
           {isLoading && !isError ? (
             <Loader />
           ) : (
-            <div className="mobile__list">
+            <div
+              className="mobile__list"
+              data-cy="productList"
+            >
               {slicedProducts.map(product => (
                 <ProductCard
                   key={product.id}

@@ -43,9 +43,13 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="pagination">
+    <div
+      className="pagination"
+      data-cy="pagination"
+    >
       <button
         className="pagination__left"
+        data-cy="paginationLeft"
         type="button"
         disabled={currentPage === 1}
         onClick={handleLeftArrowClick}
@@ -73,6 +77,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
       <button
         className="pagination__right"
+        data-cy="paginationRight"
         type="button"
         disabled={currentPage === totalPages}
         onClick={handleRightArrowClick}

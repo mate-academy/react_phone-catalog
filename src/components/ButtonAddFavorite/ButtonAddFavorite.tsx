@@ -18,6 +18,7 @@ export const ButtonAddFavorite: React.FC<Props> = React.memo(({ product }) => {
   return (
     <button
       className="card__button--favorite"
+      data-cy="addToFavorite"
       type="button"
       onClick={(e) => {
         e.preventDefault();

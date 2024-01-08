@@ -17,6 +17,7 @@ export const BasketPages: React.FC = () => {
     visibleProducts,
     increment,
     decrement,
+    getProductCount,
   } = useSearchContext();
   const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
@@ -27,12 +28,6 @@ export const BasketPages: React.FC = () => {
   const totalPrice = useMemo(() => {
     return basketProducts.reduce((sum, product) => sum + product.price, 0);
   }, [basketProducts]);
-
-  const countProducts = (productId: string) => {
-    const count = getBasket.filter(prod => prod.id === productId);
-
-    return count.length;
-  };
 
   return (
     <section className="basket">
@@ -51,6 +46,7 @@ export const BasketPages: React.FC = () => {
                   <div className="basket__item-left">
                     <button
                       className="basket__item-remove"
+                      data-cy="cartDeleteButton"
                       type="button"
                       onClick={() => handleRemoveFromBasket(item.phoneId)}
                     >
@@ -81,13 +77,13 @@ export const BasketPages: React.FC = () => {
                         className="basket__item--counter-btn"
                         type="button"
                         onClick={() => decrement(item)}
-                        disabled={countProducts(item.id) === 1}
+                        disabled={getProductCount(item.id) === 1}
                       >
                         <div className="basket__item--counter-minus" />
                       </button>
 
                       <div className="basket__item--counter-value">
-                        {countProducts(item.id)}
+                        {getProductCount(item.id)}
                       </div>
 
                       <button
@@ -107,7 +103,10 @@ export const BasketPages: React.FC = () => {
 
             <div className="basket__checkout">
 
-              <p className="basket__checkout-price">
+              <p
+                className="basket__checkout-price"
+                data-cy="productQauntity"
+              >
                 {`$${totalPrice}`}
               </p>
 

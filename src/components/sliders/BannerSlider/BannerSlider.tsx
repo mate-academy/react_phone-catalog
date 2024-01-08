@@ -11,7 +11,8 @@ export const BannerSlider: React.FC = () => {
         aria-label="Baner-first"
         options={{
           autoplay: true,
-          interval: 5000,
+          type: 'loop',
+          interval: 3000,
         }}
       >
         <SplideSlide>

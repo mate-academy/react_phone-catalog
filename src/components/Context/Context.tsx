@@ -19,6 +19,7 @@ interface ContextType {
   handleRemoveFromBasket: (productId: string) => void;
   increment: (product: Product) => void;
   decrement: (product: Product) => void;
+  getProductCount: (productId: string) => number;
   visibleProducts: Product[],
   getFavorite: Product[];
   getBasket: Product[];
@@ -117,14 +118,16 @@ export const ContextProvider: React.FC = ({ children }) => {
   };
 
   const decrement = (product: Product) => {
-    const productIndex = getBasket.findIndex(item => item.id === product.id);
+    const productIndex = getBasket.reverse().findIndex(item => item.id === product.id);
+
+    console.log(productIndex);
 
     if (productIndex !== -1) {
       const updatedBasket = [...getBasket];
 
       updatedBasket.splice(productIndex, 1);
 
-      setItem('basket', updatedBasket);
+      setItem('basket', updatedBasket.reverse());
 
       setDefaultStateValue((prevState) => {
         return {
@@ -133,6 +136,12 @@ export const ContextProvider: React.FC = ({ children }) => {
         };
       });
     }
+  };
+
+  const getProductCount = (productId: string) => {
+    const count = getBasket.filter(prod => prod.id === productId);
+
+    return count.length;
   };
 
   return (
@@ -144,6 +153,7 @@ export const ContextProvider: React.FC = ({ children }) => {
       handleAddToBasket,
       handleAddToFavorite,
       handleRemoveFromBasket,
+      getProductCount,
       defaultStateValue,
       getFavorite,
       getBasket,

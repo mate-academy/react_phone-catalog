@@ -26,7 +26,10 @@ export const TabletPages: React.FC = () => {
   }, []);
 
   return (
-    <section className="tablets">
+    <section
+      className="tablets"
+      data-cy="categoryLinksContainer"
+    >
       <div className="container">
         <BreadCrumbs />
         <div className="tablets__title">Tablets</div>

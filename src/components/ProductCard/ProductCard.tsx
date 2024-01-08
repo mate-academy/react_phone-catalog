@@ -28,6 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <>
       <Link
         className="card"
+        data-cy="cardsContainer"
         to={`/${product.category}/${phoneId}`}
       >
         <img

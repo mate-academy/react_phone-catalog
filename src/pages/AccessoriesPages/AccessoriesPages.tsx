@@ -25,7 +25,10 @@ export const AccessoriesPages: React.FC = () => {
   }, []);
 
   return (
-    <section className="tablets">
+    <section
+      className="tablets"
+      data-cy="categoryLinksContainer"
+    >
       <div className="container">
         <BreadCrumbs />
         <div className="accessories__title">Tablets</div>

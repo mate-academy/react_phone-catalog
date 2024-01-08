@@ -13,14 +13,17 @@ export const BreadCrumbs: React.FC = () => {
   let currentLink = '';
 
   return (
-    <div className="breadcrumbs" data-cy="breadCrumbs">
+    <div
+      className="breadcrumbs"
+      data-cy="breadCrumbs"
+    >
       <Link to="/" className="breadcrumbs__home" />
 
       {crumbs.map((crumb) => {
         currentLink += `/${crumb.toLowerCase()}`;
 
         const formattedCrumb = `${crumb.toLowerCase().replace(/-/g, ' ')}`;
-        
+
         return (
           <div className="breadcrumbs__link" key={crumb}>
             <div className="breadcrumbs__icon" />
