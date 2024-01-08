@@ -8,8 +8,9 @@ import { counter } from '../../store/store';
 type Props = {
   item: Gadget;
   setPrice: React.Dispatch<React.SetStateAction<number>>;
+  setNumbers: React.Dispatch<React.SetStateAction<number>>;
 };
-export const CartItem:React.FC<Props> = ({ item, setPrice }) => {
+export const CartItem:React.FC<Props> = ({ item, setPrice, setNumbers }) => {
   const { setCount } = counter();
   const [number, setNumber] = useState(1);
 
@@ -17,14 +18,19 @@ export const CartItem:React.FC<Props> = ({ item, setPrice }) => {
     const itemsPrice = number * +item.price;
 
     setPrice(prev => prev + itemsPrice);
+    setNumbers(prev => prev + number);
 
-    return () => setPrice(prev => prev - itemsPrice);
+    return () => {
+      setPrice(prev => prev - itemsPrice);
+      setNumbers(prev => prev - number);
+    };
   }, []);
 
   const numberDecreaseHandler = () => {
     if (number > 1) {
       setNumber(number - 1);
       setPrice(prev => prev - item.price);
+      setNumbers(prev => prev - 1);
     }
   };
 
@@ -60,6 +66,7 @@ export const CartItem:React.FC<Props> = ({ item, setPrice }) => {
           className="flex items-center justify-center h-8 w-8 border border-elements select-none hover:border-primary"
           onClick={() => {
             setNumber(number + 1);
+            setNumbers(prev => prev + 1);
             setPrice(prev => prev + item.price);
           }}
         >

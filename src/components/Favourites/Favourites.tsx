@@ -18,7 +18,7 @@ export const Favourites:React.FC = () => {
 
   return (
     <section className="favourites flex flex-wrap gap-4 max-w-[1136px] mx-auto mt-10">
-      {!gadgets.length && <p className="h1 text-altRed flex justify-center mx-auto">Favourites is empty</p>}
+      {!gadgets.length && <p className="h1 text-secondary flex justify-center mx-auto">Favourites is empty</p>}
       {!!gadgets.length && gadgets.map(item => <CardGadget item={item} key={nanoid()} />)}
     </section>
   );

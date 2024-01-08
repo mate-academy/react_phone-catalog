@@ -31,14 +31,14 @@ export const Header = () => {
         <Link
           className={`path ${
             search ? 'text-primary' : 'text-secondary'
-          } font-normal hover:text-primary`}
+          } font-normal hover:text-primary uppercase`}
           to={`${location.pathname}`}
         >
           {path}
         </Link>
         {search && (
           <Link
-            className="item text-secondary hover:text-primary"
+            className="item text-secondary hover:text-primary uppercase"
             to={`${location.pathname}?item=${search}`}
           >
             {` > ${search}`}
