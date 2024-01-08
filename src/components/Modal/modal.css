@@ -1,0 +1,16 @@
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  inset: 0;
+  padding: 20px;
+  height: 100vh;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.scroll-lock {
+  overflow-y: hidden;
+}
