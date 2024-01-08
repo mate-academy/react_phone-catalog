@@ -5,9 +5,9 @@ import { CategoryBox } from '../components/CategoryBox';
 import { storeGadgets } from '../store/store';
 
 const imagesPath = [
-  '_new/img/banner-accessories.png',
-  '_new/img/banner-phones.png',
-  '_new/img/banner-tablets.png',
+  'new/img/banner-accessories.png',
+  'new/img/banner-phones.png',
+  'new/img/banner-tablets.png',
 ];
 
 const carouselMain = {

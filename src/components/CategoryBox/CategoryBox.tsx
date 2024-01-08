@@ -25,7 +25,7 @@ export const CategoryBox: React.FC<Props> = ({ name, quantity, styleName }) => {
       >
         <img
           className="absolute max-w-none"
-          src={`_new/img/category-images/${setImage(name)}.png`}
+          src={`new/img/category-images/${setImage(name)}.png`}
           alt={name}
         />
       </div>
