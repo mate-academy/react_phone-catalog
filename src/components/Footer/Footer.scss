@@ -22,13 +22,13 @@
     }
   }
 
-  &__navBar {
-    display: none;
+  // &__navBar {
+  //   // display: none;
 
-    @include on-tablet {
-      display: block;
-    }
-  }
+  //   @include on-tablet {
+  //     display: block;
+  //   }
+  // }
 
   &__toTop {
     display: flex;

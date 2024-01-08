@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useMediaQuery } from 'react-responsive';
 import './ProductSlider.scss';
 import 'swiper/css';
 import 'swiper/scss/navigation';
@@ -15,6 +16,9 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const isSmallScreen = useMediaQuery({ maxWidth: 599 });
+  const isMediumScreen = useMediaQuery({ maxWidth: 1023 });
+
   const handlePrevious = useCallback(() => {
     swiperRef?.slidePrev();
   }, [swiperRef]);
@@ -22,6 +26,18 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
   const handleNext = useCallback(() => {
     swiperRef?.slideNext();
   }, [swiperRef]);
+
+  function handleDisabled() {
+    if (isSmallScreen) {
+      return activeIndex === children?.length - 2;
+    }
+
+    if (isMediumScreen) {
+      return activeIndex === children?.length - 3;
+    }
+
+    return activeIndex === children?.length - 4;
+  }
 
   return (
     <div className="product-slider">
@@ -38,7 +54,7 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
           <ButtonEvent
             shape="right"
             onClick={handleNext}
-            disable={activeIndex === children?.length - 4}
+            disable={handleDisabled()}
           />
         </div>
       </div>

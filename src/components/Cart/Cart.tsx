@@ -1,43 +1,45 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ProductType } from '../../helpers/types/ProductType';
 import { BASE_URL } from '../../helpers/utils/constants';
 import './Cart.scss';
-import { removeFromCart } from '../../features/cartSlice';
 import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
+import { useAppSelector } from '../../store/hooks';
+import {
+  decreaseCount,
+  increaseCount,
+  removeFromCart,
+} from '../../features/cartSlice';
 
 type Props = {
   product: ProductType;
-  setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
+export const Cart: React.FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
-  const [count, setCount] = useState(1);
+  const { count } = useAppSelector(state => state.cart);
   const {
     name,
     image,
     price,
     category,
     phoneId,
+    id,
   } = product;
 
   const close = () => {
     dispatch(removeFromCart(product.id));
-    setTotalPrice(cur => cur - price);
   };
 
   const increase = () => {
-    setCount(cur => (cur + 1));
-    setTotalPrice(cur => cur + price);
+    dispatch(increaseCount(id));
   };
 
   const decrease = () => {
-    setCount(cur => (cur > 1 ? cur - 1 : 1));
-    setTotalPrice(cur => {
-      return cur - price > 0 ? cur - price : price;
-    });
+    if (count[id] > 1) {
+      dispatch(decreaseCount(id));
+    }
   };
 
   return (
@@ -65,10 +67,10 @@ export const Cart: React.FC<Props> = ({ product, setTotalPrice }) => {
           <ButtonEvent
             shape="minus"
             onClick={() => decrease()}
-            disable={count === 1}
+            disable={count[id] === 1}
           />
 
-          <p className="cart__count">{count}</p>
+          <p className="cart__count">{count[id]}</p>
 
           <ButtonEvent
             shape="plus"

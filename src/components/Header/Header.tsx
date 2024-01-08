@@ -9,7 +9,7 @@ import { Aside } from '../Aside/Aside';
 import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 export const Header: React.FC = () => {
-  const cartedProducts = useAppSelector(state => state.cartedProducts);
+  const { cartedProducts } = useAppSelector(state => state.cart);
   const favouriteProducts = useAppSelector(state => state.favouriteProducts);
   const { pathname } = useLocation();
   const curPage = pathname.split('/')[1];

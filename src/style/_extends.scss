@@ -96,11 +96,15 @@
 
 %logo {
   display: block;
-  width: 40px;
+  width: 55px;
   height: 24px;
   background-image: url('./../../assets/logo.svg');
   object-fit: contain;
   background-repeat: no-repeat;
+
+  @include on-tablet {
+    width: 40px;
+  }
 
   @include hover(transform, scale(1.1));
 }

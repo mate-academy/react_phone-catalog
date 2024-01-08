@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Cart } from '../components/Cart/Cart';
 import { Fail } from '../elements/Empty/Fail';
 import { useAppSelector } from '../store/hooks';
 import { Line } from '../elements/Line/Line';
 
 export const CartPage: React.FC = () => {
-  const cartedProducts = useAppSelector(state => state.cartedProducts);
-  const [totalPrice, setTotalPrice] = useState<number>(cartedProducts
-    .reduce((sum, cart) => sum + cart.price, 0) || 0);
+  const { cartedProducts, count } = useAppSelector(state => state.cart);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const getTotalPrice = () => {
+    const newTotalPrice = cartedProducts
+      .reduce((acc, prod) => {
+        return acc + prod.price * count[prod.id];
+      }, 0);
+
+    setTotalPrice(newTotalPrice);
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => getTotalPrice(), [Object.entries(count)]);
 
   return (
     <div className="page">
@@ -21,7 +32,7 @@ export const CartPage: React.FC = () => {
               <ul className="page__carts">
                 {cartedProducts.map(product => (
                   <li className="page__cart-items" key={product.id}>
-                    <Cart product={product} setTotalPrice={setTotalPrice} />
+                    <Cart product={product} />
                   </li>
                 ))}
               </ul>
@@ -33,7 +44,7 @@ export const CartPage: React.FC = () => {
             >
               <div className="page__total-price-block">
                 <p className="page__total-price">
-                  {`$${totalPrice}`}
+                  {`$${totalPrice || 0}`}
                 </p>
                 <p className="page__total-price-text">{cartedProducts.length > 1 ? `Total for ${cartedProducts.length} items` : 'Total for 1 item'}</p>
               </div>

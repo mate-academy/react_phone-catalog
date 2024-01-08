@@ -97,13 +97,17 @@
       &::after {
         content: '';
         position: absolute;
-        height: 3px;
+        height: 1.5px;
         width: 100%;
         display: block;
         bottom: 0;
         background-color: $main-text-color;
         border-radius: 3px;
         color: $main-text-color;
+
+        @include on-tablet {
+          height: 3px;
+        }
       }
     }
   }
@@ -122,6 +126,7 @@
     background-repeat: no-repeat;
     height: 12px;
     width: 12px;
+    
     @include hover(transform, scale(1.1));
 
     @include on-desktop {

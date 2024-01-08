@@ -7,7 +7,7 @@ import productsReducer from '../features/productsSlice';
 import modalReducer from '../features/modalSlice';
 
 const rootReducer = combineReducers({
-  cartedProducts: cartReducer,
+  cart: cartReducer,
   favouriteProducts: favouriteReducer,
   selectedProduct: selectedProductReducer,
   query: queryReducer,

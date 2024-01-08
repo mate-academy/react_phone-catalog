@@ -1,15 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
+import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 import './NavBar.scss';
 
-const getLinkNavClass = ({ isActive }: { isActive: boolean }) => (
-  classNames('navBar__link', {
-    'is-active': isActive,
-  }));
-
 type Props = {
   links: string[];
+  small?: boolean;
 };
 
 const getPath = (link: string) => {
@@ -24,10 +21,20 @@ const getPath = (link: string) => {
   return link;
 };
 
-export const NavBar: React.FC<Props> = ({ links }) => {
+export const NavBar: React.FC<Props> = ({ links, small }) => {
+  const isSmallScreen = useMediaQuery({ maxWidth: 599 });
+  const getLinkNavClass = ({ isActive }: { isActive: boolean }) => (
+    classNames('navBar__link', {
+      'navBar__link--small': small && isSmallScreen,
+      'is-active': isActive,
+    }));
+
   return (
     <nav className="navBar">
-      <ul className="navBar__list">
+      <ul className={classNames('navBar__list', {
+        'navBar__list--small': isSmallScreen,
+      })}
+      >
         {links.map(link => (
           <NavLink
             key={link}

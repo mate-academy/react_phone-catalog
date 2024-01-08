@@ -32,7 +32,7 @@ export const Pagination: React.FC<Props> = ({
   }, [curPage, totalPages]);
 
   function findNextPage(direction: string) {
-    window.scrollTo({ top: 100, left: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     if (direction === 'next') {
       return Math.min(curPage + 1, totalPages).toString();
     }

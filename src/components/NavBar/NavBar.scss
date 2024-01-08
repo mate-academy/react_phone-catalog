@@ -2,7 +2,7 @@
 @import './../../style/extends';
 
 .navBar {
-  padding-left: 30px;
+  padding-left: 10px;
 
   @include on-tablet {
     padding-left: 50px;
@@ -27,6 +27,11 @@
     @include on-desktop {
       gap: 64px;
     }
+
+    &--small {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
   }
 
   &__link {
@@ -43,14 +48,24 @@
       &::after {
         content: '';
         position: absolute;
-        height: 3px;
+        height: 2px;
         width: 100%;
         display: block;
-        bottom: 0;
+        bottom: -4px;
         background-color: $main-text-color;
         border-radius: 3px;
         color: $main-text-color;
+
+        @include on-tablet {
+          bottom: 0;
+          height: 3px;
+        }
       }
+    }
+
+    &--small {
+      font-size: 8px;
+      padding-block: 0;
     }
 
 

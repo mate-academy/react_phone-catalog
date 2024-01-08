@@ -17,7 +17,7 @@ export const ButtonAddCart: React.FC<Props> = ({
   product,
 }) => {
   const dispatch = useDispatch();
-  const cartedProducts = useAppSelector(state => state.cartedProducts);
+  const { cartedProducts } = useAppSelector(state => state.cart);
 
   function isProductCarted() {
     const copy = Array.from(cartedProducts);

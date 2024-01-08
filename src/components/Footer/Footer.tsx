@@ -5,7 +5,7 @@ import { NavBar } from '../NavBar/NavBar';
 import { ButtonEvent } from '../../elements/Buttons/ButtonEvent/ButtonEvent';
 
 export const Footer: React.FC = () => {
-  const footerLinks = ['contacts', 'returns & refunds', 'rights'];
+  const footerLinks = ['rights', 'contacts', 'returns & refunds'];
 
   const goTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
           <Link className="footer__logo" to="/" />
 
           <div className="footer__navBar">
-            <NavBar links={footerLinks} />
+            <NavBar links={footerLinks} small />
           </div>
 
           <div className="footer__toTop">

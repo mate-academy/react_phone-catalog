@@ -26,6 +26,7 @@ export const Search: React.FC<Props> = ({ page }) => {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     applyQuery(e.target.value);
     setParams({ query: e.currentTarget.value || null });
     searchParams.set('query', e.target.value);

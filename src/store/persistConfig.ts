@@ -7,7 +7,7 @@ const persistConfig = {
   storage,
   whitelist: [
     'favouriteProducts',
-    'cartedProducts',
+    'cart',
     'selectedProduct',
     'products',
   ],

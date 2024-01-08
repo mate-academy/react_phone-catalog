@@ -60,7 +60,7 @@
     height: 12px;
     width: 12px;
     margin: 12px;
-    
+
     @include hover(transform, scale(1.1));
 
     @include on-desktop {
@@ -86,5 +86,8 @@
     text-decoration: none;
     color: $secondary-text-color;
     line-height: 32px;
+    display: block;
+
+    @include hover(color, $main-text-color);
   }
 }
