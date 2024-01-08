@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { useAppSelector } from '../../app/hooks';
 import { ProductType } from '../../types/ProductType';
-import { getCategoryLinkPath } from '../../utils/getCategoryLinkPath';
-import { getCategoryImgPath } from '../../utils/getCategoryImgPath';
-import { getCategoryTitle } from '../../utils/getCategoryTitle';
+import { getCategoryData } from '../../utils/getCategoryData';
 import { countProductByCategory } from '../../utils/countProductByCategory';
+import { formatTotal } from '../../utils/formatTotal';
 
 import './Category.scss';
 
@@ -19,24 +18,16 @@ type Props = {
 export const Category: React.FC<Props> = ({ productType }) => {
   const { products } = useAppSelector(state => state.products);
 
-  const linkPath = useMemo(() => {
-    return getCategoryLinkPath(productType);
-  }, [productType]);
-
-  const imgPath = useMemo(() => {
-    return getCategoryImgPath(productType);
-  }, [productType]);
-
-  const title = useMemo(() => {
-    return getCategoryTitle(productType);
-  }, [productType]);
+  const { linkPath, imgPath, title } = getCategoryData(productType);
 
   const countProduct = useMemo(() => {
     return countProductByCategory(products, productType);
   }, [products, productType]);
 
+  const totalProduct = formatTotal(countProduct, 'model');
+
   return (
-    <article className="Category">
+    <article className="ShopByCategory-Category Category">
       <Link
         to={linkPath}
         className="Category-Link"
@@ -65,7 +56,7 @@ export const Category: React.FC<Props> = ({ productType }) => {
         <h3 className="Category-Title">{title}</h3>
       </Link>
 
-      <div className="Category-Total">{`${countProduct} models`}</div>
+      <div className="Category-Total Total">{totalProduct}</div>
     </article>
   );
 };

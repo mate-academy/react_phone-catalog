@@ -18,17 +18,18 @@ const perPageOptions = [
 
 export const ProductListFilter = () => {
   return (
-    <section className="Page-ProductListFilter ProductListFilter">
+    <div className="ProductListFilter">
       <DropDown
         options={sortOptions}
         label="Sort by"
         searchParamName="sort"
       />
+
       <DropDown
         options={perPageOptions}
         label="Items on page"
         searchParamName="perPage"
       />
-    </section>
+    </div>
   );
 };

@@ -1,43 +1,42 @@
 import { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
-import {
-  useFavouriteItems,
-  useFavouriteItemsTotal,
-} from '../../hooks/useFavouriteItems';
+import { useSearchedItems } from '../../hooks/useFavouriteItems';
 import { ProductList } from '../../components/ProductList';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { formatTotal } from '../../utils/formatTotal';
 
 import './FavouritesPage.scss';
 
 export const FavouritesPage = () => {
   const { favouriteItems } = useAppSelector(state => state.favouriteItems);
 
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const searchedItems = useSearchedItems(favouriteItems);
 
-  const filteredItems = useFavouriteItems(favouriteItems, query);
-  const favouriteItemsTotal = useFavouriteItemsTotal(filteredItems, query);
+  const searchedItemsTotal = useMemo(() => {
+    return searchedItems.length;
+  }, [searchedItems]);
 
-  const isFavouritesEmpty = useMemo(() => {
-    return favouriteItemsTotal === 0;
-  }, [favouriteItemsTotal]);
+  const isSearchedItemsEmpty = useMemo(() => {
+    return searchedItems.length === 0;
+  }, [searchedItems]);
+
+  const totalString = formatTotal(searchedItemsTotal, 'model');
 
   return (
-    <section className="Page-Section Favourites">
+    <section className="Page-Favourites Favourites">
       <Breadcrumbs />
 
       <h1 className="Favourites-Title SectionTitle">Favourites</h1>
 
-      {isFavouritesEmpty
+      {isSearchedItemsEmpty
         ? 'Your favourites is empty'
         : (
           <>
-            <div className="Favourites-Quantity">
-              {`${favouriteItemsTotal} items`}
+            <div className="Favourites-Total Total">
+              {totalString}
             </div>
 
-            <ProductList products={filteredItems} />
+            <ProductList products={searchedItems} />
           </>
         )}
     </section>

@@ -5,10 +5,11 @@
 
   &-Input {
     padding: 24px;
-    width: 287px;
+    width: 327px;
 
     font: inherit;
     font-weight: 600;
+    line-height: 1;
 
     color: $primary;
 
@@ -26,6 +27,7 @@
 
     &:placeholder-shown {
       font: inherit;
+      line-height: 1;
       font-weight: 600;
 
       color: $icon-placeholder;

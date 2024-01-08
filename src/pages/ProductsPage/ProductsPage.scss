@@ -1,6 +1,6 @@
 @import "../../styles/utils/";
 
-.Favourites {
+.Products {
   padding-block-start: 24px;
   padding-block-end: 80px;
 
@@ -13,6 +13,14 @@
   }
 
   &-Total {
+    margin-block-end: 40px;
+  }
+
+  & > .ProductListFilter {
+    margin-block-end: 24px;
+  }
+
+  & > .ProductList {
     margin-block-end: 40px;
   }
 }

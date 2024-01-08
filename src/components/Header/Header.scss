@@ -9,7 +9,11 @@
 
   box-shadow: 0 1px 0 0 $element;
 
-  &-Left,
+  &-Left {
+    display: flex;
+    align-items: center;
+    column-gap: 64px;
+  }
   &-Right {
     display: flex;
     align-items: center;

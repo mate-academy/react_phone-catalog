@@ -1,6 +1,7 @@
 @import "../../styles/utils/";
 
 .ProductCard {
+
   padding-inline: 24px;
 
   display: flex;
@@ -9,14 +10,16 @@
 
   border: 1px solid $element;
 
+  box-shadow: 0 2px 15px 0 #0000000d;
+
   transition: transform $transition-duration;
 
   &:hover {
-    transform: scale($scale-factor);
+    transform: scale(0.95);
   }
 
   &-ImgContainer {
-    padding-block-start: 32px;
+    padding-block-start: 31px;
     padding-inline: 8px;
   }
 
@@ -107,4 +110,5 @@
 
     cursor: pointer;
   }
+
 }

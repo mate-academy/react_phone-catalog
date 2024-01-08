@@ -1,6 +1,13 @@
 @import "../../styles/utils/";
 
 .Cart {
+  padding-block-start: 40px;
+  padding-block-end: 87px;
+
+  & > .BackButton {
+    margin-block-end: 16px;
+  }
+
   &-Title {
     margin: 0 0 24px;
   }
@@ -21,14 +28,18 @@
     row-gap: 16px;
   }
 
-  &-Total {
+  &-Totals {
     grid-column: 17/-1;
+    align-self: start;
 
+    padding-block: 23px;
     padding-inline: 24px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    border: 1px solid $element;
   }
 
   &-TotalPrice {
@@ -39,7 +50,7 @@
     letter-spacing: -0.32px;
   }
 
-  &-Quantity {
+  &-TotalQuantity {
     margin-block-end: 24px;
 
     color: $secondary;
@@ -54,6 +65,8 @@
   }
 
   &-Button {
+    height: 48px;
+
     width: 100%;
   }
 }

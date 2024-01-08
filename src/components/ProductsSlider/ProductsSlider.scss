@@ -7,7 +7,7 @@
     @include pageGrid;
   }
 
-  &-SectionTitle {
+  &-Title {
     grid-column: 1/23;
 
     margin: 0;
@@ -27,8 +27,15 @@
 
     transition: transform $transition-duration;
 
+    overflow: hidden;
+
     & > .ProductCard {
       max-width: 272px;
+    }
+
+    &:hover > .ProductCard:not(:hover) {
+      filter: blur(6px);
+      transform: scale(1.05, 1,05);
     }
   }
 }

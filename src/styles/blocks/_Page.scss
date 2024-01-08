@@ -7,20 +7,39 @@
 
   &-Body {
     margin: 0;
-
     font: normal 500 14px/1.5 "Mont", sans-serif;
 
     color: $primary;
+
+    background-color: $white;
   }
 
   &-Root {
-    height: 100vh;
+    min-height: 100vh;
 
     display: grid;
-    grid-template: auto 1fr auto / 1fr;
+    grid-template-rows: min-content 1fr min-content;
   }
 
-  &-Header,
+  &-Products {
+    padding-block-start: 40px;
+  }
+
+  &-Slider {
+    padding-block-start: 40px;
+    margin-block-end: 72px;
+  }
+
+  &-HotPrice,
+  &-ShopByCategory,
+  &-BrandNew {
+    margin-block-end: 80px;
+  }
+
+  &-SectionTitle {
+    margin-block: 0;
+  }
+
   &-NoResults {
     margin-block-end: 40px;
   }
@@ -29,8 +48,8 @@
     margin-block-end: 24px;
   }
 
-  &-Section {
-    margin-block-end: 80px;
+  &-Breadcrumbs {
+    margin-block-end: 40px;
   }
 
   &-BackButton {

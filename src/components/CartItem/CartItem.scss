@@ -1,38 +1,71 @@
 @import "../../styles/utils/";
 
 .CartItem {
-  padding-block: 30px;
+  padding-block: 23px;
   padding-inline: 24px 40px;
-
-  display: flex;
-  align-items: center;
 
   border: 1px solid $element;
 
+  display: grid;
+  grid-template-columns: min-content 1fr;
+
+  &-Left {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+  }
+
+  &-Right {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    align-items: center;
+  }
+
   &-IconDelete {
     --icon-size: 16px;
+    padding: 0;
     border: none;
 
     cursor: pointer;
   }
 
-  &-ProductImage {
-    margin-inline: 31px;
+  &-LinkImage {
+    --size: 80px;
+    width: var(--size);
+    height: var(--size);
 
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    object-fit: cover;
+    cursor: pointer;
+
+    text-decoration: none;
   }
 
-  &-Link {
+  &-Image {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-LinkTitle {
     text-decoration: none;
 
     color: $primary;
   }
 
-  &-Counter {
-    margin-inline-start: auto;
+  &-CartTitle {
+    margin-block: 0;
+    width: 295px;
 
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    color: $primary;
+  }
+
+  &-Counter {
     display: flex;
     align-items: center;
     column-gap: 13px;
@@ -43,7 +76,7 @@
   }
 
   &-Price {
-    padding-inline-start: 43px;
+    justify-self: end;
 
     font-size: 22px;
     font-weight: 700;

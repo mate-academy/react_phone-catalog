@@ -30,9 +30,7 @@
   }
 
   &-Slide {
-    flex: 0 0 100%;
-
-    object-fit: cover;
+    display: block;
   }
 
   &-Dots {
@@ -48,6 +46,8 @@
     width: 14px;
 
     background-color: $element;
+
+    cursor: pointer;
 
     &_active {
       background-color: $primary;

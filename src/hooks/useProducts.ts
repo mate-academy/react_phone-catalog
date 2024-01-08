@@ -1,109 +1,104 @@
 import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Product } from '../types/Product';
 import { ProductType } from '../types/ProductType';
 import { SortBy } from '../types/SortBy';
-import { PerPage } from '../types/PerPage';
 import { containQuery } from '../utils/containQuery';
 import { compareProducts } from '../utils/compareProducts';
-import { getProductsPerPage } from '../utils/getProductsPerPage';
 
-const useFilteredProducts = (
-  products: Product[],
-  productType: ProductType,
-  query: string,
-) => {
-  const filteredByType = useMemo(() => {
+const useProductsByType = (products: Product[], productType: ProductType) => {
+  const productsByType = useMemo(() => {
     return products
       .filter(product => product.type === productType);
   }, [products, productType]);
 
-  const filteredByQuery = useMemo(() => {
-    return query
-      ? filteredByType.filter(product => containQuery(product, query))
-      : filteredByType;
-  }, [filteredByType, query]);
-
-  return filteredByQuery;
+  return productsByType;
 };
 
-const useFilteresAndSortedProducts = (
+const useSearchedProducts = (
   products: Product[],
   productType: ProductType,
-  query: string,
-  sortBy: SortBy,
 ) => {
-  const filteredProducts = useFilteredProducts(products, productType, query);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
+  const productsByType = useProductsByType(products, productType);
+
+  const searchedProducts = useMemo(() => {
+    return query
+      ? productsByType.filter(product => containQuery(product, query))
+      : productsByType;
+  }, [productsByType, query]);
+
+  return searchedProducts;
+};
+
+export const useSortedProducts = (
+  products: Product[],
+  productType: ProductType,
+) => {
+  const [searchParams] = useSearchParams();
+  const sortBy = (searchParams.get('sort') || '') as SortBy;
+
+  const searchedProducts = useSearchedProducts(products, productType);
 
   const sortedProducts = useMemo(() => {
     return sortBy
-      ? [...filteredProducts]
+      ? [...searchedProducts]
         .sort((product1, product2) => {
           return compareProducts(product1, product2, sortBy);
         })
-      : filteredProducts;
-  }, [filteredProducts, sortBy]);
+      : searchedProducts;
+  }, [searchedProducts, sortBy]);
 
   return sortedProducts;
 };
 
-export const useProducts = (
-  products: Product[],
-  productType: ProductType,
-  query: string,
-  sortBy: SortBy,
-) => {
-  const preparedProducts = useFilteresAndSortedProducts(
-    products, productType, query, sortBy,
-  );
-
-  return preparedProducts;
-};
-
-export const useProductsTotal = (
-  products: Product[],
-) => {
-  const preparedProductsTotal = useMemo(() => {
-    return products.length;
-  }, [products]);
-
-  return preparedProductsTotal;
-};
-
 export const useProductsPerPage = (
   products: Product[],
-  perPage: PerPage,
+  productType: ProductType,
 ) => {
-  const preparedProductsTotal = useProductsTotal(products);
+  const sortedProducts = useSortedProducts(products, productType);
+
+  const [searchParams] = useSearchParams();
+  const perPageParam = searchParams.get('perPage') || '';
 
   const productsPerPage = useMemo(() => {
-    return perPage === 'all' || perPage === ''
-      ? preparedProductsTotal
-      : getProductsPerPage(perPage);
-  }, [perPage, preparedProductsTotal]);
+    return Number(perPageParam) || sortedProducts.length;
+  }, [perPageParam, sortedProducts]);
 
   return productsPerPage;
 };
 
 export const usePaginatedProducts = (
   products: Product[],
-  perPage: PerPage,
-  currentPage: number,
+  productType: ProductType,
 ) => {
-  const preparedProductsTotal = useProductsTotal(products);
-  const productsPerPage = useProductsPerPage(products, perPage);
+  const sortedProducts = useSortedProducts(
+    products, productType,
+  );
+
+  const productsPerPage = useProductsPerPage(
+    products, productType,
+  );
+
+  const [searchParams] = useSearchParams();
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   const firstItem = useMemo(() => {
     return (currentPage - 1) * productsPerPage;
   }, [currentPage, productsPerPage]);
 
   const lastItem = useMemo(() => {
-    return Math.min(currentPage * productsPerPage, preparedProductsTotal);
-  }, [currentPage, productsPerPage, preparedProductsTotal]);
+    const sortedProductsTotal = sortedProducts.length;
 
-  const paginated = useMemo(() => {
-    return products
+    return Math.min(currentPage * productsPerPage, sortedProductsTotal);
+  }, [currentPage, productsPerPage, sortedProducts]);
+
+  const paginatedProducts = useMemo(() => {
+    return sortedProducts
       .filter((_, index) => index >= firstItem && index < lastItem);
-  }, [products, firstItem, lastItem]);
+  }, [sortedProducts, firstItem, lastItem]);
 
-  return paginated;
+  return paginatedProducts;
 };

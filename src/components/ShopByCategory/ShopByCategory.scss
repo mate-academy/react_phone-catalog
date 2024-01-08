@@ -1,16 +1,11 @@
 @import "../../styles/utils/";
 
 .ShopByCategory {
-  &-SectionTitle {
+  &-Title {
     margin: 0 0 24px;
-    line-height: 1.3;
   }
 
   &-Content {
     @include pageGrid;
-  }
-
-  & > .Category {
-    grid-column: span 8;
   }
 }

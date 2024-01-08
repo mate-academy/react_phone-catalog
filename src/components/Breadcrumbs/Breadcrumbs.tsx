@@ -36,7 +36,7 @@ export const Breadcrumbs = () => {
   }, [location]);
 
   return (
-    <section
+    <div
       className="Breadcrumbs"
       data-cy="breadCrumbs"
     >
@@ -53,6 +53,6 @@ export const Breadcrumbs = () => {
 
         {crumbs.map(crumb => crumb)}
       </ul>
-    </section>
+    </div>
   );
 };

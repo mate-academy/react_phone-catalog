@@ -1,6 +1,14 @@
 @import "../../styles/utils/";
 
 .Category {
+  grid-column: span 8;
+
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scaleY($scale-factor);
+  }
+
   &-Container {
     margin-block-end: 24px;
 
@@ -33,9 +41,5 @@
     font-size: 20px;
     font-weight: 600;
     line-height: 1.3;
-  }
-
-  &-Total {
-    color: $secondary;
   }
 }

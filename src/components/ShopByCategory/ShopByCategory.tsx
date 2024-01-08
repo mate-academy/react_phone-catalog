@@ -1,10 +1,11 @@
 import { Category } from '../Category';
 import { ProductType } from '../../types/ProductType';
+
 import './ShopByCategory.scss';
 
 export const ShopByCategory = () => (
-  <section className="Page-Section ShopByCategory">
-    <h2 className="ShopByCategory-SectionTitle SectionTitle">
+  <div className="ShopByCategory">
+    <h2 className="ShopByCategory-Title SectionTitle">
       Shop by category
     </h2>
 
@@ -18,5 +19,6 @@ export const ShopByCategory = () => (
 
       <Category productType={ProductType.ACCESSORY} />
     </div>
-  </section>
+  </div>
+
 );

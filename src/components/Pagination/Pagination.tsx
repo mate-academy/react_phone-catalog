@@ -24,7 +24,10 @@ export const Pagination: React.FC<Prop> = ({
   }, [totalPages]);
 
   return (
-    <div className="Page-Section Pagination" data-cy="pagination">
+    <div
+      className="Pagination"
+      data-cy="pagination"
+    >
       <div
         className={cn(
           'Icon',

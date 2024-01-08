@@ -18,7 +18,8 @@ export const Search = () => {
   const location = useLocation();
 
   const currentPath = useMemo(() => {
-    return location.pathname.split('/').filter(name => name !== '');
+    return location.pathname.split('/')
+      .filter(name => name !== '');
   }, [location]);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const Search = () => {
     setQuery(value);
 
     applyQuery(
-      getSearchWith(searchParams, { query: value || null }),
+      getSearchWith(searchParams, { query: value || null, page: '1' }),
     );
   };
 

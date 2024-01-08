@@ -30,56 +30,64 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
 
   return (
     <>
-      <button
-        className="CartItem-IconDelete Icon Icon_delete"
-        data-cy="cartDeleteButton"
-        type="button"
-        aria-label="delete button"
-        onClick={() => dispath(removeFromCart(id))}
-      />
-
-      <Link to={productDetailsPath}>
-        <img
-          className="CartItem-ProductImage"
-          src={product.imageUrl}
-          width={66}
-          height={66}
-          alt="product"
-        />
-      </Link>
-
-      <Link
-        className="CartItem-Link"
-        to={productDetailsPath}
-      >
-        {product.name}
-      </Link>
-
-      <div className="CartItem-Counter">
+      <div className="CartItem-Left">
         <button
-          className="CartItem-Icon Icon Icon_minus"
+          className="CartItem-IconDelete Icon Icon_delete"
+          data-cy="cartDeleteButton"
           type="button"
-          aria-label="minus button"
-          disabled={cartItem.quantity === 1}
-          onClick={() => dispath(minusProduct(id))}
+          aria-label="delete button"
+          onClick={() => dispath(removeFromCart(id))}
         />
 
-        <span className="CartItem-Quantity">{quantity}</span>
+        <Link
+          className="CartItem-LinkImage"
+          to={productDetailsPath}
+        >
+          <img
+            className="CartItem-Image"
+            src={product.imageUrl}
+            width={66}
+            height={66}
+            alt="product"
+          />
+        </Link>
 
-        <button
-          className="CartItem-Icon Icon Icon_plus"
-          type="button"
-          aria-label="plus button"
-          onClick={() => dispath(plusProduct(id))}
-        />
+        <Link
+          className="CartItem-LinkTitle"
+          to={productDetailsPath}
+        >
+          <h2 className="CartItem-CartTitle">
+            {product.name}
+          </h2>
+        </Link>
       </div>
 
-      <span className="CartItem-Price">
-        {discountPrice !== product.price
-          ? `$${discountPrice}`
-          : `$${product.price}`}
-      </span>
+      <div className="CartItem-Right">
+        <div className="CartItem-Counter">
+          <button
+            className="CartItem-Icon Icon Icon_minus"
+            type="button"
+            aria-label="minus button"
+            disabled={quantity === 1}
+            onClick={() => dispath(minusProduct(id))}
+          />
 
+          <span className="CartItem-Total">{quantity}</span>
+
+          <button
+            className="CartItem-Icon Icon Icon_plus"
+            type="button"
+            aria-label="plus button"
+            onClick={() => dispath(plusProduct(id))}
+          />
+        </div>
+
+        <span className="CartItem-Price">
+          {discountPrice !== product.price
+            ? `$${discountPrice * quantity}`
+            : `$${product.price * quantity}`}
+        </span>
+      </div>
     </>
   );
 };

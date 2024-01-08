@@ -1,9 +1,8 @@
 @import "../../styles/utils/";
 
 .Breadcrumbs {
-
   &-List {
-    margin: 0 0 40px;
+    margin: 0;
     padding: 0;
     list-style: none;
 
@@ -14,6 +13,7 @@
 
   &-Item {
     position: relative;
+    height: 16px;
 
     color: $primary;
 
@@ -38,16 +38,15 @@
     }
   }
 
-  &-Link {
+  &-Icon {
+    --icon-size: 16px;
+
     font-size: 12px;
     font-weight: 600;
     text-decoration: none;
 
     color: inherit;
-  }
 
-  &-Icon {
-    --icon-size: 16px;
     border: none;
   }
 }

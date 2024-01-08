@@ -32,7 +32,7 @@ export const CartPage = () => {
   }, [cartItems]);
 
   return (
-    <section className="Page-Section Cart">
+    <section className="Page-Cart Cart">
       <BackButton />
 
       <h1 className="Cart-Title SectionTitle">Cart</h1>
@@ -46,16 +46,16 @@ export const CartPage = () => {
           <div className="Cart-Content">
             <ul className="Cart-List">
               {cartItems.map(cartItem => (
-                <li className="Cart-Item CartItem" key={cartItem.id}>
+                <li className="Cart-CartItem CartItem" key={cartItem.id}>
                   <CartItem cartItem={cartItem} />
                 </li>
               ))}
             </ul>
 
-            <div className="Cart-Total">
+            <div className="Cart-Totals">
               <span className="Cart-TotalPrice">{`$${cartTotal}`}</span>
 
-              <span className="Cart-Quantity" data-cy="productQauntity">
+              <span className="Cart-TotalQuantity" data-cy="productQuantity">
                 {`Total for ${cartQuantity} items`}
               </span>
 
@@ -71,7 +71,6 @@ export const CartPage = () => {
             </div>
           </div>
         )}
-
     </section>
   );
 };

@@ -28,18 +28,22 @@ export const HomePage = () => {
 
   return (
     <>
-      <Slider />
+      <section className="Page-Slider">
+        <Slider />
+      </section>
 
-      <section className="Page-Section">
+      <section className="Page-HotPrice">
         <ProductsSlider
           products={getHotPriceProducts}
           title="Hot prices"
         />
       </section>
 
-      <ShopByCategory />
+      <section className="Page-ShopByCategory">
+        <ShopByCategory />
+      </section>
 
-      <section className="Page-Section">
+      <section className="Page-BrandNew">
         <ProductsSlider
           products={getBrandNewProducts}
           title="Brand new models"

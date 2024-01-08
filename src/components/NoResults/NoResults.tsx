@@ -1,4 +1,5 @@
 import { ProductType } from '../../types/ProductType';
+
 import './NoResults.scss';
 
 type Props = {

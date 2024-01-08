@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
+
 import './ProductsSlider.scss';
 
 const CARD_WIDTH = 272;
@@ -44,7 +45,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   return (
     <div className="ProductsSlider">
       <div className="ProductsSlider-Top">
-        <h2 className="ProductsSlider-SectionTitle SectionTitle">
+        <h2 className="ProductsSlider-Title SectionTitle">
           {title}
         </h2>
 

@@ -57,7 +57,7 @@ export const Slider = () => {
   }, [offsetWidth]);
 
   return (
-    <section className="Page-Slider Slider">
+    <div className="Slider">
       <div className="Slider-Content">
         <button
           className="Slider-Icon Icon Icon_arrow Icon_arrow_left"
@@ -136,6 +136,7 @@ export const Slider = () => {
           />
         ))}
       </div>
-    </section>
+    </div>
+
   );
 };
