@@ -1,116 +1,98 @@
 import React from 'react';
-import classNames from 'classnames';
-import { ReactSVG } from 'react-svg';
-
-import './pagination.scss';
+import { getNumbers } from '../../utils/utils';
+import './Pagination.scss';
 
 type Props = {
-  total: number;
-  perPage: string;
-  currentPage: number;
-  onPageChange: (n: number) => void;
+  total: number,
+  perPage: number,
+  currentPage: number,
+  onPageChange: (currentPage: number) => void,
 };
-
-export function getNumbers(from: number, to: number): number[] {
-  const numbers = [];
-
-  for (let n = from; n <= to; n += 1) {
-    numbers.push(n);
-  }
-
-  return numbers;
-}
 
 export const Pagination: React.FC<Props> = ({
   total,
   perPage,
-  currentPage,
+  currentPage = 1,
   onPageChange,
 }) => {
-  const pages = getNumbers(1, Math.ceil(total / +perPage));
-  let visiblePages;
+  const numberOfLinks = Math.ceil(total / perPage);
 
-  if (pages.length <= 5) {
-    visiblePages = pages;
-  } else if (currentPage < 3) {
-    visiblePages = [...pages.slice(0, 3), ...pages.slice(-1)];
-  } else if (currentPage > pages.length - 2) {
-    visiblePages = [...pages.slice(0, 1), ...pages.slice(-3)];
-  } else {
-    visiblePages = [
-      ...pages.slice(0, 1),
-      ...pages.slice(currentPage - 2, currentPage + 1),
-      ...pages.slice(-1),
-    ];
-  }
-
-  const isNextDisabled = currentPage === pages.length;
-  const isPrevDisabled = currentPage === 1;
-
-  const handlePrevChange = () => {
-    onPageChange(currentPage - 1);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
-  const handleNextChange = () => {
-    onPageChange(currentPage + 1);
+  const handleLinkClick = (link: number) => {
+    if (link !== currentPage) {
+      onPageChange(link);
+      scrollToTop();
+    }
+  };
+
+  const handleClickToPrevious = (previousLink: number) => {
+    if (currentPage !== 1) {
+      onPageChange(previousLink);
+      scrollToTop();
+    }
+  };
+
+  const handleClickToNext = (nextLink: number) => {
+    if (currentPage !== numberOfLinks) {
+      onPageChange(nextLink);
+      scrollToTop();
+    }
   };
 
   return (
-    <div className="pagination">
-      <div className="pagination__content">
-        <button
-          type="button"
-          className="pagination__button"
-          disabled={isPrevDisabled}
-          onClick={handlePrevChange}
-          data-cy="paginationLeft"
-          aria-label="paginationLeft"
-        >
-          <ReactSVG src="img/icons/ArrowLeft.svg" />
-        </button>
+    <>
+      <ul className="pagination" data-cy="pagination">
+        <li className="page-item">
+          <button
+            data-cy="paginationLeft"
+            type="button"
+            className="page-button"
+            disabled={currentPage === 1}
+            onClick={() => handleClickToPrevious(currentPage - 1)}
+          >
+            <img
+              src="img/icons/arrowLeft.svg"
+              alt="arrowLeft"
+            />
+          </button>
+        </li>
 
-        <div className="pagination__pages">
-          {visiblePages.map((page) => (
-            <React.Fragment key={page}>
-              {page === pages.length
-                && currentPage < pages.length - 2
-                && pages.length > 5
-                && (
-                  <span className="pagination__dots">...</span>
-                )}
+        {getNumbers(1, numberOfLinks).map((link) => (
+          <li key={link} className="page-item">
+            <button
+              type="button"
+              data-cy="pageLink"
+              key={link}
+              className={link === currentPage
+                ? 'page-link active' : 'page-link'}
+              onClick={() => handleLinkClick(link)}
+            >
+              {link}
+            </button>
+          </li>
+        ))}
 
-              <button
-                type="button"
-                key={page}
-                className={classNames('pagination__page', {
-                  'pagination__page--active': page === currentPage,
-                })}
-                onClick={() => onPageChange(page)}
-              >
-                {page}
-              </button>
-
-              {page === 1
-                && currentPage > 3
-                && pages.length > 5
-                && (
-                  <span className="pagination__dots">...</span>
-                )}
-            </React.Fragment>
-          ))}
-        </div>
-
-        <button
-          type="button"
-          className="pagination__button"
-          disabled={isNextDisabled}
-          onClick={handleNextChange}
-          data-cy="paginationRight"
-          aria-label="paginationRight"
-        >
-          <ReactSVG src="img/icons/ArrowRight.svg" />
-        </button>
-      </div>
-    </div>
+        <li className="page-item">
+          <button
+            data-cy="paginationRight"
+            type="button"
+            className="page-button"
+            disabled={currentPage === numberOfLinks}
+            onClick={() => handleClickToNext(currentPage + 1)}
+          >
+            <img
+              src="img/icons/arrowRight.svg"
+              alt="arrowRight"
+            />
+          </button>
+        </li>
+      </ul>
+    </>
   );
 };

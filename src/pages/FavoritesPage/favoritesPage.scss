@@ -1,69 +1,75 @@
-@import "../../style-ultis/style-ultis";
-
-.favorites-page {
+.favoritesPage {
   display: flex;
   flex-direction: column;
-  gap: 40px;
   width: 100%;
+  margin-bottom: 80px;
 
-  &__top {
+  .pathInscription {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 8px;
+    width: 100%;
+    padding-left: calc((100% - 1136px) / 2);
+    margin-top: 24px;
+    margin-bottom: 40px;
+
+    .nav-logo {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      transition: transform 1s;
+
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+
+    &__arrowRight {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &__text {
+      color: var(--gray-secondary);
+      font-family: var(--body-text-14-font-family);
+      font-size: 12px;
+      font-style: var(--body-text-14-font-style);
+      font-weight: var(--body-text-14-font-weight);
+      letter-spacing: var(--body-text-14-letter-spacing);
+      line-height: normal;
+      white-space: nowrap;
+    }
   }
 
   &__title {
-    @include h1text;
+    width: 100%;
+    padding-left: calc((100% - 1136px) / 2);
+    margin-bottom: 8px;
   }
 
-  &__counter {
-    @include bodytext;
-
-    color: $color-secondary;
+  &__count {
+    width: 100%;
+    padding-left: calc((100% - 1136px) / 2);
+    color: var(--gray-secondary);
+    font-family: var(--body-text-14-font-family);
+    font-size: var(--body-text-14-font-size);
+    font-style: var(--body-text-14-font-style);
+    font-weight: var(--body-text-14-font-weight);
+    letter-spacing: var(--body-text-14-letter-spacing);
+    line-height: var(--body-text-14-line-height);
+    white-space: nowrap;
+    margin-bottom: 40px;
   }
 
-  &__clear-all {
-    @include squarebutton(32px);
-    @include smalltext;
-
-    width: max-content;
-    padding: 0 12px;
-    line-height: 1;
-  }
-
-  &__empty {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-  }
-
-  &__empty-description {
-    @include bodytext;
-  }
-
-  &__empty-title {
-    @include h1text;
-  }
-}
-
-.reset-fade {
-  &-enter {
-    opacity: 0;
-  }
-
-  &-enter-active {
-    opacity: 1;
-    transition: all 200ms ease-in-out;
-  }
-
-  &-exit {
-    opacity: 1;
-  }
-
-  &-exit-active {
-    opacity: 0;
-    transition: all 200ms ease-in-out;
+  &__empty-message {
+    padding-left: calc((100% - 1136px) / 2);
+    font-family: "Mont-Regular", sans-serif;
+    color: #313237;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
   }
 }

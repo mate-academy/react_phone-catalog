@@ -1,69 +1,124 @@
-@import "../../style-ultis/style-ultis";
-
 .footer {
-  box-shadow: 0 -1px 0 0 $color-elements;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  padding: 0 152px;
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 
-  &__container {
-    @include containerbase;
-  }
-
-  &__content {
+  .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    height: 96px;
-    padding: 0 24px;
+    .nav-logo {
+      height: 24px;
+      width: 40px;
 
-    @include onphone {
-      height: 72px;
+      img {
+        transition: transform 1s;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.5);
+        }
+      }
     }
-  }
 
-  &__links {
-    display: flex;
-    gap: 64px;
-
-    @include ontablet {
-      gap: 8px;
-    }
-
-    @include onphone {
-      flex-direction: column;
+    &__container {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      width: 100%;
     }
-  }
 
-  &__link {
-    display: block;
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 293px;
+      height: 11px;
 
-    @include uppercasetext;
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: "Mont-Bold", sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 11px;
+        letter-spacing: 0.48px;
+        color: #89939a;
+        position: relative;
+        display: inline-block;
 
-    padding: 42px 8px 43px;
+        &.active {
+          color: #313237;
 
-    @include onphone {
+          &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            border-bottom: 3px solid black;
+            position: absolute;
+            left: 0;
+            bottom: -24px;
+          }
+        }
+
+        transition: color 1s;
+
+        &:hover {
+          color: #313237;
+        }
+      }
+    }
+
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #b4bdc3;
+      transition: border 1s;
+
+      .arrow-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .back-to-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 118px;
+      height: 32px;
       padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: "Mont-SemiBold", sans-serif;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: #89939a;
+      transition: color 1s;
+
+      &:hover,
+      &:focus {
+        outline: none;
+        color: #313237;
+
+        .icon-container {
+          border: 1px solid var(--Gray-Primary, #313237);
+        }
+      }
     }
-  }
-
-  &__back-to-top {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  &__back-text {
-    cursor: pointer;
-
-    @include smalltext;
-
-    @include onphone {
-      display: none;
-    }
-  }
-
-  &__back-button {
-    @include squarebutton(32px);
   }
 }

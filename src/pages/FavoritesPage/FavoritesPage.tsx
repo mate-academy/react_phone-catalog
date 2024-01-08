@@ -1,75 +1,64 @@
-import { useContext } from 'react';
-import { useSearchParams } from 'react-router-dom';
-
-import { FavouritesContext } from '../../storage/favoriteContext';
-import { BreadCrumbs } from '../../components/BreadCrumps';
-import { ProductsList } from '../../components/ProductList';
-
-import './favoritesPage.scss';
-import { SearchTypes } from '../../types/search';
-import { filterQuery } from '../../components/ProductsLayot/ultis';
-import { NoSearchResults } from '../../components/NoSearchResolt';
+import { useEffect, useState } from 'react';
+import { NavLink, useOutletContext } from 'react-router-dom';
 import {
-  NotificationContext,
-  NotificationStatus,
-} from '../../storage/notificationContext';
+  NoSearchResults,
+} from '../../components/NoSearchResults/NoSearchResults';
+import { ProductsList } from '../../components/ProductstList/ProductsList';
+import { FavoritesContextType } from '../../types/FavoritesContextType';
+import { Product } from '../../types/Product';
+import './FavoritesPage.scss';
 
-export const FavoritesPage: React.FC = () => {
-  const { favorites, setFavorites } = useContext(FavouritesContext);
-  const [searchParams] = useSearchParams();
-  const searchQuery = searchParams.get(SearchTypes.Query) || '';
-  const filteredFavorites = filterQuery(favorites, searchQuery);
-  const { setNotification } = useContext(NotificationContext);
+export const FavoritesPage = () => {
+  const { favoritesItems, appliedQuery }
+    = useOutletContext<FavoritesContextType>();
 
-  const handleFavoritesReset = () => {
-    setFavorites([]);
-    setNotification({
-      message: 'Favorites are cleared', color: NotificationStatus.Error,
-    });
-  };
+  const [displayedFavorites, setDisplayedFavorites]
+    = useState<Product[]>([]);
+
+  useEffect(() => {
+    let result = [...favoritesItems];
+
+    if (appliedQuery) {
+      result = result.filter(product => {
+        return product.name.toLowerCase().includes(appliedQuery.toLowerCase());
+      });
+    }
+
+    setDisplayedFavorites(result);
+  }, [appliedQuery, favoritesItems]);
 
   return (
-    <div className="favorites-page">
-      <BreadCrumbs />
-
-      <div className="favorites-page__top">
-        <h1 className="favorites-page__title">Favourites</h1>
-
-        <p className="favorites-page__counter">
-          {`${favorites.length} items`}
-          {searchQuery && ` / ${filteredFavorites.length} results`}
-        </p>
-
-        {favorites.length > 0 && !searchQuery && (
-          <button
-            type="button"
-            className="favorites-page__clear-all"
-            onClick={handleFavoritesReset}
+    <div className="favoritesPage">
+      <div className="pathInscription">
+        <div className="nav-logo">
+          <NavLink
+            to="/"
           >
-            Clear all
-          </button>
-        )}
-      </div>
-
-      {favorites.length > 0 ? (
-        <>
-          {filteredFavorites.length > 0 ? (
-            <ProductsList
-              products={filteredFavorites}
-            />
-          ) : (
-            <NoSearchResults />
-          )}
-        </>
-      ) : (
-        <div className="favorites-page__empty">
-          <h1 className="favorites-page__empty-title">
-            Your favorites are empty...
-          </h1>
-          <p className="cart-page__empty-description">
-            You can always fill it with our products :&#41;
-          </p>
+            <img src="img/icons/Home.svg" alt="home-logo" />
+          </NavLink>
         </div>
+        <img
+          src="img/icons/ArrowRight.svg"
+          alt="arrowRight"
+          className="pathInscription__arrowRight"
+        />
+        <p className="pathInscription__text">Favourites</p>
+      </div>
+      <h1 className="favoritesPage__title">Favourites</h1>
+
+      {!favoritesItems.length && !appliedQuery && (
+        <p className="favoritesPage__empty-message">Your favourites is empty</p>
+      )}
+
+      {!displayedFavorites.length && appliedQuery && (
+        <NoSearchResults />
+      )}
+
+      {displayedFavorites.length > 0 && (
+        <>
+          <p className="favoritesPage__count">{`${displayedFavorites.length} item${displayedFavorites.length > 1 ? 's' : ''}`}</p>
+          <ProductsList products={displayedFavorites} />
+        </>
       )}
     </div>
   );

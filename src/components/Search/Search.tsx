@@ -1,107 +1,68 @@
-import {
-  useCallback, useRef, useState,
-} from 'react';
+import React from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
+import { getSearchWith, SearchParams } from '../../utils/searchHelper';
+import './Search.scss';
 
-import { debounce } from '../../helpers/useDebounce';
-import { getSearchParams } from '../ProductsLayot/ultis';
+type Props = {
+  applyQuery: (arg: string) => void;
+};
 
-import { Params } from '../../types/params';
-import { SearchTypes } from '../../types/search';
+export const Search: React.FC<Props> = ({
+  applyQuery,
+}) => {
+  const currentPath = useLocation().pathname.slice(1);
 
-import './search.scss';
-
-const pagesToDisplay = ['/phones', '/tablets', '/accessories', '/favorites'];
-
-export const Search: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get(SearchTypes.Query) || '';
+  const query = searchParams.get('query') || '';
 
-  const [query, setQuery] = useState(searchQuery);
-  const [appliedQuery, setAppliedQuery] = useState(searchQuery);
+  function setSearchWith(params: SearchParams) {
+    const searchString = getSearchWith(searchParams, params);
+    const updatedSearchParams = new URLSearchParams(searchString);
 
-  const { pathname } = useLocation();
+    updatedSearchParams.set('page', '1');
 
-  const searchInput = useRef<HTMLInputElement>(null);
+    setSearchParams(updatedSearchParams);
+  }
 
-  const setSearch = (params: Params) => {
-    const search = getSearchParams(params, searchParams);
-
-    setSearchParams(search);
-  };
-
-  const handleAppliedChange = (
-    newQuery: string,
-  ) => {
-    setAppliedQuery(newQuery);
-
-    setSearch({
-      [SearchTypes.Query]: newQuery || null,
-      [SearchTypes.Page]: '1',
-    });
-  };
-
-  const applyQuery = useCallback(debounce(handleAppliedChange, 1000), []);
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+  function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearchWith({ query: event.target.value || null });
     applyQuery(event.target.value);
-  };
-
-  const handleSearchFocus = () => {
-    if (searchInput.current) {
-      searchInput.current.focus();
-    }
-  };
-
-  const handleResetSearch = () => {
-    setSearch({
-      [SearchTypes.Query]: null,
-      [SearchTypes.Page]: '1',
-    });
-
-    setQuery('');
-    applyQuery('');
-  };
-
-  if (!pagesToDisplay.some(page => page === pathname)) {
-    return null;
   }
 
   return (
-    <div
-      className="search"
-      aria-hidden
-    >
+    <label className="search" htmlFor="search-input">
       <input
+        className="nav-search"
         type="text"
-        className="search__input"
         name="search"
-        placeholder={`Search in ${pathname.split('/')[1]}...`}
-        ref={searchInput}
+        id="search-input"
+        placeholder={`Search in ${currentPath}...`}
         value={query}
-        onChange={handleSearchChange}
+        onChange={handleQueryChange}
       />
-      {appliedQuery && null}
-      <div className="search__icon-container">
-        {query ? (
-          <div
-            onClick={handleResetSearch}
-            data-cy="searchDelete"
-            aria-hidden
-          >
-            <ReactSVG src="img/icons/Close.svg" />
-          </div>
-        ) : (
-          <div
-            onClick={handleSearchFocus}
-            aria-hidden
-          >
-            <ReactSVG src="img/icons/Search.svg" />
-          </div>
-        )}
-      </div>
-    </div>
+
+      {!query ? (
+        <img
+          src="img/icons/search.svg"
+          alt="search"
+          className="search-icon"
+        />
+      ) : (
+        <button
+          data-cy="searchDelete"
+          type="button"
+          className="search__delete-button"
+          onClick={() => {
+            setSearchWith({ query: null });
+            applyQuery('');
+          }}
+        >
+          <img
+            src="img/icons/DarkClose.svg"
+            alt="delete-button"
+          />
+        </button>
+      )}
+    </label>
   );
 };

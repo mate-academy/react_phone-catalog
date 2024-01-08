@@ -1,86 +1,69 @@
-/* eslint-disable import/no-webpack-loader-syntax */
-import React, { useContext } from 'react';
-import { ReactSVG } from 'react-svg';
+import { NavLink } from 'react-router-dom';
+import './Footer.scss';
 
-import { Logo } from '../Logo';
-import { handleScrollToTop } from './ultis';
+export const Footer = () => {
+  const setActiveClass = ({ isActive }: { isActive: boolean }) => {
+    return isActive ? 'active' : '';
+  };
 
-import './footer.scss';
-import { ModalContext } from '../../storage/modalContext';
-import {
-  NotificationContext,
-  NotificationStatus,
-} from '../../storage/notificationContext';
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
-export const Footer: React.FC = () => {
-  const { setIsOpen } = useContext(ModalContext);
-  const { setNotification } = useContext(NotificationContext);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleBackToTop();
+    }
+  };
 
   return (
+
     <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__content">
-          <Logo />
-
-          <ul className="footer__links">
-            <li className="footer__item">
-              <a
-                href="/"
-                className="footer__link"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Github
-              </a>
-            </li>
-            <li className="footer__item">
-              <a
-                href="/"
-                className="footer__link"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsOpen(true);
-                }}
-              >
-                Contacts
-              </a>
-            </li>
-            <li className="footer__item">
-              <a
-                href="/"
-                className="footer__link"
-                onClick={(e) => {
-                  e.preventDefault();
-
-                  setNotification({
-                    message: 'We are sorry, '
-                      + 'but this feature is not implemented yet',
-                    color: NotificationStatus.Warning,
-                  });
-                }}
-              >
-                Rights
-              </a>
-            </li>
-          </ul>
-
-          <div className="footer__back-to-top">
-            <label htmlFor="back-to-top" className="footer__back-text">
-              Back to top
-            </label>
-
-            <button
-              type="button"
-              className="footer__back-button"
-              aria-label="back-to-top"
-              id="back-to-top"
-              onClick={handleScrollToTop}
+      <nav className="navbar">
+        <div className="navbar__container">
+          <div className="nav-logo">
+            <NavLink
+              to="/"
+              onClick={handleBackToTop}
             >
-              <ReactSVG src="img/icons/ArrowUp.svg" />
-            </button>
+              <img src="img/icons/logo.svg" alt="logo" />
+            </NavLink>
           </div>
+          <div className="nav-links">
+            <a
+              href="https://github.com/Liubomyr19/react_phone-catalog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </a>
+            <NavLink to="/contacts" className={setActiveClass}>
+              Contacts
+            </NavLink>
+            <NavLink to="/rights" className={setActiveClass}>Rights</NavLink>
+          </div>
+          <button
+            type="button"
+            className="back-to-top"
+            onClick={handleBackToTop}
+            onKeyDown={handleKeyDown}
+            aria-label="Back to top"
+          >
+            Back to top
+            <div className="icon-container">
+              <img
+                src="img/icons/arrowRight.svg"
+                alt="Go to top"
+                className="arrow-icon"
+                style={{ transform: 'rotate(-90deg)' }}
+              />
+            </div>
+          </button>
         </div>
-      </div>
+      </nav>
     </footer>
   );
 };

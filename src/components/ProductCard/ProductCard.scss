@@ -1,0 +1,144 @@
+.product-card {
+  border: 1px solid #ddd;
+  padding: 0 24px;
+  width: 272px;
+  height: 507px;
+  box-sizing: border-box;
+  text-align: left;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &__link {
+    text-decoration: none;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+  }
+
+  img {
+    width: 208px;
+    height: 208px;
+    margin: 32px 8px 24px;
+    transition: transform 1s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .product-name {
+    font-family: "Mont-Regular", sans-serif;
+    min-height: 42px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    margin-bottom: 6.5px;
+  }
+
+  .price {
+    padding-bottom: 6.5px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 16px;
+
+    .old-price {
+      font-family: "Mont-Regular", sans-serif;
+      font-weight: 500;
+      text-decoration: line-through;
+      color: #89939a;
+      line-height: 28px;
+      margin-left: 8px;
+    }
+  }
+
+  .specs {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+    font-family: "Mont-Regular", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: #89939a;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .specs__value {
+      color: #313237;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+  }
+
+  .add-to-cart {
+    width: 176px;
+    height: 40px;
+    background: #313237;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: "Mont-Regular", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 21px;
+    color: var(--gray-white);
+    transition: box-shadow 1s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--selected {
+      color: var(--Green-2, #27ae60);
+      border: 1px solid var(--gray-icons-placeholders, #b4bdc3);
+      background: none;
+      transition: border-color 1s;
+    }
+
+    &--selected:hover {
+      border-color: #313237;
+    }
+  }
+
+  .favorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    cursor: pointer;
+    color: #ff4141;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #b4bdc3;
+    transition: border-color 1s;
+
+    &__img {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+    }
+
+    &:hover {
+      border-color: #313237;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+}

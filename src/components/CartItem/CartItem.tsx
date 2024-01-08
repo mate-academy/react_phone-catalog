@@ -1,99 +1,77 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { ReactSVG } from 'react-svg';
-
-import { CartContext } from '../../storage/cartContext';
-import { CartItemType } from '../../types/cartItemType';
-
-import './cartItem.scss';
+import { useOutletContext } from 'react-router-dom';
+import { FavoritesContextType } from '../../types/FavoritesContextType';
+import { Product } from '../../types/Product';
+import './CartItem.scss';
 
 type Props = {
-  item: CartItemType;
+  product: Product;
 };
 
-export const CartItem: React.FC<Props> = ({ item }) => {
-  const { setCart } = useContext(CartContext);
-
-  const isMinusDisabled = item.quantity === 1;
-  const isPlusDisabled = item.quantity === 10;
-
-  const handleDelete = () => {
-    setCart((prev) => prev.filter((cartItem) => cartItem.id !== item.id));
-  };
-
-  const handlePlusQuantity = () => {
-    setCart((prev) => prev.map((cartItem) => {
-      return cartItem.id === item.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem;
-    }));
-  };
-
-  const handleMinusQuantity = () => {
-    setCart((prev) => prev.map((cartItem) => {
-      return cartItem.id === item.id
-        ? { ...cartItem, quantity: cartItem.quantity - 1 }
-        : cartItem;
-    }));
-  };
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const {
+    removeFromCart,
+    incrementQuantity,
+    decrementQuantity,
+  }
+    = useOutletContext<FavoritesContextType>();
 
   return (
-    <div className="cart-item">
-      <div
-        className="cart-item__close"
-        onClick={handleDelete}
+    <div className="cartItem">
+      <button
         data-cy="cartDeleteButton"
-        aria-hidden
+        type="button"
+        className="cartItem__delete-button"
+        onClick={() => product && removeFromCart(product.id)}
       >
-        <ReactSVG src="img/icons/Close.svg" />
-      </div>
+        <img
+          src="img/icons/close.svg"
+          alt="delete-button"
+        />
+      </button>
 
-      <Link
-        to={`/${item.product.category}/${item.product.itemId}`}
-        style={{ display: 'block' }}
-      >
-        <div className="cart-item__preview">
+      <img
+        src={`${product.image}`}
+        alt={product.name}
+        className="cartItem__img"
+      />
+
+      <p className="cartItem__name">{product.name}</p>
+
+      <div className="cartItem__counter">
+        <button
+          type="button"
+          className="counter-button"
+          disabled={product.quantity === 1 || !product.quantity}
+          onClick={() => product && decrementQuantity(product.id)}
+        >
           <img
-            src={item.product.image}
-            alt={item.product.name}
-            className="cart-item__preview-img"
+            src={product.quantity === 1 || !product.quantity
+              ? 'img/icons/Minus.svg' : 'img/icons/MinusDark.svg'}
+            alt="counter-button"
           />
-        </div>
-      </Link>
-
-      <Link
-        to={`/${item.product.category}/${item.product.itemId}`}
-        style={{ display: 'block', flexGrow: 1 }}
-      >
-        <p className="cart-item__title">{item.product.name}</p>
-      </Link>
-
-      <div className="cart-item__quantity-box">
+        </button>
+        <span
+          data-cy="productQuantity"
+          className="counter-quantity"
+        >
+          {product.quantity || 1}
+        </span>
         <button
           type="button"
-          className="cart-item__quantity-button"
-          onClick={handleMinusQuantity}
-          disabled={isMinusDisabled}
-          aria-label="isMinusDisabled"
+          className="counter-button"
+          onClick={() => incrementQuantity(product.id)}
         >
-          <ReactSVG src="img/icons/Minus.svg" />
+          <img
+            src="img/icons/Plus.svg"
+            alt="counter-button"
+          />
         </button>
-
-        <span className="cart-item__quantity">{item.quantity}</span>
-
-        <button
-          type="button"
-          className="cart-item__quantity-button"
-          onClick={handlePlusQuantity}
-          disabled={isPlusDisabled}
-          aria-label="isPlusDisabled"
-        >
-          <ReactSVG src="img/icons/Plus.svg" />
-        </button>
-
       </div>
 
-      <span className="cart-item__price">{`$${item.product.price}`}</span>
+      <h2 className="price">
+        $
+        {product.price * (product.quantity || 1)}
+      </h2>
     </div>
   );
 };

@@ -1,154 +1,92 @@
-import { useContext, useState } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useEffect, useState } from 'react';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import { CartItem } from '../../components/CartItem/CartItem';
+import { FavoritesContextType } from '../../types/FavoritesContextType';
+import { Product } from '../../types/Product';
+import './CartPage.scss';
 
-import { BackButton } from '../../components/BackButton';
-import { CartItem } from '../../components/CartItem';
-
-import { CartContext } from '../../storage/cartContext';
-import {
-  NotificationContext,
-  NotificationStatus,
-} from '../../storage/notificationContext';
-
-import './cartPage.scss';
-
-export const CartPage: React.FC = () => {
-  const { cart, setCart } = useContext(CartContext);
-  const [isCartFilled, setIsCartFilled] = useState(cart.length > 0);
-  const [isMessageShown, setIsMessageShown] = useState(false);
-  const { setNotification } = useContext(NotificationContext);
-
-  const totalPrice = cart.reduce((acc, { quantity, product }) => {
-    return acc + product.price * quantity;
-  }, 0);
-
-  const totalQuantity = cart.reduce((acc, { quantity }) => {
-    return acc + quantity;
-  }, 0);
-
-  const isResetShown = totalQuantity !== cart.length;
-
-  const handleCheckoutMessage = () => {
-    setIsMessageShown(true);
-
-    setNotification({
-      message: 'We are sorry, but this feature is not implemented yet',
-      color: NotificationStatus.Warning,
-    });
-
-    setTimeout(() => {
-      setIsMessageShown(false);
-    }, 2000);
+export const CartPage = () => {
+  const [checkoutMessage, setCheckoutMessage] = useState('');
+  const navigate = useNavigate();
+  const {
+    cartItems,
+    totalCartCount,
+    totalPrice,
+  }
+    = useOutletContext<FavoritesContextType>();
+  const handleBackButtonClick = () => {
+    navigate(-1);
   };
 
-  const handleCartReset = () => {
-    setCart([]);
-    setNotification({
-      message: 'Cart is cleared', color: NotificationStatus.Error,
-    });
-
-    setTimeout(() => {
-      setIsCartFilled(false);
-    }, 300);
+  const handleCheckoutClick = () => {
+    setCheckoutMessage('We are sorry, but this feature is not implemented yet');
   };
 
-  const handleQuantityReset = () => {
-    setCart((prev) => prev.map((item) => {
-      return {
-        ...item,
-        quantity: 1,
-      };
-    }));
-  };
+  useEffect(() => {
+    let timer: number | undefined;
+
+    if (checkoutMessage) {
+      timer = window.setTimeout(() => {
+        setCheckoutMessage('');
+      }, 3000);
+    }
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [checkoutMessage]);
 
   return (
-    <div className="cart-page">
-      <div className="cart-page__back">
-        <BackButton />
-      </div>
+    <div className="cartPage">
+      <button
+        type="button"
+        className="cartPage__back-button"
+        data-cy="backButton"
+        onClick={handleBackButtonClick}
+      >
+        <img
+          src="img/icons/arrowRight.svg"
+          alt="arrowLeft"
+          className="pathInscription__arrowRight"
+          style={{ transform: 'rotate(-90deg)' }}
+        />
+        <p className="pathInscription__text">Back</p>
+      </button>
 
-      <h1 className="cart-page__title">Cart</h1>
+      <h1 className="cartPage__title">Cart</h1>
 
-      {isCartFilled && (
-        <div className="cart-page__actions">
-          <button
-            type="button"
-            className="cart-page__actions-button"
-            onClick={handleCartReset}
-          >
-            Clear all
-          </button>
+      <div className="cartPage__container">
+        {cartItems && cartItems.length > 0 ? (
+          <>
+            <div data-cy="cartList" className="cartPage__cartList">
+              {cartItems.map((product: Product) => (
+                <CartItem key={product.id} product={product} />
+              ))}
+            </div>
 
-          <CSSTransition
-            in={isResetShown}
-            timeout={300}
-            classNames="reset-fade"
-            unmountOnExit
-          >
-            <button
-              type="button"
-              className="cart-page__actions-button"
-              onClick={handleQuantityReset}
-            >
-              Reset quantity
-            </button>
-          </CSSTransition>
-        </div>
-      )}
-
-      {isCartFilled ? (
-        <div className="cart-page__grid">
-          <TransitionGroup className="cart-page__cart-items">
-            {cart.map((cartItem) => (
-              <CSSTransition
-                key={cartItem.id}
-                timeout={300}
-                classNames="cart-item-fade"
-                onExited={() => {
-                  if (cart.length === 1) {
-                    setIsCartFilled(false);
-                  }
-                }}
-              >
-                <CartItem key={cartItem.id} item={cartItem} />
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-
-          <div className="cart-page__cart-checkout-action">
-            <div className="cart-page__cart-checkout">
-              <div className="cart-page__total">
-                <span className="cart-page__total-price">{`$${totalPrice}`}</span>
-
-                <span
-                  className="cart-page__total-quantity"
-                  data-cy="productQauntity"
-                >
-                  {`Total for ${totalQuantity} items`}
-                </span>
-              </div>
-
-              <div className="cart-page__underline" />
+            <div className="cartPage__total">
+              <h1>
+                $
+                {totalPrice}
+              </h1>
+              <p className="cartPage__total-text">{`Total for ${totalCartCount} item${totalCartCount > 1 ? 's' : ''}`}</p>
 
               <button
                 type="button"
-                className="cart-page__checkout-button"
-                onClick={handleCheckoutMessage}
-                disabled={isMessageShown}
+                className="cartPage__checkout"
+                onClick={handleCheckoutClick}
               >
                 Checkout
               </button>
+              {checkoutMessage && (
+                <p className="cartPage__checkout-message">{checkoutMessage}</p>
+              )}
             </div>
-          </div>
-        </div>
-      ) : (
-        <div className="cart-page__empty">
-          <h1 className="cart-page__empty-title">Your cart is empty...</h1>
-          <p className="cart-page__empty-description">
-            You can always fill it with our products :&#41;
-          </p>
-        </div>
-      )}
+          </>
+        ) : (
+          <p className="cartPage__empty-message">Your cart is empty</p>
+        )}
+      </div>
     </div>
   );
 };

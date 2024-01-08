@@ -1,17 +1,7 @@
-import classNames from 'classnames';
-import './loader.scss';
+import './Loader.scss';
 
-type Props = {
-  fullPage?: boolean,
-};
-
-export const Loader: React.FC<Props> = ({ fullPage }) => {
-  return (
-    <div className={classNames('loader', {
-      'loader--full-page': fullPage,
-    })}
-    >
-      <div className="loader__content" />
-    </div>
-  );
-};
+export const Loader = () => (
+  <div className="Loader" data-cy="loader">
+    <div className="Loader__content" />
+  </div>
+);

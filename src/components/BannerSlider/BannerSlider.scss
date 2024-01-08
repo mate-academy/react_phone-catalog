@@ -1,0 +1,114 @@
+.banner-slider {
+  width: 1040px;
+  height: 432px;
+  margin: 40px auto 72px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+    transition: transform 1s ease-out;
+    will-change: transform;
+    height: 400px;
+  }
+
+  .slider-img {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .box-dots {
+    display: flex;
+    align-self: flex-end;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    height: 24px;
+    width: 80px;
+  }
+
+  .box-dots .dots {
+    height: 24px;
+    width: 80px;
+  }
+
+  .box-dots .group {
+    height: 24px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 24px;
+  }
+
+  .box-dots .rectangle-wrapper {
+    height: 24px;
+    left: 28px;
+    position: absolute;
+    top: 0;
+    width: 24px;
+  }
+
+  .box-dots .div {
+    background-color: var(--gray-elements);
+    height: 4px;
+    left: 5px;
+    position: relative;
+    top: 10px;
+    width: 14px;
+  }
+
+  .box-dots .active {
+    background-color: var(--gray-primary);
+  }
+
+  .box-dots .div-wrapper {
+    height: 24px;
+    left: 56px;
+    position: absolute;
+    top: 0;
+    width: 24px;
+  }
+}
+
+.banner-buttons {
+  h1 {
+    flex-grow: 1;
+  }
+
+  .slider-controls {
+    flex-shrink: 0;
+  }
+
+  button {
+    width: 32px;
+    height: 400px;
+    position: absolute;
+    background-color: #fafbfc;
+    border: 1px solid #145784;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 2;
+    transition: border-color 1s;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:first-of-type {
+      left: calc(50vw - 568px);
+    }
+
+    &:last-of-type {
+      right: calc(50vw - 568px);
+    }
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}

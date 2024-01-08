@@ -1,50 +1,84 @@
-body {
-  margin: 0;
-  font-family: Mont, sans-serif;
-  font-weight: normal;
+@import "styles/fonts/fonts.scss";
+
+* {
   box-sizing: border-box;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   margin: 0;
 }
 
-p,
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+h1 {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: #313237;
 }
 
-img {
-  user-select: none;
+h2 {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: #313237;
 }
 
-svg {
-  display: block;
+h3 {
+  font-family: "Mont-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: #313237;
 }
 
-button {
-  cursor: pointer;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
+:root {
+  --body-text-14-font-family: "Mont-Regular", sans-serif;
+  --body-text-14-font-size: 14px;
+  --body-text-14-font-style: normal;
+  --body-text-14-font-weight: 400;
+  --body-text-14-letter-spacing: 0.01px;
+  --body-text-14-line-height: 21px;
+  --buttons-font-family: "Mont-SemiBold", sans-serif;
+  --buttons-font-size: 14px;
+  --buttons-font-style: normal;
+  --buttons-font-weight: 600;
+  --buttons-letter-spacing: 0;
+  --buttons-line-height: 21px;
+  --gray-background: rgba(250, 251, 252, 1);
+  --gray-elements: rgba(226, 230, 233, 1);
+  --gray-icons-placeholders: rgba(180, 189, 195, 1);
+  --gray-primary: rgba(49, 50, 55, 1);
+  --gray-secondary: rgba(137, 147, 154, 1);
+  --gray-white: rgba(255, 255, 255, 1);
+  --h1-font-family: "Mont-Bold", sans-serif;
+  --h1-font-size: 32px;
+  --h1-font-style: normal;
+  --h1-font-weight: 700;
+  --h1-letter-spacing: -0.32px;
+  --h1-line-height: normal;
+  --h2-font-family: "Mont-Bold", sans-serif;
+  --h2-font-size: 22px;
+  --h2-font-style: normal;
+  --h2-font-weight: 700;
+  --h2-line-height: 140%;
+  --h3-font-family: "Mont-SemiBold", sans-serif;
+  --h3-font-size: 20px;
+  --h3-font-style: normal;
+  --h3-font-weight: 600;
+  --h3-letter-spacing: 0.01px;
+  --h3-line-height: normal;
+  --small-text-12-font-family: "Mont-SemiBold", sans-serif;
+  --small-text-12-font-size: 12px;
+  --small-text-12-font-style: normal;
+  --small-text-12-font-weight: 600;
+  --small-text-12-letter-spacing: 0.01px;
+  --small-text-12-line-height: normal;
+  --uppercase-font-family: "Mont-Bold", sans-serif;
+  --uppercase-font-size: 12px;
+  --uppercase-font-style: normal;
+  --uppercase-font-weight: 700;
+  --uppercase-letter-spacing: 0.48px;
+  --uppercase-line-height: 11px;
 }
 
-.app {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.main {
+  min-height: calc(100vh - 64px - 96px);
 }

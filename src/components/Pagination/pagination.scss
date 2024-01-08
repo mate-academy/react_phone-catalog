@@ -1,38 +1,65 @@
-@import "../../style-ultis/style-ultis";
-
 .pagination {
   display: flex;
-  justify-content: center;
+  list-style: none;
+  padding: 0;
 
-  &__content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
+  .page-item {
+    margin: 0 2px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
 
-  &__button {
-    @include squarebutton(32px);
-
-    @include onphone {
-      display: none;
+    &.active {
+      font-weight: bold;
     }
-  }
 
-  &__pages {
-    display: flex;
-    gap: 8px;
-  }
+    .page-button {
+      display: block;
+      width: 32px;
+      height: 32px;
+      background-color: #fafbfc;
+      border: 1px solid #b4bdc3;
+      cursor: pointer;
+      transition: border-color 1s;
 
-  &__page {
-    @include squarebutton(32px);
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
 
-    &--active {
-      @include squarebuttonselected;
+      &:hover {
+        border-color: #313237;
+      }
     }
-  }
 
-  &__dots {
-    display: flex;
-    align-items: flex-end;
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      background-color: #fafbfc;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #e2e6e9;
+      color: #000;
+      text-align: center;
+      text-decoration: none;
+      font-family: "Mont-Regular", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+      transition: border-color 1s;
+
+      &:hover {
+        border-color: #313237;
+      }
+
+      &.active {
+        background-color: #313237;
+        color: var(--gray-white, #fff);
+      }
+    }
   }
 }

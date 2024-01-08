@@ -1,15 +1,13 @@
-import './noresults.scss';
+import './NoResults.scss';
 
-export const NoResults: React.FC = () => {
+type Props = {
+  productName: string;
+};
+
+export const NoResults: React.FC<Props> = ({ productName }) => {
   return (
-    <div className="no-results">
-      <h2 className="no-results__title">
-        Seems like products are out of stock...
-      </h2>
-
-      <p className="no-results__description">
-        Our team is already working on supplying. Please, come back later.
-      </p>
-    </div>
+    <p className="no-results">
+      {`${productName} not found`}
+    </p>
   );
 };
