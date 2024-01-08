@@ -1,0 +1,59 @@
+@import "../../styles/main";
+
+.SortDropdown {
+  position: relative;
+
+  &__label {
+    @extend %small-text;
+
+    color: $secondary;
+  }
+
+  &__triger {
+    width: 176px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    border: 1px solid $icons;
+    background-color: $surface2;
+    padding: 12px;
+
+    @extend %button;
+
+    color: $white;
+
+    &:hover {
+      border-color: $secondary;
+    }
+  }
+
+  &__select {
+    position: absolute;
+    width: 176px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+    padding: 8px 0;
+    background-color: $black;
+    z-index: 1;
+    border: 1px solid $elements;
+
+    &-option {
+      height: 32px;
+      padding-left: 12px;
+      line-height: 32px;
+
+      @extend %body;
+
+      color: $secondary;
+      text-align: left;
+
+      &:hover {
+        background-color: $surface2;
+        color: $white;
+      }
+    }
+  }
+}

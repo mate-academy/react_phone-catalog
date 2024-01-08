@@ -1,68 +1,112 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import './Header.scss';
-import { useContext, useState } from 'react';
-import classNames from 'classnames';
+import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-
-import { Search } from '../Search';
-import { Navigation } from '../Navigation';
-import { GlobalContext } from '../../store';
-import { MobileMenu } from '../../pages/MobileMenu';
+import {
+  getIconNavClassName,
+  getNavClassName,
+} from '../../helpers/getNavClassName';
+import { useAppSelector } from '../../app/hooks';
+import { MobileMenu } from '../../pages/MobileMenu/MobileMenu';
+import { SearchField } from '../SearchField/SearchField';
 
 export const Header = () => {
-  const { pathname } = useLocation();
-  const { favourites, cart } = useContext(GlobalContext);
   const [isMenuShown, setIsMenuShown] = useState(false);
+  const { pathname } = useLocation();
 
-  const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
-    { 'navigation__link-active': isActive },
-  );
+  const isSearchShown = pathname === '/phones'
+  || pathname === '/tablets'
+  || pathname === '/accessories'
+  || pathname === '/favourites';
+
+  const isCartOpen = pathname !== '/cart';
+
+  const favouriteProducts = useAppSelector((state) => state.favourites.items);
+
+  const cartProducts = useAppSelector((state) => state.cartProducts.items);
 
   return (
-    <header className="header">
-      <div className="header__left">
-        <Link to="/" className="header__logo">
-          <div className="header__logo-image" />
+    <header className="Header" id="header">
+      <div className="Header__container-left">
+        <button
+          type="button"
+          className="Header__burger"
+          onClick={() => setIsMenuShown(true)}
+        >
+          <span className="Header__burger-span Header__burger-span--one" />
+          <span className="Header__burger-span Header__burger-span--two" />
+          <span className="Header__burger-span Header__burger-span--three" />
+        </button>
+
+        <Link to="/" className="Header__logo">
+          <div className="Header__logo-image" />
         </Link>
-        <Navigation />
+
+        <MobileMenu isMenuShown={isMenuShown} setIsMenuShown={setIsMenuShown} />
+
+        {isCartOpen && (
+          <nav
+            className="Header__navigation"
+            role="navigation"
+            aria-label="main navigation"
+          >
+            <ul className="Header__navigation-list">
+              <li className="Header__navigation-item">
+                <NavLink className={getNavClassName} to="/">
+                  Home
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink className={getNavClassName} to="/phones">
+                  Phones
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink className={getNavClassName} to="/tablets">
+                  Tablets
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink className={getNavClassName} to="/accessories">
+                  Accessories
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
+        )}
       </div>
 
-      <button
-        type="button"
-        aria-label="burger"
-        className="header__burger"
-        onClick={() => setIsMenuShown(true)}
-      >
-        <span className="header__burger-span header__burger-span--one" />
-        <span className="header__burger-span header__burger-span--two" />
-        <span className="header__burger-span header__burger-span--three" />
-      </button>
+      <div className="Header__container-right">
+        {isSearchShown && <SearchField />}
 
-      <MobileMenu isMenuShown={isMenuShown} setIsMenuShown={setIsMenuShown} />
-
-      <div className="header__right">
-        <div className="header__search">
-          {pathname === '/phones' && <Search />}
-          {pathname === '/tablets' && <Search />}
-          {pathname === '/accessories' && <Search />}
-          {pathname === '/favourites' && <Search />}
-        </div>
-
-        <div className="header__icons">
-          <NavLink to="/favourites" className={getLinkClass}>
-            <div className="header__icons-icon icon icon-fav">
-              {favourites.length !== 0 && (
-                <span className="icon-amount">{favourites.length}</span>
+        {isCartOpen && (
+          <NavLink to="/favourites" className={getIconNavClassName}>
+            <div className="Header__icon-link-image icon icon--favourites">
+              {!!favouriteProducts.length && (
+                <div className="Header__icon-link-fav">
+                  <span className="Header__icon-link-fav-amount">
+                    {favouriteProducts.length}
+                  </span>
+                </div>
               )}
             </div>
           </NavLink>
-          <NavLink to="/cart" className={getLinkClass}>
-            <div className="icon icon-cart header__icons-icon">
-              {cart.length !== 0 && (
-                <span className="icon-amount">{cart.length}</span>
-              )}
-            </div>
-          </NavLink>
-        </div>
+        )}
+
+        <NavLink to="/cart" className={getIconNavClassName}>
+          <div className="Header__icon-link-image icon icon--cart">
+            {!!cartProducts.length && (
+              <div className="Header__icon-link-fav">
+                <span className="Header__icon-link-fav-amount">
+                  {cartProducts.length}
+                </span>
+              </div>
+            )}
+          </div>
+        </NavLink>
       </div>
     </header>
   );

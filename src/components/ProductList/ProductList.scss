@@ -1,9 +1,21 @@
 @import "../../styles/main";
 
-.product-list {
+.ProductList {
   width: 100%;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-block: 40px;
+
+  @include on-mobile {
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+  }
 }

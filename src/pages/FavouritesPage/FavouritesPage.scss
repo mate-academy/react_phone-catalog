@@ -8,40 +8,31 @@
 
   &__title {
     @extend %h1;
+    color: $white;
 
     margin-top: 40px;
+
+    @include on-tablet {
+      margin-top: 20px;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 30px;
+    gap: 40px;
   }
 
   &__amount {
-    font-family: Mont-Regular, sans-serif;
     margin-top: 8px;
-    color: $main-color;
-    font-size: 14px;
-    line-height: 21px;
-  }
-}
 
-.empty {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin-top: 24px;
-  border-radius: 10px;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+    @extend %body;
 
-  &__message {
-    @extend %h2;
+    color: $secondary;
 
-    margin: 0 auto;
+    @include on-tablet {
+      font-size: 12px;
+    }
   }
 }

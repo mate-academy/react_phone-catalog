@@ -1,63 +1,63 @@
 @import "../../styles/main";
 
-.header {
-  font-family: Mont-Bold, sans-serif;
-  padding-left: 25px;
+.Header {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-transform: uppercase;
-  font-size: 12px;
-  border-bottom: 1px solid $light-gray;
-  margin-bottom: 40px;
+  border-bottom: 1px solid $elements;
 
   @include on-tablet {
     height: 48px;
-    position: relative;
-  }
-
-  &__left {
-    display: flex;
-    align-items: center;
-    gap: 64px;
-  }
-
-  &__right {
-    display: flex;
   }
 
   &__logo {
     display: flex;
+    margin-left: 24px;
+    transition-duration: $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
     &-image {
-      background-image: url("../../assets/icons/Logo.svg");
-      width: 40px;
-      height: 24px;
+      height: 28px;
+      width: 80px;
+      background-image: url(../../assets/main-logo.svg);
+      background-size: cover;
+    }
+
+    @include on-mobile {
+      display: none;
     }
   }
 
-  &__icons {
+  &__container-left {
     display: flex;
+    align-items: center;
+    gap: 64px;
+    height: 100%;
 
-    &-icon {
-      padding: 33px;
-      border-left: 1px solid $light-gray;
+  }
 
-      @include on-tablet {
-        padding: 24px;
-      }
-    }
+  &__container-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 
   &__burger {
     display: none;
+    margin-left: 24px;
     width: 32px;
     height: 32px;
     gap: 5px;
     justify-content: center;
     flex-direction: column;
-    background-color: transparent;
-    order: -1;
 
     @include on-tablet {
       display: flex;
@@ -67,16 +67,149 @@
       display: block;
       height: 3px;
       width: 26px;
-      background-color: $main-color;
+      background-color: $white;
       border-radius: 5px;
+    }
+
+    &:hover .Header__burger-span--one {
+      animation: changeWidth 2s ease infinite;
+    }
+
+    &:hover .Header__burger-span--two {
+      animation: changeWidth1 2s ease infinite;
+    }
+
+    &:hover .Header__burger-span--three {
+      animation: changeWidth2 2s ease infinite;
     }
   }
 
-  &__search {
-    @include on-mobile {
-      position: absolute;
-      bottom: -30px;
-      right: 0;
+  &__navigation {
+    @include on-tablet {
+      display: none;
     }
+
+    &-list {
+      display: flex;
+      gap: 64px;
+      justify-content: space-between;
+      align-items: center;
+
+      &-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        border-bottom: 3px solid transparent;
+        transition-duration: $transition-duration;
+
+        @extend %navigation;
+      }
+    }
+  }
+
+  &__icon-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 100%;
+    border-left: 1px solid $elements;
+    border-bottom: 3px solid transparent ;
+    transition-duration: $transition-duration;
+
+    @include on-tablet {
+      width: 48px;
+    }
+
+    &-image {
+      position: relative;
+    }
+
+    &:hover {
+      .Header__icon-link-image {
+        transform: scale(1.2);
+      }
+    }
+
+    &-fav {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: -50%;
+      margin-right: -50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $red;
+      border-radius: 50%;
+
+      &-amount {
+        color: $white;
+        font-size: 9px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.navlink-active {
+  border-bottom: 3px solid $white;
+  color: $white;
+}
+
+@keyframes change-width {
+  0% {
+    width: 26px;
+  }
+  25% {
+    width: 30px;
+  }
+  50% {
+    width: 15px;
+  }
+  75% {
+    width: 30px;
+  }
+  100% {
+    width: 26px;
+  }
+}
+
+@keyframes change-width1 {
+  0% {
+    width: 26px;
+  }
+  25% {
+    width: 14px;
+  }
+  50% {
+    width: 30px;
+  }
+  75% {
+    width: 12px;
+  }
+  100% {
+    width: 26px;
+  }
+}
+
+@keyframes change-width2 {
+  0% {
+    width: 20px;
+  }
+  25% {
+    width: 5px;
+  }
+  50% {
+    width: 30px;
+  }
+  75% {
+    width: 30px;
+  }
+  100% {
+    width: 20px;
   }
 }

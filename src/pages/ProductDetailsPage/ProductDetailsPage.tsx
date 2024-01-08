@@ -1,42 +1,37 @@
-import './ProductDetailsPage.scss';
-import classNames from 'classnames';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-
+import cn from 'classnames';
+import './ProductDetailsPage.scss';
+import { BackButton } from '../../components/BackButton/BackButton';
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
+import { ProductDetails } from '../../types/ProductDetails';
+import { Loader } from '../../components/Loader/Loader';
 import {
-  BASE_URL,
-  getProductDetails,
-  getSuggestedProducts,
-} from '../../api/api';
-
-import { GlobalContext } from '../../store';
+  ErrorNotification,
+} from '../../components/ErrorNotification/ErrorNotification';
+import { BASE_URL, PRODUCTS_COLORS } from '../../helpers/constants';
+import {
+  AddToCartButton,
+} from '../../components/AddToCartButton/AddToCartButton';
+import { AddToFavButton } from '../../components/AddToFavButton/AddToFavButton';
 import { Product } from '../../types/Product';
-import { PRODUCT_COLORS } from '../../types/ProductColors';
-
-import { NotFoundPage } from '../NotFoundPage';
-import { Loader } from '../../components/Loader';
-import { BackButton } from '../../components/BackButton';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { ProductDetails } from '../../types/ProductDetalis';
-import { ProductSlider } from '../../components/ProductSlider';
-import { AddToFavButton } from '../../components/AddToFavButton';
-import { AddToCartButton } from '../../components/AddToCartButton';
-
-export const getProductById = (products: Product[], id: string) => {
-  return products.find(product => product.itemId === id);
-};
+import { getProductById } from '../../helpers/helpers';
+import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
+import { getProductDetails, getProducts } from '../../api/products';
 
 export const ProductDetailsPage = () => {
-  const { products, isLoading, dispatch } = useContext(GlobalContext);
-  const { itemId } = useParams();
+  const { productId } = useParams();
+  const [products, setProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isLoadError, setIsLoadError] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
 
   useEffect(() => {
-    if (itemId) {
-      dispatch({ type: 'START_LOADER' });
-      getProductDetails(itemId)
+    if (productId) {
+      setIsLoading(true);
+      getProductDetails(productId)
         .then((response) => {
           setProduct(response);
           setCurrentImage(response.images[0]);
@@ -45,17 +40,40 @@ export const ProductDetailsPage = () => {
           setIsLoadError(true);
         })
         .finally(() => {
-          dispatch({ type: 'STOP_LOADER' });
+          setIsLoading(false);
         });
     }
-  }, [dispatch, itemId]);
+  }, [productId]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getProducts()
+      .then(setProducts)
+      .catch(() => {
+        setIsLoadError(true);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      });
+  }, []);
 
   const productInList = product ? getProductById(products, product.id) : null;
+  const suggestedProducts = useMemo(() => {
+    return products.filter((item) => {
+      return (
+        item.category === productInList?.category
+        && item.capacity === productInList?.capacity
+      );
+    });
+  }, [products, productInList]);
 
   if (!product) {
     return (
       <>
-        {!isLoading && isLoadError && <NotFoundPage />}
+        {isLoading && <Loader />}
+        {!isLoading && <NotFoundPage />}
       </>
     );
   }
@@ -80,255 +98,282 @@ export const ProductDetailsPage = () => {
     cell,
   } = product;
 
-  const suggestedProducts = getSuggestedProducts(products, color, capacity);
-
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="product-page">
-          <Breadcrumbs />
+        <div className="ProductDetailsPage">
+          <BreadCrumbs product={product} />
           <BackButton />
+
+          {isLoadError && <ErrorNotification />}
 
           {!isLoadError && (
             <>
-              <h1 className="product-page__title">{name}</h1>
+              <h1 className="ProductDetailsPage__title">{name}</h1>
 
-              <section className="product-page__content">
-                <div className="product-page__images-wrapper">
-                  <div className="product-page__images">
-                    {images.map(image => (
+              <section className="ProductDetailsPage__content">
+                <div className="ProductDetailsPage__content-imgs-wrapper">
+                  <div className="ProductDetailsPage__images">
+                    {images.map((image) => (
                       <button
                         key={image}
                         type="button"
-                        className={classNames('product-page__images-button', {
+                        className={cn('ProductDetailsPage__images-button', {
                           'image-active': image === currentImage,
                         })}
                         onClick={() => setCurrentImage(image)}
                       >
                         <img
+                          src={`${BASE_URL}${image}`}
                           alt={namespaceId}
-                          src={`${BASE_URL}/${image}`}
-                          className="product-page__images-item"
+                          className="ProductDetailsPage__images-item"
                         />
                       </button>
                     ))}
                   </div>
-                  <div className="product-page__current-image">
+
+                  <div
+                    className="ProductDetailsPage__current-image"
+                    key={Math.random()}
+                  >
                     <img
+                      src={`${BASE_URL}${currentImage}`}
                       alt={namespaceId}
-                      src={`${BASE_URL}/${currentImage}`}
-                      className="product-page__current-image-item"
+                      className="ProductDetailsPage__current-image-item"
                     />
                   </div>
                 </div>
 
-                <div className="product-page__description">
-                  <div className="product-page__options">
-                    <p className="product-page__options-title">
+                <div className="ProductDetailsPage__actions">
+                  <div className="ProductDetailsPage__options">
+                    <p className="ProductDetailsPage__options-title">
                       Available colors
                     </p>
-                    <ul className="product-page__options-list">
-                      {colorsAvailable.map(colorValue => (
+
+                    <ul className="ProductDetailsPage__options-list">
+                      {colorsAvailable.map((colorValue) => (
                         <li
                           key={colorValue}
-                          className={classNames('product-page__options-color', {
+                          className={cn('ProductDetailsPage__options-color', {
                             'color-option-active': color === colorValue,
                           })}
                         >
                           <Link
-                            to={`/phones/${namespaceId}-${capacity.toLowerCase()}-${colorValue}`}
                             style={{
-                              backgroundColor: PRODUCT_COLORS[colorValue],
+                              backgroundColor: PRODUCTS_COLORS[colorValue],
                             }}
-                            className="product-page__options-color-link"
+                            to={`/phones/${namespaceId}-${capacity.toLowerCase()}-${colorValue}`}
+                            className="ProductDetailsPage__options-color-link"
                           />
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="product-page__options">
-                    <p className="product-page__options-title">
+                  <div className="ProductDetailsPage__options">
+                    <p className="ProductDetailsPage__options-title">
                       Select capacity
                     </p>
-                    <ul className="product-page__options-list">
-                      {capacityAvailable.map(value => (
+
+                    <ul className="ProductDetailsPage__options-list">
+                      {capacityAvailable.map((capValue) => (
                         <li
-                          key={value}
-                          className={classNames(
-                            'product-page__options-cap', {
-                              'capacity-option-active': capacity === value,
-                            },
-                          )}
+                          key={capValue}
+                          className={cn('ProductDetailsPage__options-cap', {
+                            'capacity-option-active': capacity === capValue,
+                          })}
                         >
                           <Link
-                            to={`/phones/${namespaceId}-${value.toLowerCase()}-${color}`}
-                            className="product-page__options-cap-link"
+                            to={`/phones/${namespaceId}-${capValue.toLowerCase()}-${color}`}
+                            className="ProductDetailsPage__options-cap-link"
                           >
-                            {value}
+                            {capValue}
                           </Link>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="product-page__prices">
-                    <span className="product-page__prices-new">
+                  <div className="ProductDetailsPage__prices">
+                    <span className="ProductDetailsPage__prices-now">
                       {`$${priceRegular}`}
                     </span>
-                    <span className="product-page__prices-old">
+
+                    <span className="ProductDetailsPage__prices-before">
                       {`$${priceDiscount}`}
                     </span>
                   </div>
 
                   {productInList && (
-                    <div className="product-page__buttons">
+                    <div className="ProductDetailsPage__buttons">
                       <AddToCartButton product={productInList} />
                       <AddToFavButton product={productInList} />
                     </div>
                   )}
 
-                  <div className="product-page__info">
-                    <div className="product-card__info">
-                      <div className="product-card__info-container">
-                        <span className="product-card__info-title">Screen</span>
-                        <span className="product-card__info-value">
-                          {screen}
-                        </span>
-                      </div>
+                  <div className="ProductDetailsPage__info">
+                    <div className="ProductDetailsPage__info-container">
+                      <span className="ProductDetailsPage__info-title">
+                        Screen
+                      </span>
+                      <span className="ProductDetailsPage__info-specification">
+                        {screen}
+                      </span>
+                    </div>
 
-                      <div className="product-card__info-container">
-                        <span className="product-card__info-title">
-                          Resolution
-                        </span>
-                        <span className="product-card__info-value">
-                          {resolution}
-                        </span>
-                      </div>
+                    <div className="ProductDetailsPage__info-container">
+                      <span className="ProductDetailsPage__info-title">
+                        Resolution
+                      </span>
+                      <span className="ProductDetailsPage__info-specification">
+                        {resolution}
+                      </span>
+                    </div>
 
-                      <div className="product-card__info-container">
-                        <span className="product-card__info-title">
-                          Processor
-                        </span>
-                        <span className="product-card__info-value">
-                          {processor}
-                        </span>
-                      </div>
+                    <div className="ProductDetailsPage__info-container">
+                      <span className="ProductDetailsPage__info-title">
+                        Processor
+                      </span>
+                      <span className="ProductDetailsPage__info-specification">
+                        {processor}
+                      </span>
+                    </div>
 
-                      <div className="product-card__info-container">
-                        <span className="product-card__info-title">RAM</span>
-                        <span className="product-card__info-value">{ram}</span>
-                      </div>
+                    <div className="ProductCard__info-container">
+                      <span className="ProductDetailsPage__info-title">
+                        RAM
+                      </span>
+                      <span className="ProductDetailsPage__info-specification">
+                        {ram}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="product-page__id">
+                <div className="ProductDetailsPage__id">
                   <p>{`ID: ${productInList?.id}`}</p>
                 </div>
               </section>
 
-              <section className="product-page__more">
-                <div className="product-page__more-about">
-                  <h2 className="product-page__more-title">About</h2>
+              <section className="ProductDetailsPage__more">
+                <div className="ProductDetailsPage__more-about">
+                  <div className="ProductDetailsPage__more-title">
+                    <h2 className="ProductDetailsPage__more-title-item">
+                      About
+                    </h2>
+                  </div>
 
-                  {description.map(item => {
-                    const { title, text } = item;
-
-                    return (
-                      <article
-                        key={title}
-                        className="product-page__more-about-article"
+                  {description.map((item) => (
+                    <article
+                      key={item.title}
+                      className="ProductDetailsPage__more-about-article"
+                    >
+                      <h3
+                        className="ProductDetailsPage__more-about-article-title"
                       >
-                        <h3 className="product-page__more-about-article-title">
-                          {title}
-                        </h3>
+                        {item.title}
+                      </h3>
 
-                        {text.map(paragraph => (
-                          <p
-                            key={paragraph}
-                            data-cy="productDescription"
-                            className="product-page__more-about-article-info"
-                          >
-                            {paragraph}
-                          </p>
-                        ))}
-                      </article>
-                    );
-                  })}
+                      <p
+                        className="ProductDetailsPage__more-about-article-info"
+                        data-cy="productDescription"
+                      >
+                        {item.text}
+                      </p>
+                    </article>
+                  ))}
                 </div>
 
-                <div className="product-page__more-tech">
-                  <h2 className="product-page__more-title">Tech specs</h2>
+                <div className="ProductDetailsPage__more-tech">
+                  <div className="ProductDetailsPage__more-title">
+                    <h2 className="ProductDetailsPage__more-title-item">
+                      Tech specs
+                    </h2>
+                  </div>
 
-                  <div className="product-page__more-tech-content">
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">Screen</p>
-                      <p className="product-page__more-tech-value">
+                  <div className="ProductDetailsPage__more-tech-content">
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
+                        Screen
+                      </p>
+                      <p className="ProductDetailsPage__more-tech-value">
                         {screen}
                       </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
                         Resolution
                       </p>
-                      <p className="product-page__more-tech-value">
+                      <p className="ProductDetailsPage__more-tech-value">
                         {resolution}
                       </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
                         Processor
                       </p>
-                      <p className="product-page__more-tech-value">
+                      <p className="ProductDetailsPage__more-tech-value">
                         {processor}
                       </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">RAM</p>
-                      <p className="product-page__more-tech-value">{ram}</p>
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
+                        RAM
+                      </p>
+                      <p className="ProductDetailsPage__more-tech-value">
+                        {ram}
+                      </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
                         Built in memory
                       </p>
-                      <p className="product-page__more-tech-value">
+                      <p className="ProductDetailsPage__more-tech-value">
                         {capacity}
                       </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
                         Camera
                       </p>
-                      <p className="product-page__more-tech-value">
+                      <p className="ProductDetailsPage__more-tech-value">
                         {camera}
                       </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">Zoom</p>
-                      <p className="product-page__more-tech-value">{zoom}</p>
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
+                        Zoom
+                      </p>
+                      <p className="ProductDetailsPage__more-tech-value">
+                        {zoom}
+                      </p>
                     </div>
 
-                    <div className="product-page__more-tech-wrap">
-                      <p className="product-page__more-tech-property">Cell</p>
-                      <p className="product-page__more-tech-value">
+                    <div className="ProductDetailsPage__more-tech-wrap">
+                      <p className="ProductDetailsPage__more-tech-property">
+                        Cell
+                      </p>
+                      <p className="ProductDetailsPage__more-tech-value">
                         {cell.join(', ')}
                       </p>
                     </div>
                   </div>
                 </div>
               </section>
+
               <ProductSlider
                 title="You may also like"
                 products={suggestedProducts}
+                isLoading={isLoading}
+                isLoadError={isLoadError}
               />
             </>
           )}

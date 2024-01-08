@@ -1,84 +1,75 @@
-import './Pagination.scss';
-import React from 'react';
 import classNames from 'classnames';
+import { Link, useSearchParams } from 'react-router-dom';
+import { SlideLeftButton } from '../SlideLeftButton/SlideLeftButton';
+import { SlideRightButton } from '../SlideRightButton/SlideRightButton';
+import './Pagination.scss';
+import { SearchParams } from '../../types/Categories';
+import { getNumbers } from '../../helpers/helpers';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 type Props = {
   currentPage: number;
-  buttonsMax: number;
-  buttonsList: number[];
-  onPageChange: (button:number) => void;
+  pagesAmount: number;
 };
 
-export const Pagination: React.FC<Props> = ({
-  buttonsList,
-  currentPage,
-  buttonsMax,
-  onPageChange,
-}) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+export const Pagination: React.FC<Props> = ({ currentPage, pagesAmount }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pages = getNumbers(1, pagesAmount);
+
+  const handleSlideLeft = () => {
+    setSearchParams(
+      getSearchWith(
+        {
+          [SearchParams.Page]: `${currentPage - 1}`,
+        },
+        searchParams,
+      ),
+    );
   };
 
-  const prevButton = (prev: number) => {
-    if (prev + 1 !== 1) {
-      onPageChange(prev);
-      scrollToTop();
-    }
-  };
-
-  const getCurrrentButton = (button: number) => {
-    if (button !== currentPage) {
-      onPageChange(button);
-      scrollToTop();
-    }
-  };
-
-  const nextButton = (next: number) => {
-    if (next - 1 !== buttonsMax) {
-      onPageChange(next);
-      scrollToTop();
-    }
+  const handleSlideRight = () => {
+    setSearchParams(
+      getSearchWith(
+        {
+          [SearchParams.Page]: `${currentPage + 1}`,
+        },
+        searchParams,
+      ),
+    );
   };
 
   return (
-    <div
-      className="pagination"
-      data-cy="pagination"
-    >
-      <button
-        type="button"
-        aria-label="button"
-        data-cy="paginationLeft"
-        disabled={currentPage === 1}
-        className={classNames('pagination__btn pagination__btn-prev')}
-        onClick={() => prevButton(currentPage - 1)}
-      >
-        <div className="icon icon-left" />
-      </button>
+    <div className="Pagination" data-cy="pagination">
+      <SlideLeftButton
+        onSlideLeft={handleSlideLeft}
+        isDisabled={currentPage === 1}
+      />
 
-      {buttonsList.map(button => (
-        <button
-          key={button}
-          type="button"
-          className={classNames('pagination__btn pagination__btn--page', {
-            'pagination__btn-active': currentPage === button,
-          })}
-          onClick={() => getCurrrentButton(button)}
-        >
-          {button}
-        </button>
-      ))}
+      <div className="Pagination__pages">
+        {pages.map((page) => (
+          <Link
+            to={{
+              search: getSearchWith(
+                {
+                  [SearchParams.Page]: page.toString(),
+                },
+                searchParams,
+              ),
+            }}
+            key={page}
+            className={classNames('Pagination__pages-link', {
+              active: currentPage === page,
+            })}
+          >
+            {page}
+          </Link>
+        ))}
+      </div>
 
-      <button
-        type="button"
-        aria-label="button"
-        data-cy="paginationRight"
-        disabled={currentPage === buttonsMax}
-        className={classNames('pagination__btn pagination__btn-next')}
-        onClick={() => nextButton(currentPage + 1)}
-      >
-        <div className="icon icon-right" />
-      </button>
+      <SlideRightButton
+        onSlideRight={handleSlideRight}
+        isDisabled={currentPage === pages.length}
+      />
     </div>
   );
 };

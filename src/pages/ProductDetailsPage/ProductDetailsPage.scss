@@ -1,9 +1,10 @@
 @import "../../styles/main";
 
-.product-page {
+.ProductDetailsPage {
   display: flex;
   flex-direction: column;
   height: 100%;
+  color: $white;
 
   &__title {
     margin-top: 16px;
@@ -11,13 +12,12 @@
     @extend %h1;
 
     @include on-mobile {
-      font-size: 20px;
+      margin-top: 12px;
     }
   }
 
   &__content {
     display: flex;
-    justify-content: space-between;
     margin-top: 40px;
 
     @include on-tablet {
@@ -28,30 +28,32 @@
     }
 
     @include on-mobile {
-      gap: 0;
-      margin: 0;
+      gap: 32px;
+      margin-top: 12px;
+    }
+
+    &-imgs-wrapper {
+      display: flex;
+
+      @include on-tablet {
+        gap: 92px;
+      }
+
+      @include on-mobile {
+        gap: 0;
+      }
     }
   }
 
-  &__images-wrapper {
-    display: flex;
+  &__actions {
+    margin-right: 130px;
 
-    @include on-tablet {
-      margin: 0 auto;
-      gap: 10px
+    @include on-desktop {
+      margin-right: 60px;
     }
 
-    @include on-mobile {
-      flex-direction: column-reverse;
-      justify-content: center;
-    }
-  }
-
-  &__description {
-    width: 27%;
-
     @include on-tablet {
-      width: 100%;
+      margin-right: 0;
     }
   }
 
@@ -60,9 +62,12 @@
     flex-direction: column;
     gap: 16px;
 
+    @include on-tablet {
+      gap: 12px;
+    }
+
     @include on-mobile {
-      flex-flow: row wrap;
-      gap: 10px;
+      gap: 6px;
     }
 
     &-button {
@@ -73,13 +78,17 @@
       align-items: center;
       padding: 6px;
       margin-right: 16px;
-      border: 1px solid $light-gray;
+      border: 1px solid $elements;
       transition-duration: $transition-duration;
 
+      @include on-tablet {
+        width: 68px;
+        height: 68px;
+      }
+
       @include on-mobile {
-        margin-right: 0;
-        width: 60px;
-        height: 60px;
+        width: 55px;
+        height: 55px;
       }
 
       &:hover {
@@ -98,61 +107,75 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 64px;
     overflow: hidden;
-    margin-right: 28px;
+
+    @include on-desktop {
+      margin-right: 28px;
+    }
 
     @include on-tablet {
+      width: 390px;
+      height: 390px;
       margin-right: 0;
     }
 
     @include on-mobile {
-      width: 100%;
-      height: 60%;
+      width: 300px;
+      height: 300px;
     }
 
     &-item {
       max-height: 100%;
-      animation: show-image 1s ease;
-
-      @include on-mobile {
-        animation: none;
-        width: 90%;
-      }
+      animation: showImage 1s ease;
     }
   }
 
   &__options {
-    border-bottom: 1px solid $light-gray;
+    height: 80px;
+    border-bottom: 1px solid $elements;
     margin-bottom: 24px;
-    padding-bottom: 24px;
+
+    @include on-mobile {
+      height: 68px;
+    }
 
     &-title {
-      color: $secondary-color;
-      margin-bottom: 8px;
+      @extend %small-text;
 
-      @extend %text;
+      color: $secondary;
+      margin-bottom: 8px;
     }
 
     &-list {
       display: flex;
       gap: 8px;
+
+      @include on-tablet {
+        gap: 12px;
+      }
     }
 
     &-color {
       width: 32px;
       height: 32px;
       display: flex;
-      border: 1px solid $light-gray;
+      border: 1px solid $elements;
       border-radius: 50%;
       transition-duration: $transition-duration;
 
+      @include on-tablet {
+        width: 36px;
+        height: 36px;
+      }
+
       &:hover {
-        border-color: $icon-color;
+        border-color: $icons;
       }
 
       &-link {
         width: 100%;
-        border: 2px solid #fff;
+        border: 2px solid $white;
         border-radius: 50%;
       }
     }
@@ -162,34 +185,33 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid $icon-color;
+      border: 1px solid $icons;
       transition-duration: $transition-duration;
 
       &:hover {
-        border-color: $main-color;
+        border-color: $white;
       }
 
       &-link {
-        font-family: Mont-Regular, sans-serif;
-        font-size: 14px;
-        line-height: 21px;
+        @extend %body;
+
         margin-inline: 8px;
       }
     }
   }
 
   &__prices {
-    margin: 32px 0 16px;
+    margin-top: 32px;
     display: flex;
     gap: 8px;
     align-items: center;
 
-    &-new {
+    &-now {
       @extend %h1;
     }
 
-    &-old {
-      color: $secondary-color;
+    &-before {
+      color: $secondary;
       font-size: 22px;
       font-weight: 500;
       text-decoration: line-through;
@@ -198,19 +220,40 @@
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
     gap: 8px;
-    margin-bottom: 32px;
+    margin-top: 16px;
+
+    @include on-mobile {
+      gap: 24px;
+    }
   }
 
-  &__id {
-    @extend %text;
+  &__info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-    color: $icon-color;
+    @extend %small-text;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: $secondary;
+    }
 
     @include on-tablet {
       display: none;
     }
+  }
+
+  &__id {
+    @extend %small-text;
+
+    color: $secondary;
   }
 
   &__more {
@@ -219,47 +262,48 @@
     margin: 80px 0;
 
     @include on-tablet {
-      margin-top: 0;
-      flex-direction: column;
+      flex-direction: column-reverse;
+      margin: 60px 0;
+      gap: 48px;
     }
 
     &-title {
-      padding-bottom: 16px;
-      border-bottom: 1px solid $light-gray;
-
-      @extend %h2;
+      height: 48px;
+      border-bottom: 1px solid $elements;
+      &-item {
+        @extend %h2;
+      }
     }
 
     &-about {
-      width: 55%;
+      max-width: 560px;
 
       @include on-tablet {
-        width: 100%;
+        max-width: none;
       }
 
       &-article {
         margin-top: 32px;
+
+        @include on-tablet {
+          margin-top: 24px;
+        }
 
         &-title {
           @extend %h3;
         }
 
         &-info {
-          font-family: Mont-Regular, sans-serif;
-          font-size: 14px;
-          line-height: 21px;
-          color: $secondary-color;
+          @extend %body;
+
+          color: $secondary;
           margin-top: 16px;
         }
       }
     }
 
     &-tech {
-      width: 45%;
-
-      @include on-tablet {
-        width: 100%;
-      }
+      width: 100%;
 
       &-content {
         margin-top: 25px;
@@ -271,40 +315,34 @@
       &-wrap {
         display: flex;
         justify-content: space-between;
-        font-size: 14px;
-        font-family: Mont-Regular, sans-serif;
+
+        @extend %body;
       }
 
       &-property {
-        color: $secondary-color;
-      }
-
-      &-value {
-        @include on-mobile {
-          min-width: fit-content;
-        }
+        color: $secondary;
       }
     }
   }
 }
 
 .color-option-active {
-  border-color: $main-color;
+  border-color: $black;
 }
 
 .capacity-option-active {
-  background-color: $main-color;
-  color: #fff;
+  background-color: $black;
+  color: $white;
 }
 
 .image-active {
-  border: 1px solid $secondary-color;
+  border: 1px solid $black;
 }
 
 @keyframes show-image {
   from {
     opacity: 0.2;
-    transform: translateX(-70%);
+    transform: translateX(-100%);
   }
   to {
     transform: translateX(0);

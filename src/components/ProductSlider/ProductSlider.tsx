@@ -1,70 +1,46 @@
-import './ProductSlider.scss';
-import React, {
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import {
-  CARDS_AMOUNT_DESKTOP,
-  CARDS_AMOUNT_MOBILE,
-  CARDS_AMOUNT_TABLET,
-  MAX_WIDTH_DESKTOP,
-  MAX_WIDTH_MOBILE,
-  MAX_WIDTH_TABLET,
-} from '../../helpers/vars';
-import { Loader } from '../Loader';
-import { GlobalContext } from '../../store';
-import { ProductCard } from '../ProductCard';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { Product } from '../../types/Product';
-import { SliderButtonLeft, SliderButtonRight } from '../SliderButtons';
+import './ProductSlider.scss';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { SlideLeftButton } from '../SlideLeftButton/SlideLeftButton';
+import { SlideRightButton } from '../SlideRightButton/SlideRightButton';
+import { Loader } from '../Loader/Loader';
+import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
+import { getCardsPerPage } from '../../helpers/helpers';
 
 type Props = {
-  title: string,
-  products: Product[],
+  products: Product[];
+  title: string;
+  isLoading: boolean;
+  isLoadError: boolean;
 };
 
-export const ProductSlider: React.FC<Props> = ({ title, products }) => {
-  const { isLoading } = useContext(GlobalContext);
-
-  const getCardsPerPage = useMemo(() => {
-    const windowWidth = window.innerWidth;
-
-    if (windowWidth < MAX_WIDTH_DESKTOP) {
-      if (windowWidth < MAX_WIDTH_TABLET) {
-        if (windowWidth < MAX_WIDTH_MOBILE) {
-          return CARDS_AMOUNT_MOBILE;
-        }
-
-        return CARDS_AMOUNT_TABLET;
-      }
-
-      return CARDS_AMOUNT_TABLET;
-    }
-
-    return CARDS_AMOUNT_DESKTOP;
-  }, []);
-
+export const ProductSlider: React.FC<Props> = ({
+  products,
+  title,
+  isLoading,
+  isLoadError,
+}) => {
+  const amountOfBlocks = Math.floor(products.length / getCardsPerPage());
   const firstProductBlock = 0;
-  const amountOfBlocks = Math.floor(products.length / getCardsPerPage);
-  const lastProductBlock = products.length % getCardsPerPage === 0
-    ? amountOfBlocks - 1
-    : amountOfBlocks;
+  const lastProductBlock
+    = products.length % getCardsPerPage() === 0
+      ? amountOfBlocks - 1
+      : amountOfBlocks;
 
   const [currentBlock, setCurrentBlock] = useState(firstProductBlock);
-  const [sliderWidth, setSliderWidth] = useState(0);
 
   const isFirstBlock = currentBlock === firstProductBlock;
   const isLastBlock = currentBlock === lastProductBlock;
-
+  const [sliderWidth, setSliderWidth] = useState(0);
   const slider = useRef<HTMLDivElement>(null);
   const productList = useRef<HTMLUListElement>(null);
 
-  const transformValue = isFirstBlock ? 0
-    : (sliderWidth * currentBlock) + (16 * currentBlock);
+  const transformValue = isFirstBlock
+    ? 0
+    : sliderWidth * currentBlock + 16 * currentBlock;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (slider.current) {
       setSliderWidth(slider.current.offsetWidth);
     }
@@ -83,34 +59,36 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   };
 
   return (
-    <section className="product-slider">
-      <div className="product-slider__header">
-        <h1 className="product-slider__header-title">{title}</h1>
+    <section className="ProductSlider">
+      <div className="ProductSlider__header">
+        <h1 className="ProductSlider__header-title">{title}</h1>
 
-        <div className="product-slider__header-buttons">
-          <SliderButtonLeft
+        <div className="ProductSlider__header-buttons">
+          <SlideLeftButton
             onSlideLeft={handleLeftSlide}
             isDisabled={isFirstBlock}
           />
-          <SliderButtonRight
+
+          <SlideRightButton
             onSlideRight={handleRightSlide}
             isDisabled={isLastBlock}
           />
         </div>
       </div>
 
-      <div className="product-slider__content" ref={slider}>
-        {isLoading ? <Loader /> : (
+      <div className="ProductSlider__content" ref={slider}>
+        {isLoading && !isLoadError && <Loader />}
+        {isLoadError && <ErrorNotification />}
+        {!isLoading && !isLoadError && (
           <ul
+            className="ProductSlider__content-list"
+            style={{
+              transform: `translateX(${-transformValue}px)`,
+            }}
             ref={productList}
-            className="product-slider__content-list"
-            style={{ transform: `translateX(${-transformValue}px)` }}
           >
-            {products.map(product => (
-              <li
-                key={product.id}
-                className="product-slider__content-list-item"
-              >
+            {products.map((product) => (
+              <li key={product.id} className="ProductSlider__content-list-item">
                 <ProductCard product={product} />
               </li>
             ))}

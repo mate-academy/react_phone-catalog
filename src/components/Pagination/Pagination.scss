@@ -1,47 +1,48 @@
-@import '../../styles/main';
+@import "../../styles/main";
 
-.pagination {
+.Pagination {
+  margin: 0 auto;
   display: flex;
-  gap: 8px;
+  align-items: center;
   justify-content: center;
+  gap: 16px;
 
-  &__btn {
-    width: 32px;
-    height: 32px;
+  @include on-mobile {
+    gap: 8px;
+  }
+
+  &__pages {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $icon-color;
-    background-color: #fff;
-    color: #000;
-    font-size: 14px;
+    gap: 6px;
 
-    &:hover {
-      border: 1px solid $main-color;
+    @include on-mobile {
+      flex-wrap: wrap;
     }
 
-    &-prev {
-      margin-right: 8px;
-    }
+    &-link {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $elements;
+      transition-duration: $transition-duration;
 
-    &-next {
-      margin-left: 8px;
+      @extend %body;
 
-    }
-
-    &:disabled {
-      opacity: .5;
+      @include on-tablet {
+        width: 24px;
+        height: 24px;
+      }
 
       &:hover {
-        border: 1px solid $icon-color;
-        cursor: pointer;
+        border-color: $black;
       }
-    }
 
-    &-active {
-      color: #fff;
-      border: 1px solid $main-color;
-      background: $main-color;
+      &.active {
+        background-color: $black;
+        color: $white;
+      }
     }
   }
 }

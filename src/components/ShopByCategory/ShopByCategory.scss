@@ -1,21 +1,14 @@
 @import "../../styles/main";
 
-.shop-by-category {
+.ShopByCategory {
   display: flex;
   flex-direction: column;
   gap: 24px;
   max-height: 508px;
-
-  @include on-tablet {
-    max-height: 100%;
-  }
+  color: $white;
 
   &__title {
     @extend %h1;
-
-    @include on-tablet {
-      font-size: 20px;
-    }
   }
 
   &__content {
@@ -23,74 +16,67 @@
     display: flex;
     align-items: center;
     gap: 16px;
-
-    @include on-mobile {
-      @media (max-width: 400px) {
-        flex-direction: column;
-      }
-    }
   }
 
   &__category {
     display: flex;
     flex-direction: column;
 
-    &-wrapper {
-      position: relative;
-
-      &:hover {
-        &::after {
-          content: '';
-          width: 100%;
-          height: 99%;
-          position: absolute;
-          top: 0; left: 0;
-          background-color: rgba(0,0,0,0.4);
-        }
-      }
-    }
-
     &-image {
       width: 100%;
       height: 100%;
-    }
-
-    &-description {
-      @include on-mobile {
-        @media (max-width: 400px) {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          order: -1;
-        }
-      }
+      transition-duration: $transition-duration;
     }
 
     &-title {
+      transition-duration: $transition-duration;
       margin-top: 24px;
+      position: relative;
 
       @extend %h3;
 
-      @include on-tablet {
-        margin-top: 4px;
+      @include on-mobile {
+        font-size: 16px;
+        margin-top: 0;
       }
 
-      @include on-mobile {
-        margin: 0;
-        font-size: 14px;
+      &::after {
+        content: "";
+        width: 0%;
+        height: 3%;
+        background: linear-gradient(90deg, $black 0%, $white 80%);
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        transition-duration: $transition-duration;
       }
     }
 
     &-amount {
-      color: $secondary-color;
-      font-family: Mont-Regular, sans-serif;
+      transition-duration: $transition-duration;
       margin-top: 4px;
-      font-size: 14px;
-      line-height: 21px;
+
+      @extend %body;
+
+      color: $dark-grey-c;
 
       @include on-mobile {
+        font-size: 11px;
         margin-top: 0;
-        font-size: 12px;
+      }
+    }
+
+    &:hover {
+      .ShopByCategory__category-image {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.36);
+      }
+      .ShopByCategory__category-amount {
+        color: $white;
+      }
+      .ShopByCategory__category-title {
+        &::after {
+          width: 80%;
+        }
       }
     }
   }

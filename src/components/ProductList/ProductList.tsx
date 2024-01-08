@@ -1,31 +1,19 @@
-import './ProductList.scss';
-import React from 'react';
-import { ProductCard } from '../ProductCard';
 import { Product } from '../../types/Product';
-import { NoSearchResults } from '../NoSearchResults';
+import { ProductCard } from '../ProductCard/ProductCard';
+import './ProductList.scss';
 
 type Props = {
-  itemsList: Product[],
+  products: Product[];
 };
 
-export const ProductList: React.FC<Props> = ({ itemsList }) => {
+export const ProductList: React.FC<Props> = ({ products }) => {
   return (
-    itemsList.length !== 0
-      ? (
-        <div
-          className="product-list"
-          data-cy="productList"
-        >
-          {itemsList.map(item => (
-            <ProductCard
-              key={item.id}
-              product={item}
-            />
-          ))}
-        </div>
-      )
-      : (
-        <NoSearchResults />
-      )
+    <ul className="ProductList" data-cy="productList">
+      {products.map((product) => (
+        <li key={product.id} className="ProductList__item">
+          <ProductCard product={product} />
+        </li>
+      ))}
+    </ul>
   );
 };

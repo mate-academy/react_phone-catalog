@@ -1,49 +1,47 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import './CartPage.scss';
-import { Link } from 'react-router-dom';
-import { useContext, useMemo, useState } from 'react';
-
-import { BASE_URL } from '../../api/api';
-import { CartItemType, GlobalContext } from '../../store';
-import { BackButton } from '../../components/BackButton';
-import { NotImpementFeature } from '../../components/NotImpementFeature';
+import { useState } from 'react';
+import { BASE_URL } from '../../api/fetchClient';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { BackButton } from '../../components/BackButton/BackButton';
+import * as cartActions from '../../features/cartSlicer';
+import * as priceActions from '../../features/productPriceSlicer';
+import { Product } from '../../types/Product';
 
 export const CartPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { cart, dispatch } = useContext(GlobalContext);
+  const cartProducts = useAppSelector((state) => state.cartProducts.items);
+  const dispatch = useAppDispatch();
 
-  const totalPrice = useMemo(() => {
-    return cart.reduce(
-      (sum, product) => sum + product.price * product.amount, 0,
+  const productPrice = cartProducts.reduce(
+    (total, item) => total + item.quantity * item.price,
+    0,
+  );
+
+  const [hasError, setHasError] = useState(false);
+
+  const isProductId = (productId: string) => {
+    return cartProducts.find(
+      (selectedProduct) => selectedProduct.id === productId,
     );
-  }, [cart]);
-
-  const countProductInCart = useMemo(() => {
-    return cart.reduce((acc, curr) => acc + curr.amount, 0);
-  }, [cart]);
-
-  const changeAmount = (product: CartItemType, sign: number) => {
-    const changedProduct = { ...product };
-    const index = cart.findIndex(item => item.id === product.id);
-
-    changedProduct.amount += sign;
-
-    const newCart = [...cart];
-
-    newCart.splice(index, 1, changedProduct);
-
-    dispatch({ type: 'UPDATE_AMOUNT', payload: newCart });
   };
 
-  const increaseAmount = (product: CartItemType) => changeAmount(product, 1);
-  const decreaseAmount = (product: CartItemType) => changeAmount(product, -1);
+  const handleAddProduct = (productId: string) => {
+    if (isProductId(productId)) {
+      dispatch(cartActions.increaseQuantity(productId));
+    }
+  };
 
-  const handleCheckoutClick = () => {
-    setIsModalOpen(true);
+  const handleRemoveProduct = (productId: string) => {
+    if (isProductId(productId)) {
+      dispatch(cartActions.decreaseQuantity(productId));
+    }
+  };
 
-    setTimeout(() => {
-      setIsModalOpen(false);
-    }, 5000);
+  const handleDeleteProduct = (newProduct: Product) => {
+    if (isProductId(newProduct.id)) {
+      dispatch(priceActions.deleteProductPrice({ quantity: 1 }));
+
+      dispatch(cartActions.deleteCartProducts(newProduct.id));
+    }
   };
 
   return (
@@ -52,112 +50,100 @@ export const CartPage = () => {
 
       <h1 className="cart-page__title">Cart</h1>
 
-      {!cart.length ? (
+      {!cartProducts.length ? (
         <div className="empty">
-          <p className="empty__message">
-            Your cart is empty.
-          </p>
+          <p className="empty__message">Your cart is empty.</p>
         </div>
       ) : (
-        <div className="cart-page__content">
-          <ul className="cart-page__list">
-            {cart.map((product) => {
-              const {
-                id,
-                itemId,
-                category,
-                name,
-                image,
-                price,
-                amount,
-              } = product;
-
-              return (
-                <li key={id} className="list-item">
+        <div>
+          <div className="cart-page__content">
+            <div className="cart-page__list">
+              {cartProducts.map((product) => (
+                <div className="list-item">
                   <div className="list-item__left-container">
                     <button
                       type="button"
-                      data-cy="cartDeleteButton"
-                      className="list-item__button-delete"
-                      onClick={() => dispatch(
-                        { type: 'DELETE_PRODUCT', payload: product },
-                      )}
+                      aria-label="close"
+                      className="list-item__button-delete cart__close"
+                      onClick={() => handleDeleteProduct(product)}
                     >
-                      <div className="icon icon-cross" />
+                      <div className="icon icon--remove" />
                     </button>
 
                     <div className="list-item__photo">
                       <img
-                        src={`${BASE_URL}/${image}`}
-                        alt="Product"
                         className="list-item__photo_img"
+                        src={`${BASE_URL}/${product.image}`}
+                        alt={product.image}
                       />
                     </div>
 
-                    <Link
-                      to={`/${category}/${itemId}`}
-                      className="list-item__name"
-                    >
-                      {name}
-                    </Link>
+                    <h1 className="list-item__name">{`${product.name}`}</h1>
                   </div>
 
                   <div className="list-item__right-container">
                     <div className="list-item__counter">
                       <button
                         type="button"
+                        aria-label="remove"
                         className="list-item__counter_button"
-                        onClick={() => decreaseAmount(product)}
-                        disabled={amount === 1}
+                        onClick={() => handleRemoveProduct(product.id)}
+                        disabled={product.quantity <= 1}
                       >
-                        <div className="icon icon-minus" />
+                        <div className="icon icon--minus" />
                       </button>
-
-                      <p className="list-item__counter_amount">
-                        {amount}
-                      </p>
-
+                      <div className="list-item__counter_amount">
+                        {product.quantity}
+                      </div>
                       <button
                         type="button"
+                        aria-label="add"
                         className="list-item__counter_button"
-                        onClick={() => increaseAmount(product)}
+                        onClick={() => handleAddProduct(product.id)}
                       >
-                        <div className="icon icon-plus" />
+                        <div className="icon icon--plus" />
                       </button>
                     </div>
-
-                    <p className="list-item__price">{`$${price}`}</p>
+                    <h1 className="list-item__price">{`$${product.price}`}</h1>
                   </div>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="cart-page__checkout">
-            <div className="cart-page__checkout_total">
-              <p className="cart-page__checkout_total-price">{`$${totalPrice}`}</p>
-              <p
-                data-cy="productQauntity"
-                className="cart-page__checkout_total-amount"
-              >
-                {countProductInCart === 1
-                  ? 'Total for 1 item'
-                  : `Total for ${countProductInCart} items`}
-              </p>
+                </div>
+              ))}
             </div>
 
-            <button
-              type="button"
-              className="cart-page__checkout-button"
-              onClick={handleCheckoutClick}
-            >
-              Checkout
-            </button>
+            <div className="cart-page__checkout">
+              <div className="cart-page__checkout_total">
+                <h1 className="cart-page__checkout_total-price">{`$${productPrice}`}</h1>
+                <h2 className="cart-page__checkout_total-amount">
+                  {cartProducts.length === 1
+                    ? `Total for ${cartProducts.length} item`
+                    : `Total for ${cartProducts.length} items`}
+                </h2>
+              </div>
+
+              <button
+                type="button"
+                className="cart-page__checkout-button"
+                onClick={() => setHasError(!hasError)}
+              >
+                Checkout
+              </button>
+            </div>
           </div>
+          {hasError && (
+            <div className="cart__error">
+              <button
+                type="button"
+                aria-label="close"
+                className="cart__close cart__error__close"
+                onClick={() => setHasError(false)}
+              />
+              <h2 className="cart__error__title">
+                We are sorry, but this feature is not implemented yet
+              </h2>
+            </div>
+          )}
         </div>
       )}
-
-      {isModalOpen && (<NotImpementFeature onClose={setIsModalOpen} />)}
     </div>
   );
 };

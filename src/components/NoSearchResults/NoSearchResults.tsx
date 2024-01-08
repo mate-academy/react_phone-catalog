@@ -1,12 +1,9 @@
-import React from 'react';
 import './NoSearchResults.scss';
-import noResult from '../../assets/no-data.jpg';
 
-export const NoSearchResults: React.FC = () => {
+export const NoSearchResults = () => {
   return (
-    <div className="no-search-results">
-      <p>No search results.</p>
-      <img src={noResult} alt="no-result" />
+    <div className="NoSearchResults">
+      <p className="NoSearchResults__message">No search results...</p>
     </div>
   );
 };

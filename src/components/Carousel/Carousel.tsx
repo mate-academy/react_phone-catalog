@@ -1,77 +1,79 @@
-/* eslint-disable global-require */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React, {
+  useEffect, useState, useRef, useLayoutEffect,
+} from 'react';
+import cn from 'classnames';
 import './Carousel.scss';
-import { useState, useEffect, useRef } from 'react';
-import classNames from 'classnames';
+import tablets from '../../assets/banner-iphone14.png';
+import phones from '../../assets/banner-phones.png';
+import accessories from '../../assets/banner-accessories.png';
 
-const images = [
-  require('../../assets/banners/banner-phones.png'),
-  require('../../assets/banners/banner-tablets.png'),
-  require('../../assets/banners/banner-accessories.png'),
-];
+const images = [tablets, phones, accessories];
 
-export const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export const Carousel: React.FC = () => {
+  const firstImageIndex = 0;
+  const lastImageIndex = images.length - 1;
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(firstImageIndex);
   const [sliderWidth, setSliderWidth] = useState(0);
-  const lastIndex = images.length - 1;
   const banner = useRef<HTMLDivElement>(null);
-  const transformValue = sliderWidth * currentIndex;
+  const transformValue = sliderWidth * currentImageIndex;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (banner.current) {
       setSliderWidth(banner.current.offsetWidth);
     }
-  }, [currentIndex]);
+  }, [currentImageIndex]);
 
-  const handlePrevSlide = () => {
-    if (currentIndex !== 0) {
-      setCurrentIndex(currentIndex - 1);
+  const handleLeftSlide = () => {
+    if (currentImageIndex !== firstImageIndex) {
+      setCurrentImageIndex(currentImageIndex - 1);
     } else {
-      setCurrentIndex(lastIndex);
+      setCurrentImageIndex(lastImageIndex);
     }
   };
 
-  const handleNextSlide = () => {
-    if (currentIndex !== lastIndex) {
-      setCurrentIndex(currentIndex + 1);
+  const handleRightSlide = () => {
+    if (currentImageIndex !== lastImageIndex) {
+      setCurrentImageIndex(currentImageIndex + 1);
     } else {
-      setCurrentIndex(0);
+      setCurrentImageIndex(firstImageIndex);
     }
   };
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      handleNextSlide();
+      handleRightSlide();
     }, 5000);
 
     return () => clearInterval(timerId);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex]);
+  }, [currentImageIndex]);
 
   return (
-    <section className="carousel">
-      <div className="carousel__slider">
+    <section className="Carousel">
+      <div className="Carousel__slider">
         <button
           type="button"
-          aria-label="button"
-          className="carousel__slider-button"
-          onClick={handlePrevSlide}
+          className="Carousel__slider-button"
+          onClick={handleLeftSlide}
         >
-          <div className="icon icon-left" />
+          <div className="icon icon--left-bright" />
         </button>
 
-        <div className="carousel__slider-container" ref={banner}>
+        <div className="Carousel__slider-container" ref={banner}>
           <ul
-            className="carousel__slider-list"
+            className="Carousel__slider-list"
             style={{
               transform: `translateX(${-transformValue}px)`,
             }}
           >
-            {images.map(image => (
-              <li key={image} className="carousel__slider-item">
+            {images.map((image) => (
+              <li key={image} className="Carousel__slider-item">
                 <img
                   src={image}
                   alt="Banner"
-                  className="carousel__slider-image"
+                  className="Carousel__slider-image"
                 />
               </li>
             ))}
@@ -80,24 +82,23 @@ export const Carousel = () => {
 
         <button
           type="button"
-          aria-label="button"
-          className="carousel__slider-button"
-          onClick={handleNextSlide}
+          className="Carousel__slider-button"
+          onClick={handleRightSlide}
         >
-          <div className="icon icon-right" />
+          <div className="icon icon--right-bright" />
         </button>
       </div>
 
-      <div className="carousel__dots">
+      <div className="Carousel__position">
         {images.map((image, i) => (
           <button
-            key={image}
             type="button"
-            aria-label="dots"
-            className={classNames('carousel__dots-item', {
-              'banner-active': currentIndex === i,
+            aria-label="position"
+            key={image}
+            className={cn('Carousel__position-item', {
+              'banner-active': currentImageIndex === i,
             })}
-            onClick={() => setCurrentIndex(i)}
+            onClick={() => setCurrentImageIndex(i)}
           />
         ))}
       </div>

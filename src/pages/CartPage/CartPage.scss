@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: -40px;
+  margin-top: 40px;
+  color: $white;
 
   &__title {
     @extend %h1;
@@ -39,7 +40,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    border: 1px solid $light-gray;
+    border: 1px solid $secondary;
 
     @include on-mobile {
       width: 100%;
@@ -50,7 +51,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-bottom: 1px solid $light-gray;
+      border-bottom: 1px solid $secondary;
 
       &-price {
         @extend %h1;
@@ -58,7 +59,7 @@
 
       &-amount {
         font-size: 14px;
-        color: $secondary-color;
+        color: $white;
         font-family: Mont-Regular, sans-serif;
         line-height: 21px;
       }
@@ -70,7 +71,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $main-color;
+      background-color: $accent;
       transition-duration: $transition-duration;
 
       @extend %button;
@@ -86,7 +87,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid $light-gray;
+  border: none;
+  background-color: $surface1;
+  padding: 24px;
 
   @include on-mobile {
     display: inline;
@@ -100,7 +103,7 @@
   }
 
   &__button-delete {
-    margin-left: 24px;
+    margin: 0 24px;
 
     @extend %button;
 
@@ -165,12 +168,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid $icon-color;
+      border: 1px solid $icons;
       transition-duration: $transition-duration;
       background-color: transparent;
+      color: $white;
 
       &:hover {
-        border-color: $main-color;
+        border-color: $elements;
+        background-color: $surface2;
       }
 
       &:disabled {
@@ -188,6 +193,36 @@
 
     @include on-mobile {
       margin: 0 10px 0 20px;
+    }
+  }
+}
+
+.cart {
+  &__error {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 35px;
+    height: 80px;
+    width: 300px;
+    background-color: $red;
+
+    &__title {
+      @extend %mont-500;
+
+      position: absolute;
+      top: 10px;
+      display: flex;
+      color: $white;
+      text-align: center;
+      font-size: 14px;
+      line-height: 21px;
+      margin: 10px;
+    }
+
+    &__close {
+      margin: 0;
+      position: absolute;
+      left: 0;
     }
   }
 }

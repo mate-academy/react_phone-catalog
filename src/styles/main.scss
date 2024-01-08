@@ -1,17 +1,5 @@
-@import "./vars";
-@import "./reset";
-@import "./icons";
-@import "./fonts";
-@import "./mixins";
-@import "./extends";
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-family: Mont, sans-serif;
-  font-weight: 500;
-  color: $main-color;
-  min-height: 100vh;
-}
+@import "../utils/vars";
+@import "../utils/mixins";
+@import "./extends.scss";
+@import "./normalize.scss";
+@import "./icon.scss";

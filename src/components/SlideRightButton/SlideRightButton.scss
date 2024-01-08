@@ -1,0 +1,21 @@
+@import "../../styles/main";
+
+.SlideRightButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $elements;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    border-color: $black;
+    background-color: $secondary;
+  }
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

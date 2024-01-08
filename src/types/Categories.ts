@@ -3,3 +3,10 @@ export enum Categories {
   Tablets = 'tablets',
   Accessories = 'accessories',
 }
+
+export enum SearchParams {
+  Sort = 'sort',
+  PerPage = 'perPage',
+  Query = 'query',
+  Page = 'page',
+}

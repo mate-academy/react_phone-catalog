@@ -1,60 +1,54 @@
-import './ShopByCategory.scss';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-import { GlobalContext } from '../../store';
+import phones from '../../assets/category-phones.png';
+import tablets from '../../assets/category-tablets.png';
+import accessories from '../../assets/category-accessories.png';
 import { Categories } from '../../types/Categories';
-import phones from '../../assets/categories/category-phones.png';
-import tablets from '../../assets/categories/category-tablets.png';
-import accessories from '../../assets/categories/category-accessories.png';
+import './ShopByCategory.scss';
+import { capitalize } from '../../helpers/helpers';
+import { Product } from '../../types/Product';
 
-const allCategories: { [key in Categories]: string } = {
-  [Categories.Phones]: phones,
-  [Categories.Tablets]: tablets,
-  [Categories.Accessories]: accessories,
+const images = {
+  phones,
+  tablets,
+  accessories,
 };
 
-export const ShopByCategory = () => {
-  const { products } = useContext(GlobalContext);
+type Props = {
+  products: Product[];
+};
 
+export const ShopByCategory: React.FC<Props> = ({ products }) => {
   const modelsAmount = (type: string) => products
-    .filter(product => product.category === type).length;
-  const capitalizeFirstLetter = (word: string) => word[0].toUpperCase()
-    + word.slice(1);
+    .filter((product) => product.category === type).length;
 
   return (
-    <section
-      className="shop-by-category"
-      data-cy="categoryLinksContainer"
-    >
-      <h1 className="shop-by-category__title">Shop by category</h1>
+    <section className="ShopByCategory" data-cy="categoryLinksContainer">
+      <h1 className="ShopByCategory__title">Shop by category</h1>
 
-      <div className="shop-by-category__content">
-        {Object.entries(allCategories).map(([category, image]) => {
-          return (
-            <Link
-              to={`/${category}`}
-              className="shop-by-category__category"
-              key={category}
-            >
-              <div className="shop-by-category__category-wrapper">
-                <img
-                  src={image}
-                  alt={category}
-                  className="shop-by-category__category-image"
-                />
-              </div>
-              <div className="shop-by-category__category-description">
-                <p className="shop-by-category__category-title">
-                  {capitalizeFirstLetter(category)}
-                </p>
-                <span className="shop-by-category__category-amount">
-                  {`${modelsAmount(category)} models`}
-                </span>
-              </div>
-            </Link>
-          );
-        })}
+      <div className="ShopByCategory__content">
+        {Object.values(Categories).map((category) => (
+          <Link
+            to={`/${category}`}
+            className="ShopByCategory__category"
+            key={category}
+          >
+            <div>
+              <img
+                src={`${images[category]}`}
+                alt={category}
+                className="ShopByCategory__category-image"
+              />
+            </div>
+
+            <p className="ShopByCategory__category-title">
+              {capitalize(category)}
+            </p>
+
+            <span className="ShopByCategory__category-amount">
+              {`${modelsAmount(category)} models`}
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );

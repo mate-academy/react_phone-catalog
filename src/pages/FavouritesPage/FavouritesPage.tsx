@@ -1,45 +1,43 @@
-import './FavouritesPage.scss';
-import { useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-import { GlobalContext } from '../../store';
-import { Loader } from '../../components/Loader';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { PageContent } from '../../components/PageContent';
+import './FavouritesPage.scss';
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
+import { ProductList } from '../../components/ProductList/ProductList';
+import {
+  NoSearchResults,
+} from '../../components/NoSearchResults/NoSearchResults';
+import { applyFilterAndSort } from '../../helpers/applyFilterAndSort';
+import { CartEmpty } from '../../components/CartEmpty/CartEmpty';
+import { useAppSelector } from '../../app/hooks';
 
 export const FavouritesPage = () => {
-  const { favourites, isLoading } = useContext(GlobalContext);
+  const favourites = useAppSelector((state) => state.favourites.items);
+  const [searchParams] = useSearchParams();
+
+  const filteredProducts = applyFilterAndSort(favourites, searchParams);
 
   return (
     <div className="FavouritesPage">
-      {isLoading && <Loader />}
-      {!favourites.length ? (
-        <>
-          <Breadcrumbs />
-          <h1 className="FavouritesPage__title">Favourites</h1>
+      <BreadCrumbs />
+      <h1 className="FavouritesPage__title">Favourites</h1>
 
-          <div className="FavouritesPage__content">
-            <p className="FavouritesPage__amount">
-              {favourites.length !== 0 && `${favourites.length}
-              ${favourites.length === 1 ? 'model' : 'models'}`}
-            </p>
-          </div>
-          <div className="empty">
-            <p className="empty__message">
-              You don&apos;t have any favourite products.
-            </p>
-          </div>
-        </>
-      ) : (
-        <>
-          {!isLoading && !!favourites.length && (
-            <PageContent
-              title="Favourites"
-              itemsList={favourites}
-            />
-          )}
-        </>
-      )}
+      <div className="FavouritesPage__content">
+        <p className="FavouritesPage__amount">
+          {favourites.length !== 1 ? `${favourites.length} models` : '1 model'}
+        </p>
 
+        {!favourites.length ? (
+          <CartEmpty />
+        ) : (
+          <>
+            {!!filteredProducts.length && (
+              <ProductList products={filteredProducts} />
+            )}
+
+            {!filteredProducts.length && <NoSearchResults />}
+          </>
+        )}
+      </div>
     </div>
   );
 };

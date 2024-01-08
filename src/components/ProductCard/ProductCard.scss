@@ -1,6 +1,6 @@
 @import "../../styles/main";
 
-.product-card {
+.ProductCard {
   position: relative;
   width: $card-width-desktop;
   height: 507px;
@@ -8,8 +8,9 @@
   flex-direction: column;
   align-items: center;
   padding: 32px 24px 24px;
-  border: 1px solid $light-gray;
+  border: none;
   transition-duration: $transition-duration;
+  background-color: $surface1;
 
   @include on-tablet {
     width: $card-width-tablet;
@@ -17,15 +18,11 @@
     padding: 20px 16px;
   }
 
-  @include on-mobile {
-    margin: 0 auto;
-  }
-
   &:hover {
-    box-shadow: 0 4px 8px rgba($secondary-color, 0.26);
+    box-shadow: 0 3px 13px rgba(#172031, 0.26);
   }
 
-  &__image {
+  &__photo {
     width: 208px;
     height: 208px;
     display: flex;
@@ -33,7 +30,8 @@
     margin-bottom: 24px;
 
     @include on-tablet {
-      height: 140px;
+      width: 150px;
+      height: 150px;
       margin-bottom: 16px;
     }
 
@@ -43,17 +41,14 @@
   }
 
   &__title {
-    height: 42px;
     display: flex;
     align-items: center;
-
-    @include on-tablet {
-      height: 30px;
-    }
+    height: 42px;
+    width: 100%;
+    color: $white;
 
     &-item {
-      font-family: Mont-Regular, sans-serif;
-      font-size: 14px;
+      @extend %body;
     }
   }
 
@@ -63,38 +58,42 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid $light-gray;
+    border-bottom: 1px solid $elements;
     margin-bottom: 16px;
+    color: $white;
 
     @include on-mobile {
       margin-bottom: 8px;
     }
 
-    &-new {
+    &-current {
       @extend %h2;
+      color: $white;
     }
 
-    &-old {
+    &-before {
       font-size: 22px;
-      font-family: Mont-Regular, sans-serif;
-      color: $secondary-color;
+      font-weight: 500;
       line-height: 39px;
+      color: $secondary;
       text-decoration: line-through;
+
+      @include on-tablet {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
   }
 
   &__info {
     width: 100%;
     display: flex;
-    gap: 8px;
     flex-direction: column;
+    gap: 8px;
     margin-bottom: 16px;
+    color: $white;
 
-    @extend %text;
-
-    @include on-tablet {
-      gap: 4px;
-    }
+    @extend %small-text;
 
     &-container {
       display: flex;
@@ -102,13 +101,12 @@
     }
 
     &-title {
-      color: $secondary-color;
+      color: $secondary;
     }
   }
 
   &__buttons {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    gap: 8px;
   }
 }

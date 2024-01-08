@@ -1,38 +1,46 @@
-import './AddToCartButton.scss';
-import classNames from 'classnames';
-import React, { useContext } from 'react';
-import { GlobalContext } from '../../store';
+import React from 'react';
+import cn from 'classnames';
+
 import { Product } from '../../types/Product';
+import './AddToCartButton.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as cartActions from '../../features/cartSlicer';
 
 type Props = {
-  product: Product,
+  product: Product;
 };
 
 export const AddToCartButton: React.FC<Props> = ({ product }) => {
-  const { cart, dispatch } = useContext(GlobalContext);
-  const isProductInCart = cart.some(item => item.id === product.id);
+  const dispatch = useAppDispatch();
 
-  const addToCart = () => {
-    const newProduct = {
-      ...product,
-      amount: 1,
-    };
-    const index = cart.findIndex(item => item.id === newProduct.id);
+  const cartProducts = useAppSelector((state) => state.cartProducts.items);
 
-    if (index === -1) {
-      dispatch({ type: 'ADD_TO_CART', payload: newProduct });
+  const isProductInCart = cartProducts.some(
+    (item) => item.id === product.id,
+  );
+
+  const isCart = cartProducts.some(
+    (cartProduct) => cartProduct.phoneId === product.phoneId,
+  );
+
+  const handleAddProduct = (newProduct: Product) => {
+    if (isCart) {
+      dispatch(cartActions.deleteCartProducts(newProduct.id));
     } else {
-      dispatch({ type: 'DELETE_FROM_CART', payload: newProduct });
+      dispatch(cartActions.setCartProducts(newProduct));
     }
   };
 
   return (
     <button
       type="button"
-      className={classNames('add-to-cart-button', {
+      className={cn('AddToCartButton', {
         'added-to-cart': isProductInCart,
       })}
-      onClick={addToCart}
+      onClick={(event) => {
+        event.preventDefault();
+        handleAddProduct(product);
+      }}
     >
       {isProductInCart ? 'Added to cart' : 'Add to cart'}
     </button>

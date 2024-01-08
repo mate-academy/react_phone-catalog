@@ -1,6 +1,6 @@
 @import "../../styles/main";
 
-.carousel {
+.Carousel {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,17 +27,13 @@
       justify-content: center;
       max-height: 100%;
       width: 32px;
-      border: 1px solid $icon-color;
-      background-color: transparent;
+      border: 1px solid $surface1;
       transition-duration: $transition-duration;
+      background-color: $surface2;
 
       &:hover {
-        border-color: $main-color;
+        border-color: $icons;
         cursor: pointer;
-      }
-
-      @include on-mobile {
-        display: none;
       }
     }
 
@@ -45,6 +41,18 @@
       height: 100%;
       width: 1040px;
       overflow: hidden;
+
+      @include on-desktop {
+        width: 874px;
+      }
+
+      @include on-tablet {
+        width: 654px;
+      }
+
+      @include on-mobile {
+        width: 504px;
+      }
     }
 
     &-list {
@@ -68,7 +76,7 @@
     }
   }
 
-  &__dots {
+  &__position {
     width: 80px;
     height: 24px;
     display: flex;
@@ -79,20 +87,19 @@
     &-item {
       width: 14px;
       height: 5px;
-      background-color: $main-color;
-      opacity: 0.4;
+      background-color: $elements;
+      transition-duration: $transition-duration;
       border: 1px solid transparent;
-      border-radius: 10px;
+      border-radius: 5px;
 
       &:hover {
         box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
-        border: 1px solid $main-color;
+        border: 1px solid $white;
       }
     }
   }
 }
 
 .banner-active {
-  opacity: 1;
+  background-color: $white;
 }
-

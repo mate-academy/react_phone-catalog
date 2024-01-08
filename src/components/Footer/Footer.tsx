@@ -1,10 +1,10 @@
-import './Footer.scss';
-import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import './Footer.scss';
 
-import { GITHUB_URL } from '../../api/api';
-import { BackToTopButton } from '../BackToTopButton';
-import { NotImpementFeature } from '../NotImpementFeature';
+import { ScrollToTop } from '../ScrollToTop/ScrollToTop';
+import { ComingSoon } from '../ComingSoon/ComingSoon';
+import { GITHUB_URL } from '../../helpers/constants';
 
 export const Footer: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,28 +18,31 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="footer">
-      <div className="footer__container main__container">
-        <Link to="/" className="footer__logo">
-          <div className="footer__logo-image" />
+    <footer className="Footer">
+      <div className="Footer__container main-content__container">
+        <Link to="/" className="Footer__logo">
+          <div className="Footer__logo-image" />
         </Link>
-        <div className="footer__content">
+
+        <div className="Footer__content">
           <Link
-            className="footer__content-link"
+            className="Footer__content-link"
             to={GITHUB_URL}
             target="_blank"
           >
             Github
           </Link>
+
           <Link
-            className="footer__content-link"
+            className="Footer__content-link"
             to={pathname}
             onClick={handleLinkClick}
           >
             Contacts
           </Link>
+
           <Link
-            className="footer__content-link"
+            className="Footer__content-link"
             to={pathname}
             onClick={handleLinkClick}
           >
@@ -47,10 +50,10 @@ export const Footer: React.FC = () => {
           </Link>
         </div>
 
-        <BackToTopButton />
+        <ScrollToTop />
       </div>
 
-      {isModalOpen && <NotImpementFeature onClose={setIsModalOpen} />}
+      {isModalOpen && <ComingSoon onClose={setIsModalOpen} />}
     </footer>
   );
 };

@@ -1,30 +1,107 @@
-import { useContext, useEffect, useState } from 'react';
-import { GlobalContext } from '../../store';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import './AccessoriesPage.scss';
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
+import { SortDropdown } from '../../components/SortDropdown/SortDropdown';
+import { ITEMS_PER_PAGE, SORT_BY } from '../../helpers/constants';
+import { Categories, SearchParams } from '../../types/Categories';
+import { ProductList } from '../../components/ProductList/ProductList';
 import { Product } from '../../types/Product';
-import { getAccessories } from '../../api/api';
-import { Loader } from '../../components/Loader';
-import { PageContent } from '../../components/PageContent';
+import { Loader } from '../../components/Loader/Loader';
+import {
+  ErrorNotification,
+} from '../../components/ErrorNotification/ErrorNotification';
+import { applyFilterAndSort } from '../../helpers/applyFilterAndSort';
+import {
+  NoSearchResults,
+} from '../../components/NoSearchResults/NoSearchResults';
+import { Pagination } from '../../components/Pagination/Pagination';
+import { getProductsByCategoty } from '../../api/products';
 
-export const AccessoriesPage = () => {
-  const { isLoading, dispatch } = useContext(GlobalContext);
-  const [accessoriesList, setAccessoriesList] = useState<Product[]>([]);
+export const AccessoriesPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadError, setIsLoadError] = useState(false);
+
+  const filteredProducts = applyFilterAndSort(products, searchParams);
+  const total = filteredProducts.length;
+  const currentPage = +(searchParams.get(SearchParams.Page) || '1');
+  const perPage = +(searchParams.get(SearchParams.PerPage) || '') || total;
+  const pagesAmount = Math.ceil(total / perPage);
+
+  const firstItem = currentPage * +perPage - perPage;
+  const lastItem
+    = perPage * currentPage < total ? perPage * currentPage : total;
+
+  const visibleProducts = filteredProducts.slice(firstItem, lastItem);
 
   useEffect(() => {
-    dispatch({ type: 'START_LOADER' });
-    getAccessories().then(setAccessoriesList)
-      .finally(() => dispatch({ type: 'STOP_LOADER' }));
-  }, [dispatch]);
+    setIsLoading(true);
+
+    getProductsByCategoty(Categories.Accessories)
+      .then(setProducts)
+      .catch(() => {
+        setIsLoadError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   return (
-    <section className="accessories">
+    <div className="ProductPage">
+      <BreadCrumbs />
+
+      <h1 className="ProductPage__title">Accessories</h1>
+
       {isLoading && <Loader />}
 
-      {!isLoading && (
-        <PageContent
-          title="Accessories"
-          itemsList={accessoriesList}
-        />
+      {!isLoading && isLoadError && <ErrorNotification />}
+
+      {!isLoading && !isLoadError && (
+        <div className="ProductPage__content">
+          <p className="ProductPage__amount">{`${products.length} models`}</p>
+
+          {!!products.length && (
+            <div className="ProductPage__control">
+              <SortDropdown
+                label="Sort by"
+                options={SORT_BY}
+                searchParam={SearchParams.Sort}
+              />
+
+              <SortDropdown
+                label="Items per page"
+                defaultOption={ITEMS_PER_PAGE.All}
+                options={ITEMS_PER_PAGE}
+                searchParam={SearchParams.PerPage}
+              />
+            </div>
+          )}
+
+          {visibleProducts.length ? (
+            <ProductList products={visibleProducts} />
+          ) : (
+            <>
+              {!!searchParams.toString().length && <NoSearchResults />}
+              {!searchParams.toString().length && (
+                <div className="ProductPage__out-stock">
+                  <p className="ProductPage__out-stock-big">
+                    Seems like products are out of stock...
+                  </p>
+                  Our team is already working on supplying. Please, come back
+                  later.
+                </div>
+              )}
+            </>
+          )}
+
+          {!!filteredProducts.length && pagesAmount !== 1 && (
+            <Pagination pagesAmount={pagesAmount} currentPage={currentPage} />
+          )}
+        </div>
       )}
-    </section>
+    </div>
   );
 };
