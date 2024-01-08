@@ -1,0 +1,20 @@
+@import "../../styles/main";
+
+.AddToFavButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $surface2;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  &.added-to-fav {
+    border: 1px solid $elements;
+    background-color: $surface1;
+  }
+}

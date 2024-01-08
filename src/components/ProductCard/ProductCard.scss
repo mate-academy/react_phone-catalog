@@ -1,0 +1,112 @@
+@import "../../styles/main";
+
+.ProductCard {
+  position: relative;
+  width: $card-width-desktop;
+  height: 507px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 24px;
+  border: none;
+  transition-duration: $transition-duration;
+  background-color: $surface1;
+
+  @include on-tablet {
+    width: $card-width-tablet;
+    height: 400px;
+    padding: 20px 16px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(#172031, 0.26);
+  }
+
+  &__photo {
+    width: 208px;
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 16px;
+    }
+
+    &-item {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    width: 100%;
+    color: $white;
+
+    &-item {
+      @extend %body;
+    }
+  }
+
+  &__price {
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 16px;
+    color: $white;
+
+    @include on-mobile {
+      margin-bottom: 8px;
+    }
+
+    &-current {
+      @extend %h2;
+      color: $white;
+    }
+
+    &-before {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 39px;
+      color: $secondary;
+      text-decoration: line-through;
+
+      @include on-tablet {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: $white;
+
+    @extend %small-text;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: $secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

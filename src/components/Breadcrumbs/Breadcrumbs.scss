@@ -1,0 +1,24 @@
+@import "../../styles/main";
+
+.BreadCrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @extend %small-text;
+
+  margin-top: 24px;
+
+  &__current {
+    padding-top: 3px;
+    color: $secondary;
+  }
+
+  &__link {
+    padding-top: 3px;
+    transition-duration: $transition-duration;
+    &:hover {
+      transform: scale(1.0);
+    }
+  }
+}

@@ -1,0 +1,351 @@
+@import "../../styles/main";
+
+.ProductDetailsPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: $white;
+
+  &__title {
+    margin-top: 16px;
+
+    @extend %h1;
+
+    @include on-mobile {
+      margin-top: 12px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    margin-top: 40px;
+
+    @include on-tablet {
+      flex-direction: column;
+      justify-content: center;
+      gap: 46px;
+      margin-top: 24px;
+    }
+
+    @include on-mobile {
+      gap: 32px;
+      margin-top: 12px;
+    }
+
+    &-imgs-wrapper {
+      display: flex;
+
+      @include on-tablet {
+        gap: 92px;
+      }
+
+      @include on-mobile {
+        gap: 0;
+      }
+    }
+  }
+
+  &__actions {
+    margin-right: 130px;
+
+    @include on-desktop {
+      margin-right: 60px;
+    }
+
+    @include on-tablet {
+      margin-right: 0;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 12px;
+    }
+
+    @include on-mobile {
+      gap: 6px;
+    }
+
+    &-button {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      margin-right: 16px;
+      border: 1px solid $elements;
+      transition-duration: $transition-duration;
+
+      @include on-tablet {
+        width: 68px;
+        height: 68px;
+      }
+
+      @include on-mobile {
+        width: 55px;
+        height: 55px;
+      }
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+      }
+    }
+
+    &-item {
+      max-height: 100%;
+    }
+  }
+
+  &__current-image {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 64px;
+    overflow: hidden;
+
+    @include on-desktop {
+      margin-right: 28px;
+    }
+
+    @include on-tablet {
+      width: 390px;
+      height: 390px;
+      margin-right: 0;
+    }
+
+    @include on-mobile {
+      width: 300px;
+      height: 300px;
+    }
+
+    &-item {
+      max-height: 100%;
+      animation: showImage 1s ease;
+    }
+  }
+
+  &__options {
+    height: 80px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 24px;
+
+    @include on-mobile {
+      height: 68px;
+    }
+
+    &-title {
+      @extend %small-text;
+
+      color: $secondary;
+      margin-bottom: 8px;
+    }
+
+    &-list {
+      display: flex;
+      gap: 8px;
+
+      @include on-tablet {
+        gap: 12px;
+      }
+    }
+
+    &-color {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      border: 1px solid $elements;
+      border-radius: 50%;
+      transition-duration: $transition-duration;
+
+      @include on-tablet {
+        width: 36px;
+        height: 36px;
+      }
+
+      &:hover {
+        border-color: $icons;
+      }
+
+      &-link {
+        width: 100%;
+        border: 2px solid $white;
+        border-radius: 50%;
+      }
+    }
+
+    &-cap {
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $icons;
+      transition-duration: $transition-duration;
+
+      &:hover {
+        border-color: $white;
+      }
+
+      &-link {
+        @extend %body;
+
+        margin-inline: 8px;
+      }
+    }
+  }
+
+  &__prices {
+    margin-top: 32px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &-now {
+      @extend %h1;
+    }
+
+    &-before {
+      color: $secondary;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+
+    @include on-mobile {
+      gap: 24px;
+    }
+  }
+
+  &__info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @extend %small-text;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: $secondary;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__id {
+    @extend %small-text;
+
+    color: $secondary;
+  }
+
+  &__more {
+    display: flex;
+    gap: 64px;
+    margin: 80px 0;
+
+    @include on-tablet {
+      flex-direction: column-reverse;
+      margin: 60px 0;
+      gap: 48px;
+    }
+
+    &-title {
+      height: 48px;
+      border-bottom: 1px solid $elements;
+      &-item {
+        @extend %h2;
+      }
+    }
+
+    &-about {
+      max-width: 560px;
+
+      @include on-tablet {
+        max-width: none;
+      }
+
+      &-article {
+        margin-top: 32px;
+
+        @include on-tablet {
+          margin-top: 24px;
+        }
+
+        &-title {
+          @extend %h3;
+        }
+
+        &-info {
+          @extend %body;
+
+          color: $secondary;
+          margin-top: 16px;
+        }
+      }
+    }
+
+    &-tech {
+      width: 100%;
+
+      &-content {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &-wrap {
+        display: flex;
+        justify-content: space-between;
+
+        @extend %body;
+      }
+
+      &-property {
+        color: $secondary;
+      }
+    }
+  }
+}
+
+.color-option-active {
+  border-color: $black;
+}
+
+.capacity-option-active {
+  background-color: $black;
+  color: $white;
+}
+
+.image-active {
+  border: 1px solid $black;
+}
+
+@keyframes show-image {
+  from {
+    opacity: 0.2;
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

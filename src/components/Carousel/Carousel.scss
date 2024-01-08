@@ -1,0 +1,105 @@
+@import "../../styles/main";
+
+.Carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+
+  &__slider {
+    height: 400px;
+    max-width: 100%;
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-mobile {
+      height: 250px;
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 100%;
+      width: 32px;
+      border: 1px solid $surface1;
+      transition-duration: $transition-duration;
+      background-color: $surface2;
+
+      &:hover {
+        border-color: $icons;
+        cursor: pointer;
+      }
+    }
+
+    &-container {
+      height: 100%;
+      width: 1040px;
+      overflow: hidden;
+
+      @include on-desktop {
+        width: 874px;
+      }
+
+      @include on-tablet {
+        width: 654px;
+      }
+
+      @include on-mobile {
+        width: 504px;
+      }
+    }
+
+    &-list {
+      height: 100%;
+      width: 300%;
+      display: flex;
+      gap: 1px;
+      transition-duration: 1s;
+    }
+
+    &-item {
+      height: 100%;
+      width: 33.33%;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+
+  &__position {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &-item {
+      width: 14px;
+      height: 5px;
+      background-color: $elements;
+      transition-duration: $transition-duration;
+      border: 1px solid transparent;
+      border-radius: 5px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+        border: 1px solid $white;
+      }
+    }
+  }
+}
+
+.banner-active {
+  background-color: $white;
+}

@@ -1,0 +1,48 @@
+@import "../../styles/main";
+
+.Pagination {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-mobile {
+    gap: 8px;
+  }
+
+  &__pages {
+    display: flex;
+    gap: 6px;
+
+    @include on-mobile {
+      flex-wrap: wrap;
+    }
+
+    &-link {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $elements;
+      transition-duration: $transition-duration;
+
+      @extend %body;
+
+      @include on-tablet {
+        width: 24px;
+        height: 24px;
+      }
+
+      &:hover {
+        border-color: $black;
+      }
+
+      &.active {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+}
