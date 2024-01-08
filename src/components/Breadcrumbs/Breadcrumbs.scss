@@ -15,6 +15,10 @@
     position: relative;
     height: 16px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     color: $primary;
 
     &:last-child {
@@ -36,6 +40,19 @@
 
       background: no-repeat center url("../../images/icons/arrow-right-disabled.svg");
     }
+  }
+
+  &-Link {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+
+    text-decoration: none;
+    color: $primary;
+
+    cursor: pointer;
   }
 
   &-Icon {

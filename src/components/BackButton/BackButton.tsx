@@ -7,7 +7,7 @@ export const BackButton = () => {
 
   return (
     <button
-      className="BackButton"
+      className="Page-BackButton BackButton"
       type="button"
       onClick={() => navigate(-1)}
     >

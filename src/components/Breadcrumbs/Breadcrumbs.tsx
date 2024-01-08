@@ -37,7 +37,7 @@ export const Breadcrumbs = () => {
 
   return (
     <div
-      className="Breadcrumbs"
+      className="Page-Breadcrumbs Breadcrumbs"
       data-cy="breadCrumbs"
     >
       <ul className="Breadcrumbs-List">

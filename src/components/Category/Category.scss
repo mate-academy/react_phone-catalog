@@ -6,7 +6,8 @@
   transition: transform $transition-duration;
 
   &:hover {
-    transform: scaleY($scale-factor);
+    transform: translateY(-1rem);
+    // transform: scaleY($scale-factor);
   }
 
   &-Container {

@@ -70,12 +70,12 @@ export const ProductDetailsPage = () => {
 
   const isItemInCart = useMemo(() => {
     return cartItems.some(item => item.id === productId);
-  }, [cartItems, product]);
+  }, [cartItems, productId]);
 
   const { favouriteItems } = useAppSelector(state => state.favouriteItems);
   const isItemInFavourites = useMemo(() => {
     return favouriteItems.some(item => item.id === productId);
-  }, [favouriteItems]);
+  }, [favouriteItems, productId]);
 
   const toggleFavoriteProduct = () => {
     if (productId && isItemInFavourites) {
@@ -89,31 +89,32 @@ export const ProductDetailsPage = () => {
 
   return (
     <>
-      {(productDetailsStatus === Status.LOADING
+      <section className="Page-ProductDetail ProductDetail">
+        <Breadcrumbs />
+
+        <BackButton />
+
+        {productDetailsStatus === Status.FAILED
+          && productsStatus === Status.IDLE
+          && (
+            <div className="Page-NoResults NoResults">
+              Product was not found
+            </div>
+          )}
+
+        {(productDetailsStatus === Status.LOADING
           || productsStatus === Status.LOADING)
         && <Loader />}
 
-      {productDetailsStatus === Status.FAILED
-          && productsStatus === Status.IDLE
-          && (
-            <h1 className="ProductDetail-SectionTitle SectionTitle">
-              Product was not found
-            </h1>
-          )}
-
-      {productDetailsStatus === Status.IDLE
+        {productDetailsStatus === Status.IDLE
           && productsStatus === Status.IDLE
         && (
           <>
-            <Breadcrumbs />
+            <h1 className="ProductDetail-Title SectionTitle">
+              {productDetails?.name}
+            </h1>
 
-            <BackButton />
-
-            <section className="Page-Section ProductDetail">
-              <h1 className="ProductDetail-SectionTitle SectionTitle">
-                {productDetails?.name}
-              </h1>
-
+            <div className="ProductDetail-Content">
               <aside className="ProductDetail-ImagesContainer">
                 <ul className="ProductDetail-ImgList">
                   {productDetails?.images.map((url, id) => (
@@ -132,7 +133,7 @@ export const ProductDetailsPage = () => {
                           src={url}
                           alt="product small"
                           width="80"
-                          height="78"
+                          height="80"
                         />
                       </button>
 
@@ -210,11 +211,11 @@ export const ProductDetailsPage = () => {
                   </span>
 
                   {product && discountPrice !== product.price
-                  && (
-                    <span className="ProductDetail-Price">
-                      {`$${product.price}`}
-                    </span>
-                  )}
+                    && (
+                      <span className="ProductDetail-Price">
+                        {`$${product.price}`}
+                      </span>
+                    )}
                 </div>
 
                 <div className="ProductDetail-Buttons">
@@ -286,7 +287,9 @@ export const ProductDetailsPage = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
+            <div className="ProductDetail-ContentBottom">
               <div
                 className="ProductDetail-About"
                 data-cy="productDescription"
@@ -365,15 +368,20 @@ export const ProductDetailsPage = () => {
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section className="Page-Section">
-              <ProductsSlider
-                products={suggestedProducts}
-                title="You may also like"
-              />
-            </section>
+            </div>
           </>
+        )}
+      </section>
+
+      {productDetailsStatus === Status.IDLE
+          && productsStatus === Status.IDLE
+        && (
+          <section className="Page-HotPrice">
+            <ProductsSlider
+              products={suggestedProducts}
+              title="You may also like"
+            />
+          </section>
         )}
     </>
   );

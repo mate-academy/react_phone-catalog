@@ -1,4 +1,5 @@
 import { ProductType } from '../../types/ProductType';
+import { getCategoryData } from '../../utils/getCategoryData';
 
 import './NoResults.scss';
 
@@ -7,15 +8,11 @@ type Props = {
 };
 
 export const NoResults: React.FC<Props> = ({ productType }) => {
-  const categoryTitle = {
-    [ProductType.PHONE]: 'Mobile phones',
-    [ProductType.TABLET]: 'Tablets',
-    [ProductType.ACCESSORY]: 'Accessories',
-  };
+  const { title } = getCategoryData(productType);
 
   return (
-    <section className="Page-NoResults NoResults">
-      {`${categoryTitle[productType]} not found`}
-    </section>
+    <div className="Page-NoResults NoResults">
+      {`${title} not found`}
+    </div>
   );
 };

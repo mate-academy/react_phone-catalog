@@ -17,9 +17,9 @@ import {
 } from '../../hooks/useProducts';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { formatTotal } from '../../utils/formatTotal';
+import { getCategoryData } from '../../utils/getCategoryData';
 
 import './ProductsPage.scss';
-import { getCategoryData } from '../../utils/getCategoryData';
 
 type Props = {
   productType: ProductType;

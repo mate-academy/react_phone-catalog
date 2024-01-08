@@ -1,16 +1,20 @@
 @import "../../styles/utils/";
 
 .ProductDetail {
-  @include pageGrid;
+  padding-block-start: 24px;
 
-  &-SectionTitle {
-    grid-column: 1/-1;
-
+  &-Title {
     margin: 0 0 40px;
   }
 
+  &-Content {
+    margin-block-end: 80px;
+
+    @include pageGrid;
+  }
+
   &-ImagesContainer {
-    grid-column: 1/3;
+    grid-column: span 2;
   }
 
   &-ImgList {
@@ -20,13 +24,30 @@
 
     display: flex;
     flex-direction: column;
-    gap: 16px 0;
+    grid-row-gap: 16px;
+  }
+
+  &-ListItem {
+    --size: 80px;
+    height: var(--size);
+    width: var(--size);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &-ImgButton {
     padding: 0;
-    border: 1px solid #c4c4c4;
+
+    display: block;
+
+    border: 1px solid $element;
+
     background: none;
+
+    cursor: pointer;
+
     transition: border-color $transition-duration;
 
     &:hover {
@@ -34,30 +55,30 @@
     }
 
     &_active {
-      border-color: $primary;
+      border-color: #313237;
     }
   }
 
   &-ImgSmall {
-    padding: 7px;
-
     display: block;
-    height: 100%;
-    width: 100%;
+    block-size: auto;
+    inline-size: 100%;
 
-    cursor: pointer;
+    max-inline-size: 100%;
   }
 
   &-Img {
-    grid-column: 3/13;
+    grid-column: span 10;
 
-    margin-block-end: 80px;
+    display: block;
+    block-size: auto;
+    inline-size: 100%;
 
-    width: 100%;
+    object-fit: cover;
+    max-inline-size: 100%;
   }
 
   &-Right {
-    margin-block-end: 109px;
     grid-column: 14/21;
   }
 
@@ -135,9 +156,7 @@
 
     height: 32px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 
     background-color: transparent;
 
@@ -218,6 +237,10 @@
     font-weight: 600;
   }
 
+  &-ContentBottom {
+    @include pageGrid;
+  }
+
   &-About {
     grid-column: 1/13;
   }
@@ -237,7 +260,9 @@
   }
 
   &-Tech {
-    grid-column: 13/-1;
+    grid-column: 14/-1;
+
+    padding-top: 25px;
   }
 
   &-TechTitle {
@@ -254,10 +279,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    &:first-child {
-      padding-top: 25px;
-    }
   }
 
   &-TechLabel {
