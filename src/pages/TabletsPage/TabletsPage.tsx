@@ -146,9 +146,7 @@ export const TabletsPage = () => {
 
       {isLoading && <Loader />}
 
-      {hasError && (
-        { hasError }
-      )}
+      {hasError && hasError}
 
       {!tablets.length && !isLoading && !hasError && !appliedQuery && (
         <NoResults productName="Tablets" />

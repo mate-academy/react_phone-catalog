@@ -34,7 +34,7 @@ export const BannerSlider: React.FC = () => {
             onClick={handlePrev}
           >
             <img
-              src="img/icons/arrowRight.svg"
+              src="img/icons/ArrowRight.svg"
               alt="arrowLeft"
               style={{ transform: 'rotate(-180deg)' }}
             />
@@ -44,7 +44,7 @@ export const BannerSlider: React.FC = () => {
             onClick={handleNext}
           >
             <img
-              src="img/icons/arrowRight.svg"
+              src="img/icons/ArrowRight.svg"
               alt="arrowRight"
             />
           </button>
