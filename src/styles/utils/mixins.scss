@@ -33,26 +33,26 @@
 
 /*#region Page Base Grid*/
 @mixin pageGrid {
-  --columns: 2;
+  --columns: 6;
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
-  column-gap: 20px;
+  column-gap: $product-card-gap;
 
   @include onTablet {
-    --columns: 6;
-    column-gap: 30px;
+    --columns: 12;
+    // column-gap: 30px;
   }
 
   @include onDesktopSmall {
-    --columns: 12;
-    column-gap: 20px;
+    --columns: 18;
+    // column-gap: 20px;
   }
 
   @include onDesktop {
-    column-gap: 30px;
+    --columns: 24;
+    // column-gap: 30px;
   }
 }
-
 /*#endregion*/
 
 /*#region Transition*/

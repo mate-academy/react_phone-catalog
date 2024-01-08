@@ -1,12 +1,12 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../../store/AppProvider';
 
-import './ShopByCategory.scss';
+import { useAppSelector } from '../../store/hooks';
 import { getAccessories, getPhones, getTablets } from '../../api/products';
 
+import './ShopByCategory.scss';
+
 export const ShopByCategory = () => {
-  const { products } = useContext(AppContext);
+  const { items: products } = useAppSelector(state => state.products);
   const phones = getPhones(products);
   const tablets = getTablets(products);
   const accessories = getAccessories(products);

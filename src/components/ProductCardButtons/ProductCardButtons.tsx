@@ -1,42 +1,39 @@
-import { useContext } from 'react';
 import cn from 'classnames';
 
-import './ProductCardButtons.scss';
-import { AppContext } from '../../store/AppProvider';
 import { Product } from '../../types/Product';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import * as cartSlice from '../../features/cartSlice';
+import * as favoritesSlice from '../../features/favoritesSlice';
+
+import './ProductCardButtons.scss';
 
 type Props = {
-  productItemId: Product['itemId'],
+  product: Product,
 };
 
 export const ProductCardButtons: React.FC<Props> = ({
-  productItemId,
+  product,
 }) => {
-  const {
-    favorites,
-    cart,
-    addToCart,
-    removeFromCart,
-    addToFavorites,
-    takeFromFavorites,
-  } = useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const { items: cart } = useAppSelector(state => state.cart);
+  const { items: favorites } = useAppSelector(state => state.favorites);
 
-  const isFavorite = favorites.some(item => item.itemId === productItemId);
-  const isInCart = cart.some(item => item.product.itemId === productItemId);
+  const isFavorite = favorites.some(item => item.itemId === product.itemId);
+  const isInCart = cart.some(item => item.product.itemId === product.itemId);
 
   const handleToCartClick = () => {
     if (isInCart) {
-      removeFromCart(productItemId);
+      dispatch(cartSlice.remove(product));
     } else {
-      addToCart(productItemId);
+      dispatch(cartSlice.add(product));
     }
   };
 
   const handleToFavoritesClick = () => {
     if (isFavorite) {
-      takeFromFavorites(productItemId);
+      dispatch(favoritesSlice.remove(product));
     } else {
-      addToFavorites(productItemId);
+      dispatch(favoritesSlice.add(product));
     }
   };
 

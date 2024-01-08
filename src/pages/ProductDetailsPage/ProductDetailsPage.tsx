@@ -1,16 +1,15 @@
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAppSelector } from '../../store/hooks';
 
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { ProductDetails } from '../../components/ProductDetails';
-import { AppContext } from '../../store/AppProvider';
 import { NoResults } from '../../components/NoResults';
 
 import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
-  const { products } = useContext(AppContext);
+  const { items: products } = useAppSelector(state => state.products);
 
   return (
     <div className="ProductDetailsPage page__container">

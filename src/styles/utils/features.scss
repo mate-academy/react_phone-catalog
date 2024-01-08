@@ -11,18 +11,28 @@
     -webkit-appearance: none;
   }
 
+  &--down {
+    &::after {
+      background-image: url('../../images/icons/icon-arrow-down.svg');
+    }
+  }
+
+  &--up {
+    &::after {
+      background-image: url('../../images/icons/icon-arrow-up.svg');
+    }
+  }
+
   &::after {
     content: " ";
     position: absolute;
     top: 50%;
     right: 4px;
-    z-index: 1;
 
     display: block;
     height: 16px;
     width: 16px;
 
-    background-image: url('../../images/icons/icon-arrow-down.png');
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;

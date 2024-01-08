@@ -2,6 +2,10 @@
 
 .BurgerMenu {
 
+  @include onDesktopSmall {
+    display: none;
+  }
+
   &__button {
     position: relative;
     display: flex;
@@ -9,21 +13,9 @@
     justify-content: center;
     width: 65px;
     height: 65px;
+    cursor: pointer;
     border: 1px solid $page-bckgrd-color;
     background-color: $page-bckgrd-color;
-  }
-
-  @include onTablet {
-    display: none;
-  }
-
-  &__icon {
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center;
   }
 }
 
@@ -34,40 +26,28 @@
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: 0;
   opacity: 0;
   background-color: $page-bckgrd-color;
   pointer-events: none;
   transform: translateX(-100%);
-  transition-property: transform, opacity;
   /*smooth disappear*/
+  transition-property: transform, opacity;
   transition-duration: $effectDurationNormal;
 
-  @include onTablet {
-    display: none;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
   }
 
-  &__logo {
-    position: relative;
-    width: 40px;
-    height: 24px;
-    margin: auto 65px auto 24px;
-  }
-
-
-  &.isOpen {
+  &--open {
     opacity: 1;
     z-index: 1;
     transform: translateX(0%);
     pointer-events: all;
     transition-property: transform, opacity;
     transition-duration: $effectDurationNormal;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
   }
 
   &__links {
@@ -78,23 +58,6 @@
   }
 
   &__link {
-    color: $secondary-color;
     padding-block: 20px;
-    font-family: "Mont", sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-    text-decoration: none;
-
-    &.isActive {
-      color: $primary-color;
-    }
-
-    &:hover {
-      cursor: pointer;
-      color: $primary-color;
-    }
   }
 }

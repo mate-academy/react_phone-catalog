@@ -1,8 +1,9 @@
+import { Provider } from 'react-redux';
 import {
-  HashRouter as Router, Routes, Route,
-  Navigate,
+  HashRouter as Router, Routes, Route, Navigate,
 } from 'react-router-dom';
-import { AppProvider } from './store/AppProvider/AppProvider';
+import { store } from './store/store';
+// import { AppProvider } from './store/AppProvider/AppProvider';
 
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
@@ -16,8 +17,9 @@ import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
-  <Router>
-    <AppProvider>
+  <Provider store={store}>
+    <Router>
+      {/* <AppProvider> */}
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
@@ -45,6 +47,8 @@ export const Root = () => (
           <Route path="*" element={<NotFoundPage title="Page not found" />} />
         </Route>
       </Routes>
-    </AppProvider>
-  </Router>
+      {/* </AppProvider> */}
+    </Router>
+  </Provider>
+
 );

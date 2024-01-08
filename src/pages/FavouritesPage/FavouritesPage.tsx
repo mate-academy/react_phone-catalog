@@ -1,23 +1,21 @@
-import { useContext } from 'react';
 import {
   Link,
   useSearchParams,
 } from 'react-router-dom';
-
-import { AppContext } from '../../store/AppProvider';
 
 import { ProductCard } from '../../components/ProductCard';
 import { NoResults } from '../../components/NoResults';
 import { SearchParamsName } from '../../helpers/searchHelper';
 
 import './FavouritesPage.scss';
+import { useAppSelector } from '../../store/hooks';
 
 type Props = {
 };
 
 export const FavouritesPage: React.FC<Props> = (
 ) => {
-  const { favorites } = useContext(AppContext);
+  const { items: favorites } = useAppSelector(state => state.favorites);
   const [searchParams] = useSearchParams();
   const query = searchParams.get(SearchParamsName.QUERY) || '';
 

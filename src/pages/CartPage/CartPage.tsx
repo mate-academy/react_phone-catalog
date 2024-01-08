@@ -1,38 +1,59 @@
-import { useContext, useState } from 'react';
+import {
+  useState,
+} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
-import { AppContext } from '../../store/AppProvider';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import * as cartSlice from '../../features/cartSlice';
 import { NoResults } from '../../components/NoResults';
 import { BASE_URL } from '../../utils/httpClient';
 
 import './CartPage.scss';
+import { Product } from '../../types/Product';
+import { getProductByItemId } from '../../api/products';
 
 type Props = {
 };
 
 export const CartPage: React.FC<Props> = (
 ) => {
-  const {
-    cart,
-    addToCart,
-    takeFromCart,
-    removeFromCart,
-  } = useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const { items: cart } = useAppSelector(state => state.cart);
+  const { items: products } = useAppSelector(state => state.products);
   const location = useLocation();
   const [isCheckout, setIsCheckout] = useState(false);
 
-  const visibleProducts = [...cart];
-  const { totalPrice, totalQuantity } = cart.reduce((amount, item) => {
-    return {
-      totalPrice: amount.totalPrice + (item.product.price * item.quantity),
-      totalQuantity: amount.totalQuantity + item.quantity,
-    };
-  }, {
+  const visibleProducts = cart;
+  const {
+    totalPrice,
+    totalQuantity,
+  } = cart.reduce((amount, item) => ({
+    totalPrice: amount.totalPrice + (item.product.price * item.quantity),
+    totalQuantity: amount.totalQuantity + item.quantity,
+  }), {
     totalPrice: 0,
     totalQuantity: 0,
   });
+
   const handleCheckoutClick = () => setIsCheckout(prev => !prev);
+  const addToCart = (productId: Product['itemId']) => {
+    const product = getProductByItemId(products, productId);
+
+    return product && dispatch(cartSlice.add(product));
+  };
+
+  const takeFromCart = (productId: Product['itemId']) => {
+    const product = getProductByItemId(products, productId);
+
+    return product && dispatch(cartSlice.take(product));
+  };
+
+  const removeFromCart = (productId: Product['itemId']) => {
+    const product = getProductByItemId(products, productId);
+
+    return product && dispatch(cartSlice.remove(product));
+  };
 
   return (
     <div

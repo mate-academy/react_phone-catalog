@@ -5,8 +5,8 @@ import cn from 'classnames';
 import './BurgerMenu.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return cn('AsideMenu__link', {
-    isActive,
+  return cn('MenuItems__link', 'AsideMenu__link', {
+    'AsideMenu__link--selected': isActive,
   });
 };
 
@@ -25,18 +25,18 @@ export const BurgerMenu = () => {
           disabled={isOpen}
           aria-label="openMenu"
         >
-          <i className="BurgerMenu__icon icon--menu" />
+          <i className="icon icon--big icon--menu" />
         </button>
       </div>
 
       <nav className={cn('AsideMenu', {
-        isOpen,
+        'AsideMenu--open': isOpen,
       })}
       >
         <div className="AsideMenu__header">
           <Link
             to="/"
-            className="AsideMenu__logo icon--logo"
+            className="Header__logo icon--logo"
           />
 
           <button
@@ -45,7 +45,7 @@ export const BurgerMenu = () => {
             className="BurgerMenu__button"
             aria-label="closeMenu"
           >
-            <i className="BurgerMenu__icon icon--close" />
+            <i className="icon icon--big icon--close" />
           </button>
         </div>
 

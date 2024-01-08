@@ -70,7 +70,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
       <Slider
         products={visibleProducts}
-        itemWidth={MediaWidth.mobileWidth + MediaWidth.productCardGap - 0.5}
+        itemWidth={MediaWidth.mobileWidth + MediaWidth.productCardGap - 1}
         crntItemIndx={crntItemIndx}
         gap={MediaWidth.productCardGap - 0.5}
       />

@@ -1,19 +1,16 @@
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { useContext } from 'react';
 import cn from 'classnames';
 
-import { AppContext } from '../../store/AppProvider';
 import { Search } from '../Search';
 
 import './MenuItems.scss';
+import { useAppSelector } from '../../store/hooks';
 
 export const MenuItems = () => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
-  const {
-    favorites,
-    cart,
-  } = useContext(AppContext);
+  const { items: cart } = useAppSelector(state => state.cart);
+  const { items: favorites } = useAppSelector(state => state.favorites);
 
   const favoritesCount = favorites.length;
   const cartCount = cart.reduce((a, item) => a + item.quantity, 0);
@@ -29,45 +26,43 @@ export const MenuItems = () => {
 
   return (
     <>
-      {true && (// !isCartPage
-        <div className="MenuItems MenuItems__container">
-          <Link
-            to="/"
-            className={cn('MenuItems__link', {
-              'MenuItems__link--target': isTarget('/'),
-            })}
-          >
-            home
-          </Link>
+      <div className="MenuItems MenuItems__container">
+        <Link
+          to="/"
+          className={cn('MenuItems__link', {
+            'MenuItems__link--selected': isTarget('/'),
+          })}
+        >
+          home
+        </Link>
 
-          <Link
-            to="/phones"
-            className={cn('MenuItems__link', {
-              'MenuItems__link--target': isTarget('/phones'),
-            })}
-          >
-            phones
-          </Link>
+        <Link
+          to="/phones"
+          className={cn('MenuItems__link', {
+            'MenuItems__link--selected': isTarget('/phones'),
+          })}
+        >
+          phones
+        </Link>
 
-          <Link
-            to="/tablets"
-            className={cn('MenuItems__link', {
-              'MenuItems__link--target': isTarget('/tablets'),
-            })}
-          >
-            tablets
-          </Link>
+        <Link
+          to="/tablets"
+          className={cn('MenuItems__link', {
+            'MenuItems__link--selected': isTarget('/tablets'),
+          })}
+        >
+          tablets
+        </Link>
 
-          <Link
-            to="/accessories"
-            className={cn('MenuItems__link', {
-              'MenuItems__link--target': isTarget('/accessories'),
-            })}
-          >
-            accessories
-          </Link>
-        </div>
-      )}
+        <Link
+          to="/accessories"
+          className={cn('MenuItems__link', {
+            'MenuItems__link--selected': isTarget('/accessories'),
+          })}
+        >
+          accessories
+        </Link>
+      </div>
 
       <div className="MenuItems__buttons">
         {isSearch && (
@@ -85,7 +80,7 @@ export const MenuItems = () => {
                 search: searchParams.toString(),
               }}
               className={cn('MenuItems__icon', 'icon--favourites', {
-                'MenuItems__link--target': isTarget('/favorites'),
+                'MenuItems__link--selected': isTarget('/favorites'),
               })}
             />
             {favoritesCount > 0 && (
@@ -104,7 +99,7 @@ export const MenuItems = () => {
               search: searchParams.toString(),
             }}
             className={cn('MenuItems__icon', 'icon--bag', {
-              'MenuItems__link--target': isTarget('/cart'),
+              'MenuItems__link--selected': isTarget('/cart'),
             })}
           />
           {cartCount > 0 && (

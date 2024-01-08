@@ -73,7 +73,10 @@ export const Carousel: React.FC<Props> = ({ children }) => {
     setPages(
       Children.map(children as ReactElement[], child => {
         return cloneElement(child, {
-          className: cn('Carousel__img', 'Carousel__img__animation'),
+          className: cn(
+            'Carousel__img',
+            'Carousel__img__animation',
+          ),
         });
       }),
     );
@@ -94,9 +97,11 @@ export const Carousel: React.FC<Props> = ({ children }) => {
       <div className="Carousel__content">
         <button
           type="button"
-          className={cn('ProductsSlider__button',
+          className={cn(
+            'ProductsSlider__button',
             'ProductsSlider__button--defualt',
-            'Carousel__button')}
+            'Carousel__button',
+          )}
           aria-label="scrollLeft"
           onClick={handleLeftClick}
         >
@@ -111,9 +116,11 @@ export const Carousel: React.FC<Props> = ({ children }) => {
 
         <button
           type="button"
-          className={cn('ProductsSlider__button',
+          className={cn(
+            'ProductsSlider__button',
             'ProductsSlider__button--defualt',
-            'Carousel__button')}
+            'Carousel__button',
+          )}
           aria-label="scrollRight"
           onClick={handleRightClick}
         >

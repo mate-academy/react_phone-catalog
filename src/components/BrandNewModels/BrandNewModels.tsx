@@ -1,14 +1,11 @@
-import React, {
-  useContext,
-} from 'react';
-import { AppContext } from '../../store/AppProvider';
 import { getBrandNewProducts } from '../../api/products';
 import { ProductsSlider } from '../ProductsSlider';
 
 import './BrandNewModels.scss';
+import { useAppSelector } from '../../store/hooks';
 
 export const BrandNewModels: React.FC = () => {
-  const { products } = useContext(AppContext);
+  const { items: products } = useAppSelector(state => state.products);
 
   return (
     <div className="BrandNewModels BrandNewModels__container">

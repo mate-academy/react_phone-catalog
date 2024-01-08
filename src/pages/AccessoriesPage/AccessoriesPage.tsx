@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { AppContext } from '../../store/AppProvider';
+import { useAppSelector } from '../../store/hooks';
 import { getAccessories } from '../../api/products';
 
-import './AccessoriesPage.scss';
 import { ProductCategoryPage } from '../ProductCategoryPage';
 
+import './AccessoriesPage.scss';
+
 export const AccessoriesPage = () => {
-  const { products } = useContext(AppContext);
+  const { items: products } = useAppSelector(state => state.products);
 
   return (
     <ProductCategoryPage

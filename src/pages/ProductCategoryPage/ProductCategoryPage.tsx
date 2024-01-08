@@ -123,7 +123,7 @@ export const ProductCategoryPage: React.FC<Props> = ({
                 Sort Order:
               </label>
 
-              <div className="select__arrow">
+              <div className="select__arrow select__arrow--down">
                 <select
                   id="sortOrder"
                   value={sortBy}
@@ -146,7 +146,8 @@ export const ProductCategoryPage: React.FC<Props> = ({
               >
                 Items Per Page:
               </label>
-              <div className="select__arrow">
+
+              <div className="select__arrow select__arrow--down">
                 <select
                   id="itemsPerPage"
                   value={itemsPerPage}

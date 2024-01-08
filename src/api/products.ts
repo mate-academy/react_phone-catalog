@@ -9,6 +9,13 @@ export function getProductPrecise(productId: string): Promise<ProductPrecise> {
   return client.get(`products/${productId}.json`);
 }
 
+export function getProductByItemId(
+  products: Product[],
+  productItemId: Product['itemId'],
+) {
+  return products.find(item => item.itemId === productItemId);
+}
+
 export function getHotPriceProducts(products: Product[]): Product[] {
   return products
     .filter(product => product.price && product.fullPrice)

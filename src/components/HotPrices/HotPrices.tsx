@@ -1,14 +1,11 @@
-import React, {
-  useContext,
-} from 'react';
-import { AppContext } from '../../store/AppProvider';
+import { useAppSelector } from '../../store/hooks';
 import { getHotPriceProducts } from '../../api/products';
 import { ProductsSlider } from '../ProductsSlider';
 
 import './HotPrices.scss';
 
 export const HotPrices: React.FC = () => {
-  const { products } = useContext(AppContext);
+  const { items: products } = useAppSelector(state => state.products);
 
   return (
     <div className="HotPrices HotPrices__container">

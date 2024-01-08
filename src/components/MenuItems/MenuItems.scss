@@ -4,7 +4,7 @@
   &__container {
     display: none;
 
-    @include onTablet {
+    @include onDesktopSmall {
       display: flex;
       justify-content: space-between;
       gap: 36px;
@@ -44,7 +44,7 @@
       border-radius: 50%;
 
       @include fontIconCounter;
-      
+
       text-align: center;
       color: $white-color;
       background-color: $red-color;
@@ -52,13 +52,9 @@
   }
 
   &__search {
-    display: none;
-
-    @include onDesktopSmall {
-      display: inline-block;
-      height: 100%;
-      width: 327px;
-    }
+    display: inline-block;
+    height: 100%;
+    max-width: 327px;
   }
 
   &__buttons {
@@ -109,12 +105,13 @@
       transform-origin: center left;
     }
 
-    &--target {
+    &--selected {
       position: relative;
+      color: $primary-color;
       text-shadow: 2px 3px rgba($elements-color, 0.7);
 
       &::after {
-        @include generalTtransition(width, 100%, $effectDurationVerrySlow);
+        @include generalTtransition(width, 100%, $effectDurationSlow);
       }
     }
 
@@ -122,6 +119,7 @@
     @include hoverTransition(text-shadow, 2px 3px rgba($elements-color, 0.7), $effectDurationNormal);
 
     &:hover {
+      color: $primary-color;
       cursor: pointer;
     }
   }

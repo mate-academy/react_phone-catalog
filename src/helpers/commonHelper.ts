@@ -7,3 +7,7 @@ export function getNumbers(from: number, to: number): number[] {
 
   return numbers;
 }
+
+export function wait(delay: number) {
+  return new Promise(done => setTimeout(done, delay));
+}
