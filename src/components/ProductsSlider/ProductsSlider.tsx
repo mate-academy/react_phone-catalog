@@ -42,6 +42,9 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
     });
   };
 
+  // eslint-disable-next-line no-console
+  console.log('render ProductsSlider');
+
   return (
     <div className="ProductsSlider">
       <div className="ProductsSlider-Top">

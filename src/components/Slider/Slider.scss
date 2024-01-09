@@ -24,20 +24,23 @@
   }
 
   &-Slides {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
     display: flex;
 
     transition: transform $transition-duration;
   }
 
-  &-Slide {
-    display: block;
-  }
-
   &-Dots {
+    margin: 0;
     padding-block: 10px;
+    padding-inline: 0;
+    list-style: none;
 
     display: flex;
-    gap: 0 21px;
+    grid-column-gap: 21px;
   }
 
   &-Dot {

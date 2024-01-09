@@ -1,0 +1,16 @@
+@import "../../styles/utils/";
+
+.Slide {
+
+  &-Link {
+    display: flex;
+    text-decoration: none;
+  }
+
+  &-Image {
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+  }
+}

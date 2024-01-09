@@ -1,4 +1,5 @@
 import { ProductType } from '../types/ProductType';
+
 import phoneImgPath from '../images/category/phones.png';
 import tabletImgPath from '../images/category/tablets.png';
 import accessoriesImgPath from '../images/category/accessories.png';

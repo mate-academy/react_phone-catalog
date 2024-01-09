@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
-
-import bannerPhones from '../../images/banner/banner-phones.png';
-import bannerTablets from '../../images/banner/banner-tablets.png';
-import bannerAccessories from '../../images/banner/banner-accessories.png';
+import { Slide } from '../Slide/Slide';
+import { SliderData } from '../../utils/SliderData';
 
 import './Slider.scss';
 
-const IMG_HEIGHT = 400;
 const IMG_WIDTH = 1040;
 const IMG_TOTAL = 3;
 const SLIDE_WINDOW = IMG_WIDTH;
@@ -67,48 +63,20 @@ export const Slider = () => {
         />
 
         <div className="Slider-Window">
-          <div
+          <ul
             className="Slider-Slides"
             style={{
               transform: `TranslateX(${offsetWidth}px)`,
             }}
           >
-            <Link to="/phones">
-              <img
-                className="Slider-Slide"
-                src={bannerPhones}
-                alt="Slider banner"
-                width={IMG_WIDTH}
-                height={IMG_HEIGHT}
-                loading="lazy"
-                decoding="async"
+            {SliderData.map(({ linkPath, imagePath }) => (
+              <Slide
+                linkPath={linkPath}
+                imagePath={imagePath}
+                key={linkPath}
               />
-            </Link>
-
-            <Link to="/tablets">
-              <img
-                className="Slider-Slide"
-                src={bannerTablets}
-                alt="Slider banner"
-                width={IMG_WIDTH}
-                height={IMG_HEIGHT}
-                loading="lazy"
-                decoding="async"
-              />
-            </Link>
-
-            <Link to="/accessories">
-              <img
-                className="Slider-Slide"
-                src={bannerAccessories}
-                alt="Slider banner"
-                width={IMG_WIDTH}
-                height={IMG_HEIGHT}
-                loading="lazy"
-                decoding="async"
-              />
-            </Link>
-          </div>
+            ))}
+          </ul>
         </div>
 
         <button
@@ -119,10 +87,10 @@ export const Slider = () => {
         />
       </div>
 
-      <div className="Slider-Dots">
+      <ul className="Slider-Dots">
         {[0, 1, 2].map(dotIndex => (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-          <span
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+          <li
             key={dotIndex}
             className={cn(
               'Slider-Dot',
@@ -135,8 +103,7 @@ export const Slider = () => {
             }}
           />
         ))}
-      </div>
+      </ul>
     </div>
-
   );
 };
