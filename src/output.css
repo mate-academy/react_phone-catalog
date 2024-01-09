@@ -409,6 +409,8 @@ iframe,
 embed,
 object {
   display: block;
+  /* 1 */
+  /* 2 */
 }
 
 /*

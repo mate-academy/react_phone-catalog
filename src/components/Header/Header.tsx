@@ -109,8 +109,8 @@ export const Header = () => {
       </section>
 
       {location.pathname !== '/' && (
-        <div className="flex max-w-[1136px] mx-auto mt-6 mb-10 gap-2">
-          <img src="./img/svg/home.svg" alt="home" />
+        <div className="flex items-center max-w-[1136px] mx-auto mt-6 mb-10 gap-2">
+          <Link to="/"><img src="./img/svg/home.svg" alt="home" /></Link>
           <p className="header-path">{replacerPathText()}</p>
         </div>
       )}
