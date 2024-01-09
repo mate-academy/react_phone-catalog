@@ -53,7 +53,7 @@ export const Header = () => {
     <>
       <section className=" border-b border-elements">
         <header
-          className="header flex items-center max-w-[1200px] mx-auto bg-white border-r border-r-elements h-16"
+          className="header flex items-center w-full bg-white border-r border-r-elements h-16"
         >
           <Link to="/" className="py-5 ml-6 mr-16">
             <img src="./img/svg/logo.svg" alt="logo" />

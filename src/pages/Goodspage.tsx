@@ -34,6 +34,7 @@ export const Goodspage: React.FC<Props> = ({ title }) => {
     const value = link.innerText.toLowerCase();
 
     urlParams.set('sort', value);
+    urlParams.set('page', '1');
     setUrlParams(urlParams);
   };
 
@@ -51,27 +52,35 @@ export const Goodspage: React.FC<Props> = ({ title }) => {
 
   return (
     <section className="phonespage max-w-[1136px] mx-auto mt-10">
-      {gadget && <Itemcard device={gadget} />}
+      {gadget ? <Itemcard device={gadget} />
+        : (
+          <>
+            {!foundedGadgets.length ? (<p className="text-center h1 text-secondary">Nothing was found</p>)
+              : (
+                <>
+                  <h1 className="h1 mb-2 mt-10">{title}</h1>
+                  <h5 className="h5 mb-10">{`${gadgets.length} models`}</h5>
+                  <div className="mb-6 flex gap-4">
+                    <TypeSelect sortType={sortType} handler={sortHandler} />
+                    <ItemsOnPage onPage={urlParams.get('onpage') || 'All'} handler={itemsOnPageHandler} />
+                  </div>
+                  <div className="content flex gap-4 max-w-[1136px] flex-wrap">
+                    {shownGadgets.map((item) => (
+                      <CardGadget item={item} key={item.id} />
+                    ))}
+                  </div>
+                  <Pagination
+                    page={page}
+                    max={gadgets.length}
+                    itemsOnPage={onPage}
+                    params={{ obj: urlParams, setter: setUrlParams }}
+                  />
 
-      <h1 className="h1 mb-2 mt-10">{title}</h1>
-      <h5 className="h5 mb-10">{`${gadgets.length} models`}</h5>
+                </>
+              )}
 
-      <div className="mb-6 flex gap-4">
-        <TypeSelect sortType={sortType} handler={sortHandler} />
-        <ItemsOnPage onPage={urlParams.get('onpage') || 'All'} handler={itemsOnPageHandler} />
-      </div>
-
-      <div className="content flex gap-4 max-w-[1136px] flex-wrap">
-        {shownGadgets.map((item) => (
-          <CardGadget item={item} key={item.id} />
-        ))}
-      </div>
-      <Pagination
-        page={page}
-        max={gadgets.length}
-        itemsOnPage={onPage}
-        params={{ obj: urlParams, setter: setUrlParams }}
-      />
+          </>
+        ) }
     </section>
   );
 };

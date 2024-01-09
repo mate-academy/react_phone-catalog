@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 
 import { useState } from 'react';
@@ -24,8 +23,6 @@ export const Pagination: React.FC<Props> = ({
 
     params.obj.set('page', button.innerText);
     params.setter(params.obj);
-
-    console.log(button.innerText);
   };
 
   const stepOnPage = (value: number) => {
@@ -43,7 +40,7 @@ export const Pagination: React.FC<Props> = ({
     params.setter(params.obj);
   };
 
-  return (
+  return buttonCount !== 1 ? (
     <section className=" mt-10 mb-20 ">
       <div className="flex gap-4 mx-auto w-min">
         <button
@@ -76,5 +73,7 @@ export const Pagination: React.FC<Props> = ({
         </button>
       </div>
     </section>
+  ) : (
+    <></>
   );
 };

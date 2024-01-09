@@ -41,7 +41,7 @@ export const Itemcard: React.FC<Props> = ({ device }) => {
     touchMove: false,
     arrows: false,
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 400,
     slidesToShow: 4,
     slidesToScroll: 1,

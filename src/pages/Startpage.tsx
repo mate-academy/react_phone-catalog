@@ -4,6 +4,13 @@ import { Carousel } from '../components/Carousel';
 import { CategoryBox } from '../components/CategoryBox';
 import { storeGadgets } from '../store/store';
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 const imagesPath = [
   'new/img/banner-accessories.png',
   'new/img/banner-phones.png',
@@ -52,7 +59,7 @@ export const Startpage: React.FC = () => {
     touchMove: false,
     arrows: false,
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 400,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -69,7 +76,7 @@ export const Startpage: React.FC = () => {
     touchMove: false,
     arrows: false,
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 400,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -88,21 +95,21 @@ export const Startpage: React.FC = () => {
         Shop by category
       </h2>
       <div className="max-w-[1136px] mx-auto flex gap-4">
-        <Link to="/phones">
+        <Link to="/phones" onClick={scrollToTop}>
           <CategoryBox
             styleName="category-images--phone"
             name="Mobile phones"
             quantity={`${quantityGadgets('phone')} models`}
           />
         </Link>
-        <Link to="/tablets">
+        <Link to="/tablets" onClick={scrollToTop}>
           <CategoryBox
             styleName="category-images--tablet"
             name="Tablets"
             quantity={`${quantityGadgets('tablet')} models`}
           />
         </Link>
-        <Link to="/accessories">
+        <Link to="/accessories" onClick={scrollToTop}>
           <CategoryBox
             styleName="category-images--accessories"
             name="Accessories"

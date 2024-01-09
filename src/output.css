@@ -225,7 +225,6 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
   /* 2 */
@@ -272,7 +271,6 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-  -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
   /* 2 */
@@ -411,9 +409,6 @@ iframe,
 embed,
 object {
   display: block;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
 }
 
 /*
@@ -693,7 +688,7 @@ body {
   transition: 0.3s;
 }
 
-.navlink::after {
+.navlink:after {
   display: block;
   position: absolute;
   content: "";
@@ -706,11 +701,11 @@ body {
 
 .navlink:hover, 
   .navlink-active{
-  border-bottom-color: #313237;
   color: #313237;
 }
 
-.navlink:hover::after {
+.navlink:hover::after,
+  .navlink-active:after {
   background-color: #313237;
 }
 
@@ -1112,10 +1107,6 @@ body {
   max-width: 1136px;
 }
 
-.max-w-\[1200px\] {
-  max-width: 1200px;
-}
-
 .max-w-\[272px\] {
   max-width: 272px;
 }
@@ -1457,11 +1448,6 @@ body {
   color: rgb(39 174 96 / var(--tw-text-opacity));
 }
 
-.text-altRed {
-  --tw-text-opacity: 1;
-  color: rgb(235 87 87 / var(--tw-text-opacity));
-}
-
 .text-elements {
   --tw-text-opacity: 1;
   color: rgb(226 230 233 / var(--tw-text-opacity));
@@ -1578,6 +1564,10 @@ body {
   border: 1px solid #B4BDC3;
 }
 
+.slick-arrow-1040:hover {
+  border-color:#89939a;
+}
+
 .slick-prev-1040 {
   left: -48px;
 }
@@ -1596,6 +1586,10 @@ body {
   height: 32px;
   width: 32px;
   border: 1px solid #b4bdc3;
+}
+
+.slick-arrow-square:hover {
+  border-color:#89939a;
 }
 
 .slick-arrow-square-next {
@@ -1631,21 +1625,15 @@ body {
   width: 32px;
   border: 1px solid #b4bdc3;
   background-color: #fff;
-  /* mix-blend-mode: difference; */
+}
+
+.scroll-up:hover {
+  border-color: #89939a;
 }
 
 .scroll-up img {
   transform: rotate(-90deg);
-  /* mix-blend-mode: difference; */
 }
-
-/*  ======== Page404 ======== */
-
-/* #region */
-
-/* .container404 {
-  height: 80hv;
-} */
 
 #handboy
 {
