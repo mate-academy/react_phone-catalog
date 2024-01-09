@@ -6,8 +6,8 @@ import {
 import { Accessories } from './pages/AccessoriesPage/AccessoriesPage';
 import { Cart } from './pages/CartPage/CartPage';
 import { Favorites } from './pages/FavoritesPage/FavoritesPage';
-import { HomePage } from './pages/HomePage/HomePage';
-import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+import { HomePage } from './pages/HomePage';
+import { PhonesPage } from './pages/PhonesPage';
 import { Tablets } from './pages/TabletsPage/TabletsPage';
 import { App } from './App';
 import { ProductDetailsPage }

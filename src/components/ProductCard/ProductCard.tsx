@@ -24,8 +24,6 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
       <img src={`./${image}`} alt={product.name} className="product__image" />
       <p className="product__title">
         {product.name}
-        {' '}
-        (iMT9G2FS/A)
       </p>
       <div className="product__prices">
         <p className="new-price">
