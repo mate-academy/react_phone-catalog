@@ -1,0 +1,30 @@
+@import "../../styles/utils/vars";
+
+.promo {
+  &__top {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__control {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray_seconary;
+  }
+}
+
+.prev {
+  background-image: url(../../assets/img/icons/arrow-left.svg);
+}
+
+.next {
+  background-image: url(../../assets/img/icons/arrow-right.svg);
+}
