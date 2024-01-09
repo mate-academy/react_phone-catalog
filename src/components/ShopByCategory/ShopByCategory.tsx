@@ -4,9 +4,6 @@ import { ProductType } from '../../types/ProductType';
 import './ShopByCategory.scss';
 
 export const ShopByCategory = () => {
-  // eslint-disable-next-line no-console
-  console.log('render ShopByCategory');
-
   return (
     <div className="ShopByCategory">
       <h2 className="ShopByCategory-Title SectionTitle">

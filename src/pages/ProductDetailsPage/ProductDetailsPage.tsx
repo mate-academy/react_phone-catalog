@@ -294,11 +294,11 @@ export const ProductDetailsPage = () => {
                 className="ProductDetail-About"
                 data-cy="productDescription"
               >
-                <span className="ProductDetail-AboutTitle">
-                  About
-                </span>
+                <div className="ProductDetail-Info">
+                  <h2 className="ProductDetail-SubTitle">About</h2>
 
-                <hr className="ProductDetail-Break" />
+                  <hr className="ProductDetail-Break" />
+                </div>
 
                 <div className="ProductDetail-AboutDescription">
                   {productDetails?.description}
@@ -306,9 +306,11 @@ export const ProductDetailsPage = () => {
               </div>
 
               <div className="ProductDetail-Tech">
-                <span className="ProductDetail-TechTitle">Tech specs</span>
+                <div className="ProductDetail-Info">
+                  <h2 className="ProductDetail-SubTitle">Tech specs</h2>
 
-                <hr className="ProductDetail-Break" />
+                  <hr className="ProductDetail-Break" />
+                </div>
 
                 <div className="ProductDetail-TechSpecs">
                   <div className="ProductDetail-TechSpec">

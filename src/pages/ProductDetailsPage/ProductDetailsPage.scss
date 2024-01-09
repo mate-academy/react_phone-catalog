@@ -221,13 +221,13 @@
 
   &-Spec {
     display: flex;
-    align-items: center;
     justify-content: space-between;
   }
 
   &-Label {
     font-size: 12px;
     font-weight: 600;
+    text-align: start;
 
     color: $secondary;
   }
@@ -235,6 +235,7 @@
   &-Value {
     font-size: 12px;
     font-weight: 600;
+    text-align: end;
   }
 
   &-ContentBottom {
@@ -245,34 +246,23 @@
     grid-column: 1/13;
   }
 
-  &-AboutTitle {
+  &-Info {
+    margin-block-end: 32px;
+  }
+
+  &-SubTitle {
     margin-block-end: 16px;
+    display: block;
 
     font-size: 22px;
     font-weight: 700;
     line-height: 1.4;
 
     color: $primary;
-  }
-
-  &-AboutDescription {
-    padding-block-start: 32px;
   }
 
   &-Tech {
     grid-column: 14/-1;
-
-    padding-top: 25px;
-  }
-
-  &-TechTitle {
-    margin-block-end: 16px;
-
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.4;
-
-    color: $primary;
   }
 
   &-TechSpec {
