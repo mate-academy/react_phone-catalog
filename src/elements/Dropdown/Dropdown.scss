@@ -22,6 +22,10 @@
     cursor: pointer;
     width: 100%;
 
+    &--sort {
+      min-width: 140px;
+    }
+
     @include on-desktop {
       &--sort {
         width: 176px;

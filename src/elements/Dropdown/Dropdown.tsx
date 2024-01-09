@@ -50,7 +50,10 @@ export const Dropdown: React.FC<Props> = ({
 
       <button
         type="button"
-        className="dropdown__button dropdown__button--sort"
+        className={classNames('dropdown__button', {
+          'dropdown__button--sort': defaultVal === 'Newest',
+          'dropdown__button--pages': defaultVal === '8',
+        })}
         aria-haspopup="true"
         aria-controls="dropdown-menu"
         aria-label="button"

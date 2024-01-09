@@ -29,7 +29,6 @@
     font-family: Mont-Regular, $fallback-fonts;
     color: $secondary-text-color;
     text-decoration-line: line-through;
-    text-decoration-style: dashed;
     text-decoration-thickness: 3px;
 
     @include on-tablet {
