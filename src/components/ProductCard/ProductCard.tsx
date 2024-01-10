@@ -32,7 +32,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <Link
         to={`/${category}/${phoneId}`}
         className="productCard__link"
-        onClick={() => window.scrollTo({ top: 0, left: 0 })}
+        // onClick={() => window.scrollTo({ top: 0, left: 0 })}
+        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
       >
         <div className="productCard__image-container">
           <img
