@@ -1,64 +1,99 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import './ProductsSlider.scss';
+import './ProductSlider.scss';
 
 type Props = {
-  title: string;
-  products: Product[];
+  product: Product[]
+  title: string
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const cardWidth = 272;
+const cardGap = 16;
+const cardsCount = 4;
+let newCard;
+
+export const ProductsSlider: React.FC<Props> = ({ product, title }) => {
+  const [visibleCard, setVisibleCard] = useState(cardsCount);
+
+  const scroll = -(visibleCard - cardsCount) * (cardWidth + cardGap);
+  const totalCards = product.length;
 
   const handleNext = () => {
-    setCurrentIndex(prevIndex => {
-      return prevIndex + 1 < products.length
-        ? prevIndex + 1 : prevIndex;
-    });
+    newCard = visibleCard + 1;
+
+    if (newCard > totalCards) {
+      newCard = totalCards;
+    }
+
+    setVisibleCard(newCard);
   };
 
   const handlePrev = () => {
-    setCurrentIndex(prevIndex => {
-      return prevIndex - 1 >= 0 ? prevIndex - 1 : prevIndex;
-    });
+    newCard = visibleCard - 1;
+
+    if (newCard < cardsCount) {
+      newCard = cardsCount;
+    }
+
+    setVisibleCard(newCard);
   };
 
   return (
-    <div className="products-slider">
-      <div className="slider-header">
-        <h1>{title}</h1>
-        <div className="slider-controls">
+    <div className="slid">
+      <div className="slid__top">
+        <h1 className="slid__title">{title}</h1>
+
+        <div className="slid__buttons">
           <button
+            className={classNames('slid__button', {
+              'slid__button--disabled': visibleCard <= cardsCount,
+            })}
             type="button"
             onClick={handlePrev}
-            disabled={currentIndex === 0}
+            disabled={visibleCard <= cardsCount}
           >
             <img
-              src="img/icons/arrowRight.svg"
-              alt="arrowLeft"
-              style={{ transform: 'rotate(-180deg)' }}
+              src="img/mine/icons/Arrow Left.svg"
+              alt="arrow"
+              className={classNames('slid__button-img', {
+                'slid__button-img--disabled': visibleCard <= cardsCount,
+              })}
             />
           </button>
+
           <button
+            className={classNames('slid__button', {
+              'slid__button--disabled': visibleCard === totalCards,
+            })}
             type="button"
             onClick={handleNext}
-            disabled={currentIndex === products.length - 4}
+            disabled={visibleCard === totalCards}
           >
             <img
-              src="img/icons/arrowRight.svg"
-              alt="arrowRight"
+              src="img/mine/icons/Arrow Right.svg"
+              alt="arrow"
+              className={classNames('slid__button-img', {
+                'slid__button-img--disabled': visibleCard === totalCards,
+              })}
             />
           </button>
         </div>
       </div>
+
       <div
-        data-cy="cardsContainer"
-        className="slider-container"
-        style={{ transform: `translateX(-${currentIndex * (272 + 16)}px)` }}
+        className="slid__card"
+        style={{
+          transform: `translateX(${scroll}px)`,
+          transition: 'transform 1s',
+        }}
       >
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {product.map((prod) => (
+          <ProductCard
+            key={prod.id}
+            product={prod}
+          />
         ))}
       </div>
     </div>

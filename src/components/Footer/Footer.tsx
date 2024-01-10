@@ -1,69 +1,53 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { goTop } from '../../helpers/goTop';
 
 export const Footer = () => {
-  const setActiveClass = ({ isActive }: { isActive: boolean }) => {
-    return isActive ? 'active' : '';
-  };
-
-  const handleBackToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleBackToTop();
-    }
-  };
-
   return (
+    <div className="bottom">
+      <div className="bottom__logo">
+        <Link to="/">
+          <img
+            src="img/mine/LOGO.svg"
+            alt="Logo"
+            className="bottom__logo-img"
+          />
+        </Link>
+      </div>
 
-    <footer className="footer">
-      <nav className="navbar">
-        <div className="navbar__container">
-          <div className="nav-logo">
-            <NavLink
-              to="/"
-              onClick={handleBackToTop}
-            >
-              <img src="img/icons/logo.svg" alt="logo" />
-            </NavLink>
-          </div>
-          <div className="nav-links">
-            <a
-              href="https://github.com/Liubomyr19/react_phone-catalog"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github
-            </a>
-            <NavLink to="/contacts" className={setActiveClass}>
-              Contacts
-            </NavLink>
-            <NavLink to="/rights" className={setActiveClass}>Rights</NavLink>
-          </div>
-          <button
-            type="button"
-            className="back-to-top"
-            onClick={handleBackToTop}
-            onKeyDown={handleKeyDown}
-            aria-label="Back to top"
-          >
-            Back to top
-            <div className="icon-container">
-              <img
-                src="img/icons/arrowRight.svg"
-                alt="Go to top"
-                className="arrow-icon"
-                style={{ transform: 'rotate(-90deg)' }}
-              />
-            </div>
-          </button>
-        </div>
-      </nav>
-    </footer>
+      <div className="bottom__link">
+        <Link
+          to="https://github.com/Liubomyr19"
+          className="bottom__link-link"
+        >
+          <p className="bottom__link-git">GitHub</p>
+        </Link>
+
+        <Link
+          to="https://www.instagram.com/lyubomur.ch/"
+          className="bottom__link-link"
+        >
+          <p className="bottom__link-git">Instagram</p>
+        </Link>
+
+        <Link
+          // eslint-disable-next-line max-len
+          to="https://www.facebook.com/"
+          className="bottom__link-link"
+        >
+          <p className="bottom__link-git">Facebook</p>
+        </Link>
+      </div>
+
+      <div className="bottom__top">
+        <button
+          className="bottom__top-button"
+          type="button"
+          onClick={goTop}
+        >
+          <img src="img/mine/icons/Chevron (Arrow Up).svg" alt="up" />
+        </button>
+      </div>
+    </div>
   );
 };

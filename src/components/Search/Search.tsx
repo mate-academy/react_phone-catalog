@@ -1,68 +1,70 @@
-import React from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { getSearchWith, SearchParams } from '../../utils/searchHelper';
+import {
+  memo, useCallback, useEffect, useState,
+} from 'react';
 import './Search.scss';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import debounce from 'lodash.debounce';
+import { getSearchWith } from '../../helpers/serchWith';
 
-type Props = {
-  applyQuery: (arg: string) => void;
+type DebouncedFunction<T> = ((...args: []) => T) & {
+  cancel: () => void;
+  flush: () => void;
 };
 
-export const Search: React.FC<Props> = ({
-  applyQuery,
-}) => {
-  const currentPath = useLocation().pathname.slice(1);
-
+export const Search = memo(() => {
+  const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const location = pathname.substring(1);
+  const [input, setInput] = useState<string>('');
 
-  function setSearchWith(params: SearchParams) {
-    const searchString = getSearchWith(searchParams, params);
-    const updatedSearchParams = new URLSearchParams(searchString);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const queryDebounce: DebouncedFunction<void> = useCallback(
+    debounce(() => {
+      setSearchParams(getSearchWith(searchParams, { query: input }));
+    }, 300), [input, searchParams, setSearchParams],
+  );
 
-    updatedSearchParams.set('page', '1');
+  useEffect(() => {
+    queryDebounce();
 
-    setSearchParams(updatedSearchParams);
-  }
+    return () => queryDebounce.cancel();
+  }, [input, queryDebounce]);
 
-  function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchWith({ query: event.target.value || null });
-    applyQuery(event.target.value);
-  }
+  const clearQuery = () => {
+    setInput('');
+    setSearchParams(getSearchWith(searchParams, { query: null }));
+  };
 
   return (
-    <label className="search" htmlFor="search-input">
+    <div className="search">
       <input
-        className="nav-search"
         type="text"
-        name="search"
-        id="search-input"
-        placeholder={`Search in ${currentPath}...`}
-        value={query}
-        onChange={handleQueryChange}
+        value={input}
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+        className="search__input"
+        placeholder={` search in ${location}...`}
       />
-
-      {!query ? (
-        <img
-          src="img/icons/search.svg"
-          alt="search"
-          className="search-icon"
-        />
+      {input.length ? (
+        <button
+          type="button"
+          className="search__button"
+          aria-label="button"
+          onClick={clearQuery}
+        >
+          <img src="img/mine/icons/Close.svg" alt="close" />
+        </button>
       ) : (
         <button
-          data-cy="searchDelete"
           type="button"
-          className="search__delete-button"
-          onClick={() => {
-            setSearchWith({ query: null });
-            applyQuery('');
-          }}
+          className="search__button"
+          disabled
+          aria-label="button"
         >
-          <img
-            src="img/icons/DarkClose.svg"
-            alt="delete-button"
-          />
+          <img src="img/mine/icons/Search.svg" alt="search" />
         </button>
       )}
-    </label>
+    </div>
   );
-};
+});

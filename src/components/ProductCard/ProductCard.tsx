@@ -1,92 +1,84 @@
-import { useOutletContext, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
-import { FavoritesContextType } from '../../types/FavoritesContextType';
-
 import './ProductCard.scss';
+import { Buttons } from '../ButtonsAddLike/Buttons';
+import { StorContext } from '../../context/StorContext';
 
 type Props = {
-  product: Product;
+  product: Product
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    favoritesItems,
-    addToFavorites,
-    removeFromFavorites,
-    cartItems,
-    addToCart,
-    removeFromCart,
-  }
-    = useOutletContext<FavoritesContextType>();
+    category,
+    itemId,
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    image,
+  } = product;
 
-  const containedInFavorites
-    = favoritesItems.some(item => item.id === product.id);
-  const containedInCart
-    = cartItems.some(item => item.id === product.id);
+  const { favorites, inCart, isSelectedProduct } = useContext(StorContext);
+  const isSelectedFav = isSelectedProduct(itemId, favorites);
+  const isSelectedInCart = isSelectedProduct(itemId, inCart);
 
   return (
-    <div key={product.id} className="product-card">
-      <NavLink to={`/product/${product.phoneId}`} className="product-card__link">
+    <div className="card" data-cy="cardsContainer">
+      <Link
+        className="card__image"
+        to={`../../${category}/${itemId}`}
+      >
         <img
-          src={`${product.image}`}
-          alt={product.name}
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
+          alt={name}
         />
-        <p className="product-name">{product.name}</p>
-      </NavLink>
-      <h2 className="price">
-        $
-        {product.price}
-        {product.price !== product.fullPrice && (
-          <span className="old-price">
-            $
-            {product.fullPrice}
-          </span>
-        )}
-      </h2>
-      <ul className="specs">
-        <li>
-          Screen
-          <span className="specs__value">{product.screen}</span>
-        </li>
-        <li>
-          Capacity
-          <span className="specs__value">{product.capacity}</span>
-        </li>
-        <li>
-          RAM
-          <span className="specs__value">{product.ram}</span>
-        </li>
-      </ul>
-      <div className="actions">
-        <button
-          type="button"
-          className={containedInCart
-            ? 'add-to-cart add-to-cart--selected' : 'add-to-cart'}
-          onClick={() => {
-            return containedInCart ? removeFromCart(product.id)
-              : addToCart(product);
-          }}
-        >
-          {containedInCart ? 'Added to cart' : 'Add to cart'}
-        </button>
+      </Link>
 
-        <button
-          data-cy="addToFavorite"
-          type="button"
-          className="favorite"
-          onClick={() => {
-            return containedInFavorites ? removeFromFavorites(product.id)
-              : addToFavorites(product);
-          }}
+      <div className="card__name">
+        <Link
+          className="card__name-title"
+          to={`../../${category}/${itemId}`}
         >
-          <img
-            src={containedInFavorites
-              ? 'img/icons/favourites.svg'
-              : 'img/icons/favouritesFilled.svg'}
-            alt="Add to favorites"
-            className="favorite__img"
-          />
-        </button>
+          {name}
+        </Link>
+      </div>
+
+      <div className="card__prices">
+        <span className="card__price">
+          {`$${price}`}
+        </span>
+        <span className="card__price card__price--old">
+          {`$${fullPrice}`}
+        </span>
+      </div>
+
+      <div className="card__line" />
+
+      <div className="card__features">
+        <div className="card__feature">
+          <span className="card__feature-name">Screen</span>
+          <span className="card__feature-value">{screen}</span>
+        </div>
+        <div className="card__feature">
+          <span className="card__feature-name">Capacity</span>
+          <span className="card__feature-value">{capacity}</span>
+        </div>
+        <div className="card__feature">
+          <span className="card__feature-name">RAM</span>
+          <span className="card__feature-value">{ram}</span>
+        </div>
+      </div>
+
+      <div className="card__actions">
+        <Buttons
+          isSelectedFav={isSelectedFav}
+          isSelectedInCart={isSelectedInCart}
+          product={product}
+        />
       </div>
     </div>
   );

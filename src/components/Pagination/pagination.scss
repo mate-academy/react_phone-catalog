@@ -1,65 +1,64 @@
+@import "../../styles/utils/utils";
+
 .pagination {
   display: flex;
-  list-style: none;
-  padding: 0;
+  justify-content: center;
+  align-items: center;
 
-  .page-item {
-    margin: 0 2px;
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0 8px;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 16px;
     width: 32px;
     height: 32px;
-    flex-shrink: 0;
+    box-sizing: border-box;
+    border: 1px solid $c-gray-icons-placeholders;
 
-    &.active {
-      font-weight: bold;
+    &-left--disabled,
+    &-right--disabled {
+      pointer-events: none;
     }
 
-    .page-button {
-      display: block;
-      width: 32px;
-      height: 32px;
-      background-color: #fafbfc;
-      border: 1px solid #b4bdc3;
-      cursor: pointer;
-      transition: border-color 1s;
-
-      &:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-      }
-
-      &:hover {
-        border-color: #313237;
-      }
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid $c-gray-primary;
     }
+  }
 
-    .page-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      background-color: #fafbfc;
-      cursor: pointer;
-      width: 32px;
-      height: 32px;
-      border: 1px solid #e2e6e9;
-      color: #000;
-      text-align: center;
-      text-decoration: none;
-      font-family: Mont-Regular, sans-serif;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 21px;
-      transition: border-color 1s;
+  &__item {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid $c-gray-icons-placeholders;
 
-      &:hover {
-        border-color: #313237;
-      }
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid $c-gray-primary;
+    }
+  }
 
-      &.active {
-        background-color: #313237;
-        color: var(--gray-white, #fff);
-      }
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: $c-gray-primary;
+    text-align: center;
+    text-decoration: none;
+
+    @include body-text;
+
+    &--active {
+      background-color: $c-gray-primary;
+      color: $c-white;
     }
   }
 }

@@ -1,0 +1,103 @@
+@import "../../styles/utils/utils";
+
+.shop {
+  &__name {
+    margin-bottom: 24px;
+
+    @include h1;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__img {
+    width: 320px;
+    height: 320px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
+      transition-duration: 0.3s;
+    }
+
+    &:hover {
+      transition-duration: 0.3s;
+    }
+
+    &--1 {
+      background: #fcdbc1;
+    }
+
+    &--2 {
+      background: #8d8d92;
+    }
+
+    &--3 {
+      background: #973d5f;
+    }
+
+    &--phones {
+      background-position: 60px 50px;
+      background-size: 386px 457px;
+      background-image: url(../../img/category-phones.png);
+
+      &:hover {
+        background-position: 40px 50px;
+      }
+    }
+
+    &--tablets {
+      background-position: 60px 50px;
+      background-size: 546px 546px;
+      background-image: url(../../img/category-tablets.png);
+
+      &:hover {
+        background-position: 40px 50px;
+      }
+    }
+
+    &--accessories {
+      background-position: 60px 75px;
+      background-size: 750px 400px;
+      background-image: url(../../img/category-accessories.png);
+
+      &:hover {
+        background-position: 40px 75px;
+      }
+    }
+  }
+
+  &__title {
+    margin: 24px 0 4px;
+    color: $c-gray-primary;
+    font-size: 20px;
+    font-weight: 600;
+
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__count {
+    margin-bottom: 30px;
+    color: $c-gray-secondary;
+
+    @include body-text;
+
+    @include on-desktop {
+      margin: 0;
+    }
+  }
+}
