@@ -2,6 +2,7 @@
 - If you work alone follow the [React task guideline](https://github.com/mate-academy/react_task-guideline#react-tasks-guideline)
 - If you work in a team follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
+
 ## Description
 Implement Products catalog following [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
 
