@@ -23,6 +23,8 @@ export const CarouselDots: React.FC<Props> = ({
     );
   },
 }) => {
+  console.info('render');// eslint-disable-line no-console
+
   return (
     <div className="dots">
       {items.map((item, indx) => {

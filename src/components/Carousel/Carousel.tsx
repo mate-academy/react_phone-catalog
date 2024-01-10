@@ -18,7 +18,10 @@ type Props = {
 
 let childrenKeys: { key: string }[] = [];
 
-export const Carousel: React.FC<Props> = ({ children }) => {
+export const Carousel: React.FC<Props> = ({
+  children,
+}) => {
+  console.info('render');// eslint-disable-line no-console
   const [pages, setPages] = useState<ReactElement[]>([]);
   const [activeDot, setActiveDot] = useState(0);
 
@@ -69,7 +72,6 @@ export const Carousel: React.FC<Props> = ({ children }) => {
       key: (child as ReactElement)?.key || '',
     })) as { key: string }[];
 
-    console.info(childrenKeys);// eslint-disable-line
     setPages(
       Children.map(children as ReactElement[], child => {
         return cloneElement(child, {

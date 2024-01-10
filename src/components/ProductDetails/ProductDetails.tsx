@@ -19,6 +19,7 @@ type Props = {
 export const ProductDetails: React.FC<Props> = ({
   productItemId,
 }) => {
+  console.info('render');// eslint-disable-line no-console
   const [productPrecise, setProductPrecise]
     = useState<ProductPrecise | null>(null);
   const [isLoading, setIsLoading] = useState(false);
