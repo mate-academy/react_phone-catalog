@@ -13,6 +13,7 @@ export const ButtonCircle: React.FC<Props> = ({ color, path }) => {
     <Link
       to={path}
       className="buttonCircle"
+      replace
     >
       <div
         className="buttonCircle__color"

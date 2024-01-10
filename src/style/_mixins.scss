@@ -18,6 +18,12 @@
   }
 }
 
+@mixin on-biggest {
+  @media (min-width: 1500px) {
+    @content;
+  }
+}
+
 @mixin inline-padding-control {
   padding-inline: 20px;
 

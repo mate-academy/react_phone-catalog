@@ -6,6 +6,12 @@
   flex-direction: column;
   justify-content: center;
   border: 1px solid $shadow-color;
+  grid-column: span 1;
+  max-width: 250px;
+
+  @include on-tablet {
+    max-width: 350px;
+  }
 
   &__link {
     text-decoration: none;
@@ -32,15 +38,20 @@
   &__image {
     height: 100%;
     transition: transform 800ms;
-    max-height: 110px;
+    min-height: 160px;
+    max-height: 180px;
     object-fit: contain;
 
     @include on-tablet {
-      max-height: 150px;
+      max-height: 130px;
     }
 
-    @include on-desktop {
+    @include on-big-desktop {
       max-height: 208px;
+    }
+
+    @include on-biggest {
+      max-height: 300px;
     }
   };
 
@@ -68,7 +79,16 @@
   &__name {
     @extend %body-text;
 
-    min-height: 48px;
+    min-height: 30px;
+    max-width: 180px;
+
+    @include on-tablet {
+      min-height: 48px;
+    }
+
+    @include on-biggest {
+      max-width: 250px;
+    }
   };
 
   &__prices {

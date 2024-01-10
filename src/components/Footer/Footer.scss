@@ -2,6 +2,13 @@
 @import './../../style/extends';
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: $main-bg-color;
+  z-index: 3;
   &__container {
     @include inline-padding-control;
   }
@@ -21,14 +28,6 @@
       height: 96px;
     }
   }
-
-  // &__navBar {
-  //   // display: none;
-
-  //   @include on-tablet {
-  //     display: block;
-  //   }
-  // }
 
   &__toTop {
     display: flex;

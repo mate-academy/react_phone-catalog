@@ -43,6 +43,10 @@
       gap: 24px;
     }
 
+    @include on-biggest {
+      max-width: 550px;;
+    }
+
     &--images {
       gap: 16px;
       flex-direction: row;

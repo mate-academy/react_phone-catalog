@@ -28,6 +28,7 @@
   }
 
   &__title {
+    font-family: Mont-Bold, $fallback-fonts;
     font-size: 15px;
 
     @include on-tablet {
@@ -36,6 +37,7 @@
   }
 
   &__texts {
+    font-family: Mont-Semibold, $fallback-fonts;
     display: flex;
     flex-direction: column;
     align-items: center;

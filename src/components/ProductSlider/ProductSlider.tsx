@@ -66,13 +66,10 @@ export const ProductSlider: React.FC<Props> = ({ children, title }) => {
         spaceBetween={16}
         scrollbar={{ draggable: true }}
         breakpoints={{
-          320: {
+          370: {
             slidesPerView: 2,
           },
-          450: {
-            slidesPerView: 3,
-          },
-          800: {
+          520: {
             slidesPerView: 3,
           },
           900: {

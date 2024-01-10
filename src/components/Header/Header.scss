@@ -26,13 +26,13 @@
   &__navBar {
     display: none;
 
-    @include on-tablet {
+    @include on-desktop {
       display: block;
     }
   }
 
   &__icon {
-    @include on-tablet {
+    @include on-desktop {
       display: none;
     }
   }
@@ -42,10 +42,10 @@
   };
 
   &__logo {
-    margin-inline: 24px;
+    margin-inline: 10px;
 
     @include on-tablet {
-      margin-right: 0;
+      margin-right: 5px;
     }
 
     @extend %logo;

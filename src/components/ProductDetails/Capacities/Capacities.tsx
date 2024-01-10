@@ -23,6 +23,7 @@ export const Capacities: React.FC<Props> = ({ product }) => {
         {capacities.map(cap => (
           <Link
             to={`/phones/${namespaceId}-${cap.toLowerCase()}-${color}`}
+            replace
             key={cap}
             type="button"
             aria-label="button"

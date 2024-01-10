@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import classNames from 'classnames';
 import { useMediaQuery } from 'react-responsive';
@@ -40,6 +41,7 @@ export const NavBar: React.FC<Props> = ({ links, small }) => {
             key={link}
             to={getPath(link)}
             className={getLinkNavClass}
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           >
             {link}
           </NavLink>

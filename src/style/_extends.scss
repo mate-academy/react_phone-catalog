@@ -22,6 +22,10 @@
   @include on-desktop {
     font-size: 32px;
   }
+
+  @include on-biggest {
+    font-size: 36px;
+  }
 }
 
 %h2 {
@@ -31,6 +35,10 @@
 
   @include on-tablet {
     font-size: 22px;
+  }
+
+  @include on-biggest {
+    font-size: 26px;
   }
 }
 
@@ -42,6 +50,10 @@
 
   @include on-tablet {
     font-size: 20px;
+  }
+
+  @include on-biggest {
+    font-size: 24px;
   }
 }
 
@@ -60,6 +72,10 @@
     font-size: 14px;
     line-height: 21px;
   }
+
+  @include on-biggest {
+    font-size: 18px;
+  }
 }
 
 %small-text {
@@ -74,6 +90,10 @@
 
   @include on-desktop {
     font-size: 12px;
+  }
+
+  @include on-biggest {
+    font-size: 16px;
   }
 }
 
@@ -91,6 +111,10 @@
 
   @include on-desktop {
     font-size: 12px;
+  }
+
+  @include on-biggest {
+    font-size: 16px;
   }
 }
 

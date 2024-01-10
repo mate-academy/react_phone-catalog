@@ -8,7 +8,7 @@
     grid-column: span 6;
   }
 
-  @include on-tablet {
+  @include on-desktop {
     grid-column: span 24;
   }
 
@@ -44,6 +44,7 @@
     align-items: flex-start;
     height: 50vh;
     gap: 10px;
+    width: 100%;
 
     @include on-desktop {
       flex-direction: row-reverse;
