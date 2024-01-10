@@ -25,7 +25,8 @@
     display: flex;
     gap: 0 16px;
 
-    transition: transform $transition-duration;
+    transition: transform $transition-duration,
+      filter $transition-duration;
 
     overflow: hidden;
 
@@ -34,8 +35,8 @@
     }
 
     &:hover > .ProductCard:not(:hover) {
-      filter: blur(6px);
       transform: scale(1.05, 1,05);
+      filter: blur(6px);
     }
   }
 }

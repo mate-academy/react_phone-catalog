@@ -3,10 +3,12 @@
 .Category {
   grid-column: span 8;
 
-  transition: transform $transition-duration;
+  transition: transform $transition-duration,
+    filter $transition-duration;
 
   &:hover {
     transform: scaleY($scale-factor);
+    filter: brightness(0.7);
   }
 
   &-Container {
