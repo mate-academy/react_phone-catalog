@@ -58,7 +58,7 @@ export const ProductsPage :React.FC<Props> = ({ productType }) => {
 
   const totalModelString = formatTotal(sortedProductsTotal, 'model');
   const totalResultString = formatTotal(sortedProductsTotal, 'result');
-  const pageTitle = getCategoryData(productType).title;
+  const { title: pageTitle } = getCategoryData(productType);
 
   return (
     <section className="Page-Products Products">
