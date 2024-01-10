@@ -1,0 +1,87 @@
+.productCard {
+  padding: 32px 32px 24px;
+  border: 1px solid $elements;
+  width: 270px;
+  transition: all 1s;
+
+  &_image {
+    display: block;
+    width: 207px;
+    height: 207px;
+    margin-bottom: 24px;
+
+    &_img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &_text {
+    &_title {
+      display: block;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $primary;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &_price {
+      &_price {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 140%;
+        color: $primary;
+        margin-right: 8px;
+      }
+
+      &_fullPrice {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 28px;
+        text-decoration-line: line-through;
+        color: $secondary;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        border: 1px solid $elements;
+        margin-bottom: 16px;
+      }
+    }
+
+    &_about {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+
+      &_conteiner {
+        display: flex;
+        justify-content: space-between;
+
+        &_name {
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 15px;
+          color: $secondary;
+        }
+  
+        &_value {
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 15px;
+          text-align: right;
+          color: $primary;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,11 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import ReactDOM from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+import App from './App';
+
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root'),
+);

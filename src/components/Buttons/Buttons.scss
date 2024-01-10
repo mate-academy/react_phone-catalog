@@ -1,0 +1,66 @@
+.buttons {
+  display: flex;
+  gap: 8px;
+
+  &_addToBag {
+    height: 40px;
+    background-color: $primary;
+    width: 178px;
+    border: none;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $white;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-active {
+      border: 1px solid $elements;
+      background-color: $white;
+      color: $green;
+
+      height: 40px;
+      width: 178px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(23, 32, 48, 0.26);
+    }
+  }
+
+  &_addToFavorite {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $icons;
+    background-color: $white;
+
+    background-image: url(../../img/favorite.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+    &-active {
+      background-image: url(../../img/favorite_active.svg);
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &:active {
+      background-image: url(../../img/favorite_active.svg);
+    }
+  }
+}

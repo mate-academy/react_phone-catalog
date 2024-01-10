@@ -1,1 +1,48 @@
-// not empty
+@font-face {
+  font-family: "Mont";
+  src: url(./fonts/Mont-Bold.otf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url(./fonts/Mont-Regular.otf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: url(./fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Mont", sans-serif;
+  margin: 0 auto;
+}
+
+@import "./style/var";
+@import "./components/Header/Header.scss";
+@import "./components/Footer/Footer.scss";
+@import "./components/Logo/Logo.scss";
+@import "./components/Carousel/Carousel.scss";
+@import "./components/ProductsSlider/ProductsSlider.scss";
+@import "./components/ProductCard/ProductCard.scss";
+@import "./components/Buttons/Buttons.scss";
+@import "./components/Selector/Selector.scss";
+@import "./components/Pagination/Pagination.scss";
+@import "./components/Notification/Notification.scss";
+
+@import "./pages/HomePage/HomePage.scss";
+@import  "./pages/TargetPhone/TargetPhone.scss";
+@import "./pages/DeviceCatalog/DeviceCatalog.scss";
+@import "./pages/TabletCatalog/TabletCatalog.scss";
+@import "./pages/BagPage/BagPage.scss";
+@import "./pages/FavPage/FavPage.scss";
+@import "./pages/EmptyPage/EmptyPage.scss";
