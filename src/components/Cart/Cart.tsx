@@ -52,7 +52,11 @@ export const Cart: React.FC<Props> = ({ product }) => {
         />
       </div>
 
-      <Link to={`/${category}/${phoneId}`} className="cart__block">
+      <Link
+        to={`/${category}/${phoneId}`}
+        className="cart__block"
+        onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+      >
         <img
           src={`${BASE_URL}${image}`}
           alt={name}

@@ -13,22 +13,20 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__content">
-          <Link className="footer__logo" to="/" />
+      <div className="footer__content">
+        <Link className="footer__logo" to="/" />
 
-          <div className="footer__navBar">
-            <NavBar links={footerLinks} small />
-          </div>
+        <div className="footer__navBar">
+          <NavBar links={footerLinks} small />
+        </div>
 
-          <div className="footer__toTop">
-            <p className="footer__p">Back to top</p>
+        <div className="footer__toTop">
+          <p className="footer__p">Back to top</p>
 
-            <ButtonEvent
-              shape="up"
-              onClick={goTop}
-            />
-          </div>
+          <ButtonEvent
+            shape="up"
+            onClick={goTop}
+          />
         </div>
       </div>
     </footer>

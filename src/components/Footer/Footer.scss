@@ -9,11 +9,10 @@
   width: 100%;
   background-color: $main-bg-color;
   z-index: 3;
-  &__container {
-    @include inline-padding-control;
-  }
 
   &__content {
+    @include inline-padding-control;
+
     display: flex;
     justify-content: space-between;
     height: 55px;
