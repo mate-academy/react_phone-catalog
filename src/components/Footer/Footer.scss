@@ -58,3 +58,14 @@
     padding: 8px;
   }
 }
+
+@media (max-width: 992px) {
+  .nav__list-item:nth-child(1),
+  .nav__list-item:nth-child(3) {
+    display: none;
+  }
+
+  .nav__list-item:not(:last-child) {
+    margin-right: 0;
+  }
+}

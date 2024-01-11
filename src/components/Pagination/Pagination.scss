@@ -66,3 +66,17 @@
     }
   }
 }
+
+@media (max-width: 992px) {
+  .pagination__left,
+  .pagination__right {
+    display: none;
+  }
+
+}
+
+@media (max-width: 732px) {
+  .pagination {
+    display: none;
+  }
+}

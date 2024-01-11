@@ -7,6 +7,7 @@
   &__list {
     margin-top: 24px;
     display: flex;
+    gap: 16px;
   }
 
   &__item {
@@ -36,9 +37,5 @@
     &-link {
       display: block;
     }
-  }
-
-  &__item:not(:last-child) {
-    margin-right: 16px;
   }
 }

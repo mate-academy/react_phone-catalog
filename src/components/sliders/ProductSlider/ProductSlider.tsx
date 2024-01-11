@@ -19,6 +19,17 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
           perPage: 4,
           gap: 16,
           pagination: false,
+          breakpoints: {
+            992: {
+              perPage: 3,
+            },
+            768: {
+              perPage: 2,
+            },
+            575: {
+              perPage: 1,
+            },
+          },
         }}
       >
         {products.map((product) => (

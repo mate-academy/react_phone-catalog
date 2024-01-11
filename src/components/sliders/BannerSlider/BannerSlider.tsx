@@ -12,7 +12,7 @@ export const BannerSlider: React.FC = () => {
         options={{
           autoplay: true,
           type: 'loop',
-          interval: 3000,
+          interval: 5000,
         }}
       >
         <SplideSlide>

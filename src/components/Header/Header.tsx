@@ -4,6 +4,7 @@
 import './Header.scss';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { useEffect, useRef, useState } from 'react';
 import logoImg from '../../images/LOGO.svg';
 import favoriteIcon from '../../images/Favorite_icon.svg';
 import basketIcon from '../../images/Basket_icon.svg';
@@ -22,6 +23,23 @@ export const Header: React.FC = () => {
   const favoriteShow = pathname === '/basket';
 
   const { defaultStateValue } = useSearchContext();
+  const [burgerOpen, setBurgerOpen] = useState(false);
+
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuBtnRef.current && !menuBtnRef.current.contains(event.target as Node)) {
+        setBurgerOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [menuBtnRef]);
 
   return (
     <header className="header">
@@ -32,7 +50,20 @@ export const Header: React.FC = () => {
             <img src={logoImg} className="navigation__logo-image" alt="logo_image" />
           </Link>
 
-          <nav className="navbar">
+          <button
+            ref={menuBtnRef}
+            className={classNames('menu__btn', {
+              'menu__btn-active': burgerOpen,
+            })}
+            type="button"
+            onClick={() => setBurgerOpen(!burgerOpen)}
+          >
+            <span />
+          </button>
+
+          <nav className={classNames('navbar',
+            { 'navbar--active': burgerOpen })}
+          >
             <ul className="navbar__list">
               <NavLink to="/" className={getLinkClass}>home</NavLink>
               <NavLink to="phones" className={getLinkClass}>phones</NavLink>
@@ -43,7 +74,11 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="navigation__right">
-          {searchShow && <SearchField />}
+          {searchShow && (
+            <div className="navigation__serchField">
+              <SearchField />
+            </div>
+          )}
 
           {!favoriteShow && (
 

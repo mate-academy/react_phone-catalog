@@ -1,3 +1,16 @@
+@media (max-width: 1024px) {
+  .basket {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__checkout {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+}
+
 .basket {
   margin-top: 40px;
   margin-bottom: 80px;
