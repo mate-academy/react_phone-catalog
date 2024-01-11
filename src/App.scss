@@ -1,1 +1,38 @@
 // not empty
+@import './utils/fonts';
+
+* {
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  line-height: normal;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+

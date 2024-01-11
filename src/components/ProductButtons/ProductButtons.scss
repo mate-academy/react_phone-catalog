@@ -1,0 +1,60 @@
+@import '../../utils/variables.scss';
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__cart {
+    width: 176px;
+    height: 40px;
+    background-color: $primary-color;
+    color: #fff;
+    margin-right: 8px;
+    border: 0;
+    transition: box-shadow, 0.3s;
+
+    &--added {
+      color: $green-color;
+      border-color: 1px solid $icons-color;
+      background-color: #fff;
+    }
+
+    &--large {
+      width: 263px;
+      height: 48px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__favourite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: #fff;
+    border: 1px solid $icons-color;
+    transition: border-color, 0.3s;
+    background-image: url(../../icons/icon-favourites.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--added {
+      background-image: url(../../icons/icon-favourites-red.svg);
+      border-color: $icons-color;
+    }
+
+    &--large {
+      height: 48px;
+      width: 48px;
+    }
+
+    &:hover {
+    border-color: $primary-color;
+    }
+  }
+}

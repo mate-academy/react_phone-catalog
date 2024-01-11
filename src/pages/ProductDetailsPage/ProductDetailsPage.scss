@@ -1,0 +1,263 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+
+.details-page {
+  @include pageGrid;
+  @include contentMarginInline;
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    grid-column: 1 / span 10;
+  }
+
+  &__back {
+    grid-column: 1 / span 2;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    @include h1Text;
+    margin-bottom: 40px;
+  }
+
+  &__gallery {
+    grid-column: 1 / span 2;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 1px solid $elements-color;
+    background-color: #fff;
+    padding: 8px;
+
+    &--item {
+      height: 100%;
+    }
+  }
+
+  &__selected {
+    grid-column: 3 / span 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 464px;
+    height: 464px;
+    padding: 11px;
+    margin-bottom: 80px;
+
+    &--image {
+      height: 100%;
+    }
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+    @include pageGrid;
+    margin-bottom: 80px;
+  }
+
+  &__about {
+    grid-column: 1 / span 12;
+    margin-bottom: 80px;
+
+    &-title {
+      grid-column: 1 / span 2;
+      @include h2Text;
+      color: $primary-color;
+      margin-bottom: 16px;
+    }
+
+    &-text {
+      @include bodyText;
+      color: $secondary-color;
+      border-top: 1px solid $elements-color;
+      padding-top: 32px;
+    }
+  }
+
+  &__specs {
+    grid-column: 14 / -1;
+
+    &-title {
+      grid-column: 14 / span 2;
+      @include h2Text;
+      margin-bottom: 16px;
+    }
+
+    &-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border-top: 1px solid $elements-color;
+      padding-top: 32px;
+
+      &--name {
+        @include bodyText;
+        color: $secondary-color;
+      }
+
+      &--value {
+        @include bodyText;
+        color: $primary-color;
+      }
+
+      &-item {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__offer {
+    grid-column: 1 / -1;
+    margin-bottom: 152px;
+  }
+
+  &__checkout {
+    grid-column: 14 / span 7;
+
+    &-price {
+      grid-column: span 4;
+      margin-bottom: 16px;
+
+      &--discount {
+        @include h1Text;
+        margin-right: 8px;
+      }
+
+      &--fullPrice {
+        font-size: 22px;
+        color: $secondary-color;
+        font-weight: 500;
+        line-height: 140%;
+        text-decoration: line-through;
+      }
+    }
+
+    &-buttons {
+      grid-column: 14 / span 7;
+      margin-bottom: 32px;
+    }
+
+    &-features {
+      grid-column: 14 / span 7;
+
+      &--item {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--name {
+        @include smallText;
+        color: $secondary-color;
+      }
+
+      &--value {
+        @include smallText;
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__colors {
+    grid-column: 14 / span 7;
+    height: 80px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid $elements-color;
+
+    &-title {
+      @include smallText;
+      color: $secondary-color;
+      margin-bottom: 8px;
+    }
+
+    &-list {
+      display: flex;
+      gap: 9px;
+    }
+
+    &-color {
+      display: flex;
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      border: 1px solid $elements-color;
+
+      &:hover {
+        border-color: $icons-color;
+      }
+
+      &--link {
+        width: 100%;
+        border-radius: 50%;
+        border: 2px solid #FFF;
+      }
+
+      &--active {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__capacity {
+    grid-column: 14 / span 7;
+    height: 80px;
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $elements-color;
+
+    &-title {
+      @include smallText;
+      color: $secondary-color;
+      margin-bottom: 9px;
+    }
+
+    &-list {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-value {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 56px;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      
+      &--link {
+        @include bodyText;
+      }
+
+      &--active {
+        background-color: #000;
+      }
+    }
+  }
+
+  &__options {
+    grid-column: 14 / span 7;
+  }
+}
+
+.loader {
+  width: 100vh;
+  height: 100vh;
+}

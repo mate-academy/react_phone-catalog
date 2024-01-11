@@ -1,0 +1,95 @@
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: #{$_toValue};
+  }
+}
+
+@mixin hoverLink {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: $secondary-color;
+
+    transition: transform $transition-duration;
+    transform: scale(0);
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
+@mixin pageGrid {
+  --columns: 24;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: 16px;
+}
+
+@mixin contentMarginInline {
+  margin-inline: 152px;
+
+  @include onDesktop {
+    margin-inline: 345px;
+  }
+}
+
+@mixin onDesktop{
+  @media(min-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin h1Text {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2Text {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h3Text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 11px;
+}
+
+@mixin uppercaseText {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin bodyText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+@mixin smallText {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+}
+
+@mixin buttonsText {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 15px;
+}

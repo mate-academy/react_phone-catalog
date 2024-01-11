@@ -1,0 +1,49 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include bodyText;
+    color: $primary-color;
+    border: 1px solid $elements-color;
+    height: 32px;
+    width: 32px;
+
+    &--active {
+      color: #fff;
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid $icons-color;
+  background-color: #fff;
+
+  &--prev {
+    margin-right: 18px;
+  }
+
+  &--next {
+    margin-left: 18px;
+  }
+}

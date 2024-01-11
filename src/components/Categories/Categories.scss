@@ -1,0 +1,63 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.categories {
+  &__container {
+    @include pageGrid;
+    @include contentMarginInline;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    grid-column: span 7;
+    @include h1Text;
+    margin-bottom: 24px;
+    max-height: 42px;
+  }
+
+  &__phones,
+  &__tablets,
+  &__accessories {
+    cursor: pointer;
+    transition: scale 0.3s;
+
+    &:hover {
+      scale: 0.9;
+    }
+  }
+
+  &__phones {
+    grid-column: 1 / span 8;
+  }
+
+  &__tablets {
+    grid-column: 9 / span 8;
+  }
+
+  &__accessories {
+    grid-column: 17 / span 8;
+  }
+
+  &__phones-image,
+  &__tablets-image,
+  &__accessories-image {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__phones-title,
+  &__tablets-title,
+  &__accessories-title {
+    @include h3Text;
+    color: $primary-color;
+    margin-bottom: 4px;
+  }
+
+  &__phones-description,
+  &__tablets-description,
+  &__accessories-description {
+    @include bodyText;
+    color: $secondary-color;
+  }
+}
+

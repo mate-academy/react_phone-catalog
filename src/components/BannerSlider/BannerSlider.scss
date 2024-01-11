@@ -1,0 +1,67 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.banner-slider {
+  margin-top: 40px;
+  overflow: hidden;
+}
+
+.banner-container {
+  box-sizing: border-box;
+  @include contentMarginInline;
+  @include pageGrid;
+  padding-bottom: 32px;
+}
+
+.images {
+  grid-column: 2 / -2;
+  height: 400px;
+  width: 1040px;
+  overflow: hidden;
+
+  &__container {
+    position: relative;
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s;
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.dots__container {
+  bottom: 0;
+  left: 50%;
+  grid-column: 13 / span 3;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  height: 24px;
+  width: 80px;
+  gap: 14px;
+}
+
+.dot {
+  height: 4px;
+  width: 14px;
+  background-color: $elements-color;
+  transition: background-color 1000ms ease-in-out;
+}
+
+.dot.active {
+  background-color: $primary-color;
+}

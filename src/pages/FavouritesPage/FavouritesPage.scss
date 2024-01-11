@@ -1,0 +1,32 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.favourites {
+  @include contentMarginInline;
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__info {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @include h1Text;
+  }
+
+  &__counter {
+    @include bodyText;
+    color: $secondary-color;
+  }
+
+  &__list {
+    display: flex;
+    column-gap: 16px;
+    row-gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 145px;
+  }
+}

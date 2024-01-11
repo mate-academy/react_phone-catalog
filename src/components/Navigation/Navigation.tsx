@@ -1,0 +1,39 @@
+import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) => cn({
+  nav__link: true,
+  'is-active': isActive,
+});
+
+export const Navigation: React.FC = () => {
+  return (
+    <nav className="nav">
+      <ul className="nav__list">
+        <li className="nav__item">
+          <NavLink to="/" className={getLinkClass}>
+            HOME
+          </NavLink>
+        </li>
+
+        <li className="nav__item">
+          <NavLink to="/phones" className={getLinkClass}>
+            PHONES
+          </NavLink>
+        </li>
+
+        <li className="nav__item">
+          <NavLink to="/tablets" className={getLinkClass}>
+            TABLETS
+          </NavLink>
+        </li>
+
+        <li className="nav__item">
+          <NavLink to="/accessories" className={getLinkClass}>
+            ACCESSORIES
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};

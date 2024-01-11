@@ -1,0 +1,14 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.banner__button {
+  width: 32px;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid $icons-color;
+  @include hover(border-color, $primary-color);
+
+  &.disabled {
+    border-color: $elements-color;
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.product-slider {
+  &__container {
+    @include pageGrid;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @include h1Text;
+    grid-column: span 7;
+  }
+
+  &__buttons {
+    grid-column: -1 / -2;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    background-color: #fff;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+  }
+
+  &__list {
+    grid-column: 1 / -1;
+    display: flex;
+    overflow: hidden;
+    margin-top: 24px;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
+  }
+}

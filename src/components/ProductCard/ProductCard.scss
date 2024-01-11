@@ -1,0 +1,111 @@
+@import '../../utils/variables.scss';
+
+.product {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    height: 507px;
+    width: 272px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid $elements-color;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px rgba(#172031, 0.26);
+    }
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    height: 208px;
+    width: 208px;
+
+    &--item {
+      height: 100%;
+    }
+  }
+
+  &__title {
+    line-height: 21px;
+    color: $primary-color;
+    margin-bottom: 8px;
+    min-height: 42px;
+  }
+
+  &__price {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22.5px;
+
+    &-fullPrice {
+      font-size: 22px;
+      color: $secondary-color;
+      font-weight: 500;
+      line-height: 140%;
+      text-decoration: line-through;
+    }
+
+    &-current {
+      font-size: 22px;
+      color: $primary-color;
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    &::after{
+      content: "";
+      position: absolute;
+      margin-top: 44px;
+      height: 1px;
+      width: 100%;
+      background-color: $elements-color;
+    }
+  }
+
+  &__properties {
+    margin-bottom: 16px;
+  }
+
+  &__screen,
+  &__capacity {
+    margin-bottom: 8px;
+  }
+
+  &__screen,
+  &__capacity,
+  &__ram {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__screen-text,
+  &__capacity-text,
+  &__ram-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: $secondary-color;
+  }
+
+  &__screen-value,
+  &__capacity-value,
+  &__ram-value {
+    color: $primary-color;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+

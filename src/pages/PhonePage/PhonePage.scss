@@ -1,0 +1,104 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.phones {
+  &__container {
+    @include pageGrid;
+    @include contentMarginInline;
+    margin-top: 24px;
+  }
+
+  &__breadcrumbs {
+    grid-column: 1 / span 4;
+  }
+
+  &__title {
+    @include h1Text;
+  }
+
+  &__count {
+    @include bodyText;
+    color: $secondary-color;
+  }
+
+  &__info {
+    grid-column: 1 / span 6;
+    margin-top: 40px;
+  }
+
+  &__dropdowns {
+    grid-column: 1 / span 7;
+    margin-top: 40px;
+    margin-bottom: 24px;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 16px;
+  }
+
+  &__list {
+    grid-column: 1 / -1;
+
+    &--with-margin {
+      margin-bottom: 152px;
+    }
+  }
+  
+  &__pagination {
+    grid-column: 10 / span 6;
+    margin-top: 40px;
+    margin-bottom: 152px;
+  }
+}
+
+.loader {
+  grid-column: 1 / -1;
+}
+
+.dropdown {
+  &__title {
+    @include smallText;
+    color: $secondary-color;
+    grid-column: span 2;
+  }
+
+  &__sorting {
+    grid-column: span 4;
+    padding: 12px;
+
+    width: 176px;
+    height: 40px;
+
+    @include buttonsText;
+    color: $primary-color;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+
+    &--pages {
+      grid-column: span 3;
+
+      width: 128px;
+    }
+    &:hover {
+      border-color: $secondary-color;
+    }
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+}
+
+select:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+option {
+  @include bodyText;
+  color: $secondary-color;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }

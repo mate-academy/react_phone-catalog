@@ -1,0 +1,83 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 24px;
+  padding-inline: 40px;
+  border: 1px solid $elements-color;
+  width: 752px;
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__delete {
+    background-image: url(../../icons/icon-close.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: #fff;;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+
+
+    &--container {
+      display: flex;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    gap: 31px;
+    align-items: center;
+    text-decoration: none;
+    color: $primary-color;
+  }
+
+  &__title {
+    @include bodyText;
+    width: 296px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13px;
+    @include bodyText;
+  }
+
+  &__price {
+    @include h2Text;
+  }
+}
+
+.button {
+  height: 32px;
+  width: 32px;
+  border: 1px solid $icons-color;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--minus {
+    background-image: url(../../icons/icon-minus.svg);
+  }
+
+  &--plus {
+    background-image: url(../../icons/icon-plus.svg);
+  }
+}
