@@ -22,6 +22,8 @@ export const FavoritePages: React.FC<Props> = () => {
     setFavoriteProducts(getFavoriteProduct);
   }, [defaultStateValue]);
 
+  console.log('1');
+
   return (
     <section className="favorite">
       <div className="container">
