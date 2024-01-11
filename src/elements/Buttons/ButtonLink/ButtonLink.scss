@@ -110,6 +110,11 @@
         }
       }
     }
+
+    &:hover .buttonLink__icon {
+      transform: scale(1.2);
+      transition: transform 0.5s;
+    }
   }
 
   &__text {
@@ -126,8 +131,7 @@
     background-repeat: no-repeat;
     height: 12px;
     width: 12px;
-    
-    @include hover(transform, scale(1.1));
+    transition: transform 0.5s;
 
     @include on-desktop {
       height: 16px;

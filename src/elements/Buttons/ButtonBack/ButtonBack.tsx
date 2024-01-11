@@ -8,17 +8,14 @@ export const ButtonBack = () => {
   };
 
   return (
-    <div className="buttonBack">
-      <button
-        className="buttonBack__button"
-        aria-label="button"
-        type="button"
-        onClick={goBack}
-      >
-        <div className="buttonBack__icon" />
-      </button>
-
+    <button
+      className="buttonBack"
+      aria-label="button"
+      type="button"
+      onClick={goBack}
+    >
+      <div className="buttonBack__icon" />
       <p className="buttonBack__text">Back</p>
-    </div>
+    </button>
   );
 };

@@ -36,7 +36,6 @@ export const ButtonLink: React.FC<Props> = ({
       type="button"
       aria-label="button"
       disabled={disable}
-      // onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
       onClick={() => setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }), 0)}
       className={classNames(
         'buttonLink', DC, {

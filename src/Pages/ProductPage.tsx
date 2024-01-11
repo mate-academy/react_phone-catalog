@@ -126,7 +126,7 @@ export const ProductPage: React.FC<Props> = ({ product }) => {
 
               <ProductsList products={visibleProductsOnPage} />
 
-              {+perPage < 16 && (
+              {+perPage <= 16 && (
                 <Pagination
                   products={visibleProducts}
                 />

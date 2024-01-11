@@ -3,6 +3,7 @@
 
 .dropdown {
   position: relative;
+
   &__category {
     @extend %small-text;
 
@@ -93,5 +94,9 @@
     display: block;
 
     @include hover(color, $main-text-color);
+  }
+
+  &__option {
+    color: $main-text-color;
   }
 }

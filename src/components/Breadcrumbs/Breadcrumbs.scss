@@ -17,4 +17,12 @@
 
     color: $secondary-text-color;
   };
+
+  &__link {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+
+    @include hover (color, $main-text-color)
+  };
 }

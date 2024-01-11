@@ -26,7 +26,7 @@ export const Breadcrumbs: React.FC<Props> = ({ page, product }) => {
         {product ? (
           <Link
             to={`/${page}`}
-            className="breadcrumbs__info"
+            className="breadcrumbs__link"
           >
             {capitalize(page)}
           </Link>
