@@ -49,11 +49,8 @@
     &-current {
       display: flex;
       justify-content: center;
-      width: 442px;
-      height: 442px;
       padding: 11px;
       margin-left: 24px;
-
     }
   }
 
@@ -319,6 +316,37 @@
 
     &__id {
       display: none;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .details {
+    &__photos {
+      flex-direction: column-reverse;
+
+      &-current {
+        margin: 0;
+
+        &-img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+
+      &-list {
+        flex-direction: row;
+        gap: 5px;
+      }
+    }
+
+    &__bottom {
+      flex-direction: column;
+    }
+
+    &__about,
+    &__tech {
+      width: 100%;
     }
   }
 }
