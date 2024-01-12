@@ -9,6 +9,7 @@
 
   &__list {
     display: flex;
+    align-items: center;
     gap: 8px;
   }
 
@@ -21,6 +22,10 @@
     border: 1px solid $elements-color;
     height: 32px;
     width: 32px;
+
+    &:hover {
+      border-color: $secondary-color;
+    }
 
     &--active {
       color: #fff;
@@ -38,6 +43,10 @@
   width: 32px;
   border: 1px solid $icons-color;
   background-color: #fff;
+
+  &:hover {
+    border-color: $secondary-color;
+  }
 
   &--prev {
     margin-right: 18px;

@@ -4,6 +4,7 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
+  height: 16px;
   gap: 8px;
   margin-bottom: 40px;
 
@@ -24,6 +25,7 @@
     @include smallText;
     text-decoration: none;
     margin: 0;
+    color: $secondary-color;
 
     &--target {
       color: $secondary-color;
@@ -34,5 +36,7 @@
     @include smallText;
     margin: 0;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

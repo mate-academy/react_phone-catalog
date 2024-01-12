@@ -6,7 +6,7 @@ import { GlobalContext } from '../Context/GlobalContext';
 
 export const Categories = () => {
   const { products } = useContext(GlobalContext);
-  const phones = products.filter(product => product.category === 'phone');
+  const phones = products.filter(product => product.category === 'phones');
   const tablets = products.filter(product => product.category === 'tablet');
   const accessories = products.filter(
     product => product.category === 'accessories',

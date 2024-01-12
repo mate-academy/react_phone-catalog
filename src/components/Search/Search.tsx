@@ -4,6 +4,7 @@ import { debounce } from 'lodash';
 import { ICONS } from '../../icons';
 import './Search.scss';
 import { getSearchWith } from '../../helpers/getSearchWith';
+import classNames from 'classnames';
 
 export const Search: React.FC = () => {
   const { pathname } = useLocation();
@@ -66,12 +67,11 @@ export const Search: React.FC = () => {
           data-cy="searchDelete"
           aria-label="search"
           onClick={handleClearQuery}
+          className={classNames('search__button', {
+            'search__button--focus': isSearchFocused,
+          })}
         >
-          <img
-            src={ICONS.iconClose}
-            alt="Clear query icon"
-            className="search__icon"
-          />
+          <div className="search__icon" />
         </button>
       ) : (
         <img

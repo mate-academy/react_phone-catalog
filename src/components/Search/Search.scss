@@ -8,6 +8,22 @@
   width: 327px;
   border-left: 1px solid $elements-color;
 
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    background-image: url('../../icons/icon-close.svg');
+    height: 16px;
+    width: 16px;
+    border: none;
+    background-color: #fff;
+
+    &--focus {
+      background-color: $hover-bg-color;
+    }
+  }
+
   &__input {
     width: 100%;
     height: 100%;

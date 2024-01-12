@@ -45,27 +45,36 @@ export const Pagination: React.FC<Props> = ({ total }) => {
       </button>
 
       <ul className="pagination__list">
-        {pages.map((page) => (
-          <Link
-            to={{
-              search: getSearchWith(searchParams, {
-                page: page.toString(),
-              }).toString(),
-            }}
-            key={page}
-            className={classNames('pagination__link', {
-              'pagination__link--active': selectedPage === page,
-            })}
-          >
-            <li
-              className={classNames('pagintaion__list-item',
-                { 'pagination__list-item--active': selectedPage === page })}
-              key={page}
-            >
-              {page}
+        {pages.map((page, index) => {
+          if (index > 4 && index < pages.length - 1) {
+            return (
+            <li className="pagination__list-dots">
+              .
             </li>
-          </Link>
-        ))}
+            )
+          }
+          return (
+            <Link
+              to={{
+                search: getSearchWith(searchParams, {
+                  page: page.toString(),
+                }).toString(),
+              }}
+              key={page}
+              className={classNames('pagination__link', {
+                'pagination__link--active': selectedPage === page,
+              })}
+            >
+              <li
+                className={classNames('pagintaion__list-item',
+                  { 'pagination__list-item--active': selectedPage === page })}
+                key={page}
+              >
+                {page}
+              </li>
+            </Link>
+          );
+        })}
       </ul>
 
       <button

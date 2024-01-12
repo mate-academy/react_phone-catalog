@@ -1,3 +1,12 @@
-.page__title {
-  text-align: center;
+.container {
+  top: 25%;
+  left: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    height: 200px;
+    width: 200px;
+  }
 }

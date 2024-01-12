@@ -1,0 +1,34 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.tablets {
+  &__container {
+    @include pageGrid;
+    @include contentMarginInline;
+    margin-top: 24px;
+  }
+
+  &__breadcrumbs {
+    grid-column: 1 / span 4;
+  }
+
+  &__title {
+    @include h1Text;
+  }
+
+  &__info {
+    grid-column: 1 / span 6;
+    margin-top: 40px;
+  }
+
+  &__alert {
+    grid-column: 1 / -1;
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+
+    &-title {
+      @include h1Text;
+    }
+  }
+}

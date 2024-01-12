@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { GlobalContext } from '../Context/GlobalContext';
 import { CartItemType } from '../../types/CartItemType';
 import './CartItem.scss';
+import { API_URL } from '../../utils/api';
 
 type Props = {
   product: CartItemType,
@@ -39,7 +40,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         >
           <div className="cart-item__image--container">
             <img
-              src={image}
+              src={`${API_URL}${image}`}
               alt={name}
               className="cart-item__image"
             />

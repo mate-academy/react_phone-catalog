@@ -76,7 +76,7 @@ export const BannerSlider: React.FC = () => {
         </div>
 
         <div className="banner-slider__button">
-          <ButtonSlider moveSlide={nextSlide} direction="next" />
+          <ButtonSlider moveSlide={nextSlide} direction="next" height={400} />
         </div>
 
         <div className="dots__container">

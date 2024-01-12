@@ -43,7 +43,7 @@
       margin-bottom: 152px;
     }
   }
-  
+
   &__pagination {
     grid-column: 10 / span 6;
     margin-top: 40px;
@@ -67,7 +67,7 @@
     padding: 12px;
 
     width: 176px;
-    height: 40px;
+    height: 45px;
 
     @include buttonsText;
     color: $primary-color;
@@ -79,6 +79,7 @@
 
       width: 128px;
     }
+
     &:hover {
       border-color: $secondary-color;
     }
@@ -98,7 +99,18 @@ option {
   @include bodyText;
   color: $secondary-color;
 
-    &:hover {
-      color: $primary-color;
-    }
+  &:hover {
+    color: $primary-color;
   }
+}
+
+.warning-message {
+  grid-column: 1 / -1;
+  margin-top: 60px;
+  text-align: center;
+  
+
+  &__text {
+    @include h1Text;
+  }
+}

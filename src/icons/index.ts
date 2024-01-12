@@ -18,6 +18,8 @@ import iconClose from './icon-close.svg';
 import phonesBanner from './banner-phones.png';
 import tabletsBanner from './banner-tablets.png';
 import accessoriesBanner from './banner-accessories.png';
+import workInProgress from './work-in-progress.jpg';
+import iconWarning from './icon-warning.png';
 
 export const ICONS = {
   logo: iconLogo,
@@ -39,4 +41,6 @@ export const ICONS = {
   phonesBanner,
   tabletsBanner,
   accessoriesBanner,
+  workInProgress,
+  iconWarning,
 };
