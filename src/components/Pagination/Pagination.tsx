@@ -48,11 +48,12 @@ export const Pagination: React.FC<Props> = ({ total }) => {
         {pages.map((page, index) => {
           if (index > 4 && index < pages.length - 1) {
             return (
-            <li className="pagination__list-dots">
-              .
-            </li>
-            )
+              <li className="pagination__list-dots">
+                .
+              </li>
+            );
           }
+
           return (
             <Link
               to={{

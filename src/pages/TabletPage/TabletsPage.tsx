@@ -1,4 +1,4 @@
-import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
+import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import './TabletsPage.scss';
 
 export const TabletsPage = () => {
@@ -10,7 +10,9 @@ export const TabletsPage = () => {
         </div>
 
         <div className="tablets__alert">
-          <p className="tablets__alert-title">There is no products on this page for now. We are working on it.</p>
+          <p className="tablets__alert-title">
+            There is no products on this page for now. We are working on it.
+          </p>
         </div>
       </div>
     </section>

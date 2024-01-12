@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { debounce } from 'lodash';
+import classNames from 'classnames';
 import { ICONS } from '../../icons';
 import './Search.scss';
 import { getSearchWith } from '../../helpers/getSearchWith';
-import classNames from 'classnames';
 
 export const Search: React.FC = () => {
   const { pathname } = useLocation();

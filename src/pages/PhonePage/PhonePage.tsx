@@ -98,9 +98,9 @@ export const PhonePage = () => {
 
             {searchParams.toString().length ? (
               <div className="warning-message">
-                <img 
-                  src={ICONS.iconWarning} 
-                  alt='warning' 
+                <img
+                  src={ICONS.iconWarning}
+                  alt="warning"
                   className="warning-message__image"
                 />
                 <h1 className="warning-message__text">
@@ -141,7 +141,8 @@ export const PhonePage = () => {
                 </div>
                 <div className={classNames('phones__list', {
                   'phones__list--with-margin': numOfPages === 1,
-                })}>
+                })}
+                >
                   <ProductsList
                     products={visiblePhones.slice(firstProduct, lastProduct)}
                   />
