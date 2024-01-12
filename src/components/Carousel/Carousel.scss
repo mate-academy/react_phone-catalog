@@ -1,0 +1,30 @@
+@import "../../styles/utils/mixins";
+
+.carousel {
+  margin: 0 auto;
+  width: 290px;
+
+  @include on-640 {
+    width: 580px;
+  }
+
+  @include on-1280 {
+    width: 870px;
+  }
+
+  @include on-1440 {
+    width: 1160px;
+  }
+
+  &__product-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    display: flex;
+  }
+
+  &__product-item {
+    margin: 0 8px;
+  }
+}

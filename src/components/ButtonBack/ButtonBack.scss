@@ -1,0 +1,21 @@
+@import "../../styles/utils/vars";
+
+.button-back {
+  display: flex;
+  column-gap: 8px;
+  margin-bottom: 16px;
+
+  &__link {
+    text-decoration: none;
+    color: $silver;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    background-color: $white;
+    cursor: pointer;
+
+    &:hover {
+      color: $dark-gray;
+    }
+  }
+}

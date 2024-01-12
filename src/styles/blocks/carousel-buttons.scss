@@ -1,0 +1,32 @@
+.carousel-buttons {
+  display: none;
+
+  @include on-640 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
+
+  &__arrow {
+    background-color: $white;
+    cursor: pointer;
+    border: 1px solid $light-gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+
+    &:hover {
+      border: 1px solid $dark-gray;
+    }
+  }
+
+  &__arrow-disabled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    margin: 5px 0;
+  }
+}

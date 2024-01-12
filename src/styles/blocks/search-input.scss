@@ -1,0 +1,30 @@
+.search-input {
+  padding: 23px 0;
+  width: 100%;
+  border: none;
+  color: $dark-gray;
+  font-size: 10px;
+  font-weight: 600;
+
+  @include on-640 {
+    font-size: 14px;
+  }
+
+  &::placeholder {
+    color: $gray;
+    font-size: 10px;
+    font-weight: 600;
+
+    @include on-640 {
+      font-size: 14px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}

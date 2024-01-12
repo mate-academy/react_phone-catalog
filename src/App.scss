@@ -1,1 +1,94 @@
-// not empty
+@import "./styles/utils/vars";
+@import "./styles/utils/fonts";
+@import "./styles/utils/mixins";
+@import "./styles/blocks/container";
+@import "./styles/blocks/mobile-carousel-container";
+@import "./styles/blocks/flex-app";
+@import "./styles/blocks/grid-cover";
+@import "./styles/blocks/logo";
+@import "./styles/blocks/favourites-page";
+@import "./styles/blocks/cart-page";
+@import "./styles/blocks/also-like";
+@import "./styles/blocks/flex-products-container";
+@import "./styles/blocks/brand-new-models";
+@import "./styles/blocks/categories";
+@import "./styles/blocks/hot-prices";
+@import "./styles/blocks/products.page";
+@import "./styles/blocks/header-carousel";
+@import "./styles/blocks/search-input";
+@import "./styles/blocks/icon";
+@import "./styles/blocks/button";
+@import "./styles/blocks/carousel-buttons";
+@import "./styles/blocks/separator";
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+
+  @include less-on-320  {
+    min-width: 319px;
+  }
+}
+
+.App {
+  color: $dark-gray;
+
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: transform 0.3s;
+    z-index: 1;
+  }
+
+  &__header-carousel {
+    margin: 10px 0 104px;
+
+    @include on-640 {
+      margin: 40px 0 104px;
+    }
+  }
+
+  &__products {
+    margin-top: 25px;
+  }
+
+  &__selected-product {
+    margin-top: 25px;
+  }
+
+  &__cart {
+    margin-top: 40px;
+  }
+
+  &__favourites {
+    margin-top: 25px;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+}
+
+.icon-favourite-active {
+  background-image: url(./images/icons/FavouritesActiveIcon.svg);
+}
+
+.mobile {
+  &__homepage-title {
+    margin: 30px 0 20px;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+
+    @include on-640 {
+      display: none;
+    }
+  }
+}

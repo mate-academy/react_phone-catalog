@@ -1,0 +1,106 @@
+@import "../../styles/utils/vars";
+@import "../../styles/utils/mixins";
+
+.pagination {
+  display: flex;
+  margin-bottom: 80px;
+  justify-content: center;
+
+  &__pagination-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  &__pagination-item {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 13px;
+
+    &:first-child {
+      margin-right: 8px;
+    }
+    
+    &:last-child {
+      margin: 0;
+    }
+
+    @include on-640 {
+      margin-right: 8px;
+
+      &:first-child {
+        margin-right: 16px;
+      }
+      
+  
+      &:last-child {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  &__pagination-button {
+    border: none;
+    background-color: $white;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $dark-gray;
+    }
+
+    @include on-640 {
+      border: 1px solid $gray;
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  &__disabled-pagination-button {
+    background-color: $white;
+    border: none;
+    display: flex;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+
+    @include on-640 {
+      width: 35px;
+      height: 35px;
+      border: 1px solid $gray;
+    }
+  }
+
+  &__pagination-link {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 21px;
+    color: $gray;
+
+    &--active {
+      color: $dark-gray;
+    }
+
+    @include on-640 {
+      color: $dark-gray;
+      padding: 7px 14px;
+      font-size: 12px;
+      border: 1px solid $gray;
+
+      &:hover {
+        border: 1px solid $dark-gray;
+      }
+  
+      &--active {
+        background-color: $dark-gray;
+        color: $white;
+      }
+    }
+  }
+}

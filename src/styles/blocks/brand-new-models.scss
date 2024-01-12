@@ -1,0 +1,26 @@
+.brand-new-models {
+  &__title-arrows-container {
+    margin: 0 auto 24px;
+    display: flex;
+    justify-content: center;
+
+    @include on-640 {
+      justify-content: space-between;
+      width: 580px;
+    }
+
+    @include on-1280 {
+      width: 870px;
+    }
+
+    @include on-1440 {
+      width: 1160px;
+    }
+  }
+  
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+}

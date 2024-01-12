@@ -1,0 +1,37 @@
+// Updated mixin names with kebab-case
+
+@mixin less-on-320 {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin on-450 {
+  @media (min-width: 450px) {
+    @content;
+  }
+}
+
+@mixin on-640 {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-1000 {
+  @media (min-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin on-1280 {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin on-1440 {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}

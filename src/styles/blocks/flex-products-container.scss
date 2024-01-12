@@ -1,0 +1,28 @@
+.flex-products-container {
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 40px;
+
+  @include on-640 {
+    width: 580px;
+    flex-flow: row wrap;
+    gap: 40px 16px; 
+    justify-content: flex-start;
+  }
+  
+
+  @include on-1000 {
+    width: 870px;
+  }
+
+  @include on-1280 {
+    width: 1160px;
+  }
+
+  &--favourites {
+    margin-bottom: 80px;
+  }
+}

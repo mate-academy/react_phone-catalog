@@ -1,0 +1,44 @@
+.button {
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark-gray;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--added-in-cart {
+    background-color: $white;
+    border: 1px solid $green;
+    color: $green;
+    cursor: auto;
+  }
+
+  &--checkout {
+    height: 48px;
+    width: 50%;
+    margin: 0 auto;
+
+    @include on-1280 {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &--mobile-delete-from-cart {
+    width: 50%;
+    height: 48px;
+
+    @include on-640 {
+      display: none;
+    }
+  }
+}
