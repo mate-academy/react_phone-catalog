@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { Loader } from '../../components/Loader/Loader';
 import { NotFound } from '../../components/NotFound/NotFound';

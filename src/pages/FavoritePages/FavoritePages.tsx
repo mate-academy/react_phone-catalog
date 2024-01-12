@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getItem } from '../../api/LocaleStorage/LocaleStorage';
 import './FavoritePages.scss';
 import { Product } from '../../types/Products';

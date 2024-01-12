@@ -3,6 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, {
+  ReactNode,
   createContext,
   useContext,
   useEffect,
@@ -29,9 +30,13 @@ interface ContextType {
   }
 }
 
+interface ContextProviderProps {
+  children: ReactNode;
+}
+
 const Context = createContext<ContextType | undefined>(undefined);
 
-export const ContextProvider: React.FC = ({ children }) => {
+export const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
   const [searchText, setSearchText] = useState('');
 
   const [defaultStateValue, setDefaultStateValue] = useState({
@@ -51,7 +56,7 @@ export const ContextProvider: React.FC = ({ children }) => {
         countFavorite: getFavorite.length,
       };
     });
-  }, []);
+  }, [getBasket.length, getFavorite.length]);
 
   const handleAddTo = (product: Product, list: Product[], listKey: string) => {
     const productIndex = list.findIndex(item => item.id === product.id);
@@ -119,8 +124,6 @@ export const ContextProvider: React.FC = ({ children }) => {
 
   const decrement = (product: Product) => {
     const productIndex = getBasket.reverse().findIndex(item => item.id === product.id);
-
-    console.log(productIndex);
 
     if (productIndex !== -1) {
       const updatedBasket = [...getBasket];

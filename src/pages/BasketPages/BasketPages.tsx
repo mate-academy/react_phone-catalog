@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-console */
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './BasketPages.scss';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Products';
@@ -49,6 +49,7 @@ export const BasketPages: React.FC = () => {
                       data-cy="cartDeleteButton"
                       type="button"
                       onClick={() => handleRemoveFromBasket(item.phoneId)}
+                      aria-label="Counter Remove"
                     >
                       <div className="basket__item-icon">
                         <span />
@@ -78,6 +79,7 @@ export const BasketPages: React.FC = () => {
                         type="button"
                         onClick={() => decrement(item)}
                         disabled={getProductCount(item.id) === 1}
+                        aria-label="Counter Decrement"
                       >
                         <div className="basket__item--counter-minus" />
                       </button>
@@ -90,6 +92,7 @@ export const BasketPages: React.FC = () => {
                         className="basket__item--counter-btn"
                         type="button"
                         onClick={() => increment(item)}
+                        aria-label="Counter Increment"
                       >
                         <div className="basket__item--counter-plus" />
                       </button>

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import './TabletPages.scss';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { getTablets } from '../../api/fetchData';
 import { Product } from '../../types/Products';

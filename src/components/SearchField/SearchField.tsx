@@ -49,6 +49,7 @@ export const SearchField: React.FC = () => {
         className="searchField__button"
         data-cy="searchDelete"
         onClick={handleOpenClose}
+        aria-label="Input Delete"
       >
         <span
           className={classNames('searchField__img', {

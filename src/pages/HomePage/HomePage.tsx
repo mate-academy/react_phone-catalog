@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import './HomePage.scss';
-
+import React from 'react';
 import { BannerSlider } from '../../components/sliders/BannerSlider/BannerSlider';
 import { ProductSlider } from '../../components/sliders/ProductSlider/ProductSlider';
 import { Category } from '../../components/Category/Category';

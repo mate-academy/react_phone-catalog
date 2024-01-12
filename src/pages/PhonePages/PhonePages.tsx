@@ -4,7 +4,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { DropDown } from '../../components/DropDown/DropDown';
@@ -95,7 +95,7 @@ export const PhonePages: React.FC = () => {
       return new URLSearchParams(prevSearchParams.toString());
     });
 
-  }, [searchParams, searchText]);
+  }, [pageParam, perPageParam, searchParams, searchText, setSearchParams, sortParam]);
 
   // -----------------------------------------
 
@@ -150,7 +150,7 @@ export const PhonePages: React.FC = () => {
       setTotalPages(1);
     }
 
-  }, [preperedProducts, totalPages, currentPage, searchText]);
+  }, [preperedProducts, totalPages, currentPage, searchText, selectedPerPage]);
 
   useEffect(() => {
 
@@ -162,7 +162,7 @@ export const PhonePages: React.FC = () => {
         return newSearchParams;
       });
     }
-  }, [searchParams]);
+  }, [pageParam, searchParams, setSearchParams]);
 
   return (
     <section

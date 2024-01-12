@@ -4,7 +4,7 @@
 import './Header.scss';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import logoImg from '../../images/LOGO.svg';
 import favoriteIcon from '../../images/Favorite_icon.svg';
 import basketIcon from '../../images/Basket_icon.svg';
@@ -57,6 +57,7 @@ export const Header: React.FC = () => {
             })}
             type="button"
             onClick={() => setBurgerOpen(!burgerOpen)}
+            aria-label="Toggle Menu"
           >
             <span />
           </button>

@@ -53,6 +53,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         type="button"
         disabled={currentPage === 1}
         onClick={handleLeftArrowClick}
+        aria-label="Toggle Left"
       >
         <span className="pagination__icon pagination__left-icon" />
       </button>
@@ -81,6 +82,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         type="button"
         disabled={currentPage === totalPages}
         onClick={handleRightArrowClick}
+        aria-label="Toggle Right"
       >
         <span className="pagination__icon pagination__right-icon" />
       </button>
