@@ -1,0 +1,41 @@
+.product {
+  margin-top: 100px;
+  margin-bottom: 80px;
+
+  &__title {
+    font-family: "Mont-Bold", sans-serif;
+    font-size: 32px;
+    color: #313237;
+    line-height: 1;
+  }
+}
+
+#product__slider {
+  padding-top: 24px;
+
+  .splide__arrow svg {
+    height: 0.9em;
+  }
+
+  .splide__arrow--prev,
+  .splide__arrow--next {
+    top: 0;
+    right: 0;
+    left: initial;
+    border-radius: 0;
+    background: #fff;
+    border: 1px solid #313237;
+    transform: translateY(-100%);
+  }
+
+  .splide__arrow--prev {
+    transform: translate(-100%, -100%);
+    margin-right: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .product__title {
+    font-size: 24px;
+  }
+}

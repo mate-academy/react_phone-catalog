@@ -1,0 +1,70 @@
+.product__dropdown {
+  display: flex;
+}
+
+.dropdown {
+  position: relative;
+  font-family: "Mont-SemiBold", sans-serif;
+
+  &__label {
+    font-size: 12px;
+    color: #89939a;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    width: 100%;
+    border: 1px solid #b4bdc3;
+    line-height: 1;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    font-size: 14px;
+    color: #313237;
+    text-transform: capitalize;
+
+    &--active {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__list {
+    font-family: "Mont-Regular", sans-serif;
+    position: absolute;
+    border: 1px solid #e2e6e9;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &-option {
+      width: 100%;
+      padding: 8px;
+      cursor: pointer;
+      background: #fff;
+      border: none;
+      color: #89939a;
+      font-size: 14px;
+      text-transform: capitalize;
+      text-align: left;
+
+      &:hover {
+        color: #313237;
+      }
+    }
+  }
+
+  &__arrow {
+    transition: transform 0.3s ease;
+    margin-left: 10px;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+}

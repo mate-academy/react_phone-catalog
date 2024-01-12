@@ -1,5 +1,8 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import ReactDOM from 'react-dom';
+import { Root } from './Root';
+import 'normalize.css';
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+ReactDOM.render(
+  <Root />,
+  document.getElementById('root'),
+);

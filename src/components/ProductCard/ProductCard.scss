@@ -1,0 +1,73 @@
+.card {
+  display: block;
+  padding: 32px 24px 24px;
+  border: 1px solid #ccc;
+  color: #313237;
+  text-decoration: none;
+  transition: 0.3s;
+
+  &:hover {
+    border-color: #313237;
+  }
+
+  &__img {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+    height: 208px;
+  }
+
+  &__title {
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: "Mont-SemiBold", sans-serif;
+    height: 42px;
+  }
+
+  &__price {
+    margin-top: 8px;
+    font-size: 22px;
+    font-family: "Mont-Bold", sans-serif;
+
+    & span {
+      margin-left: 8px;
+      color: #89939a;
+      font-family: "Mont-SemiBold", sans-serif;
+      text-decoration: line-through;
+    }
+  }
+
+  &__properties {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: 16px 0;
+    border-top: 1px solid #e2e6e9;
+    font-family: "Mont-SemiBold", sans-serif;
+
+    &-names {
+      color: #89939a;
+      font-size: 12px;
+    }
+
+    &-name:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &-values {
+      text-align: end;
+      color: #313237;
+      font-size: 12px;
+    }
+
+    &-value:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+  }
+}
