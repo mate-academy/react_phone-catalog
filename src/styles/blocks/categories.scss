@@ -1,0 +1,170 @@
+.categories {
+  &__title {
+    margin: 0 0 32px;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__block-category {
+    margin-bottom: 50px;
+
+    &:last-child {
+      margin: 0;
+    }
+
+    @include on-640 {
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 16px;
+    }
+
+    @include on-1280 {
+      grid-template-columns: repeat(8, 1fr);
+      column-gap: 16px;
+    }
+
+    &--phones {
+      @include on-640 {
+        grid-column: 1 / 5;
+      }
+
+      @include on-1280 {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--tablets {
+      @include on-640 {
+        grid-column: 5 / 9;
+      }
+
+      @include on-1280 {
+        grid-column: 9 / 17;
+      }
+    }
+
+    &--accessories {
+      @include on-640 {
+        grid-column: 9 / 13;
+      }
+
+      @include on-1280 {
+        grid-column: 17 / 25;
+      }
+    }
+  }
+
+  &__category {
+    overflow: hidden;
+    margin-bottom: 24px;
+    transition: transform 0.3s;
+
+    @include on-640 {
+      grid-column: 1 / 5;
+    }
+
+    @include on-1280 {
+      grid-column: 1 / 9;
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5d;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    background-repeat: no-repeat;
+
+    &--phones {
+      top: 40px;
+      left: 104px;
+      background-size: 62%;
+      background-image: url(../../../src/images/category-phones.png);
+      padding-bottom: 313px;
+
+      @include on-450 {
+        top: 60px;
+        left: 130px;
+      }
+
+      @include on-640 {
+        top: 40px;
+        left: 70px;
+        background-size: cover;
+        padding-bottom: 300px;
+      }
+
+      @include on-1280 {
+        padding-bottom: 368px;
+      }
+    }
+
+    &--tablets {
+      top: 90px;
+      left: 20px;
+      padding-bottom: 568px;
+      background-position: left;
+      background-size: 110%;
+      background-image: url(../../../src/images/category-tablets.png);
+
+      @include on-640 {
+        top: 80px;
+        left: 20px;
+        padding-bottom: 300px;
+      }
+
+      @include on-1280 {
+        padding-bottom: 368px;
+      }
+    }
+
+    &--accessories {
+      top: 93px;
+      left: 45px;
+      background-position: 7%;
+      background-size: 190%;
+      background-image: url(../../../src/images/category-accessories.png);
+      padding-bottom: 430px;
+
+      @include on-640 {
+        padding-bottom: 300px;
+        top: 55px;
+        left: 40px;
+      }
+
+      @include on-1280 {
+        padding-bottom: 368px;
+      }
+    }
+  }
+
+  &__name {
+    margin: 0 0 6px;
+    grid-column: 1 / 5;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__count-models {
+    margin: 0;
+    grid-column: 1 / 4;
+    color: $silver;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

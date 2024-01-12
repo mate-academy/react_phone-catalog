@@ -1,0 +1,11 @@
+.container {
+  padding: 0 25px;
+
+  @include on-1280 {
+    padding: 0 70px;
+  }
+
+  @include on-1440 {
+    padding: 0 152px;
+  }
+}

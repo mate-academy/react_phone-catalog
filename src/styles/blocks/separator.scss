@@ -1,0 +1,40 @@
+.separator {
+  border-top: 1px solid $light-gray;
+  width: 100%;
+
+  &--under-price-in-card {
+    margin-bottom: 16px;
+  }
+
+  &--under-phone-colors {
+    margin-bottom: 24px;
+    grid-column: 2 / 10;
+
+    @include on-1280 {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &--under-phone-capacities {
+    margin-bottom: 32px;
+    grid-column: 2 / 10;
+
+    @include on-1280 {
+      grid-column: 1 / 8;
+    }
+  }
+
+  &--under-title-about {
+    margin-bottom: 32px;
+    grid-column: 1 / 13;
+  }
+
+  &--under-title-tech-specs {
+    margin-bottom: 25px;
+    grid-column: 1 / 12;
+  }
+
+  &--under-total-price {
+    margin-bottom: 24px;
+  }
+}

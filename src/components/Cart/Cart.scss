@@ -1,0 +1,213 @@
+@import "../../styles/utils/vars";
+@import  "../../styles/utils/mixins";
+
+.cart {
+  margin-bottom: 87px;
+
+  @include on-640 {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+  }
+
+  @include on-1280 {
+    grid-column: 1 / 25;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__left-block {
+    margin: 0 0 80px;
+
+    @include on-640 {
+      grid-column: 1 / 13;
+      display: grid;
+      column-gap: 16px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include on-1280 {
+      grid-column: 1 / 17;
+      grid-template-columns: repeat(16, 1fr);
+      margin: 0 0 auto;
+    }
+  }
+
+  &__cart-block {
+    border: 1px solid $light-gray;
+    padding: 31px 40px 31px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+
+    @include on-640 {
+      grid-column: 1 / 13;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include on-1280 {
+      grid-column: 1 / 17;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__left-part-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-640 {
+      flex-direction: row;
+      column-gap: 31px;
+    }
+  }
+
+  &__right-part-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include on-640 {
+      flex-direction: row;
+      column-gap: 43px;
+    }
+  }
+
+  &__delete {
+    display: none;
+
+    @include on-640 {
+      display: block;
+      cursor: pointer;
+      border: none;
+      background-color: $white;
+    }
+  }
+
+  &__image-container {
+    width: 120px;
+    margin-bottom: 15px;
+
+    @include on-640 {
+      width: 66px;
+      margin: 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__info {
+    text-align: center;
+    color: $dark-gray;
+    font-weight: 600;
+    line-height: 21px;
+    font-size: 16px;
+    margin: 0 0 15px;
+
+    @include on-640 {
+      font-weight: 500;
+      text-align: left;
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  &__more-less-count-select {
+    display: flex;
+    column-gap: 13px;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @include on-640 {
+      margin: 0;
+    }
+  }
+
+  &__more-less-buttons {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    color: $silver;
+    border: 1px solid $silver;
+    line-height: 35px;
+    cursor: pointer;
+
+    &:hover {
+      color: $black;
+      border: 1px solid $black;
+    }
+  }
+
+  &__count-product {
+    color: $black;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__price {
+    margin: 0 0 20px;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include on-640 {
+      margin: 0;
+      font-size: 22px;
+    }
+  }
+
+  &__right-block {
+    border: 1px solid $light-gray;
+    margin: 0 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 13;
+
+    @include on-1280 {
+      grid-column: 17 / 25;
+    }
+  }
+
+  &__total-price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 24px;
+  }
+
+  &__total-sum {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__text-total-count-items {
+    margin: 0;
+    color: $silver;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__checkout-message {
+    text-align: center;
+    margin: 0;
+    position: relative;
+    top: 20px;
+  }
+}
