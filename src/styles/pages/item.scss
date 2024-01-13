@@ -1,0 +1,71 @@
+.item {
+  &__back {
+    @extend %small-text;
+
+    display: flex;
+    color: $gray-secondary;
+    margin-bottom: 16px;
+  }
+
+  &__mainImg {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @extend %h1;
+
+    margin: 0 0 40px;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__price {
+    @extend %h1;
+
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+
+    &--discount {
+      font-size: 22px;
+    }
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__about {
+    &-title {
+      @extend %h2;
+
+      margin:  0 0 16px;
+    }
+
+    &-subtitle {
+      @extend %h3;
+
+      margin:  0 0 16px;
+    }
+
+    &-text {
+      @extend %body-text;
+
+      margin:  0 0 32px;
+    }
+
+    &-line {
+      margin:  0 0 32px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  column-gap: 16px;
+
+  --column-number: 24;
+  
+  grid-template-columns: repeat(var(--column-number), 1fr);
+
+  &__item {
+    @for $start from 1 through 24 {
+      @for $end from $start through 24 {
+        &-#{$start}-#{$end} {
+          grid-column: #{$start} / #{$end + 1};
+        }
+      }
+    }
+  }
+}
