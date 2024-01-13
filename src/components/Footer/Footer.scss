@@ -8,7 +8,7 @@
   transform: translateX(-50%);
   width: 100%;
   background-color: $main-bg-color;
-  z-index: 3;
+  z-index: 1000;
 
   &__content {
     @include inline-padding-control;
