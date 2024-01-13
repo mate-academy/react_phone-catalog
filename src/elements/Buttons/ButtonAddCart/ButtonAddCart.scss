@@ -1,0 +1,45 @@
+@import './../../../style/mixins';
+
+.buttonAddCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont-Semibold, $fallback-fonts;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  background-color: $main-text-color;
+  border: none;
+  color: $main-bg-color;
+  text-align: center;
+  cursor: pointer;
+  padding-inline: 5px;
+
+  @include on-desktop {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  @include on-biggest {
+    font-size: 16px;
+  }
+
+  @include hover(background-color, darken($main-text-color, 5%));
+  @include hover(box-shadow, (0 2px 7px 0 $border-color));
+
+
+  &--active {
+    background: $main-bg-color;
+    border: 1px solid $main-text-color;
+
+    @include hover(background-color, $main-bg-color);
+  }
+
+  &__text-active {
+    color: $shadow-color;
+    color: $secondary-accent-color;
+  }
+}

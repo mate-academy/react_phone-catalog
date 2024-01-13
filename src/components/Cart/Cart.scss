@@ -1,0 +1,140 @@
+@import './../../style/extends';
+@import './../../style/mixins';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  align-items: center;
+  gap: 20px;
+  border: 1px solid $shadow-color;
+  width: 100%;
+  padding-block: 10px;
+  padding-left: 5px;
+
+  @include on-tablet {
+    padding-left: 15px;
+    flex-direction: row;
+    height: 128px;
+    gap: 10px;
+  }
+
+  @include on-desktop {
+    padding-left: 24px;
+    gap: 20px;
+  }
+
+  @include on-biggest {
+    height: 200px;
+    padding-left: 24px;
+    gap: 20px;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 5px;
+    text-decoration: none;
+    color: $main-text-color;
+
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      gap: 31px;
+      margin-left: 24px;
+    }
+
+    &--right {
+      gap: 10px;
+      margin-right: 15px;
+      margin-left: 0;
+      justify-content: center;
+
+      @include on-tablet {
+        gap: 20px;
+        margin-right: 20px;
+        margin-left: 0;
+        flex-direction: row;
+      }
+
+      @include on-desktop{
+        gap: 43px;
+        margin-right: 40px;
+        margin-left: 0;
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__image {
+    height: 66px;
+    width: 66px;
+    object-fit: contain;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-biggest {
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  &__name {
+    @extend %body-text;
+
+    width: 100px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    @include on-desktop {
+      width: 15vw;
+    }
+
+    @include on-big-desktop {
+      min-width: 295px;
+    }
+
+    @include on-biggest {
+      width: 100%;
+    }
+  }
+
+  &__increment {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include on-tablet {
+      gap: 13px;
+    }
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__count {
+    @extend %body-text;
+
+    width: 5px;
+    text-align: center;
+  }
+
+  &__close {
+    align-self: flex-end;
+
+    @include on-tablet {
+      align-self: auto;
+    }
+  }
+}

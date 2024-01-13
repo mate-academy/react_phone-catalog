@@ -1,0 +1,90 @@
+@import './../../style/variables';
+@import './../../style/extends';
+@import './../../style/mixins';
+
+.header{
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    box-shadow: 0 1px 0 0 $shadow-color;
+
+    @include on-tablet {
+      height: 40px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  };
+
+  &__left {
+    display: flex;
+    align-items: center;
+  };
+
+  &__navBar {
+    display: none;
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+
+  &__icon {
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__icons {
+    display: flex;
+  };
+
+  &__logo {
+    margin-inline: 10px;
+
+    @include on-tablet {
+      margin-right: 5px;
+    }
+
+    @extend %logo;
+  }
+
+  &__link {
+    position: relative;
+  }
+
+  &__counter {
+    position: absolute;
+    content: '';
+    height: 9px;
+    width: 9px;
+    background-color: $main-accent-color;
+    color: $main-bg-color;
+    border-radius: 50%;
+    font-size: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $main-bg-color;
+    top: 10px;
+    left: 20px;
+
+    @include on-tablet {
+      top: 8px;
+      left: 22px;
+      height: 11px;
+      width: 11px;
+      font-size: 8px;
+    }
+
+    @include on-desktop {
+      top: 19px;
+      left: 33px;
+      height: 14px;
+      width: 14px;
+      font-size: 9px;
+    }
+  }
+};

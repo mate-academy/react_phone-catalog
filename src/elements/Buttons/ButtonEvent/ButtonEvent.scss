@@ -1,0 +1,132 @@
+@import './../../../style/mixins';
+@import './../../../style/extends';
+
+.buttonEvent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  height: 25px;
+  width: 25px;
+  background-color: $main-bg-color;
+  border: 1px solid $border-color;
+  cursor: pointer;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  @include hover(border-color, $main-text-color);
+
+  &--big {
+    height: 40px;
+    width: 40px;
+
+    @include on-tablet {
+      height: 40px;
+      width: 40px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &--large {
+    height: calc(100% - 25px);
+    width: 100%;
+  }
+
+  &--no-border {
+    border: none;
+  }
+
+  &--shadow {
+    border: none;
+    box-shadow: -1px 1px 0 0 $shadow-color;
+  }
+
+  &--disactive {
+    border-color: $shadow-color;
+    pointer-events: none;
+
+    @include hover(border-color, $shadow-color);
+    @include hover(box-shadow, $main-text-color);
+  }
+
+  &__icon-keeper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+
+    &--big {
+      height: 40px;
+      width: 40px;
+    }
+
+    &--large {
+      width: 32px
+    }
+
+    &:hover .buttonEvent__icon {
+      transform: scale(1.2);
+      transition: transform 0.5s;
+    }
+  }
+
+  &__icon {
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    transition: transform 0.5s;
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--close {
+      background-image: url(./../../../assets/icons/close.svg);
+    }
+
+    &--left {
+      background-image: url(./../../../assets/icons/left.svg);
+    }
+
+    &--loop {
+      background-image: url(./../../../assets/icons/loop.svg);
+    }
+
+    &--menu {
+      background-image: url(./../../../assets/icons/menu.svg);
+    }
+
+    &--minus {
+      background-image: url(./../../../assets/icons/minus.svg);
+    }
+
+    &--plus {
+      background-image: url(./../../../assets/icons/plus.svg);
+    }
+
+    &--right {
+      background-image: url(./../../../assets/icons/right.svg);
+    }
+
+    &--up {
+      background-image: url(./../../../assets/icons/up.svg);
+    }
+
+    &--disactive {
+      transition: filter 1s;
+      filter: invert(75%) sepia(12%) saturate(170%) hue-rotate(161deg) brightness(99%) contrast(88%);
+    }
+  }
+}

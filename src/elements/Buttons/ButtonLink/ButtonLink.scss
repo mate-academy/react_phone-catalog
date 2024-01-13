@@ -1,0 +1,170 @@
+@import './../../../style/mixins';
+@import './../../../style/extends';
+
+.buttonLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Mont-Semibold, $fallback-fonts;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  outline: none;
+  height: 25px;
+  width: 25px;
+  background-color: $main-bg-color;
+  border: 1px solid $border-color;
+  cursor: pointer;
+
+  @include on-tablet {
+    height: 32px;
+    width: 32px;
+  }
+
+  @include hover(border-color, $main-text-color);
+
+  &--big {
+    height: 40px;
+    width: 40px;
+
+    @include on-tablet {
+      height: 40px;
+      width: 40px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &--shadow {
+    border: none;
+    box-shadow: -1px 1px 0 0 $shadow-color;
+  }
+
+  &--no-border {
+    border: none;
+  }
+
+  &--disactive {
+    border-color: $shadow-color;
+    pointer-events: none;
+
+    @include hover(border-color, $shadow-color);
+    @include hover(box-shadow, $main-text-color);
+  }
+
+  &--link-active {
+    background-color: $main-text-color;
+
+    &>a {
+      color: $main-bg-color;
+    }
+  }
+
+  &__icon-keeper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border: none;
+
+    &--big {
+      height: 40px;
+      width: 40px;
+    }
+
+    &--large {
+      width: 32px
+    }
+  }
+
+  &__link {
+    @extend %body-text;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $main-text-color;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    &.is-active {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 1.5px;
+        width: 100%;
+        display: block;
+        bottom: 0;
+        background-color: $main-text-color;
+        border-radius: 3px;
+        color: $main-text-color;
+
+        @include on-tablet {
+          height: 3px;
+        }
+      }
+    }
+
+    &:hover .buttonLink__icon {
+      transform: scale(1.2);
+      transition: transform 0.5s;
+    }
+  }
+
+  &__text {
+    line-height: 100%;
+  }
+
+  &:has(.buttonLink__icon--heart-active) {
+    border: 1px solid $main-text-color;
+  }
+
+  &__icon {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    transition: transform 0.5s;
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--num {
+      @include hover(transform, scale(1));
+    }
+
+    &--cart {
+      background-image: url(./../../../assets/icons/cart.svg);
+    }
+
+    &--heart {
+      background-image: url(./../../../assets/icons/heart.svg);
+    }
+
+    &--home {
+      background-image: url(./../../../assets/icons/home.svg);
+    }
+
+    &--left {
+      background-image: url(./../../../assets/icons/left.svg);
+    }
+
+    &--right {
+      background-image: url(./../../../assets/icons/right.svg);
+    }
+
+    &--disactive {
+      transition: filter 1s;
+      filter: invert(75%) sepia(12%) saturate(170%) hue-rotate(161deg) brightness(99%) contrast(88%);
+    }
+  }
+}

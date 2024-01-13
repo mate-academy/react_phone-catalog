@@ -1,0 +1,173 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid $shadow-color;
+  grid-column: span 1;
+  max-width: 250px;
+
+  @include on-tablet {
+    max-width: 350px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-text-color;
+  }
+
+  &__image-container {
+    margin: 20px 20px 0;
+    height: inherit;
+    width: inherit;
+
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      margin: 20px 20px 0;
+    }
+
+    @include on-desktop {
+      margin: 32px 32px 0;
+    }
+  };
+
+  &__image {
+    height: 100%;
+    transition: transform 800ms;
+    min-height: 160px;
+    max-height: 170px;
+    object-fit: contain;
+
+    @include on-tablet {
+      max-height: 130px;
+    }
+
+    @include on-big-desktop {
+      max-height: 208px;
+    }
+
+    @include on-biggest {
+      max-height: 270px;
+    }
+  };
+
+  &__content {
+    margin-inline: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include on-tablet {
+      margin-inline: 15px;
+    }
+
+    @include on-desktop {
+      margin-inline: 24px;
+    }
+  }
+
+  &__name-container {
+    margin-top: 24px;
+    display: flex;
+    align-content: flex-start
+  }
+
+  &__name {
+    @extend %body-text;
+
+    min-height: 30px;
+    max-width: 180px;
+
+    @include on-tablet {
+      min-height: 48px;
+    }
+
+    @include on-biggest {
+      max-width: 250px;
+    }
+  };
+
+  &__prices {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+
+    @include on-desktop {
+      margin-top: 0;
+    }
+  };
+
+  &__price {
+    font-weight: 600;
+    font-family: Mont-Semibold, $fallback-fonts;
+    font-size: 15px;
+    line-height: 1.4;
+
+    @include on-tablet {
+      font-size: 18px;
+    }
+
+    @include on-desktop {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1.4;
+    }
+  };
+
+  &__fullprice {
+    font-family: Mont-Regular, $fallback-fonts;
+    font-size: 15px;
+    color: $secondary-text-color;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 2px;
+    position: relative;
+
+    @include on-tablet {
+      font-size: 18px;
+    }
+
+    @include on-desktop {
+      font-size: 22px;
+    }
+  };
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__detail {
+    @extend %small-text;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__detail-name {
+    color: $secondary-text-color;
+  };
+
+  &__detail-model {
+    text-align: right;
+  };
+
+  &__buttons {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &:hover {
+    .productCard__image {
+      transition: transform 1s;
+    transform: scale(1.05);
+  }
+  }
+};

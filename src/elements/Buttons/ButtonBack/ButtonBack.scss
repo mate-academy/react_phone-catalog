@@ -1,0 +1,45 @@
+@import './../../../style/mixins';
+@import './../../../style/extends';
+
+.buttonBack {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: $main-bg-color;
+    width: fit-content;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+  &__icon {
+    background-image: url(./../../../assets/icons/left.svg);
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    transition: all 0.5s;
+    filter: invert(75%) sepia(12%) saturate(170%) hue-rotate(161deg) brightness(99%) contrast(88%);
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  &__text {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+    display: inline-block;
+    transition: all 0.5s;
+  }
+
+  &:hover .buttonBack__icon {
+    filter: none;
+  }
+
+  &:hover .buttonBack__text {
+    color: $main-text-color;
+  }
+}

@@ -1,0 +1,80 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.navBar {
+  padding-left: 10px;
+
+  @include on-tablet {
+    padding-left: 50px;
+  }
+
+  @include on-desktop {
+    padding-left: 64px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 30px;
+    height: fit-content;
+    margin-right: 10px;
+
+    @include on-tablet {
+      display: flex;
+      height: fit-content;
+      gap: 30px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    &--small {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+  &__link {
+    @extend %upper-case;
+    @include hover(color, $main-text-color);
+
+    text-decoration: none;
+    line-height: 100%;
+    display: block;
+    padding-block: 25px;
+    position: relative;
+
+    &.is-active {
+      &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        display: block;
+        bottom: -4px;
+        background-color: $main-text-color;
+        border-radius: 3px;
+        color: $main-text-color;
+
+        @include on-tablet {
+          bottom: 0;
+          height: 3px;
+        }
+      }
+    }
+
+    &--small {
+      font-size: 8px;
+      padding-block: 0;
+    }
+
+
+    @include on-tablet {
+      padding-block: 16px;
+    }
+
+    @include on-desktop {
+      padding-block: 25px;
+    }
+  }
+}

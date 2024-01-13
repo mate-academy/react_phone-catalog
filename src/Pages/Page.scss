@@ -1,0 +1,223 @@
+@import './../style/extends';
+@import './../style/mixins';
+
+.page {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 24;
+  }
+
+  &__section {
+    margin-top: 30px;
+    grid-column: span 2;
+
+    @include on-tablet {
+      margin-top: 50px;
+      grid-column: span 6;
+    }
+
+    @include on-desktop{
+      margin-top: 105px;
+      grid-column: span 24;
+    }
+
+
+    &--suggest {
+      margin-top: 60px;
+
+    }
+
+    &--cart {
+      margin-top: 0;
+    }
+
+    &--price-block {
+      border: 1px solid $shadow-color;
+      display: flex;
+      justify-content: center;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px;
+      gap: 15px;
+      width: 100%;
+
+      @include on-tablet {
+        padding: 15px;
+        gap: 15px;
+      }
+
+      @include on-desktop {
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+        gap: 24px;
+        height: fit-content;
+      }
+    }
+  }
+
+  &__title-h1 {
+    @extend %h1;
+
+    &--product {
+      margin-top: 10px;
+
+      @include on-tablet {
+        margin-top: 20px;
+      }
+
+      @include on-desktop {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__title-h2 {
+    @extend %h2;
+
+    margin-top: 30px;
+
+    @include on-tablet {
+      margin-top: 50px;
+    }
+
+    @include on-desktop{
+      margin-top: 105px;
+    }
+  }
+
+  &__backBtn {
+    margin-top: 15px;
+
+    @include on-tablet {
+      margin-top: 30px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__categiries {
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+
+    @include on-desktop {
+      margin-top: 24px;
+      column-gap: 16px;
+    }
+  }
+
+  &__picture-slider {
+    margin-top: 40px;
+  }
+
+  &__prodCount {
+    @extend %body-text;
+
+    margin-top: 8px;
+    color: $secondary-text-color;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+
+    @include on-tablet {
+      gap: 16px;
+      margin-top: 40px;
+    }
+  }
+
+  &__search {
+    height: fit-content;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    flex-direction: column-reverse;
+    gap: 8px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__carts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__total-price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 800px;
+    width: max-content;
+  }
+
+  &__total-price {
+    @extend %h1;
+  }
+
+  &__total-price-text {
+    @extend %body-text;
+
+    width: max-content;
+    color: $secondary-text-color;
+  }
+
+  &__checkout {
+    width: 50%;
+    height: 48px;
+    background-color: $main-text-color;
+    color: $main-bg-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @extend %body-text;
+
+    @include on-desktop {
+      width: 100%;
+      height: 48px;
+    }
+
+    @include on-big-desktop {
+      width: 320px;
+      height: 48px;
+    }
+
+    @include on-biggest {
+      max-width: 500px;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $shadow-color;
+  }
+};

@@ -1,0 +1,29 @@
+@import './../../style/extends';
+@import './../../style/mixins';
+
+.category {
+  grid-column: span 1;
+  text-decoration: none;
+
+  &__img {
+    width: 100%;
+    transition: transform 300ms;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__title {
+    text-decoration: none;
+    color: $main-text-color;
+
+    @extend %h3;
+  }
+
+  &__count {
+    color: $secondary-text-color;
+
+    @extend %body-text;
+  }
+}

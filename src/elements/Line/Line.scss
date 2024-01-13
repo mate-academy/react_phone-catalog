@@ -1,0 +1,27 @@
+@import './../../style/mixins';
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $shadow-color;
+
+  &--hidden {
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
+  }
+
+  &--revert {
+    height: 100%;
+    width: 1px;
+
+    @include on-desktop {
+      height: 1px;
+      width: 100%;
+    }
+  }
+}

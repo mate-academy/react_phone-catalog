@@ -1,0 +1,46 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: $main-bg-color;
+  z-index: 1000;
+
+  &__content {
+    @include inline-padding-control;
+
+    display: flex;
+    justify-content: space-between;
+    height: 55px;
+    box-shadow: 0 -1px 0 0 $border-color;
+    align-items: center;
+
+    @include on-tablet {
+      height: 70px;
+    }
+
+    @include on-desktop {
+      height: 96px;
+    }
+  }
+
+  &__toTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__p {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  }
+
+  &__logo {
+    @extend %logo;
+  }
+}

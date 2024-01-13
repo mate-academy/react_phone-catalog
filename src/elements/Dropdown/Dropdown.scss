@@ -1,0 +1,102 @@
+@import './../../style/extends';
+@import './../../style/mixins';
+
+.dropdown {
+  position: relative;
+
+  &__category {
+    @extend %small-text;
+
+    color: $secondary-text-color;
+  };
+
+  &__button {
+    @extend %body-text;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+    height: 40px;
+    border: 1px solid $border-color;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%;
+
+    &--sort {
+      min-width: 140px;
+    }
+
+    @include on-desktop {
+      &--sort {
+        width: 176px;
+      }
+
+      &--pages {
+        width: 128px;
+      }
+    }
+  };
+
+  &__list {
+    @extend %body-text;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    z-index: 3;
+    top: 60px;
+    border: 1px solid $shadow-color;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+
+    background-color: #fff;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  };
+
+  &__icon {
+    display: block;
+    background-size:contain;
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+    margin: 12px;
+
+    @include hover(transform, scale(1.1));
+
+    @include on-desktop {
+      height: 16px;
+      width: 16px;
+    }
+
+    &--down {
+      background-image: url(./../../assets/icons/down.svg);
+    }
+
+    &--up {
+      background-image: url(./../../assets/icons/up.svg);
+    }
+  }
+
+  &__item {
+    padding-left: 12px;
+    display: inline-block;
+  };
+
+  &__link {
+    text-decoration: none;
+    color: $secondary-text-color;
+    line-height: 32px;
+    display: block;
+
+    @include hover(color, $main-text-color);
+  }
+
+  &__option {
+    color: $main-text-color;
+  }
+}

@@ -1,0 +1,55 @@
+@import './../../style/extends';
+
+.details {
+  &__title {
+    @extend %h1;
+
+    margin-top: 16px;
+  }
+
+  &__title-h2 {
+    @extend %h2;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+
+    @include on-tablet {
+      gap: 30px;
+      margin-top: 40px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include on-desktop {
+      gap: 65px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 320px;
+
+    @include on-tablet {
+      gap: 15px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    @include on-biggest {
+      max-width: 550px;;
+    }
+
+    &--images {
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+};

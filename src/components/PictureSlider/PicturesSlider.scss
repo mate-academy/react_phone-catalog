@@ -1,0 +1,58 @@
+@import './../../style/mixins';
+
+.picture-slider {
+  grid-column: span 1;
+  height: 100%;
+
+  &__content {
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: 1fr 21fr 1fr;
+  }
+
+  &__slides {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__img {
+    width: inherit;
+  }
+}
+
+
+:root .mySwiper {
+  grid-column: span 1;
+  width: 100%;
+  padding-bottom: 20px;
+
+  .swiper-pagination {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 3px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: #000;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 0;
+
+      @include on-tablet {
+        width: 15px;
+        height: 5px;
+      }
+
+      &-active {
+        background-color: $main-text-color;
+      }
+    }
+  }
+}

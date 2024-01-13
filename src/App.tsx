@@ -1,7 +1,12 @@
-import './App.scss';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Root } from './Root';
+import { persistor, store } from './store/store';
 
 export const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Root />
+    </PersistGate>
+  </Provider>
 );

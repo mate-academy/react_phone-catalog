@@ -1,1 +1,26 @@
-// not empty
+@import './style/mixins';
+@import './style/reset';
+@import './style/extends';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 100px;
+
+  @include on-tablet {
+    padding-bottom: 120px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 200px;
+  }
+
+  &__main {
+    @include inline-padding-control;
+    @include page-grid;
+    @extend %main-style;
+
+    scroll-behavior: smooth;
+  }
+}

@@ -1,0 +1,41 @@
+@import './../../style/mixins';
+@import './../../style/extends';
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 8px;
+  box-shadow: -1px 0 0 0 $shadow-color;
+
+  @include on-tablet {
+    padding-left: 24px;
+    width: 327px;
+    height: 100%;
+    box-shadow: -1px 0 0 0 $shadow-color;
+    border: none;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: $secondary-text-color;
+
+      @extend %small-text;
+    }
+  }
+
+  &__button.main{
+    width: 64px;
+    height: 64px;
+  }
+
+  &__link {
+    height: 64px;
+    width: 64px;
+  }
+}
