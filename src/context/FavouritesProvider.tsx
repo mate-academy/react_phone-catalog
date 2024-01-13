@@ -4,6 +4,7 @@ import React, {
   useReducer,
   ReactNode,
   Dispatch,
+  useEffect,
 } from 'react';
 
 import {
@@ -12,10 +13,6 @@ import {
   FavouritesContextType,
   Product,
 } from '../types/Product';
-
-const initialState: FavouritesState = {
-  favourites: [],
-};
 
 const FavouritesContext = createContext<
 { state: FavouritesState; dispatch: Dispatch<FavouritesAction> } | undefined
@@ -46,10 +43,22 @@ const favouritesReducer = (
 export const FavouritesProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  const getInitialStateFromLocalStorage = (): FavouritesState => {
+    const storedFavourites = localStorage.getItem('favourites');
+
+    return {
+      favourites: storedFavourites ? JSON.parse(storedFavourites) : [],
+    };
+  };
+
   const [state, dispatch] = useReducer(
     favouritesReducer,
-    initialState,
+    getInitialStateFromLocalStorage(),
   );
+
+  useEffect(() => {
+    localStorage.setItem('favourites', JSON.stringify(state.favourites));
+  }, [state.favourites]);
 
   return (
     <FavouritesContext.Provider
@@ -69,10 +78,12 @@ export const useFavourites = (): FavouritesContextType => {
 
   const { state, dispatch } = context;
 
+  const handleAddToFav = (product: Product) => {
+    dispatch({ type: 'ADD_TO_FAV', payload: product });
+  };
+
   return {
     favourites: state.favourites,
-    handleAddToFav: (product: Product) => {
-      dispatch({ type: 'ADD_TO_FAV', payload: product });
-    },
+    handleAddToFav,
   };
 };

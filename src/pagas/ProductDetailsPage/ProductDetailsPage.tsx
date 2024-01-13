@@ -261,7 +261,8 @@ export const ProductDetailsPage = () => {
                           RAM
                         </p>
                         <p className="ProductDetailsPage__more-tech-value">
-                          {product?.storage.ram}
+                          {product?.storage.ram
+                            ? product.storage.ram : '-'}
                         </p>
                       </div>
                       <div className="ProductDetailsPage__more-tech-wrap">
@@ -269,7 +270,8 @@ export const ProductDetailsPage = () => {
                           Built in memory
                         </p>
                         <p className="ProductDetailsPage__more-tech-value">
-                          {product?.storage.flash}
+                          {product?.storage.flash
+                            ? product.storage.flash : '-'}
                         </p>
                       </div>
                       <div className="ProductDetailsPage__more-tech-wrap">
@@ -277,7 +279,8 @@ export const ProductDetailsPage = () => {
                           Camera
                         </p>
                         <p className="ProductDetailsPage__more-tech-value">
-                          {product?.camera.primary}
+                          {product?.camera.primary
+                            ? product.camera.primary : '-'}
                         </p>
                       </div>
 

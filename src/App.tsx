@@ -4,10 +4,10 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Product } from './types/Product';
 import { getProducts } from './helpers/fetchClient';
-
-import './App.scss';
 import { CartProvider } from './context/CartProvider';
 import { FavouritesProvider } from './context/FavouritesProvider';
+
+import './App.scss';
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([]);
