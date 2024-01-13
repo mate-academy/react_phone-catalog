@@ -57,7 +57,7 @@
 
       &--photo {
         @extend %bacground-position;
-        
+
         display: inline-block;
         height: var(--height);
         width: var(--width);
@@ -67,11 +67,11 @@
         }
 
         &-2 {
-          background-image: url(../../../public/img/Banner.png);
+          background-image: url(../../../public/img/Banner2.png);
         }
 
         &-3 {
-          background-image: url(../../../public/img/Banner.png);
+          background-image: url(../../../public/img/Banner3.png);
         }
       }
     }

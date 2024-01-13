@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ProductsContext } from '../components/ProductsContext';
 
-export const Bag: React.FC = () => {
+export const CartPage: React.FC = () => {
   const { search } = useLocation();
   const {
     products, cartIds, increase, decrease, deleteId,
@@ -20,6 +20,7 @@ export const Bag: React.FC = () => {
     return 0;
   };
 
+  const [showMessage, setShowMessage] = useState(false);
   const totalCount = cartIds.map(arr => arr[1]).reduce((sum, cur) => sum + cur, 0);
   const total = cartIds.map(arr => arr[1] * (bagProducts.find(p => p.id === arr[0])?.price || 0)).reduce((sum, cur) => sum + cur);
 
@@ -49,6 +50,7 @@ export const Bag: React.FC = () => {
             <div key={product.id} className="bag__card">
               <button
                 className="bag__card-delete"
+                data-cy="cartDeleteButton"
                 type="button"
                 aria-label="delete"
                 onClick={() => deleteId(product.id)}
@@ -60,7 +62,7 @@ export const Bag: React.FC = () => {
 
               <Link
                 className="link"
-                to={{ pathname: `/${product.type}s/${product.id}`, search }}
+                to={{ pathname: `/${product.type}s/product/${product.id}`, search }}
               >
                 <img
                   src={product.imageUrl}
@@ -71,7 +73,7 @@ export const Bag: React.FC = () => {
 
               <Link
                 className="bag__card-title link"
-                to={{ pathname: `/${product.type}s/${product.id}`, search }}
+                to={{ pathname: `/${product.type}s/product/${product.id}`, search }}
               >
                 {product.name}
               </Link>
@@ -111,7 +113,7 @@ export const Bag: React.FC = () => {
 
         </div>
         <div className="bag__checkout">
-          <h1 className="bag__checkout-price">{`$${total}`}</h1>
+          <h1 className="bag__checkout-price" data-cy="productQauntity">{`$${total}`}</h1>
           <p className="bag__checkout-subtext">
             {`Total for ${totalCount} items`}
           </p>
@@ -119,9 +121,12 @@ export const Bag: React.FC = () => {
           <button
             className="bag__checkout-button"
             type="button"
+            onClick={() => setShowMessage(!showMessage)}
           >
             Checkout
           </button>
+
+          <h2 hidden={showMessage}>We are sorry, but this feature is not implemented yet</h2>
 
         </div>
       </div>

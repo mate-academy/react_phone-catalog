@@ -1,14 +1,15 @@
 /* eslint-disable max-len */
 import { useContext, useState } from 'react';
-import { Card } from './card';
+import { ProductCard } from './ProductCard';
 import { Filter } from '../types/filter';
 import { ProductsContext } from './ProductsContext';
+import { Loader } from './Loader';
 
 type Props = {
   filter: Filter;
 };
 
-export const FourItems: React.FC<Props> = ({ filter }) => {
+export const ProductsSlider: React.FC<Props> = ({ filter }) => {
   const { products, isLoading, errorMessage } = useContext(ProductsContext);
   const [curPage, setCurPage] = useState(1);
   const filteredProds = products.filter(p => {
@@ -17,11 +18,15 @@ export const FourItems: React.FC<Props> = ({ filter }) => {
       case Filter.discount:
         return p.discount;
       case Filter.new:
-        return p.age === 1;
+        return !p.discount;
       default:
         return true;
     }
   });
+
+  if (filter === Filter.discount) {
+    filteredProds.sort((a, b) => a.discount * a.price - b.discount * b.price);
+  }
 
   const numPages = Math.ceil(filteredProds.length / 4);
   const visibleProds = filteredProds.slice(
@@ -56,7 +61,7 @@ export const FourItems: React.FC<Props> = ({ filter }) => {
   }
 
   if (isLoading) {
-    return (<h1>Loading...</h1>);
+    return <Loader />;
   }
 
   return (
@@ -89,7 +94,7 @@ export const FourItems: React.FC<Props> = ({ filter }) => {
 
       <div className="pageSection__container">
         {visibleProds.map(product => (
-          <Card product={product} key={product.id} />
+          <ProductCard product={product} key={product.id} />
         ))}
       </div>
 

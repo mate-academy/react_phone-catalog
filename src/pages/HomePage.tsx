@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FourItems } from '../components/fourItems';
+import { ProductsSlider } from '../components/ProductsSlider';
 import { Filter } from '../types/filter';
 import { ProductsContext } from '../components/ProductsContext';
 
@@ -16,6 +16,8 @@ export const HomePage: React.FC = () => {
   function next() {
     setBanner(banner === 3 ? 1 : banner + 1);
   }
+
+  setInterval(next, 5000);
 
   return (
     <>
@@ -84,7 +86,7 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <FourItems filter={Filter.discount} />
+      <ProductsSlider filter={Filter.discount} />
 
       <div className="pageSection">
         <h1 className="pageSection__title">Shop by categories</h1>
@@ -138,7 +140,7 @@ export const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <FourItems filter={Filter.new} />
+      <ProductsSlider filter={Filter.new} />
     </>
   );
 };

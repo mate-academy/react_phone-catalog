@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import { useParams, useSearchParams } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Product } from '../types/Product';
-import { Card } from '../components/card';
+import { ProductCard } from '../components/ProductCard';
 import { Pagination } from '../components/Pagination';
 import { getSearchWith } from '../helpers/searchHelper';
 import { PathLine } from '../components/pathLine';
 import { ProductsContext } from '../components/ProductsContext';
+import { Loader } from '../components/Loader';
 
 export const Category: React.FC = () => {
   const {
@@ -20,20 +21,19 @@ export const Category: React.FC = () => {
     setSearchParams(search);
   }
 
-  const [perPage, setPerPage] = useState(4);
-
-  const savePage = (value: number) => {
-    setSearchWith({ page: value || null });
-  };
-
   const { category } = useParams();
   const path = category || 'phones';
   const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || '';
+  const perPage = +(searchParams.get('perPage') || 4);
   const currentPage = +(searchParams.get('page') || 1);
 
   function handleSortChange(event: React.ChangeEvent<HTMLSelectElement>) {
     setSearchWith({ sort: event.target.value || null });
+  }
+
+  function handlePerPageChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setSearchWith({ perPage: event.target.value || null, page: 1 });
   }
 
   const typifiedProds = products.filter(p => {
@@ -63,7 +63,7 @@ export const Category: React.FC = () => {
         case 'age':
         case 'price':
         case 'capacity':
-          return +b[sort] - +a[sort];
+          return +a[sort] - +b[sort];
         case 'ram':
           return +b[sort].slice(0, -2) - +a[sort].slice(0, -2);
 
@@ -95,7 +95,7 @@ export const Category: React.FC = () => {
   }
 
   if (isLoading) {
-    return (<h1>Loading...</h1>);
+    return <Loader />;
   }
 
   if (!['phones', 'tablets', 'accesories', 'favorites'].includes(path)) {
@@ -116,7 +116,7 @@ export const Category: React.FC = () => {
         {`${query ? visibleProds.length : typifiedProds.length} models`}
       </p>
 
-      <div className="category__products">
+      <div className="category__products" data-cy="productList">
         {(path !== 'favorites' && !query) && (
           <>
             <div className="category__selects">
@@ -138,8 +138,8 @@ export const Category: React.FC = () => {
               >
                 <option value="">Default</option>
                 <option value="age">Newest</option>
-                <option value="name">Name</option>
-                <option value="price">Price</option>
+                <option value="name">Alphabetically</option>
+                <option value="price">Cheapest</option>
                 <option value="capacity">Capasity</option>
                 <option value="ram">Ram</option>
               </select>
@@ -160,14 +160,12 @@ export const Category: React.FC = () => {
               <select
                 id="perPageSelector"
                 className="category__selects-select category__selects-select--pages"
-                onChange={event => {
-                  setPerPage(+event.target.value);
-                  savePage(1);
-                }}
+                onChange={handlePerPageChange}
               >
                 <option value="4">4</option>
                 <option value="8">8</option>
                 <option value="16">16</option>
+                <option value={total}>all</option>
               </select>
             </div>
           </>
@@ -177,7 +175,7 @@ export const Category: React.FC = () => {
           ? (
             <div className="pageSection__container">
               {visibleProds.map(product => (
-                <Card product={product} key={product.id} />
+                <ProductCard product={product} key={product.id} />
               ))}
             </div>
           )
@@ -186,7 +184,7 @@ export const Category: React.FC = () => {
               {
                 path === 'favorites'
                   ? 'Nothing in your favorites list yet, why not add something? 🙂'
-                  : 'There are no items matching the current search criteria'
+                  : `${path[0].toUpperCase() + path.slice(1)} not found`
               }
             </p>
           )}

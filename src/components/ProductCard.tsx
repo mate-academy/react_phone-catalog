@@ -6,17 +6,17 @@ import { ProductsContext } from './ProductsContext';
 
 type Props = { product: Product; };
 
-export const Card: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const { search } = useLocation();
   const {
     cartIds, favIds, addToCard, addToFavorite,
   } = useContext(ProductsContext);
 
   return (
-    <div className="card">
+    <div className="card" data-cy="cardsContainer">
       <Link
         className="link"
-        to={{ pathname: `/${product.type}s/${product.id}`, search }}
+        to={{ pathname: `/${product.type}s/product/${product.id}`, search }}
       >
         <img
           src={product.imageUrl}
@@ -25,7 +25,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         />
       </Link>
 
-      <Link className="card__title link" to={{ pathname: `/${product.type}s/${product.id}`, search }}>
+      <Link className="card__title link" to={{ pathname: `/${product.type}s/product/${product.id}`, search }}>
         {product.name}
       </Link>
       <h2 className="card__price">
@@ -70,6 +70,7 @@ export const Card: React.FC<Props> = ({ product }) => {
         <button
           type="button"
           className="card__buttons-favorite"
+          data-cy="addToFavorite"
           onClick={() => addToFavorite(product.id)}
         >
           {favIds.includes(product.id)

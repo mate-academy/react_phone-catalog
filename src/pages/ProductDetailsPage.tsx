@@ -4,11 +4,12 @@ import { useContext, useEffect, useState } from 'react';
 import { PathLine } from '../components/pathLine';
 import * as postServices from '../helpers/products';
 import { Item } from '../types/Item';
-import { FourItems } from '../components/fourItems';
+import { ProductsSlider } from '../components/ProductsSlider';
 import { Filter } from '../types/filter';
 import { ProductsContext } from '../components/ProductsContext';
+import { Loader } from '../components/Loader';
 
-export const ItemCard: React.FC = () => {
+export const ProductDetailsPage: React.FC = () => {
   const {
     products, isLoading, errorMessage, cartIds,
     favIds, addToCard, addToFavorite,
@@ -40,7 +41,7 @@ export const ItemCard: React.FC = () => {
   }
 
   if (isLoading || isLoadingItem) {
-    return (<h1>Loading...</h1>);
+    return <Loader />;
   }
 
   return (
@@ -63,7 +64,7 @@ export const ItemCard: React.FC = () => {
         </h1>
       </div>
 
-      <div className="grid">
+      <div className="grid" data-cy="productDescription">
         <div className="grid__item-1-2">
           <div className="item__container">
             <img className="item__img" src={item?.images[1]} alt={item?.images[1]} />
@@ -278,7 +279,7 @@ export const ItemCard: React.FC = () => {
         </div>
       </div>
 
-      <FourItems filter={Filter.discount} />
+      <ProductsSlider filter={Filter.discount} />
     </>
   );
 };

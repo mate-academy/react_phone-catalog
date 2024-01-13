@@ -29,13 +29,14 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <ul className="pagination">
+    <ul className="pagination" data-cy="pagination">
       <li className={+currentPage === 1
         ? 'pagination-item disabled'
         : 'pagination-item'}
       >
         <button
           className="pagination__link pagination__link--arrow"
+          data-cy="paginationLeft"
           type="button"
           disabled={currentPage === 1}
           onClick={() => {
@@ -73,6 +74,7 @@ export const Pagination: React.FC<Props> = ({
       >
         <button
           className="pagination__link pagination__link--arrow"
+          data-cy="paginationRight"
           type="button"
           aria-label="next"
           disabled={currentPage === numPages}

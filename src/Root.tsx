@@ -7,8 +7,8 @@ import './App.scss';
 import { HomePage } from './pages/HomePage';
 import { App } from './App';
 import { Category } from './pages/Category';
-import { ItemCard } from './pages/ItemCard';
-import { Bag } from './pages/bag';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { CartPage } from './pages/CartPage';
 
 export const Root = () => {
   return (
@@ -20,20 +20,20 @@ export const Root = () => {
 
           <Route path=":category">
             <Route index element={(<Category />)} />
-            <Route path="bag">
-              <Route index element={(<Bag />)} />
+            <Route path="CartPage">
+              <Route index element={(<CartPage />)} />
             </Route>
 
-            <Route path=":productId">
-              <Route index element={(<ItemCard />)} />
-              <Route path="bag">
-                <Route index element={(<Bag />)} />
+            <Route path="product/:productId">
+              <Route index element={(<ProductDetailsPage />)} />
+              <Route path="CartPage">
+                <Route index element={(<CartPage />)} />
               </Route>
             </Route>
           </Route>
 
-          <Route path="bag">
-            <Route index element={(<Bag />)} />
+          <Route path="CartPage">
+            <Route index element={(<CartPage />)} />
           </Route>
 
           <Route

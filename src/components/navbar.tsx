@@ -20,14 +20,14 @@ export const Navbar: React.FC = () => {
 
   const bagPathname = () => {
     if (pathname === '/') {
-      return 'bag';
+      return 'CartPage';
     }
 
-    if (pathname.includes('bag')) {
+    if (pathname.includes('CartPage')) {
       return pathname;
     }
 
-    return `${pathname}/bag`;
+    return `${pathname}/CartPage`;
   };
 
   function setSearchWith(params: any) {
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
       </NavLink>
 
       {pathname !== '/bag' && (
-        <div className="navbar__links">
+        <div className="navbar__links" data-cy="categoryLinksContainer">
           <NavLink to="/" className={getLinkClass}>
             Home
           </NavLink>
