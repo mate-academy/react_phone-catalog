@@ -8,6 +8,8 @@ export const CartPage: React.FC = () => {
   const { cartedProducts, count } = useAppSelector(state => state.cart);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  const items = Object.values(count).reduce((acc, item) => acc + +item, 0);
+
   const getTotalPrice = () => {
     const newTotalPrice = cartedProducts
       .reduce((acc, prod) => {
@@ -46,7 +48,7 @@ export const CartPage: React.FC = () => {
                 <p className="page__total-price">
                   {`$${totalPrice || 0}`}
                 </p>
-                <p className="page__total-price-text">{cartedProducts.length > 1 ? `Total for ${cartedProducts.length} items` : 'Total for 1 item'}</p>
+                <p className="page__total-price-text">{items > 1 ? `Total for ${items} items` : 'Total for 1 item'}</p>
               </div>
 
               <Line revert />

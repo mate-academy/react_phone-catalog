@@ -18,6 +18,8 @@ export const Header: React.FC = () => {
     || 'accessories'
     || 'favorites';
   const shouldSearch = pathname.endsWith(pages);
+  const { count } = useAppSelector(state => state.cart);
+  const items = Object.values(count).reduce((acc, item) => acc + +item, 0);
 
   const headerLinks = ['home', 'phones', 'tablets', 'accessories'];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,7 +88,7 @@ export const Header: React.FC = () => {
             />
 
             {cartedProducts.length > 0 && (
-              <div className="header__counter">{cartedProducts.length}</div>
+              <div className="header__counter">{items}</div>
             )}
           </div>
         </div>
