@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   background: $white-color;
-  box-shadow: 0px 1px 0px 0px $elements-color;
+  box-shadow: 0 1px 0 0 $elements-color;
 
   &__left {
     display: flex;
@@ -33,12 +33,14 @@
     padding: 23px 150px 23px 24px;
     border: none;
     outline: none;
+
     @extend %button;
 
     color: $main-color;
     line-height: 18px;
 
-    box-shadow: -1px 0px 0px 0px $elements-color;
+    box-shadow: -1px 0 0 0 $elements-color;
+
     @include hover(background-color, $bg-and-hover-color);
 
     &:focus {
@@ -47,6 +49,7 @@
 
     &::placeholder {
       @extend %body-text;
+
       color: $icons-color;
     }
   }
@@ -55,7 +58,7 @@
     position: relative;
     z-index: 1;
     padding: 24px;
-    box-shadow: -1px 0px 0px 0px $elements-color;
+    box-shadow: -1px 0 0 0 $elements-color;
 
     @include hover(background-color, $bg-and-hover-color);
 
@@ -69,7 +72,7 @@
   &__cart {
     position: relative;
     padding: 24px;
-    box-shadow: -1px 0px 0px 0px $elements-color;
+    box-shadow: -1px 0 0 0 $elements-color;
 
     @include hover(background-color, $bg-and-hover-color);
 

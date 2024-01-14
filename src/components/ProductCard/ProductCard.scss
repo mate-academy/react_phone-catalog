@@ -24,7 +24,9 @@
   &__model {
     width: 224px;
     margin-bottom: 8px;
+
     @extend %body-text;
+
     height: 42px;
   }
 
@@ -41,8 +43,8 @@
   }
 
   &__discount {
-    color: var(--Gray-Secondary, #89939A);
-    font-family: Mont-Regular;
+    color: $secondary-color;
+    font-family: Mont-Regular, sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
@@ -62,7 +64,7 @@
       justify-content: space-between;
       align-items: center;
 
-      font-family: Mont-SemiBold;
+      font-family: Mont-SemiBold, sans-serif;
       font-size: 12px;
       font-style: normal;
       font-weight: 600;
@@ -82,10 +84,12 @@
   &__button {
     width: 176px;
     background-color: $main-color;
+
     @extend %button;
+
     padding-block: 10px 9px;
 
-    @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.26));
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
   }
 
   &__favourites {

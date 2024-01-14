@@ -7,10 +7,9 @@
   &__top {
     display: flex;
     justify-content: space-between;
-  }
 
-  &__top {
     @extend %h1;
+
     margin-bottom: 24px;
   }
 

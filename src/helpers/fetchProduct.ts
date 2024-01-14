@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line import/no-cycle
-
 import { BASE_URL } from '../api/api';
 
 function wait(delay: number) {

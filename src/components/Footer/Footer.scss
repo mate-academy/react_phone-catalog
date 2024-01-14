@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
 
-  box-shadow: 0px -1px 0px 0px $elements-color;
+  box-shadow: 0 -1px 0 0 $elements-color;
 
   &__left {
     margin-left: 152px;
@@ -27,6 +27,7 @@
 
   &__link {
     padding-block: 43px 42px;
+
     @extend %upper-case;
     @include hover(color, $main-color);
   }
@@ -42,9 +43,8 @@
   gap: 16px;
   background-color: $white-color;
 
-
   &__message {
-    font-family: Mont-SemiBold;
+    font-family: Mont-SemiBold, sans-serif;
     color: $secondary-color;
     font-size: 12px;
     font-style: normal;
