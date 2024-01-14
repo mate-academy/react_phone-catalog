@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
 
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const setAppliedQuery = (e: string) => setSearchWith({ query: e || null });
-  const applyQuery = useCallback(debounce(setAppliedQuery, 1000), []);
+  const applyQuery = useCallback(debounce(setAppliedQuery, 700), [setAppliedQuery]);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
