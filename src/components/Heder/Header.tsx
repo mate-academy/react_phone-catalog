@@ -1,9 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import './header.scss';
+import { useContext } from 'react';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
+import { MainContext } from '../../context';
 
 export const Header = () => {
+  const {
+    currentPage,
+  } = useContext(MainContext);
+
   return (
     <header className="header">
       <div className="header__nav">
@@ -54,7 +60,7 @@ export const Header = () => {
         </nav>
       </div>
       <div className="header__actions">
-        <Search />
+        {currentPage !== 'Home' && <Search />}
         <div className="actions__block">
           <NavLink to="/favorites" className="favourites__icon icon" />
         </div>

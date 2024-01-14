@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Slider } from '../../components/Slider';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { Promo } from '../../components/Promo';
@@ -10,8 +10,13 @@ import { MainContext } from '../../context';
 
 export const HomePage = () => {
   const {
+    setCurrentPage,
     products,
   } = useContext(MainContext);
+
+  useEffect(() => {
+    setCurrentPage('Home');
+  }, []);
 
   return (
     <>
