@@ -4,10 +4,16 @@ import { Link, useLocation } from 'react-router-dom';
 import { ProductsContext } from '../components/ProductsContext';
 
 export const CartPage: React.FC = () => {
+  const [hideMessage, setShowMessage] = useState(true);
   const { search } = useLocation();
   const {
     products, cartIds, increase, decrease, deleteId,
   } = useContext(ProductsContext);
+
+  if (!cartIds) {
+    return <h1>Nothing in your cart, why not add something? 🙂</h1>;
+  }
+
   const bagProducts = products.filter(p => cartIds.map(arr => arr[0]).includes(p.id));
 
   const count = (id: string) => {
@@ -20,13 +26,8 @@ export const CartPage: React.FC = () => {
     return 0;
   };
 
-  const [showMessage, setShowMessage] = useState(false);
   const totalCount = cartIds.map(arr => arr[1]).reduce((sum, cur) => sum + cur, 0);
-  const total = cartIds.map(arr => arr[1] * (bagProducts.find(p => p.id === arr[0])?.price || 0)).reduce((sum, cur) => sum + cur);
-
-  if (bagProducts.length <= 0) {
-    return <h1>Nothing in your cart, why not add something? 🙂</h1>;
-  }
+  const total = cartIds.map(arr => arr[1] * (bagProducts.find(p => p.id === arr[0])?.price || 0)).reduce((sum, cur) => sum + cur, 0);
 
   return (
     <div className="bag">
@@ -121,12 +122,12 @@ export const CartPage: React.FC = () => {
           <button
             className="bag__checkout-button"
             type="button"
-            onClick={() => setShowMessage(!showMessage)}
+            onClick={() => setShowMessage(!hideMessage)}
           >
             Checkout
           </button>
 
-          <h2 hidden={showMessage}>We are sorry, but this feature is not implemented yet</h2>
+          <h2 hidden={hideMessage}>We are sorry, but this feature is not implemented yet</h2>
 
         </div>
       </div>

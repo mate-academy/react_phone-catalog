@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
+import debounce from 'lodash.debounce';
 import {
   NavLink, useLocation, useParams, useSearchParams,
 } from 'react-router-dom';
-import { useContext } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import { getSearchWith } from '../helpers/searchHelper';
 import { ProductsContext } from './ProductsContext';
 
@@ -16,7 +17,6 @@ export const Navbar: React.FC = () => {
   const { pathname, search } = useLocation();
   const { category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
 
   const bagPathname = () => {
     if (pathname === '/') {
@@ -36,15 +36,26 @@ export const Navbar: React.FC = () => {
     setSearchParams(s);
   }
 
-  function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchWith({ query: event.target.value || null });
-  }
-
   const {
     favIds, cartIds,
   } = useContext(ProductsContext);
 
   const totalCount = cartIds.map(arr => arr[1]).reduce((sum, cur) => sum + cur, 0);
+
+  // const query = searchParams.get('query') || '';
+
+  // const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchWith({ query: event.target.value });
+  // };
+
+  const [query, setQuery] = useState(searchParams.get('query') || '');
+  const setAppliedQuery = (e: string) => setSearchWith({ query: e || null });
+  const applyQuery = useCallback(debounce(setAppliedQuery, 1000), []);
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+    applyQuery(event.target.value);
+  };
 
   return (
     <nav className="navbar">
@@ -54,16 +65,16 @@ export const Navbar: React.FC = () => {
 
       {pathname !== '/bag' && (
         <div className="navbar__links" data-cy="categoryLinksContainer">
-          <NavLink to="/" className={getLinkClass}>
+          <NavLink to={{ pathname: '', search }} className={getLinkClass}>
             Home
           </NavLink>
-          <NavLink to="/phones" className={getLinkClass}>
+          <NavLink to={{ pathname: 'phones', search }} className={getLinkClass}>
             Phones
           </NavLink>
-          <NavLink to="/tablets" className={getLinkClass}>
+          <NavLink to={{ pathname: 'tablets', search }} className={getLinkClass}>
             Tablets
           </NavLink>
-          <NavLink to="/accesories" className={getLinkClass}>
+          <NavLink to={{ pathname: 'accesories', search }} className={getLinkClass}>
             Accesories
           </NavLink>
         </div>
@@ -83,7 +94,10 @@ export const Navbar: React.FC = () => {
               {query
                 ? (
                   <svg
-                    onClick={() => setSearchWith({ query: null })}
+                    onClick={() => {
+                      setSearchWith({ query: null });
+                      setQuery('');
+                    }}
                     className="navbar__search-svg"
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -99,10 +113,10 @@ export const Navbar: React.FC = () => {
           </>
         )}
 
-        <NavLink to="favorites" className={getLinkClass}>
+        <NavLink to={{ pathname: 'favorites', search }} className={getLinkClass}>
           <div className="navbar__icons">
             <img className="navbar__icons-svg" src="icons/favorites.svg" alt="favorite" />
-            {favIds.length && (
+            {favIds.length !== 0 && (
               <div className="navbar__icons-counter">
                 <span className="navbar__icons-counter--num">
                   {favIds.length}
@@ -118,7 +132,7 @@ export const Navbar: React.FC = () => {
         >
           <div className="navbar__icons">
             <img className="navbar__icons-svg" src="icons/bag.svg" alt="bag" />
-            {cartIds.length && (
+            {cartIds.length !== 0 && (
               <div className="navbar__icons-counter">
                 <span className="navbar__icons-counter--num">
                   {totalCount}

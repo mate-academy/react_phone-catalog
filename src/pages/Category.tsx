@@ -52,8 +52,6 @@ export const Category: React.FC = () => {
       result = typifiedProds.filter(
         (p: Product) => (p.name.toLowerCase()
           .includes(query.toLowerCase())
-          || p.snippet.toLowerCase()
-            .includes(query.toLowerCase())
         ),
       );
     }
@@ -85,6 +83,14 @@ export const Category: React.FC = () => {
   if (end - 1 > total) {
     end = total;
   }
+
+  // const visibleProds = useMemo(() => {
+  //   if (path === 'favorites' || query) {
+  //     return getPreparedProds();
+  //   }
+
+  //   return getPreparedProds().slice(start, end);
+  // }, [query]);
 
   const visibleProds = path === 'favorites' || query
     ? getPreparedProds()
