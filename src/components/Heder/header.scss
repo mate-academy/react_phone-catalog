@@ -18,14 +18,13 @@
 
 .header__actions {
   display: flex;
-  box-shadow: 0 0 0 1px #e2e6e9;
 }
 
 .actions__block {
   padding: 24px;
   width: 64px;
   height: 64px;
-  box-shadow: 1px 0 0 0 #e2e6e9;
+  box-shadow: 0 0 0 0.5px #e2e6e9;
 }
 
 .cart__icon {

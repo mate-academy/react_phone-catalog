@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './header.scss';
 import { Logo } from '../Logo';
+import { Search } from '../Search';
 
 export const Header = () => {
   return (
@@ -53,6 +54,7 @@ export const Header = () => {
         </nav>
       </div>
       <div className="header__actions">
+        <Search />
         <div className="actions__block">
           <NavLink to="/favorites" className="favourites__icon icon" />
         </div>

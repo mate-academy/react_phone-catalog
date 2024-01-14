@@ -1,0 +1,22 @@
+.header__search {
+  position: relative;
+  padding: 0 169px 0 24px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 0 1px #e2e6e9;
+}
+
+.header__input::placeholder {
+  color: #b4bdc3;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.search__icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: 24px;
+  background-image: url("../../assets/img/icons/search.svg");
+}
