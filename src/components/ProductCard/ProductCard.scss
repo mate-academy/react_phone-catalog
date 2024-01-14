@@ -1,0 +1,98 @@
+@import "../../styles/main";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  padding: 32px 24px 24px;
+  border: 1px solid $elements-color;
+
+  max-width: 272px;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  &__image-phone {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+  }
+
+  &__model {
+    width: 224px;
+    margin-bottom: 8px;
+    @extend %body-text;
+    height: 42px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $elements-color ;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__discount {
+    color: var(--Gray-Secondary, #89939A);
+    font-family: Mont-Regular;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: line-through;
+  }
+
+  &__about {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    margin-bottom: 16px;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-family: Mont-SemiBold;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    &-name {
+      color: $secondary-color;
+    }
+  }
+
+  &__buttom {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 176px;
+    background-color: $main-color;
+    @extend %button;
+    padding-block: 10px 9px;
+
+    @include hover(box-shadow, 0px 3px 13px 0px rgba(23, 32, 49, 0.26));
+  }
+
+  &__favourites {
+    padding: 12px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    @include hover(border-color, $main-color);
+  }
+}

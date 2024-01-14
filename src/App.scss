@@ -1,1 +1,19 @@
-// not empty
+@import "./styles/main";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+
+  &__container {
+    width: 100%;
+    max-width: 1136px;
+  }
+}

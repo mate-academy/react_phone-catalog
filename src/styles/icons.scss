@@ -1,0 +1,27 @@
+.icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &-favourites {
+    background-image: url('../assets/icons/favourites.svg');
+  }
+
+  &-cart {
+    background-image: url('../assets/icons/cart.svg');
+  }
+
+  &-top {
+    background-image: url('../assets/icons/vector-up-main.svg');
+  }
+
+  &-prev {
+    background-image: url('../assets/icons/vector-left-main.svg');
+  }
+
+  &-next {
+    background-image: url('../assets/icons/vecrot-right-main.svg');
+  }
+}

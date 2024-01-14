@@ -1,0 +1,82 @@
+@import "../../styles/main";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: $white-color;
+  box-shadow: 0px 1px 0px 0px $elements-color;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-right: 64px;
+    margin-left: 24px;
+
+    &-img {
+      background-image: url('../../assets/icons/logo.svg');
+      width: 40px;
+      height: 24px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    display: block;
+    position: relative;
+    padding: 23px 150px 23px 24px;
+    border: none;
+    outline: none;
+    @extend %button;
+
+    color: $main-color;
+    line-height: 18px;
+
+    box-shadow: -1px 0px 0px 0px $elements-color;
+    @include hover(background-color, $bg-and-hover-color);
+
+    &:focus {
+      background: $bg-and-hover-color;
+    }
+
+    &::placeholder {
+      @extend %body-text;
+      color: $icons-color;
+    }
+  }
+
+  &__favourites {
+    position: relative;
+    z-index: 1;
+    padding: 24px;
+    box-shadow: -1px 0px 0px 0px $elements-color;
+
+    @include hover(background-color, $bg-and-hover-color);
+
+    &-is-active {
+      &::after {
+       @extend %active-line;
+      }
+    }
+  }
+
+  &__cart {
+    position: relative;
+    padding: 24px;
+    box-shadow: -1px 0px 0px 0px $elements-color;
+
+    @include hover(background-color, $bg-and-hover-color);
+
+    &-is-active {
+      &::after {
+       @extend %active-line;
+      }
+    }
+  }
+}

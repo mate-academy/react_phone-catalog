@@ -1,0 +1,61 @@
+@import "../../styles/main";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0px -1px 0px 0px $elements-color;
+
+  &__left {
+    margin-left: 152px;
+  }
+
+  &__logo {
+
+    &-img {
+      background-image: url('../../assets/icons/logo.svg');
+      width: 40px;
+      height: 24px;
+    }
+  }
+
+  &__center {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    padding-block: 43px 42px;
+    @extend %upper-case;
+    @include hover(color, $main-color);
+  }
+
+  &__right {
+    margin-right: 152px;
+  }
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: $white-color;
+
+
+  &__message {
+    font-family: Mont-SemiBold;
+    color: $secondary-color;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__button {
+    padding: 8px;
+    border: 1px solid $icons-color;
+
+    @include hover(border-color, $main-color);
+  }
+}
