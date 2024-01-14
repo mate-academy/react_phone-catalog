@@ -10,7 +10,7 @@ export const CartPage: React.FC = () => {
     products, cartIds, increase, decrease, deleteId,
   } = useContext(ProductsContext);
 
-  if (!cartIds) {
+  if (cartIds.length === 0) {
     return <h1>Nothing in your cart, why not add something? 🙂</h1>;
   }
 
@@ -116,7 +116,9 @@ export const CartPage: React.FC = () => {
         <div className="bag__checkout">
           <h1 className="bag__checkout-price" data-cy="productQauntity">{`$${total}`}</h1>
           <p className="bag__checkout-subtext">
-            {`Total for ${totalCount} items`}
+            {totalCount === 1
+              ? 'Total for 1 item'
+              : `Total for ${totalCount} items`}
           </p>
           <div className="card__line" />
           <button

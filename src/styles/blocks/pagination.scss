@@ -6,6 +6,7 @@
 
   &__link {
     @extend %buttons;
+    @extend %button;
 
     display: flex;
     justify-content: center;
@@ -32,7 +33,6 @@
 
   &-item {
     @extend %arrow-button;
-    @extend %button;
 
     position: relative;
 

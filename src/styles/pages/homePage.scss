@@ -77,6 +77,8 @@
     }
 
     &--button {
+      @extend %button;
+      
       box-sizing: border-box;
       display: inline-block;
       border: 1px solid $gray-icons-placeholders;

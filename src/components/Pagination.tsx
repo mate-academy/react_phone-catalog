@@ -38,7 +38,7 @@ export const Pagination: React.FC<Props> = ({
           className="pagination__link pagination__link--arrow"
           data-cy="paginationLeft"
           type="button"
-          disabled={currentPage === 1}
+          disabled={currentPage === 1 || numPages === 0}
           onClick={() => {
             return (+currentPage === 1
               ? null
@@ -77,7 +77,7 @@ export const Pagination: React.FC<Props> = ({
           data-cy="paginationRight"
           type="button"
           aria-label="next"
-          disabled={currentPage === numPages}
+          disabled={currentPage === numPages || numPages === 0}
           onClick={() => {
             return (currentPage === numPages
               ? null

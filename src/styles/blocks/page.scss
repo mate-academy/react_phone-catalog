@@ -28,6 +28,8 @@
     @extend %arrow-button;
     @extend %button;
 
+    cursor: pointer;
+
     &:first-child {
       margin-right: 15px;
     }

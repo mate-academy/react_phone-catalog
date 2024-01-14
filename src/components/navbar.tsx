@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
 
       {pathname !== '/bag' && (
         <div className="navbar__links" data-cy="categoryLinksContainer">
-          <NavLink to={{ pathname: '', search }} className={getLinkClass}>
+          <NavLink to={{ pathname: '/', search }} className={getLinkClass}>
             Home
           </NavLink>
           <NavLink to={{ pathname: 'phones', search }} className={getLinkClass}>
