@@ -42,12 +42,6 @@ export const Navbar: React.FC = () => {
 
   const totalCount = cartIds.map(arr => arr[1]).reduce((sum, cur) => sum + cur, 0);
 
-  // const query = searchParams.get('query') || '';
-
-  // const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearchWith({ query: event.target.value });
-  // };
-
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const setAppliedQuery = (e: string) => setSearchWith({ query: e || null });
   const applyQuery = useCallback(debounce(setAppliedQuery, 700), [setAppliedQuery]);

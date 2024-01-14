@@ -74,10 +74,6 @@
     border: 1px solid $gray-primary;
   }
 
-  &:hover:disabled {
-    border: 1px solid $gray-elements;;
-  }
-
   &:disabled {
     border: 1px solid $gray-elements;
 

@@ -84,14 +84,6 @@ export const Category: React.FC = () => {
     end = total;
   }
 
-  // const visibleProds = useMemo(() => {
-  //   if (path === 'favorites' || query) {
-  //     return getPreparedProds();
-  //   }
-
-  //   return getPreparedProds().slice(start, end);
-  // }, [query]);
-
   const visibleProds = path === 'favorites' || query
     ? getPreparedProds()
     : getPreparedProds().slice(start, end);
@@ -195,7 +187,7 @@ export const Category: React.FC = () => {
             </p>
           )}
 
-        {(path !== 'favorites' && !query) && (
+        {(path !== 'favorites' && !query && visibleProds.length !== 0) && (
           <Pagination
             total={total}
             perPage={perPage}
