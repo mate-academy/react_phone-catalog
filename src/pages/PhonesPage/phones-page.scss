@@ -1,28 +1,5 @@
 @import "../../styles/utils/vars";
 
-.phone__page {
-  height: max-content;
-  margin: 25px 0 80px;
-}
-
-.page__title {
-  margin-bottom: 8px;
-}
-
-.phones-range {
-  margin: 8px 0 40px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-}
-
-.path-box {
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .home__link {
   display: block;
   height: 16px;
@@ -67,8 +44,4 @@
     width: 128px;
     height: 40px;
   }
-}
-
-.phone-list__wrapper {
-  margin-bottom: 40px;
 }

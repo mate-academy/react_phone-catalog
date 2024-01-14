@@ -1,0 +1,16 @@
+@import "../../styles/utils/vars";
+
+.path-box {
+  margin: 25px 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.current-page__link {
+  color: $gray_primary;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

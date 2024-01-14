@@ -1,43 +1,24 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-
-import { Link } from 'react-router-dom';
 import './phones-page.scss';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { ProductsList } from '../../components/ProductsList';
-import { getProducts } from '../../services/getProducts';
-import { Product } from '../../types/Product';
-import { Pagination } from '../../components/Pagination/Pagination';
+// import { getProducts } from '../../services/getProducts';
+// import { Product } from '../../types/Product';
+import { Pagination } from '../../components/Pagination';
+import { PathBlock } from '../../components/PathBlock';
+import { MainContext } from '../../context';
 
 export const PhonesPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  const getProductsFromServer = async () => {
-    try {
-      const data = await getProducts();
-
-      setProducts(data);
-    } catch {
-      // eslint-disable-next-line no-console
-      console.warn('products loading error!');
-    }
-  };
-
-  useEffect(() => {
-    getProductsFromServer();
-  }, []);
+  const {
+    phones,
+  } = useContext(MainContext);
 
   return (
-    <div className="phone__page">
-      <div className="path-box">
-        <Link
-          to="/home"
-          className="home__link icon"
-        />
-        <div className="arrow-path icon" />
-        <p className="current-page">Phones</p>
-      </div>
+    <div className="product__page">
+      <PathBlock currentPage="Phones" />
       <h1 className="page__title">Mobile phones</h1>
-      <p className="phones-range">95 models</p>
+      <p className="products-range">{`${phones.length} models`}</p>
       <div className="selectors__wrapper">
         <div className="select__sort-by">
           <p className="selector__title">Sort by</p>
@@ -64,8 +45,8 @@ export const PhonesPage = () => {
           </select>
         </div>
       </div>
-      <div className="phone-list__wrapper">
-        <ProductsList products={products} />
+      <div className="product-list__wrapper">
+        <ProductsList products={phones} />
       </div>
       <Pagination />
     </div>
