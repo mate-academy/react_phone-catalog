@@ -41,6 +41,7 @@
     }
 
     &--active {
+      color: $black-c;
       border-bottom: 3px solid $black-c;
     }
   }
