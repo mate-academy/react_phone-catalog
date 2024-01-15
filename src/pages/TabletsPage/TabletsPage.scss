@@ -7,7 +7,7 @@
   margin-bottom: 80px;
 
   &__sort {
-    @include pageGrid;
+    @include page-grid;
 
     margin-top: 40px;
   }

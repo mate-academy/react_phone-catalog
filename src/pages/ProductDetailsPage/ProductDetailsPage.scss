@@ -26,7 +26,7 @@
   }
 
   &__main {
-    @include pageGrid;
+    @include page-grid;
 
     margin-top: 40px;
   }
@@ -264,7 +264,7 @@
   }
 
   &__bottom {
-    @include pageGrid;
+    @include page-grid;
 
     margin-top: 80px;
   }

@@ -16,7 +16,7 @@
   }
 
   &__content {
-    @include pageGrid;
+    @include page-grid;
 
     margin-top: 24px;
   }
