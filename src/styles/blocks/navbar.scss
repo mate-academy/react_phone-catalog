@@ -5,6 +5,10 @@
   padding-left: 24px;
   box-shadow: 0 1px 0 0 $gray-elements;
 
+  @media (min-width: 500px) and (max-width:640px) {
+    justify-content: space-between;
+  }
+
   &--footer {
     height: 96px;
     justify-content: center;
@@ -26,6 +30,11 @@
     margin-left: 128px;
     justify-content: space-between;
     align-items: center;
+
+    @media (min-width: 500px) and (max-width:640px) {
+      margin-left: 55px;
+    }
+
 
     &--footer {
       margin: 0;
@@ -57,6 +66,10 @@
     display: flex;
     flex-grow: 1;
     justify-content: right;
+
+    @media (min-width: 500px) and (max-width:640px) {
+      flex-grow: 0;
+    }
   }
 
   &__search {

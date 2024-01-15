@@ -30,11 +30,11 @@
     width: var(--width);
 
     &-line {
-      // left: 0;
+      right: 0;
 
       display: flex;
       position: relative;
-      transition: all ease 1s;
+      transition: 1s;
 
       &--1 {
         right: 0;
@@ -78,7 +78,7 @@
 
     &--button {
       @extend %button;
-      
+
       box-sizing: border-box;
       display: inline-block;
       border: 1px solid $gray-icons-placeholders;

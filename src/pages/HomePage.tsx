@@ -17,7 +17,12 @@ export const HomePage: React.FC = () => {
     setBanner(banner === 3 ? 1 : banner + 1);
   }
 
-  setInterval(next, 5000);
+  function nextWithInterval() {
+    next();
+    setTimeout(nextWithInterval, 5000);
+  }
+
+  setTimeout(nextWithInterval, 5000);
 
   return (
     <>

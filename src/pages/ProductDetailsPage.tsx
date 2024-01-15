@@ -208,8 +208,6 @@ export const ProductDetailsPage: React.FC = () => {
               <br />
               {item?.camera.features.join(' ')}
             </span>
-            <br />
-            <br />
           </div>
 
           <div className="card__info">
