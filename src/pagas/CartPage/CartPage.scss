@@ -98,6 +98,21 @@
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+    text-decoration: none;
+    color: #313237;
+
+    &:link {
+      text-decoration: none;
+    }
+    &:visited {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: none;
+    }
   }
 
   &__count {

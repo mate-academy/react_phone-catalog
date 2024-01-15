@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { ProductForCart } from '../../types/ProductForCart';
+import { useCart } from '../../context/CartProvider';
 
 import './CartPage.scss';
-import { useCart } from '../../context/CartProvider';
 
 export const CartPage = () => {
   const { cart, handleRemoveFromCart, updateQuantity } = useCart();
@@ -96,9 +97,14 @@ export const CartPage = () => {
                           className="cardItem__image"
                         />
                       )}
-                      <h2 className="cardItem__title">
-                        {product.product.name}
-                      </h2>
+                      <Link
+                        to={`/${product.product.type}s/${product.product.id}`}
+                        className="cardItem__title"
+                      >
+                        <h2 className="cardItem__title">
+                          {product.product.name}
+                        </h2>
+                      </Link>
                       <div className="cardItem__count">
                         <button
                           type="button"
