@@ -1,0 +1,32 @@
+@import "src/App";
+
+.search-bar {
+  width: 327px;
+  height: 64px;
+  box-shadow: -1px 0px 0px 0px $elements-grey-c;
+  box-sizing: border-box;
+  padding-inline: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--focus {
+    background-color: $hover-c;
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    color: $black-c;
+    font-size: 14px;
+    font-weight: 600;
+
+    &::placeholder {
+      color: $icons-grey-c;
+    }
+
+    &:focus {
+      background-color: $hover-c;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "src/App";
+
+.path-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+
+  &__part {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    color: $black-c;
+    font-family: 'Mont-SemiBold', serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__text {
+    color: $dark-grey-c;
+    font-family: 'Mont-SemiBold', serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

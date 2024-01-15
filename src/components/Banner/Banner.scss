@@ -1,0 +1,11 @@
+.banner {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__message {
+    font-family: 'Mont-Bold', serif;
+    font-size: 22px;
+  }
+}

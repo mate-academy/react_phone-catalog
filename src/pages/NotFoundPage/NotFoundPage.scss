@@ -1,0 +1,29 @@
+@import "src/App";
+
+.not-found-page {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-family: "Mont-Bold",sans-serif;
+    color: $black-c;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: .01em;
+  }
+
+  &__message {
+    font-family: "Mont-Bold",sans-serif;
+    color: $black-c;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 20px;
+  }
+
+  &__link {
+    color: $red-c;
+  }
+}

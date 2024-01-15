@@ -1,0 +1,11 @@
+@import "src/App";
+
+.product-list {
+  margin-top: 24px;
+  @include pageGrid;
+  row-gap: 40px;
+
+  &__item {
+    grid-column: span 6;
+  }
+}
