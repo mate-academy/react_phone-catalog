@@ -1,7 +1,7 @@
 @import "src/App";
 
 .footer {
-  box-shadow: 0px -1px 0px 0px $elements-grey-c;
+  box-shadow: 0 -1px 0 0 $elements-grey-c;
 
   &__content {
     display: flex;
@@ -24,7 +24,7 @@
 
   &__link {
     display: block;
-    font-family: 'Mont-Bold', serif;
+    font-family: Mont-Bold, serif;
     color: $dark-grey-c;
     font-size: 12px;
     font-weight: 700;
@@ -35,6 +35,12 @@
     &:hover {
       color: $black-c;
     }
+  }
+
+  &__label {
+    color: $dark-grey-c;
+    font-size: 12px;
+    font-weight: 600;
   }
 
   &__actions {
@@ -52,11 +58,5 @@
         border-color: $black-c;
       }
     }
-  }
-
-  &__label {
-    color: $dark-grey-c;
-    font-size: 12px;
-    font-weight: 600;
   }
 }

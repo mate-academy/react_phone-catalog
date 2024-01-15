@@ -1,11 +1,12 @@
 @import "src/App";
 
 .carousel {
-  @include pageGrid;
+  @include page-grid;
 
   &__content {
     grid-column: 1 / -1;
-    @include pageGrid;
+
+    @include page-grid;
   }
 
   &__list {

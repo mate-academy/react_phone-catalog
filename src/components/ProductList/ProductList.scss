@@ -1,8 +1,9 @@
 @import "src/App";
 
 .product-list {
+  @include page-grid;
+
   margin-top: 24px;
-  @include pageGrid;
   row-gap: 40px;
 
   &__item {

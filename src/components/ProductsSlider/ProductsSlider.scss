@@ -1,11 +1,12 @@
 @import "src/App";
 
 .slider {
-  @include pageGrid;
+  @include page-grid;
 
   &__top {
+    @include page-grid;
+
     grid-column: 1 / -1;
-    @include pageGrid;
     align-items: center;
   }
 
@@ -21,7 +22,7 @@
   &__header {
     grid-column: span 22;
     color: $black-c;
-    font-family: 'Mont-Bold', serif;
+    font-family: Mont-Bold, serif;
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.32px;

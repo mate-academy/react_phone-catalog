@@ -41,7 +41,7 @@
   }
 
   &__price {
-    font-family: 'Mont-Bold', serif;
+    font-family: Mont-Bold, serif;
     color: $black-c;
     font-size: 22px;
     font-weight: 700;
@@ -71,14 +71,14 @@
   }
 
   &__characteristic {
-    font-family: 'Mont-SemiBold', serif;
+    font-family: Mont-SemiBold, serif;
     color: $dark-grey-c;
     font-size: 12px;
     font-weight: 600;
   }
 
   &__value {
-    font-family: 'Mont-SemiBold', serif;
+    font-family: Mont-SemiBold, serif;
     color: $black-c;
     font-size: 12px;
     font-weight: 600;
@@ -95,7 +95,7 @@
     &--big {
       width: 100%;
       background-color: $black-c;
-      font-family: 'Mont-SemiBold', serif;
+      font-family: Mont-SemiBold, serif;
       display: flex;
       align-items: center;
       justify-content: center;

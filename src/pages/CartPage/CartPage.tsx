@@ -23,7 +23,7 @@ export const CartPage = () => {
           <div className="cart-page__content">
             <CartList />
             <div className="cart-page__total">
-              <h1 className="cart-page__title">{`$${totalPrice}`}</h1>
+              <h1 className="cart-page__total-title">{`$${totalPrice}`}</h1>
               <p className="cart-page__items">{`Total for ${cart.length} items`}</p>
 
               <div className="cart-page__line" />
