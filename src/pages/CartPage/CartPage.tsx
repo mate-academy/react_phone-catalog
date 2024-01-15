@@ -162,7 +162,7 @@ export const CartPage = () => {
                 { 'Total-block__error--visible': isCheckoutClicked },
               )}
             >
-              We are sorry, but this feature is not implement yet
+              We are sorry, but this feature is not implemented yet
             </p>
           </div>
         </div>
