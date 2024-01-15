@@ -123,10 +123,10 @@ export const PhonePage = () => {
                         </option>
                       ))}
                     </select>
-                    <img 
-                      src={ICONS.arrowDown} 
-                      alt="Arrow select" 
-                      className="dropdown__sorting--icon" 
+                    <img
+                      src={ICONS.arrowDown}
+                      alt="Arrow select"
+                      className="dropdown__sorting--icon"
                     />
                   </div>
                   <div className="dropdown dropdown--items-per-page">
@@ -142,10 +142,10 @@ export const PhonePage = () => {
                         </option>
                       ))}
                     </select>
-                    <img 
-                      src={ICONS.arrowDown} 
-                      alt="Arrow select" 
-                      className="dropdown__sorting--icon" 
+                    <img
+                      src={ICONS.arrowDown}
+                      alt="Arrow select"
+                      className="dropdown__sorting--icon"
                     />
                   </div>
                 </div>

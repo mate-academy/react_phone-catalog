@@ -33,17 +33,19 @@
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
   column-gap: 16px;
-
-  @include onDesktop {
-    column-gap: 22px;
-  }
 }
 
 @mixin contentMarginInline {
   margin-inline: 152px;
 
   @include onDesktop {
-    margin-inline: 438px;
+    margin-inline: 388px;
+  }
+}
+
+@mixin onMobile {
+  @media(min-width: 600px) {
+    @content;
   }
 }
 

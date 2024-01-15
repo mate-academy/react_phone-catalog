@@ -15,12 +15,14 @@ export const CartPage: React.FC = () => {
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleCheckoutMessage = () => {
-    setCheckoutMessage('Work in progress. This feauture is not implemented yet.');
+    setCheckoutMessage(
+      'Work in progress. This feauture is not implemented yet.',
+    );
 
     setTimeout(() => {
       setCheckoutMessage('');
-    }, 3000)
-  }
+    }, 3000);
+  };
 
   return (
     <div className="cart-page">
@@ -45,7 +47,6 @@ export const CartPage: React.FC = () => {
               />
             ))}
           </ul>
-        </div>
 
         {!!cart.length && (
           <div className="cart-page__checkout">
@@ -79,6 +80,7 @@ export const CartPage: React.FC = () => {
             </p>
           </div>
         )}
+      </div>
       </div>
     </div>
   );
