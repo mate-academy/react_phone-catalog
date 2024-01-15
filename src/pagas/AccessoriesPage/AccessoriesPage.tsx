@@ -21,11 +21,11 @@ export const AccessoriesPage = () => {
         ? (
           <ProductList products={accessories} />
         ) : (
-          <h1 className="name__page no-goods">
+          <p className="no-goods">
             {'Regrettably, at this juncture, '}
             {' our store does not presently have any products'}
             {' available within this particular category.'}
-          </h1>
+          </p>
         )}
     </div>
   );

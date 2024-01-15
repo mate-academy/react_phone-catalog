@@ -43,13 +43,13 @@ const App = () => {
   return (
     <CartProvider>
       <FavouritesProvider>
-        <div className="App">
+        <>
           <Header />
           <main>
             <Outlet />
           </main>
           <Footer />
-        </div>
+        </>
       </FavouritesProvider>
     </CartProvider>
   );

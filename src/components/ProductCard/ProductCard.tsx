@@ -9,7 +9,9 @@ interface Props {
   phone: Product;
 }
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
+export const ProductCard: React.FC<Props> = ({
+  phone,
+}) => {
   const path = `/${phone.type}s/${phone.id}`;
 
   const addToCartStyles = {

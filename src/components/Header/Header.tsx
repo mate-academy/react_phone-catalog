@@ -1,15 +1,21 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import classNames from 'classnames';
+import cn from 'classnames';
+import { useCart } from '../../context/CartProvider';
+import { useFavourites } from '../../context/FavouritesProvider';
 
 import './Header.scss';
 
 export const Header = () => {
   const location = useLocation();
+  const { cart } = useCart();
+  const { favourites } = useFavourites();
 
   const isHomePage = location.pathname === '/';
   const isPhonesPage = location.pathname === '/phones';
   const isTabletsPage = location.pathname === '/tablets';
   const isAccessoriesPage = location.pathname === '/accessories';
+
+  const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <header className="header">
@@ -20,7 +26,7 @@ export const Header = () => {
           </NavLink>
           <NavLink
             to="home"
-            className={classNames('nav__link', {
+            className={cn('nav__link', {
               'is-active-link': isHomePage,
             })}
           >
@@ -28,7 +34,7 @@ export const Header = () => {
           </NavLink>
           <NavLink
             to="phones"
-            className={classNames('nav__link', {
+            className={cn('nav__link', {
               'is-active-link': isPhonesPage,
             })}
           >
@@ -36,7 +42,7 @@ export const Header = () => {
           </NavLink>
           <NavLink
             to="tablets"
-            className={classNames('nav__link', {
+            className={cn('nav__link', {
               'is-active-link': isTabletsPage,
             })}
           >
@@ -44,7 +50,7 @@ export const Header = () => {
           </NavLink>
           <NavLink
             to="accessories"
-            className={classNames('nav__link', {
+            className={cn('nav__link', {
               'is-active-link': isAccessoriesPage,
             })}
           >
@@ -81,9 +87,21 @@ export const Header = () => {
           )}
           <NavLink to="favourites" className="icon__favourites">
             <span className="icon icon-favourites" />
+            {favourites.length >= 1
+              && (
+                <div className="icon-count icon-count-fav">
+                  {favourites.length}
+                </div>
+              )}
           </NavLink>
           <NavLink to="cart" className="icon__cart">
             <span className="icon icon-cart" />
+            {cart.length >= 1
+              && (
+                <div className="icon-count icon-count-cart">
+                  {totalCartItems}
+                </div>
+              )}
           </NavLink>
         </div>
       </nav>

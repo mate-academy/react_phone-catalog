@@ -39,5 +39,5 @@ export interface FavouritesState {
 
 export interface FavouritesContextType {
   favourites: Product[];
-  handleAddToFav: (product: Product) => void;
+  handleToggleFav: (product: Product) => void;
 }

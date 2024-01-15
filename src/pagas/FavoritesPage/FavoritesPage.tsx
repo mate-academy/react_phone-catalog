@@ -1,31 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useFavourites } from '../../context/FavouritesProvider';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
-
-import './FavoritesPage.scss';
 import { ProductList } from '../../components/ProductList';
 
+import './FavoritesPage.scss';
+
 export const FavoritesPage = () => {
-  const [favProducts, setFavProducts] = useState([]);
-
-  useEffect(() => {
-    const getFavoritesProduct = localStorage.getItem('favourites');
-    const favorProducts = getFavoritesProduct
-      ? JSON.parse(getFavoritesProduct) : [];
-
-    setFavProducts(favorProducts);
-  }, []);
+  const { favourites } = useFavourites();
 
   return (
     <div className="container">
       <div className="FavouritesPage">
         <BreadCrumbs />
-        <h1 className="FavouritesPage__title">Favourites</h1>
+        <h1 className="FavouritesPage__title">favourites</h1>
         <p className="FavouritesPage__count">
-          {favProducts ? `${favProducts.length} ${favProducts.length <= 1 ? 'model' : 'models'}` : '0 models'}
+          {favourites ? `${favourites.length} ${favourites.length <= 1 ? 'model' : 'models'}` : '0 models'}
         </p>
-        {favProducts.length
-          && (
-            <ProductList products={favProducts} />
+        {favourites.length >= 1
+          ? (
+            <ProductList products={favourites} />
+          )
+          : (
+            <p className="no-goods">
+              No items have been added to favorites.
+              Explore our selection and add items to your favorites
+              list for convenient tracking and future purchases.
+            </p>
           )}
       </div>
     </div>

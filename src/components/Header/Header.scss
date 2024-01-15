@@ -126,5 +126,42 @@
     width: 32px;
     height: 32px;
   }
+  &-count {
+    position: absolute;
+    top: 18px;
+    width: 14px;
+    height: 14px;
+    background-color: #eb5757;
+    border-radius: 50%;
+
+    text-align: center;
+    font-family: "Mont", sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 14px;
+    color: #fff;
+    text-decoration: none;
+
+    &-fav {
+      right: 84px;
+    }
+    &-cart {
+      right: 19px;
+    }
+
+    &:link {
+      text-decoration: none;
+    }
+    &:visited {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: none;
+    }
+  }
 
 }

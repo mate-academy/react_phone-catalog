@@ -78,12 +78,16 @@ export const useFavourites = (): FavouritesContextType => {
 
   const { state, dispatch } = context;
 
-  const handleAddToFav = (product: Product) => {
-    dispatch({ type: 'ADD_TO_FAV', payload: product });
+  const handleToggleFav = (product: Product) => {
+    if (state.favourites.some((fav) => fav.id === product.id)) {
+      dispatch({ type: 'REMOVE_FROM_FAV', payload: product });
+    } else {
+      dispatch({ type: 'ADD_TO_FAV', payload: product });
+    }
   };
 
   return {
     favourites: state.favourites,
-    handleAddToFav,
+    handleToggleFav,
   };
 };

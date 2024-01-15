@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const AddToLike: React.FC<Props> = ({ product, styles }) => {
-  const { favourites, handleAddToFav } = useFavourites();
+  const { favourites, handleToggleFav } = useFavourites();
   const isProductFav = favourites.some((fav) => fav.id === product.id);
 
   return (
@@ -23,7 +23,7 @@ export const AddToLike: React.FC<Props> = ({ product, styles }) => {
       style={styles}
       onClick={event => {
         event.preventDefault();
-        handleAddToFav(product);
+        handleToggleFav(product);
       }}
     >
       <div className={cn('icon__like', {

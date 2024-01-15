@@ -83,7 +83,7 @@ export const CartPage = () => {
         <BackButton />
         <h1 className="CartPage__title">Cart</h1>
         {cartProducts.length
-          && (
+          ? (
             <div className="CartPage__content content">
               <div className="content__cards">
                 <ul className="content__cards--list">
@@ -97,6 +97,7 @@ export const CartPage = () => {
                         aria-label="Close"
                         tabIndex={0}
                         className="cardItem__closing"
+                        data-cy="cartDeleteButton"
                         onClick={() => handleRemoveFromCart(product.id)}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter' || e.key === 'Space') {
@@ -142,7 +143,10 @@ export const CartPage = () => {
                           )}
                         />
                       </div>
-                      <div className="cardItem__sum">
+                      <div
+                        className="cardItem__sum"
+                        data-cy="productQauntity"
+                      >
                         {`$${product.quantity * (product.product.price - product.product.discount)}`}
                       </div>
                     </li>
@@ -164,6 +168,13 @@ export const CartPage = () => {
                 </button>
               </div>
             </div>
+          )
+          : (
+            <p className="no-goods">
+              No items have been added to the shopping cart.
+              Please explore our products and add your desired items to
+              the cart for a delightful shopping experience.
+            </p>
           )}
       </div>
     </div>

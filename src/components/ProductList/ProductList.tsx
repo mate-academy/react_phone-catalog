@@ -7,7 +7,9 @@ interface Props {
   products: Product[];
 }
 
-export const ProductList : React.FC<Props> = ({ products }) => {
+export const ProductList : React.FC<Props> = ({
+  products,
+}) => {
   return (
     <div
       data-cy="productList"
@@ -18,7 +20,9 @@ export const ProductList : React.FC<Props> = ({ products }) => {
             key={product.id}
             className="product__item"
           >
-            <ProductCard phone={product} />
+            <ProductCard
+              phone={product}
+            />
           </li>
         ))}
       </ul>

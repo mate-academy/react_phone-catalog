@@ -6,7 +6,7 @@
 
 .content {
   display: flex;
-  gap: 16px;
+  justify-content: space-between;
 
   &__cards {
     margin-bottom: 87px;
@@ -16,7 +16,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-
+      margin-right: 16px;
     }
   }
 
@@ -154,4 +154,18 @@
   background-size: 16px;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.no-goods {
+  display: flex;
+  justify-content: center;
+
+  font-family: "Mont", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  text-align: center;
+
 }
