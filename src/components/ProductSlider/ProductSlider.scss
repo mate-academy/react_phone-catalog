@@ -4,7 +4,7 @@
 .product-slider {
   &__container {
     @include pageGrid;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
   }
 
   &__title {
@@ -28,6 +28,14 @@
     background-color: #fff;
     border: 1px solid $icons-color;
     cursor: pointer;
+
+    &--left {
+
+    }
+
+    &--right {
+      
+    }
   }
 
   &__list {

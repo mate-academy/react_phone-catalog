@@ -6,10 +6,11 @@
     @include pageGrid;
     @include contentMarginInline;
     padding-top: 40px;
+    margin-bottom: 152px;
   }
 
   &__empty {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 7;
   }
 
   &__info {
@@ -23,7 +24,6 @@
 
   &__content {
     grid-column: 1 / span 16;
-    margin-bottom: 152px;
   }
 
   &__list {
@@ -59,12 +59,32 @@
     }
 
     &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 320px;
       height: 38px;
       @include buttonsText;
-      color:#fff;
+      line-height: 38px;
+      color: #fff;
       background-color: $primary-color;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__message {
+    grid-column: -1 / span 8;
+    margin-top: 20px;
+    max-width: 369px;
+    overflow: hidden;
+
+    &--text {
+      @include h2Text;
+      text-align: justify;
     }
   }
 }
-

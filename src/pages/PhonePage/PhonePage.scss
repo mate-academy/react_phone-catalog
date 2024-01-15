@@ -56,6 +56,8 @@
 }
 
 .dropdown {
+  position: relative;
+
   &__title {
     @include smallText;
     color: $secondary-color;
@@ -69,6 +71,8 @@
     width: 176px;
     height: 45px;
 
+    appearance: none;
+
     @include buttonsText;
     color: $primary-color;
     border: 1px solid $icons-color;
@@ -78,6 +82,18 @@
       grid-column: span 3;
 
       width: 128px;
+    }
+
+    &--icon {
+      position: absolute;
+      top: 65%;
+      right: 12px;
+      height: 16px;
+      width: 16px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      height: 16px;
+      width: 16px;
     }
 
     &:hover {
@@ -108,7 +124,7 @@ option {
   grid-column: 1 / -1;
   margin-top: 60px;
   text-align: center;
-  
+
 
   &__text {
     @include h1Text;

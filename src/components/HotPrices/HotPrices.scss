@@ -1,5 +1,5 @@
-@import '../../utils/mixins.scss';
-
-.container {
-  @include contentMarginInline;
+.hot-prices {
+  &__container {
+    margin-bottom: 80px;
+  }
 }

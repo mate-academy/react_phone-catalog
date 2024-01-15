@@ -8,7 +8,6 @@
 
 .banner-container {
   box-sizing: border-box;
-  @include contentMarginInline;
   @include pageGrid;
   padding-bottom: 32px;
 }

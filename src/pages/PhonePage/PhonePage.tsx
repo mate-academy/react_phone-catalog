@@ -96,7 +96,7 @@ export const PhonePage = () => {
               </span>
             </div>
 
-            {searchParams.toString().length ? (
+            {visiblePhones.length === 0 ? (
               <div className="warning-message">
                 <img
                   src={ICONS.iconWarning}
@@ -123,6 +123,11 @@ export const PhonePage = () => {
                         </option>
                       ))}
                     </select>
+                    <img 
+                      src={ICONS.arrowDown} 
+                      alt="Arrow select" 
+                      className="dropdown__sorting--icon" 
+                    />
                   </div>
                   <div className="dropdown dropdown--items-per-page">
                     <span className="dropdown__title">Items on page</span>
@@ -137,6 +142,11 @@ export const PhonePage = () => {
                         </option>
                       ))}
                     </select>
+                    <img 
+                      src={ICONS.arrowDown} 
+                      alt="Arrow select" 
+                      className="dropdown__sorting--icon" 
+                    />
                   </div>
                 </div>
                 <div className={classNames('phones__list', {

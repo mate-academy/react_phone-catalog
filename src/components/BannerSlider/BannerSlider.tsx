@@ -75,9 +75,7 @@ export const BannerSlider: React.FC = () => {
           </ul>
         </div>
 
-        <div className="banner-slider__button">
-          <ButtonSlider moveSlide={nextSlide} direction="next" height={400} />
-        </div>
+        <ButtonSlider moveSlide={nextSlide} direction="next" height={400} />
 
         <div className="dots__container">
           {BANNERS.map((banner, index) => (

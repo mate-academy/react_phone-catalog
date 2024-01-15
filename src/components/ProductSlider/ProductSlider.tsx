@@ -51,7 +51,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         <h1 className="product-slider__title">{title}</h1>
         <div className="product-slider__buttons">
           <button
-            className="product-slider__button"
+            className="product-slider__button product-slider__button--left"
             type="button"
             onClick={handlePrev}
             disabled={leftButtonDisabled}
@@ -65,8 +65,9 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
               <img src={ICONS.arrowLeft} alt="button left" />
             )}
           </button>
+
           <button
-            className="product-slider__button"
+            className="product-slider__button product-slider__button--right"
             type="button"
             onClick={handleNext}
             disabled={rightButtonDisabled}

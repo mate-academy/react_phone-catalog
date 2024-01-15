@@ -25,6 +25,11 @@
     height: 16px;
     width: 16px;
     cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2)
+    }
   }
 
   &__image {

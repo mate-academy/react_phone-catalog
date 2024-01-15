@@ -22,7 +22,7 @@ export const HotPrices: React.FC = () => {
 
   return (
     <section className="hot-prices">
-      <div className="container">
+      <div className="hot-prices__container">
         <ProductSlider products={hotPriceProducts} title="Hot prices" />
       </div>
     </section>

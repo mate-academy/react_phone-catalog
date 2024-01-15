@@ -6,12 +6,13 @@ import { GlobalContext } from '../../components/Context/GlobalContext';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
 import { Loader } from '../../components/Loader/Loader';
 import { Error } from '../../types/Error';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const { isLoading, errorMessage } = useContext(GlobalContext);
 
   return (
-    <>
+    <div className="home-page">
       {isLoading && <Loader />}
 
       {errorMessage === Error.loadingProducts ? (
@@ -24,6 +25,6 @@ export const HomePage = () => {
           <BrandNew />
         </>
       )}
-    </>
+    </div>
   );
 };

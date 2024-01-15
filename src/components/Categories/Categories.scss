@@ -4,7 +4,6 @@
 .categories {
   &__container {
     @include pageGrid;
-    @include contentMarginInline;
     margin-bottom: 80px;
   }
 
