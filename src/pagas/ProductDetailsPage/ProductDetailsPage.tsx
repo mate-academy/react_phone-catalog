@@ -237,7 +237,11 @@ export const ProductDetailsPage = () => {
                       <h2 className="ProductDetailsPage__more-title-item">
                         About
                       </h2>
-                      <div>{product?.description}</div>
+                      <div
+                        className="ProductDetailsPage__more-description"
+                      >
+                        {product?.description}
+                      </div>
                     </div>
                   </div>
                   <div className="ProductDetailsPage__more-tech">

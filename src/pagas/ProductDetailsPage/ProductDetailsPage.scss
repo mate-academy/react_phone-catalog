@@ -38,7 +38,6 @@
       font-style: normal;
       font-weight: 600;
       line-height: normal;
-
     }
   }
   &__actions {
@@ -178,6 +177,28 @@
 
     &-about {
       width: 50%;
+    }
+
+    &-title {
+      color: #313237;
+      font-family: "Mont", sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      &-item {
+        padding-bottom: 16px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #e2e6e9;
+      }
+    }
+    &-description {
+      color: #89939a;
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
     }
 
     &-tech {
