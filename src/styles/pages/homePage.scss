@@ -41,7 +41,7 @@
       }
 
       &--2 {
-        right: calc((var(--width)));
+        right: (var(--width));
       }
 
       &--3 {
