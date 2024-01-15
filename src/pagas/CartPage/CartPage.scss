@@ -1,0 +1,157 @@
+.CartPage {
+  &__title {
+    margin-bottom: 24px;
+  }
+}
+
+.content {
+  display: flex;
+  gap: 16px;
+
+  &__cards {
+    margin-bottom: 87px;
+
+    &--list {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+    }
+  }
+
+  &__calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    height: 206px;
+    border: 2px solid #e2e6e9;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e6e9;
+    width: 321px;
+
+    &--sum {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.32px;
+      text-align: center;
+      color: #313237;
+    }
+    &--count {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: center;
+      color: #89939a;
+    }
+  }
+  &__button {
+    width: 320px;
+    height: 48px;
+    background-color: #313237;
+    color: #fff;
+  }
+}
+
+.cardItem {
+  display: flex;
+  flex-direction: row;
+  padding: 24px 40px 24px 24px;
+  border: 2px solid #e2e6e9;
+
+  &__closing {
+    width: 16px;
+    height: 16px;
+    background: url(../../icons/Close.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto 0;
+    cursor: pointer;
+
+    &:hover {
+      background: url(../../icons/Close_hover.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+  }
+
+  &__title {
+    margin: auto 24px;
+    width: 295px;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__count {
+    margin: auto 0;
+    display: flex;
+    padding: 0 43px 0 25px;
+
+    &--icon {
+      width: 32px;
+      height: 32px;
+      padding: 8px;
+      border: 1px solid #b4bdc3;
+    }
+    &--number {
+      margin: auto 13px;
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+
+    }
+  }
+  &__sum {
+    width: 61px;
+    margin: auto;
+    font-family: "Mont", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+}
+
+.plus {
+  background: url(../../icons/Plus.svg);
+  background-position: center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.minus {
+  background: url(../../icons/Minus.svg);
+  background-position: center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+}
+
+.minusActive {
+  background: url(../../icons/Minus_active.svg);
+  background-position: center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

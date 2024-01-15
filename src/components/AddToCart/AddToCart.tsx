@@ -21,7 +21,11 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
       })}
       onClick={event => {
         event.preventDefault();
-        handleAddToCart(product);
+        handleAddToCart({
+          id: product.id,
+          quantity: 1,
+          product: product as Product,
+        });
       }}
     >
       {isProductInCart ? 'Added to cart' : 'Add to cart'}

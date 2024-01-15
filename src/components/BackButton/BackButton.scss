@@ -1,0 +1,40 @@
+@import "../../style/utils/mixins";
+
+.BackButton {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-family: "Mont", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #89939a;
+  transition-duration: 0.4s;
+
+  background-color: #fff;
+  border: none;
+  margin-bottom: 40px;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background: url(../../icons/ArrowRight_black.svg) no-repeat;
+    background-size: 16px;
+    transform: scaleX(-1);
+  }
+
+  @include onTablet {
+    font-size: 12px;
+    line-height: 13px;
+  }
+
+  &:hover {
+    color: #313237;
+    transform: scale(1.1);
+  }
+}

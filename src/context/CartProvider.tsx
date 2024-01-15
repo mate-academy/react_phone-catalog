@@ -4,21 +4,21 @@ import React, {
   ReactNode,
   useContext,
 } from 'react';
-import { Product } from '../types/Product';
+import { ProductForCart } from '../types/ProductForCart';
 
 interface CartAction {
   type: 'ADD_TO_CART' | 'REMOVE_FROM_CART';
-  payload: Product;
+  payload: ProductForCart;
 }
 
 interface CartState {
-  cart: Product[];
+  cart: ProductForCart[];
 }
 
 type CartContextType = {
-  cart: Product[];
-  handleAddToCart: (product: Product) => void;
-  handleRemoveFromCart: (product: Product) => void;
+  cart: ProductForCart[];
+  handleAddToCart: (product: ProductForCart) => void;
+  handleRemoveFromCart: (product: ProductForCart) => void;
 };
 
 export const CartContext = createContext<
@@ -44,7 +44,7 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const saveStateToLocalStorage = (cart: Product[]): void => {
+const saveStateToLocalStorage = (cart: ProductForCart[]): void => {
   localStorage.setItem('cart', JSON.stringify(cart));
 };
 
@@ -64,12 +64,12 @@ export const CartProvider: React.FC<{
     getInitialStateFromLocalStorage(),
   );
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: ProductForCart) => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
     saveStateToLocalStorage([...state.cart, product]);
   };
 
-  const handleRemoveFromCart = (product: Product) => {
+  const handleRemoveFromCart = (product: ProductForCart) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: product });
     saveStateToLocalStorage(state.cart.filter(item => item.id !== product.id));
   };
@@ -95,12 +95,12 @@ export const useCart = (): CartContextType => {
 
   const { cart, handleAddToCart, handleRemoveFromCart } = context;
 
-  const handleAddToCartWithLocalStorage = (product: Product) => {
+  const handleAddToCartWithLocalStorage = (product: ProductForCart) => {
     handleAddToCart(product);
     saveStateToLocalStorage([...cart, product]);
   };
 
-  const handleRemoveFromCartWithLocalStorage = (product: Product) => {
+  const handleRemoveFromCartWithLocalStorage = (product: ProductForCart) => {
     handleRemoveFromCart(product);
     saveStateToLocalStorage(cart.filter(item => item.id !== product.id));
   };
