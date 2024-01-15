@@ -14,6 +14,8 @@ export const Header = () => {
   const isPhonesPage = location.pathname === '/phones';
   const isTabletsPage = location.pathname === '/tablets';
   const isAccessoriesPage = location.pathname === '/accessories';
+  const isFavouritesPage = location.pathname === '/favourites';
+  const isCartPage = location.pathname === '/cart';
 
   const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -24,38 +26,43 @@ export const Header = () => {
           <NavLink to="/" className="nav__logo">
             <span className="logo" />
           </NavLink>
-          <NavLink
-            to="home"
-            className={cn('nav__link', {
-              'is-active-link': isHomePage,
-            })}
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="phones"
-            className={cn('nav__link', {
-              'is-active-link': isPhonesPage,
-            })}
-          >
-            Phones
-          </NavLink>
-          <NavLink
-            to="tablets"
-            className={cn('nav__link', {
-              'is-active-link': isTabletsPage,
-            })}
-          >
-            Tablets
-          </NavLink>
-          <NavLink
-            to="accessories"
-            className={cn('nav__link', {
-              'is-active-link': isAccessoriesPage,
-            })}
-          >
-            Accessories
-          </NavLink>
+          {!isCartPage
+            && (
+              <>
+                <NavLink
+                  to="home"
+                  className={cn('nav__link', {
+                    'is-active-link': isHomePage,
+                  })}
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  to="phones"
+                  className={cn('nav__link', {
+                    'is-active-link': isPhonesPage,
+                  })}
+                >
+                  Phones
+                </NavLink>
+                <NavLink
+                  to="tablets"
+                  className={cn('nav__link', {
+                    'is-active-link': isTabletsPage,
+                  })}
+                >
+                  Tablets
+                </NavLink>
+                <NavLink
+                  to="accessories"
+                  className={cn('nav__link', {
+                    'is-active-link': isAccessoriesPage,
+                  })}
+                >
+                  Accessories
+                </NavLink>
+              </>
+            )}
         </div>
         <div className="nav__menu">
           {isPhonesPage && (
@@ -85,15 +92,27 @@ export const Header = () => {
               />
             </form>
           )}
-          <NavLink to="favourites" className="icon__favourites">
-            <span className="icon icon-favourites" />
-            {favourites.length >= 1
-              && (
-                <div className="icon-count icon-count-fav">
-                  {favourites.length}
-                </div>
-              )}
-          </NavLink>
+          {isFavouritesPage && (
+            <form className="nav__form">
+              <input
+                type="text"
+                className="search"
+                placeholder="Search in favourites..."
+              />
+            </form>
+          )}
+          {!isCartPage
+            && (
+              <NavLink to="favourites" className="icon__favourites">
+                <span className="icon icon-favourites" />
+                {favourites.length >= 1
+                  && (
+                    <div className="icon-count icon-count-fav">
+                      {favourites.length}
+                    </div>
+                  )}
+              </NavLink>
+            )}
           <NavLink to="cart" className="icon__cart">
             <span className="icon icon-cart" />
             {cart.length >= 1

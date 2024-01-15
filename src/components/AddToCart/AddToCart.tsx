@@ -29,6 +29,7 @@ export const AddToCart: React.FC<Props> = ({ product, styles }) => {
           product: product as Product,
         });
       }}
+      disabled={isProductInCart}
     >
       {isProductInCart ? 'Added to cart' : 'Add to cart'}
     </button>
