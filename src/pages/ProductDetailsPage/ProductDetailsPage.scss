@@ -1,0 +1,355 @@
+@import "src/App";
+
+.product-details-page {
+  flex-grow: 1;
+  margin-bottom: 80px;
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__title {
+    color: $black-c;
+    font-family: Mont-Bold, serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-top: 16px;
+  }
+
+  &__main {
+    @include page-grid;
+
+    margin-top: 40px;
+  }
+
+  &__images {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__image-button {
+    background-color: initial;
+    height: 80px;
+    width: 80px;
+    border: 1px solid $elements-grey-c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--active {
+      border-color: $black-c;
+    }
+
+    &:hover {
+      border-color: $black-c;
+    }
+  }
+
+  &__image--small {
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__image--big {
+    height: 442px;
+    width: 442px;
+    object-fit: contain;
+  }
+
+  &__photo {
+    grid-column: span 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__parameters {
+    grid-column: 14 / 21;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__parameter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__parameter-title {
+    font-family: Mont-SemiBold, serif;
+    color: $dark-grey-c;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__parameter-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__parameter-color {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid $elements-grey-c;
+    border-radius: 16px;
+
+    &--active {
+      border-color: $black-c;
+    }
+  }
+
+  &__parameter-color-link {
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  &__parameter-capacity-link {
+    height: 32px;
+    display: flex;
+    padding-inline: 8px;
+    justify-content: center;
+    align-items: center;
+    color: $black-c;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__parameter-capacity {
+    box-sizing: border-box;
+    border: 1px solid $icons-grey-c;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $black-c;
+    }
+
+    &--active {
+      background-color: $black-c;
+
+      .product-details-page__parameter-capacity-link {
+        color: $white-c;
+      }
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $elements-grey-c;
+    margin-top: 16px;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__price-discount {
+    font-family: Mont-Bold, serif;
+    font-size: 32px;
+    color: $black-c;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__price-regular {
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration-line: line-through;
+    color: $dark-grey-c;
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add {
+    background-color: $black-c;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 263px;
+    height: 48px;
+    color: $white-c;
+    font-family: Mont-SemiBold, serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    &--added {
+      color: $green-c;
+      background-color: initial;
+      border: 1px solid $elements-grey-c;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__like {
+    width: 48px;
+    background-color: initial;
+    border: 1px solid $icons-grey-c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $black-c;
+    }
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__characteristic-name {
+    font-family: Mont-SemiBold, serif;
+    color: $dark-grey-c;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__characteristic-value {
+    font-family: Mont-SemiBold, serif;
+    color: $black-c;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__id {
+    grid-column: -3 / -1;
+    display: flex;
+    justify-content: right;
+  }
+
+  &__id-value {
+    font-family: Mont-SemiBold, serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $icons-grey-c;
+  }
+
+  &__bottom {
+    @include page-grid;
+
+    margin-top: 80px;
+  }
+
+  &__bottom-title {
+    font-family: Mont-Bold, serif;
+    color: $black-c;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__bottom-top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__about {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    gap: 32px;
+  }
+
+  &__description-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__description-title {
+    font-family: Mont-SemiBold, serif;
+    color: $black-c;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__description-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__description-text-piece {
+    color: $dark-grey-c;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__specs {
+    grid-column: 14 / -1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__specs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &__specs-name {
+    color: $dark-grey-c;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__specs-value {
+    color: $black-c;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__you-may-like {
+    margin-top: 80px;
+  }
+}

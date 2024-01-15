@@ -1,0 +1,14 @@
+@import "src/App";
+
+.tablets-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  &__sort {
+    @include page-grid;
+
+    margin-top: 40px;
+  }
+}
