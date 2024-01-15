@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { FavouriteContext } from '../../contexts/FavoriteContext';
 import { CartContext } from '../../contexts/CartContext';
+import { IMAGE_BASE_URL } from '../../helpers/constants';
 
 interface Props {
   product: Product,
@@ -41,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({
       }}
     >
       <img
-        src={`/_new/${product.image}`}
+        src={`${IMAGE_BASE_URL}${product.image}`}
         className="product__image"
         alt={product.name}
       />

@@ -9,7 +9,7 @@ import { getProductDetails, getProducts } from '../../api';
 import { Loader } from '../../components/Loader/Loader';
 import { PathBar } from '../../components/PathBar/PathBar';
 import { Back } from '../../components/Back/Back';
-import { PRODUCTS_COLORS, SPECS } from '../../helpers/constants';
+import { IMAGE_BASE_URL, PRODUCTS_COLORS, SPECS } from '../../helpers/constants';
 import { FavouriteContext } from '../../contexts/FavoriteContext';
 import { CartContext } from '../../contexts/CartContext';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
@@ -111,7 +111,7 @@ export const ProductDetailsPage = () => {
               >
                 <img
                   className="product-details-page__image--small"
-                  src={`/_new/${image}`}
+                  src={`${IMAGE_BASE_URL}${image}`}
                   alt={product?.name}
                 />
               </button>
@@ -121,7 +121,7 @@ export const ProductDetailsPage = () => {
           <div className="product-details-page__photo">
             <img
               className="product-details-page__image--big"
-              src={`/_new/${currentImage}`}
+              src={`${IMAGE_BASE_URL}${currentImage}`}
               alt={product?.name}
             />
           </div>

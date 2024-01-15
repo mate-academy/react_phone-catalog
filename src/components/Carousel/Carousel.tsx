@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './Carousel.scss';
+import { IMAGE_BASE_URL } from '../../helpers/constants';
 
 const banners = ['banner-phones', 'banner-tablets', 'banner-accessories'];
 
@@ -56,7 +57,7 @@ export const Carousel = () => {
               }}
             >
               <img
-                src={`/img/carousel/${banner}.png`}
+                src={`${IMAGE_BASE_URL}/img/carousel/${banner}.png`}
                 className="carousel__image"
                 alt={banner}
               />

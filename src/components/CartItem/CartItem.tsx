@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { CartContext } from '../../contexts/CartContext';
+import { IMAGE_BASE_URL } from '../../helpers/constants';
 
 interface Props {
   product: Product;
@@ -49,7 +50,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
       <img
         className="cart-item__image"
-        src={`/_new/${product.image}`}
+        src={`${IMAGE_BASE_URL}${product.image}`}
         alt="phone"
       />
 

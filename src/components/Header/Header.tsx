@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { FavouriteContext } from '../../contexts/FavoriteContext';
 import { CartContext } from '../../contexts/CartContext';
+import { IMAGE_BASE_URL } from '../../helpers/constants';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'header__link', { 'header__link--active': isActive },
@@ -34,7 +35,7 @@ export const Header = () => {
         <Link className="header__logo" to="/">
           <img
             className="header__image"
-            src="/img/header/Logo.svg"
+            src={`${IMAGE_BASE_URL}/img/header/Logo.svg`}
             alt="Logo"
           />
         </Link>

@@ -1,5 +1,6 @@
 import './Footer.scss';
 import { Link } from 'react-router-dom';
+import { IMAGE_BASE_URL } from '../../helpers/constants';
 
 export const Footer = () => {
   const email = 'mykhailo.lehotskyi@gmail.com';
@@ -16,7 +17,7 @@ export const Footer = () => {
         <Link to="/" className="footer__logo">
           <img
             className="footer__image"
-            src="/img/header/Logo.svg"
+            src={`${IMAGE_BASE_URL}/img/header/Logo.svg`}
             alt="Logo"
           />
         </Link>

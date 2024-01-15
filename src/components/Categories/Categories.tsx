@@ -1,7 +1,7 @@
 import './Categories.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CATEGORIES } from '../../helpers/constants';
+import { CATEGORIES, IMAGE_BASE_URL } from '../../helpers/constants';
 import { Product } from '../../types/Product';
 
 interface Props {
@@ -26,7 +26,7 @@ export const Categories:React.FC<Props> = ({ products, isLoader }) => {
             >
               <div className={`category__photo category__photo--${key}`}>
                 <img
-                  src={`/img/category/category-${key}.png`}
+                  src={`${IMAGE_BASE_URL}img/category/category-${key}.png`}
                   className={`category__image category__image--${key}`}
                   alt={key}
                 />
