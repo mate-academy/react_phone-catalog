@@ -1,0 +1,72 @@
+@import '../../assets/css/variables';
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+      &--left {
+        gap: $header-item-gap;
+      }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $header-item-gap;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 26px 0;
+  }
+
+  &__link{
+    display: block;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: bold;
+    color: #89939A;
+    text-decoration: none;
+  }
+
+  &__icon-link {
+    display: block;
+    text-decoration: none;
+    padding: 18px;
+    border-left: 1px solid $header-border-color;
+
+    &--last {
+      padding-right: 0;
+    }
+  }
+
+  &__search-bar {
+    position: relative;
+  }
+}
+
+.icon {
+  display: block;
+  height: 28px;
+  width: 28px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--favourites {
+    background-image: url(../../../public/img/icons/favourites.svg);
+  }
+
+  &--shoppingBag {
+    background-image: url(../../../public/img/icons/shoppingBag.svg)
+  }
+}

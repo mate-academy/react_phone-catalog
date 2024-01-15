@@ -1,7 +1,12 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import { Home, Header, NotFoundPage } from './components';
 
 export const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
+  <Routes>
+    <Route path="/" element={<Header />}>
+      <Route index element={<Home />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Route>
+  </Routes>
 );
