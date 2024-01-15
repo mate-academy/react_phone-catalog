@@ -1,11 +1,19 @@
+import { useEffect, useState } from 'react';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 
 import './FavoritesPage.scss';
+import { ProductList } from '../../components/ProductList';
 
 export const FavoritesPage = () => {
-  const getFavoritesProduct = localStorage.getItem('favourites');
-  const favProducts = getFavoritesProduct
-    ? JSON.parse(getFavoritesProduct) : [];
+  const [favProducts, setFavProducts] = useState([]);
+
+  useEffect(() => {
+    const getFavoritesProduct = localStorage.getItem('favourites');
+    const favorProducts = getFavoritesProduct
+      ? JSON.parse(getFavoritesProduct) : [];
+
+    setFavProducts(favorProducts);
+  }, []);
 
   return (
     <div className="container">
@@ -15,6 +23,10 @@ export const FavoritesPage = () => {
         <p className="FavouritesPage__count">
           {favProducts ? `${favProducts.length} ${favProducts.length <= 1 ? 'model' : 'models'}` : '0 models'}
         </p>
+        {favProducts.length
+          && (
+            <ProductList products={favProducts} />
+          )}
       </div>
     </div>
   );

@@ -104,11 +104,13 @@ export const CartPage = () => {
                           }
                         }}
                       />
-                      <img
-                        src={product.product.imageUrl}
-                        alt={product.product.name}
-                        className="cardItem__image"
-                      />
+                      {product.product && (
+                        <img
+                          src={product.product.imageUrl}
+                          alt={product.product.name}
+                          className="cardItem__image"
+                        />
+                      )}
                       <h2 className="cardItem__title">
                         {product.product.name}
                       </h2>

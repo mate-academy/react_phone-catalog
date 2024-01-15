@@ -42,6 +42,16 @@ export const ProductDetailsPage = () => {
   const [isLoadError, setIsLoadError] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
 
+  const addToCartStyles = {
+    width: '263px',
+    height: '48px',
+  };
+
+  const addToLikeStyles = {
+    width: '48px',
+    height: '48px',
+  };
+
   useEffect(() => {
     /* eslint-disable no-console */
     console.log('ProductId:', productId);
@@ -162,8 +172,14 @@ export const ProductDetailsPage = () => {
                       </div>
                       {productInList && (
                         <div className="ProductDetailsPage__buttons">
-                          <AddToCart product={productInList} />
-                          <AddToLike product={productInList} />
+                          <AddToCart
+                            product={productInList}
+                            styles={addToCartStyles}
+                          />
+                          <AddToLike
+                            product={productInList}
+                            styles={addToLikeStyles}
+                          />
                         </div>
                       )}
                       <div className="ProductDetailsPage__info">

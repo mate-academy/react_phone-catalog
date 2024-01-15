@@ -8,9 +8,10 @@ import './AddToLike.scss';
 
 type Props = {
   product: Product,
+  styles: React.CSSProperties,
 };
 
-export const AddToLike: React.FC<Props> = ({ product }) => {
+export const AddToLike: React.FC<Props> = ({ product, styles }) => {
   const { favourites, handleAddToFav } = useFavourites();
   const isProductFav = favourites.some((fav) => fav.id === product.id);
 
@@ -19,6 +20,7 @@ export const AddToLike: React.FC<Props> = ({ product }) => {
       data-cy="addToFavorite"
       type="button"
       className="AddToLike"
+      style={styles}
       onClick={event => {
         event.preventDefault();
         handleAddToFav(product);

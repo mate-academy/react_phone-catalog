@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
+import { AddToLike } from '../AddToLike';
+import { AddToCart } from '../AddToCart';
 
 import './ProductCard.scss';
 
@@ -9,6 +11,16 @@ interface Props {
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const path = `/${phone.type}s/${phone.id}`;
+
+  const addToCartStyles = {
+    width: '176px',
+    height: '40px',
+  };
+
+  const addToLikeStyles = {
+    width: '40px',
+    height: '40px',
+  };
 
   return (
     <Link
@@ -47,17 +59,8 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         </div>
       </div>
       <div className="card__link">
-        <button
-          type="button"
-          className="card__link-cart"
-        >
-          Add to cart
-        </button>
-        <button
-          type="button"
-          className="card__link-like"
-          aria-label="button"
-        />
+        <AddToCart product={phone} styles={addToCartStyles} />
+        <AddToLike product={phone} styles={addToLikeStyles} />
       </div>
     </Link>
   );

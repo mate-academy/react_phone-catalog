@@ -7,9 +7,10 @@ import './AddToCart.scss';
 
 type Props = {
   product: Product,
+  styles: React.CSSProperties,
 };
 
-export const AddToCart: React.FC<Props> = ({ product }) => {
+export const AddToCart: React.FC<Props> = ({ product, styles }) => {
   const { cart, handleAddToCart } = useCart();
   const isProductInCart = cart.some(item => item.id === product.id);
 
@@ -19,6 +20,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
       className={cn('AddToCart', {
         'added-to-cart': isProductInCart,
       })}
+      style={styles}
       onClick={event => {
         event.preventDefault();
         handleAddToCart({
