@@ -1,9 +1,22 @@
 import './Header.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Navigation } from '../Navigation';
+import { useAppSelector } from '../../app/hooks';
+
+const categories = ['phones', 'favourites'];
 
 export const Header = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const { favourites, cart } = useAppSelector(state => state.phones);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setIsVisible(categories.includes(pathname.toString().slice(1)));
+  }, [pathname]);
+
   return (
     <header className="header">
       <div className="header__left">
@@ -18,13 +31,15 @@ export const Header = () => {
       </div>
 
       <div className="header__right">
-        <div>
-          <input
-            type="text"
-            className="header__input"
-            placeholder="Search in phones..."
-          />
-        </div>
+        {isVisible && (
+          <div>
+            <input
+              type="text"
+              className="header__input"
+              placeholder="Search in phones..."
+            />
+          </div>
+        )}
 
         <NavLink
           to="/favourites"
@@ -32,7 +47,13 @@ export const Header = () => {
             'header__favourites-is-active': isActive,
           })}
         >
-          <div className="icon icon-favourites header__favourites-img" />
+          <div className="icon icon-favourites header__favourites-img">
+            {!!favourites.length && (
+              <div className="header__img-status">
+                {favourites.length}
+              </div>
+            )}
+          </div>
         </NavLink>
 
         <NavLink
@@ -41,7 +62,13 @@ export const Header = () => {
             'header__cart-is-active': isActive,
           })}
         >
-          <div className="icon icon-cart header__cart-img" />
+          <div className="icon icon-cart header__cart-img">
+            {!!cart.length && (
+              <div className="header__img-status">
+                {cart.length}
+              </div>
+            )}
+          </div>
         </NavLink>
       </div>
     </header>

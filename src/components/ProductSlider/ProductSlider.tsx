@@ -11,7 +11,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <div className="product-slider">
       <div className="product-slider__top">
-        <p className="product-slider__title">{title}</p>
+        <p className="product-slider__title title">{title}</p>
 
         <div className="product-slider__buttons">
           <div className="button">

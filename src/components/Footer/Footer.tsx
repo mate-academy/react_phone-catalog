@@ -1,10 +1,20 @@
+import { useEffect, useState } from 'react';
 import './Footer.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import cn from 'classnames';
 
 export const Footer = () => {
+  const location = useLocation();
+
+  const [isVisible, setIsVisible] = useState(false);
+
   const goTop = () => {
     window.scrollTo({ top: 0 });
   };
+
+  useEffect(() => {
+    setIsVisible(document.body.scrollHeight > window.innerHeight);
+  }, [location]);
 
   return (
     <footer className="footer">
@@ -43,7 +53,10 @@ export const Footer = () => {
         </Link>
       </div>
 
-      <div className="footer__right">
+      <div className={cn('footer__right', {
+        'is-visible': !isVisible,
+      })}
+      >
         <button className="back-to-top" type="button" onClick={goTop}>
 
           <p className="back-to-top__message">Back to top</p>

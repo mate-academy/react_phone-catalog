@@ -59,3 +59,7 @@
     @include hover(border-color, $main-color);
   }
 }
+
+.is-visible {
+  visibility: hidden;
+}

@@ -4,6 +4,8 @@ import React from 'react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import './Carousel.scss';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 const images = [
   require('../../assets/banners/banner-phones.png'),
@@ -11,32 +13,28 @@ const images = [
   require('../../assets/banners/banner-accessories.png'),
 ];
 
-const PrevButton = () => {
+const categories = ['phones', 'tablets', 'accessories'];
+
+const Button = ({ type }: { type: string }) => {
   const swiper = useSwiper();
 
   return (
     <button
-      onClick={() => swiper.slideNext()}
+      onClick={type === 'next'
+        ? () => swiper.slideNext()
+        : () => swiper.slidePrev()}
       type="button"
-      className="carousel__button carousel__button--left"
-      aria-label="next"
+      className={cn('carousel__button', {
+        'carousel__button--left': type === 'next',
+        'carousel__button--right': type === 'prev',
+      })}
+      aria-label="move-slider"
     >
-      <div className="icon icon-next" />
-    </button>
-  );
-};
-
-const NextButton = () => {
-  const swiper = useSwiper();
-
-  return (
-    <button
-      onClick={() => swiper.slidePrev()}
-      type="button"
-      className="carousel__button carousel__button--right"
-      aria-label="prev"
-    >
-      <div className="icon icon-prev" />
+      <div className={cn('icon', {
+        'icon-next': type === 'next',
+        'icon-prev': type === 'prev',
+      })}
+      />
     </button>
   );
 };
@@ -51,21 +49,28 @@ export const Carousel: React.FC = () => {
         pagination
         navigation
         loop
-        className="swiper"
+        className="swiper-top"
         allowTouchMove={false}
         autoplay={{
-          delay: 2500,
+          delay: 5000,
           disableOnInteraction: false,
         }}
       >
-        <PrevButton />
+        <Button type="prev" />
+
         {images.map((image, index) => (
           <SwiperSlide key={image}>
-            <img src={image} alt={`Image ${index + 1}`} className="swiper__image image" />
+            <Link to={`/${categories[index]}`}>
+              <img
+                src={image}
+                alt={`Image ${index + 1}`}
+                className="swiper__image image-top"
+              />
+            </Link>
           </SwiperSlide>
         ))}
 
-        <NextButton />
+        <Button type="next" />
       </Swiper>
     </section>
   );

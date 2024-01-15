@@ -1,0 +1,89 @@
+@import "../../styles/main";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.category {
+  &__images-container {
+    display: block;
+    width: 368px;
+    height: 368px;
+    position: relative;
+    overflow: hidden;
+
+    margin-bottom: 24px;
+
+    &--1 {
+      background-color:#fcdbc1;
+    }
+
+    &--2 {
+      background-color: #8d8d92;
+    }
+
+    &--3 {
+      background-color: #973d5f;
+    }
+  }
+
+  &__image {
+    object-fit: contain;
+
+    &--1 {
+      width: 386px;
+      height: 457px;
+      margin-left: 73px;
+      margin-top: 8px;
+    }
+
+    &--2 {
+      width: 546px;
+      height: 546px;
+      margin-left: 22px;
+      margin-top: 20px;
+    }
+
+    &--3 {
+      width: 700px;
+      height: 700px;
+      margin-left: 30px;
+      margin-top: -135px;;
+    }
+
+    @include hover(transform, scale(1.05));
+  }
+
+  &__content {
+    @extend %h3;
+
+    font-weight: 600;
+  }
+
+  &__name {
+    margin-bottom: 4px;
+  }
+
+  &__models {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+}
+
+.title {
+  @extend %h1;
+
+  color: $main-color;
+}
