@@ -1,0 +1,101 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.footer {
+  display: flex;
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $shadow-color;
+  margin-top: 80px;
+  align-items: center;
+  justify-content: center;
+
+  @include on-mobile {
+    height: 140px;
+  }
+
+  &__container {
+    max-width: 1138px;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    width: 100%;
+
+    @include on-tablet {
+      max-width: 592px;
+    }
+
+    @include on-mobile {
+      box-sizing: border-box;
+      max-width: 288px;
+      grid-auto-flow: row;
+      position: relative;
+    }
+  }
+
+  &__logo {
+    display: block;
+    background-image: url(../../images/logo.png);
+    height: 24px;
+    width: 40px;
+    left: 0;
+
+    @include on-mobile {
+      margin-top: 8px;
+    }
+  }
+
+  &__links {
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 11px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  &__link {
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__up-button {
+    color: $secondary-text-color;
+    justify-self: end;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include on-mobile {
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    background: url(../../images/icons/arrow-top.png) center no-repeat;
+    border: 1px solid $placeholder-color;
+
+    @include hover (border-color, $main-text-color);
+    @include hover (cursor, pointer);
+  }
+}

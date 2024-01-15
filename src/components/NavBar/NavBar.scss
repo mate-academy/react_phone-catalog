@@ -1,0 +1,82 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.navbar {
+  display: flex;
+  gap: 64px;
+  height: $header-height-desktop;
+  text-align: center;
+
+  @include on-tablet {
+    height: $header-height;
+    gap: 32px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__item {
+    color: $secondary-text-color;
+    font-family: Mont, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    height: $header-height-desktop;
+    line-height: $header-height-desktop;
+    width: fit-content;
+
+    @include hover(color, $main-text-color);
+
+    @include on-tablet {
+      line-height: $header-height;
+      height: $header-height;
+    }
+
+    @include on-mobile {
+      font-size: 28px;
+
+      @include hover(color, $the-white);
+    }
+
+    &--active {
+      color: $main-text-color;
+
+      &::after {
+        content: "";
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+        right: 0;
+        left: 0;
+        height: 3px;
+        background: $main-text-color;
+      }
+
+      @include on-mobile {
+        color: $the-white;
+
+        &::after {
+          background: $the-white;
+        }
+      }
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+}

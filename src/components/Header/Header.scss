@@ -1,0 +1,226 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.header {
+  display: flex;
+  height: $header-height-desktop;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  padding-left: 24px;
+
+  @include on-tablet {
+    height: $header-height;
+    padding-left: 16px;
+  }
+
+  &__left-side {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__nav-descktop {
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__nav-bar {
+    box-sizing: border-box;
+    padding: 40px;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgba(49, 50, 55, 0.99);
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    overflow: hidden;
+    display: none;
+
+    &-close {
+      margin-bottom: 40px;
+      height: 16px;
+      width: 16px;
+      align-self: end;
+      border: none;
+      background: url(../../images/icons/delete.png) center;
+
+      @include hover(cursor, pointer);
+    }
+
+    @include on-mobile {
+      display: flex;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+  }
+
+  &__logo {
+    display: block;
+    background-image: url(../../images/logo.png);
+    height: 24px;
+    width: 40px;
+  }
+
+  &__icon {
+    background: no-repeat center;
+    position: relative;
+    height: $header-height-desktop;
+    width: $header-height-desktop;
+    display: block;
+
+    @include on-tablet {
+      height: $header-height;
+      width: $header-height;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+
+    &-container {
+      position: relative;
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &--active {
+      color: $main-text-color;
+
+      &::after {
+        content: "";
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+        right: 0;
+        left: 0;
+        height: 3px;
+        background: $main-text-color;
+      }
+    }
+
+    &--favoriets {
+      background-image: url(../../images/icons/favourites.png);
+    }
+
+    &--shopping-bag {
+      background-image: url(../../images/icons/shopping-bag.png);
+    }
+
+    &--menu {
+      border: none;
+      box-sizing: border-box;
+      background-image: url(../../images/icons/menu.png);
+      display: none;
+
+      @include hover(cursor, pointer);
+
+      @include on-mobile {
+        display: block;
+      }
+    }
+  }
+
+  &__circle-accounter {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: $the-red;
+    border-radius: 50%;
+    color: $the-white;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 14px;
+    text-decoration: none;
+    top: 18px;
+    right: 18px;
+
+    @include on-tablet {
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  &__search-bar {
+    display: flex;
+    box-sizing: border-box;
+    height: 64px;
+    width: 327px;
+    align-items: center;
+    position: relative;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__search-query {
+    box-sizing: border-box;
+    padding-inline: 24px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-family: Mont, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $main-text-color;
+
+    &::placeholder {
+      color: $placeholder-color;
+      font-family: Mont, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    &:focus {
+      outline: none;
+      background: $option-background;
+      box-shadow: -1px 0 0 0 #E2E6E9;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: 24px;
+    right: 24px;
+    border: none;
+
+    @include hover(cursor, pointer);
+
+    &--cancel {
+      background: url(../../images/icons/close.png) center;
+    }
+
+    &--search {
+      background: url(../../images/icons/search.png) center;
+    }
+  }
+}
+
+.has-left-shadow {
+  box-shadow: -1px 0 0 0 $shadow-color;
+}
+
+.has-bottom-shadow {
+  box-shadow: 0 1px 0 0 $shadow-color;
+}

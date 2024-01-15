@@ -1,0 +1,212 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  max-width: 1138px;
+  align-self: center;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    margin-inline: auto;
+    max-width: 592px;
+  }
+
+  @include on-mobile{
+    max-width: 288px;
+  }
+
+  &__back {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin: 0;
+    margin-top: 40px;
+    text-decoration: none;
+    width: fit-content;
+    padding: 0;
+    padding-right: 15px;
+    align-items: center;
+    height: 16px;
+    background-color: $the-white;
+    border: none;
+
+    @include hover(cursor, pointer);
+
+    &-arrow {
+      width: 16px;
+      height: 16px;
+      background: url(../../images/icons/arrow-left.png) center;
+    }
+
+    &-text {
+      margin: 0;
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-top: 16px;
+  }
+
+  &__body {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 752px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+  }
+
+  &__sum {
+    border: 1px solid $shadow-color;
+    width: 368px;
+    height: 206px;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__total-sum {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__total-text {
+    color: $secondary-text-color;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0;
+    position: relative;
+
+    &::after {
+      bottom: -24px;
+      content: "";
+      width: 100%;
+      left: 0;
+      position: absolute;
+      height: 1px;
+      background-color: $shadow-color;
+
+      @include on-tablet {
+        bottom: -16px;
+      }
+    }
+  }
+
+  &__checkout {
+    margin-top: 48px;
+    width: 320px;
+    height: 48px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background: $main-text-color;
+    color: $the-white;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    border: none;
+
+    @include on-tablet {
+      margin-top: 32px;
+      width: 100%;
+    }
+
+    @include hover(cursor, pointer);
+
+    &-container {
+      position: absolute;
+      background-color: rgba(49, 50, 55, 0.5);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+    }
+
+    &-answer {
+      display: grid;
+      width: 368px;
+      height: 206px;
+      flex-shrink: 0;
+      justify-content: center;
+      padding: 24px;
+      box-sizing: border-box;
+      background: $main-text-color;
+    }
+
+    &-message {
+      color: $the-white;
+      text-align: center;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.32px;
+      margin: 0;
+    }
+
+    &-close {
+      border: none;
+      height: 16px;
+      width: 16px;
+      background: url(../..//images/icons/delete.png) center;
+      justify-self: end;
+
+      @include hover(cursor, pointer);
+    }
+  }
+
+  &__empty {
+    margin: 0;
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.32px;
+    align-self: center;
+  }
+}

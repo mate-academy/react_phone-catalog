@@ -1,0 +1,78 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__select {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding-left: 12px;
+    border: 1px solid $placeholder-color;
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    position: relative;
+
+    &:focus {
+      border: 1px solid $main-text-color;
+      outline: none;
+    }
+
+    @include hover(cursor, pointer);
+
+    &-arrow {
+      height: 16px;
+      width: 16px;
+      background: center;
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      border: none;
+
+      @include hover(cursor, pointer);
+
+      &--up {
+        background-image: url(../../images/icons/arrow-up.png);
+      }
+
+      &--down {
+        background-image: url(../../images/icons/arrow-down.png);
+      }
+    }
+  }
+
+  &__menu {
+    box-sizing: border-box;
+    position: absolute;
+    top: 44px;
+    display: flex;
+    flex-direction: column;
+    padding-block: 8px;
+    border: 1px solid $shadow-color;
+    background: $the-white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    width: 100%;
+  }
+
+  &__option {
+    height: 32px;
+    padding-left: 12px;
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    text-decoration: none;
+
+    @include hover(color, $main-text-color);
+    @include hover(background-color, $option-background);
+    @include hover(cursor, pointer);
+  }
+}

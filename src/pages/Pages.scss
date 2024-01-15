@@ -1,0 +1,87 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.products-page {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 1138px;
+  align-self: center;
+  width: 100%;
+
+  @include on-tablet {
+    margin-inline: auto;
+    max-width: 592px;
+  }
+
+  @include on-mobile{
+    max-width: 288px;
+  }
+
+  &__title {
+    margin: 0;
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-top: 40px;
+  }
+
+  &__count {
+    margin: 0;
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-top: 8px;
+
+    &--results {
+      margin-top: 24px;
+    }
+  }
+
+  &__link-way {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+  }
+
+  &__home-link {
+    height: 16px;
+    width: 16px;
+    background: url(../images/icons/home.png) center;
+  }
+
+  &__way-arrow {
+    height: 16px;
+    width: 16px;
+    background: url(../images/icons/way-arrow.png) center;
+  }
+
+  &__text-link {
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0;
+    text-transform: capitalize;
+
+    &--descktop {
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      
+      @include on-mobile {
+        display: inline;
+      }
+    }
+  }
+}
