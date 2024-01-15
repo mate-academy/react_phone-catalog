@@ -11,8 +11,8 @@ export const FavoritesPage = () => {
     <div className="container">
       <div className="FavouritesPage">
         <BreadCrumbs />
-        <h1 className="FavouritesPage__title">favourites</h1>
-        <p className="FavouritesPage__count">
+        <h1 className="FavouritesPage__title name__page">Favourites</h1>
+        <p className="count__page">
           {favourites ? `${favourites.length} ${favourites.length <= 1 ? 'model' : 'models'}` : '0 models'}
         </p>
         {favourites.length >= 1

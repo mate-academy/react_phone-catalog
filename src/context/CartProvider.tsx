@@ -7,7 +7,7 @@ import React, {
 import { ProductForCart } from '../types/ProductForCart';
 
 interface CartAction {
-  type: 'ADD_TO_CART' | 'REMOVE_FROM_CART';
+  type: 'ADD_TO_CART' | 'REMOVE_FROM_CART' | 'UPDATE_QUANTITY';
   payload: ProductForCart;
 }
 
@@ -19,6 +19,7 @@ type CartContextType = {
   cart: ProductForCart[];
   handleAddToCart: (product: ProductForCart) => void;
   handleRemoveFromCart: (product: ProductForCart) => void;
+  updateQuantity: (productId: string, newQuantity: number) => void;
 };
 
 export const CartContext = createContext<
@@ -37,6 +38,16 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       return {
         ...state,
         cart: state.cart.filter(item => item.id !== action.payload.id),
+      };
+
+    case 'UPDATE_QUANTITY':
+      return {
+        ...state,
+        cart: state.cart.map((item) => (
+          item.id === action.payload.id
+            ? { ...item, quantity: action.payload.quantity }
+            : item
+        )),
       };
 
     default:
@@ -74,11 +85,31 @@ export const CartProvider: React.FC<{
     saveStateToLocalStorage(state.cart.filter(item => item.id !== product.id));
   };
 
+  const handleUpdateQuantity = (productId: string, newQuantity: number) => {
+    const updatedProduct = state.cart.find((item) => item.id === productId);
+
+    if (updatedProduct) {
+      const updatedCart = state.cart.map((item) => (
+        item.id === productId
+          ? { ...item, quantity: newQuantity }
+          : item
+      ));
+
+      dispatch({
+        type: 'UPDATE_QUANTITY',
+        payload: { ...updatedProduct, quantity: newQuantity },
+      });
+
+      saveStateToLocalStorage(updatedCart);
+    }
+  };
+
   return (
     <CartContext.Provider value={{
       cart: state.cart,
       handleAddToCart,
       handleRemoveFromCart,
+      updateQuantity: handleUpdateQuantity,
     }}
     >
       {children}
@@ -93,7 +124,12 @@ export const useCart = (): CartContextType => {
     throw new Error('useCart must be used within a CartProvider');
   }
 
-  const { cart, handleAddToCart, handleRemoveFromCart } = context;
+  const {
+    cart,
+    handleAddToCart,
+    handleRemoveFromCart,
+    updateQuantity,
+  } = context;
 
   const handleAddToCartWithLocalStorage = (product: ProductForCart) => {
     handleAddToCart(product);
@@ -105,9 +141,26 @@ export const useCart = (): CartContextType => {
     saveStateToLocalStorage(cart.filter(item => item.id !== product.id));
   };
 
+  const handleUpdateQuantityWithLocalStorage = (
+    productId: string, newQuantity: number,
+  ) => {
+    const updatedProduct = cart.find((item) => item.id === productId);
+
+    if (updatedProduct) {
+      updateQuantity(productId, newQuantity);
+
+      const updatedCart = cart.map((item) => (
+        item.id === productId ? { ...item, quantity: newQuantity } : item
+      ));
+
+      saveStateToLocalStorage(updatedCart);
+    }
+  };
+
   return {
     cart,
     handleAddToCart: handleAddToCartWithLocalStorage,
     handleRemoveFromCart: handleRemoveFromCartWithLocalStorage,
+    updateQuantity: handleUpdateQuantityWithLocalStorage,
   };
 };

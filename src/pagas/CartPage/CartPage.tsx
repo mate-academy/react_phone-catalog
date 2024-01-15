@@ -4,35 +4,22 @@ import { BackButton } from '../../components/BackButton';
 import { ProductForCart } from '../../types/ProductForCart';
 
 import './CartPage.scss';
+import { useCart } from '../../context/CartProvider';
 
 export const CartPage = () => {
-  const [cartProducts, setCartProducts] = useState<ProductForCart[]>([]);
+  const { cart, handleRemoveFromCart, updateQuantity } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
-
-  useEffect(() => {
-    const getCartProduct = localStorage.getItem('cart');
-    const CartInProducts: ProductForCart[] = getCartProduct
-      ? JSON.parse(getCartProduct)
-      : [];
-
-    setCartProducts(CartInProducts);
-  }, []);
 
   const calculateTotalPrice = (products: ProductForCart[]) => {
     return products.reduce((total, product) => {
       return (
-        total + (product.product.price - product.product.discount)
+        total
+          + (product.product.price - product.product.discount)
           * product.quantity
       );
     }, 0);
   };
-
-  useEffect(() => {
-    const newTotalPrice = calculateTotalPrice(cartProducts);
-
-    setTotalPrice(newTotalPrice);
-  }, [cartProducts]);
 
   const calculateProducts = (products: ProductForCart[]) => {
     return products.reduce((total, product) => {
@@ -41,40 +28,37 @@ export const CartPage = () => {
   };
 
   useEffect(() => {
-    const countProducts = calculateProducts(cartProducts);
-
-    setTotalCount(countProducts);
-  }, [cartProducts]);
-
-  const handleQuantityChange = (productId: string, newQuantity: number) => {
-    const updatedCart = cartProducts.map((product) => (
-      product.id === productId
-        ? { ...product, quantity: newQuantity }
-        : product
-    ));
-
-    setCartProducts(updatedCart);
-    const newTotalPrice = calculateTotalPrice(updatedCart);
+    const newTotalPrice = calculateTotalPrice(cart);
 
     setTotalPrice(newTotalPrice);
 
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-  };
-
-  const handleRemoveFromCart = (productId: string) => {
-    const updatedCart = cartProducts.filter(
-      (product) => product.id !== productId,
-    );
-
-    setCartProducts(updatedCart);
-    const newTotalPrice = calculateTotalPrice(updatedCart);
-
-    setTotalPrice(newTotalPrice);
-    const newTotalCount = calculateProducts(updatedCart);
+    const newTotalCount = calculateProducts(cart);
 
     setTotalCount(newTotalCount);
+  }, [cart]);
 
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  const handleQuantityChange = (productId: string, newQuantity: number) => {
+    updateQuantity(productId, newQuantity);
+
+    const newTotalPrice = calculateTotalPrice(cart);
+
+    setTotalPrice(newTotalPrice);
+  };
+
+  const handleRemove = (productId: string) => {
+    const productToRemove = cart.find((product) => product.id === productId);
+
+    if (productToRemove) {
+      handleRemoveFromCart(productToRemove);
+
+      const newTotalPrice = calculateTotalPrice(cart);
+
+      setTotalPrice(newTotalPrice);
+
+      const newTotalCount = calculateProducts(cart);
+
+      setTotalCount(newTotalCount);
+    }
   };
 
   return (
@@ -82,12 +66,12 @@ export const CartPage = () => {
       <div className="CartPage">
         <BackButton />
         <h1 className="CartPage__title">Cart</h1>
-        {cartProducts.length
+        {cart.length
           ? (
             <div className="CartPage__content content">
               <div className="content__cards">
                 <ul className="content__cards--list">
-                  {cartProducts.map((product) => (
+                  {cart.map((product) => (
                     <li
                       key={product.id}
                       className="cardItem"
@@ -98,10 +82,10 @@ export const CartPage = () => {
                         tabIndex={0}
                         className="cardItem__closing"
                         data-cy="cartDeleteButton"
-                        onClick={() => handleRemoveFromCart(product.id)}
+                        onClick={() => handleRemove(product.id)}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter' || e.key === 'Space') {
-                            handleRemoveFromCart(product.id);
+                            handleRemove(product.id);
                           }
                         }}
                       />
