@@ -21,7 +21,10 @@ export const CartPage = () => {
 
   const calculateTotalPrice = (products: ProductForCart[]) => {
     return products.reduce((total, product) => {
-      return total + product.product.price * product.quantity;
+      return (
+        total + (product.product.price - product.product.discount)
+          * product.quantity
+      );
     }, 0);
   };
 
@@ -138,7 +141,7 @@ export const CartPage = () => {
                         />
                       </div>
                       <div className="cardItem__sum">
-                        {`$${product.quantity * product.product.price}`}
+                        {`$${product.quantity * (product.product.price - product.product.discount)}`}
                       </div>
                     </li>
                   ))}
