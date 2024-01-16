@@ -5,7 +5,7 @@ import { FavouriteContext } from '../context/FavouriteContext';
 export const useHandleToFavourite = (product: Product) => {
   const { favourites, setFavourites } = useContext(FavouriteContext);
   const isItemInFavourites = useMemo(() => {
-    return favourites.some(item => item.id === product.id);
+    return favourites.some(item => item.itemId === product.itemId);
   }, [favourites]);
 
   if (!product) {
@@ -19,7 +19,7 @@ export const useHandleToFavourite = (product: Product) => {
     localStorage.setItem('favourites', JSON.stringify(newFavourites));
   } else {
     const newFavourites = [...favourites].filter(
-      item => item.id !== product.id,
+      item => item.itemId !== product.itemId,
     );
 
     setFavourites(newFavourites);

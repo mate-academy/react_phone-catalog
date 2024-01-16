@@ -10,7 +10,7 @@ export const AccessoriesPage = () => {
   const { isLoading, products } = useContext(ProductContext);
 
   const accessories = products
-    .filter(product => product.type === Category.Accessories);
+    .filter(product => product.category === Category.Accessories);
 
   return (
     <div className="PhonePage container section">

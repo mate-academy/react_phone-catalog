@@ -24,15 +24,15 @@ export const HomePage = () => {
   }, [products]);
 
   const phonesCount = useMemo(() => {
-    return getProductCount(products, 'phone');
+    return getProductCount(products, 'phones');
   }, [products]);
 
   const tabletsCount = useMemo(() => {
-    return getProductCount(products, 'tablet');
+    return getProductCount(products, 'tablets');
   }, [products]);
 
   const accessoriesCount = useMemo(() => {
-    return getProductCount(products, 'accessory');
+    return getProductCount(products, 'accessories');
   }, [products]);
 
   return (

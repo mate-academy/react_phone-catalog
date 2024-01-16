@@ -1,13 +1,13 @@
-import { Category } from './Categoty';
-
 export interface Product {
-  id: string,
+  itemId: string,
   name: string,
   age: number,
-  type: Category,
-  imageUrl: string,
+  // type: Category,
+  category: string,
+  image: string,
   snippet: string,
   price: number,
+  fullPrice: number,
   discount: number,
   screen: string,
   capacity: string,

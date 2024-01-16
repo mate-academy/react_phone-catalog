@@ -73,7 +73,7 @@ const ProductList: React.FC<Props> = ({
         : (
           <div className="ProductList">
             {visibleProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.itemId} product={product} />
             ))}
           </div>
         )}

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import React, { useContext, useMemo } from 'react';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { Button } from '../Button/Button';
 import { makeCharFormated } from '../../helpers/makeCharacteristicFormated';
 import { CartContext } from '../../context/CartContext';
@@ -15,29 +14,25 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     // age,
-    id,
-    type,
-    imageUrl,
+    itemId,
+    // type,
+    category,
+    image,
     name,
-    // snippet,
     price,
-    discount,
+    fullPrice,
     screen,
     capacity,
     ram,
   } = product;
   const { cartItems, setCartItems } = useContext(CartContext);
   const { favourites, setFavourites } = useContext(FavouriteContext);
-  const isItemInCart = cartItems.some(item => item.id === id);
+  const isItemInCart = cartItems.some(item => item.itemId === itemId);
   const isItemInFavourites = useMemo(() => {
-    return favourites.some(item => item.id === id);
+    return favourites.some(item => item.itemId === itemId);
   }, [favourites]);
 
-  const productPath = `/${type}s/${id}`;
-
-  const priceWithDiscount = useMemo(() => {
-    return calculateDiscount(product);
-  }, []);
+  const productPath = `/${category}/${itemId}`;
 
   const handleAddToCart = () => {
     if (!product) {
@@ -45,12 +40,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
 
     if (!isItemInCart) {
-      const newCartItems = [...cartItems, { id, quantity: 1, product }];
+      const newCartItems = [...cartItems, { itemId, quantity: 1, product }];
 
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     } else {
-      const newCartItems = [...cartItems].filter(item => item.id !== id);
+      const newCartItems = [...cartItems].filter(
+        item => item.itemId !== itemId,
+      );
 
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
@@ -68,7 +65,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       setFavourites(newFavourites);
       localStorage.setItem('favourites', JSON.stringify(newFavourites));
     } else {
-      const newFavourites = [...favourites].filter(item => item.id !== id);
+      const newFavourites = [...favourites].filter(
+        item => item.itemId !== itemId,
+      );
 
       setFavourites(newFavourites);
       localStorage.setItem('favourites', JSON.stringify(newFavourites));
@@ -81,7 +80,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <Link to={productPath}>
           <img
             className="ProductCard__image"
-            src={imageUrl}
+            src={image}
             alt={name}
           />
         </Link>
@@ -95,14 +94,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="ProductCard__price">
         <h2 className="ProductCard__price-main">
-          {`$${priceWithDiscount}`}
+          {`$${price}`}
         </h2>
 
-        {!!discount && (
-          <p className="ProductCard__price-discount">
-            {`$${price}`}
-          </p>
-        )}
+        <p className="ProductCard__price-discount">
+          {`$${fullPrice}`}
+        </p>
+
       </div>
 
       <div className="ProductCard__characters">

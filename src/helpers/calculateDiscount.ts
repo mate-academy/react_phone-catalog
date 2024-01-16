@@ -1,10 +1,10 @@
 type Product = {
   price: number,
-  discount: number
+  fullPrice: number,
 };
 
 export const calculateDiscount = (product: Product) => {
-  const { price, discount } = product;
+  const { price, fullPrice } = product;
 
-  return price - ((price / 100) * discount);
+  return Math.round(((fullPrice - price) / fullPrice) * 100);
 };

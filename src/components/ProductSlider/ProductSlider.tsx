@@ -65,7 +65,7 @@ export const ProductSlider: React.FC<Props> = ({ products, title }) => {
           }}
         >
           {products.map(product => (
-            <li key={product.id}>
+            <li key={product.itemId}>
               <ProductCard
                 product={product}
               />

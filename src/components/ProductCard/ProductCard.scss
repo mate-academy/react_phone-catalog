@@ -15,6 +15,8 @@
     height: 208px;
 
     &-container {
+      display: flex;
+      justify-content: center;
       min-height: 208px;
       margin-bottom: 24px;
     }
@@ -26,7 +28,7 @@
     margin-bottom: 6px;
     @extend %body-text;
 
-    & > a {
+    &>a {
       font-family: inherit;
       color: inherit;
     }

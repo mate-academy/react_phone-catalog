@@ -10,7 +10,7 @@ export const PhonesPage = () => {
   const { isLoading, products } = useContext(ProductContext);
 
   const phones = products
-    .filter(product => product.type === Category.Phones);
+    .filter(product => product.category === Category.Phones);
 
   return (
     <div className="PhonePage container section">

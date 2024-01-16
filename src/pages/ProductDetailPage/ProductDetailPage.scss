@@ -73,6 +73,7 @@
       display: block;
       height: 100%;
       width: 100%;
+      object-fit: contain;
 
       &-wrapper {
         flex-grow: 1;
@@ -145,9 +146,15 @@
       border-bottom: 1px solid $gray-elements;
     }
 
+    &--subtitle {
+      @extend %h3;
+      padding-bottom: 16px;
+    }
+
     &--description {
       @extend %body-text;
       color: $gray-secondary;
+      padding-bottom: 32px;
     }
   }
 

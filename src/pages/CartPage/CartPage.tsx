@@ -72,7 +72,7 @@ export const CartPage = () => {
         <div className="CartPage__content">
           <ul className="CartPage__content--list">
             {cartItems.map((item, index) => (
-              <li key={item.id}>
+              <li key={item.itemId}>
                 <div className="CartPage__content--list--item List-item">
                   <div className="List-item__left-side">
                     <button
@@ -89,17 +89,17 @@ export const CartPage = () => {
                     </button>
 
                     <Link
-                      to={`/${item.product.type}s/${item.product.id}`}
+                      to={`/${item.product.category}/${item.product.itemId}`}
                       className="List-item__image"
                     >
                       <img
-                        src={item.product.imageUrl}
+                        src={item.product.image}
                         alt={item.product.name}
                       />
                     </Link>
 
                     <Link
-                      to={`/${item.product.type}s/${item.product.id}`}
+                      to={`/${item.product.category}/${item.product.itemId}`}
                       className="List-item__title"
                     >
                       {item.product.name}

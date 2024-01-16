@@ -12,7 +12,7 @@ export const useAddToCart = () => {
     }
 
     const newCartItem: CartItem = {
-      id: product.id,
+      itemId: product.itemId,
       quantity: 1,
       product,
     };

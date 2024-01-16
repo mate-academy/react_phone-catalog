@@ -12,15 +12,10 @@
   }
 
   @include onSmallScreen {
-    // display: grid;
-    // grid-template-columns: repeat(2, 1fr);
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
   }
-  // display: flex;
-  // gap: 40px 16px;
-  // flex-wrap: wrap;
 }
 
 @include onExtraSmallScreen {

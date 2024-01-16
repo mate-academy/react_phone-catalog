@@ -1,6 +1,12 @@
 import { useLocation, Link } from 'react-router-dom';
 import './Breadcrumb.scss';
 
+const normalizeCrumb = (crumb: string) => {
+  const normalized = crumb.replace(/-/g, ' ');
+
+  return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+};
+
 export const Breadcrumb = () => {
   const location = useLocation();
   const crumbs = location.pathname.split('/').slice(1);
@@ -23,8 +29,8 @@ export const Breadcrumb = () => {
         return (
           <div className="BreadCrumb__crumb" key={crumb}>
             {!isLast
-              ? <Link to={currentPath}>{crumb}</Link>
-              : <span>{crumb}</span>}
+              ? <Link to={currentPath}>{normalizeCrumb(crumb)}</Link>
+              : <span>{normalizeCrumb(crumb)}</span>}
           </div>
         );
       })}

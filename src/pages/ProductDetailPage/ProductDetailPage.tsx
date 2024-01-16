@@ -1,4 +1,4 @@
-import {
+import React, {
   useContext, useEffect, useMemo, useState,
 } from 'react';
 import { useParams } from 'react-router-dom';
@@ -12,7 +12,6 @@ import { Loader } from '../../components/Loader/Loader';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
-import { calculateDiscount } from '../../helpers/calculateDiscount';
 import { Button } from '../../components/Button/Button';
 import { CartContext } from '../../context/CartContext';
 import { FavouriteContext } from '../../context/FavouriteContext';
@@ -25,27 +24,32 @@ export const ProductDetailPage = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
   const { favourites, setFavourites } = useContext(FavouriteContext);
   const { productId } = useParams();
-  const product = products.find(item => item.id === productId);
+  const product = products.find(item => item.itemId === productId);
   const [productDetails, setProductDetails] = useState<ProductDetails>(Object);
   const [activeImage, setActiveImage] = useState(0);
   const hasProductDetails = !!Object.values(productDetails).length && product;
   const isItemInFavourites = useMemo(() => {
-    return product && favourites.some(item => item.id === product.id);
+    return product && favourites.some(item => item.itemId === product.itemId);
   }, [favourites]);
 
   const {
     name,
     images,
-    display,
-    storage,
+    priceRegular,
+    priceDiscount,
+    screen,
+    resolution,
+    processor,
     description,
-    connectivity,
+    ram,
+    capacity,
     camera,
-    android,
+    zoom,
+    cell,
   } = productDetails;
 
   const isItemInCart = product && cartItems.some(
-    item => item.id === product.id,
+    item => item.itemId === product.itemId,
   );
 
   const getSuggestedProducts = (count: number) => {
@@ -72,7 +76,7 @@ export const ProductDetailPage = () => {
 
     const newCartItem = [
       ...cartItems,
-      { id: product.id, quantity: 1, product },
+      { itemId: product.itemId, quantity: 1, product },
     ];
 
     setCartItems(newCartItem);
@@ -91,7 +95,7 @@ export const ProductDetailPage = () => {
       localStorage.setItem('favourites', JSON.stringify(newFavourites));
     } else {
       const newFavourites = [...favourites].filter(
-        item => item.id !== product.id,
+        item => item.itemId !== product.itemId,
       );
 
       setFavourites(newFavourites);
@@ -113,14 +117,6 @@ export const ProductDetailPage = () => {
       .catch(() => setHasError(true))
       .finally(() => setIsLoading(false));
   }, [productId]);
-
-  const priceWithDiscount = useMemo(() => {
-    if (product) {
-      return calculateDiscount(product);
-    }
-
-    return 0;
-  }, [product]);
 
   return (
     <div className="ProductDetailPage section">
@@ -181,12 +177,12 @@ export const ProductDetailPage = () => {
             <div className="ProductDetailPage__info">
               <div className="ProductDetailPage__info--price">
                 <h1 className="ProductDetailPage__info--price--discount">
-                  {`$${priceWithDiscount}`}
+                  {`$${priceDiscount}`}
                 </h1>
 
                 {!!product.discount && (
                   <p className="ProductDetailPage__info--price--full-prize">
-                    {`$${product.price}`}
+                    {`$${priceRegular}`}
                   </p>
                 )}
               </div>
@@ -215,28 +211,28 @@ export const ProductDetailPage = () => {
               <div className="ProductDetailPage__info--specs-small Characters">
                 <div className="Characters__row">
                   <p className="Characters__row--key">
+                    Screen
+                  </p>
+                  <p className="Characters__row--value">
+                    {screen || '-'}
+                  </p>
+                </div>
+
+                <div className="Characters__row">
+                  <p className="Characters__row--key">
                     Resolution
                   </p>
                   <p className="Characters__row--value">
-                    {display.screenResolution || '-'}
+                    {resolution || '-'}
                   </p>
                 </div>
 
                 <div className="Characters__row">
                   <p className="Characters__row--key">
-                    Screen size
+                    Processor
                   </p>
                   <p className="Characters__row--value">
-                    {display.screenSize || '-'}
-                  </p>
-                </div>
-
-                <div className="Characters__row">
-                  <p className="Characters__row--key">
-                    Capacity
-                  </p>
-                  <p className="Characters__row--value">
-                    {storage.flash || '-'}
+                    {processor || '-'}
                   </p>
                 </div>
 
@@ -245,7 +241,7 @@ export const ProductDetailPage = () => {
                     RAM
                   </p>
                   <p className="Characters__row--value">
-                    {storage.ram || '-'}
+                    {ram || '-'}
                   </p>
                 </div>
               </div>
@@ -259,9 +255,17 @@ export const ProductDetailPage = () => {
                 About
               </h2>
 
-              <p className="ProductDetailPage__about--description">
-                {description}
-              </p>
+              {description.map(desc => (
+                <React.Fragment key={desc.title}>
+                  <h3 className="ProductDetailPage__about--subtitle">
+                    {desc.title}
+                  </h3>
+                  <p className="ProductDetailPage__about--description">
+                    {desc.text.join('\n')}
+                  </p>
+                </React.Fragment>
+              ))}
+
             </div>
 
             <div className="ProductDetailPage__tech-specs">
@@ -274,10 +278,10 @@ export const ProductDetailPage = () => {
               >
                 <div className="Tech-specs__row">
                   <p className="Tech-specs__row--key">
-                    Screen size
+                    Screen
                   </p>
                   <p className="Tech-specs__row--value">
-                    {display.screenSize || '-'}
+                    {screen || '-'}
                   </p>
                 </div>
 
@@ -286,43 +290,16 @@ export const ProductDetailPage = () => {
                     Resolution
                   </p>
                   <p className="Tech-specs__row--value">
-                    {display.screenResolution || '-'}
+                    {resolution || '-'}
                   </p>
                 </div>
 
                 <div className="Tech-specs__row">
                   <p className="Tech-specs__row--key">
-                    Bluetooth
+                    Processor
                   </p>
                   <p className="Tech-specs__row--value">
-                    {connectivity.bluetooth || '-'}
-                  </p>
-                </div>
-
-                <div className="Tech-specs__row">
-                  <p className="Tech-specs__row--key">
-                    Camera
-                  </p>
-                  <p className="Tech-specs__row--value">
-                    {camera.primary || '-'}
-                  </p>
-                </div>
-
-                <div className="Tech-specs__row">
-                  <p className="Tech-specs__row--key">
-                    Camera features
-                  </p>
-                  <p className="Tech-specs__row--value">
-                    {camera.features.join(' + ') || '-'}
-                  </p>
-                </div>
-
-                <div className="Tech-specs__row">
-                  <p className="Tech-specs__row--key">
-                    Capacity
-                  </p>
-                  <p className="Tech-specs__row--value">
-                    {storage.flash || '-'}
+                    {processor || '-'}
                   </p>
                 </div>
 
@@ -331,16 +308,43 @@ export const ProductDetailPage = () => {
                     RAM
                   </p>
                   <p className="Tech-specs__row--value">
-                    {storage.ram || '-'}
+                    {ram || '-'}
                   </p>
                 </div>
 
                 <div className="Tech-specs__row">
                   <p className="Tech-specs__row--key">
-                    OS
+                    Built in memory
                   </p>
                   <p className="Tech-specs__row--value">
-                    {android.os || '-'}
+                    {capacity}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Camera
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {camera || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Zoom
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {zoom || '-'}
+                  </p>
+                </div>
+
+                <div className="Tech-specs__row">
+                  <p className="Tech-specs__row--key">
+                    Cell
+                  </p>
+                  <p className="Tech-specs__row--value">
+                    {cell.join(' , ') || '-'}
                   </p>
                 </div>
               </div>

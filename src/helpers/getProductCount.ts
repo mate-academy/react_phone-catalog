@@ -5,7 +5,7 @@ export const getProductCount = (
   productType: string,
 ) => {
   return products.reduce((acc, curr) => {
-    if (curr.type !== productType) {
+    if (curr.category !== productType) {
       return acc;
     }
 
