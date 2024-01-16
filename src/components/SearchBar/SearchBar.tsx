@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import cn from 'classnames';
-import './style.scss';
+import './SearchBar.scss';
 
 type Props = {
   className: string

@@ -2,9 +2,10 @@
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../Navbar/Navbar';
 
-import './style.scss';
+import './Root.scss';
+import { Footer } from '../Footer';
 
-export const Header = () => {
+export const Root = () => {
   return (
     <div className="App">
       <header className="header">
@@ -16,6 +17,10 @@ export const Header = () => {
           <Outlet />
         </div>
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };

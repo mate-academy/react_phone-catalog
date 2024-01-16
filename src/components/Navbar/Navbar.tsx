@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { SearchBar } from '../SearchBar';
 
-import './style.scss';
+import './Navbar.scss';
 
 export const Navbar = () => {
   return (

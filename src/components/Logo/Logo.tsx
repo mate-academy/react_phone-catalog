@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import './style.scss';
+import './Logo.scss';
 
 export const Logo = () => {
   return (

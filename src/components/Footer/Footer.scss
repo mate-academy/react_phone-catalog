@@ -1,0 +1,52 @@
+@import '../../assets/css/variables';
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 152px;
+  border-bottom: 1px solid $elements;
+  height: $footer-height;
+  box-sizing: border-box;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    color: $secondary;
+  }
+}
+
+.back-to-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    color: $secondary;
+  }
+
+  &__button {
+    background-image: url(../../../public/img/icons/arrowUp.svg);
+    height: 32px;
+    width: 32px;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 1px solid $icons;
+  }
+}

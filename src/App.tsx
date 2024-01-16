@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
-import { Home, Header, NotFoundPage } from './components';
+import { Home, Root, NotFoundPage } from './components';
 
 export const App = () => (
   <Routes>
-    <Route path="/" element={<Header />}>
+    <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
