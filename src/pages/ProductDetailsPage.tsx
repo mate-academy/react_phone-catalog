@@ -34,7 +34,9 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     loadItem();
-  }, []);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }, [productId]);
 
   if (errorMessage || errorMessageItem) {
     return (<h1>{errorMessage}</h1>);

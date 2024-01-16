@@ -96,7 +96,7 @@ export const Category: React.FC = () => {
     return <Loader />;
   }
 
-  if (!['phones', 'tablets', 'accesories', 'favorites'].includes(path)) {
+  if (!['phones', 'tablets', 'accessories', 'favorites'].includes(path)) {
     return (<h1>Page not found</h1>);
   }
 

@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
           <NavLink to={{ pathname: 'tablets', search }} className={getLinkClass}>
             Tablets
           </NavLink>
-          <NavLink to={{ pathname: 'accesories', search }} className={getLinkClass}>
+          <NavLink to={{ pathname: 'accessories', search }} className={getLinkClass}>
             Accesories
           </NavLink>
         </div>

@@ -122,7 +122,7 @@ export const HomePage: React.FC = () => {
               {`${products.filter(p => p.type === 'tablet').length} models`}
             </p>
           </Link>
-          <Link className="categories__link" to="/phones">
+          <Link className="categories__link" to="/accessories">
             <img
               src="img/categories/accesories.png"
               alt="categories/accesories"
