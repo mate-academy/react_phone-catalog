@@ -1,0 +1,74 @@
+.category {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    margin-bottom: 40px;
+  }
+
+  &__selects {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 24px;
+
+    &:first-child {
+      margin-right: 16px;
+    }
+
+    &-label {
+      @extend %small-text;
+
+      display: block;
+      margin-bottom: 4px;
+      color: $gray-icons-placeholders;
+    }
+
+    &-arrow {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+    }
+
+    &-select {
+      @extend %body-text;
+
+      width: 176px;
+      height: 40px;
+      padding: 12px;
+      appearance: none;
+      background-color: transparent;
+      line-height: 100%;
+      border: 1px solid $gray-icons-placeholders;
+
+      &--pages {
+        width: 128px;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+
+      &:hover {
+        border: 1px solid $gray-secondary;
+      }
+
+      &:focus {
+        border: 1px solid $gray-primary;
+      }
+    }
+  }
+}
+
+.pathLine {
+  @extend %small-text;
+
+  display: flex;
+  padding-top: 24px;
+  margin-bottom: 40px;
+  color: $gray-secondary;
+
+  &__arrow {
+    margin: 0 8px;
+  }
+}

@@ -1,1 +1,16 @@
-// not empty
+@import "/src/styles/main";
+
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("../public/fonts/Mont-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: bold;
+  src: url("../public/fonts/Mont-Bold.otf") format("opentype");
+}

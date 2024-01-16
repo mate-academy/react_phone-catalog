@@ -1,0 +1,102 @@
+%h1 {
+  color: $gray-primary;
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+%h2 {
+  color: $gray-primary;
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%
+}
+
+%h3 {
+  color: $gray-primary;
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+%buttons {
+  color: $gray-primary;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+%body-text {
+  color: $gray-primary;
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+%small-text {
+  color: $gray-primary;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+%arrow-button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+%card-button {
+  &:active {
+    color: $green;
+  }
+}
+
+%button {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid $gray-icons-placeholders;
+  background: white;
+
+  &:hover {
+    border: 1px solid $gray-primary;
+  }
+
+  &:disabled {
+    border: 1px solid $gray-elements;
+
+    .pageSection__button-arrow {
+      fill: $gray-icons-placeholders;
+    }
+  }
+
+  .pageSection__button-arrow {
+    fill: $gray-primary;
+  }
+}
+
+%bacground-position {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+%absolute-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

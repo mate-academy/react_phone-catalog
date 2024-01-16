@@ -1,0 +1,49 @@
+.section {
+  min-height: calc(100vh - 96px - 64px);
+}
+
+.link {
+  text-decoration: none;
+  color: $gray-primary;
+}
+
+.pageSection {
+  position: relative;
+  padding-bottom: 80px;
+
+  &__title {
+    @extend %h1;
+
+    text-align: left;
+    margin: 0 0 24px;
+  }
+
+  &__buttons {
+   position: absolute;
+   top: 5px;
+   right: 0;
+  }
+
+  &__button {
+    @extend %arrow-button;
+    @extend %button;
+
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 15px;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    justify-content: center;
+    justify-items: center;
+
+    @mixin on-desktop {
+      grid-template-columns: repeat(4, 270px);
+    }
+  }
+}
