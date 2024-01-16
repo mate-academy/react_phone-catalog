@@ -27,10 +27,28 @@
     align-items: center;
   }
 
+  &__search {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__finder-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+  }
+
+  &__finder {
+    background-color: inherit;
+    padding: 24px;
+  }
+
   &__input {
     display: block;
     position: relative;
-    padding: 23px 150px 23px 24px;
+    padding: 23px 140px 23px 24px;
     border: none;
     outline: none;
 
@@ -41,17 +59,17 @@
 
     box-shadow: -1px 0 0 0 $elements-color;
 
-    @include hover(background-color, $bg-and-hover-color);
-
-    &:focus {
-      background: $bg-and-hover-color;
-    }
-
     &::placeholder {
       @extend %body-text;
 
       color: $icons-color;
     }
+
+    &:focus {
+      background-color: $bg-and-hover-color;
+    }
+
+    @include hover(background-color, $bg-and-hover-color);
   }
 
   &__favourites {

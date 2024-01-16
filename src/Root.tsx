@@ -4,6 +4,8 @@ import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { PageNotFound } from './pages/PageNotFound';
 import { PageCommingSoon } from './pages/PageCommingSoon';
+import { FavouritesPage } from './pages/FavouritesPage';
+import { CartPage } from './pages/CartPage';
 
 export const Root: React.FC = () => {
   return (
@@ -13,6 +15,8 @@ export const Root: React.FC = () => {
           <Route index element={<HomePage />} />
           <Route path="/tablets" element={<PageCommingSoon />} />
           <Route path="/accessories" element={<PageCommingSoon />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

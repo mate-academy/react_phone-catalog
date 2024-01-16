@@ -1,0 +1,45 @@
+@import "../../styles/main";
+
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding-top: 24px;
+  padding-bottom: 40px;
+
+  @extend %links;
+
+  &__name--active {
+    color: $main-color;
+  }
+}
+
+.favourites {
+  &__top {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    color: $secondary-color;
+
+    @extend %body-text;
+
+    &--found {
+      margin-block: 24px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+
+    margin-bottom: 80px;
+  }
+}

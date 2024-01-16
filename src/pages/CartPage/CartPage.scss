@@ -1,0 +1,79 @@
+@import "../../styles/main";
+
+.cart-page {
+  padding-block: 40px 87px;
+
+  &__top {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    background-color: $white-color;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    color: $secondary-color ;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 368px;
+  height: max-content;
+
+  border: 1px solid $elements-color;
+  padding: 24px;
+
+  &__total {
+    @extend %h1;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 24px;
+
+
+    border-bottom: 1px solid $elements-color;
+
+    margin-bottom: 24px;
+  }
+
+  &__amount {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+
+  &__button {
+    background-color: $main-color;
+    color: $white-color;
+
+    @extend %button;
+
+    width: 100%;
+    padding-block: 14px 13px;
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+  }
+}

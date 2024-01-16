@@ -1,3 +1,5 @@
+@import './mixins';
+
 .icon {
   position: relative;
   width: 16px;
@@ -27,5 +29,47 @@
 
   &-next {
     background-image: url('../assets/icons/vecrot-right-main.svg');
+  }
+
+  &-home {
+    background-image: url('../assets/icons/home.svg');
+  }
+
+  &-next-inactive {
+    background-image: url('../assets/icons/vecrot-right.svg');
+  }
+
+  &-search {
+    background-image: url('../assets/icons/search.svg');
+  }
+
+  &-close {
+    background-image: url('../assets/icons/close.svg');
+  }
+
+  &-close-main {
+    background-image: url('../assets/icons/close-main.svg');
+    
+    @include hover(background-image, url('../assets/icons/close.svg'));
+  }
+
+  &-main {
+    background-image: url('../assets/icons/close-main.svg');
+  }
+
+  &-minus {
+    background-image: url('../assets/icons/minus.svg');
+  }
+
+  &-minus-main {
+    background-image: url('../assets/icons/minus-main.svg');
+  }
+
+  &-plus {
+    background-image: url('../assets/icons/plus.svg');
+  }
+
+  &-plus-main {
+    background-image: url('../assets/icons/plus-main.svg');
   }
 }

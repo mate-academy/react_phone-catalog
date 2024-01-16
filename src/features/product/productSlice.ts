@@ -8,6 +8,7 @@ export interface ProductState {
   phone: Product | null;
   favourites: Product[];
   cart: Product[];
+  search: string,
   error: boolean,
   loading: boolean,
 }
@@ -17,6 +18,7 @@ const initialState: ProductState = {
   phone: null,
   favourites: JSON.parse(localStorage.getItem('favourites') || '[]'),
   cart: JSON.parse(localStorage.getItem('cart') || '[]'),
+  search: '',
   error: false,
   loading: false,
 };
@@ -45,8 +47,25 @@ const phonesSlice = createSlice({
       state.cart.push(action.payload);
     },
     removeFromCart: (state, action: PayloadAction<Product>) => {
+      const copy = [...state.cart].reverse();
+      const index = copy.findIndex(item => item.id === action.payload.id);
+
+      copy.splice(index, 1);
+
+      state.cart = [...copy].reverse();
+    },
+    removeProduct: (state, action: PayloadAction<Product>) => {
       state.cart = state.cart
-        .filter(pr => pr.id !== action.payload.id);
+        .filter(item => item.id !== action.payload.id);
+    },
+    clearCart: (state) => {
+      state.cart = [];
+    },
+    addSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    removeSearch: (state) => {
+      state.search = '';
     },
   },
   extraReducers: (builder) => {
@@ -72,6 +91,10 @@ export const {
   removeFavourite,
   addToCart,
   removeFromCart,
+  addSearch,
+  removeSearch,
+  clearCart,
+  removeProduct,
 } = phonesSlice.actions;
 
 export default phonesSlice.reducer;
