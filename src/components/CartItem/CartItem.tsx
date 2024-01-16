@@ -4,6 +4,7 @@ import { GlobalContext } from '../Context/GlobalContext';
 import { CartItemType } from '../../types/CartItemType';
 import './CartItem.scss';
 import { API_URL } from '../../utils/api';
+import classNames from 'classnames';
 
 type Props = {
   product: CartItemType,
@@ -55,7 +56,9 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <button
           type="button"
           aria-label="button decrease"
-          className="button button--minus"
+          className={classNames('button button--minus', {
+            'button--minus-disabled': product.quantity === 1,
+          })}
           disabled={product.quantity === 1}
           onClick={() => handleDecrease(id)}
         />
@@ -72,7 +75,11 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         />
       </div>
 
-      <span className="cart-item__price">{`$${price * product.quantity}`}</span>
+      <div className="cart-item__price">
+        <span className="cart-item__price--value">
+          {`$${price * product.quantity}`}
+          </span>
+      </div>
     </li>
   );
 };

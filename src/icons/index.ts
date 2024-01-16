@@ -21,6 +21,7 @@ import accessoriesBanner from './banner-accessories.png';
 import workInProgress from './work-in-progress.jpg';
 import iconWarning from './icon-warning.png';
 import arrowDown from './arrow-down.svg';
+import iconMinusDisabled from './icon-minus-disabled.svg';
 
 export const ICONS = {
   logo: iconLogo,
@@ -45,4 +46,5 @@ export const ICONS = {
   workInProgress,
   iconWarning,
   arrowDown,
+  iconMinusDisabled,
 };

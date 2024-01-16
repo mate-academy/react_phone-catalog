@@ -23,9 +23,9 @@ export const ProductButtons: React.FC<Props> = ({ product }) => {
     return <NotFoundPage />;
   }
 
-  const { id } = product;
+  const { id, phoneId } = product;
 
-  const isProductDetailsPage = location.pathname === `/phones/${id}`;
+  const isProductDetailsPage = location.pathname === `/phones/${phoneId}`;
   const isAddedToCart = cart.find(item => item.product.id === id);
   const isAddedToFav = favList.find(item => item.id === id);
 

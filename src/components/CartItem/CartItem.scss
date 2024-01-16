@@ -60,12 +60,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-right: 43px;
     gap: 13px;
     @include bodyText;
   }
 
   &__price {
-    @include h2Text;
+    width: 70px;
+
+    &--value {
+      @include h2Text;
+    }
   }
 }
 
@@ -78,6 +83,14 @@
 
   &--minus {
     background-image: url(../../icons/icon-minus.svg);
+
+    &-disabled {
+      background-image: url(../../icons/icon-minus-disabled.svg);
+
+      &:hover {
+        border-color: $icons-color;
+      }
+    }
   }
 
   &--plus {

@@ -244,6 +244,11 @@
       
       &--link {
         @include bodyText;
+        color: $primary-color;
+
+        &-selected {
+          color: #fff;
+        }
       }
 
       &--active {

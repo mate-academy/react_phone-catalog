@@ -16,6 +16,8 @@ export const Header = () => {
   const { cart, favList } = useContext(GlobalContext);
   const { pathname } = useLocation();
 
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   const isSearchVisible = pathname === '/phones'
     || pathname === '/tablets'
     || pathname === '/favourites'
@@ -61,7 +63,7 @@ export const Header = () => {
             />
             {!!cart.length && (
               <div className="counter">
-                {cart.length}
+                {totalQuantity}
               </div>
             )}
           </div>

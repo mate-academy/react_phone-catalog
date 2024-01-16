@@ -16,11 +16,18 @@
 .images {
   grid-column: 2 / -2;
   height: 100%;
-  width: 1040px;
   overflow: hidden;
 
   @media (min-width: 1330px) {
     width: 930px;
+  }
+
+  @media (max-width: 1440px) {
+    width: 1040px;
+  }
+
+  @media (min-width: 1441px) {
+    width: 1110px;
   }
 
   &__list {

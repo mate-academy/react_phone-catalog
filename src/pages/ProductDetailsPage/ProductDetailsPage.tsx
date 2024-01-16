@@ -172,13 +172,14 @@ export const ProductDetailsPage: React.FC = () => {
                       style={{
                         backgroundColor: PRODUCTS_COLORS[colorValue],
                       }}
-                      to={`/phones/${namespaceId}-${capacity.toLowerCase()}-${colorValue}`}
+                      to={`/phones/${namespaceId}-${capacity.toLowerCase()}-${colorValue.toLowerCase()}`}
                       className="details-page__colors-color--link"
                     />
                   </li>
                 ))}
               </ul>
             </div>
+
             <div className="details-page__capacity">
               <p className="details-page__capacity-title">
                 Select capacity
@@ -195,11 +196,10 @@ export const ProductDetailsPage: React.FC = () => {
                     )}
                   >
                     <Link
-                      style={{
-                        backgroundColor: PRODUCTS_COLORS[capacityValue],
-                      }}
-                      to={`/phones/${namespaceId}-${capacity.toLowerCase()}-${color}`}
-                      className="details-page__capacity-value--link"
+                      to={`/phones/${namespaceId}-${capacityValue.toLowerCase()}-${color.toLowerCase()}`}
+                      className={classNames('details-page__capacity-value--link', {
+                        'details-page__capacity-value--link-selected': capacity === capacityValue,
+                      })}
                     >
                       {capacityValue}
                     </Link>
