@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { Filter } from '../types/filter';
@@ -17,12 +17,13 @@ export const HomePage: React.FC = () => {
     setBanner(banner === 3 ? 1 : banner + 1);
   }
 
-  function nextWithInterval() {
-    next();
-    setTimeout(nextWithInterval, 5000);
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      next();
+    }, 5000);
 
-  setTimeout(nextWithInterval, 5000);
+    return () => clearInterval(interval);
+  }, [banner]);
 
   return (
     <>
@@ -39,15 +40,9 @@ export const HomePage: React.FC = () => {
           <div className="banner__slider">
             <div className="banner__slider-container">
               <div className={`banner__slider-line banner__slider-line--${banner}`}>
-                {[1, 2, 3].map(num => (
-                  <div
-                    key={num}
-                    className={
-                      `banner__slider-container--photo banner__slider-container--photo-${num}`
-                    }
-                    id={`banner${num}`}
-                  />
-                ))}
+                <img src="img/Banner1.jpg" alt="img/Banner1.jpg" className="banner__slider-container--photo banner__slider-container--photo-1" />
+                <img src="img/Banner2.jpg" alt="img/Banner2.jpg" className="banner__slider-container--photo banner__slider-container--photo-2" />
+                <img src="img/Banner3.jpg" alt="img/Banner3.jpg" className="banner__slider-container--photo banner__slider-container--photo-3" />
               </div>
             </div>
           </div>
