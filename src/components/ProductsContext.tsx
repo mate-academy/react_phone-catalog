@@ -78,7 +78,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   function addToCard(value: string) {
     if (cartIds.some(arr => arr[0] === value)) {
-      increase(value);
+      deleteId(value);
     } else {
       setCardIds([...cartIds, [value, 1]]);
     }

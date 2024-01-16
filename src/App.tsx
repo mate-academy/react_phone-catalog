@@ -18,16 +18,18 @@ export const App = () => {
       <div className="footer">
         <div className="container">
           <nav className="navbar navbar--footer">
-            <img className="navbar__logo navbar__logo--footer" src="icons/logo.svg" alt="logo" />
+            <a href="/">
+              <img className="navbar__logo navbar__logo--footer" src="icons/logo.svg" alt="logo" />
+            </a>
 
             <div className="navbar__links navbar__links--footer">
               <a href="https://github.com/" className="navbar-item">
                 github
               </a>
-              <a href="/contacts" className="navbar-item">
+              <a href="https://github.com/" className="navbar-item">
                 contacts
               </a>
-              <a href="/" className="navbar-item">
+              <a href="https://github.com/" className="navbar-item">
                 rights
               </a>
             </div>

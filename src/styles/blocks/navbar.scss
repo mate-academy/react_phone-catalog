@@ -30,6 +30,7 @@
     margin-left: 128px;
     justify-content: space-between;
     align-items: center;
+    // margin-left: 55px;
 
     @media (min-width: 500px) and (max-width:640px) {
       margin-left: 55px;
@@ -56,6 +57,7 @@
     font-weight: 700;
     line-height: 11px;
     letter-spacing: 0.04em;
+    margin: 0 5px;
 
     &:hover {
       color: $gray-primary;
@@ -75,8 +77,10 @@
   &__search {
     flex-grow: 0.2;
     position: relative;
-
     box-shadow: -1px 0 0 0 $gray-elements;
+    &--hide {
+      visibility: hidden;
+    }
 
     &-input {
       @extend %buttons;
