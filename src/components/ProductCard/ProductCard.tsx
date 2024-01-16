@@ -38,19 +38,19 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
         </p>
       </div>
       <div className="product__details">
-        <div className="screen-size detail">
+        <div className="detail">
           <p className="detail__title">Screen</p>
           <p className="detail__value">
             {screen}
           </p>
         </div>
-        <div className="capacity detail">
+        <div className="detail">
           <p className="detail__title">Capacity</p>
           <p className="detail__value">
             {capacity}
           </p>
         </div>
-        <div className="memory detail">
+        <div className="detail">
           <p className="detail__title">RAM</p>
           <p className="detail__value">
             {ram}

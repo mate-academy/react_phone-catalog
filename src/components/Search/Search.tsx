@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './search.scss';
+import { MainContext } from '../../context';
 
 export const Search = () => {
+  const {
+    currentPage,
+  } = useContext(MainContext);
   const [query, setQuery] = useState('');
 
   const handleSearchRequest = (event:React.ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +18,7 @@ export const Search = () => {
         type="text"
         name="search"
         className="header__input"
-        placeholder="Search in phones..."
+        placeholder={`Search in ${currentPage.toLowerCase()}...`}
         autoComplete="off"
         value={query}
         onChange={handleSearchRequest}

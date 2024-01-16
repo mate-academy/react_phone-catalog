@@ -18,7 +18,7 @@ export const Header = () => {
           <ul className="menu__list">
             <li className="menu__item">
               <NavLink
-                to="/home"
+                to="/"
                 className={(
                   { isActive },
                 ) => (isActive ? 'menu__link activ-link' : 'menu__link')}

@@ -1,10 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import './phones-page.scss';
-// import { useState, useEffect } from 'react';
 import { useContext, useEffect } from 'react';
 import { ProductsList } from '../../components/ProductsList';
-// import { getProducts } from '../../services/getProducts';
-// import { Product } from '../../types/Product';
 import { Pagination } from '../../components/Pagination';
 import { PathBlock } from '../../components/PathBlock';
 import { MainContext } from '../../context';
