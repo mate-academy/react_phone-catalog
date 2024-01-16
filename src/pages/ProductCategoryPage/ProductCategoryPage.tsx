@@ -2,6 +2,7 @@ import {
   Link,
   useSearchParams,
 } from 'react-router-dom';
+import cn from 'classnames';
 
 import { TyChangeEvtSelectElmt } from '../../types/General';
 import { Product } from '../../types/Product';
@@ -132,9 +133,39 @@ export const ProductCategoryPage: React.FC<Props> = ({
             ProductCategoryPage__selection__select
             ProductCategoryPage__selection__select--order"
                 >
-                  <option value={SortBy.age}>Newest</option>
-                  <option value={SortBy.name}>Alphabetically</option>
-                  <option value={SortBy.price}>Cheapest</option>
+                  <option
+                    value={SortBy.age}
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        SortBy.age !== sortBy,
+                      'ProductCategoryPage__selection__option--selected':
+                        SortBy.age === sortBy,
+                    })}
+                  >
+                    Newest
+                  </option>
+                  <option
+                    value={SortBy.name}
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        SortBy.name !== sortBy,
+                      'ProductCategoryPage__selection__option--selected':
+                        SortBy.name === sortBy,
+                    })}
+                  >
+                    Alphabetically
+                  </option>
+                  <option
+                    value={SortBy.price}
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        SortBy.price !== sortBy,
+                      'ProductCategoryPage__selection__option--selected':
+                        SortBy.price === sortBy,
+                    })}
+                  >
+                    Cheapest
+                  </option>
                 </select>
               </div>
             </div>
@@ -156,10 +187,50 @@ export const ProductCategoryPage: React.FC<Props> = ({
             ProductCategoryPage__selection__select
             ProductCategoryPage__selection__select--item-per-page"
                 >
-                  <option value="">All</option>
-                  <option value="4">4</option>
-                  <option value="8">8</option>
-                  <option value="16">16</option>
+                  <option
+                    value=""
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        itemsPerPage !== '',
+                      'ProductCategoryPage__selection__option--selected':
+                        itemsPerPage === '',
+                    })}
+                  >
+                    All
+                  </option>
+                  <option
+                    value="4"
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        itemsPerPage !== '4',
+                      'ProductCategoryPage__selection__option--selected':
+                        itemsPerPage === '4',
+                    })}
+                  >
+                    4
+                  </option>
+                  <option
+                    value="8"
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        itemsPerPage !== '8',
+                      'ProductCategoryPage__selection__option--selected':
+                        itemsPerPage === '8',
+                    })}
+                  >
+                    8
+                  </option>
+                  <option
+                    value="16"
+                    className={cn('ProductCategoryPage__selection__option', {
+                      'ProductCategoryPage__selection__option--default':
+                        itemsPerPage !== '16',
+                      'ProductCategoryPage__selection__option--selected':
+                        itemsPerPage === '16',
+                    })}
+                  >
+                    16
+                  </option>
                 </select>
               </div>
             </div>

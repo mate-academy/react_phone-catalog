@@ -1,16 +1,16 @@
 import { PayloadAction, createSlice, current } from '@reduxjs/toolkit';
 
-import { client as localClient } from '../utils/localClient';
+import { getClient } from '../utils/localClient';
 import { Product } from '../types/Product';
 
-export const FAVORITES_STORAGE_KEY = 'favoritesStorage';
+const localClient = getClient('favoritesStorage');
 
 export type FavoritesState = {
   items: Product[];
 };
 
 const initialState: FavoritesState = {
-  items: localClient.init(FAVORITES_STORAGE_KEY, [] as Product[]),
+  items: localClient.init([] as Product[]),
 };
 
 const favoritesSlice = createSlice({
@@ -20,18 +20,18 @@ const favoritesSlice = createSlice({
     add: (state, action: PayloadAction<Product>) => {
       state.items.push(action.payload);
 
-      localClient.write(FAVORITES_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
     remove: (state, action: PayloadAction<Product>) => {
       state.items = state.items// eslint-disable-line no-param-reassign
         .filter(item => item.itemId !== action.payload.itemId);
 
-      localClient.write(FAVORITES_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
     clean: (state) => {
       state.items = [];// eslint-disable-line no-param-reassign
 
-      localClient.write(FAVORITES_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
   },
 });

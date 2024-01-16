@@ -21,7 +21,7 @@ export const FavouritesPage: React.FC<Props> = (
 
   const preparedQuery = query.trim().toLowerCase();
   const visibleProducts = [...favorites]
-    .filter(item => item.name.includes(preparedQuery));
+    .filter(item => item.name.toLowerCase().includes(preparedQuery));
 
   return (
     <div

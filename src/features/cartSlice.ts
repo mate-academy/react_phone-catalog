@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice, current } from '@reduxjs/toolkit';
 
-import { client as localClient } from '../utils/localClient';
+import { getClient } from '../utils/localClient';
 import { Product } from '../types/Product';
 
-export const CART_STORAGE_KEY = 'cartStorage';
+const localClient = getClient('cartStorage');
 
 type CartItem = {
   product: Product,
@@ -15,7 +15,7 @@ export type CartState = {
 };
 
 const initialState: CartState = {
-  items: localClient.init(CART_STORAGE_KEY, [] as CartItem[]),
+  items: localClient.init([] as CartItem[]),
 };
 
 const cartSlice = createSlice({
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
         state.items[productIndx].quantity += 1;// eslint-disable-line no-param-reassign
       }
 
-      localClient.write(CART_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
     take(state, action: PayloadAction<Product>) {
       const productIndx = state.items
@@ -53,18 +53,18 @@ const cartSlice = createSlice({
         state.items.splice(productIndx, 1);
       }
 
-      localClient.write(CART_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
     remove(state, action: PayloadAction<Product>) {
       state.items = state.items// eslint-disable-line no-param-reassign
         .filter(item => item.product.itemId !== action.payload.itemId);
 
-      localClient.write(CART_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
     clean(state) {
       state.items = [];// eslint-disable-line no-param-reassign
 
-      localClient.write(CART_STORAGE_KEY, current(state).items);
+      localClient.write(current(state).items);
     },
   },
 });

@@ -23,9 +23,9 @@ export const Search = () => {
   const applyQuery = useCallback(
     debounce(setSearchWith, 1000),
     [location.pathname],
-  );
+  );// bag correction
 
-  useEffect(() => {
+  useEffect(() => { // search when switch on other page
     setSearchWith({ [SearchParamsName.QUERY]: query.trim() || null });
   }, [location.pathname]);
 

@@ -20,3 +20,11 @@ export const client = {
     return client.read(key) || initialData;
   },
 };
+
+export function getClient(key: string) {
+  return {
+    read: <T>(): T | null => client.read(key),
+    write: <T>(data: T): void => client.write(key, data),
+    init: <T>(initialData: T): T => client.init(key, initialData),
+  };
+}
