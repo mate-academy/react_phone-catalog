@@ -53,10 +53,12 @@ export const BannerSlider: React.FC = () => {
   return (
     <section className="banner-slider">
       <div className="banner-container">
-        <ButtonSlider moveSlide={prevSlide} direction="prev" height={400} />
+        <div className="button__left">
+          <ButtonSlider moveSlide={prevSlide} direction="prev" height={400} />
+        </div>
 
         <div className="images">
-          <ul className="images__container">
+          <ul className="images__list">
             {BANNERS.map((banner, index) => (
               <li
                 key={banner.id}
@@ -75,7 +77,9 @@ export const BannerSlider: React.FC = () => {
           </ul>
         </div>
 
-        <ButtonSlider moveSlide={nextSlide} direction="next" height={400} />
+        <div className="button__right">
+          <ButtonSlider moveSlide={nextSlide} direction="next" height={400} />
+        </div>
 
         <div className="dots__container">
           {BANNERS.map((banner, index) => (

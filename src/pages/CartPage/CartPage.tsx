@@ -48,39 +48,39 @@ export const CartPage: React.FC = () => {
             ))}
           </ul>
 
-        {!!cart.length && (
-          <div className="cart-page__checkout">
-            <div className="cart-page-checkout__info">
-              <div className="cart-page__checkout-sum">
-                {`$${totalSum}`}
+          {!!cart.length && (
+            <div className="cart-page__checkout">
+              <div className="cart-page-checkout__info">
+                <div className="cart-page__checkout-sum">
+                  {`$${totalSum}`}
+                </div>
+                <span className="cart-page__checkout-text">
+                  {`Total for ${totalQuantity} item${totalQuantity > 1 ? 's' : ''}`}
+                </span>
               </div>
-              <span className="cart-page__checkout-text">
-                {`Total for ${totalQuantity} item${totalQuantity > 1 ? 's' : ''}`}
-              </span>
+
+              <div className="cart-page__checkout-line" />
+
+              <button
+                type="button"
+                className="cart-page__checkout-button"
+                onClick={handleCheckoutMessage}
+              >
+                <p>
+                  Checkout
+                </p>
+              </button>
             </div>
+          )}
 
-            <div className="cart-page__checkout-line" />
-
-            <button
-              type="button"
-              className="cart-page__checkout-button"
-              onClick={handleCheckoutMessage}
-            >
-              <p>
-                Checkout
+          {checkoutMessage !== '' && (
+            <div className="cart-page__message">
+              <p className="cart-page__message--text">
+                {checkoutMessage}
               </p>
-            </button>
-          </div>
-        )}
-
-        {checkoutMessage !== '' && (
-          <div className="cart-page__message">
-            <p className="cart-page__message--text">
-              {checkoutMessage}
-            </p>
-          </div>
-        )}
-      </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

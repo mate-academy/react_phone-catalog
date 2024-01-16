@@ -10,18 +10,24 @@
   box-sizing: border-box;
   @include pageGrid;
   padding-bottom: 32px;
+  width: 100%;
 }
 
 .images {
   grid-column: 2 / -2;
-  height: 400px;
+  height: 100%;
   width: 1040px;
   overflow: hidden;
 
-  &__container {
+  @media (min-width: 1330px) {
+    width: 930px;
+  }
+
+  &__list {
     position: relative;
     display: flex;
     height: 100%;
+    width: 300%;
     transition: transform 0.5s;
   }
 
@@ -30,6 +36,8 @@
     top: 0;
     left: 0;
     opacity: 0;
+    height: 100%;
+    width: 33.33%;
     transition: opacity 0.5s ease-in;
   }
 
@@ -63,4 +71,14 @@
 
 .dot.active {
   background-color: $primary-color;
+}
+
+.button {
+  &__left {
+    grid-column: 1 / span 1;
+  }
+
+  &__right {
+    grid-column: -2 / span 1;
+  }
 }
