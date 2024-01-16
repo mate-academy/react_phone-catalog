@@ -5,11 +5,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 
   &__content {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100%;
+
 
       &--left {
         gap: $header-item-gap;
@@ -41,6 +44,7 @@
 
   &__icon-link {
     display: block;
+    height: 100%;
     text-decoration: none;
     padding: 18px;
     border-left: 1px solid $elements;

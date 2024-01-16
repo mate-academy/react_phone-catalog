@@ -1,0 +1,73 @@
+// @import url("./fonts.scss");
+
+// * {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// // html {
+// //   scrollbar-color: var(--light-gray-40) transparent;
+// //   scrollbar-width: auto;
+// // }
+
+// body {
+//   display: flex;
+//   flex-direction: column;
+//   // min-width: 320px;
+//   // min-height: 100vh;
+//   margin: 0;
+//   font-family: Mont, Arial, sans-serif;
+//   font-size: 14px;
+//   line-height: 21px;
+// }
+
+// #root {
+//   display: flex;
+//   flex-grow: 1;
+//   flex-direction: column;
+// }
+
+// .visually-hidden {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   padding: 0;
+//   overflow: hidden;
+//   white-space: nowrap;
+//   border: 0;
+//   clip: rect(0 0 0 0);
+//   clip-path: inset(100%);
+// }
+
+// .text-overflow {
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+// a {
+//   text-decoration: none;
+// }
+
+// button {
+//   cursor: pointer;
+// }
+
+// ::-webkit-scrollbar {
+//   width: 5px;
+//   height: 5px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background: var(--light-gray-40);
+//   border-radius: 2px;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background: var(--medium-brightness-gray);
+// }
+
+// ::-webkit-scrollbar-track {
+//   background: transparent;
+// }
