@@ -1,7 +1,9 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { useCart } from '../../context/CartProvider';
 import { useFavourites } from '../../context/FavouritesProvider';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 import './Header.scss';
 
@@ -9,6 +11,9 @@ export const Header = () => {
   const location = useLocation();
   const { cart } = useCart();
   const { favourites } = useFavourites();
+  const [isFocus, setIsFocus] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
 
   const isHomePage = location.pathname === '/';
   const isPhonesPage = location.pathname === '/phones';
@@ -18,6 +23,48 @@ export const Header = () => {
   const isCartPage = location.pathname === '/cart';
 
   const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  let pageType: string;
+
+  switch (true) {
+    case isPhonesPage:
+      pageType = 'phones';
+      break;
+    case isTabletsPage:
+      pageType = 'tablets';
+      break;
+    case isAccessoriesPage:
+      pageType = 'accessories';
+      break;
+    case isFavouritesPage:
+      pageType = 'favourites';
+      break;
+    default:
+      pageType = '';
+      break;
+  }
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchParams(
+      getSearchWith(searchParams, {
+        query: event.target.value || null,
+      }),
+    );
+    setIsFocus(true);
+
+    if (query === null) {
+      setIsFocus(false);
+    }
+  };
+
+  const handleQueryCancel = () => {
+    setSearchParams(
+      getSearchWith(searchParams, {
+        query: null,
+      }),
+    );
+    setIsFocus(false);
+  };
 
   return (
     <header className="header">
@@ -65,41 +112,35 @@ export const Header = () => {
             )}
         </div>
         <div className="nav__menu">
-          {isPhonesPage && (
-            <form className="nav__form">
+          {(isPhonesPage
+            || isTabletsPage
+            || isAccessoriesPage
+            || isFavouritesPage) && (
+            <div
+              className="nav__form"
+            >
               <input
                 type="text"
                 className="search"
-                placeholder="Search in phones..."
+                placeholder={`Search in ${pageType}...`}
+                value={query}
+                onChange={handleQueryChange}
+                onBlur={() => (
+                  query === '' ? setIsFocus(false) : setIsFocus(true))}
               />
-            </form>
-          )}
-          {isTabletsPage && (
-            <form className="nav__form">
-              <input
-                type="text"
-                className="search"
-                placeholder="Search in tablets..."
-              />
-            </form>
-          )}
-          {isAccessoriesPage && (
-            <form className="nav__form">
-              <input
-                type="text"
-                className="search"
-                placeholder="Search in accessories..."
-              />
-            </form>
-          )}
-          {isFavouritesPage && (
-            <form className="nav__form">
-              <input
-                type="text"
-                className="search"
-                placeholder="Search in favourites..."
-              />
-            </form>
+              {isFocus ? (
+                <button
+                  type="button"
+                  aria-label="reset"
+                  className="search__reset"
+                  onClick={handleQueryCancel}
+                />
+              ) : (
+                <div
+                  className="search__icon"
+                />
+              )}
+            </div>
           )}
           {!isCartPage
             && (

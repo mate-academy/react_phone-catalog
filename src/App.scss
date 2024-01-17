@@ -1,7 +1,23 @@
+@import "./style/utils/mixins";
+
 * {
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+
+.container {
+  margin: 0 152px;
+  display: block;
+  margin-top: 40px;
+
+  @include onTablet {
+    margin: 0 152px;
+  }
+  @include onMobile {
+    margin: 0 30px;
+  }
+
 }
 
 html,

@@ -4,23 +4,12 @@ import React, {
   ReactNode,
   useContext,
 } from 'react';
-import { ProductForCart } from '../types/ProductForCart';
-
-interface CartAction {
-  type: 'ADD_TO_CART' | 'REMOVE_FROM_CART' | 'UPDATE_QUANTITY';
-  payload: ProductForCart;
-}
-
-interface CartState {
-  cart: ProductForCart[];
-}
-
-type CartContextType = {
-  cart: ProductForCart[];
-  handleAddToCart: (product: ProductForCart) => void;
-  handleRemoveFromCart: (product: ProductForCart) => void;
-  updateQuantity: (productId: string, newQuantity: number) => void;
-};
+import {
+  CartAction,
+  CartContextType,
+  CartState,
+  ProductForCart,
+} from '../types/ProductForCart';
 
 export const CartContext = createContext<
 CartContextType | undefined

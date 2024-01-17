@@ -6,15 +6,15 @@ import {
 } from 'react-router-dom';
 
 import App from './App';
-import { HomePage } from './pagas/HomePage';
-import { ErrorPage } from './pagas/ErrorPage';
-import { PhonesPage } from './pagas/PhonesPage';
-import { TabletsPage } from './pagas/TabletsPage';
-import { AccessoriesPage } from './pagas/AccessoriesPage';
-import { FavoritesPage } from './pagas/FavoritesPage';
-import { CartPage } from './pagas/CartPage';
+import { HomePage } from './pages/HomePage';
+import { ErrorPage } from './pages/ErrorPage';
+import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
 import { ProductDetailsPage }
-  from './pagas/ProductDetailsPage/ProductDetailsPage';
+  from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => {
   return (

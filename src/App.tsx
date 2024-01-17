@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { FavouritesProvider } from './context/FavouritesProvider';
+import { SearchProvider } from './context/SearchContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Product } from './types/Product';
 import { getProducts } from './helpers/fetchClient';
 import { CartProvider } from './context/CartProvider';
-import { FavouritesProvider } from './context/FavouritesProvider';
 
 import './App.scss';
 
@@ -43,13 +44,15 @@ const App = () => {
   return (
     <CartProvider>
       <FavouritesProvider>
-        <>
-          <Header />
-          <main>
-            <Outlet />
-          </main>
-          <Footer />
-        </>
+        <SearchProvider>
+          <>
+            <Header />
+            <main>
+              <Outlet />
+            </main>
+            <Footer />
+          </>
+        </SearchProvider>
       </FavouritesProvider>
     </CartProvider>
   );

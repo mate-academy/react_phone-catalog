@@ -49,20 +49,6 @@
     border-right: 1px solid #e2e6e9;
     border-left: 1px solid #e2e6e9;
     padding: 22px 23px;
-    position: relative;
-
-    &::after {
-      content: "";
-      background-image: url(./Search.svg);
-      background-size: 16px;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 50%; /* вертикально по центру */
-      right: 23px; /* Відступ праворуч */
-      transform: translateY(-50%); /* Зсув на половину висоти для центрування */
-      width: 16px;
-      height: 16px;
-    }
   }
 }
 
@@ -84,18 +70,63 @@
   }
 }
 
-.search,
-.search:active {
+.search {
+  position: relative;
   width: 100%;
-  font-family: "Mont", sans-serif;
-  color: #b4bdc3;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 18px;
-  letter-spacing: 0;
-  text-align: left;
   border: none;
-  outline: none;
+  color: #313237;
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &::placeholder {
+    font-family: "Mont", sans-serif;
+    color: #b4bdc3;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-align: left;
+  }
+
+  &__icon {
+    background-image: url(../../icons/Search.svg);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 152px;
+    top: 24px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__reset {
+    position: absolute;
+    border: none;
+    background-image: url(../../icons/Close_hover.svg);
+    background-color: #fff;
+    width: 16px;
+    height: 16px;
+    right: 152px;
+    top: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
 }
 
 .logo {

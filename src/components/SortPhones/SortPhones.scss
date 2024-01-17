@@ -1,10 +1,25 @@
+@import "../../style/utils/mixins";
+
 .sortedProduct {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
+
+  @include onTablet {
+    gap: 10px;
+  }
+
+  @include onMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
 
   &__block {
     display: flex;
     flex-direction: row;
+    gap: 16px;
   }
 
   &__link {
@@ -30,12 +45,20 @@
   }
 
   &__photo {
-    height: 368px;
-    width: 368px;
-    background: #d53c51;
+    max-height: 368px;
+    max-width: 368px;
     overflow: hidden;
     margin-bottom: 24px;
 
+    @include onTablet {
+      max-height: 180px;
+      max-width: 180px;
+    }
+
+    @include onMobile {
+      max-height: 368px;
+      max-width: 368px;
+    }
   }
 
   &__img {
