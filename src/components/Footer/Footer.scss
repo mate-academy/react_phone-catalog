@@ -1,3 +1,5 @@
+@import "../../style/utils/mixins";
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -5,6 +7,10 @@
   border-top: 1px solid #e2e6e9;
   align-items: center;
   padding: 0 152px;
+
+  @include onMobile {
+    padding: 20px;
+  }
 
   &__logo {
     display: flex;
@@ -14,6 +20,11 @@
     width: 293px;
     display: flex;
     justify-content: space-between;
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 
@@ -34,11 +45,20 @@
     letter-spacing: 0;
     text-align: left;
     align-items: center;
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &-link {
     text-decoration: none;
     font-family: "Mont", sans-serif;
     font-size: 12px;
+
+    @include onMobile {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

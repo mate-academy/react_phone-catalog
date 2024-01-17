@@ -1,5 +1,10 @@
 @import "../../style/utils/mixins";
 
+.productList {
+  display: flex;
+  justify-content: center;
+}
+
 .product {
   list-style: none;
   margin: 0;
@@ -7,6 +12,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+
+  @include onTablet {
+    justify-content: center;
+    margin-bottom: 32px;
+  }
 
   &__slider {
     list-style: none;

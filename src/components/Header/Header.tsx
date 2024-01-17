@@ -111,9 +111,13 @@ export const Header = () => {
               </>
             )}
         </div>
-        <div className="nav__menu-for-Tablets">
+        <button
+          className="nav__menu-for-Tablets"
+          type="button"
+          aria-label="menu"
+        >
           <span className="icon icon-menu" />
-        </div>
+        </button>
         <div className="nav__bar">
           {(isPhonesPage
             || isTabletsPage

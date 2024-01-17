@@ -13,6 +13,7 @@ export const ProductList : React.FC<Props> = ({
   return (
     <div
       data-cy="productList"
+      className="productList"
     >
       <ul className="product">
         {products.map((product) => (

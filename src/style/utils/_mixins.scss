@@ -1,3 +1,8 @@
+@mixin onPhone {
+  @media (max-width: 460px) {
+    @content;
+  }
+}
 @mixin onMobile {
   @media (max-width: 767px) {
     @content;
@@ -5,7 +10,7 @@
 }
 
 @mixin onTablet {
-  @media (max-width: 992px) {
+  @media (max-width: 1055px) {
     @content;
   }
 }

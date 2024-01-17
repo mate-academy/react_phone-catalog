@@ -12,7 +12,7 @@
   @include onMobile {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     align-items: center;
   }
 
@@ -58,6 +58,7 @@
     @include onMobile {
       max-height: 368px;
       max-width: 368px;
+      margin-bottom: 8px;
     }
   }
 

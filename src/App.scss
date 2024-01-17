@@ -7,15 +7,19 @@
 }
 
 .container {
-  margin: 0 152px;
+  margin: 40px 152px 0;
   display: block;
-  margin-top: 40px;
 
   @include onTablet {
-    margin: 0 152px;
+    margin: 40px 100px 0;
   }
+
   @include onMobile {
-    margin: 0 30px;
+    margin: 40px 30px 0;
+  }
+
+  @include onPhone {
+    margin: 40px 20px 0;
   }
 
 }

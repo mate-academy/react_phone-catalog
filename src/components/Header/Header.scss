@@ -27,6 +27,9 @@
 
     @include onTablet {
       display: block;
+      padding: 0;
+      background-color: #fff;
+      border: 1px solid #e2e6e9;
     }
     @include onMobile {
       display: block;
@@ -67,6 +70,12 @@
       color: #313237;
       position: relative;
     }
+
+    @include onMobile {
+      margin-left: 0;
+      padding: 2px;
+
+    }
   }
 
   &__form {
@@ -74,6 +83,10 @@
     border-right: 1px solid #e2e6e9;
     border-left: 1px solid #e2e6e9;
     padding: 22px 23px;
+
+    @include onMobile {
+      width: 270px;
+    }
   }
 }
 

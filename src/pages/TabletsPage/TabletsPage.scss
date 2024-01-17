@@ -1,3 +1,4 @@
+@import "../../style/utils/mixins";
 
 .name__page {
   color: #313237;
@@ -6,6 +7,10 @@
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.32px;
+
+  @include onMobile {
+    font-size: 22px;
+  }
 }
 
 .count__page {
