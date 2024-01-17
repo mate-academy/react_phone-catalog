@@ -8,6 +8,7 @@
   border: 1px solid $shadow-color;
   display: flex;
   padding-left: 24px;
+  padding-right: 49px;
   align-items: center;
   box-sizing: border-box;
 
@@ -43,12 +44,14 @@
   &__photo-container {
     height: 66px;
     width: 66px;
+    margin-right: 31px;
+    display: flex;
+    justify-content: center;
   }
 
   &__photo {
     width: auto;
     height: 100%;
-    margin-right: 31px;
 
     @include on-tablet {
       margin-right: 0;
