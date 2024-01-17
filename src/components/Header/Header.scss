@@ -1,3 +1,5 @@
+@import "../../style/utils/mixins";
+
 .header {
   height: 65px;
   border-bottom: 1px solid #e2e6e9;
@@ -9,6 +11,29 @@
   justify-content: space-between;
 
   &__menu {
+    display: flex;
+    flex-direction: row;
+
+    @include onTablet {
+      display: none;
+    }
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__menu-for-Tablets {
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+    @include onMobile {
+      display: block;
+    }
+  }
+
+  &__bar {
     display: flex;
     flex-direction: row;
   }
@@ -146,17 +171,27 @@
   width: 66px;
   height: 64px;
 
+  &-menu {
+    background-image: url(../../icons/IconBurgerMenu.svg);
+    background-size: 32px;
+    background-position: center;
+    border: 1px solid #e2e6e9;
+  }
+
   &-favourites {
     background-image: url(./Favourites.svg);
   }
+
   &-cart {
     background-image: url(./Cart.svg);
   }
+
   &-back {
     background-image: url(../Footer/button-back.svg);
     width: 32px;
     height: 32px;
   }
+
   &-count {
     position: absolute;
     top: 20px;
