@@ -15,12 +15,12 @@ export const HomePage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-          <>
-            <BannerSlider />
-            <HotPrices />
-            <Categories />
-            <BrandNew />
-          </>
+        <>
+          <BannerSlider />
+          <HotPrices />
+          <Categories />
+          <BrandNew />
+        </>
       )}
     </div>
   );

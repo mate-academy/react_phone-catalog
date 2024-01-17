@@ -4,8 +4,9 @@ import './Navigation.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
   'nav__link', {
-  'nav__link-active': isActive,
-});
+    'nav__link-active': isActive,
+  },
+);
 
 export const Navigation: React.FC = () => {
   return (

@@ -7,9 +7,11 @@ import { GlobalContext } from '../Context/GlobalContext';
 import { Navigation } from '../Navigation/Navigation';
 import { Search } from '../Search/Search';
 
-const getLinkClassIcon = ({ isActive }: { isActive: boolean }) => cn('header__right-link', {
-  'header__right-link--active': isActive,
-});
+const getLinkClassIcon = ({ isActive }: { isActive: boolean }) => cn(
+  'header__right-link', {
+    'header__right-link--active': isActive,
+  },
+);
 
 export const Header = () => {
   const { cart, favList } = useContext(GlobalContext);
