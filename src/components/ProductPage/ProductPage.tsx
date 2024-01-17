@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   useContext,
   useEffect,
@@ -28,7 +28,6 @@ export const ProductPage: React.FC = () => {
     error,
   } = useContext(PageContext);
   const { productId } = useParams();
-  const navigate = useNavigate();
   const [currentProduct, setCurrentProduct] = useState<ProductDetails>();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -155,7 +154,7 @@ export const ProductPage: React.FC = () => {
               <Link to="/home" className="products-page__home-link" />
               <div className="products-page__way-arrow" />
               <Link
-                to="../"
+                to={`/${product.category}`}
                 className="products-page__text-link"
               >
                 {product.category}
@@ -175,15 +174,15 @@ export const ProductPage: React.FC = () => {
               </p>
             </div>
 
-            <button
-              className="product-page__back"
-              type="button"
-              onClick={() => navigate(-1)}
-              data-cy="backButton"
-            >
+            <div className="product-page__back">
               <div className="product-page__back-arrow" />
-              <p className="product-page__back-text">Back</p>
-            </button>
+              <Link
+                to={`/${product.category}`}
+                className="product-page__back-text"
+              >
+                Back
+              </Link>
+            </div>
 
             <h1 className="product-page__title">{name}</h1>
 

@@ -98,11 +98,13 @@ export const CartPosition: React.FC<Props> = ({
               data-cy="cartDeleteButton"
             />
 
-            <img
-              className="cart-position__photo"
-              src={`_new/${image}`}
-              alt={`${name}`}
-            />
+            <div className="cart-position__photo-container">
+              <img
+                className="cart-position__photo"
+                src={`_new/${image}`}
+                alt={`${name}`}
+              />
+            </div>
 
             <Link
               className="cart-position__name"

@@ -58,6 +58,28 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
       }
     }).slice(theFirstIndex, theLastIndex);
 
+  const productsSearch = products
+    .sort((p1, p2) => {
+      switch (sortBy) {
+        case 'newest':
+          return p2.year - p1.year;
+
+        case 'oldest':
+          return p1.year - p2.year;
+
+        case 'high-to-low':
+          return p2.price - p1.price;
+
+        case 'low-to-high':
+          return p1.price - p2.price;
+
+        case 'name':
+          return p1.name.toLowerCase().localeCompare(p2.name.toLowerCase());
+
+        default: return p1.year - p2.year;
+      }
+    });
+
   const theLastPage = Math
     .ceil(products.length / +perPage);
 
@@ -99,7 +121,7 @@ export const ProductsPage: React.FC<Props> = ({ products }) => {
       {productsForShowing.length
         ? (
           <PageSlider
-            products={productsForShowing}
+            products={!query ? productsForShowing : productsSearch}
             theLastPage={theLastPage}
             pageNumbers={pageNumbers}
             section={location}

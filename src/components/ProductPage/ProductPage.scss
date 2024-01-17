@@ -25,14 +25,11 @@
     gap: 4px;
     margin: 0;
     margin-top: 40px;
-    text-decoration: none;
     width: fit-content;
     padding: 0;
     padding-right: 15px;
     align-items: center;
     height: 16px;
-    background-color: $the-white;
-    border: none;
 
     @include hover(cursor, pointer);
 
@@ -48,6 +45,7 @@
       font-family: Mont, Arial, Helvetica, sans-serif;
       font-size: 12px;
       font-weight: 600;
+      text-decoration: none;
     }
   }
 

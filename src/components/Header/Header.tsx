@@ -1,12 +1,14 @@
 import './Header.scss';
 
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 import {
   Link,
   NavLink,
   useLocation,
   useSearchParams,
 } from 'react-router-dom';
+import debounce from 'lodash.debounce';
+
 import classNames from 'classnames';
 
 import { NavBar } from '../NavBar';
@@ -20,7 +22,8 @@ export const Header = () => {
   } = useContext(PageContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const initialQuery = searchParams.get('query') || '';
+  const [query, setQuery] = useState(initialQuery);
   const location = useLocation().pathname;
   const [showNavBar, setShowNavBar] = useState(false);
 
@@ -36,12 +39,17 @@ export const Header = () => {
 
   const placeholderLocation = getPlaceholderLocation();
 
+  const applyQuery = useCallback(
+    debounce(setSearchParams, 500),
+    [setSearchParams],
+  );
+
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams(
-      getSearchWith(searchParams, {
-        query: event.target.value || null,
-      }),
-    );
+    setQuery(event.target.value);
+
+    applyQuery(getSearchWith(searchParams, {
+      query: event.target.value || null,
+    }));
   };
 
   const handleQueryCancel = () => {
@@ -50,6 +58,8 @@ export const Header = () => {
         query: null,
       }),
     );
+
+    setQuery('');
   };
 
   const getFavClass = ({ isActive }: { isActive: boolean }) => {

@@ -40,9 +40,14 @@
     }
   }
 
-  &__photo {
+  &__photo-container {
     height: 66px;
+    width: 66px;
+  }
+
+  &__photo {
     width: auto;
+    height: 100%;
     margin-right: 31px;
 
     @include on-tablet {
@@ -73,7 +78,6 @@
 
   &__count {
     display: flex;
-    gap: 13px;
     align-items: center;
     margin-right: 43px;
 
@@ -116,6 +120,7 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
+      width: 32px;
     }
   }
 

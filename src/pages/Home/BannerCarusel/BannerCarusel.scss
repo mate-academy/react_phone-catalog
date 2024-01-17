@@ -5,6 +5,11 @@
   &-slide {
     display: flex;
     justify-content: center;
+    width: 1040px;
+  }
+
+  &-wrapper {
+    width: 1040px;
   }
 
   &-button-prev,
@@ -30,12 +35,12 @@
   }
 
   &-button-prev {
-    background: url(../../../images/icons/arrow-left.png) no-repeat center;
-    left: 0;
+    background: $the-white url(../../../images/icons/arrow-left.png) no-repeat center;
+    left: 0px;
   }
 
   &-button-next {
-    background: url(../../../images/icons/arrow-right.png) no-repeat center;
+    background: $the-white url(../../../images/icons/arrow-right.png) no-repeat center;
     right: 0;
   }
 
@@ -67,6 +72,7 @@
   height: 432px;
   margin-top: 40px;
   box-sizing: border-box;
+  position: relative;
 
   @include on-tablet {
     height: 221px;
