@@ -1,7 +1,12 @@
 import './App.scss';
+import { Content } from './components/content/content';
+import { Footer } from './components/footer/footer';
+import { Header } from './components/header/header';
 
 export const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <Header />
+    <Content />
+    <Footer />
   </div>
 );
