@@ -2,9 +2,6 @@
 @import '../../utils/variables.scss';
 
 .favourites {
-  @include contentMarginInline;
-  padding-top: 24px;
-
   &__breadcrumbs {
     margin-bottom: 40px;
   }

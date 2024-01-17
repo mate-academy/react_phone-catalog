@@ -8,12 +8,22 @@
   padding-block: 24px;
   padding-inline: 40px;
   border: 1px solid $elements-color;
-  width: 752px;
 
-  &__info {
+  @include onMobile {
+    display: inline;
+    padding: 5px;
+  }
+
+  &__left {
     display: flex;
     align-items: center;
     gap: 24px;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   &__delete {
@@ -72,10 +82,7 @@
 
   &__price {
     width: 100px;
-
-    &--value {
-      @include h2Text;
-    }
+    @include h2Text;
   }
 }
 

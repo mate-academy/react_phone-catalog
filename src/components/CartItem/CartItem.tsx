@@ -28,7 +28,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   return (
     <li className="cart-item">
-      <div className="cart-item__info">
+      <div className="cart-item__left">
         <button
           type="button"
           aria-label="delete item"
@@ -53,31 +53,28 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         </Link>
       </div>
 
-      <div className="cart-item__quantity">
-        <button
-          type="button"
-          aria-label="button decrease"
-          className={classNames('button button--minus', {
-            'button--minus-disabled': product.quantity === 1,
-          })}
-          disabled={product.quantity === 1}
-          onClick={() => handleDecrease(id)}
-        />
-
-        <span className="cart-item__quantity--count">
-          {product.quantity || 1}
-        </span>
-
-        <button
-          type="button"
-          aria-label="button increase"
-          className="button button--plus"
-          onClick={() => handleIncrease(id)}
-        />
-      </div>
-
-      <div className="cart-item__price">
-        <span className="cart-item__price--value">
+      <div className="cart-item__right">
+        <div className="cart-item__quantity">
+          <button
+            type="button"
+            aria-label="button decrease"
+            className={classNames('button button--minus', {
+              'button--minus-disabled': product.quantity === 1,
+            })}
+            disabled={product.quantity === 1}
+            onClick={() => handleDecrease(id)}
+          />
+          <span className="cart-item__quantity--count">
+            {product.quantity || 1}
+          </span>
+          <button
+            type="button"
+            aria-label="button increase"
+            className="button button--plus"
+            onClick={() => handleIncrease(id)}
+          />
+        </div>
+        <span className="cart-item__price">
           {`$${price * product.quantity}`}
         </span>
       </div>

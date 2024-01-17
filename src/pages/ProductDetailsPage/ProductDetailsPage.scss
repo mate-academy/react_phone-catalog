@@ -4,8 +4,6 @@
 
 .details-page {
   @include pageGrid;
-  @include contentMarginInline;
-  padding-top: 24px;
 
   &__breadcrumbs {
     grid-column: 1 / span 10;
@@ -241,7 +239,7 @@
         border-color: $primary-color;
       }
 
-      
+
       &--link {
         @include bodyText;
         color: $primary-color;

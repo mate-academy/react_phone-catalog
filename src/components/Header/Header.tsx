@@ -27,11 +27,9 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="header__left-box">
-        <div className="header__logo">
-          <Link to="/">
-            <img src={ICONS.logo} alt="logo" />
-          </Link>
-        </div>
+        <Link to="/">
+          <img src={ICONS.logo} alt="logo" className="header__left-box--logo" />
+        </Link>
         {pathname !== '/cart' && <Navigation />}
       </div>
 

@@ -6,19 +6,19 @@
   justify-content: space-between;
   box-shadow: 0 1px 0 0 $elements-color;
 
-  &__logo {
-    display: flex;
-    align-items: center;
-    height: 24px;
-    @include hover(scale, 1.07);
-  }
-
   &__left-box {
     display: flex;
     align-items: center;
     margin-block: 20px;
     margin-left: 24px;
     gap: 64px;
+
+    &--logo {
+      display: flex;
+      align-items: center;
+      height: 24px;
+      @include hover(scale, 1.07);
+    }
   }
 
   &__right-box {

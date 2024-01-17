@@ -1,27 +1,27 @@
 import { useContext } from 'react';
 import { BannerSlider } from '../../components/BannerSlider/BannerSlider';
-import { BrandNew } from '../../components/BrandNew/BrandNew';
 import { Categories } from '../../components/Categories/Categories';
 import { GlobalContext } from '../../components/Context/GlobalContext';
-import { HotPrices } from '../../components/HotPrices/HotPrices';
-import { Loader } from '../../components/Loader/Loader';
+import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
+import { getHotPriceProducts } from '../../helpers/getHotPriceProducts';
 import './HomePage.scss';
 
 export const HomePage = () => {
-  const { isLoading } = useContext(GlobalContext);
+  const { products } = useContext(GlobalContext);
+
+  const hotPriceProducts = getHotPriceProducts(products);
+  const brandNewProducts = [...products].sort((a, b) => a.year - b.year)
+    .reverse();
 
   return (
     <div className="home-page">
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <BannerSlider />
-          <HotPrices />
-          <Categories />
-          <BrandNew />
-        </>
-      )}
+      <BannerSlider />
+
+      <ProductSlider title="Hot products" products={hotPriceProducts} />
+
+      <Categories />
+
+      <ProductSlider title="Brand new" products={brandNewProducts} />
     </div>
   );
 };

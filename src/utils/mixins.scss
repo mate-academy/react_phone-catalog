@@ -38,19 +38,29 @@
 @mixin contentMarginInline {
   margin-inline: 152px;
 
+  @include onMobile {
+    margin-inline: 150px;
+  }
+
   @include onDesktop {
-    margin-inline: 388px;
+    margin-inline: 152px;
   }
 }
 
 @mixin onMobile {
-  @media(min-width: 600px) {
+  @media(max-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media(max-width: 992px) {
     @content;
   }
 }
 
 @mixin onDesktop{
-  @media(min-width: 1920px) {
+  @media(max-width: 1200px) {
     @content;
   }
 }

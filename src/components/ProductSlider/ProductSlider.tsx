@@ -47,11 +47,12 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
 
   return (
     <div className="product-slider">
-      <div className="product-slider__container">
-        <h1 className="product-slider__title">{title}</h1>
-        <div className="product-slider__buttons">
+      <div className="product-slider__top">
+        <h1 className="product-slider__top-title">{title}</h1>
+        <div className="product-slider__top-buttons">
           <button
-            className="product-slider__button product-slider__button--left"
+            // eslint-disable-next-line max-len
+            className="product-slider__top-button product-slider__top-button--left"
             type="button"
             onClick={handlePrev}
             disabled={leftButtonDisabled}
@@ -67,7 +68,8 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
           </button>
 
           <button
-            className="product-slider__button product-slider__button--right"
+            // eslint-disable-next-line max-len
+            className="product-slider__top-button product-slider__top-button--right"
             type="button"
             onClick={handleNext}
             disabled={rightButtonDisabled}
@@ -82,21 +84,24 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
             )}
           </button>
         </div>
+      </div>
 
-        <div className="product-slider__list" data-cy="cardsContainer">
+      <div className="product-slider__content" data-cy="cardsContainer">
+        <ul className="product-slider__content-list">
           {products.map((product) => (
-            <div
+            <li
               key={product.id}
               style={{
                 width: sliderWidth,
                 transform: `translateX(-${translateValue}px)`,
                 transition: `transform ${ANIMATION_DURATION}ms ease`,
               }}
+              className="product-slider__content-list--item"
             >
               <ProductCard product={product} />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

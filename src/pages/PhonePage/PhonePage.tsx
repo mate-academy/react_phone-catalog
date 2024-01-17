@@ -78,96 +78,92 @@ export const PhonePage = () => {
 
   return (
     <section className="phones">
-      <div className="phones__container">
-        <div className="phones__breadcrumbs">
-          <BreadCrumbs page="phones" />
+      <BreadCrumbs page="phones" />
+
+      {isLoading ? (
+        <div className="loader">
+          <Loader />
         </div>
-
-        {isLoading ? (
-          <div className="loader">
-            <Loader />
+      ) : (
+        <div className="phones__content">
+          <div className="phones__info">
+            <h1 className="phones__title">Mobile phones</h1>
+            <span className="phones__count">
+              {`${visiblePhones.length} phone${visiblePhones.length === 1 ? '' : 's'}`}
+            </span>
           </div>
-        ) : (
-          <>
-            <div className="phones__info">
-              <h1 className="phones__title">Mobile phones</h1>
-              <span className="phones__count">
-                {`${visiblePhones.length} phone${visiblePhones.length === 1 ? '' : 's'}`}
-              </span>
-            </div>
 
-            {visiblePhones.length === 0 ? (
-              <div className="warning-message">
-                <img
-                  src={ICONS.iconWarning}
-                  alt="warning"
-                  className="warning-message__image"
-                />
-                <h1 className="warning-message__text">
-                  No search result
-                </h1>
-              </div>
-            ) : (
-              <>
-                <div className="phones__dropdowns">
-                  <div className="dropdown">
-                    <span className="dropdown__title">Sort by</span>
-                    <select
-                      value={sortBy}
-                      onChange={(e) => setSortingOption(e.target.value)}
-                      className="dropdown__sorting"
-                    >
-                      {sortingOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    <img
-                      src={ICONS.arrowDown}
-                      alt="Arrow select"
-                      className="dropdown__sorting--icon"
-                    />
-                  </div>
-                  <div className="dropdown dropdown--items-per-page">
-                    <span className="dropdown__title">Items on page</span>
-                    <select
-                      value={phonesPerPage}
-                      onChange={handlePerPageChange}
-                      className="dropdown__sorting dropdown__sorting--pages"
-                    >
-                      {itemsPerPageOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    <img
-                      src={ICONS.arrowDown}
-                      alt="Arrow select"
-                      className="dropdown__sorting--icon"
-                    />
-                  </div>
-                </div>
-                <div className={classNames('phones__list', {
-                  'phones__list--with-margin': numOfPages === 1,
-                })}
-                >
-                  <ProductsList
-                    products={visiblePhones.slice(firstProduct, lastProduct)}
+          {visiblePhones.length === 0 ? (
+            <div className="warning-message">
+              <img
+                src={ICONS.iconWarning}
+                alt="warning"
+                className="warning-message__image"
+              />
+              <h1 className="warning-message__text">
+                No search result
+              </h1>
+            </div>
+          ) : (
+            <>
+              <div className="phones__dropdowns">
+                <div className="dropdown">
+                  <span className="dropdown__title">Sort by</span>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortingOption(e.target.value)}
+                    className="dropdown__sorting"
+                  >
+                    {sortingOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <img
+                    src={ICONS.arrowDown}
+                    alt="Arrow select"
+                    className="dropdown__sorting--icon"
                   />
                 </div>
+                <div className="dropdown dropdown--items-per-page">
+                  <span className="dropdown__title">Items on page</span>
+                  <select
+                    value={phonesPerPage}
+                    onChange={handlePerPageChange}
+                    className="dropdown__sorting dropdown__sorting--pages"
+                  >
+                    {itemsPerPageOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <img
+                    src={ICONS.arrowDown}
+                    alt="Arrow select"
+                    className="dropdown__sorting--icon"
+                  />
+                </div>
+              </div>
+              <div className={classNames('phones__list', {
+                'phones__list--with-margin': numOfPages === 1,
+              })}
+              >
+                <ProductsList
+                  products={visiblePhones.slice(firstProduct, lastProduct)}
+                />
+              </div>
 
-                {numOfPages !== 1 && (
-                  <div className="phones__pagination">
-                    <Pagination total={numOfPages} />
-                  </div>
-                )}
-              </>
-            )}
-          </>
-        )}
-      </div>
+              {numOfPages !== 1 && (
+                <div className="phones__pagination">
+                  <Pagination total={numOfPages} />
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      )}
     </section>
   );
 };

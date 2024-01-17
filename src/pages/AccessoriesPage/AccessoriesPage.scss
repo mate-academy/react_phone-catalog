@@ -4,8 +4,6 @@
 .accessories {
   &__container {
     @include pageGrid;
-    @include contentMarginInline;
-    margin-top: 24px;
   }
 
   &__breadcrumbs {

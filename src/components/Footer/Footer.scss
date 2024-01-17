@@ -3,30 +3,26 @@
 
 
 .footer {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 96px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $elements-color;
+
   &__container {
-    position: absolute;
-    bottom: 0;
-    padding-inline: 152px;
-    box-shadow: 0 -1px 0 0 $elements-color;
-    width: 100%;
-    min-height: 96px;
-    background-color: #fff;
-    text-align: center;
-
-    @include onDesktop {
-      padding-inline: 440px;
-    }
-  }
-
-  &__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    background-color: #fff;
   }
 
   &__logo {
+    display: flex;
+
     height: 24px;
     width: 40px;
     @include hover(scale, 1.07);

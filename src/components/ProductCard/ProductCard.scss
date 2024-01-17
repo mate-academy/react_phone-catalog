@@ -1,32 +1,41 @@
 @import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
 
 .product {
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 24px;
-    height: 507px;
-    width: 272px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid $elements-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  height: 507px;
+  width: 272px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid $elements-color;
 
-    &:last-child {
-      margin-right: 0;
-    }
+  @include onTablet {
+    height: 400px;
+    width: 220px;
+    padding: 20px;
+  }
 
-    &:hover {
-      box-shadow: 0 3px 13px rgba(#172031, 0.26);
-    }
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px rgba(#172031, 0.26);
   }
 
   &__image {
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-bottom: 24px;
     height: 208px;
     width: 208px;
+
+    @include onTablet {
+      height: 150px;
+      width: 150px;
+    }
 
     &--item {
       height: 100%;
@@ -34,6 +43,7 @@
   }
 
   &__title {
+    display: flex;
     line-height: 21px;
     color: $primary-color;
     margin-bottom: 8px;
@@ -62,7 +72,7 @@
       line-height: 140%;
     }
 
-    &::after{
+    &::after {
       content: "";
       position: absolute;
       margin-top: 44px;

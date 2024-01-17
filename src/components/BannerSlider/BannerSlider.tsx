@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { ICONS } from '../../icons';
 import './BannerSlider.scss';
 import { ButtonSlider } from '../ButtonSlider/ButtonSlider';
@@ -52,17 +53,17 @@ export const BannerSlider: React.FC = () => {
 
   return (
     <section className="banner-slider">
-      <div className="banner-container">
+      <div className="banner-slider__container">
         <div className="button__left">
           <ButtonSlider moveSlide={prevSlide} direction="prev" height={400} />
         </div>
 
-        <div className="images">
-          <ul className="images__list">
+        <div className="banner-slider__images">
+          <ul className="banner-slider__images-list">
             {BANNERS.map((banner, index) => (
               <li
                 key={banner.id}
-                className="images__item"
+                className="banner-slider__images-list-item"
                 style={{
                   opacity: index === currentIndex ? 1 : 0,
                 }}
@@ -70,7 +71,7 @@ export const BannerSlider: React.FC = () => {
                 <img
                   src={banner.address}
                   alt={banner.title}
-                  className="images__image"
+                  className="banner-slider__images-list-image"
                 />
               </li>
             ))}
@@ -80,15 +81,20 @@ export const BannerSlider: React.FC = () => {
         <div className="button__right">
           <ButtonSlider moveSlide={nextSlide} direction="next" height={400} />
         </div>
+      </div>
 
-        <div className="dots__container">
-          {BANNERS.map((banner, index) => (
-            <div
-              className={index === currentIndex ? 'dot active' : 'dot'}
-              key={banner.title}
-            />
-          ))}
-        </div>
+      <div className="banner-slider__dots">
+        {BANNERS.map((banner, index) => (
+          <button
+            type="button"
+            aria-label="dots"
+            key={banner.id}
+            className={classNames('banner-slider__dots-item', {
+              'banner-slider__dots-item--active': currentIndex === index,
+            })}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
       </div>
     </section>
   );

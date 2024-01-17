@@ -2,8 +2,11 @@
 @import "../../utils/mixins.scss";
 
 .banner__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
   width: 32px;
-  height: 100%;
   background-color: #fff;
   border: 1px solid $icons-color;
   @include hover(border-color, $primary-color);

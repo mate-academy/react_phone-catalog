@@ -4,5 +4,15 @@
 .products__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px 16px;
+  width: 100%;
+  gap: 16px;
+
+  @include onMobile {
+    gap: 10px;
+  }
+
+  &-item {
+    display: flex;
+    margin-bottom: 40px;
+  }
 }

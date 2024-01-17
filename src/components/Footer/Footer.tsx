@@ -11,33 +11,29 @@ export const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__content">
-          <div className="footer__logo">
-            <Link to="/">
-              <img src={ICONS.logo} alt="logo" />
-            </Link>
-          </div>
+      <div className="footer__container main-content__container">
+        <Link to="/" className="footer__logo">
+          <img src={ICONS.logo} alt="logo" />
+        </Link>
 
-          <div className="footer__links">
-            <NavLink
-              to="https://github.com/PavloMykhalov/react_phone-catalog"
-              target="_blank"
-            >
-              Github
-            </NavLink>
+        <div className="footer__links">
+          <NavLink
+            to="https://github.com/PavloMykhalov/react_phone-catalog"
+            target="_blank"
+          >
+            Github
+          </NavLink>
 
-            <NavLink to="/contacts">Contacts</NavLink>
+          <NavLink to="/contacts">Contacts</NavLink>
 
-            <NavLink to="/rights">Rights</NavLink>
-          </div>
+          <NavLink to="/rights">Rights</NavLink>
+        </div>
 
-          <div className="footer__back-to-top">
-            <span className="footer__back-to-top--text">Back to top</span>
-            <button className="button-top" type="button" onClick={scrollTop}>
-              <img src={ICONS.arrowTop} alt="back to top button" />
-            </button>
-          </div>
+        <div className="footer__back-to-top">
+          <span className="footer__back-to-top--text">Back to top</span>
+          <button className="button-top" type="button" onClick={scrollTop}>
+            <img src={ICONS.arrowTop} alt="back to top button" />
+          </button>
         </div>
       </div>
     </footer>
