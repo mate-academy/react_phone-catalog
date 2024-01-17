@@ -80,7 +80,7 @@ export const PhonePage = () => {
     <section className="phones">
       <div className="phones__container">
         <div className="phones__breadcrumbs">
-          <BreadCrumbs page="Phones" />
+          <BreadCrumbs page="phones" />
         </div>
 
         {isLoading ? (

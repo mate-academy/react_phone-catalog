@@ -63,10 +63,15 @@
     margin-right: 43px;
     gap: 13px;
     @include bodyText;
+
+    &--count {
+      text-align: center;
+      width: 15px;
+    }
   }
 
   &__price {
-    width: 70px;
+    width: 100px;
 
     &--value {
       @include h2Text;

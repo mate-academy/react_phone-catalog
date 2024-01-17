@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import classNames from 'classnames';
 import { ICONS } from '../../icons';
 import './Search.scss';
@@ -41,7 +41,7 @@ export const Search: React.FC = () => {
     setSearchParams(getSearchWith(searchParams, {
       query: newQuery || null,
     }));
-  }, 1000);
+  }, 1500);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputQuery(event.target.value);

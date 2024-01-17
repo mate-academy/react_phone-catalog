@@ -50,29 +50,6 @@
   }
 }
 
-.nav {
-  &__list {
-    display: flex;
-    list-style: none;
-    gap: 64px;
-  }
-
-  &__link {
-    font-family: "Mont", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    color: $secondary-color;
-    padding-block: 24px;
-    @include hoverLink;
-
-    &:hover {
-      color: $primary-color;
-    }
-  }
-}
-
 .icon {
   height: 16px;
   width: 16px;

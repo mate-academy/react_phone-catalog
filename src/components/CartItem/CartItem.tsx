@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import classNames from 'classnames';
 import { GlobalContext } from '../Context/GlobalContext';
 import { CartItemType } from '../../types/CartItemType';
 import './CartItem.scss';
 import { API_URL } from '../../utils/api';
-import classNames from 'classnames';
 
 type Props = {
   product: CartItemType,
@@ -21,6 +21,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     image,
     name,
     id,
+    phoneId,
     price,
     category,
   } = product.product;
@@ -37,7 +38,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
         <Link
           className="cart-item__link"
-          to={`/${category}/${id}`}
+          to={`/${category}/${phoneId}`}
         >
           <div className="cart-item__image--container">
             <img
@@ -78,7 +79,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
       <div className="cart-item__price">
         <span className="cart-item__price--value">
           {`$${price * product.quantity}`}
-          </span>
+        </span>
       </div>
     </li>
   );

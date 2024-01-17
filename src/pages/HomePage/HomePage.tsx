@@ -5,25 +5,22 @@ import { Categories } from '../../components/Categories/Categories';
 import { GlobalContext } from '../../components/Context/GlobalContext';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
 import { Loader } from '../../components/Loader/Loader';
-import { Error } from '../../types/Error';
 import './HomePage.scss';
 
 export const HomePage = () => {
-  const { isLoading, errorMessage } = useContext(GlobalContext);
+  const { isLoading } = useContext(GlobalContext);
 
   return (
     <div className="home-page">
-      {isLoading && <Loader />}
-
-      {errorMessage === Error.loadingProducts ? (
-        <div>{errorMessage}</div>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <>
-          <BannerSlider />
-          <HotPrices />
-          <Categories />
-          <BrandNew />
-        </>
+          <>
+            <BannerSlider />
+            <HotPrices />
+            <Categories />
+            <BrandNew />
+          </>
       )}
     </div>
   );

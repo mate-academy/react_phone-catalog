@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+import './Navigation.scss';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => cn({
-  nav__link: true,
-  'is-active': isActive,
+const getLinkClass = ({ isActive }: { isActive: boolean }) => cn(
+  'nav__link', {
+  'nav__link-active': isActive,
 });
 
 export const Navigation: React.FC = () => {

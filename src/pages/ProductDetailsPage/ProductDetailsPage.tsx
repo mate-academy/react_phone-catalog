@@ -114,7 +114,7 @@ export const ProductDetailsPage: React.FC = () => {
         <>
           <div className="details-page__breadcrumbs">
             <BreadCrumbs
-              page="Phones"
+              page="phones"
               productName={name}
             />
           </div>
@@ -197,9 +197,12 @@ export const ProductDetailsPage: React.FC = () => {
                   >
                     <Link
                       to={`/phones/${namespaceId}-${capacityValue.toLowerCase()}-${color.toLowerCase()}`}
-                      className={classNames('details-page__capacity-value--link', {
-                        'details-page__capacity-value--link-selected': capacity === capacityValue,
-                      })}
+                      className={classNames(
+                        'details-page__capacity-value--link', {
+                          'details-page__capacity-value--link-selected':
+                          capacity === capacityValue,
+                        },
+                      )}
                     >
                       {capacityValue}
                     </Link>

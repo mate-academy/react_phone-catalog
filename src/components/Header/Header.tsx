@@ -7,8 +7,7 @@ import { GlobalContext } from '../Context/GlobalContext';
 import { Navigation } from '../Navigation/Navigation';
 import { Search } from '../Search/Search';
 
-const getLinkClassIcon = ({ isActive }: { isActive: boolean }) => cn({
-  'header__right-link': true,
+const getLinkClassIcon = ({ isActive }: { isActive: boolean }) => cn('header__right-link', {
   'header__right-link--active': isActive,
 });
 

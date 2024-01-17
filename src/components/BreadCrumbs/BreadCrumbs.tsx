@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const BreadCrumbs: React.FC<Props> = ({ page, productName }) => {
+  const formattedPage = page.charAt(0).toUpperCase() + page.slice(1);
+
   return (
     <div className="breadcrumbs">
       <Link to="/" className="breadcrumbs__home">
@@ -27,7 +29,7 @@ export const BreadCrumbs: React.FC<Props> = ({ page, productName }) => {
           'breadcrumbs__title--target': productName,
         })}
       >
-        {page}
+        {formattedPage}
       </Link>
 
       {productName && (
