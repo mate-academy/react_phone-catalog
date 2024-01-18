@@ -1,24 +1,22 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable global-require */
 import { Link } from 'react-router-dom';
 import './PageCommingSoon.scss';
-
-const image = [
-  require('../../assets/others/comming-soon.png'),
-];
+import { ButtonMain } from '../../components/ButtonMain';
+import { pageCommingSoonImage } from '../../helpers/constants';
 
 export const PageCommingSoon = () => {
   return (
-    <div className="page-not-found">
-      <h1 className="page-not-found__title title">
+    <div className="page-comming-soon">
+      <h1 className="page-comming-soon__title title">
         Products are comming soon
       </h1>
-      <img src={image[0]} alt="" className="page-not-found__image" />
+      <img
+        src={pageCommingSoonImage}
+        alt=""
+        className="page-comming-soon__image"
+      />
 
-      <Link to="/">
-        <button className="page-not-found__button" type="button">
-          Back to Home
-        </button>
+      <Link to="/" className="page-comming-soon__link">
+        <ButtonMain text="Back to Home" />
       </Link>
     </div>
   );

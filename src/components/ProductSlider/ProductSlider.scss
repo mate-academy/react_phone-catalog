@@ -14,9 +14,8 @@
   }
 
   &__buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
+
     gap: 16px;
   }
 
@@ -24,13 +23,4 @@
     display: flex;
     gap: 16px;
   }
-}
-
-.button {
-  padding: 8px;
-  display: block;
-  cursor: pointer;
-  border: 1px solid $icons-color;
-
-  @include hover(border-color, $main-color);
 }

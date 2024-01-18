@@ -1,7 +1,7 @@
 import './Navigation.scss';
-
-import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+import { navLinks } from '../../helpers/constants';
+import { NavigationLink } from '../NavigationLinks';
 
 const isActiveLink = ({ isActive }: { isActive: boolean }) => cn(
   'navigation__link', {
@@ -12,33 +12,9 @@ const isActiveLink = ({ isActive }: { isActive: boolean }) => cn(
 export const Navigation = () => {
   return (
     <nav className="navigation">
-      <NavLink
-        className={isActiveLink}
-        to="/"
-      >
-        Home
-      </NavLink>
-
-      <NavLink
-        className={isActiveLink}
-        to="/phones"
-      >
-        Phones
-      </NavLink>
-
-      <NavLink
-        className={isActiveLink}
-        to="/tablets"
-      >
-        Tablets
-      </NavLink>
-
-      <NavLink
-        className={isActiveLink}
-        to="/accessories"
-      >
-        Accessories
-      </NavLink>
+      {navLinks.map(link => (
+        <NavigationLink name={link} classNameFunc={isActiveLink} />
+      ))}
     </nav>
   );
 };

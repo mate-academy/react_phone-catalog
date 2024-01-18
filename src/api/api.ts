@@ -29,10 +29,10 @@ export const getAccessories = async () => {
 export const getHotPriceProducts = (phones: Product[]) => {
   return [...phones]
     .sort((phone1, phone2) => ((1 - (phone1.fullPrice / phone1.price)) * 100)
-      - (1 - (phone2.fullPrice / phone2.price)) * 100);
+      - (1 - (phone2.fullPrice / phone2.price)) * 100).slice(0, 12);
 };
 
 export const getBrandNewProducts = (phones: Product[]) => {
   return [...phones]
-    .sort((phone1, phone2) => phone2.price - phone1.price);
+    .sort((phone1, phone2) => phone2.price - phone1.price).slice(0, 12);
 };

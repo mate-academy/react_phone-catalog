@@ -8,7 +8,8 @@
   justify-content: space-between;
   min-width: 752px;
 
-  border: 1px solid $elements-color;
+  @include border-default;
+
   padding: 24px 40px 24px 24px;
 
   &__container {
@@ -39,20 +40,18 @@
     width: 295px;
   }
 
-  &__amount {
-    padding-inline: 13px;
-  }
-
   &__buttons {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 96px;
   }
 
   &__button {
     padding: 8px;
     background-color: $white-color;
-    border: 1px solid $icons-color;
 
+    @include border-icons;
     @include hover(border-color, $main-color);
 
     &--disabled {

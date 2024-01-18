@@ -1,59 +1,82 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Header.scss';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import {
+  NavLink,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import debounce from 'lodash.debounce';
 import cn from 'classnames';
 import { Navigation } from '../Navigation';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addSearch, removeSearch } from '../../features/product/productSlice';
-
-const categories = ['phones', 'favourites'];
+import { getSearchWith } from '../../helpers/searchHelper';
+import { categoriesPath, categoriesWithInput } from '../../helpers/constants';
+import { Logo } from '../Logo';
 
 export const Header = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [isVisible, setIsVisible] = useState(false);
   const [query, setQuery] = useState('');
   const { favourites, cart } = useAppSelector(state => state.phones);
   const dispatch = useAppDispatch();
-
   const { pathname } = useLocation();
-
-  const applyQuery = useCallback(debounce(
-    (e:string) => dispatch(addSearch(e)), 500,
-  ), []);
+  const normalizedPath = pathname.slice(1);
 
   useEffect(() => {
-    setIsVisible(categories.includes(pathname.toString().slice(1)));
+    setQuery(searchParams.get('query') || '');
+  }, []);
+
+  useEffect(() => {
+    setIsVisible(categoriesWithInput.includes(normalizedPath));
   }, [pathname]);
 
+  const applyQuery = useCallback(
+    debounce((e) => dispatch(addSearch(e)), 500), [dispatch],
+  );
+  const applyQueryURL = useCallback(
+    debounce((str) => setSearchParams(
+      getSearchWith(searchParams, { query: str || null }),
+    ),
+    500), [searchParams, setSearchParams],
+  );
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-    applyQuery(e.target.value);
+    const newQuery = e.target.value;
+
+    setQuery(newQuery);
+    if (categoriesPath.includes(normalizedPath)) {
+      applyQueryURL(newQuery.trim());
+    } else {
+      applyQuery(newQuery);
+    }
   };
 
   const handleClear = () => {
     setQuery('');
-    dispatch(removeSearch());
+
+    if (categoriesPath.includes(normalizedPath)) {
+      setSearchParams(getSearchWith(searchParams, { query: null }));
+    } else {
+      dispatch(removeSearch());
+    }
   };
 
-  useEffect(() => {
-    return () => {
-      setQuery('');
+  useEffect(() => () => {
+    setQuery('');
+
+    if (!categoriesPath.includes(normalizedPath)) {
       dispatch(removeSearch());
-    };
+    }
   }, [dispatch, pathname]);
 
-  const isCart = pathname.slice(1) === 'cart';
+  const isCart = normalizedPath === 'cart';
 
   return (
     <header className="header">
       <div className="header__left">
-        <Link
-          to="/"
-          className="header__logo"
-        >
-          <div className="header__logo-img" />
-        </Link>
+        <Logo />
 
         {!isCart && (
           <Navigation />
@@ -68,7 +91,7 @@ export const Header = () => {
               value={query}
               onChange={handleChange}
               className="header__input"
-              placeholder={`Search in ${pathname.slice(1)}...`}
+              placeholder={`Search in ${normalizedPath}...`}
             />
             <div className="header__finder-container">
               {query ? (

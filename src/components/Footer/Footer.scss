@@ -11,15 +11,6 @@
     margin-left: 152px;
   }
 
-  &__logo {
-
-    &-img {
-      background-image: url('../../assets/icons/logo.svg');
-      width: 40px;
-      height: 24px;
-    }
-  }
-
   &__center {
     display: flex;
     gap: 64px;
@@ -35,31 +26,4 @@
   &__right {
     margin-right: 152px;
   }
-}
-
-.back-to-top {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background-color: $white-color;
-
-  &__message {
-    font-family: Mont-SemiBold, sans-serif;
-    color: $secondary-color;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-  }
-
-  &__button {
-    padding: 8px;
-    border: 1px solid $icons-color;
-
-    @include hover(border-color, $main-color);
-  }
-}
-
-.is-visible {
-  visibility: hidden;
 }

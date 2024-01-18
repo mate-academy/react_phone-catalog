@@ -1,0 +1,18 @@
+@import "../../styles/main";
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-block: 113px 115px;
+
+  &__image {
+    width: 656px;
+  }
+
+  &__button {
+    display: flex;
+    width: 320px;
+  }
+}

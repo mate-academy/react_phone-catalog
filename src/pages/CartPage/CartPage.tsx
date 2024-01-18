@@ -4,21 +4,10 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import './CartPage.scss';
 import { Card } from '../../components/Card';
 import { clearCart } from '../../features/product/productSlice';
-import { Product } from '../../types/Product';
-
-function getUniqueObjects(array: Product[]) {
-  const uniqueObjects: Product[] = [];
-  const ids = new Set();
-
-  array.forEach((obj: Product) => {
-    if (!ids.has(obj.id)) {
-      ids.add(obj.id);
-      uniqueObjects.push(obj);
-    }
-  });
-
-  return uniqueObjects;
-}
+import { Empty } from '../../components/Empty';
+import { getUniqueObjects } from '../../helpers/getUniqueObjects';
+import { cartPageImage } from '../../helpers/constants';
+import { Checkout } from '../../components/Checkout';
 
 export const CartPage = () => {
   const { cart } = useAppSelector(state => state.phones);
@@ -29,7 +18,7 @@ export const CartPage = () => {
     navigate(-1);
   };
 
-  const toralPrice = useMemo(() => {
+  const totalPrice = useMemo(() => {
     return cart.reduce((a, b) => a + b.price, 0);
   }, [cart]);
 
@@ -51,7 +40,11 @@ export const CartPage = () => {
 
   if (cart.length === 0) {
     return (
-      <p>NO ITEMS</p>
+      <Empty
+        title="Your cart is empty"
+        buttnText="Shop now"
+        img={cartPageImage}
+      />
     );
   }
 
@@ -77,25 +70,12 @@ export const CartPage = () => {
             ))}
           </div>
 
-          <div className="checkout">
-            <div className="checkout__top">
-              <p className="checkout__total">
-                {`$${toralPrice}`}
-              </p>
-              <p className="checkout__amount">
-                {`Total for ${totalItems} ${totalItems === 1 ? 'item' : 'items'}`}
-              </p>
-            </div>
+          <Checkout
+            totalPrice={totalPrice}
+            totalItems={totalItems}
+            handleClick={handleClick}
+          />
 
-            <button
-              onClick={handleClick}
-              className="checkout__button"
-              aria-label="checkout"
-              type="button"
-            >
-              Checkout
-            </button>
-          </div>
         </div>
       </div>
     </div>

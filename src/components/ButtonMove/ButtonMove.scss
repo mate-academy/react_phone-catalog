@@ -1,0 +1,10 @@
+@import "../../styles/main";
+
+.button {
+  padding: 8px;
+  display: block;
+  cursor: pointer;
+
+  @include border-icons;
+  @include hover(border-color, $main-color);
+}

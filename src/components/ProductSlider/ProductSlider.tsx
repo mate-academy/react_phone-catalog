@@ -1,4 +1,5 @@
 import { Product } from '../../types/Product';
+import { ButtonMove } from '../ButtonMove';
 import { ProductCard } from '../ProductCard';
 import './ProductSlider.scss';
 
@@ -14,13 +15,8 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         <p className="product-slider__title title">{title}</p>
 
         <div className="product-slider__buttons">
-          <div className="button">
-            <div className="icon icon-prev" />
-          </div>
-
-          <div className="button">
-            <div className="icon icon-next" />
-          </div>
+          <ButtonMove icon="prev" />
+          <ButtonMove icon="next" />
         </div>
       </div>
 

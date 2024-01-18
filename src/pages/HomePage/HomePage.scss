@@ -1,10 +1,12 @@
+@import "../../styles/main";
+
 .home-page-container {
-  margin-top: 40px;
-  display: flex;
+  @include flex-center;
+
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 80px;
+
+  margin-top: 40px;
   overflow-x: hidden;
 }
 
@@ -16,4 +18,3 @@
   max-width: 100%;
   margin-bottom: 80px;
 }
-

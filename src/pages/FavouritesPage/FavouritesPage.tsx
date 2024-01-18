@@ -1,16 +1,14 @@
-import { Link, useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 import './FavouritesPage.scss';
 import { useAppSelector } from '../../app/hooks';
 import { ProductCard } from '../../components/ProductCard';
+import { Empty } from '../../components/Empty';
+import { NoProductsFound } from '../../components/NoProductsFound';
+import { Breadcrumb } from '../../components/Breadcrumb';
+import { favouritesPageImage } from '../../helpers/constants';
 
 export const FavouritesPage = () => {
-  const { phone, favourites, search } = useAppSelector(state => state.phones);
-  const { pathname } = useLocation();
-
-  const correctPath = pathname.slice(1);
-  const normalizedPathname = correctPath[0].toUpperCase()
-    + correctPath.slice(1);
+  const { favourites, search } = useAppSelector(state => state.phones);
 
   const productsToRender = useMemo(() => {
     return favourites
@@ -20,45 +18,24 @@ export const FavouritesPage = () => {
 
   if (favourites.length === 0) {
     return (
-      <p>NO ITEMS</p>
+      <Empty
+        title="Products you add to favourites will appear here"
+        buttnText="Explore products"
+        img={favouritesPageImage}
+      />
     );
   }
 
   if (productsToRender.length === 0) {
     return (
-      <p>NOT FOUND SEARCH</p>
+      <NoProductsFound />
     );
   }
 
   return (
     <div>
       {!search && (
-        <div className="breadcrumb">
-          <Link to="/">
-            <div className="icon icon-home" />
-          </Link>
-
-          <div>
-            <div className="icon icon-next-inactive" />
-          </div>
-          {phone ? (
-            <>
-              <Link to={pathname} className="breadcrumb__name--active">
-                {normalizedPathname}
-              </Link>
-
-              <div>
-                <div className="icon icon-next-inactive" />
-
-                <p>{phone.name}</p>
-              </div>
-            </>
-          ) : (
-            <p className="breadcrumb__name--inactive">
-              {normalizedPathname}
-            </p>
-          )}
-        </div>
+        <Breadcrumb />
       )}
 
       <div className="favourites">

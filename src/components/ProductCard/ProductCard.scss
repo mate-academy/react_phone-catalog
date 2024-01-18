@@ -5,9 +5,12 @@
   flex-direction: column;
   width: max-content;
   padding: 32px 24px 24px;
-  border: 1px solid $elements-color;
+
+  @include border-default;
 
   max-width: 272px;
+
+  @include box-shadow;
 
   &__image {
     display: flex;
@@ -34,7 +37,9 @@
     display: flex;
     gap: 8px;
     padding-bottom: 6px;
-    border-bottom: 1px solid $elements-color ;
+
+    @include border-bottom-default;
+
     margin-bottom: 16px;
   }
 
@@ -43,13 +48,7 @@
   }
 
   &__discount {
-    color: $secondary-color;
-    font-family: Mont-Regular, sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-decoration: line-through;
+    @extend %text-discount;
   }
 
   &__about {
@@ -64,11 +63,7 @@
       justify-content: space-between;
       align-items: center;
 
-      font-family: Mont-SemiBold, sans-serif;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
+      @extend %text-characteristics;
     }
 
     &-name {
@@ -78,6 +73,7 @@
 
   &__buttom {
     display: flex;
+    height: 40px;
     gap: 8px;
   }
 
@@ -89,22 +85,24 @@
 
     padding-block: 10px 9px;
 
-    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+    @include box-shadow-button;
+
+    border: 1px solid transparent;
 
     &--added {
       color: $green-color;
       background-color: $white-color;
-      border: 1px solid $elements-color;
 
+      @include border-default;
       @include hover(box-shadow, none);
     }
   }
 
   &__favourites {
-    padding: 12px;
+    padding: 11px;
     background-color: $white-color;
-    border: 1px solid $icons-color;
 
+    @include border-icons;
     @include hover(border-color, $main-color);
 
     &--added {

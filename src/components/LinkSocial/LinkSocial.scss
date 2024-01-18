@@ -1,0 +1,8 @@
+@import "../../styles/main";
+
+.link-social {
+  padding-block: 43px 42px;
+
+  @extend %upper-case;
+  @include hover(color, $main-color);
+}

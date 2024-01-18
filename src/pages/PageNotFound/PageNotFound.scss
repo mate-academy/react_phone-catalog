@@ -1,13 +1,12 @@
 @import "../../styles/main";
 
 .page-not-found {
-  display: flex;
+  @include flex-center;
+
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 20px;
 
-  &__title  {
+  &__title {
     margin-top: 80px;
   }
 
@@ -16,12 +15,7 @@
     height: 437px;
   }
 
-  &__button {
+  &__link {
     width: 320px;
-    background-color: $main-color;
-    padding-block: 14px;
-
-    @extend %button;
-    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
   }
 }

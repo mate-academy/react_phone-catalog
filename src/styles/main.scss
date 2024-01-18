@@ -16,3 +16,13 @@ html {
   color: $main-color;
   min-height: 100vh;
 }
+
+.is-visible {
+  visibility: hidden;
+}
+
+.title {
+  @extend %h1;
+
+  color: $main-color;
+}

@@ -34,30 +34,25 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     image,
   } = product;
 
-  const handleAddCart = () => {
-    dispatch(addToCart(product));
-    localStorage.setItem('cart',
-      JSON.stringify([...cart, product]));
+  const handleAdd = (key: string) => {
+    const valid = key === 'cart' ? cart : favourites;
+
+    dispatch(key === 'cart' ? addToCart(product) : addToFavourites(product));
+
+    localStorage.setItem(key,
+      JSON.stringify([...valid, product]));
   };
 
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(product));
-    localStorage.setItem('cart',
-      JSON.stringify([...cart
+  const handleDelete = (key: string) => {
+    const valid = key === 'cart' ? cart : favourites;
+
+    dispatch(key === 'cart'
+      ? removeFromCart(product)
+      : removeFavourite(product));
+
+    localStorage.setItem(key,
+      JSON.stringify([...valid
         .filter(pr => pr.id !== id)]));
-  };
-
-  const handleAddToFavourite = () => {
-    dispatch(addToFavourites(product));
-    localStorage.setItem('favourites',
-      JSON.stringify([...favourites, product]));
-  };
-
-  const handleRemoveFromFavourites = () => {
-    dispatch(removeFavourite(product));
-    localStorage.setItem('favourites',
-      JSON.stringify([...favourites
-        .filter(favoutire => favoutire.id !== id)]));
   };
 
   useEffect(() => {
@@ -107,7 +102,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <button
             className="product-card__button product-card__button--added"
             type="button"
-            onClick={handleRemoveFromCart}
+            onClick={() => handleDelete('cart')}
           >
             Added to cart
           </button>
@@ -115,7 +110,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           <button
             className="product-card__button"
             type="button"
-            onClick={handleAddCart}
+            onClick={() => handleAdd('cart')}
           >
             Add to cart
           </button>
@@ -128,8 +123,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           aria-label="like"
           type="button"
           onClick={isFavourite
-            ? handleRemoveFromFavourites
-            : handleAddToFavourite}
+            ? () => handleDelete('favourites')
+            : () => handleAdd('favourites')}
         >
           <div
             className={cn('icon', {

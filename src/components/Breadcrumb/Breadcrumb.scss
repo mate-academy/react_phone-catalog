@@ -1,0 +1,16 @@
+@import "../../styles/main";
+
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  padding-top: 24px;
+  padding-bottom: 40px;
+
+  @extend %links;
+
+  &__name--active {
+    color: $main-color;
+  }
+}

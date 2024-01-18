@@ -1,22 +1,21 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable global-require */
 import { Link } from 'react-router-dom';
 import './PageNotFound.scss';
-
-const image = [
-  require('../../assets/others/not-found.png'),
-];
+import { ButtonMain } from '../../components/ButtonMain';
+import { pageNotFoundImage } from '../../helpers/constants';
 
 export const PageNotFound = () => {
   return (
     <div className="page-not-found">
       <h1 className="page-not-found__title title">Page not found</h1>
-      <img src={image[0]} alt="" className="page-not-found__image" />
 
-      <Link to="/">
-        <button className="page-not-found__button" type="button">
-          Back to Home
-        </button>
+      <img
+        src={pageNotFoundImage}
+        alt=""
+        className="page-not-found__image"
+      />
+
+      <Link to="/" className="page-not-found__link">
+        <ButtonMain text="Go back Home" />
       </Link>
     </div>
   );

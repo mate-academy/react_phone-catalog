@@ -5,3 +5,29 @@
     #{$property}: $toValue;
   }
 }
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin border-default {
+  border: 1px solid $elements-color;
+}
+
+@mixin border-icons {
+  border: 1px solid $icons-color;
+}
+
+@mixin border-bottom-default {
+  border-bottom: 1px solid $elements-color;
+}
+
+@mixin box-shadow {
+  @include hover(box-shadow, 0 2px 15px 0 rgba(0, 0, 0, 0.05));
+}
+
+@mixin box-shadow-button {
+  @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+}

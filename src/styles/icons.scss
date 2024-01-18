@@ -1,4 +1,4 @@
-@import './mixins';
+ @import './mixins';
 
 .icon {
   position: relative;
@@ -24,6 +24,10 @@
   }
 
   &-prev {
+    background-image: url('../assets/icons/vector-left.svg');
+  }
+
+  &-prev-disabled {
     background-image: url('../assets/icons/vector-left-main.svg');
   }
 
@@ -49,7 +53,7 @@
 
   &-close-main {
     background-image: url('../assets/icons/close-main.svg');
-    
+
     @include hover(background-image, url('../assets/icons/close.svg'));
   }
 
@@ -71,5 +75,9 @@
 
   &-plus-main {
     background-image: url('../assets/icons/plus-main.svg');
+  }
+
+  &-down {
+    background-image: url('../assets/icons/vector-down.svg');
   }
 }
