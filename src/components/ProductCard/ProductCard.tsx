@@ -62,7 +62,13 @@ export const ProductCard: React.FC<Props> = React.memo(({
 
   return (
     <div className="productCard">
-      <img src={`./new/${image}`} alt={name} className="productCard__img" />
+      <Link
+        className="productCard__img"
+        to={`/phones/${phoneId}`}
+        onClick={scrollToTop}
+      >
+        <img src={`./new/${image}`} alt={name} className="productCard__img-photo" />
+      </Link>
       <div className="productCard__main-info">
         <Link
           className="productCard__title"

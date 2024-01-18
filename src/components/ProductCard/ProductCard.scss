@@ -14,8 +14,16 @@
 
   &__img {
     height: 208px;
-    width: fit-content;
+    width: 208px;
     justify-self: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+
+    &-photo {
+      height: 100%;
+      width: auto;
+    }
   }
 
   &__main-info {
