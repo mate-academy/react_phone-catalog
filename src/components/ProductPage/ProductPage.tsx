@@ -201,7 +201,7 @@ export const ProductPage: React.FC = () => {
                     >
                       <img
                         alt={namespaceId}
-                        src={`_new/${image}`}
+                        src={`new/${image}`}
                         className="product-page__photos-item"
                       />
                     </button>
@@ -210,7 +210,7 @@ export const ProductPage: React.FC = () => {
                 <div className="product-page__photos-current">
                   <img
                     alt={namespaceId}
-                    src={`_new/${currentImage}`}
+                    src={`new/${currentImage}`}
                     className="product-page__photos-current-item"
                   />
                 </div>

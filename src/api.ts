@@ -2,9 +2,9 @@ import { Product } from './types/Product';
 import { ProductDetails } from './types/ProductDetails';
 
 // eslint-disable-next-line max-len
-const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
+const API_URL = 'https://VKdrvtsv.github.io/react_phone-catalog/new/products.json';
 // eslint-disable-next-line max-len
-const PRODUCT_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/products/';
+const PRODUCT_URL = 'https://VKdrvtsv.github.io/react_phone-catalog/new/products/';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));

@@ -62,7 +62,7 @@ export const ProductCard: React.FC<Props> = React.memo(({
 
   return (
     <div className="productCard">
-      <img src={`./_new/${image}`} alt={name} className="productCard__img" />
+      <img src={`./new/${image}`} alt={name} className="productCard__img" />
       <div className="productCard__main-info">
         <Link
           className="productCard__title"
