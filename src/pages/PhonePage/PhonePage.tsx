@@ -23,7 +23,7 @@ const sortingOptions = [
 ];
 
 const itemsPerPageOptions = [
-  { value: 'all', label: 'all' },
+  { value: 'all', label: 'All' },
   { value: '4', label: '4' },
   { value: '8', label: '8' },
   { value: '16', label: '16' },
@@ -36,7 +36,7 @@ export const PhonePage = () => {
   } = useContext(GlobalContext);
 
   const page = +(searchParams.get('page') || 1);
-  const phonesPerPage = searchParams.get('perPage') || 8;
+  const phonesPerPage = searchParams.get('perPage') || 4;
   const query = searchParams.get('query') || '';
   const sortBy = searchParams.get('sort') || 'age';
 
@@ -157,7 +157,7 @@ export const PhonePage = () => {
 
               {numOfPages !== 1 && (
                 <div className="phones__pagination">
-                  <Pagination total={numOfPages} />
+                  <Pagination total={numOfPages} currentPage={page} />
                 </div>
               )}
             </>
