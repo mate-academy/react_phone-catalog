@@ -42,7 +42,7 @@ export const Cart = () => {
       <h1 className="cart__title">Cart</h1>
 
       <div className="cart__body">
-        {productsOnCart
+        {productsOnCart.length
           ? (
             <>
               <div className="cart__list">
