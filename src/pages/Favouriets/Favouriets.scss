@@ -1,0 +1,10 @@
+.favouriets {
+  &__body {
+    width: 100%;
+    display: flex;
+    row-gap: 40px;
+    column-gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+}

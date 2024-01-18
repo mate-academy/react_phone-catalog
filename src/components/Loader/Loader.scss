@@ -1,0 +1,31 @@
+.Loader {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: relative;
+
+  &__content {
+    position: absolute;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 1em auto;
+    border: 5px solid #67a;
+    border-left-color: #000;
+    animation: load8 1.2s infinite linear;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

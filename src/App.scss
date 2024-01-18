@@ -1,1 +1,27 @@
-// not empty
+@import '/src/style-utils/vars';
+@import '/src/style-utils/mixins';
+
+* {
+  transition: all $effect-duration;
+}
+
+.App {
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.root {
+  min-height: calc(100vh - 240px);
+  max-width: 1138px;
+  width: 100%;
+  justify-self: center;
+  margin-inline: auto;
+
+  @include on-tablet {
+    min-height: calc(100vh - 208px);
+  }
+}

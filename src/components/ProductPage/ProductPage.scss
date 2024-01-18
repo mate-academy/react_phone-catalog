@@ -1,0 +1,537 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.product-page {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 1138px;
+  align-self: center;
+  width: 100%;
+
+  @include on-tablet {
+    margin-inline: auto;
+    max-width: 592px;
+  }
+
+  @include on-mobile{
+    max-width: 288px;
+  }
+
+  &__back {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin: 0;
+    margin-top: 40px;
+    width: fit-content;
+    padding: 0;
+    padding-right: 15px;
+    align-items: center;
+    height: 16px;
+
+    @include hover(cursor, pointer);
+
+    &-arrow {
+      width: 16px;
+      height: 16px;
+      background: url(../../images/icons/arrow-left.png) center;
+    }
+
+    &-text {
+      margin: 0;
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-top: 16px;
+
+    @include on-mobile {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+
+  &__main-options {
+    margin-top: 40px;
+    display: flex;
+    gap: 64px;
+
+    @include on-tablet {
+      gap: 17px;
+    }
+
+    @include on-mobile {
+      gap: 40px;
+      flex-direction: column;
+    }
+  }
+
+  &__photos {
+    width: 560px;
+    height: 464px;
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      width: 337px;
+      height: 287px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      height: auto;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    &-pagination {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-tablet {
+        gap: 8px;
+      }
+
+      @include on-mobile {
+        flex-direction: row;
+      }
+    }
+
+    &-button {
+      height: 66px;
+      width: 66px;
+      padding: 7px;
+      background: $the-white;
+      border: 1px solid $image-border;
+
+      @include on-tablet {
+        padding: 3px;
+        height: 35px;
+        width: 35px;
+      }
+
+      &--active {
+        border-color: $main-text-color;
+      }
+
+      @include hover(border-color, $placeholder-color);
+      @include hover(cursor, pointer);
+    }
+
+    &-item {
+      height: 100%;
+      width: auto;
+    }
+
+    &-current {
+      height: 100%;
+      width: 464px;
+      padding: 11px;
+
+      @include on-tablet {
+        width: 337px;
+      }
+
+      @include on-mobile {
+        height: 274px;
+        width: auto;
+        padding: 0;
+      }
+
+      &-item {
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+  }
+
+  &__choice {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 48px;
+      position: relative;
+      width: 100%;
+
+      &::after {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        content: '';
+        background: $shadow-color;
+        bottom: -24px;
+      }
+
+      &--capacity {
+        margin-bottom: 56px;
+      }
+    }
+
+    &-text {
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin: 0;
+    }
+
+    &-options {
+      display: flex;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+    }
+
+    &-color {
+      box-sizing: border-box;
+      display: flex;
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $shadow-color;
+
+      &--active {
+        border-color: $main-text-color;
+      }
+
+      @include hover(cursor, pointer);
+      @include hover(border-color, $placeholder-color);
+
+      &-link {
+        box-sizing: border-box;
+        display: block;
+        height: 28px;
+        width: 28px;
+        border-radius: 50%;
+      }
+
+      @each $color, $color-value in $product-colors {
+        &-#{$color} {
+          background-color: #{$color-value};
+        }
+      }
+    }
+
+    &-capacity {
+      padding: 7px 8px 4px;
+      border: 1px solid $placeholder-color;
+
+      @include hover(border-color, $main-text-color);
+
+      &--active {
+        background: $main-text-color;
+        border-color: $main-text-color;
+      }
+
+      &-link {
+        color: $main-text-color;
+        text-align: center;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        text-decoration: none;
+
+        &--active {
+          color: $the-white;
+        }
+      }
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin: 0;
+  }
+
+  &__full-price {
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: line-through;
+    margin: 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__card-button {
+    width: 263px;
+    height: 48px;
+    flex-shrink: 0;
+    border: none;
+    background-color: $main-text-color;
+    color: $the-white;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    @include on-tablet {
+      width: 180px;
+    }
+
+    @include on-mobile {
+      width: 231px;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+    @include hover(cursor, pointer);
+
+    &--chosen {
+      background-color: $the-white;
+      border: 1px solid $shadow-color;
+      color: $the-green;
+    }
+  }
+
+  &__favorite-button {
+    box-sizing: border-box;
+    border: 1px solid $placeholder-color;
+    height: 48px;
+    width: 48px;
+    background: url(../../images/icons/favourites.png) center no-repeat;
+
+    @include hover(cursor, pointer);
+    @include hover(border-color, $main-text-color);
+
+    &--chosen {
+      background: url(../../images/icons/favourites_chosen.png) center no-repeat;
+    }
+  }
+
+  &__short {
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    &-tech {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &-text {
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0;
+
+      &--char {
+        color: $main-text-color;
+      }
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    gap: 64px;
+    margin-top: 80px;
+
+    @include on-tablet {
+      margin-top: 64px;
+      flex-direction: column;
+    }
+  }
+
+  &__info-title {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    margin: 0;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      content: '';
+      background: $shadow-color;
+      bottom: -16px;
+      left: 0;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    width: 559px;
+    gap: 48px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-title {
+      color: $main-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    &-text {
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__techs {
+    display: flex;
+    flex-direction: column;
+    width: 512px;
+    gap: 41px;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    &-body {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+    }
+  }
+
+  &__tech {
+    display: flex;
+    justify-content: space-between;
+
+    &-text {
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+      margin: 0;
+
+      &--char {
+        color: $main-text-color;
+      }
+    }
+  }
+
+  &__slider {
+    position: relative;
+    margin-top: 80px;
+
+    @include on-mobile {
+      max-width: 288px;
+      margin-inline: auto;
+    }
+
+    &-title {
+      margin: 0;
+      margin-bottom: 24px;
+      color: $main-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: -0.32px;
+
+      @include on-mobile {
+        font-size: 22px;
+        line-height: 32px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  &__id {
+    color: $placeholder-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+
+    @include on-tablet {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+}

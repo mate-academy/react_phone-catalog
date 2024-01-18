@@ -1,0 +1,77 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.page-slider {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  width: 100%;
+
+  &__body {
+    width: 100%;
+    display: flex;
+    row-gap: 40px;
+    column-gap: 14px;
+    flex-wrap: wrap;
+
+    @include on-mobile {
+      justify-content: center;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+
+    &-numbers {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-button {
+      height: 32px;
+      width: 32px;
+      background-color: $the-white;
+      border: 1px solid $shadow-color;
+
+      @include hover(cursor, pointer);
+      @include hover(border-color, $main-text-color);
+
+      &--number {
+        color: #000;
+        text-align: center;
+        font-family: Mont, Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+      }
+
+      &--prev {
+        background: url(../../images/icons/arrow-left.png) center no-repeat;
+        border: 1px solid $placeholder-color;
+      }
+
+      &--next {
+        background: url(../../images/icons/arrow-right.png) center no-repeat;
+        border: 1px solid $placeholder-color;
+      }
+
+      &--active {
+        background-color: $main-text-color;
+        color: $the-white;
+        border-color: $main-text-color;
+      }
+
+      &--disabled {
+        opacity: 50%;
+
+        @include hover(cursor, default);
+        @include hover(border-color, $placeholder-color);
+      }
+    }
+  }
+}

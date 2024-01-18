@@ -1,0 +1,120 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/mixins';
+
+.swiper {
+  &-slide {
+    display: flex;
+    justify-content: center;
+    width: 1040px;
+  }
+
+  &-wrapper {
+    width: 1040px;
+  }
+
+  &-button-prev,
+  &-button-next {
+    width: 32px;
+    box-sizing: border-box;
+    border: 1px solid $placeholder-color;
+    height: 400px;
+    top: 0;
+    margin-top: 0;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+
+  &-button-prev {
+    background: $the-white url(../../../images/icons/arrow-left.png) no-repeat center;
+    left: 0;
+  }
+
+  &-button-next {
+    background: $the-white url(../../../images/icons/arrow-right.png) no-repeat center;
+    right: 0;
+  }
+
+  &-pagination {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-mobile {
+     display: none;
+    }
+
+    &-bullet {
+      width: 14px;
+      height: 4px;
+      border-radius: 0;
+      background-color: $shadow-color;
+      opacity: 1;
+
+      &-active {
+        background-color: $main-text-color;
+      }
+    }
+  }
+}
+
+.slide-bar {
+  height: 432px;
+  margin-top: 40px;
+  box-sizing: border-box;
+  position: relative;
+
+  @include on-tablet {
+    height: 221px;
+  }
+
+  @include on-mobile {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    margin-top: 0;
+  }
+
+  &__item {
+    height: 400px;
+    box-sizing: border-box;
+    width: 1040px;
+    justify-self: center;
+
+    @include on-tablet {
+      height: 189px;
+      width: 490px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+    }
+
+    &--1 {
+      background: url(../../../../public/new/img/banner-phones.png) center;
+      background-size: cover;
+    }
+
+    &--2 {
+      background: url(../../../../public/new/img/banner-accessories.png) center;
+      background-size: cover;
+    }
+
+    &--3 {
+      background: url(../../../../public/new/img/banner-tablets.png) center;
+      background-size: cover;
+    }
+  }
+}

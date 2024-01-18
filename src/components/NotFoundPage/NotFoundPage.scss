@@ -1,0 +1,48 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.error-page {
+  position: absolute;
+  background-color: rgba(49, 50, 55, 0.5);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+  &__body {
+    display: grid;
+    width: 368px;
+    height: 206px;
+    flex-shrink: 0;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    background: $main-text-color;
+    align-items: center;
+  }
+
+  &__message {
+    color: $the-white;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin: 0;
+  }
+
+  &__home-link {
+    color: $the-white;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-decoration: none;
+  }
+}
+

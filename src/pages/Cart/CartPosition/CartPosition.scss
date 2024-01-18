@@ -1,0 +1,138 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.cart-position {
+  width: 752px;
+  height: 128px;
+  border: 1px solid $shadow-color;
+  display: flex;
+  padding-left: 24px;
+  padding-right: 49px;
+  align-items: center;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    width: 100%;
+    padding: 24px;
+    justify-content: space-between;
+  }
+
+  @include on-mobile {
+    width: 100%;
+    padding: 16px;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 16px;
+  }
+
+  &__delete-button {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    background: url(../../../images/icons/delete.png) center;
+    border: none;
+    margin-right: 31px;
+
+    @include hover(cursor, pointer);
+
+    @include on-tablet {
+      margin-right: 0;
+    }
+  }
+
+  &__photo-container {
+    height: 66px;
+    width: 66px;
+    margin-right: 31px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__photo {
+    width: auto;
+    height: 100%;
+
+    @include on-tablet {
+      margin-right: 0;
+    }
+  }
+
+  &__name {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    width: 295px;
+    margin-right: 49px;
+    text-decoration: none;
+
+    @include on-tablet {
+      margin-right: 0;
+      width: 176px;
+    }
+
+    @include on-mobile {
+      width: 128px;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    margin-right: 43px;
+
+    @include on-tablet {
+      margin-right: 0;
+    }
+
+    @include on-tablet {
+      margin-right: 0;
+    }
+
+    &-button {
+      border: 1px solid $placeholder-color;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+
+      @include hover(cursor, pointer);
+
+      &--minus {
+        background: url(../../../images/icons/minus.png) center no-repeat;
+      }
+
+      &--plus {
+        background: url(../../../images/icons/plus.png) center no-repeat;
+      }
+
+      &--disabled {
+        opacity: 0.5;
+
+        @include hover(cursor, default);
+      }
+    }
+
+    &-number {
+      margin: 0;
+      color: $the-black;
+      text-align: center;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      width: 32px;
+    }
+  }
+
+  &__price {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    margin: 0;
+  }
+}

@@ -1,0 +1,120 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+  gap: 24px;
+
+  @include on-mobile {
+    max-width: 288px;
+    margin-inline: auto;
+  }
+
+  &__title {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin: 0;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include on-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__block {
+    text-decoration: none;
+
+    &-title {
+      color: $main-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+      margin-bottom: 4px;
+    }
+
+    &-count {
+      color: $secondary-text-color;
+      font-family: Mont, Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      margin: 0;
+    }
+  }
+
+  &__photo {
+    height: 368px;
+    width: 368px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-mobile {
+      width: 288px;;
+      height: 288px;;
+    }
+
+    &--phones {
+      background: $categories-phones url(../../../../public/new/img/category-phones.png) no-repeat;
+      background-size: 386px 457px;
+      background-position: left 73px top 8px;
+
+      @include on-tablet {
+        background-size: 187px 200px;
+        background-position: left 45px top 8px;
+      }
+
+      @include on-mobile {
+        background-size: 350px 420px;
+        background-position: left 15px top 0;
+      }
+    }
+
+    &--tablets {
+      background: $categories-tablets url(../../../../public/new/img/category-tablets.png) no-repeat;
+      background-size: 546px 546px;
+      background-position: left 22px top 20px;
+
+      @include on-tablet {
+        background-size: 280px 280px;
+        background-position: left 8px top 8px;
+      }
+
+      @include on-mobile {
+        background-size: 430px 430px;
+        background-position: left 15px top 15px;
+      }
+    }
+
+    &--accessories {
+      background: $categories-accessories url(../../../../public/new/img/category-accessories.png) no-repeat;
+      background-size: auto 310px;
+      background-position: left 35px bottom 0;
+
+      @include on-tablet {
+        background-size: auto 160px;
+        background-position: left 20px bottom 0;
+      }
+
+      @include on-mobile {
+        background-size: auto 240px;
+        background-position: left 35px bottom 0;
+      }
+    }
+  }
+}

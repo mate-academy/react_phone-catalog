@@ -1,0 +1,12 @@
+@import '/src/style-utils/mixins';
+
+.container {
+  box-sizing: border-box;
+  max-width: 1138px;
+  align-self: center;
+
+  @include on-tablet {
+    max-width: 592px;
+    margin-inline: auto;
+  }
+}

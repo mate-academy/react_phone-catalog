@@ -1,0 +1,157 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.productCard {
+  box-sizing: border-box;
+  height: 507px;
+  width: 274px;
+  border: 1px solid $shadow-color;
+  padding: 32px 24px 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__img {
+    height: 208px;
+    width: 208px;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+
+    &-photo {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6.5px;
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  &__title {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    height: 42px;
+    margin: 0;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    height: 31px;
+    position: relative;
+
+    &::after {
+      bottom: -8px;
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 1px;
+      background-color: $shadow-color;
+    }
+  }
+
+  &__price {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    margin: 0;
+  }
+
+  &__fullPrice {
+    margin: 0;
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    text-decoration-line: line-through;
+    font-weight: 500;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 22.5px;
+    gap: 8px;
+  }
+
+  &__detail {
+    width: 224px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__info {
+    color: $secondary-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0;
+    line-height: normal;
+    height: 15px;
+
+    &--char {
+      font-weight: 600;
+      color: $main-text-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 224px;
+    margin-top: 16px;
+  }
+
+  &__card-button {
+    border: none;
+    background-color: $main-text-color;
+    width: 176px;
+    height: 40px;
+    color: $the-white;
+    text-align: center;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+
+    @include hover(box-shadow, 0 3px 13px 0 rgba(23, 32, 49, 0.26));
+    @include hover(cursor, pointer);
+
+    &--chosen {
+      background-color: $the-white;
+      border: 1px solid $shadow-color;
+      color: $the-green;
+    }
+  }
+
+  &__favorite-button {
+    box-sizing: border-box;
+    border: 1px solid $placeholder-color;
+    height: 40px;
+    width: 40px;
+    background: url(../../images/icons/favourites.png) center no-repeat;
+
+    @include hover(cursor, pointer);
+    @include hover(border-color, $main-text-color);
+
+    &--chosen {
+      background: url(../../images/icons/favourites_chosen.png) center no-repeat;
+    }
+  }
+}

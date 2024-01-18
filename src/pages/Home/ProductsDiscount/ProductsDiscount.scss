@@ -1,0 +1,89 @@
+@import '/src/style-utils/vars';
+@import '/src/style-utils/fonts';
+@import '/src/style-utils/mixins';
+
+.hot-price {
+  margin-top: 72px;
+  width: 100%;
+  position: relative;
+
+  @include on-mobile {
+    max-width: 288px;
+    margin-inline: auto;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 24px;
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.32px;
+  }
+
+  &__error {
+    color: $main-text-color;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.32px;
+  }
+}
+
+.slider {
+  position: initial;
+}
+
+.slick {
+  &-track {
+    display: flex;
+    gap: 14px;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &-slide {
+    width: 272px;
+  }
+
+  &-prev,
+  &-next {
+    top: 5px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $placeholder-color;
+    transform: none;
+
+    &::before {
+      content: none;
+    }
+
+    &.slick-disabled {
+      opacity: 50%;
+    }
+  }
+
+  &-prev {
+    background: url(../../../images/icons/arrow-left.png) no-repeat center;
+    right: 48px;
+    left: auto;
+
+    &:hover, &:focus {
+      outline: none;
+      background: url(../../../images/icons/arrow-left.png) no-repeat center;
+    }
+  }
+
+   &-next {
+    background: url(../../../images/icons/arrow-right.png) no-repeat center;
+    right: 0;
+
+    &:hover, &:focus {
+      outline: none;
+      background: url(../../../images/icons/arrow-right.png) no-repeat center;
+    }
+  }
+}

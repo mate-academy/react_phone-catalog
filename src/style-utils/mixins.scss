@@ -1,0 +1,19 @@
+@mixin on-tablet {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $effect-duration;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
