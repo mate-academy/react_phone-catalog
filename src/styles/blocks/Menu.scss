@@ -1,5 +1,5 @@
 .Menu {
-  background-color: $html-bg-color;
+  background-color: $black;
   height: 100%;
   width: 100vw;
   position: fixed;
@@ -52,7 +52,7 @@
 
     &--active::after {
       @include after-style;
-      
+
       width: 50%;
     }
   }
@@ -65,7 +65,7 @@
   &__button {
     height: 48px;
     width: 48px;
-    background-color: $html-bg-color;
+    background-color: $black;
     outline: none;
     border: none;
     border-left: 1px solid $gray-elements;
@@ -103,11 +103,11 @@
     &-link {
       @extend %text-uppercase;
 
-      color: $gray-second;
+      color: $gray-secondary;
       padding: 8px 0;
 
       &--active {
-        color: $gray-main;
+        color: $white;
         position: relative;
 
         &::after {

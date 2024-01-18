@@ -14,11 +14,11 @@
 
   &__text {
     @extend %text-small;
-    
+
     margin: 0;
   }
 
   & &__text:hover {
-    color: $gray-main;
+    color: $white;
   }
 }

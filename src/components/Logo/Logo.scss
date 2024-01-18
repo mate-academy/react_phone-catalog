@@ -1,6 +1,15 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+
 .Logo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin: 0 0 16px;
+
+  @include on-tablet {
+    margin-right: 24px;
+  }
 }

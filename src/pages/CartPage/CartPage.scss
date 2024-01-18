@@ -22,8 +22,8 @@
 
   &__is-empty {
     @extend %text-important;
-    
-    color: $gray-second;
+
+    color: $gray-secondary;
   }
 
   &__main {
@@ -80,7 +80,7 @@
     &-text {
       @extend %text-body;
 
-      color: $gray-second;
+      color: $gray-secondary;
     }
 
     &-button {
@@ -92,7 +92,7 @@
 
       height: 40px;
       width: 100%;
-      background-color: $gray-main;
+      background-color: $accent;
       border: 1px solid transparent;
       cursor: pointer;
       transition: all 0.3s ease-in-out;

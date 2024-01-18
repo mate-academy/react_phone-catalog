@@ -12,11 +12,12 @@
 
   &__name {
     @extend %text-small;
+    color: $gray-secondary;
   }
 
   &__value {
     @extend %text-small;
-    
-    color: $gray-main;
+
+    color: $white;
   }
 }

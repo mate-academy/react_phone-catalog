@@ -12,10 +12,10 @@
   &__input {
     height: 100%;
     width: 200px;
-    background-color: $html-bg-color;
+    background-color: $black;
     border: none;
     outline: none;
-    
+
     @extend %text-input !optional;
 
     &::placeholder {
@@ -26,7 +26,7 @@
   &__clear {
     height: 16px;
     width: 16px;
-    background-color: $html-bg-color;
+    background-color: $black;
     background-image: url(../../images/icons/Close.svg);
     border: none;
     cursor: pointer;

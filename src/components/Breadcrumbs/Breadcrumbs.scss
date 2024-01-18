@@ -27,18 +27,18 @@
 
   &__page-title {
     @extend %text-small;
-    
+
     text-transform: capitalize;
     text-decoration: none;
     margin: 0;
 
     &--dark {
-      color: $gray-main;
+      color: $white;
     }
   }
 
   & &__page-title:hover {
-    color: $gray-second;
+    color: $gray-secondary;
   }
 
   &__product-title {

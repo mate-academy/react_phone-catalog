@@ -28,7 +28,7 @@ export const HomePage: React.FC = () => {
           <>
             <div className="HomePage__top">
               <h1 className="HomePage__title">
-                Welcome to MyApple store!
+                Welcome to Nice Gadgets store!
               </h1>
               <div className="HomePage__slider">
                 <Slider />

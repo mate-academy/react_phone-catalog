@@ -23,19 +23,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $white;
+
 
     &--active {
-      background-color: $gray-main !important;
+      background-color: $accent !important;
     }
   }
 
   &__link {
     @extend %text-body;
-    
-    color: $black;
 
-    &--active {
-      color: $white;
-    }
+    color: $white;
+
+    // &--active {
+    //   color: $white;
+    // }
   }
 }

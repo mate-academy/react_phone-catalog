@@ -38,7 +38,7 @@
 
     @include on-tablet {
       --columns: 12;
-      
+
       display: grid;
       grid-template-columns: repeat(var(--columns), 1fr);
       gap: 16px 0;
@@ -81,6 +81,13 @@
 
   &__product-title {
     @extend %text-title-mobile;
+    color: $white;
+    font-size: 22px;
+
+    @include on-tablet {
+      font-size: 32px;
+
+    }
   }
 
   &__images {
@@ -131,7 +138,7 @@
     }
 
     &--active {
-      border-color: $gray-main;
+      border-color: $white;
     }
   }
 
@@ -154,7 +161,7 @@
     padding: 6px;
     height: 288px;
     width: 100%;
-    background-color: $html-bg-color;
+    background-color: $black;
     grid-column: span 10;
 
     @include on-desktop {
@@ -163,6 +170,7 @@
 
     &-selected {
       height: 100%;
+      border-radius: 20px;
     }
   }
 
@@ -219,7 +227,7 @@
     }
 
     &--selected {
-      border-color: $gray-main;
+      border-color: $white;
     }
 
     &-link {
@@ -253,12 +261,12 @@
     padding: 8px;
 
     &:hover {
-      border-color: $gray-main;
+      border-color: $white;
     }
 
     &--selected {
-      background-color: $gray-main;
-      color: $white;
+      background-color: $white;
+      color: $black;
     }
 
     &-info {
@@ -310,7 +318,7 @@
       font-weight: 500;
       line-height: 28px;
       text-decoration: line-through;
-      color: $gray-second;
+      color: $gray-secondary;
     }
   }
 

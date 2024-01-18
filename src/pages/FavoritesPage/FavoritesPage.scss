@@ -26,13 +26,13 @@
   &__models-count {
     @extend %text-body;
 
-    color: $gray-second;
+    color: $gray-secondary;
   }
 
   &__no-items {
     @extend %text-important;
 
-    color: $gray-second;
+    color: $gray-secondary;
 
   }
 }

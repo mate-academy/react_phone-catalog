@@ -57,10 +57,10 @@
     &-link {
       @extend %text-uppercase;
 
-      color: $gray-second;
+      color: $gray-secondary;
 
       &:hover {
-        color: $gray-main;
+        color: $white;
       }
     }
   }
@@ -82,7 +82,7 @@
     &-text {
       @extend %text-small;
 
-      color: $gray-second;
+      color: $gray-secondary;
     }
   }
 }

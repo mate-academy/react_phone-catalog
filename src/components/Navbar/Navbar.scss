@@ -30,7 +30,7 @@
   &__item {
     @extend %text-uppercase;
 
-    color: $gray-second;
+    color: $gray-secondary;
     padding: 16px 0;
     cursor: pointer;
     position: relative;
@@ -40,11 +40,11 @@
     }
 
     &:hover {
-      color: $gray-main;
+      color: $white;
     }
 
     &--active {
-      color: $gray-main;
+      color: $white;
 
       &::after {
         @include after-style;
