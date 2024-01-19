@@ -6,9 +6,9 @@ import { Product } from '../../types/Product';
 import { SORT, optionsSorBy } from '../../utils/Sort';
 import { Dropdown } from '../../components/Dropdown';
 import { PageSlider } from '../../components/PageSlider';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 import './PhonesPage.scss';
-import { getSearchWith } from '../../helpers/searchHelper';
 
 export const PhonesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
