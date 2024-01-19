@@ -1,3 +1,5 @@
+@import "../../style/utils/mixins";
+
 .CartPage {
   &__title {
     margin-bottom: 24px;
@@ -8,8 +10,17 @@
   display: flex;
   justify-content: space-between;
 
+  @include onTablet {
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__cards {
     margin-bottom: 87px;
+
+    @include onTablet {
+      margin-bottom: 24px;
+    }
 
     &--list {
       padding: 0;
@@ -27,6 +38,11 @@
     padding: 24px;
     height: 206px;
     border: 2px solid #e2e6e9;
+
+    @include onTablet {
+      // width: 368px;
+      margin-bottom: 40px;
+    }
   }
 
   &__price {
@@ -37,6 +53,10 @@
     padding-bottom: 24px;
     border-bottom: 1px solid #e2e6e9;
     width: 321px;
+
+    @include onMobile {
+      width: 170px;
+    }
 
     &--sum {
       font-size: 32px;
@@ -59,6 +79,11 @@
     height: 48px;
     background-color: #313237;
     color: #fff;
+
+    @include onMobile {
+      width: 170px;
+    }
+
   }
 }
 
@@ -68,6 +93,20 @@
   padding: 24px 40px 24px 24px;
   border: 2px solid #e2e6e9;
 
+  @include onTablet {
+    padding: 24px 10px;
+  }
+  @include onMobile {
+    padding: 20px 5px 20px 10px;
+  }
+  @include onPhone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 24px;
+  }
+
   &__closing {
     width: 16px;
     height: 16px;
@@ -76,6 +115,11 @@
     background-size: cover;
     margin: auto 0;
     cursor: pointer;
+
+    @include onPhone {
+      display: flex;
+      margin-left: auto;
+    }
 
     &:hover {
       background: url(../../icons/Close_hover.svg);
@@ -101,6 +145,16 @@
     text-decoration: none;
     color: #313237;
 
+    @include onMobile {
+      width: 110px;
+      margin: auto 0;
+    }
+    @include onPhone {
+      min-width: 170px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
     &:link {
       text-decoration: none;
     }
@@ -119,6 +173,11 @@
     margin: auto 0;
     display: flex;
     padding: 0 43px 0 25px;
+
+    @include onMobile {
+      padding: 0 10px 0 5px;
+      margin-bottom: 20px;
+    }
 
     &--icon {
       width: 32px;
@@ -144,6 +203,11 @@
     font-style: normal;
     font-weight: 700;
     line-height: 140%;
+
+    @include onPhone {
+      width: 100%;
+      text-align: center;
+    }
   }
 
 }
