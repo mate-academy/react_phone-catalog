@@ -80,10 +80,19 @@
 
 body {
   font-family: Mont, serif;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .app {
   overflow: hidden;
+  min-height: 100vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
 }

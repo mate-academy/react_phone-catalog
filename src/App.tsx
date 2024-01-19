@@ -21,6 +21,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { NotFoundPage } from './pages/NofFoundPage';
 import { DropDownMenu } from './components/DropDownMenu';
 import { DropDownMenuContext } from './helpers/context/DropDownMenuContext';
+import { Footer } from './components/footer/Footer';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,37 +38,79 @@ const App = () => {
         <Routes>
           <Route
             path={HOME_LINK}
-            element={isMenuOpen ? <DropDownMenu /> : <HomePage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <HomePage />
+
+                <Footer />
+              </div>
+            )}
           />
 
           <Route
             path={PHONES_LINK}
-            element={isMenuOpen ? <DropDownMenu /> : <PhonesPage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <PhonesPage />
+
+                <Footer />
+              </div>
+            )}
           />
 
           <Route
             path={TABLETS_LINK}
-            element={isMenuOpen ? <DropDownMenu /> : <TabletsPage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <TabletsPage />
+
+                <Footer />
+              </div>
+            )}
           />
 
           <Route
             path={ACCESSORIES_LINK}
-            element={isMenuOpen ? <DropDownMenu /> : <AccessoriesPage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <AccessoriesPage />
+
+                <Footer />
+              </div>
+            )}
           />
 
           <Route
             path={FAVORITES_LINK}
-            element={isMenuOpen ? <DropDownMenu /> : <FavoritesPage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <FavoritesPage />
+
+                <Footer />
+              </div>
+            )}
           />
 
           <Route
             path={CART_LINK}
-            element={isMenuOpen ? <DropDownMenu /> : <CartPage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <CartPage />
+
+                <Footer hasTopNav={false} />
+              </div>
+            )}
           />
 
           <Route
             path={productFullLink}
-            element={isMenuOpen ? <DropDownMenu /> : <ProductDetailsPage />}
+            element={isMenuOpen ? <DropDownMenu /> : (
+              <div className="app__content">
+                <ProductDetailsPage />
+
+                <Footer />
+              </div>
+            )}
           />
 
           <Route path="/*" element={<NotFoundPage />} />

@@ -1,4 +1,3 @@
-import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import {
   ShopByCategory,
@@ -31,7 +30,5 @@ export const HomePage = () => (
         Brand new models
       </ProductsSlider>
     </main>
-
-    <Footer />
   </>
 );

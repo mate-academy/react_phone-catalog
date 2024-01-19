@@ -13,7 +13,6 @@ import {
   PAGE_KEY, PER_PAGE_KEY, QUERY_KEY, SORT_KEY,
 } from '../../helpers/constants/SearchParamsKeys';
 import { ProductType } from '../../helpers/enums/ProductType';
-import { Footer } from '../../components/footer/Footer';
 import { Breadcrumbs } from '../../components/main/Breadcrumbs';
 import { NoSearchResults } from '../../components/main/NoSearchResults';
 import { ProductsCount } from '../../components/main/ProductsCount';
@@ -253,8 +252,6 @@ export const ProductsPage = ({ categoryType }: ProductsPageProps) => {
           )}
         </main>
       )}
-
-      <Footer />
     </>
   );
 };

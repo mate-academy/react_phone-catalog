@@ -10,7 +10,6 @@ import {
 import { QUERY_KEY } from '../helpers/constants/SearchParamsKeys';
 import { Product } from '../helpers/types/Product';
 import { Header } from '../components/header/Header';
-import { Footer } from '../components/footer/Footer';
 import { Breadcrumbs } from '../components/main/Breadcrumbs';
 import { ProductsCount } from '../components/main/ProductsCount';
 import { ProductsList } from '../components/main/ProductsList';
@@ -60,45 +59,41 @@ export const FavoritesPage = () => {
   }, [query, count]);
 
   return (
-    <>
-      <FavoritesCountContext.Provider value={{ increment, decrement }}>
-        <Header
-          hasSearch
-          currentPage="favourites"
-          favoritesCount={count}
-        />
+    <FavoritesCountContext.Provider value={{ increment, decrement }}>
+      <Header
+        hasSearch
+        currentPage="favourites"
+        favoritesCount={count}
+      />
 
-        <main className="favorites">
-          {count ? (
-            <>
-              {!query && (
-                <>
-                  <Breadcrumbs path={breadcrumbsPath} />
+      <main className="favorites">
+        {count ? (
+          <>
+            {!query && (
+              <>
+                <Breadcrumbs path={breadcrumbsPath} />
 
-                  <Title extraClassName="favorites__title">Favourites</Title>
-                </>
-              )}
+                <Title extraClassName="favorites__title">Favourites</Title>
+              </>
+            )}
 
-              <ProductsCount
-                countText={favoritesCountText}
-                extraClasses={favoritesCounterClasses}
-              />
+            <ProductsCount
+              countText={favoritesCountText}
+              extraClasses={favoritesCounterClasses}
+            />
 
-              <ProductsList products={displayedFavorites} />
-            </>
-          ) : (
-            <div className="favorites__no-search">
-              {query ? (
-                <NoSearchResults />
-              ) : (
-                <NoResults categoryName="Favorites" />
-              )}
-            </div>
-          )}
-        </main>
-      </FavoritesCountContext.Provider>
-
-      <Footer />
-    </>
+            <ProductsList products={displayedFavorites} />
+          </>
+        ) : (
+          <div className="favorites__no-search">
+            {query ? (
+              <NoSearchResults />
+            ) : (
+              <NoResults categoryName="Favorites" />
+            )}
+          </div>
+        )}
+      </main>
+    </FavoritesCountContext.Provider>
   );
 };

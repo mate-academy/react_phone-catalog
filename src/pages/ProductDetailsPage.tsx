@@ -34,7 +34,6 @@ import {
   ProductsSlider,
 } from '../components/main/products-sliders/ProductsSlider';
 import { ProductsSlidersType } from '../helpers/enums/ProductsSliderType';
-import { Footer } from '../components/footer/Footer';
 
 export const ProductDetailsPage = () => {
   const [isBadId, setIsBadId] = useState(false);
@@ -237,8 +236,6 @@ export const ProductDetailsPage = () => {
           <Title>Phone was not found</Title>
         </main>
       )}
-
-      <Footer />
     </>
   );
 };

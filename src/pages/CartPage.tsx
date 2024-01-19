@@ -8,7 +8,6 @@ import { CartItems } from '../components/main/cart/CartItems';
 import { useLocalStorage } from '../helpers/LocalStorage';
 import { CART_KEY } from '../helpers/constants/StorageKeys';
 import { ProductInCart } from '../helpers/types/ProductInCart';
-import { Footer } from '../components/footer/Footer';
 import { Button } from '../components/main/Button';
 
 export const CartPage = () => {
@@ -125,8 +124,6 @@ export const CartPage = () => {
           </>
         )}
       </main>
-
-      <Footer hasTopNav={false} />
     </>
   );
 };
