@@ -28,6 +28,10 @@
       flex-direction: column;
       gap: 16px;
       margin-right: 16px;
+
+      @include onTablet {
+        margin-right: 0;
+      }
     }
   }
 
