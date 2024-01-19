@@ -82,10 +82,12 @@
     }
 
     &--0 {
-      background-image: url(../../images/slider/iPhone14_mob.png);
+      background-image: url(../../images/slider/iPhone14_mob.svg);
+      height: 100%;
+      background-position: center 0;
 
       @include on-tablet {
-        background-image: url(../../images/slider/iPhone14.png);
+        background-image: url(../../images/slider/iPhone14.svg);
       }
     }
 
