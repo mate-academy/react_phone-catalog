@@ -1,0 +1,35 @@
+$gray-close-black: #313237;
+$light-gray: #e2e6e9;
+$silver-gray: #c4c4c4;
+$gray: #89939a;
+$middle-gray: #b4bdc3;
+$white-gray: #fafbfc;
+$white: #fff;
+$red: #eb5757;
+$green: #27ae60;
+
+// $screen-factor: 100vw / 1440px;
+
+$arrow-size: 16px;
+
+$favourites-card-size: 40px;
+$card-buttons-gap: 8px;
+
+$categories-slider-width: 100%;
+$screen-scale-factor: 100vw / 1440;
+$categories-slider-height: calc(400 * #{$screen-scale-factor});
+
+$search-left-padding: 24px;
+$search-icon-size: 16px;
+$search-right-padding: $search-left-padding + 2 * $search-icon-size;
+
+$big-dropdown-width: 176px;
+$small-dropdown-width: 128px;
+$horizontal-dropdown-padding: 12px;
+$top-dropdown-padding: 10px;
+$bottom-dropdown-padding: 9px;
+$select-height: 21px;
+$dropdown-list-margin-top: 4px;
+$dropdown-list-vertical-padding: 8px;
+
+$back-gap: 4px;

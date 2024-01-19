@@ -1,0 +1,24 @@
+.back {
+  display: flex;
+  gap: $back-gap;
+  background-color: $white;
+  width: calc(47px + #{$back-gap});
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &__text {
+    color: $gray;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 2px;
+
+    &:hover {
+      color: $gray-close-black;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.product-spec {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: space-between;
+
+  &__name {
+    color: $gray;
+
+    @include tech-small;
+
+    &--big {
+      @include tech-big;
+    }
+  }
+
+  &__value {
+    color: $gray-close-black;
+    text-align: end;
+
+    @include tech-small;
+
+    &--small {
+      max-width: 175px;
+    }
+
+    &--big {
+      @include tech-big;
+    }
+  }
+}

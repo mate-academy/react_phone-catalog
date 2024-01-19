@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $light-gray;
+
+  &__part {
+    display: flex;
+
+    &--left {
+      gap: 64px;
+    }
+  }
+
+  &__dropdown-menu,
+  &__logo {
+    margin-top: 20px;
+    margin-left: 24px;
+  }
+
+  &__dropdown-menu {
+    width: 20px;
+    height: 20px;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}

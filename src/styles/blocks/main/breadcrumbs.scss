@@ -1,0 +1,27 @@
+.breadcrumbs {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  &__text {
+    color: $gray;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__link:hover {
+    color: $gray-close-black;
+  }
+}

@@ -1,0 +1,20 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+
+  @include set-padding;
+
+  &__no-search,
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__count {
+    margin-top: 8px;
+
+    &--query {
+      margin-top: 24px;
+    }
+  }
+
+}

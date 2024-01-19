@@ -1,0 +1,120 @@
+.cart-item {
+  display: flex;
+  width: 100%;
+  height: 128px;
+  border: 1px solid $light-gray;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 40px 0 24px;
+
+  @include for-mobile {
+    height: fit-content;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-evenly;
+    padding: 20px;
+  }
+
+  &__remove-button {
+    width: 16px;
+    height: 16px;
+    margin-right: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include for-mobile {
+      margin-right: 0;
+    }
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  &__product-image {
+    width: 66px;
+    height: 66px;
+    margin-right: 31px;
+
+    @include for-mobile {
+      margin-right: 0;
+    }
+  }
+
+  &__product-name {
+    width: 295px;
+    color: $gray-close-black;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-right: 49px;
+
+    @include for-mobile {
+      margin-right: 0;
+      width: fit-content;
+    }
+  }
+
+  &__minus,
+  &__plus {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 13px;
+    border: 1px solid $middle-gray;
+
+    @include for-mobile {
+      margin-right: 0;
+    }
+
+    &:hover {
+      border: 1px solid $gray-close-black;
+    }
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__minus:disabled {
+    cursor: not-allowed;
+    border: 1px solid $light-gray;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    margin-right: 13px;
+    width: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include for-mobile {
+      margin-right: 0;
+    }
+  }
+
+  &__total-price {
+    color: $gray-close-black;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    width: 104px;
+    display: flex;
+    justify-content: flex-end;
+
+    @include for-mobile {
+      justify-content: center;
+      width: fit-content;
+    }
+  }
+}

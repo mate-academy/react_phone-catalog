@@ -1,0 +1,41 @@
+.products {
+  width: 100%;
+  box-sizing: border-box;
+
+  @include set-padding;
+
+  &__breadcrumbs {
+    margin-top: 25px;
+  }
+
+  &__no-results,
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__count {
+    margin-top: 8px;
+
+    &--query {
+      margin-top: 24px;
+    }
+  }
+
+  &__filters {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+
+    @include small-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__list {
+    margin-top: 24px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}

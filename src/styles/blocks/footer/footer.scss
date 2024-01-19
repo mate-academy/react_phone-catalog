@@ -1,0 +1,40 @@
+.footer {
+  width: 100vw;
+  height: 96px;
+  box-shadow: 0 -1px 0 0 $light-gray;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  @include set-padding;
+
+  &__left {
+    display: flex;
+    gap: 26.53vw;
+  }
+
+  &__logo {
+    margin: 36px 0;
+  }
+
+  &__top {
+    &-nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    &-link-text {
+      color: $gray;
+      text-align: right;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+
+      &:hover {
+        color: $gray-close-black;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.bottom-navigation {
+  display: flex;
+  gap: 64px;
+  margin: 43px 0;
+
+  @include for-small-desktop {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__link {
+    color: $gray;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    width: fit-content;
+
+    &:hover {
+      color: $gray-close-black;
+    }
+  }
+}

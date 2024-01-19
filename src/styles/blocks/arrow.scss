@@ -1,0 +1,24 @@
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $middle-gray;
+
+  &:hover {
+    border: 1px solid $gray-close-black;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+
+    @include set-arrow-disabled;
+
+    &:hover {
+      @include set-arrow-disabled;
+    }
+  }
+
+  &__img {
+    width: $arrow-size;
+    height: $arrow-size;
+  }
+}

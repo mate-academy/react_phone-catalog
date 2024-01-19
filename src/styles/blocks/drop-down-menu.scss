@@ -1,0 +1,23 @@
+.drop-down-menu {
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-top: 20px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}

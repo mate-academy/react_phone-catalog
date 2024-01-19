@@ -1,0 +1,25 @@
+.loader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__content {
+    width: 20px;
+    height: 20px;
+    animation: circle 1.2s infinite linear;
+    border-radius: 50%;
+    margin: 1em auto;
+    border: 10px solid $gray;
+    border-left-color: #27ae60;
+  }
+}
+
+@keyframes circle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

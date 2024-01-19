@@ -1,0 +1,10 @@
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 52.22vw;
+
+  @include for-small-desktop {
+    width: 100%;
+  }
+}

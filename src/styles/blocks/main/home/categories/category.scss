@@ -1,0 +1,46 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__image {
+    width: 100%;
+  }
+
+  &__name {
+    margin-top: 24px;
+    color: $gray-close-black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    @include for-mobile {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    @include small-mobile {
+      margin-top: 8px;
+      font-size: 10px;
+    }
+  }
+
+  &__count {
+    color: $gray;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+
+    @include for-mobile {
+      font-size: 10px;
+      line-height: 14px;
+    }
+
+    @include small-mobile {
+      font-size: 8px;
+      line-height: 12px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.counter {
+  width: 14px;
+  height: 14px;
+  background-color: $red;
+  border-radius: 50%;
+  stroke: $white;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    color: $white;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

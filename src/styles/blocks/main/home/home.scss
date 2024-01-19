@@ -1,0 +1,27 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  box-sizing: border-box;
+
+  @include set-padding;
+
+  &__categories-slider {
+    margin-top: 40px;
+  }
+
+  &__products-slider {
+    &--up {
+      margin-top: 72px;
+    }
+
+    &--down {
+      margin-top: 80px;
+    }
+  }
+
+  &__categories,
+  &__footer {
+    margin-top: 80px;
+  }
+}
