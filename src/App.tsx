@@ -15,10 +15,10 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   /* eslint-disable no-console */
-  console.log(products, isLoading);
+  console.log(products);
 
   const fetchProducts = async () => {
-    setIsLoading(true);
+    setIsLoading(!isLoading);
 
     try {
       const productsFromServer = await getProducts() as Product[];

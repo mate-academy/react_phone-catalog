@@ -7,33 +7,17 @@ import { getProductDetails } from '../../helpers/fetchClient';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Loader } from '../../components/Loader';
 import { getProducts } from '../../api';
-
-import './ProductDetailsPage.scss';
 import { YouMayAlsoLikes } from '../../components/YouMayAlsoLike';
 import { AddToCart } from '../../components/AddToCart';
 import { AddToLike } from '../../components/AddToLike';
+
+import './ProductDetailsPage.scss';
 
 export const getProductById = (products: Product[], id: string) => {
   return products.find(product => product.id === id);
 };
 
-export const PRODUCTS_COLORS: { [color:string]: string } = {
-  black: '#4C4C4C',
-  rosegold: '#FED0C6',
-  gold: '#FCDBC1',
-  silver: '#F0F0EE',
-  spacegray: '#8D8D92',
-  green: '#A3EACC',
-  yellow: '#FEE870',
-  white: '#F0F0F0',
-  purple: '#EDE1F9',
-  red: '#C91C38',
-  coral: '#FF7F50',
-  midnightgreen: '#5F7170',
-};
-
 export const ProductDetailsPage = () => {
-  // const { productId } = useParams();
   const { productId } = useParams<{ productId?: string }>();
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -149,17 +133,27 @@ export const ProductDetailsPage = () => {
                         <p className="ProductDetailsPage__options-title">
                           Available colors
                         </p>
-                        <ul className="ProductDetailsPage__options-list">
-                          Available colors
-                        </ul>
+                        <div className="ProductDetailsPage__options-list">
+                          <button
+                            type="button"
+                            aria-label="color"
+                            className="ProductDetailsPage__options-color"
+                          />
+                        </div>
                       </div>
                       <div className="ProductDetailsPage__options">
                         <p className="ProductDetailsPage__options-title">
                           Select capacity
                         </p>
-                        <ul className="ProductDetailsPage__options-list">
-                          {product?.storage.ram}
-                        </ul>
+                        <div className="ProductDetailsPage__options-list">
+                          <button
+                            type="button"
+                            aria-label="color"
+                            className="ProductDetailsPage__options-ram"
+                          >
+                            {product?.storage.flash}
+                          </button>
+                        </div>
                       </div>
                       <div className="ProductDetailsPage__prices">
                         <span className="ProductDetailsPage__prices-now">

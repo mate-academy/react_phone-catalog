@@ -34,6 +34,10 @@
   }
 
   &__options {
+    width: 320px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 24px;
+
     &-title {
       color: #89939a;
       font-family: "Mont", sans-serif;
@@ -41,8 +45,35 @@
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+      margin-bottom: 8px;
+    }
+
+    &-color {
+      width: 32px;
+      height: 32px;
+      background-image: url(./black.svg);
+      background-repeat: no-repeat;
+      background-size: 32px;
+      background-position: center;
+      border-radius: 50%;
+      margin-bottom: 24px;
+    }
+
+    &-ram {
+      height: 32px;
+      background-color: #313237;
+      color: var(--Gray-White, #fff);
+      text-align: center;
+
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 32px;
+      margin-bottom: 24px;
     }
   }
+
   &__actions {
     width: 320px;
 

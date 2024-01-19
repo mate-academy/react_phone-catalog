@@ -35,6 +35,7 @@
       top: 12px;
       border: none;
       cursor: pointer;
+      z-index: 2;
 
       &--up {
         background-image: url(../../icons/ArrowUp.svg);
