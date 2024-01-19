@@ -36,36 +36,44 @@
     padding: 0;
     border: none;
     background-color: #fff;
+
   }
+
   &__nav {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin: 30px;
   }
+
   &__link {
+    position: relative;
     text-decoration: none;
     color: #89939a;
     font-size: 14px;
     font-weight: 700;
-    padding: 15px 0;
+    padding: 10px 0;
+    margin-bottom: 5px;
     letter-spacing: 0.48px;
     text-transform: uppercase;
     transition: all 0.3s;
 
     &::after {
       content: "";
-      width: 0%;
-      height: 6%;
-      background: linear-gradient(90deg, #313237 0%, #e2e6e9 80%);
       position: absolute;
-      bottom: 0;
-      left: 0;
-      transition-duration: 0.3s;
+      bottom: -1px;
+      height: 5%;
+      width: 100%;
+      display: block;
+      background: linear-gradient(90deg, #313237 0%, #e2e6e9 40%);
+      transition: transform 0.3s;
+      transform: scale(0);
+      transform-origin: left;
+    }
 
-      &:hover {
-        width: 150%;
-      }
+    &:hover::after {
+      transform: scale(1);
+      width: 110%;
     }
   }
 

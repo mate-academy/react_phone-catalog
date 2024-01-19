@@ -212,7 +212,11 @@
     background-size: 24px;
     background-position: center;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-image: url(../../icons/Close_hover.svg);
+    }
   }
 
   &-favourites {
