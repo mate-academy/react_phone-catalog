@@ -1,0 +1,78 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.Header {
+  height: 48px;
+  margin: 0;
+  border-bottom: 1px solid $gray-elements;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__content {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 100%;
+    padding: 13px 16px;
+
+    @include on-desktop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__logo-and-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__fav-and-cart {
+    display: flex;
+    align-items: center;
+  }
+
+  &__search {
+    height: 48px;
+    border-left: 1px solid $gray-elements;
+    display: none;
+
+    @include on-desktop {
+      display: flex;
+      width: 327px;
+      height: 64px;
+    }
+  }
+
+  &__menu-button {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    border-left: 1px solid $gray-elements;
+    background-color: $black;
+
+    &-img {
+      height: 16px;
+      width: 16px;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}

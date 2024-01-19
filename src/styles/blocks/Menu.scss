@@ -1,0 +1,124 @@
+.Menu {
+  background-color: $black;
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transform: translateX(100%);
+  transition: transform 0.5s;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &--opened {
+    transform: translateX(0);
+  }
+
+  &__top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    border-top: 1px solid $gray-elements;
+  }
+
+  &__action {
+    height: 100%;
+    width: 50vw;
+    padding: 24px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+      border-left: 1px solid $gray-elements;
+    }
+
+    &--active::after {
+      @include after-style;
+
+      width: 50%;
+    }
+  }
+
+  &__logo {
+    height: 100%;
+    padding: 13px 16px;
+  }
+
+  &__button {
+    height: 48px;
+    width: 48px;
+    background-color: $black;
+    outline: none;
+    border: none;
+    border-left: 1px solid $gray-elements;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include on-desktop {
+      display: none;
+    }
+
+    &--close {
+      background-image: url(../../images/icons/icon-close.svg);
+      border: none;
+    }
+  }
+
+  &__nav {
+    padding: 24px;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    &-item {
+      height: 27px;
+    }
+
+    &-link {
+      @extend %text-uppercase;
+
+      color: $gray-secondary;
+      padding: 8px 0;
+
+      &--active {
+        color: $white;
+        position: relative;
+
+        &::after {
+          @include after-style;
+        }
+      }
+    }
+  }
+
+  &__img {
+    height: 16px;
+    width: 16px;
+  }
+}

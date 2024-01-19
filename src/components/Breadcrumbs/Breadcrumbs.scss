@@ -1,0 +1,52 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  gap: 8px;
+
+  &__home-img {
+    height: 16px;
+    width: 16px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../images/icons/Arrow_right-disabled.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__page-title {
+    @extend %text-small;
+
+    text-transform: capitalize;
+    text-decoration: none;
+    margin: 0;
+
+    &--dark {
+      color: $white;
+    }
+  }
+
+  & &__page-title:hover {
+    color: $gray-secondary;
+  }
+
+  &__product-title {
+    @extend %text-small;
+
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

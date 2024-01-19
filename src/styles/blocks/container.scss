@@ -1,0 +1,27 @@
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  overflow: hidden;
+
+  @include on-tablet {
+    padding: 0 24px;
+    max-width: 1136px;
+  }
+
+  @include on-desktop {
+    box-sizing: content-box;
+    padding: 32px;
+  }
+
+  &--slider {
+    padding: 0;
+
+    @include on-tablet {
+      padding: 0 8px;
+    }
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.Footer {
+  margin-top: 56px;
+  border-top: 1px solid $gray-elements;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 96px;
+    }
+  }
+
+  &__logo {
+    height: 32px;
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+
+      @include on-tablet {
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+      }
+
+      @include on-desktop {
+        gap: 106px;
+      }
+    }
+
+    &-link {
+      @extend %text-uppercase;
+
+      color: $gray-secondary;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    gap: 16px;
+
+    @include on-tablet {
+      width: max-content;
+      justify-content: right;
+      align-items: center;
+    }
+
+    &-text {
+      @extend %text-small;
+
+      color: $gray-secondary;
+    }
+  }
+}

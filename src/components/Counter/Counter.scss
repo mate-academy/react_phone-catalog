@@ -1,0 +1,20 @@
+@import "../../styles/utils/variables";
+
+.Counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 14px;
+  width: 14px;
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 9px;
+  line-height: 12px;
+
+  color: $white;
+  background-color: $red;
+  border-radius: 50%;
+  border: 1px solid $white;
+}

@@ -1,0 +1,115 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+
+.CartPage {
+  padding: 40px 0 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    @extend %text-title;
+  }
+
+  &__is-empty {
+    @extend %text-important;
+
+    color: $gray-secondary;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    grid-column: 1 / 17;
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    grid-column: 17 / -1;
+
+    @include on-desktop {
+      gap: 16px;
+    }
+
+    &-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      padding: 24px;
+      height: max-content;
+
+      border: 1px solid $gray-elements;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-sum {
+      @extend %text-title;
+    }
+
+    &-text {
+      @extend %text-body;
+
+      color: $gray-secondary;
+    }
+
+    &-button {
+      font-family: Mont-Semibold, sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: $white;
+
+      height: 40px;
+      width: 100%;
+      background-color: $accent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+
+    &-message {
+      padding: 24px;
+      height: max-content;
+      border: 1px solid $gray-elements;
+
+      @extend %text-important;
+
+      text-align: center;
+    }
+  }
+}

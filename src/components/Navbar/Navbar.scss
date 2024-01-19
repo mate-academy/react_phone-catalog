@@ -1,0 +1,84 @@
+@import "../../styles/utils/typography";
+@import "../../styles/utils/variables";
+@import "../../styles/utils/mixins";
+
+.Navbar {
+  height: 100%;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    height: 100%;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+
+    &--menu {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    @extend %text-uppercase;
+
+    color: $gray-secondary;
+    padding: 16px 0;
+    cursor: pointer;
+    position: relative;
+
+    @include on-desktop {
+      padding: 24px 0;
+    }
+
+    &:hover {
+      color: $white;
+    }
+
+    &--active {
+      color: $white;
+
+      &::after {
+        @include after-style;
+      }
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 48px;
+      border-left: 1px solid $gray-elements;
+      cursor: pointer;
+      position: relative;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+
+    &--active {
+      &::after {
+        @include after-style;
+      }
+    }
+
+    &--menu {
+      background-image: url(../../images/icons/icon-menu.svg);
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import "../../styles/utils/variables";
+@import "../../styles/utils/typography";
+
+.CartItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid $gray-elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  &__main-info {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 23px;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__clear {
+    background-color: $black;
+    background-image: url(../../images/icons/Remove-from-cart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    outline: none;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__image {
+    height: 100%;
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__title {
+    @extend %text-body;
+  }
+
+  &__quan-and-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      width: min-content;
+      gap: 24px;
+    }
+  }
+
+  &__quantity {
+    @extend %text-body;
+
+    &-area {
+      width: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__price {
+    @extend %text-important;
+  }
+}
