@@ -1,6 +1,7 @@
 @import "../../style/utils/mixins";
 
 .header {
+  box-sizing: border-box;
   height: 65px;
   border-bottom: 1px solid #e2e6e9;
   z-index: 0;
@@ -29,10 +30,15 @@
       display: block;
       padding: 0;
       background-color: #fff;
-      border: 1px solid #e2e6e9;
+      border-right: 1px solid #e2e6e9;
+      border: none;
     }
     @include onMobile {
       display: block;
+      padding: 0;
+      background-color: #fff;
+      border-right: 1px solid #e2e6e9;
+      border: none;
     }
   }
 
@@ -86,6 +92,9 @@
 
     @include onMobile {
       width: 270px;
+    }
+    @include onPhone {
+      width: 100%;
     }
   }
 }
@@ -152,6 +161,7 @@
     position: absolute;
     border: none;
     background-image: url(../../icons/Close_hover.svg);
+    background-repeat: no-repeat;
     background-color: #fff;
     width: 16px;
     height: 16px;
@@ -164,7 +174,6 @@
       transform: scale(1.2);
     }
   }
-
 }
 
 .logo {
@@ -189,6 +198,20 @@
     background-size: 32px;
     background-position: center;
     border: 1px solid #e2e6e9;
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &-close {
+    background-image: url(../../icons/Close.svg);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
   &-favourites {
@@ -225,6 +248,7 @@
     &-fav {
       right: 84px;
     }
+
     &-cart {
       right: 19px;
     }

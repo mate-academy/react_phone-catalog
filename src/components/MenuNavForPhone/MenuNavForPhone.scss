@@ -1,0 +1,43 @@
+@import "../../style/utils/mixins";
+
+.burger-menu {
+  display: none;
+
+  @include onTablet {
+    display: block;
+  }
+
+  &__logo {
+    height: 24px;
+    width: 40px;
+    margin: 20px 24px;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+  &__close {
+    padding: 0;
+    border: none;
+    background-color: #fff;
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 30px;
+  }
+
+}
