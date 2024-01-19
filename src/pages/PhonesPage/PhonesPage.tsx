@@ -136,7 +136,7 @@ export const PhonesPage = () => {
               )}
           </>
         ) : (
-          <h1 className="warning-message__text">
+          <h1 className="no-goods">
             No search result
           </h1>
         )}

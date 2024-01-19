@@ -40,11 +40,9 @@ export const FavoritesPage = () => {
             <ProductList products={visibleFavourites} />
           )
           : (
-            <p className="no-goods">
-              No items have been added to favorites.
-              Explore our selection and add items to your favorites
-              list for convenient tracking and future purchases.
-            </p>
+            <h1 className="no-goods">
+              No search result
+            </h1>
           )}
       </div>
     </div>
