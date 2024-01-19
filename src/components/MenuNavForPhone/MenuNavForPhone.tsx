@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import './MenuNavForPhone.scss';
 
@@ -26,7 +26,11 @@ export const MenuNavForPhone: React.FC<Props> = ({
       className="burger-menu"
     >
       <div className="burger-menu__header">
-        <NavLink to="/" className="burger-menu__logo">
+        <NavLink
+          to="/"
+          className="burger-menu__logo"
+          onClick={handleCloseMenu}
+        >
           <span className="logo" />
         </NavLink>
         <button
@@ -80,6 +84,13 @@ export const MenuNavForPhone: React.FC<Props> = ({
         >
           Cart
         </NavLink>
+        <Link
+          to="https://github.com/Ukrainiane-panda"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Contacts
+        </Link>
       </div>
     </div>
   );
