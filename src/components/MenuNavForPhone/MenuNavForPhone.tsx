@@ -38,12 +38,48 @@ export const MenuNavForPhone: React.FC<Props> = ({
         </button>
       </div>
       <div className="burger-menu__nav">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="phones">Phones</NavLink>
-        <NavLink to="tablets">Tablets</NavLink>
-        <NavLink to="accessories">Accessories</NavLink>
-        <NavLink to="favourites">Favourites</NavLink>
-        <NavLink to="cart">Cart</NavLink>
+        <NavLink
+          to="/"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="phones"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Phones
+        </NavLink>
+        <NavLink
+          to="tablets"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Tablets
+        </NavLink>
+        <NavLink
+          to="accessories"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Accessories
+        </NavLink>
+        <NavLink
+          to="favourites"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Favourites
+        </NavLink>
+        <NavLink
+          to="cart"
+          className="burger-menu__link"
+          onClick={handleCloseMenu}
+        >
+          Cart
+        </NavLink>
       </div>
     </div>
   );

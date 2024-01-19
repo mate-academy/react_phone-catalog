@@ -39,5 +39,30 @@
     align-items: start;
     margin: 30px;
   }
+  &__link {
+    text-decoration: none;
+    color: #89939a;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 0;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &::after {
+      content: "";
+      width: 0%;
+      height: 6%;
+      background: linear-gradient(90deg, #313237 0%, #e2e6e9 80%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition-duration: 0.3s;
+
+      &:hover {
+        width: 150%;
+      }
+    }
+  }
 
 }

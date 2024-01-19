@@ -1,3 +1,5 @@
+@import "../../style/utils/mixins";
+
 .slider {
   display: flex;
   justify-content: center;
@@ -19,6 +21,10 @@
     &:hover,
     &:active {
       border: 1px solid #313237;
+    }
+
+    @include onPhone {
+      display: none;
     }
   }
 
