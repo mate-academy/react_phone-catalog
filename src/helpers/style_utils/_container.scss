@@ -1,0 +1,18 @@
+@import "../utils";
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+
+  // padding-inline: 10px;
+
+  @include on-tablet {
+    margin: 0 24px;
+  }
+
+  @include on-mobile {
+    margin: 0 16px;
+
+    padding: 0;
+  }
+}

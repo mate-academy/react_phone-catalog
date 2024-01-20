@@ -1,0 +1,48 @@
+@import "../../helpers/utils";
+
+.productsSlider {
+
+  &__title {
+    font-size: 32px;
+
+    @extend %mont-bold-style;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slides {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__arrow {
+    height: 32px;
+    width: 32px;
+    padding-inline: 0;
+    padding-block: 0;
+
+    background-color: transparent;
+    border: 1px solid $gray-slider-border;
+    transition: border $transition-duration;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &[disabled] {
+      border-color: $gray-elements;
+      cursor: not-allowed;
+    }
+  }
+}

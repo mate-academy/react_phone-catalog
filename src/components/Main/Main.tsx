@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { productsInit } from '../../store/slices/productsSlice';
 
 export const Main = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(productsInit());
+  });
+
   return (
-    <div className="h1">
-      all in main
+    <div className="container">
       <Outlet />
     </div>
   );

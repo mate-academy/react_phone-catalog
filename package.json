@@ -6,35 +6,42 @@
   "author": "Mate Academy",
   "license": "GPL-3.0",
   "dependencies": {
-    "@cypress/react": "^5.12.4",
-    "bulma": "^0.9.3",
-    "classnames": "^2.3.2",
+    "@cypress/react": "^5.12.5",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@types/react-redux": "^7.1.33",
+    "@types/redux": "^3.6.0",
+    "bulma": "^0.9.4",
+    "classnames": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.19.0",
-    "react-scripts": "^4.0.3"
+    "react-redux": "^7.2.8",
+    "react-router-dom": "^6.21.2",
+    "react-scripts": "^4.0.3",
+    "redux": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.7",
     "@cypress/webpack-dev-server": "^1.8.4",
-    "@mate-academy/cypress-tools": "^1.0.4",
-    "@mate-academy/eslint-config-react": "*",
-    "@mate-academy/eslint-config-react-typescript": "*",
-    "@mate-academy/scripts": "^1.2.9",
+    "@mate-academy/cypress-tools": "^1.0.5",
+    "@mate-academy/eslint-config-react": "0.0.11",
+    "@mate-academy/eslint-config-react-typescript": "^1.0.13",
+    "@mate-academy/scripts": "^1.2.12",
     "@mate-academy/students-ts-config": "*",
-    "@mate-academy/stylelint-config": "*",
-    "@types/node": "^17.0.23",
-    "@types/react": "^17.0.43",
-    "@types/react-dom": "^17.0.14",
-    "cypress": "^9.5.3",
+    "@mate-academy/stylelint-config": "0.0.12",
+    "@types/node": "^17.0.45",
+    "@types/react": "18.2.46",
+    "@types/react-dom": "^17.0.25",
+    "cypress": "^9.7.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-cypress": "^2.15.1",
     "gh-pages": "^3.2.3",
     "mochawesome": "^7.1.3",
-    "mochawesome-merge": "^4.2.0",
+    "mochawesome-merge": "^4.3.0",
     "mochawesome-report-generator": "^6.2.0",
     "node-sass": "^6.0.1",
-    "stylelint": "^13.13.1",
-    "typescript": "^4.6.3"
+    "postcss": "^8.4.13",
+    "stylelint": "^15.11.0",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "start": "mate-scripts start -l",
@@ -48,18 +55,11 @@
     "predeploy": "npm run build",
     "deploy": "mate-scripts deploy"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "mateAcademy": {
     "_comment": "Replace 'reactTypescript' with 'react' if you want use React without Typescript",
     "projectType": "reactTypescript",

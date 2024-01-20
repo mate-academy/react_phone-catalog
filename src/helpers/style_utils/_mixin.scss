@@ -1,10 +1,12 @@
-@mixin onTablet() {
+@import "./variables";
+
+@mixin on-tablet() {
   @media (max-width: $tablet-max-width) {
     @content;
   }
 }
 
-@mixin onMobile() {
+@mixin on-mobile() {
   @media (max-width: $mobile-max-width) {
     @content;
   }

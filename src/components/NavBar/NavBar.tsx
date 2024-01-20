@@ -1,8 +1,6 @@
-import { NavLink } from 'react-router-dom';
-
-import './NavBar.scss';
-
 import cn from 'classnames';
+import { NavLink } from 'react-router-dom';
+import './NavBar.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return cn({
