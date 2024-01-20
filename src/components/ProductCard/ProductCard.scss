@@ -1,0 +1,70 @@
+@import "../../helpers/variables.scss";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  border: 1px solid $grey-third-color;
+  transition: all 0.3s;
+
+  &__title {
+    height: 40px;
+    // font-family: $font-regular;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin-bottom: 6px;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    display: flex;
+    margin-bottom: 16px;
+    padding-bottom: 6.5px;
+    padding-top: 6.5px;
+    font-size: 22px;
+    border-bottom: 1px solid $grey-secondary-color;
+  }
+
+  &__price-discount {
+    color: $grey-third-color;
+    text-decoration: line-through;
+  }
+
+  &__price-regular {
+    margin-right: 8px;
+    font-family: $font-bold;
+    font-size: 22px;
+    color: $grey-primery-color;
+  }
+
+  &__img {
+    margin: 0 auto;
+    margin-bottom: 24px;
+    height: 208px;
+
+    object-fit: contain;
+
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px $grey-box-shadow;
+  
+    .product-card__img {
+      transform: scale(1.05);
+      transition: transform 0.3s;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+}

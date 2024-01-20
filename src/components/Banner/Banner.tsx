@@ -20,7 +20,7 @@ export const Banner = () => {
   const handleClickNext = () => {
     const newPosition = position - imgWidth;
 
-    if (position === maxPosition) {
+    if (position === -maxPosition) {
       setPosition(0);
     } else {
       setPosition(newPosition);
@@ -31,14 +31,14 @@ export const Banner = () => {
     const newPosition = position + imgWidth;
 
     if (position === 0) {
-      setPosition(maxPosition);
+      setPosition(-maxPosition);
     } else {
       setPosition(newPosition);
     }
   };
 
   const handleIndicator = (index: number) => {
-    setPosition(imgWidth * index);
+    setPosition(-imgWidth * index);
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export const Banner = () => {
           className="banner__list"
           style={{
             transform: `translateX(${position}px)`,
-            transition: 'transform 0.5s',
+            transition: 'transform 1s',
             width: imgWidth * bannerImg.length,
           }}
         >
@@ -98,7 +98,7 @@ export const Banner = () => {
             key={img}
             type="button"
             className={classNames('banner__indicator', {
-              'banner__indicator--active': position === imgWidth * index,
+              'banner__indicator--active': position === -imgWidth * index,
             })}
             onClick={() => handleIndicator(index)}
           >

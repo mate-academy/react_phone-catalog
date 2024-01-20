@@ -1,0 +1,66 @@
+@import "../../helpers/variables.scss";
+
+.slider {
+  width: 1140px;
+  overflow: hidden;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0;
+    // margin-bottom: 24px;
+    font-size: 32px;
+  }
+
+  &__list {
+    margin-top: 24px;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+  }
+
+  &__item {
+    margin-left: 16px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+    border: 1px solid $grey-fourth-color;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:not(.slider__btn-left--disabled):not(.slider__btn-right--disabled):hover {
+      border-color: $grey-primery-color;
+    }
+  }
+
+  &__btn-left,
+  &__btn-right {
+    margin-right: 16px;
+    
+    &--disabled {
+      margin-right: 16px;
+      border-color: $grey-third-color;
+      cursor: default;
+    }
+  }
+}
