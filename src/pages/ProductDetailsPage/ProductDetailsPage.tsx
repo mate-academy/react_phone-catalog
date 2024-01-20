@@ -220,7 +220,7 @@ export const ProductDetailsPage = () => {
                           <span
                             className="ProductDetailsPage__info-specification"
                           >
-                            {product?.storage.ram}
+                            {product?.storage.ram ? `${product?.storage.ram}` : ''}
                           </span>
                         </div>
                       </div>
