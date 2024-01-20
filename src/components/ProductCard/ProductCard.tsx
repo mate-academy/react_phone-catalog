@@ -6,7 +6,7 @@ type Props = {
   product: Product,
   title?: string,
 };
-export const ProductCard: React.FC<Props> = ({ product, title }) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     screen,
     capacity,
@@ -37,21 +37,13 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
           {name}
         </p>
         <div className="product-card__price">
-          {title ? (
-            <div className="product-card__price-regular">
-              {`${fullPrice}`}
-            </div>
-          ) : (
-            <>
-              <h2 className="product-card__price-regular">
-                {`${price}`}
-              </h2>
+          <h2 className="product-card__price-regular">
+            {`$${price}`}
+          </h2>
 
-              <div className="product-card__price-discount">
-                {`${fullPrice}`}
-              </div>
-            </>
-          )}
+          <div className="product-card__price-discount">
+            {`$${fullPrice}`}
+          </div>      
         </div>
       </Link>
       <div className="product-card__properties">
