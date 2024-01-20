@@ -10,14 +10,21 @@
   border: 1px solid $grey-third-color;
   transition: all 0.3s;
 
+  &__link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
   &__title {
     height: 40px;
-    // font-family: $font-regular;
+    width: 224px;
+    color: $grey-primery-color;
     font-size: 14px;
-    line-height: 1.5;
+    font-style: normal;
     font-weight: 500;
-    margin-bottom: 6px;
-    
+    line-height: 21px;
+
     &:hover {
       text-decoration: underline;
     }
@@ -61,10 +68,5 @@
       transform: scale(1.05);
       transition: transform 0.3s;
     }
-  }
-
-  &__link {
-    display: flex;
-    flex-direction: column;
   }
 }

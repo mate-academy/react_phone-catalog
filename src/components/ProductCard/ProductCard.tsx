@@ -33,9 +33,9 @@ export const ProductCard: React.FC<Props> = ({ product, title }) => {
           src={`./_new/${image}`}
           alt={name}
         />
-        <div className="product-card__title">
+        <p className="product-card__title">
           {name}
-        </div>
+        </p>
         <div className="product-card__price">
           {title ? (
             <div className="product-card__price-regular">

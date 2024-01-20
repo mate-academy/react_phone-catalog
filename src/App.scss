@@ -35,3 +35,45 @@ body {
   color: $grey-primery-color;
   font-size: 12px;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: inherit;
+  font-family: inherit;
+}
+
+p,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: $font-bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: $font-semibold;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+}
