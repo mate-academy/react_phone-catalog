@@ -43,7 +43,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
           <div className="product-card__price-discount">
             {`$${fullPrice}`}
-          </div>      
+          </div>
         </div>
       </Link>
       <div className="product-card__properties">
