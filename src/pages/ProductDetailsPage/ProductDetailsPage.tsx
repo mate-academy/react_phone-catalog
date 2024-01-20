@@ -141,20 +141,23 @@ export const ProductDetailsPage = () => {
                           />
                         </div>
                       </div>
-                      <div className="ProductDetailsPage__options">
-                        <p className="ProductDetailsPage__options-title">
-                          Select capacity
-                        </p>
-                        <div className="ProductDetailsPage__options-list">
-                          <button
-                            type="button"
-                            aria-label="color"
-                            className="ProductDetailsPage__options-ram"
-                          >
-                            {product?.storage.flash}
-                          </button>
-                        </div>
-                      </div>
+                      {product?.storage.flash
+                        && (
+                          <div className="ProductDetailsPage__options">
+                            <p className="ProductDetailsPage__options-title">
+                              Select capacity
+                            </p>
+                            <div className="ProductDetailsPage__options-list">
+                              <button
+                                type="button"
+                                aria-label="color"
+                                className="ProductDetailsPage__options-ram"
+                              >
+                                {product?.storage.flash}
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       <div className="ProductDetailsPage__prices">
                         <span className="ProductDetailsPage__prices-now">
                           {`$${price}`}
