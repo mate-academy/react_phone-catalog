@@ -1,61 +1,39 @@
-@import "../../styles/utils/utils";
+@import "src/App";
 
-.slid {
-  margin-bottom: 80px;
-  overflow: hidden;
-
-  &__title {
-    @include h1;
-
-    color: $c-gray-primary;
-  }
+.slider {
+  @include page-grid;
 
   &__top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 24px;
+    @include page-grid;
+
+    grid-column: 1 / -1;
+    align-items: center;
   }
 
-  &__buttons {
+  &__bottom {
+    height: 510px;
+    grid-column: 1 / -1;
     display: flex;
-    align-items: center;
-    flex-direction: row;
     gap: 16px;
+    margin-top: 24px;
+    overflow: hidden;
+  }
+
+  &__header {
+    grid-column: span 22;
+    color: $black-c;
+    font-family: Mont-Bold, serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
   }
 
   &__button {
-    width: 32px;
     height: 32px;
-    background: $c-white;
-    box-sizing: border-box;
-    border: 1px solid $c-gray-icons-placeholders;
-
-    &:hover {
-      border: 1px solid $c-gray-primary;
-    }
-
-    &-img {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &--disabled {
-        color: $c-gray-elements;
-      }
-    }
-
-    &--disabled {
-      border: 1px solid $c-gray-elements;
-      pointer-events: none;
-
-      &:hover {
-        border: 1px solid $c-gray-elements;
-      }
-    }
+    grid-column: span 1;
   }
 
-  &__card {
-    display: flex;
-    gap: 16px;
+  &__item {
+    list-style: none;
   }
 }

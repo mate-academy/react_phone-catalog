@@ -1,0 +1,68 @@
+@import "src/App";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  height: 128px;
+  box-sizing: border-box;
+  border: 1px solid $elements-grey-c;
+  padding: 0 40px 0 24px;
+
+  &:hover {
+    border-color: $black-c;
+  }
+
+  &__button-close {
+    background-color: initial;
+  }
+
+  &__icon--close {
+    &:hover {
+      background-image: url("../../icons/Close.svg");
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    margin-left: 31px;
+    object-fit: contain;
+  }
+
+  &__name {
+    margin-left: 31px;
+    width: 295px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $black-c;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    width: 96px;
+    align-items: center;
+    margin-left: 49px;
+  }
+
+  &__button {
+    width: 32px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $black-c;
+  }
+
+  &__price {
+    margin-left: 43px;
+    font-family: Mont-Bold, serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $black-c;
+  }
+}

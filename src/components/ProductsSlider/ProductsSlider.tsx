@@ -1,101 +1,83 @@
-import { useState } from 'react';
-import classNames from 'classnames';
-import { Product } from '../../types/Product';
-import { ProductCard } from '../ProductCard/ProductCard';
 import './ProductSlider.scss';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { Product } from '../../types/Product';
+import { Loader } from '../Loader/Loader';
 
-type Props = {
-  product: Product[]
-  title: string
-};
+interface Props {
+  title: string,
+  products: Product[],
+  isLoader: boolean,
+}
 
-const cardWidth = 272;
-const cardGap = 16;
-const cardsCount = 4;
-let newCard;
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  isLoader,
+}) => {
+  const [sliderPage, setSliderPage] = useState(1);
+  const totalPages = Math.ceil(products.length / 4);
+  const isFirstPage = sliderPage === 1;
+  const isLastPage = sliderPage === totalPages;
+  const translateDistance = (sliderPage - 1) * 1152;
 
-export const ProductsSlider: React.FC<Props> = ({ product, title }) => {
-  const [visibleCard, setVisibleCard] = useState(cardsCount);
-
-  const scroll = -(visibleCard - cardsCount) * (cardWidth + cardGap);
-  const totalCards = product.length;
-
-  const handleNext = () => {
-    newCard = visibleCard + 1;
-
-    if (newCard > totalCards) {
-      newCard = totalCards;
-    }
-
-    setVisibleCard(newCard);
+  const handlePrevClick = () => {
+    setSliderPage(prevState => prevState - 1);
   };
 
-  const handlePrev = () => {
-    newCard = visibleCard - 1;
-
-    if (newCard < cardsCount) {
-      newCard = cardsCount;
-    }
-
-    setVisibleCard(newCard);
+  const handleNextClick = () => {
+    setSliderPage(prevState => prevState + 1);
   };
 
   return (
-    <div className="slid">
-      <div className="slid__top">
-        <h1 className="slid__title">{title}</h1>
+    <article className="slider">
+      <div className="slider__top">
+        <h1 className="slider__header">{title}</h1>
 
-        <div className="slid__buttons">
-          <button
-            className={classNames('slid__button', {
-              'slid__button--disabled': visibleCard <= cardsCount,
-            })}
-            type="button"
-            onClick={handlePrev}
-            disabled={visibleCard <= cardsCount}
-          >
-            <img
-              src="img/mine/icons/Arrow Left.svg"
-              alt="arrow"
-              className={classNames('slid__button-img', {
-                'slid__button-img--disabled': visibleCard <= cardsCount,
-              })}
-            />
-          </button>
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+        <button
+          type="button"
+          className={classNames('button slider__button', {
+            'button--disabled': isFirstPage,
+          })}
+          onClick={handlePrevClick}
+        >
+          {isFirstPage
+            ? <i className="icon icon--arrow-left-grey" />
+            : <i className="icon icon--arrow-left" />}
+        </button>
 
-          <button
-            className={classNames('slid__button', {
-              'slid__button--disabled': visibleCard === totalCards,
-            })}
-            type="button"
-            onClick={handleNext}
-            disabled={visibleCard === totalCards}
-          >
-            <img
-              src="img/mine/icons/Arrow Right.svg"
-              alt="arrow"
-              className={classNames('slid__button-img', {
-                'slid__button-img--disabled': visibleCard === totalCards,
-              })}
-            />
-          </button>
-        </div>
+        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+        <button
+          type="button"
+          className={classNames('button slider__button', {
+            'button--disabled': isLastPage,
+          })}
+          onClick={handleNextClick}
+        >
+          {isLastPage
+            ? <i className="icon icon--arrow-right-grey" />
+            : <i className="icon icon--arrow-right" />}
+        </button>
       </div>
-
-      <div
-        className="slid__card"
-        style={{
-          transform: `translateX(${scroll}px)`,
-          transition: 'transform 1s',
-        }}
+      <ul
+        className="slider__bottom"
       >
-        {product.map((prod) => (
-          <ProductCard
-            key={prod.id}
-            product={prod}
-          />
+        {products.map(product => (
+          <li
+            key={product.id}
+            className="slider__item"
+          >
+            <ProductCard
+              key={product.id}
+              product={product}
+              translateDistance={translateDistance}
+            />
+          </li>
         ))}
-      </div>
-    </div>
+        {isLoader && (<Loader />)}
+      </ul>
+    </article>
   );
 };

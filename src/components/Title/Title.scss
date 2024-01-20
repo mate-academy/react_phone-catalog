@@ -1,0 +1,25 @@
+@import "src/App";
+
+.title {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  &__text {
+    color: $black-c;
+    font-family: Mont-Bold, serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__models {
+    color: $dark-grey-c;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

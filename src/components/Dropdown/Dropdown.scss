@@ -1,0 +1,78 @@
+@import "src/App";
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  &__title {
+    font-family: Mont-SemiBold, serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: $dark-grey-c;
+  }
+
+  &__button {
+    background-color: initial;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 12px;
+    align-items: center;
+    border: 1px solid $icons-grey-c;
+
+    &:hover {
+      border-color: $dark-grey-c;
+    }
+
+    &:focus {
+      border-color: $black-c;
+    }
+  }
+
+  &__selected {
+    font-family: Mont-SemiBold, serif;
+    color: #313237;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__list {
+    width: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 8px 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+    background-color: $white-c;
+    border: 1px solid $elements-grey-c;
+    top: 100%;
+  }
+
+  &__value {
+    background-color: initial;
+    height: 32px;
+    width: 100%;
+    text-align: left;
+    padding-inline: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $dark-grey-c;
+
+    &:hover {
+      background-color: $hover-c;
+      color: $black-c;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    &--col-#{$i} {
+      grid-column: span $i;
+    }
+  }
+}

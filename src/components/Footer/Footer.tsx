@@ -1,53 +1,75 @@
-import { Link } from 'react-router-dom';
 import './Footer.scss';
-import { goTop } from '../../helpers/goTop';
+import { Link } from 'react-router-dom';
+import { IMAGE_BASE_URL } from '../../helpers/constants';
 
 export const Footer = () => {
+  const email = 'lubomircucvara@gmail.com';
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <div className="bottom">
-      <div className="bottom__logo">
-        <Link to="/">
+    <footer className="footer">
+      <div className="footer__content">
+        <Link to="/" className="footer__logo">
           <img
-            src="img/mine/LOGO.svg"
+            className="footer__image"
+            src={`${IMAGE_BASE_URL}/img/header/Logo.svg`}
             alt="Logo"
-            className="bottom__logo-img"
           />
         </Link>
-      </div>
 
-      <div className="bottom__link">
-        <Link
-          to="https://github.com/Liubomyr19"
-          className="bottom__link-link"
-        >
-          <p className="bottom__link-git">GitHub</p>
-        </Link>
+        <div className="footer__links">
+          <ul className="footer__list">
+            <li className="footer__item">
+              <a
+                className="footer__link"
+                href="https://github.com/Liubomyr19/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github
+              </a>
+            </li>
+            <li>
+              <a
+                className="footer__link"
+                href={`mailto:${email}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contacts
+              </a>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className="footer__link"
+              >
+                Rights
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-        <Link
-          to="https://www.instagram.com/lyubomur.ch/"
-          className="bottom__link-link"
-        >
-          <p className="bottom__link-git">Instagram</p>
-        </Link>
-
-        <Link
-          // eslint-disable-next-line max-len
-          to="https://www.facebook.com/"
-          className="bottom__link-link"
-        >
-          <p className="bottom__link-git">Facebook</p>
-        </Link>
-      </div>
-
-      <div className="bottom__top">
         <button
-          className="bottom__top-button"
+          className="footer__actions"
           type="button"
-          onClick={goTop}
+          onClick={scrollTop}
         >
-          <img src="img/mine/icons/Chevron (Arrow Up).svg" alt="up" />
+          <span className="footer__label">Back to top</span>
+
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <div
+            className="button footer__button"
+          >
+            <i className="icon icon--arrow-top" />
+          </div>
         </button>
       </div>
-    </div>
+    </footer>
   );
 };

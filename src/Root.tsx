@@ -1,41 +1,53 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { HomePage } from './pages/HomePage';
-import { ProductPage } from './pages/ProductPage';
-import { FavouritePage } from './pages/FavouritePage';
-import { CartPage } from './pages/CartPage';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  HashRouter as Router, Route, Routes,
+} from 'react-router-dom';
+import { HomePage } from './pages/HomePage/HomePage';
 import { App } from './App';
-import { Path } from './types/PatchName';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import { NotFound } from './components/NotFound/NotFound';
+import { PhonesPage } from './pages/PhonesPage/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { FavouriteProvider } from './contexts/FavoriteContext';
+import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { CartProvider } from './contexts/CartContext';
+import {
+  ProductDetailsPage,
+} from './pages/ProductDetailsPage/ProductDetailsPage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
-export const Root = () => {
-  return (
+export const Root = () => (
+  <Router>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route
+        path="/"
+        element={(
+          <FavouriteProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FavouriteProvider>
+        )}
+      >
         <Route index element={<HomePage />} />
-        <Route path={Path.Home} element={<Navigate to="/" replace />} />
-        <Route path={Path.Phones}>
-          <Route index element={<ProductPage />} />
+        <Route path="phones">
+          <Route index element={<PhonesPage />} />
           <Route path=":productId" element={<ProductDetailsPage />} />
         </Route>
-
-        <Route path={Path.Tablets}>
-          <Route index element={<ProductPage />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
         </Route>
-
-        <Route path={Path.Accessories}>
-          <Route index element={<ProductPage />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
+        <Route path="accessories">
+          <Route index element={<AccessoriesPage />} />
         </Route>
-
-        <Route path={Path.Cart} element={<CartPage />} />
-
-        <Route path={Path.Favourites} element={<FavouritePage />} />
-
-        <Route path="*" element={<NotFound />} />
-
+        <Route path="favourites">
+          <Route index element={<FavouritesPage />} />
+        </Route>
+        <Route path="cart">
+          <Route index element={<CartPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-  );
-};
+  </Router>
+);

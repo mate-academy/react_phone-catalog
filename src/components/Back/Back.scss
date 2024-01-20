@@ -1,0 +1,19 @@
+@import "src/App";
+
+.back {
+  display: flex;
+  border: none;
+  background-color: initial;
+  gap: 4px;
+  font-family: Mont-SemiBold, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: $dark-grey-c;
+  padding: 0;
+
+  &:hover {
+    color: $black-c;
+  }
+}

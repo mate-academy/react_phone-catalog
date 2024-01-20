@@ -1,20 +1,15 @@
-import { Outlet } from 'react-router-dom';
 import './App.scss';
-import { Footer } from './components/Footer/Footer';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Outlet } from 'react-router-dom';
 import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
-export const App = () => {
-  return (
-    <>
-      <header className="head">
-        <Header />
-      </header>
-      <main className="main">
-        <Outlet />
-      </main>
-      <footer className="footer">
-        <Footer />
-      </footer>
-    </>
-  );
-};
+export const App = () => (
+  <div className="App">
+    <Header />
+    <div className="container">
+      <Outlet />
+    </div>
+    <Footer />
+  </div>
+);

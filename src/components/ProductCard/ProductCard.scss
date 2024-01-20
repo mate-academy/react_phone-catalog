@@ -1,87 +1,129 @@
-@import "../../styles/utils/utils";
+@import "src/App";
 
-.card {
+.product {
   width: 272px;
-  padding: 24px;
+  border: 1px solid $elements-grey-c;
+  padding: 32px 24px 24px;
   box-sizing: border-box;
-  border: 1px solid $c-gray-elements;
-  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
-    border: 1px solid $c-gray-primary;
-    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    border-color: $black-c;
   }
 
   &__image {
-    display: flex;
-    justify-content: center;
-    width: 224px;
+    margin: 0 8px 24px;
+    width: 208px;
     height: 208px;
-    margin-bottom: 24px;
+    object-fit: contain;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    height: 42px;
   }
 
   &__name {
-    height: 42px;
+    color: $black-c;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
     margin-bottom: 6px;
-
-    &-title {
-      text-decoration: none;
-      color: $c-gray-primary;
-
-      @include body-text;
-    }
-  }
-
-  &__line {
-    width: 224px;
-    height: 1px;
-    background: $c-gray-elements;
   }
 
   &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
     margin-bottom: 6px;
   }
 
   &__price {
-    @include h2;
-
-    &--old {
-      margin-left: 8px;
-      line-height: 28px;
-      text-decoration: line-through;
-      color: $c-gray-secondary;
-    }
+    font-family: Mont-Bold, serif;
+    color: $black-c;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
   }
 
-  &__features {
-    margin: 16px 0;
+  &__full-price {
+    color: $dark-grey-c;
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration-line: line-through;
   }
 
-  &__feature {
-    margin-bottom: 8px;
+  &__line {
+    border: 1px solid $elements-grey-c;
+    margin-bottom: 16px;
+  }
+
+  &__row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &-name {
-      @include smal-text;
-
-      color: $c-gray-secondary;
-    }
-
-    &-value {
-      @include smal-text;
-
-      text-transform: uppercase;
-      color: $c-gray-primary;
+    &--last {
+      margin-bottom: 16px;
     }
   }
 
-  &__actions {
-    width: 224px;
-    height: 40px;
+  &__characteristic {
+    font-family: Mont-SemiBold, serif;
+    color: $dark-grey-c;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__value {
+    font-family: Mont-SemiBold, serif;
+    color: $black-c;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+
+    &--big {
+      width: 100%;
+      background-color: $black-c;
+      font-family: Mont-SemiBold, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white-c;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
+
+    &--added {
+      background-color: $white-c;
+      color: $green-c;
+      border: 1px solid $elements-grey-c;
+    }
+
+    &--small {
+      background-color: initial;
+      border: 1px solid $icons-grey-c;
+      padding: 12px;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $black-c;
+      }
+    }
   }
 }

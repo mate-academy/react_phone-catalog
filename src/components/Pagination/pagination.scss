@@ -1,64 +1,45 @@
-@import "../../styles/utils/utils";
+@import "src/App";
 
 .pagination {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 16px;
+  margin: 0 auto;
+  padding-top: 40px;
 
-  &__list {
+  &__pages {
     display: flex;
     gap: 8px;
-    margin: 0 8px;
   }
 
-  &__arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 16px;
-    width: 32px;
+  &__button {
     height: 32px;
+    width: 32px;
     box-sizing: border-box;
-    border: 1px solid $c-gray-icons-placeholders;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    border: 1px solid $icons-grey-c;
+    color: $black-c;
+    justify-content: center;
+    align-items: center;
 
-    &-left--disabled,
-    &-right--disabled {
+    &:hover {
+      border-color: $black-c;
+    }
+
+    &--disabled {
+      border-color: $elements-grey-c;
       pointer-events: none;
     }
 
-    &:hover {
-      box-sizing: border-box;
-      border: 1px solid $c-gray-primary;
+    &--side {
+      padding: 7px;
     }
-  }
-
-  &__item {
-    width: 32px;
-    height: 32px;
-    box-sizing: border-box;
-    border: 1px solid $c-gray-icons-placeholders;
-
-    &:hover {
-      box-sizing: border-box;
-      border: 1px solid $c-gray-primary;
-    }
-  }
-
-  &__link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    color: $c-gray-primary;
-    text-align: center;
-    text-decoration: none;
-
-    @include body-text;
 
     &--active {
-      background-color: $c-gray-primary;
-      color: $c-white;
+      color: $white-c;
+      background-color: $black-c;
     }
   }
 }
