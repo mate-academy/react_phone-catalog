@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/self-closing-comp */
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { PathBlock } from '../../components/PathBlock';
 import { Promo } from '../../components/Promo';
@@ -8,6 +9,7 @@ import { MainContext } from '../../context';
 import { ProductDetails } from '../../types/ProductDetails';
 import { getProductDetails } from '../../services/getProducts';
 import { scrollToTop } from '../../services/scrollToTop';
+import './product-details-page.scss';
 
 export const ProductDetailsPage = () => {
   const {
@@ -46,52 +48,127 @@ export const ProductDetailsPage = () => {
         item="Apple iPhone 11 Pro Max 64GB Gold"
       />
       <BackButton />
-      <section className="product__section">
-        <h1 className="products__title">
-          {productDetails?.name}
-        </h1>
-        <div className="images__selector">
-          <div className="selected__image"></div>
+      <h1 className="product__title">
+        {productDetails?.name}
+      </h1>
+      <section className="product__section grid">
+        <div className="images__selector grid__item--fullScreen-1-12">
           <div className="images__list"></div>
-        </div>
-        <div className="colors__selector">
-          <div className="selector__title">Available colors</div>
-        </div>
-        <div className="capacity__selector"></div>
-        <div className="prices">
-          <p className="new__price">{productDetails?.priceDiscount}</p>
-          <p className="full__price">{productDetails?.priceRegular}</p>
-        </div>
-        <div className="product__actions"></div>
-        <div className="product__details">
-          <div className="detail">
-            <p className="detail__title">Screen</p>
-            <p className="detail__value">
-              {productDetails?.screen}
-            </p>
+          <div className="selected__image">
+            <img src={`./${productDetails?.images[0]}`} alt={productDetails?.name} className="product-details__selected-image" />
           </div>
-          <div className="detail">
-            <p className="detail__title">Resolution</p>
-            <p className="detail__value">
-              {productDetails?.resolution}
-            </p>
+        </div>
+        <div className="product-detail__actions grid__item--fullScreen-14-20">
+          <div className="colors__selector">
+            <p className="detail-selector__title">Available colors</p>
+            <ul className="colors__list">
+              <li className="colors__item selected">
+                <Link
+                  to="/"
+                  className="color__handler-link"
+                />
+              </li>
+              <li className="colors__item">
+                <Link
+                  to="/"
+                  className="color__handler-link"
+                />
+              </li>
+              <li className="colors__item">
+                <Link
+                  to="/"
+                  className="color__handler-link"
+                />
+              </li>
+              <li className="colors__item">
+                <Link
+                  to="/"
+                  className="color__handler-link"
+                />
+              </li>
+            </ul>
           </div>
-          <div className="detail">
-            <p className="detail__title">Processor</p>
-            <p className="detail__value">
-              {productDetails?.processor}
-            </p>
+          <div className="capacity__selector">
+            <p className="detail-selector__title">Select capacity</p>
+            <ul className="capacity__list">
+              <li className="capacity__item selected">
+                <Link
+                  to="/"
+                  className="capacity__handler-link selected"
+                >
+                  64 GB
+                </Link>
+              </li>
+              <li className="capacity__item">
+                <Link
+                  to="/"
+                  className="capacity__handler-link"
+                >
+                  256 GB
+                </Link>
+              </li>
+              <li className="capacity__item">
+                <Link
+                  to="/"
+                  className="capacity__handler-link"
+                >
+                  512 GB
+                </Link>
+              </li>
+            </ul>
           </div>
-          <div className="detail">
-            <p className="detail__title">RAM</p>
-            <p className="detail__value">
-              {productDetails?.ram}
-            </p>
+          <div className="prices">
+            <p className="new-price">{`$${productDetails?.priceDiscount}`}</p>
+            <p className="full-price">{`$${productDetails?.priceRegular}`}</p>
+          </div>
+          <div className="product__actions product-detail__buttons">
+            <button
+              type="button"
+              className="add-to-card
+                primary__button button
+                details-cart__button"
+            >
+              Add to cart
+            </button>
+            <button
+              type="button"
+              className="
+              add-to-favourite
+              button
+              icon
+              details-favourite__button"
+            />
+          </div>
+          <div className="product__details">
+            <div className="detail">
+              <p className="detail__title">Screen</p>
+              <p className="detail__value">
+                {productDetails?.screen}
+              </p>
+            </div>
+            <div className="detail">
+              <p className="detail__title">Resolution</p>
+              <p className="detail__value">
+                {productDetails?.resolution}
+              </p>
+            </div>
+            <div className="detail">
+              <p className="detail__title">Processor</p>
+              <p className="detail__value">
+                {productDetails?.processor}
+              </p>
+            </div>
+            <div className="detail">
+              <p className="detail__title">RAM</p>
+              <p className="detail__value">
+                {productDetails?.ram}
+              </p>
+            </div>
           </div>
         </div>
       </section>
-      <section className="product__description">
-        <div className="about">
+      <section className="product__description grid">
+        <div className="about grid__item--fullScreen-1-12">
           <h2 className="about__title">About</h2>
           <div className="about__articles">
             <article className="about__article">
@@ -120,7 +197,7 @@ export const ProductDetailsPage = () => {
             </article>
           </div>
         </div>
-        <div className="specification">
+        <div className="specification grid__item--fullScreen-14-24">
           <h2 className="specification__title">Tech specs</h2>
           <div className="product__details">
             <div className="detail">

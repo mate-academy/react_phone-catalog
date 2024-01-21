@@ -1,5 +1,9 @@
+import './not-found-products.scss';
+
 export const NotFoundProducts = () => {
   return (
-    <h1>Nothing found</h1>
+    <div className="empty-page">
+      <h2>No products added yet...</h2>
+    </div>
   );
 };
