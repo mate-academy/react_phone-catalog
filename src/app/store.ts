@@ -4,10 +4,12 @@ import {
   Action,
 } from '@reduxjs/toolkit';
 import productSlice from '../features/product/productSlice';
+import productInfoSlice from '../features/productInfo/productInfoSlice';
 
 export const store = configureStore({
   reducer: {
     phones: productSlice,
+    product: productInfoSlice,
   },
 });
 

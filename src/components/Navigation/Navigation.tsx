@@ -13,7 +13,11 @@ export const Navigation = () => {
   return (
     <nav className="navigation">
       {navLinks.map(link => (
-        <NavigationLink name={link} classNameFunc={isActiveLink} />
+        <NavigationLink
+          name={link}
+          classNameFunc={isActiveLink}
+          key={link}
+        />
       ))}
     </nav>
   );

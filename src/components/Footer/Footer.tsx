@@ -18,21 +18,27 @@ export const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer__left">
-        <Logo />
-      </div>
+      <div className="footer__container">
+        <div className="footer__left">
+          <Logo />
+        </div>
 
-      <div className="footer__center">
-        {footerLinks.map(([link, name]) => (
-          <LinkSocial key={link} to={link} name={name} />
-        ))}
-      </div>
+        <div className="footer__center">
+          {footerLinks.map(([link, name]) => (
+            <LinkSocial
+              key={name}
+              to={link}
+              name={name}
+            />
+          ))}
+        </div>
 
-      <div className={cn('footer__right', {
-        'is-visible': !isVisible,
-      })}
-      >
-        <BackToTop />
+        <div className={cn('footer__right', {
+          'is-visible': !isVisible,
+        })}
+        >
+          <BackToTop />
+        </div>
       </div>
     </footer>
   );

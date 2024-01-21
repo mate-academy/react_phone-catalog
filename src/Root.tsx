@@ -8,6 +8,7 @@ import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { PhonesPage } from './pages/PhonesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ export const Root: React.FC = () => {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/phones" element={<PhonesPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="phones/:itemId" element={<ProductDetailsPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

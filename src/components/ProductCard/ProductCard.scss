@@ -75,38 +75,7 @@
     display: flex;
     height: 40px;
     gap: 8px;
-  }
 
-  &__button {
-    width: 176px;
-    background-color: $main-color;
-
-    @extend %button;
-
-    padding-block: 10px 9px;
-
-    @include box-shadow-button;
-
-    border: 1px solid transparent;
-
-    &--added {
-      color: $green-color;
-      background-color: $white-color;
-
-      @include border-default;
-      @include hover(box-shadow, none);
-    }
-  }
-
-  &__favourites {
-    padding: 11px;
-    background-color: $white-color;
-
-    @include border-icons;
-    @include hover(border-color, $main-color);
-
-    &--added {
-      border-color: $elements-color;
-    }
+    width: 100%;
   }
 }

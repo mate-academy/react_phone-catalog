@@ -18,6 +18,7 @@ import { Logo } from '../Logo';
 export const Header = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isVisible, setIsVisible] = useState(false);
+  const [isFavVisible, setIsFavVisible] = useState(true);
   const [query, setQuery] = useState('');
   const { favourites, cart } = useAppSelector(state => state.phones);
   const dispatch = useAppDispatch();
@@ -30,7 +31,13 @@ export const Header = () => {
 
   useEffect(() => {
     setIsVisible(categoriesWithInput.includes(normalizedPath));
-  }, [pathname]);
+
+    if (normalizedPath === 'favourites') {
+      setIsFavVisible(!!favourites.length);
+    }
+
+    return () => setIsFavVisible(true);
+  }, [pathname, favourites]);
 
   const applyQuery = useCallback(
     debounce((e) => dispatch(addSearch(e)), 500), [dispatch],
@@ -84,32 +91,34 @@ export const Header = () => {
       </div>
 
       <div className="header__right">
-        {isVisible && (
-          <div className="header__search">
-            <input
-              type="text"
-              value={query}
-              onChange={handleChange}
-              className="header__input"
-              placeholder={`Search in ${normalizedPath}...`}
-            />
-            <div className="header__finder-container">
-              {query ? (
-                <button
-                  className="header__finder icon icon-close"
-                  type="button"
-                  aria-label="find"
-                  onClick={handleClear}
-                />
-              ) : (
-                <button
-                  className="header__finder icon icon-search"
-                  type="button"
-                  aria-label="find"
-                />
-              )}
+        {isFavVisible && (
+          isVisible && (
+            <div className="header__search">
+              <input
+                type="text"
+                value={query}
+                onChange={handleChange}
+                className="header__input"
+                placeholder={`Search in ${normalizedPath}...`}
+              />
+              <div className="header__finder-container">
+                {query ? (
+                  <button
+                    className="header__finder icon icon-close"
+                    type="button"
+                    aria-label="find"
+                    onClick={handleClear}
+                  />
+                ) : (
+                  <button
+                    className="header__finder icon icon-search"
+                    type="button"
+                    aria-label="find"
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          )
         )}
 
         {!isCart && (

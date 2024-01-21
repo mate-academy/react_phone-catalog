@@ -5,7 +5,7 @@ import { Product } from '../../types/Product';
 
 export interface ProductState {
   phones: Product[];
-  phone: Product | null;
+  product: Product | null;
   favourites: Product[];
   cart: Product[];
   search: string,
@@ -15,7 +15,7 @@ export interface ProductState {
 
 const initialState: ProductState = {
   phones: [],
-  phone: null,
+  product: null,
   favourites: JSON.parse(localStorage.getItem('favourites') || '[]'),
   cart: JSON.parse(localStorage.getItem('cart') || '[]'),
   search: '',
@@ -34,7 +34,10 @@ const phonesSlice = createSlice({
   initialState,
   reducers: {
     setProduct: (state, action: PayloadAction<Product>) => {
-      state.phone = action.payload;
+      state.product = action.payload;
+    },
+    setProductNull: (state) => {
+      state.product = null;
     },
     addToFavourites: (state, action: PayloadAction<Product>) => {
       state.favourites.push(action.payload);
@@ -87,6 +90,7 @@ const phonesSlice = createSlice({
 
 export const {
   setProduct,
+  setProductNull,
   addToFavourites,
   removeFavourite,
   addToCart,

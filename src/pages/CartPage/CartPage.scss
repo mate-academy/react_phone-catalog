@@ -9,6 +9,8 @@
     align-items: center;
     background-color: $white-color;
     margin-bottom: 16px;
+
+    @extend %links;
   }
 
   &__text {
@@ -27,7 +29,7 @@
 
   &__main {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }

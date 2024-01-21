@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { client } from '../helpers/fetchProduct';
 import { Product } from '../types/Product';
+import { ProductInfo } from '../types/ProductInfo';
 /* eslint-disable max-len */
 export const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
 
@@ -36,3 +37,21 @@ export const getBrandNewProducts = (phones: Product[]) => {
   return [...phones]
     .sort((phone1, phone2) => phone2.price - phone1.price).slice(0, 12);
 };
+
+export const getProduct = (name: string) => {
+  return client.get<ProductInfo>(`/products/${name}.json`);
+};
+
+export function getRandomProducts(phones: Product[]) {
+  const copy = [...phones];
+  const randomizerArr = [];
+
+  while (copy.length > 0) {
+    const randomIndex = Math.floor(Math.random() * copy.length);
+    const randomObject = copy.splice(randomIndex, 1)[0];
+
+    randomizerArr.push(randomObject);
+  }
+
+  return randomizerArr;
+}

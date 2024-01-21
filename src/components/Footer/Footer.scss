@@ -1,29 +1,19 @@
 @import "../../styles/main";
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   box-shadow: 0 -1px 0 0 $elements-color;
 
-  &__left {
-    margin-left: 152px;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1136px;
+    margin: 0 auto;
   }
 
   &__center {
     display: flex;
     gap: 64px;
-  }
-
-  &__link {
-    padding-block: 43px 42px;
-
-    @extend %upper-case;
-    @include hover(color, $main-color);
-  }
-
-  &__right {
-    margin-right: 152px;
   }
 }

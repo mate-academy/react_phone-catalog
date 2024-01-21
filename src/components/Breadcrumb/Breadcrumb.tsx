@@ -3,12 +3,12 @@ import './Breadcrumb.scss';
 import { useAppSelector } from '../../app/hooks';
 
 export const Breadcrumb = () => {
-  const { phone } = useAppSelector(state => state.phones);
+  const { product } = useAppSelector(state => state.product);
   const { pathname } = useLocation();
 
   const correctPath = pathname.slice(1);
   const normalizedPathname = correctPath[0].toUpperCase()
-    + correctPath.slice(1);
+    + correctPath.split('/')[0].slice(1);
 
   return (
     <div className="breadcrumb">
@@ -19,18 +19,21 @@ export const Breadcrumb = () => {
       <div>
         <div className="icon icon-next-inactive" />
       </div>
-      {phone ? (
-        <>
-          <Link to={pathname} className="breadcrumb__name--active">
+      {product ? (
+        <div className="breadcrumb__second">
+          <Link
+            to={`/${normalizedPathname.toLowerCase()}`}
+            className="breadcrumb__name--active"
+          >
             {normalizedPathname}
           </Link>
 
-          <div>
+          <div className="breadcrumb__next">
             <div className="icon icon-next-inactive" />
 
-            <p>{phone.name}</p>
+            <p>{product.name}</p>
           </div>
-        </>
+        </div>
       ) : (
         <p className="breadcrumb__name--inactive">
           {normalizedPathname}
