@@ -24,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   return (
-    <div className="product-card">
+    <div className="product-card" data-cy="cardsContainer">
       <Link
         to={`/${category}/${itemId}`}
       >

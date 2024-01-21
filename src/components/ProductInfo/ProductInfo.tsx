@@ -206,7 +206,7 @@ export const ProductInfo: React.FC<Props> = ({ product, productSelected }) => {
         </div>
 
         <div className="product-info__bottom">
-          <div className="about">
+          <div className="about" data-cy="productDescription">
             <p className="about__title">
               About
             </p>

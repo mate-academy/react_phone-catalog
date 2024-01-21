@@ -36,3 +36,13 @@ export const checkoutPageImage = [
 export const cartPageImage = [
   require('../assets/others/cart.png'),
 ][0];
+
+export const wentWrong = [
+  require('../assets/others/went-wrong.png'),
+][0];
+
+export const carouselImages = [
+  require('../assets/banners/banner-phones.png'),
+  require('../assets/banners/banner-tablets.png'),
+  require('../assets/banners/banner-accessories.png'),
+];

@@ -11,7 +11,7 @@ export const Breadcrumb = () => {
     + correctPath.split('/')[0].slice(1);
 
   return (
-    <div className="breadcrumb">
+    <div className="breadcrumb" data-cy="breadCrumbs">
       <Link to="/">
         <div className="icon icon-home" />
       </Link>

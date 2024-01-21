@@ -20,6 +20,7 @@ import { getRandomProducts } from '../../api/api';
 import { thunkGetPhones } from '../../features/product/productSlice';
 import { ProductSlider } from '../../components/ProductSlider';
 import { ProductInfo } from '../../components/ProductInfo';
+import { SomethingWentWrong } from '../../components/SomethingWentWrong';
 
 export const ProductDetailsPage = () => {
   const navigate = useNavigate();
@@ -59,6 +60,12 @@ export const ProductDetailsPage = () => {
     );
   }
 
+  if (error) {
+    return (
+      <SomethingWentWrong />
+    );
+  }
+
   if (!product) {
     return (
       <PageNotFound />
@@ -86,6 +93,7 @@ export const ProductDetailsPage = () => {
                 onClick={goBack}
                 aria-label="go-back"
                 type="button"
+                data-cy="backButton"
               >
                 <div className="icon icon-prev" />
 

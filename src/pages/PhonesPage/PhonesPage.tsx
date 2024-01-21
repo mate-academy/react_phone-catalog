@@ -107,7 +107,7 @@ export const PhonesPage = () => {
             </div>
           </div>
 
-          <div className="phones-page__content">
+          <div className="phones-page__content" data-cy="productList">
             {phonesToRender.map(phone => (
               <ProductCard product={phone} key={phone.id} />
             ))}

@@ -12,7 +12,7 @@ type Props = {
 
 export const Category: React.FC<Props> = ({ i, image, amount }) => {
   return (
-    <div className="category">
+    <div className="category" data-cy="categoryLinksContainer">
       <Link
         className={cn('category__images-container',
           `category__images-container--${i + 1}`)}

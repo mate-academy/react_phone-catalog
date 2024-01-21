@@ -1,6 +1,6 @@
 @import "../../styles/main";
 
-.home-page-container {
+.home-page {
   @include flex-center;
 
   flex-direction: column;
@@ -8,6 +8,12 @@
 
   margin-top: 40px;
   overflow-x: hidden;
+
+  &__loader {
+    @include flex-center;
+
+    height: 585px;
+  }
 }
 
 .hot-prices{

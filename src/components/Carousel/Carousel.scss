@@ -4,9 +4,7 @@
   display: flex;
 
   &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
 
     position: absolute;
     height: 100%;
@@ -37,6 +35,10 @@
     display: flex;
   }
 
+  .swiper-slide {
+    transition: all 0.2s ease;
+  }
+
   .swiper-top > .swiper-wrapper > &-slide:not(.swiper-slide-active) {
     opacity: 0;
   }
@@ -50,12 +52,13 @@
     justify-content: center;
     align-items: center;
     gap: 14px;
-     height: 24px;
+    height: 24px;
     width: 80px;
 
     transform: translate(50%, 32px);
 
     &-bullet {
+      cursor: pointer;
       display: block;
       background-color: $elements-color;
       height: 4px;

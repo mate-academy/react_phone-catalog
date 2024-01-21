@@ -69,6 +69,7 @@ export const Card: React.FC<Props> = ({ card }) => {
           aria-label="delete"
           type="button"
           onClick={handleDelete}
+          data-cy="cartDeleteButton"
         >
           <div className="icon icon-close-main" />
         </button>
@@ -97,7 +98,7 @@ export const Card: React.FC<Props> = ({ card }) => {
           />
         </button>
 
-        <p className="card__amount">
+        <p className="card__amount" data-cy="productQauntity">
           {amountOfProduct}
         </p>
 

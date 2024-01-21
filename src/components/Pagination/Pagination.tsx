@@ -38,8 +38,9 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <div className="pagination">
+    <div className="pagination" data-cy="pagination">
       <button
+        data-cy="paginationLeft"
         aria-label="prev"
         type="button"
         className={cn('button-move', {
@@ -79,6 +80,7 @@ export const Pagination: React.FC<Props> = ({
           'button-move--disabled': isLastPage,
         })}
         disabled={isLastPage}
+        data-cy="paginationRight"
       >
         <div
           className={cn('icon', 'icon-next', {

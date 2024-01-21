@@ -1,19 +1,11 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-/* eslint-disable global-require */
 import React from 'react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import './Carousel.scss';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-
-const images = [
-  require('../../assets/banners/banner-phones.png'),
-  require('../../assets/banners/banner-tablets.png'),
-  require('../../assets/banners/banner-accessories.png'),
-];
-
-const categories = ['phones', 'tablets', 'accessories'];
+import { carouselImages, categoriesPath } from '../../helpers/constants';
 
 const Button = ({ type }: { type: string }) => {
   const swiper = useSwiper();
@@ -46,7 +38,9 @@ export const Carousel: React.FC = () => {
         modules={[Autoplay, Pagination, Navigation]}
         spaceBetween={10}
         slidesPerView={1}
-        pagination
+        pagination={{
+          clickable: true,
+        }}
         navigation
         loop
         className="swiper-top"
@@ -58,9 +52,9 @@ export const Carousel: React.FC = () => {
       >
         <Button type="prev" />
 
-        {images.map((image, index) => (
+        {carouselImages.map((image, index) => (
           <SwiperSlide key={image}>
-            <Link to={`/${categories[index]}`}>
+            <Link to={`/${categoriesPath[index]}`}>
               <img
                 src={image}
                 alt={`Image ${index + 1}`}

@@ -30,12 +30,12 @@ export const getAccessories = async () => {
 export const getHotPriceProducts = (phones: Product[]) => {
   return [...phones]
     .sort((phone1, phone2) => ((1 - (phone1.fullPrice / phone1.price)) * 100)
-      - (1 - (phone2.fullPrice / phone2.price)) * 100).slice(0, 12);
+      - (1 - (phone2.fullPrice / phone2.price)) * 100).slice(0, 16);
 };
 
 export const getBrandNewProducts = (phones: Product[]) => {
   return [...phones]
-    .sort((phone1, phone2) => phone2.price - phone1.price).slice(0, 12);
+    .sort((phone1, phone2) => phone2.price - phone1.price).slice(0, 16);
 };
 
 export const getProduct = (name: string) => {
@@ -53,5 +53,5 @@ export function getRandomProducts(phones: Product[]) {
     randomizerArr.push(randomObject);
   }
 
-  return randomizerArr;
+  return randomizerArr.slice(0, 16);
 }

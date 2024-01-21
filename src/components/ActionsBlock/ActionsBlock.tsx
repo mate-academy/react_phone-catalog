@@ -83,6 +83,7 @@ export const ActionsBlock: React.FC<Props> = ({ product, paddingFav }) => {
           'actions-block__favourites--added': isFavourite,
         })}
         style={{ padding: paddingFav }}
+        data-cy="addToFavorite"
         aria-label="like"
         type="button"
         onClick={isFavourite

@@ -106,7 +106,8 @@ export const Header = () => {
                   <button
                     className="header__finder icon icon-close"
                     type="button"
-                    aria-label="find"
+                    aria-label="clear"
+                    data-cy="searchDelete"
                     onClick={handleClear}
                   />
                 ) : (
