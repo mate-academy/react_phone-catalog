@@ -1,0 +1,25 @@
+@import '../../../style/Variables.scss';
+
+.header {
+  padding-left: 24px;
+  height: 64px;
+
+  box-shadow: 0px 1px 0px 0px $elements-color;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__nav, &__controls, &__favourites  {
+    height: 100%;
+    display: flex;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    box-shadow: -1px 0px 0px 0px $elements-color;
+  }
+}

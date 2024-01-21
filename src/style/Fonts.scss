@@ -1,0 +1,59 @@
+@font-face {
+  font-family: Mont-Regular;
+  src: url("../fonts/Mont-Regular.otf");
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url("../fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: Mont-Semibold;
+  src: url("../fonts/Mont-SemiBold.otf");
+}
+
+
+.font_h1 {
+  font-family: Mont-Bold;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+.font_h2 {
+  font-family: Mont-Bold;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.font_h3 {
+  font-family: Mont-Semibold;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.font_uppercase {
+  font-family: Mont-Semibold;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+}
+
+.font_buttons {
+  font-family: Mont-Semibold;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.font_body {
+  font-family: Mont-Regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.font_small {
+  font-family: Mont-Semibold;
+  font-size: 12px;
+  line-height: 15px;
+}

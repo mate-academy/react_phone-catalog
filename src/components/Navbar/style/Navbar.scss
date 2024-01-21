@@ -1,0 +1,62 @@
+@import '../../../style/Variables.scss';
+
+
+.navbar {
+  display: flex;
+  gap: 64px;
+  height: 100%;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-image {
+      background-image: url('./images/header__logo.svg');
+      height: 24px;
+      width: 40px;
+    }
+  }
+
+  &__navlist {
+    display: flex;
+    gap: 24px;
+
+
+    &-item {
+      color: $secondary-color;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $primary-color;
+        transition: 500ms;
+      }
+
+      &::after {
+        content: '';
+        height: 3px;
+        width: 100%;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        background-color: $primary-color;
+        transform-origin: bottom right;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      &.is-active::after,
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.is-active {
+  color: $primary-color;
+}
