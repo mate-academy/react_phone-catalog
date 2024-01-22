@@ -1,22 +1,14 @@
 import React, { memo, useEffect } from 'react';
-import BreadCrumbs from '../../UI/BreadCrumbs';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import ProductsList from '../../components/ProductsList';
+import BreadCrumbs from '../../components/UI/BreadCrumbs';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import ProductsList from '../../components/common/ProductsList';
 import './ProductsPage.scss';
-import { productsActions } from '../../features/productsSlice';
-import Loader from '../../UI/Loader';
-import { useAppParams } from '../../hooks/appParams';
-import { isInclude } from '../../utils/objectHelper';
-import { Category, PAGE } from '../../constants/Router';
-import { Navigate } from 'react-router-dom';
+import { productsActions } from '../../store/slices/productsSlice';
+import Loader from '../../components/UI/Loader';
+import { useAppParams } from '../../enhancers/hooks/appParams';
 
 export const ProductsPage: React.FC = memo(() => {
   const { category } = useAppParams();
-
-  if (!isInclude(Category, category)) {
-    return <Navigate to={PAGE.Home} />;
-  }
-
   const dispatch = useAppDispatch();
   const { products, error, loading } = useAppSelector(state => state.products);
 

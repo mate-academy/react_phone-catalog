@@ -1,4 +1,4 @@
-import { LocaleStorage } from '../constants/LocaleStorage';
+import { LocaleStorage } from '../definitions/enums/LocaleStorage';
 
 function write<T>(key: LocaleStorage, value: T) {
   localStorage.setItem(key, JSON.stringify(value));

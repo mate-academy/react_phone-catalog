@@ -1,6 +1,6 @@
 import axios, { AxiosProgressEvent } from 'axios';
 
-export const BASE_URL = './_new';
+export const BASE_URL = './api';
 
 export interface RequestOptions {
   onDownloadProgress?: (progressEvent: AxiosProgressEvent) => void,

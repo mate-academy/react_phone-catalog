@@ -1,0 +1,50 @@
+@import '../../../styles/vars.scss';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 32px;
+
+  padding-inline: 8px;
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    color: var(--c-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px; 
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    padding: 16px;
+    transition: $transition-time;
+
+    &:hover {
+      color: var(--c-primary);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      transition: $transition-time;
+      background-color: var(--c-primary);
+
+      bottom: 0;
+    }
+    
+    &--active {
+      color: var(--c-primary);
+      // background-color: yellow;
+      
+      &::after {
+        width: calc(100% - 16px * 2);
+      }
+    }
+  }
+}

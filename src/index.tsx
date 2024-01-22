@@ -2,13 +2,13 @@ import { createRoot } from 'react-dom/client';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { App } from './App';
-import { PAGE } from './constants/Router';
+import { PAGE } from './definitions/enums/Router';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import FavoritesPage from './pages/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { store } from './app/store';
+import { store } from './store/store';
 import ProductPage from './pages/ProductPage';
 
 createRoot(document.getElementById('root') as HTMLElement)
