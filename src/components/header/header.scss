@@ -10,31 +10,30 @@
     display: flex;
     align-items: center;
 
+    .Logo {
+      margin-right: 64px;
+      margin-left: 24px;
+    }
+
     .navigation {
+      .navigation__item {
+        text-transform: uppercase;
+        margin-right: 64px;
 
-      ul {
-        display: flex;
-        list-style: none;
-        margin: 0;
+        &:last-child {
+          margin-right: 0;
+        }
 
-        .navigation__item {
-          text-transform: uppercase;
-          margin-right: 64px;
+        a {
+          color: #89939A;
+          text-decoration: none;
 
-          &:last-child {
-            margin-right: 0;
+          &:hover {
+            color: #313237;
+            text-decoration: underline;
+
+            
           }
-
-          a {
-            color: #89939A;
-            text-decoration: none;
-
-            &:hover {
-              color: #313237;
-              text-decoration: underline;
-            }
-          }
-
         }
       }
     }

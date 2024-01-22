@@ -1,0 +1,90 @@
+.Hot-prices,
+.New-models {
+  margin-bottom: 20px;
+}
+
+.Home-page {
+  display: grid;
+  place-items: center;
+
+}
+
+.Slider {
+  height: 432px;
+  display: flex;
+  overflow: hidden;
+
+  &__list {
+    width: 1040px;
+    height: 400px;
+  }
+
+  // &__img {
+  //   width: 1040px;
+  //   height: 400px;
+  // }
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+
+  &__movement {
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.cardsContainer {
+  overflow: hidden;
+
+  &__item {
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.Category {
+  background-color: yellow;
+  height: 508px;
+
+  &__img {
+    height: 368px;
+    width: 368px;
+    margin-bottom: 24px;
+    object-fit: cover;
+  }
+
+  &__item {
+    margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__name {
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #313237;
+  }
+}
+
+.Hot-prices {
+  // background-color: yellow;
+  height: 572px;
+}
+
+h1, h2, h3 {
+  color: #313237;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+

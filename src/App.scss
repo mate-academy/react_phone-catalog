@@ -1,15 +1,25 @@
-// not empty
 body {
   height: 100%;
   margin: 0;
-
-  // display: flex;
-  // flex-direction: column;
-  // height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  color: #89939A;
+  font-weight: 500;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+p, h1, h2, h3, a {
+  margin: 0;
+  padding: 0;
 }

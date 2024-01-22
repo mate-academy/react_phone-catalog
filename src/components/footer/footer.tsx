@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './footer.scss';
+import './Footer.scss';
 // import logo from './LOGO.jpg';
 
 export const Footer = (() => {
@@ -28,7 +28,7 @@ export const Footer = (() => {
       <div className="footer__rightConteiner">
         Back to top
         <button type="button">
-          <img src="./Chevron.jpg" alt="Logo" />
+          <img src="/Chevron.jpg" alt="Logo" />
         </button>
       </div>
     </footer>

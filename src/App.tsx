@@ -1,7 +1,7 @@
 import './App.scss';
-import { Content } from './components/content/content';
-import { Footer } from './components/footer/footer';
-import { Header } from './components/header/header';
+import { Content } from './components/Content/Content';
+import { Footer } from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
 
 export const App = () => (
   <div className="App">

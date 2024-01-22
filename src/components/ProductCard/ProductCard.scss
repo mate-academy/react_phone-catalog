@@ -1,1 +1,73 @@
 // non
+.card {
+  height: 507px;
+  width: 270px;
+  border: 1px solid #E2E6E9;
+  // flex-shrink: 0;
+  // flex: 0 0 22%;
+
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    margin: 32px 32px 0 32px;
+    object-fit: contain;
+  }
+
+  .description {
+    margin: 24px;
+
+    &__name {
+      margin-bottom: 6.5px;
+      font-weight: 500;
+    }
+
+    &__price {
+      margin-bottom: 22.5;
+      display: flex;
+
+      .price {
+        margin-right: 8px;
+        font-weight: 700;
+      }
+
+      .discount {
+        font-weight: 500;
+      }
+    }
+
+    .description__item {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+
+      // &:last-child {
+      //   margin-bottom: 1000;
+      // }
+    }
+
+    // не работает ни то ни другое
+
+    .description :last-of-type {
+      margin-bottom: 0;
+    }
+
+    // .description__item:last-of-type {
+    //   margin-bottom: 0;
+    // }
+
+    &__button {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-button {
+      font-weight: 600;
+      margin-top: 16px;
+      background-color: black;
+      color: white;
+    }
+  }
+}
