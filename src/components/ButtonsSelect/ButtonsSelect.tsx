@@ -21,10 +21,6 @@ export const ButtonsSelect: React.FC<Props> = ({
   const colors = useColors();
   const location = useLocation();
 
-  const reduceHistory = () => {
-    history.replaceState(location.state, '', `#${location.state.prevPath}`);
-  };
-
   return (
     <div className="buttons">
       <h1 className="buttons__title">{title}</h1>
@@ -40,11 +36,11 @@ export const ButtonsSelect: React.FC<Props> = ({
                   loaderOff: true,
                   prevPath: location.state.prevPath,
                 }}
+                replace
               >
                 <Button
                   content="color"
                   isActive={content === activeContent}
-                  onClick={reduceHistory}
                 >
                   <span style={{ background: colors.get(content) }} />
                 </Button>
@@ -62,11 +58,11 @@ export const ButtonsSelect: React.FC<Props> = ({
                   loaderOff: true,
                   prevPath: location.state.prevPath,
                 }}
+                replace
               >
                 <Button
                   content="text"
                   isActive={content === activeContent}
-                  onClick={reduceHistory}
                 >
                   {content}
                 </Button>
