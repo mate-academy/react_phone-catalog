@@ -119,6 +119,7 @@ export const ProductInfo: React.FC<Props> = ({ product, productSelected }) => {
                       to={getLinkFromColor(id, color, pathname)}
                       key={color}
                       title={color}
+                      replace
                     >
                       <div
                         className={cn('product-info__color-gap', {
@@ -149,6 +150,7 @@ export const ProductInfo: React.FC<Props> = ({ product, productSelected }) => {
                     <Link
                       to={getLinkFromRAM(id, cap, pathname)}
                       key={cap}
+                      replace
                     >
                       <div
                         className={cn('product-info__capacity-text', {

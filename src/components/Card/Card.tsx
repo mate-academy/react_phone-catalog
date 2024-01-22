@@ -58,7 +58,7 @@ export const Card: React.FC<Props> = ({ card }) => {
     return cart.filter(item => item.id === id).length;
   }, [cart, id]);
 
-  const isAddDisabled = amountOfProduct >= 9;
+  const isAddDisabled = amountOfProduct >= 99;
   const isDeleteDisabled = amountOfProduct <= 1;
 
   return (
