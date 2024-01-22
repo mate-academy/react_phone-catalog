@@ -1,0 +1,20 @@
+@import "../../styles/main";
+
+.BackButton {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @extend %small-text;
+
+  color: $dark-grey-c;
+  transition-duration: $transition-duration;
+  margin-top: 40px;
+
+  &:hover {
+    color: $black-c;
+    transform: scale(1.0);
+  }
+}
