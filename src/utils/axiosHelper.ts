@@ -1,6 +1,6 @@
 import axios, { AxiosProgressEvent } from 'axios';
 
-export const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
+export const BASE_URL = './_new';
 
 export interface RequestOptions {
   onDownloadProgress?: (progressEvent: AxiosProgressEvent) => void,

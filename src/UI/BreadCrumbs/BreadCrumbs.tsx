@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { PAGE } from '../../constants/Router';
 import { capitalizeFirst } from '../../utils/stringHelper';
 
