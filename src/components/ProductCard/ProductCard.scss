@@ -1,0 +1,112 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 272px;
+  padding: 24px;
+  border: 1px solid var(--c-elements);
+  background: var(--c-bg);
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__main-info {
+    align-self: stretch;
+  }
+
+  &__name {
+    color: var(--c-primary);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    height: calc(2em * 1.5);
+    overflow: hidden;
+  }
+
+  &__price {
+    display: flex;
+    gap: 4px;
+    margin-block: 6px;
+    font-size: 22px;
+
+    & > span {
+      padding-inline: 2px;
+    }
+  }
+
+  &__current-price {
+    color: var(--c-primary);
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__old-price {
+    position: relative;
+    color: var(--c-secondary);
+    font-weight: 500;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 100%;
+      height: 1px;
+
+      z-index: 100;
+      background-color: var(--c-secondary);
+    }
+  }
+
+  & > hr {
+    background-color: var(--c-elements);
+    border: none;
+    height: 1px;
+  }
+
+  &__img {
+    margin: 8px;
+    margin-bottom: 24px;
+    height: 208px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background-size: cover;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+
+    margin-block: 16px;
+
+    & tbody {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & tr {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    & td {
+      color: var(--c-secondary);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    & td:nth-child(2n) {
+      color: var(--c-primary);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

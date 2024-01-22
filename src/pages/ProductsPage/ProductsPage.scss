@@ -1,0 +1,9 @@
+.products-page {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  &__loader {
+    margin-top: 20vh;
+  }
+}

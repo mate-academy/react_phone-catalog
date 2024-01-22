@@ -1,0 +1,17 @@
+.back-button {
+  display: flex;
+  gap: 4px;
+
+  &>img {
+    height: 16px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &>span {
+    color: var(--c-secondary);
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

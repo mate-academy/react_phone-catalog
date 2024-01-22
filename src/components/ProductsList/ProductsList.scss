@@ -1,0 +1,9 @@
+@import '../../styles/mixins.scss';
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  justify-items: center;
+  column-gap: 16px;
+  row-gap: 40px;
+}
