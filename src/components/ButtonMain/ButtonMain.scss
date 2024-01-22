@@ -1,0 +1,17 @@
+@import "../../styles/main";
+
+.button-main {
+  background-color: $main-color;
+  color: $white-color;
+
+  @extend %button;
+  @include box-shadow-button;
+
+  width: 100%;
+
+  padding-block: 14px 13px;
+
+  &--card {
+    padding-block: 10px 9px;
+  }
+}

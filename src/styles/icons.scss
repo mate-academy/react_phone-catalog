@@ -1,0 +1,83 @@
+ @import './mixins';
+
+.icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &-favourites {
+    background-image: url('../assets/icons/favourites.svg');
+  }
+
+  &-favourites-like {
+    background-image: url('../assets/icons/favourites-like.svg');
+  }
+
+  &-cart {
+    background-image: url('../assets/icons/cart.svg');
+  }
+
+  &-top {
+    background-image: url('../assets/icons/vector-up-main.svg');
+  }
+
+  &-prev {
+    background-image: url('../assets/icons/vector-left.svg');
+  }
+
+  &-prev-disabled {
+    background-image: url('../assets/icons/vector-left-main.svg');
+  }
+
+  &-next {
+    background-image: url('../assets/icons/vecrot-right-main.svg');
+  }
+
+  &-home {
+    background-image: url('../assets/icons/home.svg');
+  }
+
+  &-next-inactive {
+    background-image: url('../assets/icons/vecrot-right.svg');
+  }
+
+  &-search {
+    background-image: url('../assets/icons/search.svg');
+  }
+
+  &-close {
+    background-image: url('../assets/icons/close.svg');
+  }
+
+  &-close-main {
+    background-image: url('../assets/icons/close-main.svg');
+
+    @include hover(background-image, url('../assets/icons/close.svg'));
+  }
+
+  &-main {
+    background-image: url('../assets/icons/close-main.svg');
+  }
+
+  &-minus {
+    background-image: url('../assets/icons/minus.svg');
+  }
+
+  &-minus-main {
+    background-image: url('../assets/icons/minus-main.svg');
+  }
+
+  &-plus {
+    background-image: url('../assets/icons/plus.svg');
+  }
+
+  &-plus-main {
+    background-image: url('../assets/icons/plus-main.svg');
+  }
+
+  &-down {
+    background-image: url('../assets/icons/vector-down.svg');
+  }
+}

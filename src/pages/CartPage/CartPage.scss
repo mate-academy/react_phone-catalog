@@ -1,0 +1,35 @@
+@import "../../styles/main";
+
+.cart-page {
+  padding-block: 40px 87px;
+
+  &__top {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    background-color: $white-color;
+    margin-bottom: 16px;
+
+    @extend %links;
+  }
+
+  &__text {
+    color: $secondary-color ;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,22 @@
+@import "../../styles/main";
+
+.navigation {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    position: relative;
+    padding-block: 27px 26px;
+
+    @extend %upper-case;
+    @include hover(color, $main-color);
+
+    &-is-active {
+      color: $main-color;
+
+      &::after {
+        @extend %active-line;
+      }
+    }
+  }
+}

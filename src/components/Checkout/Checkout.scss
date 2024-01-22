@@ -1,0 +1,35 @@
+@import "../../styles/main";
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 368px;
+  height: max-content;
+
+  @include border-default;
+
+  padding: 24px;
+
+  &__total {
+    @extend %h1;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 24px;
+
+    @include border-bottom-default;
+
+    margin-bottom: 24px;
+  }
+
+  &__amount {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+}

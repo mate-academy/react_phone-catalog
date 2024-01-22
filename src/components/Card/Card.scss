@@ -1,0 +1,68 @@
+@import "../../styles/main";
+
+.card {
+  --gap-between-el: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 752px;
+
+  @include border-default;
+
+  padding: 24px 40px 24px 24px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-between-el);
+  }
+
+  &__delete {
+    background-color: $white-color;
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-between-el);;
+  }
+
+  &__product-name {
+    @extend %body-text;
+
+    width: 295px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+  }
+
+  &__button {
+    padding: 8px;
+    background-color: $white-color;
+
+    @include border-icons;
+    @include hover(border-color, $main-color);
+
+    &--disabled {
+      border-color: $elements-color;
+
+      @include hover(border-color, $elements-color);
+    }
+  }
+
+  &__price {
+    @extend %h2;
+  }
+}
+

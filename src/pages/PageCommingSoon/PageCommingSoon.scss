@@ -1,0 +1,21 @@
+@import "../../styles/main";
+
+.page-comming-soon {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    margin-top: 80px;
+  }
+
+  &__image {
+    width: 656px;
+    height: 437px;
+  }
+
+  &__link {
+    width: 320px;
+  }
+}

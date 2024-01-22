@@ -1,0 +1,30 @@
+@import "../../styles/main";
+
+.breadcrumb {
+  --gap-default: 8px;
+
+  display: flex;
+  gap: var(--gap-default);
+  align-items: center;
+
+  padding-top: 24px;
+  padding-bottom: 40px;
+
+  @extend %links;
+
+  &__name--active {
+    color: $main-color;
+  }
+
+  &__second {
+    display: flex;
+    gap: var(--gap-default);
+    align-items: center;
+  }
+
+  &__next {
+    display: flex;
+    gap: var(--gap-default);
+    align-items: center;
+  }
+}

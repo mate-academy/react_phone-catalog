@@ -1,0 +1,16 @@
+@import "../../styles/main";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    gap: 16px;
+  }
+}

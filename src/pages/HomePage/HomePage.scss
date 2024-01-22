@@ -1,0 +1,26 @@
+@import "../../styles/main";
+
+.home-page {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 80px;
+
+  margin-top: 40px;
+  overflow-x: hidden;
+
+  &__loader {
+    @include flex-center;
+
+    height: 585px;
+  }
+}
+
+.hot-prices{
+  max-width: 100%;
+}
+
+.brand-new-models {
+  max-width: 100%;
+  margin-bottom: 80px;
+}

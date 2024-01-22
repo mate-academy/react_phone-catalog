@@ -1,0 +1,81 @@
+@import "../../styles/main";
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  padding: 32px 24px 24px;
+
+  @include border-default;
+
+  max-width: 272px;
+
+  @include box-shadow;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  &__image-phone {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+  }
+
+  &__model {
+    width: 224px;
+    margin-bottom: 6px;
+
+    @extend %body-text;
+
+    height: 42px;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 6px;
+
+    @include border-bottom-default;
+
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__discount {
+    @extend %text-discount;
+  }
+
+  &__about {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    margin-bottom: 16px;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @extend %text-characteristics;
+    }
+
+    &-name {
+      color: $secondary-color;
+    }
+  }
+
+  &__buttom {
+    display: flex;
+    height: 40px;
+    gap: 8px;
+
+    width: 100%;
+  }
+}
