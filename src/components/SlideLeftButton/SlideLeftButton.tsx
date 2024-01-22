@@ -1,0 +1,26 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import classNames from 'classnames';
+import './SlideLeftButton.scss';
+
+type Props = {
+  onSlideLeft: () => void,
+  isDisabled: boolean,
+};
+
+export const SlideLeftButton: React.FC<Props> = ({
+  onSlideLeft,
+  isDisabled,
+}) => {
+  return (
+    <button
+      data-cy="paginationLeft"
+      type="button"
+      className={classNames('SlideLeftButton', {
+        disabled: isDisabled,
+      })}
+      onClick={onSlideLeft}
+    >
+      <div className="icon icon--left" />
+    </button>
+  );
+};
