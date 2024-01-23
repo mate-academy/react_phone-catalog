@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './Slider.scss';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
+
 import { IMAGE_ROOT } from '../../helpers/utils/constants/imageRoot';
 
 const Slider: React.FC = () => {
@@ -11,35 +14,58 @@ const Slider: React.FC = () => {
     'banner-tablets.png',
   ];
 
+  const links = [
+    '/phones',
+    '/accessories',
+    '/tablets',
+  ];
+
   const totalSlides = slides.length;
 
-  const nextSlide = () => {
-    setCurrentSlide((prevState) => (prevState + 1) % totalSlides);
+  const handleNextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prevState) => (prevState - 1 + totalSlides) % totalSlides);
+  const handlePrevSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + totalSlides) % totalSlides);
   };
 
-  // TODO slider work bad
   return (
-    <div className="slider-container">
-      <div className="slider">
-        {/* eslint-disable */}
+    <div className="slider margin-top-40-px">
+      <div className="slider__container">
+        {/* eslint-disable-next-line */}
         <button
           className="slider__button slider__button--left"
-          onClick={prevSlide}
+          onClick={handlePrevSlide}
         />
-        <ul className="slider__container">
-          <li className="slider__slide">
-            <img src={IMAGE_ROOT + slides[currentSlide]} alt={`slide ${currentSlide}`} />
-          </li>
-        </ul>
+        <div className="slider__wrapper">
+          <ul className="slider__list" style={{ transform: `translateX(${-currentSlide * 100}%)` }}>
+            {slides.map((slide, index) => (
+              <li key={links[index]} className={`slider__slide ${index === currentSlide ? 'active' : ''}`}>
+                <Link to={links[currentSlide]}>
+                  <img src={`${IMAGE_ROOT}${slide}`} alt={`Slide ${index + 1}`} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* eslint-disable-next-line */}
         <button
           className="slider__button slider__button--right"
-          onClick={nextSlide}
+          onClick={handleNextSlide}
         />
-        {/* eslint-enable */}
+      </div>
+      <div className="slider__numeration">
+        {slides.map((slide, index) => (
+          <div
+            key={slide}
+            className={cn('slider__numeration-item', {
+              'slider__numeration-item--active': index === currentSlide,
+            })}
+          >
+            <></>
+          </div>
+        ))}
       </div>
     </div>
   );
