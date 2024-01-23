@@ -26,8 +26,8 @@ const init = createAsyncThunk('products/init',
       dispatch(cartActions.init(products));
 
       return products;
-    } catch {
-      throw new Error('Server error. Failed to load data');
+    } catch (error) {
+      throw error;
     }
   });
 

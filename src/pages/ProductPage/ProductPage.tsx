@@ -1,26 +1,30 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import BreadCrumbs from '../../components/UI/BreadCrumbs';
 import BackButton from '../../components/UI/BackButton';
 import { useAppParams } from '../../enhancers/hooks/appParams';
 import { getProductById } from '../../api/products';
-import { Product } from '../../definitions/types/Product';
-import ProductDetails from '../../components/common/ProductDetails';
+import ProductDetailsComponent from '../../components/common/ProductDetailsComponent';
+import { useRequest } from '../../enhancers/hooks/request';
+import ErrorMessage from '../../components/common/ErrorMessage';
+import { ProductDetails } from '../../definitions/types/ProductDetails';
 
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, loading, error] = useRequest<ProductDetails>(
+    () => getProductById(category, productId)
+  );
 
-  useEffect(() => {
-    getProductById(category, productId).then(setProduct);
-  }, []);
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
-    <div className="products-page">
+    <div className="product-page">
       <BreadCrumbs />
 
       <BackButton />
 
-      <ProductDetails product={product} />
+      <ProductDetailsComponent product={product} loading={loading} />
 
     </div>
   );

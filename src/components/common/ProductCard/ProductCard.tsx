@@ -7,7 +7,7 @@ import GraySelectButton from '../../UI/GraySelectButton';
 import { AddToCartHandler, AddToCartHandlerRenderProps } from '../../../enhancers/hocs/AddToCartHandler';
 import { AddToFavoritesHandler, AddToFavoritesHandlerRenderProps } from '../../../enhancers/hocs/AddToFavoritesHandler';
 import SquareSelectButton from '../../UI/SquareSelectButton';
-import { BASE_URL } from '../../../utils/axiosHelper';
+import { BASE_URL } from '../../../utils/fetchHelper';
 
 interface Props {
   product: Product,

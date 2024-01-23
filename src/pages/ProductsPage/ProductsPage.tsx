@@ -6,6 +6,7 @@ import './ProductsPage.scss';
 import { productsActions } from '../../store/slices/productsSlice';
 import Loader from '../../components/UI/Loader';
 import { useAppParams } from '../../enhancers/hooks/appParams';
+import ErrorMessage from '../../components/common/ErrorMessage';
 
 export const ProductsPage: React.FC = memo(() => {
   const { category } = useAppParams();
@@ -16,8 +17,9 @@ export const ProductsPage: React.FC = memo(() => {
     dispatch(productsActions.init(category));
   }, [category]);
 
-  const showError = error && !loading;
-  const showProductList = !loading && !error;
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   return (
     <div className="products-page">
@@ -26,8 +28,7 @@ export const ProductsPage: React.FC = memo(() => {
       <h2>Products Page</h2>
 
       {loading && <Loader size={100} className="products-page__loader" />}
-      {showError && <p>{error}</p>}
-      {showProductList && <ProductsList products={products} />}
+      {!loading && <ProductsList products={products} />}
     </div>
   );
 });

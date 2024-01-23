@@ -3,7 +3,7 @@ import './Loader.scss';
 
 interface Props {
   size?: number,
-  className: string,
+  className?: string,
 }
 
 export const Loader: React.FC<Props> = memo(({ size, className }) => (

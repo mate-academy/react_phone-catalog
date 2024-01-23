@@ -1,11 +1,14 @@
 import { Category } from "../definitions/enums/Category";
 import { Product } from '../definitions/types/Product';
-import { request } from '../utils/axiosHelper';
+import { ProductDetails } from "../definitions/types/ProductDetails";
+import { request } from '../utils/fetchHelper';
 
 export const getProducts = (category: Category) => {
   return request<Product[]>(`categories/${category}/products.json`);
 };
 
 export const getProductById = (category: Category, productId: string) => {
-  return request<Product>(`categories/${category}/products/${productId}.json`);
+  const url = `categories/${category}/products/${productId}.json`;
+
+  return request<ProductDetails>(url);
 };

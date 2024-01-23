@@ -7,9 +7,9 @@ import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import FavoritesPage from './pages/FavoritesPage';
-import NotFoundPage from './pages/NotFoundPage';
 import { store } from './store/store';
 import ProductPage from './pages/ProductPage';
+import ErrorMessage from './components/common/ErrorMessage';
 
 createRoot(document.getElementById('root') as HTMLElement)
   .render(
@@ -24,8 +24,11 @@ createRoot(document.getElementById('root') as HTMLElement)
             <Route path=":category" element={<ProductsPage />} />
             <Route path=":category/:productId" element={<ProductPage />} />
 
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
+            <Route
+              path="*"
+              element={<ErrorMessage message='Resource not found. Please check URL.' />}
+            />
+            </Route>
         </Routes>
       </Router>
     </Provider>,
