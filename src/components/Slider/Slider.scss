@@ -42,13 +42,10 @@ $slider-height-pc: 400px;
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: center;
-
-    &--left {
-      background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
-    }
+    background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
 
     &--right {
-      background-image: url("../../assets/images/icons/slider-icons/arrow-right.svg");
+      transform: rotateZ(180deg);
     }
   }
 

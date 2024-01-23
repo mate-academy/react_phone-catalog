@@ -61,27 +61,27 @@ const Header: React.FC = () => {
       <div className="header__cart">
         <NavLink
           to="/search"
-          className="
-          header__cart-link--active
-          header__cart-link
-          header__cart-link--search
-          "
+          className={({ isActive }) => getActiveClassName(
+            'header__cart-link',
+            isActive,
+            ['header__cart-link--search'],
+          )}
         />
         <NavLink
           to="/favourites"
-          className="
-          header__cart-link
-          header__cart-link--active
-          header__cart-link--favourites
-          "
+          className={({ isActive }) => getActiveClassName(
+            'header__cart-link',
+            isActive,
+            ['header__cart-link--favourites'],
+          )}
         />
         <NavLink
           to="/cart"
-          className="
-          header__cart-link
-          header__cart-link--cart
-          header__cart-link--active
-          "
+          className={({ isActive }) => getActiveClassName(
+            'header__cart-link',
+            isActive,
+            ['header__cart-link--cart'],
+          )}
         />
 
       </div>

@@ -38,6 +38,7 @@
     }
 
     &-link {
+      display: block;
       text-decoration: none;
       text-transform: uppercase;
       color: #89939a;
@@ -58,10 +59,9 @@
           height: 3px;
           background-color: #313237;
           position: absolute;
-          bottom: -24px; 
+          bottom: 0; 
         }
       }
-
     }
 
   }
@@ -80,6 +80,7 @@
       background-repeat: no-repeat;
       background-position: center;
       padding-inline: 30px;
+      position: relative;
   
       &--favourites {
         background-image: url("../../assets/images/icons/header-icons/favourites.svg");
@@ -93,7 +94,6 @@
         background-image: url("../../assets/images/icons/header-icons/cart.svg");
       }
 
-      /* TODO implement this active classes. didn't work for some reasons. */
       &--active {
         color: #313237;
   
