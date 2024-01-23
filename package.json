@@ -12,7 +12,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-paginate": "^8.1.4",
-    "react-router-dom": "^6.21.3",
+    "react-router-dom": "^6.7.0",
     "react-scripts": "^4.0.3",
     "requirejs": "^2.3.6"
   },
@@ -22,7 +22,7 @@
     "@mate-academy/eslint-config-react": "*",
     "@mate-academy/eslint-config-react-typescript": "*",
     "@mate-academy/scripts": "^1.2.12",
-    "@mate-academy/students-ts-config": "*",
+    "@mate-academy/students-ts-config": "0.0.4",
     "@mate-academy/stylelint-config": "*",
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",

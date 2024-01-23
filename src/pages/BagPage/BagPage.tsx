@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Link, NavLink } from 'react-router-dom';
 import { Notification } from '../../components/Notification';
 import { PhoneContext } from '../../utils/PhoneContext';
