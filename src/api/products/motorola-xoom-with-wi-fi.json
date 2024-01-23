@@ -1,0 +1,49 @@
+{
+"id": "motorola-xoom-with-wi-fi",
+"namespaceId": "motorola-xoom",
+"name": "Motorola XOOM\u2122 with Wi-Fi",
+"capacityAvailable": ["32000MB"],
+"capacity": "32000MB",
+"priceRegular": 0,
+"priceDiscount": 780,
+"colorsAvailable": ["black"],
+"color": "black",
+"images": [
+  "img/phones/motorola-xoom-with-wi-fi.0.jpg",
+  "img/phones/motorola-xoom-with-wi-fi.1.jpg",
+  "img/phones/motorola-xoom-with-wi-fi.2.jpg",
+  "img/phones/motorola-xoom-with-wi-fi.3.jpg",
+  "img/phones/motorola-xoom-with-wi-fi.4.jpg",
+  "img/phones/motorola-xoom-with-wi-fi.5.jpg"
+],
+"description": [
+  {
+    "title": "About device",
+    "text": [
+      "Motorola XOOM with Wi-Fi has a super-powerful dual-core processor and Android\u2122 3.0 (Honeycomb) \u2014 the Android platform designed specifically for tablets. With its 10.1-inch HD widescreen display, you\u2019ll enjoy HD video in a thin, light, powerful and upgradeable tablet."
+    ]
+  },
+  {
+    "title": "Camera",
+    "text": [
+      "features: Flash / Video",
+      "5.0 megapixels"
+    ]
+  },
+  {
+    "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
+    "text": [
+      "battery: standbyTime - 336 hours, talkTime: 24 hours, Other ( mAH)",
+      "Sensors: proximity, ambient light, barometer, gyroscope"
+    ]
+  }
+],
+"screen": "5.8' OLED",
+"resolution": "249.1 mm (w) x 167.8 mm (h) x 12.9 mm (d)",
+"processor": "1 GHz Dual Core Tegra 2, Android 3.0",
+"ram": "1000MB",
+"camera": "5.0 megapixels",
+"zoom": "WXGA (1200 x 800), 10.1 inches",
+"cell": ["Bluetooth", "gps", "wifi"],
+"type": "tablet"
+}

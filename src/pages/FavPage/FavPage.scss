@@ -1,0 +1,76 @@
+.FavPage {
+  display: flex;
+  flex-direction: column;
+  padding: 0 152px 80px;
+  margin: 0 auto;
+  max-width: 1440px;
+
+  &_nav {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+
+    margin-bottom: 40px;
+
+    &_link {
+      width: 18px;
+      height: 18px;
+
+      background-image: url(../../img/home.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &_text {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: $secondary;
+    }
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+
+    margin-bottom: 8px;
+  }
+
+  &_count {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary;
+
+    margin-bottom: 40px;
+  }
+
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &_isEmpty {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 200px);
+    text-align: center;
+
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+  
+    background-image: url(../../img/add_to.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75% 75%;
+  }
+}

@@ -1,0 +1,51 @@
+.productSlider {
+  width: 1136px;
+  height: 572px;
+
+  &_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &_title {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      color: $primary;
+    }
+
+    &_conteiner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      &_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 32px;
+        height: 32px;
+        border: 1px solid $elements;
+        color: $elements;
+        background-color: $white;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+        cursor: pointer;
+
+        &:hover {
+          color: $icons;
+          border-color: $icons;
+        }
+      }
+    }
+  }
+
+  &_conteiner {
+    display: flex;
+    gap: 15px;
+    overflow: hidden;
+  }
+}

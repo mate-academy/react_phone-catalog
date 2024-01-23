@@ -1,0 +1,43 @@
+.Selector {
+  display: flex;
+  flex-direction: column;
+  width: 176px;
+
+  &_title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+
+    margin-bottom: 4px;
+  }
+
+  &_button {
+    background-color: transparent;
+    text-align: start;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid $icons;
+
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+    cursor: pointer;
+  }
+
+  &_item {
+    padding: 0 12px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+  }
+}
+
+.conteiner_sector {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 24px;
+}

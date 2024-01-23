@@ -1,0 +1,39 @@
+.pagination {
+  display: flex;
+  gap: 8px;
+
+  &_extreme {
+    margin: 0 20px;
+  }
+
+  &_span {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &_button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &_conteiner {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.button-active {
+  background-color: $primary;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: $white;
+}

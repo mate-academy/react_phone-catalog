@@ -1,0 +1,46 @@
+{
+  "id": "motorola-xoom",
+  "namespaceId": "motorola-xoom",
+  "name": "Motorola XOOM\u2122",
+  "capacityAvailable": ["32000MB"],
+  "capacity": "32000MB",
+  "priceRegular": 1002,
+  "priceDiscount": 910,
+  "colorsAvailable": ["black"],
+  "color": "black",
+  "images": [
+    "img/phones/motorola-xoom.0.jpg", 
+    "img/phones/motorola-xoom.1.jpg", 
+    "img/phones/motorola-xoom.2.jpg"
+  ],
+  "description": [
+    {
+      "title": "About device",
+      "text": [
+        "MOTOROLA XOOM has a super-powerful dual-core processor and Android\u2122 3.0 (Honeycomb) \u2014 the Android platform designed specifically for tablets. With its 10.1-inch HD widescreen display, you\u2019ll enjoy HD video in a thin, light, powerful and upgradeable tablet."
+      ]
+    },
+    {
+      "title": "Camera",
+      "text": [
+        "features: Flash / Video",
+        "5.0 megapixels Front-facing camera. Sensors: proximity, ambient light, barometer, gyroscope."
+      ]
+    },
+    {
+      "title": "Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.",
+      "text": [
+        "battery: standbyTime - 336 hours, talkTime: 24 hours, Other (3250 mAH)",
+        "CDMA 800 /1900 LTE 700, Rx diversity in all bands"
+      ]
+    }
+  ],
+  "screen": "5.8' OLED",
+  "resolution": "249.0 mm (w) x 168 mm (h) x 12.7 mm (d)",
+  "processor": "1 GHz Dual Core Tegra 2, Android 3.0",
+  "ram": "1000MB",
+  "camera": "5.0 megapixels",
+  "zoom": "WXGA (1200 x 800), 10.1 inches",
+  "cell": ["Bluetooth", "gps", "wifi"],
+  "type": "tablet"
+}
