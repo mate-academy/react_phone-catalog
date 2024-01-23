@@ -1,29 +1,25 @@
-import { NavLink } from 'react-router-dom';
-import { Navbar } from '../Navbar';
-import { Searchbar } from '../Searchbar';
-import './style/Header.scss';
-import { Icon } from '../Icon';
 import { Icons } from '../../types/enums/Icons';
+import { Icon } from '../Icon';
+import { Navigation } from '../Navigation';
+import { Searchbar } from '../Searchbar';
+import './Header.scss';
 
 export const Header = () => {
   return (
-    <header className="header">
-      <div className="header__nav">
-        <Navbar />
+    <div className="header">
+      <div className="header__left-container">
+        <span className="header__logo" />
+        <Navigation />
       </div>
-      <div className="header__controls">
+      <div className="header__right-container">
         <Searchbar />
-        <div className="header__link">
-          <NavLink to="/">
-            <Icon type={Icons.Heart} />
-          </NavLink>
+        <div className="header__right__controls">
+          <Icon icon={Icons.Heart} />
         </div>
-        <div className="header__link">
-          <NavLink to="/">
-            <Icon type={Icons.Cart} />
-          </NavLink>
+        <div className="header__right__controls">
+          <Icon icon={Icons.Cart} />
         </div>
       </div>
-    </header>
+    </div>
   );
 };

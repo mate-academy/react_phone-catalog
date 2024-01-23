@@ -1,0 +1,52 @@
+@import '../../App.scss';
+
+.icon {
+  position: relative;
+  display: flex;
+
+  width: 16px;
+  height: 16px;
+
+  &__image {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &-search {
+      background-image: url(../../style/icons/Search.svg);
+    }
+
+    &-cart {
+      background-image: url(../../style/icons/cart.svg);
+    }
+
+    &-heart {
+      background-image: url(../../style/icons/heart.svg);
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+
+    border: 1px solid $white-color;
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 9px;
+    color: $white-color;
+
+    width: 14px;
+    height: 14px;
+    background-color: $red-color;
+  }
+}

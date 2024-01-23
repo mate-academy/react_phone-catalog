@@ -1,0 +1,40 @@
+@import '../../App.scss';
+
+.header {
+  height: 64px;
+  padding-left: 24px;
+
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: $header-shadow;
+
+  &__logo {
+    display: block;
+    background: url(../../style/icons/HeaderLogo.svg) no-repeat;
+    width: 40px;
+    height: 24px;
+  }
+
+  &__left-container,
+  &__right-container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  &__left-container {
+    gap: 64px;
+  }
+
+  &__right {
+    &__controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      box-shadow: $header-controls-shadow;
+      height: 100%;
+    }
+  }
+}

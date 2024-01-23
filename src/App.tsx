@@ -1,11 +1,11 @@
-import { HashRouter as Router } from 'react-router-dom';
-import './App.scss';
 import { Header } from './components/Header';
+import './App.scss';
 
-export const App = () => (
-  <Router>
-    <div className="App">
+export const App = () => {
+  return (
+    <>
       <Header />
-    </div>
-  </Router>
-);
+      <p>pirwa</p>
+    </>
+  );
+};

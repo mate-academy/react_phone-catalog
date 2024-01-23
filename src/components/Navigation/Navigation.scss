@@ -1,0 +1,10 @@
+@import "../../App.scss";
+
+.navigation {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    color: $secondary-color;
+  }
+}

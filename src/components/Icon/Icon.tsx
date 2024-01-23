@@ -1,23 +1,23 @@
+import cn from 'classnames';
 import { Icons } from '../../types/enums/Icons';
-import './style/Icon.scss';
+import './Icon.scss';
 
 interface Props {
-  type: Icons,
-  value?: number | null,
+  icon: Icons,
+  counter?: number | undefined,
 }
 
-export const Icon: React.FC<Props> = ({
-  type = Icons.Search,
-  value = null,
-}) => {
-  return (
-    <div className="icon">
-      <span className={`icon-${type}`} />
-      {value && (
-        <span className="icon__value">
-          <span className="font_body icon__value__quantity">{value}</span>
-        </span>
-      )}
-    </div>
-  );
-};
+export const Icon: React.FC<Props> = ({ icon, counter }) => (
+  <div className="icon">
+    <span
+      className={cn('icon__image', {
+        [`icon__image-${icon}`]: icon,
+      })}
+    />
+    {counter && (
+      <span className="font_small icon__counter">
+        {counter}
+      </span>
+    )}
+  </div>
+);
