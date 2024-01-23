@@ -1,0 +1,115 @@
+.card {
+  width: 272px;
+  border: 1px solid #E2E6E9;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align-last: left;
+
+  &__image {
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-family: Mont, "Helvetica Neue", Helvetica, sans-serif;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    text-align-last: left;
+    color: #313237;
+  }
+
+  &__prices {
+    width: 100%;
+    text-align-last: left;
+    margin-top: 7px;
+    display: flex;
+    gap: 8px;
+
+    &-price {
+      font-size: 22px;
+
+      &--current {
+        font-weight: 700;
+        color: #313237;
+      }
+  
+      &--old {
+        font-weight: 500;
+        color: #89939A;
+        text-decoration: line-through;
+      }
+    }
+  }
+  
+
+  &__line-break {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #E2E6E9;
+    margin: 7px 0 16px;
+  }
+
+  &__extra {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+
+    &-title {
+      color: #89939A;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    &-toCart {
+      width: 176px;
+      height: 40px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #313237;
+      color: #fff;
+      font-weight: 600;
+      outline: none;
+      border: none;
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+    }
+
+    &-toFavourite {
+      outline: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #B4BDC3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      background-image: url("../../assets/images/icons/card-icons/stroke.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: 0.3s;
+
+      &:hover {
+        border-color: #000;
+      }
+    }
+  }
+}

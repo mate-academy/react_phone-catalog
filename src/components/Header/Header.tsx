@@ -11,7 +11,7 @@ const Header: React.FC = () => {
         <ul className="header__nav-list">
           <li className="header__nav-item">
             <NavLink
-              to="/home"
+              to="/"
               className={({ isActive }) => getActiveClassName(
                 'header__nav-link',
                 isActive,

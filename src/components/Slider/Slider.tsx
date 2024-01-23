@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Slider.scss';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
@@ -22,13 +22,21 @@ const Slider: React.FC = () => {
 
   const totalSlides = slides.length;
 
-  const handleNextSlide = () => {
+  const handleNextSlide = useCallback(() => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
-  };
+  }, [totalSlides]);
 
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + totalSlides) % totalSlides);
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      handleNextSlide();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [currentSlide, handleNextSlide]);
 
   return (
     <div className="slider margin-top-40-px">
