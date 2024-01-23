@@ -9,8 +9,6 @@ Use [products](https://mate-academy.github.io/react_phone-catalog/api/products.j
 and [product details](https://mate-academy.github.io/react_phone-catalog/api/products/dell-streak-7.json)
 tо fetch data (use actual `productId` as a last part of the URL before `.json`).
 
-If you want to change any API data for the phones you can update the files in the `/public/api` folder, and use you project link as a `BASE_API_URL`.
-
 Store the Cart in the `localStorage`
 
 ## Tasks

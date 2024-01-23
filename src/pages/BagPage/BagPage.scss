@@ -1,0 +1,185 @@
+.BagPage {
+  padding: 0 152px 87px;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: calc(100vh - 200px);
+
+  &_nav {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary;
+    text-decoration: none;
+
+    margin-bottom: 16px;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+
+    margin-bottom: 24px;
+  }
+
+  &_conteiner {
+    display: flex;
+    gap: 16px;
+
+    &_catalog {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &_total {
+      padding: 24px;
+      width: 100%;
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid $elements;
+
+      &_sum {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+        color: $primary;
+      }
+
+      &_text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        color: $secondary;
+        margin-bottom: 24px;
+      }
+
+      &_line {
+        width: 100%;
+        height: 1px;
+        background-color: $elements;
+        margin-bottom: 24px;
+      }
+
+      &_button {
+        width: 100%;
+        height: 48px;
+        background-color: $primary;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: $white;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &_isEmpty {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 200px);
+    text-align: center;
+
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+  
+    background-image: url(../../img/empty_cart.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 400px 400px;
+  }
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  padding: 31px 40px 31px 27px;
+  border: 1px solid $elements;
+
+  &_button {
+    width: 10px;
+    height: 10px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: $secondary;
+
+    margin-right: 35px;
+  }
+
+  &_image {
+    margin-right: 31px;
+    width: 66px;
+    height: 66px;
+
+    &_img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &_title {
+    margin-right: 49px;
+    width: 295px;
+
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary;
+  }
+
+  &_counter {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-right: 43px;
+
+    &_buttons {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elements;
+      outline: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    &_count {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: $primary;
+    }
+  }
+
+  &_price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+    color: $primary;
+  }
+}
