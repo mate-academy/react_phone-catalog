@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { Option } from '../../types/Option';
+import { SearchLink } from '../SearchLink';
 import { getSearchWith } from '../../helpers/searchHelper';
 
 import './Dropdown.scss';
 
 interface Props {
-  options: Option[],
-  param: 'sort' | 'perPage',
-  selectedOption: Option,
+  options: Option[];
+  param: 'sort' | 'perPage';
+  selectedOption: Option;
 }
 
 export const Dropdown: React.FC<Props> = ({
@@ -21,11 +22,7 @@ export const Dropdown: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleShowDropdown = () => {
-    if (!isShownList) {
-      setIsShownList(true);
-    } else {
-      setIsShownList(false);
-    }
+    setIsShownList((prev) => !prev);
   };
 
   const handleSelectedOption = (
@@ -71,28 +68,25 @@ export const Dropdown: React.FC<Props> = ({
         <button
           aria-label="dropdown-arrow"
           type="button"
-          className={cn(
-            'dropdown__select-arrow',
-            {
-              'dropdown__select-arrow--down': !isShownList,
-              'dropdown__select-arrow--up': isShownList,
-            },
-          )}
+          className={cn('dropdown__select-arrow', {
+            'dropdown__select-arrow--down': !isShownList,
+            'dropdown__select-arrow--up': isShownList,
+          })}
           onClick={handleShowDropdown}
         />
       </div>
 
       {isShownList && (
         <div className="dropdown__menu" role="menu">
-          {options.map(option => (
-            <Link
+          {options.map((option) => (
+            <SearchLink
               key={option.label}
-              to="/"
+              params={{ [param]: option.value, page: '1' }}
               className="dropdown__option"
               onClick={(event) => handleSelectedOption(event, option)}
             >
               {option.label}
-            </Link>
+            </SearchLink>
           ))}
         </div>
       )}
