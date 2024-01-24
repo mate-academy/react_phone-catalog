@@ -12,7 +12,7 @@ export const Footer = () => {
         <ul className="footer__list">
           <li className="footer__item">
             <a
-              href="https://github.com/Yeliseiev"
+              href="https://github.com/Liubomyr19"
               className="footer__link"
               rel="noreferrer"
               target="_blank"
@@ -23,7 +23,7 @@ export const Footer = () => {
 
           <li className="footer__item">
             <a
-              href="https://github.com/Yeliseiev"
+              href="https://github.com/Liubomyr19"
               className="footer__link"
               rel="noreferrer"
               target="_blank"
@@ -34,7 +34,7 @@ export const Footer = () => {
 
           <li className="footer__item">
             <a
-              href="https://github.com/Yeliseiev"
+              href="https://github.com/Liubomyr19"
               className="footer__link"
               rel="noreferrer"
               target="_blank"
