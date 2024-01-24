@@ -1,5 +1,27 @@
+@import "../../styles/imports";
+
 .product-slider {
   width: 100%;
+
+  @include on-small-pc {
+    width: 964px;
+    margin-inline: auto;
+  }
+
+  @include on-tablet-big {
+    width: 839px;
+    margin-inline: auto;
+  }
+
+  @include on-tablet-small {
+    width: 380px;
+    margin-inline: auto;
+  }
+
+  @include on-phone {
+    width: 330px;
+  }
+
 
   &__top {
     display: flex;
@@ -11,6 +33,7 @@
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 24px;
+
   }
 
   &__buttons {
@@ -30,6 +53,11 @@
     background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
     transform: rotateZ(90deg);
 
+    @include on-tablet-small {
+      width: 40px;
+      height: 40px;
+    }
+
     &--left {
       transform: rotateZ(0deg);
     }
@@ -47,6 +75,8 @@
   &__wrapper {
     position: relative;
     overflow: hidden;
+
+    margin-inline: auto;
   }
 
   &__slides {
@@ -54,5 +84,29 @@
     display: flex;
     flex-direction: row;
     transition: 0.3s;
+
+    @include on-small-pc {
+      gap: 83px;
+    }
+
+    @include on-tablet-big {
+      gap: 20px;
+    }
+
+    @include on-tablet-small {
+      gap: 0;
+    }
+
+    @include on-phone {
+      gap: 0;
+    }
+  }
+
+  .product-card {
+    flex-shrink: 0;
+
+    @include on-phone {
+      flex-shrink: 1;
+    }
   }
 }

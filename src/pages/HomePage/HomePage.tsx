@@ -7,11 +7,19 @@ import './HomePage.scss';
 import { useAppDispatch, useAppSelector } from '../../api/hooks';
 import { getProducts } from '../../features/productsSlice';
 import { ShopBy } from '../../components/ShopBy';
+import { productsFiltering } from '../../helpers/productsFiltering';
 
 export const HomePage: React.FC = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector(state => state.products.products);
   const isLoaded = useAppSelector(state => state.products.loaded);
+
+  const [hotPricesProduct, brandNewProduct] = useMemo(() => {
+    const hotProducts = productsFiltering.getHotPriceProducts(products);
+    const newProducts = productsFiltering.getBrandNewProducts(products);
+
+    return [hotProducts, newProducts];
+  }, [products]);
 
   const [phonesCount, tabletsCount, accessoriesCount] = useMemo(() => {
     let phones = 0;
@@ -46,10 +54,10 @@ export const HomePage: React.FC = () => {
       <Slider />
 
       {isLoaded && (
-        <section className="hotprices margin-top-70-px">
+        <section className="hotprices margin-top-70-px centering">
           <ProductSlider
             title="Hot prices"
-            productList={products.slice(0, 12)}
+            productList={hotPricesProduct}
           />
         </section>
       )}
@@ -63,10 +71,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {isLoaded && (
-        <section className="brand-new margin-top-70-px">
+        <section
+          className="brand-new margin-top-70-px margin-bottom-80-px centering"
+        >
           <ProductSlider
             title="Brand new model"
-            productList={products.slice(12, 24)}
+            productList={brandNewProduct}
           />
         </section>
       )}

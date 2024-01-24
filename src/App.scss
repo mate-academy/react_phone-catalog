@@ -4,6 +4,7 @@
 body {
   font-family: Mont, Arial, sans-serif;
   border-collapse: collapse;
+  scroll-behavior: smooth;
 }
 
 .margin-top-40-px {
@@ -12,6 +13,10 @@ body {
 
 .margin-top-70-px {
   margin-top: 70px;
+}
+
+.margin-bottom-80-px {
+  margin-bottom: 80px;
 }
 
 .root {
@@ -30,4 +35,12 @@ header {
 
 footer {
   flex-shrink: 0;
+}
+
+.centering {
+  margin-inline: auto;
+}
+
+body:has(.header--active) {
+  overflow: hidden;
 }

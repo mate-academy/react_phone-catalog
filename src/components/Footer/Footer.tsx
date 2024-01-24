@@ -4,6 +4,13 @@ import { NavLink } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="footer__container">
@@ -15,12 +22,14 @@ const Footer: React.FC = () => {
         </div>
         <ul className="footer__nav-list">
           <li className="footer__nav-item">
-            <NavLink
-              to="/home"
+            <a
+              href="https://github.com/Shostyy"
               className="footer__nav-link"
+              rel="noreferrer"
+              target="_blank"
             >
               Github
-            </NavLink>
+            </a>
           </li>
 
           <li className="footer__nav-item">
@@ -42,12 +51,16 @@ const Footer: React.FC = () => {
           </li>
         </ul>
         <div className="footer__anchor">
-          <a href="#top" className="footer__anchor-link">
+          { /* eslint-disable-next-line */}
+          <button
+            className="footer__anchor-button"
+            onClick={() => scrollToTop()}
+          >
             Back to top
             <div
-              className="footer__anchor-button"
+              className="footer__anchor-icon"
             />
-          </a>
+          </button>
         </div>
       </div>
     </footer>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { ProductItem } from '../../types/ProductItem';
 import { ProductCard } from '../ProductCard';
@@ -15,8 +15,9 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
   productList,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const cardPerTime = 4;
+  const [cardPerTime, setCardPerTime] = useState(4);
+  const [cardWidth, setCardWidth] = useState(266);
+  const [gap, setGap] = useState(24);
 
   const handlePrevSlide = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
@@ -28,8 +29,41 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
     });
   };
 
-  const cardWidth = 266;
-  const gap = 24;
+  const handleCardParametersChange = (
+    newCount: number,
+    newWidth: number,
+    newGap: number,
+  ) => {
+    setCardPerTime(newCount);
+    setCardWidth(newWidth);
+    setGap(newGap);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width <= 480) {
+        handleCardParametersChange(1, 328, 0);
+      } else if (width <= 768) {
+        handleCardParametersChange(1, 378, 0);
+      } else if (width <= 1024) {
+        handleCardParametersChange(3, 266, 20);
+      } else if (width <= 1137) {
+        handleCardParametersChange(3, 266, 83);
+      } else {
+        handleCardParametersChange(4, 266, 26);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const translateXValue = -(((cardWidth + gap) * cardPerTime) * currentIndex);
 

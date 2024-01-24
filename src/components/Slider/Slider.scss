@@ -8,6 +8,7 @@ $slider-height-pc: 400px;
     gap: 16px;
     height: $slider-height-pc;
     max-width: 1136px;
+    position: relative;
 
     @include centralize;
   }
@@ -46,6 +47,26 @@ $slider-height-pc: 400px;
 
     &--right {
       transform: rotateZ(180deg);
+
+      @include on-tablet-small {
+        right: 0;
+      }
+    }
+
+    &--left {
+      @include on-tablet-small {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+      }
+    }
+
+    @include on-tablet-small {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: calc(50% - 25px);
+      border-radius: 50%;
     }
   }
 
@@ -61,6 +82,10 @@ $slider-height-pc: 400px;
     height: 4px;
     background-color: #E2E6E9;
     transition: 0.3s;
+
+    @include on-tablet-small {
+      width: 30px;
+    }
 
     &--active {
       background-color: #313237;

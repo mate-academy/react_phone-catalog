@@ -1,12 +1,22 @@
+@import "../../styles/imports";
+
 .shop-by {
   &__wrapper {
     width: 100%;
+  }
+
+  @include on-small-pc {
+    padding-inline: 20px;
   }
 
   &__title {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 24px;
+
+    @include on-tablet-small {
+      font-size: 40px;
+    }
   }
 
   &__container {
@@ -14,6 +24,10 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
+
+    @include on-tablet-small {
+      flex-direction: column;
+    }
   }
 
   &__information {
@@ -27,12 +41,20 @@
       margin-bottom: 5px;
       text-decoration: none;
       color: #313237;
+
+      @include on-tablet-small {
+        font-size: 26px;
+      }
     }
 
     &-description {
       font-size: 14px;
       font-weight: 500;
       color: #89939A;
+
+      @include on-tablet-small {
+        font-size: 20px;
+      }
     }
   }
 
@@ -42,6 +64,8 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
+
+   
   }
 
   &__image {
@@ -76,6 +100,10 @@
     &--phones {
       top: 6%;
       right: -30%;
+
+      @include on-tablet-small {
+        left: 25%;
+      }
     }
 
     &--tablets {
