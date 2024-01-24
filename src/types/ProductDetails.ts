@@ -20,5 +20,4 @@ export interface ProductDetails {
   camera: string,
   zoom: string,
   cell: string[],
-  [key: string]: any,
 }

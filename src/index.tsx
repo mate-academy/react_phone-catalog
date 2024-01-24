@@ -1,5 +1,15 @@
-import { createRoot } from 'react-dom/client';
-import { Root } from './Root';
+import ReactDOM from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<Root />);
+import { AppRouter } from './Router/AppRouter';
+import { store } from './store';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <AppRouter />
+    </Router>
+  </Provider>,
+  document.getElementById('root'),
+);

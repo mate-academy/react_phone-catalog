@@ -1,78 +1,76 @@
-@import "src/App";
+@import "../../styles/utils";
 
 .dropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
+  width: 100%;
 
-  &__title {
-    font-family: Mont-SemiBold, serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: $dark-grey-c;
+  &__arrow {
+    height: 16px;
+    width: 16px;
+
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%) rotate(90deg);
+
+    & path {
+      fill: $c-gray-icons-placeholders;
+    }
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  &.isActive {
+    & * .dropdown__arrow {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    & > .dropdown__menu {
+      display: block;
+    }
   }
 
   &__button {
-    background-color: initial;
-    height: 40px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 12px;
-    align-items: center;
-    border: 1px solid $icons-grey-c;
-
-    &:hover {
-      border-color: $dark-grey-c;
-    }
-
-    &:focus {
-      border-color: $black-c;
-    }
-  }
-
-  &__selected {
-    font-family: Mont-SemiBold, serif;
-    color: #313237;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-  }
-
-  &__list {
+    position: relative;
     width: 100%;
-    z-index: 1;
-    box-sizing: border-box;
-    padding: 8px 0;
+    height: 40px;
+    text-align: left;
+    margin-bottom: 4px;
+
+    background-color: $c-white;
+    border: 1px solid $c-gray-icons-placeholders;
+    cursor: pointer;
+  }
+
+  &__text {
+    @extend %buttons;
+    padding: 12px 10px;
+  }
+
+  &__content {
     position: absolute;
+
     display: flex;
     flex-direction: column;
-    margin-top: 4px;
-    background-color: $white-c;
-    border: 1px solid $elements-grey-c;
-    top: 100%;
+
+    border: 1px solid $c-gray-elements;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   }
 
-  &__value {
-    background-color: initial;
+  &__item {
+    width: 176px;
     height: 32px;
-    width: 100%;
-    text-align: left;
-    padding-inline: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $dark-grey-c;
+    padding: 6px 12px;
+
+    background-color: $c-white;
+    z-index: 1;
+
+    @extend %bodyText;
+    color: $c-gray-secondary;
 
     &:hover {
-      background-color: $hover-c;
-      color: $black-c;
-    }
-  }
-
-  @for $i from 1 through 10 {
-    &--col-#{$i} {
-      grid-column: span $i;
+      color: $c-gray-primary;
     }
   }
 }

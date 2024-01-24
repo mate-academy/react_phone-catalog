@@ -1,343 +1,366 @@
-/* eslint-disable max-len */
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import cn from 'classnames';
+
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { GoBack } from '../../components/GoBack';
+import { Loader } from '../../components/Loader';
+import { Button } from '../../components/Button';
+import { ProductsSlider } from '../../components/ProductsSlider';
+
+import { addToCart } from '../../store/slices/cartSlice';
+import { fetchProductDetails } from '../../store/slices/productDetailsSlice';
+import {
+  addToFavorites,
+  deleteFromFavorites,
+} from '../../store/slices/favoritesSlice';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/hooks';
+import { useColors } from '../../utils/helpers/colors';
+import { getCorrectParam } from '../../utils/helpers/getCorrectParam';
+
+import { ButtonType } from '../../types/ButtonType';
+import { ParamType } from '../../types/ParamType';
+import { ProductsCardType } from '../../types/ProductsCardType';
 import './ProductDetailsPage.scss';
-import { Link, useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import classNames from 'classnames';
-import { Product } from '../../types/Product';
-import { ProductDetails } from '../../types/ProductDetails';
-import { getProductDetails, getProducts } from '../../api';
-import { Loader } from '../../components/Loader/Loader';
-import { PathBar } from '../../components/PathBar/PathBar';
-import { Back } from '../../components/Back/Back';
-import { IMAGE_BASE_URL, PRODUCTS_COLORS, SPECS } from '../../helpers/constants';
-import { FavouriteContext } from '../../contexts/FavoriteContext';
-import { CartContext } from '../../contexts/CartContext';
-import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
-import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
-import { Banner } from '../../components/Banner/Banner';
 
 export const ProductDetailsPage = () => {
-  const { productId } = useParams();
-  const { favourites, handleAddToFav } = useContext(FavouriteContext);
-  const { cart, handleAddToCart } = useContext(CartContext);
-  const [product, setProduct] = useState<ProductDetails | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoader, setIsLoader] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [currentImage, setCurrentImage] = useState('');
-  const productInList = product
-    ? products.filter(p => p.itemId === product.id)[0]
-    : null;
-  const isFavourite = favourites.find(f => f.itemId === product?.id);
-  const isInCart = cart.find(c => c.itemId === product?.id);
-  const youMayAlsoLike = products.filter(p => p.capacity === product?.capacity
-    && p.itemId !== product?.id);
+  const [imgIndex, setImgIndex] = useState(0);
+  const { itemId = '' } = useParams();
+  const navigate = useNavigate();
+  const { productDetails, isLoading, hasError } = useAppSelector(
+    (state) => state.productDetails,
+  );
+  const { favorites } = useAppSelector((state) => state.favorites);
+  const { cartItems } = useAppSelector((state) => state.cartItems);
+  const { products } = useAppSelector((state) => state.products);
+  const dispatch = useAppDispatch();
+  const colors = useColors();
+
+  const hasInFavorites = useMemo(() => {
+    return favorites.some((fav) => fav.itemId === itemId);
+  }, [favorites, itemId]);
+
+  const hasInCart = useMemo(() => {
+    return cartItems.some((item) => item.product.itemId === itemId);
+  }, [cartItems, itemId]);
+
+  const handleGetParam = useCallback(
+    (newParam: string, type: ParamType) => {
+      navigate(`../${getCorrectParam(itemId, newParam, type)}`);
+    },
+    [itemId],
+  );
+
+  const handleAddToCart = useCallback(() => {
+    if (hasInCart) {
+      return;
+    }
+
+    const foundProduct = products.find(
+      (product) => product.itemId === productDetails?.id,
+    );
+
+    if (foundProduct) {
+      dispatch(addToCart(foundProduct));
+    }
+  }, [productDetails, products, hasInCart]);
+
+  const handleFavoritesChange = useCallback(() => {
+    const foundProduct = products.find(
+      (product) => product.itemId === productDetails?.id,
+    );
+
+    if (hasInFavorites && foundProduct) {
+      dispatch(deleteFromFavorites(foundProduct.id));
+    } else if (foundProduct) {
+      dispatch(addToFavorites(foundProduct));
+    }
+  }, [productDetails, products, hasInFavorites]);
 
   useEffect(() => {
-    if (productId) {
-      setIsLoader(true);
-      Promise.all([getProducts(), getProductDetails(productId)])
-        .then(data => {
-          setProducts(data[0]);
-          setProduct(data[1]);
-          setCurrentImage(data[1].images[0]);
-        })
-        .catch(() => {
-          setIsError(true);
-        })
-        .finally(() => {
-          setIsLoader(false);
-        });
-    }
-
-    return () => {
-      setProduct(null);
-      setProducts([]);
-      setCurrentImage('');
-    };
-  }, [productId]);
-
-  const handleFavClick = () => {
-    if (productInList) {
-      handleAddToFav(productInList);
-    }
-  };
-
-  const handleAddClick = () => {
-    if (productInList) {
-      handleAddToCart(productInList);
-    }
-  };
-
-  if (!product) {
-    return (
-      <>
-        {isLoader && <Loader />}
-        {!isLoader && !isError && <NotFoundPage />}
-        {!isLoader && isError
-          && <Banner message="Error occured. Try again later" />}
-      </>
-    );
-  }
+    dispatch(fetchProductDetails(itemId));
+  }, [itemId]);
 
   return (
-    <div className="product-details-page">
-      <div className="product-details-page__content">
-        <div className="product-details-page__navigation">
-          <PathBar />
-
-          <Back />
-        </div>
-
-        <h1
-          className="product-details-page__title"
-        >
-          {product?.name}
-        </h1>
-
-        <div className="product-details-page__main">
-          <div className="product-details-page__images">
-            {product?.images.map(image => (
-              <button
-                key={image}
-                type="button"
-                className={classNames('product-details-page__image-button',
-                  {
-                    'product-details-page__image-button--active': image === currentImage,
-                  })}
-                onClick={() => {
-                  setCurrentImage(image);
-                }}
-              >
-                <img
-                  className="product-details-page__image--small"
-                  src={`${IMAGE_BASE_URL}${image}`}
-                  alt={product?.name}
-                />
-              </button>
-            ))}
-          </div>
-
-          <div className="product-details-page__photo">
-            <img
-              className="product-details-page__image--big"
-              src={`${IMAGE_BASE_URL}${currentImage}`}
-              alt={product?.name}
-            />
-          </div>
-
-          <div className="product-details-page__parameters">
-            <div className="product-details-page__parameter">
-              <p
-                className="product-details-page__parameter-title"
-              >
-                Available colors
-              </p>
-
-              <ul className="product-details-page__parameter-list">
-                {product?.colorsAvailable.map(color => (
-                  <li
-                    key={color}
-                    className={classNames(
-                      'product-details-page__parameter-color', {
-                        'product-details-page__parameter-color--active': product?.color === color,
-                      },
-                    )}
-                  >
-                    <Link
-                      className="product-details-page__parameter-color-link"
-                      style={{
-                        backgroundColor: PRODUCTS_COLORS[color],
-                      }}
-                      to={`/phones/${product?.namespaceId}-${product?.capacity.toLowerCase()}-${color}`}
-                    />
-                  </li>
-                ))}
-              </ul>
-
-              <div className="product-details-page__line" />
-            </div>
-
-            <div className="product-details-page__parameter">
-              <p
-                className="product-details-page__parameter-title"
-              >
-                Select capacity
-              </p>
-
-              <ul className="product-details-page__parameter-list">
-                {product?.capacityAvailable.map(capacity => (
-                  <li
-                    key={capacity}
-                    className={classNames(
-                      'product-details-page__parameter-capacity', {
-                        'product-details-page__parameter-capacity--active': product?.capacity === capacity,
-                      },
-                    )}
-                  >
-                    <Link
-                      className="product-details-page__parameter-capacity-link"
-                      to={`/phones/${product?.namespaceId}-${capacity.toLowerCase()}-${product?.color}`}
-                    >
-                      {capacity}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="product-details-page__line" />
-            </div>
-
-            <div className="product-details-page__prices">
-              <h1
-                className="product-details-page__price-discount"
-              >
-                {`$${product.priceDiscount}`}
-              </h1>
-
-              <p
-                className="product-details-page__price-regular"
-              >
-                {`$${product.priceRegular}`}
-              </p>
-            </div>
-
-            <div className="product-details-page__buttons">
-              <button
-                type="button"
-                className={classNames('product-details-page__add', {
-                  'product-details-page__add--added': isInCart,
-                })}
-                onClick={handleAddClick}
-              >
-                {isInCart
-                  ? 'Added to cart'
-                  : 'Add to cart'}
-              </button>
-
-              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-              <button
-                type="button"
-                className="product-details-page__like"
-                onClick={handleFavClick}
-              >
-                {isFavourite
-                  ? <i className="icon icon--favourites-added" />
-                  : <i className="icon icon--favourites" />}
-              </button>
-            </div>
-
-            <div className="product-details-page__characteristics">
-              <div className="product-details-page__row">
-                <p className="product-details-page__characteristic-name">Screen</p>
-                <p className="product-details-page__characteristic-value">{product.screen}</p>
-              </div>
-              <div className="product-details-page__row">
-                <p className="product-details-page__characteristic-name">Resolution</p>
-                <p className="product-details-page__characteristic-value">{product.resolution}</p>
-              </div>
-              <div className="product-details-page__row">
-                <p className="product-details-page__characteristic-name">Processor</p>
-                <p className="product-details-page__characteristic-value">{product.processor}</p>
-              </div>
-              <div className="product-details-page__row">
-                <p className="product-details-page__characteristic-name">RAM</p>
-                <p className="product-details-page__characteristic-value">{product.ram}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="product-details-page__id">
-            <p
-              className="product-details-page__id-value"
-            >
-              {`ID: ${productInList?.id}`}
-            </p>
-          </div>
-        </div>
-
-        <div className="product-details-page__bottom">
-          <div className="product-details-page__about">
-            <div className="product-details-page__bottom-top">
-              <h2 className="product-details-page__bottom-title">About</h2>
-
-              <div className="product-details-page__line" />
-            </div>
-
-            <ul className="product-details-page__description">
-              {product.description.map(({ title, text }) => {
-                return (
-                  <li
-                    key={title}
-                    className="product-details-page__description-item"
-                  >
-                    <h3
-                      className="product-details-page__description-title"
-                    >
-                      {title}
-                    </h3>
-
-                    <div className="product-details-page__description-text">
-                      {text.map(t => (
-                        <p
-                          key={t}
-                          className="product-details-page__description-text-piece"
-                        >
-                          {t}
-                        </p>
-                      ))}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="product-details-page__specs">
-            <div className="product-details-page__bottom-top">
-              <h2 className="product-details-page__bottom-title">Tech specs</h2>
-
-              <div className="product-details-page__line" />
-            </div>
-
-            <ul className="product-details-page__specs-list">
-              {Object.entries(SPECS).map(([key, value]) => {
-                let productValue = product[key];
-
-                if (Array.isArray(product[key])) {
-                  productValue = product[key].join(', ');
-                }
-
-                return (
-                  <li
-                    key={key}
-                    className="product-details-page__row"
-                  >
-                    <p
-                      className="product-details-page__specs-name"
-                    >
-                      {value}
-                    </p>
-
-                    <p
-                      className="product-details-page__specs-value"
-                    >
-                      {productValue}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-
-        <div className="product-details-page__you-may-like">
-          <ProductsSlider
-            title="You may also like"
-            products={youMayAlsoLike}
-            isLoader={isLoader}
-          />
-        </div>
+    <div className="page container product">
+      <div className="page__breadcrumbs">
+        <Breadcrumbs />
       </div>
+
+      <div className="page__go-back">
+        <GoBack />
+      </div>
+
+      {isLoading && <Loader />}
+
+      <h1 className="productDetails__title">
+        {!isLoading && hasError
+          ? 'Phone was not found'
+          : productDetails?.name}
+      </h1>
+
+      {!isLoading && !hasError && productDetails && (
+        <>
+          <div className="productDetails__wrapper grid grid--block">
+            <div
+              className="
+                productDetails__image-main
+                grid__item--tablet-2-7
+                grid__item--desktop-3-12
+              "
+            >
+              <img
+                src={`new/${productDetails.images[imgIndex]}`}
+                alt="main-img"
+              />
+            </div>
+
+            <aside
+              className="
+                productDetails__thumbs
+                grid__item--tablet-1-1
+                grid__item--desktop-1-2
+              "
+            >
+              <ul>
+                {productDetails.images.map((imgSrc, index) => (
+                  <li key={imgSrc}>
+                    <Button
+                      content={ButtonType.IMAGE}
+                      onClick={() => setImgIndex(index)}
+                      className={cn('productDetails__thumbs-button', {
+                        active: imgIndex === index,
+                      })}
+                    >
+                      <img src={`new/${imgSrc}`} alt="thumb" />
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+
+            <div
+              className="
+                productDetails__actions
+                grid__item--tablet-8-12
+                grid__item--desktop-14-20
+              "
+            >
+              <div className="productDetails__actions-section">
+                <p>Available colors</p>
+
+                <ul>
+                  {productDetails.colorsAvailable.map((color) => {
+                    return (
+                      <li key={color}>
+                        <Button
+                          content={ButtonType.COLOR}
+                          className={cn({
+                            active: productDetails.color === color,
+                          })}
+                          onClick={() => handleGetParam(color, ParamType.COLOR)}
+                        >
+                          <span
+                            style={{ backgroundColor: colors.get(color) }}
+                          />
+                        </Button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="productDetails__actions-section">
+                <p>Select capacity</p>
+
+                <ul>
+                  {productDetails.capacityAvailable.map((capacity) => {
+                    return (
+                      <li key={capacity}>
+                        <Button
+                          content={ButtonType.NUMBER}
+                          className={cn('productDetails__actions-number', {
+                            active: productDetails.capacity === capacity,
+                          })}
+                          onClick={() => handleGetParam(
+                            capacity,
+                            ParamType.CAPACITY,
+                          )}
+                        >
+                          {capacity}
+                        </Button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="productDetails__prices">
+                <span className="productDetails__prices-main">
+                  {`$${productDetails.priceDiscount}`}
+                </span>
+
+                <span className="productDetails__prices-discount">
+                  {`$${productDetails.priceRegular}`}
+                </span>
+              </div>
+
+              <div className="productDetails__buttons">
+                <Button
+                  content={ButtonType.TEXT}
+                  className={cn({ active: hasInCart })}
+                  onClick={handleAddToCart}
+                >
+                  {hasInCart ? 'Added to cart' : 'Add to cart'}
+                </Button>
+
+                <Button
+                  content={ButtonType.FAVORITES}
+                  className={cn({ active: hasInFavorites })}
+                  onClick={handleFavoritesChange}
+                />
+              </div>
+
+              <ul className="productDetails__info">
+                <li className="productDetails__text">
+                  <span className="productDetails__text-title">Screen</span>
+                  <span className="productDetails__text-value">
+                    {productDetails.screen}
+                  </span>
+                </li>
+
+                <li className="productDetails__text">
+                  <span className="productDetails__text-title">Resolution</span>
+                  <span className="productDetails__text-value">
+                    {productDetails.resolution}
+                  </span>
+                </li>
+
+                <li className="productDetails__text">
+                  <span className="productDetails__text-title">Processor</span>
+                  <span className="productDetails__text-value">
+                    {productDetails.processor}
+                  </span>
+                </li>
+
+                <li className="productDetails__text">
+                  <span className="productDetails__text-title">RAM</span>
+                  <span className="productDetails__text-value">
+                    {productDetails.ram}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            className="productDetails__wrapper grid grid--block"
+            data-cy="productDescription"
+          >
+            <div
+              className="
+                productDetails__block
+                grid__item--tablet-1-12
+                grid__item--desktop-1-12
+              "
+            >
+              <h2 className="productDetails__subtitle">About</h2>
+
+              {productDetails.description.map((description) => (
+                <div
+                  className="productDetails__descrition"
+                  key={description.title}
+                >
+                  <h3>{description.title}</h3>
+                  {description.text.map((text) => (
+                    <p key={text}>{text}</p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <div
+              className="
+                productDetails__block
+                grid__item--tablet-1-12
+                grid__item--desktop-14-24
+              "
+            >
+              <h2 className="productDetails__subtitle">Tech specs</h2>
+
+              <ul className="productDetails__info">
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">Screen</span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.screen}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">
+                    Resolution
+                  </span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.resolution}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">Processor</span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.processor}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">RAM</span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.ram}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">
+                    Built in memory
+                  </span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.capacity}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">Camera</span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.camera}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">Zoom</span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.zoom}
+                  </span>
+                </li>
+
+                <li className="productDetails__specs">
+                  <span className="productDetails__specs-title">Cell</span>
+                  <span className="productDetails__specs-value">
+                    {productDetails.cell.join(', ')}
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <ProductsSlider
+            type={ProductsCardType.SIMILAR}
+            filterBy="screen"
+            filterValue={productDetails.screen}
+          />
+        </>
+      )}
     </div>
   );
 };

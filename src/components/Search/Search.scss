@@ -1,0 +1,67 @@
+@import "../../styles/utils";
+
+.search {
+  position: relative;
+  width: 64px;
+
+  transition: width $transition-duration;
+  box-shadow: -1px 0 0 $c-gray-elements;
+
+  @include onDesktop {
+    width: 327px;
+    height: 100%;
+
+    background: $c-white;
+  }
+
+  &__input {
+    width: 0;
+    height: 0;
+    padding: 24px 23px;
+
+    border: none;
+
+    @extend %smallText;
+    font-size: 14px;
+
+    @include onDesktop {
+      height: 100%;
+      width: 100%;
+    }
+
+    &::placeholder {
+      color: $c-gray-icons-placeholders;
+    }
+  }
+
+  &--active {
+    width: 210px;
+    height: 100%;
+
+    @include onTablet {
+      width: 327px;
+    }
+  }
+
+  &--active > .search__input {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--active ~ a {
+    @include onMobile {
+      width: 0;
+      opacity: 0;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    height: 64px;
+    width: 64px;
+    top: 0;
+    right: 0;
+
+    border: none;
+  }
+}

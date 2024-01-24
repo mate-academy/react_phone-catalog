@@ -1,76 +1,42 @@
-@import "src/App";
+@import "../../styles/utils";
 
 .cart-page {
-  flex-grow: 1;
-  margin: 40px 0 60px;
-  display: flex;
-  flex-direction: column;
+  &__container {
+    @include onTablet {
+      display: block;
+    }
 
-  &__title {
-    margin-top: 16px;
-    font-family: Mont-Bold, serif;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
-    color: $black-c;
+    @include onDesktop {
+      display: grid;
+    }
   }
 
-  &__content {
-    @include page-grid;
+  &__list {
+    margin-bottom: 32px;
 
-    margin-top: 24px;
+    & li:not(:last-child) {
+      margin-bottom: 16px;
+    }
   }
 
   &__total {
-    height: 206px;
-    grid-column: span 8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid $elements-grey-c;
     padding: 24px;
-    box-sizing: border-box;
-  }
+    text-align: center;
+    border: 1px solid $c-gray-elements;
+    height: fit-content;
 
-  &__total-title {
-    font-family: Mont-Bold, serif;
-    color: $black-c;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.32px;
-    margin: 0;
-  }
+    & > p {
+      @extend %bodyText;
+      color: $c-gray-secondary;
+      padding-bottom: 24px;
 
-  &__items {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $dark-grey-c;
-  }
+      border-bottom: 1px solid $c-gray-elements;
 
-  &__line {
-    height: 1px;
-    background-color: $elements-grey-c;
-    margin-top: 24px;
-    width: 100%;
-  }
-
-  &__button-checkout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $black-c;
-    width: 100%;
-    height: 48px;
-    font-family: Mont-SemiBold, serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    color: $white-c;
-    margin-top: 24px;
-
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      margin-bottom: 24px;
     }
+  }
+
+  &__button {
+    width: 100%;
   }
 }

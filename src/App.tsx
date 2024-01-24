@@ -1,15 +1,14 @@
 import './App.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Outlet } from 'react-router-dom';
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { Main } from './components/Main';
 
-export const App = () => (
+const App = () => (
   <div className="App">
     <Header />
-    <div className="container">
-      <Outlet />
-    </div>
+    <Main />
     <Footer />
   </div>
 );
+
+export default App;

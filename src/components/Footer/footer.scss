@@ -1,61 +1,59 @@
-@import "src/App";
+@import "../../styles/utils";
 
 .footer {
-  box-shadow: 0 -1px 0 0 $elements-grey-c;
+  height: $footer-height;
+  box-shadow: 0 -1px 0 0 $c-gray-elements;
 
   &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1136px;
-    margin: 0 auto;
     padding: 32px 0;
-  }
 
-  &__image {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__list {
     display: flex;
-    align-items: center;
-    column-gap: 64px;
-  }
+    flex-direction: column;
+    gap: 16px;
 
-  &__link {
-    display: block;
-    font-family: Mont-Bold, serif;
-    color: $dark-grey-c;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-
-    &:hover {
-      color: $black-c;
+    @include onTablet {
+      flex-direction: row;
+      gap: 64px;
     }
   }
 
-  &__label {
-    color: $dark-grey-c;
-    font-size: 12px;
-    font-weight: 600;
+  &__link {
+    @extend %uppercase;
+    color: $c-gray-secondary;
+
+    @include hover(color, $c-gray-primary);
   }
 
-  &__actions {
+  &__anchor {
     display: flex;
+    justify-content: center;
     align-items: center;
-    column-gap: 16px;
-    background-color: initial;
+    gap: 16px;
 
-    &:hover {
-      .footer__label {
-        color: $black-c;
-      }
+    &-text {
+      @extend %smallText;
+      color: $c-gray-secondary;
 
-      .footer__button {
-        border-color: $black-c;
+      transition: color $transition-duration;
+    }
+
+    & button {
+      order: 1;
+
+      &:hover ~ .footer__anchor-text {
+        color: $c-gray-primary;
       }
     }
   }

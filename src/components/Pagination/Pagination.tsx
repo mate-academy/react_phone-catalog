@@ -1,78 +1,124 @@
+import React, { useMemo, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
+import { Button } from '../Button';
+import { ButtonType } from '../../types/ButtonType';
+import { getSearchWith } from '../../utils/helpers/searchParamsHelper';
+import { getEndPage } from '../../utils/helpers/getEndPage';
+import { getStartPage } from '../../utils/helpers/getStartPage';
 import './Pagination.scss';
-import React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
-import { SearchParams } from '../../types/SearchParams';
-import { ITEMS_PER_PAGE } from '../../helpers/constants';
-import { getPages } from '../../helpers/pages';
-import { getSearchWith } from '../../helpers/searchHelper';
 
-interface Props {
-  length: number;
-}
+type Props = {
+  totalItems: number;
+  currentPage: number;
+  perPage: number;
+};
 
-export const Pagination: React.FC<Props> = ({ length }) => {
-  const [searchParams] = useSearchParams();
-  const perPage = searchParams.get(SearchParams.PerPage) || ITEMS_PER_PAGE.All;
-  const currentPage = +(searchParams.get(SearchParams.Page) || '1');
-  const pagesNumber = perPage === ITEMS_PER_PAGE.All
-    ? 1
-    : Math.ceil(length / +perPage);
-  const pages = getPages(pagesNumber);
-  const param = SearchParams.Page;
-  const leftButtonSearchParams = getSearchWith(
-    { [param]: (currentPage - 1).toString() }, searchParams,
+export const Pagination: React.FC<Props> = ({
+  totalItems,
+  currentPage,
+  perPage,
+}) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const pages = Array.from(
+    { length: Math.ceil(totalItems / +perPage) },
+    (_, i) => `${i + 1}`,
   );
-  const rightButtonSearchParams = getSearchWith(
-    { [param]: (currentPage + 1).toString() }, searchParams,
+  const lastPage = pages.length;
+  const visiblePages = useMemo(
+    () => pages.slice(
+      getStartPage(currentPage, lastPage),
+      getEndPage(currentPage, lastPage),
+    ),
+    [currentPage, lastPage],
   );
-  const buttonSearchParams = (num: number) => {
-    return getSearchWith(
-      { [param]: num.toString() }, searchParams,
+
+  const moveLeft = useCallback(() => {
+    setSearchParams(
+      getSearchWith(searchParams, { page: `${currentPage - 1}` }),
     );
-  };
+    window.scrollTo(0, 250);
+  }, [currentPage, searchParams]);
 
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === pagesNumber;
+  const moveRight = useCallback(() => {
+    setSearchParams(
+      getSearchWith(searchParams, { page: `${currentPage + 1}` }),
+    );
+    window.scrollTo(0, 250);
+  }, [searchParams, currentPage]);
+
+  const setPage = useCallback(
+    (page: string) => {
+      setSearchParams(getSearchWith(searchParams, { page }));
+      window.scrollTo(0, 250);
+    },
+    [searchParams],
+  );
 
   return (
-    <div className="pagination">
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-      <Link
-        to={{ search: leftButtonSearchParams }}
-        className={classNames('pagination__button pagination__button--side', {
-          'button--disabled': isFirstPage,
-        })}
-      >
-        {isFirstPage
-          ? <i className="icon icon--arrow-left-grey" />
-          : <i className="icon icon--arrow-left" />}
-      </Link>
+    <ul className="pagination" data-cy="pagination">
+      <li className="pagination__item">
+        <Button
+          content={ButtonType.ARROW}
+          direction="left"
+          data-cy="paginationLeft"
+          onClick={moveLeft}
+          disabled={currentPage === 1}
+        />
+      </li>
 
-      <div className="pagination__pages">
-        {pages.map(page => (
-          <Link
-            to={{ search: buttonSearchParams(page) }}
-            className={classNames('pagination__button', {
-              'pagination__button--active': currentPage === page,
-            })}
+      {lastPage !== 3 && (
+        <li className="pagination__item">
+          <Button
+            content={ButtonType.NUMBER}
+            onClick={() => setPage('1')}
+            className={cn({ active: currentPage === 1 })}
+          >
+            1
+          </Button>
+        </li>
+      )}
+
+      {currentPage > 2 && lastPage > 4 && (
+        <p className="pagination__space">....</p>)}
+
+      {lastPage > 1 && visiblePages.map((page) => (
+        <li className="pagination__item" key={page}>
+          <Button
+            content={ButtonType.NUMBER}
+            onClick={() => setPage(page)}
+            className={cn({ active: currentPage === +page })}
           >
             {page}
-          </Link>
-        ))}
-      </div>
+          </Button>
+        </li>
+      ))}
 
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-      <Link
-        to={{ search: rightButtonSearchParams }}
-        className={classNames('pagination__button pagination__button--side', {
-          'button--disabled': isLastPage,
-        })}
-      >
-        {isLastPage
-          ? <i className="icon icon--arrow-right-grey" />
-          : <i className="icon icon--arrow-right" />}
-      </Link>
-    </div>
+      {currentPage < lastPage - 2 && lastPage > 4 && (
+        <p className="pagination__space">....</p>
+      )}
+
+      {currentPage < lastPage - 2 && (
+        <li className="pagination__item">
+          <Button
+            content={ButtonType.NUMBER}
+            onClick={() => setPage(`${lastPage}`)}
+            className={cn({ active: currentPage === lastPage })}
+          >
+            {lastPage}
+          </Button>
+        </li>
+      )}
+
+      <li className="pagination__item">
+        <Button
+          content={ButtonType.ARROW}
+          data-cy="paginationRight"
+          onClick={moveRight}
+          disabled={currentPage === lastPage}
+        />
+      </li>
+    </ul>
   );
 };

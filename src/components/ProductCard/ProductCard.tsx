@@ -1,114 +1,129 @@
-import './ProductCard.scss';
-import React, { useContext } from 'react';
-import classNames from 'classnames';
+import { useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import { Button } from '../Button';
 import { Product } from '../../types/Product';
-import { FavouriteContext } from '../../contexts/FavoriteContext';
-import { CartContext } from '../../contexts/CartContext';
-import { IMAGE_BASE_URL } from '../../helpers/constants';
+import { ButtonType } from '../../types/ButtonType';
+import { ProductsCardType } from '../../types/ProductsCardType';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks/hooks';
+import {
+  addToFavorites,
+  deleteFromFavorites,
+} from '../../store/slices/favoritesSlice';
+import { addToCart } from '../../store/slices/cartSlice';
+import './ProductCard.scss';
 
-interface Props {
-  product: Product,
-  translateDistance?: number,
-}
+type Props = {
+  product: Product;
+  transform?: string;
+  type: ProductsCardType;
+};
 
-export const ProductCard: React.FC<Props> = ({
-  product,
-  translateDistance = 0,
-}) => {
-  const { favourites, handleAddToFav } = useContext(FavouriteContext);
-  const { cart, handleAddToCart } = useContext(CartContext);
-  const isFavourite = favourites.some(f => f.id === product.id);
-  const isInCart = cart.some(c => c.id === product.id);
+export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
+  const {
+    image,
+    name,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    category,
+    itemId,
+  } = product;
 
-  const handleAddToFavClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    handleAddToFav(product);
-  };
+  const { favorites } = useAppSelector((state) => state.favorites);
+  const { cartItems } = useAppSelector((state) => state.cartItems);
+  const dispatch = useAppDispatch();
 
-  const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    handleAddToCart(product);
-  };
+  const hasInFavorites = useMemo(() => {
+    return favorites.some((fav) => fav.id === product.id);
+  }, [favorites, product]);
+
+  const hasInCart = useMemo(() => {
+    return cartItems.some((item) => item.id === product.id);
+  }, [cartItems, product]);
+
+  const handleFavoritesChange = useCallback(() => {
+    if (hasInFavorites) {
+      dispatch(deleteFromFavorites(product.id));
+    } else {
+      dispatch(addToFavorites(product));
+    }
+  }, [hasInFavorites]);
+
+  const handleCartItemsChange = useCallback(
+    (prod: Product) => {
+      if (hasInCart) {
+        return;
+      }
+
+      dispatch(addToCart(prod));
+    },
+    [hasInCart],
+  );
 
   return (
-    <Link
-      to={`/phones/${product.itemId}`}
-      className="product"
-      style={{
-        transform: `translateX(-${translateDistance}px)`,
-        transitionDuration: '1s',
-        transitionProperty: 'transform',
-      }}
-    >
-      <img
-        src={`${IMAGE_BASE_URL}${product.image}`}
-        className="product__image"
-        alt={product.name}
-      />
+    <div className="productCard" data-cy="cardsContainer" style={{ transform }}>
+      <div className="productCard__container">
+        <Link to={`/${category}/${itemId}`}>
+          <img
+            src={`new/${image}`}
+            alt={name}
+            className="productCard__image"
+          />
 
-      <div className="product__content">
-        <div className="product__title">
-          <p className="product__name">
-            {product.name}
-          </p>
+          <h3 className="productCard__title">{name}</h3>
+        </Link>
+
+        <div className="productCard__price">
+          {type === ProductsCardType.DISCOUNT ? (
+            <>
+              <span className="productCard__price-main">{`$${price}`}</span>
+              <span className="productCard__price-discount">
+                {`$${fullPrice}`}
+              </span>
+            </>
+          ) : (
+            <span className="productCard__price-main">{`$${fullPrice}`}</span>
+          )}
         </div>
 
-        <div className="product__prices">
-          <h2
-            className="product__price"
+        <ul className="productCard__info">
+          <li className="productCard__text">
+            <span className="productCard__text-title">Screen</span>
+            <span className="productCard__text-value">{screen}</span>
+          </li>
+
+          <li className="productCard__text">
+            <span className="productCard__text-title">Capacity</span>
+            <span className="productCard__text-value">{capacity}</span>
+          </li>
+
+          <li className="productCard__text">
+            <span className="productCard__text-title">RAM</span>
+            <span className="productCard__text-value">{ram}</span>
+          </li>
+        </ul>
+
+        <div className="productCard__buttons">
+          <Button
+            content={ButtonType.TEXT}
+            onClick={() => handleCartItemsChange(product)}
+            className={cn({ active: hasInCart })}
+            disabled={hasInCart}
           >
-            {`$${product.price}`}
-          </h2>
+            {hasInCart ? 'Added to cart' : 'Add to cart'}
+          </Button>
 
-          <h2
-            className="product__full-price"
-          >
-            {`$${product.fullPrice}`}
-          </h2>
-        </div>
-
-        <div className="product__line" />
-
-        <div className="product__row">
-          <p className="product__characteristic">Screen</p>
-          <p className="product__value">{product.screen}</p>
-        </div>
-
-        <div className="product__row">
-          <p className="product__characteristic">Capacity</p>
-          <p className="product__value">{product.capacity}</p>
-        </div>
-
-        <div className="product__row product__row--last">
-          <p className="product__characteristic">RAM</p>
-          <p className="product__value">{product.ram}</p>
-        </div>
-
-        <div className="product__buttons">
-          <button
-            type="button"
-            className={classNames('product__button product__button--big', {
-              'product__button--added': isInCart,
-            })}
-            onClick={handleAddToCartClick}
-          >
-            {isInCart
-              ? 'Added to cart'
-              : 'Add to cart'}
-          </button>
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button
-            type="button"
-            className="product__button product__button--small"
-            onClick={handleAddToFavClick}
-          >
-            {isFavourite
-              ? <i className="icon icon--favourites-added" />
-              : <i className="icon icon--favourites" />}
-          </button>
+          <Button
+            content={ButtonType.FAVORITES}
+            data-cy="addToFavorite"
+            onClick={handleFavoritesChange}
+            className={cn({ active: hasInFavorites })}
+          />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

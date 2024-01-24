@@ -1,43 +1,76 @@
+import { useMemo, useState } from 'react';
+import { Button } from '../../components/Button';
+import { CartItem } from '../../components/CartItem';
+import { Message } from '../../components/Message';
+import { GoBack } from '../../components/GoBack';
+import { ButtonType } from '../../types/ButtonType';
+import { useAppSelector } from '../../utils/hooks/hooks';
 import './CartPage.scss';
-import { useContext } from 'react';
-import { Back } from '../../components/Back/Back';
-import { CartList } from '../../components/CartList/CartList';
-import { CartContext } from '../../contexts/CartContext';
-import { Banner } from '../../components/Banner/Banner';
 
 export const CartPage = () => {
-  const { cart, deleteAll } = useContext(CartContext);
-  const totalPrice = cart.reduce((accumulator, currentObject) => {
-    return accumulator + currentObject.price;
-  }, 0);
+  const { cartItems } = useAppSelector((state) => state.cartItems);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const totalPrice = useMemo(() => {
+    return cartItems.reduce(
+      (sum, item) => sum + item.product.price * item.quantity,
+      0,
+    );
+  }, [cartItems]);
+
+  const totalQuantity = useMemo(() => {
+    return cartItems.reduce(
+      (sum, item) => sum + item.quantity,
+      0,
+    );
+  }, [cartItems]);
+
+  const handleMessageShow = () => {
+    setIsVisible(true);
+
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 3000);
+  };
 
   return (
-    <div className="cart-page">
-      <Back />
+    <div className="page container">
+      {isVisible && <Message />}
 
-      <h1 className="cart-page__title">Cart</h1>
+      <div className="page__go-back">
+        <GoBack />
+      </div>
 
-      {!cart.length
-        ? <Banner message="Your cart is empty..." />
-        : (
-          <div className="cart-page__content">
-            <CartList />
-            <div className="cart-page__total">
-              <h1 className="cart-page__total-title">{`$${totalPrice}`}</h1>
-              <p className="cart-page__items">{`Total for ${cart.length} items`}</p>
+      {cartItems.length === 0 ? (
+        <h1>Your cart is empty</h1>
+      ) : (
+        <div className="section">
+          <h1 className="section__title">Cart</h1>
+          <div className="cart-page__container grid grid--block">
+            <ul className="cart-page__list grid__item--desktop-1-16">
+              {cartItems.map((item) => (
+                <li key={item.id}>
+                  <CartItem cartItem={item} />
+                </li>
+              ))}
+            </ul>
 
-              <div className="cart-page__line" />
+            <div className="cart-page__total grid__item--desktop-17-24">
+              <h1>{`$${totalPrice}`}</h1>
 
-              <button
-                type="button"
-                className="cart-page__button-checkout"
-                onClick={deleteAll}
+              <p>{`Total for ${totalQuantity} items`}</p>
+
+              <Button
+                content={ButtonType.TEXT}
+                className="cart-page__button"
+                onClick={handleMessageShow}
               >
                 Checkout
-              </button>
+              </Button>
             </div>
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 };

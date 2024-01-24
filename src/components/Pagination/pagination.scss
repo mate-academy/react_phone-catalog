@@ -1,45 +1,9 @@
-@import "src/App";
-
 .pagination {
   display: flex;
+  justify-content: center;
   gap: 16px;
-  margin: 0 auto;
-  padding-top: 40px;
 
-  &__pages {
-    display: flex;
-    gap: 8px;
-  }
-
-  &__button {
-    height: 32px;
-    width: 32px;
-    box-sizing: border-box;
-    display: flex;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    border: 1px solid $icons-grey-c;
-    color: $black-c;
-    justify-content: center;
-    align-items: center;
-
-    &:hover {
-      border-color: $black-c;
-    }
-
-    &--disabled {
-      border-color: $elements-grey-c;
-      pointer-events: none;
-    }
-
-    &--side {
-      padding: 7px;
-    }
-
-    &--active {
-      color: $white-c;
-      background-color: $black-c;
-    }
+  &__space {
+    margin-top: 15px;
   }
 }

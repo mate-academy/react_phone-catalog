@@ -1,83 +1,75 @@
-import './ProductSlider.scss';
-import React, { useState } from 'react';
-import classNames from 'classnames';
-import { ProductCard } from '../ProductCard/ProductCard';
+import { useMemo, useState } from 'react';
+import { useAppSelector } from '../../utils/hooks/hooks';
+import { Button } from '../Button';
+import { ProductCard } from '../ProductCard';
+import { ButtonType } from '../../types/ButtonType';
+import { ProductsCardType } from '../../types/ProductsCardType';
 import { Product } from '../../types/Product';
-import { Loader } from '../Loader/Loader';
+import { getHotPriceProducts } from '../../utils/helpers/getHotPriceProducts';
+import { getBrandNewProducts } from '../../utils/helpers/getBrandNewProducts';
+import { getSuggestedProducts } from '../../utils/helpers/getSuggestedProducts';
+import './ProductsSlider.scss';
 
-interface Props {
-  title: string,
-  products: Product[],
-  isLoader: boolean,
-}
+type Props = {
+  type: ProductsCardType;
+  filterBy?: keyof Product;
+  filterValue?: string | number;
+};
 
 export const ProductsSlider: React.FC<Props> = ({
-  title,
-  products,
-  isLoader,
+  type,
+  filterBy,
+  filterValue,
 }) => {
-  const [sliderPage, setSliderPage] = useState(1);
-  const totalPages = Math.ceil(products.length / 4);
-  const isFirstPage = sliderPage === 1;
-  const isLastPage = sliderPage === totalPages;
-  const translateDistance = (sliderPage - 1) * 1152;
+  const [position, setPosition] = useState(0);
+  const { products } = useAppSelector((state) => state.products);
 
-  const handlePrevClick = () => {
-    setSliderPage(prevState => prevState - 1);
-  };
+  const visibleProducts = useMemo(() => {
+    const conditionProducts = {
+      [ProductsCardType.DISCOUNT]: getHotPriceProducts(products),
+      [ProductsCardType.NEWBRANDS]: getBrandNewProducts(products),
+      [ProductsCardType.SIMILAR]: getSuggestedProducts(
+        products, filterBy, filterValue,
+      ),
+    };
 
-  const handleNextClick = () => {
-    setSliderPage(prevState => prevState + 1);
-  };
+    return conditionProducts[type];
+  }, [type, filterBy, filterValue, products]);
+
+  const maxPosition = Math.ceil(visibleProducts.length / 4) - 1;
+  const cardWidth = 271.6;
+  const gap = 16;
+  const transform = `translateX(${-position * (cardWidth + gap)}px)`;
 
   return (
-    <article className="slider">
-      <div className="slider__top">
-        <h1 className="slider__header">{title}</h1>
-
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button
-          type="button"
-          className={classNames('button slider__button', {
-            'button--disabled': isFirstPage,
-          })}
-          onClick={handlePrevClick}
-        >
-          {isFirstPage
-            ? <i className="icon icon--arrow-left-grey" />
-            : <i className="icon icon--arrow-left" />}
-        </button>
-
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button
-          type="button"
-          className={classNames('button slider__button', {
-            'button--disabled': isLastPage,
-          })}
-          onClick={handleNextClick}
-        >
-          {isLastPage
-            ? <i className="icon icon--arrow-right-grey" />
-            : <i className="icon icon--arrow-right" />}
-        </button>
-      </div>
-      <ul
-        className="slider__bottom"
-      >
-        {products.map(product => (
-          <li
-            key={product.id}
-            className="slider__item"
-          >
+    <section className="section">
+      <h2 className="section__title">{type}</h2>
+      <div className="productsSlider">
+        <div className="productsSlider__navigation">
+          <Button
+            content={ButtonType.ARROW}
+            direction="left"
+            disabled={position === 0}
+            onClick={() => setPosition((pos) => pos - 1)}
+          />
+          <Button
+            content={ButtonType.ARROW}
+            direction="right"
+            onClick={() => setPosition((pos) => pos + 1)}
+            disabled={position === maxPosition}
+          />
+        </div>
+        <div className="productsSlider__slides">
+          {visibleProducts.map((product) => (
             <ProductCard
-              key={product.id}
               product={product}
-              translateDistance={translateDistance}
+              key={product.id}
+              transform={transform}
+              type={type}
             />
-          </li>
-        ))}
-        {isLoader && (<Loader />)}
-      </ul>
-    </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };

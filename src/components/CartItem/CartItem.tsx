@@ -1,94 +1,84 @@
-import './CartItem.scss';
-import React, { useContext } from 'react';
-import classNames from 'classnames';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/Product';
-import { CartContext } from '../../contexts/CartContext';
-import { IMAGE_BASE_URL } from '../../helpers/constants';
+import { Button } from '../Button';
+import { ButtonType } from '../../types/ButtonType';
+import { CartItemType } from '../../types/CartItemType';
+import { useAppDispatch } from '../../utils/hooks/hooks';
+import {
+  decreaseQuantity,
+  deleteFromCart,
+  increaseQuantity,
+} from '../../store/slices/cartSlice';
+import './CartItem.scss';
 
-interface Props {
-  product: Product;
-}
+type Props = {
+  cartItem: CartItemType;
+};
 
-export const CartItem: React.FC<Props> = ({ product }) => {
-  const {
-    getNumberOfCopies,
-    deleteById,
-    addCopy,
-    deleteCopy,
-  } = useContext(CartContext);
-  const copies = getNumberOfCopies(product.id);
+export const CartItem: React.FC<Props> = ({ cartItem }) => {
+  const { product, quantity, id } = cartItem;
+  const dispatch = useAppDispatch();
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    deleteById(product.id);
+  const handleDeleteFromCart = () => {
+    dispatch(deleteFromCart(id));
   };
 
-  const handlePlus = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    addCopy(product);
+  const handleIncreaseCount = () => {
+    dispatch(increaseQuantity(id));
   };
 
-  const handleMinus = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    deleteCopy(product.id);
+  const handleDecreaseCount = () => {
+    dispatch(decreaseQuantity(id));
   };
 
   return (
-    <Link
-      to={`/phones/${product.itemId}`}
-      className="cart-item"
-    >
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-      <button
-        className="cart-item__button-close"
-        type="button"
-        onClick={handleDelete}
-      >
-        <i className="icon icon--close-grey cart-item__icon--close" />
-      </button>
-
-      <img
-        className="cart-item__image"
-        src={`${IMAGE_BASE_URL}${product.image}`}
-        alt="phone"
-      />
-
-      <p
-        className="cart-item__name"
-      >
-        {product.name}
-      </p>
-
-      <div className="cart-item__actions">
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button
-          type="button"
-          className={classNames('button cart-item__button', {
-            'button--disabled': copies === 1,
-          })}
-          onClick={handleMinus}
-        >
-          <i className={classNames('icon', {
-            'icon--minus-grey': copies === 1,
-            'icon--minus': copies > 1,
-          })}
+    <div className="cart-item">
+      <div className="cart-item__wrapper">
+        <div className="cart-item__info">
+          <Button
+            content={ButtonType.CLOSE}
+            className="cart-item__info-close"
+            onClick={handleDeleteFromCart}
+            data-cy="cartDeleteButton"
           />
-        </button>
 
-        <p className="cart-item__quantity">{copies}</p>
+          <div className="cart-item__info-image-wrapper">
+            <Link to={`/${product.category}/${product.phoneId}`}>
+              <img
+                src={`new/${product.image}`}
+                alt={product.name}
+                className="cart-item__info-image"
+              />
+            </Link>
+          </div>
 
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-        <button
-          type="button"
-          className="button cart-item__button"
-          onClick={handlePlus}
-        >
-          <i className="icon icon--plus" />
-        </button>
+          <Link
+            to={`/${product.category}/${product.phoneId}`}
+            className="cart-item__info-name"
+          >
+            {product.name}
+          </Link>
+        </div>
+
+        <div className="cart-item__count">
+          <div className="cart-item__count-wrapper">
+            <Button
+              content={ButtonType.MINUS}
+              disabled={quantity === 1}
+              onClick={handleDecreaseCount}
+            />
+            <p
+              className="cart-item__count-number"
+              data-cy="productQauntity"
+            >
+              {quantity}
+            </p>
+            <Button content={ButtonType.PLUS} onClick={handleIncreaseCount} />
+          </div>
+
+          <h2>{`$${quantity * product.price}`}</h2>
+        </div>
       </div>
-
-      <h2 className="cart-item__price">{`$${product.price}`}</h2>
-    </Link>
+    </div>
   );
 };

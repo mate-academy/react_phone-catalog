@@ -1,0 +1,19 @@
+$c-gray-primary: #313237;
+$c-gray-secondary: #89939a;
+$c-gray-icons-placeholders: #b4bdc3;
+$c-gray-elements: #e2e6e9;
+$c-gray-background: #fafbfc;
+$c-white: #fff;
+$c-green: #27ae60;
+$c-red: #eb5757;
+
+$transition-duration: 0.3s;
+
+$desktop-width: 1176px;
+$tablet-width: 640px;
+$card-width: 272px;
+$container-width: 1136px;
+$header-height: 64px;
+$footer-height: 96px;
+$main-height: calc(100vh - #{$header-height} - #{$footer-height});
+$nav-gap: 64px;
