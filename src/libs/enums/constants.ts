@@ -1,4 +1,4 @@
-export const IMG_ROOT_PATH = '_new';
+export const IMG_ROOT_PATH = 'new';
 export const HOT_PRICE_DISCOUNT = 7;
 export const NEW_PRODUCT_YEAR = 2019;
 export const PRODUCTS_GAP = 16;
