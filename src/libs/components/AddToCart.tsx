@@ -31,7 +31,7 @@ export const AddToCart: React.FC<Props> = ({ product, className }) => {
       selected={isInCart}
       onClick={handleAddToCart}
     >
-      Add to cart
+      {isInCart ? 'Added to cart' : 'Add to cart'}
     </Button>
   );
 };
