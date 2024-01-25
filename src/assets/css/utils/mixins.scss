@@ -1,0 +1,66 @@
+@mixin on-small-mobile {
+  @media (max-width: $mobile-small-max-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (max-width: $desktop-max-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  @media (any-hover: hover) {
+    &:hover {
+      #{$property}: $toValue;
+    }
+  }
+}
+
+@mixin responsive-value($property, $min, $max) {
+  $medium: ($max + $min) / 2;
+
+  #{$property}: $max;
+
+  @include on-desktop {
+    #{$property}: $medium;
+  }
+
+  @include on-tablet {
+    #{$property}: $min;
+  }
+}
+
+@mixin content-padding-inline {
+  max-width: 1136px;
+  margin-inline: auto;
+  padding-inline: 40px;
+
+  @include on-tablet {
+    padding-inline: 20px;
+  }
+
+  @include on-small-mobile {
+    padding-inline: 10px;
+  }
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

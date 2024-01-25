@@ -1,0 +1,90 @@
+%center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%h1 {
+  @include responsive-value(font-size, 24px, 32px);
+
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+}
+
+%h2 {
+  @include responsive-value(font-size, 18px, 22px);
+
+  font-weight: 700;
+  line-height: 140%;
+}
+
+%h3 {
+  @include responsive-value(font-size, 16px, 20px);
+
+  font-weight: 600;
+  line-height: 130%;
+}
+
+%small-text {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+%upercase {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+%nav-link-text {
+  color: $secondary-color;
+  text-decoration: none;
+
+  @include hover(color, $primary-color);
+}
+
+%link-text {
+  text-decoration: none;
+  color: $primary-color;
+
+  @include hover(color, $accent-green);
+}
+
+%navbar-hover-bottom-line {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    @include size(100%, 3px);
+
+    background-color: $primary-color;
+    transition: opacity $effect-duration;
+    opacity: 0;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+%list-null {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+%button-null {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url("../fonts/Mont-Bold/Mont-Bold.woff2") format("woff2"),
+    url("../fonts/Mont-Bold/Mont-Bold.woff2") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url("../fonts/Mont-Regular/Mont-Regular.woff2") format("woff2"),
+    url("../fonts/Mont-Regular/Mont-Regular.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url("../fonts/Mont-SemiBold/Mont-SemiBold.woff2") format("woff2"),
+    url("../fonts/Mont-SemiBold/Mont-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}

@@ -1,0 +1,117 @@
+@import '../../../assets/css/utils/utils';
+
+.navbar-search {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+
+  &__form {
+    display: flex;
+    position: relative;
+    width: 320px;
+    transition: all $effect-duration;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__control {
+    z-index: 2;
+    right: 0;
+    height: 100%;
+
+    @include responsive-value(width, $header-link-min-size, $header-link-max-size);
+
+    box-sizing: content-box;
+
+    &--reset {
+      position: absolute;
+      display: none;
+
+      & > div::after {
+        display: none;
+      }
+    }
+
+    &--show {
+      display: none;
+      border-left: 1px solid $borders-color;
+
+      @include on-mobile {
+        display: flex;
+      }
+    }
+  }
+
+  &__input {
+    --padding: #{($header-link-max-size - $icons-size) / 2};
+
+    position: relative;
+    border: none;
+    box-sizing: border-box;
+    flex-grow: 1;
+    padding-inline-start: var(--padding);
+
+    @include responsive-value(padding-inline-end, $header-link-min-size, $header-link-max-size);
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit;
+
+    border-left: 1px solid $borders-color;
+    background: center right var(--padding) no-repeat url('../../../assets/icons/search.svg');
+    transition: background-image $effect-duration;
+
+    @include hover(background-color, $hover-color);
+
+    @include on-desktop {
+      --padding: #{($header-link-medium-size - $icons-size) / 2};
+    }
+
+    @include on-tablet {
+      --padding: #{($header-link-min-size - $icons-size) / 2};
+    }
+
+    &::placeholder {
+      color: $icons-color;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $hover-color;
+    }
+
+    &:not(:placeholder-shown) {
+      background: none;
+      background-color: $hover-color;
+
+      & + .navbar-search__control--reset {
+        display: flex;
+      }
+    }
+  }
+
+  &--show-on-tablet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    @include responsive-value(height, $header-link-min-size, $header-link-max-size);
+
+    z-index: 2;
+    border-bottom: 1px solid $borders-color;
+    background-color: #fff;
+
+    .navbar-search__form {
+      width: 100%;
+      display: flex;
+    }
+
+    .navbar-search__control--show {
+      display: none;
+    }
+  }
+}

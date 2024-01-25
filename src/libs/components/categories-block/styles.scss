@@ -1,0 +1,92 @@
+@import '../../../assets/css/utils/utils';
+
+.categories-block {
+  &__top {
+    padding-block-end: 24px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    @include on-small-mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__image {
+    position: absolute;
+  }
+
+  &__image-link {
+    position: relative;
+    display: flex;
+    padding-bottom: 100%;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    &--phones {
+      background-color: #FCDBC1;
+
+      .categories-block__image {
+        top: 2%;
+        left: 20%;
+
+        @include size(105%, 125%);
+      }
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+
+      .categories-block__image {
+        top: 5.5%;
+        left: 7%;
+
+        @include size(148%);
+      }
+    }
+
+    &--accessories {
+      background-color: #973D5F;
+
+      .categories-block__image {
+        top: 14%;
+        left: 12%;
+
+        @include size(191.4%, 88%);
+      }
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      @include size(100%);
+
+      transition: opacity $effect-duration;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+    }
+  }
+
+  &__title-link {
+    @extend %link-text;
+    @extend %h3;
+  }
+
+  &__qty {
+    color: $secondary-color;
+  }
+}

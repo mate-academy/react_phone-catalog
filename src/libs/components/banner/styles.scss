@@ -1,0 +1,65 @@
+@import '../../../assets/css/utils/utils';
+
+.banner {
+  @extend %center-content;
+
+  width: 100%;
+  flex-direction: column;
+  row-gap: 16px;
+
+  &__slider {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__slides {
+    @extend %list-null;
+
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__slide {
+    width: 100%;
+    flex: 1 0 100%;
+    transition: transform $effect-duration;
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 2.6;
+    object-fit: cover;
+  }
+
+  &__controls {
+    display: flex;
+
+    @include responsive-value(min-width, 16px, 32px);
+
+    @media (any-hover: none) {
+      display: none;
+    }
+  }
+
+  &__bullets {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__bullet {
+    @include size(16px, 5px);
+
+    display: flex;
+    background-color: $borders-color;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}
+

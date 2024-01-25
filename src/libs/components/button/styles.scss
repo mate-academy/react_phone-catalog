@@ -1,0 +1,99 @@
+@import '../../../assets/css/utils/utils';
+
+.button {
+  position: relative;
+  box-sizing: border-box;
+
+  &__btn {
+    @extend %button-null;
+    @include size(100%);
+
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+  }
+
+  &--dropdown {
+    border: 1px solid $icons-color;
+    transition: border-color $effect-duration;
+
+    @include hover(border-color, $secondary-color);
+
+    .button__btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 12px;
+      column-gap: 16px;
+    }
+
+    &.button--selected {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &--default {
+    @extend %small-text;
+
+    background-color: $primary-color;
+
+    .button__btn {
+      color: #fff;
+    }
+
+    &.button--selected {
+      background-color: #fff;
+      border: 1px solid $borders-color;
+
+      .button__btn {
+        color: $accent-green;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &--navbar {
+    @extend %navbar-hover-bottom-line;
+    @include responsive-value(height, $header-link-min-size, $header-link-max-size);
+    @include responsive-value(width, $header-link-min-size, $header-link-max-size);
+  }
+
+  &--icon {
+    svg {
+      transition: fill $effect-duration;
+    }
+
+    &:hover {
+      svg {
+        fill: $primary-color !important;
+      }
+    }
+  }
+
+  &--icon-border {
+    border: 1px solid $icons-color;
+
+    &.button--selected {
+      border: 1px solid $borders-color;
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &:has(:disabled) {
+      border-color: $borders-color;
+
+      &:hover {
+        border-color: $borders-color;
+      }
+    }
+
+    .button__btn:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

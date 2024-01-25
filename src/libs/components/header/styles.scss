@@ -1,0 +1,38 @@
+@import '../../../assets/css/utils/utils';
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include responsive-value(column-gap, 0, 40px);
+
+  box-sizing: border-box;
+  background-color: #fff;
+  border-bottom: 1px solid $borders-color;
+
+  &__logo {
+    @include responsive-value(padding-inline, 18px, 24px);
+  }
+
+  &__navbar {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive-value(column-gap, 0, 40px);
+
+    &-right {
+      display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+  }
+}

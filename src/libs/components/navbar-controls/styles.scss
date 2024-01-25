@@ -1,0 +1,33 @@
+@import '../../../assets/css/utils/utils';
+
+.navbar-controls {
+  display: flex;
+
+  &__link {
+    @include responsive-value(width, $header-link-min-size, $header-link-max-size);
+
+    border-left: 1px solid $borders-color;
+  }
+
+  &__icon {
+    position: relative;
+  }
+
+  &__qty {
+    @extend %center-content;
+
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+
+    border-radius: 50%;
+    background-color: $accent-red;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 9px;
+  }
+}

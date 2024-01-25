@@ -1,0 +1,253 @@
+@import '../../assets/css/utils/utils';
+
+.detail {
+  position: relative;
+
+  &__top {
+    @include responsive-value(padding-block-start, 20px, 40px);
+    @include responsive-value(padding-block-end, 20px, 40px);
+  }
+
+  &__back {
+    padding-block-end: 16px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+
+    @include responsive-value(column-gap, 8px, 16px);
+    @include responsive-value(row-gap, 40px, 80px);
+    @include responsive-value(padding-block-end, 60px, 80px);
+  }
+
+  &__images-gallery {
+    grid-column: span 12;
+
+    @include on-desktop {
+      grid-column: span 15;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__main-info {
+    grid-column: 14 / -1;
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive-value(gap, 16px, 24px);
+
+    @include on-desktop {
+      grid-column: span 9;
+      flex-direction: column-reverse;
+      justify-content: start;
+    }
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1 319px;
+
+      @include responsive-value(row-gap, 20px, 32px);
+    }
+
+    &-right {
+      color: $icons-color;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 12;
+
+    @include responsive-value(row-gap, 20px, 32px);
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__tech-specs {
+    display: flex;
+    flex-direction: column;
+    grid-column: 14 / -1;
+
+    @include responsive-value(row-gap, 20px, 32px);
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__lable {
+    color: $secondary-color;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__options {
+    @include responsive-value(row-gap, 16px, 24px);
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    @include responsive-value(padding-block-end, 16px, 24px);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    border-bottom: 1px solid $borders-color;
+
+    &-list {
+      @extend %list-null;
+
+      display: flex;
+      column-gap: 8px;
+    }
+
+    &-link {
+      @include size(100%);
+
+      box-sizing: border-box;
+    }
+
+    &-item {
+      display: flex;
+      border: 1px solid $icons-color;
+
+      @include hover(border-color, $primary-color);
+
+      &--color {
+        @include size(32px);
+
+        padding: 2px;
+        border-radius: 50%;
+
+        .detail__option-link {
+          border-radius: 50%;
+        }
+      }
+
+      &--capacity {
+        .detail__option-link {
+          text-decoration: none;
+          color: $primary-color;
+          padding-inline: 8px;
+          padding-block: 7px;
+        }
+      }
+
+      &--selected {
+        border-color: $primary-color;
+        pointer-events: none;
+        cursor: not-allowed;
+
+        &.detail__option-item--capacity {
+          background-color: $primary-color;
+
+          .detail__option-link {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    @include responsive-value(row-gap, 16px, 24px);
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+
+    @include responsive-value(row-gap, 16px, 24px);
+  }
+
+  &__prices {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__new-price {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__old-price {
+    font-size: 22px;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__btn-add-to-cart {
+    flex: 1 1 auto;
+    height: 48px;
+  }
+
+  &__btn-add-to-favorite {
+    @include size(48px);
+  }
+
+  &__characteristics {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__section-title {
+    padding-block-end: 16px;
+    border-bottom: 1px solid $borders-color;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    grid-column: 14 / -1;
+
+    @include responsive-value(row-gap, 20px, 32px);
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+
+      @include responsive-value(row-gap, 8px, 16px);
+    }
+
+    &-text {
+      margin: 0;
+    }
+  }
+
+  &__loading {
+    @extend %center-content;
+    @extend %h1;
+    @include size(100%);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

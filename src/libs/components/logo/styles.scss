@@ -1,0 +1,11 @@
+@import '../../../assets/css/utils/utils';
+
+.logo {
+  @extend %center-content;
+
+  &__img {
+    @include responsive-value(height, 20px, 24px);
+    @include hover(transform, scale(1.1));
+  }
+}
+

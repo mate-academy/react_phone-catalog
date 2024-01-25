@@ -1,0 +1,26 @@
+@import '../../../assets/css/utils/utils';
+
+.characteristics {
+  @extend %small-text;
+
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 8px;
+  }
+
+  &__name {
+    color: $secondary-color;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+

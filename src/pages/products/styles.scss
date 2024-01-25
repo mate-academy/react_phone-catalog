@@ -1,0 +1,51 @@
+@import '../../assets/css/utils/utils';
+
+.products-page {
+  &__top {
+    @include responsive-value(padding-block-start, 20px, 40px);
+    @include responsive-value(padding-block-end, 20px, 40px);
+  }
+
+  &__qty {
+    padding-block-start: 8px;
+    color: $secondary-color;
+  }
+
+  &__filters {
+    display: flex;
+    column-gap: 16px;
+    padding-block-end: 24px;
+
+    &-sort{
+      width: 176px;
+    }
+
+    &-per-page{
+      width: 128px;
+    }
+  }
+
+  &__pagination {
+    @include responsive-value(padding-block-start, 20px, 40px);
+  }
+
+  &__no-products {
+    h2 {
+      padding-block-end: 16px;
+    }
+
+    p {
+      margin: 0;
+
+      &:not(:last-child) {
+        padding-block-end: 8px;
+      }
+    }
+
+    a {
+      @extend %link-text;
+
+      text-decoration: underline;
+    }
+  }
+}

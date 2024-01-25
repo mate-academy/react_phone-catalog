@@ -1,0 +1,48 @@
+@import '../../../assets/css/utils/utils';
+
+.product-slider {
+  &__top {
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block-end: 24px;
+  }
+
+  &__controls {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__controls-btn {
+    @include size(32px);
+  }
+
+  &__products {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    column-gap: 16px;
+    overflow: hidden;
+    padding-inline: 2px;
+    padding-block: 1px 6px;
+  }
+
+  &__product {
+    --cards-count: 4;
+    --total-gap: calc(16px * (var(--cards-count) - 1));
+
+    flex: 0 0 calc(100% / var(--cards-count) - (var(--total-gap) / var(--cards-count)));
+
+    @include on-tablet {
+      --cards-count: 3;
+    }
+
+    @include on-mobile {
+      --cards-count: 2;
+    }
+
+    @media (max-width: 400px) {
+      --cards-count: 1;
+    }
+  }
+}

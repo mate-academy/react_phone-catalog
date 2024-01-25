@@ -1,0 +1,11 @@
+@import '../../../assets/css/utils/utils';
+
+.back {
+  @extend %nav-link-text;
+  @extend %small-text;
+
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+

@@ -1,0 +1,43 @@
+@import '../../../assets/css/utils/utils';
+
+.footer {
+  border-top: 1px solid $borders-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive-value(padding-block, 20px, 32px);
+
+    gap: 20px;
+
+    @include on-mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__navbar {
+    @extend %center-content;
+  }
+
+  &__back-to-top {
+    @extend %center-content;
+
+    column-gap: 16px;
+  }
+
+  &__back-to-top-link {
+    @extend %nav-link-text;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    &--active {
+      color: $primary-color;
+    }
+  }
+
+  &__back-to-top-btn {
+    @include size(32px);
+  }
+}
