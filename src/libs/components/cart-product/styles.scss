@@ -7,10 +7,10 @@
   box-sizing: border-box;
   border: 1px solid $borders-color;
 
-  @include responsive-value(padding, 16px, 24px);
-  @include responsive-value(column-gap, 16px, 24px);
+  @include responsive-value(padding, 8px, 24px);
+  @include responsive-value(column-gap, 8px, 24px);
 
-  &-image-cnt {
+  &__image-cnt {
     @include size(66px);
 
     min-width: 66px;
@@ -25,7 +25,7 @@
     }
   }
 
-  &-image {
+  &__image {
     display: flex;
     width: 100%;
     aspect-ratio: 1;
@@ -33,17 +33,21 @@
     transition: transform $effect-duration;
   }
 
-  &-link {
+  &__link {
     @extend %nav-link-text;
 
     flex: 1 1 auto;
+
+    @include on-small-mobile {
+      display: none;
+    }
   }
 
-  &-price {
+  &__price {
     @extend %h2;
   }
 
-  &-controls {
+  &__controls {
     @extend %center-content;
 
     column-gap: 2px;

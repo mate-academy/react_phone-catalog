@@ -65,10 +65,10 @@ export const CartProduct: React.FC<Props> = ({ productInCart }) => {
       <Link
         to={productUrl}
         state={{ pathname, search }}
-        className="cart__product-image-cnt"
+        className="cart-product__image-cnt"
       >
         <img
-          className="cart__product-image"
+          className="cart-product__image"
           src={productImgPath}
           alt="Preview"
         />
@@ -77,14 +77,14 @@ export const CartProduct: React.FC<Props> = ({ productInCart }) => {
       <Link
         to={productUrl}
         state={{ pathname, search }}
-        className="cart__product-link"
+        className="cart-product__link"
       >
         {productInCart.name}
       </Link>
 
-      <div className="cart__product-controls">
+      <div className="cart-product__controls">
         <Button
-          className="cart__product-controls-button"
+          className="cart-product__controls-button"
           view={ButtonViews.ICON_BORDER}
           icon={IconNames.MINUS}
           iconOptions={{ color: IconColors.DARK_GREY }}
@@ -93,12 +93,12 @@ export const CartProduct: React.FC<Props> = ({ productInCart }) => {
           aria-label="Decrease product quantity"
         />
 
-        <div className="cart__product-controls-qty">
+        <div className="cart-product__controls-qty">
           {quantity}
         </div>
 
         <Button
-          className="cart__product-controls-button"
+          className="cart-product__controls-button"
           view={ButtonViews.ICON_BORDER}
           icon={IconNames.PLUS}
           iconOptions={{ color: IconColors.DARK_GREY }}
@@ -107,7 +107,7 @@ export const CartProduct: React.FC<Props> = ({ productInCart }) => {
         />
       </div>
 
-      <div className="cart__product-price">
+      <div className="cart-product__price">
         {`$${price}`}
       </div>
 

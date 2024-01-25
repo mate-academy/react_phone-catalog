@@ -30,63 +30,6 @@
     }
   }
 
-  &__product {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include responsive-value(column-gap, 16px, 24px);
-
-    &-image-cnt {
-      @include size(66px);
-
-      min-width: 66px;
-      padding: 5px;
-
-      @media (any-hover: hover) {
-        &:hover {
-          & .cart__product-image {
-            transform: scale(1.1);
-          }
-        }
-      }
-    }
-
-    &-image {
-      display: flex;
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: contain;
-      transition: transform $effect-duration;
-    }
-
-    &-link {
-      @extend %nav-link-text;
-
-      flex: 1 1 auto;
-    }
-
-    &-price {
-      @extend %h2;
-    }
-
-    &-controls {
-      @extend %center-content;
-
-      column-gap: 2px;
-
-      &-button {
-        @include size(32px);
-      }
-
-      &-qty {
-        @extend %center-content;
-
-        min-width: 28px;
-      }
-    }
-  }
-
   &__checkout {
     grid-column: span 8;
     display: flex;
