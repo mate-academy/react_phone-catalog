@@ -1,0 +1,22 @@
+@import "../../utils/main.scss";
+
+.productList {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin-bottom: 20px;
+    }
+  }
+}

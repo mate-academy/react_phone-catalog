@@ -1,0 +1,101 @@
+@import "../../utils/main.scss";
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+
+  &__wrapper {
+    margin-top: 40px;
+    height: 400px;
+    max-width: 100%;
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-mobile {
+      height: 250px;
+    }
+  }
+
+  &__container {
+    height: 100%;
+    width: 1040px;
+    overflow: hidden;
+
+    @include on-tablet {
+      width: 654px;
+    }
+
+    @include on-mobile {
+      width: 504px;
+    }
+  }
+
+  &__list {
+    height: 100%;
+    width: 300%;
+    display: flex;
+    gap: 1px;
+    transition-duration: 1s;
+  }
+
+  &__item {
+    height: 100%;
+    width: 33.33%;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    max-height: 100%;
+    background: none;
+    border: 1px solid $gray-icons-color;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $gray-primary-color;
+    }
+  }
+
+  &__dots {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &--item {
+      width: 14px;
+      height: 5px;
+      background-color: $gray-icons-color;
+      border-radius: 0;
+      transition: background-color border 0.3s;
+      border: 1px solid $gray-icons-color;
+
+      &:hover {
+        background-color: $gray-primary-color;
+        border: 1px solid $gray-primary-color;
+      }
+    }
+  }
+}
+
+.dots-active {
+  background-color: $gray-primary-color;
+  border: 1px solid $gray-primary-color;
+}

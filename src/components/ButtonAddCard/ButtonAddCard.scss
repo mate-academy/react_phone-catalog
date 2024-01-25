@@ -1,0 +1,24 @@
+@import "../../utils/main.scss";
+
+.buttonAdd {
+  width: 176px;
+  height: 40px;
+  background-color: $gray-primary-color;
+  @extend %text-buttons;
+  color: $white-color;
+  transition: $transition-duration;
+
+  @include on-tablet {
+    width: 140px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+  }
+
+  &.is-added {
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+    color: $green-color;
+  }
+}

@@ -1,0 +1,57 @@
+@import "../../utils/main.scss";
+
+.searchField {
+  display: flex;
+  width: 327px;
+  height: 100%;
+  align-items: center;
+  border-left: 1px solid $gray-icons-color;
+  padding: 24px;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: 200px;
+    padding: 8px;
+  }
+
+  &__input {
+    height: 32px;
+    border: none;
+    outline: none;
+    @extend %text-buttons;
+    color: $gray-primary-color;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+  }
+
+  ::placeholder {
+    @extend %text-buttons;
+    color: $gray-icons-color;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+  }
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    transition: $transition-duration;
+    cursor: pointer;
+
+    :hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.focus {
+  background-color: $hover-bg-color;
+}

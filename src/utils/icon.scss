@@ -1,0 +1,56 @@
+@import "./variables";
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-position: center;
+  background-repeat: no-repeat;
+
+  &--fav {
+    background-image: url(../icons/heard.svg);
+
+    &-add {
+      background-image: url(../icons/heard-red.svg);
+    }
+  }
+
+  &--shop {
+    background-image: url(../icons/shoping.svg);
+  }
+
+  &--toTop {
+    background-image: url(../icons/arrow-up.svg);
+  }
+
+  &--home {
+    background-image: url(../icons/home.svg);
+  }
+
+  &--right {
+    background-image: url(../icons/arrow-right.svg);
+  }
+
+  &--left {
+    background-image: url(../icons/arrow-left.svg);
+  }
+
+  &--down {
+    background-image: url(../icons/arrow-down.svg);
+  }
+
+  &--search {
+    background-image: url(../icons/Search.svg);
+  }
+
+  &--delete {
+    background-image: url(../icons/Close.svg);
+  }
+
+  &--minus {
+    background-image: url(../icons/minus.svg);
+  }
+
+  &--plus {
+    background-image: url(../icons/plus.svg);
+  }
+}

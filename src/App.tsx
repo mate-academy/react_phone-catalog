@@ -1,7 +1,18 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { NavBar } from './components/header/NavBar';
+import { Footer } from './components/Footer';
 
-export const App = () => (
+const App = () => (
   <div className="App">
-    <h1>React Phone Catalog</h1>
+    <NavBar />
+    <main className="main">
+      <div className="main__container">
+        <Outlet />
+      </div>
+    </main>
+    <Footer />
   </div>
 );
+
+export default App;

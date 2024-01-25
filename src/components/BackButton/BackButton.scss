@@ -1,0 +1,21 @@
+@import "../../utils/main.scss";
+
+.backButton {
+  width: 66px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $gray-secondary-color;
+  @extend %small-text;
+  border: none;
+  background-color: transparent;
+  margin-top: 40px;
+  padding: 0;
+  cursor: pointer;
+  transition: $transition-duration;
+
+  &:hover {
+    color: $gray-primary-color;
+  }
+}
