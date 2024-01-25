@@ -1,0 +1,60 @@
+@import "../../helpers/styles/mixins";
+
+.Footer {
+  &__content {
+    margin-inline: auto;
+
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 -1px 0 0 $elements-color;
+  }
+
+  &__links {
+    height: 50%;
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    @include navigation-link;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      @include navigation-underline;
+    }
+  }
+
+  &__to-top-scroll {
+    @include navigation-link;
+
+    text-transform: none;
+    font-weight: 600;
+  }
+
+  &__to-top {
+    @include square-size(32px);
+
+    margin-left: 16px;
+    border: solid 1px $icons-color;
+    background-color: $white-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__vector-icon {
+    transform: rotate(90deg);
+  }
+
+  &__logo {
+    @include logo;
+  }
+}

@@ -1,0 +1,71 @@
+@import "../../helpers/styles/mixins";
+
+.Banners {
+  @include page-grid;
+
+  height: 400px;
+  position: relative;
+
+  &__container {
+    grid-column: span 22;
+
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+  }
+
+  &__banner {
+    height: 100%;
+    width: 1040px;
+  }
+
+  &__button {
+    grid-column: span 1;
+
+    border: solid 1px $icons-color;
+    background-color: $white-color;
+
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__vector-icon--left {
+    transform: rotate(0deg);
+  }
+
+  &__vector-icon--right {
+    transform: rotate(180deg);
+  }
+
+  &__indicators {
+    position: absolute;
+    bottom: -32px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__link {
+    padding-block: 10px;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__indicator {
+    height: 4px;
+    width: 14px;
+
+    background-color: $elements-color;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}

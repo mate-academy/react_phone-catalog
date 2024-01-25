@@ -1,1 +1,15 @@
-// not empty
+@import "./helpers/styles/reset";
+@import "./helpers/styles/fonts";
+@import "./helpers/styles/mixins";
+@import "./helpers/styles/variables";
+
+body {
+  font-family: Mont-Regular, sans-serif;
+}
+
+.App {
+  &__container {
+    max-width: 1136px;
+    margin: auto;
+  }
+}
