@@ -1,0 +1,26 @@
+@import "../../helpers/styles/mixins";
+
+.Nav {
+  height: 100%;
+  display: flex;
+  gap: 64px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 64px;
+
+  &__link {
+    @include navigation-link;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      @include navigation-underline;
+    }
+
+    &--is-active {
+      @include navigation-underline;
+    }
+  }
+}

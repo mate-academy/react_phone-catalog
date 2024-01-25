@@ -1,0 +1,47 @@
+@import "../../helpers/styles/mixins";
+
+.Header {
+  width: 100%;
+  height: 64px;
+
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  &__left {
+    display: flex;
+    padding-left: 25px;
+  }
+
+  &__right {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  &__link {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: -1px 0 0 0 $elements-color;
+    position: relative;
+
+    &:hover {
+      @include navigation-underline;
+    }
+
+    &--is-active {
+      @include navigation-underline;
+    }
+  }
+
+  &__image {
+    padding-inline: 25px;
+  }
+
+  &__logo {
+    @include logo;
+    
+    height: 64px;
+  }
+}

@@ -1,0 +1,103 @@
+@import "./variables";
+
+@mixin square-size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin page-grid {
+  --columns: 24;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+@mixin section-title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  color: $primary-color;
+}
+
+@mixin section-title-h1 {
+  @include section-title;
+
+  letter-spacing: -0.01em;
+}
+
+@mixin section-title-h2 {
+  @include section-title;
+
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin section-title-h3 {
+  @include section-title;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+@mixin body-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: $primary-color;
+}
+
+@mixin buttons-text {
+  @include body-text;
+
+  font-weight: 600;
+}
+
+@mixin small-text {
+  @include body-text;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin upper-case-text {
+  @include body-text;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@mixin navigation-link {
+  @include upper-case-text;
+
+  position: relative;
+
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+@mixin navigation-underline {
+  color: $primary-color;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: $primary-color;
+  }
+}
+
+@mixin logo {
+  height: 100%;
+  width: 40px;
+
+  background: no-repeat center url(../../../public/img/icons/logo_icon.svg);
+}
