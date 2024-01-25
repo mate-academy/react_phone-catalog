@@ -1,0 +1,163 @@
+@import '../style/variables';
+
+.cart {
+  margin-left: 152px;
+  max-width: 1136px;
+  margin: 0 auto;
+  
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    border: 1px solid $elements;
+    width: 752px;
+    height: 128px;
+    padding: 24px;
+    margin-top: 16px;
+    
+    &-image {
+      width: 66px;
+      height: 80px;
+    }
+
+    &-title {
+      font-family: "Mont-Regular";
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $primary;
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      gap: 31px;
+    }
+
+    &-control {
+      width: 32px;
+      height: 32px;
+      margin: 14px;
+
+      border: 1px solid $icons;
+      background-color: $white;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+
+      &--add {
+        margin-left: 80px;
+        background-image: url(../images/Plus.svg);
+      }
+
+      &--remove {
+        background-image: url(../images/Minus.svg);
+      }
+
+      &--back {
+        width: 16px;
+        height: 16px;
+        background-image: url(../images/arrow-right.svg);
+      }
+    }
+    
+    &-price {
+      margin-left: 80px;
+    }
+  }
+
+  &__clear-button {
+    width: 16px;
+    height: 16px;
+    margin: 24px 32px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/Close.svg);
+
+    border: none;
+    cursor: pointer;
+    background-color: $white;
+  }
+
+  &_amounts {
+    border: 1px solid $elements;
+    margin-top: 16px;
+    width: 368px;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  &__button {
+    width: 320px;
+    height: 48px;
+    color: $white;
+    border: none;
+    background-color: $primary;
+    margin-bottom: 24px;
+    margin-left: 24px;
+
+    &--back {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      &-icon{
+        width: 16px;
+        height: 16px;
+        background-image: url(../images/arrow-right.svg);
+      }
+
+      &-text {
+        text-decoration: none;
+        color: $secondary;
+        font-family: "Mont-Regular";
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__total {
+    font-family: "Mont-Regular";
+    font-size: 14px;
+    margin-top: 0;
+    font-weight: 500;
+    line-height: 21px;
+    color: $secondary;
+
+    &-amount {
+      margin-bottom: 10px;
+      font-family: "Mont-Bold";
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 21px;
+      color: $primary;
+    }
+  }
+  
+  &__border {
+    border-bottom: 1px solid $elements;
+    margin: 24px;
+    width: 320px;
+  }
+  
+  &__empty {
+    margin-bottom: 100%;
+    font-family: "Mont-Bold";
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $primary;
+  }
+}

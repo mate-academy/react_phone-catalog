@@ -1,0 +1,298 @@
+@import '../style/variables';
+
+
+.details {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__top {
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__colors-and-id {
+    margin-left: 84px;
+  }
+
+  &__color-switcher {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__options-color {
+    width: 32px;
+    height: 32px;
+    list-style: none;
+    border: 1px solid $elements;
+    border-radius: 50%;
+    transition-duration: 0.4ms ;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $icons;
+    }
+
+    &-link {
+      border-radius: 50%;
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: 2px solid $white;
+    }
+  }
+
+
+  &__product-name {
+    font-family: "Mont-Bold";
+    font-size: 34px;
+    line-height: 40px;
+    margin-bottom: 40px;
+  }
+  
+  &__criteria {
+    margin-top: 22px;
+
+    &--container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    &--big {
+      font-family: "Mont-Regular";
+      font-size: 12px;
+      color: $secondary;
+    }
+
+    &--small {
+      font-family: "Mont-Regular";
+      font-size: 12px;
+      color: $primary;
+    }
+  }
+
+  &__current-image-item {
+    width: 464px;
+    height: 464px;
+    object-fit: contain;
+  }
+
+  &__current-image {
+    overflow: hidden;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__switcher {
+    display: flex;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__images-item {
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+    background-color: $white;
+    object-fit: contain;
+  }
+
+  &__images-button {
+    background-color: $white;
+    border: 1px solid $icons;
+    cursor: pointer;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+
+    &-fav {
+      height: 48px;
+      width: 48px;
+      background-color: $white;
+      border: 1px solid $icons;
+
+      background-image: url(../images/Heart.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    &-cart {
+      width: 263px;
+      height: 48px;
+
+      background-color: $primary;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+
+    &--discount {
+      font-family: "Mont-Bold";
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 31px;
+      color: $navbarLinkColor;
+    }
+
+    &--real {
+      font-family: "Mont-Regular";
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: $footerNavLinksColor;
+      text-decoration: line-through;
+    }
+  }
+
+  &__button {
+    margin: 8px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white; 
+    box-shadow: 0 0 0 1px $icons;
+
+  }
+
+  &__capacity-switcher {
+    display: flex;
+    gap: 8px;
+  }
+  
+  &__options-cap {
+    list-style: none;
+    background-color: $white;
+    color: $primary;
+    border: 1px solid $secondary;
+    padding: 8px;
+    cursor: pointer;
+
+
+    &-link {
+      text-decoration: none;
+      color: $primary;
+    }
+
+    &.capacity-active, // Дополнительный селектор для увеличения специфичности
+      .capacity-active &-link { // Увеличиваем специфичность для ссылки внутри активного элемента
+      background-color: $primary;
+      color: $white; // Цвет текста для активного состояния
+    }
+  }
+
+
+  &__decorate {
+    border-bottom: 1px solid $elements;
+    margin-top: 24px;
+  }
+
+  &__capacity-title {
+    font-family: "Mont-Regular";
+    font-size: 12px;
+    color: $secondary;
+  }
+
+  &__colors-text {
+    font-family: "Mont-Regular";
+    font-size: 12px;
+    color: $secondary;
+  }
+
+  &__cost {
+    display: flex;
+  }
+  
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1136px;
+    margin: 0 auto;
+    
+    &-title {
+      font-family: "Mont-Bold";
+      font-size: 22px;
+      color: $primary;
+    }
+
+    &__title--about {
+      font-family: "Mont-Regular";
+      font-size: 22px;
+      color: $primary;
+    }
+
+    &__text {
+      font-family: "Mont-Regular";
+      font-size: 14px;
+      color: $secondary;
+    }
+
+    &-about {
+     width: 590px;
+     margin-top: 80px;
+    }
+
+    &-tech {
+      width: 512px;
+      margin-left: 65px;
+      margin-top: 80px;
+
+      &--container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-tech {
+          font-family: "Mont-Regular";
+          font-size: 14px;
+          color: $secondary;
+        }
+
+        &-small {
+          font-family: "Mont-Regular";
+          font-size: 14px;
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-image {
+  animation: 0.5s ease-out 0s 1 slideInFromLeft;
+}
+
+.color-active {
+  box-shadow: 0 0 0 1px $primary;
+}

@@ -19,3 +19,16 @@ body {
   font-weight: normal;
   box-sizing: border-box;
 }
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.App__main {
+  flex: 1;
+}
+

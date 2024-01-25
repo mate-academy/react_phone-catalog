@@ -69,4 +69,12 @@
     line-height: 15px;
     color: $secondary;
   }
+
+  &__no-results {
+    display: block;
+    margin-left: 200px;
+    width: 700px;
+    height: 700px;
+    background-image: url(../../images/empty-result_shot.png);
+  }
 }

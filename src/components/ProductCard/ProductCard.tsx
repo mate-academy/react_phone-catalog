@@ -1,14 +1,44 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../type/Product';
+import { useContext, useEffect } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { FavouritesContext } from '../../context/FavouritesContext';
+import { useLocalStorageState } from '../../helpers/localSrorage';
 import './ProductCard.scss';
-import { CartButton } from '../CartButton/CartButton';
-import { FavouritesButton } from '../FavouritesButton/FavouritesButton';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { toggleCartItem, cartItems } = useContext(CartContext);
+  const { favouritesItems, toggleFavourite } = useContext(FavouritesContext);
+
+  const [
+    isFavourite, 
+    setIsFavourite
+  ] = useLocalStorageState<boolean>('isFavourite', false);
+  const isInCart = cartItems.some((item) => item.id === +product.id);
+
+  useEffect(() => {
+    setIsFavourite(favouritesItems
+    .some((item) => item.product.id === product.id));
+  }, [favouritesItems, product]);
+
+  const handleAddToFavourites = () => {
+    toggleFavourite(product);
+    setIsFavourite((prev) => !prev);
+  };
+
+  const handleAddToCart = () => {
+    toggleCartItem({
+      id: +product.id,
+      quantity: 1,
+      product,
+      price: product.price,
+    });
+  };
+
   return (
     <div className="product-card" data-cy="cardsContainer">
       <li
@@ -41,17 +71,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="phone__criteria">
           <div className="phone__criteria--container">
             <div
-              className="
-              phone__criteria--big
-            "
+              className="phone__criteria--big"
             >
               Screen
             </div>
-            <div
-              className="
-              phone__criteria--small
-            "
-            >
+            <div className="phone__criteria--small">
               {product.screen}
             </div>
           </div>
@@ -93,8 +117,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </li>
 
       <div className="phone__buttons">
-        <CartButton />
-        <FavouritesButton />
+        <button
+          type="button"
+          className={`button__cart ${isInCart ? 'is-added' : ''}`}
+          onClick={handleAddToCart}
+        >
+          {isInCart ? 'Added to Cart' : 'Add to Cart'}
+        </button>
+
+        <button
+          type="button"
+          className={`button__fav ${isFavourite ? 'is-fav' : ''}`}
+          aria-label="Add to Favorites"
+          onClick={handleAddToFavourites}
+        />
       </div>
     </div>
   );

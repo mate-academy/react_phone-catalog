@@ -1,0 +1,35 @@
+@import '../style/variables';
+
+.favourites__page {
+  max-width: 1136px;
+  margin: 0 auto;
+  
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 40px;
+  }
+  
+  &__title {
+    font-family: "Mont-Bold";
+    font-size: 32px;
+    color: $primary;
+    line-height: 42px;
+  }
+
+  &__item {
+    font-family: "Mont-Regular";
+    font-size: 14px;
+    color: $secondary;
+  }
+
+  &__empty {
+    font-family: "Mont-Bold";
+    width: 100%;
+    font-size: 25px;
+    color: $primary;
+    line-height: 42px;
+  }
+}
+

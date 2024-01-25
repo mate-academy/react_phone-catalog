@@ -1,0 +1,42 @@
+@import '../../style/variables';
+
+.search {
+  border-left: 1px solid $elements;
+ &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    width: 360px;
+    padding: 23px 24px;
+    border: none;
+    outline: none;
+
+    color: $primary;
+    font-size: 14px;
+    font-family: "Mont-Regular";
+    
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+
+    &--clear {
+      background-image: url(../../images/Close.svg);
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-color: $white;
+    }
+  }
+
+}

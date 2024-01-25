@@ -72,7 +72,8 @@ export const Pagination: React.FC<Props> = ({
       {pagesToShow.map((page) => (
         <button
           key={page}
-          className={cn('page-item', { active: currentPage === page })}
+          className={cn('page-item', 
+          { 'pagination-active': currentPage === page })}
           type="button"
           aria-label="page"
           data-cy="pageLink"

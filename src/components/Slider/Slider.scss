@@ -6,6 +6,7 @@
 
 .slider-image {
   height: 400px;
+  object-fit: cover;
 }
 
 .slider_arrows-left {
@@ -58,6 +59,7 @@
   height: 4px; 
   background-color: #E2E6E9; 
   margin: 0 5px; 
+  border: none;
 
   cursor: pointer;
   transition: background-color 0.3s;

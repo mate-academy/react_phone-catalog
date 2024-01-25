@@ -92,3 +92,35 @@
     margin: 0px 7px 16px 24px;
   }
 }
+
+.button__cart {
+  width: 176px;
+  height: 40px;
+  background-color: $primary;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button__fav {
+  height: 40px;
+  width: 40px;
+
+  background-image: url(../../images/Heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid $icons;
+  background-color: $white;
+  cursor: pointer;
+}
+
+.is-added {
+  background-color: $white;
+  border: 1px solid $elements;
+  color: $greenColor;
+}
+
+.is-fav{
+  background-image: url(../../images/HeartRed.svg);
+}

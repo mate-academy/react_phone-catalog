@@ -3,14 +3,14 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../type/Product';
 import { Pagination } from '../Pagination/Pagination';
 import { AppContext } from '../../context/AppContext';
-import './ProductList.scss';
 import { Breadcrumbs } from '../BreadCrumbs/BreadCrumbs';
+import { useSearchParams } from 'react-router-dom';
+import './ProductList.scss';
 
 interface ProductListProps {
   products: Product[];
   sortBy: string;
   onSortChange: (selectedSort: string) => void;
-  onSearch: (searchQuery: string) => void;
 }
 
 export const ProductList: React.FC<ProductListProps> = ({
@@ -22,31 +22,41 @@ export const ProductList: React.FC<ProductListProps> = ({
   const [productsPerPage, setProductsPerPage] = useState<number>(4);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showAllProducts, setShowAllProducts] = useState(false);
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
   const {
     phonesCount,
   } = useContext(AppContext);
 
   useEffect(() => {
+    const filteredProducts = products
+    .filter(product => product.name.toLowerCase()
+    .includes(query.toLowerCase())
+    || product.color.toLowerCase()
+    .includes(query.toLowerCase()));
+
     const sortProducts = (productsToSort: Product[]) => {
       if (sortBy === 'age') {
         return [...productsToSort]
-          .sort((a, b) => new Date(b.year)
-            .getTime() - new Date(a.year).getTime());
+        .sort((a, b) => new Date(b.year)
+        .getTime() - new Date(a.year).getTime());
       }
 
       if (sortBy === 'name') {
-        return [...productsToSort].sort((a, b) => a.name.localeCompare(b.name));
+        return [...productsToSort]
+        .sort((a, b) => a.name.localeCompare(b.name));
       }
 
       if (sortBy === 'price') {
-        return [...productsToSort].sort((a, b) => a.price - b.price);
+        return [...productsToSort]
+        .sort((a, b) => a.price - b.price);
       }
 
       return productsToSort;
     };
 
-    setSortedProducts(sortProducts(products));
-  }, [products, sortBy]);
+    setSortedProducts(sortProducts(filteredProducts));
+  }, [products, sortBy, query]);
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
     const selectedSort = e.target.value;
@@ -65,11 +75,9 @@ export const ProductList: React.FC<ProductListProps> = ({
     if (value === 'all') {
       setShowAllProducts(true);
       setProductsPerPage(sortedProducts.length);
-      setCurrentPage(1);
     } else {
       setShowAllProducts(false);
       setProductsPerPage(parseInt(value, 10));
-      setCurrentPage(1);
     }
   };
 
@@ -109,33 +117,37 @@ export const ProductList: React.FC<ProductListProps> = ({
           <select
             id="showAllSelect"
             onChange={handleShowAllProductsChange}
-            value={productsPerPage}
+            value={showAllProducts ? 'all' : productsPerPage.toString()}
             className="ProductList__select ProductList__select-page"
           >
-            <option value="5">4</option>
+            <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>
-            <option value="all">all products</option>
+            <option value="all">all</option>
           </select>
         </div>
 
       </div>
 
       <div className="ProductList__grid">
-        {!showAllProducts
-          ? currentProducts.map((product) => (
-            <div key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))
-          : sortedProducts.map((product) => (
-            <div key={product.id}>
-              <ProductCard product={product} />
-            </div>
-          ))}
+        {(!showAllProducts ? currentProducts : sortedProducts).length > 0 ? (
+          (!showAllProducts
+            ? currentProducts.map((product) => (
+              <div key={product.id}>
+                <ProductCard product={product} />
+              </div>
+            ))
+            : sortedProducts.map((product) => (
+              <div key={product.id}>
+                <ProductCard product={product} />
+              </div>
+            )))
+        ) : (
+          <div className="ProductList__no-results" />
+        )}
       </div>
 
-      {!showAllProducts ? (
+      {!showAllProducts && sortedProducts.length > 0 ? (
         <Pagination
           total={sortedProducts.length}
           perPage={productsPerPage}

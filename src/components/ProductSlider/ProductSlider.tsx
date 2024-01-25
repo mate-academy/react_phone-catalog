@@ -52,8 +52,13 @@ export const ProductSlider: React.FC<ProductsSliderProps> = ({
           className=" productSlider__container"
           data-cy="cardsContainer"
         >
-          {displayedProducts.map((product) => (
-            <div key={product.id}>
+          {displayedProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className={`productSlider__card 
+              ${currentIndex * 4 + index < products.length
+              ? 'productSlider__card--visible' : ''}`}
+            >
               <ProductCard
                 product={product}
               />
