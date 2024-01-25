@@ -3,7 +3,6 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 272px;
   height: 507px;
   padding: 32px 24px 24px;
@@ -40,7 +39,7 @@
   }
 
   &__price-discount {
-    color: $grey-third-color;
+    color: $grey-light-color;
     text-decoration: line-through;
   }
 
@@ -67,6 +66,50 @@
     .product-card__img {
       transform: scale(1.05);
       transition: transform 0.3s;
+    }
+  }
+
+  &__properties {
+    margin-bottom: 16px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: $grey-secondary-color;
+    font-weight: 600;
+
+    font-family: $font-semibold;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__property-title {
+    color: $grey-secondary-color;
+  }
+
+  &__property-value {
+    color: $grey-primery-color;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button-favorites {
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid $border-color;
+
+    &--added {
+      border-color: $grey-third-color;
     }
   }
 }

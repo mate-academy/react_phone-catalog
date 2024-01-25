@@ -15,7 +15,6 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [position, setPosition] = useState(0);
   const visibleProducts = products.slice(0, 21);
-
   const maxPosition = -((visibleProducts.length - 4) * (cardWidth + gap));
 
   const clickNext = () => {
@@ -83,7 +82,6 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
               key={product.id}
             >
               <ProductCard
-                title={title}
                 product={product}
               />
             </li>

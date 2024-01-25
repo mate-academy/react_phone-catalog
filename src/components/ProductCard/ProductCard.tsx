@@ -1,12 +1,23 @@
+import classNames from 'classnames';
+import React, { useContext } from 'react';
+import { ReactSVG } from 'react-svg';
+
 import { Link } from 'react-router-dom';
 import { Product } from '../../helpers/Product';
+
+import { CartContext } from '../../contexts/cartContext';
+import { FavouritesContext } from '../../contexts/favoritesContext';
+
 import './ProductCard.scss';
 
 type Props = {
   product: Product,
-  title?: string,
 };
+
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { isInCart, handleCart } = useContext(CartContext);
+  const { isInFavorites, handleFavorites } = useContext(FavouritesContext);
+
   const {
     screen,
     capacity,
@@ -74,14 +85,32 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </p>
         </div>
       </div>
-      {/* <div className="product-card__buttons">
-        <div className="product-card__button-cart">
-          <ButtonCart product={product} />
-        </div>
-        <div className="product-card__button-fav">
-          <ButtonFav product={product} />
-        </div>
-      </div> */}
+
+      <div className="product-card__buttons">
+        <button
+          type="button"
+          className={classNames('product-card__button-add-cart', {
+            'product-card__button-add-cart--added': isInCart(product),
+          })}
+          onClick={() => handleCart(product)}
+        >
+          {isInCart(product) ? 'Added to cart' : 'Add to cart'}
+        </button>
+
+        <button
+          type="button"
+          className={classNames('product-card__button-favorites', {
+            'product-card__button-favorites--added': isInFavorites(product),
+          })}
+          data-cy="addToFavorite"
+          onClick={() => handleFavorites(product)}
+        >
+          {isInFavorites(product)
+            ? <ReactSVG src="../../Icons/FavouritesFilled.svg" />
+            : <ReactSVG src="../../Icons/FavouritesHeartLike.svg" />}
+        </button>
+      </div>
+
     </div>
   );
 };
