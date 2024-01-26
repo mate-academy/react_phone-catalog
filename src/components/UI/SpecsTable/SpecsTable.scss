@@ -1,0 +1,39 @@
+.specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  & thead {
+    color: var(--c-primary);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--c-elements);
+  }
+
+  & tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    color: var(--c-secondary);
+    font-weight: 500;
+    line-height: 150%;
+  }
+  
+  & tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & td {
+    max-width: 50%;
+  }
+
+  & td:nth-child(2n) {
+    text-align: right;
+    color: var(--c-primary);
+  }
+}

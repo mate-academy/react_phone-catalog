@@ -5,14 +5,18 @@ import { DescriptionItem } from '../../../definitions/types/ProductDetails';
 
 interface Props {
   descriptions: DescriptionItem[],
+  className?: string,
 }
 
 interface ItemProps {
   item: DescriptionItem,
 }
 
-export const AboutBlock: React.FC<Props> = memo(({ descriptions }) => (
-  <div className='about-block'>
+export const AboutBlock: React.FC<Props> = memo(({
+  descriptions,
+  className,
+}) => (
+  <div className={`about-block ${className || ''}`}>
     <h2 className='about-block__title'>About</h2>
 
     <hr />

@@ -1,3 +1,32 @@
 .product-details {
-  
+  &__title {
+    color: var(--c-primary);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  max-width: 1136px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(24, minmax(16px, 32px));
+    gap: 80px 16px;
+
+    margin-top: 60px;
+  }
+
+  &__gallery,
+  &__about-block {
+    grid-column: span 12;
+  }
+
+  &__interaction {
+    grid-column: 14 / -4;
+    align-self: center;
+  }
+
+  &__specs-table {
+    grid-column: 14 / -1;
+  }
 }

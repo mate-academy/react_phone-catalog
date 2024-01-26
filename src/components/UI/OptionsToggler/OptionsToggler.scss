@@ -1,7 +1,14 @@
 .options-toggler {
-  padding: 20px 0 50px 0;
+
+
+  &__title {
+    color: var(--c-secondary);
+    font-size: 12px;
+    font-weight: 600;
+  }
 
   &__options {
+    margin-top: 8px;
     display: flex;
     gap: 8px;
 

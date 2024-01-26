@@ -1,0 +1,49 @@
+.product-details-interaction {
+
+  &__option-togglers {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &>hr {
+      height: 1px;
+      background-color: var(--c-elements);
+      border: none;
+    }
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__new-price {
+    text-decoration: none;
+
+    color: var(--c-primary);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__old-price {
+    color: var(--c-secondary);
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &__min-specs-table {
+    margin-top: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    &>* {
+      height: 48px;
+    }
+  }
+}

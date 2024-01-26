@@ -1,121 +1,105 @@
-import React, { useCallback } from 'react';
+import React, { memo, useMemo } from 'react';
 
 import './ProductDetailsComponent.scss';
 import { ProductDetails } from '../../../definitions/types/ProductDetails';
 import Placeholder from '../../UI/Placeholder';
 import ImageGalleryWithChoice from '../../UI/ImageGalleryWithChoice';
 import AboutBlock from '../AboutBlock';
-import OptionsToggler from '../../UI/OptionsToggler';
-import ColorItem from '../../UI/OptionTogglerItems/ColorItem';
-import { RectangleTextItem } from '../../UI/OptionTogglerItems/RectangleTextItem/RectangleTextItem';
-import { AddToCartHandler } from '../../../enhancers/hocs/AddToCartHandler';
-import GraySelectButton from '../../UI/GraySelectButton';
+import { SpecsTable } from '../../UI/SpecsTable/SpecsTable';
+import { getSpecArrayFromProduct } from '../../../utils/servicesHelper';
+import ProductDetailsInteraction from '../ProductDetailsInteraction';
 
-interface ProductProps {
-  product: ProductDetails;
-  loading?: never;
+const BASE_CLASS = 'product-details';
+
+interface Props {
+  product: ProductDetails | null;
   changeProduct: (color: string, capacity: string) => void,
 }
 
-interface LoadingProps {
-  loading: true;
-  product?: never;
-  changeProduct?: never,
-}
-
-type Props = ProductProps | LoadingProps;
-
-export const ProductDetailsComponent: React.FC<Props> = ({
+export const ProductDetailsComponent: React.FC<Props> = memo(({
   product,
-  loading,
   changeProduct,
 }) => {
-  const BASE_CLASS = 'product-details';
-  const maybeProduct = !loading ? product : {
-    camera: <Placeholder />,
-    capacity: <Placeholder />,
-    cell: <Placeholder />,
-    id: <Placeholder />,
-    name: <Placeholder />,
-    namespaceId: <Placeholder />,
-    priceDiscount: <Placeholder />,
-    priceRegular: <Placeholder />,
-    processor: <Placeholder />,
-    ram: <Placeholder />,
-    resolution: <Placeholder />,
-    screen: <Placeholder />,
-    zoom: <Placeholder />,
-  };
+  if (!product) {
+    return <ProductDetailsComponentPlaceholder />;
+  }
 
-  const changeProductByColor = useCallback((color: string) => {
-    if (product) {
+  console.log(product);
+
+  const specs = getSpecArrayFromProduct(product);
+
+  const changeProductCallbacks = useMemo(() => {
+    const changeByColor = (color: string) => {
       changeProduct(color, product.capacity);
-    }
-  }, [product]);
+    };
 
-  const changeProductByCapacity = useCallback((capacity: string) => {
-    if (product) {
+    const changeByCapacity = (capacity: string) => {
       changeProduct(product.color, capacity);
-    }
-  }, [product]);
+    };
+
+    return [
+      changeByColor,
+      changeByCapacity,
+    ]
+  }, [product.color, product.capacity]);
 
   return (
     <section className={BASE_CLASS}>
       <h1 className={`${BASE_CLASS}__title`}>
-        {maybeProduct.name}
+        {product.name}
       </h1>
 
       <div className={`${BASE_CLASS}__content`}>
-        <div className={`${BASE_CLASS}__left`}>
-          {product
-            ? <ImageGalleryWithChoice images={product.images} />
-            : <Placeholder />
-          }
+        <ImageGalleryWithChoice
+          className={`${BASE_CLASS}__gallery`}
+          images={product.images}
+        />
 
-          {product
-            ? <AboutBlock descriptions={product.description} />
-            : <Placeholder />
-          }
-        </div>
+        <ProductDetailsInteraction
+          className={`${BASE_CLASS}__interaction`}
+          product={product}
+          changeProductByParams={changeProductCallbacks}
+        />
 
-        <div className={`${BASE_CLASS}__right`}>
-          <section className={`${BASE_CLASS}__interaction`}>
-            <section className={`${BASE_CLASS}__option-togglers`}>
-              {loading && <Placeholder />}
-              {product && product.colorsAvailable.length > 1 && (
-                <OptionsToggler
-                  name='Available colors'
-                  options={product.colorsAvailable}
-                  Item={ColorItem}
-                  selectedOption={product.color}
-                  onOptionChange={changeProductByColor}
-                />
-              )}
+        <AboutBlock
+          className={`${BASE_CLASS}__about-block`}
+          descriptions={product.description}
+        />
 
-              {product && product.capacityAvailable.length > 1 && (
-                <OptionsToggler
-                  name='Select capacity'
-                  options={product.capacityAvailable}
-                  Item={RectangleTextItem}
-                  selectedOption={product.capacity}
-                  onOptionChange={changeProductByCapacity}
-                />
-              )}
-            </section>
-
-            <div className={`${BASE_CLASS}__interaction-bottom`}>
-              <div className={`${BASE_CLASS}__price-container`}>
-
-              </div>
-
-              <AddToCartHandler
-                productId={product?.id || null}
-                render={(props) => <GraySelectButton {...props} />}
-              />
-            </div>
-          </section>
-        </div>
+        <SpecsTable
+          className={`${BASE_CLASS}__specs-table`}
+          name='Tech specs'
+          specs={specs}
+        />
       </div>
     </section>
   );
-};
+});
+
+
+const ProductDetailsComponentPlaceholder: React.FC = memo(() => (
+  <section className={BASE_CLASS}>
+    <h1 className={`${BASE_CLASS}__title`}>
+      <Placeholder />
+    </h1>
+
+    <div className={`${BASE_CLASS}__content`}>
+      <Placeholder
+        className={`${BASE_CLASS}__gallery`}
+        height='480px'
+      />
+      <Placeholder
+        className={`${BASE_CLASS}__interaction`}
+        height='400px'
+      />
+      <Placeholder
+        className={`${BASE_CLASS}__about-block`}
+        height='400px'
+      />
+      <Placeholder
+        className={`${BASE_CLASS}__specs-table`}
+        height='400px'
+      />
+    </div>
+  </section>
+));

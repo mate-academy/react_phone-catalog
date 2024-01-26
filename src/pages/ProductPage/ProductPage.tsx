@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
-  const [product, loading, error, setProduct] = useRequest(
+  const [product, _, error, setProduct] = useRequest(
     () => getProductById(category, productId),
   );
   const similarProducts = useRef<ProductDetails[]>([]);
@@ -20,11 +20,11 @@ export const ProductPage: React.FC = memo(() => {
   const changeProduct = useCallback((color: string, capacity: string) => {
     const productToChange = similarProducts.current.find(currentProduct => (
       currentProduct.color === color && currentProduct.capacity === capacity
-      ));
-      
-      if (productToChange) {
-        navigate(`/${category}/${productToChange.id}`);
-        setProduct(productToChange);
+    ));
+
+    if (productToChange) {
+      navigate(`/${category}/${productToChange.id}`);
+      setProduct(productToChange);
     }
   }, [similarProducts])
 
@@ -41,16 +41,15 @@ export const ProductPage: React.FC = memo(() => {
     return <ErrorMessage message={error} />;
   }
 
+  console.log(product);
+
   return (
     <div className="product-page">
       <BreadCrumbs />
 
       <BackButton />
 
-      {loading || !product
-        ? <ProductDetailsComponent loading />
-        : <ProductDetailsComponent product={product} changeProduct={changeProduct}/>
-      }
+      <ProductDetailsComponent product={product} changeProduct={changeProduct} />
 
     </div>
   );

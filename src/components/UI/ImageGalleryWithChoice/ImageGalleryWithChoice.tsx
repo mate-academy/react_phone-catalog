@@ -6,12 +6,14 @@ import './ImageGalleryWithChoice.scss';
 interface Props {
   images: string[],
   altes?: string[],
+  className?: string,
 }
 
 const BASE_CLASS = 'image-gallery-with-choice';
 
 export const ImageGalleryWithChoice: React.FC<Props> = memo(({
   images,
+  className,
 }) => {
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
@@ -26,7 +28,7 @@ export const ImageGalleryWithChoice: React.FC<Props> = memo(({
   }, []);
 
   return (
-    <section className={`${BASE_CLASS}`}>
+    <section className={`${BASE_CLASS} ${className || ''}`}>
       <div className={`${BASE_CLASS}__images`}>
         {images.map(img => (
           <ImageItem

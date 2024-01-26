@@ -13,6 +13,7 @@ interface Props {
   Item: React.FC<OptionsTogglerItemProps>,
   selectedOption?: string,
   onOptionChange?: (option: string) => void,
+  className?: string,
 }
 
 export const OptionsToggler: React.FC<Props> = memo(({
@@ -21,6 +22,7 @@ export const OptionsToggler: React.FC<Props> = memo(({
   Item,
   selectedOption = options[0],
   onOptionChange = () => { },
+  className,
 }) => {
   const [currentOption, setCurrentOption] = useState(selectedOption);
 
@@ -31,7 +33,7 @@ export const OptionsToggler: React.FC<Props> = memo(({
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className='options-toggler'>
+    <article className={`options-toggler ${className}`}>
       <h4 className='options-toggler__title'>{name}</h4>
 
       <ul className='options-toggler__options'>
@@ -45,6 +47,6 @@ export const OptionsToggler: React.FC<Props> = memo(({
           </li>
         ))}
       </ul>
-    </form>
+    </article>
   );
 });

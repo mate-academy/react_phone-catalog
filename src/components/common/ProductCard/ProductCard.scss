@@ -1,4 +1,4 @@
-@import '../../../styles/vars.scss';
+@import '../../../styles/vars';
 
 .product-card {
   display: flex;
@@ -7,7 +7,7 @@
   padding: 24px;
   border: 1px solid var(--c-elements);
   background: var(--c-bg);
-  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   transition: $transition-time;
 
   &:hover {
@@ -49,25 +49,12 @@
     color: var(--c-primary);
     font-weight: 700;
     line-height: 140%;
+    text-decoration: none;
   }
 
   &__old-price {
-    position: relative;
     color: var(--c-secondary);
     font-weight: 500;
-    
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 0;
-      width: 100%;
-      height: 1px;
-
-      z-index: 100;
-      background-color: var(--c-secondary);
-    }
   }
 
   & > hr {

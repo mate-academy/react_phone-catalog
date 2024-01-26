@@ -3,7 +3,7 @@ import React, { memo } from 'react';
 import './SquareSelectButton.scss';
 import classNames from 'classnames';
 
-interface Props {
+export interface SquareSelectButtonProps {
   onClick?: () => void,
   selected: boolean,
   extraClasses?: string,
@@ -11,7 +11,7 @@ interface Props {
   iconSelected?: string,
 }
 
-export const SquareSelectButton: React.FC<Props> = memo(({
+export const SquareSelectButton: React.FC<SquareSelectButtonProps> = memo(({
   icon,
   iconSelected,
   selected,
