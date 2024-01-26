@@ -1,0 +1,22 @@
+@import "../../utils/main";
+
+.breadCrambs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @extend %small-text;
+  
+  color: $gray-secondary-color;
+  margin-top: 24px;
+
+  &__link {
+    cursor: pointer;
+    color: $gray-primary-color;
+    transition: $transition-duration;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

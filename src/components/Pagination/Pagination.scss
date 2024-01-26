@@ -1,0 +1,70 @@
+@import "../../utils/main";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 80px;
+
+  @include on-mobile {
+    gap: 8px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid $gray-icons-color;
+    cursor: pointer;
+    transition: border $transition-duration;
+
+    &:hover {
+      border: 1px solid $gray-primary-color;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    gap: 6px;
+
+    @include on-mobile {
+      flex-wrap: wrap;
+    }
+
+    &--link {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @extend %body-text;
+      
+      color: #000;
+      border: 1px solid $gray-icons-color;
+      transition: $transition-duration;
+
+      &:hover {
+        border: 1px solid $gray-primary-color;
+      }
+
+      @include on-mobile {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+.active-link {
+  background-color: $gray-primary-color;
+  color: $white-color;
+}
+
+.disabled {
+  opacity: 0.5;
+}

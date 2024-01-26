@@ -1,0 +1,132 @@
+@import "../../utils/main";
+
+.productCard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px 24px;
+  width: 272px;
+  height: 507px;
+  border: 1px solid $gray-icons-color;
+  transition: border $transition-duration;
+  text-decoration: none;
+
+  @include on-tablet {
+    width: 220px;
+    height: 400px;
+    padding: 20px 16px;
+  }
+
+  &:hover {
+    border: 1px solid $gray-primary-color;
+  }
+
+  &__photo {
+    width: 208px;
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__title {
+    width: 100%;
+    height: 42px;
+
+    &--text {
+      text-align: start;
+
+      @extend %body-text;
+
+      color: $gray-primary-color;
+      text-decoration: none;
+    }
+  }
+
+  &__price {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid $gray-icons-color;
+    margin-bottom: 16px;
+
+    @include on-mobile {
+      margin-bottom: 12px;
+    }
+
+    &--current {
+      @extend %h2;
+
+      font-size: 22px;
+      color: $gray-primary-color;
+    }
+
+    &--full {
+      font-family: ' Mont-Regular ', sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $gray-secondary-color;
+    }
+  }
+
+  &__info {
+    @extend %small-text;
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    &--title {
+      color: $gray-secondary-color;
+    }
+
+    &--wrapper {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &--description {
+      color: $gray-primary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.buttonAdd {
+  @extend %body-text;
+
+  padding: 0;
+  width: 176px;
+  height: 40px;
+  border: 1px solid $gray-primary-color;
+  background-color: $gray-primary-color;
+  color: $white-color;
+  cursor: pointer;
+  transition: box-shadow $transition-duration;
+
+  &:hover {
+    box-shadow: 5px 13px rgba(23, 32, 49, 0.26);
+  }
+}

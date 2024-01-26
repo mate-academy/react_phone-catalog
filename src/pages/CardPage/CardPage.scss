@@ -1,0 +1,226 @@
+@import "../../utils/main";
+
+.cardPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__title {
+    @extend %h1;
+
+    color: $gray-primary-color;
+    margin-top: 16px;
+
+    @include on-tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $elements-color;
+    padding: 24px 0;
+
+    @include on-tablet {
+      padding: 12px 0;
+    }
+
+    &--price {
+      @extend %h2;
+
+      color: $gray-primary-color;
+      margin-right: 40px;
+    }
+
+    &--btn {
+      background-color: transparent;
+      height: 16px;
+      width: 16px;
+      border: none;
+      cursor: pointer;
+      margin-left: 24px;
+      transition: $transition-duration;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &--name {
+      @extend %body-text;
+
+      margin-left: 24px;
+      color: $gray-primary-color;
+      transition: $transition-duration;
+
+      @include on-mobile {
+        font-size: 10px;
+        line-height: 11px;
+        margin-left: 0;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &--left {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 44px;
+
+      @include on-tablet {
+        gap: 8px;
+
+      }
+    }
+
+    &--photo {
+      width: 80px;
+      height: 80px;
+      padding: 7px;
+      margin-left: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include on-mobile {
+        margin-left: 6px;
+      }
+    }
+
+    &--img {
+      width: 50px;
+
+      @include on-tablet {
+        width: 32px;
+      }
+    }
+
+    &--slider {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-left: 50px;
+      width: 96px;
+
+      @include on-mobile {
+        margin-left: 12px;
+        width: 84px;
+      }
+
+      &-btn {
+        width: 32px;
+        height: 32px;
+        background-color: $white-color;
+        cursor: pointer;
+        border: 1px solid $elements-color;
+        transition: $transition-duration;
+
+        &:hover {
+          border-color: $gray-primary-color;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      &-amount {
+        @extend %body-text;
+
+        color: $gray-primary-color;
+      }
+    }
+  }
+
+  &__checkout {
+    width: 368px;
+    max-height: 206px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid $elements-color;
+
+    @include on-tablet {
+      margin: 0 auto 40px;
+    }
+
+    @include on-mobile {
+      width: 280px;
+      margin-top: 40px;
+    }
+
+    &--total {
+      height: 96px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid $elements-color;
+
+      &-price {
+        @extend %h1;
+
+        color: $gray-primary-color;
+
+        @include on-mobile {
+          font-size: 24px;
+        }
+      }
+
+      &-item {
+        @extend %body-text;
+
+        color: $gray-secondary-color;
+      }
+    }
+
+    &--btn {
+      width: 320px;
+      height: 48px;
+      background-color: $gray-primary-color;
+      border: 1px solid $gray-primary-color;
+      color: $white-color;
+
+      @extend %text-buttons;
+      
+      cursor: pointer;
+      transition: $transition-duration;
+
+      @include on-tablet {
+        width: 100%;
+      }
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
+  }
+}
