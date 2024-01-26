@@ -76,7 +76,10 @@ export const Dropdown: React.FC<Props> = ({ label, fields, className }) => {
               className="dropdown__item"
             >
               <SearchLink
-                params={{ [fields]: item.value || null }}
+                params={{
+                  [fields]: item.value || null,
+                  [SearchParams.PAGE]: null,
+                }}
                 className={classNames('dropdown__link', {
                   'dropdown__link--active': item.value === selected.value,
                 })}

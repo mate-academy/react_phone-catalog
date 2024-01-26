@@ -38,6 +38,7 @@ export const NavbarSearch: React.FC = () => {
 
     applyQuery({
       [SearchParams.QUERY]: event.target.value || null,
+      [SearchParams.PAGE]: null,
     });
   };
 

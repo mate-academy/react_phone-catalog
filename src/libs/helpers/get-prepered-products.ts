@@ -33,7 +33,7 @@ export const getPreperedProducts: GetPreperedProductsType = (
           return productA[sort] - productB[sort];
 
         case SortFields.Newest:
-          return productA.year - productB.year;
+          return productB.year - productA.year;
 
         default:
           return 0;
