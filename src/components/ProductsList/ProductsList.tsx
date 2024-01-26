@@ -41,7 +41,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     <div className="productsList section" data-cy="productList">
       <p className="productsList__count">{`${prepearedProducts.length} models`}</p>
 
-      {showOptions && (
+      {prepearedProducts.length > 0 && showOptions && (
         <div className="productsList__options">
           <div className="productsList__options-option">
             <p className="productsList__options-title">Sort by</p>
