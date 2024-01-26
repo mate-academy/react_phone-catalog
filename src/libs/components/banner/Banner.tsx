@@ -1,5 +1,5 @@
 import {
-  useCallback, useEffect, useRef, useState,
+  useCallback, useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
 import { Link } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
@@ -73,7 +73,15 @@ export const Banner: React.FC<Props> = ({ className }) => {
     return () => {
       window.removeEventListener('resize', updateSliderState);
     };
-  }, [sliderRef]);
+  }, []);
+
+  useLayoutEffect(() => {
+    const rect = sliderRef.current?.getBoundingClientRect();
+
+    if (rect) {
+      setSliderWidth(rect.width);
+    }
+  }, [slideId]);
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
