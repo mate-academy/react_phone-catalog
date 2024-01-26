@@ -103,7 +103,6 @@ export const Banner: React.FC<Props> = ({ className }) => {
               className="banner__slide"
               style={{
                 transform: `translateX(-${slideId * sliderWidth}px)`,
-                opacity: slide.id === slideId ? 1 : 0,
               }}
             >
               <Link
