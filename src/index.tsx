@@ -1,5 +1,12 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+import './assets/css/style.scss';
+
+import { Root } from './pages/Root';
+
+const rootElement = document.getElementById('root') as HTMLDivElement;
+
+createRoot(rootElement)
+  .render(
+    <Root />,
+  );

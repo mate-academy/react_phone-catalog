@@ -1,0 +1,13 @@
+export const IMG_ROOT_PATH = 'new';
+export const HOT_PRICE_DISCOUNT = 7;
+export const NEW_PRODUCT_YEAR = 2019;
+export const PRODUCTS_GAP = 16;
+export const SLIDER_DELAY = 5000;
+export const PAGE_RELOAD_DELAY = 2000;
+export const LOADING_DELAY = 200;
+export const PATH_SEPARATOR = '/';
+export const PER_PAGE = 16;
+export const ELLIPSIS = '...';
+export const VISIBLE_PAGES_COUNT = 5;
+export const GB = 'GB';
+export const RAM = 'ram';

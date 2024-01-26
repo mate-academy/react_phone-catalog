@@ -1,0 +1,65 @@
+@import '../../../assets/css/utils/utils';
+
+.cart-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid $borders-color;
+
+  @include responsive-value(padding, 8px, 24px);
+  @include responsive-value(column-gap, 8px, 24px);
+
+  &__image-cnt {
+    @include size(66px);
+
+    min-width: 66px;
+    padding: 5px;
+
+    @media (any-hover: hover) {
+      &:hover {
+        & .cart__product-image {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    transition: transform $effect-duration;
+  }
+
+  &__link {
+    @extend %nav-link-text;
+
+    flex: 1 1 auto;
+
+    @include on-small-mobile {
+      display: none;
+    }
+  }
+
+  &__price {
+    @extend %h2;
+  }
+
+  &__controls {
+    @extend %center-content;
+
+    column-gap: 2px;
+
+    &-button {
+      @include size(32px);
+    }
+
+    &-qty {
+      @extend %center-content;
+
+      min-width: 28px;
+    }
+  }
+}

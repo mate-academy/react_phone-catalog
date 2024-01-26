@@ -1,0 +1,13 @@
+@import '../../../assets/css/utils/utils';
+
+.container {
+  @extend %center-content;
+  @include size(100%, 100vh);
+
+  background-color: white;
+}
+
+.notification {
+  color: $accent-red;
+  text-align: center;
+}

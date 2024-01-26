@@ -1,0 +1,50 @@
+@import '../../../assets/css/utils/utils';
+
+.image-gallery {
+  display: flex;
+  gap: 16px;
+
+  @include on-small-mobile {
+    flex-direction: column-reverse;
+  }
+
+  &__previews {
+    display: flex;
+    flex-direction: column;
+
+    @include responsive-value(row-gap, 8px, 16px);
+
+    column-gap: 8px;
+
+    @include on-small-mobile {
+      flex-direction: row;
+      overflow-x: auto;
+      padding-block-end: 5px;
+    }
+  }
+
+  &__preview {
+    @extend %button-null;
+    @include size(66px);
+    @include hover(border-color, $primary-color);
+
+    min-width: 66px;
+    border: 1px solid $icons-color;
+    padding: 5px;
+
+    &.image-gallery__preview--selected {
+      border-color: $primary-color;
+    }
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  &__selected-img {
+    width: 100%;
+  }
+}

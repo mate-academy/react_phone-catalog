@@ -1,0 +1,26 @@
+@import '../../assets/css/utils/utils';
+
+.not-found {
+  &__container {
+    @include responsive-value(padding-block-start, 40px, 80px);
+    @include responsive-value(padding-block-end, 40px, 80px);
+  }
+
+  h2 {
+    padding-block-end: 16px;
+  }
+
+  p {
+    margin: 0;
+
+    &:not(:last-child) {
+      padding-block-end: 8px;
+    }
+  }
+
+  a {
+    @extend %link-text;
+
+    text-decoration: underline;
+  }
+}

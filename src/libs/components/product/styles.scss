@@ -1,0 +1,77 @@
+@import '../../../assets/css/utils/utils';
+
+.product {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $borders-color;
+
+  @include responsive-value(padding, 16px, 24px);
+  @include responsive-value(row-gap, 12px, 16px);
+
+  transition: transform $effect-duration, box-shadow $effect-duration;
+
+  @media (any-hover: hover) {
+    &:hover {
+      box-shadow: 0 1px 5px rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__image-container {
+    width: 100%;
+
+    @include responsive-value(padding, 6px, 8px);
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    transition: transform $effect-duration;
+  }
+
+  &__info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @extend %link-text;
+  }
+
+  &__prices {
+    display: flex;
+    column-gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid $borders-color;
+    font-size: 22px;
+    line-height: 1.4;
+  }
+
+  &__new-price {
+    font-weight: 700;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    color: $secondary-color;
+    text-decoration: line-through;
+  }
+
+  &__controls {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__btn-add-to-cart {
+    flex: 1 1 auto;
+    height: 40px;
+  }
+
+  &__btn-add-to-favorite {
+    @include size(40px);
+  }
+}

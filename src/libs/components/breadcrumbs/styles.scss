@@ -1,0 +1,44 @@
+@import '../../../assets/css/utils/utils';
+
+.bread-crumbs {
+  @include responsive-value(padding-block-start, 16px, 24px);
+
+  &__list {
+    @extend %list-null;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    color: $secondary-color;
+    display: flex;
+
+    &:not(:last-child) {
+      &::after {
+        content: '';
+        padding-inline: 16px;
+        background: center no-repeat url('../../../assets/icons/arrow.svg');
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  &__link {
+    @extend %link-text;
+
+    font-weight: 600;
+  }
+
+  &__home {
+    svg {
+      transition: fill $effect-duration;
+    }
+
+    &:hover {
+      svg {
+        fill: $accent-green!important;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import '../../../assets/css/utils/utils';
+
+.pagination {
+  @extend %center-content;
+
+  column-gap: 16px;
+
+  &__link {
+    @extend %center-content;
+    @include size(32px);
+    @include hover(border-color, $primary-color);
+
+    text-decoration: none;
+    border: 1px solid $icons-color;
+    color: $primary-color;
+
+    &--active {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: #fff;
+      pointer-events: none;
+      cursor: pointer;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      border-color: $borders-color;
+
+      & svg {
+        fill: $borders-color !important;
+      }
+    }
+  }
+
+  &__list {
+    @extend %list-null;
+    @extend %center-content;
+
+    column-gap: 8px;
+
+    @include on-small-mobile {
+      display: none;
+    }
+  }
+
+  &__ellipsis {
+    padding-inline: 2px;
+  }
+}

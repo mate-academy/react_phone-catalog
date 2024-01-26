@@ -1,0 +1,9 @@
+@import '../../../assets/css/utils/utils';
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+  column-gap: 16px;
+
+  @include responsive-value(row-gap, 16px, 40px);
+}

@@ -1,0 +1,26 @@
+@import '../../../assets/css/utils/utils';
+
+.navbar-link {
+  position: relative;
+
+  @extend %navbar-hover-bottom-line;
+
+  &:has(.navbar-link__link--active) {
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &__link {
+    @extend %center-content;
+    @extend %upercase;
+    @extend %nav-link-text;
+    @include size(100%);
+
+    transform: translateY(2px);
+
+    &--active {
+      color: $primary-color;
+    }
+  }
+}

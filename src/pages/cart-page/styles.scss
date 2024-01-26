@@ -1,0 +1,69 @@
+@import '../../assets/css/utils/utils';
+
+.cart {
+  &__top {
+    @include responsive-value(padding-block-start, 20px, 40px);
+    @include responsive-value(padding-block-end, 20px, 40px);
+  }
+
+  &__back {
+    padding-block-end: 16px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    row-gap: 16px;
+
+    @include responsive-value(column-gap, 8px, 16px);
+  }
+
+  &__products {
+    grid-column: span 16;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+      order: 2;
+    }
+  }
+
+  &__checkout {
+    grid-column: span 8;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    row-gap: 24px;
+    box-sizing: border-box;
+    border: 1px solid $borders-color;
+
+    @include responsive-value(padding, 16px, 24px);
+
+    @include on-mobile {
+      grid-column: 1 / -1;
+      order: 1;
+    }
+
+    &-total {
+      @extend %center-content;
+
+      flex-direction: column;
+      padding-block-end: 24px;
+      border-bottom: 1px solid $borders-color;
+    }
+
+    &-price {
+      @extend %h1;
+    }
+
+    &-quantity {
+      color: $secondary-color;
+    }
+
+    &-btn {
+      height: 48px;
+    }
+  }
+}

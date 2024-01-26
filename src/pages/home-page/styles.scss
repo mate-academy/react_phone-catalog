@@ -1,0 +1,15 @@
+@import '../../assets/css/utils/utils';
+
+.home-page {
+  &__banner {
+    @include responsive-value(padding-block-end, 40px, 80px);
+
+    padding-block-start: 20px;
+  }
+
+  &__section {
+    &:not(:last-child){
+      @include responsive-value(padding-block-end, 40px, 80px);
+    }
+  }
+}

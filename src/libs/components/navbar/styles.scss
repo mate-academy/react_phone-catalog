@@ -1,0 +1,95 @@
+@import '../../../assets/css/utils/utils';
+
+.navbar {
+  &__list {
+    @extend %list-null;
+    @include responsive-value(column-gap, 20px, 64px);
+
+    display: flex;
+  }
+
+  &__link {
+    &::after {
+      display: none;
+    }
+  }
+
+  &__show-on-tablet-btn {
+    display: none;
+    border-left: 1px solid $borders-color;
+    border-right: 1px solid $borders-color;
+
+    transition: background-image $effect-duration;
+    background: center no-repeat url('../../../assets/icons/burger-menu.svg');
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &--header {
+    position: relative;
+
+    .navbar__list {
+      @include on-tablet {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        width: 200px;
+        flex-direction: column;
+        flex-grow: 1;
+        column-gap: 0;
+        border: 1px solid $borders-color;
+        transition: opacity $effect-duration;
+        background-color: #fff;
+      }
+
+      @include on-small-mobile {
+        position: fixed;
+
+        @include responsive-value(top, $header-link-min-size, $header-link-max-size);
+
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    .navbar__item {
+      &:first-child {
+        @include on-tablet {
+          display: none;
+        }
+      }
+    }
+
+    .navbar__link {
+      @include responsive-value(height, $header-link-min-size, $header-link-max-size);
+
+      &::after {
+        display: flex;
+      }
+
+      & > a {
+        @include on-tablet {
+          justify-content: start;
+          padding: 0 10px;
+        }
+      }
+    }
+
+    &:hover {
+      .navbar__list {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .navbar__show-on-tablet-btn {
+        background-image: url('../../../assets/icons/burger-menu-hover.svg');
+      }
+    }
+  }
+}

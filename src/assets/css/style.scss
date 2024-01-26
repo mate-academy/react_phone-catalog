@@ -1,0 +1,55 @@
+@import "./utils/utils";
+@import "./fonts";
+@import "./common";
+
+html {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  color: $primary-color;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $icons-color;
+  border-radius: 20px;
+  border: transparent;
+}
+
+body {
+  margin: 0;
+  min-width: $min-width;
+}
+
+[class*="__container"] {
+  @include content-padding-inline;
+  @include responsive-value(padding-block-end, 40px, 80px);
+}
+
+h1 {
+  @extend %h1;
+
+  margin: 0;
+}
+
+h2 {
+  @extend %h2;
+
+  margin: 0;
+}
+
+h3 {
+  @extend %h3;
+
+  margin: 0;
+}
+
