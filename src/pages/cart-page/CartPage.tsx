@@ -28,7 +28,10 @@ export const CartPage: React.FC = () => {
           <section className="cart__content">
             <section className="cart__products">
               {cart.map(productInCart => (
-                <CartProduct productInCart={productInCart} />
+                <CartProduct
+                  key={productInCart.id}
+                  productInCart={productInCart}
+                />
               ))}
             </section>
 

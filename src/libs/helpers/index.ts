@@ -15,3 +15,4 @@ export * from './get-visible-pages';
 export * from './wait';
 export * from './get-formatted-gb-string';
 export * from './get-options-path';
+export * from './is-product-detail-path';

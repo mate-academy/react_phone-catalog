@@ -4,7 +4,8 @@ import classNames from 'classnames';
 import './styles.scss';
 
 import { Icon } from '../icon/Icon';
-import { IconNames } from '../../enums';
+import { AppRoutes, IconNames } from '../../enums';
+import { isProductDetailPath } from '../../helpers';
 
 type Props = {
   className?: string;
@@ -13,7 +14,17 @@ type Props = {
 export const Back: React.FC<Props> = ({ className }) => {
   const { state, pathname } = useLocation();
 
-  const backPath = state ? `${state.pathname}${state.search || ''}` : '..';
+  let backPath: string = AppRoutes.ROOT;
+
+  if (state) {
+    backPath = `${state.pathname}${state.search || ''}`;
+
+    if (isProductDetailPath(state.pathname) && pathname !== AppRoutes.CART) {
+      const pathParts = state.pathname.split('/');
+
+      backPath = `/${pathParts[1]}`;
+    }
+  }
 
   return (
     <Link
