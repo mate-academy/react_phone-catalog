@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .notFoundPage {
   display: flex;
@@ -9,6 +9,7 @@
 
   &__title {
     @extend %h1;
+    
     color: $gray-primary-color;
     margin-bottom: 24px;
   }

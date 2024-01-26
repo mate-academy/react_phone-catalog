@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .productsSlider {
   margin-top: 80px;
@@ -22,6 +22,7 @@
 
     &--title {
       @extend %h1;
+      
       color: $gray-primary-color;
 
       @include on-tablet {

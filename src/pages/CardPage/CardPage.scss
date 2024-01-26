@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .cardPage {
   display: flex;
@@ -7,6 +7,7 @@
 
   &__title {
     @extend %h1;
+
     color: $gray-primary-color;
     margin-top: 16px;
 
@@ -44,6 +45,7 @@
 
     &--price {
       @extend %h2;
+
       color: $gray-primary-color;
       margin-right: 40px;
     }
@@ -63,8 +65,9 @@
     }
 
     &--name {
-      margin-left: 24px;
       @extend %body-text;
+
+      margin-left: 24px;
       color: $gray-primary-color;
       transition: $transition-duration;
 
@@ -151,6 +154,7 @@
 
       &-amount {
         @extend %body-text;
+
         color: $gray-primary-color;
       }
     }
@@ -183,6 +187,7 @@
 
       &-price {
         @extend %h1;
+
         color: $gray-primary-color;
 
         @include on-mobile {
@@ -192,6 +197,7 @@
 
       &-item {
         @extend %body-text;
+
         color: $gray-secondary-color;
       }
     }
@@ -202,7 +208,9 @@
       background-color: $gray-primary-color;
       border: 1px solid $gray-primary-color;
       color: $white-color;
+
       @extend %text-buttons;
+      
       cursor: pointer;
       transition: $transition-duration;
 

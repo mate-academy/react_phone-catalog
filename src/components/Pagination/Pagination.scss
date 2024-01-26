@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .pagination {
   display: flex;
@@ -41,7 +41,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       @extend %body-text;
+      
       color: #000;
       border: 1px solid $gray-icons-color;
       transition: $transition-duration;

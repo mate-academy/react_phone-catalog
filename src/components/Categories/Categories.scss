@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .categories {
   display: flex;
@@ -9,6 +9,7 @@
 
   &__title {
     @extend %h1;
+
     color: $gray-primary-color;
 
     @include on-tablet {
@@ -40,6 +41,7 @@
 
     &--title {
       @extend %h3;
+
       color: $gray-primary-color;
       transition: opacity $transition-duration;
 
@@ -54,6 +56,7 @@
 
     &--amount {
       @extend %body-text;
+      
       color: $gray-secondary-color;
 
       @include on-tablet {

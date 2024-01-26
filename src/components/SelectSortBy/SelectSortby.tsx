@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './SelectSortBy.scss';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/SearchHelper';
-import { getSelectedOptionText } from '../../helpers/Helpers';
+import { getSelectedOptionText } from '../../helpers/helpers';
 
 export const SelectSortBy: React.FC = () => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);

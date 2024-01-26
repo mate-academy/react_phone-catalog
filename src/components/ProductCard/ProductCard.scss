@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .productCard {
   box-sizing: border-box;
@@ -46,7 +46,9 @@
 
     &--text {
       text-align: start;
+
       @extend %body-text;
+
       color: $gray-primary-color;
       text-decoration: none;
     }
@@ -67,12 +69,13 @@
 
     &--current {
       @extend %h2;
+
       font-size: 22px;
       color: $gray-primary-color;
     }
 
     &--full {
-      font-family: "Mont-Regular", sans-serif;
+      font-family: ' Mont-Regular ', sans-serif;
       font-size: 22px;
       font-style: normal;
       font-weight: 500;
@@ -83,6 +86,7 @@
 
   &__info {
     @extend %small-text;
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -111,12 +115,13 @@
 }
 
 .buttonAdd {
+  @extend %body-text;
+
   padding: 0;
   width: 176px;
   height: 40px;
   border: 1px solid $gray-primary-color;
   background-color: $gray-primary-color;
-  @extend %body-text;
   color: $white-color;
   cursor: pointer;
   transition: box-shadow $transition-duration;

@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .productDetails {
   display: flex;
@@ -7,7 +7,9 @@
 
   &__title {
     margin-top: 16px;
+
     @extend %h1;
+
     color: $gray-primary-color;
 
     @include on-tablet {
@@ -129,6 +131,7 @@
 
     &--title {
       @extend %small-text;
+
       color: $gray-secondary-color;
       margin-bottom: 8px;
     }
@@ -183,6 +186,7 @@
 
       &-link {
         @extend %body-text;
+
         color: $gray-primary-color;
         margin-inline: 8px;
       }
@@ -197,12 +201,13 @@
 
     &--discont {
       @extend %h2;
+
       font-size: 32px;
       color: $gray-primary-color;
     }
 
     &--regular {
-      font-family: "Mont-Regular", sans-serif;
+      font-family: ' Mont-Regular ', sans-serif;
       font-size: 22px;
       font-style: normal;
       font-weight: 500;
@@ -225,7 +230,9 @@
       height: 48px;
       border: 1px solid $gray-primary-color;
       background-color: $gray-primary-color;
+
       @extend %body-text;
+
       color: $white-color;
       cursor: pointer;
       transition: box-shadow $transition-duration;
@@ -246,6 +253,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       @extend %small-text;
     }
 
@@ -260,6 +268,7 @@
 
   &__id {
     @extend %small-text;
+
     color: $elements-color;
   }
 
@@ -280,6 +289,7 @@
 
       &-item {
         @extend %h2;
+
         color: $gray-primary-color;
       }
     }
@@ -296,12 +306,14 @@
 
       &-title {
         @extend %h3;
+
         color: $gray-primary-color;
         margin-bottom: 16px;
       }
 
       &-text {
         @extend %body-text;
+
         color: $gray-secondary-color;
       }
     }
@@ -321,7 +333,9 @@
       &-wrap {
         display: flex;
         justify-content: space-between;
+
         @extend %body-text;
+
         color: $gray-secondary-color;
       }
 

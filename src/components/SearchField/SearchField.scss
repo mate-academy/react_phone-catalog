@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .searchField {
   display: flex;
@@ -8,17 +8,29 @@
   border-left: 1px solid $gray-icons-color;
   padding: 24px;
   justify-content: space-between;
+  transition: $transition-duration;
 
   @include on-tablet {
     width: 200px;
     padding: 8px;
   }
 
+  &:hover:not(:focus-within) {
+    background-color: $hover-bg-color;
+
+    .searchField__input {
+      background-color: transparent; // Set input background to transparent on hover
+    }
+  }
+
   &__input {
     height: 32px;
     border: none;
     outline: none;
+    background-color: transparent; // Make input background transparent
+
     @extend %text-buttons;
+
     color: $gray-primary-color;
 
     @include on-tablet {
@@ -28,6 +40,7 @@
 
   ::placeholder {
     @extend %text-buttons;
+
     color: $gray-icons-color;
 
     @include on-tablet {
@@ -46,9 +59,13 @@
     transition: $transition-duration;
     cursor: pointer;
 
-    :hover {
+    &:hover {
       transform: scale(1.2);
     }
+  }
+
+  &:focus-within {
+    background-color: $hover-bg-color;
   }
 }
 

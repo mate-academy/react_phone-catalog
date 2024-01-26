@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .productPage {
   display: flex;
@@ -6,12 +6,15 @@
 
   &__title {
     margin-top: 40px;
+
     @extend %h1;
+
     color: $gray-primary-color;
   }
 
   &__amount {
     @extend %body-text;
+
     color: $gray-secondary-color;
     margin-top: 8px;
   }
@@ -35,6 +38,8 @@
   border: 1px solid $gray-icons-color;
   border-radius: 10px;
   color: $gray-primary-color;
+
   @extend %h2;
+  
   padding: 30px;
 }

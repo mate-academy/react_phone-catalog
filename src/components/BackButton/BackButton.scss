@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .backButton {
   width: 66px;
@@ -7,7 +7,9 @@
   align-items: center;
   gap: 4px;
   color: $gray-secondary-color;
+
   @extend %small-text;
+
   border: none;
   background-color: transparent;
   margin-top: 40px;

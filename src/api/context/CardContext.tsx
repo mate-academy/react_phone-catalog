@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo } from 'react';
 import { Product } from '../../types/Product';
@@ -30,10 +31,7 @@ interface Props {
 }
 
 export const CardProvider: React.FC<Props> = ({ children }) => {
-  const [
-    cardProducts,
-    setCardProducts,
-  ] = useLocalStorage<Product[]>('card', []);
+  const [cardProducts, setCardProducts] = useLocalStorage<Product[]>('card', []);
 
   const isInCard: string[] = [];
 
@@ -49,18 +47,6 @@ export const CardProvider: React.FC<Props> = ({ children }) => {
 
   const countProducts = (productId: string) => {
     return cardProducts.filter(prod => prod.id === productId).length;
-  };
-
-  const handleAddToCard = (product: Product) => {
-    if (cardProducts.some(item => item.id === product.id)) {
-      setCardProducts((currentProduct: Product[]) => {
-        return currentProduct.filter(item => item.id !== product.id);
-      });
-    } else {
-      setCardProducts((currentProducts: Product[]) => {
-        return [...currentProducts, product];
-      });
-    }
   };
 
   const removeProduct = (productId: string) => {
@@ -82,6 +68,14 @@ export const CardProvider: React.FC<Props> = ({ children }) => {
         .concat(currentProd.slice(index + 1))
         .reverse();
     });
+  };
+
+  const handleAddToCard = (product: Product) => {
+    if (cardProducts.some(item => item.id === product.id)) {
+      removeProduct(product.id);
+    } else {
+      increment(product);
+    }
   };
 
   const value = useMemo(() => ({

@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .cardEmpty {
   width: 100%;
@@ -13,6 +13,7 @@
 
   &__text {
     @extend %h1;
+
     color: $gray-primary-color;
   }
 }

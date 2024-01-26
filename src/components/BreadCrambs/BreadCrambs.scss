@@ -1,10 +1,12 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .breadCrambs {
   display: flex;
   align-items: center;
   gap: 8px;
+
   @extend %small-text;
+  
   color: $gray-secondary-color;
   margin-top: 24px;
 

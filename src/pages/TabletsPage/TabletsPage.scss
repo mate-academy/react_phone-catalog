@@ -1,8 +1,9 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .tabletsPage {
   &__title {
     @extend %h1;
+
     color: $gray-primary-color;
     margin-top: 40px;
   }

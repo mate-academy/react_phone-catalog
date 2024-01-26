@@ -3,7 +3,7 @@ import React from 'react';
 import './Pagination.scss';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
-import { getNumbers } from '../../helpers/Helpers';
+import { getNumbers } from '../../helpers/helpers';
 import { getSearchWith } from '../../helpers/SearchHelper';
 
 interface Props {

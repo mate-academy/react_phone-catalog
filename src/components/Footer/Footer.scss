@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .footer {
   width: 100%;
@@ -32,6 +32,7 @@
 
     &--link {
       @extend %uppercase;
+
       color: $gray-secondary-color;
       transition: color $transition-duration;
 
@@ -52,6 +53,7 @@
 
     &--message {
       @extend %small-text;
+      
       color: $gray-secondary-color;
       cursor: pointer;
       transition: color $transition-duration;

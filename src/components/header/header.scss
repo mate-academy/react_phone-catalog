@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .header {
   box-sizing: border-box;
@@ -68,7 +68,7 @@
         border-radius: 50%;
 
         &-amount {
-          font-family: "Mont-SemiBold", sans-serif;
+          font-family: ' Mont-SemiBold ', sans-serif;
           font-size: 8px;
           font-style: normal;
           font-weight: 600;
@@ -93,8 +93,9 @@
   }
 
   &__link {
-    text-decoration: none;
     @extend %uppercase;
+    
+    text-decoration: none;
     font-weight: 700;
     position: relative;
     color: $gray-secondary-color;

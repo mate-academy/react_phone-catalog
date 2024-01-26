@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .select {
   position: relative;
@@ -9,6 +9,7 @@
 
   &__title {
     @extend %small-text;
+
     color: $gray-secondary-color;
   }
 
@@ -27,6 +28,7 @@
     background-color: $white-color;
 
     color: $gray-primary-color;
+
     @extend %text-buttons;
 
     &--icon {
@@ -56,6 +58,7 @@
       padding: 10px 12px;
 
       @extend %text-buttons;
+      
       color: $gray-secondary-color;
       cursor: pointer;
       transition: color $transition-duration;

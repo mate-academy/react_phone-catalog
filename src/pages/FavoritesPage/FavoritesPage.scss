@@ -1,4 +1,4 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .favoritesPage {
   width: 100%;
@@ -8,6 +8,7 @@
 
   &__title {
     @extend %h1;
+
     color: $gray-primary-color;
     margin-top: 40px;
   }
@@ -21,6 +22,7 @@
 
   &__amount {
     @extend %body-text;
+    
     color: $gray-secondary-color;
     margin-top: 8px;
   }

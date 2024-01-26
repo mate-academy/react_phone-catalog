@@ -1,10 +1,12 @@
-@import "../../utils/main.scss";
+@import "../../utils/main";
 
 .buttonAdd {
   width: 176px;
   height: 40px;
   background-color: $gray-primary-color;
+
   @extend %text-buttons;
+  
   color: $white-color;
   transition: $transition-duration;
 

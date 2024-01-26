@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import './header.scss';
+import './Header.scss';
 import logo from '../../icons/logo.svg';
 import { SearchField } from '../SearchField';
 import { FavoriteContext } from '../../api/context/FavoriteContext';
