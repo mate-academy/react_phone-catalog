@@ -9,9 +9,13 @@ interface Props {
   className?: string,
 }
 
-export const SpecsTable: React.FC<Props> = memo(({ name, specs, className }) => (
+export const SpecsTable: React.FC<Props> = memo(({
+  name,
+  specs,
+  className
+}) => (
   <table className={`specs-table ${className || ''}`} >
-    {name && (<thead>{name}</thead>)}
+    {name && (<caption>{name}</caption>)}
 
     <tbody>
       {Object.entries(specs).map(([spec, value]) => (

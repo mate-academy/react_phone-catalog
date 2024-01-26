@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
-  const [product, _, error, setProduct] = useRequest(
+  const [product, , error, setProduct] = useRequest(
     () => getProductById(category, productId),
   );
   const similarProducts = useRef<ProductDetails[]>([]);
