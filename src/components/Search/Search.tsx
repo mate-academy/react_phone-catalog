@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import './Search.scss';
+import searchIcon from '../../images/Search.svg';
 
 export const Search: React.FC = () => {
   const { pathname } = useLocation();
@@ -46,7 +47,7 @@ export const Search: React.FC = () => {
         ) : (
           <img
             className="search__icon"
-            src={require('../../images/Search.svg').default}
+            src={searchIcon}
             alt="Search"
           />
         )}

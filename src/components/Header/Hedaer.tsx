@@ -15,14 +15,14 @@ export const Header = () => {
   const { cartItems } = useContext(CartContext);
   const { favouritesItems } = useContext(FavouritesContext);
 
-  const count = favouritesItems.reduce(
-    (total, item) => total + item.quantity, 0);
+  const count = favouritesItems
+    .reduce((total, item) => total + item.quantity, 0);
 
-    const totalItemsInCart = cartItems.reduce(
-    (total, item) => total + item.quantity, 0);
+  const totalItemsInCart = cartItems
+    .reduce((total, item) => total + item.quantity, 0);
 
   const { pathname } = useLocation();
-  const isCartPage = location.pathname === '/cart';
+  const isCartPage = pathname === '/cart';
 
   return (
     <header className="header">

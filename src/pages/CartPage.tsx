@@ -1,7 +1,7 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import '../style/CartPage.scss';
-import { Link } from 'react-router-dom';
 
 export const CartPage = () => {
   const {
@@ -11,10 +11,11 @@ export const CartPage = () => {
     getCartTotal,
   } = useContext(CartContext);
 
-  const totalItemsCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const totalItemsCount = cartItems
+    .reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className="cart">
+    <div className="cart cart-margin">
       <Link
         to="/"
         className="cart__button--back-text"
@@ -37,6 +38,8 @@ export const CartPage = () => {
               <div className="cart__item" key={item.id}>
                 <button
                   className="cart__clear-button"
+                  aria-label="button"
+                  type="button"
                   onClick={() => {
                     removeFromCart(item);
                   }}
@@ -53,6 +56,8 @@ export const CartPage = () => {
                 </div>
                 <button
                   className="cart__item-control cart__item-control--add"
+                  aria-label="button"
+                  type="button"
                   onClick={() => {
                     addToCart(item);
                   }}
@@ -65,6 +70,8 @@ export const CartPage = () => {
                 </div>
                 <button
                   className="cart__item-control cart__item-control--remove"
+                  aria-label="button"
+                  type="button"
                   onClick={() => {
                     removeFromCart(item);
                   }}

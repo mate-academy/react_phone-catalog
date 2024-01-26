@@ -1,7 +1,6 @@
 import { Category } from './Category';
 
 export interface Product {
-  type: any;
   imageUrl: string | undefined;
   id: string;
   category: string;

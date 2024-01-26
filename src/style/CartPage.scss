@@ -1,13 +1,16 @@
-@import '../style/variables';
+@import "../style/variables";
 
 .cart {
-  margin-left: 152px;
   max-width: 1136px;
   margin: 0 auto;
   
   &__container {
     display: flex;
     gap: 16px;
+  }
+  
+  &-margin {
+    margin-left: 152px;
   }
   
   &__item {
@@ -25,7 +28,7 @@
     }
 
     &-title {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 14px;
       font-weight: 500;
       line-height: 21px;
@@ -52,17 +55,17 @@
 
       &--add {
         margin-left: 80px;
-        background-image: url(../images/Plus.svg);
+        background-image: url("../images/Plus.svg");
       }
 
       &--remove {
-        background-image: url(../images/Minus.svg);
+        background-image: url("../images/Minus.svg");
       }
 
       &--back {
         width: 16px;
         height: 16px;
-        background-image: url(../images/arrow-right.svg);
+        background-image: url("../images/arrow-right.svg");
       }
     }
     
@@ -78,7 +81,7 @@
 
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(../images/Close.svg);
+    background-image: url("../images/Close.svg");
 
     border: none;
     cursor: pointer;
@@ -111,16 +114,16 @@
       align-items: center;
       gap: 4px;
 
-      &-icon{
+      &-icon {
         width: 16px;
         height: 16px;
-        background-image: url(../images/arrow-right.svg);
+        background-image: url("../images/arrow-right.svg");
       }
 
       &-text {
         text-decoration: none;
         color: $secondary;
-        font-family: "Mont-Regular";
+        font-family: "Mont-Regular", sans-serif;
         font-size: 12px;
         font-weight: 500;
         line-height: 21px;
@@ -129,7 +132,7 @@
   }
 
   &__total {
-    font-family: "Mont-Regular";
+    font-family: "Mont-Regular", sans-serif;
     font-size: 14px;
     margin-top: 0;
     font-weight: 500;
@@ -138,7 +141,7 @@
 
     &-amount {
       margin-bottom: 10px;
-      font-family: "Mont-Bold";
+      font-family: "Mont-Bold", sans-serif;
       font-size: 32px;
       font-weight: 500;
       line-height: 21px;
@@ -154,7 +157,7 @@
   
   &__empty {
     margin-bottom: 100%;
-    font-family: "Mont-Bold";
+    font-family: "Mont-Bold", sans-serif;
     font-size: 25px;
     font-weight: 500;
     line-height: 21px;

@@ -1,6 +1,6 @@
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../type/Product';
-import { useContext, useEffect } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { FavouritesContext } from '../../context/FavouritesContext';
 import { useLocalStorageState } from '../../helpers/localSrorage';
@@ -15,14 +15,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { favouritesItems, toggleFavourite } = useContext(FavouritesContext);
 
   const [
-    isFavourite, 
-    setIsFavourite
+    isFavourite,
+    setIsFavourite,
   ] = useLocalStorageState<boolean>('isFavourite', false);
   const isInCart = cartItems.some((item) => item.id === +product.id);
 
   useEffect(() => {
     setIsFavourite(favouritesItems
-    .some((item) => item.product.id === product.id));
+      .some((item) => item.product.id === product.id));
   }, [favouritesItems, product]);
 
   const handleAddToFavourites = () => {

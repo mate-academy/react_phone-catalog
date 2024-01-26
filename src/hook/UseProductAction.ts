@@ -8,16 +8,20 @@ export function useProductActions(product: Product) {
   const { toggleCartItem, cartItems } = useContext(CartContext);
   const { toggleFavourite, favouritesItems } = useContext(FavouritesContext);
 
-  const [isFavourite, setIsFavourite] = useLocalStorageState('isFavourite', false);
+  const [isFavourite, setIsFavourite] = useLocalStorageState(
+    'isFavourite',
+    false,
+  );
   const isInCart = cartItems.some((item) => item.id === +product.id);
 
   useEffect(() => {
-    setIsFavourite(favouritesItems.some((item) => item.product.id === product.id));
+    setIsFavourite(favouritesItems
+      .some((item) => item.product.id === product.id));
   }, [favouritesItems, product]);
 
   const handleAddToFavourites = () => {
     toggleFavourite(product);
-    setIsFavourite((prev: any) => !prev);
+    setIsFavourite((prev: boolean) => !prev);
   };
 
   const handleAddToCart = () => {

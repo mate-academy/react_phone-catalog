@@ -9,14 +9,15 @@ interface Props {
 
 export const AddToFavButton: React.FC<Props> = ({ product }) => {
   const { favouritesItems, toggleFavourite } = useContext(FavouritesContext);
-  
+
   const [
-    isFavourite, 
-    setIsFavourite
+    isFavourite,
+    setIsFavourite,
   ] = useLocalStorageState<boolean>('isFavourite', false);
 
   useEffect(() => {
-    setIsFavourite(favouritesItems.some((item) => item.product.id === product.id));
+    setIsFavourite(favouritesItems
+      .some((item) => item.product.id === product.id));
   }, [favouritesItems, product]);
 
   const handleAddToFavourites = () => {

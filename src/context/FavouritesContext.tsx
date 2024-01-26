@@ -23,7 +23,8 @@ export const FavouritesContext = createContext<FavouritesContextType>({
   toggleFavourite: () => {},
 });
 
-export const FavouritesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const FavouritesProvider: React.FC<{
+  children: React.ReactNode }> = ({ children }) => {
   const [favouritesItems, setFavouritesItems] = useState<FavouritesItem[]>(
     localStorage.getItem('favouritesItems')
       ? JSON.parse(localStorage.getItem('favouritesItems') as string)
@@ -31,15 +32,17 @@ export const FavouritesProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   );
 
   const addToFavourites = (item: FavouritesItem) => {
-    const isItemInFavourites = favouritesItems.find((favItem) => favItem.id === item.id);
+    const itemAlreadyInFavourites = favouritesItems
+      .find((favItem) => favItem.id === item.id);
 
-    if (!isItemInFavourites) {
+    if (!itemAlreadyInFavourites) {
       setFavouritesItems([...favouritesItems, item]);
     }
   };
 
   const removeFromFavourites = (item: FavouritesItem) => {
-    const updatedFavourites = favouritesItems.filter((favItem) => favItem.id !== item.id);
+    const updatedFavourites = favouritesItems
+      .filter((favItem) => favItem.id !== item.id);
 
     setFavouritesItems(updatedFavourites);
   };
@@ -50,10 +53,11 @@ export const FavouritesProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const toggleFavourite = (product: Product) => {
     const itemId = +product.id;
-    const isItemInFavourites = favouritesItems.find((favItem) => favItem.id === itemId);
+    const foundItem = favouritesItems
+      .find((favItem) => favItem.id === itemId);
 
-    if (isItemInFavourites) {
-      removeFromFavourites(isItemInFavourites);
+    if (foundItem) {
+      removeFromFavourites(foundItem);
     } else {
       addToFavourites({ id: itemId, product, quantity: 1 });
     }

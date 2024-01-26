@@ -1,11 +1,15 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
+import cn from 'classnames';
 import { Breadcrumbs } from '../components/BreadCrumbs/BreadCrumbs';
 import { ProductDetails } from '../type/ProductDetails';
-import { getProduct, getProductDetails, DETAILS_API_URL } from '../helpers/fetchClient';
+import {
+  getProduct,
+  getProductDetails,
+  DETAILS_API_URL,
+} from '../helpers/fetchClient';
 import { PRODUCTS_COLORS, getProductById } from '../utils/utils';
 import '../style/ProductDetailsPage.scss';
-import cn from 'classnames';
 import { Product } from '../type/Product';
 import { ProductSlider } from '../components/ProductSlider/ProductSlider';
 import { AddToCartButton } from '../components/AddToCartButton/AddToCartButton';
@@ -38,7 +42,7 @@ export const ProductDetailsPage = () => {
             setCurrentImage(response.images[0]);
           }
         })
-        .catch((_error) => {
+        .catch(() => {
         })
         .finally(() => {
           setIsLoading(false);

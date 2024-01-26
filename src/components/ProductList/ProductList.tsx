@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../type/Product';
 import { Pagination } from '../Pagination/Pagination';
 import { AppContext } from '../../context/AppContext';
 import { Breadcrumbs } from '../BreadCrumbs/BreadCrumbs';
-import { useSearchParams } from 'react-router-dom';
+
 import './ProductList.scss';
 
 interface ProductListProps {
@@ -30,26 +31,26 @@ export const ProductList: React.FC<ProductListProps> = ({
 
   useEffect(() => {
     const filteredProducts = products
-    .filter(product => product.name.toLowerCase()
-    .includes(query.toLowerCase())
+      .filter(product => product.name.toLowerCase()
+        .includes(query.toLowerCase())
     || product.color.toLowerCase()
-    .includes(query.toLowerCase()));
+      .includes(query.toLowerCase()));
 
     const sortProducts = (productsToSort: Product[]) => {
       if (sortBy === 'age') {
         return [...productsToSort]
-        .sort((a, b) => new Date(b.year)
-        .getTime() - new Date(a.year).getTime());
+          .sort((a, b) => new Date(b.year)
+            .getTime() - new Date(a.year).getTime());
       }
 
       if (sortBy === 'name') {
         return [...productsToSort]
-        .sort((a, b) => a.name.localeCompare(b.name));
+          .sort((a, b) => a.name.localeCompare(b.name));
       }
 
       if (sortBy === 'price') {
         return [...productsToSort]
-        .sort((a, b) => a.price - b.price);
+          .sort((a, b) => a.price - b.price);
       }
 
       return productsToSort;
@@ -85,6 +86,20 @@ export const ProductList: React.FC<ProductListProps> = ({
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = sortedProducts
     .slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const renderProductCards = () => {
+    const productsToShow = showAllProducts ? sortedProducts : currentProducts;
+
+    return productsToShow.length > 0 ? (
+      productsToShow.map((product) => (
+        <div key={product.id}>
+          <ProductCard product={product} />
+        </div>
+      ))
+    ) : (
+      <div className="ProductList__no-results" />
+    );
+  };
 
   return (
     <div className="ProductList" data-cy="productList">
@@ -130,31 +145,17 @@ export const ProductList: React.FC<ProductListProps> = ({
       </div>
 
       <div className="ProductList__grid">
-        {(!showAllProducts ? currentProducts : sortedProducts).length > 0 ? (
-          (!showAllProducts
-            ? currentProducts.map((product) => (
-              <div key={product.id}>
-                <ProductCard product={product} />
-              </div>
-            ))
-            : sortedProducts.map((product) => (
-              <div key={product.id}>
-                <ProductCard product={product} />
-              </div>
-            )))
-        ) : (
-          <div className="ProductList__no-results" />
-        )}
+        {renderProductCards()}
       </div>
 
-      {!showAllProducts && sortedProducts.length > 0 ? (
+      {!showAllProducts && sortedProducts.length > 0 && (
         <Pagination
           total={sortedProducts.length}
           perPage={productsPerPage}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
-      ) : null}
+      )}
     </div>
   );
 };

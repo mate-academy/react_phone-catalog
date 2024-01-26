@@ -25,8 +25,13 @@ export const PhonePage = () => {
   }, [queryParamValue]);
 
   useEffect(() => {
-    const filtered = products.filter(product => product.name.toLowerCase().includes(searchQuery.toLowerCase())
-      || (product.color && product.color.toLowerCase().includes(searchQuery.toLowerCase())));
+    const filtered = products
+      .filter(product => product.name.toLowerCase().includes(
+        searchQuery.toLowerCase(),
+      )
+      || (product.color && product.color.toLowerCase().includes(
+        searchQuery.toLowerCase(),
+      )));
 
     setFilteredProducts(filtered);
   }, [searchQuery, products]);
