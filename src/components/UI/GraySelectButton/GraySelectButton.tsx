@@ -4,9 +4,9 @@ import './GraySelectButton.scss';
 import classNames from 'classnames';
 
 interface Props {
-  onClick: () => void,
+  onClick?: () => void,
   children: React.ReactNode;
-  selected: boolean,
+  selected?: boolean,
   extraClasses?: string,
 }
 

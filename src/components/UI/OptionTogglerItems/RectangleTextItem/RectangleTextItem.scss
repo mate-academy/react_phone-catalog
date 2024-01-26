@@ -1,0 +1,20 @@
+.rectangle-text-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  aspect-ratio: 2 / 1;
+  border: 1px solid var(--c-tips);
+  cursor: pointer;
+  
+  color: var(--c-primary);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%;
+  
+  &--selected {
+    background-color: var(--c-primary);
+    border: 1px solid var(--c-primary);
+    color: var(--c-bg);
+  }
+}

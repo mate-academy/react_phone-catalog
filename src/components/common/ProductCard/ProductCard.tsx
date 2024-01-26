@@ -94,12 +94,12 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
 
         <div className={`${BASE_CLASS}__buttons`}>
           <AddToCartHandler
-            product={product}
+            productId={product.itemId}
             render={renderAddToCartButton}
           />
 
           <AddToFavoritesHandler
-            product={product}
+            productId={product.itemId}
             render={renderAddToFavoritesButton}
           />
         </div>

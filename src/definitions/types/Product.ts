@@ -1,10 +1,12 @@
 import { Category } from "../enums/Category";
 
+export type ProductId = string;
+
 export interface Product {
   id: string,
   category: Category,
   phoneId: string,
-  itemId: string,
+  itemId: ProductId,
   name: string,
   fullPrice: number,
   price: number,

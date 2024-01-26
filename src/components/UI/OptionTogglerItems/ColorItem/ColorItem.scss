@@ -1,0 +1,24 @@
+.color-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 32px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border: 1px solid var(--c-elements);
+  
+  &:hover {
+    border: 1px solid var(--c-primary);
+  }
+  
+  &--selected {
+    border: 1px solid var(--c-primary);
+  }
+
+  &__color {
+    width: 26px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+}

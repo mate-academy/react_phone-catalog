@@ -1,8 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../../definitions/types/Product';
 import { getProducts } from '../../api/products';
-import { favoritesActions } from './favoritesSlice';
-import { cartActions } from './cartSlice';
 import { Category } from "../../definitions/enums/Category";
 
 type ProductState = {
@@ -18,12 +16,9 @@ const initialState: ProductState = {
 };
 
 const init = createAsyncThunk('products/init',
-  async (category: Category, { dispatch }) => {
+  async (category: Category) => {
     try {
       const products = await getProducts(category);
-
-      dispatch(favoritesActions.init(products));
-      dispatch(cartActions.init(products));
 
       return products;
     } catch (error) {

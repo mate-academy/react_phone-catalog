@@ -1,0 +1,10 @@
+.options-toggler {
+  padding: 20px 0 50px 0;
+
+  &__options {
+    display: flex;
+    gap: 8px;
+
+    list-style-type: none;
+  }
+}

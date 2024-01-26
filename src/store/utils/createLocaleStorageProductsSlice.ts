@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk, Slice } from '@reduxjs/toolkit';
 import { storage } from '../../utils/localStorageHelper';
-import { Product } from '../../definitions/types/Product';
+import { Product, ProductId } from '../../definitions/types/Product';
 import { LocaleStorage } from '../../definitions/enums/LocaleStorage';
+import { Category } from '../../definitions/enums/Category';
+import { getProducts } from '../../api/products';
 
-interface State {
-  [key: string]: Product,
+interface LocaleState {
+  ids: ProductId[],
+  items: Product[],
 }
 
 interface Options {
@@ -12,23 +15,34 @@ interface Options {
   key: LocaleStorage,
 }
 
+const initState = (key: LocaleStorage): LocaleState => {
+  const productIds = storage.init<ProductId[]>(key, []);
+
+  return {
+    ids: productIds,
+    items: [],
+  };
+};
+
 export function createLocaleStorageProductsSlice(options: Options): Slice {
   const thunks = createThunks(options);
-  const { init, add, remove } = thunks;
+  const { add, remove, display } = thunks;
 
   const slice = createSlice({
     name: options.name,
-    initialState: {} as State,
+    initialState: () => initState(options.key),
     reducers: {},
     extraReducers: (builder) => {
-      builder.addCase(init.fulfilled, (_, action) => action.payload);
+      builder.addCase(display.fulfilled, (state, action) => {
+        state.items = action.payload;
+      });
 
       builder.addCase(add.fulfilled, (state, action) => {
-        state[action.payload.id] = action.payload;
+        state.ids.push(action.payload);
       });
 
       builder.addCase(remove.fulfilled, (state, action) => {
-        delete state[action.payload.id];
+        state.ids.splice(state.ids.indexOf(action.payload), 1);
       });
     },
   });
@@ -45,38 +59,36 @@ export function createLocaleStorageProductsSlice(options: Options): Slice {
 function createThunks(options: Options) {
   const { name, key } = options;
 
-  const init = createAsyncThunk(`${name}/init`, async (products: Product[]) => {
-    const favoritesIds = storage.init<string[]>(key, []);
-    const initialState: State = {};
+  const display = createAsyncThunk(`${name}/display`, async () => {
+    const productIds = storage.init<ProductId[]>(key, []);
+    const products: Product[] = [];
 
-    favoritesIds.forEach(id => {
-      const thisProduct = products.find(product => product.id === id);
+    for (const category in Category) {
+      const productsForCategory = await getProducts(category as Category);
 
-      if (thisProduct) {
-        initialState[id] = thisProduct;
-      }
-    });
+      products.concat(productsForCategory);
+    }
 
-    return initialState;
+    return products.filter(product => productIds.includes(product.id));
   });
 
   const add = createAsyncThunk(`${name}/add`,
-    async (product: Product) => {
-      storage.push<string>(key, product.id);
+    async (productId: ProductId) => {
+      storage.push<ProductId>(key, productId);
 
-      return product;
+      return productId;
     });
 
   const remove = createAsyncThunk(`${name}/remove`,
-    async (product: Product) => {
-      storage.remove<string>(key, product.id);
+    async (productId: ProductId) => {
+      storage.remove<ProductId>(key, productId);
 
-      return product;
+      return productId;
     });
 
   return {
     add,
-    init,
+    display,
     remove,
   };
 }

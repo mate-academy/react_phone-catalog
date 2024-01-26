@@ -1,33 +1,38 @@
 import React, { memo, useCallback } from 'react';
-import { Product } from '../../definitions/types/Product';
+import { ProductId } from '../../definitions/types/Product';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { favoritesActions } from '../../store/slices/favoritesSlice';
 
 export interface AddToFavoritesHandlerRenderProps {
-  onClick: () => void,
+  onClick?: () => void,
   selected: boolean;
 }
 
 interface Props {
-  product: Product,
+  productId: ProductId | null,
   render: (props: AddToFavoritesHandlerRenderProps) => React.ReactElement,
 }
 
 export const AddToFavoritesHandler: React.FC<Props> = memo(({
-  product,
+  productId,
   render,
 }) => {
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(state => state.favorites);
-  const isFavorite = Object.hasOwn(favorites, product.id);
+
+  if (productId === null) {
+    return render({ selected: false });
+  }
+
+  const isFavorite = Object.hasOwn(favorites, productId);
 
   const toggleProductInFavorites = useCallback(() => {
     dispatch(
       isFavorite
-        ? favoritesActions.remove(product)
-        : favoritesActions.add(product),
+        ? favoritesActions.remove(productId)
+        : favoritesActions.add(productId),
     );
-  }, [product, isFavorite]);
+  }, [productId, isFavorite]);
 
   return render({
     onClick: toggleProductInFavorites,

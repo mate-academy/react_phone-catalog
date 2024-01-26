@@ -4,7 +4,7 @@ import './SquareSelectButton.scss';
 import classNames from 'classnames';
 
 interface Props {
-  onClick: () => void,
+  onClick?: () => void,
   selected: boolean,
   extraClasses?: string,
   icon: string,

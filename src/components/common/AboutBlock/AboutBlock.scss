@@ -1,0 +1,41 @@
+.about-block {
+  display: flex;
+  flex-direction: column;
+  color: var(--c-primary);
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &>hr {
+    margin-block: 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 16px;
+  }
+
+  &__item-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  &__item-content {
+    display: flex;
+    flex-direction: column;
+    color: var(--c-secondary);
+    gap: 16px;
+  }
+
+  &__item-paragraph {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+  }
+}
