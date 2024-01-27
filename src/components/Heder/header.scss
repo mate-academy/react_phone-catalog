@@ -21,10 +21,20 @@
 }
 
 .actions__block {
+  position: relative;
   padding: 24px;
   width: 64px;
   height: 64px;
   box-shadow: 0 0 0 0.5px #e2e6e9;
+
+  a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .cart__icon {
@@ -69,5 +79,18 @@
     content: "";
     background-color: $gray_primary;
     height: 3px;
+  }
+}
+
+.activ-block {
+  &::after {
+    position: relative;
+    top: 38px;
+    right: 24px;
+    display: block;
+    content: "";
+    background-color: $gray_primary;
+    height: 3px;
+    width: 64px;
   }
 }

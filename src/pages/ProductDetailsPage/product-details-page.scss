@@ -27,8 +27,26 @@ h1.product__title {
 }
 
 .images__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
   width: 80px;
+}
+
+.image__list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #c4c4c4;
+
+  img {
+    height: 100%;
+  }
 }
 
 .product-details__selected-image {

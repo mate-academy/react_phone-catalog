@@ -9,8 +9,16 @@
 
 .current-page__link {
   color: $gray_primary;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+
+.current-page {
+  font-size: 12px;
+}
+
+.current-item {
+  font-size: 12px;
 }

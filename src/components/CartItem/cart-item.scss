@@ -1,0 +1,72 @@
+@import "../../styles/utils/_vars";
+
+.cart__item {
+  padding: 24px 40px 24px 24px;
+  display: flex;
+  align-items: center;
+  height: 128px;
+  width: 752px;
+  border: 1px solid #e2e6e9;
+}
+
+.cross__icon {
+  margin-right: 31px;
+  height: 16px;
+  width: 16px;
+  background-image: url("../../assets/img/icons/cross_icon.svg");
+}
+
+.item__image {
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+  margin-right: 31px;
+  height: 80px;
+  width: 80px;
+
+  & img {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.item__title {
+  margin-right: 49px;
+  color: $gray_primary;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.item-counter {
+  margin-right: 43px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  & button {
+    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray_primary;
+  }
+}
+
+.item__amount {
+  color: black;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.total__price {
+  color: $gray_primary;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+}

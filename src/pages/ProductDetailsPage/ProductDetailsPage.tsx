@@ -13,12 +13,14 @@ import './product-details-page.scss';
 
 export const ProductDetailsPage = () => {
   const {
+    setCurrentPage,
     products,
   } = useContext(MainContext);
 
   const [
     productDetails, setProductDetails,
   ] = useState<ProductDetails | null>(null);
+  const [activeImg, setActiveImg] = useState('');
   const { productId } = useParams();
 
   const getProductDetailsFromServer = async () => {
@@ -37,9 +39,19 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
+    setCurrentPage('ProductDetails');
+  }, []);
+
+  useEffect(() => {
     getProductDetailsFromServer();
     scrollToTop();
   }, [productId]);
+
+  useEffect(() => {
+    if (productDetails) {
+      setActiveImg(productDetails?.images[0]);
+    }
+  }, [productDetails]);
 
   return (
     <div className="product-details__page">
@@ -53,9 +65,25 @@ export const ProductDetailsPage = () => {
       </h1>
       <section className="product__section grid">
         <div className="images__selector grid__item--fullScreen-1-12">
-          <div className="images__list"></div>
+          <div className="images__list">
+            {productDetails?.images.map((image) => (
+              <div
+                className="image__list-item"
+                role="button"
+                tabIndex={0}
+                onMouseDown={() => setActiveImg(image)}
+                key={image}
+              >
+
+                <img
+                  src={image}
+                  alt={productDetails?.name}
+                />
+              </div>
+            ))}
+          </div>
           <div className="selected__image">
-            <img src={`./${productDetails?.images[0]}`} alt={productDetails?.name} className="product-details__selected-image" />
+            <img src={`./${activeImg}`} alt={productDetails?.name} className="product-details__selected-image" />
           </div>
         </div>
         <div className="product-detail__actions grid__item--fullScreen-14-20">

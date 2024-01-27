@@ -60,12 +60,29 @@ export const Header = () => {
         </nav>
       </div>
       <div className="header__actions">
-        {currentPage !== 'Home' && <Search />}
+        {(currentPage !== 'Home'
+         && currentPage !== 'Cart'
+         && currentPage !== 'ProductDetails'
+        ) && <Search />}
         <div className="actions__block">
-          <NavLink to="/favorites" className="favourites__icon icon" />
+          <NavLink
+            to="/favorites"
+            className={(
+              { isActive },
+            ) => (isActive
+              ? 'favourites__icon icon activ-block'
+              : 'favourites__icon icon')}
+          />
         </div>
         <div className="actions__block">
-          <NavLink to="/cart" className="cart__icon icon" />
+          <NavLink
+            to="/cart"
+            className={(
+              { isActive },
+            ) => (isActive
+              ? 'cart__icon icon activ-block'
+              : 'cart__icon icon')}
+          />
         </div>
       </div>
     </header>
