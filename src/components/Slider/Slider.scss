@@ -1,0 +1,39 @@
+@import '../../App.scss';
+
+.slider {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    gap: 16px;
+
+    &__button {
+      height: 400px;
+      width: 32px;
+      border: 1px solid $icons-color;
+    }
+
+    &__image {
+      flex: 1;
+      background-repeat: no-repeat;
+      background: url(../../../public/_new/img/banner-phones.png);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    padding-top: 18px;
+
+    &-dot {
+      width: 14px;
+      height: 4px;
+      background-color: black;
+    }
+  }
+}

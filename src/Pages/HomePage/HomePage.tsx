@@ -1,7 +1,8 @@
+import { Slider } from '../../components/Slider';
 import './HomePage.scss';
 
 export const HomePage = () => (
   <div className="homePage">
-    <p>home</p>
+    <Slider />
   </div>
 );
