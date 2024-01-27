@@ -11,6 +11,9 @@
 
   &>hr {
     margin-block: 16px;
+    background-color: var(--c-elements);
+    height: 1px;
+    border: none;
   }
 
   &__content {

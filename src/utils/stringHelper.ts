@@ -1,3 +1,3 @@
 export function capitalize(str: string) {
-  return str[0].toLocaleUpperCase() + str.slice(1);
+  return str.replace(/\b\w/g, match => match.toUpperCase());
 }

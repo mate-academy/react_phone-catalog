@@ -1,7 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Product } from '../../definitions/types/Product';
-import { getProducts } from '../../api/products';
-import { Category } from "../../definitions/enums/Category";
+import { Product } from '../../../definitions/types/Product';
+import { getProducts } from '../../../api/products';
+import { Category } from "../../../definitions/enums/Category";
 
 type ProductState = {
   loading: boolean,

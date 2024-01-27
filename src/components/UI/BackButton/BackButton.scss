@@ -1,17 +1,16 @@
 .back-button {
   display: flex;
+  align-items: center;
+  width: min-content;
   gap: 4px;
+  color: var(--c-secondary);
 
-  &>img {
-    height: 16px;
-    aspect-ratio: 1;
-    object-fit: cover;
-    object-position: center;
+  &:hover {
+    color: var(--c-primary);
   }
 
   &>span {
-    color: var(--c-secondary);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
   }
 }

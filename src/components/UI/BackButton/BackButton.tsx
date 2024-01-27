@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 
-export const BackButton: React.FC = memo(() => {
-  return (
-    <Link to=".." className="back-button">
-      <img src="./img/icons/arrow-left-icon.svg" alt="" />
+import './BackButton.scss';
+import ArrowIcon from '../ArrowIcon';
 
-      <span>Back</span>
-    </Link>
-  );
-});
+interface Props {
+  className?: string,
+}
+
+export const BackButton: React.FC<Props> = memo(({className}) => (
+  <Link to=".." className={`back-button ${className || ''}`} >
+    <ArrowIcon className='back-button__icon'/>
+
+    <span>Back</span>
+  </Link>
+));

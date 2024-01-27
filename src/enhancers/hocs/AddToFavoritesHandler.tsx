@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { ProductId } from '../../definitions/types/Product';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { favoritesActions } from '../../store/slices/favoritesSlice';
+import { useAppDispatch, useAppSelector } from '../../store/redux/hooks';
+import { favoritesActions } from '../../store/redux/slices/favoritesSlice';
 
 export interface AddToFavoritesHandlerRenderProps {
   onClick?: () => void,
@@ -18,13 +18,13 @@ export const AddToFavoritesHandler: React.FC<Props> = memo(({
   render,
 }) => {
   const dispatch = useAppDispatch();
-  const favorites = useAppSelector(state => state.favorites);
+  const favorites = useAppSelector(state => state.favorites.ids);
 
   if (productId === null) {
     return render({ selected: false });
   }
 
-  const isFavorite = Object.hasOwn(favorites, productId);
+  const isFavorite = favorites.includes(productId);
 
   const toggleProductInFavorites = useCallback(() => {
     dispatch(

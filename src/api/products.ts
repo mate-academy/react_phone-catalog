@@ -28,8 +28,6 @@ export const getSimilarProducts = async (
     }
   }
 
-  console.log('This ids were fetched', productsIds);
-
   try {
     const products = await Promise.all(
       productsIds.map(id => getProductById(category, id))

@@ -31,7 +31,12 @@ html {
 
 .main {
   display: flex;
+  flex-direction: column;
   align-self: center;
   width: 80%;
   max-width: 1136px;
+
+  &__bread-crumbs {
+    margin-block: 24px;
+  }
 }

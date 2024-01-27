@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { cartActions } from '../../store/slices/cartSlice';
+import { useAppDispatch, useAppSelector } from '../../store/redux/hooks';
+import { cartActions } from '../../store/redux/slices/cartSlice';
 
 export interface AddToCartHandlerRenderProps {
   onClick?: () => void,
@@ -23,10 +23,11 @@ export const AddToCartHandler: React.FC<Props> = memo(({
   if (productId === null) {
     return render({ children: 'Add to cart' })
   }
-
-  const isInCart = Object.hasOwn(cart, productId);
-
+  
+  const isInCart = cart.includes(productId);
+  
   const toggleProductInCart = useCallback(() => {
+    console.log(isInCart);
     dispatch(
       isInCart
         ? cartActions.remove(productId)

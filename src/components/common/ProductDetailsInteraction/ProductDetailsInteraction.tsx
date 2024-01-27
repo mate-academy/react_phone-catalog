@@ -80,7 +80,7 @@ export const ProductDetailsInteraction: React.FC<Props> = ({
 
         <div className={`${BASE_CLASS}__buttons`}>
           <AddToCartHandler
-            productId={null}
+            productId={product.id}
             render={(props) => (
               <GraySelectButton
                 extraClasses={`${BASE_CLASS}__add-to-cart`}
@@ -90,7 +90,7 @@ export const ProductDetailsInteraction: React.FC<Props> = ({
           />
 
           <AddToFavoritesHandler
-            productId={null}
+            productId={product.id}
             render={(props) => (
               <SquareSelectLikeButton
                 extraClasses={`${BASE_CLASS}__add-to-favorites`}

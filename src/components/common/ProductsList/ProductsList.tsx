@@ -8,10 +8,17 @@ interface Props {
   products: Product[],
 }
 
-export const ProductsList: React.FC<Props> = memo(({ products }) => (
-  <section className="products-list">
-    {products.map(product => (
-      <ProductCard key={product.id} product={product} />
-    ))}
-  </section>
-));
+export const ProductsList: React.FC<Props> = memo(({ products }) => {
+
+  if (!products.length) {
+    return <p>No products yet</p>
+  }
+
+  return (
+    <section className="products-list">
+      {products.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </section>
+  )
+});

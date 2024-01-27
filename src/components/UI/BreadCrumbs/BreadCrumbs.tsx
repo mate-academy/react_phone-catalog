@@ -1,31 +1,47 @@
 import React, { memo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { PAGE } from '../../../definitions/enums/Router';
-import { capitalize } from '../../../utils/stringHelper';
 
-export const BreadCrumbs: React.FC = memo(() => {
-  const location = useLocation();
-  // const { } = useParams();
-  const breadCrumbs = location.pathname.slice(1).split('/');
-  const category = breadCrumbs[0];
+import './BreadCrumbs.scss';
+import { useBreadCrumbs } from '../../../enhancers/hooks/breadCrumbs';
+import ArrowIcon from '../ArrowIcon';
+
+interface Props {
+  className?: string,
+}
+
+export const BreadCrumbs: React.FC<Props> = memo(({ className }) => {
+  const breadCrumbs = useBreadCrumbs();
+
+  if (!breadCrumbs.length) {
+    return <></>;
+  }
 
   return (
-    <ul>
-      <li>
-        <Link to={PAGE.Home}>
+    <ul className={`bread-crumbs ${className || ''}`}>
+      <li className='bread-crumbs__item'>
+        <Link to={PAGE.Home} className='bread-crumbs__link'>
           <img src="./img/icons/home-icon.svg" alt="home icon" />
         </Link>
+
+        <ArrowIcon className='bread-crumbs__arrow' fill='var(--c-tips)' />
       </li>
-      <img src="./img/icons/arrow-right-icon.svg" alt="arrow icon" />
-      <li>
-        <Link to={breadCrumbs[0]}>
-          {capitalize(category)}
-        </Link>
-      </li>
-      <img src="./img/icons/arrow-right-icon.svg" alt="arrow icon" />
-      <li>
-        <Link to={location.pathname} />
-      </li>
-    </ul>
+
+      {breadCrumbs.map(({ link, name, isActive }, index) => {
+        const isLast = index === breadCrumbs.length - 1;
+        const classes = 'bread-crumbs__item' +
+          (isActive ? ' bread-crumbs__item--active' : '');
+
+        return (
+          <li className={classes} key={link}>
+            <Link to={link}>{name}</Link>
+
+            {!isLast && (
+              <ArrowIcon className='bread-crumbs__arrow' fill='var(--c-tips)' />
+            )}
+          </li>
+        );
+      })}
+    </ul >
   );
 });

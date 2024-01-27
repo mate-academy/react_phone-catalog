@@ -7,29 +7,34 @@ import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import FavoritesPage from './pages/FavoritesPage';
-import { store } from './store/store';
+import { store } from './store/redux/store';
 import ProductPage from './pages/ProductPage';
 import ErrorMessage from './components/common/ErrorMessage';
+import { ErrorProvider } from './store/contexts/ErrorContext';
 
 createRoot(document.getElementById('root') as HTMLElement)
   .render(
     <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route element={<App />}>
-            <Route index path={PAGE.Home} element={<HomePage />} />
-            <Route path={PAGE.Cart} element={<CartPage />} />
-            <Route path={PAGE.Favorites} element={<FavoritesPage />} />
+      <ErrorProvider>
+        <Router>
+          <Routes>
+            <Route path={PAGE.Home} element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route path={PAGE.Cart} element={<CartPage />} />
+              <Route path={PAGE.Favorites} element={<FavoritesPage />} />
 
-            <Route path=":category" element={<ProductsPage />} />
-            <Route path=":category/:productId" element={<ProductPage />} />
+              <Route path=":category">
+                <Route index element={<ProductsPage />} />
+                <Route path=":productId" element={<ProductPage />} />
+              </Route>
 
-            <Route
-              path="*"
-              element={<ErrorMessage message='Resource not found. Please check URL.' />}
-            />
+              <Route
+                path="*"
+                element={<ErrorMessage message='Resource not found. Please check URL.' />}
+              />
             </Route>
-        </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </ErrorProvider>
     </Provider>,
   );

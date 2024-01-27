@@ -24,8 +24,6 @@ export const ProductDetailsComponent: React.FC<Props> = memo(({
     return <ProductDetailsComponentPlaceholder />;
   }
 
-  console.log(product);
-
   const specs = getSpecArrayFromProduct(product);
 
   const changeProductCallbacks = useMemo(() => {

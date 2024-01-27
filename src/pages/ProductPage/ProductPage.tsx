@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react';
-import BreadCrumbs from '../../components/UI/BreadCrumbs';
 import BackButton from '../../components/UI/BackButton';
 import { useAppParams } from '../../enhancers/hooks/appParams';
 import { getProductById, getSimilarProducts } from '../../api/products';
@@ -8,6 +7,8 @@ import { useRequest } from '../../enhancers/hooks/request';
 import ErrorMessage from '../../components/common/ErrorMessage';
 import { ProductDetails } from '../../definitions/types/ProductDetails';
 import { useNavigate } from 'react-router-dom';
+
+import './ProductPage.scss';
 
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
@@ -41,13 +42,9 @@ export const ProductPage: React.FC = memo(() => {
     return <ErrorMessage message={error} />;
   }
 
-  console.log(product);
-
   return (
     <div className="product-page">
-      <BreadCrumbs />
-
-      <BackButton />
+      <BackButton className='product-page__back-button'/>
 
       <ProductDetailsComponent product={product} changeProduct={changeProduct} />
 

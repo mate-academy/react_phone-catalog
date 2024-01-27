@@ -29,7 +29,6 @@ export const OptionsToggler: React.FC<Props> = memo(({
   const setOption = (option: string) => () => {
     setCurrentOption(option);
     onOptionChange(option);
-    console.log('Option was changed:', option);
   };
 
   return (

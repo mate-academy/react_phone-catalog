@@ -21,15 +21,15 @@ export const Navbar: React.FC = memo(() => {
         Home
       </NavLink>
 
-      <NavLink to={Category.Phones} className={getClasses}>
+      <NavLink to={Category.Phones} className={getClasses} end>
         Phones
       </NavLink>
 
-      <NavLink to={Category.Tablets} className={getClasses}>
+      <NavLink to={Category.Tablets} className={getClasses} end>
         Tablets
       </NavLink>
 
-      <NavLink to={Category.Accessories} className={getClasses}>
+      <NavLink to={Category.Accessories} className={getClasses} end>
         Accessories
       </NavLink>
     </nav>

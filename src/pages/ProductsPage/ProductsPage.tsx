@@ -1,12 +1,12 @@
 import React, { memo, useEffect } from 'react';
-import BreadCrumbs from '../../components/UI/BreadCrumbs';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/redux/hooks';
 import ProductsList from '../../components/common/ProductsList';
 import './ProductsPage.scss';
-import { productsActions } from '../../store/slices/productsSlice';
+import { productsActions } from '../../store/redux/slices/productsSlice';
 import Loader from '../../components/UI/Loader';
 import { useAppParams } from '../../enhancers/hooks/appParams';
 import ErrorMessage from '../../components/common/ErrorMessage';
+import { capitalize } from '../../utils/stringHelper';
 
 export const ProductsPage: React.FC = memo(() => {
   const { category } = useAppParams();
@@ -23,9 +23,7 @@ export const ProductsPage: React.FC = memo(() => {
 
   return (
     <div className="products-page">
-      <BreadCrumbs />
-
-      <h2>Products Page</h2>
+      <h2 className='products-page__title'>{capitalize(category)}</h2>
 
       {loading && <Loader size={100} className="products-page__loader" />}
       {!loading && <ProductsList products={products} />}
