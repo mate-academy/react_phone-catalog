@@ -1,14 +1,34 @@
+$slider-img-height: 400px;
+$slider-img-height-tablet: 188px;
+
+// @include onTablet {
+//   $slider-img-height-tablet: 188px;
+// }
+
 .swiper-container {
-  width: 100%;
+  max-width: 100%;
   height: 432px;
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  grid-template-rows: 400px 1fr;
+
+  @include onTablet {
+    height: 220px;
+  }
+
+  @include pageGrid;
+
+  grid-template-rows: $slider-img-height 1fr;
+
+  @include onTablet {
+    grid-template-rows: $slider-img-height 1fr;
+  }
+
   row-gap: 8px;
 }
 
 .swiper-wrapper {
   padding-inline-start: 0;
+  @include onTablet {
+    height: $slider-img-height-tablet;
+  }
 }
 
 .swiper-button-next::after,
@@ -62,19 +82,32 @@
 
 .swiper-slide,
 .swiper-slide-active {
-  display: grid;
-  column-gap: 16px;
-  grid-template-columns: repeat(24, 1fr);
+  @include pageGrid;
   place-items: center;
-  position: relative;
-  align-items: center;
+  // position: relative;
+  // align-items: center;
   overflow: hidden;
+  // height: $slider-img-height;
+
+  @include onTablet {
+    height: $slider-img-height-tablet;
+  }
 }
 
 .swiper-image {
-  grid-column: 2 / 24;
-  position: absolute;
   width: 100%;
+  height: $slider-img-height;
+  object-fit: cover;
+
+  grid-column: 2 / 24;
+
+  @include onTablet {
+    grid-column: 2 / 12;
+    height: $slider-img-height-tablet;
+    // object-position: top;
+  }
+
+  aspect-ratio: 13 / 5;
 }
 
 .swiper-pagination-bullet-active {

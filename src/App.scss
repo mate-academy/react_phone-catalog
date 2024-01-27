@@ -36,14 +36,18 @@ iframe {
   display: none;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   font-family: Mont;
   color: $gray-primary;
 
-  display: grid;
-  grid-template-rows: 96px 1fr 96px;
-  row-gap: 80px;
-  height: 100%;
+  // display: grid;
+  // grid-template-rows: 96px 1fr 96px;
+  // row-gap: 80px;
+  // height: 100%;
   min-height: 100vh;
 }
 
@@ -75,7 +79,6 @@ iframe {
   grid-template-columns: repeat(24, 1fr);
   column-gap: 16px;
   margin-bottom: 50px;
-
 }
 
 .option-container {

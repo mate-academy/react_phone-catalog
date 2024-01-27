@@ -1,12 +1,14 @@
 .container {
-  max-width: 1136px;
-  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: -40px;
+  // margin-top: -40px;
+  padding-inline: 32px;
+  min-height: calc(100vh - #{$footer-height} - #{$header-height} - #{$header-margine-bottom});
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
   gap: 80px;
+  // height: 100vh - $footer-height - $header-height;
 }

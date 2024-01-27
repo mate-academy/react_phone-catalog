@@ -8,6 +8,7 @@
   padding-left: 24px;
   box-shadow: 0px 1px 0px 0px $shadow-color;
   height: 64px;
+  margin-bottom: $header-margine-bottom;
 }
 
 .top-bar {
@@ -122,7 +123,6 @@
     &--active {
       color: $gray-primary;
     }
-
 
     &--active::before {
       content: "";

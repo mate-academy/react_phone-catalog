@@ -7,10 +7,30 @@
     }
 }
 
+@mixin onTablet {
+  @media (max-width: $min-desctop-width) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: $min-tablet-width) {
+    @content;
+  }
+}
+
 @mixin pageGrid {
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onMobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @mixin h1 {
@@ -57,3 +77,4 @@
     transform: scale($scale-value);
   }
 }
+
