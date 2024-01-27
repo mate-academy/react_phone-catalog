@@ -9,12 +9,12 @@ import { BASE_URL } from '../../utils/httpClient';
 type Props = {
   product: Product;
 };
-
+/* eslint no-console: "warn" */
 export const ProductCard: React.FC<Props> = React.memo(
   ({
     product,
   }) => {
-    console.info('render');// eslint-disable-line no-console
+    console.info('render');
     const location = useLocation();
     const [searchParams] = useSearchParams();
 

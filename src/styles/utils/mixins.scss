@@ -53,6 +53,7 @@
     // column-gap: 30px;
   }
 }
+
 /*#endregion*/
 
 /*#region Transition*/
@@ -88,6 +89,7 @@
     #{$property}: #{$toValue};
   }
 }
+
 /*#endregion*/
 
 /*#region Font*/
@@ -121,6 +123,18 @@
   font-weight: 600;
   line-height: 26px;
   letter-spacing: 0em;
+}
+
+@mixin fontBodyText14() {
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+@mixin fontButtons() {
+  @include fontSectionItemInfoTitle();
 }
 
 @mixin fontSectionItemTitle() {
@@ -160,4 +174,5 @@
   font-size: 14px;
   line-height: 21px;
 }
+
 /*#endregion*/

@@ -1,10 +1,9 @@
+import { useCallback } from 'react';
 import {
   Link,
   useSearchParams,
 } from 'react-router-dom';
-import cn from 'classnames';
 
-import { TyChangeEvtSelectElmt } from '../../types/General';
 import { Product } from '../../types/Product';
 
 import { ProductCard } from '../../components/ProductCard';
@@ -17,12 +16,32 @@ import {
 } from '../../helpers/searchHelper';
 
 import './ProductCategoryPage.scss';
+import { Dropdown, TyDropdownOption } from '../../components/Dropdown';
 
 enum SortBy {
   age = 'year',
   name = 'name',
   price = 'price',
 }
+
+const sortByOptions: TyDropdownOption[]
+= [[SortBy.age, 'Newest'],
+  [SortBy.name, 'Alphabetically'],
+  [SortBy.price, 'Cheapest']]
+  .map(item => ({
+    value: item[0],
+    content: item[1],
+  }));
+
+const itemsPerPageOptions: TyDropdownOption[]
+= [['', 'All'],
+  ['4', '4'],
+  ['8', '8'],
+  ['16', '16']]
+  .map(item => ({
+    value: item[0],
+    content: item[1],
+  }));
 
 type Props = {
   pageTitle: string;
@@ -42,9 +61,9 @@ export const ProductCategoryPage: React.FC<Props> = ({
   const crntPage = searchParams.get(SearchParamsName.PAGE);
   const crntPageNorm = crntPage ? Math.floor(+crntPage) : 1;
 
-  function setSearchWith(params: SearchParams) {
+  const setSearchWith = useCallback((params: SearchParams) => {
     setSearchParams(getSearchWith(searchParams, params));
-  }
+  }, [setSearchParams, searchParams]);
 
   const preparedQuery = query.trim().toLowerCase();
   const visibleProducts = [...products]
@@ -83,16 +102,16 @@ export const ProductCategoryPage: React.FC<Props> = ({
     setSearchWith({ [SearchParamsName.PAGE]: page.toString() });
   };
 
-  const handleSortChange = (event: TyChangeEvtSelectElmt) => {
+  const handleSortChange = (value: string) => {
     setSearchWith({
-      [SearchParamsName.SORT]: event.target.value || null,
+      [SearchParamsName.SORT]: value || null,
       [SearchParamsName.PAGE]: '1',
     });
   };
 
-  const handleItemsPerPageChange = (event: TyChangeEvtSelectElmt): void => {
+  const handleItemsPerPageChange = (value: string): void => {
     setSearchWith({
-      [SearchParamsName.ITEM_PER_PAGE]: event.target.value || null,
+      [SearchParamsName.ITEM_PER_PAGE]: value || null,
       [SearchParamsName.PAGE]: '1',
     });
   };
@@ -124,49 +143,14 @@ export const ProductCategoryPage: React.FC<Props> = ({
                 Sort Order:
               </label>
 
-              <div className="select__arrow select__arrow--down">
-                <select
-                  id="sortOrder"
-                  value={sortBy}
+              <div className="
+            ProductCategoryPage__selection__dropdown--order"
+              >
+                <Dropdown
+                  selectedValue={sortBy}
+                  options={sortByOptions}
                   onChange={handleSortChange}
-                  className="
-            ProductCategoryPage__selection__select
-            ProductCategoryPage__selection__select--order"
-                >
-                  <option
-                    value={SortBy.age}
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        SortBy.age !== sortBy,
-                      'ProductCategoryPage__selection__option--selected':
-                        SortBy.age === sortBy,
-                    })}
-                  >
-                    Newest
-                  </option>
-                  <option
-                    value={SortBy.name}
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        SortBy.name !== sortBy,
-                      'ProductCategoryPage__selection__option--selected':
-                        SortBy.name === sortBy,
-                    })}
-                  >
-                    Alphabetically
-                  </option>
-                  <option
-                    value={SortBy.price}
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        SortBy.price !== sortBy,
-                      'ProductCategoryPage__selection__option--selected':
-                        SortBy.price === sortBy,
-                    })}
-                  >
-                    Cheapest
-                  </option>
-                </select>
+                />
               </div>
             </div>
 
@@ -178,60 +162,14 @@ export const ProductCategoryPage: React.FC<Props> = ({
                 Items Per Page:
               </label>
 
-              <div className="select__arrow select__arrow--down">
-                <select
-                  id="itemsPerPage"
-                  value={itemsPerPage}
+              <div className="
+            ProductCategoryPage__selection__dropdown--item-per-page"
+              >
+                <Dropdown
+                  selectedValue={itemsPerPage}
+                  options={itemsPerPageOptions}
                   onChange={handleItemsPerPageChange}
-                  className="
-            ProductCategoryPage__selection__select
-            ProductCategoryPage__selection__select--item-per-page"
-                >
-                  <option
-                    value=""
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        itemsPerPage !== '',
-                      'ProductCategoryPage__selection__option--selected':
-                        itemsPerPage === '',
-                    })}
-                  >
-                    All
-                  </option>
-                  <option
-                    value="4"
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        itemsPerPage !== '4',
-                      'ProductCategoryPage__selection__option--selected':
-                        itemsPerPage === '4',
-                    })}
-                  >
-                    4
-                  </option>
-                  <option
-                    value="8"
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        itemsPerPage !== '8',
-                      'ProductCategoryPage__selection__option--selected':
-                        itemsPerPage === '8',
-                    })}
-                  >
-                    8
-                  </option>
-                  <option
-                    value="16"
-                    className={cn('ProductCategoryPage__selection__option', {
-                      'ProductCategoryPage__selection__option--default':
-                        itemsPerPage !== '16',
-                      'ProductCategoryPage__selection__option--selected':
-                        itemsPerPage === '16',
-                    })}
-                  >
-                    16
-                  </option>
-                </select>
+                />
               </div>
             </div>
           </div>

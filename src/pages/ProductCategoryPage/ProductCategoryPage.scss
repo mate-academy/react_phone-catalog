@@ -68,21 +68,7 @@
       color: $secondary-color;
     }
 
-    &__select {
-      position: relative;
-      // height: 45px;
-      padding: 12px;
-      text-align: left;
-      border: 1px solid $icons-color;
-      outline: none;
-
-      @include fontSectionItemInfoTitle;
-
-      color: $primary-color;
-      cursor: pointer;
-
-      @include hoverTransition(border-color, $primary-color, $effectDurationNormal);
-
+    &__dropdown {
       &--order {
         width: 150px;
 
@@ -99,21 +85,21 @@
         }
       }
     }
-// https://jsfiddle.net/QSkUR/1/
-    &__option {
-      @include fontSectionItemInfoTitle;
-      font-family: "Mont";
-      font-weight: 500;
-      cursor: pointer;
 
-      &--default {
-        color: $secondary-color;
-      }
+    // &__option {
+    //   @include fontSectionItemInfoTitle;
+    //   font-family: "Mont";
+    //   font-weight: 500;
+    //   cursor: pointer;
 
-      &--selected {
-        color: $primary-color;
-      }
-    }
+    //   &--default {
+    //     color: $secondary-color;
+    //   }
+
+    //   &--selected {
+    //     color: $primary-color;
+    //   }
+    // }
   }
 
   &__error {
