@@ -1,7 +1,7 @@
 import { LocaleStorage } from '../../definitions/enums/LocaleStorage';
-import { createLocaleStorageProductsSlice } from '../utils/createLocaleStorageProductsSlice';
+import { getLocaleStorageParamsForProductsSlices } from '../utils/createLocaleStorageProductsSlice';
 
-const favoritesSlice = createLocaleStorageProductsSlice({
+const favoritesSlice = getLocaleStorageParamsForProductsSlices({
   name: 'favorites',
   key: LocaleStorage.Favorites,
 });

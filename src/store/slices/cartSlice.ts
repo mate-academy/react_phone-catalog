@@ -1,7 +1,7 @@
 import { LocaleStorage } from '../../definitions/enums/LocaleStorage';
-import { createLocaleStorageProductsSlice } from '../utils/createLocaleStorageProductsSlice';
+import { getLocaleStorageParamsForProductsSlices } from '../utils/createLocaleStorageProductsSlice';
 
-const cartSlice = createLocaleStorageProductsSlice({
+const cartSlice = getLocaleStorageParamsForProductsSlices({
   name: 'cart',
   key: LocaleStorage.Cart,
 });

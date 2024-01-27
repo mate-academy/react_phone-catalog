@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { ReducerCreators, createSlice } from '@reduxjs/toolkit';
 import { storage } from '../../utils/localStorageHelper';
 import { Product, ProductId } from '../../definitions/types/Product';
 import { LocaleStorage } from '../../definitions/enums/LocaleStorage';
 import { Category } from '../../definitions/enums/Category';
 import { getProducts } from '../../api/products';
 
-interface LocaleState {
+export interface LocaleState {
   ids: ProductId[],
   items: Product[],
 }
@@ -21,7 +21,7 @@ const initState = (key: LocaleStorage): LocaleState => {
   return {
     ids: productIds,
     items: [],
-  } as LocaleState;
+  };
 };
 
 export function getLocaleStorageParamsForProductsSlices(options: Options) {
@@ -30,7 +30,7 @@ export function getLocaleStorageParamsForProductsSlices(options: Options) {
   const slice = createSlice({
     name: name,
     initialState: () => initState(key),
-    reducers: (create) => ({
+    reducers: (create: ReducerCreators<LocaleState>) => ({
       add: create.asyncThunk(
         async (productId: ProductId) => {
           storage.push<ProductId>(key, productId);
