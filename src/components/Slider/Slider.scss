@@ -1,7 +1,6 @@
-@import '../../App.scss';
+@import '../../App';
 
 .slider {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,8 +17,7 @@
 
     &__image {
       flex: 1;
-      background-repeat: no-repeat;
-      background: url(../../../public/_new/img/banner-phones.png);
+      background: url(../../../public/_new/img/banner-phones.png) no-repeat;
     }
   }
 
