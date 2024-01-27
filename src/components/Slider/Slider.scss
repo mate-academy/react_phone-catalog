@@ -1,0 +1,17 @@
+@import '../../styles/utils/main.scss';
+
+.Slider {
+  &__container {
+    overflow: hidden;
+  }
+
+  &__imgs {
+    display: flex;
+
+    &--transition {
+      transition-property: transform;
+      transition-duration: $effectDurationNormal;
+      transition-timing-function: ease-in-out;
+    }
+  }
+}

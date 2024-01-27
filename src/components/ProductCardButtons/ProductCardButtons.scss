@@ -1,0 +1,48 @@
+@import '../../styles/utils/main.scss';
+
+.ProductCardButtons {
+  &__container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    padding-top: 16px;
+  }
+
+  &__button {
+    &__cart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      border: 1px solid $elements-color;
+      background-color: $primary-color;
+      color: $white-color;
+      cursor: pointer;
+      @include fontSectionItemInfoTitle;
+      font-family: "Mont";
+
+      &--active {
+        background-color: $white-color;
+        color: $green-color;
+      }
+    }
+
+    &__fav {
+      height: 40px;
+      width: 40px;
+      border: 1px solid $icons-color;
+      background-color: $white-color;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    display: block;
+    margin: auto;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}

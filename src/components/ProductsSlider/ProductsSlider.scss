@@ -1,0 +1,54 @@
+@import '../../styles/utils/main.scss';
+
+.ProductsSlider {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    @include fontSectionTitle;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+
+    &--defualt {
+      border-color: $icons-color;
+
+      @include hoverTransition(border-color, $primary-color, $effectDurationNormal);
+      @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
+    }
+
+    &--disabled {
+      border-color: $elements-color;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

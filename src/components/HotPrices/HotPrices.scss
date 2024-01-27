@@ -1,0 +1,12 @@
+@import "../../styles/utils/main.scss";
+
+.HotPrices {
+  &__container {
+    margin-top: 40px;
+    width: 100%;
+
+    @include onTablet {
+      margin-top: 72px;
+    }
+  }
+}

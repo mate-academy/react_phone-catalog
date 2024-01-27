@@ -1,1 +1,20 @@
-// not empty
+.App {
+  cursor: url('./images/icons/icon-cursor-mouse.png'), auto;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+
+  // &__container {
+  //   display: grid;
+  //   grid-template: auto 1fr auto;
+  //   min-height: 100vh;
+  // }
+
+  &__top {
+    margin-bottom: 80px;
+  }
+}

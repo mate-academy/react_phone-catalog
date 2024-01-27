@@ -1,0 +1,178 @@
+/*#region Media Query*/
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktopSmall {
+  @media (min-width: $desktopSmall-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin onScreen {
+  @media (min-width: $screen-min-width) {
+    @content;
+  }
+}
+
+@mixin onScreenLarge {
+  @media (min-width: $screenLarge-min-width) {
+    @content;
+  }
+}
+
+/*#endregion*/
+
+/*#region Page Base Grid*/
+@mixin pageGrid {
+  --columns: 6;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  column-gap: $product-card-gap;
+
+  @include onTablet {
+    --columns: 12;
+    // column-gap: 30px;
+  }
+
+  @include onDesktopSmall {
+    --columns: 18;
+    // column-gap: 20px;
+  }
+
+  @include onDesktop {
+    --columns: 24;
+    // column-gap: 30px;
+  }
+}
+
+/*#endregion*/
+
+/*#region Transition*/
+@mixin generalTtransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  #{$property}: #{$toValue};
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+}
+
+@mixin hoverTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+
+  &:hover {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin activeTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+
+  &:active {
+    #{$property}: #{$toValue};
+  }
+}
+
+@mixin targetTransition($property: all, $toValue: none, $inTime: $effectDurationNormal) {
+  transition-property: #{$property};
+  transition-duration: #{$inTime};
+
+  &:target {
+    #{$property}: #{$toValue};
+  }
+}
+
+/*#endregion*/
+
+/*#region Font*/
+@mixin fontLinkTitle() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin fontSectionTitle() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin fontH2() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0em;
+}
+
+@mixin fontH3() {
+  font-family: "Mont", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0em;
+}
+
+@mixin fontBodyText14() {
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+@mixin fontButtons() {
+  @include fontSectionItemInfoTitle();
+}
+
+@mixin fontSectionItemTitle() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+@mixin fontSectionItemInfoTitle() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+@mixin fontSectionItemInfo() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0em;
+}
+
+@mixin fontIconCounter() {
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0em;
+}
+
+@mixin fontCardName() {
+  font-family: "Mont", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/*#endregion*/

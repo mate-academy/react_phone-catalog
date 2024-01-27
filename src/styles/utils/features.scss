@@ -1,0 +1,41 @@
+.mark__border {
+  border: 1px solid red;
+}
+
+.select__arrow {
+  position: relative;
+  width: fit-content;
+
+  &>select {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &--down {
+    &::after {
+      background-image: url('../../images/icons/icon-arrow-down.svg');
+    }
+  }
+
+  &--up {
+    &::after {
+      background-image: url('../../images/icons/icon-arrow-up.svg');
+    }
+  }
+
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 4px;
+
+    display: block;
+    height: 16px;
+    width: 16px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,63 @@
+@import '../../styles/utils/main.scss';
+
+.BurgerMenu {
+
+  @include onDesktopSmall {
+    display: none;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    cursor: pointer;
+    border: 1px solid $page-bckgrd-color;
+    background-color: $page-bckgrd-color;
+  }
+}
+
+.AsideMenu {
+  position: fixed;
+  /*strach */
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  opacity: 0;
+  background-color: $page-bckgrd-color;
+  pointer-events: none;
+  transform: translateX(-100%);
+  /*smooth disappear*/
+  transition-property: transform, opacity;
+  transition-duration: $effectDurationNormal;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &--open {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0%);
+    pointer-events: all;
+    transition-property: transform, opacity;
+    transition-duration: $effectDurationNormal;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    color: $primary-color;
+  }
+
+  &__link {
+    padding-block: 20px;
+  }
+}

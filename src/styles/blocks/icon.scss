@@ -1,0 +1,76 @@
+@import '../utils/mixins.scss';
+
+.icon {
+  display: block;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &--big {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--logo {
+    background-image: url('../../images/logo/logo.svg');
+  }
+
+  &--close {
+    background-image: url('../../images/icons/icon-close.svg');
+  }
+
+  &--menu {
+    background-image: url('../../images/icons/icon-burger-menu.svg');
+
+    @include hoverTransition(background-image,
+      url('../../images/icons/icon-burger-menu-hover.svg'),
+      0.3s);
+  }
+
+  &--favourites {
+    background-image: url('../../images/icons/icon-favourites.svg');
+  }
+
+  &--favourites-fill {
+    background-image: url('../../images/icons/icon-favourites-fill.svg');
+  }
+
+  &--bag {
+    background-image: url('../../images/icons/icon-bag.svg');
+  }
+
+  &--home {
+    background-image: url('../../images/icons/icon-home.svg');
+  }
+
+  &--search {
+    background-image: url('../../images/icons/icon-search.svg');
+  }
+
+  &--arrow-right {
+    background-image: url("../../images/icons/icon-arrow-right.svg");
+  }
+
+  &--arrow-left {
+    background-image: url("../../images/icons/icon-arrow-left.svg");
+  }
+
+  &--arrow-up {
+    background-image: url("../../images/icons/icon-arrow-up.svg");
+  }
+
+  &--arrow-down {
+    background-image: url("../../images/icons/icon-arrow-down.svg");
+  }
+
+  &--plus {
+    background-image: url("../../images/icons/icon-plus.svg");
+  }
+
+  &--minus {
+    background-image: url("../../images/icons/icon-minus.svg");
+  }
+}

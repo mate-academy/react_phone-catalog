@@ -1,0 +1,19 @@
+@import '../../styles/utils/main.scss';
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.dot {
+  background-color: $icons-color;
+  width: 14px;
+  height: 4px;
+  margin: 0 4px;
+
+  &--active {
+    background-color: $primary-color;
+  }
+}

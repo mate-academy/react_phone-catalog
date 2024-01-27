@@ -1,0 +1,101 @@
+@import '../../styles/utils/main.scss';
+
+.ProductCard {
+  &:hover {
+    background-color: $hover-color;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 222px;
+    height: 450px;
+    box-sizing: content-box;
+    border-radius: 10px;
+    border: 1px solid $elements-color;
+    padding-top: 32px;
+    padding-bottom: 24px;
+    padding-inline: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img {
+    display: flex;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  &__info {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  &__name {
+    width: 100%;
+    margin-top: 24px;
+    @include fontCardName;
+    color: $primary-color;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+
+    &--discount {
+      @include fontH2;
+      color: $primary-color;
+    }
+
+    &--fullPrice {
+      font-family: "Mont";
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: $primary-color;
+      text-decoration: line-through;
+    }
+  }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &--normal {
+      @include fontSectionItemInfo();
+      font-family: "Mont";
+      // font-size: 12px;
+      // font-weight: 600;
+      // line-height: 15px;
+      color: $secondary-color;
+    }
+
+    &--strong {
+      @include fontSectionItemInfo();
+      font-family: "Mont-SemiBold";
+      // font-size: 12px;
+      // font-weight: 600;
+      // line-height: 15px;
+      color: $primary-color;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    padding-top: 7px;
+    border-bottom: 1px solid $elements-color;
+  }
+}

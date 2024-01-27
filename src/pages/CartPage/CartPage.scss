@@ -1,0 +1,212 @@
+@import "../../styles/utils/main.scss";
+
+.CartPage {
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onDesktopSmall {
+      flex-direction: row;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    height: fit-content;
+    border: 1px solid $elements-color;
+
+    &__info {
+      @include fontCardName;
+      color: $secondary-color;
+      text-align: center;
+    }
+
+    &__hr {
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-block: 24px;
+      border: none;
+      background-color: $elements-color;
+    }
+
+    &__button {
+      width: 100%;
+      height: 48px;
+
+      @include onDesktop {
+        width: 320px;
+      }
+    }
+
+    &__price {
+      text-align: center;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-self: flex-start;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  &__link {
+    text-decoration: none;
+    @include fontSectionItemInfo;
+    color: $primary-color;
+
+    &-back {
+      display: flex;
+      width: fit-content;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 40px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__item-info {
+    @include fontSectionItemInfo;
+    color: $secondary-color;
+  }
+
+  &__title {
+    margin-top: 16px;
+    align-self: flex-start;
+    @include fontSectionTitle;
+    color: $primary-color;
+  }
+
+  &__error {
+    height: 200px;
+    width: 100%;
+  }
+
+  &__CartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.CartItem {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    padding-block: 24px;
+    padding-left: 24px;
+    padding-right: 40px;
+    border: 1px solid $elements-color;
+
+    @include onDesktopSmall {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @include onDesktopSmall {
+      width: auto;
+    }
+
+    &--img {
+      justify-content: flex-start;
+
+      @include onDesktopSmall {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    text-decoration: none;
+
+    @include hoverTransition(scale, $effectScaleSmall, $effectDurationNormal);
+    @include activeTransition(scale, calc(2 - $effectScaleSmall), $effectDurationNormal);
+  }
+
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__name {
+    width: 100%;
+    @include fontCardName;
+    color: #313237;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+
+    &--delete {
+      width: 16px;
+      height: 16px;
+      margin-right: 32px;
+      border: none;
+    }
+  }
+
+  &__quantity {
+    border: none;
+    @include fontCardName;
+    color: #313237;
+  }
+
+  &__price {
+    @include onDesktopSmall {
+      width: 100px;
+      text-align: right;
+    }
+  }
+}

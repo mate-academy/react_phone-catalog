@@ -1,0 +1,89 @@
+@import '../../styles/utils/main.scss';
+
+.Dropdown {
+  &__container {
+    position: relative;
+  }
+
+  &__trigger {
+    border: 1px solid $icons-color;
+    outline: none;
+
+    @include hoverTransition(border-color, $primary-color, $effectDurationNormal);
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+    background-color: $white-color;
+    cursor: pointer;
+
+    &-trigger {
+      padding: 12px;
+      @include fontButtons;
+    }
+
+    &-option {
+      justify-content: flex-start;
+      padding: 6px 12px;
+      @include fontBodyText14;
+      @include hoverTransition(background-color, $hover-color, $effectDurationNormal);
+
+      &--default {
+        color: $secondary-color;
+      }
+
+      &--selected {
+        color: $primary-color;
+      }
+    }
+  }
+
+  &__menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(4px);
+
+    transition:
+      height $effectDurationNormal,
+      opacity $effectDurationNormal,
+      transform $effectDurationNormal;
+
+    &--hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition:
+        height $effectDurationNormal,
+        opacity $effectDurationNormal,
+        transform $effectDurationNormal;
+    }
+  }
+
+  &__content {
+    display: block;
+    padding-block: 8px;
+    background-color: $white-color;
+    border: 1px solid $elements-color;
+  }
+
+  &__icon {
+    transform: scaleY(1);
+    transition:
+      transform $effectDurationNormal;
+
+    &--active {
+      transform: scaleY(-1);
+      transition:
+        transform $effectDurationNormal;
+    }
+  }
+}
