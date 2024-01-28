@@ -26,7 +26,7 @@ export const SearchLink: React.FC<Props> = ({
       // to={{ search: getSearchWith(searchParams, { query: null }) }}
       // to={{ search: getSearchWith(searchParams, { centuries: ['16', '18'] }) }}
       to={{
-        search: getSearchWith(searchParams, params),
+        search: getSearchWith(searchParams, params).toString(),
       }}
       {...props} // copy all the other props
     >
