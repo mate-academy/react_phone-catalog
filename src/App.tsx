@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import './styles/index.scss';
 import { Outlet } from 'react-router-dom';
 import Header from './components/common/Header';
 import BreadCrumbs from './components/UI/BreadCrumbs';
 import { ErrorContext } from './store/contexts/ErrorContext';
 
-export const App: React.FC = () => {
+export const App: React.FC = memo(() => {
   const { error } = useContext(ErrorContext);
 
   return (
@@ -20,4 +20,4 @@ export const App: React.FC = () => {
 
     </div>
   )
-};
+});
