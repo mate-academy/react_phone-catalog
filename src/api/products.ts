@@ -7,6 +7,20 @@ export const getProducts = (category: Category) => {
   return request<Product[]>(`categories/${category}/products.json`);
 };
 
+export const getProductsByPage = (
+  category: Category,
+  { page, perPage }: { page: number, perPage: number }
+) => {
+  const PER_PAGE_ON_SERVER = 16;
+  const pageIndex = Math.ceil((page * perPage) / PER_PAGE_ON_SERVER);
+
+  return request<Product[]>(`categories/${category}/page/${pageIndex}.json`)
+};
+
+export const getProductsAmount = (category: Category) => {
+  return request<number>(`categories/${category}/amount.json`);
+};
+
 export const getProductById = (category: Category, productId: string): Promise<ProductDetails> => {
   const url = `categories/${category}/products/${productId}.json`;
 
