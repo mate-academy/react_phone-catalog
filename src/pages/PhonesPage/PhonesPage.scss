@@ -1,0 +1,51 @@
+@import "../../style/utils/mixins";
+
+.name__page {
+  color: #313237;
+  font-family: "Mont", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.count__page {
+  color: #89939a;
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  margin-bottom: 40px;
+}
+
+.sorting {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__block {
+    display: flex;
+    width: 176px;
+    height: 59px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    color: #89939a;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+  }
+}

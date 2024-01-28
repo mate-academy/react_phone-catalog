@@ -1,0 +1,22 @@
+@import "../../style/utils/mixins";
+
+.name__page {
+  color: #313237;
+  font-family: "Mont", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+
+  @include onMobile {
+    font-size: 22px;
+  }
+}
+
+.count__page {
+  color: #89939a;
+  font-family: "Mont", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}

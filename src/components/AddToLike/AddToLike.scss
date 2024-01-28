@@ -1,0 +1,33 @@
+.AddToLike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #b4bdc3;
+  transition-duration: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #e2e6e9;
+  }
+}
+
+.icon {
+  &__like {
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    &-noSelect {
+      background-image: url(../../icons/Favourites.svg);
+      background-repeat: no-repeat;
+      background-size: 16px;
+      background-position: center;
+    }
+    &-selected {
+      background-image: url(../../icons/Favourites-Filled.svg);
+      background-repeat: no-repeat;
+      background-size: 16px;
+      background-position: center;
+    }
+  }
+
+}

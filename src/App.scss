@@ -1,1 +1,45 @@
-// not empty
+@import "./style/utils/mixins";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.container {
+  margin: 40px 152px 0;
+  display: block;
+
+  @include onTablet {
+    margin: 40px 100px 0;
+  }
+
+  @include onMobile {
+    margin: 40px 30px 0;
+  }
+
+  @include onPhone {
+    margin: 40px 20px 0;
+  }
+
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  z-index: 2;
+}
+
+.footer {
+  margin-top: auto;
+}

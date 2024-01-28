@@ -1,0 +1,34 @@
+.page-slider {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  .page-slider__item {
+    display: flex;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    padding: 7px 14px;
+    margin: 0 5px;
+    border: 1px solid #e2e6e9;
+    border-radius: 4px;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    color: #000;
+    cursor: pointer;
+    transition: border 0.3s, background-color 0.3s;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  .page-slider__item.active {
+    background-color: #313237;
+    color: #fff;
+  }
+}

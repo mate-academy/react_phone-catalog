@@ -1,0 +1,301 @@
+@import "../../style/utils/mixins";
+
+.ProductDetailsPage {
+
+  &__content {
+    margin-top: 40px;
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+      gap: 46px;
+      margin-top: 24px;
+    }
+
+    @include onMobile {
+      gap: 32px;
+      margin-top: 12px;
+    }
+
+    &-imgs-wrapper {
+      display: flex;
+
+      @include onTablet {
+        gap: 92px;
+      }
+
+      @include onMobile {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        order: 1;
+      }
+    }
+  }
+
+  &__options {
+    width: 320px;
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 24px;
+
+    &-title {
+      color: #89939a;
+      font-family: "Mont", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-bottom: 8px;
+    }
+
+    &-color {
+      width: 32px;
+      height: 32px;
+      background-image: url(./black.svg);
+      background-repeat: no-repeat;
+      background-size: 32px;
+      background-position: center;
+      border-radius: 50%;
+      margin-bottom: 24px;
+    }
+
+    &-ram {
+      height: 32px;
+      background-color: #313237;
+      color: var(--Gray-White, #fff);
+      text-align: center;
+
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 32px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__actions {
+    width: 320px;
+
+    @include onMobile {
+      order: 3;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 12px;
+    }
+
+    @include onMobile {
+      flex-direction: row;
+      gap: 6px;
+      order: 2;
+      margin-bottom: 24px;
+    }
+
+    &-button {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      margin-right: 16px;
+      border: 1px solid #e2e6e9;
+      transition-duration: 0.4s;
+
+      @include onTablet {
+        width: 68px;
+        height: 68px;
+      }
+
+      @include onMobile {
+        width: 55px;
+        height: 55px;
+      }
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+      }
+    }
+
+    &-item {
+      max-height: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__current-image {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 64px;
+    overflow: hidden;
+
+    @include onDesktop {
+      margin-right: 28px;
+    }
+
+    @include onTablet {
+      width: 390px;
+      height: 390px;
+      margin-right: 0;
+    }
+
+    @include onMobile {
+      width: 300px;
+      height: 300px;
+    }
+
+    &-item {
+      max-height: 100%;
+      animation: showImage 1s ease;
+    }
+  }
+
+  &__prices {
+    font-family: "Mont", sans-serif;
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 16px;
+
+    &-now {
+      color: #313237;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.32px;
+    }
+    &-before {
+      margin-left: 8px;
+      color: #89939a;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration-line: line-through;
+
+    }
+  }
+
+  &__info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      color: #b4bdc3;
+    }
+
+    &-specification {
+      text-align: right;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__more {
+    display: flex;
+    justify-content: space-between;
+    gap: 64px;
+    margin-top: 80px;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+
+    &-about {
+      width: 50%;
+
+      @include onMobile {
+        width: 100%;
+      }
+    }
+
+    &-title {
+      color: #313237;
+      font-family: "Mont", sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      &-item {
+        padding-bottom: 16px;
+        margin-bottom: 32px;
+        border-bottom: 1px solid #e2e6e9;
+      }
+    }
+    &-description {
+      color: #89939a;
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+    }
+
+    &-tech {
+      width: 50%;
+
+      @include onMobile {
+        width: 100%;
+      }
+
+      &-content {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &-wrap {
+        display: flex;
+        justify-content: space-between;
+        font-family: "Mont-Regular", sans-serif;
+        font-size: 14px;
+        line-height: 21px;
+
+        @include onTablet {
+          font-size: 13px;
+          line-height: 18px;
+        }
+      }
+
+      &-property {
+        color: #89939a;
+      }
+    }
+
+  }
+}
+
+.image-active {
+  border: 1px solid #313237;
+}
+
+@keyframes showImage {
+  from {
+    opacity: 0.5;
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

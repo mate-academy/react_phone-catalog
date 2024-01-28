@@ -1,0 +1,69 @@
+@import "../../style/utils/mixins";
+
+.sortedProduct {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  @include onTablet {
+    gap: 10px;
+  }
+
+  @include onMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    color: #313237;
+    font-family: "Mont", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__count {
+    color: #89939a;
+    font-family: "Mont", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px; /* 150% */
+  }
+
+  &__photo {
+    max-height: 368px;
+    max-width: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      max-height: 180px;
+      max-width: 180px;
+    }
+
+    @include onMobile {
+      max-height: 368px;
+      max-width: 368px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+  }
+}

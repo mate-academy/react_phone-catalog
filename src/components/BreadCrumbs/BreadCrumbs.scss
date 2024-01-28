@@ -1,0 +1,55 @@
+.breadCrumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+  margin-bottom: 45px;
+
+  &__link {
+    color: #313237;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+
+    &:link {
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:active {
+      text-decoration: none;
+    }
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
+  &__current {
+    color: #89939a;
+    font-family: "Mont", sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}
+
+.icons {
+  width: 16px;
+  height: 16px;
+
+  &--home {
+    background-image: url(../../icons/Home.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+
+  &--bread-crumb {
+    background-image: url(../../icons/Arrow_Right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
