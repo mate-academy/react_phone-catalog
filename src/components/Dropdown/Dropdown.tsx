@@ -1,9 +1,7 @@
 import { useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { Option } from '../../types/Option';
 import { SearchLink } from '../SearchLink';
-// import { getSearchWith } from '../../helpers/searchHelper';
 
 import './Dropdown.scss';
 
@@ -19,36 +17,16 @@ export const Dropdown: React.FC<Props> = ({
   selectedOption,
 }) => {
   const [isShownList, setIsShownList] = useState(false);
-  // const [searchParams, setSearchParams] = useSearchParams();
 
   const handleShowDropdown = () => {
     setIsShownList((prev) => !prev);
   };
 
-  /* const handleSelectedOption = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    option: Option,
-  ) => {
-    event.preventDefault();
-
-    const updatedParams = {
-      [param]: option.value,
-      page: '1',
-    };
-
-    setSearchParams(getSearchWith(searchParams, updatedParams));
-    setIsShownList(false);
-  }; */
-
-  /* const handleOnBlur = () => {
-    setTimeout(() => setIsShownList(false), 150);
-  }; */
-
   const handleOnBlur = (event: React.FocusEvent) => {
     const target = event.relatedTarget as HTMLElement;
 
     if (!target || !target.closest('.dropdown__menu')) {
-      setIsShownList(false); // Закрити дропдаун при втраті фокусу
+      setIsShownList(false);
     }
   };
 

@@ -23,9 +23,6 @@ export const PhonesPage = () => {
 
   const perPage = searchParams.get('perPage') || '16';
 
-  /* eslint-disable no-console */
-  console.log(perPage, 'perPage');
-
   const phones = products.filter(
     (product: Product) => product.type === 'phone',
   );
@@ -42,39 +39,25 @@ export const PhonesPage = () => {
   const query = searchParams.get('query') || '';
   const sortBy = searchParams.get('sort') || 'age';
 
-  /* eslint-disable no-console */
-  console.log(sortBy, 'sort by');
-
   const getVisiblePhones = useCallback(() => {
     let currentPhones: Product[] = [...phones];
 
     currentPhones = currentPhones.sort((phone1, phone2) => {
       switch (sortBy) {
         case SORT.ALPHABETICALLY:
-          /* eslint-disable no-console */
-          console.log('ALPHABETICALLY');
-
           return phone1.name.localeCompare(phone2.name);
 
         case SORT.NEWEST:
-          console.log('NEWEST');
-
           return phone1.age - phone2.age;
 
         case SORT.OLDEST:
-          console.log('OLDEST');
-
           return phone2.age - phone1.age;
 
         case SORT.PRICE_LOW_TO_HIGH:
-          console.log('PRICE_LOW_TO_HIGH');
-
           return (phone1.price - phone1.discount)
               - (phone2.price - phone2.discount);
 
         case SORT.PRICE_HIGH_TO_LOW:
-          console.log('PRICE_HIGH_TO_LOW');
-
           return (phone2.price - phone2.discount)
               - (phone1.price - phone1.discount);
 
