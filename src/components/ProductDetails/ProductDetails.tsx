@@ -272,7 +272,7 @@ const ProductDetails: React.FC = () => {
 
               <div className="extra__about">
                 {detailsExtra.map(detail => (
-                  <div className="extra__about_wrapper">
+                  <div className="extra__about_wrapper" key={detail[0]}>
                     <div className="extra__about_title">
                       {detail[0]}
                     </div>
