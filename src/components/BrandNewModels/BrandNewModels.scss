@@ -1,0 +1,11 @@
+.brand-new-models {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+  }
+}

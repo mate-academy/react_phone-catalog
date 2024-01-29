@@ -6,6 +6,11 @@ export const App = () => (
   <Routes>
     <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
+      {/* <Route path="phones" element={<PhonesPage />}>
+        <Route path="model" element={<PhonePage />} />
+      </Route>
+      <Route path="*favourites" element={<FavouritesPage />} />
+      <Route path="cart" element={<CartPage />} /> */}
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>

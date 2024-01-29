@@ -6,3 +6,24 @@
   height: $header-height;
   box-sizing: border-box;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px $main-side-padding 80px;
+  border-bottom: 1px solid $elements;
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  &__banner {
+    margin-bottom: 72px;
+  }
+
+  &__hot-prices {
+    margin-bottom: 80px;
+  }
+
+  &__shop-by-category {
+    margin-bottom: 80px;
+  }
+}

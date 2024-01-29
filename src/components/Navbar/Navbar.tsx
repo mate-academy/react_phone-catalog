@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { SearchBar } from '../SearchBar';
 
 import './Navbar.scss';
+
+const headerListItems = ['Home', 'Phones', 'Tablets', 'Accessories'];
 
 export const Navbar = () => {
   return (
@@ -11,37 +13,29 @@ export const Navbar = () => {
         <Logo />
 
         <ul className="nav__list">
-          <li className="nav__item">
-            <Link to="/" className="nav__link">
-              HOME
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link to="/" className="nav__link">
-              PHONES
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link to="/" className="nav__link">
-              TABLETS
-            </Link>
-          </li>
-          <li className="nav__item">
-            <Link to="/" className="nav__link">
-              ACCESSORIES
-            </Link>
-          </li>
+          {
+            headerListItems.map(el => (
+              <li
+                className="nav__item"
+                key={el}
+              >
+                <NavLink to="/" className="nav__link">
+                  {el.toUpperCase()}
+                </NavLink>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       <div className="nav__content">
         <SearchBar className="nav__search-bar" />
-        <Link to="/" className="nav__icon-link">
+        <NavLink to="/" className="nav__icon-link">
           <span className="icon icon--favourites" />
-        </Link>
-        <Link to="/" className="nav__icon-link nav__icon-link--last">
+        </NavLink>
+        <NavLink to="/" className="nav__icon-link nav__icon-link--last">
           <span className="icon icon--shoppingBag" />
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

@@ -7,11 +7,14 @@ const footerListElements = ['Github', 'Contacts', 'Rights'];
 
 export const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <Logo />
       <ul className="footer__list">
         {footerListElements.map(el => (
-          <li className="footer__item">
+          <li
+            className="footer__item"
+            key={el}
+          >
             <Link
               to="/"
               className="footer__link"
@@ -25,6 +28,6 @@ export const Footer = () => {
         <span className="back-to-top__text">Back to top</span>
         <button type="button" className="back-to-top__button" />
       </div>
-    </div>
+    </footer>
   );
 };

@@ -7,20 +7,18 @@ import { Footer } from '../Footer';
 
 export const Root = () => {
   return (
-    <div className="App">
+    <div className="app">
       <header className="header">
         <Navbar />
       </header>
 
-      <main>
-        <div>
-          <Outlet />
-        </div>
+      <main className="main">
+        {/* <div> */}
+        <Outlet />
+        {/* </div> */}
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };
