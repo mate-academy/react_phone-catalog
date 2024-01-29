@@ -10,7 +10,7 @@ export const PathBlock:React.FC<Props> = ({ currentPage, item }) => {
   return (
     <div className="path-box">
       <Link
-        to="/home"
+        to="/"
         className="home__link icon"
       />
       <div className="arrow-path icon" />

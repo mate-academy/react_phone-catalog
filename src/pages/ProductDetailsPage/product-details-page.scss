@@ -29,7 +29,7 @@ h1.product__title {
 .images__list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 16px;
   height: 100%;
   width: 80px;
 }

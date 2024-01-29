@@ -12,22 +12,30 @@ export const MainContext = React.createContext<{
   phones: Product[];
   tablets: Product[];
   accessories: Product[];
-  setCurrentPage: React.Dispatch<React.SetStateAction<string>>
+  sortType: string;
+  itemsOnPage: string;
+  setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
   setTablets: React.Dispatch<React.SetStateAction<Product[]>>;
   setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
+  setSortType: React.Dispatch<React.SetStateAction<string>>;
+  setItemsOnPage: React.Dispatch<React.SetStateAction<string>>;
 }>({
   currentPage: 'Home',
   products: [],
   phones: [],
   tablets: [],
   accessories: [],
-  setCurrentPage: () => {},
-  setProducts: () => {},
-  setPhones: () => {},
-  setTablets: () => {},
-  setAccessories: () => {},
+  sortType: 'No sorting',
+  itemsOnPage: 'All',
+  setCurrentPage: () => { },
+  setProducts: () => { },
+  setPhones: () => { },
+  setTablets: () => { },
+  setAccessories: () => { },
+  setSortType: () => { },
+  setItemsOnPage: () => { },
 });
 
 export const MainProvider: React.FC<Props> = ({ children }) => {
@@ -36,6 +44,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [tablets, setTablets] = useState<Product[]>([]);
   const [accessories, setAccessories] = useState<Product[]>([]);
+  const [sortType, setSortType] = useState('No sorting');
+  const [itemsOnPage, setItemsOnPage] = useState('All');
 
   const getProductsFromServer = async () => {
     try {
@@ -67,6 +77,10 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setTablets,
       accessories,
       setAccessories,
+      sortType,
+      setSortType,
+      itemsOnPage,
+      setItemsOnPage,
     }),
     [
       currentPage,
@@ -79,6 +93,10 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setTablets,
       accessories,
       setAccessories,
+      sortType,
+      setSortType,
+      itemsOnPage,
+      setItemsOnPage,
     ],
   );
 

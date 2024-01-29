@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Product } from '../../types/Product';
 import { ProductsList } from '../ProductsList';
-import './promo.scss';
+import './products-slider.scss';
 
 type Props = {
   title?: string,
   products: Product[],
 };
 
-export const Promo: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <section className="page__section">
       <div className="promo__top">

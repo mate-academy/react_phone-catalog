@@ -12,36 +12,3 @@
   height: 16px;
   background-image: url("../../assets/img/icons/arrow-right-gray.svg");
 }
-
-.selectors__wrapper {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.selector__title {
-  margin-bottom: 5px;
-  font-weight: 600;
-  line-height: normal;
-  font-size: 12px;
-}
-
-.select__field {
-  border: 1px solid $gray_light;
-  color: $gray_primary;
-  font-weight: 600;
-
-  &:hover {
-    border-color: $gray_primary;
-  }
-
-  &--sort {
-    width: 176px;
-    height: 40px;
-  }
-
-  &--items {
-    width: 128px;
-    height: 40px;
-  }
-}

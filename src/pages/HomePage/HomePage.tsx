@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { Slider } from '../../components/Slider';
 import { ShopByCategory } from '../../components/ShopByCategory';
-import { Promo } from '../../components/Promo';
+import { ProductsSlider } from '../../components/ProductsSlider';
 import { MainContext } from '../../context';
 
 export const HomePage = () => {
@@ -20,14 +20,22 @@ export const HomePage = () => {
     setCurrentPage('Home');
   }, []);
 
+  const getHotPriceProducts = useMemo(() => {
+    return [...products].sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
+  }, [products]);
+
+  const getNewProducts = useMemo(() => {
+    return [...products].sort((a, b) => b.year - a.year);
+  }, [products]);
+
   return (
     <>
       <Slider />
 
       <div className="product-list__wrapper product-list__wrapper--short">
-        <Promo
+        <ProductsSlider
           title="Hot prices"
-          products={products}
+          products={getHotPriceProducts}
         />
       </div>
 
@@ -38,9 +46,9 @@ export const HomePage = () => {
       />
 
       <div className="product-list__wrapper product-list__wrapper--short">
-        <Promo
+        <ProductsSlider
           title="Brand new models"
-          products={products}
+          products={getNewProducts}
         />
       </div>
     </>

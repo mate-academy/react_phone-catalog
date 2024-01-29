@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/self-closing-comp */
-import { useContext, useEffect, useState } from 'react';
+import {
+  useContext, useEffect, useMemo, useState,
+} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
 import { PathBlock } from '../../components/PathBlock';
-import { Promo } from '../../components/Promo';
+import { ProductsSlider } from '../../components/ProductsSlider';
 import { MainContext } from '../../context';
 import { ProductDetails } from '../../types/ProductDetails';
 import { getProductDetails } from '../../services/getProducts';
 import { scrollToTop } from '../../services/scrollToTop';
 import './product-details-page.scss';
+import { Product } from '../../types/Product';
 
 export const ProductDetailsPage = () => {
   const {
@@ -21,6 +24,7 @@ export const ProductDetailsPage = () => {
     productDetails, setProductDetails,
   ] = useState<ProductDetails | null>(null);
   const [activeImg, setActiveImg] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { productId } = useParams();
 
   const getProductDetailsFromServer = async () => {
@@ -45,6 +49,13 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     getProductDetailsFromServer();
     scrollToTop();
+    const data = products.find(item => item.itemId === productId);
+
+    if (!data) {
+      return;
+    }
+
+    setSelectedProduct(data);
   }, [productId]);
 
   useEffect(() => {
@@ -52,6 +63,10 @@ export const ProductDetailsPage = () => {
       setActiveImg(productDetails?.images[0]);
     }
   }, [productDetails]);
+
+  const getAlternativeProducts = useMemo(() => {
+    return products.filter((item) => item.price === selectedProduct?.price);
+  }, [selectedProduct]);
 
   return (
     <div className="product-details__page">
@@ -281,9 +296,9 @@ export const ProductDetailsPage = () => {
       </section>
       <section className="alternative-products__list">
         <div className="product-list__wrapper product-list__wrapper--short">
-          <Promo
+          <ProductsSlider
             title="You may also like"
-            products={products}
+            products={getAlternativeProducts}
           />
         </div>
       </section>
