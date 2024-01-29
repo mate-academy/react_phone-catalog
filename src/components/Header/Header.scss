@@ -9,17 +9,22 @@
   transition: 0.3s;
 
   &__phone-open-nav {
-    padding-inline: 20px;
-    position: fixed;
-    z-index: 4;
-    height: 70px;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #fff;
-    opacity: 0;
-    pointer-events: none;
+    display: none;
+
+    @include on-tablet-small {
+      padding-inline: 20px;
+      position: fixed;
+      z-index: 4;
+      height: 70px;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      opacity: 0;
+      pointer-events: none;
+    }
+
 
     &__link {
       width: 25px;

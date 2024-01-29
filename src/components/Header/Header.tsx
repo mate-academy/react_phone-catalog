@@ -12,7 +12,11 @@ const Header: React.FC = () => {
   const currentPath = location.pathname.replaceAll('/', '');
 
   const handleToggleNav = () => {
-    setOpenNav(prevState => !prevState);
+    const width = window.innerWidth;
+
+    if (width <= 768) {
+      setOpenNav(prevState => !prevState);
+    }
   };
 
   const favouritesCount = useAppSelector(state => {

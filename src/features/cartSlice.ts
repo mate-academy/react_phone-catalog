@@ -18,8 +18,8 @@ export const cartSlice = createSlice({
       const existingItem
         = state.items.find(item => item.id === action.payload.id);
 
-      if (existingItem) {
-        existingItem.amount = (existingItem.amount || 0) + 1;
+      if (existingItem && existingItem.amount) {
+        existingItem.amount += 1;
       } else {
         state.items.push({ ...action.payload, amount: 1 });
       }

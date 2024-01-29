@@ -33,7 +33,6 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
   const handleAddToCart = () => {
     setAddedToCart(true);
     dispatch(addItem(product));
-    localClient.write('cart', [...cart, product]);
   };
 
   const handleAddToFavourite = () => {
@@ -64,6 +63,10 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
       handleAddToCart();
     }
   };
+
+  useEffect(() => {
+    localClient.write('cart', cart);
+  }, [cart]);
 
   return (
     <div className="actions">
