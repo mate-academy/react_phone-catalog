@@ -19,7 +19,7 @@ export const ArrowIcon: React.FC<Props> = memo(({
     width={width || '16'}
     height={height || '16'}
     className={className || ''}
-    style={(rotate ? { transform: `rotateY(${rotate}deg)` } : {})}
+    style={(rotate ? { transform: `rotateZ(${rotate}deg)` } : {})}
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
   >

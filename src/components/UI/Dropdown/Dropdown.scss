@@ -1,0 +1,72 @@
+@import '../../../styles/vars';
+
+.dropdown {
+  position: relative;
+  width: 128px;
+  display: flex;
+  flex-direction: column;
+
+  &__name {
+    margin-bottom: 4px;
+    color: var(--c-secondary);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__box {
+    border: 1px solid var(--c-tips);
+
+    &--open {
+      border: 1px solid var(--c-primary);
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px 12px;
+
+    color: var(--c-primary);
+    font-weight: 600;
+    line-height: 150%;
+    cursor: pointer;
+  }
+
+  &__open {
+    background-color: transparent;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    transition: $transition-time;
+  }
+
+  &__list {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 64px;
+    z-index: 1;
+    border: 1px solid var(--c-elements);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    background-color: var(--c-bg);
+    list-style-type: none;
+  }
+
+  &__item {
+    padding: 6px 12px;
+    color: var(--c-secondary);
+    line-height: 150%;
+    cursor: pointer;
+
+    &:hover,
+    &--selected {
+      color: var(--c-primary);
+    }
+  }
+}

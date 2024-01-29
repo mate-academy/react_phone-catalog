@@ -21,7 +21,7 @@ export const BreadCrumbs: React.FC<Props> = memo(({ className }) => {
     <ul className={`bread-crumbs ${className || ''}`}>
       <li className='bread-crumbs__item'>
         <Link to={PAGE.Home} className='bread-crumbs__link'>
-          <img src="./img/icons/home-icon.svg" alt="home icon" />
+          <img src="./img/icons/home-icon.svg" alt="home icon" loading='lazy'/>
         </Link>
 
         <ArrowIcon className='bread-crumbs__arrow' fill='var(--c-tips)' />

@@ -45,6 +45,7 @@ export const ImageGalleryWithChoice: React.FC<Props> = memo(({
           className={`${BASE_CLASS}__selected-image`}
           src={`${BASE_URL}/${selectedImage}`}
           alt="selected Image Product"
+          loading='lazy'
         />
       </div>
     </section>
@@ -73,6 +74,7 @@ const ImageItem: React.FC<ImageProps> = memo(({
         className={`${BASE_CLASS}__image`}
         src={`${BASE_URL}/${img}`}
         alt='Product image'
+        loading='lazy'
       />
     </div> //need normal alt attribute
   )

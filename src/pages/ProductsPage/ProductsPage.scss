@@ -1,10 +1,10 @@
 .products-page {
   display: flex;
   width: 100%;
+  padding-block: 40px;
   flex-direction: column;
 
   &__title {
-    margin-top: 40px;
     color: var(--c-primary);
 
     font-size: 32px;
@@ -12,7 +12,20 @@
     letter-spacing: -0.32px;
   }
 
-  &__loader {
-    margin-top: 20vh;
+  &__amount {
+    margin-top: 8px;
+    color: var(--c-secondary);
+    line-height: 21px;
+  }
+
+  &__controls {
+    margin-block: 40px 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__paginator {
+    margin-block: 40px;
+    align-self: center;
   }
 }

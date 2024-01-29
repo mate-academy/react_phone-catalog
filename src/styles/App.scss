@@ -12,6 +12,8 @@ input {
 
 button {
   border: none;
+  background-color: transparent;
+  font-family: inherit;
 }
 
 a {
@@ -22,6 +24,7 @@ a {
 html {
   font-family: $f-main;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .App {

@@ -13,4 +13,6 @@ export type Params = {
 
 export const enum SearchParam {
   Search = 'search',
+  PerPage = 'perPage',
+  Page = 'page',
 }

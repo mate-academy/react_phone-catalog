@@ -7,14 +7,27 @@ export const getProducts = (category: Category) => {
   return request<Product[]>(`categories/${category}/products.json`);
 };
 
-export const getProductsByPage = (
+export const getProductsByPage = async (
   category: Category,
-  { page, perPage }: { page: number, perPage: number }
+  { page, perPage }: { page: number, perPage: number | 'All' }
 ) => {
+  if (perPage === 'All') return getProducts(category);
+
   const PER_PAGE_ON_SERVER = 16;
   const pageIndex = Math.ceil((page * perPage) / PER_PAGE_ON_SERVER);
 
-  return request<Product[]>(`categories/${category}/page/${pageIndex}.json`)
+  try {
+    const productsFromServer = await request<Product[]>(
+      `categories/${category}/page/${pageIndex}.json`
+    );
+  
+    const pageStart = (perPage * (page - 1)) % PER_PAGE_ON_SERVER;
+    const pageEnd = Math.min(pageStart + perPage, productsFromServer.length);
+
+    return productsFromServer.slice(pageStart, pageEnd);
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getProductsAmount = (category: Category) => {

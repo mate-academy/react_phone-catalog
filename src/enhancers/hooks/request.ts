@@ -9,8 +9,8 @@ type RequestReturn<T> = [
 
 export function useRequest<T>(
   getData: () => Promise<T>,
-  initialState: T | null = null,
   deps: unknown[] = [],
+  initialState: T | null = null,
   thenCallback: (data: T) => void = () => {}
 ): RequestReturn<T> {
   const [data, setData] = useState<T | null>(initialState);
