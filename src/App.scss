@@ -50,6 +50,6 @@ footer {
   margin-inline: auto;
 }
 
-body:has(.header--active) {
+.no-scroll {
   overflow: hidden;
 }

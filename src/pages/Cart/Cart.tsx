@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../api/hooks';
 import { productsFiltering } from '../../helpers/productsFiltering';
 import { CartItem } from '../../components/CartItem';
@@ -56,12 +56,13 @@ const Cart: React.FC = () => {
             </p>
             <div className="cart__total__line" />
             { /* eslint-disable-next-line */}
-            <Link
+            <button
               className="cart__total__checkout"
-              to="/checkout"
+              /* eslint-disable-next-line */
+              onClick={() => alert('Feature is not implemented yet.')}
             >
               Checkout
-            </Link>
+            </button>
           </section>
         </div>
       ) : (

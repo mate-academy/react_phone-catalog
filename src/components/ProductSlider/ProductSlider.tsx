@@ -44,7 +44,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
       const width = window.innerWidth;
 
       if (width <= 480) {
-        handleCardParametersChange(1, 328, 0);
+        handleCardParametersChange(1, 330, 0);
       } else if (width <= 768) {
         handleCardParametersChange(1, 378, 0);
       } else if (width <= 1024) {

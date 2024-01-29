@@ -44,6 +44,7 @@ $slider-height-pc: 400px;
     background-size: 16px;
     background-position: center;
     background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
+    cursor: pointer;
 
     &--right {
       transform: rotateZ(180deg);

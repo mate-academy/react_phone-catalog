@@ -4,11 +4,25 @@
   width: 272px;
   border: 1px solid #E2E6E9;
   padding: 32px 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align-last: left;
- 
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #313237;
+  }
+
+  &__product-name {
+    font-size: 14px;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   &__image {
     height: 208px;
@@ -23,7 +37,7 @@
 
   @include on-phone {
     box-sizing: content-box;
-    padding-inline: 25px;
+    padding-inline: 56px;
   }
 
   &__title {
@@ -62,7 +76,7 @@
         font-weight: 700;
         color: #313237;
       }
-  
+
       &--old {
         font-weight: 500;
         color: #89939A;
@@ -70,7 +84,7 @@
       }
     }
   }
-  
+
 
   &__line-break {
     display: block;
@@ -98,5 +112,9 @@
     &-value {
       color: #313237;
     }
+  }
+
+  &__action-wrapper {
+    z-index: 11;
   }
 }

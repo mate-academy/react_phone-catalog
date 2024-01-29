@@ -13,7 +13,6 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import { NotFound } from './components/NotFound';
 
 import './App.scss';
-import { Checkout } from './components/Checkout';
 
 export const App: React.FC = () => (
   <Provider store={store}>
@@ -58,11 +57,6 @@ export const App: React.FC = () => (
           <Route
             path="/cart"
             element={<Cart />}
-          />
-
-          <Route
-            path="/checkout"
-            element={<Checkout />}
           />
 
           <Route

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.scss';
 import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
@@ -25,6 +25,18 @@ const Header: React.FC = () => {
     return items.reduce((acc, item) => acc + (item.amount || 0), 0);
   });
 
+  useEffect(() => {
+    if (openNav) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [openNav]);
+
   return (
     <>
       <div className="header__phone-open-nav">
@@ -44,7 +56,7 @@ const Header: React.FC = () => {
         <NavLink
           to="/cart"
           className="header__phone-open-nav__link
-            header__phone-open-nav__link--cart"
+          header__phone-open-nav__link--cart"
         >
           {cartCount > 0 && (
             <div className="header__phone-open-nav__quantity">
@@ -52,80 +64,72 @@ const Header: React.FC = () => {
             </div>
           )}
         </NavLink>
-        { /* eslint-disable-next-line */}
+        {/* eslint-disable-next-line */}
         <button
           className={cn('header__phone-open-nav__button', {
             'header__phone-open-nav__button--close': openNav,
           })}
           onClick={() => handleToggleNav()}
         />
-
       </div>
       <header
         className={cn('header', {
           'header--active': openNav,
         })}
       >
-
         <nav className="header__nav">
           <NavLink to="/" className="header__nav-logo" />
           {currentPath !== 'cart' && (
-            <>
-              <ul className="header__nav-list">
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/"
-                    className={({ isActive }) => getActiveClassName(
-                      'header__nav-link',
-                      isActive,
-                    )}
-                    onClick={handleToggleNav}
-                  >
-                    Home
-                  </NavLink>
-                </li>
-
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/phones"
-                    className={({ isActive }) => getActiveClassName(
-                      'header__nav-link',
-                      isActive,
-                    )}
-                    onClick={handleToggleNav}
-                  >
-                    Phones
-                  </NavLink>
-                </li>
-
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/tablets"
-                    className={({ isActive }) => getActiveClassName(
-                      'header__nav-link',
-                      isActive,
-                    )}
-                    onClick={handleToggleNav}
-                  >
-                    Tablets
-                  </NavLink>
-                </li>
-
-                <li className="header__nav-item">
-                  <NavLink
-                    to="/accessories"
-                    className={({ isActive }) => getActiveClassName(
-                      'header__nav-link',
-                      isActive,
-                    )}
-                    onClick={handleToggleNav}
-                  >
-                    Accessories
-                  </NavLink>
-                </li>
-              </ul>
-
-            </>
+            <ul className="header__nav-list">
+              <li className="header__nav-item">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => getActiveClassName(
+                    'header__nav-link',
+                    isActive,
+                  )}
+                  onClick={handleToggleNav}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="header__nav-item">
+                <NavLink
+                  to="/phones"
+                  className={({ isActive }) => getActiveClassName(
+                    'header__nav-link',
+                    isActive,
+                  )}
+                  onClick={handleToggleNav}
+                >
+                  Phones
+                </NavLink>
+              </li>
+              <li className="header__nav-item">
+                <NavLink
+                  to="/tablets"
+                  className={({ isActive }) => getActiveClassName(
+                    'header__nav-link',
+                    isActive,
+                  )}
+                  onClick={handleToggleNav}
+                >
+                  Tablets
+                </NavLink>
+              </li>
+              <li className="header__nav-item">
+                <NavLink
+                  to="/accessories"
+                  className={({ isActive }) => getActiveClassName(
+                    'header__nav-link',
+                    isActive,
+                  )}
+                  onClick={handleToggleNav}
+                >
+                  Accessories
+                </NavLink>
+              </li>
+            </ul>
           )}
         </nav>
         <div className="header__cart">
@@ -144,10 +148,8 @@ const Header: React.FC = () => {
                   {favouritesCount}
                 </div>
               )}
-
             </NavLink>
           )}
-
           <NavLink
             to="/cart"
             className={({ isActive }) => getActiveClassName(
@@ -162,7 +164,6 @@ const Header: React.FC = () => {
               </div>
             )}
           </NavLink>
-
         </div>
       </header>
     </>
