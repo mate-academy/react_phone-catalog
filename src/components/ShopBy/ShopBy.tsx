@@ -22,7 +22,7 @@ const ShopBy: React.FC<ShopByProps> = ({
         <h2 className="shop-by__title">
           Shop by category
         </h2>
-        <div className="shop-by__container">
+        <div className="shop-by__container" data-cy="categoryLinksContainer">
           <Link to="/phones" className="shop-by__section">
             <div
               className="shop-by__image-block

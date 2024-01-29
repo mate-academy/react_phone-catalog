@@ -1,0 +1,149 @@
+@import "../../styles/imports";
+
+.cart-card {
+  position: relative;
+  width: 100%;
+  border: 1px solid #E2E6E9;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 16px;
+
+  @include on-tablet-small {
+    flex-direction: column;
+    gap: 20px;
+    width: 90vw;
+  }
+
+
+  &__delete {
+    width: 15px;
+    height: 15px;
+    margin-right: 24px;
+    border: none;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/images/icons/card-icons/close.svg);
+
+    @include on-tablet-small {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      background-size: contain;
+      top: 20px;
+      right: 0;
+    }
+  }
+
+  &__image {
+    height: 66px;
+    margin-right: 30px;
+
+    @include on-tablet-small {
+      height: 140px;
+    }
+  }
+
+  &__title {
+    font-family: Mont, "Helvetica Neue", Helvetica, sans-serif;
+    display: block;
+    width: 295px;
+    font-size: 14px;
+    margin-right: 50px;
+    font-weight: 500;
+    text-align-last: left;
+    color: #313237;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include on-tablet-small {
+      width: auto;
+      margin-inline: auto;
+      font-size: 25px;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  &__prices {
+    margin-right: 40px;
+    text-align-last: left;
+    margin-top: 7px;
+    display: flex;
+    gap: 8px;
+
+    &-price {
+      font-size: 22px;
+
+      &--current {
+        font-weight: 700;
+        color: #313237;
+      }
+
+      @include on-tablet-small {
+        font-size: 26px;
+      }
+
+    }
+  }
+
+  &__actions {
+    display: flex;
+    margin-right: 45px;
+
+    &__quantity {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+
+      @include on-tablet-small {
+        font-size: 25px;
+        margin-inline: 20px;
+        line-height: 32px;
+      }
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      background-color: #fff;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include on-tablet-small {
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+      }
+
+      &--add {
+        background-image: url(../../assets/images/icons/card-icons/plus.svg);
+      }
+
+      &--delete {
+        background-image: url(../../assets/images/icons/card-icons/minus.svg);
+      }
+
+      &--delete-all {
+        background-image: url(../../assets/images/icons/card-icons/close.svg);      
+      }
+
+      &--disabled {
+        pointer-events: none;
+        opacity: 0.25;
+      }
+    }
+  }
+
+}

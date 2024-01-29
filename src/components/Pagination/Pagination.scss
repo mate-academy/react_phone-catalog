@@ -1,0 +1,44 @@
+@import "../../styles/imports";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 45px;
+  margin-bottom: 85px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E2E6E9;
+    background-color: #fff;
+    transition: 0.3s;
+    
+    &--active {
+      background-color: #313237;
+      color: #FFF;
+    }
+
+    &--next,
+    &--prev {
+      display: block;
+      margin-inline: 8px;
+      border: 1px solid #B4BDC3;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      background-position: center;
+      background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
+      transition: 0.3s;
+    }
+
+    &--next {
+      transform: rotateZ(180deg);
+    }
+
+    &--disabled {
+      opacity: 0.35;
+    }
+  }
+
+
+}

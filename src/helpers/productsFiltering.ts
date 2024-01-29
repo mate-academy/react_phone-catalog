@@ -1,16 +1,12 @@
 import { ProductItem } from '../types/ProductItem';
 
 export const productsFiltering = {
-  getPhones: (productList: ProductItem[]) => {
-    return productList.filter(product => product.category === 'phones');
+  getCategoryProduct: (productList: ProductItem[], category: string) => {
+    return productList.filter(product => product.category === category);
   },
 
-  getTablets: (productList: ProductItem[]) => {
-    return productList.filter(product => product.category === 'tablets');
-  },
-
-  getAccessories: (productList: ProductItem[]) => {
-    return productList.filter(product => product.category === 'accessories');
+  getCategoryTotal: (productList: ProductItem[], category: string) => {
+    return productList.filter(product => product.category === category).length;
   },
 
   getHotPriceProducts: (productList: ProductItem[]) => {
@@ -39,7 +35,28 @@ export const productsFiltering = {
       [shuffledList[i], shuffledList[j]] = [shuffledList[j], shuffledList[i]];
     }
 
-    return shuffledList;
+    return shuffledList.slice(0, 12);
+  },
+
+  filterQuery: (productList: ProductItem[], query: string) => {
+    return productList.filter(product => {
+      return product.name.toLowerCase().includes(query.toLowerCase());
+    });
+  },
+
+  sortBy: (productList: ProductItem[], sortBy: string) => {
+    switch (sortBy) {
+      case 'age':
+        return productList.sort((item1, item2) => item2.year - item1.year);
+      case 'name':
+        return productList.sort((item1, item2) => {
+          return item1.name.localeCompare(item2.name);
+        });
+      case 'price':
+        return productList.sort((item1, item2) => item1.price - item2.price);
+      default:
+        return productList;
+    }
   },
 
 };

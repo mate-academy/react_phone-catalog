@@ -23,8 +23,7 @@
 
   @include on-phone {
     box-sizing: content-box;
-    width: 300px;
-    padding-inline: 55px;
+    padding-inline: 25px;
   }
 
   &__title {
@@ -34,6 +33,11 @@
     font-weight: 500;
     text-align-last: left;
     color: #313237;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     @include on-tablet-small {
       font-size: 17px;
@@ -93,52 +97,6 @@
 
     &-value {
       color: #313237;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-
-    &-toCart {
-      width: 176px;
-      height: 40px;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #313237;
-      color: #fff;
-      font-weight: 600;
-      outline: none;
-      border: none;
-      transition: 0.3s;
-      cursor: pointer;
-
-      &:hover {
-        box-shadow: 0 3px 13px 0 #17203142;
-      }
-    }
-
-    &-toFavourite {
-      outline: none;
-      width: 40px;
-      height: 40px;
-      border: 1px solid #B4BDC3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #fff;
-      background-image: url("../../assets/images/icons/card-icons/stroke.svg");
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: 0.3s;
-      cursor: pointer;
-
-      &:hover {
-        border-color: #000;
-      }
     }
   }
 }

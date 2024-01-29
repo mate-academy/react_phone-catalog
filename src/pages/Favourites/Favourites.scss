@@ -1,0 +1,27 @@
+@import "../../styles/imports";
+
+.favourites {
+  margin-bottom: 64px;
+
+  @include on-small-pc {
+    padding-inline: 20px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 500;
+    color: #89939A;
+    margin-bottom: 40px;
+  }
+
+  &__empty {
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,20 +1,57 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { getActiveClassName } from '../../helpers/utils/getActiveClassName';
+import { Search } from '../Search';
+import { useAppSelector } from '../../api/hooks';
 
 const Header: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
+  const location = useLocation();
+  const currentPath = location.pathname.replaceAll('/', '');
 
   const handleToggleNav = () => {
     setOpenNav(prevState => !prevState);
   };
 
+  const favouritesCount = useAppSelector(state => {
+    return state.favourites.favourites.length;
+  });
+
+  const cartCount = useAppSelector(({ cart }) => {
+    const { items } = cart;
+
+    return items.reduce((acc, item) => acc + (item.amount || 0), 0);
+  });
+
   return (
     <>
       <div className="header__phone-open-nav">
         <NavLink to="/" className="header__phone-open-nav__logo" />
+        <NavLink
+          to="/favourites"
+          className="header__phone-open-nav__link
+          header__phone-open-nav__link--favourites"
+        >
+          {favouritesCount > 0 && (
+            <div className="header__phone-open-nav__quantity">
+              {favouritesCount}
+            </div>
+          )}
+        </NavLink>
+
+        <NavLink
+          to="/cart"
+          className="header__phone-open-nav__link
+            header__phone-open-nav__link--cart"
+        >
+          {cartCount > 0 && (
+            <div className="header__phone-open-nav__quantity">
+              {cartCount}
+            </div>
+          )}
+        </NavLink>
         { /* eslint-disable-next-line */}
         <button
           className={cn('header__phone-open-nav__button', {
@@ -29,75 +66,88 @@ const Header: React.FC = () => {
           'header--active': openNav,
         })}
       >
+
         <nav className="header__nav">
           <NavLink to="/" className="header__nav-logo" />
-          <ul className="header__nav-list">
-            <li className="header__nav-item">
-              <NavLink
-                to="/"
-                className={({ isActive }) => getActiveClassName(
-                  'header__nav-link',
-                  isActive,
-                )}
-              >
-                Home
-              </NavLink>
-            </li>
+          {currentPath !== 'cart' && (
+            <>
+              <ul className="header__nav-list">
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) => getActiveClassName(
+                      'header__nav-link',
+                      isActive,
+                    )}
+                    onClick={handleToggleNav}
+                  >
+                    Home
+                  </NavLink>
+                </li>
 
-            <li className="header__nav-item">
-              <NavLink
-                to="/phones"
-                className={({ isActive }) => getActiveClassName(
-                  'header__nav-link',
-                  isActive,
-                )}
-              >
-                Phones
-              </NavLink>
-            </li>
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/phones"
+                    className={({ isActive }) => getActiveClassName(
+                      'header__nav-link',
+                      isActive,
+                    )}
+                    onClick={handleToggleNav}
+                  >
+                    Phones
+                  </NavLink>
+                </li>
 
-            <li className="header__nav-item">
-              <NavLink
-                to="/tablets"
-                className={({ isActive }) => getActiveClassName(
-                  'header__nav-link',
-                  isActive,
-                )}
-              >
-                Tablets
-              </NavLink>
-            </li>
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/tablets"
+                    className={({ isActive }) => getActiveClassName(
+                      'header__nav-link',
+                      isActive,
+                    )}
+                    onClick={handleToggleNav}
+                  >
+                    Tablets
+                  </NavLink>
+                </li>
 
-            <li className="header__nav-item">
-              <NavLink
-                to="/accessories"
-                className={({ isActive }) => getActiveClassName(
-                  'header__nav-link',
-                  isActive,
-                )}
-              >
-                Accessories
-              </NavLink>
-            </li>
-          </ul>
+                <li className="header__nav-item">
+                  <NavLink
+                    to="/accessories"
+                    className={({ isActive }) => getActiveClassName(
+                      'header__nav-link',
+                      isActive,
+                    )}
+                    onClick={handleToggleNav}
+                  >
+                    Accessories
+                  </NavLink>
+                </li>
+              </ul>
+
+            </>
+          )}
         </nav>
         <div className="header__cart">
-          <NavLink
-            to="/search"
-            className={({ isActive }) => getActiveClassName(
-              'header__cart-link',
-              isActive,
-              ['header__cart-link--search'],
-            )}
-          />
-          <NavLink
-            to="/favourites"
-            className={({ isActive }) => getActiveClassName(
-              'header__cart-link',
-              isActive,
-              ['header__cart-link--favourites'],
-            )}
-          />
+          <Search />
+          {currentPath !== 'cart' && (
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) => getActiveClassName(
+                'header__cart-link',
+                isActive,
+                ['header__cart-link--favourites'],
+              )}
+            >
+              {favouritesCount > 0 && (
+                <div className="header__cart__quantity">
+                  {favouritesCount}
+                </div>
+              )}
+
+            </NavLink>
+          )}
+
           <NavLink
             to="/cart"
             className={({ isActive }) => getActiveClassName(
@@ -105,7 +155,13 @@ const Header: React.FC = () => {
               isActive,
               ['header__cart-link--cart'],
             )}
-          />
+          >
+            {cartCount > 0 && (
+              <div className="header__cart__quantity">
+                {cartCount}
+              </div>
+            )}
+          </NavLink>
 
         </div>
       </header>

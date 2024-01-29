@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { ProductItem } from '../../types/ProductItem';
+import { ProductActions } from '../ProductActions';
 
 interface ProductCardProps {
   product: ProductItem;
@@ -10,14 +12,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="card">
       <img
-        src={`_new/${product.image}`}
+        src={`${product.image}`}
         alt={product.name}
         className="card__image"
       />
 
-      <span className="card__title">
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="card__title"
+      >
         {`${product.name} (iMT9G2FS/A)`}
-      </span>
+      </Link>
 
       {product.price && product.fullPrice ? (
         <div className="card__prices">
@@ -65,15 +70,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </span>
       </div>
 
-      <div className="card__actions">
-        { /* eslint-disable-next-line */}
-        <button className="card__actions-toCart">
-          Add to cart
-        </button>
-        { /* eslint-disable-next-line */}
-        <button className="card__actions-toFavourite" />
-      </div>
-
+      <ProductActions product={product} />
     </div>
   );
 };

@@ -20,8 +20,6 @@ export const getProducts = createAsyncThunk(
   },
 );
 
-// client.get<ProductInfo>(`/products/${name}.json`);
-
 export const productsSlice = createSlice({
   name: 'products',
   initialState,

@@ -1,17 +1,17 @@
-import { ProductDetails } from '../types/ProductDetails';
+import { ProductItem } from '../types/ProductItem';
 
-export const localStorageUtil = {
+export const localClient = {
   read: (key: string) => {
     const data = window.localStorage.getItem(key);
 
     try {
       return data && JSON.parse(data);
     } catch (error) {
-      return null;
+      return [];
     }
   },
 
-  write: (key: string, data: ProductDetails) => {
+  write: (key: string, data: ProductItem[]) => {
     window.localStorage.setItem(key, JSON.stringify(data));
   },
 };

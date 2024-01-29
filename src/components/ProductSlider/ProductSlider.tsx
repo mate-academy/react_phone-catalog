@@ -52,7 +52,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
       } else if (width <= 1137) {
         handleCardParametersChange(3, 266, 83);
       } else {
-        handleCardParametersChange(4, 266, 26);
+        handleCardParametersChange(4, 266, 24);
       }
     };
 

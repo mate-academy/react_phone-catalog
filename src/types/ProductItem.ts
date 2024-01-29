@@ -12,4 +12,5 @@ export type ProductItem = {
   ram: string;
   year: number;
   image: string;
+  amount?: number;
 };

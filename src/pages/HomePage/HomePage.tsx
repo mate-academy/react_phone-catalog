@@ -50,7 +50,7 @@ export const HomePage: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <main className="main">
+    <>
       <Slider />
 
       {isLoaded && (
@@ -80,6 +80,6 @@ export const HomePage: React.FC = () => {
           />
         </section>
       )}
-    </main>
+    </>
   );
 };

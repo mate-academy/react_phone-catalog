@@ -1,1 +1,1 @@
-export const IMAGE_ROOT = '/_new/img/';
+export const IMAGE_ROOT = 'img/';

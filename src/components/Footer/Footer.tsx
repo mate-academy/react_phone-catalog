@@ -33,12 +33,14 @@ const Footer: React.FC = () => {
           </li>
 
           <li className="footer__nav-item">
-            <NavLink
-              to="/home"
+            <a
+              href="https://www.linkedin.com/in/shosty/"
               className="footer__nav-link"
+              rel="noreferrer"
+              target="_blank"
             >
               Contacts
-            </NavLink>
+            </a>
           </li>
 
           <li className="footer__nav-item">

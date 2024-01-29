@@ -1,19 +1,78 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import './App.scss';
+import { store } from './app/store';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage/HomePage';
 import { Footer } from './components/Footer';
-import { store } from './app/store';
+import { Catalog } from './pages/Catalog/Catalog';
+import { Favourites } from './pages/Favourites';
+import { Cart } from './pages/Cart';
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import { NotFound } from './components/NotFound';
+
+import './App.scss';
+import { Checkout } from './components/Checkout';
 
 export const App: React.FC = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <Header />
-      <HomePage />
+
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+          <Route path="/phones">
+            <Route
+              index
+              element={<Catalog category="phones" title="Mobile phones" />}
+            />
+            <Route
+              path="/phones/:productId"
+              element={<ProductDetails />}
+            />
+          </Route>
+
+          <Route
+            path="/phones/:productId"
+            element={<ProductDetails />}
+          />
+
+          <Route
+            path="/tablets"
+            element={<Catalog category="tablets" title="Tablets" />}
+          />
+
+          <Route
+            path="/accessories"
+            element={<Catalog category="accessories" title="Accessories" />}
+          />
+
+          <Route
+            path="/favourites"
+            element={<Favourites />}
+          />
+
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+
+          <Route
+            path="/checkout"
+            element={<Checkout />}
+          />
+
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
+        </Routes>
+      </main>
+
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 );
