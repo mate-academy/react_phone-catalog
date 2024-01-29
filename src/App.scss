@@ -1,1 +1,17 @@
 // not empty
+@import './utils/fonts.scss';
+@import './utils/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: $normal-font;
+  line-height: normal;
+  list-style: none;
+
+  color: $secondary-color;
+
+  scroll-behavior: smooth;
+}

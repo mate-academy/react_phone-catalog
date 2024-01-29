@@ -1,0 +1,50 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+.nav {
+  &__link {
+    color: $secondary-color;
+    padding: 24px 0;
+
+    font-size: 12px;
+    font-weight: $bold-font;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      @include hoverLine;
+      background-color: $secondary-color;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: bottom;
+    }
+
+    &:hover {
+      color: $primary-color;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      color: $primary-color;
+      position: relative;
+
+      &::after {
+        @include hoverLine;
+        background-color: $primary-color;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+}

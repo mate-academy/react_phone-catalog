@@ -1,0 +1,39 @@
+@import '../utils/variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  box-shadow: 0px 1px 0px 0px $elements-color;
+
+  &__left-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  &__right-block {
+    display: flex;
+  }
+
+  &__favcar-block {
+    box-shadow: -1px 0px 0px 0px $elements-color;
+  }
+}
+
+.shopping-cart-icon {
+  display: flex;
+  background: url("../icons/shopping-cart-icon.svg") no-repeat center;
+  width: 16px;
+  height: 16px;
+  padding: 24px;
+}
+
+.favourites-icon {
+  display: flex;
+  background: url("../icons/favourites-icon.svg") no-repeat center;
+  width: 16px;
+  height: 16px;
+  padding: 24px;
+}
