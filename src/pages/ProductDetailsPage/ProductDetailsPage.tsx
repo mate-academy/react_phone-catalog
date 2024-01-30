@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/self-closing-comp */
 import {
-  useContext, useEffect, useMemo, useState,
+  useContext, useEffect, useState,
 } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { BackButton } from '../../components/BackButton';
@@ -12,7 +12,6 @@ import { ProductDetails } from '../../types/ProductDetails';
 import { getProductDetails } from '../../services/getProducts';
 import { scrollToTop } from '../../services/scrollToTop';
 import './product-details-page.scss';
-import { Product } from '../../types/Product';
 
 export const ProductDetailsPage = () => {
   const {
@@ -24,7 +23,6 @@ export const ProductDetailsPage = () => {
     productDetails, setProductDetails,
   ] = useState<ProductDetails | null>(null);
   const [activeImg, setActiveImg] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { productId } = useParams();
 
   const getProductDetailsFromServer = async () => {
@@ -43,30 +41,20 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
-    setCurrentPage('ProductDetails');
-  }, []);
-
-  useEffect(() => {
     getProductDetailsFromServer();
     scrollToTop();
-    const data = products.find(item => item.itemId === productId);
-
-    if (!data) {
-      return;
-    }
-
-    setSelectedProduct(data);
   }, [productId]);
+
+  useEffect(() => {
+    setCurrentPage('ProductDetails');
+    scrollToTop();
+  }, []);
 
   useEffect(() => {
     if (productDetails) {
       setActiveImg(productDetails?.images[0]);
     }
   }, [productDetails]);
-
-  const getAlternativeProducts = useMemo(() => {
-    return products.filter((item) => item.price === selectedProduct?.price);
-  }, [selectedProduct]);
 
   return (
     <div className="product-details__page">
@@ -298,7 +286,7 @@ export const ProductDetailsPage = () => {
         <div className="product-list__wrapper product-list__wrapper--short">
           <ProductsSlider
             title="You may also like"
-            products={getAlternativeProducts}
+            products={products}
           />
         </div>
       </section>

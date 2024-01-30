@@ -4,6 +4,7 @@ import { MainContext } from '../../context';
 import { ProductsList } from '../../components/ProductsList';
 import { NotFoundProducts } from '../../components/NotFoundProducts';
 import { SelectorsBlock } from '../../components/SelectorsBlock';
+import { scrollToTop } from '../../services/scrollToTop';
 
 export const Accessories = () => {
   const {
@@ -14,6 +15,7 @@ export const Accessories = () => {
 
   useEffect(() => {
     setCurrentPage('Accessories');
+    scrollToTop();
   }, []);
 
   return (

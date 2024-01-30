@@ -4,6 +4,7 @@ import { PathBlock } from '../../components/PathBlock';
 
 import './favourites-page.scss';
 import { ProductsList } from '../../components/ProductsList';
+import { scrollToTop } from '../../services/scrollToTop';
 
 export const Favorites = () => {
   const {
@@ -14,6 +15,7 @@ export const Favorites = () => {
 
   useEffect(() => {
     setCurrentPage('Favourites');
+    scrollToTop();
   }, []);
 
   return (

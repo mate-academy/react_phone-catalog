@@ -6,6 +6,7 @@ import { PathBlock } from '../../components/PathBlock';
 import { MainContext } from '../../context';
 import { NotFoundProducts } from '../../components/NotFoundProducts';
 import { SelectorsBlock } from '../../components/SelectorsBlock';
+import { scrollToTop } from '../../services/scrollToTop';
 
 export const PhonesPage = () => {
   const {
@@ -16,6 +17,7 @@ export const PhonesPage = () => {
 
   useEffect(() => {
     setCurrentPage('Phones');
+    scrollToTop();
   }, []);
 
   return (

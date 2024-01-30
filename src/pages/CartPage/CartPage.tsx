@@ -4,6 +4,7 @@ import { MainContext } from '../../context';
 import { BackButton } from '../../components/BackButton';
 import './cart-page.scss';
 import { CartItem } from '../../components/CartItem/CartItem';
+import { scrollToTop } from '../../services/scrollToTop';
 
 export const Cart = () => {
   const {
@@ -12,6 +13,7 @@ export const Cart = () => {
 
   useEffect(() => {
     setCurrentPage('Cart');
+    scrollToTop();
   }, []);
 
   return (
