@@ -1,4 +1,3 @@
-import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
@@ -18,7 +17,6 @@ export const App: React.FC = () => (
   <Provider store={store}>
     <HashRouter>
       <Header />
-
       <main className="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -65,7 +63,6 @@ export const App: React.FC = () => (
           />
         </Routes>
       </main>
-
       <Footer />
     </HashRouter>
   </Provider>

@@ -10,6 +10,7 @@ import { ProductList } from '../../components/ProductList';
 import Pagination from '../../components/Pagination/Pagination';
 
 import './Catalog.scss';
+import { Loader } from '../../components/Loader';
 
 interface CatalogProps {
   category: string;
@@ -84,89 +85,95 @@ export const Catalog: React.FC<CatalogProps> = ({
 
   return (
     <>
-      <Breadcrumbs items={{
-        [`${category}`]: `/${category}`,
-      }}
-      />
-      {isLoaded && categoryTotal === 0 ? (
-        <div className="catalog catalog__anything">
-          <span className="catalog__anything__title">Oops!</span>
-          <p className="catalog__anything__details">
-            Currently out of stock in this category. Check back later!
-          </p>
-        </div>
-      ) : (
-        <div className="catalog">
-
-          <section className="catalog__wrapper">
-            <div className="catalog__head">
-              <h2 className="catalog__title">{title}</h2>
-              <span className="catalog__models-quantity">{`${productListToShow.length} ${quantityName}`}</span>
+      {isLoaded ? (
+        <>
+          <Breadcrumbs items={{
+            [`${category}`]: `/${category}`,
+          }}
+          />
+          {isLoaded && categoryTotal === 0 ? (
+            <div className="catalog catalog__anything">
+              <span className="catalog__anything__title">Oops!</span>
+              <p className="catalog__anything__details">
+                Currently out of stock in this category. Check back later!
+              </p>
             </div>
-
-            {!query && (
-              <section className="catalog__organazing">
-                <Selector
-                  searchParamName="sortBy"
-                  title="Sort by"
-                  options={{
-                    age: 'Newest',
-                    name: 'Alphabetically',
-                    price: 'Cheapest',
-                  }}
-                  defaultOptionKey={sortBy}
-                  setParams={(key: string, value: string) => {
-                    setParams(key, value);
-                  }}
-                />
-
-                <Selector
-                  searchParamName="perPage"
-                  title="Items on page"
-                  options={{
-                    4: '4',
-                    8: '8',
-                    16: '16',
-                    all: 'All',
-                  }}
-                  defaultOptionKey={perPage}
-                  setParams={(key: string, value: string) => {
-                    setParams(key, value);
-                  }}
-                />
-              </section>
-            )}
-
-          </section>
-
-          {query && productListToShow.length === 0 ? (
-            <p className="catalog__nothing-found">
-              Nothing was found!
-            </p>
           ) : (
-            <>
-              <div className="catalog__wrapper">
-                <ProductList
-                  products={productListToShow}
-                  currentPage={+currentPage}
-                  perPage={
-                    perPage === 'all'
-                      ? productListToShow.length
-                      : +perPage
-                  }
-                />
-              </div>
-            </>
-          )}
+            <div className="catalog">
 
-          {productListToShow.length !== 0 && (
-            <Pagination
-              currentPage={+currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-            />
+              <section className="catalog__wrapper">
+                <div className="catalog__head">
+                  <h2 className="catalog__title">{title}</h2>
+                  <span className="catalog__models-quantity">{`${productListToShow.length} ${quantityName}`}</span>
+                </div>
+
+                {!query && (
+                  <section className="catalog__organazing">
+                    <Selector
+                      searchParamName="sortBy"
+                      title="Sort by"
+                      options={{
+                        age: 'Newest',
+                        name: 'Alphabetically',
+                        price: 'Cheapest',
+                      }}
+                      defaultOptionKey={sortBy}
+                      setParams={(key: string, value: string) => {
+                        setParams(key, value);
+                      }}
+                    />
+
+                    <Selector
+                      searchParamName="perPage"
+                      title="Items on page"
+                      options={{
+                        4: '4',
+                        8: '8',
+                        16: '16',
+                        all: 'All',
+                      }}
+                      defaultOptionKey={perPage}
+                      setParams={(key: string, value: string) => {
+                        setParams(key, value);
+                      }}
+                    />
+                  </section>
+                )}
+
+              </section>
+
+              {query && productListToShow.length === 0 ? (
+                <p className="catalog__nothing-found">
+                  Nothing was found!
+                </p>
+              ) : (
+                <>
+                  <div className="catalog__wrapper">
+                    <ProductList
+                      products={productListToShow}
+                      currentPage={+currentPage}
+                      perPage={
+                        perPage === 'all'
+                          ? productListToShow.length
+                          : +perPage
+                      }
+                    />
+                  </div>
+                </>
+              )}
+
+              {productListToShow.length !== 0 && (
+                <Pagination
+                  currentPage={+currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              )}
+            </div>
           )}
-        </div>
+        </>
+      ) : (
+        <Loader />
       )}
     </>
   );
