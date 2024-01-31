@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import React, { memo } from 'react';
 
 import './ProductsPage.scss';
 import ProductsList from '../../components/common/ProductsList';

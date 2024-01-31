@@ -5,7 +5,7 @@ export type ProductId = string;
 export interface Product {
   id: string,
   category: Category,
-  phoneId: string,
+  phoneId?: string,
   itemId: ProductId,
   name: string,
   fullPrice: number,
