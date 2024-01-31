@@ -1,7 +1,21 @@
+import { TypeAnimation } from 'react-type-animation';
+import { Breadcrumbs } from '../components/Bredcrambs/Breadcrumbs';
+
 export const Accessories = () => {
   return (
-    <h1>
-      Accessories
-    </h1>
+    <>
+      <Breadcrumbs />
+      <h1>Accessories</h1>
+      <TypeAnimation
+        sequence={['Accessories are coming soon ...', 1000]}
+        style={{
+          fontSize: '3em',
+          display: 'flex',
+          fontWeight: '700',
+          padding: '32px 0',
+          color: '#313237',
+        }}
+      />
+    </>
   );
 };

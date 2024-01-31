@@ -1,0 +1,69 @@
+@import './styles/variables';
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("./fonts/Mont-Bold.otf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("./fonts/Mont-Regular.otf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("./fonts/Mont-SemiBold.otf") format("truetype");
+  font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span,
+ul,
+li,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App h1 {
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.32px;
+  color: $grayPrimary;
+}

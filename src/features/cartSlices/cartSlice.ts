@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import { Phone } from '../../types/Phone';
+// import { IPhone } from '../../types/Phone.interface';
+import { ICartPhone } from '../../types';
 
 type Cart = {
   quantityCart: number,
-  phones: Phone[],
+  phones: ICartPhone[],
 };
 
 const initialState: Cart = {
@@ -16,25 +17,23 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addPhoneToCart(state, action: PayloadAction<Phone>) {
+    addPhoneToCart(state, action: PayloadAction<ICartPhone>) {
+      state.phones.push({
+        ...action.payload,
+      });
+      state.quantityCart += 1;
+    },
+    incrementPhoneQauntity(state, action: PayloadAction<ICartPhone>) {
       const phone = state.phones.find(
         (item) => item.phoneId === action.payload.phoneId,
       );
 
-      if (!phone) {
-        state.phones.push({
-          ...action.payload,
-          totalPrice: action.payload.price,
-        });
-        state.quantityCart += 1;
-      } else {
+      if (phone) {
         phone.quantity += 1;
-        phone.totalPrice = phone.quantity * phone.price;
         state.quantityCart += 1;
       }
     },
-
-    removePhoneFromCart(state, action: PayloadAction<string>) {
+    decrementPhoneQauntity(state, action: PayloadAction<string>) {
       const phone = state.phones.find(
         (item) => item.phoneId === action.payload,
       );
@@ -47,15 +46,31 @@ const cartSlice = createSlice({
           state.quantityCart -= 1;
         } else {
           phone.quantity -= 1;
-          phone.totalPrice = phone.quantity * phone.price;
           state.quantityCart -= 1;
         }
+      }
+    },
+    removePhoneFromCart(state, action: PayloadAction<string>) {
+      const phone = state.phones.find(
+        (item) => item.phoneId === action.payload,
+      );
+
+      if (phone) {
+        state.phones = state.phones.filter(
+          (item) => item.phoneId !== action.payload,
+        );
+        state.quantityCart -= phone.quantity;
       }
     },
   },
 });
 
-export const selectPhones = (state: RootState) => state.cart.phones;
-export const selectQuantityCart = (state: RootState) => state.cart.quantityCart;
-export const { addPhoneToCart, removePhoneFromCart } = cartSlice.actions;
+export const selectCartPhones = (state: RootState) => state.cart.phones;
+export const selectCartQuantity = (state: RootState) => state.cart.quantityCart;
+export const {
+  addPhoneToCart,
+  removePhoneFromCart,
+  decrementPhoneQauntity,
+  incrementPhoneQauntity,
+} = cartSlice.actions;
 export default cartSlice.reducer;

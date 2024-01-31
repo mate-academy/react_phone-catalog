@@ -1,45 +1,46 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import classes from './App.module.scss';
+import {
+  RouterProvider,
+  createHashRouter,
+} from 'react-router-dom';
+import './App.scss';
 import { Root } from './Page/Root';
 import { Error } from './Page/Error';
 import { Home } from './Page/Home';
-import { Phone } from './Page/Phones';
+import { PhonesListPage } from './Page/PhonesListPage';
 import { Tablet } from './Page/Tablets';
 import { Accessories } from './Page/Accessories';
-import { FavouritesPage } from './Page/Favorites';
+import { FavouritesPage } from './Page/FavoritesPage';
 import { CartPage } from './Page/CartPage';
-import { DetailPhonePage } from './Page/DetailPhone';
+import { PhoneDetailPage } from './Page/PhoneDetailPage';
 import { PhoneRoot } from './Page/PhoneRoot';
 
-// 'https://mate-academy.github.io/react_phone-catalog/_new/products' - просто урл до теелфонів в масиві
-// 'https://mate-academy.github.io/react_phone-catalog/_new/products/myid.json' - просто урл до окремих телефонів
-// const BASE_API_URL =
-//   'https://mate-academy.github.io/react_phone-catalog/_new/products';
-
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Root />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <Home /> },
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: 'phones',
         element: <PhoneRoot />,
         children: [
           {
             index: true,
-            element: <Phone />,
+            element: <PhonesListPage />,
           },
           {
             path: ':phoneId',
-            element: <DetailPhonePage />,
+            element: <PhoneDetailPage />,
           },
         ],
       },
       { path: 'tablets', element: <Tablet /> },
       { path: 'accesories', element: <Accessories /> },
-      { path: 'favorites', element: <FavouritesPage /> },
+      { path: 'favourites', element: <FavouritesPage /> },
       { path: 'cart', element: <CartPage /> },
     ],
   },
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <div className={classes.item}>
+    <div className="App">
       <RouterProvider router={router} />
     </div>
   );

@@ -1,0 +1,57 @@
+@import '../../styles/variables';
+
+.disabled {
+  pointer-events: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+
+  &__item {
+    margin-right: 8px;
+    border: 1px solid $grayElements;
+
+    &:hover {
+      border: 1px solid $grayPrimary;
+    }
+
+    &--left {
+      margin-right: 16px;
+      border: 1px solid $grayIcons;
+    }
+
+    &--rigth {
+      margin-left: 8px;
+      border: 1px solid $grayIcons;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+    color: $grayPrimary;
+  }
+}
+
+.active {
+  background-color: $grayPrimary;
+  color: $white;
+}
+
+.disabled {
+  border: 1px solid $grayElements;
+}
+
