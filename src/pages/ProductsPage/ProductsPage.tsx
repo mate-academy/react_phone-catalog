@@ -5,7 +5,7 @@ import { useAppParams } from '../../enhancers/hooks/appParams';
 import ErrorMessage from '../../components/common/ErrorMessage';
 import { capitalize } from '../../utils/stringHelper';
 import { useRequest } from '../../enhancers/hooks/request';
-import { getProductsAmount, getProductsByPage } from '../../api/products';
+import { getProductsAmount, getProducts } from '../../api/products';
 import Dropdown from '../../components/UI/Dropdown';
 import Paginator from '../../components/UI/Paginator';
 import { PerPageOption, usePagination } from '../../enhancers/hooks/pagination';
@@ -17,6 +17,7 @@ export const ProductsPage: React.FC = memo(() => {
   const [productsAmount, amountLoading, amountError] = useRequest(
     () => getProductsAmount(category), [category]
   );
+
   const perPageOptions: PerPageOption[] = useMemo(() => [4, 8, 16, 'All'], []);
 
   const amountHandled = amountLoading ? 0 : (productsAmount ?? 0);
@@ -28,7 +29,7 @@ export const ProductsPage: React.FC = memo(() => {
   });
 
   const [products, loading, error] = useRequest(() => {
-    return getProductsByPage(category, { page, perPage })
+    return getProducts(category, { page, perPage })
   }, [category, page, perPage]);
 
   if (error || amountError) {
@@ -47,21 +48,17 @@ export const ProductsPage: React.FC = memo(() => {
     <div className="products-page">
       <h2 className='products-page__title'>{capitalize(category)}</h2>
 
-      {!amountLoading ? (
+      {amountLoading && <Placeholder width='40px' height='20px' className='products-page__amount'/>}
+      {!amountLoading && (
         <p className='products-page__amount'>
           <data value={amountHandled}>
             {amountHandled}
           </data> models
         </p>
-      ) : (
-        <Placeholder
-          width='40px'
-          height='20px'
-          className='products-page__amount'
-        />
       )}
 
-      {!amountLoading ? (
+      {amountLoading && <Placeholder height='40px' width='400px' className='products-page__controls'/>}
+      {!amountLoading && someProducts && (
         <div className='products-page__controls'>
           <Dropdown
             options={perPageOptions}
@@ -70,12 +67,6 @@ export const ProductsPage: React.FC = memo(() => {
             onChange={changePerPage}
           />
         </div>
-      ) : (
-        <Placeholder
-          height='40px'
-          width='400px'
-          className='products-page__controls'
-        />
       )}
 
       <ProductsList
@@ -93,6 +84,6 @@ export const ProductsPage: React.FC = memo(() => {
           onChange={setPage}
         />
       )}
-    </div >
+    </div>
   );
 });

@@ -1,4 +1,4 @@
-import { Category } from "../enums/Category";
+import { Category } from "../enums/api";
 
 export type ProductId = string;
 

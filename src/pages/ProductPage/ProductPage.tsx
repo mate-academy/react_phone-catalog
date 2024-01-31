@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react';
 import BackButton from '../../components/UI/BackButton';
 import { useAppParams } from '../../enhancers/hooks/appParams';
-import { getProductById, getSimilarProducts } from '../../api/products';
+import { getProductDetailsById, getVariantsOfProduct } from '../../api/products';
 import ProductDetailsComponent from '../../components/common/ProductDetailsComponent';
 import { useRequest } from '../../enhancers/hooks/request';
 import ErrorMessage from '../../components/common/ErrorMessage';
@@ -14,7 +14,7 @@ export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
   const [product, , error, setProduct] = useRequest(
-    () => getProductById(category, productId),
+    () => getProductDetailsById(category, productId),
   );
   const similarProducts = useRef<ProductDetails[]>([]);
 
@@ -31,7 +31,7 @@ export const ProductPage: React.FC = memo(() => {
 
   useEffect(() => {
     if (product) {
-      getSimilarProducts(category, product).then((products) => {
+      getVariantsOfProduct(category, product).then((products) => {
         similarProducts.current = products;
       })
     }
