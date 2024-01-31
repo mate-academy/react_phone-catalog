@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 
 import { PAGE } from './definitions/enums/Router';
 import { store } from './store/redux/store';
-import { ErrorProvider } from './store/contexts/ErrorContext';
 
 import { App } from './App';
 import HomePage from './pages/HomePage';
@@ -12,11 +11,12 @@ import CartPage from './pages/CartPage';
 import FavoritesPage from './pages/FavoritesPage';
 import ProductPage from './pages/ProductPage';
 import ErrorMessage from './components/common/ErrorMessage';
+import { ContextProvider } from './store/contexts/GlobalContextProvider';
 
 export const Root: React.FC = () => {
   return (
     <Provider store={store}>
-      <ErrorProvider>
+      <ContextProvider>
         <Router>
           <Routes>
             <Route path={PAGE.Home} element={<App />}>
@@ -35,7 +35,7 @@ export const Root: React.FC = () => {
             </Route>
           </Routes>
         </Router>
-      </ErrorProvider>
+      </ContextProvider>
     </Provider>
   )
 };

@@ -20,7 +20,6 @@ export const getAllProducts = (category: Category, sortQuery: SortQuery) => {
   return productsRequest<Product[]>(category, `${sortQuery}/products.json`);
 };
 
-
 async function getProductById(category: Category, id: ProductId) {
   return productsRequest<Product>(category, `artificially/${id}.json`);
 }
@@ -48,11 +47,15 @@ async function getProductsWithSearch({
     );
     sortProducts(productsFromServer, sortQuery);
 
-    if (perPage === 'All') return productsFromServer;
+    if (perPage === 'All') return { products: productsFromServer };
 
     const startSlice = (page - 1) * perPage;
     const endSlice = startSlice + perPage;
-    return productsFromServer.slice(startSlice, endSlice);
+
+    return {
+      products: productsFromServer.slice(startSlice, endSlice),
+      amount: productsFromServer.length,
+    };
   } catch (error) {
     throw error;
   }
@@ -61,7 +64,9 @@ async function getProductsWithSearch({
 async function getProductsWithoutSearch(
   { category, page, perPage, sortQuery = SortQuery.Unsorted }: Options
 ) {
-  if (perPage === 'All') return getAllProducts(category, sortQuery);
+  if (perPage === 'All') return {
+    products: await getAllProducts(category, sortQuery),
+  };
 
   const PER_PAGE_ON_SERVER = 16;
   const pageIndex = Math.ceil((page * perPage) / PER_PAGE_ON_SERVER);
@@ -74,13 +79,17 @@ async function getProductsWithoutSearch(
     const pageStart = (perPage * (page - 1)) % PER_PAGE_ON_SERVER;
     const pageEnd = Math.min(pageStart + perPage, productsFromServer.length);
 
-    return productsFromServer.slice(pageStart, pageEnd);
+    return {
+      products: productsFromServer.slice(pageStart, pageEnd)
+    };
   } catch (error) {
     throw error;
   }
 }
 
-export function getProducts(options: Options) {
+type ReturnType = Promise<{ products: Product[], amount?: number }>;
+
+export function getProducts(options: Options): ReturnType {
   if (options.search) {
     return getProductsWithSearch(options as Required<Options>);
   }

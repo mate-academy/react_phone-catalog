@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useContext, useEffect, useMemo } from "react";
 import { useAppParams } from "../../enhancers/hooks/appParams";
 import { useRequest } from "../../enhancers/hooks/request";
 import { useProductsSort } from "../../enhancers/hooks/sort";
@@ -9,12 +9,10 @@ import { getProductsAmount } from "../../api/products/amount";
 import { getProducts } from "../../api/products/main";
 import { useSearchParams } from "../../enhancers/hooks/searchParams";
 import { SearchParam } from "../../definitions/enums/Router";
+import { SearchContext } from "../../store/contexts/SearchContext";
 
 export function useProductsPage() {
   const { category } = useAppParams();
-
-  const searchParams = useSearchParams();
-  const search = searchParams.get(SearchParam.Search);
 
   const getAmount = () => getProductsAmount(category);
   const [productsAmount, amountLoading, amountError] = useRequest(getAmount, [category]);
@@ -26,9 +24,14 @@ export function useProductsPage() {
   const perPageOptions: PerPageOption[] = useMemo(() => [4, 8, 16, 'All'], []);
   const params = { perPageOptions, itemsAmount: amountHandled, defaultIndex: 2 };
   const [page, setPage, perPage, setPerPage] = usePagination(params);
-    const changePerPage = useCallback((option: DropdownOption) => (
-      option === 'All' ? setPerPage('All') : setPerPage(+option)
-    ), []);
+  const changePerPage = useCallback((option: DropdownOption) => (
+    option === 'All' ? setPerPage('All') : setPerPage(+option)
+  ), []);
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get(SearchParam.Search);
+
+  useEffect(() => { setPage(1) }, [search]);
 
   const loadProducts = () => getProducts({
     category, page, perPage, sortQuery, search,
@@ -37,7 +40,15 @@ export function useProductsPage() {
     loadProducts, [category, page, perPage, sortQuery, search]
   );
 
-  const amount = search ? (products?.length ?? 0) : amountHandled;
+  const { setSearchVisible } = useContext(SearchContext);
+
+  useEffect(() => {
+    setSearchVisible(true);
+
+    return () => setSearchVisible(false);
+  }, []);
+
+  const amount = search ? (products?.amount ?? 0) : amountHandled;
   const amountLoadingHandled = search ? amountLoading : loading;
 
   return {
@@ -46,7 +57,7 @@ export function useProductsPage() {
     amount,
     category: capitalize(category),
     someError: error || amountError,
-    products,
+    products: products?.products ?? null,
     productsLoading: loading,
     perPageIsAll: perPage === 'All',
     sortBy,
