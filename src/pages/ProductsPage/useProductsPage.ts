@@ -1,14 +1,20 @@
 import { useCallback, useMemo } from "react";
-import { getProducts, getProductsAmount } from "../../api/products";
 import { useAppParams } from "../../enhancers/hooks/appParams";
 import { useRequest } from "../../enhancers/hooks/request";
 import { useProductsSort } from "../../enhancers/hooks/sort";
 import { PerPageOption, usePagination } from "../../enhancers/hooks/pagination";
 import { DropdownOption } from "../../components/UI/Dropdown/Dropdown";
 import { capitalize } from "../../utils/stringHelper";
+import { getProductsAmount } from "../../api/products/amount";
+import { getProducts } from "../../api/products/main";
+import { useSearchParams } from "../../enhancers/hooks/searchParams";
+import { SearchParam } from "../../definitions/enums/Router";
 
 export function useProductsPage() {
   const { category } = useAppParams();
+
+  const searchParams = useSearchParams();
+  const search = searchParams.get(SearchParam.Search);
 
   const getAmount = () => getProductsAmount(category);
   const [productsAmount, amountLoading, amountError] = useRequest(getAmount, [category]);
@@ -24,15 +30,20 @@ export function useProductsPage() {
       option === 'All' ? setPerPage('All') : setPerPage(+option)
     ), []);
 
-  const loadProducts = () => getProducts(category, { page, perPage, sortQuery });
+  const loadProducts = () => getProducts({
+    category, page, perPage, sortQuery, search,
+  });
   const [products, loading, error] = useRequest(
-    loadProducts, [category, page, perPage, sortQuery]
+    loadProducts, [category, page, perPage, sortQuery, search]
   );
 
+  const amount = search ? (products?.length ?? 0) : amountHandled;
+  const amountLoadingHandled = search ? amountLoading : loading;
+
   return {
-    amountLoading,
+    amountLoading: amountLoadingHandled,
     someProducts: amountHandled > 0,
-    amount: amountHandled,
+    amount,
     category: capitalize(category),
     someError: error || amountError,
     products,

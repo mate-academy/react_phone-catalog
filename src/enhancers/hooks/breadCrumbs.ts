@@ -16,7 +16,6 @@ export const useBreadCrumbs = (): BreadCrumb[] => {
 
   const BreadCrumbsNames = pathname.slice(1).split('/');
   let currentPath = '';
-  
 
   return BreadCrumbsNames.map(breadCrumbName => {
     currentPath += `/${breadCrumbName}`;

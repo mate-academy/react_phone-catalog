@@ -1,3 +1,5 @@
+import { SortQuery } from "../definitions/enums/Api";
+import { Product } from "../definitions/types/Product";
 import { ProductDetails } from "../definitions/types/ProductDetails";
 
 export const getColorHex = (color: string) => {
@@ -18,25 +20,39 @@ export const getColorHex = (color: string) => {
 }
 
 export const getSpecArrayFromProduct = (product: ProductDetails) => {
-  const {
-    screen,
-    resolution,
-    processor,
-    ram,
-    capacity,
-    camera,
-    zoom,
-    cell,
-  } = product;
-
   return {
-    screen,
-    resolution,
-    processor,
-    ram,
-    capacity,
-    camera,
-    zoom,
-    cell: cell.join(', '),
+    screen: product.screen,
+    resolution: product.resolution,
+    processor: product.processor,
+    ram: product.ram,
+    capacity: product.capacity,
+    camera: product.camera,
+    zoom: product.zoom,
+    cell: product.cell.join(', '),
   };
 };
+
+/**
+ * Sort Products with mutation
+ */
+
+export const sortProducts = (products: Product[], sortQuery: SortQuery) => {
+  switch (sortQuery) {
+    case SortQuery.Unsorted: return products;
+    case SortQuery.Alphabet: {
+      return products.sort((product1, product2) => (
+        product1.name.localeCompare(product2.name)
+      ));
+    }
+    case SortQuery.Newest: {
+      return products.sort((product1, product2) => (
+        product2.year - product1.year
+      ))
+    }
+    case SortQuery.Cheapest: {
+      return products.sort((product1, product2) => (
+        product1.price - product2.price
+      ));
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react';
 import BackButton from '../../components/UI/BackButton';
 import { useAppParams } from '../../enhancers/hooks/appParams';
-import { getProductDetailsById, getVariantsOfProduct } from '../../api/products';
 import ProductDetailsComponent from '../../components/common/ProductDetailsComponent';
 import { useRequest } from '../../enhancers/hooks/request';
 import ErrorMessage from '../../components/common/ErrorMessage';
@@ -9,6 +8,7 @@ import { ProductDetails } from '../../definitions/types/ProductDetails';
 import { useNavigate } from 'react-router-dom';
 
 import './ProductPage.scss';
+import { getProductDetailsById, getVariantsOfProduct } from '../../api/products/details';
 
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
