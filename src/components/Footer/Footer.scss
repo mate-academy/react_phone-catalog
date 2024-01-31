@@ -1,0 +1,65 @@
+@import '../../styles/variables';
+
+.footer {
+  margin-top: auto;
+  height: 97px;
+  width: 100%;
+  border-top: 1px solid $grayElements;
+  display: flex;
+  align-items: center;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & a {
+      height: 24px;
+    }
+  }
+
+  &__contacts {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  &__contact {
+    text-transform: uppercase;
+    color: $graySecondary;
+    text-decoration: none;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__title {
+    color: $graySecondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $grayIcons;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      border: 1px solid $grayPrimary;
+    }
+  }
+}

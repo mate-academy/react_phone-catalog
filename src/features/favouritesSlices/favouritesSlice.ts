@@ -1,54 +1,25 @@
 import {
   createSlice,
   PayloadAction,
-  createAsyncThunk,
 } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { Phone } from '../../types/Phone';
+import { IPhone } from '../../types/Phone.interface';
 import type { RootState } from '../../app/store';
 
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
-
-type Params = {
-  phone: Phone[],
-  favourites: Phone[],
+type Favourites = {
   quantityFavourites: number,
-  status: string,
+  favourites: IPhone[],
 };
 
-const initialState: Params = {
-  phone: [],
-  status: 'idle',
-  favourites: [],
+const initialState: Favourites = {
   quantityFavourites: 0,
+  favourites: [],
 };
-
-export const fetchPhones = createAsyncThunk<Phone[]>(
-  'favourites/fetchPhones',
-  async () => {
-    const res = await axios.get<Phone[]>(`${BASE_URL}/products.json`);
-
-    return res.data;
-  },
-);
-
-// export const fetchPhoneDetail = createAsyncThunk<Phone, string>(
-//   'favourites/fetchPhoneDetail',
-//   async (id: string) => {
-//     const res = await axios.get<Phone>(`${BASE_URL}/products.json/${id}`);
-
-//     return res.data;
-//   },
-// );
 
 const favouritesSlices = createSlice({
   name: 'favourites',
   initialState,
   reducers: {
-    restorePhones(state, action: PayloadAction<Phone[]>) {
-      state.phone = action.payload;
-    },
-    addToFavourites(state, action: PayloadAction<Phone>) {
+    addToFavourites(state, action: PayloadAction<IPhone>) {
       const hasPhones = state.favourites.find(
         (phones) => phones.phoneId === action.payload.phoneId,
       );
@@ -56,7 +27,6 @@ const favouritesSlices = createSlice({
       if (!hasPhones) {
         state.favourites.push({
           ...action.payload,
-          selected: !action.payload.selected,
         });
         state.quantityFavourites += 1;
       } else {
@@ -65,27 +35,14 @@ const favouritesSlices = createSlice({
         );
         state.quantityFavourites -= 1;
       }
-
-      state.phone = state.phone.map((phone) => {
-        return phone.phoneId === action.payload.phoneId
-          ? { ...phone, selected: !hasPhones?.selected }
-          : phone;
-      });
     },
-  },
-  extraReducers(builder) {
-    builder.addCase(fetchPhones.fulfilled, (state, action) => {
-      state.status = 'succeeded';
-      state.phone = state.phone.concat(action.payload);
-    });
   },
 });
 
-export const selectFavourites
+export const selectFavouritesPhones
  = (state: RootState) => state.favourites.favourites;
-export const selectQuantityFavourites
+export const selectFavouritesQuantity
   = (state: RootState) => state.favourites.quantityFavourites;
-export const selectStatus = (state: RootState) => state.favourites.status;
-export const selectPhones = (state: RootState) => state.favourites.phone;
-export const { addToFavourites, restorePhones } = favouritesSlices.actions;
+
+export const { addToFavourites } = favouritesSlices.actions;
 export default favouritesSlices.reducer;

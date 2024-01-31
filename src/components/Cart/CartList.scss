@@ -1,0 +1,83 @@
+@import '../../styles/variables';
+
+.cart {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    width: 752px;
+    height: 128px;
+    border: 1px solid $grayElements;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 368px;
+    height: 206px;
+    border: 1px solid $grayElements;
+  }
+
+  &__description {
+    margin-bottom: 48px;
+    color: $graySecondary;
+  }
+
+  &__button {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    width: 320px;
+    height: 48px;
+    background-color: $grayPrimary;
+    color: $white;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 75px;
+      height: 1px;
+      width: 100%;
+      background-color: $grayElements;
+    }
+
+    &:hover {
+      box-shadow: 10px 5px 5px 0 $grayPrimary;
+      background-color: $grayHoverAndBG;
+      color: $grayPrimary;
+      border: 1px solid $grayPrimary;
+    }
+  }
+
+  &__btn-goBack {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: $graySecondary;
+
+    margin-top: 40px;
+    margin-bottom: 16px;
+
+    & span {
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+}

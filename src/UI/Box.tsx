@@ -1,12 +1,18 @@
 import { FC, ReactNode } from 'react';
-import styled from './Box.module.scss';
+import cn from 'classnames';
+import './Box.scss';
 
 type Props = {
   children: ReactNode;
+  classname?: string;
 };
 
-export const Box: FC<Props> = ({ children }) => {
+export const Box: FC<Props> = ({ children, classname }) => {
   return (
-    <div className={styled.content}>{children}</div>
+    <div className={cn('content', classname)}>{children}</div>
   );
+};
+
+Box.defaultProps = {
+  classname: '',
 };

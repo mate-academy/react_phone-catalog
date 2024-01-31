@@ -1,3 +1,5 @@
+@import './styles/variables';
+
 @font-face {
   font-family: "Mont";
   src: local("Mont"),
@@ -21,10 +23,10 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Mont", sans-serif;
 }
 
 body {
-  font-family: "Mont", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -39,14 +41,29 @@ p,
 div,
 span,
 ul,
-li {
+li,
+button {
   margin: 0;
   padding: 0;
 }
 
-.item h1 {
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App h1 {
   font-weight: 700;
   font-size: 32px;
   letter-spacing: -0.32px;
-  color: #313237;
+  color: $grayPrimary;
 }

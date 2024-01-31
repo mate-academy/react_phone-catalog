@@ -1,0 +1,108 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.phoneList {
+  &__grid {
+    @include pageGrid;
+  }
+
+  &__gridItem {
+    grid-column: span 6;
+    list-style: none;
+    padding-bottom: 40px;
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__length {
+    margin-bottom: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+  }
+
+  &__pagiantion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  & > label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $graySecondary;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 12px;
+    width: 176px;
+    height: 40px;
+    background-color: $white;
+    border: 1px solid $grayIcons;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $grayPrimary;
+
+    &:hover {
+      border: 1px solid $graySecondary;
+    }
+
+    &:focus {
+      border: 1px solid $grayPrimary;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 108%;
+    z-index: 1;
+
+    width: 176px;
+    padding: 8px 0;
+    border: 1px solid $grayIcons;
+    list-style: none;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  &__item {
+    height: 32px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+
+    &:hover {
+      color: $grayPrimary;
+    }
+  }
+}

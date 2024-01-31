@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 import cartSlice from '../features/cartSlices/cartSlice';
 import favouritesSlices from '../features/favouritesSlices/favouritesSlice';
 import phoneDetailSlice from '../features/phoneDetail/phoneDetailSlice';
+import phonesSlice from '../features/phoneSlice/phonesSlice';
 
 const persistConfigCart = {
   key: 'cartPhones',
@@ -28,6 +29,7 @@ const persistConfigFavourites = {
 
 const rootReducer = combineReducers({
   phoneDetail: phoneDetailSlice,
+  phones: phonesSlice,
   cart: persistReducer(persistConfigCart, cartSlice),
   favourites: persistReducer(persistConfigFavourites, favouritesSlices),
 });

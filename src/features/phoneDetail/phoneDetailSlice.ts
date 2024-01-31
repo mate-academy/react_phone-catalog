@@ -1,30 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { Phone } from '../../types/Phone';
 import type { RootState } from '../../app/store';
-
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
-
-export const fetchPhoneDetail = createAsyncThunk<Phone, string>(
-  'phoneDetail/fetchPhoneDetail',
-  async (id: string) => {
-    const res = await axios.get<Phone>(`${BASE_URL}products/${id}.json`);
-
-    return res.data;
-  },
-);
+import { IPhoneDetail } from '../../types/PhoneDetail.interface';
+import { BASE_URL } from '../../helper';
 
 type PhoneDetail = {
-  phone: Phone | null;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  phone: IPhoneDetail | null;
+  status: 'loading' | 'succeeded' | 'error';
   error: string | null;
 };
 
 const initialState: PhoneDetail = {
   phone: null,
-  status: 'idle',
+  status: 'loading',
   error: null,
 };
+
+export const fetchPhoneDetail = createAsyncThunk<IPhoneDetail, string>(
+  'phoneDetail/fetchPhoneDetail',
+  async (id: string) => {
+    const res = await axios.get<IPhoneDetail>(`${BASE_URL}products/${id}.json`);
+
+    return res.data;
+  },
+);
 
 const phoneDetailSlice = createSlice({
   name: 'phoneDetail',
@@ -40,13 +39,14 @@ const phoneDetailSlice = createSlice({
         state.phone = action.payload;
       })
       .addCase(fetchPhoneDetail.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = 'error';
         state.error = action.payload as string;
       });
   },
 });
 
-export const selectPhone = (state: RootState) => state.phoneDetail.phone;
-export const selectStatus = (state: RootState) => state.phoneDetail.status;
+export const selectPhoneDetail = (state: RootState) => state.phoneDetail.phone;
+export const selectPhoneDetailStatus
+  = (state: RootState) => state.phoneDetail.status;
 
 export default phoneDetailSlice.reducer;

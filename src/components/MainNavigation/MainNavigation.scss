@@ -1,0 +1,107 @@
+@import "../../styles/variables";
+
+.main-header {
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  &__list {
+    padding-left: 20px;
+    list-style: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+
+    &--left {
+      gap: 0;
+
+      & a {
+        padding: 25px;
+        border-left: 1px solid #e2e6e9;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    & a {
+      color: $graySecondary;
+      font-size: 12px;
+      text-decoration: none;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 11px;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+      padding-block: 25px;
+
+      &--left {
+        display: block;
+        height: 64px;
+      }
+    }
+  }
+
+  &__active {
+    color: $grayPrimary;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -23px;
+      height: 3px;
+      width: 100%;
+      background-color: $grayPrimary;
+      transition: transform 0.3s;
+      transform: scale(1);
+      transform-origin: left;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    top: -3px;
+    right: 20px;
+    display: block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid $white;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: $white;
+
+    text-align: center;
+    font-family: Mont;
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  &__search {
+    height: 64px;
+    width: 327px;
+    border-left: 1px solid #e2e6e9;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    all: unset;
+    font-size: 14px;
+    font-weight: 600;
+
+    &::placeholder {
+      color: $grayIcons;
+    }
+  }
+}
+
+
