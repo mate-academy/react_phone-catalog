@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useRef } from 'react';
 
 import './ProductsPage.scss';
 import ProductsList from '../../components/common/ProductsList';
@@ -49,6 +49,7 @@ export const ProductsPage: React.FC = memo(() => {
       {!amountLoading && someProducts && (
         <div className='products-page__controls'>
           <Dropdown
+            width='176px'
             options={sortByOptions}
             selectedOption={sortBy}
             name='Sort by'

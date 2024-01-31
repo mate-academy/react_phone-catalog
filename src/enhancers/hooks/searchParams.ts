@@ -1,60 +1,58 @@
 import { SetURLSearchParams, useSearchParams as useRouterSearchParams } from 'react-router-dom';
 import { SearchParam } from '../../definitions/enums/Router';
 
-let searchParams: SearchParamsWithRouter | null = null;
+const searchParams = {
+  current: new URLSearchParams(),
+};
 
 export function useSearchParams() {
   const [routerParams, setRouterParams] = useRouterSearchParams();
 
-  if (!searchParams) {
-    searchParams = new SearchParamsWithRouter(setRouterParams, routerParams);
-  }
+  searchParams.current = routerParams;
 
-  return searchParams;
+  return new SearchParamsWithRouter(setRouterParams);
 }
 
 type Value = string | number;
 
 export class SearchParamsWithRouter {
-  private params: URLSearchParams;
+  private params: { current: URLSearchParams };
   private setParams: SetURLSearchParams;
 
-  constructor(
-    setParamsFunction: SetURLSearchParams,
-    params?: string | URLSearchParams,
-  ) {
-    this.params = new URLSearchParams(params);
+  constructor(setParamsFunction: SetURLSearchParams) {
+    this.params = searchParams;
+
     this.setParams = setParamsFunction;
   }
 
   get<T extends string>(key: SearchParam) {
-    return this.params.get(key) as T | null;
+    return this.params.current.get(key) as T | null;
   }
 
   has(key: SearchParam) {
-    return this.params.has(key);
+    return this.params.current.has(key);
   }
 
   set<T extends Value>(key: SearchParam, value: T) {
     const stringValue = value.toString();
 
     if (stringValue) {
-      this.params.set(key, stringValue);
+      this.params.current.set(key, stringValue);
     } else {
-      this.params.delete(key);
+      this.params.current.delete(key);
     }
 
-    this.setParams(this.params);
+    this.setParams(this.params.current);
   }
 
   delete(key: SearchParam) {
-    this.params.delete(key);
+    this.params.current.delete(key);
 
-    this.setParams(this.params);
+    this.setParams(this.params.current);
   }
 
   clear() {
-    this.params = new URLSearchParams();
-    this.setParams(this.params);
+    this.params.current = new URLSearchParams();
+    this.setParams(this.params.current);
   }
 }
