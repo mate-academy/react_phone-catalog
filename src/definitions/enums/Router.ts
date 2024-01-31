@@ -1,4 +1,4 @@
-import { Category } from "./api";
+import { Category } from "./Api";
 
 export const enum PAGE {
   Home = '/',
@@ -15,4 +15,5 @@ export const enum SearchParam {
   Search = 'search',
   PerPage = 'perPage',
   Page = 'page',
+  Sort = 'sortBy',
 }

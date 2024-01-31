@@ -1,4 +1,4 @@
-import { Category, SortQuery } from "../definitions/enums/api";
+import { Category, SortQuery } from "../definitions/enums/Api";
 import { Product } from '../definitions/types/Product';
 import { ProductDetails } from "../definitions/types/ProductDetails";
 import { request } from '../utils/fetchHelper';
@@ -19,7 +19,6 @@ export const getProducts = async (
   category: Category,
   { page, perPage, sortQuery = SortQuery.Unsorted }: Options
 ) => {
-  console.log(sortQuery);
   if (perPage === 'All') return getAllProducts(category, sortQuery);
 
   const PER_PAGE_ON_SERVER = 16;

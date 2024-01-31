@@ -11,6 +11,7 @@ interface Props {
   onChange: (option: DropdownOption) => void,
   name?: string,
   className?: string,
+  width?: string,
 }
 
 export const Dropdown: React.FC<Props> = memo(({
@@ -18,6 +19,7 @@ export const Dropdown: React.FC<Props> = memo(({
   selectedOption,
   name,
   className,
+  width,
   onChange,
 }) => {
   const openButton = useRef<HTMLButtonElement>(null);
@@ -44,7 +46,7 @@ export const Dropdown: React.FC<Props> = memo(({
   };
 
   return (
-    <div className={`dropdown ${className || ''}`}>
+    <div className={`dropdown ${className || ''}`} style={{ width }}>
       {name && (
         <h6 className='dropdown__name'>{name}</h6>
       )}

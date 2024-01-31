@@ -1,58 +1,46 @@
-import React, { memo, useCallback, useMemo } from 'react';
-import ProductsList from '../../components/common/ProductsList';
+import React, { memo } from 'react';
+
 import './ProductsPage.scss';
-import { useAppParams } from '../../enhancers/hooks/appParams';
+import ProductsList from '../../components/common/ProductsList';
 import ErrorMessage from '../../components/common/ErrorMessage';
-import { capitalize } from '../../utils/stringHelper';
-import { useRequest } from '../../enhancers/hooks/request';
-import { getProductsAmount, getProducts } from '../../api/products';
 import Dropdown from '../../components/UI/Dropdown';
 import Paginator from '../../components/UI/Paginator';
-import { PerPageOption, usePagination } from '../../enhancers/hooks/pagination';
-import { DropdownOption } from '../../components/UI/Dropdown/Dropdown';
 import Placeholder from '../../components/UI/Placeholder';
+import { useProductsPage } from './useProductsPage';
 
 export const ProductsPage: React.FC = memo(() => {
-  const { category } = useAppParams();
-  const [productsAmount, amountLoading, amountError] = useRequest(
-    () => getProductsAmount(category), [category]
-  );
-
-  const perPageOptions: PerPageOption[] = useMemo(() => [4, 8, 16, 'All'], []);
-
-  const amountHandled = amountLoading ? 0 : (productsAmount ?? 0);
-
-  const [page, setPage, perPage, setPerPage] = usePagination({
+  const {
+    amountLoading,
+    someProducts,
+    amount,
+    category,
+    someError,
+    products,
+    productsLoading,
+    perPageIsAll,
+    sortBy,
+    sortByOptions,
+    changeSortBy,
     perPageOptions,
-    itemsAmount: amountHandled,
-    defaultIndex: 2,
-  });
+    perPage,
+    changePerPage,
+    page,
+    setPage,
+  } = useProductsPage();
 
-  const [products, loading, error] = useRequest(() => {
-    return getProducts(category, { page, perPage })
-  }, [category, page, perPage]);
-
-  if (error || amountError) {
-    return <ErrorMessage message={error || amountError} />;
+  if (someError) {
+    return <ErrorMessage message={someError} />;
   }
-
-  const perPageIsAll = perPage === 'All';
-  const someProducts = amountHandled > 0;
-  const showPaginator = !perPageIsAll && someProducts;
-
-  const changePerPage = useCallback((option: DropdownOption) => (
-    option === 'All' ? setPerPage('All') : setPerPage(+option)
-  ), []);
 
   return (
     <div className="products-page">
-      <h2 className='products-page__title'>{capitalize(category)}</h2>
+      <h2 className='products-page__title'>{category}</h2>
 
       {amountLoading && <Placeholder width='40px' height='20px' className='products-page__amount'/>}
       {!amountLoading && (
         <p className='products-page__amount'>
-          <data value={amountHandled}>
-            {amountHandled}
+          <data value={amount}>
+            {amount}
           </data> models
         </p>
       )}
@@ -60,6 +48,13 @@ export const ProductsPage: React.FC = memo(() => {
       {amountLoading && <Placeholder height='40px' width='400px' className='products-page__controls'/>}
       {!amountLoading && someProducts && (
         <div className='products-page__controls'>
+          <Dropdown
+            options={sortByOptions}
+            selectedOption={sortBy}
+            name='Sort by'
+            onChange={changeSortBy}
+          />
+
           <Dropdown
             options={perPageOptions}
             selectedOption={perPage}
@@ -71,15 +66,15 @@ export const ProductsPage: React.FC = memo(() => {
 
       <ProductsList
         products={products}
-        placeholdersAmount={perPageIsAll ? 16 : perPage}
-        loading={loading}
+        placeholdersAmount={(perPageIsAll ? 16 : perPage) as number}
+        loading={productsLoading}
       />
 
-      {showPaginator && (
+      {!perPageIsAll && someProducts && (
         <Paginator
           className='products-page__paginator'
-          itemsPerPage={perPage}
-          itemsAmount={productsAmount || 5}
+          itemsPerPage={perPage as number}
+          itemsAmount={amount}
           currentPage={page}
           onChange={setPage}
         />

@@ -1,10 +1,16 @@
 import { SetURLSearchParams, useSearchParams as useRouterSearchParams } from 'react-router-dom';
 import { SearchParam } from '../../definitions/enums/Router';
 
+let searchParams: SearchParamsWithRouter | null = null;
+
 export function useSearchParams() {
   const [routerParams, setRouterParams] = useRouterSearchParams();
 
-  return new SearchParamsWithRouter(setRouterParams, routerParams);
+  if (!searchParams) {
+    searchParams = new SearchParamsWithRouter(setRouterParams, routerParams);
+  }
+
+  return searchParams;
 }
 
 type Value = string | number;
