@@ -1,5 +1,5 @@
 export { Root } from './Root/Root';
-export { HomePage as Home } from './HomePage/HomePage';
+export { HomePage } from './HomePage/HomePage';
 export { Navbar } from './Navbar/Navbar';
 export { Logo } from './Logo/Logo';
 export { NotFoundPage } from './NotFoundPage/NotFoundPage';
@@ -10,3 +10,4 @@ export { PhoneCard } from './PhoneCard/PhoneCard';
 export { ShopByCategory } from './ShopByCategory/ShopByCategory';
 export { CategoryCard } from './CategoryCard/CategoryCard';
 export { BrandNewModels } from './BrandNewModels/BrandNewModels';
+export { PhonesPage } from './PhonesPage/PhonesPage';

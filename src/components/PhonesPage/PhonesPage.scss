@@ -1,0 +1,61 @@
+@import '../../assets/css/variables';
+
+.phones-page {
+  display: flex;
+  flex-direction: column;
+
+  &__nav, &__title {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__subtitle {
+    color: $secondary;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+}
+
+.phones-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/icons/home.svg);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary;
+    text-decoration: none;
+
+    &::before {
+      display: inline-block;
+      content: '';
+      width: 16px;
+      height: 16px;
+      background-image: url(../../assets/icons/arrow-right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      padding-right: 8px;
+    }
+  }
+}

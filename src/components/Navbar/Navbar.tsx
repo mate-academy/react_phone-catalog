@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 import { Logo } from '../Logo';
 import { SearchBar } from '../SearchBar';
 
 import './Navbar.scss';
 
-const headerListItems = ['Home', 'Phones', 'Tablets', 'Accessories'];
+const headerListItems = ['home', 'phones', 'tablets', 'accessories'];
 
 export const Navbar = () => {
   return (
@@ -19,7 +20,20 @@ export const Navbar = () => {
                 className="nav__item"
                 key={el}
               >
-                <NavLink to="/" className="nav__link">
+                <NavLink
+                  to={
+                    el === headerListItems[0]
+                      ? '/'
+                      : `/${el}`
+                  }
+                  className={({ isActive }) => (
+                    cn(
+                      'nav__link',
+                      { 'nav__link--active': isActive },
+                    )
+                  )}
+
+                >
                   {el.toUpperCase()}
                 </NavLink>
               </li>

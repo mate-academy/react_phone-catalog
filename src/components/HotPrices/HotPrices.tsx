@@ -11,10 +11,10 @@ export const HotPrices = () => {
     <div className="main__hot-prices hot-prices">
       <SectionHeader title="Hot prices" hasButtons />
       <div className="hot-prices__cards">
-        <PhoneCard info="" />
-        <PhoneCard info="" />
-        <PhoneCard info="" />
-        <PhoneCard info="" />
+        <PhoneCard info="" hasDiscount />
+        <PhoneCard info="" hasDiscount />
+        <PhoneCard info="" hasDiscount />
+        <PhoneCard info="" hasDiscount />
         {/* {phones.map(el => (
         ))} */}
       </div>

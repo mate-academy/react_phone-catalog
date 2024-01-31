@@ -4,9 +4,10 @@ import './PhoneCard.scss';
 
 type Props = {
   info?: string
+  hasDiscount?: boolean
 };
 
-export const PhoneCard: React.FC<Props> = () => {
+export const PhoneCard: React.FC<Props> = ({ hasDiscount = false }) => {
   return (
     <div className="phone-card">
       <img
@@ -22,9 +23,8 @@ export const PhoneCard: React.FC<Props> = () => {
       </Link>
       <div className="phone-card__price">
         <p className="phone-card__actual-price">$799</p>
-        <p className="phone-card__old-price">$899</p>
+        {hasDiscount && <p className="phone-card__old-price">$899</p>}
       </div>
-      {/* <hr className='phone-card__'/> */}
       <table className="phone-card__details phone-details">
         <tbody className="phone-details__body">
           <tr className="phone-details__row">

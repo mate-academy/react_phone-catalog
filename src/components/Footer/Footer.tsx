@@ -6,6 +6,13 @@ import './Footer.scss';
 const footerListElements = ['Github', 'Contacts', 'Rights'];
 
 export const Footer = () => {
+  const handleBackToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="footer">
       <Logo />
@@ -26,7 +33,11 @@ export const Footer = () => {
       </ul>
       <div className="footer__back-to-top back-to-top">
         <span className="back-to-top__text">Back to top</span>
-        <button type="button" className="back-to-top__button" />
+        <button
+          type="button"
+          className="back-to-top__button"
+          onClick={handleBackToTop}
+        />
       </div>
     </footer>
   );
