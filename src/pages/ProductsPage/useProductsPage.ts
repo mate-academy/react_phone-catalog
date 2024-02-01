@@ -2,14 +2,13 @@ import { useCallback, useContext, useEffect, useMemo } from "react";
 import { useAppParams } from "../../enhancers/hooks/appParams";
 import { useRequest } from "../../enhancers/hooks/request";
 import { useProductsSort } from "../../enhancers/hooks/sort";
-import { PerPageOption, usePagination } from "../../enhancers/hooks/pagination";
+import { usePagination } from "../../enhancers/hooks/pagination";
+import { PerPageOption } from "../../api/products/server/types";
 import { DropdownOption } from "../../components/UI/Dropdown/Dropdown";
 import { capitalize } from "../../utils/stringHelper";
-import { getProductsAmount } from "../../api/products/amount";
-import { getProducts } from "../../api/products/main";
-import { useSearchParams } from "../../enhancers/hooks/searchParams";
-import { SearchParam } from "../../definitions/enums/Router";
-import { SearchContext } from "../../store/contexts/SearchContext";
+import { getProductsAmount } from "../../api/products/client/amount";
+import { getProducts } from "../../api/products/client/products";
+import { SearchContext, useSearchHere } from "../../store/contexts/SearchContext";
 
 export function useProductsPage() {
   const { category } = useAppParams();
@@ -28,28 +27,21 @@ export function useProductsPage() {
     option === 'All' ? setPerPage('All') : setPerPage(+option)
   ), []);
 
-  const searchParams = useSearchParams();
-  const search = searchParams.get(SearchParam.Search);
-
+  const { search } = useContext(SearchContext);
+  useSearchHere(category);
   useEffect(() => { setPage(1) }, [search]);
 
   const loadProducts = () => getProducts({
-    category, page, perPage, sortQuery, search,
+    category, sortQuery, search, pagination: { page, perPage }
   });
+
   const [products, loading, error] = useRequest(
     loadProducts, [category, page, perPage, sortQuery, search]
   );
 
-  const { setSearchVisible } = useContext(SearchContext);
-
-  useEffect(() => {
-    setSearchVisible(true);
-
-    return () => setSearchVisible(false);
-  }, []);
-
   const amount = search ? (products?.amount ?? 0) : amountHandled;
   const amountLoadingHandled = search ? amountLoading : loading;
+  const items = search ? 'results' : 'models';
 
   return {
     amountLoading: amountLoadingHandled,
@@ -68,5 +60,6 @@ export function useProductsPage() {
     page,
     pageAmount: amountHandled / (perPage === 'All' ? 1 : perPage),
     setPage,
+    items,
   };
 }

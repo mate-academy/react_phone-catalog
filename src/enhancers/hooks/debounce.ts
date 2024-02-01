@@ -5,7 +5,7 @@ type Return<T> = [T, React.Dispatch<React.SetStateAction<T>>];
 export function useDebounce<T>(
   initialState: T,
   callback: (data: T) => void,
-  time = 500,
+  time = 1000,
 ): Return<T> {
   const [data, setData] = useState<T>(initialState);
   const timerId = useRef(-1);

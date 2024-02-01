@@ -16,8 +16,8 @@ import { ContextProvider } from './store/contexts/GlobalContextProvider';
 export const Root: React.FC = () => {
   return (
     <Provider store={store}>
-      <ContextProvider>
-        <Router>
+      <Router>
+        <ContextProvider>
           <Routes>
             <Route path={PAGE.Home} element={<App />}>
               <Route index element={<HomePage />} />
@@ -34,8 +34,8 @@ export const Root: React.FC = () => {
                 element={<ErrorMessage message='Resource not found. Please check URL.' />} />
             </Route>
           </Routes>
-        </Router>
-      </ContextProvider>
+        </ContextProvider>
+      </Router>
     </Provider>
   )
 };

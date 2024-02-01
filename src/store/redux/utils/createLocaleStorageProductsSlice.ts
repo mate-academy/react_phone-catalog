@@ -2,10 +2,14 @@ import { ReducerCreators, asyncThunkCreator, buildCreateSlice } from '@reduxjs/t
 import { storage } from '../../../utils/localStorageHelper';
 import { Product, ProductId } from '../../../definitions/types/Product';
 import { LocaleStorage } from '../../../definitions/enums/LocaleStorage';
+import { getProducts } from '../../../api/products/client/products';
+import { QueryOptions } from "../../../api/products/server/types";
 
 export interface LocaleState {
   ids: ProductId[],
-  items: Product[],
+  products: Product[],
+  loading: boolean,
+  error: string,
 }
 
 interface Options {
@@ -18,7 +22,9 @@ const initState = (key: LocaleStorage): LocaleState => {
 
   return {
     ids: productIds,
-    items: [],
+    products: [],
+    loading: false,
+    error: '',
   };
 };
 
@@ -35,7 +41,9 @@ export function getLocaleStorageProductsSlice(options: Options) {
     selectors: {
       selectState: state => state,
       selectIds: state => state.ids,
-      selectProducts: state => state.items,
+      selectLoading: state => state.error,
+      selectError: state => state.loading,
+      selectProducts: state => state.products,
     },
     reducers: (create: ReducerCreators<LocaleState>) => ({
       add: create.asyncThunk(
@@ -62,21 +70,26 @@ export function getLocaleStorageProductsSlice(options: Options) {
         }
       ),
 
-      display: create.asyncThunk(async () => {
+      display: create.asyncThunk(async (initialOptions: QueryOptions) => {
         const productIds = storage.init<ProductId[]>(key, []);
-        const products: Product[] = [];
 
-        // for (const category in Category) {
-        //   const productsForCategory = await getAllProducts(category as Category);
+        const options: QueryOptions = { ...initialOptions, ids: productIds };
 
-        //   products.concat(productsForCategory);
-        // }
+        console.log(options);
 
-        return products.filter(product => productIds.includes(product.id));
+        return getProducts(options);
       },
         {
+          pending: (state) => {
+            state.loading = true;
+          },
+          rejected: (state, action) => {
+            state.loading = false;
+            state.error = action.error.message || 'Some Error';
+          },
           fulfilled: (state, action) => {
-            state.items = action.payload;
+            state.loading = false;
+            state.products = action.payload.products;
           }
         }
       )

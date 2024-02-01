@@ -17,8 +17,7 @@ export const ProductsList: React.FC<Props> = memo(({
   placeholdersAmount,
 }) => {
   if (products === null || loading) {
-    const placeholders = Array.from(
-      { length: placeholdersAmount },
+    const placeholders = Array.from({ length: placeholdersAmount },
       (_, index) => <Placeholder height='504px' key={index} />
     );
 

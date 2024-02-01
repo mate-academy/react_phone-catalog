@@ -8,13 +8,13 @@ import { ProductDetails } from '../../definitions/types/ProductDetails';
 import { useNavigate } from 'react-router-dom';
 
 import './ProductPage.scss';
-import { getProductDetailsById, getVariantsOfProduct } from '../../api/products/details';
+import { getProductDetailsById, getVariantsOfProduct } from '../../api/products/client/productsDetails';
 
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
   const [product, , error, setProduct] = useRequest(
-    () => getProductDetailsById(category, productId),
+    () => getProductDetailsById(productId, category),
   );
   const similarProducts = useRef<ProductDetails[]>([]);
 
@@ -31,7 +31,7 @@ export const ProductPage: React.FC = memo(() => {
 
   useEffect(() => {
     if (product) {
-      getVariantsOfProduct(category, product).then((products) => {
+      getVariantsOfProduct(product, category).then((products) => {
         similarProducts.current = products;
       })
     }

@@ -1,19 +1,19 @@
-import { Category } from "../../definitions/enums/Api";
-import { ProductDetails } from "../../definitions/types/ProductDetails";
-import { request } from "../../utils/fetchHelper";
+import { Category } from "../server/types";
+import { ProductDetails } from "../../../definitions/types/ProductDetails";
+import { productsRequest } from "../server/helper";
 
 export const getProductDetailsById = (
-  category: Category,
-  productId: string
+  productId: string,
+  category?: Category,
 ): Promise<ProductDetails> => {
-  const url = `categories/${category}/products_details/${productId}.json`;
-
-  return request<ProductDetails>(url);
+  return productsRequest<ProductDetails>(
+    `products_details/${productId}.json`, category
+  )
 };
 
 export const getVariantsOfProduct = async (
-  category: Category,
-  product: ProductDetails
+  product: ProductDetails,
+  category?: Category,
 ) => {
   const {
     colorsAvailable: colors,
@@ -30,7 +30,7 @@ export const getVariantsOfProduct = async (
 
   try {
     const products = await Promise.all(
-      productsIds.map(id => getProductDetailsById(category, id))
+      productsIds.map(id => getProductDetailsById(id, category))
     );
 
     return products;

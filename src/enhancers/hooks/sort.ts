@@ -1,5 +1,5 @@
 import { SearchParam } from "../../definitions/enums/Router";
-import { SortQuery } from "../../definitions/enums/Api";
+import { SortQuery } from "../../api/products/server/types";
 import { useSearchParams } from "./searchParams";
 import { useCallback, useMemo } from "react";
 

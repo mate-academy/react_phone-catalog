@@ -26,6 +26,7 @@ export const ProductsPage: React.FC = memo(() => {
     changePerPage,
     page,
     setPage,
+    items,
   } = useProductsPage();
 
   if (someError) {
@@ -41,7 +42,7 @@ export const ProductsPage: React.FC = memo(() => {
         <p className='products-page__amount'>
           <data value={amount}>
             {amount}
-          </data> models
+          </data> {items}
         </p>
       )}
 

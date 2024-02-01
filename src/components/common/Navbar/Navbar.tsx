@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import './Navbar.scss';
 import { PAGE } from '../../../definitions/enums/Router';
-import { Category } from "../../../definitions/enums/Api";
+import { Category } from "../../../api/products/server/types";
 
 export const Navbar: React.FC = memo(() => {
   const getClasses = ({ isActive }: { isActive: boolean }) => (

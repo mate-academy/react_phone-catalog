@@ -16,6 +16,10 @@
     margin-top: 8px;
     color: var(--c-secondary);
     line-height: 21px;
+
+    &--without-filters-page {
+      margin-bottom: 40px;
+    }
   }
 
   &__controls {

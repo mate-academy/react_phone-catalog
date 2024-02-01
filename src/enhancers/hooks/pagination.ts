@@ -1,8 +1,7 @@
 import { useCallback } from "react";
 import { SearchParam } from "../../definitions/enums/Router";
 import { SearchParamsWithRouter, useSearchParams } from "./searchParams";
-
-export type PerPageOption = number | 'All';
+import { PerPageOption } from "../../api/products/server/types";
 
 type Options = {
   perPageOptions: PerPageOption[],
