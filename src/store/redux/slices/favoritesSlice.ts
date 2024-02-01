@@ -8,3 +8,4 @@ const favoritesSlice = getLocaleStorageProductsSlice({
 
 export const favoritesActions = favoritesSlice.actions;
 export const favoritesReducer = favoritesSlice.reducer;
+export const favoritesSelector = favoritesSlice.selectors;

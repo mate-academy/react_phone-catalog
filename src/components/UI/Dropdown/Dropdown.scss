@@ -47,15 +47,18 @@
   }
 
   &__list {
-    width: 100%;
     position: absolute;
     left: 0;
     top: 64px;
     z-index: 1;
-    border: 1px solid var(--c-elements);
-    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    
+    width: 100%;
+    overflow: hidden;
     background-color: var(--c-bg);
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
     list-style-type: none;
+
+    transition: height 200ms;
   }
 
   &__item {

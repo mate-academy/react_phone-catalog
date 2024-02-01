@@ -1,11 +1,12 @@
-import React, { memo, useRef, useState } from 'react';
+import React, { memo } from 'react';
 
 import './Dropdown.scss';
 import ArrowIcon from '../ArrowIcon';
+import { useDropdown } from './useDropdown';
 
 export type DropdownOption = string | number;
 
-interface Props {
+export interface DropdownProps {
   options: DropdownOption[],
   selectedOption: DropdownOption,
   onChange: (option: DropdownOption) => void,
@@ -14,36 +15,20 @@ interface Props {
   width?: string,
 }
 
-export const Dropdown: React.FC<Props> = memo(({
-  options,
-  selectedOption,
-  name,
-  className,
-  width,
-  onChange,
-}) => {
-  const openButton = useRef<HTMLButtonElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const openClass = isOpen ? 'dropdown__box--open' : '';
-
-  const handleOpen = () => {
-    openButton.current?.focus();
-    setIsOpen(prev => !prev)
-  }
-
-  const handleBlur = () => {
-    setIsOpen(false);
-  };
-
-  const handleOptionChange = (option: DropdownOption) => () => {
-    onChange(option);
-    setIsOpen(false);
-  };
-
-  const getItemClasses = (option: DropdownOption) => {
-    return 'dropdown__item' + (option === selectedOption
-      ? ' dropdown__item--selected' : '');
-  };
+export const Dropdown: React.FC<DropdownProps> = memo((props) => {
+  const { name, width, className, options} = props;
+  const {
+    list,
+    listStyle,
+    openClass,
+    openButton,
+    isOpen,
+    selectedOption,
+    handleOpen,
+    handleBlur,
+    handleOptionChange,
+    getItemClasses,
+  } = useDropdown(props);
 
   return (
     <div className={`dropdown ${className || ''}`} style={{ width }}>
@@ -67,19 +52,17 @@ export const Dropdown: React.FC<Props> = memo(({
           />
         </button>
 
-        {isOpen && (
-          <ul className='dropdown__list'>
-            {options.map(option => (
-              <li
-                className={getItemClasses(option)}
-                onMouseDown={handleOptionChange(option)}
-                key={option}
-              >
-                {option}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className='dropdown__list' style={listStyle} ref={list}>
+          {options.map(option => (
+            <li
+              className={getItemClasses(option)}
+              onMouseDown={handleOptionChange(option)}
+              key={option}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

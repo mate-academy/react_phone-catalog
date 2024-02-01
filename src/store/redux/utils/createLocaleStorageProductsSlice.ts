@@ -32,6 +32,11 @@ export function getLocaleStorageProductsSlice(options: Options) {
   const slice = createSlice({
     name: name,
     initialState: () => initState(key),
+    selectors: {
+      selectState: state => state,
+      selectIds: state => state.ids,
+      selectProducts: state => state.items,
+    },
     reducers: (create: ReducerCreators<LocaleState>) => ({
       add: create.asyncThunk(
         async (productId: ProductId) => {

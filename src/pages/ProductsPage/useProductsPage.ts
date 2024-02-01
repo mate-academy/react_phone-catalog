@@ -53,7 +53,6 @@ export function useProductsPage() {
 
   return {
     amountLoading: amountLoadingHandled,
-    someProducts: amountHandled > 0,
     amount,
     category: capitalize(category),
     someError: error || amountError,
@@ -67,6 +66,7 @@ export function useProductsPage() {
     perPage,
     changePerPage,
     page,
+    pageAmount: amountHandled / (perPage === 'All' ? 1 : perPage),
     setPage,
   };
 }

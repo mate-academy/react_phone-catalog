@@ -11,7 +11,11 @@ const SubmitButton: React.FC = memo(() => (
   </button>
 ));
 
-export const SearchField: React.FC = memo(() => {
+interface Props {
+  searchIn?: string,
+}
+
+export const SearchField: React.FC<Props> = memo(({ searchIn }) => {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get(SearchParam.Search) || '';
 
@@ -29,7 +33,7 @@ export const SearchField: React.FC = memo(() => {
         className="search-field__input"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search in ..."
+        placeholder={`Search in ${searchIn || ''}...`}
         size={1}
       />
 

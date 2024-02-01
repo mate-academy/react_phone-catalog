@@ -11,7 +11,6 @@ import { useProductsPage } from './useProductsPage';
 export const ProductsPage: React.FC = memo(() => {
   const {
     amountLoading,
-    someProducts,
     amount,
     category,
     someError,
@@ -23,6 +22,7 @@ export const ProductsPage: React.FC = memo(() => {
     changeSortBy,
     perPageOptions,
     perPage,
+    pageAmount,
     changePerPage,
     page,
     setPage,
@@ -46,7 +46,7 @@ export const ProductsPage: React.FC = memo(() => {
       )}
 
       {amountLoading && <Placeholder height='40px' width='400px' className='products-page__controls'/>}
-      {!amountLoading && someProducts && (
+      {!amountLoading && amount > 0 && (
         <div className='products-page__controls'>
           <Dropdown
             width='176px'
@@ -71,7 +71,7 @@ export const ProductsPage: React.FC = memo(() => {
         loading={productsLoading}
       />
 
-      {!perPageIsAll && someProducts && (
+      {!perPageIsAll && pageAmount > 0 && (
         <Paginator
           className='products-page__paginator'
           itemsPerPage={perPage as number}

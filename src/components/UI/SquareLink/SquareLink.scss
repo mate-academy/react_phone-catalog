@@ -1,6 +1,17 @@
-@import '../../../styles/vars.scss';
+@import '../../../styles/vars';
+
+@keyframes show-amount {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
 
 .square-link {
+  position: relative;
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
@@ -8,10 +19,62 @@
 
   border: solid var(--c-elements);
   border-width: 0 0 0 1px;
-
+  
   transition: $transition-time;
-
-  &:hover {
+  
+  &:hover::before {
+    content: '';
+    position: absolute;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
     border: 1px solid var(--c-primary);
+  }
+
+  &--selected {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--c-primary);
+    }
+  }
+
+  &__img-container {
+    position: relative;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__amount {
+    box-sizing: content-box;
+    position: absolute;
+    top: -50%;
+    right: -50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--c-attention);
+    border: 1px solid var(--c-bg);
+
+    color: var(--c-bg);
+    font-weight: 600;
+    font-size: 9px;
+
+    animation: show-amount 100ms ease-in-out forwards;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }

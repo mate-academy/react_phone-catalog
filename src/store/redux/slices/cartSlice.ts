@@ -9,3 +9,4 @@ const cartSlice = getLocaleStorageProductsSlice({
 
 export const cartActions = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
+export const cartSelector = cartSlice.selectors;
