@@ -1,9 +1,16 @@
-@import '../../style/variables';
+@import "../../style/variables";
+@import "../../style/_mixins";
 
 .footer {
   max-width: 1136px;
-  padding: 22px 0 22px 0;
+  padding: 22px 0;
   margin-left: 454px;
+
+  @include onMobile {
+    max-width: 500px;
+    margin: 0;
+    padding-right: 70px;
+  }
   
   &__nav {
     display: flex;
@@ -25,7 +32,7 @@
       color: $secondary;
       text-transform: uppercase;
 
-      font-family: "Mont-Bold";
+      font-family: "Mont-Bold", sans-serif;
       font-weight: 700;
       font-size: 12px;
       line-height: 11px;
@@ -38,6 +45,11 @@
     align-items: center;
     gap: 16px;
     
+    &-name {
+      @include onMobile {
+        display: none;
+      }
+    }
 
     &-top {
       width: 32px;

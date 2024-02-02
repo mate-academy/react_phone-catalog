@@ -49,6 +49,7 @@ export const Footer = () => {
               <NavLink
                 to="https://github.com/Vitalii-Fediaiev"
                 className={getLinkClass}
+                target="_blank"
               >
                 GitHub
               </NavLink>

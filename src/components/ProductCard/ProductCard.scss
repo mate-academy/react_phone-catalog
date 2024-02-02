@@ -1,9 +1,16 @@
-@import '../../style/variables';
+@import "../../style/variables";
+@import "../../style/_mixins";
 
 .product-card {
   border: 1px solid $elements;
   width: 272px;
   height: 507px;
+
+  @include onMobile {
+    width: 222px;
+    height: 400px;
+    
+  }
 }
 
 .phone {
@@ -17,28 +24,33 @@
     width: 145px;
     height: 200px;
     margin: 32px 32px 24px 64px;
+
+    @include onMobile {
+      width: 100px;
+      height: 130px;
+      margin: 22px 22px 4px 54px;
+      object-fit: contain;
+    }
   }
 
   &__name {
-    font-family: "Mont-Regular";
+    font-family: "Mont-Regular", sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     color: $navbarLinkColor;
-    margin: 0px 24px 8px 24px;
+    margin: 0 24px 8px;
+    width: 170px;
   }
 
   &__cost {
     display: flex;
     align-items: center;
-
     gap: 8px;
-    margin: 0px 24px 8px 24px;
-
-    
+    margin: 0 24px 8px;
 
     &--discount {
-      font-family: "Mont-Bold";
+      font-family: "Mont-Bold", sans-serif;
       font-size: 22px;
       font-weight: 700;
       line-height: 31px;
@@ -46,7 +58,7 @@
     }
 
     &--real {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 22px;
       font-weight: 500;
       line-height: 28px;
@@ -60,11 +72,11 @@
     &--container {
       display: flex;
       justify-content: space-between;
-      margin: 0px 24px 8px 24px;
+      margin: 0 24px 8px;
     }
 
     &--big {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 12px;
       font-weight: 600;
       line-height: 15px;
@@ -72,7 +84,7 @@
     }
 
     &--small {
-      font-family: "Mont-SemiBold";
+      font-family: "Mont-SemiBold", sans-serif;
       font-size: 12px;
       font-weight: 600;
       line-height: 15px;
@@ -83,13 +95,13 @@
   &__buttons {
     display: flex;
     gap: 8px;
-    margin: 16px 24px 0px 24px;
+    margin: 16px 24px 0;
   }
 
   &__border {
     border-bottom: 1px solid $elements;
     width: 224px;
-    margin: 0px 7px 16px 24px;
+    margin: 0 7px 16px 24px;
   }
 }
 
@@ -121,6 +133,6 @@
   color: $greenColor;
 }
 
-.is-fav{
+.is-fav {
   background-image: url(../../images/HeartRed.svg);
 }

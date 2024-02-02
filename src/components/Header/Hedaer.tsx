@@ -27,6 +27,7 @@ export const Header = () => {
   return (
     <header className="header">
       <nav className="header__nav">
+
         <ul className="header__nav-items">
           <div className="header__nav-left">
             <Link to="/">

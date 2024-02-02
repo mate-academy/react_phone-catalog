@@ -1,7 +1,9 @@
-@import '../../style/variables';
+@import "../../style/variables";
+@import "../../style/_mixins";
 
 .productSlider {
   margin-top: 72px;
+  transition: transform 0.5s ease-in-out;
 
   &__title-and-button {
     display: flex;
@@ -10,10 +12,14 @@
   }
 
   &__title {
-    font-family: "Mont-Bold";
+    font-family: "Mont-Bold", sans-serif;
     font-size: 32px;
     line-height: 40px;
     letter-spacing: -1%;
+
+    @include onMobile {
+      font-size: 26px;
+    }
   }
 
   &__buttons {
@@ -28,7 +34,7 @@
   }
 
   &__card {
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: transform 0.5s ease-in-out;
     opacity: 0;
     transform: translateX(-100%);
 

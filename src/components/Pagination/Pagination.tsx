@@ -32,14 +32,14 @@ export const Pagination: React.FC<Props> = ({
     }
   };
 
-  let startPage = currentPage - 1;
+  let startPage = currentPage - 2;
   let endPage = currentPage + 2;
 
   if (startPage < 1) {
     startPage = 1;
-    endPage = Math.min(pageCount, 4);
+    endPage = Math.min(pageCount, 5);
   } else if (endPage > pageCount) {
-    endPage = pageCount + 1;
+    endPage = pageCount;
     startPage = Math.max(1, endPage - 4);
   }
 
@@ -47,19 +47,6 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <ul className="pagination">
-      {!firstPage && (
-        <li className={cn('page-item', { disabled: firstPage })}>
-          <button
-            type="button"
-            data-cy="firstPageLink"
-            className="page-link"
-            onClick={() => onPageChange(1)}
-          >
-            1
-          </button>
-        </li>
-      )}
-
       <button
         className={cn('page-item page-link prev', { disabled: firstPage })}
         data-cy="prevLink"
@@ -91,7 +78,6 @@ export const Pagination: React.FC<Props> = ({
         disabled={lastPage}
         onClick={handleNextClick}
       />
-
     </ul>
   );
 };

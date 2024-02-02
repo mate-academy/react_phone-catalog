@@ -101,6 +101,10 @@ export const ProductList: React.FC<ProductListProps> = ({
     );
   };
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [productsPerPage]);
+
   return (
     <div className="ProductList" data-cy="productList">
       <Breadcrumbs />

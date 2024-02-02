@@ -3,19 +3,18 @@
 .cart {
   max-width: 1136px;
   margin: 0 auto;
-  
+
   &__container {
     display: flex;
     gap: 16px;
+    max-width: 1136px;
+    margin: 0 auto;
   }
-  
-  &-margin {
-    margin-left: 152px;
-  }
-  
+
   &__item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid $elements;
     width: 752px;
     height: 128px;

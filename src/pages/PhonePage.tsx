@@ -11,7 +11,6 @@ export const PhonePage = () => {
   const queryParams = new URLSearchParams(location.search);
   const queryParamValue = queryParams.get('query') || '';
   const [searchQuery, setSearchQuery] = useState<string>(queryParamValue);
-
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
   useEffect(() => {

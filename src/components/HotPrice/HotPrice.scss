@@ -1,4 +1,12 @@
+@import "../../style/variables";
+@import "../../style/_mixins";
+
 .hot-price {
   max-width: 1136px;
   margin: 0 auto;
+
+  @include onMobile {
+    max-width: 500px;
+    padding: 12px;
+  }
 }

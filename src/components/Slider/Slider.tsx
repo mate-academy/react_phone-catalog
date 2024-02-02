@@ -41,45 +41,25 @@ export const Slider: React.FC<SliderProps> = () => {
   };
 
   const renderCustomIndicators = () => {
-    return slides.map((slide, index) => (
-      <button
-        key={slide.image}
-        type="button"
-        aria-label="Indicator"
-        tabIndex={0}
-        className={`custom-indicator ${currentIndex === index ? 'active' : ''}`}
-        onClick={() => setCurrentIndex(index)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            handlePrev();
-          }
-        }}
-      />
-    ));
+    return (
+      <div className="indicators-container">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.image}
+            type="button"
+            aria-label={`Indicator ${index + 1}`}
+            tabIndex={0}
+            className={`custom-indicator ${currentIndex === index ? 'active' : ''}`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
+    );
   };
 
   return (
-
     <div className="slider-container">
-      <Carousel
-        className="carousel"
-        {...settings}
-        selectedItem={currentIndex}
-        onChange={(index) => setCurrentIndex(index)}
-      >
-        {slides.map((slide) => (
-          <div key={slide.image}>
-
-            <img
-              src={slide.image}
-              alt="slide"
-              className="slider-image"
-            />
-          </div>
-        ))}
-      </Carousel>
-
-      <div className="indicators-container">
+      <div className="container">
         <button
           type="button"
           className="slider_arrows-left"
@@ -87,15 +67,32 @@ export const Slider: React.FC<SliderProps> = () => {
           aria-label="Previous Slide"
         />
 
+        <Carousel
+          className="carousel"
+          {...settings}
+          selectedItem={currentIndex}
+          onChange={(index) => setCurrentIndex(index)}
+        >
+          {slides.map((slide) => (
+            <div key={slide.image}>
+
+              <img
+                src={slide.image}
+                alt="slide"
+                className="slider-image"
+              />
+            </div>
+          ))}
+        </Carousel>
+
         <button
           type="button"
           className="slider_arrows-right"
           onClick={handleNext}
           aria-label="Next Slide"
         />
-
-        {renderCustomIndicators()}
       </div>
+      {renderCustomIndicators()}
     </div>
   );
 };

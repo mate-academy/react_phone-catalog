@@ -80,7 +80,7 @@ export const CartPage = () => {
                   className="cart__item-price"
                 >
                   $
-                  {item.price}
+                  {getCartTotal()}
                 </div>
               </div>
             ))

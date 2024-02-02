@@ -6,6 +6,9 @@ export const AccessoriesPage = () => {
     <div className="accessories">
       <Breadcrumbs />
       <h1>Accessories Page</h1>
+      <div className="accessories_product">
+        No products on this section
+      </div>
     </div>
   );
 };

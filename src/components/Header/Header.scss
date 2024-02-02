@@ -1,7 +1,9 @@
-@import '../../style/variables';
+@import "../../style/variables";
+@import "../../style/_mixins";
 
 .header {
   box-sizing: border-box;
+
   &__nav {
     border-bottom: 1px solid $borderBottocNavbarColor;
   }
@@ -12,6 +14,11 @@
 
     background-image: url(../../images/Logo.svg);
     background-repeat: no-repeat;
+
+    @include onMobile {
+      display: none;
+      margin: 0;
+    }
   }
 
   &__nav-link {
@@ -27,6 +34,10 @@
     &:hover {
       color: $navbarLinkColor;
     }
+
+    @include onMobile {
+      font-size: 10px;
+    }
   }
 
   &__nav-items {
@@ -35,6 +46,7 @@
     justify-content: space-between;
     list-style: none;
     margin: 0;
+    gap: 64px;
 
     &.is-open {
       display: block;
@@ -44,10 +56,20 @@
   &__nav-right {
     display: flex;
     align-items: center;
-    
   }
 
-  &__nav-left{
+  &__nav-left {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 64px;
+
+    @include onMobile {
+      gap: 15px;
+    }
+  }
+
+  &__nav-links {
     display: flex;
     align-items: center;
     gap: 64px;
@@ -58,11 +80,14 @@
   box-sizing: border-box;
   background-repeat: no-repeat;
   background-position: center;
-  box-sizing: border-box;
   width: 64px;
   height: 64px;
   border-left: 1px solid $borderBottocNavbarColor;
 
+  @include onMobile {
+    width: 42px;
+    height: 42px;
+  }
 
   &-fav {
     position: relative;
@@ -73,53 +98,72 @@
     position: relative;
     background-image: url(../../images/Cart.svg);
   }
-
-
 }
 
 .is-active {
   color: $navbarLinkColor;
   border-bottom: 3px solid $primary;
   padding: 0 0 22px;
+
+  @include onMobile {
+    color: $navbarLinkColor;
+    border-bottom: 2px solid $primary;
+    padding: 0 0 12px;
+  }
 }
 
-
 .cart-quantity {
-  position: absolute; 
-    top: 17px; 
-    right: 17px; 
-    width: 14px; 
-    height: 14px;
-    border-radius: 50%; 
-    background-color: $redColor;
-    color: $white;
-    font-family: "Mont-Bold";
-    font-size: 10px;
-    font-weight: 500;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $redColor;
+  color: $white;
+  font-family: "Mont-Bold" , sans-serif;
+  font-size: 10px;
+  font-weight: 500;
 
-    border: 1px solid $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid $white;
+
+  @include onMobile {
+    top: 8px;
+    right: 6px;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+  }
 }
 
 .fav-quantity {
-  position: absolute; 
-    top: 17px; 
-    right: 17px; 
-    width: 14px; 
-    height: 14px;
-    border-radius: 50%; 
-    background-color: $redColor;
-    color: $white;
-    font-family: "Mont-Bold";
-    font-size: 10px;
-    font-weight: 500;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 14px;
+  height: 14px;
 
-    border: 1px solid $white;
+  border-radius: 50%;
+  background-color: $redColor;
+  color: $white;
+  font-family: "Mont-Bold", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $white;
+
+  @include onMobile {
+    top: 8px;
+    right: 6px;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+  }
 }

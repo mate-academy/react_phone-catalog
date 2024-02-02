@@ -1,8 +1,15 @@
-@import '../../style/variables';
+@import "../../style/variables";
+@import "../../style/_mixins";
 
 .ProductList {
   max-width: 1136px;
   margin: 0 auto;
+
+  @include onMobile {
+    max-width: 500px;
+    margin: 0;
+    padding: 12px;
+  }
 
   &_container--select {
     display: flex;
@@ -14,6 +21,11 @@
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 16px;
     grid-row-gap: 40px;
+
+    @include onMobile {
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 8px;
+    }
   }
 
   &__top {
@@ -23,7 +35,7 @@
       display: block;
       margin-bottom: 40px;
       color: $secondary;
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
@@ -47,7 +59,7 @@
     background-position: right 8px center;
     border: 1px solid $icons;
 
-    font-family: "Mont-SemiBold";
+    font-family: "Mont-SemiBold", sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
@@ -63,7 +75,7 @@
 
   &__title {
     margin: 0;
-    font-family: "Mont-Regular";
+    font-family: "Mont-Regular", sans-serif;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
