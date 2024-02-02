@@ -1,5 +1,4 @@
-@import '../style/variables';
-
+@import "../style/_variables";
 
 .details {
   max-width: 1136px;
@@ -41,9 +40,8 @@
     }
   }
 
-
   &__product-name {
-    font-family: "Mont-Bold";
+    font-family: "Mont-Bold", sans-serif;
     font-size: 34px;
     line-height: 40px;
     margin-bottom: 40px;
@@ -59,13 +57,13 @@
     }
 
     &--big {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 12px;
       color: $secondary;
     }
 
     &--small {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 12px;
       color: $primary;
     }
@@ -144,7 +142,7 @@
     margin-top: 32px;
 
     &--discount {
-      font-family: "Mont-Bold";
+      font-family: "Mont-Bold", sans-serif;
       font-size: 22px;
       font-weight: 700;
       line-height: 31px;
@@ -152,7 +150,7 @@
     }
 
     &--real {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 22px;
       font-weight: 500;
       line-height: 28px;
@@ -167,9 +165,8 @@
     height: 32px;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid white; 
+    border: 2px solid white;
     box-shadow: 0 0 0 1px $icons;
-
   }
 
   &__capacity-switcher {
@@ -185,19 +182,17 @@
     padding: 8px;
     cursor: pointer;
 
-
     &-link {
       text-decoration: none;
       color: $primary;
     }
 
-    &.capacity-active, // Дополнительный селектор для увеличения специфичности
-      .capacity-active &-link { // Увеличиваем специфичность для ссылки внутри активного элемента
+    &.capacity-active,
+    .capacity-active &-link {
       background-color: $primary;
-      color: $white; // Цвет текста для активного состояния
+      color: $white;
     }
   }
-
 
   &__decorate {
     border-bottom: 1px solid $elements;
@@ -205,21 +200,17 @@
   }
 
   &__capacity-title {
-    font-family: "Mont-Regular";
+    font-family: "Mont-Regular", sans-serif;
     font-size: 12px;
     color: $secondary;
   }
 
   &__colors-text {
-    font-family: "Mont-Regular";
+    font-family: "Mont-Regular", sans-serif;
     font-size: 12px;
     color: $secondary;
   }
 
-  &__cost {
-    display: flex;
-  }
-  
   &__description {
     display: flex;
     justify-content: space-between;
@@ -227,26 +218,26 @@
     margin: 0 auto;
     
     &-title {
-      font-family: "Mont-Bold";
+      font-family: "Mont-Bold", sans-serif;
       font-size: 22px;
       color: $primary;
     }
 
     &__title--about {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 22px;
       color: $primary;
     }
 
     &__text {
-      font-family: "Mont-Regular";
+      font-family: "Mont-Regular", sans-serif;
       font-size: 14px;
       color: $secondary;
     }
 
     &-about {
-     width: 590px;
-     margin-top: 80px;
+      width: 590px;
+      margin-top: 80px;
     }
 
     &-tech {
@@ -265,13 +256,13 @@
         justify-content: center;
 
         &-tech {
-          font-family: "Mont-Regular";
+          font-family: "Mont-Regular", sans-serif;
           font-size: 14px;
           color: $secondary;
         }
 
         &-small {
-          font-family: "Mont-Regular";
+          font-family: "Mont-Regular", sans-serif;
           font-size: 14px;
           color: $primary;
         }

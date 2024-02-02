@@ -1,4 +1,4 @@
-@import '../style/variables';
+@import "../style/_variables";
 
 .favourites__page {
   max-width: 1136px;
@@ -12,24 +12,23 @@
   }
   
   &__title {
-    font-family: "Mont-Bold";
+    font-family: "Mont-Bold", sans-serif;
     font-size: 32px;
     color: $primary;
     line-height: 42px;
   }
 
   &__item {
-    font-family: "Mont-Regular";
+    font-family: "Mont-Regular", sans-serif;
     font-size: 14px;
     color: $secondary;
   }
 
   &__empty {
-    font-family: "Mont-Bold";
+    font-family: "Mont-Bold", sans-serif;
     width: 100%;
     font-size: 25px;
     color: $primary;
     line-height: 42px;
   }
 }
-
