@@ -51,7 +51,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             className="phone__img"
           />
 
-          <div className="phone__name">
+          <div
+            className="phone__name"
+            >
             {product.name}
           </div>
         </Link>
