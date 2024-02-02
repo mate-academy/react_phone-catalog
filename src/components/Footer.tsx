@@ -12,7 +12,7 @@ const githubLink = 'https://github.com/yurii-shkrobut-m';
 
 export const Footer: React.FC = () => {
   return (
-    <nav className="footer">
+    <footer className="footer">
       <Link to="/" className="logo" />
 
       <div className="footer__nav-block">
@@ -38,6 +38,6 @@ export const Footer: React.FC = () => {
 
         <a href="#header" className="footer__back-top--link" />
       </div>
-    </nav>
+    </footer>
   );
 };

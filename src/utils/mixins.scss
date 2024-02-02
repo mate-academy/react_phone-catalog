@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @mixin hoverLine {
   content: "";
   position: absolute;
@@ -6,4 +8,11 @@
   width: 100%;
   bottom: 0;
   right: 0;
+}
+
+@mixin h2Text {
+  color: $primary-color;
+  font-size: 32px;
+  font-weight: $bold-font;
+  letter-spacing: -0.32px;
 }

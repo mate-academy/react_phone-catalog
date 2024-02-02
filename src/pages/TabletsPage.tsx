@@ -2,6 +2,6 @@ import React from 'react';
 
 export const TabletsPage: React.FC = () => {
   return (
-    <h1>Tablets</h1>
+    <h1 style={{ display: 'none' }}>Tablets</h1>
   );
 };

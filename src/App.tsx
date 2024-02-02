@@ -8,8 +8,10 @@ export const App: React.FC = () => (
   <div className="App">
     <Header />
 
-    <div style={{ height: 1000 }}>
-      <Outlet />
+    <div className="main-content">
+      <div className="main-content__container">
+        <Outlet />
+      </div>
     </div>
 
     <Footer />

@@ -25,15 +25,11 @@
 .shopping-cart-icon {
   display: flex;
   background: url("../icons/shopping-cart-icon.svg") no-repeat center;
-  width: 16px;
-  height: 16px;
-  padding: 24px;
+  padding: calc($header-height / 2) 32px;
 }
 
 .favourites-icon {
   display: flex;
   background: url("../icons/favourites-icon.svg") no-repeat center;
-  width: 16px;
-  height: 16px;
-  padding: 24px;
+  padding: calc($header-height / 2) 32px;
 }

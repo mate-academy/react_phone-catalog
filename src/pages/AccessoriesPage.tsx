@@ -2,6 +2,6 @@ import React from 'react';
 
 export const AccessoriesPage: React.FC = () => {
   return (
-    <h1>Accessories</h1>
+    <h1 style={{ display: 'none' }}>Accessories</h1>
   );
 };
