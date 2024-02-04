@@ -1,0 +1,82 @@
+@import "../../style-utils/variables";
+
+.drop-down {
+  width: 176px;
+  position: relative;
+
+  &__title {
+    display: inline-block;
+    font-family: $font-semibold;
+    color: $grey-secondary-color;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 4px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 176px;
+    margin-bottom: 4px;
+    border: 1px solid $border-color;
+    cursor: pointer;
+    font-family: $font-semibold;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    flex-shrink: 0;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__current {
+    font-size: 14px;
+    padding-left: 12px;
+    line-height: 21px;
+    font-weight: 700;
+    letter-spacing: 0;
+    font-style: normal;
+  }
+
+  &__list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: $white-color;
+    border: 1px solid $grey-third-color;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    color: $grey-secondary-color;
+    z-index: 1;
+  }
+
+  &__is--deactivate {
+    display: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 12px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    letter-spacing: 0;
+    font-style: normal;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: $font-regular;
+
+    &:hover {
+      background-color: $grey-background;
+      color: $grey-primery-color;
+    }
+  }
+}
