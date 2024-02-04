@@ -8,7 +8,7 @@
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
   }
 
   &__image {
@@ -19,7 +19,7 @@
       height: 208px;
       object-fit: contain;
       display: flex;
-    align-items: center;
+      align-items: center;
     }
   }
 
@@ -83,6 +83,3 @@
     }
   }
 }
-
-
-

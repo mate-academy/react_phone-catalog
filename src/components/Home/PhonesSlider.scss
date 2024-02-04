@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .phonesSlider {
   display: flex;
@@ -48,7 +48,7 @@
     align-items: center;
 
     &:hover {
-      border: 1px solid $grayPrimary
+      border: 1px solid $grayPrimary;
     }
   }
 }

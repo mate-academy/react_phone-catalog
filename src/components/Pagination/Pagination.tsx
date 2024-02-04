@@ -1,9 +1,9 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowLeft } from '../../icons';
+
 import './Pagination.scss';
-import { ArrowRight } from '../../icons/ArrowRight';
-import { ArrowLeft } from '../../icons/ArrowLeft';
 
 type Props = {
   currentPage: number;
@@ -33,16 +33,17 @@ export const Pagination: FC<Props> = ({
 
   return (
     <>
-      <ul className="pagination">
+      <ul className="pagination" data-cy="pagination">
         <>
           <li
-            className={classNames(
+            className={cn(
               'pagination__item pagination__item--left',
               { disabled: currentPage <= 1 },
             )}
           >
             <Link
-              className={classNames('pagination__link')}
+              className="pagination__link"
+              data-cy="paginationLeft"
               to={`${currentPage}`}
               onClick={(e) => {
                 e.preventDefault();
@@ -59,12 +60,12 @@ export const Pagination: FC<Props> = ({
           {pageNumbers.map(number => (
             <li
               key={number}
-              className={classNames('pagination__item')}
+              className="pagination__item"
             >
               <Link
-                className={classNames(
+                className={cn(
                   'pagination__link',
-                  { active: currentPage === number },
+                  { pagination__active: currentPage === number },
                 )}
                 to={`${number}`}
                 onClick={(e) => {
@@ -78,15 +79,14 @@ export const Pagination: FC<Props> = ({
           ))}
 
           <li
-            className={classNames(
+            className={cn(
               'pagination__item pagination__item--rigth',
-              { disabled: currentPage === totalPages },
+              { pagination__disabled: currentPage === totalPages },
             )}
           >
             <Link
-              className={
-                classNames('pagination__link')
-              }
+              className="pagination__link"
+              data-cy="paginationRight"
               to={`${currentPage + 1}`}
               onClick={(e) => {
                 e.preventDefault();

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Logo } from '../../icons/Logo';
+
+import { Box } from '../../UI';
+import { Logo, ArrowTop } from '../../icons';
+
 import './Footer.scss';
-import { Box } from '../../UI/Box';
-import { ArrowTop } from '../../icons/ArrowTop';
 
 export const Footer = () => {
   const handleClick = () => {

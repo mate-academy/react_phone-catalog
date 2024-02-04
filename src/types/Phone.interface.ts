@@ -12,5 +12,4 @@ export interface IPhone {
   ram: string,
   year: number,
   image: string,
-  quantity: number,
 }

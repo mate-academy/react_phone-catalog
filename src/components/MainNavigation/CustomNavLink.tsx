@@ -6,23 +6,17 @@ import './MainNavigation.scss';
 type Props = {
   to: string;
   text: string | number | ReactNode;
-  className?: string;
 };
 
-export const CustomNavLink: FC<Props> = ({ to, text, className }) => {
+export const CustomNavLink: FC<Props> = ({ to, text }) => {
   return (
     <NavLink
       to={to}
       className={({ isActive }) => cn(
-        className,
         isActive ? 'main-header__active' : '',
       )}
     >
       {text}
     </NavLink>
   );
-};
-
-CustomNavLink.defaultProps = {
-  className: '',
 };

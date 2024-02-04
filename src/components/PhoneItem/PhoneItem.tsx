@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
-import { FC } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+
 import { IPhone } from '../../types/Phone.interface';
+import { BASE_URL, formatter } from '../../helper';
+import { Buttons } from '../Buttons';
+
 import './PhoneItem.scss';
-import { formatter } from '../../helper/formater';
-import { BASE_URL } from '../../helper/BASE_URL';
-import { Buttons } from '../Buttons/Buttons';
 
 type Props = {
   phone: IPhone,
-  searchParams?: URLSearchParams;
 };
 
-export const PhoneItem: FC<Props> = ({ phone, searchParams = {} }) => {
+export const PhoneItem: FC<Props> = ({ phone }) => {
   const {
     phoneId,
     image,
@@ -23,8 +23,13 @@ export const PhoneItem: FC<Props> = ({ phone, searchParams = {} }) => {
     ram,
   } = phone;
 
+  const [searchParams] = useSearchParams();
   const formatPrice = formatter.format(price);
   const formatFullPrice = formatter.format(fullPrice);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -83,8 +88,4 @@ export const PhoneItem: FC<Props> = ({ phone, searchParams = {} }) => {
         )}
     </>
   );
-};
-
-PhoneItem.defaultProps = {
-  searchParams: new URLSearchParams(),
 };

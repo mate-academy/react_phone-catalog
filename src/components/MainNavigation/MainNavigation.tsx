@@ -1,44 +1,43 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
-import { Logo } from '../../icons/Logo';
-import './MainNavigation.scss';
-import { FavouritesIcon } from '../../icons/FavouritesIcon';
-import { ShopIcon } from '../../icons/ShopIcon';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { CustomNavLink } from './CustomNavLink';
+import { Search } from './Search';
+
+import { useAppSelector } from '../../app/hooks';
+import { getSearchWith } from '../../helper';
 import {
   selectFavouritesQuantity,
-} from '../../features/favouritesSlices/favouritesSlice';
-import { selectCartQuantity } from '../../features/cartSlices/cartSlice';
-import { CustomNavLink } from './CustomNavLink';
-import {
-  searchByTitle,
-  selectPhones,
-} from '../../features/phoneSlice/phonesSlice';
+} from '../../features/favouritesSlices';
+import { selectCartQuantity } from '../../features/cartSlices';
+import { FavouritesIcon, ShopIcon, Logo } from '../../icons';
+
+import './MainNavigation.scss';
 
 export const MainNavigation = () => {
-  const phones = useAppSelector(selectPhones);
-  const [query, setQuery] = useState('');
-  const dispatch = useAppDispatch();
-  console.log(query);
   const location = useLocation();
   const quantityFavourites = useAppSelector(selectFavouritesQuantity);
   const quantityCart = useAppSelector(selectCartQuantity);
 
-  const getCheckQuery = (str:string, query1: string) => {
-    return str.toUpperCase().includes(query1.toUpperCase().trim());
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const query = searchParams.get('query') || '';
+
+  const setSearchWith = (params: any) => {
+    const search = getSearchWith(searchParams, params);
+
+    setSearchParams(search);
   };
 
-  const filteredPhones = useMemo(() => {
-    return phones.filter((phone) => getCheckQuery(phone.name, query));
-  }, [query, phones]);
-
-  const handleSearchPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+  const handleChangeQuery = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setSearchWith({ query: e.target.value || null });
   };
 
-  useEffect(() => {
-    dispatch(searchByTitle(filteredPhones));
-  }, [query]);
+  const handleClearQuery = () => {
+    setSearchWith({ query: '' || null });
+  };
 
   return (
     <header className="main-header">
@@ -65,20 +64,25 @@ export const MainNavigation = () => {
           </ul>
 
           <ul className="main-header__list main-header__list--left">
-            <li className="main-header__search">
-              <input
-                className="main-header__input"
-                type="text"
-                placeholder="Search in phones"
-                value={query}
-                onChange={handleSearchPhone}
-              />
-            </li>
+            <Search
+              isLocation={location.pathname === '/phones'}
+              query={query}
+              setQuery={handleChangeQuery}
+              clearQuery={handleClearQuery}
+              placeholder="Search in phones"
+            />
+
+            <Search
+              isLocation={location.pathname === '/favourites'}
+              query={query}
+              setQuery={handleChangeQuery}
+              clearQuery={handleClearQuery}
+              placeholder="Search in favourites"
+            />
             <li className="main-header__link">
               <CustomNavLink
                 to="/favourites"
                 text={<FavouritesIcon />}
-                className="main-header__link main-header__link--left"
               />
               {quantityFavourites > 0 && (
                 <span className="main-header__text">{quantityFavourites}</span>
@@ -88,7 +92,6 @@ export const MainNavigation = () => {
               <CustomNavLink
                 to="/cart"
                 text={<ShopIcon />}
-                className="main-header__link main-header__link--left"
               />
               {quantityCart > 0 && (
                 <span className="main-header__text">{quantityCart}</span>

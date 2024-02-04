@@ -1,0 +1,10 @@
+export { Accessories } from './Accessories';
+export { CartPage } from './CartPage';
+export { Error } from './Error';
+export { FavouritesPage } from './FavoritesPage';
+export { Home } from './Home';
+export { PhoneDetailPage } from './PhoneDetailPage';
+export { PhoneRoot } from './PhoneRoot';
+export { PhonesListPage } from './PhonesListPage';
+export { Root } from './Root';
+export { Tablets } from './Tablets';
