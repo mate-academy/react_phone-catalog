@@ -9,8 +9,8 @@ import { NoSearchResults } from '../NoResult/NoSearchResults';
 import { ProductCard } from '../ProductCard/ProductCard';
 // import { ProductSection } from '../../types/ProductSection';
 // import { Pagination } from '../Pagination/Pagination';
-// import { DropDown } from '../DropDown/DropDown';
-// import { sortParam, itemsOnPage } from '../../types/SortTypes';
+import { DropDown } from '../DropDown/DropDown';
+import { sortParam, itemsOnPage } from '../../types/SortTypes';
 
 type Props = {
   products: Product[]
@@ -46,21 +46,21 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       ) : (
         <div className="product-list__drop-downs">
           <div className="product-list__drop-down">
-            {/* <DropDown
+            <DropDown
               options={sortParam}
               label="Sort by"
               initialValue="Choose option"
               searchName="sortBy"
-            /> */}
+            />
           </div>
 
           <div className="phones-page__dropDown">
-            {/* <DropDown
+            <DropDown
               options={itemsOnPage}
               label="Items on page"
               initialValue="All"
               searchName="perPage"
-            /> */}
+            />
           </div>
         </div>
       )}
