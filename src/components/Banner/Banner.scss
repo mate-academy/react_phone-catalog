@@ -1,4 +1,4 @@
-@import "../../helpers/variables.scss";
+@import "../../style-utils/variables";
 
 .banner {
   display: flex;
@@ -9,7 +9,7 @@
 
   &--margin {
     margin-top: 40px;
-    margin-bottom: 104px;
+    margin-bottom: 8px;
   }
 
   &__caroucel {
@@ -17,6 +17,9 @@
     height: 100%;
     max-width: 1040px;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px,
+      rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
   }
 
   &__list {
@@ -58,13 +61,15 @@
   &__img {
     height: 400px;
     object-fit: cover;
+    overflow: hidden;
   }
 
   &__indicators {
-    position: absolute;
-    left: 48%;
-    top: 512px;
-
+    display: flex;
+    justify-content: center;
+    margin-bottom: 104px;
+    align-items: center;
+    height: 24px;
   }
 
   &__indicator {

@@ -1,17 +1,19 @@
 import classNames from 'classnames';
 import React, { useContext } from 'react';
-import { ReactSVG } from 'react-svg';
 
 import { Link } from 'react-router-dom';
-import { Product } from '../../helpers/Product';
+import { Product } from '../../types/Product';
 
 import { CartContext } from '../../contexts/cartContext';
 import { FavouritesContext } from '../../contexts/favoritesContext';
 
 import './ProductCard.scss';
 
+import FavouritesFilled from '../../Images/Icons/FavouritesFilled.svg';
+import FavouritesHeartLike from '../../Images/Icons/FavouritesHeartLike.svg';
+
 type Props = {
-  product: Product,
+  product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
@@ -31,58 +33,30 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
 
   return (
-    <div
-      className="product-card"
-      data-cy="cardsContainer"
-    >
-      <Link
-        className="product-card__link"
-        to={`/${category}/${phoneId}`}
-      >
-        <img
-          className="product-card__img"
-          src={`./new/${image}`}
-          alt={name}
-        />
-        <p className="product-card__title">
-          {name}
-        </p>
+    <div className="product-card" data-cy="cardsContainer">
+      <Link className="product-card__link" to={`/${category}/${phoneId}`}>
+        <img className="product-card__img" src={`./new/${image}`} alt={name} />
+        <p className="product-card__title">{name}</p>
         <div className="product-card__price">
-          <h2 className="product-card__price-regular">
-            {`$${price}`}
-          </h2>
+          <h2 className="product-card__price-regular">{`$${price}`}</h2>
 
-          <div className="product-card__price-discount">
-            {`$${fullPrice}`}
-          </div>
+          <div className="product-card__price-discount">{`$${fullPrice}`}</div>
         </div>
       </Link>
       <div className="product-card__properties">
         <div className="product-card__property">
-          <p className="product-card__property-title">
-            Screen
-          </p>
-          <p className="product-card__property-value">
-            {screen}
-          </p>
+          <p className="product-card__property-title">Screen</p>
+          <p className="product-card__property-value">{screen}</p>
         </div>
 
         <div className="product-card__property">
-          <p className="product-card__property-title">
-            Capacity
-          </p>
-          <p className="product-card__property-value">
-            {capacity}
-          </p>
+          <p className="product-card__property-title">Capacity</p>
+          <p className="product-card__property-value">{capacity}</p>
         </div>
 
         <div className="product-card__property">
-          <p className="product-card__property-title">
-            RAM
-          </p>
-          <p className="product-card__property-value">
-            {ram}
-          </p>
+          <p className="product-card__property-title">RAM</p>
+          <p className="product-card__property-value">{ram}</p>
         </div>
       </div>
 
@@ -105,12 +79,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           data-cy="addToFavorite"
           onClick={() => handleFavorites(product)}
         >
-          {isInFavorites(product)
-            ? <ReactSVG src="../../Icons/FavouritesFilled.svg" />
-            : <ReactSVG src="../../Icons/FavouritesHeartLike.svg" />}
+          {isInFavorites(product) ? (
+            <img src={FavouritesFilled} alt="FavouritesFilled" />
+          ) : (
+            <img src={FavouritesHeartLike} alt="FavouritesHeartLike" />
+          )}
         </button>
       </div>
-
     </div>
   );
 };

@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import './ProductsSlider.scss';
-import { Product } from '../../helpers/Product';
+import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 
 const cardWidth = 272;
 const gap = 16;
 
 type Props = {
-  title: string,
-  products: Product[],
+  title: string;
+  products: Product[];
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
@@ -32,9 +32,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   return (
     <div className="slider">
       <div className="slider__header">
-        <h1 className="slider__title">
-          {title}
-        </h1>
+        <h1 className="slider__title">{title}</h1>
 
         <div className="slider__buttons">
           <button
@@ -75,15 +73,10 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           width: cardWidth * visibleProducts.length,
         }}
       >
-        {visibleProducts.map(product => {
+        {visibleProducts.map((product) => {
           return (
-            <li
-              className="slider__item"
-              key={product.id}
-            >
-              <ProductCard
-                product={product}
-              />
+            <li className="slider__item" key={product.id}>
+              <ProductCard product={product} />
             </li>
           );
         })}

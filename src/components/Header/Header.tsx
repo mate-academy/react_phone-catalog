@@ -15,8 +15,8 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div className="container">
-        <div className="container__flex-start">
+      <div className="header__container">
+        <div className="header__container--flex-start">
           <Link
             to="/"
             className="header__logo"
@@ -63,7 +63,7 @@ export const Header = () => {
           </nav>
         </div>
 
-        <div className="container__flex-end">
+        <div className="header__container--flex-end">
           {!isPathnameHome && (
             <Search />
           )}

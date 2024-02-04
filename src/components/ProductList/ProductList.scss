@@ -1,0 +1,37 @@
+.product-list {
+
+  &__items {
+    display: flex;
+    width: 1136px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    display: block;
+    margin-right: 16px;
+    margin-bottom: 16px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  &__drop-downs {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  &__drop-down {
+    &:first-child {
+      margin-right: 16px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+}

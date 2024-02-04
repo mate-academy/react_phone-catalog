@@ -1,4 +1,4 @@
-@import "helpers/variables";
+@import "./style-utils/variables";
 
 * {
   box-sizing: border-box;
@@ -8,21 +8,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  &__main-section {
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 80px;
-  }
-
-  &__content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1440px;
-  }
+  justify-content: center;
+  align-items: center;
 }
 
 html,
@@ -69,6 +56,7 @@ h1 {
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
+  margin: 0;
 }
 
 h3 {

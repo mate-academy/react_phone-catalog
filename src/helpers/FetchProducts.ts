@@ -1,4 +1,4 @@
-import { Product } from './Product';
+import { Product } from '../types/Product';
 
 export const URL_NEW
  = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';

@@ -1,4 +1,4 @@
-@import "../../helpers/variables.scss";
+@import "../../style-utils/variables";
 
 .slider {
   width: 1140px;
@@ -52,8 +52,7 @@
     }
   }
 
-  &__btn-left,
-  &__btn-right {
+  &__btn-left {
     margin-right: 16px;
     
     &--disabled {

@@ -1,0 +1,19 @@
+@import "../../style-utils/mixins.scss";
+
+.container {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  flex-direction: row;
+
+  width: 100%;
+
+  // padding: 24px 16px 80px;
+
+  @include onTablet {
+    padding-bottom: 60px;
+    padding-top: 24px;
+  }
+}

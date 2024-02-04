@@ -1,0 +1,46 @@
+@import "../../style-utils/mixins.scss";
+@import "../../style-utils/variables.scss";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  grid-gap: 8px;
+  gap: 8px;
+  margin: 24px 0 40px;
+
+  @include onPhone {
+    gap: 4px;
+  }
+
+  &__icon {
+    user-select: none;
+
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    transition: $transition;
+    object-position: center;
+    object-fit: contain;
+
+    &--hover {
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+
+  &__current {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    color: $grey-light-color;
+  }
+
+  &__link {
+    @include smallText;
+    line-height: 1;
+    color: $grey-primery-color;
+    user-select: none;
+  }
+}

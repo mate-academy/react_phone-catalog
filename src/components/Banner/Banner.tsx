@@ -52,45 +52,48 @@ export const Banner = () => {
   }, [position]);
 
   return (
-    <div className="banner banner--margin">
-      <button
-        className="banner__button banner__button--left"
-        type="button"
-        onClick={handleClickPrev}
-      >
-        {}
-      </button>
-
-      <div className="banner__caroucel">
-        <ul
-          className="banner__list"
-          style={{
-            transform: `translateX(${position}px)`,
-            transition: 'transform 1s',
-            width: imgWidth * bannerImg.length,
-          }}
+    <>
+      <div className="banner banner--margin">
+        <button
+          className="banner__button banner__button--left"
+          type="button"
+          onClick={handleClickPrev}
         >
-          {bannerImg.map((img, index) => (
-            <li
-              key={img}
-            >
-              <img
-                className="banner__img"
-                width={imgWidth}
-                src={img}
-                alt={`banner ${index + 1}`}
-              />
-            </li>
-          ))}
-        </ul>
+          {}
+        </button>
+
+        <div className="banner__caroucel">
+          <ul
+            className="banner__list"
+            style={{
+              transform: `translateX(${position}px)`,
+              transition: 'transform 1s',
+              width: imgWidth * bannerImg.length,
+            }}
+          >
+            {bannerImg.map((img, index) => (
+              <li
+                key={img}
+              >
+                <img
+                  className="banner__img"
+                  width={imgWidth}
+                  src={img}
+                  alt={`banner ${index + 1}`}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <button
+          className="banner__button banner__button--right"
+          type="button"
+          onClick={handleClickNext}
+        >
+          {}
+        </button>
       </div>
-      <button
-        className="banner__button banner__button--right"
-        type="button"
-        onClick={handleClickNext}
-      >
-        {}
-      </button>
 
       <div className="banner__indicators">
         {bannerImg.map((img, index) => (
@@ -106,6 +109,6 @@ export const Banner = () => {
           </button>
         ))}
       </div>
-    </div>
+    </>
   );
 };

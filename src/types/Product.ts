@@ -13,3 +13,9 @@ export interface Product {
   year: number,
   fullPrice: number,
 }
+
+export enum ProductType {
+  Phone = 'phones',
+  Tablet = 'tablets',
+  Accessories = 'accessories',
+}
