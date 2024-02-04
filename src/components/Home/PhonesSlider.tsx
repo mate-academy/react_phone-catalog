@@ -1,13 +1,14 @@
 import { FC, useState } from 'react';
 import cn from 'classnames';
-import { selectPhonesStatus } from '../../features/phoneSlice/phonesSlice';
+
+import { selectPhonesStatus } from '../../features/phoneSlice';
 import { useAppSelector } from '../../app/hooks';
-import { ArrowRight } from '../../icons/ArrowRight';
-import { ArrowLeft } from '../../icons/ArrowLeft';
-import { PhoneItem } from '../PhoneItem';
-import './PhonesSlider.scss';
 import { IPhone } from '../../types';
+import { PhoneItem } from '../PhoneItem';
 import { Loader } from '../Loader';
+
+import { ArrowLeft, ArrowRight } from '../../icons';
+import './PhonesSlider.scss';
 
 type Props = {
   phones: IPhone[];

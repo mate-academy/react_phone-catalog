@@ -1,18 +1,20 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { FC, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
-import { selectPhoneDetail } from '../../features/phoneDetail/phoneDetailSlice';
+import { selectPhoneDetail } from '../../features/phoneDetail';
 import { useAppSelector } from '../../app/hooks';
 import './PhoneDetail.scss';
-import { BASE_URL } from '../../helper/BASE_URL';
-import { selectPhones } from '../../features/phoneSlice/phonesSlice';
-import { Buttons } from '../Buttons/Buttons';
-import { convertToHexFormat } from '../../helper/convertToHexFormat';
-import { truncatePhoneId } from '../../helper/truncatePhoneId';
-import { truncatePhoneGB } from '../../helper/truncatePhoneGB';
-import { formatter } from '../../helper/formater';
-import { PhonesSlider } from '../Home/PhonesSlider';
+import {
+  BASE_URL,
+  convertToHexFormat,
+  formatter,
+  truncatePhoneGB,
+  truncatePhoneId,
+} from '../../helper';
+import { selectPhones } from '../../features/phoneSlice';
+import { Buttons } from '../Buttons';
+import { PhonesSlider } from '../Home';
 
 type Props = {
   phoneId: string | undefined,
@@ -22,6 +24,7 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
   const phone = useAppSelector(selectPhoneDetail);
   const [image, setImage] = useState(phone?.images[0] || null);
   const phones = useAppSelector(selectPhones) || [];
+  const [searchParams] = useSearchParams();
 
   const selectedName = phone?.name.split(' ').slice(2, 3);
 
@@ -53,7 +56,7 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
         <>
           <h1>{`${phone.name} (iMT9G2FS/A)`}</h1>
 
-          <div className="phoneDetail">
+          <div className="phoneDetail" data-cy="cardsContainer">
             <div className="phoneDetail__top top">
               <section className="top__photo">
                 <div>
@@ -84,6 +87,7 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
                   <ul className="parameters__avaible-colors">
                     {phone.colorsAvailable.map((color) => (
                       <li
+                        key={color}
                         className={cn(
                           'parameters__avaible-color',
                           { active__color: phone.color === color },
@@ -93,7 +97,7 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
                         <Link
                           className="parameters__link"
                           to={`/phones/${newId}-${color}`}
-                          key={color}
+                          state={{ search: searchParams.toString() }}
                         >
                           {' '}
                         </Link>
@@ -104,14 +108,16 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
                   <p className="parameters__description">Select capacity</p>
                   <ul className="parameters__capacity">
                     {phone.capacityAvailable.map((cpct) => (
-                      <li>
+                      <li
+                        key={cpct}
+                      >
                         <Link
                           to={`/phones/${truncatePhoneGB(phone, phone?.id, cpct)}`}
-                          key={cpct}
                           className={cn(
                             'parameters__cpct-link',
                             { active__cpct: phone.capacity === cpct },
                           )}
+                          state={{ search: searchParams.toString() }}
                         >
                           {cpct}
                         </Link>
@@ -160,12 +166,13 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
                 <div className="parameters__id">ID: 802390</div>
               </section>
             </div>
-            <div className="phoneDetail__bottom">
+
+            <div className="phoneDetail__bottom" data-cy="productDescription">
               <section className="about">
                 <h2 className="about__title">About</h2>
                 <div className="about__info">
                   {phone.description.map(({ text, title }) => (
-                    <div className="about__info-item">
+                    <div className="about__info-item" key={title}>
                       <h3 className="about__info-title">{title}</h3>
                       <span
                         className="about__info-text"
@@ -180,13 +187,13 @@ export const PhoneDetail: FC<Props> = ({ phoneId }) => {
                     </div>
                   ))}
                 </div>
-
               </section>
+
               <section className="tech-specs">
                 <h2 className="tech-specs__title">Tech specs</h2>
                 <div className="tech-specs__wrapper">
                   {techSpecs.map((spec) => (
-                    <p className="tech-specs__item">
+                    <p className="tech-specs__item" key={spec.label}>
                       {spec.label}
                       <span>{spec.value}</span>
                     </p>

@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .cart {
   display: flex;
@@ -18,6 +18,11 @@
     margin-bottom: 16px;
   }
 
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__price {
     display: flex;
     flex-direction: column;
@@ -26,6 +31,7 @@
     width: 368px;
     height: 206px;
     border: 1px solid $grayElements;
+    margin-bottom: 20px;
   }
 
   &__description {

@@ -4,10 +4,10 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import {
   fetchPhones,
   selectPhonesStatus,
-} from '../features/phoneSlice/phonesSlice';
-import { MainNavigation } from '../components/MainNavigation/MainNavigation';
-import { Footer } from '../components/Footer/Footer';
-import { Box } from '../UI/Box';
+} from '../features/phoneSlice';
+import { MainNavigation } from '../components/MainNavigation';
+import { Footer } from '../components/Footer';
+import { Box } from '../UI';
 
 export const Root = () => {
   const phonesStatus = useAppSelector(selectPhonesStatus);
@@ -23,9 +23,11 @@ export const Root = () => {
     <>
       <MainNavigation />
 
-      <Box>
-        <Outlet />
-      </Box>
+      <main>
+        <Box>
+          <Outlet />
+        </Box>
+      </main>
 
       <Footer />
     </>

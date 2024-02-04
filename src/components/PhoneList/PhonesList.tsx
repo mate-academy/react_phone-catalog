@@ -1,31 +1,19 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import {
-  FC,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { FC, useMemo } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 import { useSearchParams } from 'react-router-dom';
-import { PhoneItem } from '../PhoneItem/PhoneItem';
-import './PhonesList.scss';
-import { sortPhones } from '../../helper/sort';
-import { getSearchWith } from '../../helper/searchHelper';
-import { Pagination } from '../Pagination/Pagination';
-import { Breadcrumbs } from '../Bredcrambs/Breadcrumbs';
-import { IPhone } from '../../types/Phone.interface';
+import { PhoneItem } from '../PhoneItem';
+import { sortPhones, getSearchWith } from '../../helper';
+import { Pagination } from '../Pagination';
 import { DropDown } from '../DropDown/DropDown';
+import { TSort, TPage, IPhone } from '../../types';
+
+import './PhonesList.scss';
 
 type Props = {
   phones: IPhone[];
 };
 
 export const PhonesList: FC<Props> = ({ phones }) => {
-  const [nameOfSort, setNameOfSort] = useState(() => {
-    return localStorage.getItem('nameOfSort') || 'All';
-  });
-
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || '';
   const perPage = +(searchParams.get('perPage') || 16);
@@ -68,70 +56,83 @@ export const PhonesList: FC<Props> = ({ phones }) => {
     setSearchWith({ sort: sortValue || null });
   };
 
-  const listSort = [
-    ['all', 'All'],
-    ['year', 'Newest'],
-    ['price', 'Cheapest'],
-    ['name', 'Alphabetically'],
-  ];
+  const listOfSort: TSort = {
+    All: 'all',
+    Newest: 'year',
+    Cheapest: 'price',
+    Alphabetically: 'name',
+  };
 
-  const listPerPage = [
-    ['4', '4'],
-    ['8', '8'],
-    ['16', '16'],
-    ['All', 'All'],
-  ];
+  const selectedSortName = useMemo(() => {
+    const currValue = sort;
 
-  useEffect(() => {
-    localStorage.setItem('nameOfSort', nameOfSort);
-  }, [nameOfSort]);
+    return Object.keys(listOfSort).find(
+      (item) => listOfSort[item as keyof TSort] === currValue,
+    ) || 'All';
+  }, [searchParams]);
+
+  const listOfPage: TPage = {
+    4: '4',
+    8: '8',
+    16: '16',
+    All: 'All',
+  };
 
   return (
     <>
-      <div className="phoneList">
-        <Breadcrumbs />
-        <h1 className="phoneList__title">Modile Phones</h1>
+      <div className="phoneList__dropdown">
+        <DropDown
+          label="Sort by"
+          listOfProperties={listOfSort}
+          handleClick={handleSortChange}
+          nameProperties={selectedSortName}
+        />
 
-        <p className="phoneList__length">{`${phones.length} models`}</p>
-
-        <div className="phoneList__dropdown">
-          <DropDown
-            label="Sort by"
-            listOfProperties={listSort}
-            handleClick={handleSortChange}
-            setNameOfSort={setNameOfSort}
-            nameProperties={nameOfSort}
-          />
-
-          <DropDown
-            label="Items on page"
-            listOfProperties={listPerPage}
-            handleClick={handleItemsPerPage}
-            nameProperties={perPage === 71 ? 'All' : perPage}
-          />
-        </div>
-
-        <ul className="phoneList__grid">
-          {currentItems.map((phone) => (
-            <li className="phoneList__gridItem" key={phone.phoneId}>
-              <PhoneItem phone={phone} searchParams={searchParams} />
-            </li>
-          ))}
-        </ul>
-
-        {perPage === 71 ? (
-          ''
-        ) : (
-          <div className="phoneList__pagiantion">
-            <Pagination
-              totalItems={phones.length}
-              currentPage={page}
-              onPageChange={onPageChange}
-              itemPerPage={perPage}
-            />
-          </div>
-        )}
+        <DropDown
+          label="Items on page"
+          listOfProperties={listOfPage}
+          handleClick={handleItemsPerPage}
+          nameProperties={perPage === 71 ? 'All' : perPage}
+        />
       </div>
+
+      {phones.length ? (
+        <>
+          <ul className="phoneList__grid" data-cy="productList">
+            {currentItems.map((phone) => (
+              <li className="phoneList__gridItem" key={phone.phoneId}>
+                <PhoneItem phone={phone} />
+              </li>
+            ))}
+          </ul>
+
+          {perPage === 71 ? (
+            ''
+          ) : (
+            <div className="phoneList__pagiantion">
+              <Pagination
+                totalItems={phones.length}
+                currentPage={page}
+                onPageChange={onPageChange}
+                itemPerPage={perPage}
+              />
+            </div>
+          )}
+        </>
+      ) : (
+        <TypeAnimation
+          sequence={['Not found ...', 1000]}
+          style={{
+            fontSize: '3em',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontWeight: '700',
+            padding: '32px 0',
+            color: '#313237',
+          }}
+        />
+      )}
     </>
   );
 };

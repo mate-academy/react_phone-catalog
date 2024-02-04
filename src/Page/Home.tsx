@@ -2,13 +2,13 @@ import { useMemo } from 'react';
 import {
   PhonesSlider as BrandNewModels,
   PhonesSlider as HotPrices,
-} from '../components/Home/PhonesSlider';
-import { ImageSlider } from '../components/Home/ImageSlider';
+  ImageSlider,
+  ShopByCategory,
+} from '../components/Home';
 import { IPhone } from '../types';
 import { useAppSelector } from '../app/hooks';
-import { selectPhones } from '../features/phoneSlice/phonesSlice';
-import { ShopByCategory } from '../components/Home/ShopByCategory';
-import { getMultipleRandomPhones } from '../helper/getMultipleRandomPhones';
+import { selectPhones } from '../features/phoneSlice';
+import { getMultipleRandomPhones } from '../helper';
 
 export const Home = () => {
   const phones = useAppSelector(selectPhones) || [];
@@ -21,7 +21,8 @@ export const Home = () => {
   const newBrandModelsFilter = phones.filter((phone) => phone.year === 2019);
 
   const newBrandModelsRandom: IPhone[] = useMemo(
-    () => getMultipleRandomPhones(newBrandModelsFilter, 10), [phones],
+    () => getMultipleRandomPhones(newBrandModelsFilter, 10),
+    [phones],
   );
 
   return (

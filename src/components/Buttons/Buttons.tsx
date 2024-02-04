@@ -1,19 +1,20 @@
 import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
-import { FavouritesIcon } from '../../icons/FavouritesIcon';
-import { FavouritesIconRed } from '../../icons/FavouritesIconRed';
-import './Buttons.scss';
+
+import { FavouritesIcon, FavouritesIconRed } from '../../icons';
+import { IPhone, ICartPhone } from '../../types';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
   addPhoneToCart,
   removePhoneFromCart,
   selectCartPhones,
-} from '../../features/cartSlices/cartSlice';
+} from '../../features/cartSlices';
 import {
   addToFavourites,
   selectFavouritesPhones,
-} from '../../features/favouritesSlices/favouritesSlice';
-import { IPhone } from '../../types/Phone.interface';
+} from '../../features/favouritesSlices';
+
+import './Buttons.scss';
 
 type Props = {
   widthSelectedButton: number;
@@ -59,7 +60,7 @@ export const Buttons: FC<Props> = ({
 
   const handleAddPhoneToCart = () => {
     if (phone) {
-      const newPhone: IPhone = {
+      const newPhone: ICartPhone = {
         ...phone,
         quantity: 1,
       };
@@ -103,6 +104,7 @@ export const Buttons: FC<Props> = ({
         className={cn('buttons__favorites', {
           selected: hasPhoneInFavourites,
         })}
+        data-cy="addToFavorite"
         onClick={handleAddToMyFavourites}
       >
         {

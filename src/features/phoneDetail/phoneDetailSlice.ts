@@ -48,5 +48,7 @@ const phoneDetailSlice = createSlice({
 export const selectPhoneDetail = (state: RootState) => state.phoneDetail.phone;
 export const selectPhoneDetailStatus
   = (state: RootState) => state.phoneDetail.status;
+export const selectPhoneDetailError
+  = (state: RootState) => state.phoneDetail.error;
 
 export default phoneDetailSlice.reducer;

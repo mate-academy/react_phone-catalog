@@ -1,7 +1,7 @@
 import { TypeAnimation } from 'react-type-animation';
-import { Breadcrumbs } from '../components/Bredcrambs/Breadcrumbs';
+import { Breadcrumbs } from '../components/Bredcrambs';
 
-export const Tablet = () => {
+export const Tablets = () => {
   return (
     <>
       <Breadcrumbs />

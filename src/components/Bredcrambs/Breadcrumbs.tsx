@@ -1,10 +1,10 @@
-/* eslint-disable react/no-array-index-key */
 import cn from 'classnames';
 import { Link, useLocation, NavLink } from 'react-router-dom';
-import { HomeIcon } from '../../icons/HomeIcon';
+
+import { HomeIcon, ArrowRight } from '../../icons';
+import { fnUpperFirstLetter } from '../../helper';
+
 import './Breadcrumbs.scss';
-import { ArrowRight } from '../../icons/ArrowRight';
-import { fnUpperFirstLetter } from '../../helper/upperFirstLetter';
 
 export const Breadcrumbs = () => {
   const location = useLocation();
@@ -22,7 +22,7 @@ export const Breadcrumbs = () => {
             className={({ isActive }) => cn('breadcrumbs__link',
               isActive ? 'breadcrumbs__active' : '')}
             to={currentLink}
-            key={crumb}
+            key={currentLink}
           >
             {fnUpperFirstLetter(crumb)}
           </NavLink>
@@ -31,7 +31,7 @@ export const Breadcrumbs = () => {
     });
 
   return (
-    <div className="breadcrumbs">
+    <div className="breadcrumbs" data-cy="breadCrumbs">
       <Link
         to="/"
         className="breadcrumbs__home"
@@ -39,12 +39,12 @@ export const Breadcrumbs = () => {
         <HomeIcon />
       </Link>
       <ul className="breadcrumbs__list">
-        {crumbs.map((crumb, index) => (
+        {crumbs.map((crumb) => (
           <>
             <ArrowRight color="#b4bdc3" />
             <li
               className="breadcrumbs__item"
-              key={index}
+              key={`${crumb}`}
             >
               {crumb}
             </li>

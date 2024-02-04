@@ -6,26 +6,23 @@ import {
   useRef,
   useState,
 } from 'react';
-import { ArrowTop } from '../../icons/ArrowTop';
-import { ArrowBottom } from '../../icons/ArrowBottom';
+import { ArrowTop, ArrowBottom } from '../../icons';
+import { TSort, TPage } from '../../types';
 
 type Props = {
-  listOfProperties: string[][],
+  listOfProperties: TSort | TPage,
   handleClick:(value: string) => void;
-  setNameOfSort?: (value: string) => void;
-  nameProperties: string | number;
+  nameProperties: string | number | undefined;
   label: string;
 };
 
 export const DropDown: FC<Props> = ({
   listOfProperties,
   handleClick,
-  setNameOfSort,
-  nameProperties: nameOfSort,
+  nameProperties,
   label,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const ref = useRef<HTMLDivElement>(null);
 
   const handleOpen = () => {
@@ -55,7 +52,7 @@ export const DropDown: FC<Props> = ({
         className="dropdown__btn"
         onClick={handleOpen}
       >
-        <span>{nameOfSort}</span>
+        <span>{nameProperties}</span>
         {isOpen ? <ArrowTop color="#b4bdc4" /> : <ArrowBottom />}
       </button>
 
@@ -63,27 +60,20 @@ export const DropDown: FC<Props> = ({
         <ul
           className="dropdown__content"
         >
-          {listOfProperties.map(([key, value]) => (
+          {Object.entries(listOfProperties).map(([key, value]) => (
             <li
               key={key}
               className="dropdown__item"
               onClick={() => {
-                handleClick(key);
+                handleClick(value);
                 setIsOpen(false);
-                if (setNameOfSort && value) {
-                  setNameOfSort(value);
-                }
               }}
             >
-              {value}
+              {key}
             </li>
           ))}
         </ul>
       )}
     </div>
   );
-};
-
-DropDown.defaultProps = {
-  setNameOfSort: () => {},
 };

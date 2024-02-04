@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { categoryImages } from '../../helper/images';
+import { categoryImages } from '../../helper';
 import './ShopByCategory.scss';
 
 type Props = {

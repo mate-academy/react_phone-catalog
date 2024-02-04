@@ -1,32 +1,30 @@
 import {
+  useLocation,
   useNavigate,
   useParams,
-  // useLocation,
-  useNavigationType,
 } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import {
   fetchPhoneDetail, selectPhoneDetailStatus,
-} from '../features/phoneDetail/phoneDetailSlice';
-import { Breadcrumbs } from '../components/Bredcrambs/Breadcrumbs';
+} from '../features/phoneDetail';
+import { Breadcrumbs } from '../components/Bredcrambs';
 import { PhoneDetail } from '../components/PhoneDetail';
 import { Loader } from '../components/Loader';
-import { ArrowLeft } from '../icons/ArrowLeft';
+import { ArrowLeft } from '../icons';
+
 import '../components/PhoneDetail/PhoneDetail.scss';
+import { Error } from './Error';
 
 export const PhoneDetailPage = () => {
   const { phoneId } = useParams();
   const phoneDetailStatus = useAppSelector(selectPhoneDetailStatus);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const { state } = useLocation();
-  const navigationType = useNavigationType();
+  const { state } = useLocation();
 
-  console.log(phoneDetailStatus);
-  console.log(navigationType);
   const goBack = () => {
-    navigate('..');
+    navigate({ pathname: '..', search: state?.search });
   };
 
   useEffect(() => {
@@ -35,22 +33,25 @@ export const PhoneDetailPage = () => {
 
   return (
     <>
-      {phoneDetailStatus === 'loading' ? (
-        <Loader />
-      ) : (
+      {phoneDetailStatus === 'loading' && (<Loader />)}
+      {phoneDetailStatus === 'succeeded' && (
         <>
           <Breadcrumbs />
-            <button
-              type="button"
-              className="phoneDetail__button"
-              onClick={goBack}
-            >
-              <ArrowLeft />
-              <span>Back</span>
-            </button>
+          <button
+            data-cy="backButton"
+            type="button"
+            className="phoneDetail__button"
+            onClick={goBack}
+          >
+            <ArrowLeft />
+            <span>Back</span>
+          </button>
 
           <PhoneDetail phoneId={phoneId} />
         </>
+      )}
+      {phoneDetailStatus === 'error' && (
+        <Error message="Sorry but phone is not found" />
       )}
     </>
   );

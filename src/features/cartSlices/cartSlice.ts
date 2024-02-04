@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-// import { IPhone } from '../../types/Phone.interface';
 import { ICartPhone } from '../../types';
 
 type Cart = {
@@ -67,6 +66,7 @@ const cartSlice = createSlice({
 
 export const selectCartPhones = (state: RootState) => state.cart.phones;
 export const selectCartQuantity = (state: RootState) => state.cart.quantityCart;
+
 export const {
   addPhoneToCart,
   removePhoneFromCart,

@@ -10,7 +10,7 @@ type Props = {
 
 export const Favourites: FC<Props> = ({ favouritesPhones }) => {
   return (
-    <ul className="phoneList__grid favourites__items">
+    <ul className="phoneList__grid favourites__items" data-cy="productList">
       {favouritesPhones.map((phone) => (
         <li className="phoneList__gridItem" key={phone.itemId}>
           <PhoneItem phone={phone} />

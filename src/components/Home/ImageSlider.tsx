@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useEffect, useState } from 'react';
 import cl from 'classnames';
+import { bannerImages } from '../../helper';
+
+import { ArrowLeft, ArrowRight } from '../../icons';
 import './ImageSlider.scss';
-import { ArrowRight } from '../../icons/ArrowRight';
-import { ArrowLeft } from '../../icons/ArrowLeft';
-import { bannerImages } from '../../helper/images';
 
 export const ImageSlider = () => {
   const [imageIndex, setImageIndex] = useState(0);
