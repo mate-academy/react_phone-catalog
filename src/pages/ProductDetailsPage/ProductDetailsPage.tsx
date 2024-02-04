@@ -4,6 +4,7 @@ import {
   useContext, useEffect, useState,
 } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import classNames from 'classnames';
 import { BackButton } from '../../components/BackButton';
 import { PathBlock } from '../../components/PathBlock';
 import { ProductsSlider } from '../../components/ProductsSlider';
@@ -56,6 +57,39 @@ export const ProductDetailsPage = () => {
     }
   }, [productDetails]);
 
+  const getColor = (color: string) => {
+    switch (color) {
+      case 'black':
+        return '#000';
+      case 'spacegray':
+        return '#808080';
+      case 'gold':
+        return '#ffefd5';
+      case 'midnightgreen':
+        return '#008080';
+      case 'silver':
+        return '#c0c0c0';
+      case 'yellow':
+        return '#ffff00';
+      case 'green':
+        return '#66cdaa';
+      case 'red':
+        return '#ff0000';
+      case 'white':
+        return '#fff';
+      case 'gray':
+        return '#d3d3d3';
+      case 'purple':
+        return '#e6e6fa';
+      case 'rosegold':
+        return '#ffdab9';
+      case 'coral':
+        return '#f08080';
+      default:
+        return 0;
+    }
+  };
+
   return (
     <div className="product-details__page">
       <PathBlock
@@ -71,7 +105,11 @@ export const ProductDetailsPage = () => {
           <div className="images__list">
             {productDetails?.images.map((image) => (
               <div
-                className="image__list-item"
+                className={
+                  classNames(
+                    'image__list-item', { selected: image === activeImg },
+                  )
+                }
                 role="button"
                 tabIndex={0}
                 onMouseDown={() => setActiveImg(image)}
@@ -86,66 +124,54 @@ export const ProductDetailsPage = () => {
             ))}
           </div>
           <div className="selected__image">
-            <img src={`./${activeImg}`} alt={productDetails?.name} className="product-details__selected-image" />
+            <img
+              src={`./${activeImg}`}
+              alt={productDetails?.name}
+              className="product-details__selected-image"
+            />
           </div>
         </div>
         <div className="product-detail__actions grid__item--fullScreen-14-20">
           <div className="colors__selector">
             <p className="detail-selector__title">Available colors</p>
             <ul className="colors__list">
-              <li className="colors__item selected">
-                <Link
-                  to="/"
-                  className="color__handler-link"
-                />
-              </li>
-              <li className="colors__item">
-                <Link
-                  to="/"
-                  className="color__handler-link"
-                />
-              </li>
-              <li className="colors__item">
-                <Link
-                  to="/"
-                  className="color__handler-link"
-                />
-              </li>
-              <li className="colors__item">
-                <Link
-                  to="/"
-                  className="color__handler-link"
-                />
-              </li>
+              {productDetails?.colorsAvailable.map(color => (
+                <li
+                  className={
+                    classNames(
+                      'colors__item',
+                      { selected: color === productDetails.color },
+                    )
+                  }
+                  key={color}
+                >
+                  <Link
+                    to={`/phones/${productDetails.namespaceId}-${productDetails.capacity.toLowerCase()}-${color}`}
+                    className="color__handler-link"
+                    style={{ background: `${getColor(color)}` }}
+                  />
+                </li>
+              ))}
             </ul>
           </div>
           <div className="capacity__selector">
             <p className="detail-selector__title">Select capacity</p>
             <ul className="capacity__list">
-              <li className="capacity__item selected">
-                <Link
-                  to="/"
-                  className="capacity__handler-link selected"
-                >
-                  64 GB
-                </Link>
-              </li>
-              <li className="capacity__item">
-                <Link
-                  to="/"
-                  className="capacity__handler-link"
-                >
-                  256 GB
-                </Link>
-              </li>
-              <li className="capacity__item">
-                <Link
-                  to="/"
-                  className="capacity__handler-link"
-                >
-                  512 GB
-                </Link>
-              </li>
+              {productDetails?.capacityAvailable.map(capacity => (
+                <li className="capacity__item">
+                  <Link
+                    to={`/phones/${productDetails.namespaceId}-${capacity.toLowerCase()}-${productDetails.color}`}
+                    className={
+                      classNames(
+                        'capacity__handler-link',
+                        { selected: capacity === productDetails.capacity },
+                      )
+                    }
+                  >
+                    {capacity.replace('GB', ' GB')}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="prices">

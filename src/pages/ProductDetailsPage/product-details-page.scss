@@ -42,11 +42,14 @@ h1.product__title {
   height: 80px;
   padding: 8px;
   cursor: pointer;
-  border: 1px solid #c4c4c4;
 
   img {
     height: 100%;
   }
+}
+
+.image__list-item.selected {
+  border: 1px solid #c4c4c4;
 }
 
 .product-details__selected-image {
@@ -79,7 +82,7 @@ h1.product__title {
 }
 
 .colors__item.selected {
-  border: 0.5px solid $gray_primary;
+  border: 1px solid $gray_primary;
 }
 
 .color__handler-link {
