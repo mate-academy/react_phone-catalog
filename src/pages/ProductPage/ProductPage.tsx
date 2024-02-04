@@ -14,7 +14,7 @@ export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
   const [product, , error, setProduct] = useRequest(
-    () => getProductDetailsById(productId, category),
+    () => getProductDetailsById(productId, category), [], null
   );
   const similarProducts = useRef<ProductDetails[]>([]);
 

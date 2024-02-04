@@ -3,10 +3,9 @@ import { Product } from '../../../definitions/types/Product';
 import ProductCard from '../ProductCard';
 
 import './ProductsList.scss';
-import Placeholder from '../../UI/Placeholder';
 
 interface Props {
-  products: Product[] | null,
+  products: Product[],
   loading?: boolean,
   placeholdersAmount: number,
 }
@@ -16,19 +15,17 @@ export const ProductsList: React.FC<Props> = memo(({
   products,
   placeholdersAmount,
 }) => {
-  if (products === null || loading) {
-    const placeholders = Array.from({ length: placeholdersAmount },
-      (_, index) => <Placeholder height='504px' key={index} />
-    );
-
+  if (loading) {
     return (
       <section className="products-list">
-        {placeholders}
+        {Array.from({ length: placeholdersAmount },
+          (_, index) => <ProductCard product={null} key={index} />
+        )}
       </section>
-    )
+    );
   }
 
-  if (!products.length) {
+  if (!products.length && !loading) {
     return <p>No products yet</p>
   }
 

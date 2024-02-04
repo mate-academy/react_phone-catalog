@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
-import ArrowIcon from '../ArrowIcon';
 
 import './Paginator.scss';
+import ArrowButton from '../ArrowButton';
 
 interface Props {
   itemsAmount: number,
@@ -31,13 +31,10 @@ export const Paginator: React.FC<Props> = memo(({
 
   return (
     <div className={`paginator ${className || ''}`}>
-      <button
-        className='paginator__item paginator__item--arrow'
-        disabled={isFirstPage}
+      <ArrowButton
         onClick={() => onChange(currentPage - 1)}
-      >
-        <ArrowIcon />
-      </button>
+        disabled={isFirstPage}
+      />
 
       <ul className='paginator__list'>
         {pageIndexes.map(pageIndex => (
@@ -49,14 +46,12 @@ export const Paginator: React.FC<Props> = memo(({
           />
         ))}
       </ul>
-
-      <button
-        className='paginator__item paginator__item--arrow'
-        disabled={isLastPage}
+      
+      <ArrowButton
         onClick={() => onChange(currentPage + 1)}
-      >
-        <ArrowIcon rotate={180} />
-      </button>
+        disabled={isLastPage}
+        rotate={180}
+      />
     </div>
   );
 });

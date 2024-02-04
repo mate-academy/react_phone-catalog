@@ -1,9 +1,13 @@
 @import '../../../styles/vars';
 
+:root {
+  --product-card-width: 272px;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
-  max-width: 272px;
+  max-width: var(--product-card-width);
   padding: 24px;
   border: 1px solid var(--c-elements);
   background: var(--c-bg);

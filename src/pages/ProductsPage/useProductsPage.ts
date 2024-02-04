@@ -14,7 +14,7 @@ export function useProductsPage() {
   const { category } = useAppParams();
 
   const getAmount = () => getProductsAmount(category);
-  const [productsAmount, amountLoading, amountError] = useRequest(getAmount, [category]);
+  const [productsAmount, amountLoading, amountError] = useRequest(getAmount, [category], null);
   const amountHandled = amountLoading ? 0 : (productsAmount ?? 0);
 
   const [sortBy, sortByOptions, setSortBy, sortQuery] = useProductsSort();
@@ -36,7 +36,7 @@ export function useProductsPage() {
   });
 
   const [products, loading, error] = useRequest(
-    loadProducts, [category, page, perPage, sortQuery, search]
+    loadProducts, [category, page, perPage, sortQuery, search], null
   );
 
   const amount = search ? (products?.amount ?? 0) : amountHandled;
@@ -48,7 +48,7 @@ export function useProductsPage() {
     amount,
     category: capitalize(category),
     someError: error || amountError,
-    products: products?.products ?? null,
+    products: products?.products ?? [],
     productsLoading: loading,
     perPageIsAll: perPage === 'All',
     sortBy,

@@ -28,14 +28,5 @@
       color: var(--c-bg);
       border: none;
     }
-
-    &--arrow {
-      background-color: transparent;
-      border: 1px solid var(--c-tips);
-
-      &:disabled {
-        border: 1px solid var(--c-elements);
-      }
-    }
   }
 }

@@ -1,0 +1,36 @@
+@import '../../../../styles/vars';
+
+.products-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__name {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--c-primary);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__content {
+    display: flex;
+    transition: transform $transition-time ease-out;
+  }
+}

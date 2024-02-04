@@ -1,0 +1,18 @@
+.arrow-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--c-tips);
+  background-color: transparent;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--c-primary);
+  }
+
+  &:disabled {
+    border: 1px solid var(--c-elements);
+  }
+}

@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
-type RequestReturn<T> = [
-  data: T | null,
+type RequestReturn<T, Initial> = [
+  data: T | Initial,
   loading: boolean,
   error: string,
-  setData: React.Dispatch<React.SetStateAction<T | null>>
+  setData: React.Dispatch<React.SetStateAction<T | Initial>>
 ];
 
-export function useRequest<T>(
+export function useRequest<T, Initial>(
   getData: () => Promise<T>,
   deps: unknown[] = [],
-  initialState: T | null = null,
+  initialState: Initial,
   thenCallback: (data: T) => void = () => {}
-): RequestReturn<T> {
-  const [data, setData] = useState<T | null>(initialState);
+): RequestReturn<T, Initial> {
+  const [data, setData] = useState<T | Initial>(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 

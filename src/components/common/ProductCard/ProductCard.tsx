@@ -8,12 +8,20 @@ import { AddToCartHandler, AddToCartHandlerRenderProps } from '../../../enhancer
 import { AddToFavoritesHandler, AddToFavoritesHandlerRenderProps } from '../../../enhancers/hocs/AddToFavoritesHandler';
 import { BASE_URL } from '../../../utils/fetchHelper';
 import SquareSelectLikeButton from '../../UI/SquareSelectButton/descendants/SquareSelectLikeButton';
+import Placeholder from '../../UI/Placeholder';
+import { getRootCssVariable } from '../../../utils/cssHelper';
 
 interface Props {
-  product: Product,
+  product: Product | null,
 }
 
 export const ProductCard: React.FC<Props> = memo(({ product }) => {
+  if (product == null) {
+    const cardWidth = getRootCssVariable(' --product-card-width');
+
+    return <Placeholder height='504px' width={cardWidth} />
+  }
+
   const {
     name,
     fullPrice,
