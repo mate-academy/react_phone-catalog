@@ -2,6 +2,7 @@
 /* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react';
 import './pagination.scss';
+import classNames from 'classnames';
 
 type Props = {
   productsListLenth: number,
@@ -33,13 +34,22 @@ export const Pagination: React.FC<Props> = ({
     <div className="pagination">
       <button
         type="button"
-        className="pagination__item previous"
+        className={
+          classNames('pagination__item previous',
+            { disabled: currentPage === 1 })
+        }
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       />
       <ul className="pagination__buttons">
         {paginationPages.map(page => (
-          <li className="pagination__item" key={page}>
+          <li
+            className={
+              classNames('pagination__item',
+                { active: currentPage === page })
+            }
+            key={page}
+          >
             <button
               type="button"
               className="pagination__button"
@@ -52,7 +62,10 @@ export const Pagination: React.FC<Props> = ({
       </ul>
       <button
         type="button"
-        className="pagination__item next"
+        className={
+          classNames('pagination__item next',
+            { disabled: currentPage === paginationPages.length })
+        }
         disabled={currentPage === paginationPages.length}
         onClick={() => onPageChange(currentPage + 1)}
       />

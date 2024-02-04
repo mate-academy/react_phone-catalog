@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState } from 'react';
+import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import './products-slider.scss';
@@ -29,13 +30,19 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         <h1 className="promo__title">{title}</h1>
         <div className="promo__control">
           <button
-            className="promo__button prev icon"
+            className={
+              classNames('promo__button prev icon',
+                { disabled: transform === 0 })
+            }
             type="button"
             onClick={handleRightShift}
             disabled={transform === 0}
           />
           <button
-            className="promo__button next icon"
+            className={
+              classNames('promo__button next icon',
+                { disabled: transform === maxTransform })
+            }
             type="button"
             onClick={handleLeftShift}
             disabled={transform === maxTransform}
