@@ -1,13 +1,57 @@
-@import './Variables.scss';
+@import './Variables';
 
-@mixin onTablet {
+@mixin on-tablet {
   @media (max-width: $tablet-max-width) {
     @content;
   }
 }
 
-@mixin onMobile {
+@mixin on-mobile {
   @media (max-width: $tablet-min-width) {
     @content;
   }
+}
+
+@mixin font-h1 {
+  font-family: Mont-Bold, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-h2 {
+  font-family: Mont-Bold, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin font-h3 {
+  font-family: Mont-Semibold, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin font-uppercase {
+  font-family: Mont-Semibold, Arial, sans-serif;;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+}
+
+@mixin font-buttons {
+  font-family: Mont-Semibold, Arial, sans-serif;;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin font-body {
+  font-family: Mont-Regular, Arial, sans-serif;;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin font-small {
+  font-family: Mont-Semibold, Arial, sans-serif;;
+  font-size: 12px;
+  line-height: 15px;
 }

@@ -4,4 +4,6 @@ export enum Icons {
   Cart = 'cart',
   Heart = 'heart',
   Burger = 'burger',
+  ArrowLeft = 'arrowLeft',
+  ArrowRight = 'arrowRight',
 }

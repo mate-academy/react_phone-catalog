@@ -15,7 +15,7 @@ export const Icon: React.FC<Props> = ({ icon, counter }) => (
       })}
     />
     {counter && (
-      <span className="font_small icon__counter">
+      <span className="icon__counter">
         {counter}
       </span>
     )}

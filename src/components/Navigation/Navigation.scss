@@ -1,10 +1,12 @@
-@import "../../App.scss";
+@import "../../App";
 
 .navigation {
   display: flex;
   gap: 64px;
 
   &__link {
+    @include font-uppercase;
+
     color: $secondary-color;
   }
 }

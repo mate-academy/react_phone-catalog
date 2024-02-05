@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../App';
 
 .searchbar {
   display: flex;
@@ -11,6 +11,8 @@
   box-shadow: -1px 0 0 0 $elements-color, 1px 0 0 0 $elements-color,;
 
   &__input {
+    @include font-body;
+
     height: 100%;
     width: 100%;
     outline: none;

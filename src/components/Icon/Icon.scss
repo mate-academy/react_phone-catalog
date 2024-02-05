@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../App';
 
 .icon {
   position: relative;
@@ -17,19 +17,29 @@
     background-repeat: no-repeat;
 
     &-search {
-      background-image: url(../../style/icons/Search.svg);
+      background-image: url(../../assets/icons/Search.svg);
     }
 
     &-cart {
-      background-image: url(../../style/icons/cart.svg);
+      background-image: url(../../assets/icons/cart.svg);
     }
 
     &-heart {
-      background-image: url(../../style/icons/heart.svg);
+      background-image: url(../../assets/icons/heart.svg);
+    }
+
+    &-arrowLeft {
+      background-image: url(../../assets/icons/arrowLeft.svg);
+    }
+
+    &-arrowRight {
+      background-image: url(../../assets/icons/arrowRight.svg);
     }
   }
 
   &__counter {
+    @include font-small;
+
     position: absolute;
     top: -4px;
     right: -4px;

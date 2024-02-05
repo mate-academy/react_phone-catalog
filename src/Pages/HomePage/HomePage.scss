@@ -1,5 +1,13 @@
-.homePage {
+@import '../../App';
+
+.home-page {
   padding: 40px 152px;
   display: flex;
   flex-direction: column;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  &__section {
+    margin-top: 80px;
+  }
 }

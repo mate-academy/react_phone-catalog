@@ -6,7 +6,7 @@ export const Searchbar = () => {
   return (
     <div className="searchbar">
       <input
-        className="font_body searchbar__input"
+        className="searchbar__input"
         type="text"
         placeholder="Search in ..."
       />

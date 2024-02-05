@@ -1,39 +1,90 @@
 @import '../../App.scss';
 
 .slider {
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
 
-  &__content {
+  &__wrapper {
+    margin-top: 40px;
+    height: 400px;
+    max-width: 100%;
     display: flex;
     gap: 16px;
 
-    &__button {
-      height: 400px;
-      width: 32px;
-      border: 1px solid $icons-color;
-    }
+  }
 
-    &__image {
-      flex: 1;
-      background-repeat: no-repeat;
-      background: url(../../../public/_new/img/banner-phones.png);
+  &__container {
+    height: 100%;
+    width: 1040px;
+    overflow: hidden;
+
+  }
+
+  &__list {
+    height: 100%;
+    width: 300%;
+    display: flex;
+    gap: 1px;
+    transition-duration: 1s;
+  }
+
+  &__item {
+    height: 100%;
+    width: 33.33%;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    max-height: 100%;
+    background: none;
+    border: 1px solid $secondary-color;
+    cursor: pointer;
+    transition: border 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border: 1px solid $primary-color;
     }
   }
 
   &__dots {
+    width: 80px;
+    height: 24px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
 
-    padding-top: 18px;
-
-    &-dot {
+    &-item {
       width: 14px;
-      height: 4px;
-      background-color: black;
+      height: 5px;
+      background-color: $icons-color;
+      border-radius: 0;
+      transition: background-color border 0.3s;
+      border: 1px solid $icons-color;
+
+      &:hover {
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+      }
     }
   }
+}
+
+.dots-active {
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
 }
