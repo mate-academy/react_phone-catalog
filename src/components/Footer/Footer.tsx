@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import './footer.scss';
-import { scrollToTop } from '../../services/scrollToTop';
+import { scrollToTop } from '../../helpers/scrollToTop';
 import { Logo } from '../Logo';
 
 export const Footer = () => {

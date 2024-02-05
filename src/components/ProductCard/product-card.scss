@@ -34,8 +34,9 @@
     margin-bottom: 8px;
     font-size: 14px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 21px;
+    color: $gray_primary;
   }
 
   &__details {
@@ -69,15 +70,6 @@
   font-weight: 500;
   line-height: normal;
   text-decoration-line: line-through;
-}
-
-.detail {
-  display: flex;
-  justify-content: space-between;
-
-  &__title {
-    color: $gray_seconary;
-  }
 }
 
 .add-to-favourite {

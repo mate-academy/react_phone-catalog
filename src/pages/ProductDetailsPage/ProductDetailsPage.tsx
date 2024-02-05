@@ -10,9 +10,10 @@ import { PathBlock } from '../../components/PathBlock';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { MainContext } from '../../context';
 import { ProductDetails } from '../../types/ProductDetails';
-import { getProductDetails } from '../../services/getProducts';
-import { scrollToTop } from '../../services/scrollToTop';
+import { getProductDetails } from '../../helpers/getProducts';
+import { scrollToTop } from '../../helpers/scrollToTop';
 import './product-details-page.scss';
+import { ProductDetail } from '../../components/ProductDetail';
 
 export const ProductDetailsPage = () => {
   const {
@@ -158,7 +159,7 @@ export const ProductDetailsPage = () => {
             <p className="detail-selector__title">Select capacity</p>
             <ul className="capacity__list">
               {productDetails?.capacityAvailable.map(capacity => (
-                <li className="capacity__item">
+                <li className="capacity__item" key={capacity}>
                   <Link
                     to={`/phones/${productDetails.namespaceId}-${capacity.toLowerCase()}-${productDetails.color}`}
                     className={
@@ -197,30 +198,19 @@ export const ProductDetailsPage = () => {
             />
           </div>
           <div className="product__details">
-            <div className="detail">
-              <p className="detail__title">Screen</p>
-              <p className="detail__value">
-                {productDetails?.screen}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Resolution</p>
-              <p className="detail__value">
-                {productDetails?.resolution}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Processor</p>
-              <p className="detail__value">
-                {productDetails?.processor}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">RAM</p>
-              <p className="detail__value">
-                {productDetails?.ram}
-              </p>
-            </div>
+            <ProductDetail title="Screen" value={productDetails?.screen} />
+            <ProductDetail
+              title="Resolution"
+              value={productDetails?.resolution}
+            />
+            <ProductDetail
+              title="Processor"
+              value={productDetails?.processor}
+            />
+            <ProductDetail
+              title="RAM"
+              value={productDetails?.ram}
+            />
           </div>
         </div>
       </section>
@@ -257,54 +247,38 @@ export const ProductDetailsPage = () => {
         <div className="specification grid__item--fullScreen-14-24">
           <h2 className="specification__title">Tech specs</h2>
           <div className="product__details">
-            <div className="detail">
-              <p className="detail__title">Screen</p>
-              <p className="detail__value">
-                {productDetails?.screen}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Resolution</p>
-              <p className="detail__value">
-                {productDetails?.resolution}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Processor</p>
-              <p className="detail__value">
-                {productDetails?.processor}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">RAM</p>
-              <p className="detail__value">
-                {productDetails?.ram}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Built in memory</p>
-              <p className="detail__value">
-                {productDetails?.capacity}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Camera</p>
-              <p className="detail__value">
-                {productDetails?.camera}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Zoom</p>
-              <p className="detail__value">
-                {productDetails?.zoom}
-              </p>
-            </div>
-            <div className="detail">
-              <p className="detail__title">Cell</p>
-              <p className="detail__value">
-                {productDetails?.cell.join(', ')}
-              </p>
-            </div>
+            <ProductDetail
+              title="Screen"
+              value={productDetails?.screen}
+            />
+            <ProductDetail
+              title="Resolution"
+              value={productDetails?.resolution}
+            />
+            <ProductDetail
+              title="Processor"
+              value={productDetails?.processor}
+            />
+            <ProductDetail
+              title="RAM"
+              value={productDetails?.ram}
+            />
+            <ProductDetail
+              title="Built in memory"
+              value={productDetails?.capacity}
+            />
+            <ProductDetail
+              title="Camera"
+              value={productDetails?.camera}
+            />
+            <ProductDetail
+              title="Zoom"
+              value={productDetails?.zoom}
+            />
+            <ProductDetail
+              title="Cell"
+              value={productDetails?.cell.join(', ')}
+            />
           </div>
         </div>
       </section>

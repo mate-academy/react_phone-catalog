@@ -6,7 +6,7 @@ import { PathBlock } from '../../components/PathBlock';
 import { MainContext } from '../../context';
 import { NotFoundProducts } from '../../components/NotFoundProducts';
 import { SelectorsBlock } from '../../components/SelectorsBlock';
-import { scrollToTop } from '../../services/scrollToTop';
+import { scrollToTop } from '../../helpers/scrollToTop';
 
 export const PhonesPage = () => {
   const {

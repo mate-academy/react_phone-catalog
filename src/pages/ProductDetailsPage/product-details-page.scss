@@ -74,6 +74,9 @@ h1.product__title {
 }
 
 .colors__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -89,8 +92,6 @@ h1.product__title {
   height: 85%;
   width: 85%;
   border-radius: 50%;
-  background-color: $gray_seconary;
-  transform: translate(8%, 8%);
 }
 
 .capacity__selector {
@@ -184,8 +185,4 @@ h1.product__title {
   margin-bottom: 32px;
   padding-bottom: 16px;
   box-shadow: 0 1px 0 0 #e2e6e9;
-}
-
-.detail__value {
-  color: $gray_primary;
 }

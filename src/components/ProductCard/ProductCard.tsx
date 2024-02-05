@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom';
 import './product-card.scss';
 import { Product } from '../../types/Product';
+import { ProductDetail } from '../ProductDetail';
 
 type Props = {
   product: Product,
@@ -20,43 +21,30 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
   } = product;
 
   return (
-    <Link className="product-card" to={`/phones/${itemId}`}>
-      <img src={`./${image}`} alt={product.name} className="product__image" />
-      <p className="product__title">
-        {product.name}
-      </p>
-      <div className="product__prices">
-        <p className="new-price">
-          $
-          {' '}
-          {price}
+    <div className="product-card">
+      <Link to={`/phones/${itemId}`}>
+        <img src={`./${image}`} alt={product.name} className="product__image" />
+        <p className="product__title">
+          {product.name}
         </p>
-        <p className="old-price">
-          $
-          {' '}
-          {fullPrice}
-        </p>
-      </div>
-      <div className="product__details">
-        <div className="detail">
-          <p className="detail__title">Screen</p>
-          <p className="detail__value">
-            {screen}
+        <div className="product__prices">
+          <p className="new-price">
+            $
+            {' '}
+            {price}
+          </p>
+          <p className="old-price">
+            $
+            {' '}
+            {fullPrice}
           </p>
         </div>
-        <div className="detail">
-          <p className="detail__title">Capacity</p>
-          <p className="detail__value">
-            {capacity}
-          </p>
+        <div className="product__details">
+          <ProductDetail title="Screen" value={screen} />
+          <ProductDetail title="Capacity" value={capacity} />
+          <ProductDetail title="RAM" value={ram} />
         </div>
-        <div className="detail">
-          <p className="detail__title">RAM</p>
-          <p className="detail__value">
-            {ram}
-          </p>
-        </div>
-      </div>
+      </Link>
       <div className="product__actions">
         <button
           type="button"
@@ -64,8 +52,11 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
         >
           Add to cart
         </button>
-        <button type="button" className="add-to-favourite button icon" />
+        <button
+          type="button"
+          className="add-to-favourite button icon"
+        />
       </div>
-    </Link>
+    </div>
   );
 };

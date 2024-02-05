@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Product } from '../types/Product';
-import { getProducts } from '../services/getProducts';
+import { getProducts } from '../helpers/getProducts';
+import { CartItem } from '../types/CartItem';
+import { getFromStorage, setToStorage } from '../helpers/storage';
 
 type Props = {
   children: React.ReactNode;
@@ -14,6 +16,8 @@ export const MainContext = React.createContext<{
   accessories: Product[];
   sortType: string;
   itemsOnPage: string;
+  cartItems: CartItem[];
+  favoutitesItems: Product[];
   setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
@@ -21,6 +25,8 @@ export const MainContext = React.createContext<{
   setAccessories: React.Dispatch<React.SetStateAction<Product[]>>;
   setSortType: React.Dispatch<React.SetStateAction<string>>;
   setItemsOnPage: React.Dispatch<React.SetStateAction<string>>;
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  setFavouritesItems: React.Dispatch<React.SetStateAction<Product[]>>
 }>({
   currentPage: 'Home',
   products: [],
@@ -29,6 +35,8 @@ export const MainContext = React.createContext<{
   accessories: [],
   sortType: 'No sorting',
   itemsOnPage: 'All',
+  cartItems: [],
+  favoutitesItems: [],
   setCurrentPage: () => { },
   setProducts: () => { },
   setPhones: () => { },
@@ -36,6 +44,8 @@ export const MainContext = React.createContext<{
   setAccessories: () => { },
   setSortType: () => { },
   setItemsOnPage: () => { },
+  setCartItems: () => { },
+  setFavouritesItems: () => { },
 });
 
 export const MainProvider: React.FC<Props> = ({ children }) => {
@@ -46,6 +56,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [accessories, setAccessories] = useState<Product[]>([]);
   const [sortType, setSortType] = useState('No sorting');
   const [itemsOnPage, setItemsOnPage] = useState('All');
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [favoutitesItems, setFavouritesItems] = useState<Product[]>([]);
 
   const getProductsFromServer = async () => {
     try {
@@ -63,7 +75,14 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     getProductsFromServer();
+    setCartItems(getFromStorage('cart'));
+    setFavouritesItems(getFromStorage('favourites'));
   }, []);
+
+  useEffect(() => {
+    setToStorage('cart', cartItems);
+    setToStorage('favourites', favoutitesItems);
+  }, [cartItems, favoutitesItems]);
 
   const value = useMemo(
     () => ({
@@ -81,6 +100,10 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setSortType,
       itemsOnPage,
       setItemsOnPage,
+      cartItems,
+      setCartItems,
+      favoutitesItems,
+      setFavouritesItems,
     }),
     [
       currentPage,
@@ -97,6 +120,10 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setSortType,
       itemsOnPage,
       setItemsOnPage,
+      cartItems,
+      setCartItems,
+      favoutitesItems,
+      setFavouritesItems,
     ],
   );
 

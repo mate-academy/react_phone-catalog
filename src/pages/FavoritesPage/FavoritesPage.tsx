@@ -4,7 +4,7 @@ import { PathBlock } from '../../components/PathBlock';
 
 import './favourites-page.scss';
 import { ProductsList } from '../../components/ProductsList';
-import { scrollToTop } from '../../services/scrollToTop';
+import { scrollToTop } from '../../helpers/scrollToTop';
 
 export const Favorites = () => {
   const {

@@ -1,0 +1,14 @@
+@import "../../styles/utils/vars";
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    color: $gray_seconary;
+  }
+
+  &__value {
+    color: $gray_primary;
+  }
+}
