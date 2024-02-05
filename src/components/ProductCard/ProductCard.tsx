@@ -53,7 +53,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           <div
             className="phone__name"
-            >
+          >
             {product.name}
           </div>
         </Link>

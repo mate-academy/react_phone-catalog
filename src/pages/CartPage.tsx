@@ -36,15 +36,15 @@ export const CartPage = () => {
           {cartItems.length > 0 ? (
             cartItems.map((item) => (
               <div className="cart__item" key={item.id}>
-                <button
-                  className="cart__clear-button"
-                  aria-label="button"
-                  type="button"
-                  onClick={() => {
-                    removeFromCart(item);
-                  }}
-                />
                 <div className="cart__item-content">
+                  <button
+                    className="cart__clear-button"
+                    aria-label="button"
+                    type="button"
+                    onClick={() => {
+                      removeFromCart(item);
+                    }}
+                  />
                   <img
                     src={
                       `https://mate-academy.github.io/react_phone-catalog/_new/${item.product.image}`
@@ -53,34 +53,35 @@ export const CartPage = () => {
                     className="cart__item-image"
                   />
                   <h1 className="cart__item-title">{item.product.name}</h1>
-                </div>
-                <button
-                  className="cart__item-control cart__item-control--add"
-                  aria-label="button"
-                  type="button"
-                  onClick={() => {
-                    addToCart(item);
-                  }}
-                />
-                <div
-                  className="cart__item-quantity"
-                  data-cy="productQauntity"
-                >
-                  {item.quantity}
-                </div>
-                <button
-                  className="cart__item-control cart__item-control--remove"
-                  aria-label="button"
-                  type="button"
-                  onClick={() => {
-                    removeFromCart(item);
-                  }}
-                />
-                <div
-                  className="cart__item-price"
-                >
-                  $
-                  {getCartTotal()}
+
+                  <div className="cart__item-container">
+                    <button
+                      className="cart__item-control cart__item-control--remove"
+                      aria-label="button"
+                      type="button"
+                      onClick={() => {
+                        removeFromCart(item);
+                      }}
+                    />
+                    <div
+                      className="cart__item-quantity"
+                      data-cy="productQauntity"
+                    >
+                      {item.quantity}
+                    </div>
+                    <button
+                      className="cart__item-control cart__item-control--add"
+                      aria-label="button"
+                      type="button"
+                      onClick={() => {
+                        addToCart(item);
+                      }}
+                    />
+                    <div className="cart__item-price">
+                      $
+                      {item.price}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))

@@ -3,23 +3,27 @@
 .cart {
   max-width: 1136px;
   margin: 0 auto;
+  box-sizing: border-box;
 
   &__container {
     display: flex;
-    gap: 16px;
-    max-width: 1136px;
-    margin: 0 auto;
+    justify-content: space-between;
   }
 
   &__item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border: 1px solid $elements;
     width: 752px;
     height: 128px;
     padding: 24px;
     margin-top: 16px;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
     
     &-image {
       width: 66px;
@@ -32,12 +36,16 @@
       font-weight: 500;
       line-height: 21px;
       color: $primary;
+      flex: 1;
+      max-width: 400px;
     }
 
     &-content {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 31px;
+      width: 100%;
     }
 
     &-control {
@@ -53,7 +61,6 @@
       cursor: pointer;
 
       &--add {
-        margin-left: 80px;
         background-image: url("../images/Plus.svg");
       }
 
@@ -70,13 +77,13 @@
     
     &-price {
       margin-left: 80px;
+      width: 50px;
     }
   }
 
   &__clear-button {
     width: 16px;
     height: 16px;
-    margin: 24px 32px;
 
     background-repeat: no-repeat;
     background-position: center;
