@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../App';
 
 .slider {
   display: flex;
@@ -16,6 +16,7 @@
 
   }
 
+<<<<<<< HEAD
   &__container {
     height: 100%;
     width: 1040px;
@@ -57,6 +58,11 @@
 
     &:hover {
       border: 1px solid $primary-color;
+=======
+    &__image {
+      flex: 1;
+      background: url(../../../public/_new/img/banner-phones.png) no-repeat;
+>>>>>>> 98943cbdbf69aa4a4f5e406cf85816d2463e275a
     }
   }
 
