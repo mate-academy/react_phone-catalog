@@ -8,12 +8,14 @@ interface Props {
   products: Product[],
   loading?: boolean,
   placeholdersAmount: number,
+  customNoProductsText?: string | null,
 }
 
 export const ProductsList: React.FC<Props> = memo(({
   loading,
   products,
   placeholdersAmount,
+  customNoProductsText,
 }) => {
   if (loading) {
     return (
@@ -26,7 +28,16 @@ export const ProductsList: React.FC<Props> = memo(({
   }
 
   if (!products.length && !loading) {
-    return <p>No products yet</p>
+    return (
+      <section className='products-list--no-products'>
+        {(customNoProductsText ?? false) ? (
+          <p>{customNoProductsText}</p>
+        ) : (<>
+          <p>No products yet</p>
+          <p>Follow the updates on our <a href="https://www.instagram.com/apple/">Instagram</a></p>
+        </>)}
+      </section>
+    );
   }
 
   return (

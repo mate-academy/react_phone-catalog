@@ -24,7 +24,11 @@ export const FavoritesPage: React.FC = memo(() => {
 
   useEffect(() => {
     dispatch(favoritesActions.display({ search }));
-  }, [search]);
+  }, []);
+
+  const noProductsMessage = search
+    ? 'There are no results for this search query'
+    : 'You have not selected your favorite products yet';
 
   return (
     <div className='products-page'>
@@ -43,6 +47,7 @@ export const FavoritesPage: React.FC = memo(() => {
         loading={loading}
         products={products}
         placeholdersAmount={ids.length}
+        customNoProductsText={noProductsMessage}
       />
     </div>
   );

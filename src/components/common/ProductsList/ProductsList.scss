@@ -2,6 +2,21 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
   justify-items: center;
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 40px 16px;
+
+  &--no-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 460px;
+
+    font-size: 32px;
+    color: var(--c-primary);
+    text-align: center;
+
+    & a {
+      text-decoration: underline;
+    }
+  }
 }

@@ -27,6 +27,7 @@ export const ProductsPage: React.FC = memo(() => {
     page,
     setPage,
     items,
+    noProductsText,
   } = useProductsPage();
 
   if (someError) {
@@ -70,6 +71,7 @@ export const ProductsPage: React.FC = memo(() => {
         products={products}
         placeholdersAmount={(perPageIsAll ? 16 : perPage) as number}
         loading={productsLoading}
+        customNoProductsText={noProductsText}
       />
 
       {!perPageIsAll && pageAmount > 0 && (

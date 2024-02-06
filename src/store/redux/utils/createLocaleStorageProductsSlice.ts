@@ -73,9 +73,11 @@ export function getLocaleStorageProductsSlice(options: Options) {
       display: create.asyncThunk(async (initialOptions: QueryOptions) => {
         const productIds = storage.init<ProductId[]>(key, []);
 
-        const options: QueryOptions = { ...initialOptions, ids: productIds };
+        if (productIds.length === 0) {
+          return { products: [], amount: 0 };
+        }
 
-        console.log(options);
+        const options: QueryOptions = {...initialOptions, ids: productIds};
 
         return getProducts(options);
       },

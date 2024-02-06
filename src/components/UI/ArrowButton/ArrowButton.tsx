@@ -24,8 +24,6 @@ export const ArrowButton: React.FC<Props> = memo(({
   const [buttonRef, height] = useHeight<HTMLButtonElement>();
   const arrowSize = height / 2;
 
-  console.log(children);
-
   if (children) {
     return (
       <div className={wrapperClassName} onClick={onClick}>

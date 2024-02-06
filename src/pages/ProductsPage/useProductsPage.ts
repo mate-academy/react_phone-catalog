@@ -42,6 +42,7 @@ export function useProductsPage() {
   const amount = search ? (products?.amount ?? 0) : amountHandled;
   const amountLoadingHandled = search ? amountLoading : loading;
   const items = search ? 'results' : 'models';
+  const showNoResults = !!(search && products?.products.length === 0);
 
   return {
     amountLoading: amountLoadingHandled,
@@ -61,5 +62,6 @@ export function useProductsPage() {
     pageAmount: amountHandled / (perPage === 'All' ? 1 : perPage),
     setPage,
     items,
+    noProductsText: showNoResults ? 'There are no results for this search query' : null,
   };
 }
