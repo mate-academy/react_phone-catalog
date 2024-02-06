@@ -14,6 +14,7 @@ import { getProductDetails } from '../../helpers/getProducts';
 import { scrollToTop } from '../../helpers/scrollToTop';
 import './product-details-page.scss';
 import { ProductDetail } from '../../components/ProductDetail';
+// import { ProductCardActions } from '../../components/ProductCardActions';
 
 export const ProductDetailsPage = () => {
   const {
@@ -180,22 +181,7 @@ export const ProductDetailsPage = () => {
             <p className="full-price">{`$${productDetails?.priceRegular}`}</p>
           </div>
           <div className="product__actions product-detail__buttons">
-            <button
-              type="button"
-              className="add-to-card
-                primary__button button
-                details-cart__button"
-            >
-              Add to cart
-            </button>
-            <button
-              type="button"
-              className="
-              add-to-favourite
-              button
-              icon
-              details-favourite__button"
-            />
+            {/* <ProductCardActions product={product} /> */}
           </div>
           <div className="product__details">
             <ProductDetail title="Screen" value={productDetails?.screen} />

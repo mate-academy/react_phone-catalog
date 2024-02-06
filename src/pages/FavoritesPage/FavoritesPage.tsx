@@ -5,12 +5,13 @@ import { PathBlock } from '../../components/PathBlock';
 import './favourites-page.scss';
 import { ProductsList } from '../../components/ProductsList';
 import { scrollToTop } from '../../helpers/scrollToTop';
+import { NotFoundProducts } from '../../components/NotFoundProducts';
 
 export const Favorites = () => {
   const {
-    products,
     currentPage,
     setCurrentPage,
+    favoutitesItems,
   } = useContext(MainContext);
 
   useEffect(() => {
@@ -24,8 +25,10 @@ export const Favorites = () => {
         currentPage={currentPage}
       />
       <h1 className="fvourites__title">Favourites</h1>
-      <p className="favourites-items__amount">5 items</p>
-      <ProductsList products={products} />
+      {favoutitesItems.length === 0 && <NotFoundProducts />}
+      {favoutitesItems.length === 1 && <p className="favourites-items__amount">{`${favoutitesItems.length} item`}</p>}
+      {favoutitesItems.length > 1 && <p className="favourites-items__amount">{`${favoutitesItems.length} items`}</p>}
+      <ProductsList products={favoutitesItems} />
     </div>
   );
 };

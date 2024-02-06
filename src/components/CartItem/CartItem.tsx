@@ -1,23 +1,44 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import { CartItem as TypeCartItem } from '../../types/CartItem';
 import './cart-item.scss';
 
-export const CartItem = () => {
+type Props = {
+  item: TypeCartItem,
+};
+
+export const CartItem: React.FC<Props> = ({ item }) => {
+  const {
+    qnty,
+    product,
+  } = item;
+
   return (
-    <div className="cart__item">
+    <>
       <button className="cross__icon icon" type="button" />
       <div className="item__image">
         <img
-          src="img/phones/apple-iphone-7/black/00.jpg"
-          alt="Apple iPhone 11 Pro Max 64GB Gold"
+          src={`./${product.image}`}
+          alt={product.name}
         />
       </div>
-      <p className="item__title">Apple iPhone 11 Pro Max 64GB Gold</p>
+      <p className="item__title">{product.name}</p>
       <div className="item-counter">
-        <button className="minus-button button" type="button">-</button>
-        <p className="item__amount">1</p>
-        <button className="plus-button button" type="button">+</button>
+        <button
+          className="minus-button button"
+          type="button"
+        >
+          -
+        </button>
+        <p className="item__amount">{qnty}</p>
+        <button
+          className="plus-button button"
+          type="button"
+        >
+          +
+        </button>
       </div>
-      <p className="total__price">1090$</p>
-    </div>
+      <p className="total__price">{`${product.price}$`}</p>
+    </>
   );
 };

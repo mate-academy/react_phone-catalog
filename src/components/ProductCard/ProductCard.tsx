@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './product-card.scss';
 import { Product } from '../../types/Product';
 import { ProductDetail } from '../ProductDetail';
+import { ProductCardActions } from '../ProductCardActions';
 
 type Props = {
   product: Product,
@@ -46,16 +47,7 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
         </div>
       </Link>
       <div className="product__actions">
-        <button
-          type="button"
-          className="add-to-card primary__button button"
-        >
-          Add to cart
-        </button>
-        <button
-          type="button"
-          className="add-to-favourite button icon"
-        />
+        <ProductCardActions product={product} />
       </div>
     </div>
   );

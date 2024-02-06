@@ -8,6 +8,8 @@ import { MainContext } from '../../context';
 export const Header = () => {
   const {
     currentPage,
+    cartItems,
+    favoutitesItems,
   } = useContext(MainContext);
 
   return (
@@ -70,9 +72,13 @@ export const Header = () => {
             className={(
               { isActive },
             ) => (isActive
-              ? 'favourites__icon icon activ-block'
+              ? 'favourites__icon icon active-block'
               : 'favourites__icon icon')}
-          />
+          >
+            {favoutitesItems.length !== 0
+              && <div className="items__amount">{favoutitesItems.length}</div>}
+
+          </NavLink>
         </div>
         <div className="actions__block">
           <NavLink
@@ -80,9 +86,12 @@ export const Header = () => {
             className={(
               { isActive },
             ) => (isActive
-              ? 'cart__icon icon activ-block'
+              ? 'cart__icon icon active-block'
               : 'cart__icon icon')}
-          />
+          >
+            {cartItems.length !== 0
+             && <div className="items__amount">{cartItems.length}</div>}
+          </NavLink>
         </div>
       </div>
     </header>
