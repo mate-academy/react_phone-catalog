@@ -16,8 +16,8 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = memo(({ product }) => {
-  if (product == null) {
-    const cardWidth = getRootCssVariable(' --product-card-width');
+  if (product === null) {
+    const cardWidth = getRootCssVariable('--product-card-width');
 
     return <Placeholder height='504px' width={cardWidth} />
   }

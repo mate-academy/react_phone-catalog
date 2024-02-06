@@ -23,6 +23,7 @@ export interface QueryOptions {
   pagination?: Pagination;
   sortQuery?: SortQuery;
   search?: string | null;
+  randomCount?: number,
 }
 
 export type ServerResponse = { products: Product[]; amount?: number };

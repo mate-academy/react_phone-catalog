@@ -24,7 +24,7 @@
   }
 }
 
-.promotions-slider {
+.banners-slider {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -53,8 +53,8 @@
   &__top {
     position: relative;
 
-    &:hover .promotions-slider__arrow-button {
-      display: block;
+    &:hover .banners-slider__arrow-button {
+      display: flex;
     }
   }
 
@@ -65,7 +65,9 @@
   &__img {
     opacity: 1;
     display: block;
-    background: center/cover;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--c-tips);
     transition: background-image $transition-time ease-in-out;
     width: 100%;
     height: 100%;

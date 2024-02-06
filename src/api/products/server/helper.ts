@@ -7,20 +7,69 @@ import { fetchPaginatedProducts, fetchAllProducts } from "./requests";
 import { PER_PAGE_ON_SERVER } from "./constants";
 
 export const needSeparatelyFetching = (options: QueryOptions) => (
-  options.search || options.ids
+  options.search || options.ids || options.randomCount
 );
 
 export function productsRequest<T>(url: string, category?: Category) {
   if (category) {
-    return request<T>(`categories/${category}/${url}`);
+    return request<T>(`products/categories/${category}/${url}`);
   }
 
-  return request<T>(`all/${url}`);
+  return request<T>(`products/all/${url}`);
+}
+
+let memoizedFlattenArray: string[];
+
+function getAllCategoriesIds() {
+  if (memoizedFlattenArray) {
+    return memoizedFlattenArray;
+  }
+
+  const flattenIdsArray = [];
+
+  for (const categoryIds of Object.values(productsIds)) {
+    flattenIdsArray.push(...categoryIds);
+  }
+
+  memoizedFlattenArray = flattenIdsArray;
+
+  return flattenIdsArray;
+}
+
+function getRandomIds(count?: number) {
+  if (!count) {
+    return [];
+  }
+
+  let randomLeft = count;
+  const ids = [...getAllCategoriesIds()];
+  const randomIds = [];
+
+  
+  while (randomLeft > 0 && ids.length > 0) {
+    const randomIndex = Math.floor(Math.random() * ids.length);
+    const randomId = ids[randomIndex];
+    
+    ids.splice(randomIndex, 1);
+    randomIds.push(randomId);
+
+    randomLeft--;
+  }
+
+  return randomIds;
 }
 
 export function getIdsToFetch(options: QueryOptions) {
-  const { category, search, ids: customIds } = options;
-  const ids = customIds ? customIds : getAllIds(category);
+  const { category, search, ids: customIds = [], randomCount } = options;
+  const randomIds = getRandomIds(randomCount);
+  let ids = [];
+
+  if (randomIds.length > 0 || customIds.length > 0) {
+    ids.push(...customIds);
+    ids.push(...randomIds);
+  } else {
+    ids = getAllIds(category);
+  }
 
   if (!search) {
     return ids;
@@ -42,7 +91,7 @@ export const calcPageIndex = ({ page, perPage }: NumericPagination) => {
   return Math.ceil((page * perPage) / PER_PAGE_ON_SERVER);
 }
 
-export function sliceLikePaginate(products: Product[], {page, perPage}: NumericPagination) {
+export function sliceLikePaginate(products: Product[], { page, perPage }: NumericPagination) {
   const pageStart = (perPage * (page - 1)) % PER_PAGE_ON_SERVER;
   const pageEnd = Math.min(pageStart + perPage, products.length);
 

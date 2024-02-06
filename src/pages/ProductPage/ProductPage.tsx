@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './ProductPage.scss';
 import { getProductDetailsById, getVariantsOfProduct } from '../../api/products/client/productsDetails';
+import ProductsCarouselWithRandomItems from '../../components/common/ProductsCarousel/ProductsCarouselWithRandomItems';
 
 export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
@@ -44,10 +45,13 @@ export const ProductPage: React.FC = memo(() => {
 
   return (
     <div className="product-page">
-      <BackButton className='product-page__back-button'/>
+      <BackButton className='product-page__back-button' />
 
-      <ProductDetailsComponent product={product} changeProduct={changeProduct} />
+      <div className="product-page__content">
+        <ProductDetailsComponent product={product} changeProduct={changeProduct} />
 
+        <ProductsCarouselWithRandomItems name='You may also like' />
+      </div>
     </div>
   );
 });

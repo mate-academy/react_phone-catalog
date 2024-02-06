@@ -1,31 +1,36 @@
 import React, { memo } from 'react';
-import { SortQuery } from '../../api/products/server/types';
-import ProductsCarouselWithSortedProducts from '../../components/common/ProductsCarousel/ProductsCarouselWithSortedProducts';
-import PromotionsSlider from '../../components/common/PromotionsSlider';
+// import { SortQuery } from '../../api/products/server/types';
+// import ProductsCarouselWithSortedProducts from '../../components/common/ProductsCarousel/ProductsCarouselWithSortedProducts';
+import BannersSlider from '../../components/common/BannersSlider';
 
 import './HomePage.scss';
 import { useRequest } from '../../enhancers/hooks/request';
-import { getPromotions } from '../../api/products/client/promotions';
+import { getBanners } from '../../api/products/client/banners';
+// import CategoriesGallery from '../../components/common/CategoriesGallery';
 
 export const HomePage: React.FC = memo(() => {
-  const [promotions, promotionsLoading] = useRequest(getPromotions, [], []);
+  const [banners, bannersLoading] = useRequest(getBanners, [], []);
+
+  console.log(banners, bannersLoading);
 
   return (
     <div className='home-page'>
-      <PromotionsSlider
-        promotions={promotions}
-        loading={promotionsLoading}
+      <BannersSlider
+        banners={banners}
+        loading={bannersLoading}
       />
 
-      <ProductsCarouselWithSortedProducts
+      {/* <ProductsCarouselWithSortedProducts
         name='Hot prices'
         sortQuery={SortQuery.Cheapest}
       />
 
+      <CategoriesGallery />
+
       <ProductsCarouselWithSortedProducts
         name='Brand new models'
         sortQuery={SortQuery.Newest}
-      />
+      /> */}
     </div>
   );
 });

@@ -1,0 +1,64 @@
+@import '../../../styles/vars';
+
+.categories-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--c-primary);
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.category-item {
+  --item-width: 368px;
+
+  &__placeholder {
+    height: 443px;
+    width: var(--item-width);
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: $transition-time;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1;
+    width: var(--item-width);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--c-primary);
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--c-secondary);
+  }
+}
