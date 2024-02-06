@@ -1,4 +1,4 @@
-@import '../../../styles/vars.scss';
+@import '../../../styles/vars';
 
 .navbar {
   display: flex;
@@ -40,7 +40,6 @@
     
     &--active {
       color: var(--c-primary);
-      // background-color: yellow;
       
       &::after {
         width: calc(100% - 16px * 2);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ProductsCarousel, ProductsCarouselProps } from '../ProductsCarousel/ProductsCarousel';
 import { useRequest } from '../../../../enhancers/hooks/request';
 import { getProducts } from '../../../../api/products/client/products';
@@ -7,7 +7,7 @@ interface Props extends Omit<ProductsCarouselProps, 'products' | 'loading'> {
 
 }
 
-export const ProductsCarouselWithRandomItems: React.FC<Props> = ({
+export const ProductsCarouselWithRandomItems: React.FC<Props> = memo(({
   ...restProps
 }) => {
   const [{ products }, loading] = useRequest(
@@ -17,4 +17,4 @@ export const ProductsCarouselWithRandomItems: React.FC<Props> = ({
   return (
     <ProductsCarousel products={products} loading={loading} {...restProps} />
   );
-};
+});

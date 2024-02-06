@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import React, { memo } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './Navbar.scss';
 import { PAGE } from '../../../definitions/enums/Router';
 import { Category } from "../../../api/products/server/types";
+import Logo from '../../UI/Logo';
 
 export const Navbar: React.FC = memo(() => {
   const getClasses = ({ isActive }: { isActive: boolean }) => (
@@ -13,9 +14,7 @@ export const Navbar: React.FC = memo(() => {
 
   return (
     <nav className="navbar">
-      <Link to={PAGE.Home} className="navbar__item">
-        <img src="./img/logos/logo.svg" />
-      </Link>
+      <Logo className='navbar__item'/>
 
       <NavLink to={PAGE.Home} className={getClasses}>
         Home

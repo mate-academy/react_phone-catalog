@@ -32,12 +32,16 @@ html {
   flex-direction: column;
 }
 
+:root {
+  --max-content-width: 1136px;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   align-self: center;
   width: 80%;
-  max-width: 1136px;
+  max-width: var(--max-content-width);
 
   &__bread-crumbs {
     margin-block: 24px;

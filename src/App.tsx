@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './components/common/Header';
 import BreadCrumbs from './components/UI/BreadCrumbs';
 import { ErrorContext } from './store/contexts/ErrorContext';
+import Footer from './components/common/Footer';
 
 export const App: React.FC = memo(() => {
   const location = useLocation();
@@ -23,6 +24,7 @@ export const App: React.FC = memo(() => {
         <Outlet />
       </main>
 
+      <Footer />
     </div>
   )
 });
