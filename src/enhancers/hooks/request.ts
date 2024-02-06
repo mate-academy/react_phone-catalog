@@ -21,13 +21,21 @@ export function useRequest<T, Initial>(
     setError('');
     setIsLoading(true);
 
+    let ignoreResponse = false;
+
     getData()
       .then((data) => {
-        setData(data);
-        thenCallback(data)
+        if (!ignoreResponse) {
+          setData(data);
+          thenCallback(data)
+        }
       })
       .catch((error) => setError(error.message))
       .finally(() => setIsLoading(false));
+    
+    return () => {
+      ignoreResponse = true
+    };
   }, deps);
 
   return [data, isLoading, error, setData];

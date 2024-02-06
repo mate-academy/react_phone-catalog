@@ -13,7 +13,6 @@ interface Props {
 
 export const CategoriesGallery: React.FC<Props> = memo(({ sectionName }) => {
   const [categories, loading] = useRequest(getCategories, [], []);
-
   const showedItems = loading ? Array.from({ length: 3 }, () => null) : categories;
 
   return (
@@ -23,7 +22,12 @@ export const CategoriesGallery: React.FC<Props> = memo(({ sectionName }) => {
       </h2>
 
       <div className="categories-gallery__content">
-        {showedItems.map((category) => <CategoryItem category={category}/>)}
+        {showedItems.map((category, index) => (
+          <CategoryItem
+            category={category}
+            key={category?.name ?? index}
+          />
+        ))}
       </div>
     </section>
   );
@@ -33,12 +37,12 @@ interface ItemProps {
   category: CategoryItemType | null,
 }
 
-const CategoryItem: React.FC<ItemProps> = memo(({category}) => {
+const CategoryItem: React.FC<ItemProps> = memo(({ category }) => {
   if (category === null) {
     return <Placeholder className='category-item__placeholder' />
   }
 
-  const {name, image, amount} = category;
+  const { name, image, amount } = category;
 
   return (
     <article className='category-item'>

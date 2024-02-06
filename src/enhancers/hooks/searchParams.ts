@@ -1,28 +1,33 @@
 import { SetURLSearchParams, useSearchParams as useRouterSearchParams } from 'react-router-dom';
 import { SearchParam } from '../../definitions/enums/Router';
+import { useRef } from 'react';
 
-const searchParams = {
-  current: new URLSearchParams(),
-};
 
 export function useSearchParams() {
   const [routerParams, setRouterParams] = useRouterSearchParams();
+  const searchParamsRef = useRef(routerParams);
+  const setParamsRef = useRef(setRouterParams);
+  const searchParams = useRef(new SearchParamsWithRouter(setParamsRef, searchParamsRef));
 
-  searchParams.current = routerParams;
+  searchParamsRef.current = routerParams;
+  setParamsRef.current = setRouterParams;
 
-  return new SearchParamsWithRouter(setRouterParams);
+  return searchParams.current;
 }
 
 type Value = string | number;
 
 export class SearchParamsWithRouter {
   private params: { current: URLSearchParams };
-  private setParams: SetURLSearchParams;
+  private setParams: { current: SetURLSearchParams };
 
-  constructor(setParamsFunction: SetURLSearchParams) {
+  constructor(
+    setParamsFunction: React.MutableRefObject<SetURLSearchParams>,
+    searchParams: React.MutableRefObject<URLSearchParams>
+  ) {
     this.params = searchParams;
-
     this.setParams = setParamsFunction;
+    // console.log('New SetParamsObject was created');
   }
 
   get<T extends string>(key: SearchParam) {
@@ -35,24 +40,26 @@ export class SearchParamsWithRouter {
 
   set<T extends Value>(key: SearchParam, value: T) {
     const stringValue = value.toString();
+    const params = new URLSearchParams(this.params.current);
 
     if (stringValue) {
-      this.params.current.set(key, stringValue);
+      params.set(key, stringValue);
     } else {
-      this.params.current.delete(key);
+      params.delete(key);
     }
 
-    this.setParams(this.params.current);
+    this.setParams.current(params);
   }
 
   delete(key: SearchParam) {
-    this.params.current.delete(key);
+    const params = new URLSearchParams(this.params.current);
+    params.delete(key);
 
-    this.setParams(this.params.current);
+    this.setParams.current(params);
   }
 
   clear() {
-    this.params.current = new URLSearchParams();
-    this.setParams(this.params.current);
+    const newParams = new URLSearchParams();
+    this.setParams.current(newParams);
   }
 }

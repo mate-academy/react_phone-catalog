@@ -44,7 +44,7 @@ export function useProductsPage() {
   const items = search ? 'results' : 'models';
   const showNoResults = !!(search && products?.products.length === 0);
 
-  return {
+  const toExport = {
     amountLoading: amountLoadingHandled,
     amount,
     category: capitalize(category),
@@ -64,4 +64,9 @@ export function useProductsPage() {
     items,
     noProductsText: showNoResults ? 'There are no results for this search query' : null,
   };
+
+  console.log('Products page was rendered');
+  console.log(toExport);
+
+  return toExport;
 }
