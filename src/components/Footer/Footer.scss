@@ -1,0 +1,38 @@
+@import "../../styles/utils";
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 32px;
+  border-top: 1px solid $c-elements;
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__item {
+    @extend %uppercase;
+
+    color: $c-secondary;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__text {
+    @extend %small-text;
+    
+    color: $c-secondary;
+  }
+}

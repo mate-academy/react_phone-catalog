@@ -1,0 +1,84 @@
+@import "../../styles/utils";
+
+.slider {
+  position: relative;
+
+  &-container {
+    overflow: hidden;
+    max-width: 1040px;
+    margin-inline: auto;
+  }
+
+  &-wrapper {
+    display: flex;
+    margin: 0 auto;
+    transition: all 0.3s;
+  }
+
+  &-slide {
+    width: 1040px;
+    height: 400px;
+    flex: 0 0 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $c-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #fff;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    path {
+      fill: $c-primary;
+    }
+
+    &-prev {
+      top: 0;
+      left: 0;
+    }
+
+    &-next {
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &-dots {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    left: 50%;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateX(-50%);
+    height: 24px;
+  }
+
+  &-dot {
+    width: 14px;
+    height: 4px;
+    background-color: $c-elements;
+    border: none;
+    cursor: pointer;
+    display: block;
+
+    &--active {
+      background-color: $c-primary;
+    }
+  }
+}

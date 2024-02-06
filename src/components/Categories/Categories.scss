@@ -1,0 +1,49 @@
+.categories {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    width: 368px;
+  }
+
+  &__img {
+    height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    img {
+      width: 386px;
+      height: 457px;
+      object-fit: cover;
+      object-position: 100px 0;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &-phones {
+      background: rgb(247, 220, 196);
+    }
+
+    &-tablets {
+      background: rgb(140, 140, 145);
+    }
+
+    &-accessories {
+      background: rgb(140, 67, 94);
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 6px;
+  }
+}

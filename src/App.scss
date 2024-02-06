@@ -1,1 +1,108 @@
-// not empty
+@import "./styles/utils";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Mont, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+input,
+button {
+  border: 0;
+  padding: 0;
+}
+
+h1 {
+  @extend %h1;
+}
+
+.container {
+  max-width: 1440px;
+  padding-inline: 152px;
+  margin-inline: auto;
+}
+
+.logo {
+  display: block;
+  width: 40px;
+  height: 24px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &__primary {
+    font-weight: 700;
+    font-size: 14px;
+    color: $c-hover-bg;
+    background-color: $c-primary;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__selected {
+    color: $c-green;
+    background-color: #fff;
+    border: 1px solid $c-elements;
+  }
+
+  &--large {
+    width: 176px;
+    height: 40px;
+  }
+
+  &--medium {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--small {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__like {
+    background-color: #fff;
+    border: 1px solid $c-elements;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__nav {
+    background-color: #fff;
+    border: 1px solid $c-elements;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+      border: 1px solid $c-elements;
+    }
+  }
+}
