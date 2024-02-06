@@ -1,0 +1,13 @@
+@import "../../styles/utils/vars";
+
+.add-to-favourite {
+  width: 18%;
+  height: 100%;
+  border: 1px solid $gray_seconary;
+  background-image: url("../../assets/img/icons/favourites.svg");
+}
+
+.add-to-card {
+  width: 80%;
+  padding: 2px 48px;
+}

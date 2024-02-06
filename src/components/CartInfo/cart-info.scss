@@ -1,0 +1,30 @@
+@import "../../styles/utils/vars";
+
+.cart-total__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  margin-bottom: 87px;
+  width: 368px;
+  height: 206px;
+  border: 1px solid #e2e6e9;
+}
+
+.total-price {
+  color: $gray_primary;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+
+  &__button {
+    padding: 14px 125px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}
