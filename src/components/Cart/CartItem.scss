@@ -7,7 +7,7 @@
 
   &__remove {
     margin-right: 24px;
-    transition: transform 0.3s;
+    transition: transform .3s;
 
     &:hover {
       transform: scale(1.2);
@@ -19,18 +19,14 @@
     height: 32px;
     border: 1px solid $grayIcons;
     box-sizing: border-box;
+    transition: all .5s;
 
     &:hover {
       box-shadow: 4px 4px 2px $grayPrimary;
       border-color: $grayPrimary;
     }
 
-    &--left {
-      margin-right: 13px;
-    }
-
     &--right {
-      margin-left: 13px;
       margin-right: 43px;
     }
   }
@@ -65,5 +61,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

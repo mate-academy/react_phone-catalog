@@ -6,6 +6,7 @@
   border: 1px solid #e2e6e9;
   background: #fff;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  transition: all .5s;
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;

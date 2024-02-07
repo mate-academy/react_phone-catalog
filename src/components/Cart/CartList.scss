@@ -48,6 +48,7 @@
     background-color: $grayPrimary;
     color: $white;
     position: relative;
+    transition: all .5s;
 
     &::before {
       content: "";

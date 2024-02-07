@@ -24,8 +24,7 @@
     "react-router-dom": "^6.19.0",
     "react-scripts": "^4.0.3",
     "react-type-animation": "^3.2.0",
-    "redux-persist": "^6.0.0",
-    "usehooks-ts": "^2.9.1"
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",

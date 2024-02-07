@@ -14,11 +14,11 @@
     border: 1px solid $grayIcons;
 
     &--right:hover > * {
-      animation: right 500ms ease infinite;
+      animation: right 1s ease infinite;
     }
 
     &--left:hover > * {
-      animation: left 500ms ease infinite;
+      animation: left 1s ease infinite;
     }
   }
 
@@ -52,6 +52,8 @@
     height: 6px;
     background-color: $grayElements;
     cursor: pointer;
+
+    transition: all .5s;
 
     &--active {
       background-color: $grayPrimary;

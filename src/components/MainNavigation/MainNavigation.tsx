@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { FC, useCallback, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { CustomNavLink } from './CustomNavLink';
 import { Search } from './Search';
 
 import { useAppSelector } from '../../app/hooks';
-import { getSearchWith } from '../../helper';
+import { setSearchWith, debounce } from '../../helper';
 import {
   selectFavouritesQuantity,
 } from '../../features/favouritesSlices';
@@ -14,29 +13,39 @@ import { FavouritesIcon, ShopIcon, Logo } from '../../icons';
 
 import './MainNavigation.scss';
 
-export const MainNavigation = () => {
+export const MainNavigation: FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [inputValue, setInputValue] = useState('');
   const location = useLocation();
   const quantityFavourites = useAppSelector(selectFavouritesQuantity);
   const quantityCart = useAppSelector(selectCartQuantity);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const query = searchParams.get('query') || '';
-
-  const setSearchWith = (params: any) => {
-    const search = getSearchWith(searchParams, params);
-
-    setSearchParams(search);
-  };
-
   const handleChangeQuery = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    setSearchWith({ query: e.target.value || null });
+    setSearchWith(
+      searchParams,
+      { query: e.target.value || null },
+      setSearchParams,
+    );
+  };
+
+  const applyQuery = useCallback(debounce(
+    (e) => handleChangeQuery(e), 1000,
+  ), []);
+
+  const newHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    applyQuery(e);
   };
 
   const handleClearQuery = () => {
-    setSearchWith({ query: '' || null });
+    setSearchWith(
+      searchParams,
+      { query: '' || null },
+      setSearchParams,
+    );
+    setInputValue('');
   };
 
   return (
@@ -66,16 +75,16 @@ export const MainNavigation = () => {
           <ul className="main-header__list main-header__list--left">
             <Search
               isLocation={location.pathname === '/phones'}
-              query={query}
-              setQuery={handleChangeQuery}
+              query={inputValue}
+              setQuery={newHandler}
               clearQuery={handleClearQuery}
               placeholder="Search in phones"
             />
 
             <Search
               isLocation={location.pathname === '/favourites'}
-              query={query}
-              setQuery={handleChangeQuery}
+              query={inputValue}
+              setQuery={newHandler}
               clearQuery={handleClearQuery}
               placeholder="Search in favourites"
             />

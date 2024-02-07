@@ -9,6 +9,8 @@ import {
 import { ArrowTop, ArrowBottom } from '../../icons';
 import { TSort, TPage } from '../../types';
 
+import './DropDown.scss';
+
 type Props = {
   listOfProperties: TSort | TPage,
   handleClick:(value: string) => void;

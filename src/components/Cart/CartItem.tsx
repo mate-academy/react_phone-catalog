@@ -60,7 +60,7 @@ export const CartItem: FC<Props> = ({ phone }) => {
         <p className="cartItem__title">{`${name} (iMT9G2FS/A)`}</p>
         <button
           data-cy="productQauntity"
-          className="cartItem__button cartItem__button--left"
+          className="cartItem__button"
           onClick={handleDecrementQuantity}
           type="button"
         >
