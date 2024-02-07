@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { useSearchParams } from 'react-router-dom';
 import { PhoneItem } from '../PhoneItem';
-import { sortPhones, getSearchWith } from '../../helper';
+import { sortPhones, setSearchWith } from '../../helper';
 import { Pagination } from '../Pagination';
 import { DropDown } from '../DropDown/DropDown';
 import { TSort, TPage, IPhone } from '../../types';
@@ -32,20 +32,22 @@ export const PhonesList: FC<Props> = ({ phones }) => {
 
   const currentItems = sortedPhones.slice(firstItem, lastItem);
 
-  const setSearchWith = (params: any) => {
-    const search = getSearchWith(searchParams, params);
-
-    setSearchParams(search);
-  };
-
   const onPageChange = ((value: number) => {
-    setSearchWith({ page: value || null });
+    setSearchWith(
+      searchParams,
+      { page: value || null },
+      setSearchParams,
+    );
   });
 
   const handleItemsPerPage = (value: string) => {
     const setValue = value === 'All' ? 71 : value;
 
-    setSearchWith({ perPage: setValue || null, page: 1 });
+    setSearchWith(
+      searchParams,
+      { perPage: setValue || null, page: 1 },
+      setSearchParams,
+    );
   };
 
   const handleSortChange = (
@@ -53,7 +55,11 @@ export const PhonesList: FC<Props> = ({ phones }) => {
   ) => {
     const sortValue = value === 'all' ? null : value;
 
-    setSearchWith({ sort: sortValue || null });
+    setSearchWith(
+      searchParams,
+      { sort: sortValue || null },
+      setSearchParams,
+    );
   };
 
   const listOfSort: TSort = {

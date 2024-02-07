@@ -1,11 +1,13 @@
+import { SetURLSearchParams } from 'react-router-dom';
+
 export type SearchParams = {
   [key: string]: string | string[] | null,
 };
 
-export function getSearchWith(
+export const getSearchWith = (
   currentParams: URLSearchParams,
   paramsToUpdate: SearchParams,
-): string {
+): string => {
   const newParams = new URLSearchParams(
     currentParams.toString(),
   );
@@ -26,4 +28,14 @@ export function getSearchWith(
     });
 
   return newParams.toString();
-}
+};
+
+export const setSearchWith = (
+  searchParams: URLSearchParams,
+  params: any,
+  setSearchParams: SetURLSearchParams,
+) => {
+  const search = getSearchWith(searchParams, params);
+
+  setSearchParams(search);
+};

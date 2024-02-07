@@ -24,7 +24,7 @@
 
       & a {
         padding: 25px;
-        border-left: 1px solid #e2e6e9;
+        border-left: 1px solid $grayElements;
       }
     }
   }
@@ -42,11 +42,6 @@
       letter-spacing: 0.48px;
       text-transform: uppercase;
       padding-block: 25px;
-
-      &--left {
-        display: block;
-        height: 64px;
-      }
     }
   }
 
@@ -61,7 +56,7 @@
       height: 3px;
       width: 100%;
       background-color: $grayPrimary;
-      transition: transform 0.3s;
+      transition: transform .5s;
       transform: scale(1);
       transform-origin: left;
     }
