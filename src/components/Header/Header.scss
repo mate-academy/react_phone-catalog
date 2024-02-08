@@ -1,3 +1,12 @@
-// .header {
+.header {
+  display: flex;
+  justify-content: space-between;
 
-// }
+  &__left {
+    display: flex;
+  }
+
+  &__logo {
+    margin-right: 64px;
+  }
+}

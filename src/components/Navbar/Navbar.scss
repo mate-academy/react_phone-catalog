@@ -1,0 +1,12 @@
+@import '../../styles/typography';
+
+.navbar {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    padding-block: 26px;
+    
+    @include upper-case;
+  }
+}
