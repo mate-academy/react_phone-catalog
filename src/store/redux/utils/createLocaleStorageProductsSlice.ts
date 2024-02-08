@@ -41,8 +41,8 @@ export function getLocaleStorageProductsSlice(options: Options) {
     selectors: {
       selectState: state => state,
       selectStorageProducts: state => state.storageProducts,
-      selectLoading: state => state.error,
-      selectError: state => state.loading,
+      selectLoading: state => state.loading,
+      selectError: state => state.error,
       selectProducts: state => state.products,
       selectEmptyList: state => state.storageProducts.length === 0,
     },
@@ -158,6 +158,7 @@ export function getLocaleStorageProductsSlice(options: Options) {
           },
           rejected: (state, action) => {
             state.loading = false;
+            console.log(action.error);
             state.error = action.error.message || 'Some Error';
           },
           fulfilled: (state, action) => {

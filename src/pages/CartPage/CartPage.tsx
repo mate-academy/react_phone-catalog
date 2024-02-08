@@ -6,10 +6,15 @@ import CartList from '../../components/common/CartList';
 import CartSummary from '../../components/common/CartSummary';
 import { useAppSelector } from '../../store/redux/hooks';
 import { cartSelector } from '../../store/redux/slices/cartSlice';
+import ErrorMessage from '../../components/common/ErrorMessage';
 
 export const CartPage: React.FC = memo(() => {
+  const error = useAppSelector(cartSelector.selectError);
   const cartIsEmpty = useAppSelector(cartSelector.selectEmptyList);
 
+  if (error) {
+    return <ErrorMessage message={error} />
+  }
 
   if (cartIsEmpty) {
     return (

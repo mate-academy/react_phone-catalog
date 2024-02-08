@@ -28,7 +28,7 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
   
       // nextImage.onload = () => isNextImageLoaded.current = true;
       
-      console.log(banners[nextIndex]);
+      // console.log(banners[nextIndex]);
       nextImage.src = banners[nextIndex];
       nextImageRef.current = nextImage;
     }

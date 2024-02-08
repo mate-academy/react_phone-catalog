@@ -6,13 +6,15 @@ import { errorImg } from '../../../assets/errorImg';
 
 interface Props {
   message: string,
+  height?: string,
+  width?: string,
 }
 
-export const ErrorMessage: React.FC<Props> = memo(({ message }) => {
+export const ErrorMessage: React.FC<Props> = memo(({ message, height, width }) => {
   const navigate = useNavigate();
 
   return (
-    <section className='error-message'>
+    <section className='error-message' style={{height, width}}>
       <img
         src={errorImg}
         alt="Error message"

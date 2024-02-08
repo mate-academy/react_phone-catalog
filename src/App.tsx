@@ -8,7 +8,6 @@ export const App: React.FC = memo(() => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('scroll to top');
     window.scrollTo(0, 0);
   }, [location.pathname, location.search]);
 

@@ -12,6 +12,19 @@
     color: var(--c-primary);
   }
 
+  &__error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 445px;
+    background-color: var(--c-elements);
+
+    & > p {
+      font-size: 32px;
+      color: var(--c-attention);
+    }
+  }
+
   &__content {
     display: flex;
     flex-wrap: wrap;

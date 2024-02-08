@@ -8,6 +8,7 @@ interface Props extends Omit<ProductsCarouselProps, 'products' | 'loading'> {
   sortQuery?: SortQuery,
   page?: number
   perPage?: number,
+  setError?: (error: string) => void
 }
 
 export const ProductsCarouselWithSortedProducts: React.FC<Props> = memo(({
@@ -15,6 +16,7 @@ export const ProductsCarouselWithSortedProducts: React.FC<Props> = memo(({
   sortQuery = SortQuery.Unsorted,
   page = 1,
   perPage = 16,
+  setError = () => {},
   ...carouselProps
 }) => {
   const hotPricesOptions: QueryOptions = {
@@ -22,11 +24,15 @@ export const ProductsCarouselWithSortedProducts: React.FC<Props> = memo(({
     pagination: { page, perPage }
   };
 
-  const [{ products }, loading] = useRequest(
+  const [{ products }, loading, error] = useRequest(
     () => getProducts(hotPricesOptions),
     [sortQuery, page, perPage],
     { products: [] },
   );
+
+  if (error) {
+    setError(error);
+  }
 
   return (
     <ProductsCarousel

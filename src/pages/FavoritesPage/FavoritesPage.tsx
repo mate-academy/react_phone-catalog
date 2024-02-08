@@ -16,7 +16,7 @@ export const FavoritesPage: React.FC = memo(() => {
     storageProducts,
     products,
     loading,
-    error
+    error,
   } = useAppSelector(favoritesSelector.selectState);
 
   if (error) {

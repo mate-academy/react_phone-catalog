@@ -9,11 +9,16 @@ import { capitalize } from '../../../utils/stringHelper';
 
 interface Props {
   sectionName?: string,
+  setError?: (error: string) => void,
 }
 
-export const CategoriesGallery: React.FC<Props> = memo(({ sectionName }) => {
-  const [categories, loading] = useRequest(getCategories, [], []);
+export const CategoriesGallery: React.FC<Props> = memo(({ sectionName, setError }) => {
+  const [categories, loading, error] = useRequest(getCategories, [], []);
   const showedItems = loading ? Array.from({ length: 3 }, () => null) : categories;
+
+  if (error && setError) {
+    setError(error);
+  }
 
   return (
     <section className='categories-gallery'>
@@ -21,14 +26,21 @@ export const CategoriesGallery: React.FC<Props> = memo(({ sectionName }) => {
         {sectionName ?? 'Shop by category'}
       </h2>
 
-      <div className="categories-gallery__content">
-        {showedItems.map((category, index) => (
-          <CategoryItem
-            category={category}
-            key={category?.name ?? index}
-          />
-        ))}
-      </div>
+      {error ? (
+        <div className='categories-gallery__error'>
+          <p>{error}</p>
+        </div>
+      ) : (
+        <div className="categories-gallery__content">
+          {showedItems.map((category, index) => (
+            <CategoryItem
+              category={category}
+              key={category?.name ?? index}
+            />
+          ))}
+        </div>
+      )}
+
     </section>
   );
 });
