@@ -1,7 +1,6 @@
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 
-import './NavBar.scss';
 import { useContext, useState } from 'react';
 import { ProductContext } from '../../ProductContext';
 import { PathName } from '../../enums';

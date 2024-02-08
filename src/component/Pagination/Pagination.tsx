@@ -3,19 +3,17 @@ import cn from 'classnames';
 import { useContext } from 'react';
 import { ProductContext } from '../../ProductContext';
 import { getNumbers } from '../../utils/utils';
-
-import './Pagination.scss';
 import { SearchLink } from '../SearchLink';
 
 export const Pagination = () => {
-  const { phones } = useContext(ProductContext);
+  const { filterdProducts } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
 
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('perPage') || '16';
 
-  const paginationNumbs = getNumbers(0, phones.length);
-  const paginationNumb = Math.ceil(phones.length / +perPage);
+  const paginationNumbs = getNumbers(0, filterdProducts.length);
+  const paginationNumb = Math.ceil(filterdProducts.length / +perPage) + 1;
 
   return (
     <div className="pagination" data-cy="pagination">

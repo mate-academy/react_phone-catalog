@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Cart } from '../../Type/Cart';
 import { ProductContext } from '../../ProductContext';
 
-import './CartItem.scss';
+// import './CartItem.scss';
 
 interface Props {
   cart: Cart,

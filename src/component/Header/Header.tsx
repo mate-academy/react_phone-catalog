@@ -20,16 +20,26 @@ export const Header = () => {
           pagination
           modules={[Navigation, Pagination, A11y]}
         >
-          <SwiperSlide className="swiper-img">
-            <img src="./_new/img/banner-phones.png" alt="phones" />
+          <SwiperSlide>
+            <img
+              src="./_new/img/banner-phones.png"
+              alt="phones"
+              className="swiper-img"
+            />
           </SwiperSlide>
-
-          <SwiperSlide className="swiper-img">
-            <img src="./_new/img/banner-accessories.png" alt="accessories" />
+          <SwiperSlide>
+            <img
+              src="./_new/img/banner-accessories.png"
+              alt="accessories"
+              className="swiper-img"
+            />
           </SwiperSlide>
-
-          <SwiperSlide className="swiper-img">
-            <img src="./_new/img/banner-tablets.png" alt="tablets" />
+          <SwiperSlide>
+            <img
+              src="./_new/img/banner-tablets.png"
+              alt="tablets"
+              className="swiper-img"
+            />
           </SwiperSlide>
 
           <img

@@ -1,9 +1,3 @@
-$gray-primary: #313237;
-$gray-secondary: #89939A;
-$gray-icons: #B4BDC3;
-$gray-elements: #E2E6E9;
-$gray-white: #FFF;
-
 .details {
   &__url {
     display: flex;
@@ -41,7 +35,7 @@ $gray-white: #FFF;
     &::before {
       position: absolute;
       content: '';
-      background: url('../../icon/Left.svg');
+      background: url('../icon/Left.svg');
       background-position: center;
       width: 12px;
       height: 12px;

@@ -11,11 +11,12 @@ $gray-white: #FFF;
   margin-bottom: 70px;
 
   &-img {
-    display: flex;
+    display: block;
     height: 400px;
-    justify-content: center;
+    width: 1040px;
     margin: 0 auto;
     margin-bottom: 8px;
+    object-fit: cover;
   }
 
   &-button {
@@ -38,6 +39,7 @@ $gray-white: #FFF;
 
   .swiper-pagination {
     display: block;
+
     &-bullet {
       height: 3px;
       width: 14px;

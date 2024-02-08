@@ -2,10 +2,10 @@ import React, { useContext, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { ProductContext } from '../../ProductContext';
-import { Product } from '../../Type/Product'; // Import the Product type
+import { Product } from '../../Type/Product';
 import { ProductCard } from '../ProductCard';
 
-import './ProductsSlider.scss';
+// import './ProductsSlider.scss';
 import 'swiper/css';
 import 'swiper/css/pagination';
 

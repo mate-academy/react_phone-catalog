@@ -1,9 +1,3 @@
-$gray-primary: #313237;
-$gray-secondary: #89939A;
-$gray-icons: #B4BDC3;
-$gray-elements: #E2E6E9;
-$gray-white: #FFF;
-
 .cart {
   min-height: calc(100vh - 100px - 96px);
 
@@ -62,6 +56,24 @@ $gray-white: #FFF;
       font-size: 14px;
       font-weight: 600;
       line-height: 21px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__massege {
+    width: 320px;
+    height: 48px;
+    background-color: $gray-primary;
+    color: $gray-white;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    opacity: 1;
+    transition: opacity 1s;
+  
+    &-visible {
+      opacity: 1;
     }
   }
 }

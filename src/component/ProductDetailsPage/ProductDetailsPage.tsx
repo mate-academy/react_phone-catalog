@@ -6,8 +6,6 @@ import { Phone } from '../../Type/Phone';
 import { Footer } from '../Footer';
 import { ProductsSlider } from '../ProductsSlider';
 
-import './ProductDetailsPage.scss';
-
 export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Phone>();
   const [loading, setLoading] = useState<boolean>(false);

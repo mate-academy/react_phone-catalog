@@ -4,8 +4,6 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Product } from '../../Type/Product';
 import { ProductContext } from '../../ProductContext';
 
-import './ProductCard.scss';
-
 interface Props {
   product: Product,
   sale?: boolean,
@@ -54,12 +52,12 @@ export const ProductCard: React.FC<Props> = ({ product, sale }) => {
 
         <div className="card__price">
           <p className="card__price-new">
-            {`${fullPrice}`}
+            {`$${fullPrice}`}
           </p>
 
           <p className="card__price-old">
             {sale && (
-              `${price}`
+              `$${price}`
             )}
           </p>
         </div>

@@ -1,20 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getPhones } from '../../api/api';
 import { ProductContext } from '../../ProductContext';
-import { Loader } from '../Loader';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../Type/Product';
 
-import './ProductsList.scss';
-
 interface Props {
-  product?: Product[];
+  product: Product[];
 }
 
 export const ProductsList: React.FC<Props> = ({ product }) => {
-  const { phones, setPhones } = useContext(ProductContext);
-  const [loading, setLoading] = useState<boolean>(false);
+  const { filterdProducts, setFilterdProducts } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
 
   const page = searchParams.get('page') || '1';
@@ -26,60 +21,54 @@ export const ProductsList: React.FC<Props> = ({ product }) => {
   const sliseTo = +perPage * +page;
 
   useEffect(() => {
-    setLoading(true);
+    const filteredProduct = () => {
+      const productToFilter = [...product];
+      let filteredProducts = productToFilter;
 
-    getPhones()
-      .then(setPhones)
-      .finally(() => setLoading(false));
-  }, [setPhones]);
+      if (query.trim()) {
+        filteredProducts = filteredProducts.filter((prod) => (
+          prod.name.toLowerCase().includes(query.toLowerCase())
+        ));
+      }
 
-  const filteredProduct = () => {
-    const filteredPhones = phones;
+      switch (sort) {
+        case 'age':
+          filteredProducts.sort((a, b) => b.year - a.year);
+          break;
+        case 'name':
+          filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        case 'price':
+          filteredProducts.sort((a, b) => b.fullPrice - a.fullPrice);
+          break;
+        default:
+          break;
+      }
 
-    if (perPage !== 'all') {
-      return filteredPhones.slice(sliseFrom, sliseTo);
-    }
+      return filteredProducts;
+    };
 
-    switch (sort) {
-      case 'age':
-        return filteredPhones.sort((a, b) => b.year - a.year);
+    const updatedFilterdProducts = filteredProduct();
 
-      case 'name':
-        return filteredPhones.sort((a, b) => a.name.localeCompare(b.name));
-
-      case 'price':
-        return filteredPhones.sort((a, b) => b.fullPrice - a.fullPrice);
-
-      default:
-        return filteredPhones;
-    }
-  };
-
-  const filterByQuery = () => {
-    const productToFilter = product ?? filteredProduct();
-
-    if (query.trim()) {
-      return productToFilter
-        .filter(prod => prod.name
-          .toLowerCase()
-          .includes(query
-            .toLowerCase()));
-    }
-
-    return productToFilter;
-  };
-
-  if (loading) {
-    return (
-      <Loader />
-    );
-  }
+    setFilterdProducts(updatedFilterdProducts);
+  }, [
+    product,
+    sliseFrom,
+    sliseTo,
+    sort,
+    query,
+    setFilterdProducts,
+    perPage]);
 
   return (
     <div className="ProductsList" data-cy="productList">
-      {filterByQuery().map(phone => (
-        <ProductCard key={phone.id} product={phone} sale />
-      ))}
+      {perPage !== 'all'
+        ? (filterdProducts.slice(sliseFrom, sliseTo).map(phone => (
+          <ProductCard key={phone.id} product={phone} sale />
+        )))
+        : (filterdProducts.map(phone => (
+          <ProductCard key={phone.id} product={phone} sale />
+        )))}
     </div>
   );
 };

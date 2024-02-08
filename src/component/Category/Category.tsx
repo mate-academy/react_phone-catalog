@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import './Category.scss';
+import { useContext } from 'react';
+import { ProductContext } from '../../ProductContext';
 
 export const Category = () => {
+  const { products, tablets, accessories } = useContext(ProductContext);
+
   return (
     <section className="category" data-cy="categoryLinksContainer">
       <div className="container">
@@ -20,7 +23,9 @@ export const Category = () => {
 
             <h3 className="category__item__title"> Mobile phones </h3>
 
-            <p className="category__item__subtitle"> 95 models </p>
+            <p className="category__item__subtitle">
+              {`${products.length} models`}
+            </p>
           </NavLink>
 
           <NavLink
@@ -35,7 +40,9 @@ export const Category = () => {
 
             <h3 className="category__item__title"> Tablets </h3>
 
-            <p className="category__item__subtitle"> 24 models </p>
+            <p className="category__item__subtitle">
+              {`${tablets.length} models`}
+            </p>
           </NavLink>
 
           <NavLink
@@ -50,7 +57,9 @@ export const Category = () => {
 
             <h3 className="category__item__title"> Accessories </h3>
 
-            <p className="category__item__subtitle"> 100 models </p>
+            <p className="category__item__subtitle">
+              {`${accessories.length} models`}
+            </p>
           </NavLink>
         </div>
       </div>

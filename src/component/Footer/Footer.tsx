@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './Footer.scss';
 
 export const Footer = () => {
   const scrollUp = () => {

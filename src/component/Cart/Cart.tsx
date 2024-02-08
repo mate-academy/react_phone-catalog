@@ -3,21 +3,36 @@ import { useContext, useState } from 'react';
 import { ProductContext } from '../../ProductContext';
 import { CartItem } from '../CartItem';
 
-import './Cart.scss';
-
 export const Cart = () => {
   const { cartItems } = useContext(ProductContext);
-
   const [massege, setMassege] = useState<boolean>(false);
+
+  const totalQuantity = () => {
+    let count = 0;
+
+    cartItems.forEach((item) => {
+      count += item.quantity;
+    });
+
+    return count;
+  };
 
   const totalPrise = () => {
     let count = 0;
 
     cartItems.forEach((item) => {
-      count += item.product.fullPrice;
+      count += item.product.fullPrice * item.quantity;
     });
 
     return count;
+  };
+
+  const openMassege = () => {
+    setMassege(true);
+
+    setTimeout(() => {
+      setMassege(false);
+    }, 3000);
   };
 
   return (
@@ -38,7 +53,7 @@ export const Cart = () => {
             <div className="cart__wrap">
               <div className="card__items__wrap">
                 {cartItems.map(cart => (
-                  <CartItem cart={cart} />
+                  <CartItem cart={cart} key={cart.id} />
                 ))}
               </div>
 
@@ -48,18 +63,20 @@ export const Cart = () => {
                 </h1>
 
                 <p className="cart__total__text">
-                  {`Total for ${cartItems.length} items`}
+                  {`Total for ${totalQuantity()} items`}
                 </p>
 
                 <button
                   type="button"
                   className="cart__total__btn"
-                  onClick={() => setMassege(!massege)}
+                  onClick={() => openMassege()}
                 >
                   Checkout
                 </button>
                 {massege && (
-                  <p>We are sorry, but this feature is not implemented yet</p>
+                  <p className="cart__massege">
+                    We are sorry, but this feature is not implemented yet
+                  </p>
                 )}
 
               </div>

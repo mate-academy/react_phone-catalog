@@ -1,14 +1,13 @@
-$gray-primary: #313237;
-$gray-secondary: #89939A;
-$gray-icons: #B4BDC3;
-$gray-elements: #E2E6E9;
-$gray-white: #FFF;
-
 .card {
   width: 272px;
   height: 507px;
   padding: 32px 24px 24px;
   border: 1px solid $gray-elements;
+  transition: border .5s;
+
+  &:hover {
+    border: 1px solid $gray-primary;
+  }
 
   &__img {
     display: block;
