@@ -9,6 +9,8 @@ interface Props {
   sale?: boolean,
 }
 
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
 export const ProductCard: React.FC<Props> = ({ product, sale }) => {
   const {
     id,
@@ -42,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({ product, sale }) => {
       >
         <img
           className="card__img"
-          src={`./_new/${image}`}
+          src={`${BASE_URL}${image}`}
           alt="phones"
         />
 
