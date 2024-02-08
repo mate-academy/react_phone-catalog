@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Cart } from '../../Type/Cart';
 import { ProductContext } from '../../ProductContext';
 
-// import './CartItem.scss';
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 interface Props {
   cart: Cart,
@@ -29,7 +29,7 @@ export const CartItem: React.FC<Props> = ({ cart }) => {
       </button>
 
       <img
-        src={`./_new/${product.image}`}
+        src={`${BASE_URL}${product.image}`}
         alt="phone"
         className="cart__item__img"
       />

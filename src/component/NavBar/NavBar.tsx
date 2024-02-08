@@ -12,8 +12,6 @@ const getLinckClass = (
   active: isActive,
 });
 
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/img/';
-
 export const NavBar = () => {
   const {
     cartItems,
@@ -50,7 +48,7 @@ export const NavBar = () => {
         <img
           alt="Logo"
           className="nav__logo"
-          src={`${BASE_URL}Logo.png`}
+          src={`./icon/Logo.png`}
         />
       </NavLink>
 

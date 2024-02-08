@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParams, getSearchWith } from '../../utils/searchHelper';
 
@@ -27,22 +27,6 @@ export const ProductFilters = () => {
 
   const perPage = searchParams.get('perPage') || 'all';
 
-  const dropdownRef = useRef(null);
-
-  // useEffect(() => {
-  //   const handleClickOutside = (event: MouseEvent) => {
-  //     if (dropdownRef.current && 'contains' in dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-  //       setIsActive(null);
-  //     }
-  //   };
-
-  //   document.addEventListener('click', handleClickOutside);
-
-  //   return () => {
-  //     document.removeEventListener('click', handleClickOutside);
-  //   };
-  // }, []);
-
   function setSearchWith(params: SearchParams) {
     const search: string = getSearchWith(searchParams, params);
 
@@ -70,7 +54,7 @@ export const ProductFilters = () => {
               Sort by
             </p>
 
-            <div className="filter__dropdown" ref={dropdownRef}>
+            <div className="filter__dropdown">
               <button
                 type="button"
                 className="filter__dropdown__select"
