@@ -14,6 +14,7 @@
 
   &__image {
     padding: 32px 32px 0;
+    margin-bottom: 24px;
 
     & img {
       width: 208px;
@@ -25,7 +26,7 @@
   }
 
   &__description {
-    padding: 24px;
+    padding: 0 24px 24px
   }
 
   &__prices {
@@ -38,6 +39,9 @@
   }
 
   &__title {
+    text-decoration: none;
+
+    padding-inline: 24px;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;

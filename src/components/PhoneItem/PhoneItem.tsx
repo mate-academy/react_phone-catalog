@@ -40,14 +40,15 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
               to={
                 `/phones/${phone.phoneId}`
               }
+              style={{ textDecorationLine: 'none' }}
               state={{ search: searchParams.toString() }}
             >
               <article className="phoneItem__image">
                 <img src={`${BASE_URL}${image}`} alt="Modile Phone" />
               </article>
+              <p className="phoneItem__title">{`${name} (iMT9G2FS/A)`}</p>
             </Link>
             <article className="phoneItem__description">
-              <p className="phoneItem__title">{`${name} (iMT9G2FS/A)`}</p>
               <div className="phoneItem__prices">
                 <h2 className="phoneItem__price">{formatPrice}</h2>
                 <h2
