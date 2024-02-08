@@ -48,7 +48,7 @@ export const NavBar = () => {
         <img
           alt="Logo"
           className="nav__logo"
-          src={`./icon/Logo.png`}
+          src="./icon/Logo.png"
         />
       </NavLink>
 

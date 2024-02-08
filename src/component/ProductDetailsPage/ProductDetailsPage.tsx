@@ -6,6 +6,8 @@ import { Phone } from '../../Type/Phone';
 import { Footer } from '../Footer';
 import { ProductsSlider } from '../ProductsSlider';
 
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
 export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<Phone>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -85,7 +87,7 @@ export const ProductDetailsPage = () => {
                 >
                   <img
                     className="details__slider__item-img"
-                    src={`./_new/${image}`}
+                    src={`${BASE_URL}${image}`}
                     alt="Phone"
                   />
                 </button>
@@ -93,7 +95,7 @@ export const ProductDetailsPage = () => {
             </div>
 
             <div className="details__slider__active">
-              <img src={`./_new/${slideActive}`} alt="Phone" className="details__slider__active-img" />
+              <img src={`${BASE_URL}${slideActive}`} alt="Phone" className="details__slider__active-img" />
             </div>
           </div>
 
