@@ -47,7 +47,7 @@ export const ProductsList: React.FC<Props> = memo(({
   return (
     <section className="products-list">
       {products.map(product => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.itemId} product={product} />
       ))}
     </section>
   )

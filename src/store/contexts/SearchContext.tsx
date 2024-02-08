@@ -50,8 +50,8 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export function useSearchHere(searchIn: string) {
+export function useSearchHere(searchIn: string, deps: unknown[] = []) {
   const { toggleSearch } = useContext(SearchContext);
 
-  useEffect(toggleSearch(searchIn), []);
+  useEffect(toggleSearch(searchIn), deps);
 }

@@ -78,7 +78,7 @@ export const ProductsCarousel: React.FC<ProductsCarouselProps> = memo(({
           }}
         >
           {showedItems.map((product, index) => (
-            <ProductCard product={product} key={product?.id ?? index} />
+            <ProductCard product={product} key={product?.itemId ?? index} />
           ))}
         </div>
       </div>

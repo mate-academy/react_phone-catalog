@@ -1,6 +1,6 @@
 import { Category, NumericPagination, Pagination, SortQuery } from "./types";
 import { request } from "../../../utils/fetchHelper";
-import productsIds from '../../../assets/product_ids.json';
+import productsIds from '../client/product_ids.json';
 import { Product, ProductId } from "../../../definitions/types/Product";
 import { QueryOptions } from "./types";
 import { fetchPaginatedProducts, fetchAllProducts } from "./requests";

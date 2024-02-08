@@ -28,7 +28,7 @@ export function useProductsPage() {
   ), []);
 
   const { search } = useContext(SearchContext);
-  useSearchHere(category);
+  useSearchHere(category, [category]);
   useEffect(() => { setPage(1) }, [search]);
 
   const loadProducts = () => getProducts({

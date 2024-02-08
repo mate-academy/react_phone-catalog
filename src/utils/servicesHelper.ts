@@ -14,8 +14,14 @@ export const getColorHex = (color: string) => {
     case 'red': return '#E23636';
     case 'coral': return '#EE7762';
     case 'midnightgreen': return '#4E5851';
-    default: throw Error(`Unexpected color: ${color}`); // only for develop
-  }
+    case 'pink': return '#FAE0D8';
+    case 'starlight': return '#F9F3EE';
+    case 'skyblue': return '#6BA1C4';
+    default: {
+      console.error(`Unexpected color: ${color}`);
+      return '#201D24';
+    }
+    }
 }
 
 export const getSpecArrayFromProduct = (product: ProductDetails) => {
