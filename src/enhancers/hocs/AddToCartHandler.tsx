@@ -18,20 +18,20 @@ export const AddToCartHandler: React.FC<Props> = memo(({
   render,
 }) => {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector(state => state.cart.ids);
+  const cart = useAppSelector(state => state.cart.storageProducts);
 
   if (productId === null) {
     return render({ children: 'Add to cart' })
   }
   
-  const isInCart = cart.includes(productId);
+  const isInCart = cart.some(cartProduct => cartProduct.id === productId);
   
   const toggleProductInCart = useCallback(() => {
     console.log(isInCart);
     dispatch(
       isInCart
-        ? cartActions.remove(productId)
-        : cartActions.add(productId),
+        ? cartActions.removeProduct(productId)
+        : cartActions.addProduct(productId),
     );
   }, [productId, isInCart]);
 

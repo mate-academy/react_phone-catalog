@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react';
 
 import './Paginator.scss';
-import ArrowButton from '../ArrowButton';
+import ArrowButton from '../buttons/ArrowButton';
 
 interface Props {
   itemsAmount: number,

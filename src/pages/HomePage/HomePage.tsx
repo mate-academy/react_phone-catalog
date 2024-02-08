@@ -11,8 +11,6 @@ import CategoriesGallery from '../../components/common/CategoriesGallery';
 export const HomePage: React.FC = memo(() => {
   const [banners, bannersLoading] = useRequest(getBanners, [], []);
 
-  console.log(banners, bannersLoading);
-
   return (
     <div className='home-page'>
       <BannersSlider

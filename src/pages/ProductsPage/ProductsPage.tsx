@@ -7,6 +7,7 @@ import Dropdown from '../../components/UI/Dropdown';
 import Paginator from '../../components/UI/Paginator';
 import Placeholder from '../../components/UI/Placeholder';
 import { useProductsPage } from './useProductsPage';
+import BreadCrumbs from '../../components/UI/BreadCrumbs';
 
 export const ProductsPage: React.FC = memo(() => {
   const {
@@ -36,6 +37,8 @@ export const ProductsPage: React.FC = memo(() => {
 
   return (
     <div className="products-page">
+      <BreadCrumbs />
+
       <h2 className='products-page__title'>{category}</h2>
 
       {amountLoading && <Placeholder width='40px' height='20px' className='products-page__amount'/>}

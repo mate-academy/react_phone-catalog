@@ -1,7 +1,7 @@
 .products-page {
   display: flex;
   width: 100%;
-  padding-block: 40px;
+  padding-block: 24px 40px;
   flex-direction: column;
 
   &__title {
@@ -10,6 +10,7 @@
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.32px;
+    margin-top: 40px;
   }
 
   &__amount {

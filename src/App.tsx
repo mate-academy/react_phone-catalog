@@ -1,16 +1,14 @@
-import React, { memo, useContext, useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import './styles/index.scss';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './components/common/Header';
-import BreadCrumbs from './components/UI/BreadCrumbs';
-import { ErrorContext } from './store/contexts/ErrorContext';
 import Footer from './components/common/Footer';
 
 export const App: React.FC = memo(() => {
   const location = useLocation();
-  const { error } = useContext(ErrorContext);
 
   useEffect(() => {
+    console.log('scroll to top');
     window.scrollTo(0, 0);
   }, [location.pathname, location.search]);
 
@@ -19,8 +17,6 @@ export const App: React.FC = memo(() => {
       <Header />
 
       <main className="main">
-        {!error && <BreadCrumbs className='main__bread-crumbs' />}
-
         <Outlet />
       </main>
 

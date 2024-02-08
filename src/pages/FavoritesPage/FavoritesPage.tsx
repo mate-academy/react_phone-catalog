@@ -5,6 +5,7 @@ import { favoritesActions, favoritesSelector } from '../../store/redux/slices/fa
 import ErrorMessage from '../../components/common/ErrorMessage';
 import { SearchContext, useSearchHere } from '../../store/contexts/SearchContext';
 import Placeholder from '../../components/UI/Placeholder';
+import BreadCrumbs from '../../components/UI/BreadCrumbs';
 
 export const FavoritesPage: React.FC = memo(() => {
   const { search } = useContext(SearchContext);
@@ -12,7 +13,7 @@ export const FavoritesPage: React.FC = memo(() => {
   const dispatch = useAppDispatch();
 
   const {
-    ids,
+    storageProducts,
     products,
     loading,
     error
@@ -32,6 +33,8 @@ export const FavoritesPage: React.FC = memo(() => {
 
   return (
     <div className='products-page'>
+      <BreadCrumbs />
+
       <h2 className='products-page__title'>Favorites</h2>
 
       {loading && <Placeholder width='40px' height='20px' className='products-page__amount' />}
@@ -46,7 +49,7 @@ export const FavoritesPage: React.FC = memo(() => {
       <ProductsList
         loading={loading}
         products={products}
-        placeholdersAmount={ids.length}
+        placeholdersAmount={storageProducts.length}
         customNoProductsText={noProductsMessage}
       />
     </div>

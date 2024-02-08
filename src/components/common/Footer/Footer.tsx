@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import './Footer.scss';
 import Logo from '../../UI/Logo';
-import ArrowButton from '../../UI/ArrowButton';
+import ArrowButton from '../../UI/buttons/ArrowButton';
 
 export const Footer: React.FC = () => {
   const goToTop = useCallback(() => {
@@ -19,15 +19,27 @@ export const Footer: React.FC = () => {
         <Logo />
         
         <section className="footer__links">
-          <a className='footer__link' href="https://github.com/Softjey/react_phone-catalog/tree/develop">
+          <a
+          className='footer__link'
+          href="https://github.com/Softjey/react_phone-catalog/tree/develop"
+          target='_blank'
+          >
             Github
           </a>
 
-          <a className='footer__link' href="mailto:misivsvatoslav@gmail.com">
+          <a
+          className='footer__link'
+          href="mailto:misivsvatoslav@gmail.com"
+          target='_blank'
+          >
             Contacts
           </a>
 
-          <a className='footer__link' href="https://opensource.fb.com/legal/privacy/">
+          <a
+          className='footer__link'
+          href="https://opensource.fb.com/legal/privacy/"
+          target='_blank'
+          >
             Rights
           </a>
         </section>

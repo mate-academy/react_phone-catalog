@@ -17,3 +17,17 @@ export interface Product {
   year: number,
   image: string,
 }
+
+export interface CartProduct {
+  id: ProductId,
+  category: Category,
+  name: string,
+  price: number,
+  image: string,
+  amount: number,
+}
+
+export interface StorageProduct {
+  id: ProductId,
+  amount: number,
+}

@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from 'react';
 import { Product } from '../../../../definitions/types/Product';
 
 import './ProductsCarousel.scss';
-import ArrowButton from '../../../UI/ArrowButton';
+import ArrowButton from '../../../UI/buttons/ArrowButton';
 import ProductCard from '../../ProductCard';
 import { getRootCssVariable } from '../../../../utils/cssHelper';
 

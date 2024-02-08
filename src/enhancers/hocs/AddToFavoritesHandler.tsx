@@ -18,19 +18,19 @@ export const AddToFavoritesHandler: React.FC<Props> = memo(({
   render,
 }) => {
   const dispatch = useAppDispatch();
-  const favorites = useAppSelector(state => state.favorites.ids);
+  const favorites = useAppSelector(state => state.favorites.storageProducts);
 
   if (productId === null) {
     return render({ selected: false });
   }
 
-  const isFavorite = favorites.includes(productId);
+  const isFavorite = favorites.some(product => product.id === productId);;
 
   const toggleProductInFavorites = useCallback(() => {
     dispatch(
       isFavorite
-        ? favoritesActions.remove(productId)
-        : favoritesActions.add(productId),
+        ? favoritesActions.removeProduct(productId)
+        : favoritesActions.addProduct(productId),
     );
   }, [productId, isFavorite]);
 

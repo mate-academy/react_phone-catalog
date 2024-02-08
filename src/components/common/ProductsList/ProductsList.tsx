@@ -34,7 +34,11 @@ export const ProductsList: React.FC<Props> = memo(({
           <p>{customNoProductsText}</p>
         ) : (<>
           <p>No products yet</p>
-          <p>Follow the updates on our <a href="https://www.instagram.com/apple/">Instagram</a></p>
+          <p>
+            Follow the updates on our <a href="https://www.instagram.com/apple/" target='_blank'>
+              Instagram
+            </a>
+          </p>
         </>)}
       </section>
     );

@@ -65,8 +65,8 @@ export function useProductsPage() {
     noProductsText: showNoResults ? 'There are no results for this search query' : null,
   };
 
-  console.log('Products page was rendered');
-  console.log(toExport);
+  // console.log('Products page was rendered');
+  // console.log(toExport);
 
   return toExport;
 }

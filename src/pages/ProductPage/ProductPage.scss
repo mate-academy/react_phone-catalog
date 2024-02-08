@@ -1,5 +1,5 @@
 .product-page {
-  padding-bottom: 80px;
+  padding-block: 24px 80px;
 
   &__content {
     display: flex;
@@ -8,6 +8,6 @@
   }
 
   &__back-button {
-    margin-block: 16px;
+    margin-block: 40px 16px;
   }
 }

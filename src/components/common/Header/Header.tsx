@@ -9,10 +9,12 @@ import { SearchContext } from '../../../store/contexts/SearchContext';
 import { useAppSelector } from '../../../store/redux/hooks';
 import { cartSelector } from '../../../store/redux/slices/cartSlice';
 import { favoritesSelector } from '../../../store/redux/slices/favoritesSlice';
+import { useDirection } from '../../../enhancers/hooks/direction';
 
 export const Header: React.FC = memo(() => {
-  const cartIds = useAppSelector(cartSelector.selectIds);
-  const favoritesIds = useAppSelector(favoritesSelector.selectIds);
+  const direction = useDirection();
+  const cartIds = useAppSelector(cartSelector.selectStorageProducts);
+  const favoritesIds = useAppSelector(favoritesSelector.selectStorageProducts);
   const { searchVisible, searchIn } = useContext(SearchContext);
 
   return (
@@ -25,14 +27,14 @@ export const Header: React.FC = memo(() => {
         <SquareLink
           nav
           iconName="hearth-empty-icon"
-          to={PAGE.Favorites}
+          to={direction(PAGE.Favorites)}
           amount={favoritesIds.length}
         />
 
         <SquareLink
           nav
           iconName="shopping-bag-icon"
-          to={PAGE.Cart}
+          to={direction(PAGE.Cart)}
           amount={cartIds.length}
         />
       </div>

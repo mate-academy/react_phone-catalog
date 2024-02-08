@@ -1,9 +1,8 @@
-import React, { memo, useContext, useEffect } from 'react';
+import React, { memo } from 'react';
 
 import './ErrorMessage.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { errorImg } from '../../../assets/errorImg';
-import { ErrorContext } from '../../../store/contexts/ErrorContext';
 
 interface Props {
   message: string,
@@ -11,13 +10,6 @@ interface Props {
 
 export const ErrorMessage: React.FC<Props> = memo(({ message }) => {
   const navigate = useNavigate();
-  const { setError } = useContext(ErrorContext);
-
-  useEffect(() => {
-    setError(message)
-
-    return () => setError('');
-  }, []);
 
   return (
     <section className='error-message'>

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
-import ArrowIcon from '../ArrowIcon';
-import { useHeight } from '../../../enhancers/hooks/height';
+import ArrowIcon from '../../Icons/ArrowIcon';
+import { useHeight } from '../../../../enhancers/hooks/height';
 
 import './ArrowButton.scss';
 

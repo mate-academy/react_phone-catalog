@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Link, LinkProps, NavLink } from 'react-router-dom';
 import './SquareLink.scss';
 
@@ -7,6 +7,7 @@ interface Props extends LinkProps {
   iconFormat?: string,
   amount?: number,
   nav?: boolean,
+  isActive?: boolean,
 }
 
 export const SquareLink: React.FC<Props> = memo(({
@@ -15,11 +16,12 @@ export const SquareLink: React.FC<Props> = memo(({
   className = '',
   amount,
   nav,
+  isActive,
   ...restProps
 }) => {
   const classes = `square-link ${className}`;
 
-  const Image = () => (
+  const Image = useCallback(() => (
     <div className='square-link__img-container'>
       <img
         className='square-link__img'
@@ -33,16 +35,21 @@ export const SquareLink: React.FC<Props> = memo(({
         </div>
       )}
     </div>
-  );
+  ), [iconName, iconFormat, amount]);
 
+  const setClasses = useCallback(({ isActive }: { isActive: boolean }) => {
+    return `${classes} ${isActive ? 'square-link--selected' : ''}`;
+  }, [classes]);
 
   if (nav) {
-    const setClasses = ({ isActive }: { isActive: boolean }) => {
-      return `${classes} ${isActive ? 'square-link--selected' : ''}`;
-    };
-
     return <NavLink className={setClasses} children={<Image />} {...restProps} />;
   }
 
-  return <Link className={classes} children={<Image />} {...restProps} />;
+  return (
+    <Link
+      className={`${classes} ${isActive ? 'square-link--selected' : ''}`}
+      children={<Image />}
+      {...restProps}
+    />
+  );
 });

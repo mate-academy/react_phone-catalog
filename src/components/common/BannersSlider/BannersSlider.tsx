@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 
 import './BannersSlider.scss';
-import ArrowButton from '../../UI/ArrowButton';
+import ArrowButton from '../../UI/buttons/ArrowButton';
 import Placeholder from '../../UI/Placeholder';
 
 interface Props {

@@ -4,7 +4,7 @@ import { PAGE } from '../../../definitions/enums/Router';
 
 import './BreadCrumbs.scss';
 import { useBreadCrumbs } from '../../../enhancers/hooks/breadCrumbs';
-import ArrowIcon from '../ArrowIcon';
+import ArrowIcon from '../Icons/ArrowIcon';
 
 interface Props {
   className?: string,

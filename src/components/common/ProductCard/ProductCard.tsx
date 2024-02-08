@@ -3,19 +3,34 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../definitions/types/Product';
 
 import './ProductCard.scss';
-import GraySelectButton from '../../UI/GraySelectButton';
+import GraySelectButton from '../../UI/buttons/GraySelectButton';
 import { AddToCartHandler, AddToCartHandlerRenderProps } from '../../../enhancers/hocs/AddToCartHandler';
 import { AddToFavoritesHandler, AddToFavoritesHandlerRenderProps } from '../../../enhancers/hocs/AddToFavoritesHandler';
 import { BASE_URL } from '../../../utils/fetchHelper';
-import SquareSelectLikeButton from '../../UI/SquareSelectButton/descendants/SquareSelectLikeButton';
+import SquareSelectLikeButton from '../../UI/buttons/SquareSelectButton/descendants/SquareSelectLikeButton';
 import Placeholder from '../../UI/Placeholder';
 import { getRootCssVariable } from '../../../utils/cssHelper';
+import { useDirection } from '../../../enhancers/hooks/direction';
 
 interface Props {
   product: Product | null,
 }
 
 export const ProductCard: React.FC<Props> = memo(({ product }) => {
+  const direction = useDirection();
+
+  const renderAddToCartButton = useCallback(
+    (props: AddToCartHandlerRenderProps) => <GraySelectButton {...props} />,
+    [],
+  );
+
+  const renderAddToFavoritesButton = useCallback(
+    (props: AddToFavoritesHandlerRenderProps) => (
+      <SquareSelectLikeButton {...props} />
+    ),
+    [],
+  );
+
   if (product === null) {
     const cardWidth = getRootCssVariable('--product-card-width');
 
@@ -35,21 +50,9 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
   } = product;
   const BASE_CLASS = 'product-card';
 
-  const renderAddToCartButton = useCallback(
-    (props: AddToCartHandlerRenderProps) => <GraySelectButton {...props} />,
-    [],
-  );
-
-  const renderAddToFavoritesButton = useCallback(
-    (props: AddToFavoritesHandlerRenderProps) => (
-      <SquareSelectLikeButton {...props} />
-    ),
-    [],
-  );
-
   return (
     <article className={`${BASE_CLASS}`}>
-      <Link to={`/${category}/${itemId}`} className={`${BASE_CLASS}__top`}>
+      <Link to={direction(`/${category}/${itemId}`)} className={`${BASE_CLASS}__top`}>
         <img
           className={`${BASE_CLASS}__img`}
           src={`${BASE_URL}/${image}`}

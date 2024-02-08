@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 import './Dropdown.scss';
-import ArrowIcon from '../ArrowIcon';
+import ArrowIcon from '../Icons/ArrowIcon';
 import { useDropdown } from './useDropdown';
 
 export type DropdownOption = string | number;
