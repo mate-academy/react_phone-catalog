@@ -1,0 +1,16 @@
+@import '../node_modules/normalize.css/normalize.css';
+@import './variables';
+@import './typography';
+
+.page {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $color_primary;
+}
+
+.page__content {
+  max-width: $desctop_size;
+  margin: 0 auto;
+  padding-inline: 24px;
+}

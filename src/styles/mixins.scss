@@ -1,0 +1,5 @@
+@mixin on-desktop {
+  @media (max-width: $desctop-size) {
+    @content;
+  }
+}
