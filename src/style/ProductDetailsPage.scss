@@ -69,9 +69,13 @@
       display: block;
       height: 80px;
       width: 80px;
-      border: 1px solid $gray-icons;
+      border: 1px solid $gray-elements;
       background-color: #fff;
       margin: 0 16px 16px 0;
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
 
       &:last-child {
         margin-bottom: 0;
