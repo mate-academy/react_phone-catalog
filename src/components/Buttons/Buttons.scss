@@ -19,7 +19,7 @@
     transition: all 0.5s;
 
     &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
   }
 
@@ -48,7 +48,7 @@
     transition: all 0.5s;
 
     &:hover {
-      border: 1px solid $grayPrimary
+      border: 1px solid $grayPrimary;
     }
   }
 }

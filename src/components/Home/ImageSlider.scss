@@ -53,7 +53,7 @@
     background-color: $grayElements;
     cursor: pointer;
 
-    transition: all .5s;
+    transition: all 0.5s;
 
     &--active {
       background-color: $grayPrimary;
