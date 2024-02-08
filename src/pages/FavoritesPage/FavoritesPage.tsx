@@ -25,7 +25,7 @@ export const FavoritesPage: React.FC = memo(() => {
 
   useEffect(() => {
     dispatch(favoritesActions.display({ search }));
-  }, []);
+  }, [search]);
 
   const noProductsMessage = search
     ? 'There are no results for this search query'
