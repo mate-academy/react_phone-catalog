@@ -7,7 +7,7 @@
 
   &__remove {
     margin-right: 24px;
-    transition: transform .3s;
+    transition: transform 0.3s;
 
     &:hover {
       transform: scale(1.2);
@@ -19,7 +19,7 @@
     height: 32px;
     border: 1px solid $grayIcons;
     box-sizing: border-box;
-    transition: all .5s;
+    transition: all 0.5s;
 
     &:hover {
       box-shadow: 4px 4px 2px $grayPrimary;
