@@ -12,6 +12,7 @@ import FavoritesPage from './pages/FavoritesPage';
 import ProductPage from './pages/ProductPage';
 import ErrorMessage from './components/common/ErrorMessage';
 import { ContextProvider } from './store/contexts/GlobalContextProvider';
+import CheckoutPage from './pages/CheckoutPage';
 
 export const Root: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ export const Root: React.FC = () => {
               <Route index element={<HomePage />} />
               <Route path={PAGE.Cart} element={<CartPage />} />
               <Route path={PAGE.Favorites} element={<FavoritesPage />} />
+              <Route path={PAGE.Checkout} element={<CheckoutPage />} />
 
               <Route path=":category">
                 <Route index element={<ProductsPage />} />
@@ -31,7 +33,8 @@ export const Root: React.FC = () => {
 
               <Route
                 path="*"
-                element={<ErrorMessage message='Resource not found. Please check URL.' />} />
+                element={<ErrorMessage message='Resource not found. Please check URL.' />}
+              />
             </Route>
           </Routes>
         </ContextProvider>

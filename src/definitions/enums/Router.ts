@@ -4,6 +4,7 @@ export const enum PAGE {
   Home = '/',
   Favorites = 'favorites',
   Cart = 'cart',
+  Checkout = 'checkout',
 }
 
 export type Params = {
