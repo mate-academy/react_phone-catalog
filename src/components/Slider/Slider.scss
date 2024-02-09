@@ -1,0 +1,89 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.slider {
+  height: 432px;
+
+  &__box {
+    display: flex;
+    gap: 16px;
+    height: 400px;
+  }
+
+  &__btn {
+    width: 32px;
+    border: 1px solid $color-background;
+    background-color: transparent;
+    outline: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    @include hover(background-color, $color-background);
+
+    &--left::after {
+      content: url(../../../public/img/icons/chevron-up.svg);
+      transform: rotate(-90deg);
+      margin-left: 5px;
+    }
+
+    &--right::after {
+      content: url(../../../public/img/icons/chevron-up.svg);
+      transform: rotate(90deg);
+      margin-right: 5px;
+    }
+  }
+
+  &__wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  &__items {
+    display: flex;
+    transform: translateX(-50%);
+    transition: transform ease-in-out $transition-duration;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    margin: 0 auto;
+
+    &-item {
+      width: 14px;
+      height: 4px;
+      background-color: $color-background;
+      transition: background-color ease-in-out $transition-duration;
+
+      &--active {
+        background-color: $color-primary;
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      border: none;
+      background-color: transparent;
+
+      &:hover .slider__nav-item  {
+        background-color: #fff;
+      }
+
+      @include hover(background-color, $color-background);
+    }
+  }
+
+  &__banner {
+    height: 400px;
+    width: 1040px;
+    object-fit: cover;
+    display: inline-block;
+  }
+}
