@@ -7,6 +7,9 @@ type Props = {
   pictures: string[],
 };
 
+// eslint-disable-next-line max-len
+const imageLinkPart = 'https://mate-academy.github.io/react_phone-catalog/_new';
+
 export const ProductPictures: React.FC<Props> = ({ pictures }) => {
   const [mainPicture, setMainPicture] = useState('');
 
@@ -28,7 +31,7 @@ export const ProductPictures: React.FC<Props> = ({ pictures }) => {
               onClick={() => setMainPicture(picture)}
             >
               <img
-                src={`_new/${picture}`}
+                src={`${imageLinkPart}/${picture}`}
                 alt="apple"
                 className="ProductPictures__img"
               />
@@ -39,7 +42,7 @@ export const ProductPictures: React.FC<Props> = ({ pictures }) => {
 
       <div className="ProductPictures__img-container">
         <img
-          src={`_new/${mainPicture}`}
+          src={`${imageLinkPart}/${mainPicture}`}
           alt="apple"
           className="ProductPictures__img"
         />
