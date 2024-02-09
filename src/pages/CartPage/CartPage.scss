@@ -14,10 +14,13 @@
   &__title {
     grid-column: span 24;
     margin-bottom: 24px;
-
     color: $gray-primary;
 
     @extend %h1;
+
+    &--empty {
+      color: $gray-secondary;
+    }
   }
 
   &__list {
