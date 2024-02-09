@@ -32,12 +32,14 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
   }, [banners.length]);
 
   useEffect(() => {
-    intervalId.current = window.setInterval(() => {
-      slideToNext();
-    }, 5000);
+    if (banners.length > 1) {
+      intervalId.current = window.setInterval(() => {
+        slideToNext();
+      }, 5000);
+    }
 
     return () => clearInterval(intervalId.current);
-  }, [slideToNext]);
+  }, [slideToNext, banners.length]);
 
   return (
     <section className="banners-slider">
@@ -51,7 +53,7 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
         <div className="banners-slider__content">
           {loading && <Placeholder width="100%" height="400px" />}
 
-          {!loading && (
+          {!loading && banners.length > 0 && (
             <div
               className="banners-slider__img"
               style={{
