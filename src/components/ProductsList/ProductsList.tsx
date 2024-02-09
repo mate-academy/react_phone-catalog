@@ -1,7 +1,5 @@
 import './ProductsList.scss';
-import {
-  useContext, useEffect, useRef, useState,
-} from 'react';
+import { useContext, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
@@ -20,12 +18,10 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   const { pathname } = useLocation();
   const [isSeletedSort, setIsSeletedSort] = useState(false);
   const [isSeletedPagination, setIsSeletedPagination] = useState(false);
-  const sortRef = useRef<HTMLSelectElement>(null);
-  const paginationRef = useRef<HTMLSelectElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const perPage = searchParams
     .get('perPage')
-      || (pathname.includes('favourites') ? 'all' : '4');
+    || (pathname.includes('favourites') ? 'all' : '4');
 
   const sortType = searchParams.get('sort') || 'year';
   const query = searchParams.get('query') || '';
@@ -59,24 +55,6 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       page: '1',
     });
   };
-
-  useEffect(() => {
-    if (sortRef.current) {
-      if (isSeletedSort) {
-        sortRef.current.focus();
-      } else {
-        sortRef.current.blur();
-      }
-    }
-
-    if (paginationRef.current) {
-      if (isSeletedPagination) {
-        paginationRef.current.focus();
-      } else {
-        paginationRef.current.blur();
-      }
-    }
-  }, [isSeletedSort, isSeletedPagination]);
 
   const title = categoriesList
     .find(c => `/${c.name}` === pathname)?.title
@@ -125,13 +103,18 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
                 </label>
 
                 <select
-                  ref={sortRef}
                   name="SortBy"
                   id="sort"
                   className="Products__select Products__select--sort"
                   onClick={() => setIsSeletedSort(!isSeletedSort)}
+                  onBlur={() => setIsSeletedSort(false)}
                   onChange={handleSort}
                   value={sortType}
+                  style={{
+                    backgroundImage: !isSeletedSort
+                      ? 'url("img/icons/arrow-down.svg")'
+                      : 'url("img/icons/arrow-up-dis.svg")',
+                  }}
                 >
                   <option value="year">
                     Newest
@@ -156,13 +139,18 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
                 </label>
 
                 <select
-                  ref={paginationRef}
                   name="Pagination"
                   id="pagination"
                   className="Products__select Products__select--pagination"
                   onClick={() => setIsSeletedPagination(!isSeletedPagination)}
+                  onBlur={() => setIsSeletedPagination(false)}
                   onChange={handleChange}
                   value={perPage}
+                  style={{
+                    backgroundImage: !isSeletedPagination
+                      ? 'url("img/icons/arrow-down.svg")'
+                      : 'url("img/icons/arrow-up-dis.svg")',
+                  }}
                 >
                   <option value="4">4</option>
                   <option value="8">8</option>

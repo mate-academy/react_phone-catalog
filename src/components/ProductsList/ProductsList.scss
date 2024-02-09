@@ -48,7 +48,6 @@
 
     padding: 10px 12px;
     appearance: none;
-    background-image: url(../../../public/img/icons/arrow-down.svg);
     background-color: $gray-white;
     background-repeat: no-repeat;
     background-size: var(--icon-size);
@@ -56,12 +55,9 @@
     border: 1px solid $gray-icons-placeholders;
     outline: none;
     color: $gray-primary;
+    cursor: pointer;
 
     @extend %text-buttons;
-
-    &:focus {
-      background-image: url(../../../public/img/icons/arrow-up-dis.svg);
-    }
 
     &--sort {
       width: var(--width-sort);
