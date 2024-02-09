@@ -21,7 +21,7 @@ export const getVariantsOfProduct = async (
     namespaceId: baseId,
   } = product;
   const productsIds = colors.map(
-    color => capacities.map(capacity => `${baseId}-${capacity.toLowerCase()}-${color}`),
+    color => capacities.map(capacity => `${baseId}-${capacity}-${color}`.toLowerCase()),
   ).flat();
 
   const products = await Promise.all(
