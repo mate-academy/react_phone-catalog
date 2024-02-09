@@ -33,12 +33,12 @@ export const Root: React.FC = () => {
 
               <Route
                 path="*"
-                element={<ErrorMessage message='Resource not found. Please check URL.' />}
+                element={<ErrorMessage message="Resource not found. Please check URL." />}
               />
             </Route>
           </Routes>
         </ContextProvider>
       </Router>
     </Provider>
-  )
+  );
 };

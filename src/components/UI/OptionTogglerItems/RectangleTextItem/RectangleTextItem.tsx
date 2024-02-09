@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { OptionsTogglerItemProps } from './../../OptionsToggler/OptionsToggler';
+import { OptionsTogglerItemProps } from '../../OptionsToggler/OptionsToggler';
 
 import './RectangleTextItem.scss';
 
@@ -10,10 +10,10 @@ export const RectangleTextItem: React.FC<Props> = memo(({ option, isSelected }) 
     <div
       className={[
         'rectangle-text-item',
-        isSelected ? 'rectangle-text-item--selected' : ''
+        isSelected ? 'rectangle-text-item--selected' : '',
       ].join(' ')}
     >
-    {option}
+      {option}
     </div>
   );
 });

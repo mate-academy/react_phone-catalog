@@ -33,12 +33,12 @@ export const OptionsToggler: React.FC<Props> = memo(({
 
   return (
     <article className={`options-toggler ${className}`}>
-      <h4 className='options-toggler__title'>{name}</h4>
+      <h4 className="options-toggler__title">{name}</h4>
 
-      <ul className='options-toggler__options'>
+      <ul className="options-toggler__options">
         {options.map(option => (
           <li
-            className='options-toggler__option'
+            className="options-toggler__option"
             onClick={setOption(option)}
             key={option}
           >

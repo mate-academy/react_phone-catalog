@@ -9,6 +9,7 @@ import BreadCrumbs from '../../components/UI/BreadCrumbs';
 
 export const FavoritesPage: React.FC = memo(() => {
   const { search } = useContext(SearchContext);
+
   useSearchHere('favorites');
   const dispatch = useAppDispatch();
 
@@ -19,30 +20,32 @@ export const FavoritesPage: React.FC = memo(() => {
     error,
   } = useAppSelector(favoritesSelector.selectState);
 
-  if (error) {
-    return <ErrorMessage message={error} />
-  }
-
   useEffect(() => {
     dispatch(favoritesActions.display({ search }));
-  }, [search]);
+  }, [search, dispatch]);
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
 
   const noProductsMessage = search
     ? 'There are no results for this search query'
     : 'You have not selected your favorite products yet';
 
   return (
-    <div className='products-page'>
+    <div className="products-page">
       <BreadCrumbs />
 
-      <h2 className='products-page__title'>Favorites</h2>
+      <h2 className="products-page__title">Favorites</h2>
 
-      {loading && <Placeholder width='40px' height='20px' className='products-page__amount' />}
+      {loading && <Placeholder width="40px" height="20px" className="products-page__amount" />}
       {!loading && (
-        <p className='products-page__amount products-page__amount--without-filters-page'>
+        <p className="products-page__amount products-page__amount--without-filters-page">
           <data value={products.length}>
             {products.length}
-          </data> {search ? 'results' : 'items'}
+          </data>
+          {' '}
+          {search ? 'results' : 'items'}
         </p>
       )}
 

@@ -1,7 +1,6 @@
 import { SetURLSearchParams, useSearchParams as useRouterSearchParams } from 'react-router-dom';
-import { SearchParam } from '../../definitions/enums/Router';
 import { useRef } from 'react';
-
+import { SearchParam } from '../../definitions/enums/Router';
 
 export function useSearchParams() {
   const [routerParams, setRouterParams] = useRouterSearchParams();
@@ -19,11 +18,12 @@ type Value = string | number;
 
 export class SearchParamsWithRouter {
   private params: { current: URLSearchParams };
+
   private setParams: { current: SetURLSearchParams };
 
   constructor(
     setParamsFunction: React.MutableRefObject<SetURLSearchParams>,
-    searchParams: React.MutableRefObject<URLSearchParams>
+    searchParams: React.MutableRefObject<URLSearchParams>,
   ) {
     this.params = searchParams;
     this.setParams = setParamsFunction;
@@ -53,6 +53,7 @@ export class SearchParamsWithRouter {
 
   delete(key: SearchParam) {
     const params = new URLSearchParams(this.params.current);
+
     params.delete(key);
 
     this.setParams.current(params);
@@ -60,6 +61,7 @@ export class SearchParamsWithRouter {
 
   clear() {
     const newParams = new URLSearchParams();
+
     this.setParams.current(newParams);
   }
 }

@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 
 type ReturnType<T> = [
   elementReference: React.MutableRefObject<T | null>,
-  height: number
+  height: number,
 ];
 
 export function useHeight<T extends HTMLElement>(): ReturnType<T> {
@@ -10,4 +10,4 @@ export function useHeight<T extends HTMLElement>(): ReturnType<T> {
   const height = ref.current?.clientHeight;
 
   return [ref, height ?? 0];
-};
+}

@@ -1,5 +1,5 @@
-import { useLocation } from "react-router-dom";
-import { capitalize } from "../../utils/stringHelper";
+import { useLocation } from 'react-router-dom';
+import { capitalize } from '../../utils/stringHelper';
 
 type BreadCrumb = {
   link: string,

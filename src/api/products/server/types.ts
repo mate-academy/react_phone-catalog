@@ -1,4 +1,4 @@
-import { Product, ProductId } from "../../../definitions/types/Product";
+import { Product, ProductId } from '../../../definitions/types/Product';
 
 export type PerPageOption = number | 'All';
 export type Pagination = { page: number; perPage: PerPageOption; };
@@ -8,13 +8,13 @@ export const enum SortQuery {
   Unsorted = 'unsorted',
   Alphabet = 'alphabetically',
   Newest = 'newest',
-  Cheapest = 'cheapest'
+  Cheapest = 'cheapest',
 }
 
 export enum Category {
   Phones = 'phones',
   Tablets = 'tablets',
-  Accessories = 'accessories'
+  Accessories = 'accessories',
 }
 
 export interface QueryOptions {

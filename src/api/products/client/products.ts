@@ -1,10 +1,10 @@
 import { ProductId } from '../../../definitions/types/Product';
-import { paginateProducts, sortProducts } from "../server/helper";
-import { getIdsToFetch, needSeparatelyFetching } from "../server/helper";
-import { fetchProductsSeparately } from "../server/requests";
-import { ServerResponse } from "../server/types";
-import { QueryOptions } from "../server/types";
-import { fetchWithPaginationOrWithout } from "../server/helper";
+import {
+  paginateProducts, sortProducts, getIdsToFetch,
+  needSeparatelyFetching, fetchWithPaginationOrWithout,
+} from '../server/helper';
+import { fetchProductsSeparately } from '../server/requests';
+import { ServerResponse, QueryOptions } from '../server/types';
 
 export function getProducts(options: QueryOptions = {}): Promise<ServerResponse> {
   if (needSeparatelyFetching(options)) {
@@ -12,7 +12,7 @@ export function getProducts(options: QueryOptions = {}): Promise<ServerResponse>
   }
 
   return getProductsAllAtOnce(options);
-};
+}
 
 async function getProductsSeparately(options: QueryOptions): Promise<ServerResponse> {
   const idsToFetch = getIdsToFetch(options);
@@ -25,11 +25,11 @@ async function getProductsSeparately(options: QueryOptions): Promise<ServerRespo
 }
 
 async function getProductsAllAtOnce(options: QueryOptions): Promise<ServerResponse> {
-  const products = await fetchWithPaginationOrWithout(options); 
+  const products = await fetchWithPaginationOrWithout(options);
 
   return {
     products,
-    amount: products.length
+    amount: products.length,
   };
 }
 

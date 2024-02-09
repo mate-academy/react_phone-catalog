@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-cycle
+
 import React, { memo } from 'react';
 
 import './Dropdown.scss';
@@ -16,7 +18,9 @@ export interface DropdownProps {
 }
 
 export const Dropdown: React.FC<DropdownProps> = memo((props) => {
-  const { name, width, className, options} = props;
+  const {
+    name, width, className, options,
+  } = props;
   const {
     list,
     listStyle,
@@ -33,11 +37,12 @@ export const Dropdown: React.FC<DropdownProps> = memo((props) => {
   return (
     <div className={`dropdown ${className || ''}`} style={{ width }}>
       {name && (
-        <h6 className='dropdown__name'>{name}</h6>
+        <h6 className="dropdown__name">{name}</h6>
       )}
 
       <div className={`dropdown__box ${openClass}`}>
         <button
+          type="button"
           className="dropdown__button"
           onClick={handleOpen}
           ref={openButton}
@@ -46,13 +51,13 @@ export const Dropdown: React.FC<DropdownProps> = memo((props) => {
           <span>{selectedOption}</span>
 
           <ArrowIcon
-            className='dropdown__arrow'
+            className="dropdown__arrow"
             rotate={isOpen ? 90 : 270}
-            fill='var(--c-tips)'
+            fill="var(--c-tips)"
           />
         </button>
 
-        <ul className='dropdown__list' style={listStyle} ref={list}>
+        <ul className="dropdown__list" style={listStyle} ref={list}>
           {options.map(option => (
             <li
               className={getItemClasses(option)}

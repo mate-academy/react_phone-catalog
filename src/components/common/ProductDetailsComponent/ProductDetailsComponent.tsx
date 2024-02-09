@@ -26,6 +26,7 @@ export const ProductDetailsComponent: React.FC<Props> = memo(({
 
   const specs = getSpecArrayFromProduct(product);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const changeProductCallbacks = useMemo(() => {
     const changeByColor = (color: string) => {
       changeProduct(color, product.capacity);
@@ -38,8 +39,8 @@ export const ProductDetailsComponent: React.FC<Props> = memo(({
     return [
       changeByColor,
       changeByCapacity,
-    ]
-  }, [product.color, product.capacity]);
+    ];
+  }, [product.color, product.capacity, changeProduct]);
 
   return (
     <section className={BASE_CLASS}>
@@ -66,14 +67,13 @@ export const ProductDetailsComponent: React.FC<Props> = memo(({
 
         <SpecsTable
           className={`${BASE_CLASS}__specs-table`}
-          name='Tech specs'
+          name="Tech specs"
           specs={specs}
         />
       </div>
     </section>
   );
 });
-
 
 const ProductDetailsComponentPlaceholder: React.FC = memo(() => (
   <section className={BASE_CLASS}>
@@ -84,19 +84,19 @@ const ProductDetailsComponentPlaceholder: React.FC = memo(() => (
     <div className={`${BASE_CLASS}__content`}>
       <Placeholder
         className={`${BASE_CLASS}__gallery`}
-        height='480px'
+        height="480px"
       />
       <Placeholder
         className={`${BASE_CLASS}__interaction`}
-        height='400px'
+        height="400px"
       />
       <Placeholder
         className={`${BASE_CLASS}__about-block`}
-        height='400px'
+        height="400px"
       />
       <Placeholder
         className={`${BASE_CLASS}__specs-table`}
-        height='400px'
+        height="400px"
       />
     </div>
   </section>

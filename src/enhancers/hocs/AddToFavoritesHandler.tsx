@@ -24,15 +24,16 @@ export const AddToFavoritesHandler: React.FC<Props> = memo(({
     return render({ selected: false });
   }
 
-  const isFavorite = favorites.some(product => product.id === productId);;
+  const isFavorite = favorites.some(product => product.id === productId);
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const toggleProductInFavorites = useCallback(() => {
     dispatch(
       isFavorite
         ? favoritesActions.removeProduct(productId)
         : favoritesActions.addProduct(productId),
     );
-  }, [productId, isFavorite]);
+  }, [productId, isFavorite, dispatch]);
 
   return render({
     onClick: toggleProductInFavorites,

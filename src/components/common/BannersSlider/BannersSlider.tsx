@@ -1,4 +1,6 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  memo, useCallback, useEffect, useRef, useState,
+} from 'react';
 
 import './BannersSlider.scss';
 import ArrowButton from '../../UI/buttons/ArrowButton';
@@ -12,31 +14,14 @@ interface Props {
 export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalId = useRef(-1);
-  const isNextImageLoaded = useRef(false);
-  const nextImageRef = useRef(new Image());
-
-  const getNextIndex = useCallback((index: number) => {
-    const newIndex = index + 1;
-
-    return newIndex > banners.length - 1 ? 0 : newIndex;
-  }, [banners.length]);
-
-  useEffect(() => {
-    if (banners.length > 0) {
-      const nextIndex = getNextIndex(currentIndex);
-      const nextImage = new Image();
-  
-      // nextImage.onload = () => isNextImageLoaded.current = true;
-      
-      // console.log(banners[nextIndex]);
-      nextImage.src = banners[nextIndex];
-      nextImageRef.current = nextImage;
-    }
-  }, [banners, currentIndex]);
 
   const slideToNext = useCallback(() => {
-    setCurrentIndex(index => getNextIndex(index));
-  }, [getNextIndex]);
+    setCurrentIndex(index => {
+      const newIndex = index + 1;
+
+      return newIndex > banners.length - 1 ? 0 : newIndex;
+    });
+  }, [banners.length]);
 
   const slideToPrev = useCallback(() => {
     setCurrentIndex(index => {
@@ -48,30 +33,27 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
 
   useEffect(() => {
     intervalId.current = window.setInterval(() => {
-      if (isNextImageLoaded) {
-        slideToNext();
-      }
-    }, 5000)
+      slideToNext();
+    }, 5000);
 
     return () => clearInterval(intervalId.current);
-  }, []);
+  }, [slideToNext]);
 
   return (
-    <section className='banners-slider'>
-      <div className='banners-slider__top'>
+    <section className="banners-slider">
+      <div className="banners-slider__top">
         <ArrowButton
           className={'banners-slider__arrow-button '
-            + 'banners-slider__arrow-button--prev'
-          }
+            + 'banners-slider__arrow-button--prev'}
           onClick={slideToPrev}
         />
 
-        <div className='banners-slider__content'>
-          {loading && <Placeholder width='100%' height='400px'/>}
+        <div className="banners-slider__content">
+          {loading && <Placeholder width="100%" height="400px" />}
 
           {!loading && (
             <div
-              className='banners-slider__img'
+              className="banners-slider__img"
               style={{
                 backgroundImage: `url(${banners[currentIndex]})`,
                 backgroundPosition: 'center',
@@ -83,26 +65,26 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
 
         <ArrowButton
           className={'banners-slider__arrow-button '
-            + 'banners-slider__arrow-button--next'
-          }
+            + 'banners-slider__arrow-button--next'}
           rotate={180}
           onClick={slideToNext}
         />
       </div>
 
-      <div className='banners-slider__pagination'>
+      <div className="banners-slider__pagination">
         {banners.map((_, index) => (
           <button
+            type="button"
+            aria-label="banners slider pagination"
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className='banners-slider__pagination-item'
+            className="banners-slider__pagination-item"
           >
             <div
               className={
-                "banners-slider__pagination-item-inner" + (
-                  index === currentIndex
-                    ? " banners-slider__pagination-item-inner--active" : ''
-                )}
+                `banners-slider__pagination-item-inner${index === currentIndex
+                  ? ' banners-slider__pagination-item-inner--active' : ''}`
+              }
             />
           </button>
         ))}

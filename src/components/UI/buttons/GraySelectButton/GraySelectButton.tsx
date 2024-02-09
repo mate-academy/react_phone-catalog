@@ -17,6 +17,7 @@ export const GraySelectButton: React.FC<Props> = memo(({
   onClick = () => {},
 }) => (
   <button
+    type="button"
     className={classNames(
       'gray-select-button',
       { 'gray-select-button--selected': selected },

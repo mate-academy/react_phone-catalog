@@ -1,7 +1,7 @@
-import { SearchParam } from "../../definitions/enums/Router";
-import { SortQuery } from "../../api/products/server/types";
-import { useSearchParams } from "./searchParams";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from 'react';
+import { SearchParam } from '../../definitions/enums/Router';
+import { SortQuery } from '../../api/products/server/types';
+import { useSearchParams } from './searchParams';
 
 export enum SortBy {
   All = 'All',
@@ -16,13 +16,16 @@ function getSortQueryBy(sortBy: SortBy): SortQuery {
     case SortBy.Name: return SortQuery.Alphabet;
     case SortBy.Age: return SortQuery.Newest;
     case SortBy.Price: return SortQuery.Cheapest;
+    default: throw new Error('Unknown SortBy');
   }
 }
 
 function prepareSortBy(rawSortBy: string | null) {
-  if (rawSortBy === null) return SortBy.All;
+  if (rawSortBy === null) {
+    return SortBy.All;
+  }
 
-  return SortBy.hasOwnProperty(rawSortBy) ? (rawSortBy as SortBy) : SortBy.All;
+  return Object.hasOwn(SortBy, rawSortBy) ? (rawSortBy as SortBy) : SortBy.All;
 }
 
 type SortByArray = (keyof typeof SortBy)[];
@@ -40,7 +43,7 @@ export function useProductsSort(): ReturnType {
   let sortQuery = getSortQueryBy(sortBy);
 
   const sortByOptions: SortByArray = useMemo(
-    () => ['All', 'Name', 'Age', 'Price'], []
+    () => ['All', 'Name', 'Age', 'Price'], [],
   );
 
   const setSortBy = useCallback((rawNewSortBy: string) => {
@@ -51,4 +54,4 @@ export function useProductsSort(): ReturnType {
   }, [searchParams]);
 
   return [sortBy, sortByOptions, setSortBy, sortQuery];
-};
+}

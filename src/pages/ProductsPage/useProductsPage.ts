@@ -1,14 +1,16 @@
-import { useCallback, useContext, useEffect, useMemo } from "react";
-import { useAppParams } from "../../enhancers/hooks/appParams";
-import { useRequest } from "../../enhancers/hooks/request";
-import { useProductsSort } from "../../enhancers/hooks/sort";
-import { usePagination } from "../../enhancers/hooks/pagination";
-import { PerPageOption } from "../../api/products/server/types";
-import { DropdownOption } from "../../components/UI/Dropdown/Dropdown";
-import { capitalize } from "../../utils/stringHelper";
-import { getProductsAmount } from "../../api/products/client/amount";
-import { getProducts } from "../../api/products/client/products";
-import { SearchContext, useSearchHere } from "../../store/contexts/SearchContext";
+import {
+  useCallback, useContext, useEffect, useMemo,
+} from 'react';
+import { useAppParams } from '../../enhancers/hooks/appParams';
+import { useRequest } from '../../enhancers/hooks/request';
+import { useProductsSort } from '../../enhancers/hooks/sort';
+import { usePagination } from '../../enhancers/hooks/pagination';
+import { PerPageOption } from '../../api/products/server/types';
+import { DropdownOption } from '../../components/UI/Dropdown/Dropdown';
+import { capitalize } from '../../utils/stringHelper';
+import { getProductsAmount } from '../../api/products/client/amount';
+import { getProducts } from '../../api/products/client/products';
+import { SearchContext, useSearchHere } from '../../store/contexts/SearchContext';
 
 export function useProductsPage() {
   const { category } = useAppParams();
@@ -28,15 +30,18 @@ export function useProductsPage() {
   ), []);
 
   const { search } = useContext(SearchContext);
+
   useSearchHere(category, [category]);
-  useEffect(() => { setPage(1) }, [search]);
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   const loadProducts = () => getProducts({
-    category, sortQuery, search, pagination: { page, perPage }
+    category, sortQuery, search, pagination: { page, perPage },
   });
 
   const [products, loading, error] = useRequest(
-    loadProducts, [category, page, perPage, sortQuery, search], null
+    loadProducts, [category, page, perPage, sortQuery, search], null,
   );
 
   const amount = search ? (products?.amount ?? 0) : amountHandled;

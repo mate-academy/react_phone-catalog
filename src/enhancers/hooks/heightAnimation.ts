@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
 export function useHeightAnimation<T extends HTMLElement>(
   isOpen: boolean,
@@ -10,7 +10,7 @@ export function useHeightAnimation<T extends HTMLElement>(
 
   useEffect(() => {
     if (node.current) {
-      const clientHeight = node.current.clientHeight;
+      const { clientHeight } = node.current;
 
       if (clientHeight > 0) {
         prevHeight.current = clientHeight;
@@ -24,7 +24,7 @@ export function useHeightAnimation<T extends HTMLElement>(
         height: `${prevHeight.current}px`,
         ...onOpenProperties,
       } : {
-        height: '0px'
+        height: '0px',
       };
 
       setStyle(newStyle);

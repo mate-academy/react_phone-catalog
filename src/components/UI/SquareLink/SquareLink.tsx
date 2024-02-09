@@ -22,15 +22,15 @@ export const SquareLink: React.FC<Props> = memo(({
   const classes = `square-link ${className}`;
 
   const Image = useCallback(() => (
-    <div className='square-link__img-container'>
+    <div className="square-link__img-container">
       <img
-        className='square-link__img'
+        className="square-link__img"
         src={`./img/icons/${iconName}.${iconFormat}`}
         alt="Icon"
       />
 
       {(amount ?? 0) > 0 && (
-        <div className='square-link__amount'>
+        <div className="square-link__amount">
           {amount}
         </div>
       )}
@@ -42,14 +42,19 @@ export const SquareLink: React.FC<Props> = memo(({
   }, [classes]);
 
   if (nav) {
-    return <NavLink className={setClasses} children={<Image />} {...restProps} />;
+    return (
+      <NavLink className={setClasses} {...restProps}>
+        <Image />
+      </NavLink>
+    );
   }
 
   return (
     <Link
       className={`${classes} ${isActive ? 'square-link--selected' : ''}`}
-      children={<Image />}
       {...restProps}
-    />
+    >
+      <Image />
+    </Link>
   );
 });

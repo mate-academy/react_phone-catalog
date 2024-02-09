@@ -21,25 +21,28 @@ export const ProductsList: React.FC<Props> = memo(({
     return (
       <section className="products-list">
         {Array.from({ length: placeholdersAmount },
-          (_, index) => <ProductCard product={null} key={index} />
-        )}
+          (_, index) => <ProductCard product={null} key={index} />)}
       </section>
     );
   }
 
   if (!products.length && !loading) {
     return (
-      <section className='products-list--no-products'>
+      <section className="products-list--no-products">
         {(customNoProductsText ?? false) ? (
           <p>{customNoProductsText}</p>
-        ) : (<>
-          <p>No products yet</p>
-          <p>
-            Follow the updates on our <a href="https://www.instagram.com/apple/" target='_blank'>
-              Instagram
-            </a>
-          </p>
-        </>)}
+        ) : (
+          <>
+            <p>No products yet</p>
+            <p>
+              Follow the updates on our
+              {' '}
+              <a href="https://www.instagram.com/apple/" target="_blank" rel="noreferrer">
+                Instagram
+              </a>
+            </p>
+          </>
+        )}
       </section>
     );
   }
@@ -50,5 +53,5 @@ export const ProductsList: React.FC<Props> = memo(({
         <ProductCard key={product.itemId} product={product} />
       ))}
     </section>
-  )
+  );
 });

@@ -39,32 +39,46 @@ export const ProductsPage: React.FC = memo(() => {
     <div className="products-page">
       <BreadCrumbs />
 
-      <h2 className='products-page__title'>{category}</h2>
+      <h2 className="products-page__title">{category}</h2>
 
-      {amountLoading && <Placeholder width='40px' height='20px' className='products-page__amount'/>}
+      {amountLoading && (
+        <Placeholder
+          className="products-page__amount"
+          width="40px"
+          height="20px"
+        />
+      )}
       {!amountLoading && (
-        <p className='products-page__amount'>
+        <p className="products-page__amount">
           <data value={amount}>
             {amount}
-          </data> {items}
+          </data>
+          {' '}
+          {items}
         </p>
       )}
 
-      {amountLoading && <Placeholder height='40px' width='400px' className='products-page__controls'/>}
+      {amountLoading && (
+        <Placeholder
+          className="products-page__controls"
+          height="40px"
+          width="400px"
+        />
+      )}
       {!amountLoading && amount > 0 && (
-        <div className='products-page__controls'>
+        <div className="products-page__controls">
           <Dropdown
-            width='176px'
+            width="176px"
             options={sortByOptions}
             selectedOption={sortBy}
-            name='Sort by'
+            name="Sort by"
             onChange={changeSortBy}
           />
 
           <Dropdown
             options={perPageOptions}
             selectedOption={perPage}
-            name='Items on page'
+            name="Items on page"
             onChange={changePerPage}
           />
         </div>
@@ -79,7 +93,7 @@ export const ProductsPage: React.FC = memo(() => {
 
       {!perPageIsAll && pageAmount > 0 && (
         <Paginator
-          className='products-page__paginator'
+          className="products-page__paginator"
           itemsPerPage={perPage as number}
           itemsAmount={amount}
           currentPage={page}

@@ -13,19 +13,19 @@ export const CartPage: React.FC = memo(() => {
   const cartIsEmpty = useAppSelector(cartSelector.selectEmptyList);
 
   if (error) {
-    return <ErrorMessage message={error} />
+    return <ErrorMessage message={error} />;
   }
 
   if (cartIsEmpty) {
     return (
-      <div className='cart-page--empty'>
+      <div className="cart-page--empty">
         <img src="./img/icons/shopping-bag-icon.svg" alt="" />
 
-        <p className='cart-page--empty__message'>
+        <p className="cart-page--empty__message">
           Your cart is empty
         </p>
 
-        <p className='cart-page--empty__description'>
+        <p className="cart-page--empty__description">
           Looks like you have not added anything to you cart. Go ahead and explore top categories.
         </p>
       </div>
@@ -33,10 +33,10 @@ export const CartPage: React.FC = memo(() => {
   }
 
   return (
-    <div className='cart-page'>
+    <div className="cart-page">
       <BackButton />
 
-      <h1 className='cart-page__title'>Cart</h1>
+      <h1 className="cart-page__title">Cart</h1>
 
       <div className="cart-page__content">
         <CartList />

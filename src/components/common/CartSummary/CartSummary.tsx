@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
+
 import { useAppSelector } from '../../../store/redux/hooks';
 import { cartSelector } from '../../../store/redux/slices/cartSlice';
-
 import './CartSummary.scss';
-import { Link } from 'react-router-dom';
 import { PAGE } from '../../../definitions/enums/Router';
 
 export const CartSummary: React.FC = () => {
@@ -24,14 +24,22 @@ export const CartSummary: React.FC = () => {
 
   return (
     <section className="cart-summary">
-      <p className='cart-summary__total-price'>${totalPrice}</p>
-      <p className='cart-summary__total'>Total for {totalCount} items</p>
+      <p className="cart-summary__total-price">
+        $
+        {totalPrice}
+      </p>
+      <p className="cart-summary__total">
+        {'Total for '}
+        {totalCount}
+        {' '}
+        items
+      </p>
 
       <hr />
 
       <Link
         to={`/${PAGE.Checkout}`}
-        className='cart-summary__checkout'
+        className="cart-summary__checkout"
       >
         Checkout
       </Link>

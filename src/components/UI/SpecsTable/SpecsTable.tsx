@@ -12,9 +12,9 @@ interface Props {
 export const SpecsTable: React.FC<Props> = memo(({
   name,
   specs,
-  className
+  className,
 }) => (
-  <table className={`specs-table ${className || ''}`} >
+  <table className={`specs-table ${className || ''}`}>
     {name && (<caption>{name}</caption>)}
 
     <tbody>

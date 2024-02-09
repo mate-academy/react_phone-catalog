@@ -30,6 +30,8 @@ export const ArrowButton: React.FC<Props> = memo(({
         {children}
 
         <button
+          type="button"
+          aria-label="arrow button"
           className={`arrow-button ${className || ''}`}
           ref={buttonRef}
           disabled={disabled}
@@ -42,6 +44,8 @@ export const ArrowButton: React.FC<Props> = memo(({
 
   return (
     <button
+      type="button"
+      aria-label="arrow button"
       className={`arrow-button ${className || ''}`}
       ref={buttonRef}
       disabled={disabled}

@@ -21,5 +21,5 @@ export const App: React.FC = memo(() => {
 
       <Footer />
     </div>
-  )
+  );
 });

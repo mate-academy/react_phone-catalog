@@ -1,6 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { useSearchParams } from "../../enhancers/hooks/searchParams";
-import { SearchParam } from "../../definitions/enums/Router";
+import {
+  createContext, useContext, useEffect, useState,
+} from 'react';
+import { useSearchParams } from '../../enhancers/hooks/searchParams';
+import { SearchParam } from '../../definitions/enums/Router';
 
 interface SearchValue {
   searchIn: string,
@@ -16,7 +18,6 @@ export const SearchContext = createContext<SearchValue>({
   toggleSearch: () => () => { },
 });
 
-
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -30,11 +31,11 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
       setSearchIn(searchIn);
 
       return () => {
-        setSearchVisible(false)
+        setSearchVisible(false);
         setSearchIn('');
       };
-    }
-  }
+    };
+  };
 
   const value = {
     searchIn,
@@ -53,5 +54,6 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
 export function useSearchHere(searchIn: string, deps: unknown[] = []) {
   const { toggleSearch } = useContext(SearchContext);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(toggleSearch(searchIn), deps);
 }

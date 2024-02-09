@@ -9,42 +9,45 @@ export const Footer: React.FC = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }, []);
 
   return (
-    <footer className='footer'>
+    <footer className="footer">
       <div className="footer__content">
         <Logo />
-        
+
         <section className="footer__links">
           <a
-          className='footer__link'
-          href="https://github.com/Softjey/react_phone-catalog/tree/develop"
-          target='_blank'
+            className="footer__link"
+            href="https://github.com/Softjey/react_phone-catalog/tree/develop"
+            target="_blank"
+            rel="noreferrer"
           >
             Github
           </a>
 
           <a
-          className='footer__link'
-          href="mailto:misivsvatoslav@gmail.com"
-          target='_blank'
+            className="footer__link"
+            href="mailto:misivsvatoslav@gmail.com"
+            target="_blank"
+            rel="noreferrer"
           >
             Contacts
           </a>
 
           <a
-          className='footer__link'
-          href="https://opensource.fb.com/legal/privacy/"
-          target='_blank'
+            className="footer__link"
+            href="https://opensource.fb.com/legal/privacy/"
+            target="_blank"
+            rel="noreferrer"
           >
             Rights
           </a>
         </section>
 
-        <ArrowButton wrapperClassName='footer__back-to-top' rotate={90} onClick={goToTop}>
+        <ArrowButton wrapperClassName="footer__back-to-top" rotate={90} onClick={goToTop}>
           Back to top
         </ArrowButton>
       </div>

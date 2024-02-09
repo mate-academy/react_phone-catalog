@@ -1,4 +1,4 @@
-import { ProductId } from "./Product";
+import { ProductId } from './Product';
 
 export interface ProductDetails {
   camera: string,
@@ -9,7 +9,7 @@ export interface ProductDetails {
   colorsAvailable: string[],
   description: DescriptionItem[],
   id: ProductId,
-  images: string[], 
+  images: string[],
   name: string,
   namespaceId: string,
   priceDiscount?: number,

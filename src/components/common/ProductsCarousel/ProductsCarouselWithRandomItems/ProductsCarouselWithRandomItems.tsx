@@ -3,15 +3,13 @@ import { ProductsCarousel, ProductsCarouselProps } from '../ProductsCarousel/Pro
 import { useRequest } from '../../../../enhancers/hooks/request';
 import { getProducts } from '../../../../api/products/client/products';
 
-interface Props extends Omit<ProductsCarouselProps, 'products' | 'loading'> {
-
-}
+type Props = Omit<ProductsCarouselProps, 'products' | 'loading'>;
 
 export const ProductsCarouselWithRandomItems: React.FC<Props> = memo(({
   ...restProps
 }) => {
   const [{ products }, loading] = useRequest(
-    () => getProducts({ randomCount: 16 }), [], { products: [] }
+    () => getProducts({ randomCount: 16 }), [], { products: [] },
   );
 
   return (

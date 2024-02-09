@@ -1,14 +1,14 @@
-import { Category } from "../server/types";
-import { ProductDetails } from "../../../definitions/types/ProductDetails";
-import { productsRequest } from "../server/helper";
+import { Category } from '../server/types';
+import { ProductDetails } from '../../../definitions/types/ProductDetails';
+import { productsRequest } from '../server/helper';
 
 export const getProductDetailsById = (
   productId: string,
   category?: Category,
 ): Promise<ProductDetails> => {
   return productsRequest<ProductDetails>(
-    `products_details/${productId}.json`, category
-  )
+    `products_details/${productId}.json`, category,
+  );
 };
 
 export const getVariantsOfProduct = async (
@@ -20,21 +20,13 @@ export const getVariantsOfProduct = async (
     capacityAvailable: capacities,
     namespaceId: baseId,
   } = product;
-  const productsIds = [];
+  const productsIds = colors.map(
+    color => capacities.map(capacity => `${baseId}-${capacity.toLowerCase()}-${color}`),
+  ).flat();
 
-  for (const color of colors) {
-    for (const capacity of capacities) {
-      productsIds.push(`${baseId}-${capacity.toLowerCase()}-${color}`);
-    }
-  }
+  const products = await Promise.all(
+    productsIds.map(id => getProductDetailsById(id, category)),
+  );
 
-  try {
-    const products = await Promise.all(
-      productsIds.map(id => getProductDetailsById(id, category))
-    );
-
-    return products;
-  } catch (error) {
-    throw error;
-  }
+  return products;
 };

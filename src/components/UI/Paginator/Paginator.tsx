@@ -24,7 +24,9 @@ export const Paginator: React.FC<Props> = memo(({
     return Array.from({ length: pagesAmount }, (_, i) => i + 1);
   }, [itemsPerPage, itemsAmount]);
 
-  if (pageIndexes.length === 0) return <></>;
+  if (pageIndexes.length === 0) {
+    return <></>;
+  }
 
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === pageIndexes.length;
@@ -36,7 +38,7 @@ export const Paginator: React.FC<Props> = memo(({
         disabled={isFirstPage}
       />
 
-      <ul className='paginator__list'>
+      <ul className="paginator__list">
         {pageIndexes.map(pageIndex => (
           <PaginatorItem
             key={pageIndex}
@@ -46,7 +48,7 @@ export const Paginator: React.FC<Props> = memo(({
           />
         ))}
       </ul>
-      
+
       <ArrowButton
         onClick={() => onChange(currentPage + 1)}
         disabled={isLastPage}
@@ -76,5 +78,5 @@ const PaginatorItem: React.FC<ItemProps> = memo(({
     >
       {pageIndex}
     </li>
-  )
-})
+  );
+});

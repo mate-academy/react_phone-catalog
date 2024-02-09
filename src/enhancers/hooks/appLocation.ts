@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation } from 'react-router-dom';
 
 export interface LocationState {
   prevPage?: string,
@@ -11,4 +11,4 @@ export const useAppLocation = () => {
     ...location,
     state: location.state as LocationState,
   };
-}
+};

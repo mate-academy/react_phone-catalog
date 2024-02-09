@@ -1,10 +1,10 @@
 import React, { memo, useEffect } from 'react';
 
 import './SearchField.scss';
+import { useLocation } from 'react-router-dom';
 import { useDebounce } from '../../../enhancers/hooks/debounce';
 import { SearchParam } from '../../../definitions/enums/Router';
 import { useSearchParams } from '../../../enhancers/hooks/searchParams';
-import { useLocation } from 'react-router-dom';
 
 const SubmitButton: React.FC = memo(() => (
   <button type="submit" className="search-field__button">
@@ -30,7 +30,7 @@ export const SearchField: React.FC<Props> = memo(({ searchIn }) => {
 
   useEffect(() => {
     setQuery(initialQuery);
-  }, [pathname]);
+  }, [pathname, setQuery]);
 
   return (
     <form className="search-field" onSubmit={handleFormSubmit}>
@@ -47,4 +47,3 @@ export const SearchField: React.FC<Props> = memo(({ searchIn }) => {
     </form>
   );
 });
-

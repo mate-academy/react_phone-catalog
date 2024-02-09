@@ -1,13 +1,20 @@
+/* eslint-disable max-len */
+
 import React, { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../../definitions/types/Product';
 
 import './ProductCard.scss';
 import GraySelectButton from '../../UI/buttons/GraySelectButton';
-import { AddToCartHandler, AddToCartHandlerRenderProps } from '../../../enhancers/hocs/AddToCartHandler';
-import { AddToFavoritesHandler, AddToFavoritesHandlerRenderProps } from '../../../enhancers/hocs/AddToFavoritesHandler';
+import {
+  AddToCartHandler, AddToCartHandlerRenderProps,
+} from '../../../enhancers/hocs/AddToCartHandler';
+import {
+  AddToFavoritesHandler, AddToFavoritesHandlerRenderProps,
+} from '../../../enhancers/hocs/AddToFavoritesHandler';
 import { BASE_URL } from '../../../utils/fetchHelper';
 import SquareSelectLikeButton from '../../UI/buttons/SquareSelectButton/descendants/SquareSelectLikeButton';
+
 import Placeholder from '../../UI/Placeholder';
 import { getRootCssVariable } from '../../../utils/cssHelper';
 import { useDirection } from '../../../enhancers/hooks/direction';
@@ -34,7 +41,7 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
   if (product === null) {
     const cardWidth = getRootCssVariable('--product-card-width');
 
-    return <Placeholder height='504px' width={cardWidth} />
+    return <Placeholder height="504px" width={cardWidth} />;
   }
 
   const {

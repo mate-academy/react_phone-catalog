@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import { SortQuery } from '../../api/products/server/types';
+// eslint-disable-next-line
 import ProductsCarouselWithSortedProducts from '../../components/common/ProductsCarousel/ProductsCarouselWithSortedProducts';
 import BannersSlider from '../../components/common/BannersSlider';
 
@@ -18,26 +19,26 @@ export const HomePage: React.FC = memo(() => {
   }, [bannersError]);
 
   if (someError) {
-    return <ErrorMessage message={someError} />
+    return <ErrorMessage message={someError} />;
   }
 
   return (
-    <div className='home-page'>
+    <div className="home-page">
       <BannersSlider
         banners={banners}
         loading={bannersLoading}
       />
 
       <ProductsCarouselWithSortedProducts
-        name='Hot prices'
+        name="Hot prices"
         sortQuery={SortQuery.Cheapest}
         setError={setSomeError}
       />
 
-      <CategoriesGallery setError={setSomeError}/>
+      <CategoriesGallery setError={setSomeError} />
 
       <ProductsCarouselWithSortedProducts
-        name='Brand new models'
+        name="Brand new models"
         sortQuery={SortQuery.Newest}
         setError={setSomeError}
       />

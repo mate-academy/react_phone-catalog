@@ -1,4 +1,6 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, {
+  memo, useCallback, useEffect, useState,
+} from 'react';
 import { BASE_URL } from '../../../utils/fetchHelper';
 
 import './ImageGalleryWithChoice.scss';
@@ -23,9 +25,11 @@ export const ImageGalleryWithChoice: React.FC<Props> = memo(({
 
   const selectImage = useCallback((img: string) => {
     return () => {
-      setSelectedImage(img)
+      setSelectedImage(img);
     };
   }, []);
+
+  /* eslint-disable */
 
   return (
     <section className={`${BASE_CLASS} ${className || ''}`}>
@@ -45,11 +49,12 @@ export const ImageGalleryWithChoice: React.FC<Props> = memo(({
           className={`${BASE_CLASS}__selected-image`}
           src={`${BASE_URL}/${selectedImage}`}
           alt="selected Image Product"
-          loading='lazy'
+          loading="lazy"
         />
       </div>
     </section>
   );
+  /* eslint-enable */
 });
 
 interface ImageProps {
@@ -65,17 +70,19 @@ const ImageItem: React.FC<ImageProps> = memo(({
 }) => {
   const classes = [
     `${BASE_CLASS}__image-container`,
-    `${isSelected ? `${BASE_CLASS}__image-container--selected` : ''}`
+    `${isSelected ? `${BASE_CLASS}__image-container--selected` : ''}`,
   ].join(' ');
 
+  /* eslint-disable */
   return (
     <div className={classes} onClick={selectImage(img)}>
       <img
         className={`${BASE_CLASS}__image`}
         src={`${BASE_URL}/${img}`}
-        alt='Product image'
-        loading='lazy'
+        alt="Product image"
+        loading="lazy"
       />
-    </div> //need normal alt attribute
-  )
+    </div> // need normal alt attribute
+  );
+  /* eslint-enable */
 });

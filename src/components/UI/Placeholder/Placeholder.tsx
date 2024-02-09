@@ -14,6 +14,6 @@ export const Placeholder: React.FC<Props> = memo(({
   className,
 }) => (
   <div className={`placeholder ${className || ''}`} style={{ width, height }}>
-    <div className="placeholder__activity"></div>
+    <div className="placeholder__activity" />
   </div>
 ));

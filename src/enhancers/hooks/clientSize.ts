@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 
 type ReturnType<T> = [
   elementReference: React.MutableRefObject<T | null>,
@@ -12,4 +12,4 @@ export function useClientSize<T extends HTMLElement>(): ReturnType<T> {
   const width = ref.current?.clientWidth;
 
   return [ref, height ?? 0, width ?? 0];
-};
+}

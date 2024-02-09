@@ -21,7 +21,7 @@ export const ProductsCarouselWithSortedProducts: React.FC<Props> = memo(({
 }) => {
   const hotPricesOptions: QueryOptions = {
     sortQuery,
-    pagination: { page, perPage }
+    pagination: { page, perPage },
   };
 
   const [{ products }, loading, error] = useRequest(

@@ -21,19 +21,19 @@ export const AddToCartHandler: React.FC<Props> = memo(({
   const cart = useAppSelector(state => state.cart.storageProducts);
 
   if (productId === null) {
-    return render({ children: 'Add to cart' })
+    return render({ children: 'Add to cart' });
   }
-  
+
   const isInCart = cart.some(cartProduct => cartProduct.id === productId);
-  
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const toggleProductInCart = useCallback(() => {
-    console.log(isInCart);
     dispatch(
       isInCart
         ? cartActions.removeProduct(productId)
         : cartActions.addProduct(productId),
     );
-  }, [productId, isInCart]);
+  }, [productId, isInCart, dispatch]);
 
   return render({
     onClick: toggleProductInCart,

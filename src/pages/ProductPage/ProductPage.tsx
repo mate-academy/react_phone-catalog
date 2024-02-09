@@ -1,14 +1,20 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, {
+  memo, useCallback, useEffect, useRef,
+} from 'react';
+import { useNavigate } from 'react-router-dom';
 import BackButton from '../../components/UI/buttons/BackButton';
 import { useAppParams } from '../../enhancers/hooks/appParams';
 import ProductDetailsComponent from '../../components/common/ProductDetailsComponent';
 import { useRequest } from '../../enhancers/hooks/request';
 import ErrorMessage from '../../components/common/ErrorMessage';
 import { ProductDetails } from '../../definitions/types/ProductDetails';
-import { useNavigate } from 'react-router-dom';
 
 import './ProductPage.scss';
-import { getProductDetailsById, getVariantsOfProduct } from '../../api/products/client/productsDetails';
+import {
+  getProductDetailsById,
+  getVariantsOfProduct,
+} from '../../api/products/client/productsDetails';
+// eslint-disable-next-line
 import ProductsCarouselWithRandomItems from '../../components/common/ProductsCarousel/ProductsCarouselWithRandomItems';
 import BreadCrumbs from '../../components/UI/BreadCrumbs';
 import { useDirection } from '../../enhancers/hooks/direction';
@@ -18,7 +24,7 @@ export const ProductPage: React.FC = memo(() => {
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
   const [product, , error, setProduct] = useRequest(
-    () => getProductDetailsById(productId, category), [], null
+    () => getProductDetailsById(productId, category), [productId, category], null,
   );
   const similarProducts = useRef<ProductDetails[]>([]);
 
@@ -31,16 +37,15 @@ export const ProductPage: React.FC = memo(() => {
       navigate(direction(`/${category}/${productToChange.id}`));
       setProduct(productToChange);
     }
-  }, [similarProducts])
+  }, [similarProducts, category]);
 
   useEffect(() => {
     if (product) {
       getVariantsOfProduct(product, category).then((products) => {
         similarProducts.current = products;
-      })
+      });
     }
   }, [product?.namespaceId]);
-
 
   if (error) {
     return <ErrorMessage message={error} />;
@@ -49,12 +54,12 @@ export const ProductPage: React.FC = memo(() => {
   return (
     <div className="product-page">
       <BreadCrumbs />
-      <BackButton className='product-page__back-button' />
+      <BackButton className="product-page__back-button" />
 
       <div className="product-page__content">
         <ProductDetailsComponent product={product} changeProduct={changeProduct} />
 
-        <ProductsCarouselWithRandomItems name='You may also like' />
+        <ProductsCarouselWithRandomItems name="You may also like" />
       </div>
     </div>
   );

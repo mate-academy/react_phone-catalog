@@ -1,4 +1,4 @@
-import { ProductDetails } from "../definitions/types/ProductDetails";
+import { ProductDetails } from '../definitions/types/ProductDetails';
 
 export const getColorHex = (color: string) => {
   switch (color) {
@@ -18,11 +18,13 @@ export const getColorHex = (color: string) => {
     case 'starlight': return '#F9F3EE';
     case 'skyblue': return '#6BA1C4';
     default: {
+      // eslint-disable-next-line
       console.error(`Unexpected color: ${color}`);
+
       return '#201D24';
     }
-    }
-}
+  }
+};
 
 export const getSpecArrayFromProduct = (product: ProductDetails) => {
   return {

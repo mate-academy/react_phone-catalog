@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 
 import './BackButton.scss';
+import { useNavigate } from 'react-router-dom';
 import ArrowIcon from '../../Icons/ArrowIcon';
 import { useAppLocation } from '../../../../enhancers/hooks/appLocation';
-import { useNavigate } from 'react-router-dom';
 import { useDirection } from '../../../../enhancers/hooks/direction';
 
 interface Props {
@@ -24,8 +24,13 @@ export const BackButton: React.FC<Props> = memo(({ className }) => {
   };
 
   return (
-    <button className={`back-button ${className || ''}`} onClick={goBack}>
-      <ArrowIcon className='back-button__icon' />
+    <button
+      className={`back-button ${className || ''}`}
+      onClick={goBack}
+      aria-label="go back"
+      type="button"
+    >
+      <ArrowIcon className="back-button__icon" />
       <span>Back</span>
     </button>
   );

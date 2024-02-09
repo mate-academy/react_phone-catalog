@@ -14,8 +14,8 @@ export const Counter: React.FC<Props> = memo(({
   initialCount,
   max,
   min,
-  onIncrease = () => {},
-  onDecrease = () => {},
+  onIncrease = () => { },
+  onDecrease = () => { },
 }) => {
   const [count, setCount] = useState(initialCount ?? 0);
 
@@ -40,21 +40,25 @@ export const Counter: React.FC<Props> = memo(({
   };
 
   return (
-    <div className='counter'>
+    <div className="counter">
       <button
-        className='counter__button'
+        type="button"
+        aria-label="decrease"
+        className="counter__button"
         onClick={decrease}
         disabled={!!(min && count <= min)}
       >
         <img src="/img/icons/minus-icon.svg" alt="" />
       </button>
 
-      <p className='counter__count'>
+      <p className="counter__count">
         {count}
       </p>
 
       <button
-        className='counter__button'
+        type="button"
+        aria-label="increase"
+        className="counter__button"
         onClick={increase}
         disabled={!!(max && count >= max)}
       >

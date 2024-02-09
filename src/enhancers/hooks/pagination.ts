@@ -1,13 +1,13 @@
-import { useCallback } from "react";
-import { SearchParam } from "../../definitions/enums/Router";
-import { SearchParamsWithRouter, useSearchParams } from "./searchParams";
-import { PerPageOption } from "../../api/products/server/types";
+import { useCallback } from 'react';
+import { SearchParam } from '../../definitions/enums/Router';
+import { SearchParamsWithRouter, useSearchParams } from './searchParams';
+import { PerPageOption } from '../../api/products/server/types';
 
 type Options = {
   perPageOptions: PerPageOption[],
   itemsAmount: number,
   defaultIndex?: number,
-}
+};
 
 type ReturnType = [
   number,
@@ -46,18 +46,19 @@ export function usePagination(options: Options): ReturnType {
 
   const page = getPage(searchParams);
   const setPage = useCallback((newPage: number) => {
-    searchParams.set(SearchParam.Page, newPage)
+    searchParams.set(SearchParam.Page, newPage);
   }, [searchParams]);
 
   const perPage = getPerPage(searchParams, options);
   const setPerPage = useCallback((newPerPage: PerPageOption) => {
     if (newPerPage !== 'All' && newPerPage * (page - 1) > itemsAmount) {
       const lastPage = Math.ceil(itemsAmount / newPerPage);
+
       searchParams.set(SearchParam.Page, lastPage);
     }
 
-    searchParams.set(SearchParam.PerPage, newPerPage)
+    searchParams.set(SearchParam.PerPage, newPerPage);
   }, [searchParams, itemsAmount]);
 
   return [page, setPage, perPage, setPerPage];
-};
+}

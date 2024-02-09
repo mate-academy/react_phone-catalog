@@ -1,4 +1,4 @@
-import { Category } from "../../api/products/server/types";
+import { Category } from '../../api/products/server/types';
 
 export type ProductId = string;
 

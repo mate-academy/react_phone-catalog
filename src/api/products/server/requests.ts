@@ -1,7 +1,7 @@
-import { calcPageIndex, productsRequest, sliceLikePaginate } from "./helper";
+import { calcPageIndex, productsRequest, sliceLikePaginate } from './helper';
 
-import { ProductId, Product } from "../../../definitions/types/Product";
-import { Category, SortQuery, NumericPagination } from "./types";
+import { ProductId, Product } from '../../../definitions/types/Product';
+import { Category, SortQuery, NumericPagination } from './types';
 
 export function fetchProductById(id: ProductId) {
   return productsRequest<Product>(`products/artificially/${id}.json`);
@@ -14,7 +14,7 @@ export function fetchAllProducts(category?: Category, sortQuery = SortQuery.Unso
 export async function fetchPaginatedProducts(
   pagination: NumericPagination,
   sortQuery?: SortQuery,
-  category?: Category
+  category?: Category,
 ) {
   const pageIndex = calcPageIndex(pagination);
   const url = `products/${sortQuery}/page/${pageIndex}.json`;
@@ -24,5 +24,5 @@ export async function fetchPaginatedProducts(
 }
 
 export const fetchProductsSeparately = (ids: ProductId[]) => Promise.all(
-  ids.map(id => fetchProductById(id))
+  ids.map(id => fetchProductById(id)),
 );
