@@ -1,14 +1,14 @@
 export const banners = [
   {
-    img: '_new/img/banner-accessories.png',
+    img: 'img/banner-accessories.png',
     id: 0,
   },
   {
-    img: '_new/img/banner-phones.png',
+    img: 'img/banner-phones.png',
     id: 1,
   },
   {
-    img: '_new/img/banner-tablets.png',
+    img: 'img/banner-tablets.png',
     id: 2,
   },
 ];

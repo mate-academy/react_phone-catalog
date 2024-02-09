@@ -25,11 +25,16 @@ export const ProductItem: React.FC<Props> = ({
 
   return (
     <div className="product-item">
-      <div className="product-item__img">
-        <img src={`_new/${image}`} alt={phoneId} />
-      </div>
+      <Link to={`/phones/${phoneId}`}>
+        <div className="product-item__img">
+          <img src={`_new/${image}`} alt={phoneId} />
+        </div>
+      </Link>
 
-      <Link to="./" className="product-item__title body-text">
+      <Link
+        to={`/phones/${phoneId}`}
+        className="product-item__title body-text"
+      >
         {name}
       </Link>
 
@@ -89,7 +94,7 @@ export const ProductItem: React.FC<Props> = ({
           type="button"
           className="button button__like button--medium button__like--active"
         >
-          <img src="_new/img/icons/heart.svg" alt="Heart" />
+          <img src="img/icons/heart.svg" alt="Heart" />
         </button>
       </div>
     </div>

@@ -23,7 +23,7 @@ export const Search: React.FC<Props> = ({
 
       <div className="icon icon--search">
         <img
-          src="./_new/img/icons/search.svg"
+          src="img/icons/search.svg"
           alt="Icon Search"
         />
       </div>

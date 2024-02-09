@@ -1,0 +1,28 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 16px;
+
+  &__home {
+    display: inline-block;
+    height: 100%;
+  }
+
+  &__arrow {
+    opacity: 0.5;
+  }
+
+  &__path {
+    font-size: 12px;
+    font-weight: 600;
+    color: $c-secondary;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}

@@ -88,7 +88,7 @@ export const Slider: React.FC<Props> = ({
       >
         <img
           className="slider-btn__arrow"
-          src="_new/img/icons/arrow-left.svg"
+          src="img/icons/arrow-left.svg"
           alt="Arrow left"
         />
       </button>
@@ -100,7 +100,7 @@ export const Slider: React.FC<Props> = ({
       >
         <img
           className="slider-btn__arrow"
-          src="./_new/img/icons/arrow-right.svg"
+          src="img/icons/arrow-right.svg"
           alt="Arrow left"
         />
       </button>

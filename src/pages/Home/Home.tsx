@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Slider } from '../../components/Slider/Slider';
 
 import './Home.scss';
-import { Phone } from '../../types/Phone';
-import { getData } from '../../client/httpClient';
 import { banners } from '../../data/banners-data';
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Categories } from '../../components/Categories/Categories';
+import { usePhones } from '../../hooks/usePhones';
 
 const BANNER_INTERVAL = 5000;
 
 export const Home: React.FC = () => {
-  const [phonesData, setPhonesData] = useState<Phone[] | null>(null);
-
-  useEffect(() => {
-    getData('_new/products.json')
-      .then(setPhonesData);
-  }, []);
-
-  const preparedHotPriceProducts = phonesData?.filter((product: Phone) => (
-    product.fullPrice - product.price >= 90
-  )) || [];
-
-  const preparedBrandNewProducts = phonesData?.filter((product: Phone) => (
-    product.year >= 2019
-  )) || [];
+  const {
+    phonesData,
+    preparedBrandNewProducts,
+    preparedHotPriceProducts,
+  } = usePhones();
 
   return (
     <div className="home">

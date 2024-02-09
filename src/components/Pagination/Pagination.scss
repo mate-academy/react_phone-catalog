@@ -1,0 +1,22 @@
+.pagination {
+  &__sort-params {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}

@@ -12,49 +12,51 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="footer container">
-      <Link to="/" className="logo footer__logo">
-        <img src="_new/img/logo.svg" alt="Logo" />
-      </Link>
+    <footer className="footer">
+      <div className="container container__footer">
+        <Link to="/" className="logo footer__logo">
+          <img src="img/logo.svg" alt="Logo" />
+        </Link>
 
-      <div className="footer__info">
-        <a
-          href="/#"
-          target="_blank"
-          className="footer__item"
-        >
-          github
-        </a>
+        <div className="footer__info">
+          <a
+            href="/#"
+            target="_blank"
+            className="footer__item"
+          >
+            github
+          </a>
 
-        <a
-          href="/#"
-          target="_blank"
-          className="footer__item"
-        >
-          contacts
-        </a>
+          <a
+            href="/#"
+            target="_blank"
+            className="footer__item"
+          >
+            contacts
+          </a>
 
-        <a
-          href="/#"
-          target="_blank"
-          className="footer__item"
-        >
-          rights
-        </a>
-      </div>
+          <a
+            href="/#"
+            target="_blank"
+            className="footer__item"
+          >
+            rights
+          </a>
+        </div>
 
-      <div className="footer__back-to-top">
-        <p className="footer__text">
-          Back to top
-        </p>
+        <div className="footer__back-to-top">
+          <p className="footer__text">
+            Back to top
+          </p>
 
-        <button
-          type="button"
-          className="button button--small button__nav"
-          onClick={scrollToTop}
-        >
-          <img src="_new/img/icons/arrow-up.svg" alt="Arrow up" />
-        </button>
+          <button
+            type="button"
+            className="button button--small button__nav"
+            onClick={scrollToTop}
+          >
+            <img src="img/icons/arrow-up.svg" alt="Arrow up" />
+          </button>
+        </div>
       </div>
     </footer>
   );

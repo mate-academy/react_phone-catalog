@@ -106,9 +106,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
 
-  &:hover img {
+  &__img {
+    transition: all 0.3s;
+  }
+
+  &:hover &__img {
     scale: 1.2;
   }
 

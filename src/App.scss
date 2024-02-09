@@ -30,6 +30,12 @@ h1 {
   max-width: 1440px;
   padding-inline: 152px;
   margin-inline: auto;
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .logo {
@@ -92,6 +98,9 @@ h1 {
   }
 
   &__nav {
+    @extend %body-text;
+
+    font-weight: 600;
     background-color: #fff;
     border: 1px solid $c-elements;
 
@@ -103,6 +112,11 @@ h1 {
       cursor: not-allowed;
       opacity: 0.3;
       border: 1px solid $c-elements;
+    }
+
+    &--active {
+      background-color: $c-primary;
+      color: #fff;
     }
   }
 }

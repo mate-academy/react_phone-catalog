@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import cn from 'classnames';
 
 import './Header.scss';
 import { Search } from '../Search/Search';
+import { usePhones } from '../../hooks/usePhones';
 
 const getClass = ({ isActive }: { isActive: boolean }) => (cn('nav__link', {
   'nav__link--active': isActive,
 }));
 
 export const Header: React.FC = () => {
-  const [tabletSearchValue, setTabletSearchValue] = useState('');
-  const [phoneSearchValue, setPhoneSearchValue] = useState('');
-
   const location = useLocation();
+
+  const {
+    phoneSearchValue,
+    setPhoneSearchValue,
+    tabletSearchValue,
+    setTabletSearchValue,
+  } = usePhones();
 
   return (
     <header className="header">
       <div className="header__nav-wrapper">
         <Link to="/" className="header__logo logo">
-          <img src="./_new/img/logo.svg" alt="logo" />
+          <img src="img/logo.svg" alt="logo" />
         </Link>
 
         <nav className="nav header__nav">
@@ -60,11 +65,19 @@ export const Header: React.FC = () => {
         )}
 
         <Link to="/favorites" className="header__icon icon icon--like">
-          <img src="./_new/img/icons/heart.svg" alt="Icon Like" />
+          <img
+            className="icon__img"
+            src="img/icons/heart.svg"
+            alt="Icon Like"
+          />
         </Link>
 
         <Link to="/card" className="header__icon icon icon--card">
-          <img src="./_new/img/icons/cart.svg" alt="Icon Card" />
+          <img
+            className="icon__img"
+            src="img/icons/cart.svg"
+            alt="Icon Card"
+          />
         </Link>
       </div>
     </header>
