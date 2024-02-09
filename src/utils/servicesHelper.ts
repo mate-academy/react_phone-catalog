@@ -38,3 +38,8 @@ export const getSpecArrayFromProduct = (product: ProductDetails) => {
     cell: product.cell.join(', '),
   };
 };
+
+export function prepareAdditionalInformation() {
+  const errorImgWhenUserWillBeOffline = new Image();
+  errorImgWhenUserWillBeOffline.src = '/img/informative/error-img.webp';
+}

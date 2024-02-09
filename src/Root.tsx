@@ -13,8 +13,18 @@ import ProductPage from './pages/ProductPage';
 import ErrorMessage from './components/common/ErrorMessage';
 import { ContextProvider } from './store/contexts/GlobalContextProvider';
 import CheckoutPage from './pages/CheckoutPage';
+import { useEffect } from 'react';
+import { prepareAdditionalInformation } from './utils/servicesHelper';
 
 export const Root: React.FC = () => {
+  useEffect(() => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(prepareAdditionalInformation);
+    } else {
+      setTimeout(prepareAdditionalInformation, 1000);
+    }
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>

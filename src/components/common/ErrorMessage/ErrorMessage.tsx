@@ -2,15 +2,17 @@ import React, { memo } from 'react';
 
 import './ErrorMessage.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { errorImg } from '../../../assets/errorImg';
 
 interface Props {
   message: string,
+  errorImg?: string,
   height?: string,
   width?: string,
 }
 
-export const ErrorMessage: React.FC<Props> = memo(({ message, height, width }) => {
+export const ErrorMessage: React.FC<Props> = memo(({
+  message, height, width, errorImg = '/img/informative/error-img.webp',
+}) => {
   const navigate = useNavigate();
 
   /* eslint-disable max-len */
@@ -25,7 +27,6 @@ export const ErrorMessage: React.FC<Props> = memo(({ message, height, width }) =
       <h2 className="error-message__text">{message}</h2>
 
       <div className="error-message__links">
-
         <button
           type="button"
           aria-label="Reload page"
