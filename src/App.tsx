@@ -25,14 +25,18 @@ export const App: React.FC = () => {
         <Navbar />
 
         {isVisible && (
-          <div className="container">
-            <BreadCrumbs />
+          <div className="wrapper">
+            <div className="container">
+              <BreadCrumbs />
+            </div>
           </div>
         )}
       </header>
 
-      <div className="container main">
-        <Outlet />
+      <div className="wrapper">
+        <div className="container main">
+          <Outlet />
+        </div>
       </div>
 
       <Footer />

@@ -33,6 +33,9 @@ export const CartItems: React.FC = () => {
     setCartItems(current);
   };
 
+  // eslint-disable-next-line max-len
+  const imageLinkPart = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
   return (
     <ul className="CartItems">
       {cartItems.map(item => (
@@ -52,7 +55,7 @@ export const CartItems: React.FC = () => {
               <div className="CartItems__img-container">
                 <img
                   className="CartItems__img"
-                  src={`_new/${item.product.image}`}
+                  src={`${imageLinkPart}/${item.product.image}`}
                   alt=""
                 />
               </div>

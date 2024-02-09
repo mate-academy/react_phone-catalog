@@ -54,7 +54,12 @@ body {
   margin-bottom: 40px;
 }
 
+.wrapper {
+  margin: 0 auto;
+}
+
 .container {
+  min-width: 1440px;
   padding-inline: 152px;
 }
 
