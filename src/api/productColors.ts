@@ -1,4 +1,4 @@
-type Colors = {
+export type Colors = {
   [key: string]: string,
 };
 

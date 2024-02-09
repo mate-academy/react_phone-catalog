@@ -15,6 +15,8 @@ const pictures = [
 
 const PICTURE_WIDTH = 1040;
 let ANIMATION_DURATION = '1000ms';
+// eslint-disable-next-line max-len
+const imageLinkPart = 'https://mate-academy.github.io/react_phone-catalog/';
 
 export const Banner = () => {
   const [current, setCurrent] = useState(1);
@@ -117,7 +119,7 @@ export const Banner = () => {
               <img
                 className="banner__img"
                 key={picture.id}
-                src={picture.url}
+                src={`${imageLinkPart}/${picture.url}`}
                 alt={picture.title}
               />
             ))}

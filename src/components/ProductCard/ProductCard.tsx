@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import './ProductCard.scss';
 import { Product } from '../../types/Product';
 import { Buttons } from '../Buttons';
@@ -9,8 +9,12 @@ type Props = {
   product: Product;
 };
 
+// eslint-disable-next-line max-len
+const imageLinkPart = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const [searchParams] = useSearchParams();
+  const { productId } = useParams();
   const {
     itemId,
     name,
@@ -23,17 +27,21 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     category,
   } = product;
 
+  const link = productId
+    ? `../${itemId}`
+    : `../${category}/${itemId}`;
+
   return (
     <li className="ProductCard" data-cy="cardsContainer">
       <Link
         className="ProductCard__link"
-        to={`../${category}/${itemId}`}
+        to={`${link}`}
         state={{ search: searchParams.toString() }}
       >
         <div className="ProductCard__img-wrapper">
           <img
             className="ProductCard__img"
-            src={`_new/${image}`}
+            src={`${imageLinkPart}/${image}`}
             alt=""
           />
         </div>
