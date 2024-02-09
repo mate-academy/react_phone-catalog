@@ -1,0 +1,12 @@
+@import '../../utils/variables';
+@import '../../utils/typography';
+
+.icon-apple {
+  width: 28px;
+  height: 28px;
+  transition: transform $duration;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

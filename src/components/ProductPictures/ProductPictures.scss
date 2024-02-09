@@ -1,0 +1,48 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+ .ProductPictures {
+  &__imgs-list {
+    grid-column: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  &__img-button {
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+    background-color: $gray-white;
+    border: 1px solid $gray-icons-placeholders;
+    transition: all $duration;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__img-button.active-picture {
+    border-color: $gray-primary;
+  }
+
+  &__img-container {
+    grid-column: 3 / 13;
+    height: 464px;
+    width: 464px;
+    padding: 11px;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+
+    &--small {
+      cursor: pointer;
+    }
+  }
+ }
+

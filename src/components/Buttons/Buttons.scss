@@ -1,0 +1,55 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.Buttons {
+  display: flex;
+  column-gap: 8px;
+
+  &__button {
+    background-color: $gray-white;
+    border: 1px solid $gray-icons-placeholders;
+    transition: all $duration;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--add {
+      width: 100%;
+      background-color: $gray-primary;
+      color: $gray-white;
+      border: 1px solid transparent;
+
+      &:hover {
+        color: $gray-primary;
+        background-color: $gray-white;
+      }
+    }
+
+    &--favourite {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../../../public/img/icons/heart.svg);
+    }
+
+    &--add.active-button {
+      color: $green-2;
+      background-color: $gray-white;
+      border-color: $gray-elements;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+    }
+
+    &--favourite.active-button {
+      background-image: url(../../../public/img/icons/heart-selected.svg);
+      border-color: $gray-elements;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+    }
+  }
+}

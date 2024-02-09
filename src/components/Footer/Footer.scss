@@ -1,0 +1,72 @@
+@import "../../utils/typography";
+@import "../../utils/variables";
+
+.footer {
+  box-shadow: 0 -1px 0 0 #E2E6E9;
+  margin-top: auto;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+
+  &__links {
+    display: flex;
+    column-gap: 64px;
+  }
+
+  &__link {
+    color: $gray-secondary;
+    transition: color $duration;
+
+    @extend %text-uppercase;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+
+  &__button {
+    position: relative;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: $gray-white;
+    border: 1px solid $gray-icons-placeholders;
+    background-image: url(../../../public/img/icons/arrow-up.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all $duration;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    width: max-content;
+    padding-right: 16px;
+    top: 50%;
+    right: 100%;
+    color: $gray-secondary;
+    transition: all $duration;
+    transform: translate(50%, -50%);
+    opacity: 0;
+
+    @extend %text-small;
+
+    &:hover {
+      transform: translate(0, -50%);
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.ButtonBack {
+  grid-column: span 3;
+  display: flex;
+  align-items: flex-end;
+  height: 16px;
+  column-gap: 4px;
+  padding-left: 20px;
+  margin-bottom: 16px;
+  background-image: url(../../../public/img/icons/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+
+
+  &__back-text {
+    color: $gray-secondary;
+    line-height: 14px;
+
+    @extend %text-small;
+  }
+}
+

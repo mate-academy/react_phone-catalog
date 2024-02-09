@@ -1,0 +1,45 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.BreadCrumbs {
+  display: flex;
+  column-gap: 8px;
+
+  &__item {
+    display: flex;
+    align-items: flex-end;
+    column-gap: 8px;
+  }
+
+  &__link {
+    display: block;
+    color: $gray-primary;
+
+    @extend %text-small;
+    
+    line-height: 14px;
+
+    &--home {
+      height: 16px;
+      width: 16px;
+      background-image: url(../../../public/img/icons/home.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    &--current {
+      color: $gray-secondary;
+      cursor: default;
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../../public/img/icons/arrow-right-dis.svg);
+    background-repeat: no-repeat;
+    background-position: center, right;
+    background-size: contain;
+  }
+}

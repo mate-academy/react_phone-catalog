@@ -1,0 +1,120 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.CartItems {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+
+
+  &__item {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $gray-elements;
+  }
+
+  &__left-part {
+    display: flex;
+    column-gap: 24px;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+    transition: all $duration;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+
+
+  &__img-container {
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__delete {
+    height: 16px;
+    width: 16px;
+    background-color: $gray-white;
+    border: 1px solid transparent;
+    background-image: url(../../../public/img/icons/cross-dis.svg);
+    transition: all $duration;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url(../../../public/img/icons/cross.svg);
+    }
+  }
+
+  &__name-wrapper {
+    width: 295px;
+  }
+
+  &__name {
+    color: $gray-primary;
+
+    @extend %body-text;
+  }
+
+  &__buttons-container {
+    display: flex;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    background-color: $gray-white;
+    border: 1px solid $gray-icons-placeholders;
+    background-image: url(../../../public/img/icons/minus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: all $duration;
+
+    &--add {
+      background-image: url(../../../public/img/icons/plus.svg);
+    }
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &:disabled {
+      background-image: url(../../../public/img/icons/minus-dis.svg);
+      border-color: $gray-elements;
+      cursor: default;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+  }
+
+  &__price {
+    color: $gray-primary;
+
+    @extend %h2;
+
+    &::before {
+      content: '\0024';
+    }
+  }
+}

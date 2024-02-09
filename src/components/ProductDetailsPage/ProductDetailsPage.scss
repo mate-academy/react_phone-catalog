@@ -1,0 +1,136 @@
+@import "../../utils/typography";
+@import "../../utils/variables";
+
+.ProductDetailsPage {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+  margin-bottom: 80px;
+
+  &__title {
+    grid-column: span 24;
+    margin-bottom: 40px;
+    color: $gray-primary;
+
+    @extend %h1;
+
+    &--error {
+      color: $gray-secondary;
+    }
+  }
+
+  &__top-center {
+    grid-column: 14 / 21;
+  }
+
+  &__top-center-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  &__top-center-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__deviding-line {
+    height: 1px;
+    width: 100%;
+    background-color: $gray-elements;
+    margin-bottom: 32px;
+  }
+
+  &__small-text {
+    color: $gray-secondary;
+
+    @extend %text-small;
+  }
+
+  &__link-capacity {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding-inline: 8px;
+    color: $gray-primary;
+
+    @extend %body-text;
+
+    border: 1px solid $gray-icons-placeholders;
+    transition: all $duration;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--active {
+      color: $gray-white;
+      border-color: $gray-primary;
+      background-color: $gray-primary;
+    }
+  }
+
+  &__price {
+    color: $gray-primary;
+
+    @extend %h1;
+
+    &::before {
+      content: '\0024';
+    }
+
+    &--full {
+      color: $gray-secondary;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration: line-through;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-name {
+    color: $gray-secondary;
+
+    @extend %text-small;
+  }
+
+  &__info-value {
+    color: $gray-primary;
+
+    @extend %text-small;
+  }
+
+  &__top-right {
+    grid-column: -1 / -3;
+    justify-self: end;
+  }
+
+  &__id-name {
+    color: $gray-icons-placeholders;
+
+    @extend %text-small;
+  }
+
+  &__about {
+    grid-column: 1 / 13;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+
+    color: $gray-primary;
+
+    @extend %h2;
+  }
+
+  &__tech-specs {
+    grid-column: 14 / 25;
+  }
+}

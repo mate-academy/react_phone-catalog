@@ -1,0 +1,74 @@
+@import '../../utils/variables';
+@import '../../utils/typography';
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    width: 100%;
+
+    column-gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__img-container {
+    height: 400px;
+    width: 1040px;
+    overflow: hidden;
+  }
+
+  &__img-wrapper {
+    display: flex;
+  }
+
+  &__img {
+    width: 1040px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  &__button {
+    background-color: #fff;
+    border: 1px solid $gray-icons-placeholders;
+    cursor: pointer;
+    transition: border-color .3s;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5px;
+
+  width: 80px;
+  height: 24px;
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+
+    background-color: $gray-elements;
+
+    &--active {
+      background-color: $gray-primary;
+    }
+  }
+}
+
+.hot-prices {
+  margin-top: -8px;
+}

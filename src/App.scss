@@ -1,1 +1,68 @@
-// not empty
+@import "./utils/fonts";
+@import "./utils/typography";
+@import "./utils/variables";
+
+* {
+  font-family: Mont, sans-serif;
+  box-sizing: border-box;
+}
+
+ul,
+li,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $gray-primary;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+iframe {
+  display: none;
+}
+
+body {
+  margin: 0;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  margin-bottom: 40px;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.container {
+  min-width: 1440px;
+  padding-inline: 152px;
+}
+
+.main {
+  margin-bottom: 80px;
+}

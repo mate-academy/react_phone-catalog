@@ -1,0 +1,47 @@
+@import "../../utils/typography";
+@import "../../utils//variables";
+
+.categories-title {
+  color: $gray-primary;
+  margin-bottom: 24px;
+
+  @extend %h1;
+}
+
+.categories {
+  display: flex;
+  column-gap: 16px;
+
+  &__item {
+    transition: $duration;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__wrapper-img {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &__title {
+    @extend %h3;
+
+    margin-bottom: 4px;
+  }
+
+  &__text {
+    color: $gray-secondary;
+
+    @extend %body-text;
+  }
+}
