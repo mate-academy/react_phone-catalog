@@ -1,6 +1,7 @@
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import { useEffect } from 'react';
 import { PAGE } from './definitions/enums/Router';
 import { store } from './store/redux/store';
 
@@ -13,7 +14,6 @@ import ProductPage from './pages/ProductPage';
 import ErrorMessage from './components/common/ErrorMessage';
 import { ContextProvider } from './store/contexts/GlobalContextProvider';
 import CheckoutPage from './pages/CheckoutPage';
-import { useEffect } from 'react';
 import { prepareAdditionalInformation } from './utils/servicesHelper';
 
 export const Root: React.FC = () => {

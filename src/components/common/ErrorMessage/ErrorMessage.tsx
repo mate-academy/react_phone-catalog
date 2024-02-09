@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const ErrorMessage: React.FC<Props> = memo(({
-  message, height, width, errorImg = '/img/informative/error-img.webp',
+  message, height, width, errorImg = './img/informative/error-img.webp',
 }) => {
   const navigate = useNavigate();
 

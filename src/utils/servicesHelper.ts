@@ -41,5 +41,6 @@ export const getSpecArrayFromProduct = (product: ProductDetails) => {
 
 export function prepareAdditionalInformation() {
   const errorImgWhenUserWillBeOffline = new Image();
-  errorImgWhenUserWillBeOffline.src = '/img/informative/error-img.webp';
+
+  errorImgWhenUserWillBeOffline.src = './img/informative/error-img.webp';
 }

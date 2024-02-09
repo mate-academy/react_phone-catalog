@@ -72,7 +72,7 @@ export const CartProductItem: React.FC<Props> = memo(({
         >
           <img
             className="cart-product-item__close-icon"
-            src="/img/icons/close-icon.svg"
+            src="./img/icons/close-icon.svg"
             alt=""
           />
         </button>

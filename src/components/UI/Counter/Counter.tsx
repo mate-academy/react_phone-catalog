@@ -48,7 +48,7 @@ export const Counter: React.FC<Props> = memo(({
         onClick={decrease}
         disabled={!!(min && count <= min)}
       >
-        <img src="/img/icons/minus-icon.svg" alt="" />
+        <img src="./img/icons/minus-icon.svg" alt="" />
       </button>
 
       <p className="counter__count">
@@ -62,7 +62,7 @@ export const Counter: React.FC<Props> = memo(({
         onClick={increase}
         disabled={!!(max && count >= max)}
       >
-        <img src="/img/icons/plus-icon.svg" alt="" />
+        <img src="./img/icons/plus-icon.svg" alt="" />
       </button>
     </div>
   );
