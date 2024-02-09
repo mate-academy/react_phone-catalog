@@ -16,3 +16,21 @@
   font-weight: $bold-font;
   letter-spacing: -0.32px;
 }
+
+// @mixin onDesktop {
+//   @media (min-width: 1174px) {
+//     @content;
+//   }
+// }
+
+@mixin onTablet {
+  @media (min-width: 640px) and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: 0px) and (max-width: 639px) {
+    @content;
+  }
+}

@@ -1,0 +1,16 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.dropdowns {
+  display: grid;
+  grid-template-columns: 176px 128px 1fr;
+  column-gap: 16px;
+
+  @include onTablet {
+    grid-template-columns: 187px 136px 1fr;
+  }
+
+  @include onMobile {
+    grid-template-columns: 1fr 1fr;
+  }
+}

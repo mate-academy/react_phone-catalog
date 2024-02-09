@@ -1,5 +1,6 @@
 @import "./utils/fonts.scss";
 @import "./utils/variables.scss";
+@import "./utils/mixins.scss";
 
 * {
   margin: 0;
@@ -40,12 +41,23 @@ button {
 }
 
 .main-content {
-  padding: 40px 0 80px;
+  padding: 40px 24px 80px;
   display: flex;
   flex-grow: 1;
   justify-content: center;
 
   &__container {
     max-width: 1136px;
+    width: 100%;
+
+    @include onTablet {
+      max-width: 848px;
+      min-width: 592px;
+    }
+
+    @include onMobile {
+      max-width: 591px;
+      min-width: 320px;
+    }
   }
 }

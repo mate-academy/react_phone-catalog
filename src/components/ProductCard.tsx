@@ -7,7 +7,8 @@ import '../styles/ProductCard.scss';
 import { API_URL } from '../utils/api-phones';
 
 interface Props {
-  product: Product
+  product: Product;
+  // key: string;
 }
 
 const PRODUCT_CARD_PARAMS = ['Screen', 'Capacity', 'RAM'];

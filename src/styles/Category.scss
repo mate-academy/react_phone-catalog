@@ -1,0 +1,91 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.Category {
+  &__block {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 16px;
+
+    @include onMobile {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    @include h2Text;
+  }
+
+  &__link {
+    &--phones {
+      grid-column: 1 / 3;
+    }
+
+    &--tablets {
+      grid-column: 3 / 5;
+    }
+
+    &--accessories {
+      grid-column: 5 / 7;
+    }
+  }
+
+  &__photo-container {
+    margin-bottom: 24px;
+    width: 100%;
+    height: 368px;
+    overflow: hidden;
+
+    @include onTablet {
+      height: 272px;
+    }
+
+    @include onMobile {
+      height: 272px;
+    }
+
+    &--phones {
+      background-color: #FCDBC1;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+
+    &--accessories {
+      background-color: #973D5F;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+    transition: transform .3s;
+
+    @include onMobile {
+      object-position: top;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__items-title {
+    margin-bottom: 4px;
+    color: $primary-color;
+    font-size: 20px;
+    font-weight: $medium-font;
+    line-height: 26px;
+  }
+
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}

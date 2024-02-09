@@ -1,0 +1,102 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.PictureSlider {
+  &__top {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    column-gap: 16px;
+    height: 400px;
+    margin-bottom: 8px;
+
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onMobile {
+      height: 200px;
+    }
+  }
+
+  &__photo-container {
+    display: flex;
+    // max-width: 1040px;
+    overflow: hidden;
+  }
+
+  &__photos-list {
+    display: flex;
+    transition: transform 1s ease;
+  }
+
+  &__photos-item {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+
+  &__link {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__button-left {
+    height: 100%;
+    grid-column: 1 / 2;
+    padding: 16px;
+    background: url(../icons/arrow-left.svg) no-repeat center;
+    border: 1px solid $gray-icons-color;
+
+    &:disabled {
+      background: url(../icons/arrow-left-disabled.svg) no-repeat center;
+      border: 1px solid $elements-color;
+      cursor: default;
+    }
+  }
+
+  &__button-right {
+    grid-column: 3 / 4;
+    padding: 16px;
+    background: url(../icons/arrow-right.svg) no-repeat center;
+    border: 1px solid $gray-icons-color;
+
+    &:disabled {
+      background: url(../icons/arrow-right-disabled.svg) no-repeat center;
+      border: 1px solid $elements-color;
+      cursor: default;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__dot-button {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dot {
+    background-color: $elements-color;
+    width: 14px;
+    height: 4px;
+    transition: background-color .5s ease-in-out;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}

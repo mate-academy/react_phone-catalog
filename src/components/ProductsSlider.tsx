@@ -7,9 +7,10 @@ import '../styles/ProductsSlider.scss';
 
 interface Props {
   products: Product[],
+  title: string,
 }
 
-export const ProductsSlider: React.FC<Props> = ({ products }) => {
+export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const frameSize = 4;
   const step = frameSize;
   const itemWidth = 272;
@@ -49,10 +50,10 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
   };
 
   return (
-    <section className="ProductsSlider">
+    <section className="ProductsSlider HomePage-section">
       <div className="ProductsSlider__top">
         <h2 className="ProductsSlider__title">
-          Hot prices
+          {title}
         </h2>
 
         <div className="ProductsSlider__buttons">
@@ -78,8 +79,9 @@ export const ProductsSlider: React.FC<Props> = ({ products }) => {
           {products.map(product => (
             <li key={product.itemId} style={itemStyle}>
               <ProductCard
-                key={product.itemId}
+                // key={product.itemId}
                 product={product}
+                data-cy="cardsContainer"
               />
             </li>
           ))}

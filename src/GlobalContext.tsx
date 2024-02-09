@@ -5,6 +5,9 @@ import { getProducts } from './utils/api-phones';
 
 export const GlobalContext = React.createContext<ContextType>({
   products: [],
+  phones: [],
+  tablets: [],
+  accessories: [],
   setProducts: () => { },
   isLoading: false,
 });
@@ -16,6 +19,9 @@ type Props = {
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const phones = products.filter(item => item.category === 'phones');
+  const tablets = products.filter(item => item.category === 'tablets');
+  const accessories = products.filter(item => item.category === 'accessories');
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,6 +38,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
 
   const value = {
     products,
+    phones,
+    tablets,
+    accessories,
     setProducts,
     isLoading,
   };
