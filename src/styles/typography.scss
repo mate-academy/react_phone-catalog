@@ -16,6 +16,7 @@
 h1 {
   font-family: Mont-Bold, sans-serif;
   font-size: 32px;
+  font-weight: 700;
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
@@ -23,6 +24,7 @@ h1 {
 
 h2 {
   font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
   font-size: 22px;
   line-height: 31px;
   text-align: left;
@@ -31,6 +33,7 @@ h2 {
 h3 {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
+  font-weight: 600;
   line-height: 26px;
   text-align: left;
 }
@@ -38,6 +41,7 @@ h3 {
 p {
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
+  font-weight: 500;
   line-height: 21px;
   text-align: left;
 }
@@ -45,6 +49,7 @@ p {
 button {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 14px;
+  font-weight: 600;
   line-height: 21px;
   text-align: left;
 }
@@ -52,12 +57,14 @@ button {
 @mixin small-text {
   font-family: Mont-SemiBold, sans-serif;
   font-size: 12px;
+  font-weight: 600;
   line-height: 15px;
   text-align: left;
 }
 
 @mixin upper-case {
   font-family: Mont-Bold, sans-serif;
+  font-weight: 700;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;

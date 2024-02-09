@@ -1,33 +1,45 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
+import classNames from 'classnames';
 
 export const Navbar = () => {
   return (
     <nav className="navbar">
-      <Link
+      <NavLink
         to="/"
-        className="navbar__link"
+        className={({ isActive }) => classNames('navbar__link', {
+          'navbar__link--active': isActive,
+        })}
       >
         Home
-      </Link>
-      <Link
+      </NavLink>
+
+      <NavLink
         to="/phones"
-        className="navbar__link"
+        className={({ isActive }) => classNames('navbar__link', {
+          'navbar__link--active': isActive,
+        })}
       >
         Phones
-      </Link>
-      <Link
+      </NavLink>
+
+      <NavLink
         to="/tablets"
-        className="navbar__link"
+        className={({ isActive }) => classNames('navbar__link', {
+          'navbar__link--active': isActive,
+        })}
       >
         Tablets
-      </Link>
-      <Link
+      </NavLink>
+
+      <NavLink
         to="/accessories"
-        className="navbar__link"
+        className={({ isActive }) => classNames('navbar__link', {
+          'navbar__link--active': isActive,
+        })}
       >
         Accessories
-      </Link>
+      </NavLink>
     </nav>
   );
 };

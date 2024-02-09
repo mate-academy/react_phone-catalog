@@ -1,1 +1,11 @@
-// @import './styles/main';
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 64px 1fr 96px;
+
+  grid-template-areas:
+   'header'
+   'main'
+   'footer'
+  ;
+}

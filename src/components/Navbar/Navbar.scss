@@ -1,12 +1,27 @@
-@import '../../styles/typography';
+@import "../../styles/typography";
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
 .navbar {
+  $padding-inline: 32px;
+  
   display: flex;
-  gap: 64px;
 
   &__link {
-    padding-block: 26px;
-    
-    @include upper-case;
+    @include navbar-link;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      width: 0;
+      background-color: black;
+      transition: width ease-in-out $transition-duration;
+    }
+
+    &--active::before {
+      width: calc(100% - $padding-inline * 2);
+    }
   }
 }

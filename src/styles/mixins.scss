@@ -3,3 +3,28 @@
     @content;
   }
 }
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-duration;
+  cursor: pointer;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin navbar-link {
+  $padding-inline: 32px;
+
+  padding-inline: $padding-inline;
+  padding-block: 26px;
+  text-decoration: none;
+  color: $color-secondary;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: fit-content;
+
+  @include hover(background-color, $color-background);
+  @include upper-case;
+}

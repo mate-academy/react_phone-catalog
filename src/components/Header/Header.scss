@@ -1,12 +1,31 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .header {
+  grid-area: header;
+  max-width: $desctop-size;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid $color-background;
 
-  &__left {
+  &__left,
+  &__right {
     display: flex;
   }
 
-  &__logo {
-    margin-right: 64px;
+  &__link {
+    padding: 26px;
+    display: flex;
+    align-items: center;
+    border: 1px solid $color-background;
+    border-bottom: none;
+
+    &:last-child {
+      padding-right: none;
+    }
+
+    @include hover(background-color, $color-background);
   }
 }

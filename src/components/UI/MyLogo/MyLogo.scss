@@ -1,0 +1,13 @@
+@import '../../../styles/variables';
+
+.logo {
+  width: fit-content;
+  padding-left: 26px;
+  display: flex;
+  align-items: center;
+  transition: transform ease-in-out $transition-duration;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

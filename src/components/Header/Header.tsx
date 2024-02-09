@@ -1,26 +1,22 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Link } from 'react-router-dom';
 import { Navbar } from '../Navbar';
 
 import './Header.scss';
+import { MyLogo } from '../UI/MyLogo';
 
 export const Header = () => {
   return (
-    <header className="header">
+    <header className="header" id="top">
       <div className="header__left">
-        <Link to="/" className="header__logo">
-          <img src="img/logo.png" alt="logo" />
-        </Link>
-
+        <MyLogo />
         <Navbar />
       </div>
 
       <div className="header__right">
-        <Link to="/favorite">
+        <Link to="/favorite" className="header__link">
           <img src="/img/icons/heart.svg" alt="favorite" />
         </Link>
-
-        <Link to="/cart">
+        <Link to="/cart" className="header__link">
           <img src="/img/icons/cart.svg" alt="cart" />
         </Link>
       </div>
