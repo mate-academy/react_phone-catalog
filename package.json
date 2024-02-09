@@ -7,12 +7,13 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react": "^5.12.4",
-    "@fortawesome/fontawesome-free": "^6.2.0",
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5"
   },

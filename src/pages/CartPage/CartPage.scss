@@ -1,0 +1,48 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.CartPage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  column-gap: 16px;
+
+  &__button-back {
+    grid-column: span 3;
+  }
+
+  &__title {
+    grid-column: span 24;
+    margin-bottom: 24px;
+
+    color: $gray-primary;
+
+    @extend %h1;
+  }
+
+  &__list {
+    grid-column: 1 / 17;
+  }
+
+  &__checkout {
+    grid-column: 17 / 24;
+  }
+
+  &__checkout-answer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    width: 75%;
+    height: 50%;
+    background-color: rgba($color: $gray-icons-placeholders, $alpha: 0.5);
+    border-radius: 40px;
+    transform: translateX(-50%);
+
+    &--text {
+      color: $gray-primary;
+      opacity: 0.9;
+    }
+  }
+}

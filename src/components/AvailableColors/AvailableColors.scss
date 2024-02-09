@@ -1,0 +1,26 @@
+@import '../../utils/variables';
+@import '../../utils/typography';
+
+.AvailableColors {
+  &__link-color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $gray-elements;
+
+    transition: all $duration;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--content {
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.ProductsSlider {
+  width: $design-width;
+  overflow: hidden;
+
+  &__container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    column-gap: 16px;
+
+    transition: transform 1000ms;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: $gray-primary;
+    
+    @extend %h1;
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    background-color: $gray-white;
+    border: 1px solid $gray-icons-placeholders;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &--prev {
+      background-image: url(../../../public/img/icons/arrow-left.svg);
+
+      &:disabled {
+        background-image: url(../../../public/img/icons/arrow-left-dis.svg);
+        border-color: $gray-elements;
+      }
+    }
+
+    &--next {
+      background-image: url(../../../public/img/icons/arrow-right.svg);
+
+      &:disabled {
+        background-image: url(../../../public/img/icons/arrow-right-dis.svg);
+        border-color: $gray-elements;
+      }
+    }
+  }
+}
+

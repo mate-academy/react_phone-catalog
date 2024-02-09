@@ -1,0 +1,24 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.AboutProduct {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  &__article-title {
+    margin-bottom: 16px;
+    color: $gray-primary;
+
+    @extend %h3;
+  }
+
+  &__article-paragraph {
+    display: flex;
+    flex-direction: column;
+    row-gap: 21px;
+    color: $gray-secondary;
+
+    @extend %body-text;
+  }
+}

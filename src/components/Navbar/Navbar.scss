@@ -1,0 +1,158 @@
+@import "../../utils/typography";
+@import "../../utils/variables";
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+
+  box-shadow: 0 1px 0 0 $gray-elements;
+
+  &__left {
+    display: flex;
+    column-gap: 64px;
+    align-items: center;
+    padding-left: 24px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: 64px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    list-style: none;
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    color: $gray-secondary;
+    text-decoration: none;
+
+    @extend %text-uppercase;
+
+    &::after {
+      position: absolute;
+      content: '';
+      height: 3px;
+      width: 100%;
+      bottom: 0;
+      background-color: $gray-primary;
+
+      transform: scale(0);
+      transition: all $duration;
+    }
+
+    &:hover {
+      color: $gray-primary;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--active {
+      color: $gray-primary;
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-bar {
+    display: flex;
+    width: 327px;
+    height: 64px;
+    justify-content: space-between;
+    padding-inline: 24px;
+    box-shadow: -1px 0 0 0 $gray-elements;
+    align-items: center;
+  }
+
+  &__search {
+    border: none;
+    outline: none;
+    color: $gray-primary;
+
+    @extend %text-buttons;
+
+    &::placeholder {
+      color: $gray-icons-placeholders;
+
+      @extend %body-text;
+    }
+  }
+
+  &__link-icons {
+    display: flex;
+    position: relative;
+    height: 64px;
+    width: 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 $gray-elements;
+
+    &::after {
+      position: absolute;
+      content: '';
+      height: 3px;
+      width: 100%;
+      bottom: 0;
+      background-color: $gray-primary;
+
+      transform: scale(0);
+      transition: transform $duration;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &--active::after {
+      transform: scale(1);
+    }
+  }
+
+  &__heart {
+    background-image: url(../../../public/img/icons/heart.svg);
+  }
+
+  &__cart {
+    box-shadow: 0 0 0 1px $gray-elements;
+    background-image: url(../../../public/img/icons/basket.svg);
+  }
+
+  &__icons-count {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    content: '';
+    top: 25%;
+    right: 25%;
+    width: 14px;
+    height: 14px;
+    background-image: url(../../../public/img/icons/red-dot.svg);
+
+    transform: translate(-25%, 25%);
+  }
+
+  &__icons-text {
+    color: $gray-white;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

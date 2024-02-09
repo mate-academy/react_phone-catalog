@@ -1,0 +1,45 @@
+@import "../../utils/typography";
+@import "../../utils/variables";
+
+.pagination {
+  margin-inline: auto;
+  display: flex;
+  column-gap: 16px;
+
+  &__link {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray-icons-placeholders;
+    color: #000;
+
+    @extend %body-text;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--arrow {
+      background-image: url(../../../public/img/icons/arrow-left.svg);
+    }
+
+    &--arrow-right {
+      transform: rotate(180deg);
+    }
+
+    &--arrow-disabled {
+      cursor: auto;
+      pointer-events: none;
+      border-color: $gray-elements;
+      background-image: url(../../../public/img/icons/arrow-left-dis.svg);
+    }
+
+    &--active {
+      color: $gray-white;
+      background-color: $gray-primary;
+    }
+  }
+}
+
+

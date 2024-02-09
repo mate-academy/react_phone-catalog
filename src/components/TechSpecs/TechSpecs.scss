@@ -1,0 +1,21 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.TechSpecs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  &__item {
+    display: flex;
+    row-gap: 8px;
+    justify-content: space-between;
+    color: $gray-secondary;
+
+    @extend %body-text;
+  }
+
+  &__item-value {
+    color: $gray-primary;
+  }
+}

@@ -1,0 +1,10 @@
+@import '../../utils/typography';
+@import '../../utils/variables';
+
+.NoResults {
+  &__title {
+    color: $gray-secondary;
+
+    @extend %h1;
+  }
+}
