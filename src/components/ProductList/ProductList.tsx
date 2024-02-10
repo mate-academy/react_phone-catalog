@@ -8,7 +8,7 @@ import { filterProducts } from '../../helpers/filterProducts';
 import { NoSearchResults } from '../NoResult/NoSearchResults';
 import { ProductCard } from '../ProductCard/ProductCard';
 // import { ProductSection } from '../../types/ProductSection';
-// import { Pagination } from '../Pagination/Pagination';
+import { Pagination } from '../Pagination/Pagination';
 import { DropDown } from '../DropDown/DropDown';
 import { sortParam, itemsOnPage } from '../../types/SortTypes';
 
@@ -82,7 +82,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
           );
         })}
       </ul>
-      {/* {(perPage < sortedProducts.length && filteredProducts.length > 0) && (
+      {(perPage < sortedProducts.length && filteredProducts.length > 0) && (
         <div className="product-list__pagination">
           <Pagination
             totalItems={sortedProducts.length}
@@ -90,7 +90,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
             currentPage={currentPage}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 };

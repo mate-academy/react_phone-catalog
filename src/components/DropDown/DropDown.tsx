@@ -1,7 +1,7 @@
 import './DropDown.scss';
 import classNames from 'classnames';
 import { useSearchParams, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Option } from '../../types/SortTypes';
 import { getSearchWith } from '../../helpers/searchHelper';
 import arrowDown from '../../Images/Icons/ArrowDown.svg';
@@ -23,10 +23,21 @@ export const DropDown: React.FC<Props> = ({
   const [searchParams] = useSearchParams();
   const [selectOption, setSelectOption] = useState(initialValue);
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDroopDown = () => {
     setIsOpen(!isOpen);
     searchParams.set('page', '1');
+  };
+
+  const handleBodyClick = (event: MouseEvent) => {
+    // Проверяем, был ли клик вне элемента списка
+    if (
+      dropdownRef.current
+      && !dropdownRef.current.contains(event.target as Node)
+    ) {
+      setIsOpen(false);
+    }
   };
 
   const handleSelectOption = (option: string) => {
@@ -42,10 +53,18 @@ export const DropDown: React.FC<Props> = ({
     } else {
       setSelectOption(initialValue);
     }
+    // Add a handler for the entire document
+
+    document.body.addEventListener('mousedown', handleBodyClick);
+
+    // Removing the handler when unmounting a component
+    return () => {
+      document.body.removeEventListener('mousedown', handleBodyClick);
+    };
   }, [searchName, initialValue, options, searchParams]);
 
   return (
-    <div className="drop-down">
+    <div className="drop-down" ref={dropdownRef}>
       <label className="drop-down__title">{label}</label>
       <button
         className="drop-down__header"

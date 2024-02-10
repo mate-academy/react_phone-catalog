@@ -1,13 +1,13 @@
 import { Product } from '../types/Product';
 
 export const filterProducts = (products: Product[], query: string) => {
-  const normalizedQuery = query.toLowerCase().trim();
+  const queryWords = query.toLowerCase().trim().split(' ');
 
-  const productsIcludesQuery = products.filter(product => {
+  const filteredProducts = products.filter(product => {
     const productName = product.name.toLowerCase();
 
-    return productName.includes(normalizedQuery);
+    return queryWords.some(word => productName.includes(word));
   });
 
-  return productsIcludesQuery;
+  return filteredProducts;
 };
