@@ -22,7 +22,7 @@ export const Header = () => {
         >
           <SwiperSlide>
             <img
-              src="./img/banner-phones.jpg"
+              src='./_new/img/banner-accessories.png'
               alt="phones"
               className="swiper-img"
             />

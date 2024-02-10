@@ -16,7 +16,7 @@ export const Category = () => {
             className="category__item"
           >
             <img
-              src="./img/category-phones.jpg"
+              src="/src/img/category-phones.jpg"
               alt="Phones"
               className="category__item__img"
             />
