@@ -7,6 +7,9 @@
   margin-bottom: 40px;
 
   &__logo {
+    background: url('../icon/Logo.png');
+    background-position: left;
+    background-repeat: no-repeat;
     padding-right: 64px;
     height: 24px;
   }
@@ -75,6 +78,7 @@
       background: #fff;
       border: none;
     }
+
     &__input {
       padding: 24px;
       width: 327px;

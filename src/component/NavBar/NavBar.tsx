@@ -44,13 +44,8 @@ export const NavBar = () => {
     <nav className="nav">
       <NavLink
         to="/"
-      >
-        <img
-          alt="Logo"
-          className="nav__logo"
-          src="./icon/Logo.png"
-        />
-      </NavLink>
+        className="nav__logo"
+      />
 
       <ul className="nav__list">
         <li className="nav__item">

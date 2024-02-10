@@ -22,21 +22,21 @@ export const Header = () => {
         >
           <SwiperSlide>
             <img
-              src='./_new/img/banner-accessories.png'
+              src="img\banner-phones.jpg"
               alt="phones"
               className="swiper-img"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src="./img/banner-accessories.jpg"
+              src="img\banner-accessories.jpg"
               alt="accessories"
               className="swiper-img"
             />
           </SwiperSlide>
           <SwiperSlide>
             <img
-              src="./img/banner-tablets.jpg"
+              src="img/banner-tablets.jpg"
               alt="tablets"
               className="swiper-img"
             />

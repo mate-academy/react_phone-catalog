@@ -9,6 +9,14 @@
     align-items: center;
   }
 
+  &__logo {
+    background: url('../icon/Logo.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    padding-right: 64px;
+    height: 24px;
+  }
+
   &__link {
     text-decoration: none;
     color: $gray-secondary;
