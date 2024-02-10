@@ -1,4 +1,5 @@
 @import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 @keyframes show-prev-arrow {
   from {
@@ -38,7 +39,11 @@
     border: 1px solid var(--c-primary);
     background-color: var(--c-bg);
     border-radius: 5px;
-    
+
+    @include onHoverSupport {
+      display: flex;
+    }
+
     &--prev {
       left: 16px;
       animation: show-prev-arrow 1s forwards;

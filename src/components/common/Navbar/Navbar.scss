@@ -1,4 +1,4 @@
-@import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 .navbar {
   display: flex;
@@ -21,11 +21,8 @@
     text-transform: uppercase;
 
     padding: 16px;
-    transition: $transition-time;
 
-    &:hover {
-      color: var(--c-primary);
-    }
+    @include hover(color, var(--c-primary));
 
     &::after {
       content: '';

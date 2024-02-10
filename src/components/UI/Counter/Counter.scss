@@ -1,4 +1,5 @@
 @import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 .counter {
   display: flex;
@@ -12,9 +13,7 @@
     cursor: pointer;
     transition: transform $transition-time;
 
-    &:hover {
-      border-color: var(--c-primary);
-    }
+    @include hover(border-color, var(--c-primary), 0);
 
     &:active > img {
       transform: scale(1.15);

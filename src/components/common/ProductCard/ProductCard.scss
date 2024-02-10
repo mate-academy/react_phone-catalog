@@ -1,4 +1,4 @@
-@import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 :root {
   --product-card-width: 272px;
@@ -12,11 +12,8 @@
   border: 1px solid var(--c-elements);
   background: var(--c-bg);
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
-  transition: $transition-time;
 
-  &:hover {
-    transform: scale(1.02);
-  }
+  @include hover(transform, scale(1.02));
 
   &__top {
     display: flex;

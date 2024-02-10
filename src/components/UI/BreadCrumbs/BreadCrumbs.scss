@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 .bread-crumbs {
   display: flex;
   gap: 8px;
@@ -20,9 +22,10 @@
     font-size: 12px;
     font-weight: 600;
 
-    &--active,
-    &:hover {
+    &--active {
       color: var(--c-secondary);
     }
+
+    @include hover(color, var(--c-secondary), 0);
   }
 }

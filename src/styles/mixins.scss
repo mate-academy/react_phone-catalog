@@ -1,8 +1,30 @@
 @import './vars';
 
 // stylelint-disable-next-line
-@mixin onLaptop {
-  @media (max-width: $laptop-width) {
+@mixin onMobile {
+  @media (min-width: $mobile-width) {
     @content;
+  }
+}
+
+// stylelint-disable-next-line
+@mixin onTablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin onHoverSupport() {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue, $_transition-time: $transition-time) {
+  @media (hover: hover) and (pointer: fine) {
+    transition: #{$_property} #{$_transition-time};
+    &:hover {
+      #{$_property}: $_toValue;
+    }
   }
 }

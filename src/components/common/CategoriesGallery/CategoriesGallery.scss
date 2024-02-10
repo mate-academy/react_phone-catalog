@@ -1,4 +1,4 @@
-@import '../../../styles/vars';
+@import '../../../styles/mixins';
 
 .categories-gallery {
   display: flex;
@@ -44,11 +44,8 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    transition: $transition-time;
 
-    &:hover {
-      transform: scale(1.05);
-    }
+    @include hover(transform, scale(1.05));
   }
 
   &__img {

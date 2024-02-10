@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 @keyframes checkout-page-mount {
   from {
     transform: scale(0);
@@ -24,9 +26,7 @@
     &>a {
       color: var(--c-success);
 
-      &:hover {
-        filter: brightness(1.2);
-      }
+      @include hover(filter, brightness(1.2), 0);
     }
   }
 
@@ -49,9 +49,11 @@
     width: 200px;
     margin-top: 10px;
 
-    &:hover {
-      color: var(--c-success);
-      border-color: var(--c-success);
+    @include onHoverSupport {
+      &:hover {
+        color: var(--c-success);
+        border-color: var(--c-success);
+      }
     }
   }
 }

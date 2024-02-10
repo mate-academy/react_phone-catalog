@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 @keyframes cart-product-item-unmount {
   from {
     transform: translateX(0);
@@ -41,9 +43,7 @@
     aspect-ratio: 1;
     cursor: pointer;
 
-    &:hover {
-      filter: brightness(50%);
-    }
+    @include hover(filter, brightness(50%), 0);
   }
 
   &__image-block {

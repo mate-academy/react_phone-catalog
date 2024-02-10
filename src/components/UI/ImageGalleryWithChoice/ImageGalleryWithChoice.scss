@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 .image-gallery-with-choice {
   display: flex;
   gap: 16px;
@@ -32,9 +34,7 @@
     padding: 2px;
     cursor: pointer;
 
-    &:hover {
-      border: 1px solid var(--c-primary);
-    }
+    @include hover(border, var(--c-primary), 0);
 
     &--selected {
       border: 1px solid var(--c-primary);

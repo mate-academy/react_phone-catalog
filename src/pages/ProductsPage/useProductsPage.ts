@@ -17,7 +17,7 @@ export function useProductsPage() {
 
   const getAmount = () => getProductsAmount(category);
   const [allProductsAmount, allAmountLoading, allAmountError] = useRequest(
-    getAmount, [category], null
+    getAmount, [category], null,
   );
   const amountHandled = allAmountLoading ? 0 : (allProductsAmount ?? 0);
 

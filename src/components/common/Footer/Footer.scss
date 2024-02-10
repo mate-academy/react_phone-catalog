@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 .footer {
   display: flex;
   justify-content: center;
@@ -38,11 +40,13 @@
     font-size: 12px;
     color: var(--c-secondary);
 
-    &:hover {
-      text-decoration: underline;
-
-      & > button {
-        border: 1px solid var(--c-primary);
+    @include onHoverSupport {
+      &:hover {
+        text-decoration: underline;
+  
+        & > button {
+          border: 1px solid var(--c-primary);
+        }
       }
     }
   }

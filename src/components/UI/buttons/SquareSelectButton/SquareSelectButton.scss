@@ -1,4 +1,4 @@
-@import './../../../../styles/vars';
+@import './../../../../styles/mixins';
 
 .square-select-button {
   height: 40px;
@@ -12,11 +12,7 @@
   background-color: var(--c-bg);
   cursor: pointer;
 
-  transition: $transition-time;
-
-  &:hover {
-    border: 1px solid var(--c-primary);
-  }
+  @include hover(border, var(--c-primary));
 
   & > img {
     aspect-ratio: 1;

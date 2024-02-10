@@ -1,3 +1,5 @@
+@import '../../../../styles/mixins';
+
 .arrow-button {
   display: flex;
   justify-content: center;
@@ -8,9 +10,7 @@
   width: 32px;
   cursor: pointer;
 
-  &:hover {
-    border: 1px solid var(--c-primary);
-  }
+  @include hover(border, var(--c-primary), 0);
 
   &:disabled {
     border: 1px solid var(--c-elements);

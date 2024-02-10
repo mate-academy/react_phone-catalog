@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 .paginator {
   display: flex;
   gap: 16px;
@@ -19,9 +21,7 @@
     border: 1px solid var(--c-elements);
     cursor: pointer;
 
-    &:hover {
-      border: 1px solid var(--c-primary);
-    }
+    @include hover(border, var(--c-primary), 0);
 
     &--active {
       background-color: var(--c-primary);

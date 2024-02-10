@@ -1,3 +1,5 @@
+@import '../../../../styles/mixins';
+
 .color-item {
   display: flex;
   align-items: center;
@@ -9,9 +11,7 @@
   border: 1px solid var(--c-elements);
   border-radius: 50%;
   
-  &:hover {
-    border: 1px solid var(--c-primary);
-  }
+  @include hover(border, var(--c-primary), 0);
   
   &--selected {
     border: 1px solid var(--c-primary);
