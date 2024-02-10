@@ -16,7 +16,7 @@ export const Category = () => {
             className="category__item"
           >
             <img
-              src="/src/img/category-phones.jpg"
+              src="img/category-phones.jpg"
               alt="Phones"
               className="category__item__img"
             />
@@ -33,7 +33,7 @@ export const Category = () => {
             className="category__item"
           >
             <img
-              src="./img/category-tablets.jpg"
+              src="img/category-tablets.jpg"
               alt="Tablets"
               className="category__item__img"
             />
@@ -50,7 +50,7 @@ export const Category = () => {
             className="category__item"
           >
             <img
-              src="./img/category-accessories.jpg"
+              src="img/category-accessories.jpg"
               alt="Accessories"
               className="category__item__img"
             />

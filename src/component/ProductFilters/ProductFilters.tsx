@@ -73,24 +73,18 @@ export const ProductFilters = () => {
               {isActive === 'sort' && (
                 <div className="filter__dropdown__menu">
                   {sortByParams.map(item => (
-                    <button
+                    /* eslint-disable-next-line */
+                    <div
                       key={item.key}
                       className="filter__dropdown__item"
-                      type="button"
                       onClick={() => {
                         handleChangeSort(item.value);
                         setSortParam(item.key);
                         setIsActive(null);
                       }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === 'Space') {
-                          handlePerPage(item.key);
-                          setIsActive(null);
-                        }
-                      }}
                     >
                       {item.key}
-                    </button>
+                    </div>
                   ))}
                 </div>
               )}
@@ -121,23 +115,17 @@ export const ProductFilters = () => {
               {isActive === 'per' && (
                 <div className="filter__dropdown__menu">
                   {sortByItems.map(item => (
-                    <button
+                    /* eslint-disable-next-line */
+                    <div
                       className="filter__dropdown__item"
                       key={item}
-                      type="button"
                       onClick={() => {
                         handlePerPage(item);
                         setIsActive(null);
                       }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === 'Space') {
-                          handlePerPage(item);
-                          setIsActive(null);
-                        }
-                      }}
                     >
                       {item}
-                    </button>
+                    </div>
                   ))}
                 </div>
               )}
