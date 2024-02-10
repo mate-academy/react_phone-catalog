@@ -6,7 +6,6 @@ import './product-card-actions.scss';
 import { Product } from '../../types/Product';
 import { CartItem } from '../../types/CartItem';
 
-
 type Props = {
   product: Product,
 };
