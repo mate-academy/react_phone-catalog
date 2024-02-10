@@ -1,19 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import cn from 'classnames';
 import { Link, useParams } from 'react-router-dom';
 import { getProduct } from '../../api/api';
 import { Loader } from '../Loader';
 import { Phone } from '../../Type/Phone';
 import { Footer } from '../Footer';
 import { ProductsSlider } from '../ProductsSlider';
+import { ProductContext } from '../../ProductContext';
 
 const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 export const ProductDetailsPage = () => {
+  const {
+    products,
+    cartItems,
+    favourites,
+    hasItems,
+    addCart,
+    addFavourites,
+  } = useContext(ProductContext);
+
   const [product, setProduct] = useState<Phone>();
   const [loading, setLoading] = useState<boolean>(false);
   const [slideActive, setSlideActive] = useState<string>('');
 
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
+
+  const findProduct = [...products].find((prod) => {
+    return prod.itemId === product?.id;
+  });
 
   useEffect(() => {
     if (productId) {
@@ -31,7 +46,7 @@ export const ProductDetailsPage = () => {
     }
   }, [productId, setProduct]);
 
-  if (loading || !product) {
+  if (loading || !product || !findProduct) {
     return <Loader />;
   }
 
@@ -126,34 +141,46 @@ export const ProductDetailsPage = () => {
             <div className="details__prise">
               <div className="details__prise__wrap">
                 <p className="details__prise-new">
-                  {' '}
-                  {product.priceRegular}
-                  {' '}
+                  {`$${product.priceRegular}`}
                 </p>
                 <p className="details__prise-old">
-                  {' '}
-                  {product.priceDiscount}
-                  {' '}
+                  {`$${product.priceDiscount}`}
                 </p>
               </div>
 
               <div className="details__prise__buttons">
                 <button
                   type="button"
-                  className="details__prise__buttons-add"
+                  className={cn(
+                    'details__prise__buttons-add',
+                    { selected: hasItems(+findProduct.id, cartItems) },
+                  )}
+                  onClick={() => addCart(+findProduct.id, findProduct)}
                 >
-                  Add to cart
+                  {hasItems(+findProduct.id, cartItems)
+                    ? ('Selected')
+                    : ('Add to cart')}
                 </button>
 
-                <a
-                  href="/#"
+                <button
+                  type="button"
                   className="details__prise__buttons-like"
+                  onClick={() => addFavourites(+findProduct.id, findProduct)}
                 >
-                  <img
-                    src="./icon/Like.svg"
-                    alt="like"
-                  />
-                </a>
+                  {hasItems(+findProduct.id, favourites)
+                    ? (
+                      <img
+                        src="./icon/Favourites.svg"
+                        alt="Favourites"
+                      />
+                    )
+                    : (
+                      <img
+                        src="./icon/Like.svg"
+                        alt="like"
+                      />
+                    )}
+                </button>
               </div>
             </div>
 

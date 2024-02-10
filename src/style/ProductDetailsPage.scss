@@ -226,17 +226,19 @@
         line-height: 21px;
         justify-content: center;
         align-items: center;
-
+        cursor: pointer;
       }
 
       &-like {
         width: 48px;
         height: 48px;
-        border: 1px solid $gray-icons;
+        border: 1px solid $gray-elements;
 
         display: flex;
         justify-content: center;
         align-items: center;
+        background: #fff;
+        cursor: pointer;
       }
     }
   }
@@ -374,5 +376,11 @@
         }
       }
     }
+  }
+
+  .selected {
+    background: #fff;
+    color: #27AE60;
+    border: 1px solid $gray-elements;
   }
 }

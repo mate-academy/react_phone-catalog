@@ -38,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product, sale }) => {
     <div className="card" data-cy="cardsContainer">
       <Link
         to={{
-          pathname: `${itemId}`,
+          pathname: `../phones/${itemId}`,
           search: searchParams.toString(),
         }}
       >
