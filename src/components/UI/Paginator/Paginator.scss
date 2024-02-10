@@ -25,6 +25,7 @@
 
     &--active {
       background-color: var(--c-primary);
+      pointer-events: none;
       color: var(--c-bg);
       border: none;
     }

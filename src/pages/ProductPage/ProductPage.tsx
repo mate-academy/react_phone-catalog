@@ -34,7 +34,10 @@ export const ProductPage: React.FC = memo(() => {
     ));
 
     if (productToChange) {
-      navigate(direction(`/${category}/${productToChange.id}`));
+      navigate(
+        direction(`/${category}/${productToChange.id}`),
+        { replace: true },
+      );
       setProduct(productToChange);
     }
   }, [similarProducts, category]);

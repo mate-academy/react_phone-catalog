@@ -1,46 +1,43 @@
 import { SetURLSearchParams, useSearchParams as useRouterSearchParams } from 'react-router-dom';
-import { useRef } from 'react';
 import { SearchParam } from '../../definitions/enums/Router';
 
 export function useSearchParams() {
   const [routerParams, setRouterParams] = useRouterSearchParams();
-  const searchParamsRef = useRef(routerParams);
-  const setParamsRef = useRef(setRouterParams);
-  const searchParams = useRef(new SearchParamsWithRouter(setParamsRef, searchParamsRef));
+  // const searchParamsRef = useState(routerParams);
+  // const setParamsRef = useState(setRouterParams);
 
-  searchParamsRef.current = routerParams;
-  setParamsRef.current = setRouterParams;
+  // searchParamsRef.current = routerParams;
+  // setParamsRef.current = setRouterParams;
 
-  return searchParams.current;
+  return new SearchParamsWithRouter(setRouterParams, routerParams);
 }
 
 type Value = string | number;
 
 export class SearchParamsWithRouter {
-  private params: { current: URLSearchParams };
+  readonly params: URLSearchParams;
 
-  private setParams: { current: SetURLSearchParams };
+  private setParams: SetURLSearchParams;
 
   constructor(
-    setParamsFunction: React.MutableRefObject<SetURLSearchParams>,
-    searchParams: React.MutableRefObject<URLSearchParams>,
+    setParamsFunction: SetURLSearchParams,
+    searchParams: URLSearchParams,
   ) {
     this.params = searchParams;
     this.setParams = setParamsFunction;
-    // console.log('New SetParamsObject was created');
   }
 
   get<T extends string>(key: SearchParam) {
-    return this.params.current.get(key) as T | null;
+    return this.params.get(key) as T | null;
   }
 
   has(key: SearchParam) {
-    return this.params.current.has(key);
+    return this.params.has(key);
   }
 
   set<T extends Value>(key: SearchParam, value: T) {
     const stringValue = value.toString();
-    const params = new URLSearchParams(this.params.current);
+    const params = new URLSearchParams(this.params);
 
     if (stringValue) {
       params.set(key, stringValue);
@@ -48,20 +45,20 @@ export class SearchParamsWithRouter {
       params.delete(key);
     }
 
-    this.setParams.current(params);
+    this.setParams(params);
   }
 
   delete(key: SearchParam) {
-    const params = new URLSearchParams(this.params.current);
+    const params = new URLSearchParams(this.params);
 
     params.delete(key);
 
-    this.setParams.current(params);
+    this.setParams(params);
   }
 
   clear() {
     const newParams = new URLSearchParams();
 
-    this.setParams.current(newParams);
+    this.setParams(newParams);
   }
 }
