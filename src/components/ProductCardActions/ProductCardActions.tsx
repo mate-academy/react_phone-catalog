@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useContext } from 'react';
+import classNames from 'classnames';
 import { MainContext } from '../../context';
 import './product-card-actions.scss';
 import { Product } from '../../types/Product';
 import { CartItem } from '../../types/CartItem';
+
 
 type Props = {
   product: Product,
@@ -11,6 +13,8 @@ type Props = {
 
 export const ProductCardActions: React.FC<Props> = ({ product }) => {
   const {
+    cartItems,
+    favoutitesItems,
     setCartItems,
     setFavouritesItems,
   } = useContext(MainContext);
@@ -22,30 +26,50 @@ export const ProductCardActions: React.FC<Props> = ({ product }) => {
       product: selectedProduct,
     };
 
-    setCartItems((prev) => {
-      return [...prev, cartItem];
-    });
+    if (cartItems.some(item => item.product === selectedProduct)) {
+      return;
+    }
+
+    setCartItems((prev) => [...prev, cartItem]);
   };
 
   const addToFavourites = (selectedProduct: Product) => {
-    setFavouritesItems((prev) => {
-      return [...prev, selectedProduct];
-    });
+    if (favoutitesItems.some(item => item === selectedProduct)) {
+      return;
+    }
+
+    setFavouritesItems((prev) => [...prev, selectedProduct]);
   };
 
   return (
     <>
       <button
         type="button"
-        className="add-to-card primary__button button"
+        name="add-to-card"
+        className={classNames(
+          'add-to-card primary__button button',
+          {
+            selected: cartItems.some(
+              item => item.product === product,
+            ),
+          },
+        )}
         onClick={() => addToCard(product)}
       >
         Add to cart
       </button>
       <button
         type="button"
-        className="add-to-favourite button icon"
+        name="add-to-favourite"
         onClick={() => addToFavourites(product)}
+        className={classNames(
+          'add-to-favourite button icon',
+          {
+            selected: favoutitesItems.some(
+              item => item === product,
+            ),
+          },
+        )}
       />
     </>
   );
