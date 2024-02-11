@@ -1,1 +1,18 @@
-// not empty
+@import "./main";
+
+* {
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+};
+
+a {
+  text-decoration: none;
+};
+
+.container {
+  width: 1130px;
+  margin: 0 auto;
+  padding: 0;
+};
+

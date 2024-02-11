@@ -1,0 +1,15 @@
+.favourites {
+  min-height: calc(100vh - 100px - 96px);
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__count {
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+}

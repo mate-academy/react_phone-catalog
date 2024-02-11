@@ -1,0 +1,39 @@
+$gray-primary: #313237;
+$gray-secondary: #89939A;
+$gray-icons: #B4BDC3;
+$gray-elements: #E2E6E9;
+$gray-white: #FFF;
+
+.phones {
+  &__url {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &__right {
+      padding: 0 8px;
+    }
+
+    &__title {
+      color: $gray-secondary;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__title {
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $gray-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+}

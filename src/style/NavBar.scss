@@ -1,0 +1,145 @@
+.nav {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 24px;
+  border-bottom: 1px solid $gray-elements;
+  margin-bottom: 40px;
+
+  &__logo {
+    background: url('../icon/Logo.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    padding-right: 64px;
+    height: 24px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    list-style: none;
+
+    &:not(:last-child) {
+      margin-right: 64px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $gray-elements;
+    line-height: 11px;
+    font-style: normal;
+    font-weight: 700;
+
+    padding: 20px 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $gray-primary;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover {
+      color: $gray-primary;
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__wrap {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__search {
+    position: relative;
+
+    &__btn {
+      position: absolute;
+      top: 48%;
+      left: 95%;
+      transform: translate(-95%, -48%);
+      background: #fff;
+      border: none;
+    }
+
+    &__input {
+      padding: 24px;
+      width: 327px;
+      height: 57px;
+      background: #FFF;
+      box-shadow: -1px 0 0 0 $gray-elements;
+      border: none;
+
+      color: $gray-primary;
+      font-size: 14px;
+      font-weight: 600;
+
+      &:focus {
+        outline: none;
+        background: #FAFBFC;
+      }
+
+      &::placeholder {
+        color: $gray-icons;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__icon {
+    position: relative;
+    padding: 20px 24px;
+    box-shadow: -1px 0 0 0 $gray-elements;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $gray-primary;
+      opacity: 0;
+    }
+
+    &__counter {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      color: $gray-white;
+      text-align: center;
+      font-size: 7px;
+      font-weight: 600;
+      background: #EB5757;
+      border-radius: 100%;
+      left: 55%;
+      bottom: 55%;
+    }
+  }
+
+  .active {
+    color: $gray-primary;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}

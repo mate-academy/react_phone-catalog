@@ -1,0 +1,45 @@
+.category {
+  min-height: 508px;
+  margin-bottom: 80px;
+
+
+  &__title {
+    color: $gray-primary;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+  }
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    text-decoration: none;
+
+    &__img {
+      height: 368px;
+      margin-bottom: 24px;
+      transition: border 0.5s;
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+
+    &__title {
+      color: $gray-primary;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    &__subtitle {
+      color: $gray-secondary;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+}

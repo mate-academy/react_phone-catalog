@@ -1,0 +1,65 @@
+.footer {
+  height: 96px;
+  border-top: 1px solid $gray-elements;
+  padding: 36px 0;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    background: url('../icon/Logo.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    padding-right: 64px;
+    height: 24px;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    padding-left: 64px;
+    transition: color .5s;
+
+    &:hover {
+      color: $gray-primary;
+    }
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+
+    &__text {
+      color: $gray-secondary;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 600;
+      padding-right: 16px;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $gray-icons;
+      background: #fff;
+      cursor: pointer;
+      transition: border .5s;
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
+    }
+  }
+}
