@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Navigation } from '../../types/navigation';
 import { Product } from '../../types/product';
-import { ProductCart } from '../ProductCart';
 import { MyNavButton } from '../UI/MyNavButton';
+import { ProductItem } from '../ProductItem';
 import './ProductsSlider.scss';
 
 type Props = {
@@ -56,7 +56,7 @@ export const ProductSlider: React.FC<Props> = ({ hotProducts }) => {
           style={{ transform: `translateX(-${slider * (CART_WIDTH + GAP)}px)` }}
         >
           {hotProducts.map(product => (
-            <ProductCart product={product} key={product.id} />
+            <ProductItem product={product} key={product.id} />
           ))}
         </div>
       </div>
