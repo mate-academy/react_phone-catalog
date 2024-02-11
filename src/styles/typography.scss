@@ -13,13 +13,14 @@
   src: url(../../public/fonts/Mont-SemiBold.otf);
 }
 
-h1 {
+@mixin h1 {
   font-family: Mont-Bold, sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
+  margin: 0;
 }
 
 h2 {
@@ -28,6 +29,7 @@ h2 {
   font-size: 22px;
   line-height: 31px;
   text-align: left;
+  margin: 0;
 }
 
 h3 {
@@ -36,6 +38,7 @@ h3 {
   font-weight: 600;
   line-height: 26px;
   text-align: left;
+  margin: 0;
 }
 
 p {
@@ -44,6 +47,7 @@ p {
   font-weight: 500;
   line-height: 21px;
   text-align: left;
+  margin: 0;
 }
 
 button {
@@ -60,6 +64,7 @@ button {
   font-weight: 600;
   line-height: 15px;
   text-align: left;
+  margin: 0;
 }
 
 @mixin upper-case {
@@ -70,4 +75,5 @@ button {
   letter-spacing: 0.04em;
   text-align: left;
   text-transform: uppercase;
+  margin: 0;
 }

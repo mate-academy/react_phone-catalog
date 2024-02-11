@@ -1,0 +1,28 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.MyNavButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color ease-in-out $transition-duration;
+
+  @include border;
+
+  &:disabled {
+    opacity: 50%;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+
+    &:disabled {
+      border-color: $color-background;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.ProductsSlider {
+  position: relative;
+
+  &__wrapper {
+    overflow: hidden;
+  }
+
+  &__carts {
+    display: flex;
+    gap: 16px;
+    transition: transform ease-in-out $transition-duration;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: -50px;
+    right: 0;
+  }
+}

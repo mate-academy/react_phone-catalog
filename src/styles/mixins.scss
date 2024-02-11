@@ -1,3 +1,5 @@
+@import './/variables';
+
 @mixin on-desktop {
   @media (max-width: $desctop-size) {
     @content;
@@ -27,4 +29,8 @@
 
   @include hover(background-color, $color-background);
   @include upper-case;
+}
+
+@mixin border {
+  border: 1px solid $color-background;
 }

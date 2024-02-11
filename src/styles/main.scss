@@ -15,10 +15,20 @@
 }
 
 .container {
-  max-width: 1136px;
+  max-width: 1440px;
   width: 100%;
   height: 100%;
-  padding-inline: 24px;
+  padding-inline: 152px;
   box-sizing: border-box;
   margin: 0 auto;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

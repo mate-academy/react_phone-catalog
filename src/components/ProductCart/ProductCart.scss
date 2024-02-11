@@ -1,0 +1,96 @@
+@import "../../styles/variables";
+@import "../../styles/typography";
+@import "../../styles/mixins";
+
+.ProductCart {
+  width: 272px;
+  min-width: 272px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 1px solid $color-background;
+
+  &__imgbox {
+    width: 208px;
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    width: inherit;
+    height: inherit;
+    transition: transform ease-in-out $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    margin-bottom: 6px;
+    min-height: 42px;
+  }
+
+  &__pricebox {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    border-bottom: 1px solid $color-background;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    margin: 0;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__option-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include small-text;
+  }
+
+  &__option-name {
+    color: $color-secondary;
+  }
+
+  &__option-value {
+    font-weight: 600;
+  }
+
+  &__btnbox {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__favorite {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 1px solid $color-background;
+    transition: border ease-in-out $transition-duration;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+}

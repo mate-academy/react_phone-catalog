@@ -1,0 +1,17 @@
+@import "../../../styles/variables";
+
+.MyButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 176px;
+  background-color: $color-primary;
+  color: $color-white;
+  transition: box-shadow ease-in-out $transition-duration;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203142;
+  }
+}

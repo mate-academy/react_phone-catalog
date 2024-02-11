@@ -9,21 +9,29 @@ const BANNERS = [
 ];
 
 const BUTTONS = [0, 1, 2];
+const FIRST_SLIDE_INDEX = 0;
+const LAST_SLIDE_INDEX = 2;
 
 export const Slider = () => {
   const [slider, setSlider] = useState(0);
 
-  function handleSlideLeft() {
-    if (slider === 2) {
-      setSlider(0);
-    } else {
-      setSlider(current => current + 1);
-    }
-  }
+  function handleSlide(direction: string) {
+    const lastSlide = direction === 'left'
+      ? LAST_SLIDE_INDEX
+      : FIRST_SLIDE_INDEX;
 
-  function handleSlideRight() {
-    if (slider === 0) {
-      setSlider(2);
+    const toSlide = direction === 'left'
+      ? FIRST_SLIDE_INDEX
+      : LAST_SLIDE_INDEX;
+
+    if (slider === lastSlide) {
+      setSlider(toSlide);
+
+      return;
+    }
+
+    if (direction === 'left') {
+      setSlider(current => current + 1);
     } else {
       setSlider(current => current - 1);
     }
@@ -36,7 +44,7 @@ export const Slider = () => {
           type="button"
           aria-label="slide left"
           className="slider__btn slider__btn--left"
-          onClick={() => handleSlideLeft()}
+          onClick={() => handleSlide('left')}
         />
 
         <div className="slider__wrapper">
@@ -45,7 +53,7 @@ export const Slider = () => {
             style={{ transform: `translateX(-${slider * 1040}px)` }}
           >
             {BANNERS.map(banner => (
-              <div>
+              <div key={banner}>
                 <img
                   src={`_new/img/${banner}`}
                   alt="phones"
@@ -60,7 +68,7 @@ export const Slider = () => {
           type="button"
           aria-label="slide right"
           className="slider__btn slider__btn--right"
-          onClick={() => handleSlideRight()}
+          onClick={() => handleSlide('right')}
         />
       </div>
 
