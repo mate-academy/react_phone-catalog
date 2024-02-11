@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { Pagination } from '../component/Pagination';
 import { Footer } from '../component/Footer';
@@ -12,9 +11,6 @@ import { getPhones } from '../api/api';
 export const PhonePage = () => {
   const { phones, setPhones } = useContext(ProductContext);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const [searchParams] = useSearchParams();
-  const perPage = searchParams.get('perPage') || '16';
 
   useEffect(() => {
     setLoading(true);
@@ -37,9 +33,7 @@ export const PhonePage = () => {
       <PhonesInfo />
       <ProductFilters />
       <ProductsList product={phones} />
-      {perPage !== 'all' && (
-        <Pagination />
-      )}
+      <Pagination />
       <Footer />
     </div>
   );

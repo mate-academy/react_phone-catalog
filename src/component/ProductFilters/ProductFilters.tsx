@@ -25,7 +25,7 @@ export const ProductFilters = () => {
   const [isActive, setIsActive] = useState<string | null>(null);
   const [sortParam, setSortParam] = useState<string>('Nevest');
 
-  const perPage = searchParams.get('perPage') || 'all';
+  const perPage = searchParams.get('perPage') || '16';
 
   function setSearchWith(params: SearchParams) {
     const search: string = getSearchWith(searchParams, params);

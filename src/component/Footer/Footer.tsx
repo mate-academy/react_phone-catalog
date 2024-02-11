@@ -12,10 +12,14 @@ export const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          <Link to="/logo" className="footer__logo" />
+          <Link to="/" target="_top" className="footer__logo" />
 
           <div className="footer__wrap">
-            <Link to="/git" className="footer__link">
+            <Link
+              to="https://github.com/Misha408"
+              target="_blank"
+              className="footer__link"
+            >
               Github
             </Link>
 

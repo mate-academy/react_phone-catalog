@@ -26,6 +26,7 @@ $gray-white: #FFF;
     height: 400px;
     border: 1px solid $gray-icons;
     z-index: 10;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid $gray-primary;

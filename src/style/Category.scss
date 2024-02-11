@@ -2,6 +2,7 @@
   min-height: 508px;
   margin-bottom: 80px;
 
+
   &__title {
     color: $gray-primary;
     font-size: 32px;
@@ -17,9 +18,15 @@
 
   &__item {
     text-decoration: none;
+
     &__img {
       height: 368px;
       margin-bottom: 24px;
+      transition: border 0.5s;
+
+      &:hover {
+        border: 1px solid $gray-primary;
+      }
     }
 
     &__title {

@@ -35,6 +35,13 @@ export const NavBar = () => {
     searchParams.set('query', event.target.value);
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      setSearchWith({ query: event.currentTarget.value || null });
+      searchParams.set('query', event.currentTarget.value);
+    }
+  }
+
   const clearQuery = () => {
     setIsActive(false);
     setSearchWith({ query: null });
@@ -92,6 +99,7 @@ export const NavBar = () => {
               value={query}
               onChange={handleQueryChange}
               onClick={() => setIsActive(true)}
+              onKeyDown={handleKeyDown}
             />
 
             <button

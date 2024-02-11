@@ -15,9 +15,11 @@ $gray-white: #FFF;
   &-buttons {
     display: flex;
     gap: 16px;
+    cursor: pointer;
   }
 
   &-button {
+    transition: border .5s;
     &:hover {
       border: 1px solid $gray-primary;
     }

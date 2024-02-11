@@ -6,8 +6,10 @@ interface Props {
 
 export const NoResults: React.FC<Props> = ({ name }) => {
   return (
-    <h1>
-      {`${name} not found`}
-    </h1>
+    <div className="not-found">
+      <h1>
+        {`${name} not found`}
+      </h1>
+    </div>
   );
 };

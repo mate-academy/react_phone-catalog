@@ -26,6 +26,11 @@
     letter-spacing: 0.48px;
     text-transform: uppercase;
     padding-left: 64px;
+    transition: color .5s;
+
+    &:hover {
+      color: $gray-primary;
+    }
 
     &:first-child {
       padding-left: 0;
@@ -49,10 +54,11 @@
       height: 32px;
       border: 1px solid $gray-icons;
       background: #fff;
+      cursor: pointer;
+      transition: border .5s;
 
       &:hover {
         border: 1px solid $gray-primary;
-        color: #fff;
       }
     }
   }

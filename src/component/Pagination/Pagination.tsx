@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { useContext } from 'react';
 import { ProductContext } from '../../ProductContext';
@@ -8,12 +8,22 @@ import { SearchLink } from '../SearchLink';
 export const Pagination = () => {
   const { filterdProducts } = useContext(ProductContext);
   const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
 
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('perPage') || '16';
 
   const paginationNumbs = getNumbers(0, filterdProducts.length);
   const paginationNumb = Math.ceil(filterdProducts.length / +perPage) + 1;
+
+  if ((!filterdProducts.length)
+    || (perPage === 'all' && !filterdProducts.length)) {
+    return (
+      <h2 className="error__massege">
+        {`Sorry, you ${pathname.slice(1)} not found`}
+      </h2>
+    );
+  }
 
   return (
     <div className="pagination" data-cy="pagination">

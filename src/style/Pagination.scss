@@ -63,3 +63,14 @@
     }
   }
 }
+
+.error__massege {
+  color: $gray-primary;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+  margin-bottom: 8px;
+  text-align: center;
+  margin-bottom: 50px;
+  min-height: calc(60vh - 100px - 96px);
+}

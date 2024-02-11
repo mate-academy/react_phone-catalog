@@ -31,20 +31,25 @@ export const ProductDetailsPage = () => {
   });
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const result = await getProduct(productId || '');
+
+        setProduct(result);
+
+        if (result?.images) {
+          setSlideActive(result.images[0]);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (productId) {
-      setLoading(true);
-
-      getProduct(productId)
-        .then((result) => {
-          setProduct(result);
-
-          if (result?.images) {
-            setSlideActive(result.images[0]);
-          }
-        })
-        .finally(() => setLoading(false));
+      fetchData();
     }
-  }, [productId, setProduct]);
+  }, [productId]);
 
   if (loading || !product || !findProduct) {
     return <Loader />;
