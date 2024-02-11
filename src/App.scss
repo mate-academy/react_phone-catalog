@@ -2,6 +2,8 @@
 @import "./utils/variables.scss";
 @import "./utils/mixins.scss";
 
+
+
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +31,21 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select:focus {
+  outline: none;
+  border-color: transparent;
 }
 
 .App {
@@ -61,3 +78,5 @@ button {
     }
   }
 }
+
+

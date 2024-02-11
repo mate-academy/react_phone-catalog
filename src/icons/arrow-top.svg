@@ -1,0 +1,20 @@
+<svg width="17.333496" height="13.333313" viewBox="0 0 17.3335 13.3333" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_48_166_dd" x="0.000000" y="0.000000" width="17.333496" height="13.333313" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="0" dy="4"/>
+			<feGaussianBlur stdDeviation="1.33333"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+	</defs>
+	<g filter="url(#filter_48_166_dd)">
+		<path id="Vector (Stroke)" d="M4.19531 5.13806C3.93481 4.87772 3.93481 4.4556 4.19531 4.19525L8.19531 0.195251C8.45557 -0.065094 8.87769 -0.065094 9.13818 0.195251L13.1382 4.19525C13.3984 4.4556 13.3984 4.87772 13.1382 5.13806C12.8777 5.39841 12.4556 5.39841 12.1953 5.13806L8.66675 1.60947L5.13818 5.13806C4.87769 5.39841 4.45557 5.39841 4.19531 5.13806Z" fill="#B4BDC4" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>
