@@ -38,7 +38,7 @@ export const Dropdowns: React.FC = () => {
           <option value="price">Cheapest</option>
         </select>
 
-        <div className="dropdown__arrow"></div>
+        <div className="dropdown__arrow" />
       </div>
 
       <div className="dropdown">
@@ -57,7 +57,7 @@ export const Dropdowns: React.FC = () => {
           <option value="16">16</option>
         </select>
 
-        <div className="dropdown__arrow"></div>
+        <div className="dropdown__arrow" />
       </div>
     </section>
   );
