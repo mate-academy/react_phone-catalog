@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/product';
 import './ProductCart.scss';
 import { MyButton } from '../UI/MyButton';
@@ -9,6 +9,7 @@ type Props = {
 
 export const ProductCart: React.FC<Props> = ({ product }) => {
   const {
+    id,
     imageUrl,
     name,
     price,
@@ -17,6 +18,18 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
     capacity,
     ram,
   } = product;
+
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    const data = localStorage.getItem('favoriteProducts');
+
+    if (data) {
+      const isFavorite = JSON.parse(data).includes(id);
+
+      setFavorite(isFavorite);
+    }
+  }, [id]);
 
   const preparedImgUrl = useMemo(() => {
     return imageUrl.split('/').slice(-1);
@@ -33,6 +46,33 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
   const preparedRam = useMemo(() => {
     return `${ram.slice(0, -2)} ${ram.slice(-2)}`;
   }, [ram]);
+
+  function handleSetFavorite() {
+    const data = localStorage.getItem('favoriteProducts');
+
+    if (data === null) {
+      return;
+    }
+
+    try {
+      const favoriteProducts = JSON.parse(data);
+
+      if (!favorite) {
+        favoriteProducts.push(id);
+      } else {
+        const index = favoriteProducts.indexOf(id);
+
+        favoriteProducts.splice(index, 1);
+      }
+
+      localStorage
+        .setItem('favoriteProducts', JSON.stringify(favoriteProducts));
+    } catch (err) {
+      localStorage.removeItem('favoriteProducts');
+    }
+
+    setFavorite(current => !current);
+  }
 
   return (
     <article
@@ -75,8 +115,11 @@ export const ProductCart: React.FC<Props> = ({ product }) => {
         <button
           type="button"
           className="ProductCart__favorite"
+          onClick={handleSetFavorite}
         >
-          <img src="img/icons/heart.svg" alt="favorite product" />
+          {favorite
+            ? <img src="img/icons/heart-red.svg" alt="favorite product" />
+            : <img src="img/icons/heart.svg" alt="favorite product" />}
         </button>
       </div>
     </article>

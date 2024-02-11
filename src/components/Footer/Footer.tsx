@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MyLogo } from '../UI/MyLogo';
 import './Footer.scss';
 
@@ -35,7 +35,7 @@ export const Footer = () => {
 
           <div className="footer__right">
             Back to top
-            <Link to="#top" className="footer__toplink" />
+            <a href="#top" className="footer__toplink" aria-label="to top" />
           </div>
         </div>
       </div>
