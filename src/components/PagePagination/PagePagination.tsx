@@ -20,6 +20,7 @@ export const PagePagination: React.FC<Props> = ({ pages }) => {
       <div className="page-pagination__page-buttons">
         {pages.map(page => (
           <span
+            key={page}
             className={cn(
               'page-pagination__button',
               'page-pagination__page-button',

@@ -1,15 +1,22 @@
-import { HotPrices } from '../HotPrices';
 import { Slider } from '../Banner';
 import { ShopByCategory } from '../ShopByCategory';
-import { BrandNewModels } from '../BrandNewModels';
+import { SectionWithCards } from '../SectionWithCards';
 
 export const HomePage = () => {
   return (
     <>
       <Slider />
-      <HotPrices />
+      <SectionWithCards
+        title="Hot prices"
+        classNames="main__hot-prices"
+        hasSectionButtons
+      />
       <ShopByCategory />
-      <BrandNewModels />
+      <SectionWithCards
+        title="Brand new models"
+        classNames="main__brand-new-models"
+        hasSectionButtons
+      />
     </>
   );
 };

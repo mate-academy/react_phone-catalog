@@ -37,7 +37,9 @@ export const Footer = () => {
           type="button"
           className="back-to-top__button"
           onClick={handleBackToTop}
-        />
+        >
+          <img src="" alt="" />
+        </button>
       </div>
     </footer>
   );

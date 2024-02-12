@@ -11,16 +11,19 @@ export const ShopByCategory = () => {
           title="Mobile phones"
           modelsCount={95}
           photoName={ImageUrl.phones}
+          pass="phones"
         />
         <CategoryCard
           title="Tablets"
           modelsCount={24}
           photoName={ImageUrl.tablets}
+          pass="tablets"
         />
         <CategoryCard
           title="Accessories"
           modelsCount={100}
           photoName={ImageUrl.accessories}
+          pass="accessories"
         />
       </div>
     </div>

@@ -44,10 +44,26 @@ export const Navbar = () => {
 
       <div className="nav__content">
         <SearchBar className="nav__search-bar" />
-        <NavLink to="/" className="nav__icon-link">
+        <NavLink
+          to="favourites"
+          className={({ isActive }) => (
+            cn(
+              'nav__icon-link',
+              { 'nav__link--active': isActive },
+            )
+          )}
+        >
           <span className="icon icon--favourites" />
         </NavLink>
-        <NavLink to="/" className="nav__icon-link nav__icon-link--last">
+        <NavLink
+          to="cart"
+          className={({ isActive }) => (
+            cn(
+              'nav__icon-link nav__icon-link--last',
+              { 'nav__link--active': isActive },
+            )
+          )}
+        >
           <span className="icon icon--shoppingBag" />
         </NavLink>
       </div>

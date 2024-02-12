@@ -1,17 +1,24 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.scss';
 import {
-  HomePage, Root, NotFoundPage, PhonesPage,
+  HomePage,
+  Root,
+  NotFoundPage,
+  ProductsPage,
+  ModelPage,
+  FavouritesPage,
 } from './components';
+import './App.scss';
 
 export const App = () => (
   <Routes>
     <Route path="/" element={<Root />}>
       <Route index element={<HomePage />} />
-      <Route path="phones" element={<PhonesPage />} />
+      <Route path="phones">
+        <Route index element={<ProductsPage />} />
+        <Route path="model" element={<ModelPage />} />
+      </Route>
+      <Route path="favourites" element={<FavouritesPage />} />
       {/*
-        <Route path="model" element={<PhonePage />} />
-      <Route path="*favourites" element={<FavouritesPage />} />
       <Route path="cart" element={<CartPage />} /> */}
       <Route path="*" element={<NotFoundPage />} />
     </Route>

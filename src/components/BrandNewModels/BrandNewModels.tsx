@@ -1,4 +1,4 @@
-import { PhoneCard } from '../PhoneCard';
+import { ProductCard } from '../ProductCard';
 import { SectionHeader } from '../SectionHeader';
 import './BrandNewModels.scss';
 
@@ -10,10 +10,10 @@ export const BrandNewModels = () => {
         hasButtons
       />
       <div className="brand-new-models__cards">
-        <PhoneCard />
-        <PhoneCard />
-        <PhoneCard />
-        <PhoneCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </div>
     </div>
   );

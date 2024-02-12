@@ -1,0 +1,33 @@
+@import '../../assets/css/variables';
+
+.card-buttons {
+  display: flex;
+  gap: 8px;
+
+  &__add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    flex-grow: 1;
+    background-color: $primary;
+    cursor: pointer;
+    border: none;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $white;
+  }
+
+  &__like {
+    background-image: url(../../assets/icons/favourites.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    padding: 12px;
+    border: 1px solid $icons;
+    cursor: pointer;
+  }
+}

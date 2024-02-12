@@ -1,10 +1,13 @@
-.shop-by-category {
+@import '../../assets/css/variables';
+
+.favourites {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
 
   &__cards {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
   }
 }

@@ -1,33 +1,6 @@
 @import '../../assets/css/variables';
 
-.phones-page {
-  display: flex;
-  flex-direction: column;
-
-  &__nav, &__title {
-    margin-bottom: 40px;
-  }
-
-  &__title {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__subtitle {
-    color: $secondary;
-  }
-
-  &__cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 24px;
-    margin-bottom: 40px;
-  }
-}
-
-.phones-page-nav {
+.page-small-nav {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -44,7 +17,7 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
-    color: $secondary;
+    color: $primary;
     text-decoration: none;
 
     &::before {
@@ -54,8 +27,11 @@
       height: 16px;
       background-image: url(../../assets/icons/arrow-right.svg);
       background-repeat: no-repeat;
-      background-position: center;
       padding-right: 8px;
+    }
+
+    &--current {
+      color: $secondary;
     }
   }
 }

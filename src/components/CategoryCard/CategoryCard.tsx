@@ -11,16 +11,18 @@ type Props = {
   title: string,
   modelsCount: number,
   photoName: ImageUrl,
+  pass: string,
 };
 
 export const CategoryCard: React.FC<Props> = ({
   title,
   modelsCount,
   photoName,
+  pass,
 }) => {
   return (
     <Link
-      to="/"
+      to={`/${pass}`}
       className="category-card"
     >
       <img

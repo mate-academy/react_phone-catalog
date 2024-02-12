@@ -5,20 +5,31 @@
   align-items: center;
   gap: 16px;
 
-  &__sort-by {
+  &__label {
+    display: block;
     position: relative;
-    width: 176px;
+
+    &--sort {
+      width: 176px;
+    }
+
+    &--filter {
+      width: 128px;
+    }
   }
 
-  &__item-count-filter {
+  &__label-text {
+    display: block;
     position: relative;
-    width: 128px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary;
+    margin-bottom: 4px;
   }
 
-  &__sort-by::after,
-  &__item-count-filter::after {
+  &__arrow {
     position: absolute;
-    content: '';
     display: block;
     top: 31px;
     right: 12px;
@@ -27,15 +38,6 @@
     background-image: url(../../assets/icons/arrow-down.svg);
     background-repeat: no-repeat;
     background-position: center;
-  }
-
-  &__label {
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
-    color: $secondary;
-    margin-bottom: 4px;
   }
 
   &__select {
