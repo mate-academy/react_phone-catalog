@@ -17,3 +17,4 @@ export { TechSpecs } from './TechSpecs/TechSpecs';
 export { Price } from './Price/Price';
 export { BuyButtons } from './BuyButtons/BuyButtons';
 export { FavouritesPage } from './FavouritesPage/FavouritesPage';
+export { CartPage } from './CartPage';

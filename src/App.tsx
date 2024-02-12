@@ -6,6 +6,7 @@ import {
   ProductsPage,
   ModelPage,
   FavouritesPage,
+  CartPage,
 } from './components';
 import './App.scss';
 
@@ -18,8 +19,7 @@ export const App = () => (
         <Route path="model" element={<ModelPage />} />
       </Route>
       <Route path="favourites" element={<FavouritesPage />} />
-      {/*
-      <Route path="cart" element={<CartPage />} /> */}
+      <Route path="cart" element={<CartPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
   </Routes>
