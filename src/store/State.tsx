@@ -1,17 +1,27 @@
 import React, { useReducer } from 'react';
+import { Product } from '../types/product';
 
 type State = {
+  loading: boolean;
+  loadingError: string;
+  allProducts: Product[];
   favoriteProducts: string[];
 };
 
 const initialState: State = {
+  loading: true,
+  loadingError: '',
+  allProducts: [],
   favoriteProducts: [],
 };
 
 type Action
   = { type: 'addFavorite', payload: string }
   | { type: 'removeFavorite', payload: string }
-  | { type: 'updateFavorite', payload: string[] };
+  | { type: 'updateFavorite', payload: string[] }
+  | { type: 'getAllProducts', payload: Product[] }
+  | { type: 'setLoading', payload: boolean }
+  | { type: 'setLoadingError', payload: string };
 
 type Props = {
   children: React.ReactNode;
@@ -19,6 +29,24 @@ type Props = {
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
+    case 'setLoading':
+      return {
+        ...state,
+        loading: action.payload,
+      };
+
+    case 'setLoadingError':
+      return {
+        ...state,
+        loadingError: action.payload,
+      };
+
+    case 'getAllProducts':
+      return {
+        ...state,
+        allProducts: action.payload,
+      };
+
     case 'addFavorite':
       return {
         ...state,

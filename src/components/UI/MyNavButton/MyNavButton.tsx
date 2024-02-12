@@ -28,7 +28,7 @@ export const MyNavButton: React.FC<Props> = ({
     <button
       type="button"
       aria-label={`move ${direction}`}
-      className="MyNavButton"
+      className="my-nav-button"
       disabled={disabled}
       onClick={() => onClick(direction)}
     >

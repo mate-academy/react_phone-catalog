@@ -60,45 +60,45 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
 
   return (
     <article
-      className="ProductItem"
+      className="product-item"
       data-cy="cardsContainer"
     >
-      <div className="ProductItem__imgbox">
+      <div className="product-item__imgbox">
         <img
           src={`img/products/${preparedImgUrl}`}
           alt={name}
-          className="ProductItem__img"
+          className="product-item__img"
         />
       </div>
 
-      <p className="ProductItem__title">{name}</p>
+      <p className="product-item__title">{name}</p>
 
-      <div className="ProductItem__pricebox">
+      <div className="product-item__pricebox">
         <h2>{`$${priceWithDiscount}`}</h2>
 
-        <h2 className="ProductItem__price">{`$${price}`}</h2>
+        <h2 className="product-item__price">{`$${price}`}</h2>
       </div>
 
-      <ul className="ProductItem__options">
-        <li className="ProductItem__option-item">
-          <p className="ProductItem__option-name">Screen</p>
-          <p className="ProductItem__option-value">{screen}</p>
+      <ul className="product-item__options">
+        <li className="product-item__option-item">
+          <p className="product-item__option-name">Screen</p>
+          <p className="product-item__option-value">{screen}</p>
         </li>
-        <li className="ProductItem__option-item">
-          <p className="ProductItem__option-name">Capacity</p>
-          <p className="ProductItem__option-value">{preparedCapacity}</p>
+        <li className="product-item__option-item">
+          <p className="product-item__option-name">Capacity</p>
+          <p className="product-item__option-value">{preparedCapacity}</p>
         </li>
-        <li className="ProductItem__option-item">
-          <p className="ProductItem__option-name">RAM</p>
-          <p className="ProductItem__option-value">{preparedRam}</p>
+        <li className="product-item__option-item">
+          <p className="product-item__option-name">RAM</p>
+          <p className="product-item__option-value">{preparedRam}</p>
         </li>
       </ul>
 
-      <div className="ProductItem__btnbox">
+      <div className="product-item__btnbox">
         <MyButton>Add to cart</MyButton>
         <button
           type="button"
-          className="ProductItem__favorite"
+          className="product-item__favorite"
           onClick={handleSetFavorite}
         >
           {favorite

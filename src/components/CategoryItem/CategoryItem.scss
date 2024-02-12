@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+
+.category-item {
+  &__wrapper {
+    width: 368px;
+    height: 368px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    width: inherit;
+    height: inherit;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform ease-in-out $transition-duration;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__quantity {
+    color: $color-secondary;
+  }
+}

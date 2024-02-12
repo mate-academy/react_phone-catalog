@@ -1,8 +1,8 @@
-export type ProductName = 'phone' | 'tablet' | 'accessory';
+type CategoryName = 'phone' | 'tablet' | 'accessory';
 
 export type Product = {
   age: number,
-  type: ProductName,
+  type: CategoryName,
   id: string,
   imageUrl: string
   name: string
@@ -12,4 +12,11 @@ export type Product = {
   screen: string,
   capacity: string,
   ram: string
+};
+
+export type Category = {
+  id: number;
+  title: string;
+  img: string;
+  category: CategoryName;
 };

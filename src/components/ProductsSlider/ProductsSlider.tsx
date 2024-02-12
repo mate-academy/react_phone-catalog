@@ -6,14 +6,14 @@ import { ProductItem } from '../ProductItem';
 import './ProductsSlider.scss';
 
 type Props = {
-  hotProducts: Product[];
+  products: Product[];
 };
 
 const CART_WIDTH = 272;
 const GAP = 16;
 const ITEM_IN_SLIDER = 4;
 
-export const ProductSlider: React.FC<Props> = ({ hotProducts }) => {
+export const ProductSlider: React.FC<Props> = ({ products }) => {
   const [slider, setSlider] = useState(0);
 
   function slideTo(direction: Navigation) {
@@ -35,11 +35,11 @@ export const ProductSlider: React.FC<Props> = ({ hotProducts }) => {
   }
 
   return (
-    <div className="ProductsSlider">
-      <div className="ProductsSlider__nav">
+    <div className="products-slider">
+      <div className="products-slider__nav">
         <MyNavButton
           direction={Navigation.left}
-          disabled={slider === hotProducts.length - ITEM_IN_SLIDER}
+          disabled={slider === products.length - ITEM_IN_SLIDER}
           onClick={direction => slideTo(direction)}
         />
 
@@ -50,12 +50,12 @@ export const ProductSlider: React.FC<Props> = ({ hotProducts }) => {
         />
       </div>
 
-      <div className="ProductsSlider__wrapper">
+      <div className="products-slider__wrapper">
         <div
-          className="ProductsSlider__carts"
+          className="products-slider__carts"
           style={{ transform: `translateX(-${slider * (CART_WIDTH + GAP)}px)` }}
         >
-          {hotProducts.map(product => (
+          {products.map(product => (
             <ProductItem product={product} key={product.id} />
           ))}
         </div>

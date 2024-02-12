@@ -4,11 +4,23 @@ import { Header } from './components/Header';
 import './App.scss';
 import { Footer } from './components/Footer';
 import { DispatchContext } from './store/State';
+import { getAllProducts } from './api/productApi';
+import { Product } from './types/product';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
+    getAllProducts<Product[]>()
+      .then(products => {
+        dispatch({ type: 'getAllProducts', payload: products });
+      })
+      .catch(() => dispatch({
+        type: 'setLoadingError',
+        payload: 'Something went wrong...',
+      }))
+      .finally(() => dispatch({ type: 'setLoading', payload: false }));
+
     const favoriteProducts = localStorage.getItem('favoriteProducts');
 
     if (!favoriteProducts) {
@@ -19,7 +31,7 @@ export const App = () => {
         payload: JSON.parse(favoriteProducts),
       });
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -21,11 +21,27 @@
     align-items: center;
     border: 1px solid $color-background;
     border-bottom: none;
+    position: relative;
 
     &:last-child {
       padding-right: none;
     }
 
     @include hover(background-color, $color-background);
+  }
+
+  &__counter {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $color-danger;
+    color: $color-white;
+    font-size: 9px;
+    position: absolute;
+    top: 17px;
+    left: 34px;
   }
 }
