@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 
 import './Footer.scss';
-import Logo from '../../UI/Logo';
 import ArrowButton from '../../UI/buttons/ArrowButton';
 
 export const Footer: React.FC = () => {
@@ -16,7 +15,12 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <Logo />
+        <img
+          src="./img/logos/logo.svg"
+          alt=""
+          width={32}
+          height={32}
+        />
 
         <section className="footer__links">
           <a

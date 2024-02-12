@@ -1,3 +1,5 @@
+@import './../../../styles/mixins';
+
 :root {
   --header-height: 64px;
 }
@@ -13,9 +15,49 @@
   background-color: var(--c-bg);
   border-bottom: 1px solid var(--c-elements);
 
+  @include onTablet {
+    flex-direction: column-reverse;
+    height: fit-content;
+    transition: 300ms;
+
+    &--hidden {
+      transform: translateY(-100%);
+    }
+  }
+
   &__right {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
+
+    @include onTablet {
+      border-bottom: 1px solid var(--c-elements);
+    }
+  }
+
+  &__search {
+    max-width: 328px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    border: 1px solid var(--c-elements);
+    border-width: 0 0 0 1px;
+    
+    @include onTablet {
+      border-width: 0;
+      flex-grow: 0;
+      width: 100%;
+      max-width: none;
+      height: 48px;
+    }
+  }
+
+  &__square-link {
+    @include onTablet {
+      height: 48px;
+    }
+  }
+
+  &__close {
+    height: 32px;
   }
 }

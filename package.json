@@ -22,8 +22,7 @@
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
-    "redux": "^5.0.1",
-    "rsuite": "^5.50.0"
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",

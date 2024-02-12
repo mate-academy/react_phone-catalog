@@ -91,7 +91,7 @@ export const ProductsPage: React.FC = memo(() => {
         customNoProductsText={noProductsText}
       />
 
-      {!perPageIsAll && pageAmount > 0 && (
+      {!perPageIsAll && pageAmount > 1 && (
         <Paginator
           className="products-page__paginator"
           itemsPerPage={perPage as number}

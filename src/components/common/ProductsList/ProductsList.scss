@@ -1,8 +1,13 @@
+@import '/src/styles/mixins';
+
 .products-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(var(--product-card-width), 1fr));
   gap: 40px 16px;
+
+  @include onTablet {
+    gap: 24px 12px;
+  }
 
   &--no-products {
     display: flex;

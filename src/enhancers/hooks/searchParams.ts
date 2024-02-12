@@ -3,11 +3,6 @@ import { SearchParam } from '../../definitions/enums/Router';
 
 export function useSearchParams() {
   const [routerParams, setRouterParams] = useRouterSearchParams();
-  // const searchParamsRef = useState(routerParams);
-  // const setParamsRef = useState(setRouterParams);
-
-  // searchParamsRef.current = routerParams;
-  // setParamsRef.current = setRouterParams;
 
   return new SearchParamsWithRouter(setRouterParams, routerParams);
 }

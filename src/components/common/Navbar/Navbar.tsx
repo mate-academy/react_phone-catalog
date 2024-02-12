@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import { PAGE } from '../../../definitions/enums/Router';
 import { Category } from '../../../api/products/server/types';
-import Logo from '../../UI/Logo';
 import { useDirection } from '../../../enhancers/hooks/direction';
 
 export const Navbar: React.FC = memo(() => {
@@ -17,7 +16,11 @@ export const Navbar: React.FC = memo(() => {
 
   return (
     <nav className="navbar">
-      <Logo className="navbar__item" />
+      <img
+        src="./img/logos/logo.svg"
+        alt=""
+        className="navbar__item navbar__item--logo"
+      />
 
       <NavLink to={direction(PAGE.Home)} className={getClasses}>
         Home

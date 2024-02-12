@@ -1,14 +1,7 @@
 @import '../../../styles/vars';
 
 .search-field {
-  flex-grow: 1;
-  flex-shrink: 1;
-  max-width: 328px;
   display: flex;
-
-  border: solid var(--c-elements);
-  border-width: 0 0 0 1px;
-
   transition: $transition-time;
 
   &__input {

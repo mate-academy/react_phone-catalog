@@ -22,14 +22,14 @@ export function useProductsPage() {
   const amountHandled = allAmountLoading ? 0 : (allProductsAmount ?? 0);
 
   const [sortBy, sortByOptions, setSortBy, sortQuery] = useProductsSort();
-  const changeSortBy = useCallback((option: DropdownOption) => setSortBy(`${option}`), []);
+  const changeSortBy = useCallback((option: DropdownOption) => setSortBy(`${option}`), [setSortBy]);
 
   const perPageOptions: PerPageOption[] = useMemo(() => [4, 8, 16, 'All'], []);
   const params = { perPageOptions, itemsAmount: amountHandled, defaultIndex: 2 };
   const [page, setPage, perPage, setPerPage] = usePagination(params);
   const changePerPage = useCallback((option: DropdownOption) => (
     option === 'All' ? setPerPage('All') : setPerPage(+option)
-  ), []);
+  ), [setPerPage]);
 
   const { search } = useContext(SearchContext);
 

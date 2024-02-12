@@ -34,6 +34,7 @@ export const Paginator: React.FC<Props> = memo(({
   return (
     <div className={`paginator ${className || ''}`}>
       <ArrowButton
+        className="paginator__arrow"
         onClick={() => onChange(currentPage - 1)}
         disabled={isFirstPage}
       />
@@ -50,6 +51,7 @@ export const Paginator: React.FC<Props> = memo(({
       </ul>
 
       <ArrowButton
+        className="paginator__arrow"
         onClick={() => onChange(currentPage + 1)}
         disabled={isLastPage}
         rotate={180}

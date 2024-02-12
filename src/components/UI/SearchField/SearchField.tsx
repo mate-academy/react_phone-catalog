@@ -14,9 +14,10 @@ const SubmitButton: React.FC = memo(() => (
 
 interface Props {
   searchIn?: string,
+  className?: string,
 }
 
-export const SearchField: React.FC<Props> = memo(({ searchIn }) => {
+export const SearchField: React.FC<Props> = memo(({ searchIn, className }) => {
   const { pathname } = useLocation();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get(SearchParam.Search) || '';
@@ -33,7 +34,7 @@ export const SearchField: React.FC<Props> = memo(({ searchIn }) => {
   }, [pathname, setQuery]);
 
   return (
-    <form className="search-field" onSubmit={handleFormSubmit}>
+    <form className={`search-field ${className || ''}`} onSubmit={handleFormSubmit}>
       <input
         type="text"
         className="search-field__input"

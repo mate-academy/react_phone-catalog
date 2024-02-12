@@ -5,8 +5,23 @@
   justify-content: space-between;
   align-items: stretch;
   gap: 32px;
-
   padding-inline: 8px;
+
+  @include onTablet {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: var(--c-tips);
+    } 
+  }
+
+  @include onMobile {
+    gap: 16px;
+  }
 
   &__item {
     position: relative;
@@ -19,20 +34,28 @@
     line-height: 11px; 
     letter-spacing: 0.48px;
     text-transform: uppercase;
+    cursor: pointer;
 
     padding: 16px;
 
     @include hover(color, var(--c-primary));
 
+    @include onTablet {
+      padding-block: 18px;
+    }
+
     &::after {
       content: '';
       position: absolute;
-      width: 0;
       height: 3px;
+      width: 0;
       transition: $transition-time;
       background-color: var(--c-primary);
-
       bottom: 0;
+
+      @include onMobile {
+        height: 2px;
+      }
     }
     
     &--active {
@@ -40,6 +63,16 @@
       
       &::after {
         width: calc(100% - 16px * 2);
+      }
+    }
+
+    &--logo {
+      aspect-ratio: 1;
+      height: 100%;
+
+      @include onTablet {
+        display: none;  
+        height: 64px;
       }
     }
   }
