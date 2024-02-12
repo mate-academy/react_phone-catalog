@@ -19,7 +19,7 @@ export const Header = () => {
 
       <div className="header__right">
         <Link to="/favorite" className="header__link">
-          <img src="/img/icons/heart.svg" alt="favorite" />
+          <img src="img/icons/heart.svg" alt="favorite" />
 
           {!!numberOfFavorite && (
             <div className="header__counter">{numberOfFavorite}</div>
@@ -27,7 +27,7 @@ export const Header = () => {
 
         </Link>
         <Link to="/cart" className="header__link">
-          <img src="/img/icons/cart.svg" alt="cart" />
+          <img src="img/icons/cart.svg" alt="cart" />
         </Link>
       </div>
     </header>

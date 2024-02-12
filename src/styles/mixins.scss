@@ -6,6 +6,18 @@
   }
 }
 
+@mixin on-desktop-sm {
+  @media (max-width: $desctop-size-sm) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (max-width: $desctop-tablet) {
+    @content;
+  }
+}
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} $transition-duration;
   cursor: pointer;

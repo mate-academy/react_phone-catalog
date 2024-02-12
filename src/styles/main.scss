@@ -3,6 +3,10 @@
 @import './typography';
 @import './normalize';
 
+* {
+  box-sizing: border-box;
+}
+
 .page {
   font-family: Mont-Regular, sans-serif;
   font-size: 14px;
@@ -17,11 +21,18 @@
 
 .container {
   max-width: 1440px;
-  width: 100%;
   height: 100%;
   padding-inline: 152px;
   box-sizing: border-box;
   margin: 0 auto;
+
+  @include on-desktop {
+    padding-inline: 120px;
+  }
+
+  @include on-desktop-sm {
+    padding-inline: 80px;
+  }
 }
 
 .visually-hidden {

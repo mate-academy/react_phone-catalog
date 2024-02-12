@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Slider.scss';
 import classNames from 'classnames';
 
@@ -14,6 +14,8 @@ const LAST_SLIDE_INDEX = 2;
 
 export const Slider = () => {
   const [slider, setSlider] = useState(0);
+  const [imgWidth, setImgWidth] = useState(0);
+  const wrapper = useRef<HTMLDivElement | null>(null);
 
   function handleSlide(direction: string) {
     const lastSlide = direction === 'left'
@@ -37,6 +39,17 @@ export const Slider = () => {
     }
   }
 
+  function getImgWidth() {
+    const width = wrapper.current ? wrapper.current.clientWidth : 200;
+
+    setImgWidth(width);
+  }
+
+  useEffect(() => {
+    getImgWidth();
+    window.addEventListener('resize', getImgWidth);
+  }, []);
+
   return (
     <div className="slider">
       <div className="slider__box">
@@ -47,14 +60,18 @@ export const Slider = () => {
           onClick={() => handleSlide('left')}
         />
 
-        <div className="slider__wrapper">
+        <div className="slider__wrapper" ref={wrapper}>
           <div
             className="slider__items"
-            style={{ transform: `translateX(-${slider * 1040}px)` }}
+            style={{ transform: `translateX(-${slider * imgWidth}px)` }}
           >
             {BANNERS.map(banner => (
-              <div key={banner}>
+              <div
+                key={banner}
+                className="slider__banner-wr"
+              >
                 <img
+                  style={{ width: `${imgWidth}px` }}
                   src={`_new/img/${banner}`}
                   alt="phones"
                   className="slider__banner"
