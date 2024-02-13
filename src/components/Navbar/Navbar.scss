@@ -7,18 +7,6 @@
   align-items: center;
   height: 100%;
 
-  &__content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-
-
-      &--left {
-        gap: $header-item-gap;
-      }
-  }
-
   &__list {
     display: flex;
     flex-direction: row;
@@ -58,38 +46,5 @@
         background-color: $primary;
       }
     }
-  }
-
-  &__icon-link {
-    display: block;
-    position: relative;
-    height: 100%;
-    text-decoration: none;
-    padding: 18px;
-    border-left: 1px solid $elements;
-
-    // &--last {
-    //   padding-right: 0;
-    // }
-  }
-
-  &__search-bar {
-    position: relative;
-  }
-}
-
-.icon {
-  display: block;
-  height: 28px;
-  width: 28px;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &--favourites {
-    background-image: url(../../assets/icons/favourites.svg);
-  }
-
-  &--shoppingBag {
-    background-image: url(../../assets/icons/shopping.svg)
   }
 }

@@ -1,0 +1,51 @@
+@import '/src/assets/css/variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  border-bottom: 1px solid $elements;
+  background-color: $white;
+  height: $header-height;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__logo {
+    margin-right: 40px;
+  }
+
+  &__search-bar {
+    position: relative;
+  }
+
+  &__icon-link {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    text-decoration: none;
+    padding: 18px;
+    border-left: 1px solid $elements;
+  }
+}
+
+.icon {
+  display: block;
+  height: 28px;
+  width: 28px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--favourites {
+    background-image: url(../../assets/icons/favourites.svg);
+  }
+
+  &--shoppingBag {
+    background-image: url(../../assets/icons/shopping.svg)
+  }
+}

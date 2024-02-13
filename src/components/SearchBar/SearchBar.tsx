@@ -31,6 +31,7 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
             <button
               type="button"
               className="search-bar__button"
+              onClick={() => setValue('')}
             >
               <span
                 className="search-bar__icon search-bar__icon--search"

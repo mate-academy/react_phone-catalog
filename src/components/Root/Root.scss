@@ -7,14 +7,6 @@
   }
 }
 
-.header {
-  padding: 0;
-  border-bottom: 1px solid $elements;
-  background-color: $white;
-  height: $header-height;
-  box-sizing: border-box;
-}
-
 .main {
   display: flex;
   flex-direction: column;
