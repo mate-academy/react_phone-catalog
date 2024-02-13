@@ -17,7 +17,7 @@ export const MainContext = React.createContext<{
   sortType: string;
   itemsOnPage: string;
   cartItems: CartItem[];
-  favoutitesItems: Product[];
+  favouritesItems: Product[];
   setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
@@ -36,7 +36,7 @@ export const MainContext = React.createContext<{
   sortType: 'No sorting',
   itemsOnPage: 'All',
   cartItems: [],
-  favoutitesItems: [],
+  favouritesItems: [],
   setCurrentPage: () => { },
   setProducts: () => { },
   setPhones: () => { },
@@ -57,7 +57,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [sortType, setSortType] = useState('No sorting');
   const [itemsOnPage, setItemsOnPage] = useState('All');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [favoutitesItems, setFavouritesItems] = useState<Product[]>([]);
+  const [favouritesItems, setFavouritesItems] = useState<Product[]>([]);
 
   const getProductsFromServer = async () => {
     try {
@@ -81,8 +81,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     setToStorage('cart', cartItems);
-    setToStorage('favourites', favoutitesItems);
-  }, [cartItems, favoutitesItems]);
+    setToStorage('favourites', favouritesItems);
+  }, [cartItems, favouritesItems]);
 
   const value = useMemo(
     () => ({
@@ -102,7 +102,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setItemsOnPage,
       cartItems,
       setCartItems,
-      favoutitesItems,
+      favouritesItems,
       setFavouritesItems,
     }),
     [
@@ -122,7 +122,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setItemsOnPage,
       cartItems,
       setCartItems,
-      favoutitesItems,
+      favouritesItems,
       setFavouritesItems,
     ],
   );

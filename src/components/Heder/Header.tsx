@@ -9,7 +9,7 @@ export const Header = () => {
   const {
     currentPage,
     cartItems,
-    favoutitesItems,
+    favouritesItems,
   } = useContext(MainContext);
 
   return (
@@ -75,8 +75,8 @@ export const Header = () => {
               ? 'favourites__icon icon active-block'
               : 'favourites__icon icon')}
           >
-            {favoutitesItems.length !== 0
-              && <div className="items__amount">{favoutitesItems.length}</div>}
+            {favouritesItems.length !== 0
+              && <div className="items__amount">{favouritesItems.length}</div>}
 
           </NavLink>
         </div>

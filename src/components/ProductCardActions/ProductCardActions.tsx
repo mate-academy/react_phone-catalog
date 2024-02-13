@@ -1,44 +1,62 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useContext } from 'react';
 import classNames from 'classnames';
-import { MainContext } from '../../context';
 import './product-card-actions.scss';
+import { useCallback, useContext, useMemo } from 'react';
 import { Product } from '../../types/Product';
+import { MainContext } from '../../context';
 import { CartItem } from '../../types/CartItem';
 
 type Props = {
   product: Product,
 };
 
-export const ProductCardActions: React.FC<Props> = ({ product }) => {
+export const ProductCardActions: React.FC<Props> = ({
+  product,
+}) => {
   const {
     cartItems,
-    favoutitesItems,
     setCartItems,
+    favouritesItems,
     setFavouritesItems,
   } = useContext(MainContext);
 
-  const addToCard = (selectedProduct: Product) => {
+  const isAddToCartBtnActive = useMemo(() => {
+    return cartItems.some((item) => item.product.id === product.id);
+  }, [product, cartItems]);
+
+  const isAddToFavBtnActive = useMemo(() => {
+    return favouritesItems.some((item) => item.id === product.id);
+  }, [product, favouritesItems]);
+
+  const addToCart = useCallback((selectedProduct: Product) => {
+    if (!selectedProduct) {
+      return;
+    }
+
     const cartItem: CartItem = {
       id: +selectedProduct.id,
       qnty: 1,
       product: selectedProduct,
     };
 
-    if (cartItems.some(item => item.product === selectedProduct)) {
+    if (isAddToCartBtnActive) {
       return;
     }
 
     setCartItems((prev) => [...prev, cartItem]);
-  };
+  }, [isAddToCartBtnActive]);
 
-  const addToFavourites = (selectedProduct: Product) => {
-    if (favoutitesItems.some(item => item === selectedProduct)) {
+  const addToFavourites = useCallback((selectedProduct: Product) => {
+    if (isAddToFavBtnActive) {
+      setFavouritesItems((prev) => prev.filter(
+        item => item.id !== selectedProduct.id,
+      ));
+
       return;
     }
 
     setFavouritesItems((prev) => [...prev, selectedProduct]);
-  };
+  }, [isAddToFavBtnActive]);
 
   return (
     <>
@@ -48,27 +66,23 @@ export const ProductCardActions: React.FC<Props> = ({ product }) => {
         className={classNames(
           'add-to-card primary__button button',
           {
-            selected: cartItems.some(
-              item => item.product === product,
-            ),
+            selected: isAddToCartBtnActive,
           },
         )}
-        onClick={() => addToCard(product)}
+        onClick={() => addToCart(product)}
       >
-        Add to cart
+        {!isAddToCartBtnActive ? 'Add to cart' : 'Added to cart'}
       </button>
       <button
         type="button"
         name="add-to-favourite"
-        onClick={() => addToFavourites(product)}
         className={classNames(
           'add-to-favourite button icon',
           {
-            selected: favoutitesItems.some(
-              item => item === product,
-            ),
+            selected: isAddToFavBtnActive,
           },
         )}
+        onClick={() => addToFavourites(product)}
       />
     </>
   );

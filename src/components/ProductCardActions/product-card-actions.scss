@@ -13,11 +13,15 @@
 }
 
 .add-to-card.selected {
-  padding-inline: 46px;
+  padding-inline: 38px;
   color: $green;
   background-color: $white;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   border: 1px solid $gray_light;
+}
+
+.add-to-favourite.selected {
+  background-image: url("../../assets/img/icons/favourites-red.svg");
 }

@@ -47,7 +47,9 @@ export const ProductCard:React.FC<Props> = ({ product }) => {
         </div>
       </Link>
       <div className="product__actions">
-        <ProductCardActions product={product} />
+        <ProductCardActions
+          product={product}
+        />
       </div>
     </div>
   );

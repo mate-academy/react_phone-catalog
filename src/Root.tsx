@@ -11,8 +11,9 @@ import { PhonesPage } from './pages/PhonesPage';
 import { Tablets } from './pages/TabletsPage/TabletsPage';
 import { App } from './App';
 import { ProductDetailsPage }
-  from './pages/ProductDetailsPage/ProductDetailsPage';
+  from './pages/ProductDetailsPage';
 import { MainProvider } from './context';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -29,6 +30,7 @@ export const Root = () => (
           <Route path="accessories" element={<Accessories />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<NotFoundPage title="Page not found" />} />
         </Route>
       </Routes>
     </MainProvider>
