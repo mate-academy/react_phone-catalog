@@ -3,7 +3,7 @@
 
 @keyframes show-prev-arrow {
   from {
-    transform: translateX(-32px);
+    transform: translateX(-16px);
     opacity: 0;
   }
 
@@ -15,7 +15,7 @@
 
 @keyframes show-next-arrow {
   from {
-    transform: translateX(32px);
+    transform: translateX(16px);
     opacity: 0;
   }
 
@@ -32,26 +32,30 @@
 
   &__arrow-button {
     position: absolute;
-    display: none;
+    display: flex;
     top: calc(50% - 30px);
     height: 60px;
     opacity: 0.5;
-    border: 1px solid var(--c-primary);
     background-color: var(--c-bg);
     border-radius: 5px;
-
+    
     @include onHoverSupport {
-      display: flex;
+      display: none;
+
+      &:hover {
+        opacity: 0.8;
+        border: 1px solid var(--c-primary);
+      }
     }
 
     &--prev {
       left: 16px;
-      animation: show-prev-arrow 1s forwards;
+      animation: show-prev-arrow 0.5s forwards;
     }
 
     &--next {
       right: 16px;
-      animation: show-next-arrow 1s forwards;
+      animation: show-next-arrow 0.5s forwards;
     }
   }
 
