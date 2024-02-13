@@ -1,0 +1,34 @@
+@import './fonts';
+
+%h1 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: 0.01em;
+}
+
+%h2 {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+%h3 {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+%text {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+%button {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: #fff;
+  background-color: transparent;
+}

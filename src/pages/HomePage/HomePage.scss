@@ -1,0 +1,12 @@
+@import '../../styles/main';
+
+.home-page__container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../styles/main";
+
+.add-to-fav-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $light-gray;
+  background-color: transparent;
+  transition-duration: $transition-duration;
+
+  div.icon-fav-card {
+    mask: url('../../assets/icons/Favourites-icon.svg');
+    background-color: $main-color;
+    width: 16px;
+    height: 16px;
+    mask-repeat: no-repeat;
+    mask-position: 50% 50%;
+  }
+
+  &:hover {
+    border-color: $main-color;
+
+    div.icon-fav-card {
+      background-color: $red;
+    }
+  }
+}

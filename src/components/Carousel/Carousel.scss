@@ -1,0 +1,96 @@
+@import "../../styles/main";
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+
+  &__slider {
+    height: 400px;
+    max-width: 100%;
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-mobile {
+      height: 250px;
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 100%;
+      width: 32px;
+      border: 1px solid $icon-color;
+      background-color: transparent;
+      transition-duration: $transition-duration;
+
+      &:hover {
+        border-color: $main-color;
+        cursor: pointer;
+      }
+
+      @include on-mobile {
+        display: none;
+      }
+    }
+
+    &-container {
+      height: 100%;
+      width: 1040px;
+      overflow: hidden;
+    }
+
+    &-list {
+      height: 100%;
+      width: 300%;
+      display: flex;
+      gap: 1px;
+      transition-duration: 1s;
+    }
+
+    &-item {
+      height: 100%;
+      width: 33.33%;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+  }
+
+  &__dots {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &-item {
+      width: 14px;
+      height: 5px;
+      background-color: $main-color;
+      opacity: 0.4;
+      border: 1px solid transparent;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(#172031, 0.26);
+        border: 1px solid $main-color;
+      }
+    }
+  }
+}
+
+.banner-active {
+  opacity: 1;
+}
