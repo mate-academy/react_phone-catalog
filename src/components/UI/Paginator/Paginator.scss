@@ -23,7 +23,7 @@
     border: 1px solid var(--c-elements);
     cursor: pointer;
 
-    @include hover(border, var(--c-primary), 0);
+    @include hover(border-color, var(--c-primary), 0ms);
 
     &--active {
       background-color: var(--c-primary);

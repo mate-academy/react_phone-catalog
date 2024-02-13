@@ -34,7 +34,7 @@
     padding: 2px;
     cursor: pointer;
 
-    @include hover(border, var(--c-primary), 0);
+    @include hover(border-color, var(--c-primary), 0ms);
 
     &--selected {
       border: 1px solid var(--c-primary);

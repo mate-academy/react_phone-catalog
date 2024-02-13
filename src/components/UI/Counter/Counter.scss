@@ -13,7 +13,7 @@
     cursor: pointer;
     transition: transform $transition-time;
 
-    @include hover(border-color, var(--c-primary), 0);
+    @include hover(border-color, var(--c-primary), 0ms);
 
     &:active > img {
       transform: scale(1.15);
