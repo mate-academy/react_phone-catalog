@@ -1,0 +1,39 @@
+@import "../../styles/main";
+
+.dropdown {
+  position: relative;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+
+  &__label {
+    @extend %text;
+
+    color: $secondary-color;
+  }
+}
+
+.select {
+  appearance: none;
+  outline: 0;
+  width: 176px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  padding: 10px;
+  background-color: #fff;
+  font: inherit;
+  border: 1px solid $light-gray;
+  cursor: pointer;
+
+  @include on-mobile {
+    width: 100%;
+  }
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
