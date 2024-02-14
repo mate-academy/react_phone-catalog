@@ -36,16 +36,13 @@
 
 .icon {
   display: block;
-  height: 28px;
-  width: 28px;
+  height: 16px;
+  width: 16px;
   background-position: center;
   background-repeat: no-repeat;
 
-  &--favourites {
-    background-image: url(../../assets/icons/favourites.svg);
-  }
-
-  &--shoppingBag {
-    background-image: url(../../assets/icons/shopping.svg)
+  &--with-heart {
+    height: 28px;
+    width: 28px;
   }
 }

@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar/Navbar';
 import { SearchBar } from '../SearchBar';
+import { Icon } from '../Icon/Icon';
 
 import './Header.scss';
 
@@ -47,7 +48,20 @@ export const Header: React.FC<Props> = ({
               )
             )}
           >
-            <span className="icon icon--favourites" />
+            { true
+              ? (
+                <Icon
+                  iconName="favourites"
+                  classNames="icon"
+                />
+              )
+
+              : (
+                <Icon
+                  iconName="favouritesCounter"
+                  classNames="icon icon--with-heart"
+                />
+              )}
           </NavLink>
         )}
 
@@ -60,7 +74,20 @@ export const Header: React.FC<Props> = ({
             )
           )}
         >
-          <span className="icon icon--shoppingBag" />
+          { true
+            ? (
+              <Icon
+                iconName="shopping"
+                classNames="icon"
+              />
+            )
+
+            : (
+              <Icon
+                iconName="shoppingCounter"
+                classNames="icon icon--with-heart"
+              />
+            )}
         </NavLink>
       </div>
 

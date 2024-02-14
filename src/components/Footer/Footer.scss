@@ -39,14 +39,17 @@
   }
 
   &__button {
-    background-image: url(../../../public/img/icons/arrowUp.svg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 32px;
     width: 32px;
-    box-sizing: border-box;
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: transparent;
     border: 1px solid $icons;
     cursor: pointer;
+  }
+
+  &__icon path{
+    fill: $primary;
   }
 }

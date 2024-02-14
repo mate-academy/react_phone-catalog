@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 import { Logo } from '../Logo';
+import { Icon } from '../Icon/Icon';
 import './Footer.scss';
 
 const footerListElements = ['Github', 'Contacts', 'Rights'];
@@ -38,7 +39,7 @@ export const Footer = () => {
           className="back-to-top__button"
           onClick={handleBackToTop}
         >
-          <img src="" alt="" />
+          <Icon iconName="arrowUp" classNames="back-to-top__icon" />
         </button>
       </div>
     </footer>
