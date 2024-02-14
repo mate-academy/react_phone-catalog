@@ -1,0 +1,52 @@
+@import "../../helpers/utils";
+
+.productsList {
+  &__count {
+    color: $gray-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__options {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &-option {
+      max-width: 176px;
+      flex-grow: 1;
+    }
+
+    &-title {
+      color: #b4bdc3;
+      font-size: 12px;
+      margin-bottom: 4px;
+
+      @extend %mont-semibold-style;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, $card-width);
+
+    justify-content: center;
+    gap: 40px;
+    column-gap: 16px;
+    margin-bottom: 40px;
+
+    @media (max-width: $tablet-max-width) {
+      grid-template-columns: repeat(3, $card-width);
+      justify-content: start;
+    }
+
+    @media (max-width: 900px) {
+      justify-content: start;
+      grid-template-columns: repeat(2, $card-width);
+    }
+
+    @include on-mobile {
+      grid-template-columns: repeat(1, $card-width);
+
+    }
+  }
+}

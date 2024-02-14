@@ -1,7 +1,14 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Product } from '../../helpers/types/Product';
 import { ProductsCardType } from '../../helpers/types/ProductsCardType';
 import { FavoritesIcon } from '../../assets/icons/FavoritesIcon';
+import { useAppSelector } from '../../helpers/hooks/hooks';
+import { addToCart, removeFromCart } from '../../store/slices/cartSlice';
+import {
+  addToFavorites, removeFromFavorites,
+} from '../../store/slices/favoritesSlice';
 import './ProductCard.scss';
 
 type Props = {
@@ -14,6 +21,34 @@ export const ProductCard: React.FC<Props> = ({ product, type, transform }) => {
   const {
     image, name, price, screen, fullPrice, capacity, ram, itemId, category,
   } = product;
+
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cartItems } = useAppSelector(state => state.cartItems);
+
+  const dispatch = useDispatch();
+
+  const hasInFavorites = favorites.some((fav) => fav.id === product.id);
+  const hasInCart = cartItems.some((item) => item.id === product.id);
+
+  const handleFavoritesChanges = () => {
+    if (hasInFavorites) {
+      dispatch(removeFromFavorites(product));
+
+      return;
+    }
+
+    dispatch(addToFavorites(product));
+  };
+
+  const handleCartChanges = () => {
+    if (hasInCart) {
+      dispatch(removeFromCart(product.id));
+
+      return;
+    }
+
+    dispatch(addToCart(product));
+  };
 
   return (
     <div className="productCard" data-cy="cardsContainer" style={{ transform }}>
@@ -54,10 +89,30 @@ export const ProductCard: React.FC<Props> = ({ product, type, transform }) => {
       </ul>
 
       <div className="productCard__button">
-        <button type="button" className="productCard__button-add">
-          Add to Cart
+        <button
+          type="button"
+          onClick={() => handleCartChanges()}
+          className={classNames('productCard__button-add', {
+            'productCard__button-add--active': hasInCart,
+          })}
+        >
+          {hasInCart ? 'Added to cart' : 'Add to cart'}
         </button>
-        <div className="productCard__button-like">
+        <div
+          className={classNames('productCard__button-like', {
+            'productCard__button-like--active': hasInFavorites,
+          })}
+          onClick={() => handleFavoritesChanges()}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              handleFavoritesChanges();
+            }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-label={hasInFavorites
+            ? 'Remove from Favorites' : 'Add to Favorites'}
+        >
           <FavoritesIcon />
         </div>
       </div>

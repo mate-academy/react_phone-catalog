@@ -11,14 +11,14 @@ export interface ProductsState {
   products: Product[];
   isLoading: boolean;
   hasError: boolean;
-  // query: string;
+  query: string;
 }
 
 const initialState: ProductsState = {
   products: [],
   isLoading: false,
   hasError: false,
-  // query: '',
+  query: '',
 };
 
 export const productsSlice = createSlice({
@@ -27,6 +27,10 @@ export const productsSlice = createSlice({
   reducers: {
     setProducts: (state: ProductsState, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
+    },
+
+    setQuery: (state, action) => {
+      state.query = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -47,5 +51,5 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, setQuery } = productsSlice.actions;
 export default productsSlice.reducer;

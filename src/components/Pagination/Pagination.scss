@@ -1,0 +1,41 @@
+@import '../../helpers/utils';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__space {
+    margin-top: 15px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    line-height: 32px;
+    background-color: transparent;
+    border: solid 1px $gray-elements;
+    transition: border $transition-duration;
+
+    &:hover {
+      border-color: $gray-primary;
+    }
+
+    &:disabled {
+      border-color: $gray-elements;
+
+      & path {
+        fill: $gray-elements;
+        stroke: none;
+      }
+    }
+  }
+}
+
+.button-arrow {
+  padding-top: 2px;
+}
+
+.active {
+  border-color: $gray-primary;
+}

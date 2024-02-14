@@ -11,8 +11,8 @@ export const Main = () => {
   });
 
   return (
-    <div className="container">
+    <main className="container">
       <Outlet />
-    </div>
+    </main>
   );
 };

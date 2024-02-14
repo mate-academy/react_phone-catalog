@@ -1,0 +1,80 @@
+@import "../../helpers/utils";
+
+.dropdown {
+  width: 100%;
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%) rotate(90deg);
+
+    & path {
+      fill: #b4bdc3;
+    }
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  &.isActive {
+    & * .dropdown__arrow {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    & > .dropdown__menu {
+      display: block;
+    }
+  }
+
+  &__button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    margin-bottom: 4px;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+  }
+
+  &__text {
+    @extend %mont-semibold-style;
+
+    font-size: 14px;
+    line-height: 21px;
+    padding: 12px 10px;
+    color: $gray-primary;
+  }
+
+  &__content {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid $gray-elements;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    width: 176px;
+    height: 32px;
+    padding: 6px 12px;
+
+    background-color: #fff;
+    z-index: 1;
+    color: $gray-secondary;
+
+    @extend %body-text;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+}

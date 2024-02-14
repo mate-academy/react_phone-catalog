@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useMemo, useState } from 'react';
-// eslint-disable-next-line max-len
 import { getHotPriceProducts } from '../../helpers/funcService/getHotPriceProducts';
+import { getBrandNewProducts } from '../../helpers/funcService/getBrandNewProducts';
 import { ProductsCardType } from '../../helpers/types/ProductsCardType';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useAppSelector } from '../../helpers/hooks/hooks';
@@ -26,7 +27,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
   const visibleProducts = useMemo(() => {
     const conditionProducts: ConditionProducts = {
       [ProductsCardType.DISCOUNT]: getHotPriceProducts(products),
-      [ProductsCardType.NEWBRANDS]: getHotPriceProducts(products), // getBrandNewProducts(products),
+      [ProductsCardType.NEWBRANDS]: getBrandNewProducts(products), // getBrandNewProducts(products),
       [ProductsCardType.SIMILAR]: getHotPriceProducts(products), // products, filterBy, filterValue, getSuggestedProducts()
     };
 

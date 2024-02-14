@@ -1,15 +1,18 @@
-@import "../../helpers/utils";
+@import '../../helpers/utils';
 
 .productCard {
   padding: 32px 32px 24px;
-  width: 272px;
+  width: $card-width;
   border: 1px solid $gray-slider-border;
 
-  transition: transform $transition-duration;
+  transition: all $transition-duration;
+
+  &:hover {
+    border-color: $gray-primary;
+  }
 
   &__image {
     text-align: center;
-
     height: 208px;
     width: 208px;
     margin-block: 8px 24px;
@@ -20,13 +23,13 @@
     @extend %body-text;
 
     color: $gray-primary;
+    min-height: 42px;
   }
 
   &__price {
     border-bottom: 1px solid $gray-elements;
     font-size: 22px;
     padding: 7px 0;
-
 
     &-main {
       @extend %mont-bold-style;
@@ -75,11 +78,31 @@
       font-size: 14px;
       border: none;
       color: #fff;
+      cursor: pointer;
+
+      &--active {
+        background-color: #fff;
+        color: $green;
+        border: solid 1px $gray-elements;
+      }
     }
 
     &-like {
       padding: 12px 12px 0;
-      border: solid 1px $gray-elements;;
+      border: solid 1px $gray-elements;
+      transition: border $transition-duration;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+
+      &--active {
+        & path {
+          fill: $red;
+          stroke: none;
+        }
+      }
+
     }
   }
 }

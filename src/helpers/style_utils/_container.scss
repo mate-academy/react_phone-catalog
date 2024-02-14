@@ -1,10 +1,10 @@
 @import "../utils";
 
 .container {
-  max-width: $container-width;
-  margin: 0 auto;
+  width: $container-width;
 
-  // padding-inline: 10px;
+  // max-width: $container-width;
+  margin: 0 auto;
 
   @include on-tablet {
     margin: 0 24px;

@@ -1,6 +1,7 @@
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
-import { Slider } from '../../components/Slider/Slider';
+import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 import { ProductsCardType } from '../../helpers/types/ProductsCardType';
+import { Slider } from '../../components/Slider/Slider';
 import './HomePage.scss';
 
 export const HomePage = () => {
@@ -9,6 +10,8 @@ export const HomePage = () => {
       <div className="home-page__postion-modifier">
         <Slider />
         <ProductsSlider type={ProductsCardType.DISCOUNT} />
+        <ShopByCategory />
+        <ProductsSlider type={ProductsCardType.NEWBRANDS} />
       </div>
     </>
   );

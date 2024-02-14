@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ArrowLeft } from '../../assets/icons/ArrowLeft';
 import { ArrowRight } from '../../assets/icons/ArrowRight';
