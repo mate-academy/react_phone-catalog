@@ -1,0 +1,41 @@
+@import '../../GeneralStyles/variables';
+
+.productsSlider {
+  width: 100%;
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    background-color: #fff;
+    transition: all $duration-time;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--prev {
+      margin-right: 16px;
+    }
+
+    &--disabled {
+      border: 1px solid $elements-color;
+
+      &:hover {
+        border: 1px solid $elements-color;
+      }
+    }
+  }
+}
