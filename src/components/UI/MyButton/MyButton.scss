@@ -5,7 +5,8 @@
   justify-content: center;
   align-items: center;
   height: 40px;
-  width: 176px;
+  max-width: 176px;
+  width: 100%;
   background-color: $color-primary;
   color: $color-white;
   transition: box-shadow ease-in-out $transition-duration;

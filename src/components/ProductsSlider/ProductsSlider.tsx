@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Navigation } from '../../types/navigation';
 import { Product } from '../../types/product';
 import { MyNavButton } from '../UI/MyNavButton';
@@ -9,22 +9,51 @@ type Props = {
   products: Product[];
 };
 
-const CART_WIDTH = 272;
 const GAP = 16;
-const ITEM_IN_SLIDER = 4;
+const ITEM_MIN_WIGTH = 200;
+const MAX_ITEM_IN_SLIDER = 4;
+const WRAPPER_MIN_WIDTH = 232;
 
 export const ProductSlider: React.FC<Props> = ({ products }) => {
-  const [slider, setSlider] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [wrapperWidth, setWrapperWidth] = useState(WRAPPER_MIN_WIDTH);
+  const [itemsInSlider, setItemsInSlider] = useState(MAX_ITEM_IN_SLIDER);
+  const wrapper = useRef<HTMLDivElement | null>(null);
+
+  const totalGap = GAP * (itemsInSlider - 1);
+  const cartWidth = (wrapperWidth - totalGap) / itemsInSlider;
+  const shift = cartWidth < ITEM_MIN_WIGTH ? ITEM_MIN_WIGTH : cartWidth;
+
+  function getSliderParams() {
+    const width = wrapper.current
+      ? wrapper.current.clientWidth
+      : WRAPPER_MIN_WIDTH;
+
+    setWrapperWidth(width);
+    setItemsInSlider(Math.floor(width / ITEM_MIN_WIGTH) > MAX_ITEM_IN_SLIDER
+      ? MAX_ITEM_IN_SLIDER
+      : Math.floor(width / ITEM_MIN_WIGTH));
+  }
+
+  useEffect(() => {
+    getSliderParams();
+
+    window.addEventListener('resize', getSliderParams);
+
+    return () => {
+      window.removeEventListener('resize', getSliderParams);
+    };
+  }, [products]);
 
   function slideTo(direction: Navigation) {
     switch (direction) {
       case Navigation.left:
-        setSlider(current => current + 1);
+        setSlideIndex(current => current + 1);
         break;
 
       case Navigation.right:
-        if (slider) {
-          setSlider(current => current - 1);
+        if (slideIndex) {
+          setSlideIndex(current => current - 1);
         }
 
         break;
@@ -39,24 +68,37 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
       <div className="products-slider__nav">
         <MyNavButton
           direction={Navigation.left}
-          disabled={slider === products.length - ITEM_IN_SLIDER}
+          disabled={slideIndex === products.length - itemsInSlider}
           onClick={direction => slideTo(direction)}
         />
 
         <MyNavButton
           direction={Navigation.right}
-          disabled={slider === 0}
+          disabled={!slideIndex}
           onClick={direction => slideTo(direction)}
         />
       </div>
 
-      <div className="products-slider__wrapper">
+      <div
+        className="products-slider__wrapper"
+        ref={wrapper}
+      >
         <div
           className="products-slider__carts"
-          style={{ transform: `translateX(-${slider * (CART_WIDTH + GAP)}px)` }}
+          style={{ transform: `translateX(-${slideIndex * (shift + GAP)}px)` }}
         >
           {products.map(product => (
-            <ProductItem product={product} key={product.id} />
+            <div
+              key={product.id}
+              style={{
+                width: `${(wrapperWidth - totalGap) / itemsInSlider}px`,
+              }}
+            >
+              <ProductItem
+                product={product}
+                key={product.id}
+              />
+            </div>
           ))}
         </div>
       </div>

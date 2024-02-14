@@ -26,23 +26,23 @@ export const HomePage = () => {
     <div className="homepage">
       <h1 className="visually-hidden">Home Page</h1>
 
-      <section className="homepage__slider homepage__section">
-        <Slider />
+      <section className="homepage__hot homepage__section">
+        <h2 className="homepage__section-title">Hot prices</h2>
+        {loading
+          ? <MyLoader />
+          : (
+            <>
+              {loadingError
+                ? <h3>{loadingError}</h3>
+                : <ProductSlider products={hotProducts} />}
+            </>
+          )}
       </section>
 
       {false && (
         <>
-          <section className="homepage__hot homepage__section">
-            <h2 className="homepage__section-title">Hot prices</h2>
-            {loading
-              ? <MyLoader />
-              : (
-                <>
-                  {loadingError
-                    ? <h3>{loadingError}</h3>
-                    : <ProductSlider products={hotProducts} />}
-                </>
-              )}
+          <section className="homepage__slider homepage__section">
+            <Slider />
           </section>
 
           <section className="homepage__section">
@@ -69,6 +69,7 @@ export const HomePage = () => {
           </section>
         </>
       )}
+
     </div>
   );
 };

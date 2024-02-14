@@ -4,11 +4,14 @@
   position: relative;
 
   &__wrapper {
+    position: relative;
     overflow: hidden;
     height: 507px;
+    margin: 0 auto;
   }
 
   &__carts {
+    position: absolute;
     display: flex;
     gap: 16px;
     transition: transform ease-in-out $transition-duration;
