@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { DispatchContext } from './store/State';
 import { getAllProducts } from './api/productApi';
 import { Product } from './types/product';
+import { SideMenu } from './components/SideMenu';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
@@ -36,6 +37,7 @@ export const App = () => {
   return (
     <div className="App">
       <Header />
+      <SideMenu />
 
       <main>
         <div className="container">

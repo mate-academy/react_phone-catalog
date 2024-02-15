@@ -1,10 +1,8 @@
-@import './variables';
-@import './mixins';
-@import './typography';
-@import './normalize';
+@import './utils/utils';
+@import './utils/normalize';
 
 .page {
-  font-family: Mont-Regular, sans-serif;
+  font-family: Mont, sans-serif;
   font-size: 14px;
   line-height: 21px;
   color: $color_primary;
@@ -14,10 +12,10 @@
 .page__content {
   margin: 0 auto;
   max-width: 1440px;
+  min-width: 320px;
 }
 
 .container {
-  // max-width: 1440px;
   height: 100%;
   padding-inline: 152px;
   box-sizing: border-box;
@@ -27,8 +25,24 @@
     padding-inline: 120px;
   }
 
-  @include on-desktop-sm {
+  @include on-desktop-s {
     padding-inline: 80px;
+  }
+
+  @include on-tablet {
+    padding-inline: 60px;
+  }
+
+  @include on-tablet-s {
+    padding-inline: 40px;
+  }
+
+  @include on-mobile-l{
+    padding-inline: 30px;
+  }
+
+  @include on-mobile-m{
+    padding-inline: 20px;
   }
 }
 

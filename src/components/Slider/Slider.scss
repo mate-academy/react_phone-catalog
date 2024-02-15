@@ -1,13 +1,14 @@
-@import "../../styles/variables";
-@import "../../styles/mixins";
+@import "../../styles/utils/utils";
 
 .slider {
-  height: 432px;
-
   &__box {
     display: flex;
     gap: 16px;
     height: 400px;
+
+    @include on-tablet-s {
+      height: 270px;
+    }
   }
 
   &__btn {
@@ -31,6 +32,10 @@
       content: url(../../../public/img/icons/chevron-up.svg);
       transform: rotate(90deg);
       margin-right: 5px;
+    }
+
+    @include on-tablet-s {
+      display: none;
     }
   }
 
@@ -88,9 +93,8 @@
   }
 
   &__banner {
-    // width: 1040px;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    display: inline-block;
+    object-position: center;
   }
 }

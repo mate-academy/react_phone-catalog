@@ -1,41 +1,63 @@
 import { useEffect, useRef, useState } from 'react';
-import './Slider.scss';
 import classNames from 'classnames';
+import './Slider.scss';
 
 const BANNERS = [
+  'banner-accessories.png',
   'banner-phones.png',
   'banner-tablets.png',
   'banner-accessories.png',
+  'banner-phones.png',
 ];
 
-const BUTTONS = [0, 1, 2];
+const BUTTONS = [1, 2, 3];
 const FIRST_SLIDE_INDEX = 0;
-const LAST_SLIDE_INDEX = 2;
+const LAST_SLIDE_INDEX = BANNERS.length - 1;
 
 export const Slider = () => {
-  const [slider, setSlider] = useState(0);
+  const [slider, setSlider] = useState(1);
+  const [transitionDelay, setTransitionDelay] = useState(false);
   const [imgWidth, setImgWidth] = useState(0);
   const wrapper = useRef<HTMLDivElement | null>(null);
 
-  function handleSlide(direction: string) {
-    const lastSlide = direction === 'left'
-      ? LAST_SLIDE_INDEX
-      : FIRST_SLIDE_INDEX;
-
-    const toSlide = direction === 'left'
-      ? FIRST_SLIDE_INDEX
-      : LAST_SLIDE_INDEX;
-
-    if (slider === lastSlide) {
-      setSlider(toSlide);
-
-      return;
-    }
+  function handleSlide(direction = 'left') {
+    setTransitionDelay(false);
 
     if (direction === 'left') {
       setSlider(current => current + 1);
-    } else {
+
+      if (slider === LAST_SLIDE_INDEX - 1) {
+        setTimeout(() => {
+          setTransitionDelay(true);
+          setSlider(1);
+        }, 300);
+      }
+    }
+
+    if (direction === 'right') {
       setSlider(current => current - 1);
+
+      if (slider === FIRST_SLIDE_INDEX + 1) {
+        setTimeout(() => {
+          setTransitionDelay(true);
+          setSlider(LAST_SLIDE_INDEX - 1);
+        }, 300);
+      }
+    }
+  }
+
+  function sliderLoop(currentSlider:number) {
+    setSlider(current => current + 1);
+
+    if (currentSlider === LAST_SLIDE_INDEX - 1) {
+      setTimeout(() => {
+        setTransitionDelay(true);
+        setSlider(1);
+      }, 300);
+
+      setTimeout(() => {
+        setTransitionDelay(false);
+      }, 500);
     }
   }
 
@@ -48,7 +70,16 @@ export const Slider = () => {
   useEffect(() => {
     getImgWidth();
     window.addEventListener('resize', getImgWidth);
-  }, []);
+
+    const interval = setInterval(() => {
+      sliderLoop(slider);
+    }, 5000);
+
+    return () => {
+      window.removeEventListener('resize', getImgWidth);
+      clearInterval(interval);
+    };
+  }, [slider]);
 
   return (
     <div className="slider">
@@ -63,11 +94,16 @@ export const Slider = () => {
         <div className="slider__wrapper" ref={wrapper}>
           <div
             className="slider__items"
-            style={{ transform: `translateX(-${slider * imgWidth}px)` }}
+            style={{
+              transform: `translateX(-${slider * imgWidth}px)`,
+              transition: !transitionDelay
+                ? 'transform ease-in-out 300ms'
+                : 'none',
+            }}
           >
             {BANNERS.map(banner => (
               <div
-                key={banner}
+                key={Math.random()}
                 className="slider__banner-wr"
               >
                 <img

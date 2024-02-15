@@ -1,16 +1,14 @@
-@import '../../styles/variables';
+@import '../../styles/utils/utils';
 
 .category-item {
   &__wrapper {
-    width: 368px;
-    height: 368px;
+    max-width: 368px;
     overflow: hidden;
     margin-bottom: 24px;
   }
 
   &__img {
-    width: inherit;
-    height: inherit;
+    width: 100%;
     display: block;
     object-fit: cover;
     object-position: center;

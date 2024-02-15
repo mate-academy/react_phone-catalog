@@ -1,0 +1,26 @@
+@import '../../../styles/utils/utils';
+
+$padding-inline: 32px;
+
+.my-navlink {
+  @include navbar-link;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background-color: black;
+    transition: width ease-in-out $transition-duration;
+  }
+
+  &--active::before {
+    width: calc(100% - $padding-inline * 2);
+  }
+
+  &-side-menu {
+    padding-block: 8px;
+    margin-bottom: 12px;
+  }
+}

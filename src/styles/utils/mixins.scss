@@ -6,17 +6,36 @@
   }
 }
 
-@mixin on-desktop-sm {
-  @media (max-width: $desctop-size-sm) {
+@mixin on-desktop-s {
+  @media (max-width: $desctop-size-s) {
     @content;
   }
 }
 
 @mixin on-tablet {
-  @media (max-width: $desctop-tablet) {
+  @media (max-width: $tablet-size) {
     @content;
   }
 }
+
+@mixin on-tablet-s {
+  @media (max-width: $tablet-size-s) {
+    @content;
+  }
+}
+
+@mixin on-mobile-l {
+  @media (max-width: $mobile-size-l) {
+    @content;
+  }
+}
+
+@mixin on-mobile-m {
+  @media (max-width: $mobile-size-m) {
+    @content;
+  }
+}
+
 
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} $transition-duration;

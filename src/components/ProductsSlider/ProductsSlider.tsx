@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Navigation } from '../../types/navigation';
 import { Product } from '../../types/product';
 import { MyNavButton } from '../UI/MyNavButton';
-import { ProductItem } from '../ProductItem';
+import { ProductCard } from '../ProductCard';
 import './ProductsSlider.scss';
 
 type Props = {
@@ -65,41 +65,45 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="products-slider">
-      <div className="products-slider__nav">
-        <MyNavButton
-          direction={Navigation.left}
-          disabled={slideIndex === products.length - itemsInSlider}
-          onClick={direction => slideTo(direction)}
-        />
+      <div className="products-slider__box">
+        <div className="products-slider__nav">
+          <MyNavButton
+            direction={Navigation.left}
+            disabled={slideIndex === products.length - itemsInSlider}
+            onClick={direction => slideTo(direction)}
+          />
 
-        <MyNavButton
-          direction={Navigation.right}
-          disabled={!slideIndex}
-          onClick={direction => slideTo(direction)}
-        />
-      </div>
+          <MyNavButton
+            direction={Navigation.right}
+            disabled={!slideIndex}
+            onClick={direction => slideTo(direction)}
+          />
+        </div>
 
-      <div
-        className="products-slider__wrapper"
-        ref={wrapper}
-      >
         <div
-          className="products-slider__carts"
-          style={{ transform: `translateX(-${slideIndex * (shift + GAP)}px)` }}
+          className="products-slider__wrapper"
+          ref={wrapper}
         >
-          {products.map(product => (
-            <div
-              key={product.id}
-              style={{
-                width: `${(wrapperWidth - totalGap) / itemsInSlider}px`,
-              }}
-            >
-              <ProductItem
-                product={product}
+          <div
+            data-cy="cardsContainer"
+            className="products-slider__carts"
+            style={{ transform: `translateX(-${slideIndex * (shift + GAP)}px)` }}
+          >
+            {products.map(product => (
+              <div
                 key={product.id}
-              />
-            </div>
-          ))}
+                style={{
+                  width: `${(wrapperWidth - totalGap) / itemsInSlider}px`,
+                }}
+                className="products-slider__item"
+              >
+                <ProductCard
+                  product={product}
+                  key={product.id}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

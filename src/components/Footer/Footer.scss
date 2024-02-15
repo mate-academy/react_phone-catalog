@@ -1,6 +1,4 @@
-@import '../../styles/variables';
-@import '../../styles/typography';
-@import '../../styles/mixins';
+@import '../../styles/utils/utils';
 
 .footer {
   grid-area: footer;
@@ -17,6 +15,10 @@
 
   &__nav {
     display: flex;
+
+    @include on-tablet-s {
+      display: none;
+    }
   }
 
   &__link {

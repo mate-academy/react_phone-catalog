@@ -1,27 +1,37 @@
-@import "../../styles/typography";
-@import "../../styles/variables";
-@import "../../styles/mixins";
+@import "../../styles/utils/utils";
 
 .navbar {
-  $padding-inline: 32px;
-  
-  display: flex;
+  &__main {
+    display: flex;
 
-  &__link {
-    @include navbar-link;
+    @include on-tablet-s {
+      display: none;
+    }
+  }
 
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      height: 3px;
-      width: 0;
-      background-color: black;
-      transition: width ease-in-out $transition-duration;
+  &__mobile {
+    height: 100%;
+    width: 60px;
+    display: none;
+
+    @include on-tablet-s {
+      display: block;
     }
 
-    &--active::before {
-      width: calc(100% - $padding-inline * 2);
+    &::after {
+      content: url(../../../public/img/icons/burger-menu.svg);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      top: 3px;
+    }
+
+    &:hover::after {
+      content: url(../../../public/img/icons/burger-menu-hover.svg);
     }
   }
 }

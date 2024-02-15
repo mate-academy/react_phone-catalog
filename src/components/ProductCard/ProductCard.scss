@@ -1,8 +1,6 @@
-@import "../../styles/variables";
-@import "../../styles/typography";
-@import "../../styles/mixins";
+@import "../../styles/utils/utils";
 
-.product-item{
+.product-card{
   max-width: 272px;
   min-width: 200px;
   padding: 24px;

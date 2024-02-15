@@ -1,0 +1,29 @@
+@import "../../styles/utils/utils";
+
+.side-menu {
+  background-color: $color-background;
+  position: fixed;
+  padding: 40px;
+  inset: 0;
+  z-index: 1;
+  transition: transform ease-in-out $transition-duration;
+
+  &__header {
+    height: 24px;
+  }
+
+  &__icon {
+    background-image: url(../../../public/img/icons/close.svg);
+    width: 24px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.2));
+  }
+
+  &__navbar {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -3,6 +3,10 @@ import { MyLogo } from '../UI/MyLogo';
 import './Footer.scss';
 
 export const Footer = () => {
+  function goToTop() {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <footer className="footer">
       <div className="container">
@@ -35,7 +39,12 @@ export const Footer = () => {
 
           <div className="footer__right">
             Back to top
-            <a href="#top" className="footer__toplink" aria-label="to top" />
+            <button
+              type="button"
+              className="footer__toplink"
+              aria-label="to top"
+              onClick={goToTop}
+            />
           </div>
         </div>
       </div>

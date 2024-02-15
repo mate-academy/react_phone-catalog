@@ -26,6 +26,10 @@ export const HomePage = () => {
     <div className="homepage">
       <h1 className="visually-hidden">Home Page</h1>
 
+      <section className="homepage__slider homepage__section">
+        <Slider />
+      </section>
+
       <section className="homepage__hot homepage__section">
         <h2 className="homepage__section-title">Hot prices</h2>
         {loading
@@ -39,37 +43,31 @@ export const HomePage = () => {
           )}
       </section>
 
-      {false && (
-        <>
-          <section className="homepage__slider homepage__section">
-            <Slider />
-          </section>
+      <section className="homepage__section">
+        <h2 className="homepage__section-title">Shop by category</h2>
 
-          <section className="homepage__section">
-            <h2 className="homepage__section-title">Shop by category</h2>
+        <div
+          className="homepage__categories"
+          data-cy="categoryLinksContainer"
+        >
+          {categories.map((category: Category) => (
+            <CategoryItem key={category.id} category={category} />
+          ))}
+        </div>
+      </section>
 
-            <div className="homepage__categories">
-              {categories.map((category: Category) => (
-                <CategoryItem key={category.id} category={category} />
-              ))}
-            </div>
-          </section>
-
-          <section className="homepage__section">
-            <h2 className="homepage__section-title">Brand new models</h2>
-            {loading
-              ? <MyLoader />
-              : (
-                <>
-                  {loadingError
-                    ? <h3>{loadingError}</h3>
-                    : <ProductSlider products={newProducts} />}
-                </>
-              )}
-          </section>
-        </>
-      )}
-
+      <section className="homepage__section">
+        <h2 className="homepage__section-title">Brand new models</h2>
+        {loading
+          ? <MyLoader />
+          : (
+            <>
+              {loadingError
+                ? <h3>{loadingError}</h3>
+                : <ProductSlider products={newProducts} />}
+            </>
+          )}
+      </section>
     </div>
   );
 };

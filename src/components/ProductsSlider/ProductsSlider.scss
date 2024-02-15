@@ -1,7 +1,9 @@
-@import '../../styles/variables';
+@import "../../styles/utils/utils";
 
 .products-slider {
-  position: relative;
+  &__box {
+    position: relative;
+  }
 
   &__wrapper {
     position: relative;
@@ -23,5 +25,15 @@
     position: absolute;
     top: -50px;
     right: 0;
+
+    @include on-mobile-l {
+      top: -62px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
