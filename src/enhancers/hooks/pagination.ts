@@ -60,10 +60,13 @@ export function usePagination(options: Options): ReturnType {
     if (needSetUserOnLastPage) {
       const lastPage = Math.ceil(itemsAmount / newPerPage);
 
-      searchParams.set(SearchParam.Page, lastPage);
+      searchParams.multiSet([
+        [SearchParam.Page, lastPage],
+        [SearchParam.PerPage, newPerPage],
+      ]);
+    } else {
+      searchParams.set(SearchParam.PerPage, newPerPage);
     }
-
-    searchParams.set(SearchParam.PerPage, newPerPage);
   }, [searchParams, itemsAmount]);
 
   return [page, setPage, perPage, setPerPage];

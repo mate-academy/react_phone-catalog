@@ -31,14 +31,18 @@ export class SearchParamsWithRouter {
   }
 
   set<T extends Value>(key: SearchParam, value: T) {
-    const stringValue = value.toString();
     const params = new URLSearchParams(this.params);
 
-    if (stringValue) {
-      params.set(key, stringValue);
-    } else {
-      params.delete(key);
-    }
+    prepareParams(params, key, value);
+    this.setParams(params);
+  }
+
+  multiSet<T extends Value>(entries: [SearchParam, T][]) {
+    const params = new URLSearchParams(this.params);
+
+    entries.forEach(([key, value]) => {
+      prepareParams(params, key, value);
+    });
 
     this.setParams(params);
   }
@@ -55,5 +59,15 @@ export class SearchParamsWithRouter {
     const newParams = new URLSearchParams();
 
     this.setParams(newParams);
+  }
+}
+
+function prepareParams(params: URLSearchParams, key: SearchParam, value: Value) {
+  const stringValue = value.toString();
+
+  if (stringValue) {
+    params.set(key, stringValue);
+  } else {
+    params.delete(key);
   }
 }
