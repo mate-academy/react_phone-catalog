@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: center;
   animation: checkout-page-mount 1.5s;
+  padding-block: 28px;
 
   &__main-description {
     max-width: 500px;
@@ -28,6 +29,10 @@
 
       @include hover(filter, brightness(1.2), 0);
     }
+
+    @include onMobile {
+      font-size: 16px;
+    }
   }
 
   &__description {
@@ -35,6 +40,10 @@
     max-width: 600px;
     text-align: center;
     color: var(--c-secondary);
+
+    @include onMobile {
+      font-size: 14px;
+    }
   }
 
   &__link {

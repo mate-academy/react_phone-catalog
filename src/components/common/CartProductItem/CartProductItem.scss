@@ -16,11 +16,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 
   padding: 24px;
-  height: 128px;
+  min-height: 128px;
   border: 1px solid var(--c-elements);
   transition: all 300ms;
+
+  @include onTablet {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  @include onMobile {
+    padding-inline: 14px;
+  }
 
   &--unmount {
     pointer-events: none;
@@ -31,6 +42,10 @@
     display: flex;
     align-items: center;
     gap: 24px;
+
+    @include onMobile {
+      gap: 12px;
+    }
   }
 
   &__close-button {
@@ -51,7 +66,11 @@
     align-items: center;
     justify-content: center;
     height: 80px;
-    width: 80px;
+    aspect-ratio: 1;
+
+    @include onTablet {
+      height: 60px;
+    }
   }
 
   &__image {
@@ -65,12 +84,21 @@
     line-height: 150%;
     color: var(--c-primary);
     max-width: 240px;
+
+    @include onTablet {
+      max-width: none;
+      font-size: clamp(16px, 3.33vw, 20px);
+    }
   }
 
   &__right {
     display: flex;
     align-items: center;
     gap: 40px;
+
+    @include onTablet {
+      justify-content: space-between;
+    }
   }
 
   &__price-block {
@@ -82,6 +110,10 @@
     gap: 4px;
 
     color: var(--c-primary);
+
+    @include onTablet {
+      align-self: flex-start;
+    }
   }
 
   &__price {
@@ -92,12 +124,11 @@
     line-height: 150%;
     font-size: 10px;
     font-weight: 700;
-
+    
     &>span {
       font-size: 8px;
       color: var(--c-secondary);
     }
-
   }
 
   &__summary-price {

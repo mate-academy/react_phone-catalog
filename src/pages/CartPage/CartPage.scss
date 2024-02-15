@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 @keyframes cart-page-mount {
   from {
     transform-origin: right top;
@@ -71,5 +73,11 @@
     display: grid;
     grid-template-columns: 47fr 23fr;
     column-gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
   }
 }
