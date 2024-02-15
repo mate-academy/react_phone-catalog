@@ -1,0 +1,18 @@
+.options-toggler {
+
+
+  &__title {
+    color: var(--c-secondary);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__options {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    list-style-type: none;
+  }
+}

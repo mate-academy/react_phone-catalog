@@ -1,0 +1,50 @@
+@import '../../../../styles/vars';
+
+.products-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__name {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--c-primary);
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 16px;
+    overflow-x: hidden;
+  }
+
+  &__content {
+    display: flex;
+    scroll-snap-type: x proximity;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar { 
+      display: none;
+    }
+  }
+
+  &__item {
+    scroll-snap-align: start;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

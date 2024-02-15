@@ -1,0 +1,32 @@
+@import '../../../styles/mixins';
+
+.bread-crumbs {
+  display: flex;
+  gap: 8px;
+
+  list-style-type: none;
+
+  &__arrow {
+    transform: rotateY(180deg);
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--c-primary);
+    font-size: 12px;
+    font-weight: 600;
+
+    &--active {
+      color: var(--c-secondary);
+    }
+
+    @include hover(color, var(--c-secondary), 0);
+  }
+}

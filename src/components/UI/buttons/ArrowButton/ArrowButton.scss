@@ -1,0 +1,18 @@
+@import '../../../../styles/mixins';
+
+.arrow-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--c-tips);
+  background-color: transparent;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+
+  @include hover(border-color, var(--c-primary), 0ms);
+
+  &:disabled {
+    border: 1px solid var(--c-elements);
+  }
+}

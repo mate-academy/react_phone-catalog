@@ -1,0 +1,25 @@
+@import '../../../../styles/mixins';
+
+.color-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  height: 32px;
+  width: 32px;
+  border: 1px solid var(--c-elements);
+  border-radius: 50%;
+  
+  @include hover(border-color, var(--c-primary), 0ms);
+  
+  &--selected {
+    border: 1px solid var(--c-primary);
+  }
+
+  &__color {
+    width: 26px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+}

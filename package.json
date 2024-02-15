@@ -8,13 +8,21 @@
   "dependencies": {
     "@cypress/react": "^5.12.4",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/react-transition-group": "^4.4.5",
+    "@types/redux": "^3.6.0",
+    "axios": "^1.6.5",
     "bulma": "^0.9.4",
     "classnames": "^2.3.2",
+    "immer": "^10.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "@cypress/webpack-dev-server": "^1.8.4",
@@ -35,6 +43,7 @@
     "mochawesome-report-generator": "^6.2.0",
     "node-sass": "^7.0.1",
     "postcss": "^8.4.12",
+    "source-map-explorer": "^2.5.3",
     "stylelint": "^15.11.0",
     "typescript": "^4.6.3"
   },

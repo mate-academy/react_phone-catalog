@@ -1,0 +1,39 @@
+@import '../../../styles/mixins';
+
+.paginator {
+  display: flex;
+  gap: 16px;
+  max-width: 100%;
+  
+  &__list {
+    display: flex;
+    overflow: auto;
+    gap: 8px;
+    list-style-type: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    min-width: 32px;
+    color: var(--c-details);
+    line-height: 150%;
+    border: 1px solid var(--c-elements);
+    cursor: pointer;
+
+    @include hover(border-color, var(--c-primary), 0ms);
+
+    &--active {
+      background-color: var(--c-primary);
+      pointer-events: none;
+      color: var(--c-bg);
+      border: none;
+    }
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+  }
+}

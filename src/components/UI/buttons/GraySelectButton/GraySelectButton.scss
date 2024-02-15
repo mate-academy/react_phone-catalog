@@ -1,0 +1,33 @@
+@import '../../../../styles/mixins';
+
+.gray-select-button {
+  height: 40px;
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--c-primary);
+
+  color: var(--c-bg);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 150%;
+
+  transition: $transition-time;
+
+  @include onHoverSupport {
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+
+  &--selected {
+    color: var(--c-success);
+    background-color: var(--c-bg);
+    border: 1px solid var(--c-elements);
+  }
+}

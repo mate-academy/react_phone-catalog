@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-family: $f-main;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.App {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --max-content-width: 1136px;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+
+  @extend %max-content-width;
+}

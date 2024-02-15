@@ -1,0 +1,83 @@
+@import '../../styles/mixins';
+
+@keyframes cart-page-mount {
+  from {
+    transform-origin: right top;
+    transform: scale(0);
+  }
+
+  to {
+    transform-origin: right top;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes cart-page-empty-icon {
+
+  0%,
+  66.67% {
+    transform: scale(1);
+  }
+
+  83.33% {
+    transform: scale(1.1);
+  } 
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-page {
+  animation: cart-page-mount 0.2s forwards;
+  padding-block: 40px;
+
+  &--empty {
+    animation: cart-page-mount 0.2s forwards;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &>img {
+      animation: cart-page-empty-icon 2s infinite ease-in-out;
+      height: 128px;
+    }
+
+    &__message {
+      color: var(--c-primary);
+      font-size: 64px;
+      font-weight: 600;
+      margin-block: 40px 16px;
+    }
+
+    &__description {
+      color: var(--c-secondary);
+      font-size: 16px;
+      text-align: center;
+      max-width: 400px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: var(--c-primary);
+    margin-block: 16px 24px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 47fr 23fr;
+    column-gap: 16px;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+}

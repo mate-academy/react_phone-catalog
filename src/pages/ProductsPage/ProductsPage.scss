@@ -1,0 +1,36 @@
+.products-page {
+  display: flex;
+  width: 100%;
+  padding-block: 24px 40px;
+  flex-direction: column;
+
+  &__title {
+    color: var(--c-primary);
+
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    margin-top: 40px;
+  }
+
+  &__amount {
+    margin-top: 8px;
+    color: var(--c-secondary);
+    line-height: 21px;
+
+    &--without-filters-page {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__controls {
+    margin-block: 40px 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__paginator {
+    margin-block: 40px;
+    align-self: center;
+  }
+}

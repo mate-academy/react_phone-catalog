@@ -1,0 +1,36 @@
+@import '../../../styles/vars';
+
+.search-field {
+  display: flex;
+  transition: $transition-time;
+
+  &__input {
+    flex-grow: 1;
+    flex-shrink: 1;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 24px;
+    min-width: 30px;
+
+    &::placeholder {
+      color: var(--c-tips);
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    height: 100%;
+    aspect-ratio: 1;
+  }
+}

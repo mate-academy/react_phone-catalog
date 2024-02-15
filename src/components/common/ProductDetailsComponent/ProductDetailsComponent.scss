@@ -1,0 +1,46 @@
+@import '../../../styles/mixins';
+
+.product-details {
+  max-width: 1136px;
+
+  &__title {
+    color: var(--c-primary);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(24, minmax(16px, 32px));
+    gap: 80px 16px;
+
+    margin-top: 60px;
+    
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      
+      margin-top: 30px;
+      gap: 24px;
+    }
+  }
+
+  &__gallery,
+  &__about-block {
+    grid-column: span 12;
+  }
+
+  &__interaction {
+    grid-column: 14 / -4;
+    align-self: center;
+
+    @include onTablet {
+      align-self: stretch;
+    }
+  }
+
+  &__specs-table {
+    grid-column: 14 / -1;
+  }
+}

@@ -1,0 +1,139 @@
+@import '../../../styles/mixins';
+
+@keyframes cart-product-item-unmount {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+}
+
+
+.cart-product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  padding: 24px;
+  min-height: 128px;
+  border: 1px solid var(--c-elements);
+  transition: all 300ms;
+
+  @include onTablet {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  @include onMobile {
+    padding-inline: 14px;
+  }
+
+  &--unmount {
+    pointer-events: none;
+    animation: cart-product-item-unmount 300ms forwards ease-in-out;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include onMobile {
+      gap: 12px;
+    }
+  }
+
+  &__close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    padding: 4px;
+    aspect-ratio: 1;
+    cursor: pointer;
+
+    @include hover(filter, brightness(50%), 0);
+  }
+
+  &__image-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    aspect-ratio: 1;
+
+    @include onTablet {
+      height: 60px;
+    }
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--c-primary);
+    max-width: 240px;
+
+    @include onTablet {
+      max-width: none;
+      font-size: clamp(16px, 3.33vw, 20px);
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @include onTablet {
+      justify-content: space-between;
+    }
+  }
+
+  &__price-block {
+    position: relative;
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    color: var(--c-primary);
+
+    @include onTablet {
+      align-self: flex-start;
+    }
+  }
+
+  &__price {
+    position: absolute;
+    bottom: -40%;
+    right: 0;
+    width: max-content;
+    line-height: 150%;
+    font-size: 10px;
+    font-weight: 700;
+    
+    &>span {
+      font-size: 8px;
+      color: var(--c-secondary);
+    }
+  }
+
+  &__summary-price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 140%;
+  }
+}

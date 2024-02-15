@@ -1,0 +1,18 @@
+@import '../../../../styles/mixins';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  width: min-content;
+  cursor: pointer;
+
+  gap: 4px;
+  color: var(--c-secondary);
+
+  @include hover(color, var(--c-primary), 0);
+
+  &>span {
+    font-size: 10px;
+    font-weight: 600;
+  }
+}

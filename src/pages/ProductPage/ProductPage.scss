@@ -1,0 +1,13 @@
+.product-page {
+  padding-block: 24px 80px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  &__back-button {
+    margin-block: 40px 16px;
+  }
+}

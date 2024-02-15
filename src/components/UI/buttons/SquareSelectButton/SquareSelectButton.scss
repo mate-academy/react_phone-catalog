@@ -1,0 +1,27 @@
+@import './../../../../styles/mixins';
+
+.square-select-button {
+  height: 40px;
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--c-tips);
+  background-color: var(--c-bg);
+  cursor: pointer;
+
+  @include hover(border-color, var(--c-primary));
+
+  & > img {
+    aspect-ratio: 1;
+    height: 16px;
+
+    object-fit: cover;
+  }
+
+  &--selected {
+    border: 1px solid var(--c-elements);
+  }
+}

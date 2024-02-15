@@ -1,0 +1,79 @@
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  min-height: 96px;
+  border-top: 1px solid var(--c-tips);
+  box-shadow: 0 -1px 0 0 var(--c-elements);
+  
+  @include onTablet {
+    padding-block: 20px;
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @extend %max-content-width;
+
+    // flex-wrap: wrap;
+    @include onTablet {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+
+    @include onTablet {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 92%;
+    letter-spacing: 0.04em;
+    color: var(--c-secondary);
+    text-align: center;
+
+    @include onTablet {
+      font-size: 16px;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--c-secondary);
+
+    @include onHoverSupport {
+      &:hover {
+        text-decoration: underline;
+  
+        & > button {
+          border: 1px solid var(--c-primary);
+        }
+      }
+    }
+
+    @include onTablet {
+      align-self: flex-end;
+    }
+  }
+}

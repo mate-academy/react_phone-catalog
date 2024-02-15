@@ -1,0 +1,27 @@
+@import '/src/styles/mixins';
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--product-card-width), 1fr));
+  gap: 40px 16px;
+
+  @include onTablet {
+    gap: 24px 12px;
+  }
+
+  &--no-products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 460px;
+
+    font-size: 32px;
+    color: var(--c-primary);
+    text-align: center;
+
+    & a {
+      text-decoration: underline;
+    }
+  }
+}
