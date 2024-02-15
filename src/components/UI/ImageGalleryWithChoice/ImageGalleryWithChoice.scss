@@ -4,10 +4,19 @@
   display: flex;
   gap: 16px;
 
+  @include onMobile {
+    flex-direction: column-reverse;
+  }
+
   &__images {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onMobile {
+      overflow: auto;
+      flex-direction: row;
+    }
   }
 
   &__selected-image-container {
@@ -16,6 +25,14 @@
     justify-content: center;
     height: 464px;
     width: 464px;
+
+    @include onMobile {
+      width: 100%;
+      aspect-ratio: 1;
+      flex-grow: 0;
+      height: min-content;
+      max-height: 464px;
+    }
   }
 
   &__image,
@@ -23,6 +40,11 @@
     height: 100%;
     width: 100%;
     object-fit: contain;
+
+    // @include onMobile {
+    //   height: min-content;
+
+    // }
   }
 
   &__image-container {

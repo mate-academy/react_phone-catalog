@@ -5,9 +5,13 @@
   display: flex;
   justify-content: center;
 
-  height: 96px;
+  min-height: 96px;
   border-top: 1px solid var(--c-tips);
   box-shadow: 0 -1px 0 0 var(--c-elements);
+  
+  @include onTablet {
+    padding-block: 20px;
+  }
 
   &__content {
     flex-grow: 1;
@@ -19,7 +23,6 @@
 
     // flex-wrap: wrap;
     @include onTablet {
-      padding-block: 20px;
       flex-direction: column;
       gap: 24px;
     }
