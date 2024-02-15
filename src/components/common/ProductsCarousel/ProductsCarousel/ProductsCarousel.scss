@@ -42,4 +42,9 @@
   &__item {
     scroll-snap-align: start;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }

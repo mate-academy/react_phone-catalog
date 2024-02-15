@@ -44,3 +44,13 @@ export function prepareAdditionalInformation() {
 
   errorImgWhenUserWillBeOffline.src = './img/informative/error-img.webp';
 }
+
+export function isLast(containerElement: HTMLElement) {
+  const contentScrolled = containerElement.scrollLeft;
+
+  return contentScrolled + containerElement.clientWidth >= containerElement.scrollWidth;
+}
+
+export function isFirst(containerElement: HTMLElement) {
+  return containerElement.scrollLeft <= 0;
+}
