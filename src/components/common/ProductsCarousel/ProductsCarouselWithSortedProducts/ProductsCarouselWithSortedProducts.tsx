@@ -37,7 +37,7 @@ export const ProductsCarouselWithSortedProducts: React.FC<Props> = memo(({
   return (
     <ProductsCarousel
       name={name}
-      products={products.slice(0, 8)}
+      products={products}
       loading={loading}
       {...carouselProps}
     />
