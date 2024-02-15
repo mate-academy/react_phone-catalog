@@ -1,0 +1,61 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+
+  &__pages-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+
+    font-size: 14px;
+    color: $primary-color;
+    border: 1px solid $elements-color;
+    cursor: pointer;
+
+    transition: .3s ease;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--left {
+      background: url('../icons/arrow-left.svg') no-repeat center;
+      border: 1px solid $gray-icons-color;
+    }
+
+    &--right {
+      background: url('../icons/arrow-right.svg') no-repeat center;
+      border: 1px solid $gray-icons-color;
+    }
+
+    &--active {
+      background: $primary-color;
+      border: 1px solid $primary-color;
+      color: #FFF;
+    }
+
+    &--disabled-left {
+      transition: 0s ease;
+      border: 1px solid $elements-color;
+      background: url('../icons/arrow-left-disabled.svg') no-repeat center;
+      pointer-events: none;
+    }
+
+    &--disabled-right {
+      transition: 0s ease;
+      border: 1px solid $elements-color;
+      background: url('../icons/arrow-right-disabled.svg') no-repeat center;
+      pointer-events: none;
+    }
+  }
+}

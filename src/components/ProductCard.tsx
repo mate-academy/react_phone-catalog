@@ -38,7 +38,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="ProductCard__params-container">
           {PRODUCT_CARD_PARAMS.map(item => (
-            <div className="ProductCard__param">
+            <div className="ProductCard__param" key={item}>
               <span className="ProductCard__param-name">
                 {item}
               </span>

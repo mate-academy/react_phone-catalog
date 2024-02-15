@@ -3,15 +3,23 @@ import '../styles/Dropdowns.scss';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../utils/searchHelper';
 
+const sortTypes
+  = [{ age: 'Newest' }, { name: 'Alphabetically' }, { price: 'Cheapest' }];
+
+const PER_PAGE_COUNTS = ['All', '4', '8', '16'];
+
 export const Dropdowns: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort') || '';
-  const perPage = searchParams.get('perPage') || '';
+  const sort = searchParams.get('sort') || sortTypes[0].age;
+  const perPage = searchParams.get('perPage') || PER_PAGE_COUNTS[0];
 
   const handleSortByChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchParams(
-      getSearchWith(searchParams, { sort: e.target.value }),
+      getSearchWith(searchParams, {
+        sort: e.target.value,
+        page: '1',
+      }),
     );
   };
 
@@ -20,6 +28,15 @@ export const Dropdowns: React.FC = () => {
       getSearchWith(searchParams, { perPage: e.target.value }),
     );
   };
+
+  // useEffect(() => {
+  //   setSearchParams(
+  //     getSearchWith(searchParams, { perPage: 'All' }),
+  //   );
+  //   setSearchParams(
+  //     getSearchWith(searchParams, { sort: 'Newest' }),
+  //   );
+  // }, []);
 
   return (
     <section className="dropdowns">
@@ -33,9 +50,14 @@ export const Dropdowns: React.FC = () => {
           className="dropdown__select"
           onChange={handleSortByChange}
         >
-          <option value="age">Newest</option>
-          <option value="name">Alphabetically</option>
-          <option value="price">Cheapest</option>
+          {sortTypes.map(type => (
+            <option
+              value={Object.keys(type).join()}
+              key={Object.keys(type).join()}
+            >
+              {Object.values(type).join()}
+            </option>
+          ))}
         </select>
 
         <div className="dropdown__arrow" />
@@ -51,10 +73,9 @@ export const Dropdowns: React.FC = () => {
           className="dropdown__select"
           onChange={handlePerPageChange}
         >
-          <option value="All">All</option>
-          <option value="4">4</option>
-          <option value="8">8</option>
-          <option value="16">16</option>
+          {PER_PAGE_COUNTS.map(count => (
+            <option value={count} key={count}>{count}</option>
+          ))}
         </select>
 
         <div className="dropdown__arrow" />

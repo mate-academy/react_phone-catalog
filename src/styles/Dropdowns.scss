@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: 176px 128px 1fr;
   column-gap: 16px;
+  margin-bottom: 24px;
 
   @include onTablet {
     grid-template-columns: 187px 136px 1fr;
