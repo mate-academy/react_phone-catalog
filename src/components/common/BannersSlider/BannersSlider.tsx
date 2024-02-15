@@ -51,7 +51,7 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
         />
 
         <div className="banners-slider__content">
-          {loading && <Placeholder className='banners-slider__img'/>}
+          {loading && <Placeholder className="banners-slider__img" />}
 
           {!loading && banners.length > 0 && (
             <div
@@ -59,7 +59,6 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
               style={{
                 backgroundImage: `url(${banners[currentIndex]})`,
                 backgroundPosition: 'center',
-                // backgroundSize: 'cover',
               }}
             />
           )}

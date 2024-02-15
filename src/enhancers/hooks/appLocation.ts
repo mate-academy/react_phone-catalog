@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 export interface LocationState {
   prevPage?: string,
+  scrollToTop?: boolean,
 }
 
 export const useAppLocation = () => {

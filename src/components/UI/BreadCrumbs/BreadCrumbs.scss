@@ -16,6 +16,7 @@
 
   &__item {
     display: flex;
+    align-items: center;
     gap: 8px;
 
     color: var(--c-primary);

@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
+import { LocationState } from './appLocation';
 
 export const useDirection = () => {
   const { pathname } = useLocation();
@@ -9,7 +10,7 @@ export const useDirection = () => {
       pathname: path,
       state: {
         prevPage: pathname,
-      },
+      } as LocationState,
     };
   }, [pathname]);
 

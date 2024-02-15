@@ -10,6 +10,7 @@
   &__options {
     margin-top: 8px;
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 
     list-style-type: none;

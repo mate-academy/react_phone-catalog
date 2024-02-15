@@ -28,10 +28,7 @@
 
     @include onMobile {
       width: 100%;
-      aspect-ratio: 1;
-      flex-grow: 0;
-      height: min-content;
-      max-height: 464px;
+      height: 340px;
     }
   }
 
@@ -40,11 +37,6 @@
     height: 100%;
     width: 100%;
     object-fit: contain;
-
-    // @include onMobile {
-    //   height: min-content;
-
-    // }
   }
 
   &__image-container {

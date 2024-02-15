@@ -28,13 +28,14 @@
     align-items: center;
     justify-content: space-between;
   }
-
+  
   & td {
     max-width: 50%;
   }
 
   & td:nth-child(2n) {
     text-align: right;
+    word-break: break-all;
     color: var(--c-primary);
   }
 }

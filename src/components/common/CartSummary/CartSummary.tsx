@@ -24,7 +24,7 @@ export const CartSummary: React.FC = () => {
   }, [storageProducts, products]);
 
   if (loading) {
-    return <Placeholder className='cart-summary' height='204px'/>;
+    return <Placeholder className="cart-summary" height="204px" />;
   }
 
   return (

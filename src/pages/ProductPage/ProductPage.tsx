@@ -17,10 +17,8 @@ import {
 // eslint-disable-next-line
 import ProductsCarouselWithRandomItems from '../../components/common/ProductsCarousel/ProductsCarouselWithRandomItems';
 import BreadCrumbs from '../../components/UI/BreadCrumbs';
-import { useDirection } from '../../enhancers/hooks/direction';
 
 export const ProductPage: React.FC = memo(() => {
-  const direction = useDirection();
   const { productId, category } = useAppParams();
   const navigate = useNavigate();
   const [product, , error, setProduct] = useRequest(
@@ -35,8 +33,8 @@ export const ProductPage: React.FC = memo(() => {
 
     if (productToChange) {
       navigate(
-        direction(`/${category}/${productToChange.id}`),
-        { replace: true },
+        `/${category}/${productToChange.id}`,
+        { replace: true, state: { scrollToTop: false } },
       );
       setProduct(productToChange);
     }
