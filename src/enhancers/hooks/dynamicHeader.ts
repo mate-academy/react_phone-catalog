@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
+import { useResizeObserver } from './resizeObserver';
 
-export function useDynamicHeader(scrollStep = 0, widthQuery = 768) {
-  const [isTablet, setIsTablet] = useState(window.innerWidth < widthQuery);
-  const lastScrollY = useRef(window.scrollY);
+export function useDynamicHeader<T extends HTMLElement>(
+  scrollStep = 0, widthQuery = 768,
+): [React.RefObject<T>, boolean] {
+  const [isTablet, setIsTablet] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
+  const lastScrollY = useRef(window.scrollY);
+  const headerRef = useResizeObserver<T>(entry => {
+    const headerWidth = entry.contentRect.width;
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTablet(window.innerWidth < widthQuery);
-    };
-
-    window.addEventListener('resize', handleResize, { passive: true });
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    setIsTablet(headerWidth <= widthQuery);
+  }, [widthQuery]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,5 +33,5 @@ export function useDynamicHeader(scrollStep = 0, widthQuery = 768) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isTablet, scrollStep]);
 
-  return hideHeader;
+  return [headerRef, hideHeader];
 }

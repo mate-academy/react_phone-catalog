@@ -1,6 +1,13 @@
+@import '../../styles/mixins';
+
 .home-page {
   display: flex;
   flex-direction: column;
   gap: 80px;
   padding-block: 40px 80px;
+
+  @include onTablet {
+    gap: 32px;
+    padding-block: 0 40px;
+  }
 }

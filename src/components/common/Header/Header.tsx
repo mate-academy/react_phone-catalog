@@ -10,17 +10,17 @@ import { useAppSelector } from '../../../store/redux/hooks';
 import { cartSelector } from '../../../store/redux/slices/cartSlice';
 import { favoritesSelector } from '../../../store/redux/slices/favoritesSlice';
 import { useDirection } from '../../../enhancers/hooks/direction';
-import { useDynamicHeader } from '../../../enhancers/hooks/scrollAction';
+import { useDynamicHeader } from '../../../enhancers/hooks/dynamicHeader';
 
 export const Header: React.FC = memo(() => {
   const direction = useDirection();
   const cartIds = useAppSelector(cartSelector.selectStorageProducts);
   const favoritesIds = useAppSelector(favoritesSelector.selectStorageProducts);
   const { searchVisible, searchIn } = useContext(SearchContext);
-  const hideHeader = useDynamicHeader(20, 920);
+  const [headerRef, hideHeader] = useDynamicHeader<HTMLElement>(20, 920);
 
   return (
-    <header className={`header ${hideHeader ? 'header--hidden' : ''}`}>
+    <header className={`header ${hideHeader ? 'header--hidden' : ''}`} ref={headerRef}>
       <Navbar />
 
       <div className="header__right">

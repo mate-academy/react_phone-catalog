@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useRef } from 'react';
 import { Product } from '../../../../definitions/types/Product';
 
 import './ProductsCarousel.scss';
@@ -11,7 +11,6 @@ export interface ProductsCarouselProps {
   products: Product[],
   loading?: boolean,
   step?: number,
-  windowSize?: number,
   gapSize?: number
 }
 
@@ -19,66 +18,48 @@ export const ProductsCarousel: React.FC<ProductsCarouselProps> = memo(({
   name,
   products,
   loading,
-  step = 1,
-  windowSize = 4,
   gapSize = 16,
+  step = 1,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const cardWidth = parseInt(getRootCssVariable('--product-card-width'), 10);
   const showedItems = loading ? Array.from({ length: 16 }, () => null) : products;
+  const contentElement = contentRef.current;
 
-  const itemWidth = parseInt(getRootCssVariable('--product-card-width'), 10);
-  const lastIndex = showedItems.length - windowSize;
-  const position = -((currentIndex * (itemWidth + gapSize)));
+  const scrollByStep = useCallback((step: number) => {
+    if (contentElement) {
+      const scrollAmount = (cardWidth + gapSize) * step;
 
-  const isFirst = currentIndex <= 0;
-  const isLast = currentIndex > lastIndex;
+      contentElement.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }, [cardWidth, gapSize, contentElement]);
 
-  const slideToNext = useCallback(() => {
-    setCurrentIndex(index => {
-      const newIndex = index + step;
-
-      return newIndex < lastIndex ? newIndex : lastIndex;
-    });
-  }, [lastIndex, step]);
-
-  const slideToPrev = useCallback(() => {
-    setCurrentIndex(index => {
-      const newIndex = index - step;
-
-      return newIndex >= 0 ? newIndex : 0;
-    });
-  }, [step]);
+  const scrollStepDeps = [scrollByStep, step];
+  const scrollNext = useCallback(() => scrollByStep(step), scrollStepDeps);
+  const scrollPrev = useCallback(() => scrollByStep(-step), scrollStepDeps);
 
   return (
     <section className="products-carousel">
       <div className="products-carousel__top">
         <h3 className="products-carousel__name">{name}</h3>
-
         <div className="products-carousel__controls">
-          <ArrowButton
-            disabled={isFirst}
-            onClick={slideToPrev}
-          />
-
-          <ArrowButton
-            disabled={isLast}
-            rotate={180}
-            onClick={slideToNext}
-          />
+          <ArrowButton onClick={scrollPrev} />
+          <ArrowButton rotate={180} onClick={scrollNext} />
         </div>
       </div>
 
       <div className="products-carousel__bottom">
         <div
+          ref={contentRef}
+          style={{ gap: `${gapSize}px` }}
           className="products-carousel__content"
-          style={{
-            gap: `${gapSize}px`,
-            transform: `translateX(${position}px)`,
-            color: 'red',
-          }}
         >
           {showedItems.map((product, index) => (
-            <ProductCard product={product} key={product?.itemId ?? index} />
+            <ProductCard
+              product={product}
+              key={product?.itemId ?? index}
+              className="products-carousel__item"
+            />
           ))}
         </div>
       </div>

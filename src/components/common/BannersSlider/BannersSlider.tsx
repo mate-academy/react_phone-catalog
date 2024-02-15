@@ -59,7 +59,7 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
               style={{
                 backgroundImage: `url(${banners[currentIndex]})`,
                 backgroundPosition: 'center',
-                backgroundSize: 'cover',
+                // backgroundSize: 'cover',
               }}
             />
           )}

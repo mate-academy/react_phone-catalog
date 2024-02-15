@@ -11,12 +11,20 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 23px;
   border: 1px solid var(--c-elements);
   background: var(--c-bg);
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
 
-  @include hover(transform, scale(1.02));
+  @include onHoverSupport {
+    &__content {
+      transition: $transition-time;
+    }
+
+    &:hover &__content {
+      transform: scale(1.02);
+    }
+  }
 
   &__top {
     display: flex;
@@ -61,10 +69,11 @@
     font-weight: 500;
   }
 
-  & > hr {
+  & hr {
     background-color: var(--c-elements);
     border: none;
     height: 1px;
+    width: 100%;
   }
 
   &__img {

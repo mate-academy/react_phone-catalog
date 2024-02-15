@@ -20,6 +20,12 @@
   }
 }
 
+@mixin onTouchScreenDevice() {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
 @mixin hover($_property, $_toValue, $_transition-time: $transition-time) {
   @media (hover: hover) and (pointer: fine) {
     transition: #{$_property} #{$_transition-time};

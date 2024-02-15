@@ -26,11 +26,20 @@
   &__bottom {
     display: flex;
     gap: 16px;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   &__content {
     display: flex;
-    transition: transform $transition-time ease-out;
+    scroll-snap-type: x proximity;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar { 
+      display: none;
+    }
+  }
+
+  &__item {
+    scroll-snap-align: start;
   }
 }
