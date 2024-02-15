@@ -51,7 +51,7 @@ export const BannersSlider: React.FC<Props> = memo(({ banners, loading }) => {
         />
 
         <div className="banners-slider__content">
-          {loading && <Placeholder width="100%" height="400px" />}
+          {loading && <Placeholder className='banners-slider__img'/>}
 
           {!loading && banners.length > 0 && (
             <div

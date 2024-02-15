@@ -26,6 +26,10 @@
     }
   }
 
+  &__placeholder {
+    min-width: var(--product-card-width);
+  }
+
   &__top {
     display: flex;
     flex-direction: column;

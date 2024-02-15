@@ -38,7 +38,7 @@ export const ProductCard: React.FC<Props> = memo(({
   );
 
   if (product === null) {
-    return <Placeholder height="504px" className={className} />;
+    return <Placeholder height="504px" className={`product-card__placeholder ${className}`}/>;
   }
 
   const {

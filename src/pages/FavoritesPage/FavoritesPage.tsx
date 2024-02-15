@@ -38,7 +38,14 @@ export const FavoritesPage: React.FC = memo(() => {
 
       <h2 className="products-page__title">Favorites</h2>
 
-      {loading && <Placeholder width="40px" height="20px" className="products-page__amount" />}
+      {loading && (
+        <Placeholder
+          width="40px"
+          height="20px"
+          className="products-page__amount products-page__amount--without-filters-page"
+        />
+      )}
+
       {!loading && (
         <p className="products-page__amount products-page__amount--without-filters-page">
           <data value={products.length}>
