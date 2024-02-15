@@ -1,0 +1,71 @@
+@import "../../utils/main";
+
+.selectItems {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  &__title {
+    @extend %small-text;
+
+    color: $gray-secondary-color;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 128px;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid $gray-icons-color;
+    background-color: $white-color;
+
+    color: $gray-primary-color;
+
+    @extend %text-buttons;
+
+    &--icon {
+      cursor: pointer;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    z-index: 1;
+    top: 105%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 128px;
+    height: 120px;
+    border: 1px solid $gray-icons-color;
+    overflow: hidden;
+    background-color: $white-color;
+
+    &--item {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      height: 30px;
+      padding: 10px 12px;
+
+      @extend %text-buttons;
+
+      color: $gray-secondary-color;
+      cursor: pointer;
+      transition: color $transition-duration;
+
+      &:hover {
+        color: $gray-primary-color;
+      }
+    }
+  }
+}

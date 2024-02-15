@@ -1,59 +1,84 @@
-@import "../../styles/utils";
+@import "../../utils/main";
 
 .footer {
-  height: $footer-height;
-  box-shadow: 0 -1px 0 0 $c-gray-elements;
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid $elements-color;
 
-  &__content {
-    padding: 32px 0;
-
+  &__container {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    @include onTablet {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+    justify-content: space-between;
   }
 
-  &__list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    @include onTablet {
-      flex-direction: row;
-      gap: 64px;
-    }
-  }
-
-  &__link {
-    @extend %uppercase;
-    color: $c-gray-secondary;
-
-    @include hover(color, $c-gray-primary);
-  }
-
-  &__anchor {
+  &__logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
 
-    &-text {
-      @extend %smallText;
-      color: $c-gray-secondary;
+    &--img {
+      width: 40px;
+      height: 24px;
+    }
+  }
 
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    &--link {
+      @extend %uppercase;
+
+      color: $gray-secondary-color;
       transition: color $transition-duration;
+
+      &:hover {
+        color: $gray-primary-color;
+      }
+    }
+  }
+
+  &__backToTop {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+
+    &--message {
+      @extend %small-text;
+
+      color: $gray-secondary-color;
+      cursor: pointer;
+      transition: color $transition-duration;
+
+      @include on-tablet {
+        display: none;
+      }
+
+      &:hover {
+        color: $gray-primary-color;
+      }
     }
 
-    & button {
-      order: 1;
+    &--btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 32px;
+      border: 1px solid $gray-icons-color;
+      cursor: pointer;
+      transition: border $transition-duration;
 
-      &:hover ~ .footer__anchor-text {
-        color: $c-gray-primary;
+      &:hover {
+        border: 1px solid $gray-primary-color;
       }
     }
   }

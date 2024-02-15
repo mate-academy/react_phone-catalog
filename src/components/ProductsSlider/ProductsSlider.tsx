@@ -1,74 +1,84 @@
-import { useMemo, useState } from 'react';
-import { useAppSelector } from '../../utils/hooks/hooks';
-import { Button } from '../Button';
-import { ProductCard } from '../ProductCard';
-import { ButtonType } from '../../types/ButtonType';
-import { ProductsCardType } from '../../types/ProductsCardType';
-import { Product } from '../../types/Product';
-import { getHotPriceProducts } from '../../utils/helpers/getHotPriceProducts';
-import { getBrandNewProducts } from '../../utils/helpers/getBrandNewProducts';
-import { getSuggestedProducts } from '../../utils/helpers/getSuggestedProducts';
+import React, { useState } from 'react';
 import './ProductsSlider.scss';
+import arrowLeft from '../../icons/arrow-left.svg';
+import arrowRight from '../../icons/arrow-right.svg';
+import { ProductCard } from '../ProductCard';
+import { Product } from '../../types/Product';
+import { Loader } from '../Loader';
 
-type Props = {
-  type: ProductsCardType;
-  filterBy?: keyof Product;
-  filterValue?: string | number;
-};
+interface Props {
+  products: Product[],
+  isLoading: boolean,
+  isError: boolean,
+  title: string,
+}
 
 export const ProductsSlider: React.FC<Props> = ({
-  type,
-  filterBy,
-  filterValue,
+  products,
+  isLoading,
+  isError,
+  title,
 }) => {
-  const [position, setPosition] = useState(0);
-  const { products } = useAppSelector((state) => state.products);
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  const visibleProducts = useMemo(() => {
-    const conditionProducts = {
-      [ProductsCardType.DISCOUNT]: getHotPriceProducts(products),
-      [ProductsCardType.NEWBRANDS]: getBrandNewProducts(products),
-      [ProductsCardType.SIMILAR]: getSuggestedProducts(
-        products, filterBy, filterValue,
-      ),
-    };
+  const handlePrevClick = () => {
+    setSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
 
-    return conditionProducts[type];
-  }, [type, filterBy, filterValue, products]);
-
-  const maxPosition = Math.ceil(visibleProducts.length / 4) - 1;
-  const cardWidth = 271.6;
-  const gap = 16;
-  const transform = `translateX(${-position * (cardWidth + gap)}px)`;
+  const handleNextClick = () => {
+    setSlideIndex((prevIndex) => Math
+      .min(prevIndex + 1, Math.ceil(products.length / 4) - 1));
+  };
 
   return (
-    <section className="section">
-      <h2 className="section__title">{type}</h2>
-      <div className="productsSlider">
-        <div className="productsSlider__navigation">
-          <Button
-            content={ButtonType.ARROW}
-            direction="left"
-            disabled={position === 0}
-            onClick={() => setPosition((pos) => pos - 1)}
-          />
-          <Button
-            content={ButtonType.ARROW}
-            direction="right"
-            onClick={() => setPosition((pos) => pos + 1)}
-            disabled={position === maxPosition}
-          />
+    <section className="productsSlider">
+      <div className="productsSlider__header">
+        <h1 className="productsSlider__header--title">
+          {title}
+        </h1>
+        <div className="productsSlider__header--btn">
+          <button
+            className="productsSlider__button"
+            type="button"
+            onClick={handlePrevClick}
+            disabled={slideIndex === 0}
+          >
+            <img src={arrowLeft} alt="button-left" />
+          </button>
+          <button
+            className="productsSlider__button"
+            type="button"
+            onClick={handleNextClick}
+            disabled={slideIndex === Math.ceil(products.length / 4) - 1}
+          >
+            <img src={arrowRight} alt="button-left" />
+          </button>
         </div>
-        <div className="productsSlider__slides">
-          {visibleProducts.map((product) => (
-            <ProductCard
-              product={product}
-              key={product.id}
-              transform={transform}
-              type={type}
-            />
-          ))}
-        </div>
+      </div>
+
+      <div className="productsSlider__content">
+        {isLoading && !isError && <Loader />}
+        {!isLoading && isError && (
+          <p>
+            Error: Unable to load data from server!
+          </p>
+        )}
+        {!isLoading && !isError && (
+          <ul
+            className="productsSlider__list"
+            style={{ transform: `translateX(-${slideIndex * (272 * 4 + 16 * 4)}px)` }}
+          >
+            {products.map(product => (
+              <li
+                className="productsSlider__item"
+                key={product.id}
+              >
+                <ProductCard product={product} />
+              </li>
+            ))}
+          </ul>
+        )}
+
       </div>
     </section>
   );

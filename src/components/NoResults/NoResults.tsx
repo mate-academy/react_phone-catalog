@@ -1,13 +1,12 @@
 import React from 'react';
+import './NoResults.scss';
 
-type Props = {
-  type: string;
-};
-
-export const NoResults: React.FC<Props> = ({ type }) => {
-  const prepearedTitle = type[0].toUpperCase() + type.slice(1);
-
+export const NoResult: React.FC = () => {
   return (
-    <h1 className="page__title">{`${prepearedTitle} not found`}</h1>
+    <div className="noResult">
+      <p className="noResult__text">
+        No products on this section
+      </p>
+    </div>
   );
 };

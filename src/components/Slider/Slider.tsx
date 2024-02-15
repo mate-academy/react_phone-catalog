@@ -1,101 +1,78 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import cn from 'classnames';
-import { Button } from '../Button';
-import { ButtonType } from '../../types/ButtonType';
+import classNames from 'classnames';
+import { useState } from 'react';
 import './Slider.scss';
+import accessories from '../../photo/banner-accessories.png';
+import phones from '../../photo/banner-phones.png';
+import tablets from '../../photo/banner-tablets.png';
+import arrowRight from '../../icons/arrow-right.svg';
+import arrowLeft from '../../icons/arrow-left.svg';
 
-type Image = {
-  name: 'phones' | 'tablets' | 'accessories';
-  path: string;
-};
-
-const images: Image[] = [
-  { name: 'phones', path: 'new/img/banner-phones.png' },
-  { name: 'tablets', path: 'new/img/banner-tablets.png' },
-  { name: 'accessories', path: 'new/img/banner-accessories.png' },
+const images = [
+  accessories,
+  tablets,
+  phones,
 ];
 
 export const Slider: React.FC = () => {
-  const [position, setPosition] = useState(0);
-  const [toched, setToched] = useState(false);
-  const transform = `translateX(${-position * 100}%)`;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const updateIndex = (newIndex: number) => {
+    let index = newIndex;
 
-  const moveLeft = useCallback(() => {
-    if (position === 0) {
-      setPosition(2);
-
-      return;
+    if (newIndex < 0) {
+      index = 2;
+    } else if (index >= 3) {
+      index = 0;
     }
 
-    setPosition((currentPosition) => currentPosition - 1);
-  }, [position]);
-
-  const moveRight = useCallback(() => {
-    if (position === 2) {
-      setPosition(0);
-
-      return;
-    }
-
-    setPosition((currentPosition) => currentPosition + 1);
-  }, [position]);
-
-  useEffect(() => {
-    if (toched) {
-      return () => {};
-    }
-
-    const interval = setInterval(moveRight, 5000);
-
-    return () => clearInterval(interval);
-  }, [position, toched]);
+    setActiveIndex(index);
+  };
 
   return (
     <div className="slider">
-      <div className="slider__container">
-        <Button
-          content={ButtonType.ARROW}
-          direction="left"
-          className="slider__button"
-          onClick={() => {
-            moveLeft();
-            setToched(true);
-          }}
-        />
-
-        <div className="slider__wrapper">
-          {images.map(({ name, path }) => (
-            <div className="slider__slide" style={{ transform }} key={path}>
-              <Link to={name} className="slider__link">
+      <div className="slider__wrapper">
+        <button
+          className="slider__button slider__button--left"
+          type="button"
+          onClick={() => updateIndex(activeIndex - 1)}
+        >
+          <img src={arrowLeft} alt="button-left" />
+        </button>
+        <div className="slider__container">
+          <ul
+            className="slider__list"
+            style={{ transform: `translate(-${activeIndex * 1040}px)` }}
+          >
+            {images.map(img => (
+              <li className="slider__item" key={img}>
                 <img
-                  src={path}
-                  alt={`${name} banner`}
+                  src={img}
+                  alt="slider"
                   className="slider__img"
                 />
-              </Link>
-            </div>
-          ))}
+              </li>
+            ))}
+
+          </ul>
         </div>
 
-        <Button
-          content={ButtonType.ARROW}
-          className="slider__button"
-          onClick={() => {
-            moveRight();
-            setToched(true);
-          }}
-        />
+        <button
+          className="slider__button slider__button--right"
+          type="button"
+          onClick={() => updateIndex(activeIndex + 1)}
+        >
+          <img src={arrowRight} alt="button-right" />
+        </button>
       </div>
-
-      <div className="slider__pagination">
-        {images.map((image, index) => (
+      <div className="slider__dots">
+        {images.map((img, i) => (
           <button
             type="button"
-            aria-label="bulletButton"
-            key={image.path}
-            className={cn('slider__bullet', { active: index === position })}
-            onClick={() => setPosition(index)}
+            aria-label="position"
+            key={img}
+            onClick={() => setActiveIndex(i)}
+            className={classNames('slider__dots--item', {
+              'dots-active': activeIndex === i,
+            })}
           />
         ))}
       </div>

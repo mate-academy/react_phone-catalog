@@ -1,129 +1,81 @@
-import { useMemo, useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import cn from 'classnames';
-import { Button } from '../Button';
-import { Product } from '../../types/Product';
-import { ButtonType } from '../../types/ButtonType';
-import { ProductsCardType } from '../../types/ProductsCardType';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks/hooks';
-import {
-  addToFavorites,
-  deleteFromFavorites,
-} from '../../store/slices/favoritesSlice';
-import { addToCart } from '../../store/slices/cartSlice';
 import './ProductCard.scss';
+import { Product } from '../../types/Product';
+import { ButtonFavorites } from '../ButtonFavorites';
+import { ButtonAddCard } from '../ButtonAddCard';
 
-type Props = {
-  product: Product;
-  transform?: string;
-  type: ProductsCardType;
-};
+interface Props {
+  product: Product,
+}
 
-export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
+const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
-    image,
+    phoneId,
     name,
     price,
     fullPrice,
     screen,
     capacity,
     ram,
-    category,
-    itemId,
+    image,
   } = product;
 
-  const { favorites } = useAppSelector((state) => state.favorites);
-  const { cartItems } = useAppSelector((state) => state.cartItems);
-  const dispatch = useAppDispatch();
-
-  const hasInFavorites = useMemo(() => {
-    return favorites.some((fav) => fav.id === product.id);
-  }, [favorites, product]);
-
-  const hasInCart = useMemo(() => {
-    return cartItems.some((item) => item.id === product.id);
-  }, [cartItems, product]);
-
-  const handleFavoritesChange = useCallback(() => {
-    if (hasInFavorites) {
-      dispatch(deleteFromFavorites(product.id));
-    } else {
-      dispatch(addToFavorites(product));
-    }
-  }, [hasInFavorites]);
-
-  const handleCartItemsChange = useCallback(
-    (prod: Product) => {
-      if (hasInCart) {
-        return;
-      }
-
-      dispatch(addToCart(prod));
-    },
-    [hasInCart],
-  );
-
   return (
-    <div className="productCard" data-cy="cardsContainer" style={{ transform }}>
-      <div className="productCard__container">
-        <Link to={`/${category}/${itemId}`}>
-          <img
-            src={`new/${image}`}
-            alt={name}
-            className="productCard__image"
-          />
+    <Link
+      to={`/${product.category}/${phoneId}`}
+      className="productCard"
+      data-cy="cardsContainer"
+    >
+      <div className="productCard__photo">
+        <img src={`${BASE_URL}${image}`} alt="product" className="productCard__img" />
+      </div>
 
-          <h3 className="productCard__title">{name}</h3>
-        </Link>
-
-        <div className="productCard__price">
-          {type === ProductsCardType.DISCOUNT ? (
-            <>
-              <span className="productCard__price-main">{`$${price}`}</span>
-              <span className="productCard__price-discount">
-                {`$${fullPrice}`}
-              </span>
-            </>
-          ) : (
-            <span className="productCard__price-main">{`$${fullPrice}`}</span>
-          )}
+      <div className="productCard__title">
+        <h4 className="productCard__title--text">
+          {name}
+        </h4>
+      </div>
+      <div className="productCard__price">
+        <span className="productCard__price--current">
+          {`$${price}`}
+        </span>
+        <span className="productCard__price--full">
+          {`$${fullPrice}`}
+        </span>
+      </div>
+      <div className="productCard__info">
+        <div className="productCard__info--wrapper">
+          <span className="productCard__info--title">
+            Screen
+          </span>
+          <span className="productCard__info--description">
+            {screen}
+          </span>
         </div>
-
-        <ul className="productCard__info">
-          <li className="productCard__text">
-            <span className="productCard__text-title">Screen</span>
-            <span className="productCard__text-value">{screen}</span>
-          </li>
-
-          <li className="productCard__text">
-            <span className="productCard__text-title">Capacity</span>
-            <span className="productCard__text-value">{capacity}</span>
-          </li>
-
-          <li className="productCard__text">
-            <span className="productCard__text-title">RAM</span>
-            <span className="productCard__text-value">{ram}</span>
-          </li>
-        </ul>
-
-        <div className="productCard__buttons">
-          <Button
-            content={ButtonType.TEXT}
-            onClick={() => handleCartItemsChange(product)}
-            className={cn({ active: hasInCart })}
-            disabled={hasInCart}
-          >
-            {hasInCart ? 'Added to cart' : 'Add to cart'}
-          </Button>
-
-          <Button
-            content={ButtonType.FAVORITES}
-            data-cy="addToFavorite"
-            onClick={handleFavoritesChange}
-            className={cn({ active: hasInFavorites })}
-          />
+        <div className="productCard__info--wrapper">
+          <span className="productCard__info--title">
+            Capacity
+          </span>
+          <span className="productCard__info--description">
+            {capacity}
+          </span>
+        </div>
+        <div className="productCard__info--wrapper">
+          <span className="productCard__info--title">
+            RAM
+          </span>
+          <span className="productCard__info--description">
+            {ram}
+          </span>
         </div>
       </div>
-    </div>
+      <div className="productCard__buttons">
+        <ButtonAddCard product={product} />
+        <ButtonFavorites product={product} />
+      </div>
+    </Link>
   );
 };

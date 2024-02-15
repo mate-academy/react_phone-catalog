@@ -1,59 +1,101 @@
-@import "../../styles/utils";
+@import "../../utils/main";
 
 .slider {
-  padding-top: 40px;
-
-  &__container {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-
-  &__button {
-    height: auto;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
 
   &__wrapper {
+    margin-top: 40px;
+    height: 400px;
+    max-width: 100%;
     display: flex;
-    flex-direction: row;
+    gap: 16px;
 
-    width: 100%;
-    overflow: hidden;
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-mobile {
+      height: 250px;
+    }
   }
 
-  &__slide {
-    flex-shrink: 0;
-    flex-basis: 100%;
+  &__container {
+    height: 100%;
+    width: 1040px;
+    overflow: hidden;
 
-    transition: transform $transition-duration;
+    @include on-tablet {
+      width: 654px;
+    }
+
+    @include on-mobile {
+      width: 504px;
+    }
+  }
+
+  &__list {
+    height: 100%;
+    width: 300%;
+    display: flex;
+    gap: 1px;
+    transition-duration: 1s;
+  }
+
+  &__item {
+    height: 100%;
+    width: 33.33%;
   }
 
   &__img {
-    width: 100%;
     height: 100%;
-    max-height: 400px;
-
+    width: 100%;
     object-fit: cover;
+    object-position: center;
   }
 
-  &__pagination {
-    display: flex;
-    justify-content: center;
-  }
-
-  &__bullet {
-    height: 4px;
-    width: 14px;
-    margin: 10px 8px;
-
-    background-color: $c-gray-elements;
-    border: none;
-
-    transition: background-color $transition-duration;
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    max-height: 100%;
+    background: none;
+    border: 1px solid $gray-icons-color;
     cursor: pointer;
+    transition: border 0.3s;
 
-    &.active {
-      background-color: $c-gray-primary;
+    &:hover {
+      border: 1px solid $gray-primary-color;
     }
   }
+
+  &__dots {
+    width: 80px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &--item {
+      width: 14px;
+      height: 5px;
+      background-color: $gray-icons-color;
+      border-radius: 0;
+      transition: background-color border 0.3s;
+      border: 1px solid $gray-icons-color;
+
+      &:hover {
+        background-color: $gray-primary-color;
+        border: 1px solid $gray-primary-color;
+      }
+    }
+  }
+}
+
+.dots-active {
+  background-color: $gray-primary-color;
+  border: 1px solid $gray-primary-color;
 }

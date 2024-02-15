@@ -1,32 +1,49 @@
-import { Loader } from '../../components/Loader';
-import { Slider } from '../../components/Slider';
+import { useState, useEffect } from 'react';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { ShopByCategory } from '../../components/ShopByCategory';
-import { ProductsCardType } from '../../types/ProductsCardType';
-import { useAppSelector } from '../../utils/hooks/hooks';
+import { Slider } from '../../components/Slider/Slider';
+import { Product } from '../../types/Product';
+import { getProducts } from '../../api/productsApi';
+import { Categories } from '../../components/Categories';
 
 export const HomePage = () => {
-  const { isLoading, hasError } = useAppSelector((state) => state.products);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  if (hasError) {
-    return <h1>Can&#x0374;t load products</h1>;
-  }
+  useEffect(() => {
+    setIsLoading(true);
+    getProducts()
+      .then(setProducts)
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  const sortHotPrice = [...products]
+    .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
+
+  const sortNewModels = [...products]
+    .sort((a, b) => b.year - a.year);
 
   return (
     <div className="container">
-      <section className="section">
-        <Slider />
-      </section>
-
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <ProductsSlider type={ProductsCardType.DISCOUNT} />
-          <ShopByCategory />
-          <ProductsSlider type={ProductsCardType.NEWBRANDS} />
-        </>
-      )}
+      <Slider />
+      <ProductsSlider
+        products={sortHotPrice}
+        isLoading={isLoading}
+        isError={isError}
+        title="Hot prices"
+      />
+      <Categories products={products} />
+      <ProductsSlider
+        products={sortNewModels}
+        isLoading={isLoading}
+        isError={isError}
+        title="Brand new models"
+      />
     </div>
   );
 };

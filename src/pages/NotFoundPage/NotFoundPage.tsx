@@ -1,17 +1,12 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
 import './NotFoundPage.scss';
 
-export const NotFoundPage = () => {
+export const NotFoundPage: React.FC = () => {
   return (
-    <div className="container notFoundPage">
-      <h1>Unfortunately, we did not find such a page on our site.</h1>
-      <p>
-        You can go to the&nbsp;
-        <Link to="/">
-          home page
-        </Link>
-        .
-      </p>
+    <div className="notFoundPage">
+      <h1 className="notFoundPage__title">
+        Page not found
+      </h1>
     </div>
   );
 };

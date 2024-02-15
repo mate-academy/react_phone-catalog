@@ -1,59 +1,67 @@
-import { Logo } from '../Logo';
-import { Button } from '../Button';
-import { ButtonType } from '../../types/ButtonType';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
+import logo from '../../icons/logo.svg';
 
 export const Footer = () => {
+  const goToTop = () => {
+    const scrollToTop = () => {
+      const scrollTop = window.scrollY;
+
+      if (scrollTop > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, scrollTop - scrollTop / 8);
+      }
+    };
+
+    scrollToTop();
+  };
+
   return (
-    <footer className="footer">
-      <div className="footer__content container">
-        <Logo />
+    <div className="footer">
+      <div className="footer__container main main__container">
+        <Link to="/" className="footer__logo">
+          <img src={logo} alt="footer-logo" className="footer__logo--img" />
+        </Link>
 
-        <ul className="footer__list">
-          <li className="footer__item">
-            <a
-              href="https://github.com/Liubomyr19"
-              className="footer__link"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Github
-            </a>
-          </li>
+        <div className="footer__nav">
+          <Link
+            to="https://github.com/Liubomyr19"
+            className="footer__nav--link"
+            target="_blank"
+          >
+            Github
+          </Link>
 
-          <li className="footer__item">
-            <a
-              href="https://github.com/Liubomyr19"
-              className="footer__link"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Contacts
-            </a>
-          </li>
+          <Link
+            to="https://github.com/Liubomyr19"
+            className="footer__nav--link"
+            target="_blank"
+          >
+            Contacts
+          </Link>
 
-          <li className="footer__item">
-            <a
-              href="https://github.com/Liubomyr19"
-              className="footer__link"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Rights
-            </a>
-          </li>
-        </ul>
-
-        <div className="footer__anchor">
-          <Button
-            content={ButtonType.ARROW}
-            direction="up"
-            onClick={() => window.scrollTo(0, 0)}
-          />
-
-          <span className="footer__anchor-text">Back to top</span>
+          <Link
+            to="https://github.com/Liubomyr19"
+            className="footer__nav--link"
+            target="_blank"
+          >
+            Rights
+          </Link>
         </div>
+
+        <button
+          className="footer__backToTop"
+          type="button"
+          onClick={goToTop}
+        >
+          <p className="footer__backToTop--message">
+            Back to top
+          </p>
+          <div className="footer__backToTop--btn">
+            <div className="icon icon--toTop" />
+          </div>
+        </button>
       </div>
-    </footer>
+    </div>
   );
 };
