@@ -55,3 +55,14 @@
   white-space: nowrap;
   width: 1px;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}

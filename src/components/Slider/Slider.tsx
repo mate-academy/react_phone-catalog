@@ -18,6 +18,7 @@ export const Slider = () => {
   const [slider, setSlider] = useState(1);
   const [transitionDelay, setTransitionDelay] = useState(false);
   const [imgWidth, setImgWidth] = useState(0);
+
   const wrapper = useRef<HTMLDivElement | null>(null);
 
   function handleSlide(direction = 'left') {

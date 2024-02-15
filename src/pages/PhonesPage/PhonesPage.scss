@@ -1,0 +1,19 @@
+@import '../../styles/utils/utils';
+
+.phones-page {
+  &__title {
+    margin-bottom: 8px;
+  }
+  &__header {
+    margin: 24px 0 40px;
+  }
+
+  &__breadcrumb {
+    margin-bottom: 40px;
+  }
+
+  &__counter {
+    color: $color-secondary;
+  }
+}
+

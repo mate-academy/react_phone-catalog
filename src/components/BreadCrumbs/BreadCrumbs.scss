@@ -1,0 +1,41 @@
+@import '../../styles/utils/utils';
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__item {
+    @include small-text;
+
+    display: flex;
+    align-items: center;
+
+     &::before {
+       content: url(../../../public/img/icons/chevron-right.svg);
+       position: relative;
+       top: 2px;
+       right: 16px;
+     }
+
+     &--home {
+       &::before {
+        content: none;
+       }
+     }
+  }
+
+  &__link {
+    color: $color-secondary;
+
+    @include hover(color, $color_primary);
+
+    &--home {
+      height: 16px;
+      width: 16px;
+      background-image: url(../../../public/img/icons/home.svg);
+    }
+  }
+}

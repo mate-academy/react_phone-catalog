@@ -16,10 +16,10 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     id,
-    imageUrl,
+    image,
     name,
     price,
-    discount,
+    fullPrice,
     screen,
     capacity,
     ram,
@@ -33,14 +33,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     setFavorite(favoriteProducts.includes(id));
     localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
   }, [id, favoriteProducts]);
-
-  const preparedImgUrl = useMemo(() => {
-    return imageUrl.split('/').slice(-1);
-  }, [imageUrl]);
-
-  const priceWithDiscount = useMemo(() => {
-    return price - ((price * discount) / 100);
-  }, [price, discount]);
 
   const preparedCapacity = useMemo(() => {
     return `${capacity.slice(0, -2)} ${capacity.slice(-2)}`;
@@ -65,7 +57,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     >
       <div className="product-card__imgbox">
         <img
-          src={`img/products/${preparedImgUrl}`}
+          src={`_new/${image}`}
           alt={name}
           className="product-card__img"
         />
@@ -74,9 +66,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       <p className="product-card__title">{name}</p>
 
       <div className="product-card__pricebox">
-        <h2>{`$${priceWithDiscount}`}</h2>
+        <h2>{`$${price}`}</h2>
 
-        <h2 className="product-card__price">{`$${price}`}</h2>
+        <h2 className="product-card__price">{`$${fullPrice}`}</h2>
       </div>
 
       <ul className="product-card__options">
