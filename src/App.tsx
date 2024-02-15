@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom';
-import './App.scss';
-import { NavBar } from './components/header/Header';
-import { Footer } from './components/Footer';
+import { Outlet } from "react-router-dom";
+import "./App.scss";
+import { NavBar } from "./components/header/Header";
+import { Footer } from "./components/Footer";
 
 const App = () => (
   <div className="App">
