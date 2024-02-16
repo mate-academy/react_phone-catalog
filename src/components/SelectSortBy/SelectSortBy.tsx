@@ -1,23 +1,29 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import './SelectSortBy.scss';
-import { useSearchParams } from 'react-router-dom';
-import { getSearchWith } from '../../helpers/SearchHelper';
-import { getSelectedOptionText } from '../../helpers/Helpers';
+import React, { useEffect, useState } from "react";
+import "./SelectSortBy.scss";
+import { useSearchParams } from "react-router-dom";
+import { getSearchWith } from "../../helpers/SearchHelper";
+import { getSelectedOptionText } from "../../helpers/Helpers";
 
 export const SelectSortBy: React.FC = () => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentOption = searchParams.get('sort') || 'price';
+  const currentOption = searchParams.get("sort") || "price";
 
   const handleSelectOption = (selectedValue: string) => {
     const newParam = { sort: selectedValue };
 
-    if (searchParams.toString().includes('page')) {
-      setSearchParams(getSearchWith({
-        ...newParam,
-        page: '1',
-      }, searchParams));
+    if (searchParams.toString().includes("page")) {
+      setSearchParams(
+        getSearchWith(
+          {
+            ...newParam,
+            page: "1",
+          },
+          searchParams,
+        ),
+      );
     } else {
       setSearchParams(getSearchWith(newParam, searchParams));
     }
@@ -28,7 +34,7 @@ export const SelectSortBy: React.FC = () => {
   const handleBlur = (event: React.FocusEvent<HTMLButtonElement, Element>) => {
     if (
       event.relatedTarget
-      && event.relatedTarget?.className.includes('select__dropdown')
+      && event.relatedTarget?.className.includes("select__dropdown")
     ) {
       return;
     }
@@ -37,17 +43,14 @@ export const SelectSortBy: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!searchParams.get('sort')) {
-      setSearchParams(getSearchWith({ sort: 'price' }, searchParams));
+    if (!searchParams.get("sort")) {
+      setSearchParams(getSearchWith({ sort: "price" }, searchParams));
     }
   }, [searchParams]);
 
   return (
     <div className="select">
-      <label
-        className="select__title"
-        htmlFor="triger"
-      >
+      <label className="select__title" htmlFor="triger">
         Sort by
       </label>
       <div className="select__container">
@@ -69,7 +72,7 @@ export const SelectSortBy: React.FC = () => {
             <button
               type="button"
               className="select__dropdown--item"
-              onClick={() => handleSelectOption('age')}
+              onClick={() => handleSelectOption("age")}
             >
               Newest
             </button>
@@ -77,7 +80,7 @@ export const SelectSortBy: React.FC = () => {
             <button
               type="button"
               className="select__dropdown--item"
-              onClick={() => handleSelectOption('name')}
+              onClick={() => handleSelectOption("name")}
             >
               Alphabetically
             </button>
@@ -85,7 +88,7 @@ export const SelectSortBy: React.FC = () => {
             <button
               type="button"
               className="select__dropdown--item"
-              onClick={() => handleSelectOption('price')}
+              onClick={() => handleSelectOption("price")}
             >
               Cheapest
             </button>

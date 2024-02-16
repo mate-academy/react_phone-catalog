@@ -1,23 +1,24 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import classNames from 'classnames';
-import { getProductDetails, getProducts } from '../../api/productsApi';
-import { ProductDetails } from '../../types/ProductDetails';
-import './ProductDetailsPage.scss';
-import { Loader } from '../../components/Loader';
-import { BreadCrambs } from '../../components/BreadCrambs';
-import { PRODUCTS_COLORS } from '../../helpers/typesColor';
-import { Product } from '../../types/Product';
-import { ProductsSlider } from '../../components/ProductsSlider';
-import { BackButton } from '../../components/BackButton';
-import { ButtonFavorites } from '../../components/ButtonFavorites';
-import { ButtonAddCard } from '../../components/ButtonAddCard';
-import { NotFoundPage } from '../NotFoundPage';
+/* eslint-disable prettier/prettier */
+import { useEffect, useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import classNames from "classnames";
+import { getProductDetails, getProducts } from "../../api/productsApi";
+import { ProductDetails } from "../../types/ProductDetails";
+import "./ProductDetailsPage.scss";
+import { Loader } from "../../components/Loader";
+import { BreadCrambs } from "../../components/BreadCrambs";
+import { PRODUCTS_COLORS } from "../../helpers/typesColor";
+import { Product } from "../../types/Product";
+import { ProductsSlider } from "../../components/ProductsSlider";
+import { BackButton } from "../../components/BackButton";
+import { ButtonFavorites } from "../../components/ButtonFavorites";
+import { ButtonAddCard } from "../../components/ButtonAddCard";
+import { NotFoundPage } from "../NotFoundPage";
 
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+const BASE_URL = "https://mate-academy.github.io/react_phone-catalog/_new/";
 
 const getProductById = (products: Product[], id: string) => {
-  return products.find(product => product.itemId === id);
+  return products.find((product) => product.itemId === id);
 };
 
 export const ProductDetailsPage = () => {
@@ -26,7 +27,7 @@ export const ProductDetailsPage = () => {
   const [product, setProduct] = useState<ProductDetails | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [currentImg, setCurrentImg] = useState('');
+  const [currentImg, setCurrentImg] = useState("");
 
   useEffect(() => {
     if (productId) {
@@ -59,14 +60,14 @@ export const ProductDetailsPage = () => {
       });
   }, []);
 
-  const activeProduct = product
-    ? getProductById(products, product.id)
-    : null;
+  const activeProduct = product ? getProductById(products, product.id) : null;
 
   const suggestedProducts = useMemo(() => {
-    return products.filter(item => {
-      return item.category === activeProduct?.category
-        && item.capacity === activeProduct?.capacity;
+    return products.filter((item) => {
+      return (
+        item.category === activeProduct?.category
+        && item.capacity === activeProduct?.capacity
+      );
     });
   }, [products, activeProduct]);
 
@@ -108,11 +109,7 @@ export const ProductDetailsPage = () => {
           <BreadCrambs product={product} />
           <BackButton />
 
-          {isError && (
-            <p>
-              Error: Unable to load data from server!
-            </p>
-          )}
+          {isError && <p>Error: Unable to load data from server!</p>}
 
           {!isError && (
             <>
@@ -121,13 +118,11 @@ export const ProductDetailsPage = () => {
               <section className="productDetails__content">
                 <div className="productDetails__content--img-container">
                   <div className="productDetails__images">
-                    {images.map(image => (
+                    {images.map((image) => (
                       <button
-                        className={
-                          classNames('productDetails__images--btn', {
-                            'img-active': image === currentImg,
-                          })
-                        }
+                        className={classNames("productDetails__images--btn", {
+                          "img-active": image === currentImg,
+                        })}
                         type="button"
                         key={image}
                         onClick={() => setCurrentImg(image)}
@@ -157,12 +152,13 @@ export const ProductDetailsPage = () => {
                     </p>
 
                     <ul className="productDetails__options--list">
-                      {colorsAvailable.map(colValue => (
+                      {colorsAvailable.map((colValue) => (
                         <li
                           key={colValue}
                           className={classNames(
-                            'productDetails__options--color', {
-                              'color-active': color === colValue,
+                            "productDetails__options--color",
+                            {
+                              "color-active": color === colValue,
                             },
                           )}
                         >
@@ -176,7 +172,6 @@ export const ProductDetailsPage = () => {
                         </li>
                       ))}
                     </ul>
-
                   </div>
 
                   <div className="productDetails__options">
@@ -184,30 +179,30 @@ export const ProductDetailsPage = () => {
                       Select capacity
                     </p>
                     <ul className="productDetails__options--list">
-                      {capacityAvailable.map(capValue => (
+                      {capacityAvailable.map((capValue) => (
                         <li
                           key={capValue}
                           className={classNames(
-                            'productDetails__options--cap', {
-                              'cap-active': capacity === capValue,
+                            "productDetails__options--cap",
+                            {
+                              "cap-active": capacity === capValue,
                             },
                           )}
                         >
                           <Link
                             className={classNames(
-                              'productDetails__options--cap-link', {
-                                'cap-active': capacity === capValue,
+                              "productDetails__options--cap-link",
+                              {
+                                "cap-active": capacity === capValue,
                               },
                             )}
                             to={`/phones/${namespaceId}-${capValue.toLowerCase()}-${color}`}
                           >
                             {capValue}
                           </Link>
-
                         </li>
                       ))}
                     </ul>
-
                   </div>
 
                   <div className="productDetails__price">
@@ -255,9 +250,7 @@ export const ProductDetailsPage = () => {
                     </div>
 
                     <div className="productDetails__info--container">
-                      <span className="productDetails__info--title">
-                        RAM
-                      </span>
+                      <span className="productDetails__info--title">RAM</span>
                       <span className="productDetails__info--description">
                         {ram}
                       </span>
@@ -278,14 +271,12 @@ export const ProductDetailsPage = () => {
                     </h2>
                   </div>
 
-                  {description?.map(item => (
+                  {description?.map((item) => (
                     <article
                       className="productDetails__details--about-info"
                       key={item.title}
                     >
-                      <h3
-                        className="productDetails__details--about-title"
-                      >
+                      <h3 className="productDetails__details--about-title">
                         {item.title}
                       </h3>
                       <p
@@ -294,7 +285,6 @@ export const ProductDetailsPage = () => {
                       >
                         {item.text}
                       </p>
-
                     </article>
                   ))}
                 </div>
@@ -332,9 +322,7 @@ export const ProductDetailsPage = () => {
                     </div>
 
                     <div className="productDetails__details--tech-wrap">
-                      <p className="productDetails__details--tech-title">
-                        RAM
-                      </p>
+                      <p className="productDetails__details--tech-title">RAM</p>
                       <p className="productDetails__details--tech-value">
                         {ram}
                       </p>
@@ -372,7 +360,7 @@ export const ProductDetailsPage = () => {
                         Cell
                       </p>
                       <p className="productDetails__details--tech-value">
-                        {cell?.join(', ')}
+                        {cell?.join(", ")}
                       </p>
                     </div>
                   </div>

@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './BackButton.scss';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./BackButton.scss";
 
 export const BackButton: React.FC = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export const BackButton: React.FC = () => {
       type="button"
       data-cy="backButton"
       className="backButton"
-      onClick={() => navigate('..')}
+      onClick={() => navigate("..")}
     >
       <div className="icon icon--left" />
       Back

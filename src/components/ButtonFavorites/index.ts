@@ -1,1 +1,1 @@
-export * from './ButtonFavorites';
+export * from "./ButtonFavorites";

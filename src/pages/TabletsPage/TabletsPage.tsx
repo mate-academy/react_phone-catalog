@@ -29,8 +29,8 @@ export const TabletsPage: React.FC = () => {
   // const query = searchParams.get('query' || '');
 
   const firstItem = currentPage * +perPage - perPage;
-  const lastItem =
-  perPage * currentPage < total ? perPage * currentPage : total;
+  const lastItem
+  = perPage * currentPage < total ? perPage * currentPage : total;
 
   const currentItems = useMemo(() => {
     return filteredProducts.slice(firstItem, lastItem);

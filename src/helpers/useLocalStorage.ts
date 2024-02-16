@@ -1,4 +1,5 @@
-import { useState } from 'react';
+/* eslint-disable prettier/prettier */
+import { useState } from "react";
 
 export function useLocalStorage<T>(
   key: string,
@@ -19,9 +20,8 @@ export function useLocalStorage<T>(
   });
 
   const save = (newValue: React.SetStateAction<T>) => {
-    const valueToStore = newValue instanceof Function
-      ? newValue(value)
-      : newValue;
+    const valueToStore
+    = newValue instanceof Function ? newValue(value) : newValue;
 
     setValue(valueToStore);
     localStorage.setItem(key, JSON.stringify(valueToStore));

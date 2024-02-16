@@ -1,26 +1,28 @@
-import React, { useContext } from 'react';
-import classNames from 'classnames';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import './header.scss';
-import logo from '../../icons/logo.svg';
-import { SearchField } from '../SearchField';
-import { FavoriteContext } from '../../api/context/FavoriteContext';
-import { CardContext } from '../../api/context/CardContext';
+/* eslint-disable prettier/prettier */
+import React, { useContext } from "react";
+import classNames from "classnames";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import "./header.scss";
+import logo from "../../icons/logo.svg";
+import { SearchField } from "../SearchField";
+import { FavoriteContext } from "../../api/context/FavoriteContext";
+import { CardContext } from "../../api/context/CardContext";
 
 export const NavBar: React.FC = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-    return classNames('nav__link', { 'is-active': isActive });
+    return classNames("nav__link", { "is-active": isActive });
   };
 
   const { favProducts } = useContext(FavoriteContext);
   const { cardProducts } = useContext(CardContext);
   const { pathname } = useLocation();
-  const isSearchShown = pathname === '/phones'
-    || pathname === '/tablets'
-    || pathname === '/accessories'
-    || pathname === '/favorites';
+  const isSearchShown
+    = pathname === "/phones"
+    || pathname === "/tablets"
+    || pathname === "/accessories"
+    || pathname === "/favorites";
 
-  const isCartOpen = pathname !== '/card';
+  const isCartOpen = pathname !== "/card";
 
   return (
     <>
@@ -34,29 +36,22 @@ export const NavBar: React.FC = () => {
             {isCartOpen && (
               <ul className="nav__list">
                 <li className="nav__item">
-                  <NavLink to="/" className={getLinkClass}>Home</NavLink>
+                  <NavLink to="/" className={getLinkClass}>
+                    Home
+                  </NavLink>
                 </li>
                 <li className="nav__item">
-                  <NavLink
-                    to="/phones"
-                    className={getLinkClass}
-                  >
+                  <NavLink to="/phones" className={getLinkClass}>
                     Phones
                   </NavLink>
                 </li>
                 <li className="nav__item">
-                  <NavLink
-                    to="/tablets"
-                    className={getLinkClass}
-                  >
+                  <NavLink to="/tablets" className={getLinkClass}>
                     tablets
                   </NavLink>
                 </li>
                 <li className="nav__item">
-                  <NavLink
-                    to="/accessories"
-                    className={getLinkClass}
-                  >
+                  <NavLink to="/accessories" className={getLinkClass}>
                     accessories
                   </NavLink>
                 </li>
@@ -80,7 +75,6 @@ export const NavBar: React.FC = () => {
                 )}
               </div>
             </NavLink>
-
           )}
 
           <NavLink to="/card" className="header__icons--link">

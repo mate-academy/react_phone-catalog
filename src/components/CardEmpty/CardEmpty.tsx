@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom';
-import './CardEmpty.scss';
+import { useLocation } from "react-router-dom";
+import "./CardEmpty.scss";
 
 export const CardEmpty = () => {
   const { pathname } = useLocation();

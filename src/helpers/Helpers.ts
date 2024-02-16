@@ -9,13 +9,13 @@ export function getNumbers(from: number, to: number): number[] {
 }
 
 export const getSelectedOptionText = (currentOption: string) => {
-  if (currentOption === 'age') {
-    return 'Newest';
+  if (currentOption === "age") {
+    return "Newest";
   }
 
-  if (currentOption === 'name') {
-    return 'Alphabetically';
+  if (currentOption === "name") {
+    return "Alphabetically";
   }
 
-  return 'Cheapest';
+  return "Cheapest";
 };

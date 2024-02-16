@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import './Footer.scss';
-import logo from '../../icons/logo.svg';
+import { Link } from "react-router-dom";
+import "./Footer.scss";
+import logo from "../../icons/logo.svg";
 
 export const Footer = () => {
   const goToTop = () => {
@@ -49,14 +49,8 @@ export const Footer = () => {
           </Link>
         </div>
 
-        <button
-          className="footer__backToTop"
-          type="button"
-          onClick={goToTop}
-        >
-          <p className="footer__backToTop--message">
-            Back to top
-          </p>
+        <button className="footer__backToTop" type="button" onClick={goToTop}>
+          <p className="footer__backToTop--message">Back to top</p>
           <div className="footer__backToTop--btn">
             <div className="icon icon--toTop" />
           </div>

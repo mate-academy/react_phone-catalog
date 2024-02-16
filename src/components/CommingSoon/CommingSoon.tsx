@@ -1,4 +1,4 @@
-import './CommingSoon.scss';
+import "./CommingSoon.scss";
 
 export const CommingSoon = () => (
   <div className="commingSoon">

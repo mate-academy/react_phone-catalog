@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import './ProductsSlider.scss';
-import arrowLeft from '../../icons/arrow-left.svg';
-import arrowRight from '../../icons/arrow-right.svg';
-import { ProductCard } from '../ProductCard';
-import { Product } from '../../types/Product';
-import { Loader } from '../Loader';
+import React, { useState } from "react";
+import "./ProductsSlider.scss";
+import arrowLeft from "../../icons/arrow-left.svg";
+import arrowRight from "../../icons/arrow-right.svg";
+import { ProductCard } from "../ProductCard";
+import { Product } from "../../types/Product";
+import { Loader } from "../Loader";
 
 interface Props {
-  products: Product[],
-  isLoading: boolean,
-  isError: boolean,
-  title: string,
+  products: Product[];
+  isLoading: boolean;
+  isError: boolean;
+  title: string;
 }
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -26,16 +26,15 @@ export const ProductsSlider: React.FC<Props> = ({
   };
 
   const handleNextClick = () => {
-    setSlideIndex((prevIndex) => Math
-      .min(prevIndex + 1, Math.ceil(products.length / 4) - 1));
+    setSlideIndex((prevIndex) =>
+      Math.min(prevIndex + 1, Math.ceil(products.length / 4) - 1),
+    );
   };
 
   return (
     <section className="productsSlider">
       <div className="productsSlider__header">
-        <h1 className="productsSlider__header--title">
-          {title}
-        </h1>
+        <h1 className="productsSlider__header--title">{title}</h1>
         <div className="productsSlider__header--btn">
           <button
             className="productsSlider__button"
@@ -59,26 +58,22 @@ export const ProductsSlider: React.FC<Props> = ({
       <div className="productsSlider__content">
         {isLoading && !isError && <Loader />}
         {!isLoading && isError && (
-          <p>
-            Error: Unable to load data from server!
-          </p>
+          <p>Error: Unable to load data from server!</p>
         )}
         {!isLoading && !isError && (
           <ul
             className="productsSlider__list"
-            style={{ transform: `translateX(-${slideIndex * (272 * 4 + 16 * 4)}px)` }}
+            style={{
+              transform: `translateX(-${slideIndex * (272 * 4 + 16 * 4)}px)`,
+            }}
           >
-            {products.map(product => (
-              <li
-                className="productsSlider__item"
-                key={product.id}
-              >
+            {products.map((product) => (
+              <li className="productsSlider__item" key={product.id}>
                 <ProductCard product={product} />
               </li>
             ))}
           </ul>
         )}
-
       </div>
     </section>
   );

@@ -1,17 +1,13 @@
-import classNames from 'classnames';
-import { useState } from 'react';
-import './Slider.scss';
-import accessories from '../../photo/banner-accessories.png';
-import phones from '../../photo/banner-phones.png';
-import tablets from '../../photo/banner-tablets.png';
-import arrowRight from '../../icons/arrow-right.svg';
-import arrowLeft from '../../icons/arrow-left.svg';
+import classNames from "classnames";
+import { useState } from "react";
+import "./Slider.scss";
+import accessories from "../../photo/banner-accessories.png";
+import phones from "../../photo/banner-phones.png";
+import tablets from "../../photo/banner-tablets.png";
+import arrowRight from "../../icons/arrow-right.svg";
+import arrowLeft from "../../icons/arrow-left.svg";
 
-const images = [
-  accessories,
-  tablets,
-  phones,
-];
+const images = [accessories, tablets, phones];
 
 export const Slider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -42,16 +38,11 @@ export const Slider: React.FC = () => {
             className="slider__list"
             style={{ transform: `translate(-${activeIndex * 1040}px)` }}
           >
-            {images.map(img => (
+            {images.map((img) => (
               <li className="slider__item" key={img}>
-                <img
-                  src={img}
-                  alt="slider"
-                  className="slider__img"
-                />
+                <img src={img} alt="slider" className="slider__img" />
               </li>
             ))}
-
           </ul>
         </div>
 
@@ -70,8 +61,8 @@ export const Slider: React.FC = () => {
             aria-label="position"
             key={img}
             onClick={() => setActiveIndex(i)}
-            className={classNames('slider__dots--item', {
-              'dots-active': activeIndex === i,
+            className={classNames("slider__dots--item", {
+              "dots-active": activeIndex === i,
             })}
           />
         ))}

@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useContext, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import './CardPage.scss';
-import { CardContext } from '../../api/context/CardContext';
-import { BackButton } from '../../components/BackButton';
-import { CardEmpty } from '../../components/CardEmpty';
-import { CommingSoon } from '../../components/CommingSoon';
+import { useContext, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import "./CardPage.scss";
+import { CardContext } from "../../api/context/CardContext";
+import { BackButton } from "../../components/BackButton";
+import { CardEmpty } from "../../components/CardEmpty";
+import { CommingSoon } from "../../components/CommingSoon";
 
-const BASE_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+const BASE_URL = "https://mate-academy.github.io/react_phone-catalog/_new/";
 
 export const CardPage = () => {
   const {
@@ -37,16 +37,14 @@ export const CardPage = () => {
       {isCommingOpen && <CommingSoon />}
       <BackButton />
 
-      <h1 className="cardPage__title">
-        Cart
-      </h1>
+      <h1 className="cardPage__title">Cart</h1>
 
       {!cardProducts.length ? (
         <CardEmpty />
       ) : (
         <div className="cardPage__content">
           <ul className="cardPage__list">
-            {visbleProducts.map(product => (
+            {visbleProducts.map((product) => (
               <li className="cardPage__item" key={product.id}>
                 <div className="cardPage__item--left">
                   <button
@@ -80,7 +78,6 @@ export const CardPage = () => {
                       disabled={countProducts(product.id) === 1}
                     >
                       <div className="icon icon--minus" />
-
                     </button>
 
                     <p className="cardPage__item--slider-amount">
@@ -93,16 +90,11 @@ export const CardPage = () => {
                       onClick={() => increment(product)}
                     >
                       <div className="icon icon--plus" />
-
                     </button>
                   </div>
 
-                  <p className="cardPage__item--price">
-                    {`$${product.price}`}
-                  </p>
-
+                  <p className="cardPage__item--price">{`$${product.price}`}</p>
                 </div>
-
               </li>
             ))}
           </ul>
@@ -115,7 +107,7 @@ export const CardPage = () => {
 
               <p className="cardPage__checkout--total-item">
                 {cardProducts.length === 1
-                  ? 'Total for 1 item'
+                  ? "Total for 1 item"
                   : `Total for ${cardProducts.length} items`}
               </p>
             </div>

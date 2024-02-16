@@ -1,28 +1,23 @@
-import { Link } from 'react-router-dom';
-import React from 'react';
-import './Categories.scss';
-import phones from '../../photo/category-phones.png';
-import tablets from '../../photo/category-tablets.png';
-import accessories from '../../photo/category-accessories.png';
-import { Product } from '../../types/Product';
+import { Link } from "react-router-dom";
+import React from "react";
+import "./Categories.scss";
+import phones from "../../photo/category-phones.png";
+import tablets from "../../photo/category-tablets.png";
+import accessories from "../../photo/category-accessories.png";
+import { Product } from "../../types/Product";
 
 interface Props {
-  products: Product[],
+  products: Product[];
 }
 
 export const Categories: React.FC<Props> = ({ products }) => {
   const categoryAmount = (type: string) => {
-    return products.filter(item => item.category === type).length;
+    return products.filter((item) => item.category === type).length;
   };
 
   return (
-    <section
-      className="categories"
-      data-cy="categoryLinksContainer"
-    >
-      <h1 className="categories__title">
-        Shop by category
-      </h1>
+    <section className="categories" data-cy="categoryLinksContainer">
+      <h1 className="categories__title">Shop by category</h1>
 
       <div className="categories__content">
         <Link className="categories__item" to="/phones">
@@ -33,13 +28,10 @@ export const Categories: React.FC<Props> = ({ products }) => {
               className="categories__item--img"
             />
           </div>
-          <p className="categories__item--title">
-            Mobile phones
-          </p>
+          <p className="categories__item--title">Mobile phones</p>
           <span className="categories__item--amount">
-            {`${categoryAmount('phones')} models`}
+            {`${categoryAmount("phones")} models`}
           </span>
-
         </Link>
         <Link className="categories__item" to="/tablets">
           <div>
@@ -49,11 +41,9 @@ export const Categories: React.FC<Props> = ({ products }) => {
               className="categories__item--img categories__item--tablets"
             />
           </div>
-          <p className="categories__item--title">
-            Tablets
-          </p>
+          <p className="categories__item--title">Tablets</p>
           <span className="categories__item--amount">
-            {`${categoryAmount('tablets')} models`}
+            {`${categoryAmount("tablets")} models`}
           </span>
         </Link>
         <Link className="categories__item" to="/accessories">
@@ -65,11 +55,9 @@ export const Categories: React.FC<Props> = ({ products }) => {
               categories__item--img-accessories"
             />
           </div>
-          <p className="categories__item--title">
-            Accessories
-          </p>
+          <p className="categories__item--title">Accessories</p>
           <span className="categories__item--amount">
-            {`${categoryAmount('accessories')} models`}
+            {`${categoryAmount("accessories")} models`}
           </span>
         </Link>
       </div>
