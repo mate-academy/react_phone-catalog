@@ -1,0 +1,74 @@
+@import "../../utils/main";
+
+.searchField {
+  display: flex;
+  width: 327px;
+  height: 100%;
+  align-items: center;
+  border-left: 1px solid $gray-icons-color;
+  padding: 24px;
+  justify-content: space-between;
+  transition: $transition-duration;
+
+  @include on-tablet {
+    width: 200px;
+    padding: 8px;
+  }
+
+  &:hover:not(:focus-within) {
+    background-color: $hover-bg-color;
+  }
+
+  &:hover:not(:focus-within) .searchField__input {
+    background-color: transparent;
+  }
+
+  &__input {
+    height: 32px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    @extend %text-buttons;
+
+    color: $gray-primary-color;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+  }
+
+  ::placeholder {
+    @extend %text-buttons;
+
+    color: $gray-icons-color;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+  }
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    transition: $transition-duration;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &:focus-within {
+    background-color: $hover-bg-color;
+  }
+}
+
+.focus {
+  background-color: $hover-bg-color;
+}

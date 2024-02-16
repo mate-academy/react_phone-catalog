@@ -1,5 +1,5 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+/* eslint-disable react/no-deprecated */
+import ReactDOM from "react-dom";
+import { Root } from "./Root";
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+ReactDOM.render(<Root />, document.getElementById("root") as HTMLDivElement);
