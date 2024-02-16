@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import {
   HashRouter as Router,
   Routes,
   Route,
   Navigate,
-} from 'react-router-dom';
-import { FavoriteProvider } from './api/context/FavoriteContext';
-import App from './App';
-import { PhonesPage } from './pages/PhonesPage';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { FavoritesPage } from './pages/FavoritesPage';
-import { CardProvider } from './api/context/CardContext';
-import { CardPage } from './pages/CardPage';
-import { TabletsPage } from './pages/TabletsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage';
-import { HomePage } from './pages/HomePage';
+} from "react-router-dom";
+import { FavoriteProvider } from "./api/context/FavoriteContext";
+import App from "./App";
+import { PhonesPage } from "./pages/PhonesPage";
+import { ProductDetailsPage } from "./pages/ProductDetailsPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { FavoritesPage } from "./pages/FavoritesPage";
+import { CardProvider } from "./api/context/CardContext";
+import { CardPage } from "./pages/CardPage";
+import { TabletsPage } from "./pages/TabletsPage";
+import { AccessoriesPage } from "./pages/AccessoriesPage";
+import { HomePage } from "./pages/HomePage";
 
 export const Root: React.FC = () => (
   <Router>
@@ -23,13 +23,13 @@ export const Root: React.FC = () => (
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route
         path="/"
-        element={(
+        element={
           <CardProvider>
             <FavoriteProvider>
               <App />
             </FavoriteProvider>
           </CardProvider>
-        )}
+        }
       >
         <Route index element={<HomePage />} />
         <Route path="phones">

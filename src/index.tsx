@@ -1,8 +1,5 @@
 /* eslint-disable react/no-deprecated */
-import ReactDOM from 'react-dom';
-import { Root } from './Root';
+import ReactDOM from "react-dom";
+import { Root } from "./Root";
 
-ReactDOM.render(
-  <Root />,
-  document.getElementById('root') as HTMLDivElement,
-);
+ReactDOM.render(<Root />, document.getElementById("root") as HTMLDivElement);
