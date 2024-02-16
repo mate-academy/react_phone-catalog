@@ -1,0 +1,131 @@
+@import "../../styles/imports";
+
+.cart {
+  @include on-small-pc {
+    padding-inline: 20px;
+  }
+
+  &__nothing {
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+
+    @include on-small-pc {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  padding-bottom: 20px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-weight: 600;
+    color: #89939A;
+    margin-bottom: 40px;
+  }
+
+
+  &__total {
+    width: 368px;
+    border: 1px solid #E2E6E9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    max-height: 230px;
+
+    @include on-small-pc {
+      width: 100%;
+      max-width: 750px;
+    }
+
+
+    &__number {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+
+      &::after {
+        content: '$';
+      }
+    }
+
+    &__items {
+      font-size: 14px;
+      font-weight: 500;
+      color: #89939A;
+    }
+
+    &__line {
+      width: 100%;
+      height: 1px;
+      background-color: #E2E6E9;
+      margin: 24px 0;
+    }
+
+    &__checkout {
+      text-decoration: none;
+      text-align: center;
+      outline: none;
+      display: block;
+      width: 100%;
+      height: 48px;
+      line-height: 48px;
+      background-color: #313237;
+      color: #fff;
+      border: 1px solid #313237;
+      transition: 0.3s;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+    }
+  }
+
+  &__back {
+    margin-top: 20px;
+    margin-bottom: 16px;
+
+    &_button {
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 60px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #89939A;
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 9px;
+        height: 12px;
+        top: 3px;
+        left: 0;
+        background-image: url("../../assets/images/icons/details-icons/arrow-back.svg");
+        background-repeat: no-repeat;
+        position: absolute;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: #000;
+      }
+    }
+
+
+  }
+}

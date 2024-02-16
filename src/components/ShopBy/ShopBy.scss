@@ -1,0 +1,121 @@
+@import "../../styles/imports";
+
+.shop-by {
+  &__wrapper {
+    width: 100%;
+  }
+
+  @include on-small-pc {
+    padding-inline: 20px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+
+    @include on-tablet-small {
+      font-size: 40px;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include on-tablet-small {
+      flex-direction: column;
+    }
+  }
+
+  &__information {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      text-decoration: none;
+      color: #313237;
+
+      @include on-tablet-small {
+        font-size: 26px;
+      }
+    }
+
+    &-description {
+      font-size: 14px;
+      font-weight: 500;
+      color: #89939A;
+
+      @include on-tablet-small {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+
+   
+  }
+
+  &__image {
+    width: 400px;
+    position: absolute;
+    transition: 0.3s;
+
+    &-block {
+      height: 368px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+
+      &--phones {
+        background-color: #fcdbc1;
+      }
+
+      &--tablets {
+        background-color: #8D8D92;
+      }
+
+      &--accessories {
+        background-color: #973D5F;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--phones {
+      top: 6%;
+      right: -30%;
+
+      @include on-tablet-small {
+        left: 25%;
+      }
+    }
+
+    &--tablets {
+      top: 12%;
+      left: 10%;
+    }
+
+    &--accessories {
+      width: 690px;
+      top: 17%;
+      left: 5%;
+    }
+  }
+
+}

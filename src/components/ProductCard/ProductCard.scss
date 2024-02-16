@@ -1,0 +1,120 @@
+@import "../../styles/imports";
+
+.card {
+  width: 272px;
+  border: 1px solid #E2E6E9;
+  padding: 32px 24px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #313237;
+  }
+
+  &__product-name {
+    font-size: 14px;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__image {
+    height: 208px;
+    margin-bottom: 24px;
+  }
+
+  @include on-tablet-small {
+    box-sizing: content-box;
+    padding-inline: 80px;
+    margin-inline: auto;
+  }
+
+  @include on-phone {
+    box-sizing: content-box;
+    padding-inline: 56px;
+  }
+
+  &__title {
+    font-family: Mont, "Helvetica Neue", Helvetica, sans-serif;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    text-align-last: left;
+    color: #313237;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @include on-tablet-small {
+      font-size: 17px;
+    }
+  }
+
+  &__prices {
+    width: 100%;
+    text-align-last: left;
+    margin-top: 7px;
+    display: flex;
+    gap: 8px;
+
+    &-price {
+      font-size: 22px;
+
+      @include on-tablet-small {
+        font-size: 24px;
+      }
+
+      &--current {
+        font-weight: 700;
+        color: #313237;
+      }
+
+      &--old {
+        font-weight: 500;
+        color: #89939A;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+
+  &__line-break {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #E2E6E9;
+    margin: 7px 0 16px;
+  }
+
+  &__extra {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+
+    @include on-tablet-small {
+      font-size: 16px;
+    }
+
+    &-title {
+      color: #89939A;
+    }
+
+    &-value {
+      color: #313237;
+    }
+  }
+
+  &__action-wrapper {
+    z-index: 11;
+  }
+}

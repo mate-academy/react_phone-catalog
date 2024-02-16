@@ -1,0 +1,110 @@
+.select {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+  &__list {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    padding: 12px 10px;
+    border: 1px solid #B4BDC3;
+    appearance: none;
+    position: relative;
+    background-image: url(../../assets/images/icons/catalog-icons/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: center right 10px;
+  }
+
+
+  &__label {
+    font-size: 12px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #89939A;
+  }
+
+  &__current {
+    position: relative;
+    outline: none;
+    padding: 10px 12px;
+    padding-right: 100px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: #313237;
+    border: 1px solid #B4BDC3;
+    background-color: transparent;
+    transition: 0.3s;
+    text-align: left;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 6px;
+      top: calc(50% - 3px);
+      right: 16px;
+      background-image: url(../../assets/images/icons/catalog-icons/arrow-down.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      border-color: #89939A;
+    }
+
+    &--opened {
+      &::before {
+        transform: rotateZ(-180deg);
+      }
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #B4BDC3;
+    box-shadow: 0 2px 15px 0 #0000000D;
+    position: absolute;
+    background-color: #fff;
+    top: -5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    padding-block: 6px;
+
+    &--active {
+      top: 5px;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+  }
+
+  &__option {
+    font-size: 14px;
+    color: #89939A;
+    padding-inline: 6px;
+    height: 32px;
+    font-family: inherit;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: left;
+    width: 100%;
+    padding-right: 106px;
+
+    &:hover {
+      color: #313237;
+      background-color: #FAFBFC;
+    }
+  }
+}

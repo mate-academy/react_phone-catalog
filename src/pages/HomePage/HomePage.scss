@@ -1,0 +1,13 @@
+.main {
+  max-width: 1136px;
+
+  margin-inline: auto;
+}
+
+.hotprices {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  row-gap: 40px;
+  flex-flow: row wrap;
+}

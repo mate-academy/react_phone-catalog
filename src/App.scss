@@ -1,1 +1,55 @@
 // not empty
+@import './styles/imports';
+
+body {
+  font-family: Mont, Arial, sans-serif;
+  border-collapse: collapse;
+  scroll-behavior: smooth;
+}
+
+.margin-top-40-px {
+  margin-top: 40px;
+}
+
+.margin-top-70-px {
+  margin-top: 70px;
+}
+
+.margin-bottom-80-px {
+  margin-bottom: 80px;
+}
+
+.margin-bottom-40-px {
+  margin-bottom: 40px;
+}
+
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  
+  @include on-tablet-small {
+    padding-top: 60px;
+  }
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.centering {
+  margin-inline: auto;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

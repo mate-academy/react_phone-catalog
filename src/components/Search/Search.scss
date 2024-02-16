@@ -1,0 +1,68 @@
+@import "../../styles/imports";
+
+.search {
+  &__wrapper {
+    position: relative;
+  }
+
+  &__input {
+    height: 64px;
+    width: 300px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 600;
+    padding-inline: 24px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #E2E6E9;
+    border-left: 1px solid #E2E6E9;
+    background-color: #fff;
+    background-image: url("../../assets/images/icons/header-icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: center right 24px;
+
+    &--active {
+      background-image: none;
+    }
+
+    &__button {
+      width: 18px;
+      height: 18px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background-image: url(../../assets/images/icons/card-icons/close.svg);
+      opacity: 0;
+      pointer-events: none;
+
+      &--active {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @include on-tablet-small {
+      width: 90vw;
+      height: 80px;
+      background-size: 30px;
+      font-size: 20px;
+      border: 2px solid #E2E6E9;
+    }
+
+    &::placeholder {
+      color: #B4BDC3;
+    }
+
+    &:focus {
+      background-color: #FAFBFC;
+      box-shadow: -1px 0 0 0 #E2E6E9;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+}

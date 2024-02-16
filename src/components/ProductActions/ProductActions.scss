@@ -1,0 +1,56 @@
+.actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  &-toCart {
+    width: 168px;
+    margin-right: 8px;
+    height: 40px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #313237;
+    color: #fff;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203142;
+    }
+
+    &--added {
+      background-color: #fff;
+      border: 1px solid #E2E6E9;
+      color: #27AE60;
+    }
+  }
+
+  &-toFavourite {
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #B4BDC3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    background-image: url("../../assets/images/icons/card-icons/stroke.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &--added {
+      background-image: url("../../assets/images/icons/card-icons/heart.svg");
+    }
+
+    &:hover {
+      border-color: #000;
+    }
+  }
+}

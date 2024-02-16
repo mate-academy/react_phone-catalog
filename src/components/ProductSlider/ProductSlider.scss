@@ -1,0 +1,112 @@
+@import "../../styles/imports";
+
+.product-slider {
+  width: 100%;
+
+  @include on-small-pc {
+    width: 964px;
+    margin-inline: auto;
+  }
+
+  @include on-tablet-big {
+    width: 839px;
+    margin-inline: auto;
+  }
+
+  @include on-tablet-small {
+    width: 380px;
+    margin-inline: auto;
+  }
+
+  @include on-phone {
+    width: 330px;
+  }
+
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #B4BDC3;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
+    transform: rotateZ(90deg);
+
+    @include on-tablet-small {
+      width: 40px;
+      height: 40px;
+    }
+
+    &--left {
+      transform: rotateZ(0deg);
+    }
+
+    &--right {
+      transform: rotateZ(180deg);
+    }
+
+    &--disabled {
+      opacity: 0.25;
+      pointer-events: none;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    overflow: hidden;
+
+    margin-inline: auto;
+  }
+
+  &__slides {
+    gap: 24px;
+    display: flex;
+    flex-direction: row;
+    transition: 0.3s;
+
+    @include on-small-pc {
+      gap: 83px;
+    }
+
+    @include on-tablet-big {
+      gap: 20px;
+    }
+
+    @include on-tablet-small {
+      gap: 0;
+    }
+
+    @include on-phone {
+      gap: 0;
+    }
+  }
+
+  .product-card {
+    flex-shrink: 0;
+
+    @include on-phone {
+      flex-shrink: 1;
+    }
+  }
+}

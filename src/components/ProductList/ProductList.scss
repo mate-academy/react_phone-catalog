@@ -1,0 +1,33 @@
+@import "../../styles/imports";
+
+.product {
+  &__wrapper {
+    max-width: 1136px;
+  }
+
+  &__list {
+    width: 1136px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+    row-gap: 40px;
+    flex-shrink: 1;
+    margin-inline: auto;
+
+    @include on-small-pc {
+      width: 850px;
+    }
+
+    @include on-tablet-big {
+      width: 560px;
+    }
+
+    @include on-tablet-small {
+      width: 480px;
+    }
+
+    @include on-phone {
+      width: 320px;
+    }
+  }
+}

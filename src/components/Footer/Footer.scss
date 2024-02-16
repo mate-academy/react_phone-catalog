@@ -1,0 +1,147 @@
+@import '../../styles/imports';
+
+.footer {
+  width: 100%;
+  border-top: 1px solid #E2E6E9;
+  font-size: 12px;
+
+
+  &__container {
+    max-width: 1136px;
+    height: 96px;
+    text-align: center;
+
+    @include centralize;
+
+    @include on-small-pc {
+      padding-inline: 30px;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet-small {
+      height: auto;
+      justify-content: space-around;
+      flex-direction: column-reverse;
+      gap: 30px;
+      padding-block: 20px;
+    }
+  }
+
+  &__logo {
+    &-link {
+      display: block;
+      width: 40px;
+      height: 17px;
+      background-image: url("../../assets/images/icons/header-icons/logo.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include on-tablet-small {
+        width: 80px;
+        height: 40px;
+      }
+    }
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      flex-direction: row;
+      gap: 64px;
+      list-style-type: none;
+    }
+
+    &-link {
+      text-transform: uppercase;
+      color: #89939a;
+      text-decoration: none;
+      font-weight: 700;
+
+      &:hover {
+        color: #313237;
+      }
+
+      @include on-tablet-small {
+        font-size: 20px;
+      }
+
+      @include on-phone {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__anchor {
+    &-button {
+      color: #89939a;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background-color: #fff;
+      border: none;
+      transition: 0.3s;
+
+      @include on-tablet-small {
+        font-size: 20px;
+      }
+
+      @include on-phone {
+        font-size: 16px;
+      }
+
+      &:hover {
+        color: #313237;
+
+        +div {
+          width: 200px;
+          background-color: red;
+        }
+      }
+    }
+
+
+
+    &-icon {
+      display: block;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      background-position: center;
+      background-image: url("../../assets/images/icons/slider-icons/arrow-left.svg");
+      transform: rotateZ(90deg);
+      transition: 0.3s;
+
+      @include on-tablet-small {
+        width: 40px;
+        height: 40px;
+      }
+
+      @include on-phone {
+        width: 32px;
+        height: 32px;
+      }
+
+      &:hover {
+        border-color: #313237;
+      }
+    }
+
+    &:hover {
+      >.footer__anchor-button {
+        color: #313237;
+      }
+
+      .footer__anchor-icon {
+        border-color: #313237;
+      }
+    }
+  }
+}

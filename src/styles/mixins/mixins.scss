@@ -1,0 +1,27 @@
+@mixin centralize {
+  margin: 0 auto;
+}
+
+@mixin on-phone {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin on-tablet-big {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin on-tablet-small {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin on-small-pc {
+  @media only screen and (max-width: 1137px) {
+    @content;
+  }
+}
