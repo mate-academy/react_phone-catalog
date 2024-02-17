@@ -26,6 +26,7 @@ type Props = {
 export const ProductList: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
   const perPage = searchParams.get('perPage') || products.length;
+  const page = +(searchParams.get('page') || 1);
   const paginationCount = perPage === 'all'
     ? 0
     : Math.ceil(products.length / +perPage);
@@ -35,6 +36,9 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   for (let i = 1; i <= paginationCount; i += 1) {
     paginationButtons.push(i);
   }
+
+  const preparedProducts = [...products]
+    .splice(((page * +perPage) - +perPage), +perPage);
 
   return (
     <section className="product-list" data-cy="productList">
@@ -57,7 +61,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
       </div>
 
       <div className="product-list__items">
-        {products.map(item => (
+        {preparedProducts.map(item => (
           <ProductCard key={item.id} product={item} />
         ))}
       </div>
