@@ -1,0 +1,72 @@
+@import "../../../styles/utils/utils";
+
+.my-select {
+  position: relative;
+
+  &__title {
+    @include small-text;
+    
+    color: $color-secondary;
+  }
+
+  &__selected {
+    @include button;
+
+    width: 100%;
+    height: 40px;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
+    margin-bottom: 4px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-transform: capitalize;
+
+    &::after {
+      content: url(../../../../public/img/icons/chevron-down.svg);
+      width: 16px;
+      height: 16px;
+    }
+
+    &:focus::after {
+      content: url(../../../../public/img/icons/chevron-up.svg);
+    }
+
+    &:hover {
+      border-color: $color-secondary;
+    }
+
+    &:focus {
+      border-color: $color-primary;
+    }
+  }
+
+  &__option {
+    color: $color-secondary;
+    padding-block: 6px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+
+    @include hover(color, $color-primary);
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    border: 1px solid $color-icons;
+    box-sizing: border-box;
+    background-color: $color-white;
+    transition: transform ease-in-out $transition-duration;
+  }
+}
+

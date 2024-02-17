@@ -1,0 +1,35 @@
+@import '../../styles/utils/utils';
+
+.product-list {
+  --column-count: 4;
+
+  padding-bottom: 80px;
+  box-sizing: border-box;
+
+  &__items {
+    display: grid;
+    justify-content: space-evenly;
+
+    grid-template-columns: repeat(var(--column-count), minmax(200px, 272px));
+    gap: 16px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+
+    @include on-desktop-s {
+       --column-count: 3;
+    }
+
+    @include on-tablet-s {
+       --column-count: 2;
+    }
+
+    @include on-mobile-l {
+       --column-count: 1;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+}

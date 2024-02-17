@@ -60,12 +60,16 @@ p {
   margin: 0;
 }
 
-button {
+@mixin button {
   font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
   text-align: left;
+}
+
+button {
+ @include button;
 }
 
 @mixin small-text {

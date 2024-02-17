@@ -1,0 +1,28 @@
+@import '../../styles/utils/utils';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-secondary;
+    transition: all ease-in-out $transition-duration;
+
+    &--active {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}

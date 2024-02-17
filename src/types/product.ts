@@ -1,12 +1,13 @@
 export enum CategoryName {
-  phone = 'phone',
-  tablet = 'tablet',
-  accessory = 'accessory',
+  phone = 'phones',
+  tablet = 'tablets',
+  accessory = 'accessories',
 }
 
 export type Product = {
   age: number,
-  type: CategoryName,
+  category: CategoryName,
+  // type: CategoryName,
   id: string,
   image: string
   name: string
