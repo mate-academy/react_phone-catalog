@@ -1,7 +1,12 @@
 import './ProductList.scss';
 import { useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/product';
-import { PerPageSelect, SelectOption, SortBy } from '../../types/select';
+import {
+  PerPageSelect,
+  SelectOption,
+  SortBy,
+  SortParams,
+} from '../../types/select';
 import { ProductCard } from '../ProductCard';
 import { MySelect } from '../UI/MySelect';
 import { Pagination } from '../Pagination';
@@ -23,28 +28,46 @@ type Props = {
   products: Product[];
 };
 
+const sortParams = {
+  name: SortBy.Alphabetically,
+  age: SortBy.Newest,
+  price: SortBy.Cheapest,
+};
+
 export const ProductList: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
-  const perPage = searchParams.get('perPage') || products.length;
+  const perPage = searchParams.get('perPage') || 'all';
+  const sort = (searchParams.get('sort') || 'age') as SortParams;
+
   const page = +(searchParams.get('page') || 1);
+  const paginationButtons = [];
+
   const paginationCount = perPage === 'all'
     ? 0
     : Math.ceil(products.length / +perPage);
-
-  const paginationButtons = [];
 
   for (let i = 1; i <= paginationCount; i += 1) {
     paginationButtons.push(i);
   }
 
-  const preparedProducts = [...products]
-    .splice(((page * +perPage) - +perPage), +perPage);
+  function getPreparedProducts() {
+    if (perPage === 'all') {
+      return products;
+    }
+
+    const itemsOnPage = +perPage;
+
+    return [...products]
+      .splice(((page * itemsOnPage) - itemsOnPage), itemsOnPage);
+  }
+
+  const preparedProducts = getPreparedProducts();
 
   return (
     <section className="product-list" data-cy="productList">
       <div className="product-list__controls">
         <MySelect
-          defaultValue="Newest"
+          defaultValue={sortParams[sort]}
           title="Sort by"
           options={SORT_BY}
           searchName="sort"
@@ -52,7 +75,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
         />
 
         <MySelect
-          defaultValue="All"
+          defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
           title="Items on page"
           options={PER_PAGE}
           searchName="perPage"
@@ -66,7 +89,9 @@ export const ProductList: React.FC<Props> = ({ products }) => {
         ))}
       </div>
 
-      <Pagination paginationButtons={paginationButtons} />
+      {paginationButtons.length > 1 && (
+        <Pagination paginationButtons={paginationButtons} />
+      )}
     </section>
   );
 };

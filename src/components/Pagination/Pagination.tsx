@@ -24,7 +24,7 @@ export const Pagination: React.FC<Props> = ({ paginationButtons }) => {
   return (
     <nav className="pagination" data-cy="pagination">
       <ul className="pagination__list">
-        <li className="pagination__nav">
+        <li className="pagination__nav" data-cy="paginationLeft">
           <MyNavButton
             direction={Navigation.left}
             disabled={page === 1}
@@ -47,7 +47,7 @@ export const Pagination: React.FC<Props> = ({ paginationButtons }) => {
           </li>
         ))}
 
-        <li className="pagination__nav">
+        <li className="pagination__nav" data-cy="paginationRight">
           <MyNavButton
             direction={Navigation.right}
             disabled={page === paginationButtons.length}

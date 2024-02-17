@@ -25,6 +25,8 @@ export const MySelect: React.FC<Props> = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchParams] = useSearchParams();
 
+  const page = searchParams.get('page');
+
   const button = useRef<HTMLButtonElement>(null);
 
   function handleSelect(option: SelectItems) {
@@ -100,6 +102,7 @@ export const MySelect: React.FC<Props> = ({
                 to={{
                   search: getSearchParamsWith({
                     [searchName]: value.toLowerCase(),
+                    page: page && '1',
                   }, searchParams),
                 }}
                 className="my-select__option"
