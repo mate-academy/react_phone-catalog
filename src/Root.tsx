@@ -4,6 +4,9 @@ import App from './App';
 import { Home } from './pages/Home/Home';
 import { Phones } from './pages/Phones/Phones';
 import { PhonesProvider } from './storage/phonesContext';
+import {
+  ProductDetailsPage,
+} from './pages/ProductsDetailPage/ProductDetailsPage';
 
 export const Root: React.FC = () => (
   <PhonesProvider>
@@ -11,8 +14,9 @@ export const Root: React.FC = () => (
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
-          <Route path="/phones/:phoneId?">
+          <Route path="phones">
             <Route index element={<Phones />} />
+            <Route path=":productId?" element={<ProductDetailsPage />} />
           </Route>
           <Route path="/tablets" element={<Home />} />
         </Route>

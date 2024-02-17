@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Phone } from '../../types/Phone';
 import './Categories.scss';
+import { Product } from '../../types/Product';
 
 type Props = {
-  phonesData: Phone[]
+  products: Product[]
 };
 
 export const Categories: React.FC<Props> = ({
-  phonesData,
+  products,
 }) => {
   return (
     <>
@@ -36,7 +36,7 @@ export const Categories: React.FC<Props> = ({
           </Link>
 
           <p className="categories__count">
-            {`${phonesData?.length} models`}
+            {`${products?.length} models`}
           </p>
         </div>
 

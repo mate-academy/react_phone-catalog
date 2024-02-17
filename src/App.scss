@@ -26,8 +26,25 @@ h1 {
   @extend %h1;
 }
 
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+}
+
+.content {
+  height: 100%;
+  flex-grow: 1;
+
+  &__not-fount {
+    @extend %h2;
+  }
+}
+
 .container {
   max-width: 1440px;
+  width: 100%;
   padding-inline: 152px;
   margin-inline: auto;
 
@@ -49,74 +66,24 @@ h1 {
   }
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
+.price {
+  color: $c-primary;
 
-  &__primary {
-    font-weight: 700;
-    font-size: 14px;
-    color: $c-hover-bg;
-    background-color: $c-primary;
-
-    &:hover {
-      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
-    }
-  }
-
-  &__selected {
-    color: $c-green;
-    background-color: #fff;
-    border: 1px solid $c-elements;
-  }
-
-  &--large {
-    width: 176px;
-    height: 40px;
-  }
-
-  &--medium {
-    width: 40px;
-    height: 40px;
-  }
-
-  &--small {
-    width: 32px;
-    height: 32px;
-  }
-
-  &__like {
-    background-color: #fff;
-    border: 1px solid $c-elements;
-
-    &:hover {
-      border: 1px solid $c-primary;
-    }
-  }
-
-  &__nav {
-    @extend %body-text;
-
+  &-discount {
     font-weight: 600;
-    background-color: #fff;
-    border: 1px solid $c-elements;
+    font-size: 22px;
+    color: $c-secondary;
+    position: relative;
 
-    &:hover {
-      border: 1px solid $c-primary;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      opacity: 0.3;
-      border: 1px solid $c-elements;
-    }
-
-    &--active {
-      background-color: $c-primary;
-      color: #fff;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-100%);
+      width: 100%;
+      height: 2px;
+      background-color: $c-secondary;
     }
   }
 }

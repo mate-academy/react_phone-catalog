@@ -8,6 +8,7 @@ import cn from 'classnames';
 
 import './Slider.scss';
 import { Banner } from '../../types/Banner';
+import { Button } from '../Button/Button';
 
 type Props = {
   interval: number,
@@ -81,9 +82,8 @@ export const Slider: React.FC<Props> = ({
         </div>
       </div>
 
-      <button
+      <Button
         className="slider-btn slider-btn-prev"
-        type="button"
         onClick={handleSlideLeft}
       >
         <img
@@ -91,11 +91,10 @@ export const Slider: React.FC<Props> = ({
           src="img/icons/arrow-left.svg"
           alt="Arrow left"
         />
-      </button>
+      </Button>
 
-      <button
+      <Button
         className="slider-btn slider-btn-next"
-        type="button"
         onClick={handleSlideRight}
       >
         <img
@@ -103,7 +102,7 @@ export const Slider: React.FC<Props> = ({
           src="img/icons/arrow-right.svg"
           alt="Arrow left"
         />
-      </button>
+      </Button>
 
       <div className="slider-dots">
         {

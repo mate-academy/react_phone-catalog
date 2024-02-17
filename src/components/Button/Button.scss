@@ -1,0 +1,156 @@
+@import '../../styles/utils';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &__primary {
+    font-weight: 700;
+    font-size: 14px;
+    color: $c-hover-bg;
+    background-color: $c-primary;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__selected {
+    color: $c-green;
+    background-color: #fff;
+    border: 1px solid $c-elements;
+  }
+
+  &--large {
+    max-width: 176px;
+    width: 100%;
+    height: 40px;
+  }
+
+  &--medium {
+    max-width: 40px;
+    width: 100%;
+    height: 40px;
+  }
+
+  &--small {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--xl {
+    max-width: 263px;
+    width: 100%;
+    height: 48px;
+  }
+
+  &__like {
+    background-color: #fff;
+    border: 1px solid $c-elements;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &--large {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__nav {
+    @extend %body-text;
+
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid $c-elements;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+      border: 1px solid $c-elements;
+    }
+
+    &--active {
+      background-color: $c-primary;
+      color: #fff;
+    }
+  }
+
+  &__back {
+    @extend %small-text;
+
+    background-color: #fff;
+    color: $c-secondary;
+    height: 16px;
+
+    p {
+      padding-top: 2px;
+      margin-left: 4px;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $c-primary;
+      }
+    }
+  }
+
+  &__select {
+    &-color {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 36px;
+      border: 1px solid $c-elements;
+      background-color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+  
+      &--active {
+        border-color:  $c-primary;
+      }
+  
+      &:hover {
+        border-color: $c-icons;
+      }
+  
+      &-round {
+        position: absolute;
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid $c-elements;
+      }
+    }
+
+    &-capacity {
+      @extend %body-text;
+
+      padding: 8px;
+      background-color: #fff;
+      color: $c-primary;
+      border: 1px solid $c-elements;
+
+      &:hover {
+        background-color: $c-primary;
+        color: #fff;
+      }
+
+      &--active {
+        background-color: $c-primary;
+        color: #fff;
+      }
+    }
+  }
+}

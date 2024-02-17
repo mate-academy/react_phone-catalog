@@ -1,4 +1,4 @@
-export type Phone = {
+export type Product = {
   id: string,
   category: string,
   phoneId: string,

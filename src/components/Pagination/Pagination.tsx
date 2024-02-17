@@ -4,14 +4,14 @@ import { v4 as getId } from 'uuid';
 
 import './Pagination.scss';
 import { ProductItem } from '../ProductItem/ProductItem';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 
 type Props = {
   productsLength: number
   itemsPerPage: number,
   currentPage: number,
   setCurrentPage: Dispatch<SetStateAction<number>>,
-  products: Phone[],
+  products: Product[],
 };
 
 export const Pagination: React.FC<Props> = ({

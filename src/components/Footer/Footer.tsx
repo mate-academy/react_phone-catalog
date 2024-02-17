@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './Footer.scss';
+import { Button } from '../Button/Button';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -49,13 +50,12 @@ export const Footer: React.FC = () => {
             Back to top
           </p>
 
-          <button
-            type="button"
+          <Button
             className="button button--small button__nav"
             onClick={scrollToTop}
           >
             <img src="img/icons/arrow-up.svg" alt="Arrow up" />
-          </button>
+          </Button>
         </div>
       </div>
     </footer>

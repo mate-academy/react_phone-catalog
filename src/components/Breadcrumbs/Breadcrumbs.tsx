@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { v4 as getId } from 'uuid';
+import cn from 'classnames';
 
 import './Breadcrumbs.scss';
 
@@ -34,7 +35,15 @@ export const Breadcrumbs: React.FC = () => {
               alt="Arrow right"
             />
 
-            <Link to={localPath} className="breadcrumbs__path">
+            <Link
+              to={localPath}
+              className={cn(
+                'breadcrumbs__path',
+                {
+                  'breadcrumbs__path--active': localPath === location.pathname,
+                },
+              )}
+            >
               {newPath}
             </Link>
           </React.Fragment>

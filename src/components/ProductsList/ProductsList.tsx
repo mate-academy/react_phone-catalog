@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { v4 as getId } from 'uuid';
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 
 import './ProductsList.scss';
 import { ProductItem } from '../ProductItem/ProductItem';
+import { Button } from '../Button/Button';
 
 type Props = {
-  products: Phone[]
+  products: Product[]
   title: string,
 };
 
@@ -40,25 +41,21 @@ export const ProductsList: React.FC<Props> = ({
         </h1>
 
         <div className="products__nav">
-          {/* eslint-disable-next-line */}
-          <button
-            type="button"
+          <Button
             className="products__nav-btn button button__nav button--small"
             onClick={() => setPage(i => i - 1)}
             disabled={!page}
           >
             <img src="img/icons/arrow-left.svg" alt="Arrow left" />
-          </button>
+          </Button>
 
-          {/* eslint-disable-next-line */}
-          <button
-            type="button"
+          <Button
             className="products__nav-btn button button__nav button--small"
             onClick={() => setPage(i => i + 1)}
             disabled={page === lastPage}
           >
             <img src="img/icons/arrow-right.svg" alt="Arrow right" />
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -74,7 +71,7 @@ export const ProductsList: React.FC<Props> = ({
           }}
           data-cy="cardsContainer"
         >
-          {products.map((product: Phone) => (
+          {products.map((product: Product) => (
             <ProductItem
               key={getId()}
               product={product}

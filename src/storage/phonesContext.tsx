@@ -1,36 +1,34 @@
 import React, {
   Dispatch,
   SetStateAction,
-  useEffect,
   useState,
 } from 'react';
-import { Phone } from '../types/Phone';
-import { getData } from '../client/httpClient';
+import { Product } from '../types/Product';
 import { SortType } from '../types/SortType';
 import { SortParamsType } from '../types/SortParamsType';
 
 type PhonesContextType = {
-  phonesData: Phone[],
-  setPhonesData: Dispatch<SetStateAction<Phone[]>>,
-  preparedBrandNewProducts: Phone[],
-  preparedHotPriceProducts: Phone[],
+  products: Product[],
+  setProducts: Dispatch<SetStateAction<Product[]>>,
+  preparedBrandNewProducts: Product[],
+  preparedHotPriceProducts: Product[],
   sortType: SortType,
   setSortType: Dispatch<SetStateAction<SortType>>,
   itemsPerPage: number,
   setItemsPerPage: Dispatch<SetStateAction<number>>,
   sortParams: SortParamsType[],
   perPageParams: number[],
-  sortedProducts: () => Phone[],
+  sortedProducts: () => Product[],
   tabletSearchValue: string,
   setTabletSearchValue: Dispatch<SetStateAction<string>>,
   phoneSearchValue: string,
   setPhoneSearchValue: Dispatch<SetStateAction<string>>,
-  filteredProducts: Phone[],
+  filteredProducts: Product[],
 };
 
 export const PhonesContext = React.createContext<PhonesContextType>({
-  phonesData: [],
-  setPhonesData: () => { },
+  products: [],
+  setProducts: () => { },
   preparedHotPriceProducts: [],
   preparedBrandNewProducts: [],
   sortType: SortType.Newest,
@@ -52,7 +50,7 @@ type Props = {
 };
 
 export const PhonesProvider: React.FC<Props> = ({ children }) => {
-  const [phonesData, setPhonesData] = useState<Phone[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [sortType, setSortType] = useState<SortType>(SortType.Newest);
   const [itemsPerPage, setItemsPerPage] = useState(16);
   const [tabletSearchValue, setTabletSearchValue] = useState('');
@@ -75,27 +73,27 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
 
   const perPageParams = [4, 8, 16, 32];
 
-  const preparedHotPriceProducts = phonesData?.filter((product: Phone) => (
+  const preparedHotPriceProducts = products?.filter((product: Product) => (
     product.fullPrice - product.price >= 90
   )) || [];
 
-  const preparedBrandNewProducts = phonesData?.filter((product: Phone) => (
+  const preparedBrandNewProducts = products?.filter((product: Product) => (
     product.year >= 2019
   )) || [];
 
   const sortedProducts = () => {
     switch (sortType as SortType) {
       case SortType.Alphabetically:
-        return [...phonesData].sort((prev, next) => (
+        return [...products].sort((prev, next) => (
           next.name.localeCompare(prev.name)
         ));
 
       case SortType.Cheapest:
-        return [...phonesData]
+        return [...products]
           .sort((prev, next) => prev.fullPrice - next.fullPrice);
 
       default:
-        return [...phonesData].sort((prev, next) => next.year - prev.year);
+        return [...products].sort((prev, next) => next.year - prev.year);
     }
   };
 
@@ -104,16 +102,11 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
       .includes(phoneSearchValue.toLowerCase().trim())
   ));
 
-  useEffect(() => {
-    getData('api/products.json')
-      .then(setPhonesData);
-  }, [setPhonesData]);
-
   return (
     <PhonesContext.Provider
       value={{
-        phonesData,
-        setPhonesData,
+        products,
+        setProducts,
         preparedBrandNewProducts,
         preparedHotPriceProducts,
         sortType,

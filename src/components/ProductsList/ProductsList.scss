@@ -21,6 +21,7 @@
 
   &__list {
     display: flex;
+    place-content: center;
     justify-content: space-between;
     transition: all 0.3s;
   }

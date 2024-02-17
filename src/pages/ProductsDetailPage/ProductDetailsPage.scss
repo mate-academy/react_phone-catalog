@@ -1,0 +1,201 @@
+@import '../../styles/utils';
+
+.product {
+  padding: 24px 0 80px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back-btn {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px 64px;
+  }
+
+  &__photos {
+    height: fit-content;
+    display: flex;
+    gap: 16px;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &-wrapper {
+      width: 80px;
+      height: 80px;
+      background-color: #fff;
+      border: 1px solid $c-elements;
+      transition: all 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        scale: 1.1;
+      }
+
+      &:active {
+        scale: 0.9;
+      }
+
+      &--active {
+        border: 1px solid $c-primary;
+      }
+    }
+  }
+
+  &__current-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &-wrapper {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: $c-elements;
+    margin-bottom: 24px;
+
+    &:nth-last-of-type() {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__order {
+    max-width: 320px;
+    height: fit-content;
+
+    &-title {
+      @extend %small-text;
+
+      color: $c-icons;
+      margin-bottom: 8px;
+    }
+
+    &-area {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    &-btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    &-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    &-spec {
+      &-name {
+        @extend %small-text;
+        
+        color: $c-secondary;
+      }
+
+      &-value {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 15px;
+      }
+    }
+  }
+
+  &__price {
+    @extend %h1;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__subtitle {
+    @extend %h2;
+
+    margin-bottom: 16px;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+
+    &-descr {
+      @extend %body-text;
+
+      color: $c-secondary;
+
+      &-wrapper {
+        &:not(:last-of-type) {
+          margin-bottom: 32px;
+        }
+      }
+
+      &-title {
+        @extend %h3;
+
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &__specs {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-name {
+      @extend %body-text;
+
+      color: $c-secondary;
+    }
+
+    &-value {
+      @extend %body-text;
+
+      font-weight: 600;
+    }
+  }
+}

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Phone } from '../../types/Phone';
+import { Product } from '../../types/Product';
 
 import './ProductItem.scss';
+import { Button } from '../Button/Button';
 
 type Props = {
-  product: Phone
+  product: Product
 };
 
 export const ProductItem: React.FC<Props> = ({
@@ -39,11 +40,11 @@ export const ProductItem: React.FC<Props> = ({
       </Link>
 
       <div className="product-item__price-section">
-        <h2 className="product-item__full-price">
+        <h2 className="price">
           {`$${price}`}
         </h2>
 
-        <p className="product-item__price">
+        <p className="price-discount">
           {`$${fullPrice}`}
         </p>
       </div>
@@ -83,19 +84,22 @@ export const ProductItem: React.FC<Props> = ({
       </div>
 
       <div className="product-item__btns">
-        <button
-          type="button"
+        <Button
           className="button button__primary button--large"
         >
           Add to card
-        </button>
+        </Button>
 
-        <button
-          type="button"
-          className="button button__like button--medium button__like--active"
+        <Button
+          className="
+            button
+            button__like
+            button--medium
+            button__like--active
+          "
         >
           <img src="img/icons/heart.svg" alt="Heart" />
-        </button>
+        </Button>
       </div>
     </div>
   );
