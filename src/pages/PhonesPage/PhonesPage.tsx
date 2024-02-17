@@ -10,11 +10,18 @@ export const PhonesPage: React.FC = () => {
   const [phonesList, setPhonesList] = useState<Product[]>([]);
 
   useEffect(() => {
-    setIsLoading(true);
-    getPhones().then(setPhonesList)
-      .finally(() => setIsLoading(false));
-  }, []);
+  setIsLoading(true);
 
+  getPhones()
+    .then(setPhonesList)
+    .catch(error => {
+      console.error("Error fetching phones:", error);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+}, []);
+  
   return (
     <section className="phonesPage">
       <ProductsPageContent
