@@ -1,0 +1,25 @@
+@import '../../../assets/css/variables';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+
+  &__back-button {
+    padding: 16px 0;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../../assets/css/variables';
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__actual-price {
+    // font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $primary;
+  }
+
+  &__old-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+}

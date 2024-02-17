@@ -1,0 +1,24 @@
+@import '../../../assets/css/variables';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  color: $secondary;
+  text-decoration: none;
+  width: max-content;
+
+  &::before {
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    background-image: url(../../../assets/icons/arrow-left.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+  }
+}

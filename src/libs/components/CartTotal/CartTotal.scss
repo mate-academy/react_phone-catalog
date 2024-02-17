@@ -1,0 +1,46 @@
+@import '../../../assets/css/variables';
+
+.cart-total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 368px;
+  height: 206px;
+  border: 1px solid $elements;
+  padding: 24px;
+
+  &__total-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid $elements;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    color: $secondary;
+  }
+
+  &__checkout-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    cursor: pointer;
+    border: none;
+    background-color: $primary;
+    color: $white;
+    font-weight: 600;
+  }
+}

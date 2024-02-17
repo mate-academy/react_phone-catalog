@@ -7,7 +7,7 @@ import {
   ModelPage,
   FavouritesPage,
   CartPage,
-} from './components';
+} from './libs/components';
 
 import './App.scss';
 

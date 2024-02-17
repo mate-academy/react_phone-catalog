@@ -1,0 +1,88 @@
+@import '../../../assets/css/variables';
+
+.banner-container {
+  height: 432px;
+
+  &__slider {
+    margin-bottom: 8px;
+  }
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+
+  &__button {
+    height: 100%;
+    width: 32px;
+    min-width: 32px;
+    border: 1px solid $icons;
+    background-color: transparent;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--left {
+      background-image: url(../../../assets/icons/arrow-left.svg);
+    }
+
+    &--right {
+      background-image: url(../../../assets/icons/arrow-right.svg);
+    }
+  }
+
+  &__banner {
+    display: flex;
+    max-width: 1040px;
+    flex-grow: 1;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__banner-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__banner-item {
+    width: 100%;
+    flex: 1 0 100%;
+  }
+
+  &__banner-link {
+    display: flex;
+    text-decoration: none;
+  }
+
+
+  &__banner-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 24px;
+
+  &__part {
+    width: 14px;
+    height: 4px;
+    background-color: $elements;
+
+    &--active {
+      background-color: $primary;
+    }
+  }
+}

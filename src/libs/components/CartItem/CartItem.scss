@@ -1,0 +1,79 @@
+@import '../../../assets/css/variables';
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $elements;
+
+  &__button {
+    display: block;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    &--delete-button {
+      width: 16px;
+      height: 16px;
+      color: $icons;
+      margin-right: 24px;
+    }
+  }
+
+  &__product-image {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin-right: 24px;
+    padding: 7px;
+  }
+
+  &__product-name {
+    display: flex;
+    align-items: center;
+    width: 295px;
+    color: $primary;
+    margin-right: 49px;
+  }
+
+  &__count-container {
+    display: flex;
+    align-items: center;
+    max-width: 96px;
+    gap: 13px;
+    margin-right: 43px;
+  }
+
+  &__count-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid;
+
+    &--take-button {
+      border-color: $elements;
+    }
+    &--add-button {
+      border-color: $icons;
+    }
+  }
+
+  &__item-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  &__product-price {
+    display: block;
+    min-width: 61px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $primary;
+  }
+}

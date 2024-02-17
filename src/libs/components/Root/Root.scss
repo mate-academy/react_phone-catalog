@@ -1,0 +1,28 @@
+@import '/src/assets/css/variables';
+
+.app {
+  &__header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 24px $main-side-padding 80px;
+  border-bottom: 1px solid $elements;
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  &__banner {
+    margin-bottom: 72px;
+  }
+
+  &__hot-prices {
+    margin-bottom: 80px;
+  }
+
+  &__shop-by-category {
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,11 @@
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__cards {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+}
