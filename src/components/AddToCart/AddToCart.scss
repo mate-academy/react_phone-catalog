@@ -1,0 +1,25 @@
+@import "../../styles/utils/utils";
+
+.add-to-cart {
+  &__btnbox {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__favorite {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 1px solid $color-background;
+    transition: border ease-in-out $transition-duration;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+}

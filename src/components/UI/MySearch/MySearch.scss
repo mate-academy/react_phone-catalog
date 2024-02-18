@@ -2,6 +2,7 @@
 
 .my-search {
   position: relative;
+  flex-grow: 1;
 
   &::before {
     content: url(../../../../public/img/icons/search.svg);
@@ -11,16 +12,23 @@
     top: 24px;
     right: 20px;
     z-index: 1;
+
+    @include on-mobile-l {
+      top: 14px;
+    }
   }
 
   &__input {
-    padding: 24px;
+    width: 100%;
+    padding: 23px;
     height: 100%;
-    border: none;
-    border-left: 1px solid $color-background;
     box-sizing: border-box;
-    outline: 1px solid $color-background;
+    outline: none;
     color: $color-secondary;
+
+    border: 1px solid $color-background;
+    border-bottom: none;
+    border-left: 1px solid $color-background;
 
     &::placeholder {
       font-weight: 600;
@@ -29,6 +37,12 @@
 
     &:focus {
       border: 1px solid $color-primary;
+    }
+
+    @include on-mobile-l {
+      padding: 12px;
+      height: 40px;
+      border-bottom: 1px solid $color-background;
     }
   }
 }

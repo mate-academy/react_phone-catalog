@@ -8,6 +8,12 @@ export const BreadCrumbs = () => {
 
   const breadCrumbs = pathname.split('/').slice(1);
 
+  function getPath(el: string): string {
+    const index = breadCrumbs.indexOf(el);
+
+    return breadCrumbs.slice(0, index + 1).join('/');
+  }
+
   return (
     <nav
       className="breadcrumbss"
@@ -33,7 +39,10 @@ export const BreadCrumbs = () => {
                   pathname: '.',
                   search: getSearchParamsWith({}, searchParams),
                 }
-                : el}
+                : {
+                  pathname: `/${getPath(el)}`,
+                  search: getSearchParamsWith({}, searchParams),
+                }}
               className="breadcrumbs__link"
             >
               {el}

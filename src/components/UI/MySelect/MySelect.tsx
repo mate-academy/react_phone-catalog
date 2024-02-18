@@ -10,7 +10,6 @@ type Props = {
   title: string;
   options: SelectOption[];
   searchName: SearchTypes;
-  width: number;
 };
 
 export const MySelect: React.FC<Props> = ({
@@ -18,7 +17,6 @@ export const MySelect: React.FC<Props> = ({
   defaultValue,
   title,
   searchName,
-  width,
 }) => {
   const entries = Object.values(options);
   const [selected, setSelected] = useState(defaultValue);
@@ -63,10 +61,7 @@ export const MySelect: React.FC<Props> = ({
   }, []);
 
   return (
-    <div
-      className="my-select"
-      style={{ width }}
-    >
+    <div className="my-select">
       <p className="my-select__title">{title}</p>
 
       <button
@@ -83,7 +78,7 @@ export const MySelect: React.FC<Props> = ({
         className="my-select__wrapper"
         style={{
           pointerEvents: showDropdown ? 'all' : 'none',
-          width,
+          height: showDropdown ? '150px' : '0px',
         }}
       >
         <div

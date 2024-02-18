@@ -1,4 +1,4 @@
-import { CategoryName, Product } from '../types/product';
+import { Product } from '../types/product';
 
 export function getBrandNewProducts(products: Product[]): Product[] {
   return products
@@ -16,7 +16,7 @@ export function getHotPriceProducts(products: Product[]): Product[] {
     });
 }
 
-export function getPhones(products: Product[]): Product[] {
-  return products
-    .filter(product => product.category === CategoryName.phone);
-}
+// export function getPhones(products: Product[]): Product[] {
+//   return products
+//     .filter(product => product.category === CategoryName.phone);
+// }

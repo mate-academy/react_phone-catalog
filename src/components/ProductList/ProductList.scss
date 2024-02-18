@@ -1,10 +1,14 @@
-@import '../../styles/utils/utils';
+@import "../../styles/utils/utils";
 
 .product-list {
   --column-count: 4;
 
   padding-bottom: 80px;
   box-sizing: border-box;
+
+  @include on-mobile-l {
+    padding-bottom: 30px;
+  }
 
   &__items {
     display: grid;
@@ -14,23 +18,50 @@
     gap: 16px;
     row-gap: 40px;
     margin-bottom: 40px;
+    padding-top: 80px;
 
     @include on-desktop-s {
-       --column-count: 3;
+      --column-count: 3;
     }
 
     @include on-tablet-s {
-       --column-count: 2;
+      --column-count: 2;
     }
 
     @include on-mobile-l {
-       --column-count: 1;
+      --column-count: 1;
+      
+      padding-top: 140px;
     }
   }
 
   &__controls {
+    position: absolute;
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 24px;
+
+
+    @include on-mobile-l {
+      width: calc(100% - 60px);
+      background-color: $color-white;
+    }
+
+    &--left {
+      width: 176px;
+
+      @include on-mobile-l {
+        width: 100%;
+      }
+    }
+
+    &--right {
+      width: 128px;
+
+      @include on-mobile-l {
+        width: 100%;
+      }
+    }
   }
 }

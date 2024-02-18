@@ -66,21 +66,23 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <section className="product-list" data-cy="productList">
       <div className="product-list__controls">
-        <MySelect
-          defaultValue={sortParams[sort]}
-          title="Sort by"
-          options={SORT_BY}
-          searchName="sort"
-          width={176}
-        />
+        <div className="product-list__controls--left">
+          <MySelect
+            defaultValue={sortParams[sort]}
+            title="Sort by"
+            options={SORT_BY}
+            searchName="sort"
+          />
+        </div>
 
-        <MySelect
-          defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
-          title="Items on page"
-          options={PER_PAGE}
-          searchName="perPage"
-          width={128}
-        />
+        <div className="product-list__controls--right">
+          <MySelect
+            defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
+            title="Items on page"
+            options={PER_PAGE}
+            searchName="perPage"
+          />
+        </div>
       </div>
 
       <div className="product-list__items">

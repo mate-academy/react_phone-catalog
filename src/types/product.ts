@@ -7,9 +7,10 @@ export enum CategoryName {
 export type Product = {
   age: number,
   category: CategoryName,
-  // type: CategoryName,
   id: string,
-  image: string
+  itemId?: string,
+  image: string,
+  images: string[],
   name: string
   snippet: string,
   price: number,
@@ -20,6 +21,26 @@ export type Product = {
   ram: string,
   color: string,
   year: number,
+};
+
+export type ProductDescription = {
+  id: string,
+  namespaceId: string,
+  name: string,
+  capacityAvailable: string[],
+  capacity: string,
+  priceRegular: number,
+  priceDiscount: number,
+  color: string,
+  images: string[],
+  description: { title: string, text: string[] }[],
+  screen: string,
+  resolution: string,
+  processor: string,
+  ram: string,
+  camera: string,
+  zoom: string,
+  cell: string[]
 };
 
 export type Category = {

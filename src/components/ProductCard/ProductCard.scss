@@ -12,6 +12,10 @@
   justify-content: flex-start;
   border: 1px solid $color-background;
 
+  &__link {
+    color: $color-primary;
+  }
+
   &__imgbox {
     width: 100%;
     margin-bottom: 24px;
@@ -75,25 +79,25 @@
     font-weight: 600;
   }
 
-  &__btnbox {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-  }
+  // &__btnbox {
+  //   display: flex;
+  //   gap: 8px;
+  //   width: 100%;
+  // }
 
-  &__favorite {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    border: 1px solid $color-background;
-    transition: border ease-in-out $transition-duration;
-    cursor: pointer;
+  // &__favorite {
+  //   width: 40px;
+  //   height: 40px;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   background: transparent;
+  //   border: 1px solid $color-background;
+  //   transition: border ease-in-out $transition-duration;
+  //   cursor: pointer;
 
-    &:hover {
-      border: 1px solid $color-primary;
-    }
-  }
+  //   &:hover {
+  //     border: 1px solid $color-primary;
+  //   }
+  // }
 }

@@ -6,16 +6,42 @@ import { Category, Product } from '../../types/product';
 import { MyLoader } from '../../components/UI/MyLoader';
 import { categories } from '../../api/category/category';
 import { CategoryItem } from '../../components/CategoryItem';
-import { StateContext } from '../../store/State';
+import { DispatchContext, StateContext } from '../../store/State';
 import {
   getBrandNewProducts,
   getHotPriceProducts,
 } from '../../helpers/productsHelpers';
+import { getAllProducts } from '../../api/productApi';
 
 export const HomePage = () => {
   const [hotProducts, setHotProducts] = useState<Product[]>([]);
   const [newProducts, setNewProducts] = useState<Product[]>([]);
   const { allProducts, loading, loadingError } = useContext(StateContext);
+
+  const dispatch = useContext(DispatchContext);
+
+  useEffect(() => {
+    getAllProducts<Product[]>()
+      .then(products => {
+        dispatch({ type: 'getAllProducts', payload: products });
+      })
+      .catch(() => dispatch({
+        type: 'setLoadingError',
+        payload: 'Something went wrong...',
+      }))
+      .finally(() => dispatch({ type: 'setLoading', payload: false }));
+
+    const favoriteProducts = localStorage.getItem('favoriteProducts');
+
+    if (!favoriteProducts) {
+      localStorage.setItem('favoriteProducts', JSON.stringify([]));
+    } else {
+      dispatch({
+        type: 'updateFavorite',
+        payload: JSON.parse(favoriteProducts),
+      });
+    }
+  }, [dispatch]);
 
   useEffect(() => {
     setNewProducts(getBrandNewProducts(allProducts));
