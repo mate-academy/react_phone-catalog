@@ -79,7 +79,8 @@ export const ProductDetailsPage = () => {
       ) : (
         <>
           <section className="details-page__section
-            details-page__section--small">
+            details-page__section--small"
+          >
             <h1 className="details-page__title">{details.name}</h1>
           </section>
         </>

@@ -47,7 +47,8 @@
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",
-    "deploy": "mate-scripts deploy"
+    "deploy": "mate-scripts deploy",
+    "update-browserslist-db": "npx browserslist@latest --update-db"
   },
   "browserslist": {
     "production": [
