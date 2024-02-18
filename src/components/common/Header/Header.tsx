@@ -1,11 +1,10 @@
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 
 import './Header.scss';
 import { Navbar } from '../Navbar/Navbar';
 import SquareLink from '../../UI/SquareLink';
 import { PAGE } from '../../../definitions/enums/Router';
 import SearchField from '../../UI/SearchField';
-import { SearchContext } from '../../../store/contexts/SearchContext';
 import { useAppSelector } from '../../../store/redux/hooks';
 import { cartSelector } from '../../../store/redux/slices/cartSlice';
 import { favoritesSelector } from '../../../store/redux/slices/favoritesSlice';
@@ -16,7 +15,6 @@ export const Header: React.FC = memo(() => {
   const direction = useDirection();
   const cartIds = useAppSelector(cartSelector.selectStorageProducts);
   const favoritesIds = useAppSelector(favoritesSelector.selectStorageProducts);
-  const { searchVisible, searchIn } = useContext(SearchContext);
   const [headerRef, hideHeader] = useDynamicHeader<HTMLElement>(20, 920);
 
   return (
@@ -24,12 +22,7 @@ export const Header: React.FC = memo(() => {
       <Navbar />
 
       <div className="header__right">
-        {searchVisible && (
-          <SearchField
-            searchIn={searchIn}
-            className="header__search"
-          />
-        )}
+        <SearchField className="header__search" />
 
         <SquareLink
           nav

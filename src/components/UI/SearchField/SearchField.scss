@@ -4,6 +4,10 @@
   display: flex;
   transition: $transition-time;
 
+  &--hidden {
+    display: none;
+  }
+
   &__input {
     flex-grow: 1;
     flex-shrink: 1;

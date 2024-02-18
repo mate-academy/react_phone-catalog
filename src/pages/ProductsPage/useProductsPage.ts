@@ -10,14 +10,13 @@ import { DropdownOption } from '../../components/UI/Dropdown/Dropdown';
 import { capitalize } from '../../utils/stringHelper';
 import { getProductsAmount } from '../../api/products/client/amount';
 import { getProducts } from '../../api/products/client/products';
-import { SearchContext, useSearchHere } from '../../store/contexts/SearchContext';
+import { SearchContext } from '../../store/contexts/SearchContext';
 
 export function useProductsPage() {
   const { category } = useAppParams();
 
-  const getAmount = () => getProductsAmount(category);
   const [allProductsAmount, allAmountLoading, allAmountError] = useRequest(
-    getAmount, [category], null,
+    () => getProductsAmount(category), [category], null,
   );
   const amountHandled = allAmountLoading ? 0 : (allProductsAmount ?? 0);
 
@@ -33,7 +32,6 @@ export function useProductsPage() {
 
   const { search } = useContext(SearchContext);
 
-  useSearchHere(category, [category]);
   useEffect(() => {
     setPage(1);
   }, [search]);
@@ -43,10 +41,10 @@ export function useProductsPage() {
   });
 
   const [products, loading, error] = useRequest(
-    loadProducts, [category, page, perPage, sortQuery, search], null,
+    loadProducts, [category, page, perPage, sortQuery, search], { products: [], amount: 0 },
   );
 
-  const amount = search ? (products?.amount ?? 0) : amountHandled;
+  const amount = search ? (products.amount ?? 0) : amountHandled;
   const amountLoadingHandled = search ? allAmountLoading : loading;
   const items = search ? 'results' : 'models';
   const showNoResults = !!(search && products?.products.length === 0);
@@ -56,7 +54,7 @@ export function useProductsPage() {
     amount,
     category: capitalize(category),
     someError: error || allAmountError,
-    products: products?.products ?? [],
+    products: products.products,
     productsLoading: loading,
     perPageIsAll: perPage === 'All',
     sortBy,

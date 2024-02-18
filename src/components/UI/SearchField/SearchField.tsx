@@ -1,10 +1,7 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 
 import './SearchField.scss';
-import { useLocation } from 'react-router-dom';
-import { useDebounce } from '../../../enhancers/hooks/debounce';
-import { SearchParam } from '../../../definitions/enums/Router';
-import { useSearchParams } from '../../../enhancers/hooks/searchParams';
+import { useSearchField } from './useSearchField';
 
 const SubmitButton: React.FC = memo(() => (
   <button type="submit" className="search-field__button">
@@ -12,29 +9,21 @@ const SubmitButton: React.FC = memo(() => (
   </button>
 ));
 
-interface Props {
-  searchIn?: string,
+export interface SearchFieldProps {
   className?: string,
 }
 
-export const SearchField: React.FC<Props> = memo(({ searchIn, className }) => {
-  const { pathname } = useLocation();
-  const searchParams = useSearchParams();
-  const initialQuery = searchParams.get(SearchParam.Search) || '';
-
-  const [query, setQuery] = useDebounce(initialQuery,
-    (newQuery) => searchParams.set(SearchParam.Search, newQuery));
-
-  const handleFormSubmit = () => {
-    searchParams.set(SearchParam.Search, query);
-  };
-
-  useEffect(() => {
-    setQuery(initialQuery);
-  }, [pathname, setQuery]);
+export const SearchField: React.FC<SearchFieldProps> = memo((props) => {
+  const {
+    classes,
+    handleFormSubmit,
+    query,
+    setQuery,
+    searchIn,
+  } = useSearchField(props);
 
   return (
-    <form className={`search-field ${className || ''}`} onSubmit={handleFormSubmit}>
+    <form className={classes} onSubmit={handleFormSubmit}>
       <input
         type="text"
         className="search-field__input"

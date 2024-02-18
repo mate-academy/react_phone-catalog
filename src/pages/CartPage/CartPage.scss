@@ -30,11 +30,11 @@
 }
 
 .cart-page {
-  animation: cart-page-mount 0.2s forwards;
+  animation: cart-page-mount 0.5s forwards;
   padding-block: 40px;
 
   &--empty {
-    animation: cart-page-mount 0.2s forwards;
+    animation: cart-page-mount 0.5s forwards;
     flex-grow: 1;
     display: flex;
     flex-direction: column;

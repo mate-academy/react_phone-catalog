@@ -3,14 +3,12 @@ import ProductsList from '../../components/common/ProductsList';
 import { useAppDispatch, useAppSelector } from '../../store/redux/hooks';
 import { favoritesActions, favoritesSelector } from '../../store/redux/slices/favoritesSlice';
 import ErrorMessage from '../../components/common/ErrorMessage';
-import { SearchContext, useSearchHere } from '../../store/contexts/SearchContext';
+import { SearchContext } from '../../store/contexts/SearchContext';
 import Placeholder from '../../components/UI/Placeholder';
 import BreadCrumbs from '../../components/UI/BreadCrumbs';
 
 export const FavoritesPage: React.FC = memo(() => {
   const { search } = useContext(SearchContext);
-
-  useSearchHere('favorites');
   const dispatch = useAppDispatch();
 
   const {

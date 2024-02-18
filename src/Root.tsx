@@ -12,9 +12,9 @@ import CartPage from './pages/CartPage';
 import FavoritesPage from './pages/FavoritesPage';
 import ProductPage from './pages/ProductPage';
 import ErrorMessage from './components/common/ErrorMessage';
-import { ContextProvider } from './store/contexts/GlobalContextProvider';
 import CheckoutPage from './pages/CheckoutPage';
 import { prepareAdditionalInformation } from './utils/servicesHelper';
+import { SearchProvider } from './store/contexts/SearchContext';
 
 export const Root: React.FC = () => {
   useEffect(() => {
@@ -28,7 +28,7 @@ export const Root: React.FC = () => {
   return (
     <Provider store={store}>
       <Router>
-        <ContextProvider>
+        <SearchProvider>
           <Routes>
             <Route path={PAGE.Home} element={<App />}>
               <Route index element={<HomePage />} />
@@ -47,7 +47,7 @@ export const Root: React.FC = () => {
               />
             </Route>
           </Routes>
-        </ContextProvider>
+        </SearchProvider>
       </Router>
     </Provider>
   );
