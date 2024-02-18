@@ -40,6 +40,10 @@ h1 {
   &__not-fount {
     @extend %h2;
   }
+
+  &__title {
+    margin-bottom: 8px;
+  }
 }
 
 .container {

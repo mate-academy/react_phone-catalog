@@ -53,7 +53,7 @@ export const Phones: React.FC = () => {
             <Breadcrumbs />
           </div>
 
-          <h1 className="phones__title">
+          <h1 className="content__title">
             Mobile phones
           </h1>
 

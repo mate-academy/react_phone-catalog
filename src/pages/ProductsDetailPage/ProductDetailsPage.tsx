@@ -14,6 +14,9 @@ import {
 } from '../../components/ProductPagePhotos/ProductPagePhotos';
 import { ProductAbout } from '../../components/ProductAbout/ProductAbout';
 import { ProductSpecs } from '../../components/ProductSpecs/ProductSpecs';
+import { ProductsList } from '../../components/ProductsList/ProductsList';
+import { Product } from '../../types/Product';
+import { usePhones } from '../../hooks/usePhones';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
@@ -21,6 +24,11 @@ export const ProductDetailsPage: React.FC = () => {
   const productIdColor = productIdParts[productIdParts.length - 1];
   const productIdCapacity = productIdParts[productIdParts.length - 2];
   const navigate = useNavigate();
+
+  const {
+    products,
+    setProducts,
+  } = usePhones();
 
   const [
     productData,
@@ -33,17 +41,6 @@ export const ProductDetailsPage: React.FC = () => {
     currentPhoto,
     setCurrentPhoto,
   ] = useState<string>('');
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    client.get<ProductPage>(`products/${productId}.json`)
-      .then((data) => {
-        setProductData(data);
-        setCurrentPhoto(data.images[0]);
-      })
-      .finally(() => setIsLoading(false));
-  }, [productId]);
 
   const getPreparedLink = (
     color: string,
@@ -83,57 +80,87 @@ export const ProductDetailsPage: React.FC = () => {
     description = [],
   } = productData as ProductPage;
 
+  const getSuggestedProducts = (productsList: Product[]): Product[] => {
+    const preparedProducts = productsList.filter(product => (
+      ram === product.ram || capacity === product.capacity
+      || screen === product.screen
+    ));
+
+    return preparedProducts;
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    client.get<Product[]>('products.json')
+      .then(setProducts);
+
+    client.get<ProductPage>(`products/${productId}.json`)
+      .then((product) => {
+        setProductData(product);
+        setCurrentPhoto(product.images[0]);
+      })
+      .finally(() => setIsLoading(false));
+  }, [productId, setProducts]);
+
   return (
-    <section className="product">
-      {isLoading && (
-        <Loader />
-      )}
+    <>
+      <section className="product">
+        {isLoading && (
+          <Loader />
+        )}
 
-      {!isLoading && (
-        <>
-          <ProductPageHeader
-            productName={name}
-          />
-
-          <div className="product__content">
-            <ProductPagePhotos
-              images={images}
-              currentPhoto={currentPhoto}
-              setCurrentPhoto={setCurrentPhoto}
-              name={name}
+        {!isLoading && (
+          <>
+            <ProductPageHeader
+              productName={name}
             />
 
-            <ProductOrder
-              availableColors={colorsAvailable}
-              availableCapacity={capacityAvailable}
-              selectParam={handleParamsSelect}
-              currentColor={productIdColor}
-              currentCapacity={productIdCapacity.toUpperCase()}
-              price={priceDiscount}
-              fullPrice={priceRegular}
-              screen={screen}
-              resolution={resolution}
-              ram={ram}
-              processor={processor}
-            />
+            <div className="product__content">
+              <ProductPagePhotos
+                images={images}
+                currentPhoto={currentPhoto}
+                setCurrentPhoto={setCurrentPhoto}
+                name={name}
+              />
 
-            <ProductAbout
-              productDescr={description}
-            />
+              <ProductOrder
+                availableColors={colorsAvailable}
+                availableCapacity={capacityAvailable}
+                selectParam={handleParamsSelect}
+                currentColor={productIdColor}
+                currentCapacity={productIdCapacity.toUpperCase()}
+                price={priceDiscount}
+                fullPrice={priceRegular}
+                screen={screen}
+                resolution={resolution}
+                ram={ram}
+                processor={processor}
+              />
 
-            <ProductSpecs
-              screen={screen}
-              resolution={resolution}
-              processor={processor}
-              ram={ram}
-              memory={capacity}
-              camera={camera}
-              zoom={zoom}
-              cell={cell}
-            />
-          </div>
-        </>
-      )}
-    </section>
+              <ProductAbout
+                productDescr={description}
+              />
+
+              <ProductSpecs
+                screen={screen}
+                resolution={resolution}
+                processor={processor}
+                ram={ram}
+                memory={capacity}
+                camera={camera}
+                zoom={zoom}
+                cell={cell}
+              />
+
+              <ProductsList
+                products={getSuggestedProducts(products)}
+                title="You also may like"
+              />
+            </div>
+          </>
+        )}
+      </section>
+    </>
   );
 };

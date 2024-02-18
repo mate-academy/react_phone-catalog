@@ -24,6 +24,8 @@ type PhonesContextType = {
   phoneSearchValue: string,
   setPhoneSearchValue: Dispatch<SetStateAction<string>>,
   filteredProducts: Product[],
+  suggestedProducts: Product[],
+  setSuggestedProducts: Dispatch<SetStateAction<Product[]>>
 };
 
 export const PhonesContext = React.createContext<PhonesContextType>({
@@ -39,10 +41,12 @@ export const PhonesContext = React.createContext<PhonesContextType>({
   perPageParams: [],
   sortedProducts: () => [],
   tabletSearchValue: '',
-  setTabletSearchValue: () => { },
+  setTabletSearchValue: () => {},
   phoneSearchValue: '',
   setPhoneSearchValue: () => { },
   filteredProducts: [],
+  suggestedProducts: [],
+  setSuggestedProducts: () => {},
 });
 
 type Props = {
@@ -55,6 +59,7 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
   const [itemsPerPage, setItemsPerPage] = useState(16);
   const [tabletSearchValue, setTabletSearchValue] = useState('');
   const [phoneSearchValue, setPhoneSearchValue] = useState('');
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const sortParams = [
     {
@@ -121,6 +126,8 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
         phoneSearchValue,
         setPhoneSearchValue,
         filteredProducts,
+        suggestedProducts,
+        setSuggestedProducts,
       }}
     >
       {children}

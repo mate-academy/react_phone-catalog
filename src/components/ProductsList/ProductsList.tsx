@@ -32,17 +32,18 @@ export const ProductsList: React.FC<Props> = ({
   }, []);
 
   return (
-    <section
-      className="products products__hot-price"
+    <div
+      className="products__list"
+      data-cy="productList"
     >
-      <div className="products__top">
+      <div className="products__list-top">
         <h1 className="section__title">
           {title}
         </h1>
 
-        <div className="products__nav">
+        <div className="products__list-nav">
           <Button
-            className="products__nav-btn button button__nav button--small"
+            className="products__list-nav-btn button button__nav button--small"
             onClick={() => setPage(i => i - 1)}
             disabled={!page}
           >
@@ -50,7 +51,7 @@ export const ProductsList: React.FC<Props> = ({
           </Button>
 
           <Button
-            className="products__nav-btn button button__nav button--small"
+            className="products__list-nav-btn button button__nav button--small"
             onClick={() => setPage(i => i + 1)}
             disabled={page === lastPage}
           >
@@ -60,11 +61,11 @@ export const ProductsList: React.FC<Props> = ({
       </div>
 
       <div
-        className="products__wrapper"
+        className="products__list-wrapper"
         ref={wrapperRef}
       >
         <div
-          className="products__list"
+          className="products__list-items"
           style={{
             transform: `translateX(${offset}px)`,
             gap: `${gap}px`,
@@ -79,6 +80,6 @@ export const ProductsList: React.FC<Props> = ({
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };

@@ -11,7 +11,10 @@ export const ProductAbout: React.FC<Props> = ({
   productDescr,
 }) => {
   return (
-    <div className="product__about">
+    <div
+      className="product__about"
+      data-cy="productDescription"
+    >
       <h3 className="product__subtitle">
         About
       </h3>
