@@ -1,8 +1,10 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import './BreadCrumbs.scss';
+import { getSearchParamsWith } from '../../helpers/searchParams';
 
 export const BreadCrumbs = () => {
   const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
 
   const breadCrumbs = pathname.split('/').slice(1);
 
@@ -26,7 +28,12 @@ export const BreadCrumbs = () => {
             key={el}
           >
             <NavLink
-              to={i === breadCrumbs.length - 1 ? pathname : el}
+              to={i === breadCrumbs.length - 1
+                ? {
+                  pathname: '.',
+                  search: getSearchParamsWith({}, searchParams),
+                }
+                : el}
               className="breadcrumbs__link"
             >
               {el}

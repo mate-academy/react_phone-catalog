@@ -4,6 +4,7 @@ import {
   HashRouter as Router,
   Routes,
 } from 'react-router-dom';
+
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';

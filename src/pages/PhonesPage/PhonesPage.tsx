@@ -31,7 +31,7 @@ function getPreparedProducts(
   });
 
   if (query) {
-    preparedProducts
+    return preparedProducts
       .filter(el => el.name.toLowerCase().includes(query.toLowerCase()));
   }
 
@@ -42,9 +42,10 @@ export const PhonesPage = () => {
   const { allProducts } = useContext(StateContext);
   const [searchParams] = useSearchParams();
 
+  const query = searchParams.get('query') || '';
   const sortBy = (searchParams.get('sort') || 'age') as SortParams;
   const phones = getPhones(allProducts);
-  const preparedPhones = getPreparedProducts(allProducts, { sortBy });
+  const preparedPhones = getPreparedProducts(allProducts, { sortBy, query });
   const phonesQuantity = phones.length;
 
   return (
@@ -60,7 +61,9 @@ export const PhonesPage = () => {
       </header>
 
       <main>
-        <ProductList products={preparedPhones} />
+        {query && !preparedPhones.length
+          ? <p>There are no phones with such parameters</p>
+          : <ProductList products={preparedPhones} />}
       </main>
     </div>
   );

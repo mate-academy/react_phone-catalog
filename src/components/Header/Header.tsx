@@ -1,14 +1,17 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Navbar } from '../Navbar';
 
 import './Header.scss';
 import { MyLogo } from '../UI/MyLogo';
 import { StateContext } from '../../store/State';
+import { MySearch } from '../UI/MySearch';
+import { CategoryName } from '../../types/product';
 
 export const Header = () => {
   const { favoriteProducts } = useContext(StateContext);
   const numberOfFavorite = favoriteProducts.length;
+  const { pathname } = useLocation();
 
   return (
     <header className="header" id="top">
@@ -18,6 +21,12 @@ export const Header = () => {
       </div>
 
       <div className="header__right">
+        {pathname === '/phones' && (
+          <MySearch
+            placeholder={CategoryName.phone}
+          />
+        )}
+
         <Link to="/favorite" className="header__link">
           <img src="img/icons/heart.svg" alt="favorite" />
 
