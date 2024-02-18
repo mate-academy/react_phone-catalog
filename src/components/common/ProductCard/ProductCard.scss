@@ -2,7 +2,7 @@
 
 :root {
   --product-card-width: 272px;
-  
+
   @include onMobile {
     --product-card-width: 230px;
   }
@@ -15,14 +15,18 @@
   border: 1px solid var(--c-elements);
   background: var(--c-bg);
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
-
+  
   @include onHoverSupport {
-    &__content {
-      transition: $transition-time;
+    &__img {
+      transition: transform 300ms;
     }
 
-    &:hover &__content {
-      transform: scale(1.02);
+    &:hover {
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    &:hover &__img{
+      transform: scale(1.08);
     }
   }
 
@@ -56,7 +60,7 @@
     margin-block: 6px;
     font-size: 22px;
 
-    & > span {
+    &>span {
       padding-inline: 2px;
     }
   }
@@ -87,6 +91,7 @@
     aspect-ratio: 1;
     object-fit: contain;
     background-size: cover;
+    transition: transform $transition-time;
   }
 
   &__features {

@@ -13,6 +13,7 @@
   @include hover(border-color, var(--c-primary), 0ms);
 
   &:disabled {
+    cursor: auto;
     border: 1px solid var(--c-elements);
   }
 }
