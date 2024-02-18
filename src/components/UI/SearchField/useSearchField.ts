@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Category } from '../../../api/products/server/types';
 import { PAGE, SearchParam } from '../../../definitions/enums/Router';
 import { useAppLocation } from '../../../enhancers/hooks/appLocation';
-import { useAppParams } from '../../../enhancers/hooks/appParams';
 import { SearchFieldProps } from './SearchField';
 import { useDebounce } from '../../../enhancers/hooks/debounce';
 import { useSearchParams } from '../../../enhancers/hooks/searchParams';
@@ -10,11 +9,11 @@ import { useSearchParams } from '../../../enhancers/hooks/searchParams';
 type SearchContextReturn = [boolean, string];
 
 const useSearchContext = (): SearchContextReturn => {
-  const { category } = useAppParams();
   const { pathname } = useAppLocation();
+  const normPath = pathname.slice(1);
 
-  if (Object.values(Category).includes(category)) {
-    return [true, category];
+  if (Object.values(Category).includes(normPath as Category)) {
+    return [true, normPath];
   }
 
   switch (pathname.slice(1)) {

@@ -13,6 +13,10 @@
     padding-block: 20px;
   }
 
+  &__logo {
+    height: 32px;
+  }
+
   &__content {
     flex-grow: 1;
     display: flex;
@@ -21,7 +25,6 @@
 
     @extend %max-content-width;
 
-    // flex-wrap: wrap;
     @include onTablet {
       flex-direction: column;
       gap: 24px;

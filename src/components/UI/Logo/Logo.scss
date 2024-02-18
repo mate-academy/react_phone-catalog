@@ -1,0 +1,10 @@
+@import '../../../styles/mixins';
+
+.logo {
+  place-content: center;
+
+  & > img {
+    aspect-ratio: 1;
+    height: 100%;
+  }
+}

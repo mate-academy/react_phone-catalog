@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import './Footer.scss';
 import ArrowButton from '../../UI/buttons/ArrowButton';
+import Logo from '../../UI/Logo';
 
 export const Footer: React.FC = () => {
   const goToTop = useCallback(() => {
@@ -15,12 +16,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <img
-          src="./img/logos/logo.svg"
-          alt=""
-          width={32}
-          height={32}
-        />
+        <Logo className="footer__logo" />
 
         <section className="footer__links">
           <a
