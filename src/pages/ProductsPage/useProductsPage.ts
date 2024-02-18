@@ -45,12 +45,11 @@ export function useProductsPage() {
   );
 
   const amount = search ? (products.amount ?? 0) : amountHandled;
-  const amountLoadingHandled = search ? allAmountLoading : loading;
   const items = search ? 'results' : 'models';
   const showNoResults = !!(search && products?.products.length === 0);
 
   const toExport = {
-    amountLoading: amountLoadingHandled,
+    amountLoading: (allAmountLoading || !!(search && loading)),
     amount,
     category: capitalize(category),
     someError: error || allAmountError,
