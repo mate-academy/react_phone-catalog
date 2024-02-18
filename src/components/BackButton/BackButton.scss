@@ -1,0 +1,26 @@
+@import "../../style-utils/_variables.scss";
+@import "../../style-utils/_mixins.scss";
+
+.back-button {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 16px;
+
+  cursor: pointer;
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    color: $grey-primery-color;
+  }
+
+  &__text {
+    @include smallText;
+    line-height: 1;
+  }
+
+  &:hover &__text {
+    color: $grey-primery-color;
+  }
+}

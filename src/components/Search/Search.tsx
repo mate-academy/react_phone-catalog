@@ -8,7 +8,7 @@ export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const { pathname } = location;
-  const searchField = pathname.slice(1);
+  const searchField = pathname.split('/')[1];
 
   const query = searchParams.get('query') || '';
 

@@ -33,7 +33,7 @@ export const BreadCrumbs: React.FC<Props> = ({ productName }) => {
             {capitalize(directory)}
           </Link>
           <div className="breadcrumbs__icon">
-            <img src={HomeIcon} alt="Home" />
+            <img src={ArrowRight} alt="ArrowRight" />
           </div>
 
           <p className="breadcrumbs__current">{productName}</p>
