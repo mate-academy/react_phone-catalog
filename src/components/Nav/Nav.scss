@@ -1,0 +1,11 @@
+@import "../../utils/utils";
+
+.Nav {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.NavButton {
+  @extend %navlink;
+}

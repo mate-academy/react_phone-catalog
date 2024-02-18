@@ -1,0 +1,52 @@
+@import '../../utils/utils';
+
+.Footer {
+  width: 100%;
+  box-shadow: 0 -1px 0 0 $elements-color;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 96px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__top {
+    font-size: 12px;
+    color: $secondary-color;
+
+    transition: $transition;
+
+    &-label {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &-text {
+      margin-right: 16px;
+    }
+
+    &-button {
+      @extend %arrow-button;
+
+      background-image: url(../../icons/arrow-up-black.svg)
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.FooterLink {
+  @extend %navlink;
+}

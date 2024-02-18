@@ -1,0 +1,47 @@
+@import "./colors";
+@import "./vars";
+
+%navlink {
+  color: $secondary-color;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+
+  transition: $transition;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+%underline {
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  background-color: $primary-color;
+  bottom: 0;
+}
+
+%button {
+  border: 1px solid $elements-color;
+
+  background-color: $background-color;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+%arrow-button {
+  @extend %button;
+
+  height: 32px;
+  width: 32px;
+}

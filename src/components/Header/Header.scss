@@ -1,0 +1,30 @@
+@import "../../utils/colors";
+@import "../../utils/vars";
+
+.Header {
+  position: sticky;
+  top: 0;
+  height: $header-height;
+  width: 100%;
+  background-color: $background-color;
+  box-shadow: 0 1px 0 0 $elements-color;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 24px;
+  }
+
+  &__left-side,
+  &__right-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__logo-container {
+    margin-right: 64px;
+  }
+}
