@@ -1,0 +1,106 @@
+@import "../../styles/main";
+
+.pictures-slider {
+  &__container {
+    @include onTablet {
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0;
+      max-width: 1136px;
+    }
+  }
+
+  &__slides-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform ease-out 0.3s;
+  }
+
+  &__item {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: inline-block;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+    background-position: center;
+
+    @include onTablet {
+      padding-bottom: 38.5%;
+      background-position: center;
+    }
+  }
+
+  &__arrow-container {
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+
+    &:last-child {
+      @include onTablet {
+        justify-self: end;
+      }
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 100%;
+    border: 1px solid $colorIcons;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  &__dot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include square(24px);
+  }
+
+  &__dot {
+    display: block;
+    height: 4px;
+    width: 14px;
+    background-color: $colorElements;
+
+    &--active {
+      background-color: $colorPrimary;
+    }
+  }
+}

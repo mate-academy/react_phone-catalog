@@ -1,0 +1,17 @@
+@import "../../styles/main";
+
+.not-found-page {
+  padding: 24px 0;
+
+  @include onTablet {
+    padding: 32px 0;
+  }
+
+  @include onDesktop {
+    padding: 56px 0;
+  }
+  &__title {
+    @extend %h1;
+    text-align: center;
+  }
+}

@@ -1,0 +1,91 @@
+@import "../../styles/main";
+
+.header {
+
+  &__top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    box-shadow: 0 1px 0 0 $colorElements;
+    background-color: $colorWhite;
+
+    @include onDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+
+    @include onDesktop {
+      padding: 0 24px;
+    }
+  }
+
+  &__logo-image {
+    height: 22px;
+
+    @include onDesktop {
+      height: 28px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    justify-content: end;
+  }
+
+  &__menu-button {
+    display: flex;
+    @include square(48px);
+
+    @extend %header-action;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: $headerSizeMobile;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $colorWhite;
+    opacity: 0;
+    transform: translateY(-100%);
+    // pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+      // pointer-events: all;
+    }
+  }
+
+  &__menu-actions {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $colorElements;
+  }
+}

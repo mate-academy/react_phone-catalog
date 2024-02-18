@@ -1,0 +1,18 @@
+@import "../../styles/main";
+
+.home-page {
+  display: block;
+
+  &__title {
+    margin: 24px 0;
+    @extend %h1;
+
+    @include onTablet {
+      margin: 32px 0;
+    }
+
+    @include onDesktop {
+      margin: 56px 0;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Mont, Arial, sans-serif;
+  color: $colorPrimary;
+
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+ul,
+li,
+p,
+button,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

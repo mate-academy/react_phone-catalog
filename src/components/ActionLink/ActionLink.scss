@@ -1,0 +1,56 @@
+@import "../../styles/main";
+
+.action-link {
+  // display: none;
+  display: flex;
+  width: 50%;
+  height: 64px;
+
+  @extend %header-action;
+
+  @include onTablet {
+    display: flex;
+    @include square(48px);
+  }
+
+  @include onDesktop {
+    @include square(64px);
+  }
+
+  &--active {
+    color: $colorPrimary;
+
+    &::after {
+      @extend %active-link-line;
+    }
+  }
+
+  &__content {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include square(28px);
+  }
+
+  &__counter {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 14px;
+    height: 14px;
+    border: 1px solid $colorWhite;
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0;
+    text-align: center;
+
+    color: $colorWhite;
+    background-color: $colorRed;
+  }
+}

@@ -1,0 +1,106 @@
+@import "../../styles/main";
+
+.search {
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    background-color: $colorWhite;
+    box-shadow: -1px 0 0 0 $colorElements;
+
+    transform: background-color 0.3s;
+
+    &:hover {
+      background-color: $colorHover;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include square(48px);
+
+    transform: color 0.3s;
+
+    @include onSmallDesktop {
+      position: absolute;
+      right: 0;
+    }
+
+    @include onDesktop {
+      @include square(64px);
+    }
+
+    &--close {
+      background-color: $colorHover;
+
+      @include onSmallDesktop {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__bar {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    // left: 0;
+    left: 96px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 144px);
+    height: 100%;
+
+    box-shadow: -1px 0 0 0 $colorElements;
+    border-right: 1px solid $colorElements;
+
+    @include onTablet {
+      // left: 96px;
+      width: calc(100% - 192px);
+    }
+
+    @include onSmallDesktop {
+      position: relative;
+      left: 0;
+      width: 330px;
+    }
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 24px;
+    border: none;
+    outline: none;
+
+    background-color: $colorHover;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+
+    @include onSmallDesktop {
+      width: 330px;
+      background-color: transparent;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 18px;
+      color: $colorIcons;
+    }
+
+    &:focus {
+      color: $colorPrimary;
+      background-color: $colorHover;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import "../../styles/main";
+
+.navigation {
+  display: block;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 32px;
+      margin: 0;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    @include onTablet {
+      height: $headerSizeMobile;
+    }
+
+    @include onDesktop {
+      height: $headerSizeDesktop;
+    }
+  }
+
+  &__link {
+    position: relative;
+    @extend %uppercase;
+
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+
+    font-weight: 800;
+    color: $colorSecondary;
+    transform: color 0.3s;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+
+    &--active {
+      color: $colorPrimary;
+
+      &::after {
+        @extend %active-link-line;
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+%h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include onTablet {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+%h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+
+  @include onTablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%button {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+%active-link-line {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: $colorPrimary;
+
+  @include onTablet {
+    height: 3px;
+  }
+}
+
+%header-action {
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: -1px 0 0 0 $colorElements;
+  transform: background-color 0.3s;
+
+  &:hover {
+    background-color: $colorHover;
+  }
+}

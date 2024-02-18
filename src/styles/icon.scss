@@ -1,0 +1,44 @@
+.icon {
+  // position: relative;
+
+  display: block;
+  // width: 100%;
+  // padding-bottom: 100%;
+  width: 16px;
+  height: 16px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  // text-decoration: none;
+
+  &--favorites {
+    background-image: url(../images/icons/favorites.svg);
+  }
+
+  &--cart {
+    background-image: url(../images/icons/cart.svg);
+  }
+
+  &--search {
+    background-image: url(../images/icons/search.svg);
+  }
+
+  &--cross {
+    background-image: url(../images/icons/cross.svg);
+  }
+
+  &--menu {
+    background-image: url(../images/icons/menu.svg);
+  }
+
+  &--arrow-left {
+    background-image: url(../images/icons/chevron.svg);
+    transform: rotate(270deg);
+  }
+
+  &--arrow-right {
+    background-image: url(../images/icons/chevron.svg);
+    transform: rotate(90deg);
+  }
+}

@@ -1,1 +1,24 @@
-// not empty
+@import "./styles/main";
+
+iframe {
+  display: none;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &--with-menu {
+    overflow: hidden;
+  }
+}
+
+.main {
+  flex: 1;
+  padding-top: $headerSizeMobile;
+
+  @include onDesktop {
+    padding-top: $headerSizeDesktop;
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../styles/main";
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__image {
+    height: 22px;
+
+    @include onDesktop {
+      height: 28px;
+    }
+  }
+}
