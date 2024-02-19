@@ -1,4 +1,5 @@
 @import '/src/assets/css/variables';
+@import '/src/assets/css/breakpoints';
 
 .app {
   &__header {
@@ -8,14 +9,20 @@
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  padding: 24px $main-side-padding 80px;
   border-bottom: 1px solid $elements;
   min-height: calc(100vh - #{$header-height} - #{$footer-height});
 
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-bottom: 80px;
+  }
+
   &__banner {
-    margin-bottom: 72px;
+    margin-block: 40px 72px;
   }
 
   &__hot-prices {
@@ -24,5 +31,26 @@
 
   &__shop-by-category {
     margin-bottom: 80px;
+  }
+}
+
+@media all and (min-width: $extra-medium) and (max-width: $large) {
+  .main__container {
+    max-width: 888px;
+    padding-inline: 20px;
+  }
+}
+
+@media all and (min-width: $small) and (max-width: $extra-medium) {
+  .main__container {
+    max-width: 580px;
+    padding-inline: 10px;
+  }
+}
+
+@media all and (max-width: $small) {
+  .main__container {
+    max-width: 282px;
+    padding-inline: 5px;
   }
 }

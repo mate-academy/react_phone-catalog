@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
-import cn from 'classnames';
 
-import { BANNER_IMAGES } from '../../constants/banner-images';
+import { BANNER_IMAGES } from '../../constants/bannerImages';
+import { Icon } from '../Icon';
+
 import './Banner.scss';
 
 export const Banner = () => {
@@ -53,10 +55,12 @@ export const Banner = () => {
     <div className="main__banner banner-container">
       <div className="banner-container__slider slider">
         <button
-          className="slider__button slider__button--left"
+          className="slider__button"
           type="button"
           onClick={handlePrev}
-        />
+        >
+          <Icon iconName="arrowLeft" classNames="slider__button-icon" />
+        </button>
         <div
           className="slider__banner"
         >
@@ -87,10 +91,12 @@ export const Banner = () => {
           </ul>
         </div>
         <button
-          className="slider__button slider__button--right"
+          className="slider__button"
           type="button"
           onClick={handleNext}
-        />
+        >
+          <Icon iconName="arrowRight" classNames="slider__button-icon" />
+        </button>
       </div>
       <div className="banner-container__pagination pagination">
         {images.map((item, index) => (

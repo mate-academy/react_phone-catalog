@@ -14,7 +14,7 @@ export const CartItem = () => {
       </button>
 
       <img
-        src="/img/products/dell-streak-7.0.jpg"
+        src="/img/phones/dell-streak-7.0.jpg"
         alt="dell-streak-7.0"
         className="cart-item__product-image"
       />

@@ -1,0 +1,72 @@
+@import '../../../assets/css/variables';
+@import '/src/assets/css/breakpoints';
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+.section-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+  &__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid $icons;
+
+    & path {
+      fill: $primary;
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
+    }
+
+    &--disabled path{
+      fill: $icons;
+    }
+  }
+}
+
+@media all and (max-width: $small) {
+  .cards-container {
+    &__header {
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    &__cards {
+      gap: 0;
+    }
+  }
+}

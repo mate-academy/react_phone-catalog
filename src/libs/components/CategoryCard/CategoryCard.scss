@@ -1,4 +1,5 @@
 @import '../../../assets/css/variables';
+@import '/src/assets/css/breakpoints';
 
 .category-card {
   display: flex;
@@ -14,14 +15,32 @@
   }
 
   &__title {
+    min-width: max-content;
     font-size: 20px;
     font-weight: 600;
     line-height: 26px;
-    color: $primary;
     margin-bottom: 4px;
+    color: $primary;
   }
 
   &__models-count {
+    min-width: max-content;
     color: $secondary;
+  }
+}
+
+@media all and (min-width: $small) and (max-width: $extra-medium) {
+  .category-card {
+    height: 321px;
+
+    &__photo {
+      height: 264px;
+    }
+  }
+}
+
+@media all and (max-width: $small) {
+  .category-card {
+    width: 100%;
   }
 }

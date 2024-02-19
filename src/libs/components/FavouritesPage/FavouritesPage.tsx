@@ -1,5 +1,5 @@
 import { PageSmallNav } from '../PageSmallNav';
-import { ProductCard } from '../ProductCard';
+// import { ProductCard } from '../ProductCard';
 import { SectionHeader } from '../SectionHeader';
 
 import './FavouritesPage.scss';
@@ -13,11 +13,11 @@ export const FavouritesPage = () => {
         subtitle="5 items"
       />
       <div className="favourites__cards">
+        {/* <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard /> */}
       </div>
     </div>
   );

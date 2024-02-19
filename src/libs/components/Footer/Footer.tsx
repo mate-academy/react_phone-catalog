@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { Icon } from '../Icon/Icon';
 import './Footer.scss';
-
-const FooterListLinks = {
-  Github: 'https://github.com/IrynaK-a',
-  Contacts: 'iconowalowa19@gmail.com',
-  Rights: 'https://en.wikipedia.org/wiki/Rights',
-};
+import { FOOTE_LINKS } from '../../constants/footeLinks';
 
 export const Footer = () => {
   const handleBackToTop = () => {
@@ -22,7 +17,7 @@ export const Footer = () => {
     <footer className="footer">
       <Logo />
       <ul className="footer__list">
-        {Object.entries(FooterListLinks).map(([key, value]) => (
+        {Object.entries(FOOTE_LINKS).map(([key, value]) => (
           <li
             className="footer__item"
             key={key}

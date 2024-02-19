@@ -3,7 +3,6 @@ import cn from 'classnames';
 import { PageSmallNav } from '../PageSmallNav';
 import { SectionHeader } from '../SectionHeader';
 import { BackButton } from '../BackButton/BackButton';
-import { ProductsSlider } from '../SectionWithCards';
 import { TechSpecs } from '../TechSpecs';
 import { Price } from '../Price';
 import { BuyButtons } from '../BuyButtons';
@@ -171,7 +170,7 @@ export const ModelPage = () => {
             </div>
 
             <div className="model-info__buy">
-              <Price discount={9} price={1099} priceSize={32} />
+              <Price discount={9} price={1099} priceFontSize={32} />
               <BuyButtons containerHeight={48} />
             </div>
 
@@ -204,10 +203,11 @@ export const ModelPage = () => {
         </div>
       </div>
 
-      <ProductsSlider
+      {/* <ProductsSlider
+        items={[]}
         title="You may also like"
         hasSectionButtons
-      />
+      /> */}
     </div>
   );
 };

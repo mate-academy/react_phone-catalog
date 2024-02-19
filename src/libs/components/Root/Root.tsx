@@ -21,7 +21,9 @@ export const Root = () => {
       <Header classNames="app__header" />
 
       <main className="main">
-        <Outlet />
+        <div className="main__container">
+          <Outlet />
+        </div>
       </main>
 
       <Footer />

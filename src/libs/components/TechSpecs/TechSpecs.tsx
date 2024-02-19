@@ -9,6 +9,13 @@ type Props = {
   classNames?: string,
   hasBorder?: boolean,
 };
+export const parseSpecsValue = (value: string) => {
+  const number = parseFloat(value);
+  const text = value.replace(String(number), ' ');
+
+  return number + text;
+};
+
 export const defaultSpecs = {
   Screen: '5.8” OLED',
   Capacity: '64 GB',
@@ -47,7 +54,7 @@ export const TechSpecs: React.FC<Props> = ({
               <td
                 className="phone-details__description"
               >
-                {value}
+                {parseSpecsValue(value)}
               </td>
             </tr>
           ))

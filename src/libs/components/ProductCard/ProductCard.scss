@@ -4,18 +4,29 @@
   display: flex;
   flex-direction: column;
   width: 272px;
+  flex-shrink: 0;
   height: 507px;
   border: 1px solid $elements;
   padding: 32px 24px 24px;
 
-  &__photo {
+  &__photo-link {
+    display: flex;
+    margin-inline: auto;
     width: 208px;
     height: 208px;
     margin-bottom: 24px;
+    object-position: center;
+    object-fit: contain;
+  }
+
+  &__photo {
+    width: 208px;
+    height: 208px;
     align-self: center;
   }
 
   &__title {
+    height: 42px;
     font-size: 14px;
     font-weight: 500;
     color: $primary;
@@ -24,59 +35,6 @@
   }
 
   &__price {
-    // display: flex;
-    // align-items: center;
-    // gap: 8px;
     margin-bottom: 6px;
   }
-
-  // &__actual-price {
-  //   font-size: 22px;
-  //   font-weight: 700;
-  //   line-height: 31px;
-  //   color: $primary;
-  // }
-
-  // &__old-price {
-  //   font-size: 22px;
-  //   font-weight: 500;
-  //   color: $secondary;
-  //   text-decoration: line-through;
-  // }
 }
-
-// .card-buttons {
-//   display: flex;
-//   gap: 8px;
-//   height: 40px;
-
-//   &__add {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 9px 0;
-//     width: 176px;
-//     height: 100%;
-//     background-color: $primary;
-//     cursor: pointer;
-//     border: none;
-
-//     font-family: inherit;
-//     font-size: 14px;
-//     font-weight: 600;
-//     line-height: 21px;
-//     color: $white;
-//   }
-
-//   &__like {
-//     width: 40px;
-//     height: 100%;
-//     background-image: url(../../../assets/icons/favourites.svg);
-//     background-repeat: no-repeat;
-//     background-position: center;
-//     background-color: transparent;
-//     padding: 12px;
-//     border: 1px solid $icons;
-//     cursor: pointer;
-//   }
-// }

@@ -23,16 +23,15 @@
     border: 1px solid $icons;
     background-color: transparent;
     cursor: pointer;
-    background-position: center;
-    background-repeat: no-repeat;
+    transition: all 0.3s;
 
-    &--left {
-      background-image: url(../../../assets/icons/arrow-left.svg);
+    &:hover {
+      border-color: $primary;
     }
+  }
 
-    &--right {
-      background-image: url(../../../assets/icons/arrow-right.svg);
-    }
+  &__button-icon path{
+    fill: $primary
   }
 
   &__banner {

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { SectionHeader } from '../SectionHeader';
-import { ProductCard } from '../ProductCard';
+// import { ProductCard } from '../ProductCard';
 import { PagePagination } from '../PagePagination/PagePagination';
 
 import { PageFilter } from '../PageFilter/PageFilter';
@@ -25,6 +25,7 @@ export const ProductsPage: React.FC<Props> = () => {
       </div>
       <PageFilter />
       <div className="products-page__cards">
+        {/* <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
@@ -38,8 +39,7 @@ export const ProductsPage: React.FC<Props> = () => {
         <ProductCard />
         <ProductCard />
         <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard /> */}
       </div>
       <PagePagination pages={phonesPages} />
     </div>

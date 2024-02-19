@@ -1,18 +1,19 @@
 import cn from 'classnames';
+
 import './Price.scss';
 
 type Props = {
   discount: number,
   price: number,
   classNames?: string,
-  priceSize?: number,
+  priceFontSize?: number,
 };
 
 export const Price: React.FC<Props> = ({
   discount,
   price,
   classNames,
-  priceSize = 22,
+  priceFontSize = 22,
 }) => {
   const discountPrice = discount
     ? Math.round(price + (price * (discount / 100)))
@@ -28,7 +29,7 @@ export const Price: React.FC<Props> = ({
       <p
         className="price__actual-price"
         style={{
-          fontSize: priceSize,
+          fontSize: priceFontSize,
         }}
       >
         {`$${price}`}
