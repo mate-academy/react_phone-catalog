@@ -13,15 +13,13 @@
     max-width: 100%;
     display: flex;
     gap: 16px;
-
   }
 
-<<<<<<< HEAD
   &__container {
     height: 100%;
-    width: 1040px;
+    max-width: 1040px;
     overflow: hidden;
-
+    position: relative;
   }
 
   &__list {
@@ -56,13 +54,32 @@
     align-items: center;
     justify-content: center;
 
+    @include for-desktop {
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 60px;
+      border-radius: 15px;
+      background-color: $white-color;
+    }
+
+    @include for-mobile {
+      display: none;
+    }
+
+    &-left {
+      left: 1%;
+    }
+
+    &-right {
+      @include for-desktop {
+        right: 1%;
+      }
+    }
+
     &:hover {
       border: 1px solid $primary-color;
-=======
-    &__image {
-      flex: 1;
-      background: url(../../../public/_new/img/banner-phones.png) no-repeat;
->>>>>>> 98943cbdbf69aa4a4f5e406cf85816d2463e275a
     }
   }
 

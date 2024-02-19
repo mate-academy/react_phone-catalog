@@ -35,6 +35,21 @@
     &-arrowRight {
       background-image: url(../../assets/icons/arrowRight.svg);
     }
+
+    &-arrowDown {
+      background-image: url(../../assets/icons/arrowRight.svg);
+      rotate: 90deg;
+    }
+
+
+    &-arrowUp {
+      background-image: url(../../assets/icons/arrowRight.svg);
+      rotate: 270deg;
+    }
+
+    &-home {
+      background-image: url(../../assets/icons/Icons_Home.svg)
+    }
   }
 
   &__counter {

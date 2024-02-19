@@ -1,13 +1,31 @@
 @import './Variables';
 
-@mixin on-tablet {
-  @media (max-width: $tablet-max-width) {
+@mixin for-mobile {
+  @media only screen and (max-width: 480px) {
     @content;
   }
 }
 
-@mixin on-mobile {
-  @media (max-width: $tablet-min-width) {
+@mixin for-tablet {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-small-desktop {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media only screen and (max-width: 1137px) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop {
+  @media only screen and (max-width: 1280px) {
     @content;
   }
 }

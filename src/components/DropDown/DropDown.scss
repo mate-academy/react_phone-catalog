@@ -1,0 +1,70 @@
+@import '../../App';
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  &__title {
+    @include font-small;
+
+    color: $secondary-color;
+  }
+
+  &-selected {
+    @include font-buttons;
+
+    display: flex;
+    gap: 80px;
+
+    padding: 10px 17px 10px 12px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    height: 40px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: $white-color;
+
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    border: 1px solid $elements-color;
+
+
+    &-option {
+      @include font-buttons;
+
+      color: $secondary-color;
+      padding: 8px 16px;
+      cursor: pointer;
+      background-color: $white-color;
+
+      &:hover {
+        background-color: $hover-color;
+        color: $primary-color;
+      }
+    }
+  }
+
+  &.open .dropdown__items {
+    display: block;
+  }
+}
+
+.dropdown-selected-arrow {
+  transition: transform 0.2s ease;
+}
+
+.open .dropdown-selected-arrow {
+  transform: rotate(180deg);
+}

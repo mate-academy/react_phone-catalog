@@ -1,19 +1,23 @@
+import { NavLink } from 'react-router-dom';
 import { Icons } from '../../types/enums/Icons';
 import { Item } from '../../types/interface/Item';
 import { Icon } from '../Icon';
 import './ProductCard.scss';
+import { BASE_URL } from '../../utils/fetchClient';
 
 interface Props {
   item: Item,
 }
 
 export const ProductCard: React.FC<Props> = ({ item }) => {
-  const baseurl = 'https://raw.githubusercontent.com/dimakrugly/react_phone-catalog/gh-pages/_new/';
-  const productImgPath = `${baseurl}${item.image}`;
+  const productImgPath = `${BASE_URL}${item.image}`;
 
   return (
 
-    <div className="productCard">
+    <NavLink
+      className="productCard"
+      to={`/${item.category}/${item.phoneId}`}
+    >
       <img
         src={productImgPath}
         alt="moto"
@@ -53,6 +57,6 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
           <Icon icon={Icons.Heart} />
         </button>
       </div>
-    </div>
+    </NavLink>
   );
 };

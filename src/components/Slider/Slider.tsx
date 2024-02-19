@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './Slider.scss';
 import accessories from '../../assets/img/banner-accessories.png';
 import phones from '../../assets/img/banner-phones.png';
@@ -38,21 +38,25 @@ export const Slider: React.FC = () => {
     return () => clearInterval(interval);
   }, [activeIndex]);
 
+  const ref: React.RefObject<HTMLDivElement> = useRef(null);
+
+  const widthSize = ref.current?.offsetWidth || 1040;
+
   return (
     <div className="slider">
       <div className="slider__wrapper">
         <button
-          className="slider__button slider__button--left"
+          className="slider__button slider__button-left"
           type="button"
           onClick={() => updateIndex(activeIndex - 1)}
           aria-label="<"
         >
           <Icon icon={Icons.ArrowLeft} />
         </button>
-        <div className="slider__container">
+        <div className="slider__container" ref={ref}>
           <ul
             className="slider__list"
-            style={{ transform: `translate(-${activeIndex * 1040}px)` }}
+            style={{ transform: `translate(-${activeIndex * widthSize}px)` }}
           >
             {images.map(img => (
               <li className="slider__item" key={img}>
@@ -68,7 +72,7 @@ export const Slider: React.FC = () => {
         </div>
 
         <button
-          className="slider__button slider__button--right"
+          className="slider__button slider__button-right"
           type="button"
           onClick={() => updateIndex(activeIndex + 1)}
           aria-label=">"

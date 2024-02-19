@@ -1,7 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import productsReducer from './reducers/ProductsSlice';
+import productDetailsReducer from './reducers/ProductDetailsSlice';
 
 const rootReducer = combineReducers({
-
+  productsReducer,
+  productDetailsReducer,
 });
 
 export const setupStore = () => {

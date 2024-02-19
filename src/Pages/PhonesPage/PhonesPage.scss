@@ -1,0 +1,20 @@
+.phones-page {
+  padding-inline: 152px;
+  padding-top: 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  &__controls {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &-container {
+    padding-block: 24px 40px;
+  }
+
+  &-pagination {
+    margin-bottom: 80px;
+  }
+}

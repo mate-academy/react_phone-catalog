@@ -1,17 +1,24 @@
+import { NavLink } from 'react-router-dom';
 import './Navigation.scss';
 
 export const Navigation = () => {
   return (
     <ul className="navigation">
       <li>
-        <a className="navigation__link" href="/">
+        <NavLink
+          to="/"
+          className="navigation__link"
+        >
           home
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a className="navigation__link" href="/">
+        <NavLink
+          to="phones"
+          className="navigation__link"
+        >
           phones
-        </a>
+        </NavLink>
       </li>
       <li>
         <a className="navigation__link" href="/">

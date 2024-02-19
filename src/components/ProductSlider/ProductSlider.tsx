@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Icons } from '../../types/enums/Icons';
 import { Icon } from '../Icon';
 import { ProductCard } from '../ProductCard';
@@ -11,22 +11,22 @@ interface Props {
 }
 
 export const ProductSlider: React.FC<Props> = ({ title, products }) => {
+  const [position, setPosition] = useState(0);
+
   const ITEM_WIDTH = 272;
   const GAP = 16;
 
-  const [position, setPosition] = useState(0);
-
-  const onScrollNext = () => {
+  const onScrollNext = useCallback(() => {
     setPosition(() => {
       return position - (ITEM_WIDTH + GAP);
     });
-  };
+  }, [position]);
 
-  const onScrollPrev = () => {
+  const onScrollPrev = useCallback(() => {
     setPosition(() => {
       return position + (ITEM_WIDTH + GAP);
     });
-  };
+  }, [position]);
 
   const maxPosition = (products?.length - 4) * (ITEM_WIDTH + GAP);
 
@@ -68,7 +68,10 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
               transition: '0.5s',
             }}
           >
-            <ProductCard item={product} key={product.itemId} />
+            <ProductCard
+              item={product}
+              key={product.itemId}
+            />
           </li>
         ))}
       </ul>

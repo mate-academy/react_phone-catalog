@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../App';
 
 .shop-by-category {
   &__title {
@@ -9,6 +9,18 @@
     margin-top: 24px;
     display: flex;
     justify-content: space-between;
+    gap: 16px;
+
+    @include for-tablet {
+      width: 480px;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    @include for-mobile {
+      width: 320px;
+      flex-direction: column;
+    }
   }
 
   &__link {
@@ -17,13 +29,15 @@
 
     &-title {
       margin-top: 24px;
+
       @include font-h3;
     }
 
     &-description {
-      margin-top: 5px;
       @include font-body;
-      color: #89939a;;
+
+      margin-top: 5px;
+      color: #89939a;
     }
 
     &__image {
@@ -31,11 +45,28 @@
       height: 368px;
       background-repeat: no-repeat;
 
+      @include for-desktop {
+        width: 330px;
+      }
+
+      @include for-small-desktop {
+        width: 235px;
+      }
+
+      @include for-tablet {
+        width: 100%;
+        height: 60px;
+      }
+
       &-phones {
         background-color: #fcdbc1;
         background-image: url(../../assets/img/category-phones.png);
         background-position-x: 60px;
         background-size: 425px;
+
+        @include for-tablet {
+          background-size: 100px;
+        }
 
       }
 
@@ -44,6 +75,11 @@
         background-image: url(../../assets/img/category-tablets.png);
         background-size: 600px;
         background-position-y: 12px;
+
+        @include for-tablet {
+          background-size: 200px;
+          background-position-y: 0;
+        }
       }
 
       &-accessories {
@@ -51,6 +87,11 @@
         background-image: url(../../assets/img/category-accessories.png);
         background-size: 735px;
         background-position-y: 45px;
+
+        @include for-tablet {
+          background-size: 135px;
+          background-position-y: 15px;
+        }
       }
     }
   }

@@ -6,4 +6,6 @@ export enum Icons {
   Burger = 'burger',
   ArrowLeft = 'arrowLeft',
   ArrowRight = 'arrowRight',
+  ArrowDown = 'arrowDown',
+  ArrowUp = 'arrowUp',
 }

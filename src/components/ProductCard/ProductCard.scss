@@ -15,7 +15,6 @@
   }
 
   &__title {
-
     @include font-body;
 
     margin-top: 24px;
@@ -23,11 +22,9 @@
   }
 
   &__price {
-
     @include font-h2;
 
     &-promo {
-
       @include font-h2;
 
       text-decoration: line-through;
@@ -69,7 +66,6 @@
     }
 
     &-prop {
-
       @include font-small;
 
       text-transform: capitalize;
@@ -77,7 +73,6 @@
     }
 
     &-val {
-
       @include font-small;
 
       font-size: 12px;
@@ -91,6 +86,7 @@
 
   &__cartbtn {
     @include font-buttons;
+    
     flex: 1;
     background-color: $primary-color;
     color: $white-color;
