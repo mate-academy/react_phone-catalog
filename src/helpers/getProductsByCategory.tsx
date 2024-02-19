@@ -1,4 +1,4 @@
-import { UpgratedProduct } from "../types/UpgratedProduct";
+import { UpgratedProduct } from '../types/UpgratedProduct';
 
 export const getProductsByCategory = (
   products: UpgratedProduct[],

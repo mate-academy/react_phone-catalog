@@ -1,10 +1,12 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import {
+  useContext, useEffect, useMemo, useState,
+} from 'react';
 import debounce from 'lodash.debounce';
-import { StateStore } from "../../store/StoreContext";
-import { NavLink, useLocation, useSearchParams } from "react-router-dom";
-import { Navbar } from "../Navbar/Navbar";
-import classNames from "classnames";
-import { ICONS } from "../../images/icons/icons";
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
+import { StateStore } from '../../store/StoreContext';
+import { Navbar } from '../Navbar/Navbar';
+import { ICONS } from '../../images/icons/icons';
 import './Header.scss';
 
 const getLinkLogoClass = ({ isActive }: { isActive: boolean }) => classNames(
@@ -12,7 +14,6 @@ const getLinkLogoClass = ({ isActive }: { isActive: boolean }) => classNames(
     'header__right-side__icon--logo--link--active': isActive,
   },
 );
-
 
 export const Header = () => {
   const { products } = useContext(StateStore);
@@ -50,6 +51,7 @@ export const Header = () => {
     }
 
     setQuery(searchParams.get('query') || '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   const favourites = products.filter(item => item.addedToFavourites === true);
@@ -66,22 +68,22 @@ export const Header = () => {
 
         setSearchParams(searchParams);
       }, 500,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     ), [searchParams],
   );
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+    const { value } = event.target;
 
     setQuery(value);
     debouncedQuery(value);
-  }
+  };
 
   const clearQuery = () => {
     setQuery('');
     searchParams.delete('query');
     setSearchParams(searchParams);
   };
-
 
   return (
     <header className="header">
@@ -113,36 +115,36 @@ export const Header = () => {
                 />
               </button>
             ) : (
-                <img
-                  src={ICONS.search}
-                  alt="Search"
-                  className="header__right-side__search--icon"
-                />
+              <img
+                src={ICONS.search}
+                alt="Search"
+                className="header__right-side__search--icon"
+              />
             )}
           </div>
         )}
 
-          <div className="header__right-side__icon">
-            <NavLink
-              to="/favourites"
-              className={getLinkLogoClass}
-            >
-              <img
-                src={ICONS.favourites}
-                alt="Favourites"
-                className="header__right-side__icon--logo"
-              />
+        <div className="header__right-side__icon">
+          <NavLink
+            to="/favourites"
+            className={getLinkLogoClass}
+          >
+            <img
+              src={ICONS.favourites}
+              alt="Favourites"
+              className="header__right-side__icon--logo"
+            />
 
-              {
-                !!favourites.length && (
-                  <div className="header__right-side__icon__counter">
-                    {favourites.length}
-                  </div>
-                )
-              }
+            {
+              !!favourites.length && (
+                <div className="header__right-side__icon__counter">
+                  {favourites.length}
+                </div>
+              )
+            }
 
-            </NavLink>
-          </div>
+          </NavLink>
+        </div>
 
         <div className="header__right-side__icon">
           <NavLink
@@ -168,4 +170,4 @@ export const Header = () => {
       </div>
     </header>
   );
-}
+};

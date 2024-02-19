@@ -1,4 +1,4 @@
-import './ProductNotFound.scss'
+import './ProductNotFound.scss';
 
 type Props = {
   category: string,

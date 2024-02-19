@@ -11,7 +11,7 @@ type Props = {
 export const CategoryCard: React.FC<Props> = ({ category }) => {
   const { products } = useContext(StateStore);
 
-   let imgUrl = '';
+  let imgUrl = '';
 
   if (category === 'phones') {
     imgUrl = '../../images/category-phones.png';

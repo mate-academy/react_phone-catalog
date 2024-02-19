@@ -1,11 +1,11 @@
-@import '../../pages/styles/main.scss';
+@import '../../pages/styles/main';
 
 .productCard {
   width: 272px;
   height:507px;
   border: 1px solid $color-elements;
   box-sizing: border-box;
-  padding: 32px 24px 24px 24px;
+  padding: 32px 24px 24px;
 
   &__link {
     @include linkNav;
@@ -74,6 +74,7 @@
 
     &--cart {
       @extend %button;
+
       width: 176px;
       height: 40px;
       box-sizing: border-box;
@@ -84,7 +85,6 @@
         color: $color-green;
         border: 1px solid $color-elements;
         background-color: white;
-        // background-color: inherit;
       }
 
       &:hover {

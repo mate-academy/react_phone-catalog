@@ -1,4 +1,4 @@
-@import '../../pages/styles/main.scss';
+@import '../../pages/styles/main';
 
 .header {
   .upperCase {
@@ -81,6 +81,7 @@
 
       &--query {
         @extend %search;
+        
         height: 100%;
         border: none;
         padding: 0;

@@ -1,3 +1,4 @@
+/* stylelint-disable */
 @mixin hover($property, $toValue) {
   transition: #{$property} $effect-duration;
 

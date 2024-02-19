@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { useContext, useState, useEffect } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom';
+import classNames from 'classnames';
 import { ProductDetails } from '../../types/ProductDetails';
 import { StateStore } from '../../store/StoreContext';
 import { getSuggestedProducts } from '../../helpers/getSuggestedProducts';
@@ -8,7 +9,6 @@ import { getProductById } from '../../api/products';
 import { Loader } from '../../components/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
 import { ICONS } from '../../images/icons/icons';
-import classNames from 'classnames';
 import { BASE_API_URL } from '../../utils/fetch';
 import { COLOR_HEX } from '../../utils/colorHex';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
@@ -63,6 +63,7 @@ export const ProductDetailsPage = () => {
     if (product) {
       setSelectedImage(product.images[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
 
   const onFavouritesClick = () => {
@@ -79,9 +80,9 @@ export const ProductDetailsPage = () => {
 
   return (
     <div
-    className="productDetailsPage"
-    style={{ justifyContent: isLoading ? 'center' : 'start' }}
-  >
+      className="productDetailsPage"
+      style={{ justifyContent: isLoading ? 'center' : 'start' }}
+    >
       {isLoading && (
         <div className="productDetailsPage__loader">
           <Loader />
@@ -102,7 +103,8 @@ export const ProductDetailsPage = () => {
               <Link to="/" className="productDetailsPage__navigation--icon">
                 <img
                   src={ICONS.home}
-                  alt="Home" />
+                  alt="Home"
+                />
               </Link>
               <img
                 src={ICONS.arrowRightDisabled}
@@ -156,7 +158,8 @@ export const ProductDetailsPage = () => {
                           className={classNames(
                             'button productDetailsPage__content--side-panel--button', {
                               'productDetailsPage__content--side-panel--button--active': image === selectedImage,
-                          })}
+                            },
+                          )}
                           onClick={() => setSelectedImage(image)}
                         >
                           <img
@@ -196,8 +199,8 @@ export const ProductDetailsPage = () => {
                                 key={color}
                                 className={classNames(
                                   'productDetailsPage__content--info__colors--link', {
-                                  'productDetailsPage__content--info__colors--link--active': product.color === color,
-                                },
+                                    'productDetailsPage__content--info__colors--link--active': product.color === color,
+                                  },
                                 )}
                               >
                                 <div
@@ -232,8 +235,9 @@ export const ProductDetailsPage = () => {
                                 key={capacity}
                                 className={classNames(
                                   'productDetailsPage__content--info__capacity--link', {
-                                  'productDetailsPage__content--info__capacity--link--active': product.capacity === capacity,
-                                })}
+                                    'productDetailsPage__content--info__capacity--link--active': product.capacity === capacity,
+                                  },
+                                )}
                               >
                                 {capacity}
                               </Link>
@@ -485,10 +489,9 @@ export const ProductDetailsPage = () => {
               </section>
             ) : (
               <ProductNotFound category="Phone" />
-            )
-          }
+            )}
         </>
       )}
-  </div>
+    </div>
   );
 };

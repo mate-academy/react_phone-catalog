@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { useSearchParams } from "react-router-dom";
-import { ItemsOnPage } from "../../types/ItemsOnPage";
-import { ICONS } from "../../images/icons/icons";
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ItemsOnPage } from '../../types/ItemsOnPage';
+import { ICONS } from '../../images/icons/icons';
 import './Dropdowns.scss';
 
 export const DropdownItemsOnPage = () => {
@@ -26,7 +26,6 @@ export const DropdownItemsOnPage = () => {
         Items on page
       </p>
 
-
       <div>
         <button
           type="button"
@@ -37,8 +36,7 @@ export const DropdownItemsOnPage = () => {
           <img
             src={isActive
               ? ICONS.arrowUpDisabled
-              : ICONS.arrowDownDisabled
-            }
+              : ICONS.arrowDownDisabled}
             alt="Dropdown arrow"
           />
         </button>

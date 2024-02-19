@@ -10,15 +10,15 @@ type Props = {
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
-  <>
-    {
-      products.map(product => (
-        <ProductCard
-          product={product}
-          key={product.id}
-        />
-      ))
-    }
-  </>
+    <>
+      {
+        products.map(product => (
+          <ProductCard
+            product={product}
+            key={product.id}
+          />
+        ))
+      }
+    </>
   );
 };

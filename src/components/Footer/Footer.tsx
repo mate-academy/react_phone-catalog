@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import { ICONS } from "../../images/icons/icons";
+import { Link } from 'react-router-dom';
+import { ICONS } from '../../images/icons/icons';
 import './Footer.scss';
 
 export const Footer = () => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0 });
-  }
+  };
 
   return (
     <footer className="footer">
@@ -58,7 +58,7 @@ export const Footer = () => {
       </nav>
 
       <Link
-        to='#/'
+        to="#/"
         className="footer__back-to-top"
         onClick={handleScrollToTop}
       >
@@ -68,8 +68,9 @@ export const Footer = () => {
         <img
           className="footer__back-to-top--icon"
           src={ICONS.arrowUp}
-          alt="Back to top" />
-        </Link>
+          alt="Back to top"
+        />
+      </Link>
     </footer>
   );
-}
+};

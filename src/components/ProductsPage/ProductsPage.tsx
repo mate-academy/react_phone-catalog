@@ -40,6 +40,7 @@ export const ProductsPage: React.FC<Props> = ({
     setPage(1);
     searchParams.set('page', '1');
     setSearchParams(searchParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, itemsOnPage]);
 
   const navigationPath = pathname.slice(1);
@@ -90,7 +91,7 @@ export const ProductsPage: React.FC<Props> = ({
           page={page}
           setPage={setPage}
         />
-        )}
+      )}
 
       {!trimmedProducts.length && (
         <NoSearchResults category={navigationPath} />
@@ -98,4 +99,3 @@ export const ProductsPage: React.FC<Props> = ({
     </div>
   );
 };
-

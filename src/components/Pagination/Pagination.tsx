@@ -21,9 +21,9 @@ export const Pagination: React.FC<Props> = ({
 
   const arrayPagination = [];
 
-  for (let i = 1; i <= total; i++) {
+  for (let i = 1; i <= total; i += 1) {
     arrayPagination.push(i);
-  };
+  }
 
   const leftPaginationClick = () => {
     setPage(previous => previous - 1);
@@ -64,7 +64,7 @@ export const Pagination: React.FC<Props> = ({
           key={item}
           type="button"
           className={classNames('smallButton pagination__item', {
-            'pagination__item--active': page === item
+            'pagination__item--active': page === item,
           })}
           onClick={() => selectPage(item)}
         >
