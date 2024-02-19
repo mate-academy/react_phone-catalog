@@ -1,6 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
-import { CategoryName } from '../../../types/product';
+import debounce from 'lodash.debounce';
+
 import './MySearch.scss';
+import { CategoryName } from '../../../types/product';
 import { getSearchParamsWith } from '../../../helpers/searchParams';
 
 type Props = {
@@ -9,7 +11,7 @@ type Props = {
 
 export const MySearch: React.FC<Props> = ({ placeholder }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const appliedQuery = searchParams.get('query') || '';
 
   function setSearchWith(value: string) {
     const newParams = getSearchParamsWith({
@@ -20,14 +22,16 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
     setSearchParams(newParams);
   }
 
+  const applyQuery = debounce(setSearchWith, 1000);
+
   return (
     <div className="my-search">
       <input
         placeholder={`Search in ${placeholder}`}
         type="text"
         className="my-search__input"
-        value={query}
-        onChange={event => setSearchWith(event.target.value)}
+        defaultValue={appliedQuery}
+        onChange={event => applyQuery(event.target.value)}
       />
     </div>
   );

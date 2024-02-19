@@ -45,6 +45,7 @@ export const PhonesPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const query = searchParams.get('query') || '';
+
   const sortBy = (searchParams.get('sort') || 'age') as SortParams;
   const preparedPhones = getPreparedProducts(phones, { sortBy, query });
   const phonesQuantity = phones.length;
