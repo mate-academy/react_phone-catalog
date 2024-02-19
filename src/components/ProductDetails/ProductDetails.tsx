@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProductDescription } from '../../types/product';
 import './ProductDetails.scss';
 import { AddToCart } from '../AddToCart';
@@ -14,14 +14,18 @@ const PARAMS: (keyof ProductDescription)[] = [
 export const ProductDetails: React.FC<Props> = ({ product }) => {
   const {
     id,
-    images,
+    images = [],
     name,
     priceDiscount,
     priceRegular,
-    description,
+    description = [],
   } = product;
 
-  const [mainImage, setMainImage] = useState(images[0]);
+  const [mainImage, setMainImage] = useState('');
+
+  useEffect(() => {
+    setMainImage(images[0]);
+  }, [images]);
 
   return (
     <section className="details">
@@ -30,6 +34,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           <div className="details__previews">
             {images.map(preview => (
               <button
+                key={preview}
                 className="details__preview-box"
                 type="button"
                 onClick={() => setMainImage(preview)}
@@ -71,7 +76,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
               const value = product[param] as string;
 
               return (
-                <div className="details__param">
+                <div className="details__param" key={param}>
                   <p className="details__param-name">{param}</p>
                   <p className="details__param-value">{value}</p>
                 </div>
@@ -87,7 +92,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           <h2>About</h2>
 
           {description.map(el => (
-            <div className="details__description">
+            <div className="details__description" key={el.title}>
               <h3>{el.title}</h3>
               <p className="details__text">{el.text}</p>
             </div>
@@ -98,11 +103,11 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           <h2>Tech specs</h2>
 
           <div className="details__params">
-            {PARAMS.map((param) => {
+            {PARAMS.map(param => {
               const value = product[param] as string;
 
               return (
-                <div className="details__param">
+                <div className="details__param" key={param}>
                   <p className="details__param-name">{param}</p>
                   <p className="details__param-value">{value}</p>
                 </div>

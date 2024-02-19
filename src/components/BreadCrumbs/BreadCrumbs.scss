@@ -28,9 +28,14 @@
   }
 
   &__link {
-    color: $color-secondary;
+    @include hover(color, $color_secondary);
 
-    @include hover(color, $color_primary);
+    color: $color-primary;
+
+    &--last {
+      color: $color_secondary;
+    }
+
 
     &--home {
       height: 16px;

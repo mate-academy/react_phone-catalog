@@ -33,20 +33,22 @@ export const BreadCrumbs = () => {
             className="breadcrumbs__item"
             key={el}
           >
-            <NavLink
-              to={i === breadCrumbs.length - 1
-                ? {
-                  pathname: '.',
-                  search: getSearchParamsWith({}, searchParams),
-                }
-                : {
-                  pathname: `/${getPath(el)}`,
-                  search: getSearchParamsWith({}, searchParams),
-                }}
-              className="breadcrumbs__link"
-            >
-              {el}
-            </NavLink>
+            {i === breadCrumbs.length - 1
+              ? (
+                <p className="breadcrumbs__link--last">{el}</p>
+              )
+              : (
+                <NavLink
+                  to={{
+                    pathname: `/${getPath(el)}`,
+                    search: getSearchParamsWith({}, searchParams),
+                  }}
+                  className="breadcrumbs__link"
+                >
+                  {el}
+                </NavLink>
+              )}
+
           </li>
         ))}
       </ul>

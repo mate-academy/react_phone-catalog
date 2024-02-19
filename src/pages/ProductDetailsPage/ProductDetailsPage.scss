@@ -1,6 +1,9 @@
 @import "../../styles/utils/utils";
 
 .product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
   padding-block: 24px 80px;
 
   &__breadcrumbs {
