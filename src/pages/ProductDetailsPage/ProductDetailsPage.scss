@@ -1,12 +1,22 @@
-@import '../../styles/utils/utils';
+@import "../../styles/utils/utils";
 
 .product-details {
   padding-block: 24px 80px;
+
+  &__breadcrumbs {
+    @include on-mobile-l {
+      display: none;
+    }
+  }
 
   &__header {
     display: flex;
     flex-direction: column;
     gap: 40px;
+
+    @include on-mobile-l {
+      gap: 20px;
+    }
   }
 
   &__title {
