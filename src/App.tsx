@@ -1,32 +1,36 @@
-// import { Outlet } from 'react-router-dom';
-// import { useContext } from 'react';
+import { useContext } from 'react';
 
 import './App.scss';
-// import { Loader } from './components/Loader';
+import { Outlet } from 'react-router-dom';
+import { StateStore } from './store/StoreContext';
+import { Header } from './components/Header/Header';
+import { Loader } from './components/Loader';
+import { ErrorMessage } from './components/ErrorMessage/ErrorMessage';
+import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
-  // const { isError, isLoading } = useContext(StateStore);
+  const { isError, isLoading } = useContext(StateStore);
 
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
 
       <div className="container">
 
-        {/* {isLoading && (
+        {isLoading && (
           <Loader />
-        )} */}
+        )}
 
-        {/* {!isLoading && (
+        {!isLoading && (
           isError ? (
             <ErrorMessage />
           ) : (
             <Outlet />
           )
-        )} */}
+        )}
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

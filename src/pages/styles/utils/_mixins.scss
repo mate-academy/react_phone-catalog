@@ -1,0 +1,40 @@
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.container {
+  justify-content: center;
+  display: flex;
+  width: 1136px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 83vh;
+}
+
+@mixin listNav {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+@mixin linkNav {
+  text-decoration: none;
+  color: $color-secondary;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+@mixin logo {
+  transition: transform $effect-duration;
+
+    &:hover {
+      @include hover(transform, scale(1.1));
+    }
+}

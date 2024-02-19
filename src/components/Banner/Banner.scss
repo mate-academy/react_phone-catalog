@@ -1,0 +1,58 @@
+@import '../../pages/styles/main.scss';
+
+.banner {
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &--image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1040px;
+    height: 400px;
+    display: none;
+
+    &--active {
+        display: block;
+        animation: animation-appearing $effect-duration ease-in-out forwards;
+    }
+
+    &--1 {
+      background-image: url(../../images/banner-phones.png);
+    }
+
+    &--2 {
+      background-image: url(../../images/banner-tablets.png);
+    }
+
+    &--3 {
+      background-image: url(../../images/banner-accessories.png);
+    }
+  }
+
+  &--button {
+    @extend %button;
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: row;
+    margin: 18px auto 0;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &--item {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+
+    &--active {
+      background-color: $color-primary;
+      animation: animation-appearing $effect-duration ease-in-out forwards;
+    }
+  }
+};

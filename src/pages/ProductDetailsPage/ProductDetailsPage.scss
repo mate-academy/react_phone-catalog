@@ -1,0 +1,368 @@
+@import '../styles/main.scss';
+
+.productDetailsPage {
+  margin-block: 24px 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__loader {
+    display: flex;
+    margin-top: 56px;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &--top {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &--icon {
+      display: flex;
+    }
+
+    &--path {
+      text-transform: capitalize;
+      color: $color-secondary;
+    }
+
+    &--link {
+      text-decoration: none;
+      text-transform: capitalize;
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      width: fit-content;
+      background-color: inherit;
+      border: none;
+      padding: 0;
+
+      &--text {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__main {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+
+      &__info {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      &__description {
+        display: flex;
+        flex-direction: row;
+        gap: 64px;
+
+        &--about {
+          width: 560px;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+
+          &--title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          &--details {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            &--description {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            }
+
+            &--text {
+              color: $color-secondary;
+              font-weight: 500;
+              margin: 0;
+            }
+          }
+        }
+
+        &--specs {
+          width: 512px;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+
+          &--title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          &--details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            &--param {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+
+              &--name {
+                font-weight: 500;
+                color: $color-secondary;
+                margin: 0;
+              }
+
+              &--value {
+                font-weight: 500;
+                margin: 0;
+              }
+            }
+          }
+        }
+
+        &--line {
+          width: 100%;
+          height: 1px;
+          background-color: $color-elements;
+        }
+      }
+    }
+
+    &--side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &--button {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: inherit;
+        border: 1px solid $color-elements;
+
+        &:hover {
+          border: 1px solid $color-primary;
+        }
+
+        &--active {
+          border: 1px solid $color-primary;
+        }
+      }
+
+      &--image {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+      }
+    }
+
+    &--main {
+      &--image {
+        width: 464px;
+        height: 464px;
+        object-fit: contain;
+        margin-right: 48px;
+      }
+    }
+
+    &--info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      &__colors {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &--text {
+          color: $color-secondary;
+        }
+
+        &--link {
+          padding: 3px;
+          border: 1px solid $color-elements;
+          border-radius: 50%;
+
+          &--active {
+            border: 1px solid $color-primary;
+          }
+
+          &:hover {
+            border: 1px solid $color-primary;
+          }
+        }
+
+        &--color {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+
+        &--available {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+      }
+
+      &__capacity {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &--text {
+          color: $color-secondary;
+        }
+
+        &--available {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+
+        &--link {
+          text-decoration: none;
+          display: flex;
+          width: 56px;
+          height: 32px;
+          justify-content: center;
+          align-items: center;
+          font-weight: 500;
+
+          border: 1px solid $color-icons;
+
+          &--active {
+            border: 1px solid $color-primary;
+            background-color: $color-primary;
+
+            color: $color-white;
+          }
+
+          &:hover {
+            border: 1px solid $color-primary;
+          }
+        }
+      }
+
+      &__store {
+        margin-block: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &--price {
+          display: flex;
+          font-display: row;
+          gap: 8px;
+
+          &--full {
+            text-decoration: line-through;
+            color: $color-secondary;
+          }
+        }
+
+        &--buttons {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+          bottom: 0;
+
+          &--cart {
+            width: 263px;
+            height: 48px;
+            background-color: $color-primary;
+            box-sizing: border-box;
+            color: $color-white;
+
+            &--active {
+              color: $color-green;
+              border: 1px solid $color-elements;
+              background-color: inherit;
+            }
+
+            &:hover {
+              border: 1px solid $color-primary;
+              box-shadow: 0 2px 4px $color-primary;
+            }
+          }
+
+          &--favourite {
+            width: 48px;
+            height: 48px;
+            background-color: $color-white;
+            border: 1px solid $color-icons;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+            &:hover {
+              border: 1px solid $color-primary;
+            }
+
+            &--active {
+              border: 1px solid $color-elements;
+            }
+          }
+
+          &--icon {
+            transition: transform $effect-duration;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &--block {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &--name {
+          color: $color-secondary;
+        }
+      }
+
+      &__line {
+        width: 320px;
+        height: 1px;
+        background-color: $color-elements;
+      }
+    }
+
+    &--id {
+      margin-left: 115px;
+
+      &--text {
+        color: $color-icons;
+      }
+    }
+  }
+};

@@ -8,12 +8,6 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   },
 );
 
-// const getLinkLogoClass = ({ isActive }: { isActive: boolean }) => classNames(
-//   'header__right-side__icon--logo--link', {
-//     'header__right-side__icon--logo--link--active': isActive,
-//   },
-// );
-
 export const Navbar = () => {
   return (
     <nav className="header__left-side__navigation">
@@ -35,7 +29,7 @@ export const Navbar = () => {
             to="/"
             className={getLinkClass}
           >
-            HOME
+            Home
           </NavLink>
         </li>
         <li className="header__left-side__navigation--item">
@@ -43,7 +37,7 @@ export const Navbar = () => {
             to="/phones"
             className={getLinkClass}
           >
-            PHONES
+            Phones
           </NavLink>
         </li>
         <li className="header__left-side__navigation--item">
@@ -51,7 +45,7 @@ export const Navbar = () => {
             to="/tablets"
             className={getLinkClass}
           >
-            TABLETS
+            Tablets
           </NavLink>
         </li>
         <li className="header__left-side__navigation--item">
@@ -59,7 +53,7 @@ export const Navbar = () => {
             to="/accessories"
             className={getLinkClass}
           >
-            ACCESSORIES
+            Accessories
           </NavLink>
         </li>
       </ul>

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable max-len */
 function wait(delay: number) {
   return new Promise(resolve => {
     setTimeout(resolve, delay);
   });
 }
 
-const BASE_API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+export const BASE_API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new/';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
