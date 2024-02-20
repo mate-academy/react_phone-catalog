@@ -63,6 +63,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const {
+    id = '',
     images = [],
     name = '',
     priceRegular = 0,
@@ -125,6 +126,7 @@ export const ProductDetailsPage: React.FC = () => {
               />
 
               <ProductOrder
+                id={id}
                 availableColors={colorsAvailable}
                 availableCapacity={capacityAvailable}
                 selectParam={handleParamsSelect}

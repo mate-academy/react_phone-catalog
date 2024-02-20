@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import { Product } from '../../types/Product';
+import cn from 'classnames';
 
 import './ProductItem.scss';
+import { Product } from '../../types/Product';
 import { Button } from '../Button/Button';
+import { usePhones } from '../../hooks/usePhones';
 
 type Props = {
   product: Product
@@ -14,6 +15,14 @@ export const ProductItem: React.FC<Props> = ({
   product,
 }) => {
   const {
+    favoritesId,
+    cartProducts,
+    handleOnCartAdd,
+    handleOnLikeClick,
+  } = usePhones();
+
+  const {
+    itemId,
     image,
     phoneId,
     name,
@@ -85,9 +94,17 @@ export const ProductItem: React.FC<Props> = ({
 
       <div className="product-item__btns">
         <Button
-          className="button button__primary button--large"
+          className={cn(
+            'button',
+            'button__primary',
+            'button--large',
+            {
+              button__selected: cartProducts.includes(itemId),
+            },
+          )}
+          onClick={() => handleOnCartAdd(itemId)}
         >
-          Add to card
+          {cartProducts.includes(itemId) ? 'Added to cart' : 'Add to card'}
         </Button>
 
         <Button
@@ -95,10 +112,18 @@ export const ProductItem: React.FC<Props> = ({
             button
             button__like
             button--medium
-            button__like--active
           "
+          onClick={() => handleOnLikeClick(itemId)}
         >
-          <img src="img/icons/heart.svg" alt="Heart" />
+          {
+            favoritesId?.includes(itemId)
+              ? (
+                <img src="img/icons/heart-active.svg" alt="Heart" />
+              )
+              : (
+                <img src="img/icons/heart.svg" alt="Heart" />
+              )
+          }
         </Button>
       </div>
     </div>

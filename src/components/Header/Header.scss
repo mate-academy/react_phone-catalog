@@ -53,6 +53,25 @@
       color: $c-icons;
     }
   }
+
+  &__icon {
+    &:first-of-type {
+      border-inline: 1px solid $c-elements;
+    }
+  
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: $c-primary;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      scale: 0;
+      transition: all 0.3s;
+    }
+  }
 }
 
 .nav {
@@ -80,7 +99,7 @@
       height: 3px;
       background-color: black;
       bottom: 0;
-      transition: all 0.5s;
+      transition: all 0.3s;
       transform: scale(0);
     }
 
@@ -106,6 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   &__img {
     transition: all 0.3s;
@@ -115,12 +135,21 @@
     scale: 1.2;
   }
 
-  &--like {
-    border-inline: 1px solid $c-elements;
+  &:hover::before {
+    scale: 1;
   }
 
   &--search {
     width: 16px;
     height: 16px;
+    border: none;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &--active::before{
+    scale: 1
   }
 }

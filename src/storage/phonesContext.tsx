@@ -6,6 +6,7 @@ import React, {
 import { Product } from '../types/Product';
 import { SortType } from '../types/SortType';
 import { SortParamsType } from '../types/SortParamsType';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type PhonesContextType = {
   products: Product[],
@@ -25,28 +26,40 @@ type PhonesContextType = {
   setPhoneSearchValue: Dispatch<SetStateAction<string>>,
   filteredProducts: Product[],
   suggestedProducts: Product[],
-  setSuggestedProducts: Dispatch<SetStateAction<Product[]>>
+  setSuggestedProducts: Dispatch<SetStateAction<Product[]>>,
+  favoritesId: string[],
+  setFavoritesId: (v: string[]) => void,
+  cartProducts: string[],
+  setCartProducts: (v: string[]) => void,
+  handleOnLikeClick: (v: string) => void,
+  handleOnCartAdd: (v: string) => void,
 };
 
 export const PhonesContext = React.createContext<PhonesContextType>({
   products: [],
-  setProducts: () => { },
+  setProducts: () => {},
   preparedHotPriceProducts: [],
   preparedBrandNewProducts: [],
   sortType: SortType.Newest,
-  setSortType: () => { },
+  setSortType: () => {},
   itemsPerPage: 0,
-  setItemsPerPage: () => { },
+  setItemsPerPage: () => {},
   sortParams: [],
   perPageParams: [],
   sortedProducts: () => [],
   tabletSearchValue: '',
   setTabletSearchValue: () => {},
   phoneSearchValue: '',
-  setPhoneSearchValue: () => { },
+  setPhoneSearchValue: () => {},
   filteredProducts: [],
   suggestedProducts: [],
   setSuggestedProducts: () => {},
+  favoritesId: [],
+  setFavoritesId: () => {},
+  cartProducts: [],
+  setCartProducts: () => {},
+  handleOnLikeClick: () => {},
+  handleOnCartAdd: () => {},
 });
 
 type Props = {
@@ -60,6 +73,12 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
   const [tabletSearchValue, setTabletSearchValue] = useState('');
   const [phoneSearchValue, setPhoneSearchValue] = useState('');
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  const [
+    favoritesId, setFavoritesId,
+  ] = useLocalStorage<string[]>('favorites', []);
+  const [
+    cartProducts, setCartProducts,
+  ] = useLocalStorage<string[]>('cart', []);
 
   const sortParams = [
     {
@@ -107,6 +126,22 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
       .includes(phoneSearchValue.toLowerCase().trim())
   ));
 
+  const handleOnLikeClick = (id: string) => {
+    if (favoritesId.includes(id)) {
+      setFavoritesId(favoritesId.filter(favId => favId !== id));
+    } else {
+      setFavoritesId([...favoritesId, id]);
+    }
+  };
+
+  const handleOnCartAdd = (id: string) => {
+    if (cartProducts.includes(id)) {
+      setCartProducts(cartProducts.filter(cartId => cartId !== id));
+    } else {
+      setCartProducts([...cartProducts, id]);
+    }
+  };
+
   return (
     <PhonesContext.Provider
       value={{
@@ -128,6 +163,12 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
         filteredProducts,
         suggestedProducts,
         setSuggestedProducts,
+        favoritesId,
+        setFavoritesId,
+        cartProducts,
+        setCartProducts,
+        handleOnCartAdd,
+        handleOnLikeClick,
       }}
     >
       {children}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Button.scss';
+import { useNavigate } from 'react-router';
 
 type Props = {
   children?: React.ReactNode,
@@ -9,10 +10,10 @@ type Props = {
   disabled?: boolean,
 };
 
-export const Button:React.FC<Props> = ({
+export const Button: React.FC<Props> = ({
   className = 'button',
   children,
-  onClick = () => {},
+  onClick = () => { },
   disabled = false,
 }) => {
   return (
@@ -25,5 +26,22 @@ export const Button:React.FC<Props> = ({
     >
       {children}
     </button>
+  );
+};
+
+export const ButtonBack: React.FC = () => {
+  const navigate = useNavigate();
+
+  return (
+    <Button
+      className="button button__back product__back-btn"
+      onClick={() => navigate('..')}
+    >
+      <img src="img/icons/arrow-left.svg" alt="Arrow Left" />
+
+      <p>
+        Back
+      </p>
+    </Button>
   );
 };

@@ -4,8 +4,10 @@ import { v4 as getId } from 'uuid';
 import { productsColors } from '../../data/products-colors';
 
 import { Button } from '../Button/Button';
+import { usePhones } from '../../hooks/usePhones';
 
 type Props = {
+  id: string,
   availableColors: string[],
   availableCapacity: string[],
   selectParam: ({
@@ -26,6 +28,7 @@ type Props = {
 };
 
 export const ProductOrder: React.FC<Props> = ({
+  id,
   availableColors,
   availableCapacity,
   selectParam,
@@ -38,6 +41,13 @@ export const ProductOrder: React.FC<Props> = ({
   resolution,
   ram,
 }) => {
+  const {
+    favoritesId,
+    cartProducts,
+    handleOnCartAdd,
+    handleOnLikeClick,
+  } = usePhones();
+
   return (
     <div className="product__order">
       <div className="product__order-container">
@@ -113,7 +123,15 @@ export const ProductOrder: React.FC<Props> = ({
 
       <div className="product__order-btns">
         <Button
-          className="button button__primary button--xl"
+          className={cn(
+            'button',
+            'button__primary',
+            'button--xl',
+            {
+              button__selected: cartProducts.includes(id),
+            },
+          )}
+          onClick={() => handleOnCartAdd(id)}
         >
           Add to cart
         </Button>
@@ -123,10 +141,14 @@ export const ProductOrder: React.FC<Props> = ({
             button
             button__like
             button__like--large
-            button__like--active
           "
+          onClick={() => handleOnLikeClick(id)}
         >
-          <img src="img/icons/heart.svg" alt="Heart" />
+          {
+            favoritesId.includes(id)
+              ? (<img src="img/icons/heart-active.svg" alt="Heart" />)
+              : (<img src="img/icons/heart.svg" alt="Heart" />)
+          }
         </Button>
       </div>
 

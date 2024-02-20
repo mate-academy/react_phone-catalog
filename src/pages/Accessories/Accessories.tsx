@@ -1,12 +1,12 @@
 import React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 
-import './Tablets.scss';
+import './Accessories.scss';
 
-export const Tablets: React.FC = () => {
+export const Accessories: React.FC = () => {
   return (
-    <div className="tablets">
-      <div className="tablets__breadcrumbs">
+    <div className="accessories">
+      <div className="accessories__breadcrumbs">
         <Breadcrumbs />
       </div>
 

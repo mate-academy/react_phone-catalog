@@ -7,9 +7,17 @@ import './Header.scss';
 import { Search } from '../Search/Search';
 import { usePhones } from '../../hooks/usePhones';
 
-const getClass = ({ isActive }: { isActive: boolean }) => (cn('nav__link', {
+const getNavClass = ({ isActive }: { isActive: boolean }) => (cn('nav__link', {
   'nav__link--active': isActive,
 }));
+
+const getIconClass = ({ isActive }: { isActive: boolean }) => (cn(
+  'header__icon',
+  'icon',
+  {
+    'icon--active': isActive,
+  },
+));
 
 export const Header: React.FC = () => {
   const location = useLocation();
@@ -29,19 +37,19 @@ export const Header: React.FC = () => {
         </Link>
 
         <nav className="nav header__nav">
-          <NavLink to="/" className={getClass}>
+          <NavLink to="/" className={getNavClass}>
             home
           </NavLink>
 
-          <NavLink to="/phones" className={getClass}>
+          <NavLink to="/phones" className={getNavClass}>
             phones
           </NavLink>
 
-          <NavLink to="/tablets" className={getClass}>
+          <NavLink to="/tablets" className={getNavClass}>
             tablets
           </NavLink>
 
-          <NavLink to="/accessories" className={getClass}>
+          <NavLink to="/accessories" className={getNavClass}>
             accessories
           </NavLink>
         </nav>
@@ -64,21 +72,27 @@ export const Header: React.FC = () => {
           />
         )}
 
-        <Link to="/favorites" className="header__icon icon icon--like">
+        <NavLink
+          to="/favorites"
+          className={getIconClass}
+        >
           <img
             className="icon__img"
             src="img/icons/heart.svg"
             alt="Icon Like"
           />
-        </Link>
+        </NavLink>
 
-        <Link to="/card" className="header__icon icon icon--card">
+        <NavLink
+          to="/cart"
+          className={getIconClass}
+        >
           <img
             className="icon__img"
             src="img/icons/cart.svg"
             alt="Icon Card"
           />
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

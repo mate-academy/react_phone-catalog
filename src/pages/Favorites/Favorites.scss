@@ -1,0 +1,22 @@
+@import '../../styles/utils';
+
+.favorites {
+  padding: 24px 0 80px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__items-count {
+    @extend %body-text;
+
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__products-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 16px;
+  }
+}
