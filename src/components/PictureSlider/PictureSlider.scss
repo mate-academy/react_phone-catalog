@@ -1,0 +1,75 @@
+@import "../../styles/utils";
+
+.picture-slider {
+  height: 400px;
+  margin: 0 auto;
+
+  &__top {
+    display: flex;
+    gap: 16px;
+    height: 100%;
+    margin-bottom: 8px;
+  }
+
+  &__container-overflow {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  &__slider-container {
+    display: flex;
+    height: 100%;
+    transition: transform ease-out $transition-duration;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__button {
+    @extend %button;
+    min-width: 32px;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--arrow-right {
+      background-image: url(../../assets/images/icons/icon-arrow-right.svg);
+    }
+
+    &--arrow-left {
+      background-image: url(../../assets/images/icons/icon-arrow-right.svg);
+      transform: rotate(180deg);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    gap: 10px;
+  }
+
+  &__dot {
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all $transition-duration;
+    background-color: $color-gray-elements;
+
+    height: 4px;
+    width: 13px;
+
+    &--active {
+      background-color: $color-primary-dark;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../styles/utils";
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__text {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__back-home-btn {
+    @extend %buttons;
+    transition-duration: $transition-duration;
+    color: $color-white;
+    text-decoration: none;
+    background-color: $color-primary-dark;
+    width: 220px;
+    height: 35px;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+}

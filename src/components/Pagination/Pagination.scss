@@ -1,0 +1,35 @@
+@import "../../styles/utils";
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    @extend %button;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+
+    &--active {
+      background-color: $color-primary-dark;
+      border-color: $color-primary-dark;
+    }
+  }
+
+  &__link {
+    @extend %body-text;
+    color: $color-primary-dark;
+    text-decoration: none;
+
+    &--active {
+      color: $color-white;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../styles/utils";
+
+.footer {
+  border-top: 1px solid $color-gray-elements;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 96px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__item {
+    padding-block: 42px;
+  }
+
+  &__link {
+    @extend %uppercase;
+    text-transform: uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  &__back-to-top-text {
+    @extend %small-text;
+    color: $color-secondary;
+  }
+}

@@ -1,0 +1,19 @@
+@import "../../styles/utils";
+
+.accessories-page {
+  padding-top: 24px;
+
+  &__section {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__models-amount {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+}

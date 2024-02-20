@@ -1,0 +1,58 @@
+@import "../../styles/utils";
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: $color-white;
+
+  height: 100vh;
+  z-index: 1;
+
+  transition: all $transition-duration;
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+
+  @include onTablet {
+    display: block;
+  }
+
+  &--shown {
+    transform: translateX(0%);
+    opacity: 1;
+    pointer-events: all;
+    overflow: hidden;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    border-bottom: 1px solid $color-gray-elements;
+    max-height: 65px;
+  }
+
+  &__content {
+    padding-top: 24px;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__nav-link {
+    @extend %uppercase;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-secondary;
+    padding-block: 26px;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+}

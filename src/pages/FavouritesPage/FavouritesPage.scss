@@ -1,0 +1,55 @@
+@import "../../styles/utils";
+
+.favourites-page {
+  padding-top: 40px;
+
+  &__section {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__search-results {
+    margin-bottom: 24px;
+  }
+
+  &__search-results-amount {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__main-content {
+    margin-bottom: 80px;
+  }
+
+  &__no-favourites {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__no-favourites-text {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__no-favourites-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-inline: 3px;
+
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/icons/icon-liked-red.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

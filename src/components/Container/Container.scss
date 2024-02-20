@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.container {
+  padding-inline: 152px;
+
+  @include onDesktopSmall {
+    padding-inline: 130px;
+  }
+
+  @include onTablet {
+    padding-inline: 34px;
+  }
+
+  @include onMobile {
+    padding-inline: 30px;
+  }
+}

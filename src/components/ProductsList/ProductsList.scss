@@ -1,0 +1,13 @@
+@import "../../styles/utils";
+
+.products-list {
+  display: flex;
+  column-gap: 16px;
+  row-gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include onMobile {
+    justify-content: center;
+  }
+}

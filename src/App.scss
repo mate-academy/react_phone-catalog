@@ -1,1 +1,16 @@
-// not empty
+@import "./styles/utils";
+@import "./styles/fonts";
+@import "./styles/reset";
+
+.page {
+  font-family: "Mont Regular", sans-serif;
+  font-size: 12px;
+  color: $color-primary-dark;
+  cursor: url("./assets/images/cursor.svg"), auto;
+}
+
+body {
+  &:has(.side-nav--shown) {
+    overflow: hidden;
+  }
+}

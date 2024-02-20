@@ -1,0 +1,60 @@
+@import "../../styles/utils";
+
+.dropdown {
+  position: relative;
+  width: 100%;
+
+  &__label {
+    @extend %small-text;
+    color: $color-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__btn {
+    @extend %button;
+    padding: 10px 12px;
+    width: 100%;
+
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/images/icons/icon-arrow-down-button.svg);
+
+    &--arrow-up {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
+    display: none;
+    padding-block: 8px;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    background-color: $color-white;
+    border: 1px solid $color-gray-elements;
+
+    &--is-open {
+      display: block;
+    }
+  }
+
+  &__menu-item {
+    color: $color-secondary;
+    text-decoration: none;
+    padding: 6px 12px;
+    display: block;
+    width: 100%;
+
+    &:hover {
+      color: $color-primary-dark;
+      background-color: $color-hover-bg;
+    }
+  }
+}

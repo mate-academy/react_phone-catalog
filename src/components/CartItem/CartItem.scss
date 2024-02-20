@@ -1,0 +1,106 @@
+@import "../../styles/utils";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 24px;
+
+  border: 1px solid $color-gray-elements;
+
+  &__delete-button {
+    background-color: transparent;
+    border: 1px solid transparent;
+
+    &:hover {
+      transition-duration: $transition-duration;
+
+      transform: scale(1.2);
+    }
+  }
+
+  &__delete-button-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/icons/icon-close.svg);
+  }
+
+  &__img-container {
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+
+    border: 1px solid $color-gray-elements;
+
+    &--active {
+      border: 1px solid $color-primary-dark;
+    }
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__name {
+    @extend %body-text;
+    color: $color-primary-dark;
+    text-decoration: none;
+    margin-right: 24px;
+    max-width: 295px;
+    width: 100%;
+    padding: 5px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-right: 24px;
+  }
+
+  &__minus-button {
+    width: 32px;
+    height: 32px;
+    @extend %button;
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  }
+
+  &__minus-button-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/icons/icon-minus.svg);
+  }
+
+  &__quantity {
+    @extend %body-text;
+  }
+
+  &__plus-button {
+    width: 32px;
+    height: 32px;
+    @extend %button;
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+  }
+
+  &__plus-button-icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/icons/icon-plus.svg);
+  }
+
+  &__price {
+    @extend %h2;
+  }
+}

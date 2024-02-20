@@ -1,0 +1,68 @@
+@import "../../styles/utils";
+
+.search-bar {
+  height: 100%;
+  width: 327px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  border-left: 1px solid $color-gray-elements;
+  align-items: center;
+  padding-right: 24px;
+
+  &:focus-within {
+    background-color: $color-hover-bg;
+  }
+
+  @include onMobile {
+    display: none;
+  }
+
+  &__input {
+    padding: 24px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    background-color: transparent;
+
+    @extend %body-text;
+    color: $color-primary-dark;
+
+    &::placeholder {
+      @extend %body-text;
+      color: $color-icons;
+    }
+
+    &:focus {
+      background-color: $color-hover-bg;
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: 16px;
+  }
+
+  &__button-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/icons/icon-search.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--search {
+      background-image: url(../../assets/images/icons/icon-search.svg);
+    }
+
+    &--close {
+      background-image: url(../../assets/images/icons/icon-close-dark.svg);
+    }
+  }
+}

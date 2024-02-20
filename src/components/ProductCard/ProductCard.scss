@@ -1,0 +1,71 @@
+@import "../../styles/utils";
+
+.product-card {
+  padding: 24px;
+  border: 1px solid $color-gray-elements;
+  width: 272px;
+
+  &__img-container {
+    padding-inline: 8px;
+    width: 208px;
+    height: 208px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  &__name {
+    @extend %body-text;
+    text-decoration: none;
+    color: $color-primary-dark;
+    min-height: 42px;
+    display: inline-block;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    border-bottom: 1px solid $color-gray-elements;
+    margin-bottom: 16px;
+  }
+
+  &__discount-price {
+    @extend %h2;
+  }
+
+  &__start-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__feature {
+    @extend %small-text;
+    color: $color-secondary;
+  }
+
+  &__quantity {
+    @extend %small-text;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

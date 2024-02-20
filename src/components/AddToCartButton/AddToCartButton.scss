@@ -1,0 +1,21 @@
+@import "../../styles/utils";
+
+.add-cart-btn {
+  color: $color-white;
+  @extend %buttons;
+  background-color: $color-primary-dark;
+  width: 100%;
+  height: 40px;
+  border: 1px solid transparent;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &--in-cart {
+    color: $color-green;
+    background-color: $color-white;
+    border: 1px solid $color-gray-elements;
+  }
+}

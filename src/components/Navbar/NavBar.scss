@@ -1,0 +1,29 @@
+@import "../../styles/utils";
+
+.nav {
+  @include onTablet {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    @extend %uppercase;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $color-secondary;
+    padding-block: 26px;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+
+    &--active {
+      color: $color-primary-dark;
+      border-bottom: 3px solid $color-primary-dark;
+    }
+  }
+}

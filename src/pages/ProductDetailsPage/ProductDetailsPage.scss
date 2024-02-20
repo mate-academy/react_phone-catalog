@@ -1,0 +1,17 @@
+@import "../../styles/utils";
+
+.product-details-page {
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 40px;
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+  &__section {
+    margin-bottom: 80px;
+  }
+}

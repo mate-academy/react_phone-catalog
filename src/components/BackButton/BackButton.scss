@@ -1,0 +1,26 @@
+@import "../../styles/utils";
+
+.back-button {
+  border: none;
+  @extend %small-text;
+  background: transparent;
+  color: $color-secondary;
+  transition-duration: $transition-duration;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+
+  &__icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../assets/images/icons/icon-arrow-right.svg);
+    transform: rotate(180deg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../styles/utils";
+
+.category {
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+
+    @include onMobile {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    margin-bottom: 24px;
+    width: 100%;
+    object-fit: fill;
+  }
+
+  &__category-name {
+    @extend %h3;
+    margin-bottom: 4px;
+  }
+
+  &__category-amount {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+}

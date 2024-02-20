@@ -1,0 +1,269 @@
+@import "../../styles/utils";
+
+.product-details {
+  &__title {
+    @extend %h1;
+    margin-bottom: 40px;
+  }
+
+  &__section {
+    display: flex;
+    margin-bottom: 80px;
+
+    gap: 64px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+
+    @include onMobile {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__images-set {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__image-container {
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+
+    border: 1px solid $color-gray-elements;
+
+    &--active {
+      border: 1px solid $color-primary-dark;
+    }
+  }
+
+  &__image {
+    height: 100%;
+  }
+
+  &__main-image-container {
+    border: 1px solid $color-gray-elements;
+    padding: 7px;
+    width: 464px;
+    height: 464px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__main-image {
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    max-width: 263px;
+    width: 100%;
+  }
+
+  &__options {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $color-gray-elements;
+  }
+
+  &__options-title {
+    @extend %small-text;
+    color: $color-secondary;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  &__options-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-option {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-gray-elements;
+    border-radius: 50%;
+    display: flex;
+    cursor: pointer;
+
+    &--selected {
+      border: 1px solid $color-primary-dark;
+    }
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
+  }
+
+  &__color-link {
+    width: 100%;
+    border: 2px solid $color-white;
+    border-radius: 50%;
+  }
+
+  &__capacity-option {
+    padding: 8px;
+    border: 1px solid $color-gray-elements;
+    cursor: pointer;
+
+    &--selected {
+      background-color: $color-primary-dark;
+      border: 1px solid $color-primary-dark;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+      }
+    }
+
+    &:hover {
+      border: 1px solid $color-primary-dark;
+    }
+  }
+
+  &__capacity-link {
+    text-decoration: none;
+    color: $color-primary-dark;
+
+    &--selected {
+      color: $color-white;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__discount-price {
+    @extend %h1;
+  }
+
+  &__start-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: $color-secondary;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-btn {
+    transition-duration: $transition-duration;
+    color: $color-white;
+    @extend %buttons;
+    background-color: $color-primary-dark;
+    width: 263px;
+    height: 40px;
+    border: none;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--selected {
+      color: $color-green;
+      background-color: $color-white;
+      border: 1px solid $color-gray-elements;
+    }
+  }
+
+  &__info-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__info-spec {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-spec-name {
+    @extend %small-text;
+    color: $color-secondary;
+  }
+
+  &__info-spec-value {
+    @extend %small-text;
+    color: $color-primary-dark;
+  }
+
+  &__about {
+    flex: 1;
+  }
+
+  &__section-subtitle-container {
+    margin-bottom: 32px;
+  }
+
+  &__section-subtitle {
+    @extend %h2;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-gray-elements;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__paragraph-title {
+    @extend %h3;
+    margin-bottom: 16px;
+  }
+
+  &__paragraph {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__tech-specs {
+    flex: 1;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__spec-name {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__spec-value {
+    @extend %body-text;
+  }
+}

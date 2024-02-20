@@ -1,0 +1,12 @@
+@import "../../styles/utils";
+
+.no-searc-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__text {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+}

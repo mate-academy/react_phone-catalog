@@ -1,0 +1,44 @@
+@import "../../styles/utils";
+
+.mobile-phones {
+  &__page-details {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__models-amount {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__filters {
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__dropdown-big {
+    width: 176px;
+  }
+
+  &__dropdown-small {
+    width: 128px;
+  }
+
+  &__search-results {
+    margin-bottom: 24px;
+  }
+
+  &__search-results-amount {
+    @extend %body-text;
+    color: $color-secondary;
+  }
+
+  &__products {
+    margin-bottom: 40px;
+  }
+}

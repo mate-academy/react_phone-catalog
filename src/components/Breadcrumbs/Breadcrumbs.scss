@@ -1,0 +1,53 @@
+@import "../../styles/utils";
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+
+  &__link {
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-primary-dark;
+    display: flex;
+    gap: 8px;
+    line-height: 100%;
+
+    &::after {
+      content: url(../../assets/images/icons/icon-arrow-right.svg);
+      opacity: 0.4;
+      align-self: flex-end;
+    }
+
+    span {
+      align-self: flex-end;
+    }
+
+    &:hover {
+      transition-duration: $transition-duration;
+
+      transform: scale(1.05);
+    }
+
+    &--home {
+      display: block;
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+
+      background-image: url(../../assets/images/icons/icon-home.svg);
+    }
+
+    &--disabled {
+      pointer-events: none;
+      cursor: default;
+      color: $color-secondary;
+      font-family: "Mont Regular", sans-serif;
+      line-height: 100%;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

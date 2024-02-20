@@ -1,0 +1,29 @@
+@import "../../styles/utils";
+
+.product-slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @include onMobile {
+      justify-content: center;
+    }
+  }
+}
