@@ -31,7 +31,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   const lastIndex = +currentPage * +perPage;
   const firstIndex = lastIndex - (+perPage);
 
-  const countOfPhones = products.length;
+  const countOfPages = Math.ceil(products.length / +perPage);
 
   const visibleProductsWithSort = perPage === 'all'
     ? getFilteredProducts(products, { sort })
@@ -47,15 +47,15 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchWith({
-      perPage: event.target.value,
-      page: 1,
+      perPage: event.target.value.toString(),
+      page: '1',
     });
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchWith({
-      sort: event.target.value.toString(),
-      page: 1,
+      sort: event.target.value,
+      page: '1',
     });
   };
 
@@ -117,7 +117,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
       {(perPage !== 'all' && !query && products.length > 4) && (
         <Pagination
-          total={countOfPhones}
+          countOfPages={countOfPages}
         />
       )}
     </div>

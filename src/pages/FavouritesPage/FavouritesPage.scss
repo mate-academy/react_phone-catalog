@@ -41,10 +41,8 @@
     gap: 50px;
 
     @include on-tablet {
-      flex-direction: row;
-      flex-wrap: wrap;
-      column-gap: 16px;
-      row-gap: 40px;
+      flex-flow: row wrap;
+      gap: 40px 16px;
     }
   }
 }

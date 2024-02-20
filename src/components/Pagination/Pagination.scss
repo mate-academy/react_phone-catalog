@@ -58,23 +58,7 @@
     justify-content: center;
     align-items: center;
 
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-
-    background-color: #fff;
-    border: 1px solid $icons-color;
-    height: 22px;
     width: 22px;
-
-    @include on-tablet {
-      height: 32px;
-      width: 32px;
-    }
-
-    cursor: no-drop;
-
-    transition: all $transition-time;
   }
 
   &__link {

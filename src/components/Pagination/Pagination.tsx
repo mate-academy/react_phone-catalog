@@ -7,15 +7,12 @@ import { getSearchWith } from '../../helpers/getSearchWith';
 import './Pagination.scss';
 
 type Props = {
-  total: number;
+  countOfPages: number;
 };
 
-export const Pagination: React.FC<Props> = ({ total }) => {
+export const Pagination: React.FC<Props> = ({ countOfPages }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const perPage = +(searchParams.get('perPage') || 4);
   const currentPage = +(searchParams.get('page') || 1);
-
-  const countOfPages: number = Math.ceil(total / perPage);
 
   const arrayOfPages = usePagination(countOfPages, 1, currentPage) || [];
 
@@ -51,7 +48,7 @@ export const Pagination: React.FC<Props> = ({ total }) => {
         </button>
 
         <ul className="pagination__list">
-          {arrayOfPages.map(num => {
+          {arrayOfPages.map((num) => {
             if (typeof (num) === 'string') {
               return (
                 <li className="pagination__item-dots" key={num}>
@@ -61,24 +58,23 @@ export const Pagination: React.FC<Props> = ({ total }) => {
             }
 
             return (
-              <li
+              <Link
+                to={{
+                  search: getSearchWith({ page: num }, searchParams),
+                }}
                 className={classNames('pagination__item', {
                   'pagination__item--is-active': currentPage === num,
                 })}
                 key={num}
+                onClick={backToTop}
               >
-                <Link
-                  to={{
-                    search: getSearchWith({ page: num }, searchParams),
-                  }}
-                  className={classNames('pagination__link', {
-                    'pagination__link--is-active': currentPage === num,
-                  })}
-                  onClick={backToTop}
+                <li className={classNames('pagination__link', {
+                  'pagination__link--is-active': currentPage === num,
+                })}
                 >
                   {num}
-                </Link>
-              </li>
+                </li>
+              </Link>
             );
           })}
         </ul>

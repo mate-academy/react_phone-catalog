@@ -1,16 +1,19 @@
+import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { Loader } from '../../components/Loader';
 
 import { ProductsList } from '../../components/ProductsList';
 import { Search } from '../../components/Search';
 import { getFilteredProducts } from '../../helpers/getFilteredProducts';
 import { getPhones } from '../../services/products';
-import { useProducts } from '../../store/ProductsContext';
+import { ProductsContext, useProducts } from '../../store/ProductsContext';
 
 import './PhonesPage.scss';
 
 export const PhonesPage = () => {
   const [searchParams] = useSearchParams();
+  const { loading } = useContext(ProductsContext);
 
   const products = useProducts();
   const phones = getPhones(products);
@@ -38,6 +41,10 @@ export const PhonesPage = () => {
         <h2>No product matches your requesty</h2>
       </>
     );
+  }
+
+  if (loading) {
+    return (<Loader />);
   }
 
   return (

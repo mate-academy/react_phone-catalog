@@ -11,7 +11,7 @@
     height: 507px;
 
     border: 1px solid $elements-color;
-    color: darkGrey;
+    color: $primary-color;
     padding: 24px;
     margin: 0 auto;
 
@@ -26,8 +26,7 @@
 
     display: flex;
     justify-content: center;
-    align-self: center;
-    justify-self: center;
+    place-self: center center;
 
     margin-bottom: 24px;
   }
