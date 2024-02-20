@@ -1,0 +1,35 @@
+iframe {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+
+  font-family: Mont, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color:$secondary-color;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.body--with-menu {
+  overflow: hidden;
+}
+
+h2 {
+  color: $primary-color;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  text-align: left;
+}

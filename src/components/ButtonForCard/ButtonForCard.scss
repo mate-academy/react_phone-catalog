@@ -1,0 +1,42 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/variables';
+
+.card-buttons {
+  &__content {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button-add-to-cart {
+    cursor: pointer;
+
+    flex-grow: 1;
+    width: 176px;
+    height: 40px;
+    background-color: $primary-color;
+    border: none;
+
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    transition: all $transition-time;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &--clicked {
+      background-color: #fff;
+      border: 1px solid $elements-color;
+      color: $green-color;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+}
+

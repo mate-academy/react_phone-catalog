@@ -1,0 +1,17 @@
+@import '../../styles/utilsStyles/mixins';
+
+.home {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet{
+      gap: 52px;
+    }
+
+    @include on-desktop{
+      gap: 72px;
+    }
+  }
+}

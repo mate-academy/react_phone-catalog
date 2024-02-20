@@ -1,0 +1,25 @@
+@import '../../styles/utilsStyles/variables';
+
+.breadcrumbs {
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+
+    &--link {
+      color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.nav {
+  &__list--header {
+    display: none;
+
+    @include on-desktop {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+  }
+
+  &__list--menu {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  &__link {
+    @extend %nav-link-style;
+
+    &--is-active {
+      @include on-desktop {
+        color: $primary-color;
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: block;
+          bottom: -27px;
+          width: 100%;
+          height: 3px;
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+}
+

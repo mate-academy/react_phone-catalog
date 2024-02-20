@@ -1,0 +1,74 @@
+.top-bar {
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__icon-container {
+    position: relative;
+  }
+
+  &__icon {
+    background: no-repeat center;
+    position: relative;
+    height: 64px;
+    width: 64px;
+    display: block;
+
+    box-shadow: -1px 0 0 0 rgb(226, 230, 233);
+
+    &--is-active {
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $primary-color;
+      }
+    }
+
+    &--cart {
+      background-image: url(../../images/icons/cart.svg);
+
+    }
+
+    &--favourite {
+      background-image: url(../../images/icons/heart-like.svg);
+    }
+
+    &-count {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: absolute;
+      top: 20px;
+      right: 17px;
+
+      border-radius: 50%;
+      background-color: $red-color;
+
+      width: 13px;
+      height: 13px;
+
+      color: #fff;
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 12px;
+    }
+  }
+}

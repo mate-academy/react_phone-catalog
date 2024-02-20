@@ -1,1 +1,37 @@
-// not empty
+@import './styles/utilsStyles/mixins';
+@import './styles/utilsStyles/reset';
+@import './styles/utilsStyles/extends';
+@import './styles/utilsStyles/variables';
+@import './styles/fonts/fonts';
+@import './main';
+@import './styles/blocks/top-bar';
+@import './styles/blocks/container';
+@import './styles/blocks/button';
+
+.app {
+  &__main {
+    padding: 25px 0 80px;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.32px;
+  color: $primary-color;
+  text-align: left;
+
+  @include on-desktop {
+    font-size: 32px;
+  }
+
+  &--pages {
+    margin-bottom: 8px;
+  }
+}
+
+
+.main {
+  min-height: calc(100vh - $footer-height - $header-height);
+}

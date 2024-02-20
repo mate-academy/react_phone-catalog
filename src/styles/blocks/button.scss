@@ -1,0 +1,109 @@
+@import '../utilsStyles/variables';
+
+.button {
+  cursor: pointer;
+  display: block;
+
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-indent: -12345em;
+  border: 1px solid $icons-color;
+
+  transition: all $transition-time;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      border: 1px solid $icons-color;
+    }
+  }
+
+  &__arrow {
+    height: 32px;
+    width: 32px;
+
+    &--prev {
+      background-image: url(../../images/icons/arrow-left.svg);
+    }
+
+    &--next {
+      background-image: url(../../images/icons/arrow-right.svg);
+    }
+
+    &--top {
+      background-image: url(../../images/icons/arrow-top.svg);
+    }
+  }
+
+  &__favorite {
+    height: 40px;
+    width: 40px;
+
+    background-image: url(../../images/icons/heart-like.svg);
+
+    &--clicked {
+      background-image: url(../../images/icons/heart-like-filled.svg);
+      border: 1px solid $elements-color;
+    }
+  }
+}
+
+.button-icon {
+  height: 16px;
+  width: 16px;
+  display: block;
+
+  border: none;
+  cursor: pointer;
+
+  transition: all $transition-time;
+
+  &--menu-open {
+    background: url(../../images/icons/menu.svg) center;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+
+  &--menu-close {
+    background: url(../../images/icons/close.svg) center;
+  }
+
+  &--home{
+    background: url(../../images/icons/home.svg) center;
+  }
+
+  &--search-close {
+    background: url(../../images/icons/close.svg) center;
+    position: absolute;
+    right: 24px;
+  }
+
+  &--item-close {
+    background: url(../../images/icons/close.svg) center;
+  }
+
+  &--search {
+    background: url(../../images/icons/search.svg) center;
+    position: absolute;
+    right: 24px;
+  }
+
+  &--arrow-left {
+    background: url(../../images/icons/arrow-left.svg) center;
+  }
+
+  transition: transform $transition-time;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

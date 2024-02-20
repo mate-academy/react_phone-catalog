@@ -1,0 +1,18 @@
+@import '../utilsStyles/mixins';
+@import '../utilsStyles/variables';
+
+%nav-link-style {
+  position: relative;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $secondary-color;
+
+  &:hover {
+    color: $primary-color;
+  }
+}

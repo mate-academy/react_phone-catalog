@@ -1,0 +1,71 @@
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/variables';
+
+.footer {
+  height: $footer-height;
+
+  &::before {
+    content: "";
+    display: block;
+
+    height: 1px;
+    width: 100%;
+    background: $elements-color;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-block: 36px;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+   @include on-tablet {
+    flex-direction: row;
+    gap: 64px;
+   }
+  }
+
+  &__nav-link {
+    display: block;
+
+    @extend %nav-link-style;
+  }
+
+  &__back {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__back-text {
+    display: none;
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 600;
+
+    @include on-tablet {
+      display: inline;
+    }
+  }
+
+  &__back-button {
+    display: block;
+    position: relative;
+  }
+
+  &__back-img {
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+

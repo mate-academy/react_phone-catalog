@@ -1,0 +1,19 @@
+@import '../../styles/utilsStyles/variables';
+
+.not-found-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-transform: capitalize;
+
+  &__text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+}
+

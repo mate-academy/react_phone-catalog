@@ -1,0 +1,11 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.random-products {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}

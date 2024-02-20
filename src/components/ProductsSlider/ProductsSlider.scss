@@ -1,0 +1,66 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.slick {
+  &-track {
+    display: flex;
+    gap: 14px;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  &-slide {
+    width: 272px;
+  }
+
+  &-arrow {
+    top: -50px;
+    height: 32px;
+    width: 32px;
+
+    display: block;
+
+    background-color: #fff;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $icons-color;
+
+    transform: none;
+
+    &:hover,
+    &:focus {
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &.slick-disabled {
+      opacity: 0.5;
+      cursor: no-drop;
+    }
+  }
+
+  &-prev {
+    background-image: url(../../images/icons/arrow-left.svg);
+    right: 48px;
+    left: auto;
+
+    &:hover,
+    &:focus {
+      background-image: url(../../images/icons/arrow-left.svg);
+    }
+  }
+
+  &-next {
+    background-image: url(../../images/icons/arrow-right.svg);
+    right: 0;
+
+    &:hover,
+    &:focus {
+      background-image: url(../../images/icons/arrow-right.svg);
+    }
+  }
+}

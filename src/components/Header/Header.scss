@@ -1,0 +1,23 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/variables';
+
+.header {
+  height: $header-height;
+
+  &::after {
+    content: "";
+    display: block;
+
+    height: 1px;
+    width: 100%;
+    background: $elements-color;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: $header-height;
+  }
+}

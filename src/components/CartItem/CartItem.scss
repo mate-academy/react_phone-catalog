@@ -1,0 +1,112 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.cart-item {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    border: 1px solid $elements-color;
+    padding: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+    }
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__image-link {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    @include on-tablet {
+      width: 60px;
+      height: 60px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $primary-color;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $primary-color;
+    width: 70px;
+  }
+
+  &__amount {
+    display: flex;
+    gap: 24px;
+
+    @include on-tablet {
+      justify-content: space-between;
+      gap: 43px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 13px;
+
+    color: $primary-color;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $icons-color;
+
+    &--plus {
+      background: url(../../images/icons/plus.svg) center no-repeat;
+    }
+
+    &--minus {
+      background: url(../../images/icons/minus.svg) center no-repeat;
+    }
+
+    &--disabled-minus {
+      background: url(../../images/icons/disabled-minus.svg) center no-repeat;
+    }
+
+    &--disabled {
+      cursor: no-drop;
+      border-color: $elements-color;
+    }
+  }
+}

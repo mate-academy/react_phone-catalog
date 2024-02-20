@@ -1,0 +1,13 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.tablets {
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-bottom: 40px;
+  }
+}

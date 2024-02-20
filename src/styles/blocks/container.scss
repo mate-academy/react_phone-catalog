@@ -1,0 +1,28 @@
+@import '../utilsStyles/mixins';
+
+.container {
+  margin: 0 auto;
+  padding-inline: 20px;
+
+  @include on-tablet {
+    max-width: 714px;
+    padding-inline: 27px;
+  }
+
+  @include on-desktop {
+    max-width: 1180px;
+    padding-inline: 50px;
+  }
+
+  @include on-design {
+    max-width: 1440px;
+    padding-inline: 150px;
+  }
+
+  &--header {
+    @include on-desktop {
+      max-width: 1392px;
+      padding-inline: 24px;
+    }
+  }
+}

@@ -1,0 +1,111 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.cart {
+  &__back {
+    margin-bottom: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__back-button {
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary-color;
+    background-color: inherit;
+    border: none;
+
+    padding: 0;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    padding: 24px;
+    height: 206px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid $elements-color;
+
+    @include on-desktop {
+      width: 368px;
+    }
+  }
+
+  &__total-price {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $primary-color;
+  }
+
+  &__total-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+
+    margin-bottom: 48px;
+    width: 100%;
+
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+
+      height: 1px;
+      width: 100%;
+      background: $elements-color;
+      bottom: -24px;
+    }
+  }
+
+  &__total-button {
+    cursor: pointer;
+
+    height: 48px;
+    width: 100%;
+    background-color: $primary-color;
+    border: none;
+
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+}

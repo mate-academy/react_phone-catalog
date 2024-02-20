@@ -1,0 +1,87 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.pagination {
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    background-color: #fff;
+    border: 1px solid $icons-color;
+    height: 22px;
+    width: 22px;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    cursor: pointer;
+
+    transition: all $transition-time;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--is-active {
+      background-color: $primary-color;
+    }
+  }
+
+  &__item-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    background-color: #fff;
+    border: 1px solid $icons-color;
+    height: 22px;
+    width: 22px;
+
+    @include on-tablet {
+      height: 32px;
+      width: 32px;
+    }
+
+    cursor: no-drop;
+
+    transition: all $transition-time;
+  }
+
+  &__link {
+    color: $primary-color;
+
+    &--is-active {
+      color: #fff;
+    }
+  }
+}

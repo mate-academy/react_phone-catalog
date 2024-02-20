@@ -1,0 +1,408 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.product-details {
+  &__back {
+    margin: 40px 0 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__back-text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      @include on-tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 64px;
+      }
+    }
+
+    &-title {
+      margin-bottom: 48px;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+
+        height: 1px;
+        width: 100%;
+        background: $elements-color;
+        bottom: -16px;
+      }
+    }
+  }
+
+  &__photos {
+    flex-basis: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+  }
+
+  &__description {
+    flex-basis: 50%;
+
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 0;
+      justify-content: space-between;
+    }
+
+    &-card {
+      flex-grow: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      @include on-desktop {
+        flex-grow: 0;
+        width: 320px;
+      }
+    }
+  }
+
+  &__about {
+    flex-basis: 50%;
+  }
+
+  &__tech {
+    flex-basis: 50%;
+  }
+}
+
+.details-about {
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-bottom: 32px;
+
+    &-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+      color: $primary-color;
+    }
+
+    &-text {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+}
+
+.details-tech {
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__feature {
+    &-block {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    &-name {
+      line-height: 21px;
+      color: $secondary-color;
+    }
+
+    &-inducator {
+      line-height: 21px;
+      color: $primary-color;
+    }
+  }
+}
+
+.description-card {
+  &__title {
+    color: $secondary-color;
+    line-height: 16px;
+  }
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__capacity {
+    padding-block: 24px;
+
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__price {
+    padding-block: 32px;
+
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $primary-color;
+
+    &--old {
+      color: $secondary-color;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.feature {
+  &__block {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    line-height: normal;
+    font-weight: 600;
+  }
+
+  &__name {
+    color: $secondary-color;
+    line-height: 16px;
+  }
+
+  &__inducator {
+    color: $primary-color;
+    line-height: 16px;
+  }
+}
+
+.photo {
+  &__small {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+    
+    &-link {
+      border: 1px solid #c4c4c4;
+      display: block;
+      padding: 7px;
+
+      width: 50px;
+      height: 50px;
+      background-color: inherit;
+      cursor: pointer;
+
+      @include on-tablet {
+        width: 80px;
+        height: 80px;
+      }
+
+      &--is-active {
+        border: 1px solid $primary-color;
+      }
+    }
+
+    &-img {
+      object-fit: contain;
+      object-position: center;
+
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__large {
+    width: 200px;
+    height: 300px;
+
+    padding: 11px;
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+
+    &-img {
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.color {
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    width: 30px;
+    height: 30px;
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--is-active {
+      border-color: $primary-color;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    background-color: #fff;
+
+    &--black {
+      background-color: #1F2020;
+    }
+    &--rosegold {
+      background-color: #E6C7C2;
+    }
+    &--gold {
+      background-color: #FCDBC1;
+    }
+    &--silver {
+      background-color: #F0F0F0;
+    }
+    &--spacegray {
+      background-color: #4C4C4C;
+    }
+    &--green {
+      background-color: #E1F8DC;
+    }
+    &--yellow {
+      background-color: #FFE681;
+    }
+    &--white {
+      background-color: #FBF7F4;
+    }
+    &--purple {
+      background-color: #B8AFE6;
+    }
+    &--red {
+      background-color: #A50011;
+    }
+    &--midnightgreen {
+      background-color: #5F7170;
+    }
+    &--coral {
+      background-color: #EE7762;
+    }
+  }
+}
+
+.capacity {
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $icons-color;
+    width: 60px;
+    height: 32px;
+
+    &--is-active {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+
+  &__link {
+    color: $primary-color;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+
+    &--is-active {
+      color: #fff;
+    }
+  }
+}

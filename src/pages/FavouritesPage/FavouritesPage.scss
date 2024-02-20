@@ -1,0 +1,51 @@
+@import '../../styles/utilsStyles/mixins';
+@import '../../styles/utilsStyles/extends';
+@import '../../styles/utilsStyles/variables';
+
+.favourite {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__back-button {
+    cursor: pointer;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $secondary-color;
+    background-color: inherit;
+    border: none;
+
+    padding: 0;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    @include on-tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 16px;
+      row-gap: 40px;
+    }
+  }
+}
+
