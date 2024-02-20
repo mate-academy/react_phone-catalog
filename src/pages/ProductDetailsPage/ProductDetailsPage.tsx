@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import './ProductDetailsPage.scss';
 import { Product, ProductDescription } from '../../types/product';
@@ -8,6 +8,7 @@ import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { MyLoader } from '../../components/UI/MyLoader';
 import { ProductDetails } from '../../components/ProductDetails';
 import { ProductSlider } from '../../components/ProductsSlider';
+import { MyBackLink } from '../../components/UI/MyBackLink';
 
 async function getSuggestedProducts() {
   const products = await getAllProducts<Product[]>();
@@ -52,8 +53,7 @@ export const ProductDetailsPage = () => {
           <BreadCrumbs />
         </div>
 
-        <Link to=".." className="product-details__back">Back</Link>
-
+        <MyBackLink />
         <h1 className="product-details__title">
           {product?.name}
         </h1>

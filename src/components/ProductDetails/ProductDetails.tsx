@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ProductDescription } from '../../types/product';
+import { useLocation } from 'react-router-dom';
+
 import './ProductDetails.scss';
 import { AddToCart } from '../AddToCart';
+import { ProductDescription } from '../../types/product';
 
 type Props = {
   product: ProductDescription;
@@ -12,8 +14,8 @@ const PARAMS: (keyof ProductDescription)[] = [
 ];
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
+  const { state } = useLocation();
   const {
-    id,
     images = [],
     name,
     priceDiscount,
@@ -64,7 +66,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           </div>
 
           <div className="details__buttons">
-            <AddToCart id={id} />
+            <AddToCart product={state.product} />
           </div>
 
           <div className="details__params">

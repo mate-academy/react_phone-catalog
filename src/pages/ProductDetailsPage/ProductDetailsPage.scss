@@ -27,19 +27,4 @@
 
     margin-bottom: 40px;
   }
-
-  &__back {
-    @include small-text;
-
-    color: $color-secondary;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    &::before {
-      content: url(../../../public/img/icons/chevron-left.svg);
-      position: relative;
-      top: 2px;
-    }
-  }
 }

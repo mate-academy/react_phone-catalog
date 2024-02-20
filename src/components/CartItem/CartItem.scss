@@ -1,0 +1,81 @@
+@import "../../styles/utils/utils";
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $color-elements;
+
+  &__delete {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: none;
+
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.2));
+
+    &::after {
+      content: url(../../../public/img/icons/close.svg);
+    }
+  }
+
+  &__image {
+    width: 80px;
+    height: 80px;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__middle {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__name {
+    max-width: 295px;
+  }
+
+  &__counter {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+  }
+
+  &__control {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 50%;
+    }
+
+
+    &--minus {
+      background-image: url(../../../public/img/icons/minus.svg);
+    }
+    &--plus {
+      background-image: url(../../../public/img/icons/plus.svg);
+    }
+  }
+
+  &__price {
+    min-width: 100px;
+    text-align: right;
+  }
+}

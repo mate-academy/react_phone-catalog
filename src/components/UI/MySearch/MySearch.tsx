@@ -1,10 +1,11 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 
+import { useState } from 'react';
+
 import './MySearch.scss';
 import { CategoryName } from '../../../types/product';
 import { getSearchParamsWith } from '../../../helpers/searchParams';
-import { useState } from 'react';
 
 type Props = {
   placeholder: CategoryName;

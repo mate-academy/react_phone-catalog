@@ -11,6 +11,10 @@
   transition: box-shadow ease-in-out $transition-duration;
   cursor: pointer;
 
+  &:disabled {
+    opacity: 50%;
+  }
+
   &:hover {
     box-shadow: 0 3px 13px 0 #17203142;
   }

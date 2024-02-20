@@ -37,6 +37,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     >
       <Link
         to={`/phones/${itemId || id}`}
+        state={{ product }}
         className="product-card__link"
       >
         <div className="product-card__imgbox">
@@ -71,7 +72,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </ul>
       </Link>
 
-      <AddToCart id={itemId} />
+      <AddToCart product={product} />
     </article>
   );
 };

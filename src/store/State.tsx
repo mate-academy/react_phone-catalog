@@ -1,11 +1,13 @@
 import React, { useReducer } from 'react';
 import { Product } from '../types/product';
+import { Cart } from '../types/cart';
 
 type State = {
   loading: boolean;
   loadingError: string;
   allProducts: Product[];
   favoriteProducts: string[];
+  cart: Cart;
 };
 
 const initialState: State = {
@@ -13,12 +15,14 @@ const initialState: State = {
   loadingError: '',
   allProducts: [],
   favoriteProducts: [],
+  cart: [],
 };
 
 type Action
   = { type: 'addFavorite', payload: string }
   | { type: 'removeFavorite', payload: string }
   | { type: 'updateFavorite', payload: string[] }
+  | { type: 'updateCart', payload: Cart }
   | { type: 'getAllProducts', payload: Product[] }
   | { type: 'setLoading', payload: boolean }
   | { type: 'setLoadingError', payload: string };
@@ -64,6 +68,12 @@ function reducer(state: State, action: Action): State {
       return {
         ...state,
         favoriteProducts: [...action.payload],
+      };
+
+    case 'updateCart':
+      return {
+        ...state,
+        cart: [...action.payload],
       };
 
     default:

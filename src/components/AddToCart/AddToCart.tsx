@@ -3,32 +3,67 @@ import { useContext, useEffect, useState } from 'react';
 import './AddToCart.scss';
 import { DispatchContext, StateContext } from '../../store/State';
 import { MyButton } from '../UI/MyButton';
+import { CartItemType } from '../../types/cart';
+import { Product } from '../../types/product';
 
 type Props = {
-  id: string;
+  product: Product;
 };
 
-export const AddToCart: React.FC<Props> = ({ id }) => {
+export const AddToCart: React.FC<Props> = ({ product }) => {
+  const {
+    itemId,
+    name,
+    image,
+    price,
+  } = product;
   const [favorite, setFavorite] = useState(false);
-  const { favoriteProducts } = useContext(StateContext);
+  const { favoriteProducts, cart } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+
+  const isAdded = cart.some(el => el.itemId === itemId);
 
   function handleSetFavorite() {
     if (!favorite) {
-      dispatch({ type: 'addFavorite', payload: id });
+      dispatch({ type: 'addFavorite', payload: itemId });
     } else {
-      dispatch({ type: 'removeFavorite', payload: id });
+      dispatch({ type: 'removeFavorite', payload: itemId });
     }
   }
 
+  function handleAddToCart() {
+    const cartItem: CartItemType = {
+      itemId,
+      name,
+      image,
+      price,
+      quantity: 1,
+    };
+
+    if (isAdded) {
+      const updatedCart = cart.filter(el => el.itemId !== itemId);
+
+      dispatch({ type: 'updateCart', payload: updatedCart });
+
+      return;
+    }
+
+    dispatch({ type: 'updateCart', payload: [...cart, cartItem] });
+  }
+
   useEffect(() => {
-    setFavorite(favoriteProducts.includes(id));
+    setFavorite(favoriteProducts.includes(itemId));
     localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
-  }, [id, favoriteProducts]);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [itemId, favoriteProducts, cart]);
 
   return (
     <div className="add-to-cart__btnbox">
-      <MyButton>Add to cart</MyButton>
+      <MyButton
+        handleClick={() => handleAddToCart()}
+      >
+        {isAdded ? 'Added to cart' : 'Add to cart'}
+      </MyButton>
 
       <button
         type="button"

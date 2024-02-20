@@ -1,0 +1,16 @@
+@import "../../../styles/utils/utils";
+
+.my-back-link {
+  @include small-text;
+
+  color: $color-secondary;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &::before {
+    content: url(../../../../public/img/icons/chevron-left.svg);
+    position: relative;
+    top: 2px;
+  }
+}
