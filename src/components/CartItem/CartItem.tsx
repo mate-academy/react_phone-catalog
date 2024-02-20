@@ -41,6 +41,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     });
 
     dispatch({ type: 'updateCart', payload: updatedCart });
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 
   // COMBINE TO ONE FUNCTION!!
@@ -57,6 +58,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     });
 
     dispatch({ type: 'updateCart', payload: updatedCart });
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 
   return (
