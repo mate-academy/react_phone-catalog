@@ -8,7 +8,7 @@ export type Product = {
   age: number,
   category: CategoryName,
   id: string,
-  itemId?: string,
+  itemId: string,
   image: string,
   images: string[],
   name: string

@@ -1,5 +1,5 @@
 import './ProductList.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Product } from '../../types/product';
 import {
   PerPageSelect,
@@ -36,6 +36,7 @@ const sortParams = {
 
 export const ProductList: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
   const perPage = searchParams.get('perPage') || 'all';
   const sort = (searchParams.get('sort') || 'age') as SortParams;
 
@@ -65,25 +66,27 @@ export const ProductList: React.FC<Props> = ({ products }) => {
 
   return (
     <section className="product-list" data-cy="productList">
-      <div className="product-list__controls">
-        <div className="product-list__controls--left">
-          <MySelect
-            defaultValue={sortParams[sort]}
-            title="Sort by"
-            options={SORT_BY}
-            searchName="sort"
-          />
-        </div>
+      {pathname !== '/favorite' && (
+        <div className="product-list__controls">
+          <div className="product-list__controls--left">
+            <MySelect
+              defaultValue={sortParams[sort]}
+              title="Sort by"
+              options={SORT_BY}
+              searchName="sort"
+            />
+          </div>
 
-        <div className="product-list__controls--right">
-          <MySelect
-            defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
-            title="Items on page"
-            options={PER_PAGE}
-            searchName="perPage"
-          />
+          <div className="product-list__controls--right">
+            <MySelect
+              defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
+              title="Items on page"
+              options={PER_PAGE}
+              searchName="perPage"
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="product-list__items">
         {preparedProducts.map(item => (

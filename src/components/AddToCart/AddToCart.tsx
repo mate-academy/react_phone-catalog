@@ -32,6 +32,7 @@ export const AddToCart: React.FC<Props> = ({ id }) => {
 
       <button
         type="button"
+        data-cy="addToFavorite"
         className="add-to-cart__favorite"
         onClick={handleSetFavorite}
       >

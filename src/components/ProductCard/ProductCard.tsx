@@ -71,7 +71,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </ul>
       </Link>
 
-      <AddToCart id={id} />
+      <AddToCart id={itemId} />
     </article>
   );
 };
