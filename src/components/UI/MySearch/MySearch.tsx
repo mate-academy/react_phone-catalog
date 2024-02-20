@@ -1,15 +1,17 @@
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 
 import './MySearch.scss';
 import { CategoryName } from '../../../types/product';
 import { getSearchParamsWith } from '../../../helpers/searchParams';
+import { useState } from 'react';
 
 type Props = {
   placeholder: CategoryName;
 };
 
 export const MySearch: React.FC<Props> = ({ placeholder }) => {
+  const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const appliedQuery = searchParams.get('query') || '';
 
@@ -22,7 +24,7 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
     setSearchParams(newParams);
   }
 
-  const applyQuery = debounce(setSearchWith, 1000);
+  const applyQuery = debounce(setSearchWith, 500);
 
   return (
     <div className="my-search">
@@ -30,9 +32,35 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
         placeholder={`Search in ${placeholder}`}
         type="text"
         className="my-search__input"
-        defaultValue={appliedQuery}
-        onChange={event => applyQuery(event.target.value)}
+        value={query}
+        onChange={event => {
+          applyQuery(event.target.value);
+          setQuery(event.target.value);
+        }}
       />
+
+      {appliedQuery
+        ? (
+          <Link
+            to={{ search: getSearchParamsWith({ query: null }, searchParams) }}
+            className="my-search__button"
+            onClick={() => setQuery('')}
+          >
+            <img
+              src="../../../img/icons/close.svg"
+              alt="search icon"
+              className="my-search__icon"
+            />
+
+          </Link>
+        )
+        : (
+          <img
+            src="../../../img/icons/search.svg"
+            alt="search icon"
+            className="my-search__button"
+          />
+        )}
     </div>
   );
 };

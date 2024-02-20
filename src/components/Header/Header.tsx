@@ -1,11 +1,12 @@
 import { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Navbar } from '../Navbar';
+import { NavLink, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 
 import './Header.scss';
+import { Navbar } from '../Navbar';
 import { MyLogo } from '../UI/MyLogo';
-import { StateContext } from '../../store/State';
 import { MySearch } from '../UI/MySearch';
+import { StateContext } from '../../store/State';
 import { CategoryName } from '../../types/product';
 
 export const Header = () => {
@@ -27,17 +28,27 @@ export const Header = () => {
           />
         )}
 
-        <Link to="/favorite" className="header__link">
+        <NavLink
+          to="/favorite"
+          className={({ isActive }) => classNames('header__link', {
+            'header__link--active': isActive,
+          })}
+        >
           <img src="img/icons/heart.svg" alt="favorite" />
 
           {!!numberOfFavorite && (
             <div className="header__counter">{numberOfFavorite}</div>
           )}
 
-        </Link>
-        <Link to="/cart" className="header__link">
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) => classNames('header__link', {
+            'header__link--active': isActive,
+          })}
+        >
           <img src="img/icons/cart.svg" alt="cart" />
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

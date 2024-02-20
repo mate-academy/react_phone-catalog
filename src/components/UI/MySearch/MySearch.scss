@@ -3,18 +3,16 @@
 .my-search {
   position: relative;
   flex-grow: 1;
+  z-index: 2;
 
-  &::before {
-    content: url(../../../../public/img/icons/search.svg);
-    width: 16px;
-    height: 16px;
+  &__button {
     position: absolute;
-    top: 24px;
-    right: 20px;
-    z-index: 1;
+    top: 20px;
+    right: 18px;
+    padding: 5px;
 
     @include on-mobile-l {
-      top: 14px;
+      top: 7px;
     }
   }
 
