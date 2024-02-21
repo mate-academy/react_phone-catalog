@@ -109,7 +109,7 @@ export const Slider = () => {
               >
                 <img
                   style={{ width: `${imgWidth}px` }}
-                  src={`_new/img/${banner}`}
+                  src={`img/banner/${banner}`}
                   alt="phones"
                   className="slider__banner"
                 />
