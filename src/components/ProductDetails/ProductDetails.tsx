@@ -10,7 +10,13 @@ type Props = {
 };
 
 const PARAMS: (keyof ProductDescription)[] = [
-  'screen', 'resolution', 'processor', 'ram', 'camera', 'zoom', 'cell',
+  'screen',
+  'resolution',
+  'processor',
+  'ram',
+  'camera',
+  'zoom',
+  'cell',
 ];
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
