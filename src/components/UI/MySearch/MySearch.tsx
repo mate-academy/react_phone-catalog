@@ -57,7 +57,7 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
         )
         : (
           <img
-            src="../../../img/icons/search.svg"
+            src="img/icons/search.svg"
             alt="search icon"
             className="my-search__button"
           />
