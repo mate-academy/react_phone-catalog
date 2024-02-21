@@ -8,6 +8,17 @@
   padding: 24px 40px 24px 24px;
   border: 1px solid $color-elements;
 
+  @include on-tablet-s {
+    padding: 12px 20px 12px 12px;
+    gap: 10px;
+  }
+
+  @include on-mobile-l {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2;
+  }
+
   &__delete {
     width: 16px;
     height: 16px;
@@ -20,10 +31,31 @@
     justify-content: center;
     cursor: pointer;
 
+    @include on-mobile-l {
+      grid-column: 1/2;
+      grid-row: 1;
+    }
+
     @include hover(transform, scale(1.2));
 
     &::after {
       content: url(../../../public/img/icons/close.svg);
+
+      @include on-mobile-l {
+        position: relative;
+        right: 6px;
+      }
+    }
+  }
+
+  &__image-link {
+    display: flex;
+    align-items: center;
+
+    @include on-mobile-l {
+      grid-column: 1/2;
+      grid-row: 1;
+      justify-self: center;
     }
   }
 
@@ -32,6 +64,11 @@
     height: 80px;
 
     @include hover(transform, scale(1.1));
+
+    @include on-tablet-s {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__middle {
@@ -40,6 +77,11 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+
+    @include on-mobile-l {
+      grid-row: 2;
+      grid-column: 1/-1;
+    }
   }
 
   &__name {
@@ -61,10 +103,14 @@
     background-color: transparent;
     cursor: pointer;
 
+    @include on-tablet-s {
+      width: 20px;
+      height: 20px;
+    }
+
     &:disabled {
       opacity: 50%;
     }
-
 
     &--minus {
       background-image: url(../../../public/img/icons/minus.svg);
@@ -77,5 +123,16 @@
   &__price {
     min-width: 100px;
     text-align: right;
+
+    @include on-tablet-s {
+      min-width: 60px;
+      font-size: 16px;
+    }
+
+    @include on-mobile-l {
+      grid-column: -1/-2;
+      grid-row: 1;
+      justify-self: center;
+    }
   }
 }

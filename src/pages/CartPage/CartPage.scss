@@ -9,7 +9,12 @@
 
   &__products {
     display: flex;
+    justify-content: center;
     gap: 16px;
+
+    @include on-tablet-s {
+      flex-wrap: wrap;
+    }
   }
 
   &__list {

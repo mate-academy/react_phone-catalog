@@ -10,8 +10,9 @@ import { StateContext } from '../../store/State';
 import { CategoryName } from '../../types/product';
 
 export const Header = () => {
-  const { favoriteProducts } = useContext(StateContext);
+  const { favoriteProducts, cart } = useContext(StateContext);
   const numberOfFavorite = favoriteProducts.length;
+  const productsInCart = cart.length;
   const { pathname } = useLocation();
 
   return (
@@ -39,8 +40,8 @@ export const Header = () => {
           {!!numberOfFavorite && (
             <div className="header__counter">{numberOfFavorite}</div>
           )}
-
         </NavLink>
+
         <NavLink
           to="/cart"
           state={{ previousPath: pathname }}
@@ -49,6 +50,9 @@ export const Header = () => {
           })}
         >
           <img src="img/icons/cart.svg" alt="cart" />
+          {!!productsInCart && (
+            <div className="header__counter">{productsInCart}</div>
+          )}
         </NavLink>
       </div>
     </header>
