@@ -1,0 +1,49 @@
+/* eslint-disable */
+// eslint-disable
+.pagination-total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.button-square {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.page-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-align: center;
+  font-family: Mont, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.mr-8 {
+  margin-right: 8px;
+}
+
+.mr-8:last-child {
+  margin-right: 16px;
+}
+
+.mr-16 {
+  margin-right: 16px;
+}
+
+.ml-16 {
+  // margin-left: 16px;
+}

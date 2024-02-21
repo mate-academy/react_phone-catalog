@@ -1,1 +1,81 @@
-// not empty
+body {
+  margin: 0;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-80 {
+  margin-bottom: 80px;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.ml-24 {
+  margin-left: 24px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.ml-50 {
+  margin-left: 50px;
+}
+
+.ml-42 {
+  margin-left: 42px;
+}
+
+.item-button {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Mont, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 176px;
+  height: 40px;
+}
+
+.item-button-added {
+  background-color: white;
+  color: #27ae60;
+  text-align: center;
+  font-family: Mont, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 176px;
+  height: 40px;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+}

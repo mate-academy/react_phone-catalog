@@ -1,0 +1,67 @@
+.banner-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner-button {
+  width: 32px;
+  height: 400px;
+  box-sizing: border-box;
+  border: 1px solid #b4bdc3;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.images-container {
+  display: flex;
+  width: 1040px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  transition: scroll 0.3s ease-in-out;
+}
+
+.chunk-container {
+  display: flex;
+  justify-content: left;
+  // flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hot-prices-block {
+  margin-top: 104px;
+}
+
+.home-page-header-text {
+  color: var(--gray-primary, #313237);
+  /* H1 */
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.arrow-box {
+  display: flex;
+}
+
+.header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.square {
+  width: 368px;
+  height: 368px;
+}
+
+.left {
+  background-color: burlywood;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}

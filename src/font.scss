@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"), url("./assets/fonts/Mont-Regular.otf") format("opentype");
+}
+
+.font-header {
+  font-family: Mont, serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+  color: #313237;
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+.font-models-amount {
+  font-family: Mont, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  color: #89939a;
+  padding-bottom: 40px;
+}

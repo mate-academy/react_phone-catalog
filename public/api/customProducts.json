@@ -1,0 +1,1130 @@
+[
+  {
+    "age": 1,
+    "type": "tablet",
+    "id": 10001,
+    "picsArray": [
+      "./img/products/folder1/newPhone1.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 0,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 2,
+    "type": "phone",
+    "id": 10002,
+    "picsArray": [
+      "./img/products/folder1/newPhone2.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 101 Pro Max 674GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$7199",
+    "discount": 0,
+    "screen": "68.5 inches OLED",
+    "capacity": "764 GB",
+    "ram": "48 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/620.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A1260 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 20x",
+    "cell": "Optical, 20x"
+  },
+  {
+    "age": 3,
+    "type": "phone",
+    "id": 10003,
+    "picsArray": [
+      "./img/products/folder1/newPhone3.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 19 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$899",
+    "discount": 0,
+    "screen": "12.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "4 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/6.5",
+    "screenResolution": "245x73",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 4,
+    "type": "phone",
+    "id": 10004,
+    "picsArray": [
+      "./img/products/folder1/newPhone4.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 12 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1009",
+    "discount": 5,
+    "screen": "34.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "11111x99933",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "31 GB",
+    "camera": "13 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 5,
+    "type": "phone",
+    "id": 10005,
+    "picsArray": [
+      "./img/products/folder1/newPhone5.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 10,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 6,
+    "type": "tablet",
+    "id": 10006,
+    "picsArray": [
+      "./img/products/folder1/newPhone1.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 110 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 0,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 7,
+    "type": "phone",
+    "id": 10007,
+    "picsArray": [
+      "./img/products/folder1/newPhone2.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 101 Pro Max 674GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$7199",
+    "discount": 0,
+    "screen": "68.5 inches OLED",
+    "capacity": "764 GB",
+    "ram": "48 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/620.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A1260 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 20x",
+    "cell": "Optical, 20x"
+  },
+  {
+    "age": 8,
+    "type": "phone",
+    "id": 10008,
+    "picsArray": [
+      "./img/products/folder1/newPhone3.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 10 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$899",
+    "discount": 0,
+    "screen": "12.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "4 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/6.5",
+    "screenResolution": "245x73",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 9,
+    "type": "phone",
+    "id": 10009,
+    "picsArray": [
+      "./img/products/folder1/newPhone4.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 16 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1009",
+    "discount": 5,
+    "screen": "34.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "11111x99933",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "31 GB",
+    "camera": "13 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 10,
+    "type": "phone",
+    "id": 10010,
+    "picsArray": [
+      "./img/products/folder1/newPhone5.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 10,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 11,
+    "type": "tablet",
+    "id": 10011,
+    "picsArray": [
+      "./img/products/folder1/newPhone1.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 0,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 12,
+    "type": "phone",
+    "id": 10012,
+    "picsArray": [
+      "./img/products/folder1/newPhone2.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 101 Pro Max 674GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$7199",
+    "discount": 0,
+    "screen": "68.5 inches OLED",
+    "capacity": "764 GB",
+    "ram": "48 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/620.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A1260 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 20x",
+    "cell": "Optical, 20x"
+  },
+  {
+    "age": 13,
+    "type": "phone",
+    "id": 10013,
+    "picsArray": [
+      "./img/products/folder1/newPhone3.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 13 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$899",
+    "discount": 0,
+    "screen": "12.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "4 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/6.5",
+    "screenResolution": "245x73",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 14,
+    "type": "phone",
+    "id": 10014,
+    "picsArray": [
+      "./img/products/folder1/newPhone4.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 14 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1009",
+    "discount": 5,
+    "screen": "34.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "11111x99933",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "31 GB",
+    "camera": "13 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 15,
+    "type": "phone",
+    "id": 10015,
+    "picsArray": [
+      "./img/products/folder1/newPhone5.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 18 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 10,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 16,
+    "type": "tablet",
+    "id": 10016,
+    "picsArray": [
+      "./img/products/folder1/newPhone1.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 0,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 17,
+    "type": "phone",
+    "id": 10017,
+    "picsArray": [
+      "./img/products/folder1/newPhone2.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 101 Pro Max 674GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$7199",
+    "discount": 0,
+    "screen": "68.5 inches OLED",
+    "capacity": "764 GB",
+    "ram": "48 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/620.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A1260 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 20x",
+    "cell": "Optical, 20x"
+  },
+  {
+    "age": 18,
+    "type": "phone",
+    "id": 10018,
+    "picsArray": [
+      "./img/products/folder1/newPhone3.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 83 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$899",
+    "discount": 0,
+    "screen": "12.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "4 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/6.5",
+    "screenResolution": "245x73",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 19,
+    "type": "phone",
+    "id": 10019,
+    "picsArray": [
+      "./img/products/folder1/newPhone4.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1009",
+    "discount": 5,
+    "screen": "34.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "11111x99933",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "31 GB",
+    "camera": "13 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 20,
+    "type": "phone",
+    "id": 10020,
+    "picsArray": [
+      "./img/products/folder1/newPhone5.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 10,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 21,
+    "type": "tablet",
+    "id": 10021,
+    "picsArray": [
+      "./img/products/folder1/newPhone1.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1199",
+    "discount": 0,
+    "screen": "62.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 22,
+    "type": "phone",
+    "id": 10022,
+    "picsArray": [
+      "./img/products/folder1/newPhone2.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 101 Pro Max 674GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$7199",
+    "discount": 0,
+    "screen": "68.5 inches OLED",
+    "capacity": "764 GB",
+    "ram": "48 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/620.5",
+    "screenResolution": "23245x986573",
+    "processor": "Apple A1260 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 20x",
+    "cell": "Optical, 20x"
+  },
+  {
+    "age": 23,
+    "type": "phone",
+    "id": 10023,
+    "picsArray": [
+      "./img/products/folder1/newPhone3.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$899",
+    "discount": 0,
+    "screen": "12.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "4 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/6.5",
+    "screenResolution": "245x73",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "312 GB",
+    "camera": "123 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  },
+  {
+    "age": 24,
+    "type": "phone",
+    "id": 10024,
+    "picsArray": [
+      "./img/products/folder1/newPhone4.svg",
+      "./img/products/folder1/newImg1.svg",
+      "./img/products/folder1/image8.svg",
+      "./img/products/folder1/newImg2.svg",
+      "./img/products/folder1/newImg1.svg"
+    ],
+    "picsArray2": [
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png",
+      "./img/products/folder1/image2_2.png"
+    ],
+    "picsArray3": [
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png",
+      "./img/products/folder1/image2_3.png"
+    ],
+    "picsArray4": [
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png",
+      "./img/products/folder1/image2_4.png"
+    ],
+    "name": "Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A) ID 10001",
+    "price": "$1009",
+    "discount": 5,
+    "screen": "34.5 inches OLED",
+    "capacity": "64 GB",
+    "ram": "43 GB",
+    "description": "And then there was Pro/A transformative triple‑camera system that adds tons of capability without complexity./An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro./Camera/Meet the first triple‑camera system to combine cutting‑edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest‑quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it./Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it./iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.",
+    "screenSize": "Screen/62.5",
+    "screenResolution": "11111x99933",
+    "processor": "Apple A126 Bionic",
+    "builtInMemory": "31 GB",
+    "camera": "13 Mp + 102 Mp + 82 Mp (Triple)",
+    "zoom": "Optical, 2x",
+    "cell": "Optical, 2x"
+  }
+]

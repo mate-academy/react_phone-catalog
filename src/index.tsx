@@ -1,4 +1,9 @@
-import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import ReactDOM from 'react-dom';
+import './App.scss';
+import './font.scss';
+import { Root } from './Root';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+ReactDOM.render(
+  <Root />,
+  document.getElementById('root'),
+);
