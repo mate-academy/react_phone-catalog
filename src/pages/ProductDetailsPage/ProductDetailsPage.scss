@@ -1,0 +1,214 @@
+@import '../../helpers/utils';
+
+.productDetails {
+  &__title {
+    margin-bottom: 40px;
+
+    @extend %mont-bold-style;
+  }
+
+  &__wrapper {
+    width: fit-content;
+    margin: 0 auto 80px;
+  }
+
+  &__image-main {
+    margin-bottom: 0;
+    height: 464px;
+    width: 464px;
+    padding: 10px;
+    order: 1;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+
+    @include on-mobile {
+      height: 288px;
+      width: 288px;
+      margin-bottom: 16px;
+      padding: 6px;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__thumbs {
+    margin-bottom: 0;
+
+    @include on-mobile {
+      margin-bottom: 40px;
+    }
+
+    & ul {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+
+      @include on-mobile {
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      & img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    &-button {
+      height: 80px;
+      width: 80px;
+
+      @include on-mobile {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+
+  &__actions {
+    order: 2;
+
+    &-section {
+      padding: 24px 0;
+      border-bottom: 1px solid $gray-elements;
+
+      & > p {
+        color: $gray-secondary;
+        margin-bottom: 8px;
+
+        @extend %small-text;
+      }
+
+      & ul {
+        display: flex;
+        gap: 8px;
+      }
+    }
+
+    &-number {
+      height: 100%;
+      width: 100%;
+      padding: 6px 8px;
+    }
+  }
+
+  &__prices {
+    padding: 32px 0 16px;
+
+    &-main {
+      font-family: "Mont Bold", sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 30.8px */
+      color: $gray-primary;
+      margin-right: 8px;
+    }
+
+    &-discount {
+      @extend %body-text;
+
+      font-size: 22px;
+      color: $gray-secondary;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__buttons {
+    height: 48px;
+
+    display: flex;
+    gap: 8px;
+
+    & > .button__text {
+      height: 100%;
+      width: 100%;
+    }
+
+    & > .button__favorites {
+      height: 100%;
+      width: 58px;
+    }
+  }
+
+  &__info {
+    margin: 32px 0;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %small-text;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &-title {
+      color: $gray-secondary;
+    }
+  }
+
+  &__block:not(:last-child) {
+    margin-bottom: 0;
+
+
+    @include on-mobile {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__subtitle {
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+
+    @extend %mont-bold-style;
+
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__description {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    & h3 {
+      margin-bottom: 8px;
+
+      @extend %mont-semibold-style;
+    }
+
+    & p {
+      @extend %body-text;
+      
+      color: $gray-secondary;
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %body-text;
+
+    &-title {
+      color: $gray-secondary;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}

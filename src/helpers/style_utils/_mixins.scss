@@ -1,0 +1,20 @@
+@import "./variables";
+
+@mixin on-tablet() {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin on-mobile() {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-duration;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}

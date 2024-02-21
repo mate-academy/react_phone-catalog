@@ -1,0 +1,55 @@
+@import '../../helpers/utils';
+
+.productsList {
+  &__count {
+    @extend %small-text;
+
+    color: $gray-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__options {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &-option {
+      max-width: 176px;
+      flex-grow: 1;
+    }
+
+    &-title {
+      @extend %small-text;
+
+      color: $gray-slider-border;
+      margin-bottom: 4px;
+
+    }
+  }
+
+  &__list {
+    display: grid;
+    justify-content: center;
+    gap: 40px 16px;
+    margin-bottom: 40px;
+    grid-template-columns: repeat(4, $card-width);
+
+    @include on-tablet {
+      justify-content: start;
+      grid-template-columns: repeat(3, $card-width);
+    }
+
+    @include on-mobile {
+      grid-template-columns: repeat(1, $card-width);
+    }
+  }
+
+  &__not-found {
+    font-family: "Mont Bold", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    color: $gray-primary;
+  }
+}

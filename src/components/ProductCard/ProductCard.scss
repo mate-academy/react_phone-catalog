@@ -1,0 +1,76 @@
+@import '../../helpers/utils';
+
+.productCard {
+  padding: 24px;
+  width: $card-width;
+
+  border: 1px solid $gray-elements;
+  background: $c-white;
+
+  transition: transform $transition-duration, border-color $transition-duration;
+
+  &:hover {
+    border-color: $gray-primary;
+  }
+
+  &__image {
+    height: 208px;
+    width: 208px;
+    margin: 8px 8px 24px;
+    object-fit: contain;
+  }
+
+  &__title {
+    @extend %body-text;
+
+    margin-bottom: 8px;
+    min-height: 42px;
+    color: $gray-primary;
+  }
+
+  &__price {
+    padding-bottom: 7px;
+    border-bottom: 1px solid $gray-elements;
+
+    &-main {
+      @extend %mont-bold-style;
+
+      font-size: 22px;
+      line-height: 140%;
+      color: $gray-primary;
+      margin-right: 8px;
+    }
+
+    &-discount {
+      @extend %body-text;
+
+      font-size: 22px;
+      color: $gray-secondary;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__info {
+    margin: 16px 0;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %small-text;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &-title {
+      color: $gray-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

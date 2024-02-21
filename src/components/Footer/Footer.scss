@@ -1,0 +1,78 @@
+@import "../../helpers/utils";
+
+.footer {
+  height: $footer-height;
+  box-shadow: 0 -1px 0 0 $gray-elements;
+  color: $gray-secondary;
+  margin-top: 40px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 32px 0;
+
+    @include on-mobile {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__network-nav {
+    display: flex;
+    gap: $nav-gap;
+
+    @include on-mobile {
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__network-link {
+    @extend %mont-bold-style;
+
+    text-transform: uppercase;
+    font-size: 12px;
+    color: $gray-secondary;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+
+  &__arrow-back-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    transition: color 0.3s;
+
+    @extend %mont-semibold-style;
+
+    &:hover {
+      color: #313237;
+    }
+  }
+
+  &__arrow-back {
+    height: 32px;
+    width: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    border: 1px solid #b4bdc3;
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: #313237;
+    }
+  }
+}

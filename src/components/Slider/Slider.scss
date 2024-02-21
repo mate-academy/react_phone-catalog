@@ -1,0 +1,59 @@
+@import "../../helpers/utils";
+
+.slider {
+  padding-top: 40px;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__button {
+    height: auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    flex-basis: 100%;
+
+    transition: transform $transition-duration;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+
+    object-fit: cover;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__bullet {
+    height: 4px;
+    width: 14px;
+    margin: 10px 8px;
+
+    background-color: $gray-elements;
+    border: none;
+
+    transition: background-color $transition-duration;
+    cursor: pointer;
+
+    &.active {
+      background-color: $gray-primary;
+    }
+  }
+}

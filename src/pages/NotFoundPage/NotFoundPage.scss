@@ -1,0 +1,21 @@
+@import "../../helpers/utils";
+
+.notFoundPage {
+  @extend %mont-bold-style;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+
+  & p {
+    font-size: 24px;
+    
+    @extend %mont-style;
+
+    & a {
+      color: $c-red;
+    }
+  }
+}

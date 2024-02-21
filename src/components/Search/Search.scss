@@ -1,0 +1,53 @@
+@import "../../helpers/utils";
+
+.search {
+  position: relative;
+  width: 327px;
+  height: 100%;
+  min-height: 64px;
+  background: #fff;
+  transition: width $transition-duration;
+  box-shadow: -1px 0 0 $gray-elements;
+
+  &__input {
+    height: 100%;
+    width: 100%;
+    padding: 24px 23px;
+    border: none;
+
+    @extend %small-text;
+    
+    font-size: 14px;
+
+    &::placeholder {
+      color: $gray-slider-border;
+    }
+  }
+
+  &--active {
+    width: 327px;
+    height: 100%;
+  }
+
+  &--active > .search__input {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--active ~ a {
+    @include on-mobile {
+      width: 0;
+      opacity: 0;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    height: 64px;
+    width: 64px;
+    top: 0;
+    right: 0;
+
+    border: none;
+  }
+}

@@ -1,0 +1,41 @@
+@import "../../helpers/utils";
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    height: 16px;
+    line-height: 18px;
+
+    @extend %small-text;
+
+    &:visited {
+      color: $gray-secondary;
+    }
+
+    &:active {
+      color: $gray-primary;
+    }
+
+    @include hover(color, $gray-primary);
+  }
+
+  &__item {
+    display: flex;
+    gap: 8px;
+
+    &:last-child > .breadcrumbs__link {
+      color: $gray-secondary;
+
+      @include hover(color, $gray-primary);
+    }
+  }
+
+  &__arrow > path {
+    fill: $gray-slider-border;
+  }
+}

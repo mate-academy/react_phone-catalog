@@ -1,0 +1,89 @@
+@import "../../helpers/utils";
+
+.cart-item {
+  border: 1px solid $gray-elements;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+
+    margin: 0 auto;
+    padding: 24px 40px 24px 24px;
+
+    @include on-mobile {
+      flex-direction: column;
+      width: fit-content;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-close {
+      width: 16px;
+      height: 16px;
+      border: none;
+
+      & path {
+        fill: $gray-secondary;
+      }
+
+      &:hover path {
+        fill: $gray-primary;
+      }
+    }
+
+    &-image-wrapper {
+      height: 80px;
+      width: 80px;
+      padding: 7px;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    &-name {
+      @extend %body-text;
+
+      max-width: 295px;
+      color: $gray-primary;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    gap: 16px;
+
+    @include on-mobile {
+      max-width: 200px;
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    &-number {
+      @extend %body-text;
+      
+      min-width: 16px;
+      text-align: center;
+    }
+  }
+
+  &__price {
+    @extend %mont-bold-style;
+  }
+}

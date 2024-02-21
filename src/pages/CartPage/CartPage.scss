@@ -1,0 +1,53 @@
+@import "../../helpers/utils";
+
+.cart-page {
+  &__container {
+    display: grid;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-mobile {
+      display: block;
+    }
+  }
+
+  &__list {
+    margin-bottom: 32px;
+
+    & li:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__total {
+    padding: 24px;
+    text-align: center;
+    border: 1px solid $gray-elements;
+    height: fit-content;
+
+    &-price {
+      @extend %mont-bold-style;
+    }
+
+    & > p {
+      @extend %body-text;
+      
+      color: $gray-secondary;
+      padding-bottom: 24px;
+
+      border-bottom: 1px solid $gray-elements;
+
+      margin-bottom: 24px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+
+  &__is-empty {
+    @extend %mont-bold-style;
+  }
+}

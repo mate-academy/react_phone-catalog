@@ -1,0 +1,42 @@
+%mont-style {
+  font-family: Mont, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+%mont-semibold-style {
+  font-family: "Mont SemiBold", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+%mont-bold-style {
+  font-family: "Mont Bold", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+%body-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px; /* 150% */
+}
+
+%small-text {
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+%buttons {
+  font-family: "Mont SemiBold", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px; /* 150% */
+  color: $gray-primary;
+}

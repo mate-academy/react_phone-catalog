@@ -1,0 +1,75 @@
+@import "../../helpers/utils";
+
+.header {
+  height: $header-height;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  align-items: center;
+  box-shadow: 0 1px 0 0 $gray-elements;
+
+  &__navigation {
+    display: flex;
+    gap: $nav-gap;
+    line-height: 11px;
+
+    height: $header-height;
+    align-items: center;
+  }
+
+  &__right-side-options {
+    display: flex;
+
+    & a {
+      height: $header-height;
+      padding: 24px;
+      box-shadow: -1px 0 0 $gray-elements;
+
+    }
+
+    & span {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 13px;
+      height: 13px;
+      text-align: center;
+      line-height: 13px;
+
+      @extend %small-text;
+
+      font-size: 9px;
+      color: $c-white;
+
+      background-color: $c-red;
+      border: 1px solid $c-white;
+      border-radius: 50%;
+    }
+  }
+
+  a {
+    position: relative;
+  }
+
+  a::after,
+  .is-active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    width: 0;
+    height: 3px;
+    background-color: $gray-primary;
+    transition: width $transition-duration,
+      left $transition-duration,
+      right $transition-duration;
+  }
+
+  a.is-active::after,
+  .is-active::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+}
