@@ -17,8 +17,8 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
   const {
     images = [],
     name,
-    priceDiscount,
-    priceRegular,
+    priceDiscount = 0,
+    priceRegular = 0,
     description = [],
   } = product;
 
