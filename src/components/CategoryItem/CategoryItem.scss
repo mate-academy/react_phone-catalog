@@ -1,6 +1,8 @@
 @import '../../styles/utils/utils';
 
 .category-item {
+  width: 100%;
+
   &__wrapper {
     max-width: 368px;
     overflow: hidden;
