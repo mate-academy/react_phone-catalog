@@ -43,6 +43,7 @@ export const CartPage = () => {
             <div className="cart-page__list">
               {products.map(item => (
                 <CartItem
+                  key={item.image}
                   product={item}
                 />
               ))}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './ProductCard.scss';
 import { Product } from '../../types/product';
 import { AddToCart } from '../AddToCart';
+import { CartItemType } from '../../types/cart';
 
 type Props = {
   product: Product;
@@ -21,6 +22,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     capacity,
     ram,
   } = product;
+
+  const cartItem: CartItemType = {
+    itemId,
+    name,
+    image,
+    price,
+    quantity: 1,
+  };
 
   const preparedCapacity = useMemo(() => {
     return `${capacity.slice(0, -2)} ${capacity.slice(-2)}`;
@@ -72,7 +81,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </ul>
       </Link>
 
-      <AddToCart product={product} />
+      <AddToCart product={cartItem} />
     </article>
   );
 };

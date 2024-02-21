@@ -4,19 +4,16 @@ import './AddToCart.scss';
 import { DispatchContext, StateContext } from '../../store/State';
 import { MyButton } from '../UI/MyButton';
 import { CartItemType } from '../../types/cart';
-import { Product } from '../../types/product';
 
 type Props = {
-  product: Product;
+  product: CartItemType;
 };
 
 export const AddToCart: React.FC<Props> = ({ product }) => {
   const {
     itemId,
-    name,
-    image,
-    price,
   } = product;
+
   const [favorite, setFavorite] = useState(false);
   const { favoriteProducts, cart } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
@@ -32,14 +29,6 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   }
 
   function handleAddToCart() {
-    const cartItem: CartItemType = {
-      itemId,
-      name,
-      image,
-      price,
-      quantity: 1,
-    };
-
     if (isAdded) {
       const updatedCart = cart.filter(el => el.itemId !== itemId);
 
@@ -48,7 +37,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
       return;
     }
 
-    dispatch({ type: 'updateCart', payload: [...cart, cartItem] });
+    dispatch({ type: 'updateCart', payload: [...cart, product] });
   }
 
   useEffect(() => {

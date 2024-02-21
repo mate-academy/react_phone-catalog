@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import './ProductDetails.scss';
 import { AddToCart } from '../AddToCart';
 import { ProductDescription } from '../../types/product';
+import { CartItemType } from '../../types/cart';
 
 type Props = {
   product: ProductDescription;
@@ -14,7 +14,6 @@ const PARAMS: (keyof ProductDescription)[] = [
 ];
 
 export const ProductDetails: React.FC<Props> = ({ product }) => {
-  const { state } = useLocation();
   const {
     images = [],
     name,
@@ -22,6 +21,14 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     priceRegular,
     description = [],
   } = product;
+
+  const cartItemData: CartItemType = {
+    itemId: product.id,
+    name,
+    image: images[0],
+    price: priceDiscount,
+    quantity: 1,
+  };
 
   const [mainImage, setMainImage] = useState('');
 
@@ -66,7 +73,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
           </div>
 
           <div className="details__buttons">
-            <AddToCart product={state.product} />
+            <AddToCart product={cartItemData} />
           </div>
 
           <div className="details__params">
