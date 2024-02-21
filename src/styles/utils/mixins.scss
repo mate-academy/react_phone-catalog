@@ -65,3 +65,20 @@
 @mixin border {
   border: 1px solid $color-background;
 }
+
+
+@mixin scroll-bar {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-secondary;
+    outline: 1px solid $color-secondary;
+    border-radius: 5px;
+  }
+}

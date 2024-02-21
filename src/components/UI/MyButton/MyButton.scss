@@ -8,8 +8,14 @@
   align-items: center;
   color: $color-white;
   background-color: $color-primary;
-  transition: box-shadow ease-in-out $transition-duration;
+  transition: all ease-in-out $transition-duration;
   cursor: pointer;
+
+  &--selected {
+    border: 1px solid $color-elements;
+    color: $color-selected;
+    background-color: $color-white;
+  }
 
   &:disabled {
     opacity: 50%;

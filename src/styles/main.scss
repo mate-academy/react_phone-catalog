@@ -7,6 +7,8 @@
   line-height: 21px;
   color: $color_primary;
   scroll-behavior: smooth;
+
+  @include scroll-bar;
 }
 
 .page__content {

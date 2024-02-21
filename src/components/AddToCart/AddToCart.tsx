@@ -18,7 +18,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   const { favoriteProducts, cart } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
 
-  const isAdded = cart.some(el => el.itemId === itemId);
+  const isSelected = cart.some(el => el.itemId === itemId);
 
   function handleSetFavorite() {
     if (!favorite) {
@@ -29,7 +29,7 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
   }
 
   function handleAddToCart() {
-    if (isAdded) {
+    if (isSelected) {
       const updatedCart = cart.filter(el => el.itemId !== itemId);
 
       dispatch({ type: 'updateCart', payload: updatedCart });
@@ -50,8 +50,9 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
     <div className="add-to-cart__btnbox">
       <MyButton
         handleClick={() => handleAddToCart()}
+        isSelected={isSelected}
       >
-        {isAdded ? 'Added to cart' : 'Add to cart'}
+        {isSelected ? 'Added to cart' : 'Add to cart'}
       </MyButton>
 
       <button
