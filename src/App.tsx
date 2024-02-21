@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import './App.scss';
 import { Loader } from './components/Loader/Loader';
 import {
@@ -24,7 +24,7 @@ import {
 } from './pages/TabletsPage/TabletsPage';
 import { AppContextProvider } from './store/AppContext';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <RootLayout />,
