@@ -2,6 +2,7 @@ import { Container } from '../../components/Container/Container';
 import { Error } from '../../components/Error/Error';
 import { Footer } from '../../components/Footer/Footer';
 import { Header } from '../../components/Header/Header';
+import './ErrorPage.scss';
 
 export const ErrorPage = () => {
   return (
@@ -9,7 +10,9 @@ export const ErrorPage = () => {
       <Header />
       <main className="root">
         <Container>
-          <Error />
+          <div className="error-page">
+            <Error />
+          </div>
         </Container>
       </main>
       <Footer />

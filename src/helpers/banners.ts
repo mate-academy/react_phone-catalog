@@ -1,18 +1,14 @@
-import phones from '../assets/images/banners/banner-phones.png';
-import tablets from '../assets/images/banners/banner-tablets.png';
-import accessories from '../assets/images/banners/banner-accessories.png';
-
 export const banners = [
   {
-    url: phones,
+    url: `${process.env.PUBLIC_URL}/images/banners/banner-phones.png`,
     title: 'phones',
   },
   {
-    url: tablets,
+    url: `${process.env.PUBLIC_URL}/images/banners/banner-tablets.png`,
     title: 'tablets',
   },
   {
-    url: accessories,
+    url: `${process.env.PUBLIC_URL}/images/banners/banner-accessories.png`,
     title: 'accessories',
   },
 ];

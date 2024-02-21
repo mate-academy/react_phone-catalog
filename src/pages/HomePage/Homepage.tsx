@@ -10,12 +10,6 @@ import { Product } from '../../types/Product';
 import { SortType } from '../../types/SortType';
 import './HomePage.scss';
 
-// type LoaderData = {
-//   isError: boolean;
-//   message?: string;
-//   products: Product[],
-// };
-
 export const HomePage: React.FC = () => {
   const data = useLoaderData() as Product[];
   const sortedByDiscount = sortProducts([...data], SortType.Discount);
