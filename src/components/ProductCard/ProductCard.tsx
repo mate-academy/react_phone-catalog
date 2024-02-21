@@ -61,7 +61,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
         <div className="product-card__pricebox">
           <h2>{`$${price}`}</h2>
-
           <h2 className="product-card__price">{`$${fullPrice}`}</h2>
         </div>
 
