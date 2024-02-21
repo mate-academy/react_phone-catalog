@@ -5,7 +5,7 @@ import React from "react";
 import { Product } from "./types";
 import axios from "axios";
 
-type Action = { type: ACTIONS.SET_ITEMS_PER_PAGE, payload: number }
+type Action = { type: ACTIONS.SET_ITEMS_PER_PAGE, payload: string }
   | { type: ACTIONS.SET_FAVOUTITES, payload: Product }
   | { type: ACTIONS.SET_PRODUCTS, payload: Product[] }
   | { type: ACTIONS.ADD_TO_CARD, payload: Product }
@@ -13,7 +13,7 @@ type Action = { type: ACTIONS.SET_ITEMS_PER_PAGE, payload: number }
   | { type: ACTIONS.DELETE_FROM_FAVOURITES, payload: Product }
 
 interface Data {
-  itemsPerPage: number,
+  itemsPerPage: string,
   favourites: Array<Product>
   products: Array<Product>
   card: Product[],
@@ -41,11 +41,11 @@ function reducer(state: Data, action: Action) {
     }
     case ACTIONS.DELETE_FROM_CARD: {
       const indexElement = state.card.indexOf(action.payload);
-      
+
       const copy = [...state.card];
-      
+
       copy.splice(indexElement, 1);
-      
+
       return {
         ...state,
         card: copy,
@@ -53,11 +53,11 @@ function reducer(state: Data, action: Action) {
     }
     case ACTIONS.DELETE_FROM_FAVOURITES: {
       const indexElement = state.favourites.indexOf(action.payload);
-      
+
       const copy = [...state.favourites];
-      
+
       copy.splice(indexElement, 1);
-      
+
       return {
         ...state,
         favourites: copy,
@@ -79,7 +79,7 @@ type State = {
 
 const initialState: State = {
   state: {
-    itemsPerPage: 16,
+    itemsPerPage: '16',
     favourites: [],
     products: [],
     card: [],

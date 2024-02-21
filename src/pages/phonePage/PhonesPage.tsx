@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { PhoneItem } from '../../components/phone/PhoneItem';
 import React, {
-  useContext, 
+  useContext,
 } from "react";
 import { StateContext } from '../../AppContext';
 import {
@@ -23,21 +23,23 @@ export const PhonesPages: React.FC = () => {
   const search = searchParams.get('search') || '';
 
   if (state.products && state.favourites.length > 0) {
-    console.log(getFavourite(state.products, state.favourites[0]) , 'find fav');
+    console.log(getFavourite(state.products, state.favourites[0]), 'find fav');
   }
 
   let currentItems: Product[] = [];
 
   if (state.products) {
-  if (search.length > 0) {
-    currentItems = state.products.filter(phone => phone.name.includes(search));
-  } else {
-    currentItems = getCurrentItems(state.products, currentPage, +itemsPerpage);
+    if (search.length > 0) {
+      currentItems = state.products.filter(phone => phone.name.includes(search));
+    } else if (itemsPerpage === 'All') {
+      currentItems = state.products;
+    } else {
+      currentItems = getCurrentItems(state.products, currentPage, +itemsPerpage);
+    }
   }
-}
 
   function changeHandler(e: React.ChangeEvent<HTMLSelectElement>) {
-    dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: +e.target.value })
+    dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: e.target.value })
     params.set('itemsPerPage', e.target.value);
     setSearchParams(params);
   }
@@ -78,17 +80,17 @@ export const PhonesPages: React.FC = () => {
         <div className="select-right">
           <div className="select-text">Items on page</div>
 
-          <select className='textField' onChange={(e) => changeHandler(e)}>
-            <option value="4" selected={itemsPerpage === "4"}  >
+          <select className='textField' defaultValue='4' onChange={(e) => changeHandler(e)}>
+            <option value="4">
               4
             </option>
-            <option value="8" selected={itemsPerpage === "8"} >
+            <option value="8">
               8
             </option>
-            <option value="16" selected={itemsPerpage === "16"}>
+            <option value="16">
               16
             </option>
-            <option value="All" >
+            <option value="All">
               All
             </option>
           </select>
@@ -106,7 +108,8 @@ export const PhonesPages: React.FC = () => {
         })}
       </div>
 
-      <Pagination />
+      {state.itemsPerPage !== 'All' && <Pagination />}
+
 
 
     </div>
