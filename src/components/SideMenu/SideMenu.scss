@@ -5,7 +5,7 @@
   position: fixed;
   padding: 40px;
   inset: 0;
-  z-index: 1;
+  z-index: 100;
   transition: transform ease-in-out $transition-duration;
 
   &__header {

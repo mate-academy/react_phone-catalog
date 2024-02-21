@@ -1,0 +1,38 @@
+@import "../../../styles/utils/utils";
+
+.my-modal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: $color-primary-opasity;
+
+  &__content {
+    position: relative;
+    box-sizing: border-box;
+    padding: 40px;
+    border-radius: 12px;
+    background-color: $color-white;
+    max-width: min(80vw, 600px);
+    width: 100%
+  }
+
+  &__close {
+    background-image: url(../../../../public/img/icons/close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+    padding: 12px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+
+    @include hover(transform, scale(1.2));
+  }
+}

@@ -9,11 +9,14 @@ import { CartItem } from '../../components/CartItem';
 import { StateContext } from '../../store/State';
 import { getLocalStorigeData } from '../../helpers/localStorageHelper';
 import { Cart } from '../../types/cart';
+import { MyModal } from '../../components/UI/MyModal';
+import { setScrollState } from '../../helpers/pageHelper';
 
 export const CartPage = () => {
   const { cart } = useContext(StateContext);
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState<Cart>([]);
+  const [showModal, setShowModal] = useState(false);
 
   const cartData = cart.reduce((acc, item) => {
     return {
@@ -33,6 +36,14 @@ export const CartPage = () => {
 
   return (
     <section className="cart-page">
+      {showModal && (
+        <MyModal
+          closeModal={() => setShowModal(false)}
+        >
+          <h2>`We are sorry, but this feature is not implemented yet</h2>
+        </MyModal>
+      )}
+
       <MyBackLink />
       <h1 className="cart-page__title">Cart</h1>
 
@@ -63,7 +74,10 @@ export const CartPage = () => {
                     </p>
 
                     <MyButton
-                      handleClick={() => { }}
+                      handleClick={() => {
+                        setShowModal(true);
+                        setScrollState('hidden');
+                      }}
                     >
                       Checkout
                     </MyButton>
