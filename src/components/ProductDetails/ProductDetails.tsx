@@ -55,7 +55,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
                 onClick={() => setMainImage(preview)}
               >
                 <img
-                  src={`_new/${preview}`}
+                  src={`${preview}`}
                   alt="preview"
                   className="details__preview-item"
                 />
@@ -65,7 +65,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
 
           <div className="details__img-box">
             <img
-              src={`_new/${mainImage}`}
+              src={`${mainImage}`}
               alt={name}
               className="details__img"
             />
