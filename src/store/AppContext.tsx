@@ -8,8 +8,7 @@ import {
 import { PhoneDetails } from '../types/PhoneDetails';
 import { Product } from '../types/Product';
 
-export type CartItem = (Product & { quantity: number })
-| (Product & { quantity: number });
+export type CartItem = (Product & { quantity: number });
 
 export type Products = (Product | PhoneDetails);
 
