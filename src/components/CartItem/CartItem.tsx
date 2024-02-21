@@ -9,6 +9,11 @@ type Props = {
   product: CartItemType;
 };
 
+enum Action {
+  add = 'add',
+  remove = 'remove',
+}
+
 export const CartItem: React.FC<Props> = ({ product }) => {
   const {
     image,
@@ -29,29 +34,23 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 
-  function handleRemoveItem() {
-    setCounter(prev => prev - 1);
+  function handleChangeCounter(action: string) {
+    let updatedCart: CartItemType[] = [];
 
-    const updatedCart = cart.map(el => {
-      if (el.itemId === itemId) {
-        return { ...el, quantity: el.quantity - 1 };
-      }
-
-      return el;
+    setCounter(prev => {
+      return action === Action.remove
+        ? prev - 1
+        : prev + 1;
     });
 
-    dispatch({ type: 'updateCart', payload: updatedCart });
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-  }
-
-  // COMBINE TO ONE FUNCTION!!
-
-  function handleAddItem() {
-    setCounter(prev => prev + 1);
-
-    const updatedCart = cart.map(el => {
+    updatedCart = cart.map(el => {
       if (el.itemId === itemId) {
-        return { ...el, quantity: el.quantity + 1 };
+        return {
+          ...el,
+          quantity: action === Action.remove
+            ? el.quantity - 1
+            : el.quantity + 1,
+        };
       }
 
       return el;
@@ -90,7 +89,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             className="cart-item__control cart-item__control--minus"
             aria-label="minus one"
             disabled={counter === 1}
-            onClick={handleRemoveItem}
+            onClick={() => handleChangeCounter(Action.remove)}
           />
 
           <p>{counter}</p>
@@ -99,7 +98,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             type="button"
             className="cart-item__control cart-item__control--plus"
             aria-label="plus one"
-            onClick={handleAddItem}
+            onClick={() => handleChangeCounter(Action.add)}
           />
         </div>
       </div>

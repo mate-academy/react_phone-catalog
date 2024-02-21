@@ -43,6 +43,7 @@ export const Header = () => {
         </NavLink>
         <NavLink
           to="/cart"
+          state={{ previousPath: pathname }}
           className={({ isActive }) => classNames('header__link', {
             'header__link--active': isActive,
           })}

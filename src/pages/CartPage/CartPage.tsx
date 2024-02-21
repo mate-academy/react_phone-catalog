@@ -39,27 +39,38 @@ export const CartPage = () => {
       {loading
         ? <MyLoader />
         : (
-          <div className="cart-page__products">
-            <div className="cart-page__list">
-              {products.map(item => (
-                <CartItem
-                  key={item.image}
-                  product={item}
-                />
-              ))}
-            </div>
+          <>
+            {!products.length
+              ? <h2>Your cart is empty</h2>
+              : (
+                <div className="cart-page__products">
+                  <div className="cart-page__list">
+                    {products.map(item => (
+                      <CartItem
+                        key={item.image}
+                        product={item}
+                      />
+                    ))}
+                  </div>
 
-            <div className="cart-page__total">
-              <p className="cart-page__total-price">{`$${totalPrice}`}</p>
-              <p className="cart-page__total-quantity">{`Total for ${quantity} items`}</p>
+                  <div className="cart-page__total">
+                    <p className="cart-page__total-price">
+                      {`$${totalPrice}`}
+                    </p>
 
-              <MyButton
-                handleClick={() => {}}
-              >
-                Checkout
-              </MyButton>
-            </div>
-          </div>
+                    <p className="cart-page__total-quantity">
+                      {`Total for ${quantity} items`}
+                    </p>
+
+                    <MyButton
+                      handleClick={() => { }}
+                    >
+                      Checkout
+                    </MyButton>
+                  </div>
+                </div>
+              )}
+          </>
         )}
     </section>
   );
