@@ -4,10 +4,10 @@
 This project built using React and other related technologies.
 
 ##  The project was created according to the layout:
-  [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2);
+  # [This design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2)
 
 ##  Link to the finished project:
-  [Demo Link](https://RomanOstrous.github.io/react_phone-catalog);
+  # [Demo Link](https://RomanOstrous.github.io/react_phone-catalog)
 	
 ## Technologies
 The following technologies were used to build this project:
