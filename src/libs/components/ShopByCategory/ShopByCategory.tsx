@@ -1,4 +1,5 @@
-import { CategoryCard, ImageUrl } from '../CategoryCard';
+import { CategoryName } from '../../types/categoryName.enum';
+import { CategoryCard } from '../CategoryCard';
 import { SectionHeader } from '../SectionHeader';
 import './ShopByCategory.scss';
 
@@ -6,24 +7,18 @@ export const ShopByCategory = () => {
   return (
     <div className="main__shop-by-category shop-by-category">
       <SectionHeader title="Shop by category" />
-      <div className="shop-by-category__cards">
+      <div
+        className="shop-by-category__cards"
+        data-cy="categoryLinksContainer"
+      >
         <CategoryCard
-          title="Mobile phones"
-          modelsCount={95}
-          photoName={ImageUrl.phones}
-          pass="/phones"
+          pass={CategoryName.Phones}
         />
         <CategoryCard
-          title="Tablets"
-          modelsCount={24}
-          photoName={ImageUrl.tablets}
-          pass="/tablets"
+          pass={CategoryName.Tablets}
         />
         <CategoryCard
-          title="Accessories"
-          modelsCount={100}
-          photoName={ImageUrl.accessories}
-          pass="/accessories"
+          pass={CategoryName.Accessories}
         />
       </div>
     </div>

@@ -7,13 +7,11 @@ import { useAppDispatch } from '../../app/hooks';
 import * as productsActions from '../../slices/productsSlice';
 import './Root.scss';
 
-const PRODUCTS_URL = 'api/products.json';
-
 export const Root = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(productsActions.fetchAll(PRODUCTS_URL));
+    dispatch(productsActions.fetchAll());
   }, [dispatch]);
 
   return (

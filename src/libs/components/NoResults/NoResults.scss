@@ -1,0 +1,21 @@
+@import '../../../assets/css/variables';
+
+.no-results-container {
+  margin-top: 80px;
+  align-self: flex-start;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__back-link {
+    font-size: 22px;
+    color: $secondary;
+    transition: all 0.3s;
+    width: max-content;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+  }

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 
+import { Icon } from '../Icon';
 import './BuyButtons.scss';
 
 type Props = {
@@ -12,6 +13,8 @@ export const BuyButtons: React.FC<Props> = ({
   classNames,
   containerHeight = 40,
 }) => {
+  const isFavorite = true;
+
   return (
     <div
       className={cn(
@@ -24,7 +27,12 @@ export const BuyButtons: React.FC<Props> = ({
     >
       <button
         type="button"
-        className="card-buttons__add"
+        className={cn(
+          'card-buttons__add',
+          {
+            'card-buttons__add--selected': false,
+          },
+        )}
       >
         Add to card
       </button>
@@ -35,7 +43,12 @@ export const BuyButtons: React.FC<Props> = ({
         style={{
           width: containerHeight,
         }}
-      />
+      >
+        <Icon
+          iconName={isFavorite ? 'favourites' : 'favouritesCounter'}
+          classNames="card-buttons__like-icon"
+        />
+      </button>
     </div>
   );
 };

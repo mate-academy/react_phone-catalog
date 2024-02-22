@@ -19,15 +19,44 @@
     font-weight: 600;
     line-height: 21px;
     color: $white;
+    transition: all .3s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &:active, &--selected {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements
+    }
   }
 
   &__like {
-    background-image: url(../../../assets/icons/favourites.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: transparent;
     padding: 12px;
     border: 1px solid $icons;
     cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      border-color: $primary
+    }
+
+    &:active {
+      border-color: $icons
+    }
+
+    &:active .card-buttons__like-icon path{
+      fill: $red;
+    }
+  }
+
+  &__like-icon {
+    width: 16px;
+    height: 16px;
   }
 }

@@ -3,4 +3,9 @@
   text-decoration: none;
   align-items: center;
   padding: 20px 24px;
+  transition: all 0,3s;
+
+  &:hover  {
+    transform: scale(1.1);
+  }
 }

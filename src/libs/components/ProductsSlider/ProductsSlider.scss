@@ -43,6 +43,7 @@
     height: 32px;
     padding: 8px;
     border: 1px solid $icons;
+    transition: border .3s;
 
     & path {
       fill: $primary;
@@ -50,10 +51,15 @@
 
     &--disabled {
       border: 1px solid $elements;
+      cursor: not-allowed;
     }
 
     &--disabled path{
       fill: $icons;
+    }
+
+    &:not(.section-buttons__icon--disabled):hover {
+      border: 1px solid $primary;
     }
   }
 }

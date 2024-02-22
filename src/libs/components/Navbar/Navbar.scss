@@ -29,7 +29,11 @@
     color: $secondary;
     text-decoration: none;
     padding: 26px 0;
+    transition: all 0.3s;
 
+    &:hover {
+      color: $primary;
+    }
 
     &--active {
     color: $primary;

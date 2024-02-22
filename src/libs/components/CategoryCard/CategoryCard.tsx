@@ -1,27 +1,31 @@
 import { Link } from 'react-router-dom';
 import './CategoryCard.scss';
-
-export enum ImageUrl {
-  phones = 'phones-category.jpg',
-  tablets = 'tablets-category.jpg',
-  accessories = 'accessories-category.jpg',
-}
-
-type LinkPass = '/phones' | '/tablets' | '/accessories';
+import { CategoryName } from '../../types/categoryName.enum';
+import { useAppSelector } from '../../app/hooks';
+import {
+  changeCategoryNameIntoPropductCategory,
+  getCategoryTitle,
+} from '../../utils';
 
 type Props = {
-  title: string,
-  modelsCount: number,
-  photoName: ImageUrl,
-  pass: LinkPass,
+  pass: CategoryName,
 };
 
 export const CategoryCard: React.FC<Props> = ({
-  title,
-  modelsCount,
-  photoName,
   pass,
 }) => {
+  const { allProducts } = useAppSelector(store => store.products);
+
+  const title = getCategoryTitle(pass);
+
+  const modelsCount = allProducts.filter(
+    product => {
+      const type = changeCategoryNameIntoPropductCategory(pass);
+
+      return product.type === type;
+    },
+  ).length;
+
   return (
     <Link
       to={pass}
@@ -29,7 +33,7 @@ export const CategoryCard: React.FC<Props> = ({
       data-cy="categoryLinksContainer"
     >
       <img
-        src={`/img/categories/${photoName}`}
+        src={`/img/categories/${pass}-category.jpg`}
         alt={title}
         className="category-card__photo"
       />

@@ -8,6 +8,11 @@
   height: 507px;
   border: 1px solid $elements;
   padding: 32px 24px 24px;
+  transition: box-shadow .3s;
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
+  }
 
   &__photo-link {
     display: flex;
@@ -26,12 +31,20 @@
   }
 
   &__title {
+    min-height: 42px;
     height: 42px;
     font-size: 14px;
     font-weight: 500;
     color: $primary;
     margin-bottom: 6.5px;
     text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.3s;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__price {

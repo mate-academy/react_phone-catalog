@@ -28,7 +28,7 @@ export const getBrandNewProducts = (products: Product[]) => {
 };
 
 export const HomePage = () => {
-  const { items: products } = useAppSelector(store => store.products);
+  const { allProducts: products } = useAppSelector(store => store.products);
 
   const productsWithHotPrice = useMemo(() => {
     return getHotPriceProducts(products);

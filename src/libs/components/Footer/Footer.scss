@@ -22,6 +22,11 @@
     font-weight: 700;
     text-decoration: none;
     color: $secondary;
+    transition: all .3s;
+
+    &:hover {
+      color: $primary
+    }
   }
 }
 
@@ -30,6 +35,7 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  transition: all .3s;
 
   &__text {
     font-size: 12px;
@@ -51,5 +57,13 @@
 
   &__icon path{
     fill: $primary;
+  }
+
+  &:hover &__text {
+    color: $primary;
+  }
+
+  &:hover &__button {
+    border-color: $primary;
   }
 }

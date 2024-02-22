@@ -3,6 +3,12 @@ const BASE_API_URL = 'https://mate-academy.github.io/react_phone-catalog/';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
+function wait(delay: number) {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+}
+
 export async function request<T>(
   url: string,
   method: RequestMethod = 'GET',
@@ -18,6 +24,8 @@ export async function request<T>(
   }
 
   const response = await fetch(BASE_API_URL + url, options);
+
+  await wait(300);
 
   return response.json();
 }

@@ -12,38 +12,53 @@
     justify-content: center;
     width: 32px;
     height: 32px;
+    background: none;
+    border: none;
     cursor: pointer;
   }
 
-  &__page-buttons {
+  &__buttons-list {
     display: flex;
     gap: 8px;
+    list-style: none;
   }
 
   &__page-button {
     border: 1px solid $elements;
+    transition: all 0.3s;
 
-    &--current {
+    &:hover {
+      border-color: $primary;
+    }
+
+    &--active {
       background-color: $primary;
       border-color: $primary;
       color: $white;
     }
   }
 
-
   &__arrow-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 8px;
     border: 1px solid $icons;
-    background-position: center;
-    background-repeat: no-repeat;
     background-color: transparent;
+    transition: all 0.3s;
 
-    &--prew {
-      background-image: url(../../../assets/icons/arrow-left.svg);
+
+    &--disabled {
+      border-color: $elements;
+      cursor: not-allowed;
     }
 
-    &--next {
-      background-image: url(../../../assets/icons/arrow-right.svg);
+    &:not(.page-pagination__arrow-button--disabled) path {
+      fill: $primary;
+    }
+
+    &:not(.page-pagination__arrow-button--disabled):hover {
+      border-color: $primary;
     }
   }
 }

@@ -1,0 +1,28 @@
+@import '../../../assets/css/variables';
+
+.Loader {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    border: 4px solid #ddd;
+    border-left-color: #000;
+    animation: load8 1.2s infinite linear;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

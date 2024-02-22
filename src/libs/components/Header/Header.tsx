@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 import {
   handleSearchBarVisibility,
-} from '../../utils/handleSearchBarVisibility';
+} from '../../utils';
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 import { SearchBar } from '../SearchBar';
@@ -22,6 +22,8 @@ export const Header: React.FC<Props> = ({
   const pathes = location.pathname.split('/').slice(1);
   const hasSearchBar = handleSearchBarVisibility(pathes);
   const isCartPage = pathes[0] === 'cart';
+  const isFav = true;
+  const hasProdInCart = true;
 
   return (
     <header className={cn('header', classNames)}>
@@ -43,7 +45,7 @@ export const Header: React.FC<Props> = ({
               )
             )}
           >
-            { true
+            { isFav
               ? (
                 <Icon
                   iconName="favourites"
@@ -64,12 +66,12 @@ export const Header: React.FC<Props> = ({
           to="cart"
           className={({ isActive }) => (
             cn(
-              'header__icon-link header__icon-link--last',
+              'header__icon-link',
               { 'header__link--active': isActive },
             )
           )}
         >
-          { true
+          { hasProdInCart
             ? (
               <Icon
                 iconName="shopping"

@@ -1,5 +1,6 @@
 import cn from 'classnames';
 
+import { parseSpecsValue } from '../../utils';
 import './TechSpecs.scss';
 
 type Props = {
@@ -9,25 +10,13 @@ type Props = {
   classNames?: string,
   hasBorder?: boolean,
 };
-export const parseSpecsValue = (value: string) => {
-  const number = parseFloat(value);
-  const text = value.replace(String(number), ' ');
-
-  return number + text;
-};
-
-export const defaultSpecs = {
-  Screen: '5.8” OLED',
-  Capacity: '64 GB',
-  RAM: '4 GB',
-};
 
 export const TechSpecs: React.FC<Props> = ({
-  specs = defaultSpecs,
+  specs = {},
   classNames,
   hasBorder = false,
 }) => {
-  const arr = Object.entries(specs);
+  const productSpecs = Object.entries(specs);
 
   return (
     <table
@@ -41,7 +30,7 @@ export const TechSpecs: React.FC<Props> = ({
     >
       <tbody className="phone-details__body">
         {
-          arr.map(([key, value]) => (
+          productSpecs.map(([key, value]) => (
             <tr
               className="phone-details__row"
               key={key}

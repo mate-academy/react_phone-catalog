@@ -12,6 +12,11 @@
     height: 368px;
     width: 100%;
     margin-bottom: 24px;
+    transition: box-shadow .3s;
+  }
+
+  &:hover .category-card__photo{
+    box-shadow: 0 0 15px rgba(33,33,33,.5);
   }
 
   &__title {

@@ -9,6 +9,11 @@
     width: 16px;
     height: 16px;
     background-image: url(../../../assets/icons/home.svg);
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 
   &__link {
