@@ -15,4 +15,14 @@
   &__counter {
     color: $color-secondary;
   }
+
+  &__wrapper {
+    @include on-tablet-s {
+      margin-top: 84px;
+    }
+
+    @include on-mobile-l {
+      margin-top: 110px;
+    }
+  }
 }

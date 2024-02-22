@@ -31,9 +31,13 @@ export const Header = () => {
 
         <NavLink
           to="/favorite"
-          className={({ isActive }) => classNames('header__link', {
-            'header__link--active': isActive,
-          })}
+          className={({ isActive }) => {
+            return classNames(
+              'header__link header__link--favorite', {
+                'header__link--active': isActive,
+              },
+            );
+          }}
         >
           <img src="img/icons/heart.svg" alt="favorite" />
 
@@ -45,9 +49,13 @@ export const Header = () => {
         <NavLink
           to="/cart"
           state={{ previousPath: pathname }}
-          className={({ isActive }) => classNames('header__link', {
-            'header__link--active': isActive,
-          })}
+          className={({ isActive }) => {
+            return classNames(
+              'header__link header__link--cart', {
+                'header__link--active': isActive,
+              },
+            );
+          }}
         >
           <img src="img/icons/cart.svg" alt="cart" />
           {!!productsInCart && (

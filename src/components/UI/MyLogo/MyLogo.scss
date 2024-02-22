@@ -10,4 +10,8 @@
   &:hover {
     transform: scale(1.2);
   }
+
+  @include on-desktop {
+    padding-inline: 20px;
+  }
 }

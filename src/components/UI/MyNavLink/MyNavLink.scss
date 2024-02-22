@@ -1,8 +1,12 @@
-@import '../../../styles/utils/utils';
-
-$padding-inline: 32px;
+@import "../../../styles/utils/utils";
 
 .my-navlink {
+  --padding-inline: 32px;
+  
+  @include on-tablet {
+  --padding-inline: 12px;
+  }
+
   @include navbar-link;
 
   &::before {
@@ -16,7 +20,7 @@ $padding-inline: 32px;
   }
 
   &--active::before {
-    width: calc(100% - $padding-inline * 2);
+    width: calc(100% - var(--padding-inline) * 2);
   }
 
   &-side-menu {

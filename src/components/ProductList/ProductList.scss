@@ -1,6 +1,8 @@
 @import "../../styles/utils/utils";
 
 .product-list {
+  position: relative;
+  
   --column-count: 4;
 
   padding-bottom: 80px;
@@ -18,7 +20,7 @@
     gap: 16px;
     row-gap: 40px;
     margin-bottom: 40px;
-    padding-top: 80px;
+    padding-top: 50px;
 
     @include on-desktop-s {
       --column-count: 3;
@@ -30,38 +32,41 @@
 
     @include on-mobile-l {
       --column-count: 1;
-      
-      padding-top: 140px;
     }
   }
 
-  &__controls {
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 24px;
+  // &__controls {
+  //   position: absolute;
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   gap: 16px;
+  //   margin-bottom: 24px;
 
 
-    @include on-mobile-l {
-      width: calc(100% - 60px);
-      background-color: $color-white;
-    }
+  //   @include on-tablet-s {
+  //     width: calc(100% - 60px);
+  //     background-color: $color-white;
+  //     top: -74px;
+  //   }
 
-    &--left {
-      width: 176px;
+  //   @include on-tablet-s {
+  //     top: -94px;
+  //   }
 
-      @include on-mobile-l {
-        width: 100%;
-      }
-    }
+  //   &--left {
+  //     width: 176px;
 
-    &--right {
-      width: 128px;
+  //     @include on-mobile-l {
+  //       width: 100%;
+  //     }
+  //   }
 
-      @include on-mobile-l {
-        width: 100%;
-      }
-    }
-  }
+  //   &--right {
+  //     width: 128px;
+
+  //     @include on-mobile-l {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
 }

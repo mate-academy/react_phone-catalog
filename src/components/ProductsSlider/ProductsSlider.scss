@@ -29,6 +29,10 @@
     @include on-mobile-l {
       top: -62px;
     }
+
+    @include on-mobile-m {
+      top: -42px;
+    }
   }
 
   &__item {

@@ -9,7 +9,7 @@
     @include on-tablet {
       margin-bottom: 60px;
     }
-    
+
     @include on-mobile-m {
       margin-bottom: 40px;
     }
@@ -23,6 +23,10 @@
     @include h1;
 
     margin-bottom: 24px;
+
+    @include on-mobile-m {
+      margin-bottom: 40px;
+    }
   }
 
   &__categories {

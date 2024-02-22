@@ -1,0 +1,28 @@
+@import "../../styles/utils/utils";
+
+.list-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet-s {
+      background-color: $color-white;
+    }
+
+    &--left {
+      width: 176px;
+
+      @include on-mobile-l {
+        width: 100%;
+      }
+    }
+
+    &--right {
+      width: 128px;
+
+      @include on-mobile-l {
+        width: 100%;
+      }
+    }
+  }

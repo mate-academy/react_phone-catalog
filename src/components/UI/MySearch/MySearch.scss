@@ -13,6 +13,7 @@
 
     @include on-mobile-l {
       top: 7px;
+      right: 26px;
     }
   }
 
@@ -38,7 +39,7 @@
     }
 
     @include on-mobile-l {
-      padding: 12px;
+      padding: 12px 30px;
       height: 40px;
       border-bottom: 1px solid $color-background;
     }

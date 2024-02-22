@@ -55,9 +55,10 @@
   }
 
   &__wrapper {
+    width: 100%;
     overflow: hidden;
     z-index: 1;
-    position: relative;
+    position: absolute;
     transition: height ease-in-out $transition-duration;
   }
 

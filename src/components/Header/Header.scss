@@ -31,6 +31,12 @@
     }
   }
 
+  &__left {
+    @include on-mobile-l {
+      justify-content: space-between;
+    }
+  }
+
   &__link {
     padding: 23px;
     display: flex;
@@ -39,6 +45,13 @@
     border-bottom: none;
     box-sizing: border-box;
     position: relative;
+
+    &--favorite,
+    &--cart {
+      @include on-tablet-s {
+        display: none;
+      }
+    }
 
     &--active {
       border-bottom: 2px solid $color-primary;

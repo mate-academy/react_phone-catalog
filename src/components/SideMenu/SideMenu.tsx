@@ -7,6 +7,7 @@ import { setScrollState } from '../../helpers/pageHelper';
 
 export const SideMenu = () => {
   const { hash } = useLocation();
+  const isSideMenuOpened = hash.includes('side-menu');
 
   useEffect(() => {
     if (!hash.includes('side-menu')) {
@@ -18,7 +19,7 @@ export const SideMenu = () => {
     <aside
       className="side-menu"
       id="side-menu"
-      style={{ transform: `translateX(${hash.includes('side-menu') ? 0 : -100}%)` }}
+      style={{ transform: `translateX(${isSideMenuOpened ? 0 : -100}%)` }}
     >
       <div className="side-menu__header">
         <Link to="/" className="side-menu__icon" />
@@ -29,6 +30,8 @@ export const SideMenu = () => {
         <MyNavLink to="/phones"> Phones </MyNavLink>
         <MyNavLink to="/tablets"> Tablets </MyNavLink>
         <MyNavLink to="/accessories"> Accessories </MyNavLink>
+        <MyNavLink to="/favorite">Favorites </MyNavLink>
+        <MyNavLink to="/cart">Cart</MyNavLink>
       </div>
     </aside>
   );
