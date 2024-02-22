@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 import { UpgratedProduct } from '../../types/UpgratedProduct';
 import { ICONS } from '../../images/icons/icons';
-import './ProductsSlider.scss';
 import { ProductsList } from '../ProductsList/ProductsList';
+import './ProductsSlider.scss';
 
 type Props = {
   title: string;

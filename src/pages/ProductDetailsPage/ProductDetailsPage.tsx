@@ -57,6 +57,7 @@ export const ProductDetailsPage = () => {
     return () => {
       setMounted(false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
 
   useEffect(() => {
@@ -126,8 +127,8 @@ export const ProductDetailsPage = () => {
 
             <div className="productDetailsPage__navigation--bottom">
               <Link
-                to="../"
-                className="button productDetailsPage__navigation--link"
+                to=".."
+                className="productDetailsPage__navigation--link"
                 data-cy="backButton"
               >
                 <img src={ICONS.arrowLeft} alt="Arrow back" />
@@ -261,7 +262,7 @@ export const ProductDetailsPage = () => {
                         <div className="productDetailsPage__content--info__store--buttons">
                           <button
                             type="button"
-                            className={classNames('button productDetailsPage__content--info__store--buttons--cart', {
+                            className={classNames('productDetailsPage__content--info__store--buttons--cart', {
                               'productDetailsPage__content--info__store--buttons--cart--active': productFromStorage.addedToCart,
                             })}
                             onClick={onCartClick}

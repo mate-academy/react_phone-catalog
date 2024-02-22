@@ -1,38 +1,45 @@
 @import '../../pages/styles/main';
 
-.smallText {
-  @extend %smallText;
-}
-
-.button {
-  @extend %button;
-}
-
 .dropdown{
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   position: relative;
 
   &__text {
+    @extend %smallText;
+
     color: $color-secondary
   }
 
   &__button {
+    @extend %button;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    color: $color-primary;
     padding: 12px;
     width: 176px;
     height: 40px;
+    border: 1px solid $color-icons;
     box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
+
+    &:focus {
+      border: 1px solid $color-primary;
+    }
   }
 
   &__content {
     position: absolute;
     top: 100%;
     border: 1px solid $color-icons;
+    box-sizing: border-box;
     width: 176px;
     margin-top: 4px;
     padding: 8px 12px;
@@ -53,6 +60,11 @@
 
       &:hover {
         color: $color-primary;
+      }
+
+      &:focus {
+        background-color: $color-hover_backgorund;
+        transform: scale(1.05);
       }
     }
   }

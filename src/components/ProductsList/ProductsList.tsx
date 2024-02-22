@@ -1,8 +1,7 @@
 import React from 'react';
 import { UpgratedProduct } from '../../types/UpgratedProduct';
-
-import './ProductsList.scss';
 import { ProductCard } from '../ProductCard/ProductCard';
+import './ProductsList.scss';
 
 type Props = {
   products: UpgratedProduct[];

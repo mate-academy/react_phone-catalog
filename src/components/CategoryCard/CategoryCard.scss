@@ -10,33 +10,16 @@
   text-decoration: none;
   color: inherit;
 
-  // &__images {
-  //   background-size: cover;
-  //   width: 368px;
-  //   height: 368px;
-  // }
-
   &__image {
-    // background-size: cover;
     width: 368px;
     height: 368px;
+
     transition: transform $effect-duration;
 
     &:hover {
       transform: scale(1.05);
     }
 
-    // &--1 {
-    //   background-image: url("../../images/category-phones.png");
-    // }
-
-    // &--2 {
-    //   background-image: url("../../images/category-tablets.png");
-    // }
-
-    // &--3 {
-    //   background-image: url("../../images/category-accessories.png");
-    // }
   }
 
   &__title {

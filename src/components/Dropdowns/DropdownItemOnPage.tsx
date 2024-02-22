@@ -22,14 +22,14 @@ export const DropdownItemsOnPage = () => {
 
   return (
     <div className="dropdown">
-      <p className="smallText dropdown__text">
+      <p className="dropdown__text">
         Items on page
       </p>
 
       <div>
         <button
           type="button"
-          className="button dropdown__button"
+          className="dropdown__button"
           onClick={() => setIsActive(!isActive)}
         >
           {selectedItem}
@@ -48,7 +48,7 @@ export const DropdownItemsOnPage = () => {
             <button
               type="button"
               key={item}
-              className="button dropdown__content--button"
+              className="dropdown__content--button"
               onClick={() => selectItem(item)}
             >
               {item}

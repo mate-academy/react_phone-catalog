@@ -1,4 +1,5 @@
 import { Banner } from '../../components/Banner/Banner';
+import { BrandNew } from '../../components/BrandNew/BrandNew';
 import { HotPrices } from '../../components/HotPrices/HotPrices';
 import { ShopByCategory } from '../../components/ShopByCategory/ShopByCategory';
 
@@ -13,6 +14,7 @@ export const HomePage = () => {
 
       <ShopByCategory />
 
+      <BrandNew />
     </div>
   );
 };

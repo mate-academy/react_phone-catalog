@@ -8,9 +8,9 @@ import { ICONS } from '../../images/icons/icons';
 import { ProductsList } from '../ProductsList/ProductsList';
 import { Pagination } from '../Pagination/Pagination';
 import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
-import './ProductsPage.scss';
 import { SortByDropdown } from '../Dropdowns/SortByDropdown';
 import { DropdownItemsOnPage } from '../Dropdowns/DropdownItemOnPage';
+import './ProductsPage.scss';
 
 type Props = {
   title: string,

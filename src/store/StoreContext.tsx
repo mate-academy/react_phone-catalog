@@ -61,7 +61,8 @@ export const StoreContext: React.FC<Props> = ({ children }) => {
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
-  }, []); // eslint-disable-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleAction = (product: UpgratedProduct, action: Action) => {
     const newProducts = [...products];

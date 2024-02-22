@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { StateStore } from '../../store/StoreContext';
-// import { IMAGES } from '../../images/images';
+import { IMAGES } from '../../images/images';
 import './CategoryCard.scss';
 
 type Props = {
@@ -14,11 +14,11 @@ export const CategoryCard: React.FC<Props> = ({ category }) => {
   let imgUrl = '';
 
   if (category === 'phones') {
-    imgUrl = '../../images/category-phones.png';
+    imgUrl = IMAGES['category-phones'];
   } else if (category === 'tablets') {
-    imgUrl = '../../images/category-tablets.png';
+    imgUrl = IMAGES['category-tablets'];
   } else {
-    imgUrl = '../../images/category-accessories.png';
+    imgUrl = IMAGES['category-accessories'];
   }
 
   const modelsLength = [...products]
@@ -31,18 +31,6 @@ export const CategoryCard: React.FC<Props> = ({ category }) => {
         src={imgUrl}
         alt={`${category} category`}
       />
-
-      {/* <div className="categoryCard__images">
-        <div
-          className="categoryCard__images categoryCard__image--1"
-        />
-        <div
-          className="categoryCard__images categoryCard__image--2"
-        />
-        <div
-          className="categoryCard__images categoryCard__image--3"
-        />
-      </div> */}
       <h3 className="categoryCard__title">
         {
           category === 'phones'

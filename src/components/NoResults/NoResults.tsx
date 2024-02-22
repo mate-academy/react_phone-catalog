@@ -1,3 +1,5 @@
+import './NoResults.scss';
+
 type Props = {
   category: string,
 };

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SortBy } from '../../types/SortBy';
@@ -8,7 +7,8 @@ import './Dropdowns.scss';
 export const SortByDropdown = () => {
   const [isActive, setIsActive] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sort = SortBy[searchParams.get('sort') as keyof typeof SortBy] || SortBy.age;
+  const sort = SortBy[searchParams
+    .get('sort') as keyof typeof SortBy] || SortBy.age;
   const [selectedItem, setSelectedItem] = useState(sort);
 
   const itemsKeys = Object.keys(SortBy);
@@ -24,7 +24,7 @@ export const SortByDropdown = () => {
   return (
     <div className="dropdown">
       <p
-        className="smallText dropdown__text"
+        className="dropdown__text"
       >
         Sort by
       </p>
@@ -32,7 +32,7 @@ export const SortByDropdown = () => {
       <div>
         <button
           type="button"
-          className="button dropdown__button"
+          className="dropdown__button"
           onClick={() => setIsActive(!isActive)}
         >
           {selectedItem}
@@ -54,7 +54,7 @@ export const SortByDropdown = () => {
               <button
                 key={item}
                 type="button"
-                className="button dropdown__content--button"
+                className="dropdown__content--button"
                 onClick={() => selectItem(item as keyof typeof SortBy)}
               >
                 {SortBy[item as keyof typeof SortBy]}
