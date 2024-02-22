@@ -1,25 +1,17 @@
 /* eslint-disable */
 import { useParams } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-import {
-  // phoneArray,
-  newPhoneArray,
-} from '../../assets/arrayOfPhones/phonesArray';
-import { Phone } from './PhoneItem';
 import { PageNotFound } from '../../pages/NotFound/PageNotFound';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import './ProductCard.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // import classNames from 'classnames';
 import { ColorCircleElement } from './ColorCircleElement';
 import { CapacityChoiceElement } from './CapacityChoiceElement';
+import { StateContext } from '../../AppContext';
+import { ACTIONS, getFavourite } from '../../helpers/utils';
+import { Product } from '../../types';
 import { TechSpecParagraph } from './TechSpecParagraph';
-
-type CustomArray = [
-  string,
-  string,
-];
 
 export const ProductCard: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('yellow');
@@ -27,60 +19,69 @@ export const ProductCard: React.FC = () => {
   const { phoneId } = useParams<string>();
   const topPageRef = useRef<null | HTMLDivElement>(null);
 
+  let product = {} as Product || undefined;
 
-  let findThePhone = {} as Phone || undefined;
-
-
-
+  const { state, dispatch } = useContext(StateContext);
 
   if (phoneId) {
-    findThePhone = newPhoneArray.find(phone => phone.id === +phoneId) as Phone;
+    product = state.products.find(phone => phone.id === +phoneId) as Product;
   }
 
-  if (findThePhone === undefined) {
+  if (product === undefined) {
     return <PageNotFound />;
   }
 
-  // const picsUrls = findThePhone.picsArray;
   const [bigPic, setBigPic] = useState('');
-  const techSp = findThePhone.tehcSpecs.split('/');
-  const techSpChunk = techSp.slice(0, 8);
-  const about = findThePhone.textAbout.split('/');
-  const empty: CustomArray[] = getRightArray(techSpChunk);
-  const emptyBig: Array<Array<string>> = getRightArray(techSp);
-  const [picSet, setPicSet] = useState<string[]>(findThePhone.picsArray);
-  const [test, setTest] = useState(false)
-  console.log(picSet, selectedColor, findThePhone, 'picset');
+
+  const about = product.description.split('/');
+
+  const [picSet, setPicSet] = useState<string[]>(product.picsArray);
+
+  const addToFavourites = () => {
+    if (!getFavourite(state.favourites, product)) {
+      dispatch({ type: ACTIONS.SET_FAVOUTITES, payload: product });
+    } else {
+      dispatch({ type: ACTIONS.DELETE_FROM_FAVOURITES, payload: product });
+    }
+  }
+
+  const addToCart = () => {
+    if (!getFavourite(state.card, product)) {
+      dispatch({ type: ACTIONS.ADD_TO_CARD, payload: product });
+    } else {
+      dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: product });
+    }
+  }
 
   function getPics(color: string) {
     switch (color) {
       case 'yellow':
-        setPicSet(findThePhone.picsArray);
+        setPicSet(product.picsArray);
         break;
       case 'green':
-        if (findThePhone.picsArray2) {
-          setPicSet(findThePhone.picsArray2);
+        if (product.picsArray2) {
+          setPicSet(product.picsArray2);
         }
         break;
       case 'brown':
-        if (findThePhone.picsArray3) {
-          setPicSet(findThePhone.picsArray3);
+        if (product.picsArray3) {
+          setPicSet(product.picsArray3);
         }
         break;
       case 'grey':
-        if (findThePhone.picsArray4) {
-          setPicSet(findThePhone.picsArray4);
+        if (product.picsArray4) {
+          setPicSet(product.picsArray4);
         }
         break;
       default:
-        setPicSet(findThePhone.picsArray);
+        setPicSet(product.picsArray);
         break;
     }
   }
 
   useEffect(() => {
     setSelectedColor('yellow')
-  }, [findThePhone.id])
+  }, [product.id])
 
   useEffect(() => {
     getPics(selectedColor)
@@ -88,35 +89,17 @@ export const ProductCard: React.FC = () => {
     if (topPageRef.current) {
       topPageRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [topPageRef.current, findThePhone.id, selectedColor]);
+  }, [topPageRef.current, product.id, selectedColor]);
 
   useEffect(() => {
     setBigPic(picSet[0])
-  }, [picSet, topPageRef.current, findThePhone.name, selectedColor])
+  }, [picSet, topPageRef.current, product.name, selectedColor])
 
-  function getRightArray(array1: string[]) {
-    const empty: Array<Array<string>> = [];
-    for (let i = 0; i <= array1.length - 1; i += 2) {
-      const temp: any = [];
-      temp.push(array1[i])
-      temp.push(array1[i + 1])
-      empty.push(temp);
-    }
-    return empty as CustomArray[];
-  }
-
-  const addToFavourites = () => {
-    // findThePhone.like = true;
-    setTest(!test);
-  }
-
-  console.log(test, 'card page test');
-  
   return (
     <div className="">
       <div>
         <div className="font-header" ref={topPageRef}>
-          {findThePhone.name}
+          {product.name}
         </div>
 
         <div className="upper-block mb-80" style={{ justifyContent: 'space-between' }}>
@@ -208,14 +191,16 @@ export const ProductCard: React.FC = () => {
 
                 <div className="upper-box-text mb-16">
                   <div className="dflex">
-                    <div className="product-card-price mr-8">{findThePhone.priceDiscount}</div>
-                    <div className="done grey font22">{findThePhone.priceFull}</div>
+                    <div className="product-card-price mr-8">{product.price}</div>
+                    <div className="done grey font22">{product.price}</div>
 
                   </div>
                 </div>
 
                 <div className="dflex mb-32" style={{ justifyContent: 'space-between' }}>
-                  <div className="button-add-to-card mr-8">Add to card</div>
+                  <div className="button-add-to-card mr-8" onClick={addToCart}>
+                    Add to card
+                  </div>
                   <div>
                     <div
                       className="favourite cp"
@@ -232,25 +217,18 @@ export const ProductCard: React.FC = () => {
 
                 <div className="tech-details-block">
 
-                  {empty.map((chunk) => {
-                    if (chunk) {
-                      const key = uuidv4();
-                      return (
-                        <TechSpecParagraph
-                          text1={chunk[0]}
-                          text2={chunk[1]}
-                          key={key}
-                        />)
-                    }
-                    return (
-                      <div></div>
-                    )
-                  })}
+                  <TechSpecParagraph fieldName='Screen' fieldDescription={product.screen} />
+
+                  <TechSpecParagraph fieldName='Resolution' fieldDescription={product.screenResolution} />
+
+                  <TechSpecParagraph fieldName='Processor' fieldDescription={product.processor} />
+
+                  <TechSpecParagraph fieldName='RAM' fieldDescription={product.ram} />
 
                 </div>
 
               </div>
-              <div>ID: {findThePhone.id}</div>
+              <div>ID: {product.id}</div>
             </div>
 
           </div>
@@ -276,20 +254,21 @@ export const ProductCard: React.FC = () => {
             <div className="grey-line mb-32"></div>
             <div className="tech-details-block grey">
 
-              {emptyBig.map((chunk) => {
-                if (chunk.length) {
-                  const key = uuidv4();
-                  return (
-                    <TechSpecParagraph
-                      text1={chunk[0]}
-                      text2={chunk[1]}
-                      key={key}
-                    />)
-                }
-                return (
-                  <div></div>
-                )
-              })}
+              <TechSpecParagraph fieldName='Screen' fieldDescription={product.screen} />
+
+              <TechSpecParagraph fieldName='Resolution' fieldDescription={product.screenResolution} />
+
+              <TechSpecParagraph fieldName='Processor' fieldDescription={product.processor} />
+
+              <TechSpecParagraph fieldName='RAM' fieldDescription={product.ram} />
+
+              <TechSpecParagraph fieldName='Buit in memory' fieldDescription={product.builtInMemory} />
+
+              <TechSpecParagraph fieldName='Camera' fieldDescription={product.camera} />
+
+              <TechSpecParagraph fieldName='Zoom' fieldDescription={product.zoom} />
+
+              <TechSpecParagraph fieldName='Cell' fieldDescription={product.cell} />
 
             </div>
           </div>

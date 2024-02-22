@@ -57,10 +57,10 @@ export const PhonesPages: React.FC = () => {
         <div>
           <img src="./img/icons/arrowRight.svg" alt="img" />
         </div>
-        <div>Phones {state.itemsPerPage}</div>
+        <div>Phones</div>
       </div>
       <p className="font-header"> Mobile phones</p>
-      <div className="font-models-amount">95 models</div>
+      <div className="font-models-amount">{state.products.length} models</div>
 
 
       <div className="select-block">
