@@ -5,11 +5,11 @@
   max-width: 1136px;
 
   @include onDesktopSmall {
-    padding-inline: 115px;
+    padding-inline: 70px;
   }
 
   @include onTablet {
-    padding-inline: 100px;
+    padding-inline: 34px;
   }
 
   @include onMobile {

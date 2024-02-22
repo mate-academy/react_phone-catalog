@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { categories } from '../../helpers/categoryImg';
 import { Product } from '../../types/Product';
 import './ShopByCategory.scss';
@@ -23,44 +23,67 @@ export const ShopByCategory = () => {
         data-cy="categoryLinksContainer"
       >
         <div>
-          <img
-            src={categories.phones}
-            alt="Mobile phones"
-            className="category__img"
-          />
-          <h3
-            className="category__category-name"
+          <Link to="/phones">
+            <img
+              src={categories.phones}
+              alt="Mobile phones"
+              className="category__img"
+            />
+          </Link>
+          <Link
+            to="/phones"
+            className="category__category-link"
           >
-            Mobile phones
-          </h3>
+            <h3
+              className="category__category-name"
+            >
+              Mobile phones
+            </h3>
+          </Link>
           <span className="category__category-amount">{`${phonesAmount} models`}</span>
         </div>
 
         <div>
-          <img
-            src={categories.tablets}
-            alt="Tablets"
-            className="category__img"
-          />
-          <h3
-            className="category__category-name"
+          <Link to="/tablets">
+            <img
+              src={categories.tablets}
+              alt="Tablets"
+              className="category__img"
+            />
+          </Link>
+          <Link
+            to="/tablets"
+            className="category__category-link"
           >
-            Tablets
-          </h3>
+            <h3
+              className="category__category-name"
+            >
+              Tablets
+            </h3>
+          </Link>
           <span className="category__category-amount">{`${tabletsAmount} models`}</span>
         </div>
 
         <div>
-          <img
-            src={categories.accessories}
-            alt="Accessories"
-            className="category__img"
-          />
-          <h3
-            className="category__category-name"
+          <Link
+            to="/accessories"
           >
-            Accessories
-          </h3>
+            <img
+              src={categories.accessories}
+              alt="Accessories"
+              className="category__img"
+            />
+          </Link>
+          <Link
+            to="/accessories"
+            className="category__category-link"
+          >
+            <h3
+              className="category__category-name"
+            >
+              Accessories
+            </h3>
+          </Link>
           <span className="category__category-amount">{`${accessoriesAmount} models`}</span>
         </div>
       </div>

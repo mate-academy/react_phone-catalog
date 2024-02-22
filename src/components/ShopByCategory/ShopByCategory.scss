@@ -22,6 +22,11 @@
     object-fit: fill;
   }
 
+  &__category-link {
+    text-decoration: none;
+    color: $color-primary-dark;
+  }
+
   &__category-name {
     @extend %h3;
     margin-bottom: 4px;

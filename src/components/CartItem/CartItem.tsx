@@ -83,41 +83,45 @@ export const CartItem: React.FC<Props> = ({
         {name}
       </Link>
 
-      <div className="cart-item__buttons">
-        <button
-          type="button"
-          onClick={decreaseQuantityHandler}
-          className={classNames('cart-item__minus-button', {
-            ' cart-item__minus-button--disabled': quantity === 1,
-          })}
-        >
-          <span
-            className="cart-item__minus-button-icon"
-          />
-        </button>
+      <div className="cart-item__right">
+        <div className="cart-item__buttons">
+          <button
+            type="button"
+            onClick={decreaseQuantityHandler}
+            className={classNames('cart-item__minus-button', {
+              ' cart-item__minus-button--disabled': quantity === 1,
+            })}
+          >
+            <span
+              className="cart-item__minus-button-icon"
+            />
+          </button>
+
+          <div
+            className="cart-item__quantity-container"
+          >
+            <span className="cart-item__quantity">
+              {quantity}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            className="cart-item__plus-button"
+            onClick={increaseQuantityHandler}
+          >
+            <span
+              className="cart-item__plus-button-icon"
+            />
+          </button>
+        </div>
 
         <span
-          className="cart-item__quantity"
+          className="cart-item__price"
         >
-          {quantity}
+          {`$${price}`}
         </span>
-
-        <button
-          type="button"
-          className="cart-item__plus-button"
-          onClick={increaseQuantityHandler}
-        >
-          <span
-            className="cart-item__plus-button-icon"
-          />
-        </button>
       </div>
-
-      <span
-        className="cart-item__price"
-      >
-        {`$${price}`}
-      </span>
     </li>
   );
 };
