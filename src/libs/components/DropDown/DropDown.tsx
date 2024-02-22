@@ -5,7 +5,6 @@ import './DropDown.scss';
 
 type DropProps<T> = {
   label: string,
-  value: T,
   setValue: (value: T) => void
   options: { value: T, label: string }[],
   width: number,
@@ -13,28 +12,25 @@ type DropProps<T> = {
 
 export const DropDown = <T extends string>({
   label,
-  value,
   setValue,
   options,
   width,
 }: DropProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const selectRef = useRef<HTMLSelectElement>(null);
+  const [currentValue, setCurrentValue] = useState(options[0].label);
+  const selectRef = useRef<HTMLDivElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setValue(e.target.value as T);
-
-    if (selectRef.current) {
-      selectRef.current.blur();
-      setIsOpen(false);
-    }
+  const handleSelectValue = (selectedValue: {
+    value: T;
+    label: string;
+  }) => {
+    setValue(selectedValue.value as T);
+    setIsOpen(false);
+    setCurrentValue(selectedValue.label);
   };
 
-  const hadnleSelectClick = () => {
-    if (selectRef.current && isOpen) {
-      selectRef.current.blur();
-      setIsOpen(false);
-    }
+  const hadnleOnSelectClick = () => {
+    setIsOpen(!isOpen);
   };
 
   useEffect(() => {
@@ -46,7 +42,6 @@ export const DropDown = <T extends string>({
       );
 
       if (isCLickOutside && selectRef.current) {
-        selectRef.current.blur();
         setIsOpen(false);
       }
     };
@@ -72,26 +67,29 @@ export const DropDown = <T extends string>({
           {label}
         </span>
 
-        <select
-          name={label}
-          value={value}
-          ref={selectRef}
+        <div
           className="dropdown__select"
-          onChange={handleChange}
-          onFocus={() => setIsOpen(true)}
-          onBlur={() => setIsOpen(false)}
-          onClick={() => hadnleSelectClick()}
+          role="presentation"
+          onClick={() => hadnleOnSelectClick()}
+          ref={selectRef}
         >
-          {options.map((option) => (
-            <option
-              value={option.value}
-              key={option.value}
-              className="dropdown__option"
-            >
-              {option.label}
-            </option>
-          ))}
-        </select>
+          <span>{currentValue}</span>
+          {isOpen && (
+            <ul className="dropdown__option-list">
+              {options.map((option) => (
+                <li
+                  value={option.value}
+                  key={option.value}
+                  className="dropdown__option-item"
+                  role="presentation"
+                  onClick={() => handleSelectValue(option)}
+                >
+                  {option.label}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
         <Icon
           iconName={isOpen ? 'arrowUp' : 'arrowDown'}

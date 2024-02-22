@@ -133,8 +133,6 @@ export const ProductsPage: React.FC<Props> = () => {
               <PageFilter
                 setSortValue={setSortBy}
                 setFilterValue={setFilterBy}
-                sortBy={sortBy}
-                filterBy={filterBy}
               />
 
               <div

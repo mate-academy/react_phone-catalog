@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import cn from 'classnames';
+
+import { Icon } from '../Icon';
 import './SearchBar.scss';
 
 type Props = {
@@ -11,12 +13,25 @@ type Props = {
 export const SearchBar: React.FC<Props> = ({ className }) => {
   const [value, setValue] = useState('');
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
+  const handleReset = () => {
+    if (value) {
+      setValue('');
+    }
+  };
+
   return (
-    <div className={cn('search-bar', className)}>
+    <form
+      className={cn('search-bar', className)}
+      onSubmit={handleSubmit}
+    >
       <input
         type="text"
         value={value}
@@ -25,32 +40,16 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
         onChange={handleChange}
       />
 
-      <>
-        {!value
-          ? (
-            <button
-              type="button"
-              className="search-bar__button"
-              onClick={() => setValue('')}
-            >
-              <span
-                className="search-bar__icon search-bar__icon--search"
-              />
-            </button>
-          )
-          : (
-            <button
-              type="button"
-              className="search-bar__button"
-              onClick={() => setValue('')}
-            >
-              <span
-                className="search-bar__icon search-bar__icon--close"
-              />
-
-            </button>
-          )}
-      </>
-    </div>
+      <button
+        type="button"
+        className="search-bar__button"
+        onClick={() => handleReset()}
+      >
+        <Icon
+          iconName={!value ? 'search' : 'close'}
+          classNames="search-bar__icon"
+        />
+      </button>
+    </form>
   );
 };

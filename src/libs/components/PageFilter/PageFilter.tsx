@@ -8,21 +8,16 @@ import './PageFilter.scss';
 type Props = {
   setSortValue: (value: SortType) => void;
   setFilterValue: (value: FilterType) => void;
-  sortBy: SortType,
-  filterBy: FilterType
 };
 
 export const PageFilter: React.FC<Props> = ({
   setSortValue,
   setFilterValue,
-  filterBy,
-  sortBy,
 }) => {
   return (
     <div className="page-filter">
       <DropDown
         label="Sort by"
-        value={sortBy}
         options={SORT_OPTIONS}
         setValue={setSortValue}
         width={176}
@@ -30,7 +25,6 @@ export const PageFilter: React.FC<Props> = ({
 
       <DropDown
         label="Items on page"
-        value={filterBy}
         options={FILTER_OPTIONS}
         setValue={setFilterValue}
         width={128}

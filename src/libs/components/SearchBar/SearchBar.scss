@@ -23,7 +23,8 @@
     &:focus {
       border: none;
       outline: none;
-      background-color: $elements;
+      background-color: $hover;
+      box-shadow: -1px 0 0 0 $elements;
     }
   }
 
@@ -41,15 +42,5 @@
     display: block;
     width: 16px;
     height: 16px;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    &--search {
-      background-image: url(../../../../public/img/icons/search.svg);
-    }
-
-    &--close {
-      background-image: url(../../../../public/img/icons/close.svg);
-    }
   }
 }
