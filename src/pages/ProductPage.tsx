@@ -12,7 +12,7 @@ import { Pagination } from '../components/Pagination/Pagination';
 import { Path } from '../types/PatchName';
 
 const optionsSort = ['Newest', 'Alphabetically', 'Price'];
-const optionsItemsPage = ['4', '8', '16', 'all'];
+const optionsItemsPage = ['4', '8', '16', 'All'];
 
 export const ProductPage = () => {
   const {
@@ -65,7 +65,8 @@ export const ProductPage = () => {
   const currentPage = Number(searchParams.get('page')) || 1;
   const perPage = Number(searchParams.get('perPage')) || 8;
   const lastPage = Math.ceil(count / perPage);
-  const isPaginationShow = perPage !== count && lastPage > 1;
+  const showPagination = perPage !== count && lastPage > 1
+  && searchParams.get('perPage') !== 'All';
 
   const start = currentPage * perPage - perPage;
   const end = currentPage * perPage <= count
@@ -98,7 +99,11 @@ export const ProductPage = () => {
     }
   };
 
-  const visibleProducts = sortProduct().slice(start, end);
+  let visibleProducts = sortProduct().slice(start, end);
+
+  if (searchParams.get('perPage') === 'All') {
+    visibleProducts = sortProduct();
+  }
 
   return (
     <>
@@ -152,7 +157,7 @@ export const ProductPage = () => {
                   </div>
 
                   <div className="product__pagination">
-                    {isPaginationShow && (
+                    {showPagination && (
                       <Pagination
                         total={count}
                         perPage={perPage}
