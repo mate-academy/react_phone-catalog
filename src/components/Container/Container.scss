@@ -1,14 +1,15 @@
 @import "../../styles/utils";
 
 .container {
-  padding-inline: 152px;
+  margin-inline: auto;
+  max-width: 1136px;
 
   @include onDesktopSmall {
-    padding-inline: 130px;
+    padding-inline: 115px;
   }
 
   @include onTablet {
-    padding-inline: 34px;
+    padding-inline: 100px;
   }
 
   @include onMobile {

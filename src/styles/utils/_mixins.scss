@@ -1,5 +1,5 @@
 @mixin onDesktopSmall {
-  @media (max-width: 1439px) {
+  @media (max-width: 1200px) {
     @content;
   }
 }

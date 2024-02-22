@@ -12,10 +12,16 @@
   }
 
   &__page {
-    @extend %button;
+    border: 1px solid $color-icons;
+    background-color: transparent;
+    transition-duration: $transition-duration;
     width: 32px;
     height: 32px;
     text-decoration: none;
+
+    &:hover {
+      border-color: $color-primary-dark;
+    }
 
     &--active {
       background-color: $color-primary-dark;
@@ -27,6 +33,11 @@
     @extend %body-text;
     color: $color-primary-dark;
     text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &--active {
       color: $color-white;

@@ -73,7 +73,9 @@ export const Pagination: React.FC<Props> = ({
                 }, searchParams),
               }}
             >
-              {page}
+              <span>
+                {page}
+              </span>
             </Link>
           </li>
         ))}

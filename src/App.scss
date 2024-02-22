@@ -7,6 +7,15 @@
   font-size: 12px;
   color: $color-primary-dark;
   cursor: url("./assets/images/cursor.svg"), auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  & > main {
+    flex: 1 1 auto;
+  }
 }
 
 body {
