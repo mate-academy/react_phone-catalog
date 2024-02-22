@@ -1,91 +1,94 @@
-# React Phone catalog
-The project was created according to the layout: [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2).
+# Gadget store
 
-# Technologies
-The following technologies were used to create the project:
-  -HTML,
-  -SCSS,
-  -Js,
-  -React,
-  -TypeScript;
+## General info
+This project built using React and other related technologies.
 
-# Project Structure
-App Features:
-  -Structured using folders for pages, components, and helpers.
-  -SCSS files used per component.
-  -BEM methodology applied for component naming.
-  -Header with links to all pages, aligned left for Logo and Nav, and right for Favorites and Cart.
-  -NavLink used to highlight the current page in the header.
-  -Footer with limited width.
-  -Back to top button implemented.
-  -Integration with GitHub repo.
-  -Dynamic picture slider on the homepage.
-  -Infinite picture scrolling.
-  -Product fetching from API.
-  -Sorting and filtering options for product pages.
-  -Pagination functionality.
-  -Ability to save sort order and pagination state in URL.
-  -Cart functionality with add/remove items and quantity adjustment.
-  -Favorites functionality with add/remove favorite products.
-  -Search component with filtering and debounce functionality.
-  -Handling of page not found scenarios.
+##  The project was created according to the layout:
+  [this design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2);
 
-Pages:
-  Home Page:
-    -Title: Home page.
-    -Fetches products from API.
-    -Displays products in sliders.
-    -Ability to change pictures with buttons.
-    -"Brand new" block.
-    -"Shop by category" block.
-    -Picture slider with infinite scrolling.
+##  Link to the finished project:
+  [Demo Link](https://RomanOstrous.github.io/react_phone-catalog);
+	
+## Technologies
+The following technologies were used to build this project:
 
-  Phones Page:
-    -Title: Mobile phones.
-    -Fetches phone products from API.
-    -Displays phones with sorting and pagination.
-    -Loader while fetching data.
+* **React**: A JavaScript library for building user interfaces.
+* **SCSS**: A CSS preprocessor that adds features like variables, mixins, and nesting to CSS.
+* **BEM**: A naming convention for CSS classes that makes code more modular and easier to read.
+* **TypeScript**: A statically typed superset of JavaScript that adds optional type annotations.
+* **JavaScript**: The programming language used to build the frontend logic.
 
-  Tablets Page:
-    -Title: Tablets.
-    -Fetches tablet products from API.
-    -Displays tablets with sorting and pagination.
-    -Loader while fetching data.
+	
+## Getting Started
+To get started with this project, you will need to have Node.js installed on your machine.
 
-  Accessories Page:
-    -Title: Accessories.
-    -Fetches accessory products from API.
-    -Displays accessories with sorting and pagination.
-    -Loader while fetching data.
+1. Clone the project to your local machine.
 
-  Product Details Page:
-    -URL: /product/:productId
-    -Fetches product details from API.
-    -Displays product details including description and tech specs.
-    -Ability to choose a picture.
-    -"You may also like" block with randomly chosen products.
-    -Back button and breadcrumbs.
+``` bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+```
+2. Install the project dependencies by running the following command in the project directory:
 
-  Cart Page:
-    -Displays the list of cart items.
-    -Ability to remove items and adjust quantity.
-    -Total amount calculation.
-    -Checkout button.
+```
+npm install
+```
+3. Start the development server by running the following command:
 
-  Favorites Page:
-    -Displays the list of favorite products.
-    -Ability to add/remove favorites.
-    -Favorites count displayed in the header.
+```sql
+npm start
+```
+4. Open the app in your web browser by navigating to http://localhost:3000.
 
-Search:
-  -Search component with input field.
-  -Clears search with 'x' button.
-  -Debounce functionality.
-  -Displays "No search results" message if no products match the query.
+## Project Structure
 
-Other Tasks:
-  -NotFoundPage for handling invalid URLs.
-  -Phone not found state on ProductDetailsPage if the phone is not available.
-  -Local storage used for saving cart state.
+The project is structured as follows:
 
-Link to the finished project: [Demo](https://RomanOstrous.github.io/react_phone-catalog);
+```java
+├── public/
+│   ├── index.html
+│   ├── api/
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── Component1/
+│   │   │   ├── Component1.tsx
+│   │   │   ├── Component1.module.css
+│   │   │   └── ...
+│   │   ├── Component2/
+│   │   │   ├── Component2.tsx
+│   │   │   ├── Component2.module.css
+│   │   │   └── ...
+│   │   └── ...
+│   ├── pages/
+│   │   ├── Page1/
+│   │   │   ├── Page1.tsx
+│   │   │   ├── Page1.module.css
+│   │   │   └── ...
+│   │   ├── Page2/
+│   │   │   ├── Page2.tsx
+│   │   │   ├── Page2.module.css
+│   │   │   └── ...
+│   │   └── ...
+│   ├── base_styles/
+│   │   ├── index.scss
+│   │   └── ...
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── ...
+├── .eslintrc.js
+├── package.json
+├── tsconfig.json
+└── ...
+
+```
+* The `public/` directory contains the public assets of the project, such as the index.html file and the api folder.
+
+* The `src/ `directory contains the source code of the project.
+
+* The `components/` directory contains reusable React components, each with its own .tsx file.
+
+## Conclusion
+
+This project demonstrates how to build a modern frontend application using React and related technologies. By using SCSS and BEM, we can write CSS that is more maintainable and easier to read. TypeScript adds type safety to our code, which makes it easier to catch bugs during development.
+
+If you have any questions or feedback about this project, please feel free to reach out to the contributors. We hope this project inspires you to build your own frontend projects using the latest web technologies!

@@ -3,7 +3,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import './fonts/Mont-Bold.otf';
 import './fonts/Mont-Regular.otf';
 import './fonts/Mont-SemiBold.otf';
-import './index.scss';
+import './styles/index.scss';
 
 import { Root } from './Root';
 import { StorProvider } from './context/StorProvider';
