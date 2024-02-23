@@ -2,11 +2,12 @@
 import { PhoneItem } from '../../components/phone/PhoneItem';
 import React, {
   useContext,
+  useState,
 } from "react";
 import { StateContext } from '../../AppContext';
 import {
-  ACTIONS, getCurrentItems,
-  getFavourite
+  ACTIONS,
+  getCurrentItems,
 } from '../../helpers/utils';
 import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../pagination/Pagination';
@@ -21,14 +22,13 @@ export const PhonesPages: React.FC = () => {
 
   const itemsPerpage = searchParams.get('itemsPerPage') || '4'
   const search = searchParams.get('search') || '';
-
-  if (state.products && state.favourites.length > 0) {
-    console.log(getFavourite(state.products, state.favourites[0]), 'find fav');
-  }
+  const sort = searchParams.get('sort') || 'age';
+  const [sortValue, setSortValue] = useState(sort);
 
   let currentItems: Product[] = [];
 
   if (state.products) {
+
     if (search.length > 0) {
       currentItems = state.products.filter(phone => phone.name.includes(search));
     } else if (itemsPerpage === 'All') {
@@ -44,21 +44,16 @@ export const PhonesPages: React.FC = () => {
     setSearchParams(params);
   }
 
+
+  function sortProducts(e: React.ChangeEvent<HTMLSelectElement>) {
+    params.set('sort', e.target.value);
+    setSearchParams(params);
+    setSortValue(e.target.value)
+  }
+
   return (
-    <div className="">
-      {/* <div className="navigation-block">
-        <div>
-          <img
-            src="./img/icons/Home.svg"
-            className="bottom-range"
-            alt="img"
-          />
-        </div>
-        <div>
-          <img src="./img/icons/arrowRight.svg" alt="img" />
-        </div>
-        <div>Phones</div>
-      </div> */}
+    <div>
+
       <p className="font-header"> Mobile phones</p>
       <div className="font-models-amount">{state.products.length} models</div>
 
@@ -68,12 +63,25 @@ export const PhonesPages: React.FC = () => {
         <div className="select-left">
           <div className="select-text">Sort by</div>
 
-          <select className='textField' onChange={(e) => changeHandler(e)}>
-            <option value="0" >
+          <select
+            value={sortValue}
+            className='textField'
+            onChange={(e) => sortProducts(e)}
+          >
+            <option value="age">
               Newest
             </option>
-            <option value="1">
+            <option value="ageDesc">
               Oldest
+            </option>
+            <option value="name">
+              Alphabetically
+            </option>
+            <option value="price">
+              Cheap first
+            </option>
+            <option value="priceDesc">
+              Expencive first
             </option>
           </select>
         </div>

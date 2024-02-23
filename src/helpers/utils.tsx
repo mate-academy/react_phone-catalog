@@ -47,3 +47,14 @@ export function useSetCurrentPage() {
     setSearchParams(params);
   }
 }
+
+export function getAge(a: Product,b: Product) {
+  if(a.age < b.age) {
+    return -1;
+  }
+  if(a.age > b.age) {
+    return 1;
+  }
+
+  return 0;
+}

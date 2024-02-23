@@ -77,7 +77,7 @@ export const HomePage = () => {
 
       <PaginationSlider pageName='pageTop' />
 
-      <div className="chunk-container">
+      <div className="chunk-container chunk-container-big">
 
         <div>
           <div className="square left">

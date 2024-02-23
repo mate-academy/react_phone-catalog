@@ -4,6 +4,8 @@ import { ACTIONS } from "./helpers/utils";
 import React from "react";
 import { Product } from "./types";
 import axios from "axios";
+import { getAge } from "./helpers/utils";
+import { useSearchParams } from "react-router-dom";
 
 type Action = { type: ACTIONS.SET_ITEMS_PER_PAGE, payload: string }
   | { type: ACTIONS.SET_FAVOUTITES, payload: Product }
@@ -17,6 +19,33 @@ interface Data {
   favourites: Array<Product>
   products: Array<Product>
   card: Product[],
+}
+
+function sortProducts(arrayToSort: Product[]) {
+  const [searchParams,] = useSearchParams();
+
+  const sortType = searchParams.get('sort') || '';
+  let result = [...arrayToSort.sort(getAge)];
+
+  switch (sortType) {
+    case 'age':
+    default: {
+      result = arrayToSort.sort(getAge);
+      console.log('sort');
+
+      break;
+    }
+    case 'ageDesc': {
+      // result = arrayToSort.sort(getAge);
+      result.reverse();
+      console.log(result, 'sortreverse');
+
+      break;
+    }
+
+  }
+
+  return result;
 }
 
 function reducer(state: Data, action: Action) {
@@ -79,7 +108,7 @@ type State = {
 
 const initialState: State = {
   state: {
-    itemsPerPage: '16',
+    itemsPerPage: '4',
     favourites: [],
     products: [],
     card: [],
@@ -110,11 +139,16 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     })
   }, [])
 
+  useEffect(() => {
+
+  }, [])
+  console.log(state.products);
+
   return (
     <StateContext.Provider value={{
       state: {
         ...state,
-        itemsPerPage: state.itemsPerPage,
+        products: sortProducts(state.products)
       },
       dispatch,
     }}>

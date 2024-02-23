@@ -50,7 +50,7 @@ export const PhoneItem: React.FC<Props> = ({ product }) => {
     } else {
       dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: product });
     }
-  }  
+  }
 
   return (
 
@@ -85,7 +85,7 @@ export const PhoneItem: React.FC<Props> = ({ product }) => {
 
         <div className="character-block pb-8" >
           <div className="character-text grey">Screen</div>
-          <div className="character-data">5.8" OLED</div>
+          <div className="character-data">{product.age}</div>
         </div>
         <div className="character-block pb-8">
           <div className="character-text grey">Capacity</div>
@@ -100,7 +100,7 @@ export const PhoneItem: React.FC<Props> = ({ product }) => {
           <div
             className={classNames("item-button", {
               "item-button-added": getFavourite(state.card, product),
-            })} 
+            })}
             onClick={addToCart}
           >
             Add to cart
