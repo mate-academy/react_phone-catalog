@@ -19,6 +19,7 @@
     color: $primary;
     padding: 23px 46px 23px 24px;
     border: none;
+    transition: all 0.3s;
 
     &:focus {
       border: none;

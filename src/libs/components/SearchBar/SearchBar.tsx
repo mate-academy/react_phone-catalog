@@ -1,9 +1,13 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
-import { useState } from 'react';
 import cn from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Icon } from '../Icon';
+import { getSearchWith } from '../../utils/getSearchWith';
+import { SearchParamsNames } from '../../constants/searchParamsNames';
+
 import './SearchBar.scss';
 
 type Props = {
@@ -11,10 +15,27 @@ type Props = {
 };
 
 export const SearchBar: React.FC<Props> = ({ className }) => {
-  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState(
+    searchParams.get(SearchParamsNames.query) || '',
+  );
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSetParams = (
+    paramValue: string,
+  ) => {
+    const newParams = getSearchWith(
+      { [SearchParamsNames.query]: paramValue || null },
+      searchParams,
+    );
+
+    setSearchParams(newParams);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    handleSetParams(value);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,8 +45,16 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
   const handleReset = () => {
     if (value) {
       setValue('');
+      searchParams.delete(SearchParamsNames.query);
+      setSearchParams(searchParams);
     }
+
+    inputRef.current?.focus();
   };
+
+  useEffect(() => {
+    setValue(searchParams.get(SearchParamsNames.query) || '');
+  }, [searchParams]);
 
   return (
     <form
@@ -38,6 +67,7 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
         className="search-bar__input"
         placeholder="Search in phones..."
         onChange={handleChange}
+        ref={inputRef}
       />
 
       <button
@@ -48,6 +78,7 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
         <Icon
           iconName={!value ? 'search' : 'close'}
           classNames="search-bar__icon"
+          data-cy={value && 'searchDelete'}
         />
       </button>
     </form>

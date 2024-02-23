@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { Icon } from '../Icon';
 
 import './DropDown.scss';
+import { getKeyByValue } from '../../utils/getKeyByValue';
 
 type DropProps<T> = {
   label: string,
+  value: T;
   setValue: (value: T) => void
   options: { value: T, label: string }[],
   width: number,
@@ -12,13 +14,14 @@ type DropProps<T> = {
 
 export const DropDown = <T extends string>({
   label,
+  value,
   setValue,
   options,
   width,
 }: DropProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentValue, setCurrentValue] = useState(options[0].label);
   const selectRef = useRef<HTMLDivElement>(null);
+  const currentValueTitle = getKeyByValue(options, value);
 
   const handleSelectValue = (selectedValue: {
     value: T;
@@ -26,7 +29,6 @@ export const DropDown = <T extends string>({
   }) => {
     setValue(selectedValue.value as T);
     setIsOpen(false);
-    setCurrentValue(selectedValue.label);
   };
 
   const hadnleOnSelectClick = () => {
@@ -73,7 +75,8 @@ export const DropDown = <T extends string>({
           onClick={() => hadnleOnSelectClick()}
           ref={selectRef}
         >
-          <span>{currentValue}</span>
+          <span>{currentValueTitle}</span>
+
           {isOpen && (
             <ul className="dropdown__option-list">
               {options.map((option) => (

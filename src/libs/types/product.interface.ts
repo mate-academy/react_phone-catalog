@@ -1,13 +1,13 @@
 import { ProductType } from './productType.type';
 
-export interface Product {
+export interface IProduct {
   age: number,
   capacity: string,
   discount: number,
   id: string,
   imageUrl: string,
   name: string,
-  price: 780,
+  price: number,
   ram: string,
   screen: string,
   snippet: string,

@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { FilterType, Product } from '../../types';
-import { SortType } from '../../types/sortType.enum';
+import { Product } from '../../types';
+import { SORT_VALUES } from '../../constants/sortValues';
 import {
   getCategoryTitle,
   chooseCurrentProducts,
@@ -18,6 +18,8 @@ import { PageSmallNav } from '../PageSmallNav';
 import { ProductCard } from '../ProductCard';
 import { NoResults } from '../NoResults';
 import { Loader } from '../Loader';
+import { NoSearchResults } from '../NoSearchResults';
+import { SearchParamsNames } from '../../constants/searchParamsNames';
 
 import './ProductsPage.scss';
 
@@ -25,22 +27,22 @@ type Props = {
   classNames?: string,
 };
 
-export const getVisibleProducts = (
+const getVisibleProducts = (
   products: Product[],
-  sortValue: SortType,
-  filterValue: FilterType,
+  sortValue: string,
+  filterValue: string,
   page: number,
 ): Product[] => {
   const visibleProducts = [...products];
 
   switch (sortValue) {
-    case SortType.Alphabetically:
+    case SORT_VALUES.Alphabetically:
       visibleProducts.sort((pr1, pr2) => (
         pr1.name.localeCompare(pr2.name)
       ));
       break;
 
-    case SortType.Cheapest:
+    case SORT_VALUES.Cheapest:
       visibleProducts.sort((pr1, pr2) => (
         pr1.price - pr2.price
       ));
@@ -54,18 +56,17 @@ export const getVisibleProducts = (
   }
 
   switch (filterValue) {
-    case '4':
-    case '8':
-    case '16': {
+    case 'all': {
+      return visibleProducts;
+    }
+
+    default: {
       const index = ((page - 1) * (+filterValue));
 
       return visibleProducts.slice(
         index, +filterValue + index,
       );
     }
-
-    default:
-      return visibleProducts;
   }
 };
 
@@ -79,32 +80,53 @@ export const ProductsPage: React.FC<Props> = () => {
     hasError,
   } = useAppSelector(state => state.products);
 
-  const [currentProducts, setCurrentProducts] = useState<Product[]>([]);
-  const [sortBy, setSortBy] = useState<SortType>(SortType.Newest);
-  const [filterBy, setFilterBy] = useState<FilterType>('4');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [
+    fetchedProducts,
+    setFetchedProducts,
+  ] = useState<Product[]>([]);
+
+  const [searchParams] = useSearchParams();
+  const sortBy = searchParams.get(SearchParamsNames.sort) || SORT_VALUES.Newest;
+  const filterBy = searchParams.get(SearchParamsNames.filter) || '4';
+  const searchQuery = searchParams.get(SearchParamsNames.query) || '';
+  const currentPage = +(searchParams.get(SearchParamsNames.page) || 1);
+
   const location = useLocation();
   const categoryName = location.pathname.slice(1);
+  const title = useMemo(() => (
+    getCategoryTitle(categoryName)
+  ), [categoryName]);
 
-  const productsCount = currentProducts.length;
-  const title = getCategoryTitle(categoryName);
+  const products = useMemo(() => (
+    searchQuery
+      ? fetchedProducts
+        .filter(product => (
+          product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        ))
+      : fetchedProducts
+  ), [fetchedProducts, searchQuery]);
 
-  const visibleProducts = getVisibleProducts(
-    currentProducts,
-    sortBy,
-    filterBy,
-    currentPage,
-  );
+  const visibleProducts = useMemo(() => (
+    getVisibleProducts(
+      products,
+      sortBy,
+      filterBy,
+      currentPage,
+    )
+  ), [currentPage, filterBy, sortBy, products]);
 
-  useEffect(() => {
-    setCurrentProducts(
-      chooseCurrentProducts(categoryName, phones, tablets, accessories),
-    );
-  }, [phones, tablets, accessories, categoryName]);
+  const fetchedProductsCount = fetchedProducts.length;
+  const productsCount = products.length;
 
   useEffect(() => {
     dispatch(fetchCurrentProducts(categoryName));
   }, [dispatch, categoryName]);
+
+  useEffect(() => {
+    setFetchedProducts(
+      chooseCurrentProducts(categoryName, phones, tablets, accessories),
+    );
+  }, [phones, tablets, accessories, categoryName]);
 
   useEffect(() => {
     window.scrollTo({
@@ -120,7 +142,7 @@ export const ProductsPage: React.FC<Props> = () => {
       {!loaded && <Loader />}
 
       {
-        (loaded && productsCount && !hasError)
+        (loaded && fetchedProductsCount && !hasError)
           ? (
             <>
               <div className="products-page__title">
@@ -130,33 +152,37 @@ export const ProductsPage: React.FC<Props> = () => {
                 />
               </div>
 
-              <PageFilter
-                setSortValue={setSortBy}
-                setFilterValue={setFilterBy}
-              />
+              {
+                productsCount
+                  ? (
+                    <>
+                      <PageFilter
+                        sortValue={sortBy}
+                        filterValue={filterBy}
+                      />
 
-              <div
-                className="products-page__cards"
-                data-cy="productList"
-              >
-                {
-                  visibleProducts.map(product => (
-                    <ProductCard
-                      product={product}
-                      key={product.id}
-                    />
-                  ))
-                }
-              </div>
+                      <div
+                        className="products-page__cards"
+                        data-cy="productList"
+                      >
+                        { visibleProducts.map(product => (
+                          <ProductCard
+                            product={product}
+                            key={product.id}
+                          />
+                        ))}
+                      </div>
 
-              <PagePagination
-                productsCount={productsCount}
-                currentPage={currentPage}
-                setCurrentPageValue={setCurrentPage}
-                filterValue={filterBy}
-              />
+                      <PagePagination
+                        productsCount={productsCount}
+                        currentPage={currentPage}
+                        filterValue={filterBy}
+                      />
+                    </>
+                  )
+                  : <NoSearchResults />
+              }
             </>
-
           )
           : (
             <NoResults title={title} />

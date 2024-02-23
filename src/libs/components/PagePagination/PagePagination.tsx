@@ -1,14 +1,19 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 import cn from 'classnames';
-import './PagePagination.scss';
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import { Icon } from '../Icon';
 import { FilterType } from '../../types';
+import { getSearchWith } from '../../utils/getSearchWith';
+import { SearchParamsNames } from '../../constants/searchParamsNames';
+
+import './PagePagination.scss';
 
 export type Props = {
   productsCount: number,
   currentPage: number,
-  setCurrentPageValue: (page: number) => void,
   filterValue: FilterType,
 };
 
@@ -25,15 +30,26 @@ const getPages = (
 export const PagePagination: React.FC<Props> = ({
   productsCount,
   currentPage,
-  setCurrentPageValue,
   filterValue,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const pages = getPages(productsCount, filterValue);
   const isPrevButtonDisabled = currentPage <= 1;
   const isNextButtonDisabled = currentPage >= pages.length;
 
+  const handleSetParams = useCallback((
+    paramValue: string,
+  ) => {
+    const newParams = getSearchWith(
+      { [SearchParamsNames.page]: paramValue || null },
+      searchParams,
+    );
+
+    setSearchParams(newParams);
+  }, [setSearchParams, searchParams]);
+
   const handleSelectPage = (page: number) => {
-    setCurrentPageValue(page);
+    handleSetParams(String(page));
   };
 
   const handlePrevClick = () => {
@@ -41,7 +57,7 @@ export const PagePagination: React.FC<Props> = ({
       return;
     }
 
-    setCurrentPageValue(currentPage - 1);
+    handleSetParams(String(currentPage - 1));
   };
 
   const handleNextClick = () => {
@@ -49,7 +65,7 @@ export const PagePagination: React.FC<Props> = ({
       return;
     }
 
-    setCurrentPageValue(currentPage + 1);
+    handleSetParams(String(currentPage + 1));
   };
 
   return (
