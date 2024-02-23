@@ -5,67 +5,41 @@ import { Product } from '../types/Product';
 
 import '../styles/ProductCard.scss';
 import { API_URL } from '../utils/api-phones';
+import { ButtonsCartFav } from './ButtonsCartFav';
+import { Params } from './Params';
 
 interface Props {
   product: Product;
-  // key: string;
 }
 
 const PRODUCT_CARD_PARAMS = ['Screen', 'Capacity', 'RAM'];
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  // console.log(product);
-
   return (
-    <div className="ProductCard">
-      <Link to="/" className="ProductCard__link">
-        <div className="ProductCard__image-container">
+    <div className="product-card">
+      <Link to={product.itemId} className="product-card__link">
+        <div className="product-card__image-container">
           <img
-            className="ProductCard__image"
+            className="product-card__image"
             src={`${API_URL}${product.image}`}
             alt="product-pic"
           />
         </div>
 
-        <h3 className="ProductCard__title">
+        <h3 className="product-card__title">
           {product.name}
         </h3>
 
-        <div className="ProductCard__prices-container">
-          <span className="ProductCard__price">{`$${product.price}`}</span>
-          <span className="ProductCard__full-price">{`$${product.fullPrice}`}</span>
+        <div className="product-card__prices-container">
+          <span className="product-card__price">{`$${product.price}`}</span>
+          <span className="product-card__full-price">{`$${product.fullPrice}`}</span>
         </div>
 
-        <div className="ProductCard__params-container">
-          {PRODUCT_CARD_PARAMS.map(item => (
-            <div className="ProductCard__param" key={item}>
-              <span className="ProductCard__param-name">
-                {item}
-              </span>
-
-              <span className="ProductCard__param-value">
-                {product[item.toLowerCase() as keyof Product]}
-              </span>
-            </div>
-          ))}
-        </div>
+        <Params product={product} params={PRODUCT_CARD_PARAMS} />
 
       </Link>
 
-      <div className="ProductCard__buttons">
-        <button
-          type="button"
-          className="ProductCard__button-cart"
-        >
-          Add to cart
-        </button>
-
-        <button
-          type="button"
-          className="ProductCard__button-favourites"
-        />
-      </div>
-
+      <ButtonsCartFav />
     </div>
   );
 };

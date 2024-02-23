@@ -29,15 +29,6 @@ export const Dropdowns: React.FC = () => {
     );
   };
 
-  // useEffect(() => {
-  //   setSearchParams(
-  //     getSearchWith(searchParams, { perPage: 'All' }),
-  //   );
-  //   setSearchParams(
-  //     getSearchWith(searchParams, { sort: 'Newest' }),
-  //   );
-  // }, []);
-
   return (
     <section className="dropdowns">
       <div className="dropdown">

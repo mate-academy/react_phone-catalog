@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 type Description = {
   title: string,
   text: string[],
@@ -23,3 +24,7 @@ export interface ProductDetails {
   zoom: string,
   cell: string[],
 }
+
+export type ProductDetails2 = Omit<ProductDetails,
+  'capacityAvailable' | 'colorsAvailable' | 'images' |
+  'description' | 'cell' | 'priceRegular' | 'priceDiscount'>;

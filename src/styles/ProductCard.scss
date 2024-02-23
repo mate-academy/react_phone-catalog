@@ -1,7 +1,7 @@
 @import '../utils/variables.scss';
 @import '../utils/mixins.scss';
 
-.ProductCard {
+.product-card {
   padding: 24px;
   // outline: 1px solid $elements-color;
   border: 1px solid $elements-color;
@@ -90,35 +90,5 @@
   &__param-value {
     font-weight: $medium-font;
     color: $primary-color;
-  }
-
-  &__buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__button-cart {
-    padding: 10px 48px;
-    background-color: $primary-color;
-    color: #fff;
-    font-size: 14px;
-    font-weight: $medium-font;
-    line-height: 21px;
-    transition: $transition-duration;
-
-    &:hover {
-      box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
-    }
-  }
-
-  &__button-favourites {
-    padding: 20px;
-    background: url("../icons/favourites-icon.svg") no-repeat center;
-    border: 1px solid $gray-icons-color;
-    transition: $transition-duration;
-
-    &:hover {
-      border: 1px solid $primary-color;
-    }
   }
 }

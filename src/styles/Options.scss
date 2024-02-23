@@ -1,0 +1,95 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.options {
+  &__text {
+    margin-bottom: 8px;
+  }
+
+  &__select-block {
+    margin-bottom: 48px;
+
+    &:nth-child(2) {
+      margin-bottom: 56px;
+    }
+
+    @include optionsUnderLine
+  }
+
+  &__list {
+    display: flex;
+    gap: 9px;
+  }
+
+  &__colors-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid $elements-color;
+
+    &--active {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__colors-link {
+    display: block;
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+    padding: 2px;
+  }
+
+  &__capacity-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 63px;
+    height: 32px;
+    border: 1px solid $gray-icons-color;
+
+    &--active {
+      border: 1px solid $primary-color;
+      background-color: $primary-color;
+    }
+  }
+
+  &__capacity-link {
+    color: $primary-color;
+    font-weight: 500;
+    line-height: 21px;
+
+    &--active {
+      color: #fff;
+    }
+  }
+
+  &__prices {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: $bold-font;
+    line-height: 41px;
+    color: $primary-color;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    line-height: 28px;
+    text-decoration-line: line-through;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+}

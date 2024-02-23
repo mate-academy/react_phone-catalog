@@ -16,7 +16,7 @@ export async function getProducts(): Promise<Product[]> {
     .then(response => response.json());
 }
 
-export async function getProductDetail(id: string): Promise<ProductDetails> {
+export async function getProductDetails(id: string): Promise<ProductDetails> {
   return wait(delayDuration)
     .then(() => fetch(`${API_URL}products/${id}.json`))
     .then(response => response.json());

@@ -9,6 +9,7 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { CartPage } from './pages/CartPage';
 import { FavoritesPage } from './pages/FavoritesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
   <Router>
@@ -17,7 +18,10 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
 
-          <Route path="/phones" element={<PhonesPage />} />
+          <Route path="phones">
+            <Route index element={<PhonesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
 
           <Route path="/tablets" element={<TabletsPage />} />
           <Route path="/accessories" element={<AccessoriesPage />} />

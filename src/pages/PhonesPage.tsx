@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { PathLink } from '../components/PathLink';
 import { GlobalContext } from '../GlobalContext';
 import { Dropdowns } from '../components/Dropdowns';
 import { ProductsList } from '../components/ProductsList';
 
-import '../styles/PhonesPage.scss';
 import { Pagination } from '../components/Pagination';
+import { BreadCrumbs } from '../components/BreadCrumbs';
+
+import '../styles/PhonesPage.scss';
 
 enum SortValue {
   age = 'age',
@@ -18,7 +19,6 @@ export const PhonesPage: React.FC = () => {
   const { phones } = useContext(GlobalContext);
 
   const [searchParams] = useSearchParams();
-  // const [currentPage, setCurrentPage] = useState(1);
 
   const sort = searchParams.get('sort') || '';
   const perPage = +(searchParams.get('perPage') || 'All');
@@ -46,11 +46,9 @@ export const PhonesPage: React.FC = () => {
 
   const finalPhones = sortedPhones.slice(firstItem, lastItem);
 
-  // console.log(perPage);
-
   return (
     <main className="PhonesPage">
-      <PathLink />
+      <BreadCrumbs category="Phones" />
 
       <h2 className="PhonesPage__title">
         Mobile phones
@@ -70,7 +68,6 @@ export const PhonesPage: React.FC = () => {
           <Pagination productsCount={phones.length} />
         </>
       )}
-
     </main>
   );
 };
