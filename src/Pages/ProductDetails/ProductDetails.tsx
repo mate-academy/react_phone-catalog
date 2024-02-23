@@ -1,10 +1,15 @@
 import { useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { ProductDetailsView } from './ProductDetailsView';
 import { getProductDetails } from '../../store/reducers/ProductDetailsSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
 import { Spinner } from '../../components/Spinner';
 import { Error } from '../../components/Error';
+import { addToCart } from '../../store/reducers/cartSlice';
+import { toggleFavorite } from '../../store/reducers/favoritesSlice';
+import { selectCart } from '../../store/selectors/cartSlice';
+import { selectFavorites } from '../../store/selectors/favoritesSlice';
 
 export const ProductDetails = () => {
   const location = useLocation();
@@ -38,6 +43,33 @@ export const ProductDetails = () => {
     ));
   }, [navigate, path]);
 
+  const onCartAdd = (id: string) => {
+    const productToAdd = products?.find(prItem => prItem.phoneId === id);
+
+    if (productToAdd) {
+      dispatch(addToCart(productToAdd));
+    }
+  };
+
+  const onFavoritesToggle = (id: string) => {
+    const productToAdd = products?.find(prItem => prItem.phoneId === id);
+
+    if (productToAdd) {
+      dispatch(toggleFavorite(productToAdd));
+    }
+  };
+
+  const { cart } = useSelector(selectCart);
+  const { favorites } = useSelector(selectFavorites);
+
+  const isInCart = useCallback((id: string) => {
+    return cart?.some(item => item.product.phoneId === id) || false;
+  }, [cart]);
+
+  const isInFavorites = useCallback((id: string) => {
+    return favorites?.some(item => item.phoneId === id) || false;
+  }, [favorites]);
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -53,6 +85,10 @@ export const ProductDetails = () => {
         onColorChange={changeColor}
         onCapacityChange={changeCapacity}
         randomProducts={products}
+        onCartAdd={onCartAdd}
+        onFavoritesToggle={onFavoritesToggle}
+        isInCart={isInCart}
+        isInFavorites={isInFavorites}
       />
     )
   );

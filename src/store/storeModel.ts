@@ -1,6 +1,5 @@
 import { Action } from 'redux';
 
-// import { asyncReducers } from 'react-redux-help-kit'
 import { rootReducer } from './store';
 
 export type Reducer<TState, TAction extends Action> = (

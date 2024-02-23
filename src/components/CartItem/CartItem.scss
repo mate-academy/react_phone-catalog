@@ -1,12 +1,17 @@
-@import '../../App.scss';
+@import '../../App';
 
 .cart-item {
   border: 1px solid $elements-color;
   height: 128px;
   padding-inline: 24px 40px;
   display: grid;
-  grid-template-columns: 6fr 1fr 1fr;
+  grid-template: auto / 6fr 1fr 1fr;
   align-items: center;
+
+  @include for-mobile {
+    grid-template: 6fr 1fr/ auto;
+    padding-bottom: 10px;
+  }
 
   &__main-info {
     display: flex;
@@ -38,6 +43,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @include for-mobile {
+      grid-area: 2;
+    }
   }
 
   &__val-button {
@@ -55,5 +64,9 @@
     @include font_h2;
 
     justify-self: end;
+
+    @include for-mobile {
+      grid-area: 2;
+    }
   }
 }

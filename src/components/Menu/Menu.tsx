@@ -32,16 +32,35 @@ export const Menu: React.FC<Props> = ({
             </NavLink>
           </li>
           <li className="menu__item">
-            <NavLink to="phones" onClick={onClick}>Phones</NavLink>
+            <NavLink
+              to="phones"
+              onClick={onClick}
+            >
+              Phones
+            </NavLink>
           </li>
           <li className="menu__item">
-            <NavLink to="tablets">Tablets</NavLink>
+            <NavLink
+              to="tablets"
+              onClick={onClick}
+            >
+              Tablets
+            </NavLink>
           </li>
           <li className="menu__item">
-            <NavLink to="accessories">Accessories</NavLink>
+            <NavLink
+              to="accessories"
+              onClick={onClick}
+            >
+              Accessories
+            </NavLink>
           </li>
           <li className="menu__item">
-            <NavLink to="/favorites" className="menu__link">
+            <NavLink
+              to="/favorites"
+              className="menu__link"
+              onClick={onClick}
+            >
               <p>Favorites</p>
               <Icon icon={Icons.Heart} counter={favoritesItemsCount} />
             </NavLink>
@@ -50,6 +69,7 @@ export const Menu: React.FC<Props> = ({
             <NavLink
               to="/cart"
               className="menu__link"
+              onClick={onClick}
             >
               <p>Cart</p>
               <Icon icon={Icons.Cart} counter={cartItemsCount} />

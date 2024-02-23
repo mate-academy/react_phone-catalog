@@ -28,6 +28,24 @@ export const HomePage = () => {
       .sort((b, a) => (b.price - b.fullPrice) - (a.price - a.fullPrice));
   }, [products]);
 
+  const phonesCount = useMemo(() => {
+    return products?.filter(item => {
+      return item.category === 'phones';
+    }).length;
+  }, [products]);
+
+  const tabletsCount = useMemo(() => {
+    return products?.filter(item => {
+      return item.category === 'tablets';
+    }).length;
+  }, [products]);
+
+  const accessoriesCount = useMemo(() => {
+    return products?.filter(item => {
+      return item.category === 'accessorie';
+    }).length;
+  }, [products]);
+
   return (
     <div className="home-page">
       <Slider />
@@ -35,7 +53,11 @@ export const HomePage = () => {
         <ProductSlider title="Hot Prices" products={hotPricesProducts || []} />
       </section>
       <section className="home-page__section">
-        <ShopByCategory />
+        <ShopByCategory
+          phonesCount={phonesCount || 0}
+          tabletsCount={tabletsCount || 0}
+          accessoriesCount={accessoriesCount || 0}
+        />
       </section>
       <section className="home-page__section">
         <ProductSlider

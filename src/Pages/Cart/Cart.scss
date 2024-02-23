@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import '../../App';
 
 .cart {
   padding: 40px;
@@ -11,6 +11,7 @@
 
   &__title {
     margin-top: 16px;
+
     @include font-h1;
   }
 
@@ -21,7 +22,7 @@
     gap: 16px;
 
     @include for-tablet {
-      grid-template: 3fr 0.5fr / auto;
+      grid-template: 0.1fr 1fr /auto;
     }
   }
 

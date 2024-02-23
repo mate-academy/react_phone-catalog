@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { Icons } from '../../types/enums/Icons';
-import { Item } from '../../types/interface/Item';
 import { Icon } from '../Icon';
 import './ProductCard.scss';
 import { BASE_URL } from '../../utils/fetchClient';
@@ -13,7 +12,7 @@ import {
 } from '../../store/reducers/favoritesSlice';
 
 interface Props {
-  item: Item,
+  item: Product,
   isInCart?: boolean,
   isInFav?: boolean,
 }

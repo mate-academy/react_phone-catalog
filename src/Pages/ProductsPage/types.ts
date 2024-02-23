@@ -7,5 +7,5 @@ export interface PhonesPageViewProps {
   currentItems: Product[],
   currentPage: number,
   setCurrentPage: (page: number) => void,
-  sortItems: (option: string)=>void,
+  sortItems: (option: string) => void,
 }

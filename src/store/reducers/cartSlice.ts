@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../models/product';
 import { CartObject } from '../models/cart';
 
-interface ProductsState {
+interface CartState {
   cart: CartObject[] | null,
 }
 
-const initialState: ProductsState = {
+const initialState: CartState = {
   cart: null,
 };
 

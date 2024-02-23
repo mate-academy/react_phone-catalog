@@ -6,4 +6,8 @@ export interface ProductDetailsViewProps {
   onColorChange: (currentColor: string, newColor: string) => void,
   onCapacityChange: (currentCapacity: string, newCapacity: string) => void,
   randomProducts: Product[],
+  onFavoritesToggle: (id: string) => void,
+  onCartAdd: (id: string) => void,
+  isInCart: (id: string) => boolean,
+  isInFavorites: (id: string) => boolean,
 }

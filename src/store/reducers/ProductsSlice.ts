@@ -21,15 +21,14 @@ export const getProducts = createAsyncThunk(
   async (category?: string) => {
     if (category) {
       const allProducts = await fetchClient.get<Product[]>('products.json');
-      const filteredProducts = allProducts.filter(product => product.category === category);
-      return filteredProducts;
+      return allProducts.filter(product => product.category === category);
     } else {
       return fetchClient.get<Product[]>('products.json');
     }
   },
 );
 
-export const productsSlice = createSlice({
+const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {

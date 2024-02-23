@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import './App.scss';
@@ -7,8 +8,17 @@ import { ProductsPage } from './Pages/ProductsPage';
 import { HomePage } from './Pages/HomePage';
 import { Cart } from './Pages/Cart';
 import { Favorites } from './Pages/Favorites/Favorites';
+import { useAppDispatch } from './store/hooks/redux';
+import { getProducts } from './store/reducers/ProductsSlice';
+import { Error } from './components/Error';
 
 export const App = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
   return (
     <div className="app">
       <Router>
@@ -51,6 +61,7 @@ export const App = () => {
             />
 
             <Route path="/:category/:id" element={<ProductDetails />} />
+            <Route path="*" element={<Error error="Page Not Found" />} />
           </Routes>
         </div>
 
