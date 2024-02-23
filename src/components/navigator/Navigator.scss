@@ -1,3 +1,26 @@
-.test {
+.navigation-block {
   display: flex;
+  // justify-content: center;
+  align-items: center;
+  width: fit-content;
+  color: #89939a;
+  margin-bottom: 50px;
+}
+
+.navigator-image {
+  width: 16px;
+  height: 16px;
+}
+
+.navigator-text {
+  color: var(--Gray-Primary, #313237);
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.navigator-text-second {
+  color: #89939a;
 }

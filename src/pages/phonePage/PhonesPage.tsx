@@ -46,7 +46,7 @@ export const PhonesPages: React.FC = () => {
 
   return (
     <div className="">
-      <div className="navigation-block">
+      {/* <div className="navigation-block">
         <div>
           <img
             src="./img/icons/Home.svg"
@@ -58,7 +58,7 @@ export const PhonesPages: React.FC = () => {
           <img src="./img/icons/arrowRight.svg" alt="img" />
         </div>
         <div>Phones</div>
-      </div>
+      </div> */}
       <p className="font-header"> Mobile phones</p>
       <div className="font-models-amount">{state.products.length} models</div>
 
