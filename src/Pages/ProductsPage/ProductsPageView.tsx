@@ -35,9 +35,11 @@ export const PhonesPageView: React.FC<PhonesPageViewProps> = ({
       </div>
 
       <div className="phones-page-container">
-        <Catalogue
-          items={currentItems}
-        />
+        {currentItems && (
+          <Catalogue
+            items={currentItems}
+          />
+        )}
       </div>
       <div className="phones-page-pagination">
         <Pagination

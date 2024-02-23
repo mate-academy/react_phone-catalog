@@ -21,14 +21,20 @@ export const Navigation = () => {
         </NavLink>
       </li>
       <li>
-        <a className="navigation__link" href="/">
+        <NavLink
+          to="tablets"
+          className="navigation__link"
+        >
           tablets
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a className="navigation__link" href="/">
+        <NavLink
+          to="accessories"
+          className="navigation__link"
+        >
           accessories
-        </a>
+        </NavLink>
       </li>
     </ul>
   );

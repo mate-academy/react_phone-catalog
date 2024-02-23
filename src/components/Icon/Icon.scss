@@ -26,6 +26,10 @@
 
     &-heart {
       background-image: url(../../assets/icons/heart.svg);
+
+      &-active {
+        background-image: url(../../assets/icons/HeartActive.svg);
+      }
     }
 
     &-arrowLeft {
@@ -49,6 +53,10 @@
 
     &-home {
       background-image: url(../../assets/icons/Icons_Home.svg)
+    }
+
+    &-close {
+      background-image: url(../../assets/icons/Close.svg)
     }
   }
 

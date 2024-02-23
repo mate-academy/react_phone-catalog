@@ -1,4 +1,5 @@
 import { Icons } from '../../types/enums/Icons';
+import { scrollToTop } from '../../utils/functions';
 import { Icon } from '../Icon';
 import './Footer.scss';
 
@@ -16,6 +17,7 @@ export const Footer = () => {
         aria-label="toTop"
         type="button"
         className="footer__button"
+        onClick={scrollToTop}
       >
         <p className="footer__button-text">Back to top</p>
         <div className="footer__button-icon">

@@ -1,13 +1,22 @@
+@import '../../App.scss';
+
 .phones-page {
-  padding-inline: 152px;
   padding-top: 24px;
-  max-width: 1440px;
+  max-width: 1136px;
   margin: 0 auto;
+
+  @include for-desktop {
+    padding-inline: 10px;
+}
 
   &__controls {
     margin-top: 40px;
     display: flex;
     gap: 16px;
+
+    @include for-tablet {
+      flex-direction: column;
+    }
   }
 
   &-container {

@@ -103,7 +103,7 @@ to links container.
 
 ### Favorites
 1. Create `FavoritesPage` it should show the `ProductsList` with all the favorite products
-1. Add ability to add/remove favorite products by pressing a hart and add `data-cy="addToFavorite"` attribute to this `<button>` element.
+1. Add ability to add/remove favorite products by pressing a heart and add `data-cy="addToFavorite"` attribute to this `<button>` element.
 1. (*) Show the favorites count near the `Favorites` icon in the header
 
 ### Search

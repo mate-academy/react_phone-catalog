@@ -16,6 +16,7 @@ const initialState: ProductDetailsState = {
 
 export const getProductDetails = createAsyncThunk(
   'productDetails/fetch', (productId: string) => {
+    console.log(fetchClient.get<ProductDetails>(`products/${productId}.json`))
     return fetchClient.get<ProductDetails>(`products/${productId}.json`);
   },
 );
@@ -44,7 +45,7 @@ export const productDetailsSlice = createSlice({
         return {
           product: null,
           isLoading: false,
-          error: 'Unable to load product',
+          error: 'Product was not found on server',
         };
       });
   },

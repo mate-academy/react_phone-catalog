@@ -1,19 +1,15 @@
 @import '../../App';
 
 .home-page {
-  padding-block: 40px;
+  padding: 5px 40px;
   display: flex;
   flex-direction: column;
-  max-width: 1440px;
+  max-width: 1136px;
   margin: 0 auto;
   align-items: center;
 
   @include for-big-desktop {
     padding-inline: 5px;
-  }
-
-  @include for-small-desktop {
-    padding-inline: 0;
   }
 
   &__section {

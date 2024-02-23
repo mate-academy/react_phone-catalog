@@ -8,6 +8,10 @@
   display: flex;
   justify-content: space-between;
 
+  @include for-tablet {
+    padding-inline: 24px;
+  }
+
   &__logo {
     display: block;
     background: url(../../assets/icons/HeaderLogo.svg) no-repeat;
@@ -23,6 +27,11 @@
       @include font-uppercase;
 
       color: $secondary-color;
+    }
+
+    @include for-tablet {
+      flex-direction: column;
+      gap: 5px;
     }
   }
 

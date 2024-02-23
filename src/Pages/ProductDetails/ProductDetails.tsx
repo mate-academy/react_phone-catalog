@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ProductDetailsView } from './ProductDetailsView';
 import { getProductDetails } from '../../store/reducers/ProductDetailsSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
+import { Spinner } from '../../components/Spinner';
+import { Error } from '../../components/Error';
 
 export const ProductDetails = () => {
   const location = useLocation();
@@ -37,15 +39,15 @@ export const ProductDetails = () => {
   }, [navigate, path]);
 
   if (isLoading) {
-    return <p>LOADING</p>;
+    return <Spinner />;
   }
 
   if (error) {
-    return <p>error</p>;
+    return <Error error={error} />;
   }
 
   return (
-    product && (
+    product && products && (
       <ProductDetailsView
         product={product}
         onColorChange={changeColor}
@@ -53,6 +55,5 @@ export const ProductDetails = () => {
         randomProducts={products}
       />
     )
-
   );
 };

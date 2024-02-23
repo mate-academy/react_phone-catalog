@@ -1,5 +1,6 @@
-import './OptionsSwitcher.scss';
 import cn from 'classnames';
+import { createCssColor } from '../../utils/functions';
+import './OptionsSwitcher.scss';
 
 interface Props {
   title: string,
@@ -22,7 +23,7 @@ export const OptionsSwitcher: React.FC<Props> = ({
       <ul className="options-switcher__buttons">
         {
           variant === 'color' && data.map(color => (
-            <li>
+            <li key={color}>
               <button
                 aria-label="color"
                 type="button"
@@ -30,15 +31,14 @@ export const OptionsSwitcher: React.FC<Props> = ({
                   'options-switcher__button-color-active':
                     color === currentData,
                 })}
-                key={color}
                 onClick={() => onChoose(currentData, color)}
               >
                 <div style={{
-                  backgroundColor: color,
+                  backgroundColor: createCssColor(color),
                   width: '100%',
                   height: '100%',
                   borderRadius: '50%',
-                  opacity: 0.3,
+                  opacity: 0.5,
                 }}
                 />
               </button>
@@ -47,7 +47,7 @@ export const OptionsSwitcher: React.FC<Props> = ({
         }
         {
           variant === 'capacity' && data.map(cap => (
-            <li>
+            <li key={cap}>
               <button
                 aria-label="capacity"
                 type="button"
@@ -55,7 +55,6 @@ export const OptionsSwitcher: React.FC<Props> = ({
                   'options-switcher__button-capacity-active':
                     cap === currentData,
                 })}
-                key={cap}
                 onClick={() => onChoose(currentData, cap)}
               >
                 {cap}

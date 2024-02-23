@@ -1,0 +1,12 @@
+@import '../../App';
+
+.back-button {
+ background-color: $white-color;
+ display: flex;
+
+ &__text {
+  @include font-small;
+
+  color: $secondary-color;
+ }
+}

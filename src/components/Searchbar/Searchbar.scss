@@ -8,7 +8,15 @@
   height: 100%;
   width: 327px;
 
-  box-shadow: -1px 0 0 0 $elements-color, 1px 0 0 0 $elements-color,;
+  box-shadow: -1px 0 0 0 $elements-color, 1px 0 0 0 $elements-color;
+
+  @include for-tablet {
+    width: auto;
+  }
+
+  @include for-small-desktop {
+    margin-left: 25px
+  }
 
   &__input {
     @include font-body;

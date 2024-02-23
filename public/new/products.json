@@ -1063,5 +1063,24 @@
     "ram": "3GB",
     "year": 2018,
     "image": "img/phones/apple-iphone-xr/yellow/00.jpg"
+  },
+  {
+    "id": "72",
+    "phoneId": "motorola-xoom",
+    "itemId": "motorola-xoom",
+    "price": 712,
+    "fullPrice": 910,
+    "color": "black",
+    "year": 2018,
+    "image": "img/phones/motorola-xoom.0.jpg",
+    "age": 1,
+    "category": "tablets",
+    "imageUrl": "img/phones/motorola-xoom.0.jpg",
+    "name": "MOTOROLA XOOM™",
+    "snippet": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb).",
+    "discount": 10,
+    "screen": "10.1 inches",
+    "capacity": "32000MB",
+    "ram": "1000MB"
   }
 ]

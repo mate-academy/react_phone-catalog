@@ -1,5 +1,22 @@
+@import '../../App.scss';
+
 .catalogue {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  row-gap: 1rem;
+
+  @include for-desktop {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    column-gap: 5px;
+  }
+
+  @media only screen and (max-width: 850px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include for-tablet {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
 }

@@ -55,18 +55,14 @@
     justify-content: center;
 
     @include for-desktop {
-      z-index: 1;
+      top: 12%;
       position: absolute;
-      top: 50%;
-      width: 30px;
-      height: 60px;
-      border-radius: 15px;
+      width: 32px;
+      height: 32px;
       background-color: $white-color;
     }
 
-    @include for-mobile {
-      display: none;
-    }
+ 
 
     &-left {
       left: 1%;

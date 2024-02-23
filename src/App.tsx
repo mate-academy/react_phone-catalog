@@ -1,38 +1,61 @@
-// import { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-// import { Header } from './components/Header';
-// import './App.scss';
-// import { Footer } from './components/Footer';
-// import { ProductDetails } from './Pages/ProductDetails';
-// import { PhonesPage } from './Pages/PhonesPage';
+import { Header } from './components/Header';
+import './App.scss';
+import { Footer } from './components/Footer';
+import { ProductDetails } from './Pages/ProductDetails';
+import { ProductsPage } from './Pages/ProductsPage';
 import { HomePage } from './Pages/HomePage';
-// import { mobiles } from './temp';
-// import { useAppDispatch } from './store/hooks/redux';
-// import { fetchProducts } from './store/reducers/ActionCreators';
+import { Cart } from './Pages/Cart';
+import { Favorites } from './Pages/Favorites/Favorites';
 
 export const App = () => {
-  // const dispatch = useAppDispatch();
-  // const { products } = useAppSelector(state => state.productsReducer);
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [dispatch]);
-
-  // console.log(products);
-
   return (
-    <>
+    <div className="app">
       <Router>
-        {/* <Header /> */}
+        <Header />
+        <div className="app__content">
+          <Routes>
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          {/* <Route path="phones" element={<PhonesPage items={mobiles} />} />
-          <Route path="/phones/:id" element={<ProductDetails />} /> */}
-        </Routes>
+            <Route
+              path="/"
+              element={<HomePage />}
+            />
 
-        {/* <Footer /> */}
+            <Route
+              path="phones"
+              element={(
+                <ProductsPage searchQuery="phones" />
+              )}
+            />
+            <Route
+              path="tablets"
+              element={(
+                <ProductsPage searchQuery="tablets" />
+              )}
+            />
+            <Route
+              path="accessories"
+              element={(
+                <ProductsPage searchQuery="accessories" />
+              )}
+            />
+
+            <Route
+              path="/cart"
+              element={<Cart />}
+            />
+
+            <Route
+              path="/favorites"
+              element={<Favorites />}
+            />
+
+            <Route path="/:category/:id" element={<ProductDetails />} />
+          </Routes>
+        </div>
+
+        <Footer />
       </Router>
-    </>
+    </div>
   );
 };

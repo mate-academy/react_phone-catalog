@@ -9,6 +9,11 @@
   flex-direction: column;
   border: 1px solid $elements-color;
 
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__image {
     height: 208px;
     margin: 0 auto;
@@ -35,6 +40,7 @@
       display: flex;
       justify-content: flex-start;
       margin-top: 8px;
+      gap: 5px;
     }
   }
 
@@ -49,6 +55,7 @@
       display: flex;
       justify-content: space-between;
       padding-block: 16px;
+
     }
 
     &-left {
@@ -86,10 +93,16 @@
 
   &__cartbtn {
     @include font-buttons;
-    
+
     flex: 1;
     background-color: $primary-color;
     color: $white-color;
+
+    &--incart {
+      background-color: $white-color;
+      color: $primary-color;
+      border: 1px solid $elements-color;
+    }
   }
 
   &__favbtn {

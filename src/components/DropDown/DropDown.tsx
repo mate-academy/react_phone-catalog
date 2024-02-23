@@ -17,10 +17,12 @@ export function DropDown<T extends React.ReactNode>({
   onSubmit,
 }: Props<T>) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(defaultSelectedOption);
 
   const handleOptionClick
     = useCallback((option: T) => {
       setIsOpen(false);
+      setSelected(option);
       onSubmit(option);
     }, [onSubmit]);
 
@@ -36,7 +38,7 @@ export function DropDown<T extends React.ReactNode>({
         className={`dropdown-selected ${isOpen ? 'open' : ''}`}
         onClick={toggleOpen}
       >
-        {defaultSelectedOption}
+        {selected}
         <div className="dropdown-selected-arrow">
           <Icon icon={Icons.ArrowDown} />
         </div>

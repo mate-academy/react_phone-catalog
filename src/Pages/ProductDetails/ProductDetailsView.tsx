@@ -1,10 +1,10 @@
+import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Icon } from '../../components/Icon';
 import { ImageSelector } from '../../components/ImageSelector';
 import { OptionsSwitcher } from '../../components/OptionsSwitcher';
 import { ProductSlider } from '../../components/ProductSlider';
 import { TECH_SPECS } from '../../constants/constants';
-// import { ProductDetails } from '../../store/models/productDetails';
 import { Icons } from '../../types/enums/Icons';
 import './ProductDetails.scss';
 import { ProductDetailsViewProps } from './types';
@@ -13,10 +13,6 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps>
   = ({
     product, onColorChange, onCapacityChange, randomProducts,
   }) => {
-    if (!product || Object.keys(product).length === 0) {
-      return <div>Loading...</div>;
-    }
-
     const {
       name,
       images,
@@ -38,8 +34,10 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps>
 
     return (
       <section className="product-details">
-        <Breadcrumbs />
-        <p>backButton</p>
+        <div className="product-details__links">
+          <Breadcrumbs />
+          <BackButton />
+        </div>
         <h1 className="product-details__title">{name}</h1>
         <div className="product-details__main">
           <ImageSelector images={images} />

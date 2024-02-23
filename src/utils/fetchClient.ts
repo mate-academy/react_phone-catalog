@@ -1,4 +1,4 @@
-export const BASE_URL = '_new/';
+export const BASE_URL = 'new/';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
@@ -20,8 +20,13 @@ const request = <T>(
 };
 
 export const fetchClient = {
-  get: <T>(url: string, headers?: Record<string, string>) => {
-    return request<T>(url, 'GET', headers);
+  get: <T>(
+    url: string,
+    queryParams?: Record<string, string>,
+    headers?: Record<string, string>) => {
+    const queryString = queryParams ? `?${new URLSearchParams(queryParams)}` : '';
+
+    return request<T>(url + queryString, 'GET', headers);
   },
   post: <T>(url: string, headers?: Record<string, string>) => {
     return request<T>(url, 'POST', headers);
