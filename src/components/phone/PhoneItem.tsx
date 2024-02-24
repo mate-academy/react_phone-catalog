@@ -85,15 +85,15 @@ export const PhoneItem: React.FC<Props> = ({ product }) => {
 
         <div className="character-block pb-8" >
           <div className="character-text grey">Screen</div>
-          <div className="character-data">{product.age}</div>
+          <div className="character-data">{product.screen.replace('inches', '"') + ' & ' + product.age}</div>
         </div>
         <div className="character-block pb-8">
           <div className="character-text grey">Capacity</div>
-          <div className="character-data">64 GB</div>
+          <div className="character-data">{product.capacity}</div>
         </div>
         <div className="character-block pb-16">
           <div className="character-text grey">RAM</div>
-          <div className="character-data">4 GB</div>
+          <div className="character-data">{product.ram}</div>
         </div>
 
         <div className="button-block">
