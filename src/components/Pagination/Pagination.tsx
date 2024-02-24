@@ -1,9 +1,9 @@
 import { Link, useSearchParams } from 'react-router-dom';
+import classNames from 'classnames';
 
 import './Pagination.scss';
-import classNames from 'classnames';
-import { Navigation } from '../../types/navigation';
 import { MyNavButton } from '../UI/MyNavButton';
+import { Navigation } from '../../types/navigation';
 import { getSearchParamsWith } from '../../helpers/searchParams';
 import { Params } from '../../types/searchParams';
 
@@ -32,20 +32,24 @@ export const Pagination: React.FC<Props> = ({ paginationButtons }) => {
           />
         </li>
 
-        {paginationButtons.map(item => (
-          <li key={item}>
-            <Link
-              to={{
-                search: getSearchParamsWith({ page: item }, searchParams),
-              }}
-              className={classNames('pagination__link', {
-                'pagination__link--active': page === item,
-              })}
-            >
-              {item}
-            </Link>
-          </li>
-        ))}
+        <h2 className="pagination__mobile">{`${page} out of ${paginationButtons.length}`}</h2>
+
+        <div className="pagination__button-list">
+          {paginationButtons.map(item => (
+            <li key={item}>
+              <Link
+                to={{
+                  search: getSearchParamsWith({ page: item }, searchParams),
+                }}
+                className={classNames('pagination__link', {
+                  'pagination__link--active': page === item,
+                })}
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
+        </div>
 
         <li className="pagination__nav" data-cy="paginationRight">
           <MyNavButton

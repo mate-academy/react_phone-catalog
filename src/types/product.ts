@@ -32,6 +32,7 @@ export type ProductDescription = {
   priceRegular: number,
   priceDiscount: number,
   color: string,
+  colorsAvailable: string[],
   images: string[],
   description: { title: string, text: string[] }[],
   screen: string,

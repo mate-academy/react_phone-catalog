@@ -4,6 +4,7 @@ import './ProductDetails.scss';
 import { AddToCart } from '../AddToCart';
 import { ProductDescription } from '../../types/product';
 import { CartItemType } from '../../types/cart';
+import { AvailableColors } from '../AvailableColors';
 
 type Props = {
   product: ProductDescription;
@@ -26,6 +27,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     priceDiscount = 0,
     priceRegular = 0,
     description = [],
+    colorsAvailable = [],
   } = product;
 
   const cartItemData: CartItemType = {
@@ -73,6 +75,8 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="details__options">
+          <AvailableColors colorsAvailable={colorsAvailable} />
+
           <div className="details__price-box">
             <p className="details__discount">{`$${priceDiscount}`}</p>
             <p className="details__price">{`$${priceRegular}`}</p>

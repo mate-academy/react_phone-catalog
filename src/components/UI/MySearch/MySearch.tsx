@@ -48,7 +48,7 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
             onClick={() => setQuery('')}
           >
             <img
-              src="../../../img/icons/close.svg"
+              src="img/icons/close.svg"
               alt="search icon"
               className="my-search__icon"
             />
