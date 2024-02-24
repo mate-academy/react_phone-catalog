@@ -41,12 +41,16 @@ export const Navigator: React.FC<Props> = ({ path }) => {
       </div>
       <div className="mr-8 navigator-text">{result}</div>
 
-      <div className="mr-8 navigator-image">
-        <img src="./img/icons/arrowRight.svg" alt="img" />
-      </div>
-      <div className="navigator-text navigator-text-second">
-        {findPhone?.name}
-      </div>
+      {findPhone && (
+        <>
+          <div className="mr-8 navigator-image">
+            <img src="./img/icons/arrowRight.svg" alt="img" />
+          </div>
+          <div className="navigator-text navigator-text-second">
+            {findPhone?.name}
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -36,10 +36,7 @@ function sortProducts(arrayToSort: Product[]) {
       break;
     }
     case 'ageDesc': {
-      // result = arrayToSort.sort(getAge);
       result.reverse();
-      console.log(result, 'sortreverse');
-
       break;
     }
 

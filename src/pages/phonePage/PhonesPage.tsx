@@ -54,7 +54,7 @@ export const PhonesPages: React.FC = () => {
   return (
     <div>
 
-      <p className="font-header"> Mobile phones</p>
+      <p className="font-header">Mobile phones</p>
       <div className="font-models-amount">{state.products.length} models</div>
 
 
