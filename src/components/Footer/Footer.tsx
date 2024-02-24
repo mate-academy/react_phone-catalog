@@ -13,7 +13,6 @@ export const Footer = memo(() => {
         <li className="footer__navigation-item">CONTACTS</li>
         <li className="footer__navigation-item">RIGHTS</li>
       </ul>
-
       <button
         aria-label="toTop"
         type="button"
@@ -25,7 +24,6 @@ export const Footer = memo(() => {
           <Icon icon={Icons.ArrowLeft} />
         </div>
       </button>
-
     </footer>
   );
 });
