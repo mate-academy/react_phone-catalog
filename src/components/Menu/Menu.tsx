@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Menu.scss';
 import { Icon } from '../Icon';
@@ -16,6 +17,16 @@ export const Menu: React.FC<Props> = ({
   cartItemsCount = 0,
   onClick,
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
   return (
     <aside
       className={`menu ${isOpen ? ' menu--active' : ''}`}
