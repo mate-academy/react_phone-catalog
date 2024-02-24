@@ -6,13 +6,14 @@ import './HomePage.scss';
 import { ShopByCategory } from '../../components/ShopByCaregory';
 import { selectProducts } from '../../store/selectors/ProductsSlice';
 import { useAppDispatch } from '../../store/hooks/redux';
-import { getProducts } from '../../store/reducers/ProductsSlice';
+import { getProducts, setSearchbar } from '../../store/reducers/ProductsSlice';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
+    dispatch(setSearchbar(''));
   }, [dispatch]);
 
   const {

@@ -33,6 +33,10 @@ export const ProductsPage: React.FC<Props> = ({ searchQuery }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsOnPage, setItemsOnPage] = useState(16);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchbar]);
+
   const lastItemIndex = currentPage * itemsOnPage;
   const firstItemIndex = lastItemIndex - itemsOnPage;
 

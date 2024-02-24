@@ -31,7 +31,9 @@ export const Cart = () => {
   }, [cart]);
 
   const totalItems = useMemo(() => {
-    return cart?.length || 0;
+    return cart?.reduce((acc, item) => {
+      return acc + item.quantity;
+    }, 0) || 0;
   }, [cart]);
 
   return (

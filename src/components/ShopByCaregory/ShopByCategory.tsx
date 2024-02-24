@@ -40,7 +40,7 @@ export const ShopByCategory: React.FC<Props> = ({
         </NavLink>
 
         <NavLink
-          to="/"
+          to="/tablets"
           className="shop-by-category__link"
           onClick={scrollToTop}
         >
@@ -56,7 +56,7 @@ export const ShopByCategory: React.FC<Props> = ({
         </NavLink>
 
         <NavLink
-          to="/"
+          to="/accessories"
           className="shop-by-category__link"
           onClick={scrollToTop}
         >

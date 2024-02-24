@@ -1,6 +1,6 @@
 import './ProductAbout.scss';
 
-type DescriptionObject = { title: string, text: string[] }
+type DescriptionObject = { title: string, text: string[] };
 
 interface Props {
   description: DescriptionObject[],
