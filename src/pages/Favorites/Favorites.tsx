@@ -25,7 +25,7 @@ export const Favorites: React.FC = () => {
   });
 
   return (
-    <div className="favorites">
+    <section className="favorites">
       {isLoading && <Loader />}
 
       {!isLoading && (
@@ -58,6 +58,6 @@ export const Favorites: React.FC = () => {
         </>
       )}
 
-    </div>
+    </section>
   );
 };

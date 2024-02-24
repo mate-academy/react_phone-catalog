@@ -48,6 +48,8 @@ export const ProductOrder: React.FC<Props> = ({
     handleOnLikeClick,
   } = usePhones();
 
+  const isCartItem = cartProducts.find(product => product.id === id);
+
   return (
     <div className="product__order">
       <div className="product__order-container">
@@ -128,7 +130,7 @@ export const ProductOrder: React.FC<Props> = ({
             'button__primary',
             'button--xl',
             {
-              button__selected: cartProducts.includes(id),
+              button__selected: isCartItem,
             },
           )}
           onClick={() => handleOnCartAdd(id)}

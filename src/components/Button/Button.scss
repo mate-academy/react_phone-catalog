@@ -153,4 +153,19 @@
       }
     }
   }
+
+  &__remove-item {
+    background-color: transparent;
+    opacity: 0.6;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__cart-order {
+    max-width: 100%;
+    height: 48px;
+  }
 }

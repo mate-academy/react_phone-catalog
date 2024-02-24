@@ -131,6 +131,24 @@
     transition: all 0.3s;
   }
 
+  &__count {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(100%, -100%);
+    background-color: $c-red;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 12px;
+    color: #fff;
+  }
+
   &:hover &__img {
     scale: 1.2;
   }

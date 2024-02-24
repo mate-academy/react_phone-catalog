@@ -27,6 +27,8 @@ export const Header: React.FC = () => {
     setPhoneSearchValue,
     tabletSearchValue,
     setTabletSearchValue,
+    favoritesId,
+    cartProducts,
   } = usePhones();
 
   return (
@@ -81,6 +83,12 @@ export const Header: React.FC = () => {
             src="img/icons/heart.svg"
             alt="Icon Like"
           />
+
+          {!!favoritesId.length && (
+            <div className="icon__count">
+              {favoritesId.length}
+            </div>
+          )}
         </NavLink>
 
         <NavLink
@@ -92,6 +100,12 @@ export const Header: React.FC = () => {
             src="img/icons/cart.svg"
             alt="Icon Card"
           />
+
+          {!!cartProducts.length && (
+            <div className="icon__count">
+              {cartProducts.length}
+            </div>
+          )}
         </NavLink>
       </div>
     </header>

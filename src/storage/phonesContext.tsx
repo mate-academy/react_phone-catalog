@@ -7,6 +7,7 @@ import { Product } from '../types/Product';
 import { SortType } from '../types/SortType';
 import { SortParamsType } from '../types/SortParamsType';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { CartProduct } from '../types/CartProduct';
 
 type PhonesContextType = {
   products: Product[],
@@ -29,37 +30,45 @@ type PhonesContextType = {
   setSuggestedProducts: Dispatch<SetStateAction<Product[]>>,
   favoritesId: string[],
   setFavoritesId: (v: string[]) => void,
-  cartProducts: string[],
-  setCartProducts: (v: string[]) => void,
+  cartProducts: CartProduct[],
+  setCartProducts: (v: CartProduct[]) => void,
   handleOnLikeClick: (v: string) => void,
   handleOnCartAdd: (v: string) => void,
+  removeCartItem: (v: string) => void,
+  plusCartItem: (v: string) => void,
+  minusCartItem: (v: string) => void,
+  getProductCount: (v: string) => number,
 };
 
 export const PhonesContext = React.createContext<PhonesContextType>({
   products: [],
-  setProducts: () => {},
+  setProducts: () => { },
   preparedHotPriceProducts: [],
   preparedBrandNewProducts: [],
   sortType: SortType.Newest,
-  setSortType: () => {},
+  setSortType: () => { },
   itemsPerPage: 0,
-  setItemsPerPage: () => {},
+  setItemsPerPage: () => { },
   sortParams: [],
   perPageParams: [],
   sortedProducts: () => [],
   tabletSearchValue: '',
-  setTabletSearchValue: () => {},
+  setTabletSearchValue: () => { },
   phoneSearchValue: '',
-  setPhoneSearchValue: () => {},
+  setPhoneSearchValue: () => { },
   filteredProducts: [],
   suggestedProducts: [],
-  setSuggestedProducts: () => {},
+  setSuggestedProducts: () => { },
   favoritesId: [],
-  setFavoritesId: () => {},
+  setFavoritesId: () => { },
   cartProducts: [],
-  setCartProducts: () => {},
-  handleOnLikeClick: () => {},
-  handleOnCartAdd: () => {},
+  setCartProducts: () => { },
+  handleOnLikeClick: () => { },
+  handleOnCartAdd: () => { },
+  removeCartItem: () => { },
+  plusCartItem: () => {},
+  minusCartItem: () => {},
+  getProductCount: () => 0,
 });
 
 type Props = {
@@ -78,7 +87,7 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
   ] = useLocalStorage<string[]>('favorites', []);
   const [
     cartProducts, setCartProducts,
-  ] = useLocalStorage<string[]>('cart', []);
+  ] = useLocalStorage<CartProduct[]>('cart', []);
 
   const sortParams = [
     {
@@ -134,12 +143,67 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const handleOnCartAdd = (id: string) => {
-    if (cartProducts.includes(id)) {
-      setCartProducts(cartProducts.filter(cartId => cartId !== id));
-    } else {
-      setCartProducts([...cartProducts, id]);
-    }
+  const handleOnCartAdd = (itemId: string) => {
+    const itemIndex = cartProducts.findIndex(({ id }) => (
+      id === itemId
+    ));
+
+    setCartProducts(
+      itemIndex === -1
+        ? (
+          [
+            ...cartProducts,
+            {
+              id: itemId,
+              count: 1,
+            },
+          ]
+        ) : (
+          cartProducts.filter(({ id }) => id !== itemId)
+        ),
+    );
+  };
+
+  const removeCartItem = (itemId: string) => {
+    setCartProducts(
+      cartProducts.filter(({ id }) => id !== itemId),
+    );
+  };
+
+  const plusCartItem = (itemId: string) => {
+    setCartProducts(
+      cartProducts.map(product => {
+        if (product.id === itemId) {
+          return {
+            id: product.id,
+            count: product.count + 1,
+          };
+        }
+
+        return product;
+      }),
+    );
+  };
+
+  const minusCartItem = (itemId: string) => {
+    setCartProducts(
+      cartProducts.map(product => {
+        if (product.id === itemId) {
+          return {
+            id: product.id,
+            count: product.count > 1 ? product.count - 1 : product.count,
+          };
+        }
+
+        return product;
+      }),
+    );
+  };
+
+  const getProductCount = (itemId: string) => {
+    const cartItem = cartProducts.find(({ id }) => id === itemId);
+
+    return cartItem?.count || 0;
   };
 
   return (
@@ -169,6 +233,10 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
         setCartProducts,
         handleOnCartAdd,
         handleOnLikeClick,
+        removeCartItem,
+        plusCartItem,
+        minusCartItem,
+        getProductCount,
       }}
     >
       {children}

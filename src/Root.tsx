@@ -11,6 +11,7 @@ import { Tablets } from './pages/Tablets/Tablets';
 import { Accessories } from './pages/Accessories/Accessories';
 import { Favorites } from './pages/Favorites/Favorites';
 import { Cart } from './pages/Cart/Cart';
+import { PageNotFound } from './components/PageNotFound/PageNotFound';
 
 export const Root: React.FC = () => (
   <PhonesProvider>
@@ -26,6 +27,7 @@ export const Root: React.FC = () => (
           <Route path="/accessories" element={<Accessories />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </Router>

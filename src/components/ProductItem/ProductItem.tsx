@@ -33,6 +33,8 @@ export const ProductItem: React.FC<Props> = ({
     ram,
   } = product;
 
+  const isCartItem = cartProducts.find(({ id }) => id === itemId);
+
   return (
     <div className="product-item">
       <Link to={`/phones/${phoneId}`}>
@@ -99,12 +101,12 @@ export const ProductItem: React.FC<Props> = ({
             'button__primary',
             'button--large',
             {
-              button__selected: cartProducts.includes(itemId),
+              button__selected: isCartItem,
             },
           )}
           onClick={() => handleOnCartAdd(itemId)}
         >
-          {cartProducts.includes(itemId) ? 'Added to cart' : 'Add to card'}
+          {isCartItem ? 'Added to cart' : 'Add to card'}
         </Button>
 
         <Button
