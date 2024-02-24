@@ -1,0 +1,57 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__page {
+    color: black;
+    border: 1px solid #E2E6E9;
+    width: 32px;
+    height: 32px;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__button {
+    background-color: white;
+    border: 1px solid #B4BDC3;
+    width: 32px;
+    height: 32px;
+
+    &-left {
+      margin-right: 16px;
+    }
+
+    &-right {
+      margin-left: 16px;
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    &-left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__selectedPage {
+    border: 1px solid #313237;
+    color: white;
+    background-color: #313237;
+  }
+}

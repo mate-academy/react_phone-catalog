@@ -1,0 +1,25 @@
+.back-to-top {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    color: #89939A;
+    padding-right: 16px;
+    line-height: 15px;
+
+    &:hover {
+      color: #313237;
+      transition: color 0.3s;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+    border: 1px solid #89939A;
+  }
+}

@@ -1,0 +1,22 @@
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+
+
+  &--back-to-top {
+    border: 1px solid #B4BDC3;
+
+    &:hover {
+      border-color: #313237;
+      transition: border-color 0.3s;
+    }
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+  }
+}

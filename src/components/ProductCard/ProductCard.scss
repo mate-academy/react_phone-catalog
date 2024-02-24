@@ -1,0 +1,138 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  height: 507px;
+  padding: 32px 24px 24px;
+  border: 1px solid #E2E6E9;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    width: 208px;
+    height: 208px;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    color: #313237;
+    margin-bottom: 6.5px;
+    height: 42px;
+    cursor: pointer;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+  }
+
+  &__currentPrice {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30.8px;
+    color: #313237;
+  }
+
+  &__oldPrice {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: line-through;
+    color: #89939A;
+  }
+
+  &__characteristics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-title {
+      font-family: Mont;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: #89939A;
+    }
+
+    &-value {
+      color: #313237;
+      font-family: Mont;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    width: 176px;
+    height: 40px;
+    background-color: #313237;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+
+    &-in-cart {
+      color: #27AE60;
+      background-color: white;
+      border: 1px solid #E2E6E9;
+    }
+  }
+
+  &__favorite {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #89939A;
+    cursor: pointer;
+
+    &:hover {
+      border-color: black;
+    }
+  }
+
+  &__selected {
+    border: 1px solid #E2E6E9;
+  }
+}

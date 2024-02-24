@@ -1,0 +1,24 @@
+.nav {
+  &__link {
+    position: relative;
+    display: inline-block;
+    margin-right: 64px;
+    padding: 27px 0 26px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    color: #89939A;
+    transition: color 0.3s;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--footer {
+      padding: 43px 0 42px;
+    }
+  }
+}

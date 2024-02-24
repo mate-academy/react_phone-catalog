@@ -1,0 +1,12 @@
+.productList {
+  display: flex;
+
+  &__phones {
+    display: flex;
+    flex-direction: row;
+    width: 1136px;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+}

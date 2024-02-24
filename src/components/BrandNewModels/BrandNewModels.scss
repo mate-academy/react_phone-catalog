@@ -1,0 +1,66 @@
+.brandNewModels {
+  display: flex;
+  flex-direction: column;
+  width: 1136px;
+  margin-bottom: 80px;
+
+  &__header {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    color: #313237;
+    margin-bottom: 24px;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    max-width: 1136px;
+    gap: 16px;
+  }
+
+  &__buttons {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+
+    &-left {
+      transform: rotate(-90deg);
+    }
+
+    &-right {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__button {
+    background-color: white;
+    border: 1px solid #B4BDC3;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &:hover {
+      border-color: #313237;
+      transition: border-color 0.3s;
+    }
+  }
+}

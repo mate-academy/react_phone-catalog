@@ -1,0 +1,55 @@
+.shopByCategory {
+  display: flex;
+  flex-direction: column;
+  width: 1136px;
+  margin-bottom: 80px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    color: #313237;
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    width: 368px;
+    height: 443px;
+  }
+
+  &__photo {
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+  }
+
+  &__subTitle {
+    font-family: Mont;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #313237;
+  }
+
+  &__models {
+    font-family: Mont;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939A;
+  }
+}
