@@ -63,11 +63,9 @@
       background-color: $white-color;
     }
 
-
-
     &-left {
       left: 1%;
-    
+    }
 
     &-right {
       @include for-desktop {

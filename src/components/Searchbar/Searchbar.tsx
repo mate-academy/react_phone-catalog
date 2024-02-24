@@ -24,6 +24,12 @@ export const Searchbar: React.FC<Props> = ({ placeholder }) => {
     };
   }, [query, dispatch]);
 
+  useEffect(() => {
+    return () => {
+      dispatch(setSearchbar(''));
+    };
+  }, [dispatch]);
+
   return (
     <div className="searchbar">
       <input
