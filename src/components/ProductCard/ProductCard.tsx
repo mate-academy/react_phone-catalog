@@ -1,38 +1,38 @@
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
-import { Icons } from '../../types/enums/Icons';
+import { useDispatch } from 'react-redux';
+import { memo, useCallback } from 'react';
+import { Icons } from '../../types/Icons';
 import { Icon } from '../Icon';
 import './ProductCard.scss';
 import { BASE_URL } from '../../utils/fetchClient';
-import { useAppDispatch } from '../../store/hooks/redux';
 import { addToCart } from '../../store/reducers/cartSlice';
 import { Product } from '../../store/models/product';
 import {
   toggleFavorite,
 } from '../../store/reducers/favoritesSlice';
+import { ProductCardProps } from './types';
 
-interface Props {
-  item: Product,
-  isInCart?: boolean,
-  isInFav?: boolean,
-}
-
-export const ProductCard: React.FC<Props> = ({
+export const ProductCard = memo<ProductCardProps>(({
   item,
   isInCart = false,
   isInFav = false,
 }) => {
   const productImgPath = `${BASE_URL}${item.image}`;
 
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
-  const onCartAdd = (product: Product) => {
-    dispatch(addToCart(product));
-  };
+  const onCartAdd = useCallback(() => {
+    dispatch(addToCart(item));
+  }, [dispatch, item]);
 
-  const onFavoritesToggle = (product: Product) => {
+  const onFavoritesToggle = useCallback((product: Product) => {
     dispatch(toggleFavorite(product));
-  };
+  }, [dispatch]);
+
+  const onClickToggleFavorites = useCallback(() => {
+    return onFavoritesToggle(item);
+  }, [item, onFavoritesToggle]);
 
   return (
 
@@ -72,7 +72,7 @@ export const ProductCard: React.FC<Props> = ({
           className={cn('productCard__cartbtn', {
             'productCard__cartbtn--incart': isInCart,
           })}
-          onClick={() => onCartAdd(item)}
+          onClick={onCartAdd}
         >
           {isInCart ? 'Added to cart' : 'Add to cart'}
         </button>
@@ -80,7 +80,7 @@ export const ProductCard: React.FC<Props> = ({
           type="button"
           aria-label="fav"
           className="productCard__favbtn"
-          onClick={() => onFavoritesToggle(item)}
+          onClick={onClickToggleFavorites}
         >
           {isInFav
             ? <Icon icon={Icons.HeartActive} />
@@ -89,4 +89,4 @@ export const ProductCard: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+});

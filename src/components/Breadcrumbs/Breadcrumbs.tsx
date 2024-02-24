@@ -1,17 +1,24 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import './Breadcrumbs.scss';
+import { memo, useMemo } from 'react';
 import { Icon } from '../Icon';
-import { Icons } from '../../types/enums/Icons';
+import { Icons } from '../../types/Icons';
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = memo(() => {
   const location = useLocation();
-  const pathnames = location.pathname.split('/').filter((x) => x);
-  const lastEl = pathnames
-    .pop()?.split('-')
-    .map(str => {
-      return str.charAt(0).toUpperCase() + str.slice(1);
-    })
-    .join(' ');
+
+  const pathnames = useMemo(() => {
+    return location.pathname.split('/').filter((x) => x);
+  }, [location]);
+
+  const lastEl = useMemo(() => {
+    return pathnames
+      .pop()?.split('-')
+      .map(str => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      })
+      .join(' ');
+  }, [pathnames]);
 
   return (
     <nav aria-label="breadcrumbs2">
@@ -40,4 +47,4 @@ export const Breadcrumbs = () => {
       </ol>
     </nav>
   );
-};
+});

@@ -1,5 +1,8 @@
 import { Product } from '../../store/models/product';
 
+export interface ProductsPageProps {
+  searchQuery: string,
+}
 export interface PhonesPageViewProps {
   totalItems: number,
   itemsOnPage: number,

@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Icons } from '../../types/enums/Icons';
+import { Icons } from '../../types/Icons';
 import { Icon } from '../Icon';
 import './Searchbar.scss';
 import { setSearchbar } from '../../store/reducers/ProductsSlice';
+import { SearchbarProps } from './types';
 
-interface Props {
-  placeholder?: string,
-}
-
-export const Searchbar: React.FC<Props> = ({ placeholder }) => {
+export const Searchbar = memo<SearchbarProps>(({ placeholder }) => {
   const [query, setQuery] = useState('');
 
   const dispatch = useDispatch();
@@ -44,4 +41,4 @@ export const Searchbar: React.FC<Props> = ({ placeholder }) => {
       </div>
     </div>
   );
-};
+});

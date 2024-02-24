@@ -1,16 +1,10 @@
+import { memo } from 'react';
 import cn from 'classnames';
 import { createCssColor } from '../../utils/functions';
 import './OptionsSwitcher.scss';
+import { OptionsSwitcherProps } from './types';
 
-interface Props {
-  title: string,
-  data: string[],
-  variant: 'color' | 'capacity'
-  currentData: string,
-  onChoose: (curData: string, newData: string) => void,
-}
-
-export const OptionsSwitcher: React.FC<Props> = ({
+export const OptionsSwitcher = memo<OptionsSwitcherProps>(({
   title,
   data,
   variant,
@@ -58,7 +52,6 @@ export const OptionsSwitcher: React.FC<Props> = ({
                 onClick={() => onChoose(currentData, cap)}
               >
                 {cap}
-
               </button>
             </li>
           ))
@@ -66,4 +59,4 @@ export const OptionsSwitcher: React.FC<Props> = ({
       </ul>
     </>
   );
-};
+});

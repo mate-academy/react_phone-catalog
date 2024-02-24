@@ -1,14 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import './ShopByCategory.scss';
+import { memo } from 'react';
 import { scrollToTop } from '../../utils/functions';
+import { ShopByCategoryProps } from './types';
 
-interface Props {
-  phonesCount: number,
-  tabletsCount: number,
-  accessoriesCount: number,
-}
-
-export const ShopByCategory: React.FC<Props> = ({
+export const ShopByCategory = memo<ShopByCategoryProps>(({
   phonesCount,
   tabletsCount,
   accessoriesCount,
@@ -18,7 +14,6 @@ export const ShopByCategory: React.FC<Props> = ({
       <h1 className="shop-by-category__title">
         Shop by category
       </h1>
-
       <div
         className="shop-by-category__content"
       >
@@ -36,9 +31,7 @@ export const ShopByCategory: React.FC<Props> = ({
           <div className="shop-by-category__link-description">
             {`${phonesCount} models${phonesCount > 1 ? 's' : ''}`}
           </div>
-
         </NavLink>
-
         <NavLink
           to="/tablets"
           className="shop-by-category__link"
@@ -54,7 +47,6 @@ export const ShopByCategory: React.FC<Props> = ({
             {`${tabletsCount} models${tabletsCount > 1 ? 's' : ''}`}
           </div>
         </NavLink>
-
         <NavLink
           to="/accessories"
           className="shop-by-category__link"
@@ -70,10 +62,8 @@ export const ShopByCategory: React.FC<Props> = ({
           <div className="shop-by-category__link-description">
             {`${accessoriesCount} models${accessoriesCount > 1 ? 's' : ''}`}
           </div>
-
         </NavLink>
       </div>
-
     </div>
   );
-};
+});

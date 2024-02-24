@@ -1,15 +1,16 @@
+import { memo } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ImageSelector } from '../../components/ImageSelector';
-import { ProductAbout } from '../../components/ProductAbout/ProductAbout';
-import { ProductInfo } from '../../components/ProductInfo/ProductInfo';
+import { ProductAbout } from '../../components/ProductAbout';
+import { ProductInfo } from '../../components/ProductInfo';
 import { ProductSlider } from '../../components/ProductSlider';
 import { TECH_SPECS } from '../../constants/constants';
 import './ProductDetails.scss';
 import { ProductDetailsViewProps } from './types';
 
-export const ProductDetailsView: React.FC<ProductDetailsViewProps>
-  = ({
+export const ProductDetailsView
+  = memo<ProductDetailsViewProps>(({
     product,
     onColorChange,
     onCapacityChange,
@@ -96,4 +97,4 @@ export const ProductDetailsView: React.FC<ProductDetailsViewProps>
         </div>
       </section>
     );
-  };
+  });

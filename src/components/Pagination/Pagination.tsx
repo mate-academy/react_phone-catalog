@@ -1,27 +1,36 @@
-import './Pagination.scss';
+import { memo, useCallback, useMemo } from 'react';
 import cn from 'classnames';
+import { PaginationProps } from './types';
+import './Pagination.scss';
 
-interface Props {
-  itemsPerPage: number,
-  totalItems: number
-  currentPage: number,
-  onClick: (pageNumber: number) => void,
-}
-
-export const Pagination: React.FC<Props> = ({
+export const Pagination = memo<PaginationProps>(({
   itemsPerPage,
   totalItems,
   currentPage,
   onClick,
 }) => {
-  const numberOfPages = [];
+  const numberOfPages = useMemo(() => {
+    return Array.from(
+      { length: Math.ceil(totalItems / itemsPerPage) },
+      (_, index) => index + 1,
+    );
+  }, [itemsPerPage, totalItems]);
 
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i += 1) {
-    numberOfPages.push(i);
-  }
+  const cantMoveLeft = useMemo(() => {
+    return currentPage <= 1;
+  }, [currentPage]);
 
-  const cantMoveLeft = currentPage <= 1;
-  const cantMoveRight = currentPage >= numberOfPages[numberOfPages.length - 1];
+  const cantMoveRight = useMemo(() => {
+    return currentPage >= numberOfPages[numberOfPages.length - 1];
+  }, [currentPage, numberOfPages]);
+
+  const onClickDecrementPage = useCallback(() => {
+    onClick(currentPage - 1);
+  }, [currentPage, onClick]);
+
+  const onClickIncrementPage = useCallback(() => {
+    onClick(currentPage + 1);
+  }, [currentPage, onClick]);
 
   return (
     <ul className="pagination">
@@ -29,7 +38,7 @@ export const Pagination: React.FC<Props> = ({
         <button
           type="button"
           className="pagination__page"
-          onClick={() => onClick(currentPage - 1)}
+          onClick={onClickDecrementPage}
           disabled={cantMoveLeft}
         >
           {'<'}
@@ -52,7 +61,7 @@ export const Pagination: React.FC<Props> = ({
         <button
           type="button"
           className="pagination__page"
-          onClick={() => onClick(currentPage + 1)}
+          onClick={onClickIncrementPage}
           disabled={cantMoveRight}
         >
           {'>'}
@@ -60,4 +69,4 @@ export const Pagination: React.FC<Props> = ({
       </li>
     </ul>
   );
-};
+});

@@ -1,19 +1,16 @@
 import { useSelector } from 'react-redux';
-import { useCallback, useState } from 'react';
-import { Icons } from '../../types/enums/Icons';
+import {
+  memo, useCallback, useMemo, useState,
+} from 'react';
+import { Icons } from '../../types/Icons';
 import { Icon } from '../Icon';
 import { ProductCard } from '../ProductCard';
 import './ProductSlider.scss';
-import { Product } from '../../store/models/product';
 import { selectCart } from '../../store/selectors/cartSlice';
 import { selectFavorites } from '../../store/selectors/favoritesSlice';
+import { ProductSliderProps } from './types';
 
-interface Props {
-  title: string,
-  products: Product[],
-}
-
-export const ProductSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductSlider = memo<ProductSliderProps>(({ title, products }) => {
   const {
     cart,
   } = useSelector(selectCart);
@@ -35,7 +32,9 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
     setPosition(position + (ITEM_WIDTH + GAP));
   }, [position]);
 
-  const maxPosition = (products?.length - 4) * (ITEM_WIDTH + GAP);
+  const maxPosition = useMemo(() => {
+    return (products?.length - 4) * (ITEM_WIDTH + GAP);
+  }, [products]);
 
   const canScrollNext = position > maxPosition * -1;
   const canScrollPrev = position < 0;
@@ -96,4 +95,4 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
       </ul>
     </div>
   );
-};
+});

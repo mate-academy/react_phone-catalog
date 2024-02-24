@@ -1,21 +1,15 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './DropDown.scss';
 import { Icon } from '../Icon';
-import { Icons } from '../../types/enums/Icons';
-
-interface Props<T> {
-  title: string;
-  defaultSelectedOption: T;
-  selectOptions: T[];
-  onSubmit: (option: T) => void;
-}
+import { Icons } from '../../types/Icons';
+import { DropDownProps } from './types';
 
 export function DropDown<T extends React.ReactNode>({
   title,
   defaultSelectedOption,
   selectOptions,
   onSubmit,
-}: Props<T>) {
+}: DropDownProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(defaultSelectedOption);
 

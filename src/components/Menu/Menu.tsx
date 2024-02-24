@@ -1,17 +1,11 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Menu.scss';
 import { Icon } from '../Icon';
-import { Icons } from '../../types/enums/Icons';
+import { Icons } from '../../types/Icons';
+import { MenuProps } from './types';
 
-interface Props {
-  isOpen: boolean,
-  favoritesItemsCount?: number,
-  cartItemsCount?: number,
-  onClick: () => void,
-}
-
-export const Menu: React.FC<Props> = ({
+export const Menu = memo<MenuProps>(({
   isOpen,
   favoritesItemsCount = 0,
   cartItemsCount = 0,
@@ -86,9 +80,8 @@ export const Menu: React.FC<Props> = ({
               <Icon icon={Icons.Cart} counter={cartItemsCount} />
             </NavLink>
           </li>
-
         </ul>
       </div>
     </aside>
   );
-};
+});

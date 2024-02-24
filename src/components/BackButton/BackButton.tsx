@@ -1,14 +1,15 @@
+import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Icons } from '../../types/enums/Icons';
+import { Icons } from '../../types/Icons';
 import { Icon } from '../Icon';
 import './BackButton.scss';
 
-export const BackButton = () => {
+export const BackButton = memo(() => {
   const navigate = useNavigate();
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     navigate(-1);
-  };
+  }, [navigate]);
 
   return (
     <button
@@ -22,4 +23,4 @@ export const BackButton = () => {
       </p>
     </button>
   );
-};
+});

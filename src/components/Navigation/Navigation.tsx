@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import './Navigation.scss';
+import { memo } from 'react';
 
-export const Navigation = () => {
+export const Navigation = memo(() => {
   return (
     <ul className="navigation">
       <li>
@@ -38,4 +39,4 @@ export const Navigation = () => {
       </li>
     </ul>
   );
-};
+});

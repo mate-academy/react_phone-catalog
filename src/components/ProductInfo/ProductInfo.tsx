@@ -1,21 +1,12 @@
+import { memo } from 'react';
 import cn from 'classnames';
-import { ProductDetails } from '../../store/models/productDetails';
-import { Icons } from '../../types/enums/Icons';
+import { Icons } from '../../types/Icons';
 import { Icon } from '../Icon';
 import { OptionsSwitcher } from '../OptionsSwitcher';
 import './ProductInfo.scss';
+import { ProductInfoProps } from './types';
 
-interface Props {
-  product: ProductDetails,
-  onColorChange: (currentColor: string, newColor: string) => void,
-  onCapacityChange: (currentCapacity: string, newCapacity: string) => void,
-  onFavoritesToggle: (id: string) => void,
-  onCartAdd: (id: string) => void,
-  isInCart: (id: string) => boolean,
-  isInFavorites: (id: string) => boolean,
-}
-
-export const ProductInfo: React.FC<Props> = ({
+export const ProductInfo = memo<ProductInfoProps>(({
   product,
   onCapacityChange,
   onFavoritesToggle,
@@ -39,11 +30,7 @@ export const ProductInfo: React.FC<Props> = ({
     capacity,
   } = product;
 
-  const isCart = isInCart(id);
-  const isInFav = isInFavorites(id);
-
   return (
-
     <div className="product-info">
       <OptionsSwitcher
         title="Available colors"
@@ -69,11 +56,11 @@ export const ProductInfo: React.FC<Props> = ({
         <button
           type="button"
           className={cn('product-info__buttons-cart', {
-            'product-info__buttons-cart--active': isCart,
+            'product-info__buttons-cart--active': isInCart(id),
           })}
           onClick={() => onCartAdd(id)}
         >
-          {`${isCart ? 'Added' : 'Add'}  to cart`}
+          {`${isInCart(id) ? 'Added' : 'Add'}  to cart`}
         </button>
         <button
           type="button"
@@ -81,7 +68,7 @@ export const ProductInfo: React.FC<Props> = ({
           aria-label="addToFav"
           onClick={() => onFavoritesToggle(id)}
         >
-          {isInFav
+          {isInFavorites(id)
             ? <Icon icon={Icons.HeartActive} />
             : <Icon icon={Icons.Heart} />}
         </button>
@@ -118,4 +105,4 @@ export const ProductInfo: React.FC<Props> = ({
       </div>
     </div>
   );
-};
+});

@@ -1,12 +1,13 @@
+import { memo } from 'react';
 import { DropDown } from '../../components/DropDown';
 import { Catalogue } from '../../components/Catalogue';
 import { Pagination } from '../../components/Pagination';
 import { ITEMS_PER_PAGE, SORT_BY_OPTIONS } from '../../constants/constants';
 import { PhonesPageViewProps } from './types';
-import './PhonesPage.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
+import './PhonesPage.scss';
 
-export const PhonesPageView: React.FC<PhonesPageViewProps> = ({
+export const PhonesPageView = memo<PhonesPageViewProps>(({
   totalItems,
   itemsOnPage,
   changeItemsPerPage,
@@ -51,4 +52,4 @@ export const PhonesPageView: React.FC<PhonesPageViewProps> = ({
       </div>
     </div>
   );
-};
+});

@@ -1,13 +1,10 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import './ImageSelector.scss';
 import cn from 'classnames';
 import { BASE_URL } from '../../utils/fetchClient';
+import { ImageSelectorProps } from './types';
 
-interface Props {
-  images: string[],
-}
-
-export const ImageSelector: React.FC<Props> = ({ images }) => {
+export const ImageSelector = memo<ImageSelectorProps>(({ images }) => {
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
   return (
@@ -39,4 +36,4 @@ export const ImageSelector: React.FC<Props> = ({ images }) => {
 
     </div>
   );
-};
+});

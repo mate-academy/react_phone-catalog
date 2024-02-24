@@ -1,14 +1,11 @@
+import { memo } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { Catalogue } from '../../components/Catalogue';
-import { Product } from '../../store/models/product';
+import { FavoritesViewProps } from './types';
 import './Favorites.scss';
 
-interface Props {
-  favorites: Product[],
-}
-
-export const FavoritesView: React.FC<Props> = ({ favorites }) => (
+export const FavoritesView = memo<FavoritesViewProps>(({ favorites }) => (
   <div className="favorites">
     <div className="favorites__top-container">
       <Breadcrumbs />
@@ -17,5 +14,4 @@ export const FavoritesView: React.FC<Props> = ({ favorites }) => (
     </div>
     <Catalogue items={favorites} />
   </div>
-
-);
+));

@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { ColorRing } from 'react-loader-spinner';
 import './Spinner.scss';
 
-export const Spinner = () => (
+export const Spinner = memo(() => (
   <div className="spinner">
     <ColorRing
       height="120"
@@ -9,4 +10,4 @@ export const Spinner = () => (
       ariaLabel="loading"
     />
   </div>
-);
+));

@@ -1,12 +1,8 @@
 import './ProductAbout.scss';
+import { memo } from 'react';
+import { ProductAboutProps } from './types';
 
-type DescriptionObject = { title: string, text: string[] };
-
-interface Props {
-  description: DescriptionObject[],
-}
-
-export const ProductAbout: React.FC<Props> = ({ description }) => (
+export const ProductAbout = memo<ProductAboutProps>(({ description }) => (
   <div className="product-about">
     <h2 className="product-about__title">About</h2>
     <div className="divider" />
@@ -26,4 +22,4 @@ export const ProductAbout: React.FC<Props> = ({ description }) => (
       ))}
     </div>
   </div>
-);
+));

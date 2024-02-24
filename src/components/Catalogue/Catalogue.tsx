@@ -1,17 +1,13 @@
-import React from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { ProductCard } from '../ProductCard';
 import './Catalogue.scss';
-import { Product } from '../../store/models/product';
 import { selectCart } from '../../store/selectors/cartSlice';
 import { selectFavorites } from '../../store/selectors/favoritesSlice';
+import { CatalogueProps } from './types';
 
-interface CatalogueProps {
-  items: Product[];
-}
-
-export const Catalogue: React.FC<CatalogueProps>
-  = ({ items }) => {
+export const Catalogue
+  = memo<CatalogueProps>(({ items }) => {
     const { cart } = useSelector(selectCart);
     const { favorites } = useSelector(selectFavorites);
 
@@ -32,4 +28,4 @@ export const Catalogue: React.FC<CatalogueProps>
         })}
       </div>
     );
-  };
+  });

@@ -16,7 +16,6 @@ const initialState: ProductDetailsState = {
 
 export const getProductDetails = createAsyncThunk(
   'productDetails/fetch', (productId: string) => {
-    console.log(fetchClient.get<ProductDetails>(`products/${productId}.json`))
     return fetchClient.get<ProductDetails>(`products/${productId}.json`);
   },
 );

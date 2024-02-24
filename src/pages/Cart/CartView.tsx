@@ -1,18 +1,10 @@
+import { memo } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { CartItem } from '../../components/CartItem';
-import { CartObject } from '../../store/models/cart';
+import { CartViewProps } from './types';
 import './Cart.scss';
 
-interface Props {
-  cartItems: CartObject[],
-  incrementProduct: (id: string) => void,
-  decrementQuantity: (id: string) => void,
-  removeProduct: (id: string) => void,
-  totalCost: number,
-  totalItems: number,
-}
-
-export const CartView: React.FC<Props> = ({
+export const CartView = memo<CartViewProps>(({
   cartItems,
   incrementProduct,
   decrementQuantity,
@@ -56,4 +48,4 @@ export const CartView: React.FC<Props> = ({
       </div>
     </div>
   </div>
-);
+));

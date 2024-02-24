@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import {
+  memo,
   useCallback,
   useEffect,
   useMemo,
@@ -11,12 +12,9 @@ import { useAppDispatch } from '../../store/hooks/redux';
 import { getProducts } from '../../store/reducers/ProductsSlice';
 import { Spinner } from '../../components/Spinner';
 import { Error } from '../../components/Error';
+import { ProductsPageProps } from './types';
 
-interface Props {
-  searchQuery: string,
-}
-
-export const ProductsPage: React.FC<Props> = ({ searchQuery }) => {
+export const ProductsPage = memo<ProductsPageProps>(({ searchQuery }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -32,21 +30,20 @@ export const ProductsPage: React.FC<Props> = ({ searchQuery }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsOnPage, setItemsOnPage] = useState(16);
+  const [option, setOption] = useState('');
 
   const lastItemIndex = currentPage * itemsOnPage;
   const firstItemIndex = lastItemIndex - itemsOnPage;
 
-  const onChangeItemsPerPage = useCallback((option: string) => {
-    if (option === 'All' && products) {
+  const onChangeItemsPerPage = useCallback((itemPerPage: string) => {
+    if (itemPerPage === 'All' && products) {
       setItemsOnPage(products.length);
 
       return;
     }
 
-    setItemsOnPage(+option);
+    setItemsOnPage(+itemPerPage);
   }, [products]);
-
-  const [option, setOption] = useState('');
 
   const onSortItems = useCallback((query: string) => {
     setOption(query);
@@ -108,4 +105,4 @@ export const ProductsPage: React.FC<Props> = ({ searchQuery }) => {
     />
 
   );
-};
+});

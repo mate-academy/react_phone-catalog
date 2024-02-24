@@ -1,9 +1,10 @@
-import { Icons } from '../../types/enums/Icons';
+import { memo } from 'react';
+import { Icons } from '../../types/Icons';
 import { scrollToTop } from '../../utils/functions';
 import { Icon } from '../Icon';
 import './Footer.scss';
 
-export const Footer = () => {
+export const Footer = memo(() => {
   return (
     <footer className="footer">
       <span className="footer__logo" />
@@ -27,4 +28,4 @@ export const Footer = () => {
 
     </footer>
   );
-};
+});

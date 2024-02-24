@@ -1,15 +1,19 @@
 import { useCallback, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ProductDetailsView } from './ProductDetailsView';
 import { getProductDetails } from '../../store/reducers/ProductDetailsSlice';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
+import { useAppSelector } from '../../store/hooks/redux';
 import { Spinner } from '../../components/Spinner';
 import { Error } from '../../components/Error';
 import { addToCart } from '../../store/reducers/cartSlice';
 import { toggleFavorite } from '../../store/reducers/favoritesSlice';
 import { selectCart } from '../../store/selectors/cartSlice';
 import { selectFavorites } from '../../store/selectors/favoritesSlice';
+import {
+  selectProductDetails,
+} from '../../store/selectors/ProductDetailsSlice';
+import { AppDispatch } from '../../store/store';
 
 export const ProductDetails = () => {
   const location = useLocation();
@@ -18,15 +22,13 @@ export const ProductDetails = () => {
 
   const trimmedPath = path.substring(path.lastIndexOf('/') + 1);
 
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(getProductDetails(trimmedPath));
   }, [trimmedPath, dispatch]);
 
-  const { product, error, isLoading } = useAppSelector(state => {
-    return state.productDetailsReducer;
-  });
+  const { product, error, isLoading } = useSelector(selectProductDetails);
 
   const { products } = useAppSelector(state => {
     return state.productsReducer;
@@ -43,21 +45,21 @@ export const ProductDetails = () => {
     ));
   }, [navigate, path]);
 
-  const onCartAdd = (id: string) => {
+  const onCartAdd = useCallback((id: string) => {
     const productToAdd = products?.find(prItem => prItem.phoneId === id);
 
     if (productToAdd) {
       dispatch(addToCart(productToAdd));
     }
-  };
+  }, [dispatch, products]);
 
-  const onFavoritesToggle = (id: string) => {
+  const onFavoritesToggle = useCallback((id: string) => {
     const productToAdd = products?.find(prItem => prItem.phoneId === id);
 
     if (productToAdd) {
       dispatch(toggleFavorite(productToAdd));
     }
-  };
+  }, [dispatch, products]);
 
   const { cart } = useSelector(selectCart);
   const { favorites } = useSelector(selectFavorites);

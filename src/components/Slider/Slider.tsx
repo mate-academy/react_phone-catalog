@@ -1,22 +1,22 @@
 import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
-import './Slider.scss';
-import accessories from '../../assets/img/banner-accessories.png';
-import phones from '../../assets/img/banner-phones.png';
-import tablets from '../../assets/img/banner-tablets.png';
+import {
+  memo, useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Icon } from '../Icon';
-import { Icons } from '../../types/enums/Icons';
+import { Icons } from '../../types/Icons';
+import { IMAGES } from '../../constants/constants';
+import './Slider.scss';
 
-const images = [
-  phones,
-  accessories,
-  tablets,
-];
-
-export const Slider: React.FC = () => {
+export const Slider = memo(() => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const updateIndex = (newIndex: number) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const widthSize = ref.current?.offsetWidth || 1040;
+  const updateIndex = useCallback((newIndex: number) => {
     let index = newIndex;
 
     if (newIndex < 0) {
@@ -26,7 +26,7 @@ export const Slider: React.FC = () => {
     }
 
     setActiveIndex(index);
-  };
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,10 +37,6 @@ export const Slider: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [activeIndex]);
-
-  const ref: React.RefObject<HTMLDivElement> = useRef(null);
-
-  const widthSize = ref.current?.offsetWidth || 1040;
 
   return (
     <div className="slider">
@@ -58,7 +54,7 @@ export const Slider: React.FC = () => {
             className="slider__list"
             style={{ transform: `translate(-${activeIndex * widthSize}px)` }}
           >
-            {images.map(img => (
+            {IMAGES.map(img => (
               <li className="slider__item" key={img}>
                 <img
                   src={img}
@@ -81,7 +77,7 @@ export const Slider: React.FC = () => {
         </button>
       </div>
       <div className="slider__dots">
-        {images.map((img, i) => (
+        {IMAGES.map((img, i) => (
           <button
             type="button"
             aria-label="position"
@@ -95,4 +91,4 @@ export const Slider: React.FC = () => {
       </div>
     </div>
   );
-};
+});
