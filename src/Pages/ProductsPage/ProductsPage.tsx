@@ -70,7 +70,7 @@ export const ProductsPage: React.FC<Props> = ({ searchQuery }) => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchbar]);
+  }, [searchbar, itemsOnPage]);
 
   if (products && products.length === 0 && searchbar === '') {
     return (
