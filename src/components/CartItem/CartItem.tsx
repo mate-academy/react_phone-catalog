@@ -41,7 +41,7 @@ export const CartItem: React.FC<Props> = ({
       </Button>
 
       <div className="cart__item-img">
-        <img src={image} alt="Phone" />
+        <img src={image.replace('..', '')} alt="Phone" />
       </div>
 
       <div className="cart__item-title">

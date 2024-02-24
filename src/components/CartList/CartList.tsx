@@ -13,12 +13,14 @@ export const CartList: React.FC<Props> = ({
 }) => {
   return (
     <div className="cart__list">
-      {cartItems.map(item => (
-        <CartItem
-          key={getId()}
-          item={item}
-        />
-      ))}
+      {
+        cartItems.map(item => (
+          <CartItem
+            key={getId()}
+            item={item}
+          />
+        ))
+      }
     </div>
   );
 };
