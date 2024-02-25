@@ -28,22 +28,18 @@
   }
 
   @include on-desktop-s {
-    padding-inline: 80px;
-  }
-
-  @include on-tablet {
     padding-inline: 60px;
   }
 
-  @include on-tablet-s {
+  @include on-tablet {
     padding-inline: 40px;
   }
 
-  @include on-mobile-l{
+  @include on-tablet-s {
     padding-inline: 30px;
   }
 
-  @include on-mobile-m{
+  @include on-mobile-l{
     padding-inline: 20px;
   }
 }

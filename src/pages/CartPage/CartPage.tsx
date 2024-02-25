@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import './CartPage.scss';
 import { MyBackLink } from '../../components/UI/MyBackLink';
@@ -37,11 +38,16 @@ export const CartPage = () => {
   return (
     <section className="cart-page">
       {showModal && (
-        <MyModal
-          closeModal={() => setShowModal(false)}
-        >
-          <h2>`We are sorry, but this feature is not implemented yet</h2>
-        </MyModal>
+        <>
+          {createPortal(
+            <MyModal
+              closeModal={() => setShowModal(false)}
+            >
+              <h2>`We are sorry, but this feature is not implemented yet</h2>
+            </MyModal>,
+            document.body,
+          )}
+        </>
       )}
 
       <MyBackLink />

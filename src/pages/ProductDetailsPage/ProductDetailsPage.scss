@@ -6,6 +6,10 @@
   gap: 80px;
   padding-block: 24px 80px;
 
+  @include on-mobile-l {
+    gap: 20px;
+  }
+
   &__breadcrumbs {
     @include on-mobile-l {
       display: none;
