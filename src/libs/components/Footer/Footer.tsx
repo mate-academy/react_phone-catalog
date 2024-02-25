@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
+
+import { FOOTE_LINKS } from '../../constants';
+
 import { Logo } from '../Logo';
 import { Icon } from '../Icon/Icon';
+
 import './Footer.scss';
-import { FOOTE_LINKS } from '../../constants/footeLinks';
 
 export const Footer = () => {
   const handleBackToTop = () => {

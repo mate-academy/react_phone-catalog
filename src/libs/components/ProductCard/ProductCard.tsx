@@ -1,21 +1,25 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 
+import { IProduct } from '../../types';
+import { getCategoryName } from '../../utils';
+
 import { TechSpecs } from '../TechSpecs/TechSpecs';
 import { BuyButtons } from '../BuyButtons/BuyButtons';
 import { Price } from '../Price';
-import { Product } from '../../types';
 
 import './ProductCard.scss';
 
 export type Props = {
-  product: Product,
+  product: IProduct,
 };
 
 export const ProductCard: React.FC<Props> = ({
   product: {
-    imageUrl,
+    id,
     name,
+    type,
+    imageUrl,
     price,
     discount,
     ram,
@@ -23,10 +27,13 @@ export const ProductCard: React.FC<Props> = ({
     screen,
   },
 }) => {
+  const categoryName = getCategoryName(type);
+  const link = `/${categoryName}/${id}`;
+
   return (
     <div className="product-card">
       <Link
-        to="./model"
+        to={link}
         className="product-card__photo-link"
       >
         <img
@@ -37,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({
       </Link>
 
       <Link
-        to="./model"
+        to={link}
         className="product-card__title"
       >
         {name}

@@ -13,6 +13,7 @@ export const ShopByCategory = () => {
       >
         <CategoryCard
           pass={CategoryName.Phones}
+          title="Mobile phones"
         />
         <CategoryCard
           pass={CategoryName.Tablets}

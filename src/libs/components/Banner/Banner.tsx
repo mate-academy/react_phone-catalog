@@ -3,7 +3,8 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 
-import { BANNER_IMAGES } from '../../constants/bannerImages';
+import { BANNER_IMAGES } from '../../constants';
+
 import { Icon } from '../Icon';
 
 import './Banner.scss';

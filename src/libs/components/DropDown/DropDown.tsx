@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { getKeyByValue } from '../../utils';
 import { Icon } from '../Icon';
 
 import './DropDown.scss';
-import { getKeyByValue } from '../../utils/getKeyByValue';
 
 type DropProps<T> = {
   label: string,

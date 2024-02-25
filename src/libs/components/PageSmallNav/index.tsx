@@ -1,1 +1,1 @@
-export * from './PageSmallNav';
+export * from './Breadcrumbs';

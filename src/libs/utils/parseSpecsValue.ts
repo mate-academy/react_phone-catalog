@@ -7,7 +7,7 @@ export const parseSpecsValue = (value: string) => {
     return value;
   }
 
-  const number = parseFloat(value);
+  const number = parseFloat(value) || '';
   const text = value.replace(String(number), ' ');
 
   return number + text;

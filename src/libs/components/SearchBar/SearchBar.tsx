@@ -4,9 +4,10 @@ import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { getSearchWith } from '../../utils';
+import { SearchParamsNames } from '../../constants';
+
 import { Icon } from '../Icon';
-import { getSearchWith } from '../../utils/getSearchWith';
-import { SearchParamsNames } from '../../constants/searchParamsNames';
 
 import './SearchBar.scss';
 

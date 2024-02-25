@@ -3,24 +3,24 @@ import './CategoryCard.scss';
 import { CategoryName } from '../../types/categoryName.enum';
 import { useAppSelector } from '../../app/hooks';
 import {
-  changeCategoryNameIntoPropductCategory,
+  getProductCategory,
   getCategoryTitle,
 } from '../../utils';
 
 type Props = {
   pass: CategoryName,
+  title?: string
 };
 
 export const CategoryCard: React.FC<Props> = ({
   pass,
+  title = getCategoryTitle(pass),
 }) => {
   const { allProducts } = useAppSelector(store => store.products);
 
-  const title = getCategoryTitle(pass);
-
   const modelsCount = allProducts.filter(
     product => {
-      const type = changeCategoryNameIntoPropductCategory(pass);
+      const type = getProductCategory(pass);
 
       return product.type === type;
     },

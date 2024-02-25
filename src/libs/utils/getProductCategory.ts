@@ -1,7 +1,7 @@
 import { CategoryName } from '../types/categoryName.enum';
 import { ProductType } from '../types';
 
-export const changeCategoryNameIntoPropductCategory = (
+export const getProductCategory = (
   categoryName: string,
 ): ProductType => {
   switch (categoryName) {

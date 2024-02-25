@@ -2,13 +2,16 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback } from 'react';
 
-import { FILTER_OPTIONS } from '../../constants/filterValues';
-import { SORT_OPTIONS } from '../../constants/sortValues';
+import {
+  FILTER_OPTIONS,
+  SORT_OPTIONS,
+  SearchParamsNames,
+} from '../../constants';
+import { getSearchWith } from '../../utils';
+
 import { DropDown } from '../DropDown';
-import { getSearchWith } from '../../utils/getSearchWith';
 
 import './PageFilter.scss';
-import { SearchParamsNames } from '../../constants/searchParamsNames';
 
 type Props = {
   sortValue: string,

@@ -1,6 +1,9 @@
 @import '../../../assets/css/variables';
 
-.model-page {
+.product-page {
+  width: 100%;
+  padding-top: 24px;
+
   &__small-nav,
   &__title {
     margin-bottom: 40px;
@@ -17,6 +20,7 @@
     'images main-info'
     'about specs';
     gap: 80px 64px;
+    height: max-content;
     margin-bottom: 80px;
   }
 
@@ -55,20 +59,16 @@
     grid-area: specs;
   }
 
-  // &__specs-table {
-
-  // }
 }
 
-.model-images {
+.product-images {
   display: flex;
   gap: 16px;
   align-items: center;
 
-  &__main-images {
+  &__main-image {
     width: 464px;
     height: 464px;
-
   }
 
   &__side-images {
@@ -76,7 +76,7 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
-
+    cursor: pointer;
   }
 
   &__side-image {
@@ -90,12 +90,13 @@
   }
 }
 
-.model-info {
+.product-info {
   display: flex;
   justify-content: space-between;
 
   &__main {
     width: 320px;
+    margin-right: 10px;
   }
 
   &__id {
@@ -103,6 +104,8 @@
     font-weight: 600;
     line-height: 15px;
     color: $icons;
+    max-width: 180px;
+    word-break: break-all;
   }
 
   &__title {
@@ -183,7 +186,7 @@
   }
 }
 
-.about-model {
+.about-product {
   &__text {
     color: $secondary;
   }

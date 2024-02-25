@@ -1,22 +1,22 @@
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
-import './PageSmallNav.scss';
+import './Breadcrumbs.scss';
 
 type Props = {
   classNames?: string,
 };
 
-export const PageSmallNav: React.FC<Props> = ({ classNames }) => {
+export const Breadcrumbs: React.FC<Props> = ({ classNames }) => {
   const location = useLocation();
 
   const pathes = location.pathname.slice(1).split('/');
 
   return (
-    <div className={cn('page-small-nav', classNames)}>
+    <div className={cn('breadcrumbs', classNames)}>
       <Link
         to="/"
-        className="page-small-nav__home"
+        className="breadcrumbs__home"
       />
       {
         pathes.map((path, i) => {
@@ -25,8 +25,8 @@ export const PageSmallNav: React.FC<Props> = ({ classNames }) => {
               <p
                 key={path}
                 className="
-                page-small-nav__link
-                page-small-nav__link--current
+                breadcrumbs__link
+                breadcrumbs__link--current
               "
               >
                 {`${path[0].toUpperCase()}${path.slice(1)}`}
@@ -39,7 +39,7 @@ export const PageSmallNav: React.FC<Props> = ({ classNames }) => {
               to="/phones"
               key={path}
               className="
-                page-small-nav__link
+                breadcrumbs__link
               "
             >
               {`${path[0].toUpperCase()}${path.slice(1)}`}

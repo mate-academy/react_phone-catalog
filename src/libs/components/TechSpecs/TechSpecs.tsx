@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import { parseSpecsValue } from '../../utils';
+
 import './TechSpecs.scss';
 
 type Props = {
@@ -21,27 +22,27 @@ export const TechSpecs: React.FC<Props> = ({
   return (
     <table
       className={cn(
-        'phone-details',
+        'product-details',
         classNames,
         {
-          'phone-details--border': hasBorder,
+          'product-details--border': hasBorder,
         },
       )}
     >
-      <tbody className="phone-details__body">
+      <tbody className="product-details__body">
         {
           productSpecs.map(([key, value]) => (
             <tr
-              className="phone-details__row"
+              className="product-details__row"
               key={key}
             >
               <td
-                className="phone-details__name"
+                className="product-details__name"
               >
                 {key}
               </td>
               <td
-                className="phone-details__description"
+                className="product-details__description"
               >
                 {parseSpecsValue(value)}
               </td>

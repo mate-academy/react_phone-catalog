@@ -1,11 +1,15 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
+
+import { IProduct } from '../../types';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as productsActions from '../../slices/productsSlice';
+
 import { Banner } from '../Banner';
 import { ShopByCategory } from '../ShopByCategory';
 import { ProductsSlider } from '../ProductsSlider';
-import { Product } from '../../types';
-import { useAppSelector } from '../../app/hooks';
+import { Loader } from '../Loader';
 
-export const getHotPriceProducts = (products: Product[]) => {
+export const getHotPriceProducts = (products: IProduct[]) => {
   const productsWithAbsoluteDiscount
     = products
       .filter(product => product.discount > 0)
@@ -16,7 +20,7 @@ export const getHotPriceProducts = (products: Product[]) => {
   return productsWithAbsoluteDiscount;
 };
 
-export const getBrandNewProducts = (products: Product[]) => {
+export const getBrandNewProducts = (products: IProduct[]) => {
   const productsWithoutDiscount
     = products
       .filter(product => !product.discount)
@@ -28,30 +32,48 @@ export const getBrandNewProducts = (products: Product[]) => {
 };
 
 export const HomePage = () => {
-  const { allProducts: products } = useAppSelector(store => store.products);
+  const dispatch = useAppDispatch();
+  const {
+    allProducts,
+    loaded,
+    hasError,
+  } = useAppSelector(store => store.products);
 
   const productsWithHotPrice = useMemo(() => {
-    return getHotPriceProducts(products);
-  }, [products]);
+    return getHotPriceProducts(allProducts);
+  }, [allProducts]);
 
   const brandNewProducts = useMemo(() => {
-    return getBrandNewProducts(products);
-  }, [products]);
+    return getBrandNewProducts(allProducts);
+  }, [allProducts]);
+
+  useEffect(() => {
+    dispatch(productsActions.fetchAll());
+  }, [dispatch]);
 
   return (
     <>
       <Banner />
-      <ProductsSlider
-        title="Hot prices"
-        items={productsWithHotPrice}
-        classNames="main__hot-prices"
-      />
-      <ShopByCategory />
-      <ProductsSlider
-        items={brandNewProducts}
-        title="Brand new models"
-        classNames="main__brand-new-models"
-      />
+
+      {(!loaded && !hasError) && <Loader />}
+
+      {(loaded && !hasError && !!allProducts.length) && (
+        <>
+          <ProductsSlider
+            title="Hot prices"
+            items={productsWithHotPrice}
+            classNames="main__hot-prices"
+          />
+
+          <ShopByCategory />
+
+          <ProductsSlider
+            items={brandNewProducts}
+            title="Brand new models"
+            classNames="main__brand-new-models"
+          />
+        </>
+      )}
     </>
   );
 };

@@ -1,9 +1,11 @@
 export {
-  changeCategoryNameIntoPropductCategory,
-} from './changeCategoryNameIntoPropductCategory';
+  getProductCategory,
+} from './getProductCategory';
 export { getCategoryTitle } from './getCategoryTitle';
 export { getCurrentProducts } from './getCurrentProducts';
 export { handleSearchBarVisibility } from './handleSearchBarVisibility';
 export { parseSpecsValue } from './parseSpecsValue';
-export { chooseCurrentProducts } from './chooseCurrentProducts';
-export { fetchCurrentProducts } from './fetchCurrentProducts';
+export { fetchCategoryProducts } from './fetchCategoryProducts';
+export { getCategoryName } from './getCategoryName';
+export { getKeyByValue } from './getKeyByValue';
+export { getSearchWith } from './getSearchWith';

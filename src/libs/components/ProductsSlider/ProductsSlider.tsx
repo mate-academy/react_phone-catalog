@@ -7,12 +7,12 @@ import {
 import { ProductCard } from '../ProductCard';
 import { SectionHeader } from '../SectionHeader';
 import { Icon } from '../Icon';
-import { Product } from '../../types';
+import { IProduct } from '../../types';
 
 import './ProductsSlider.scss';
 
 type Props = {
-  items: Product [],
+  items: IProduct [],
   title: string,
   classNames?: string,
 };

@@ -4,10 +4,11 @@ import cn from 'classnames';
 import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { Icon } from '../Icon';
 import { FilterType } from '../../types';
-import { getSearchWith } from '../../utils/getSearchWith';
-import { SearchParamsNames } from '../../constants/searchParamsNames';
+import { getSearchWith } from '../../utils';
+import { SearchParamsNames } from '../../constants';
+
+import { Icon } from '../Icon';
 
 import './PagePagination.scss';
 

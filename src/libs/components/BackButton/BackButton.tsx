@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 
 import './BackButton.scss';
@@ -8,9 +8,20 @@ type Props = {
 };
 
 export const BackButton: React.FC<Props> = ({ classNames }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(-1);
+  };
+
   return (
-    <Link to=".." className={cn('back-button', classNames)}>
+    <button
+      type="button"
+      className={cn('back-button', classNames)}
+      data-cy="backButton"
+      onClick={handleClick}
+    >
       Back
-    </Link>
+    </button>
   );
 };

@@ -9,6 +9,9 @@
   color: $secondary;
   text-decoration: none;
   width: max-content;
+  background: none;
+  border: none;
+  cursor: pointer;
 
   &::before {
     display: inline-block;

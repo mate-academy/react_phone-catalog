@@ -1,10 +1,10 @@
 import { CategoryName } from '../types/categoryName.enum';
-import { Product } from '../types';
+import { IProduct } from '../types';
 import {
-  changeCategoryNameIntoPropductCategory,
-} from './changeCategoryNameIntoPropductCategory';
+  getProductCategory,
+} from './getProductCategory';
 
-export const getCurrentProducts = (products: Product[], category: string) => {
+export const getCurrentProducts = (products: IProduct[], category: string) => {
   if (!Object.keys(CategoryName)
     .some(
       el => el.toLowerCase() === category.toLowerCase(),
@@ -12,7 +12,7 @@ export const getCurrentProducts = (products: Product[], category: string) => {
     return [];
   }
 
-  const typeToComparison = changeCategoryNameIntoPropductCategory(category);
+  const typeToComparison = getProductCategory(category);
 
   return products.filter(item => item.type === typeToComparison);
 };
