@@ -45,7 +45,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           <div className="cart-item__info-image-wrapper">
             <Link to={`/${product.category}/${product.phoneId}`}>
               <img
-                src={`_new/${product.image}`}
+                src={`new/${product.image}`}
                 alt={product.name}
                 className="cart-item__info-image"
               />

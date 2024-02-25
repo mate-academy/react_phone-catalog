@@ -6,9 +6,9 @@ import { getCategorySize } from '../../helpers/funcService/getCategorySize';
 type Category = {
   name: 'phones' | 'tablets' | 'accessories',
   title: 'Mobile phones' | 'Tablets' | 'Accessories',
-  path: '_new/img/category-phones.png'
-  | '_new/img/category-accessories.png'
-  | '_new/img/category-tablets.png',
+  path: 'new/img/category-phones.png'
+  | 'new/img/category-accessories.png'
+  | 'new/img/category-tablets.png',
   size: number,
 };
 
@@ -19,19 +19,19 @@ export const ShopByCategory = () => {
     {
       name: 'phones',
       title: 'Mobile phones',
-      path: '_new/img/category-phones.png',
+      path: 'new/img/category-phones.png',
       size: getCategorySize('phones', products),
     },
     {
       name: 'tablets',
       title: 'Tablets',
-      path: '_new/img/category-tablets.png',
+      path: 'new/img/category-tablets.png',
       size: getCategorySize('tablets', products),
     },
     {
       name: 'accessories',
       title: 'Accessories',
-      path: '_new/img/category-accessories.png',
+      path: 'new/img/category-accessories.png',
       size: getCategorySize('accessories', products),
     },
   ];
