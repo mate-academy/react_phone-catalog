@@ -7,13 +7,13 @@ import './Slider.scss';
 
 type Image = {
   name: 'phones' | 'tablets' | 'accessories',
-  path: 'new/img/banner-phones.png'
+  path: 'public/_new/img/banner-phones.png'
   | 'new/img/banner-accessories.png'
   | 'new/img/banner-tablets.png'
 };
 
 const images: Image[] = [
-  { name: 'phones', path: 'new/img/banner-phones.png' },
+  { name: 'phones', path: 'public/_new/img/banner-phones.png' },
   { name: 'tablets', path: 'new/img/banner-tablets.png' },
   { name: 'accessories', path: 'new/img/banner-accessories.png' },
 ];
