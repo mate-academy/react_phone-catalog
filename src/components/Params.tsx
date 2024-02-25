@@ -20,7 +20,7 @@ export const Params: React.FC<Props> = ({ product, params }) => {
           </span>
 
           <span className="params__param-value">
-            {product[item.toLowerCase() as keyof Product | ProductDetails]}
+            {product[item.toLowerCase() as keyof (Product | ProductDetails)]}
           </span>
         </div>
       ))}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-type Description = {
+export type Description = {
   title: string,
   text: string[],
 };

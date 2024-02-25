@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-confusing-arrow */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -15,6 +14,8 @@ import { NotFoundPage } from './NotFoundPage';
 
 import '../styles/ProductDetailsPage.scss';
 import { Options } from '../components/Options';
+import { About } from '../components/About';
+import { TechSpecs } from '../components/TechSpecs';
 
 export const ProductDetailsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -47,7 +48,9 @@ export const ProductDetailsPage: React.FC = () => {
     );
   }
 
-  const { images, name } = product;
+  const { images, name, description } = product;
+
+  console.log(product);
 
   return (
     <main className={cn('product-details-page', {
@@ -106,6 +109,17 @@ export const ProductDetailsPage: React.FC = () => {
 
         <section className="product-details-page__options">
           <Options product={product} />
+        </section>
+
+        <section
+          className="product-details-page__about"
+          data-cy="productDescription"
+        >
+          <About description={description} />
+        </section>
+
+        <section className="product-details-page__tech-specs">
+          <TechSpecs />
         </section>
 
       </div>

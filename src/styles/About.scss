@@ -1,0 +1,36 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+
+.about {
+  &__title {
+    margin-bottom: 48px;
+
+    @include underLine;
+    @include h3Text
+  }
+
+  &__block {
+    margin-bottom: 32px;
+
+      &:last-child {
+      margin-bottom: 0;
+      }
+  }
+
+  &__paragraph-title {
+    margin-bottom: 16px;
+
+    @include h4Text
+  }
+
+  &__paragraph {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

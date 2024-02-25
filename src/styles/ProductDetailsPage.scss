@@ -87,9 +87,18 @@
 
   &__options {
     grid-column: 14/ span 7;
+    margin-bottom: 80px;
 
     @include onTablet {
-      grid-column: 8/ span 5;
-    }
+        grid-column: 8/ span 5;
+      }
+  }
+
+  &__about {
+    grid-column: 1/ span 12;
+  }
+
+  &__tech-specs {
+    grid-column: 14/ span 11;
   }
 }
