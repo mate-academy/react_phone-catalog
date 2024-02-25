@@ -82,7 +82,7 @@ export const ProductCard: React.FC = () => {
 
   useEffect(() => {
     setSelectedColor('yellow')
-  }, [product.id])
+  }, [])
 
   useEffect(() => {
     getPics(selectedColor)

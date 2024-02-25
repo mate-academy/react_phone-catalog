@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowForward, ArrowBack } from './ArrowButtons';
 import { getCurrentItems, useSetCurrentPage } from '../helpers/utils';
@@ -49,10 +49,10 @@ export const PaginationSlider: React.FC<Props> = ({ pageName }) => {
 
       <div className="chunk-container">
         {currentItems.map(phone => {
-          const key = uuidv4();
+          // const key = uuidv4();
 
           return (
-            <ProductItem product={phone} key={key} />
+            <ProductItem product={phone}  />
           );
         })}
       </div>

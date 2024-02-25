@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 // import { getFavourites } from '../../helpers/utils';
 import { ProductItem } from '../../components/product/ProductItem';
 import './FavouritesPage.scss';
@@ -12,10 +12,10 @@ export const FafouritesPage: React.FC = () => {
   return (
     <div className="test">
       {state.favourites.map(item => {
-        const key = uuidv4();
+        // const key = uuidv4();
 
         return (
-          <ProductItem product={item} key={key} />
+          <ProductItem product={item} />
         );
       })}
     </div>

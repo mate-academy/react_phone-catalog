@@ -13,6 +13,8 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../pagination/Pagination';
 import { Product } from '../../types';
 
+
+
 export const ProductPage: React.FC = () => {
   const { state, dispatch } = useContext(StateContext);
 
@@ -25,6 +27,9 @@ export const ProductPage: React.FC = () => {
   const sort = searchParams.get('sort') || 'age';
   const [sortValue, setSortValue] = useState(sort);
   const location = useLocation();
+
+  // console.log(productType, 'type');
+
 
   let currentItems: Product[] = [];
 
@@ -118,9 +123,9 @@ export const ProductPage: React.FC = () => {
       <div className="list-container">
 
         {currentItems.map(product => {
-          const key = product.id;
+          // const key = product.id;
           return (
-            <ProductItem product={product} key={key} />
+            <ProductItem product={product} />
           )
         })}
       </div>
