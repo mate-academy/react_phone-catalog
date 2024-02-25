@@ -1,0 +1,15 @@
+@import "../../styles/main";
+
+.product-card {
+  &__content {
+    // width: 272px;
+    // width: 100%;
+    border: 1px solid red;
+    padding: 32px;
+    // width: fit-content;
+  }
+
+  &__image {
+    // width: min-content;
+  }
+}

@@ -15,7 +15,15 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="/home" element={<Navigate to="/" />} />
-        <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/phones">
+          <Route index element={<PhonesPage />} />
+          {/* <Route path=":itemId" element={<ProductDetailsPage />} /> */}
+        </Route>
+        {/* <Route path="/tablets" element={<TabletsPage />} />
+        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

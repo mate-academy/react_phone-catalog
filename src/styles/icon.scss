@@ -35,10 +35,18 @@
   &--arrow-left {
     background-image: url(../images/icons/chevron.svg);
     transform: rotate(270deg);
+
+    &-disabled {
+      background-image: url(../images/icons/chevron-disabled.svg);
+    }
   }
 
   &--arrow-right {
     background-image: url(../images/icons/chevron.svg);
     transform: rotate(90deg);
+
+    &-disabled {
+      background-image: url(../images/icons/chevron-disabled.svg);
+    }
   }
 }

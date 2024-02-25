@@ -73,90 +73,88 @@ export const PicturesSlider = () => {
   }, [goToNext]);
 
   return (
-    <section className="pictures-slider">
-      <div className="pictures-slider__container">
-        <div className="pictures-slider__content">
-          <div className="grid grid--tablet">
-            <div className="
+    <div className="pictures-slider">
+      <div className="pictures-slider__content">
+        <div className="grid grid--tablet">
+          <div className="
               pictures-slider__arrow-container
               grid__item
               grid__item--tablet-1-1"
+          >
+            <button
+              type="button"
+              className="pictures-slider__arrow"
+              onClick={goToPrevious}
             >
-              <button
-                type="button"
-                className="pictures-slider__arrow"
-                onClick={goToPrevious}
-              >
-                <div className="icon icon--arrow-left" />
-              </button>
-            </div>
+              <div className="icon icon--arrow-left" />
+            </button>
+          </div>
 
-            <div className="
+          <div className="
                   grid__item
                   grid__item--tablet-2-11
                   grid__item--desktop-2-23"
+          >
+            <div
+              className="pictures-slider__slides-container"
+              ref={containerRef}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
             >
-              <div
-                className="pictures-slider__slides-container"
-                ref={containerRef}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-              >
-                <div className="pictures-slider__slides">
-                  <ul
-                    className="pictures-slider__list"
-                    style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
-                  >
-                    {slides.map((slide, slideIndex) => (
-                      <li
-                        className="pictures-slider__item"
-                        key={slide.title}
-                      >
-                        <Link
-                          to={`./${slide.title}`}
-                          className="pictures-slider__link"
-                          style={{ backgroundImage: `url(${slides[slideIndex].url})` }}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="pictures-slider__slides">
+                <ul
+                  className="pictures-slider__list"
+                  style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
+                >
+                  {slides.map((slide, slideIndex) => (
+                    <li
+                      className="pictures-slider__item"
+                      key={slide.title}
+                    >
+                      <Link
+                        to={`./${slide.title}`}
+                        className="pictures-slider__link"
+                        style={{ backgroundImage: `url(${slides[slideIndex].url})` }}
+                      />
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+          </div>
 
-            <div className="
+          <div className="
                 pictures-slider__arrow-container
                 grid__item
                 grid__item--tablet-12-12
                 grid__item--desktop-24-24"
+          >
+            <button
+              type="button"
+              className="pictures-slider__arrow"
+              onClick={goToNext}
             >
-              <button
-                type="button"
-                className="pictures-slider__arrow"
-                onClick={goToNext}
-              >
-                <div className="icon icon--arrow-right" />
-              </button>
-            </div>
-          </div>
-
-          <div className="pictures-slider__dots">
-            {slides.map((slide, slideIndex) => (
-              <button
-                type="button"
-                className="pictures-slider__dot-container"
-                key={slide.title}
-                onClick={() => goToSlide(slideIndex)}
-              >
-                <div className={cn('pictures-slider__dot', {
-                  'pictures-slider__dot--active': currentIndex === slideIndex,
-                })}
-                />
-              </button>
-            ))}
+              <div className="icon icon--arrow-right" />
+            </button>
           </div>
         </div>
+
+        <div className="pictures-slider__dots">
+          {slides.map((slide, slideIndex) => (
+            <button
+              type="button"
+              className="pictures-slider__dot-container"
+              key={slide.title}
+              onClick={() => goToSlide(slideIndex)}
+            >
+              <div className={cn('pictures-slider__dot', {
+                'pictures-slider__dot--active': currentIndex === slideIndex,
+              })}
+              />
+            </button>
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 };

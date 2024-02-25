@@ -1,15 +1,11 @@
 @import "../../styles/main";
 
 .pictures-slider {
-  &__container {
-    @include onTablet {
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+  &__content {
+    margin: 0 -16px;
 
-    @include onDesktop {
-      padding: 0;
-      max-width: 1136px;
+    @include onTablet {
+      margin: 0;
     }
   }
 

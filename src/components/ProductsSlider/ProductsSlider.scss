@@ -1,0 +1,88 @@
+@import "../../styles/main";
+$mobileWidth: mobile-slide-width(var(--width));
+$tabletWidth: tablet-slide-width(var(--width));
+$smallDesktopWidth: small-desktop-slide-width(var(--width));
+$desktopWidth: desktop-slide-width(var(--width));
+
+.product-slider {
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 21px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__buttons {
+    display: flex;
+
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include square(32px);
+    border: 1px solid $colorIcons;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      border-color: $colorElements;
+    }
+  }
+
+  &__slides-container {
+    margin-right: -16px;
+    overflow: hidden;
+    @include onTablet {
+      margin-right: -24px;
+    }
+
+    @include onSmallDesktop {
+      margin-right: 0;
+    }
+  }
+
+  &__slides {
+    display: flex;
+    flex-direction: row;
+    gap: $gapGrid;
+
+    transition: transform 0.5s ease;
+  }
+
+  &__slide {
+    min-width: $mobileWidth;
+
+    border: 1px solid black;
+
+    @include onTablet {
+      min-width: $tabletWidth;
+    }
+
+    @include onSmallDesktop {
+      min-width: $smallDesktopWidth;
+    }
+
+    @include onDesktop {
+      min-width: $desktopWidth;
+    }
+  }
+}

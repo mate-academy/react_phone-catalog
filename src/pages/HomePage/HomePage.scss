@@ -15,4 +15,24 @@
       margin: 56px 0;
     }
   }
+
+  &__section {
+    margin-bottom: 56px;
+
+    &:last-child {
+      margin-bottom: 64px;
+    }
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+
+      &:last-child {
+        margin-bottom: 80px;
+      }
+    }
+  }
 }

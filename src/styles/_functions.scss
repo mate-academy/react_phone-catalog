@@ -1,0 +1,15 @@
+@function mobile-slide-width($width) {
+  @return calc(((#{$width} - #{$gapGrid} * 3)/ 4 * 3 + #{$gapGrid} * 2));
+}
+
+@function tablet-slide-width($width) {
+  @return calc(((#{$width} - #{$gapGrid} * 11)/ 12 * 5 + #{$gapGrid} * 4));
+}
+
+@function small-desktop-slide-width($width) {
+  @return calc(((#{$width} - #{$gapGrid} * 2)/ 3));
+}
+
+@function desktop-slide-width($width) {
+  @return calc(((#{$width} - #{$gapGrid} * 3)/ 4));
+}
