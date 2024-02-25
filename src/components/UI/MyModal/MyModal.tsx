@@ -10,7 +10,7 @@ type Props = {
 export const MyModal: React.FC<Props> = ({ children, closeModal }) => {
   return (
     <section className="my-modal" id="modal">
-      <div className="my-modal__content">
+      <div className="my-modal__content scale-in-center">
         <Link
           to="."
           aria-label="close dialog window"
