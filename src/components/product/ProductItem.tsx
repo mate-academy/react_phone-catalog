@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import {
   Link, useLocation,
 } from 'react-router-dom';
-import './phonesItem.scss'
+import './productsItem.scss'
 import React, { useContext } from "react";
 import { StateContext } from '../../AppContext';
 import { ACTIONS, getFavourite } from '../../helpers/utils';
@@ -31,7 +31,7 @@ type Props = {
   product: Product,
 }
 
-export const PhoneItem: React.FC<Props> = ({ product }) => {
+export const ProductItem: React.FC<Props> = ({ product }) => {
 
   const { state, dispatch } = useContext(StateContext);
   const location = useLocation()

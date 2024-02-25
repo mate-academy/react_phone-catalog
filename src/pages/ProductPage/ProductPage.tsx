@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { PhoneItem } from '../../components/product/ProductItem';
+import { ProductItem } from '../../components/product/ProductItem';
 import React, {
   useContext,
   useState,
@@ -120,7 +120,7 @@ export const ProductPage: React.FC = () => {
         {currentItems.map(product => {
           const key = product.id;
           return (
-            <PhoneItem product={product} key={key} />
+            <ProductItem product={product} key={key} />
           )
         })}
       </div>

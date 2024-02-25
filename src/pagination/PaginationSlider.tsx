@@ -4,8 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import { ArrowForward, ArrowBack } from './ArrowButtons';
 import { getCurrentItems, useSetCurrentPage } from '../helpers/utils';
 import { newPhoneArray } from '../assets/arrayOfPhones/phonesArray';
-import { PhoneItem } from '../components/product/ProductItem';
-import '../pages/ProductPage/phones.scss';
+import { ProductItem } from '../components/product/ProductItem';
+import '../pages/ProductPage/product.scss';
 import '../pages/home/homePage.scss';
 import { StateContext } from '../AppContext';
 
@@ -52,7 +52,7 @@ export const PaginationSlider: React.FC<Props> = ({ pageName }) => {
           const key = uuidv4();
 
           return (
-            <PhoneItem product={phone} key={key} />
+            <ProductItem product={phone} key={key} />
           );
         })}
       </div>

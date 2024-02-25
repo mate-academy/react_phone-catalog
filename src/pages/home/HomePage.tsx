@@ -1,7 +1,7 @@
 // eslint-disable
 /* eslint-disable */
 import { useRef, useState } from 'react';
-import '../ProductPage/phones.scss';
+import '../ProductPage/product.scss';
 import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 
