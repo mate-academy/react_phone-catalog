@@ -1,14 +1,16 @@
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useMemo, useState } from 'react';
-import { getHotPriceProducts } from '../../helpers/funcService/getHotPriceProducts';
-import { getBrandNewProducts } from '../../helpers/funcService/getBrandNewProducts';
+import { getHotPriceProducts }
+  from '../../helpers/funcService/getHotPriceProducts';
+import { getBrandNewProducts }
+  from '../../helpers/funcService/getBrandNewProducts';
 import { ProductsCardType } from '../../helpers/types/ProductsCardType';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { useAppSelector } from '../../helpers/hooks/hooks';
 import { Product } from '../../helpers/types/Product';
 import { ArrowLeft } from '../../assets/icons/ArrowLeft';
 import { ArrowRight } from '../../assets/icons/ArrowRight';
+import { getSuggestedProducts }
+  from '../../helpers/funcService/getuggestedProducts';
 import './ProductsSlider.scss';
 
 type ConditionProducts = {
@@ -16,10 +18,16 @@ type ConditionProducts = {
 };
 
 type Props = {
-  type: ProductsCardType
+  type: ProductsCardType,
+  filterBy?: keyof Product;
+  filterValue?: string | number;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ type }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  type,
+  filterBy,
+  filterValue,
+}) => {
   const [position, setPosition] = useState(0);
 
   const { products } = useAppSelector(state => state.products);
@@ -27,8 +35,10 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
   const visibleProducts = useMemo(() => {
     const conditionProducts: ConditionProducts = {
       [ProductsCardType.DISCOUNT]: getHotPriceProducts(products),
-      [ProductsCardType.NEWBRANDS]: getBrandNewProducts(products), // getBrandNewProducts(products),
-      [ProductsCardType.SIMILAR]: getHotPriceProducts(products), // products, filterBy, filterValue, getSuggestedProducts()
+      [ProductsCardType.NEWBRANDS]: getBrandNewProducts(products),
+      [ProductsCardType.SIMILAR]: getSuggestedProducts(
+        products, filterBy, filterValue,
+      ),
     };
 
     return conditionProducts[type];
@@ -60,6 +70,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
             disabled={position === 0}
           >
             <ArrowLeft color={position === 0 ? '#B4BDC4' : undefined} />
+            {}
           </button>
           <button
             className="productsSlider__arrow"
@@ -70,6 +81,7 @@ export const ProductsSlider: React.FC<Props> = ({ type }) => {
             <ArrowRight
               color={position === maxPosition ? '#B4BDC4' : undefined}
             />
+            {}
           </button>
         </div>
       </div>

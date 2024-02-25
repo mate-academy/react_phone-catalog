@@ -1,5 +1,11 @@
 @import "./variables";
 
+@mixin on-desktop() {
+  @media (min-width: $tablet-max-width) {
+    @content;
+  }
+}
+
 @mixin on-tablet() {
   @media (max-width: $tablet-max-width) {
     @content;
@@ -10,4 +16,15 @@
   @media (max-width: $mobile-max-width) {
     @content;
   }
+}
+
+@mixin buregr-line {
+  position: absolute;
+  height: 3px;
+  width: 30px;
+
+  display: block;
+  background-color: $gray-primary;
+  border: none;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }

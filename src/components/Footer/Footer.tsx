@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import { NavLink } from 'react-router-dom';
 import { LogoIcon } from '../../assets/icons/LogoIcon';
 import { ArrowUp } from '../../assets/icons/ArrowUp';
@@ -48,6 +47,7 @@ export const Footer = () => {
             onClick={() => window.scroll(0, 0)}
           >
             <ArrowUp />
+            {}
           </button>
         </div>
       </div>

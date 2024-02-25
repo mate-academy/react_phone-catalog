@@ -15,6 +15,14 @@
     line-height: 11px;
     height: $header-height;
     align-items: center;
+
+    width: fit-content;
+
+    @include on-tablet {
+      width: 100%;
+
+      justify-content: space-between;
+    }
   }
 
   &__right-side-options {
@@ -43,31 +51,6 @@
       border: 1px solid #fff;
       border-radius: 50%;
     }
-  }
-
-  &__query-input__box {
-    height: $header-height;
-    border-left: 1px solid $gray-elements;
-    width: 327px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__query-input {
-    border: none;
-    padding: 0 23px;
-    width: 100%;
-
-    @extend %mont-style;
-  }
-
-  &__query-input__icon {
-    margin-right: 24px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
   }
 
   a {

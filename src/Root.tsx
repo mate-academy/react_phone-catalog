@@ -4,6 +4,10 @@ import {
 import App from './App';
 import { HomePage } from './pages/HomePage/HomePage';
 import { ProductsPage } from './pages/ProductsPage/ProductsPage';
+import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { ProductDetailsPage }
+  from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => {
   const productPathes = ['phones', 'tablets', 'accessories'];
@@ -18,9 +22,14 @@ export const Root = () => {
           {productPathes.map((path) => (
             <Route path={path} key={path}>
               <Route index element={<ProductsPage />} />
-              {/* <Route path=":itemId" element={<ProductDetailsPage />} /> */}
+              <Route path=":itemId" element={<ProductDetailsPage />} />
             </Route>
           ))}
+
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
+
+          <Route path="*" element={<h1>Page Not Found</h1>} />
         </Route>
       </Routes>
     </Router>

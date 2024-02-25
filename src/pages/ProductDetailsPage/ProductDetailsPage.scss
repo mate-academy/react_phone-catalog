@@ -1,0 +1,224 @@
+@import "../../helpers/global";
+
+.productDetails {
+  &__breadcrumbs {
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+
+    @extend %mont-bold-style;
+  }
+
+  &__wrapper {
+    width: fit-content;
+    margin: 0 auto 80px;
+  }
+
+  &__image-main {
+    height: 464px;
+    width: 464px;
+    padding: 10px;
+    order: 1;
+
+    @include on-tablet {
+      height: 288px;
+      width: 288px;
+      padding: 6px;
+    }
+
+    @include on-mobile {
+      margin-bottom: 16px;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__thumbs {
+    margin-bottom: 0;
+
+    @include on-mobile {
+      margin-bottom: 40px;
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+
+      @include on-mobile {
+        flex-direction: row;
+      }
+
+      @include on-tablet {
+        gap: 8px;
+      }
+
+      & img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &-button {
+      height: 80px;
+      width: 80px;;
+
+      padding: 4px;
+
+      @include on-tablet {
+        height: 50px;
+        width: 50px;
+        padding: 2px;
+      }
+    }
+  }
+
+  &__actions {
+    order: 2;
+
+    &-section {
+      padding: 24px 0;
+      border-bottom: 1px solid $gray-elements;
+
+
+      & > p {
+        color: $gray-secondary;
+        margin-bottom: 8px;
+
+        @extend %mont-style;
+      }
+
+      & ul {
+        display: flex;
+        gap: 8px;
+      }
+    }
+
+    &-number {
+      height: 100%;
+      width: 100%;
+      padding: 6px 8px;
+    }
+  }
+
+  &__prices {
+      @extend %body-text;
+
+      padding: 32px 0 16px;
+      font-size: 22px;
+
+    &-main {
+      margin-right: 8px;
+    }
+
+    &-discount {
+      @extend %body-text;
+
+      font-size: 22px;
+      color: $gray-secondary;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__buttons {
+    height: 48px;
+
+    display: flex;
+    gap: 8px;
+
+    & > .button__text {
+      height: 100%;
+      width: 100%;
+    }
+
+    & > .button__favorites {
+      height: 100%;
+      width: 58px;
+    }
+  }
+
+  &__info {
+    margin: 32px 0;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %small-text;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &-title {
+      color: $gray-secondary;
+    }
+  }
+
+  &__block:not(:last-child) {
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  &__subtitle {
+    font-weight: 700;
+
+    @extend %mont-style;
+
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__descrition {
+    @extend %mont-style;
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    & h3 {
+      margin-bottom: 8px;
+    }
+
+    & p {
+      color: $gray-secondary;
+
+      @extend %body-text;
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %body-text;
+
+    &-title {
+      color: $gray-secondary;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  margin-bottom: 80px;
+}

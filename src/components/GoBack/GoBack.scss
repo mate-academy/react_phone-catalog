@@ -1,0 +1,32 @@
+@import "../../helpers/utils";
+
+.goBack {
+  display: flex;
+
+  @extend %small-text;
+
+  color: $gray-secondary;
+  font-size: 12px;
+
+  background-color: #fff;
+  border: none;
+  padding-inline: 0;
+
+  transition: color $transition-duration;
+  cursor: pointer;
+
+  &__arrow {
+    margin-right: 4px;
+
+    transition: margin $transition-duration;
+  }
+
+  &:hover {
+    color: $gray-primary;
+
+    & .goBack__arrow {
+      margin-left: -4px;
+      margin-right: 8px;
+    }
+  }
+}

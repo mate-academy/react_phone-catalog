@@ -22,6 +22,7 @@ export const favoritesSlice = createSlice({
       state.favorites.push(action.payload);
       localStorageService.setLocalStorageData(key, state.favorites);
     },
+
     removeFromFavorites:
       (state: FavoritesState, action: PayloadAction<Product>) => {
         state.favorites = state.favorites

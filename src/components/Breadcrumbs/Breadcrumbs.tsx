@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HomeIcon } from '../../assets/icons/HomeIcon';
 import { ArrowRight } from '../../assets/icons/ArrowRight';
@@ -16,7 +16,7 @@ export const Breadcrumbs = () => {
         .join(' ');
 
       return (
-        <>
+        <React.Fragment key={crumb}>
           <li className="breadcrumbs__item">
             <ArrowRight className="breadcrumbs__arrow" />
           </li>
@@ -25,7 +25,7 @@ export const Breadcrumbs = () => {
               {correctName}
             </Link>
           </li>
-        </>
+        </React.Fragment>
       );
     }, [],
   );

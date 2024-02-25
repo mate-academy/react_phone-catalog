@@ -5,7 +5,8 @@
   width: $card-width;
   border: 1px solid $gray-slider-border;
 
-  transition: all $transition-duration;
+  transition: transform $transition-duration,
+    border-color $transition-duration;
 
   &:hover {
     border-color: $gray-primary;
@@ -88,21 +89,7 @@
     }
 
     &-like {
-      padding: 12px 12px 0;
-      border: solid 1px $gray-elements;
-      transition: border $transition-duration;
-
-      &:hover {
-        border-color: $gray-primary;
-      }
-
-      &--active {
-        & path {
-          fill: $red;
-          stroke: none;
-        }
-      }
-
+      min-width: 40px;
     }
   }
 }

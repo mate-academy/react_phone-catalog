@@ -1,0 +1,69 @@
+@import "../../helpers/global";
+
+.cartPage {
+  &__container {
+    margin: 40px 0;
+  }
+
+  &__goBack {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @extend %mont-bold-style;
+
+    font-size: 32px;
+    color: $gray-primary;
+    margin-bottom: 24px;
+  }
+
+  &__items__list {
+    margin-bottom: 32px;
+
+    & li:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__total {
+    padding: 24px;
+    text-align: center;
+    border: 1px solid $gray-elements;
+    height: fit-content;
+
+    & > h1 {
+      @extend %mont-bold-style;
+
+    }
+
+    & > p {
+      @extend %body-text;
+
+      color: $gray-secondary;
+      padding-bottom: 24px;
+
+      border-bottom: 1px solid $gray-elements;
+
+      margin-bottom: 24px;
+    }
+  }
+
+  &__button {
+    @extend %body-text;
+
+    font-size: 14px;
+    line-height: 150%;
+    cursor: pointer;
+
+    height: 48px;
+    width: 100%;
+    color: #fff;
+    background: $gray-primary;
+    border: none;
+    transition: box-shadow $transition-duration;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 $gray-secondary;
+    }
+  }
+ }

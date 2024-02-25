@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Product } from '../../helpers/types/Product';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { sortOptions } from '../../helpers/types/sortOptions';
@@ -18,6 +18,7 @@ type Props = {
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
+  const { pathname } = useLocation();
 
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
@@ -38,19 +39,29 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   return (
     <div className="productsList section" data-cy="productList">
-      <div className="productsList__options">
-        <div className="productsList__options-option">
-          <p className="productsList__options-title">Sort by</p>
-          <Dropdown params="sort" items={sortOptions} />
-        </div>
+      <p className="productsList__products-length">
+        {`${prepearedProducts.length} models`}
+      </p>
 
-        <div className="productsList__options-option">
-          <p className="productsList__options-title">Items on page</p>
-          <Dropdown params="perPage" items={perPageOptions} />
-        </div>
-      </div>
+      {!pathname.includes('favorites') && (
+        <div className="productsList__options">
+          <div className="productsList__options-option">
+            <p className="productsList__options-title">Sort by</p>
+            <Dropdown params="sort" items={sortOptions} />
+          </div>
 
-      {/* {prepearedProducts.length === 0 && <NoSearchResults />} */}
+          <div className="productsList__options-option">
+            <p className="productsList__options-title">Items on page</p>
+            <Dropdown params="perPage" items={perPageOptions} />
+          </div>
+        </div>
+      )}
+
+      {prepearedProducts.length === 0 && (
+        <h2 className="productsList__no-match">
+          There are no products matching the query
+        </h2>
+      )}
 
       <ul className="productsList__list">
         {currentProducts.map(product => (

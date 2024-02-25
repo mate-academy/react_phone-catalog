@@ -1,6 +1,9 @@
 @import "../../helpers/utils";
 
 .breadcrumbs {
+  & a {
+    text-decoration: none;
+  }
 
   &__list {
     display: flex;
@@ -10,6 +13,11 @@
 
   &__link {
     height: 16px;
+    color: $gray-secondary;
+
+    &:hover {
+      color: $gray-primary;
+    }
 
     @extend %small-text;
   }
@@ -19,11 +27,8 @@
     gap: 8px;
 
     &:last-child > .breadcrumbs__link {
-      color: $gray-secondary;
+      color: $gray-primary;
 
-      &:hover {
-        color: $gray-primary;
-      }
     }
   }
 

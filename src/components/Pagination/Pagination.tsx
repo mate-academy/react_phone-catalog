@@ -65,6 +65,7 @@ export const Pagination: React.FC<Props> = ({
     <ul className="pagination" data-cy="pagination">
       <li className="pagination__item">
         <button
+          data-cy="paginationLeft"
           className="pagination__button button-arrow"
           onClick={moveLeft}
           type="button"
@@ -115,6 +116,7 @@ export const Pagination: React.FC<Props> = ({
       {currentPage < lastPage - 2 && (
         <li className="pagination__item">
           <button
+            data-cy="paginationRight"
             className={cn(
               'pagination__button', { active: currentPage === lastPage },
             )}

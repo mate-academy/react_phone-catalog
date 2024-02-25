@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -9,15 +7,15 @@ import './Slider.scss';
 
 type Image = {
   name: 'phones' | 'tablets' | 'accessories',
-  path: '_new/img/banner-phones.png'
-  | '_new/img/banner-accessories.png'
-  | '_new/img/banner-tablets.png'
+  path: 'new/img/banner-phones.png'
+  | 'new/img/banner-accessories.png'
+  | 'new/img/banner-tablets.png'
 };
 
 const images: Image[] = [
-  { name: 'phones', path: '_new/img/banner-phones.png' },
-  { name: 'tablets', path: '_new/img/banner-tablets.png' },
-  { name: 'accessories', path: '_new/img/banner-accessories.png' },
+  { name: 'phones', path: 'new/img/banner-phones.png' },
+  { name: 'tablets', path: 'new/img/banner-tablets.png' },
+  { name: 'accessories', path: 'new/img/banner-accessories.png' },
 ];
 
 export const Slider = () => {
@@ -75,6 +73,7 @@ export const Slider = () => {
           onClick={() => moveLeft()}
         >
           <ArrowLeft />
+          {}
         </button>
 
         <div className="slider__content">
@@ -100,6 +99,7 @@ export const Slider = () => {
           onClick={() => moveRight()}
         >
           <ArrowRight />
+          {}
         </button>
       </div>
 

@@ -1,10 +1,51 @@
 @import "../../helpers/utils";
 
 .nav {
-
   &__list {
     display: flex;
+    flex-direction: row;
     gap: 64px;
+
+    position: static;
+    margin: 0;
+
+    @include on-tablet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      margin-top: 66px;
+      gap: 0;
+
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      z-index: 1;
+      background-color: #fff;
+    }
+  }
+
+  &__link  {
+    display: flex;
+    justify-content: center;
+    background: none;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: hidden;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1), color 0.4s;
+
+    @include on-tablet {
+      height: 0;
+      width: 100%;
+      background: #fff;
+    }
+
+    &:hover {
+      color: $gray-primary;
+    }
   }
 
   &__link a {
@@ -13,17 +54,73 @@
     display: flex;
     align-items: center;
 
-    height: $header-height;
 
     letter-spacing: 0.48px;
     font-size: 12px;
     text-transform: uppercase;
     color: $gray-secondary;
 
-    transition: color 0.4s;
+    @include on-desktop {
+      height: $header-height;
+    }
+  }
 
-    &:hover {
-      color: $gray-primary;
+  &__button {
+    @include buregr-line;
+
+    &-container {
+      display: none;
+      width: $header-height;
+      height: $header-height;
+
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+
+    &::before {
+      content: "";
+      margin-top: -8px;
+
+      @include buregr-line;
+    }
+
+    &::after {
+      content: "";
+      margin-top: 8px;
+
+      @include buregr-line;
+    }
+  }
+
+  &__toggle {
+    display: none;
+
+    &:checked + .nav__button-container .nav__button::before {
+      margin-top: 0;
+      transform: rotate(405deg);
+    }
+
+    &:checked + .nav__button-container .nav__button {
+      background: rgba(255, 255, 255, 0);
+    }
+
+    &:checked + .nav__button-container .nav__button::after {
+      margin-top: 0;
+      transform: rotate(-405deg);
+    }
+
+    &:checked ~ .nav__list .nav__link{
+      height: 64px;
+
+      &:last-child {
+        box-shadow: 0 1px 0 0 $gray-elements;
+      }
     }
   }
 }

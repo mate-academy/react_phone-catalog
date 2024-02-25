@@ -15,13 +15,21 @@
     @include on-mobile {
       flex-direction: column;
       justify-content: space-between;
-      align-items: center;
+      align-items: start;
     }
   }
 
   &__network-nav {
     display: flex;
     gap: $nav-gap;
+
+    @include on-mobile {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: start;
+      margin-block: 20px;
+    }
   }
 
   &__network-link {
@@ -42,7 +50,7 @@
     align-items: center;
     gap: 16px;
     font-size: 12px;
-    transition: color 0.3s;
+    transition: color $transition-duration;
 
     @extend %mont-semibold-style;
 

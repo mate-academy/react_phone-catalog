@@ -59,9 +59,6 @@ export const ProductsPage = () => {
       {!isLoading && !hasError && sortedProducts.length > 0 && (
         <div className="productsPage__content">
           <h1 className="productsPage__title">{title}</h1>
-          <p className="productsPage__products-length">
-            {`${sortedProducts.length} models`}
-          </p>
 
           <ProductsList products={sortedProducts} />
         </div>

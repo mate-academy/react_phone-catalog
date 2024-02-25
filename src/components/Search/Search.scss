@@ -1,0 +1,69 @@
+@import "../../helpers/utils";
+
+ .search {
+  &__query-input {
+    border: none;
+    padding-left: 23px;
+    width: 100%;
+    height: 100%;
+
+    @extend %mont-style;
+
+    @include on-tablet {
+      width: 0;
+      height: 0;
+    }
+
+    &::placeholder {
+      color: $gray-secondary;
+    }
+  }
+
+  &__query-input__box {
+    border-left: 1px solid $gray-elements;
+    width: 327px;
+
+    position: relative;
+    transition: width $transition-duration;
+
+    @include on-tablet {
+      width: 64px;
+    }
+
+    &--active {
+      width: 327px;
+
+      @include on-mobile {
+        width: 210px;
+      }
+    }
+
+    &--active > .search__query-input {
+      height: 100%;
+      width: 100%;
+    }
+
+    &--active ~ a {
+      @include on-mobile {
+        width: 0;
+        opacity: 0;
+
+        // padding: 0;
+
+        padding: 0 !important;
+        overflow: hidden;
+      }
+    }
+  }
+
+  &__query-input__icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    height: 64px;
+    width: 64px;
+    top: 0;
+    right: 0;
+  }
+}

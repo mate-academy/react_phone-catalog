@@ -1,0 +1,114 @@
+@import "../../helpers/utils";
+
+.button {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  border: 1px solid $gray-slider-border;
+  cursor: pointer;
+  transition: border-color $transition-duration;
+
+  &:hover {
+    border-color: $gray-primary;
+  }
+
+  &:disabled {
+    border-color: $gray-elements;
+    cursor: initial;
+  }
+
+  &__number {
+    @extend %body-text;
+
+    border-color: $gray-elements;
+    color: #000;
+
+    &.active {
+      color: #fff;
+      background-color: $gray-primary;
+      border-color: $gray-primary;
+    }
+  }
+
+  &__favorites {
+    height: 40px;
+    width: 40px;
+
+    &.active {
+      border-color: $gray-elements;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+
+      & path {
+        fill: $red;
+        stroke: none;
+      }
+    }
+  }
+
+  &__color {
+    border: 1px solid $gray-elements;
+    border-radius: 50%;
+
+    &.active {
+      border-color: $gray-primary;
+    }
+
+    & span {
+      height: 100%;
+      width: 100%;
+
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+  }
+
+  &__text {
+    height: 40px;
+    min-width: 176px;
+
+    @extend %mont-semibold-style;
+
+    color: #fff;
+    background-color: $gray-primary;
+    border-color: $gray-primary;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+
+    &.active {
+      border-color: $gray-elements;
+      background-color: #fff;
+      color: #27ae60;
+      box-shadow: none;
+      cursor: initial;
+    }
+  }
+
+  &__image {
+    padding: 4px;
+    background-color: inherit;
+
+    @include on-mobile {
+      padding: 2px;
+    }
+
+    &.active {
+      border-color: $gray-primary;
+    }
+
+    & img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

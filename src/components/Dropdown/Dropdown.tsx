@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
-import './Dropdown.scss';
 import { ArrowRight } from '../../assets/icons/ArrowRight';
 import { normalizeUrlParams }
   from '../../helpers/funcService/normalizeUrlParams';
+import './Dropdown.scss';
 
 type Props = {
   params: string;

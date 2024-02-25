@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { CartItem } from '../../helpers/types/CartItemType';
+import { CartItemType } from '../../helpers/types/CartItemType';
 import {
   localStorageService,
 } from '../../helpers/funcService/localStorageService';
@@ -8,7 +8,7 @@ import {
 const key = 'cart';
 
 export interface CartState {
-  cartItems: CartItem[];
+  cartItems: CartItemType[];
 }
 
 const initialState: CartState = {

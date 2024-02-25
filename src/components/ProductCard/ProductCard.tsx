@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Product } from '../../helpers/types/Product';
 import { ProductsCardType } from '../../helpers/types/ProductsCardType';
-import { FavoritesIcon } from '../../assets/icons/FavoritesIcon';
 import { useAppSelector } from '../../helpers/hooks/hooks';
 import { addToCart, removeFromCart } from '../../store/slices/cartSlice';
 import {
   addToFavorites, removeFromFavorites,
 } from '../../store/slices/favoritesSlice';
+import { ButtonType } from '../../helpers/types/ButtonType';
+import { Button } from '../Button/Button';
 import './ProductCard.scss';
 
 type Props = {
@@ -98,23 +99,14 @@ export const ProductCard: React.FC<Props> = ({ product, type, transform }) => {
         >
           {hasInCart ? 'Added to cart' : 'Add to cart'}
         </button>
-        <div
-          className={classNames('productCard__button-like', {
-            'productCard__button-like--active': hasInFavorites,
-          })}
-          onClick={() => handleFavoritesChanges()}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              handleFavoritesChanges();
-            }
-          }}
-          tabIndex={0}
-          role="button"
-          aria-label={hasInFavorites
-            ? 'Remove from Favorites' : 'Add to Favorites'}
-        >
-          <FavoritesIcon />
-        </div>
+
+        <Button
+          data-cy="addToFavorite"
+          content={ButtonType.FAVORITES}
+          className={classNames('productCard__button-like',
+            { active: hasInFavorites })}
+          onClick={handleFavoritesChanges}
+        />
       </div>
     </div>
   );

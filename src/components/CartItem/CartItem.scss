@@ -1,0 +1,118 @@
+@import "../../helpers/utils";
+
+.cart-item {
+  border: 1px solid $gray-elements;
+
+  & a {
+    color: $gray-primary;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 40px 24px 24px;
+
+    @include on-tablet {
+      flex-direction: column;
+      width: fit-content;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-close {
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+
+      & path {
+        fill: $gray-secondary;
+      }
+
+      &:hover path {
+        fill: $gray-primary;
+      }
+    }
+
+    &-image-wrapper {
+      height: 80px;
+      width: 80px;
+      padding: 7px;
+    }
+
+    &-image {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    &-name {
+      max-width: 295px;
+
+      @extend %body-text;
+    }
+  }
+
+  &__count {
+    display: flex;
+    gap: 43px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 200px;
+
+    & button {
+      height: 32px;
+      width: 32px;
+      line-height: 32px;
+      background-color: transparent;
+      border: solid 1px $gray-elements;
+      transition: border $transition-duration;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+
+      &:disabled {
+        border-color: $gray-elements;
+
+        & path {
+          fill: $gray-elements;
+          stroke: none;
+        }
+      }
+    }
+
+    @include on-mobile {
+      width: 100%;
+      max-width: none;
+    }
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    &-number {
+      min-width: 16px;
+      text-align: center;
+
+      @extend %body-text;
+    }
+
+    &-sum {
+      @extend %mont-bold-style;
+    }
+  }
+}
