@@ -16,20 +16,21 @@ import { TechSpecParagraph } from './TechSpecParagraph';
 export const ProductCard: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('yellow');
   const [selectedCapacity, setSelectedCapacity] = useState('64 GB');
-  const { phoneId } = useParams<string>();
+  const { productId } = useParams<string>();
   const topPageRef = useRef<null | HTMLDivElement>(null);
 
   let product = {} as Product || undefined;
 
   const { state, dispatch } = useContext(StateContext);
 
-  if (phoneId) {
-    product = state.products.find(phone => phone.id === +phoneId) as Product;
+  if (productId) {
+    product = state.products.find(phone => phone.id === +productId) as Product;
   }
 
   if (product === undefined) {
     return <PageNotFound />;
   }
+  console.log(product,productId,'product');
 
   const [bigPic, setBigPic] = useState('');
 

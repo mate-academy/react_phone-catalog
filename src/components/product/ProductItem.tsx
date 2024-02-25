@@ -1,7 +1,7 @@
 /* eslint-disable */
 import classNames from 'classnames';
 import {
-  Link,
+  Link, useLocation,
 } from 'react-router-dom';
 import './phonesItem.scss'
 import React, { useContext } from "react";
@@ -34,7 +34,7 @@ type Props = {
 export const PhoneItem: React.FC<Props> = ({ product }) => {
 
   const { state, dispatch } = useContext(StateContext);
-
+  const location = useLocation()
 
   const addToFavourites = () => {
     if(!getFavourite(state.favourites, product)) {
@@ -66,7 +66,7 @@ export const PhoneItem: React.FC<Props> = ({ product }) => {
           <p>
             <Link
               to={
-                `/phones/${product.id}`
+                `${location.pathname}/${product.id}`
               }
               className='list-item-title'
             >

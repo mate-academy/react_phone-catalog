@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { PhoneItem } from '../../components/phone/PhoneItem';
+import { PhoneItem } from '../../components/product/ProductItem';
 import React, {
   useContext,
   useState,
@@ -9,11 +9,11 @@ import {
   ACTIONS,
   getCurrentItems,
 } from '../../helpers/utils';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../pagination/Pagination';
 import { Product } from '../../types';
 
-export const PhonesPages: React.FC = () => {
+export const ProductPage: React.FC = () => {
   const { state, dispatch } = useContext(StateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,17 +24,26 @@ export const PhonesPages: React.FC = () => {
   const search = searchParams.get('search') || '';
   const sort = searchParams.get('sort') || 'age';
   const [sortValue, setSortValue] = useState(sort);
+  const location = useLocation();
 
   let currentItems: Product[] = [];
 
+  let copyOfProducts: Product[] = [];
+
   if (state.products) {
 
+    const fullName = location.pathname;
+    const newName = fullName.slice(1,fullName.length - 1);
+
+    console.log(newName, 'first');
+    copyOfProducts = [...state.products.filter(product => product.type === newName)]
+
     if (search.length > 0) {
-      currentItems = state.products.filter(phone => phone.name.includes(search));
+      currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
     } else if (itemsPerpage === 'All') {
-      currentItems = state.products;
+      currentItems = copyOfProducts;
     } else {
-      currentItems = getCurrentItems(state.products, currentPage, +itemsPerpage);
+      currentItems = getCurrentItems(copyOfProducts, currentPage, +itemsPerpage);
     }
   }
 

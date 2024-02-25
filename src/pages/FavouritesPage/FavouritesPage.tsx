@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // import { getFavourites } from '../../helpers/utils';
-import { PhoneItem } from '../../components/phone/PhoneItem';
+import { PhoneItem } from '../../components/product/ProductItem';
 import './FavouritesPage.scss';
 import { StateContext } from '../../AppContext';
 

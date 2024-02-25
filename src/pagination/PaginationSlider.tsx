@@ -4,8 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import { ArrowForward, ArrowBack } from './ArrowButtons';
 import { getCurrentItems, useSetCurrentPage } from '../helpers/utils';
 import { newPhoneArray } from '../assets/arrayOfPhones/phonesArray';
-import { PhoneItem } from '../components/phone/PhoneItem';
-import '../pages/phonePage/phones.scss';
+import { PhoneItem } from '../components/product/ProductItem';
+import '../pages/ProductPage/phones.scss';
 import '../pages/home/homePage.scss';
 import { StateContext } from '../AppContext';
 
