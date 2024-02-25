@@ -1,18 +1,9 @@
 .productDetails {
-  display: grid;
-  // display: flex;
-  grid-template-columns: repeat(24, 1fr);
-  // flex-direction: column;
   margin: 0 auto;
-  // align-items: center;
-  // justify-content: center;
-  // justify-content: space-between;
-  padding: 24px 152px 80px;
+  padding: 24px 0 80px;
   max-width: 1136px;
 
   &__header {
-    grid-column: 1 / -1;
-    // height: fit-content;
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -56,6 +47,15 @@
     margin-bottom: 40px;
   }
 
+  &__phoneOptions {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__list {
+    grid-column: 1 / 2;
+  }
+
   &__imagesList {
     display: flex;
     flex-direction: column;
@@ -65,18 +65,116 @@
   &__listItem {
     width: 80px;
     height: 80px;
-    border: 1px solid #89939A;
+    border: 1px solid #C4C4C4;
+
+    &-selected {
+      border: 1 solid #313237;
+    }
   }
 
   &__link {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 80px;
+    height: 80px;
   }
 
   &__image {
     width: 66px;
     height: 66px;
     object-fit: contain;
+  }
+
+
+  &__colors {
+    grid-column: 14 / 20;
+
+    &-title {
+      color: #89939A;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15.34px;
+    }
+  }
+
+  &__availableColors {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__currentImage {
+    grid-column: 3 / 12;
+    height: 464px;
+    // width: 464px;
+    margin-bottom: 80px;
+  }
+
+  &__about {
+    grid-column: 1 / 12;
+    font-weight: 700;
+    line-height: 30.8px;
+    font-size: 22px;
+    position: relative;
+    margin-bottom: 32px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      bottom: -16px;
+      width: 100%;
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+  }
+
+  &__description {
+    grid-column: 1 / 12;
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__aboutTitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25.56px;
+    color: #313237;
+    margin-bottom: 16px;
+  }
+
+  &__aboutText {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939A;
+  }
+
+  &__techSpecs {
+    grid-column: 13 / 24;
+    height: 31px;
+    font-weight: 700;
+    line-height: 30.8px;
+    font-size: 22px;
+    position: relative;
+    margin-bottom: 32px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      bottom: -16px;
+      width: 100%;
+      height: 1px;
+      background-color: #E2E6E9;
+    }
+  }
+
+  &__techSpecsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }

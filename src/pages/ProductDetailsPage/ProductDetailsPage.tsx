@@ -13,7 +13,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
   const { pathname } = useLocation();
 
-  const [currentProduct, setCurrentProduct] = useState<PhoneDetails | null>();
+  const [currentProduct, setCurrentProduct] = useState<PhoneDetails>();
   const [isLoading, setIsLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState('');
 
@@ -60,23 +60,58 @@ export const ProductDetailsPage: React.FC = () => {
         <Link to="/phones" className="productDetails__currentPage">Back</Link>
       </div>
       <p className="productDetails__title">{currentProduct?.name}</p>
-      <ul className="productDetails__imagesList">
-        {currentProduct?.images.map(image => (
-          <li key={image} className="productDetails__listItem">
-            <Link
-              to={{ pathname }}
-              className="productDetails__link"
-            >
-              <img
-                src={`_new/${image}`}
-                alt={image}
-                className="productDetails__image"
-              />
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <img src={`_new/${currentImage}`} alt={currentImage} />
+      <div className="productDetails__phoneOptions">
+        <div className="productDetails__list">
+          <ul className="productDetails__imagesList">
+            {currentProduct?.images.map(image => (
+              <li key={image} className="productDetails__listItem">
+                <Link
+                  to={{ pathname }}
+                  className="productDetails__link"
+                >
+                  <img
+                    src={`_new/${image}`}
+                    alt={image}
+                    className="productDetails__image"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <img
+          src={`_new/${currentImage}`}
+          alt={currentImage}
+          className="productDetails__currentImage"
+        />
+
+        <div className="productDetails__colors">
+          <p className="productDetails__colors-title">Available colors</p>
+          <div className="productDetails__availableColors">
+            {currentProduct?.colorsAvailable.map(color => (
+              <Link
+                to="/"
+                className="empty"
+              >
+                <span
+                  className="productDetails__circle"
+                  style={{
+                    backgroundColor: 'black',
+                  }}
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <h2 className="productDetails__about">About</h2>
+      {currentProduct?.description.map(item => (
+        <div className="productDetails__description">
+          <h3 className="productDetails__aboutTitle">{item.title}</h3>
+          <p className="productDetails__aboutText">{item.text.join('\n\n')}</p>
+        </div>
+      ))}
     </div>
   );
 };

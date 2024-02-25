@@ -78,7 +78,7 @@ export const Pagination: React.FC<Props> = ({
       </div>
       <Link
         to={
-          { search: changePage('next').toString(), }
+          { search: changePage('next').toString() }
         }
         className="pagination__button pagination__button-right"
       >
