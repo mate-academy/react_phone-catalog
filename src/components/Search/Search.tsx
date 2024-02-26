@@ -1,18 +1,21 @@
 /* eslint-disable max-len */
 import {
-  useCallback, useEffect, useRef, useState,
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
 } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { useDispatch } from 'react-redux';
-import { Button } from '../Button/Button';
 import { ButtonType } from '../../helpers/types/ButtonType';
 import { getSearchWith } from '../../helpers/functionService/searchParamsHelper';
 import { debounce } from '../../helpers/functionService/debounce';
 import { setQuery } from '../../store/slices/productSlice';
+import { Button } from '../Button/Button';
 import './Search.scss';
 
-export const Search: React.FC = () => {
+export const Search = () => {
   const [buttonContent, setButtonContent] = useState(ButtonType.SEARCH);
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -42,7 +45,7 @@ export const Search: React.FC = () => {
     }
   }, [buttonContent]);
 
-  const applyQuery = useCallback(
+  const aplyQuery = useCallback(
     debounce(dispatch, 1000),
     [],
   );
@@ -52,12 +55,12 @@ export const Search: React.FC = () => {
   }, [pathname]);
 
   useEffect(() => {
-    applyQuery(setQuery(query));
+    aplyQuery(setQuery(query));
   }, [query]);
 
   return (
     <div
-      className={classNames(
+      className={cn(
         'search',
         { 'search--active': buttonContent === ButtonType.CLOSE },
       )}

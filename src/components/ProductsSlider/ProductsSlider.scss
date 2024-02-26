@@ -3,12 +3,25 @@
 .productsSlider {
   position: relative;
 
+  &__section {
+    @include on-tablet {
+      width: 2 * $card-width + 16;
+    }
+
+    @include on-mobile {
+      width: $card-width;
+    }
+  }
+
   &__title {
     position: absolute;
+    font-family: "Mont Bold", sans-serif;
     font-size: 32px;
-
-    @extend %mont-bold-style;
-    
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    color: $gray-primary;
     top: -60px;
   }
 
@@ -24,6 +37,8 @@
   &__slides {
     display: flex;
     gap: 16px;
+
+
 
     overflow: hidden;
   }

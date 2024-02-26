@@ -1,15 +1,16 @@
 /* eslint-disable max-len */
 import { useMemo, useState } from 'react';
-import { useAppSelector } from '../../helpers/hooks/hooks';
-import { Product } from '../../helpers/types/Product';
+
+import './ProductsSlider.scss';
 import { ProductsCardType } from '../../helpers/types/ProductsCardType';
+import { getHotPriceProducts } from '../../helpers/functionService/getHotPrices';
 import { Button } from '../Button/Button';
 import { ButtonType } from '../../helpers/types/ButtonType';
-import { ProductCard } from '../ProductCard/ProductCard';
-import { getSuggestedProducts } from '../../helpers/functionService/getSuggestedPruducts';
 import { getBrandNewProducts } from '../../helpers/functionService/getBrandNewProducts';
-import { getHotPriceProducts } from '../../helpers/functionService/getHotPrices';
-import './ProductsSlider.scss';
+import { getSuggestedProducts } from '../../helpers/functionService/getSuggestedPruducts';
+import { useAppSelector } from '../../helpers/hooks/hooks';
+import { Product } from '../../helpers/types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
   type: ProductsCardType;
@@ -38,12 +39,12 @@ export const ProductsSlider: React.FC<Props> = ({
   }, [type, filterBy, filterValue, products]);
 
   const maxPosition = Math.ceil(visibleProducts.length / 4) - 1;
-  const cardWidth = 271.6;
+  const cardWidth = 272;
   const gap = 16;
   const transform = `translateX(${-position * (cardWidth + gap)}px)`;
 
   return (
-    <section className="section">
+    <section className="productsSlider__section">
       <h2 className="section__title">{type}</h2>
       <div className="productsSlider">
         <div className="productsSlider__navigation">

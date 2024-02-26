@@ -36,7 +36,7 @@
 
     @include on-tablet {
       justify-content: start;
-      grid-template-columns: repeat(3, $card-width);
+      grid-template-columns: repeat(2, $card-width);
     }
 
     @include on-mobile {

@@ -1,36 +1,58 @@
-import { NavLink } from 'react-router-dom';
-
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { NavLinkHeader } from '../NavLinkHeader/NavLinkHeader';
 import './NavBar.scss';
 
-import cn from 'classnames';
-
-const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return cn({
-    'is-active': isActive,
-  });
-};
-
-const routes = [
-  { path: '/', label: 'Home' },
-  { path: '/phones', label: 'Phones' },
-  { path: '/tablets', label: 'Tablets' },
-  { path: '/accessories', label: 'Accessories' },
-];
-
 export const NavBar = () => {
+  const [checked, setChecked] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setChecked(false);
+  }, [location]);
+
   return (
     <nav className="nav">
+      <input
+        id="checkbox"
+        type="checkbox"
+        className="nav__toggle"
+        checked={checked}
+        onChange={() => setChecked(!checked)}
+      />
+
+      <label
+        htmlFor="checkbox"
+        className="nav__button-container"
+      >
+        <div className="nav__button" />
+      </label>
+
       <ul className="nav__list">
-        {routes.map(({ path, label }) => (
-          <li key={path} className="nav__link">
-            <NavLink
-              to={path}
-              className={({ isActive }) => getLinkClass({ isActive })}
-            >
-              {label}
-            </NavLink>
-          </li>
-        ))}
+        <li className="nav__item">
+          <NavLinkHeader type="text" to="/">
+            Home
+          </NavLinkHeader>
+        </li>
+
+        <li className="nav__item">
+          <NavLinkHeader type="text" to="phones">
+            Phones
+          </NavLinkHeader>
+        </li>
+
+        <li className="nav__item">
+          <NavLinkHeader type="text" to="tablets">
+            Tablest
+          </NavLinkHeader>
+        </li>
+
+        <li className="nav__item">
+          <NavLinkHeader type="text" to="accessories">
+            Accessories
+          </NavLinkHeader>
+        </li>
       </ul>
     </nav>
   );

@@ -1,7 +1,7 @@
 @import '../../helpers/utils';
 
 .page {
-  max-width: $container-width;
+  // max-width: $container-width;
   padding-top: 25px;
 
   &__breadcrumbs {
@@ -10,7 +10,7 @@
 
   &__title {
     @extend %mont-bold-style;
-    
+
     margin-bottom: 8px;
   }
 

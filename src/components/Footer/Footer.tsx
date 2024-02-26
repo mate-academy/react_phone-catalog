@@ -1,54 +1,57 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-import { NavLink } from 'react-router-dom';
 import { LogoIcon } from '../../assets/icons/LogoIcon';
-import { BackToTop } from '../../assets/icons/BackToTop';
+import { ButtonType } from '../../helpers/types/ButtonType';
+import { Button } from '../Button/Button';
 import './Footer.scss';
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__content container">
-        <NavLink to="/">
-          <LogoIcon />
-        </NavLink>
+        <LogoIcon />
 
-        <div className="footer__network-nav">
-          <a
-            href="https://github.com/dimkamg21"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer__network-link"
-          >
-            Github
-          </a>
+        <ul className="footer__list">
+          <li className="footer__item">
+            <a
+              href="https://github.com/Orchibald"
+              className="footer__link"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Github
+            </a>
+          </li>
 
-          <a
-            href="https://github.com/dimkamg21"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer__network-link"
-          >
-            Contacts
-          </a>
+          <li className="footer__item">
+            <a
+              href="https://github.com/Orchibald"
+              className="footer__link"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Contacts
+            </a>
+          </li>
 
-          <a
-            href="https://github.com/dimkamg21"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer__network-link"
-          >
-            Rights
-          </a>
-        </div>
-        <div className="footer__arrow-back-container">
-          <p>Back to top</p>
-          <button
-            className="footer__arrow-back"
-            type="button"
-            onClick={() => window.scroll(0, 0)}
-          >
-            <BackToTop />
-          </button>
+          <li className="footer__item">
+            <a
+              href="https://github.com/Orchibald"
+              className="footer__link"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Rights
+            </a>
+          </li>
+        </ul>
+
+        <div className="footer__anchor">
+          <Button
+            content={ButtonType.ARROW}
+            direction="up"
+            onClick={() => window.scrollTo(0, 0)}
+          />
+
+          <span className="footer__anchor-text">Back to top</span>
         </div>
       </div>
     </footer>

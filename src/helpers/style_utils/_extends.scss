@@ -40,3 +40,14 @@
   line-height: 21px; /* 150% */
   color: $gray-primary;
 }
+
+%uppercase {
+  font-family: "Mont Bold", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px; /* 91.667% */
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: $gray-primary;
+}
