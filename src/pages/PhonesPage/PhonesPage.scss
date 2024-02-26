@@ -33,6 +33,7 @@
 
   &__content {
     @include flex-center;
+
     flex-wrap: wrap;
     gap: var(--bottom-margin) 16px;
 

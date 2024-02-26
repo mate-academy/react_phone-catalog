@@ -2,6 +2,7 @@
 
 .carousel {
   @include flex-center;
+
   max-width: 90%;
 
   &__button {
@@ -44,7 +45,7 @@
   display: flex;
   position: relative;
 
-  .swiper-top > &-wrapper {
+  .swiper-top>&-wrapper {
     display: flex;
   }
 
@@ -52,12 +53,13 @@
     transition: all 0.2s ease;
   }
 
-  .swiper-top > .swiper-wrapper > &-slide:not(.swiper-slide-active) {
+  .swiper-top>.swiper-wrapper>&-slide:not(.swiper-slide-active) {
     opacity: 0;
   }
 
   &-pagination {
     @include flex-center;
+
     position: absolute;
     bottom: 0;
     right: 50%;
