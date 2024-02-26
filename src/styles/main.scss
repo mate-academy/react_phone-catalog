@@ -2,7 +2,7 @@
 @import './utils/normalize';
 
 .page {
-  font-family: Mont, sans-serif;
+  font-family: $font-main;
   font-size: 14px;
   line-height: 21px;
   color: $color_primary;

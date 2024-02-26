@@ -1,36 +1,26 @@
 @font-face {
-  font-family: Mont, sans-serif;
-  src: url(../../../public/fonts/Mont-Bold.otf);
+  font-family: Mont;
+  src: url(../../../public/fonts/Mont-Bold.otf) format('opentype');
   font-weight: 700;
+  font-style: normal;
+
 }
 
 @font-face {
-  font-family: Mont, sans-serif;
-  src: url(../../../public/fonts/Mont-SemiBold.otf);
+  font-family: Mont;
+  src: url(../../../public/fonts/Mont-SemiBold.otf) format('opentype');
   font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: Mont, sans-serif;
-  src: url(../../../public/fonts/Mont-Regular.otf);
-}
-
-@mixin h1 {
-  font-family: Mont, sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 41px;
-  letter-spacing: -0.01em;
-  text-align: left;
-  margin: 0;
-
-  @include on-mobile-l {
-    font-size: 24px;
-  }
+  font-family: Mont;
+  src: url(../../../public/fonts/Mont-Regular.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
 }
 
 h2 {
-  font-family: Mont, sans-serif;
   font-weight: 700;
   font-size: 22px;
   line-height: 31px;
@@ -43,7 +33,6 @@ h2 {
 }
 
 h3 {
-  font-family: Mont, sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
@@ -52,7 +41,6 @@ h3 {
 }
 
 p {
-  font-family: Mont, sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
@@ -60,34 +48,7 @@ p {
   margin: 0;
 }
 
-@mixin button {
-  font-family: Mont, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 21px;
-  text-align: left;
-}
-
 button {
  @include button;
 }
 
-@mixin small-text {
-  font-family: Mont, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 15px;
-  text-align: left;
-  margin: 0;
-}
-
-@mixin upper-case {
-  font-family: Mont, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-  text-align: left;
-  text-transform: uppercase;
-  margin: 0;
-}

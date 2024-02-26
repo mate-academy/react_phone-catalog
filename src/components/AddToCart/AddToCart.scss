@@ -1,4 +1,4 @@
-@import "../../styles/utils/utils";
+@import "../../styles/utils/variables";
 
 .add-to-cart {
   &__btnbox {
@@ -8,8 +8,8 @@
   }
 
   &__favorite {
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
