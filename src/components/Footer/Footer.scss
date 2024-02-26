@@ -1,0 +1,37 @@
+@import "../../styles/main";
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 1136px;
+    margin: 0 auto;
+    padding: 0 10px;
+
+    @include for-phones {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-block-end: 10px;
+    }
+  }
+
+  &__center {
+    display: flex;
+    gap: 64px;
+
+    @include for-phones {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__left {
+    @include for-phones {
+      padding-block: 15px;
+    }
+  }
+}

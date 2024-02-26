@@ -1,0 +1,12 @@
+@import "../../styles/main";
+
+.link-social {
+  padding-block: 40px;
+
+  @extend %upper-case;
+  @include hover(color, $main-color);
+
+  @include for-phones {
+    padding-block: 5px;
+  }
+}

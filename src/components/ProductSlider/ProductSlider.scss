@@ -1,0 +1,27 @@
+@import "../../styles/main";
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    @extend %h1;
+
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    @include flex-center;
+
+    gap: 16px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    max-width: 100%;
+  }
+}
