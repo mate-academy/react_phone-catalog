@@ -30,7 +30,7 @@ export const ProductCard: React.FC = () => {
   if (product === undefined) {
     return <PageNotFound />;
   }
-  console.log(product,productId,'product');
+  // console.log(product,productId,'product');
 
   const [bigPic, setBigPic] = useState('');
 

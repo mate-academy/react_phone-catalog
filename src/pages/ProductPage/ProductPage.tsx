@@ -28,8 +28,6 @@ export const ProductPage: React.FC = () => {
   const [sortValue, setSortValue] = useState(sort);
   const location = useLocation();
 
-  // console.log(productType, 'type');
-
 
   let currentItems: Product[] = [];
 
@@ -40,7 +38,7 @@ export const ProductPage: React.FC = () => {
     const fullName = location.pathname;
     const newName = fullName.slice(1,fullName.length - 1);
 
-    console.log(newName, 'first');
+    // console.log(newName, 'first');
     copyOfProducts = [...state.products.filter(product => product.type === newName)]
 
     if (search.length > 0) {

@@ -1,7 +1,8 @@
 /* eslint-disable */
 import classNames from 'classnames';
 import {
-  Link, useLocation,
+  Link,
+  // useLocation,
 } from 'react-router-dom';
 import './productsItem.scss'
 import React, { useContext,
@@ -38,9 +39,9 @@ type Props = {
 export const ProductItem: React.FC<Props> = ({ product }) => {
 
   const { state, dispatch } = useContext(StateContext);
-  const location = useLocation();
-  console.log(location.pathname.split('/')[1], 'product item location');
-  console.log(location.state, 'state');
+  // const location = useLocation();
+  // console.log(location.pathname.split('/')[1], 'product item location');
+  // console.log(location.state, 'state');
   // const [pathState, _setPathState] = useState(location.pathname.split('/')[1]);
 
 

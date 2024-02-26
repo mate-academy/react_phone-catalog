@@ -60,6 +60,7 @@ function reducer(state: Data, action: Action) {
       }
     }
     case ACTIONS.ADD_TO_CARD: {
+      localStorage.setItem("cart", JSON.stringify([...state.card, action.payload]));
       return {
         ...state,
         card: [...state.card, action.payload],
@@ -71,7 +72,7 @@ function reducer(state: Data, action: Action) {
       const copy = [...state.card];
 
       copy.splice(indexElement, 1);
-
+      localStorage.setItem("cart", JSON.stringify(copy));
       return {
         ...state,
         card: copy,
@@ -145,7 +146,8 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     <StateContext.Provider value={{
       state: {
         ...state,
-        products: sortProducts(state.products)
+        products: sortProducts(state.products),
+        card: JSON.parse(localStorage.getItem('cart') as string),
       },
       dispatch,
     }}>

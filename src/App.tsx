@@ -17,9 +17,6 @@ export const App = () => {
   }
 
   const location = useLocation()
-  console.log(location ,'location');
-  console.log(location.pathname === '/phones','location truth');
-
 
   return (
     <div className="App">

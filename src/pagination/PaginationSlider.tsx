@@ -52,7 +52,7 @@ export const PaginationSlider: React.FC<Props> = ({ pageName }) => {
           // const key = uuidv4();
 
           return (
-            <ProductItem product={phone}  />
+            <ProductItem product={phone} />
           );
         })}
       </div>
