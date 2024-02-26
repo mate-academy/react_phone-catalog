@@ -68,7 +68,7 @@ export const CartItem: FC<Props> = ({
           +
         </button>
         <p className="cart__item-price">
-          {`$${cartItem.item.price - ((cartItem.item.price / 100) * cartItem.item.discount)}`}
+          {`$${((cartItem.item.price - ((cartItem.item.price / 100) * cartItem.item.discount)) * count)}`}
         </p>
       </div>
     </div>

@@ -15,7 +15,7 @@ export const Search = () => {
     selectedPathname: string,
     selectedSearchParams: URLSearchParams,
   ) => {
-    if (selectedQuery.trim()) {
+    if (selectedQuery) {
       selectedSearchParams.set('query', selectedQuery);
     } else {
       selectedSearchParams.delete('query');

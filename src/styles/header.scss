@@ -17,11 +17,12 @@
   &-right {
     display: flex;
     align-items: center;
+    height: 64px;
   }
 
   &__icon {
     padding: 23px;
-    box-shadow: -1px 0 0 #e2e6e9;
+    box-shadow: -1px -1px 0 #e2e6e9;
     position: relative;
 
     & img {
