@@ -79,11 +79,13 @@
       border: none;
       background-color: transparent;
 
-      &:hover .slider__nav-item {
-        background-color: #fff;
-      }
+      @media (hover: hover) {
+        @include hover(background-color, $color-background);
 
-      @include hover(background-color, $color-background);
+        &:hover .slider__nav-item {
+          background-color: #fff;
+        }
+      }
     }
   }
 
