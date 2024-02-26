@@ -20,13 +20,14 @@ type Props = {
 export const Header: React.FC<Props> = ({
   classNames,
 }) => {
-  const { items } = useAppSelector(state => state.cartItems);
+  const { cartItems } = useAppSelector(state => state.cartItems);
+  const { favouritesItems } = useAppSelector(state => state.favouritesItems);
   const location = useLocation();
   const pathes = location.pathname.split('/').slice(1);
   const hasSearchBar = handleSearchBarVisibility(pathes);
   const isCartPage = pathes[0] === 'cart';
-  const isFav = true;
-  const hasItemsInCart = !!items.length;
+  const hasItemsInFavourites = !!favouritesItems.length;
+  const hasItemsInCart = !!cartItems.length;
 
   return (
     <header className={cn('header', classNames)}>
@@ -48,20 +49,19 @@ export const Header: React.FC<Props> = ({
               )
             )}
           >
-            { isFav
-              ? (
-                <Icon
-                  iconName="favourites"
-                  classNames="icon"
-                />
-              )
+            <div className="header__icon-container">
+              <Icon
+                iconName="favourites"
+                classNames="icon"
+              />
 
-              : (
-                <Icon
-                  iconName="favouritesCounter"
-                  classNames="icon icon--with-heart"
-                />
+              {hasItemsInFavourites && (
+                <span className="icon__count">
+                  {favouritesItems.length}
+                </span>
               )}
+            </div>
+
           </NavLink>
         )}
 
@@ -74,26 +74,19 @@ export const Header: React.FC<Props> = ({
             )
           )}
         >
-          { hasItemsInCart
-            ? (
-              <div className="header__icon-container">
-                <Icon
-                  iconName="shopping"
-                  classNames="icon"
-                />
+          <div className="header__icon-container">
+            <Icon
+              iconName="shopping"
+              classNames="icon"
+            />
 
-                <span className="icon__count">
-                  {items.length}
-                </span>
-              </div>
-            )
-
-            : (
-              <Icon
-                iconName="shopping"
-                classNames="icon"
-              />
+            {hasItemsInCart && (
+              <span className="icon__count">
+                {cartItems.length}
+              </span>
             )}
+          </div>
+
         </NavLink>
       </div>
 

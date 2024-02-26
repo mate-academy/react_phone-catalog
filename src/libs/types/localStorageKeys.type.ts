@@ -1,1 +1,1 @@
-export type LocalStorageKeys = 'cartItems';
+export type LocalStorageKeys = 'cartItems' | 'favouritesItems';

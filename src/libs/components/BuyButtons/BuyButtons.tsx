@@ -51,6 +51,7 @@ export const BuyButtons: React.FC<Props> = ({
         style={{
           width: containerHeight,
         }}
+        data-cy="addToFavorite"
         onClick={like}
       >
         <Icon

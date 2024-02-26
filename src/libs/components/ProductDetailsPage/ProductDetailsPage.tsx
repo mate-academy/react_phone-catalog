@@ -9,6 +9,7 @@ import * as productDetailsActions from '../../slices/productDetailsSlice';
 import * as suggestedProductsActions from '../../slices/suggestedProductsSlice';
 import * as cartActions from '../../slices/cartSlice';
 import * as productsActions from '../../slices/productsSlice';
+import * as favouritesActions from '../../slices/favouritesSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ICartItem, IProduct } from '../../types';
 
@@ -36,8 +37,11 @@ export const ProductDetailsPage = () => {
     allProducts,
   } = useAppSelector(state => state.products);
   const {
-    items,
+    cartItems,
   } = useAppSelector(state => state.cartItems);
+  const {
+    favouritesItems,
+  } = useAppSelector(state => state.favouritesItems);
   const {
     suggestedProducts,
     hasError: hasSuggestedProductsError,
@@ -94,11 +98,24 @@ export const ProductDetailsPage = () => {
     dispatch(cartActions.addItem(cartItem));
   }, [dispatch, selectedProduct]);
 
-  const hasInCart = useMemo(() => (
-    !!items.find(
-      item => item.product.id === selectedProduct?.id,
-    )
-  ), [items, selectedProduct]);
+  const hasInCart = !!cartItems.find(
+    item => item.product.id === selectedProduct?.id,
+  );
+  const hasInFavourites = !!favouritesItems.find(
+    item => item.id === selectedProduct?.id,
+  );
+
+  const handleAddToFavorites = useCallback(() => {
+    if (!selectedProduct) {
+      return;
+    }
+
+    if (hasInFavourites) {
+      dispatch(favouritesActions.deleteItem(selectedProduct.id));
+    } else {
+      dispatch(favouritesActions.addItem(selectedProduct));
+    }
+  }, [dispatch, hasInFavourites, selectedProduct]);
 
   const hasLoader = (
     (!productDetailsLoaded && !hasProductDetailsError)
@@ -257,7 +274,9 @@ export const ProductDetailsPage = () => {
                       containerHeight={48}
                       add={handleAddToCart}
                       isAddButtonSelected={hasInCart}
-                      like={() => {}}
+                      like={handleAddToFavorites}
+                      isFavoriteButtonSelected={hasInFavourites}
+
                     />
                   </div>
                 )}

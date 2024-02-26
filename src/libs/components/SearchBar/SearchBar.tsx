@@ -2,7 +2,7 @@
 
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { getSearchWith } from '../../utils';
 import { SearchParamsNames } from '../../constants';
@@ -21,6 +21,9 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
     searchParams.get(SearchParamsNames.query) || '',
   );
   const inputRef = useRef<HTMLInputElement>(null);
+  const { pathname } = useLocation();
+
+  const placeholder = `Search in ${pathname.split('/')[1]}`;
 
   const handleSetParams = (
     paramValue: string,
@@ -66,7 +69,7 @@ export const SearchBar: React.FC<Props> = ({ className }) => {
         type="text"
         value={value}
         className="search-bar__input"
-        placeholder="Search in phones..."
+        placeholder={placeholder}
         onChange={handleChange}
         ref={inputRef}
       />

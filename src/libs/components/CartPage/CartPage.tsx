@@ -9,7 +9,7 @@ import { NoResults } from '../NoResults';
 import './CartPage.scss';
 
 export const CartPage = () => {
-  const { items } = useAppSelector(state => state.cartItems);
+  const { cartItems: items } = useAppSelector(state => state.cartItems);
 
   return (
     <div className="cart">

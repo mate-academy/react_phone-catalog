@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
+import { useCallback } from 'react';
 
 import { ICartItem, IProduct } from '../../types';
 import { getCategoryName } from '../../utils';
 import * as cartActions from '../../slices/cartSlice';
+import * as favouritesActions from '../../slices/favouritesSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { TechSpecs } from '../TechSpecs/TechSpecs';
@@ -31,13 +33,15 @@ export const ProductCard: React.FC<Props> = ({
     screen,
   } = product;
   const dispatch = useAppDispatch();
-  const { items } = useAppSelector(state => state.cartItems);
+  const { cartItems } = useAppSelector(state => state.cartItems);
+  const { favouritesItems } = useAppSelector(state => state.favouritesItems);
   const categoryName = getCategoryName(type);
   const link = `/${categoryName}/${id}`;
 
-  const hasInCart = !!items.find(item => item.product.id === id);
+  const hasInCart = !!cartItems.find(item => item.product.id === id);
+  const hasInFavourites = !!favouritesItems.find(item => item.id === id);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = useCallback(() => {
     const cartItem: ICartItem = {
       id: String(new Date().valueOf()),
       quantity: 1,
@@ -45,13 +49,15 @@ export const ProductCard: React.FC<Props> = ({
     };
 
     dispatch(cartActions.addItem(cartItem));
-  };
+  }, [dispatch, product]);
 
-  // const handleAdd = handleAddToCart(product, dispatch, cartActions.addItem);
-
-  const handleAddToFavorites = () => {
-    // dispatch(cartActions.addItem(cartItem))
-  };
+  const handleAddToFavorites = useCallback(() => {
+    if (hasInFavourites) {
+      dispatch(favouritesActions.deleteItem(product.id));
+    } else {
+      dispatch(favouritesActions.addItem(product));
+    }
+  }, [dispatch, hasInFavourites, product]);
 
   return (
     <div className="product-card">
@@ -94,6 +100,7 @@ export const ProductCard: React.FC<Props> = ({
         add={handleAddToCart}
         isAddButtonSelected={hasInCart}
         like={handleAddToFavorites}
+        isFavoriteButtonSelected={hasInFavourites}
       />
     </div>
   );

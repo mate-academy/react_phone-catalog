@@ -5,7 +5,7 @@ import { Modal } from '../Modal';
 import './CartTotal.scss';
 
 export const CartTotal = () => {
-  const { items } = useAppSelector(state => state.cartItems);
+  const { cartItems: items } = useAppSelector(state => state.cartItems);
   const [isModalActive, setIsModalActive] = useState(false);
   const totalSum = items.reduce(
     (sum, { product, quantity }) => (sum + quantity * product.price),
