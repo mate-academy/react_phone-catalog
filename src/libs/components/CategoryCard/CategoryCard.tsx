@@ -33,7 +33,7 @@ export const CategoryCard: React.FC<Props> = ({
       data-cy="categoryLinksContainer"
     >
       <img
-        src={`/img/categories/${pass}-category.jpg`}
+        src={`./img/categories/${pass}-category.jpg`}
         alt={title}
         className="category-card__photo"
       />
