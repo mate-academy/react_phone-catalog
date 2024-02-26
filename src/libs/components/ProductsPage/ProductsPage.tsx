@@ -149,7 +149,9 @@ export const ProductsPage: React.FC<Props> = ({
               <div className="products-page__title">
                 <SectionHeader
                   title={categoryTitle}
-                  subtitle={`${productsCount} models`}
+                  subtitle={
+                    `${productsCount} ${searchQuery ? 'results' : 'models'}`
+                  }
                 />
               </div>
 

@@ -1,14 +1,31 @@
+import { useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
+
+import { useAppSelector } from '../../app/hooks';
+import { SearchParamsNames } from '../../constants';
+
 import { Breadcrumbs } from '../PageSmallNav';
 import { SectionHeader } from '../SectionHeader';
-
-import './FavouritesPage.scss';
-import { useAppSelector } from '../../app/hooks';
 import { ProductCard } from '../ProductCard';
 import { NoResults } from '../NoResults';
 
+import './FavouritesPage.scss';
+import { NoSearchResults } from '../NoSearchResults';
+
 export const FavouritesPage = () => {
+  const [searchParams] = useSearchParams();
   const { favouritesItems } = useAppSelector(state => state.favouritesItems);
   const favouritesItemsCount = favouritesItems.length;
+  const searchQuery = searchParams.get(SearchParamsNames.query) || '';
+
+  const visibleItems = useMemo(() => (
+    searchQuery
+      ? favouritesItems.filter(item => (
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ))
+      : favouritesItems
+  ), [favouritesItems, searchQuery]);
+  const visibleItemsCount = visibleItems.length;
 
   return (
     <div className="favourites">
@@ -17,22 +34,27 @@ export const FavouritesPage = () => {
         title="Favourites"
         subtitle={
           favouritesItemsCount
-            ? `${favouritesItemsCount} items`
+            ? `${visibleItemsCount} ${searchQuery ? 'results' : 'items'}`
             : undefined
         }
       />
-      { favouritesItems.length ? (
-        <div className="favourites__cards">
-          {
-            favouritesItems.map(item => (
-              <ProductCard product={item} key={item.id} />
-            ))
-          }
-        </div>
-      )
-        : (
-          <NoResults title="Your favourites list is empty" />
-        )}
+      { !!favouritesItems.length && (
+        visibleItems.length
+          ? (
+            <div className="favourites__cards">
+              {
+                visibleItems.map(item => (
+                  <ProductCard product={item} key={item.id} />
+                ))
+              }
+            </div>
+          )
+          : <NoSearchResults />
+      )}
+
+      { !favouritesItems.length && (
+        <NoResults title="Your favourites list is empty" />
+      )}
     </div>
   );
 };
