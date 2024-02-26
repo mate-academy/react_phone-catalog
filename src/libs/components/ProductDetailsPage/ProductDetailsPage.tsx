@@ -150,7 +150,7 @@ export const ProductDetailsPage = () => {
       top: 0,
       behavior: 'smooth',
     });
-  }, []);
+  }, [selectedProduct]);
 
   return (
     <div className="product-page">
