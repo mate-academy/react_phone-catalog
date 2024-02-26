@@ -1,5 +1,5 @@
 export const BANNER_IMAGES = {
-  phones: './img/banner/banner-phones.png',
-  tablets: './img/banner/banner-tablets.png',
-  accessories: './img/banner/banner-accessories.png',
+  phones: './img/banners/banner-phones.png',
+  tablets: './img/banners/banner-tablets.png',
+  accessories: './img/banners/banner-accessories.png',
 };
