@@ -38,7 +38,8 @@
 
   &__title {
     margin-bottom: 6px;
-    min-height: 42px;
+    height: 42px;
+    overflow: hidden;
   }
 
   &__pricebox {

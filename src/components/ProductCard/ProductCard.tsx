@@ -2,15 +2,17 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import './ProductCard.scss';
+import classNames from 'classnames';
 import { Product } from '../../types/product';
 import { AddToCart } from '../AddToCart';
 import { CartItemType } from '../../types/cart';
 
 type Props = {
   product: Product;
+  isNew?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, isNew = false }) => {
   const {
     id,
     itemId,
@@ -60,8 +62,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <p className="product-card__title">{name}</p>
 
         <div className="product-card__pricebox">
-          <h2>{`$${price}`}</h2>
-          <h2 className="product-card__price">{`$${fullPrice}`}</h2>
+          {!isNew && <h2>{`$${price}`}</h2>}
+          <h2
+            className={classNames({
+              'product-card__price': !isNew,
+            })}
+          >
+            {`$${fullPrice}`}
+          </h2>
         </div>
 
         <ul className="product-card__options">

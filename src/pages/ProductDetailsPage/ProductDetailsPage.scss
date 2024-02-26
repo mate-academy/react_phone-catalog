@@ -3,7 +3,6 @@
 .product-details {
   display: flex;
   flex-direction: column;
-  gap: 80px;
   padding-block: 24px 80px;
 
   @include on-mobile-l {
@@ -29,6 +28,14 @@
   &__title {
     @include h1;
 
-    margin-bottom: 40px;
+    height: 82px;
+  }
+
+  &__main {
+    margin-bottom: 80px;
+
+    @include on-mobile-l {
+      margin-bottom: 40px;
+    }
   }
 }

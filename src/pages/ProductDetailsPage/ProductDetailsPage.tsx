@@ -59,7 +59,7 @@ export const ProductDetailsPage = () => {
         </h1>
       </header>
 
-      <main>
+      <main className="product-details__main">
         {loading
           ? <MyLoader />
           : (

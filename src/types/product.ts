@@ -23,6 +23,8 @@ export type Product = {
   year: number,
 };
 
+export type NewProduct = Omit<Product, 'price'>;
+
 export type ProductDescription = {
   id: string,
   namespaceId: string,

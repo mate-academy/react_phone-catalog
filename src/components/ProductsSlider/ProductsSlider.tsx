@@ -24,7 +24,7 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
   const cartWidth = (wrapperWidth - totalGap) / itemsInSlider;
   const shift = cartWidth < ITEM_MIN_WIGTH ? ITEM_MIN_WIGTH : cartWidth;
 
-  function getSliderParams() {
+  const getSliderParams = () => {
     const width = wrapper.current
       ? wrapper.current.clientWidth
       : WRAPPER_MIN_WIDTH;
@@ -33,7 +33,7 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
     setItemsInSlider(Math.floor(width / ITEM_MIN_WIGTH) > MAX_ITEM_IN_SLIDER
       ? MAX_ITEM_IN_SLIDER
       : Math.floor(width / ITEM_MIN_WIGTH));
-  }
+  };
 
   useEffect(() => {
     getSliderParams();
@@ -98,6 +98,7 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
                 className="products-slider__item"
               >
                 <ProductCard
+                  isNew
                   product={product}
                   key={product.id}
                 />

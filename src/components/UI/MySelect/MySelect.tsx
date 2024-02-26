@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import './MySelect.scss';
 import { SearchTypes, SelectItems, SelectOption } from '../../../types/select';
