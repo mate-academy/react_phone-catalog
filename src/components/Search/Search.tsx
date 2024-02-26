@@ -27,10 +27,15 @@ export const Search: React.FC<Props> = ({ validPath }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
+  const applyQuery = useCallback(
+    debounce(dispatch, 1000),
+    [],
+  );
+
   const handleSearchQueryChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const queryToUpdate = event.target.value || null;
+    const queryToUpdate = event.target.value;
 
     setSearchParams(
       normalizeUrlParams(searchParams, { query: queryToUpdate }),
@@ -38,17 +43,18 @@ export const Search: React.FC<Props> = ({ validPath }) => {
 
     if (queryToUpdate !== '') {
       setButtonType('close');
-    } else if (window.innerWidth >= 1200) {
+    } else if (window.innerWidth >= 1200 || queryToUpdate === '') {
       setButtonType('search');
+      setSearchParams(normalizeUrlParams(searchParams, { query: null }));
     }
 
-    dispatch(setQuery(queryToUpdate || ''));
+    applyQuery(setQuery(queryToUpdate || ''));
   };
 
   const handleClearQuery = useCallback(() => {
     if (buttonType === 'close') {
       setSearchParams(normalizeUrlParams(searchParams, { query: null }));
-      dispatch(setQuery(''));
+      applyQuery(setQuery(''));
 
       setButtonType('search');
     } else if (inputRef.current) {
@@ -56,11 +62,6 @@ export const Search: React.FC<Props> = ({ validPath }) => {
       inputRef.current.focus();
     }
   }, [buttonType]);
-
-  const applyQuery = useCallback(
-    debounce(dispatch, 1000),
-    [],
-  );
 
   useEffect(() => {
     applyQuery(setQuery(query));

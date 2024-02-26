@@ -69,12 +69,13 @@
     gap: 43px;
     align-items: center;
     justify-content: space-between;
-    max-width: 200px;
+    width: 240px;
 
     & button {
       height: 32px;
       width: 32px;
       line-height: 32px;
+      padding-top: 2px;
       background-color: transparent;
       border: solid 1px $gray-elements;
       transition: border $transition-duration;
