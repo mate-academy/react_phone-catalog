@@ -1,13 +1,16 @@
 import cn from 'classnames';
 import { useLocation } from 'react-router-dom';
 
-import { useEffect, useMemo, useState } from 'react';
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 
 import * as productDetailsActions from '../../slices/productDetailsSlice';
 import * as suggestedProductsActions from '../../slices/suggestedProductsSlice';
+import * as cartActions from '../../slices/cartSlice';
 import * as productsActions from '../../slices/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { IProduct } from '../../types';
+import { ICartItem, IProduct } from '../../types';
 
 import { Breadcrumbs } from '../PageSmallNav';
 import { SectionHeader } from '../SectionHeader';
@@ -22,7 +25,7 @@ import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
-  const id = pathname.split('/').slice(-1)[0];
+  const categoryId = pathname.split('/').slice(-1)[0];
   const dispatch = useAppDispatch();
   const {
     productDetails,
@@ -32,6 +35,9 @@ export const ProductDetailsPage = () => {
   const {
     allProducts,
   } = useAppSelector(state => state.products);
+  const {
+    items,
+  } = useAppSelector(state => state.cartItems);
   const {
     suggestedProducts,
     hasError: hasSuggestedProductsError,
@@ -74,39 +80,53 @@ export const ProductDetailsPage = () => {
     };
   }, [productDetails]);
 
-  const hasProductDetailsLoader = (
-    !productDetailsLoaded && !hasProductDetailsError
+  const handleAddToCart = useCallback(() => {
+    if (!selectedProduct) {
+      return;
+    }
+
+    const cartItem: ICartItem = {
+      id: String(new Date().valueOf()),
+      quantity: 1,
+      product: selectedProduct,
+    };
+
+    dispatch(cartActions.addItem(cartItem));
+  }, [dispatch, selectedProduct]);
+
+  const hasInCart = useMemo(() => (
+    !!items.find(
+      item => item.product.id === selectedProduct?.id,
+    )
+  ), [items, selectedProduct]);
+
+  const hasLoader = (
+    (!productDetailsLoaded && !hasProductDetailsError)
+    || (!suggestedProductsLoaded && !hasSuggestedProductsError)
   );
-  const isProductDetailsVisible = (
-    productDetailsLoaded && !hasProductDetailsError && productDetails
-  );
-  const hasSuggestedProductsLoader = (
-    !suggestedProductsLoaded && !hasSuggestedProductsError
-  );
-  const isSuggestedProductsVisible = (
-    suggestedProductsLoaded && !hasSuggestedProductsError && suggestedProducts
-  );
-  const hasLoader = hasProductDetailsLoader || hasSuggestedProductsLoader;
+
   const isPageVisible = (
-    isProductDetailsVisible
-    && isSuggestedProductsVisible
+    (productDetailsLoaded && !hasProductDetailsError && productDetails)
+    && (
+      suggestedProductsLoaded && !hasSuggestedProductsError && suggestedProducts
+    )
   );
 
   useEffect(() => {
-    dispatch(productDetailsActions.fetchProductDetails(id));
+    dispatch(productDetailsActions.fetchProductDetails(categoryId));
     dispatch(suggestedProductsActions.fetchSuggestedProducts());
     dispatch(productsActions.fetchAll());
-  }, [dispatch, id]);
+  }, [dispatch, categoryId]);
 
   useEffect(() => {
     setSelectedImage(productDetails?.images[0] || '');
   }, [productDetails]);
 
   useEffect(() => {
-    const product = allProducts.find(el => el.id === id);
+    const product = allProducts.find(el => el.id === categoryId);
 
     setSelectedProduct(product || null);
-  }, [allProducts, id]);
+  }, [allProducts, categoryId]);
 
   useEffect(() => {
     window.scrollTo({
@@ -226,14 +246,21 @@ export const ProductDetailsPage = () => {
                   )
                 }
 
-                <div className="product-info__buy">
-                  <Price
-                    discount={selectedProduct?.discount || 0}
-                    price={selectedProduct?.price || 0}
-                    priceFontSize={32}
-                  />
-                  <BuyButtons containerHeight={48} />
-                </div>
+                {selectedProduct && (
+                  <div className="product-info__buy">
+                    <Price
+                      discount={selectedProduct.discount}
+                      price={selectedProduct.price}
+                      priceFontSize={32}
+                    />
+                    <BuyButtons
+                      containerHeight={48}
+                      add={handleAddToCart}
+                      isAddButtonSelected={hasInCart}
+                      like={() => {}}
+                    />
+                  </div>
+                )}
 
                 <TechSpecs
                   classNames="product-info__specs"

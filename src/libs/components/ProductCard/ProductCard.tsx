@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 
-import { IProduct } from '../../types';
+import { ICartItem, IProduct } from '../../types';
 import { getCategoryName } from '../../utils';
+import * as cartActions from '../../slices/cartSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { TechSpecs } from '../TechSpecs/TechSpecs';
 import { BuyButtons } from '../BuyButtons/BuyButtons';
@@ -10,12 +12,14 @@ import { Price } from '../Price';
 
 import './ProductCard.scss';
 
-export type Props = {
+type Props = {
   product: IProduct,
 };
 
 export const ProductCard: React.FC<Props> = ({
-  product: {
+  product,
+}) => {
+  const {
     id,
     name,
     type,
@@ -25,10 +29,29 @@ export const ProductCard: React.FC<Props> = ({
     ram,
     capacity,
     screen,
-  },
-}) => {
+  } = product;
+  const dispatch = useAppDispatch();
+  const { items } = useAppSelector(state => state.cartItems);
   const categoryName = getCategoryName(type);
   const link = `/${categoryName}/${id}`;
+
+  const hasInCart = !!items.find(item => item.product.id === id);
+
+  const handleAddToCart = () => {
+    const cartItem: ICartItem = {
+      id: String(new Date().valueOf()),
+      quantity: 1,
+      product,
+    };
+
+    dispatch(cartActions.addItem(cartItem));
+  };
+
+  // const handleAdd = handleAddToCart(product, dispatch, cartActions.addItem);
+
+  const handleAddToFavorites = () => {
+    // dispatch(cartActions.addItem(cartItem))
+  };
 
   return (
     <div className="product-card">
@@ -66,7 +89,12 @@ export const ProductCard: React.FC<Props> = ({
           }
         }
       />
-      <BuyButtons classNames="product-card__buttons" />
+      <BuyButtons
+        classNames="product-card__buttons"
+        add={handleAddToCart}
+        isAddButtonSelected={hasInCart}
+        like={handleAddToFavorites}
+      />
     </div>
   );
 };

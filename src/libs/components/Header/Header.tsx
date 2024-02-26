@@ -4,6 +4,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import {
   handleSearchBarVisibility,
 } from '../../utils';
+import { useAppSelector } from '../../app/hooks';
+
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 import { SearchBar } from '../SearchBar';
@@ -18,12 +20,13 @@ type Props = {
 export const Header: React.FC<Props> = ({
   classNames,
 }) => {
+  const { items } = useAppSelector(state => state.cartItems);
   const location = useLocation();
   const pathes = location.pathname.split('/').slice(1);
   const hasSearchBar = handleSearchBarVisibility(pathes);
   const isCartPage = pathes[0] === 'cart';
   const isFav = true;
-  const hasProdInCart = true;
+  const hasItemsInCart = !!items.length;
 
   return (
     <header className={cn('header', classNames)}>
@@ -71,18 +74,24 @@ export const Header: React.FC<Props> = ({
             )
           )}
         >
-          { hasProdInCart
+          { hasItemsInCart
             ? (
-              <Icon
-                iconName="shopping"
-                classNames="icon"
-              />
+              <div className="header__icon-container">
+                <Icon
+                  iconName="shopping"
+                  classNames="icon"
+                />
+
+                <span className="icon__count">
+                  {items.length}
+                </span>
+              </div>
             )
 
             : (
               <Icon
-                iconName="shoppingCounter"
-                classNames="icon icon--with-heart"
+                iconName="shopping"
+                classNames="icon"
               />
             )}
         </NavLink>

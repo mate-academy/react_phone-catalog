@@ -65,10 +65,11 @@
   display: flex;
   gap: 16px;
   align-items: center;
+  height: 464px;
 
   &__main-image {
     width: 464px;
-    height: 464px;
+    height: 100%;
   }
 
   &__side-images {
@@ -76,6 +77,9 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
     cursor: pointer;
   }
 

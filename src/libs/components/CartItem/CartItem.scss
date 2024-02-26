@@ -59,6 +59,10 @@
     &--add-button {
       border-color: $icons;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   &__item-count {

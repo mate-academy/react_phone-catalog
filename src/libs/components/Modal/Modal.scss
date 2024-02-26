@@ -1,0 +1,54 @@
+@import '/src/assets/css/variables';
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $modal-background;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 25vh;
+    width: 40vw;
+    padding: 20px;
+    background-color: $white;
+    border-radius: 12px;
+  }
+
+  &__text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 48px;
+    background-color: $primary;
+    font-weight: 600;
+    font-size: 14px;
+    color: $white;
+    border: none;
+    cursor: pointer;
+  }
+}

@@ -27,11 +27,16 @@
   &__icon-link {
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
+    width: 66px;
     height: 100%;
     text-decoration: none;
     padding: 18px;
     border-left: 1px solid $elements;
+  }
+
+  &__icon-container {
+    position: relative;
   }
 }
 
@@ -40,8 +45,24 @@
   height: 16px;
   width: 16px;
 
-  &--with-heart {
-    height: 28px;
-    width: 28px;
+  &__count {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    box-sizing: content-box;
+    background-color: $red;
+    border: 1px solid $white;
+    border-radius: 50%;
+    overflow: hidden;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 11px;
+    color: $white;
   }
 }

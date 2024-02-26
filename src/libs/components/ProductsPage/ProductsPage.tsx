@@ -138,13 +138,13 @@ export const ProductsPage: React.FC<Props> = ({
 
   return (
     <div className="products-page">
-      <Breadcrumbs />
+      <Breadcrumbs classNames="products-page__breadcrumbs" />
 
       {(!loaded && !hasError) && <Loader />}
 
       {
-        (loaded && fetchedProductsCount && !hasError)
-          ? (
+        (loaded && !!fetchedProductsCount && !hasError)
+          && (
             <>
               <div className="products-page__title">
                 <SectionHeader
@@ -187,10 +187,14 @@ export const ProductsPage: React.FC<Props> = ({
               }
             </>
           )
-          : (
-            <NoResults title={categoryTitle} />
-          )
       }
+
+      {(loaded && !fetchedProductsCount && !hasError) && (
+        <NoResults
+          title={`${categoryTitle} not found`}
+          hasBackButton
+        />
+      )}
 
     </div>
   );

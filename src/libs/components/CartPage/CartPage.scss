@@ -3,9 +3,11 @@
 .cart {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding-top: 40px;
 
   &__back-button {
-    padding: 16px 0;
+    margin-bottom: 16px;
   }
 
   &__title {

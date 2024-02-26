@@ -2,19 +2,26 @@
 import cn from 'classnames';
 
 import { Icon } from '../Icon';
+
 import './BuyButtons.scss';
 
 type Props = {
-  containerHeight?: number
+  containerHeight?: number;
   classNames?: string;
+  add: () => void;
+  isAddButtonSelected?: boolean;
+  like: () => void;
+  isFavoriteButtonSelected?: boolean;
 };
 
 export const BuyButtons: React.FC<Props> = ({
   classNames,
   containerHeight = 40,
+  add,
+  isAddButtonSelected = false,
+  like,
+  isFavoriteButtonSelected = false,
 }) => {
-  const isFavorite = true;
-
   return (
     <div
       className={cn(
@@ -30,11 +37,12 @@ export const BuyButtons: React.FC<Props> = ({
         className={cn(
           'card-buttons__add',
           {
-            'card-buttons__add--selected': false,
+            'card-buttons__add--selected': isAddButtonSelected,
           },
         )}
+        onClick={add}
       >
-        Add to card
+        Add to cart
       </button>
 
       <button
@@ -43,9 +51,14 @@ export const BuyButtons: React.FC<Props> = ({
         style={{
           width: containerHeight,
         }}
+        onClick={like}
       >
         <Icon
-          iconName={isFavorite ? 'favourites' : 'favouritesCounter'}
+          iconName={
+            isFavoriteButtonSelected
+              ? 'favouritesCounter'
+              : 'favourites'
+          }
           classNames="card-buttons__like-icon"
         />
       </button>

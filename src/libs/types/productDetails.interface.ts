@@ -2,29 +2,31 @@ export interface IProductDetails {
   additionalFeaturs: string;
   android: {
     os: string,
-    ui: string }
-  availability: string[]
+    ui: string,
+  };
+  availability: string[];
   battery: {
     standbyTime: string,
     talkTime: string,
-    type: string
-  }
+    type: string,
+  };
   camera:{
     features: string[],
-    primary: string }
+    primary: string,
+  };
   connectivity: {
     bluetooth: string,
     cell: string,
     gps: boolean,
     infrared: boolean,
-    wifi: string
-  }
+    wifi: string,
+  };
   description: string;
   display: {
     screenResolution: string,
     screenSize: string,
-    touchScreen: boolean
-  }
+    touchScreen: boolean,
+  };
   hardware: {
     accelerometer: boolean,
     audioJack: string,
@@ -38,10 +40,10 @@ export interface IProductDetails {
   name: string;
   sizeAndWeight: {
     dimensions: string[],
-    weight: string
-  }
+    weight: string,
+  };
   storage: {
     flash: string,
-    ram: string
-  }
+    ram: string,
+  };
 }

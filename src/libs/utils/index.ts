@@ -9,3 +9,4 @@ export { fetchCategoryProducts } from './fetchCategoryProducts';
 export { getCategoryName } from './getCategoryName';
 export { getKeyByValue } from './getKeyByValue';
 export { getSearchWith } from './getSearchWith';
+export { getFromLocalSotrage, saveToLocalSotrage } from './useLocalSotrage';
