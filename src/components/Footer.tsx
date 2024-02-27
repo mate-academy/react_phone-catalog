@@ -13,13 +13,34 @@ export const Footer = () => {
       <nav className="nav nav-footer">
         <ul className="nav__list nav-footer__list">
           <li className="nav__list__row">
-            <a href="#" className="nav__list__row__link">Github</a>
+            <a
+              href="https://github.com/OleksChernikov"
+              target="_blank"
+              className="nav__list__row__link"
+              rel="noreferrer"
+            >
+              Github
+            </a>
           </li>
           <li>
-            <a href="#" className="nav__list__row__link">Contacts</a>
+            <a
+              href="https://github.com/OleksChernikov"
+              target="_blank"
+              className="nav__list__row__link"
+              rel="noreferrer"
+            >
+              Contacts
+            </a>
           </li>
           <li>
-            <a href="#" className="nav__list__row__link">rights</a>
+            <a
+              href="https://github.com/OleksChernikov"
+              target="_blank"
+              className="nav__list__row__link"
+              rel="noreferrer"
+            >
+              rights
+            </a>
           </li>
         </ul>
       </nav>

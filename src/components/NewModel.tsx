@@ -24,7 +24,9 @@ type Props = {
   getPhone: Phones[] | undefined
 };
 
-export const HotPrices: React.FC<Props> = ({ getPhone }) => {
+export const NewModel: React.FC<Props> = ({ getPhone }) => {
+  const newPhones = getPhone?.filter((phone) => phone.year === 2019 && phone.capacity === '256GB');
+
   const [translate, setTranslate] = useState(0);
   const lengthHotPrice = 10;
 
@@ -39,13 +41,14 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
   };
 
   useEffect(() => {
+
   }, [translate]);
 
   return (
     <section className="hot-prices__wrapper">
       <div className="hot-prices__content">
         <div className="hot-prices__header">
-          <h3 className="hot-prices__header__title">Hot prices</h3>
+          <h3 className="hot-prices__header__title">Brand new models</h3>
           <div className="hot-prices__header__buttons">
             <button
               type="button"
@@ -79,7 +82,7 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
         </div>
         <div className="hot-prices__goods">
           <div className="hot-prices__goods__cards" style={{ transform: `translateX(${translate}px)` }}>
-            {!!getPhone && getPhone.map((phone, index) => (index < lengthHotPrice && (
+            {!!newPhones && newPhones.map((phone) => (
               <div className="hot-prices__goods__cards__good-card">
                 <img
                   src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}
@@ -93,9 +96,6 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
                   <div className="hot-prices__goods__cards__good-card__header__prace">
                     <p className="hot-prices__goods__cards__good-card__header__prace__new">
                       {`$${phone.price}`}
-                    </p>
-                    <p className="hot-prices__goods__cards__good-card__header__prace__old">
-                      {phone.fullPrice}
                     </p>
                   </div>
                   <div className="hot-prices__goods__cards__good-card__header__line" />
@@ -142,7 +142,6 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
                   </div>
                 </div>
               </div>
-            )
             ))}
           </div>
         </div>

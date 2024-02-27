@@ -5,6 +5,7 @@ import './App.scss';
 import { Bunner } from './components/Bunner';
 import { HotPrices } from './components/HotPrices';
 import { Categories } from './components/Categories';
+import { NewModel } from './components/NewModel';
 
 interface Phones {
   id: string;
@@ -58,6 +59,9 @@ const App = () => {
         />
       )}
       <Categories />
+      <NewModel
+        getPhone={getPhone}
+      />
       <Footer />
     </div>
   );

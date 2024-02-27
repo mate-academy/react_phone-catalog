@@ -56,7 +56,8 @@ export const Bunner = () => {
           <li className="bunner__main__li">
             <img
               className="bunner__main__img"
-              src="/_new/img/banner-phones.png"
+              // eslint-disable-next-line max-len
+              src="https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png"
               alt=""
               style={{ opacity: isActive !== 1 ? 0 : 1 }}
             />
@@ -64,7 +65,8 @@ export const Bunner = () => {
           <li className="bunner__main__li">
             <img
               className="bunner__main__img"
-              src="/_new/img/banner-accessories.png"
+              // eslint-disable-next-line max-len
+              src="https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png"
               alt=""
               style={{ opacity: isActive !== 2 ? 0 : 1 }}
             />
@@ -72,7 +74,8 @@ export const Bunner = () => {
           <li className="bunner__main__li">
             <img
               className="bunner__main__img"
-              src="/_new/img/banner-tablets.png"
+              // eslint-disable-next-line max-len
+              src="https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png"
               alt=""
               style={{ opacity: isActive !== 3 ? 0 : 1 }}
             />

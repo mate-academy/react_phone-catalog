@@ -325,7 +325,7 @@ body {
         margin: 0;
         padding: 0;
         border: none;
-        transition: all 0.3s ease;
+        transition: opacity 0.3s ease;
 
         &__img--left {
           object-fit: contain;
@@ -344,28 +344,53 @@ body {
         }
 
         &:hover {
-          transform: scale(1.2);
+          border: solid 1px black;
         }
 
         &:active {
           opacity: 0.6;
+        }
+
+        &__disabled {
+          opacity: 0.4;
+          &:hover {
+            border: none;
+          }
+
+          &:active {
+            opacity: 0.4;
+          }
         }
       }
     }
   }
 
   &__goods {
+    overflow: hidden;
+    height: 100%;
     &__cards {
+      transition: all 0.5s ease-out;
+      transform: translateX(0);
       display: flex;
       gap: 16px;
 
       &__good-card {
+        // box-sizing: border-box;
         display: flex;
         flex-direction: column;
         border: solid 1px #b4bdc3;
-        width: 508px;
+        min-width: 272px;
         box-sizing: border-box;
         padding: 32px 32px 24px;
+        transition: all 0.3s ease-out;
+        cursor: pointer;
+
+        &:hover {
+          border: solid 1px black;
+          // -webkit-transform: rotateY(20deg);
+          // transform: translateY(5px);
+          // box-shadow: 8px 5px 5px rgb(80, 79, 79);
+        }
 
         &__img {
           object-fit: contain;
@@ -387,6 +412,8 @@ body {
           }
 
           &__name {
+            display: block;
+            height: 42px;
             font-family: "Mont", sans-serif;
             color: #313237;
             font-size: 14px;
@@ -471,8 +498,10 @@ body {
         &__buttons {
           display: flex;
           justify-content: space-between;
+          gap: 8px;
 
           &__cart {
+            border: none;
             background-color: #313237;
             color: #fff;
             text-align: center;
@@ -481,7 +510,13 @@ body {
             font-style: normal;
             font-weight: 600;
             line-height: 21px;
-            padding: 8px 46px;
+            height: 40px;
+            width: 100%;
+            transition: all 0.5s ease;
+
+            &:hover {
+              box-shadow: 5px 3px 3px rgb(80, 79, 79);
+            }
           }
 
           &__favorite {
@@ -492,6 +527,11 @@ body {
             width: 40px;
             border: solid 1px #b4bdc3;
             background-color: #fff;
+            transition: all 0.5s ease;
+
+            &:hover {
+              box-shadow: 5px 3px 3px rgb(80, 79, 79);
+            }
           }
         }
       }
@@ -516,15 +556,18 @@ body {
     &__card {
 
       &__background-img {
-        background-color: #f8dbc2;
-        border: solid 1px black;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in;
         overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
         height: 368px;
         width: 368px;
+      }
 
-        &__image {
-          height: 1000px;
-        }
+      &:hover > &__background-img {
+        // border: solid 2px black;
+        box-shadow: 8px 5px 5px rgb(80, 79, 79);
       }
     }
   }
