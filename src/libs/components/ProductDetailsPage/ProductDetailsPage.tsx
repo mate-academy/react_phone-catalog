@@ -84,26 +84,31 @@ export const ProductDetailsPage = () => {
     };
   }, [productDetails]);
 
+  const currentCartItem = cartItems.find(
+    item => item.product.id === selectedProduct?.id,
+  );
+  const hasInCart = !!currentCartItem;
+  const hasInFavourites = !!favouritesItems.find(
+    item => item.id === selectedProduct?.id,
+  );
+
   const handleAddToCart = useCallback(() => {
     if (!selectedProduct) {
       return;
     }
 
-    const cartItem: ICartItem = {
-      id: String(new Date().valueOf()),
-      quantity: 1,
-      product: selectedProduct,
-    };
+    if (hasInCart) {
+      dispatch(cartActions.deleteItem(currentCartItem.id));
+    } else {
+      const cartItem: ICartItem = {
+        id: String(new Date().valueOf()),
+        quantity: 1,
+        product: selectedProduct,
+      };
 
-    dispatch(cartActions.addItem(cartItem));
-  }, [dispatch, selectedProduct]);
-
-  const hasInCart = !!cartItems.find(
-    item => item.product.id === selectedProduct?.id,
-  );
-  const hasInFavourites = !!favouritesItems.find(
-    item => item.id === selectedProduct?.id,
-  );
+      dispatch(cartActions.addItem(cartItem));
+    }
+  }, [dispatch, selectedProduct, hasInCart, currentCartItem]);
 
   const handleAddToFavorites = useCallback(() => {
     if (!selectedProduct) {

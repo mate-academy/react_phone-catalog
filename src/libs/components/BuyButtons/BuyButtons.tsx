@@ -42,7 +42,7 @@ export const BuyButtons: React.FC<Props> = ({
         )}
         onClick={add}
       >
-        Add to cart
+        {isAddButtonSelected ? 'Added to cart' : 'Add to cart'}
       </button>
 
       <button

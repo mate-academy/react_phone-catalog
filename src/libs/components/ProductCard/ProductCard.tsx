@@ -38,18 +38,23 @@ export const ProductCard: React.FC<Props> = ({
   const categoryName = getCategoryName(type);
   const link = `/${categoryName}/${id}`;
 
-  const hasInCart = !!cartItems.find(item => item.product.id === id);
+  const currentCartItem = cartItems.find(item => item.product.id === id);
+  const hasInCart = !!currentCartItem;
   const hasInFavourites = !!favouritesItems.find(item => item.id === id);
 
   const handleAddToCart = useCallback(() => {
-    const cartItem: ICartItem = {
-      id: String(new Date().valueOf()),
-      quantity: 1,
-      product,
-    };
+    if (hasInCart) {
+      dispatch(cartActions.deleteItem(currentCartItem.id));
+    } else {
+      const cartItem: ICartItem = {
+        id: String(new Date().valueOf()),
+        quantity: 1,
+        product,
+      };
 
-    dispatch(cartActions.addItem(cartItem));
-  }, [dispatch, product]);
+      dispatch(cartActions.addItem(cartItem));
+    }
+  }, [dispatch, product, hasInCart, currentCartItem]);
 
   const handleAddToFavorites = useCallback(() => {
     if (hasInFavourites) {
