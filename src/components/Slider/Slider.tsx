@@ -47,20 +47,20 @@ export const Slider = () => {
     }
   }
 
-  function sliderLoop(currentSlider:number) {
-    setSlider(current => current + 1);
+  // function sliderLoop(currentSlider:number) {
+  //   setSlider(current => current + 1);
 
-    if (currentSlider === LAST_SLIDE_INDEX - 1) {
-      setTimeout(() => {
-        setTransitionDelay(true);
-        setSlider(1);
-      }, 300);
+  //   if (currentSlider === LAST_SLIDE_INDEX - 1) {
+  //     setTimeout(() => {
+  //       setTransitionDelay(true);
+  //       setSlider(1);
+  //     }, 300);
 
-      setTimeout(() => {
-        setTransitionDelay(false);
-      }, 500);
-    }
-  }
+  //     setTimeout(() => {
+  //       setTransitionDelay(false);
+  //     }, 500);
+  //   }
+  // }
 
   function getImgWidth() {
     const width = wrapper.current ? wrapper.current.clientWidth : 200;
@@ -72,14 +72,14 @@ export const Slider = () => {
     getImgWidth();
     window.addEventListener('resize', getImgWidth);
 
-    const interval = setInterval(() => {
-      sliderLoop(slider);
-    }, 5000);
+    // const interval = setInterval(() => {
+    //   sliderLoop(slider);
+    // }, 5000);
 
-    return () => {
-      window.removeEventListener('resize', getImgWidth);
-      clearInterval(interval);
-    };
+    // return () => {
+    //   window.removeEventListener('resize', getImgWidth);
+    //   clearInterval(interval);
+    // };
   }, [slider]);
 
   return (
