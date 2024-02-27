@@ -50,6 +50,7 @@ export const ProductCard: React.FC<Props> = ({ product, isNew = false }) => {
         to={`/phones/${itemId || id}`}
         state={{ product }}
         className="product-card__link"
+        onClick={() => window.scrollTo(0, 0)}
       >
         <div className="product-card__imgbox">
           <img
