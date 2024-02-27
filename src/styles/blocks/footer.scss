@@ -1,0 +1,65 @@
+.footer {
+  display: flex;
+  margin: 80px auto 0;
+  height: 96px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -1px 0 0 $super-light-gray;
+
+  &-content-container {
+    display: flex;
+    height: 100%;
+    width: 1136px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__info {
+    @extend %UPPERCASE;
+    display: flex;
+    gap: 64px;
+  }
+
+  &__link {
+    padding-block: 43px;
+    line-height: 100%;
+    text-decoration: none;
+    color: $gray-secondary;
+
+    &:hover {
+      color: $black-primary;
+    }
+  }
+
+  &__button {
+    @extend %small-text;
+    position: relative;
+    padding: 16px;
+    border: 1px solid $gray-secondary;
+    background-image: url(../../images-style/Icons/arrow-left-black.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotateZ(90deg);
+
+    &::before {
+      content: "Back to top";
+      position: absolute;
+      top: 76px;
+      left: -19px;
+      height: 15px;
+      width: 70px;
+      color: $gray-secondary;
+      transform: rotateZ(-90deg);
+      transition: all $transition-time;
+    }
+
+    &:hover {
+      border-color: $black-primary;
+
+      &::before {
+        color: $black-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+.dropdown {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 4px;
+
+  &__name {
+    @extend %body-text;
+    color: $gray-secondary;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    @extend %buttons;
+    appearance: none;
+    position: relative;
+    width: 176px;
+    height: 40px;
+    line-height: 38px;
+    padding-left: 12px;
+    color: $black-primary;
+    text-align: left;
+    background-color: $color-white;
+    border: 1px solid $light-gray-icons;
+    outline: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 16px;
+      height: 16px;
+      background-image: url(../../images-style/Icons/arrow-right.svg);
+      transform: rotateZ(90deg);
+      transition: all $transition-time;
+    }
+
+    &:hover {
+      border-color: $gray-secondary;
+    }
+
+    &:focus {
+      border-color: $black-primary;
+
+      &::after {
+        transform: rotateZ(270deg);
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 44px;
+    z-index: 1;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    width: 176px;
+    background-color: $color-white;
+    border: 1px solid $super-light-gray;
+    box-shadow: 0 2px 15px 0 #0000000d;
+    transition: all $transition-time;
+
+    &--on {
+      opacity: 1;
+      animation: appear $transition-time;
+    }
+
+    &--off {
+      display: none;
+      animation: disappear $transition-time;
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes disappear {
+      0% {
+        display: flex;
+        opacity: 1;
+      }
+
+      100% {
+        display: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  &__item {
+    @extend %body-text;
+    width: 174px;
+    height: 32px;
+    padding-left: 12px;
+    line-height: 32px;
+    color: $gray-secondary;
+    background-color: $color-white;
+
+    &:hover {
+      color: $black-primary;
+      background-color: $color-hover;
+    }
+  }
+}

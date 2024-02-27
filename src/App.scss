@@ -1,1 +1,31 @@
-// not empty
+@import "styles/utils/vars";
+@import "styles/utils/extends";
+@import "styles/utils/mixins";
+@import "styles/blocks/normalize.scss";
+@import "styles/blocks/logo.scss";
+@import "styles/blocks/main.scss";
+@import "styles/blocks/footer.scss";
+@import "styles/blocks/backButton.scss";
+@import "components/Navigation/navigation.scss";
+@import "components/TopSlider/topSlider.scss";
+@import "components/ProductCard/productCard.scss";
+@import "components/ProductsSlider/productsSlider.scss";
+@import "components/CartItem/cartItem.scss";
+@import "components/Breadcrubs/breadCrumbs.scss";
+@import "components/NoResults/noResultsMessage.scss";
+@import "components/Pagination/pagination.scss";
+@import "components/Dropdown/dropdown.scss";
+@import "components/Loader/loader.scss";
+@import "components/ProductList/productList.scss";
+@import "components/NoSearchResults/noSearchResults.scss";
+@import "pages/ProductPage/productPage.scss";
+@import "pages/FavouritesPage/favPage.scss";
+@import "pages/CartPage/cartPage.scss";
+@import "pages/ProductDetailsPage/productDetails.scss";
+@import "pages/NotFoundPage/notFoundPage.scss";
+
+.app {
+  display: flex;
+  height: 99.9vh;
+  flex-direction: column;
+}

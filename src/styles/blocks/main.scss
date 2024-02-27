@@ -1,0 +1,75 @@
+.main {
+  width: 1136px;
+  margin: 0 auto;
+  flex: 1;
+
+  &__shop-by-category {
+    @extend %h1;
+    display: flex;
+    flex-direction: column;
+    width: 1136px;
+    margin: 80px auto 0;
+
+    &-links {
+      display: flex;
+      margin-top: 32px;
+      gap: 16px;
+    }
+
+    &-link {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: $black-primary;
+
+      &-container {
+        height: 368px;
+        width: 368px;
+        overflow: hidden;
+
+        $container: (1: $photo1-background-color,
+        2: $photo2-background-color,
+        3: $photo3-background-color);
+
+        @each $number, $color in $container {
+          &-#{$number} {
+            background-color: $color;
+          }
+        }
+      }
+
+      &-photo {
+        height: 468px;
+
+        &-1 {
+          padding-left: 55px;
+        }
+
+        &-2 {
+          padding: 20px 0 0 80px;
+        }
+
+        &-3 {
+          height: 340px;
+          width: 650px;
+          margin: 35px 0 0 50px;
+        }
+      }
+
+      &-text {
+        @extend %h3;
+        padding-top: 24px;
+      }
+
+      &-number {
+        @extend %body-text;
+        padding-top: 4px;
+        color: $gray-secondary;
+      }
+
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
+}

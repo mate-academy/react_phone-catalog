@@ -1,0 +1,50 @@
+.pagination {
+  display: flex;
+  padding-top: 40px;
+  justify-content: center;
+  gap: 16px;
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $light-gray-icons;
+    background: no-repeat center;
+    background-image: url(../../images-style/Icons/arrow-left-black.svg);
+
+    &--right {
+      transform: rotateZ(180deg);
+    }
+
+    &:hover {
+      border-color: $black-primary;
+    }
+
+    &:disabled {
+      background-image: url(../../images-style/Icons/arrow-left.svg);
+      border-color: $super-light-gray;
+    }
+  }
+
+  &__page {
+    @extend %body-text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $super-light-gray;
+    color: $black-primary;
+
+    &--active {
+      color: $color-white;
+      border-color: $black-primary;
+      background-color: $black-primary;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}

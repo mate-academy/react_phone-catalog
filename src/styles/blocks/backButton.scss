@@ -1,0 +1,23 @@
+.back-button {
+  display: flex;
+  margin-top: 40px;
+  width: fit-content;
+  height: 16px;
+  gap: 4px;
+
+  &-text {
+    @extend %small-text;
+    padding-top: 1.7px;
+    color: $gray-secondary;
+
+    &:hover {
+      color: $black-primary;
+    }
+  }
+
+  &:hover {
+    .product-details__back-button-text {
+      color: $black-primary;
+    }
+  }
+}

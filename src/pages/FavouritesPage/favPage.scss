@@ -1,0 +1,14 @@
+.fav-page {
+  &__title {
+    @extend %h1;
+    margin-top: 40px;
+    color: $black-primary;
+  }
+
+  &__quantity {
+    @extend %body-text;
+    box-sizing: initial;
+    padding: 8px 0 16px;
+    color: $gray-secondary;
+  }
+}

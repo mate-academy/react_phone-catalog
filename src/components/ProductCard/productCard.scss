@@ -1,0 +1,112 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 272px;
+  padding: 24px;
+  border: 1px solid $gray-secondary;
+
+  &__picture {
+    width: 208px;
+    height: 208px;
+    margin: 8px 8px 24px;
+    object-fit: contain;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    @extend %body-text;
+    width: 224px;
+    height: 42px;
+    margin-bottom: 8px;
+    object-fit: contain;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $light-gray-icons;
+    gap: 8px;
+
+    &-new {
+      @extend %h2;
+      color: $black-primary;
+    }
+
+    &-old {
+      @extend %h3;
+      font-size: 22px;
+      color: $gray-secondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__short-info {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    gap: 8px;
+
+    &-section {
+      @extend %small-text;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &-title {
+        color: $gray-secondary;
+      }
+
+      &-value {
+        color: $black-primary;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+
+    &-card {
+      @extend %buttons;
+      height: 40px;
+      width: 176px;
+      color: $color-white;
+      text-align: center;
+      border: none;
+      background-color: $black-primary;
+
+      &--not-selected:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+
+      &--selected {
+        color: $green;
+        background-color: $color-white;
+        border: 1px solid $super-light-gray;
+      }
+    }
+
+    &-fav {
+      width: 40px;
+      height: 40px;
+      border: 1px solid $light-gray-icons;
+      background-color: $color-white;
+      background-image: url(../../images-style/Icons/favorites.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &--not-selected:hover {
+        border-color: $black-primary;
+      }
+
+      &--selected {
+        border: 1px solid $super-light-gray;
+        background-image: url(../../images-style/Icons/favourites-filled.svg);
+      }
+    }
+  }
+}
