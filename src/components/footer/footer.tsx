@@ -7,7 +7,7 @@ export const Footer = (() => {
     <footer className="footer">
       <div className="footer__leftContainer">
         <Link to="/">
-          <img src="./LOGO.jpg" alt="Logo" />
+          <img src="/img/logo.svg" alt="Logo" />
         </Link>
       </div>
 
@@ -25,10 +25,15 @@ export const Footer = (() => {
         </ul>
       </div>
 
-      <div className="footer__rightConteiner">
+      <div className="footer__rightContainer">
         Back to top
-        <button type="button">
-          <img src="/Chevron.jpg" alt="Logo" />
+
+        <button
+          type="button"
+          className="ArrowUp"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <img src="img/ArrowUp.png" alt="Logo" className="ArrowUp__link" />
         </button>
       </div>
     </footer>

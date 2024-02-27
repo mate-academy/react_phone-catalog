@@ -1,0 +1,24 @@
+.top-back {
+  display: flex;
+  margin: 40px 0 16px;
+  padding: 0;
+  height: 16px;
+  gap: 10px;
+  align-items: center;
+  border: none;
+  background-color: white;
+  width: 66px;
+  color: #89939A;
+  font-weight: 600;
+  font-family: inherit;
+
+  &:hover {
+    color: #313237;
+  }
+
+  &__img {
+    width: 5.33px;
+    height: 9.33px;
+    margin-left: 5px;
+  }
+}

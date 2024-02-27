@@ -7,58 +7,132 @@
   display: grid;
   place-items: center;
 
+  & h1 {
+    margin-bottom: 24px;
+  }
+
+  .cardsContainer__list {
+    // overflow: hidden;
+    display: flex;
+    gap: 16px;
+  }
+
+  .top-container {
+    display: flex;
+    justify-content: space-between;
+
+    &__movement {
+      display: flex;
+      gap: 16px;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      background-color: #FFFFFF;
+      border: 1px solid #B4BDC3;
+
+      &:hover {
+        border: 1px solid #313237
+      }
+
+      &:hover.disabled {
+        border: 1px solid #B4BDC3;
+        cursor: default;
+      }
+
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.container {
+  margin-bottom: 80px;
+  overflow: hidden;
 }
 
 .Slider {
-  height: 432px;
-  display: flex;
-  overflow: hidden;
+  margin: 40px 0 82px;
+
+  &__main {
+    height: 400px;
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__line-list {
+    display: flex;
+    gap: 14px;
+    margin-top: 18px;
+    justify-content: center;
+
+    .Slider__line {
+      width: 14px;
+      height: 4px;
+      background-color: #E2E6E9;
+    }
+
+    .active {
+      background-color: #313237;
+    }
+  }
+
 
   &__list {
+    // overflow: hidden;
+    display: flex;
     width: 1040px;
     height: 400px;
+    margin: 0 16px;
   }
 
-  // &__img {
-  //   width: 1040px;
-  //   height: 400px;
-  // }
-}
+  &__img {
+    min-width: 1040px;
+    min-height: 400px;
+    object-fit: cover;
+    margin-right: 48px;
+  }
 
-.top-container {
-  display: flex;
-  justify-content: space-between;
+  &__button {
+    z-index: 2;
+    width: 32px;
+    background-color: #FFFFFF;
+    border: 1px solid #B4BDC3;
 
-  &__movement {
-    margin-right: 16px;
+    &:hover {
+      border: 1px solid #313237
+    }
 
-    &:last-child {
-      margin-right: 0;
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   }
 }
 
-.cardsContainer {
-  overflow: hidden;
-
-  &__item {
-    margin-right: 16px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
 
 .Category {
-  background-color: yellow;
   height: 508px;
 
   &__img {
     height: 368px;
     width: 368px;
-    margin-bottom: 24px;
+    // position: absolute;
+    // left: 30%;
+    // bottom: -30%;
     object-fit: cover;
+
+  }
+
+  &__container {
+    margin-bottom: 24px;
+    height: 368px;
+    width: 368px;
+    position: relative;
+    overflow: hidden;
   }
 
   &__item {
@@ -71,20 +145,5 @@
 
   &__name {
     margin-bottom: 4px;
-    font-weight: 600;
-    color: #313237;
   }
 }
-
-.Hot-prices {
-  // background-color: yellow;
-  height: 572px;
-}
-
-h1, h2, h3 {
-  color: #313237;
-  margin-bottom: 24px;
-  font-weight: 700;
-}
-
-

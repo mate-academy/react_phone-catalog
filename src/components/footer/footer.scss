@@ -1,10 +1,10 @@
 .footer {
   display: flex;
-  justify-Content: space-between;
+  justify-Content: space-around;
   flex-direction: row;
   align-items: center;
   height: 96px;
-  border-top: 1px solid #89939A;
+  border-top: 1px solid #E2E6E9;
   margin-top: auto;
 
   &__center {
@@ -29,7 +29,34 @@
       a {
         color: #89939A;
         text-decoration: none;
+
+        &:hover {
+          color: #313237;
+        }
+      }
+    }
+  }
+
+  &__rightContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ArrowUp {
+      height: 32px;
+      width: 32px;
+      margin-left: 16px;
+      border: 1px solid #B4BDC3;
+      background-color: white;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        border: 1px solid #313237
       }
     }
   }
 }
+

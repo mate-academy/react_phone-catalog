@@ -1,0 +1,28 @@
+.Favourites {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  .top-link {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    height: 16px;
+    gap: 8px;
+  }
+
+  .Cards__list {
+    display: grid;
+    margin: 40px 0 80px;
+
+    grid-template-columns: repeat(4, 272px);
+    column-gap: 16px;
+    row-gap: 40px;
+    justify-content: center;
+  }
+}
+

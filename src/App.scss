@@ -1,9 +1,13 @@
 body {
   height: 100%;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   color: #89939A;
+
   font-weight: 500;
+  font-size: 14px;
+  // line-height: 21px;
+  letter-spacing: 0;
 }
 
 .App {
@@ -20,6 +24,58 @@ ul {
 }
 
 p, h1, h2, h3, a {
+  // font-size: 1em;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
   margin: 0;
   padding: 0;
 }
+
+h1 {
+  color: #313237;
+  font-weight: 700;
+  font-size: 32px;
+  // line-height: 41px;
+}
+
+h2 {
+  color: #313237;
+  font-weight: 700;
+  font-size: 22px;
+  // line-height: 31px;
+}
+
+h3 {
+  color: #313237;
+  font-weight: 600;
+  font-size: 14px;
+  // line-height: 21px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: Montserrat, sans-serif;
+  // line-height: 26px;
+}
+
+.small-text {
+  font-weight: 600;
+  font-size: 12px;
+  // line-height: 15px;
+}
+
+.uppercase {
+  font-weight: 700;
+  font-size: 12px;
+  // line-height: 11px;
+}
+
+// .main {
+//   display: grid;
+//   justify-content: center;
+//   align-items: center;
+// }

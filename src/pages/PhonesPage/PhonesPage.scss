@@ -1,0 +1,62 @@
+.Phones-page {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    margin-bottom: 8px;
+  }
+
+  .top-link {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    height: 16px;
+
+    &__img {
+      margin-right: 8px;
+    }
+  }
+}
+
+
+.Options {
+  display: flex;
+  margin-bottom: 24px;
+  margin-top: 40px;
+  gap: 16px;
+
+  &__sort {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__count {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .selector__count {
+    margin-top: 4px;
+    width: 176px;
+    height: 40px;
+    border: 1px solid #B4BDC3;
+  }
+
+  .selector__sort {
+    margin-top: 4px;
+    width: 128px;
+    height: 40px;
+    border: 1px solid #B4BDC3;
+  }
+}
+
+.Cards__list {
+  display: grid;
+  margin-bottom: 40px;
+
+  grid-template-columns: repeat(4, 272px);
+  column-gap: 16px;
+  row-gap: 40px;
+  justify-content: center;
+}

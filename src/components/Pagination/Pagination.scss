@@ -1,0 +1,49 @@
+.Pagination {
+  height: 32px;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  .active {
+    background-color: #313237;
+
+    a {
+      color: #FFFFFF;
+    }
+  }
+
+  .page__list {
+    display: flex;
+    margin: 0 16px;
+  }
+
+  .page__item {
+    margin-right: 8px;
+    border: 1px solid #E2E6E9;
+
+    &:hover {
+      border: 1px solid #313237
+    }
+
+    &:hover.disabled {
+      border: 1px solid #E2E6E9;
+    }
+  }
+
+  .page__link {
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: not-allowed; /* Измените стиль указателя мыши в соответствии с вашим дизайном */
+    }
+  }
+}
