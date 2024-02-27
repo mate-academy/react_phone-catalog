@@ -108,7 +108,10 @@ export const Slider = () => {
                 className="slider__banner-wr"
               >
                 <img
-                  style={{ width: `${imgWidth}px` }}
+                  style={{
+                    width: `${imgWidth}px`,
+                    display: 'block !important',
+                  }}
                   src={`img/banner/${banner}`}
                   alt="phones"
                   className="slider__banner"
