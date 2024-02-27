@@ -13,6 +13,7 @@ import {
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import phonesSliceReducer from './features/phonesSlice';
 import favouritesSliceReducer from './features/favouritesSlice';
+import cartSliceReducer from './features/cartSlice';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   phones: phonesSliceReducer,
   favouritesPhones: favouritesSliceReducer,
+  cartPhones: cartSliceReducer,
 });
 
 export const persistedReducer = persistReducer(

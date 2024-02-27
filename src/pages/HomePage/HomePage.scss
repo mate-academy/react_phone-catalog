@@ -29,7 +29,7 @@
     &__button {
       width: 32px;
       height: 32px;
-      background-color: #FFFFFF;
+      background-color: #FFF;
       border: 1px solid #B4BDC3;
 
       &:hover {
@@ -98,7 +98,7 @@
   &__button {
     z-index: 2;
     width: 32px;
-    background-color: #FFFFFF;
+    background-color: #FFF;
     border: 1px solid #B4BDC3;
 
     &:hover {
@@ -120,9 +120,6 @@
   &__img {
     height: 368px;
     width: 368px;
-    // position: absolute;
-    // left: 30%;
-    // bottom: -30%;
     object-fit: cover;
 
   }

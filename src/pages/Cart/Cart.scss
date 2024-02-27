@@ -63,15 +63,13 @@
         display: flex;
         width: 96px;
         justify-content: space-between;
-        /* Центрирование по горизонтали */
         align-items: center;
-        /* Центрирование по вертикали */
 
         & button {
           height: 32px;
           width: 32px;
           border: 1px solid #B4BDC3;
-          background-color: #FFFFFF;
+          background-color: #FFF;
         }
       }
     }
@@ -83,7 +81,6 @@
     border: 1px solid #E2E6E9;
 
     display: flex;
-    // justify-content: center;
     align-items: center;
     flex-direction: column;
 
@@ -103,10 +100,9 @@
       & button {
         width: 320px;
         height: 48px;
-
         font-weight: 600;
         background-color: #313237;
-        color: #FFFFFF;
+        color: #FFF;
       }
     }
 

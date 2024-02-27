@@ -9,7 +9,7 @@ export const initialState: T = {
   phonesInCart: [],
 };
 
-export const favouritesSlice = createSlice({
+export const cart = createSlice({
   name: 'cart',
   initialState,
   reducers: {
@@ -59,9 +59,10 @@ export const favouritesSlice = createSlice({
   },
 });
 
-export default favouritesSlice.reducer;
+export default cart.reducer;
+
 export const {
   addPhonesInCart,
   deletePhonesInCart,
   // setSearchFilter,
-} = favouritesSlice.actions;
+} = cart.actions;
