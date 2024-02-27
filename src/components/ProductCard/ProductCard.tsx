@@ -12,6 +12,8 @@ type Props = {
   isNew?: boolean;
 };
 
+const HEADER_HEIGHT = 70;
+
 export const ProductCard: React.FC<Props> = ({ product, isNew = false }) => {
   const {
     id,
@@ -50,7 +52,7 @@ export const ProductCard: React.FC<Props> = ({ product, isNew = false }) => {
         to={`/phones/${itemId || id}`}
         state={{ product }}
         className="product-card__link"
-        onClick={() => window.scrollTo(0, 70)}
+        onClick={() => window.scrollTo(0, HEADER_HEIGHT)}
       >
         <div className="product-card__imgbox">
           <img
