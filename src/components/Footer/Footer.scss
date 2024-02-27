@@ -2,13 +2,14 @@
 
 .footer {
   grid-area: footer;
+  border-top: 1px solid $color-background;
+  box-sizing: border-box;
 
   &__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: $desctop-size;
-    border-top: 1px solid $color-background;
     height: 100%;
     margin: 0 auto;
   }

@@ -21,7 +21,7 @@ export const Slider = () => {
 
   const wrapper = useRef<HTMLDivElement | null>(null);
 
-  function handleSlide(direction = 'left') {
+  function handleSlide(direction: 'left' | 'right' = 'left') {
     setTransitionDelay(false);
 
     if (direction === 'left') {
@@ -89,7 +89,7 @@ export const Slider = () => {
           type="button"
           aria-label="slide left"
           className="slider__btn slider__btn--left"
-          onClick={() => handleSlide('left')}
+          onClick={() => handleSlide('right')}
         />
 
         <div className="slider__wrapper" ref={wrapper}>
@@ -122,7 +122,7 @@ export const Slider = () => {
           type="button"
           aria-label="slide right"
           className="slider__btn slider__btn--right"
-          onClick={() => handleSlide('right')}
+          onClick={() => handleSlide('left')}
         />
       </div>
 

@@ -16,18 +16,17 @@ function getPreparedProducts(
   const preparedProducts = [...products];
 
   preparedProducts.sort((product1, product2) => {
-    const value1 = product1[sortBy];
-    const value2 = product2[sortBy];
-
-    if ((typeof value1 === 'string') && (typeof value2 === 'string')) {
-      return value1.toLowerCase().localeCompare(value2.toLocaleLowerCase());
+    switch (sortBy) {
+      case 'age':
+        return product2.year - product1.year;
+      case 'name':
+        return product1.name.toLowerCase()
+          .localeCompare(product2.name.toLowerCase());
+      case 'price':
+        return product1.price - product2.price;
+      default:
+        return 0;
     }
-
-    if (typeof value1 === 'number' && typeof value2 === 'number') {
-      return value1 - value2;
-    }
-
-    return 0;
   });
 
   if (query) {

@@ -5,7 +5,6 @@ export enum CategoryName {
 }
 
 export type Product = {
-  age: number,
   category: CategoryName,
   id: string,
   itemId: string,

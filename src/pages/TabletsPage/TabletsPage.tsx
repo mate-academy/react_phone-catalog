@@ -9,7 +9,7 @@ export const TabletsPage = () => {
           <BreadCrumbs />
         </div>
 
-        <h1 className="phones-page__title">Mobile phones</h1>
+        <h1 className="phones-page__title">Tablets</h1>
 
         <p className="phones-page__counter">{`${0} models`}</p>
       </header>
