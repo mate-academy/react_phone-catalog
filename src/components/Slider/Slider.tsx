@@ -2,17 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './Slider.scss';
 
-const BANNERS = [
-  'banner-accessories.png',
-  'banner-phones.png',
-  'banner-tablets.png',
-  'banner-accessories.png',
-  'banner-phones.png',
+const SLIDES = [
+  'slide-accessories.png',
+  'slide-phones.png',
+  'slide-tablets.png',
+  'slide-accessories.png',
+  'slide-phones.png',
 ];
 
 const BUTTONS = [1, 2, 3];
 const FIRST_SLIDE_INDEX = 0;
-const LAST_SLIDE_INDEX = BANNERS.length - 1;
+const LAST_SLIDE_INDEX = SLIDES.length - 1;
 
 export const Slider = () => {
   const [slider, setSlider] = useState(1);
@@ -47,20 +47,20 @@ export const Slider = () => {
     }
   }
 
-  // function sliderLoop(currentSlider:number) {
-  //   setSlider(current => current + 1);
+  function sliderLoop(currentSlider:number) {
+    setSlider(current => current + 1);
 
-  //   if (currentSlider === LAST_SLIDE_INDEX - 1) {
-  //     setTimeout(() => {
-  //       setTransitionDelay(true);
-  //       setSlider(1);
-  //     }, 300);
+    if (currentSlider === LAST_SLIDE_INDEX - 1) {
+      setTimeout(() => {
+        setTransitionDelay(true);
+        setSlider(1);
+      }, 300);
 
-  //     setTimeout(() => {
-  //       setTransitionDelay(false);
-  //     }, 500);
-  //   }
-  // }
+      setTimeout(() => {
+        setTransitionDelay(false);
+      }, 500);
+    }
+  }
 
   function getImgWidth() {
     const width = wrapper.current ? wrapper.current.clientWidth : 200;
@@ -72,14 +72,14 @@ export const Slider = () => {
     getImgWidth();
     window.addEventListener('resize', getImgWidth);
 
-    // const interval = setInterval(() => {
-    //   sliderLoop(slider);
-    // }, 5000);
+    const interval = setInterval(() => {
+      sliderLoop(slider);
+    }, 5000);
 
-    // return () => {
-    //   window.removeEventListener('resize', getImgWidth);
-    //   clearInterval(interval);
-    // };
+    return () => {
+      window.removeEventListener('resize', getImgWidth);
+      clearInterval(interval);
+    };
   }, [slider]);
 
   return (
@@ -102,7 +102,7 @@ export const Slider = () => {
                 : 'none',
             }}
           >
-            {BANNERS.map(banner => (
+            {SLIDES.map(slide => (
               <div
                 key={Math.random()}
                 className="slider__banner-wr"
@@ -112,9 +112,10 @@ export const Slider = () => {
                     width: `${imgWidth}px`,
                     display: 'block !important',
                   }}
-                  src={`img/banner/${banner}`}
+                  src={`img/slides/${slide}`}
                   alt="phones"
                   className="slider__banner"
+                  data-adblock-type="not-ad"
                 />
               </div>
             ))}
