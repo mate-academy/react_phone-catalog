@@ -19,27 +19,24 @@ export const ProductCard: React.FC = () => {
   const { productId } = useParams<string>();
   const topPageRef = useRef<null | HTMLDivElement>(null);
 
-  // let product = {} as Product || {};
   const [product, setProduct] = useState<Product>();
   const [bigPic, setBigPic] = useState('');
 
   const { state, dispatch } = useContext(StateContext);
 
   const [picSet, setPicSet] = useState<string[]>([]);
-  // const
-
-  let about: string[] = []
-
+  const [about, setAbout] = useState<string[]>([])
 
   useEffect(() => {
     if (productId) {
       setProduct(state.products.find(phone => phone.id === +productId) as Product);
       if (product) {
-        setPicSet(product.picsArray)
+        setPicSet(product.picsArray);
+        setAbout(product.description.split('/'));
       }
     }
     setSelectedColor('yellow');
-  }, [state.products, productId])
+  }, [state.products, productId, product?.description])
 
   useEffect(() => {
     getPics(selectedColor)
@@ -51,8 +48,6 @@ export const ProductCard: React.FC = () => {
   useEffect(() => {
     setBigPic(picSet[0]);
   }, [picSet, topPageRef.current, product, selectedColor])
-  console.log(product,productId, state.products,'product');
-
 
   if (product === undefined) {
     return <PageNotFound />;
