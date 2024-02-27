@@ -11,9 +11,10 @@ import { StateContext } from '../AppContext';
 
 type Props = {
   pageName: string,
+  headline?: string,
 };
 
-export const PaginationSlider: React.FC<Props> = ({ pageName }) => {
+export const PaginationSlider: React.FC<Props> = ({ pageName, headline }) => {
   const setPage22 = useSetCurrentPage();
 
   const [searchParams] = useSearchParams();
@@ -29,7 +30,7 @@ export const PaginationSlider: React.FC<Props> = ({ pageName }) => {
     <div className="hot-prices-block">
 
       <div className="header-block">
-        <h1 className="home-page-header-text">Hot prices</h1>
+        <h1 className="home-page-header-text">{headline}</h1>
         <div className="arrow-box">
           <ArrowBack
             action={

@@ -75,7 +75,7 @@ export const HomePage = () => {
 
       </div>
 
-      <PaginationSlider pageName='pageTop' />
+      <PaginationSlider pageName='pageTop' headline='Hot prices'/>
 
       <div className="chunk-container chunk-container-big">
 
@@ -98,7 +98,7 @@ export const HomePage = () => {
 
       </div>
 
-       <PaginationSlider pageName='pageDown' />
+       <PaginationSlider pageName='pageDown' headline='Brand new models'/>
 
     </div>
   );

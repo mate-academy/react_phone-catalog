@@ -39,11 +39,6 @@ type Props = {
 export const ProductItem: React.FC<Props> = ({ product }) => {
 
   const { state, dispatch } = useContext(StateContext);
-  // const location = useLocation();
-  // console.log(location.pathname.split('/')[1], 'product item location');
-  // console.log(location.state, 'state');
-  // const [pathState, _setPathState] = useState(location.pathname.split('/')[1]);
-
 
   const addToFavourites = () => {
     if(!getFavourite(state.favourites, product)) {
@@ -61,9 +56,6 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
     }
   }
 
-  // const path = location.state;
-
-
   return (
 
     <div className="list-item">
@@ -80,13 +72,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
               to={
                 `${product.type === 'phone' ? '/phones' : '/tablets'}/${product.id}`
               }
-              // to={
-              //   `${location.state === null ? location.pathname : location.pathname.split('/')[1]}/${product.id}`
-              // }
-              state={{  }}
-              // replace={true}
-              // relative="path"
-              // state={{ some: "value" }}
+
               className='list-item-title'
             >
               {product.name}

@@ -19,24 +19,44 @@ export const ProductCard: React.FC = () => {
   const { productId } = useParams<string>();
   const topPageRef = useRef<null | HTMLDivElement>(null);
 
-  let product = {} as Product || undefined;
+  // let product = {} as Product || {};
+  const [product, setProduct] = useState<Product>();
+  const [bigPic, setBigPic] = useState('');
 
   const { state, dispatch } = useContext(StateContext);
 
-  if (productId) {
-    product = state.products.find(phone => phone.id === +productId) as Product;
-  }
+  const [picSet, setPicSet] = useState<string[]>([]);
+  // const
+
+  let about: string[] = []
+
+
+  useEffect(() => {
+    if (productId) {
+      setProduct(state.products.find(phone => phone.id === +productId) as Product);
+      if (product) {
+        setPicSet(product.picsArray)
+      }
+    }
+    setSelectedColor('yellow');
+  }, [state.products, productId])
+
+  useEffect(() => {
+    getPics(selectedColor)
+    if (topPageRef.current) {
+      topPageRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [topPageRef.current, product, selectedColor]);
+
+  useEffect(() => {
+    setBigPic(picSet[0]);
+  }, [picSet, topPageRef.current, product, selectedColor])
+  console.log(product,productId, state.products,'product');
+
 
   if (product === undefined) {
     return <PageNotFound />;
   }
-  // console.log(product,productId,'product');
-
-  const [bigPic, setBigPic] = useState('');
-
-  const about = product.description.split('/');
-
-  const [picSet, setPicSet] = useState<string[]>(product.picsArray);
 
   const addToFavourites = () => {
     if (!getFavourite(state.favourites, product)) {
@@ -55,52 +75,39 @@ export const ProductCard: React.FC = () => {
   }
 
   function getPics(color: string) {
-    switch (color) {
-      case 'yellow':
-        setPicSet(product.picsArray);
-        break;
-      case 'green':
-        if (product.picsArray2) {
-          setPicSet(product.picsArray2);
-        }
-        break;
-      case 'brown':
-        if (product.picsArray3) {
-          setPicSet(product.picsArray3);
-        }
-        break;
-      case 'grey':
-        if (product.picsArray4) {
-          setPicSet(product.picsArray4);
-        }
-        break;
-      default:
-        setPicSet(product.picsArray);
-        break;
+    if ( product) {
+      switch (color) {
+        case 'yellow':
+          setPicSet(product.picsArray);
+          break;
+        case 'green':
+          if (product.picsArray2) {
+            setPicSet(product.picsArray2);
+          }
+          break;
+        case 'brown':
+          if (product.picsArray3) {
+            setPicSet(product.picsArray3);
+          }
+          break;
+        case 'grey':
+          if (product.picsArray4) {
+            setPicSet(product.picsArray4);
+          }
+          break;
+        default:
+          setPicSet(product.picsArray);
+          break;
+      }
     }
+
   }
-
-  useEffect(() => {
-    setSelectedColor('yellow')
-  }, [])
-
-  useEffect(() => {
-    getPics(selectedColor)
-    // setBigPic(picSet[0])
-    if (topPageRef.current) {
-      topPageRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [topPageRef.current, product.id, selectedColor]);
-
-  useEffect(() => {
-    setBigPic(picSet[0])
-  }, [picSet, topPageRef.current, product.name, selectedColor])
 
   return (
     <div className="">
       <div>
         <div className="font-header" ref={topPageRef}>
-          {product.name}
+          {product?.name}
         </div>
 
         <div className="upper-block mb-80" style={{ justifyContent: 'space-between' }}>
@@ -192,8 +199,8 @@ export const ProductCard: React.FC = () => {
 
                 <div className="upper-box-text mb-16">
                   <div className="dflex">
-                    <div className="product-card-price mr-8">{product.price}</div>
-                    <div className="done grey font22">{product.price}</div>
+                    <div className="product-card-price mr-8">{product?.price}</div>
+                    <div className="done grey font22">{product?.price}</div>
 
                   </div>
                 </div>
@@ -218,18 +225,18 @@ export const ProductCard: React.FC = () => {
 
                 <div className="tech-details-block">
 
-                  <TechSpecParagraph fieldName='Screen' fieldDescription={product.screen} />
+                  <TechSpecParagraph fieldName='Screen' fieldDescription={product?.screen} />
 
-                  <TechSpecParagraph fieldName='Resolution' fieldDescription={product.screenResolution} />
+                  <TechSpecParagraph fieldName='Resolution' fieldDescription={product?.screenResolution} />
 
-                  <TechSpecParagraph fieldName='Processor' fieldDescription={product.processor} />
+                  <TechSpecParagraph fieldName='Processor' fieldDescription={product?.processor} />
 
-                  <TechSpecParagraph fieldName='RAM' fieldDescription={product.ram} />
+                  <TechSpecParagraph fieldName='RAM' fieldDescription={product?.ram} />
 
                 </div>
 
               </div>
-              <div>ID: {product.id}</div>
+              <div>ID: {product?.id}</div>
             </div>
 
           </div>
@@ -255,21 +262,21 @@ export const ProductCard: React.FC = () => {
             <div className="grey-line mb-32"></div>
             <div className="tech-details-block grey">
 
-              <TechSpecParagraph fieldName='Screen' fieldDescription={product.screen} />
+              <TechSpecParagraph fieldName='Screen' fieldDescription={product?.screen} />
 
-              <TechSpecParagraph fieldName='Resolution' fieldDescription={product.screenResolution} />
+              <TechSpecParagraph fieldName='Resolution' fieldDescription={product?.screenResolution} />
 
-              <TechSpecParagraph fieldName='Processor' fieldDescription={product.processor} />
+              <TechSpecParagraph fieldName='Processor' fieldDescription={product?.processor} />
 
-              <TechSpecParagraph fieldName='RAM' fieldDescription={product.ram} />
+              <TechSpecParagraph fieldName='RAM' fieldDescription={product?.ram} />
 
-              <TechSpecParagraph fieldName='Buit in memory' fieldDescription={product.builtInMemory} />
+              <TechSpecParagraph fieldName='Buit in memory' fieldDescription={product?.builtInMemory} />
 
-              <TechSpecParagraph fieldName='Camera' fieldDescription={product.camera} />
+              <TechSpecParagraph fieldName='Camera' fieldDescription={product?.camera} />
 
-              <TechSpecParagraph fieldName='Zoom' fieldDescription={product.zoom} />
+              <TechSpecParagraph fieldName='Zoom' fieldDescription={product?.zoom} />
 
-              <TechSpecParagraph fieldName='Cell' fieldDescription={product.cell} />
+              <TechSpecParagraph fieldName='Cell' fieldDescription={product?.cell} />
 
             </div>
           </div>
@@ -277,7 +284,7 @@ export const ProductCard: React.FC = () => {
 
       </div>
 
-      <PaginationSlider pageName="suggested" />
+      <PaginationSlider pageName="suggested" headline="You may also like"/>
     </div>
   );
 };

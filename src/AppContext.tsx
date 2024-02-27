@@ -140,7 +140,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
 
   }, [])
-  console.log(state.products);
+  console.log(state.products, 'products in context');
 
   return (
     <StateContext.Provider value={{

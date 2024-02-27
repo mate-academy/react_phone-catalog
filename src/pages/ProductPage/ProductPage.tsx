@@ -36,7 +36,7 @@ export const ProductPage: React.FC = () => {
   if (state.products) {
 
     const fullName = location.pathname;
-    const newName = fullName.slice(1,fullName.length - 1);
+    const newName = fullName.slice(1, fullName.length - 1);
 
     // console.log(newName, 'first');
     copyOfProducts = [...state.products.filter(product => product.type === newName)]
