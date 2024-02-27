@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { LogoIcon } from '../../assets/icons/LogoIcon';
 import { ButtonType } from '../../helpers/types/ButtonType';
 import { Button } from '../Button/Button';
@@ -7,7 +8,9 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__content container">
-        <LogoIcon />
+        <Link to="/">
+          <LogoIcon />
+        </Link>
 
         <ul className="footer__list">
           <li className="footer__item">

@@ -188,7 +188,7 @@
 
     & p {
       @extend %body-text;
-      
+
       color: $gray-secondary;
 
       &:not(:last-child) {
@@ -211,4 +211,8 @@
       margin-bottom: 8px;
     }
   }
+}
+
+.product {
+  margin-bottom: 40px;
 }
