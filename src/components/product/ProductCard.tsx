@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useParams } from 'react-router-dom';
-import { PageNotFound } from '../../pages/NotFound/PageNotFound';
+import { NoResults } from '../../pages/NoResults/NoResults';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import './ProductCard.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
@@ -50,7 +50,7 @@ export const ProductCard: React.FC = () => {
   }, [picSet, topPageRef.current, product, selectedColor])
 
   if (product === undefined) {
-    return <PageNotFound />;
+    return <NoResults />;
   }
 
   const addToFavourites = () => {

@@ -9,7 +9,7 @@ import { App } from './App';
 import { ProductPage } from './pages/ProductPage/ProductPage';
 import { HomePage } from './pages/home/HomePage';
 import { AppContextProvider } from './AppContext';
-import { PageNotFound } from './pages/NotFound/PageNotFound';
+import { NoResults } from './pages/NoResults/NoResults';
 import { ProductCard } from './components/product/ProductCard';
 import { FafouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
@@ -32,7 +32,7 @@ export const Root = () => (
           <Route path="cart" element={<CartPage />} />
           <Route
             path="*"
-            element={<PageNotFound />}
+            element={<NoResults />}
           />
         </Route>
       </Routes>

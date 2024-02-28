@@ -1,4 +1,8 @@
-export const PageNotFound: React.FC = () => {
+type Props = {
+  headline?: string,
+}
+
+export const NoResults: React.FC<Props> = ({ headline = 'Page not found' }) => {
   return (
     <div
       className="commonPage-container font-header"
@@ -9,7 +13,7 @@ export const PageNotFound: React.FC = () => {
         height: '400px',
       }}
     >
-      Page not found
+      {headline}
     </div>
   );
 };

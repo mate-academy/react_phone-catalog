@@ -13,6 +13,7 @@ import {
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../pagination/Pagination';
 import { Product } from '../../types';
+import { NoResults } from '../NoResults/NoResults';
 
 
 
@@ -48,6 +49,9 @@ export const ProductPage: React.FC = () => {
     if (search.length > 0) {
       let copyOfCopy = [...copyOfProducts];
       copyOfProducts = [...copyOfCopy.filter(phone => phone.name.includes(search))];
+      if (copyOfProducts.length === 0) {
+        return <NoResults headline='Nothing was found'/>
+      }
       currentItems = getCurrentItems(copyOfProducts, currentPage, +itemsPerpage);
       // currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
       // currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
