@@ -6,7 +6,7 @@ import { MyNavLink } from '../UI/MyNavLink';
 import { setScrollState } from '../../helpers/pageHelper';
 
 export const SideMenu = () => {
-  const { hash } = useLocation();
+  const { hash, search } = useLocation();
   const isSideMenuOpened = hash.includes('side-menu');
 
   useEffect(() => {
@@ -26,12 +26,12 @@ export const SideMenu = () => {
       </div>
 
       <div className="side-menu__navbar">
-        <MyNavLink to="/"> Home </MyNavLink>
-        <MyNavLink to="/phones"> Phones </MyNavLink>
-        <MyNavLink to="/tablets"> Tablets </MyNavLink>
-        <MyNavLink to="/accessories"> Accessories </MyNavLink>
-        <MyNavLink to="/favorite">Favorites </MyNavLink>
-        <MyNavLink to="/cart">Cart</MyNavLink>
+        <MyNavLink pathname="/"> Home </MyNavLink>
+        <MyNavLink pathname="/phones" search={search}> Phones </MyNavLink>
+        <MyNavLink pathname="/tablets"> Tablets </MyNavLink>
+        <MyNavLink pathname="/accessories"> Accessories </MyNavLink>
+        <MyNavLink pathname="/favorite">Favorites </MyNavLink>
+        <MyNavLink pathname="/cart">Cart</MyNavLink>
       </div>
     </aside>
   );

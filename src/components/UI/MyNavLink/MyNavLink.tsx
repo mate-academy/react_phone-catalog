@@ -4,16 +4,21 @@ import './MyNavLink.scss';
 
 type Props = {
   children: React.ReactNode;
-  to: string;
+  pathname: string;
+  search?: string;
 };
 
-export const MyNavLink: React.FC<Props> = ({ children, to }) => {
+export const MyNavLink: React.FC<Props> = ({
+  children,
+  pathname,
+  search = '',
+}) => {
   const { hash } = useLocation();
   const isSideMenuActive = hash.includes('side-menu');
 
   return (
     <NavLink
-      to={to}
+      to={{ pathname, search }}
       replace={isSideMenuActive}
       className={({ isActive }) => classNames('my-navlink', {
         'my-navlink--active': isActive,

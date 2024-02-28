@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import './ListControls.scss';
 import {
@@ -33,9 +33,9 @@ const sortParams = {
   price: SortBy.Cheapest,
 };
 
-function getPerPageOption(perPage: string): PerPage {
+function getPerPageOption(perPage: string): PerPage | null {
   if (!Number.isFinite(+perPage)) {
-    return '16';
+    return null;
   }
 
   const margins: number[] = [];
@@ -51,7 +51,10 @@ function getPerPageOption(perPage: string): PerPage {
 }
 
 export const ListControls = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const { hash } = useLocation();
+  const navigate = useNavigate();
+
   const sort = (searchParams.get('sort') || 'age') as SortParams;
   const perPage = (searchParams.get('perPage') || 'all') as PerPage;
 
@@ -59,14 +62,15 @@ export const ListControls = () => {
     if (!PER_PAGE_OPTIONS.includes(perPage)) {
       const newPerPage = getPerPageOption(perPage);
 
-      const newSearchParams = getSearchParamsWith(
-        { perPage: newPerPage },
-        searchParams,
-      );
-
-      setSearchParams(newSearchParams);
+      navigate({
+        hash,
+        search: getSearchParamsWith(
+          { perPage: newPerPage },
+          searchParams,
+        ),
+      });
     }
-  }, [perPage, searchParams, setSearchParams]);
+  }, [hash, navigate, perPage, searchParams]);
 
   return (
     <div className="list-controls">

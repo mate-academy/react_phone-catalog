@@ -32,7 +32,7 @@
     flex-grow: 1;
     max-width: 368px;
     min-width: 150px;
-    height: 206px;
+    height: fit-content;
     padding: 24px;
     box-sizing: border-box;
     border: 1px solid $color-elements;
@@ -42,8 +42,10 @@
     }
 
     &-quantity {
-      color: $color-secondary;
+      width: 100%;
+      text-align: center;
       padding-bottom: 24px;
+      color: $color-secondary;
       border-bottom: 1px solid $color-elements;
     }
   }

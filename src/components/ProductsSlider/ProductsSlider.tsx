@@ -1,4 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Navigation } from '../../types/navigation';
 import { Product } from '../../types/product';
 import { MyNavButton } from '../UI/MyNavButton';
@@ -20,23 +25,27 @@ export const ProductSlider: React.FC<Props> = (
 ) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [wrapperWidth, setWrapperWidth] = useState(WRAPPER_MIN_WIDTH);
-  const [itemsInSlider, setItemsInSlider] = useState(MAX_ITEM_IN_SLIDER);
+  const [itemWidth, setItemWidth] = useState(ITEM_MIN_WIGTH);
+  const [itemsInSlider, setItemsInSlider] = useState(4);
   const wrapper = useRef<HTMLDivElement | null>(null);
 
   const totalGap = GAP * (itemsInSlider - 1);
   const cartWidth = (wrapperWidth - totalGap) / itemsInSlider;
-  const shift = cartWidth < ITEM_MIN_WIGTH ? ITEM_MIN_WIGTH : cartWidth;
+  const shift = cartWidth < ITEM_MIN_WIGTH
+    ? ITEM_MIN_WIGTH
+    : cartWidth;
 
-  const getSliderParams = () => {
+  const getSliderParams = useCallback(() => {
     const width = wrapper.current
       ? wrapper.current.clientWidth
       : WRAPPER_MIN_WIDTH;
 
     setWrapperWidth(width);
+    setItemWidth((wrapperWidth - totalGap) / itemsInSlider);
     setItemsInSlider(Math.floor(width / ITEM_MIN_WIGTH) > MAX_ITEM_IN_SLIDER
       ? MAX_ITEM_IN_SLIDER
       : Math.floor(width / ITEM_MIN_WIGTH));
-  };
+  }, [itemsInSlider, totalGap, wrapperWidth]);
 
   useEffect(() => {
     getSliderParams();
@@ -46,19 +55,25 @@ export const ProductSlider: React.FC<Props> = (
     return () => {
       window.removeEventListener('resize', getSliderParams);
     };
-  }, [products]);
+  }, [getSliderParams, products]);
 
   function slideTo(direction: Navigation) {
     switch (direction) {
       case Navigation.left:
-        setSlideIndex(current => current + 1);
+        setSlideIndex(current => {
+          const nextIndex = current - itemsInSlider;
+
+          return Math.max(nextIndex, 0);
+        });
         break;
 
       case Navigation.right:
-        if (slideIndex) {
-          setSlideIndex(current => current - 1);
-        }
+        setSlideIndex(current => {
+          const nextIndex = current + itemsInSlider;
+          const maxIndex = products.length - itemsInSlider;
 
+          return Math.min(nextIndex, maxIndex);
+        });
         break;
 
       default:
@@ -72,13 +87,13 @@ export const ProductSlider: React.FC<Props> = (
         <div className="products-slider__nav">
           <MyNavButton
             direction={Navigation.left}
-            disabled={slideIndex === products.length - itemsInSlider}
+            disabled={!slideIndex}
             onClick={direction => slideTo(direction)}
           />
 
           <MyNavButton
             direction={Navigation.right}
-            disabled={!slideIndex}
+            disabled={slideIndex === products.length - itemsInSlider}
             onClick={direction => slideTo(direction)}
           />
         </div>
@@ -96,7 +111,7 @@ export const ProductSlider: React.FC<Props> = (
               <div
                 key={product.id}
                 style={{
-                  width: `${(wrapperWidth - totalGap) / itemsInSlider}px`,
+                  width: `${itemWidth}px`,
                 }}
                 className="products-slider__item"
               >
