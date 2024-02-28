@@ -5,6 +5,7 @@ import './navbar.scss';
 import {
   useCallback,
   useContext,
+  useEffect,
   useState } from 'react';
 import { StateContext } from '../../AppContext';
 import debounce from 'lodash.debounce';
@@ -31,6 +32,11 @@ export const Navbar: React.FC = () => {
   function homeLinkClass() {
     return location.pathname === '/'
   }
+
+  useEffect(() => {
+    params.delete('search');
+    setSearchParams(params);
+  }, [])
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
 
@@ -94,7 +100,7 @@ export const Navbar: React.FC = () => {
 
       <div className="navbar-icons">
 
-        {location.pathname === '/phones' && (
+        {location.pathname !== '/' && (
           <div className="navbar_icon navbar_icon--search navbar-icons">
             <div className="search_box search-align search-align--input">
               <input

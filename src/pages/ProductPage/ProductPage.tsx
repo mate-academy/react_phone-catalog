@@ -30,9 +30,7 @@ export const ProductPage: React.FC = () => {
   const location = useLocation();
 
   // useEffect(() => {
-  //   if () {
 
-  //   }
   // }, [])
 
   let currentItems: Product[] = [];
@@ -48,13 +46,20 @@ export const ProductPage: React.FC = () => {
     copyOfProducts = [...state.products.filter(product => product.type === newName)]
 
     if (search.length > 0) {
-      currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
+      let copyOfCopy = [...copyOfProducts];
+      copyOfProducts = [...copyOfCopy.filter(phone => phone.name.includes(search))];
+      currentItems = getCurrentItems(copyOfProducts, currentPage, +itemsPerpage);
+      // currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
+      // currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
     } else if (itemsPerpage === 'All') {
       currentItems = copyOfProducts;
     } else {
       currentItems = getCurrentItems(copyOfProducts, currentPage, +itemsPerpage);
     }
   }
+
+  console.log(currentItems, 'items');
+
 
   function changeHandler(e: React.ChangeEvent<HTMLSelectElement>) {
     dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: e.target.value })
@@ -134,7 +139,7 @@ export const ProductPage: React.FC = () => {
         })}
       </div>
 
-      {state.itemsPerPage !== 'All' && <Pagination pages={copyOfProducts.length}/>}
+      {itemsPerpage !== 'All' && <Pagination pages={copyOfProducts.length}/>}
 
 
 

@@ -100,11 +100,6 @@
   grid-template-columns: 272px 272px 272px 272px;
   justify-content: space-between;
 
-  // display: flex;
-  // justify-content: space-between;
-  // flex-wrap: wrap;
-  // // gap: 16px;
-
   @media screen and (max-width: 1200px) {
     grid-template-columns: 272px 272px 272px;
     justify-content: space-around;
