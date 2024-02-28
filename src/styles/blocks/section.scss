@@ -1,0 +1,27 @@
+@import '../variables';
+@import '../mixins';
+@import '../extends';
+
+.section {
+  &:not(:last-child) {
+    margin: 0 0 40px;
+  }
+
+  &__title {
+    @extend %title-2;
+
+    margin: 0 0 20px;
+  }
+
+  @include media-tablet {
+    &:not(:last-child) {
+      margin: 0 0 40px;
+    }
+
+    &__title {
+      @include text-typohraphy(32, 41px, 700, -0.01em);
+
+      margin: 0 0 24px;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import "variables";
+@import "mixins";
+
+%header-item-after-line {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color $duration-transition ease-in-out;
+}
+
+%header-item-after-line-active {
+  background-color: $color-primary;
+}
+
+%title {
+  &-1 {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+
+  &-2 {
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+    font-weight: 700;
+  }
+
+  &-3 {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+}
+
+%h-1 {
+  @include text-typohraphy(32, 41px, 700, -0.01em);
+}
+
+%h-2 {
+  @include text-typohraphy(22, 31px, 700, 0);
+}
+
+%h-3 {
+  @include text-typohraphy(20, 26px, 600, 0);
+}
+
+%text {
+  &-body {
+    @include text-typohraphy(14, 21px, 400, 0);
+  }
+
+  &-small {
+    @include text-typohraphy(12, 15px, 500, 0);
+  }
+
+  &-buttons {
+    @include text-typohraphy(14, 21px, 500, 0);
+  }
+}

@@ -1,1 +1,59 @@
-// not empty
+@import './styles/index';
+
+html {
+  font-size: 12px;
+}
+
+.App {
+  font-family: Mont, sans-serif;
+  min-height: 100vh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}
+
+iframe {
+  display: none;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.uppercase {
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.button {
+  font-weight: 600;
+}
+
+.small {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+  font-weight: 600;
+}

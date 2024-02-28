@@ -1,0 +1,69 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.title {
+  font-weight: 700;
+  transition: color $duration-transition ease;
+
+  &-1 {
+    font-size: to-rem(32);
+    line-height: to-rem(41);
+    letter-spacing: -0.01em;
+  }
+
+  &-2 {
+    font-size: to-rem(22);
+    line-height: to-rem(31);
+  }
+
+  &-3 {
+    font-size: to-rem(20);
+    line-height: to-rem(26);
+    font-weight: 600;
+  }
+}
+
+.typography {
+  transition: color $duration-transition ease;
+
+  &-sm {
+    font-size: to-rem(12);
+    line-height: to-rem(15);
+  }
+
+  &-md {
+    font-size: to-rem(14);
+    line-height: to-rem(21);
+  }
+
+  &-400 {
+    font-weight: 400;
+  }
+
+  &-600 {
+    font-weight: 600;
+  }
+
+  &-700 {
+    font-weight: 700;
+  }
+}
+
+.text-transform {
+  &-capitalize {
+    text-transform: capitalize;
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+  }
+
+  &-lowercase {
+    text-transform: lowercase;
+  }
+
+  &-none {
+    text-transform: none;
+  }
+}

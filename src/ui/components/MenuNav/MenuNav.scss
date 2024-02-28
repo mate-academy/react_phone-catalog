@@ -1,0 +1,44 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.menu {
+  &__link {
+    @include text-typohraphy(12, 11px, 700, 0.04em);
+
+    display: block;
+    text-transform: uppercase;
+    color: $color-secondary;
+    transition: color $duration-transition ease-in-out;
+
+    span {
+      position: relative;
+    }
+
+    span::after {
+      @extend %header-item-after-line;
+    }
+
+    &:hover {
+      color: $color-primary;
+
+      span::after {
+        @extend %header-item-after-line-active;
+      }
+    }
+  }
+
+  @include media-desktop {
+    &__list {
+      display: flex;
+    }
+
+    &__link {
+      position: relative;
+    }
+
+    span {
+      position: static;
+    }
+  }
+}

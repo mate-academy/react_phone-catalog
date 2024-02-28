@@ -13,3 +13,6 @@ raw_reports
 reports
 cypress/screenshots
 cypress/videos
+
+.eslintrc.js
+tsconfig.json

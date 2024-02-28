@@ -1,0 +1,47 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.button {
+  @extend %text-buttons;
+
+  padding: 8px;
+  border: 1px solid $color-elements;
+
+  @include hover(border-color, $color-primary);
+
+  &-default {
+    @include hover(border-color, $color-primary);
+    @include hover(color, $color-primary);
+  }
+
+  &-default.active,
+  &-primary {
+    color: $color-white;
+    background-color: $color-primary;
+    border-color: $color-primary;
+
+    @include hover(box-shadow, '0px 3px 13px 0px #17203142');
+  }
+
+  &-primary {
+    padding: 10px;
+  }
+
+  &-primary.active {
+    color: $color-green;
+    background-color: $color-white;
+  }
+
+  &:disabled {
+    color: $color-elements;
+    border: $color-elements;
+    cursor: not-allowed;
+  }
+
+  &-borderless {
+    border-color: transparent;
+
+    @include hover(border-color, transparent);
+  }
+}

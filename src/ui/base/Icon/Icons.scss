@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-white;
+
+  &-counter {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+    color: $color-white;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+    background-color: $color-red;
+    transform: translate(-50%, -50%);
+  }
+
+  svg {
+    fill: currentColor;
+
+    path {
+      stroke: currentColor;
+    }
+  }
+}

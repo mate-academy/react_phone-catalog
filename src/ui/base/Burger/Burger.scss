@@ -1,0 +1,57 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.burger {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+
+  @include media-desktop {
+    display: none;
+  }
+
+  &__line,
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $color-primary;
+    transition: all $duration-transition ease-in-out;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+  }
+
+  &__line {
+    top: 6px;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &.active {
+    .burger__line {
+      width: 0;
+    }
+
+    &::before {
+      top: 6px;
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      bottom: 6px;
+      transform: rotate(45deg);
+    }
+  }
+}

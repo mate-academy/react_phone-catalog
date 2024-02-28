@@ -1,0 +1,76 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.footer {
+  position: relative;
+  padding: to-rem(20) 0;
+  border-top: 1px solid $color-elements;
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: to-rem(20);
+  }
+
+  &__link {
+    color: $color-secondary;
+  }
+
+  &__item:hover &__link {
+    color: $color-primary;
+  }
+
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    transform: translateY(-40px);
+    transition: all $duration-transition ease;
+
+    &-label {
+      position: absolute;
+      left: 0;
+      display: none;
+      padding: 0 16px 0 0;
+      width: max-content;
+      height: max-content;
+      color: $color-secondary;
+      transform: translateX(-100%);
+      transition: color $duration-transition ease;
+    }
+  }
+
+  &__button > .icon {
+    transform: rotate(-90deg);
+  }
+
+  &__button:hover &__button-label {
+    color: $color-primary;
+  }
+
+  @include media-tablet {
+    padding: to-rem(32) 0;
+
+    &__list {
+      gap: to-rem(60);
+    }
+
+    &__button {
+      position: relative;
+      right: 0;
+      transform: translateY(0);
+
+      &-label {
+        display: block;
+      }
+    }
+  }
+}

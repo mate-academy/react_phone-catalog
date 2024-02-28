@@ -1,0 +1,10 @@
+.main {
+  position: relative;
+  display: flex;
+  flex: 1;
+
+  &__container {
+    padding-top: 24px;
+    padding-bottom: 80px;
+  }
+}

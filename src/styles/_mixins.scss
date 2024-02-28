@@ -1,0 +1,48 @@
+// default font size 12px
+
+@mixin hover($_property, $_toValue) {
+  transition: all $duration-transition ease;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin media-tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin media-desktop-xl {
+  @media (min-width: $bp-xldesktop) {
+    @content;
+  }
+}
+
+@mixin media-mobile {
+  @media (max-width: #{$bp-tablet - 1}) {
+    @content;
+  }
+}
+
+@mixin text-typohraphy(
+  $fontSize,
+  $lineHeight: 1,
+  $fontWeight: 400,
+  $letter-spacing: 0
+) {
+  font-size: $fontSize + px;
+  line-height: $lineHeight;
+  font-weight: $fontWeight;
+  letter-spacing: $letter-spacing;
+}
+
+@function to-rem($value) {
+  @return ($value / 12) + rem;
+}

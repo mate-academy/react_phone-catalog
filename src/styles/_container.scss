@@ -1,0 +1,14 @@
+@import "variables";
+@import  "mixins";
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  display: block;
+  width: 100%;
+  max-width: 1196px;
+
+  @include media-tablet {
+    padding: 0 30px;
+  }
+}

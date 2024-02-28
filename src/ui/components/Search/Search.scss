@@ -1,0 +1,47 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.search {
+  display: flex;
+  align-items: center;
+
+  &__input {
+    @include text-typohraphy(14, 17px, 600, 0);
+
+    padding: 0;
+    width: 0;
+    height: 100%;
+    color: $color-primary;
+    transition: all $duration-transition ease;
+
+    &--opened {
+      width: 30vw;
+      padding: 0 0 0 10px;
+    }
+  }
+
+  &__button {
+    padding: 0 10px;
+    height: 100%;
+  }
+
+  @include media-tablet {
+    &__input--opened {
+      padding: 0 5px 0 24px;
+      width: 260px;
+    }
+
+    &__button {
+      padding: 0 24px;
+    }
+
+    &__input--opened + &__button {
+      padding: 0 24px 0 0;
+    }
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+}
