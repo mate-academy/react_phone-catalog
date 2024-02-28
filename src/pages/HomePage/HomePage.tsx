@@ -66,7 +66,7 @@ export const HomePage = () => {
             <>
               {loadingError
                 ? <h3>{loadingError}</h3>
-                : <ProductSlider products={newProducts} />}
+                : <ProductSlider products={newProducts} sliderName="new" />}
             </>
           )}
       </section>

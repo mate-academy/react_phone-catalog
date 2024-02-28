@@ -12,6 +12,7 @@
   transition: all ease-in-out $transition-duration;
   cursor: pointer;
 
+
   &--selected {
     border: 1px solid $color-elements;
     color: $color-selected;

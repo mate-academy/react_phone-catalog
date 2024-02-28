@@ -19,7 +19,7 @@ export const MySelect: React.FC<Props> = ({
   searchName,
 }) => {
   const entries = Object.values(options);
-  const [selected, setSelected] = useState(defaultValue);
+  const [selected, setSelected] = useState('All');
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchParams] = useSearchParams();
 
@@ -54,11 +54,12 @@ export const MySelect: React.FC<Props> = ({
 
   useEffect(() => {
     document.addEventListener('click', handleBodyClick);
+    setSelected(defaultValue);
 
     return () => {
       document.removeEventListener('click', handleBodyClick);
     };
-  }, []);
+  }, [defaultValue]);
 
   return (
     <div className="my-select">

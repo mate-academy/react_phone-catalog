@@ -7,6 +7,7 @@ import './ProductsSlider.scss';
 
 type Props = {
   products: Product[];
+  sliderName?: string;
 };
 
 const GAP = 16;
@@ -14,7 +15,9 @@ const ITEM_MIN_WIGTH = 200;
 const MAX_ITEM_IN_SLIDER = 4;
 const WRAPPER_MIN_WIDTH = 232;
 
-export const ProductSlider: React.FC<Props> = ({ products }) => {
+export const ProductSlider: React.FC<Props> = (
+  { products, sliderName },
+) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [wrapperWidth, setWrapperWidth] = useState(WRAPPER_MIN_WIDTH);
   const [itemsInSlider, setItemsInSlider] = useState(MAX_ITEM_IN_SLIDER);
@@ -98,7 +101,7 @@ export const ProductSlider: React.FC<Props> = ({ products }) => {
                 className="products-slider__item"
               >
                 <ProductCard
-                  isNew
+                  isNew={sliderName === 'new'}
                   product={product}
                   key={product.id}
                 />

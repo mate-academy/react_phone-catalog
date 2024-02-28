@@ -1,0 +1,59 @@
+%h1 {
+  font-size: clamp(24px, calc(1.36rem + 0.71vw), 32px);
+  font-weight: 700;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+}
+
+%h2 {
+  font-weight: 700;
+  font-size: clamp(16px, calc(1.36rem + 0.71vw), 22px);
+  line-height: 31px;
+  text-align: left;
+  margin: 0;
+}
+
+%h3 {
+  font-size:  clamp(14px, calc(1.36rem + 0.71vw), 20px);
+  font-weight: 600;
+  line-height: 26px;
+  text-align: left;
+  margin: 0;
+}
+
+%small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  text-align: left;
+  margin: 0;
+}
+
+%upper-case {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+%p {
+  font-size: clamp(10px, calc(1.36rem + 0.71vw), 14px);
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  margin: 0;
+}
+
+%button {
+  font-size: clamp(10px, calc(1.36rem + 0.71vw), 14px);
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  border:none;
+}
+
+

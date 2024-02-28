@@ -66,6 +66,7 @@ export const ProductCard: React.FC<Props> = ({ product, isNew = false }) => {
 
         <div className="product-card__pricebox">
           {!isNew && <h2>{`$${price}`}</h2>}
+
           <h2
             className={classNames({
               'product-card__price': !isNew,

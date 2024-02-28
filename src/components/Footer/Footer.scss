@@ -48,6 +48,6 @@
     align-items: center;
     color: $color-secondary;
 
-    @include small-text;
+    @extend %small-text;
   }
 }

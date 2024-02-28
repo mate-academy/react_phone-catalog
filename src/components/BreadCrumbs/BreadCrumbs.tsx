@@ -35,7 +35,9 @@ export const BreadCrumbs = () => {
           >
             {i === breadCrumbs.length - 1
               ? (
-                <p className="breadcrumbs__link--last">{el}</p>
+                <p className="breadcrumbs__link breadcrumbs__link--last">
+                  {el}
+                </p>
               )
               : (
                 <NavLink

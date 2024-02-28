@@ -110,7 +110,6 @@ export const Slider = () => {
                 <img
                   style={{
                     width: `${imgWidth}px`,
-                    display: 'block !important',
                   }}
                   src={`img/slides/${slide}`}
                   alt="phones"

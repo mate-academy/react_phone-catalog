@@ -1,12 +1,16 @@
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
+import './ListControls.scss';
 import {
+  PerPage,
   PerPageSelect,
   SelectOption,
   SortBy,
   SortParams,
 } from '../../types/select';
 import { MySelect } from '../UI/MySelect';
-import './ListControls.scss';
+import { getSearchParamsWith } from '../../helpers/searchParams';
 
 const SORT_BY: SelectOption[] = [
   { age: SortBy.Newest },
@@ -21,16 +25,48 @@ const PER_PAGE: PerPageSelect[] = [
   { 4: '4' },
 ];
 
+const PER_PAGE_OPTIONS: PerPage[] = ['16', '8', '4'];
+
 const sortParams = {
   name: SortBy.Alphabetically,
   age: SortBy.Newest,
   price: SortBy.Cheapest,
 };
 
+function getPerPageOption(perPage: string): PerPage {
+  if (!Number.isFinite(+perPage)) {
+    return '16';
+  }
+
+  const margins: number[] = [];
+
+  PER_PAGE_OPTIONS.forEach(el => {
+    margins.push(Math.abs(+el - +perPage));
+  });
+
+  const min = Math.min(...margins);
+  const newPerPage = PER_PAGE_OPTIONS[margins.indexOf(min)];
+
+  return newPerPage;
+}
+
 export const ListControls = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const sort = (searchParams.get('sort') || 'age') as SortParams;
-  const perPage = searchParams.get('perPage') || 'all';
+  const perPage = (searchParams.get('perPage') || 'all') as PerPage;
+
+  useEffect(() => {
+    if (!PER_PAGE_OPTIONS.includes(perPage)) {
+      const newPerPage = getPerPageOption(perPage);
+
+      const newSearchParams = getSearchParamsWith(
+        { perPage: newPerPage },
+        searchParams,
+      );
+
+      setSearchParams(newSearchParams);
+    }
+  }, [perPage, searchParams, setSearchParams]);
 
   return (
     <div className="list-controls">
@@ -45,7 +81,7 @@ export const ListControls = () => {
 
       <div className="list-controls--right">
         <MySelect
-          defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
+          defaultValue={perPage === 'all' ? 'All' : perPage}
           title="Items on page"
           options={PER_PAGE}
           searchName="perPage"

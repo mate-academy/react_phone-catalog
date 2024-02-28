@@ -38,7 +38,7 @@
     border: 1px solid $color-elements;
 
     &-price {
-      @include h1;
+      @extend %h1;
     }
 
     &-quantity {

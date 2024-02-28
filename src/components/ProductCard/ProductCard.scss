@@ -70,7 +70,7 @@
     display: flex;
     justify-content: space-between;
 
-    @include small-text;
+    @extend %small-text;
   }
 
   &__option-name {

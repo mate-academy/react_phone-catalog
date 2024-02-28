@@ -20,7 +20,7 @@
   }
 
   &__section-title {
-    @include h1;
+    @extend %h1;
 
     margin-bottom: 24px;
 

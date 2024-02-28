@@ -5,8 +5,8 @@
   border-bottom: 1px solid $color-elements;
 
   &__title {
-    @include small-text;
-    
+    @extend %small-text;
+
     margin-bottom: 8px;
     color: $color-secondary;
   }

@@ -8,7 +8,7 @@
   }
 
   &__item {
-    @include small-text;
+    @extend %small-text;
 
     display: flex;
     align-items: center;
@@ -31,6 +31,7 @@
     @include hover(color, $color_secondary);
 
     color: $color-primary;
+    text-transform: capitalize;
 
     &--last {
       color: $color_secondary;

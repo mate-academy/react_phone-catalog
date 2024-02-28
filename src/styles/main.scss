@@ -1,5 +1,7 @@
-@import './utils/utils';
-@import './utils/normalize';
+@import "./utils/mixins";
+@import "./utils/extends";
+@import "./utils/variables";
+@import "./utils/normalize";
 
 .page {
   font-family: $font-main;
@@ -39,7 +41,7 @@
     padding-inline: 30px;
   }
 
-  @include on-mobile-l{
+  @include on-mobile-l {
     padding-inline: 20px;
   }
 }
@@ -54,6 +56,22 @@
   width: 1px;
 }
 
+h1 {
+  @extend %h1;
+}
+
+h2 {
+  @extend %h2;
+}
+
+h3 {
+  @extend %h3;
+}
+
+p {
+  @extend %p;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -64,3 +82,7 @@ a {
   text-decoration: none;
   display: inline-block;
 }
+
+button {
+  @extend %button;
+ }

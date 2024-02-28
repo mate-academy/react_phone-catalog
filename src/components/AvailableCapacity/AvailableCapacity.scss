@@ -5,7 +5,7 @@
   border-bottom: 1px solid $color-elements;
 
   &__title {
-    @include small-text;
+    @extend %small-text;
 
     margin-bottom: 8px;
     color: $color-secondary;
@@ -37,7 +37,7 @@
 
   &__item {
    color: $color-primary;
-   
+
    &--active {
     background-color: $color-primary;
     color: $color-white;

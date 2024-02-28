@@ -43,7 +43,7 @@ export const CartPage = () => {
             <MyModal
               closeModal={() => setShowModal(false)}
             >
-              <h2>`We are sorry, but this feature is not implemented yet</h2>
+              <h3>We are sorry, but this feature is not implemented yet</h3>
             </MyModal>,
             document.body,
           )}
