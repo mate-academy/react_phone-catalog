@@ -7,6 +7,13 @@
   padding-left: 148px;
   padding-right: 148px;
   border-top: 2px solid #e2e6e9;
+
+  @media screen and (max-width: 800px) {
+    // justify-content:flex-start;
+    // width: fit-content;
+    // flex-direction: column;
+    display: none;
+  }
 }
 
 .mp-0 {

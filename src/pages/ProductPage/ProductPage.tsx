@@ -2,6 +2,7 @@
 import { ProductItem } from '../../components/product/ProductItem';
 import React, {
   useContext,
+  // useEffect,
   useState,
 } from "react";
 import { StateContext } from '../../AppContext';
@@ -28,6 +29,11 @@ export const ProductPage: React.FC = () => {
   const [sortValue, setSortValue] = useState(sort);
   const location = useLocation();
 
+  // useEffect(() => {
+  //   if () {
+
+  //   }
+  // }, [])
 
   let currentItems: Product[] = [];
 
@@ -67,7 +73,7 @@ export const ProductPage: React.FC = () => {
     <div>
 
       <p className="font-header">Mobile phones</p>
-      <div className="font-models-amount">{state.products.length} models</div>
+      <div className="font-models-amount">{copyOfProducts.length} models</div>
 
 
       <div className="select-block">
@@ -100,7 +106,7 @@ export const ProductPage: React.FC = () => {
         <div className="select-right">
           <div className="select-text">Items on page</div>
 
-          <select className='textField' defaultValue='4' onChange={(e) => changeHandler(e)}>
+          <select className='textField' defaultValue={itemsPerpage} onChange={(e) => changeHandler(e)}>
             <option value="4">
               4
             </option>
@@ -128,7 +134,7 @@ export const ProductPage: React.FC = () => {
         })}
       </div>
 
-      {state.itemsPerPage !== 'All' && <Pagination />}
+      {state.itemsPerPage !== 'All' && <Pagination pages={copyOfProducts.length}/>}
 
 
 

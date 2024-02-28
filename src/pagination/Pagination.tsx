@@ -2,18 +2,22 @@
 /* eslint-disable */
 import "./pagination.scss";
 import { useSearchParams } from "react-router-dom";
-import {
-  useContext,
-} from "react";
+// import {
+//   useContext,
+// } from "react";
 import { ArrowForward, ArrowBack } from "./ArrowButtons";
 import { useSetCurrentPage } from "../helpers/utils";
-import { StateContext } from '../AppContext';
+// import { StateContext } from '../AppContext';
 
-export const Pagination: React.FC = () => {
-  const { state } = useContext(StateContext);
+type Props = {
+  pages: number,
+}
+
+export const Pagination: React.FC<Props> = ({ pages }) => {
+  // const { state } = useContext(StateContext);
   const [searchParams] = useSearchParams();
   const itemsPerPage = searchParams.get('itemsPerPage') || '4'
-  const amountOfPages = Math.ceil(state.products.length / +itemsPerPage);
+  const amountOfPages = Math.ceil(pages / +itemsPerPage);
   const page = searchParams.get('page') || 1;
   const pageArray: number[] = [];
 
