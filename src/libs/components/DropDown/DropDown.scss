@@ -1,4 +1,4 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .dropdown {
   height: 59px;
@@ -10,11 +10,10 @@
   }
 
   &__label-text {
+    @include small-text;
+
     display: block;
     position: relative;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
     color: $secondary;
     margin-bottom: 4px;
   }
@@ -30,9 +29,10 @@
   }
 
   &__select {
+    @include flexbox-center-vertical;
+    @include transition;
+
     position: relative;
-    display: flex;
-    align-items: center;
     appearance: none;
     border: 1px solid $icons;
     background-color: transparent;
@@ -40,7 +40,6 @@
     padding-right: 28px;
     width: 100%;
     cursor: pointer;
-    transition: all 0.3s;
 
     &:hover {
       border-color: $secondary;
@@ -74,13 +73,11 @@
   }
 
   &__option-item {
+    @include transition;
+    @include text-color-on-hover;
+
     height: 32px;
     padding: 6px 0 6px 12px;
     color: $secondary;
-    transition: all 0.3s;
-
-    &:hover {
-      color: $primary;
-    }
   }
 }

@@ -1,17 +1,12 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .back-button {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 15px;
+  @include flexbox-center-vertical;
+  @include small-text;
+
   color: $secondary;
   text-decoration: none;
   width: max-content;
-  background: none;
-  border: none;
-  cursor: pointer;
 
   &::before {
     display: inline-block;
@@ -22,6 +17,5 @@
     background-image: url(../../../assets/icons/arrow-left.svg);
     background-position: center;
     background-repeat: no-repeat;
-
   }
 }

@@ -1,4 +1,4 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .product-details {
   border-spacing: 0;
@@ -15,11 +15,10 @@
   }
 
   &__row {
+    @include small-text;
+
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    line-height: 15px;
-    font-weight: 600;
   }
 
   &__name {

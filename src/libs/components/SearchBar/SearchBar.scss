@@ -1,25 +1,25 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .search-bar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flexbox-center-vertical;
+
   height: 100%;
   border-left: 1px solid $elements;
   width: $search-bar-width;
 
   &__input {
+    @include transition;
+
     width: 100%;
     max-width: 100%;
     height: 100%;
     font-family: Mont, Arial, sans-serif;
-    font-size: 14px;
+    font-size: $body-font-size;
     font-weight: 600;
     text-align: left;
     color: $primary;
     padding: 23px 46px 23px 24px;
     border: none;
-    transition: all 0.3s;
 
     &:focus {
       border: none;
@@ -32,11 +32,7 @@
   &__button {
     position: absolute;
     right: 0;
-    border: none;
     padding-right: 24px;
-    background-color: transparent;
-    cursor: pointer;
-
   }
 
   &__icon {

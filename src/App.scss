@@ -1,4 +1,4 @@
-@import './assets/css/fonts';
+@import '/src/assets/css/styles';
 
 * {
   box-sizing: border-box;
@@ -11,7 +11,13 @@ body {
   flex-direction: column;
   margin: 0;
   font-family: Mont, Arial, sans-serif;
-  font-size: 14px;
+  font-size: $body-font-size;
   line-height: 21px;
   scroll-behavior: smooth;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
 }

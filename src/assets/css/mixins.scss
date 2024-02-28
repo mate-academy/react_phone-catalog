@@ -1,0 +1,88 @@
+@mixin on-large-desktop {
+  @media all and (min-width: $extra-large) {
+    @content;
+  }
+}
+
+@mixin on-small-desktop {
+  @media all and (min-width: $large) and (max-width: $extra-large) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media all and (min-width: $small) and (max-width: $large) {
+    @content;
+  }
+}
+
+@mixin on-mobile {
+  @media all and (max-width: $small) {
+    @content;
+  }
+}
+
+@mixin flexbox-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexbox-center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+@mixin small-text {
+  font-size: $small-font-size;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+@mixin body-text {
+  font-size: $body-font-size;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+@mixin uppercase-text {
+  font-size: $small-font-size;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin h2-text {
+  font-size: $h2-font-size;
+  font-weight: 700;
+  line-height: 31px;
+}
+
+@mixin h1-text {
+  font-size: $h1-font-size;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin button-border-on-hover {
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+@mixin text-color-on-hover {
+  &:hover {
+    color: $primary
+  }
+}
+
+@mixin button-active {
+  color: $green;
+  background-color: $white;
+  border: 1px solid $elements
+}
+
+@mixin transition {
+  transition: all .3s;
+}

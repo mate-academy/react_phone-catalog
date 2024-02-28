@@ -1,4 +1,4 @@
-@import '/src/assets/css/breakpoints';
+@import '/src/assets/css/styles';
 
 .shop-by-category {
   display: flex;
@@ -10,11 +10,11 @@
     display: flex;
     justify-content: center;
     gap: 16px;
-  }
-}
 
-@media all and (max-width: $small) {
-  .shop-by-category__cards {
-    flex-direction: column;
+    @include on-mobile {
+      & {
+        flex-direction: column;
+      }
+    }
   }
 }

@@ -1,14 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
+import { CategoryName } from './libs/types/categoryName.enum';
+
 import {
-  HomePage,
   Root,
   NotFoundPage,
+} from './libs/components';
+import {
+  HomePage,
   ProductsPage,
   ProductDetailsPage,
   FavouritesPage,
   CartPage,
-} from './libs/components';
-import { CategoryName } from './libs/types/categoryName.enum';
+} from './libs/pages';
 
 import './App.scss';
 

@@ -1,7 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 import {
-  useRef, useState, useCallback, useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
 } from 'react';
 
 import { ProductCard } from '../ProductCard';
@@ -10,6 +14,11 @@ import { Icon } from '../Icon';
 import { IProduct } from '../../types';
 
 import './ProductsSlider.scss';
+
+type CardProp = {
+  cardSize: number;
+  cardsPerSlide: number;
+} | null;
 
 type Props = {
   items: IProduct [],
@@ -22,63 +31,27 @@ export const ProductsSlider:React.FC<Props> = ({
   title,
   classNames,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
-  const [gap, setGap] = useState(0);
-  const [cardWidth, setCardWidth] = useState(0);
-  const [visibleCardsCount, setVisibleCardsCount] = useState(0);
-
   const totalCardsCount = items.length;
-  const firstIndex = 0;
-  const lastIndex = totalCardsCount - visibleCardsCount;
-
+  const firstSlideId = 1;
+  const [slideId, setSlideId] = useState(firstSlideId);
+  const [cardProp, setCardProp] = useState<CardProp>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
-
-  const isPrevButtonDisabled = currentIndex === firstIndex;
-  const isNextButtonDisabled = currentIndex === lastIndex;
-
-  const handlePrevClick = useCallback(() => {
-    if (!cardsContainerRef.current) {
-      return;
-    }
-
-    if (!sliderRef.current) {
-      return;
-    }
-
-    if (!isPrevButtonDisabled) {
-      setTranslateX(prev => prev + (cardWidth + gap));
-      setCurrentIndex(prev => prev - 1);
-    }
-  }, [cardWidth, gap, isPrevButtonDisabled]);
-
-  const handleNextClick = useCallback(() => {
-    if (!cardsContainerRef.current) {
-      return;
-    }
-
-    if (!sliderRef.current) {
-      return;
-    }
-
-    if (!isNextButtonDisabled) {
-      setTranslateX(prev => prev - (cardWidth + gap));
-      setCurrentIndex(prev => prev + 1);
-    }
-  }, [cardWidth, gap, isNextButtonDisabled]);
+  const lastSlideId = cardProp
+    ? totalCardsCount - (cardProp.cardsPerSlide - 1)
+    : totalCardsCount;
 
   const getSliderProp = useCallback(() => {
     if (!cardsContainerRef.current) {
-      return;
+      return null;
     }
 
     if (!sliderRef.current) {
-      return;
+      return null;
     }
 
     if (!items.length) {
-      return;
+      return null;
     }
 
     const container = cardsContainerRef.current;
@@ -88,18 +61,45 @@ export const ProductsSlider:React.FC<Props> = ({
     const containerGap = (sliderWidth - (itemsPerSlide * itemWidth))
       / (itemsPerSlide - 1) || 0;
 
-    setVisibleCardsCount(itemsPerSlide);
-    setCardWidth(itemWidth);
-    setGap(containerGap);
+    return {
+      cardSize: itemWidth + containerGap,
+      cardsPerSlide: itemsPerSlide,
+    };
   }, [cardsContainerRef, sliderRef, items]);
 
-  useEffect(() => {
-    getSliderProp();
-    window.addEventListener('resize', getSliderProp);
+  const isPrevButtonDisabled = slideId === firstSlideId;
+  const isNextButtonDisabled = slideId === lastSlideId;
 
-    return () => {
-      window.removeEventListener('resize', getSliderProp);
-    };
+  const translateX = useMemo(() => {
+    if (!cardsContainerRef.current || !cardProp) {
+      return 0;
+    }
+
+    return (-(slideId - 1) * cardProp.cardSize);
+  }, [slideId, cardProp]);
+
+  const handlePrevClick = () => {
+    setSlideId(prev => {
+      if (prev === firstSlideId) {
+        return prev;
+      }
+
+      return prev - 1;
+    });
+  };
+
+  const handleNextClick = () => {
+    setSlideId(prev => {
+      if (prev === lastSlideId) {
+        return prev;
+      }
+
+      return prev + 1;
+    });
+  };
+
+  useEffect(() => {
+    setCardProp(getSliderProp());
   }, [getSliderProp]);
 
   return (

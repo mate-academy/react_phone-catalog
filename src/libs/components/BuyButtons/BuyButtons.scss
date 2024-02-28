@@ -1,50 +1,39 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .card-buttons {
   display: flex;
   gap: 8px;
 
   &__add {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexbox-center;
+    @include transition;
+
     padding: 10px 0;
     flex-grow: 1;
     background-color: $primary;
-    cursor: pointer;
-    border: none;
 
     font-family: inherit;
-    font-size: 14px;
+    font-size: $body-font-size;
     font-weight: 600;
     line-height: 21px;
     color: $white;
-    transition: all .3s;
 
     &:hover {
       box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
     }
 
     &:active, &--selected {
-      color: $green;
-      background-color: $white;
-      border: 1px solid $elements
+      @include button-active;
     }
   }
 
   &__like {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+    @include flexbox-center;
+    @include transition;
+    @include button-border-on-hover;
+
     padding: 12px;
     border: 1px solid $icons;
-    cursor: pointer;
-    transition: all .3s;
-
-    &:hover {
-      border-color: $primary
-    }
 
     &:active {
       border-color: $icons

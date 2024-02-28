@@ -1,5 +1,4 @@
-@import '../../../assets/css/variables';
-@import '/src/assets/css/breakpoints';
+@import '/src/assets/css/styles';
 
 .category-card {
   display: flex;
@@ -9,10 +8,11 @@
   text-decoration: none;
 
   &__photo {
+    @include transition;
+
     height: 368px;
     width: 100%;
     margin-bottom: 24px;
-    transition: box-shadow .3s;
   }
 
   &:hover .category-card__photo{
@@ -32,20 +32,21 @@
     min-width: max-content;
     color: $secondary;
   }
-}
 
-@media all and (min-width: $small) and (max-width: $extra-medium) {
-  .category-card {
-    height: 321px;
+  @include on-tablet {
+    & {
+      height: 321px;
 
-    &__photo {
-      height: 264px;
+      &__photo {
+        height: 264px;
+      }
+    }
+  }
+
+  @include on-mobile {
+    & {
+      width: 100%;
     }
   }
 }
 
-@media all and (max-width: $small) {
-  .category-card {
-    width: 100%;
-  }
-}

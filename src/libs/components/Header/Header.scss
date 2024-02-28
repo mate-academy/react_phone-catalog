@@ -1,8 +1,8 @@
-@import '/src/assets/css/variables';
+@import '/src/assets/css/styles';
 
 .header {
-  display: flex;
-  align-items: center;
+  @include flexbox-center-vertical;
+
   justify-content: space-between;
   height: $header-height;
   padding: 0;
@@ -11,8 +11,8 @@
   z-index: 100;
 
   &__content {
-    display: flex;
-    align-items: center;
+    @include flexbox-center-vertical;
+
     height: 100%;
   }
 
@@ -25,9 +25,8 @@
   }
 
   &__icon-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox-center;
+    
     width: 66px;
     height: 100%;
     text-decoration: none;
@@ -36,9 +35,8 @@
   }
 
   &__icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox-center;
+    
     position: relative;
   }
 }

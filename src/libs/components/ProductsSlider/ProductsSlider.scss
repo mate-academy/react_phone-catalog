@@ -1,5 +1,4 @@
-@import '../../../assets/css/variables';
-@import '/src/assets/css/breakpoints';
+@import '/src/assets/css/styles';
 
 .cards-container {
   display: flex;
@@ -23,27 +22,34 @@
     gap: 16px;
     width: 100%;
   }
+
+  @include on-mobile {
+    & {
+      &__header {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      &__cards {
+        gap: 0;
+      }
+    }
+  }
 }
 
 .section-buttons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flexbox-center-vertical;
+
   gap: 16px;
 
-  &__button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
   &__icon {
+    @include transition;
+
     display: block;
     width: 32px;
     height: 32px;
     padding: 8px;
     border: 1px solid $icons;
-    transition: border .3s;
 
     & path {
       fill: $primary;
@@ -60,19 +66,6 @@
 
     &:not(.section-buttons__icon--disabled):hover {
       border: 1px solid $primary;
-    }
-  }
-}
-
-@media all and (max-width: $small) {
-  .cards-container {
-    &__header {
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    &__cards {
-      gap: 0;
     }
   }
 }

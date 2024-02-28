@@ -1,10 +1,10 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .loader {
-  display: flex;
+  @include flexbox-center;
+  
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
 
   &__content {
     border-radius: 50%;
@@ -14,14 +14,6 @@
     border: 4px solid #ddd;
     border-left-color: #000;
     animation: load8 1.2s infinite linear;
-  }
-
-  &--page {
-    height: calc(100vh - #{$header-height} - #{$footer-height});
-  }
-
-  &--section {
-    height: 100%;
   }
 }
 

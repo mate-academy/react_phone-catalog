@@ -1,16 +1,14 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .nav {
-  display: flex;
-  flex-direction: row;
+  @include flexbox-center-vertical;
+
   justify-content: space-between;
-  align-items: center;
   height: 100%;
 
   &__list {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include flexbox-center-vertical;
+
     gap: $header-item-gap;
     padding: 0;
     margin: 0;
@@ -22,18 +20,14 @@
   }
 
   &__link{
+    @include uppercase-text;
+    @include transition;
+    @include text-color-on-hover;
+    
     display: block;
-    font-size: 12px;
-    line-height: 11px;
-    font-weight: 700;
     color: $secondary;
     text-decoration: none;
     padding: 26px 0;
-    transition: all 0.3s;
-
-    &:hover {
-      color: $primary;
-    }
 
     &--active {
     color: $primary;

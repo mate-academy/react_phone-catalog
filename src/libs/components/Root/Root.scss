@@ -1,5 +1,4 @@
-@import '/src/assets/css/variables';
-@import '/src/assets/css/breakpoints';
+@import '/src/assets/css/styles';
 
 .app {
   &__header {
@@ -13,12 +12,33 @@
   min-height: calc(100vh - #{$header-height} - #{$footer-height});
 
   &__container {
-    display: flex;
+    @include flexbox-center-vertical;
+    
     flex-direction: column;
-    align-items: center;
     max-width: 1136px;
     margin-inline: auto;
     padding-bottom: 80px;
+
+    @include on-small-desktop {
+      & {
+        max-width: 888px;
+        padding-inline: 20px;
+      }
+    }
+
+    @include on-tablet {
+      & {
+        max-width: 580px;
+        padding-inline: 10px;
+      }
+    }
+
+    @include on-mobile {
+      & {
+        max-width: 282px;
+        padding-inline: 5px;
+      }
+    }
   }
 
   &__banner {
@@ -31,26 +51,5 @@
 
   &__shop-by-category {
     margin-bottom: 80px;
-  }
-}
-
-@media all and (min-width: $extra-medium) and (max-width: $large) {
-  .main__container {
-    max-width: 888px;
-    padding-inline: 20px;
-  }
-}
-
-@media all and (min-width: $small) and (max-width: $extra-medium) {
-  .main__container {
-    max-width: 580px;
-    padding-inline: 10px;
-  }
-}
-
-@media all and (max-width: $small) {
-  .main__container {
-    max-width: 282px;
-    padding-inline: 5px;
   }
 }

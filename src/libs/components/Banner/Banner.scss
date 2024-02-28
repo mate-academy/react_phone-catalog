@@ -1,4 +1,4 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .banner-container {
   height: 432px;
@@ -10,25 +10,19 @@
 }
 
 .slider {
-  display: flex;
-  flex-direction: row;
+  @include flexbox-center;
+
   gap: 16px;
-  align-items: center;
-  justify-content: center;
   height: 400px;
 
   &__button {
+    @include transition;
+    @include button-border-on-hover;
+
     height: 100%;
     width: 32px;
     min-width: 32px;
     border: 1px solid $icons;
-    background-color: transparent;
-    cursor: pointer;
-    transition: all 0.3s;
-
-    &:hover {
-      border-color: $primary;
-    }
   }
 
   &__button-icon path{
@@ -69,10 +63,8 @@
 }
 
 .pagination {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  @include flexbox-center;
+
   gap: 14px;
   height: 24px;
 

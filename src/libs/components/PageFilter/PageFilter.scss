@@ -1,70 +1,8 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .page-filter {
-  display: flex;
-  align-items: center;
+  @include flexbox-center-vertical;
+  
   gap: 16px;
-
-  // &__label {
-  //   display: block;
-  //   position: relative;
-
-  //   &--sort {
-  //     width: 176px;
-  //   }
-
-  //   &--filter {
-  //     width: 128px;
-  //   }
-  // }
-
-  // &__label-text {
-  //   display: block;
-  //   position: relative;
-  //   font-size: 12px;
-  //   font-weight: 600;
-  //   line-height: 15px;
-  //   color: $secondary;
-  //   margin-bottom: 4px;
-  // }
-
-  // &__arrow {
-  //   position: absolute;
-  //   display: block;
-  //   top: 31px;
-  //   right: 12px;
-  //   width: 16px;
-  //   height: 16px;
-  //   pointer-events: none;
-  // }
-
-  // &__select {
-  //   display: flex;
-  //   align-items: center;
-  //   border: 1px solid $icons;
-  //   background-color: transparent;
-  //   padding: 10px 12px;
-  //   padding-right: 28px;
-  //   width: 100%;
-  //   cursor: pointer;
-  //   transition: all 0.3s;
-
-  //   &:hover{
-  //     border-color: $secondary;
-  //   }
-
-  //   &:focus {
-  //     box-sizing: border-box;
-  //     border: 1px solid $primary;
-  //     box-shadow: 0px 2px 15px 0px #0000000D;
-  //     outline: 0;
-  //   }
-  // }
-
 }
 
-// select.page-filter__select {
-//   appearance: none;
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-// }

@@ -1,35 +1,16 @@
 import { useEffect, useMemo } from 'react';
 
-import { IProduct } from '../../types';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as productsActions from '../../slices/productsSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { getHotPriceProducts } from '../../utils/getHotPriceProducts';
+import { getBrandNewProducts } from '../../utils/getBrandNewProducts';
 
-import { Banner } from '../Banner';
-import { ShopByCategory } from '../ShopByCategory';
-import { ProductsSlider } from '../ProductsSlider';
-import { Loader } from '../Loader';
-
-export const getHotPriceProducts = (products: IProduct[]) => {
-  const productsWithAbsoluteDiscount
-    = products
-      .filter(product => product.discount > 0)
-      .sort((pr1, pr2) => (
-        pr1.price * (pr1.discount / 100) - pr2.price * (pr2.discount / 100)
-      ));
-
-  return productsWithAbsoluteDiscount;
-};
-
-export const getBrandNewProducts = (products: IProduct[]) => {
-  const productsWithoutDiscount
-    = products
-      .filter(product => !product.discount)
-      .sort((pr1, pr2) => (
-        pr1.price - pr2.price
-      ));
-
-  return productsWithoutDiscount;
-};
+import {
+  ShopByCategory,
+  ProductsSlider,
+  Banner,
+  Loader,
+} from '../../components';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -47,6 +28,9 @@ export const HomePage = () => {
     return getBrandNewProducts(allProducts);
   }, [allProducts]);
 
+  const hasLoader = !loaded && !hasError;
+  const hasProducts = loaded && !hasError && !!allProducts.length;
+
   useEffect(() => {
     dispatch(productsActions.fetchAll());
   }, [dispatch]);
@@ -55,9 +39,9 @@ export const HomePage = () => {
     <>
       <Banner />
 
-      {(!loaded && !hasError) && <Loader />}
+      {hasLoader && <Loader />}
 
-      {(loaded && !hasError && !!allProducts.length) && (
+      {hasProducts && (
         <>
           <ProductsSlider
             title="Hot prices"

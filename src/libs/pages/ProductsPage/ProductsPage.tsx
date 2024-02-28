@@ -11,14 +11,16 @@ import {
   fetchCategoryProducts,
 } from '../../utils';
 
-import { SectionHeader } from '../SectionHeader';
-import { PagePagination } from '../PagePagination';
-import { PageFilter } from '../PageFilter';
-import { Breadcrumbs } from '../PageSmallNav';
-import { ProductCard } from '../ProductCard';
-import { NoResults } from '../NoResults';
-import { Loader } from '../Loader';
-import { NoSearchResults } from '../NoSearchResults';
+import {
+  SectionHeader,
+  PagePagination,
+  PageFilter,
+  Breadcrumbs,
+  ProductCard,
+  NoResults,
+  Loader,
+  NoSearchResults,
+} from '../../components';
 
 import './ProductsPage.scss';
 

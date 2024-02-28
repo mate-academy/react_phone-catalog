@@ -1,10 +1,9 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .footer {
-  display: flex;
-  flex-direction: row;
+  @include flexbox-center-vertical;
+
   justify-content: space-between;
-  align-items: center;
   padding: 0 $main-side-padding;
   height: $footer-height;
   box-sizing: border-box;
@@ -18,41 +17,34 @@
   }
 
   &__link {
-    font-size: 12px;
-    font-weight: 700;
+    @include uppercase-text;
+    @include transition;
+    @include text-color-on-hover;
+
     text-decoration: none;
     color: $secondary;
-    transition: all .3s;
-
-    &:hover {
-      color: $primary
-    }
   }
 }
 
 .back-to-top {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flexbox-center-vertical;
+  @include transition;
+
   gap: 16px;
-  transition: all .3s;
 
   &__text {
-    font-size: 12px;
+    font-size: $small-font-size;
     font-weight: 600;
     text-align: right;
     color: $secondary;
   }
 
   &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexbox-center;
+
     height: 32px;
     width: 32px;
-    background-color: transparent;
     border: 1px solid $icons;
-    cursor: pointer;
   }
 
   &__icon path{

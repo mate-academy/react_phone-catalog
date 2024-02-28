@@ -1,9 +1,8 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .section-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include flexbox-center-vertical;
+
   width: 100%;
 
   &__title-container {
@@ -11,10 +10,8 @@
   }
 
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 41px;
-    letter-spacing: -0.01em;
+    @include h1-text;
+
     text-align: left;
     color: $primary;
   }

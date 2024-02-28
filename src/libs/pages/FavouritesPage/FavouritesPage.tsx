@@ -4,13 +4,15 @@ import { useMemo } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { SearchParamsNames } from '../../constants';
 
-import { Breadcrumbs } from '../PageSmallNav';
-import { SectionHeader } from '../SectionHeader';
-import { ProductCard } from '../ProductCard';
-import { NoResults } from '../NoResults';
+import {
+  Breadcrumbs,
+  SectionHeader,
+  ProductCard,
+  NoResults,
+  NoSearchResults,
+} from '../../components';
 
 import './FavouritesPage.scss';
-import { NoSearchResults } from '../NoSearchResults';
 
 export const FavouritesPage = () => {
   const [searchParams] = useSearchParams();

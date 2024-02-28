@@ -1,10 +1,12 @@
 import { useAppSelector } from '../../app/hooks';
 
-import { BackButton } from '../BackButton';
-import { SectionHeader } from '../SectionHeader';
-import { CartItem } from '../CartItem/CartItem';
-import { CartTotal } from '../CartTotal/CartTotal';
-import { NoResults } from '../NoResults';
+import {
+  BackButton,
+  SectionHeader,
+  CartItem,
+  CartTotal,
+  NoResults,
+} from '../../components';
 
 import './CartPage.scss';
 

@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import {
+  useMemo, useRef, useState,
+} from 'react';
 
 import { BANNER_IMAGES } from '../../constants';
 
@@ -10,46 +12,41 @@ import { Icon } from '../Icon';
 import './Banner.scss';
 
 export const Banner = () => {
-  const [translateX, setTranslateX] = useState(0);
-  const [slideId, setSlideId] = useState(0);
+  const firstSlideId = 1;
+  const [slideId, setSlideId] = useState(firstSlideId);
   const containerRef = useRef<HTMLUListElement>(null);
 
   const images = Object.entries(BANNER_IMAGES);
-  const imagesCount = images.length - 1;
+  const imagesCount = images.length;
+  const lastSlideId = imagesCount;
+
+  const translateX = useMemo(() => {
+    if (!containerRef.current) {
+      return 0;
+    }
+
+    return (-(slideId - 1)
+    * (containerRef.current as HTMLUListElement).offsetWidth);
+  }, [slideId]);
 
   const handleNext = () => {
-    if (!containerRef.current) {
-      return;
-    }
+    setSlideId(prev => {
+      if (prev === lastSlideId) {
+        return firstSlideId;
+      }
 
-    if (slideId < imagesCount) {
-      setTranslateX(prev => (
-        prev - (containerRef.current as HTMLUListElement).offsetWidth
-      ));
-      setSlideId(prev => prev + 1);
-    } else {
-      setTranslateX(0);
-      setSlideId(0);
-    }
+      return (prev + 1);
+    });
   };
 
   const handlePrev = () => {
-    if (!containerRef.current) {
-      return;
-    }
+    setSlideId(prev => {
+      if (prev === 1) {
+        return lastSlideId;
+      }
 
-    if (slideId === 0) {
-      setTranslateX(
-        -(imagesCount)
-        * (containerRef.current as HTMLUListElement).offsetWidth,
-      );
-      setSlideId(imagesCount);
-    } else {
-      setTranslateX(prev => (
-        prev + (containerRef.current as HTMLUListElement).offsetWidth
-      ));
-      setSlideId(prev => prev - 1);
-    }
+      return (prev - 1);
+    });
   };
 
   return (
@@ -101,12 +98,14 @@ export const Banner = () => {
       </div>
       <div className="banner-container__pagination pagination">
         {images.map((item, index) => (
-          <span
+          <button
+            type="button"
             key={item[0]}
             className={cn(
               'pagination__part',
-              { 'pagination__part--active': index === slideId },
+              { 'pagination__part--active': index + 1 === slideId },
             )}
+            onClick={() => setSlideId(index + 1)}
           />
         ))}
       </div>

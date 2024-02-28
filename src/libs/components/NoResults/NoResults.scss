@@ -1,4 +1,4 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .no-results-container {
   align-self: flex-start;
@@ -8,13 +8,11 @@
   }
 
   &__back-link {
-    font-size: 22px;
-    color: $secondary;
-    transition: all 0.3s;
-    width: max-content;
+    @include transition;
+    @include text-color-on-hover;
 
-    &:hover {
-      color: $primary;
-    }
+    font-size: $h2-font-size;
+    color: $secondary;
+    width: max-content;
   }
   }

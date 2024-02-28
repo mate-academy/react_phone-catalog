@@ -1,15 +1,17 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .breadcrumbs {
-  display: flex;
-  align-items: center;
+  @include flexbox-center-vertical;
+  
   gap: 8px;
 
   &__home {
+    @include transition;
+
     width: 16px;
     height: 16px;
     background-image: url(../../../assets/icons/home.svg);
-    transition: all 0.3s;
+
 
     &:hover {
       transform: scale(1.01);
@@ -17,11 +19,9 @@
   }
 
   &__link {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
+    @include flexbox-center-vertical;
+    @include small-text;
+
     color: $primary;
     text-decoration: none;
 

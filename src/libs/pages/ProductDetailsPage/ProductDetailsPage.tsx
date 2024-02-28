@@ -13,14 +13,16 @@ import * as favouritesActions from '../../slices/favouritesSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ICartItem, IProduct } from '../../types';
 
-import { Breadcrumbs } from '../PageSmallNav';
-import { SectionHeader } from '../SectionHeader';
-import { BackButton } from '../BackButton/BackButton';
-import { TechSpecs } from '../TechSpecs';
-import { Price } from '../Price';
-import { BuyButtons } from '../BuyButtons';
-import { Loader } from '../Loader';
-import { ProductsSlider } from '../ProductsSlider';
+import {
+  Breadcrumbs,
+  SectionHeader,
+  BackButton,
+  TechSpecs,
+  Price,
+  BuyButtons,
+  Loader,
+  ProductsSlider,
+} from '../../components';
 
 import './ProductDetailsPage.scss';
 

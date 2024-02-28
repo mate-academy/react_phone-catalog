@@ -1,20 +1,15 @@
-@import '../../../assets/css/variables';
+@import '/src/assets/css/styles';
 
 .page-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexbox-center;
+
   gap: 16px;
 
   &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox-center;
+
     width: 32px;
     height: 32px;
-    background: none;
-    border: none;
-    cursor: pointer;
   }
 
   &__buttons-list {
@@ -24,12 +19,10 @@
   }
 
   &__page-button {
-    border: 1px solid $elements;
-    transition: all 0.3s;
+    @include transition;
+    @include button-border-on-hover;
 
-    &:hover {
-      border-color: $primary;
-    }
+    border: 1px solid $elements;
 
     &--active {
       background-color: $primary;
@@ -39,14 +32,12 @@
   }
 
   &__arrow-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexbox-center;
+    @include transition;
+    
     padding: 8px;
     border: 1px solid $icons;
     background-color: transparent;
-    transition: all 0.3s;
-
 
     &--disabled {
       border-color: $elements;
