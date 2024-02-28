@@ -15,16 +15,18 @@ export const Favourites = () => {
   //   (state) => state.phones.items,
   // );
 
-  const { favouritesPhones } = useAppSelector(
-    (state) => state.favouritesPhones,
+  const favouritesPhones = useAppSelector(
+    (state) => state.favouritesPhones.favouritesPhones,
   );
 
   const [fav, setFav] = useState<TypeCard[]>(
-    JSON.parse(localStorage.getItem('favourites') || ''),
+    // JSON.parse(localStorage.getItem('favourites') || ''),
+    favouritesPhones,
   );
 
   useEffect(() => {
-    setFav(JSON.parse(localStorage.getItem('favourites') || ''));
+    // setFav(JSON.parse(localStorage.getItem('favourites') || ''));
+    setFav(favouritesPhones);
   }, [favouritesPhones]);
 
   const favourites = fav.filter(phone => phone.name

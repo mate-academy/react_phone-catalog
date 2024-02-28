@@ -1,7 +1,8 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import storage from 'redux-persist/lib/storage';
-import persistReducer from 'redux-persist/es/persistReducer';
+// import persistReducer from 'redux-persist/es/persistReducer';
 import {
+  persistReducer,
   FLUSH,
   PAUSE,
   PERSIST,

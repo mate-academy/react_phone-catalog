@@ -5,7 +5,7 @@ import {
   useState,
 } from 'react';
 import { TypeCard } from '../../types/TypeCard';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import {
   // addPhonesInCart,
   deletePhonesInCart,
@@ -53,11 +53,15 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
     }
   };
 
-  const oldCart = localStorage.getItem('cart') || '';
-  const newCart: TypeCard[] = JSON.parse(oldCart);
+  const phonesCart = useAppSelector(
+    (state) => state.cartPhones.phonesInCart,
+  );
+
+  // const oldCart = localStorage.getItem('cart') || '';
+  // const newCart: TypeCard[] = JSON.parse(oldCart);
 
   const changeCart = () => {
-    if (newCart.some(item => item.id === phone.id)) {
+    if (phonesCart.some(item => item.id === phone.id)) {
       // localStorage.setItem('cart', JSON.stringify(
       //   newCart.filter(item => item.id !== phone.id),
       // ));

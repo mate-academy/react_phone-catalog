@@ -26,6 +26,10 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
     (state) => state.favouritesPhones.favouritesPhones,
   );
 
+  const cartPhones = useAppSelector(
+    (state) => state.cartPhones.phonesInCart,
+  );
+
   // const changeFavourites = () => {
   //   if (favouritesPhones.includes(card)) {
   //     dispatch(deleteFavouritePhones(card));
@@ -36,17 +40,17 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
   //   dispatch(addFavouritePhones(card));
   // };
 
-  const oldFav = localStorage.getItem('favourites') || '';
-  const newFav: TypeCard[] = JSON.parse(oldFav);
+  // const oldFav = localStorage.getItem('favourites') || '';
+  // const newFav: TypeCard[] = JSON.parse(oldFav);
 
   // console.log(newFav.some(
   //   item => item.id === card.id,
   // ));
 
-  console.log(favouritesPhones); // (Не актуально) якщо прибрати консол лог та масив обраних то чомусь не працює нічого
+  // console.log(favouritesPhones); // (Не актуально) якщо прибрати консол лог та масив обраних то чомусь не працює нічого
 
   const changeFavourites = () => {
-    if (newFav.some(item => item.id === card.id)) {
+    if (favouritesPhones.some(item => item.id === card.id)) {
       // localStorage.setItem('favourites', JSON.stringify(
       //   newFav.filter(item => item.id !== card.id),
       // ));
@@ -75,11 +79,11 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
   //   dispatch(addPhonesInCart(card));
   // };
 
-  const oldCart = localStorage.getItem('cart') || '';
-  const newCart: TypeCard[] = JSON.parse(oldCart);
+  // const oldCart = localStorage.getItem('cart') || '';
+  // const newCart: TypeCard[] = JSON.parse(oldCart);
 
   const changeCart = () => {
-    if (newCart.some(item => item.id === card.id)) {
+    if (cartPhones.some(item => item.id === card.id)) {
       // localStorage.setItem('cart', JSON.stringify(
       //   newCart.filter(item => item.id !== card.id),
       // ));
@@ -146,7 +150,7 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
             type="button"
             className={classNames('description-button', {
               // 'active-button': phonesInCart.some(item => item.id === card.id),
-              'active-button': newCart.some(
+              'active-button': cartPhones.some(
                 item => item.id === card.id,
               ),
               // 'active-button': ((localStorage.getItem('cart') || '') !== ''
@@ -161,7 +165,7 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
             type="button"
             className={classNames('description-favorites', {
               // 'active-button': favouritesPhones.includes(card),
-              'active-button': newFav.some(
+              'active-button': favouritesPhones.some(
                 item => item.id === card.id,
               ),
               // 'active-button': ((localStorage.getItem('favourites') || '')
@@ -172,7 +176,7 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
             onClick={() => changeFavourites()}
             data-cy="addToFavorite"
           >
-            {newFav.some(
+            {favouritesPhones.some(
               item => item.id === card.id,
             )
               ? (

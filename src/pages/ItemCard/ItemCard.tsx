@@ -19,9 +19,9 @@ export const ItemCard = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
   const splitedId = id?.split('-');
-  const { favouritesPhones } = useAppSelector(
-    (state) => state.favouritesPhones,
-  );
+  // const { favouritesPhones } = useAppSelector(
+  //   (state) => state.favouritesPhones,
+  // );
 
   const { selectedPhone } = useAppSelector(
     (state) => state.phones,
@@ -30,7 +30,7 @@ export const ItemCard = () => {
   const navigate = useNavigate();
   const [selectedImg, setSelectedImg] = useState(selectedPhone?.images[0]);
 
-  console.log(favouritesPhones);
+  // console.log(favouritesPhones);
 
   useEffect(() => {
     if (id) {

@@ -10,15 +10,20 @@ export const Cart = () => {
   // const cart: TypeCard[] = JSON.parse(localStorage.getItem('cart') || '');
 
   const reduxCart = useAppSelector(
-    (state) => state.favouritesPhones,
+    (state) => state.cartPhones.phonesInCart,
   );
 
-  const [cart, setCart] = useState<TypeCard[]>(
-    JSON.parse(localStorage.getItem('cart') || ''),
+  // const [cart, setCart] = useState<TypeCard[]>(
+  //   JSON.parse(localStorage.getItem('cart') || ''),
+  // );
+
+  const [cart, setCart] = useState(
+    reduxCart,
   );
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem('cart') || ''));
+    // setCart(JSON.parse(localStorage.getItem('cart') || ''));
+    setCart(reduxCart);
   }, [reduxCart]);
   // Оновлюй стейт при зміні localStorage
   // const storedCart = localStorage.getItem('cart');

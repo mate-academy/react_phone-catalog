@@ -11,23 +11,33 @@ import {
   setSearchFilter,
 } from '../../features/phonesSlice';
 import { getSearchWith } from '../../helpers/searchHelper';
-import { TypeCard } from '../../types/TypeCard';
+// import { TypeCard } from '../../types/TypeCard';
 
 export const Header = (() => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const queryValue: string = urlParams.get('query') || '';
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const queryValue: string = urlParams.get('query') || '';
 
   const dispatch = useAppDispatch();
   const location = useLocation();
   const searchFilter = useAppSelector(
     (state) => state.phones.searchFilter,
   );
-  const [searchParams, setSearchParams] = useSearchParams();
+
+  const favouritesPhones = useAppSelector(
+    (state) => state.favouritesPhones.favouritesPhones,
+  );
+
+  const cartPhones = useAppSelector(
+    (state) => state.cartPhones.phonesInCart,
+  );
 
   const headerText = ['', 'Phones', 'Tablets', 'Accessories'];
 
   const handleInputSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const text = event.target.value;
+    
 
     // dispatch(
     //   setSearchFilter(text),
@@ -42,11 +52,11 @@ export const Header = (() => {
     setSearchParams(getSearchWith(searchParams, { query: text }));
   };
 
-  const oldFav = localStorage.getItem('favourites') || '';
-  const newFav: TypeCard[] = JSON.parse(oldFav);
+  // const oldFav = localStorage.getItem('favourites') || '';
+  // const newFav: TypeCard[] = JSON.parse(oldFav);
 
-  const oldCart = localStorage.getItem('cart') || '';
-  const newCart: TypeCard[] = JSON.parse(oldCart);
+  // const oldCart = localStorage.getItem('cart') || '';
+  // const newCart: TypeCard[] = JSON.parse(oldCart);
 
   return (
     <header className="header">
@@ -87,7 +97,7 @@ export const Header = (() => {
             <div className="search">
               <input
                 type="text"
-                value={queryValue}
+                value={searchParams.get('query') || ''}
                 className="search__input"
                 placeholder={`Search in ${location.pathname.includes('Phones') ? 'phones' : 'favourites'}...`}
                 onChange={(event) => handleInputSearch(event)}
@@ -125,8 +135,8 @@ export const Header = (() => {
           })}
           />
           <img src="/img/heart.png" alt="Favorites" />
-          {newFav.length > 0
-            && <div className="circle">{newFav.length}</div>}
+          {favouritesPhones.length > 0
+            && <div className="circle">{favouritesPhones.length}</div>}
         </NavLink>
         <NavLink
           to="/Cart"
@@ -137,8 +147,8 @@ export const Header = (() => {
           })}
           />
           <img src="/img/bag.png" alt="Cart" />
-          {newCart.length > 0
-            && <div className="circle">{newCart.length}</div>}
+          {cartPhones.length > 0
+            && <div className="circle">{cartPhones.length}</div>}
           {/* {phonesInCart.length > 0
             && <div className="circle">{phonesInCart.length}</div>} */}
         </NavLink>
