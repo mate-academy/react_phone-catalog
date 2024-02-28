@@ -60,19 +60,28 @@ function reducer(state: Data, action: Action) {
       }
     }
     case ACTIONS.ADD_TO_CARD: {
-      localStorage.setItem("cart", JSON.stringify([...state.card, action.payload]));
+      const oldCardData = JSON.parse(localStorage.getItem('cart') || '[{}]');
+
+      localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
+      const cardData = JSON.parse(localStorage.getItem("cart") || '')
+
       return {
         ...state,
-        card: [...state.card, action.payload],
+        card: cardData,
       }
     }
     case ACTIONS.DELETE_FROM_CARD: {
-      const indexElement = state.card.indexOf(action.payload);
+      const cardData = JSON.parse(localStorage.getItem("cart") || '');
 
-      const copy = [...state.card];
+      const copy = [...cardData];
+      const indexElement = copy.findIndex(element => element.id === action.payload.id);
 
-      copy.splice(indexElement, 1);
+      if (indexElement !== -1) {
+        copy.splice(indexElement, 1);
+      }
+
       localStorage.setItem("cart", JSON.stringify(copy));
+
       return {
         ...state,
         card: copy,

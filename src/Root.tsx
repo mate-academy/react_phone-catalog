@@ -3,7 +3,6 @@ import {
   HashRouter,
   Route,
   Routes,
-  // Navigate,
 } from 'react-router-dom';
 import { App } from './App';
 import { ProductPage } from './pages/ProductPage/ProductPage';

@@ -40,7 +40,6 @@ export const Navbar: React.FC = () => {
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
 
-
     applySearchDelayedQuery2(e.target.value)
 
     setSearchQuery(e.target.value);

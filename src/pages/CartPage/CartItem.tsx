@@ -18,7 +18,11 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
   }
 
   function deleteItem() {
-    setAmount(prevState => +prevState - 1);
+    if (amount > 0) {
+      setAmount(prevState => +prevState - 1);
+      reduce(+phone.price.slice(1));
+    }
+
   }
 
   return (
@@ -46,10 +50,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
         <div className="dflex ml-50">
           <div
             className="cart-square-border"
-            onClick={() => {
-              deleteItem();
-              reduce(+phone.price.slice(1));
-            }}
+            onClick={deleteItem}
             onKeyDown={deleteItem}
             role="button"
             tabIndex={0}

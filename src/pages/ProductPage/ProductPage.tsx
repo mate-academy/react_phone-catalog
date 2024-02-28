@@ -2,7 +2,6 @@
 import { ProductItem } from '../../components/product/ProductItem';
 import React, {
   useContext,
-  // useEffect,
   useState,
 } from "react";
 import { StateContext } from '../../AppContext';
@@ -14,8 +13,6 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../pagination/Pagination';
 import { Product } from '../../types';
 import { NoResults } from '../NoResults/NoResults';
-
-
 
 export const ProductPage: React.FC = () => {
   const { state, dispatch } = useContext(StateContext);
@@ -30,10 +27,6 @@ export const ProductPage: React.FC = () => {
   const [sortValue, setSortValue] = useState(sort);
   const location = useLocation();
 
-  // useEffect(() => {
-
-  // }, [])
-
   let currentItems: Product[] = [];
 
   let copyOfProducts: Product[] = [];
@@ -43,7 +36,6 @@ export const ProductPage: React.FC = () => {
     const fullName = location.pathname;
     const newName = fullName.slice(1, fullName.length - 1);
 
-    // console.log(newName, 'first');
     copyOfProducts = [...state.products.filter(product => product.type === newName)]
 
     if (search.length > 0) {
@@ -53,17 +45,12 @@ export const ProductPage: React.FC = () => {
         return <NoResults headline='Nothing was found'/>
       }
       currentItems = getCurrentItems(copyOfProducts, currentPage, +itemsPerpage);
-      // currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
-      // currentItems = copyOfProducts.filter(phone => phone.name.includes(search));
     } else if (itemsPerpage === 'All') {
       currentItems = copyOfProducts;
     } else {
       currentItems = getCurrentItems(copyOfProducts, currentPage, +itemsPerpage);
     }
   }
-
-  console.log(currentItems, 'items');
-
 
   function changeHandler(e: React.ChangeEvent<HTMLSelectElement>) {
     dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: e.target.value })
