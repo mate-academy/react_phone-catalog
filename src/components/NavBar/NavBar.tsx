@@ -44,7 +44,7 @@ export const NavBar = () => {
 
         <li className="nav__item">
           <NavLinkHeader type="text" to="tablets">
-            Tablest
+            Tablets
           </NavLinkHeader>
         </li>
 
