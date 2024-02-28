@@ -22,7 +22,11 @@ export const Footer: React.FC = () => {
 
           <ul className="footer__list">
             <li className="footer__item">
-              <a href="github.com" className="footer__link">
+              <Link
+                to="https://github.com/vintwp"
+                className="footer__link"
+                target="_blank"
+              >
                 <Typography
                   type="text"
                   size="sm"
@@ -32,7 +36,7 @@ export const Footer: React.FC = () => {
                 >
                   Github
                 </Typography>
-              </a>
+              </Link>
             </li>
             <li className="footer__item">
               <Link to="contacts" className="footer__link">
