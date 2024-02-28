@@ -8,6 +8,7 @@ type BaseProps = {
   className?: string | null;
   children: React.ReactNode;
   textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'none' | null;
+  textAlign?: 'center' | 'left' | 'right' | null;
 };
 
 type TitleProps = {
@@ -30,6 +31,7 @@ export const Typography: React.FC<Props> = ({
   weight = '400',
   size = 'md',
   textTransform = null,
+  textAlign = null,
   className = null,
   children,
 }) => {
@@ -42,6 +44,7 @@ export const Typography: React.FC<Props> = ({
               'title',
               'title-1',
               textTransform && `text-transform-${textTransform}`,
+              textAlign && `text-align-${textAlign}`,
               className && className,
             )}
           >

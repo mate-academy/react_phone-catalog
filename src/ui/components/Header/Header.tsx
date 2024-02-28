@@ -5,6 +5,7 @@ import { Burger, Icon } from '../../base';
 import { MenuNav } from '../MenuNav';
 import { HeaderLink } from '../HeaderLink';
 import { Search } from '../Search';
+import { Logo } from '../Logo';
 import { ProductContext } from '../../../context';
 
 import './Header.scss';
@@ -31,7 +32,10 @@ const MemoHeader: React.FC<Props> = ({ isShowFav, isShowSearch, location }) => {
     <header className="header">
       <div className="header__container container">
         <div className="header__content">
-          <Link to="/">LOGO</Link>
+          <Link to="/">
+            <Logo />
+          </Link>
+          {/* <Link to="/">LOGO</Link> */}
           <MenuNav
             menuItems={menuItems}
             block="header"

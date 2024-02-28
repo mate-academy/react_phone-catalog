@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.logo {
+  position: relative;
+  display: flex;
+  width: 64px;
+  max-height: to-rem(40);
+
+  &::after {
+    content: '';
+    display: block;
+    height: 100%;
+    padding: 0 0 100%;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include media-desktop {
+    width: 90px;
+  }
+}

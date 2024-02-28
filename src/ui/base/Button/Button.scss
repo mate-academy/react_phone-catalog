@@ -3,7 +3,10 @@
 @import '../../../styles/extends';
 
 .button {
-  @extend %text-buttons;
+  font-size: to-rem(14);
+  line-height: to-rem(21);
+  font-weight: 400;
+  text-align: center;
 
   padding: 8px;
   border: 1px solid $color-elements;
@@ -21,7 +24,7 @@
     background-color: $color-primary;
     border-color: $color-primary;
 
-    @include hover(box-shadow, '0px 3px 13px 0px #17203142');
+    @include hover(box-shadow, $box-shadow-button);
   }
 
   &-primary {

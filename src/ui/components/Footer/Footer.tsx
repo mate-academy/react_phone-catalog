@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Icon, Button, Typography } from '../../base';
+import { Logo } from '../Logo';
 
 import './Footer.scss';
 
@@ -15,7 +16,10 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          <div className="logo">Logo</div>
+          <Link to="/">
+            <Logo />
+          </Link>
+
           <ul className="footer__list">
             <li className="footer__item">
               <a href="github.com" className="footer__link">
