@@ -8,6 +8,7 @@ import { Navigation } from './components/Navigation';
 import { Pages } from './pages/Pages';
 import { StorageContext } from './components/StorageContext';
 import { NewParamsProps } from './types/NewParams';
+import { IMAGES } from './images-style/images';
 
 const App = () => {
   const { fav, cart } = useContext(StorageContext);
@@ -55,7 +56,7 @@ const App = () => {
       <footer className="footer">
         <div className="footer-content-container">
           <Link to="/" className="logo">
-            <img src="_new/img/Logo.svg" alt="Logo" />
+            <img src={IMAGES.logo} alt="Logo" />
           </Link>
 
           <div className="footer__info">

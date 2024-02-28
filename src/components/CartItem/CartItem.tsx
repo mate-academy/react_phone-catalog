@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { CartItemType } from '../../types/CartItemType';
 import { StorageContext } from '../StorageContext';
+import { IMAGES } from '../../images-style/images';
 
 type CartItemProps = {
   cartItem: CartItemType,
@@ -38,7 +39,7 @@ export const CartItem: React.FC<CartItemProps> = ({
         onClick={() => deleteItemFromCart(id)}
       >
         <img
-          src="_new/img/Close.svg"
+          src={IMAGES.Close}
           alt="delete item button"
           className="cart-item__delete-button-picture"
         />
@@ -46,7 +47,7 @@ export const CartItem: React.FC<CartItemProps> = ({
 
       <div className="cart-item__data">
         <img
-          src={`_new/${product.images[0]}`}
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${product.images[0]}`}
           alt=""
           className="cart-item__data-picture"
         />
@@ -69,7 +70,7 @@ export const CartItem: React.FC<CartItemProps> = ({
           }}
         >
           <img
-            src="_new/img/Minus.svg"
+            src={IMAGES.Minus}
             alt=""
             className="cart-item__quantity-button-picture"
           />
@@ -85,7 +86,7 @@ export const CartItem: React.FC<CartItemProps> = ({
           onClick={() => changeQuantity(cartItem)}
         >
           <img
-            src="_new/img/Plus.svg"
+            src={IMAGES.Plus}
             alt=""
             className="cart-item__quantity-button-picture"
           />

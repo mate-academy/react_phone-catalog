@@ -96,7 +96,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         state={{ useDiscount }}
       >
         <img
-          src={`_new/${image}`}
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
           alt={name}
           className="product-card__picture"
         />

@@ -78,6 +78,7 @@
       text-align: center;
       border: none;
       background-color: $black-primary;
+      cursor: pointer;
 
       &--not-selected:hover {
         box-shadow: 0 3px 13px 0 #17203142;
@@ -98,6 +99,7 @@
       background-image: url(../../images-style/Icons/favorites.svg);
       background-position: center;
       background-repeat: no-repeat;
+      cursor: pointer;
 
       &--not-selected:hover {
         border-color: $black-primary;

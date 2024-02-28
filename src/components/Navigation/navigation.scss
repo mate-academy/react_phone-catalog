@@ -46,6 +46,7 @@
       background-color: $color-white;
       background-repeat: no-repeat;
       background-position: center;
+      cursor: pointer;
 
       &--close {
         background-image: url(../../images-style/Icons/Close.svg);

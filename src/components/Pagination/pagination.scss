@@ -10,6 +10,7 @@
     border: 1px solid $light-gray-icons;
     background: no-repeat center;
     background-image: url(../../images-style/Icons/arrow-left-black.svg);
+    cursor: pointer;
 
     &--right {
       transform: rotateZ(180deg);
@@ -34,6 +35,7 @@
     width: 32px;
     border: 1px solid $super-light-gray;
     color: $black-primary;
+    cursor: pointer;
 
     &--active {
       color: $color-white;

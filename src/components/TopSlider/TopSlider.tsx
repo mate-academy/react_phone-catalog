@@ -4,8 +4,13 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import classNames from 'classnames';
 import { useEffect, useRef, useState } from 'react';
+import { IMAGES } from '../../images-style/images';
 
-const TOP_SLIDER_IMAGES = ['phones', 'tablets', 'accessories'];
+const TOP_SLIDER_IMAGES = [
+  IMAGES['banner-phones'],
+  IMAGES['banner-tablets'],
+  IMAGES['banner-accessories'],
+];
 
 export const HomePageTopSlider = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
@@ -57,7 +62,7 @@ export const HomePageTopSlider = () => {
           {TOP_SLIDER_IMAGES.map((sliderEL) => (
             <img
               style={{ translate: `${-100 * sliderIndex}%` }}
-              src={`_new/img/banner-${sliderEL}.png`}
+              src={sliderEL}
               alt={`${sliderEL}`}
               key={sliderEL}
               className="top-slider__picture"

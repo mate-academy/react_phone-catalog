@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { StorageContext } from '../../components/StorageContext';
 import { CartItemType } from '../../types/CartItemType';
 import { CartItem } from '../../components/CartItem';
+import { IMAGES } from '../../images-style/images';
 
 type CartPageProps = {
   setCartLength: React.Dispatch<number>,
@@ -48,7 +49,7 @@ export const CartPage: React.FC<CartPageProps> = ({
               onClick={() => navigate(-1)}
             >
               <img
-                src="_new/img/arrow-left-black.svg"
+                src={IMAGES['arrow-back']}
                 alt="arrow back"
                 className="back-button-arrow"
               />

@@ -5,6 +5,7 @@ import { HomePageTopSlider } from '../../components/TopSlider';
 import { getBrandNewProducts, getHotPriceProducts } from '../../helpers/api';
 import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { Product } from '../../types/Product';
+import { IMAGES } from '../../images-style/images';
 
 type HomePageProps = {
   setFavLength: React.Dispatch<number>,
@@ -57,7 +58,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 'main__shop-by-category-link-container-1')}
             >
               <img
-                src="_new/img/category-phones.png"
+                src={IMAGES['category-phones']}
                 alt="phones-category"
                 className={classNames('main__shop-by-category-link-photo',
                   'main__shop-by-category-link-photo-1')}
@@ -77,7 +78,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 'main__shop-by-category-link-container-2')}
             >
               <img
-                src="_new/img/category-tablets.png"
+                src={IMAGES['category-tablets']}
                 alt="tablets-category"
                 className={classNames('main__shop-by-category-link-photo',
                   'main__shop-by-category-link-photo-2')}
@@ -95,7 +96,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 'main__shop-by-category-link-container-3')}
             >
               <img
-                src="_new/img/category-accessories.png"
+                src={IMAGES['category-accessories']}
                 alt="accessories-category"
                 className={classNames('main__shop-by-category-link-photo',
                   'main__shop-by-category-link-photo-3')}

@@ -41,6 +41,7 @@
     background-position: center;
     background-repeat: no-repeat;
     transform: rotateZ(90deg);
+    cursor: pointer;
 
     &::before {
       content: "Back to top";

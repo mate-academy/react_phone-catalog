@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
+import { IMAGES } from '../../images-style/images';
 
 type BreadcrubsProps = {
   productName?: string,
@@ -22,14 +23,14 @@ export const Breadcrumbs: React.FC<BreadcrubsProps> = ({
         className="breadcrumbs__home"
       >
         <img
-          src="_new/img/Home.svg"
+          src={IMAGES.Home}
           alt="breadcrumbs-home"
           className="breadcrumbs__home-picture"
         />
       </Link>
 
       <img
-        src="_new/img/arrow-right.svg"
+        src={IMAGES['arrow-right']}
         alt="breadcrumbs-arrow"
         className="breadcrumbs__arrow"
       />
@@ -50,7 +51,7 @@ export const Breadcrumbs: React.FC<BreadcrubsProps> = ({
       {productName && (
         <>
           <img
-            src="_new/img/arrow-right.svg"
+            src={IMAGES['arrow-right']}
             alt="breadcrumbs-arrow"
             className="breadcrumbs__arrow"
           />

@@ -4,6 +4,7 @@
   width: fit-content;
   height: 16px;
   gap: 4px;
+  cursor: pointer;
 
   &-text {
     @extend %small-text;

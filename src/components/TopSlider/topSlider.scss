@@ -34,6 +34,7 @@
     border: 1px solid $light-gray-icons;
     background: no-repeat center;
     background-image: url(../../images-style/Icons/arrow-left-black.svg);
+    cursor: pointer;
 
     &--right {
       transform: rotateZ(180deg);

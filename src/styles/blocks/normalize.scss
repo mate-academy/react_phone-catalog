@@ -8,3 +8,9 @@
 html {
   scroll-behavior: smooth;
 }
+
+.app {
+  display: flex;
+  height: 99.9vh;
+  flex-direction: column;
+}

@@ -15,6 +15,7 @@ import { ProductsSlider } from '../../components/ProductsSlider/ProductsSlider';
 import { Breadcrumbs } from '../../components/Breadcrubs';
 import { StorageContext } from '../../components/StorageContext';
 import { Product } from '../../types/Product';
+import { IMAGES } from '../../images-style/images';
 
 type ProductDetailsPageProps = {
   productId: string,
@@ -52,6 +53,15 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
   } = useContext(StorageContext);
   const [isSelectedToFav, setIsSelectedToFav] = useState(false);
   const [isSelectedToCard, setIsSelectedToCard] = useState(false);
+
+  function imageExists(image_url: string) {
+    const http = new XMLHttpRequest();
+
+    http.open('HEAD', image_url, false);
+    http.send();
+
+    return http.status !== 404;
+  }
 
   useEffect(() => {
     if (isSelectedToCard !== findItemInCart(productId) && productDetails) {
@@ -145,7 +155,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
                     })}
                   >
                     <img
-                      src="_new/img/arrow-left-black.svg"
+                      src={IMAGES['arrow-back']}
                       alt="arrow back"
                       className="back-button-arrow"
                     />
@@ -165,30 +175,32 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
                   >
                     <div className="product-details__image-section">
                       <div className="product-details__images">
-                        {productDetails.images.map((image: string) => (
-                          <div
-                            key={image}
-                            className={classNames(
-                              'product-details__image-container',
-                              {
-                                'product-details__image-container--selected':
-                                  mainImage
-                                    ? image === mainImage
-                                    : image === productDetails.images[0],
-                              },
-                            )}
-                            onClick={() => setMainImage(image)}
-                          >
-                            <img
-                              src={`_new/${image}`}
-                              alt={image}
-                              className="product-details__image"
-                            />
-                          </div>
-                        ))}
+                        {productDetails.images.map((image: string) => {
+                          return imageExists(`https://mate-academy.github.io/react_phone-catalog/_new/${image}`) && (
+                            <div
+                              key={image}
+                              className={classNames(
+                                'product-details__image-container',
+                                {
+                                  'product-details__image-container--selected':
+                                    mainImage
+                                      ? image === mainImage
+                                      : image === productDetails.images[0],
+                                },
+                              )}
+                              onClick={() => setMainImage(image)}
+                            >
+                              <img
+                                src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
+                                alt={image}
+                                className="product-details__image"
+                              />
+                            </div>
+                          );
+                        })}
                       </div>
                       <img
-                        src={`_new/${mainImage || productDetails.images[0]}`}
+                        src={`https://mate-academy.github.io/react_phone-catalog/_new/${mainImage || productDetails.images[0]}`}
                         alt={mainImage || productDetails.images[0]}
                         className="product-details__main-image"
                       />
@@ -235,7 +247,7 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
                                   state={state}
                                   style={{
                                     backgroundImage:
-                                    `url(_new/img/${category.toLocaleLowerCase()}s`
+                                    `url(https://mate-academy.github.io/react_phone-catalog/_new/img/${category.toLocaleLowerCase()}s`
                                     + `/${namespaceId}/${availableColor}/00.jpg)`,
                                   }}
                                   className={classNames(

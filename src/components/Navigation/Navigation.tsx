@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { NavigationLink } from '../NavigationLink';
 import { debounce } from '../../helpers/functions';
 import { NewParamsProps } from '../../types/NewParams';
+import { IMAGES } from '../../images-style/images';
 
 type NavigationProps = {
   addParam: (newParams: NewParamsProps) => void;
@@ -73,7 +74,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         <Link to="/" className="logo">
           <img
             className="logo__img"
-            src="_new/img/Logo.svg"
+            src={IMAGES.logo}
             alt="Logo"
           />
         </Link>
