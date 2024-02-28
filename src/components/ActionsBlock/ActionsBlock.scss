@@ -1,0 +1,32 @@
+@import "../../styles/main";
+
+.actions-block {
+  &__button {
+    background-color: $main-color;
+    flex-grow: 1;
+
+    @extend %button;
+    @include box-shadow-button;
+
+    border: 1px solid transparent;
+
+    &--added {
+      color: $green-color;
+      background-color: $white-color;
+
+      @include border-default;
+      @include hover(box-shadow, none);
+    }
+  }
+
+  &__favourites {
+    background-color: $white-color;
+
+    @include border-icons;
+    @include hover(border-color, $main-color);
+
+    &--added {
+      border-color: $elements-color;
+    }
+  }
+}

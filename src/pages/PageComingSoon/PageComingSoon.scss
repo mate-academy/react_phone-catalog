@@ -1,0 +1,25 @@
+@import "../../styles/main";
+
+.page-coming-soon {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    margin-top: 80px;
+  }
+
+  &__image {
+    width: 300px;
+
+    @include for-phones {
+      width: 200px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__link {
+    width: 320px;
+  }
+}

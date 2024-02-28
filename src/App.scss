@@ -1,1 +1,29 @@
-// not empty
+@import "./styles/main";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+
+  @include for-phones {
+    max-width: 95%;
+    margin-left: 10px;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+
+  &__container {
+    display: flex;
+    max-width: 80%;
+    align-items: center;
+
+    @include for-phones {
+      max-width: 95%;
+    }
+  }
+}

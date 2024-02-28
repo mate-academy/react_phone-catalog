@@ -1,0 +1,29 @@
+@import "../../styles/main";
+
+.product-details-page {
+  overflow-x: hidden;
+
+  margin-bottom: 80px;
+}
+
+.product-details {
+  &__loader {
+    @include flex-center;
+
+    height: 100%;
+  }
+
+  &__back {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    background-color: $white-color;
+    margin-bottom: 16px;
+
+    @extend %links;
+  }
+}
+
+.you-may-also-like {
+  max-width: 100%;
+}

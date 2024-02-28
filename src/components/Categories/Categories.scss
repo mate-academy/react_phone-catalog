@@ -1,0 +1,24 @@
+@import "../../styles/main";
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__title {
+    margin-bottom: 24px;
+
+    @include for-phones {
+      font-family: Mont-SemiBold, sans-serif;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    gap: 16px;
+
+    @include for-phones {
+      flex-direction: column;
+    }
+  }
+}

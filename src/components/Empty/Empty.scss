@@ -1,0 +1,36 @@
+@import "../../styles/main";
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-block: 50px;
+
+  .title {
+    margin-bottom: 30px;
+    width: 500px;
+    text-align: center;
+
+    @include for-phones {
+      font-size: 18px;
+      margin-bottom: 50px;
+      width: 250px;
+    }
+  }
+
+  &__image {
+
+    width: 150px;
+
+    @include for-phones {
+      width: 110px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    width: 320px;
+  }
+}

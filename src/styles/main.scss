@@ -1,0 +1,26 @@
+@import "./vars";
+@import "./reset";
+@import "./fonts";
+@import "./icons";
+@import "./extends";
+@import "./mixins";
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 500;
+  color: $main-color;
+  min-height: 100vh;
+}
+
+.is-visible {
+  visibility: hidden;
+}
+
+.title {
+  color: $main-color;
+}

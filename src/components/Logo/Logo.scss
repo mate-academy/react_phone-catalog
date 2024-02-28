@@ -1,0 +1,11 @@
+@import "../../styles/main";
+
+.logo {
+  background-image: url('../../assets/icons/logo.svg');
+  width: 40px;
+  height: 24px;
+
+  // @include for-phones {
+  //   margin-left: 10px;
+  // }
+}
