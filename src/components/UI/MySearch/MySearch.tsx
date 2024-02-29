@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import './MySearch.scss';
 import { CategoryName } from '../../../types/product';
@@ -25,7 +25,7 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
     setSearchParams(newParams);
   }
 
-  const applyQuery = debounce(setSearchWith, 500);
+  const applyQuery = useCallback(debounce(setSearchWith, 1000), []);
 
   return (
     <div className="my-search">
@@ -52,7 +52,6 @@ export const MySearch: React.FC<Props> = ({ placeholder }) => {
               alt="search icon"
               className="my-search__icon"
             />
-
           </Link>
         )
         : (
