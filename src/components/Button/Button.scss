@@ -91,7 +91,7 @@
     min-width: 176px;
 
     @extend %buttons;
-    
+
     color: $c-white;
 
     background-color: $gray-primary;
@@ -104,7 +104,7 @@
       background-color: $c-white;
       color: #27ae60;
       box-shadow: none;
-      cursor: initial;
+      cursor: pointer;
     }
   }
 

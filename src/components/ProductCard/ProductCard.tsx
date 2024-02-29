@@ -9,7 +9,7 @@ import {
   addToFavorites,
   deleteFromFavorites,
 } from '../../store/slices/favSlice';
-import { addToCart } from '../../store/slices/cartSlice';
+import { addToCart, deleteFromCart } from '../../store/slices/cartSlice';
 import { Button } from '../Button/Button';
 import { ButtonType } from '../../helpers/types/ButtonType';
 import './ProductCard.scss';
@@ -56,10 +56,10 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
   const handleCartItemsChange = useCallback(
     (prod: Product) => {
       if (hasInCart) {
-        return;
+        dispatch(deleteFromCart(prod.id));
+      } else {
+        dispatch(addToCart(prod));
       }
-
-      dispatch(addToCart(prod));
     },
     [hasInCart],
   );
@@ -112,7 +112,6 @@ export const ProductCard: React.FC<Props> = ({ product, transform, type }) => {
             content={ButtonType.TEXT}
             onClick={() => handleCartItemsChange(product)}
             className={cn({ active: hasInCart })}
-            disabled={hasInCart}
           >
             {hasInCart ? 'Added to cart' : 'Add to cart'}
           </Button>
