@@ -143,7 +143,10 @@ export const ProductsPage: React.FC<Props> = ({ title, navTitle, type }) => {
     return (
       <div className="productsPage">
         <div className="productsPage__nav">
-          <Link to="/" className="productsPage__nav__home" />
+          <Link
+            to="/"
+            className="productsPage__nav__home"
+          />
           <div className="arrow arrow-right" />
           <div className="productsPage__nav__title">{navTitle}</div>
         </div>

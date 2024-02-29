@@ -142,6 +142,10 @@
           display: flex;
           gap: 8px;
 
+          &__text {
+            color: $primary-color;
+          }
+
           &__button {
             width: 56px;
             height: 32px;
@@ -149,15 +153,6 @@
             border: 1px solid $icon-color;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
-
-            &:hover {
-              background-color: $primary-color;
-              border: 1px solid $primary-color;
-
-              .productPage__details__specs__capacity__block__text {
-                color: #fff;
-              }
-            }
 
             &__active {
               background-color: $primary-color;
@@ -168,10 +163,15 @@
                 color: #fff;
               }
             }
-          }
 
-          &__text {
-            color: $primary-color;
+            &:hover {
+              background-color: $primary-color;
+              border: 1px solid $primary-color;
+
+              .productPage__details__specs__capacity__block__text {
+                color: #fff;
+              }
+            }
           }
         }
       }
@@ -206,6 +206,10 @@
             box-shadow: 0 3px 13px 0 #17203142;
           }
 
+          &__text {
+            color: #fff;
+          }
+
           &__added {
             background-color: #fff;
             border: 1px solid $elements-color;
@@ -217,10 +221,6 @@
             &:hover {
               box-shadow: none;
             }
-          }
-
-          &__text {
-            color: #fff;
           }
         }
 
@@ -257,6 +257,7 @@
         }
       }
     }
+
     &__about {
       grid-column: span 12;
 

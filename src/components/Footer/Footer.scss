@@ -48,6 +48,17 @@
     column-gap: 64px;
   }
 
+  &__border-arrow {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid $elements-color;
+    transition: border-color 0.3s ease-in-out;
+  }
+
   &__aligned-right {
     position: relative;
     display: flex;
@@ -61,20 +72,5 @@
         border-color: $primary-color;
       }
     }
-  }
-
-  &__border-arrow {
-    height: 32px;
-    width: 32px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-
-    border: 1px solid $elements-color;
-
-    transition: border-color 0.3s ease-in-out;
   }
 }

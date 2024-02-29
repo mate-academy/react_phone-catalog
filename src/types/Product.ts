@@ -12,7 +12,7 @@ export interface Product {
   ram: string;
   year: number;
   image: string;
-};
+}
 
 export interface CardProduct extends Product {
   quantity: number;
