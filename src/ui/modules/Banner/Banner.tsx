@@ -20,16 +20,13 @@ export const Banner: React.FC<Props> = ({ className = '' }) => {
         className="banner"
       >
         <SliderItem>
-          <img
-            src="./_new/img/banner-accessories.png"
-            alt="Mobile Accessories"
-          />
+          <img src="./img/banner-accessories.png" alt="Mobile Accessories" />
         </SliderItem>
         <SliderItem>
-          <img src="./_new/img/banner-tablets.png" alt="Tablets" />
+          <img src="./img/banner-tablets.png" alt="Tablets" />
         </SliderItem>
         <SliderItem>
-          <img src="./_new/img/banner-phones.png" alt="Mobile Phones" />
+          <img src="./img/banner-phones.png" alt="Mobile Phones" />
         </SliderItem>
       </Slider>
     </section>
