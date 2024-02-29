@@ -1,35 +1,48 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-confusing-arrow */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import { API_URL, getProductDetails } from '../utils/api-phones';
+// import { shuffleArrays } from '../utils/shuffleArrays';
 import { ProductDetails } from '../types/ProductDetails';
 import { Error } from '../types/Error';
 import { Categories } from '../types/Categories';
 import { BreadCrumbs } from '../components/BreadCrumbs';
 import { Loader } from '../components/Loader';
 import { NotFoundPage } from './NotFoundPage';
-
-import '../styles/ProductDetailsPage.scss';
 import { Options } from '../components/Options';
 import { About } from '../components/About';
 import { TechSpecs } from '../components/TechSpecs';
+import { ProductsSlider } from '../components/ProductsSlider';
+import { BackButton } from '../components/BackButton';
+
+import '../styles/ProductDetailsPage.scss';
+import { Product } from '../types/Product';
+import { shuffleArrays } from '../utils/shuffleArrays';
+import { GlobalContext } from '../GlobalContext';
 
 export const ProductDetailsPage: React.FC = () => {
-  const navigate = useNavigate();
   const { productId } = useParams();
+  const { products, isLoading, setIsLoading } = useContext(GlobalContext);
 
-  const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [shuffledProducts, setShuffledProducts] = useState<Product[]>(products);
   const [selectedImage, setSelectedImage] = useState<string | undefined>('');
+
+  const randomSliderTitle = 'You may also like';
 
   useEffect(() => {
     if (productId) {
+      setIsLoading(true);
+      window.scrollTo(0, 0);
+
       getProductDetails(productId)
         .then((resolve) => {
           setProduct(resolve);
+          setShuffledProducts(shuffleArrays(products));
           setSelectedImage(resolve.images[0]);
         })
         .catch(() => Error.Loading)
@@ -37,7 +50,7 @@ export const ProductDetailsPage: React.FC = () => {
           setIsLoading(false);
         });
     }
-  }, [productId]);
+  }, [productId, products, setIsLoading]);
 
   if (!product) {
     return (
@@ -50,8 +63,6 @@ export const ProductDetailsPage: React.FC = () => {
 
   const { images, name, description } = product;
 
-  console.log(product);
-
   return (
     <main className={cn('product-details-page', {
       'product-details-page--is-loading': isLoading,
@@ -62,65 +73,67 @@ export const ProductDetailsPage: React.FC = () => {
         productName={name}
       />
 
-      <button
-        type="button"
-        className="product-details-page__button-back"
-        onClick={() => navigate(-1)}
-      >
-        Back
-      </button>
+      <BackButton />
 
       <div className="product-details-page__content">
-        <h2 className="product-details-page__title">
-          {name}
-        </h2>
+        <div className="product-details-page__content-top">
+          <h2 className="product-details-page__title">
+            {name}
+          </h2>
 
-        <button
-          type="button"
-          className="product-details-page__gallery-selected"
-        >
-          <img
-            src={API_URL + selectedImage}
-            className="product-details-page__gallery-image"
-            alt="phone"
-          />
-        </button>
+          <div className="product-details-page__gallery-selected">
+            <img
+              src={API_URL + selectedImage}
+              className="product-details-page__gallery-image"
+              alt="phone"
+            />
+          </div>
 
-        <ul className="product-details-page__gallery-list">
-          {images.map(image => (
-            <li key={image}>
-              <button
-                type="button"
-                className={cn('product-details-page__gallery-button', {
-                  'product-details-page__gallery-button--active':
-                    image === selectedImage,
-                })}
-                onClick={() => setSelectedImage(image)}
-              >
-                <img
-                  src={API_URL + image}
-                  className="product-details-page__gallery-image"
-                  alt="phone"
-                />
-              </button>
-            </li>
-          ))}
-        </ul>
+          <ul className="product-details-page__gallery-list">
+            {images.map(image => (
+              <li key={image}>
+                <button
+                  type="button"
+                  className={cn('product-details-page__gallery-button', {
+                    'product-details-page__gallery-button--active':
+                      image === selectedImage,
+                  })}
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <img
+                    src={API_URL + image}
+                    className="product-details-page__gallery-image"
+                    alt="phone"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
 
-        <section className="product-details-page__options">
-          <Options product={product} />
-        </section>
+          <section className="product-details-page__options">
+            <Options product={product} />
+          </section>
+        </div>
 
-        <section
-          className="product-details-page__about"
-          data-cy="productDescription"
-        >
-          <About description={description} />
-        </section>
+        <div className="product-details-page__content-button">
+          <section
+            className="product-details-page__about"
+            data-cy="productDescription"
+          >
+            <About description={description} />
+          </section>
 
-        <section className="product-details-page__tech-specs">
-          <TechSpecs />
-        </section>
+          <section
+            className="product-details-page__tech-specs"
+          >
+            <TechSpecs product={product} />
+          </section>
+        </div>
+
+        <ProductsSlider
+          products={shuffledProducts}
+          title={randomSliderTitle}
+        />
 
       </div>
 

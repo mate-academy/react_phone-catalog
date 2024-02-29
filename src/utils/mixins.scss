@@ -46,11 +46,11 @@
   font-weight: $bold-font;
 }
 
-// @mixin onDesktop {
-//   @media (min-width: 1174px) {
-//     @content;
-//   }
-// }
+@mixin onDesktop {
+  @media (min-width: 1201px) {
+    @content;
+  }
+}
 
 @mixin onTablet {
   @media (min-width: 640px) and (max-width: 1200px) {

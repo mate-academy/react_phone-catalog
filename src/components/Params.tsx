@@ -13,17 +13,28 @@ interface Props {
 export const Params: React.FC<Props> = ({ product, params }) => {
   return (
     <div className="params">
-      {params.map(item => (
-        <div className="params__param" key={item}>
-          <span className="params__param-name">
-            {item}
-          </span>
+      {params.map(name => {
+        const key = name === 'Built in memory' ? 'capacity' : name;
 
-          <span className="params__param-value">
-            {product[item.toLowerCase() as keyof (Product | ProductDetails)]}
-          </span>
-        </div>
-      ))}
+        let value
+          = product[key.toLowerCase() as keyof (Product | ProductDetails)];
+
+        if (Array.isArray(value)) {
+          value = value.join(', ');
+        }
+
+        return (
+          <div className="params__param" key={key}>
+            <span className="params__param-name">
+              {name}
+            </span>
+
+            <span className="params__param-value">
+              {value}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 };

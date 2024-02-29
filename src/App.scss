@@ -2,8 +2,6 @@
 @import "./utils/variables.scss";
 @import "./utils/mixins.scss";
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -48,7 +46,7 @@ select:focus {
   border-color: transparent;
 }
 
-.App {
+.app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -74,9 +72,7 @@ select:focus {
 
     @include onMobile {
       max-width: 591px;
-      min-width: 320px;
+      min-width: 300px;
     }
   }
 }
-
-

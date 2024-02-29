@@ -21,22 +21,30 @@ export const HomePage: React.FC = () => {
   const brandNewProducts = [...hotPriceProducts].reverse();
 
   return (
-    <main className="HomePage">
+    <main className="home-page">
       <h1 style={{ display: 'none' }}>Home</h1>
 
-      <PictureSlider />
+      <section className="home-page__section">
+        <PictureSlider />
+      </section>
 
-      <ProductsSlider
-        products={hotPriceProducts}
-        title={homePageTitles.hotPrices}
-      />
+      <section className="home-page__section">
+        <ProductsSlider
+          products={hotPriceProducts}
+          title={homePageTitles.hotPrices}
+        />
+      </section>
 
-      <Category />
+      <section className="home-page__section">
+        <Category />
+      </section>
 
-      <ProductsSlider
-        products={brandNewProducts}
-        title={homePageTitles.brandNewModels}
-      />
+      <section className="home-page__section">
+        <ProductsSlider
+          products={brandNewProducts}
+          title={homePageTitles.brandNewModels}
+        />
+      </section>
 
     </main>
   );

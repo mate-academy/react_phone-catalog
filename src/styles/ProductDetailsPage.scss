@@ -2,22 +2,20 @@
 @import "../utils/mixins.scss";
 
 .product-details-page {
-  &__button-back {
-    padding: 0 15px 0 20px;
-    margin-bottom: 16px;
-    background: url(../icons/arrow-left.svg) no-repeat left;
-  }
+  // &__content {}
 
-  &__content {
+  &__content-top {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     column-gap: 16px;
+    margin-bottom: 80px;
 
     @include onTablet {
       grid-template-columns: repeat(12, 1fr);
     }
 
     @include onMobile {
+      margin-bottom: 56px;
       display: block;
     }
   }
@@ -30,21 +28,32 @@
     line-height: 41px;
     margin-bottom: 47px;
 
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
     @include onMobile {
       font-size: 22px;
       line-height: 140%;
-      letter-spacing: 0%;
+      margin-bottom: 32px;
     }
   }
 
   &__gallery-selected {
+    display: flex;
+    justify-content: center;
     grid-column: 3/ span 10;
     grid-row: 2;
     height: 464px;
 
     @include onTablet {
       grid-column: 2/ span 6;
-      height: 287px;
+      height: 350px;
+    }
+
+    @include onMobile {
+      height: 288px;
+      margin-bottom: 16px;
     }
   }
 
@@ -60,7 +69,10 @@
     }
 
     @include onMobile {
+      margin-bottom: 40px;
       flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
     }
   }
 
@@ -76,7 +88,12 @@
     }
 
     @include onTablet {
-      height: 50px;
+      height: 55px;
+    }
+
+    @include onMobile {
+      width: 55px;
+      height: 55px;
     }
   }
 
@@ -87,15 +104,39 @@
 
   &__options {
     grid-column: 14/ span 7;
-    margin-bottom: 80px;
 
     @include onTablet {
-        grid-column: 8/ span 5;
-      }
+      grid-column: 8/ span 5;
+    }
+  }
+
+  &__content-button {
+    @include onDesktop {
+      margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
+    }
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onMobile {
+      margin-bottom: 56px;
+    }
   }
 
   &__about {
     grid-column: 1/ span 12;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onMobile {
+      margin-bottom: 56px;
+    }
   }
 
   &__tech-specs {

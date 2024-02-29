@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Product } from '../types/Product';
-
-import '../styles/ProductCard.scss';
 import { API_URL } from '../utils/api-phones';
 import { ButtonsCartFav } from './ButtonsCartFav';
 import { Params } from './Params';
+
+import '../styles/ProductCard.scss';
 
 interface Props {
   product: Product;
@@ -15,9 +15,14 @@ interface Props {
 const PRODUCT_CARD_PARAMS = ['Screen', 'Capacity', 'RAM'];
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { productId } = useParams();
+
   return (
     <div className="product-card">
-      <Link to={product.itemId} className="product-card__link">
+      <Link
+        to={productId ? `../${product.itemId}` : product.itemId}
+        className="product-card__link"
+      >
         <div className="product-card__image-container">
           <img
             className="product-card__image"
@@ -39,7 +44,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       </Link>
 
-      <ButtonsCartFav />
+      <ButtonsCartFav product={product} />
     </div>
   );
 };

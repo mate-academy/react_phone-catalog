@@ -6,6 +6,10 @@ export interface ContextType {
   phones: Product[],
   tablets: Product[],
   accessories: Product[],
+  favList: Product[],
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  getNewPathname: (option: string, index: number) => string,
+  addRemoveFavList: (product: Product) => void,
   isLoading: boolean,
 }

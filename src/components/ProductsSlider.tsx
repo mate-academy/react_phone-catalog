@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
-  const frameSize = 4;
+  const frameSize = 2;
   const step = frameSize;
   const itemWidth = 272;
   const gap = 16;
@@ -50,7 +50,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   };
 
   return (
-    <section className="ProductsSlider HomePage-section">
+    <section className="ProductsSlider">
       <div className="ProductsSlider__top">
         <h2 className="ProductsSlider__title">
           {title}

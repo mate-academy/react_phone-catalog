@@ -16,7 +16,12 @@ export const Root = () => (
     <GlobalProvider>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
+          {/* <Route index element={<HomePage />} /> */}
+
+          <Route path="/">
+            <Route index element={<HomePage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
 
           <Route path="phones">
             <Route index element={<PhonesPage />} />

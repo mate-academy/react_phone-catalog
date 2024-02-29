@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
@@ -6,6 +6,8 @@ import '../styles/Options.scss';
 import { ProductDetails } from '../types/ProductDetails';
 import { ButtonsCartFav } from './ButtonsCartFav';
 import { Params } from './Params';
+// import { getNewPathname } from '../utils/getNewPathname';
+import { GlobalContext } from '../GlobalContext';
 
 interface Props {
   product: ProductDetails
@@ -14,6 +16,8 @@ interface Props {
 const OPTIONS_PARAMS = ['Screen', 'Resolution', 'Processor', 'RAM'];
 
 export const Options: React.FC<Props> = ({ product }) => {
+  const { getNewPathname, products } = useContext(GlobalContext);
+
   const {
     color,
     colorsAvailable,
@@ -21,9 +25,15 @@ export const Options: React.FC<Props> = ({ product }) => {
     capacityAvailable,
     priceDiscount,
     priceRegular,
+    id,
   } = product;
 
+  const currentProduct = products.find(item => (
+    item.itemId === id
+  ));
+
   // console.log(product);
+  // console.log(currentProduct);
 
   return (
     <section className="options">
@@ -41,7 +51,7 @@ export const Options: React.FC<Props> = ({ product }) => {
               })}
             >
               <Link
-                to="/"
+                to={`../${getNewPathname(col, -1)}`}
                 className="options__colors-link"
                 style={{ backgroundColor: col }}
               />
@@ -68,7 +78,7 @@ export const Options: React.FC<Props> = ({ product }) => {
                 })}
               >
                 <Link
-                  to="/"
+                  to={`../${getNewPathname(cap.toLowerCase(), -2)}`}
                   className={cn('options__capacity-link', {
                     'options__capacity-link--active': isActive,
                   })}
@@ -87,9 +97,11 @@ export const Options: React.FC<Props> = ({ product }) => {
         <span className="options__full-price">{`$${priceRegular}`}</span>
       </div>
 
-      <div className="options__buttons">
-        <ButtonsCartFav height={48} />
-      </div>
+      {currentProduct && (
+        <div className="options__buttons">
+          <ButtonsCartFav product={currentProduct} height={48} />
+        </div>
+      )}
 
       <Params product={product} params={OPTIONS_PARAMS} />
     </section>

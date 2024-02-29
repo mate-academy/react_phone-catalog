@@ -28,7 +28,7 @@ export const PictureSlider: React.FC = () => {
   };
 
   return (
-    <section className="PictureSlider HomePage-section">
+    <div className="PictureSlider">
       <div className="PictureSlider__top">
         <button
           type="button"
@@ -39,10 +39,9 @@ export const PictureSlider: React.FC = () => {
         <div className="PictureSlider__photo-container">
           <ul className="PictureSlider__photos-list" style={transform}>
             {bannerPhotos.map(photo => (
-              <li className="PictureSlider__photos-item">
+              <li key={photo} className="PictureSlider__photos-item">
                 <Link to={photo} className="PictureSlider__link">
                   <img
-                    key={photo}
                     className="PictureSlider__photo"
                     src={`${API_URL}img/banner-${photo}.png`}
                     alt=""
@@ -76,6 +75,6 @@ export const PictureSlider: React.FC = () => {
         ))}
 
       </div>
-    </section>
+    </div>
   );
 };

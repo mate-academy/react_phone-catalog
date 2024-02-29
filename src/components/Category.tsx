@@ -17,7 +17,7 @@ export const Category: React.FC = () => {
   };
 
   return (
-    <section className="Category HomePage-section">
+    <section className="Category">
       <h2 className="Category__title">
         Shop by category
       </h2>

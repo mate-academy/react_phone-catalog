@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
 export const App: React.FC = () => (
-  <div className="App">
+  <div className="app">
     <Header />
 
     <div className="main-content">
