@@ -1,0 +1,63 @@
+@import "../../style/utils/vars.scss";
+
+.productSlider {
+  padding-bottom: 80px;
+
+  &__block {
+    display: flex;
+    padding-bottom: 24px;
+
+    justify-content: space-between;
+    align-items: center;
+
+    &--title {
+
+      font-size: 32px;
+
+      color: $primary-color;
+    }
+
+    &--button {
+      padding: 8px;
+
+      box-sizing: border-box;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 32px;
+      width: 32px;
+
+      cursor: pointer;
+
+      background-color: #fff;
+      border: 1px solid $icon-color;
+
+      transition: border-color 0.3s ease-in-out;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &:disabled {
+        cursor: default;
+
+        &:hover {
+          border-color: $icon-color;
+          transition: border-color 0.3s;
+        }
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      column-gap: 16px;
+    }
+  }
+
+  &__carousel {
+    display: flex;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,276 @@
+@import "./utils/vars.scss";
+@import "./utils/fonts.scss";
+@import "../components/Footer/Footer.scss";
+@import "../components/Header/Header.scss";
+@import "../pages/HomePage/HomePage.scss";
+@import "../components/Slider/Slider.scss";
+@import "../components/ProductCard/ProductCard.scss";
+@import "../components/ProductSlider/ProductSlider.scss";
+@import "../components/ShopByCategory/ShopByCategory.scss";
+@import "../pages/ProductsPage/ProductsPage.scss";
+@import "../components/Pagination/Pagination.scss";
+@import "../components/Cart/Cart.scss";
+@import "../components/CartItem/CartItem.scss";
+@import "../pages/ProductPage/ProductPage.scss";
+@import "../components/Loader/Loader.scss";
+@import "../components/SmallLoader/SmallLoader.scss";
+@import "../components/Favorite/Favorite.scss";
+
+html {
+  font-family: "Mont-Regular", sans-serif;
+}
+
+* {
+  margin: 0;
+  text-decoration: none;
+  color: $secondary-color;
+  font-size: 12px;
+  scroll-behavior: smooth;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.secondary-color {
+  color: $secondary-color;
+}
+
+.icons-color {
+  color: $icon-color;
+}
+
+.elements-color {
+  color: $elements-color;
+}
+
+.bg-color {
+  color: $bg-color;
+}
+
+.green-color {
+  color: #27ae60;
+}
+
+.red-color {
+  color: #eb5757;
+}
+
+.h1 {
+  font-size: 32px;
+  line-height: 41px;
+  font-family: "Mont-Bold", sans-serif;
+}
+
+.h2 {
+  font-size: 22px;
+  line-height: 31px;
+  font-family: "Mont-Bold", sans-serif;
+}
+
+.h3 {
+  font-size: 20px;
+  line-height: 26px;
+  font-family: "Mont-SemiBold", sans-serif;
+}
+
+.buttons-text {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Mont-SemiBold", sans-serif;
+}
+
+.body-text {
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Mont-Regular", sans-serif;
+}
+
+.small-text {
+  font-size: 12px;
+  line-height: 15px;
+  font-family: "Mont-SemiBold", sans-serif;
+}
+
+.uppercase-text {
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+  font-family: "Mont-Bold", sans-serif;
+}
+
+.black {
+  background-color: #000;
+}
+
+.gold {
+  background-color: gold;
+}
+
+.rosegold {
+  background-color: #f7c5ad;
+}
+
+.silver {
+  background-color: silver;
+}
+
+.spacegray {
+  background-color: #4f5b66;
+}
+
+.green {
+  background-color: green;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.red {
+  background-color: red;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.midnightgreen {
+  background-color: #004953;
+}
+
+.coral {
+  background-color: coral;
+}
+
+.container {
+  margin-inline: 152px;
+
+  max-width: 1136px;
+}
+
+.bold {
+  font-family: "Mont-Bold", sans-serif;
+}
+
+.medium {
+  font-family: "Mont-SemiBold", sans-serif;
+}
+
+.normal {
+  font-family: "Mont-Regular", sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
+  row-gap: 40px;
+}
+
+.primary {
+  color: $primary-color;
+}
+
+.arrow {
+  height: 16px;
+  width: 16px;
+}
+
+.arrow-down {
+  background-image: url(../img/ArrowUpDisabled.svg);
+}
+
+.arrow-up {
+  background-image: url(../img/ArrowUp.svg);
+}
+
+.arrow-left {
+  background-image: url(../img/ArrowLeft.svg);
+
+  &.productSlider__block--button:disabled {
+    background-image: url(../img/ArrowLeftDisabled.svg);
+  }
+
+  &--disabled {
+    background-image: url(../img/ArrowLeftDisabled.svg);
+
+    transition: background-image 0.3s ease-in-out;
+  }
+}
+
+.arrow-right {
+  background-image: url(../img/ArrowRight.svg);
+
+  &.productSlider__block--button:disabled {
+    background-image: url(../img/ArrowRightDisabled.svg);
+  }
+
+  &--disabled {
+    background-image: url(../img/ArrowRightDisabled.svg);
+  }
+}
+
+.favorite {
+  background-image: url(../img/Like.svg);
+}
+
+.favoriteSelected {
+  background-image: url(../img/LikeSelected.svg);
+}
+
+.icon {
+  background-size: 100% 100%;
+
+  width: 16px;
+  height: 16px;
+
+  transition: background-image 0.3s ease-in-out;
+
+  background-origin: content-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &.favorite {
+    background-image: url(../img/Like.svg);
+  }
+
+  &.cart {
+    background-image: url(../img/Cart.svg);
+  }
+
+  &.search {
+    background-image: url(../img/Search.svg);
+  }
+
+  &.close {
+    background-image: url(../img/Close.svg);
+  }
+
+  &__active {
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary-color;
+      transform: scale(1);
+      transform-origin: center;
+    }
+  }
+}

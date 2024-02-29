@@ -1,0 +1,106 @@
+@import "../../style/utils/vars.scss";
+
+.slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-content: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 72px;
+
+  &__button {
+    width: 32px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 1px solid $icon-color;
+    background-color: transparent;
+
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $primary-color;
+      cursor: pointer;
+    }
+  }
+
+  &__carousel {
+    width: 1040px;
+    height: 400px;
+    padding: 0;
+    list-style: none;
+
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__slide {
+    position: absolute;
+    height: 400px;
+    width: 1040px;
+    z-index: -1;
+    transition: all 0.7s ease-in-out;
+
+    &__current {
+      z-index: 1;
+    }
+
+    &__next {
+      transform: translateX(100%);
+    }
+
+    &__prev {
+      transform: translateX(-100%);
+    }
+  }
+
+  &__phones {
+    background-image: url(../../img/banner-phones.png);
+    background-size: contain;
+  }
+
+  &__tablets {
+    background-image: url(../../img/banner-tablets.png);
+    background-size: cover;
+    background-position: 0 -100px;
+  }
+
+  &__accessories {
+    background-image: url(../../img/banner-accessories.png);
+    background-size: cover;
+    background-position: 0 -140px;
+  }
+
+}
+
+.dot-container {
+  width: 80px;
+  padding: 18px 5px 0;
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 9px;
+
+  order: 2;
+}
+
+.dot {
+  width: 14px;
+  height: 4px;
+  background-color: $elements-color;
+
+  &__active {
+    background-color: $primary-color;
+  }
+
+  transition: background-color 0.7s ease-in-out;
+}

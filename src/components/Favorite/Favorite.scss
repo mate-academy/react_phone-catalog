@@ -1,0 +1,32 @@
+.favoritePage {
+  width: 100%;
+
+  &__nav {
+    display: flex;
+    gap: 8px;
+    padding-top: 24px;
+    align-items: center;
+    min-width: 1136px;
+
+    &__home {
+      width: 16px;
+      height: 16px;
+      background-image: url(../../img/Home.svg);
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    color: $primary-color;
+    padding-top: 40px;
+  }
+
+  &__subtitle {
+    padding-top: 8px;
+  }
+
+  &__list {
+    display: flex;
+    padding-top: 24px;
+  }
+}

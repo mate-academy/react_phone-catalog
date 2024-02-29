@@ -1,0 +1,135 @@
+.pagination {
+  z-index: 1;
+  padding-top: 40px;
+
+  &__choose {
+    display: flex;
+    gap: 16px;
+
+    &__title {
+      padding-bottom: 4px;
+    }
+  }
+
+  &__choose__dropdown {
+    height: 40px;
+    width: 176px;
+    z-index: 2;
+    cursor: pointer;
+
+    &__title {
+      color: $primary-color;
+    }
+
+    &__button {
+      transition: all 0.3s ease;
+
+
+      &.arrow-down {
+        transform: rotate(180deg);
+      }
+    }
+
+    &__item {
+      padding-block: 6px;
+      padding-inline: 12px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        color: $primary-color;
+        background-color: $bg-color;
+      }
+    }
+
+    &__items {
+      opacity: 0;
+      z-index: -1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 176px;
+      top: 4px;
+      padding-block: 8px;
+      box-sizing: border-box;
+      border: 1px solid $elements-color;
+      background-color: #fff;
+      box-shadow: 0 2px 15px 0 #0000000d;
+      transition: all 0.3s ease-in-out;
+      transform: translateY(-10px);
+
+      &.visible {
+        opacity: 1;
+        z-index: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__choose__dropdown__block {
+    padding: 12px 10px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $icon-color;
+    transition: border 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    z-index: 1;
+
+    &__items {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__pageList {
+    display: flex;
+    align-self: center;
+    padding-bottom: 80px;
+    gap: 16px;
+
+    &__item {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $elements-color;
+      box-sizing: border-box;
+      cursor: pointer;
+      font-size: 14px;
+      color: #000;
+
+      &__button {
+        background-color: #fff;
+
+        &:disabled {
+          cursor: default;
+          transition: border-color 0.3s;
+
+          &:hover {
+            border-color: $elements-color;
+          }
+        }
+      }
+
+      &--active {
+        background-color: $primary-color;
+        color: #fff;
+        border: none;
+      }
+
+      &:hover {
+        border-color: $primary-color;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}

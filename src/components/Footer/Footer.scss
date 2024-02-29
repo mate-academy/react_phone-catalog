@@ -1,0 +1,80 @@
+@import "../../style/utils/vars.scss";
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 152px;
+  border-top: 1px solid $elements-color;
+  position: relative;
+  box-sizing: border-box;
+  margin-top: auto;
+
+  &__block {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin-inline: 152px;
+  }
+
+  &__link {
+    position: relative;
+    font-size: 12px;
+    line-height: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    color: $elements-color;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__aligned-left {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 64px;
+  }
+
+  &__aligned-center {
+    display: flex;
+    align-items: center;
+    column-gap: 64px;
+  }
+
+  &__aligned-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    &:hover {
+      cursor: pointer;
+
+      .footer__border-arrow {
+        border-color: $primary-color;
+      }
+    }
+  }
+
+  &__border-arrow {
+    height: 32px;
+    width: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 1px solid $elements-color;
+
+    transition: border-color 0.3s ease-in-out;
+  }
+}

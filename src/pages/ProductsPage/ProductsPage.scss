@@ -1,0 +1,45 @@
+@import "../../style/utils/vars.scss";
+
+.productsPage {
+  &__search {
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    z-index: 1;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 8px;
+    padding-top: 24px;
+    align-items: center;
+
+    &__home {
+      width: 16px;
+      height: 16px;
+      background-image: url(../../img/Home.svg);
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    color: $primary-color;
+    padding-top: 40px;
+  }
+
+  &__subtitle {
+    padding-top: 8px;
+  }
+
+  &__error {
+    margin-top: 40px;
+    padding: 100px;
+    height: 40px;
+    width: 80%;
+    font-size: 26px;
+    border-radius: 8px;
+    border: 1px $red solid;
+    background-color: $red;
+    color: #fff;
+  }
+}

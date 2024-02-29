@@ -1,0 +1,97 @@
+.shopByCategory {
+  padding-bottom: 80px;
+
+  &__title {
+    font-size: 32px;
+
+    color: $primary-color;
+  }
+
+  &__block {
+    display: flex;
+
+    padding-top: 24px;
+
+    column-gap: 16px;
+
+    &__background {
+      &:hover {
+        transition: box-shadow 0.3s ease-in-out;
+      }
+    }
+
+    &__subtitle {
+      padding-top: 24px;
+
+      font-size: 20px;
+      color: $primary-color;
+    }
+
+    &__phones {
+      &__img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 368px;
+        width: 368px;
+      }
+
+      &__background {
+        height: 368px;
+        width: 368px;
+        background-color: #fcdbc1;
+
+        position: relative;
+
+        &:hover {
+          box-shadow: 0 3px 13px 0 #fcdbc1;
+        }
+      }
+    }
+
+    &__tablets {
+      &__img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 368px;
+        width: 368px;
+
+      }
+
+      &__background {
+        height: 368px;
+        width: 368px;
+        background-color: #8d8d92;
+
+        position: relative;
+
+        &:hover {
+          box-shadow: 0 3px 13px 0  #8d8d92;
+        }
+      }
+    }
+
+    &__accessories {
+      &__img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 368px;
+        width: 368px;
+      }
+
+      &__background {
+        height: 368px;
+        width: 368px;
+        background-color: #973d5f;
+
+        position: relative;
+
+        &:hover {
+          box-shadow: 0 3px 13px 0 #973d5f;
+        }
+      }
+    }
+  }
+}
