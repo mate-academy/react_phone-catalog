@@ -90,8 +90,11 @@
 
   &__counter {
     display: flex;
-    gap: 11px;
     align-items: center;
+  }
+  &__quantity {
+    width: 40px;
+    text-align: center;
   }
 
   &__control {
@@ -132,7 +135,7 @@
     @include on-mobile-l {
       grid-column: -1/-2;
       grid-row: 1;
-      justify-self: center;
+      justify-self: flex-end;
     }
   }
 }

@@ -92,7 +92,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             onClick={() => handleChangeCounter(Action.remove)}
           />
 
-          <p>{counter}</p>
+          <p className="cart-item__quantity">{counter}</p>
 
           <button
             type="button"
