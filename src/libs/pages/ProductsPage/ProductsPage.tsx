@@ -207,7 +207,7 @@ export const ProductsPage: React.FC<Props> = ({
         />
       )}
 
-      {hasErrorMessage && <ErrorMessage title={`Failed to fetch ${categoryTitle.toLowerCase()} `}/>}
+      {hasErrorMessage && <ErrorMessage title={`Failed to fetch ${categoryTitle.toLowerCase()} `} />}
 
     </div>
   );

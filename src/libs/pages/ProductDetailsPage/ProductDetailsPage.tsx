@@ -22,7 +22,7 @@ import {
   BuyButtons,
   Loader,
   ProductsSlider,
-  ErrorMessage
+  ErrorMessage,
 } from '../../components';
 
 import './ProductDetailsPage.scss';

@@ -10,7 +10,7 @@ import {
   ProductsSlider,
   Banner,
   Loader,
-  ErrorMessage
+  ErrorMessage,
 } from '../../components';
 
 export const HomePage = () => {
