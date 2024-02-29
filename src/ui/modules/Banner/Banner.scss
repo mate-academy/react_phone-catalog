@@ -1,0 +1,56 @@
+@import '../../../styles/index';
+
+$control-arrow-width-mobile: 20px;
+$control-arrow-width-desktop: 32px;
+$gap-arrow-slidetrack: 16px;
+
+.banner {
+
+  &__slider {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__arrow {
+    display: none;
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+    max-height: 400px;
+
+    &::after {
+      content: "";
+      display: block;
+      padding: 0 0 100%;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
+
+  @include media-desktop {
+
+    &__slider {
+      padding-left: $control-arrow-width-desktop + $gap-arrow-slidetrack;
+      padding-right: $control-arrow-width-desktop + $gap-arrow-slidetrack;
+    }
+
+    &__arrow {
+      display: block;
+      width: $control-arrow-width-desktop;
+    }
+  }
+}

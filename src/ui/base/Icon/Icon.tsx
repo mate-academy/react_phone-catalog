@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import Icons from '../../../assets/svg/sprite.svg';
 import { IconsId } from '../../../types/IconsId';
 
@@ -20,7 +21,7 @@ export const Icon: React.FC<Props> = ({
   counter,
 }) => {
   return (
-    <div className={`icon ${className}`}>
+    <div className={clsx('icon', className)}>
       <svg width={width} height={height}>
         <use href={`${Icons}#icon-${id}`} />
       </svg>

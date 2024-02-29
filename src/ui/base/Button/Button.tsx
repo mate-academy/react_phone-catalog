@@ -18,7 +18,7 @@ const MemoButton: React.FC<Props> = ({
   active = false,
   borderless = false,
   disabled = false,
-  className = null,
+  className = '',
   onClickHandler = () => {},
   children,
 }) => {
@@ -29,7 +29,7 @@ const MemoButton: React.FC<Props> = ({
         `button-${type}`,
         borderless && 'button-borderless',
         active && 'button.active',
-        className && className,
+        className,
       )}
       type="button"
       disabled={disabled}

@@ -5,7 +5,7 @@ import './Typography.scss';
 
 type BaseProps = {
   type: 'title' | 'text';
-  className?: string | null;
+  className?: string;
   children: React.ReactNode;
   textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'none' | null;
   textAlign?: 'center' | 'left' | 'right' | null;
@@ -32,7 +32,7 @@ export const Typography: React.FC<Props> = ({
   size = 'md',
   textTransform = null,
   textAlign = null,
-  className = null,
+  className = '',
   children,
 }) => {
   if (type === 'title') {
@@ -45,7 +45,7 @@ export const Typography: React.FC<Props> = ({
               'title-1',
               textTransform && `text-transform-${textTransform}`,
               textAlign && `text-align-${textAlign}`,
-              className && className,
+              className,
             )}
           >
             {children}
@@ -58,7 +58,7 @@ export const Typography: React.FC<Props> = ({
               'title',
               'title-2',
               textTransform && `text-transform-${textTransform}`,
-              className && className,
+              className,
             )}
           >
             {children}
@@ -71,7 +71,7 @@ export const Typography: React.FC<Props> = ({
               'title',
               'title-3',
               textTransform && `text-transform-${textTransform}`,
-              className && className,
+              className,
             )}
           >
             {children}
@@ -87,7 +87,7 @@ export const Typography: React.FC<Props> = ({
         `typography-${weight}`,
         `typography-${size}`,
         textTransform && `text-transform-${textTransform}`,
-        className && className,
+        className,
       )}
     >
       {children}
