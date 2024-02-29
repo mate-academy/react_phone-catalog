@@ -9,7 +9,6 @@ type Props = {
 
 export const Breadcrumbs: React.FC<Props> = ({ classNames }) => {
   const location = useLocation();
-
   const pathes = location.pathname.slice(1).split('/');
 
   return (

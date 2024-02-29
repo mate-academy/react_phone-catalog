@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_API_URL = 'https://mate-academy.github.io/react_phone-catalog/';
+const BASE_API_URL = 'https://mate-academy.github.io/react_phone-catalog';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 

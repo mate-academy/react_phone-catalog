@@ -20,6 +20,7 @@ import {
   NoResults,
   Loader,
   NoSearchResults,
+  ErrorMessage,
 } from '../../components';
 
 import './ProductsPage.scss';
@@ -106,7 +107,7 @@ export const ProductsPage: React.FC<Props> = ({
     title || getCategoryTitle(categoryName)
   ), [categoryName, title]);
 
-  const products = useMemo(() => (
+  const filteredProductsBySearchQuery = useMemo(() => (
     searchQuery
       ? fetchedProducts
         .filter(product => (
@@ -117,15 +118,19 @@ export const ProductsPage: React.FC<Props> = ({
 
   const visibleProducts = useMemo(() => (
     getVisibleProducts(
-      products,
+      filteredProductsBySearchQuery,
       sortBy,
       filterBy,
       currentPage,
     )
-  ), [currentPage, filterBy, sortBy, products]);
+  ), [currentPage, filterBy, sortBy, filteredProductsBySearchQuery]);
 
   const fetchedProductsCount = fetchedProducts.length;
-  const productsCount = products.length;
+  const filteredProductsCount = filteredProductsBySearchQuery.length;
+  const hasLoader = !loaded && !hasError;
+  const hasFetchedProducts = loaded && !!fetchedProductsCount && !hasError;
+  const hasNoFetchedProducts = loaded && !fetchedProductsCount && !hasError;
+  const hasErrorMessage = loaded && hasError;
 
   useEffect(() => {
     dispatch(fetchCategoryProducts(categoryName));
@@ -142,23 +147,23 @@ export const ProductsPage: React.FC<Props> = ({
     <div className="products-page">
       <Breadcrumbs classNames="products-page__breadcrumbs" />
 
-      {(!loaded && !hasError) && <Loader />}
+      {hasLoader && <Loader />}
 
       {
-        (loaded && !!fetchedProductsCount && !hasError)
+        hasFetchedProducts
           && (
             <>
               <div className="products-page__title">
                 <SectionHeader
                   title={categoryTitle}
                   subtitle={
-                    `${productsCount} ${searchQuery ? 'results' : 'models'}`
+                    `${filteredProductsCount} ${searchQuery ? 'results' : 'models'}`
                   }
                 />
               </div>
 
               {
-                productsCount
+                filteredProductsCount
                   ? (
                     <>
                       <PageFilter
@@ -178,9 +183,11 @@ export const ProductsPage: React.FC<Props> = ({
                         ))}
                       </div>
 
-                      {((productsCount > +filterBy) && filterBy !== 'all') && (
+                      {((
+                        filteredProductsCount > +filterBy) && filterBy !== 'all'
+                      ) && (
                         <PagePagination
-                          productsCount={productsCount}
+                          productsCount={filteredProductsCount}
                           currentPage={currentPage}
                           filterValue={filterBy}
                         />
@@ -193,12 +200,14 @@ export const ProductsPage: React.FC<Props> = ({
           )
       }
 
-      {(loaded && !fetchedProductsCount && !hasError) && (
+      {hasNoFetchedProducts && (
         <NoResults
           title={`${categoryTitle} not found`}
           hasBackButton
         />
       )}
+
+      {hasErrorMessage && <ErrorMessage title={`Failed to fetch ${categoryTitle.toLowerCase()} `}/>}
 
     </div>
   );

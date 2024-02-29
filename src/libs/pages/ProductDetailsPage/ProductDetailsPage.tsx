@@ -22,6 +22,7 @@ import {
   BuyButtons,
   Loader,
   ProductsSlider,
+  ErrorMessage
 } from '../../components';
 
 import './ProductDetailsPage.scss';
@@ -135,6 +136,8 @@ export const ProductDetailsPage = () => {
       suggestedProductsLoaded && !hasSuggestedProductsError && suggestedProducts
     )
   );
+
+  const hasError = hasProductDetailsError && productDetailsLoaded;
 
   useEffect(() => {
     dispatch(productDetailsActions.fetchProductDetails(categoryId));
@@ -339,6 +342,8 @@ export const ProductDetailsPage = () => {
           />
         </>
       )}
+
+      {hasError && <ErrorMessage title="Product was not found" />}
     </div>
   );
 };

@@ -10,6 +10,7 @@ import {
   ProductsSlider,
   Banner,
   Loader,
+  ErrorMessage
 } from '../../components';
 
 export const HomePage = () => {
@@ -30,6 +31,7 @@ export const HomePage = () => {
 
   const hasLoader = !loaded && !hasError;
   const hasProducts = loaded && !hasError && !!allProducts.length;
+  const hasErrorMessage = loaded && hasError;
 
   useEffect(() => {
     dispatch(productsActions.fetchAll());
@@ -37,7 +39,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <Banner />
+      {!hasErrorMessage && <Banner />}
 
       {hasLoader && <Loader />}
 
@@ -58,6 +60,8 @@ export const HomePage = () => {
           />
         </>
       )}
+
+      {hasErrorMessage && <ErrorMessage title="Failed to fetch products" />}
     </>
   );
 };

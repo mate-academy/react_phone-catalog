@@ -26,3 +26,4 @@ export { PagePagination } from './PagePagination';
 export { Breadcrumbs } from './Breadcrumbs';
 export { SearchBar } from './SearchBar';
 export { SectionHeader } from './SectionHeader';
+export { ErrorMessage } from './ErrorMessage';

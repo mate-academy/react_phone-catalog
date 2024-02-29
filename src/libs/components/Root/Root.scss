@@ -13,7 +13,8 @@
 
   &__container {
     @include flexbox-center-vertical;
-    
+
+    padding-top: 40px;
     flex-direction: column;
     max-width: 1136px;
     margin-inline: auto;
@@ -42,7 +43,7 @@
   }
 
   &__banner {
-    margin-block: 40px 72px;
+    margin-bottom: 72px;
   }
 
   &__hot-prices {
