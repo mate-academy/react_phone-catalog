@@ -1,9 +1,10 @@
 @import "../utils/variables.scss";
 @import "../utils/mixins.scss";
 
-.phones-page {
+.favorites-page {
   &__title {
-    @include h2Text;
+    @include h1Text;
+
     margin-bottom: 8px;
   }
 

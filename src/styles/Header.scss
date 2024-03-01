@@ -12,24 +12,4 @@
     justify-content: space-between;
     gap: 64px;
   }
-
-  &__right-block {
-    display: flex;
-  }
-
-  &__favcar-block {
-    box-shadow: -1px 0px 0px 0px $elements-color;
-  }
-}
-
-.shopping-cart-icon {
-  display: flex;
-  background: url("../icons/shopping-cart-icon.svg") no-repeat center;
-  padding: calc($header-height / 2) 32px;
-}
-
-.favourites-icon {
-  display: flex;
-  background: url("../icons/favourites-icon.svg") no-repeat center;
-  padding: calc($header-height / 2) 32px;
 }

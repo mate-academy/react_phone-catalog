@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Navigation } from './Navigation';
 
 import '../styles/Header.scss';
 import '../styles/logo.scss';
+import { FavCart } from './FavCart';
 
 export const Header: React.FC = () => {
   return (
@@ -15,13 +16,7 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__right-block">
-        <div className="header__favcar-block">
-          <NavLink to="/favourites" className="favourites-icon" />
-        </div>
-
-        <div className="header__favcar-block">
-          <NavLink to="/cart" className="shopping-cart-icon" />
-        </div>
+        <FavCart />
       </div>
     </header>
   );

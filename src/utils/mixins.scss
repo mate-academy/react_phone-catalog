@@ -25,12 +25,50 @@
   }
 }
 
+@mixin headerLine {
+  position: relative;
+
+  &::after {
+    @include hoverLine;
+    background-color: $secondary-color;
+
+    transition: transform $transition-duration;
+    transform: scale(0);
+    transform-origin: bottom;
+  }
+
+  &:hover {
+    color: $primary-color;
+
+    &::after {
+      transform: scale(1);
+    }
+  }
+
+  &--active {
+    color: $primary-color;
+    position: relative;
+
+    &::after {
+      @include hoverLine;
+      background-color: $primary-color;
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin h1Text {
+  color: $primary-color;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: $bold-font;
+}
+
 @mixin h2Text {
   color: $primary-color;
   font-size: 32px;
   font-weight: $bold-font;
 }
-
 
 @mixin h3Text {
   color: $primary-color;

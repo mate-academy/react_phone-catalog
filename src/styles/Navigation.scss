@@ -12,35 +12,8 @@
     letter-spacing: 0.48px;
     text-transform: uppercase;
     text-decoration: none;
-    position: relative;
 
-    &::after {
-      @include hoverLine;
-      background-color: $secondary-color;
-
-      transition: transform $transition-duration;
-      transform: scale(0);
-      transform-origin: bottom;
-    }
-
-    &:hover {
-      color: $primary-color;
-
-      &::after {
-        transform: scale(1);
-      }
-    }
-
-    &--active {
-      color: $primary-color;
-      position: relative;
-
-      &::after {
-        @include hoverLine;
-        background-color: $primary-color;
-        transform: scale(1);
-      }
-    }
+    @include headerLine;
   }
 
   &__list {

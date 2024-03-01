@@ -47,14 +47,14 @@ export const PhonesPage: React.FC = () => {
   const finalPhones = sortedPhones.slice(firstItem, lastItem);
 
   return (
-    <main className="PhonesPage">
+    <main className="phones-page">
       <BreadCrumbs category="Phones" />
 
-      <h2 className="PhonesPage__title">
+      <h2 className="phones-page__title">
         Mobile phones
       </h2>
 
-      <p className="PhonesPage__count">
+      <p className="phones-page__count">
         {`${phones.length} models`}
       </p>
 
