@@ -1,6 +1,6 @@
 import {
   useContext,
-  useState,
+  // useState,
 } from 'react';
 import './CartPage.scss';
 import { Product } from '../../types';
@@ -14,18 +14,15 @@ type Props = {
 };
 
 export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
-  const [amount, setAmount] = useState<number>(1);
   const { state, dispatch } = useContext(StateContext);
   const deleteAllSimilar = useDeleteAllSimilar();
 
   function addItem() {
-    setAmount(state.card.filter(elem => elem.id === phone.id).length);
     dispatch({ type: ACTIONS.ADD_TO_CARD, payload: phone });
   }
 
   function deleteItem() {
-    if (amount > 0) {
-      setAmount(state.card.filter(elem => elem.id === phone.id).length);
+    if (state.card.filter(elem => elem.id === phone.id).length > 0) {
       reduce(+phone.price.slice(1));
       dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: phone });
     }
@@ -90,7 +87,8 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
           </div>
         </div>
         <div className="cart-price ml-42">
-          {Number(phone?.price.slice(1)) * amount}
+          {Number(phone?.price.slice(1)) *
+            state.card.filter(elem => elem.id === phone.id).length}
         </div>
       </div>
     </div>

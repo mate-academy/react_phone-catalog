@@ -127,7 +127,7 @@ export const ProductPage: React.FC = () => {
         {currentItems.map(product => {
           // const key = product.id;
           return (
-            <ProductItem product={product} />
+            <ProductItem product={product} key={product.id}/>
           )
         })}
       </div>
