@@ -1,20 +1,20 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { v4 as getId } from 'uuid';
 
 import './Dropdown.scss';
 import { SortType } from '../../types/SortType';
 import { SortParamsType } from '../../types/SortParamsType';
+import { getSearchWith } from '../../utils/getSearchWith';
+import { Params } from '../../types/Params';
 
 type Props = {
   sortParams?: SortParamsType[],
   perPageParams?: number[],
-  sortType?: SortType,
-  setSortType?: Dispatch<SetStateAction<SortType>>,
-  itemsPerPage?: number,
-  setItemsPerPage?: Dispatch<SetStateAction<number>>
   title: string,
-  isItemsPerPage?: boolean
+  isItemsPerPage?: boolean,
+  setCurrentPage?: Dispatch<SetStateAction<number>>,
   isSmall?: boolean,
 };
 
@@ -23,24 +23,34 @@ const optionHeight = 32;
 export const Dropdown: React.FC<Props> = ({
   sortParams = [],
   perPageParams = [],
-  sortType = '',
-  setSortType = () => { },
-  itemsPerPage = 0,
-  setItemsPerPage = () => { },
   title,
   isItemsPerPage,
+  setCurrentPage = () => {},
   isSmall,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortType = searchParams.get('sortType') || SortType.Newest;
+  const itemsPerPage = +(searchParams.get('perPage') || 32);
+
   const [isDropdownActive, setIsDropdownActive] = useState(false);
 
+  const setSearchWith = (params: Params) => {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  };
+
   const handleSortTypeChange = (type: SortType) => {
-    setSortType(type);
     setIsDropdownActive(false);
+
+    setSearchWith({ sortType: type });
   };
 
   const handlePerPageChange = (perPage: number) => {
-    setItemsPerPage(perPage);
     setIsDropdownActive(false);
+
+    setSearchWith({ perPage });
+    setCurrentPage(1);
   };
 
   return (

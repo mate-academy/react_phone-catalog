@@ -1,11 +1,13 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import cn from 'classnames';
 
 import './Header.scss';
 import { Search } from '../Search/Search';
 import { usePhones } from '../../hooks/usePhones';
+import { getSearchWith } from '../../utils/getSearchWith';
+import { Params } from '../../types/Params';
 
 const getNavClass = ({ isActive }: { isActive: boolean }) => (cn('nav__link', {
   'nav__link--active': isActive,
@@ -21,13 +23,34 @@ const getIconClass = ({ isActive }: { isActive: boolean }) => (cn(
 
 export const Header: React.FC = () => {
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const phoneSearchValue = searchParams.get('phoneSearchValue') || '';
+  const tabletSearchValue = searchParams.get('tabletSearchValue') || '';
+
+  const setSearchWith = (params: Params) => {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  };
+
+  const handlePhoneSearchChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { target } = event;
+
+    setSearchWith({ phoneSearchValue: target.value || null });
+  };
+
+  const handleTabletSearchChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { target } = event;
+
+    setSearchWith({ tabletSearchValue: target.value || null });
+  };
 
   const {
-    phoneSearchValue,
-    setPhoneSearchValue,
-    tabletSearchValue,
-    setTabletSearchValue,
-    favoritesId,
+    favoritesIds,
     cartProducts,
   } = usePhones();
 
@@ -62,7 +85,7 @@ export const Header: React.FC = () => {
           <Search
             searchDirectory="phones"
             value={phoneSearchValue}
-            changeValue={({ target }) => setPhoneSearchValue(target.value)}
+            changeValue={handlePhoneSearchChange}
           />
         )}
 
@@ -70,7 +93,7 @@ export const Header: React.FC = () => {
           <Search
             searchDirectory="tablets"
             value={tabletSearchValue}
-            changeValue={({ target }) => setTabletSearchValue(target.value)}
+            changeValue={handleTabletSearchChange}
           />
         )}
 
@@ -84,9 +107,9 @@ export const Header: React.FC = () => {
             alt="Icon Like"
           />
 
-          {!!favoritesId.length && (
+          {!!favoritesIds.length && (
             <div className="icon__count">
-              {favoritesId.length}
+              {favoritesIds.length}
             </div>
           )}
         </NavLink>

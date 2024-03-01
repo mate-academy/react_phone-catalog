@@ -30,16 +30,18 @@ export const Footer: React.FC = () => {
           </a>
 
           <a
-            href="/#"
+            href="https://github.com/HYPER2307/react_phone-catalog/tree/dev"
             target="_blank"
+            rel="noreferrer"
             className="footer__item"
           >
             contacts
           </a>
 
           <a
-            href="/#"
+            href="https://github.com/HYPER2307/react_phone-catalog/tree/dev"
             target="_blank"
+            rel="noreferrer"
             className="footer__item"
           >
             rights

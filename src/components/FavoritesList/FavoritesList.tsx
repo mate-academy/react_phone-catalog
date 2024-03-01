@@ -1,4 +1,6 @@
 import React from 'react';
+import { v4 as getId } from 'uuid';
+
 import { Product } from '../../types/Product';
 import { ProductItem } from '../ProductItem/ProductItem';
 
@@ -13,6 +15,7 @@ export const FavoritesList: React.FC<Props> = ({
     <div className="favorites__products-list">
       {favoriteProducts.map(product => (
         <ProductItem
+          key={getId()}
           product={product}
         />
       ))}

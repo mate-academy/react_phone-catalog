@@ -42,7 +42,7 @@ export const ProductOrder: React.FC<Props> = ({
   ram,
 }) => {
   const {
-    favoritesId,
+    favoritesIds,
     cartProducts,
     handleOnCartAdd,
     handleOnLikeClick,
@@ -147,7 +147,7 @@ export const ProductOrder: React.FC<Props> = ({
           onClick={() => handleOnLikeClick(id)}
         >
           {
-            favoritesId.includes(id)
+            favoritesIds.includes(id)
               ? (<img src="img/icons/heart-active.svg" alt="Heart" />)
               : (<img src="img/icons/heart.svg" alt="Heart" />)
           }

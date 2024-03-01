@@ -7,6 +7,10 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-color: #fff;
   
   &__nav-wrapper {
     height: 100%;

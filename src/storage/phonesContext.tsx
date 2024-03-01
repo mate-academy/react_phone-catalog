@@ -3,6 +3,7 @@ import React, {
   SetStateAction,
   useState,
 } from 'react';
+
 import { Product } from '../types/Product';
 import { SortType } from '../types/SortType';
 import { SortParamsType } from '../types/SortParamsType';
@@ -14,22 +15,14 @@ type PhonesContextType = {
   setProducts: Dispatch<SetStateAction<Product[]>>,
   preparedBrandNewProducts: Product[],
   preparedHotPriceProducts: Product[],
-  sortType: SortType,
-  setSortType: Dispatch<SetStateAction<SortType>>,
   itemsPerPage: number,
   setItemsPerPage: Dispatch<SetStateAction<number>>,
   sortParams: SortParamsType[],
   perPageParams: number[],
-  sortedProducts: () => Product[],
-  tabletSearchValue: string,
-  setTabletSearchValue: Dispatch<SetStateAction<string>>,
-  phoneSearchValue: string,
-  setPhoneSearchValue: Dispatch<SetStateAction<string>>,
-  filteredProducts: Product[],
   suggestedProducts: Product[],
   setSuggestedProducts: Dispatch<SetStateAction<Product[]>>,
-  favoritesId: string[],
-  setFavoritesId: (v: string[]) => void,
+  favoritesIds: string[],
+  setFavoritesIds: (v: string[]) => void,
   cartProducts: CartProduct[],
   setCartProducts: (v: CartProduct[]) => void,
   handleOnLikeClick: (v: string) => void,
@@ -45,22 +38,14 @@ export const PhonesContext = React.createContext<PhonesContextType>({
   setProducts: () => { },
   preparedHotPriceProducts: [],
   preparedBrandNewProducts: [],
-  sortType: SortType.Newest,
-  setSortType: () => { },
   itemsPerPage: 0,
   setItemsPerPage: () => { },
   sortParams: [],
   perPageParams: [],
-  sortedProducts: () => [],
-  tabletSearchValue: '',
-  setTabletSearchValue: () => { },
-  phoneSearchValue: '',
-  setPhoneSearchValue: () => { },
-  filteredProducts: [],
   suggestedProducts: [],
   setSuggestedProducts: () => { },
-  favoritesId: [],
-  setFavoritesId: () => { },
+  favoritesIds: [],
+  setFavoritesIds: () => { },
   cartProducts: [],
   setCartProducts: () => { },
   handleOnLikeClick: () => { },
@@ -77,13 +62,10 @@ type Props = {
 
 export const PhonesProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [sortType, setSortType] = useState<SortType>(SortType.Newest);
   const [itemsPerPage, setItemsPerPage] = useState(16);
-  const [tabletSearchValue, setTabletSearchValue] = useState('');
-  const [phoneSearchValue, setPhoneSearchValue] = useState('');
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [
-    favoritesId, setFavoritesId,
+    favoritesIds, setFavoritesIds,
   ] = useLocalStorage<string[]>('favorites', []);
   const [
     cartProducts, setCartProducts,
@@ -114,32 +96,11 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
     product.year >= 2019
   )) || [];
 
-  const sortedProducts = () => {
-    switch (sortType as SortType) {
-      case SortType.Alphabetically:
-        return [...products].sort((prev, next) => (
-          next.name.localeCompare(prev.name)
-        ));
-
-      case SortType.Cheapest:
-        return [...products]
-          .sort((prev, next) => prev.fullPrice - next.fullPrice);
-
-      default:
-        return [...products].sort((prev, next) => next.year - prev.year);
-    }
-  };
-
-  const filteredProducts = sortedProducts().filter(product => (
-    product.name.toLowerCase().trim()
-      .includes(phoneSearchValue.toLowerCase().trim())
-  ));
-
   const handleOnLikeClick = (id: string) => {
-    if (favoritesId.includes(id)) {
-      setFavoritesId(favoritesId.filter(favId => favId !== id));
+    if (favoritesIds.includes(id)) {
+      setFavoritesIds(favoritesIds.filter(favId => favId !== id));
     } else {
-      setFavoritesId([...favoritesId, id]);
+      setFavoritesIds([...favoritesIds, id]);
     }
   };
 
@@ -213,22 +174,14 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
         setProducts,
         preparedBrandNewProducts,
         preparedHotPriceProducts,
-        sortType,
-        setSortType,
         itemsPerPage,
         setItemsPerPage,
         sortParams,
         perPageParams,
-        sortedProducts,
-        tabletSearchValue,
-        setTabletSearchValue,
-        phoneSearchValue,
-        setPhoneSearchValue,
-        filteredProducts,
         suggestedProducts,
         setSuggestedProducts,
-        favoritesId,
-        setFavoritesId,
+        favoritesIds,
+        setFavoritesIds,
         cartProducts,
         setCartProducts,
         handleOnCartAdd,

@@ -10,7 +10,7 @@ import { Loader } from '../../components/Loader/Loader';
 
 export const Favorites: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { favoritesId, setProducts, products } = usePhones();
+  const { favoritesIds, setProducts, products } = usePhones();
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,7 +21,7 @@ export const Favorites: React.FC = () => {
   }, [setProducts]);
 
   const favoritesProducts = products.filter(({ itemId }) => {
-    return favoritesId.includes(itemId);
+    return favoritesIds.includes(itemId);
   });
 
   return (
@@ -34,20 +34,20 @@ export const Favorites: React.FC = () => {
             <Breadcrumbs />
           </div>
 
-          {!favoritesId.length && (
+          {!favoritesIds.length && (
             <h1 className="content__title">
               No products in favorites
             </h1>
           )}
 
-          {!!favoritesId.length && (
+          {!!favoritesIds.length && (
             <>
               <h1 className="content__title">
                 Favorites
               </h1>
 
               <p className="favorites__items-count">
-                {`${favoritesId.length} items`}
+                {`${favoritesIds.length} items`}
               </p>
 
               <FavoritesList

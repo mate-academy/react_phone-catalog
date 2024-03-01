@@ -1,17 +1,14 @@
-import React, { Dispatch, Fragment, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import cn from 'classnames';
 import { v4 as getId } from 'uuid';
 
 import './Pagination.scss';
-import { ProductItem } from '../ProductItem/ProductItem';
-import { Product } from '../../types/Product';
 
 type Props = {
   productsLength: number
   itemsPerPage: number,
   currentPage: number,
   setCurrentPage: Dispatch<SetStateAction<number>>,
-  products: Product[],
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -19,7 +16,6 @@ export const Pagination: React.FC<Props> = ({
   itemsPerPage,
   currentPage,
   setCurrentPage,
-  products,
 }) => {
   const pages = [];
   const lastPage = Math.ceil(productsLength / itemsPerPage);
@@ -50,16 +46,6 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <div className="pagination">
-      <div className="pagination__list">
-        {products.map(phone => (
-          <Fragment key={getId()}>
-            <ProductItem
-              product={phone}
-            />
-          </Fragment>
-        ))}
-      </div>
-
       <div className="pagination__nav">
         <button
           type="button"
