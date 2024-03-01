@@ -16,6 +16,10 @@
     background-image: url(../images/icons/favorites.svg);
   }
 
+  &--selected-favorites {
+    background-image: url(../images/icons/filled-favorites.svg);
+  }
+
   &--cart {
     background-image: url(../images/icons/cart.svg);
   }

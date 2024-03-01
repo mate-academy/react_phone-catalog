@@ -6,6 +6,8 @@ export type Product = {
   price: number;
   fullPrice: number;
   year: number;
+  screen: string;
   capacity: string;
+  ram: string;
   color: string;
 };

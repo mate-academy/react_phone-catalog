@@ -28,9 +28,11 @@ export const HomePage = () => {
   };
 
   const getBrandNewProducts = (allProducts: Product[]) => {
-    return [...allProducts].sort((product1, product2) => {
-      return product2.fullPrice - product1.fullPrice;
-    });
+    return [...allProducts]
+      .filter(product => product.name.includes('14'))
+      .sort((product1, product2) => {
+        return product2.price - product1.price;
+      });
   };
 
   const hotPriceProducts = getHotPriceProducts(products);

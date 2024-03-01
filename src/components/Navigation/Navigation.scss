@@ -36,12 +36,11 @@
 
   &__link {
     position: relative;
-    @extend %uppercase;
-
     display: flex;
     align-items: center;
     padding: 8px 0;
 
+    @extend %uppercase;
     font-weight: 800;
     color: $colorSecondary;
     transform: color 0.3s;

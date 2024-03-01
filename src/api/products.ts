@@ -2,7 +2,7 @@ import { client } from '../helpers/fetchClient';
 import { Product } from '../types/Product';
 
 export const getProducts = () => {
-  return client.get<Product[]>('products.json');
+  return client.get<Product[]>('api/products.json');
 };
 
 // export const getProductDetails = (productId: string) => {

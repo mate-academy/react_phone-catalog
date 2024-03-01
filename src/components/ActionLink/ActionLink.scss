@@ -8,6 +8,7 @@
 
   @extend %header-action;
 
+
   @include onTablet {
     display: flex;
     @include square(48px);
@@ -19,6 +20,7 @@
 
   &--active {
     color: $colorPrimary;
+    position: relative;
 
     &::after {
       @extend %active-link-line;
@@ -27,7 +29,6 @@
 
   &__content {
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,6 +39,7 @@
     position: absolute;
     top: 0;
     right: 0;
+    box-sizing: border-box;
 
     width: 14px;
     height: 14px;
