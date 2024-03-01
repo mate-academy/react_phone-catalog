@@ -1,11 +1,35 @@
 /* eslint-disable */
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  // useLocation,
+} from 'react-router-dom';
 import './productsItem.scss'
-import React, { useContext } from "react";
+import React, { useContext,
+  // useState,
+  // useEffect
+} from "react";
 import { StateContext } from '../../AppContext';
 import { ACTIONS, getFavourite } from '../../helpers/utils';
 import { Product } from '../../types';
+
+export interface Phone {
+  id: number,
+  picsArray: string[],
+  picsArray2?: string[],
+  picsArray3?: string[],
+  picsArray4?: string[],
+  name: string,
+  priceFull: string,
+  priceDiscount: string,
+  description1: string,
+  description2: string,
+  description3: string,
+  textAbout: string,
+  tehcSpecs: string,
+  like?: boolean,
+  addedToCart?: boolean,
+}
 
 type Props = {
   product: Product,

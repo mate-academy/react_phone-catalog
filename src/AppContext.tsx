@@ -18,6 +18,10 @@ interface Data {
   itemsPerPage: string,
   favourites: Array<Product>
   products: Array<Product>
+  // card: Array<{
+  //   item: Product,
+  //   amount: number,
+  // }>,
   card: Product[],
 }
 
@@ -61,6 +65,7 @@ function reducer(state: Data, action: Action) {
     }
     case ACTIONS.ADD_TO_CARD: {
       const oldCardData = JSON.parse(localStorage.getItem('cart') || '[{}]');
+
 
       localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
       const cardData = JSON.parse(localStorage.getItem("cart") || '')

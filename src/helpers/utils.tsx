@@ -58,3 +58,15 @@ export function getAge(a: Product,b: Product) {
 
   return 0;
 }
+
+export function getUniqueItems(array: Product[]) {
+  const tempUniqueItems: Product[] = [];
+  for (let i = 0; i <= array.length - 1; i++) {
+    const temp = tempUniqueItems.find(elem => elem.id === array[i].id);
+    if (temp === undefined) {
+      tempUniqueItems.push(array[i]);
+    }
+  }
+
+  return tempUniqueItems;
+}

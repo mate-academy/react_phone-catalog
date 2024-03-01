@@ -2,10 +2,20 @@ import './CartPage.scss';
 import { useState, useContext, useEffect } from 'react';
 import { CartItem } from './CartItem';
 import { StateContext } from '../../AppContext';
+import { NoResults } from '../NoResults/NoResults';
+import { Product } from '../../types';
+import { getUniqueItems } from '../../helpers/utils';
 
 export const CartPage: React.FC = () => {
   const [cartSummary, setCartSummary] = useState<number>(0);
   const { state } = useContext(StateContext);
+  const [uniqueItems, setUniqueItems] = useState<Array<Product>>();
+
+  const uniqueItems2 = getUniqueItems(state.card);
+
+  useEffect(() => {
+    setUniqueItems(uniqueItems2);
+  }, [getUniqueItems(state.card).length]);
 
   useEffect(() => {
     let totalSumm = 0;
@@ -16,7 +26,7 @@ export const CartPage: React.FC = () => {
       return totalSumm;
     });
     setCartSummary(totalSumm);
-  }, []);
+  }, [state.card]);
 
   const addItem = (amountItem: number) => {
     setCartSummary(prevState => +prevState + amountItem);
@@ -31,18 +41,17 @@ export const CartPage: React.FC = () => {
 
       <div className="cart-item-container">
         {state.card.length > 0
-          && state.card.map(elem => {
-            const key = elem.id;
-
+          ? uniqueItems?.map(elem => {
             return (
               <CartItem
                 summary={addItem}
                 reduce={deleteItem}
                 phone={elem}
-                key={key}
+                key={elem.id}
               />
             );
-          })}
+          })
+          : <NoResults />}
       </div>
 
       <div className="summary">

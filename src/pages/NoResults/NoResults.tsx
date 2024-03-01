@@ -1,8 +1,10 @@
 type Props = {
   headline?: string,
-}
+};
 
-export const NoResults: React.FC<Props> = ({ headline = 'Page not found' }) => {
+export const NoResults: React.FC<Props> = ({
+  headline = 'Page not found',
+}) => {
   return (
     <div
       className="commonPage-container font-header"
