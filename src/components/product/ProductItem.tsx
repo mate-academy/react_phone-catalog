@@ -12,6 +12,7 @@ import React, { useContext,
 import { StateContext } from '../../AppContext';
 import { ACTIONS, getFavourite } from '../../helpers/utils';
 import { Product } from '../../types';
+import { useDeleteAllSimilar } from '../../helpers/utils';
 
 export interface Phone {
   id: number,
@@ -40,6 +41,8 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
 
   const { state, dispatch } = useContext(StateContext);
 
+  const deleteAllSimilar = useDeleteAllSimilar();
+
   const addToFavourites = () => {
     if(!getFavourite(state.favourites, product)) {
       dispatch({ type: ACTIONS.SET_FAVOUTITES, payload: product });
@@ -53,7 +56,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
     if(!getFavourite(JSON.parse(cardData), product)) {
       dispatch({ type: ACTIONS.ADD_TO_CARD, payload: product });
     } else {
-      dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: product });
+      deleteAllSimilar(product)
     }
   }
 
