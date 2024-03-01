@@ -1,16 +1,15 @@
 @import "../../style-utils/mixins.scss";
 
 .container {
+  max-width: 1168px;
+  margin: 0 auto;
   position: relative;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
   flex-grow: 1;
   flex-direction: row;
-
   width: 100%;
-
-  // padding: 24px 16px 80px;
+  padding: 24px 16px 80px;
 
   @include onTablet {
     padding-bottom: 60px;

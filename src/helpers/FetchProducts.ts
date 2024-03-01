@@ -34,3 +34,15 @@ export const getHotProducts = async () => {
     (a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price),
   );
 };
+
+function shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map((value: T) => ({ value, sortKey: Math.random() }))
+    .sort((a, b) => a.sortKey - b.sortKey)
+    .map(({ value }) => value);
+}
+
+export function getShuffleProducts() {
+  return getAllProducts()
+    .then(phones => shuffleArray<Product>([...phones]).slice(0, 20));
+}

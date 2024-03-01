@@ -1,8 +1,13 @@
 @import "../../style-utils/variables";
+@import "../../style-utils/mixins";
 
 .slider {
-  width: 1140px;
-  overflow: hidden;
+  --cardSize: 272px;
+  --sliderGap: 16px;
+  --itemsVisible: 4;
+  --slideValue: calc(
+    var(--itemsVisible) * (var(--cardSize) + var(--sliderGap))
+  );
   
   &__header {
     display: flex;
@@ -13,6 +18,14 @@
   &__title {
     margin: 0;
     font-size: 32px;
+  }
+
+  .slider-container {
+    display: flex;
+    margin: 0 auto;
+    transition: transform 0.5s;
+    max-width: var(--slideValue);
+    overflow: hidden;
   }
 
   &__list {

@@ -6,6 +6,12 @@
   margin: 0 auto;
 }
 
+@mixin onLaptop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
 @mixin onTablet {
   @media (max-width: 768px) {
     @content;
@@ -69,6 +75,20 @@
   font-weight: 600;
 }
 
+@mixin h3Text {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+
+  @include onTablet() {
+    font-size: 18px;
+  }
+
+  @include onPhone() {
+    font-size: 16px;
+  }
+}
+
 @mixin h2Text {
   font-weight: bold;
   font-size: 22px;
@@ -103,4 +123,62 @@
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
+}
+
+@mixin roundButton {
+  display: block;
+  border-radius: 50%;
+  border: 2px solid $white-color;
+  outline: 1px solid $grey-third-color;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    outline: 1px solid $grey-fourth-color;
+  }
+}
+
+@mixin roundButtonSelected {
+  outline: 1px solid $grey-primery-color;
+}
+
+@mixin squareButton($size) {
+  position: relative;
+  width: $size;
+  height: $size;
+
+  color: $grey-primery-color;
+  background-color: transparent;
+  border: 1px solid $grey-third-color;
+
+  &:hover {
+    border-color: $grey-primery-color;
+  }
+
+  &:disabled {
+    color: $grey-third-color;
+    cursor: not-allowed;
+    &:hover {
+      border-color: $grey-third-color;
+    }
+  }
+
+  & div {
+    width: max-content;
+    height: max-content;
+  }
+
+  & svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin squareButtonSelected {
+  color: $white-color;
+  background-color: $grey-primery-color;
+  border: none;
+
 }

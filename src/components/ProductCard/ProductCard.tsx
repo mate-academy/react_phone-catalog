@@ -34,7 +34,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="product-card" data-cy="cardsContainer">
-      <Link className="product-card__link" to={`/${category}/${phoneId}`}>
+      <Link
+        className="product-card__link"
+        to={`/${category}/${phoneId}`}
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
         <img className="product-card__img" src={`./new/${image}`} alt={name} />
         <p className="product-card__title">{name}</p>
         <div className="product-card__price">

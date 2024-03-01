@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import './ProductsSlider.scss';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { useViewport } from '../../helpers/useViewport';
 
 const cardWidth = 272;
 const gap = 16;
@@ -13,9 +14,21 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+  const {
+    width,
+    isMobileSize,
+    isTabletSize,
+    isLaptopSize,
+    isDesktopSize,
+  } = useViewport();
+
   const [position, setPosition] = useState(0);
+  const [itemsVisible, setItemsVisible] = useState(4);
   const visibleProducts = products.slice(0, 21);
-  const maxPosition = -((visibleProducts.length - 4) * (cardWidth + gap));
+  const maxPosition = -(
+    (visibleProducts.length - itemsVisible)
+    * (cardWidth + gap)
+  );
 
   const clickNext = () => {
     const newPosition = position - (cardWidth + gap);
@@ -29,8 +42,27 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
     setPosition(Math.min(newPosition, 0));
   };
 
+  useEffect(() => {
+    if (isMobileSize) {
+      setItemsVisible(1);
+    } else if (isTabletSize) {
+      setItemsVisible(2);
+    } else if (isLaptopSize) {
+      setItemsVisible(3);
+    } else if (isDesktopSize) {
+      setItemsVisible(4);
+    }
+  }, [width, isMobileSize, isTabletSize, isDesktopSize]);
+
   return (
-    <div className="slider">
+    <div
+      className="slider"
+      style={
+        {
+          '--itemsVisible': itemsVisible,
+        } as React.CSSProperties
+      }
+    >
       <div className="slider__header">
         <h1 className="slider__title">{title}</h1>
 
@@ -65,22 +97,24 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         </div>
       </div>
 
-      <ul
-        className="slider__list"
-        style={{
-          transform: `translateX(${position}px)`,
-          transition: 'transform 0.5s',
-          width: cardWidth * visibleProducts.length,
-        }}
-      >
-        {visibleProducts.map((product) => {
-          return (
-            <li className="slider__item" key={product.id}>
-              <ProductCard product={product} />
-            </li>
-          );
-        })}
-      </ul>
+      <div className="slider-container" data-cy="cardContainer">
+        <ul
+          className="slider__list"
+          style={{
+            transform: `translateX(${position}px)`,
+            transition: 'transform 0.5s',
+            width: cardWidth * visibleProducts.length,
+          }}
+        >
+          {visibleProducts.map((product) => {
+            return (
+              <li className="slider__item" key={product.id}>
+                <ProductCard product={product} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
