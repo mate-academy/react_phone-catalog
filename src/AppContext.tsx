@@ -13,6 +13,7 @@ type Action = { type: ACTIONS.SET_ITEMS_PER_PAGE, payload: string }
   | { type: ACTIONS.ADD_TO_CARD, payload: Product }
   | { type: ACTIONS.DELETE_FROM_CARD, payload: Product }
   | { type: ACTIONS.DELETE_FROM_FAVOURITES, payload: Product }
+  | { type: ACTIONS.RENDER_PAGE }
 
 interface Data {
   itemsPerPage: string,
@@ -23,6 +24,7 @@ interface Data {
   //   amount: number,
   // }>,
   card: Product[],
+  render: boolean,
 }
 
 function sortProducts(arrayToSort: Product[]) {
@@ -57,6 +59,12 @@ function reducer(state: Data, action: Action) {
         itemsPerPage: action.payload,
       }
     }
+    case ACTIONS.RENDER_PAGE: {
+      return {
+        ...state,
+        render: !state.render,
+      }
+    }
     case ACTIONS.SET_FAVOUTITES: {
       return {
         ...state,
@@ -64,7 +72,7 @@ function reducer(state: Data, action: Action) {
       }
     }
     case ACTIONS.ADD_TO_CARD: {
-      const oldCardData = JSON.parse(localStorage.getItem('cart') || '[{}]');
+      const oldCardData = JSON.parse(localStorage.getItem('cart') || '[]');
 
 
       localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
@@ -124,6 +132,7 @@ const initialState: State = {
     favourites: [],
     products: [],
     card: [],
+    render:false,
   },
   dispatch: () => { },
 }
@@ -155,6 +164,8 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
 
   }, [])
   console.log(state.products, 'products in context');
+  console.log(JSON.parse(localStorage.getItem('cart') as string), 'reducer oldCartDat');
+
 
   return (
     <StateContext.Provider value={{

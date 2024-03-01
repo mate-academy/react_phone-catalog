@@ -11,10 +11,10 @@ export const CartPage: React.FC = () => {
   const { state } = useContext(StateContext);
   const [uniqueItems, setUniqueItems] = useState<Array<Product>>();
 
-  const uniqueItems2 = getUniqueItems(state.card);
+  const uniqueItemsLocal = getUniqueItems(state.card);
 
   useEffect(() => {
-    setUniqueItems(uniqueItems2);
+    setUniqueItems(uniqueItemsLocal);
   }, [getUniqueItems(state.card).length]);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export const CartPage: React.FC = () => {
               />
             );
           })
-          : <NoResults />}
+          : <NoResults headline="Your cart is empty" />}
       </div>
 
       <div className="summary">

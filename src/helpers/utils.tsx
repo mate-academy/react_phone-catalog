@@ -3,6 +3,9 @@
 /* eslint-disable */
 import { useSearchParams } from "react-router-dom";
 import { Product } from "../types";
+import { useContext } from "react";
+import { StateContext } from "../AppContext";
+import _ from "lodash";
 
 export enum ACTIONS {
   SET_ITEMS_PER_PAGE,
@@ -12,6 +15,7 @@ export enum ACTIONS {
   ADD_TO_CARD,
   DELETE_FROM_CARD,
   DELETE_FROM_FAVOURITES,
+  RENDER_PAGE,
 }
 
 export function setCurrentPage(page: number) {
@@ -35,6 +39,7 @@ export function getCurrentItems(array: Product[], currentPage: string, itemsPerp
   const lastIndex = +(currentPage) * +(itemsPerpage);
   const firstIndex = lastIndex - +(itemsPerpage);
   const currentItems = array.slice(firstIndex, lastIndex);
+
   return currentItems;
 }
 
@@ -70,3 +75,29 @@ export function getUniqueItems(array: Product[]) {
 
   return tempUniqueItems;
 }
+
+export function useDeleteAllSimilar() {
+  const { state, dispatch } = useContext(StateContext);
+
+  const copy = _.cloneDeep(state.card);
+
+  return function deleteAllSimilar(phone: Product) {
+
+    while (copy.find(element => element.id === phone.id) !== undefined) {
+
+      copy.forEach((elem) => {
+
+        if (elem.id === phone.id) {
+          const index = copy.findIndex(elem => elem.id === phone.id);
+
+          copy.splice(index, 1);
+          dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: phone });
+        }
+      });
+
+      deleteAllSimilar(phone);
+    }
+  }
+}
+
+

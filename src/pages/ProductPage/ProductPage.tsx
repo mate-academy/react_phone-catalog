@@ -27,6 +27,8 @@ export const ProductPage: React.FC = () => {
   const [sortValue, setSortValue] = useState(sort);
   const location = useLocation();
 
+  // localStorage.clear()
+
   let currentItems: Product[] = [];
 
   let copyOfProducts: Product[] = [];

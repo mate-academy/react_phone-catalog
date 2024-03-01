@@ -5,7 +5,7 @@ import {
 import './CartPage.scss';
 import { Product } from '../../types';
 import { StateContext } from '../../AppContext';
-import { ACTIONS } from '../../helpers/utils';
+import { ACTIONS, useDeleteAllSimilar } from '../../helpers/utils';
 
 type Props = {
   summary: (amount: number) => void,
@@ -16,6 +16,7 @@ type Props = {
 export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
   const [amount, setAmount] = useState<number>(1);
   const { state, dispatch } = useContext(StateContext);
+  const deleteAllSimilar = useDeleteAllSimilar();
 
   function addItem() {
     setAmount(state.card.filter(elem => elem.id === phone.id).length);
@@ -36,7 +37,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
         <div
           className="ml-24"
           onClick={
-            () => dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: phone })
+            () => deleteAllSimilar(phone)
           }
           onKeyDown={
             () => dispatch({ type: ACTIONS.DELETE_FROM_CARD, payload: phone })
