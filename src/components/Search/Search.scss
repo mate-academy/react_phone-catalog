@@ -1,0 +1,58 @@
+@import '../../utils/variables';
+@import '../../utils/mixsin';
+
+.search {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-shadow: -1px 0 0 0 $gray-elements;
+  flex-shrink: 1;
+
+  @include on-tablet {
+    width: 260px;
+  }
+
+  @include on-descktop {
+    width: 327px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    color: $gray-primary;
+    padding: 16px 24px;
+    border: 0;
+    transition: all $duration;
+
+    @include on-tablet {
+      padding: 24px;
+    }
+
+    &::placeholder {
+      color: $gray-icons-placeholders;
+    }
+
+    &:focus {
+      outline: none;
+      background: #fafbfc;
+      box-shadow: -1px 0 0 0 #e2e6e9;
+    }
+
+    &:hover {
+      background: #fafbfc;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+    background-color: $gray-white;
+    border: 0;
+  }
+}

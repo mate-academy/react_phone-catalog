@@ -1,0 +1,93 @@
+@import "../../utils/variables";
+@import "../../utils/mixsin";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96px;
+  flex-grow: 1;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  &__line {
+    width: 100vw;
+    height: 1px;
+    background-color: $gray-elements
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: $gray-white;
+
+    &--name {
+      color: $gray-secondary;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 600;
+      padding-right: 16px;
+      cursor: pointer;
+    }
+
+    &--button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: $gray-white;
+      box-shadow: -1px 0 0 0 $gray-elements;
+      border: 1px solid $gray-icons-placeholders;
+      transition-duration: $duration;
+
+      &:hover {
+        border-color: $gray-primary;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__item {
+    @include on-tablet {
+      margin-left: 48px;
+    }
+    @include on-descktop {
+      margin-left: 64px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    position: relative;
+    color: $gray-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    padding: 12px 0;
+    cursor: pointer;
+    text-decoration: none;
+
+    @include on-tablet {
+      padding: 27px 0;
+    }
+
+    &:hover {
+      color: $gray-primary;
+    }
+  }
+};

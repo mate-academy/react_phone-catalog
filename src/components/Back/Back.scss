@@ -1,0 +1,34 @@
+@import '../../utils/variables';
+@import '../../utils/mixsin';
+
+.back {
+  margin-bottom: 16px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: $gray-white;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+      text-decoration: underline;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__button-label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    color: $gray-secondary;
+    margin-left: 4px;
+
+  }
+
+}

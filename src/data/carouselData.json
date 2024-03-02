@@ -1,0 +1,19 @@
+[
+  {
+    "src": "https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png",
+    "alt": "Phones",
+    "id": 0
+  },
+
+  {
+    "src": "https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png",
+    "alt": "Tablets",
+    "id": 1
+  },
+
+  {
+    "src": "https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png",
+    "alt": "Accessories",
+    "id": 2
+  }
+]

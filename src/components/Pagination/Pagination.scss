@@ -1,0 +1,57 @@
+@import '../../utils/variables';
+@import '../../utils/mixsin';
+
+.pagination {
+  &__list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__page-link {
+    display: inline-block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    transition: all $duration;
+    border: 0;
+    background-color: $gray-white;
+
+    &:hover {
+      transform: scale(1.1);
+      border: 1px solid $gray-primary;
+    }
+  }
+  
+  &__page-item {
+    margin: 4px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-secondary;
+    line-height: 32px;
+    text-align: center;
+    color: #000;
+
+    &--arrow {
+      margin-inline: 16px;
+    }
+
+    &.disabled .pagination__page-link {
+      pointer-events: none;
+      border: 1px solid $gray-elements;
+    }
+
+    &.active .pagination__page-link {
+      color: $gray-white;
+      background: $gray-primary;
+      border: 0;
+    }
+  }
+}
