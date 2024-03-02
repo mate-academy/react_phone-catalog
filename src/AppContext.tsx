@@ -19,10 +19,6 @@ interface Data {
   itemsPerPage: string,
   favourites: Array<Product>
   products: Array<Product>
-  // card: Array<{
-  //   item: Product,
-  //   amount: number,
-  // }>,
   card: Product[],
   render: boolean,
 }
@@ -37,8 +33,6 @@ function sortProducts(arrayToSort: Product[]) {
     case 'age':
     default: {
       result = arrayToSort.sort(getAge);
-      console.log('sort');
-
       break;
     }
     case 'ageDesc': {
@@ -159,13 +153,6 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data })
     })
   }, [])
-
-  useEffect(() => {
-
-  }, [])
-  console.log(state.products, 'products in context');
-  console.log(JSON.parse(localStorage.getItem('cart') as string), 'reducer oldCartDat');
-
 
   return (
     <StateContext.Provider value={{

@@ -58,8 +58,6 @@ export const Navbar: React.FC = () => {
   setSearchParams(params);
 }, 1000), [])
 
-console.log(state.card, 'cart  navbar');
-
   return (
     <div className="navbar-total">
       <div className="navbar">

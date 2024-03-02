@@ -87,8 +87,8 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
           </div>
         </div>
         <div className="cart-price ml-42">
-          {Number(phone?.price.slice(1)) *
-            state.card.filter(elem => elem.id === phone.id).length}
+          {Number(phone?.price.slice(1))
+            * state.card.filter(elem => elem.id === phone.id).length}
         </div>
       </div>
     </div>
