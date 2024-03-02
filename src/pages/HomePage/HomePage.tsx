@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import './HomePage.scss';
 import { Product } from '../../types/Product';
@@ -36,6 +36,34 @@ export const HomePage = () => {
       });
   };
 
+  const productAmount = useMemo(() => {
+    let phones = 0;
+    let tablets = 0;
+    let accessories = 0;
+
+    products.forEach((product) => {
+      switch (product.category) {
+        case 'phones':
+          phones += 1;
+          break;
+        case 'tablets':
+          tablets += 1;
+          break;
+        case 'accessories':
+          accessories += 1;
+          break;
+        default:
+          break;
+      }
+    });
+
+    return ({
+      phones,
+      tablets,
+      accessories,
+    });
+  }, [products]);
+
   const hotPriceProducts = getHotPriceProducts(products);
 
   const brandNewProducts = getBrandNewProducts(products);
@@ -58,7 +86,7 @@ export const HomePage = () => {
       )}
 
       <section className="home-page__section">
-        <Categories />
+        <Categories amount={productAmount} />
       </section>
 
       <section className="home-page__section">

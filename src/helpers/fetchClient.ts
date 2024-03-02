@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // export const
 
-// BASE_URL = 'https://allaserhiienko.github.io/react_phone-catalog/api/';
-
 import { BASE_URL } from './constants';
 
 function wait(delay: number) {

@@ -4,13 +4,7 @@ import {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import cn from 'classnames';
-import { BASE_URL } from '../../helpers/constants';
-
-const slides = [
-  { url: `${BASE_URL}/img/banner-phones.jpeg`, title: 'phones' },
-  { url: `${BASE_URL}/img/banner-tablets.jpeg`, title: 'tablets' },
-  { url: `${BASE_URL}/img/banner-accessories.jpeg`, title: 'accessories' },
-];
+import { BASE_URL, CATEGORIES } from '../../helpers/constants';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,15 +13,15 @@ export const PicturesSlider = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const goToNext = useCallback(() => {
-    const isLastSlide = currentIndex === slides.length - 1;
+    const isLastSlide = currentIndex === CATEGORIES.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
 
     setCurrentIndex(newIndex);
-  }, [currentIndex, slides]);
+  }, [currentIndex]);
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? CATEGORIES.length - 1 : currentIndex - 1;
 
     setCurrentIndex(newIndex);
   };
@@ -107,15 +101,15 @@ export const PicturesSlider = () => {
                   className="pictures-slider__list"
                   style={{ transform: `translateX(-${currentIndex * (100 / 3)}%)` }}
                 >
-                  {slides.map((slide, slideIndex) => (
+                  {CATEGORIES.map((category) => (
                     <li
                       className="pictures-slider__item"
-                      key={slide.title}
+                      key={category}
                     >
                       <Link
-                        to={`./${slide.title}`}
+                        to={`./${category}`}
                         className="pictures-slider__link"
-                        style={{ backgroundImage: `url(${slides[slideIndex].url})` }}
+                        style={{ backgroundImage: `url(${BASE_URL}/img/banner-${category}.jpeg)` }}
                       />
                     </li>
                   ))}
@@ -141,15 +135,15 @@ export const PicturesSlider = () => {
         </div>
 
         <div className="pictures-slider__dots">
-          {slides.map((slide, slideIndex) => (
+          {CATEGORIES.map((category, categoryIndex) => (
             <button
               type="button"
               className="pictures-slider__dot-container"
-              key={slide.title}
-              onClick={() => goToSlide(slideIndex)}
+              key={category}
+              onClick={() => goToSlide(categoryIndex)}
             >
               <div className={cn('pictures-slider__dot', {
-                'pictures-slider__dot--active': currentIndex === slideIndex,
+                'pictures-slider__dot--active': currentIndex === categoryIndex,
               })}
               />
             </button>
