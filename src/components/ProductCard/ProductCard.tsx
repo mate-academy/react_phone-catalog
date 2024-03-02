@@ -29,7 +29,6 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
           alt="phone"
           className="card__img"
         />
-        {/* У <link> есть кликабельная зона под img */}
       </Link>
 
       <div className="card__description">

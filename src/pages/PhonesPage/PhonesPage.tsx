@@ -88,11 +88,11 @@ export const PhonesPage = () => {
     <div className="Phones-page">
       <div className="top-link" data-cy="breadCrumbs">
         <Link to="/">
-          <img src="img/Home.png" alt="Home" className="top-link__img" />
+          <img src="/img/Home.png" alt="Home" className="top-link__img" />
         </Link>
 
         <img
-          src="img/UpperLink.png"
+          src="/img/UpperLink.png"
           alt="ArrowRight"
           className="top-link__img"
         />

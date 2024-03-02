@@ -53,11 +53,11 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
             type="button"
             onClick={() => changeCart(phone)}
           >
-            <img src="img/Close.png" alt="Close" />
+            <img src="/img/Close.png" alt="Close" />
           </button>
 
           <img
-            src={`_new/${phone.image}`}
+            src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}
             alt="phone"
             className="phones__img"
           />
