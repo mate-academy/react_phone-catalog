@@ -28,6 +28,11 @@ function alphabetSort(first: string, second: string ) {
   const word2 = second.toLocaleLowerCase();
   return (word1 < word2) ? -1 : (word1 > word2) ? 1 : 0;
 }
+function priceSort(first: string, second: string ) {
+  const word1 = +first.slice(1);
+  const word2 = +second.slice(1);
+  return (word1 < word2) ? -1 : (word1 > word2) ? 1 : 0;
+}
 
 function sortProducts(arrayToSort: Product[]) {
   const [searchParams,] = useSearchParams();
@@ -47,6 +52,10 @@ function sortProducts(arrayToSort: Product[]) {
     }
     case 'name': {
       result.sort((a, b) => alphabetSort(a.name, b.name));
+      break;
+    }
+    case 'price': {
+      result.sort((a, b) => priceSort(a.price, b.price));
       break;
     }
 

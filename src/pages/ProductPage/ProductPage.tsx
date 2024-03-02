@@ -97,9 +97,9 @@ export const ProductPage: React.FC = () => {
             <option value="price">
               Cheap first
             </option>
-            <option value="priceDesc">
+            {/* <option value="priceDesc">
               Expencive first
-            </option>
+            </option> */}
           </select>
         </div>
         <div className="select-right">
