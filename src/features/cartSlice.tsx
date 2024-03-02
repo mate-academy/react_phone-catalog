@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { TypeCard } from '../types/TypeCard';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { TypeCard } from "../types/TypeCard";
 
 export interface T {
   phonesInCart: TypeCard[];
@@ -10,7 +10,7 @@ export const initialState: T = {
 };
 
 export const cart = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     addPhonesInCart: (state, action) => {
@@ -23,8 +23,9 @@ export const cart = createSlice({
     deletePhonesInCart: (state, action: PayloadAction<TypeCard>) => {
       return {
         ...state,
-        phonesInCart: state.phonesInCart
-          .filter(card => card.id !== action.payload.id),
+        phonesInCart: state.phonesInCart.filter(
+          (card) => card.id !== action.payload.id,
+        ),
       };
     },
   },
@@ -32,7 +33,4 @@ export const cart = createSlice({
 
 export default cart.reducer;
 
-export const {
-  addPhonesInCart,
-  deletePhonesInCart,
-} = cart.actions;
+export const { addPhonesInCart, deletePhonesInCart } = cart.actions;

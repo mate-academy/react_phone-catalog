@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import './Footer.scss';
+import { Link } from "react-router-dom";
+import "./Footer.scss";
 
-export const Footer = (() => {
+export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__leftContainer">
@@ -26,15 +26,14 @@ export const Footer = (() => {
 
       <div className="footer__rightContainer">
         Back to top
-
         <button
           type="button"
           className="ArrowUp"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <img src="/img/ArrowUp.png" alt="Logo" className="ArrowUp__link" />
         </button>
       </div>
     </footer>
   );
-});
+};

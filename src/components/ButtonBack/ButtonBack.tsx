@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-import './ButtonBack.scss';
+import { useNavigate } from "react-router-dom";
+import "./ButtonBack.scss";
 
 export const ButtonBack = () => {
   const navigate = useNavigate();
@@ -11,11 +11,7 @@ export const ButtonBack = () => {
       data-cy="backButton"
       onClick={() => navigate(-1)}
     >
-      <img
-        src="/img/ArrowLeft.png"
-        alt="left"
-        className="top-back__img"
-      />
+      <img src="/img/ArrowLeft.png" alt="left" className="top-back__img" />
 
       <p>Back</p>
     </button>

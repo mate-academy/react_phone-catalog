@@ -1,11 +1,11 @@
-import classNames from 'classnames';
-import './Pagination.scss';
+import classNames from "classnames";
+import "./Pagination.scss";
 
 interface PaginationTypes {
-  total: number,
-  perPage: number | string,
-  currentPage: number,
-  onPageChange: (page: number) => void,
+  total: number;
+  perPage: number | string;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 }
 
 export const Pagination: React.FC<PaginationTypes> = ({
@@ -27,22 +27,19 @@ export const Pagination: React.FC<PaginationTypes> = ({
   };
 
   return (
-    <ul
-      className="Pagination"
-      data-cy="pagination"
-    >
+    <ul data-cy="pagination" className="Pagination">
       <li
-        className={classNames('page__item', {
+        className={classNames("page__item", {
           disabled: currentPage === 1,
         })}
       >
         <a
           data-cy="paginationLeft"
-          className={classNames('page__link', {
+          className={classNames("page__link", {
             disabled: currentPage === 1,
           })}
           href="#prev"
-          aria-disabled={currentPage === 1 ? 'true' : 'false'}
+          aria-disabled={currentPage === 1 ? "true" : "false"}
           onClick={() => onPageChange(currentPage - 1)}
         >
           <img src="img/ArrowLeft.png" alt="left" />
@@ -50,12 +47,11 @@ export const Pagination: React.FC<PaginationTypes> = ({
       </li>
 
       <div className="page__list">
-        {getNumbers(1, pagesAmount).map(page => (
+        {getNumbers(1, pagesAmount).map((page) => (
           <li
-            className={classNames(
-              'page__item',
-              { active: page === currentPage },
-            )}
+            className={classNames("page__item", {
+              active: page === currentPage,
+            })}
             key={page}
           >
             <a
@@ -71,17 +67,17 @@ export const Pagination: React.FC<PaginationTypes> = ({
       </div>
 
       <li
-        className={classNames('page__item', {
+        className={classNames("page__item", {
           disabled: currentPage === pagesAmount,
         })}
       >
         <a
           data-cy="paginationRight"
-          className={classNames('page__link', {
+          className={classNames("page__link", {
             disabled: currentPage === pagesAmount,
           })}
           href="#next"
-          aria-disabled={currentPage === pagesAmount ? 'true' : 'false'}
+          aria-disabled={currentPage === pagesAmount ? "true" : "false"}
           onClick={() => onPageChange(currentPage + 1)}
         >
           <img src="img/ArrowRight.png" alt="right" />

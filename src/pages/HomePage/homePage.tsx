@@ -1,46 +1,44 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames';
-import './HomePage.scss';
-import { useAppSelector } from '../../store';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import classNames from "classnames";
+import "./HomePage.scss";
+import { useAppSelector } from "../../store";
 import {
   imgWidth,
   scrollPositionLeft,
   scrollPositionRight,
-} from '../../helpers/changePositionItem';
+} from "../../helpers/changePositionItem";
 import {
   Phones,
   PhonesSlider,
-} from '../../components/PhonesSlider/PhonesSlider';
+} from "../../components/PhonesSlider/PhonesSlider";
 
 export const HomePage = () => {
-  const phones = useAppSelector(
-    (state) => state.phones.items,
-  );
+  const phones = useAppSelector((state) => state.phones.items);
 
   const [scrollImgPosition, setScrollImgPosition] = useState(0);
 
   const categoryImg = [
     {
-      img: '_new/img/category-phones.png',
-      name: 'Mobile phones',
+      img: "_new/img/category-phones.png",
+      name: "Mobile phones",
       count: `${phones.length}`,
-      color: '#D53C51',
-      type: 'Phones',
+      color: "#D53C51",
+      type: "Phones",
     },
     {
-      img: '_new/img/category-tablets.png',
-      name: 'Tablets',
+      img: "_new/img/category-tablets.png",
+      name: "Tablets",
       count: 24,
-      color: '#D53C51',
-      type: 'Tablets',
+      color: "#D53C51",
+      type: "Tablets",
     },
     {
-      img: '_new/img/category-accessories.png',
-      name: 'Accessories',
+      img: "_new/img/category-accessories.png",
+      name: "Accessories",
       count: 100,
-      color: '#D53C51',
-      type: 'Accessories',
+      color: "#D53C51",
+      type: "Accessories",
     },
   ];
 
@@ -62,14 +60,16 @@ export const HomePage = () => {
         <div className="Slider__main">
           <button
             type="button"
-            className={classNames('Slider__button', {
+            className={classNames("Slider__button", {
               disabled: scrollImgPosition >= 0,
             })}
-            onClick={() => scrollPositionLeft(
-              setScrollImgPosition,
-              scrollImgPosition,
-              imgWidth,
-            )}
+            onClick={() =>
+              scrollPositionLeft(
+                setScrollImgPosition,
+                scrollImgPosition,
+                imgWidth,
+              )
+            }
           >
             <img src="/img/ArrowLeft.png" alt="ArrowLeft" />
           </button>
@@ -104,12 +104,14 @@ export const HomePage = () => {
           </div>
           <button
             type="button"
-            onClick={() => scrollPositionRight(
-              setScrollImgPosition,
-              scrollImgPosition,
-              imgWidth,
-            )}
-            className={classNames('Slider__button', {
+            onClick={() =>
+              scrollPositionRight(
+                setScrollImgPosition,
+                scrollImgPosition,
+                imgWidth,
+              )
+            }
+            className={classNames("Slider__button", {
               disabled: scrollImgPosition < -imgWidth,
             })}
           >
@@ -118,17 +120,20 @@ export const HomePage = () => {
         </div>
 
         <div className="Slider__line-list">
-          <div className={classNames('Slider__line', {
-            active: scrollImgPosition === 0,
-          })}
+          <div
+            className={classNames("Slider__line", {
+              active: scrollImgPosition === 0,
+            })}
           />
-          <div className={classNames('Slider__line', {
-            active: scrollImgPosition === -imgWidth,
-          })}
+          <div
+            className={classNames("Slider__line", {
+              active: scrollImgPosition === -imgWidth,
+            })}
           />
-          <div className={classNames('Slider__line', {
-            active: scrollImgPosition === -imgWidth * 2,
-          })}
+          <div
+            className={classNames("Slider__line", {
+              active: scrollImgPosition === -imgWidth * 2,
+            })}
           />
         </div>
       </div>
@@ -139,24 +144,14 @@ export const HomePage = () => {
         <h1>Shop by category</h1>
         <div>
           <ul data-cy="categoryLinksContainer">
-            {categoryImg.map(({
-              img,
-              name,
-              count,
-              color,
-              type,
-            }) => (
+            {categoryImg.map(({ img, name, count, color, type }) => (
               <li className="Category__item" key={name}>
-                <div className="Category__container" style={{ backgroundColor: `${color}` }}>
-                  <Link
-                    to={type}
-                    className="Category__img-container"
-                  >
-                    <img
-                      className="Category__img"
-                      src={img}
-                      alt={name}
-                    />
+                <div
+                  className="Category__container"
+                  style={{ backgroundColor: `${color}` }}
+                >
+                  <Link to={type} className="Category__img-container">
+                    <img className="Category__img" src={img} alt={name} />
                   </Link>
                 </div>
 

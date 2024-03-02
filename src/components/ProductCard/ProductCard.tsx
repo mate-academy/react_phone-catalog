@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../store';
-import { TypeCard } from '../../types/TypeCard';
-import './ProductCard.scss';
-import { useCartPhones, useFavouritesPhones } from '../../helpers/useArrays';
+import classNames from "classnames";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "../../store";
+import { TypeCard } from "../../types/TypeCard";
+import "./ProductCard.scss";
+import { useCartPhones, useFavouritesPhones } from "../../helpers/useArrays";
 
 interface T {
   card: TypeCard;
@@ -15,9 +15,7 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
     (state) => state.favouritesPhones.favouritesPhones,
   );
 
-  const cartPhones = useAppSelector(
-    (state) => state.cartPhones.phonesInCart,
-  );
+  const cartPhones = useAppSelector((state) => state.cartPhones.phonesInCart);
 
   const changeCart = useCartPhones();
 
@@ -26,7 +24,11 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
   return (
     <div className="card">
       <Link to={`/Phones/${card.phoneId}`} className="card__link">
-        <img src={`https://mate-academy.github.io/react_phone-catalog/_new/${card.image}`} alt="phone" className="card__img" />
+        <img
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${card.image}`}
+          alt="phone"
+          className="card__img"
+        />
         {/* У <link> есть кликабельная зона под img */}
       </Link>
 
@@ -66,10 +68,8 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
         <div className="card__description__button">
           <button
             type="button"
-            className={classNames('card__description-button', {
-              'active-button': cartPhones.some(
-                item => item.id === card.id,
-              ),
+            className={classNames("card__description-button", {
+              "active-button": cartPhones.some((item) => item.id === card.id),
             })}
             onClick={() => changeCart(card)}
           >
@@ -77,29 +77,23 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
           </button>
           <button
             type="button"
-            className={classNames('card__description-favorites', {
-              'active-button': favouritesPhones.some(
-                item => item.id === card.id,
+            className={classNames("card__description-favorites", {
+              "active-button": favouritesPhones.some(
+                (item) => item.id === card.id,
               ),
             })}
             onClick={() => changeFavourites(card)}
             data-cy="addToFavorite"
           >
-            {favouritesPhones.some(
-              item => item.id === card.id,
-            )
-              ? (
-                <img
-                  src="/img/Red-heart.png"
-                  alt="Heart"
-                  className="favourites-img"
-                />
-              ) : (
-                <img
-                  src="/img/heart.png"
-                  alt="Heart"
-                />
-              )}
+            {favouritesPhones.some((item) => item.id === card.id) ? (
+              <img
+                src="/img/Red-heart.png"
+                alt="Heart"
+                className="favourites-img"
+              />
+            ) : (
+              <img src="/img/heart.png" alt="Heart" />
+            )}
           </button>
         </div>
       </div>

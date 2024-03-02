@@ -1,30 +1,26 @@
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import classNames from 'classnames';
-import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store';
-import './ItemCard.scss';
-import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
-import { selectPhone } from '../../features/phonesSlice';
-import { useCartPhones, useFavouritesPhones } from '../../helpers/useArrays';
+import { useParams, useNavigate, Link } from "react-router-dom";
+import classNames from "classnames";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../store";
+import "./ItemCard.scss";
+import { ButtonBack } from "../../components/ButtonBack/ButtonBack";
+import { selectPhone } from "../../features/phonesSlice";
+import { useCartPhones, useFavouritesPhones } from "../../helpers/useArrays";
 import {
   Phones,
   PhonesSlider,
-} from '../../components/PhonesSlider/PhonesSlider';
+} from "../../components/PhonesSlider/PhonesSlider";
 
 export const ItemCard = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
-  const splitedId = id?.split('-');
+  const splitedId = id?.split("-");
   const navigate = useNavigate();
   const favouritesPhones = useAppSelector(
     (state) => state.favouritesPhones.favouritesPhones,
   );
-  const cartPhones = useAppSelector(
-    (state) => state.cartPhones.phonesInCart,
-  );
-  const { selectedPhone } = useAppSelector(
-    (state) => state.phones,
-  );
+  const cartPhones = useAppSelector((state) => state.cartPhones.phonesInCart);
+  const { selectedPhone } = useAppSelector((state) => state.phones);
 
   const [selectedImg, setSelectedImg] = useState(selectedPhone?.images[0]);
 
@@ -41,33 +37,29 @@ export const ItemCard = () => {
   const changeSelectedPhone = (key: string, value: string) => {
     if (splitedId) {
       switch (key) {
-        case 'color':
+        case "color":
           splitedId[splitedId.length - 1] = value;
 
-          navigate(`/Phones/${splitedId.join('-')}`);
+          navigate(`/Phones/${splitedId.join("-")}`);
           break;
-        case 'memory':
+        case "memory":
           splitedId[splitedId.length - 2] = value.toLocaleLowerCase();
 
-          navigate(`/Phones/${splitedId.join('-')}`);
+          navigate(`/Phones/${splitedId.join("-")}`);
           break;
         default:
       }
     }
   };
 
-  const phones = useAppSelector(
-    (state) => state.phones.items,
-  );
+  const phones = useAppSelector((state) => state.phones.items);
 
-  const thisCard = phones.find(phone => phone.phoneId === id);
+  const thisCard = phones.find((phone) => phone.phoneId === id);
 
-  const includesCard = thisCard && cartPhones.some(
-    item => item.id === thisCard.id,
-  );
-  const includesFav = thisCard && favouritesPhones.some(
-    item => item.id === thisCard.id,
-  );
+  const includesCard =
+    thisCard && cartPhones.some((item) => item.id === thisCard.id);
+  const includesFav =
+    thisCard && favouritesPhones.some((item) => item.id === thisCard.id);
 
   const changeCart = useCartPhones();
 
@@ -78,32 +70,23 @@ export const ItemCard = () => {
   }
 
   const colors: { [key: string]: string } = {
-    gold: '#FCDBC1',
-    midnightgreen: '#5F7170',
-    spacegray: '#4C4C4C',
-    silver: '#E2E6E9',
+    gold: "#FCDBC1",
+    midnightgreen: "#5F7170",
+    spacegray: "#4C4C4C",
+    silver: "#E2E6E9",
   };
 
   return (
     <div className="ItemCard">
       <div className="top-link" data-cy="breadCrumbs">
         <Link to="/">
-          <img
-            src="/img/Home.png"
-            alt="Home"
-          />
+          <img src="/img/Home.png" alt="Home" />
         </Link>
-        <img
-          src="/img/UpperLink.png"
-          alt="ArrowRight"
-        />
+        <img src="/img/UpperLink.png" alt="ArrowRight" />
         <Link to="/Phones">
           <p>Phones</p>
         </Link>
-        <img
-          src="/img/UpperLink.png"
-          alt="ArrowRight"
-        />
+        <img src="/img/UpperLink.png" alt="ArrowRight" />
         <p>{selectedPhone?.name}</p>
       </div>
 
@@ -113,13 +96,13 @@ export const ItemCard = () => {
 
       <div className="ItemCard__properties">
         <div className="ItemCard__list">
-          {selectedPhone.images.map(image => (
+          {selectedPhone.images.map((image) => (
             <div
               role="button"
               key={image}
               onClick={() => setSelectedImg(image)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === "Enter" || e.key === " ") {
                   setSelectedImg(image);
                 }
               }}
@@ -128,7 +111,7 @@ export const ItemCard = () => {
               <img
                 src={`/_new/${image}`}
                 alt="Phone"
-                className={classNames('ItemCard__img', {
+                className={classNames("ItemCard__img", {
                   active__img: image === selectedImg,
                 })}
                 key={image}
@@ -137,20 +120,24 @@ export const ItemCard = () => {
           ))}
         </div>
 
-        <img src={`/_new/${selectedImg}`} alt="Phone" className="ItemCard__selected-img" />
+        <img
+          src={`/_new/${selectedImg}`}
+          alt="Phone"
+          className="ItemCard__selected-img"
+        />
 
         <div className="ItemCard__info">
           <p>Available colors</p>
           <div className="Change__list">
-            {selectedPhone.colorsAvailable.map(color => (
+            {selectedPhone.colorsAvailable.map((color) => (
               <button
                 key={color}
                 type="button"
                 style={{ backgroundColor: colors[color] || color }}
-                className={classNames('Change-color__item', {
+                className={classNames("Change-color__item", {
                   active__color: id?.includes(color),
                 })}
-                onClick={() => changeSelectedPhone('color', color)}
+                onClick={() => changeSelectedPhone("color", color)}
                 aria-label="Color Selector"
                 disabled={id?.includes(color)}
               />
@@ -159,16 +146,16 @@ export const ItemCard = () => {
 
           <p>Select capacity</p>
           <div className="Change__list">
-            {selectedPhone.capacityAvailable.map(memory => (
+            {selectedPhone.capacityAvailable.map((memory) => (
               <button
                 key={memory}
                 type="button"
-                className={classNames('Change-memory__item', {
+                className={classNames("Change-memory__item", {
                   active__memory: id?.includes(memory.toLocaleLowerCase()),
                 })}
-                onClick={() => changeSelectedPhone(
-                  'memory', memory.toLocaleLowerCase(),
-                )}
+                onClick={() =>
+                  changeSelectedPhone("memory", memory.toLocaleLowerCase())
+                }
                 disabled={id?.includes(memory.toLocaleLowerCase())}
               >
                 {memory}
@@ -178,17 +165,15 @@ export const ItemCard = () => {
 
           <div className="ItemCard__buttons">
             <div className="ItemCard__price">
-              <h1>
-                {selectedPhone.priceRegular}
-              </h1>
+              <h1>{selectedPhone.priceRegular}</h1>
               <p>{selectedPhone.priceDiscount}</p>
             </div>
 
             <div className="ItemCard__button">
               <button
                 type="button"
-                className={classNames('ItemCard-button', {
-                  'active-button': includesCard,
+                className={classNames("ItemCard-button", {
+                  "active-button": includesCard,
                 })}
                 onClick={() => changeCart(thisCard)}
               >
@@ -197,8 +182,8 @@ export const ItemCard = () => {
 
               <button
                 type="button"
-                className={classNames('ItemCard-favorites', {
-                  'active-button': includesFav,
+                className={classNames("ItemCard-favorites", {
+                  "active-button": includesFav,
                 })}
                 onClick={() => changeFavourites(thisCard)}
               >
@@ -209,10 +194,7 @@ export const ItemCard = () => {
                     className="favourites-img"
                   />
                 ) : (
-                  <img
-                    src="/img/heart.png"
-                    alt="Heart"
-                  />
+                  <img src="/img/heart.png" alt="Heart" />
                 )}
               </button>
             </div>
@@ -221,35 +203,23 @@ export const ItemCard = () => {
           <div className="ItemCard__characteristics small-text">
             <div className="characteristics">
               <p>Screen</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.screen}
-              </p>
+              <p className="characteristics__value">{selectedPhone.screen}</p>
             </div>
             <div className="characteristics">
               <p>Resolution</p>
-              <p
-                className="characteristics__value"
-              >
+              <p className="characteristics__value">
                 {selectedPhone.resolution}
               </p>
             </div>
             <div className="characteristics">
               <p>Processor</p>
-              <p
-                className="characteristics__value"
-              >
+              <p className="characteristics__value">
                 {selectedPhone.processor}
               </p>
             </div>
             <div className="characteristics">
               <p>RAM</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.ram}
-              </p>
+              <p className="characteristics__value">{selectedPhone.ram}</p>
             </div>
           </div>
         </div>
@@ -259,13 +229,11 @@ export const ItemCard = () => {
       <div className="ItemCard__description">
         <div className="description" data-cy="productDescription">
           <h2 className="description__header">About</h2>
-          {selectedPhone.description.map(text => (
+          {selectedPhone.description.map((text) => (
             <article className="description__article" key={text.title}>
               <h3>{text.title}</h3>
-              {text.text.map(element => (
-                <p key={element.length}>
-                  {element}
-                </p>
+              {text.text.map((element) => (
+                <p key={element.length}>{element}</p>
               ))}
             </article>
           ))}
@@ -276,68 +244,44 @@ export const ItemCard = () => {
           <div className="description__characteristics">
             <div className="characteristics">
               <p>Screen</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.screen}
-              </p>
+              <p className="characteristics__value">{selectedPhone.screen}</p>
             </div>
             <div className="characteristics">
               <p>Resolution</p>
-              <p
-                className="characteristics__value"
-              >
+              <p className="characteristics__value">
                 {selectedPhone.resolution}
               </p>
             </div>
             <div className="characteristics">
               <p>Processor</p>
-              <p
-                className="characteristics__value"
-              >
+              <p className="characteristics__value">
                 {selectedPhone.processor}
               </p>
             </div>
             <div className="characteristics">
               <p>RAM</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.ram}
-              </p>
+              <p className="characteristics__value">{selectedPhone.ram}</p>
             </div>
             <div className="characteristics">
               <p>Built in memory</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.capacityAvailable.map(memory => (
-                  id?.includes(memory.toLocaleLowerCase()) ? memory : ''
-                ))}
+              <p className="characteristics__value">
+                {selectedPhone.capacityAvailable.map((memory) =>
+                  id?.includes(memory.toLocaleLowerCase()) ? memory : "",
+                )}
               </p>
             </div>
             <div className="characteristics">
               <p>Camera</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.camera}
-              </p>
+              <p className="characteristics__value">{selectedPhone.camera}</p>
             </div>
             <div className="characteristics">
               <p>Zoom</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.zoom}
-              </p>
+              <p className="characteristics__value">{selectedPhone.zoom}</p>
             </div>
             <div className="characteristics">
               <p>Cell</p>
-              <p
-                className="characteristics__value"
-              >
-                {selectedPhone.cell.join(', ')}
+              <p className="characteristics__value">
+                {selectedPhone.cell.join(", ")}
               </p>
             </div>
           </div>

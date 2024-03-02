@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { TypeCard } from '../types/TypeCard';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { TypeCard } from "../types/TypeCard";
 
 export interface T {
   favouritesPhones: TypeCard[];
@@ -10,7 +10,7 @@ export const initialState: T = {
 };
 
 export const favouritesSlice = createSlice({
-  name: 'favourites',
+  name: "favourites",
   initialState,
   reducers: {
     addFavouritePhones: (state, action) => {
@@ -23,15 +23,14 @@ export const favouritesSlice = createSlice({
     deleteFavouritePhones: (state, action: PayloadAction<TypeCard>) => {
       return {
         ...state,
-        favouritesPhones: state.favouritesPhones
-          .filter(card => card.id !== action.payload.id),
+        favouritesPhones: state.favouritesPhones.filter(
+          (card) => card.id !== action.payload.id,
+        ),
       };
     },
   },
 });
 
 export default favouritesSlice.reducer;
-export const {
-  addFavouritePhones,
-  deleteFavouritePhones,
-} = favouritesSlice.actions;
+export const { addFavouritePhones, deleteFavouritePhones } =
+  favouritesSlice.actions;
