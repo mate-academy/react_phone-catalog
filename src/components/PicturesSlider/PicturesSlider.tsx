@@ -4,11 +4,12 @@ import {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import cn from 'classnames';
+import { BASE_URL } from '../../helpers/constants';
 
 const slides = [
-  { url: './img/banner-phones.jpeg', title: 'phones' },
-  { url: './img/banner-tablets.jpeg', title: 'tablets' },
-  { url: './img/banner-accessories.jpeg', title: 'accessories' },
+  { url: `${BASE_URL}/img/banner-phones.jpeg`, title: 'phones' },
+  { url: `${BASE_URL}/img/banner-tablets.jpeg`, title: 'tablets' },
+  { url: `${BASE_URL}/img/banner-accessories.jpeg`, title: 'accessories' },
 ];
 
 export const PicturesSlider = () => {

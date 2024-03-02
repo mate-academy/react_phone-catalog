@@ -26,9 +26,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       data-cy="categoryLinksContainer"
     >
       <div className="product-card__content">
-        {/* <img src={`${BASE_URL}${image}`} alt={name} className="product-card__image" /> */}
-        {/* <div className="product-card__image-container"></div> */}
-        <div className="product-card__image-container"><img src={`${BASE_URL}${image}`} alt={name} className="product-card__image" /></div>
+        <div className="product-card__image-container">
+          <img src={`${BASE_URL}${image}`} alt={name} className="product-card__image" />
+        </div>
         <p className="product-card__title">{name}</p>
         <div className="product-card__price-container">
           <h3 className="product-card__price">{`$${price}`}</h3>

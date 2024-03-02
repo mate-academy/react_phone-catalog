@@ -8,7 +8,6 @@
 
   @extend %header-action;
 
-
   @include onTablet {
     display: flex;
     @include square(48px);

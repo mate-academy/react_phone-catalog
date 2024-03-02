@@ -4,6 +4,7 @@ import './HomePage.scss';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 import { ProductsSlider } from '../../components/ProductsSlider';
+import { Categories } from '../../components/Categories';
 
 export const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -55,6 +56,10 @@ export const HomePage = () => {
           />
         </section>
       )}
+
+      <section className="home-page__section">
+        <Categories />
+      </section>
 
       <section className="home-page__section">
         <ProductsSlider

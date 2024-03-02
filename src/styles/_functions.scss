@@ -1,9 +1,11 @@
 @function mobile-slide-width($width) {
-  @return calc(((#{$width} - #{$paddingXMobile} - #{$gapGrid} * 3)/ 4 * 3 + #{$gapGrid} * 2));
+  @return calc(((#{$width} - #{$paddingXMobile} - #{$gapGrid} * 3)
+  / 4 * 3 + #{$gapGrid} * 2));
 }
 
 @function tablet-slide-width($width) {
-  @return calc(((#{$width} - #{$paddingXTablet} - #{$gapGrid} * 11)/ 12 * 5 + #{$gapGrid} * 4));
+  @return calc(((#{$width} - #{$paddingXTablet} - #{$gapGrid} * 11)
+  / 12 * 5 + #{$gapGrid} * 4));
 }
 
 @function small-desktop-slide-width($width) {

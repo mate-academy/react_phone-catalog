@@ -8,7 +8,6 @@ $desktopWidth: desktop-slide-width(var(--width));
   &__content {
     display: flex;
     flex-direction: column;
-    // box-sizing: border-box;
   }
 
   &__top {
@@ -18,7 +17,6 @@ $desktopWidth: desktop-slide-width(var(--width));
     justify-content: space-between;
     gap: 21px;
     margin-bottom: 24px;
-    // box-sizing: border-box;
   }
 
   &__title {
@@ -53,7 +51,6 @@ $desktopWidth: desktop-slide-width(var(--width));
   &__slides-container {
     margin-right: -$paddingXMobile;
     overflow: hidden;
-    // box-sizing: border-box;
 
     @include onTablet {
       margin-right: -$paddingXTablet;
@@ -68,20 +65,22 @@ $desktopWidth: desktop-slide-width(var(--width));
     display: flex;
     flex-direction: row;
     gap: $gapGrid;
-        // box-sizing: border-box;
 
     transition: transform 0.5s ease;
   }
 
   &__slide {
-    display: block;
+    // display: block;
+    display: flex;
+    justify-content: center;
     min-width: $mobileWidth;
     height: 439px;
-    // box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid $colorElements;
 
     @include onTablet {
       min-width: $tabletWidth;
-      height: 512px;
+      min-height: 512px;
     }
 
     @include onSmallDesktop {

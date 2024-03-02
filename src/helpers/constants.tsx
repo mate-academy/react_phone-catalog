@@ -7,6 +7,7 @@ export const BASE_URL
 //   = 'https://AllaSerhiienko.github.io/react_phone-catalog/';
 // = 'https://allaserhiienko.github.io/react_phone-catalog/img/';
 
+// export const PHONES = 'phones';
 export const CART = 'cart';
 export const FAVORITES = 'favorites';
 
