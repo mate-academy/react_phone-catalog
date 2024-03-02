@@ -23,6 +23,12 @@ interface Data {
   render: boolean,
 }
 
+function alphabetSort(first: string, second: string ) {
+  const word1 = first.toLocaleLowerCase();
+  const word2 = second.toLocaleLowerCase();
+  return (word1 < word2) ? -1 : (word1 > word2) ? 1 : 0;
+}
+
 function sortProducts(arrayToSort: Product[]) {
   const [searchParams,] = useSearchParams();
 
@@ -37,6 +43,10 @@ function sortProducts(arrayToSort: Product[]) {
     }
     case 'ageDesc': {
       result.reverse();
+      break;
+    }
+    case 'name': {
+      result.sort((a, b) => alphabetSort(a.name, b.name));
       break;
     }
 
