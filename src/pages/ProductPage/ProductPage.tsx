@@ -8,6 +8,7 @@ import { StateContext } from '../../AppContext';
 import {
   ACTIONS,
   getCurrentItems,
+  getPageHeader,
 } from '../../helpers/utils';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../pagination/Pagination';
@@ -27,8 +28,6 @@ export const ProductPage: React.FC = () => {
   const [sortValue, setSortValue] = useState(sort);
   const location = useLocation();
 
-  // localStorage.clear()
-
   let currentItems: Product[] = [];
 
   let copyOfProducts: Product[] = [];
@@ -37,6 +36,8 @@ export const ProductPage: React.FC = () => {
 
     const fullName = location.pathname;
     const newName = fullName.slice(1, fullName.length - 1);
+    // console.log(getPageHeader(fullName));
+
 
     copyOfProducts = [...state.products.filter(product => product.type === newName)]
 
@@ -70,7 +71,7 @@ export const ProductPage: React.FC = () => {
   return (
     <div>
 
-      <p className="font-header">Mobile phones</p>
+      <p className="font-header">{getPageHeader(location.pathname)}</p>
       <div className="font-models-amount">{copyOfProducts.length} models</div>
 
 

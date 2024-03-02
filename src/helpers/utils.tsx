@@ -100,4 +100,18 @@ export function useDeleteAllSimilar() {
   }
 }
 
+export function getPageHeader(page: string = '') {
+  let pageHader = '';
 
+  if (page === '/phones') {
+    pageHader = 'Mobile phones';
+  }
+  if (page === '/tablets') {
+    pageHader = 'Tablets';
+  }
+  if (page === '/accessoires') {
+    pageHader = 'Accessoires';
+  }
+
+  return pageHader;
+}
