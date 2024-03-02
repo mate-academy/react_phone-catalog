@@ -11,12 +11,6 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(init());
-
-    // тут по умові, якщо пустий то робити JSON.stringify([])
-    // localStorage.setItem('cart', JSON.stringify([]));
-    // // посуті це не працює, тільки коли напряму в консоль вводжу
-    // localStorage.setItem('favourites', JSON.stringify([]));
-    //
   }, []);
 
   return (

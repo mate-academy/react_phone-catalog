@@ -10,42 +10,6 @@
   & h1 {
     margin-bottom: 24px;
   }
-
-  .cardsContainer__list {
-    // overflow: hidden;
-    display: flex;
-    gap: 16px;
-  }
-
-  .top-container {
-    display: flex;
-    justify-content: space-between;
-
-    &__movement {
-      display: flex;
-      gap: 16px;
-    }
-
-    &__button {
-      width: 32px;
-      height: 32px;
-      background-color: #FFF;
-      border: 1px solid #B4BDC3;
-
-      &:hover {
-        border: 1px solid #313237
-      }
-
-      &:hover.disabled {
-        border: 1px solid #B4BDC3;
-        cursor: default;
-      }
-
-      &.disabled {
-        opacity: 0.5;
-      }
-    }
-  }
 }
 
 .container {
@@ -79,21 +43,24 @@
     }
   }
 
-
   &__list {
     // overflow: hidden;
     display: flex;
     width: 1040px;
     height: 400px;
     margin: 0 16px;
+
+    & a {
+      margin-right: 48px;
+    }
+
+    .Slider__img {
+      width: 1040px;
+      height: 400px;
+      object-fit: cover;
+    }
   }
 
-  &__img {
-    min-width: 1040px;
-    min-height: 400px;
-    object-fit: cover;
-    margin-right: 48px;
-  }
 
   &__button {
     z-index: 2;
@@ -117,30 +84,26 @@
 .Category {
   height: 508px;
 
-  &__img {
-    height: 368px;
-    width: 368px;
-    object-fit: cover;
-
-  }
-
-  &__container {
-    margin-bottom: 24px;
-    height: 368px;
-    width: 368px;
-    position: relative;
-    overflow: hidden;
-  }
-
   &__item {
     margin-right: 16px;
 
     &:last-child {
       margin-right: 0;
     }
-  }
 
-  &__name {
-    margin-bottom: 4px;
+    .Category__container {
+      margin-bottom: 24px;
+      height: 368px;
+      width: 368px;
+
+      .Category__img {
+        height: 368px;
+        width: 368px;
+      }
+    }
+
+    .Category__name {
+      margin-bottom: 4px;
+    }
   }
 }

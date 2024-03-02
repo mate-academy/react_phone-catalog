@@ -38,16 +38,18 @@
 
   .selector__count {
     margin-top: 4px;
-    width: 176px;
+    width: 128px;
     height: 40px;
     border: 1px solid #B4BDC3;
+    font-family: Montserrat, sans-serif;
   }
 
   .selector__sort {
     margin-top: 4px;
-    width: 128px;
+    width: 176px;
     height: 40px;
     border: 1px solid #B4BDC3;
+    font-family: Montserrat, sans-serif;
   }
 }
 
@@ -56,7 +58,6 @@
   margin-bottom: 40px;
 
   grid-template-columns: repeat(4, 272px);
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 40px 16px;
   justify-content: center;
 }

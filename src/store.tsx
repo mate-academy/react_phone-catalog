@@ -19,7 +19,7 @@ import cartSliceReducer from './features/cartSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'favourites'],
+  whitelist: ['favouritesPhones', 'cartPhones'],
 };
 
 const rootReducer = combineReducers({
@@ -33,18 +33,6 @@ export const persistedReducer = persistReducer(
   rootReducer,
 );
 
-// const cartLoggerMiddleware = (store: any) => (next: any) => (action: any) => {
-//   const state = store.getState();
-
-//   const newCart = state.favouritesPhones.phonesInCart;
-//   const newFavourites = state.favouritesPhones.favouritesPhones;
-
-//   localStorage.setItem('cart', JSON.stringify(newCart));
-//   localStorage.setItem('favourites', JSON.stringify(newFavourites));
-
-//   return next(action);
-// };
-
 export const store = configureStore({
   reducer: persistedReducer,
 
@@ -53,9 +41,6 @@ export const store = configureStore({
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-
-  // middleware: (getDefaultMiddleware) => getDefaultMiddleware()
-  //   .concat(cartLoggerMiddleware),
 });
 
 export const persistor = persistStore(store);

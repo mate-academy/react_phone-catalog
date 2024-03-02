@@ -1,11 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { TypeCard } from '../types/TypeCard';
-import { ItemTypeCard } from '../types/ItemTypeCard';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { TypeCard } from "../types/TypeCard";
+import { ItemTypeCard } from "../types/ItemTypeCard";
 
 export interface T {
-  loaded: boolean,
-  hasError: boolean,
-  items: TypeCard[],
+  loaded: boolean;
+  hasError: boolean;
+  items: TypeCard[];
   selectedPhone: ItemTypeCard | null;
   searchFilter: string;
 }
@@ -15,11 +15,12 @@ export const initialState: T = {
   hasError: false,
   items: [] as TypeCard[],
   selectedPhone: null,
-  searchFilter: '',
+  searchFilter: "",
 };
 
 export const selectPhone = createAsyncThunk(
-  'phones/id',
+  "phones/id",
+
   async (id: string) => {
     const response = await fetch(
       `https://mate-academy.github.io/react_phone-catalog/_new/products/${id}.json`,
@@ -32,10 +33,11 @@ export const selectPhone = createAsyncThunk(
 );
 
 export const init = createAsyncThunk(
-  'phones/init',
+  "phones/init",
+
   async () => {
     const response = await fetch(
-      'https://mate-academy.github.io/react_phone-catalog/_new/products.json',
+      "https://mate-academy.github.io/react_phone-catalog/_new/products.json",
     );
 
     const data = await response.json();
@@ -44,37 +46,8 @@ export const init = createAsyncThunk(
   },
 );
 
-// async () => {
-//   const response = await fetch(
-//     'https://mate-academy.github.io/react_phone-catalog/_new/products.json',
-//   );
-
-//   const data = await response.json();
-
-//   return data;
-// },
-
-// async () => {
-//   try {
-//     const response = await fetch(
-//       'https://mate-academy.github.io/react_phone-catalog/_new/products.json',
-//     );
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-
-//     const data = await response.json();
-
-//     return data;
-//   } catch (error) {
-//     // console.log('Error fetching data:', error);
-//     return error;
-//   }
-// },
-
 export const phonesSlice = createSlice({
-  name: 'phones',
+  name: "phones",
   initialState,
   reducers: {
     setSearchFilter: (state, action) => {
@@ -105,7 +78,5 @@ export const phonesSlice = createSlice({
   },
 });
 
-export const {
-  setSearchFilter,
-} = phonesSlice.actions;
+export const { setSearchFilter } = phonesSlice.actions;
 export default phonesSlice.reducer;

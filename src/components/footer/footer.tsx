@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-// import logo from './LOGO.jpg';
 
 export const Footer = (() => {
   return (
@@ -14,13 +13,13 @@ export const Footer = (() => {
       <div className="footer__center">
         <ul>
           <li className="footer__center-item">
-            <Link to="/GITHUB">Github</Link>
+            <Link to="https://github.com/Anmonnn">Github</Link>
           </li>
           <li className="footer__center-item">
-            <Link to="/Contacts">Contacts</Link>
+            <Link to="https://github.com/Anmonnn">Contacts</Link>
           </li>
           <li className="footer__center-item">
-            <Link to="/Rights">Rights</Link>
+            <Link to="https://github.com/Anmonnn">Rights</Link>
           </li>
         </ul>
       </div>
@@ -33,7 +32,7 @@ export const Footer = (() => {
           className="ArrowUp"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <img src="img/ArrowUp.png" alt="Logo" className="ArrowUp__link" />
+          <img src="/img/ArrowUp.png" alt="Logo" className="ArrowUp__link" />
         </button>
       </div>
     </footer>

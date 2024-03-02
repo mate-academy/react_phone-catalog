@@ -16,28 +16,6 @@ import { persistor, store } from './store';
 import { Cart } from './pages/Cart/Cart';
 import { ItemCard } from './pages/ItemCard/ItemCard';
 
-// const [phones, setPhones] = useState<TypeCard[]>([]);
-
-// const fetchData = async () => {
-//   try {
-//     const response = await fetch(
-//       'https://mate-academy.github.io/react_phone-catalog/_new/products.json',
-//     );
-
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-
-//     const data = await response.json();
-
-//     setPhones(data);
-//   } catch (error) {
-//     // console.log('Error fetching data:', error);
-//   }
-// };
-
-// fetchData();
-
 createRoot(document.getElementById('root') as HTMLElement)
   .render(
     <Provider store={store}>
@@ -65,6 +43,18 @@ createRoot(document.getElementById('root') as HTMLElement)
                 path="/Phones/:id"
                 element={
                   <ItemCard />
+                }
+              />
+              <Route
+                path="/Tablets"
+                element={
+                  <div>Work in progres...</div>
+                }
+              />
+              <Route
+                path="/Accessories"
+                element={
+                  <div>Work in progres...</div>
                 }
               />
               <Route

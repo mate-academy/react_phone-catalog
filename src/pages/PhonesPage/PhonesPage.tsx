@@ -3,8 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { Pagination } from '../../components/Pagination/Pagination';
 import './PhonesPage.scss';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { init } from '../../features/phonesSlice';
+import { useAppSelector } from '../../store';
 import { getSearchWith } from '../../helpers/searchHelper';
 
 enum SortType {
@@ -21,19 +20,12 @@ enum OptionsType {
 }
 
 export const PhonesPage = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const queryValue: string = urlParams.get('query') || '';
-  const sortValue: string = urlParams.get('sort') || '';
-
   const [searchParams, setSearchParams] = useSearchParams();
-  const dispatch = useAppDispatch();
+  const queryValue: string = searchParams.get('query') || '';
+  const sortValue: string = searchParams.get('sort') || '';
   const phones = useAppSelector(
     (state) => state.phones.items,
   );
-
-  // const searchFilter = useAppSelector(
-  //   (state) => state.favouritesPhones.searchFilter,
-  // );
 
   const [perPage, setPerPage] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,30 +54,19 @@ export const PhonesPage = () => {
       default:
         return sortedPhones;
     }
-  }; // винеси в окрему
-
-  const [types, setTypes] = useState(sortValue || 'Newest');
-
-  useEffect(() => {
-    dispatch(init());
-  }, []);
+  };
 
   useEffect(() => {
     setActualPhones(getActualPhones(sortValue || 'Newest'));
     setCurrentPage(1);
   }, [phones, queryValue]);
 
+  const [types, setTypes] = useState(sortValue || 'Newest');
+
   const optionEvent = (event: ChangeEvent<HTMLSelectElement>) => {
     if (Object.values(OptionsType)
       .includes(event.target.value as OptionsType)) {
       setPerPage(event.target.value);
-
-      // const params = new URLSearchParams(location.search);
-
-      // params.set('sort', event.target.value);
-
-      // // Використовуємо navigate замість push для зміни URL
-      // history.navigate({ search: params.toString() });
     }
 
     if (Object.values(SortType).includes(event.target.value as SortType)) {
@@ -121,7 +102,7 @@ export const PhonesPage = () => {
 
       <h1 className="Phones-page__header">Mobile Phones</h1>
 
-      <p>{`${actualPhones.length || visibleItems.length} models`}</p>
+      <p>{`${actualPhones.length} models`}</p>
 
       <div className="Options">
         <div className="Options__sort">
@@ -159,22 +140,30 @@ export const PhonesPage = () => {
         </div>
       </div>
 
-      <ul className="Cards__list" data-cy="productList">
-        {(visibleItems.length > 0 ? visibleItems : actualPhones).map(phone => (
-          <li className="Cards__item" key={phone.name}>
-            <ProductCard card={phone} />
-          </li>
-        ))}
-      </ul>
+      {actualPhones.length ? (
+        <>
+          <ul className="Cards__list" data-cy="productList">
+            {(visibleItems.length > 0 ? visibleItems : actualPhones)
+              .map(phone => (
+                <li className="Cards__item" key={phone.name}>
+                  <ProductCard card={phone} />
+                </li>
+              ))}
+          </ul>
 
-      {perPage === OptionsType.All ? null : (
-        <Pagination
-          total={total}
-          perPage={perPage}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-        />
+          {perPage === OptionsType.All ? null : (
+            <Pagination
+              total={total}
+              perPage={perPage}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+          )}
+        </>
+      ) : (
+        <div className="Cards__list">Nothing found</div>
       )}
+
     </div>
   );
 };

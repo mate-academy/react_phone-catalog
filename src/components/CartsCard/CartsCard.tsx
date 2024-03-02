@@ -5,13 +5,7 @@ import {
   useState,
 } from 'react';
 import { TypeCard } from '../../types/TypeCard';
-import { useAppDispatch, useAppSelector } from '../../store';
-import {
-  // addPhonesInCart,
-  deletePhonesInCart,
-} from '../../features/cartSlice';
-// import { deletePhonesInCart } from '../../features/favouritesSlice';
-// import { useAppDispatch } from '../../store';
+import { useCartPhones } from '../../helpers/useArrays';
 
 interface T {
   phone: TypeCard;
@@ -20,7 +14,6 @@ interface T {
 
 export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
   const [count, setCount] = useState(1);
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setSumArray((currentState) => ({
@@ -53,33 +46,7 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
     }
   };
 
-  const phonesCart = useAppSelector(
-    (state) => state.cartPhones.phonesInCart,
-  );
-
-  // const oldCart = localStorage.getItem('cart') || '';
-  // const newCart: TypeCard[] = JSON.parse(oldCart);
-
-  const changeCart = () => {
-    if (phonesCart.some(item => item.id === phone.id)) {
-      // localStorage.setItem('cart', JSON.stringify(
-      //   newCart.filter(item => item.id !== phone.id),
-      // ));
-
-      dispatch(deletePhonesInCart(phone));
-
-      // return;
-    }
-
-    // if (oldCart) {
-    //   newCart.push(phone);
-    //   localStorage.setItem('cart', JSON.stringify(newCart));
-    // } else {
-    //   localStorage.setItem('cart', JSON.stringify([phone]));
-    // }
-
-    // dispatch(addPhonesInCart(phone));
-  };
+  const changeCart = useCartPhones();
 
   return (
     <>
@@ -89,8 +56,7 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
             data-cy="cartDeleteButton"
             className="phones__close"
             type="button"
-            // onClick={() => dispatch(deletePhonesInCart(phone))}
-            onClick={() => changeCart()}
+            onClick={() => changeCart(phone)}
           >
             <img
               src="img/Close.png"

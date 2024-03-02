@@ -6,26 +6,18 @@ import './Favourites.scss';
 import { TypeCard } from '../../types/TypeCard';
 
 export const Favourites = () => {
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const queryValue: string = urlParams.get('query') || '';
   const [searchParams] = useSearchParams();
   const queryValue = searchParams.get('query') || '';
-
-  // const phones = useAppSelector(
-  //   (state) => state.phones.items,
-  // );
 
   const favouritesPhones = useAppSelector(
     (state) => state.favouritesPhones.favouritesPhones,
   );
 
   const [fav, setFav] = useState<TypeCard[]>(
-    // JSON.parse(localStorage.getItem('favourites') || ''),
     favouritesPhones,
   );
 
   useEffect(() => {
-    // setFav(JSON.parse(localStorage.getItem('favourites') || ''));
     setFav(favouritesPhones);
   }, [favouritesPhones]);
 
@@ -57,20 +49,17 @@ export const Favourites = () => {
 
       <p>{`${favourites.length} models`}</p>
 
-      <ul className="Cards__list">
-        {favourites.map(phone => (
-          <li className="Cards__item" key={phone.name}>
-            <ProductCard card={phone} />
-          </li>
-        ))}
-      </ul>
-
-      {/* <Pagination
-        total={total}
-        perPage={perPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      /> */}
+      {favourites.length ? (
+        <ul className="Cards__list">
+          {favourites.map(phone => (
+            <li className="Cards__item" key={phone.name}>
+              <ProductCard card={phone} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="Cards__list">Nothing found</div>
+      )}
     </div>
   );
 };

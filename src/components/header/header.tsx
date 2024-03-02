@@ -6,24 +6,12 @@ import {
 } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../store';
-import {
-  setSearchFilter,
-} from '../../features/phonesSlice';
+import { useAppSelector } from '../../store';
 import { getSearchWith } from '../../helpers/searchHelper';
-// import { TypeCard } from '../../types/TypeCard';
 
 export const Header = (() => {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const queryValue: string = urlParams.get('query') || '';
-
-  const dispatch = useAppDispatch();
   const location = useLocation();
-  const searchFilter = useAppSelector(
-    (state) => state.phones.searchFilter,
-  );
 
   const favouritesPhones = useAppSelector(
     (state) => state.favouritesPhones.favouritesPhones,
@@ -37,11 +25,6 @@ export const Header = (() => {
 
   const handleInputSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const text = event.target.value;
-    
-
-    // dispatch(
-    //   setSearchFilter(text),
-    // );
 
     if (!text.trim()) {
       setSearchParams(getSearchWith(searchParams, { query: null }));
@@ -51,12 +34,6 @@ export const Header = (() => {
 
     setSearchParams(getSearchWith(searchParams, { query: text }));
   };
-
-  // const oldFav = localStorage.getItem('favourites') || '';
-  // const newFav: TypeCard[] = JSON.parse(oldFav);
-
-  // const oldCart = localStorage.getItem('cart') || '';
-  // const newCart: TypeCard[] = JSON.parse(oldCart);
 
   return (
     <header className="header">
@@ -103,11 +80,11 @@ export const Header = (() => {
                 onChange={(event) => handleInputSearch(event)}
               />
 
-              {searchFilter.trim() ? (
+              {searchParams.get('query')?.trim() ? (
                 <button
                   type="button"
-                  onClick={() => dispatch(
-                    setSearchFilter(''),
+                  onClick={() => setSearchParams(
+                    getSearchWith(searchParams, { query: null }),
                   )}
                   className="search__button"
                 >
@@ -149,8 +126,6 @@ export const Header = (() => {
           <img src="/img/bag.png" alt="Cart" />
           {cartPhones.length > 0
             && <div className="circle">{cartPhones.length}</div>}
-          {/* {phonesInCart.length > 0
-            && <div className="circle">{phonesInCart.length}</div>} */}
         </NavLink>
       </div>
     </header>

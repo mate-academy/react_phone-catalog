@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
 import './HomePage.scss';
 import { useAppSelector } from '../../store';
-
-// interface T {
-//   phones: TypeCard[]
-// }
+import {
+  imgWidth,
+  scrollPositionLeft,
+  scrollPositionRight,
+} from '../../helpers/changePositionItem';
+import {
+  Phones,
+  PhonesSlider,
+} from '../../components/PhonesSlider/PhonesSlider';
 
 export const HomePage = () => {
   const phones = useAppSelector(
@@ -15,110 +19,42 @@ export const HomePage = () => {
   );
 
   const [scrollImgPosition, setScrollImgPosition] = useState(0);
-  const [scrollPositionHot, setScrollPositionHot] = useState(0);
-  const [scrollPositionBrand, setScrollPositionBrand] = useState(0);
-
-  const discountedPhones = phones.filter(phone => (
-    phone.fullPrice - phone.price) > 0)
-    .sort((a, b) => (b.fullPrice - b.price) - (a.fullPrice - a.price));
-
-  const findLastYear = () => {
-    let lastYear = 0;
-    const phonesYears = [];
-
-    for (let i = 1; i < phones.length; i += 1) {
-      phonesYears.push(phones[i].year);
-    }
-
-    for (let i = 1; i < phonesYears.length; i += 1) {
-      if (phonesYears[i] > lastYear) {
-        lastYear = phonesYears[i];
-      }
-    }
-
-    return lastYear;
-  };
-
-  const newPhones = phones.filter(phone => phone.year === findLastYear())
-    .sort((a, b) => b.price - a.price);
-
-  const imgWidth = 1040 + 48;
-
-  const itemWidth = 272 + 16;
-
-  const scrollPositionRight = (value: string) => {
-    switch (value) {
-      case 'img': {
-        const newPosition = scrollImgPosition - imgWidth;
-
-        setScrollImgPosition(newPosition);
-      }
-
-        break;
-      case 'discounted': {
-        const newPosition = scrollPositionHot - itemWidth;
-
-        setScrollPositionHot(newPosition);
-      }
-
-        break;
-      case 'brand': {
-        const newPosition = scrollPositionBrand - itemWidth;
-
-        setScrollPositionBrand(newPosition);
-      }
-
-        break;
-      default:
-        break;
-    }
-  };
-
-  const scrollPositionLeft = (value: string) => {
-    switch (value) {
-      case 'img': {
-        const newPosition = scrollImgPosition + imgWidth;
-
-        setScrollImgPosition(newPosition);
-      }
-
-        break;
-      case 'discounted': {
-        const newPosition = scrollPositionHot + itemWidth;
-
-        setScrollPositionHot(newPosition);
-      }
-
-        break;
-      case 'brand': {
-        const newPosition = scrollPositionBrand + itemWidth;
-
-        setScrollPositionBrand(newPosition);
-      }
-
-        break;
-      default:
-        break;
-    }
-  };
 
   const categoryImg = [
     {
       img: '_new/img/category-phones.png',
       name: 'Mobile phones',
       count: `${phones.length}`,
+      color: '#D53C51',
+      type: 'Phones',
     },
     {
       img: '_new/img/category-tablets.png',
       name: 'Tablets',
       count: 24,
+      color: '#D53C51',
+      type: 'Tablets',
     },
     {
       img: '_new/img/category-accessories.png',
       name: 'Accessories',
       count: 100,
+      color: '#D53C51',
+      type: 'Accessories',
     },
   ];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (scrollImgPosition === -imgWidth * 2) {
+        scrollPositionRight(setScrollImgPosition, imgWidth, imgWidth);
+      } else {
+        scrollPositionRight(setScrollImgPosition, scrollImgPosition, imgWidth);
+      }
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [scrollImgPosition]);
 
   return (
     <div className="Home-page">
@@ -129,7 +65,11 @@ export const HomePage = () => {
             className={classNames('Slider__button', {
               disabled: scrollImgPosition >= 0,
             })}
-            onClick={() => scrollPositionLeft('img')}
+            onClick={() => scrollPositionLeft(
+              setScrollImgPosition,
+              scrollImgPosition,
+              imgWidth,
+            )}
           >
             <img src="/img/ArrowLeft.png" alt="ArrowLeft" />
           </button>
@@ -140,25 +80,35 @@ export const HomePage = () => {
               transition: `transform ${1000}ms ease`,
             }}
           >
-            <img
-              className="Slider__img"
-              src="_new/img/banner-phones.png"
-              alt="banner-phones"
-            />
-            <img
-              className="Slider__img"
-              src="_new/img/banner-tablets.png"
-              alt="banner-tablets"
-            />
-            <img
-              className="Slider__img"
-              src="_new/img/banner-accessories.png"
-              alt="banner-accessories"
-            />
+            <Link to="Phones">
+              <img
+                className="Slider__img"
+                src="_new/img/banner-phones.png"
+                alt="banner-phones"
+              />
+            </Link>
+            <Link to="Tablets">
+              <img
+                className="Slider__img"
+                src="_new/img/banner-tablets.png"
+                alt="banner-tablets"
+              />
+            </Link>
+            <Link to="Accessories">
+              <img
+                className="Slider__img"
+                src="_new/img/banner-accessories.png"
+                alt="banner-accessories"
+              />
+            </Link>
           </div>
           <button
             type="button"
-            onClick={() => scrollPositionRight('img')}
+            onClick={() => scrollPositionRight(
+              setScrollImgPosition,
+              scrollImgPosition,
+              imgWidth,
+            )}
             className={classNames('Slider__button', {
               disabled: scrollImgPosition < -imgWidth,
             })}
@@ -183,71 +133,25 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <div
-        className="Hot-prices container"
-        style={{
-          width: `${4 * itemWidth - 16}px`,
-        }}
-      >
-        <div className="top-container">
-          <h1>Hot prices</h1>
-
-          <div className="top-container__movement">
-            <button
-              type="button"
-              disabled={scrollPositionHot + itemWidth > 0}
-              onClick={() => scrollPositionLeft('discounted')}
-              className={classNames('top-container__button', {
-                disabled: scrollPositionHot + itemWidth > 0,
-              })}
-            >
-              <img src="/img/ArrowLeft.png" alt="ArrowLeft" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollPositionRight('discounted')}
-              disabled={
-                scrollPositionHot - itemWidth
-                < -((discountedPhones.length - 4) * itemWidth)
-              }
-              className={classNames('top-container__button', {
-                disabled: scrollPositionHot - itemWidth
-                  < -((discountedPhones.length - 4) * itemWidth),
-              })}
-            >
-              <img src="/img/ArrowRight.png" alt="ArrowRight" />
-            </button>
-          </div>
-        </div>
-
-        <div
-          data-cy="cardsContainer"
-          className="cardsContainer"
-        >
-          <ul
-            className="cardsContainer__list"
-            style={{
-              transform: `translateX(${scrollPositionHot}px)`,
-              transition: `transform ${1000}ms ease`,
-            }}
-          >
-            {discountedPhones.map(card => (
-              <li className="cardsContainer__item" key={card.id}>
-                <ProductCard newPhone card={card} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <PhonesSlider type={Phones.Discount} />
 
       <div data-cy="categoryLinksContainer" className="Category container">
         <h1>Shop by category</h1>
         <div>
           <ul data-cy="categoryLinksContainer">
-            {categoryImg.map(({ img, name, count }) => (
+            {categoryImg.map(({
+              img,
+              name,
+              count,
+              color,
+              type,
+            }) => (
               <li className="Category__item" key={name}>
-                <div className="Category__container">
-                  <Link to="/phones" className="Category__img-container">
+                <div className="Category__container" style={{ backgroundColor: `${color}` }}>
+                  <Link
+                    to={type}
+                    className="Category__img-container"
+                  >
                     <img
                       className="Category__img"
                       src={img}
@@ -266,62 +170,7 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <div
-        className="New-models container"
-        style={{
-          width: `${4 * itemWidth - 16}px`,
-        }}
-      >
-        <div className="top-container">
-          <h1>Brand new models</h1>
-
-          <div className="top-container__movement">
-            <button
-              type="button"
-              onClick={() => scrollPositionLeft('brand')}
-              disabled={scrollPositionBrand + itemWidth > 0}
-              className={classNames('top-container__button', {
-                disabled: scrollPositionBrand + itemWidth > 0,
-              })}
-            >
-              <img src="/img/ArrowLeft.png" alt="ArrowLeft" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollPositionRight('brand')}
-              disabled={
-                scrollPositionBrand - itemWidth
-                < -((newPhones.length - 4) * itemWidth)
-              }
-              className={classNames('top-container__button', {
-                disabled: scrollPositionBrand - itemWidth
-                  < -((newPhones.length - 4) * itemWidth),
-              })}
-            >
-              <img src="/img/ArrowRight.png" alt="ArrowLeft" />
-            </button>
-          </div>
-        </div>
-
-        <div
-          data-cy="cardsContainer"
-          className="cardsContainer"
-        >
-          <ul
-            className="cardsContainer__list"
-            style={{
-              transform: `translateX(${scrollPositionBrand}px)`,
-              transition: `transform ${1000}ms ease`,
-            }}
-          >
-            {newPhones.map(card => (
-              <li className="cardsContainer__item" key={card.id}>
-                <ProductCard card={card} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <PhonesSlider type={Phones.New} />
     </div>
   );
 };

@@ -2,35 +2,31 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
-import {
-  addFavouritePhones,
-  // addPhonesInCart,
-  deleteFavouritePhones,
-  // deletePhonesInCart,
-  // deletePhonesInCart,
-} from '../../features/favouritesSlice';
 import './ItemCard.scss';
 import { ButtonBack } from '../../components/ButtonBack/ButtonBack';
-import { TypeCard } from '../../types/TypeCard';
 import { selectPhone } from '../../features/phonesSlice';
-import { addPhonesInCart, deletePhonesInCart } from '../../features/cartSlice';
+import { useCartPhones, useFavouritesPhones } from '../../helpers/useArrays';
+import {
+  Phones,
+  PhonesSlider,
+} from '../../components/PhonesSlider/PhonesSlider';
 
 export const ItemCard = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
   const splitedId = id?.split('-');
-  // const { favouritesPhones } = useAppSelector(
-  //   (state) => state.favouritesPhones,
-  // );
-
+  const navigate = useNavigate();
+  const favouritesPhones = useAppSelector(
+    (state) => state.favouritesPhones.favouritesPhones,
+  );
+  const cartPhones = useAppSelector(
+    (state) => state.cartPhones.phonesInCart,
+  );
   const { selectedPhone } = useAppSelector(
     (state) => state.phones,
   );
 
-  const navigate = useNavigate();
   const [selectedImg, setSelectedImg] = useState(selectedPhone?.images[0]);
-
-  // console.log(favouritesPhones);
 
   useEffect(() => {
     if (id) {
@@ -64,71 +60,22 @@ export const ItemCard = () => {
     (state) => state.phones.items,
   );
 
-  //
-  const oldFav = localStorage.getItem('favourites') || '';
-  const newFav: TypeCard[] = JSON.parse(oldFav);
+  const thisCard = phones.find(phone => phone.phoneId === id);
 
-  const oldCart = localStorage.getItem('cart') || '';
-  const newCart: TypeCard[] = JSON.parse(oldCart);
-  //
-
-  const ThisCard = phones.find(phone => phone.phoneId === id);
-
-  const includesCard = ThisCard && newCart.some(
-    item => item.id === ThisCard.id,
-  ); // phonesInCart.includes(ThisCard)
-  const includesFav = ThisCard && newFav.some(
-    item => item.id === ThisCard.id,
+  const includesCard = thisCard && cartPhones.some(
+    item => item.id === thisCard.id,
   );
+  const includesFav = thisCard && favouritesPhones.some(
+    item => item.id === thisCard.id,
+  );
+
+  const changeCart = useCartPhones();
+
+  const changeFavourites = useFavouritesPhones();
 
   if (!selectedPhone) {
     return <div>Loading...</div>;
   }
-
-  const changeFavourites = () => {
-    if (ThisCard) {
-      if (newFav.some(item => item.id === ThisCard.id)) {
-        // localStorage.setItem('favourites', JSON.stringify(
-        //   newFav.filter(item => item.id !== ThisCard.id),
-        // ));
-        dispatch(deleteFavouritePhones(ThisCard));
-
-        return;
-      }
-
-      // if (oldFav) {
-      //   newFav.push(ThisCard);
-      //   localStorage.setItem('favourites', JSON.stringify(newFav));
-      // } else {
-      //   localStorage.setItem('favourites', JSON.stringify([ThisCard]));
-      // }
-
-      dispatch(addFavouritePhones(ThisCard));
-    }
-  };
-
-  const changeCart = () => {
-    if (ThisCard) {
-      if (newCart.some(item => item.id === ThisCard.id)) {
-        // localStorage.setItem('cart', JSON.stringify(
-        //   newCart.filter(item => item.id !== ThisCard.id),
-        // ));
-
-        dispatch(deletePhonesInCart(ThisCard));
-
-        return;
-      }
-
-      // if (oldCart) {
-      //   newCart.push(ThisCard);
-      //   localStorage.setItem('cart', JSON.stringify(newCart));
-      // } else {
-      //   localStorage.setItem('cart', JSON.stringify([ThisCard]));
-      // }
-
-      dispatch(addPhonesInCart(ThisCard));
-    }
-  };
 
   const colors: { [key: string]: string } = {
     gold: '#FCDBC1',
@@ -243,7 +190,7 @@ export const ItemCard = () => {
                 className={classNames('ItemCard-button', {
                   'active-button': includesCard,
                 })}
-                onClick={() => changeCart()}
+                onClick={() => changeCart(thisCard)}
               >
                 Add to cart
               </button>
@@ -253,7 +200,7 @@ export const ItemCard = () => {
                 className={classNames('ItemCard-favorites', {
                   'active-button': includesFav,
                 })}
-                onClick={() => changeFavourites()}
+                onClick={() => changeFavourites(thisCard)}
               >
                 {includesFav ? (
                   <img
@@ -396,6 +343,8 @@ export const ItemCard = () => {
           </div>
         </article>
       </div>
+
+      <PhonesSlider type={Phones.Random} />
     </div>
   );
 };

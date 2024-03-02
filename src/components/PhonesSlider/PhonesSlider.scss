@@ -1,0 +1,40 @@
+.PhonesSlider {
+  h1 {
+    margin-bottom: 24px;
+  }
+
+  .cardsContainer__list {
+    display: flex;
+    gap: 16px;
+  }
+
+  .top-container {
+    display: flex;
+    justify-content: space-between;
+
+    &__movement {
+      display: flex;
+      gap: 16px;
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      background-color: #FFF;
+      border: 1px solid #B4BDC3;
+
+      &:hover {
+        border: 1px solid #313237;
+
+        .disabled {
+          border: 1px solid #B4BDC3;
+          cursor: default;
+        }
+      }
+
+      &.disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+}
