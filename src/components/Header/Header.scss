@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  box-shadow: 0px 1px 0px 0px rgb(226, 230, 233);
+  box-shadow: 0 1px 0 0 rgb(226, 230, 233);
   background: rgb(223, 228, 231);
 
   &__search {
@@ -27,7 +27,7 @@
     position: relative;
 
     &--active {
-      &:after {
+      &::after {
         content: '';
         position: absolute;
         left: 0;
@@ -48,13 +48,12 @@
     width: 40px;
     height: 24px;
     display: flex;
-    justify-content: center;
-  }
-  &__logo {
     align-self: center;
     margin-left: 24px;
+    justify-content: center;
   }
 }
+
 .nav__list {
   margin-left: 64px;
   margin-block: 0;
@@ -64,9 +63,11 @@
   gap: 64px;
   justify-content: space-between;
 }
+
 .nav__item {
   line-height: 64px;
 }
+
 .nav__link {
   color: rgb(137, 147, 154);
   font-size: 12px;
@@ -82,7 +83,7 @@
   &--active {
     color: rgb(49, 50, 55);
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       left: 0;

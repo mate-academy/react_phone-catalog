@@ -1,10 +1,11 @@
 @import './styles/ico';
+
 * {
   box-sizing: border-box;
 }
 
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src:
     local('Mont Regular'),
     local('Mont-Regular'),
@@ -12,8 +13,9 @@
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src:
     local('Mont Semi Bold'),
     local('Mont-Semi-Bold'),
@@ -21,8 +23,9 @@
   font-weight: 600;
   font-style: normal;
 }
+
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src:
     local('Mont Bold'),
     local('Mont-Bold'),
@@ -34,11 +37,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Mont;
+  font-family: Mont, "Times New Roman", serif;
 }
+
 ul {
   list-style: none;
 }
+
 .container {
   max-width: 1136px;
   margin-inline: auto;

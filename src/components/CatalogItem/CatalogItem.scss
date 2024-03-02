@@ -45,8 +45,7 @@
       color: red;
     }
   }
-  &--buttons {
-  }
+
   &--cart-btn {
     background: rgb(49, 50, 55);
     width: 176px;
@@ -69,6 +68,7 @@
     color: transparent;
   }
 }
+
 .params-item {
   display: flex;
   justify-content: space-between;
