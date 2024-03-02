@@ -1,0 +1,68 @@
+.dropdown {
+  position: relative;
+
+  &__label {
+    margin-bottom: 4px;
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+  &__trigger {
+    width: 176px;
+    height: 40px;
+    border: 1px solid rgb(180, 189, 196);
+  }
+  &__button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 12px;
+  }
+  &__title {
+    color: rgb(49, 50, 55);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+  }
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    z-index: 20;
+    left: 0;
+    width: 176px;
+    display: none;
+    flex-direction: column;
+    padding-block: 8px;
+    border: 1px solid rgb(226, 230, 233);
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.05);
+    background: rgb(255, 255, 255);
+  }
+  &__item {
+    padding: 6px 12px 5px;
+    color: rgb(137, 147, 154);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-decoration: none;
+
+    &:hover {
+      color: rgb(49, 50, 55);
+      font-family: Mont;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: left;
+      background: rgb(250, 251, 252);
+    }
+  }
+
+  &.is-active {
+    .dropdown__menu {
+      display: flex;
+    }
+  }
+}

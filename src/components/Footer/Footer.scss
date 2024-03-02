@@ -1,0 +1,57 @@
+.footer {
+  background: rgb(255, 255, 255);
+  height: 96px;
+  margin-inline: auto;
+  border: 1px dashed;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__logo {
+    align-self: center;
+    display: flex;
+  }
+  &__links {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+  }
+  &__link {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  &__topbtn {
+    align-items: center;
+    display: flex;
+    height: fit-content;
+    align-self: center;
+    gap: 16px;
+
+    cursor: pointer;
+    &-label {
+      color: rgb(137, 147, 154);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15px;
+      pointer-events: none;
+    }
+    &-button {
+      pointer-events: none;
+      background-color: transparent;
+      border: 1px solid rgb(180, 189, 196);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
