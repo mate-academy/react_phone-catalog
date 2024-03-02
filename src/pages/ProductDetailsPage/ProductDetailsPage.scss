@@ -28,8 +28,8 @@
 
   &__grid {
     display: grid;
-    row-gap: 40px;
     gap: 16px;
+    row-gap: 40px;
     grid-template-columns: repeat(6, 1fr);
 
     @include section-grid;
