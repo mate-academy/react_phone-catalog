@@ -5,7 +5,7 @@ import { PaginationSlider } from '../../pagination/PaginationSlider';
 import './ProductCard.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 import { ColorCircleElement } from './ColorCircleElement';
 import { CapacityChoiceElement } from './CapacityChoiceElement';
 import { StateContext } from '../../AppContext';
@@ -201,8 +201,13 @@ export const ProductCard: React.FC = () => {
                 </div>
 
                 <div className="dflex mb-32" style={{ justifyContent: 'space-between' }}>
-                  <div className="button-add-to-card mr-8" onClick={addToCart}>
-                    Add to card
+                  <div
+                    className={classNames("button-add-to-card mr-8", {
+                      "button-added": getFavourite(state.card, product),
+                    })}
+                    onClick={addToCart}
+                  >
+                    {getFavourite(state.card, product) ? 'Added to card' : 'Add to card'}
                   </div>
                   <div>
                     <div

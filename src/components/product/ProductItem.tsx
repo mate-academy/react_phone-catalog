@@ -5,9 +5,9 @@ import {
   // useLocation,
 } from 'react-router-dom';
 import './productsItem.scss'
-import React, { useContext,
-  // useState,
-  // useEffect
+import
+  React, {
+  useContext,
 } from "react";
 import { StateContext } from '../../AppContext';
 import { ACTIONS, getFavourite } from '../../helpers/utils';
@@ -112,7 +112,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
             })}
             onClick={addToCart}
           >
-            Add to cart
+            {getFavourite(state.card, product) ? 'Added to card' : 'Add to card'}
           </div>
           <div onClick={addToFavourites} className="cp heart-square">
 

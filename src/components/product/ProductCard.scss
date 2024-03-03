@@ -136,18 +136,33 @@
 }
 
 .button-add-to-card {
-  padding-top: 17px;
-  padding-bottom: 16px;
-  padding-left: 90px;
-  padding-right: 90px;
+  padding: 0;
   box-sizing: border-box;
   background-color: #313237;
   color: #fff;
+  width: 263px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button-added {
+  background-color: white;
+  color: #27ae60;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+  padding: 0;
+  width: 263px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
 .favourite {
-  // padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
