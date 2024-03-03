@@ -41,6 +41,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
           }
           role="button"
           tabIndex={0}
+          data-cy="cartDeleteButton"
         >
           <img src="./img/icons/close.svg" alt="img" />
         </div>
@@ -86,7 +87,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
             +
           </div>
         </div>
-        <div className="cart-price ml-42">
+        <div className="cart-price ml-42" data-cy="productQauntity">
           {Number(phone?.price.slice(1))
             * state.card.filter(elem => elem.id === phone.id).length}
         </div>

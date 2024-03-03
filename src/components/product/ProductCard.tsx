@@ -70,7 +70,7 @@ export const ProductCard: React.FC = () => {
   }
 
   function getPics(color: string) {
-    if ( product) {
+    if (product) {
       switch (color) {
         case 'yellow':
           setPicSet(product.picsArray);
@@ -209,11 +209,18 @@ export const ProductCard: React.FC = () => {
                       className="favourite cp"
                       onClick={addToFavourites}
                     >
-                      <img
-                        src="./img/icons/icon_1.svg"
-                        alt="img"
-                        className="favourite-img"
-                      />
+                      {getFavourite(state.favourites, product) ? (
+                        <img
+                          src="./img/icons/red.svg"
+                          alt="img"
+                        />
+                      ) : (
+                        <img
+                          src="./img/icons//icon_1.svg"
+                          alt="img"
+                        />
+                      )}
+
                     </div>
                   </div>
                 </div>
@@ -239,7 +246,7 @@ export const ProductCard: React.FC = () => {
         </div>
 
         <div className="lower-block dflex mb-80" style={{ justifyContent: 'space-between' }}>
-          <div className="about">
+          <div className="about" data-cy="productDescription">
             <div className="about-header mb-16">About</div>
             <div className="grey-line mb-32"></div>
             <div className="header-small">{about[0]}</div>
@@ -279,7 +286,7 @@ export const ProductCard: React.FC = () => {
 
       </div>
 
-      <PaginationSlider pageName="suggested" headline="You may also like"/>
+      <PaginationSlider pageName="suggested" headline="You may also like" />
     </div>
   );
 };

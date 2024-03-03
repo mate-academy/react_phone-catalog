@@ -123,10 +123,9 @@ export const ProductPage: React.FC = () => {
 
       </div>
 
-      <div className="list-container">
+      <div className="list-container" data-cy="productList">
 
         {currentItems.map(product => {
-          // const key = product.id;
           return (
             <ProductItem product={product} key={product.id}/>
           )
