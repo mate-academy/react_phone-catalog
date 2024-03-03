@@ -1,0 +1,38 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgb(226, 230, 233);
+    display: flex;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  &__item.active {
+    background: rgb(49, 50, 55);
+    color: rgb(255, 255, 255);
+  }
+
+  &__item.disabled {
+    border: 1px solid rgb(226, 230, 233);
+    color: rgb(180, 189, 196);
+    pointer-events: none;
+  }
+
+  &__item:hover {
+    border: 1px solid rgb(49, 50, 55);
+  }
+
+  &__link {
+    width: 100%;
+    height: 100%;
+  }
+}

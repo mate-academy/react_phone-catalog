@@ -16,6 +16,9 @@
 .catalog {
   &__settings {
     margin-bottom: 24px;
+    display: flex;
+    gap: 10px;
+    align-items: end;
   }
 }
 
@@ -38,4 +41,14 @@
     flex-direction: column;
     padding: 24px 23px;
   }
+}
+
+.testLink {
+  box-sizing: border-box;
+  border: 1px solid black;
+  margin-left: 5px;
+  height: 38px;
+  width: 38px;
+  text-align: center;
+  line-height: 38px;
 }

@@ -1,11 +1,27 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import cn from 'classnames';
+import { useState } from 'react';
+import { SearchLink } from '../SearchLink';
 
 import './DropDown.scss';
 
-export const DropDown = () => {
+type DropParams = {
+  sort?: string;
+  perPage?: string | null;
+};
+
+type DropDownElement = {
+  title: string;
+  params: DropParams;
+};
+
+type Props = {
+  title: string;
+  dropDownArrayData: DropDownElement[];
+};
+
+export const DropDown: React.FC<Props> = ({ title, dropDownArrayData }) => {
   const [isDropDownActive, setIsDropDownActive] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(dropDownArrayData[0].title);
 
   const handleBlur = (e: React.FocusEvent<HTMLDivElement, Element>) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -18,16 +34,15 @@ export const DropDown = () => {
       className={cn('dropdown', { 'is-active': isDropDownActive })}
       onBlur={handleBlur}
     >
-      <div className="dropdown__label">Sort by</div>
+      <div className="dropdown__label">{title}</div>
       <div className="dropdown__trigger">
         <button
           type="button"
           className="dropdown__button"
           onClick={() => setIsDropDownActive(!isDropDownActive)}
         >
-          <span className="dropdown__title">Newest</span>
+          <span className="dropdown__title">{selectedItem}</span>
           <span>
-            {/* className="ico ico-down" */}
             <i
               className={cn('ico', {
                 'ico-down': !isDropDownActive,
@@ -39,33 +54,23 @@ export const DropDown = () => {
       </div>
 
       <div className="dropdown__menu">
-        <Link
-          to={{
-            search: 'sort=age',
-          }}
-          className="dropdown__item"
-          onClick={() => setIsDropDownActive(false)}
-        >
-          Newest
-        </Link>
-        <Link
-          to={{
-            search: 'sort=name',
-          }}
-          className="dropdown__item"
-          onClick={() => setIsDropDownActive(false)}
-        >
-          Alphabetically
-        </Link>
-        <Link
-          to={{
-            search: 'sort=price',
-          }}
-          className="dropdown__item"
-          onClick={() => setIsDropDownActive(false)}
-        >
-          Cheapest
-        </Link>
+        {dropDownArrayData.map(el => {
+          return (
+            <SearchLink
+              params={el.params}
+              // params={{ perPage: `4`, page: '1' }}
+              // params={{ perPage: `8`, page: '1' }}
+              className="dropdown__item"
+              onClick={() => {
+                setIsDropDownActive(false);
+                setSelectedItem(el.title);
+              }}
+              key={el.title}
+            >
+              {el.title}
+            </SearchLink>
+          );
+        })}
       </div>
     </div>
   );
