@@ -53,6 +53,7 @@
     "node-sass": "^7.0.1",
     "postcss": "^8.4.12",
     "react-test-renderer": "^18.2.0",
+    "prettier": "^3.2.5",
     "stylelint": "^15.11.0",
     "ts-jest": "^29.1.2",
     "typescript": "^4.6.3"
@@ -63,7 +64,8 @@
     "test": "mate-scripts test",
     "lint-js": "mate-scripts lint -j",
     "lint-css": "mate-scripts lint -s",
-    "lint": "npm run lint-js && npm run lint-css",
+    "format": "prettier --write './src/**/*.{ts,tsx}'",
+    "lint": "npm run format && npm run lint-js && npm run lint-css",
     "update": "mate-scripts update",
     "postinstall": "npm run update && cypress verify",
     "predeploy": "npm run build",

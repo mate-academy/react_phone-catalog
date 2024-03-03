@@ -4,6 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { App } from './App';
 import { persistor, store } from './store/store';
 
+
 createRoot(document.getElementById('root') as HTMLElement)
   .render(
     <Provider store={store}>
@@ -12,3 +13,4 @@ createRoot(document.getElementById('root') as HTMLElement)
       </PersistGate>
     </Provider>,
   );
+
