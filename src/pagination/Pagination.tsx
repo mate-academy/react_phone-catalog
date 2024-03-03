@@ -1,5 +1,6 @@
 // eslint-disable
 /* eslint-disable */
+import classNames from "classnames";
 import "./pagination.scss";
 import { useSearchParams } from "react-router-dom";
 import { ArrowForward, ArrowBack } from "./ArrowButtons";
@@ -13,7 +14,7 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
   const [searchParams] = useSearchParams();
   const itemsPerPage = searchParams.get('itemsPerPage') || '4'
   const amountOfPages = Math.ceil(pages / +itemsPerPage);
-  const page = searchParams.get('page') || 1;
+  const page = searchParams.get('page') || '1';
   const pageArray: number[] = [];
 
   for (let i = 1; i <= amountOfPages; i++) {
@@ -23,14 +24,16 @@ export const Pagination: React.FC<Props> = ({ pages }) => {
   const setPage22 = useSetCurrentPage();
 
   function displayPageButton() {
-    return pageArray.map(page => {
+    return pageArray.map(page2 => {
       return (
         <div
-          className="button-square page mr-8"
-          onClick={() => setPage22(+page, 'page')}
-          key={page}
+          className={classNames("button-square page mr-8",{
+            "selected-page": page2 === +(searchParams.get('page') || '1')}
+          )}
+          onClick={() => setPage22(+page2, 'page')}
+          key={page2}
         >
-          {page}
+          {page2}
         </div>
       )
     })

@@ -18,6 +18,12 @@
   cursor: pointer;
 }
 
+.selected-page {
+  color: white;
+  background-color: #000;
+  border: none;
+}
+
 .page-block {
   display: flex;
   align-items: center;
