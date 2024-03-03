@@ -1,7 +1,4 @@
-import {
-  useContext,
-  // useState,
-} from 'react';
+import { useContext } from 'react';
 import './CartPage.scss';
 import { Product } from '../../types';
 import { StateContext } from '../../AppContext';

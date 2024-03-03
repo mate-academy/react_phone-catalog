@@ -206,6 +206,7 @@ export const ProductCard: React.FC = () => {
                       "button-added": getFavourite(state.card, product),
                     })}
                     onClick={addToCart}
+                    data-cy="addToFavorite"
                   >
                     {getFavourite(state.card, product) ? 'Added to card' : 'Add to card'}
                   </div>

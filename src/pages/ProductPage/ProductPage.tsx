@@ -36,8 +36,6 @@ export const ProductPage: React.FC = () => {
 
     const fullName = location.pathname;
     const newName = fullName.slice(1, fullName.length - 1);
-    // console.log(getPageHeader(fullName));
-
 
     copyOfProducts = [...state.products.filter(product => product.type === newName)]
 
@@ -97,9 +95,6 @@ export const ProductPage: React.FC = () => {
             <option value="price">
               Cheap first
             </option>
-            {/* <option value="priceDesc">
-              Expencive first
-            </option> */}
           </select>
         </div>
         <div className="select-right">

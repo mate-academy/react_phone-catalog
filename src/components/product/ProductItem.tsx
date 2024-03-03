@@ -14,27 +14,8 @@ import { ACTIONS, getFavourite } from '../../helpers/utils';
 import { Product } from '../../types';
 import { useDeleteAllSimilar } from '../../helpers/utils';
 
-export interface Phone {
-  id: number,
-  picsArray: string[],
-  picsArray2?: string[],
-  picsArray3?: string[],
-  picsArray4?: string[],
-  name: string,
-  priceFull: string,
-  priceDiscount: string,
-  description1: string,
-  description2: string,
-  description3: string,
-  textAbout: string,
-  tehcSpecs: string,
-  like?: boolean,
-  addedToCart?: boolean,
-}
-
 type Props = {
   product: Product,
-  productType?: string,
 }
 
 export const ProductItem: React.FC<Props> = ({ product }) => {
@@ -111,6 +92,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
               "item-button-added": getFavourite(state.card, product),
             })}
             onClick={addToCart}
+            data-cy="addToFavorite"
           >
             {getFavourite(state.card, product) ? 'Added to card' : 'Add to card'}
           </div>

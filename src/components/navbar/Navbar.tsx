@@ -103,7 +103,7 @@ export const Navbar: React.FC = () => {
             <div className="search_box search-align search-align--input">
               <input
                 className="search--input"
-                placeholder="Search in phones..."
+                placeholder={`Search in ${location.pathname.slice(1)}...`}
                 value={searchQuery}
                 onChange={(e) => handleSearch(e)}
               />
