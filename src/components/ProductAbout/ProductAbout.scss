@@ -1,0 +1,32 @@
+@import '../../App';
+
+.product-about {
+  margin-top: 80px;
+  max-width: 560px;
+
+  &__title {
+    @include font_h2;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__title {
+      @include font_h3;
+    }
+
+    &__text {
+      @include font_body;
+
+      color: $secondary-color;
+    }
+  }
+}

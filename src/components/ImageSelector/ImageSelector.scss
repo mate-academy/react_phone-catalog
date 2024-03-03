@@ -1,0 +1,40 @@
+@import '../../App';
+
+.image-selector {
+  display: flex;
+  gap: 30px;
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__container {
+    margin: 11px;
+    width: 464px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__image {
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+
+
+    img {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+    }
+
+    &-active {
+      border-color: $primary-color;
+    }
+
+    &-selected {
+      max-height: 464px;
+    }
+  }
+}

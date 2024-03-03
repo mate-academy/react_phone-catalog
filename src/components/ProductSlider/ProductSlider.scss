@@ -1,0 +1,57 @@
+@import '../../App';
+
+.productSlider {
+&__title {
+  @include font-h1;
+
+  @include for-small-desktop  {
+    font-size: 24px;
+  }
+
+  @include for-mobile {
+    font-size: 18px;
+  }
+}
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-color;
+    background-color: $white-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__container {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    max-width: 1136px;
+
+
+    @include for-desktop  {
+      max-width: 848px;
+    }
+
+    @include for-small-desktop  {
+      max-width: 560px;
+    }
+
+    @media (max-width: 570px) {
+      max-width: 272px;
+    }
+  }
+}

@@ -1,1 +1,14 @@
-// not empty
+@import "./style/Utils/Normalize";
+@import "./style/Fonts";
+@import "./style/Utils/Variables";
+@import "./style/Utils/mixins";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    flex: 1;
+  }
+}

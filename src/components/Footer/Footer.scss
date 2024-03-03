@@ -1,0 +1,62 @@
+@import '../../App';
+
+.footer {
+  box-shadow: 0 -1px 0 0 rgb(226, 230, 233);
+  height: 96px;
+  padding-inline: 152px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  @include for-tablet {
+    padding-inline: 24px;
+  }
+
+  &__logo {
+    display: block;
+    background: url(../../assets/icons/HeaderLogo.svg) no-repeat;
+    width: 40px;
+    height: 24px;
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 64px;
+
+    &-item {
+      @include font-uppercase;
+
+      color: $secondary-color;
+    }
+
+    @include for-tablet {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    background-color: $white-color;
+    outline: none;
+    align-items: center;
+
+    &-text {
+      @include font-small;
+
+      color: $secondary-color;
+    }
+
+    &-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgb(180, 189, 196);
+      transform: rotate(90deg);
+    }
+
+  }
+}

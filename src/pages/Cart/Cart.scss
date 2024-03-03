@@ -1,0 +1,70 @@
+@import '../../App';
+
+.cart {
+  padding: 40px;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  @include for-tablet {
+    padding-inline: 5px;
+  }
+
+  &__title {
+    margin-top: 16px;
+
+    @include font-h1;
+  }
+
+  &__content {
+    margin-top: 24px;
+    display: grid;
+    grid-template: auto / 3fr 1fr;
+    gap: 16px;
+
+    @include for-tablet {
+      grid-template: 0.1fr 1fr /auto;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    height: 190px;
+    border: 1px solid $elements-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+
+    &__price {
+      @include font-h1;
+    }
+
+    &__text {
+      @include font-body;
+
+      color: $secondary-color;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $secondary-color;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  &__checkout-button {
+    @include font-buttons;
+
+    height: 24px;
+    background-color: $primary-color;
+    width: 100%;
+    color: $white-color;
+  }
+};

@@ -1,0 +1,45 @@
+@import '../../App';
+
+.options-switcher {
+
+  &__title {
+    @include font_small;
+
+    color: $secondary-color;
+  }
+
+  &__buttons {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+
+    &-color {
+      height: 30px;
+      width: 30px;
+      border: 1px solid $elements-color;
+      padding: 2px;
+      border-radius: 36px;
+
+      &-active {
+        border-color: black
+      }
+    }
+
+    &-capacity {
+      @include font_body;
+
+      height: 32px;
+      padding-inline: 8px;
+      border: 1px solid $icons-color;
+      background-color: $white-color;
+
+      &-active {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+  }
+}

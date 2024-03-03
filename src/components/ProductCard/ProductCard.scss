@@ -1,0 +1,119 @@
+@import '../../App';
+
+.productCard {
+  padding: 32px 24px 24px;
+
+  width: 272px;
+  min-height: 507px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $elements-color;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    height: 208px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include font-body;
+
+    margin-top: 24px;
+    align-self: center
+  }
+
+  &__price {
+    @include font-h2;
+
+    &-promo {
+      @include font-h2;
+
+      text-decoration: line-through;
+      color: $secondary-color;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 8px;
+      gap: 5px;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $elements-color;
+  }
+
+  &__info {
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      padding-block: 16px;
+
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &-right {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px
+    }
+
+    &-prop {
+      @include font-small;
+
+      text-transform: capitalize;
+      color: $secondary-color;
+    }
+
+    &-val {
+      @include font-small;
+
+      font-size: 12px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cartbtn {
+    @include font-buttons;
+
+    flex: 1;
+    background-color: $primary-color;
+    color: $white-color;
+
+    &--incart {
+      background-color: $white-color;
+      color: $primary-color;
+      border: 1px solid $elements-color;
+    }
+  }
+
+  &__favbtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $white-color;
+    outline: none;
+    border: 1px solid $elements-color;
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "motorola-xoom",
+  "namespaceId": "Motorola XOOM",
+  "name": "Motorola XOOM",
+  "capacityAvailable": ["32GB"],
+  "priceRegular": 910,
+  "priceDiscount": 712,
+  "colorsAvailable": ["black"],
+  "color": ["black"],
+  "images": [
+    "img/phones/motorola-xoom.0.jpg",
+    "img/phones/motorola-xoom.1.jpg",
+    "img/phones/motorola-xoom.2.jpg"
+  ],
+  "description": [
+    {
+      "title": "Hello Moto",
+      "text": "MOTOROLA XOOM has a super-powerful dual-core processor and Android™ 3.0 (Honeycomb) — the Android platform designed specifically for tablets. With its 10.1-inch HD widescreen display, you’ll enjoy HD video in a thin, light, powerful and upgradeable tablet."
+    }
+  ],
+  "screen": "10.1 inches",
+  "resolution": "WXGA (1200 x 800)",
+  "processor": "SnapDragon Dual-Core",
+  "ram": "1GB",
+  "camera": "12 Mp",
+  "zoom": "Digital, 2x",
+  "cell": [
+    "GPRS",
+    "EDGE",
+    "WCDMA",
+    "UMTS",
+    "HSPA",
+    "LTE"
+  ]
+}

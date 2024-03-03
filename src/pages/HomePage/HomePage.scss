@@ -1,0 +1,22 @@
+@import '../../App';
+
+.home-page {
+  padding: 5px 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1136px;
+  margin: 0 auto;
+  align-items: center;
+
+  @include for-big-desktop {
+    padding-inline: 5px;
+  }
+
+  &__section {
+    margin-top: 80px;
+
+    @include for-small-desktop {
+      margin-top: 40px;;
+    }
+  }
+}

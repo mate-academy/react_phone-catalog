@@ -1,0 +1,75 @@
+@import './Variables';
+
+@mixin for-mobile {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-small-desktop {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media only screen and (max-width: 1137px) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop {
+  @media only screen and (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin font-h1 {
+  font-family: Mont-Bold, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin font-h2 {
+  font-family: Mont-Bold, Arial, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin font-h3 {
+  font-family: Mont-Semibold, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin font-uppercase {
+  font-family: Mont-Semibold, Arial, sans-serif;;
+  font-size: 12px;
+  line-height: 11px;
+  text-transform: uppercase;
+}
+
+@mixin font-buttons {
+  font-family: Mont-Semibold, Arial, sans-serif;;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin font-body {
+  font-family: Mont-Regular, Arial, sans-serif;;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin font-small {
+  font-family: Mont-Semibold, Arial, sans-serif;;
+  font-size: 12px;
+  line-height: 15px;
+}

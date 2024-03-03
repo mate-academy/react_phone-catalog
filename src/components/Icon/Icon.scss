@@ -1,0 +1,85 @@
+@import '../../App';
+
+.icon {
+  position: relative;
+  display: flex;
+
+  width: 16px;
+  height: 16px;
+
+  &__image {
+    display: block;
+
+    width: 16px;
+    height: 16px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &-search {
+      background-image: url(../../assets/icons/Search.svg);
+    }
+
+    &-cart {
+      background-image: url(../../assets/icons/cart.svg);
+    }
+
+    &-heart {
+      background-image: url(../../assets/icons/heart.svg);
+
+      &-active {
+        background-image: url(../../assets/icons/HeartActive.svg);
+      }
+    }
+
+    &-arrowLeft {
+      background-image: url(../../assets/icons/arrowLeft.svg);
+    }
+
+    &-arrowRight {
+      background-image: url(../../assets/icons/arrowRight.svg);
+    }
+
+    &-arrowDown {
+      background-image: url(../../assets/icons/arrowRight.svg);
+      rotate: 90deg;
+    }
+
+
+    &-arrowUp {
+      background-image: url(../../assets/icons/arrowRight.svg);
+      rotate: 270deg;
+    }
+
+    &-home {
+      background-image: url(../../assets/icons/Icons_Home.svg)
+    }
+
+    &-close {
+      background-image: url(../../assets/icons/Close.svg)
+    }
+  }
+
+  &__counter {
+    @include font-small;
+
+    position: absolute;
+    top: -4px;
+    right: -4px;
+
+    border: 1px solid $white-color;
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 9px;
+    color: $white-color;
+
+    width: 14px;
+    height: 14px;
+    background-color: $red-color;
+  }
+}

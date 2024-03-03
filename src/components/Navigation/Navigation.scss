@@ -1,0 +1,34 @@
+@import "../../App";
+
+.navigation {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    @include font-uppercase;
+
+    position: relative;
+    color: $secondary-color;
+    transition: color 0.3s ease;
+
+    &::after {
+      content: '';
+      background-color: $primary-color;
+      width: 0;
+      height: 3px;
+      display: block;
+      position: absolute;
+      top: 37px;
+      transition: width 0.3s ease-in-out;
+      transform-origin: left;
+    }
+
+    &.active {
+      color: $primary-color;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import '../../App';
+
+.product-details {
+  max-width: 1440px;
+  padding-inline: 152px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 24px;
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    margin-bottom: 16px;
+  }
+
+  &__id {
+    @include font_small;
+
+    position: absolute;
+    right: 0;
+    color: $secondary-color;
+  }
+
+  &__title {
+    @include font_h1;
+  }
+
+  &__main {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__specs {
+    margin-top: 80px;
+
+    &__title {
+      @include font_h2;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__spec {
+      @include font_body;
+
+      color: $secondary-color;
+    }
+
+    &__values {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    &__value {
+      @include font_body;
+    }
+  }
+
+  &__slider {
+    margin-block: 80px;
+  }
+}

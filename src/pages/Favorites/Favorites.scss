@@ -1,0 +1,23 @@
+@import '../../App';
+
+.favorites {
+  max-width: 1136px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-inline: 5px;
+
+  &__top-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-block: 25px 40px;
+  }
+
+  &__title {
+    @include font-h1;
+
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+}

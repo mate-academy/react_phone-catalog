@@ -1,0 +1,38 @@
+@import '../../App';
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  height: 100%;
+  width: 327px;
+
+  box-shadow: -1px 0 0 0 $elements-color, 1px 0 0 0 $elements-color;
+
+  @include for-tablet {
+    width: auto;
+  }
+
+  @include for-small-desktop {
+    margin-left: 25px
+  }
+
+  &__input {
+    @include font-body;
+
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 24px;
+
+    &::placeholder {
+      color: $secondary-color;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 24px;
+  }
+}
