@@ -11,7 +11,12 @@ interface Props {
 }
 
 export const ButtonsCartFav: React.FC<Props> = ({ product, height }) => {
-  const { addRemoveFavList } = useContext(GlobalContext);
+  const { addRemoveFavList, addRemoveCartList } = useContext(GlobalContext);
+
+  const cart = {
+    quantity: 1,
+    product,
+  }
 
   const style = {
     gridTemplateColumns: `1fr ${height}px`,
@@ -26,13 +31,14 @@ export const ButtonsCartFav: React.FC<Props> = ({ product, height }) => {
       <button
         type="button"
         className="buttons-cart-fav__cart"
+        onClick={() => addRemoveCartList(cart)}
       >
         Add to cart
       </button>
 
       <button
         type="button"
-        className="buttons-cart-fav__favourites"
+        className="buttons-cart-fav__favorites"
         onClick={() => addRemoveFavList(product)}
       />
     </div>

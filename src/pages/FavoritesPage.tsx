@@ -17,7 +17,7 @@ export const FavoritesPage: React.FC = () => {
       </h1>
 
       <p className="favorites-page__count">
-        {`${favList.length} models`}
+        {`${favList.length} ${favList.length === 1 ? 'model' : 'models'}`}
       </p>
 
       <ProductsList products={favList} />

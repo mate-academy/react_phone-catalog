@@ -5,12 +5,13 @@
   display: flex;
 
   &__block {
+    position: relative;
     box-shadow: -1px 0px 0px 0px $elements-color;
   }
 
   &__fav-link {
     display: flex;
-    background: url("../icons/favourites-icon.svg") no-repeat center;
+    background: url("../icons/favorites-icon.svg") no-repeat center;
     padding: calc($header-height / 2) 32px;
 
     @include headerLine;

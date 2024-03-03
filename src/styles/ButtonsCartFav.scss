@@ -21,9 +21,9 @@
     }
   }
 
-  &__favourites {
+  &__favorites {
     grid-column: 2;
-    background: url("../icons/favourites-icon.svg") no-repeat center;
+    background: url("../icons/favorites-icon.svg") no-repeat center;
     border: 1px solid $gray-icons-color;
     transition: $transition-duration;
 

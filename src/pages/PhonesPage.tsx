@@ -3,17 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
 import { Dropdowns } from '../components/Dropdowns';
 import { ProductsList } from '../components/ProductsList';
-
 import { Pagination } from '../components/Pagination';
 import { BreadCrumbs } from '../components/BreadCrumbs';
+import { SortValue } from '../types/SortValue';
 
 import '../styles/PhonesPage.scss';
-
-enum SortValue {
-  age = 'age',
-  name = 'name',
-  price = 'price',
-}
 
 export const PhonesPage: React.FC = () => {
   const { phones } = useContext(GlobalContext);
@@ -55,7 +49,7 @@ export const PhonesPage: React.FC = () => {
       </h2>
 
       <p className="phones-page__count">
-        {`${phones.length} models`}
+        {`${phones.length} ${phones.length === 1 ? 'model' : 'models'}`}
       </p>
 
       <Dropdowns />
