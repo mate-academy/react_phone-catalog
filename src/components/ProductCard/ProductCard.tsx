@@ -24,11 +24,7 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
   return (
     <div className="card">
       <Link to={`/Phones/${card.phoneId}`} className="card__link">
-        <img
-          src={`https://mate-academy.github.io/react_phone-catalog/_new/${card.image}`}
-          alt="phone"
-          className="card__img"
-        />
+        <img src={`/_new/${card.image}`} alt="phone" className="card__img" />
       </Link>
 
       <div className="card__description">
