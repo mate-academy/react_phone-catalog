@@ -13,12 +13,15 @@
 }
 
 .navigator-text {
+  padding-top: 2px;
   color: var(--Gray-Primary, #313237);
   font-family: Mont, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  display: flex;
+  align-items: center;
 }
 
 .navigator-text-second {

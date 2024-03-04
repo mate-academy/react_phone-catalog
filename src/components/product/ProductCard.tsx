@@ -100,6 +100,13 @@ export const ProductCard: React.FC = () => {
 
   return (
     <div className="">
+
+      <div className="back-button-box mb-16 ">
+        <div className="back-button-align mr-4" >
+          <img src="./img/icons/arrowBackBlack.svg" alt="img" />
+        </div>
+        <div className="back-button">Back</div>
+      </div>
       <div>
         <div className="font-header" ref={topPageRef}>
           {product?.name}
