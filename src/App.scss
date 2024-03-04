@@ -1,1 +1,244 @@
-// not empty
+@import "./utils/mixsin";
+@import "./utils/variables";
+
+@font-face {
+  font-family: Mont;
+  font-weight: 500;
+  src: url(https://mate-academy.github.io/react_phone-catalog/fonts/Mont-Regular.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  src: url(https://mate-academy.github.io/react_phone-catalog/fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url(https://mate-academy.github.io/react_phone-catalog/fonts/Mont-SemiBold.otf);
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow-y: auto
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pages {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  color: $gray-primary;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+    background-color: $gray-white;
+  }
+}
+
+.page__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  background-color: aqua;
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+    background-color: yellow;
+  }
+}
+
+.logo {
+  height: 24px;
+  width: 40px;
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+
+  &--counter {
+    box-sizing: border-box;
+    background-color: $red;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $gray-white;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 12px;
+    text-align: center;
+    color: $gray-white;
+  }
+
+  &--home {
+    background-image: url(./images/icons/home.svg);
+  }
+
+  &--close {
+    background-image: url(./images/icons/close.svg);
+  }
+
+  &--search {
+    background-image: url(./images/icons/search.svg);
+  }
+  &--menu {
+    background-image: url(./images/icons/menu.svg);
+    width: 20px;
+  }
+
+  &--minus {
+    background-image: url(./images/icons/minus.svg);
+  }
+
+  &--minus-chevron {
+    background-image: url(./images/icons/minus-chevron.svg);
+  }
+
+  &--plus {
+    background-image: url(./images/icons/plus.svg);
+  }
+
+  &--arrow-left-chevron {
+    background-image: url(./images/icons/arrow-left-chevron.svg);
+  }
+
+  &--arrow-left {
+    background-image: url(./images/icons/arrow-left.svg);
+  }
+
+  &--arrow-right {
+    background-image: url(./images/icons/arrow-right.svg);
+  }
+
+  &--arrow-right-chevron {
+    background-image: url(./images/icons/arrow-right-chevron.svg);
+  }
+
+
+  &--favourites {
+    background-image: url(./images/icons/favourites.svg);
+  }
+
+  &--favourites-filled {
+    background-image: url(./images/icons/favourites-filled.svg);
+  }
+
+  &--cart {
+    background-image: url(./images/icons/cart.svg);
+  }
+
+  &--up {
+    background-image: url(./images/icons/arrow-up.svg);
+  }
+}
+
+.container {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 24px 32px 80px;
+  flex-grow: 1;
+  width: 100%;
+
+  &--footer {
+    padding-block: 16px;
+  }
+
+  @include on-tablet {
+    max-width: 900px;
+  }
+
+  @include on-descktop {
+    max-width: 1200px;
+  }
+
+  &--home {
+    padding-top: 40px;
+  }
+}
+
+.button-icon {
+  border: 1px solid $gray-icons-placeholders;
+  transition-duration: $duration;
+
+  &:hover {
+    border-color: $gray-primary;
+
+    :first-child {
+      transform: scale(1.1);
+    }
+  }
+
+  &:disabled {
+    border: 1px solid $gray-icons-placeholders;
+    transition-duration: $duration;
+
+    &:hover {
+      border: 1px solid $gray-icons-placeholders;
+
+      :first-child {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+.has-text-danger {
+  color: $red;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.32px;
+}
+
+.page {
+  &__section {
+    margin-bottom: 20px;
+
+    @include on-tablet {
+      margin-bottom: 30px;
+    }
+
+    @include on-descktop {
+      margin-bottom: 40px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    margin-bottom: 8px;
+  }
+}

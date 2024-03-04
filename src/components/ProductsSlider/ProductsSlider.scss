@@ -1,0 +1,41 @@
+@import '../../utils/variables';
+@import '../../utils/mixsin';
+
+.products-slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    color: $gray-primary;
+    letter-spacing: -0.32px;
+    margin: 0;
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+
+    @include section-grid;
+  }
+}

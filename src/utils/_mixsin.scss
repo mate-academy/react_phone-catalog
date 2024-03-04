@@ -1,0 +1,28 @@
+@mixin on-tablet {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin on-descktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin section-grid {
+  gap: 16px;
+
+  @include on-tablet {
+    display: grid;
+    gap: 16px;
+    row-gap: 40px;
+    grid-template-columns: repeat(var(--colum), 1fr);
+
+    --colum: 12;
+  }
+
+  @include on-descktop {
+    --colum: 24;
+  }
+}
