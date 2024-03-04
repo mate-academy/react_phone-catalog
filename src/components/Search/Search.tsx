@@ -12,13 +12,12 @@ export const Search = () => {
 
   const setSearchWith = useCallback(
     (params: { queryParams: string | null }) => {
-      // Added useCallback
       const search = getSearchWith(params, searchParams);
 
       setSearchParams(search);
     },
     [searchParams, setSearchParams],
-  ); // Added dependencies
+  );
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -26,10 +25,9 @@ export const Search = () => {
   };
 
   const handleClearSearch = useCallback(() => {
-    // Added useCallback
     setAppliedQuery('');
     setQuery('');
-  }, [setAppliedQuery]); // Added dependencies
+  }, [setAppliedQuery]);
 
   const { pathname } = useLocation();
 
