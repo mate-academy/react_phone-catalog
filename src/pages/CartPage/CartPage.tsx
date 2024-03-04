@@ -5,6 +5,7 @@ import { StateContext } from '../../AppContext';
 import { NoResults } from '../NoResults/NoResults';
 import { Product } from '../../types';
 import { getUniqueItems } from '../../helpers/utils';
+import { BackButton } from '../../components/BackButton/BackButton';
 
 export const CartPage: React.FC = () => {
   const [cartSummary, setCartSummary] = useState<number>(0);
@@ -40,6 +41,9 @@ export const CartPage: React.FC = () => {
     <div className="cart-container mb-80 mt-24">
 
       <div className="cart-item-container">
+
+        <BackButton />
+
         {state.card.length > 0
           ? uniqueItems?.map(elem => {
             return (

@@ -1,10 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './BackButton.scss';
 
-type Props = {
-  navigate: (direction: number) => void;
-};
+export const BackButton: React.FC = () => {
+  const navigate = useNavigate();
 
-export const BackButton: React.FC<Props> = ({ navigate }) => {
   return (
     <div
       className="back-button-box mb-16"

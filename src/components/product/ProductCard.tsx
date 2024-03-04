@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { NoResults } from '../../pages/NoResults/NoResults';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import './ProductCard.scss';
@@ -22,7 +22,6 @@ export const ProductCard: React.FC = () => {
 
   const [product, setProduct] = useState<Product>();
   const [bigPic, setBigPic] = useState('');
-  const navigate = useNavigate();
 
   const { state, dispatch } = useContext(StateContext);
 
@@ -103,7 +102,7 @@ export const ProductCard: React.FC = () => {
   return (
     <div className="">
 
-      <BackButton navigate={navigate} />
+      <BackButton />
 
       {/* <div
         className="back-button-box mb-16"
