@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { NoResults } from '../../pages/NoResults/NoResults';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import './ProductCard.scss';
@@ -12,6 +12,7 @@ import { StateContext } from '../../AppContext';
 import { ACTIONS, getFavourite } from '../../helpers/utils';
 import { Product } from '../../types';
 import { TechSpecParagraph } from './TechSpecParagraph';
+import { BackButton } from '../BackButton/BackButton';
 
 export const ProductCard: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState('yellow');
@@ -21,6 +22,7 @@ export const ProductCard: React.FC = () => {
 
   const [product, setProduct] = useState<Product>();
   const [bigPic, setBigPic] = useState('');
+  const navigate = useNavigate();
 
   const { state, dispatch } = useContext(StateContext);
 
@@ -101,12 +103,17 @@ export const ProductCard: React.FC = () => {
   return (
     <div className="">
 
-      <div className="back-button-box mb-16 ">
+      <BackButton navigate={navigate} />
+
+      {/* <div
+        className="back-button-box mb-16"
+        onClick={() => navigate(-1)}
+      >
         <div className="back-button-align mr-4" >
           <img src="./img/icons/arrowBackBlack.svg" alt="img" />
         </div>
         <div className="back-button">Back</div>
-      </div>
+      </div> */}
       <div>
         <div className="font-header" ref={topPageRef}>
           {product?.name}

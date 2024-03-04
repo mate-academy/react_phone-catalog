@@ -162,23 +162,6 @@
   cursor: pointer;
 }
 
-.back-button-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  cursor: pointer;
-}
-
-.back-button {
-  padding-top: 2px;
-  color: var(--Gray-Secondary, #89939a);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-
 .favourite {
   display: flex;
   justify-content: center;
@@ -188,11 +171,6 @@
   box-sizing: border-box;
   border: 1px solid #b4bdc3;
   cursor: pointer;
-}
-
-.back-button-align {
-  width: 16px;
-  height: 16px;
 }
 
 .favourite-img {
