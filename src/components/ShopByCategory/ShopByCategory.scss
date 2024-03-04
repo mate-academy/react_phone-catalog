@@ -3,11 +3,15 @@
 
 .category {
   &__title {
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
     margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
   }
 
   &__block-links {

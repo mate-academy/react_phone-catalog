@@ -10,7 +10,7 @@
 .header__search {
   width: 100%;
   display: flex;
-  border: 1px solid  $gray-elements;
+  border-block: 1px solid  $gray-elements;;
 
   @include on-tablet {
     display: none;

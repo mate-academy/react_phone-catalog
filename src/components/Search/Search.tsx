@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import './Search.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
 import { CartContext } from '../CartContext/CartContext';
 import { getSearchWith } from '../../utils/search';
 
 export const Search = () => {
   const { applyQuery, setAppliedQuery, appliedQuery } = useContext(CartContext);
+
+  const [isSearch, setIsSearch] = useState(false);
 
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,6 +27,10 @@ export const Search = () => {
   const handleClearSearch = () => {
     setAppliedQuery('');
     setQuery('');
+  };
+
+  const handleChangeFocus = () => {
+    setIsSearch(false);
   };
 
   const { pathname } = useLocation();
@@ -52,6 +59,8 @@ export const Search = () => {
         value={query}
         placeholder={`Search in ${pathname.slice(1)}...`}
         onChange={handleQueryChange}
+        onFocus={() => setIsSearch(true)}
+        onBlur={handleChangeFocus}
       />
       {
         !query && (
@@ -68,7 +77,9 @@ export const Search = () => {
             aria-label="Clear search"
             type="button"
             data-cy="searchDelete"
-            className="search__icon"
+            className={cn('search__icon', {
+              'search__icon--hover': isSearch,
+            })}
             onClick={handleClearSearch}
           >
             <span className="icon icon--close" />

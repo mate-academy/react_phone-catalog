@@ -158,6 +158,7 @@
 .container {
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   position: relative;
   margin: 0 auto;
   max-width: 600px;
@@ -185,7 +186,7 @@
 .button-icon {
   border: 1px solid $gray-icons-placeholders;
   transition-duration: $duration;
-  
+
   &:hover {
     border-color: $gray-primary;
 
@@ -235,11 +236,15 @@
   }
 
   &__title {
-    font-size: 32px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.32px;
     margin-bottom: 8px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
   }
 }

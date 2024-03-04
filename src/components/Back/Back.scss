@@ -23,12 +23,14 @@
   }
 
   &__button-label {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     line-height: 16px;
     color: $gray-secondary;
     margin-left: 4px;
 
+    @include on-tablet {
+      font-size: 12px;
+    }
   }
-
 }

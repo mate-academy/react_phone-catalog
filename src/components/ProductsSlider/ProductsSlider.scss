@@ -10,13 +10,18 @@
   }
 
   &__title {
-    font-size: 32px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     color: $gray-primary;
     letter-spacing: -0.32px;
     margin: 0;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+
   }
 
   &__navigation {

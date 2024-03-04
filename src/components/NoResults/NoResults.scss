@@ -1,28 +1,39 @@
 @import '../../utils/variables';
+@import '../../utils/mixsin';
 
 .no-results {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex-grow: 1;
-  transform: translateY(-40px);
+  justify-content: center;
 
   &__title {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 41px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 26px;
     letter-spacing: -0.01em;
     text-align: center;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41px;
+    }
   }
 
   &__text {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 16px;
     letter-spacing: 0;
     color: $gray-secondary;
-    padding-top: 16px;
+    padding-top: 8px;
     text-align: center;
+
+    @include on-tablet {
+      font-size: 14px;
+      line-height: 21px;
+      padding-top: 16px;
+    }
   }
 }

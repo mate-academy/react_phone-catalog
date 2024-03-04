@@ -4,11 +4,25 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import debounce from 'lodash.debounce';
 import { OrderedProduct } from '../../type/OrderedProduct';
 import { getProducts } from '../../api';
 import { Product } from '../../type/Product';
 import { Message } from '../../type/Message';
+
+function debounce(
+  callback: (...args: any[]) => void,
+  delay: number,
+) {
+  let timerId = 0;
+
+  return (...args: any) => {
+    window.clearTimeout(timerId);
+
+    timerId = window.setTimeout(() => {
+      callback(...args);
+    }, delay);
+  };
+}
 
 type Context = {
   orderedProducts: OrderedProduct[],

@@ -19,11 +19,16 @@
   }
 
   &__product-name {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 41px;
+    font-size: 22px;
+    line-height: 32px;
     letter-spacing: -0.01em;
     text-align: left;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41px;
+    }
   }
 
   &__grid {
@@ -256,20 +261,28 @@
 
   &__price {
     &--sale {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       line-height: 41px;
       letter-spacing: -0.01em;
       color: $gray-primary;
+
+      @include on-tablet {
+        font-size: 32px;
+      }
     }
 
     &--full {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 500;
       line-height: 28px;
       letter-spacing: 0;
       text-decoration: line-through;
       color: $gray-secondary;
+
+      @include on-tablet {
+        font-size: 32px;
+      }
     }
   }
 
@@ -339,7 +352,7 @@
 
   &__title-block {
     color: $gray-primary;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 31px;
     letter-spacing: 0;
@@ -347,6 +360,10 @@
     padding-bottom: 16px;
     border-bottom: 1px solid $gray-elements;
     margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 22px;
+    }
 
     &--tech {
       margin-bottom: 25px;
@@ -386,11 +403,15 @@
   }
 
   &__about-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 26px;
     color: $gray-primary;
     margin-bottom: 16px;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
   }
 
   &__about-text {

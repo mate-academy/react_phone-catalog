@@ -11,7 +11,7 @@
     padding: 0;
   }
 
-  &__item {
+  &__block {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -33,11 +33,16 @@
   }
 
   &__text {
-    font-size: 12px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     color: $gray-secondary;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+
     &--link {
       color: $gray-primary;
     }

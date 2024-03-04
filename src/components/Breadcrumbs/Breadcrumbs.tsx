@@ -17,7 +17,7 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
     <ul className="breadcrumbs__list" data-cy="breadCrumbs">
       {
         pathname.split('/').slice(0, -1).map(path => (
-          <div className="breadcrumbs-block" key={path}>
+          <div className="breadcrumbs__block" key={path}>
             <li className="breadcrumbs__item">
               <Link to={`/${path}`} className="breadcrumbs__link">
                 {
