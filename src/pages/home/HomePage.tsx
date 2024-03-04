@@ -1,9 +1,10 @@
 // eslint-disable
 /* eslint-disable */
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import '../ProductPage/product.scss';
 import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
+import { StateContext } from '../../AppContext';
 
 export const HomePage = () => {
   const sliderRef = useRef<null | HTMLDivElement>(null);
@@ -12,6 +13,7 @@ export const HomePage = () => {
     { image: './img/icons/Banner.svg' },
     { image: './img/icons/Banner2jpg.jpg' },
   ]);
+  const { state } = useContext(StateContext);
 
   return (
     <div className="">
@@ -75,30 +77,40 @@ export const HomePage = () => {
 
       </div>
 
-      <PaginationSlider pageName='pageTop' headline='Hot prices'/>
+      <PaginationSlider pageName='pageTop' headline='Hot prices' />
 
+      <h1 className="home-page-header-text">Shop by category</h1>
       <div className="chunk-container chunk-container-big">
-
         <div>
-          <div className="square left">
-            <img src="./img/covers/image6.png" alt="img" style={{float: "right"}} />
+          <div className="square left mb-24">
+            <img src="./img/covers/image6.png" alt="img" style={{ float: "right" }} />
+          </div>
+          <div>
+            <div className="big-title">Mobile phones</div>
+            <div className="small-title">{state.products.filter(product => product.type === 'phone').length + ' models'}</div>
           </div>
         </div>
         <div>
-          <div className="square left">
-            <img src="./img/covers/image5.png" alt="img" style={{float: "right"}} />
+          <div className="square left mb-24">
+            <img src="./img/covers/image5.png" alt="img" style={{ float: "right" }} />
+          </div>
+          <div>
+            <div className="big-title">Tablets</div>
+            <div className="small-title">{state.products.filter(product => product.type === 'tablet').length + ' models'}</div>
           </div>
         </div>
         <div>
-          <div className="square left">
-            <img src="./img/covers/image7.png" alt="img" style={{float: "right"}} />
+          <div className="square left mb-24">
+            <img src="./img/covers/image7.png" alt="img" style={{ float: "right" }} />
+          </div>
+          <div>
+            <div className="big-title">Accessories</div>
+            <div className="small-title">{state.products.filter(product => product.type === 'accessoire').length + ' models'}</div>
           </div>
         </div>
-
-
       </div>
 
-       <PaginationSlider pageName='pageDown' headline='Brand new models'/>
+      <PaginationSlider pageName='pageDown' headline='Brand new models' />
 
     </div>
   );

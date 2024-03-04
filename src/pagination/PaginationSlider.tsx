@@ -50,8 +50,6 @@ export const PaginationSlider: React.FC<Props> = ({ pageName, headline }) => {
 
       <div className="chunk-container">
         {currentItems.map(phone => {
-          // const key = uuidv4();
-
           return (
             <ProductItem product={phone} key={phone.id} />
           );
