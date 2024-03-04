@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Banner.scss';
 import cn from 'classnames';
 import { SliderBanner } from '../../type/sliderBanner';
@@ -10,13 +10,13 @@ type Props = {
 export const Banner: React.FC<Props> = ({ slides }) => {
   const [slide, setSlide] = useState(0);
 
-  const goForward = () => {
+  const goForward = useCallback(() => {
     if (slide <= slides.length - 2) {
       setSlide(slide + 1);
     } else {
       setSlide(0);
     }
-  };
+  }, [slide, slides.length]);
 
   const goBack = () => {
     if (slide >= 1) {

@@ -25,7 +25,7 @@ export const Dropdown: React.FC<Props> = ({
 }) => {
   const [isActiveDropdown, setIsActiveDropdown] = useState(false);
 
-  function setSearchWith(params: any) {
+  function setSearchWith(params: Record<string, string | null>) {
     const search = getSearchWith(params, searchParams);
 
     setSearchParams(search);

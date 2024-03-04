@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import './Search.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { CartContext } from '../CartContext/CartContext';
@@ -7,24 +7,29 @@ import { getSearchWith } from '../../utils/search';
 export const Search = () => {
   const { applyQuery, setAppliedQuery, appliedQuery } = useContext(CartContext);
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>('');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  function setSearchWith(params: any) {
-    const search = getSearchWith(params, searchParams);
+  const setSearchWith = useCallback(
+    (params: { queryParams: string | null }) => {
+      // Added useCallback
+      const search = getSearchWith(params, searchParams);
 
-    setSearchParams(search);
-  }
+      setSearchParams(search);
+    },
+    [searchParams, setSearchParams],
+  ); // Added dependencies
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
     applyQuery(event.target.value);
   };
 
-  const handleClearSearch = () => {
+  const handleClearSearch = useCallback(() => {
+    // Added useCallback
     setAppliedQuery('');
     setQuery('');
-  };
+  }, [setAppliedQuery]); // Added dependencies
 
   const { pathname } = useLocation();
 
@@ -37,11 +42,11 @@ export const Search = () => {
 
   useEffect(() => {
     handleClearSearch();
-  }, [pathname]);
+  }, [pathname, handleClearSearch]);
 
   useEffect(() => {
     setSearchWith({ queryParams: appliedQuery || null });
-  }, [appliedQuery]);
+  }, [appliedQuery, setSearchWith]);
 
   return (
     <div className="search">

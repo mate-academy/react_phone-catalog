@@ -25,7 +25,8 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  overflow-y: auto
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 * {

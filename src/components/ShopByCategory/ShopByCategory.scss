@@ -89,6 +89,7 @@
   }
 
   &__name {
+    margin-left: 10px;
     font-size: 20px;
     font-weight: 600;
     line-height: normal;
@@ -96,6 +97,7 @@
   }
 
   &__number {
+    margin-left: 10px;
     color: $gray-secondary;
   }
 }

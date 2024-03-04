@@ -50,6 +50,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const [message, setMessage] = useState<Message | ''>('');
   const [appliedQuery, setAppliedQuery] = useState('');
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const applyQuery = useCallback(debounce(setAppliedQuery, 1000), []);
 
   useEffect(() => {
