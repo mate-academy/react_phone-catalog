@@ -1,0 +1,33 @@
+@import "../../helpers/styles/mixins";
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  list-style: none;
+
+  &__link {
+    @include squareSize(32px);
+
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &--active {
+      border: none;
+      background-color: $primary-color;
+      color: $white-color;
+    }
+  }
+
+  &__arrow {
+    @include arrowButton;
+
+    margin-inline: 8px;
+  }
+}

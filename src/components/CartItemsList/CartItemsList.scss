@@ -1,0 +1,71 @@
+@import "../../helpers/styles/mixins";
+
+.CartItemsList {
+  display: flex;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: column;
+  }
+
+  &__items {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__output {
+    padding: 24px;
+    height: min-content;
+    width: 320px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    border: 1px solid $elements-color;
+
+    @include onTablet {
+      align-self: center;
+      width: calc(100% - 50px);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__price {
+    @include sectionTitle_H1;
+  }
+
+  &__amount {
+    @include bodyText;
+    color: $secondary-color;
+  }
+
+  &__divider {
+    border-top: 1px solid $elements-color;
+  }
+
+  &__checkout {
+    padding-block: 14px;
+
+    color: $white-color;
+    background-color: $primary-color;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 $add-cart-hover-color;
+    }
+  }
+
+  &__not-implemented {
+    @include bodyText;
+  }
+}

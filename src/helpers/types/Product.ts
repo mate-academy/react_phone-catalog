@@ -1,15 +1,15 @@
-import { TypeProduct } from './TypeProduct';
-
 export type Product = {
-  age: number,
   id: string,
-  type: TypeProduct,
-  imageUrl: string,
+  category: 'phones' | 'tablets' | 'accessories',
+  phoneId: string;
+  itemId: string;
   name: string,
-  snippet: string,
+  fullPrice: number,
   price: number,
-  discount: number,
   screen: string,
   capacity: string,
+  color: string,
   ram: string,
+  year: number,
+  image: string,
 };

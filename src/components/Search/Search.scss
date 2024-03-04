@@ -1,0 +1,48 @@
+@import "../../helpers/styles/mixins";
+
+.Search {
+  position: relative;
+
+  &__input {
+    @include buttonsText;
+
+    padding: 21px;
+    width: 240px;
+
+    border: none;
+    border-left: 1px solid $elements-color;
+
+    @include onPhone {
+      width: 145px;
+    }
+
+    &::placeholder {
+      color: $icons-color;
+
+      @include onPhone {
+        font-size: 10px;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $hover-color;
+    }
+  }
+
+  &__button {
+    @include squareSize(16px);
+
+    position: absolute;
+    top: 25px;
+    right: 25px;
+
+    border: none;
+    background: no-repeat center url(../../helpers/icons/icon_search.svg);
+
+    &--delete {
+      background: no-repeat center url(../../helpers/icons/icon_cross.svg);
+      cursor: pointer;
+    }
+  }
+}

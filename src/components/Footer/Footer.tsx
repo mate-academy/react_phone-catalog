@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
-import './Footer.scss';
 import { handleToTopScroll } from '../../helpers/functions/handleToTopScroll';
+
+import './Footer.scss';
 
 export const Footer = () => {
   return (
@@ -15,7 +17,7 @@ export const Footer = () => {
         <div className="Footer__links">
           <Link
             className="Footer__link"
-            to="/"
+            to="https://github.com/AntonBelia"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -36,21 +38,13 @@ export const Footer = () => {
             Rights
           </Link>
 
-          <div
-            className="Footer__to-top-scroll"
-          >
-            Back to top
+          <div className="Footer__to-top">
+            <p className="Footer__to-top-text">Back to top</p>
             <button
               type="button"
-              className="Footer__to-top"
+              className="Footer__to-top-link"
               onClick={handleToTopScroll}
-            >
-              <img
-                src="/img/icons/vector_icon.svg"
-                alt="Icon vector"
-                className="Footer__vector-icon"
-              />
-            </button>
+            />
           </div>
         </div>
       </div>

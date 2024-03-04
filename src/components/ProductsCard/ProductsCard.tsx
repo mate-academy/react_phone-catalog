@@ -1,87 +1,84 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import { Product } from '../../helpers/types/Product';
+import { capitalize } from '../../helpers/utils/capitalize';
+import { hasDiscount } from '../../helpers/utils/getDiscount';
+import { ProductAdd } from '../ProductAdd';
+import { handleToTopScroll } from '../../helpers/functions/handleToTopScroll';
+
 import './ProductsCard.scss';
 
 type Props = {
   product: Product,
 };
 
-export const ProductsCard: React.FC<Props> = ({
-  product: {
-    imageUrl,
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const {
+    phoneId,
+    image,
     name,
     price,
-    discount,
+    fullPrice,
     screen,
     capacity,
     ram,
-  },
-}) => {
-  const getDiscountedPrice = () => {
-    return price - price * (discount / 100);
+  } = product;
+
+  const productFields = {
+    screen,
+    capacity,
+    ram,
   };
 
   return (
-    <div className="ProductsCard" data-cy="cardsContainer">
-      <img
-        className="ProductsCard__image"
-        src={imageUrl}
-        alt={name}
-      />
-      <p className="ProductsCard__name">
-        {name}
-      </p>
-      <div className="ProductsCard__prices">
-        {!!discount && (
-          <p className="ProductsCard__price">
-            {`$${getDiscountedPrice()}`}
-          </p>
-        )}
-        <p
-          className={classNames('ProductsCard__price', {
-            'ProductsCard__price--discount': !!discount,
-          })}
-        >
-          {`$${price}`}
+    <div className="ProductCard" data-cy="cardsContainer">
+      <Link
+        to={`/product/${phoneId}`}
+        className="ProductCard__content"
+        onClick={handleToTopScroll}
+      >
+        <img
+          src={image}
+          alt={name}
+          className="ProductCard__image"
+        />
+
+        <p className="ProductCard__name">
+          {name}
         </p>
-      </div>
-      <div className="ProductsCard__info">
-        <div className="ProductsCard__field">
-          <p className="ProductsCard__field-key">Screen</p>
-          <p className="ProductsCard__field-value">
-            {screen}
+
+        <div className="ProductCard__prices">
+          {hasDiscount(product) && (
+            <p className="ProductCard__price">
+              {`$${price}`}
+            </p>
+          )}
+          <p
+            className={classNames('ProductCard__price', {
+              'ProductCard__price--discount': hasDiscount(product),
+            })}
+          >
+            {`$${fullPrice}`}
           </p>
         </div>
 
-        <div className="ProductsCard__field">
-          <p className="ProductsCard__field-key">Capacity</p>
-          <p className="ProductsCard__field-value">
-            {capacity || '-'}
-          </p>
+        <div className="ProductCard__divider" />
+
+        <div className="ProductCard__info">
+          {Object.entries(productFields).map(([key, value]) => (
+            <div key={key} className="ProductCard__field">
+              <p className="ProductCard__field-key">{capitalize(key)}</p>
+              <p className="ProductCard__field-value">
+                {value || '-'}
+              </p>
+            </div>
+          ))}
         </div>
+      </Link>
 
-        <div className="ProductsCard__field">
-          <p className="ProductsCard__field-key">Ram</p>
-          <p className="ProductsCard__field-value">
-            {ram || '-'}
-          </p>
-        </div>
-
-      </div>
-
-      <div className="ProductsCard__add">
-        <button type="button" className="ProductsCard__add-cart">
-          Add to cart
-        </button>
-        <button type="button" className="ProductsCard__add-favorites">
-          <img
-            src="/img/icons/favorites.svg"
-            alt="Favorites Icon"
-          />
-        </button>
-      </div>
+      <ProductAdd product={product} />
     </div>
   );
 };

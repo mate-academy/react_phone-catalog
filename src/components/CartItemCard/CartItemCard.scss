@@ -1,0 +1,98 @@
+@import "../../helpers/styles/mixins";
+
+.CartItemCard {
+  padding: 32px 40px 32px 24px;
+
+  display: flex;
+  justify-content: space-between;
+
+  border: 1px solid $icons-color;
+
+  @include onPhone {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__delete {
+    @include squareSize(16px);
+
+    border: none;
+    background: no-repeat center url(../../helpers/icons/icon_cross_gray.svg);
+    cursor: pointer;
+  }
+
+  &__image {
+    @include squareSize(66px);
+
+    object-fit: contain;
+  }
+
+  &__description {
+    @include bodyText;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+
+    @include onPhone {
+      align-self: center;
+    }
+  }
+
+  &__counter {
+    display: flex;
+  }
+
+  &__button {
+    @include squareSize(32px);
+
+    border: 1px solid $icons-color;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &--subtract {
+      background: no-repeat center url(../../helpers/icons/icon_minus.svg);
+
+      &--disabled {
+        background-image: url(../../helpers/icons/icon_minus_gray.svg);
+        border-color: $elements-color;
+        cursor: auto;
+
+        &:hover {
+          border-color: $elements-color;
+        }
+      }
+    }
+
+    &--add {
+      background: no-repeat center url(../../helpers/icons/icon_plus.svg);
+    }
+  }
+
+  &__quantity {
+    @include squareSize(32px);
+    @include bodyText;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__price {
+    @include sectionTitle_H2;
+
+    width: 70px;
+    text-align: right;
+  }
+}

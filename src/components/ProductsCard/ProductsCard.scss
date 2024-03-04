@@ -1,17 +1,35 @@
 @import "../../helpers/styles/mixins";
 
-.ProductsCard {
-  padding: 24px;
+.ProductCard {
+  padding: 23px;
+
   border: 1px solid $elements-color;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: transparent;
+    transform: scale(1.05);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    text-decoration: none;
+  }
 
   &__image {
-    width: 206px;
+    @include squareSize(208px);
+
     padding: 8px;
     margin-bottom: 14px;
+
+    align-self: center;
+    object-fit: contain;
   }
 
   &__name {
-    @include body-text;
+    @include bodyText;
 
     height: 42px;
     margin-bottom: 7px;
@@ -23,7 +41,7 @@
   }
 
   &__price {
-    @include section-title-h2;
+    @include sectionTitle_H2;
 
     &--discount {
       font-weight: 500;
@@ -32,63 +50,26 @@
     }
   }
 
+  &__divider {
+    border-top: 1px solid $elements-color;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
     gap: 8px;
 
     padding-block: 16px;
-
-    border-top: 1px solid $elements-color;
   }
 
   &__field {
+    @include smallText;
+
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
-
-    &-key {
-      color: $secondary-color;
-    }
 
     &-value {
       color: $primary-color;
-    }
-  }
-
-  &__add {
-    display: flex;
-    gap: 8px;
-
-    &-cart {
-      flex-grow: 1;
-
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 21px;
-      color: $white-color;
-
-      background-color: $primary-color;
-      border: none;
-      cursor: pointer;
-
-      &:hover {
-        box-shadow: 0 3px 13px 0 $add-cart-hover-color;
-      }
-    }
-
-    &-favorites {
-      @include square-size(40px);
-
-      background-color: inherit;
-      border: 1px solid $icons-color;
-      cursor: pointer;
-
-      &:hover {
-        border-color: $primary-color;
-      }
     }
   }
 }

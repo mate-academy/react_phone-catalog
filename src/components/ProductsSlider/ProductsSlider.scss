@@ -3,12 +3,8 @@
 .ProductsSlider {
   position: relative;
 
-  &__cards {
-    display: flex;
-    gap: 16px;
-    overflow: hidden;
-    scroll-behavior: smooth;
-  }
+  display: flex;
+  justify-content: center;
 
   &__buttons {
     position: absolute;
@@ -20,35 +16,22 @@
   }
 
   &__button {
-    @include square-size(32px);
-
-    border: solid 1px $icons-color;
-    background-color: $white-color;
-    cursor: pointer;
-
-    &:hover {
-      border-color: $primary-color;
-    }
-
-    &--disabled {
-      border: 1px solid $elements-color;
-      cursor: auto;
-
-      &:hover {
-        border-color: $elements-color;
-      }
-    }
+    @include arrowButton;
   }
 
-  &__vector-icon {
-    transform: rotate(180deg);
+  &__wrapper {
+    overflow: hidden;
+  }
 
-    &--left {
-      transform: rotate(0deg);
-    }
+  &__list {
+    display: flex;
+    gap: 16px;
+    margin-inline: 8px;
 
-    &--disabled {
-      filter: opacity(50%);
-    }
+    list-style: none;
+  }
+
+  &__item {
+    transition: transform $transition-time;
   }
 }

@@ -1,10 +1,15 @@
 @import "../../helpers/styles/mixins";
 
 .Footer {
+  position: absolute;
+  bottom: 0;
+  max-width: 1136px;
+  width: calc(100% - 40px);
+
   &__content {
     margin-inline: auto;
-
     height: 96px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,49 +17,60 @@
     box-shadow: 0 -1px 0 0 $elements-color;
   }
 
+  &__logo {
+    @include logo;
+  }
+
   &__links {
     height: 50%;
     display: flex;
     gap: 64px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+
+    @include onPhone {
+      gap: 16px;
+    }
   }
 
   &__link {
-    @include navigation-link;
+    @include navigationLink;
 
-    height: 100%;
     display: flex;
     align-items: center;
 
     &:hover {
-      @include navigation-underline;
+      @include navigationUnderline;
     }
   }
 
-  &__to-top-scroll {
-    @include navigation-link;
-
-    text-transform: none;
-    font-weight: 600;
+  &__to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
-  &__to-top {
-    @include square-size(32px);
+  &__to-top-text {
+    @include smallText;
 
-    margin-left: 16px;
-    border: solid 1px $icons-color;
-    background-color: $white-color;
+    @include onPhone {
+      display: none;
+    }
+  }
+
+  &__to-top-link {
+    @include squareSize(32px);
+
+    border: 1px solid $icons-color;
+    background: no-repeat center url(../../helpers/icons/icon_vector.svg);
+
+    transform: rotate(270deg);
     cursor: pointer;
 
     &:hover {
       border-color: $primary-color;
     }
-  }
-
-  &__vector-icon {
-    transform: rotate(90deg);
-  }
-
-  &__logo {
-    @include logo;
   }
 }

@@ -1,20 +1,24 @@
 @import "../../helpers/styles/mixins";
 
 .CategoryItem {
-  grid-column: span 8;
   text-decoration: none;
 
   &__image {
     width: 100%;
+    transition: transform $transition-time;
+
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 
-  &__products-count {
-    @include body-text;
+  &__count {
+    @include bodyText;
 
     color: $secondary-color;
-    text-decoration: none;
   }
+
   &__title {
-    @include section-title-h3;
+    @include sectionTitle_H3;
   }
 }

@@ -1,0 +1,5 @@
+@import "../../helpers/styles/mixins";
+
+.NoSearchResults {
+  @include sectionTitle_H3;
+}

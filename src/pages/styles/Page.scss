@@ -1,0 +1,65 @@
+@import "../../helpers/styles/mixins";
+
+.Page {
+  padding-top: 24px;
+  padding-bottom: 176px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &--padding--top--wider {
+    padding-top: 40px;
+  }
+
+  &--gap--wider {
+    gap: 80px;
+  }
+
+  &--gap--narrower {
+    gap: 24px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &--padding-top {
+      padding-top: 40px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--gap--wider {
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    @include sectionTitle_H1;
+
+    &--mobile {
+      display: none;
+
+      @include onPhone {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    &--long {
+      margin-right: 90px;
+    }
+  }
+
+  &__amount {
+    @include bodyText;
+
+    color: $secondary-color;
+  }
+}

@@ -1,15 +1,27 @@
 @import "./helpers/styles/reset";
 @import "./helpers/styles/fonts";
-@import "./helpers/styles/mixins";
 @import "./helpers/styles/variables";
+@import "./helpers/styles/mixins";
+
+iframe {
+  display: none;
+}
 
 body {
-  font-family: Mont-Regular, sans-serif;
+  font-family: Mont, sans-serif;
+  min-width: 320px;
 }
 
 .App {
+  position: relative;
+  min-height: 100vh;
+
   &__container {
     max-width: 1136px;
     margin: auto;
+
+    @media (max-width: 1176px) {
+      padding-inline: 20px;
+    }
   }
 }

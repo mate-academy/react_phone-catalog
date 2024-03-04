@@ -1,96 +1,127 @@
 @import "./variables";
 
-@mixin square-size($size) {
+@mixin onTablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin onPhoneDetails {
+  @media (max-width: $phone-details-width) {
+    @content;
+  }
+}
+
+@mixin onPhone {
+  @media (max-width: $phone-max-width) {
+    @content;
+  }
+}
+
+@mixin squareSize($size) {
   width: $size;
   height: $size;
 }
 
-@mixin page-grid {
+@mixin pageGrid {
   --columns: 24;
-
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onPhone {
+    --columns: 6;
+  }
 }
 
-@mixin section-title {
+@mixin sectionTitle {
   font-size: 32px;
   font-weight: 700;
   line-height: 41px;
   color: $primary-color;
 }
 
-@mixin section-title-h1 {
-  @include section-title;
+@mixin sectionTitle_H1 {
+  @include sectionTitle;
 
   letter-spacing: -0.01em;
 }
 
-@mixin section-title-h2 {
-  @include section-title;
+@mixin sectionTitle_H2 {
+  @include sectionTitle;
 
   font-size: 22px;
   line-height: 31px;
 }
 
-@mixin section-title-h3 {
-  @include section-title;
+@mixin sectionTitle_H3 {
+  @include sectionTitle;
 
   font-size: 20px;
   font-weight: 600;
   line-height: 26px;
 }
 
-@mixin body-text {
+@mixin bodyText {
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   color: $primary-color;
 }
 
-@mixin buttons-text {
-  @include body-text;
+@mixin buttonsText {
+  @include bodyText;
 
   font-weight: 600;
 }
 
-@mixin small-text {
-  @include body-text;
+@mixin smallText {
+  @include bodyText;
 
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
+  color: $secondary-color;
 }
 
-@mixin upper-case-text {
-  @include body-text;
+@mixin upperCaseText {
+  @include bodyText;
 
   font-weight: 700;
   font-size: 12px;
   line-height: 11px;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-@mixin navigation-link {
-  @include upper-case-text;
+@mixin navigationLink {
+  @include upperCaseText;
 
   position: relative;
 
   color: $secondary-color;
   text-decoration: none;
+
+  @include onPhone {
+    font-size: 10px;
+  }
 }
 
-@mixin navigation-underline {
+@mixin navigationUnderline {
   color: $primary-color;
 
   &::after {
     content: "";
     position: absolute;
     bottom: 0;
-    display: block;
     height: 3px;
     width: 100%;
+
+    display: block;
     background-color: $primary-color;
   }
 }
@@ -99,5 +130,66 @@
   height: 100%;
   width: 40px;
 
-  background: no-repeat center url(../../../public/img/icons/logo_icon.svg);
+  background: no-repeat center url(../../helpers/icons/icon_logo.svg);
+
+  @include onPhone {
+    transform: scale(0.8);
+  }
+}
+
+@mixin arrowButton {
+  @include squareSize(32px);
+
+  border: 1px solid $icons-color;
+  background: no-repeat center url(../../helpers/icons/icon_vector.svg);
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &--disabled {
+    border-color: $elements-color;
+    background-image: url(../../helpers/icons/icon_vector_disabled.svg);
+    cursor: auto;
+
+    &:hover {
+      border-color: $elements-color;
+    }
+  }
+
+  &--prev {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin dots {
+  &__dots {
+    position: absolute;
+    bottom: -32px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__dot-link {
+    padding-block: 10px;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__dot {
+    height: 4px;
+    width: 14px;
+
+    background-color: $elements-color;
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
 }

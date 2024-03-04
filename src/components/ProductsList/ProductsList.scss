@@ -1,0 +1,49 @@
+@import "../../helpers/styles/mixins";
+
+.ProductsList {
+  &__selections {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__select {
+    width: 176px;
+    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--narrow {
+      width: 128px;
+    }
+  }
+
+  &__label {
+    @include smallText;
+  }
+
+  &__search-count {
+    @include bodyText;
+
+    margin-bottom: 24px;
+
+    color: $secondary-color;
+  }
+
+  &__content {
+    @include pageGrid;
+
+    row-gap: 40px;
+
+    list-style: none;
+  }
+
+  &__item {
+    grid-column: span 6;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}

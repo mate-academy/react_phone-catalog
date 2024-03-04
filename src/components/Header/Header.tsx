@@ -1,18 +1,46 @@
-import { NavLink, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  Link,
+  NavLink,
+  useLocation,
+} from 'react-router-dom';
 import classNames from 'classnames';
 
+import { useAppSelector } from '../../helpers/app/hooks';
+import { getTotalQuantity } from '../../helpers/utils/getTotalAmount';
 import { Nav } from '../Nav';
+import { Search } from '../Search';
 
 import './Header.scss';
-import { handleToTopScroll } from '../../helpers/functions/handleToTopScroll';
 
-export const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return classNames('Header__icon', {
+const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return classNames('Header__link', {
     'Header__link--is-active': isActive,
   });
 };
 
 export const Header = () => {
+  const { favorites } = useAppSelector(state => state.favorites);
+  const { cart } = useAppSelector(state => state.cart);
+
+  const [isSearchAvailable, setIsSearchAvailable] = useState(false);
+
+  const location = useLocation();
+  const path = location.pathname;
+
+  useEffect(() => {
+    setIsSearchAvailable(
+      path === '/phones'
+      || path === '/tablets'
+      || path === '/accessories'
+      || path === '/favorites',
+    );
+  }, [path]);
+
+  const handleToTopScroll = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className="Header">
       <div className="Header__left">
@@ -21,30 +49,39 @@ export const Header = () => {
           className="Header__logo"
           onClick={handleToTopScroll}
         />
-        <Nav />
+
+        {path !== '/cart' && (
+          <Nav />
+        )}
       </div>
 
       <div className="Header__right">
-        <NavLink
-          to="/favorites"
-          className={getLinkClass}
-        >
-          <img
-            src="/img/icons/favorites_icon.svg"
-            alt="Favorites Icon"
-            className="Header__image"
-          />
-        </NavLink>
-        <NavLink
-          to="/cart"
-          className={getLinkClass}
-        >
-          <img
-            src="/img/icons/cart_icon.svg"
-            alt="Cart Icon"
-            className="Header__image"
-          />
-        </NavLink>
+        {isSearchAvailable && (
+          <Search />
+        )}
+        {path !== '/cart' && (
+          <div className="Header__link-wrapper">
+            <NavLink
+              to="/favorites"
+              className={getLinkClass}
+            >
+              {!!favorites.length && (
+                <p className="Header__count">{favorites.length}</p>
+              )}
+            </NavLink>
+          </div>
+        )}
+
+        <div className="Header__link-wrapper Header__link-wrapper--cart">
+          <NavLink
+            to="/cart"
+            className={getLinkClass}
+          >
+            {!!cart.length && (
+              <p className="Header__count">{getTotalQuantity(cart)}</p>
+            )}
+          </NavLink>
+        </div>
       </div>
     </header>
   );
