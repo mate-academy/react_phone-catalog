@@ -114,11 +114,6 @@ input:focus {
   }
 }
 
-// .selected-nav::after {
-//   content: "";
-//   border-bottom: solid black 4px;
-// }
-
 .selected-link {
   color: black;
   position: relative;
@@ -131,9 +126,20 @@ input:focus {
   position: absolute;
   top: 35px;
   display: block;
-  // padding-top: 60%;
-  // background-color: black;
-  // box-sizing: border-box;
+}
+
+.selected-icons {
+  color: black;
+  position: relative;
+}
+
+.selected-icons::after {
+  content: "";
+  border-bottom: solid black 4px;
+  width: 100%;
+  position: absolute;
+  top: 61px;
+  display: block;
 }
 
 .red-circle {

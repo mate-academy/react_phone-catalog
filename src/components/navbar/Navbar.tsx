@@ -6,7 +6,8 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useState } from 'react';
+  useState
+} from 'react';
 import { StateContext } from '../../AppContext';
 import debounce from 'lodash.debounce';
 
@@ -19,6 +20,10 @@ export const Navbar: React.FC = () => {
   const linkClass = (
     { isActive }: { isActive: boolean },
   ) => classNames('text-navbar', { 'selected-link': isActive });
+
+  const linkClassIcons = (
+    { isActive }: { isActive: boolean },
+  ) => classNames({ 'selected-icons': isActive });
 
   const location = useLocation();
 
@@ -55,8 +60,8 @@ export const Navbar: React.FC = () => {
       params.set('search', search)
     }
 
-  setSearchParams(params);
-}, 1000), [])
+    setSearchParams(params);
+  }, 1000), [])
 
   return (
     <div className="navbar-total">
@@ -114,7 +119,7 @@ export const Navbar: React.FC = () => {
           </div>
         )}
 
-        <NavLink to="/favourites" >
+        <NavLink to="/favourites" className={linkClassIcons} >
           <div className="navbar_icon navbar-icons">
             <img src="./img/icons/icon_1.svg" alt="img" />
             {state.favourites.length > 0 && (
@@ -125,7 +130,7 @@ export const Navbar: React.FC = () => {
           </div>
         </NavLink>
 
-        <NavLink to="/cart" >
+        <NavLink to="/cart" className={linkClassIcons}>
           <div className="navbar_icon navbar-icons">
             <img src="./img/icons/icon_2.svg" alt="img" />
             {state.card.length > 0 && (
