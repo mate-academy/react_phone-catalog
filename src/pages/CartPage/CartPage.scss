@@ -7,6 +7,13 @@
   align-items: center;
 }
 
+.cart-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+
 .summary {
   width: 368px;
   height: 206px;
@@ -20,7 +27,8 @@
 
 .cart-container {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  // justify-content: space-between;
 }
 
 .cart-item-container {

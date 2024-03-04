@@ -38,38 +38,43 @@ export const CartPage: React.FC = () => {
   };
 
   return (
-    <div className="cart-container mb-80 mt-24">
+    <div className="mb-80 mt-24">
 
-      <div className="cart-item-container">
-
+      <div className="">
         <BackButton />
+        <div className="cart-box">
 
-        {state.card.length > 0
-          ? uniqueItems?.map(elem => {
-            return (
-              <CartItem
-                summary={addItem}
-                reduce={deleteItem}
-                phone={elem}
-                key={elem.id}
-              />
-            );
-          })
-          : <NoResults headline="Your cart is empty" />}
-      </div>
+          <div>
+            {state.card.length > 0
+              ? uniqueItems?.map(elem => {
+                return (
+                  <CartItem
+                    summary={addItem}
+                    reduce={deleteItem}
+                    phone={elem}
+                    key={elem.id}
+                  />
+                );
+              })
+              : <NoResults headline="Your cart is empty" />}
+          </div>
 
-      <div className="summary">
-        <div>{cartSummary}</div>
-        <div className="mb-24">
-          Total for
-          {' '}
-          {state.card.length}
-          {' '}
-          items
+          <div className="summary">
+            <div>{cartSummary}</div>
+            <div className="mb-24">
+              Total for
+              {' '}
+              {state.card.length}
+              {' '}
+              items
+            </div>
+            <div className="grey-line mb-24" style={{ width: 320 }} />
+            <div className="summary-button">Checkout</div>
+          </div>
+
         </div>
-        <div className="grey-line mb-24" style={{ width: 320 }} />
-        <div className="summary-button">Checkout</div>
       </div>
+
     </div>
   );
 };

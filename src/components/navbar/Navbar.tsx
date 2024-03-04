@@ -71,33 +71,37 @@ export const Navbar: React.FC = () => {
           <img src="./img/icons/logo2.svg" alt="img" />
         </div>
 
-        <div className={classNames("navbar-box-item", {
-          "selected-nav": homeLinkClass(),
-        })}>
-          <NavLink to="/" className={linkClass}>
-            Home
-          </NavLink>
-        </div>
+        {location.pathname !== '/cart' &&
+          <>
+            <div className={classNames("navbar-box-item", {
+              "selected-nav": homeLinkClass(),
+            })}>
+              <NavLink to="/" className={linkClass}>
+                Home
+              </NavLink>
+            </div>
 
-        <div className={classNames("navbar-box-item", {
-          "selected-nav": customLinkClass('phones'),
-        })}>
-          <NavLink to="/phones" className={linkClass}>
-            Phones
-          </NavLink>
-        </div>
+            <div className={classNames("navbar-box-item", {
+              "selected-nav": customLinkClass('phones'),
+            })}>
+              <NavLink to="/phones" className={linkClass}>
+                Phones
+              </NavLink>
+            </div>
 
-        <div className="navbar-box-item">
-          <NavLink to="/tablets" className={linkClass}>
-            Tablets
-          </NavLink>
-        </div>
+            <div className="navbar-box-item">
+              <NavLink to="/tablets" className={linkClass}>
+                Tablets
+              </NavLink>
+            </div>
 
-        <div className="navbar-box-item">
-          <NavLink to="/accessoires" className={linkClass}>
-            Accessoires
-          </NavLink>
-        </div>
+            <div className="navbar-box-item">
+              <NavLink to="/accessoires" className={linkClass}>
+                Accessoires
+              </NavLink>
+            </div>
+          </>
+        }
 
       </div>
 
