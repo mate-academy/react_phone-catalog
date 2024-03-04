@@ -1,8 +1,14 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/require-default-props */
-import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  Children,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import clsx from 'clsx';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 
@@ -42,7 +48,7 @@ type Props = {
   navArrows?: boolean;
   navDots?: boolean;
   responsive?: Responsive[];
-  thumbs?: any[];
+  thumbs?: unknown[];
   cypressParam?: string | null;
 };
 
@@ -78,8 +84,9 @@ export const Slider: React.FC<Props> = ({
   const [dots, setDots] = useState<number[]>([]);
   const [durationAnimation, setDurationAnimation] = useState<number>(duration);
   const [activeDot, setActiveDot] = useState<number>(0);
-  const [timerAutoplay, setTimerAutoplay]
-    = useState<ReturnType<typeof setTimeout> | null>(null);
+  const [timerAutoplay, setTimerAutoplay] = useState<ReturnType<
+    typeof setTimeout
+  > | null>(null);
   const [windowSize] = useWindowSize();
 
   const value = useMemo(
@@ -95,9 +102,11 @@ export const Slider: React.FC<Props> = ({
   };
 
   const startIntervalAutoplay = () => {
-    setTimerAutoplay(setInterval(() => {
-      setActiveSlide(currentSlide => currentSlide + step);
-    }, autoplayInterval));
+    setTimerAutoplay(
+      setInterval(() => {
+        setActiveSlide(currentSlide => currentSlide + step);
+      }, autoplayInterval),
+    );
   };
 
   const clearIntervalAutoplay = () => {
@@ -106,6 +115,14 @@ export const Slider: React.FC<Props> = ({
     }
 
     setTimerAutoplay(null);
+  };
+
+  const restartIntervalAutoPlay = () => {
+    if (timerAutoplay) {
+      clearIntervalAutoplay();
+    }
+
+    startIntervalAutoplay();
   };
 
   // #region Prepare slides list to render
@@ -187,10 +204,7 @@ export const Slider: React.FC<Props> = ({
       const sliderContainer = sliderWrapper.current;
 
       const sliderItemWidth = breakPnt
-        ? calculcateSlideWidth(
-          sliderContainer.clientWidth,
-          breakPnt.settings.slidesPerSlide,
-        )
+        ? calculcateSlideWidth(sliderContainer.clientWidth,  breakPnt.settings.slidesPerSlide)
         : calculcateSlideWidth(sliderContainer.clientWidth, slidesPerSlide);
 
       setSlideWidth(sliderItemWidth);
@@ -221,18 +235,25 @@ export const Slider: React.FC<Props> = ({
     );
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const activeRangeOfSlide = !infinite
       ? Math.ceil(activeSlide / slidesPerSlide)
       : Math.floor((activeSlide - slidesPerSlide) / slidesPerSlide);
 
-    if (infinite && activeRangeOfSlide < 0) {
+    if (
+      infinite &&
+      (activeRangeOfSlide < 0 || activeRangeOfSlide >= slidesLength)
+    ) {
       setActiveDot(0);
 
       return;
     }
 
     setActiveDot(activeRangeOfSlide);
+
+    if (autoplay) {
+      restartIntervalAutoPlay();
+    }
   }, [activeSlide]);
 
   // #endregion
@@ -253,10 +274,10 @@ export const Slider: React.FC<Props> = ({
 
   // #region handling of changing active slide and set offset
   useEffect(() => {
-    const hasFrameClonedSlide =
+    const isFrameClonedSlide =
       infinite && (activeSlide > lastSlideIndex || activeSlide < step);
 
-    if (!hasFrameClonedSlide) {
+    if (!isFrameClonedSlide) {
       setOffset(activeSlide * slideWidth * -1);
 
       return undefined;
@@ -264,7 +285,7 @@ export const Slider: React.FC<Props> = ({
 
     setOffset(activeSlide * slideWidth * -1);
 
-    const timeoutId = setTimeout(() => {
+    const changeSliderFromCloneToReal = setTimeout(() => {
       setDurationAnimation(0);
       setActiveSlide(currentSlide => {
         return currentSlide < step
@@ -274,7 +295,7 @@ export const Slider: React.FC<Props> = ({
     }, duration);
 
     return () => {
-      clearTimeout(timeoutId);
+      clearTimeout(changeSliderFromCloneToReal);
     };
   }, [activeSlide]);
   // #endregion
@@ -297,8 +318,11 @@ export const Slider: React.FC<Props> = ({
       return;
     }
 
-    clearIntervalAutoplay();
     setActiveSlide(currentSlide => currentSlide + step);
+
+    if (autoplay) {
+      restartIntervalAutoPlay();
+    }
   };
 
   const prevSlide = () => {
@@ -314,8 +338,11 @@ export const Slider: React.FC<Props> = ({
       return;
     }
 
-    clearIntervalAutoplay();
     setActiveSlide(currentSlide => currentSlide - step);
+
+    if (autoplay) {
+      restartIntervalAutoPlay();
+    }
   };
   // #endregion
 
@@ -345,7 +372,7 @@ export const Slider: React.FC<Props> = ({
       <div className={clsx('slider', className && `${className}__slider`)}>
         {navArrows && (
           <SliderButton
-            direction='left'
+            direction="left"
             disabled={!infinite && activeSlide === 0}
             className={className}
             onClickHandler={prevSlide}
@@ -383,7 +410,7 @@ export const Slider: React.FC<Props> = ({
 
         {navArrows && (
           <SliderButton
-            direction='right'
+            direction="right"
             disabled={!infinite && activeSlide === 0}
             className={className}
             onClickHandler={nextSlide}
