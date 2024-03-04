@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
@@ -7,6 +6,9 @@ import { useGetProductsQuery } from '../../helpers/api/productsApi';
 import { capitalize } from '../../helpers/utils/capitalize';
 
 import './Breadcrumbs.scss';
+
+import iconHome from '../../helpers/icons/icon_home.svg';
+import iconVector from '../../helpers/icons/icon_vector_disabled.svg';
 
 export const Breadcrumbs = () => {
   const [path, setPath] = useState('');
@@ -37,13 +39,13 @@ export const Breadcrumbs = () => {
     <div data-cy="breadCrumbs" className="Breadcrumbs">
       <Link to="/" className="Breadcrumbs__link">
         <img
-          src={require('../../helpers/icons/icon_home.svg')}
+          src={iconHome}
           alt="Home Icon"
         />
       </Link>
 
       <img
-        src={require('../../helpers/icons/icon_vector_disabled.svg')}
+        src={iconVector}
         alt="Vector Icon"
       />
 
@@ -54,7 +56,7 @@ export const Breadcrumbs = () => {
           </Link>
 
           <img
-            src={require('../../helpers/icons/icon_vector_disabled.svg')}
+            src={iconVector}
             alt="Vector Icon"
           />
 

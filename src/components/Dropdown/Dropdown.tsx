@@ -1,9 +1,10 @@
-/* eslint-disable global-require */
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { Option } from '../../helpers/types/Option';
 import './Dropdown.scss';
+
+import iconVector from '../../helpers/icons/icon_vector_disabled.svg';
 
 type Props = {
   parameterOptions: Option[],
@@ -65,7 +66,7 @@ export const Dropdown: React.FC<Props> = ({
         </span>
 
         <img
-          src={require('../../helpers/icons/icon_vector_disabled.svg')}
+          src={iconVector}
           alt="Vector Icon"
           className={classNames('Dropdown__arrow', {
             'Dropdown__arrow--active': isSelecting,

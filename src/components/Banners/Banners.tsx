@@ -51,6 +51,7 @@ export const Banners = () => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     intervalId = window.setInterval(() => {
       carousel();
     }, 5000);

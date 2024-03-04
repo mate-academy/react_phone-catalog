@@ -16,6 +16,7 @@ export const Search = () => {
 
   useEffect(() => {
     setCurrentQuery(query);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
 
   const removeQuery = () => {
@@ -24,6 +25,7 @@ export const Search = () => {
     setSearchParams(searchParams);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const applyQuery = useCallback(
     debounce((newQuery) => {
       searchParams.set('query', newQuery);
