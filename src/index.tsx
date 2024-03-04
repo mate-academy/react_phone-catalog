@@ -1,11 +1,5 @@
 import { createRoot } from "react-dom/client";
-import {
-  BrowserRouter,
-  NavLink,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter, NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { App } from "./App";
@@ -18,7 +12,7 @@ import { ItemCard } from "./pages/ItemCard/ItemCard";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <PersistGate loading={null} persistor={persistor}>
         <Routes>
           <Route path="/" element={<App />}>
@@ -46,6 +40,6 @@ createRoot(document.getElementById("root") as HTMLElement).render(
           </Route>
         </Routes>
       </PersistGate>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
 );
